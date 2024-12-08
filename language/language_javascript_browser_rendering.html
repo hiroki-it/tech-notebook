@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="検証ロジック＠JavaScriptを記録しています。">
+        <meta name="description" content="ブラウザレンダリングの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/language_js_logic_validation.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/language_javascript_browser_rendering.html">
       
       
-        <link rel="prev" href="language_js_prototype_based_method_data.html">
+        <link rel="prev" href="language_javascript_package_react.html">
       
       
-        <link rel="next" href="language_js_logic_asynchronous_process.html">
+        <link rel="next" href="language_typescript.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】検証ロジック＠JavaScript - 俺の技術ノート</title>
+        <title>【IT技術の知見】ブラウザレンダリング - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#javascript" class="md-skip">
+        <a href="#_1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】検証ロジック＠JavaScript
+              【IT技術の知見】ブラウザレンダリング
             
           </span>
         </div>
@@ -7806,7 +7806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_prototype_based.html" class="md-nav__link">
+      <a href="language_javascript_prototype_based.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7827,7 +7827,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_prototype_based_method_data.html" class="md-nav__link">
+      <a href="language_javascript_prototype_based_method_data.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7853,10 +7853,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -7874,11 +7872,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6_2" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_6_2" >
         
           
           <label class="md-nav__link" for="__nav_8_6_2" id="__nav_8_6_2_label" tabindex="0">
@@ -7892,7 +7892,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_6_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_6_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8_6_2">
             <span class="md-nav__icon md-icon"></span>
             ■ ロジック
@@ -7903,30 +7903,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    検証ロジック
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="language_js_logic_validation.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="language_javascript_logic_validation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7935,94 +7915,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      はじめに
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. 検証
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01. 検証">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      検証の必要性の有無
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="検証の必要性の有無">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 不要な場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 必要な場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      検証パターンと検証メソッドの対応
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -8035,7 +7927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_logic_asynchronous_process.html" class="md-nav__link">
+      <a href="language_javascript_logic_asynchronous_process.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8056,7 +7948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_logic_debug.html" class="md-nav__link">
+      <a href="language_javascript_logic_debug.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8077,7 +7969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_logic_authentication.html" class="md-nav__link">
+      <a href="language_javascript_logic_authentication.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8154,7 +8046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_framework_nuxtjs.html" class="md-nav__link">
+      <a href="language_javascript_framework_nuxtjs.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8223,7 +8115,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_framework_vuejs.html" class="md-nav__link">
+      <a href="language_javascript_framework_vuejs.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8244,7 +8136,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_framework_vuejs_vuerouter.html" class="md-nav__link">
+      <a href="language_javascript_framework_vuejs_vuerouter.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8265,7 +8157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_framework_vuejs_vuex.html" class="md-nav__link">
+      <a href="language_javascript_framework_vuejs_vuex.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8340,7 +8232,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_framework_remix.html" class="md-nav__link">
+      <a href="language_javascript_framework_remix.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8361,7 +8253,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_framework_remix_command.html" class="md-nav__link">
+      <a href="language_javascript_framework_remix_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8448,7 +8340,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_package_management.html" class="md-nav__link">
+      <a href="language_javascript_package_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8469,7 +8361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_package_sql.html" class="md-nav__link">
+      <a href="language_javascript_package_sql.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8490,7 +8382,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_package_utility.html" class="md-nav__link">
+      <a href="language_javascript_package_utility.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8511,7 +8403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_package_react.html" class="md-nav__link">
+      <a href="language_javascript_package_react.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8537,8 +8429,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -8550,13 +8444,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_6_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6_5" checked>
         
           
           <label class="md-nav__link" for="__nav_8_6_5" id="__nav_8_6_5_label" tabindex="0">
@@ -8570,7 +8462,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_6_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_6_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8_6_5">
             <span class="md-nav__icon md-icon"></span>
             ■ ブラウザ
@@ -8581,10 +8473,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="language_js_browser_rendering.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    ブラウザレンダリング
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="language_javascript_browser_rendering.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -8593,6 +8505,772 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      はじめに
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      01. ブラウザレンダリングの仕組み
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. ブラウザレンダリングの仕組み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      構成する処理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      01-02. マークアップ言語
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. マークアップ言語">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ マークアップ言語とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ マークアップ言語の歴史
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xmlextensible-markup-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      xml形式：Extensible Markup Language
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="xml形式：Extensible Markup Language">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xml" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ xml形式とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ スキーマ言語とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htmlhypertext-markup-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      html形式：HyperText Markup Language
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="html形式：HyperText Markup Language">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ html形式とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-03-javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      01-03. JavaScript
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01-03. JavaScript">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      マークアップ言語へのJavaScriptの組み込み
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="マークアップ言語へのJavaScriptの組み込み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ インラインスクリプト
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 外部スクリプト
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ scriptタグが複数ある場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      01-04. ブラウザのバージョン
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01-04. ブラウザのバージョン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#polyfill" class="md-nav__link">
+    <span class="md-ellipsis">
+      Polyfill
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Polyfill">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#polyfill_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Polyfillとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-downloading" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. Downloading処理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. Downloading処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downloading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downloading処理とは
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Downloading処理とは">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 非同期的な読み出し
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Webページの要素の優先順位
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Loading
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pre-Loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-loading_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Pre-Loadingとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lazy-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lazy Loading (遅延読み出し)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lazy Loading (遅延読み出し)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lazy-loading_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Lazy Loadingとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scrollresize" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ scrollイベントとresizeイベントに基づく読み出し
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intersection-observer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Intersection Observerによる要素の交差率に基づく読み出し
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eager-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eager Loading
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eager Loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eager-loading_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Eager Loadingとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02-parse" class="md-nav__link">
+    <span class="md-ellipsis">
+      02-02. Parse処理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. Parse処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parse処理とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      html形式テキストファイルの構造解析
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="html形式テキストファイルの構造解析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 構造解析の流れ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xml_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      xml形式テキストファイルの構造解析
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="xml形式テキストファイルの構造解析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 構造解析の流れ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-scripting" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. Scripting処理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Scripting処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scripting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scripting処理とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      JavaScriptエンジン
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JavaScriptエンジン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#javascript_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ JavaScriptエンジンとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 機械語翻訳
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      03-02. イベント
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03-02. イベント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      イベント
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="イベント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ イベントとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ イベントハンドラ関数とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      html形式におけるイベントハンドラ関数のコール
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="html形式におけるイベントハンドラ関数のコール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onload" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ onload
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onclick" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ onclick
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js" class="md-nav__link">
+    <span class="md-ellipsis">
+      JS形式におけるイベントハンドラ関数のコール
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JS形式におけるイベントハンドラ関数のコール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentgetelementbyidonclick" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ document.getElementById.onclick関数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentaddeventlistener" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ document.addEventListener関数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-rendering" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. Rendering処理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. Rendering処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rendering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rendering処理とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-02-calculatestyle" class="md-nav__link">
+    <span class="md-ellipsis">
+      04-02. CalculateStyle処理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04-02. CalculateStyle処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calculatestyle" class="md-nav__link">
+    <span class="md-ellipsis">
+      CalculateStyle処理とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-03-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      04-03. Layout処理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04-03. Layout処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layout処理とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-paint" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. Paint処理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05. Paint処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paint処理とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-02-rasterize" class="md-nav__link">
+    <span class="md-ellipsis">
+      05-02. Rasterize処理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05-02. Rasterize処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rasterize" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rasterize処理とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-03-compositelayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      05-03. CompositeLayers処理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05-03. CompositeLayers処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compositelaysers" class="md-nav__link">
+    <span class="md-ellipsis">
+      CompositeLaysers処理とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -23875,7 +24553,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       はじめに
     </span>
@@ -23886,36 +24564,78 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. 検証
+      01. ブラウザレンダリングの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. 検証">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      検証の必要性の有無
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="検証の必要性の有無">
+    <nav class="md-nav" aria-label="01. ブラウザレンダリングの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 不要な場合
+      構成する処理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      01-02. マークアップ言語
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. マークアップ言語">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ マークアップ言語とは
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 必要な場合
+      ▼ マークアップ言語の歴史
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xmlextensible-markup-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      xml形式：Extensible Markup Language
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="xml形式：Extensible Markup Language">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xml" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ xml形式とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ スキーマ言語とは
     </span>
   </a>
   
@@ -23927,9 +24647,645 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#htmlhypertext-markup-language" class="md-nav__link">
     <span class="md-ellipsis">
-      検証パターンと検証メソッドの対応
+      html形式：HyperText Markup Language
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="html形式：HyperText Markup Language">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ html形式とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-03-javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      01-03. JavaScript
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01-03. JavaScript">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      マークアップ言語へのJavaScriptの組み込み
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="マークアップ言語へのJavaScriptの組み込み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ インラインスクリプト
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 外部スクリプト
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ scriptタグが複数ある場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      01-04. ブラウザのバージョン
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01-04. ブラウザのバージョン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#polyfill" class="md-nav__link">
+    <span class="md-ellipsis">
+      Polyfill
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Polyfill">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#polyfill_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Polyfillとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-downloading" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. Downloading処理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. Downloading処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downloading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downloading処理とは
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Downloading処理とは">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 非同期的な読み出し
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Webページの要素の優先順位
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Loading
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pre-Loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-loading_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Pre-Loadingとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lazy-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lazy Loading (遅延読み出し)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lazy Loading (遅延読み出し)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lazy-loading_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Lazy Loadingとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scrollresize" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ scrollイベントとresizeイベントに基づく読み出し
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intersection-observer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Intersection Observerによる要素の交差率に基づく読み出し
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eager-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eager Loading
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eager Loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eager-loading_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Eager Loadingとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02-parse" class="md-nav__link">
+    <span class="md-ellipsis">
+      02-02. Parse処理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. Parse処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parse処理とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      html形式テキストファイルの構造解析
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="html形式テキストファイルの構造解析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 構造解析の流れ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xml_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      xml形式テキストファイルの構造解析
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="xml形式テキストファイルの構造解析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 構造解析の流れ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-scripting" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. Scripting処理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Scripting処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scripting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scripting処理とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      JavaScriptエンジン
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JavaScriptエンジン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#javascript_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ JavaScriptエンジンとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 機械語翻訳
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      03-02. イベント
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03-02. イベント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      イベント
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="イベント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ イベントとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ イベントハンドラ関数とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      html形式におけるイベントハンドラ関数のコール
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="html形式におけるイベントハンドラ関数のコール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onload" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ onload
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onclick" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ onclick
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js" class="md-nav__link">
+    <span class="md-ellipsis">
+      JS形式におけるイベントハンドラ関数のコール
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JS形式におけるイベントハンドラ関数のコール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentgetelementbyidonclick" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ document.getElementById.onclick関数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentaddeventlistener" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ document.addEventListener関数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-rendering" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. Rendering処理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. Rendering処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rendering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rendering処理とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-02-calculatestyle" class="md-nav__link">
+    <span class="md-ellipsis">
+      04-02. CalculateStyle処理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04-02. CalculateStyle処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calculatestyle" class="md-nav__link">
+    <span class="md-ellipsis">
+      CalculateStyle処理とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-03-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      04-03. Layout処理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04-03. Layout処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layout処理とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-paint" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. Paint処理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05. Paint処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paint処理とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-02-rasterize" class="md-nav__link">
+    <span class="md-ellipsis">
+      05-02. Rasterize処理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05-02. Rasterize処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rasterize" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rasterize処理とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-03-compositelayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      05-03. CompositeLayers処理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05-03. CompositeLayers処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compositelaysers" class="md-nav__link">
+    <span class="md-ellipsis">
+      CompositeLaysers処理とは
     </span>
   </a>
   
@@ -23958,8 +25314,8 @@
   
 
 
-<h1 id="javascript">検証ロジック＠JavaScript<a class="headerlink" href="#javascript" title="Permanent link">&para;</a></h1>
-<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h1 id="_1">ブラウザレンダリング<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -23967,64 +25323,418 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. 検証<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_2">検証の必要性の有無<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ 不要な場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>DBから取得した後に直接的に表示する値の場合、DBでNullにならないように制約をかけられる。</p>
-<p>そのため、値が想定通りの状態になっているかを改めて検証する必要はない。</p>
-<h4 id="_4">▼ 必要な場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>DBからの値を直接的に表示する場合と異なり、新しく作られる値を使用する場合、その値が想定外の状態になっている可能性がある。</p>
-<p>そのため、値が想定通りの状態になっているかを検証する必要がある。</p>
+<h2 id="01">01. ブラウザレンダリングの仕組み<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_3">構成する処理<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>以下の8つの処理からなる。</p>
+<p>クライアントの操作のたびにイベントが発火し、Scriptingプロセスが繰り返し実行される。</p>
+<ul>
+<li>Downloading</li>
+<li>Parse</li>
+<li>Scripting</li>
+<li>Rendering</li>
+<li>CalculateStyle</li>
+<li>Paint</li>
+<li>Rasterize</li>
+<li>Composite</li>
+</ul>
+<p><img alt="browser-rendering" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/browser-rendering.png" /></p>
 <p><br></p>
-<h3 id="_5">検証パターンと検証メソッドの対応<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>✅：<code>TRUE</code>になる。</p>
-<p>空欄：<code>FALSE</code>になる。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">検証パターン</th>
-<th style="text-align: center;"><code>typeof $var</code></th>
-<th style="text-align: center;"><code>if($var)</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><strong><code>null</code></strong></td>
-<td style="text-align: center;"><code>object</code></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong><code>0</code></strong></td>
-<td style="text-align: center;"><code>number</code></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong><code>1</code></strong></td>
-<td style="text-align: center;"><code>number</code></td>
-<td style="text-align: center;">✅</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong><code>""</code></strong> (空文字)</td>
-<td style="text-align: center;"><code>string</code></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong><code>"あ"</code></strong></td>
-<td style="text-align: center;"><code>string</code></td>
-<td style="text-align: center;">✅</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong><code>NaN</code></strong></td>
-<td style="text-align: center;"><code>number</code></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong><code>undefined</code></strong></td>
-<td style="text-align: center;"><code>undefined</code></td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
+<h2 id="01-02">01-02. マークアップ言語<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
+<h4 id="_4">▼ マークアップ言語とは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>ハードウェアが読み込むファイルには、バイナリファイルとテキストファイルがある。</p>
+<p>このうち、テキストファイルをタグとデータによって構造的に表現し、ハードウェアが読み込める状態する言語のこと。</p>
+<h4 id="_5">▼ マークアップ言語の歴史<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>Webページをテキストによって構成するための言語をマークアップ言語という。</p>
+<p>1970年、IBMが、タグによって、テキスト文章に構造や意味を持たせるGML言語を発表した。</p>
+<p><img alt="markup-language-history" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/markup-language-history.png" /></p>
+<p><br></p>
+<h3 id="xmlextensible-markup-language"><code>xml</code>形式：Extensible Markup Language<a class="headerlink" href="#xmlextensible-markup-language" title="Permanent link">&para;</a></h3>
+<h4 id="xml">▼ <code>xml</code>形式とは<a class="headerlink" href="#xml" title="Permanent link">&para;</a></h4>
+<p>テキストファイルのうち、何らかのデータの構造を表すことに特化している。</p>
+<h4 id="_6">▼ スキーマ言語とは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>マークアップ言語の特に<code>xml</code>形式で、タグの付け方は自由である。</p>
+<p>しかし、利用者間で共通のルールを設けた方が良い。</p>
+<p>ルールを定義するための言語をスキーマ言語という。</p>
+<p>スキーマ言語に、DTD：Document Type Definition (文書型定義) がある。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE Employee[</span>
+<span class="cp">    &lt;!ELEMENT Name (First, Last)&gt;</span>
+<span class="w">    </span><span class="cp">&lt;!ELEMENT First (#PCDATA)&gt;</span>
+<span class="w">    </span><span class="cp">&lt;!ELEMENT Last (#PCDATA)&gt;</span>
+<span class="w">    </span><span class="cp">&lt;!ELEMENT Email (#PCDATA)&gt;</span>
+<span class="w">    </span><span class="cp">&lt;!ELEMENT Organization (Name, Address, Country)&gt;</span>
+<span class="w">    </span><span class="cp">&lt;!ELEMENT Name (#PCDATA)&gt;</span>
+<span class="w">    </span><span class="cp">&lt;!ELEMENT Address (#PCDATA)&gt;</span>
+<span class="w">    </span><span class="cp">&lt;!ELEMENT Country (#PCDATA)&gt;</span>
+<span class="w">    </span>]&gt;
+</code></pre></div>
+<p><br></p>
+<h3 id="htmlhypertext-markup-language"><code>html</code>形式：HyperText Markup Language<a class="headerlink" href="#htmlhypertext-markup-language" title="Permanent link">&para;</a></h3>
+<h4 id="html">▼ <code>html</code>形式とは<a class="headerlink" href="#html" title="Permanent link">&para;</a></h4>
+<p>テキストファイルのうち、Webページの構造を表すことに特化している。</p>
+<p><br></p>
+<h2 id="01-03-javascript">01-03. JavaScript<a class="headerlink" href="#01-03-javascript" title="Permanent link">&para;</a></h2>
+<h3 id="javascript">マークアップ言語へのJavaScriptの組み込み<a class="headerlink" href="#javascript" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ インラインスクリプト<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p><code>js</code>ファイルを直接的に組み込む。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;JavaScriptを直接的に組み込んでいます。&quot;</span><span class="p">);</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<h4 id="_8">▼ 外部スクリプト<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>外部<code>js</code>ファイルを組み込む。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;sample.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>CDN (グローバルなキャッシュサーバー) の仕組みを使用して、Web上からWebページを取得もできる。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span>
+  <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js&quot;</span>
+  <span class="na">integrity</span><span class="o">=</span><span class="s">&quot;sha256-WzuqEKxV9O7ODH5mbq3dUYcrjOknNnFia8zOyPhurXg=&quot;</span>
+  <span class="na">crossorigin</span><span class="o">=</span><span class="s">&quot;anonymous&quot;</span>
+<span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<h4 id="script">▼ scriptタグが複数ある場合<a class="headerlink" href="#script" title="Permanent link">&para;</a></h4>
+<p><code>1</code>個のWebページの<code>html</code>ファイル内で、scriptタグが複数に分散していても、Scriptingプロセスでは、1つにまとめて実行される。</p>
+<p>そのため、より上部のscriptタグの処理は、より下部のscriptに引き継がれる。</p>
+<p>1。</p>
+<p>例えば、以下のコードがある。</p>
+<div class="highlight"><pre><span></span><code>localNum
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>見出し１<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">globalNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>見出し２<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="nx">globalNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">globalNum</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>見出し３<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;&lt;p&gt;結果は&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">globalNum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;です&lt;/p&gt;&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;sample.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// sample.js</span>
+<span class="c1">// 無名関数の即時実行。定義と呼び出しを同時に実行する。</span>
+<span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 外側の変数 (foo) を参照できる。</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;外部ファイルを読み出しました&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">localNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">localMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 外側の変数 (localNum) を参照できる。</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;localNum&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 定義したメソッドを実行</span>
+<span class="w">  </span><span class="nx">localMethod</span><span class="p">();</span>
+<span class="p">})();</span>
+</code></pre></div>
+<ol>
+<li>実行時には以下の様に、まとめて実行される。</li>
+</ol>
+<p>ここでは、<code>html</code>ファイルで定義した関数の外にある変数は、グローバル変数になっている。</p>
+<p><code>1</code>個のページを構成する<code>html</code>ファイルを別ファイルとして分割していても、同じである。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">globalNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">localNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">localNum</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;&lt;p&gt;結果は&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;です&lt;/p&gt;&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// 無名関数の即時実行。定義と呼び出しを同時に実行する。</span>
+<span class="w">  </span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 外側の変数 (foo) を参照できる。</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;外部ファイルを読み出しました&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">localNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">localMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// 外側の変数 (localNum) を参照できる。</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;localNum&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 定義したメソッドを実行</span>
+<span class="w">    </span><span class="nx">localMethod</span><span class="p">();</span>
+<span class="w">  </span><span class="p">})();</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="01-04">01-04. ブラウザのバージョン<a class="headerlink" href="#01-04" title="Permanent link">&para;</a></h2>
+<h3 id="polyfill">Polyfill<a class="headerlink" href="#polyfill" title="Permanent link">&para;</a></h3>
+<h4 id="polyfill_1">▼ Polyfillとは<a class="headerlink" href="#polyfill_1" title="Permanent link">&para;</a></h4>
+<p>JavaScriptやHTMLの更新にブラウザが追いついていない場合、それを補完するように実装されたパッケージのこと。</p>
+<p>『Polyfilla』に由来している。</p>
+<p><br></p>
+<h2 id="02-downloading">02. Downloading処理<a class="headerlink" href="#02-downloading" title="Permanent link">&para;</a></h2>
+<h3 id="downloading">Downloading処理とは<a class="headerlink" href="#downloading" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ 非同期的な読み出し<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>まず、サーバーサイドからWebページ (<code>html</code>ファイル、<code>.css</code>ファイル、<code>js</code>ファイル、画像ファイル) は、分割されながら、バイト形式でレスポンスされる。</p>
+<p>これは、メッセージボディに含まれている。</p>
+<p>これを優先度を基に読み込む処理。</p>
+<p>分割でレスポンスされたWebページを、随時読み込んでいく。</p>
+<p>そのため、各Webページの読み出しは非同期的に行われる。</p>
+<p>Downloading処理が終了したWebページから、次のParse処理に進んでいく。</p>
+<h4 id="web">▼ Webページの要素の優先順位<a class="headerlink" href="#web" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>HTML</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>CSS</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>JS</p>
+</dd>
+<dt><code>(4)</code></dt>
+<dd>
+<p>画像</p>
+</dd>
+</dl>
+<p><br></p>
+<h3 id="pre-loading">Pre-Loading<a class="headerlink" href="#pre-loading" title="Permanent link">&para;</a></h3>
+<h4 id="pre-loading_1">▼ Pre-Loadingとは<a class="headerlink" href="#pre-loading_1" title="Permanent link">&para;</a></h4>
+<p>Downloading処理の優先順位を上げるように宣言する。</p>
+<p>優先度の高い分割Webページは、次のParse処理、Scripting処理も行われる。</p>
+<p>そのため、JSファイルのScripting処理が、以降のimageファイルのDownloading処理よりも早くに行われることがある。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Title<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="cm">&lt;!-- preloadしたいものを宣言 --&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;preload&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;style.css&quot;</span> <span class="na">as</span><span class="o">=</span><span class="s">&quot;style&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;preload&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;main.js&quot;</span> <span class="na">as</span><span class="o">=</span><span class="s">&quot;script&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;style.css&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello World<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;main.js&quot;</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="lazy-loading">Lazy Loading (遅延読み出し)<a class="headerlink" href="#lazy-loading" title="Permanent link">&para;</a></h3>
+<h4 id="lazy-loading_1">▼ Lazy Loadingとは<a class="headerlink" href="#lazy-loading_1" title="Permanent link">&para;</a></h4>
+<p>条件に合致した要素を随時読み込む。</p>
+<p>条件の指定方法には、<code>scroll</code>/<code>resize</code>イベントに基づく方法と、Intersection Observerによる要素の交差率に基づく方法がある。</p>
+<p>画像ファイルの遅延読み出しでは、読み出し前にダミー画像を表示させておき、遅延読み出し時にダミー画像パスを本来の画像パスに上書きする。</p>
+<h4 id="scrollresize">▼ scrollイベントとresizeイベントに基づく読み出し<a class="headerlink" href="#scrollresize" title="Permanent link">&para;</a></h4>
+<p>scrollイベントとresizeイベントを監視し、これらのイベントの発火をトリガーにして、画面内に新しく追加された要素を随時読み込む。</p>
+<h4 id="intersection-observer">▼ Intersection Observerによる要素の交差率に基づく読み出し<a class="headerlink" href="#intersection-observer" title="Permanent link">&para;</a></h4>
+<p>Intersection Observerによる要素の交差率を監視し、指定の交差率を超えた要素を随時読み込む。</p>
+<p>例えば、交差率の閾値を『<code>0.5</code>』と設定すると、ターゲットエレメントの交差率が『<code>0.5</code>』を超えた要素を随時読み込む。</p>
+<p><img alt="intersection-observer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/intersection-observer.png" /></p>
+<p><br></p>
+<h3 id="eager-loading">Eager Loading<a class="headerlink" href="#eager-loading" title="Permanent link">&para;</a></h3>
+<h4 id="eager-loading_1">▼ Eager Loadingとは<a class="headerlink" href="#eager-loading_1" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h2 id="02-02-parse">02-02. Parse処理<a class="headerlink" href="#02-02-parse" title="Permanent link">&para;</a></h2>
+<h3 id="parse">Parse処理とは<a class="headerlink" href="#parse" title="Permanent link">&para;</a></h3>
+<p>Downloading処理によって読み込まれたWebページを翻訳するプロセス</p>
+<p><br></p>
+<h3 id="html_1"><code>html</code>形式テキストファイルの構造解析<a class="headerlink" href="#html_1" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ 構造解析の流れ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>Downloading処理で読みこまれたバイト形式ファイルは、文字コードを基に、一連の文字列に変換される。</p>
+<p>ここでは、以下の<code>html</code>ファイルと<code>.css</code>ファイル (<code>style.css</code>) に変換されたとする。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width,initial-scale=1&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;style.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Critical Path<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Hello <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>web performance<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> students!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;awesome-photo.jpg&quot;</span> <span class="p">/&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width: 50%&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width: 50%&quot;</span><span class="p">&gt;</span>Hello world!<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c">/* style.css */</span>
+<span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">p</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="kc">bold</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">span</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">red</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">p</span><span class="w"> </span><span class="nt">span</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">img</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">float</span><span class="p">:</span><span class="w"> </span><span class="kc">right</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Webページの文字列からHTMLタグが認識され、トークンに変換される。</p>
+<p>各トークンは、<code>1</code>個のオブジェクトに変換される。</p>
+<p><img alt="dom-tree_process" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dom-tree_process.png" /></p>
+<p>HTMLパーサーは、オブジェクトをノードとして、DOMツリーを作成する。</p>
+<p>DOMツリーを作成する途中でscriptタグに到達すると、一旦、JSファイルを読み込んでScripting処理を終えてから、DOMツリーの作成を再開する。</p>
+<p>DOMのインターフェースについては、以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model">https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model</a></li>
+</ul>
+</blockquote>
+<p><img alt="dom-tree" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dom-tree.png" /></p>
+<p>同時に、CSSパーサーは、headタグにあるlinkタグを基にサーバーにリクエストを送信する。</p>
+<p>レスポンスされた<code>.css</code>ファイルに対してDownloading処理を行った後、オブジェクトをノードとして、CSSOMツリーを作成する。</p>
+<p><img alt="cssom-tree" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cssom-tree.png" /></p>
+<p><br></p>
+<h3 id="xml_1"><code>xml</code>形式テキストファイルの構造解析<a class="headerlink" href="#xml_1" title="Permanent link">&para;</a></h3>
+<h4 id="_11">▼ 構造解析の流れ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>レンダリングエンジンは、最初に出現するルート要素を根 (ルート) 、またすべての要素や属性を、そこから延びる枝葉として意味づけ、レンダリングツリーを作成する。</p>
+<p><strong>＊例＊</strong></p>
+<p><img alt="DOMによるツリー構造化" src="https://user-images.githubusercontent.com/42175286/59778015-a59f5600-92f0-11e9-9158-36cc937876fb.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.researchgate.net/publication/228930844_Real-time_Generalization_of_Geodata_in_the_WEB">https://www.researchgate.net/publication/228930844_Real-time_Generalization_of_Geodata_in_the_WEB</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-scripting">03. Scripting処理<a class="headerlink" href="#03-scripting" title="Permanent link">&para;</a></h2>
+<h3 id="scripting">Scripting処理とは<a class="headerlink" href="#scripting" title="Permanent link">&para;</a></h3>
+<p>サーバーサイドからWebページ (<code>html</code>ファイル、<code>.css</code>ファイル、<code>js</code>ファイル、画像ファイル) を取得した後、レンダリングエンジンのHTMLの解析が<code>script</code>タグに到達する。</p>
+<p>レンダリングエンジンは、JavaScriptエンジンに<code>script</code>タグの内容を渡す。</p>
+<p>JavaScriptエンジンは、JavaScriptコードを機械語に翻訳し、実行する。</p>
+<p>この処理は、初回アクセス時のみでなく、イベントが発火した時にも実行される。</p>
+<blockquote>
+<ul>
+<li><a href="https://rfs.jp/sb/javascript/01js/z01.html">https://rfs.jp/sb/javascript/01js/z01.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="javascript_1">JavaScriptエンジン<a class="headerlink" href="#javascript_1" title="Permanent link">&para;</a></h3>
+<h4 id="javascript_2">▼ JavaScriptエンジンとは<a class="headerlink" href="#javascript_2" title="Permanent link">&para;</a></h4>
+<p>JavaScriptのインタプリタのこと。</p>
+<p>JavaScriptエンジンは、レンダリングエンジンから<code>html</code>ファイルに組み込まれたJavaScriptのコードを受け取る。</p>
+<p>JavaScriptエンジンは、これを機械語に翻訳し、ハードウェアに対して、命令を実行する。</p>
+<p><img alt="JavaScriptEngine" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JavascriptEngine.png" /></p>
+<h4 id="_12">▼ 機械語翻訳<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>JavaScriptエンジンは、コードを、字句解析、構造解析、意味解釈、命令の実行をコード１行ずつに対し、繰り返し実行する。</p>
+<h2 id="03-02">03-02. イベント<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
+<h3 id="_13">イベント<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h4 id="_14">▼ イベントとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>ブラウザの各操作はイベントとして<code>.js</code>ファイルまたは<code>html</code>ファイルに紐付けられている。</p>
+<blockquote>
+<ul>
+<li><a href="https://developer.mozilla.org/ja/docs/Web/Events">https://developer.mozilla.org/ja/docs/Web/Events</a></li>
+</ul>
+</blockquote>
+<h4 id="_15">▼ イベントハンドラ関数とは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>イベントの発火に伴ってコールされる関数のこと。</p>
+<p>イベントハンドラ関数が実行されるたびにScripting処理が繰り返される。</p>
+<p><br></p>
+<h3 id="html_2"><code>html</code>形式におけるイベントハンドラ関数のコール<a class="headerlink" href="#html_2" title="Permanent link">&para;</a></h3>
+<h4 id="onload">▼ <code>onload</code><a class="headerlink" href="#onload" title="Permanent link">&para;</a></h4>
+<p>『Webページのローディング』というイベントが発火すると、イベントハンドラ関数をコールする。</p>
+<h4 id="onclick">▼ <code>onclick</code><a class="headerlink" href="#onclick" title="Permanent link">&para;</a></h4>
+<p>『要素のクリック』というイベントが発火すると、イベントハンドラ関数をコールする。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;ボタン1&quot;</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;methodA()&quot;</span> <span class="p">/&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">methodA</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="js">JS形式におけるイベントハンドラ関数のコール<a class="headerlink" href="#js" title="Permanent link">&para;</a></h3>
+<h4 id="documentgetelementbyidonclick">▼ <code>document.getElementById.onclick</code>関数<a class="headerlink" href="#documentgetelementbyidonclick" title="Permanent link">&para;</a></h4>
+<p>指定したIDに対して、<code>1</code>個のイベントと<code>1</code>個のイベントハンドラ関数を紐付ける。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 指定したIDで、クリックイベントが発火した時に、処理を実行する。</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btn&quot;</span><span class="p">).</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました&quot;</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<h4 id="documentaddeventlistener">▼ <code>document.addEventListener</code>関数<a class="headerlink" href="#documentaddeventlistener" title="Permanent link">&para;</a></h4>
+<p><code>1</code>個のイベントに対して、1つ以上のイベントハンドラ関数を紐付ける。</p>
+<p>第一引数で、<code>click</code>などのイベントを設定し、第二引数でメソッド (無名関数でも可) を渡す。</p>
+<p><code>false</code>を設定することにより、イベントバブリングを行わせない。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;btn&quot;</span><span class="p">&gt;</span>表示<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btn&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;click&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;クリックされました！&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// DOMContentLoadedイベントが発火した時に、処理を実行する。</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;DOMContentLoaded&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1つ目</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btn&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">  </span><span class="s2">&quot;click&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました`(1)`&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="kc">false</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="c1">// 2つ目</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btn&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">  </span><span class="s2">&quot;click&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました`(2)`&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="kc">false</span><span class="p">,</span>
+<span class="p">);</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="04-rendering">04. Rendering処理<a class="headerlink" href="#04-rendering" title="Permanent link">&para;</a></h2>
+<h3 id="rendering">Rendering処理とは<a class="headerlink" href="#rendering" title="Permanent link">&para;</a></h3>
+<p>レンダリングツリーが作成され、ブラウザ上のどこに何を描画するのかを計算する。</p>
+<p>CalculateStyle処理とLayout処理に分けられる。</p>
+<p><br></p>
+<h2 id="04-02-calculatestyle">04-02. CalculateStyle処理<a class="headerlink" href="#04-02-calculatestyle" title="Permanent link">&para;</a></h2>
+<h3 id="calculatestyle">CalculateStyle処理とは<a class="headerlink" href="#calculatestyle" title="Permanent link">&para;</a></h3>
+<p>レンダリングエンジンは、DOMツリーのルートのノードから順にCSSOSツリーを適用し、Renderツリーを作成する。</p>
+<p><img alt="Renderツリー" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Renderツリー.png" /></p>
+<p><br></p>
+<h2 id="04-03-layout">04-03. Layout処理<a class="headerlink" href="#04-03-layout" title="Permanent link">&para;</a></h2>
+<h3 id="layout">Layout処理とは<a class="headerlink" href="#layout" title="Permanent link">&para;</a></h3>
+<p>上記で読み込まれた<code>html</code>形式テキストファイルには、ネストされた 2 つの div がある。</p>
+<p>1 つ目 (親) の<code>div</code>より、ノードの表示サイズをビューポートの幅の 50% に設定する。</p>
+<p>この親に含まれている 2 つ目 (子) の<code>div</code>より、その幅を親の50%、つまりビューポートの幅の25%になるようにレイアウトされる。</p>
+<p><img alt="Layout処理" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Layout処理.png" /></p>
+<p><br></p>
+<h2 id="05-paint">05. Paint処理<a class="headerlink" href="#05-paint" title="Permanent link">&para;</a></h2>
+<h3 id="paint">Paint処理とは<a class="headerlink" href="#paint" title="Permanent link">&para;</a></h3>
+<p>DOMツリーの各ノードを、ブラウザ上に描画する。</p>
+<p><br></p>
+<h2 id="05-02-rasterize">05-02. Rasterize処理<a class="headerlink" href="#05-02-rasterize" title="Permanent link">&para;</a></h2>
+<h3 id="rasterize">Rasterize処理とは<a class="headerlink" href="#rasterize" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<p><br></p>
+<h2 id="05-03-compositelayers">05-03. CompositeLayers処理<a class="headerlink" href="#05-03-compositelayers" title="Permanent link">&para;</a></h2>
+<h3 id="compositelaysers">CompositeLaysers処理とは<a class="headerlink" href="#compositelaysers" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
 <p><br></p>
 
 
@@ -24046,7 +25756,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-04</span>
   </span>
 
     

@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Nuxt.js＠フレームワークの知見を記録しています。">
+        <meta name="description" content="俺 (長谷川広樹) が、業務や学習から得た技術的な知見をドキュメント形式で記録したサイトです。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/language_js_framework_nuxtjs.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/language_javascript_prototype_based_method_data.html">
       
       
-        <link rel="prev" href="language_js_logic_authentication.html">
+        <link rel="prev" href="language_javascript_prototype_based.html">
       
       
-        <link rel="next" href="language_js_framework_vuejs.html">
+        <link rel="next" href="language_javascript_logic_validation.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】Nuxt.js＠フレームワーク - 俺の技術ノート</title>
+        <title>【IT技術の知見】メソッド/データ＠JavaScript - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#nuxtjs" class="md-skip">
+        <a href="#javascript" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】Nuxt.js＠フレームワーク
+              【IT技術の知見】メソッド/データ＠JavaScript
             
           </span>
         </div>
@@ -7757,8 +7757,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -7772,13 +7774,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_6_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6_1" checked>
         
           
           <label class="md-nav__link" for="__nav_8_6_1" id="__nav_8_6_1_label" tabindex="0">
@@ -7792,7 +7792,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_6_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_6_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8_6_1">
             <span class="md-nav__icon md-icon"></span>
             ■ プロトタイプベース
@@ -7806,7 +7806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_prototype_based.html" class="md-nav__link">
+      <a href="language_javascript_prototype_based.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7824,10 +7824,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="language_js_prototype_based_method_data.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    メソッド/データ
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="language_javascript_prototype_based_method_data.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -7836,6 +7856,493 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      はじめに
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      01. 関数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. 関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      関数オブジェクト
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="関数オブジェクト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 関数オブジェクトとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ リテラル表記による関数オブジェクト
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ コンストラクタ関数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function" class="md-nav__link">
+    <span class="md-ellipsis">
+      function命令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="function命令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ function命令とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 名前がドルマークのもの
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ コールバック関数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ファイル外で読み込む
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. データ型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. データ型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#undefinednull" class="md-nav__link">
+    <span class="md-ellipsis">
+      undefined、null
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="undefined、null">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#undefined" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ undefined
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#null" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ null
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#undefined_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ undefinedの返却
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. 変数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. 変数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      変数の種類
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="変数の種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 一覧表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#const" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ const
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#let" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ let
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#var" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ var
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      変数の巻き上げ (ホイスト)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="変数の巻き上げ (ホイスト)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 巻き上げとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#var_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ var使用時の対策
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#letconst" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ let,const使用時の対策
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      分割代入
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分割代入">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 配列
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ オブジェクト
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. 反復
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. 反復">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-of" class="md-nav__link">
+    <span class="md-ellipsis">
+      for of
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="for of">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-of_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ for ofとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 配列の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ オブジェクトの場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      スプレッド構文 (...)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="スプレッド構文 (...)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ スプレッド構文とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continue" class="md-nav__link">
+    <span class="md-ellipsis">
+      continue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      for in
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="for in">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-in_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ for inとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 配列の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ オブジェクトの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continue_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ continueとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foreach" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ forEach関数を使用した代替法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -7906,7 +8413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_logic_validation.html" class="md-nav__link">
+      <a href="language_javascript_logic_validation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7927,7 +8434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_logic_asynchronous_process.html" class="md-nav__link">
+      <a href="language_javascript_logic_asynchronous_process.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7948,7 +8455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_logic_debug.html" class="md-nav__link">
+      <a href="language_javascript_logic_debug.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7969,7 +8476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_logic_authentication.html" class="md-nav__link">
+      <a href="language_javascript_logic_authentication.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7995,10 +8502,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -8014,11 +8519,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6_3" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_6_3" >
         
           
           <label class="md-nav__link" for="__nav_8_6_3" id="__nav_8_6_3_label" tabindex="0">
@@ -8032,7 +8539,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_6_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_6_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8_6_3">
             <span class="md-nav__icon md-icon"></span>
             ■ フレームワーク
@@ -8043,30 +8550,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Nuxt.js
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="language_js_framework_nuxtjs.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="language_javascript_framework_nuxtjs.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8075,364 +8562,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      はじめに
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-nuxtjs" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. Nuxt.jsとは
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-nuxtjsyarn" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. Nuxt.js用yarnコマンド
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. Nuxt.js用yarnコマンド">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#server-ssr" class="md-nav__link">
-    <span class="md-ellipsis">
-      serverモード (SSRモード)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="serverモード (SSRモード)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#server" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ serverモードとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dev" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ dev
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ build
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#start" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ start
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#static-ssg" class="md-nav__link">
-    <span class="md-ellipsis">
-      staticモード (SSGモード)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="staticモード (SSGモード)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#static" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ staticモードとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dev_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ dev
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generate" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ generate
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#start_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ start
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#webpack" class="md-nav__link">
-    <span class="md-ellipsis">
-      ビルド時のWebpackオプション
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      キャッシュ削除
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-nuxtconfigjs" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. nuxt.config.jsファイル
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. nuxt.config.jsファイル">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nuxtconfigjs" class="md-nav__link">
-    <span class="md-ellipsis">
-      nuxt.config.jsファイルとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#processenv" class="md-nav__link">
-    <span class="md-ellipsis">
-      process.envへの環境変数格納
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="process.envへの環境変数格納">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dotenv" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ dotenvパッケージの利用
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 実行環境への出力
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-02" class="md-nav__link">
-    <span class="md-ellipsis">
-      03-02. プロパティ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03-02. プロパティ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#build_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      build
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="build">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#hardsource" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ hardSource
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#privateruntimeconfig" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ privateRuntimeConfig
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#publicruntimeconfig" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ publicRuntimeConfig
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#quiet" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ quiet
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#servermiddleware" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ serverMiddleware
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#buildmodules" class="md-nav__link">
-    <span class="md-ellipsis">
-      buildModules
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. ディレクトリ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. ディレクトリ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#distdistribution" class="md-nav__link">
-    <span class="md-ellipsis">
-      distディレクトリ：distribution
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#module" class="md-nav__link">
-    <span class="md-ellipsis">
-      moduleディレクトリ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      pluginディレクトリ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -8493,7 +8622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_framework_vuejs.html" class="md-nav__link">
+      <a href="language_javascript_framework_vuejs.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8514,7 +8643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_framework_vuejs_vuerouter.html" class="md-nav__link">
+      <a href="language_javascript_framework_vuejs_vuerouter.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8535,7 +8664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_framework_vuejs_vuex.html" class="md-nav__link">
+      <a href="language_javascript_framework_vuejs_vuex.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8610,7 +8739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_framework_remix.html" class="md-nav__link">
+      <a href="language_javascript_framework_remix.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8631,7 +8760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_framework_remix_command.html" class="md-nav__link">
+      <a href="language_javascript_framework_remix_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8718,7 +8847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_package_management.html" class="md-nav__link">
+      <a href="language_javascript_package_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8739,7 +8868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_package_sql.html" class="md-nav__link">
+      <a href="language_javascript_package_sql.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8760,7 +8889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_package_utility.html" class="md-nav__link">
+      <a href="language_javascript_package_utility.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8781,7 +8910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_package_react.html" class="md-nav__link">
+      <a href="language_javascript_package_react.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8854,7 +8983,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_browser_rendering.html" class="md-nav__link">
+      <a href="language_javascript_browser_rendering.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -24154,191 +24283,98 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-nuxtjs" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. Nuxt.jsとは
+      01. 関数
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-nuxtjsyarn" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. Nuxt.js用yarnコマンド
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. Nuxt.js用yarnコマンド">
+    <nav class="md-nav" aria-label="01. 関数">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#server-ssr" class="md-nav__link">
-    <span class="md-ellipsis">
-      serverモード (SSRモード)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="serverモード (SSRモード)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#server" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ serverモードとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dev" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ dev
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ build
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#start" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ start
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#static-ssg" class="md-nav__link">
-    <span class="md-ellipsis">
-      staticモード (SSGモード)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="staticモード (SSGモード)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#static" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ staticモードとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dev_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ dev
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generate" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ generate
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#start_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ start
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#webpack" class="md-nav__link">
-    <span class="md-ellipsis">
-      ビルド時のWebpackオプション
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      キャッシュ削除
+      関数オブジェクト
     </span>
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-nuxtconfigjs" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. nuxt.config.jsファイル
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. nuxt.config.jsファイル">
+    <nav class="md-nav" aria-label="関数オブジェクト">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nuxtconfigjs" class="md-nav__link">
-    <span class="md-ellipsis">
-      nuxt.config.jsファイルとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#processenv" class="md-nav__link">
-    <span class="md-ellipsis">
-      process.envへの環境変数格納
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="process.envへの環境変数格納">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dotenv" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ dotenvパッケージの利用
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 実行環境への出力
+      ▼ 関数オブジェクトとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ リテラル表記による関数オブジェクト
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ コンストラクタ関数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function" class="md-nav__link">
+    <span class="md-ellipsis">
+      function命令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="function命令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ function命令とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 名前がドルマークのもの
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ コールバック関数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ファイル外で読み込む
     </span>
   </a>
   
@@ -24355,65 +24391,113 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-02" class="md-nav__link">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      03-02. プロパティ
+      02. データ型
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03-02. プロパティ">
+    <nav class="md-nav" aria-label="02. データ型">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#build_1" class="md-nav__link">
+  <a href="#undefinednull" class="md-nav__link">
     <span class="md-ellipsis">
-      build
+      undefined、null
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="build">
+    <nav class="md-nav" aria-label="undefined、null">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#hardsource" class="md-nav__link">
+  <a href="#undefined" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ hardSource
+      ▼ undefined
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#privateruntimeconfig" class="md-nav__link">
+  <a href="#null" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ privateRuntimeConfig
+      ▼ null
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#publicruntimeconfig" class="md-nav__link">
+  <a href="#undefined_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ publicRuntimeConfig
+      ▼ undefinedの返却
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. 変数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. 変数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      変数の種類
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="変数の種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 一覧表
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#quiet" class="md-nav__link">
+  <a href="#const" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ quiet
+      ▼ const
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#servermiddleware" class="md-nav__link">
+  <a href="#let" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ serverMiddleware
+      ▼ let
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#var" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ var
     </span>
   </a>
   
@@ -24425,11 +24509,77 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#buildmodules" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      buildModules
+      変数の巻き上げ (ホイスト)
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="変数の巻き上げ (ホイスト)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 巻き上げとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#var_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ var使用時の対策
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#letconst" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ let,const使用時の対策
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      分割代入
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分割代入">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 配列
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ オブジェクト
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -24441,37 +24591,145 @@
         <li class="md-nav__item">
   <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      04. ディレクトリ
+      04. 反復
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. ディレクトリ">
+    <nav class="md-nav" aria-label="04. 反復">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#distdistribution" class="md-nav__link">
+  <a href="#for-of" class="md-nav__link">
     <span class="md-ellipsis">
-      distディレクトリ：distribution
+      for of
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="for of">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-of_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ for ofとは
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#module" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
-      moduleディレクトリ
+      ▼ 配列の場合
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#plugin" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
-      pluginディレクトリ
+      ▼ オブジェクトの場合
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      スプレッド構文 (...)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="スプレッド構文 (...)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ スプレッド構文とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continue" class="md-nav__link">
+    <span class="md-ellipsis">
+      continue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      for in
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="for in">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-in_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ for inとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 配列の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ オブジェクトの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continue_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ continueとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foreach" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ forEach関数を使用した代替法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -24498,7 +24756,7 @@
   
 
 
-<h1 id="nuxtjs">Nuxt.js＠フレームワーク<a class="headerlink" href="#nuxtjs" title="Permanent link">&para;</a></h1>
+<h1 id="javascript">メソッド/データ＠JavaScript<a class="headerlink" href="#javascript" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -24507,362 +24765,455 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-nuxtjs">01. Nuxt.jsとは<a class="headerlink" href="#01-nuxtjs" title="Permanent link">&para;</a></h2>
-<p>Vue.jsフレームワークを使用したフレームワークである。</p>
-<p><br></p>
-<h2 id="02-nuxtjsyarn">02. Nuxt.js用yarnコマンド<a class="headerlink" href="#02-nuxtjsyarn" title="Permanent link">&para;</a></h2>
-<h3 id="server-ssr">serverモード (SSRモード)<a class="headerlink" href="#server-ssr" title="Permanent link">&para;</a></h3>
-<h4 id="server">▼ serverモードとは<a class="headerlink" href="#server" title="Permanent link">&para;</a></h4>
-<p>アプリをSSRとして稼働させる。</p>
-<blockquote>
-<ul>
-<li><a href="https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server">https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server</a></li>
-</ul>
-</blockquote>
-<h4 id="dev">▼ <code>dev</code><a class="headerlink" href="#dev" title="Permanent link">&para;</a></h4>
-<p>開発環境のため、SSRアプリをビルドし、Nodeサーバーを起動する。</p>
-<p>Webpackは使用されないため、静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) の圧縮や画像ファイル名のハッシュ化は実行されない。</p>
-<blockquote>
-<ul>
-<li><a href="https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server">https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server</a></li>
-</ul>
-</blockquote>
-<div class="highlight"><pre><span></span><code><span class="c1"># リファレンスでは nuxt devとなっているが、yarn devで問題ない。</span>
-$<span class="w"> </span>yarn<span class="w"> </span>dev
-</code></pre></div>
-<p>補足として、<code>yarn dev</code>コマンドを実行した場合、環境変数の<code>NODE_ENV</code>が<code>development</code>になる。</p>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc">https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc</a></li>
-</ul>
-</blockquote>
-<h4 id="build">▼ <code>build</code><a class="headerlink" href="#build" title="Permanent link">&para;</a></h4>
-<p>本番環境のため、Node.jsサーバーの起動前にSSRアプリのビルドを実行する。</p>
-<p><code>dev</code>コマンドとは異なり、ビルド時にWebpackによる最適化が実行される。</p>
-<p>これにより、<code>.js</code>ファイルと<code>.css</code>ファイルはminifyされる。</p>
-<p>minifyにより、不要な改行やインデントが削除され、パッケージの読み出し用のURLはまとめられ、圧縮される。</p>
-<p>画像名はハッシュ化される。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># リファレンスでは nuxt buildとなっているが、yarn buildで問題ない。</span>
-$<span class="w"> </span>yarn<span class="w"> </span>build
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server">https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server</a></li>
-</ul>
-</blockquote>
-<h4 id="start">▼ <code>start</code><a class="headerlink" href="#start" title="Permanent link">&para;</a></h4>
-<p>本番環境のため、<code>yarn build</code>コマンドによるビルド完了後にNodeサーバーを起動する。</p>
-<p>SSRモードのために使用する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># リファレンスでは nuxt startとなっているが、yarn startで問題ない。</span>
-$<span class="w"> </span>yarn<span class="w"> </span>start
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server">https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server</a></li>
-</ul>
-</blockquote>
-<p>補足として、<code>yarn start</code>コマンドを実行した場合、環境変数の<code>NODE_ENV</code>が<code>production</code>になる。</p>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc">https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="static-ssg">staticモード (SSGモード)<a class="headerlink" href="#static-ssg" title="Permanent link">&para;</a></h3>
-<h4 id="static">▼ staticモードとは<a class="headerlink" href="#static" title="Permanent link">&para;</a></h4>
-<p>アプリをSSGとして稼働させる。</p>
-<blockquote>
-<ul>
-<li><a href="https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-static">https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-static</a></li>
-</ul>
-</blockquote>
-<h4 id="dev_1">▼ <code>dev</code><a class="headerlink" href="#dev_1" title="Permanent link">&para;</a></h4>
-<p>開発環境でSSGアプリを稼働させるために使用する。</p>
-<p>Nodeサーバーを起動し、サーバー内でJavaScriptから静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) を作成する。</p>
-<p>そのため、SSGモードで作成されるアプリは完全な静的ファイルでない。</p>
-<p>また、<code>build</code>コマンドとは異なり、Webpackは使用されないため、静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># リファレンスでは nuxt devとなっているが、yarn devで問題ない。</span>
-$<span class="w"> </span>yarn<span class="w"> </span>dev
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://nuxtjs.org/ja/docs/get-started/commands/#target-static">https://nuxtjs.org/ja/docs/get-started/commands/#target-static</a></li>
-</ul>
-</blockquote>
-<p>補足として、<code>yarn dev</code>コマンドを実行した場合、環境変数の<code>NODE_ENV</code>が<code>development</code>になる。</p>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc">https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc</a></li>
-</ul>
-</blockquote>
-<h4 id="generate">▼ <code>generate</code><a class="headerlink" href="#generate" title="Permanent link">&para;</a></h4>
-<p>本番環境でSSGアプリを稼働させるために使用する。</p>
-<p><code>dev</code>コマンドとは異なり、Nodeサーバーは起動せず、そのままJavaScriptから静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) を作成する。</p>
-<p>そのため、SSGは完全な静的ファイルからなる。</p>
-<p>ビルド時にバックエンドに接続し、DBに格納したデータ (例：画像パス) を元に、静的ファイルをビルドできる。</p>
-<p>SSGモードのために使用する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># リファレンスでは nuxt generateとなっているが、yarn generateで問題ない。</span>
-$<span class="w"> </span>yarn<span class="w"> </span>generate
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://nuxtjs.org/ja/docs/get-started/commands/#target-static">https://nuxtjs.org/ja/docs/get-started/commands/#target-static</a></li>
-</ul>
-</blockquote>
-<h4 id="start_1">▼ <code>start</code><a class="headerlink" href="#start_1" title="Permanent link">&para;</a></h4>
-<p>静的ホスティングサイトを起動する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># リファレンスでは nuxt startとなっているが、yarn startで問題ない。</span>
-$<span class="w"> </span>yarn<span class="w"> </span>start
-</code></pre></div>
-<p>補足として、<code>yarn start</code>コマンドを実行した場合、環境変数の<code>NODE_ENV</code>が<code>production</code>になる。</p>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc">https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="webpack">ビルド時のWebpackオプション<a class="headerlink" href="#webpack" title="Permanent link">&para;</a></h3>
-<p>SSRモードとSSGモードで、<code>build</code>コマンド時に使用されるWebpackの最適化方法を指定できる。</p>
-<p>`</p>
-<blockquote>
-<ul>
-<li><a href="https://ja.nuxtjs.org/docs/2.x/get-started/commands#webpack-%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E6%A4%9C%E6%9F%BB">https://ja.nuxtjs.org/docs/2.x/get-started/commands#webpack-%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E6%A4%9C%E6%9F%BB</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_2">キャッシュ削除<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Nuxt.jsのキャッシュは<code>node_modules/.cache</code>ディレクトリ配下に作成される。</p>
-<p>そのため、キャッシュを削除したい場合はこのディレクトリごと削除する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>node_modules/.cache/hard-source/
-</code></pre></div>
-<p><br></p>
-<h2 id="03-nuxtconfigjs">03. <code>nuxt.config.js</code>ファイル<a class="headerlink" href="#03-nuxtconfigjs" title="Permanent link">&para;</a></h2>
-<h3 id="nuxtconfigjs"><code>nuxt.config.js</code>ファイルとは<a class="headerlink" href="#nuxtconfigjs" title="Permanent link">&para;</a></h3>
-<p>Nuxtがデフォルトで用意している設定をプロパティの設定値で上書きできる。</p>
-<p>各プロパティは以下のリンクを参考にせよ。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@nuxt/types&quot;</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">nuxtConfig</span><span class="o">:</span><span class="w"> </span><span class="nx">Configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// プロパティ</span>
+<h2 id="01">01. 関数<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">関数オブジェクト<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ 関数オブジェクトとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>オブジェクトでもあり、関数である。</p>
+<h4 id="_4">▼ リテラル表記による関数オブジェクト<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// 定義</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;FOO&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="mf">42</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">baz</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">myProp</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">},</span>
 <span class="p">};</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://ja.nuxtjs.org/docs/2.x/directory-structure/nuxt-config#nuxtconfigjs">https://ja.nuxtjs.org/docs/2.x/directory-structure/nuxt-config#nuxtconfigjs</a></li>
-</ul>
-</blockquote>
+<h4 id="_5">▼ コンストラクタ関数<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>関数宣言方式の<code>Function</code>コンストラクタを使用して、オブジェクトを定義する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 関数宣言による定義</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">car</span><span class="p">(</span><span class="nx">make</span><span class="p">,</span><span class="w"> </span><span class="nx">model</span><span class="p">,</span><span class="w"> </span><span class="nx">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">make</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">make</span><span class="p">;</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">model</span><span class="p">;</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">year</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// コール</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">mycar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">car</span><span class="p">(</span><span class="s2">&quot;Eagle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Talon TSi&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1993</span><span class="p">);</span>
+</code></pre></div>
 <p><br></p>
-<h3 id="processenv"><code>process.env</code>への環境変数格納<a class="headerlink" href="#processenv" title="Permanent link">&para;</a></h3>
-<h4 id="dotenv">▼ <code>dotenv</code>パッケージの利用<a class="headerlink" href="#dotenv" title="Permanent link">&para;</a></h4>
-<p>あらかじめ、dotenvモジュールをインストールしておく。</p>
-<p><code>process.env</code>から<code>.env</code>ファイルの環境変数を参照する。</p>
-<p>定数に代入する場合は、まとめて代入すると良い。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>@nuxtjs/dotenv
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># APIのURL。サーバー上のJavaScriptからAPIに対するリクエストで使用する。</span>
-<span class="nv">API_URL</span><span class="o">=</span>https://example.com/api
-<span class="c1"># APIのURL。ブラウザ上のJavaScriptからAPIに対するリクエストで使用する。</span>
-<span class="nv">API_URL_BROWSER</span><span class="o">=</span>https://example.com/api
-<span class="c1"># APIのOAuthの情報</span>
-<span class="nv">OAUTH_CLIENT_ID</span><span class="o">=</span>
-<span class="nv">OAUTH_CLIENT_SECRET</span><span class="o">=</span>
-<span class="c1"># Google MapのURL</span>
-<span class="nv">GOOGLE_MAP_QUERY_URL</span><span class="o">=</span>https://www.google.com/maps/search/?api<span class="o">=</span><span class="m">1</span><span class="p">&amp;</span><span class="nv">query</span><span class="o">=</span>
-<span class="c1"># ホームパス</span>
-<span class="nv">HOME_PATH</span><span class="o">=</span>/
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@nuxt/types&quot;</span><span class="p">;</span>
-
-<span class="c1">// envファイルから読み込んだ値を定数に格納する</span>
-<span class="kd">const</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">API_URL</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">API_URL_BROWSER</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">OAUTH_CLIENT_ID</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">OAUTH_CLIENT_SECRET</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">HOME_PATH</span><span class="p">,</span>
-<span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">;</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">API_URL</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://levelup.gitconnected.com/what-are-env-files-and-how-to-use-them-in-nuxt-7f194f083e3d">https://levelup.gitconnected.com/what-are-env-files-and-how-to-use-them-in-nuxt-7f194f083e3d</a></li>
-<li><a href="https://zenn.dev/osachi/articles/5e765cf6540591#process.env%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%B8%A1%E3%81%992%E3%81%A4%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AD%E3%83%BC%E3%83%81">https://zenn.dev/osachi/articles/5e765cf6540591#process.env%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%B8%A1%E3%81%992%E3%81%A4%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AD%E3%83%BC%E3%83%81</a></li>
-</ul>
-</blockquote>
-<h4 id="_3">▼ 実行環境への出力<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>実行環境に環境変数を出力する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 仮想サーバー</span>
-$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">API_URL</span><span class="o">=</span>https://example.com/api
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># コンテナ</span>
-<span class="nt">services</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">nuxt</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">API_URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.com/api</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://zenn.dev/osachi/articles/5e765cf6540591#process.env%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%B8%A1%E3%81%992%E3%81%A4%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AD%E3%83%BC%E3%83%81">https://zenn.dev/osachi/articles/5e765cf6540591#process.env%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%B8%A1%E3%81%992%E3%81%A4%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AD%E3%83%BC%E3%83%81</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="03-02">03-02. プロパティ<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
-<h3 id="build_1">build<a class="headerlink" href="#build_1" title="Permanent link">&para;</a></h3>
-<h4 id="hardsource">▼ hardSource<a class="headerlink" href="#hardsource" title="Permanent link">&para;</a></h4>
-<p>ビルド時のキャッシュを有効化するか否かを設定する。</p>
-<p>ビルドの完了が早くなる。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@nuxt/types&quot;</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">nuxtConfig</span><span class="o">:</span><span class="w"> </span><span class="nx">Configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">build</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">hardSource</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="p">};</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#hardsource">https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#hardsource</a></li>
-</ul>
-</blockquote>
-<h4 id="privateruntimeconfig">▼ privateRuntimeConfig<a class="headerlink" href="#privateruntimeconfig" title="Permanent link">&para;</a></h4>
-<p>クライアントサイドのみで参照できる環境変数を設定する。</p>
-<p>すなわち、SSRモードのクライアント側のみが対応している。</p>
-<p>環境変数は、<code>pages</code>、<code>store</code>、<code>components</code>、<code>plugin</code>ディレクトリで使用できる。</p>
-<p>ブラウザのJavaScriptソースタブで公開されてしまうため、機密な変数は設定しないようにする。</p>
-<p>もし<code>publicRuntimeConfig</code>で同じ名前の変数が設定されていた場合は、この値を上書きする。</p>
-<p>環境変数は、<code>context</code>オブジェクトの<code>config</code>変数から取得できる。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@nuxt/types&quot;</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">API_KEY</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">nuxtConfig</span><span class="o">:</span><span class="w"> </span><span class="nx">Configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">privateRuntimeConfig</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">apiKey</span><span class="o">:</span><span class="w"> </span><span class="nx">API_KEY</span><span class="p">,</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="p">};</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># .envファイル</span>
-
-<span class="nv">API_KEY</span><span class="o">=</span>*****
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// contextオブジェクトの$configプロパティを分割代入</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">$config</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useContext</span><span class="p">();</span>
-
-<span class="w">  </span><span class="nx">$config</span><span class="p">.</span><span class="nx">apiKey</span><span class="p">;</span>
+<h3 id="function">function命令<a class="headerlink" href="#function" title="Permanent link">&para;</a></h3>
+<h4 id="function_1">▼ function命令とは<a class="headerlink" href="#function_1" title="Permanent link">&para;</a></h4>
+<p>オブジェクトではない関数である。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 定義 (コールする場所が前後しても無関係)</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://nuxtjs.org/docs/directory-structure/nuxt-config/#privateruntimeconfig">https://nuxtjs.org/docs/directory-structure/nuxt-config/#privateruntimeconfig</a></li>
-<li><a href="https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/">https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/</a></li>
-</ul>
-</blockquote>
-<h4 id="publicruntimeconfig">▼ publicRuntimeConfig<a class="headerlink" href="#publicruntimeconfig" title="Permanent link">&para;</a></h4>
-<p>サーバーサイドとクライアントサイドの両方で参照できる環境変数を設定する。</p>
-<p>すなわち、全モード (SSG/CSR/SSRモード) が対応している。</p>
-<p>環境変数は、<code>pages</code>、<code>store</code>、<code>components</code>、<code>plugin</code>ディレクトリで使用できる。</p>
-<p>環境変数は、<code>context</code>オブジェクトの<code>config</code>変数から取得できる。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@nuxt/types&quot;</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">API_URL</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">nuxtConfig</span><span class="o">:</span><span class="w"> </span><span class="nx">Configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">publicRuntimeConfig</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">apiUrl</span><span class="o">:</span><span class="w"> </span><span class="nx">API_URL</span><span class="p">,</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="p">};</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// コール</span>
+<span class="nx">methodA</span><span class="p">();</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># .envファイル</span>
-<span class="nv">API_URL</span><span class="o">=</span>https://example.com/api
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// contextオブジェクトの$configプロパティを分割代入</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">$config</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useContext</span><span class="p">();</span>
-
-<span class="w">  </span><span class="nx">$config</span><span class="p">.</span><span class="nx">apiUrl</span><span class="p">;</span>
+<h4 id="_6">▼ 名前がドルマークのもの<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>JavaScriptでよく見かけるドルマーク。</p>
+<p>これは、関数の名前としてドルマークを使用しているのみである。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 定義</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">$</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://nuxtjs.org/docs/directory-structure/nuxt-config/#publicruntimeconfig">https://nuxtjs.org/docs/directory-structure/nuxt-config/#publicruntimeconfig</a></li>
-<li><a href="https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/">https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/</a></li>
-</ul>
-</blockquote>
-<h4 id="quiet">▼ quiet<a class="headerlink" href="#quiet" title="Permanent link">&para;</a></h4>
-<p>ビルド時にログを最小限にする。</p>
-<p>CIツールでログが確認できなくなるため、無効化しておいた方が良い。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@nuxt/types&quot;</span><span class="p">;</span>
+<p>jQueryでは、パッケージの読み出し宣言時に、『Jquery』という名前の代わりにドルマークを使用する仕様になってる。</p>
+<p>これと混乱しないように注意する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// jQuery.get() と同じ</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+</code></pre></div>
+<h4 id="_7">▼ コールバック関数<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">param</span><span class="p">,</span><span class="w"> </span><span class="nx">callback</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// getDataメソッドは、数値を渡すとdataを取得してくれると仮定する</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getData</span><span class="p">(</span><span class="nx">param</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">getError</span><span class="p">();</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">nuxtConfig</span><span class="o">:</span><span class="w"> </span><span class="nx">Configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">build</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">quiet</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="c1">// 第二引数のコールバック関数は、getDataメソッドとgetErrorメソッドの後に実行される。</span>
+<span class="w">    </span><span class="nx">callback</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">testParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+
+<span class="c1">// asyFuncメソッドの第一引数が、第二引数で設定したコールバック関数に渡される。</span>
+<span class="c1">// 渡されたコールバック関数は、getDataメソッドとgetErrorメソッドの後に実行されるため、errやdataを受け取れる</span>
+<span class="nx">asyncFunc</span><span class="p">(</span><span class="nx">testParam</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="nx">err</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<h4 id="_8">▼ ファイル外で読み込む<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>関数の前で<code>export</code>を宣言する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>関数の定義と<code>export</code>の宣言を同時に実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>あるいは、別々に実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">foo</span><span class="p">;</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="02">02. データ型<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="undefinednull">undefined、null<a class="headerlink" href="#undefinednull" title="Permanent link">&para;</a></h3>
+<h4 id="undefined">▼ undefined<a class="headerlink" href="#undefined" title="Permanent link">&para;</a></h4>
+<p>データを代入しない時に適用されるデータ型である。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 変数b: 初期化されていない (値が代入されていない)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+
+<span class="c1">// 変数bの出力</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span><span class="w">  </span><span class="c1">// undefied</span>
+</code></pre></div>
+<h4 id="null">▼ null<a class="headerlink" href="#null" title="Permanent link">&para;</a></h4>
+<p><code>null</code>は、undefinedとは異なり、意図して代入しなければ適用されないデータ型である。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 変数a: 意図をもってnullを入れている</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span><span class="w"> </span><span class="c1">// null</span>
+</code></pre></div>
+<h4 id="undefined_1">▼ undefinedの返却<a class="headerlink" href="#undefined_1" title="Permanent link">&para;</a></h4>
+<p>undefinedを返却する場合、<code>return</code>のみを記述する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="c1">// 空の『return文』。空なので『undefined』を返す。</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">foo</span><span class="p">();</span><span class="w"> </span><span class="c1">// 変数『foo』には関数『foo』から返ってきた『undefined』が代入される。</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span><span class="w"> </span><span class="c1">// 『undefined』が出力される。</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03">03. 変数<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_9">変数の種類<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ 一覧表<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">var</th>
+<th style="text-align: left;">let</th>
+<th>const</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">再宣言</td>
+<td style="text-align: left;">可能</td>
+<td style="text-align: left;">不可能</td>
+<td>不可能</td>
+</tr>
+<tr>
+<td style="text-align: left;">再代入</td>
+<td style="text-align: left;">可能</td>
+<td style="text-align: left;">可能</td>
+<td>不可能</td>
+</tr>
+<tr>
+<td style="text-align: left;">初期化 (<code>undefined</code>化)</td>
+<td style="text-align: left;">可能</td>
+<td style="text-align: left;">可能</td>
+<td>不可能</td>
+</tr>
+<tr>
+<td style="text-align: left;">スコープ</td>
+<td style="text-align: left;">関数スコープ</td>
+<td style="text-align: left;">ブロックスコープ</td>
+<td>ブロックスコープ</td>
+</tr>
+</tbody>
+</table>
+<h4 id="const">▼ <code>const</code><a class="headerlink" href="#const" title="Permanent link">&para;</a></h4>
+<p>基本的には、宣言に<code>const</code>を使用する</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// ブロック外からアクセス不可</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// 再宣言不可</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// ERROR</span>
+
+<span class="w">  </span><span class="c1">// 再代入不可</span>
+<span class="w">  </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// ERROR</span>
+<span class="p">}</span>
+
+<span class="c1">// ブロック内のconstにアクセス不可</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span><span class="w"> </span><span class="c1">// ERROR</span>
+</code></pre></div>
+<h4 id="let">▼ <code>let</code><a class="headerlink" href="#let" title="Permanent link">&para;</a></h4>
+<p>繰り返し処理で再代入が必要であれば、<code>const</code>ではなく<code>let</code>を使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// ブロック外からアクセス不可</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// 再宣言不可</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// ERROR</span>
+
+<span class="w">  </span><span class="c1">// 再代入可能</span>
+<span class="w">  </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// ブロック内のletにアクセス不可</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span><span class="w"> </span><span class="c1">// ERROR</span>
+</code></pre></div>
+<p>また、<code>try-catch</code>構文では変数への代入が保証されていないため、<code>let</code>を使用して、あらかじめ初期化しておく必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 初期化するとundefinedになる。</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;https://example.com&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
+<h4 id="var">▼ <code>var</code><a class="headerlink" href="#var" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// ブロック外からアクセス可</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// 再宣言</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// 再代入可能</span>
+<span class="w">  </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// ブロック内のvarにアクセスできる。</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span><span class="w"> </span><span class="c1">// foo</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_11">変数の巻き上げ (ホイスト)<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h4 id="_12">▼ 巻き上げとは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>巻き上げは、<code>var</code>を使用して変数を宣言した時や、関数で発生し得る。</p>
+<p>確認のため<code>console.log</code>メソッドを実行した場合、<code>foo</code>を宣言していないため、『x is not defined 』エラーになりそうである。</p>
+<p>しかし実際は、宣言が既に済んでおり、<code>foo</code>に値が代入されていないことを示す『undefined』となる。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span><span class="w"> </span><span class="c1">// undefined</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 宣言と代入</span>
+</code></pre></div>
+<p>これは、スコープの範囲内で宣言と代入を実行した変数で、宣言処理がスコープの最初に行ったことになるという仕様のためである。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 内部的には、最初に宣言処理したことになる</span>
+<span class="c1">// var foo</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span><span class="w"> </span><span class="c1">// undefined</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 宣言と代入により、実際は宣言処理を実装していなくとも、行なったことになる。</span>
+</code></pre></div>
+<p>これは関数の代入時にも起こる。</p>
 <blockquote>
 <ul>
-<li><a href="https://ja.nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#quiet">https://ja.nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#quiet</a></li>
+<li><a href="https://jsprimer.net/basic/function-scope/#function-declaration-hoisting">https://jsprimer.net/basic/function-scope/#function-declaration-hoisting</a></li>
 </ul>
 </blockquote>
-<h4 id="servermiddleware">▼ serverMiddleware<a class="headerlink" href="#servermiddleware" title="Permanent link">&para;</a></h4>
-<p>リクエストを受信できるエンドポイントと、紐付けるハンドラー関数を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@nuxt/types&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// 内部的には、最初に宣言処理したことになる</span>
+<span class="c1">// var foo</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">nuxtConfig</span><span class="o">:</span><span class="w"> </span><span class="nx">Configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">serverMiddleware</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/foo&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">handler</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;~/foo/index.js&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">    </span><span class="p">],</span>
+<span class="nx">foo</span><span class="p">();</span><span class="w"> </span><span class="c1">// foo is not a function</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/">https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="buildmodules">buildModules<a class="headerlink" href="#buildmodules" title="Permanent link">&para;</a></h3>
-<p>SSG/SSRモードの<code>yarn dev</code> (開発用コマンド) 、またSSRモードの<code>yarn build</code>の時のみ、<code>node_module</code>ディレクトリ内に作成するパッケージを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@nuxt/types&quot;</span><span class="p">;</span>
+<h4 id="var_1">▼ <code>var</code>使用時の対策<a class="headerlink" href="#var_1" title="Permanent link">&para;</a></h4>
+<p>意図しない挙動を防ぐため、変数の宣言と代入はスコープの最初に実行するようにする。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// スコープの最初に宣言する。</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">nuxtConfig</span><span class="o">:</span><span class="w"> </span><span class="nx">Configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">buildModules</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;@nuxt/typescript-build&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;@nuxtjs/composition-api&quot;</span><span class="p">],</span>
-<span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span><span class="w"> </span><span class="c1">// foo</span>
 </code></pre></div>
+<p>これは関数の代入時も同じである。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">foo</span><span class="p">();</span><span class="w"> </span><span class="c1">// foo</span>
+</code></pre></div>
+<h4 id="letconst">▼ <code>let</code>,<code>const</code>使用時の対策<a class="headerlink" href="#letconst" title="Permanent link">&para;</a></h4>
+<p>宣言に<code>let</code>、<code>const</code>を使用した場合、巻き上げは起こらないため、宣言と代入の場所を気にしなくともよくなる。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span><span class="w"> </span><span class="c1">// foo is not defined</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_13">分割代入<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h4 id="_14">▼ 配列<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>配列の値を、任意の名前の変数に代入する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
+
+<span class="c1">// fooに1、barに2、bazに3、を代入</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="p">,</span><span class="w"> </span><span class="nx">baz</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">array</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span><span class="w"> </span><span class="c1">// 1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">bar</span><span class="p">);</span><span class="w"> </span><span class="c1">// 2</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">baz</span><span class="p">);</span><span class="w"> </span><span class="c1">// 3</span>
+</code></pre></div>
+<h4 id="_15">▼ オブジェクト<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>オブジェクトの値を、プロパティ名と同じ名前の変数に代入する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">bar</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">baz</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="c1">// プロパティ名と同じ名前の変数に代入</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">baz</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span><span class="w"> </span><span class="c1">// 1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">baz</span><span class="p">);</span><span class="w"> </span><span class="c1">// 3</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="04">04. 反復<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="for-of"><code>for  of</code><a class="headerlink" href="#for-of" title="Permanent link">&para;</a></h3>
+<h4 id="for-of_1">▼ <code>for  of</code>とは<a class="headerlink" href="#for-of_1" title="Permanent link">&para;</a></h4>
+<p>順序を保ったまま配列を走査し、値を取得する。</p>
+<p>オブジェクトに対して<code>entires</code>メソッドを使用して、一度配列に変換すれば、オブジェクトでも<code>for  of</code>を使用できる。</p>
+<p><code>for  in</code>を使用するより、こちらを使用した方が良い。</p>
+<h4 id="_16">▼ 配列の場合<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">];</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// foo</span>
+<span class="c1">// bar</span>
+<span class="c1">// baz</span>
+</code></pre></div>
+<p>配列の<code>entires</code>メソッドを使用すれば、インデックス番号を取得もできる。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">];</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">]</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">array</span><span class="p">.</span><span class="nx">entries</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 0</span>
+<span class="c1">// 1</span>
+<span class="c1">// 2</span>
+</code></pre></div>
+<h4 id="_17">▼ オブジェクトの場合<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p>オブジェクトに対して<code>entires</code>メソッドを実行し、一度連想配列に変換すれば、オブジェクトでも<code>for ... of</code>を使用できる。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">z</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">property</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">]</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">object</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// foo</span>
+<span class="c1">// bar</span>
+<span class="c1">// baz</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_18">スプレッド構文 (<code>...</code>)<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<h4 id="_19">▼ スプレッド構文とは<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p>ドット<code>3</code>個で記載する。</p>
+<p>順序を保ったまま配列を走査し、値を取得する。</p>
+<p>オブジェクトは捜査できない。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(...</span><span class="nx">array</span><span class="p">);</span>
+
+<span class="c1">// foo</span>
+<span class="c1">// baz</span>
+<span class="c1">// baz</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="continue">continue<a class="headerlink" href="#continue" title="Permanent link">&para;</a></h3>
+<h3 id="for-in"><code>for  in</code><a class="headerlink" href="#for-in" title="Permanent link">&para;</a></h3>
+<h4 id="for-in_1">▼ <code>for  in</code>とは<a class="headerlink" href="#for-in_1" title="Permanent link">&para;</a></h4>
+<p>配列/オブジェクト (連想配列) を順序を保たずに走査し、オブジェクトのプロパティ名や配列のキー名を取得する。</p>
+<h4 id="_20">▼ 配列の場合<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">];</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 0</span>
+<span class="c1">// 1</span>
+<span class="c1">// 2</span>
+</code></pre></div>
+<h4 id="_21">▼ オブジェクトの場合<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">z</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">property</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">object</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">property</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">object</span><span class="p">[</span><span class="nx">property</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="c1">// x</span>
+<span class="c1">// y</span>
+<span class="c1">// z</span>
+<span class="c1">// foo</span>
+<span class="c1">// bar</span>
+<span class="c1">// baz</span>
+</code></pre></div>
+<h4 id="continue_1">▼ continueとは<a class="headerlink" href="#continue_1" title="Permanent link">&para;</a></h4>
+<p>反復処理の現在のループをスキップし、次のループを開始する。</p>
+<div class="highlight"><pre><span></span><code><span class="x">const array = [&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;];</span>
+
+<span class="x">for (const [key, value] of array.entries()) {</span>
+
+<span class="x">    // キー名が偶数の組をスキップする。</span>
+<span class="x">    if(!(key % 2 == 0)){</span>
+<span class="x">        continue;</span>
+<span class="x">    }</span>
+
+<span class="x">    console.log(value);</span>
+<span class="x">}</span>
+
+<span class="x">// foo</span>
+<span class="x">// baz</span>
+</code></pre></div>
+<h4 id="foreach">▼ <code>forEach</code>関数を使用した代替法<a class="headerlink" href="#foreach" title="Permanent link">&para;</a></h4>
+<p>反復処理のループを<code>continue</code>でスキップと同じ動作を、配列を処理する関数のコールバック関数で早期リターンで実現できる。</p>
+<p><code>continue</code>を使用するより、こちらの方が良い。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.reddit.com/r/Nuxt/comments/gnzgrp/nuxtconfig_modules_vs_build_modules/">https://www.reddit.com/r/Nuxt/comments/gnzgrp/nuxtconfig_modules_vs_build_modules/</a></li>
+<li><a href="https://www.deep-rain.com/programming/javascript/778#continue">https://www.deep-rain.com/programming/javascript/778#continue</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h2 id="04">04. ディレクトリ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="distdistribution"><code>dist</code>ディレクトリ：<code>distribution</code><a class="headerlink" href="#distdistribution" title="Permanent link">&para;</a></h3>
-<p>SSGモードの<code>generate</code>コマンドの実行時に、アーティファクトが配置される。</p>
+<p>PHPにも、<code>forEach</code>関数と同様に配列に対してコールバック関数を適用する関数 (<code>find</code>、<code>fliter</code>、<code>map</code>、<code>reduce</code>、<code>some</code>) があり、用途に合わせて使い分ける。</p>
 <blockquote>
 <ul>
-<li><a href="https://nuxtjs.org/ja/docs/directory-structure/dist">https://nuxtjs.org/ja/docs/directory-structure/dist</a></li>
+<li><a href="https://qiita.com/diescake/items/70d9b0cbd4e3d5cc6fce">https://qiita.com/diescake/items/70d9b0cbd4e3d5cc6fce</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h3 id="module"><code>module</code>ディレクトリ<a class="headerlink" href="#module" title="Permanent link">&para;</a></h3>
+<p>補足としてPHPにも、<code>forEach</code>関数と同じような使い方をする<code>array_walk</code>関数がある。</p>
 <blockquote>
 <ul>
-<li><a href="https://nuxtjs.org/docs/directory-structure/modules">https://nuxtjs.org/docs/directory-structure/modules</a></li>
+<li><a href="https://hiroki-it.github.io/tech-notebook/language/language_php_logic_iteration.html">https://hiroki-it.github.io/tech-notebook/language/language_php_logic_iteration.html</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h3 id="plugin"><code>plugin</code>ディレクトリ<a class="headerlink" href="#plugin" title="Permanent link">&para;</a></h3>
-<blockquote>
-<ul>
-<li><a href="https://nuxtjs.org/docs/directory-structure/plugins/">https://nuxtjs.org/docs/directory-structure/plugins/</a></li>
-<li><a href="https://github.com/nuxt/nuxt.js/issues/2820">https://github.com/nuxt/nuxt.js/issues/2820</a></li>
-</ul>
-</blockquote>
-<p><br></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">];</span>
+
+<span class="nx">array</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// キーが偶数の組をスキップする。</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// foo</span>
+<span class="c1">// baz</span>
+</code></pre></div>
 
 
 
@@ -24883,7 +25234,7 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-08</span>
   </span>
 
     

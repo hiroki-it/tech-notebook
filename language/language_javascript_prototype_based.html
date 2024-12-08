@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Reactパッケージ＠JavaScriptの知見を記録しています。">
+        <meta name="description" content="俺 (長谷川広樹) が、業務や学習から得た技術的な知見をドキュメント形式で記録したサイトです。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/language_js_package_react.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/language_javascript_prototype_based.html">
       
       
-        <link rel="prev" href="language_js_package_utility.html">
+        <link rel="prev" href="language_php_package_utility.html">
       
       
-        <link rel="next" href="language_js_browser_rendering.html">
+        <link rel="next" href="language_javascript_prototype_based_method_data.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】Reactパッケージ＠JavaScript - 俺の技術ノート</title>
+        <title>【IT技術の知見】プロトタイプ＠JavaScript - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#reactjavascript" class="md-skip">
+        <a href="#javascript" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】Reactパッケージ＠JavaScript
+              【IT技術の知見】プロトタイプ＠JavaScript
             
           </span>
         </div>
@@ -7757,8 +7757,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -7772,13 +7774,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_6_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6_1" checked>
         
           
           <label class="md-nav__link" for="__nav_8_6_1" id="__nav_8_6_1_label" tabindex="0">
@@ -7792,7 +7792,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_6_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_6_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8_6_1">
             <span class="md-nav__icon md-icon"></span>
             ■ プロトタイプベース
@@ -7803,10 +7803,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="language_js_prototype_based.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    プロトタイプ
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="language_javascript_prototype_based.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -7815,6 +7835,400 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      はじめに
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      01. 標準ビルトインオブジェクト
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. 標準ビルトインオブジェクト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      標準ビルトインオブジェクトとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array" class="md-nav__link">
+    <span class="md-ellipsis">
+      Array
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Array">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arrayprototypeentries" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Array.prototype.entriesメソッド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arrayprototypemap" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Array.prototype.mapメソッド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arrayprototypefilter" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Array.prototype.filterメソッド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arraylength" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Array.length
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JSON">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jsonparse" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ JSON.parseメソッド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringify" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ stringifyメソッド
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. オブジェクトの作成、初期化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. オブジェクトの作成、初期化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      リテラル表記法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="リテラル表記法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 非省略形
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 省略形
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンストラクタ関数の使用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="コンストラクタ関数の使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#object_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Objectコンストラクタ関数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Functionコンストラクタ関数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class" class="md-nav__link">
+    <span class="md-ellipsis">
+      糖衣構文のclassの使用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="糖衣構文のclassの使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#javascript_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ JavaScriptのクラスとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ クラス宣言記法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ クラス式記法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02-02. オブジェクトの操作
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. オブジェクトの操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      プロトタイプチェーンによる継承
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="プロトタイプチェーンによる継承">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ プロトタイプチェーンとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-obejct" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ new Obejctメソッドを使用した継承
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objectcreate" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Object.createメソッドを使用した継承とメンバ追加
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-03-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      02-03. thisの参照先
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02-03. thisの参照先">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      メソッドとしてコールする場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンストラクタ関数としてコールする場合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="コンストラクタ関数としてコールする場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#this" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 関数宣言と関数式によるコンストラクタ関数内のthisの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#this_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アロー関数によるコンストラクタ関数内のthisの場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -7827,7 +8241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_prototype_based_method_data.html" class="md-nav__link">
+      <a href="language_javascript_prototype_based_method_data.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7906,7 +8320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_logic_validation.html" class="md-nav__link">
+      <a href="language_javascript_logic_validation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7927,7 +8341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_logic_asynchronous_process.html" class="md-nav__link">
+      <a href="language_javascript_logic_asynchronous_process.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7948,7 +8362,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_logic_debug.html" class="md-nav__link">
+      <a href="language_javascript_logic_debug.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7969,7 +8383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_logic_authentication.html" class="md-nav__link">
+      <a href="language_javascript_logic_authentication.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8046,7 +8460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_framework_nuxtjs.html" class="md-nav__link">
+      <a href="language_javascript_framework_nuxtjs.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8115,7 +8529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_framework_vuejs.html" class="md-nav__link">
+      <a href="language_javascript_framework_vuejs.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8136,7 +8550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_framework_vuejs_vuerouter.html" class="md-nav__link">
+      <a href="language_javascript_framework_vuejs_vuerouter.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8157,7 +8571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_framework_vuejs_vuex.html" class="md-nav__link">
+      <a href="language_javascript_framework_vuejs_vuex.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8232,7 +8646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_framework_remix.html" class="md-nav__link">
+      <a href="language_javascript_framework_remix.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8253,7 +8667,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_framework_remix_command.html" class="md-nav__link">
+      <a href="language_javascript_framework_remix_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8287,10 +8701,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -8308,11 +8720,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6_4" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_6_4" >
         
           
           <label class="md-nav__link" for="__nav_8_6_4" id="__nav_8_6_4_label" tabindex="0">
@@ -8326,7 +8740,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_6_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_6_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8_6_4">
             <span class="md-nav__icon md-icon"></span>
             ■ パッケージ
@@ -8340,7 +8754,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_package_management.html" class="md-nav__link">
+      <a href="language_javascript_package_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8361,7 +8775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_package_sql.html" class="md-nav__link">
+      <a href="language_javascript_package_sql.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8382,7 +8796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_package_utility.html" class="md-nav__link">
+      <a href="language_javascript_package_utility.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8400,30 +8814,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Reactパッケージ
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="language_js_package_react.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="language_javascript_package_react.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8432,283 +8826,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      はじめに
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-react" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. Reactパッケージとは
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. セットアップ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      レンダリング手法
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="レンダリング手法">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#csr" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ CSRモード
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssr" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ SSRモード
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssg" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ SSGモード
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. エクスポート
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. エクスポート">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      デフォルトエクスポート
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      名前付きエクスポート
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. コンポーネント
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. コンポーネント">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      クラスコンポーネント
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="クラスコンポーネント">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ クラスコンポーネントとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      関数コンポーネント
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="関数コンポーネント">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 関数コンポーネントとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#async" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ async宣言不可
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#05" class="md-nav__link">
-    <span class="md-ellipsis">
-      05. フック
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="05. フック">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#useeffect" class="md-nav__link">
-    <span class="md-ellipsis">
-      useEffect
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="useEffect">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#useeffect_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ useEffectとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 第一引数
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 第二引数
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 実行の順番
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#usestate" class="md-nav__link">
-    <span class="md-ellipsis">
-      useState
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -8773,7 +8890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_browser_rendering.html" class="md-nav__link">
+      <a href="language_javascript_browser_rendering.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -24073,128 +24190,164 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-react" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. Reactパッケージとは
+      01. 標準ビルトインオブジェクト
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="01. 標準ビルトインオブジェクト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      標準ビルトインオブジェクトとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array" class="md-nav__link">
+    <span class="md-ellipsis">
+      Array
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Array">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arrayprototypeentries" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Array.prototype.entriesメソッド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arrayprototypemap" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Array.prototype.mapメソッド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arrayprototypefilter" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Array.prototype.filterメソッド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arraylength" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Array.length
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JSON">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jsonparse" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ JSON.parseメソッド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringify" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ stringifyメソッド
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      02. セットアップ
+      02. オブジェクトの作成、初期化
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      レンダリング手法
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="レンダリング手法">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#csr" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ CSRモード
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssr" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ SSRモード
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssg" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ SSGモード
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. エクスポート
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. エクスポート">
+    <nav class="md-nav" aria-label="02. オブジェクトの作成、初期化">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      デフォルトエクスポート
+      リテラル表記法
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="リテラル表記法">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      名前付きエクスポート
+      ▼ 非省略形
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. コンポーネント
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. コンポーネント">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      クラスコンポーネント
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="クラスコンポーネント">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ クラスコンポーネントとは
+      ▼ 省略形
     </span>
   </a>
   
@@ -24202,32 +24355,74 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンストラクタ関数の使用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="コンストラクタ関数の使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#object_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Objectコンストラクタ関数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Functionコンストラクタ関数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class" class="md-nav__link">
+    <span class="md-ellipsis">
+      糖衣構文のclassの使用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="糖衣構文のclassの使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#javascript_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ JavaScriptのクラスとは
+    </span>
+  </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      関数コンポーネント
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="関数コンポーネント">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 関数コンポーネントとは
+      ▼ クラス宣言記法
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#async" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ async宣言不可
+      ▼ クラス式記法
     </span>
   </a>
   
@@ -24244,56 +24439,47 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#05" class="md-nav__link">
+  <a href="#02-02" class="md-nav__link">
     <span class="md-ellipsis">
-      05. フック
+      02-02. オブジェクトの操作
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. フック">
+    <nav class="md-nav" aria-label="02-02. オブジェクトの操作">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#useeffect" class="md-nav__link">
-    <span class="md-ellipsis">
-      useEffect
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="useEffect">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#useeffect_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ useEffectとは
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 第一引数
+      プロトタイプチェーンによる継承
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="プロトタイプチェーンによる継承">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 第二引数
+      ▼ プロトタイプチェーンとは
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#new-obejct" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 実行の順番
+      ▼ new Obejctメソッドを使用した継承
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objectcreate" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Object.createメソッドを使用した継承とメンバ追加
     </span>
   </a>
   
@@ -24304,12 +24490,60 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#usestate" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-03-this" class="md-nav__link">
     <span class="md-ellipsis">
-      useState
+      02-03. thisの参照先
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="02-03. thisの参照先">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      メソッドとしてコールする場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンストラクタ関数としてコールする場合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="コンストラクタ関数としてコールする場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#this" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 関数宣言と関数式によるコンストラクタ関数内のthisの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#this_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アロー関数によるコンストラクタ関数内のthisの場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -24336,7 +24570,7 @@
   
 
 
-<h1 id="reactjavascript">Reactパッケージ＠JavaScript<a class="headerlink" href="#reactjavascript" title="Permanent link">&para;</a></h1>
+<h1 id="javascript">プロトタイプ＠JavaScript<a class="headerlink" href="#javascript" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -24345,299 +24579,463 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-react">01. Reactパッケージとは<a class="headerlink" href="#01-react" title="Permanent link">&para;</a></h2>
-<p>フロントエンドのパッケージ群である。</p>
-<p>以下のパッケージを組み合わせて、最低限アプリケーションを作成できる。</p>
-<ul>
-<li>react</li>
-<li>react-dom</li>
-<li>react-scripts (webpack、babelからなる)</li>
-</ul>
-<blockquote>
-<ul>
-<li><a href="https://tokuty.com/2023/02/17/react%E3%82%92%E6%9C%80%E4%BD%8E%E9%99%90%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%A7%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/#toc7">https://tokuty.com/2023/02/17/react%E3%82%92%E6%9C%80%E4%BD%8E%E9%99%90%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%A7%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/#toc7</a></li>
-<li><a href="https://qiita.com/7280ayubihs/items/12c2e18b1d2460111051">https://qiita.com/7280ayubihs/items/12c2e18b1d2460111051</a></li>
-</ul>
-</blockquote>
+<h2 id="01">01. 標準ビルトインオブジェクト<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">標準ビルトインオブジェクトとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>JavaScriptの実行環境にあらかじめ組み込まれたオブジェクト。</p>
 <p><br></p>
-<h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_2">レンダリング手法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="csr">▼ CSRモード<a class="headerlink" href="#csr" title="Permanent link">&para;</a></h4>
-<p>エントリーポイント (<code>main</code>ファイル) で<code>createRoot</code>関数を実行する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">StrictMode</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">createRoot</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-dom/client&#39;</span>
-<span class="k">import</span><span class="w"> </span><span class="s1">&#39;./index.css&#39;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">App</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./App.tsx&#39;</span>
-
-<span class="nx">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">)</span><span class="o">!</span><span class="p">).</span><span class="nx">render</span><span class="p">(</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">StrictMode</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">App</span><span class="p">/&gt;</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">StrictMode</span><span class="p">&gt;,</span>
-<span class="p">)</span>
+<h3 id="object">Object<a class="headerlink" href="#object" title="Permanent link">&para;</a></h3>
+<p>オブジェクトを作成するオブジェクト。</p>
+<p>他の全ての標準ビルトインオブジェクトの継承元になっているため、標準ビルトインオブジェクトは、Objectが持つメソッドとデータを使用できる。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// new演算子を使用してインスタンスを作成する。</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Object</span><span class="p">();</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://react.dev/reference/react-dom/client">https://react.dev/reference/react-dom/client</a></li>
-<li><a href="https://react.dev/reference/react-dom/client/createRoot">https://react.dev/reference/react-dom/client/createRoot</a></li>
-</ul>
-</blockquote>
-<h4 id="ssr">▼ SSRモード<a class="headerlink" href="#ssr" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<blockquote>
-<ul>
-<li><a href="https://react.dev/reference/react-dom/server">https://react.dev/reference/react-dom/server</a></li>
-</ul>
-</blockquote>
-<h4 id="ssg">▼ SSGモード<a class="headerlink" href="#ssg" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<blockquote>
-<ul>
-<li><a href="https://react.dev/reference/react-dom/static">https://react.dev/reference/react-dom/static</a></li>
-</ul>
-</blockquote>
 <p><br></p>
-<h2 id="03">03. エクスポート<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_3">デフォルトエクスポート<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
-<blockquote>
-<ul>
-<li><a href="https://zenn.dev/cocomina/articles/recommended-export">https://zenn.dev/cocomina/articles/recommended-export</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_4">名前付きエクスポート<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>名前付きエクスポートの場合、インポート側は定義した名前以外でインポートできない。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// App.tsxファイル</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">Hello</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="nx">Hello</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span><span class="nx">React</span><span class="o">!</span><span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">};</span>
-
-<span class="c1">// 名前付きエクスポート</span>
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">App</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">&quot;App&quot;</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">Hello</span><span class="w"> </span><span class="p">/&gt;</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">};</span>
+<h3 id="function">Function<a class="headerlink" href="#function" title="Permanent link">&para;</a></h3>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">StrictMode</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">createRoot</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react-dom/client&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="s2">&quot;./index.css&quot;</span><span class="p">;</span>
-
-<span class="c1">// App.tsxファイルから名前付きエクポート (App) をインポートする</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">App</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./App.tsx&quot;</span><span class="p">;</span>
-
-<span class="nx">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;root&quot;</span><span class="p">)</span><span class="o">!</span><span class="p">).</span><span class="nx">render</span><span class="p">(</span>
-<span class="w">  </span><span class="p">&lt;</span><span class="nt">StrictMode</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">App</span><span class="w"> </span><span class="p">/&gt;</span>
-<span class="w">  </span><span class="p">&lt;/</span><span class="nt">StrictMode</span><span class="p">&gt;,</span>
-<span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://zenn.dev/cocomina/articles/recommended-export">https://zenn.dev/cocomina/articles/recommended-export</a></li>
-</ul>
-</blockquote>
 <p><br></p>
-<h2 id="04">04. コンポーネント<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="_5">クラスコンポーネント<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<h4 id="_6">▼ クラスコンポーネントとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>他ファイルで使用できる汎用的なクラスを定義する。</p>
-<p>クラスコンポーネントより関数コンポーネントがより推奨である。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">Component</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<h3 id="array">Array<a class="headerlink" href="#array" title="Permanent link">&para;</a></h3>
+<h4 id="arrayprototypeentries">▼ <code>Array.prototype.entries</code>メソッド<a class="headerlink" href="#arrayprototypeentries" title="Permanent link">&para;</a></h4>
+<p>配列からkeyとvalueを取得する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">];</span>
 
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">MyComponent</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">count</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">};</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="c1">// key、valueを取得できる。</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">iterator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">array</span><span class="p">.</span><span class="nx">entries</span><span class="p">();</span>
 
-<span class="w">  </span><span class="nx">render</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="w">        </span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">Count</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="p">}&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="c1">// for-ofで展開</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">iterator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// [ 0, &#39;foo&#39; ]</span>
+<span class="c1">// [ 1, &#39;bar&#39; ]</span>
+<span class="c1">// [ 2, &#39;baz&#39; ]</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/omo_taku/items/18da0c020672a368f166#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88">https://qiita.com/omo_taku/items/18da0c020672a368f166#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88</a></li>
-<li><a href="https://zenn.dev/swata_dev/articles/7f8ef4333057d7">https://zenn.dev/swata_dev/articles/7f8ef4333057d7</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_7">関数コンポーネント<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<h4 id="_8">▼ 関数コンポーネントとは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>他ファイルで使用できる汎用的な関数を定義する。</p>
-<p>クラスコンポーネントより関数コンポーネントがより推奨である。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">MyComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">count</span><span class="p">,</span><span class="w"> </span><span class="nx">setCount</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">React</span><span class="p">.</span><span class="nx">useState</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
-
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">Count</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">count</span><span class="p">}&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">};</span>
+<h4 id="arrayprototypemap">▼ <code>Array.prototype.map</code>メソッド<a class="headerlink" href="#arrayprototypemap" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ここに実装例</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/omo_taku/items/18da0c020672a368f166#%E9%96%A2%E6%95%B0%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88">https://qiita.com/omo_taku/items/18da0c020672a368f166#%E9%96%A2%E6%95%B0%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88</a></li>
-<li><a href="https://zenn.dev/swata_dev/articles/7f8ef4333057d7">https://zenn.dev/swata_dev/articles/7f8ef4333057d7</a></li>
-</ul>
-</blockquote>
-<h4 id="async">▼ <code>async</code>宣言不可<a class="headerlink" href="#async" title="Permanent link">&para;</a></h4>
-<p>Reactでは、関数コンポーネントで<code>async</code>宣言は使用できない仕様になっている。</p>
-<p>非同期関数を<code>useEffect</code>関数に渡したうえで、これをコンポーネントにする必要がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://stackoverflow.com/a/78877882/12771072">https://stackoverflow.com/a/78877882/12771072</a></li>
-<li><a href="https://stackoverflow.com/a/75689915/12771072">https://stackoverflow.com/a/75689915/12771072</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="05">05. フック<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
-<h3 id="useeffect">useEffect<a class="headerlink" href="#useeffect" title="Permanent link">&para;</a></h3>
-<h4 id="useeffect_1">▼ useEffectとは<a class="headerlink" href="#useeffect_1" title="Permanent link">&para;</a></h4>
-<p>コンポーネント内で非同期処理を使用できるようにする。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">setState</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="s2">&quot;&lt;初期値&gt;&quot;</span><span class="p">);</span>
+<h4 id="arrayprototypefilter">▼ <code>Array.prototype.filter</code>メソッド<a class="headerlink" href="#arrayprototypefilter" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ここに実装例</span>
+</code></pre></div>
+<h4 id="arraylength">▼ <code>Array.length</code><a class="headerlink" href="#arraylength" title="Permanent link">&para;</a></h4>
+<p>要素数を出力する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;qux&quot;</span><span class="p">];</span>
 
-<span class="nx">useEffect</span><span class="p">(</span>
-<span class="w">  </span><span class="c1">// 実行したい非同期関数を定義する</span>
-<span class="w">  </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="c1">// 事後処理を定義する</span>
-<span class="w">    </span><span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">param</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+
+<span class="c1">// 4</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="json">JSON<a class="headerlink" href="#json" title="Permanent link">&para;</a></h3>
+<h4 id="jsonparse">▼ <code>JSON.parse</code>メソッド<a class="headerlink" href="#jsonparse" title="Permanent link">&para;</a></h4>
+<p>JavaScriptからJSONにシリアライズする。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+<span class="w">  </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">z</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="p">);</span>
+
+<span class="c1">// json形式オブジェクト</span>
+<span class="c1">// &quot;{&quot;x&quot;:5, &quot;y&quot;:5 &quot;z&quot;:&quot;test&quot;}&quot;</span>
+</code></pre></div>
+<h4 id="stringify">▼ <code>stringify</code>メソッド<a class="headerlink" href="#stringify" title="Permanent link">&para;</a></h4>
+<p>JSONからJavaScriptにデシリアライズする。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+<span class="w">  </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">z</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="p">);</span>
+
+<span class="c1">// JavaScriptオブジェクト</span>
+<span class="c1">// {x:5, y:5 z:&quot;test&quot;}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="02">02. オブジェクトの作成、初期化<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_3">リテラル表記法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>変数の宣言と代入を同時に定義する方法である。</p>
+<p>オブジェクトをリテラル表記で作成する。</p>
+<p>ローワーキャメルケースを使用する。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/hyung8/articles/16bfc28d110bef#%E3%83%AA%E3%83%86%E3%83%A9%E3%83%AB%E8%A1%A8%E8%A8%98%E6%B3%95%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%A7%E3%81%99%E3%81%8B%EF%BC%9F">https://zenn.dev/hyung8/articles/16bfc28d110bef#%E3%83%AA%E3%83%86%E3%83%A9%E3%83%AB%E8%A1%A8%E8%A8%98%E6%B3%95%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%A7%E3%81%99%E3%81%8B%EF%BC%9F</a></li>
+</ul>
+</blockquote>
+<h4 id="_4">▼ 非省略形<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// リテラル表記</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 慣習的にアンダースコアでprivateを表す。</span>
+<span class="w">  </span><span class="nx">_property</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+
+<span class="w">  </span><span class="nx">alertValue</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="c1">// useEffectを再度実行したい場合に、Stateを設定する</span>
-<span class="w">  </span><span class="c1">// 省略すると、1回だけ実行する</span>
-<span class="w">  </span><span class="p">[</span><span class="nx">state</span><span class="p">],</span>
-<span class="p">);</span>
-</code></pre></div>
-<h4 id="_9">▼ 第一引数<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">useEffect</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
 
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">MyComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">setState</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">setValue</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">_property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+<span class="w">  </span><span class="p">},</span>
 
-<span class="w">  </span><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">fetchData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;https://example.com&quot;</span><span class="p">);</span>
-<span class="w">      </span><span class="c1">// stateに設定する</span>
-<span class="w">      </span><span class="nx">setState</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
-<span class="w">    </span><span class="p">};</span>
-<span class="w">    </span><span class="c1">// 非同期処理を実行する</span>
-<span class="w">    </span><span class="nx">fetchData</span><span class="p">();</span>
-<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">[]);</span>
-
-<span class="w">  </span><span class="c1">// stateを出力する</span>
-<span class="w">  </span><span class="c1">// state変数はJS型オブジェクトであり、ドットでアクセスできる</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">pre</span><span class="p">&gt;{</span><span class="nx">state</span><span class="p">.</span><span class="nx">fooKey</span><span class="p">}&lt;/</span><span class="nt">pre</span><span class="p">&gt;;</span>
+<span class="w">  </span><span class="nx">getValue</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_property</span><span class="p">;</span>
+<span class="w">  </span><span class="p">},</span>
 <span class="p">};</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/Akihiro0711/items/dae74e3e73063a80b249">https://qiita.com/Akihiro0711/items/dae74e3e73063a80b249</a></li>
-<li><a href="https://qiita.com/apollo_program/items/01fa3c4621155f64f930#useeffect%E3%81%AE%E7%AC%AC%E4%BA%8C%E5%BC%95%E6%95%B0%E3%82%92%E8%AA%A4%E3%82%8B%E3%81%A8%E7%84%A1%E9%99%90%E3%83%AB%E3%83%BC%E3%83%97%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B">https://qiita.com/apollo_program/items/01fa3c4621155f64f930#useeffect%E3%81%AE%E7%AC%AC%E4%BA%8C%E5%BC%95%E6%95%B0%E3%82%92%E8%AA%A4%E3%82%8B%E3%81%A8%E7%84%A1%E9%99%90%E3%83%AB%E3%83%BC%E3%83%97%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B</a></li>
-</ul>
-</blockquote>
-<h4 id="_10">▼ 第二引数<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">useState</span><span class="p">,</span><span class="w"> </span><span class="nx">useEffect</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="s2">&quot;./App.css&quot;</span><span class="p">;</span>
+<h4 id="_5">▼ 省略形<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>リテラル表記で、<code>methodA(): fucntion{}</code>とするところを、<code>methodA() {}</code>と記述できる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// リテラル表記</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">App</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">count</span><span class="p">,</span><span class="w"> </span><span class="nx">setCount</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">count2</span><span class="p">,</span><span class="w"> </span><span class="nx">setCount2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
+<span class="w"> </span><span class="p">...</span>
 
-<span class="w">  </span><span class="nx">useEffect</span><span class="p">(</span>
-<span class="w">    </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;useEffectが実行されました&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="c1">// Stateのcount変数の値が変わるたびに、useEffectが実行される。</span>
-<span class="w">    </span><span class="p">[</span><span class="nx">count</span><span class="p">],</span>
-<span class="w">  </span><span class="p">);</span>
+<span class="w">  </span><span class="nx">alertValue</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">alert</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="w">  </span><span class="p">},</span>
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">&quot;App&quot;</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">Learn</span><span class="w"> </span><span class="nx">useEffect</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span><span class="nx">Count</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">count</span><span class="p">}&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setCount</span><span class="p">((</span><span class="nx">prevCount</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">prevCount</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)}&gt;</span><span class="o">+</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span><span class="nx">Count2</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">count2</span><span class="p">}&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setCount2</span><span class="p">((</span><span class="nx">prevCount</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">prevCount</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)}&gt;</span><span class="o">+</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">};</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://zenn.dev/kimura141899/articles/4f33b899cb0bca#%E5%89%AF%E4%BD%9C%E7%94%A8%E3%82%92%E5%88%B6%E5%BE%A1%E3%81%99%E3%82%8B-%E7%AC%AC2%E5%BC%95%E6%95%B0%E3%81%AE%E5%87%BA%E7%95%AA">https://zenn.dev/kimura141899/articles/4f33b899cb0bca#%E5%89%AF%E4%BD%9C%E7%94%A8%E3%82%92%E5%88%B6%E5%BE%A1%E3%81%99%E3%82%8B-%E7%AC%AC2%E5%BC%95%E6%95%B0%E3%81%AE%E5%87%BA%E7%95%AA</a></li>
-</ul>
-</blockquote>
-<h4 id="_11">▼ 実行の順番<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p><code>useEffect</code>関数はレンダリング後に実行される。</p>
-<p>そのため、<code>useEffect</code>関数の後の関数が<code>useEffect</code>関数よりも前に実行される。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useState</span><span class="p">,</span><span class="w"> </span><span class="nx">useEffect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="s1">&#39;./App.css&#39;</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="nx">App</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">count</span><span class="p">,</span><span class="w"> </span><span class="nx">setCount</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
-
-<span class="w">  </span><span class="c1">// 実行 (1)</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;useEffect実行前です&#39;</span><span class="p">);</span>
-
-<span class="w">  </span><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 実行 (3)</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;useEffectが実行されました&#39;</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="c1">// 実行 (2)</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;useEffect実行後です&#39;</span><span class="p">);</span>
-
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">&#39;App&#39;</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">Learn</span><span class="w"> </span><span class="nx">useEffect</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span><span class="nx">Count</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">count</span><span class="p">}&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setCount</span><span class="p">((</span><span class="nx">prevCount</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">prevCount</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)}&gt;</span><span class="o">+</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">);</span>
+<span class="w">  </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://zenn.dev/kimura141899/articles/4f33b899cb0bca#useeffect%E3%81%A8%E3%82%8A%E3%81%82%E3%81%88%E3%81%9A%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F">https://zenn.dev/kimura141899/articles/4f33b899cb0bca#useeffect%E3%81%A8%E3%82%8A%E3%81%82%E3%81%88%E3%81%9A%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F</a></li>
-</ul>
-</blockquote>
 <p><br></p>
-<h3 id="usestate">useState<a class="headerlink" href="#usestate" title="Permanent link">&para;</a></h3>
-<p>コンポーネント内で状態を操作できるようにする。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">useEffect</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<h3 id="_6">コンストラクタ関数の使用<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="object_1">▼ <code>Object</code>コンストラクタ関数<a class="headerlink" href="#object_1" title="Permanent link">&para;</a></h4>
+<p>ローワーキャメルケースを使用する。</p>
+<p>プロパティを作成するためには、値を格納する必要がある。</p>
+<p>関数宣言あるいは関数式で記述する。</p>
+<p>パスカルケース (大文字から始める記法) を使用する。</p>
+<p>補足として、オブジェクトのプロパティ値として作成された関数を、メソッドと呼ぶ。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Object</span><span class="p">({</span>
+<span class="w">  </span><span class="c1">// 慣習的にアンダースコアでprivateを表す。</span>
+<span class="w">  </span><span class="nx">_property</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">setState</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="s2">&quot;&lt;初期値&gt;&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">setValue</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">_property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+<span class="w">  </span><span class="p">},</span>
 
-<span class="c1">// state変数はJS型オブジェクトであり、ドットでアクセスできる</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">state</span><span class="p">.</span><span class="nx">fooKey</span><span class="p">);</span>
-
-<span class="c1">// state変数はJS型オブジェクトであり、JSONを確認したい場合はJSON.stringify関数で変換する</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">state</span><span class="p">));</span>
+<span class="w">  </span><span class="nx">getValue</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_property</span><span class="p">;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">});</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://ja.react.dev/reference/react/useState">https://ja.react.dev/reference/react/useState</a></li>
-</ul>
-</blockquote>
+<h4 id="function_1">▼ <code>Function</code>コンストラクタ関数<a class="headerlink" href="#function_1" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Function</span><span class="p">();</span>
+</code></pre></div>
+<p>ただし、公式からこのような記法は、非推奨とされている。</p>
+<p>以下の関数宣言、関数式、アロー関数による関数式省略、の記法が推奨される。</p>
+<p>特にアロー関数では、<code>this</code>が宣言されたオブジェクト自身を指すため、保守性が高くおすすめである。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 関数宣言</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">Foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 慣習的にアンダースコアでprivateを表す。</span>
+<span class="w">  </span><span class="nx">_property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// プロパティ値として宣言した関数を、メソッドという。</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">setValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">_property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">getValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_property</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// コール</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Foo</span><span class="p">();</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 関数式</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 慣習的にアンダースコアでprivateを表す。</span>
+<span class="w">  </span><span class="nx">_property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">setValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">_property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">getValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_property</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">};</span>
+
+<span class="c1">// アロー関数による関数式の省略記法</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 慣習的にアンダースコアでprivateを表す。</span>
+<span class="w">  </span><span class="nx">_property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">setValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">_property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">getValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_property</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>リテラル表記と<code>Object</code>コンストラクタ関数による作成とは異なり、コンストラクタ関数によって宣言されたオブジェクトは、暗示的に<code>prototype</code>プロパティを持つ。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// リテラル表記による作成</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">object1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+
+<span class="c1">// Objectコンストラクタ関数による作成</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">object2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Object</span><span class="p">({});</span>
+
+<span class="c1">// ユーザー宣言Functionコンストラクタ関数による作成</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">Object3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{};</span>
+
+<span class="c1">// 出力結果</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+<span class="w">  </span><span class="nx">object1</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span><span class="w"> </span><span class="c1">// undefined</span>
+<span class="w">  </span><span class="nx">object2</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span><span class="w"> </span><span class="c1">// undefined</span>
+<span class="w">  </span><span class="nx">object3</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span><span class="w"> </span><span class="c1">// Object3 {}</span>
+<span class="p">);</span>
+</code></pre></div>
 <p><br></p>
+<h3 id="class">糖衣構文の<code>class</code>の使用<a class="headerlink" href="#class" title="Permanent link">&para;</a></h3>
+<h4 id="javascript_1">▼ JavaScriptのクラスとは<a class="headerlink" href="#javascript_1" title="Permanent link">&para;</a></h4>
+<p>ES6から、糖衣構文の<code>class</code>によって、オブジェクトを宣言できるようになった。</p>
+<p>クラス宣言あるいはクラス式で記述する。</p>
+<p>オブジェクトの作成時、<code>constructor</code>メソッドでオブジェクトの初期化を行う。</p>
+<p>パスカルケース (大文字から始める記法) を使用する。</p>
+<h4 id="_7">▼ クラス宣言記法<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// named exportによる出力</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// classでしか使用できない。</span>
+<span class="w">  </span><span class="c1">// Setterの代わりにコンストラクタでイミュータブルを実現。</span>
+<span class="w">  </span><span class="c1">// データの宣言と格納が同時に行われる。</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">getValue</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">property</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// ファイルの読み出し</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Foo</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./foo.js&quot;</span><span class="p">;</span>
+
+<span class="c1">// 作成、初期化</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+
+<span class="c1">// メソッドのコール</span>
+<span class="nx">foo</span><span class="p">.</span><span class="nx">getValue</span><span class="p">();</span>
+</code></pre></div>
+<h4 id="_8">▼ クラス式記法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// named exportによる出力</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// classでしか使用できない。</span>
+<span class="w">  </span><span class="c1">// Setterの代わりにコンストラクタでイミュータブルを実現。</span>
+<span class="w">  </span><span class="c1">// データの宣言と格納が同時に行われる。</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">_property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">getValue</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_property</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// ファイルの読み出し</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Foo</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./foo.js&quot;</span><span class="p">;</span>
+
+<span class="c1">// 作成、初期化</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+
+<span class="c1">// メソッドのコール</span>
+<span class="nx">foo</span><span class="p">.</span><span class="nx">getValue</span><span class="p">();</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="02-02">02-02. オブジェクトの操作<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
+<h3 id="_9">プロトタイプチェーンによる継承<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ プロトタイプチェーンとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>オブジェクトが暗示的に持つ<code>prototype</code>プロパティに、別のオブジェクトのメンバを追加することによって、そのオブジェクトのプロトタイプを継承できる。</p>
+<p>オブジェクトからプロパティやメソッドをコールした時、そのオブジェクトにこれらが存在しなければ、継承元まで辿る仕組みを『プロトタイプチェーン』という。</p>
+<p>クラスベースのオブジェクト指向で使用されるクラスチェーンについては、別ノートを参照せよ。</p>
+<h4 id="new-obejct">▼ <code>new Obejct</code>メソッドを使用した継承<a class="headerlink" href="#new-obejct" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 大元となるオブジェクトは個別ファイルで管理しておくのがベター。</span>
+<span class="c1">// コンストラクタ関数の関数式による宣言。</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 慣習的にアンダースコアでprivateを表す。</span>
+<span class="w">  </span><span class="nx">_property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">setValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">_property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">getValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_property</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>別クラスで、以下の様に継承する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 継承元のオブジェクトのファイルを読み込むことも忘れずに。</span>
+<span class="c1">// prototypeプロパティの継承先のオブジェクトを宣言。</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">SubFoo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">subValue</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 慣習的にアンダースコアでprivateを表す。</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">subProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">subValue</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">setSubValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">subValue</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">subProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">subValue</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">getSubValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">subProperty</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">};</span>
+
+<span class="c1">// new Foo()を使用した継承。</span>
+<span class="nx">SubFoo</span><span class="p">.</span><span class="nx">prototype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Foo</span><span class="p">();</span>
+
+<span class="c1">// SubFooクラスにはgetValue()は無い。</span>
+<span class="c1">// 継承元まで辿り、Examlpeクラスからメソッドがコールされる (プロトタイプチェーン) 。</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">SubFoo</span><span class="p">.</span><span class="nx">getValue</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="objectcreate">▼ <code>Object.create</code>メソッドを使用した継承とメンバ追加<a class="headerlink" href="#objectcreate" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 継承元のオブジェクトのファイルを読み込むことも忘れずに。</span>
+<span class="c1">// prototypeプロパティの継承先のオブジェクトを宣言。</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">SubFoo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 慣習的にアンダースコアでprivateを表す。</span>
+<span class="w">  </span><span class="nx">_property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">setSubValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">subValue</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">subProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">subValue</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">getSubValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">subProperty</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">};</span>
+
+<span class="c1">// Object.create()を使用した継承。</span>
+<span class="nx">SubFoo</span><span class="p">.</span><span class="nx">prototype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+
+<span class="c1">// SubFooクラスにはgetValue()は無い。</span>
+<span class="c1">// 継承元まで辿り、Examlpeクラスからメソッドがコールされる (プロトタイプチェーン) 。</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">SubFoo</span><span class="p">.</span><span class="nx">getValue</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+</code></pre></div>
+<p>また、<code>Object.create</code>メソッドを使用する場合、継承のみでなく、メンバを新しく追加もできる。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Object.create()による継承。</span>
+<span class="nx">SubFoo</span><span class="p">.</span><span class="nx">prototype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// データを定義</span>
+<span class="w">  </span><span class="nx">subProperty</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;テスト&quot;</span><span class="p">,</span>
+
+<span class="w">  </span><span class="c1">// メソッドを定義</span>
+<span class="w">  </span><span class="nx">printSubValue</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;これは&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">subProperty</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;です。&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">});</span>
+
+<span class="c1">// SubFooクラスにはprintSubValue()が追加された。</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">SubFoo</span><span class="p">.</span><span class="nx">printSubValue</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="02-03-this">02-03. <code>this</code>の参照先<a class="headerlink" href="#02-03-this" title="Permanent link">&para;</a></h2>
+<h3 id="_11">メソッドとしてコールする場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>メソッド内の<code>this</code>は、fooオブジェクトを指す。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 慣習的にアンダースコアでprivateを表す。</span>
+<span class="w">  </span><span class="nx">_property</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+
+<span class="w">  </span><span class="nx">setValue</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">_property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+<span class="w">  </span><span class="p">},</span>
+
+<span class="w">  </span><span class="nx">getValue</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_property</span><span class="p">;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// メソッド内のthisは、fooオブジェクトを指す。</span>
+<span class="nx">foo</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+<span class="nx">foo</span><span class="p">.</span><span class="nx">getValue</span><span class="p">();</span><span class="w"> </span><span class="c1">// 1</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_12">コンストラクタ関数としてコールする場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h4 id="this">▼ 関数宣言と関数式によるコンストラクタ関数内の<code>this</code>の場合<a class="headerlink" href="#this" title="Permanent link">&para;</a></h4>
+<p>コンストラクタ関数内のthisは、自身がコールされたオブジェクトを指す。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 一番外側はWindowオブジェクト</span>
+<span class="nx">param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;global param&quot;</span><span class="p">;</span>
+
+<span class="c1">// 関数宣言</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">printParam</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">param</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// オブジェクト1</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">object1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">param</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;object1 param&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">func</span><span class="o">:</span><span class="w"> </span><span class="nx">printParam</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="c1">// オブジェクト2</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">object2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">param</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;object2 param&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">func</span><span class="o">:</span><span class="w"> </span><span class="nx">printParam</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// コンストラクタ関数内のthisの場合</span>
+<span class="c1">// コンストラクタ関数内のthisは、自身がコールされたオブジェクトを指す。</span>
+<span class="c1">// ここでは、object1とobject2</span>
+
+<span class="nx">object1</span><span class="p">.</span><span class="nx">printParam</span><span class="p">;</span><span class="w"> </span><span class="c1">// object1 param</span>
+<span class="nx">object2</span><span class="p">.</span><span class="nx">printParam</span><span class="p">;</span><span class="w"> </span><span class="c1">// object2 param</span>
+</code></pre></div>
+<h4 id="this_1">▼ アロー関数によるコンストラクタ関数内の<code>this</code>の場合<a class="headerlink" href="#this_1" title="Permanent link">&para;</a></h4>
+<p>アロー関数内の<code>this</code>の参照先には、十分な注意が必要である。</p>
+<p>今まで、JavaScriptでは、<code>this</code>の参照先が文脈によって変わることに批判が集まっていた。</p>
+<p>そこで、参照先が文脈によって変わらない機能が追加された。</p>
+<p><code>this</code>は、自身が宣言されたオブジェクトを指す。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 一番外側はWindowオブジェクト</span>
+<span class="nx">param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;global param&quot;</span><span class="p">;</span>
+
+<span class="c1">// アロー関数による省略記法</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">printParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">param</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// オブジェクト1</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">object1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">param</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;object1 param&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">func</span><span class="o">:</span><span class="w"> </span><span class="nx">printParam</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="c1">// オブジェクト2</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">object2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">param</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;object2 param&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">func</span><span class="o">:</span><span class="w"> </span><span class="nx">printParam</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// アロー関数内のthisの場合</span>
+<span class="c1">// thisは、自身が宣言されたオブジェクトを指す。</span>
+<span class="c1">// ここでは、一番外側のWindowオブジェクトであり、object1とobject2ではない。</span>
+<span class="c1">// 参照先は文脈によって変わらない。</span>
+
+<span class="nx">object1</span><span class="p">.</span><span class="nx">printParam</span><span class="p">;</span><span class="w"> </span><span class="c1">// global param</span>
+<span class="nx">object2</span><span class="p">.</span><span class="nx">printParam</span><span class="p">;</span><span class="w"> </span><span class="c1">// global param</span>
+</code></pre></div>
+<p>また、アロー関数がコールバック関数の引数となっている場合は、記入中...</p>
 
 
 
@@ -24658,7 +25056,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-03</span>
   </span>
 
     
