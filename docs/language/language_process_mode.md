@@ -182,7 +182,7 @@ Goroutinesを使用する。
 
 #### ▼ JavaScriptの場合
 
-> - https://hiroki-it.github.io/tech-notebook/language/language_js_logic_asynchronous_process.html
+記入中...
 
 #### ▼ Node.jsの場合
 

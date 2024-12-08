@@ -13,7 +13,20 @@ description: JavaScript＠Keycloakクライアントの知見を記録してい�
 
 <br>
 
-## 01. Keycloak
+## 01. Keycloakクライアント
+
+KeycloakクライアントになりうるJavaScriptパッケージにはいくつかある。
+
+ここでは、`keycloak-js`パッケージについて記載する。
+
+- keycloak-js (Keycloak専用)
+- oidc-client
+- oidc-client-ts
+- ...
+
+<br>
+
+## 02. Keycloak
 
 ### init
 

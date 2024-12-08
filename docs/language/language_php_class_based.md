@@ -542,10 +542,7 @@ class Mammal implements Animal
 
 クラスからデータやメソッドをコールした時、そのクラスにこれらが存在しなければ、継承元まで参照しにいく仕組みを『クラスチェーン』という。
 
-類似するものとして、プロトタイプチェーンは以下のリンクを参考にせよ。
-
-> - https://hiroki-it.github.io/tech-notebook/language/language_js_prototype_based.html
-> - https://hiroki-it.github.io/tech-notebook/language/language_js_prototype_based_method_data.html
+類似するものとして、JavaScriptのプロトタイプチェーンがある。
 
 **＊実装例＊**
 

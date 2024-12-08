@@ -67,33 +67,33 @@
 ### JavaScript
 
 * #### <u>プロトタイプベース</u>
-  > * ##### [︎プロトタイプ](https://hiroki-it.github.io/tech-notebook/language/language_js_prototype_based.html)
-  > * ##### [︎メソッド/データ](https://hiroki-it.github.io/tech-notebook/language/language_js_prototype_based_method_data.html)
+  > * ##### [︎プロトタイプ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_prototype_based.html)
+  > * ##### [︎メソッド/データ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_prototype_based_method_data.html)
 
 * #### <u>ロジック</u>
-  > * ##### [︎検証ロジック](https://hiroki-it.github.io/tech-notebook/language/language_js_logic_validation.html)
-  > * ##### [︎非同期処理ロジック](https://hiroki-it.github.io/tech-notebook/language/language_js_logic_asynchronous_process.html)
-  > * ##### [︎デバッグ](https://hiroki-it.github.io/tech-notebook/language/language_js_logic_debug.html)
-  > * ##### [認証](https://hiroki-it.github.io/tech-notebook/language/language_js_logic_authentication.html)
+  > * ##### [︎検証ロジック](https://hiroki-it.github.io/tech-notebook/language/language_javascript_logic_validation.html)
+  > * ##### [︎非同期処理ロジック](https://hiroki-it.github.io/tech-notebook/language/language_javascript_logic_asynchronous_process.html)
+  > * ##### [︎デバッグ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_logic_debug.html)
+  > * ##### [認証](https://hiroki-it.github.io/tech-notebook/language/language_javascript_logic_authentication.html)
 
 * #### <u>フレームワーク</u>
-  > * ##### [︎Nuxt.js](https://hiroki-it.github.io/tech-notebook/language/language_js_framework_nuxtjs.html)
+  > * ##### [︎Nuxt.js](https://hiroki-it.github.io/tech-notebook/language/language_javascript_framework_nuxtjs.html)
   > * ##### <u>︎Vue.js</u>
-  > > * ##### [︎Vue.js](https://hiroki-it.github.io/tech-notebook/language/language_js_framework_vuejs.html)
-  > > * ##### [︎vue-router](https://hiroki-it.github.io/tech-notebook/language/language_js_framework_vuejs_vuerouter.html)
-  > > * ##### [︎Vuex](https://hiroki-it.github.io/tech-notebook/language/language_js_framework_vuejs_vuex.html)
+  > > * ##### [︎Vue.js](https://hiroki-it.github.io/tech-notebook/language/language_javascript_framework_vuejs.html)
+  > > * ##### [︎vue-router](https://hiroki-it.github.io/tech-notebook/language/language_javascript_framework_vuejs_vuerouter.html)
+  > > * ##### [︎Vuex](https://hiroki-it.github.io/tech-notebook/language/language_javascript_framework_vuejs_vuex.html)
   > * ##### <u>︎Remix</u>
-  > > * ##### [︎Remix](https://hiroki-it.github.io/tech-notebook/language/language_js_framework_remix.html)
-  > > * ##### [︎コマンド](https://hiroki-it.github.io/tech-notebook/language/language_js_framework_remix_command.html)
+  > > * ##### [︎Remix](https://hiroki-it.github.io/tech-notebook/language/language_javascript_framework_remix.html)
+  > > * ##### [︎コマンド](https://hiroki-it.github.io/tech-notebook/language/language_javascript_framework_remix_command.html)
 
 * #### <u>パッケージ</u>
-  > * ##### [︎パッケージ管理](https://hiroki-it.github.io/tech-notebook/language/language_js_package_management.html)
-  > * ##### [SQLパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_js_package_sql.html)
-  > * ##### [︎ユーティリティパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_js_package_utility.html)
-  > * ##### [︎Reactパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_js_package_react.html)
+  > * ##### [︎パッケージ管理](https://hiroki-it.github.io/tech-notebook/language/language_javascript_package_management.html)
+  > * ##### [SQLパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_package_sql.html)
+  > * ##### [︎ユーティリティパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_package_utility.html)
+  > * ##### [︎Reactパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_package_react.html)
 
 * #### <u>ブラウザ</u>
-  > * ##### [︎ブラウザレンダリング](https://hiroki-it.github.io/tech-notebook/language/language_js_browser_rendering.html)
+  > * ##### [︎ブラウザレンダリング](https://hiroki-it.github.io/tech-notebook/language/language_javascript_browser_rendering.html)
 
 <br>
 
