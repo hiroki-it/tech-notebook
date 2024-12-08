@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】React.js＠フレームワーク
-description: React.js＠フレームワークの知見を記録しています。
+title: 【IT技術の知見】React＠フレームワーク
+description: React＠フレームワークの知見を記録しています。
 ---
 
-# React.js＠フレームワーク
+# React＠フレームワーク
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: React.js＠フレームワークの知見を記録しています�
 
 <br>
 
-## 01. React.jsとは
+## 01. Reactとは
 
 パッケージ群である。
 
@@ -185,9 +185,13 @@ Reactでは、関数コンポーネントで`async`宣言は使用できない�
 
 ### useEffect
 
-コンポーネントで非同期処理を使用できるようにする。
+#### ▼ useEffectとは
+
+コンポーネント内で非同期処理を使用できるようにする。
 
 ```jsx
+const [state, setState] = useState("<初期値>");
+
 useEffect(
   // 実行したい非同期関数を定義する
   () => {
@@ -195,11 +199,13 @@ useEffect(
       // 事後処理を定義する
     };
   },
-  // useEffectを再度実行したい場合に、その条件を定義する
+  // useEffectを再度実行したい場合に、Stateを設定する
   // 省略すると、1回だけ実行する
-  [],
+  [state],
 );
 ```
+
+#### ▼ 第一引数
 
 **＊実装例＊**
 
@@ -226,5 +232,89 @@ export const MyComponent = () => {
 
 > - https://qiita.com/Akihiro0711/items/dae74e3e73063a80b249
 > - https://qiita.com/apollo_program/items/01fa3c4621155f64f930#useeffect%E3%81%AE%E7%AC%AC%E4%BA%8C%E5%BC%95%E6%95%B0%E3%82%92%E8%AA%A4%E3%82%8B%E3%81%A8%E7%84%A1%E9%99%90%E3%83%AB%E3%83%BC%E3%83%97%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B
+
+#### ▼ 第二引数
+
+**＊実装例＊**
+
+```jsx
+import React, {useState, useEffect} from "react";
+import "./App.css";
+
+export const App = () => {
+  const [count, setCount] = useState(0);
+  const [count2, setCount2] = useState(0);
+
+  useEffect(
+    () => {
+      console.log("useEffectが実行されました");
+    },
+    // Stateのcount変数の値が変わるたびに、useEffectが実行される。
+    [count],
+  );
+
+  return (
+    <div className="App">
+      <h1>Learn useEffect</h1>
+      <h2>Count: {count}</h2>
+      <button onClick={() => setCount((prevCount) => prevCount + 1)}>+</button>
+      <h2>Count2: {count2}</h2>
+      <button onClick={() => setCount2((prevCount) => prevCount + 1)}>+</button>
+    </div>
+  );
+};
+```
+
+> - https://zenn.dev/kimura141899/articles/4f33b899cb0bca#%E5%89%AF%E4%BD%9C%E7%94%A8%E3%82%92%E5%88%B6%E5%BE%A1%E3%81%99%E3%82%8B-%E7%AC%AC2%E5%BC%95%E6%95%B0%E3%81%AE%E5%87%BA%E7%95%AA
+
+#### ▼ 実行の順番
+
+`useEffect`関数はレンダリング後に実行される。
+
+そのため、`useEffect`関数の後の関数が`useEffect`関数よりも前に実行される。
+
+```jsx
+import React, { useState, useEffect } from 'react';
+import './App.css';
+
+export App = () => {
+  const [count, setCount] = useState(0);
+
+  // (1)
+  console.log('useEffect実行前です');
+
+  useEffect(() => {
+    // (3)
+    console.log('useEffectが実行されました');
+  });
+
+  // (2)
+  console.log('useEffect実行後です');
+
+  return (
+    <div className='App'>
+      <h1>Learn useEffect</h1>
+      <h2>Count: {count}</h2>
+      <button onClick={() => setCount((prevCount) => prevCount + 1)}>+</button>
+    </div>
+  );
+}
+```
+
+> - https://zenn.dev/kimura141899/articles/4f33b899cb0bca#useeffect%E3%81%A8%E3%82%8A%E3%81%82%E3%81%88%E3%81%9A%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F
+
+<br>
+
+### useState
+
+コンポーネント内で状態を操作できるようにする。
+
+```jsx
+import {useEffect, useState} from "react";
+
+const [state, setState] = useState("<初期値>");
+```
+
+> - https://ja.react.dev/reference/react/useState
 
 <br>
