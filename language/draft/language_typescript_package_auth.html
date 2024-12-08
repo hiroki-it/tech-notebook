@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="認証パッケージ＠JavaScriptの知見を記録しています。">
+        <meta name="description" content="認証パッケージ＠TypeScriptの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/draft/language_ts_package_auth.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/draft/language_typescript_package_auth.html">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】認証パッケージ＠JavaScript - 俺の技術ノート</title>
+        <title>【IT技術の知見】認証パッケージ＠TypeScript - 俺の技術ノート</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#javascript" class="md-skip">
+        <a href="#typescript" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】認証パッケージ＠JavaScript
+              【IT技術の知見】認証パッケージ＠TypeScript
             
           </span>
         </div>
@@ -23793,7 +23793,7 @@
   
 
 
-<h1 id="javascript">認証パッケージ＠JavaScript<a class="headerlink" href="#javascript" title="Permanent link">&para;</a></h1>
+<h1 id="typescript">認証パッケージ＠TypeScript<a class="headerlink" href="#typescript" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -23803,6 +23803,8 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-oidc-client-ts">01. oidc-client-ts<a class="headerlink" href="#01-oidc-client-ts" title="Permanent link">&para;</a></h2>
+<p>TypeScriptでOIDCを実施するためのパッケージ。</p>
+<p>フレームワークによっては、ラッパー (例：<code>react-oidc-context</code>) が提供されている。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">OidcClient</span><span class="p">,</span><span class="w"> </span><span class="nx">UserManager</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;oidc-client-ts&quot;</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OidcClient</span><span class="p">({</span>

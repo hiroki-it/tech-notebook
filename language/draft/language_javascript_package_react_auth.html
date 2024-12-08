@@ -23775,6 +23775,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. セットアップ
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -23803,10 +23812,62 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-react-oidc-context">01. react-oidc-context<a class="headerlink" href="#01-react-oidc-context" title="Permanent link">&para;</a></h2>
-<p><code>oidc-client-ts</code>ベースのReact専用の認証パッケージである。</p>
+<p><code>oidc-client-ts</code>パッケージをReact用にラップした認証パッケージである。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/authts/react-oidc-context">https://github.com/authts/react-oidc-context</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>import React from &quot;react&quot;;
+import {createRoot} from &quot;react-dom/client&quot;;
+import {AuthProvider, useAuth} from &quot;../src/.&quot;;
+
+const oidcConfig = {
+  authority: &quot;&lt;your authority&gt;&quot;,
+  client_id: &quot;&lt;your client id&gt;&quot;,
+  redirect_uri: &quot;&lt;your redirect uri&gt;&quot;,
+};
+
+function App() {
+  const auth = useAuth();
+
+  if (auth.isLoading) {
+    return &lt;div&gt;Loading...&lt;/div&gt;;
+  }
+
+  if (auth.error) {
+    return &lt;div&gt;Oops... {auth.error.message}&lt;/div&gt;;
+  }
+
+  if (auth.isAuthenticated) {
+    return (
+      &lt;div&gt;
+        Hello {auth.user?.profile.sub}{&quot; &quot;}
+        &lt;button onClick={() =&gt; void auth.removeUser()}&gt;Log out&lt;/button&gt;
+      &lt;/div&gt;
+    );
+  }
+
+  return &lt;button onClick={() =&gt; void auth.signinRedirect()}&gt;Log in&lt;/button&gt;;
+}
+
+const rootElement = document.getElementById(&quot;root&quot;);
+
+if (!rootElement) throw new Error(&quot;Failed to find the root element&quot;);
+
+const root = createRoot(rootElement);
+
+root.render(
+  &lt;AuthProvider {...oidcConfig}&gt;
+    &lt;App /&gt;
+  &lt;/AuthProvider&gt;,
+);
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/authts/react-oidc-context/blob/main/example/index.tsx">https://github.com/authts/react-oidc-context/blob/main/example/index.tsx</a></li>
 </ul>
 </blockquote>
 <p><br></p>
