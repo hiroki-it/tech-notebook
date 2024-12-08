@@ -359,29 +359,29 @@ nav:
               - ユーティリティパッケージ: language/language_php_package_utility.md
       - ■ JavaScript:
           - ■ プロトタイプベース:
-              - プロトタイプ: language/language_js_prototype_based.md
-              - メソッド/データ: language/language_js_prototype_based_method_data.md
+              - プロトタイプ: language/language_javascript_prototype_based.md
+              - メソッド/データ: language/language_javascript_prototype_based_method_data.md
           - ■ ロジック:
-              - 検証ロジック: language/language_js_logic_validation.md
-              - 非同期処理ロジック: language/language_js_logic_asynchronous_process.md
-              - デバッグ: language/language_js_logic_debug.md
-              - 認証: language/language_js_logic_authentication.md
+              - 検証ロジック: language/language_javascript_logic_validation.md
+              - 非同期処理ロジック: language/language_javascript_logic_asynchronous_process.md
+              - デバッグ: language/language_javascript_logic_debug.md
+              - 認証: language/language_javascript_logic_authentication.md
           - ■ フレームワーク:
-              - Nuxt.js: language/language_js_framework_nuxtjs.md
+              - Nuxt.js: language/language_javascript_framework_nuxtjs.md
               - ■ Vue.js:
-                  - Vue.js: language/language_js_framework_vuejs.md
-                  - vue-router: language/language_js_framework_vuejs_vuerouter.md
-                  - Vuex: language/language_js_framework_vuejs_vuex.md
+                  - Vue.js: language/language_javascript_framework_vuejs.md
+                  - vue-router: language/language_javascript_framework_vuejs_vuerouter.md
+                  - Vuex: language/language_javascript_framework_vuejs_vuex.md
               - ■ Remix:
-                  - Remix: language/language_js_framework_remix.md
-                  - コマンド: language/language_js_framework_remix_command.md
+                  - Remix: language/language_javascript_framework_remix.md
+                  - コマンド: language/language_javascript_framework_remix_command.md
           - ■ パッケージ:
-              - パッケージ管理: language/language_js_package_management.md
-              - SQLパッケージ: language/language_js_package_sql.md
-              - ユーティリティパッケージ: language/language_js_package_utility.md
-              - Reactパッケージ: language/language_js_package_react.md
+              - パッケージ管理: language/language_javascript_package_management.md
+              - SQLパッケージ: language/language_javascript_package_sql.md
+              - ユーティリティパッケージ: language/language_javascript_package_utility.md
+              - Reactパッケージ: language/language_javascript_package_react.md
           - ■ ブラウザ:
-              - ブラウザレンダリング: language/language_js_browser_rendering.md
+              - ブラウザレンダリング: language/language_javascript_browser_rendering.md
       - ■ TypeScript:
           - TypeScript: language/language_typescript.md
       - ■ Go:
