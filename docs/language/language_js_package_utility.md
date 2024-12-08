@@ -32,8 +32,7 @@ HTTPリクエストを送信する。
 ```javascript
 // axiosオブジェクトのメソッドはPromiseオブジェクトを返却する。
 const asyncFunc = async () => {
-  axios.get("/some/path").then((res) => {
-    // "some data"
+  axios.get("/some/path").then((response) => {
     console.log(response.data);
   });
 };
@@ -71,8 +70,7 @@ const asyncFunc = async () => {
         id: "1",
       },
     })
-    .then((res) => {
-      // "some data"
+    .then((response) => {
       console.log(response.data);
     });
 };
@@ -92,8 +90,7 @@ const asyncFunc = async () => {
         "Content-Type": "application/json",
       },
     })
-    .then((res) => {
-      // "some data"
+    .then((response) => {
       console.log(response.data);
     });
 };
@@ -117,8 +114,7 @@ const asyncFunc = async () => {
       // CSRFトークンのためのヘッダーを設定する
       xsrfCookieName: "XSRF-TOKEN",
     })
-    .then((res) => {
-      // "some data"
+    .then((response) => {
       console.log(response.data);
     });
 };
@@ -139,8 +135,7 @@ const asyncFunc = async () => {
         "Content-Type": "application/json",
       },
     })
-    .then((res) => {
-      // "some data"
+    .then((response) => {
       console.log(response.data);
     });
 };
@@ -250,7 +245,7 @@ axiosRetry(axios, {
 // axiosでリクエストを非同期処理する
 const response = await axios.get("http://example.com/rea");
 
-console.log(response);
+console.log(response.data);
 ```
 
 > - https://blog.symdon.info/posts/1638831647/

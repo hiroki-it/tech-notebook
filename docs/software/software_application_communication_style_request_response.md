@@ -342,7 +342,7 @@ import axios from "axios";
 
 const url = "https://example.com/";
 
-axios.get(url);
+const response = axios.get(url);
 ```
 
 **＊実装例＊**
@@ -357,7 +357,9 @@ import axios from "axios";
 async function pollBackend() {
   try {
     const response = await axios.get("/api/endpoint");
+
     // responseを処理する
+    console.log(response.data);
 
     // 再帰的に呼び出す
     setTimeout(() => {
@@ -389,7 +391,7 @@ const body = {
   password: "password",
 };
 
-axios.post(url, params);
+const response = axios.post(url, params);
 ```
 
 <br>

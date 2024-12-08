@@ -358,8 +358,8 @@ Promiseオブジェクトの`then`メソッドに相当するが、`then`メソ�
 ```javascript
 // Promiseオブジェクトのthenメソッドを使用した場合
 const asyncFunc = async () => {
-  axios.get("/some/path").then((res) => {
-    console.log(response.data); // "some data"
+  axios.get("/some/path").then((response) => {
+    console.log(response.data);
   });
 };
 
@@ -368,7 +368,7 @@ const asyncFunc = async () => {
   // 非同期処理の結果がthenメソッドに渡される。
   const response = await axios.get("/some/path");
 
-  console.log(response.data); // "some data"
+  console.log(response.data);
 };
 ```
 
@@ -378,22 +378,22 @@ const asyncFunc = async () => {
 // Promiseオブジェクトのthenメソッドを使用した場合
 const asyncFunc = async () => {
   // コールバック関数地獄になっている。
-  axios.get("/some/path1").then((res) => {
-    const res1 = res;
-    axios.get("/some/path1").then((res) => {
-      const res2 = res;
-      console.log(res1.data + res2.data); // "some data"
+  axios.get("/some/path1").then((response) => {
+    const response1 = response;
+    axios.get("/some/path1").then((response) => {
+      const response2 = response;
+      console.log(response1.data + response2.data);
     });
   });
 };
 
 // awaitを使用した場合
 const asyncFunc = async () => {
-  const res1 = await axios.get("/some/path1");
+  const response1 = await axios.get("/some/path1");
 
-  const res2 = await axios.get("/some/path2");
+  const response2 = await axios.get("/some/path2");
 
-  console.log(res1.data + res2.data); // "some data"
+  console.log(response1.data + response2.data);
 };
 ```
 
@@ -440,7 +440,7 @@ const asyncFunc = async () => {
 
   try {
     response = await axios.get("/some/path1");
-    console.info(res);
+    console.info(response.data);
   } catch (error) {
     console.error(error);
   }
@@ -505,7 +505,7 @@ const response = await retry(
   },
 );
 
-console.log(res);
+console.log(response);
 ```
 
 > - https://www.memory-lovers.blog/entry/2022/06/16/100000

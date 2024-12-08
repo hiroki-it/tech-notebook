@@ -258,7 +258,7 @@ const asyncFunc = async () => {
 
   try {
     response = await axios.get("/some/path1");
-    console.info(response);
+    console.info(response.data);
   } catch (error) {
     console.error(error);
   }
