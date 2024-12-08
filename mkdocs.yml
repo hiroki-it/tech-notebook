@@ -379,6 +379,7 @@ nav:
               - パッケージ管理: language/language_js_package_management.md
               - SQLパッケージ: language/language_js_package_sql.md
               - ユーティリティパッケージ: language/language_js_package_utility.md
+              - Reactパッケージ: language/language_js_package_react.md
           - ■ ブラウザ:
               - ブラウザレンダリング: language/language_js_browser_rendering.md
       - ■ TypeScript:
