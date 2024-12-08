@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】認証パッケージ＠JavaScript
-description: 認証パッケージ＠JavaScriptの知見を記録しています。
+title: 【IT技術の知見】認証パッケージ＠TypeScript
+description: 認証パッケージ＠TypeScriptの知見を記録しています。
 ---
 
-# 認証パッケージ＠JavaScript
+# 認証パッケージ＠TypeScript
 
 ## はじめに
 
@@ -14,6 +14,10 @@ description: 認証パッケージ＠JavaScriptの知見を記録しています
 <br>
 
 ## 01. oidc-client-ts
+
+TypeScriptでOIDCを実施するためのパッケージ。
+
+フレームワークによっては、ラッパー (例：`react-oidc-context`) が提供されている。
 
 ```javascript
 import {OidcClient, UserManager} from "oidc-client-ts";
