@@ -8802,6 +8802,8 @@
       
         
       
+        
+      
     
     
       
@@ -8889,6 +8891,27 @@
   
   <span class="md-ellipsis">
     ユーティリティパッケージ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_js_package_react.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reactパッケージ
   </span>
   
 
@@ -24873,7 +24896,11 @@
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useTodoList</span><span class="p">();</span>
 
 <span class="w">    </span><span class="c1">// データがまだ取得できていないならローディング、取得できているならHTMLをレンダリングする関数</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;{</span><span class="nx">state</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;{</span><span class="nx">e</span><span class="p">}&lt;/</span><span class="nt">li</span><span class="p">&gt;)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Loding&quot;</span><span class="p">}&lt;/</span><span class="nt">ul</span><span class="p">&gt;;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="w">          </span><span class="p">{</span><span class="nx">state</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;{</span><span class="nx">e</span><span class="p">}&lt;/</span><span class="nt">li</span><span class="p">&gt;)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Loding&quot;</span><span class="p">}</span>
+<span class="w">        </span><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
