@@ -130,6 +130,9 @@ CSRは、DOMの現在の状態をDOMから参照するのではなく、相当�
 そして、状態オブジェクトをその都度変更した上で、実際のDOMにこれを動的に適用し続ける。
 
 ```jsx
+import {useEffect, useState} from "react";
+
+
 // APIからデータを取ってくる
 const getTodoList = async () => {
 
@@ -139,12 +142,11 @@ const getTodoList = async () => {
 // カスタムフック
 const useTodoList = () => {
 
-    const [state, setState] = React.useState < string[] | null > (null);
+    const [state, setState] = useState("");
 
-    React.useEffect(() => {
-        getTodoList().then(todoList => {
-            setState(todoList);
-        });
+    useEffect(() => {
+      const todoList = await getTodoList()
+      setState(todoList);
     }, []);
 
     return state;

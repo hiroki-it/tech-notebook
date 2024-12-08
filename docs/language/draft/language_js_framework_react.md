@@ -217,7 +217,7 @@ export const MyComponent = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      response = await axios.get("https://example.com");
+      const response = await axios.get("https://example.com");
       // stateに設定する
       setState(response.data);
     };
@@ -226,7 +226,8 @@ export const MyComponent = () => {
   }, []);
 
   // stateを出力する
-  return <pre>{state.toString()}</pre>;
+  // state変数はJS型オブジェクトであり、ドットでアクセスできる
+  return <pre>{state.fooKey}</pre>;
 };
 ```
 
@@ -280,15 +281,15 @@ import './App.css';
 export App = () => {
   const [count, setCount] = useState(0);
 
-  // (1)
+  // 実行 (1)
   console.log('useEffect実行前です');
 
   useEffect(() => {
-    // (3)
+    // 実行 (3)
     console.log('useEffectが実行されました');
   });
 
-  // (2)
+  // 実行 (2)
   console.log('useEffect実行後です');
 
   return (
@@ -313,6 +314,12 @@ export App = () => {
 import {useEffect, useState} from "react";
 
 const [state, setState] = useState("<初期値>");
+
+// state変数はJS型オブジェクトであり、ドットでアクセスできる
+console.log(state.fooKey);
+
+// state変数はJS型オブジェクトであり、JSONを確認したい場合はJSON.stringify関数で変換する
+console.log(JSON.stringify(state));
 ```
 
 > - https://ja.react.dev/reference/react/useState
