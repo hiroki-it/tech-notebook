@@ -117,7 +117,7 @@ asyncFunc(testParam, (err, data) => {
   if (err) {
     throw err;
   }
-  console.log(data);
+  console.info(data);
 });
 ```
 
@@ -257,7 +257,7 @@ const asyncFunc = async () => {
   let response;
 
   try {
-    response = await axios.get("/some/path1");
+    response = await axios.get("https://example.com");
     console.info(response.data);
   } catch (error) {
     console.error(error);

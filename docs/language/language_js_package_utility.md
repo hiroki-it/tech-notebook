@@ -32,7 +32,7 @@ HTTPリクエストを送信する。
 ```javascript
 // axiosオブジェクトのメソッドはPromiseオブジェクトを返却する。
 const asyncFunc = async () => {
-  axios.get("/some/path").then((response) => {
+  axios.get("https://example.com").then((response) => {
     console.log(response.data);
   });
 };
@@ -65,7 +65,7 @@ import axios from "axios";
 
 const asyncFunc = async () => {
   axios
-    .get("/some/path", {
+    .get("https://example.com", {
       data: {
         id: "1",
       },
@@ -85,7 +85,7 @@ import axios from "axios";
 
 const asyncFunc = async () => {
   axios
-    .get("/some/path", {
+    .get("https://example.com", {
       headers: {
         "Content-Type": "application/json",
       },
@@ -107,7 +107,7 @@ import axios from "axios";
 
 const asyncFunc = async () => {
   axios
-    .get("/some/path", {
+    .get("https://example.com", {
       headers: {
         "Content-Type": "application/json",
       },
@@ -130,7 +130,7 @@ import axios from "axios";
 
 const asyncFunc = async () => {
   axios
-    .get("/some/path", {
+    .get("https://example.com", {
       headers: {
         "Content-Type": "application/json",
       },
@@ -243,7 +243,7 @@ axiosRetry(axios, {
 });
 
 // axiosでリクエストを非同期処理する
-const response = await axios.get("http://example.com/rea");
+const response = await axios.get("http://example.com");
 
 console.log(response.data);
 ```

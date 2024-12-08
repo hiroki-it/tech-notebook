@@ -200,7 +200,7 @@ xhr.open("GET", url);
 xhr.onload = () => {
   if (xhr.status === 200) {
     const data = JSON.parse(xhr.responseText);
-    console.log(data);
+    console.info(data);
   }
 };
 
@@ -246,7 +246,7 @@ xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 xhr.onload = () => {
   if (xhr.status === 200) {
     const data = JSON.parse(xhr.responseText);
-    console.log(data);
+    console.info(data);
   }
 };
 

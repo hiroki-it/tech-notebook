@@ -260,7 +260,7 @@ const rejectFunc = new Promise((resolve, reject) => {
 rejectFunc.catch((err) => {
   // rejectFuncがPromiseを返し、reject!!がrejectされるため
   // catchメソッドが実行されコンソールにreject!!が表示される
-  console.log(err); // reject!!
+  console.error(err); // reject!!
 });
 ```
 
@@ -358,7 +358,7 @@ Promiseオブジェクトの`then`メソッドに相当するが、`then`メソ�
 ```javascript
 // Promiseオブジェクトのthenメソッドを使用した場合
 const asyncFunc = async () => {
-  axios.get("/some/path").then((response) => {
+  axios.get("https://example.com").then((response) => {
     console.log(response.data);
   });
 };
@@ -366,7 +366,7 @@ const asyncFunc = async () => {
 // awaitを使用した場合
 const asyncFunc = async () => {
   // 非同期処理の結果がthenメソッドに渡される。
-  const response = await axios.get("/some/path");
+  const response = await axios.get("https://example.com");
 
   console.log(response.data);
 };
@@ -378,9 +378,9 @@ const asyncFunc = async () => {
 // Promiseオブジェクトのthenメソッドを使用した場合
 const asyncFunc = async () => {
   // コールバック関数地獄になっている。
-  axios.get("/some/path1").then((response) => {
+  axios.get("https://example1.com").then((response) => {
     const response1 = response;
-    axios.get("/some/path1").then((response) => {
+    axios.get("https://example1.com").then((response) => {
       const response2 = response;
       console.log(response1.data + response2.data);
     });
@@ -389,9 +389,9 @@ const asyncFunc = async () => {
 
 // awaitを使用した場合
 const asyncFunc = async () => {
-  const response1 = await axios.get("/some/path1");
+  const response1 = await axios.get("https://example1.com");
 
-  const response2 = await axios.get("/some/path2");
+  const response2 = await axios.get("https://example2.com");
 
   console.log(response1.data + response2.data);
 };
@@ -423,7 +423,7 @@ Promiseオブジェクトの`then`メソッド、`catch`メソッド、`finally`
 ```javascript
 const asyncFunc = async () => {
   return axios
-    .get("/some/path1")
+    .get("https://example1.com")
     .catch((error) => {
       console.error(error);
     })
@@ -439,7 +439,7 @@ const asyncFunc = async () => {
   let res;
 
   try {
-    response = await axios.get("/some/path1");
+    response = await axios.get("https://example1.com");
     console.info(response.data);
   } catch (error) {
     console.error(error);
@@ -501,7 +501,7 @@ const response = await retry(
     // ランダム化時の係数(1~2)
     randomize: true,
     // リトライ時に呼ばれる関数
-    onRetry: (err, num) => console.log(err, num),
+    onRetry: (err, num) => console.error(err, num),
   },
 );
 
@@ -538,10 +538,10 @@ const url = "https://www.google.co.jp/";
 
 $.get(url)
   .done((data) => {
-    console.log(data);
+    console.info(data);
   })
   .fail((error) => {
-    console.log(error);
+    console.error(error);
   });
 ```
 
@@ -554,10 +554,10 @@ const params = {
 
 $.post(url, params)
   .done((data) => {
-    console.log(data);
+    console.info(data);
   })
   .fail((error) => {
-    console.log(error);
+    console.error(error);
   });
 ```
 
@@ -577,12 +577,12 @@ $.ajax({
 })
   // 非同期通信の成功時のコールバック処理
   .done((data) => {
-    console.log(data);
+    console.info(data);
   })
 
   // 非同期通信の失敗時のコールバック処理
   .fail((error) => {
-    console.log(data);
+    console.info(data);
     toastr.error("", "エラーが発生しました。");
   })
 
