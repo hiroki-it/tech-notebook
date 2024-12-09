@@ -24523,14 +24523,23 @@
 <p><br></p>
 <h3 id="cors">CORS設定<a class="headerlink" href="#cors" title="Permanent link">&para;</a></h3>
 <h4 id="cors_1">▼ なぜCORS設定<a class="headerlink" href="#cors_1" title="Permanent link">&para;</a></h4>
-<p>ドメインを割り当ててAWS S3バケットを公開する場合、クライアント (例：AWS API Gateway) とはドメインが異なる。</p>
+<p>ドメインを割り当ててAWS S3バケットを公開する場合、クライアント側 (例：AWS API Gatewayを介したブラウザ) とサーバー側のAWS S3ドメインが異なる。</p>
 <p>そのため、CORSでAWS S3への通信が防御されてしまう。</p>
 <p>これに対処する必要がある。</p>
 <h4 id="access-control-allow-origin">▼ Access-Control-Allow-Originヘッダー<a class="headerlink" href="#access-control-allow-origin" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[{</span><span class="s">&quot;AllowedOrigins&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]}]</span>
+<p>サーバー側のAWS S3では、<code>Access-Control-Allow-Origin</code>ヘッダーに必要な値を設定して返却する。</p>
+<p>クライアント側 (例：AWS API Gatewayを介したブラウザ) では<code>Origin</code>ヘッダーは、デフォルトで『プロトコル + ドメイン + ポート番号』に設定されるため、特に対処する必要はない。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 任意のドメインを許可する</span>
+<span class="p p-Indicator">[{</span><span class="s">&quot;AllowedOrigins&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]}]</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[{</span><span class="s">&quot;AllowedOrigins&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;https://example.jp&quot;</span><span class="p p-Indicator">]}]</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># 特定のドメインを許可する</span>
+<span class="p p-Indicator">[{</span><span class="s">&quot;AllowedOrigins&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;https://example.jp&quot;</span><span class="p p-Indicator">]}]</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManageCorsUsing.html#cors-allowed-origin">https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManageCorsUsing.html#cors-allowed-origin</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="url">署名付きURL<a class="headerlink" href="#url" title="Permanent link">&para;</a></h3>
 <h4 id="url_1">▼ 署名付きURLとは<a class="headerlink" href="#url_1" title="Permanent link">&para;</a></h4>
