@@ -118,7 +118,7 @@ AWS IAMポリシーよりも強い。
         "Sid": "AllowAccessFromMultipleAccount",
         "Effect": "Allow",
         "Principal": {
-            # AWS ECRにアクセスできる他のAWSアカウント
+            # AWS ECRに接続できる他のAWSアカウント
             "AWS": ["arn:aws:iam::*****:root"],
           },
         # 操作の認可スコープ

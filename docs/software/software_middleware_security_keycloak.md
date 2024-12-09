@@ -54,6 +54,8 @@ Keycloakは、認証処理サービス、Infinispan、アカウント管理用�
 
 Keycloakでは、Adminユーザーの認証はmaster realmで、それ以外はユーザー定義のrealm、で管理する。
 
+master realmでログイン後、ユーザー定義のrealmを作成すると良い。
+
 > - https://keycloak-documentation.openstandia.jp/21.0/ja_JP/server_admin/index.html#the-master-realm
 
 <br>
@@ -114,14 +116,13 @@ Keycloakクライアントは、『ヘッダー』『ペイロード』『署名
 
 全ての設定を取得できる。
 
-Adminユーザーのrealm名は`master`で、それ以外のrealmはユーザー定義である。
+事前に作成したユーザー定義のrealmを設定する。
 
 ```bash
 /realms/<realm名>/.well-known/openid-configuration
 ```
 
 ```bash
-# Adminユーザーのrealm名はmasterで、それ以外のrealmはユーザー定義
 $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid-configuration
 
 {
