@@ -57,7 +57,7 @@ spec:
 
 > - https://marketplace.upbound.io/providers/upbound/provider-aws-s3/v1.17.0
 
-#### ▼ S3バケット
+#### ▼ AWS S3バケット
 
 ```yaml
 apiVersion: s3.aws.crossplane.io/v1beta1

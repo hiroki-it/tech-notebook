@@ -257,15 +257,15 @@ orbs:
 jobs:
   aws-ecs/deploy-update-service:
     name: ecs_update_service_by_rolling_update
-    # AWS AWS ECSタスク定義名を指定
+    # AWS ECSタスク定義名を指定
     family: "${SERVICE}-ecs-task-definition"
-    # AWS AWS ECSクラスター名を指定
+    # AWS ECSクラスター名を指定
     cluster-name: "${SERVICE}-cluster"
     # サービス名を指定
     service-name: "${SERVICE}-service"
     # コンテナ定義のコンテナ名とバージョンタグを上書き。イメージはCircleCIのハッシュ値でタグ付けしているので必須。
     container-image-name-updates: "container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"
-    # AWS AWS ECSタスク定義に基づくAWS ECSタスク数の監視
+    # AWS ECSタスク定義に基づくAWS ECSタスク数の監視
     verify-revision-is-deployed: "true"
     # 監視の試行回数
     max-poll-attempts: 30
@@ -296,7 +296,7 @@ workflows:
 
 #### ▼ deploy-update-service (ブルー/グリーンデプロイメント使用時)
 
-AWS AWS ECSタスク定義を更新する。加えて、ブルー/グリーンデプロイメントがそのAWS ECSタスク定義を指定し、AWS ECSサービスを更新する。
+AWS ECSタスク定義を更新する。加えて、ブルー/グリーンデプロイメントがそのAWS ECSタスク定義を指定し、AWS ECSサービスを更新する。
 
 ローリングアップデートと同様にして、`verify-revision-is-deployed`オプションを使用できる。
 

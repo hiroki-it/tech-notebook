@@ -387,7 +387,7 @@ resource "aws_cloudfront_distribution" "this" {
 
   ...
 
-  # オリジン (ここではS3としている)
+  # オリジン (ここではAWS S3としている)
   origin {
     domain_name = var.s3_bucket_regional_domain_name
     origin_id   = "S3-${var.s3_bucket_id}"
@@ -1692,11 +1692,11 @@ Terraformを使用してVPCを作成した時、メインルートテーブル�
 
 <br>
 
-## S3
+## AWS S3
 
 ### バケットポリシー
 
-S3紐付けられる、自身へのアクセスを制御するためにインラインポリシーのこと。
+AWS S3紐付けられる、自身へのアクセスを制御するためにインラインポリシーのこと。
 
 定義したバケットポリシーは、`aws_s3_bucket_policy`リソースでロールに紐付けできる。
 
@@ -1710,10 +1710,10 @@ ALBがバケットにログを書き込めるように、『ELBのサービス�
 
 ```terraform
 # ---------------------------------------------
-# S3 bucket policy
+# AWS S3 bucket policy
 # ---------------------------------------------
 
-# S3にバケットポリシーを紐付けします。
+# AWS S3にバケットポリシーを紐付けします。
 resource "aws_s3_bucket_policy" "alb" {
   bucket = aws_s3_bucket.alb_logs.id
   policy = templatefile(
@@ -1756,10 +1756,10 @@ ALBがバケットにログを書き込めるように、『`delivery.logs.amazo
 
 ```terraform
 # ---------------------------------------------
-# S3 bucket policy
+# AWS S3 bucket policy
 # ---------------------------------------------
 
-# S3にバケットポリシーを紐付けします。
+# AWS S3にバケットポリシーを紐付けします。
 resource "aws_s3_bucket_policy" "nlb" {
   bucket = aws_s3_bucket.nlb_logs.id
   policy = templatefile(
@@ -2396,12 +2396,12 @@ WAFのIPセットと他設定の依存関係に癖がある。
 
 - Terraformによる初期作成時に必要であり、それがないとそもそも`terraform apply`コマンドできない：
 
-  - Terraform用IAMユーザー、tfstateを管理するS3バケットなど
+  - Terraform用IAMユーザー、tfstateを管理するAWS S3バケットなど
   - これに関しては、CloudFormationで作成しても良い。
 
 - Terraformの誤操作で削除してはいけないAWSリソースでは、Terraformで管理しないことにより、削除を防げる：
 
-  - tfstateを管理するS3バケットなど
+  - tfstateを管理するAWS S3バケットなど
 
 - Terraformで特定のAWSリソースを作成すると、それに伴って自動的に作成されてしまう：
 
@@ -2431,7 +2431,7 @@ WAFのIPセットと他設定の依存関係に癖がある。
 | IAMポリシー                  |                                      | ビジネスロジックを持ち、変更の要望頻度が高い。ただし、IPアドレス制限ポリシーなど、自動化した方が便利になる場合はこの限りではない。                                                                                                                                                                                                                                                                           |
 | RDS                          | admin以外のユーザー                  | 個別のユーザー作成のために、mysql providerを使用する必要がある。ただし、moduleディレクトリ配下に`provider.tf`ファイルを配置する必要があるため、ディレクトリ構成規約に難がある。                                                                                                                                                                                                                              |
 | Route53                      | NSレコード                           | ホストゾーンを作成すると、レコードとして、NSレコード値が自動的に設定される。これは、Terraformの管理外である。                                                                                                                                                                                                                                                                                                |
-| S3                           | `tfstate`ファイルの管理バケット      | ・リモートバックエンドとして`tfstate`ファイルを格納するため、Terraformのデプロイより先に存在している必要がある。<br>・Terraformで誤って削除してしまわないようにする。<br>・`terraform apply -destroy`コマンドの実行時に、他のAWSリソースを削除する前に`tfstate`ファイルのS3バケットを先に削除してしまう。                                                                                                    |
+| AWS S3                       | `tfstate`ファイルの管理バケット      | ・リモートバックエンドとして`tfstate`ファイルを格納するため、Terraformのデプロイより先に存在している必要がある。<br>・Terraformで誤って削除してしまわないようにする。<br>・`terraform apply -destroy`コマンドの実行時に、他のAWSリソースを削除する前に`tfstate`ファイルのAWS S3バケットを先に削除してしまう。                                                                                                |
 | SES                          | 全て                                 | `terraform apply`コマンド中に承認作業が発生し、プロビジョニングが止まってしまうため。ただし、承認を自動で実行できる場合には、Terraformで管理しても良い。                                                                                                                                                                                                                                                     |
 | パラメーターストア           | 全て                                 | セキュリティを含むAWSリソースでは、Terraformのリポジトリで機密な変数やファイルを管理するわけにはいかず、また`tfstate`ファイルに書き込まれてしまうため。パラメーターストアの代わりに、キーバリュー型ストア (例：SOPS、kubesec、Hashicorp Vault) を使用しつつ、暗号化された状態でリポジトリで管理しても良い。                                                                                                  |
 
@@ -2439,9 +2439,9 @@ WAFのIPセットと他設定の依存関係に癖がある。
 
 ### AWS CLIによるセットアップ例
 
-#### ▼ S3バケット
+#### ▼ AWS S3バケット
 
-以下のコマンドを実行し、`tfstate`ファイル用のS3バケットを作成する。
+以下のコマンドを実行し、`tfstate`ファイル用のAWS S3バケットを作成する。
 
 ```bash
 AWS_REGION="ap-northeast-1"
@@ -2513,15 +2513,15 @@ aws dynamodb create-table\
 
 ### `tfstate`ファイルに関連するAWSリソースをTerraformで管理する
 
-#### ▼ S3バケットの場合
+#### ▼ AWS S3バケットの場合
 
-`tfstate`ファイルを管理するS3バケットをTerraformで管理しないプラクティスが一般的ではあるが、実はTerraformで管理する裏技がある。
+`tfstate`ファイルを管理するAWS S3バケットをTerraformで管理しないプラクティスが一般的ではあるが、実はTerraformで管理する裏技がある。
 
-それは、`tfstate`ファイルのS3バケットのみを、別のローカルバックエンドの`tfsftate`ファイルで管理する方法である。
+それは、`tfstate`ファイルのAWS S3バケットのみを、別のローカルバックエンドの`tfsftate`ファイルで管理する方法である。
 
-このローカルバックエンドの`tfstate`ファイルが管理するS3バケットをリモートバックエンドとして、メインの`tfstate`ファイルを配置する。
+このローカルバックエンドの`tfstate`ファイルが管理するAWS S3バケットをリモートバックエンドとして、メインの`tfstate`ファイルを配置する。
 
-もちろん、ローカルバックエンドの`tfstate`ファイルがS3バケットに配置されたメインの`tfstate`ファイルを検知しないように、無視する必要がある。
+もちろん、ローカルバックエンドの`tfstate`ファイルがAWS S3バケットに配置されたメインの`tfstate`ファイルを検知しないように、無視する必要がある。
 
 ```terraform
 terraform {

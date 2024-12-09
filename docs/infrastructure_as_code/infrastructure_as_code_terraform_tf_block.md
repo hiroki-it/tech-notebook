@@ -677,15 +677,15 @@ resource "aws_nat_gateway" "this" {
 }
 ```
 
-#### ▼ S3バケットポリシー vs. パブリックアクセスブロックポリシー
+#### ▼ AWS S3バケットポリシー vs. パブリックアクセスブロックポリシー
 
-例として、S3を示す。
+例として、AWS S3を示す。
 
 バケットポリシーとパブリックアクセスブロックポリシーを同時に作成できないため、作成のタイミングが重ならないようにする必要がある。
 
 ```terraform
 # ---------------------------------------------
-# Resource S3
+# Resource AWS S3
 # ---------------------------------------------
 
 # foo bucket
@@ -1488,11 +1488,11 @@ resource "aws_security_group" "ec2" {
 
 **＊実装例＊**
 
-例として、S3を示す。
+例として、AWS S3を示す。
 
 ```terraform
 # ---------------------------------------------
-# Resource S3 bucket policy
+# Resource AWS S3 bucket policy
 # ---------------------------------------------
 resource "aws_s3_bucket_policy" "alb" {
   bucket = aws_s3_bucket.alb_logs.id

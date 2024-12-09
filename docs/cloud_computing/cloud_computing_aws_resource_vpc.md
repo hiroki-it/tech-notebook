@@ -188,7 +188,7 @@ AWS NAT Gatewayの代わりに、AWS VPCエンドポイントを使用すると�
 
 **＊リソース例＊**
 
-S3、DynamoDB以外の全てのリソース
+AWS S3、DynamoDB以外の全てのリソース
 
 #### ▼ Gateway型
 
@@ -198,7 +198,7 @@ S3、DynamoDB以外の全てのリソース
 
 **＊リソース例＊**
 
-S3、DynamoDBのみ
+AWS S3、DynamoDBのみ
 
 > - https://docs.aws.amazon.com/vpc/latest/privatelink/vpce-gateway.html
 > - https://yassanabc.com/2022/02/17/%E3%80%90vpc%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%80%91gateway%E5%9E%8B%E3%81%A8interface%E5%9E%8B%E3%81%AE%E9%81%95%E3%81%84%E3%80%90s3%E3%80%91/

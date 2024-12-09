@@ -235,7 +235,7 @@ Fargateの場合、同じタスクに属するコンテナ間は、localhostイ�
 
 #### ▼ VPC外のAWSリソースに対する通信
 
-データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース (例：コントロールプレーン、AWS ECR、S3、AWS Systems Manager、AWS CloudWatchログ、DynamoDBなど) に対してリクエストを送信するためには、AWS NAT GatewayあるいはVPCエンドポイントを配置する必要がある。
+データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース (例：コントロールプレーン、AWS ECR、AWS S3、AWS Systems Manager、AWS CloudWatchログ、DynamoDBなど) に対してリクエストを送信するためには、AWS NAT GatewayあるいはVPCエンドポイントを配置する必要がある。
 
 もしAWS NAT Gatewayを配置したとする。
 
@@ -696,11 +696,11 @@ CodeDeployを使用してデプロイする。
 | ------------------------- | --------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | AWS CloudWatchログ        | Interface | `logs.ap-northeast-1.amazonaws.com`                                                | ECSコンテナのログをPOSTリクエストを送信するため。                      |
 | AWS ECR                   | Interface | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                                |
-| S3                        | Gateway   | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                       |
+| AWS S3                    | Gateway   | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                       |
 | AWS Systems Manager       | Interface | `ssm.ap-northeast-1.amazonaws.com`                                                 | AWS Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
 | AWS Secrets Manager       | Interface | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | AWS Secrets Managerを使用するため。                                    |
 
-プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、AWS ECR、S3、AWS Systems Manager、AWS CloudWatchログ、DynamoDBなど) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。
+プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、AWS ECR、AWS S3、AWS Systems Manager、AWS CloudWatchログ、DynamoDBなど) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。
 
 AWS NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのリクエストの方が優先される。
 

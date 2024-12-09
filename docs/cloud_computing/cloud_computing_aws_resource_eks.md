@@ -771,7 +771,7 @@ AWS EKSデータプレーンはプライベートサブネットで稼働させ�
 
 ### パブリックサブネット内のデータプレーンからのリクエスト
 
-Podをパブリックサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、S3、AWS Systems Manager、AWS CloudWatchログ、DynamoDBなど) に対してリクエストを送信するために特に必要なものは無い。
+Podをパブリックサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、AWS S3、AWS Systems Manager、AWS CloudWatchログ、DynamoDBなど) に対してリクエストを送信するために特に必要なものは無い。
 
 この時、`POD_SECURITY_GROUP_ENFORCING_MODE=standard`に設定されたAWS VPC CNIはSNAT処理を実行し、クライアント側Podの送信元IPアドレスをAWS EC2ワーカーNodeのプライマリーENI (`eth0`) のIPアドレスに変換する。
 
@@ -812,7 +812,7 @@ data:
 
 #### ▼ AWS VPC外の他のAWSリソースへのリクエスト
 
-Podをプライベートサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、S3、AWS Systems Manager、AWS CloudWatchログ、AWS DynamoDBなど) に対してリクエストを送信するためには、AWS NAT GatewayまたはAWS VPCエンドポイントを配置する必要がある。
+Podをプライベートサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、AWS S3、AWS Systems Manager、AWS CloudWatchログ、AWS DynamoDBなど) に対してリクエストを送信するためには、AWS NAT GatewayまたはAWS VPCエンドポイントを配置する必要がある。
 
 この時、クライアント側Podの送信元IPアドレスは、AWS NAT GatewayまたはAWS VPCエンドポイントに紐づくIPアドレスになる。
 
@@ -891,14 +891,14 @@ AWS VPC外からNLBへの`443`番ポートに対するネットワークから�
 
 ![eks_control-plane_worker_network_public_private_endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network_public_private_endpoint.png)
 
-AWS VPC外のAWSリソース (例：AWS EKSコントロールプレーン、AWS ECR、S3、AWS Systems Manager、AWS CloudWatchログ、DynamoDBなど) にリクエストを送信する場合、専用のAWS VPCエンドポイントを設ける必要がある。
+AWS VPC外のAWSリソース (例：AWS EKSコントロールプレーン、AWS ECR、AWS S3、AWS Systems Manager、AWS CloudWatchログ、DynamoDBなど) にリクエストを送信する場合、専用のAWS VPCエンドポイントを設ける必要がある。
 
 | AWS VPCエンドポイントの接続先 | タイプ             | プライベートDNS名                                                                  | 説明                                                                                                    |
 | ----------------------------- | ------------------ | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | AWS EKSコントロールプレーン   | (たぶん) Interface | マネージド                                                                         | プライベートサブネット内のAWS EC2 NodeからコントロールプレーンのあるAWS VPCにリクエストを送信するため。 |
 | AWS CloudWatchログ            | Interface          | `logs.ap-northeast-1.amazonaws.com`                                                | Pod内のコンテナのログをPOSTリクエストを送信するため。                                                   |
 | AWS ECR                       | Interface          | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                                                                 |
-| S3                            | Gateway            | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                                                        |
+| AWS S3                        | Gateway            | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                                                        |
 | AWS Systems Manager           | Interface          | `ssm.ap-northeast-1.amazonaws.com`                                                 | AWS Systems ManagerのパラメーターストアにGETリクエストを送信するため。                                  |
 | Secrets Manager               | Interface          | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                                                         |
 
@@ -946,13 +946,13 @@ Fargateと比べてカスタマイズ性が高く、ワーカーNode当たりで
 
 #### ▼ IAMポリシー
 
-AWS EC2ワーカーNodeが、自身の所属するClusterにリクエストを送信できるように、AWS EC2ワーカーNodeに`AmazonAWS EKSWorkerNodePolicy`を付与する必要がある。
+AWS EC2ワーカーNodeが、自身の所属するClusterにリクエストを送信できるように、AWS EC2ワーカーNodeに`AmazonEKSWorkerNodePolicy`を付与する必要がある。
 
 AWS EC2ワーカーNode内のPodがAWS ECRからコンテナイメージをプルできるように、AWS EC2ワーカーNodeに`AmazonEC2ContainerRegistryReadOnly`を付与する必要がある。
 
 これにより、PodのコンテナごとにAWSの認証情報をマウントする必要がなくなる。
 
-`aws-node`のPodがAWSのネットワーク系のAPIにリクエストを送信できるように、IRSA用のServiceAccountに`AmazonAWS EKS_CNI_Policy` (IPv4の場合) または `AmazonAWS EKS_CNI_IPv6_Policy` (IPv6の場合) を付与する必要がある。
+`aws-node`のPodがAWSのネットワーク系のAPIにリクエストを送信できるように、IRSA用のServiceAccountに`AmazonAWS EKS_CNI_Policy` (IPv4の場合) または `AmazonEKS_CNI_IPv6_Policy` (IPv6の場合) を付与する必要がある。
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html
 > - https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKSWorkerNodePolicy.html
@@ -1648,12 +1648,12 @@ AWS EC2ワーカーNodeと比べてカスタマイズ性が低く、ワーカー
 
 Fargateを設定する。
 
-| コンポーネント名           | 説明                                                                                                           | 補足                                                                                                                                                                                                                                                                                  |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pod実行ロール              | kubeletがAWSリソースにリクエストを送信できるように、Podにロールを設定する。                                    | ・実行ポリシー (`AmazonAWS EKSFargatePodExecutionRolePolicy`) には、AWS ECRへの認可スコープのみが付与されている。<br>・信頼されたエンティティでは、`eks-fargate-pods.amazonaws.com`を設定する必要がある。<br>https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html |
-| サブネット                 | AWS EKS FargateワーカーNodeが起動するサブネットIDを設定する。                                                  | プライベートサブネットを設定する必要がある。                                                                                                                                                                                                                                          |
-| ポッドセレクタ (Namespace) | AWS EKS FargateワーカーNodeにスケジューリングさせるPodを固定できるように、PodのNamespaceの値を設定する。       | ・`kube-system`や`default`を指定するKubernetesリソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・IstioやArgoCDを、それ専用のNamespaceで稼働させる場合は、そのNamespaceのためのプロファイルを作成しておく必要がある。                                         |
-| ポッドセレクタ (Label)     | AWS EKS FargateワーカーNodeにスケジューリングさせるPodを固定できるように、Podの任意のlabelキーの値を設定する。 |                                                                                                                                                                                                                                                                                       |
+| コンポーネント名           | 説明                                                                                                           | 補足                                                                                                                                                                                                                                                                              |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Pod実行ロール              | kubeletがAWSリソースにリクエストを送信できるように、Podにロールを設定する。                                    | ・実行ポリシー (`AmazonEKSFargatePodExecutionRolePolicy`) には、AWS ECRへの認可スコープのみが付与されている。<br>・信頼されたエンティティでは、`eks-fargate-pods.amazonaws.com`を設定する必要がある。<br>https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html |
+| サブネット                 | AWS EKS FargateワーカーNodeが起動するサブネットIDを設定する。                                                  | プライベートサブネットを設定する必要がある。                                                                                                                                                                                                                                      |
+| ポッドセレクタ (Namespace) | AWS EKS FargateワーカーNodeにスケジューリングさせるPodを固定できるように、PodのNamespaceの値を設定する。       | ・`kube-system`や`default`を指定するKubernetesリソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・IstioやArgoCDを、それ専用のNamespaceで稼働させる場合は、そのNamespaceのためのプロファイルを作成しておく必要がある。                                     |
+| ポッドセレクタ (Label)     | AWS EKS FargateワーカーNodeにスケジューリングさせるPodを固定できるように、Podの任意のlabelキーの値を設定する。 |                                                                                                                                                                                                                                                                                   |
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html#fargate-profile-components
 
