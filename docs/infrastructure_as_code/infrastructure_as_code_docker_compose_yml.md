@@ -797,6 +797,7 @@ networks:
 
 > - https://docs.docker.com/compose/compose-file/compose-file-v2/#external-1
 > - https://nishinatoshiharu.com/external-docker-network/
+> - https://tech.anti-pattern.co.jp/docker-compose/
 
 <br>
 

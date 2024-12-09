@@ -97,10 +97,14 @@ RUN yarn install --prod --frozen-lockfile
 COPY . .
 
 ENTRYPOINT ["/sbin/tini", "--"]
+
+# npmコマンドやyarnコマンドは、すべてのシグナルをNode.jsに転送できないため、Graceful Shutdownを実行できない
+# そのため、npm runコマンドやyarn startコマンドではなく、nodeコマンドを直接実行する
 CMD ["node", "index.js"]
 ```
 
-> - https://blog.shinonome.io/nodejs-docker/#for-toc-14
+> - https://zenn.dev/kouchanne/articles/6485193823ecec5735d4#6.-npm%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7node.js%E3%82%92%E7%AB%8B%E3%81%A1%E4%B8%8A%E3%81%92%E3%81%AA%E3%81%84
+> - https://zenn.dev/yami_beta/articles/333ba1d0fff4d7#handling-kernel-signals
 
 <br>
 
