@@ -751,9 +751,6 @@ $ docker network inspect foo-network
 
 異なる`docker-compose.yml`ファイルから相互に通信できるネットワークを作成する。作成されるネットワーク名は、`<プロジェクト名>_<外部ネットワーク名>`になる。
 
-> - https://docs.docker.com/compose/compose-file/compose-file-v2/#external-1
-> - https://nishinatoshiharu.com/external-docker-network/
-
 **＊実装例＊**
 
 バックエンドとフロントエンドが異なる`docker-compose.yml`ファイルで管理されている。フロントエンドコンテナとバックエンドコンテナの間で相互に通信できるように、ネットワークを公開する。
@@ -761,17 +758,16 @@ $ docker network inspect foo-network
 ```yaml
 # バックエンドのDocker-compose
 services:
-  app:
+  backend:
     container_name: backend-container
     networks:
       # 接続したい外部ネットワーク名
       - shared-network
 
----
 networks:
   # 公開したい外部ネットワーク名
-  foo:
-    external: "true"
+  shared-network:
+    external: true
 ```
 
 フロントエンドコンテナにて、同じ名前の外部ネットワークを作成し、公開する。
@@ -779,18 +775,20 @@ networks:
 ```yaml
 # フロントエンドのDocker-compose
 services:
-  app:
+  frontend:
     container_name: frontend-container
     networks:
       # 接続したい外部ネットワーク名
       - shared-network
 
----
 networks:
   # 公開したい外部ネットワーク名
-  foo:
-    external: "true"
+  shared-netword:
+    external: true
 ```
+
+> - https://docs.docker.com/compose/compose-file/compose-file-v2/#external-1
+> - https://nishinatoshiharu.com/external-docker-network/
 
 <br>
 
