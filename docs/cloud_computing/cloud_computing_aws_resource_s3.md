@@ -204,7 +204,7 @@ description: AWS S3＠AWSリソースの知見を記録しています。
 
 #### ▼ なぜCORS設定
 
-ドメインを割り当ててAWS S3バケットを公開する場合、クライアント (例：AWS API Gateway) とはドメインが異なる。
+ドメインを割り当ててAWS S3バケットを公開する場合、クライアント側 (例：AWS API Gatewayを介したブラウザ) とサーバー側のAWS S3ドメインが異なる。
 
 そのため、CORSでAWS S3への通信が防御されてしまう。
 
@@ -212,13 +212,21 @@ description: AWS S3＠AWSリソースの知見を記録しています。
 
 #### ▼ Access-Control-Allow-Originヘッダー
 
+サーバー側のAWS S3では、`Access-Control-Allow-Origin`ヘッダーに必要な値を設定して返却する。
+
+クライアント側 (例：AWS API Gatewayを介したブラウザ) では`Origin`ヘッダーは、デフォルトで『プロトコル + ドメイン + ポート番号』に設定されるため、特に対処する必要はない。
+
 ```yaml
+# 任意のドメインを許可する
 [{"AllowedOrigins": ["*"]}]
 ```
 
 ```yaml
+# 特定のドメインを許可する
 [{"AllowedOrigins": ["https://example.jp"]}]
 ```
+
+> - https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManageCorsUsing.html#cors-allowed-origin
 
 <br>
 
