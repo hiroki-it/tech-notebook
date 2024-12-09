@@ -23792,10 +23792,43 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="dev">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dev_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ devとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ --host
+    </span>
+  </a>
+  
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. セットアップ
+    </span>
+  </a>
   
 </li>
       
@@ -23838,6 +23871,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="dev">dev<a class="headerlink" href="#dev" title="Permanent link">&para;</a></h3>
+<h4 id="dev_1">▼ devとは<a class="headerlink" href="#dev_1" title="Permanent link">&para;</a></h4>
 <p>開発環境用にJavaScriptファイルをビルドする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>vite<span class="w"> </span>dev
 
@@ -23849,6 +23883,37 @@ $<span class="w"> </span>vite
 <li><a href="https://vite.dev/guide/cli#vite">https://vite.dev/guide/cli#vite</a></li>
 </ul>
 </blockquote>
+<h4 id="-host">▼ --host<a class="headerlink" href="#-host" title="Permanent link">&para;</a></h4>
+<p>開発環境にDockerを使用している場合、ホストOSからコンテナ内のviteに接続できるようにする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vite<span class="w"> </span>dev<span class="w"> </span>--host
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/Junpei_Takagi/items/3615505dcabd2e97f3e1">https://qiita.com/Junpei_Takagi/items/3615505dcabd2e97f3e1</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<p><code>vite</code>コマンドのオプションを設定する。</p>
+<p>開発環境と本番環境で共通のオプションを設定すると良い。</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">defineConfig</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;vite&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">react</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@vitejs/plugin-react&quot;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">defineConfig</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">react</span><span class="p">()],</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>開発環境または本番環境のいずれかでしか使用しないオプションは、<code>package.json</code>ファイルの<code>scripts</code>キーで設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;scripts&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">&quot;dev&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;vite</span><span class="nv"> </span><span class="s">--host&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;build&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;tsc</span><span class="nv"> </span><span class="s">-b</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">vite</span><span class="nv"> </span><span class="s">build&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;lint&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;eslint</span><span class="nv"> </span><span class="s">.&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;preview&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;vite</span><span class="nv"> </span><span class="s">preview&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="p p-Indicator">},</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
 <p><br></p>
 
 
