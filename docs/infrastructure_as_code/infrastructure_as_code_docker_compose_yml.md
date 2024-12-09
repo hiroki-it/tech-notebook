@@ -755,6 +755,14 @@ $ docker network inspect foo-network
 
 バックエンドとフロントエンドが異なる`docker-compose.yml`ファイルで管理されている。フロントエンドコンテナとバックエンドコンテナの間で相互に通信できるように、ネットワークを公開する。
 
+(1) ネットワークを作成する。
+
+```bash
+$ docker network create shared-network
+```
+
+(2) バックエンドのdocker-composeを設定する。
+
 ```yaml
 # バックエンドのDocker-compose
 services:
@@ -770,7 +778,7 @@ networks:
     external: true
 ```
 
-フロントエンドコンテナにて、同じ名前の外部ネットワークを作成し、公開する。
+(3) フロントエンドのdocker-composeを設定する。
 
 ```yaml
 # フロントエンドのDocker-compose
