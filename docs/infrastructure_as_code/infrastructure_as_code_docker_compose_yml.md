@@ -795,6 +795,8 @@ networks:
     external: true
 ```
 
+(4) 各コンテナは `http://localhost:<コンテナごとのポート番号>` で相互に接続できるようになる。
+
 > - https://docs.docker.com/compose/compose-file/compose-file-v2/#external-1
 > - https://nishinatoshiharu.com/external-docker-network/
 > - https://tech.anti-pattern.co.jp/docker-compose/
