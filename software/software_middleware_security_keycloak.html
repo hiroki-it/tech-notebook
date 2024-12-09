@@ -5392,6 +5392,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#issuer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ issuer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 認可エンドポイント
@@ -24387,6 +24396,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#issuer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ issuer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 認可エンドポイント
@@ -24641,9 +24659,11 @@
 <h3 id="oidc_1">OIDC<a class="headerlink" href="#oidc_1" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ 全体<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>全ての設定を取得できる。</p>
+<p>Adminユーザーのrealm名は<code>master</code>で、それ以外のrealmはユーザー定義である。</p>
 <div class="highlight"><pre><span></span><code>/realms/&lt;realm名&gt;/.well-known/openid-configuration
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/.well-known/openid-configuration
+<div class="highlight"><pre><span></span><code><span class="c1"># Adminユーザーのrealm名はmasterで、それ以外のrealmはユーザー定義</span>
+$<span class="w"> </span>curl<span class="w"> </span>https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/.well-known/openid-configuration
 
 <span class="o">{</span>
 <span class="w">  </span><span class="s2">&quot;issuer&quot;</span>:<span class="w"> </span><span class="s2">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;&quot;</span>,
@@ -24676,6 +24696,16 @@
 
 <span class="o">}</span>
 </code></pre></div>
+<h4 id="issuer">▼ issuer<a class="headerlink" href="#issuer" title="Permanent link">&para;</a></h4>
+<p>JWTの発行元認証局を取得できる。</p>
+<p>クライアント側では<code>authority</code>値として指定する。</p>
+<div class="highlight"><pre><span></span><code>/realms/&lt;realm名&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/openidconnect-devio2023/#P.24%2520React%25E5%2581%25B4%25E3%2581%25AE%25E8%25A8%25AD%25E5%25AE%259A%25E5%2586%2585%25E5%25AE%25B9%25E7%25A2%25BA%25E8%25AA%258D">https://dev.classmethod.jp/articles/openidconnect-devio2023/#P.24%2520React%25E5%2581%25B4%25E3%2581%25AE%25E8%25A8%25AD%25E5%25AE%259A%25E5%2586%2585%25E5%25AE%25B9%25E7%25A2%25BA%25E8%25AA%258D</a></li>
+</ul>
+</blockquote>
 <h4 id="_9">▼ 認可エンドポイント<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>/realms/&lt;realm名&gt;/protocol/openid-connect/auth
 </code></pre></div>
@@ -24696,7 +24726,7 @@
 </ul>
 </blockquote>
 <h4 id="_11">▼ ユーザー情報エンドポイント<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>クレームを取得する。</p>
+<p>クレームを取得できる。</p>
 <div class="highlight"><pre><span></span><code>/realms/&lt;realm名&gt;/protocol/openid-connect/userinfo
 </code></pre></div>
 <h4 id="_12">▼ ログアウトエンドポイント<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
