@@ -25056,7 +25056,8 @@
 </ul>
 </blockquote>
 <h4 id="_8">▼ 対処方法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p><code>tini</code>を使用し、アプリやミドルウェアのプロセスを<code>PID=1</code>で動かさないようにする。</p>
+<p><code>tini</code>の子プロセスを実行する。</p>
+<p>これにより、アプリやミドルウェアのプロセスを<code>PID=1</code>で動かさないようにできる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:16-alpine3.15</span>
 <span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
 
@@ -25067,11 +25068,31 @@
 
 <span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
 
+<span class="c"># tiniを実行する</span>
+<span class="c"># パスはドキュメントを参照する</span>
+<span class="c"># @see https://github.com/krallin/tini?tab=readme-ov-file#alpine-linux-package</span>
 <span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/sbin/tini&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--&quot;</span><span class="p">]</span>
 
 <span class="c"># npmコマンドやyarnコマンドは、すべてのシグナルをNode.jsに転送できないため、Graceful Shutdownを実行できない</span>
 <span class="c"># そのため、npm runコマンドやyarn startコマンドではなく、nodeコマンドを直接実行する</span>
 <span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;node&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;index.js&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p>フレームワークなどを使用している場合、<code>node_modules</code>ディレクトリ配下にバイナリがあるはずである。</p>
+<p>これを<code>node</code>コマンドで実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:22.11.0-bookworm-slim</span>
+
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">.</span>
+
+<span class="k">COPY</span><span class="w"> </span>package.json<span class="w"> </span>yarn.lock<span class="w"> </span>./
+
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>tini<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>yarn<span class="w"> </span>install
+
+<span class="c"># Nodeをtiniの子プロセスとして実行し、PID=1にならないようにする</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/bin/tini&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="c"># nodeでviteを直接実行する</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;node&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;./node_modules/.bin/vite&quot;</span><span class="p">]</span>
 </code></pre></div>
 <blockquote>
 <ul>
