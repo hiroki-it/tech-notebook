@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Go
-description: Goの知見を記録しています。
+title: 【IT技術の知見】Go＠言語
+description: Go＠言語の知見を記録しています。
 ---
 
-# Go
+# Go＠言語
 
 ## はじめに
 

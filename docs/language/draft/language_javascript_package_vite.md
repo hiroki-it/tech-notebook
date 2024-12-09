@@ -44,13 +44,19 @@ $ vite
 
 #### ▼ --host
 
-開発環境にDockerを使用している場合、ホストOSからコンテナ内のviteに接続できるようにする。
+開発環境にDockerを使用している場合、viteのポートを全て公開する必要がある。
+
+これにより、ホストOSからコンテナ内のviteに接続できるようにする。
 
 ```bash
 $ vite dev --host
+
+# または
+$ vite dev --host 0.0.0.0
 ```
 
 > - https://qiita.com/Junpei_Takagi/items/3615505dcabd2e97f3e1
+> - https://vite.dev/config/server-options#server-host
 
 <br>
 
