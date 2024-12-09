@@ -89,6 +89,8 @@ Authorization: <パーソナルアクセストークン>
 
 ### realm
 
+#### ▼ realmとは
+
 認証管理におけるテナントのようなもの。
 
 realmごとに認証を管理する。
@@ -97,6 +99,12 @@ realmごとに認証を管理する。
 
 > - https://www.seil.jp/doc/index.html#fn/pppac/cmd/authentication_realm.html
 > - https://keycloak-documentation.openstandia.jp/21.0/ja_JP/server_admin/index.html#the-master-realm
+
+#### ▼ realmの粒度
+
+マイクロサービスアーキテクチャでは、横断的なユーザー定義のrealm、またはマイクロサービスに対応するrealmを作成するとよい。
+
+> - https://github.com/vicjicaman/microservice-realm
 
 <br>
 

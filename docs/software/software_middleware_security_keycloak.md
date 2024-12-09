@@ -114,11 +114,14 @@ Keycloakクライアントは、『ヘッダー』『ペイロード』『署名
 
 全ての設定を取得できる。
 
+Adminユーザーのrealm名は`master`で、それ以外のrealmはユーザー定義である。
+
 ```bash
 /realms/<realm名>/.well-known/openid-configuration
 ```
 
 ```bash
+# Adminユーザーのrealm名はmasterで、それ以外のrealmはユーザー定義
 $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid-configuration
 
 {
@@ -153,6 +156,18 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
 }
 ```
 
+#### ▼ issuer
+
+JWTの発行元認証局を取得できる。
+
+クライアント側では`authority`値として指定する。
+
+```bash
+/realms/<realm名>
+```
+
+> - https://dev.classmethod.jp/articles/openidconnect-devio2023/#P.24%2520React%25E5%2581%25B4%25E3%2581%25AE%25E8%25A8%25AD%25E5%25AE%259A%25E5%2586%2585%25E5%25AE%25B9%25E7%25A2%25BA%25E8%25AA%258D
+
 #### ▼ 認可エンドポイント
 
 ```bash
@@ -176,7 +191,7 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
 
 #### ▼ ユーザー情報エンドポイント
 
-クレームを取得する。
+クレームを取得できる。
 
 ```bash
 /realms/<realm名>/protocol/openid-connect/userinfo

@@ -23,7 +23,7 @@ TypeScriptでOIDCを実施するためのパッケージ。
 import {OidcClient, UserManager} from "oidc-client-ts";
 
 const client = new OidcClient({
-  authority: "<IDプロバイダーの認可エンドポイント>",
+  authority: "<IDプロバイダーのIssuer値>",
   client_id: "<クライアントID>",
   redirect_uri: "<コールバックURL>",
 });
@@ -51,5 +51,6 @@ userManager.signoutRedirect();
 
 > - https://authts.github.io/oidc-client-ts/interfaces/OidcClientSettings.html
 > - https://authts.github.io/oidc-client-ts/classes/OidcClient.html
+> - https://dev.classmethod.jp/articles/openidconnect-devio2023/#P.24%2520React%25E5%2581%25B4%25E3%2581%25AE%25E8%25A8%25AD%25E5%25AE%259A%25E5%2586%2585%25E5%25AE%25B9%25E7%25A2%25BA%25E8%25AA%258D
 
 <br>
