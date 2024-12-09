@@ -238,7 +238,6 @@ CONTAINER ID   IMAGE   COMMAND     CREATED          STATUS         PORTS        
 ```bash
 # /go/bin にアクセスできない時は、/go/bin/cmdにアーティファクトを配置する。
 ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: container_linux.go:367: starting container process caused: exec: "/go/bin": permission denied: unknown
-
 ```
 
 <br>

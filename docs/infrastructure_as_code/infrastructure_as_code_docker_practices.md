@@ -83,7 +83,9 @@ description: プラクティス集＠Dockerの知見を記録しています。
 
 #### ▼ 対処方法
 
-`tini`を使用し、アプリやミドルウェアのプロセスを`PID=1`で動かさないようにする。
+`tini`の子プロセスを実行する。
+
+これにより、アプリやミドルウェアのプロセスを`PID=1`で動かさないようにできる。
 
 ```dockerfile
 FROM node:16-alpine3.15
@@ -96,11 +98,35 @@ RUN yarn install --prod --frozen-lockfile
 
 COPY . .
 
+# tiniを実行する
+# パスはドキュメントを参照する
+# @see https://github.com/krallin/tini?tab=readme-ov-file#alpine-linux-package
 ENTRYPOINT ["/sbin/tini", "--"]
 
 # npmコマンドやyarnコマンドは、すべてのシグナルをNode.jsに転送できないため、Graceful Shutdownを実行できない
 # そのため、npm runコマンドやyarn startコマンドではなく、nodeコマンドを直接実行する
 CMD ["node", "index.js"]
+```
+
+フレームワークなどを使用している場合、`node_modules`ディレクトリ配下にバイナリがあるはずである。
+
+これを`node`コマンドで実行する。
+
+```dockerfile
+FROM node:22.11.0-bookworm-slim
+
+WORKDIR .
+
+COPY package.json yarn.lock ./
+
+RUN apt-get update \
+    && apt-get install tini \
+    && yarn install
+
+# Nodeをtiniの子プロセスとして実行し、PID=1にならないようにする
+ENTRYPOINT ["/usr/bin/tini", "--" ]
+# nodeでviteを直接実行する
+CMD ["node", "./node_modules/.bin/vite"]
 ```
 
 > - https://zenn.dev/kouchanne/articles/6485193823ecec5735d4#6.-npm%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7node.js%E3%82%92%E7%AB%8B%E3%81%A1%E4%B8%8A%E3%81%92%E3%81%AA%E3%81%84
