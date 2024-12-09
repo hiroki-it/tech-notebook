@@ -29,9 +29,9 @@ import {createRoot} from "react-dom/client";
 import {AuthProvider, useAuth} from "../src/.";
 
 const oidcConfig = {
-  authority: "<your authority>",
-  client_id: "<your client id>",
-  redirect_uri: "<your redirect uri>",
+  authority: "<IDプロバイダーの認可エンドポイント>",
+  client_id: "<クライアントID>",
+  redirect_uri: "<コールバックURL>",
 };
 
 function App() {
@@ -54,6 +54,7 @@ function App() {
     );
   }
 
+  // signinRedirect関数でログインする
   return <button onClick={() => void auth.signinRedirect()}>Log in</button>;
 }
 

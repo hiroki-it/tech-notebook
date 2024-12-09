@@ -153,7 +153,15 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
 }
 ```
 
-#### ▼ トークン
+#### ▼ 認可エンドポイント
+
+```bash
+/realms/<realm名>/protocol/openid-connect/auth
+```
+
+> - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
+
+#### ▼ トークンエンドポイント
 
 フローに応じたトークン (アクセストークン、IDトークン) や認可コードを取得できる。
 
@@ -163,10 +171,18 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
 /realms/<realm名>/protocol/openid-connect/token
 ```
 
-> - https://www.keycloak.org/docs/latest/securing_apps/index.html#token-endpoint
+> - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
 > - https://thinkit.co.jp/article/17621
 
-#### ▼ ログアウト
+#### ▼ ユーザー情報エンドポイント
+
+クレームを取得する。
+
+```bash
+/realms/<realm名>/protocol/openid-connect/userinfo
+```
+
+#### ▼ ログアウトエンドポイント
 
 認証を意図的に無効化する。
 
@@ -174,9 +190,9 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
 /realms/<realm名>/protocol/openid-connect/logout
 ```
 
-> - https://www.keycloak.org/docs/latest/securing_apps/index.html#logout-endpoint
+> - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
 
-#### ▼ 公開鍵
+#### ▼ 公開鍵エンドポイント
 
 認証が失効していないか、また不正でないかを検証できる。
 
@@ -184,15 +200,17 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
 /realms/<realm名>/protocol/openid-connect/certs
 ```
 
-> - https://www.keycloak.org/docs/latest/securing_apps/index.html#_certificate_endpoint
+> - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
 
-#### ▼ イントロスペクション
+#### ▼ イントロスペクションエンドポイント
+
+アクセストークンの有効性を検証する。
 
 ```bash
 /realms/<realm名>/protocol/openid-connect/token/introspect
 ```
 
-> - https://www.keycloak.org/docs/latest/securing_apps/index.html#_token_introspection_endpoint
+> - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
 
 <br>
 
