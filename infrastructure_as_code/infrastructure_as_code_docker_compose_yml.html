@@ -25194,6 +25194,10 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 <p>異なる<code>docker-compose.yml</code>ファイルから相互に通信できるネットワークを作成する。作成されるネットワーク名は、<code>&lt;プロジェクト名&gt;_&lt;外部ネットワーク名&gt;</code>になる。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>バックエンドとフロントエンドが異なる<code>docker-compose.yml</code>ファイルで管理されている。フロントエンドコンテナとバックエンドコンテナの間で相互に通信できるように、ネットワークを公開する。</p>
+<p>(1) ネットワークを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> </span>create<span class="w"> </span>shared-network
+</code></pre></div>
+<p>(2) バックエンドのdocker-composeを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># バックエンドのDocker-compose</span>
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">backend</span><span class="p">:</span>
@@ -25207,7 +25211,7 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 <span class="w">  </span><span class="nt">shared-network</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-<p>フロントエンドコンテナにて、同じ名前の外部ネットワークを作成し、公開する。</p>
+<p>(3) フロントエンドのdocker-composeを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># フロントエンドのDocker-compose</span>
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">frontend</span><span class="p">:</span>
