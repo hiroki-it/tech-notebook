@@ -24673,15 +24673,15 @@ aws<span class="w"> </span>configure<span class="w"> </span>list
 <span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">aws-ecs/deploy-update-service</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ecs_update_service_by_rolling_update</span>
-<span class="w">    </span><span class="c1"># AWS AWS ECSタスク定義名を指定</span>
+<span class="w">    </span><span class="c1"># AWS ECSタスク定義名を指定</span>
 <span class="w">    </span><span class="nt">family</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${SERVICE}-ecs-task-definition&quot;</span>
-<span class="w">    </span><span class="c1"># AWS AWS ECSクラスター名を指定</span>
+<span class="w">    </span><span class="c1"># AWS ECSクラスター名を指定</span>
 <span class="w">    </span><span class="nt">cluster-name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${SERVICE}-cluster&quot;</span>
 <span class="w">    </span><span class="c1"># サービス名を指定</span>
 <span class="w">    </span><span class="nt">service-name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${SERVICE}-service&quot;</span>
 <span class="w">    </span><span class="c1"># コンテナ定義のコンテナ名とバージョンタグを上書き。イメージはCircleCIのハッシュ値でタグ付けしているので必須。</span>
 <span class="w">    </span><span class="nt">container-image-name-updates</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}&quot;</span>
-<span class="w">    </span><span class="c1"># AWS AWS ECSタスク定義に基づくAWS ECSタスク数の監視</span>
+<span class="w">    </span><span class="c1"># AWS ECSタスク定義に基づくAWS ECSタスク数の監視</span>
 <span class="w">    </span><span class="nt">verify-revision-is-deployed</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 <span class="w">    </span><span class="c1"># 監視の試行回数</span>
 <span class="w">    </span><span class="nt">max-poll-attempts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
@@ -24710,7 +24710,7 @@ aws<span class="w"> </span>configure<span class="w"> </span>list
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
 </code></pre></div>
 <h4 id="deploy-update-service_1">▼ deploy-update-service (ブルー/グリーンデプロイメント使用時)<a class="headerlink" href="#deploy-update-service_1" title="Permanent link">&para;</a></h4>
-<p>AWS AWS ECSタスク定義を更新する。加えて、ブルー/グリーンデプロイメントがそのAWS ECSタスク定義を指定し、AWS ECSサービスを更新する。</p>
+<p>AWS ECSタスク定義を更新する。加えて、ブルー/グリーンデプロイメントがそのAWS ECSタスク定義を指定し、AWS ECSサービスを更新する。</p>
 <p>ローリングアップデートと同様にして、<code>verify-revision-is-deployed</code>オプションを使用できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
@@ -24937,7 +24937,7 @@ aws<span class="w"> </span>configure<span class="w"> </span>list
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-09</span>
   </span>
 
     

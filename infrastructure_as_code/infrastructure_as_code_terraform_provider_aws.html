@@ -16850,13 +16850,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#s3" class="md-nav__link">
+  <a href="#aws-s3" class="md-nav__link">
     <span class="md-ellipsis">
-      S3
+      AWS S3
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="S3">
+    <nav class="md-nav" aria-label="AWS S3">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -17053,9 +17053,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#s3_1" class="md-nav__link">
+  <a href="#aws-s3_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ S3バケット
+      ▼ AWS S3バケット
     </span>
   </a>
   
@@ -17086,9 +17086,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#s3_2" class="md-nav__link">
+  <a href="#aws-s3_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ S3バケットの場合
+      ▼ AWS S3バケットの場合
     </span>
   </a>
   
@@ -25765,13 +25765,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#s3" class="md-nav__link">
+  <a href="#aws-s3" class="md-nav__link">
     <span class="md-ellipsis">
-      S3
+      AWS S3
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="S3">
+    <nav class="md-nav" aria-label="AWS S3">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25968,9 +25968,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#s3_1" class="md-nav__link">
+  <a href="#aws-s3_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ S3バケット
+      ▼ AWS S3バケット
     </span>
   </a>
   
@@ -26001,9 +26001,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#s3_2" class="md-nav__link">
+  <a href="#aws-s3_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ S3バケットの場合
+      ▼ AWS S3バケットの場合
     </span>
   </a>
   
@@ -26391,7 +26391,7 @@
 
 <span class="w">  </span><span class="p">...</span>
 
-<span class="c1">  # オリジン (ここではS3としている)</span>
+<span class="c1">  # オリジン (ここではAWS S3としている)</span>
 <span class="w">  </span><span class="nb">origin</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">domain_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.s3_bucket_regional_domain_name</span>
 <span class="w">    </span><span class="na">origin_id</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;S3-${var.s3_bucket_id}&quot;</span>
@@ -27442,19 +27442,19 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <p>Terraformを使用してVPCを作成した時、メインルートテーブルが自動的に作成される。</p>
 <p>そのため、これはTerraformの管理外である。</p>
 <p><br></p>
-<h2 id="s3">S3<a class="headerlink" href="#s3" title="Permanent link">&para;</a></h2>
+<h2 id="aws-s3">AWS S3<a class="headerlink" href="#aws-s3" title="Permanent link">&para;</a></h2>
 <h3 id="_30">バケットポリシー<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
-<p>S3紐付けられる、自身へのアクセスを制御するためにインラインポリシーのこと。</p>
+<p>AWS S3紐付けられる、自身へのアクセスを制御するためにインラインポリシーのこと。</p>
 <p>定義したバケットポリシーは、<code>aws_s3_bucket_policy</code>リソースでロールに紐付けできる。</p>
 <p><br></p>
 <h3 id="alb">ALBアクセスログ<a class="headerlink" href="#alb" title="Permanent link">&para;</a></h3>
 <p>ALBがバケットにログを書き込めるように、『ELBのサービスアカウントID』を許可する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># S3 bucket policy</span>
+<span class="c1"># AWS S3 bucket policy</span>
 <span class="c1"># ---------------------------------------------</span>
 
-<span class="c1"># S3にバケットポリシーを紐付けします。</span>
+<span class="c1"># AWS S3にバケットポリシーを紐付けします。</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_s3_bucket_policy&quot;</span><span class="w"> </span><span class="nv">&quot;alb&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_s3_bucket.alb_logs.id</span>
 <span class="w">  </span><span class="na">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">templatefile</span><span class="p">(</span>
@@ -27489,10 +27489,10 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <p>ALBがバケットにログを書き込めるように、『<code>delivery.logs.amazonaws.com</code>』からのリクエストを許可する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># S3 bucket policy</span>
+<span class="c1"># AWS S3 bucket policy</span>
 <span class="c1"># ---------------------------------------------</span>
 
-<span class="c1"># S3にバケットポリシーを紐付けします。</span>
+<span class="c1"># AWS S3にバケットポリシーを紐付けします。</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_s3_bucket_policy&quot;</span><span class="w"> </span><span class="nv">&quot;nlb&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_s3_bucket.nlb_logs.id</span>
 <span class="w">  </span><span class="na">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">templatefile</span><span class="p">(</span>
@@ -28074,7 +28074,7 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <li>
 <p>Terraformによる初期作成時に必要であり、それがないとそもそも<code>terraform apply</code>コマンドできない：</p>
 <ul>
-<li>Terraform用IAMユーザー、tfstateを管理するS3バケットなど</li>
+<li>Terraform用IAMユーザー、tfstateを管理するAWS S3バケットなど</li>
 <li>これに関しては、CloudFormationで作成しても良い。</li>
 </ul>
 </li>
@@ -28083,7 +28083,7 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <li>
 <p>Terraformの誤操作で削除してはいけないAWSリソースでは、Terraformで管理しないことにより、削除を防げる：</p>
 <ul>
-<li>tfstateを管理するS3バケットなど</li>
+<li>tfstateを管理するAWS S3バケットなど</li>
 </ul>
 </li>
 </ul>
@@ -28188,9 +28188,9 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <td>ホストゾーンを作成すると、レコードとして、NSレコード値が自動的に設定される。これは、Terraformの管理外である。</td>
 </tr>
 <tr>
-<td>S3</td>
+<td>AWS S3</td>
 <td><code>tfstate</code>ファイルの管理バケット</td>
-<td>・リモートバックエンドとして<code>tfstate</code>ファイルを格納するため、Terraformのデプロイより先に存在している必要がある。<br>・Terraformで誤って削除してしまわないようにする。<br>・<code>terraform apply -destroy</code>コマンドの実行時に、他のAWSリソースを削除する前に<code>tfstate</code>ファイルのS3バケットを先に削除してしまう。</td>
+<td>・リモートバックエンドとして<code>tfstate</code>ファイルを格納するため、Terraformのデプロイより先に存在している必要がある。<br>・Terraformで誤って削除してしまわないようにする。<br>・<code>terraform apply -destroy</code>コマンドの実行時に、他のAWSリソースを削除する前に<code>tfstate</code>ファイルのAWS S3バケットを先に削除してしまう。</td>
 </tr>
 <tr>
 <td>SES</td>
@@ -28206,8 +28206,8 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 </table>
 <p><br></p>
 <h3 id="aws-cli">AWS CLIによるセットアップ例<a class="headerlink" href="#aws-cli" title="Permanent link">&para;</a></h3>
-<h4 id="s3_1">▼ S3バケット<a class="headerlink" href="#s3_1" title="Permanent link">&para;</a></h4>
-<p>以下のコマンドを実行し、<code>tfstate</code>ファイル用のS3バケットを作成する。</p>
+<h4 id="aws-s3_1">▼ AWS S3バケット<a class="headerlink" href="#aws-s3_1" title="Permanent link">&para;</a></h4>
+<p>以下のコマンドを実行し、<code>tfstate</code>ファイル用のAWS S3バケットを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nv">AWS_REGION</span><span class="o">=</span><span class="s2">&quot;ap-northeast-1&quot;</span>
 <span class="nv">PREFIX</span><span class="o">=</span>foo
 <span class="nv">ENV</span><span class="o">=</span>prd
@@ -28271,11 +28271,11 @@ aws<span class="w"> </span>dynamodb<span class="w"> </span>create-table<span cla
 </blockquote>
 <p><br></p>
 <h3 id="tfstateawsterraform"><code>tfstate</code>ファイルに関連するAWSリソースをTerraformで管理する<a class="headerlink" href="#tfstateawsterraform" title="Permanent link">&para;</a></h3>
-<h4 id="s3_2">▼ S3バケットの場合<a class="headerlink" href="#s3_2" title="Permanent link">&para;</a></h4>
-<p><code>tfstate</code>ファイルを管理するS3バケットをTerraformで管理しないプラクティスが一般的ではあるが、実はTerraformで管理する裏技がある。</p>
-<p>それは、<code>tfstate</code>ファイルのS3バケットのみを、別のローカルバックエンドの<code>tfsftate</code>ファイルで管理する方法である。</p>
-<p>このローカルバックエンドの<code>tfstate</code>ファイルが管理するS3バケットをリモートバックエンドとして、メインの<code>tfstate</code>ファイルを配置する。</p>
-<p>もちろん、ローカルバックエンドの<code>tfstate</code>ファイルがS3バケットに配置されたメインの<code>tfstate</code>ファイルを検知しないように、無視する必要がある。</p>
+<h4 id="aws-s3_2">▼ AWS S3バケットの場合<a class="headerlink" href="#aws-s3_2" title="Permanent link">&para;</a></h4>
+<p><code>tfstate</code>ファイルを管理するAWS S3バケットをTerraformで管理しないプラクティスが一般的ではあるが、実はTerraformで管理する裏技がある。</p>
+<p>それは、<code>tfstate</code>ファイルのAWS S3バケットのみを、別のローカルバックエンドの<code>tfsftate</code>ファイルで管理する方法である。</p>
+<p>このローカルバックエンドの<code>tfstate</code>ファイルが管理するAWS S3バケットをリモートバックエンドとして、メインの<code>tfstate</code>ファイルを配置する。</p>
+<p>もちろん、ローカルバックエンドの<code>tfstate</code>ファイルがAWS S3バケットに配置されたメインの<code>tfstate</code>ファイルを検知しないように、無視する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;local&quot;</span><span class="w"> </span><span class="p">{}</span>
 
@@ -28423,7 +28423,7 @@ aws<span class="w"> </span>dynamodb<span class="w"> </span>create-table<span cla
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-09</span>
   </span>
 
     

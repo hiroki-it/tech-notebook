@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="S3＠AWSリソースの知見を記録しています。">
+        <meta name="description" content="AWS S3＠AWSリソースの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】S3＠AWSリソース - 俺の技術ノート</title>
+        <title>【IT技術の知見】AWS S3＠AWSリソース - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#s3aws" class="md-skip">
+        <a href="#aws-s3aws" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】S3＠AWSリソース
+              【IT技術の知見】AWS S3＠AWSリソース
             
           </span>
         </div>
@@ -13784,9 +13784,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-s3simple-storage-service" class="md-nav__link">
+  <a href="#01-aws-s3simple-storage-service" class="md-nav__link">
     <span class="md-ellipsis">
-      01. S3とは：Simple Storage Service
+      01. AWS S3とは：Simple Storage Service
     </span>
   </a>
   
@@ -13864,9 +13864,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#s3arn" class="md-nav__link">
+  <a href="#aws-s3arn" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ S3のARNについて
+      ▼ AWS S3のARNについて
     </span>
   </a>
   
@@ -13933,9 +13933,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#get" class="md-nav__link">
+  <a href="#cors_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 指定したドメインからのGETリクエストを許可
+      ▼ なぜCORS設定
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-control-allow-origin" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Access-Control-Allow-Originヘッダー
     </span>
   </a>
   
@@ -24019,9 +24028,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-s3simple-storage-service" class="md-nav__link">
+  <a href="#01-aws-s3simple-storage-service" class="md-nav__link">
     <span class="md-ellipsis">
-      01. S3とは：Simple Storage Service
+      01. AWS S3とは：Simple Storage Service
     </span>
   </a>
   
@@ -24099,9 +24108,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#s3arn" class="md-nav__link">
+  <a href="#aws-s3arn" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ S3のARNについて
+      ▼ AWS S3のARNについて
     </span>
   </a>
   
@@ -24168,9 +24177,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#get" class="md-nav__link">
+  <a href="#cors_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 指定したドメインからのGETリクエストを許可
+      ▼ なぜCORS設定
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-control-allow-origin" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Access-Control-Allow-Originヘッダー
     </span>
   </a>
   
@@ -24228,7 +24246,7 @@
   
 
 
-<h1 id="s3aws">S3＠AWSリソース<a class="headerlink" href="#s3aws" title="Permanent link">&para;</a></h1>
+<h1 id="aws-s3aws">AWS S3＠AWSリソース<a class="headerlink" href="#aws-s3aws" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -24237,7 +24255,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-s3simple-storage-service">01. S3とは：Simple Storage Service<a class="headerlink" href="#01-s3simple-storage-service" title="Permanent link">&para;</a></h2>
+<h2 id="01-aws-s3simple-storage-service">01. AWS S3とは：Simple Storage Service<a class="headerlink" href="#01-aws-s3simple-storage-service" title="Permanent link">&para;</a></h2>
 <p>クラウドオブジェクトストレージとして働く。</p>
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
@@ -24298,8 +24316,8 @@
 </tr>
 <tr>
 <td>デフォルト暗号化</td>
-<td>AWS S3バケットに保管するファイルの暗号化方法を設定する。S3マネージド暗号化キー (<strong><em>-S3) 、KMS (</em></strong>-KMS) 、ユーザー定義の暗号化キー (***-C) 、を使用できる。</td>
-<td>サーバーサイド暗号化 (SSE-S3、SSE-KMS、SSE-C) と クライアントサイド暗号化 (CSE-KMS、CSE-C) があり。オススメはサーバーサイド暗号化であり、S3バケットにファイルをアップロードするタイミングでこれを暗号化する。また一方で、ダウンロード時にファイルを復号化する。<br>・<a href="https://zenn.dev/amarelo_n24/articles/3d252c27cfb98e">https://zenn.dev/amarelo_n24/articles/3d252c27cfb98e</a></td>
+<td>AWS S3バケットに保管するファイルの暗号化方法を設定する。AWS S3マネージド暗号化キー (<strong><em>-AWS S3) 、KMS (</em></strong>-KMS) 、ユーザー定義の暗号化キー (***-C) 、を使用できる。</td>
+<td>サーバーサイド暗号化 (SSE-AWS S3、SSE-KMS、SSE-C) と クライアントサイド暗号化 (CSE-KMS、CSE-C) があり。オススメはサーバーサイド暗号化であり、AWS S3バケットにファイルをアップロードするタイミングでこれを暗号化する。また一方で、ダウンロード時にファイルを復号化する。<br>・<a href="https://zenn.dev/amarelo_n24/articles/3d252c27cfb98e">https://zenn.dev/amarelo_n24/articles/3d252c27cfb98e</a></td>
 </tr>
 <tr>
 <td>オブジェクトのロック</td>
@@ -24408,11 +24426,11 @@
 </table>
 <p><br></p>
 <h3 id="_7">バケットポリシーの例<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<h4 id="s3arn">▼ S3のARNについて<a class="headerlink" href="#s3arn" title="Permanent link">&para;</a></h4>
-<p>ポリシーでは、S3のARでは、『<code>arn:aws:s3:::&lt;バケット名&gt;/*</code>』のように、最後にバックスラッシュアスタリスクが必要。</p>
+<h4 id="aws-s3arn">▼ AWS S3のARNについて<a class="headerlink" href="#aws-s3arn" title="Permanent link">&para;</a></h4>
+<p>ポリシーでは、AWS S3のARNでは、『<code>arn:aws:s3:::&lt;バケット名&gt;/*</code>』のように、最後にバックスラッシュアスタリスクが必要。</p>
 <h4 id="alb">▼ ALBのアクセスログの保管を許可<a class="headerlink" href="#alb" title="Permanent link">&para;</a></h4>
-<p>パブリックアクセスが無効化されたS3に対して、ALBへのアクセスログを保管したい場合、バケットポリシーを設定する必要がある。</p>
-<p>バケットポリシーには、ALBからS3へのログ書き込み認可スコープを実装する。『<code>"AWS": "arn:aws:iam::582318560864:root"</code>』では、<code>582318560864</code>はALBアカウントIDと呼ばれ、リージョンごとに値が決まっている。</p>
+<p>パブリックアクセスが無効化されたAWS S3に対して、ALBへのアクセスログを保管したい場合、バケットポリシーを設定する必要がある。</p>
+<p>バケットポリシーには、ALBからAWS S3へのログ書き込み認可スコープを実装する。『<code>"AWS": "arn:aws:iam::582318560864:root"</code>』では、<code>582318560864</code>はALBアカウントIDと呼ばれ、リージョンごとに値が決まっている。</p>
 <p>これは、東京リージョンのアカウントIDである。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
@@ -24434,7 +24452,7 @@
 </ul>
 </blockquote>
 <h4 id="cloudfront">▼ CloudFrontのファイル読み出しを許可<a class="headerlink" href="#cloudfront" title="Permanent link">&para;</a></h4>
-<p>パブリックアクセスが無効化されたS3に対して、CloudFrontからのルーティングで静的ファイルを読み出したい場合、バケットポリシーでCloudFrontの識別情報を設定する必要がある。</p>
+<p>パブリックアクセスが無効化されたAWS S3に対して、CloudFrontからのルーティングで静的ファイルを読み出したい場合、バケットポリシーでCloudFrontの識別情報を設定する必要がある。</p>
 <p>補足として2022/08/31時点で、オリジンアクセスアイデンティティを識別情報として使用する方法は非推奨になり、オリジンアクセスコントロールが推奨になった。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
@@ -24460,14 +24478,14 @@
 </ul>
 </blockquote>
 <h4 id="cloudfront_1">▼ CloudFrontのアクセスログの保管を許可<a class="headerlink" href="#cloudfront_1" title="Permanent link">&para;</a></h4>
-<p>執筆時点 (2020/10/08) では、パブリックアクセスが無効化されたS3に対して、CloudFrontへのアクセスログを保管できない。</p>
+<p>執筆時点 (2020/10/08) では、パブリックアクセスが無効化されたAWS S3に対して、CloudFrontへのアクセスログを保管できない。</p>
 <p>よって、危険ではあるが、パブリックアクセスを有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ポリシーは不要</span>
 </code></pre></div>
 <h4 id="aws-lambda">▼ AWS Lambdaからのリクエストを許可<a class="headerlink" href="#aws-lambda" title="Permanent link">&para;</a></h4>
 <p>バケットポリシーは不要である。</p>
 <p>代わりに、AWS管理ポリシーの『<code>AWSLambdaExecute</code>』が紐付けられたロールをAWS Lambdaに紐付ける必要がある。</p>
-<p>このポリシーには、S3への認可スコープの他、CloudWatchログにログを作成するための認可スコープが設定されている。</p>
+<p>このポリシーには、AWS S3への認可スコープの他、CloudWatchログにログを作成するための認可スコープが設定されている。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
@@ -24504,22 +24522,20 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="cors">CORS設定<a class="headerlink" href="#cors" title="Permanent link">&para;</a></h3>
-<h4 id="get">▼ 指定したドメインからのGETリクエストを許可<a class="headerlink" href="#get" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span>
-<span class="w">  </span><span class="p p-Indicator">{</span>
-<span class="w">    </span><span class="s">&quot;AllowedHeaders&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;Content-*&quot;</span><span class="p p-Indicator">],</span>
-<span class="w">    </span><span class="s">&quot;AllowedMethods&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;GET&quot;</span><span class="p p-Indicator">],</span>
-<span class="w">    </span><span class="s">&quot;AllowedOrigins&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;https://example.jp&quot;</span><span class="p p-Indicator">],</span>
-<span class="w">    </span><span class="s">&quot;ExposeHeaders&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
-<span class="w">    </span><span class="s">&quot;MaxAgeSeconds&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">3600</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="p p-Indicator">},</span>
-<span class="p p-Indicator">]</span>
+<h4 id="cors_1">▼ なぜCORS設定<a class="headerlink" href="#cors_1" title="Permanent link">&para;</a></h4>
+<p>ドメインを割り当ててAWS S3バケットを公開する場合、クライアント (例：AWS API Gateway) とはドメインが異なる。</p>
+<p>そのため、CORSでAWS S3への通信が防御されてしまう。</p>
+<p>これに対処する必要がある。</p>
+<h4 id="access-control-allow-origin">▼ Access-Control-Allow-Originヘッダー<a class="headerlink" href="#access-control-allow-origin" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[{</span><span class="s">&quot;AllowedOrigins&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]}]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[{</span><span class="s">&quot;AllowedOrigins&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;https://example.jp&quot;</span><span class="p p-Indicator">]}]</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="url">署名付きURL<a class="headerlink" href="#url" title="Permanent link">&para;</a></h3>
 <h4 id="url_1">▼ 署名付きURLとは<a class="headerlink" href="#url_1" title="Permanent link">&para;</a></h4>
 <p>認証/認可情報をパラメーターに持つURLのこと。</p>
-<p>S3では、署名付きURLを発行し、S3への認可スコープを外部のユーザーに一時的に付与する。</p>
+<p>AWS S3では、署名付きURLを発行し、AWS S3への認可スコープを外部のユーザーに一時的に付与する。</p>
 <blockquote>
 <ul>
 <li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2107/15/news009.html">https://atmarkit.itmedia.co.jp/ait/articles/2107/15/news009.html</a></li>
@@ -24546,7 +24562,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-09</span>
   </span>
 
     
