@@ -749,7 +749,7 @@ $ docker network inspect foo-network
 
 ![docker-compose_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-compose_external.png)
 
-異なる`docker-compose.yml`ファイルから相互に通信できるネットワークを作成する。作成されるネットワーク名は、`<プロジェクト名>_<外部ネットワーク名>`になる。
+異なる`docker-compose.yml`ファイルから相互に通信できるネットワークを作成する。作成されるネットワーク名は、`<プロジェクト名>_<ネットワーク名>`になる。
 
 **＊実装例＊**
 
@@ -769,11 +769,18 @@ services:
   backend:
     container_name: backend-container
     networks:
-      # 接続したい外部ネットワーク名
+      # 接続したいネットワーク名
       - shared-network
+      - backend-network
+  database:
+    container_name: mysql
+    networks:
+      - backend-network
 
 networks:
-  # 公開したい外部ネットワーク名
+  # 公開しないネットワーク名
+  backend-network:
+  # 公開したいネットワーク名
   shared-network:
     external: true
 ```
@@ -786,11 +793,11 @@ services:
   frontend:
     container_name: frontend-container
     networks:
-      # 接続したい外部ネットワーク名
+      # 接続したいネットワーク名
       - shared-network
 
 networks:
-  # 公開したい外部ネットワーク名
+  # 公開したいネットワーク名
   shared-netword:
     external: true
 ```

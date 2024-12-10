@@ -24,6 +24,7 @@ description=keycloak.conf＠Keycloakの知見を記録しています。
 | `PROXY_ADDRESS_FORWARDING` | `true`     | Keycloakの前段にリバースプロキシ (サイドカーも含む) がある場合に`true`とする。 |
 
 > - https://www.keycloak.org/server/all-config#category-bootstrap_admin
+> - https://blog.linkode.co.jp/entry/2021/06/23/061829#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AB-PROXY_ADDRESS_FORWARDINGtrue-%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B
 
 <br>
 
