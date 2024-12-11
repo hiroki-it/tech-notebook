@@ -57,7 +57,7 @@
 
 ### 通信方式
 
-* #### [リクエスト_レスポンス方式](https://hiroki-it.github.io/tech-notebook/software/software_application_communication_style_request_response.html)
+* #### [リクエスト/レスポンス方式](https://hiroki-it.github.io/tech-notebook/software/software_application_communication_style_request_response.html)
 
 <br>
 
