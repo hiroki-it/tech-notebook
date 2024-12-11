@@ -62,3 +62,68 @@ $ yarn prisma db seed
 ```
 
 <br>
+
+### $transaction
+
+#### ▼ $transaction
+
+複数のクエリ処理を実行するトランザクションを定義する。
+
+```javascript
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+
+function transfer(from: string, to: string, amount: number) {
+
+  return prisma.$transaction(async (tx) => {
+
+    const sender = await tx.account.update({
+      data: {
+        balance: {
+          decrement: amount,
+        },
+      },
+      where: {
+        email: from,
+      },
+    })
+
+    if (sender.balance < 0) {
+      throw new Error(`${from} doesn't have enough to send ${amount}`)
+    }
+
+    const recipient = await tx.account.update({
+      data: {
+        balance: {
+          increment: amount,
+        },
+      },
+      where: {
+        email: to,
+      },
+    })
+
+    return recipient
+  })
+}
+
+async function main() {
+
+  // $transaction関数の実行をtray-catchブロックで囲む
+  try {
+
+    await transfer('alice@prisma.io', 'bob@prisma.io', 100)
+    await transfer('alice@prisma.io', 'bob@prisma.io', 100)
+
+  } catch (err) {
+
+
+  }
+}
+
+main()
+```
+
+> - https://www.prisma.io/docs/orm/prisma-client/queries/transactions#interactive-transactions
+
+<br>

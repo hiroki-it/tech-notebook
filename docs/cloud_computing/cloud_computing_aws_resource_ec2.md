@@ -332,6 +332,16 @@ AWS EBSボリュームを持つAWS EC2を作成するAWS AMIのこと。
 
 <br>
 
+### AWS AMIの作成
+
+AMIの作成時に再起動が基本的に必要になる。
+
+これを無効にできるが、データが欠損する恐れがある。
+
+> - https://qiita.com/mechamogera/items/60a23cf5a52f8ebd8417
+
+<br>
+
 ### AWS AMIの共有
 
 | 共有先                          | 説明 |
