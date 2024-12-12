@@ -79,11 +79,11 @@ description: ホワイトボックステスト＠マイクロサービスアー�
 
 送信元マイクロサービス (コンシューマー) と宛先マイクロサービス (プロデューサー) の連携のテストを実施する。
 
-この時、一方のマイクロサービスに他方のマイクロサービスのモックの定義するのではなく、モックの定義を『契約 (Contract) サービス』として切り分ける。
+この時、一方のマイクロサービスに他方のマイクロサービスのモックの定義するのではなく、モックの定義を『コントラクト (契約) サービス』として切り分ける。
 
 これを双方のマイクロサービス間で共有する。
 
-契約サービス上で、双方のリクエスト/レスポンスの内容が期待値に合致するかを検証する。
+コントラクトサービス上で、双方のリクエスト/レスポンスの内容が期待値に合致するかを検証する。
 
 ![cdc-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cdc-test.png)
 
@@ -96,7 +96,7 @@ description: ホワイトボックステスト＠マイクロサービスアー�
 
 送信元マイクロサービス (コンシューマー) と宛先マイクロサービス (プロデューサー) の双方のモックとして機能する。
 
-例えば、Pactは契約サービスをPact Brokerとして提供する。
+例えば、PactはコントラクトサービスをPact Brokerとして提供する。
 
 ![cdc-test_contract-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cdc-test_contract-service.png)
 

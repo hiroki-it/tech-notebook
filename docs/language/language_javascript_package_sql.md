@@ -109,7 +109,7 @@ function transfer(from: string, to: string, amount: number) {
 
 async function main() {
 
-  // $transaction関数の実行をtray-catchブロックで囲む
+  // $transaction関数の実行をtry-catchブロックで囲む
   try {
 
     await transfer('alice@prisma.io', 'bob@prisma.io', 100)

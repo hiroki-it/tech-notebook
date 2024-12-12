@@ -249,7 +249,7 @@ if (true) {
 console.log(foo); // ERROR
 ```
 
-また、`try-catch`構文では変数への代入が保証されていないため、`let`を使用して、あらかじめ初期化しておく必要がある。
+また、try-catchでは変数への代入が保証されていないため、`let`を使用して、あらかじめ初期化しておく必要がある。
 
 ```javascript
 const asyncFunc = async () => {
