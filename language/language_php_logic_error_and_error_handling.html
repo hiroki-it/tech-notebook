@@ -7427,7 +7427,7 @@
           <li class="md-nav__item">
   <a href="#try-catch-finally" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ try-catch-finally文とは
+      ▼ try-catch-finallyとは
     </span>
   </a>
   
@@ -24350,7 +24350,7 @@
           <li class="md-nav__item">
   <a href="#try-catch-finally" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ try-catch-finally文とは
+      ▼ try-catch-finallyとは
     </span>
   </a>
   
@@ -24652,8 +24652,8 @@
 <p><br></p>
 <h2 id="03">03. 例外キャッチ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_13">例外キャッチの方法<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<h4 id="try-catch-finally">▼ try-catch-finally文とは<a class="headerlink" href="#try-catch-finally" title="Permanent link">&para;</a></h4>
-<p>try-catch-finally文では、特定の処理の中で起こる想定できない例外を捉えられる。定義されたエラー文は、デバック画面に表示される。</p>
+<h4 id="try-catch-finally">▼ try-catch-finallyとは<a class="headerlink" href="#try-catch-finally" title="Permanent link">&para;</a></h4>
+<p>try-catch-finallyでは、特定の処理の中で起こる想定できない例外を捉えられる。定義されたエラー文は、デバック画面に表示される。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -24779,7 +24779,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_14">新たな例外のスローし直し<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<p>例外をtry-catch文でキャッチした後、別の新しい例外をスローしても良い。</p>
+<p>例外をtry-catchでキャッチした後、別の新しい例外をスローしても良い。</p>
 <p>その場合は、例外のコンストラクタの第三引数 (<code>previous</code>) を使用して、キャッチされていた元の例外も検知できるようにする。</p>
 <p>補足として、この例外をロギングする場合、スタックトレースログとして出力される。</p>
 <blockquote>
@@ -24799,7 +24799,7 @@
 </ul>
 </blockquote>
 <h4 id="_17">▼ ユースケース派<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>コントローラーの実装をより単純にするべく、より下位のユースケースにtry-catch文を実装する。</p>
+<p>コントローラーの実装をより単純にするべく、より下位のユースケースにtry-catchを実装する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/">https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/</a></li>
@@ -24886,7 +24886,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_19">ロギングのレイヤー<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
-<p>try-catch文に伴うロギングの場合、catch句の中でこれを実行する。そのため、ロギングを実行するレイヤーはtray-catch文のレイヤーと同じになる。</p>
+<p>try-catchに伴うロギングの場合、catch句の中でこれを実行する。そのため、ロギングを実行するレイヤーはtry-catchのレイヤーと同じになる。</p>
 <p><br></p>
 <h3 id="_20">ログの種類別の振り分け<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <h4 id="_21">▼ 例外ごとのロギング<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
@@ -24970,7 +24970,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-12</span>
   </span>
 
     
