@@ -199,6 +199,8 @@ const nuxtConfig: Configuration = {
 
 定数に代入する場合は、まとめて代入すると良い。
 
+なお、依存パッケージが増えてしまうため、代替の方法があるならそちらの方が良い。
+
 ```bash
 $ npm install @nuxtjs/dotenv
 ```

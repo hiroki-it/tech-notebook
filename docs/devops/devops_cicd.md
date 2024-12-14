@@ -206,7 +206,7 @@ graph TD;
 
   C ---> | オンプレ | E[オンプレのための<br>CIOps]
   C ---> | AWS EC2, Google GCE | F["IaaSのための<br>CIOps"]
-  C ---> | AWS Lambda, Google Cloud Function | G[非コンテナFaaSのための<br>CIOps]
+  C ---> | AWS Lambda, Google Cloud Run Functions | G[非コンテナFaaSのための<br>CIOps]
 
   D ----> | Docker compose on オンプレ | H[Docker composeのための<br>CIOps]
   D ----> | AWS ECS, Google CloudRun  | I[CaaSのための<br>CIOps]
@@ -215,7 +215,7 @@ graph TD;
   D ----> | AWS EKS Anywhere Baremetal Deployment, Google Anthos on Baremetal| L[IaaSのための<br>GitOps]
   D ----> | AWS EKS, Google Cloud GKE | M[CaaSのための<br>GitOps]
 
-  J --> | AWS Lambda, Google Cloud Function | N[コンテナ化FaaSのための<br>CIOps]
+  J --> | AWS Lambda, Google Cloud Run Functions | N[コンテナ化FaaSのための<br>CIOps]
   J --> | dockerコマンド on オンプレ| O[dockerコマンドのための<br>CIOps]
 
   E ---> P[CIOpsのための<br>ブランチ戦略]

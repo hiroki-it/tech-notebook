@@ -92,6 +92,10 @@ description: TypeScriptの知見を記録しています。
 
 #### ▼ dotenvパッケージ
 
+`dotenv`パッケージ
+
+なお、依存パッケージが増えてしまうため、代替の方法があるならそちらの方が良い。
+
 ```typescript
 import dotenv from "dotenv";
 

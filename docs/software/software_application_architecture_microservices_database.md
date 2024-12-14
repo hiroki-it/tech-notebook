@@ -901,7 +901,7 @@ Sagaオーケストレーターのドメインモデリングにイベントソ�
 各マイクロサービス間の通信方式は、パブリッシュ/サブスクライブパターンにする必要がある。
 
 - AWS Lambda、マイクロサービス間のパブリッシュ/サブスクライブAWSリソース (例：AWS EventBridge、AWS SQS、AWS SNS）
-- Google Cloud Function、マイクロサービス間のパブリッシュ/サブスクライブGoogle Cloudリソース (例：Google Eventarc）
+- Google Cloud Run Functions、マイクロサービス間のパブリッシュ/サブスクライブGoogle Cloudリソース (例：Google Eventarc）
 
 > - https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/saga-choreography.html
 > - https://d.nekoruri.jp/entry/2023/03/15/20230216serverless

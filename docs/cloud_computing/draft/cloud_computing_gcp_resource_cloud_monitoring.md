@@ -47,7 +47,7 @@ description: Cloud Monitoring＠Google Cloudリソースの知見を記録して
 このデータポイントを集計し、このアラートをトリガーするメトリクスとして使用できる。
 
 ```bash
-# Cloud Functionの正常性をデータポイント化する
+# Google Cloud Run Functionsの正常性をデータポイント化する
 resource.type = "cloud_function" AND metric.type = "cloudfunctions.googleapis.com/function/execution_count" AND metric.labels.status != "ok"
 ```
 

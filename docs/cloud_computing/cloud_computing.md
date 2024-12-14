@@ -155,11 +155,11 @@ FaaSで構築したシステムは、CaaSと同じくサーバーの管理が全
 
 #### ▼ NoCode
 
-| サービス名   | リソース名             |
-| ------------ | ---------------------- |
-| AWS          | AWS Honeycode          |
-| Google Cloud | Google Cloud Functions |
-| Azure        | Azure Logc Apps        |
+| サービス名   | リソース名                 |
+| ------------ | -------------------------- |
+| AWS          | AWS Honeycode              |
+| Google Cloud | Google Cloud Run Functions |
+| Azure        | Azure Logc Apps            |
 
 > - https://cloudsecurityalliance.jp/newblog/2021/02/09/%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%AE%E9%80%B2%E5%8C%96%E3%81%A8%E6%96%B0%E3%81%9F%E3%81%AA%E8%B2%AC%E4%BB%BB/
 

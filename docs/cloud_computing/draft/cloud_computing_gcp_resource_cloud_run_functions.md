@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Cloud Function＠Google Cloudリソース
-description: Cloud Function＠Google Cloudリソースの知見を記録しています。
+title: 【IT技術の知見】Google Cloud Run Functions＠Google Cloudリソース
+description: Google Cloud Run Functions＠Google Cloudリソースの知見を記録しています。
 ---
 
-# Cloud Function＠Google Cloud
+# Google Cloud Run Functions＠Google Cloud
 
 ## はじめに
 
@@ -17,11 +17,11 @@ description: Cloud Function＠Google Cloudリソースの知見を記録して�
 
 ### コンソール画面の場合
 
-| 項目               | 説明                                                     |
-| ------------------ | -------------------------------------------------------- |
-| トリガー           | Cloud Functionを発火させる方法を設定する。               |
-| ランタイム         | CloudFunctionで実行するアプリのランタイムを設定する。    |
-| エントリーポイント | Cloud Functionのエントリーポイントとする関数を設定する。 |
+| 項目               | 説明                                                                 |
+| ------------------ | -------------------------------------------------------------------- |
+| トリガー           | Google Cloud Run Functionsを発火させる方法を設定する。               |
+| ランタイム         | CloudFunctionで実行するアプリのランタイムを設定する。                |
+| エントリーポイント | Google Cloud Run Functionsのエントリーポイントとする関数を設定する。 |
 
 <br>
 
@@ -32,7 +32,7 @@ description: Cloud Function＠Google Cloudリソースの知見を記録して�
 ```terraform
 module "foo-function" {
 
-  // Cloud Functionには世代数 (v1、v2) があり、本モジュールではv1になる
+  // Google Cloud Run Functionsには世代数 (v1、v2) があり、本モジュールではv1になる
   source     = "terraform-google-modules/event-function/google"
 
   version    = "<バージョン>"
@@ -51,7 +51,7 @@ module "foo-function" {
 
   timeout_s           = 120
 
-  // FooFunction関数をCloud Functionのエントリーポイントとする
+  // FooFunction関数をGoogle Cloud Run Functionsのエントリーポイントとする
   entry_point         = "FooFunction"
 
   source_directory    = "${path.module}/foo_function_src"
@@ -68,7 +68,7 @@ module "foo-function" {
 
   service_account_email        = "foo-cloudfunction@*****.iam.gserviceaccount.com"
 
-  // Cloud　Pub/SubがトリガーとなってCloud Functionを実行する
+  // Google Cloud Pub/SubがトリガーとなってGoogle Cloud Run Functionsを実行する
   event_trigger = {
     event_type = "providers/cloud.pubsub/eventTypes/topic.publish"
     resource   = google_pubsub_topic.foo.id
@@ -92,7 +92,7 @@ data "google_client_config" "current" {}
 ```terraform
 module "foo-function" {
 
-  // Cloud Functionには世代数 (v1、v2) があり、本モジュールではv2になる
+  // Google Cloud Run Functionsには世代数 (v1、v2) があり、本モジュールではv2になる
   source  = "GoogleCloudPlatform/cloud-functions/google"
 
   version = "~> 0.4"
