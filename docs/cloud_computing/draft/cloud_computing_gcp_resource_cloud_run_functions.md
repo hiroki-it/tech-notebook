@@ -33,31 +33,31 @@ description: Google Cloud Run Functions＠Google Cloudリソースの知見を�
 module "foo_function" {
 
   // Google Cloud Run Functionsには世代数 (v1、v2) があり、本モジュールではv1になる
-  source            = "GoogleCloudPlatform/cloud-functions/google"
+  source = "GoogleCloudPlatform/cloud-functions/google"
 
-  version    = "<バージョン>"
+  version = "<バージョン>"
 
-  function_location     = data.google_client_config.current.region
+  function_location = data.google_client_config.current.region
 
   project_id = data.google_client_config.current.project
 
-  function_name                = "foo-function"
+  function_name = "foo-function"
 
-  description         = "this is function that do foo"
+  description = "this is function that do foo"
 
-  runtime             = "<バージョン値>"
+  runtime = "<バージョン値>"
 
   service_config = {
-    available_memory              = 128
-    max_instance_count            = 3000
-    runtime_env_variables         = {
+    available_memory   = 128
+    max_instance_count = 3000
+    runtime_env_variables = {
       FOO = "FOO"
     }
-    runtime_secret_env_variables  = {
-      key_name = "BAR"
+    runtime_secret_env_variables = {
+      key_name   = "BAR"
       project_id = "x-project"
-      secret = "x-secret"
-      version = 1
+      secret     = "x-secret"
+      version    = 1
     }
     service_account_email         = google_service_account.foo_function.email
     timeout_seconds               = 120
@@ -66,17 +66,17 @@ module "foo_function" {
   }
 
   // FooFunction関数をGoogle Cloud Run Functionsのエントリーポイントとする
-  entrypoint         = "FooFunction"
+  entrypoint = "FooFunction"
 
   storage_source = {
-    bucket = google_storage_bucket.function.name
-    object = google_storage_bucket_object.function.source
+    bucket = google_storage_bucket.foo_function.name
+    object = google_storage_bucket_object.foo_function.source
   }
 
   // Google Cloud Pub/SubがトリガーとなってGoogle Cloud Run Functionsを実行する
   event_trigger = {
-    event_type = "providers/cloud.pubsub/eventTypes/topic.publish"
-    resource   = google_pubsub_topic.foo_function.id
+    event_type            = "providers/cloud.pubsub/eventTypes/topic.publish"
+    resource              = google_pubsub_topic.foo_function.id
     service_account_email = null
     retry_policy          = "RETRY_POLICY_RETRY"
   }
@@ -98,7 +98,7 @@ resource "google_storage_bucket" "foo_function" {
 
 // バケットでの関数ソースコードの保管方法
 resource "google_storage_bucket_object" "foo_function" {
-  name                = "${data.archive_file.function.output_md5}-${basename(data.archive_file.function.output_path)}
+  name                = "${data.archive_file.foo_function.output_md5}-${basename(data.archive_file.foo_function.output_path)}
   bucket              = google_storage_bucket.foo_function.name
   source              = data.archive_file.foo_function.output_path
   content_disposition = "attachment"
@@ -123,26 +123,26 @@ data "google_client_config" "current" {}
 module "foo-function" {
 
   // Google Cloud Run Functionsには世代数 (v1、v2) があり、本モジュールではv2になる
-  source  = "GoogleCloudPlatform/cloud-functions/google"
+  source = "GoogleCloudPlatform/cloud-functions/google"
 
   version = "~> 0.4"
 
   # Required variables
 
-  function_name  = "<FUNCTION_NAME>"
+  function_name = "<FUNCTION_NAME>"
 
-  project_id     = "<PROJECT_ID>"
+  project_id = "<PROJECT_ID>"
 
-  location       = "<LOCATION>"
+  location = "<LOCATION>"
 
-  runtime        = "<RUNTIME>"
+  runtime = "<RUNTIME>"
 
-  entrypoint     = "<ENTRYPOINT>"
+  entrypoint = "<ENTRYPOINT>"
 
   storage_source = {
-    bucket      = "<BUCKET_NAME>"
-    object      = "<ARCHIVE_PATH>"
-    generation  = "<GCS_GENERATION>"
+    bucket     = "<BUCKET_NAME>"
+    object     = "<ARCHIVE_PATH>"
+    generation = "<GCS_GENERATION>"
   }
 }
 ```

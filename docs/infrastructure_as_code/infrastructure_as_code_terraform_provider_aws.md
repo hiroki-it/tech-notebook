@@ -25,7 +25,9 @@ TerraformがAWSリソースのAPIと通信可能にする。
 
 ## ACM
 
-### SSL証明書のリクエスト
+### resource
+
+#### ▼ SSL証明書のリクエスト
 
 **＊実装例＊**
 
@@ -52,8 +54,6 @@ resource "aws_acm_certificate" "www_an1" {
 }
 ```
 
-<br>
-
 **＊実装例＊**
 
 DNS検証の場合を示す。
@@ -79,9 +79,7 @@ resource "aws_acm_certificate" "www_an1" {
 }
 ```
 
-<br>
-
-### 検証の実行
+#### ▼ 検証の実行
 
 **＊実装例＊**
 
@@ -136,7 +134,33 @@ SSL証明書のEメール検証時に、ドメインの所有者にメールが�
 
 ## AMI
 
-### まとめ
+### resource
+
+```terraform
+resource "aws_ami_from_instance" "foo" {
+  name               = "foo-instance"
+  source_instance_id = aws_instance.foo.id
+
+  # インスタンスを再起動せずにAMIを作成するとデータが欠損することがあるため、再起動する
+  snapshot_without_reboot = false
+
+  tags = {
+      # タグ名には作成時刻をつける
+      Name = format(
+        "%s-%s",
+        "foo-instance",
+        formatdate("YYYY-MM-DD", timestamp())
+      )
+    }
+  )
+}
+```
+
+<br>
+
+### data
+
+#### ▼ まとめ
 
 **＊実装例＊**
 
@@ -184,9 +208,7 @@ data "aws_ami" "backuped" {
 }
 ```
 
-<br>
-
-### `(1)` 取得するAMIのバージョンを固定
+#### `(1)` 取得するAMIのバージョンを固定
 
 取得するAMIが常に最新になっていると、EC2が再作成されなねない。
 
@@ -194,9 +216,7 @@ data "aws_ami" "backuped" {
 
 `most_recent`は無効化しておき、特定のAMIをフィルタリングする。
 
-<br>
-
-### `(2)`AWS Backupで作成したAMIを参照
+#### `(2)`AWS Backupで作成したAMIを参照
 
 AWS BackupでEC2のAMIを作成している場合に、フィルターの条件を使用して、AMIを参照する。
 
@@ -204,7 +224,7 @@ AWS BackupでEC2のAMIを作成している場合に、フィルターの条件�
 
 ## API Gateway
 
-### まとめ
+### resource
 
 **＊実装例＊**
 
@@ -263,9 +283,7 @@ resource "aws_api_gateway_stage" "foo" {
 }
 ```
 
-<br>
-
-### `(1)` OpenAPI仕様のインポートと差分認識
+#### `(1)` OpenAPI仕様のインポートと差分認識
 
 あらかじめ用意したOpenAPI仕様の`yaml`ファイルを`body`オプションのパラメーターとし、これをインポートすることにより、APIを定義できる。
 
@@ -275,9 +293,7 @@ APIの再デプロイのトリガーとして、`redeployment`パラメーター
 
 これにより、インポート元の`yaml`ファイルに差分があった場合、Terraformが`redeployment`パラメーターの値の変化を識別できるようになり、再デプロイを実行できる。
 
-<br>
-
-### (＊) ステージ名を取得する方法はない
+#### (＊) ステージ名を取得する方法はない
 
 API Gatewayのステージ名を参照するためには、resourceを使用する必要があり、dataではこれを取得できない。
 
@@ -307,7 +323,7 @@ resource "aws_wafv2_web_acl_association" "api_gateway" {
 
 ## CloudWatchログ
 
-### まとめ
+### resource
 
 ```terraform
 resource "aws_cloudwatch_log_group" "ecs_service_container_datadog" {
@@ -315,9 +331,7 @@ resource "aws_cloudwatch_log_group" "ecs_service_container_datadog" {
 }
 ```
 
-<br>
-
-### `(1)` ECSサービス名をルートとした命名
+#### `(1)` ECSサービス名をルートとした命名
 
 同じAWSアカウントの異なるECSサービスを作成する場合がある。
 
@@ -327,7 +341,7 @@ resource "aws_cloudwatch_log_group" "ecs_service_container_datadog" {
 
 ## CloudFront
 
-### まとめ
+### resource
 
 **＊実装例＊**
 
@@ -366,17 +380,13 @@ resource "aws_cloudfront_distribution" "this" {
 }
 ```
 
-<br>
-
-### `(1)` 削除保持機能
+#### `(1)` 削除保持機能
 
 Terraformでは、`retain_on_delete`で設定できる。
 
 固有の設定で、AWSに対応するものは無い。
 
-<br>
-
-### originブロック
+#### originブロック
 
 Origins画面に設定するオリジンを定義する。
 
@@ -426,9 +436,7 @@ resource "aws_cloudfront_distribution" "this" {
 }
 ```
 
-<br>
-
-### ordered_cache_behaviorブロック
+#### ordered_cache_behaviorブロック
 
 Behavior画面に設定するオリジンにルーティングするパスを定義する。
 
@@ -464,9 +472,7 @@ resource "aws_cloudfront_distribution" "this" {
 }
 ```
 
-<br>
-
-### default_cache_behavior
+#### default_cache_behavior
 
 Behavior画面に設定するオリジンにルーティングする標準パスを定義する。
 
@@ -504,7 +510,9 @@ resource "aws_cloudfront_distribution" "this" {
 
 ## ECR
 
-### ライフサイクルポリシー
+### resource
+
+#### ▼ ライフサイクルポリシー
 
 ECRに紐付けられる、コンテナイメージの有効期間を定義するポリシー。
 
@@ -544,7 +552,7 @@ ECRに紐付けられる、コンテナイメージの有効期間を定義す�
 
 ## ECS
 
-### まとめ
+### resource
 
 **＊実装例＊**
 
@@ -600,25 +608,19 @@ resource "aws_ecs_service" "this" {
 }
 ```
 
-<br>
-
-### `(1)` ヘルスチェック待機時間
+#### `(1)` ヘルスチェック待機時間
 
 ECSタスクの起動が完了する前にサービスがロードバランサ－のヘルスチェックを検証し、Unhealthyと誤認してしまうため、ECSタスクの起動完了を待機する。
 
 例えば、ロードバランサ－が30秒間隔でヘルスチェックを実行する場合は、30秒単位で待機時間を増やし、適切な待機時間を見つけるようにする。
 
-<br>
-
-### `(2)`実インフラのリビジョン番号の追跡
+#### `(2)`実インフラのリビジョン番号の追跡
 
 アプリケーションのデプロイによって、実インフラのECSタスク定義のリビジョン番号が増加するため、これを追跡可能にする。
 
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition
 
-<br>
-
-### `(3)`ALB/NLBリスナーの作成を待機
+#### `(3)`ALB/NLBリスナーの作成を待機
 
 Terraformは、特に依存関係を実装しない場合、『ターゲットグループ ➡︎ ALB/NLB ➡︎ リスナー』の順で`resource`ブロックを作成する。
 
@@ -630,15 +632,11 @@ ALB/NLBの作成 (※リスナーも含む可能性) が完全に完了しない
 
 > - https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022
 
-<br>
-
-### `(4)`AutoScalingによるECSタスク数の増減を無視
+#### `(4)`AutoScalingによるECSタスク数の増減を無視
 
 AutoScalingによって、ECSタスク数が増減するため、これを無視する。
 
-<br>
-
-### (＊) ECSタスク定義の更新
+#### (＊) ECSタスク定義の更新
 
 TerraformでECSタスク定義を更新すると、現在稼働しているECSで稼働しているECSタスクはそのままに、新しいリビジョン番号のECSタスク定義を作成する。
 
@@ -648,25 +646,19 @@ TerraformでECSタスク定義を更新すると、現在稼働しているECS�
 
 次のデプロイ時に、このECSタスクが使用される。
 
-<br>
-
-### (＊) サービスのデプロイの削除時間
+#### (＊) サービスのデプロイの削除時間
 
 ECSサービスの削除には『ドレイニング』の時間が発生する。
 
 約`2`分`30`秒かかるため、気長に待つこと。
 
-<br>
-
-### (＊) ローリングアップデート
+#### (＊) ローリングアップデート
 
 `terraform apply`コマンドで、新しいリビジョン番号のECSタスク定義を作成すると、これを使用してローリングアップデートが自動的に実行されることに注意する。
 
 ただし、ローリングアップデートの仕組み上、新しいECSタスクのヘルスチェックが失敗すれば、既存のECSタスクは停止せずにそのまま稼働するため、安心ではあるが。
 
-<br>
-
-### (＊) ECSコンテナ名
+#### (＊) ECSコンテナ名
 
 コンテナ名は、役割名 (app、web、monitoringなど) ではなく、ベンダー名 (laravel、nginx、datadogなど) とする。
 
@@ -676,7 +668,7 @@ ECSサービスの削除には『ドレイニング』の時間が発生する�
 
 ## EC2
 
-### まとめ
+### resource
 
 **＊実装例＊**
 
@@ -705,15 +697,11 @@ resource "aws_instance" "bastion" {
 }
 ```
 
-<br>
-
-### `(1)` キーペアはコンソール上で設定
+#### `(1)` キーペアはコンソール上で設定
 
 誤って削除しないように、またコードに秘密鍵の内容をハードコーディングしないように、キーペアはコンソール画面で作成した後、`key_name`でキー名を指定する。
 
-<br>
-
-### `(2)`Internet Gatewayの後に作成
+#### `(2)`Internet Gatewayの後に作成
 
 Internet Gatewayの後にEC2を作成可能にする。
 
@@ -723,7 +711,7 @@ Internet Gatewayの後にEC2を作成可能にする。
 
 ## EKS
 
-### まとめ
+### resource
 
 EKSのNodeグループをマネージドとする場合、起動テンプレートも合わせて設定する必要がある。
 
@@ -796,9 +784,7 @@ resource "aws_eks_node_group" "this" {
 
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster#example-usage
 
-<br>
-
-### `(1)`Node数の増減は無視
+#### `(1)`Node数の増減は無視
 
 EKSでは、cluster-autoscalerを使用して、Nodeをスケーリングさせる。
 
@@ -808,7 +794,9 @@ EKSでは、cluster-autoscalerを使用して、Nodeをスケーリングさせ�
 
 ## IAMユーザー
 
-### カスタマー管理ポリシーを持つロール
+### resource
+
+#### ▼ カスタマー管理ポリシーを持つロール
 
 事前に、tpl形式のカスタマー管理ポリシーを定義しておく。
 
@@ -872,9 +860,7 @@ resource "aws_iam_policy" "aws_cli_command_executor_ip_address_restriction" {
 }
 ```
 
-<br>
-
-### AWS管理ポリシー
+#### ▼ AWS管理ポリシー
 
 IAMユーザーにAWS管理ポリシーを紐付ける。
 
@@ -894,7 +880,9 @@ resource "aws_iam_user_policy_attachment" "aws_cli_command_executor_s3_read_only
 
 ## IAMロール
 
-### 信頼ポリシーを持つロール
+### resource
+
+#### ▼ 信頼ポリシーを持つロール
 
 コンソール画面でロールを作成する場合は意識することはないが、特定の`resource`ブロックにロールを紐付けるためには、ロールに信頼ポリシーを組み込む必要がある。
 
@@ -985,9 +973,7 @@ resource "aws_iam_role" "lambda_execute" {
 }
 ```
 
-<br>
-
-### インラインポリシーを持つロール
+#### ▼ インラインポリシーを持つロール
 
 事前に、tpl形式のインラインポリシーを定義しておく。
 
@@ -1021,9 +1007,7 @@ resource "aws_iam_role_policy" "ecs_task" {
 }
 ```
 
-<br>
-
-### AWS管理ポリシーを持つロール
+#### ▼ AWS管理ポリシーを持つロール
 
 事前に、tpl形式のAWS管理ポリシーを定義しておく。
 
@@ -1043,9 +1027,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution" {
 }
 ```
 
-<br>
-
-### カスタマー管理ポリシーを持つロール
+#### ▼ カスタマー管理ポリシーを持つロール
 
 事前に、tpl形式のインラインポリシーを定義しておく。
 
@@ -1092,9 +1074,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task" {
 }
 ```
 
-<br>
-
-### サービスリンクロール
+#### ▼ サービスリンクロール
 
 サービスリンクロールは、AWSリソースの作成時に自動的に作成され、紐付けられる。
 
@@ -1149,7 +1129,7 @@ resource "aws_appautoscaling_target" "ecs" {
 
 ## リスナーとターゲットグループ
 
-### まとめ
+### resource
 
 **＊実装例＊**
 
@@ -1184,15 +1164,11 @@ resource "aws_lb_target_group" "this" {
 }
 ```
 
-<br>
-
-### `(1)` NLBはスロースタートに非対応
+#### `(1)` NLBはスロースタートに非対応
 
 NLBに紐付くターゲットグループはスロースタートに非対応のため、これを明示的に無効化する必要がある。
 
-<br>
-
-### `(2)`NLBヘルスチェックには設定できる項目が少ない
+#### `(2)`NLBヘルスチェックには設定できる項目が少ない
 
 ターゲットグループの転送プロトコルがTCPの場合は、設定できないヘルスチェックオプションがいくつかある。
 
@@ -1200,9 +1176,7 @@ NLBに紐付くターゲットグループはスロースタートに非対応�
 
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group#health_check
 
-<br>
-
-### `(3)`NLBスティッキーネスは明示的に無効化
+#### `(3)`NLBスティッキーネスは明示的に無効化
 
 スティッキネス機能を無効化する場合、AWSプロバイダーのアップグレード時に問題が起こらないように、このブロックを実装しないようにする。
 
@@ -1210,9 +1184,7 @@ NLBに紐付くターゲットグループはスロースタートに非対応�
 
 > - https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness
 
-<br>
-
-### (＊) ターゲットグループの削除時にリスナーを先に削除できない。
+#### (＊) ターゲットグループの削除時にリスナーを先に削除できない。
 
 リスナーがターゲットグループに依存しているが、Terraformがターゲットグループの削除時にリスナーを先に削除しようとしない。
 
@@ -1231,7 +1203,7 @@ status code: 400, request id: *****
 
 ## RDS (Aurora) の場合
 
-### まとめ
+### resource
 
 **＊実装例＊**
 
@@ -1343,21 +1315,15 @@ resource "aws_db_subnet_group" "this" {
 }
 ```
 
-<br>
-
-### `(1)` パラメーターストア
+#### `(1)` パラメーターストア
 
 Terraformに値をハードコーディングしたくない場合は、パラメーターストアで値を管理し、これを`data`ブロックで取得する。
 
-<br>
-
-### `(2)`メンテナンスウインドウ時に変更適用
+#### `(2)`メンテナンスウインドウ時に変更適用
 
 メンテナンスウインドウ時の変更適用をTerraformで行う場合、一段階目に`apply_immediately`オプションを`false`に変更して`terraform apply`コマンドを実行することにより、二段階目に修正を`terraform apply`コマンドを実行する。
 
-<br>
-
-### `(3)`DBクラスターにはAZが`3`個必要
+#### `(3)`DBクラスターにはAZが`3`個必要
 
 DBクラスターでは、レプリケーションのために、`3`個のAZが必要である。
 
@@ -1369,9 +1335,7 @@ Terraformがこれを認識しないように、`ignore_changes`引数でAZを�
 > - https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633
 > - https://github.com/hashicorp/terraform-provider-aws/issues/1111
 
-<br>
-
-### `(4)`インスタンスを配置するAZは選択できない
+#### `(4)`インスタンスを配置するAZは選択できない
 
 事前にインスタンスにAZを表す識別子を入れたとしても、Terraformはインスタンスを配置するAZを選択できない。
 
@@ -1383,9 +1347,7 @@ Terraformがこれを認識しないように、`ignore_changes`引数でAZを�
 
 この変更は、Terraformが差分として認識しないので問題ない。
 
-<br>
-
-### `(5)`エンジンバージョンのアップグレードは画面から
+#### `(5)`エンジンバージョンのアップグレードは画面から
 
 運用でTerraformでエンジンバージョンをアップグレードすることに抵抗感がある場合、コンソール画面からアップグレードをTerraformで無視すると良い。
 
@@ -1393,9 +1355,7 @@ Terraformがこれを認識しないように、`ignore_changes`引数でAZを�
 
 Terraformを書き換えなくとも問題は起こらないが、Terraformのコードと実インフラが乖離してしまう。
 
-<br>
-
-### `(6)``for_each`引数を使用して
+#### `(6)``for_each`引数を使用して
 
 Auroraでは、クラスターにインスタンスを1つだけ紐付けると、プライマリーインスタンスとして作成される。
 
@@ -1406,9 +1366,7 @@ AZのマップデータに対して`for_each`引数を使用することによ�
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster_instance
 > - https://github.com/hashicorp/terraform/issues/5333
 
-<br>
-
-### `(7)`インスタンスタイプは別々に設定する
+#### `(7)`インスタンスタイプは別々に設定する
 
 インスタンスタイプに`for_each`引数で値を渡さない場合、各DBインスタンスのインスタンスタイプを同時に変更することになる。
 
@@ -1418,23 +1376,17 @@ AZのマップデータに対して`for_each`引数を使用することによ�
 
 インスタンスごとに異なるインスタンスタイプを設定する場合は、`for_each`引数で割り当てる値の順番を考慮する必要があるため、配置されているAZを事前に確認する必要がある。
 
-<br>
-
-### `(8)`インスタンスにバックアップウインドウは設定しない
+#### `(8)`インスタンスにバックアップウインドウは設定しない
 
 DBクラスターとDBインスタンスの両方に、`preferred_backup_window`オプションを設定できるが、RDSインスタンスに設定してはいけない。
 
-<br>
-
-### `(9)`リードレプリカの追加
+#### `(9)`リードレプリカの追加
 
 クラスターに `count`引数で量産したインスタンスを紐付ける。
 
 `count`引数は本来非推奨であるが、同じ設定のインスタンスを単に量産するだけなため、許容する。
 
-<br>
-
-### `(10)`マルチAZを有効化する
+#### `(10)`マルチAZを有効化する
 
 Auroraでは、紐付けられたサブネットグループが複数のAZのサブネットで構成されている場合、各インスタンスを自動的にAZに配置するようになっている。
 
@@ -1446,7 +1398,9 @@ Auroraでは、紐付けられたサブネットグループが複数のAZのサ
 
 ## RDS (Global) の場合
 
-### グローバルクラスター
+### resource
+
+#### ▼ グローバルクラスター
 
 グローバルクラスターは、状況によって実装方法が少し異なる。
 
@@ -1454,9 +1408,7 @@ Auroraでは、紐付けられたサブネットグループが複数のAZのサ
 
 そのため、変更前後で`terraform plan`コマンドで差分は同じになる。
 
-<br>
-
-### 既存のクラスターからグローバルクラスターを作成する
+#### ▼ 既存のクラスターからグローバルクラスターを作成する
 
 既存のクラスターからグローバルクラスターを作成する。
 
@@ -1533,9 +1485,7 @@ resource "aws_rds_cluster" "foo" {
 
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-global-cluster-from-existing-db-cluster
 
-<br>
-
-### グローバルクラスターを新規作成する
+#### ▼ グローバルクラスターを新規作成する
 
 グローバルクラスターを新規作成する。
 
@@ -1580,9 +1530,7 @@ resource "aws_rds_cluster" "foo" {
 
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-mysql-global-cluster
 
-<br>
-
-### アップグレードする
+#### ▼ アップグレードする
 
 `aws_rds_cluster`ブロックが`aws_rds_global_cluster`ブロックに依存している。
 
@@ -1633,7 +1581,7 @@ resource "aws_rds_cluster" "foo" {
 
 ## Route53
 
-### まとめ
+### resource
 
 **＊実装例＊**
 
@@ -1658,7 +1606,7 @@ resource "aws_route53_record" "foo" {
 }
 ```
 
-\*＊実装例＊\*\*
+**＊実装例＊**
 
 ```terraform
 # ---------------------------------------------
@@ -1694,15 +1642,15 @@ Terraformを使用してVPCを作成した時、メインルートテーブル�
 
 ## AWS S3
 
-### バケットポリシー
+### resource
+
+#### ▼ バケットポリシー
 
 AWS S3紐付けられる、自身へのアクセスを制御するためにインラインポリシーのこと。
 
 定義したバケットポリシーは、`aws_s3_bucket_policy`リソースでロールに紐付けできる。
 
-<br>
-
-### ALBアクセスログ
+#### ▼ ALBアクセスログ
 
 ALBがバケットにログを書き込めるように、『ELBのサービスアカウントID』を許可する必要がある。
 
@@ -1746,9 +1694,7 @@ ALBのアクセスログを送信するバケット内には、自動的に『/A
 }
 ```
 
-<br>
-
-### NLBアクセスログ
+#### ▼ NLBアクセスログ
 
 ALBがバケットにログを書き込めるように、『`delivery.logs.amazonaws.com`』からのリクエストを許可する必要がある。
 
@@ -1804,7 +1750,7 @@ NLBのアクセスログを送信するバケット内には、自動的に『`/
 
 ## AWS Systems Manager
 
-### まとめ
+### output
 
 ```terraform
 # ---------------------------------------------
@@ -1831,9 +1777,7 @@ output "rds_db_port_ssm_parameter_value" {
 }
 ```
 
-<br>
-
-### `(1)`terraform plan`コマンド時に非表示
+#### `(1)`terraform plan`コマンド時に非表示
 
 CIの`terraform plan`コマンド時に値が公開されないように`output`ブロックで`sensitive`オプションを有効化する。
 
@@ -1841,7 +1785,7 @@ CIの`terraform plan`コマンド時に値が公開されないように`output`
 
 ## VPC
 
-### まとめ
+### resource
 
 ```terraform
 # 後述の説明を参考にせよ。(1)
@@ -2027,9 +1971,7 @@ resource "aws_eip" "nat_gateway" {
 }
 ```
 
-<br>
-
-### `(1)` 冗長化されたAWSリソースをfor_each関数で作成
+#### `(1)` 冗長化されたAWSリソースをfor_each関数で作成
 
 AZを上長化している場合、VPC内のサブネットと関連のAWSリソース (ルートテーブル、NAT Gateway、Elastic IPなど) も冗長化することになる。
 
@@ -2039,7 +1981,7 @@ AZを上長化している場合、VPC内のサブネットと関連のAWSリソ
 
 ## VPC endpoint
 
-### まとめ
+### resource
 
 ```terraform
 # ---------------------------------------------
@@ -2127,7 +2069,9 @@ resource "aws_vpc_endpoint" "ssmmessages" {
 
 ## WAF
 
-### ruleブロック
+### resource
+
+#### ▼ ruleブロック
 
 **＊実装例＊**
 
@@ -2356,9 +2300,7 @@ resource "aws_wafv2_web_acl" "api_gateway" {
 }
 ```
 
-<br>
-
-### IPセットの依存関係
+#### ▼ IPセットの依存関係
 
 WAFのIPセットと他設定の依存関係に癖がある。
 
