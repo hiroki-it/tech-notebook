@@ -23880,31 +23880,31 @@
 <div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;foo_function&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="c1">  // Google Cloud Run Functionsには世代数 (v1、v2) があり、本モジュールではv1になる</span>
-<span class="w">  </span><span class="na">source</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;GoogleCloudPlatform/cloud-functions/google&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;GoogleCloudPlatform/cloud-functions/google&quot;</span>
 
-<span class="w">  </span><span class="na">version</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
 
-<span class="w">  </span><span class="na">function_location</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">data.google_client_config.current.region</span>
+<span class="w">  </span><span class="na">function_location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.google_client_config.current.region</span>
 
 <span class="w">  </span><span class="na">project_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.google_client_config.current.project</span>
 
-<span class="w">  </span><span class="na">function_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-function&quot;</span>
+<span class="w">  </span><span class="na">function_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-function&quot;</span>
 
-<span class="w">  </span><span class="na">description</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;this is function that do foo&quot;</span>
+<span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;this is function that do foo&quot;</span>
 
-<span class="w">  </span><span class="na">runtime</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン値&gt;&quot;</span>
+<span class="w">  </span><span class="na">runtime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン値&gt;&quot;</span>
 
 <span class="w">  </span><span class="nb">service_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">available_memory</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="m">128</span>
-<span class="w">    </span><span class="na">max_instance_count</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="m">3000</span>
-<span class="w">    </span><span class="nb">runtime_env_variables</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">available_memory</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">128</span>
+<span class="w">    </span><span class="na">max_instance_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3000</span>
+<span class="w">    </span><span class="nb">runtime_env_variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="na">FOO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;FOO&quot;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="nb">runtime_secret_env_variables</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">key_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;BAR&quot;</span>
+<span class="w">    </span><span class="nb">runtime_secret_env_variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="na">key_name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;BAR&quot;</span>
 <span class="w">      </span><span class="na">project_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;x-project&quot;</span>
-<span class="w">      </span><span class="na">secret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;x-secret&quot;</span>
-<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="w">      </span><span class="na">secret</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;x-secret&quot;</span>
+<span class="w">      </span><span class="na">version</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="na">service_account_email</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="nv">google_service_account.foo_function.email</span>
 <span class="w">    </span><span class="na">timeout_seconds</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="m">120</span>
@@ -23913,17 +23913,17 @@
 <span class="w">  </span><span class="p">}</span>
 
 <span class="c1">  // FooFunction関数をGoogle Cloud Run Functionsのエントリーポイントとする</span>
-<span class="w">  </span><span class="na">entrypoint</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;FooFunction&quot;</span>
+<span class="w">  </span><span class="na">entrypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;FooFunction&quot;</span>
 
 <span class="w">  </span><span class="nb">storage_source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">google_storage_bucket.function.name</span>
-<span class="w">    </span><span class="na">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">google_storage_bucket_object.function.source</span>
+<span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">google_storage_bucket.foo_function.name</span>
+<span class="w">    </span><span class="na">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">google_storage_bucket_object.foo_function.source</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="c1">  // Google Cloud Pub/SubがトリガーとなってGoogle Cloud Run Functionsを実行する</span>
 <span class="w">  </span><span class="nb">event_trigger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">event_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;providers/cloud.pubsub/eventTypes/topic.publish&quot;</span>
-<span class="w">    </span><span class="na">resource</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">google_pubsub_topic.foo_function.id</span>
+<span class="w">    </span><span class="na">event_type</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;providers/cloud.pubsub/eventTypes/topic.publish&quot;</span>
+<span class="w">    </span><span class="na">resource</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">google_pubsub_topic.foo_function.id</span>
 <span class="w">    </span><span class="na">service_account_email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">null</span>
 <span class="w">    </span><span class="na">retry_policy</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;RETRY_POLICY_RETRY&quot;</span>
 <span class="w">  </span><span class="p">}</span>
@@ -23945,7 +23945,7 @@
 
 <span class="c1">// バケットでの関数ソースコードの保管方法</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;google_storage_bucket_object&quot;</span><span class="w"> </span><span class="nv">&quot;foo_function&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="err">&quot;$</span><span class="p">{</span><span class="nv">data.archive_file.function.output_md5</span><span class="p">}</span><span class="err">-$</span><span class="p">{</span><span class="nf">basename</span><span class="p">(</span><span class="nv">data.archive_file.function.output_path</span><span class="p">)}</span>
+<span class="w">  </span><span class="na">name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="err">&quot;$</span><span class="p">{</span><span class="nv">data.archive_file.foo_function.output_md5</span><span class="p">}</span><span class="err">-$</span><span class="p">{</span><span class="nf">basename</span><span class="p">(</span><span class="nv">data.archive_file.foo_function.output_path</span><span class="p">)}</span>
 <span class="w">  </span><span class="na">bucket</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">google_storage_bucket.foo_function.name</span>
 <span class="w">  </span><span class="na">source</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">data.archive_file.foo_function.output_path</span>
 <span class="w">  </span><span class="na">content_disposition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;attachment&quot;</span>
@@ -23970,26 +23970,26 @@
 <div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;foo-function&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="c1">  // Google Cloud Run Functionsには世代数 (v1、v2) があり、本モジュールではv2になる</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;GoogleCloudPlatform/cloud-functions/google&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;GoogleCloudPlatform/cloud-functions/google&quot;</span>
 
 <span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt; 0.4&quot;</span>
 
 <span class="c1">  # Required variables</span>
 
-<span class="w">  </span><span class="na">function_name</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;FUNCTION_NAME&gt;&quot;</span>
+<span class="w">  </span><span class="na">function_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;FUNCTION_NAME&gt;&quot;</span>
 
-<span class="w">  </span><span class="na">project_id</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;PROJECT_ID&gt;&quot;</span>
+<span class="w">  </span><span class="na">project_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;PROJECT_ID&gt;&quot;</span>
 
-<span class="w">  </span><span class="na">location</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;LOCATION&gt;&quot;</span>
+<span class="w">  </span><span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;LOCATION&gt;&quot;</span>
 
-<span class="w">  </span><span class="na">runtime</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;RUNTIME&gt;&quot;</span>
+<span class="w">  </span><span class="na">runtime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;RUNTIME&gt;&quot;</span>
 
-<span class="w">  </span><span class="na">entrypoint</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;ENTRYPOINT&gt;&quot;</span>
+<span class="w">  </span><span class="na">entrypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;ENTRYPOINT&gt;&quot;</span>
 
 <span class="w">  </span><span class="nb">storage_source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">bucket</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;BUCKET_NAME&gt;&quot;</span>
-<span class="w">    </span><span class="na">object</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;ARCHIVE_PATH&gt;&quot;</span>
-<span class="w">    </span><span class="na">generation</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;GCS_GENERATION&gt;&quot;</span>
+<span class="w">    </span><span class="na">bucket</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;BUCKET_NAME&gt;&quot;</span>
+<span class="w">    </span><span class="na">object</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;ARCHIVE_PATH&gt;&quot;</span>
+<span class="w">    </span><span class="na">generation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;GCS_GENERATION&gt;&quot;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
