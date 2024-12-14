@@ -676,7 +676,7 @@ ECSサービスの削除には『ドレイニング』の時間が発生する�
 # ---------------------------------------------
 # For bastion
 # ---------------------------------------------
-resource "aws_instance" "bastion" {
+resource "aws_instance" "foo" {
   ami                         = "*****"
   instance_type               = "t2.micro"
   vpc_security_group_ids      = ["*****"]
@@ -684,9 +684,17 @@ resource "aws_instance" "bastion" {
   associate_public_ip_address = true
 
   # ※後述の説明を参考にせよ(1)
-  key_name = "prd-foo-bastion"
+  key_name = "prd-foo"
 
   disable_api_termination = true
+
+  // ルートボリュームはEC2のデフォルト値とし、デバイス名は /dev/xvda とする
+  ebs_block_device {
+    delete_on_termination = true
+    device_name           = "/dev/xvda"
+    volume_type           = "gp3"
+    volume_size           = "20"
+  }
 
   tags = {
     Name = "prd-foo-bastion"
@@ -694,6 +702,13 @@ resource "aws_instance" "bastion" {
 
   # ※後述の説明を参考にせよ(2)
   depends_on = [var.internet_gateway]
+}
+
+// サブボリュームは個別にアタッチし、デバイス名は /dev/xvdb とする
+resource "aws_volume_attachment" "foo" {
+  device_name                    = "/dev/xvdb"
+  instance_id                    = aws_instance.foo.id
+  stop_instance_before_detaching = true
 }
 ```
 

@@ -64,6 +64,20 @@ package foo is not in GOROOT (/usr/local/go/src/foo)
 
 <br>
 
+### commit
+
+#### ▼ -m
+
+コミットメッセージを設定する。
+
+空コミットでよく使う。
+
+```bash
+$ git commit --allow-empty -m "first commit"
+```
+
+<br>
+
 ### clean
 
 モジュールのキャッシュを削除する。
