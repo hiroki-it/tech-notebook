@@ -24148,13 +24148,14 @@
 <h2 id="iam-aws-cli">IAMポリシー、 aws-cli、シェルスクリプトによる自動化<a class="headerlink" href="#iam-aws-cli" title="Permanent link">&para;</a></h2>
 <h3 id="action-list">Action List<a class="headerlink" href="#action-list" title="Permanent link">&para;</a></h3>
 <p>IAMポリシーを使用して、アクセスを制限する。</p>
-<p>aws-cliを活用して、aws-cli用IAMユーザーが特定のAWSリソースにリクエスト可能にする。
-シェルスクリプトで自動化する。</p>
+<p>aws-cliを活用して、aws-cli用IAMユーザーが特定のAWSリソースにリクエスト可能にする。</p>
+<p>シェルスクリプトで自動化する。</p>
 <h4 id="_3">アクセス<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>本番/開発環境のAWS Backupからクローン/削除できる最小認可スコープを持った IAMユーザーを作成する。</p>
 <p>このユーザーは、プログラムによるアクセスのみを許可する。</p>
 <h4 id="_4">作成/削除<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>aws-cliコマンドのシェルスクリプトを作成する。クローンと削除のスクリプトは別に作成する。この時、日付を引数として、指定した過去日のバックアップをクローン可能にする。</p>
+<p>aws-cliコマンドのシェルスクリプトを作成する。クローンと削除のスクリプトは別に作成する。</p>
+<p>この時、日付を引数として、指定した過去日のバックアップをクローン可能にする。</p>
 <h4 id="_5">追調査が必要なところ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <ul>
 <li>IAMポリシーで、GitHubのアカウントをトークンを判定可能にする設定が必要であるが、現時点で不明。</li>
@@ -24182,9 +24183,9 @@
 </dl>
 <h2 id="aws-stsaws-cli">AWS STS、aws-cli、シェルスクリプトによる自動化<a class="headerlink" href="#aws-stsaws-cli" title="Permanent link">&para;</a></h2>
 <h3 id="action-list_1">Action List<a class="headerlink" href="#action-list_1" title="Permanent link">&para;</a></h3>
-<p>AWS STS を使用して、aws-cli用IAMユーザーに一時的にIAMロールを委譲するようにし、アクセスを制限する。
-aws-cliを活用して、aws-cli用IAMユーザーが特定のAWSリソースにリクエスト可能にする。
-シェルスクリプトで自動化する。</p>
+<p>AWS STS を使用して、aws-cli用IAMユーザーに一時的にIAMロールを委譲するようにし、アクセスを制限する。</p>
+<p>aws-cliを活用して、aws-cli用IAMユーザーが特定のAWSリソースにリクエスト可能にする。</p>
+<p>シェルスクリプトで自動化する。</p>
 <h4 id="_6">アクセス<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>AWS STS の設定をAWSコンソール上で済ませておく。</p>
 <h4 id="_7">作成/削除<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
@@ -24248,6 +24249,7 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
 <span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;Credentials&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--output<span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
 </code></pre></div>
+<p><br></p>
 
 
 
@@ -24268,7 +24270,7 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-15</span>
   </span>
 
     
