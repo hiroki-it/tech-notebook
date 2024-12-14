@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Cloud Function＠Google Cloudリソースの知見を記録しています。">
+        <meta name="description" content="Google Cloud Run Functions＠Google Cloudリソースの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/cloud_computing/draft/cloud_computing_gcp_resource_cloud_function.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/cloud_computing/draft/cloud_computing_gcp_resource_cloud_run_functions.html">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】Cloud Function＠Google Cloudリソース - 俺の技術ノート</title>
+        <title>【IT技術の知見】Google Cloud Run Functions＠Google Cloudリソース - 俺の技術ノート</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cloud-functiongoogle-cloud" class="md-skip">
+        <a href="#google-cloud-run-functionsgoogle-cloud" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】Cloud Function＠Google Cloudリソース
+              【IT技術の知見】Google Cloud Run Functions＠Google Cloudリソース
             
           </span>
         </div>
@@ -23841,7 +23841,7 @@
   
 
 
-<h1 id="cloud-functiongoogle-cloud">Cloud Function＠Google Cloud<a class="headerlink" href="#cloud-functiongoogle-cloud" title="Permanent link">&para;</a></h1>
+<h1 id="google-cloud-run-functionsgoogle-cloud">Google Cloud Run Functions＠Google Cloud<a class="headerlink" href="#google-cloud-run-functionsgoogle-cloud" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -23862,7 +23862,7 @@
 <tbody>
 <tr>
 <td>トリガー</td>
-<td>Cloud Functionを発火させる方法を設定する。</td>
+<td>Google Cloud Run Functionsを発火させる方法を設定する。</td>
 </tr>
 <tr>
 <td>ランタイム</td>
@@ -23870,7 +23870,7 @@
 </tr>
 <tr>
 <td>エントリーポイント</td>
-<td>Cloud Functionのエントリーポイントとする関数を設定する。</td>
+<td>Google Cloud Run Functionsのエントリーポイントとする関数を設定する。</td>
 </tr>
 </tbody>
 </table>
@@ -23879,7 +23879,7 @@
 <h4 id="v1">▼ 世代数v1<a class="headerlink" href="#v1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;foo-function&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="c1">  // Cloud Functionには世代数 (v1、v2) があり、本モジュールではv1になる</span>
+<span class="c1">  // Google Cloud Run Functionsには世代数 (v1、v2) があり、本モジュールではv1になる</span>
 <span class="w">  </span><span class="na">source</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-google-modules/event-function/google&quot;</span>
 
 <span class="w">  </span><span class="na">version</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
@@ -23898,7 +23898,7 @@
 
 <span class="w">  </span><span class="na">timeout_s</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="m">120</span>
 
-<span class="c1">  // FooFunction関数をCloud Functionのエントリーポイントとする</span>
+<span class="c1">  // FooFunction関数をGoogle Cloud Run Functionsのエントリーポイントとする</span>
 <span class="w">  </span><span class="na">entry_point</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;FooFunction&quot;</span>
 
 <span class="w">  </span><span class="na">source_directory</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${path.module}/foo_function_src&quot;</span>
@@ -23915,7 +23915,7 @@
 
 <span class="w">  </span><span class="na">service_account_email</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-cloudfunction@*****.iam.gserviceaccount.com&quot;</span>
 
-<span class="c1">  // Cloud　Pub/SubがトリガーとなってCloud Functionを実行する</span>
+<span class="c1">  // Google Cloud Pub/SubがトリガーとなってGoogle Cloud Run Functionsを実行する</span>
 <span class="w">  </span><span class="nb">event_trigger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">event_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;providers/cloud.pubsub/eventTypes/topic.publish&quot;</span>
 <span class="w">    </span><span class="na">resource</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">google_pubsub_topic.foo.id</span>
@@ -23939,7 +23939,7 @@
 <h4 id="v2">▼ 世代数v2<a class="headerlink" href="#v2" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;foo-function&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="c1">  // Cloud Functionには世代数 (v1、v2) があり、本モジュールではv2になる</span>
+<span class="c1">  // Google Cloud Run Functionsには世代数 (v1、v2) があり、本モジュールではv2になる</span>
 <span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;GoogleCloudPlatform/cloud-functions/google&quot;</span>
 
 <span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt; 0.4&quot;</span>
