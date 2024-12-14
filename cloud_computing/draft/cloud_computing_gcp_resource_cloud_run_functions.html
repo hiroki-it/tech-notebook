@@ -23877,56 +23877,86 @@
 <p><br></p>
 <h3 id="terraform">Terraformの場合<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h3>
 <h4 id="v1">▼ 世代数v1<a class="headerlink" href="#v1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;foo-function&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;foo_function&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="c1">  // Google Cloud Run Functionsには世代数 (v1、v2) があり、本モジュールではv1になる</span>
-<span class="w">  </span><span class="na">source</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-google-modules/event-function/google&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;GoogleCloudPlatform/cloud-functions/google&quot;</span>
 
 <span class="w">  </span><span class="na">version</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
 
-<span class="w">  </span><span class="na">region</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">data.google_client_config.current.region</span>
+<span class="w">  </span><span class="na">function_location</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">data.google_client_config.current.region</span>
 
 <span class="w">  </span><span class="na">project_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.google_client_config.current.project</span>
 
-<span class="w">  </span><span class="na">name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-function&quot;</span>
+<span class="w">  </span><span class="na">function_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-function&quot;</span>
 
 <span class="w">  </span><span class="na">description</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;this is function that do foo&quot;</span>
 
 <span class="w">  </span><span class="na">runtime</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン値&gt;&quot;</span>
 
-<span class="w">  </span><span class="na">available_memory_mb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">128</span>
-
-<span class="w">  </span><span class="na">timeout_s</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="m">120</span>
+<span class="w">  </span><span class="nb">service_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">available_memory</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="m">128</span>
+<span class="w">    </span><span class="na">max_instance_count</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="m">3000</span>
+<span class="w">    </span><span class="nb">runtime_env_variables</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="na">FOO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;FOO&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nb">runtime_secret_env_variables</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="na">key_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;BAR&quot;</span>
+<span class="w">      </span><span class="na">project_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;x-project&quot;</span>
+<span class="w">      </span><span class="na">secret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;x-secret&quot;</span>
+<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="na">service_account_email</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="nv">google_service_account.foo_function.email</span>
+<span class="w">    </span><span class="na">timeout_seconds</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="m">120</span>
+<span class="w">    </span><span class="na">vpc_connector</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="nv">google_vpc_access_connector.foo_function.id</span>
+<span class="w">    </span><span class="na">vpc_connector_egress_settings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ALL_TRAFFIC&quot;</span>
+<span class="w">  </span><span class="p">}</span>
 
 <span class="c1">  // FooFunction関数をGoogle Cloud Run Functionsのエントリーポイントとする</span>
-<span class="w">  </span><span class="na">entry_point</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;FooFunction&quot;</span>
+<span class="w">  </span><span class="na">entrypoint</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;FooFunction&quot;</span>
 
-<span class="w">  </span><span class="na">source_directory</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${path.module}/foo_function_src&quot;</span>
-
-<span class="w">  </span><span class="nb">environment_variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">FOO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
-<span class="w">    </span><span class="na">BAR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span>
+<span class="w">  </span><span class="nb">storage_source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">google_storage_bucket.function.name</span>
+<span class="w">    </span><span class="na">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">google_storage_bucket_object.function.source</span>
 <span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nb">secret_environment_variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">BAZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span>
-<span class="w">    </span><span class="na">QUX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;qux&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="na">service_account_email</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-cloudfunction@*****.iam.gserviceaccount.com&quot;</span>
 
 <span class="c1">  // Google Cloud Pub/SubがトリガーとなってGoogle Cloud Run Functionsを実行する</span>
 <span class="w">  </span><span class="nb">event_trigger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">event_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;providers/cloud.pubsub/eventTypes/topic.publish&quot;</span>
-<span class="w">    </span><span class="na">resource</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">google_pubsub_topic.foo.id</span>
+<span class="w">    </span><span class="na">resource</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">google_pubsub_topic.foo_function.id</span>
+<span class="w">    </span><span class="na">service_account_email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">null</span>
+<span class="w">    </span><span class="na">retry_policy</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;RETRY_POLICY_RETRY&quot;</span>
 <span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="na">bucket_force_destroy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">create_bucket</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;google_pubsub_topic&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;google_pubsub_topic&quot;</span><span class="w"> </span><span class="nv">&quot;foo_function&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-topic&quot;</span>
+<span class="p">}</span>
+
+<span class="c1">// 関数ソースコードを保管するバケット</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;google_storage_bucket&quot;</span><span class="w"> </span><span class="nv">&quot;foo_function&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-bucket&quot;</span>
+<span class="w">  </span><span class="na">location</span><span class="w">                    </span><span class="o">=</span><span class="w"> </span><span class="nv">data.google_client_config.current.region</span>
+<span class="w">  </span><span class="na">project</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="nv">data.google_client_config.current.project</span>
+<span class="w">  </span><span class="na">storage_class</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;REGIONAL&quot;</span>
+<span class="w">  </span><span class="na">uniform_bucket_level_access</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">force_destroy</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="p">}</span>
+
+<span class="c1">// バケットでの関数ソースコードの保管方法</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;google_storage_bucket_object&quot;</span><span class="w"> </span><span class="nv">&quot;foo_function&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="err">&quot;$</span><span class="p">{</span><span class="nv">data.archive_file.function.output_md5</span><span class="p">}</span><span class="err">-$</span><span class="p">{</span><span class="nf">basename</span><span class="p">(</span><span class="nv">data.archive_file.function.output_path</span><span class="p">)}</span>
+<span class="w">  </span><span class="na">bucket</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">google_storage_bucket.foo_function.name</span>
+<span class="w">  </span><span class="na">source</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">data.archive_file.foo_function.output_path</span>
+<span class="w">  </span><span class="na">content_disposition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;attachment&quot;</span>
+<span class="w">  </span><span class="na">content_type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;application/zip&quot;</span>
+<span class="p">}</span>
+
+<span class="c1">// 圧縮ファイルをバージョン管理する</span>
+<span class="kr">data</span><span class="w"> </span><span class="nc">&quot;archive_file&quot;</span><span class="w"> </span><span class="nv">&quot;foo_function&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;zip&quot;</span>
+<span class="w">  </span><span class="na">output_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${path.module}/foo-function-src.zip&quot;</span>
+<span class="w">  </span><span class="na">source_dir</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${path.module}/foo-function-src&quot;</span>
 <span class="p">}</span>
 
 <span class="kr">data</span><span class="w"> </span><span class="nc">&quot;google_client_config&quot;</span><span class="w"> </span><span class="nv">&quot;current&quot;</span><span class="w"> </span><span class="p">{}</span>
@@ -23989,7 +24019,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-14</span>
   </span>
 
     
