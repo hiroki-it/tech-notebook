@@ -1,4 +1,9 @@
 {
+  "name": "tech-notebook",
+  "version": "1.0.0",
+  "repository": "git@github.com:hiroki-it/tech-notebook.git",
+  "author": "hiroki-it <hasegawafeedshop@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "prettier": "^3.0.0"
   }
