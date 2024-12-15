@@ -35,6 +35,14 @@ Kubernetesの周辺ツール (例：Prometheus、AlertManager、Grafana、ArgoCD
 
 <br>
 
+### アウトバウンド
+
+Ingressコントローラーは、名前ではIngressとなっているがEgress (アウトバウンド) も扱う。
+
+> - https://www.f5.com/ja_jp/company/blog/nginx/guide-to-choosing-ingress-controller-part-1-identify-requirements
+
+<br>
+
 ### SSL証明書の割り当て
 
 Ingressコントローラーは、Secretに設定されたSSL証明書を参照し、これを自身のロードバランサー (例：Nginx) に渡す。
