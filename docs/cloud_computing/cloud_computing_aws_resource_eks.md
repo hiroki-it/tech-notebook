@@ -1392,6 +1392,50 @@ done
 
 <br>
 
+### 組み込みミドルウェア
+
+#### ▼ 時刻調整処理
+
+Node間の時刻が異なると、時刻をもとにした処理 (例：認証) が失敗する可能性がある。
+
+各Nodeには、時刻を正しく調整するミドルウェア (`configure-clocksource`) があらかじめインストールされている。
+
+```bash
+################################################################################
+### Time #######################################################################
+################################################################################
+
+sudo cp -v $WORKING_DIR/shared/configure-clocksource.service /etc/systemd/system/configure-clocksource.service
+sudo systemctl enable configure-clocksource
+```
+
+```ini
+# configure-clocksource
+[Unit]
+Description=Configure kernel clocksource
+# the script needs to use IMDS, so wait for the network to be up
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/configure-clocksource
+
+[Install]
+WantedBy=multi-user.target
+```
+
+ちなみに、タイムゾーンは`timedatectl`コマンドで変更できる。
+
+```bash
+$ timedatectl set-timezone America/Vancouver
+```
+
+> - https://github.com/awslabs/amazon-eks-ami/blob/main/templates/al2023/provisioners/install-worker.sh#L94-L95
+> - https://github.com/awslabs/amazon-eks-ami/blob/main/templates/shared/runtime/configure-clocksource.service
+> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/change-time-zone-of-instance.html
+
+<br>
+
 ## 04-04. セットアップ
 
 ### コンソール画面の場合
