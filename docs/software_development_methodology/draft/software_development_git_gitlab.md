@@ -31,8 +31,8 @@ description: GitLab＠Gitの知見を記録しています。
 
 ```yaml
 repository/
-└── .gitlab/
-└── merge_request_templates/
+├── .gitlab/
+├── merge_request_templates/
 ├── FIX.md
 └── UPDATE.md
 ```
