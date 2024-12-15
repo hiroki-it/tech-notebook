@@ -221,24 +221,27 @@ const header = {
 
 必ず設定しなければならない『予約済みクレーム』と、ユーザー側が自由に定義できる『プライベートクレーム』がある。
 
-| パラメーター名 | 対応するクレーム | 役割                          | 例         |
-| -------------- | ---------------- | ----------------------------- | ---------- |
-| `sub`          | Subject          | 一意な識別子を設定する。      | ユーザーID |
-| `iss`          | Issuer           | JWTの発行元認証局を設定する。 |            |
-| `aud`          | Audience         |                               |            |
-| `exp`          | Expiration Time  | JWTの有効期限を設定する。     |            |
-| `jti`          | JWT ID           |                               |            |
+| パラメーター名 | 対応するクレーム | ユーザーが設定する | 役割                      | 例         |
+| -------------- | ---------------- | ------------------ | ------------------------- | ---------- |
+| `aud`          | Audience         | ✅                 |                           |            |
+| `exp`          | Expiration Time  |                    | JWTの有効期限を表す。     |            |
+| `iat`          | Issuer At        |                    | 発行された時刻を表す      |            |
+| `iss`          | Issuer           | ✅                 | JWTの発行元認証局を表す。 |            |
+| `jti`          | JWT ID           | ✅                 |                           |            |
+| `sub`          | Subject          | ✅                 | 一意な識別子を表す。      | ユーザーID |
 
 ```javascript
 const payload = {
-  sub: "foo",
   aud: "foo",
-  iss: "https://example.com",
   exp: 1452565628,
   iat: 1452565568,
+  iss: "https://example.com",
+  jti: "foo",
+  sub: "foo",
 };
 ```
 
+> - https://kamichidu.github.io/post/2017/01/24-about-json-web-token/
 > - https://zenn.dev/mikakane/articles/tutorial_for_jwt#%E3%83%9A%E3%82%A4%E3%83%AD%E3%83%BC%E3%83%89
 > - https://qiita.com/TakahikoKawasaki/items/8f0e422c7edd2d220e06#64-jwt-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0
 
