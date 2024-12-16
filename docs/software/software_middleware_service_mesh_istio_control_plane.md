@@ -474,7 +474,7 @@ ControlZダッシュボードでは、istiodコントロールプレーンの設
 
 ![istio_service-registry](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_service-registry.png)
 
-Istiodコントロールプレーンは、サービスレジストリ (例：etcd、ZooKeeper、consul catalog、nocos、cloud foundry) に登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言 (ServiceEntry、WorkloadEntry) から、他のサービス (Pod、Node) の宛先情報を取得する。
+Istiodコントロールプレーンは、サービスレジストリ (例：etcd、consul catalog、nocos、cloud foundry) に登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言 (ServiceEntry、WorkloadEntry) から、他のサービス (Pod、Node) の宛先情報を取得する。
 
 `discovery`コンテナは、取得した宛先情報を自身に保管する。
 

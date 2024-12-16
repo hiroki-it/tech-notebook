@@ -3,7 +3,7 @@ title: 【IT技術の知見】CoreDNS＠DNS系ミドルウェア
 description: CoreDNS＠DNS系ミドルウェアの知見を記録しています。
 ---
 
-# CoreDNS＠ネットワーク系
+# CoreDNS＠DNS系ミドルウェア
 
 ## はじめに
 
