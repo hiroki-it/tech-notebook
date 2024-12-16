@@ -1044,6 +1044,19 @@ resource "<resourceタイプ>" "<resourceブロック名>" {
 ```terraform
 import {
   # リソースの識別子
+  id = "<ID>"
+  # 自動生成するresourceブロック
+  to = <リソースタイプ>.<リソース名>
+}
+```
+
+**＊実行例＊**
+
+`import`ブロックを使用して、`resource "aws_instance" "ec2" {...}`という実装を自動作成する。
+
+```terraform
+import {
+  # リソースの識別子
   id = "i-xxxxxxxx"
   # import対象
   to = aws_instance.ec2
@@ -1051,8 +1064,12 @@ import {
 ```
 
 ```bash
-$ terraform plan -generate-config-out=generated/aws_instance.tf
+$ terraform plan -var-file=foo.tfvars -generate-config-out=aws_instance.tf
+```
 
+これにより、`aws_instance.tf`ファイルを自動作成できる。
+
+```terraform
 # __generated__ by Terraform
 # Please review these resources and move them into your main configuration files.
 resource "aws_instance" "ec2" {
@@ -1063,6 +1080,7 @@ resource "aws_instance" "ec2" {
   cpu_threads_per_core                 = 1
   disable_api_stop                     = false
   disable_api_termination              = false
+
   ....
 
 }

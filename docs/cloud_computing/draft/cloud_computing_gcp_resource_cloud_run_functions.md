@@ -32,7 +32,7 @@ description: Google Cloud Run Functions＠Google Cloudリソースの知見を�
 ```terraform
 module "foo_function" {
 
-  // Cloud Functionには世代数 (v1、v2) があり、本モジュールではv1になる
+  // Cloud Run Functionsには世代数 (v1、v2) があり、本モジュールではv1になる
   source     = "terraform-google-modules/event-function/google"
 
   version    = "<バージョン>"
@@ -51,7 +51,7 @@ module "foo_function" {
 
   timeout_s           = 120
 
-  // FooFunction関数をCloud Functionのエントリーポイントとする
+  // FooFunction関数をCloud Run Functionsのエントリーポイントとする
   entry_point         = "FooFunction"
 
   source_directory    = "${path.module}/foo_function_src"
@@ -68,7 +68,7 @@ module "foo_function" {
 
   service_account_email        = "foo-cloudfunction@*****.iam.gserviceaccount.com"
 
-  // Cloud　Pub/SubがトリガーとなってCloud Functionを実行する
+  // Cloud　Pub/SubがトリガーとなってCloud Run Functionsを実行する
   event_trigger = {
     event_type = "providers/cloud.pubsub/eventTypes/topic.publish"
     resource   = google_pubsub_topic.foo_function.id
@@ -153,12 +153,14 @@ resource "google_storage_bucket" "foo_function" {
   force_destroy               = true
 }
 
-// バケットでの関数ソースコードの保管方法
+// バケットへのzipフォルダの保管
 // v1ではモジュール内に定義されていたが、v2になり無くなってしまったので、自前で定義する必要がある
 resource "google_storage_bucket_object" "foo_function" {
-  name                = "${data.archive_file.foo_function.output_md5}-${basename(data.archive_file.foo_function.output_path)}
   bucket              = google_storage_bucket.foo_function.name
+  # 元のzipファイル
   source              = data.archive_file.foo_function.output_path
+  # 保管先での名前
+  name                = "${data.archive_file.foo_function.output_md5}-${basename(data.archive_file.foo_function.output_path)}
   content_disposition = "attachment"
   content_type        = "application/zip"
 }
