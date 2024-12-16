@@ -16517,7 +16517,7 @@
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 初期化
+      ▼ 初期化する
     </span>
   </a>
   
@@ -16533,9 +16533,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tf" class="md-nav__link">
+  <a href="#tfstatetf" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ .tfファイルに実インフラの設定値を取り込む
+      ▼ tfstateファイルからtfファイルを定義する
     </span>
   </a>
   
@@ -16543,6 +16543,15 @@
         
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 差分を解消する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ さいごに
     </span>
@@ -25241,7 +25250,7 @@
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 初期化
+      ▼ 初期化する
     </span>
   </a>
   
@@ -25257,9 +25266,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tf" class="md-nav__link">
+  <a href="#tfstatetf" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ .tfファイルに実インフラの設定値を取り込む
+      ▼ tfstateファイルからtfファイルを定義する
     </span>
   </a>
   
@@ -25267,6 +25276,15 @@
         
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 差分を解消する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ さいごに
     </span>
@@ -25962,7 +25980,7 @@ module.vpc_module.aws_vpc.vpc
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>pull<span class="w"> </span>&gt;<span class="w"> </span>&lt;tfstateファイル名&gt;
 </code></pre></div>
 <h4 id="rm">▼ rm<a class="headerlink" href="#rm" title="Permanent link">&para;</a></h4>
-<p><code>terraform import</code>コマンドで<code>tfstate</code>ファイルに反映した設定値を削除する。</p>
+<p><code>tfstate</code>ファイルから状態を削除し、Terraformの管理外にする。</p>
 <p><code>count</code>引数や<code>for_each</code>引数を使用している場合は、シングルクオーテーションで囲う必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 関数を使用せずに定義されている場合</span>
 $<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span>aws_instance.bastion
@@ -26016,6 +26034,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> 
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://qiita.com/hz1_d/items/772272a010baa3d7aaed">https://qiita.com/hz1_d/items/772272a010baa3d7aaed</a></li>
 <li><a href="https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6">https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6</a></li>
 <li><a href="https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471">https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471</a></li>
 <li><a href="https://dev.classmethod.jp/articles/terraform_import_for_each/">https://dev.classmethod.jp/articles/terraform_import_for_each/</a></li>
@@ -26162,7 +26181,7 @@ $<span class="w"> </span>gsutil<span class="w"> </span>cp<span class="w"> </span
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="_9">▼ 初期化<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<h4 id="_9">▼ 初期化する<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
@@ -26175,7 +26194,9 @@ $<span class="w"> </span>gsutil<span class="w"> </span>cp<span class="w"> </span
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p><code>resource</code>タイプと<code>resource</code>ブロック名を指定し、<code>tfstate</code>ファイルに実インフラの状態を書き込む。</p>
+<p><code>terraform import</code>コマンドを実行する。</p>
+<p>これにより、<code>resource</code>タイプと<code>resource</code>ブロック名を指定し、<code>tfstate</code>ファイルに実インフラの状態を書き込む。</p>
+<p>この時、<code>tfstate</code>ファイルの差分表記と反対に (例：<code>+</code>の場合は削除、<code>-</code>は追加、<code>→</code>は逆向き変更) になるように、tfファイルを修正する。</p>
 <p>パラメーターの『<code>&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;</code>』は、<code>terraform plan</code>コマンドの結果が参考になる。</p>
 <p>また『ARN、ID、名前など』は、<code>resource</code>タイプによって異なるため、リファレンスの『Import』の項目を確認すること。</p>
 <p>何らかの理由で<code>terraform import</code>コマンドを実行し直したい場合は、<code>terraform state rm</code>コマンドで<code>resource</code>ブロックを削除し、改めて書き込む。</p>
@@ -26260,14 +26281,16 @@ $<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> 
 <li><a href="https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471">https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471</a></li>
 <li><a href="https://dev.classmethod.jp/articles/terraform_import_for_each/">https://dev.classmethod.jp/articles/terraform_import_for_each/</a></li>
 <li><a href="https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6">https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6</a></li>
+<li><a href="https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import">https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import</a></li>
 </ul>
 </blockquote>
-<h4 id="tf">▼ <code>.tf</code>ファイルに実インフラの設定値を取り込む<a class="headerlink" href="#tf" title="Permanent link">&para;</a></h4>
+<h4 id="tfstatetf">▼ <code>tfstate</code>ファイルから<code>tf</code>ファイルを定義する<a class="headerlink" href="#tfstatetf" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
-<p><code>tfstate</code>ファイルから<code>.tf</code>ファイルを表示する。</p>
-<p><code>.tf</code>ファイルにこれを定義する。</p>
+<p>前の手順で<code>tfstate</code>ファイルに状態を書き込めているはずである。</p>
+<p><code>.tf</code>ファイルにこれを反映する。</p>
+<p>例えば <code>terraform state show</code>コマンドを実行し、手動で定義する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>show<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span><span class="sb">`</span>
@@ -26277,20 +26300,24 @@ resource<span class="w"> </span><span class="s2">&quot;&lt;resourceタイプ&gt;
 <span class="w">  </span>...
 <span class="o">}</span>
 </code></pre></div>
-<dl>
-<dt><code>(6)</code></dt>
-<dd>
-<p><code>terraform import</code>コマンドを実行する。</p>
-<p>この時、<code>tfstate</code>ファイルの差分表記と反対に (例：<code>+</code>の場合は削除、<code>-</code>は追加、<code>→</code>は逆向き変更) になるように、tfファイルを修正する。</p>
-</dd>
-</dl>
+<p>その他、<code>import</code>ブロックを使用すると、<code>.tf</code>ファイルを自動生成できる。</p>
+<div class="highlight"><pre><span></span><code><span class="nb">import</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">  # リソースの識別子</span>
+<span class="w">  </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;i-xxxxxxxx&quot;</span>
+<span class="c1">  # import対象</span>
+<span class="w">  </span><span class="na">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_instance.ec2</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span>-generate-config-out<span class="o">=</span>generated/aws_instance.tf
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import">https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import</a></li>
+<li><a href="https://qiita.com/hiramax/items/093846a2f81426aa3a2f">https://qiita.com/hiramax/items/093846a2f81426aa3a2f</a></li>
 </ul>
 </blockquote>
+<h4 id="_10">▼ 差分を解消する<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <dl>
-<dt><code>(7)</code></dt>
+<dt><code>(6)</code></dt>
 <dd>
 <p><code>tfstate</code>ファイルと実インフラの差分が無くなったら完了である。</p>
 </dd>
@@ -26299,7 +26326,7 @@ resource<span class="w"> </span><span class="s2">&quot;&lt;resourceタイプ&gt;
 
 No<span class="w"> </span>changes.<span class="w"> </span>Infrastructure<span class="w"> </span>is<span class="w"> </span>up-to-date.
 </code></pre></div>
-<h4 id="_10">▼ さいごに<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<h4 id="_11">▼ さいごに<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(8)</code></dt>
 <dd>
@@ -26379,7 +26406,7 @@ $<span class="w"> </span>rm<span class="w"> </span>terraform.tfstate.backup
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-16</span>
   </span>
 
     
