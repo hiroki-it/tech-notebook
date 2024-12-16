@@ -16524,18 +16524,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tfstate" class="md-nav__link">
+  <a href="#tf" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 実インフラの設定値をtfstateファイルに取り込む
+      ▼ tfファイルを定義する
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#tfstatetf" class="md-nav__link">
+  <a href="#tfstate" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ tfstateファイルからtfファイルを定義する
+      ▼ 実インフラの設定値をtfstateファイルに取り込む
     </span>
   </a>
   
@@ -25257,18 +25257,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tfstate" class="md-nav__link">
+  <a href="#tf" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 実インフラの設定値をtfstateファイルに取り込む
+      ▼ tfファイルを定義する
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#tfstatetf" class="md-nav__link">
+  <a href="#tfstate" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ tfstateファイルからtfファイルを定義する
+      ▼ 実インフラの設定値をtfstateファイルに取り込む
     </span>
   </a>
   
@@ -26190,9 +26190,51 @@ $<span class="w"> </span>gsutil<span class="w"> </span>cp<span class="w"> </span
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-reconfigure
 </code></pre></div>
-<h4 id="tfstate">▼ 実インフラの設定値を<code>tfstate</code>ファイルに取り込む<a class="headerlink" href="#tfstate" title="Permanent link">&para;</a></h4>
+<h4 id="tf">▼ <code>tf</code>ファイルを定義する<a class="headerlink" href="#tf" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(4)</code></dt>
+<dd>
+<p><code>.tfstate</code>ファイルと差分のない<code>tf</code>ファイルを定義する</p>
+<p>手動で作成する場合は、頑張るしかない。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="err">resource</span><span class="w"> </span><span class="s2">&quot;&lt;resourceタイプ&gt;&quot; &quot;&lt;resourceブロック名&gt;&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>import</code>ブロックを使用すると、<code>.tf</code>ファイルを自動生成できる。</p>
+<div class="highlight"><pre><span></span><code><span class="nb">import</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">  # リソースの識別子</span>
+<span class="w">  </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;i-xxxxxxxx&quot;</span>
+<span class="c1">  # import対象</span>
+<span class="w">  </span><span class="na">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_instance.ec2</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span>-generate-config-out<span class="o">=</span>generated/aws_instance.tf
+
+<span class="c1"># __generated__ by Terraform</span>
+<span class="c1"># Please review these resources and move them into your main configuration files.</span>
+resource<span class="w"> </span><span class="s2">&quot;aws_instance&quot;</span><span class="w"> </span><span class="s2">&quot;ec2&quot;</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="nv">ami</span><span class="w">                                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-xxxxxxxx&quot;</span>
+<span class="w">  </span><span class="nv">associate_public_ip_address</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="w">  </span><span class="nv">availability_zone</span><span class="w">                    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1a&quot;</span>
+<span class="w">  </span><span class="nv">cpu_core_count</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="w">  </span><span class="nv">cpu_threads_per_core</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="w">  </span><span class="nv">disable_api_stop</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+<span class="w">  </span><span class="nv">disable_api_termination</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+<span class="w">  </span>....
+
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/hiramax/items/093846a2f81426aa3a2f">https://qiita.com/hiramax/items/093846a2f81426aa3a2f</a></li>
+<li><a href="https://blog.techscore.com/entry/2024/05/29/080000">https://blog.techscore.com/entry/2024/05/29/080000</a></li>
+</ul>
+</blockquote>
+<h4 id="tfstate">▼ 実インフラの設定値を<code>tfstate</code>ファイルに取り込む<a class="headerlink" href="#tfstate" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(5)</code></dt>
 <dd>
 <p><code>terraform import</code>コマンドを実行する。</p>
 <p>これにより、<code>resource</code>タイプと<code>resource</code>ブロック名を指定し、<code>tfstate</code>ファイルに実インフラの状態を書き込む。</p>
@@ -26282,37 +26324,6 @@ $<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> 
 <li><a href="https://dev.classmethod.jp/articles/terraform_import_for_each/">https://dev.classmethod.jp/articles/terraform_import_for_each/</a></li>
 <li><a href="https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6">https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6</a></li>
 <li><a href="https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import">https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import</a></li>
-</ul>
-</blockquote>
-<h4 id="tfstatetf">▼ <code>tfstate</code>ファイルから<code>tf</code>ファイルを定義する<a class="headerlink" href="#tfstatetf" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(5)</code></dt>
-<dd>
-<p>前の手順で<code>tfstate</code>ファイルに状態を書き込めているはずである。</p>
-<p><code>.tf</code>ファイルにこれを反映する。</p>
-<p>例えば <code>terraform state show</code>コマンドを実行し、手動で定義する。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>show<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span><span class="sb">`</span>
-
-<span class="c1"># &lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;:</span>
-resource<span class="w"> </span><span class="s2">&quot;&lt;resourceタイプ&gt;&quot;</span><span class="w"> </span><span class="s2">&quot;&lt;resourceブロック名&gt;&quot;</span><span class="w"> </span><span class="o">{</span>
-<span class="w">  </span>...
-<span class="o">}</span>
-</code></pre></div>
-<p>その他、<code>import</code>ブロックを使用すると、<code>.tf</code>ファイルを自動生成できる。</p>
-<div class="highlight"><pre><span></span><code><span class="nb">import</span><span class="w"> </span><span class="p">{</span>
-<span class="c1">  # リソースの識別子</span>
-<span class="w">  </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;i-xxxxxxxx&quot;</span>
-<span class="c1">  # import対象</span>
-<span class="w">  </span><span class="na">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_instance.ec2</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span>-generate-config-out<span class="o">=</span>generated/aws_instance.tf
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/hiramax/items/093846a2f81426aa3a2f">https://qiita.com/hiramax/items/093846a2f81426aa3a2f</a></li>
 </ul>
 </blockquote>
 <h4 id="_10">▼ 差分を解消する<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
