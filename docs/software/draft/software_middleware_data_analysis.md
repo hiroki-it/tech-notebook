@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】データ分析
+title: 【IT技術の知見】データ分析系ミドルウェア
 description: データ分析の知見を記録しています。
 ---
 
-# データ分析
+# データ分析系ミドルウェア
 
 ## はじめに
 
@@ -56,5 +56,15 @@ description: データ分析の知見を記録しています。
 - バッチ出力データ
 
 > - https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-a-data-lake
+
+<br>
+
+## 03. データメッシュ
+
+データレイクやデータウェアハウスのように中央集権的にデータを管理するのではなく、データを分散的に管理する。
+
+また、汎用的な実装を横断的に提供する。
+
+> - https://www.montecarlodata.com/blog-data-mesh-vs-data-lake-whats-the-difference/
 
 <br>
