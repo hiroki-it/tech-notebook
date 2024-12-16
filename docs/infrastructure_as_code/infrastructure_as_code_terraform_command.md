@@ -772,7 +772,7 @@ $ terraform state pull > <tfstateファイル名>
 
 #### ▼ rm
 
-`terraform import`コマンドで`tfstate`ファイルに反映した設定値を削除する。
+`tfstate`ファイルから状態を削除し、Terraformの管理外にする。
 
 `count`引数や`for_each`引数を使用している場合は、シングルクオーテーションで囲う必要がある。
 
@@ -836,6 +836,7 @@ $ terraform state rm --dry-run 'module.ec2.aws_instance.bastion["<キー名2>"]'
 $ terraform state rm 'module.ec2.aws_instance.bastion["<キー名2>"]'
 ```
 
+> - https://qiita.com/hz1_d/items/772272a010baa3d7aaed
 > - https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6
 > - https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471
 > - https://dev.classmethod.jp/articles/terraform_import_for_each/
@@ -1014,7 +1015,7 @@ terraform {
 }
 ```
 
-#### ▼ 初期化
+#### ▼ 初期化する
 
 `(3)`
 
@@ -1028,9 +1029,13 @@ $ terraform init -reconfigure
 
 `(4)`
 
-: `resource`タイプと`resource`ブロック名を指定し、`tfstate`ファイルに実インフラの状態を書き込む。
+: `terraform import`コマンドを実行する。
 
-     パラメーターの『```<resourceタイプ>.<resourceブロック名>```』は、`terraform plan`コマンドの結果が参考になる。
+     これにより、`resource`タイプと`resource`ブロック名を指定し、`tfstate`ファイルに実インフラの状態を書き込む。
+
+     この時、`tfstate`ファイルの差分表記と反対に (例：`+`の場合は削除、`-`は追加、`→`は逆向き変更) になるように、tfファイルを修正する。
+
+     パラメーターの『`<resourceタイプ>.<resourceブロック名>`』は、`terraform plan`コマンドの結果が参考になる。
 
      また『ARN、ID、名前など』は、`resource`タイプによって異なるため、リファレンスの『Import』の項目を確認すること。
 
@@ -1123,14 +1128,17 @@ $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resour
 > - https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471
 > - https://dev.classmethod.jp/articles/terraform_import_for_each/
 > - https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6
+> - https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import
 
-#### ▼ `.tf`ファイルに実インフラの設定値を取り込む
+#### ▼ `tfstate`ファイルから`tf`ファイルを定義する
 
 `(5)`
 
-: `tfstate`ファイルから`.tf`ファイルを表示する。
+: 前の手順で`tfstate`ファイルに状態を書き込めているはずである。
 
-     `.tf`ファイルにこれを定義する。
+    `.tf`ファイルにこれを反映する。
+
+    例えば `terraform state show`コマンドを実行し、手動で定義する。
 
 ```bash
 $ terraform state show '<resourceタイプ>.<resourceブロック名>'`
@@ -1141,15 +1149,26 @@ resource "<resourceタイプ>" "<resourceブロック名>" {
 }
 ```
 
+その他、`import`ブロックを使用すると、`.tf`ファイルを自動生成できる。
+
+```terraform
+import {
+  # リソースの識別子
+  id = "i-xxxxxxxx"
+  # import対象
+  to = aws_instance.ec2
+}
+```
+
+```bash
+$ terraform plan -generate-config-out=generated/aws_instance.tf
+```
+
+> - https://qiita.com/hiramax/items/093846a2f81426aa3a2f
+
+#### ▼ 差分を解消する
+
 `(6)`
-
-: `terraform import`コマンドを実行する。
-
-     この時、`tfstate`ファイルの差分表記と反対に (例：`+`の場合は削除、`-`は追加、`→`は逆向き変更) になるように、tfファイルを修正する。
-
-> - https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import
-
-`(7)`
 
 : `tfstate`ファイルと実インフラの差分が無くなったら完了である。
 
