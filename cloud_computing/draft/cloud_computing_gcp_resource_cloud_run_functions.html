@@ -23879,7 +23879,7 @@
 <h4 id="v1">▼ 世代数v1<a class="headerlink" href="#v1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;foo_function&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="c1">  // Cloud Functionには世代数 (v1、v2) があり、本モジュールではv1になる</span>
+<span class="c1">  // Cloud Run Functionsには世代数 (v1、v2) があり、本モジュールではv1になる</span>
 <span class="w">  </span><span class="na">source</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-google-modules/event-function/google&quot;</span>
 
 <span class="w">  </span><span class="na">version</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
@@ -23898,7 +23898,7 @@
 
 <span class="w">  </span><span class="na">timeout_s</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="m">120</span>
 
-<span class="c1">  // FooFunction関数をCloud Functionのエントリーポイントとする</span>
+<span class="c1">  // FooFunction関数をCloud Run Functionsのエントリーポイントとする</span>
 <span class="w">  </span><span class="na">entry_point</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;FooFunction&quot;</span>
 
 <span class="w">  </span><span class="na">source_directory</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${path.module}/foo_function_src&quot;</span>
@@ -23915,7 +23915,7 @@
 
 <span class="w">  </span><span class="na">service_account_email</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-cloudfunction@*****.iam.gserviceaccount.com&quot;</span>
 
-<span class="c1">  // Cloud　Pub/SubがトリガーとなってCloud Functionを実行する</span>
+<span class="c1">  // Cloud　Pub/SubがトリガーとなってCloud Run Functionsを実行する</span>
 <span class="w">  </span><span class="nb">event_trigger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">event_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;providers/cloud.pubsub/eventTypes/topic.publish&quot;</span>
 <span class="w">    </span><span class="na">resource</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">google_pubsub_topic.foo_function.id</span>
@@ -24000,12 +24000,14 @@
 <span class="w">  </span><span class="na">force_destroy</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="p">}</span>
 
-<span class="c1">// バケットでの関数ソースコードの保管方法</span>
+<span class="c1">// バケットへのzipフォルダの保管</span>
 <span class="c1">// v1ではモジュール内に定義されていたが、v2になり無くなってしまったので、自前で定義する必要がある</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;google_storage_bucket_object&quot;</span><span class="w"> </span><span class="nv">&quot;foo_function&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="err">&quot;$</span><span class="p">{</span><span class="nv">data.archive_file.foo_function.output_md5</span><span class="p">}</span><span class="err">-$</span><span class="p">{</span><span class="nf">basename</span><span class="p">(</span><span class="nv">data.archive_file.foo_function.output_path</span><span class="p">)}</span>
 <span class="w">  </span><span class="na">bucket</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">google_storage_bucket.foo_function.name</span>
+<span class="c1">  # 元のzipファイル</span>
 <span class="w">  </span><span class="na">source</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">data.archive_file.foo_function.output_path</span>
+<span class="c1">  # 保管先での名前</span>
+<span class="w">  </span><span class="na">name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="err">&quot;$</span><span class="p">{</span><span class="nv">data.archive_file.foo_function.output_md5</span><span class="p">}</span><span class="err">-$</span><span class="p">{</span><span class="nf">basename</span><span class="p">(</span><span class="nv">data.archive_file.foo_function.output_path</span><span class="p">)}</span>
 <span class="w">  </span><span class="na">content_disposition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;attachment&quot;</span>
 <span class="w">  </span><span class="na">content_type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;application/zip&quot;</span>
 <span class="p">}</span>
