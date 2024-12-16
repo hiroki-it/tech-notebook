@@ -32,6 +32,66 @@ description: Google Cloud Run Functions＠Google Cloudリソースの知見を�
 ```terraform
 module "foo_function" {
 
+  // Cloud Functionには世代数 (v1、v2) があり、本モジュールではv1になる
+  source     = "terraform-google-modules/event-function/google"
+
+  version    = "<バージョン>"
+
+  region     = data.google_client_config.current.region
+
+  project_id = data.google_client_config.current.project
+
+  name                = "foo-function"
+
+  description         = "this is function that do foo"
+
+  runtime             = "<バージョン値>"
+
+  available_memory_mb = 128
+
+  timeout_s           = 120
+
+  // FooFunction関数をCloud Functionのエントリーポイントとする
+  entry_point         = "FooFunction"
+
+  source_directory    = "${path.module}/foo_function_src"
+
+  environment_variables = {
+    FOO = "foo"
+    BAR = "bar"
+  }
+
+  secret_environment_variables = {
+    BAZ = "baz"
+    QUX = "qux"
+  }
+
+  service_account_email        = "foo-cloudfunction@*****.iam.gserviceaccount.com"
+
+  // Cloud　Pub/SubがトリガーとなってCloud Functionを実行する
+  event_trigger = {
+    event_type = "providers/cloud.pubsub/eventTypes/topic.publish"
+    resource   = google_pubsub_topic.foo_function.id
+  }
+
+  bucket_force_destroy = true
+  create_bucket        = true
+}
+
+resource "google_pubsub_topic" "foo_function" {
+  name = "foo-topic"
+}
+
+data "google_client_config" "current" {}
+```
+
+> - https://github.com/terraform-google-modules/terraform-google-event-function
+
+#### ▼ 世代数v2
+
+```terraform
+module "foo_function" {
+
   // Google Cloud Run Functionsには世代数 (v1、v2) があり、本モジュールではv1になる
   source = "GoogleCloudPlatform/cloud-functions/google"
 
@@ -82,11 +142,8 @@ module "foo_function" {
   }
 }
 
-resource "google_pubsub_topic" "foo_function" {
-  name = "foo-topic"
-}
-
 // 関数ソースコードを保管するバケット
+// v1ではモジュール内に定義されていたが、v2になり無くなってしまったので、自前で定義する必要がある
 resource "google_storage_bucket" "foo_function" {
   name                        = "foo-bucket"
   location                    = data.google_client_config.current.region
@@ -97,6 +154,7 @@ resource "google_storage_bucket" "foo_function" {
 }
 
 // バケットでの関数ソースコードの保管方法
+// v1ではモジュール内に定義されていたが、v2になり無くなってしまったので、自前で定義する必要がある
 resource "google_storage_bucket_object" "foo_function" {
   name                = "${data.archive_file.foo_function.output_md5}-${basename(data.archive_file.foo_function.output_path)}
   bucket              = google_storage_bucket.foo_function.name
@@ -106,45 +164,18 @@ resource "google_storage_bucket_object" "foo_function" {
 }
 
 // 圧縮ファイルをバージョン管理する
+// v1ではモジュール内に定義されていたが、v2になり無くなってしまったので、自前で定義する必要がある
 data "archive_file" "foo_function" {
   type        = "zip"
   output_path = "${path.module}/foo-function-src.zip"
   source_dir  = "${path.module}/foo-function-src"
 }
 
-data "google_client_config" "current" {}
-```
-
-> - https://github.com/terraform-google-modules/terraform-google-event-function
-
-#### ▼ 世代数v2
-
-```terraform
-module "foo-function" {
-
-  // Google Cloud Run Functionsには世代数 (v1、v2) があり、本モジュールではv2になる
-  source = "GoogleCloudPlatform/cloud-functions/google"
-
-  version = "~> 0.4"
-
-  # Required variables
-
-  function_name = "<FUNCTION_NAME>"
-
-  project_id = "<PROJECT_ID>"
-
-  location = "<LOCATION>"
-
-  runtime = "<RUNTIME>"
-
-  entrypoint = "<ENTRYPOINT>"
-
-  storage_source = {
-    bucket     = "<BUCKET_NAME>"
-    object     = "<ARCHIVE_PATH>"
-    generation = "<GCS_GENERATION>"
-  }
+resource "google_pubsub_topic" "foo_function" {
+  name = "foo-topic"
 }
+
+data "google_client_config" "current" {}
 ```
 
 > - https://github.com/GoogleCloudPlatform/terraform-google-cloud-functions
