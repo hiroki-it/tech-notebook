@@ -985,9 +985,9 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 <br>
 
-### 手順
+## 02-02. 手順
 
-#### ▼ はじめに
+### はじめに
 
 `(1)`
 
@@ -1015,7 +1015,7 @@ terraform {
 }
 ```
 
-#### ▼ 初期化する
+### 初期化する
 
 `(3)`
 
@@ -1025,7 +1025,9 @@ terraform {
 $ terraform init -reconfigure
 ```
 
-#### ▼ `tf`ファイルを定義する
+### `tf`ファイルを定義する
+
+#### ▼ `terraform import`コマンドの場合
 
 `(4)`
 
@@ -1038,6 +1040,8 @@ resource "<resourceタイプ>" "<resourceブロック名>" {
   ...
 }
 ```
+
+#### ▼ `import`ブロックの場合
 
 `import`ブロックを使用すると、`.tf`ファイルを自動生成できる。
 
@@ -1059,7 +1063,7 @@ import {
   # リソースの識別子
   id = "i-xxxxxxxx"
   # import対象
-  to = aws_instance.ec2
+  to = aws_instance.foo
 }
 ```
 
@@ -1072,7 +1076,7 @@ $ terraform plan -var-file=foo.tfvars -generate-config-out=aws_instance.tf
 ```terraform
 # __generated__ by Terraform
 # Please review these resources and move them into your main configuration files.
-resource "aws_instance" "ec2" {
+resource "aws_instance" "foo" {
   ami                                  = "ami-xxxxxxxx"
   associate_public_ip_address          = true
   availability_zone                    = "ap-northeast-1a"
@@ -1089,7 +1093,11 @@ resource "aws_instance" "ec2" {
 > - https://qiita.com/hiramax/items/093846a2f81426aa3a2f
 > - https://blog.techscore.com/entry/2024/05/29/080000
 
-#### ▼ 実インフラの設定値を`tfstate`ファイルに取り込む
+<br>
+
+### 実インフラの設定値を`tfstate`ファイルに取り込む
+
+#### ▼ `terraform import`コマンドの場合
 
 `(5)`
 
@@ -1194,7 +1202,26 @@ $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resour
 > - https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6
 > - https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import
 
-#### ▼ 差分を解消する
+#### ▼ `import`ブロックの場合
+
+`import`ブロックの場合、自動作成した`.tf`ファイルも含めて`terraform apply`コマンドを実行する。
+
+```bash
+$ terraform apply
+
+aws_instance.foo: Preparing import... [id=i-052562f6eee9d60d9]
+aws_instance.foo: Refreshing state... [id=i-052562f6eee9d60d9]
+
+...
+
+Apply complete! Resources: 1 imported, 0 added, 0 changed, 0 destroyed.
+```
+
+> - https://dev.classmethod.jp/articles/terraform-import-command-and-import-block/
+
+<br>
+
+### 差分を解消する (`import`ブロックの場合は不要)
 
 `(6)`
 
@@ -1204,29 +1231,6 @@ $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resour
 $ terraform plan -var-file=foo.tfvars
 
 No changes. Infrastructure is up-to-date.
-```
-
-#### ▼ さいごに
-
-`(8)`
-
-: ローカルマシンの`tfstate`ファイルをリモートバックエンドにアップロードし、上書きする。
-
-```bash
-# バックエンドがS3バケットの場合
-$ aws s3 cp <ローカルマシンのパス> s3://<S3バケット名>/<tfstateファイルへのパス>
-
-# バックエンドがGCSの場合
-$ gsutil cp <ローカルマシンのパス> gs://<GCS名>/<tfstateファイルへのパス>
-```
-
-`(8)`
-
-: ローカルマシンの`tfstate`ファイルを削除する。
-
-```bash
-$ rm terraform.tfstate
-$ rm terraform.tfstate.backup
 ```
 
 <br>

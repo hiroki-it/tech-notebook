@@ -33,28 +33,28 @@ description: Google Cloud Run Functions＠Google Cloudリソースの知見を�
 module "foo_function" {
 
   // Cloud Run Functionsには世代数 (v1、v2) があり、本モジュールではv1になる
-  source     = "terraform-google-modules/event-function/google"
+  source = "terraform-google-modules/event-function/google"
 
-  version    = "<バージョン>"
+  version = "<バージョン>"
 
-  region     = data.google_client_config.current.region
+  region = data.google_client_config.current.region
 
   project_id = data.google_client_config.current.project
 
-  name                = "foo-function"
+  name = "foo-function"
 
-  description         = "this is function that do foo"
+  description = "this is function that do foo"
 
-  runtime             = "<バージョン値>"
+  runtime = "<バージョン値>"
 
   available_memory_mb = 128
 
-  timeout_s           = 120
+  timeout_s = 120
 
   // FooFunction関数をCloud Run Functionsのエントリーポイントとする
-  entry_point         = "FooFunction"
+  entry_point = "FooFunction"
 
-  source_directory    = "${path.module}/foo_function_src"
+  source_directory = "${path.module}/foo_function_src"
 
   environment_variables = {
     FOO = "foo"
@@ -66,7 +66,7 @@ module "foo_function" {
     QUX = "qux"
   }
 
-  service_account_email        = "foo-cloudfunction@*****.iam.gserviceaccount.com"
+  service_account_email = "foo-cloudfunction@*****.iam.gserviceaccount.com"
 
   // Cloud　Pub/SubがトリガーとなってCloud Run Functionsを実行する
   event_trigger = {
@@ -130,12 +130,12 @@ module "foo_function" {
 
   storage_source = {
     bucket = google_storage_bucket.foo_function.name
-    object = google_storage_bucket_object.foo_function.source
+    object = google_storage_bucket_object.foo_function.name
   }
 
   // Google Cloud Pub/SubがトリガーとなってGoogle Cloud Run Functionsを実行する
   event_trigger = {
-    event_type            = "providers/cloud.pubsub/eventTypes/topic.publish"
+    event_type            = "google.cloud.pubsub.topic.v1.messagePublished"
     resource              = google_pubsub_topic.foo_function.id
     service_account_email = null
     retry_policy          = "RETRY_POLICY_RETRY"
@@ -156,9 +156,9 @@ resource "google_storage_bucket" "foo_function" {
 // バケットへのzipフォルダの保管
 // v1ではモジュール内に定義されていたが、v2になり無くなってしまったので、自前で定義する必要がある
 resource "google_storage_bucket_object" "foo_function" {
-  bucket              = google_storage_bucket.foo_function.name
+  bucket = google_storage_bucket.foo_function.name
   # 元のzipファイル
-  source              = data.archive_file.foo_function.output_path
+  source = data.archive_file.foo_function.output_path
   # 保管先での名前
   name                = "${data.archive_file.foo_function.output_md5}-${basename(data.archive_file.foo_function.output_path)}
   content_disposition = "attachment"
@@ -181,5 +181,6 @@ data "google_client_config" "current" {}
 ```
 
 > - https://github.com/GoogleCloudPlatform/terraform-google-cloud-functions
+> - https://cloud.google.com/functions/docs/tutorials/terraform-pubsub?hl=ja#create_your_maintf_file
 
 <br>
