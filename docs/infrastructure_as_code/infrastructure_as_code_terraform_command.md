@@ -1025,9 +1025,55 @@ terraform {
 $ terraform init -reconfigure
 ```
 
-#### ▼ 実インフラの設定値を`tfstate`ファイルに取り込む
+#### ▼ `tf`ファイルを定義する
 
 `(4)`
+
+: `.tfstate`ファイルと差分のない`tf`ファイルを定義する
+
+    手動で作成する場合は、頑張るしかない。
+
+```terraform
+resource "<resourceタイプ>" "<resourceブロック名>" {
+  ...
+}
+```
+
+`import`ブロックを使用すると、`.tf`ファイルを自動生成できる。
+
+```terraform
+import {
+  # リソースの識別子
+  id = "i-xxxxxxxx"
+  # import対象
+  to = aws_instance.ec2
+}
+```
+
+```bash
+$ terraform plan -generate-config-out=generated/aws_instance.tf
+
+# __generated__ by Terraform
+# Please review these resources and move them into your main configuration files.
+resource "aws_instance" "ec2" {
+  ami                                  = "ami-xxxxxxxx"
+  associate_public_ip_address          = true
+  availability_zone                    = "ap-northeast-1a"
+  cpu_core_count                       = 1
+  cpu_threads_per_core                 = 1
+  disable_api_stop                     = false
+  disable_api_termination              = false
+  ....
+
+}
+```
+
+> - https://qiita.com/hiramax/items/093846a2f81426aa3a2f
+> - https://blog.techscore.com/entry/2024/05/29/080000
+
+#### ▼ 実インフラの設定値を`tfstate`ファイルに取り込む
+
+`(5)`
 
 : `terraform import`コマンドを実行する。
 
@@ -1129,42 +1175,6 @@ $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resour
 > - https://dev.classmethod.jp/articles/terraform_import_for_each/
 > - https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6
 > - https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import
-
-#### ▼ `tfstate`ファイルから`tf`ファイルを定義する
-
-`(5)`
-
-: 前の手順で`tfstate`ファイルに状態を書き込めているはずである。
-
-    `.tf`ファイルにこれを反映する。
-
-    例えば `terraform state show`コマンドを実行し、手動で定義する。
-
-```bash
-$ terraform state show '<resourceタイプ>.<resourceブロック名>'`
-
-# <resourceタイプ>.<resourceブロック名>:
-resource "<resourceタイプ>" "<resourceブロック名>" {
-  ...
-}
-```
-
-その他、`import`ブロックを使用すると、`.tf`ファイルを自動生成できる。
-
-```terraform
-import {
-  # リソースの識別子
-  id = "i-xxxxxxxx"
-  # import対象
-  to = aws_instance.ec2
-}
-```
-
-```bash
-$ terraform plan -generate-config-out=generated/aws_instance.tf
-```
-
-> - https://qiita.com/hiramax/items/093846a2f81426aa3a2f
 
 #### ▼ 差分を解消する
 
