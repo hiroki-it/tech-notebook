@@ -17,11 +17,11 @@ description: Remix＠フレームワークの知見を記録しています。
 
 Reactパッケージを使用したフレームワークである。
 
-Loader ---> Component ---> Action の順に処理が実行される。
+`loader` ---> `component` ---> `action` の順に処理が実行される。
 
-1. Loaderで、レンダリング前にAPIからデータを取得する。
-2. Componentで、レンダリング処理を実行する。
-3. Actionで、APIリクエストやブラウザ操作に応じた処理を実行する。Actionは、バックエンドのコントローラーと同様にクエリストリングやリクエストのコンテキストを受信する。
+1. `loader`は、レンダリング前にAPIからデータを取得する。
+2. `component`は、レンダリング処理を実行する。
+3. `action`は、APIリクエストやブラウザ操作に応じて、データを変更する。`action`は、バックエンドのコントローラーと同様にクエリストリングやリクエストのコンテキストを受信する。
 
 > - https://www.ey-office.com/blog_archive/2022/07/06/is-remix-ruby-on-rails-in-react/
 
@@ -33,7 +33,7 @@ Loader ---> Component ---> Action の順に処理が実行される。
 
 #### ▼ loaderとは
 
-`loader`と命名した関数は、サーバーサイドレンダリング時に使用でき、初回にレンダリング時に実行される。
+`loader` (ユーザーが`loader`と命名した関数) は、レンダリング前にAPIからデータを取得する。
 
 各エンドポイントごとに定義できる。
 
@@ -109,9 +109,17 @@ export default function Posts() {
 
 ### component
 
+`component`は、レンダリング処理を実行する。
+
 <br>
 
 ### action
+
+`action`は、APIリクエストやブラウザ操作に応じて、データを変更する。
+
+バックエンドのコントローラーと同様にクエリストリングやリクエストのコンテキストを受信する。
+
+componentを同じファイルに実装する以外に、`.server`ディレクトリに切り分ける方法もある。
 
 ```jsx
 import type { ActionFunctionArgs } from "@remix-run/node";
@@ -126,9 +134,15 @@ export async function loader() {
   return json(await fakeGetTodos());
 }
 
-// useLoaderDataでloaderによる取得データを出力する
+// componentで、レンダリング処理を実行する
 export default function Todos() {
+
+  // useLoaderDataでloaderによる取得データを出力する
   const data = useLoaderData<typeof loader>();
+
+  // Todoリストを出力する
+  // 合わせて、Create Todoボタンを設置する
+  // 同一ファイルのactionをコールする
   return (
     <div>
       <TodoList todos={data} />
@@ -151,6 +165,7 @@ export async function action({request}: ActionFunctionArgs) {
 ```
 
 > - https://remix.run/docs/en/main/route/action
+> - https://blog.tomoya.dev/posts/my-best-remix-directory-structure/#%e3%81%84%e3%81%84%e6%84%9f%e3%81%98%e3%81%ae%e3%83%87%e3%82%a3%e3%83%ac%e3%82%af%e3%83%88%e3%83%aa%e6%a7%8b%e6%88%90
 
 <br>
 
