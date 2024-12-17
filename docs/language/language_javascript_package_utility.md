@@ -263,3 +263,27 @@ Goのソースコードに変更があれば、ホットリロードし、コン
 > - https://ashitaka-blog.com/node-js%E3%81%AE%E3%83%9B%E3%83%83%E3%83%88%E3%83%AA%E3%83%AD%E3%83%BC%E3%83%89%E8%A8%AD%E5%AE%9A/
 
 <br>
+
+## 03. typescript-call-graph
+
+TypeScriptのコールグラフを作成する。
+
+ブラウザ上で確認できる。
+
+`tsx`ファイルは解析できない。
+
+```bash
+$ npm install -g typescript-call-graph
+
+$ tcg app/**/*
+
+╭───────────────────────────╮
+│      Graph visible @      │
+│   http://localhost:3000   │
+│      Ctrl + C to quit     │
+╰───────────────────────────╯
+```
+
+> - https://github.com/whyboris/TypeScript-Call-Graph
+
+<br>

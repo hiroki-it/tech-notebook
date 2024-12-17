@@ -302,6 +302,24 @@ fields @timestamp, @message, @logStream
 | limit 100
 ```
 
+構造化ログであれば、`log`フィールドがあるかもしれない。
+
+```sql
+fields @timestamp, @message, @logStream
+| filter log like /(?i)(Error)/
+| sort @timestamp desc
+| limit 100
+```
+
+構造化ログであれば、`stream`フィールドがあるかもしれない。
+
+```sql
+fields @timestamp, @message, @logStream
+| filter stream like /(?i)(stderr)/
+| sort @timestamp desc
+| limit 100
+```
+
 **＊例＊**
 
 `like`を使用して、小文字と大文字を区別せずに、WarningまたはErrorを含むログを検索する。
@@ -322,7 +340,7 @@ JSONがネストになっている場合、`filter`では`.` (ドット) でつ�
 ```sql
 fields @timestamp, @message, @logStream
 | filter kubernetes.container_name like /(foo-app)/
-| filter log like /(?i)(Error)/
+| filter @message like /(?i)(Error)/
 | sort @timestamp desc
 | limit 100
 ```
@@ -337,6 +355,20 @@ fields @timestamp, @message, @logStream
 ```
 
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData-discoverable-fields.html#CWL_AnalyzeLogData-discoverable-JSON-logs
+
+**＊例＊**
+
+閾値以上の実行時間のスロークエリを実行時間の昇順で取得する。
+
+`parse`関数でQuery_timeの値を抽出している。
+
+```sql
+fields @timestamp, @message
+| parse @message /Query_time:\s*(?<Query_time>[0-9]+(?:\.[0-9]+)?)\s*[\s\S]*?;/
+| display @timestamp, Query_time, @message
+| sort Query_time desc
+| limit 100
+```
 
 <br>
 

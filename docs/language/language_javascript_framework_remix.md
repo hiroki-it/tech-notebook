@@ -119,6 +119,21 @@ export default function Posts() {
 
 ## 04. ルートモジュール
 
+### UIとAPI
+
+ルートモジュールでは、ブラウザまたはAPIへのルーティングが区別されず、両方を兼ねている。
+
+ただし、ファイル名によって区別することもできる。
+
+`app/routes/api.<任意のパス>`ファイルまたは`app/routes/api/<任意のパス>`ファイルを作成する。
+
+このファイルの処理は、APIとして処理される。
+
+> - https://zenn.dev/acompany/articles/123c29f46d213c#%E7%B5%B1%E4%B8%80%E7%9A%84%E3%81%AAapi%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%82%92%E4%BD%9C%E3%82%8B%E3%81%AE%E3%81%AB%E8%8B%A6%E5%8A%B4%E3%81%99%E3%82%8B%E3%80%82
+> - https://remix.run/docs/en/1.19.3/guides/api-routes
+
+<br>
+
 ### URLとのマッピング
 
 #### ▼ 仕組み

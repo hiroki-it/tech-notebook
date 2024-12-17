@@ -734,7 +734,7 @@ MySQLやRedisのクエリキャッシュ機能を利用する。
 
 スロークエリを検出する方法として、AWS RDSの`long_query_time`パラメーターによる閾値や、`EXPLAIN`句による予想実行時間の比較などがある。
 
-CloudWatch Logs上で`long_query_time`パラメーターによる閾値以上のスロークエリは、以下のログクエリで取得できる。
+CloudWatch Logsインサイト上で、閾値以上の実行時間のスロークエリを実行時間の昇順で取得できる。
 
 ```bash
 fields @timestamp, @message
