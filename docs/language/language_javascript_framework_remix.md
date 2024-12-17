@@ -76,7 +76,7 @@ Reactパッケージを使用したフレームワークである。
 
 #### ▼ loaderとは
 
-サーバーサイドレンダリング時に使用でき、初回にレンダリング時に実行される。
+`loader`と命名した関数は、サーバーサイドレンダリング時に使用でき、初回にレンダリング時に実行される。
 
 各エンドポイントごとに定義できる。
 
@@ -167,11 +167,24 @@ export default function Posts() {
 
 <br>
 
-### URLとのマッピング
+### ドッド分割
 
 #### ▼ 仕組み
 
-ドット区切りファイル名またはディレクトリ名がURLになる。
+ドット区切りのファイル名がパスとして認識される。
+
+`_index.tsx`ファイルはルートパスになる。
+
+```yaml
+app/                        # URLパス
+├── routes/
+│   ├── _index.tsx          # /
+│   ├── home.tsx            # /home
+│   ├── home.contents.tsx   # /home/contents
+└── root.tsx
+```
+
+> - https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E3%83%89%E3%83%83%E3%83%88%E5%88%86%E5%89%B2%EF%BC%88dot-delimiters)
 
 #### ▼ `<ルート以降のパス>._index.tsx`
 
@@ -193,7 +206,7 @@ export default function Foo() {
 
 > - https://zenn.dev/link/comments/fabfb7fd3aee65
 
-#### ▼ `<ルート以降のパス>.<変数>.tsx`
+#### ▼ `<ルート以降のパス>.<変数>.tsx` (動的セグメント)
 
 動的にURLを決定する。
 
@@ -220,6 +233,12 @@ export default function Post() {
 
 > - https://zenn.dev/ak/articles/cef68c1b67a314#dynamic-segments
 > - https://zenn.dev/link/comments/ddd4650a1941e3
+
+<br>
+
+### ディレクトリ分割
+
+ディレクトリ名がパスとして認識される。
 
 <br>
 
