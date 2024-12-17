@@ -297,7 +297,7 @@ app/                        # URLパス
 └── root.tsx
 ```
 
-> - https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E5%9F%BA%E6%9C%AC%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%EF%BC%88basic-routes%EF%BC%89
+> - https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E5%8B%95%E7%9A%84%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%EF%BC%88dynamic-segments%EF%BC%89
 
 **＊実装例＊**
 
@@ -321,6 +321,33 @@ export default function Post() {
 > - https://zenn.dev/ak/articles/cef68c1b67a314#dynamic-segments
 > - https://zenn.dev/link/comments/ddd4650a1941e3
 
+#### ▼ `_<ルート以降のパス>.tsx` (パスレスルート)
+
+子要素親セグメント名にプレフィクスとして `_` をつける。
+
+これにより、レイアウトを引き継ぎつつパスを変更できる。
+
+**＊実装例＊**
+
+`_home.auth.tsx`ファイルは、`home.tsx`ファイルのレイアウトを引き継いでいる。
+
+しかし、パスに`home`が含まれいない
+
+```yaml
+app/                       #  URLパス                   引き継ぐレイアウト
+├── routes/
+│   ├── _index.tsx         #  /                        root.tsx
+│   ├── home.tsx           #                           root.tsx
+│   ├── home._index.tsx    #  /home                    home.tsx
+│   ├── home.contents.tsx  #  /home/contents           home.tsx
+│   ├── home_.mine.tsx     #  /home/mine               root.tsx
+│   ├── _home.auth.tsx     #  /auth                    home.tsx # <--- これ！
+│   ├── user.$id.tsx       #  /user/{任意の値}          root.tsx
+└── root.tsx
+```
+
+> - https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E3%83%91%E3%82%B9%E3%83%AC%E3%82%B9%E3%83%AB%E3%83%BC%E3%83%88%EF%BC%88nested-layouts-without-nested-urls%EF%BC%89
+
 <br>
 
 ### ディレクトリ分割
@@ -330,6 +357,14 @@ export default function Post() {
 <br>
 
 ## 05. componentの種類
+
+### ユーザー定義
+
+Remixがcomponentであることを認識するために、名前の先頭を大文字する。
+
+> - https://dev.classmethod.jp/articles/make-user-defined-component-name-capitalized-in-react/
+
+<br>
 
 ### Form
 
