@@ -24103,8 +24103,10 @@ const<span class="w"> </span><span class="nv">prisma</span><span class="w"> </sp
 
 <span class="kd">function</span><span class="w"> </span><span class="nx">transfer</span><span class="p">(</span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="nx">amount</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">  </span><span class="c1">// トランザクション</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">$transaction</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">tx</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">    </span><span class="c1">// CRUD処理</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">sender</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">account</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span>
 <span class="w">      </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">balance</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
@@ -24120,6 +24122,7 @@ const<span class="w"> </span><span class="nv">prisma</span><span class="w"> </sp
 <span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="kr">from</span><span class="si">}</span><span class="sb"> doesn&#39;t have enough to send </span><span class="si">${</span><span class="nx">amount</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="c1">// CRUD処理</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">recipient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">account</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span>
 <span class="w">      </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">balance</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
@@ -24177,7 +24180,7 @@ const<span class="w"> </span><span class="nv">prisma</span><span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-17</span>
   </span>
 
     

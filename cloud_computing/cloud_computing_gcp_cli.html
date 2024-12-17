@@ -14762,6 +14762,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#write" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ write
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -24842,6 +24851,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#write" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ write
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -25418,6 +25436,21 @@ bar-project-***<span class="w">    </span>bar-project<span class="w">   </span>*
 <li><a href="https://cloud.google.com/sdk/gcloud/reference/logging/read">https://cloud.google.com/sdk/gcloud/reference/logging/read</a></li>
 </ul>
 </blockquote>
+<h4 id="write">▼ write<a class="headerlink" href="#write" title="Permanent link">&para;</a></h4>
+<p>Cloud Loggingにログを送信する。</p>
+<p>アプリケーションの代わりに特定の条件に合致するログを送信したい場合に、使用すると良い。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 非構造化ログ</span>
+$<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> </span>write<span class="w"> </span>test-log<span class="w"> </span><span class="s2">&quot;This is a test log.&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 構造化ログ</span>
+$<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> </span>write<span class="w"> </span>--payload-type<span class="o">=</span>json<span class="w"> </span>test-log<span class="w"> </span><span class="s1">&#39;{&quot;id&quot;:1,&quot;name&quot;:&quot;Hiroki&quot;}&#39;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/sky0621/items/383153cf5c7458dd0005#%E9%9D%9E%E6%A7%8B%E9%80%A0%E5%8C%96%E3%83%AD%E3%82%B0%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF">https://qiita.com/sky0621/items/383153cf5c7458dd0005#%E9%9D%9E%E6%A7%8B%E9%80%A0%E5%8C%96%E3%83%AD%E3%82%B0%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF</a></li>
+<li><a href="https://qiita.com/sky0621/items/383153cf5c7458dd0005#%E6%A7%8B%E9%80%A0%E5%8C%96%E3%83%AD%E3%82%B0%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF">https://qiita.com/sky0621/items/383153cf5c7458dd0005#%E6%A7%8B%E9%80%A0%E5%8C%96%E3%83%AD%E3%82%B0%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF</a></li>
+</ul>
+</blockquote>
 <h3 id="gcs">GCS<a class="headerlink" href="#gcs" title="Permanent link">&para;</a></h3>
 <h4 id="cp">▼ cp<a class="headerlink" href="#cp" title="Permanent link">&para;</a></h4>
 <p>指定したパスにあるオブジェクトを、ローカルマシンにコピーする。</p>
@@ -25460,7 +25493,7 @@ bar-project-***<span class="w">    </span>bar-project<span class="w">   </span>*
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-17</span>
   </span>
 
     
