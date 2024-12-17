@@ -169,11 +169,22 @@ export default function Posts() {
 
 ### ドッド分割
 
-#### ▼ 仕組み
+#### ▼ `_index.tsx`
 
-ドット区切りのファイル名がパスとして認識される。
+ルートパスになる。
 
-`_index.tsx`ファイルはルートパスになる。
+```yaml
+app/                        # URLパス
+├── routes/
+│   ├── _index.tsx          # /
+└── root.tsx
+```
+
+> - https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E5%9F%BA%E6%9C%AC%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%EF%BC%88basic-routes%EF%BC%89
+
+#### ▼ `<ルート以降のパス>.tsx`
+
+ルート以降のパスを設定する。
 
 ```yaml
 app/                        # URLパス
@@ -183,12 +194,6 @@ app/                        # URLパス
 │   ├── home.contents.tsx   # /home/contents
 └── root.tsx
 ```
-
-> - https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E3%83%89%E3%83%83%E3%83%88%E5%88%86%E5%89%B2%EF%BC%88dot-delimiters)
-
-#### ▼ `<ルート以降のパス>._index.tsx`
-
-ルート以降のパスを設定する。
 
 **＊実装例＊**
 
@@ -204,13 +209,25 @@ export default function Foo() {
 }
 ```
 
-> - https://zenn.dev/link/comments/fabfb7fd3aee65
+> - https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E5%9F%BA%E6%9C%AC%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%EF%BC%88basic-routes%EF%BC%89
 
 #### ▼ `<ルート以降のパス>.<変数>.tsx` (動的セグメント)
 
 動的にURLを決定する。
 
 URLに規則性があるようなページに適する。
+
+```yaml
+app/                        # URLパス
+├── routes/
+│   ├── _index.tsx          # /
+│   ├── home.tsx            # /home
+│   ├── home.contents.tsx   # /home/contents
+│   ├── user.$id.tsx        # /user/{任意の値}
+└── root.tsx
+```
+
+> - https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E5%9F%BA%E6%9C%AC%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%EF%BC%88basic-routes%EF%BC%89
 
 **＊実装例＊**
 
