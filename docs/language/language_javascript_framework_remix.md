@@ -176,7 +176,7 @@ export async function action({request}: ActionFunctionArgs) {
 ```yaml
 .
 ├── app/
-│  ├── components/ # ユーザー定義のRemixコンポーネント
+│  ├── components/ # ユーザー定義のRemix component
 │  │
 │  ├── models/ # モデルのCRUD処理
 │  │
@@ -329,11 +329,17 @@ export default function Post() {
 
 <br>
 
-## 05. コンポーネント
+## 05. componentの種類
 
 ### Form
 
 `form`タグをレンダリングする。
+
+`action`値を省略した場合、フォームの入力データは他に送信されず、そのコンポーネント内のみで処理される。
+
+`action`値を`/foos?index`パスとした場合、`routes/foos/index.jsx`ファイルにデータを送信する。
+
+一方で、`action`値を`/foos`パスとした場合、`routes/foos.jsx`ファイルにデータを送信する。
 
 ```jsx
 import {Form} from "@remix-run/react";

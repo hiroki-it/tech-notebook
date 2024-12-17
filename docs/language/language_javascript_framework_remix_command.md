@@ -21,7 +21,7 @@ description: コマンド＠Remixの知見を記録しています。
 $ remix vite:build
 ```
 
-> - https://remix-docs-ja.techtalk.jp/other-api/dev#remix-vitebuild
+> - https://remix.run/docs/en/main/other-api/dev#remix-vitebuild
 
 <br>
 
@@ -31,6 +31,6 @@ $ remix vite:build
 $ remix vite:dev
 ```
 
-> - https://remix-docs-ja.techtalk.jp/other-api/dev#remix-vitedev
+> - https://remix.run/docs/en/main/other-api/dev#remix-vitedev
 
 <br>
