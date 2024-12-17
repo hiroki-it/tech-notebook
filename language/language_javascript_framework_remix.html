@@ -8416,17 +8416,17 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#url" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      URLとのマッピング
+      ドッド分割
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="URLとのマッピング">
+    <nav class="md-nav" aria-label="ドッド分割">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 仕組み
     </span>
@@ -8446,7 +8446,7 @@
           <li class="md-nav__item">
   <a href="#tsx" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ &lt;ルート以降のパス&gt;.&lt;変数&gt;.tsx
+      ▼ &lt;ルート以降のパス&gt;.&lt;変数&gt;.tsx (動的セグメント)
     </span>
   </a>
   
@@ -8454,6 +8454,15 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ディレクトリ分割
+    </span>
+  </a>
   
 </li>
         
@@ -24170,17 +24179,17 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#url" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      URLとのマッピング
+      ドッド分割
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="URLとのマッピング">
+    <nav class="md-nav" aria-label="ドッド分割">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 仕組み
     </span>
@@ -24200,7 +24209,7 @@
           <li class="md-nav__item">
   <a href="#tsx" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ &lt;ルート以降のパス&gt;.&lt;変数&gt;.tsx
+      ▼ &lt;ルート以降のパス&gt;.&lt;変数&gt;.tsx (動的セグメント)
     </span>
   </a>
   
@@ -24208,6 +24217,15 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ディレクトリ分割
+    </span>
+  </a>
   
 </li>
         
@@ -24336,7 +24354,7 @@
 <h2 id="03">03. 初期化<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="loader">loader<a class="headerlink" href="#loader" title="Permanent link">&para;</a></h3>
 <h4 id="loader_1">▼ loaderとは<a class="headerlink" href="#loader_1" title="Permanent link">&para;</a></h4>
-<p>サーバーサイドレンダリング時に使用でき、初回にレンダリング時に実行される。</p>
+<p><code>loader</code>と命名した関数は、サーバーサイドレンダリング時に使用でき、初回にレンダリング時に実行される。</p>
 <p>各エンドポイントごとに定義できる。</p>
 <p>DBにクエリを送信し、データを取得できる。</p>
 <p>認証処理がある場合、<code>loader</code>関数の前に実行する必要がある。</p>
@@ -24416,9 +24434,22 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="url">URLとのマッピング<a class="headerlink" href="#url" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ 仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>ドット区切りファイル名またはディレクトリ名がURLになる。</p>
+<h3 id="_3">ドッド分割<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ 仕組み<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>ドット区切りのファイル名がパスとして認識される。</p>
+<p><code>_index.tsx</code>ファイルはルートパスになる。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">app/</span><span class="w">                        </span><span class="c1"># URLパス</span>
+<span class="l l-Scalar l-Scalar-Plain">├── routes/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── _index.tsx</span><span class="w">          </span><span class="c1"># /</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── home.tsx</span><span class="w">            </span><span class="c1"># /home</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── home.contents.tsx</span><span class="w">   </span><span class="c1"># /home/contents</span>
+<span class="l l-Scalar l-Scalar-Plain">└── root.tsx</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E3%83%89%E3%83%83%E3%83%88%E5%88%86%E5%89%B2%EF%BC%88dot-delimiters">https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E3%83%89%E3%83%83%E3%83%88%E5%88%86%E5%89%B2%EF%BC%88dot-delimiters</a>)</li>
+</ul>
+</blockquote>
 <h4 id="_indextsx">▼ <code>&lt;ルート以降のパス&gt;._index.tsx</code><a class="headerlink" href="#_indextsx" title="Permanent link">&para;</a></h4>
 <p>ルート以降のパスを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -24437,7 +24468,7 @@
 <li><a href="https://zenn.dev/link/comments/fabfb7fd3aee65">https://zenn.dev/link/comments/fabfb7fd3aee65</a></li>
 </ul>
 </blockquote>
-<h4 id="tsx">▼ <code>&lt;ルート以降のパス&gt;.&lt;変数&gt;.tsx</code><a class="headerlink" href="#tsx" title="Permanent link">&para;</a></h4>
+<h4 id="tsx">▼ <code>&lt;ルート以降のパス&gt;.&lt;変数&gt;.tsx</code> (動的セグメント)<a class="headerlink" href="#tsx" title="Permanent link">&para;</a></h4>
 <p>動的にURLを決定する。</p>
 <p>URLに規則性があるようなページに適する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -24462,6 +24493,9 @@
 <li><a href="https://zenn.dev/link/comments/ddd4650a1941e3">https://zenn.dev/link/comments/ddd4650a1941e3</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="_5">ディレクトリ分割<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>ディレクトリ名がパスとして認識される。</p>
 <p><br></p>
 <h2 id="05">05. コンポーネント<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="form">Form<a class="headerlink" href="#form" title="Permanent link">&para;</a></h3>
