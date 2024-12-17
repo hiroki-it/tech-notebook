@@ -24341,11 +24341,11 @@
 <p><br></p>
 <h2 id="01-remix">01. Remixとは<a class="headerlink" href="#01-remix" title="Permanent link">&para;</a></h2>
 <p>Reactパッケージを使用したフレームワークである。</p>
-<p>Loader ---&gt; Component ---&gt; Action の順に処理が実行される。</p>
+<p><code>loader</code> ---&gt; <code>component</code> ---&gt; <code>action</code> の順に処理が実行される。</p>
 <ol>
-<li>Loaderで、レンダリング前にAPIからデータを取得する。</li>
-<li>Componentで、レンダリング処理を実行する。</li>
-<li>Actionで、APIリクエストやブラウザ操作に応じた処理を実行する。Actionは、バックエンドのコントローラーと同様にクエリストリングやリクエストのコンテキストを受信する。</li>
+<li><code>loader</code>は、レンダリング前にAPIからデータを取得する。</li>
+<li><code>component</code>は、レンダリング処理を実行する。</li>
+<li><code>action</code>は、APIリクエストやブラウザ操作に応じて、データを変更する。<code>action</code>は、バックエンドのコントローラーと同様にクエリストリングやリクエストのコンテキストを受信する。</li>
 </ol>
 <blockquote>
 <ul>
@@ -24356,7 +24356,7 @@
 <h2 id="02-remix">02. Remixの仕組み<a class="headerlink" href="#02-remix" title="Permanent link">&para;</a></h2>
 <h3 id="loader">loader<a class="headerlink" href="#loader" title="Permanent link">&para;</a></h3>
 <h4 id="loader_1">▼ loaderとは<a class="headerlink" href="#loader_1" title="Permanent link">&para;</a></h4>
-<p><code>loader</code>と命名した関数は、サーバーサイドレンダリング時に使用でき、初回にレンダリング時に実行される。</p>
+<p><code>loader</code> (ユーザーが<code>loader</code>と命名した関数) は、レンダリング前にAPIからデータを取得する。</p>
 <p>各エンドポイントごとに定義できる。</p>
 <p>DBにクエリを送信し、データを取得できる。</p>
 <p>認証処理がある場合、<code>loader</code>関数の前に実行する必要がある。</p>
@@ -24424,8 +24424,12 @@
 </blockquote>
 <p><br></p>
 <h3 id="component">component<a class="headerlink" href="#component" title="Permanent link">&para;</a></h3>
+<p><code>component</code>は、レンダリング処理を実行する。</p>
 <p><br></p>
 <h3 id="action">action<a class="headerlink" href="#action" title="Permanent link">&para;</a></h3>
+<p><code>action</code>は、APIリクエストやブラウザ操作に応じて、データを変更する。</p>
+<p>バックエンドのコントローラーと同様にクエリストリングやリクエストのコンテキストを受信する。</p>
+<p>componentを同じファイルに実装する以外に、<code>.server</code>ディレクトリに切り分ける方法もある。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ActionFunctionArgs</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/node&quot;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">redirect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/node&quot;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Form</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/react&quot;</span><span class="p">;</span>
@@ -24438,9 +24442,15 @@
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">json</span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">fakeGetTodos</span><span class="p">());</span>
 <span class="p">}</span>
 
-<span class="c1">// useLoaderDataでloaderによる取得データを出力する</span>
+<span class="c1">// componentで、レンダリング処理を実行する</span>
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Todos</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="c1">// useLoaderDataでloaderによる取得データを出力する</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useLoaderData</span><span class="p">&lt;</span><span class="nt">typeof</span><span class="w"> </span><span class="na">loader</span><span class="p">&gt;();</span>
+
+<span class="w">  </span><span class="c1">// Todoリストを出力する</span>
+<span class="w">  </span><span class="c1">// 合わせて、Create Todoボタンを設置する</span>
+<span class="w">  </span><span class="c1">// 同一ファイルのactionをコールする</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="w">      </span><span class="p">&lt;</span><span class="nt">TodoList</span><span class="w"> </span><span class="na">todos</span><span class="o">=</span><span class="p">{</span><span class="nx">data</span><span class="p">}</span><span class="w"> </span><span class="p">/&gt;</span>
@@ -24464,6 +24474,7 @@
 <blockquote>
 <ul>
 <li><a href="https://remix.run/docs/en/main/route/action">https://remix.run/docs/en/main/route/action</a></li>
+<li><a href="https://blog.tomoya.dev/posts/my-best-remix-directory-structure/#%e3%81%84%e3%81%84%e6%84%9f%e3%81%98%e3%81%ae%e3%83%87%e3%82%a3%e3%83%ac%e3%82%af%e3%83%88%e3%83%aa%e6%a7%8b%e6%88%90">https://blog.tomoya.dev/posts/my-best-remix-directory-structure/#%e3%81%84%e3%81%84%e6%84%9f%e3%81%98%e3%81%ae%e3%83%87%e3%82%a3%e3%83%ac%e3%82%af%e3%83%88%e3%83%aa%e6%a7%8b%e6%88%90</a></li>
 </ul>
 </blockquote>
 <p><br></p>
