@@ -8304,6 +8304,48 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="02. ディレクトリ構成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      構成
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roottsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      root.tsx
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entryclienttsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      entry.client.tsx
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entryservertsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      entry.server.tsx
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -8384,7 +8426,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 仕組み
     </span>
@@ -24016,6 +24058,48 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="02. ディレクトリ構成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      構成
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roottsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      root.tsx
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entryclienttsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      entry.client.tsx
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entryservertsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      entry.server.tsx
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -24096,7 +24180,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 仕組み
     </span>
@@ -24205,6 +24289,7 @@
 <p>Reactパッケージを使用したフレームワークである。</p>
 <p><br></p>
 <h2 id="02">02. ディレクトリ構成<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_2">構成<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">.</span>
 <span class="l l-Scalar l-Scalar-Plain">├── app/</span>
 <span class="l l-Scalar l-Scalar-Plain">│  ├── components/</span><span class="w"> </span><span class="c1"># ユーザー定義のRemixコンポーネント</span>
@@ -24223,11 +24308,38 @@
 <span class="nn">...</span>
 </code></pre></div>
 <p><br></p>
+<h3 id="roottsx">root.tsx<a class="headerlink" href="#roottsx" title="Permanent link">&para;</a></h3>
+<p>アプリケーションのルートである。</p>
+<p><code>link</code>タグ、<code>meta</code>タグ、<code>script</code>タグを定義する。</p>
+<blockquote>
+<ul>
+<li><a href="https://remix.run/docs/en/main/file-conventions/root">https://remix.run/docs/en/main/file-conventions/root</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="entryclienttsx">entry.client.tsx<a class="headerlink" href="#entryclienttsx" title="Permanent link">&para;</a></h3>
+<p>マークアップファイルのハイドレーション処理のエントリーポイントである。</p>
+<blockquote>
+<ul>
+<li><a href="https://remix.run/docs/en/main/file-conventions/entry.client">https://remix.run/docs/en/main/file-conventions/entry.client</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="entryservertsx">entry.server.tsx<a class="headerlink" href="#entryservertsx" title="Permanent link">&para;</a></h3>
+<p>レスポンス作成処理のエントリーポイントである。</p>
+<blockquote>
+<ul>
+<li><a href="https://remix.run/docs/en/main/file-conventions/entry.server">https://remix.run/docs/en/main/file-conventions/entry.server</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="03">03. 初期化<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="loader">loader<a class="headerlink" href="#loader" title="Permanent link">&para;</a></h3>
 <h4 id="loader_1">▼ loaderとは<a class="headerlink" href="#loader_1" title="Permanent link">&para;</a></h4>
-<p>サーバーサイドレンダリング時に使用できる。</p>
+<p>サーバーサイドレンダリング時に使用でき、初回にレンダリング時に実行される。</p>
+<p>各エンドポイントごとに定義できる。</p>
 <p>DBにクエリを送信し、データを取得できる。</p>
+<p>認証処理がある場合、<code>loader</code>関数の前に実行する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">json</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/node&quot;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">useLoaderData</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/react&quot;</span><span class="p">;</span>
@@ -24251,6 +24363,7 @@
 <ul>
 <li><a href="https://zenn.dev/ak/articles/cef68c1b67a314#loader">https://zenn.dev/ak/articles/cef68c1b67a314#loader</a></li>
 <li><a href="https://zenn.dev/link/comments/8945abe32ae53a">https://zenn.dev/link/comments/8945abe32ae53a</a></li>
+<li><a href="https://qiita.com/taisei-13046/items/9a35c8d969954211f0ed#loader">https://qiita.com/taisei-13046/items/9a35c8d969954211f0ed#loader</a></li>
 </ul>
 </blockquote>
 <h4 id="useloaderdata">▼ useLoaderData<a class="headerlink" href="#useloaderdata" title="Permanent link">&para;</a></h4>
@@ -24304,7 +24417,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="url">URLとのマッピング<a class="headerlink" href="#url" title="Permanent link">&para;</a></h3>
-<h4 id="_2">▼ 仕組み<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<h4 id="_3">▼ 仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>ドット区切りファイル名またはディレクトリ名がURLになる。</p>
 <h4 id="_indextsx">▼ <code>&lt;ルート以降のパス&gt;._index.tsx</code><a class="headerlink" href="#_indextsx" title="Permanent link">&para;</a></h4>
 <p>ルート以降のパスを設定する。</p>
