@@ -26207,7 +26207,7 @@ NOW()
 <h3 id="_31">ユニークキーまたはインデックスの利用<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
 <p>スロークエリを検出し、そのSQLで対象としているカラムにユニークキーやインデックスを設定する。</p>
 <p>スロークエリを検出する方法として、AWS RDSの<code>long_query_time</code>パラメーターによる閾値や、<code>EXPLAIN</code>句による予想実行時間の比較などがある。</p>
-<p>CloudWatch Logs上で<code>long_query_time</code>パラメーターによる閾値以上のスロークエリは、以下のログクエリで取得できる。</p>
+<p>CloudWatch Logsインサイト上で、閾値以上の実行時間のスロークエリを実行時間の昇順で取得できる。</p>
 <div class="highlight"><pre><span></span><code>fields<span class="w"> </span>@timestamp,<span class="w"> </span>@message
 <span class="p">|</span><span class="w"> </span>parse<span class="w"> </span>@message<span class="w"> </span>/Query_time:<span class="se">\s</span>*<span class="o">(</span>?&lt;Query_time&gt;<span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">(</span>?:<span class="se">\.</span><span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">)</span>?<span class="o">)</span><span class="se">\s</span>*<span class="o">[</span><span class="se">\s\S</span><span class="o">]</span>*?<span class="p">;</span>/
 <span class="p">|</span><span class="w"> </span>display<span class="w"> </span>@timestamp,<span class="w"> </span>Query_time,<span class="w"> </span>@message
