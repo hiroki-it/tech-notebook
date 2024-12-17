@@ -21,6 +21,8 @@ Reactパッケージを使用したフレームワークである。
 
 ## 02. ディレクトリ構成
 
+### 構成
+
 ```yaml
 .
 ├── app/
@@ -42,15 +44,45 @@ Reactパッケージを使用したフレームワークである。
 
 <br>
 
+### root.tsx
+
+アプリケーションのルートである。
+
+`link`タグ、`meta`タグ、`script`タグを定義する。
+
+> - https://remix.run/docs/en/main/file-conventions/root
+
+<br>
+
+### entry.client.tsx
+
+マークアップファイルのハイドレーション処理のエントリーポイントである。
+
+> - https://remix.run/docs/en/main/file-conventions/entry.client
+
+<br>
+
+### entry.server.tsx
+
+レスポンス作成処理のエントリーポイントである。
+
+> - https://remix.run/docs/en/main/file-conventions/entry.server
+
+<br>
+
 ## 03. 初期化
 
 ### loader
 
 #### ▼ loaderとは
 
-サーバーサイドレンダリング時に使用できる。
+サーバーサイドレンダリング時に使用でき、初回にレンダリング時に実行される。
+
+各エンドポイントごとに定義できる。
 
 DBにクエリを送信し、データを取得できる。
+
+認証処理がある場合、`loader`関数の前に実行する必要がある。
 
 **＊実装例＊**
 
@@ -76,6 +108,7 @@ export const loader = async () => {
 
 > - https://zenn.dev/ak/articles/cef68c1b67a314#loader
 > - https://zenn.dev/link/comments/8945abe32ae53a
+> - https://qiita.com/taisei-13046/items/9a35c8d969954211f0ed#loader
 
 #### ▼ useLoaderData
 
