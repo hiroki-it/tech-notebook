@@ -75,8 +75,10 @@ const prisma = new PrismaClient()
 
 function transfer(from: string, to: string, amount: number) {
 
+  // トランザクション
   return prisma.$transaction(async (tx) => {
 
+    // CRUD処理
     const sender = await tx.account.update({
       data: {
         balance: {
@@ -92,6 +94,7 @@ function transfer(from: string, to: string, amount: number) {
       throw new Error(`${from} doesn't have enough to send ${amount}`)
     }
 
+    // CRUD処理
     const recipient = await tx.account.update({
       data: {
         balance: {

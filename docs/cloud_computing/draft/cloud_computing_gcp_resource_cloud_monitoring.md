@@ -48,7 +48,9 @@ description: Cloud Monitoring＠Google Cloudリソースの知見を記録して
 
 ```bash
 # Google Cloud Run Functionsの正常性をデータポイント化する
-resource.type = "cloud_function" AND metric.type = "cloudfunctions.googleapis.com/function/execution_count" AND metric.labels.status != "ok"
+resource.type = "cloud_run_revision" AND metric.type = "cloudfunctions.googleapis.com/function/execution_count" AND metric.labels.status != "ok"
 ```
+
+> - https://cloud.google.com/run/docs/logging?hl=ja#viewing-logs-gcloud-read
 
 <br>

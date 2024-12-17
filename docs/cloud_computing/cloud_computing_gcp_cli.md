@@ -615,6 +615,25 @@ $ gcloud logging read 'resource.labels.container_name="foo-container"' --limit 1
 
 > - https://cloud.google.com/sdk/gcloud/reference/logging/read
 
+#### ▼ write
+
+Cloud Loggingにログを送信する。
+
+アプリケーションの代わりに特定の条件に合致するログを送信したい場合に、使用すると良い。
+
+```bash
+# 非構造化ログ
+$ gcloud logging write test-log "This is a test log."
+```
+
+```bash
+# 構造化ログ
+$ gcloud logging write --payload-type=json test-log '{"id":1,"name":"Hiroki"}'
+```
+
+> - https://qiita.com/sky0621/items/383153cf5c7458dd0005#%E9%9D%9E%E6%A7%8B%E9%80%A0%E5%8C%96%E3%83%AD%E3%82%B0%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF
+> - https://qiita.com/sky0621/items/383153cf5c7458dd0005#%E6%A7%8B%E9%80%A0%E5%8C%96%E3%83%AD%E3%82%B0%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF
+
 ### GCS
 
 #### ▼ cp

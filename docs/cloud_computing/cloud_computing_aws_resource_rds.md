@@ -732,7 +732,19 @@ MySQLやRedisのクエリキャッシュ機能を利用する。
 
 スロークエリを検出し、そのSQLで対象としているカラムにユニークキーやインデックスを設定する。
 
-スロークエリを検出する方法として、AWS RDSの`long_query_time`パラメーターに基づいた検出や、`EXPLAIN`句による予想実行時間の比較などがある。
+スロークエリを検出する方法として、AWS RDSの`long_query_time`パラメーターによる閾値や、`EXPLAIN`句による予想実行時間の比較などがある。
+
+CloudWatch Logs上で`long_query_time`パラメーターによる閾値以上のスロークエリは、以下のログクエリで取得できる。
+
+```bash
+fields @timestamp, @message
+| parse @message /Query_time:\s*(?<Query_time>[0-9]+(?:\.[0-9]+)?)\s*[\s\S]*?;/
+| display @timestamp, Query_time, @message
+| sort Query_time desc
+| limit 100
+```
+
+> - https://tech.excite.co.jp/entry/2023/02/17/114538
 
 <br>
 
