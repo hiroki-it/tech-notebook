@@ -17,60 +17,17 @@ description: Remix＠フレームワークの知見を記録しています。
 
 Reactパッケージを使用したフレームワークである。
 
-<br>
+Loader ---> Component ---> Action の順に処理が実行される。
 
-## 02. ディレクトリ構成
+1. Loaderで、レンダリング前にAPIからデータを取得する。
+2. Componentで、レンダリング処理を実行する。
+3. Actionで、APIリクエストやブラウザ操作に応じた処理を実行する。Actionは、バックエンドのコントローラーと同様にクエリストリングやリクエストのコンテキストを受信する。
 
-### 構成
-
-```yaml
-.
-├── app/
-│  ├── components/ # ユーザー定義のRemixコンポーネント
-│  │
-│  ├── models/ # モデルのCRUD処理
-│  │
-│  ├── routes/ # ルーティングとレンダリングの処理
-│  │
-│  ├── utils/ # 汎用的な関数
-│  │
-│  ├── entry.client.tsx
-│  ├── entry.server.tsx
-│  └── root.tsx
-│
-├── prisma/ # モデルの定義
-...
-```
+> - https://www.ey-office.com/blog_archive/2022/07/06/is-remix-ruby-on-rails-in-react/
 
 <br>
 
-### root.tsx
-
-アプリケーションのルートである。
-
-`link`タグ、`meta`タグ、`script`タグを定義する。
-
-> - https://remix.run/docs/en/main/file-conventions/root
-
-<br>
-
-### entry.client.tsx
-
-マークアップファイルのハイドレーション処理のエントリーポイントである。
-
-> - https://remix.run/docs/en/main/file-conventions/entry.client
-
-<br>
-
-### entry.server.tsx
-
-レスポンス作成処理のエントリーポイントである。
-
-> - https://remix.run/docs/en/main/file-conventions/entry.server
-
-<br>
-
-## 03. 初期化
+## 02. Remixの仕組み
 
 ### loader
 
@@ -150,11 +107,109 @@ export default function Posts() {
 
 <br>
 
-## 04. ルートモジュール
+### component
+
+<br>
+
+### action
+
+```jsx
+import type { ActionFunctionArgs } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
+import { Form } from "@remix-run/react";
+
+import { TodoList } from "~/components/TodoList";
+import { fakeCreateTodo, fakeGetTodos } from "~/utils/db";
+
+// loaderでレンダリング前にデータを取得する
+export async function loader() {
+  return json(await fakeGetTodos());
+}
+
+// useLoaderDataでloaderによる取得データを出力する
+export default function Todos() {
+  const data = useLoaderData<typeof loader>();
+  return (
+    <div>
+      <TodoList todos={data} />
+      <Form method="post">
+        <input type="text" name="title" />
+        <button type="submit">Create Todo</button>
+      </Form>
+    </div>
+  );
+}
+
+// actionで、受信したリクエストに応じた処理を実行する
+export async function action({request}: ActionFunctionArgs) {
+  const body = await request.formData();
+  const todo = await fakeCreateTodo({
+    title: body.get("title"),
+  });
+  return redirect(`/todos/${todo.id}`);
+}
+```
+
+> - https://remix.run/docs/en/main/route/action
+
+<br>
+
+## 03. ディレクトリ構成
+
+### 構成
+
+```yaml
+.
+├── app/
+│  ├── components/ # ユーザー定義のRemixコンポーネント
+│  │
+│  ├── models/ # モデルのCRUD処理
+│  │
+│  ├── routes/ # ルーティングとレンダリングの処理
+│  │
+│  ├── utils/ # 汎用的な関数
+│  │
+│  ├── entry.client.tsx
+│  ├── entry.server.tsx
+│  └── root.tsx
+│
+├── prisma/ # モデルの定義
+...
+```
+
+<br>
+
+### root.tsx
+
+アプリケーションのルートである。
+
+`link`タグ、`meta`タグ、`script`タグを定義する。
+
+> - https://remix.run/docs/en/main/file-conventions/root
+
+<br>
+
+### entry.client.tsx
+
+マークアップファイルのハイドレーション処理のエントリーポイントである。
+
+> - https://remix.run/docs/en/main/file-conventions/entry.client
+
+<br>
+
+### entry.server.tsx
+
+レスポンス作成処理のエントリーポイントである。
+
+> - https://remix.run/docs/en/main/file-conventions/entry.server
+
+<br>
+
+## 04. ルーティング
 
 ### UIとAPI
 
-ルートモジュールでは、ブラウザまたはAPIへのルーティングが区別されず、両方を兼ねている。
+Rえmixでは、ブラウザまたはAPIへのルーティングが区別されず、両方を兼ねている。
 
 ただし、ファイル名によって区別することもできる。
 
