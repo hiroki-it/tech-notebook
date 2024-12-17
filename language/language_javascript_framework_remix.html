@@ -8470,6 +8470,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_tsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ _&lt;ルート以降のパス&gt;.tsx (パスレスルート)
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -8498,6 +8507,15 @@
   
     <nav class="md-nav" aria-label="05. componentの種類">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ユーザー定義
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#form" class="md-nav__link">
@@ -24251,6 +24269,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_tsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ _&lt;ルート以降のパス&gt;.tsx (パスレスルート)
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -24279,6 +24306,15 @@
   
     <nav class="md-nav" aria-label="05. componentの種類">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ユーザー定義
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#form" class="md-nav__link">
@@ -24587,7 +24623,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E5%9F%BA%E6%9C%AC%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%EF%BC%88basic-routes%EF%BC%89">https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E5%9F%BA%E6%9C%AC%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%EF%BC%88basic-routes%EF%BC%89</a></li>
+<li><a href="https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E5%8B%95%E7%9A%84%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%EF%BC%88dynamic-segments%EF%BC%89">https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E5%8B%95%E7%9A%84%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%EF%BC%88dynamic-segments%EF%BC%89</a></li>
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
@@ -24612,11 +24648,41 @@
 <li><a href="https://zenn.dev/link/comments/ddd4650a1941e3">https://zenn.dev/link/comments/ddd4650a1941e3</a></li>
 </ul>
 </blockquote>
+<h4 id="_tsx">▼ <code>_&lt;ルート以降のパス&gt;.tsx</code> (パスレスルート)<a class="headerlink" href="#_tsx" title="Permanent link">&para;</a></h4>
+<p>子要素親セグメント名にプレフィクスとして <code>_</code> をつける。</p>
+<p>これにより、レイアウトを引き継ぎつつパスを変更できる。</p>
+<p><strong>＊実装例＊</strong></p>
+<p><code>_home.auth.tsx</code>ファイルは、<code>home.tsx</code>ファイルのレイアウトを引き継いでいる。</p>
+<p>しかし、パスに<code>home</code>が含まれいない</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">app/</span><span class="w">                       </span><span class="c1">#  URLパス                   引き継ぐレイアウト</span>
+<span class="l l-Scalar l-Scalar-Plain">├── routes/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── _index.tsx</span><span class="w">         </span><span class="c1">#  /                        root.tsx</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── home.tsx</span><span class="w">           </span><span class="c1">#                           root.tsx</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── home._index.tsx</span><span class="w">    </span><span class="c1">#  /home                    home.tsx</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── home.contents.tsx</span><span class="w">  </span><span class="c1">#  /home/contents           home.tsx</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── home_.mine.tsx</span><span class="w">     </span><span class="c1">#  /home/mine               root.tsx</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── _home.auth.tsx</span><span class="w">     </span><span class="c1">#  /auth                    home.tsx # &lt;--- これ！</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── user.$id.tsx</span><span class="w">       </span><span class="c1">#  /user/{任意の値}          root.tsx</span>
+<span class="l l-Scalar l-Scalar-Plain">└── root.tsx</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E3%83%91%E3%82%B9%E3%83%AC%E3%82%B9%E3%83%AB%E3%83%BC%E3%83%88%EF%BC%88nested-layouts-without-nested-urls%EF%BC%89">https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E3%83%91%E3%82%B9%E3%83%AC%E3%82%B9%E3%83%AB%E3%83%BC%E3%83%88%EF%BC%88nested-layouts-without-nested-urls%EF%BC%89</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_4">ディレクトリ分割<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>ディレクトリ名がパスとして認識される。</p>
 <p><br></p>
 <h2 id="05-component">05. componentの種類<a class="headerlink" href="#05-component" title="Permanent link">&para;</a></h2>
+<h3 id="_5">ユーザー定義<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>Remixがcomponentであることを認識するために、名前の先頭を大文字する。</p>
+<blockquote>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/make-user-defined-component-name-capitalized-in-react/">https://dev.classmethod.jp/articles/make-user-defined-component-name-capitalized-in-react/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="form">Form<a class="headerlink" href="#form" title="Permanent link">&para;</a></h3>
 <p><code>form</code>タグをレンダリングする。</p>
 <p><code>action</code>値を省略した場合、フォームの入力データは他に送信されず、そのコンポーネント内のみで処理される。</p>
