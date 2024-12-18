@@ -24521,13 +24521,15 @@
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useLoaderData</span><span class="p">&lt;</span><span class="nt">typeof</span><span class="w"> </span><span class="na">loader</span><span class="p">&gt;();</span>
 
 <span class="w">  </span><span class="c1">// Todoリストを出力する</span>
-<span class="w">  </span><span class="c1">// 合わせて、Create Todoボタンを設置する</span>
-<span class="w">  </span><span class="c1">// 同一ファイルのactionをコールする</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="w">      </span><span class="p">&lt;</span><span class="nt">TodoList</span><span class="w"> </span><span class="na">todos</span><span class="o">=</span><span class="p">{</span><span class="nx">data</span><span class="p">}</span><span class="w"> </span><span class="p">/&gt;</span>
 <span class="w">      </span><span class="p">&lt;</span><span class="nt">Form</span><span class="w"> </span><span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
 <span class="w">        </span><span class="p">&lt;</span><span class="nt">input</span><span class="w"> </span><span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span><span class="w"> </span><span class="na">name</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">        </span><span class="p">{</span><span class="cm">/*</span>
+<span class="cm">          Create Todoボタンを設置する</span>
+<span class="cm">          同一ファイルのactionをコールする。</span>
+<span class="cm">        */</span><span class="p">}</span>
 <span class="w">        </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span><span class="nx">Create</span><span class="w"> </span><span class="nx">Todo</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="w">      </span><span class="p">&lt;/</span><span class="nt">Form</span><span class="p">&gt;</span>
 <span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -24712,6 +24714,8 @@
 <h4 id="_tsx_1">▼ 親の<code>_&lt;ルート以降のパス&gt;.tsx</code> (親がパスレスルート)<a class="headerlink" href="#_tsx_1" title="Permanent link">&para;</a></h4>
 <p>親のファイル名にプレフィクスとして <code>_</code> (パスレスルート) をつける。</p>
 <p><strong>＊実装例＊</strong></p>
+<p><code>_auth.&lt;任意の名前&gt;.tsx</code>ファイルは、親の<code>_auth.tsx</code>ファイルのレイアウトを引き継いでいる。</p>
+<p>しかし、全てのファイルのURLに<code>auth</code>が含まれない。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">app/</span><span class="w">                               </span><span class="c1"># URLパス</span>
 <span class="l l-Scalar l-Scalar-Plain">├── routes</span><span class="w">                         </span><span class="c1">#</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── _auth.tsx</span><span class="w">                  </span><span class="c1">#</span>
@@ -24726,10 +24730,10 @@
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">SiteFooter</span><span class="p">,</span><span class="w"> </span><span class="nx">SiteHeader</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;~/components&quot;</span><span class="p">;</span>
 
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">AuthCommon</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Outletに子 (login、password.reset、register) を出力する</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">&quot;grid grid-rows-[auto_1fr_auto] h-dvh&quot;</span><span class="p">&gt;</span>
 <span class="w">      </span><span class="p">&lt;</span><span class="nt">SiteHeader</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">      </span><span class="p">{</span><span class="cm">/* Outletに子 (login、password.reset、register) を出力する */</span><span class="p">}</span>
 <span class="w">      </span><span class="p">&lt;</span><span class="nt">Outlet</span><span class="w"> </span><span class="p">/&gt;</span>
 <span class="w">      </span><span class="p">&lt;</span><span class="nt">SiteFooter</span><span class="w"> </span><span class="p">/&gt;</span>
 <span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
