@@ -216,6 +216,8 @@ export async function action({request}: ActionFunctionArgs) {
 
 レスポンス作成処理のエントリーポイントである。
 
+`RemixServer`で設定を変更できる。
+
 > - https://remix.run/docs/en/main/file-conventions/entry.server
 
 <br>
@@ -321,17 +323,17 @@ export default function Post() {
 > - https://zenn.dev/ak/articles/cef68c1b67a314#dynamic-segments
 > - https://zenn.dev/link/comments/ddd4650a1941e3
 
-#### ▼ `_<ルート以降のパス>.tsx` (パスレスルート)
+#### ▼ 子の`_<ルート以降のパス>.tsx`
 
-子要素親セグメント名にプレフィクスとして `_` をつける。
+子のファイル名にプレフィクスとして `_` (パスレスルート) をつける。
 
-これにより、レイアウトを引き継ぎつつパスを変更できる。
+これにより、親からレイアウトを引き継ぎつつ、パスは引き継がない。
 
 **＊実装例＊**
 
-`_home.auth.tsx`ファイルは、`home.tsx`ファイルのレイアウトを引き継いでいる。
+`_home.auth.tsx`ファイルは、親の`home.tsx`ファイルのレイアウトを引き継いでいる。
 
-しかし、パスに`home`が含まれいない
+しかし、`/home/auth`パスではなく、`/auth`パスになる。
 
 ```yaml
 app/                       #  URLパス                   引き継ぐレイアウト
@@ -341,12 +343,50 @@ app/                       #  URLパス                   引き継ぐレイア�
 │   ├── home._index.tsx    #  /home                    home.tsx
 │   ├── home.contents.tsx  #  /home/contents           home.tsx
 │   ├── home_.mine.tsx     #  /home/mine               root.tsx
-│   ├── _home.auth.tsx     #  /auth                    home.tsx # <--- これ！
+│   ├── _home.auth.tsx     #  /auth                    home.tsx # 親からパスを引き継がない
 │   ├── user.$id.tsx       #  /user/{任意の値}          root.tsx
+│   ...
+│
 └── root.tsx
 ```
 
 > - https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E3%83%91%E3%82%B9%E3%83%AC%E3%82%B9%E3%83%AB%E3%83%BC%E3%83%88%EF%BC%88nested-layouts-without-nested-urls%EF%BC%89
+
+#### ▼ 親の`_<ルート以降のパス>.tsx` (親がパスレスルート)
+
+親のファイル名にプレフィクスとして `_` (パスレスルート) をつける。
+
+**＊実装例＊**
+
+```yaml
+app/                               # URLパス
+├── routes                         #
+│   ├── _auth.tsx                  #
+│   ├── _auth.login.tsx            # /login
+│   ├── _auth.password.reset.tsx   # /password/reset
+│   ├── _auth.register.tsx         # /register
+...
+```
+
+```jsx
+// _auth.tsxファイル
+import {Outlet} from "@remix-run/react";
+
+import {SiteFooter, SiteHeader} from "~/components";
+
+export default function AuthCommon() {
+  // Outletに子 (login、password.reset、register) を出力する
+  return (
+    <div className="grid grid-rows-[auto_1fr_auto] h-dvh">
+      <SiteHeader />
+      <Outlet />
+      <SiteFooter />
+    </div>
+  );
+}
+```
+
+> - https://zenn.dev/tor_inc/articles/0b5960a7cee2c5#_%E6%8E%A5%E9%A0%AD%E8%BE%9E%E4%BB%98%E3%81%8D%E5%85%B1%E9%80%9A%E3%83%95%E3%82%A9%E3%83%AB%E3%83%80
 
 <br>
 
@@ -376,6 +416,10 @@ Remixがcomponentであることを認識するために、名前の先頭を大
 
 一方で、`action`値を`/foos`パスとした場合、`routes/foos.jsx`ファイルにデータを送信する。
 
+**＊実装例＊**
+
+ここでは`action`値を省略している。
+
 ```jsx
 import {Form} from "@remix-run/react";
 
@@ -390,6 +434,7 @@ function NewEvent() {
 ```
 
 > - https://remix.run/docs/en/main/components/form
+> - https://www.chadtaylor.dev/blog/submitting-a-form-to-an-index-route-in-remix/
 
 <br>
 
@@ -435,5 +480,17 @@ export default function SomeParent() {
 ```
 
 > - https://remix.run/docs/en/main/components/outlet#outlet
+
+<br>
+
+## 06. エラー
+
+| データ名   | 説明                               | 例                   |
+| ---------- | ---------------------------------- | -------------------- |
+| state      | ステータスコード                   | `405`                |
+| statusText | ステータスコードのエラーメッセージ | `Method Not Allowed` |
+| data       | 詳細なエラー                       | `Error: *****`       |
+
+> - https://remix.run/docs/zh/main/route/error-boundary
 
 <br>
