@@ -8473,7 +8473,16 @@
           <li class="md-nav__item">
   <a href="#_tsx" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ _&lt;ルート以降のパス&gt;.tsx (パスレスルート)
+      ▼ 子の_&lt;ルート以降のパス&gt;.tsx
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_tsx_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 親の_&lt;ルート以降のパス&gt;.tsx (親がパスレスルート)
     </span>
   </a>
   
@@ -8546,6 +8555,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    <span class="md-ellipsis">
+      06. エラー
+    </span>
+  </a>
   
 </li>
       
@@ -24272,7 +24290,16 @@
           <li class="md-nav__item">
   <a href="#_tsx" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ _&lt;ルート以降のパス&gt;.tsx (パスレスルート)
+      ▼ 子の_&lt;ルート以降のパス&gt;.tsx
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_tsx_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 親の_&lt;ルート以降のパス&gt;.tsx (親がパスレスルート)
     </span>
   </a>
   
@@ -24345,6 +24372,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    <span class="md-ellipsis">
+      06. エラー
+    </span>
+  </a>
   
 </li>
       
@@ -24553,6 +24589,7 @@
 <p><br></p>
 <h3 id="entryservertsx">entry.server.tsx<a class="headerlink" href="#entryservertsx" title="Permanent link">&para;</a></h3>
 <p>レスポンス作成処理のエントリーポイントである。</p>
+<p><code>RemixServer</code>で設定を変更できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://remix.run/docs/en/main/file-conventions/entry.server">https://remix.run/docs/en/main/file-conventions/entry.server</a></li>
@@ -24648,12 +24685,12 @@
 <li><a href="https://zenn.dev/link/comments/ddd4650a1941e3">https://zenn.dev/link/comments/ddd4650a1941e3</a></li>
 </ul>
 </blockquote>
-<h4 id="_tsx">▼ <code>_&lt;ルート以降のパス&gt;.tsx</code> (パスレスルート)<a class="headerlink" href="#_tsx" title="Permanent link">&para;</a></h4>
-<p>子要素親セグメント名にプレフィクスとして <code>_</code> をつける。</p>
-<p>これにより、レイアウトを引き継ぎつつパスを変更できる。</p>
+<h4 id="_tsx">▼ 子の<code>_&lt;ルート以降のパス&gt;.tsx</code><a class="headerlink" href="#_tsx" title="Permanent link">&para;</a></h4>
+<p>子のファイル名にプレフィクスとして <code>_</code> (パスレスルート) をつける。</p>
+<p>これにより、親からレイアウトを引き継ぎつつ、パスは引き継がない。</p>
 <p><strong>＊実装例＊</strong></p>
-<p><code>_home.auth.tsx</code>ファイルは、<code>home.tsx</code>ファイルのレイアウトを引き継いでいる。</p>
-<p>しかし、パスに<code>home</code>が含まれいない</p>
+<p><code>_home.auth.tsx</code>ファイルは、親の<code>home.tsx</code>ファイルのレイアウトを引き継いでいる。</p>
+<p>しかし、<code>/home/auth</code>パスではなく、<code>/auth</code>パスになる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">app/</span><span class="w">                       </span><span class="c1">#  URLパス                   引き継ぐレイアウト</span>
 <span class="l l-Scalar l-Scalar-Plain">├── routes/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── _index.tsx</span><span class="w">         </span><span class="c1">#  /                        root.tsx</span>
@@ -24661,13 +24698,47 @@
 <span class="l l-Scalar l-Scalar-Plain">│   ├── home._index.tsx</span><span class="w">    </span><span class="c1">#  /home                    home.tsx</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── home.contents.tsx</span><span class="w">  </span><span class="c1">#  /home/contents           home.tsx</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── home_.mine.tsx</span><span class="w">     </span><span class="c1">#  /home/mine               root.tsx</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── _home.auth.tsx</span><span class="w">     </span><span class="c1">#  /auth                    home.tsx # &lt;--- これ！</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── _home.auth.tsx</span><span class="w">     </span><span class="c1">#  /auth                    home.tsx # 親からパスを引き継がない</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── user.$id.tsx</span><span class="w">       </span><span class="c1">#  /user/{任意の値}          root.tsx</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="l l-Scalar l-Scalar-Plain">└── root.tsx</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E3%83%91%E3%82%B9%E3%83%AC%E3%82%B9%E3%83%AB%E3%83%BC%E3%83%88%EF%BC%88nested-layouts-without-nested-urls%EF%BC%89">https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E3%83%91%E3%82%B9%E3%83%AC%E3%82%B9%E3%83%AB%E3%83%BC%E3%83%88%EF%BC%88nested-layouts-without-nested-urls%EF%BC%89</a></li>
+</ul>
+</blockquote>
+<h4 id="_tsx_1">▼ 親の<code>_&lt;ルート以降のパス&gt;.tsx</code> (親がパスレスルート)<a class="headerlink" href="#_tsx_1" title="Permanent link">&para;</a></h4>
+<p>親のファイル名にプレフィクスとして <code>_</code> (パスレスルート) をつける。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">app/</span><span class="w">                               </span><span class="c1"># URLパス</span>
+<span class="l l-Scalar l-Scalar-Plain">├── routes</span><span class="w">                         </span><span class="c1">#</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── _auth.tsx</span><span class="w">                  </span><span class="c1">#</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── _auth.login.tsx</span><span class="w">            </span><span class="c1"># /login</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── _auth.password.reset.tsx</span><span class="w">   </span><span class="c1"># /password/reset</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── _auth.register.tsx</span><span class="w">         </span><span class="c1"># /register</span>
+<span class="nn">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// _auth.tsxファイル</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Outlet</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/react&quot;</span><span class="p">;</span>
+
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">SiteFooter</span><span class="p">,</span><span class="w"> </span><span class="nx">SiteHeader</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;~/components&quot;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">AuthCommon</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Outletに子 (login、password.reset、register) を出力する</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">&quot;grid grid-rows-[auto_1fr_auto] h-dvh&quot;</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">SiteHeader</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">Outlet</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">SiteFooter</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/tor_inc/articles/0b5960a7cee2c5#_%E6%8E%A5%E9%A0%AD%E8%BE%9E%E4%BB%98%E3%81%8D%E5%85%B1%E9%80%9A%E3%83%95%E3%82%A9%E3%83%AB%E3%83%80">https://zenn.dev/tor_inc/articles/0b5960a7cee2c5#_%E6%8E%A5%E9%A0%AD%E8%BE%9E%E4%BB%98%E3%81%8D%E5%85%B1%E9%80%9A%E3%83%95%E3%82%A9%E3%83%AB%E3%83%80</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -24688,6 +24759,8 @@
 <p><code>action</code>値を省略した場合、フォームの入力データは他に送信されず、そのコンポーネント内のみで処理される。</p>
 <p><code>action</code>値を<code>/foos?index</code>パスとした場合、<code>routes/foos/index.jsx</code>ファイルにデータを送信する。</p>
 <p>一方で、<code>action</code>値を<code>/foos</code>パスとした場合、<code>routes/foos.jsx</code>ファイルにデータを送信する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>ここでは<code>action</code>値を省略している。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Form</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/react&quot;</span><span class="p">;</span>
 
 <span class="kd">function</span><span class="w"> </span><span class="nx">NewEvent</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -24702,6 +24775,7 @@
 <blockquote>
 <ul>
 <li><a href="https://remix.run/docs/en/main/components/form">https://remix.run/docs/en/main/components/form</a></li>
+<li><a href="https://www.chadtaylor.dev/blog/submitting-a-form-to-an-index-route-in-remix/">https://www.chadtaylor.dev/blog/submitting-a-form-to-an-index-route-in-remix/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -24743,6 +24817,39 @@
 <blockquote>
 <ul>
 <li><a href="https://remix.run/docs/en/main/components/outlet#outlet">https://remix.run/docs/en/main/components/outlet#outlet</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="06">06. エラー<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>データ名</th>
+<th>説明</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>state</td>
+<td>ステータスコード</td>
+<td><code>405</code></td>
+</tr>
+<tr>
+<td>statusText</td>
+<td>ステータスコードのエラーメッセージ</td>
+<td><code>Method Not Allowed</code></td>
+</tr>
+<tr>
+<td>data</td>
+<td>詳細なエラー</td>
+<td><code>Error: *****</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://remix.run/docs/zh/main/route/error-boundary">https://remix.run/docs/zh/main/route/error-boundary</a></li>
 </ul>
 </blockquote>
 <p><br></p>
