@@ -49,6 +49,16 @@ description: 金銭的コスト最適化＠AWSの知見を記録しています�
 
 <br>
 
+### 効果の大きいAWSリソース
+
+以下のAWSリソースは使用料金が高く、削減効果が大きい。
+
+- AWS EC2、AWS EC2ベースのAWSリソース (例：AWS Fargate)
+- AWS RDS、AWS RDSベースのAWSリソース (例：AWS Aurora)
+- AWS ALB
+
+<br>
+
 ## 02. Service Quotas
 
 ### Service Quotastとは

@@ -246,7 +246,7 @@ const str: Map<string> = {a: "a", b: "b", c: "c"};
 
 > - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AA%E3%82%AF%E3%82%B9%E5%9E%8B%E5%AE%9A%E7%BE%A9
 
-#### ▼ 戻り値
+#### ▼ 返却値
 
 ```typescript
 // Promise<型>
@@ -262,9 +262,9 @@ console.log(await asyncFn());
 
 #### ▼ 型変数
 
-ここでは、引数と戻り値の型を変数として定義している。
+ここでは、引数と返却値の型を変数として定義している。
 
-変数に任意の型を代入すると、それに合わせた引数と戻り値の型の関数を定義できる。
+変数に任意の型を代入すると、それに合わせた引数と返却値の型の関数を定義できる。
 
 ```typescript
 const addKeys = <T, U>(key1: T, key2: U): Array<T | U> => {
@@ -295,7 +295,7 @@ console.log(sum(1, "2")); // Argument of type 'string' is not assignable to para
 console.log(sum(1)); // Expected 2 arguments, but got 1.
 ```
 
-#### ▼ 戻り値
+#### ▼ 返却値
 
 ```typescript
 const sum = (x: number, y: number): number => {
@@ -308,10 +308,10 @@ const sum = (x: number, y: number): number => {
 
 <br>
 
-### 戻り値なし
+### 返却値なし
 
 ```typescript
-// 戻り値がないという型
+// 返却値がないという型
 const logger = (): void => {
   console.log("log");
 };

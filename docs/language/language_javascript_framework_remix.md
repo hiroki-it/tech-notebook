@@ -141,13 +141,15 @@ export default function Todos() {
   const data = useLoaderData<typeof loader>();
 
   // Todoリストを出力する
-  // 合わせて、Create Todoボタンを設置する
-  // 同一ファイルのactionをコールする
   return (
     <div>
       <TodoList todos={data} />
       <Form method="post">
         <input type="text" name="title" />
+        {/*
+          Create Todoボタンを設置する
+          同一ファイルのactionをコールする。
+        */}
         <button type="submit">Create Todo</button>
       </Form>
     </div>
@@ -358,6 +360,10 @@ app/                       #  URLパス                   引き継ぐレイア�
 
 **＊実装例＊**
 
+`_auth.<任意の名前>.tsx`ファイルは、親の`_auth.tsx`ファイルのレイアウトを引き継いでいる。
+
+しかし、全てのファイルのURLに`auth`が含まれない。
+
 ```yaml
 app/                               # URLパス
 ├── routes                         #
@@ -375,10 +381,10 @@ import {Outlet} from "@remix-run/react";
 import {SiteFooter, SiteHeader} from "~/components";
 
 export default function AuthCommon() {
-  // Outletに子 (login、password.reset、register) を出力する
   return (
     <div className="grid grid-rows-[auto_1fr_auto] h-dvh">
       <SiteHeader />
+      {/* Outletに子 (login、password.reset、register) を出力する */}
       <Outlet />
       <SiteFooter />
     </div>

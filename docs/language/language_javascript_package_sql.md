@@ -63,6 +63,8 @@ $ yarn prisma db seed
 
 <br>
 
+## 01-02. PrismaClient
+
 ### $transaction
 
 #### ▼ $transaction
@@ -70,7 +72,8 @@ $ yarn prisma db seed
 複数のクエリ処理を実行するトランザクションを定義する。
 
 ```javascript
-import { PrismaClient } from '@prisma/client'
+import {PrismaClient} from '@prisma/client'
+
 const prisma = new PrismaClient()
 
 function transfer(from: string, to: string, amount: number) {
@@ -114,12 +117,9 @@ async function main() {
 
   // $transaction関数の実行をtry-catchブロックで囲む
   try {
-
     await transfer('alice@prisma.io', 'bob@prisma.io', 100)
     await transfer('alice@prisma.io', 'bob@prisma.io', 100)
-
   } catch (err) {
-
 
   }
 }
@@ -128,5 +128,76 @@ main()
 ```
 
 > - https://www.prisma.io/docs/orm/prisma-client/queries/transactions#interactive-transactions
+
+#### ▼ オプション
+
+```javascript
+import {PrismaClient} from '@prisma/client'
+
+// Prismaクライアントに設定する場合
+const prisma = new PrismaClient({
+  transactionOptions: {
+    // データを取得するまでのタイムアウト値
+    maxWait: 5000,
+    // ロールバックを含めて全体が完了するまでのタイムアウト値
+    timeout: 10000,
+    // トランザクションの分離レベル
+    isolationLevel: Prisma.TransactionIsolationLevel.Serializable,
+  }
+})
+
+function transfer(...) {
+
+  return prisma.$transaction(async (tx) => {
+    // CRUD処理
+  })
+}
+
+async function main() {
+
+  try {
+    await transfer(...)
+  } catch (err) {
+
+  }
+}
+
+main()
+```
+
+```javascript
+import {PrismaClient} from '@prisma/client'
+
+const prisma = new PrismaClient()
+
+function transfer(...) {
+
+  // トランザクションに個別に設定する場合
+  return prisma.$transaction(async (tx) => {
+    // CRUD処理
+  },
+  {
+    // データを取得するまでのタイムアウト値
+    maxWait: 5000,
+    // ロールバックを含めて全体が完了するまでのタイムアウト値
+    timeout: 10000,
+    // トランザクションの分離レベル
+    isolationLevel: Prisma.TransactionIsolationLevel.Serializable,
+  })
+}
+
+async function main() {
+
+  try {
+    await transfer(...)
+  } catch (err) {
+
+  }
+}
+
+main()
+```
+
+> - https://www.prisma.io/docs/orm/prisma-client/queries/transactions#transaction-options
 
 <br>
