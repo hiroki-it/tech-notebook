@@ -13,7 +13,26 @@ description: Prisma＠SQLパッケージの知見を記録しています。
 
 <br>
 
-## 01. コマンド
+## 01. Prismaの仕組み
+
+PrismaClientは、クエリエンジン (`https://binaries.prisma.sh/`) に接続リクエストを送信する。
+
+クエリエンジンはコネクションプールを作成し、プール内のコネクションを使用してDBに接続する。
+
+コネクションが維持されている間、これを再利用して複数のクエリを実行する。
+
+PrismaClientは、クエリエンジンに切断リクエストを送信する。
+
+クエリエンジンは、データベースとのコネクションを破棄する。
+
+![architecture_prisma](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/architecture_prisma.png)
+
+> - https://www.prisma.io/docs/orm/more/under-the-hood/engines
+> - https://zenn.dev/cloudbase/articles/65b9f6e4f9ae05#%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3
+
+<br>
+
+## 02. コマンド
 
 ### generate
 
@@ -61,7 +80,7 @@ $ yarn prisma db seed
 
 <br>
 
-## 02. スキーマ
+## 03. スキーマ
 
 ### datasource
 
@@ -95,7 +114,7 @@ generator client {
 
 <br>
 
-## 03. PrismaClient
+## 04. PrismaClient
 
 ### $transaction
 

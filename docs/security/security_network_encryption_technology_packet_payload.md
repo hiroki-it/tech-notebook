@@ -302,7 +302,7 @@ SSL証明書をサーバー側に配置した上で、クライアント証明�
 
 ペアになる秘密鍵もクライアント側に配置することになるため、クライアント側にはクライアント証明書と秘密鍵の両方を配置することになる。
 
-![client-certificate.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/client-certificate.png)
+![client-certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/client-certificate.png)
 
 > - https://www.cybertrust.co.jp/blog/certificate-authority/client-authentication/client-certificate-authentication.html
 

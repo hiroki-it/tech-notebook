@@ -21,7 +21,7 @@ Blackbox Exporterは、外部システムに特定のプロトコル (例：HTTP
 
 また、Prometheusにメトリクスを公開する。
 
-![blackbox_exporter_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/blackbox_exporter_architecture.png)
+![blackbox_exporter_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/blackbox_exporter_architecture.png)
 
 > - https://medium.com/cloud-native-daily/blackbox-exporter-to-probe-or-not-to-probe-57a7a495534b
 > - https://medium.com/@squadcast/prometheus-blackbox-exporter-a-guide-for-monitoring-external-systems-a8fff19a8bd0
@@ -30,7 +30,7 @@ Blackbox Exporterは、外部システムに特定のプロトコル (例：HTTP
 
 ### Prometheusによるメトリクス収集
 
-![blackbox_exporter_prometheus_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/blackbox_exporter_prometheus_architecture.png)
+![blackbox_exporter_prometheus_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/blackbox_exporter_prometheus_architecture.png)
 
 > - https://devopscounsel.com/prometheus-blackbox-exporter-setup-on-kubernetes/
 
