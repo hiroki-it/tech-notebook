@@ -367,7 +367,7 @@ Datadogに送信されたログのメッセージから値を抽出し、構造�
 
 **＊例＊**
 
-AWS CloudWatch Logsから、以下のようなAPI Gatewayアクセスログの構造化ログを受信する例を考える。
+AWS CloudWatch Logsから、以下のようなAWS API Gatewayアクセスログの構造化ログを受信する例を考える。
 
 ```yaml
 {
@@ -780,7 +780,7 @@ FooRule %{ipv4:network.client.ip}\s+\[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+%{
 
 #### ▼ 例２
 
-AWS CloudWatch Logsから、以下のようなAPI Gatewayアクセスログの構造化ログを受信する例を考える。
+AWS CloudWatch Logsから、以下のようなAWS API Gatewayアクセスログの構造化ログを受信する例を考える。
 
 ```yaml
 {

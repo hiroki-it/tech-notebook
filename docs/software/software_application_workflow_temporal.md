@@ -556,13 +556,13 @@ sequenceDiagram
 
     autonumber
 
-    フロントエンド ->> API Gateway: 同期リクエスト
+    フロントエンド ->> APIゲートウェイ: 同期リクエスト
 
-    API Gateway ->> ワークフローハンドラー: 同期リクエスト
+    APIゲートウェイ ->> ワークフローハンドラー: 同期リクエスト
 
-    フロントエンド -) API Gateway: 非同期リクエスト<br>(ポーリング)
+    フロントエンド -) APIゲートウェイ: 非同期リクエスト<br>(ポーリング)
 
-    API Gateway -) Sagaステータスチェッカー: 非同期リクエスト<br>(ポーリング)
+    APIゲートウェイ -) Sagaステータスチェッカー: 非同期リクエスト<br>(ポーリング)
 
     ワークフローハンドラー ->> Temporalサーバー: 同期リクエスト<br>(ワークフロー実行)
 
@@ -580,9 +580,9 @@ sequenceDiagram
 
     TemporalワーカーB -) Temporalサーバー: タスク結果送信
 
-    ワークフローハンドラー -->> API Gateway: レスポンス
+    ワークフローハンドラー -->> APIゲートウェイ: レスポンス
 
-    API Gateway -->> フロントエンド: レスポンス
+    APIゲートウェイ -->> フロントエンド: レスポンス
 ```
 
 > - https://temporal.io/blog/workflow-engine-principles

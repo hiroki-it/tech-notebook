@@ -49,13 +49,13 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
 
-#### ▼ API Gatewayがある場合
+#### ▼ APIゲートウェイがある場合
 
 初回のSSO時、フロントエンドからIDプロバイダーに直接的に認可リクエストを送信する。
 
 その後、クライアントのローカルマシンの`Cookie`ディレクトリにJWTを保管する。
 
-次回、API GatewayがフロントエンドからのリクエストをKeycloakに転送し、JWTを検証する。
+次回、APIゲートウェイがフロントエンドからのリクエストをKeycloakに転送し、JWTを検証する。
 
 結果に応じて、後続のマイクロサービスにルーティングするかどうかを決める。
 
@@ -140,11 +140,11 @@ SSOパターンと似ているが、こちらは非SSOでJWT仕様のトーク�
 
 『ゲートウェイ集中パターン』ともいう。
 
-JWTパターンにAPI Gatewayを組み合わせたパターンであり、JWTパターンでJWTの失効が難しいというデメリットを解決する。
+JWTパターンにAPIゲートウェイを組み合わせたパターンであり、JWTパターンでJWTの失効が難しいというデメリットを解決する。
 
 サーバー側に、JWTを作成する認証サービス (例：自前、Keycloakなど) を`1`個だけ配置する。
 
-API Gatewayは、認証を集中的に管理し、認証とアクセストークン検証を担う。
+APIゲートウェイは、認証を集中的に管理し、認証とアクセストークン検証を担う。
 
 > - https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#jwt%2Bapi-gateway-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%AE%A1%E7%90%86
 > - https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=8
@@ -157,7 +157,7 @@ API Gatewayは、認証を集中的に管理し、認証とアクセストーク
 
 クライアント側にはJWTとペアになるOpaqueトークンを保管する。
 
-また、API Gatewayやロードバランサーで、OpaqueトークンとJWTの間の相互変換を通信のたびに実行する。
+また、APIゲートウェイやロードバランサーで、OpaqueトークンとJWTの間の相互変換を通信のたびに実行する。
 
 トークンベースの認証情報伝播とコンテナの相性が良く、各マイクロサービスはOpaqueトークンを持つ必要がない。
 

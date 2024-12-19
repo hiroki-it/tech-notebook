@@ -119,7 +119,7 @@ description: 分散トレース＠テレメトリーの知見を記録してい�
 
 ### トレースコンテキスト作成の仕組み
 
-ロードバランサー (例：Istio IngressGateway、AWS ALB) やAPI Gateway (例：AWS API Gateway) が最初にトレースコンテキストを作成する。
+ロードバランサー (例：Istio IngressGateway、AWS ALB) やAPIゲートウェイ (例：AWS API Gateway) が最初にトレースコンテキストを作成する。
 
 これらは、トレースコンテキストがIDが持っているかを検証する。
 
