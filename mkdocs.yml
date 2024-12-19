@@ -377,9 +377,10 @@ nav:
                   - コマンド: language/language_javascript_framework_remix_command.md
           - ■ パッケージ:
               - パッケージ管理: language/language_javascript_package_management.md
-              - SQLパッケージ: language/language_javascript_package_sql.md
               - ユーティリティパッケージ: language/language_javascript_package_utility.md
               - Reactパッケージ: language/language_javascript_package_react.md
+              - ■ SQLパッケージ:
+                  - Prisma: language/language_javascript_package_sql_prisma.md
           - ■ ブラウザ:
               - ブラウザレンダリング: language/language_javascript_browser_rendering.md
       - ■ TypeScript:
@@ -852,10 +853,10 @@ nav:
               - 設定ファイル: observability/observability_telemetry_tools_prometheus_conf.md
               - リソース定義: observability/observability_telemetry_tools_prometheus_resource_definition.md
               - ■ Exporter:
-                    - Exporter: observability/observability_telemetry_tools_prometheus_exporter.md
-                    - Blackbox Exporter: observability/observability_telemetry_tools_prometheus_exporter_blackbox_exporter.md
-                    - kube-state-metrics: observability/observability_telemetry_tools_prometheus_exporter_kube_state_metrics.md
-                    - Node Exporter: observability/observability_telemetry_tools_prometheus_exporter_node_exporter.md
+                  - Exporter: observability/observability_telemetry_tools_prometheus_exporter.md
+                  - Blackbox Exporter: observability/observability_telemetry_tools_prometheus_exporter_blackbox_exporter.md
+                  - kube-state-metrics: observability/observability_telemetry_tools_prometheus_exporter_kube_state_metrics.md
+                  - Node Exporter: observability/observability_telemetry_tools_prometheus_exporter_node_exporter.md
               - ■ メトリクス:
                   - メトリクス: observability/observability_telemetry_tools_prometheus_metrics.md
                   - PromQL: observability/observability_telemetry_tools_prometheus_metrics_promql.md
