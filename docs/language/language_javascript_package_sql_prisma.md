@@ -13,9 +13,7 @@ description: Prisma＠SQLパッケージの知見を記録しています。
 
 <br>
 
-## 01. Prisma
-
-### コマンド
+## 01. コマンド
 
 ### generate
 
@@ -63,7 +61,41 @@ $ yarn prisma db seed
 
 <br>
 
-## 01-02. PrismaClient
+## 02. スキーマ
+
+### datasource
+
+データベース情報を設定する。
+
+```javascript
+datasource db {
+  provider = "mysql"
+  url      = "mysql://<DBユーザー>:<DBパスワード>@<DBホスト>/<DB名>?schema=public&connection_limit=30&pool_timeout=60"
+}
+```
+
+URLのパラメーターとして、以下などを設定できる。
+
+- コネションプールのコネクション上限数 (`connection_limit`)
+- コネクションプール内のコネクションが空くまでの待機時間 (`pool_timeout`)
+
+> - https://zenn.dev/cloudbase/articles/65b9f6e4f9ae05#prismaclient%E3%81%AB%E6%B8%A1%E3%81%99datasource-url%E3%81%AE%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF
+> - https://dev.classmethod.jp/articles/prisma-engines-connection-pooling-parameters/#pool_timeout
+
+<br>
+
+### generator
+
+```javascript
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "library"
+}
+```
+
+<br>
+
+## 03. PrismaClient
 
 ### $transaction
 
