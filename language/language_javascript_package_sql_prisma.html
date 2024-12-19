@@ -8504,13 +8504,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
+  <a href="#01-prisma" class="md-nav__link">
     <span class="md-ellipsis">
-      01. コマンド
+      01. Prismaの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. コマンド">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. コマンド
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. コマンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -8576,13 +8585,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
+  <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      02. スキーマ
+      03. スキーマ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. スキーマ">
+    <nav class="md-nav" aria-label="03. スキーマ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -8609,13 +8618,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-prismaclient" class="md-nav__link">
+  <a href="#04-prismaclient" class="md-nav__link">
     <span class="md-ellipsis">
-      03. PrismaClient
+      04. PrismaClient
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. PrismaClient">
+    <nav class="md-nav" aria-label="04. PrismaClient">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24032,13 +24041,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
+  <a href="#01-prisma" class="md-nav__link">
     <span class="md-ellipsis">
-      01. コマンド
+      01. Prismaの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. コマンド">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. コマンド
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. コマンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24104,13 +24122,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
+  <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      02. スキーマ
+      03. スキーマ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. スキーマ">
+    <nav class="md-nav" aria-label="03. スキーマ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24137,13 +24155,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-prismaclient" class="md-nav__link">
+  <a href="#04-prismaclient" class="md-nav__link">
     <span class="md-ellipsis">
-      03. PrismaClient
+      04. PrismaClient
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. PrismaClient">
+    <nav class="md-nav" aria-label="04. PrismaClient">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24211,7 +24229,21 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. コマンド<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h2 id="01-prisma">01. Prismaの仕組み<a class="headerlink" href="#01-prisma" title="Permanent link">&para;</a></h2>
+<p>PrismaClientは、クエリエンジン (<code>https://binaries.prisma.sh/</code>) に接続リクエストを送信する。</p>
+<p>クエリエンジンはコネクションプールを作成し、プール内のコネクションを使用してDBに接続する。</p>
+<p>コネクションが維持されている間、これを再利用して複数のクエリを実行する。</p>
+<p>PrismaClientは、クエリエンジンに切断リクエストを送信する。</p>
+<p>クエリエンジンは、データベースとのコネクションを破棄する。</p>
+<p><img alt="architecture_prisma" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/architecture_prisma.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.prisma.io/docs/orm/more/under-the-hood/engines">https://www.prisma.io/docs/orm/more/under-the-hood/engines</a></li>
+<li><a href="https://zenn.dev/cloudbase/articles/65b9f6e4f9ae05#%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3">https://zenn.dev/cloudbase/articles/65b9f6e4f9ae05#%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02">02. コマンド<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="generate">generate<a class="headerlink" href="#generate" title="Permanent link">&para;</a></h3>
 <p>Prismaスキーマからクライアントを作成する。</p>
 <p>クライアントを使用して、データベースに接続できる。</p>
@@ -24242,7 +24274,7 @@ const<span class="w"> </span><span class="nv">prisma</span><span class="w"> </sp
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>prisma<span class="w"> </span>db<span class="w"> </span>seed
 </code></pre></div>
 <p><br></p>
-<h2 id="02">02. スキーマ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h2 id="03">03. スキーマ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="datasource">datasource<a class="headerlink" href="#datasource" title="Permanent link">&para;</a></h3>
 <p>データベース情報を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">datasource</span><span class="w"> </span><span class="nx">db</span><span class="w"> </span><span class="p">{</span>
@@ -24269,7 +24301,7 @@ const<span class="w"> </span><span class="nv">prisma</span><span class="w"> </sp
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="03-prismaclient">03. PrismaClient<a class="headerlink" href="#03-prismaclient" title="Permanent link">&para;</a></h2>
+<h2 id="04-prismaclient">04. PrismaClient<a class="headerlink" href="#04-prismaclient" title="Permanent link">&para;</a></h2>
 <h3 id="transaction">$transaction<a class="headerlink" href="#transaction" title="Permanent link">&para;</a></h3>
 <h4 id="transaction_1">▼ $transaction<a class="headerlink" href="#transaction_1" title="Permanent link">&para;</a></h4>
 <p>複数のクエリ処理を実行するトランザクションを定義する。</p>
