@@ -156,7 +156,7 @@ description: AWS S3＠AWSリソースの知見を記録しています。
 
 代わりに、AWS管理ポリシーの『`AWSLambdaExecute`』が紐付けられたロールをAWS Lambdaに紐付ける必要がある。
 
-このポリシーには、AWS S3への認可スコープの他、CloudWatchログにログを作成するための認可スコープが設定されている。
+このポリシーには、AWS S3への認可スコープの他、AWS CloudWatch Logsにログを作成するための認可スコープが設定されている。
 
 ```yaml
 {

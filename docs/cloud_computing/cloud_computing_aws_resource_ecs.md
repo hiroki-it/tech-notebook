@@ -235,7 +235,7 @@ Fargateの場合、同じタスクに属するコンテナ間は、localhostイ�
 
 #### ▼ VPC外のAWSリソースに対する通信
 
-データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース (例：コントロールプレーン、AWS ECR、AWS S3、AWS Systems Manager、AWS CloudWatchログ、DynamoDBなど) に対してリクエストを送信するためには、AWS NAT GatewayあるいはVPCエンドポイントを配置する必要がある。
+データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース (例：コントロールプレーン、AWS ECR、AWS S3、AWS Systems Manager、AWS CloudWatch Logs、DynamoDBなど) に対してリクエストを送信するためには、AWS NAT GatewayあるいはVPCエンドポイントを配置する必要がある。
 
 もしAWS NAT Gatewayを配置したとする。
 
@@ -292,7 +292,7 @@ AWS ECSタスク内のコンテナのアプリケーションが、他のAWSリ�
 
 **＊実装例＊**
 
-アプリケーションからAWS CloudWatchログにログを送信するために、ECSタスクロールにカスタマー管理ポリシーを紐付ける。
+アプリケーションからAWS CloudWatch Logsにログを送信するために、ECSタスクロールにカスタマー管理ポリシーを紐付ける。
 
 ```yaml
 {
@@ -328,7 +328,7 @@ ECSタスク内のECSコンテナエージェントが、他のAWSリソース�
 
 AWS管理ポリシーである『`AmazonECSTaskExecutionRolePolicy`』が紐付けられたロールを、タスクに紐付ける必要がある。
 
-このポリシーには、AWS ECRへの認可スコープの他、AWS CloudWatchログにログを作成するための認可スコープが設定されている。
+このポリシーには、AWS ECRへの認可スコープの他、AWS CloudWatch Logsにログを作成するための認可スコープが設定されている。
 
 ECSタスク内のコンテナがリソースにリクエストを送信するために必要なタスクロールとは区別すること。
 
@@ -392,10 +392,10 @@ datadogエージェントがECSクラスターやコンテナにリクエスト�
 
 | 設定項目                  | 説明                                                                                   | 補足                                                                                                                                                                                                                           |
 | ------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `awslogs-group`           | ログ宛先のAWS CloudWatchログのロググループを設定する。                                 |                                                                                                                                                                                                                                |
+| `awslogs-group`           | ログ宛先のAWS CloudWatch Logsのロググループを設定する。                                |                                                                                                                                                                                                                                |
 | `awslogs-datetime-format` | 日時フォーマットを定義し、加えてこれをログの区切り単位としてログストリームに出力する。 | 正規表現で設定する必要があり、加えてJSONでは『`\`』を『`\\`』にエスケープしなければならない。例えば『`\\[%Y-%m-%d %H:%M:%S\\]`』となる。<br>https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format |
-| `awslogs-region`          | ログ宛先のAWS CloudWatchログのリージョンを設定する。                                   |                                                                                                                                                                                                                                |
-| `awslogs-stream-prefix`   | ログ宛先のAWS CloudWatchログのログストリームのプレフィックス名を設定する。             | ログストリームには、『`<プレフィックス名>/<コンテナ名>/<タスクID>`』の形式で送信される。                                                                                                                                       |
+| `awslogs-region`          | ログ宛先のAWS CloudWatch Logsのリージョンを設定する。                                  |                                                                                                                                                                                                                                |
+| `awslogs-stream-prefix`   | ログ宛先のAWS CloudWatch Logsのログストリームのプレフィックス名を設定する。            | ログストリームには、『`<プレフィックス名>/<コンテナ名>/<タスクID>`』の形式で送信される。                                                                                                                                       |
 
 > - https://docs.docker.com/config/containers/logging/awslogs/
 > - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html#create_awslogs_logdriver_options
@@ -694,13 +694,13 @@ CodeDeployを使用してデプロイする。
 
 | VPCエンドポイントの接続先 | タイプ    | プライベートDNS名                                                                  | 説明                                                                   |
 | ------------------------- | --------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| AWS CloudWatchログ        | Interface | `logs.ap-northeast-1.amazonaws.com`                                                | ECSコンテナのログをPOSTリクエストを送信するため。                      |
+| AWS CloudWatch Logs       | Interface | `logs.ap-northeast-1.amazonaws.com`                                                | ECSコンテナのログをPOSTリクエストを送信するため。                      |
 | AWS ECR                   | Interface | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                                |
 | AWS S3                    | Gateway   | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                       |
 | AWS Systems Manager       | Interface | `ssm.ap-northeast-1.amazonaws.com`                                                 | AWS Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
 | AWS Secrets Manager       | Interface | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | AWS Secrets Managerを使用するため。                                    |
 
-プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、AWS ECR、AWS S3、AWS Systems Manager、AWS CloudWatchログ、DynamoDBなど) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。
+プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、AWS ECR、AWS S3、AWS Systems Manager、AWS CloudWatch Logs、DynamoDBなど) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。
 
 AWS NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのリクエストの方が優先される。
 

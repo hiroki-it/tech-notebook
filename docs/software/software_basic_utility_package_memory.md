@@ -731,7 +731,7 @@ WantedBy=multi-user.target
 
 デーモンが失敗状態になった時に、出力したログを使用してアラートを送信するためには、`StandardOutput`オプションや`StandardError`オプションを使用する。
 
-一度、ログとして出力し、このログをCloudWatchログなどに送信する。
+一度、ログとして出力し、このログをAWS CloudWatch Logsなどに送信する。
 
 ```ini
 [Service]

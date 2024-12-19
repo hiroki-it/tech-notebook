@@ -18,7 +18,7 @@ description: Notation＠セキュリティ系ミドルウェアの知見を記�
 コンテナイメージを署名し、また署名を検証する。
 
 1. `notation sign`コマンドでコンテナイメージを署名する。
-2. `notation policy inport`コマンドで信頼ポリシーを読み込む。
+2. `notation policy import`コマンドで信頼ポリシーを読み込む。
 3. `notation verify`コマンドでコンテナイメージの署名を検証する。
 
 <br>
@@ -53,7 +53,7 @@ $ notation policy import aws/signer_policy.json
         "trustStores": ["signingAuthority:aws-signer-ts"],
         "trustedIdentities":
           [
-            "arn:aws:signer:<リージョン>:<AWSアカウントID>:/signing-profiles/<プロファイル名>",
+            "arn:aws:signer:<リージョン>:<AWSアカウントID>:/signing-profiles/<署名プロファイル名>",
           ],
       },
     ],
@@ -79,7 +79,7 @@ AWS Signerにある署名プロファイルを使用し、AWS ECR上でのコン
 ```bash
 $ notation sign <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest \
     --plugin "com.amazonaws.signer.notation.plugin" \
-    --id arn:aws:signer:ap-northeast:<AWSアカウントID>:/signing-profiles/<プロファイル名>
+    --id arn:aws:signer:ap-northeast:<AWSアカウントID>:/signing-profiles/<署名プロファイル名>
 ```
 
 <br>

@@ -208,7 +208,7 @@ subsegment.put_annotation("component", value)
 
 ### テレメトリー間の連携
 
-#### ▼ AWS CloudWatchログとの連携
+#### ▼ AWS CloudWatch Logsとの連携
 
 あらかじめ、分散トレースに紐づくログがあるロググループ名を設定し、またログにはX-Ray仕様のトレースIDを出力しておく必要がある。
 

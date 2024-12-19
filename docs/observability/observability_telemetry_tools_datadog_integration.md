@@ -116,7 +116,7 @@ AWSリソースで作成されたメトリクス/ログ/分散トレースをDat
 
 `(3)`
 
-: ログを収集できるように、LambdaのトリガーとしてCloudWatchログやS3を設定する。
+: ログを収集できるように、LambdaのトリガーとしてAWS CloudWatch LogsやAWS S3を設定する。
 
      トリガーとして設定せずに自動的にも収集できるが、自動認識されるログの種類が少ないので、手動で設定した方が良い。
 
@@ -126,7 +126,7 @@ AWSリソースで作成されたメトリクス/ログ/分散トレースをDat
 
 : トリガーとするAWSリソースの命名によって、ログの`service`属性の値が変わる。
 
-     例えば、CloudWatchログのロググループ名が『`api-gateway-*****`』から始まる場合、`service`属性の値は`apigateway`になる。
+     例えば、AWS CloudWatch Logsのロググループ名が『`api-gateway-*****`』から始まる場合、`service`属性の値は`apigateway`になる。
 
 <br>
 

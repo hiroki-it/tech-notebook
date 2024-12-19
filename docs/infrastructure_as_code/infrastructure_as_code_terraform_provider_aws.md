@@ -23,7 +23,7 @@ TerraformがAWSリソースのAPIと通信可能にする。
 
 <br>
 
-## ACM
+## AWS ACM
 
 ### resource
 
@@ -132,7 +132,7 @@ SSL証明書のEメール検証時に、ドメインの所有者にメールが�
 
 <br>
 
-## AMI
+## AWS AMI
 
 ### resource
 
@@ -222,7 +222,7 @@ AWS BackupでEC2のAMIを作成している場合に、フィルターの条件�
 
 <br>
 
-## API Gateway
+## AWS API Gateway
 
 ### resource
 
@@ -321,7 +321,7 @@ resource "aws_wafv2_web_acl_association" "api_gateway" {
 
 <br>
 
-## CloudWatchログ
+## AWS CloudWatch Logs
 
 ### resource
 
@@ -335,11 +335,11 @@ resource "aws_cloudwatch_log_group" "ecs_service_container_datadog" {
 
 同じAWSアカウントの異なるECSサービスを作成する場合がある。
 
-この場合、コンテナ名が重複することになるため、CloudWatchログのロググループはECSサービスをルートとして命名する必要がある。
+この場合、コンテナ名が重複することになるため、AWS CloudWatch LogsのロググループはAWS ECSサービスをルートとして命名する必要がある。
 
 <br>
 
-## CloudFront
+## AWS CloudFront
 
 ### resource
 
@@ -508,7 +508,7 @@ resource "aws_cloudfront_distribution" "this" {
 
 <br>
 
-## ECR
+## AWS ECR
 
 ### resource
 
@@ -550,7 +550,7 @@ ECRに紐付けられる、コンテナイメージの有効期間を定義す�
 
 <br>
 
-## ECS
+## AWS ECS
 
 ### resource
 
@@ -666,7 +666,7 @@ ECSサービスの削除には『ドレイニング』の時間が発生する�
 
 <br>
 
-## EC2
+## AWS EC2
 
 ### resource
 
@@ -724,7 +724,7 @@ Internet Gatewayの後にEC2を作成可能にする。
 
 <br>
 
-## EKS
+## AWS EKS
 
 ### resource
 
@@ -807,7 +807,7 @@ EKSでは、cluster-autoscalerを使用して、Nodeをスケーリングさせ�
 
 <br>
 
-## IAMユーザー
+## AWS IAMユーザー
 
 ### resource
 
@@ -893,7 +893,7 @@ resource "aws_iam_user_policy_attachment" "aws_cli_command_executor_s3_read_only
 
 <br>
 
-## IAMロール
+## AWS IAMロール
 
 ### resource
 
@@ -1142,7 +1142,7 @@ resource "aws_appautoscaling_target" "ecs" {
 
 <br>
 
-## リスナーとターゲットグループ
+## AWS リスナーとターゲットグループ
 
 ### resource
 
@@ -1216,7 +1216,7 @@ status code: 400, request id: *****
 
 <br>
 
-## RDS (Aurora) の場合
+## AWS RDS (Aurora) の場合
 
 ### resource
 
@@ -1411,7 +1411,7 @@ Auroraでは、紐付けられたサブネットグループが複数のAZのサ
 
 <br>
 
-## RDS (Global) の場合
+## AWS RDS (Global) の場合
 
 ### resource
 
@@ -1594,7 +1594,7 @@ resource "aws_rds_cluster" "foo" {
 
 <br>
 
-## Route53
+## AWS Route53
 
 ### resource
 
@@ -1645,7 +1645,7 @@ resource "aws_route53_record" "foo" {
 
 <br>
 
-## ルートテーブル
+## AWS ルートテーブル
 
 ### メインルートテーブルは自動作成
 
@@ -1798,7 +1798,7 @@ CIの`terraform plan`コマンド時に値が公開されないように`output`
 
 <br>
 
-## VPC
+## AWS VPC
 
 ### resource
 
@@ -1994,7 +1994,7 @@ AZを上長化している場合、VPC内のサブネットと関連のAWSリソ
 
 <br>
 
-## VPC endpoint
+## AWS VPC endpoint
 
 ### resource
 
@@ -2082,7 +2082,7 @@ resource "aws_vpc_endpoint" "ssmmessages" {
 
 <br>
 
-## WAF
+## AWS WAF
 
 ### resource
 

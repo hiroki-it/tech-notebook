@@ -927,7 +927,7 @@ AWSから提供される他の全てのFluentBitイメージを束ねたベー�
 
 #### ▼ cloudwatch_logプラグインとは
 
-ログをAWS CloudWatchログにルーティングする。
+ログをAWS CloudWatch Logsにルーティングする。
 
 元々、『cloudwatchプラグイン』という名前だった。
 
@@ -945,7 +945,7 @@ cloudwatch_logsプラグインがプリインストールされているベー�
 
 ```bash
 # ---------------------------------------------
-# AWS CloudWatchログへのルーティング
+# AWS CloudWatch Logsへのルーティング
 # ---------------------------------------------
 [OUTPUT]
     # プラグイン名
@@ -973,11 +973,11 @@ cloudwatch_logsプラグインがプリインストールされているベー�
     role_arn          arn:aws:iam::<AWSアカウントID>:role/prd-foo-flunetbit-role
 ```
 
-AWS CloudWatchログに送信されるデータはJSON型である。
+AWS CloudWatch Logsに送信されるデータはJSON型である。
 
 `log`キーにログが割り当てられている。
 
-特定のキーの値のみをAWS CloudWatchログに送信する場合、log_keyオプションでキー名を設定する。
+特定のキーの値のみをAWS CloudWatch Logsに送信する場合、log_keyオプションでキー名を設定する。
 
 例えば、`log`キーのみを送信する場合、『`log`』と設定する。
 

@@ -143,7 +143,7 @@ exports.handler = (event, context, callback) => {
 
 #### ▼ テストとデバッグ
 
-AWS Lambdaで関数を作成すると、AWS CloudWatchログのロググループに、『`/aws/lambda/<関数名>`』というグループが自動的に作成される。AWS Lambdaの関数内で発生したエラーや`console.log`メソッドのログはここに出力されるため、都度確認すること。
+AWS Lambdaで関数を作成すると、AWS CloudWatch Logsのロググループに、『`/aws/lambda/<関数名>`』というグループが自動的に作成される。AWS Lambdaの関数内で発生したエラーや`console.log`メソッドのログはここに出力されるため、都度確認すること。
 
 #### ▼ ベストプラクティス
 
@@ -358,7 +358,7 @@ func main() {
 
 標準パッケージの`fmt`、または任意のロギングパッケージを使用して、標準出力/標準エラー出力に出力する。
 
-AWS CloudWatchログにてこれを確認する。
+AWS CloudWatch Logsにてこれを確認する。
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/golang-logging.html
 

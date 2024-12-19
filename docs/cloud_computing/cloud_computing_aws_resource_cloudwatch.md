@@ -13,9 +13,9 @@ description: AWS CloudWatch＠AWSリソースの知見を記録しています�
 
 <br>
 
-## 01. AWS CloudWatchメトリクス
+## 01. AWS CloudWatch Metrics
 
-### AWS CloudWatchメトリクスとは
+### AWS CloudWatch Metricsとは
 
 AWSリソースで発生したメトリクスのデータポイントを収集する。
 
@@ -44,7 +44,7 @@ AWS CloudWatchは、データポイントからメトリクスを作成しつつ
 
 #### ▼ 集約の確認方法
 
-AWS CloudWatchメトリクス上では、各集約を以下の様に確認できる。
+AWS CloudWatch Metrics上では、各集約を以下の様に確認できる。
 
 ![cloudwatch_namespace_metric_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudwatch_namespace_metric_dimension.png)
 
@@ -91,9 +91,9 @@ AWS Lambdaの性能に関するメトリクスのデータポイントを収集�
 
 ### 埋め込みメトリクスフォーマット
 
-AWS CloudWatchログ上で構造化ログのログイベントを自動的に集計し、AWS CloudWatchメトリクス上でカスタムメトリクスを生成してくれる。
+AWS CloudWatch Logs上で構造化ログのログイベントを自動的に集計し、AWS CloudWatch Metrics上でカスタムメトリクスを生成してくれる。
 
-AWS CloudWatchログに送る構造化ログには、`metrics`オブジェクトを定義する必要がある。
+AWS CloudWatch Logsに送る構造化ログには、`metrics`オブジェクトを定義する必要がある。
 
 ```yaml
 # 構造化ログ
@@ -116,9 +116,9 @@ AWS CloudWatchログに送る構造化ログには、`metrics`オブジェクト
 
 <br>
 
-## 02. AWS CloudWatchログ
+## 02. AWS CloudWatch Logs
 
-### AWS CloudWatchログとは
+### AWS CloudWatch Logsとは
 
 クラウドログサーバーとして働く。
 
@@ -190,19 +190,19 @@ OR条件と除外条件を組み合わせようとすると、OR条件が認識�
 
 <br>
 
-### AWS CloudWatchログエージェント (非推奨)
+### AWS CloudWatch Logsエージェント (非推奨)
 
-#### ▼ AWS CloudWatchログエージェントとは
+#### ▼ AWS CloudWatch Logsエージェントとは
 
 インスタンス内で稼働するデーモンのこと。
 
-インスタンス内のデータを収集し、AWS CloudWatchログに対して送信する。
+インスタンス内のデータを収集し、AWS CloudWatch Logsに対して送信する。
 
 執筆時点 (2020/10/05) では非推奨で、cloudwatchエージェントへの設定の移行が推奨である。
 
 #### ▼ `/var/awslogs/etc/awslogs.conf`ファイル
 
-AWS CloudWatchログエージェントを設定する。
+AWS CloudWatch Logsエージェントを設定する。
 
 OS、ミドルウェア、アプリケーションに分類して設定すると良い。
 
@@ -223,7 +223,7 @@ datetime_format = %b %d %H:%M:%S
 # 収集したいログファイル。ここでは、CentOSのログを設定する。
 file = /var/log/messages
 
-# 文字コードutf_8として送信する。文字コードが合わないと、AWS CloudWatchログの画面上で文字化けする。
+# 文字コードutf_8として送信する。文字コードが合わないと、AWS CloudWatch Logsの画面上で文字化けする。
 encoding = utf_8
 
 # バッファーに蓄える期間
@@ -608,9 +608,9 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
                   {
                     # 収集対象のログのディレクトリ
                     "file_path": "/var/log/nginx/error.log",
-                    # AWS CloudWatchログ上でのロググループ名
+                    # AWS CloudWatch Logs上でのロググループ名
                     "log_group_name": "/foo-www/var/log/nginx/error_log",
-                    # AWS CloudWatchログ上でのログストリーム名
+                    # AWS CloudWatch Logs上でのログストリーム名
                     "log_stream_name": "{instance_id}",
                   },
                   {
@@ -678,11 +678,11 @@ AWS以外 (オンプレミス、他のクラウドプロバイダー) のサー�
 
 #### ▼ ログが監視対象の場合
 
-| 設定項目     | 説明                                                                                                                           | 補足                                                  |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- |
-| 名前空間     | 紐付くロググループが所属する名前空間を設定する。AWS CloudWatchログが、設定した名前空間に対して、値を発行する。                 |                                                       |
-| メトリクス   | 紐付くロググループが所属する名前空間内のメトリクスを設定する。AWS CloudWatchログが、設定したメトリクスに対して、値を発行する。 |                                                       |
-| メトリクス値 | フィルターパターンでログが検知された時に、データポイントとして発生させる値のこと。                                             | 例えば『検出数』を発行する場合は、『`1`』を設定する。 |
+| 設定項目     | 説明                                                                                                                            | 補足                                                  |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| 名前空間     | 紐付くロググループが所属する名前空間を設定する。AWS CloudWatch Logsが、設定した名前空間に対して、値を発行する。                 |                                                       |
+| メトリクス   | 紐付くロググループが所属する名前空間内のメトリクスを設定する。AWS CloudWatch Logsが、設定したメトリクスに対して、値を発行する。 |                                                       |
+| メトリクス値 | フィルターパターンでログが検知された時に、データポイントとして発生させる値のこと。                                              | 例えば『検出数』を発行する場合は、『`1`』を設定する。 |
 
 #### ▼ メトリクスが監視対象の場合
 
