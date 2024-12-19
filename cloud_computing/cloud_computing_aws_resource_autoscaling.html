@@ -24394,8 +24394,8 @@
 </blockquote>
 <p><br></p>
 <h2 id="01">01. オートスケーリングとは<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<p>ALBを使用して、起動テンプレートを基にしたAWS EC2の自動水平スケーリングを実行する。</p>
-<p>注意点として、オートスケーリングに紐付けるALBでは、ターゲットを登録する必要はなく、起動テンプレートに応じたインスタンスが自動的に登録される。</p>
+<p>AWS ALBを使用して、起動テンプレートを基にしたAWS EC2の自動水平スケーリングを実行する。</p>
+<p>注意点として、オートスケーリングに紐付けるAWS ALBでは、ターゲットを登録する必要はなく、起動テンプレートに応じたインスタンスが自動的に登録される。</p>
 <p>言い換えると、オートスケーリングにターゲットグループを紐付けて初めて、ターゲットにルーティングできるようになる。</p>
 <p><img alt="Auto-scaling" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Auto-scaling.png" /></p>
 <blockquote>
@@ -24433,7 +24433,7 @@
 </tr>
 <tr>
 <td>ロードバランシング</td>
-<td>オートスケーリングに紐づけるALBを設定する。</td>
+<td>オートスケーリングに紐づけるAWS ALBを設定する。</td>
 <td></td>
 </tr>
 <tr>
@@ -24508,7 +24508,7 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1"># ALBターゲットグループ</span>
+<span class="c1"># AWS ALBターゲットグループ</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_lb_target_group&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="p">...</span>
 <span class="p">}</span>
@@ -24719,7 +24719,7 @@
 <tr>
 <td>AWS ECSサービスメトリクス</td>
 <td>監視対象のメトリクスを設定する。</td>
-<td>『平均CPU』、『平均メモリ』、『AWS ECSタスク当たりのALBからのリクエスト数』を監視できる。SLIに対応するAWS CloudWatch Metricsも参考にせよ。</td>
+<td>『平均CPU』、『平均メモリ』、『AWS ECSタスク当たりのAWS ALBからのリクエスト数』を監視できる。SLIに対応するAWS CloudWatch Metricsも参考にせよ。</td>
 </tr>
 <tr>
 <td>ターゲット値</td>
@@ -24779,7 +24779,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_16">ロードバランサー<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<p>ALBがAWS EC2をヘルスチェックし、異常なAWS EC2があれば、必要に応じてAWS EC2を作成し直す。</p>
+<p>AWS ALBがAWS EC2をヘルスチェックし、異常なAWS EC2があれば、必要に応じてAWS EC2を作成し直す。</p>
 <p><code>Healthy</code>が正常である。</p>
 <p><code>Unhealthy</code>が異常である。</p>
 <blockquote>

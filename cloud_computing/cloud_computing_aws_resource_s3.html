@@ -13873,9 +13873,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#alb" class="md-nav__link">
+  <a href="#aws-alb" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ALBのアクセスログの保管を許可
+      ▼ AWS ALBのアクセスログの保管を許可
     </span>
   </a>
   
@@ -24117,9 +24117,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#alb" class="md-nav__link">
+  <a href="#aws-alb" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ALBのアクセスログの保管を許可
+      ▼ AWS ALBのアクセスログの保管を許可
     </span>
   </a>
   
@@ -24361,7 +24361,7 @@
 <tr>
 <td>バケットポリシー</td>
 <td>IAMユーザー (クロスアカウントも可) またはAWSリソースがAWS S3へにリクエストを送信するためのポリシーで管理する。</td>
-<td>・IAMポリシーとアクセスコントロールリストの両方が設定されている場合には、IAMポリシーが勝つ。<br>・<a href="https://dev.classmethod.jp/articles/s3-acl-wakewakame/">https://dev.classmethod.jp/articles/s3-acl-wakewakame/</a> <br>・ブロックパブリックアクセスを無効にしたうえで、IAMユーザー (クロスアカウントも可) やAWSリソースがS3にリクエストを送信するために必要である。ただし代わりに、IAMポリシーをAWSリソースに紐付けることによりも、アクセスを許可できる。<br>・<a href="https://awesome-linus.com/2020/02/04/s3-bucket-public-access/">https://awesome-linus.com/2020/02/04/s3-bucket-public-access/</a> <br>・ポリシーを紐付けできないCloudFrontやALBなどでは、自身へのアクセスログを作成するために必須である。</td>
+<td>・IAMポリシーとアクセスコントロールリストの両方が設定されている場合には、IAMポリシーが勝つ。<br>・<a href="https://dev.classmethod.jp/articles/s3-acl-wakewakame/">https://dev.classmethod.jp/articles/s3-acl-wakewakame/</a> <br>・ブロックパブリックアクセスを無効にしたうえで、IAMユーザー (クロスアカウントも可) やAWSリソースがS3にリクエストを送信するために必要である。ただし代わりに、IAMポリシーをAWSリソースに紐付けることによりも、アクセスを許可できる。<br>・<a href="https://awesome-linus.com/2020/02/04/s3-bucket-public-access/">https://awesome-linus.com/2020/02/04/s3-bucket-public-access/</a> <br>・ポリシーを紐付けできないCloudFrontやAWS ALBなどでは、自身へのアクセスログを作成するために必須である。</td>
 </tr>
 <tr>
 <td>アクセスコントロールリスト</td>
@@ -24428,9 +24428,9 @@
 <h3 id="_7">バケットポリシーの例<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="aws-s3arn">▼ AWS S3のARNについて<a class="headerlink" href="#aws-s3arn" title="Permanent link">&para;</a></h4>
 <p>ポリシーでは、AWS S3のARNでは、『<code>arn:aws:s3:::&lt;バケット名&gt;/*</code>』のように、最後にバックスラッシュアスタリスクが必要。</p>
-<h4 id="alb">▼ ALBのアクセスログの保管を許可<a class="headerlink" href="#alb" title="Permanent link">&para;</a></h4>
-<p>パブリックアクセスが無効化されたAWS S3に対して、ALBへのアクセスログを保管したい場合、バケットポリシーを設定する必要がある。</p>
-<p>バケットポリシーには、ALBからAWS S3へのログ書き込み認可スコープを実装する。『<code>"AWS": "arn:aws:iam::582318560864:root"</code>』では、<code>582318560864</code>はALBアカウントIDと呼ばれ、リージョンごとに値が決まっている。</p>
+<h4 id="aws-alb">▼ AWS ALBのアクセスログの保管を許可<a class="headerlink" href="#aws-alb" title="Permanent link">&para;</a></h4>
+<p>パブリックアクセスが無効化されたAWS S3に対して、AWS ALBへのアクセスログを保管したい場合、バケットポリシーを設定する必要がある。</p>
+<p>バケットポリシーには、AWS ALBからAWS S3へのログ書き込み認可スコープを実装する。『<code>"AWS": "arn:aws:iam::582318560864:root"</code>』では、<code>582318560864</code>はAWS ALBアカウントIDと呼ばれ、リージョンごとに値が決まっている。</p>
 <p>これは、東京リージョンのアカウントIDである。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>

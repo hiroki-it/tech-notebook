@@ -14410,9 +14410,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#alb" class="md-nav__link">
+  <a href="#aws-alb" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ALBの場合
+      ▼ AWS ALBの場合
     </span>
   </a>
   
@@ -14452,9 +14452,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#alb_1" class="md-nav__link">
+  <a href="#aws-alb_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ALBの場合
+      ▼ AWS ALBの場合
     </span>
   </a>
   
@@ -14584,9 +14584,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#alb_2" class="md-nav__link">
+  <a href="#aws-alb_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ALBを直接的に指定することを防ぐ
+      ▼ AWS ALBを直接的に指定することを防ぐ
     </span>
   </a>
   
@@ -24654,9 +24654,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#alb" class="md-nav__link">
+  <a href="#aws-alb" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ALBの場合
+      ▼ AWS ALBの場合
     </span>
   </a>
   
@@ -24696,9 +24696,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#alb_1" class="md-nav__link">
+  <a href="#aws-alb_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ALBの場合
+      ▼ AWS ALBの場合
     </span>
   </a>
   
@@ -24828,9 +24828,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#alb_2" class="md-nav__link">
+  <a href="#aws-alb_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ALBを直接的に指定することを防ぐ
+      ▼ AWS ALBを直接的に指定することを防ぐ
     </span>
   </a>
   
@@ -24979,7 +24979,7 @@
 <tr>
 <td>アプリケーション層</td>
 <td><code>L7</code></td>
-<td>ALB、AWS EC2、AWS RDS、AWS Route53、AWS S3</td>
+<td>AWS ALB、AWS EC2、AWS RDS、AWS Route53、AWS S3</td>
 </tr>
 <tr>
 <td>プレゼンテーション層</td>
@@ -25109,8 +25109,8 @@
 </thead>
 <tbody>
 <tr>
-<td>ALB</td>
-<td>ALB当たり<code>8</code>個</td>
+<td>AWS ALB</td>
+<td>AWS ALB当たり<code>8</code>個</td>
 </tr>
 <tr>
 <td>AutoScaling</td>
@@ -25152,7 +25152,7 @@
 <td>publicサブネット</td>
 <td>パブリック</td>
 <td>非武装地帯として動作する。Internet Gatewayを介して、パブリックネットワークからのリクエストを待ち受ける。</td>
-<td>ALB、AWS NAT Gateway</td>
+<td>AWS ALB、AWS NAT Gateway</td>
 </tr>
 <tr>
 <td>protectedサブネット</td>
@@ -25191,7 +25191,7 @@
 <td>frontendサブネット</td>
 <td>パブリック</td>
 <td>非武装地帯として動作する。<code>L7</code>ロードバランサー、ルーター、踏み台サーバーを配置する。</td>
-<td>ALB、AWS NAT Gateway</td>
+<td>AWS ALB、AWS NAT Gateway</td>
 </tr>
 <tr>
 <td>applicationサブネット</td>
@@ -25296,7 +25296,7 @@
 <p>なお、ACLでも<code>L3</code>を防御できるが、ネットワークが複雑になることを防ぐためにACLでは通信制限は採用しなくてもよい。</p>
 <h3 id="_10">セキュリティグループ (インバウンド) による防御<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="aws-ec2">▼ アプリケーションAWS EC2の場合<a class="headerlink" href="#aws-ec2" title="Permanent link">&para;</a></h4>
-<p>ALBに割り振られる可能性のあるIPアドレスを許可するために、ALBのセキュリティグループID、またはサブネットのCIDRブロックを設定する。</p>
+<p>AWS ALBに割り振られる可能性のあるIPアドレスを許可するために、AWS ALBのセキュリティグループID、またはサブネットのCIDRブロックを設定する。</p>
 <table>
 <thead>
 <tr>
@@ -25312,8 +25312,8 @@
 <td>HTTP</td>
 <td>TCP</td>
 <td><code>80</code></td>
-<td>ALBのセキュリティグループID</td>
-<td>HTTP access from ALB</td>
+<td>AWS ALBのセキュリティグループID</td>
+<td>HTTP access from AWS ALB</td>
 </tr>
 <tr>
 <td>HTTPS</td>
@@ -25411,10 +25411,10 @@
 </tr>
 </tbody>
 </table>
-<h4 id="alb">▼ ALBの場合<a class="headerlink" href="#alb" title="Permanent link">&para;</a></h4>
+<h4 id="aws-alb">▼ AWS ALBの場合<a class="headerlink" href="#aws-alb" title="Permanent link">&para;</a></h4>
 <p>AWS CloudFrontと連携する場合、AWS CloudFrontに割り振られる可能性のあるIPアドレスを許可するために、全てのIPアドレスを許可する。</p>
-<p>代わりに、AWS CloudFrontにAWS WAFを紐付け、ALBの前でIPアドレスを制限する。</p>
-<p>AWS CloudFrontとは連携しない場合、ALBのセキュリティグループでIPアドレスを制限する。</p>
+<p>代わりに、AWS CloudFrontにAWS WAFを紐付け、AWS ALBの前でIPアドレスを制限する。</p>
+<p>AWS CloudFrontとは連携しない場合、AWS ALBのセキュリティグループでIPアドレスを制限する。</p>
 <table>
 <thead>
 <tr>
@@ -25454,8 +25454,8 @@
 <p>AWS VPCエンドポイントのセキュリティグループでは、AWS VPCのCIDRからのアウトバウンド通信のみを許可するとよい。</p>
 <p><br></p>
 <h3 id="_11">セキュリティグループ (アウトバウンド) による防御<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<h4 id="alb_1">▼ ALBの場合<a class="headerlink" href="#alb_1" title="Permanent link">&para;</a></h4>
-<p>ALBからAWS EC2にリクエストをルーティングする場合、特定のAWS EC2のみへのルーティングを許可するために、アウトバウンドのルールでAWS EC2のセキュリティグループIDを設定する。</p>
+<h4 id="aws-alb_1">▼ AWS ALBの場合<a class="headerlink" href="#aws-alb_1" title="Permanent link">&para;</a></h4>
+<p>AWS ALBからAWS EC2にリクエストをルーティングする場合、特定のAWS EC2のみへのルーティングを許可するために、アウトバウンドのルールでAWS EC2のセキュリティグループIDを設定する。</p>
 <table>
 <thead>
 <tr>
@@ -25723,10 +25723,10 @@
 </tr>
 </tbody>
 </table>
-<h4 id="alb_2">▼ ALBを直接的に指定することを防ぐ<a class="headerlink" href="#alb_2" title="Permanent link">&para;</a></h4>
+<h4 id="aws-alb_2">▼ AWS ALBを直接的に指定することを防ぐ<a class="headerlink" href="#aws-alb_2" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>AWS Route53のドメイン経由ではなく、ALBの直接的に指定して、リクエストとを送信することを防ぐ。</p>
-<p>ALBのIPアドレスは定期的に変化するため、任意のIPアドレスを指定できる正規表現を定義する必要がある。</p>
+<p>AWS Route53のドメイン経由ではなく、AWS ALBの直接的に指定して、リクエストとを送信することを防ぐ。</p>
+<p>AWS ALBのIPアドレスは定期的に変化するため、任意のIPアドレスを指定できる正規表現を定義する必要がある。</p>
 <div class="highlight"><pre><span></span><code>^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$
 </code></pre></div>
 <p>ルール：<code>block-direct-access-to-lb</code></p>
@@ -25787,7 +25787,7 @@
 <h2 id="04-03-certificate-manager">04-03. Certificate Manager<a class="headerlink" href="#04-03-certificate-manager" title="Permanent link">&para;</a></h2>
 <h3 id="certificate-manager">Certificate Managerによる防御<a class="headerlink" href="#certificate-manager" title="Permanent link">&para;</a></h3>
 <p>アプリケーションデータの暗号化のために、Certificate Manager (<code>L7</code>) を使用する。</p>
-<p>リクエストを受信するAWSリソース (例：ALB、Aurora AWS RDS、AWS CloudFront、AWS EC2/AWS ECS/AWS EKSなど) に紐づけられる。</p>
+<p>リクエストを受信するAWSリソース (例：AWS ALB、Aurora AWS RDS、AWS CloudFront、AWS EC2/AWS ECS/AWS EKSなど) に紐づけられる。</p>
 <p>安全性と利便性から、パブリックネットワークと信頼できるネットワーク (例：データセンター、プライベートネットワークなど) の境界をSSL/TLS終端とすることが多い。</p>
 <blockquote>
 <ul>
@@ -25825,7 +25825,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-19</span>
   </span>
 
     
