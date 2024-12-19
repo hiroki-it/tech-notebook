@@ -268,7 +268,7 @@ DevOpsのCI/CDパイプラインを導入することによりこれを実装す
 
 ### 技術ツール例
 
-- AWS (API Gateway、Route53やALBによる重み付けルーティング)
+- AWS (API Gateway、Route53やAWS ALBによる重み付けルーティング)
 - ArgoCD
 
 <br>

@@ -271,7 +271,7 @@ AWS ECRからアップロードできる。
 
 ### AWS Lambda@Edgeとは
 
-CloudFrontに統合されたAWS Lambdaを、特別にAWS Lambda@Edgeという。
+AWS CloudFrontに統合されたAWS Lambdaを、特別にAWS Lambda@Edgeという。
 
 <br>
 
@@ -283,22 +283,22 @@ CloudFrontに統合されたAWS Lambdaを、特別にAWS Lambda@Edgeという。
 
 ![lambda-edge](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-edge.png)
 
-CloudFrontのビューワーリクエスト、オリジンリクエスト、オリジンレスポンス、ビューワーレスポンスをトリガーとする。
+AWS CloudFrontのビューワーリクエスト、オリジンリクエスト、オリジンレスポンス、ビューワーレスポンスをトリガーとする。
 
-エッジロケーションのCloudFrontに、AWS Lambdaのレプリカを作成する。
+エッジロケーションのAWS CloudFrontに、AWS Lambdaのレプリカを作成する。
 
-| トリガーの種類       | 発火のタイミング                                                                   |
-| -------------------- | ---------------------------------------------------------------------------------- |
-| ビューワーリクエスト | CloudFrontが、ビューワーからリクエストを受信した後 (キャッシュを確認する前) 。     |
-| オリジンリクエスト   | CloudFrontが、リクエストをオリジンサーバーに転送する前 (キャッシュを確認した後) 。 |
-| オリジンレスポンス   | CloudFrontが、オリジンからレスポンスを受信した後 (キャッシュを確認する前) 。       |
-| ビューワーレスポンス | CloudFrontが、ビューワーにレスポンスを転送する前 (キャッシュを確認した後) 。       |
+| トリガーの種類       | 発火のタイミング                                                                       |
+| -------------------- | -------------------------------------------------------------------------------------- |
+| ビューワーリクエスト | AWS CloudFrontが、ビューワーからリクエストを受信した後 (キャッシュを確認する前) 。     |
+| オリジンリクエスト   | AWS CloudFrontが、リクエストをオリジンサーバーに転送する前 (キャッシュを確認した後) 。 |
+| オリジンレスポンス   | AWS CloudFrontが、オリジンからレスポンスを受信した後 (キャッシュを確認する前) 。       |
+| ビューワーレスポンス | AWS CloudFrontが、ビューワーにレスポンスを転送する前 (キャッシュを確認した後) 。       |
 
 #### ▼ 各トリガーのeventオブジェクトへのマッピング
 
 各トリガーのeventオブジェクトへのマッピングは、リンクを参考にせよ。
 
-> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html
+> - https://docs.aws.amazon.com/AmazonAWS CloudFront/latest/DeveloperGuide/lambda-event-structure.html
 
 <br>
 

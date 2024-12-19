@@ -31,7 +31,7 @@ description: 信頼性＠AWSの知見を記録しています。
 
 それぞれのAZにAWS EC2/ECSを冗長化する。
 
-特定のAZで障害が発生した場合、ALBを起点にして、インバウンド通信の向き先を正常なAZのAWS EC2/ECSに切り替える。
+特定のAZで障害が発生した場合、AWS ALBを起点にして、インバウンド通信の向き先を正常なAZのAWS EC2/ECSに切り替える。
 
 #### ▼ AWS NAT Gateway
 
@@ -43,13 +43,13 @@ AWS NAT GatewayをAZで冗長化し、特定のAZで障害が起こっても、�
 
 Auto Scaling Groupを採用する。
 
-AWS EC2で障害が発生した場合、ALBを起点にして、正常なAWS EC2に切り替える。
+AWS EC2で障害が発生した場合、AWS ALBを起点にして、正常なAWS EC2に切り替える。
 
 #### ▼ AWS EKS マネージドNodeグループ
 
 AWS EKS マネージドNodeグループを採用する。
 
-AWS EC2 Nodeで障害が発生した場合、ALBを起点にして、正常なAWS EC2に切り替える。
+AWS EC2 Nodeで障害が発生した場合、AWS ALBを起点にして、正常なAWS EC2に切り替える。
 
 #### ▼ Aurora
 

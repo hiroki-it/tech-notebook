@@ -788,7 +788,7 @@ ArgoCD自体をArgoCDで管理することはできないため、手動やマ�
 
 #### ▼ 既存のAWS ALBを使用する場合
 
-- TargetGroupBindingを新しく採用し、ALBの振り分けの重みづけでB/G Clusterを切り替える方法。ArgoCDが複数のプロダクトを管理している場合、プロダクトごとに切り替えられない。
+- TargetGroupBindingを新しく採用し、AWS ALBの振り分けの重みづけでB/G Clusterを切り替える方法。ArgoCDが複数のプロダクトを管理している場合、プロダクトごとに切り替えられない。
 
 > - https://masayosu.hatenablog.com/entry/2022/12/14/090000
 
@@ -1072,7 +1072,7 @@ ArgoCD
 Cluster
 ```
 
-- ArgoCDのダウンストリームのALBにWAFを紐づけ、特定のIPアドレス以外を `403`ステータス (認可エラー) にする。
+- ArgoCDのダウンストリームのAWS ALBにWAFを紐づけ、特定のIPアドレス以外を `403`ステータス (認可エラー) にする。
 - ArgoCDのログインにSSOを使用し、利用者以外を `401`ステータス (認証エラー) にする
 
 ### ArgoCD → (アクセス制御) → Cluster の部分

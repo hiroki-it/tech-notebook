@@ -51,18 +51,18 @@ description: AWS WAF＠AWSリソース
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Overview                 | AWS WAFによって許可/拒否されたリクエストのアクセスログを確認できる。                                                       |                                                                                                                                                        |
 | Rules                    | 順番にルールを判定し、一致するルールがあればアクションを実行する。この時、一致するルールの後にあるルールは。判定されない。 | AWSマネージドルールについては、以下のリンクを参考にせよ。<br>- https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html |
-| Associated AWS resources | AWS WAFを紐付けるAWSリソースを設定する。                                                                                   | CloudFront、ALBなどに紐付けできる。                                                                                                                    |
+| Associated AWS resources | AWS WAFを紐付けるAWSリソースを設定する。                                                                                   | AWS CloudFront、AWS ALBなどに紐付けできる。                                                                                                            |
 | Logging and metrics      | アクセスログをKinesis Data Firehoseに出力するように設定する。                                                              |                                                                                                                                                        |
 
 ### OverviewにおけるSampled requestsの見方
 
 『全てのルール』または『個別のルール』におけるアクセス許可/拒否の履歴を確認できる。
 
-ALBやCloudFrontのアクセスログよりも解りやすく、様々なデバッグに役立つ。
+AWS ALBやAWS CloudFrontのアクセスログよりも解りやすく、様々なデバッグに役立つ。
 
 ただし、３時間分しか残らない。
 
-一例として、CloudFrontに紐付けしたAWS WAFで取得できるログを以下に示す。
+一例として、AWS CloudFrontに紐付けしたAWS WAFで取得できるログを以下に示す。
 
 ```yaml
 GET /foo/
@@ -128,7 +128,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 AWS WAFを紐付けられるリソースにセキュリティグループも紐付けている場合、セキュリティグループのルールが先に検証される。
 
-例えば、AWS WAFをALBに紐付け、かつALBのセキュリティグループにHTTPSプロトコルのルールを設定した場合、後者が先に検証される。
+例えば、AWS WAFをAWS ALBに紐付け、かつAWS ALBのセキュリティグループにHTTPSプロトコルのルールを設定した場合、後者が先に検証される。
 
 両方にルールが定義されてると混乱を生むため、HTTPプロトコルやHTTPSプロトコルに関するルールはAWS WAFに定義し、それ以外のプロトコルに関するルールはセキュリティグループで定義するようにしておく。
 
