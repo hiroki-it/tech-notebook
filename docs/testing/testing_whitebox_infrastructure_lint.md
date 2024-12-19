@@ -89,7 +89,7 @@ Kubernetesリソースのスキーマ (カスタムリソースであればCRD) 
 
 - pluto
 - kubeplug
-- kube-no-trouble
+- kubent (kube-no-trouble)
 - `helm install`コマンド
 
 > - https://helm.sh/docs/topics/kubernetes_apis/
