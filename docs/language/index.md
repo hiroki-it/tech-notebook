@@ -88,9 +88,10 @@
 
 * #### <u>パッケージ</u>
   > * ##### [︎パッケージ管理](https://hiroki-it.github.io/tech-notebook/language/language_javascript_package_management.html)
-  > * ##### [SQLパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_package_sql.html)
   > * ##### [︎ユーティリティパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_package_utility.html)
   > * ##### [︎Reactパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_package_react.html)
+  > * ##### <u>︎SQLパッケージ</u>
+  > > * ##### [Prisma](https://hiroki-it.github.io/tech-notebook/language/language_javascript_package_sql_prisma.html)
 
 * #### <u>ブラウザ</u>
   > * ##### [︎ブラウザレンダリング](https://hiroki-it.github.io/tech-notebook/language/language_javascript_browser_rendering.html)

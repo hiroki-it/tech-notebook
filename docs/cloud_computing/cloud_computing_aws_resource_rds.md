@@ -431,11 +431,11 @@ DBインスタンスとクラスターボリュームから構成されている
 
 #### ▼ スロークエリログ
 
-AWS CloudWatch Logsの`/aws/rds/instance/<DBインスタンス名>/slowquery`というロググループにスロークエリログが出力される。
+AWS CloudWatch Logsの`/aws/rds/cluster/<DBクラスター名>/slowquery`というロググループにスロークエリログが出力される。
 
 #### ▼ エラークエリログ
 
-AWS CloudWatch Logsの`/aws/rds/instance/<DBインスタンス名>/error`というロググループにエラーログが出力される。
+AWS CloudWatch Logsの`/aws/rds/cluster/<DBクラスター名>/error`というロググループにエラーログが出力される。
 
 <br>
 

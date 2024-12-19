@@ -258,3 +258,27 @@ SELECT LAST_INSERT_ID();
 |                              |                                                                        |
 
 <br>
+
+## 05. ログ
+
+### 一般ログ
+
+記入中...
+
+### スロークエリログ
+
+記入中...
+
+### エラーログ
+
+#### ▼ Aborted connection
+
+クライアントがコネクションを切断した場合、`Aborted connection`エラーとなる。
+
+```bash
+[Note] Aborted connection 251 to db: 'db_name' user: 'user_name' host: 'host_name' (Got an error reading communication packets)
+```
+
+> - https://weblabo.oscasierra.net/mysql-error-reading-communication-packets/
+
+<br>
