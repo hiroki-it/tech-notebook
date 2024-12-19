@@ -23848,7 +23848,7 @@
 <p>コンテナイメージを署名し、また署名を検証する。</p>
 <ol>
 <li><code>notation sign</code>コマンドでコンテナイメージを署名する。</li>
-<li><code>notation policy inport</code>コマンドで信頼ポリシーを読み込む。</li>
+<li><code>notation policy import</code>コマンドで信頼ポリシーを読み込む。</li>
 <li><code>notation verify</code>コマンドでコンテナイメージの署名を検証する。</li>
 </ol>
 <p><br></p>
@@ -23872,7 +23872,7 @@
 <span class="w">        </span><span class="s">&quot;trustStores&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;signingAuthority:aws-signer-ts&quot;</span><span class="p p-Indicator">],</span>
 <span class="w">        </span><span class="s">&quot;trustedIdentities&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">[</span>
-<span class="w">            </span><span class="s">&quot;arn:aws:signer:&lt;リージョン&gt;:&lt;AWSアカウントID&gt;:/signing-profiles/&lt;プロファイル名&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;arn:aws:signer:&lt;リージョン&gt;:&lt;AWSアカウントID&gt;:/signing-profiles/&lt;署名プロファイル名&gt;&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">],</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
@@ -23892,7 +23892,7 @@
 <p>AWS Signerにある署名プロファイルを使用し、AWS ECR上でのコンテナイメージを署名する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>notation<span class="w"> </span>sign<span class="w"> </span>&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--plugin<span class="w"> </span><span class="s2">&quot;com.amazonaws.signer.notation.plugin&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--id<span class="w"> </span>arn:aws:signer:ap-northeast:&lt;AWSアカウントID&gt;:/signing-profiles/&lt;プロファイル名&gt;
+<span class="w">    </span>--id<span class="w"> </span>arn:aws:signer:ap-northeast:&lt;AWSアカウントID&gt;:/signing-profiles/&lt;署名プロファイル名&gt;
 </code></pre></div>
 <p><br></p>
 <h3 id="verify">verify<a class="headerlink" href="#verify" title="Permanent link">&para;</a></h3>

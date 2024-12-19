@@ -25542,7 +25542,7 @@
 </ul>
 </blockquote>
 <h4 id="_7">▼ メンテナンスの適切な曜日/時間帯<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>AWS CloudWatchメトリクスの<code>DatabaseConnections</code>メトリクスから、DBの接続数が低くなる時間帯を調査し、その時間帯にメンテナンスウィンドウを設定する。</p>
+<p>AWS CloudWatch Metricsの<code>DatabaseConnections</code>メトリクスから、DBの接続数が低くなる時間帯を調査し、その時間帯にメンテナンスウィンドウを設定する。</p>
 <p>また、メンテナンスウィンドウの実施曜日が週末であると、サイトが停止したまま休日を迎える可能性があるため、週末以外になるように設定する (メンテナンスウィンドウがUTCであることに注意) 。</p>
 <h4 id="_8">▼ 『保留中の変更』『保留中のメンテナンス』<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p><img alt="rds_pending-maintenance" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_pending-maintenance.png" /></p>
@@ -25708,8 +25708,8 @@
 </tr>
 <tr>
 <td>ログのエクスポート</td>
-<td>AWS CloudWatchログに送信するログを設定する。</td>
-<td>必ず、全てのログを選択すること。</td>
+<td>AWS CloudWatch Logsに送信するデータエンジン (例：MySQL) のログを設定する。エラーログ、スロークエリなどを選択できる。</td>
+<td>全てのログを選択するとよい。</td>
 </tr>
 <tr>
 <td>セキュリティグループ</td>
@@ -25747,8 +25747,8 @@
 <tbody>
 <tr>
 <td>インスタンスクラス</td>
-<td>DBインスタンスのスペックを設定する。</td>
-<td>バースト可能クラスを選択すること。補足として、AuroraのDBサイズは自動的にスケーリングするため、設定する必要がない。</td>
+<td>DBインスタンスのスペックを設定する。サーバーレス、メモリ最適化、バースト可能などを選択できる。</td>
+<td>バースト可能クラスを選択するとよい。補足として、AuroraのDBサイズは自動的にスケーリングするため、設定する必要がない。</td>
 </tr>
 <tr>
 <td>パブリックアクセス</td>
@@ -26072,7 +26072,7 @@ ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">serveraliv
 watch<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="s1">&#39;echo &quot;---------- No. ${i} Local PC: $(date +&quot;%Y-%m-%d %H:%M:%S&quot;) ------------&quot; &gt;&gt; health_check.txt &amp;&amp; \</span>
 <span class="s1">  echo ${SQL} | mysql -u ${DB_USER} -P 3306 -p${DB_PASSWORD} &gt;&gt; health_check.txt 2&gt;&amp;1&#39;</span>
 </code></pre></div>
-<p>上記のシェルスクリプトにより、例えば次のようなログを取得できる。</p>
+<p>上記のシェルスクリプトにより、例えば次のようなMySQLのログを取得できる。</p>
 <p>このログからは、<code>15:23:09</code> 〜 <code>15:23:14</code>の間で、接続に失敗していることを確認できる。</p>
 <div class="highlight"><pre><span></span><code>---------- No. 242 Local PC: 2021-04-21 15:23:06 ------------
 mysql: [Warning] Using a password on the command line interface can be insecure.
@@ -26400,7 +26400,7 @@ NOW()
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-19</span>
   </span>
 
     
