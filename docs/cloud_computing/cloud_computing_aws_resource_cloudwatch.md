@@ -210,7 +210,7 @@ OS、ミドルウェア、アプリケーションに分類して設定すると
 
 ```ini
 # ------------------------------------------
-# CentOS AWS CloudWatch Logs
+# AWS CloudWatch Logs (CentOS)
 # ------------------------------------------
 [/var/log/messages]
 
@@ -239,7 +239,7 @@ log_stream_name = {instance_id}
 log_group_name = /var/log/messages
 
 # ------------------------------------------
-# Nginx AWS CloudWatch Logs
+# AWS CloudWatch Logs (Nginx)
 # ------------------------------------------
 [/var/log/nginx/error.log]
 file             = /var/log/nginx/error.log
@@ -249,7 +249,7 @@ initial_position = start_of_file
 log_group_name   = /var/log/nginx/error_log.production
 
 # ------------------------------------------
-# Application AWS CloudWatch Logs
+# AWS CloudWatch Logs (Application)
 # ------------------------------------------
 [/var/www/project/app/storage/logs/laravel.log]
 file             = /var/www/project/app/storage/logs/laravel.log
