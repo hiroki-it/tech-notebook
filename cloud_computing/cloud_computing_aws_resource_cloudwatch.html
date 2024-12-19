@@ -25267,7 +25267,7 @@
 <p>OS、ミドルウェア、アプリケーションに分類して設定すると良い。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ------------------------------------------</span>
-<span class="c1"># CentOS AWS CloudWatch Logs</span>
+<span class="c1"># AWS CloudWatch Logs (CentOS)</span>
 <span class="c1"># ------------------------------------------</span>
 <span class="k">[/var/log/messages]</span>
 
@@ -25296,7 +25296,7 @@
 <span class="na">log_group_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/var/log/messages</span>
 
 <span class="c1"># ------------------------------------------</span>
-<span class="c1"># Nginx AWS CloudWatch Logs</span>
+<span class="c1"># AWS CloudWatch Logs (Nginx)</span>
 <span class="c1"># ------------------------------------------</span>
 <span class="k">[/var/log/nginx/error.log]</span>
 <span class="na">file</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s">/var/log/nginx/error.log</span>
@@ -25306,7 +25306,7 @@
 <span class="na">log_group_name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">/var/log/nginx/error_log.production</span>
 
 <span class="c1"># ------------------------------------------</span>
-<span class="c1"># Application AWS CloudWatch Logs</span>
+<span class="c1"># AWS CloudWatch Logs (Application)</span>
 <span class="c1"># ------------------------------------------</span>
 <span class="k">[/var/www/project/app/storage/logs/laravel.log]</span>
 <span class="na">file</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s">/var/www/project/app/storage/logs/laravel.log</span>
