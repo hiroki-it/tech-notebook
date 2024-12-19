@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Notation＠セキュリティ系ミドルウェア
+title: 【IT技術の知見】Notary Notation＠セキュリティ系ミドルウェア
 description: Notation＠セキュリティ系ミドルウェアの知見を記録しています。
 ---
 
-# Notation＠セキュリティ系ミドルウェア
+# Notary Notation＠セキュリティ系ミドルウェア
 
 ## はじめに
 
@@ -13,10 +13,12 @@ description: Notation＠セキュリティ系ミドルウェアの知見を記�
 
 <br>
 
-## 01. Notationの仕組み
+## 01. Notary Notationの仕組み
+
+コンテナイメージを署名し、また署名を検証する。
 
 1. `notation sign`コマンドでコンテナイメージを署名する。
-2. `notation policy`コマンドで信頼ポリシーを作成する。
+2. `notation policy inport`コマンドで信頼ポリシーを読み込む。
 3. `notation verify`コマンドでコンテナイメージの署名を検証する。
 
 <br>
@@ -33,8 +35,10 @@ $ notation policy import <信頼ポリシー名>
 
 **＊実行例＊**
 
+AWS Signerを使用するために、信頼ポリシーを読み込む。
+
 ```bash
-$ notation policy import .github/aws/signer_policy.json
+$ notation policy import aws/signer_policy.json
 ```
 
 ```yaml
@@ -56,7 +60,7 @@ $ notation policy import .github/aws/signer_policy.json
 }
 ```
 
-> - https://github.com/notaryproject/specifications/blob/main/specs/trust-store-trust-policy.md#trust-policy
+> - https://github.com/aws-samples/k8s-notary-admission?tab=readme-ov-file#operation
 
 <br>
 
@@ -69,6 +73,8 @@ $ notation sign <イメージ名>
 ```
 
 **＊実行例＊**
+
+AWS Signerにある署名プロファイルを使用し、AWS ECR上でのコンテナイメージを署名する。
 
 ```bash
 $ notation sign <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest \
@@ -87,6 +93,8 @@ $ notation verify <イメージ名>
 ```
 
 **＊実行例＊**
+
+AWS Signerにある署名プロファイルを使用し、AWS ECR上でのコンテナイメージの署名を検証する。
 
 ```bash
 $ notation verify <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
