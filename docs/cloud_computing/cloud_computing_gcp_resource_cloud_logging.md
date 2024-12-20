@@ -162,7 +162,19 @@ foo-pod
 
 #### ▼ ワイルドカード
 
-`=~`演算子を使用して正規表現マッチングを有効化し、`.*`演算子や`$`演算子でワイルドカードを適用する。
+```bash
+# 部分一致
+resource.labels.pod_name: "pod"
+```
+
+> - https://tools.bigwave.biz/notes/blog/posts/gcp_logging_query
+> - https://qiita.com/shigeru10/items/f54455e02e9d93e9ba4c
+
+#### ▼ 正規表現
+
+`=~`演算子を使用して正規表現マッチングを有効化する。
+
+正規表現にすると、`.*`演算子や`$`演算子でワイルドカードを適用できるようになる。
 
 ```bash
 # 前方一致

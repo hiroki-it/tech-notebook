@@ -408,34 +408,6 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 
 <br>
 
-### pilot-discoveryの実行オプション
-
-#### ▼ 実行オプションの渡し方
-
-コンテナの起動時に引数として渡す。
-
-Podであれば、`.spec.containers[*].args`オプションを使用する。
-
-#### ▼ keepaliveMaxServerConnectionAge
-
-`istio-proxy`コンテナからのgRPCリクエスト受信時のKeepalive (クライアントの状態に応じて、その接続をタイムアウトにするか否か) を設定する。
-
-#### ▼ log_output_level
-
-記入中...
-
-#### ▼ monitoringAddr
-
-Prometheusによるメトリクス収集のポート番号を設定する。
-
-`:15014`を設定する。
-
-#### ▼ domain
-
-記入中...
-
-<br>
-
 ## 02-02. 待ち受けるポート番号
 
 ### ポート番号の確認
@@ -553,5 +525,91 @@ $ curl http://127.0.0.1:15014/debug
 ### `15017`番
 
 `discovery`コンテナの`15017`番ポートでは、Istioの`istiod-<リビジョン番号>`というServiceからのポートフォワーディングを待ち受け、`discovery`コンテナ内のプロセスに渡す。AdmissionReviewを含むレスポンスを返信する。
+
+<br>
+
+## 03. pilot-discoveryコマンド
+
+### 実行オプションの渡し方
+
+コンテナの起動時に引数として渡す。
+
+Podであれば、`.spec.containers[*].args`オプションを使用する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: istiod-<リビジョン番号>
+  namespace: istio-system
+spec:
+  containers:
+    - args:
+        - discovery
+        - --monitoringAddr=:15014
+        - --log_output_level=default:info
+        - --domain
+        - cluster.local
+        - --keepaliveMaxServerConnectionAge
+        - 30m
+```
+
+<br>
+
+### clusterRegistriesNamespace
+
+IstioのConfigMap (`istio-mesh-cm`) のあるNamespaceを設定する。
+
+```bash
+$ pilot-discovery --clusterRegistriesNamespace istio-system
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery
+
+<br>
+
+### keepaliveMaxServerConnectionAge
+
+`istio-proxy`コンテナからのgRPCリクエスト受信時のKeepalive (クライアントの状態に応じて、その接続をタイムアウトにするか否か) を設定する。
+
+```bash
+$ pilot-discovery --keepaliveMaxServerConnectionAge 30m
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery
+
+<br>
+
+### log_output_level
+
+```bash
+$ pilot-discovery --log_output_level none
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery
+
+<br>
+
+### monitoringAddr
+
+Prometheusによるメトリクス収集のポート番号を設定する。
+
+`:15014`を設定する。
+
+```bash
+$ pilot-discovery --monitoringAddr :15014
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery
+
+<br>
+
+### domain
+
+```bash
+$ pilot-discovery --domain cluster.local
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery
 
 <br>

@@ -366,6 +366,16 @@ $ brew install mise
 
 <br>
 
+### trust
+
+環境変数を出力する。
+
+```bash
+$ mise trust
+```
+
+<br>
+
 ## 05. direnv
 
 ### direnvとは
