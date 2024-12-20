@@ -15,7 +15,7 @@ description: Prisma＠SQLパッケージの知見を記録しています。
 
 ## 01. Prismaの仕組み
 
-PrismaClientは、クエリエンジン (`https://binaries.prisma.sh/`) に接続リクエストを送信する。
+PrismaClient (Node.jsパッケージ) は、クエリエンジン (バイナリ) に接続リクエストを送信する。
 
 クエリエンジンはコネクションプールを作成し、プール内のコネクションを使用してDBに接続する。
 
@@ -89,7 +89,7 @@ $ yarn prisma db seed
 ```javascript
 datasource db {
   provider = "mysql"
-  url      = "mysql://<DBユーザー>:<DBパスワード>@<DBホスト>/<DB名>?schema=public&connection_limit=30&pool_timeout=60"
+  url      = "mysql://<DBユーザー>:<DBパスワード>@<DBホスト>:<ポート番号>/<DB名>?schema=public&connection_limit=30&pool_timeout=60"
 }
 ```
 

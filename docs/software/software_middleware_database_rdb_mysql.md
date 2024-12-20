@@ -273,12 +273,13 @@ SELECT LAST_INSERT_ID();
 
 #### ▼ Aborted connection
 
-クライアントがコネクションを切断した場合、`Aborted connection`エラーとなる。
+MySQLクライアントがコネクションを切断した場合、MySQL側では`Aborted connection`エラーとなる。
 
 ```bash
 [Note] Aborted connection 251 to db: 'db_name' user: 'user_name' host: 'host_name' (Got an error reading communication packets)
 ```
 
 > - https://weblabo.oscasierra.net/mysql-error-reading-communication-packets/
+> - https://stackoverflow.com/a/23690699/12771072
 
 <br>
