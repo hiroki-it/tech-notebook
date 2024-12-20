@@ -180,7 +180,7 @@ $ etcd \
 
 存在しないリソース定義をリクエストされると、kube-apiserverはリソース定義を見つけられず、以下のエラーレスポンスを返信する。
 
-```log
+```bash
 the server could not find the requested resource
 ```
 

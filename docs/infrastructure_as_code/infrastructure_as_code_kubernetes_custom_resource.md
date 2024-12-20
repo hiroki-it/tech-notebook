@@ -74,7 +74,7 @@ CRDのマニフェストを送信し、その後にカスタムリソースの�
 
 もしCRDを送信する前にカスタムリソースを送信してしまうと、kube-apiserverはCRDを見つけられずに、以下のエラーレスポンスを返信する。
 
-```log
+```bash
 the server could not find the requested resource
 ```
 

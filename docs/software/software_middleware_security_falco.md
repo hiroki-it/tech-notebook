@@ -47,7 +47,7 @@ Pod内のコンテナに接続し、コマンドを実行したとする。
 
 すると、Falcoは以下のようなログを作成する。
 
-```log
+```bash
 09:21:30.694701115: Notice Unexpected process spawned in container (command=cat /etc/hostname pid=24018 user=root k8s.ns=defalut k8s.pod=foo-pod container=foo image=foo@sha256:*****)\n,
 ```
 

@@ -106,19 +106,19 @@ $ systemctl status php-fpm.service
 
 #### ▼ NOTICE
 
-```log
+```bash
 [01-Sep-2021 00:00:00] NOTICE: fpm is running, pid 1
 ```
 
 #### ▼ WARNING
 
-```log
+```bash
 [01-Sep-2021 00:00:00] WARNING: [pool www] server reached pm.max_children setting (5), consider raising it
 ```
 
 #### ▼ Fatal Error
 
-```log
+```bash
 Fatal error: Allowed memory size of ***** bytes exhausted (tried to allocate 16 bytes)
 ```
 

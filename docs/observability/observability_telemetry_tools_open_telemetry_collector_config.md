@@ -275,7 +275,7 @@ exporters:
     verbosity: basic
 ```
 
-```log
+```bash
 2024-03-26T04:41:52.163Z	info	TracesExporter	{"kind": "exporter", "data_type": "traces", "name": "debug", "resource spans": 1, "spans": <転送したスパン数>}
 ```
 
@@ -580,7 +580,7 @@ service:
 
 ログレベルが`debug`の場合、例えば以下になる。
 
-```log
+```bash
 2024-03-25T03:22:08.220Z	debug	awsxrayexporter@v0.96.0/awsxray.go:57	TracesExporter	{"kind": "exporter", "data_type": "traces", "name": "awsxray", "type": "awsxray", "name": "awsxray", "#spans": 1}
 ```
 

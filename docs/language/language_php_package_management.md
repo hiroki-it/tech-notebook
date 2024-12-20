@@ -349,7 +349,7 @@ $ composer dump-autoload
 
 存在するクラスが見つからないエラーに悩まされた時は、クラスが登録されていない可能性があるため、`dump-autoload`を実行すると良い。
 
-```log
+```bash
  Exception : Target class [FooClass] does not exist.
 ```
 

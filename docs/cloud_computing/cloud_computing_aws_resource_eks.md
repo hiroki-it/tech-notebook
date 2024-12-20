@@ -820,7 +820,7 @@ Podをプライベートサブネットに配置した場合に、パブリッ�
 
 また、Podが作成されない限り、ワーカーNodeも作成されないことに注意する。
 
-```log
+```bash
 Pod provisioning timed out (will retry) for pod
 ```
 

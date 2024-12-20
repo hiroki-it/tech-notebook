@@ -366,7 +366,7 @@ INPUTセクションでcriプラグインを読み込む。
 
 criプラグインは、`<timeキー> <streamキー> <logtagキー> <messageキー>`を認識する。
 
-```log
+```bash
 2021-12-17T08:03:23.918838346+09:00 stderr F 2021/12/17 08:03:23 [INFO] start worker processes
 ```
 

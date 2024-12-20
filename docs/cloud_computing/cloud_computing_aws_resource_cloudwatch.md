@@ -287,13 +287,22 @@ $ service awslogs start
 
 クエリを使用して、ロググループ単位でログを抽出する。
 
+#### ▼ 関数
+
+| 関数     | 説明                             |
+| -------- | -------------------------------- |
+| `fields` | 検索結果に表示する列を設定する。 |
+| `filter` | フィルタリングする列を設定する。 |
+| `sort`   | 並び順を設定する。               |
+| `limit`  | 表示数を設定する。               |
+
 #### ▼ クエリ例
 
 汎用的なクエリを示す。
 
 **＊例＊**
 
-小文字と大文字を区別せずに、Errorを含むログを検索する。
+`@message`で、小文字と大文字を区別せずにErrorを含むログを検索する。
 
 ```sql
 fields @timestamp, @message, @logStream
@@ -322,7 +331,7 @@ fields @timestamp, @message, @logStream
 
 **＊例＊**
 
-`like`を使用して、小文字と大文字を区別せずに、WarningまたはErrorを含むログを検索する。
+`@message`フィールドに`like`を使用して、小文字と大文字を区別せずにWarningまたはErrorを含むログを検索する。
 
 ```sql
 fields @timestamp, @message, @logStream

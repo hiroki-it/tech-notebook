@@ -153,7 +153,7 @@ fields @timestamp, @message, @logStream
 
 : クエリの結果をコピーし、アラートのThreadに貼り付ける。
 
-```log
+```bash
  [2021-12-01 00:00:00] request.ERROR: Uncaught PHP Exception *****
 ```
 

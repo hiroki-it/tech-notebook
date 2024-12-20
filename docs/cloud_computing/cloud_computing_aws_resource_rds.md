@@ -583,7 +583,7 @@ watch -n 1 'echo "---------- No. ${i} Local PC: $(date +"%Y-%m-%d %H:%M:%S") ---
 
 このログからは、`15:23:09` 〜 `15:23:14`の間で、接続に失敗していることを確認できる。
 
-```log
+```bash
 ---------- No. 242 Local PC: 2021-04-21 15:23:06 ------------
 mysql: [Warning] Using a password on the command line interface can be insecure.
 NOW()
