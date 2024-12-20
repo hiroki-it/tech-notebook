@@ -23,7 +23,7 @@ PrometheusがPull型通信でメトリクスのデータポイントを収集す
 
 Pull型通信により、アプリケーションはPrometheusの存在を知る必要がなく、関心を分離できる。収集したいメトリクスに合わせて、ExporterをKubernetesのNodeに導入する必要がある。
 
-また、各Exporterは待ち受けるエンドポイントやポート番号が異なっており、Prometheusが各Exporterにリクエストを送信できるように、各Nodeでエンドポイントやポート番号へのインバウンド通信を許可する必要がある。
+また、各Exporterは待ち受けるエンドポイントやポート番号が異なっており、Prometheusが各Exporterからメトリクスを収集できるように、各Nodeでエンドポイントやポート番号へのインバウンド通信を許可する必要がある。
 
 > - https://openstandia.jp/oss_info/prometheus
 > - https://danielfm.me/prometheus-for-developers/

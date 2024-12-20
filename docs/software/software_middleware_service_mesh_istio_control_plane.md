@@ -83,6 +83,7 @@ spec:
       containers:
         - args:
             - discovery
+            # pilot-discoveryコマンドのオプション
             # 15014番ポートの開放
             - --monitoringAddr=:15014
             - --log_output_level=default:info
@@ -118,16 +119,16 @@ spec:
 
 > - https://github.com/istio/istio/blob/1.14.3/pilot/pkg/bootstrap/server.go#L412-L476
 
-Dockerfileとしては、最後に`pilot-discovery`プロセスを実行している。
-
-> - https://github.com/istio/istio/blob/1.14.3/pilot/docker/Dockerfile.pilot
-> - https://zenn.dev/link/comments/e8a978a00c6325
+Dockerfileとしては、最後に`pilot-discovery`コマンドでIstioコントロールプレーンを実行している。
 
 ```dockerfile
 ENTRYPOINT ["/usr/local/bin/pilot-discovery"]
 ```
 
-そのため、`pilot-discovery`プロセスの実体は、GitHubの`pilot-discovery`ディレクトリ配下の`main.go`ファイルで実行されるGoのバイナリファイルである。
+> - https://github.com/istio/istio/blob/1.24.2/pilot/docker/Dockerfile.pilot
+> - https://zenn.dev/link/comments/e8a978a00c6325
+
+そのため、Istioコントロールプレーンを起動する`pilot-discovery`コマンドの実体は、GitHubの`pilot-discovery`ディレクトリ配下の`main.go`ファイルで実行されるGoのバイナリファイルである。
 
 > - https://github.com/istio/istio/blob/1.14.3/pilot/cmd/pilot-discovery/main.go
 
@@ -402,6 +403,34 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 <br>
 
 ### インメモリストレージ
+
+記入中...
+
+<br>
+
+### pilot-discoveryの実行オプション
+
+#### ▼ 実行オプションの渡し方
+
+コンテナの起動時に引数として渡す。
+
+Podであれば、`.spec.containers[*].args`オプションを使用する。
+
+#### ▼ keepaliveMaxServerConnectionAge
+
+`istio-proxy`コンテナからのgRPCリクエスト受信時のKeepalive (クライアントの状態に応じて、その接続をタイムアウトにするか否か) を設定する。
+
+#### ▼ log_output_level
+
+記入中...
+
+#### ▼ monitoringAddr
+
+Prometheusによるメトリクス収集のポート番号を設定する。
+
+`:15014`を設定する。
+
+#### ▼ domain
 
 記入中...
 

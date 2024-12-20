@@ -343,3 +343,47 @@ $ asdf uninstall <プラグイン名> 1.0.0
 ```
 
 <br>
+
+## 04. mise
+
+### miseとは
+
+パッケージをバージョン管理し、また環境変数を出力できる。
+
+`direnv`と同様の機能があり、`mise`の使用が推奨である。
+
+> - https://blog.sh1ma.dev/articles/20240108_from_asdf_to_mise
+
+<br>
+
+### セットアップ
+
+#### ▼ brewリポジトリから
+
+```bash
+$ brew install mise
+```
+
+<br>
+
+## 05. direnv
+
+### direnvとは
+
+特定のディレクトリで`.env`ファイルを読み込み、環境変数をOS上に出力する。
+
+`mise`にも同様の機能があり、そちらの使用が推奨である。
+
+> - https://blog.sh1ma.dev/articles/20240108_from_asdf_to_mise
+
+<br>
+
+### セットアップ
+
+#### ▼ brewリポジトリから
+
+```bash
+$ brew install direnv
+```
+
+<br>

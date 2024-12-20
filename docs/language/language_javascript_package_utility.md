@@ -60,6 +60,8 @@ axios.defaults.headers.post["Content-Type"] = "application/json";
 
 #### ▼ data
 
+**＊実装例＊**
+
 ```javascript
 import axios from "axios";
 
@@ -80,6 +82,8 @@ const asyncFunc = async () => {
 
 #### ▼ headers
 
+**＊実装例＊**
+
 ```javascript
 import axios from "axios";
 
@@ -98,9 +102,45 @@ const asyncFunc = async () => {
 
 > - https://axios-http.com/docs/req_config
 
+#### ▼ httpsAgent
+
+`https`パッケージを使用して、`axios`パッケージを拡張する。
+
+**＊実装例＊**
+
+クライアント証明書を使用して、HTTPSリクエストを送信する。
+
+```javascript
+import axios from "axios";
+import https from 'https';
+
+const asyncFunc = async () => {
+  axios
+    .get("https://example.com", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      httpAgent: new https.Agent({
+        cert: "<クライアント証明書のファイル>",
+        key: "<クライアント証明書とペアになる秘密鍵のファイル>",
+        rejectUnauthorized: false,
+        keepAlive: true
+      });
+    })
+    .then((response) => {
+      console.log(response.data);
+    });
+};
+```
+
+> - https://axios-http.com/docs/req_config
+> - https://github.com/axios/axios/issues/3835#issuecomment-860993251
+
 #### ▼ withCredential
 
 `Cookie`ヘッダーをリクエストに設定する。
+
+**＊実装例＊**
 
 ```javascript
 import axios from "axios";
@@ -111,8 +151,7 @@ const asyncFunc = async () => {
       headers: {
         "Content-Type": "application/json",
       },
-      // CSRFトークンのためのヘッダーを設定する
-      xsrfCookieName: "XSRF-TOKEN",
+      withCredentials: true,
     })
     .then((response) => {
       console.log(response.data);
@@ -125,6 +164,8 @@ const asyncFunc = async () => {
 
 #### ▼ xsrfCookieName
 
+**＊実装例＊**
+
 ```javascript
 import axios from "axios";
 
@@ -134,6 +175,8 @@ const asyncFunc = async () => {
       headers: {
         "Content-Type": "application/json",
       },
+      // CSRFトークンのためのヘッダーを設定する
+      xsrfCookieName: "XSRF-TOKEN",
     })
     .then((response) => {
       console.log(response.data);

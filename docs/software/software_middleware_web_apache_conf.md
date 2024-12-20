@@ -216,13 +216,13 @@ Group apache
 
 HTTPリクエストの受信時に、クライアントの状態に応じて、その接続をタイムアウトにするか否かを制御する。
 
-> - https://milestone-of-se.nesuke.com/nw-basic/as-nw-engineer/keepalive-tcp-http/
-
 **＊実装例＊**
 
 ```apacheconf
 KeepAlive On
 ```
+
+> - https://milestone-of-se.nesuke.com/nw-basic/as-nw-engineer/keepalive-tcp-http/
 
 #### ▼ KeepAliveTimeout
 
