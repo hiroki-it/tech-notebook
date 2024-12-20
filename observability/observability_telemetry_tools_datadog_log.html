@@ -26394,7 +26394,7 @@
 <p>検索条件に一致する属性を持つ構造化ログに対して、属性を新しく付与する。</p>
 <p><strong>＊例＊</strong></p>
 <p>Nginxから、以下のような非構造化ログを受信する例を考える。</p>
-<div class="highlight"><pre><span></span><code>*.*.*.* - - [01/Sep/2021:00:00:00 +0000] &quot;GET /healthcheck HTTP/1.1&quot; 200 17 &quot;-&quot; &quot;ELB-HealthChecker/2.0&quot;
+<div class="highlight"><pre><span></span><code>*.*.*.*<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">01</span>/Sep/2021:00:00:00<span class="w"> </span>+0000<span class="o">]</span><span class="w"> </span><span class="s2">&quot;GET /healthcheck HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="w"> </span><span class="s2">&quot;ELB-HealthChecker/2.0&quot;</span>
 </code></pre></div>
 <p>以下のようなGrokパーサールールを定義する。</p>
 <p><code>http.status_code</code>属性にステータスコード値を割り当てる。</p>
@@ -26477,9 +26477,9 @@ CRITICAL<span class="w"> </span>@http.status_code:<span class="o">[</span><span 
 </table>
 <h4 id="1">▼ 例１<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
 <p>Laravelから、以下のような非構造化ログを受信する例を考える。</p>
-<div class="highlight"><pre><span></span><code>[2021-01-01 00:00:00] staging.ERROR: ログのメッセージ
+<div class="highlight"><pre><span></span><code><span class="o">[</span><span class="m">2021</span>-01-01<span class="w"> </span><span class="m">00</span>:00:00<span class="o">]</span><span class="w"> </span>staging.ERROR:<span class="w"> </span>ログのメッセージ
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>[2021-01-01 00:00:00] production.ERROR: ログのメッセージ
+<div class="highlight"><pre><span></span><code><span class="o">[</span><span class="m">2021</span>-01-01<span class="w"> </span><span class="m">00</span>:00:00<span class="o">]</span><span class="w"> </span>production.ERROR:<span class="w"> </span>ログのメッセージ
 </code></pre></div>
 <p>非構造化ログのため、ログは基底構造化ログの<code>message</code>属性に割り当てられる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
@@ -26578,7 +26578,7 @@ CRITICAL<span class="w"> </span>@http.status_code:<span class="o">[</span><span 
 </blockquote>
 <h4 id="1_1">▼ 例１<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
 <p>とあるアプリケーションから、以下のような非構造化ログを受信する例を考える。</p>
-<div class="highlight"><pre><span></span><code>192.168.0.1 [2021-01-01 12:00:00] GET /users?paginate=10&amp;fooId=1 200
+<div class="highlight"><pre><span></span><code><span class="m">192</span>.168.0.1<span class="w"> </span><span class="o">[</span><span class="m">2021</span>-01-01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span>GET<span class="w"> </span>/users?paginate<span class="o">=</span><span class="m">10</span><span class="p">&amp;</span><span class="nv">fooId</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="m">200</span>
 </code></pre></div>
 <p>非構造化ログのため、ログは基底構造化ログの<code>message</code>属性に割り当てられる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
@@ -26693,7 +26693,7 @@ baz-apigateway @aws.invoked_function_arn:&quot;arn:aws:lambda:ap-northeast-1:&lt
 <p>ユーザーエージェントの文字列を解析し、詳細な項目ごとに分解した構造化ログとして出力する。</p>
 <h4 id="1_2">▼ 例１<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h4>
 <p>Nginxから、以下のような非構造化ログを受信する例を考える。</p>
-<div class="highlight"><pre><span></span><code>*.*.*.* - - [01/Sep/2021:00:00:00 +0000] &quot;GET /healthcheck HTTP/1.1&quot; 200 17 &quot;-&quot; &quot;ELB-HealthChecker/2.0&quot;
+<div class="highlight"><pre><span></span><code>*.*.*.*<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">01</span>/Sep/2021:00:00:00<span class="w"> </span>+0000<span class="o">]</span><span class="w"> </span><span class="s2">&quot;GET /healthcheck HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="w"> </span><span class="s2">&quot;ELB-HealthChecker/2.0&quot;</span>
 </code></pre></div>
 <p>これに対して、以下のようなGrokパーサーのルールを定義する。</p>
 <p><code>http.useragent</code>属性にユーザーエージェント値を割り当てる。</p>
@@ -27040,7 +27040,7 @@ autoFilledRule3<span class="w"> </span>...
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-20</span>
   </span>
 
     

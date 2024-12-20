@@ -26180,40 +26180,40 @@ watch<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><
 </code></pre></div>
 <p>上記のシェルスクリプトにより、例えば次のようなMySQLのログを取得できる。</p>
 <p>このログからは、<code>15:23:09</code> 〜 <code>15:23:14</code>の間で、接続に失敗していることを確認できる。</p>
-<div class="highlight"><pre><span></span><code>---------- No. 242 Local PC: 2021-04-21 15:23:06 ------------
-mysql: [Warning] Using a password on the command line interface can be insecure.
-NOW()
-2021-04-21 06:23:06
----------- No. 243 Local PC: 2021-04-21 15:23:07 ------------
-mysql: [Warning] Using a password on the command line interface can be insecure.
-NOW()
-2021-04-21 06:23:08
----------- No. 244 Local PC: 2021-04-21 15:23:08 ------------
-mysql: [Warning] Using a password on the command line interface can be insecure.
-ERROR 2026 (HY000): SSL connection error: error:00000000:lib(0):func(0):reason(0)
----------- No. 245 Local PC: 2021-04-21 15:23:09 ------------
-mysql: [Warning] Using a password on the command line interface can be insecure.
-ERROR 2013 (HY000): Lost connection to MySQL server at &#39;reading initial communication packet&#39;, system error: 0
----------- No. 246 Local PC: 2021-04-21 15:23:10 ------------
-mysql: [Warning] Using a password on the command line interface can be insecure.
-ERROR 2013 (HY000): Lost connection to MySQL server at &#39;reading initial communication packet&#39;, system error: 0
----------- No. 247 Local PC: 2021-04-21 15:23:11 ------------
-mysql: [Warning] Using a password on the command line interface can be insecure.
-ERROR 2013 (HY000): Lost connection to MySQL server at &#39;reading initial communication packet&#39;, system error: 0
----------- No. 248 Local PC: 2021-04-21 15:23:13 ------------
-mysql: [Warning] Using a password on the command line interface can be insecure.
-ERROR 2013 (HY000): Lost connection to MySQL server at &#39;reading initial communication packet&#39;, system error: 0
----------- No. 249 Local PC: 2021-04-21 15:23:14 ------------
-mysql: [Warning] Using a password on the command line interface can be insecure.
-ERROR 2013 (HY000): Lost connection to MySQL server at &#39;reading initial communication packet&#39;, system error: 0
----------- No. 250 Local PC: 2021-04-21 15:23:15 ------------
-mysql: [Warning] Using a password on the command line interface can be insecure.
-NOW()
-2021-04-21 06:23:16
----------- No. 251 Local PC: 2021-04-21 15:23:16 ------------
-mysql: [Warning] Using a password on the command line interface can be insecure.
-NOW()
-2021-04-21 06:23:17
+<div class="highlight"><pre><span></span><code>----------<span class="w"> </span>No.<span class="w"> </span><span class="m">242</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:06<span class="w"> </span>------------
+mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
+NOW<span class="o">()</span>
+<span class="m">2021</span>-04-21<span class="w"> </span><span class="m">06</span>:23:06
+----------<span class="w"> </span>No.<span class="w"> </span><span class="m">243</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:07<span class="w"> </span>------------
+mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
+NOW<span class="o">()</span>
+<span class="m">2021</span>-04-21<span class="w"> </span><span class="m">06</span>:23:08
+----------<span class="w"> </span>No.<span class="w"> </span><span class="m">244</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:08<span class="w"> </span>------------
+mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
+ERROR<span class="w"> </span><span class="m">2026</span><span class="w"> </span><span class="o">(</span>HY000<span class="o">)</span>:<span class="w"> </span>SSL<span class="w"> </span>connection<span class="w"> </span>error:<span class="w"> </span>error:00000000:lib<span class="o">(</span><span class="m">0</span><span class="o">)</span>:func<span class="o">(</span><span class="m">0</span><span class="o">)</span>:reason<span class="o">(</span><span class="m">0</span><span class="o">)</span>
+----------<span class="w"> </span>No.<span class="w"> </span><span class="m">245</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:09<span class="w"> </span>------------
+mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
+ERROR<span class="w"> </span><span class="m">2013</span><span class="w"> </span><span class="o">(</span>HY000<span class="o">)</span>:<span class="w"> </span>Lost<span class="w"> </span>connection<span class="w"> </span>to<span class="w"> </span>MySQL<span class="w"> </span>server<span class="w"> </span>at<span class="w"> </span><span class="s1">&#39;reading initial communication packet&#39;</span>,<span class="w"> </span>system<span class="w"> </span>error:<span class="w"> </span><span class="m">0</span>
+----------<span class="w"> </span>No.<span class="w"> </span><span class="m">246</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:10<span class="w"> </span>------------
+mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
+ERROR<span class="w"> </span><span class="m">2013</span><span class="w"> </span><span class="o">(</span>HY000<span class="o">)</span>:<span class="w"> </span>Lost<span class="w"> </span>connection<span class="w"> </span>to<span class="w"> </span>MySQL<span class="w"> </span>server<span class="w"> </span>at<span class="w"> </span><span class="s1">&#39;reading initial communication packet&#39;</span>,<span class="w"> </span>system<span class="w"> </span>error:<span class="w"> </span><span class="m">0</span>
+----------<span class="w"> </span>No.<span class="w"> </span><span class="m">247</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:11<span class="w"> </span>------------
+mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
+ERROR<span class="w"> </span><span class="m">2013</span><span class="w"> </span><span class="o">(</span>HY000<span class="o">)</span>:<span class="w"> </span>Lost<span class="w"> </span>connection<span class="w"> </span>to<span class="w"> </span>MySQL<span class="w"> </span>server<span class="w"> </span>at<span class="w"> </span><span class="s1">&#39;reading initial communication packet&#39;</span>,<span class="w"> </span>system<span class="w"> </span>error:<span class="w"> </span><span class="m">0</span>
+----------<span class="w"> </span>No.<span class="w"> </span><span class="m">248</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:13<span class="w"> </span>------------
+mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
+ERROR<span class="w"> </span><span class="m">2013</span><span class="w"> </span><span class="o">(</span>HY000<span class="o">)</span>:<span class="w"> </span>Lost<span class="w"> </span>connection<span class="w"> </span>to<span class="w"> </span>MySQL<span class="w"> </span>server<span class="w"> </span>at<span class="w"> </span><span class="s1">&#39;reading initial communication packet&#39;</span>,<span class="w"> </span>system<span class="w"> </span>error:<span class="w"> </span><span class="m">0</span>
+----------<span class="w"> </span>No.<span class="w"> </span><span class="m">249</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:14<span class="w"> </span>------------
+mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
+ERROR<span class="w"> </span><span class="m">2013</span><span class="w"> </span><span class="o">(</span>HY000<span class="o">)</span>:<span class="w"> </span>Lost<span class="w"> </span>connection<span class="w"> </span>to<span class="w"> </span>MySQL<span class="w"> </span>server<span class="w"> </span>at<span class="w"> </span><span class="s1">&#39;reading initial communication packet&#39;</span>,<span class="w"> </span>system<span class="w"> </span>error:<span class="w"> </span><span class="m">0</span>
+----------<span class="w"> </span>No.<span class="w"> </span><span class="m">250</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:15<span class="w"> </span>------------
+mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
+NOW<span class="o">()</span>
+<span class="m">2021</span>-04-21<span class="w"> </span><span class="m">06</span>:23:16
+----------<span class="w"> </span>No.<span class="w"> </span><span class="m">251</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:16<span class="w"> </span>------------
+mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
+NOW<span class="o">()</span>
+<span class="m">2021</span>-04-21<span class="w"> </span><span class="m">06</span>:23:17
 </code></pre></div>
 <p>アップグレード時のプライマリーインスタンスのAWS RDSイベントログは以下の通りで、ログによるダウンタイムは、再起動からシャットダウンまでの期間と一致することを確認する。</p>
 <p><img alt="rds-event-log_primary-instance" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds-event-log_primary-instance.png" /></p>
