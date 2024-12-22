@@ -15,6 +15,10 @@
         <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_api_gateway.html">
       
       
+        <link rel="prev" href="software_application_architecture_microservices.html">
+      
+      
+        <link rel="next" href="software_application_architecture_microservices_services_design.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -270,10 +274,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="application/index.html" class="md-tabs__link">
           
   
@@ -939,6 +945,8 @@
       
   
   
+    
+  
   
   
     
@@ -965,16 +973,17 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
@@ -990,13 +999,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             🚀 アプリ
@@ -1343,8 +1352,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1360,19 +1371,19 @@
       
         
       
+        
+      
     
     
       
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
@@ -1386,7 +1397,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_5">
             <span class="md-nav__icon md-icon"></span>
             ■ マイクロサービスアーキテクチャ
@@ -1409,6 +1420,312 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    API Gateway領域
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="software_application_architecture_microservices_api_gateway.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    API Gateway領域
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      はじめに
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      01. APIゲートウェイ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. APIゲートウェイ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      APIゲートウェイとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      分割パターン
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分割パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ APIゲートウェイの分割パターンとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#central-aggregating-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Central Aggregating Gateway
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bffbackends-for-frontends" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ BFF：Backends For Frontends
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#federated-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Federated Gateway
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      API形式パターン
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API形式パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apiapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ APIゲートウェイのAPI形式パターンとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restful-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ RESTful-API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphql-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ GraphQL-API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rpc-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ RPC-API
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      責務パターン
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="責務パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gateway-offloading" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Gateway Offloadingパターン
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Gatewayルーティングパターン
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gateway_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Gatewayアグリゲーターパターン
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      実装パターン
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="実装パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 自前で実装する場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oss" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ OSSを使用する場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ クラウドプロバイダーのマネージドサービスを使用する場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. APIアグリゲーション層
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. APIアグリゲーション層">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      APIアグリゲーション層とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1443,24 +1760,24 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5_3" >
         
           
-          <label class="md-nav__link" for="__nav_5_5_2" id="__nav_5_5_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_5_3" id="__nav_5_5_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    ■ マイクロサービス
+    ■ マイクロサービス領域
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_5_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_3">
             <span class="md-nav__icon md-icon"></span>
-            ■ マイクロサービス
+            ■ マイクロサービス領域
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
