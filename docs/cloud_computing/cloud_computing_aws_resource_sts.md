@@ -15,7 +15,7 @@ description: STS＠AWSリソースの知見を記録しています。
 
 ## 01. STSとは：Security Token Service
 
-認証済みのIAMユーザーに対して、特定のAWSアカウントのAWSリソースに認可スコープを持つ一時的な認証情報 (アクセスキーID、シークレットアクセスキー、セッショントークン) を持つIAMユーザーを発行する。
+認証済みのAWS IAMユーザーに対して、特定のAWSアカウントのAWSリソースに認可スコープを持つ一時的な認証情報 (アクセスキーID、シークレットアクセスキー、セッショントークン) を持つAWS IAMユーザーを発行する。
 
 ![STS](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/STS.jpg)
 
@@ -25,19 +25,19 @@ description: STS＠AWSリソースの知見を記録しています。
 
 ### スイッチロールとは
 
-AssumeRole (権限委譲) によって、ユーザーのIAMロールを動的に切り替える。
+AssumeRole (権限委譲) によって、ユーザーのAWS IAMロールを動的に切り替える。
 
 > - https://cloud.oreda.net/aws/iam/assumerole#assume_role%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF
 
-### 1. IAMロールに信頼ポリシーを紐付け
+### 1. AWS IAMロールに信頼ポリシーを紐付け
 
-必要なポリシーが設定されたIAMロールを作成する。
+必要なポリシーが設定されたAWS IAMロールを作成する。
 
-その時信頼ポリシーでは、IAMユーザーの`ARN`を信頼されたエンティティとして設定しておく。
+その時信頼ポリシーでは、AWS IAMユーザーの`ARN`を信頼されたエンティティとして設定しておく。
 
-これにより、そのIAMユーザーに対して、IAMロールを紐付けできるようになる。
+これにより、そのAWS IAMユーザーに対して、AWS IAMロールを紐付けできるようになる。
 
-この時に使用するユーザーは、IAMユーザーではなく、AWSリソースやフェデレーテッドユーザーでもよい。
+この時に使用するユーザーは、AWS IAMユーザーではなく、AWSリソースやフェデレーテッドユーザーでもよい。
 
 ```yaml
 {
@@ -60,7 +60,7 @@ AssumeRole (権限委譲) によって、ユーザーのIAMロールを動的に
 
 <br>
 
-### 2. IAMロールを引き受けた認証情報をリクエスト
+### 2. AWS IAMロールを引き受けた認証情報をリクエスト
 
 信頼されたエンティティから、STSのエンドポイント (`https://sts.amazonaws.com`) に対して、ロールの紐付けをリクエストする。
 
@@ -106,7 +106,7 @@ aws configure set aws_default_region "ap-northeast-1"
 
 # https://sts.amazonaws.com に、ロールの紐付けをリクエストする。
 aws_sts_credentials="$(aws sts assume-role \
-  --role-arn "arn:aws:iam::${aws_access_key_id}:role/"${ENV}"-<紐付けしたいIAMロール名>" \
+  --role-arn "arn:aws:iam::${aws_access_key_id}:role/"${ENV}"-<紐付けしたいAWS IAMロール名>" \
   --role-session-name "<任意のセッション名>" \
   --external-id "$aws_iam_role_external_id" \
   --duration-seconds "<セッションの失効秒数>" \
@@ -136,7 +136,7 @@ STSのエンドポイントから一時的な認証情報が発行される。
   "AssumeRoleUser":
     {
       "AssumedRoleId": "<セッションID>:<セッション名>",
-      "Arn": "arn:aws:sts:<新しいアカウントID>:assumed-role/<IAMロール名>/<セッション名>",
+      "Arn": "arn:aws:sts:<新しいアカウントID>:assumed-role/<AWS IAMロール名>/<セッション名>",
     },
   "ResponseMetadata":
     {
@@ -214,15 +214,15 @@ aws s3 ls --profile <プロファイル名> <tfstateファイルが管理され�
 
 <br>
 
-## 03. STSで発行されるIAMユーザー
+## 03. STSで発行されるAWS IAMユーザー
 
 ### Trusted Entityの事前作成
 
-事前に、元となるIAMユーザー (Trusted Entity) を作成しておく。
+事前に、元となるAWS IAMユーザー (Trusted Entity) を作成しておく。
 
 AssumeRoleによるスイッチロールの仕組みでは、まずTrusted Entityをコールする。
 
-Trusted Entityを使って、必要なIAMロールをSTSから発行し、一時的なIAMユーザーを作成する。
+Trusted Entityを使って、必要なAWS IAMロールをSTSから発行し、一時的なAWS IAMユーザーを作成する。
 
 ![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AssumeRole.png)
 
@@ -231,19 +231,19 @@ Trusted Entityを使って、必要なIAMロールをSTSから発行し、一時
 
 <br>
 
-### IAMユーザーの自動更新
+### AWS IAMユーザーの自動更新
 
-STSで発行されたIAMユーザーには、そのAWSアカウント内のみで使用できるロールが紐付けられている。
+STSで発行されたAWS IAMユーザーには、そのAWSアカウント内のみで使用できるロールが紐付けられている。
 
-この情報には失効秒数が存在し、期限が過ぎると新しいIAMユーザーになる。
+この情報には失効秒数が存在し、期限が過ぎると新しいAWS IAMユーザーになる。
 
-秒数の最大値は、該当するIAMロールの概要の最大セッション時間から変更できる。
+秒数の最大値は、該当するAWS IAMロールの概要の最大セッション時間から変更できる。
 
 <br>
 
-### 発行するIAMユーザーの切り替え
+### 発行するAWS IAMユーザーの切り替え
 
-IAMユーザーを一括で管理しておき、特定のAWSアカウントでは特定の認可スコープを委譲する。
+AWS IAMユーザーを一括で管理しておき、特定のAWSアカウントでは特定の認可スコープを委譲する。
 
 ![sts_multi-account](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sts_multi-account.png)
 
@@ -251,11 +251,11 @@ IAMユーザーを一括で管理しておき、特定のAWSアカウントで�
 
 <br>
 
-## 04. IAMユーザーの発行元
+## 04. AWS IAMユーザーの発行元
 
 ### フェデレーテッドユーザー
 
-任意のIDプロバイダーで認証済みのユーザー (フェデレーテッドユーザー) にIAMロールを付与することにより、AWSリソースにリクエストを送信できる。
+任意のIDプロバイダーで認証済みのユーザー (フェデレーテッドユーザー) にAWS IAMロールを付与することにより、AWSリソースにリクエストを送信できる。
 
 > - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html
 
@@ -297,7 +297,7 @@ CognitoをIDプロバイダーとして使用するように、信頼された�
 
 AWS EKSをIDプロバイダーとして使用するように、`Federated`キーでAWS EKS Clusterの識別子を設定する。
 
-これにより、AWS EKS Cluster内で認証済みのServiceAccountにIAMロールを紐付けることができるようになる。
+これにより、AWS EKS Cluster内で認証済みのServiceAccountにAWS IAMロールを紐付けることができるようになる。
 
 また、`Condition`キーで特定のServiceAccountを指定できるようにする。
 
@@ -327,7 +327,7 @@ AWS EKSをIDプロバイダーとして使用するように、`Federated`キー
 }
 ```
 
-KubernetesのServiceAccountを作成し、IAMロールのARNを設定する。
+KubernetesのServiceAccountを作成し、AWS IAMロールのARNを設定する。
 
 ServiceAccountは、Terraformではなくマニフェストで定義した方が良い。
 
@@ -336,12 +336,12 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   annotations:
-    AWS EKS.amazonaws.com/role-arn: <IAMロールのARN>
+    AWS EKS.amazonaws.com/role-arn: <AWS IAMロールのARN>
   name: <信頼されたエンティティで指定したユーザー名内のServiceAccount名>
   namespace: <信頼されたエンティティで指定したユーザー名内のNamespace名>
 ```
 
-IRSAにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。
+IRSAにより、ServiceAccountを介してPodとAWS AWS IAMロールが紐づく。
 
 > - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
 > - https://dev.classmethod.jp/articles/iam-role-for-gitlab-runner-job/#toc-13
@@ -359,15 +359,15 @@ IRSAにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。
 
 SAMLによる認証/認可を使用する。
 
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html
+> - https://docs.aws.amazon.com/AWS IAM/latest/UserGuide/id_roles_providers_saml.html
 
 <br>
 
-## 05. IAMロールの委譲先ユーザー
+## 05. AWS IAMロールの委譲先ユーザー
 
-### IAMロールの委譲先ユーザー
+### AWS IAMロールの委譲先ユーザー
 
-IAMユーザー、AWSリソース、フェデレーテッドユーザー、にIAMロールを委譲できる。
+AWS IAMユーザー、AWSリソース、フェデレーテッドユーザー、にAWS IAMロールを委譲できる。
 
 ![aws_sts_assumed-user](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_sts_assumed-user.png)
 
@@ -375,23 +375,23 @@ IAMユーザー、AWSリソース、フェデレーテッドユーザー、にIA
 
 <br>
 
-### IAMロールの委譲先ユーザーの種類
+### AWS IAMロールの委譲先ユーザーの種類
 
-#### ▼ IAMユーザー
+#### ▼ AWS IAMユーザー
 
-IAMロールと同じ/異なるAWSアカウントのIAMユーザーに委譲できる。
+AWS IAMロールと同じ/異なるAWSアカウントのAWS IAMユーザーに委譲できる。
 
-IAMユーザーの場合、外部IDが必要になる。
+AWS IAMユーザーの場合、外部IDが必要になる。
 
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html
+> - https://docs.aws.amazon.com/AWS IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html
 
 #### ▼ AWSリソース
 
-IAMロールと同じ/異なるAWSアカウントのAWSリソースに委譲できる。
+AWS IAMロールと同じ/異なるAWSアカウントのAWSリソースに委譲できる。
 
-IAMリソースの場合、外部IDが必要になる。
+AWS IAMリソースの場合、外部IDが必要になる。
 
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_services.html
+> - https://docs.aws.amazon.com/AWS IAM/latest/UserGuide/id_roles_common-scenarios_services.html
 
 #### ▼ フェデレーテッドユーザー
 
@@ -399,8 +399,8 @@ OIDC、SAML、によって発行されたユーザーに委譲できる。
 
 OIDCのフェデレーテッドユーザーの場合、発行されたJWTが必要になる。
 
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
+> - https://docs.aws.amazon.com/AWS IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html
+> - https://docs.aws.amazon.com/AWS IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
 
 <br>
 
@@ -408,7 +408,7 @@ OIDCのフェデレーテッドユーザーの場合、発行されたJWTが必�
 
 #### ▼ AWS OIDC
 
-IAMロールの信頼されたエンティティに、AWS OIDCで発行されたユーザーを設定する。
+AWS IAMロールの信頼されたエンティティに、AWS OIDCで発行されたユーザーを設定する。
 
 フェデレーテッドユーザーは任意のIPプロバイダーで発行する。
 
@@ -430,11 +430,11 @@ IAMロールの信頼されたエンティティに、AWS OIDCで発行された
 }
 ```
 
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+> - https://docs.aws.amazon.com/AWS IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
 #### ▼ 外部OIDC
 
-IAMロールの信頼されたエンティティに、外部OIDCサービスで発行されたユーザーを設定する。
+AWS IAMロールの信頼されたエンティティに、外部OIDCサービスで発行されたユーザーを設定する。
 
 ```yaml
 {
@@ -454,11 +454,11 @@ IAMロールの信頼されたエンティティに、外部OIDCサービスで�
 }
 ```
 
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+> - https://docs.aws.amazon.com/AWS IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
 #### ▼ AWS SAML
 
-IAMロールの信頼されたエンティティに、AWS SAMLで発行されたユーザーを設定する。
+AWS IAMロールの信頼されたエンティティに、AWS SAMLで発行されたユーザーを設定する。
 
 ```yaml
 {
@@ -481,6 +481,6 @@ IAMロールの信頼されたエンティティに、AWS SAMLで発行された
 }
 ```
 
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
+> - https://docs.aws.amazon.com/AWS IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
 
 <br>

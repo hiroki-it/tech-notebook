@@ -130,14 +130,14 @@ module "iam_assumable_role_with_opentelemetry_collector" {
 
   version                       = "<バージョン>"
 
-  # karpenterコントローラーのPodに紐付けるIAMロール
+  # karpenterコントローラーのPodに紐付けるAWS IAMロール
   create_role                   = true
   role_name                     = "foo-opentelemetry-collector"
 
   # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
   provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
 
-  # AWS IAMロールに紐付けるIAMポリシー
+  # AWS AWS IAMロールに紐付けるAWS IAMポリシー
   role_policy_arns              = aws_iam_policy.opentelemetry_collector.arn
 
   # OpenTelemetry CollectorのPodのServiceAccount名

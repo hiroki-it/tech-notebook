@@ -632,7 +632,7 @@ ALB/NLBの作成 (※リスナーも含む可能性) が完全に完了しない
 
 > - https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022
 
-#### `(4)`AutoScalingによるECSタスク数の増減を無視
+#### `(4)`AWS Auto ScalingグループによるECSタスク数の増減を無視
 
 AutoScalingによって、ECSタスク数が増減するため、これを無視する。
 

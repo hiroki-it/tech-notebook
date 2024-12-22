@@ -43,7 +43,7 @@ description: AWS EC2＠AWSリソースの知見を記録しています。
 | 自動割り当てIPアドレス        | AWS EC2へのパブリックIPアドレスの割り当てを有効化する。                      | AWS EC2作成後に有効にできない。                                                                                                                                                                                                                                                |
 | キャパシティの予約            |                                                                              |                                                                                                                                                                                                                                                                                |
 | ドメイン結合ディレクトリ      |                                                                              |                                                                                                                                                                                                                                                                                |
-| IAMロール                     | AWS EC2に付与するIAMロールを設定する。                                       |                                                                                                                                                                                                                                                                                |
+| AWS IAMロール                 | AWS EC2に付与するAWS IAMロールを設定する。                                   |                                                                                                                                                                                                                                                                                |
 | シャットダウン動作            |                                                                              |                                                                                                                                                                                                                                                                                |
 | 終了保護                      | AWS EC2の削除を防ぐ。                                                        | 必ず有効化すること。                                                                                                                                                                                                                                                           |
 | モニタリング                  |                                                                              |                                                                                                                                                                                                                                                                                |
@@ -644,7 +644,7 @@ $ aws ec2 modify-instance-attribute \
 
 #### ▼ 注意点
 
-AWS EC2にAutoScalingを適用している場合は、AWS EBSボリュームを永続化しない方が良いかもしれない。
+AWS EC2にAutoScalingグループを適用している場合は、AWS EBSボリュームを永続化しない方が良いかもしれない。
 
 AutoScalingのスケールイン時に、削除されたAWS EC2のAWS EBSボリュームが削除されないため、未使用のAWS EBSボリュームがどんどん溜まっていく問題が起こる。
 

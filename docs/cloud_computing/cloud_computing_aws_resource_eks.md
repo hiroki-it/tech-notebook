@@ -982,14 +982,14 @@ AWS EC2ワーカーNode内のPodがAWS ECRからコンテナイメージをプ�
 #### ▼ マネージドNodeグループ
 
 - Nodeグループ内の各AWS EC2ワーカーNodeの作成
-- Nodeグループに紐づくAutoScalingグループの作成
+- Nodeグループに紐づくAWS Auto Scalingグループの作成
 - AWS EC2ワーカーNodeのOSやミドルウェアの各種アップグレード
 
 を自動化する。
 
-Nodeグループは、AWS EC2ワーカーNodeが配置されるプライベートサブネットのAZにこれをスケジューリングさせるように、AutoScalingグループに各AZを自動的に設定する。
+Nodeグループは、AWS EC2ワーカーNodeが配置されるプライベートサブネットのAZにこれをスケジューリングさせるように、AWS Auto Scalingグループに各AZを自動的に設定する。
 
-AutoScalingグループの機能を使用すれば、AWS EC2ワーカーNodeの自動的な起動/停止を設定できる。
+AWS Auto Scalingグループの機能を使用すれば、AWS EC2ワーカーNodeの自動的な起動/停止やヘルスチェックを設定できる。
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html
 > - https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-EKS-vs-self-managed
@@ -1004,11 +1004,11 @@ AWS EKSのテスト環境の請求料金を節約するために、昼間に通�
 > - https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html
 > - https://blog.framinal.life/entry/2020/07/19/044328#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E5%9E%8B%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97
 
-#### ▼ 起動テンプレートとAutoScalingグループとの紐付け
+#### ▼ 起動テンプレートとAWS Auto Scalingグループとの紐付け
 
 マネージドNodeグループは、あくまでAWS EC2 Nodeのライフサイクルを管理するだけである。
 
-どのようなAWS EC2 Nodeを管理するのかは起動テンプレートとAutoScalingグループを使用して定義する必要がある。
+どのようなAWS EC2 Nodeを管理するのかは起動テンプレートとAWS Auto Scalingグループを使用して定義する必要がある。
 
 > - https://aws.amazon.com/jp/blogs/containers/introducing-launch-template-and-custom-ami-support-in-amazon-eks-managed-node-groups/
 > - https://qiita.com/Uro3/items/d966b9bf77dc2b81e7f2
@@ -1020,14 +1020,14 @@ AWS EKSのテスト環境の請求料金を節約するために、昼間に通�
 #### ▼ セルフマネージドNodeグループ
 
 - Nodeグループ内の各AWS EC2ワーカーNodeの作成
-- Nodeグループに紐づくAutoScalingグループの作成
+- Nodeグループに紐づくAWS Auto Scalingグループの作成
 - AWS EC2ワーカーNodeのOSやミドルウェアの各種アップグレード
 
 をユーザーが管理する。
 
-AutoScalingグループの機能を使用すれば、AWS EC2ワーカーNodeの自動的な起動/停止を設定できる。
+AWS Auto Scalingグループの機能を使用すれば、AWS EC2ワーカーNodeの自動的な起動/停止やヘルスチェックを設定できる。
 
-> - https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-AWS EKS-vs-self-managed
+> - https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-EKS-vs-self-managed
 > - https://www.reddit.com/r/kubernetes/comments/v8pckh/eks_selfmanaged_nodes_vs_node_group/
 
 <br>
@@ -1036,7 +1036,7 @@ AutoScalingグループの機能を使用すれば、AWS EC2ワーカーNodeの�
 
 Nodeグループ (マネージドNodeグループ、セルフマネージドNodeグループ) では、希望数を変更することで現在のNode数を変更できる。
 
-設定後、AutoScalingグループは希望数で設定したNode数を維持する (Karpenterのドキュメントでは、これを『静的』と表現している)。
+設定後、AWS Auto Scalingグループは希望数で設定したNode数を維持する (Karpenterのドキュメントでは、これを『静的』と表現している)。
 
 希望数の他に最大数と最小数を設定できるが、これらは実際は機能しない。
 
@@ -1448,9 +1448,9 @@ $ timedatectl set-timezone America/Vancouver
 
 #### ▼ セルフマネージドNodeグループの場合
 
-任意のAutoScalingにて、起動テンプレートを使用してAWS EC2ワーカーNodeを作成する。
+任意のAWS Auto Scalingグループにて、起動テンプレートを使用してAWS EC2ワーカーNodeを作成する。
 
-AutoScalingのタグ付け機能を使用して、`kubernetes.io/cluster/<AWS EKS Cluster名>`タグ (値は`owned`) をつけ、Nodeグループに明示的に参加させる必要がある。
+AWS Auto Scalingグループのタグ付け機能を使用して、`kubernetes.io/cluster/<AWS EKS Cluster名>`タグ (値は`owned`) をつけ、Nodeグループに明示的に参加させる必要がある。
 
 なお、起動テンプレートも合わせて使用でき、これは任意である。
 
@@ -1508,8 +1508,8 @@ resource "aws_autoscaling_group_tag" "foo" {
   tag {
     key                 = each.key
     value               = each.value
-    # 実装時点 (2023/06/06) で、マネージドNodeグループは自身の作成するAutoScalingグループにタグ付けできない
-    # そのままではterraform planのたびに、AutoScalingグループにタグ付けしようとする差分がでてしまうため、Nodeグループ外からAutoScalingグループのタグ付けを有効化する
+    # 実装時点 (2023/06/06) で、マネージドNodeグループは自身の作成するAWS Auto Scalingグループにタグ付けできない
+    # そのままではterraform planのたびに、AWS Auto Scalingグループにタグ付けしようとする差分がでてしまうため、Nodeグループ外からAWS Auto Scalingグループのタグ付けを有効化する
     # @see
     # https://github.com/aws/containers-roadmap/issues/608
     # https://github.com/terraform-aws-modules/terraform-aws-eks/issues/1558#issuecomment-1030633280
@@ -1730,7 +1730,7 @@ AWSはIaaSのため、AWS AMIを指定すれば、NodeのOSのアップグレー
 
 AWS EKS Clusterのアップグレード時、以下の仕組みでデータプレーンのワーカーNodeをローリングアップグレードする。
 
-また、Nodeグループに紐づくAutoScalingグループのAZリバランシングの仕組みによって、既存のワーカーNodeと同じAZでワーカーNodeを再作成する。
+また、Nodeグループに紐づくAWS Auto ScalingグループのAZリバランシングの仕組みによって、既存のワーカーNodeと同じAZでワーカーNodeを再作成する。
 
 `(1)`
 

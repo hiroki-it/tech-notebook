@@ -167,7 +167,7 @@ region = ap-northeast-1
 
 #### ▼ role_arn
 
-AWS CLIの実行で、IAMユーザーに委譲するIAMロールを設定する。
+AWS CLIの実行で、AWS IAMユーザーに委譲するAWS IAMロールを設定する。
 
 ```ini
 [profile foo]
@@ -178,7 +178,7 @@ role_arn = arn:aws:iam::<AWSアカウントID>:role/foo-role
 
 #### ▼ role_session_name
 
-IAMロールの委譲後のIAMユーザーの一時的な名前を設定する。
+AWS IAMロールの委譲後のAWS IAMユーザーの一時的な名前を設定する。
 
 ```ini
 [profile foo]
@@ -189,7 +189,7 @@ role_session_name = hiroki.hasegawa
 
 #### ▼ source_profile
 
-IAMロールの委譲先のIAMユーザーのプロファイル名を設定する。
+AWS IAMロールの委譲先のAWS IAMユーザーのプロファイル名を設定する。
 
 ```ini
 [profile foo]
@@ -492,7 +492,7 @@ $ aws cloudwatch get-metric-statistics \
 $ aws deploy register-on-premises-instance \
     --region ap-northeast-1 \
     --instance-name foo-on-premises-instance \
-    --iam_session_arn <IAM Session ARN>
+    --iam_session_arn <AWS IAM Session ARN>
 ```
 
 <br>
@@ -528,7 +528,7 @@ $ aws eks update-addon --cluster-name foo-cluster \
 
 <br>
 
-### IAM
+### AWS IAM
 
 #### ▼ update-user
 
@@ -606,7 +606,7 @@ $ aws s3 sync s3://<コピー元S3バケット名>/<ディレクトリ名> s3://
     [
       {
         "Effect": "Allow",
-        "Principal": {"AWS": "<IAMユーザーのARN>"},
+        "Principal": {"AWS": "<AWS IAMユーザーのARN>"},
         "Action": "s3:PutObject",
         "Resource": "arn:aws:s3:::foo-bucket/*",
         "Condition": {
@@ -616,7 +616,7 @@ $ aws s3 sync s3://<コピー元S3バケット名>/<ディレクトリ名> s3://
       },
       {
         "Effect": "Allow",
-        "Principal": {"AWS": "<IAMユーザーのARN>"},
+        "Principal": {"AWS": "<AWS IAMユーザーのARN>"},
         "Action": "s3:ListBucket",
         "Resource": "arn:aws:s3:::bar-bucket",
       },
@@ -885,7 +885,7 @@ Note that it will expire at 2022-01-01 12:00:00 +0900 JST
 
 #### ▼ 送信元IPに基づく制限
 
-特定の送信元IPアドレスを制限するポリシーをIAMユーザーに紐付けることにより、そのIAMユーザーがAWS CLIの実行する時に、社外から実行できないように制限をかけられる。
+特定の送信元IPアドレスを制限するポリシーをAWS IAMユーザーに紐付けることにより、そのAWS IAMユーザーがAWS CLIの実行する時に、社外から実行できないように制限をかけられる。
 
 **＊実装例＊**
 
@@ -905,7 +905,7 @@ Note that it will expire at 2022-01-01 12:00:00 +0900 JST
 ポリシーのDenyステートメントによってアクセスが拒否された場合、エラーメッセージの最後に『`with an explicit deny`』という文言がつく。
 
 ```bash
-Error: An error occurred (AccessDeniedException) when calling the <アクション名> operation: <IAMユーザー名> is not authorized to perform: <アクション名> on resource: <リソースARN> with an explicit deny
+Error: An error occurred (AccessDeniedException) when calling the <アクション名> operation: <AWS IAMユーザー名> is not authorized to perform: <アクション名> on resource: <リソースARN> with an explicit deny
 ```
 
 <br>

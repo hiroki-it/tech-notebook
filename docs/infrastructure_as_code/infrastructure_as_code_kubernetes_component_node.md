@@ -49,7 +49,7 @@ description: Nodeコンポーネント＠Kubernetesの知見を記録してい�
 
 KubernetesにはNodeグループというリソースがなく、グループを宣言的に定義することはできない。
 
-ただ、クラウドプロバイダーのサーバーオートスケーリング機能 (例：AWS EC2AutoScaling) を使用して、Nodeグループ (例：AWS EKS Nodeグループ) を実現できる。
+ただ、クラウドプロバイダーのサーバーオートスケーリング機能 (例：AWS EC2のAuto Scalingグループ) を使用して、Nodeグループ (例：AWS EKS Nodeグループ) を実現できる。
 
 同じ設定値 (`.metadata.labels`キー、CPU、メモリなど) や同じ役割を持ったNodeのグループのこと。
 

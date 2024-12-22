@@ -216,7 +216,7 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
 
 クラウドプロバイダーのNodeグループ (例：AWS EKS Nodeグループ) では、新旧Nodeグループを作成することにより、Nodeを入れ替える。
 
-例えばAWS EC2AutoScalingであれば、アップグレードを開始するとEC2AutoScalingに新旧の起動テンプレートが紐づく。
+例えばAWS EC2のAuto Scalingグループであれば、アップグレードを開始するとEC2AutoScalingに新旧の起動テンプレートが紐づく。
 
 新旧の起動テンプレート配下のEC2 Nodeを段階的に入れ替えることにより、ローリングアップグレードを実現する。
 

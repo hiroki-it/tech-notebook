@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】IAM＠AWSリソース
-description: IAM＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】AWS IAM＠AWSリソース
+description: AWS IAM＠AWSリソースの知見を記録しています。
 ---
 
-# IAM＠AWSリソース
+# AWS IAM＠AWSリソース
 
 ## はじめに
 
@@ -13,19 +13,19 @@ description: IAM＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. IAMとは：Identify and Access Management
+## 01. AWS IAMとは：Identify and Access Management
 
 AWSリソースへのアクセスに関する認証/認可を制御する。
 
-認証はアクセスキーIDとシークレットアクセスキーによって、また認可はIAMロール/IAMポリシー/IAMステートメントによって制御される。
+認証はアクセスキーIDとシークレットアクセスキーによって、また認可はAWS IAMロール/AWS IAMポリシー/AWS IAMステートメントによって制御される。
 
 <br>
 
-## 02. IAMロール
+## 02. AWS IAMロール
 
-### IAMロールとは
+### AWS IAMロールとは
 
-IAMポリシーのセットを定義する。
+AWS IAMポリシーのセットを定義する。
 
 <br>
 
@@ -59,13 +59,13 @@ AWSリソースを作成した時に自動的に作成されるロール。
 
 <br>
 
-## 03. IAMポリシー
+## 03. AWS IAMポリシー
 
 ### アイデンティティベースのポリシー
 
 #### ▼ アイデンティティベースのポリシーとは
 
-IAMユーザー、IAMグループ、IAMロール、に紐付けるためのポリシーのこと。
+AWS IAMユーザー、AWS IAMグループ、AWS IAMロール、に紐付けるためのポリシーのこと。
 
 #### ▼ AWS管理ポリシー
 
@@ -87,7 +87,7 @@ AWSが提供しているポリシーのこと。
 
 **＊実装例＊**
 
-IAMロールにインラインポリシーを紐付ける。
+AWS IAMロールにインラインポリシーを紐付ける。
 
 このロールを持つユーザーは、ユーザーアカウントのすべての ACMのSSL証明書を一覧表示できるようになる。
 
@@ -101,7 +101,7 @@ IAMロールにインラインポリシーを紐付ける。
 
 **＊実装例＊**
 
-IAMロールにインラインポリシーを紐付ける。
+AWS IAMロールにインラインポリシーを紐付ける。
 
 このロールを持つユーザーは、全てのAWSリソースに、任意のアクションを実行できる。
 
@@ -126,7 +126,7 @@ IAMロールにインラインポリシーを紐付ける。
 
 以下に、EC2の読み出しのみ認可スコープ (`AmazonEC2ReadOnlyAccess`) を紐付けできるポリシーを示す。
 
-このIAMポリシーには、他のAWSリソースに対する認可スコープも含まれている。
+このAWS IAMポリシーには、他のAWSリソースに対する認可スコープも含まれている。
 
 ```yaml
 {
@@ -218,13 +218,13 @@ AWS ECRに紐付けられる、コンテナイメージの有効期間を定義�
 }
 ```
 
-信頼ポリシーでは、IAMユーザーを信頼されたエンティティとして設定もできる。
+信頼ポリシーでは、AWS IAMユーザーを信頼されたエンティティとして設定もできる。
 
 **＊実装例＊**
 
 例えば、以下の信頼ポリシーを任意のロールに紐付けしたとする。
 
-その場合、`Principal`のIAMユーザーが信頼されたエンティティと見なされ、ロールを紐付けできるようになる。
+その場合、`Principal`のAWS IAMユーザーが信頼されたエンティティと見なされ、ロールを紐付けできるようになる。
 
 ```yaml
 {
@@ -253,7 +253,7 @@ AWS ECRに紐付けられる、コンテナイメージの有効期間を定義�
 
 <br>
 
-## 03-02. IAMポリシーの構造
+## 03-02. AWS IAMポリシーの構造
 
 ### 構造
 
@@ -263,7 +263,7 @@ AWS ECRに紐付けられる、コンテナイメージの有効期間を定義�
   "Sid": "foo",
   # Version
   "Version": "2012-10-17",
-  # Statement (IAMステートメント)
+  # Statement (AWS IAMステートメント)
   "Statement": [
       {
         # 許可する
@@ -293,7 +293,7 @@ AWS ECRに紐付けられる、コンテナイメージの有効期間を定義�
 
 <br>
 
-### Statement (IAMステートメント)
+### Statement (AWS IAMステートメント)
 
 #### ▼ Statementとは
 
@@ -343,7 +343,7 @@ ARNでAWSリソースの識別子を設定する。
 
 信頼されたエンティティの設定でよく使用する。
 
-IAMポリシーの取得に使用する文字列の条件の厳格さを設定する。
+AWS IAMポリシーの取得に使用する文字列の条件の厳格さを設定する。
 
 ```yaml
 {
@@ -429,27 +429,27 @@ IAMポリシーの取得に使用する文字列の条件の厳格さを設定�
 
 <br>
 
-## 03-03. IAMポリシーを紐付けできる対象
+## 03-03. AWS IAMポリシーを紐付けできる対象
 
-### IAMユーザーに対する紐付け
+### AWS IAMユーザーに対する紐付け
 
-![IAMユーザにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMユーザーにポリシーを付与.jpeg)
-
-<br>
-
-### IAMグループに対する紐付け
-
-![IAMグループにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMグループにポリシーを付与.jpeg)
+![AWS IAMユーザにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AWS IAMユーザーにポリシーを付与.jpeg)
 
 <br>
 
-### IAMロールに対する紐付け
+### AWS IAMグループに対する紐付け
 
-![IAMロールにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMロールにポリシーを付与.jpeg)
+![AWS IAMグループにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AWS IAMグループにポリシーを付与.jpeg)
 
 <br>
 
-## 04. ルートユーザー、IAMユーザー
+### AWS IAMロールに対する紐付け
+
+![AWS IAMロールにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AWS IAMロールにポリシーを付与.jpeg)
+
+<br>
+
+## 04. ルートユーザー、AWS IAMユーザー
 
 ### ルートユーザーとは
 
@@ -457,29 +457,29 @@ IAMポリシーの取得に使用する文字列の条件の厳格さを設定�
 
 <br>
 
-### IAMユーザーとは
+### AWS IAMユーザーとは
 
 特定の認可スコープをもったアカウントのこと。
 
 <br>
 
-## 05. IAMグループ
+## 05. AWS IAMグループ
 
-### IAMグループとは
+### AWS IAMグループとは
 
-IAMユーザーをグループ化したもの。
+AWS IAMユーザーをグループ化したもの。
 
-IAMグループごとにIAMロールを紐付けすれば、IAMユーザーのIAMロールを管理しやすくなる。
+AWS IAMグループごとにAWS IAMロールを紐付けすれば、AWS IAMユーザーのAWS IAMロールを管理しやすくなる。
 
 ![グループ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループ.png)
 
 <br>
 
-### IAMグループへのIAMロールの紐付け
+### AWS IAMグループへのAWS IAMロールの紐付け
 
-IAMグループに対して、IAMロールを紐付ける。
+AWS IAMグループに対して、AWS IAMロールを紐付ける。
 
-そのIAMグループに対して、IAMロールを紐付けしたいIAMユーザーを追加していく。
+そのAWS IAMグループに対して、AWS IAMロールを紐付けしたいAWS IAMユーザーを追加していく。
 
 ![グループに属するユーザにロールを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループに所属するユーザーにロールを付与.png)
 
@@ -487,10 +487,10 @@ IAMグループに対して、IAMロールを紐付ける。
 
 ### グループ一覧
 
-| グループ名      | 説明                                                                                 | 補足 |
-| --------------- | ------------------------------------------------------------------------------------ | ---- |
-| Administrator   | 全てのリソースに認可スコープがある。                                                 |      |
-| PowerUserAccess | IAMのみが参照の認可スコープであり、それ以外のAWSリソースに変更の認可スコープがある。 |      |
-| ViewOnlyAccess  | 参照のみの認可スコープがある。                                                       |      |
+| グループ名      | 説明                                                                                     | 補足 |
+| --------------- | ---------------------------------------------------------------------------------------- | ---- |
+| Administrator   | 全てのリソースに認可スコープがある。                                                     |      |
+| PowerUserAccess | AWS IAMのみが参照の認可スコープであり、それ以外のAWSリソースに変更の認可スコープがある。 |      |
+| ViewOnlyAccess  | 参照のみの認可スコープがある。                                                           |      |
 
 <br>

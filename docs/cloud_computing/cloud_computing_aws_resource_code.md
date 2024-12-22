@@ -329,7 +329,7 @@ CodeDeployは、CodeBuildから渡された`imageDetail.json`ファイルを検�
 
 ## 04-04. CodeDeployと他のAWSリソースとの連携
 
-### AutoScaling
+### AutoScalingグループ
 
 > - https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-auto-scaling.html
 

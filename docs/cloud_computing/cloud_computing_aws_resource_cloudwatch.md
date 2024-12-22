@@ -526,8 +526,8 @@ cloudwatchエージェント全体を設定する。
       `# プロセスのユーザー名を設定する。`
       "run_as_user": "cwagent",
       "metrics_collection_interval": 60,
-      `# 別のAWSアカウントにログを送信する場合に、必要な認可スコープを付与したIAMロール`
-      "credentials": "arn:aws:iam::<AWSアカウントID>:role/<IAMロール名>",
+      `# 別のAWSアカウントにログを送信する場合に、必要な認可スコープを付与したAWS IAMロール`
+      "credentials": "arn:aws:iam::<AWSアカウントID>:role/<AWS IAMロール名>",
     }}
 ```
 
@@ -657,17 +657,17 @@ $ tail -f /opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
 
 <br>
 
-### IAMロール
+### AWS IAMロール
 
 #### ▼ EC2の場合
 
-EC2でcloudwatchエージェントを稼働させる場合、AWS CloudWatchAgentServerPolicyが付与されたIAMロールをEC2に紐付ける必要がある。
+EC2でcloudwatchエージェントを稼働させる場合、AWS CloudWatchAgentServerPolicyが付与されたAWS IAMロールをEC2に紐付ける必要がある。
 
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html
 
 #### ▼ AWS以外のサーバーの場合
 
-AWS以外 (オンプレミス、他のクラウドプロバイダー) のサーバーでcloudwatchエージェントを稼働させる場合、AWS CloudWatchAgentServerPolicyが付与されたIAMロールをcloudwatchエージェント用のIAMユーザーに紐付ける必要がある。
+AWS以外 (オンプレミス、他のクラウドプロバイダー) のサーバーでcloudwatchエージェントを稼働させる場合、AWS CloudWatchAgentServerPolicyが付与されたAWS IAMロールをcloudwatchエージェント用のAWS IAMユーザーに紐付ける必要がある。
 
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html
 
