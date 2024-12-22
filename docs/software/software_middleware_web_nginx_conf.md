@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】nginx.conf＠Nginx
-description: nginx.conf＠Nginxの知見を記録しています。
+title: 【IT技術の知見】設定ファイル＠Nginx
+description: 設定ファイル＠Nginxの知見を記録しています。
 ---
 
-# nginx.conf＠Nginx
+# 設定ファイル＠Nginx
 
 ## はじめに
 

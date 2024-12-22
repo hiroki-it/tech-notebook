@@ -1,9 +1,9 @@
 ---
-title=【IT技術の知見】keycloak.conf＠Keycloak
-description=keycloak.conf＠Keycloakの知見を記録しています。
+title=【IT技術の知見】設定ファイル＠Keycloak
+description=設定ファイル＠Keycloakの知見を記録しています。
 ---
 
-# keycloak.conf＠Keycloak
+# 設定ファイル＠Keycloak
 
 ## はじめに
 
