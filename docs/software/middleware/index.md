@@ -147,12 +147,16 @@
 
 ### メッセージング系
 
-* ##### [メッセージング](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging.html)
+* #### [メッセージング](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging.html)
 
-* #### <u>ブローカー系</u>
-  > * ##### [︎RabbitMQ](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_message_broker_rabbitmq.html)
+* #### [︎RabbitMQ](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_message_broker_rabbitmq.html)
 
-* #### <u>ストリーマー系</u>
-  > * ##### [Kafka](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_message_streamer_kafka.html)
+* #### [Kafka](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_message_streamer_kafka.html)
+
+<br>
+
+### データ分析系
+
+* #### [データ分析](https://hiroki-it.github.io/tech-notebook/software/software_middleware_data_analysis.html)
 
 <br>
