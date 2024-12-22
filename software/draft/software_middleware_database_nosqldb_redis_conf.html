@@ -12,13 +12,9 @@
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/middleware/index.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_database_nosqldb_redis_conf.html">
       
       
-        <link rel="prev" href="../software_application_workflow_temporal_conf_web.html">
-      
-      
-        <link rel="next" href="../software_middleware_web_nginx.html">
       
       
       <link rel="icon" href="../../assets/images/logo_v2.png">
@@ -26,7 +22,7 @@
     
     
       
-        <title>セクションの目次 - 俺の技術ノート</title>
+        <title>Software middleware database nosqldb redis conf - 俺の技術ノート</title>
       
     
     
@@ -90,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#redis" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              セクションの目次
+              Software middleware database nosqldb redis conf
             
           </span>
         </div>
@@ -294,13 +290,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="index.html" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../middleware/index.html" class="md-tabs__link">
           
   
     
@@ -2507,8 +2501,6 @@
       
   
   
-    
-  
   
   
     
@@ -2543,22 +2535,21 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="index.html" class="md-nav__link md-nav__link--active">
+            <a href="../middleware/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2569,13 +2560,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_6" id="__nav_6_label" tabindex="">
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             🤝🏻 ミドルウェア
@@ -23940,38 +23931,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      🤝🏻ミドルウェア
+      はじめに
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🤝🏻ミドルウェア">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#web" class="md-nav__link">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-general" class="md-nav__link">
     <span class="md-ellipsis">
-      Web系
+      01. GENERAL
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Web系">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-snapshotting" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. SNAPSHOTTING
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. SNAPSHOTTING">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#nginx" class="md-nav__link">
+  <a href="#dir" class="md-nav__link">
     <span class="md-ellipsis">
-      Nginx
+      dir
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#apache" class="md-nav__link">
+  <a href="#save" class="md-nav__link">
     <span class="md-ellipsis">
-      Apache
+      save
     </span>
   </a>
   
@@ -23981,366 +23980,13 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#03-replication" class="md-nav__link">
     <span class="md-ellipsis">
-      アプリケーション系
+      03. REPLICATION
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="アプリケーション系">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#php-fpm" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHP-FPM
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uwsgi" class="md-nav__link">
-    <span class="md-ellipsis">
-      ︎uWSGI
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uvicorn" class="md-nav__link">
-    <span class="md-ellipsis">
-      ︎Uvicorn
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      リレーショナルデータベース系
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="リレーショナルデータベース系">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rdbms" class="md-nav__link">
-    <span class="md-ellipsis">
-      ︎RDBMS
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mysql" class="md-nav__link">
-    <span class="md-ellipsis">
-      MySQL
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#postgresql" class="md-nav__link">
-    <span class="md-ellipsis">
-      PostgreSQL
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      コネクションプールプロキシ系
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="コネクションプールプロキシ系">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pgbouncer" class="md-nav__link">
-    <span class="md-ellipsis">
-      PgBouncer
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nosql-db" class="md-nav__link">
-    <span class="md-ellipsis">
-      NoSQL DB系
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="NoSQL DB系">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nosql-db_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      NoSQL DB
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#redis" class="md-nav__link">
-    <span class="md-ellipsis">
-      Redis
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      時系列データベース系
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="時系列データベース系">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tsdb" class="md-nav__link">
-    <span class="md-ellipsis">
-      TSDB
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#victoriametrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      VictoriaMetrics
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      サービスメッシュ系
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="サービスメッシュ系">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      ︎サービスメッシュ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#envoy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Envoy
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#istio" class="md-nav__link">
-    <span class="md-ellipsis">
-      Istio
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dns" class="md-nav__link">
-    <span class="md-ellipsis">
-      DNS系
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="DNS系">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#coredns" class="md-nav__link">
-    <span class="md-ellipsis">
-      CoreDNS
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_33" class="md-nav__link">
-    <span class="md-ellipsis">
-      セキュリティ系
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="セキュリティ系">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cert-manager" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cert Manager
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#falco" class="md-nav__link">
-    <span class="md-ellipsis">
-      Falco
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#keycloak" class="md-nav__link">
-    <span class="md-ellipsis">
-      Keycloak
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#oauth2-proxy" class="md-nav__link">
-    <span class="md-ellipsis">
-      OAuth2 Proxy
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_38" class="md-nav__link">
-    <span class="md-ellipsis">
-      メッセージング系
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="メッセージング系">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_39" class="md-nav__link">
-    <span class="md-ellipsis">
-      メッセージング
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rabbitmq" class="md-nav__link">
-    <span class="md-ellipsis">
-      ︎RabbitMQ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kafka" class="md-nav__link">
-    <span class="md-ellipsis">
-      Kafka
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_40" class="md-nav__link">
-    <span class="md-ellipsis">
-      データ分析系
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="データ分析系">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_41" class="md-nav__link">
-    <span class="md-ellipsis">
-      データ分析
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -24362,416 +24008,50 @@
   
 
 
-<h1 id="_1">セクションの目次<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<div class="admonition info">
-<p class="admonition-title">このセクションについて</p>
-<p><strong>量が多いため、<a href="https://hiroki-it.github.io/tech-notebook/software/index.html">ソフトウェアセクション</a> から切り分けています</strong></p>
-</div>
+<p>title=【IT技術の知見】設定ファイル＠Redis
+description=設定ファイル＠Redisの知見を記録しています。</p>
+<hr />
+<h1 id="redis">設定ファイル＠Redis<a class="headerlink" href="#redis" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h2 id="_2">🤝🏻ミドルウェア<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h3 id="web">Web系<a class="headerlink" href="#web" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<h4 id="nginx"><u>Nginx</u><a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h4>
+<h2 id="01-general">01. GENERAL<a class="headerlink" href="#01-general" title="Permanent link">&para;</a></h2>
 <blockquote>
 <ul>
-<li>
-<h5 id="nginx_1"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx.html">︎Nginx</a><a class="headerlink" href="#nginx_1" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="nginxconf"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_conf.html">︎nginx.conf</a><a class="headerlink" href="#nginxconf" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_3"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_command.html">︎コマンド</a><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_4"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_module_builtin.html">ビルトインモジュール</a><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_5"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_module_utility.html">ユーティリティモジュール</a><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h5>
-</li>
+<li><a href="https://github.com/redis/redis/blob/unstable/redis.conf">https://github.com/redis/redis/blob/unstable/redis.conf</a></li>
 </ul>
 </blockquote>
-</li>
-<li>
-<h4 id="apache"><u>Apache</u><a class="headerlink" href="#apache" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li>
-<h5 id="apache_1"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_apache.html">︎Apache</a><a class="headerlink" href="#apache_1" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="apacheconf"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_apache_conf.html">︎apache.conf</a><a class="headerlink" href="#apacheconf" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_6"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_apache_command.html">︎コマンド</a><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h5>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
 <p><br></p>
-<h3 id="_7">アプリケーション系<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<h4 id="php-fpm"><u>PHP-FPM</u><a class="headerlink" href="#php-fpm" title="Permanent link">&para;</a></h4>
+<h2 id="02-snapshotting">02. SNAPSHOTTING<a class="headerlink" href="#02-snapshotting" title="Permanent link">&para;</a></h2>
+<h3 id="dir">dir<a class="headerlink" href="#dir" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>dir /data
+</code></pre></div>
 <blockquote>
 <ul>
-<li>
-<h5 id="php-fpm_1"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm.html">︎PHP-FPM</a><a class="headerlink" href="#php-fpm_1" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_8"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm_conf.html">︎設定ファイル</a><a class="headerlink" href="#_8" title="Permanent link">&para;</a></h5>
-</li>
+<li><a href="https://github.com/redis/redis/blob/unstable/redis.conf">https://github.com/redis/redis/blob/unstable/redis.conf</a></li>
 </ul>
 </blockquote>
-</li>
-</ul>
-<ul>
-<li>
-<h4 id="uwsgi"><u>︎uWSGI</u><a class="headerlink" href="#uwsgi" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li>
-<h5 id="uwsgi_1"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_wsgi_uwsgi.html">︎uWSGI</a><a class="headerlink" href="#uwsgi_1" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_9"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_wsgi_uwsgi_conf.html">︎設定ファイル</a><a class="headerlink" href="#_9" title="Permanent link">&para;</a></h5>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li>
-<h4 id="uvicorn"><u>︎Uvicorn</u><a class="headerlink" href="#uvicorn" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li>
-<h5 id="uvicorn_1"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_asgi_uvicorn.html">︎Uvicorn</a><a class="headerlink" href="#uvicorn_1" title="Permanent link">&para;</a></h5>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
 <p><br></p>
-<h3 id="_10">リレーショナルデータベース系<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<h4 id="rdbms"><u>︎RDBMS</u><a class="headerlink" href="#rdbms" title="Permanent link">&para;</a></h4>
+<h3 id="save">save<a class="headerlink" href="#save" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>save &quot;&quot;
+</code></pre></div>
 <blockquote>
 <ul>
-<li>
-<h5 id="rdbms_1"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html">︎RDBMS</a><a class="headerlink" href="#rdbms_1" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_11"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms_practices.html">プラクティス集</a><a class="headerlink" href="#_11" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="acid"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms_acid.html">︎ACID</a><a class="headerlink" href="#acid" title="Permanent link">&para;</a></h5>
-</li>
+<li><a href="https://github.com/redis/redis/blob/unstable/redis.conf">https://github.com/redis/redis/blob/unstable/redis.conf</a></li>
 </ul>
 </blockquote>
-</li>
-</ul>
-<ul>
-<li>
-<h4 id="mysql"><u>MySQL</u><a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li>
-<h5 id="mysql_1"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql.html">My︎SQL</a><a class="headerlink" href="#mysql_1" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_12"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_conf.html">設定ファイル</a><a class="headerlink" href="#_12" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="sql"><u>SQL</u><a class="headerlink" href="#sql" title="Permanent link">&para;</a></h5>
-<blockquote>
-<ul>
-<li>
-<h5 id="dml"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_dml.html">DML</a><a class="headerlink" href="#dml" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="dcl"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_dcl.html">DCL</a><a class="headerlink" href="#dcl" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="ddl"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_ddl.html">DDL</a><a class="headerlink" href="#ddl" title="Permanent link">&para;</a></h5>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li>
-<h4 id="postgresql"><u>PostgreSQL</u><a class="headerlink" href="#postgresql" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li>
-<h5 id="_13"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_postgresql_conf.html">設定ファイル</a><a class="headerlink" href="#_13" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="repmgr"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_postgresql_repmgr.html">Repmgr</a><a class="headerlink" href="#repmgr" title="Permanent link">&para;</a></h5>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
 <p><br></p>
-<h3 id="_14"><u>コネクションプールプロキシ系</u><a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<h4 id="pgbouncer"><u>PgBouncer</u><a class="headerlink" href="#pgbouncer" title="Permanent link">&para;</a></h4>
+<h2 id="03-replication">03. REPLICATION<a class="headerlink" href="#03-replication" title="Permanent link">&para;</a></h2>
 <blockquote>
 <ul>
-<li>
-<h5 id="pgbouncer_1"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_connection_pool_proxy_pgbouncer.html">PgBouncer</a><a class="headerlink" href="#pgbouncer_1" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_15"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_connection_pool_proxy_pgbouncer_conf.html">設定ファイル</a><a class="headerlink" href="#_15" title="Permanent link">&para;</a></h5>
-</li>
+<li><a href="https://github.com/redis/redis/blob/unstable/redis.conf">https://github.com/redis/redis/blob/unstable/redis.conf</a></li>
 </ul>
 </blockquote>
-</li>
-</ul>
-<p><br></p>
-<h3 id="nosql-db"><u>NoSQL DB系</u><a class="headerlink" href="#nosql-db" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<h4 id="nosql-db_1"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_nosqldb.html">NoSQL DB</a><a class="headerlink" href="#nosql-db_1" title="Permanent link">&para;</a></h4>
-</li>
-<li>
-<h4 id="redis"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_nosqldb_redis.html">Redis</a><a class="headerlink" href="#redis" title="Permanent link">&para;</a></h4>
-</li>
-</ul>
-<p><br></p>
-<h3 id="_16">時系列データベース系<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<h4 id="tsdb"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb.html">TSDB</a><a class="headerlink" href="#tsdb" title="Permanent link">&para;</a></h4>
-</li>
-</ul>
-<ul>
-<li>
-<h4 id="victoriametrics"><u>VictoriaMetrics</u><a class="headerlink" href="#victoriametrics" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li>
-<h5 id="victoriametrics_1"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb_victoriametrics.html">VictoriaMetrics</a><a class="headerlink" href="#victoriametrics_1" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_17"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb_victoriametrics_command.html">コマンド</a><a class="headerlink" href="#_17" title="Permanent link">&para;</a></h5>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<p><br></p>
-<h3 id="_18">サービスメッシュ系<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<h4 id="_19"><u>︎サービスメッシュ</u><a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li>
-<h5 id="_20"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh.html">︎サービスメッシュ</a><a class="headerlink" href="#_20" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_21"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_responsibility.html">︎サービスメッシュの担う責務</a><a class="headerlink" href="#_21" title="Permanent link">&para;</a></h5>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li>
-<h4 id="envoy"><u>Envoy</u><a class="headerlink" href="#envoy" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li>
-<h5 id="envoy_1"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy.html">︎Envoy</a><a class="headerlink" href="#envoy_1" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="envoyyaml"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy_envoy_yaml.html">︎envoy.yaml</a><a class="headerlink" href="#envoyyaml" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_22"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy_telemetry.html">テレメトリー</a><a class="headerlink" href="#_22" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="api"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy_api.html">︎API</a><a class="headerlink" href="#api" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_23"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy_practice.html">プラクティス</a><a class="headerlink" href="#_23" title="Permanent link">&para;</a></h5>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li>
-<h4 id="istio"><u>Istio</u><a class="headerlink" href="#istio" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li>
-<h5 id="istio_1"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio.html">︎Istio</a><a class="headerlink" href="#istio_1" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_24"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_control_plane.html">コントロールプレーン</a><a class="headerlink" href="#_24" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_25"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_data_plane.html">データプレーン</a><a class="headerlink" href="#_25" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="istio_2"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_non.html">Istioを採用しない場合との比較</a><a class="headerlink" href="#istio_2" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_26"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_command.html">︎コマンド</a><a class="headerlink" href="#_26" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_27"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_practices.html">︎プラクティス集</a><a class="headerlink" href="#_27" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="istiooperator"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_operator_resource_definition.html">︎IstioOperator</a><a class="headerlink" href="#istiooperator" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_28"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource.html">︎リソース</a><a class="headerlink" href="#_28" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_29"><u>リソース定義</u><a class="headerlink" href="#_29" title="Permanent link">&para;</a></h5>
-<blockquote>
-<ul>
-<li>
-<h5 id="_30"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition.html">︎リソース定義</a><a class="headerlink" href="#_30" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_31"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_common.html">共通項目</a><a class="headerlink" href="#_31" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="configmap"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_configmap.html">ConfigMap系</a><a class="headerlink" href="#configmap" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="secret"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_secret.html">Secret系</a><a class="headerlink" href="#secret" title="Permanent link">&para;</a></h5>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<p><br></p>
-<h3 id="dns">DNS系<a class="headerlink" href="#dns" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<h4 id="coredns"><u>CoreDNS</u><a class="headerlink" href="#coredns" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li>
-<h5 id="coredns_1"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_dns_coredns.html">CoreDNS</a><a class="headerlink" href="#coredns_1" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_32"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_dns_coredns_conf.html">設定ファイル</a><a class="headerlink" href="#_32" title="Permanent link">&para;</a></h5>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<p><br></p>
-<h3 id="_33">セキュリティ系<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<h4 id="cert-manager"><u>Cert Manager</u><a class="headerlink" href="#cert-manager" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li>
-<h5 id="cert-manager_1"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_cert_manager.html">︎Cert Manager</a><a class="headerlink" href="#cert-manager_1" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_34"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_cert_manager_resource_definition.html">︎リソース定義</a><a class="headerlink" href="#_34" title="Permanent link">&para;</a></h5>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li>
-<h4 id="falco"><u>Falco</u><a class="headerlink" href="#falco" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li>
-<h5 id="falco_1"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_falco.html">Falco</a><a class="headerlink" href="#falco_1" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_35"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_falco_conf.html">設定ファイル</a><a class="headerlink" href="#_35" title="Permanent link">&para;</a></h5>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li>
-<h4 id="keycloak"><u>Keycloak</u><a class="headerlink" href="#keycloak" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li>
-<h5 id="keycloak_1"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_keycloak.html">Keycloak</a><a class="headerlink" href="#keycloak_1" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_36"><u>クライアント</u><a class="headerlink" href="#_36" title="Permanent link">&para;</a></h5>
-<blockquote>
-<ul>
-<li>
-<h5 id="javascript"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_keycloak_client_package_javascript.html">JavaScript</a><a class="headerlink" href="#javascript" title="Permanent link">&para;</a></h5>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li>
-<h4 id="oauth2-proxy"><u>OAuth2 Proxy</u><a class="headerlink" href="#oauth2-proxy" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li>
-<h5 id="oauth2-proxy_1"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_oauth2_proxy.html">OAuth2 Proxy</a><a class="headerlink" href="#oauth2-proxy_1" title="Permanent link">&para;</a></h5>
-</li>
-<li>
-<h5 id="_37"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_oauth2_proxy_conf.html">設定ファイル</a><a class="headerlink" href="#_37" title="Permanent link">&para;</a></h5>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<p><br></p>
-<h3 id="_38">メッセージング系<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<h4 id="_39"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging.html">メッセージング</a><a class="headerlink" href="#_39" title="Permanent link">&para;</a></h4>
-</li>
-</ul>
-<ul>
-<li>
-<h4 id="rabbitmq"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_message_broker_rabbitmq.html">︎RabbitMQ</a><a class="headerlink" href="#rabbitmq" title="Permanent link">&para;</a></h4>
-</li>
-</ul>
-<ul>
-<li>
-<h4 id="kafka"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_message_streamer_kafka.html">Kafka</a><a class="headerlink" href="#kafka" title="Permanent link">&para;</a></h4>
-</li>
-</ul>
-<p><br></p>
-<h3 id="_40">データ分析系<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<h4 id="_41"><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_data_analysis.html">データ分析</a><a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
-</li>
-</ul>
 <p><br></p>
 
 
