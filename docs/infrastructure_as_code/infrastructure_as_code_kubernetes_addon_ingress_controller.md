@@ -35,6 +35,8 @@ Kubernetesの周辺ツール (例：Prometheus、AlertManager、Grafana、ArgoCD
 
 ## 02. 外部Ingressコントローラーの使用
 
+### 外部Ingressコントローラーの種類
+
 Ingressコントローラーには種類があり、コントローラーごとに作成するリバースプロキシやロードバランサーが異なる。
 
 | 外部Ingressコントローラーの種類                               | リバースプロキシ、ロードバランサー | 開発環境 | 本番環境 |
@@ -52,6 +54,49 @@ Ingressコントローラーには種類があり、コントローラーごと�
 > - https://www.rancher.co.jp/docs/rancher/v2.x/en/cluster-admin/tools/istio/setup/gateway/
 > - https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/#specifying-ingressclass
 > - https://github.com/projectcontour/contour
+
+<br>
+
+### AWS Load Balancerコントローラーの場合
+
+```yaml
+パブリックネットワーク
+⬇⬆︎︎
+AWS Route53
+⬇⬆︎︎
+# L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
+AWS Load BalancerコントローラーによるAWS ALB
+⬇⬆︎︎
+# L4ロードバランサー
+NodePort Service (ポート番号はランダムでよい)
+⬇⬆︎︎
+Pod
+```
+
+<br>
+
+### Istio Ingressコントローラーの場合
+
+```yaml
+パブリックネットワーク
+⬇⬆︎︎
+AWS Route53
+⬇⬆︎︎
+  # L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
+AWS ALB
+⬇⬆︎︎
+  # L4ロードバランサー
+NodePort Service (Istio IngressGateway)
+⬇⬆︎︎
+Gateway
+⬇⬆︎︎
+VirtualService
+⬇⬆︎︎
+  # L4ロードバランサー
+ClusterIP Service
+⬇⬆︎︎
+Pod
+```
 
 <br>
 

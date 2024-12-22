@@ -75,7 +75,7 @@ AWS Load Balancerコントローラーを使用する場合は、NodePort Servic
 ⬇⬆︎︎
 AWS Route53
 ⬇⬆︎︎
-# L7ロードバランサー
+# L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
 AWS Load BalancerコントローラーによるAWS ALB
 ⬇⬆︎︎
 # L4ロードバランサー

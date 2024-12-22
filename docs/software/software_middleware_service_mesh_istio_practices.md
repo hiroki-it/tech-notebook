@@ -99,6 +99,27 @@ Istio IngressGatewayでは、内部的に作成されるServiceのタイプ (Nod
 
 NodePort Serviceを選ぶ場合、Nodeのダウンストリームに開発者がロードバランサーを作成し、NodePort Serviceにインバウンド通信をルーティングできるようにする。
 
+```yaml
+パブリックネットワーク
+⬇⬆︎︎
+AWS Route53
+⬇⬆︎︎
+# L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
+AWS ALB
+⬇⬆︎︎
+# L4ロードバランサー
+NodePort Service (Istio IngressGateway)
+⬇⬆︎︎
+Gateway
+⬇⬆︎︎
+VirtualService
+⬇⬆︎︎
+# L4ロードバランサー
+ClusterIP Service
+⬇⬆︎︎
+Pod
+```
+
 一方で、LoadBalancer Serviceを選ぶ場合、クラウドプロバイダーのロードバランサーが自動的に作成される。
 
 そのため、このロードバランサーからLoadBalancer Serviceにルーティングできるようにする。
@@ -248,7 +269,7 @@ Pod
 ⬇⬆︎︎
 AWS Route53
 ⬇⬆︎︎
-# L7ロードバランサー (単一のL7ロードバランサーを作成し、複数のL4ロードバランサーに振り分ける)
+# L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
 AWS ALB
 ⬇⬆︎︎
 # L4ロードバランサー
