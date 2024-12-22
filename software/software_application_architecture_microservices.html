@@ -18,7 +18,7 @@
         <link rel="prev" href="software_application_architecture_frontend.html">
       
       
-        <link rel="next" href="software_application_architecture_microservices_auth.html">
+        <link rel="next" href="software_application_architecture_microservices_services_design.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -1371,10 +1371,6 @@
       
         
       
-        
-      
-        
-      
     
     
       
@@ -1545,13 +1541,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-02" class="md-nav__link">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      01-02. マイクロサービスアーキテクチャ
+      02. マイクロサービスアーキテクチャの特徴
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01-02. マイクロサービスアーキテクチャ">
+    <nav class="md-nav" aria-label="02. マイクロサービスアーキテクチャの特徴">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1697,402 +1693,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. ドメイン層
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. ドメイン層">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      マイクロサービス
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="マイクロサービス">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ マイクロサービスとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 各マイクロサービスのアーキテクチャ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      分割パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="分割パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ サブドメイン単位/境界づけられたコンテキスト単位
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ルートエンティティ単位 (エンティティサービス)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      分割アンチパターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="分割アンチパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 分散モノリス
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. リポジトリ層
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. リポジトリ層">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      分割パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="分割パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ドメイン層と同じマイクロサービス
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ドメイン層とは異なるマイクロサービス + 占有リポジトリ単位 (ルートエンティティ単位)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ドメイン層とは異なるマイクロサービス + 共有リポジトリ単位 (ルートエンティティ単位)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. APIアグリゲーション層
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. APIアグリゲーション層">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
-    <span class="md-ellipsis">
-      APIアグリゲーション層とは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-02-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      04-02. APIゲートウェイ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04-02. APIゲートウェイ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#api_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      APIゲートウェイとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    <span class="md-ellipsis">
-      分割パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="分割パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#api_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ APIゲートウェイの分割パターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#central-aggregating-gateway" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Central Aggregating Gateway
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bffbackends-for-frontends" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ BFF：Backends For Frontends
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#federated-gateway" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Federated Gateway
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#api_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      API形式パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="API形式パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#apiapi" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ APIゲートウェイのAPI形式パターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#restful-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ RESTful-API
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#graphql-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ GraphQL-API
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rpc-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ RPC-API
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
-    <span class="md-ellipsis">
-      責務パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="責務パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gateway-offloading" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Gateway Offloadingパターン
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gateway" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Gatewayルーティングパターン
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gateway_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Gatewayアグリゲーターパターン
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
-    <span class="md-ellipsis">
-      実装パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="実装パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_32" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 自前で実装する場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#oss" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ OSSを使用する場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_33" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ クラウドプロバイダーのマネージドサービスを使用する場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2108,8 +1708,121 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_2" id="__nav_5_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ マイクロサービス
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ マイクロサービス
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="software_application_architecture_microservices_auth.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_services_design.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    マイクロサービス設計
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_microservices_services_connection.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    マイクロサービス間通信
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_microservices_services_transaction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    トランザクション管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_microservices_services_auth.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2123,22 +1836,9 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="software_application_architecture_microservices_database.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    DB
-  </span>
-  
-
-      </a>
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2151,32 +1851,11 @@
   
   
     <li class="md-nav__item">
-      <a href="software_application_architecture_microservices_network.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_storage.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    ネットワーク
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="software_application_architecture_microservices_security.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    セキュリティ
+    ストレージ
   </span>
   
 
@@ -24578,13 +24257,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-02" class="md-nav__link">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      01-02. マイクロサービスアーキテクチャ
+      02. マイクロサービスアーキテクチャの特徴
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01-02. マイクロサービスアーキテクチャ">
+    <nav class="md-nav" aria-label="02. マイクロサービスアーキテクチャの特徴">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24722,402 +24401,6 @@
       フレームワーク
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. ドメイン層
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. ドメイン層">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      マイクロサービス
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="マイクロサービス">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ マイクロサービスとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 各マイクロサービスのアーキテクチャ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      分割パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="分割パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ サブドメイン単位/境界づけられたコンテキスト単位
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ルートエンティティ単位 (エンティティサービス)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      分割アンチパターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="分割アンチパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 分散モノリス
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. リポジトリ層
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. リポジトリ層">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      分割パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="分割パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ドメイン層と同じマイクロサービス
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ドメイン層とは異なるマイクロサービス + 占有リポジトリ単位 (ルートエンティティ単位)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ドメイン層とは異なるマイクロサービス + 共有リポジトリ単位 (ルートエンティティ単位)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. APIアグリゲーション層
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. APIアグリゲーション層">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
-    <span class="md-ellipsis">
-      APIアグリゲーション層とは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-02-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      04-02. APIゲートウェイ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04-02. APIゲートウェイ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#api_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      APIゲートウェイとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    <span class="md-ellipsis">
-      分割パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="分割パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#api_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ APIゲートウェイの分割パターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#central-aggregating-gateway" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Central Aggregating Gateway
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bffbackends-for-frontends" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ BFF：Backends For Frontends
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#federated-gateway" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Federated Gateway
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#api_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      API形式パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="API形式パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#apiapi" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ APIゲートウェイのAPI形式パターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#restful-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ RESTful-API
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#graphql-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ GraphQL-API
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rpc-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ RPC-API
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
-    <span class="md-ellipsis">
-      責務パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="責務パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gateway-offloading" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Gateway Offloadingパターン
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gateway" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Gatewayルーティングパターン
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gateway_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Gatewayアグリゲーターパターン
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
-    <span class="md-ellipsis">
-      実装パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="実装パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_32" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 自前で実装する場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#oss" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ OSSを使用する場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_33" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ クラウドプロバイダーのマネージドサービスを使用する場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -25336,7 +24619,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-02">01-02. マイクロサービスアーキテクチャ<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
+<h2 id="02">02. マイクロサービスアーキテクチャの特徴<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_9">特徴<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ ビジネスのスケーリングに強い<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>ビジネスがスケーリングする時、マイクロサービスの新規実装または削除を行えば良いため、ドメイン層の激しい変化に強い。</p>
@@ -25427,270 +24710,6 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02">02. ドメイン層<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_17">マイクロサービス<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<h4 id="_18">▼ マイクロサービスとは<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p><img alt="anti-corruption-layer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anti-corruption-layer.png" /></p>
-<p>マイクロサービスアーキテクチャにおける分散システム状のバックエンドのコンポーネントのこと。</p>
-<p>特定のマイクロサービスが他のマイクロサービスに侵食され、マイクロサービスの凝集度が低くならないようにするために、ACL：Anti Corruption Layer (腐食防止レイヤー) を設ける必要がある。</p>
-<p>腐食防止レイヤーは、異なるコンテキストから受信したデータを、そのマイクロサービスのコンテキストにあったデータ形式に変換する責務を持つ。</p>
-<p>CQRSでは、これはプロセスマネージャパターンとして知られている。</p>
-<p>一方でSagaパターンとも呼ばれるが、分散トランザクションでも同じ用語があるため、混乱を避けるためにプロセスマネージャパターンとする。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/czeslavo/process-manager">https://github.com/czeslavo/process-manager</a></li>
-<li><a href="https://www.oreilly.com/library/view/what-is-domain-driven/9781492057802/ch04.html">https://www.oreilly.com/library/view/what-is-domain-driven/9781492057802/ch04.html</a></li>
-<li><a href="https://docs.microsoft.com/ja-jp/previous-versions/msp-n-p/jj591569(v=pandp.10)?redirectedfrom=MSDN">https://docs.microsoft.com/ja-jp/previous-versions/msp-n-p/jj591569(v=pandp.10)?redirectedfrom=MSDN</a></li>
-</ul>
-</blockquote>
-<h4 id="_19">▼ 各マイクロサービスのアーキテクチャ<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<p>各マイクロサービスのアーキテクチャは自由である。</p>
-<p>この時、ドメイン駆動設計のアーキテクチャを基に実装できる。</p>
-<p><strong>＊例＊</strong></p>
-<p>ECサイトがあり、これの商品販売ドメインを販売サブドメインと配送サブドメインに分割できるとする。</p>
-<p>この時、それぞれのサブドメインの問題を解決する販売コンテキストと配送コンテキストをマイクロサービスの粒度となり、オニオンアーキテクチャのアプリケーション間で同期通信/非同期通信を実行する。</p>
-<p><img alt="microservices-architecture_onion-architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices-architecture_onion-architecture.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://little-hands.hatenablog.com/entry/2017/12/07/bouded-context-implementation">https://little-hands.hatenablog.com/entry/2017/12/07/bouded-context-implementation</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_20">分割パターン<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
-<h4 id="_21">▼ サブドメイン単位/境界づけられたコンテキスト単位<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>サブドメインまたは境界づけられたコンテキストを単位として、マイクロサービスを分割とする。</p>
-<table>
-<thead>
-<tr>
-<th>現状のモノリスの分割段階</th>
-<th style="text-align: center;">境界づけられたコンテキスト</th>
-<th style="text-align: center;">サブドメイン</th>
-<th style="text-align: center;">機能単位</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>すでにサブドメインに分割されている</td>
-<td style="text-align: center;">不可</td>
-<td style="text-align: center;">不可</td>
-<td style="text-align: center;">記入中...</td>
-</tr>
-<tr>
-<td>すでに複数のサブドメインを含む境界づけられたコンテキストに分割されている</td>
-<td style="text-align: center;">不可</td>
-<td style="text-align: center;">可</td>
-<td style="text-align: center;">記入中...</td>
-</tr>
-<tr>
-<td>すでに単一のサブドメインを含む境界づけられたコンテキストに分割されている</td>
-<td style="text-align: center;">可</td>
-<td style="text-align: center;">可</td>
-<td style="text-align: center;">記入中...</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/crossroad0201/items/32673d3e52e006205c48#ddd%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E8%80%83%E5%AF%9F">https://qiita.com/crossroad0201/items/32673d3e52e006205c48#ddd%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E8%80%83%E5%AF%9F</a></li>
-</ul>
-</blockquote>
-<p>解決領域となる境界づけられたコンテキストがサブドメインの中に<code>1</code>個しか含まれていない場合は、境界づけられたコンテキストでマイクロサービスを分割することになる。</p>
-<p>図にて、境界づけられたコンテキスト間で、『利用者』という名詞に対する定義づけ/意味合いが異なっていることに留意する。</p>
-<p>ドメイン駆動設計では境界づけられたコンテキストが<code>1</code>個のアプリケーションに相当するため、境界づけられたコンテキストで分割した場合、マイクロサービスアーキテクチャは複数のアプリケーションから構成されるアーキテクチャと捉えられる。</p>
-<p>加えて小さな粒度に分割する方法として、ルートエンティティを粒度ともできる。</p>
-<p><img alt="service_bounded-context" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_bounded-context.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://docs.microsoft.com/ja-jp/dotnet/architecture/microservices/architect-microservice-container-applications/identify-microservice-domain-model-boundaries">https://docs.microsoft.com/ja-jp/dotnet/architecture/microservices/architect-microservice-container-applications/identify-microservice-domain-model-boundaries</a></li>
-<li><a href="https://microservices.io/patterns/decomposition/decompose-by-subdomain.html">https://microservices.io/patterns/decomposition/decompose-by-subdomain.html</a></li>
-<li><a href="https://www.amazon.co.jp/dp/4873119316/">https://www.amazon.co.jp/dp/4873119316/</a></li>
-<li><a href="https://booth.pm/ja/items/1835632">https://booth.pm/ja/items/1835632</a></li>
-</ul>
-</blockquote>
-<h4 id="_22">▼ ルートエンティティ単位 (エンティティサービス)<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>『エンティティサービス』ともいう。</p>
-<p>ドメイン層のルートエンティティを単位として、マイクロサービスを分割する。</p>
-<p>この場合、境界づけられたコンテキストよりもマイクロサービスの粒度が小さい。</p>
-<p>そのため、複数のマイクロサービスで1つの境界づけられたコンテキストを構成することになり、異なるマイクロサービスが同じ種類のデータを持つオブジェクトを処理する。</p>
-<p>ドメイン層にはマイクロサービス (例：〇〇ドメインサービス) があり、ドメイン層以外のレイヤー (インターフェース層、ユースケース層、リポジトリ層) はマイクロサービスではない。</p>
-<p>DBレコードの書き込み/読み出しのトランザクションをルートエンティティ単位で実行するため、マイクロサービスの単位がわかりやすい。</p>
-<p>一方で、データに着目したステートソーシングパターンのルートエンティティを使用することはアンチパターンである。</p>
-<p>最良な解決策として、振舞に着目したイベントソーシングを使用する必要がある。</p>
-<p>また、各マイクロサービスを名詞ではなく動詞 (例：〇〇管理サービス、〇〇中継サービス、〇〇通知サービス、〇〇集計サービス) で命名すると良い。</p>
-<p>その他、各マイクロサービスでDBを完全に独立させることや、SAGAパターンを使用すること、がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.koslib.com/posts/entity-services-anti-pattern/">https://www.koslib.com/posts/entity-services-anti-pattern/</a></li>
-<li><a href="https://www.michaelnygard.com/blog/2018/01/services-by-lifecycle/">https://www.michaelnygard.com/blog/2018/01/services-by-lifecycle/</a></li>
-<li><a href="https://medium.com/transferwise-engineering/how-to-avoid-entity-services-58bacbe3ee0b">https://medium.com/transferwise-engineering/how-to-avoid-entity-services-58bacbe3ee0b</a></li>
-<li><a href="https://www.infoq.com/news/2017/12/entity-services-antipattern/">https://www.infoq.com/news/2017/12/entity-services-antipattern/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_23">分割アンチパターン<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
-<h4 id="_24">▼ 分散モノリス<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
-<p>複数のマイクロサービスをセットでデプロイしなければならず、マイクロサービス間のデプロイが独立していないような分割パターン。</p>
-<p>例えば、マイクロサービス間で重複するロギングライブラリをマイクロサービスとして分離した結果、複数のマイクロサービスがこのロギングマイクロサービスに依存してしまうような場合がある。</p>
-<p>分散モノリスにならないように、マイクロサービス間で使用するライブラリが重複することを許容する必要がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.infoq.com/jp/news/2016/03/services-distributed-monolith/">https://www.infoq.com/jp/news/2016/03/services-distributed-monolith/</a></li>
-<li><a href="https://r-kaga.com/blog/what-is-distributed-monolith">https://r-kaga.com/blog/what-is-distributed-monolith</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="03">03. リポジトリ層<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_25">分割パターン<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
-<h4 id="_26">▼ ドメイン層と同じマイクロサービス<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
-<p>ドメイン層と同じマイクロサービス内で実行する。</p>
-<p>最も一般的な分割パターンである。</p>
-<h4 id="_27">▼ ドメイン層とは異なるマイクロサービス + 占有リポジトリ単位 (ルートエンティティ単位)<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
-<p>ドメイン層とは異なるマイクロサービス内で実行する。</p>
-<p>また、占有リポジトリを単位として、マイクロサービスを分割する。</p>
-<p>ドメイン駆動設計では、DBレコードの書き込み/読み出しのトランザクションをルートエンティティ単位で実行する。</p>
-<p>そのため、リポジトリは実際にはルートエンティティに対応しており、ルートエンティティ単位で分割すると言い換えても良い。</p>
-<blockquote>
-<ul>
-<li><a href="https://codezine.jp/article/detail/10776">https://codezine.jp/article/detail/10776</a></li>
-</ul>
-</blockquote>
-<h4 id="_28">▼ ドメイン層とは異なるマイクロサービス + 共有リポジトリ単位 (ルートエンティティ単位)<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
-<p>ドメイン層とは異なるマイクロサービス内で実行する。</p>
-<p>また、共有リポジトリを単位として、マイクロサービスを分割する。</p>
-<p>ただ、境界づけられたコンテキストは他のコンテキストとは異なるルートエンティティを持つため、リポジトリも完全に独立しているはずである。</p>
-<p>そのため、異なる境界づけられたコンテキストのマイクロサービスが、同じリポジトリを共有することは起こらないはずである。</p>
-<p>逆に言うと、複数のマイクロサービスがリポジトリを共有している場合、それらのマイクロサービスは同じコンテキストに属しており、分割する必要がないということになる。</p>
-<p>これらのことから、この分割パターンはあまり良くない (出典は俺) 。</p>
-<p><br></p>
-<h2 id="04-api">04. APIアグリゲーション層<a class="headerlink" href="#04-api" title="Permanent link">&para;</a></h2>
-<h3 id="api">APIアグリゲーション層とは<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
-<p>全てのAPIまたは複数のAPIのセットとして機能する。</p>
-<p><br></p>
-<h2 id="04-02-api">04-02. APIゲートウェイ<a class="headerlink" href="#04-02-api" title="Permanent link">&para;</a></h2>
-<h3 id="api_1">APIゲートウェイとは<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h3>
-<p><img alt="microservices_api-gateway-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_api-gateway-pattern.png" /></p>
-<p>クリーンアーキテクチャでいうインフラストラクチャ層とインターフェース層のような機能を担う。</p>
-<p>主要な機能として、受信した通信を適切なマイクロサービスのAPIにルーティング</p>
-<ul>
-<li>ルーティング</li>
-<li>認証</li>
-<li>トレースIDの付与</li>
-<li>キャッシュの作成</li>
-<li>リクエストのレートリミット</li>
-<li>通信の暗号化</li>
-<li>...</li>
-</ul>
-<p>なお、APIゲートウェイをサービスメッシュに参加させることで、これらの機能の一部 (認証、トレースIDの付与、通信の暗号化、リクエスト制限) をサイドカーに委譲できる。</p>
-<blockquote>
-<ul>
-<li><a href="https://banzaicloud.com/blog/backyards-api-gateway/#api-gateway-pattern">https://banzaicloud.com/blog/backyards-api-gateway/#api-gateway-pattern</a></li>
-<li><a href="https://www.getambassador.io/resources/challenges-api-gateway-kubernetes/">https://www.getambassador.io/resources/challenges-api-gateway-kubernetes/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_29">分割パターン<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
-<h4 id="api_2">▼ APIゲートウェイの分割パターンとは<a class="headerlink" href="#api_2" title="Permanent link">&para;</a></h4>
-<p>APIゲートウェイの責務をどのように分割するかに応じて、分割パターンがある。</p>
-<h4 id="central-aggregating-gateway">▼ Central Aggregating Gateway<a class="headerlink" href="#central-aggregating-gateway" title="Permanent link">&para;</a></h4>
-<p>マイクロサービスにリクエストを送信するアプリケーションの種類に関係なく、APIゲートウェイを<code>1</code>個だけ作成する。</p>
-<p><img alt="apigateway_public-api-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_public-api-pattern.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/">https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/</a></li>
-<li><a href="https://www.linkedin.com/posts/raul-junco_nobody-likes-making-20-calls-to-render-a-activity-7198293633882632192-3QS4/">https://www.linkedin.com/posts/raul-junco_nobody-likes-making-20-calls-to-render-a-activity-7198293633882632192-3QS4/</a></li>
-</ul>
-</blockquote>
-<h4 id="bffbackends-for-frontends">▼ BFF：Backends For Frontends<a class="headerlink" href="#bffbackends-for-frontends" title="Permanent link">&para;</a></h4>
-<p>マイクロサービスにリクエストを送信するクライアントアプリケーションの種類 (Webアプリケーション、モバイルアプリケーション、他社向けアプリケーションなど) を単位として、APIゲートウェイ (Web APIゲートウェイ、Mobile APIゲートウェイ、他社向けAPIゲートウェイなど) を作成する。</p>
-<p>ただし、ドメインによっては同じクライアントアプリケーションの種類であっても、APIゲートウェイを分割することもある。</p>
-<p>例えば、送金ドメインであれば、クライアントアプリケーションには銀行ダイレクトアプリや銀行系決済サービスアプリがあり、これらが同じモバイルアプリケーションであっても、APIゲートウェイを分割する。</p>
-<p>なお、BFFはRESTful-APIであってもGraphQL-APIであっても、どちらでも問題ない。</p>
-<p><img alt="apigateway_bff-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_bff-pattern.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/">https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/</a></li>
-<li><a href="https://codezine.jp/article/detail/11305?p=4">https://codezine.jp/article/detail/11305?p=4</a></li>
-<li><a href="https://www.watch.impress.co.jp/docs/news/1339451.html">https://www.watch.impress.co.jp/docs/news/1339451.html</a></li>
-<li><a href="https://stackoverflow.com/a/73598888">https://stackoverflow.com/a/73598888</a></li>
-</ul>
-</blockquote>
-<h4 id="federated-gateway">▼ Federated Gateway<a class="headerlink" href="#federated-gateway" title="Permanent link">&para;</a></h4>
-<p>BFFではアプリケーションの種類ごとにAPI　Gatewayを作成したが、Federated Gatewayでは各APIゲートウェイのエンドポイントを統合する。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.ey-office.com/blog_archive/2021/12/23/i-checked-graphql-federation/">https://www.ey-office.com/blog_archive/2021/12/23/i-checked-graphql-federation/</a></li>
-<li><a href="https://tech.smartshopping.co.jp/backend-development-with-graphql">https://tech.smartshopping.co.jp/backend-development-with-graphql</a></li>
-<li><a href="https://speakerdeck.com/sonatard/purotokoru-intahuesutositenographql?slide=32">https://speakerdeck.com/sonatard/purotokoru-intahuesutositenographql?slide=32</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="api_3">API形式パターン<a class="headerlink" href="#api_3" title="Permanent link">&para;</a></h3>
-<h4 id="apiapi">▼ APIゲートウェイのAPI形式パターンとは<a class="headerlink" href="#apiapi" title="Permanent link">&para;</a></h4>
-<p>APIゲートウェイのAPI形式に応じて、分割パターンがある。</p>
-<h4 id="restful-api">▼ RESTful-API<a class="headerlink" href="#restful-api" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<h4 id="graphql-api">▼ GraphQL-API<a class="headerlink" href="#graphql-api" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<h4 id="rpc-api">▼ RPC-API<a class="headerlink" href="#rpc-api" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<p><br></p>
-<h3 id="_30">責務パターン<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
-<h4 id="gateway-offloading">▼ Gateway Offloadingパターン<a class="headerlink" href="#gateway-offloading" title="Permanent link">&para;</a></h4>
-<p>APIゲートウェイは、マイクロサービス間で共通する課題 (認証、ロギング、SSL証明書など) を処理する責務を持ちます。</p>
-<blockquote>
-<ul>
-<li><a href="https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-offloading">https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-offloading</a></li>
-</ul>
-</blockquote>
-<h4 id="gateway">▼ Gatewayルーティングパターン<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h4>
-<p>APIゲートウェイは、複数のマイクロサービスにリクエストをルーティングする責務を持ちます。</p>
-<blockquote>
-<ul>
-<li><a href="https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-routing">https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-routing</a></li>
-</ul>
-</blockquote>
-<h4 id="gateway_1">▼ Gatewayアグリゲーターパターン<a class="headerlink" href="#gateway_1" title="Permanent link">&para;</a></h4>
-<p>APIゲートウェイにAPI Compositionを適用した方法である。</p>
-<blockquote>
-<ul>
-<li><a href="https://stackoverflow.com/a/68074337/12771072">https://stackoverflow.com/a/68074337/12771072</a></li>
-<li><a href="https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-aggregation">https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-aggregation</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_31">実装パターン<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
-<h4 id="_32">▼ 自前で実装する場合<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
-<p>APIゲートウェイを自前 (例：フルスクラッチ、GraphQLを使用したフルスクラッチなど) で実装する。</p>
-<p>Kubernetes内で管理できるメリットがある。</p>
-<p>GraphQLでAPIゲートウェイを実装する場合は、特に注意が必要である。</p>
-<p>フロントエンドとAPIゲートウェイの両方でGraphQL特有の実装が必要になるので、フロントエンドとAPIゲートウェイの開発が分業にしくくなってしまう。</p>
-<p>ただ、フロントエンドとAPIゲートウェイの開発チームの両方がGraphQLの知識を持ってれば、これは起こらない。</p>
-<blockquote>
-<ul>
-<li><a href="https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy">https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy</a></li>
-<li><a href="https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9">https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9</a></li>
-</ul>
-</blockquote>
-<h4 id="oss">▼ OSSを使用する場合<a class="headerlink" href="#oss" title="Permanent link">&para;</a></h4>
-<p>APIゲートウェイのOSS (Kong、Tyk、Apigee、Kuma、Nginx、Envoy、Apache APISIXなど) を使用する。</p>
-<p>Kubernetes内で管理できるメリットがある。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/">https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/</a></li>
-<li><a href="https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9">https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9</a></li>
-</ul>
-</blockquote>
-<h4 id="_33">▼ クラウドプロバイダーのマネージドサービスを使用する場合<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
-<p>クラウドプロバイダー (例：AWS、Google Cloud) が提供するAPIゲートウェイ (例：AWS API Gateway、Google API Gateway) を使用する。</p>
-<p>クラウドプロバイダーの対応状況によっては、Kubernetes内で管理できない可能性がある。</p>
-<p>その場合、フロントエンドアプリケーションがAPIゲートウェイに通信できるように、フロントエンドアプリケーションとバックエンドアプリケーションを異なるKubernetesで動かす必要がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/">https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/</a></li>
-<li><a href="https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9">https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9</a></li>
-</ul>
-</blockquote>
-<p><br></p>
 
 
 
@@ -25711,7 +24730,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-22</span>
   </span>
 
     

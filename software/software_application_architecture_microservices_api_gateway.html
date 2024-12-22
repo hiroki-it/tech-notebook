@@ -6,19 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="DB＠マイクロサービスアーキテクチャの知見を記録しています。">
+        <meta name="description" content="APIゲートウェイ＠マイクロサービスアーキテクチャの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_database.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_api_gateway.html">
       
       
-        <link rel="prev" href="software_application_architecture_microservices_auth.html">
-      
-      
-        <link rel="next" href="software_application_architecture_microservices_network.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】DB＠マイクロサービスアーキテクチャ - 俺の技術ノート</title>
+        <title>【IT技術の知見】APIゲートウェイ＠マイクロサービスアーキテクチャ - 俺の技術ノート</title>
       
     
     
@@ -90,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#db" class="md-skip">
+        <a href="#_1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】DB＠マイクロサービスアーキテクチャ
+              【IT技術の知見】APIゲートウェイ＠マイクロサービスアーキテクチャ
             
           </span>
         </div>
@@ -274,12 +270,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="application/index.html" class="md-tabs__link">
           
   
@@ -945,8 +939,6 @@
       
   
   
-    
-  
   
   
     
@@ -973,17 +965,16 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
         
           
           
@@ -999,13 +990,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             🚀 アプリ
@@ -1352,16 +1343,10 @@
                 
   
   
-    
   
   
-  
     
     
-      
-        
-      
-        
       
         
       
@@ -1381,11 +1366,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5" >
         
           
           <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
@@ -1399,7 +1386,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_5">
             <span class="md-nav__icon md-icon"></span>
             ■ マイクロサービスアーキテクチャ
@@ -1433,8 +1420,121 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_2" id="__nav_5_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ マイクロサービス
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ マイクロサービス
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="software_application_architecture_microservices_auth.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_services_design.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    マイクロサービス設計
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_microservices_services_connection.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    マイクロサービス間通信
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_microservices_services_transaction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    トランザクション管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_microservices_services_auth.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1448,822 +1548,8 @@
 
               
             
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    DB
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="software_application_architecture_microservices_database.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    DB
-  </span>
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      はじめに
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-db" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. DBのデザインパターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01. DBのデザインパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db-shared-database" class="md-nav__link">
-    <span class="md-ellipsis">
-      共有DBパターン (Shared database)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="共有DBパターン (Shared database)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 共有DBパターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ マイクロサービス別のスキーマ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ マイクロサービス別のテーブル
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db-database-per-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      マイクロサービス別DBパターン (Database per service)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="マイクロサービス別DBパターン (Database per service)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ マイクロサービス別DBパターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 境界づけられたコンテキスト分割とも相性がいい
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-db" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. マイクロサービス別DBパターンの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. マイクロサービス別DBパターンの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      ローカルトランザクション
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ローカルトランザクション">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ローカルトランザクションとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ローカルトランザクションの実行パターンの種類
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      グローバルトランザクション (分散トランザクション)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="グローバルトランザクション (分散トランザクション)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ グローバルトランザクションとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ グローバルトランザクションの実行パターンの種類
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. トランザクションパターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. トランザクションパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      共有DBパターンの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      マイクロサービス別DBの場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. ２フェーズコミットパターン (二相コミットパターン)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. ２フェーズコミットパターン (二相コミットパターン)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ２フェーズコミットパターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      実装パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="実装パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#oss" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ OSSを使用する場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ クラウドプロバイダーのマネージドサービスを使用する場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-saga" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. Sagaパターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. Sagaパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#saga" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sagaパターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sagaacid" class="md-nav__link">
-    <span class="md-ellipsis">
-      SagaパターンとACID
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      デザインパターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="デザインパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#state" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Stateパターン
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-02-saga" class="md-nav__link">
-    <span class="md-ellipsis">
-      04-02. オーケストレーションベースのSagaパターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04-02. オーケストレーションベースのSagaパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#saga_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      オーケストレーションベースのSagaパターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      実装パターン (リクエスト/レスポンスパターン、パブリッシュ/サブスクライブパターン)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="実装パターン (リクエスト/レスポンスパターン、パブリッシュ/サブスクライブパターン)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 自前で実装する場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#oss_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ OSSを使用する場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ クラウドプロバイダーのマネージドサービスを使用する場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sagadb" class="md-nav__link">
-    <span class="md-ellipsis">
-      SagaオーケストレーターのDB
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#saga_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sagaオーケストレーターのステータスチェッカー
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Sagaオーケストレーターのステータスチェッカー">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#saga_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Sagaオーケストレーターのステータスチェッカーとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ポーリングパターンの場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#saga_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sagaオーケストレーターのワーカー
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Sagaオーケストレーターのワーカー">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ポイントツーポイントの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ メッセージキューを経由する場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ メッセージブローカーを経由する場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      補償トランザクション
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="補償トランザクション">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 補償トランザクションとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 設計例
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#godefer" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 実装例 (Goのdefer関数)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#goslice" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 実装例 (Goのslice)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#typescript" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 実装例 (TypeScriptの配列)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#goslice_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 実装例 (Goのslice)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#outbox" class="md-nav__link">
-    <span class="md-ellipsis">
-      Outboxパターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Outboxパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#outbox_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Outboxパターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#polling-publisher" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Polling publisherパターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#transaction-log-tailing" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Transaction log tailingパターンとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-03-choreography-saga" class="md-nav__link">
-    <span class="md-ellipsis">
-      04-03. Choreography (コレオグラフィ) ベースのSagaパターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04-03. Choreography (コレオグラフィ) ベースのSagaパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#saga_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      コレオグラフィベースのSagaパターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    <span class="md-ellipsis">
-      実装パターン (パブリッシュ/サブスクライブパターン)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="実装パターン (パブリッシュ/サブスクライブパターン)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 自前で実装する場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#oss_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ OSSを使用する場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ クラウドプロバイダーのマネージドサービスを使用する場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
-    <span class="md-ellipsis">
-      後続マイクロサービスとの通信方式
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-04-saga" class="md-nav__link">
-    <span class="md-ellipsis">
-      04-04. 並列パイプラインベースのSagaパターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04-04. 並列パイプラインベースのSagaパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#saga_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      並列パイプラインベースのSagaパターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    <span class="md-ellipsis">
-      実装パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="実装パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#oss_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ OSSを使用する場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#05-tcc" class="md-nav__link">
-    <span class="md-ellipsis">
-      05. TCCパターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="05. TCCパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tcc" class="md-nav__link">
-    <span class="md-ellipsis">
-      TCCパターンとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#06" class="md-nav__link">
-    <span class="md-ellipsis">
-      06. クエリパターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="06. クエリパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#api-composition" class="md-nav__link">
-    <span class="md-ellipsis">
-      API Composition
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
+          </ul>
+        </nav>
       
     </li>
   
@@ -2277,32 +1563,11 @@
   
   
     <li class="md-nav__item">
-      <a href="software_application_architecture_microservices_network.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_storage.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    ネットワーク
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="software_application_architecture_microservices_security.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    セキュリティ
+    ストレージ
   </span>
   
 
@@ -24610,8 +23875,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -24629,29 +23892,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-db" class="md-nav__link">
+  <a href="#01-api" class="md-nav__link">
     <span class="md-ellipsis">
-      01. DBのデザインパターン
+      01. APIゲートウェイ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. DBのデザインパターン">
+    <nav class="md-nav" aria-label="01. APIゲートウェイ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#db-shared-database" class="md-nav__link">
+  <a href="#api" class="md-nav__link">
     <span class="md-ellipsis">
-      共有DBパターン (Shared database)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="共有DBパターン (Shared database)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 共有DBパターンとは
+      APIゲートウェイとは
     </span>
   </a>
   
@@ -24660,16 +23913,137 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ マイクロサービス別のスキーマ
+      分割パターン
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="分割パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ APIゲートウェイの分割パターンとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#central-aggregating-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Central Aggregating Gateway
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bffbackends-for-frontends" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ BFF：Backends For Frontends
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#federated-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Federated Gateway
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      API形式パターン
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API形式パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apiapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ APIゲートウェイのAPI形式パターンとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restful-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ RESTful-API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphql-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ GraphQL-API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rpc-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ RPC-API
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ マイクロサービス別のテーブル
+      責務パターン
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="責務パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gateway-offloading" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Gateway Offloadingパターン
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Gatewayルーティングパターン
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gateway_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Gatewayアグリゲーターパターン
     </span>
   </a>
   
@@ -24677,182 +24051,11 @@
         
       </ul>
     </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db-database-per-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      マイクロサービス別DBパターン (Database per service)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="マイクロサービス別DBパターン (Database per service)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ マイクロサービス別DBパターンとは
-    </span>
-  </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 境界づけられたコンテキスト分割とも相性がいい
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-db" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. マイクロサービス別DBパターンの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. マイクロサービス別DBパターンの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      ローカルトランザクション
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ローカルトランザクション">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ローカルトランザクションとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ローカルトランザクションの実行パターンの種類
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      グローバルトランザクション (分散トランザクション)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="グローバルトランザクション (分散トランザクション)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ グローバルトランザクションとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ グローバルトランザクションの実行パターンの種類
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. トランザクションパターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. トランザクションパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      共有DBパターンの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      マイクロサービス別DBの場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. ２フェーズコミットパターン (二相コミットパターン)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. ２フェーズコミットパターン (二相コミットパターン)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ２フェーズコミットパターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン
     </span>
@@ -24860,6 +24063,15 @@
   
     <nav class="md-nav" aria-label="実装パターン">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 自前で実装する場合
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#oss" class="md-nav__link">
@@ -24871,7 +24083,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ クラウドプロバイダーのマネージドサービスを使用する場合
     </span>
@@ -24890,484 +24102,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-saga" class="md-nav__link">
+  <a href="#02-api" class="md-nav__link">
     <span class="md-ellipsis">
-      04. Sagaパターン
+      02. APIアグリゲーション層
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. Sagaパターン">
+    <nav class="md-nav" aria-label="02. APIアグリゲーション層">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#saga" class="md-nav__link">
+  <a href="#api_3" class="md-nav__link">
     <span class="md-ellipsis">
-      Sagaパターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sagaacid" class="md-nav__link">
-    <span class="md-ellipsis">
-      SagaパターンとACID
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      デザインパターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="デザインパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#state" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Stateパターン
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-02-saga" class="md-nav__link">
-    <span class="md-ellipsis">
-      04-02. オーケストレーションベースのSagaパターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04-02. オーケストレーションベースのSagaパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#saga_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      オーケストレーションベースのSagaパターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      実装パターン (リクエスト/レスポンスパターン、パブリッシュ/サブスクライブパターン)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="実装パターン (リクエスト/レスポンスパターン、パブリッシュ/サブスクライブパターン)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 自前で実装する場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#oss_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ OSSを使用する場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ クラウドプロバイダーのマネージドサービスを使用する場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sagadb" class="md-nav__link">
-    <span class="md-ellipsis">
-      SagaオーケストレーターのDB
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#saga_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sagaオーケストレーターのステータスチェッカー
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Sagaオーケストレーターのステータスチェッカー">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#saga_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Sagaオーケストレーターのステータスチェッカーとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ポーリングパターンの場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#saga_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sagaオーケストレーターのワーカー
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Sagaオーケストレーターのワーカー">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ポイントツーポイントの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ メッセージキューを経由する場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ メッセージブローカーを経由する場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      補償トランザクション
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="補償トランザクション">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 補償トランザクションとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 設計例
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#godefer" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 実装例 (Goのdefer関数)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#goslice" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 実装例 (Goのslice)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#typescript" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 実装例 (TypeScriptの配列)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#goslice_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 実装例 (Goのslice)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#outbox" class="md-nav__link">
-    <span class="md-ellipsis">
-      Outboxパターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Outboxパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#outbox_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Outboxパターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#polling-publisher" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Polling publisherパターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#transaction-log-tailing" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Transaction log tailingパターンとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-03-choreography-saga" class="md-nav__link">
-    <span class="md-ellipsis">
-      04-03. Choreography (コレオグラフィ) ベースのSagaパターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04-03. Choreography (コレオグラフィ) ベースのSagaパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#saga_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      コレオグラフィベースのSagaパターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    <span class="md-ellipsis">
-      実装パターン (パブリッシュ/サブスクライブパターン)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="実装パターン (パブリッシュ/サブスクライブパターン)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 自前で実装する場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#oss_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ OSSを使用する場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ クラウドプロバイダーのマネージドサービスを使用する場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
-    <span class="md-ellipsis">
-      後続マイクロサービスとの通信方式
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-04-saga" class="md-nav__link">
-    <span class="md-ellipsis">
-      04-04. 並列パイプラインベースのSagaパターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04-04. 並列パイプラインベースのSagaパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#saga_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      並列パイプラインベースのSagaパターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    <span class="md-ellipsis">
-      実装パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="実装パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#oss_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ OSSを使用する場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#05-tcc" class="md-nav__link">
-    <span class="md-ellipsis">
-      05. TCCパターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="05. TCCパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tcc" class="md-nav__link">
-    <span class="md-ellipsis">
-      TCCパターンとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#06" class="md-nav__link">
-    <span class="md-ellipsis">
-      06. クエリパターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="06. クエリパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#api-composition" class="md-nav__link">
-    <span class="md-ellipsis">
-      API Composition
+      APIアグリゲーション層とは
     </span>
   </a>
   
@@ -25396,7 +24143,8 @@
   
 
 
-<h1 id="db">DB＠マイクロサービスアーキテクチャ<a class="headerlink" href="#db" title="Permanent link">&para;</a></h1>
+  <h1>【IT技術の知見】APIゲートウェイ＠マイクロサービスアーキテクチャ</h1>
+
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -25405,972 +24153,134 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-db">01. DBのデザインパターン<a class="headerlink" href="#01-db" title="Permanent link">&para;</a></h2>
-<h3 id="db-shared-database">共有DBパターン (Shared database)<a class="headerlink" href="#db-shared-database" title="Permanent link">&para;</a></h3>
-<h4 id="db_1">▼ 共有DBパターンとは<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h4>
-<p>各マイクロサービスで共有するDBを<code>1</code>個だけ用意する。</p>
-<p>この場合、単一のDB上で、スキーマやテーブルをマイクロサービスごとに作成する必要がある。</p>
-<blockquote>
+<h2 id="01-api">01. APIゲートウェイ<a class="headerlink" href="#01-api" title="Permanent link">&para;</a></h2>
+<h3 id="api">APIゲートウェイとは<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
+<p><img alt="microservices_api-gateway-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_api-gateway-pattern.png" /></p>
+<p>クリーンアーキテクチャでいうインフラストラクチャ層とインターフェース層のような機能を担う。</p>
+<p>主要な機能として、受信した通信を適切なマイクロサービスのAPIにルーティング</p>
 <ul>
-<li><a href="https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2">https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2</a></li>
-<li><a href="https://microservices.io/patterns/data/shared-database.html">https://microservices.io/patterns/data/shared-database.html</a></li>
+<li>ルーティング</li>
+<li>認証</li>
+<li>トレースIDの付与</li>
+<li>キャッシュの作成</li>
+<li>リクエストのレートリミット</li>
+<li>通信の暗号化</li>
+<li>...</li>
 </ul>
-</blockquote>
-<h4 id="_2">▼ マイクロサービス別のスキーマ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>共有DBの場合に、マイクロサービス別にスキーマを作成する。</p>
-<p><img alt="microservices_share-db_diff-table" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_share-db_diff-table.png" /></p>
+<p>なお、APIゲートウェイをサービスメッシュに参加させることで、これらの機能の一部 (認証、トレースIDの付与、通信の暗号化、リクエスト制限) をサイドカーに委譲できる。</p>
 <blockquote>
 <ul>
-<li><a href="https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2">https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h4 id="_3">▼ マイクロサービス別のテーブル<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>共有DBの場合に、マイクロサービス別にテーブルを作成する。</p>
-<p><img alt="microservices_share-db_diff-scheme" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_share-db_diff-scheme.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2">https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2</a></li>
+<li><a href="https://banzaicloud.com/blog/backyards-api-gateway/#api-gateway-pattern">https://banzaicloud.com/blog/backyards-api-gateway/#api-gateway-pattern</a></li>
+<li><a href="https://www.getambassador.io/resources/challenges-api-gateway-kubernetes/">https://www.getambassador.io/resources/challenges-api-gateway-kubernetes/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="db-database-per-service">マイクロサービス別DBパターン (Database per service)<a class="headerlink" href="#db-database-per-service" title="Permanent link">&para;</a></h3>
-<h4 id="db_2">▼ マイクロサービス別DBパターンとは<a class="headerlink" href="#db_2" title="Permanent link">&para;</a></h4>
-<p>各マイクロサービスで個別にDBを用意する。</p>
-<p>ローカルトランザクションや分散トランザクションを実施する必要がある。</p>
-<p><img alt="microservices_diff-db" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_diff-db.png" /></p>
+<h3 id="_2">分割パターン<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="api_1">▼ APIゲートウェイの分割パターンとは<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h4>
+<p>APIゲートウェイの責務をどのように分割するかに応じて、分割パターンがある。</p>
+<h4 id="central-aggregating-gateway">▼ Central Aggregating Gateway<a class="headerlink" href="#central-aggregating-gateway" title="Permanent link">&para;</a></h4>
+<p>マイクロサービスにリクエストを送信するアプリケーションの種類に関係なく、APIゲートウェイを<code>1</code>個だけ作成する。</p>
+<p><img alt="apigateway_public-api-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_public-api-pattern.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://microservices.io/patterns/data/database-per-service.html">https://microservices.io/patterns/data/database-per-service.html</a></li>
-<li><a href="https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2">https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2</a></li>
+<li><a href="https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/">https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/</a></li>
+<li><a href="https://www.linkedin.com/posts/raul-junco_nobody-likes-making-20-calls-to-render-a-activity-7198293633882632192-3QS4/">https://www.linkedin.com/posts/raul-junco_nobody-likes-making-20-calls-to-render-a-activity-7198293633882632192-3QS4/</a></li>
 </ul>
 </blockquote>
-<h4 id="_4">▼ 境界づけられたコンテキスト分割とも相性がいい<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>マイクロサービスを境界づけられたコンテキスト単位で分割した場合に、マイクロサービスごとに異なる集約エンティティを持つため、永続化のデータ単位を分割できる。</p>
-<p>これにより、各マイクロサービスが異なるデータベースを持っていても、トランザクションは異なるはずである。</p>
+<h4 id="bffbackends-for-frontends">▼ BFF：Backends For Frontends<a class="headerlink" href="#bffbackends-for-frontends" title="Permanent link">&para;</a></h4>
+<p>マイクロサービスにリクエストを送信するクライアントアプリケーションの種類 (Webアプリケーション、モバイルアプリケーション、他社向けアプリケーションなど) を単位として、APIゲートウェイ (Web APIゲートウェイ、Mobile APIゲートウェイ、他社向けAPIゲートウェイなど) を作成する。</p>
+<p>ただし、ドメインによっては同じクライアントアプリケーションの種類であっても、APIゲートウェイを分割することもある。</p>
+<p>例えば、送金ドメインであれば、クライアントアプリケーションには銀行ダイレクトアプリや銀行系決済サービスアプリがあり、これらが同じモバイルアプリケーションであっても、APIゲートウェイを分割する。</p>
+<p>なお、BFFはRESTful-APIであってもGraphQL-APIであっても、どちらでも問題ない。</p>
+<p><img alt="apigateway_bff-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_bff-pattern.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://www.amazon.co.jp/dp/1098100131">https://www.amazon.co.jp/dp/1098100131</a></li>
+<li><a href="https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/">https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/</a></li>
+<li><a href="https://codezine.jp/article/detail/11305?p=4">https://codezine.jp/article/detail/11305?p=4</a></li>
+<li><a href="https://www.watch.impress.co.jp/docs/news/1339451.html">https://www.watch.impress.co.jp/docs/news/1339451.html</a></li>
+<li><a href="https://stackoverflow.com/a/73598888">https://stackoverflow.com/a/73598888</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h2 id="02-db">02. マイクロサービス別DBパターンの場合<a class="headerlink" href="#02-db" title="Permanent link">&para;</a></h2>
-<h3 id="_5">ローカルトランザクション<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<h4 id="_6">▼ ローカルトランザクションとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p><code>1</code>個のトランザクション処理によって、<code>1</code>個のマイクロサービスのDBやスキーマ (MySQLの文脈ではスキーマがDBに相当) を操作する。</p>
-<p>推奨される。</p>
-<p>マイクロサービスアーキテクチャでローカルトランザクションを使用する場合、これを連続的に実行する仕組みが必要になる。</p>
-<p>また、これらの各DBに対する各トランザクションを紐付けられるように、トランザクションにID (例：UUID) を割り当てる必要がある。</p>
+<h4 id="federated-gateway">▼ Federated Gateway<a class="headerlink" href="#federated-gateway" title="Permanent link">&para;</a></h4>
+<p>BFFではアプリケーションの種類ごとにAPI　Gatewayを作成したが、Federated Gatewayでは各APIゲートウェイのエンドポイントを統合する。</p>
 <blockquote>
 <ul>
-<li><a href="https://software.fujitsu.com/jp/manual/manualfiles/M090098/B1WS0321/03Z200/B0321-00-03-12-01.html">https://software.fujitsu.com/jp/manual/manualfiles/M090098/B1WS0321/03Z200/B0321-00-03-12-01.html</a></li>
-<li><a href="https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2">https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2</a></li>
-</ul>
-</blockquote>
-<h4 id="_7">▼ ローカルトランザクションの実行パターンの種類<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>ローカルトランザクションベースのトランザクションパターンとして、Sagaパターンがある。</p>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420#%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E7%A8%AE%E9%A1%9E">https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420#%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E7%A8%AE%E9%A1%9E</a></li>
+<li><a href="https://www.ey-office.com/blog_archive/2021/12/23/i-checked-graphql-federation/">https://www.ey-office.com/blog_archive/2021/12/23/i-checked-graphql-federation/</a></li>
+<li><a href="https://tech.smartshopping.co.jp/backend-development-with-graphql">https://tech.smartshopping.co.jp/backend-development-with-graphql</a></li>
+<li><a href="https://speakerdeck.com/sonatard/purotokoru-intahuesutositenographql?slide=32">https://speakerdeck.com/sonatard/purotokoru-intahuesutositenographql?slide=32</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_8">グローバルトランザクション (分散トランザクション)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<h4 id="_9">▼ グローバルトランザクションとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>分散トランザクションとも言う。</p>
-<p>1個のトランザクションが含む各CRUD処理を異なるDBに対して実行する。</p>
-<p>トランザクション中の各CRUDで、宛先のDBを動的に切り替える必要がある。</p>
-<p>非推奨である。</p>
-<blockquote>
-<ul>
-<li><a href="https://thinkit.co.jp/article/14639?page=0%2C1">https://thinkit.co.jp/article/14639?page=0%2C1</a></li>
-</ul>
-</blockquote>
-<h4 id="_10">▼ グローバルトランザクションの実行パターンの種類<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>グローバルトランザクションのトランザクションパターンとして、二相コミット (２フェーズコミット) がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.ogis-ri.co.jp/otc/hiroba/technical/DTP/step2/">https://www.ogis-ri.co.jp/otc/hiroba/technical/DTP/step2/</a></li>
-<li><a href="https://thinkit.co.jp/article/19251">https://thinkit.co.jp/article/19251</a></li>
-</ul>
-</blockquote>
+<h3 id="api_2">API形式パターン<a class="headerlink" href="#api_2" title="Permanent link">&para;</a></h3>
+<h4 id="apiapi">▼ APIゲートウェイのAPI形式パターンとは<a class="headerlink" href="#apiapi" title="Permanent link">&para;</a></h4>
+<p>APIゲートウェイのAPI形式に応じて、分割パターンがある。</p>
+<h4 id="restful-api">▼ RESTful-API<a class="headerlink" href="#restful-api" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<h4 id="graphql-api">▼ GraphQL-API<a class="headerlink" href="#graphql-api" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<h4 id="rpc-api">▼ RPC-API<a class="headerlink" href="#rpc-api" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
 <p><br></p>
-<h2 id="03">03. トランザクションパターン<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="db_3">共有DBパターンの場合<a class="headerlink" href="#db_3" title="Permanent link">&para;</a></h3>
-<ul>
-<li>パターン不要 (各マイクロサービスの従来のトランザクション)</li>
-</ul>
+<h3 id="_3">責務パターン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="gateway-offloading">▼ Gateway Offloadingパターン<a class="headerlink" href="#gateway-offloading" title="Permanent link">&para;</a></h4>
+<p>APIゲートウェイは、マイクロサービス間で共通する課題 (認証、ロギング、SSL証明書など) を処理する責務を持ちます。</p>
 <blockquote>
 <ul>
-<li><a href="https://microservices.io/patterns/data/shared-database.html">https://microservices.io/patterns/data/shared-database.html</a></li>
-<li><a href="https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared">https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared</a></li>
+<li><a href="https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-offloading">https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-offloading</a></li>
 </ul>
 </blockquote>
-<h3 id="db_4">マイクロサービス別DBの場合<a class="headerlink" href="#db_4" title="Permanent link">&para;</a></h3>
-<ul>
-<li>二相コミットパターン</li>
-<li>Sagaパターン (オーケストレーションベース、コレグラフィベース、並列パイプラインベース)</li>
-</ul>
+<h4 id="gateway">▼ Gatewayルーティングパターン<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h4>
+<p>APIゲートウェイは、複数のマイクロサービスにリクエストをルーティングする責務を持ちます。</p>
 <blockquote>
 <ul>
-<li><a href="https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared">https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared</a></li>
+<li><a href="https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-routing">https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-routing</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h2 id="04-2">04. ２フェーズコミットパターン (二相コミットパターン)<a class="headerlink" href="#04-2" title="Permanent link">&para;</a></h2>
-<h3 id="2">２フェーズコミットパターンとは<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
-<p>『二相コミットパターン』ともいう。</p>
-<p>非推奨である。</p>
+<h4 id="gateway_1">▼ Gatewayアグリゲーターパターン<a class="headerlink" href="#gateway_1" title="Permanent link">&para;</a></h4>
+<p>APIゲートウェイにAPI Compositionを適用した方法である。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.ogis-ri.co.jp/otc/hiroba/technical/DTP/step2/">https://www.ogis-ri.co.jp/otc/hiroba/technical/DTP/step2/</a></li>
-<li><a href="https://www.excellence-blog.com/2017/03/31/%EF%BC%92%E3%83%95%E3%82%A7%E3%83%BC%E3%82%BA%E3%82%B3%E3%83%9F%E3%83%83%E3%83%88/">https://www.excellence-blog.com/2017/03/31/%EF%BC%92%E3%83%95%E3%82%A7%E3%83%BC%E3%82%BA%E3%82%B3%E3%83%9F%E3%83%83%E3%83%88/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_11">実装パターン<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<h4 id="oss">▼ OSSを使用する場合<a class="headerlink" href="#oss" title="Permanent link">&para;</a></h4>
-<p>二相コミットのOSSはなさそう。</p>
-<blockquote>
-<ul>
-<li><a href="https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared">https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared</a></li>
-</ul>
-</blockquote>
-<h4 id="_12">▼ クラウドプロバイダーのマネージドサービスを使用する場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Scalar DB</li>
-<li>Google Spanner</li>
-</ul>
-<blockquote>
-<ul>
-<li><a href="https://thinkit.co.jp/article/19251">https://thinkit.co.jp/article/19251</a></li>
-<li><a href="https://japan.zdnet.com/article/35104267/2/">https://japan.zdnet.com/article/35104267/2/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="04-saga">04. Sagaパターン<a class="headerlink" href="#04-saga" title="Permanent link">&para;</a></h2>
-<h3 id="saga">Sagaパターンとは<a class="headerlink" href="#saga" title="Permanent link">&para;</a></h3>
-<p>各マイクロサービスの永続化の間に依存関係がある場合 (例：受注データの永続化には、配送データや決済データの永続化の結果が必要) に、これらのマイクロサービスの永続化を調整する必要がある。</p>
-<p>Sagaオーケストレーターにコールされるマイクロサービスに、永続化とロールバックに関するAPIを実装する。</p>
-<p>Sagaオーケストレーターは、これらのマイクロサービスをコールし、ローカルトランザクションを連続的に実行する。</p>
-<p><img alt="saga-pattern_usecase" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_usecase.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://iorilan.medium.com/i-asked-this-system-design-question-to-3-guys-during-a-developer-interview-and-none-of-them-gave-9c23abe45687">https://iorilan.medium.com/i-asked-this-system-design-question-to-3-guys-during-a-developer-interview-and-none-of-them-gave-9c23abe45687</a></li>
-<li><a href="https://thinkit.co.jp/article/14639?page=0%2C1">https://thinkit.co.jp/article/14639?page=0%2C1</a></li>
-<li><a href="https://qiita.com/nk2/items/d9e9a220190549107282">https://qiita.com/nk2/items/d9e9a220190549107282</a></li>
-<li><a href="https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420">https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420</a></li>
-<li><a href="https://github.com/yongk/orderdemo?tab=readme-ov-file#bounded-context-mappings">https://github.com/yongk/orderdemo?tab=readme-ov-file#bounded-context-mappings</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="sagaacid">SagaパターンとACID<a class="headerlink" href="#sagaacid" title="Permanent link">&para;</a></h3>
-<blockquote>
-<ul>
-<li><a href="https://engineers.ntt.com/entry/2023/12/12/095337#Saga%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E5%AE%9F%E7%8F%BE%E3%81%95%E3%82%8C%E3%82%8B%E5%AE%89%E5%85%A8%E6%80%A7">https://engineers.ntt.com/entry/2023/12/12/095337#Saga%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E5%AE%9F%E7%8F%BE%E3%81%95%E3%82%8C%E3%82%8B%E5%AE%89%E5%85%A8%E6%80%A7</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_13">デザインパターン<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<h4 id="state">▼ Stateパターン<a class="headerlink" href="#state" title="Permanent link">&para;</a></h4>
-<p>Sagaオーケストレーターをステートマシン図やStateパターンでモデリングし、ステートマシンを実装する。</p>
-<blockquote>
-<ul>
-<li><a href="https://zenn.dev/twugo/books/21cb3a6515e7b8/viewer/b48713">https://zenn.dev/twugo/books/21cb3a6515e7b8/viewer/b48713</a></li>
-<li><a href="https://qiita.com/AsahinaKei/items/ce8e5d7bc375af23c719">https://qiita.com/AsahinaKei/items/ce8e5d7bc375af23c719</a></li>
-<li><a href="https://stackoverflow.com/a/20446959/12771072">https://stackoverflow.com/a/20446959/12771072</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="04-02-saga">04-02. オーケストレーションベースのSagaパターン<a class="headerlink" href="#04-02-saga" title="Permanent link">&para;</a></h2>
-<h3 id="saga_1">オーケストレーションベースのSagaパターンとは<a class="headerlink" href="#saga_1" title="Permanent link">&para;</a></h3>
-<p>一連のローカルトランザクションの実行をまとめて制御する責務を持ったSagaオーケストレーター (コーディネーター) と、これをコールする別のマイクロサービスを配置する。</p>
-<p>各マイクロサービス間の通信方式は、リクエスト/レスポンスパターンまたはパブリッシュ/サブスクライブパターンのどちらでもよい。</p>
-<p><img alt="orchestration" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://learn.microsoft.com/ja-jp/azure/architecture/reference-architectures/saga/saga">https://learn.microsoft.com/ja-jp/azure/architecture/reference-architectures/saga/saga</a></li>
-<li><a href="https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html">https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html</a></li>
-<li><a href="https://medium.com/google-cloud-jp/gcp-saga-microservice-7c03a16a7f9d">https://medium.com/google-cloud-jp/gcp-saga-microservice-7c03a16a7f9d</a></li>
-<li><a href="https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/">https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_14">実装パターン (リクエスト/レスポンスパターン、パブリッシュ/サブスクライブパターン)<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<h4 id="_15">▼ 自前で実装する場合<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>Sagaオーケストレーターは、ローカルトランザクションの進捗度 (Sagaログ) をDBに都度記録する。</p>
-<p>Sagaログから、いずれのローカルトランザクションを実行し終えたかを判断できる。</p>
-<p><strong>＊実装例＊</strong></p>
-<p>Sagaオーケストレーターと、これをコールする別のマイクロサービスを配置する。</p>
-<p>Sagaオーケストレーターは、各ローカルトランザクションの成否を表すSagaログをDBで管理する。</p>
-<p>Sagaオーケストレーターは、Orderサービス (<code>T1</code>) 、Inventoryサービス (<code>T2</code>) 、Paymentサービス (<code>T3</code>) 、のローカルトランザクションを連続して実行する。</p>
-<p>例えば、Paymentサービスのローカルトランザクション (<code>T3</code>) が失敗した場合、OrderサービスとPaymentサービスのローカルトランザクションをロールバックする補償トランザクション (<code>C1</code>、<code>C2</code>) を実行する。</p>
-<p><img alt="saga-pattern_orchestrator" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/saga-orchestration.html#saga-orchestration-implementation">https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/saga-orchestration.html#saga-orchestration-implementation</a></li>
-<li><a href="https://dzone.com/articles/modelling-saga-as-a-state-machine">https://dzone.com/articles/modelling-saga-as-a-state-machine</a></li>
-<li><a href="https://www.baeldung.com/cs/saga-pattern-microservices">https://www.baeldung.com/cs/saga-pattern-microservices</a></li>
-<li><a href="https://medium.com/@vinciabhinav7/saga-design-pattern-569ec942079">https://medium.com/@vinciabhinav7/saga-design-pattern-569ec942079</a></li>
-<li><a href="https://blog.knoldus.com/distributed-transactions-and-saga-patterns/">https://blog.knoldus.com/distributed-transactions-and-saga-patterns/</a></li>
-</ul>
-</blockquote>
-<h4 id="oss_1">▼ OSSを使用する場合<a class="headerlink" href="#oss_1" title="Permanent link">&para;</a></h4>
-<p>SagaオーケストレーターのOSS (Temporal、Netflix Conductor、Uber Cadenceなど) を使用する。</p>
-<p>Sagaオーケストレーターのドメインモデリングにステートソーシングパターンを採用する必要がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared">https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared</a></li>
-</ul>
-</blockquote>
-<h4 id="_16">▼ クラウドプロバイダーのマネージドサービスを使用する場合<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>クラウドプロバイダー (例：AWS、Google Cloud) が提供するSagaオーケストレーター (例：AWS Step Functions、Google Workflowsなど) を使用する。</p>
-<p>各マイクロサービスは、Sagaオーケストレーターをメッセージブローカー (これもクラウドプロバイダーが提供しているものでよい) を介して取得する。</p>
-<blockquote>
-<ul>
-<li><a href="https://lab.mo-t.com/blog/stepfunctions-for-eom-admin">https://lab.mo-t.com/blog/stepfunctions-for-eom-admin</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="sagadb">SagaオーケストレーターのDB<a class="headerlink" href="#sagadb" title="Permanent link">&para;</a></h3>
-<p>通常のオーケストレーションベースのSagaパターンでは、DBにSagaログテーブルを作成する。</p>
-<p>Sagaオーケストレーターは、ローカルトランザクションの進捗度 (Sagaログ) をDBに永続化する。</p>
-<p>SagaオーケストレーターごとにDBを分割すると良い。</p>
-<p>AWS StepFunctionsのステートも設計例として、参考になる。</p>
-<table>
-<thead>
-<tr>
-<th><code>id</code></th>
-<th><code>order_saga_execution_id</code></th>
-<th><code>order_saga_current_step</code></th>
-<th><code>order_id</code></th>
-<th><code>order_saga_payload</code></th>
-<th><code>order_saga_status</code></th>
-<th><code>order_saga_state</code></th>
-<th><code>order_saga_version</code></th>
-<th><code>start_data</code></th>
-<th><code>end_data</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td><code>9db5b6da-daba-4633-b3cf-9c79f2bcf6f5</code></td>
-<td>CreditApproval</td>
-<td>1</td>
-<td><code>"\"order-id\": 1, \"customer-id\": 456, \"payment-due\": 4999, \"credit-card-no\": \"xxxx-yyyy-dddd-9999\"}"</code></td>
-<td>SUCCEEDED</td>
-<td><code>"{\"creditApproval\":\"SUCCEEDED\"}"</code></td>
-<td>楽観的ロックに使用するバージョン値 (例：最終更新日など)</td>
-<td>開始時刻</td>
-<td>終了時刻</td>
-</tr>
-<tr>
-<td>2</td>
-<td><code>b1f14b72-393d-432b-8ec2-782974a6ed60</code></td>
-<td>Payment</td>
-<td>1</td>
-<td><code>"{ \"order-id\": 1, \"customer-id\": 456, ... }"</code></td>
-<td>STARTED</td>
-<td><code>"{\"creditApproval\":\"SUCCEEDED\",\"payment\":\"STARTED\"}"</code></td>
-<td>〃</td>
-<td>〃</td>
-<td>〃</td>
-</tr>
-<tr>
-<td>3</td>
-<td><code>b38229c6-30df-4166-a725-8b2c578e5ed5</code></td>
-<td>CreditApproval</td>
-<td>2</td>
-<td><code>"{ \"order-id\": 2, \"customer-id\": 456, ... }"</code></td>
-<td>STARTED</td>
-<td><code>"{\"creditApproval\":\"STARTED\"}"</code></td>
-<td>〃</td>
-<td>〃</td>
-<td>〃</td>
-</tr>
-<tr>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://www.infoq.com/articles/saga-orchestration-outbox/">https://www.infoq.com/articles/saga-orchestration-outbox/</a></li>
-<li><a href="https://docs.aws.amazon.com/step-functions/latest/dg/concepts-states.html">https://docs.aws.amazon.com/step-functions/latest/dg/concepts-states.html</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="saga_2">Sagaオーケストレーターのステータスチェッカー<a class="headerlink" href="#saga_2" title="Permanent link">&para;</a></h3>
-<h4 id="saga_3">▼ Sagaオーケストレーターのステータスチェッカーとは<a class="headerlink" href="#saga_3" title="Permanent link">&para;</a></h4>
-<p>オーケストレーションベースのSagaパターンにて、Sagaオーケストレーターにリクエストを送信するクライアントは、Sagaオーケストレーターの処理結果を知る必要がある。</p>
-<h4 id="_17">▼ ポーリングパターンの場合<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>ポーリングパターンの場合、Sagaステータスチェッカーを採用する。</p>
-<p>Sagaステータスチェッカーは、トランザクションIDを使用してワークフローの処理結果をDBから取得する。</p>
-<p><img alt="saga-pattern_orchestrator_status-checker" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_status-checker.jpg" /></p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/workflows.md">https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/workflows.md</a></li>
-<li><a href="https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/additional-patterns.md">https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/additional-patterns.md</a></li>
-<li><a href="https://microservices.io/patterns/data/saga.html#resulting-context">https://microservices.io/patterns/data/saga.html#resulting-context</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="saga_4">Sagaオーケストレーターのワーカー<a class="headerlink" href="#saga_4" title="Permanent link">&para;</a></h3>
-<h4 id="_18">▼ ポイントツーポイントの場合<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p>メッセージブローカー (例：Apache Kafka、RabbitMQなど) を経由しないオーケストレーションベースのSagaパターンを実装する。</p>
-<p>メッセージブローカーを経由するよりも、Sagaオーケストレーターと各ワーカーの間の結合度が高まってしまうが、Sagaオーケストレーターの実装が簡単になる。</p>
-<p>ローカルトランザクションの進捗度に応じて、次のローカルトラザクションや補償トランザクションを実行する。</p>
-<blockquote>
-<ul>
-<li><a href="https://blog.bitsrc.io/how-to-use-saga-pattern-in-microservices-9eaadde79748">https://blog.bitsrc.io/how-to-use-saga-pattern-in-microservices-9eaadde79748</a></li>
-<li><a href="https://copilot.rocks/implementing-architectural-patterns/20-implementing-saga-pattern/#architecture-diagrams">https://copilot.rocks/implementing-architectural-patterns/20-implementing-saga-pattern/#architecture-diagrams</a></li>
-</ul>
-</blockquote>
-<h4 id="_19">▼ メッセージキューを経由する場合<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<p>メッセージキュー (例：AWS SQSなど) を経由して、Sagaオーケストレーターとワーカーの間で通信する。</p>
-<h4 id="_20">▼ メッセージブローカーを経由する場合<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p>メッセージブローカー (例：Apache Kafka、RabbitMQなど) を使い、オーケストレーションベースのSagaパターンを実装する。</p>
-<p>Sagaオーケストレーターは、メッセージブローカーに対してパブリッシュとサブスクライブを実行する。</p>
-<p>サブスクライブしたメッセージに応じて、次のメッセージをパブリッシュする。</p>
-<p><img alt="orchestration_message-queue" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration_message-queue.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://www.12-technology.com/2021/08/dbsaga.html">https://www.12-technology.com/2021/08/dbsaga.html</a></li>
-<li><a href="https://qiita.com/somen440/items/a6c323695627235128e9">https://qiita.com/somen440/items/a6c323695627235128e9</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_21">補償トランザクション<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
-<h4 id="_22">▼ 補償トランザクションとは<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>ローカルトランザクションを元に戻すトランザクションを逆順に実行し、Sagaパターンによるトランザクションの結果を元に戻す仕組みのこと。</p>
-<p>マイクロサービスアーキテクチャでは、トランザクションの通常のロールバック機能を使用した場合に、処理に失敗したマイクロサービスだけでロールバックし、それ以前のマイクロサービスではロールバックが起こらない問題がある。</p>
-<p>いずれかのマイクロサービスのローカルトランザクションが失敗した場合に、まずそのマイクロサービスは自身のトランザクションをロールバックする。</p>
-<p>その後、それまでのローカルトランザクションを擬似的にロールバックするトランザクションを逆順で実行する。</p>
-<h4 id="_23">▼ 設計例<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<p>受注に関するトランザクションが異なるマイクロサービスにまたがる例。</p>
-<p><img alt="saga-pattern_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_example.png" /></p>
-<p>補償トランザクションによって、各ローカルトランザクションを元に戻す逆順のトランザクションを実行する。</p>
-<p><img alt="saga-pattern_compensating_transaction_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_compensating-transaction_example.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/distributed-data#distributed-transactions">https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/distributed-data#distributed-transactions</a></li>
-</ul>
-</blockquote>
-<h4 id="godefer">▼ 実装例 (Goの<code>defer</code>関数)<a class="headerlink" href="#godefer" title="Permanent link">&para;</a></h4>
-<p>この例では、Goの<code>defer</code>関数で補償トランザクションの仕組みを実装している。</p>
-<p>ローカルトランザクションで失敗した場合は、まずそのマイクロサービスが自身のトランザクションをロールバックする。</p>
-<p>その後、それまでにコールされた<code>defer</code>関数を実行し補償トランザクションを実行する。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">saga</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;time&quot;</span>
-
-<span class="w">    </span><span class="s">&quot;go.uber.org/multierr&quot;</span>
-
-<span class="w">    </span><span class="s">&quot;go.temporal.io/sdk/temporal&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.temporal.io/sdk/workflow&quot;</span>
-<span class="p">)</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="nx">TransferMoney</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="w"> </span><span class="nx">TransferDetails</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">retryPolicy</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">temporal</span><span class="p">.</span><span class="nx">RetryPolicy</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">InitialInterval</span><span class="p">:</span><span class="w">    </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">BackoffCoefficient</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">MaximumInterval</span><span class="p">:</span><span class="w">    </span><span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">MaximumAttempts</span><span class="p">:</span><span class="w">    </span><span class="mi">3</span><span class="p">,</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nx">options</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ActivityOptions</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">StartToCloseTimeout</span><span class="p">:</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">RetryPolicy</span><span class="p">:</span><span class="w">         </span><span class="nx">retryPolicy</span><span class="p">,</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">WithActivityOptions</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">)</span>
-
-<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">Withdraw</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// 補償トランザクション</span>
-<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">errCompensation</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">WithdrawCompensation</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
-<span class="w">            </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">multierr</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">errCompensation</span><span class="p">)</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}()</span>
-
-<span class="w">    </span><span class="c1">// ローカルトランザクション</span>
-<span class="w">    </span><span class="c1">// 失敗した場合、まずは自身のトランザクションをロールバックする</span>
-<span class="w">    </span><span class="c1">// その後、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する</span>
-<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">Deposit</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// 補償トランザクション</span>
-<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">errCompensation</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">DepositCompensation</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
-<span class="w">            </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">multierr</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">errCompensation</span><span class="p">)</span>
-<span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="c1">// uncomment to have time to shut down worker to simulate worker rolling update and ensure that compensation sequence preserves after restart</span>
-<span class="w">        </span><span class="c1">// workflow.Sleep(ctx, 10*time.Second)</span>
-<span class="w">    </span><span class="p">}()</span>
-
-<span class="w">    </span><span class="c1">// ローカルトランザクション</span>
-<span class="w">    </span><span class="c1">// 失敗した場合、まずは自身のトランザクションをロールバックする</span>
-<span class="w">    </span><span class="c1">// その後、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する</span>
-<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">StepWithError</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/temporalio/samples-go/blob/main/saga/workflow.go">https://github.com/temporalio/samples-go/blob/main/saga/workflow.go</a></li>
-</ul>
-</blockquote>
-<h4 id="goslice">▼ 実装例 (Goのslice)<a class="headerlink" href="#goslice" title="Permanent link">&para;</a></h4>
-<p>この例では、Goのsliceで補償トランザクションの仕組みを実装している。</p>
-<p>スライス内のローカルトランザクションを順番に実行し、どこかで失敗した場合は逆順に補償トランザクションを実行する。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;errors&quot;</span>
-<span class="p">)</span>
-
-<span class="c1">// ローカルトランザクションを表す関数型</span>
-<span class="kd">type</span><span class="w"> </span><span class="nx">LocalTransaction</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span>
-
-<span class="c1">// 補償トランザクションを表す関数型</span>
-<span class="kd">type</span><span class="w"> </span><span class="nx">CompensatingAction</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span>
-
-<span class="c1">// Sagaオーケストレーターの各ステップを表す構造体</span>
-<span class="kd">type</span><span class="w"> </span><span class="nx">SagaStep</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">Transaction</span><span class="w"> </span><span class="nx">LocalTransaction</span><span class="w"> </span><span class="c1">// ローカルトランザクション</span>
-<span class="w">    </span><span class="nx">Compensate</span><span class="w">  </span><span class="nx">CompensatingAction</span><span class="w"> </span><span class="c1">// 補償トランザクション</span>
-<span class="p">}</span>
-
-<span class="c1">// Sagaを表す構造体</span>
-<span class="kd">type</span><span class="w"> </span><span class="nx">Saga</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">Steps</span><span class="w"> </span><span class="p">[]</span><span class="nx">SagaStep</span><span class="w"> </span><span class="c1">// 複数のSagaStepから成る</span>
-<span class="p">}</span>
-
-<span class="c1">// ローカルトランザクションと補償トランザクションを実行する関数</span>
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">Saga</span><span class="p">)</span><span class="w"> </span><span class="nx">Execute</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">step</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">Steps</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// ローカルトランザクションを順番に実行する</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">step</span><span class="p">.</span><span class="nx">Transaction</span><span class="p">();</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// 失敗した場合は、補償トランザクションを逆順で実行する</span>
-<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">Steps</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">--</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">Steps</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">Compensate</span><span class="p">();</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="c1">// 補償トランザクションが失敗した場合はエラーメッセージを返す</span>
-<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;failed to compensate for step %d: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="c1">// 最初のエラーを返す</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="c1">// 全てのトランザクションが成功した場合、nilを返す</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
-<span class="p">}</span>
-
-<span class="c1">// ローカルトランザクション</span>
-<span class="c1">// 資金移動</span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">transferFunds</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
-<span class="p">}</span>
-
-<span class="c1">// 補償トランザクション</span>
-<span class="c1">// 資金移動の取り消し</span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">reverseTransfer</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
-<span class="p">}</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Sagaオーケストレーター</span>
-<span class="w">    </span><span class="nx">saga</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">Saga</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">Steps</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="nx">SagaStep</span><span class="p">{</span>
-<span class="w">            </span><span class="nx">SagaStep</span><span class="p">{</span>
-<span class="w">                </span><span class="nx">Transaction</span><span class="p">:</span><span class="w"> </span><span class="nx">transferFunds</span><span class="p">,</span><span class="w"> </span><span class="c1">// 1つ目のローカルトランザクション</span>
-<span class="w">                </span><span class="nx">Compensate</span><span class="p">:</span><span class="w">  </span><span class="nx">reverseTransfer</span><span class="p">,</span><span class="w"> </span><span class="c1">// 1つ目の補償トランザクション</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nx">SagaStep</span><span class="p">{</span>
-<span class="w">                </span><span class="nx">Transaction</span><span class="p">:</span><span class="w"> </span><span class="nx">transferFunds</span><span class="p">,</span><span class="w"> </span><span class="c1">// 2つ目のローカルトランザクション</span>
-<span class="w">                </span><span class="nx">Compensate</span><span class="p">:</span><span class="w">  </span><span class="nx">reverseTransfer</span><span class="p">,</span><span class="w"> </span><span class="c1">// 2つ目の補償トランザクション</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// Sagaの実行</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">saga</span><span class="p">.</span><span class="nx">Execute</span><span class="p">();</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;saga failed:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="c1">// エラーが発生した場合</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;saga succeeded&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 正常に完了した場合</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://dsysd-dev.medium.com/writing-temporal-workflows-in-golang-part-1-9f50f6ef23d5">https://dsysd-dev.medium.com/writing-temporal-workflows-in-golang-part-1-9f50f6ef23d5</a></li>
-<li><a href="https://qiita.com/somen440/items/a6c323695627235128e9#%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E3%82%B5%E3%83%BC%E3%82%AC%E5%AE%9F%E8%A3%85">https://qiita.com/somen440/items/a6c323695627235128e9#%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E3%82%B5%E3%83%BC%E3%82%AC%E5%AE%9F%E8%A3%85</a></li>
-</ul>
-</blockquote>
-<h4 id="typescript">▼ 実装例 (TypeScriptの配列)<a class="headerlink" href="#typescript" title="Permanent link">&para;</a></h4>
-<p>この例では、AzureのDurable Functionにて、TypeScriptの配列で補償トランザクションの仕組みを実装している。</p>
-<p>スライス内のローカルトランザクションを順番に実行し、どこかで失敗した場合は逆順に補償トランザクションを実行する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">df</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;durable-functions&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Task</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;durable-functions/lib/src/classes&quot;</span><span class="p">;</span>
-
-<span class="c1">// APIError型の定義。ステータスコードとボディを持つ</span>
-<span class="kr">type</span><span class="w"> </span><span class="nx">APIError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">200</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mf">400</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mf">500</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="kt">object</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="c1">// APIErrorかどうかをチェックする関数</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">isAPIError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">arg</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">arg</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">APIError</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 引数がオブジェクトでない場合は、トランザクション不可とする</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">arg</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-
-<span class="w">  </span><span class="c1">// ステータスコードが200, 400, 500のいずれかでない場合は、トランザクション不可とする</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">arg</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">[</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w"> </span><span class="mf">500</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="nx">arg</span><span class="p">.</span><span class="nx">status</span><span class="p">)))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-
-<span class="w">  </span><span class="c1">// メッセージが文字列でない場合は、トランザクション不可とする</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">arg</span><span class="p">.</span><span class="nx">message</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-
-<span class="w">  </span><span class="c1">// 全ての条件を満たす場合はトランザクション可とする</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="c1">// Sagaオーケストレーター</span>
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">saga</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">df</span><span class="p">.</span><span class="nx">orchestrator</span><span class="p">(</span><span class="kd">function</span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 補償トランザクションを格納する配列</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">compensatingTransactions</span><span class="o">:</span><span class="w"> </span><span class="kt">Task</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
-
-<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Sagaオーケストレーターの入力を取得</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">input</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">getInput</span><span class="p">();</span>
-
-<span class="w">    </span><span class="c1">// ローカルトランザクションとして、doActivityAを実行する</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;doActivityA&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// 補償トランザクションとして、rejectActivityAを追加する</span>
-<span class="w">    </span><span class="nx">compensatingTransactions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
-<span class="w">      </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;rejectActivityA&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">body</span><span class="p">),</span>
-<span class="w">    </span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// ローカルトランザクションとして、doActivityBを実行する</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;doActivityB&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// 補償トランザクションとして、rejectActivityBを追加する</span>
-<span class="w">    </span><span class="nx">compensatingTransactions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
-<span class="w">      </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;rejectActivityB&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">),</span>
-<span class="w">    </span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// ローカルトランザクションとして、doActivityCを実行する</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;doActivityC&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// 補償トランザクションとして、rejectActivityCを追加する</span>
-<span class="w">    </span><span class="nx">compensatingTransactions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
-<span class="w">      </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;rejectActivityC&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">),</span>
-<span class="w">    </span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// Sagaオーケストレーターのクライアントに正常終了のレスポンスを返す</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">200</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;The process has succeeded.&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="p">};</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 例外発生時に補償トランザクションをまとめて実行する</span>
-<span class="w">    </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">Task</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">compensatingTransactions</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// 例外がAPIError型の場合、そのまま返す</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isAPIError</span><span class="p">(</span><span class="nx">e</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">e</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1">// その他の例外は500エラーとして、返す</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">500</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="ne">Error</span><span class="p">).</span><span class="nx">message</span><span class="p">,</span>
-<span class="w">    </span><span class="p">};</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://zenn.dev/tatta/books/4e993c596e7dc9/viewer/83e94d#%E8%A3%9C%E5%84%9F%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF">https://zenn.dev/tatta/books/4e993c596e7dc9/viewer/83e94d#%E8%A3%9C%E5%84%9F%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF</a></li>
-</ul>
-</blockquote>
-<h4 id="goslice_1">▼ 実装例 (Goのslice)<a class="headerlink" href="#goslice_1" title="Permanent link">&para;</a></h4>
-<p>この例では、アウトボックスパターンでSagaオーケストレーションを実装している。</p>
-<p>ちょっと難しいかな...</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">saga</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;database/sql&quot;</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/google/uuid&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.example/saga/pkg/jsonmap&quot;</span>
-<span class="p">)</span>
-
-<span class="kd">type</span><span class="w"> </span><span class="nx">SagaState</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">ID</span><span class="w">          </span><span class="nx">uuid</span><span class="p">.</span><span class="nx">UUID</span>
-<span class="w">    </span><span class="nx">Version</span><span class="w">     </span><span class="kt">int8</span>
-<span class="w">    </span><span class="nx">Type</span><span class="w">        </span><span class="kt">string</span>
-<span class="w">    </span><span class="nx">Payload</span><span class="w">     </span><span class="nx">jsonmap</span><span class="p">.</span><span class="nx">JSONMap</span>
-<span class="w">    </span><span class="nx">CurrentStep</span><span class="w"> </span><span class="nx">SagaStep</span>
-<span class="w">    </span><span class="nx">StepStatus</span><span class="w">  </span><span class="nx">jsonmap</span><span class="p">.</span><span class="nx">JSONMap</span>
-<span class="w">    </span><span class="nx">SagaStatus</span><span class="w">  </span><span class="nx">SagaStatus</span>
-<span class="p">}</span>
-
-<span class="c1">// Repository</span>
-<span class="kd">type</span><span class="w"> </span><span class="nx">Repository</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">Persist</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">tx</span><span class="w"> </span><span class="o">*</span><span class="nx">sql</span><span class="p">.</span><span class="nx">Tx</span><span class="p">,</span><span class="w"> </span><span class="nx">ss</span><span class="w"> </span><span class="nx">SagaState</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span>
-<span class="w">    </span><span class="nx">Update</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">tx</span><span class="w"> </span><span class="o">*</span><span class="nx">sql</span><span class="p">.</span><span class="nx">Tx</span><span class="p">,</span><span class="w"> </span><span class="nx">ss</span><span class="w"> </span><span class="nx">SagaState</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span>
-<span class="w">    </span><span class="nx">QueryByID</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">tx</span><span class="w"> </span><span class="o">*</span><span class="nx">sql</span><span class="p">.</span><span class="nx">Tx</span><span class="p">,</span><span class="w"> </span><span class="nx">ID</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">SagaState</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="nx">NewSaga</span><span class="p">(</span><span class="nx">sagaType</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">payload</span><span class="w"> </span><span class="nx">jsonmap</span><span class="p">.</span><span class="nx">JSONMap</span><span class="p">,</span><span class="w"> </span><span class="nx">currentStep</span><span class="w"> </span><span class="nx">SagaStep</span><span class="p">)</span><span class="w"> </span><span class="nx">SagaState</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// ステートマシン</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">SagaState</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">ID</span><span class="p">:</span><span class="w">          </span><span class="nx">uuid</span><span class="p">.</span><span class="nx">New</span><span class="p">(),</span>
-<span class="w">        </span><span class="nx">Version</span><span class="p">:</span><span class="w">     </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">Type</span><span class="p">:</span><span class="w">        </span><span class="nx">sagaType</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">Payload</span><span class="p">:</span><span class="w">     </span><span class="nx">payload</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">CurrentStep</span><span class="p">:</span><span class="w"> </span><span class="nx">currentStep</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">StepStatus</span><span class="p">:</span><span class="w">  </span><span class="nx">jsonmap</span><span class="p">.</span><span class="nx">JSONMap</span><span class="p">{</span><span class="nb">string</span><span class="p">(</span><span class="nx">currentStep</span><span class="p">):</span><span class="w"> </span><span class="nx">SagaStepStatusStarted</span><span class="p">},</span>
-<span class="w">        </span><span class="nx">SagaStatus</span><span class="p">:</span><span class="w">  </span><span class="nx">SagaStatusStarted</span><span class="p">,</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// NextSagaStatus evaluate current SagaStepStatuses and set SagaStatus</span>
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">SagaState</span><span class="p">)</span><span class="w"> </span><span class="nx">NextSagaStatus</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">ss</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">bool</span><span class="p">{}</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">StepStatus</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">ss</span><span class="p">[</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="p">)]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">ss</span><span class="p">[</span><span class="nx">SagaStepStatusSucceeded</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">ss</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">SagaStatus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">SagaStatusCompleted</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">ss</span><span class="p">[</span><span class="nx">SagaStepStatusStarted</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">ss</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="nx">ss</span><span class="p">[</span><span class="nx">SagaStepStatusSucceeded</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">ss</span><span class="p">[</span><span class="nx">SagaStepStatusStarted</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">ss</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">SagaStatus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">SagaStatusStarted</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ss</span><span class="p">[</span><span class="nx">SagaStepStatusCompensating</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">SagaStatus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">SagaStatusAborted</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">SagaStatus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">SagaStatusAborting</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// IncrementVersion</span>
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">SagaState</span><span class="p">)</span><span class="w"> </span><span class="nx">IncrementVersion</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">s</span><span class="p">.</span><span class="nx">Version</span><span class="o">++</span>
-<span class="p">}</span>
-
-<span class="c1">// SagaStatus represents the saga status based on steps status</span>
-<span class="kd">type</span><span class="w"> </span><span class="nx">SagaStatus</span><span class="w"> </span><span class="kt">string</span>
-
-<span class="c1">// SagaStatus type</span>
-<span class="kd">const</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">SagaStatusStarted</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;STARTED&quot;</span>
-<span class="w">    </span><span class="nx">SagaStatusAborting</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;ABORTING&quot;</span>
-<span class="w">    </span><span class="nx">SagaStatusAborted</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;ABORTED&quot;</span>
-<span class="w">    </span><span class="nx">SagaStatusCompleted</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;COMPLETED&quot;</span>
-<span class="p">)</span>
-
-<span class="c1">// SagaStepStatus represent current saga step status</span>
-<span class="kd">type</span><span class="w"> </span><span class="nx">SagaStepStatus</span><span class="w"> </span><span class="kt">string</span>
-
-<span class="c1">// SagaStepStatus type</span>
-<span class="kd">const</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">SagaStepStatusStarted</span><span class="w">      </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;STARTED&quot;</span>
-<span class="w">    </span><span class="nx">SagaStepStatusFailed</span><span class="w">       </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;FAILED&quot;</span>
-<span class="w">    </span><span class="nx">SagaStepStatusSucceeded</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;SUCCEEDED&quot;</span>
-<span class="w">    </span><span class="nx">SagaStepStatusCompensating</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;COMPENSATING&quot;</span>
-<span class="w">    </span><span class="nx">SagaStepStatusCompensated</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;COMPENSATED&quot;</span>
-<span class="p">)</span>
-
-<span class="c1">// SagaStep define saga service step in order to follow</span>
-<span class="kd">type</span><span class="w"> </span><span class="nx">SagaStep</span><span class="w"> </span><span class="kt">string</span>
-
-<span class="c1">// NextSagaStep find saga next step from provided steps and current saga step</span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">NextSagaStep</span><span class="p">(</span><span class="nx">steps</span><span class="w"> </span><span class="p">[]</span><span class="nx">SagaStep</span><span class="p">,</span><span class="w"> </span><span class="nx">currentStep</span><span class="w"> </span><span class="nx">SagaStep</span><span class="p">)</span><span class="w"> </span><span class="nx">SagaStep</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">currentStep</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">steps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nx">curr</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">steps</span><span class="p">);</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">steps</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">currentStep</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">curr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">i</span>
-<span class="w">            </span><span class="k">break</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">curr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">curr</span><span class="o">+</span><span class="mi">1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">steps</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">steps</span><span class="p">[</span><span class="nx">curr</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
-<span class="p">}</span>
-
-<span class="c1">// PrevSagaStep find saga previous step from provided steps and current saga step</span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">PrevSagaStep</span><span class="p">(</span><span class="nx">steps</span><span class="w"> </span><span class="p">[]</span><span class="nx">SagaStep</span><span class="p">,</span><span class="w"> </span><span class="nx">currentStep</span><span class="w"> </span><span class="nx">SagaStep</span><span class="p">)</span><span class="w"> </span><span class="nx">SagaStep</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">curr</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">steps</span><span class="p">);</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">steps</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">currentStep</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">curr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">i</span>
-<span class="w">            </span><span class="k">break</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">curr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">curr</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">steps</span><span class="p">[</span><span class="nx">curr</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">reservation</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;database/sql&quot;</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.example/saga/pkg/saga&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.example/saga/pkg/store/postgres&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.example/saga/reservation/pkg/model&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="p">)</span>
-
-<span class="o">...</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">Controller</span><span class="p">)</span><span class="w"> </span><span class="nx">PostReservation</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">cmd</span><span class="w"> </span><span class="nx">model</span><span class="p">.</span><span class="nx">ReservationCmd</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">model</span><span class="p">.</span><span class="nx">Reservation</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">r</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">model</span><span class="p">.</span><span class="nx">NewReservation</span><span class="p">(</span><span class="nx">cmd</span><span class="p">.</span><span class="nx">HotelID</span><span class="p">,</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">RoomID</span><span class="p">,</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">GuestID</span><span class="p">,</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">PaymentDue</span><span class="p">,</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">StartDate</span><span class="p">,</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">EndDate</span><span class="p">,</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">CreditCardNO</span><span class="p">)</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">Transact</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">tx</span><span class="w"> </span><span class="o">*</span><span class="nx">sql</span><span class="p">.</span><span class="nx">Tx</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kd">interface</span><span class="p">{},</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">        </span><span class="c1">// persist reservation</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">repository</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">tx</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
-<span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="nx">payload</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">ToJSONMap</span><span class="p">()</span>
-<span class="w">        </span><span class="nx">currStep</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">saga</span><span class="p">.</span><span class="nx">NextSagaStep</span><span class="p">(</span><span class="nx">sagaSteps</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="nx">sagaState</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">saga</span><span class="p">.</span><span class="nx">NewSaga</span><span class="p">(</span><span class="nx">roomReservationSaga</span><span class="p">,</span><span class="w"> </span><span class="nx">payload</span><span class="p">,</span><span class="w"> </span><span class="nx">currStep</span><span class="p">)</span>
-
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">sagaRepository</span><span class="p">.</span><span class="nx">Persist</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">tx</span><span class="p">,</span><span class="w"> </span><span class="nx">sagaState</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
-<span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="nx">outboxEvent</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">postgres</span><span class="p">.</span><span class="nx">NewEvent</span><span class="p">(</span><span class="nx">sagaState</span><span class="p">.</span><span class="nx">ID</span><span class="p">.</span><span class="nx">String</span><span class="p">(),</span><span class="w"> </span><span class="nb">string</span><span class="p">(</span><span class="nx">currStep</span><span class="p">),</span><span class="w"> </span><span class="nx">postgres</span><span class="p">.</span><span class="nx">RequestEventType</span><span class="p">,</span><span class="w"> </span><span class="nx">payload</span><span class="p">)</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">outboxEvent</span><span class="p">.</span><span class="nx">Persist</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">tx</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
-<span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Started Saga for reservationID %s sagaID %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">ID</span><span class="p">,</span><span class="w"> </span><span class="nx">sagaState</span><span class="p">.</span><span class="nx">ID</span><span class="p">)</span>
-
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">r</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
-<span class="w">    </span><span class="p">});</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">r</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
-<span class="p">}</span>
-
-<span class="o">...</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/semotpan/saga-orchestration-go/blob/main/src/pkg/saga/saga.go">https://github.com/semotpan/saga-orchestration-go/blob/main/src/pkg/saga/saga.go</a></li>
-<li><a href="https://github.com/semotpan/saga-orchestration-go/blob/main/src/reservation/internal/controller/reservation/controller.go">https://github.com/semotpan/saga-orchestration-go/blob/main/src/reservation/internal/controller/reservation/controller.go</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="outbox">Outboxパターン<a class="headerlink" href="#outbox" title="Permanent link">&para;</a></h3>
-<h4 id="outbox_1">▼ Outboxパターンとは<a class="headerlink" href="#outbox_1" title="Permanent link">&para;</a></h4>
-<p>Outboxパターンでは、Sagaログテーブルに加えて、Outboxテーブルを作成する。</p>
-<p>メッセージリレイを使用して、OutboxテーブルのイベントをSagaオーケストレーターのクライアントやマイクロサービスに通知する。</p>
-<table>
-<thead>
-<tr>
-<th>Id</th>
-<th>AggregateType</th>
-<th>AggregateId</th>
-<th>Type</th>
-<th>Payload</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ec6e</td>
-<td>Order</td>
-<td>123</td>
-<td>OrderCreated</td>
-<td><code>{"id": 123, ...}</code></td>
-</tr>
-<tr>
-<td>8af8</td>
-<td>Order</td>
-<td>456</td>
-<td>OrderDetailCanceled</td>
-<td><code>{"id": 456, ...}</code></td>
-</tr>
-<tr>
-<td>890b</td>
-<td>Customer</td>
-<td>789</td>
-<td>InvoiceCreated</td>
-<td><code>{"id": 789, ...}</code></td>
-</tr>
-</tbody>
-</table>
-<p><img alt="saga-pattern_orchestrator_outbox-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://microservices.io/patterns/data/transactional-outbox.html">https://microservices.io/patterns/data/transactional-outbox.html</a></li>
-<li><a href="https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B">https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B</a></li>
-<li><a href="https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/">https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/</a></li>
-</ul>
-</blockquote>
-<h4 id="polling-publisher">▼ Polling publisherパターンとは<a class="headerlink" href="#polling-publisher" title="Permanent link">&para;</a></h4>
-<p>DBのイベントチェッカー (例：Debezium) を使用して、Outboxテーブルのイベントを検知する。</p>
-<p>また、検知したイベントをメッセージブローカー (例：Apache Kafka、RabbitMQなど) にパブリッシュする。</p>
-<p>Sagaオーケストレーターのクライアントやマイクロサービス側では、これをポーリングする。</p>
-<p><img alt="saga-pattern_orchestrator_outbox-pattern_polling-publisher" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern_polling-publisher.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/">https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/</a></li>
-<li><a href="https://microservices.io/patterns/data/polling-publisher.html">https://microservices.io/patterns/data/polling-publisher.html</a></li>
-<li><a href="https://github.com/debezium/debezium-examples/tree/main/saga">https://github.com/debezium/debezium-examples/tree/main/saga</a></li>
-<li><a href="https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10">https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10</a></li>
-</ul>
-</blockquote>
-<h4 id="transaction-log-tailing">▼ Transaction log tailingパターンとは<a class="headerlink" href="#transaction-log-tailing" title="Permanent link">&para;</a></h4>
-<p>トランザクションログ (例：MySQLバイナリログ、PostgreSQL WALなど) を追跡する。</p>
-<blockquote>
-<ul>
-<li><a href="https://microservices.io/patterns/data/transaction-log-tailing.html">https://microservices.io/patterns/data/transaction-log-tailing.html</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="04-03-choreography-saga">04-03. Choreography (コレオグラフィ) ベースのSagaパターン<a class="headerlink" href="#04-03-choreography-saga" title="Permanent link">&para;</a></h2>
-<h3 id="saga_5">コレオグラフィベースのSagaパターンとは<a class="headerlink" href="#saga_5" title="Permanent link">&para;</a></h3>
-<p>マイクロサービスは、自身のローカルトランザクションを完了させた後に、次のマイクロサービスをコールする。</p>
-<p>各マイクロサービス間の通信方式は、パブリッシュ/サブスクライブパターンにする必要がある。</p>
-<p>そのために、マイクロサービス間にメッセージキューやメッセージブローカーを置く。</p>
-<p><img alt="choreography" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://learn.microsoft.com/ja-jp/azure/architecture/reference-architectures/saga/saga">https://learn.microsoft.com/ja-jp/azure/architecture/reference-architectures/saga/saga</a></li>
-<li><a href="https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html">https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html</a></li>
-<li><a href="https://zenn.dev/yoshii0110/articles/74dfcf4132a805">https://zenn.dev/yoshii0110/articles/74dfcf4132a805</a></li>
-<li><a href="https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/">https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_24">実装パターン (パブリッシュ/サブスクライブパターン)<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
-<h4 id="_25">▼ 自前で実装する場合<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
-<p>以下のリポジトリを参考にせよ。</p>
-<p><img alt="choreography_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography_example.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/fedeoliv/microservices-transactions">https://github.com/fedeoliv/microservices-transactions</a></li>
-</ul>
-</blockquote>
-<h4 id="oss_2">▼ OSSを使用する場合<a class="headerlink" href="#oss_2" title="Permanent link">&para;</a></h4>
-<p>コレオグラフィのOSS (例：Debezium、Maxwellなど) を使用する。</p>
-<p>Sagaオーケストレーターのドメインモデリングにイベントソーシングパターンを採用する必要がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared">https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared</a></li>
-</ul>
-</blockquote>
-<h4 id="_26">▼ クラウドプロバイダーのマネージドサービスを使用する場合<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
-<p>各マイクロサービス間の通信方式は、パブリッシュ/サブスクライブパターンにする必要がある。</p>
-<ul>
-<li>AWS Lambda、マイクロサービス間のパブリッシュ/サブスクライブAWSリソース (例：AWS EventBridge、AWS SQS、AWS SNS）</li>
-<li>Google Cloud Run Functions、マイクロサービス間のパブリッシュ/サブスクライブGoogle Cloudリソース (例：Google Eventarc）</li>
-</ul>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/saga-choreography.html">https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/saga-choreography.html</a></li>
-<li><a href="https://d.nekoruri.jp/entry/2023/03/15/20230216serverless">https://d.nekoruri.jp/entry/2023/03/15/20230216serverless</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_27">後続マイクロサービスとの通信方式<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
-<p>各マイクロサービスにパブリッシュとサブスクライブを処理する責務を持たせる。</p>
-<p><img alt="choreography_message-queue" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography_message-queue.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://www.12-technology.com/2021/08/dbsaga.html">https://www.12-technology.com/2021/08/dbsaga.html</a></li>
-</ul>
-</blockquote>
-<p><img alt="saga-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern.png" /></p>
-<p><br></p>
-<h2 id="04-04-saga">04-04. 並列パイプラインベースのSagaパターン<a class="headerlink" href="#04-04-saga" title="Permanent link">&para;</a></h2>
-<h3 id="saga_6">並列パイプラインベースのSagaパターンとは<a class="headerlink" href="#saga_6" title="Permanent link">&para;</a></h3>
-<p>オーケストレーションベースとコレオグラフィベースのパターンを組み合わせる。</p>
-<p>イベント駆動のマイクロサービスを連続的にコールするルーターサービスを配置する。</p>
-<blockquote>
-<ul>
-<li><a href="https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared#">https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared#</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_28">実装パターン<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
-<h4 id="oss_3">▼ OSSを使用する場合<a class="headerlink" href="#oss_3" title="Permanent link">&para;</a></h4>
-<p>並列パイプラインのOSS (例：Apache Camelなど) を使用する。</p>
-<blockquote>
-<ul>
-<li><a href="https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared">https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="05-tcc">05. TCCパターン<a class="headerlink" href="#05-tcc" title="Permanent link">&para;</a></h2>
-<h3 id="tcc">TCCパターンとは<a class="headerlink" href="#tcc" title="Permanent link">&para;</a></h3>
-<p>各マイクロサービスに各処理フェーズ (Try、Confirm、Cancel) を実行するAPIを実装し、APIを順に実行する。</p>
-<p>Tryフェーズでは、ローカルトランザクションを開始する。</p>
-<p>Confirmフェーズでは、ローカルトランザクションをコミットする。</p>
-<p>Cancelフェーズでは、以前のフェーズで問題が合った場合に、ロールバックを実施する。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.ibm.com/blogs/think/jp-ja/microservices-applications-enabled-by-ibmcloud-managed-services/">https://www.ibm.com/blogs/think/jp-ja/microservices-applications-enabled-by-ibmcloud-managed-services/</a></li>
-<li><a href="https://dev.to/yedf2/best-practice-for-tcc-distributed-transaction-in-go-402m">https://dev.to/yedf2/best-practice-for-tcc-distributed-transaction-in-go-402m</a></li>
-<li><a href="https://www.oracle.com/a/otn/docs/jp-dev-days-microservices.pdf#page=9">https://www.oracle.com/a/otn/docs/jp-dev-days-microservices.pdf#page=9</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="06">06. クエリパターン<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
-<h3 id="api-composition">API Composition<a class="headerlink" href="#api-composition" title="Permanent link">&para;</a></h3>
-<p>複数のマイクロサービスにまたがるread処理がある場合に必要になる。</p>
-<p>API Compositionサービスは、クライアントからのリクエストを受信し、複数のマイクロサービスに連鎖的にリクエストをルーティングする。</p>
-<p>メモリ上で取得結果を結合し、クライアントにレスポンスする。</p>
-<blockquote>
-<ul>
-<li><a href="https://crishantha.medium.com/microservices-patterns-api-composition-pattern-27040cae5bd3">https://crishantha.medium.com/microservices-patterns-api-composition-pattern-27040cae5bd3</a></li>
 <li><a href="https://stackoverflow.com/a/68074337/12771072">https://stackoverflow.com/a/68074337/12771072</a></li>
+<li><a href="https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-aggregation">https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-aggregation</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="_4">実装パターン<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ 自前で実装する場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>APIゲートウェイを自前 (例：フルスクラッチ、GraphQLを使用したフルスクラッチなど) で実装する。</p>
+<p>Kubernetes内で管理できるメリットがある。</p>
+<p>GraphQLでAPIゲートウェイを実装する場合は、特に注意が必要である。</p>
+<p>フロントエンドとAPIゲートウェイの両方でGraphQL特有の実装が必要になるので、フロントエンドとAPIゲートウェイの開発が分業にしくくなってしまう。</p>
+<p>ただ、フロントエンドとAPIゲートウェイの開発チームの両方がGraphQLの知識を持ってれば、これは起こらない。</p>
+<blockquote>
+<ul>
+<li><a href="https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy">https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy</a></li>
+<li><a href="https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9">https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9</a></li>
+</ul>
+</blockquote>
+<h4 id="oss">▼ OSSを使用する場合<a class="headerlink" href="#oss" title="Permanent link">&para;</a></h4>
+<p>APIゲートウェイのOSS (Kong、Tyk、Apigee、Kuma、Nginx、Envoy、Apache APISIXなど) を使用する。</p>
+<p>Kubernetes内で管理できるメリットがある。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/">https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/</a></li>
+<li><a href="https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9">https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9</a></li>
+</ul>
+</blockquote>
+<h4 id="_6">▼ クラウドプロバイダーのマネージドサービスを使用する場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>クラウドプロバイダー (例：AWS、Google Cloud) が提供するAPIゲートウェイ (例：AWS API Gateway、Google API Gateway) を使用する。</p>
+<p>クラウドプロバイダーの対応状況によっては、Kubernetes内で管理できない可能性がある。</p>
+<p>その場合、フロントエンドアプリケーションがAPIゲートウェイに通信できるように、フロントエンドアプリケーションとバックエンドアプリケーションを異なるKubernetesで動かす必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/">https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/</a></li>
+<li><a href="https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9">https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02-api">02. APIアグリゲーション層<a class="headerlink" href="#02-api" title="Permanent link">&para;</a></h2>
+<h3 id="api_3">APIアグリゲーション層とは<a class="headerlink" href="#api_3" title="Permanent link">&para;</a></h3>
+<p>全てのAPIまたは複数のAPIのセットとして機能する。</p>
 <p><br></p>
 
 
@@ -26392,7 +24302,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-22</span>
   </span>
 
     
