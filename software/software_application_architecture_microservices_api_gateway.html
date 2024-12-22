@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="APIゲートウェイ＠マイクロサービスアーキテクチャの知見を記録しています。">
+        <meta name="description" content="APIゲートウェイ領域＠マイクロサービスアーキテクチャの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -22,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】APIゲートウェイ＠マイクロサービスアーキテクチャ - 俺の技術ノート</title>
+        <title>【IT技術の知見】APIゲートウェイ領域＠マイクロサービスアーキテクチャ - 俺の技術ノート</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#api" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】APIゲートウェイ＠マイクロサービスアーキテクチャ
+              【IT技術の知見】APIゲートウェイ領域＠マイクロサービスアーキテクチャ
             
           </span>
         </div>
@@ -23875,6 +23875,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -23902,7 +23904,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
+  <a href="#api_1" class="md-nav__link">
     <span class="md-ellipsis">
       APIゲートウェイとは
     </span>
@@ -23921,7 +23923,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#api_1" class="md-nav__link">
+  <a href="#api_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ APIゲートウェイの分割パターンとは
     </span>
@@ -23962,7 +23964,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#api_2" class="md-nav__link">
+  <a href="#api_3" class="md-nav__link">
     <span class="md-ellipsis">
       API形式パターン
     </span>
@@ -24112,7 +24114,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#api_3" class="md-nav__link">
+  <a href="#api_4" class="md-nav__link">
     <span class="md-ellipsis">
       APIアグリゲーション層とは
     </span>
@@ -24143,8 +24145,7 @@
   
 
 
-  <h1>【IT技術の知見】APIゲートウェイ＠マイクロサービスアーキテクチャ</h1>
-
+<h1 id="api">APIゲートウェイ領域＠マイクロサービスアーキテクチャ<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -24154,9 +24155,9 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-api">01. APIゲートウェイ<a class="headerlink" href="#01-api" title="Permanent link">&para;</a></h2>
-<h3 id="api">APIゲートウェイとは<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
+<h3 id="api_1">APIゲートウェイとは<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h3>
 <p><img alt="microservices_api-gateway-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_api-gateway-pattern.png" /></p>
-<p>クリーンアーキテクチャでいうインフラストラクチャ層とインターフェース層のような機能を担う。</p>
+<p>クリーンアーキテクチャでいうインフラ層とインターフェース層のような機能を担う。</p>
 <p>主要な機能として、受信した通信を適切なマイクロサービスのAPIにルーティング</p>
 <ul>
 <li>ルーティング</li>
@@ -24176,7 +24177,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_2">分割パターン<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="api_1">▼ APIゲートウェイの分割パターンとは<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h4>
+<h4 id="api_2">▼ APIゲートウェイの分割パターンとは<a class="headerlink" href="#api_2" title="Permanent link">&para;</a></h4>
 <p>APIゲートウェイの責務をどのように分割するかに応じて、分割パターンがある。</p>
 <h4 id="central-aggregating-gateway">▼ Central Aggregating Gateway<a class="headerlink" href="#central-aggregating-gateway" title="Permanent link">&para;</a></h4>
 <p>マイクロサービスにリクエストを送信するアプリケーションの種類に関係なく、APIゲートウェイを<code>1</code>個だけ作成する。</p>
@@ -24211,7 +24212,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="api_2">API形式パターン<a class="headerlink" href="#api_2" title="Permanent link">&para;</a></h3>
+<h3 id="api_3">API形式パターン<a class="headerlink" href="#api_3" title="Permanent link">&para;</a></h3>
 <h4 id="apiapi">▼ APIゲートウェイのAPI形式パターンとは<a class="headerlink" href="#apiapi" title="Permanent link">&para;</a></h4>
 <p>APIゲートウェイのAPI形式に応じて、分割パターンがある。</p>
 <h4 id="restful-api">▼ RESTful-API<a class="headerlink" href="#restful-api" title="Permanent link">&para;</a></h4>
@@ -24279,7 +24280,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="02-api">02. APIアグリゲーション層<a class="headerlink" href="#02-api" title="Permanent link">&para;</a></h2>
-<h3 id="api_3">APIアグリゲーション層とは<a class="headerlink" href="#api_3" title="Permanent link">&para;</a></h3>
+<h3 id="api_4">APIアグリゲーション層とは<a class="headerlink" href="#api_4" title="Permanent link">&para;</a></h3>
 <p>全てのAPIまたは複数のAPIのセットとして機能する。</p>
 <p><br></p>
 

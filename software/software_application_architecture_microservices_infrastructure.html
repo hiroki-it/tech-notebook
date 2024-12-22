@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="インフラストラクチャ＠マイクロサービスアーキテクチャの知見を記録しています。">
+        <meta name="description" content="インフラ領域＠マイクロサービスアーキテクチャの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -22,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】インフラストラクチャ＠マイクロサービスアーキテクチャ - 俺の技術ノート</title>
+        <title>【IT技術の知見】インフラ領域＠マイクロサービスアーキテクチャ - 俺の技術ノート</title>
       
     
     
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】インフラストラクチャ＠マイクロサービスアーキテクチャ
+              【IT技術の知見】インフラ領域＠マイクロサービスアーキテクチャ
             
           </span>
         </div>
@@ -23875,6 +23875,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -23883,7 +23885,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       はじめに
     </span>
@@ -23920,7 +23922,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       アプリケーションデータの暗号化
     </span>
@@ -23939,7 +23941,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ サイドカーパターン
     </span>
@@ -23963,7 +23965,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ サイドカーパターン
     </span>
@@ -23999,9 +24001,8 @@
   
 
 
-  <h1>【IT技術の知見】インフラストラクチャ＠マイクロサービスアーキテクチャ</h1>
-
-<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h1 id="_1">インフラ領域＠マイクロサービスアーキテクチャ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -24014,15 +24015,15 @@
 <h2 id="02-l4l7">02. L4/L7トラフィック管理方法<a class="headerlink" href="#02-l4l7" title="Permanent link">&para;</a></h2>
 <p><br></p>
 <h2 id="03">03. 証明書管理方法<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_2">アプリケーションデータの暗号化<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h3 id="_3">アプリケーションデータの暗号化<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>各マイクロサービス間通信にて、SSL/TLSによる暗号化を採用する。</p>
 <p><br></p>
 <h3 id="tls">相互TLS認証<a class="headerlink" href="#tls" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ サイドカーパターン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h4 id="_4">▼ サイドカーパターン<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>各マイクロサービス間通信の相互TLS認証にて、サイドカーパターンを採用する。</p>
 <p><br></p>
 <h3 id="jwtbearer">JWTによるBearer認証<a class="headerlink" href="#jwtbearer" title="Permanent link">&para;</a></h3>
-<h4 id="_4">▼ サイドカーパターン<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h4 id="_5">▼ サイドカーパターン<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>各マイクロサービス間通信のJWTによるBearer認証にて、サイドカーパターンを採用する。</p>
 <p>サイドカーはリクエストからJWTを取得し、通信の認証/認可を実施する。</p>
 <p>送信元のマイクロサービスを認証し、認証されていないマイクロサービスであればリクエストを拒否する。</p>
@@ -24056,7 +24057,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-22</span>
   </span>
 
     

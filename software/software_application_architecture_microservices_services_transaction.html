@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="DB＠マイクロサービスアーキテクチャの知見を記録しています。">
+        <meta name="description" content="トランザクション管理＠マイクロサービス領域の知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】DB＠マイクロサービスアーキテクチャ - 俺の技術ノート</title>
+        <title>【IT技術の知見】トランザクション管理＠マイクロサービス領域 - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#db" class="md-skip">
+        <a href="#_1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】DB＠マイクロサービスアーキテクチャ
+              【IT技術の知見】トランザクション管理＠マイクロサービス領域
             
           </span>
         </div>
@@ -1570,7 +1570,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       はじめに
     </span>
@@ -1589,7 +1589,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#db_1" class="md-nav__link">
+  <a href="#db" class="md-nav__link">
     <span class="md-ellipsis">
       共有DBパターンの場合
     </span>
@@ -1598,7 +1598,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#db_2" class="md-nav__link">
+  <a href="#db_1" class="md-nav__link">
     <span class="md-ellipsis">
       マイクロサービス別DBの場合
     </span>
@@ -1631,7 +1631,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン
     </span>
@@ -1650,7 +1650,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ クラウドプロバイダーのマネージドサービスを使用する場合
     </span>
@@ -1697,7 +1697,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       デザインパターン
     </span>
@@ -1745,7 +1745,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン (リクエスト/レスポンスパターン、パブリッシュ/サブスクライブパターン)
     </span>
@@ -1755,7 +1755,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 自前で実装する場合
     </span>
@@ -1773,7 +1773,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ クラウドプロバイダーのマネージドサービスを使用する場合
     </span>
@@ -1815,7 +1815,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ポーリングパターンの場合
     </span>
@@ -1839,7 +1839,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ポイントツーポイントの場合
     </span>
@@ -1848,7 +1848,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ メッセージキューを経由する場合
     </span>
@@ -1857,7 +1857,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ メッセージブローカーを経由する場合
     </span>
@@ -1871,7 +1871,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       補償トランザクション
     </span>
@@ -1881,7 +1881,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 補償トランザクションとは
     </span>
@@ -1890,7 +1890,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 設計例
     </span>
@@ -2006,7 +2006,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン (パブリッシュ/サブスクライブパターン)
     </span>
@@ -2016,7 +2016,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 自前で実装する場合
     </span>
@@ -2034,7 +2034,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ クラウドプロバイダーのマネージドサービスを使用する場合
     </span>
@@ -2048,7 +2048,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       後続マイクロサービスとの通信方式
     </span>
@@ -2081,7 +2081,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
+  <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン
     </span>
@@ -24524,7 +24524,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       はじめに
     </span>
@@ -24543,7 +24543,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#db_1" class="md-nav__link">
+  <a href="#db" class="md-nav__link">
     <span class="md-ellipsis">
       共有DBパターンの場合
     </span>
@@ -24552,7 +24552,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#db_2" class="md-nav__link">
+  <a href="#db_1" class="md-nav__link">
     <span class="md-ellipsis">
       マイクロサービス別DBの場合
     </span>
@@ -24585,7 +24585,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン
     </span>
@@ -24604,7 +24604,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ クラウドプロバイダーのマネージドサービスを使用する場合
     </span>
@@ -24651,7 +24651,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       デザインパターン
     </span>
@@ -24699,7 +24699,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン (リクエスト/レスポンスパターン、パブリッシュ/サブスクライブパターン)
     </span>
@@ -24709,7 +24709,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 自前で実装する場合
     </span>
@@ -24727,7 +24727,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ クラウドプロバイダーのマネージドサービスを使用する場合
     </span>
@@ -24769,7 +24769,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ポーリングパターンの場合
     </span>
@@ -24793,7 +24793,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ポイントツーポイントの場合
     </span>
@@ -24802,7 +24802,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ メッセージキューを経由する場合
     </span>
@@ -24811,7 +24811,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ メッセージブローカーを経由する場合
     </span>
@@ -24825,7 +24825,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       補償トランザクション
     </span>
@@ -24835,7 +24835,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 補償トランザクションとは
     </span>
@@ -24844,7 +24844,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 設計例
     </span>
@@ -24960,7 +24960,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン (パブリッシュ/サブスクライブパターン)
     </span>
@@ -24970,7 +24970,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 自前で実装する場合
     </span>
@@ -24988,7 +24988,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ クラウドプロバイダーのマネージドサービスを使用する場合
     </span>
@@ -25002,7 +25002,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       後続マイクロサービスとの通信方式
     </span>
@@ -25035,7 +25035,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
+  <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン
     </span>
@@ -25129,8 +25129,8 @@
   
 
 
-<h1 id="db">DB＠マイクロサービスアーキテクチャ<a class="headerlink" href="#db" title="Permanent link">&para;</a></h1>
-<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h1 id="_1">トランザクション管理＠マイクロサービス領域<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -25139,7 +25139,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="01">01. トランザクションパターン<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="db_1">共有DBパターンの場合<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h3>
+<h3 id="db">共有DBパターンの場合<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
 <ul>
 <li>パターン不要 (各マイクロサービスの従来のトランザクション)</li>
 </ul>
@@ -25149,7 +25149,7 @@
 <li><a href="https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared">https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared</a></li>
 </ul>
 </blockquote>
-<h3 id="db_2">マイクロサービス別DBの場合<a class="headerlink" href="#db_2" title="Permanent link">&para;</a></h3>
+<h3 id="db_1">マイクロサービス別DBの場合<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>二相コミットパターン</li>
 <li>Sagaパターン (オーケストレーションベース、コレグラフィベース、並列パイプラインベース)</li>
@@ -25171,7 +25171,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_2">実装パターン<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h3 id="_3">実装パターン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="oss">▼ OSSを使用する場合<a class="headerlink" href="#oss" title="Permanent link">&para;</a></h4>
 <p>二相コミットのOSSはなさそう。</p>
 <blockquote>
@@ -25179,7 +25179,7 @@
 <li><a href="https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared">https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared</a></li>
 </ul>
 </blockquote>
-<h4 id="_3">▼ クラウドプロバイダーのマネージドサービスを使用する場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h4 id="_4">▼ クラウドプロバイダーのマネージドサービスを使用する場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Scalar DB</li>
 <li>Google Spanner</li>
@@ -25214,7 +25214,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_4">デザインパターン<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_5">デザインパターン<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="state">▼ Stateパターン<a class="headerlink" href="#state" title="Permanent link">&para;</a></h4>
 <p>Sagaオーケストレーターをステートマシン図やStateパターンでモデリングし、ステートマシンを実装する。</p>
 <blockquote>
@@ -25239,8 +25239,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_5">実装パターン (リクエスト/レスポンスパターン、パブリッシュ/サブスクライブパターン)<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<h4 id="_6">▼ 自前で実装する場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h3 id="_6">実装パターン (リクエスト/レスポンスパターン、パブリッシュ/サブスクライブパターン)<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ 自前で実装する場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>Sagaオーケストレーターは、ローカルトランザクションの進捗度 (Sagaログ) をDBに都度記録する。</p>
 <p>Sagaログから、いずれのローカルトランザクションを実行し終えたかを判断できる。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -25266,7 +25266,7 @@
 <li><a href="https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared">https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared</a></li>
 </ul>
 </blockquote>
-<h4 id="_7">▼ クラウドプロバイダーのマネージドサービスを使用する場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h4 id="_8">▼ クラウドプロバイダーのマネージドサービスを使用する場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>クラウドプロバイダー (例：AWS、Google Cloud) が提供するSagaオーケストレーター (例：AWS Step Functions、Google Workflowsなど) を使用する。</p>
 <p>各マイクロサービスは、Sagaオーケストレーターをメッセージブローカー (これもクラウドプロバイダーが提供しているものでよい) を介して取得する。</p>
 <blockquote>
@@ -25356,7 +25356,7 @@
 <h3 id="saga_2">Sagaオーケストレーターのステータスチェッカー<a class="headerlink" href="#saga_2" title="Permanent link">&para;</a></h3>
 <h4 id="saga_3">▼ Sagaオーケストレーターのステータスチェッカーとは<a class="headerlink" href="#saga_3" title="Permanent link">&para;</a></h4>
 <p>オーケストレーションベースのSagaパターンにて、Sagaオーケストレーターにリクエストを送信するクライアントは、Sagaオーケストレーターの処理結果を知る必要がある。</p>
-<h4 id="_8">▼ ポーリングパターンの場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h4 id="_9">▼ ポーリングパターンの場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>ポーリングパターンの場合、Sagaステータスチェッカーを採用する。</p>
 <p>Sagaステータスチェッカーは、トランザクションIDを使用してワークフローの処理結果をDBから取得する。</p>
 <p><img alt="saga-pattern_orchestrator_status-checker" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_status-checker.jpg" /></p>
@@ -25369,7 +25369,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="saga_4">Sagaオーケストレーターのワーカー<a class="headerlink" href="#saga_4" title="Permanent link">&para;</a></h3>
-<h4 id="_9">▼ ポイントツーポイントの場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<h4 id="_10">▼ ポイントツーポイントの場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>メッセージブローカー (例：Apache Kafka、RabbitMQなど) を経由しないオーケストレーションベースのSagaパターンを実装する。</p>
 <p>メッセージブローカーを経由するよりも、Sagaオーケストレーターと各ワーカーの間の結合度が高まってしまうが、Sagaオーケストレーターの実装が簡単になる。</p>
 <p>ローカルトランザクションの進捗度に応じて、次のローカルトラザクションや補償トランザクションを実行する。</p>
@@ -25379,9 +25379,9 @@
 <li><a href="https://copilot.rocks/implementing-architectural-patterns/20-implementing-saga-pattern/#architecture-diagrams">https://copilot.rocks/implementing-architectural-patterns/20-implementing-saga-pattern/#architecture-diagrams</a></li>
 </ul>
 </blockquote>
-<h4 id="_10">▼ メッセージキューを経由する場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<h4 id="_11">▼ メッセージキューを経由する場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>メッセージキュー (例：AWS SQSなど) を経由して、Sagaオーケストレーターとワーカーの間で通信する。</p>
-<h4 id="_11">▼ メッセージブローカーを経由する場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<h4 id="_12">▼ メッセージブローカーを経由する場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>メッセージブローカー (例：Apache Kafka、RabbitMQなど) を使い、オーケストレーションベースのSagaパターンを実装する。</p>
 <p>Sagaオーケストレーターは、メッセージブローカーに対してパブリッシュとサブスクライブを実行する。</p>
 <p>サブスクライブしたメッセージに応じて、次のメッセージをパブリッシュする。</p>
@@ -25393,13 +25393,13 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_12">補償トランザクション<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<h4 id="_13">▼ 補償トランザクションとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<h3 id="_13">補償トランザクション<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h4 id="_14">▼ 補償トランザクションとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>ローカルトランザクションを元に戻すトランザクションを逆順に実行し、Sagaパターンによるトランザクションの結果を元に戻す仕組みのこと。</p>
 <p>マイクロサービスアーキテクチャでは、トランザクションの通常のロールバック機能を使用した場合に、処理に失敗したマイクロサービスだけでロールバックし、それ以前のマイクロサービスではロールバックが起こらない問題がある。</p>
 <p>いずれかのマイクロサービスのローカルトランザクションが失敗した場合に、まずそのマイクロサービスは自身のトランザクションをロールバックする。</p>
 <p>その後、それまでのローカルトランザクションを擬似的にロールバックするトランザクションを逆順で実行する。</p>
-<h4 id="_14">▼ 設計例<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<h4 id="_15">▼ 設計例<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>受注に関するトランザクションが異なるマイクロサービスにまたがる例。</p>
 <p><img alt="saga-pattern_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_example.png" /></p>
 <p>補償トランザクションによって、各ローカルトランザクションを元に戻す逆順のトランザクションを実行する。</p>
@@ -25929,8 +25929,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_15">実装パターン (パブリッシュ/サブスクライブパターン)<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<h4 id="_16">▼ 自前で実装する場合<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<h3 id="_16">実装パターン (パブリッシュ/サブスクライブパターン)<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<h4 id="_17">▼ 自前で実装する場合<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <p>以下のリポジトリを参考にせよ。</p>
 <p><img alt="choreography_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography_example.png" /></p>
@@ -25947,7 +25947,7 @@
 <li><a href="https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared">https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared</a></li>
 </ul>
 </blockquote>
-<h4 id="_17">▼ クラウドプロバイダーのマネージドサービスを使用する場合<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<h4 id="_18">▼ クラウドプロバイダーのマネージドサービスを使用する場合<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>各マイクロサービス間の通信方式は、パブリッシュ/サブスクライブパターンにする必要がある。</p>
 <ul>
 <li>AWS Lambda、マイクロサービス間のパブリッシュ/サブスクライブAWSリソース (例：AWS EventBridge、AWS SQS、AWS SNS）</li>
@@ -25960,7 +25960,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_18">後続マイクロサービスとの通信方式<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<h3 id="_19">後続マイクロサービスとの通信方式<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <p>各マイクロサービスにパブリッシュとサブスクライブを処理する責務を持たせる。</p>
 <p><img alt="choreography_message-queue" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography_message-queue.png" /></p>
 <blockquote>
@@ -25980,7 +25980,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_19">実装パターン<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<h3 id="_20">実装パターン<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <h4 id="oss_3">▼ OSSを使用する場合<a class="headerlink" href="#oss_3" title="Permanent link">&para;</a></h4>
 <p>並列パイプラインのOSS (例：Apache Camelなど) を使用する。</p>
 <blockquote>
@@ -26035,7 +26035,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-22</span>
   </span>
 
     
