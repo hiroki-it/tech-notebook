@@ -1657,7 +1657,15 @@
          <lastmod>2024-12-22</lastmod>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_development.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_cross_development.html</loc>
+         <lastmod>2024-12-22</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_cross_test_blackbox.html</loc>
+         <lastmod>2024-12-22</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_cross_test_whitebox.html</loc>
          <lastmod>2024-12-22</lastmod>
     </url>
     <url>
@@ -1682,14 +1690,6 @@
     </url>
     <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_storage.html</loc>
-         <lastmod>2024-12-22</lastmod>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_test_blackbox.html</loc>
-         <lastmod>2024-12-22</lastmod>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_test_whitebox.html</loc>
          <lastmod>2024-12-22</lastmod>
     </url>
     <url>
