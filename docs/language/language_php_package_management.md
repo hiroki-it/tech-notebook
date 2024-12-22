@@ -59,7 +59,7 @@ $ php -r "unlink('composer-setup.php');"
 
     "autoload": {
         "psr-4": {
-             # "<名前空間>": "<パス>",
+            # "<名前空間>": "<パス>",
             "App\\": "app/",
             "Database\\Factories\\Infrastructure\\DTO\\": "database/factories/production",
             "Database\\Seeders\\": "database/seeds/production"

@@ -13,9 +13,7 @@ description: Ingressコントローラー＠Ingressコントローラー系の�
 
 <br>
 
-## 01. Ingressコントローラー
-
-### Ingressコントローラーとは
+## 01. Ingressコントローラーとは
 
 Ingressコントローラーは、kube-controllerのように単一/複数のIngressにwatchイベントを送信する、
 
@@ -35,22 +33,45 @@ Kubernetesの周辺ツール (例：Prometheus、AlertManager、Grafana、ArgoCD
 
 <br>
 
-### アウトバウンド
+## 02. 外部Ingressコントローラーの使用
 
-Ingressコントローラーは、名前ではIngressとなっているがEgress (アウトバウンド) も扱う。
+Ingressコントローラーには種類があり、コントローラーごとに作成するリバースプロキシやロードバランサーが異なる。
 
-> - https://www.f5.com/ja_jp/company/blog/nginx/guide-to-choosing-ingress-controller-part-1-identify-requirements
+| 外部Ingressコントローラーの種類                               | リバースプロキシ、ロードバランサー | 開発環境 | 本番環境 |
+| ------------------------------------------------------------- | ---------------------------------- | :------: | :------: |
+| Nginx Ingressコントローラー                                   | Nginx                              |    ✅    |    ✅    |
+| minikubeのingressアドオン (実体はNginx Ingressコントローラー) | Nginx                              |    ✅    |          |
+| AWS Load Balancerコントローラー                               | AWS ALB                            |          |    ✅    |
+| Google Cloud CLBコントローラー                                | Google Cloud CLB                   |          |    ✅    |
+| Istio Ingressコントローラー                                   | Istio IngressGateway (実体はEnvoy) |    ✅    |    ✅    |
+| Contourコントローラー                                         | Envoy                              |    ✅    |    ✅    |
+| ...                                                           | ...                                |   ...    |   ...    |
+
+> - https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
+> - https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
+> - https://www.rancher.co.jp/docs/rancher/v2.x/en/cluster-admin/tools/istio/setup/gateway/
+> - https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/#specifying-ingressclass
+> - https://github.com/projectcontour/contour
 
 <br>
 
-### SSL証明書の割り当て
+## 03. 機能
 
-Ingressコントローラーは、Secretに設定されたSSL証明書を参照し、これを自身のロードバランサー (例：Nginx) に渡す。
+### Ingressの検知
 
-![kubernetes_ingress-controller_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller_certificate.png)
+Ingressに定義されたルーティングのルールを検知する。
 
-> - https://blog.sakamo.dev/post/ingress-nginx/
-> - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/https/
+Kubernetes Clusterに単一のIngressコントローラーを作成するとよい。
+
+また、各Namespace用に定義されたIngressを使用して、各NamespaceのServiceにルーティングするとよい。
+
+<br>
+
+### インバウンド/アウトバウンド
+
+Ingressコントローラーは、名前ではIngressとなっているがEgress (アウトバウンド) の通信も扱う。
+
+> - https://www.f5.com/ja_jp/company/blog/nginx/guide-to-choosing-ingress-controller-part-1-identify-requirements
 
 <br>
 
@@ -72,26 +93,13 @@ Ingressコントローラーは、『`***-controller-admission`』というServi
 
 <br>
 
-## 02. 外部Ingressコントローラー
+### SSL証明書の割り当て
 
-### 外部Ingressコントローラーの種類
+Ingressコントローラーは、Secretに設定されたSSL証明書を参照し、これを自身のロードバランサー (例：Nginx) に渡す。
 
-Ingressコントローラーには種類があり、コントローラーごとに作成するリバースプロキシやロードバランサーが異なる。
+![kubernetes_ingress-controller_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller_certificate.png)
 
-| 外部Ingressコントローラーの種類                               | リバースプロキシ、ロードバランサー | 開発環境 | 本番環境 |
-| ------------------------------------------------------------- | ---------------------------------- | :------: | :------: |
-| Nginx Ingressコントローラー                                   | Nginx                              |    ✅    |    ✅    |
-| minikubeのingressアドオン (実体はNginx Ingressコントローラー) | Nginx                              |    ✅    |          |
-| AWS Load Balancerコントローラー                               | AWS ALB                            |          |    ✅    |
-| Google Cloud CLBコントローラー                                | Google Cloud CLB                   |          |    ✅    |
-| Istio Ingressコントローラー                                   | Istio IngressGateway (実体はEnvoy) |    ✅    |    ✅    |
-| Contourコントローラー                                         | Envoy                              |    ✅    |    ✅    |
-| ...                                                           | ...                                |   ...    |   ...    |
-
-> - https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
-> - https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
-> - https://www.rancher.co.jp/docs/rancher/v2.x/en/cluster-admin/tools/istio/setup/gateway/
-> - https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/#specifying-ingressclass
-> - https://github.com/projectcontour/contour
+> - https://blog.sakamo.dev/post/ingress-nginx/
+> - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/https/
 
 <br>
