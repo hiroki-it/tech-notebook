@@ -24938,6 +24938,25 @@
 <h4 id="nodeport-service">▼ NodePort Serviceを選ぶ<a class="headerlink" href="#nodeport-service" title="Permanent link">&para;</a></h4>
 <p>Istio IngressGatewayでは、内部的に作成されるServiceのタイプ (NodePort Service、LoadBalancer Service) を選べる。</p>
 <p>NodePort Serviceを選ぶ場合、Nodeのダウンストリームに開発者がロードバランサーを作成し、NodePort Serviceにインバウンド通信をルーティングできるようにする。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">AWS Route53</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)</span>
+<span class="l l-Scalar l-Scalar-Plain">AWS ALB</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">NodePort Service (Istio IngressGateway)</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod</span>
+</code></pre></div>
 <p>一方で、LoadBalancer Serviceを選ぶ場合、クラウドプロバイダーのロードバランサーが自動的に作成される。</p>
 <p>そのため、このロードバランサーからLoadBalancer Serviceにルーティングできるようにする。</p>
 <p>LoadBalancer Serviceでは、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまうため、NodePort Serviceを選ぶようにする。</p>
@@ -25055,7 +25074,7 @@
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">AWS Route53</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
-<span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー (単一のL7ロードバランサーを作成し、複数のL4ロードバランサーに振り分ける)</span>
+<span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)</span>
 <span class="l l-Scalar l-Scalar-Plain">AWS ALB</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>

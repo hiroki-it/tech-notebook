@@ -18636,6 +18636,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="02. 外部Ingressコントローラーの使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ingress" class="md-nav__link">
+    <span class="md-ellipsis">
+      外部Ingressコントローラーの種類
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-load-balancer" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Load Balancerコントローラーの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istio-ingress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Istio Ingressコントローラーの場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -18649,7 +18682,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ingress" class="md-nav__link">
+  <a href="#ingress_1" class="md-nav__link">
     <span class="md-ellipsis">
       Ingressの検知
     </span>
@@ -18667,7 +18700,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ingress_1" class="md-nav__link">
+  <a href="#ingress_2" class="md-nav__link">
     <span class="md-ellipsis">
       Ingressの設定値のバリデーション
     </span>
@@ -24084,6 +24117,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="02. 外部Ingressコントローラーの使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ingress" class="md-nav__link">
+    <span class="md-ellipsis">
+      外部Ingressコントローラーの種類
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-load-balancer" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Load Balancerコントローラーの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istio-ingress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Istio Ingressコントローラーの場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -24097,7 +24163,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ingress" class="md-nav__link">
+  <a href="#ingress_1" class="md-nav__link">
     <span class="md-ellipsis">
       Ingressの検知
     </span>
@@ -24115,7 +24181,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ingress_1" class="md-nav__link">
+  <a href="#ingress_2" class="md-nav__link">
     <span class="md-ellipsis">
       Ingressの設定値のバリデーション
     </span>
@@ -24181,6 +24247,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="02-ingress">02. 外部Ingressコントローラーの使用<a class="headerlink" href="#02-ingress" title="Permanent link">&para;</a></h2>
+<h3 id="ingress">外部Ingressコントローラーの種類<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h3>
 <p>Ingressコントローラーには種類があり、コントローラーごとに作成するリバースプロキシやロードバランサーが異なる。</p>
 <table>
 <thead>
@@ -24246,8 +24313,43 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="aws-load-balancer">AWS Load Balancerコントローラーの場合<a class="headerlink" href="#aws-load-balancer" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">AWS Route53</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)</span>
+<span class="l l-Scalar l-Scalar-Plain">AWS Load BalancerコントローラーによるAWS ALB</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">NodePort Service (ポート番号はランダムでよい)</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="istio-ingress">Istio Ingressコントローラーの場合<a class="headerlink" href="#istio-ingress" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">AWS Route53</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)</span>
+<span class="l l-Scalar l-Scalar-Plain">AWS ALB</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">NodePort Service (Istio IngressGateway)</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod</span>
+</code></pre></div>
+<p><br></p>
 <h2 id="03">03. 機能<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="ingress">Ingressの検知<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h3>
+<h3 id="ingress_1">Ingressの検知<a class="headerlink" href="#ingress_1" title="Permanent link">&para;</a></h3>
 <p>Ingressに定義されたルーティングのルールを検知する。</p>
 <p>Kubernetes Clusterに単一のIngressコントローラーを作成するとよい。</p>
 <p>また、各Namespace用に定義されたIngressを使用して、各NamespaceのServiceにルーティングするとよい。</p>
@@ -24260,7 +24362,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="ingress_1">Ingressの設定値のバリデーション<a class="headerlink" href="#ingress_1" title="Permanent link">&para;</a></h3>
+<h3 id="ingress_2">Ingressの設定値のバリデーション<a class="headerlink" href="#ingress_2" title="Permanent link">&para;</a></h3>
 <p>Ingressコントローラーは、『<code>***-controller-admission</code>』というServiceでwebhookサーバーを公開している。</p>
 <p>このwebhookサーバーは、新しく追加されたIngressの設定値のバリデーションを実行する。</p>
 <p>これにより、不正なIngressが稼働することを防止できる。</p>
