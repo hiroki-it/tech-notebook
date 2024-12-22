@@ -1,7 +1,9 @@
 ---
-title: 【IT技術の知見】APIゲートウェイ＠マイクロサービスアーキテクチャ
-description: APIゲートウェイ＠マイクロサービスアーキテクチャの知見を記録しています。
+title: 【IT技術の知見】APIゲートウェイ領域＠マイクロサービスアーキテクチャ
+description: APIゲートウェイ領域＠マイクロサービスアーキテクチャの知見を記録しています。
 ---
+
+# APIゲートウェイ領域＠マイクロサービスアーキテクチャ
 
 ## はじめに
 
@@ -17,7 +19,7 @@ description: APIゲートウェイ＠マイクロサービスアーキテクチ�
 
 ![microservices_api-gateway-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_api-gateway-pattern.png)
 
-クリーンアーキテクチャでいうインフラストラクチャ層とインターフェース層のような機能を担う。
+クリーンアーキテクチャでいうインフラ層とインターフェース層のような機能を担う。
 
 主要な機能として、受信した通信を適切なマイクロサービスのAPIにルーティング
 
