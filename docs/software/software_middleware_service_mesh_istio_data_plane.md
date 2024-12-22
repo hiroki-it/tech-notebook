@@ -621,10 +621,24 @@ istio_request_messages_total{...}
 
 <br>
 
-## pilot-agentコマンド
+## 03. pilot-agentコマンド
 
 ### 実行オプションの渡し方
 
-記入中...
+`istio-proxy`コンテナの起動時に引数として渡す。
+
+Podであれば、`.spec.containers[*].args`オプションを使用する。
+
+<br>
+
+### wait
+
+`istio-proxy`コンテナのプロセスが起動完了するまで待機する。
+
+```bash
+$ pilot-agent wait
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#pilot-agent-wait
 
 <br>

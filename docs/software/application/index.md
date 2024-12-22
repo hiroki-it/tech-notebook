@@ -39,13 +39,13 @@
 
 * #### [︎マイクロサービスアーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices.html)
 
-* #### [認証/認可](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_auth.html)
+* #### <u>マイクロサービス</u>
+  > * ##### [マイクロサービス設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_design.html)
+  > * ##### [マイクロサービス間通信](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_connection.html)
+  > * ##### [トランザクション管理](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_transaction.html)
+  > * ##### [認証/認可](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_auth.html)
 
-* #### [DB](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_database.html)
-
-* #### [ネットワーク](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_network.html)
-
-* #### [セキュリティ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_security.html)
+* #### [ストレージ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_storage.html)
 
 * #### [ホワイトボックステスト](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_test_whitebox.html)
 

@@ -532,7 +532,7 @@ $ curl http://127.0.0.1:15014/debug
 
 ### 実行オプションの渡し方
 
-コンテナの起動時に引数として渡す。
+`discovery`コンテナの起動時に引数として渡す。
 
 Podであれば、`.spec.containers[*].args`オプションを使用する。
 
@@ -556,58 +556,52 @@ spec:
 
 <br>
 
-### clusterRegistriesNamespace
+### discovery
+
+#### ▼ clusterRegistriesNamespace
 
 IstioのConfigMap (`istio-mesh-cm`) のあるNamespaceを設定する。
 
 ```bash
-$ pilot-discovery --clusterRegistriesNamespace istio-system
+$ pilot-discovery discovery --clusterRegistriesNamespace istio-system
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery
 
-<br>
-
-### keepaliveMaxServerConnectionAge
+#### ▼ keepaliveMaxServerConnectionAge
 
 `istio-proxy`コンテナからのgRPCリクエスト受信時のKeepalive (クライアントの状態に応じて、その接続をタイムアウトにするか否か) を設定する。
 
 ```bash
-$ pilot-discovery --keepaliveMaxServerConnectionAge 30m
+$ pilot-discovery discovery --keepaliveMaxServerConnectionAge 30m
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery
 
-<br>
-
-### log_output_level
+#### ▼ log_output_level
 
 ```bash
-$ pilot-discovery --log_output_level none
+$ pilot-discovery discovery --log_output_level none
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery
 
-<br>
-
-### monitoringAddr
+#### ▼ monitoringAddr
 
 Prometheusによるメトリクス収集のポート番号を設定する。
 
 `:15014`を設定する。
 
 ```bash
-$ pilot-discovery --monitoringAddr :15014
+$ pilot-discovery discovery --monitoringAddr :15014
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery
 
-<br>
-
-### domain
+#### ▼ domain
 
 ```bash
-$ pilot-discovery --domain cluster.local
+$ pilot-discovery discovery --domain cluster.local
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery
