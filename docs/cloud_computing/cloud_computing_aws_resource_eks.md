@@ -1068,6 +1068,21 @@ Nodeグループ (マネージドNodeグループ、セルフマネージドNode
 
 <br>
 
+### AWS EC2のヘルスチェック
+
+#### ▼ AWS EC2に関するヘルスチェック
+
+AWS EC2に関するヘルスチェック (例：AWS EC2の正常性) は、AWS Auto Scalingグループで設定できる。
+
+#### ▼ Nodeに関するヘルスチェック
+
+Nodeに関するヘルスチェック (例：AWS EC2内のkubeletの正常性) は、EKSアドオンのNode監視エージェントで設定できる。
+
+> - https://www.reddit.com/r/aws/comments/1hg998p/comment/m2hfdns/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+> - https://docs.aws.amazon.com/eks/latest/userguide/node-health.html
+
+<br>
+
 ## 04-03. AWS EC2 Node AMI
 
 ### AWS EC2ワーカーNodeの最適化AMI

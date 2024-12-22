@@ -140,7 +140,7 @@ Kubernetesのバージョンに応じて、異なるアドオンのバージョ�
 
 <br>
 
-## 03. AWS EKS Distro for OpenTelemetry
+## 03. AWS Distro for OpenTelemetry
 
 テレメトリーの収集をマネージドにする。
 
@@ -171,5 +171,17 @@ AWS kube-proxyがAWS EKS Cluster内に無い場合、Pod内のコンテナのラ
 Kubernetesのバージョンに応じて、異なるアドオンのバージョンを使用する必要がある。
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
+
+<br>
+
+## 05. AWS Node監視エージェント
+
+記入中...
+
+<br>
+
+## 06. AWS Pod Identityエージェント
+
+記入中...
 
 <br>
