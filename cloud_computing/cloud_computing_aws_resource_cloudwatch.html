@@ -13904,13 +13904,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#iam" class="md-nav__link">
+  <a href="#aws-iam" class="md-nav__link">
     <span class="md-ellipsis">
-      IAMロール
+      AWS IAMロール
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="IAMロール">
+    <nav class="md-nav" aria-label="AWS IAMロール">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25111,13 +25111,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#iam" class="md-nav__link">
+  <a href="#aws-iam" class="md-nav__link">
     <span class="md-ellipsis">
-      IAMロール
+      AWS IAMロール
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="IAMロール">
+    <nav class="md-nav" aria-label="AWS IAMロール">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25749,8 +25749,8 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <span class="w">      </span><span class="err">`</span><span class="c1"># プロセスのユーザー名を設定する。`</span>
 <span class="w">      </span><span class="s">&quot;run_as_user&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cwagent&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="s">&quot;metrics_collection_interval&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">60</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="err">`</span><span class="c1"># 別のAWSアカウントにログを送信する場合に、必要な認可スコープを付与したIAMロール`</span>
-<span class="w">      </span><span class="s">&quot;credentials&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:iam::&lt;AWSアカウントID&gt;:role/&lt;IAMロール名&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="err">`</span><span class="c1"># 別のAWSアカウントにログを送信する場合に、必要な認可スコープを付与したAWS IAMロール`</span>
+<span class="w">      </span><span class="s">&quot;credentials&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:iam::&lt;AWSアカウントID&gt;:role/&lt;AWS</span><span class="nv"> </span><span class="s">IAMロール名&gt;&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <h4 id="metrics">▼ <code>metrics</code>セクション<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h4>
@@ -25863,16 +25863,16 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
 </code></pre></div>
 <p><br></p>
-<h3 id="iam">IAMロール<a class="headerlink" href="#iam" title="Permanent link">&para;</a></h3>
+<h3 id="aws-iam">AWS IAMロール<a class="headerlink" href="#aws-iam" title="Permanent link">&para;</a></h3>
 <h4 id="ec2">▼ EC2の場合<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h4>
-<p>EC2でcloudwatchエージェントを稼働させる場合、AWS CloudWatchAgentServerPolicyが付与されたIAMロールをEC2に紐付ける必要がある。</p>
+<p>EC2でcloudwatchエージェントを稼働させる場合、AWS CloudWatchAgentServerPolicyが付与されたAWS IAMロールをEC2に紐付ける必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html</a></li>
 </ul>
 </blockquote>
 <h4 id="aws">▼ AWS以外のサーバーの場合<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h4>
-<p>AWS以外 (オンプレミス、他のクラウドプロバイダー) のサーバーでcloudwatchエージェントを稼働させる場合、AWS CloudWatchAgentServerPolicyが付与されたIAMロールをcloudwatchエージェント用のIAMユーザーに紐付ける必要がある。</p>
+<p>AWS以外 (オンプレミス、他のクラウドプロバイダー) のサーバーでcloudwatchエージェントを稼働させる場合、AWS CloudWatchAgentServerPolicyが付与されたAWS IAMロールをcloudwatchエージェント用のAWS IAMユーザーに紐付ける必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html</a></li>
@@ -25965,7 +25965,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-22</span>
   </span>
 
     

@@ -14274,9 +14274,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#autoscaling" class="md-nav__link">
+  <a href="#aws-auto-scaling" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 起動テンプレートとAutoScalingグループとの紐付け
+      ▼ 起動テンプレートとAWS Auto Scalingグループとの紐付け
     </span>
   </a>
   
@@ -25925,9 +25925,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#autoscaling" class="md-nav__link">
+  <a href="#aws-auto-scaling" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 起動テンプレートとAutoScalingグループとの紐付け
+      ▼ 起動テンプレートとAWS Auto Scalingグループとの紐付け
     </span>
   </a>
   
@@ -27602,12 +27602,12 @@
 <h4 id="node_5">▼ マネージドNodeグループ<a class="headerlink" href="#node_5" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Nodeグループ内の各AWS EC2ワーカーNodeの作成</li>
-<li>Nodeグループに紐づくAutoScalingグループの作成</li>
+<li>Nodeグループに紐づくAWS Auto Scalingグループの作成</li>
 <li>AWS EC2ワーカーNodeのOSやミドルウェアの各種アップグレード</li>
 </ul>
 <p>を自動化する。</p>
-<p>Nodeグループは、AWS EC2ワーカーNodeが配置されるプライベートサブネットのAZにこれをスケジューリングさせるように、AutoScalingグループに各AZを自動的に設定する。</p>
-<p>AutoScalingグループの機能を使用すれば、AWS EC2ワーカーNodeの自動的な起動/停止を設定できる。</p>
+<p>Nodeグループは、AWS EC2ワーカーNodeが配置されるプライベートサブネットのAZにこれをスケジューリングさせるように、AWS Auto Scalingグループに各AZを自動的に設定する。</p>
+<p>AWS Auto Scalingグループの機能を使用すれば、AWS EC2ワーカーNodeの自動的な起動/停止やヘルスチェックを設定できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html">https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html</a></li>
@@ -27624,9 +27624,9 @@
 <li><a href="https://blog.framinal.life/entry/2020/07/19/044328#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E5%9E%8B%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97">https://blog.framinal.life/entry/2020/07/19/044328#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E5%9E%8B%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97</a></li>
 </ul>
 </blockquote>
-<h4 id="autoscaling">▼ 起動テンプレートとAutoScalingグループとの紐付け<a class="headerlink" href="#autoscaling" title="Permanent link">&para;</a></h4>
+<h4 id="aws-auto-scaling">▼ 起動テンプレートとAWS Auto Scalingグループとの紐付け<a class="headerlink" href="#aws-auto-scaling" title="Permanent link">&para;</a></h4>
 <p>マネージドNodeグループは、あくまでAWS EC2 Nodeのライフサイクルを管理するだけである。</p>
-<p>どのようなAWS EC2 Nodeを管理するのかは起動テンプレートとAutoScalingグループを使用して定義する必要がある。</p>
+<p>どのようなAWS EC2 Nodeを管理するのかは起動テンプレートとAWS Auto Scalingグループを使用して定義する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/jp/blogs/containers/introducing-launch-template-and-custom-ami-support-in-amazon-eks-managed-node-groups/">https://aws.amazon.com/jp/blogs/containers/introducing-launch-template-and-custom-ami-support-in-amazon-eks-managed-node-groups/</a></li>
@@ -27638,21 +27638,21 @@
 <h4 id="node_7">▼ セルフマネージドNodeグループ<a class="headerlink" href="#node_7" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Nodeグループ内の各AWS EC2ワーカーNodeの作成</li>
-<li>Nodeグループに紐づくAutoScalingグループの作成</li>
+<li>Nodeグループに紐づくAWS Auto Scalingグループの作成</li>
 <li>AWS EC2ワーカーNodeのOSやミドルウェアの各種アップグレード</li>
 </ul>
 <p>をユーザーが管理する。</p>
-<p>AutoScalingグループの機能を使用すれば、AWS EC2ワーカーNodeの自動的な起動/停止を設定できる。</p>
+<p>AWS Auto Scalingグループの機能を使用すれば、AWS EC2ワーカーNodeの自動的な起動/停止やヘルスチェックを設定できる。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-AWS">https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-AWS</a> EKS-vs-self-managed</li>
+<li><a href="https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-EKS-vs-self-managed">https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-EKS-vs-self-managed</a></li>
 <li><a href="https://www.reddit.com/r/kubernetes/comments/v8pckh/eks_selfmanaged_nodes_vs_node_group/">https://www.reddit.com/r/kubernetes/comments/v8pckh/eks_selfmanaged_nodes_vs_node_group/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h3 id="node_8">Node数の変更<a class="headerlink" href="#node_8" title="Permanent link">&para;</a></h3>
 <p>Nodeグループ (マネージドNodeグループ、セルフマネージドNodeグループ) では、希望数を変更することで現在のNode数を変更できる。</p>
-<p>設定後、AutoScalingグループは希望数で設定したNode数を維持する (Karpenterのドキュメントでは、これを『静的』と表現している)。</p>
+<p>設定後、AWS Auto Scalingグループは希望数で設定したNode数を維持する (Karpenterのドキュメントでは、これを『静的』と表現している)。</p>
 <p>希望数の他に最大数と最小数を設定できるが、これらは実際は機能しない。</p>
 <p>もし負荷の状況に応じてスケーリングしたい場合、Nodeのスケーリングツール (例：ClusterAutoscaler、Karpenterなど) を使用しないと、最大数と最小数の設定に応じたスケーリングを実施してくれない。</p>
 <blockquote>
@@ -28058,8 +28058,8 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <p>起動テンプレートを使用し、AWS EC2ワーカーNodeを作成する。</p>
 <p>起動テンプレートのタグ付け機能を使用してAWS EC2にタグ付けでき、これは任意である。</p>
 <h4 id="node_12">▼ セルフマネージドNodeグループの場合<a class="headerlink" href="#node_12" title="Permanent link">&para;</a></h4>
-<p>任意のAutoScalingにて、起動テンプレートを使用してAWS EC2ワーカーNodeを作成する。</p>
-<p>AutoScalingのタグ付け機能を使用して、<code>kubernetes.io/cluster/&lt;AWS EKS Cluster名&gt;</code>タグ (値は<code>owned</code>) をつけ、Nodeグループに明示的に参加させる必要がある。</p>
+<p>任意のAWS Auto Scalingグループにて、起動テンプレートを使用してAWS EC2ワーカーNodeを作成する。</p>
+<p>AWS Auto Scalingグループのタグ付け機能を使用して、<code>kubernetes.io/cluster/&lt;AWS EKS Cluster名&gt;</code>タグ (値は<code>owned</code>) をつけ、Nodeグループに明示的に参加させる必要がある。</p>
 <p>なお、起動テンプレートも合わせて使用でき、これは任意である。</p>
 <blockquote>
 <ul>
@@ -28113,8 +28113,8 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <span class="w">  </span><span class="nb">tag</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">key</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="nv">each.key</span>
 <span class="w">    </span><span class="na">value</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="nv">each.value</span>
-<span class="c1">    # 実装時点 (2023/06/06) で、マネージドNodeグループは自身の作成するAutoScalingグループにタグ付けできない</span>
-<span class="c1">    # そのままではterraform planのたびに、AutoScalingグループにタグ付けしようとする差分がでてしまうため、Nodeグループ外からAutoScalingグループのタグ付けを有効化する</span>
+<span class="c1">    # 実装時点 (2023/06/06) で、マネージドNodeグループは自身の作成するAWS Auto Scalingグループにタグ付けできない</span>
+<span class="c1">    # そのままではterraform planのたびに、AWS Auto Scalingグループにタグ付けしようとする差分がでてしまうため、Nodeグループ外からAWS Auto Scalingグループのタグ付けを有効化する</span>
 <span class="c1">    # @see</span>
 <span class="c1">    # https://github.com/aws/containers-roadmap/issues/608</span>
 <span class="c1">    # https://github.com/terraform-aws-modules/terraform-aws-eks/issues/1558#issuecomment-1030633280</span>
@@ -28343,7 +28343,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <h3 id="_37">アップグレードの仕組み<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
 <h4 id="_38">▼ データプレーンの場合<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
 <p>AWS EKS Clusterのアップグレード時、以下の仕組みでデータプレーンのワーカーNodeをローリングアップグレードする。</p>
-<p>また、Nodeグループに紐づくAutoScalingグループのAZリバランシングの仕組みによって、既存のワーカーNodeと同じAZでワーカーNodeを再作成する。</p>
+<p>また、Nodeグループに紐づくAWS Auto ScalingグループのAZリバランシングの仕組みによって、既存のワーカーNodeと同じAZでワーカーNodeを再作成する。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -28422,7 +28422,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-22</span>
   </span>
 
     

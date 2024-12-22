@@ -13633,13 +13633,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#iam" class="md-nav__link">
+  <a href="#aws-iam" class="md-nav__link">
     <span class="md-ellipsis">
-      IAM
+      AWS IAM
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="IAM">
+    <nav class="md-nav" aria-label="AWS IAM">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25603,13 +25603,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#iam" class="md-nav__link">
+  <a href="#aws-iam" class="md-nav__link">
     <span class="md-ellipsis">
-      IAM
+      AWS IAM
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="IAM">
+    <nav class="md-nav" aria-label="AWS IAM">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26040,7 +26040,7 @@ Default<span class="w"> </span>output<span class="w"> </span>format<span class="
 </ul>
 </blockquote>
 <h4 id="role_arn">▼ role_arn<a class="headerlink" href="#role_arn" title="Permanent link">&para;</a></h4>
-<p>AWS CLIの実行で、IAMユーザーに委譲するIAMロールを設定する。</p>
+<p>AWS CLIの実行で、AWS IAMユーザーに委譲するAWS IAMロールを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[profile foo]</span>
 <span class="na">role_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">arn:aws:iam::&lt;AWSアカウントID&gt;:role/foo-role</span>
 </code></pre></div>
@@ -26050,7 +26050,7 @@ Default<span class="w"> </span>output<span class="w"> </span>format<span class="
 </ul>
 </blockquote>
 <h4 id="role_session_name">▼ role_session_name<a class="headerlink" href="#role_session_name" title="Permanent link">&para;</a></h4>
-<p>IAMロールの委譲後のIAMユーザーの一時的な名前を設定する。</p>
+<p>AWS IAMロールの委譲後のAWS IAMユーザーの一時的な名前を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[profile foo]</span>
 <span class="na">role_session_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">hiroki.hasegawa</span>
 </code></pre></div>
@@ -26060,7 +26060,7 @@ Default<span class="w"> </span>output<span class="w"> </span>format<span class="
 </ul>
 </blockquote>
 <h4 id="source_profile">▼ source_profile<a class="headerlink" href="#source_profile" title="Permanent link">&para;</a></h4>
-<p>IAMロールの委譲先のIAMユーザーのプロファイル名を設定する。</p>
+<p>AWS IAMロールの委譲先のAWS IAMユーザーのプロファイル名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[profile foo]</span>
 <span class="na">source_profile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">default</span>
 </code></pre></div>
@@ -26257,7 +26257,7 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>deploy<span class="w"> </span>register-on-premises-instance<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--region<span class="w"> </span>ap-northeast-1<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--instance-name<span class="w"> </span>foo-on-premises-instance<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--iam_session_arn<span class="w"> </span>&lt;IAM<span class="w"> </span>Session<span class="w"> </span>ARN&gt;
+<span class="w">    </span>--iam_session_arn<span class="w"> </span>&lt;AWS<span class="w"> </span>IAM<span class="w"> </span>Session<span class="w"> </span>ARN&gt;
 </code></pre></div>
 <p><br></p>
 <h3 id="aws-ecr">AWS ECR<a class="headerlink" href="#aws-ecr" title="Permanent link">&para;</a></h3>
@@ -26281,7 +26281,7 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <span class="w">    </span>--resolve-conflicts<span class="w"> </span>PRESERVE
 </code></pre></div>
 <p><br></p>
-<h3 id="iam">IAM<a class="headerlink" href="#iam" title="Permanent link">&para;</a></h3>
+<h3 id="aws-iam">AWS IAM<a class="headerlink" href="#aws-iam" title="Permanent link">&para;</a></h3>
 <h4 id="update-user">▼ update-user<a class="headerlink" href="#update-user" title="Permanent link">&para;</a></h4>
 <p>ユーザー名は、コンソール画面から変更できず、コマンドで変更する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>iam<span class="w"> </span>update-user<span class="w"> </span><span class="se">\</span>
@@ -26331,7 +26331,7 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
 <span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;AWS&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;IAMユーザーのARN&gt;&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;AWS&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;AWS</span><span class="nv"> </span><span class="s">IAMユーザーのARN&gt;&quot;</span><span class="p p-Indicator">},</span>
 <span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;s3:PutObject&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:s3:::foo-bucket/*&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
@@ -26341,7 +26341,7 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
 <span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;AWS&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;IAMユーザーのARN&gt;&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;AWS&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;AWS</span><span class="nv"> </span><span class="s">IAMユーザーのARN&gt;&quot;</span><span class="p p-Indicator">},</span>
 <span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;s3:ListBucket&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:s3:::bar-bucket&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
@@ -26553,7 +26553,7 @@ Note<span class="w"> </span>that<span class="w"> </span>it<span class="w"> </spa
 <p><br></p>
 <h3 id="_9">リクエスト制限<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="ip">▼ 送信元IPに基づく制限<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h4>
-<p>特定の送信元IPアドレスを制限するポリシーをIAMユーザーに紐付けることにより、そのIAMユーザーがAWS CLIの実行する時に、社外から実行できないように制限をかけられる。</p>
+<p>特定の送信元IPアドレスを制限するポリシーをAWS IAMユーザーに紐付けることにより、そのAWS IAMユーザーがAWS CLIの実行する時に、社外から実行できないように制限をかけられる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
@@ -26567,7 +26567,7 @@ Note<span class="w"> </span>that<span class="w"> </span>it<span class="w"> </spa
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p>ポリシーのDenyステートメントによってアクセスが拒否された場合、エラーメッセージの最後に『<code>with an explicit deny</code>』という文言がつく。</p>
-<div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>An<span class="w"> </span>error<span class="w"> </span>occurred<span class="w"> </span><span class="o">(</span>AccessDeniedException<span class="o">)</span><span class="w"> </span>when<span class="w"> </span>calling<span class="w"> </span>the<span class="w"> </span>&lt;アクション名&gt;<span class="w"> </span>operation:<span class="w"> </span>&lt;IAMユーザー名&gt;<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>authorized<span class="w"> </span>to<span class="w"> </span>perform:<span class="w"> </span>&lt;アクション名&gt;<span class="w"> </span>on<span class="w"> </span>resource:<span class="w"> </span>&lt;リソースARN&gt;<span class="w"> </span>with<span class="w"> </span>an<span class="w"> </span>explicit<span class="w"> </span>deny
+<div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>An<span class="w"> </span>error<span class="w"> </span>occurred<span class="w"> </span><span class="o">(</span>AccessDeniedException<span class="o">)</span><span class="w"> </span>when<span class="w"> </span>calling<span class="w"> </span>the<span class="w"> </span>&lt;アクション名&gt;<span class="w"> </span>operation:<span class="w"> </span>&lt;AWS<span class="w"> </span>IAMユーザー名&gt;<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>authorized<span class="w"> </span>to<span class="w"> </span>perform:<span class="w"> </span>&lt;アクション名&gt;<span class="w"> </span>on<span class="w"> </span>resource:<span class="w"> </span>&lt;リソースARN&gt;<span class="w"> </span>with<span class="w"> </span>an<span class="w"> </span>explicit<span class="w"> </span>deny
 </code></pre></div>
 <p><br></p>
 
@@ -26590,7 +26590,7 @@ Note<span class="w"> </span>that<span class="w"> </span>it<span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-22</span>
   </span>
 
     
