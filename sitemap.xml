@@ -1669,10 +1669,6 @@
          <lastmod>2024-12-22</lastmod>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_infrastructure.html</loc>
-         <lastmod>2024-12-22</lastmod>
-    </url>
-    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_auth.html</loc>
          <lastmod>2024-12-22</lastmod>
     </url>
@@ -1818,6 +1814,10 @@
     </url>
     <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_wsgi_uwsgi_conf.html</loc>
+         <lastmod>2024-12-22</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_middleware_data_analysis.html</loc>
          <lastmod>2024-12-22</lastmod>
     </url>
     <url>
@@ -2085,7 +2085,11 @@
          <lastmod>2024-12-22</lastmod>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_microservices_cicd.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_microservices_cross_cicd.html</loc>
+         <lastmod>2024-12-22</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_microservices_infrastructure.html</loc>
          <lastmod>2024-12-22</lastmod>
     </url>
     <url>
@@ -2118,10 +2122,6 @@
     </url>
     <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_application_gi.html</loc>
-         <lastmod>2024-12-22</lastmod>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_data_analysis.html</loc>
          <lastmod>2024-12-22</lastmod>
     </url>
     <url>
