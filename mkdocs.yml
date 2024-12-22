@@ -286,10 +286,10 @@ nav:
               - 設定ファイル: software/software_middleware_security_oauth2_proxy_conf.md
       - ■ メッセージング系:
           - メッセージング: software/software_middleware_messaging.md
-          - ■ ブローカー系:
-              - RabbitMQ: software/software_middleware_messaging_message_broker_rabbitmq.md
-          - ■ ストリーマー系:
-              - Kafka: software/software_middleware_messaging_message_streamer_kafka.md
+          - RabbitMQ: software/software_middleware_messaging_message_broker_rabbitmq.md
+          - Kafka: software/software_middleware_messaging_message_streamer_kafka.md
+      - ■ データ分析系:
+          - データ分析: software/software_middleware_data_analysis.md
   - 🐧 OS:
       - software/basic/index.md
       - ■ Linuxカーネル:
