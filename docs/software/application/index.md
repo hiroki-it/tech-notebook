@@ -49,11 +49,10 @@
 
 * #### [ストレージ領域](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_storage.html)
 
-* #### [ホワイトボックステスト](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_test_whitebox.html)
-
-* #### [ブラックボックステスト](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_test_blackbox.html)
-
-* #### [開発手法](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_development.html)
+* #### <u>横断領域</u>
+  > * ##### [ホワイトボックステスト](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_test_whitebox.html)
+  > * ##### [ブラックボックステスト](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_test_blackbox.html)
+  > * ##### [開発手法](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_development.html)
 
 <br>
 
