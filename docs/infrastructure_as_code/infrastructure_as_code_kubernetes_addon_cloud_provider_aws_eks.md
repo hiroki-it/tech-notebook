@@ -176,7 +176,12 @@ Kubernetesのバージョンに応じて、異なるアドオンのバージョ�
 
 ## 05. AWS Node監視エージェント
 
-記入中...
+Nodeに関するヘルスチェック (例：AWS EC2内のkubeletの正常性) を実施する。
+
+なお、AWS EC2に関するヘルスチェック (例：AWS EC2の正常性) は、AWS Auto Scalingグループで設定できる。
+
+> - https://www.reddit.com/r/aws/comments/1hg998p/comment/m2hfdns/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+> - https://docs.aws.amazon.com/eks/latest/userguide/node-health.html
 
 <br>
 

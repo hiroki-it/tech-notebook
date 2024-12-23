@@ -297,17 +297,28 @@ console.log(response.data);
 
 <br>
 
-## 02. Nodeamon
+## 02. Nodemon
 
-### 02. Nodeamonとは
+### Nodemonとは
 
-Goのソースコードに変更があれば、ホットリロードし、コンパイルし直す。
+JavaScriptのソースコードに変更があれば、Node.jsの実行環境のプロセスを再起動する。
 
+> - https://qiita.com/ckoshien/items/1a8b15fe5cc3bfc15199
 > - https://ashitaka-blog.com/node-js%E3%81%AE%E3%83%9B%E3%83%83%E3%83%88%E3%83%AA%E3%83%AD%E3%83%BC%E3%83%89%E8%A8%AD%E5%AE%9A/
 
 <br>
 
-## 03. typescript-call-graph
+## 03. ts-node
+
+### ts-nodeとは
+
+Node.jsの実行環境上で、TypeScriptをJavaScriptにコンパイルせずにそのまま実行する。
+
+> - https://qiita.com/ckoshien/items/1a8b15fe5cc3bfc15199
+
+<br>
+
+## 04. typescript-call-graph
 
 TypeScriptのコールグラフを作成する。
 
