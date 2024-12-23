@@ -39,7 +39,7 @@
 
 * #### [︎マイクロサービスアーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices.html)
 
-* #### [APIゲートウェイ領域](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_api_gatewa.html)
+* #### [APIゲートウェイ領域](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_api_gateway.html)
 
 * #### <u>マイクロサービス領域</u>
   > * ##### [マイクロサービス設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_design.html)
@@ -69,12 +69,12 @@
   > * ##### [︎API仕様書](https://hiroki-it.github.io/tech-notebook/software/software_application_communication_style_api_restful_api_specification.html)
 
 * #### <u>RPC-API</u>
-  > * ##### [︎gRPC](https://hiroki-it.github.io/tech-notebook/software/software_application_communication_style_api_rpc_api_grpc.html)
+  > * ##### [︎gRPC](https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_grpc.html)
   > * ##### <u>クライアントパッケージ</u>
-  > > * ##### [Go](https://hiroki-it.github.io/tech-notebook/software/software_application_communication_style_api_rpc_api_grpc_client_package_go.html)
+  > > * ##### [Go](https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_grpc_client_package_go.html)
 
 * #### <u>GraphQL-API</u>
-  > * ##### [GraphQL](https://hiroki-it.github.io/tech-notebook/software/software_application_communication_style_api_graphql_api_graphql.html)
+  > * ##### [GraphQL](https://hiroki-it.github.io/tech-notebook/software/software_application_api_graphql_api_graphql.html)
 
 <br>
 
