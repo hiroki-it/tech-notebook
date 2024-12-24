@@ -14202,18 +14202,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws-api-gateway-aws-lambda-s3" class="md-nav__link">
+  <a href="#aws-api-gateway-aws-lambda-aws-s3" class="md-nav__link">
     <span class="md-ellipsis">
-      AWS API Gateway ➡︎ AWS Lambda ➡︎ S3
+      AWS API Gateway ➡︎ AWS Lambda ➡︎ AWS S3
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cloudfront-aws-lambdaedge-s3" class="md-nav__link">
+  <a href="#cloudfront-aws-lambdaedge-aws-s3" class="md-nav__link">
     <span class="md-ellipsis">
-      CloudFront ➡︎ AWS Lambda@Edge ➡︎ S3
+      CloudFront ➡︎ AWS Lambda@Edge ➡︎ AWS S3
     </span>
   </a>
   
@@ -24739,18 +24739,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws-api-gateway-aws-lambda-s3" class="md-nav__link">
+  <a href="#aws-api-gateway-aws-lambda-aws-s3" class="md-nav__link">
     <span class="md-ellipsis">
-      AWS API Gateway ➡︎ AWS Lambda ➡︎ S3
+      AWS API Gateway ➡︎ AWS Lambda ➡︎ AWS S3
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cloudfront-aws-lambdaedge-s3" class="md-nav__link">
+  <a href="#cloudfront-aws-lambdaedge-aws-s3" class="md-nav__link">
     <span class="md-ellipsis">
-      CloudFront ➡︎ AWS Lambda@Edge ➡︎ S3
+      CloudFront ➡︎ AWS Lambda@Edge ➡︎ AWS S3
     </span>
   </a>
   
@@ -25431,10 +25431,10 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="aws-api-gateway-aws-lambda-s3">AWS API Gateway ➡︎ AWS Lambda ➡︎ S3<a class="headerlink" href="#aws-api-gateway-aws-lambda-s3" title="Permanent link">&para;</a></h3>
+<h3 id="aws-api-gateway-aws-lambda-aws-s3">AWS API Gateway ➡︎ AWS Lambda ➡︎ AWS S3<a class="headerlink" href="#aws-api-gateway-aws-lambda-aws-s3" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
-<p>AWS API Gatewayでリクエストを受信し、それに応じて特定のデータをS3に保管する。</p>
-<p>AWS LambdaがS3に対してアクションを実行できるように、事前に、AWS管理ポリシーの『<code>LambdaExecute</code>』が紐付けられたロールをAWS Lambdaに紐付けしておく必要がある。</p>
+<p>AWS API Gatewayでリクエストを受信し、それに応じて特定のデータをAWS S3に保管する。</p>
+<p>AWS LambdaがAWS S3に対してアクションを実行できるように、事前に、AWS管理ポリシーの『<code>LambdaExecute</code>』が紐付けられたロールをAWS Lambdaに紐付けしておく必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;aws-sdk&quot;</span><span class="p">);</span>
@@ -25483,7 +25483,7 @@
 <span class="p">};</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="cloudfront-aws-lambdaedge-s3">CloudFront ➡︎ AWS Lambda@Edge ➡︎ S3<a class="headerlink" href="#cloudfront-aws-lambdaedge-s3" title="Permanent link">&para;</a></h3>
+<h3 id="cloudfront-aws-lambdaedge-aws-s3">CloudFront ➡︎ AWS Lambda@Edge ➡︎ AWS S3<a class="headerlink" href="#cloudfront-aws-lambdaedge-aws-s3" title="Permanent link">&para;</a></h3>
 <p><img alt="lambda-edge_dynamic-origin" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-edge_dynamic-origin.png" /></p>
 <p><strong>＊実装例＊</strong></p>
 <p>eventオブジェクトの<code>domainName</code>と<code>host.value</code>に代入されたバケットのドメイン名によって、転送先のバケットが決まる。</p>

@@ -14917,13 +14917,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cloud-logging" class="md-nav__link">
+  <a href="#google-cloud-logging" class="md-nav__link">
     <span class="md-ellipsis">
-      Cloud Logging
+      Google Cloud Logging
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Cloud Logging">
+    <nav class="md-nav" aria-label="Google Cloud Logging">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -14950,13 +14950,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#gcs" class="md-nav__link">
+  <a href="#google-cloud-storage" class="md-nav__link">
     <span class="md-ellipsis">
-      GCS
+      Google Cloud Storage
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="GCS">
+    <nav class="md-nav" aria-label="Google Cloud Storage">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25006,13 +25006,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cloud-logging" class="md-nav__link">
+  <a href="#google-cloud-logging" class="md-nav__link">
     <span class="md-ellipsis">
-      Cloud Logging
+      Google Cloud Logging
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Cloud Logging">
+    <nav class="md-nav" aria-label="Google Cloud Logging">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25039,13 +25039,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#gcs" class="md-nav__link">
+  <a href="#google-cloud-storage" class="md-nav__link">
     <span class="md-ellipsis">
-      GCS
+      Google Cloud Storage
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="GCS">
+    <nav class="md-nav" aria-label="Google Cloud Storage">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25457,7 +25457,7 @@ bar<span class="w">   </span>True<span class="w">       </span>example@gmail.com
 </ul>
 </blockquote>
 <h4 id="list_4">▼ list<a class="headerlink" href="#list_4" title="Permanent link">&para;</a></h4>
-<p>GKE Clusterの一覧を取得する。</p>
+<p>Google GKE Clusterの一覧を取得する。</p>
 <p><strong>＊実行例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>container<span class="w"> </span>clusters<span class="w"> </span>list
 
@@ -25479,7 +25479,7 @@ foo-gke-cluster<span class="w">    </span>asia-northeast1<span class="w">  </spa
 </ul>
 </blockquote>
 <h4 id="describe">▼ describe<a class="headerlink" href="#describe" title="Permanent link">&para;</a></h4>
-<p>GKE Node Poolの情報を取得する。</p>
+<p>Google GKE Node Poolの情報を取得する。</p>
 <p>アップグレードの手法を確認することもできる。</p>
 <p><strong>＊実行例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>container<span class="w"> </span>node-pools<span class="w"> </span>describe<span class="w"> </span>foo-node-pool<span class="w"> </span>--cluster<span class="o">=</span>foo-anthos-cluster
@@ -25500,7 +25500,7 @@ upgradeSettings:
 </ul>
 </blockquote>
 <h4 id="update_1">▼ update<a class="headerlink" href="#update_1" title="Permanent link">&para;</a></h4>
-<p>GKE Node Poolの設定を変更する。</p>
+<p>Google GKE Node Poolの設定を変更する。</p>
 <p><strong>＊実行例＊</strong></p>
 <p>ローリング方式 (サージ方式) のアップグレードを有効化する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>container<span class="w"> </span>node-pools<span class="w"> </span>update<span class="w"> </span>foo-node-pool<span class="w"> </span><span class="se">\</span>
@@ -25599,9 +25599,9 @@ bar-project-***<span class="w">    </span>bar-project<span class="w">   </span>*
 </blockquote>
 <p><br></p>
 <h2 id="03-google-cloud">03. Google Cloudリソース別のプラクティス<a class="headerlink" href="#03-google-cloud" title="Permanent link">&para;</a></h2>
-<h3 id="cloud-logging">Cloud Logging<a class="headerlink" href="#cloud-logging" title="Permanent link">&para;</a></h3>
+<h3 id="google-cloud-logging">Google Cloud Logging<a class="headerlink" href="#google-cloud-logging" title="Permanent link">&para;</a></h3>
 <h4 id="read">▼ read<a class="headerlink" href="#read" title="Permanent link">&para;</a></h4>
-<p>Cloud Loggingからログを読み出す。</p>
+<p>Google Cloud Loggingからログを読み出す。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> </span><span class="nb">read</span><span class="w"> </span><span class="s1">&#39;resource.labels.container_name=&quot;foo-container&quot;&#39;</span><span class="w"> </span>--limit<span class="w"> </span><span class="m">1</span>
 </code></pre></div>
 <blockquote>
@@ -25610,7 +25610,7 @@ bar-project-***<span class="w">    </span>bar-project<span class="w">   </span>*
 </ul>
 </blockquote>
 <h4 id="write">▼ write<a class="headerlink" href="#write" title="Permanent link">&para;</a></h4>
-<p>Cloud Loggingにログを送信する。</p>
+<p>Google Cloud Loggingにログを送信する。</p>
 <p>アプリケーションの代わりに特定の条件に合致するログを送信したい場合に、使用すると良い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 非構造化ログ</span>
 $<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> </span>write<span class="w"> </span>test-log<span class="w"> </span><span class="s2">&quot;これはテストログです&quot;</span>
@@ -25624,10 +25624,10 @@ $<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> <
 <li><a href="https://qiita.com/sky0621/items/383153cf5c7458dd0005#%E6%A7%8B%E9%80%A0%E5%8C%96%E3%83%AD%E3%82%B0%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF">https://qiita.com/sky0621/items/383153cf5c7458dd0005#%E6%A7%8B%E9%80%A0%E5%8C%96%E3%83%AD%E3%82%B0%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF</a></li>
 </ul>
 </blockquote>
-<h3 id="gcs">GCS<a class="headerlink" href="#gcs" title="Permanent link">&para;</a></h3>
+<h3 id="google-cloud-storage">Google Cloud Storage<a class="headerlink" href="#google-cloud-storage" title="Permanent link">&para;</a></h3>
 <h4 id="cp">▼ cp<a class="headerlink" href="#cp" title="Permanent link">&para;</a></h4>
 <p>指定したパスにあるオブジェクトを、ローカルマシンにコピーする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>storage<span class="w"> </span>cp<span class="w"> </span>gs://&lt;GCS名&gt;/&lt;オブジェクトのファイルパス&gt;<span class="w"> </span>&lt;ローカルマシンのファイルパス&gt;
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>storage<span class="w"> </span>cp<span class="w"> </span>gs://&lt;Google<span class="w"> </span>Cloud<span class="w"> </span>Storage名&gt;/&lt;オブジェクトのファイルパス&gt;<span class="w"> </span>&lt;ローカルマシンのファイルパス&gt;
 </code></pre></div>
 <blockquote>
 <ul>
@@ -25635,7 +25635,7 @@ $<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> <
 </ul>
 </blockquote>
 <p>ディレクトリごとコピーする場合は、<code>--recursive</code>オプションを使用する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>storage<span class="w"> </span>cp<span class="w"> </span>--recursive<span class="w"> </span>gs://&lt;GCS名&gt;/&lt;オブジェクトのファイルパス&gt;<span class="w"> </span>&lt;ローカルマシンのファイルパス&gt;
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>storage<span class="w"> </span>cp<span class="w"> </span>--recursive<span class="w"> </span>gs://&lt;Google<span class="w"> </span>Cloud<span class="w"> </span>Storage名&gt;/&lt;オブジェクトのファイルパス&gt;<span class="w"> </span>&lt;ローカルマシンのファイルパス&gt;
 </code></pre></div>
 <p><br></p>
 <h3 id="kms">KMS<a class="headerlink" href="#kms" title="Permanent link">&para;</a></h3>
