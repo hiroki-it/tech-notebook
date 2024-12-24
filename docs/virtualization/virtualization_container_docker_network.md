@@ -27,7 +27,6 @@ bridgeネットワークは、コンテナのネットワークインターフ�
 
 また、ホストのiptablesがNAPTルーターとして働き、ブリッジとホストの間を接続する。
 
-> - https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html
 
 `brctl`コマンドを使用し、`docker0`ブリッジがどの仮想インターフェースと接続されているかを確認できる。
 
@@ -37,6 +36,9 @@ $ brctl show docker0
 bridge name     bridge id               STP enabled     interfaces
 docker0         8000.02426c931c59       no              vethc06ae92
 ```
+
+> - https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html
+
 
 #### ▼ 経路例
 
@@ -83,7 +85,6 @@ hostネットワークは、コンテナのネットワークインターフェ�
 
 コンテナのIPアドレスは、ホストのIPアドレスになる。
 
-> - https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html
 
 ```bash
 $ docker network list
@@ -91,6 +92,9 @@ $ docker network list
 NETWORK ID          NAME                    DRIVER              SCOPE
 ac017dda93d6        host                    host                local
 ```
+
+> - https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html
+
 
 <br>
 
@@ -131,7 +135,6 @@ $ curl --fail http://127.0.0.1:8080
 
 コンテナのホスト名の定義方法については、以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html
 
 **＊例＊**
 
@@ -141,6 +144,9 @@ $ curl --fail http://127.0.0.1:8080
 # コンテナ内で実行
 $ curl --fail http://<webコンテナに割り当てたホスト名>:80/
 ```
+
+> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html
+
 
 #### ▼ 『コンテナ』から『ホスト (`host.docker.internal`) 』にリクエスト
 

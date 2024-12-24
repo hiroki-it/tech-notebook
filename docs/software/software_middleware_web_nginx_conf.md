@@ -242,7 +242,7 @@ worker_rlimit_nofile 8192;
 
 受信したリクエストのHTTPメソッドとURLが割り当てられている。
 
-```yaml
+```nginx
 GET http://_:80/foo
 ```
 
