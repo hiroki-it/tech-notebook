@@ -623,12 +623,12 @@ Cloud Loggingにログを送信する。
 
 ```bash
 # 非構造化ログ
-$ gcloud logging write test-log "This is a test log."
+$ gcloud logging write test-log "これはテストログです"
 ```
 
 ```bash
 # 構造化ログ
-$ gcloud logging write --payload-type=json test-log '{"id":1,"name":"Hiroki"}'
+$ gcloud logging write --payload-type=json test-log '{"id":1,"name":"これはテストログです"}'
 ```
 
 > - https://qiita.com/sky0621/items/383153cf5c7458dd0005#%E9%9D%9E%E6%A7%8B%E9%80%A0%E5%8C%96%E3%83%AD%E3%82%B0%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF

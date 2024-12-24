@@ -276,7 +276,11 @@ type noopTracerProvider struct{
 
 #### ▼ Samplerを無効化する
 
-Samplerを無効化すると、スパンの作成を無効化できる。
+開発環境では、分散トレースを実施したくない。
+
+`NeverSample`関数を使用し、スパンの作成を無効化するとよい。
+
+TracerProviderの初期化処理はそのままで、スパンの作成のみを無効化できる。
 
 ```go
 package trace
@@ -297,6 +301,7 @@ func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider 
 		semconv.String("environment", "<実行環境名>"),
 	)
 
+	// TRACE_ENABLEDが有効かどうかで、返却されるSamplerが切り替わる
 	sampler := newSampler()
 
 	// BatchSpanProcessorで複数のスパンを圧縮し、送信サイズを小さくする
@@ -316,19 +321,23 @@ func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider 
 // newSampler Samplerを作成する
 func newSampler() sdktrace.Sampler {
 
+    // 開発環境では、TRACE_ENABLED=falseとする
 	traceEnabled := os.Getenv("TRACE_ENABLED")
 
 	// TRACE_ENABLEDを無効化している場合
 	if !traceEnabled {
+        // NeverSampleを実行し、スパンを作成しない
 		return sdktrace.NeverSample()
 	}
 
+    // ParentBased Samplerを返却する
 	// Tail-based方式のサンプリングを採用し、クライアント側のサンプリング率は推奨値の100%とする
 	return sdktrace.ParentBased(sdktrace.TraceIDRatioBased(1.0))
 }
 
 ```
 
+> - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#NeverSample
 > - https://github.com/open-telemetry/community/discussions/1048#discussioncomment-2678508
 > - https://stackoverflow.com/a/75901212
 

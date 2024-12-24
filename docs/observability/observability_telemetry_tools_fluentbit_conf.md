@@ -144,7 +144,7 @@ Inputs
 
 ### ビルトインのプラグイン
 
-デフォルトで組み込まれているビルトンのプラグインは、ソースコードから確認できる。
+ビルトインのプラグインは、ソースコードから確認できる。
 
 > - https://github.com/fluent/fluent-bit/blob/v2.1.4/CMakeLists.txt#L157-L275
 
@@ -404,7 +404,7 @@ criプラグインは、`<timeキー> <streamキー> <logtagキー> <messageキ�
 
 ### ビルトインのプラグイン
 
-デフォルトで組み込まれているビルトンのプラグインは、ソースコードから確認できる。
+ビルトインのプラグインは、ソースコードから確認できる。
 
 > - https://github.com/fluent/fluent-bit/blob/v2.1.4/CMakeLists.txt#L157-L275
 
@@ -880,7 +880,7 @@ Outputs
   plot                    Generate data file for GNU Plot
   slack                   Send events to a Slack channel
   splunk                  Send events to Splunk HTTP Event Collector
-  stackdriver             Send events to Google Stackdriver Logging # 現在は、Google Cloud Loggingに改名
+  stackdriver             Send events to Google Stackdriver Logging # 現在は、Google Google Cloud Loggingに改名
   stdout                  Prints events to STDOUT
   syslog                  Syslog
   tcp                     TCP Output
@@ -903,7 +903,7 @@ Outputs
 
 ### ビルトインのプラグイン
 
-デフォルトで組み込まれているビルトンのプラグインは、ソースコードから確認できる。
+ビルトインのプラグインは、ソースコードから確認できる。
 
 > - https://github.com/fluent/fluent-bit/blob/v2.1.4/CMakeLists.txt#L157-L275
 
@@ -1090,13 +1090,13 @@ newRelicプラグインがプリインストールされているベースイメ
 
 #### ▼ stackdriverプラグインとは
 
-ログをCloud Loggingにルーティングする。
+ログをGoogle Cloud Loggingにルーティングする。
 
 #### ▼ セットアップ
 
-FluentBitはデフォルトでstackdriverプラグインを持つ。
+stackdriverプラグインはビルトインプラグインである。
 
-つまり、特に追加のセットアップなくCloud Loggingにログをルーティングできる。
+つまり、特に追加のセットアップなくGoogle Cloud Loggingにログをルーティングできる。
 
 ```bash
 [OUTPUT]

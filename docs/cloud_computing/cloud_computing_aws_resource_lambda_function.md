@@ -384,7 +384,7 @@ AWS CloudWatch Logsにてこれを確認する。
 
 | パッケージ名            | 説明                                                                               | 補足                                                                |
 | ----------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| Node.jsの標準パッケージ | Node.jsにデフォルトで組み込まれている関数を使用できる                              | ・https://nodejs.org/api/index.html                                 |
+| Node.jsの標準パッケージ | Node.jsにビルトイン関数を使用できる                                                | ・https://nodejs.org/api/index.html                                 |
 | aws-sdk.js              | JavaScriptを使用して、AWS-APIに対してリクエストを送信し、AWSリソースを操作できる。 | ・https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html
