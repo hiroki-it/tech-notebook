@@ -59,14 +59,12 @@ $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージ�
 
 ステージを指定しない場合、一番最後に定義したステージを使用してビルドが実行される。
 
-
 ```bash
 # ローカル環境のターゲットを指定する
 $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージョンタグ> --target dev .
 ```
 
 > - https://docs.docker.com/engine/reference/commandline/build/#specifying-target-build-stage---target
-
 
 <br>
 
@@ -458,13 +456,11 @@ ff02::2	ip6-allrouters
 
 指定したホストポートとコンテナポートのマッピングを実行する。`--publish-all`オプションではホストポートをランダムに選択してポートマッピングを実行する。
 
-
 ```bash
 $ docker run -d -it --name <コンテナ名> --publish=8080:80 <コンテナイメージ名>:<バージョンタグ> /bin/bash
 ```
 
 > - https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
-
 
 #### ▼ --expose
 
@@ -474,13 +470,11 @@ $ docker run -d -it --name <コンテナ名> --publish=8080:80 <コンテナイ�
 
 補足として、プロセスの受信するポートと合わせる必要がある。
 
-
 ```bash
 $ docker run -d -it --name <コンテナ名> --expose=80 <コンテナイメージ名>:<バージョンタグ> /bin/bash
 ```
 
 > - https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
-
 
 #### ▼ -a、-d
 
@@ -568,7 +562,6 @@ $ docker start -i <停止中コンテナ名>
 
 署名されたコンテナイメージか否かを確認する。
 
-
 ```bash
 $ docker trust inspect <コンテナイメージ名>:<バージョンタグ>
 
@@ -592,7 +585,6 @@ $ docker trust inspect <コンテナイメージ名>:<バージョンタグ>
 ```
 
 > - https://websetnet.net/how-to-sign-your-docker-images-to-increase-trust/
-
 
 <br>
 
