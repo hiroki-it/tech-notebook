@@ -136,10 +136,14 @@ SSL証明書のEメール検証時に、ドメインの所有者にメールが�
 
 ### resource
 
+AWS EC2の設定値を変更しても、AWS AMIでは初回時しかAWS EC2を検知できない。
+
+新しいAMIを作成する場合、AMI名を変更し、AMIを再作成する。
+
 ```terraform
 resource "aws_ami_from_instance" "foo" {
   name               = "foo-instance"
-  source_instance_id = aws_instance.foo.id
+  source_instance_id = "<AWS EC2のID>"
 
   # インスタンスを再起動せずにAMIを作成するとデータが欠損することがあるため、再起動する
   snapshot_without_reboot = false
@@ -155,6 +159,8 @@ resource "aws_ami_from_instance" "foo" {
   )
 }
 ```
+
+> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ami_from_instance
 
 <br>
 
