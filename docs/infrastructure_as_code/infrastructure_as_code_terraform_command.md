@@ -997,8 +997,8 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 # バックエンドがS3バケットの場合
 $ aws s3 cp s3://<S3バケット名>/<tfstateファイルへのパス> <ローカルマシンのパス>
 
-# バックエンドがGCSの場合
-$ gsutil cp gs://<GCS名>/<tfstateファイルへのパス> <ローカルマシンのパス>
+# バックエンドがGoogle Cloud Storageの場合
+$ gsutil cp gs://<Google Cloud Storage名>/<tfstateファイルへのパス> <ローカルマシンのパス>
 ```
 
 `(2)`

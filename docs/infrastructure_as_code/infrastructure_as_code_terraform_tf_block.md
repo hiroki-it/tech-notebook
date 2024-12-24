@@ -1360,7 +1360,7 @@ resource "aws_elasticache_subnet_group" "redis" {
 
 例として、ECSを示す。
 
-ECSでは、AutoScalingによってECSタスク数が増加する。
+ECSでは、AWS AutoScalingによってECSタスク数が増加する。
 
 そのため、これらを無視する必要がある。
 
@@ -1374,7 +1374,7 @@ resource "aws_ecs_service" "this" {
 
   lifecycle {
     ignore_changes = [
-      # AutoScalingによるECSタスク数の増減を無視。
+      # AWS AutoScalingによるECSタスク数の増減を無視。
       desired_count,
     ]
   }
@@ -1385,7 +1385,7 @@ resource "aws_ecs_service" "this" {
 
 例として、Redisを示す。
 
-Redisでは、AutoScalingによってプライマリー数とレプリカ数が増減する。
+Redisでは、AWS AutoScalingによってプライマリー数とレプリカ数が増減する。
 
 そのため、これらを無視する必要がある。
 

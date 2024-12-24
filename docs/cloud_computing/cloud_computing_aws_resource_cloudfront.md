@@ -102,7 +102,7 @@ Via: 2.0 <発行されたランダム文字列>.cloudfront.net (AWS CloudFront)
 # 各Cookieの値 (二回目のリクエスト時に設定される)
 Cookie: sessionid=<セッションID>; __ulfpc=<GoogleAnalytics値>; _ga=<GoogleAnalytics値>; _gid=<GoogleAnalytics値>
 # 送信元IPアドレス
-# ※プロキシ (ALBやAWS CloudFrontなども含む) を経由している場合、それら全てのIPアドレスが順に設定される
+# ※プロキシ (AWS ALBやAWS CloudFrontなども含む) を経由している場合、それら全てのIPアドレスが順に設定される
 X-Forwarded-For: <client>, <proxy1>, <proxy2>
 Accept-Language: ja,en;q=0.9
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9

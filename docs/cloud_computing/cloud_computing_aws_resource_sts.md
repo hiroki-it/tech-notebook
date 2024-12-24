@@ -341,7 +341,7 @@ metadata:
   namespace: <信頼されたエンティティで指定したユーザー名内のNamespace名>
 ```
 
-IRSAにより、ServiceAccountを介してPodとAWS AWS IAMロールが紐づく。
+IRSAにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。
 
 > - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
 > - https://dev.classmethod.jp/articles/iam-role-for-gitlab-runner-job/#toc-13

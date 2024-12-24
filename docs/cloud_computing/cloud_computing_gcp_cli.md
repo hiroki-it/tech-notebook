@@ -431,7 +431,7 @@ bar   True       example@gmail.com   bar-project   asia-northeast1-a
 
 #### ▼ list
 
-GKE Clusterの一覧を取得する。
+Google GKE Clusterの一覧を取得する。
 
 **＊実行例＊**
 
@@ -456,7 +456,7 @@ foo-gke-cluster    asia-northeast1  1.22.0-gke       *.*.*.*      e2-medium     
 
 #### ▼ describe
 
-GKE Node Poolの情報を取得する。
+Google GKE Node Poolの情報を取得する。
 
 アップグレードの手法を確認することもできる。
 
@@ -480,7 +480,7 @@ upgradeSettings:
 
 #### ▼ update
 
-GKE Node Poolの設定を変更する。
+Google GKE Node Poolの設定を変更する。
 
 **＊実行例＊**
 
@@ -603,11 +603,11 @@ bar-project-***    bar-project   *****
 
 ## 03. Google Cloudリソース別のプラクティス
 
-### Cloud Logging
+### Google Cloud Logging
 
 #### ▼ read
 
-Cloud Loggingからログを読み出す。
+Google Cloud Loggingからログを読み出す。
 
 ```bash
 $ gcloud logging read 'resource.labels.container_name="foo-container"' --limit 1
@@ -617,7 +617,7 @@ $ gcloud logging read 'resource.labels.container_name="foo-container"' --limit 1
 
 #### ▼ write
 
-Cloud Loggingにログを送信する。
+Google Cloud Loggingにログを送信する。
 
 アプリケーションの代わりに特定の条件に合致するログを送信したい場合に、使用すると良い。
 
@@ -634,14 +634,14 @@ $ gcloud logging write --payload-type=json test-log '{"id":1,"name":"これは�
 > - https://qiita.com/sky0621/items/383153cf5c7458dd0005#%E9%9D%9E%E6%A7%8B%E9%80%A0%E5%8C%96%E3%83%AD%E3%82%B0%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF
 > - https://qiita.com/sky0621/items/383153cf5c7458dd0005#%E6%A7%8B%E9%80%A0%E5%8C%96%E3%83%AD%E3%82%B0%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF
 
-### GCS
+### Google Cloud Storage
 
 #### ▼ cp
 
 指定したパスにあるオブジェクトを、ローカルマシンにコピーする。
 
 ```bash
-$ gcloud storage cp gs://<GCS名>/<オブジェクトのファイルパス> <ローカルマシンのファイルパス>
+$ gcloud storage cp gs://<Google Cloud Storage名>/<オブジェクトのファイルパス> <ローカルマシンのファイルパス>
 ```
 
 > - https://cloud.google.com/sdk/gcloud/reference/storage/cp
@@ -649,7 +649,7 @@ $ gcloud storage cp gs://<GCS名>/<オブジェクトのファイルパス> <ロ
 ディレクトリごとコピーする場合は、`--recursive`オプションを使用する。
 
 ```bash
-$ gcloud storage cp --recursive gs://<GCS名>/<オブジェクトのファイルパス> <ローカルマシンのファイルパス>
+$ gcloud storage cp --recursive gs://<Google Cloud Storage名>/<オブジェクトのファイルパス> <ローカルマシンのファイルパス>
 ```
 
 <br>

@@ -137,7 +137,7 @@ module "iam_assumable_role_with_opentelemetry_collector" {
   # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
   provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
 
-  # AWS AWS IAMロールに紐付けるAWS IAMポリシー
+  # AWS IAMロールに紐付けるAWS IAMポリシー
   role_policy_arns              = aws_iam_policy.opentelemetry_collector.arn
 
   # OpenTelemetry CollectorのPodのServiceAccount名

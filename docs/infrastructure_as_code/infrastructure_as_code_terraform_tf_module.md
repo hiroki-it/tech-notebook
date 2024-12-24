@@ -463,7 +463,7 @@ module "alb" {
 
 リモートモジュールをコールし、オプションを設定する。
 
-外部リポジトリとしては、GitHub、Terraformレジストリ、AWS S3、GCSなどを指定できる。
+外部リポジトリとしては、GitHub、Terraformレジストリ、AWS S3、Google Cloud Storageなどを指定できる。
 
 リポジトリの認証時にBasic認証やSSH公開鍵認証で接続できるが、鍵の登録が不要なBasic認証の方が簡単である。
 

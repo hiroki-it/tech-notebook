@@ -91,11 +91,11 @@ AWSリソースを操作するために使用する。
 
 **＊実装例＊**
 
-CloudFrontに保管されているキャッシュを削除する。
+AWS CloudFrontに保管されているキャッシュを削除する。
 
-フロントエンドアプリをデプロイしたとしても、ダウンストリームのCloudFrontに保管されているキャッシュを削除しない限り、キャッシュがHitしたユーザーには過去のファイルがレスポンスされてしまう。
+フロントエンドアプリをデプロイしたとしても、ダウンストリームのAWS CloudFrontに保管されているキャッシュを削除しない限り、キャッシュがHitしたユーザーには過去のファイルがレスポンスされてしまう。
 
-そのため、S3へのデプロイ後に、CloudFrontのキャッシュを削除する必要がある。
+そのため、S3へのデプロイ後に、AWS CloudFrontのキャッシュを削除する必要がある。
 
 ```yaml
 version: 2.1
@@ -104,7 +104,7 @@ orbs:
   aws-cli: circleci/aws-cli@1.3.1
 
 jobs:
-  # CloudFrontのキャッシュを削除する
+  # AWS CloudFrontのキャッシュを削除する
   cloudfront_create_invalidation:
     docker:
       - image: cimg/python:3.9-node

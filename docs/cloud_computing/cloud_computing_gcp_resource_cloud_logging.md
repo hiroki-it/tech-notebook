@@ -142,6 +142,7 @@ resource.type = "k8s_container" AND resource.labels.namespace_name = "foo-namesp
 }
 ```
 
+> - https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry
 > - https://cloud.google.com/logging/docs/structured-logging?hl=ja#special-payload-fields
 > - https://qiita.com/ys_nishida/items/8b5274d8f3ec740ffa16
 

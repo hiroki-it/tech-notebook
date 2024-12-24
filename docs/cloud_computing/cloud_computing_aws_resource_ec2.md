@@ -646,7 +646,7 @@ $ aws ec2 modify-instance-attribute \
 
 AWS EC2にAutoScalingグループを適用している場合は、AWS EBSボリュームを永続化しない方が良いかもしれない。
 
-AutoScalingのスケールイン時に、削除されたAWS EC2のAWS EBSボリュームが削除されないため、未使用のAWS EBSボリュームがどんどん溜まっていく問題が起こる。
+AWS AutoScalingのスケールイン時に、削除されたAWS EC2のAWS EBSボリュームが削除されないため、未使用のAWS EBSボリュームがどんどん溜まっていく問題が起こる。
 
 > - https://qiita.com/YujiHamada3/items/c890a3de8937ea20bbb2
 

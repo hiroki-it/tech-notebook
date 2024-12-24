@@ -655,13 +655,13 @@ const postMessageToSlack = (message) => {
 
 <br>
 
-### AWS API Gateway ➡︎ AWS Lambda ➡︎ S3
+### AWS API Gateway ➡︎ AWS Lambda ➡︎ AWS S3
 
 **＊実装例＊**
 
-AWS API Gatewayでリクエストを受信し、それに応じて特定のデータをS3に保管する。
+AWS API Gatewayでリクエストを受信し、それに応じて特定のデータをAWS S3に保管する。
 
-AWS LambdaがS3に対してアクションを実行できるように、事前に、AWS管理ポリシーの『`LambdaExecute`』が紐付けられたロールをAWS Lambdaに紐付けしておく必要がある。
+AWS LambdaがAWS S3に対してアクションを実行できるように、事前に、AWS管理ポリシーの『`LambdaExecute`』が紐付けられたロールをAWS Lambdaに紐付けしておく必要がある。
 
 ```javascript
 "use strict";
@@ -714,7 +714,7 @@ exports.handler = (event, context, callback) => {
 
 <br>
 
-### CloudFront ➡︎ AWS Lambda@Edge ➡︎ S3
+### CloudFront ➡︎ AWS Lambda@Edge ➡︎ AWS S3
 
 ![lambda-edge_dynamic-origin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-edge_dynamic-origin.png)
 

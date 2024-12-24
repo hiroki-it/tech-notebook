@@ -19,22 +19,22 @@ description: Anthos＠Google Cloudリソースの知見を記録しています�
 
 #### ▼ アーキテクチャ
 
-Anthosは、Anthos GKE Cluster、Anthos Service Mesh、Anthos Config Management、といったコンポーネントから構成される。
+Anthosは、Google Anthos GKE Cluster、Google Anthos Service Mesh、Google Anthos Config Management、といったコンポーネントから構成される。
 
 > - https://www.fsi.co.jp/blog/5939/
 > - https://cloud.google.com/anthos/clusters/docs/multi-cloud/aws/concepts/architecture
 
 <br>
 
-### Anthos GKE Cluster
+### Google Anthos GKE Cluster
 
-#### ▼ Anthos GKE Clusterとは
+#### ▼ Google Anthos GKE Clusterとは
 
-GKE Cluster (コントロールプレーンNode、ワーカーNodeを含む) から構成される。
+Google GKE Cluster (コントロールプレーンNode、ワーカーNodeを含む) から構成される。
 
 #### ▼ アタッチCluster
 
-AnthosのGKE Cluster部分の能力を、Kubernetesの他の実行環境 (AWS EKS、Azure AKS、RKE、K3SやK3D) のClusterに委譲する。
+AnthosのGoogle GKE Cluster部分の能力を、Kubernetesの他の実行環境 (AWS EKS、Azure AKS、RKE、K3SやK3D) のClusterに委譲する。
 
 AnthosのKubernetesのバージョンは、各実行環境のClusterが対応するKubernetesのバージョンに依存する。
 
@@ -51,9 +51,9 @@ AnthosのKubernetesのバージョンは、各実行環境のClusterが対応す
 
 <br>
 
-### Anthos Service Mesh
+### Google Anthos Service Mesh
 
-#### ▼ Anthos Service Meshとは
+#### ▼ Google Anthos Service Meshとは
 
 Traffic Director、Mesh CA、Managed backends、といったコンポーネントから構成される。
 
@@ -78,9 +78,9 @@ Traffic Director、Mesh CA、Managed backends、といったコンポーネン�
 
 <br>
 
-### Anthos Config Management
+### Google Anthos Config Management
 
-#### ▼ Anthos Config Managementとは
+#### ▼ Google Anthos Config Managementとは
 
 一連のacm-operator (cluster-operatorなど) から構成される。
 
@@ -106,13 +106,13 @@ Gitリポジトリで管理されたACMカスタムリソースのGitOpsを実�
 
 cluster-operatorは、kube-apiserverを経由して、etcdにwatchイベントを送信している。
 
-Anthos GKE Clusterのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを経由して、Anthos GKE Cluster上のkubeletにカスタムリソースの作成をコールする。
+Google Anthos GKE Clusterのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを経由して、Google Anthos GKE Cluster上のkubeletにカスタムリソースの作成をコールする。
 
-Anthos GKE Clusterが、Google Cloud以外 (オンプレミス、ベアメタル、他クラウドプロバイダー) にある場合は、cluster-operatorは、これらのAPIを経由してAnthos GKE Cluster上のkubeletをコールすることになる。
+Google Anthos GKE Clusterが、Google Cloud以外 (オンプレミス、ベアメタル、他クラウドプロバイダー) にある場合は、cluster-operatorは、これらのAPIを経由してGoogle Anthos GKE Cluster上のkubeletをコールすることになる。
 
 またkube-controller-managerはcluster-operatorを反復的に実行する。
 
-これにより、Anthos GKE ClusterはCRDの宣言通りに定期的に修復される (reconciliationループ) 。
+これにより、Google Anthos GKE ClusterはCRDの宣言通りに定期的に修復される (reconciliationループ) 。
 
 > - https://www.jetstack.io/blog/anthos-aws/
 
@@ -122,7 +122,7 @@ Anthos GKE Clusterが、Google Cloud以外 (オンプレミス、ベアメタル
 
 #### ▼ connect-gateway
 
-Google Cloud上で`kubectl`コマンドを実行して各クラウドプロバイダー上のAnthos GKE Clusterのkube-apiserverにリクエストを送信する時に、各クラウドプロバイダーごとのAPIの違いを吸収してくれる。
+Google Cloud上で`kubectl`コマンドを実行して各クラウドプロバイダー上のGoogle Anthos GKE Clusterのkube-apiserverにリクエストを送信する時に、各クラウドプロバイダーごとのAPIの違いを吸収してくれる。
 
 ![anthos_connect-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_connect-gateway.png)
 
@@ -138,7 +138,7 @@ Google Cloud側の認証情報と、各クラウドプロバイダーのAnthos�
 
 #### ▼ anetd
 
-cniとして、Ciliumを使用してAnthos GKE Clusterのネットワークを作成する。
+cniとして、Ciliumを使用してGoogle Anthos GKE Clusterのネットワークを作成する。
 
 > - https://cloud.google.com/kubernetes-engine/docs/concepts/dataplane-v2#how_works
 
@@ -150,9 +150,9 @@ cniとして、Ciliumを使用してAnthos GKE Clusterのネットワークを�
 
 on-オンプレミスは、各Clusterを作成するワークステーション (Clusterの作成後に削除される) 、コントロールプレーンNodeの所属する管理Cluster、ワーカーNodeの所属するユーザーCluster、といったコンポーネントから構成される。
 
-ワークステーションにて、Google CloudのAPIを経由してオンプレミス (例：VMWare) のAPIをコールし、オンプレミス環境上にAnthos GKE Clusterを作成する。
+ワークステーションにて、Google CloudのAPIを経由してオンプレミス (例：VMWare) のAPIをコールし、オンプレミス環境上にGoogle Anthos GKE Clusterを作成する。
 
-Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。
+Google Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。
 
 ![anthos_on_on-premises_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_on-premises_architecture.png)
 
@@ -168,9 +168,9 @@ Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる�
 
 マルチClusterタイプのon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeの所属する管理Cluster、ワーカーNodeの所属するユーザーCluster、`L4` (トランスポート層) のロードバランサーから構成される。
 
-Google CloudのAPIを経由して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。
+Google CloudのAPIを経由して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にGoogle Anthos GKE Clusterを作成する。
 
-Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。
+Google Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。
 
 ![anthos_on_bare-metal_multi-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_bare-metal_multi-cluster.png)
 
@@ -181,9 +181,9 @@ Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる�
 
 スタンドアローンClusterタイプ (ハイブリッドタイプ) のon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeとワーカーNodeの両方が所属するベアメタルCluster、といったコンポーネントから構成される。
 
-ワークステーションにて、Google CloudのAPIを経由してベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。
+ワークステーションにて、Google CloudのAPIを経由してベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にGoogle Anthos GKE Clusterを作成する。
 
-Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。
+Google Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。
 
 ![anthos_on_bare-metal_standalone-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_bare-metal_standalone-cluster.png)
 
@@ -196,13 +196,13 @@ Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる�
 
 #### ▼ ワークステーションとは
 
-Anthos Clusterの作成時やアップグレード時に、`bmctl`コマンドはワークステーション (仮想サーバー) を構築し、ワークステーション上でKindを起動する。
+Google Anthos Clusterの作成時やアップグレード時に、`bmctl`コマンドはワークステーション (仮想サーバー) を構築し、ワークステーション上でKindを起動する。
 
 ベアメタルであるため、自前で仮想サーバー (例：VMware) を作成する必要がある。
 
-Kindはコンテナを構築し、そのコンテナ内でブートストラップClusterを作成できるか否かを検証することにより、Anthos Clusterの事前検証する。
+Kindはコンテナを構築し、そのコンテナ内でブートストラップClusterを作成できるか否かを検証することにより、Google Anthos Clusterの事前検証する。
 
-Kindがコンテナを構築するために、Anthos Clusterの構築前に、`docker`プロセスを起動しておく必要がある。
+Kindがコンテナを構築するために、Google Anthos Clusterの構築前に、`docker`プロセスを起動しておく必要がある。
 
 ```bash
 $ systemctl start docker
@@ -210,9 +210,9 @@ $ systemctl start docker
 
 #### ▼ ブートストラップCluster
 
-Kindがコンテナ内で作成する仮想Anthos Clusterのこと。
+Kindがコンテナ内で作成する仮想的なGoogle Anthos Clusterのこと。
 
-VClusterを使用して、仮想Anthos Clusterを作成している。
+VClusterを使用して、仮想的なGoogle Anthos Clusterを作成している。
 
 `~/baremetal/bmctl-workspace/foo-anthos-cluster/.kindkubeconfig`ファイルを指定することにより、ブートストラップClusterのkube-apiserverにリクエストを送信できる。
 
@@ -228,7 +228,7 @@ $ kubectl get pod \
 
 ### on-Google Cloudの仕組み
 
-Google Cloud環境上にAnthos GKE Clusterを作成する。
+Google Cloud環境上にGoogle Anthos GKE Clusterを作成する。
 
 <br>
 
@@ -236,7 +236,7 @@ Google Cloud環境上にAnthos GKE Clusterを作成する。
 
 ### on-クラウドプロバイダーの仕組み
 
-Google CloudのAPIを経由して、他のクラウドプロバイダー (例：AWS、Azure) のAPIをコールし、クラウドプロバイダー上にAnthos GKE Clusterを作成する。
+Google CloudのAPIを経由して、他のクラウドプロバイダー (例：AWS、Azure) のAPIをコールし、クラウドプロバイダー上にGoogle Anthos GKE Clusterを作成する。
 
 ただし他のクラウドプロバイダーでは、専用Kubernetes実行環境 (例：AWS EKS、Google Cloud GKE、Azure AKSなど) を使用すれば良いため、Google Cloud環境、オンプレミス環境、ベアメタル環境、でAnthosを使用することが多い。
 

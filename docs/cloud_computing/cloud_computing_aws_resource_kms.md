@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】KMS＠AWSリソース
-description: KMS＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】AWS KMS＠AWSリソース
+description: AWS KMS＠AWSリソースの知見を記録しています。
 ---
 
-# KMS＠AWSリソース
+# AWS KMS＠AWSリソース
 
 ## はじめに
 
@@ -13,9 +13,9 @@ description: KMS＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. KMS
+## 01. AWS KMS
 
-### KMSとは
+### AWS KMSとは
 
 暗号化キーを管理する。
 
@@ -66,7 +66,7 @@ description: KMS＠AWSリソースの知見を記録しています。
 
 ### キーポリシー
 
-KMSのリクエスト制限を設定する。
+AWS KMSのリクエスト制限を設定する。
 
 **＊例＊**
 
@@ -76,7 +76,7 @@ KMSのリクエスト制限を設定する。
   "Statement":
     [
       {
-        "Sid": "Allow an external account to use this KMS key",
+        "Sid": "Allow an external account to use this AWS KMS key",
         "Effect": "Allow",
         "Principal":
           {
@@ -146,11 +146,11 @@ KMSのリクエスト制限を設定する。
 
 ### キーポリシー
 
-KMSにポリシーを設定する。
+AWS KMSにポリシーを設定する。
 
 AWSマネージド型では設定できず、セルフマネージド型でのみ設定できる。
 
-KMSを使用できるユーザーやAWSリソースを制限できるようになる。
+AWS KMSを使用できるユーザーやAWSリソースを制限できるようになる。
 
 > - https://zenn.dev/m_taiki/articles/77c9542649aca0#%E7%B5%90%E8%AB%96
 

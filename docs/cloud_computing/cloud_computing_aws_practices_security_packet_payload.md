@@ -123,7 +123,7 @@ AWS VPCのIPアドレスの最初から、パブリックサブネットとプ�
 | AutoScaling           | 自動水平スケーリング時のAWS EC2最大数と同じ個数 |
 | AWS VPCエンドポイント | AWS VPCエンドポイント当たり、IPアドレス`1`個    |
 | AWS ECS、AWS EKS      | Elastic Network Interface 数と同じ個数          |
-| Lambda                | Elastic Network Interface 数と同じ個数          |
+| AWS Lambda            | Elastic Network Interface 数と同じ個数          |
 
 > - https://d0.awsstatic.com/events/jp/2017/summit/slide/D2T3-5.pdf
 > - https://dev.classmethod.jp/articles/amazon-vpc-5-tips/

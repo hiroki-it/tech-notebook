@@ -166,10 +166,10 @@ CI/CDの設計はアプリが稼働している既存のインフラの技術ス
 
 1. アプリをコンテナ化しつつ、Kubernetes系ではないオーケストレーションツールを使用している場合は、こちらをどうぞ。
 
-| 質問                                         | 質問の意図                                                                                      |
-| -------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| オンプレ上でDocker Composeを使用しているか。 | Docker Composeでオーケストレーションを実施している場合、適切なCIOpsがあるため、聞いておきたい。 |
-| CaaS (ECS、CloudRun) を使用しているか。      | CaaSでオーケストレーションを実施している場合、適切なCIOpsがあるため、聞いておきたい。           |
+| 質問                                                | 質問の意図                                                                                      |
+| --------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| オンプレ上でDocker Composeを使用しているか。        | Docker Composeでオーケストレーションを実施している場合、適切なCIOpsがあるため、聞いておきたい。 |
+| CaaS (AWS ECS、Google Cloud Run) を使用しているか。 | CaaSでオーケストレーションを実施している場合、適切なCIOpsがあるため、聞いておきたい。           |
 
 1. アプリをコンテナ化しつつ、Kubernetes系のオーケストレーションツールを使用している場合は、こちらをどうぞ。
 
@@ -209,7 +209,7 @@ graph TD;
   C ---> | AWS Lambda, Google Cloud Run Functions | G[非コンテナFaaSのための<br>CIOps]
 
   D ----> | Docker compose on オンプレ | H[Docker composeのための<br>CIOps]
-  D ----> | AWS ECS, Google CloudRun  | I[CaaSのための<br>CIOps]
+  D ----> | AWS ECS, Google Cloud Run  | I[CaaSのための<br>CIOps]
   D --> | いずれも使っていない | J[そのまま進む]
   D ----> | Kubeadm, Rancher, on オンプレ | K[オンプレのための<br>GitOps]
   D ----> | AWS EKS Anywhere Baremetal Deployment, Google Anthos on Baremetal| L[IaaSのための<br>GitOps]

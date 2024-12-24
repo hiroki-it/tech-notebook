@@ -19,9 +19,9 @@ description: ストレージ安全性＠AWSの知見を記録しています。
 
 AWS Secrets Managerは、機密データをキーバリュー単位で保管できるキーバリューストレージである。
 
-機密データの保管と暗号化のために、AWS Secrets ManagerではKMSを採用する。
+機密データの保管と暗号化のために、AWS Secrets ManagerではAWS KMSを採用する。
 
-カスタマー管理型KMSを使用し、KMSを操作できるユーザーを制限しています。
+カスタマー管理型AWS KMSを使用し、AWS KMSを操作できるユーザーを制限しています。
 
 > - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-dataprot.html
 > - https://www.techtarget.com/searchstorage/feature/NVMe-key-value-storage-vs-block-and-object-storage
@@ -34,7 +34,7 @@ AWS Secrets Managerは、機密データをキーバリュー単位で保管で�
 
 AWS Auroraは、永続データをブロック単位で保管できるブロックストレージである。
 
-永続データ (クラスター全体、自動バックアップ、リードレプリカ全体、スナップショット、ログなど) の暗号化のために、AWS AuroraではKMSを採用する。
+永続データ (クラスター全体、自動バックアップ、リードレプリカ全体、スナップショット、ログなど) の暗号化のために、AWS AuroraではAWS KMSを採用する。
 
 > - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-dataprot.html
 > - https://www.stylez.co.jp/aws_columns/explain_aws_services_that_are_difficult_to_differentiate/aws_storage_services_difference_between_ebs_efs_s3_fsx_etc/#AWS-2
@@ -44,7 +44,7 @@ AWS Auroraは、永続データをブロック単位で保管できるブロッ�
 
 AWS EBSは、ファイルをブロック単位で保管できるブロックストレージである。
 
-ファイルの暗号化のために、KMSを採用する。
+ファイルの暗号化のために、AWS KMSを採用する。
 
 <br>
 
