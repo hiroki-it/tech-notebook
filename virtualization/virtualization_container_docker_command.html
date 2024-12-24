@@ -25397,14 +25397,14 @@
 <p>ビルドするステージ名を設定する。</p>
 <p>マルチステージビルドの時に使用する。</p>
 <p>ステージを指定しない場合、一番最後に定義したステージを使用してビルドが実行される。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ローカル環境のターゲットを指定する</span>
+$<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>--file<span class="w"> </span>Dockerfile<span class="w"> </span>--tag<span class="w"> </span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>--target<span class="w"> </span>dev<span class="w"> </span>.
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://docs.docker.com/engine/reference/commandline/build/#specifying-target-build-stage---target">https://docs.docker.com/engine/reference/commandline/build/#specifying-target-build-stage---target</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="c1"># ローカル環境のターゲットを指定する</span>
-$<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>--file<span class="w"> </span>Dockerfile<span class="w"> </span>--tag<span class="w"> </span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>--target<span class="w"> </span>dev<span class="w"> </span>.
-</code></pre></div>
 <p><br></p>
 <h3 id="commit">commit<a class="headerlink" href="#commit" title="Permanent link">&para;</a></h3>
 <h4 id="commit_1">▼ commitとは<a class="headerlink" href="#commit_1" title="Permanent link">&para;</a></h4>
@@ -25636,24 +25636,24 @@ ff02::2<span class="w"> </span>ip6-allrouters
 </code></pre></div>
 <h4 id="-publish">▼ --publish<a class="headerlink" href="#-publish" title="Permanent link">&para;</a></h4>
 <p>指定したホストポートとコンテナポートのマッピングを実行する。<code>--publish-all</code>オプションではホストポートをランダムに選択してポートマッピングを実行する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-it<span class="w"> </span>--name<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--publish<span class="o">=</span><span class="m">8080</span>:80<span class="w"> </span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>/bin/bash
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/">https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-it<span class="w"> </span>--name<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--publish<span class="o">=</span><span class="m">8080</span>:80<span class="w"> </span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>/bin/bash
-</code></pre></div>
 <h4 id="-expose">▼ --expose<a class="headerlink" href="#-expose" title="Permanent link">&para;</a></h4>
 <p>他のコンテナに公開するコンテナポートを<code>--expose</code>オプションで設定できる。</p>
 <p>これはDockerfileでEXPOSE命令として設定しても良い。</p>
 <p>補足として、プロセスの受信するポートと合わせる必要がある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-it<span class="w"> </span>--name<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--expose<span class="o">=</span><span class="m">80</span><span class="w"> </span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>/bin/bash
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/">https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-it<span class="w"> </span>--name<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--expose<span class="o">=</span><span class="m">80</span><span class="w"> </span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>/bin/bash
-</code></pre></div>
 <h4 id="-a-d">▼ -a、-d<a class="headerlink" href="#-a-d" title="Permanent link">&para;</a></h4>
 <p>すでに停止中または起動中コンテナが存在していても、これとは別にコンテナを新しく作成し、起動する。</p>
 <p>加えてそのコンテナ内でコマンドを実行する。</p>
@@ -25704,11 +25704,6 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 </blockquote>
 <h4 id="inspect_3">▼ inspect<a class="headerlink" href="#inspect_3" title="Permanent link">&para;</a></h4>
 <p>署名されたコンテナイメージか否かを確認する。</p>
-<blockquote>
-<ul>
-<li><a href="https://websetnet.net/how-to-sign-your-docker-images-to-increase-trust/">https://websetnet.net/how-to-sign-your-docker-images-to-increase-trust/</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>trust<span class="w"> </span>inspect<span class="w"> </span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;
 
 <span class="o">[</span>
@@ -25729,6 +25724,11 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <span class="w">  </span><span class="o">}</span>
 <span class="o">]</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://websetnet.net/how-to-sign-your-docker-images-to-increase-trust/">https://websetnet.net/how-to-sign-your-docker-images-to-increase-trust/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="stop">stop<a class="headerlink" href="#stop" title="Permanent link">&para;</a></h3>
 <h4 id="stop_1">▼ stopとは<a class="headerlink" href="#stop_1" title="Permanent link">&para;</a></h4>
@@ -25817,7 +25817,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-24</span>
   </span>
 
     
