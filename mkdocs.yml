@@ -809,11 +809,11 @@ nav:
           - ログ: observability/observability_telemetry_log.md
           - メトリクス: observability/observability_telemetry_metrics.md
           - 分散トレース: observability/observability_telemetry_trace.md
-      - ■ テレメトリー収集ツール:
-          - テレメトリー収集ツール: observability/observability_telemetry_tools.md
+      - ■ テレメトリー監視ツール:
+          - テレメトリー監視ツール: observability/observability_telemetry_tools.md
           - ■ Datadog:
+              - Datadog: observability/observability_telemetry_tools_datadog.md
               - datadogエージェントの設定: observability/observability_telemetry_tools_datadog_agent_conf.md
-              - 監視: observability/observability_telemetry_tools_datadog_monitoring.md
               - インテグレーション: observability/observability_telemetry_tools_datadog_integration.md
               - ■ テレメトリー:
                   - メトリクス: observability/observability_telemetry_tools_datadog_metrics.md
