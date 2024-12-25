@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Prometheus＠テレメトリー収集ツール
-description: Prometheus＠テレメトリー収集ツール
+title: 【IT技術の知見】Prometheus＠テレメトリー監視ツール
+description: Prometheus＠テレメトリー監視ツール
 ---
 
-# Prometheus＠テレメトリー収集ツール
+# Prometheus＠テレメトリー監視ツール
 
 ## はじめに
 

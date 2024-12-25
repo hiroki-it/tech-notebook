@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Kiali＠テレメトリー収集ツール
-description: Kiali＠テレメトリー収集ツールの知見を記録しています。
+title: 【IT技術の知見】Kiali＠テレメトリー監視ツール
+description: Kiali＠テレメトリー監視ツールの知見を記録しています。
 ---
 
-# Kiali＠テレメトリー収集ツール
+# Kiali＠テレメトリー監視ツール
 
 ## はじめに
 
@@ -48,7 +48,7 @@ Kialiは、バックエンドコンポーネントとフロントエンドコン
 
 サービスメッシュトポロジーから、マイクロサービス間の通信の依存関係や通信状況を確認できる。
 
-その他、テレメトリー収集ツール (例：Jaeger、Grafana) と連携し、Kiali上のデータから連携先のツールのURLにリダイレクトできるようにする。
+その他、テレメトリー監視ツール (例：Jaeger、Grafana) と連携し、Kiali上のデータから連携先のツールのURLにリダイレクトできるようにする。
 
 > - https://kiali.io/docs/architecture/architecture/#kiali-front-end
 

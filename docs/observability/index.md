@@ -25,13 +25,13 @@
 
 <br>
 
-### テレメトリー収集ツール
+### テレメトリー監視ツール
 
-* #### [テレメトリー収集ツール](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools.html)
+* #### [テレメトリー監視ツール](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools.html)
 
 * #### <u>Datadog</u>
+  > * ##### [Datadog](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_datadog.html)
   > * ##### [︎datadogエージェントの設定](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_datadog_agent_conf.html)
-  > * ##### [︎監視](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_datadog_monitoring.html)
   > * ##### [︎インテグレーション](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_datadog_integration.html)
   > * ##### <u>テレメトリー収集</u>
   > > * ##### [︎メトリクス](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_datadog_metrics.html)

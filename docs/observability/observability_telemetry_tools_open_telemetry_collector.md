@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】OpenTelemetry Collector＠テレメトリー収集ツール
-description: OpenTelemetry Collector＠テレメトリー収集ツールの知見を記録しています。
+title: 【IT技術の知見】OpenTelemetry Collector＠テレメトリー監視ツール
+description: OpenTelemetry Collector＠テレメトリー監視ツールの知見を記録しています。
 ---
 
-# OpenTelemetry Collector＠テレメトリー収集ツール
+# OpenTelemetry Collector＠テレメトリー監視ツール
 
 ## はじめに
 

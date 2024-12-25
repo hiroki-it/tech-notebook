@@ -298,6 +298,8 @@ $ asdf plugin add <プラグイン名>
 
 asdfでインストールしたツールを使用して、他のパッケージをインストールする場合に、これをasdfに認識させる。
 
+asdf
+
 ```bash
 $ asdf reshim
 ```

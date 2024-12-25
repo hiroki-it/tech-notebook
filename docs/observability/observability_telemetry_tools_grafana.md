@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Grafana＠テレメトリー収集ツール
-description: Grafana＠テレメトリー収集ツールの知見を記録しています。
+title: 【IT技術の知見】Grafana＠テレメトリー監視ツール
+description: Grafana＠テレメトリー監視ツールの知見を記録しています。
 ---
 
-# Grafana＠テレメトリー収集ツール
+# Grafana＠テレメトリー監視ツール
 
 ## はじめに
 
@@ -29,11 +29,11 @@ PromQLに基づいて、収集されたメトリクスを可視化する。
 
 ### データソース
 
-| データソース名       | 例                                                                         |
-| -------------------- | -------------------------------------------------------------------------- |
-| TSDB                 | PrometheusのローカルDB、VictoriaMetrics、Graphite、InfluxDB、Grafana Mimir |
-| RDB                  | MySQL、PostgreSQL                                                          |
-| クラウドデータソース | AWS CloudWatch、Google Cloud Logging                                       |
+| データソース名       | 例                                                                                               |
+| -------------------- | ------------------------------------------------------------------------------------------------ |
+| TSDB                 | PrometheusのローカルDB、VictoriaMetrics、Graphite、InfluxDB、Grafana Mimir、M3DB、Thanos、Cortex |
+| RDB                  | MySQL、PostgreSQL                                                                                |
+| クラウドデータソース | AWS CloudWatch、Google Cloud Logging                                                             |
 
 > - https://qiita.com/MetricFire/items/15e024aea40785be622c
 

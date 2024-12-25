@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Jaeger＠テレメトリー収集ツール
-description: Jaeger＠テレメトリー収集ツールの知見を記録しています。
+title: 【IT技術の知見】Jaeger＠テレメトリー監視ツール
+description: Jaeger＠テレメトリー監視ツールの知見を記録しています。
 ---
 
-# Jaeger＠テレメトリー収集ツール
+# Jaeger＠テレメトリー監視ツール
 
 ## はじめに
 
