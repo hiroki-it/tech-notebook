@@ -23400,6 +23400,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      メトリクスの一覧
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="メトリクスの一覧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 確認方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ よく使用するメトリクス
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -24426,6 +24459,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      メトリクスの一覧
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="メトリクスの一覧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 確認方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ よく使用するメトリクス
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -24727,6 +24793,42 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe">https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe</a></li>
 <li><a href="https://abiydv.github.io/posts/prometheus-blackbox-monitor-post-api/#step-1---blackbox-exporter">https://abiydv.github.io/posts/prometheus-blackbox-monitor-post-api/#step-1---blackbox-exporter</a></li>
 <li><a href="https://github.com/prometheus/blackbox_exporter/blob/master/example.yml">https://github.com/prometheus/blackbox_exporter/blob/master/example.yml</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_4">メトリクスの一覧<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ 確認方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>Blackbox Exporterの場合は、Nodeの『<code>127.0.0.1:9115/probe?target=google.com&amp;module=http_2xx</code>』をコールすると、PromQLで使用できるメトリクスを取得できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:9115/probe?target<span class="o">=</span>google.com<span class="p">&amp;</span><span class="nv">module</span><span class="o">=</span>http_2xx
+
+...
+
+probe_success
+
+...
+</code></pre></div>
+<h4 id="_6">▼ よく使用するメトリクス<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>メトリクス</th>
+<th>メトリクスの種類</th>
+<th>説明</th>
+<th>PromQL例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>probe_success</code></td>
+<td>Gauge</td>
+<td>監視対象の状態を表す。<code>1</code>であれば稼働中、<code>0</code>であれば停止中である。</td>
+<td><code>sum((probe_success{namespace="foo-namespace"})) / count((probe_success{namespace="foo-namespace"}))</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/mmorita44/items/8eca5e6fae9fd40807ce#%E9%81%8B%E7%94%A8%E6%96%B9%E6%B3%95">https://qiita.com/mmorita44/items/8eca5e6fae9fd40807ce#%E9%81%8B%E7%94%A8%E6%96%B9%E6%B3%95</a></li>
 </ul>
 </blockquote>
 <p><br></p>
