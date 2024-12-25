@@ -533,7 +533,7 @@ spec:
 
 ### .spec.externalLabel
 
-Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、Grafana Mimirなど) にメトリクスを送信する時に、これに付与するラベルを設定する。
+Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、Grafana Mimir、M3DB、Thanos、Cortexなど) にメトリクスを送信する時に、これに付与するラベルを設定する。
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1

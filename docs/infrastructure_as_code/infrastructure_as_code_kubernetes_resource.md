@@ -1427,7 +1427,7 @@ Podの既存のストレージ上にVolume (`/var/lib/kubelet/pods/<PodのUUID>/
 
 また、Podが削除されるとこのVolumeも同時に削除されてしまう。
 
-保持期間を設定できるツール (例：Prometheus、Victoria Metrics、Grafana Mimirなど) にて、PodのVolumeをEmptyDirとしている場合、Podを保持期間より先に削除すると、保持期間を待たずにVolumeを削除することになってしまう。
+保持期間を設定できるツール (例：Prometheus、Victoria Metrics、Grafana Mimir、など) にて、PodのVolumeをEmptyDirとしている場合、Podを保持期間より先に削除すると、保持期間を待たずにVolumeを削除することになってしまう。
 
 > - https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 > - https://cstoku.dev/posts/2018/k8sdojo-05/
