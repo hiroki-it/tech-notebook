@@ -1317,6 +1317,10 @@
          <lastmod>2024-12-25</lastmod>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_datadog.html</loc>
+         <lastmod>2024-12-25</lastmod>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_datadog_agent_conf.html</loc>
          <lastmod>2024-12-25</lastmod>
     </url>
@@ -1334,10 +1338,6 @@
     </url>
     <url>
          <loc>https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_datadog_metrics.html</loc>
-         <lastmod>2024-12-25</lastmod>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_datadog_monitoring.html</loc>
          <lastmod>2024-12-25</lastmod>
     </url>
     <url>
@@ -1493,7 +1493,15 @@
          <lastmod>2024-12-25</lastmod>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/observability/draft/observability_telemetry_open_telemetry_trace_client_package_nginx.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/observability/draft/observability_telemetry_tools_grafana_loki.html</loc>
+         <lastmod>2024-12-25</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/observability/draft/observability_telemetry_tools_grafana_tempo.html</loc>
+         <lastmod>2024-12-25</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/observability/draft/observability_telemetry_tools_open_telemetry_client_package_nginx.html</loc>
          <lastmod>2024-12-25</lastmod>
     </url>
     <url>
