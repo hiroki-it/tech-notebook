@@ -326,3 +326,29 @@ modules:
 > - https://github.com/prometheus/blackbox_exporter/blob/master/example.yml
 
 <br>
+
+### メトリクスの一覧
+
+#### ▼ 確認方法
+
+Blackbox Exporterの場合は、Nodeの『`127.0.0.1:9115/probe?target=google.com&module=http_2xx`』をコールすると、PromQLで使用できるメトリクスを取得できる。
+
+```bash
+$ curl http://127.0.0.1:9115/probe?target=google.com&module=http_2xx
+
+...
+
+probe_success
+
+...
+```
+
+#### ▼ よく使用するメトリクス
+
+| メトリクス      | メトリクスの種類 | 説明                                                               | PromQL例                                                                                              |
+| --------------- | ---------------- | ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| `probe_success` | Gauge            | 監視対象の状態を表す。`1`であれば稼働中、`0`であれば停止中である。 | `sum((probe_success{namespace="foo-namespace"})) / count((probe_success{namespace="foo-namespace"}))` |
+
+> - https://qiita.com/mmorita44/items/8eca5e6fae9fd40807ce#%E9%81%8B%E7%94%A8%E6%96%B9%E6%B3%95
+
+<br>
