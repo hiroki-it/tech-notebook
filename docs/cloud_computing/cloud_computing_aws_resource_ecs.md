@@ -160,7 +160,7 @@ Kubernetes Cluster上でこれを稼働させることが推奨である。
 
 #### ▼ ECSサービスディスカバリー
 
-Route53にECSタスクの宛先情報を動的に追加削除することにより、ECSタスクが他のECSタスクと通信可能にする。
+AWS Route53にECSタスクの宛先情報を動的に追加削除することにより、ECSタスクが他のECSタスクと通信可能にする。
 
 ![ecs_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_service-discovery.png)
 

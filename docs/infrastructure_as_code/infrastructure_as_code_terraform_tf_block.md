@@ -39,7 +39,7 @@ description: ブロック＠Terraformの知見を記録しています。
 
 ```terraform
 # ---------------------------------------------
-# Resource ALB
+# AWS ALB
 # ---------------------------------------------
 resource "aws_lb" "this" {
   name               = "prd-foo-alb"
@@ -284,14 +284,14 @@ repository/
 # リモートモジュール内のローカルモジュールを出力する。
 
 # ---------------------------------------------
-# Output ALB
+# AWS ALB
 # ---------------------------------------------
 output "alb_zone_id" {
   value = module.alb.alb_zone_id
 }
 
 # ---------------------------------------------
-# Output EC2
+# AWS EC2
 # ---------------------------------------------
 output "bastion_ec2_instance_id" {
   value = aws_instance.bastion.id
@@ -336,7 +336,7 @@ resource "foo" "this" {
 
 ```terraform
 # ---------------------------------------------
-# Resource パブリックサブネット
+# AWS パブリックサブネット
 # ---------------------------------------------
 resource "aws_subnet" "public" {
   count = 2
@@ -345,7 +345,7 @@ resource "aws_subnet" "public" {
 }
 
 # ---------------------------------------------
-# Resource プライベートサブネット
+# AWS プライベートサブネット
 # ---------------------------------------------
 resource "aws_subnet" "private_app" {
   count = 2
@@ -366,7 +366,7 @@ resource "aws_subnet" "private_datastore" {
 
 ```terraform
 # ---------------------------------------------
-# Output VPC
+# AWS VPC
 # ---------------------------------------------
 output "public_subnet_ids" {
   value = aws_subnet.public[*].id # IDのリスト型
@@ -387,7 +387,7 @@ output "private_datastore_subnet_ids" {
 
 ```terraform
 # ---------------------------------------------
-# Output VPC
+# AWS VPC
 # ---------------------------------------------
 output "public_subnet_ids" {
   value = aws_subnet.public[0].id # IDの文字列
@@ -583,7 +583,7 @@ ALBの後にALB target groupを作成する必要がある。
 
 ```terraform
 # ---------------------------------------------
-# Resource ALB target group
+# AWS ALB target group
 # ---------------------------------------------
 resource "aws_lb_target_group" "this" {
   name                 = "prd-foo-alb-tg"
@@ -617,7 +617,7 @@ AWS NAT Gateway、Internet Gateway、の`resource`ブロックを適切な順番
 
 ```terraform
 # ---------------------------------------------
-# Resource EC2
+# AWS EC2
 # ---------------------------------------------
 resource "aws_instance" "bastion" {
   ami                         = "*****"
@@ -638,7 +638,7 @@ resource "aws_instance" "bastion" {
 
 ```terraform
 # ---------------------------------------------
-# Resource Elastic IP
+# AWS Elastic IP
 # ---------------------------------------------
 resource "aws_eip" "nat_gateway" {
   for_each = var.vpc_availability_zones
@@ -658,7 +658,7 @@ resource "aws_eip" "nat_gateway" {
 
 ```terraform
 # ---------------------------------------------
-# Resource AWS NAT Gateway
+# AWS AWS NAT Gateway
 # ---------------------------------------------
 resource "aws_nat_gateway" "this" {
   for_each = var.vpc_availability_zones
@@ -685,7 +685,7 @@ resource "aws_nat_gateway" "this" {
 
 ```terraform
 # ---------------------------------------------
-# Resource AWS S3
+# AWS S3
 # ---------------------------------------------
 
 # foo bucket
@@ -772,7 +772,7 @@ variable "enable_provision" {
 
 ```terraform
 # ---------------------------------------------
-# Resource EC2
+# AWS EC2
 # ---------------------------------------------
 resource "aws_instance" "server" {
   count = var.enable_provision ? 1 : 0
@@ -813,7 +813,7 @@ variable "env" {
 
 ```terraform
 # ---------------------------------------------
-# Resource EC2
+# AWS EC2
 # ---------------------------------------------
 resource "aws_instance" "server" {
   # テスト環境とステージング環境以外でプロビジョニングする
@@ -1043,7 +1043,7 @@ vpc_availability_zones = { a = "a", c = "c" }
 
 ```terraform
 # ---------------------------------------------
-# Output VPC
+# AWS VPC
 # ---------------------------------------------
 output "public_a_subnet_id" {
   value = aws_subnet.public[var.vpc_availability_zones.a].id
@@ -1067,7 +1067,7 @@ vpc_availability_zones = { a = "a", c = "c" }
 
 ```terraform
 # ---------------------------------------------
-# Output VPC
+# AWS VPC
 # ---------------------------------------------
 output "public_subnet_ids" {
   value = {
@@ -1150,7 +1150,7 @@ rds_parameter_group_values = {
 
 ```terraform
 # ---------------------------------------------
-# Resource RDS Cluster Parameter Group
+# AWS RDS Cluster Parameter Group
 # ---------------------------------------------
 resource "aws_rds_cluster_parameter_group" "this" {
   name        = "prd-foo-cluster-pg"
@@ -1185,7 +1185,7 @@ security_group_ingress_ec2_ssh = {
 
 ```terraform
 # ---------------------------------------------
-# Resource Security Group
+# AWS Security Group
 # ---------------------------------------------
 resource "aws_security_group" "ec2" {
 
@@ -1292,7 +1292,7 @@ resource "aws_acm_certificate" "foo" {
 
 ```terraform
 # ---------------------------------------------
-# Resource RDS Cluster Parameter Group
+# AWS RDS Cluster Parameter Group
 # ---------------------------------------------
 resource "aws_rds_cluster_parameter_group" "this" {
 
@@ -1304,7 +1304,7 @@ resource "aws_rds_cluster_parameter_group" "this" {
 }
 
 # ---------------------------------------------
-# Resource RDS Subnet Group
+# AWS RDS Subnet Group
 # ---------------------------------------------
 resource "aws_db_subnet_group" "this" {
 
@@ -1324,7 +1324,7 @@ resource "aws_db_subnet_group" "this" {
 
 ```terraform
 # ---------------------------------------------
-# Resource Redis Parameter Group
+# AWS Redis Parameter Group
 # ---------------------------------------------
 resource "aws_elasticache_parameter_group" "redis" {
 
@@ -1336,7 +1336,7 @@ resource "aws_elasticache_parameter_group" "redis" {
 }
 
 # ---------------------------------------------
-# Resource Redis Subnet Group
+# AWS Redis Subnet Group
 # ---------------------------------------------
 resource "aws_elasticache_subnet_group" "redis" {
 
@@ -1366,7 +1366,7 @@ ECSでは、AWS AutoScalingによってECSタスク数が増加する。
 
 ```terraform
 # ---------------------------------------------
-# Resource ECS Service
+# AWS ECS Service
 # ---------------------------------------------
 resource "aws_ecs_service" "this" {
 
@@ -1391,7 +1391,7 @@ Redisでは、AWS AutoScalingによってプライマリー数とレプリカ数
 
 ```terraform
 # ---------------------------------------------
-# Resource Redis Cluster
+# AWS Redis Cluster
 # ---------------------------------------------
 resource "aws_elasticache_replication_group" "redis" {
 
@@ -1492,7 +1492,7 @@ resource "aws_security_group" "ec2" {
 
 ```terraform
 # ---------------------------------------------
-# Resource AWS S3 bucket policy
+# AWS AWS S3 bucket policy
 # ---------------------------------------------
 resource "aws_s3_bucket_policy" "alb" {
   bucket = aws_s3_bucket.alb_logs.id

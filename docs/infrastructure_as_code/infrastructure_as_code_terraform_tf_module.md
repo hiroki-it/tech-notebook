@@ -395,7 +395,7 @@ module "route53" {
 # @ルートモジュール
 
 # ---------------------------------------------
-# Resource Route53
+# AWS Route53
 # ---------------------------------------------
 resource "aws_acm_certificate" "example" {
   # CloudFrontの仕様のため、us-east-1リージョンでSSL証明書を作成します。
