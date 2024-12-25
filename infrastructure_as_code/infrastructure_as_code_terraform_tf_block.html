@@ -25495,7 +25495,7 @@
 <h4 id="aws">▼ AWSの場合<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resource ALB</span>
+<span class="c1"># AWS ALB</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_lb&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prd-foo-alb&quot;</span>
@@ -25694,14 +25694,14 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># リモートモジュール内のローカルモジュールを出力する。</span>
 
 <span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Output ALB</span>
+<span class="c1"># AWS ALB</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">output</span><span class="w"> </span><span class="nv">&quot;alb_zone_id&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.alb.alb_zone_id</span>
 <span class="p">}</span>
 
 <span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Output EC2</span>
+<span class="c1"># AWS EC2</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">output</span><span class="w"> </span><span class="nv">&quot;bastion_ec2_instance_id&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_instance.bastion.id</span>
@@ -25735,7 +25735,7 @@
 <p>例として、VPCのサブネットを示す。</p>
 <p>ここでは、パブリックサブネット、applicationサブネット、datastoreサブネットを<code>count</code>引数で作成したとする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resource パブリックサブネット</span>
+<span class="c1"># AWS パブリックサブネット</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_subnet&quot;</span><span class="w"> </span><span class="nv">&quot;public&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
@@ -25744,7 +25744,7 @@
 <span class="p">}</span>
 
 <span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resource プライベートサブネット</span>
+<span class="c1"># AWS プライベートサブネット</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_subnet&quot;</span><span class="w"> </span><span class="nv">&quot;private_app&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
@@ -25761,7 +25761,7 @@
 <h4 id="listoutput">▼ list型<code>output</code>ブロック<a class="headerlink" href="#listoutput" title="Permanent link">&para;</a></h4>
 <p>インデックスキーをアスタリスクを指定した場合、list型になる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Output VPC</span>
+<span class="c1"># AWS VPC</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">output</span><span class="w"> </span><span class="nv">&quot;public_subnet_ids&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_subnet.public</span><span class="p">[</span><span class="err">*</span><span class="p">].</span><span class="err">id</span><span class="c1"> # IDのリスト型</span>
@@ -25778,7 +25778,7 @@
 <h4 id="output_2">▼ スカラー型<code>output</code>ブロック<a class="headerlink" href="#output_2" title="Permanent link">&para;</a></h4>
 <p>インデックスキー (<code>0</code>番目) を指定した場合、スカラー型になる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Output VPC</span>
+<span class="c1"># AWS VPC</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">output</span><span class="w"> </span><span class="nv">&quot;public_subnet_ids&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_subnet.public[0].id</span><span class="c1"> # IDの文字列</span>
@@ -25928,7 +25928,7 @@
 <p>ALBの後にALB target groupを作成する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resource ALB target group</span>
+<span class="c1"># AWS ALB target group</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_lb_target_group&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">name</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prd-foo-alb-tg&quot;</span>
@@ -25956,7 +25956,7 @@
 <p>AWS NAT Gateway、Internet Gateway、の<code>resource</code>ブロックを適切な順番で作成できない。</p>
 <p>そのため、Internet Gatewayの作成後に、AWS NAT Gatewayを作成するように定義する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resource EC2</span>
+<span class="c1"># AWS EC2</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;bastion&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">ami</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*****&quot;</span>
@@ -25975,7 +25975,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resource Elastic IP</span>
+<span class="c1"># AWS Elastic IP</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eip&quot;</span><span class="w"> </span><span class="nv">&quot;nat_gateway&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">for_each</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.vpc_availability_zones</span>
@@ -25993,7 +25993,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resource AWS NAT Gateway</span>
+<span class="c1"># AWS AWS NAT Gateway</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_nat_gateway&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">for_each</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.vpc_availability_zones</span>
@@ -26015,7 +26015,7 @@
 <p>例として、AWS S3を示す。</p>
 <p>バケットポリシーとパブリックアクセスブロックポリシーを同時に作成できないため、作成のタイミングが重ならないようにする必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resource AWS S3</span>
+<span class="c1"># AWS S3</span>
 <span class="c1"># ---------------------------------------------</span>
 
 <span class="c1"># foo bucket</span>
@@ -26088,7 +26088,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resource EC2</span>
+<span class="c1"># AWS EC2</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;server&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.enable_provision</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="m">0</span>
@@ -26119,7 +26119,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resource EC2</span>
+<span class="c1"># AWS EC2</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;server&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">  # テスト環境とステージング環境以外でプロビジョニングする</span>
@@ -26317,7 +26317,7 @@
 <span class="nb">vpc_availability_zones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;a&quot;, c = &quot;c&quot;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Output VPC</span>
+<span class="c1"># AWS VPC</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">output</span><span class="w"> </span><span class="nv">&quot;public_a_subnet_id&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_subnet.public[var.vpc_availability_zones.a].id</span>
@@ -26335,7 +26335,7 @@
 <span class="nb">vpc_availability_zones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;a&quot;, c = &quot;c&quot;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Output VPC</span>
+<span class="c1"># AWS VPC</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">output</span><span class="w"> </span><span class="nv">&quot;public_subnet_ids&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nb">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -26407,7 +26407,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resource RDS Cluster Parameter Group</span>
+<span class="c1"># AWS RDS Cluster Parameter Group</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_cluster_parameter_group&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prd-foo-cluster-pg&quot;</span>
@@ -26436,7 +26436,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resource Security Group</span>
+<span class="c1"># AWS Security Group</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_security_group&quot;</span><span class="w"> </span><span class="nv">&quot;ec2&quot;</span><span class="w"> </span><span class="p">{</span>
 
@@ -26516,7 +26516,7 @@
 <p>例として、RDSのクラスターパラメーターグループとサブネットグループを示す。</p>
 <p>クラスターパラメーターグループとサブネットグループは、DBクラスターに紐付いており、新しいクラスターパラメーターグループに紐付け直した後に、既存のものを削除する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resource RDS Cluster Parameter Group</span>
+<span class="c1"># AWS RDS Cluster Parameter Group</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_cluster_parameter_group&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
 
@@ -26528,7 +26528,7 @@
 <span class="p">}</span>
 
 <span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resource RDS Subnet Group</span>
+<span class="c1"># AWS RDS Subnet Group</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_db_subnet_group&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
 
@@ -26543,7 +26543,7 @@
 <p>例として、Redisのパラメーターグループとサブネットグループを示す。</p>
 <p>ラメータグループとサブネットグループは、RDSに紐付いており、新しいパラメーターグループとサブネットグループに紐付け直した後に、既存のものを削除する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resource Redis Parameter Group</span>
+<span class="c1"># AWS Redis Parameter Group</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_elasticache_parameter_group&quot;</span><span class="w"> </span><span class="nv">&quot;redis&quot;</span><span class="w"> </span><span class="p">{</span>
 
@@ -26555,7 +26555,7 @@
 <span class="p">}</span>
 
 <span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resource Redis Subnet Group</span>
+<span class="c1"># AWS Redis Subnet Group</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_elasticache_subnet_group&quot;</span><span class="w"> </span><span class="nv">&quot;redis&quot;</span><span class="w"> </span><span class="p">{</span>
 
@@ -26575,7 +26575,7 @@
 <p>ECSでは、AWS AutoScalingによってECSタスク数が増加する。</p>
 <p>そのため、これらを無視する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resource ECS Service</span>
+<span class="c1"># AWS ECS Service</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_ecs_service&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
 
@@ -26594,7 +26594,7 @@
 <p>Redisでは、AWS AutoScalingによってプライマリー数とレプリカ数が増減する。</p>
 <p>そのため、これらを無視する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resource Redis Cluster</span>
+<span class="c1"># AWS Redis Cluster</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_elasticache_replication_group&quot;</span><span class="w"> </span><span class="nv">&quot;redis&quot;</span><span class="w"> </span><span class="p">{</span>
 
@@ -26675,7 +26675,7 @@
 <p><strong>＊実装例＊</strong></p>
 <p>例として、AWS S3を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resource AWS S3 bucket policy</span>
+<span class="c1"># AWS AWS S3 bucket policy</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_s3_bucket_policy&quot;</span><span class="w"> </span><span class="nv">&quot;alb&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_s3_bucket.alb_logs.id</span>
@@ -26836,7 +26836,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-25</span>
   </span>
 
     
