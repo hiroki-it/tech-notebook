@@ -809,65 +809,65 @@ nav:
           - ログ: observability/observability_telemetry_log.md
           - メトリクス: observability/observability_telemetry_metrics.md
           - 分散トレース: observability/observability_telemetry_trace.md
-      - ■ テレメトリー監視ツール:
-          - テレメトリー監視ツール: observability/observability_telemetry_tools.md
+      - ■ 監視ツール:
+          - 監視ツール: observability/observability_monitoring_tools.md
           - ■ Datadog:
-              - Datadog: observability/observability_telemetry_tools_datadog.md
-              - datadogエージェントの設定: observability/observability_telemetry_tools_datadog_agent_conf.md
-              - インテグレーション: observability/observability_telemetry_tools_datadog_integration.md
+              - Datadog: observability/observability_monitoring_tools_datadog.md
+              - datadogエージェントの設定: observability/observability_monitoring_tools_datadog_agent_conf.md
+              - インテグレーション: observability/observability_monitoring_tools_datadog_integration.md
               - ■ テレメトリー:
-                  - メトリクス: observability/observability_telemetry_tools_datadog_metrics.md
-                  - ログ: observability/observability_telemetry_tools_datadog_log.md
-                  - 分散トレース: observability/observability_telemetry_tools_datadog_trace.md
-                  - テレメトリー間の紐づけ: observability/observability_telemetry_tools_datadog_telemetry_association.md
+                  - メトリクス: observability/observability_monitoring_tools_datadog_metrics.md
+                  - ログ: observability/observability_monitoring_tools_datadog_log.md
+                  - 分散トレース: observability/observability_monitoring_tools_datadog_trace.md
+                  - テレメトリー間の紐づけ: observability/observability_monitoring_tools_datadog_telemetry_association.md
                   - ■ クライアントパッケージ:
-                      - 分散トレース: observability/observability_telemetry_tools_datadog_client_package_trace.md
+                      - 分散トレース: observability/observability_monitoring_tools_datadog_client_package_trace.md
           - ■ FluentBit/Fluentd:
-              - FluentBit/Fluentd: observability/observability_telemetry_tools_fluentbit_fluentd.md
+              - FluentBit/Fluentd: observability/observability_monitoring_tools_fluentbit_fluentd.md
               - ■ FluentBit:
-                  - 設定ファイル: observability/observability_telemetry_tools_fluentbit_conf.md
-                  - コマンド: observability/observability_telemetry_tools_fluentbit_command.md
-                  - リソース定義: observability/observability_telemetry_tools_fluentbit_resource_definition.md
+                  - 設定ファイル: observability/observability_monitoring_tools_fluentbit_conf.md
+                  - コマンド: observability/observability_monitoring_tools_fluentbit_command.md
+                  - リソース定義: observability/observability_monitoring_tools_fluentbit_resource_definition.md
           - ■ Grafana:
-              - Grafana: observability/observability_telemetry_tools_grafana.md
+              - Grafana: observability/observability_monitoring_tools_grafana.md
               - ■ リソース定義:
-                  - リソース定義: observability/observability_telemetry_tools_grafana_resource_definition.md
-                  - ConfigMap: observability/observability_telemetry_tools_grafana_resource_definition_configmap.md
-                  - ダッシュボード: observability/observability_telemetry_tools_grafana_resource_definition_dashboard.md
+                  - リソース定義: observability/observability_monitoring_tools_grafana_resource_definition.md
+                  - ConfigMap: observability/observability_monitoring_tools_grafana_resource_definition_configmap.md
+                  - ダッシュボード: observability/observability_monitoring_tools_grafana_resource_definition_dashboard.md
           - ■ Jaeger:
-              - Jaeger: observability/observability_telemetry_tools_jaeger.md
+              - Jaeger: observability/observability_monitoring_tools_jaeger.md
           - ■ Kiali:
-              - Kiali: observability/observability_telemetry_tools_kiali.md
+              - Kiali: observability/observability_monitoring_tools_kiali.md
               - ■ リソース定義:
-                  - ConfigMap系: observability/observability_telemetry_tools_kiali_resource_definition_configmap.md
+                  - ConfigMap系: observability/observability_monitoring_tools_kiali_resource_definition_configmap.md
           - ■ OpenTelemetry:
-              - OpenTelemetry: observability/observability_telemetry_tools_open_telemetry.md
-              - リソース定義: observability/observability_telemetry_tools_open_telemetry_resource_definition.md
+              - OpenTelemetry: observability/observability_monitoring_tools_open_telemetry.md
+              - リソース定義: observability/observability_monitoring_tools_open_telemetry_resource_definition.md
               - 計装:
-                  - 計装: observability/observability_telemetry_tools_open_telemetry_client_package_instrumentation.md
+                  - 計装: observability/observability_monitoring_tools_open_telemetry_client_package_instrumentation.md
                   - ■ 分散トレース:
-                      - クライアントパッケージ: observability/observability_telemetry_tools_open_telemetry_client_package_trace.md
-                      - Go: observability/observability_telemetry_tools_open_telemetry_client_package_trace_go.md
-                      - Python: observability/observability_telemetry_tools_open_telemetry_client_package_trace_python.md
+                      - クライアントパッケージ: observability/observability_monitoring_tools_open_telemetry_client_package_trace.md
+                      - Go: observability/observability_monitoring_tools_open_telemetry_client_package_trace_go.md
+                      - Python: observability/observability_monitoring_tools_open_telemetry_client_package_trace_python.md
               - ■ OpenTelemetry Collector:
-                  - OpenTelemetry Collector: observability/observability_telemetry_tools_open_telemetry_collector.md
-                  - 設定ファイル: observability/observability_telemetry_tools_open_telemetry_collector_config.md
+                  - OpenTelemetry Collector: observability/observability_monitoring_tools_open_telemetry_collector.md
+                  - 設定ファイル: observability/observability_monitoring_tools_open_telemetry_collector_config.md
           - ■ Prometheus:
-              - Prometheus: observability/observability_telemetry_tools_prometheus.md
-              - 設定ファイル: observability/observability_telemetry_tools_prometheus_conf.md
-              - リソース定義: observability/observability_telemetry_tools_prometheus_resource_definition.md
+              - Prometheus: observability/observability_monitoring_tools_prometheus.md
+              - 設定ファイル: observability/observability_monitoring_tools_prometheus_conf.md
+              - リソース定義: observability/observability_monitoring_tools_prometheus_resource_definition.md
               - ■ Exporter:
-                  - Exporter: observability/observability_telemetry_tools_prometheus_exporter.md
-                  - Blackbox Exporter: observability/observability_telemetry_tools_prometheus_exporter_blackbox_exporter.md
-                  - kube-state-metrics: observability/observability_telemetry_tools_prometheus_exporter_kube_state_metrics.md
-                  - Node Exporter: observability/observability_telemetry_tools_prometheus_exporter_node_exporter.md
+                  - Exporter: observability/observability_monitoring_tools_prometheus_exporter.md
+                  - Blackbox Exporter: observability/observability_monitoring_tools_prometheus_exporter_blackbox_exporter.md
+                  - kube-state-metrics: observability/observability_monitoring_tools_prometheus_exporter_kube_state_metrics.md
+                  - Node Exporter: observability/observability_monitoring_tools_prometheus_exporter_node_exporter.md
               - ■ メトリクス:
-                  - メトリクス: observability/observability_telemetry_tools_prometheus_metrics.md
-                  - PromQL: observability/observability_telemetry_tools_prometheus_metrics_promql.md
-                  - クライアントパッケージ: observability/observability_telemetry_tools_prometheus_metrics_client_package.md
+                  - メトリクス: observability/observability_monitoring_tools_prometheus_metrics.md
+                  - PromQL: observability/observability_monitoring_tools_prometheus_metrics_promql.md
+                  - クライアントパッケージ: observability/observability_monitoring_tools_prometheus_metrics_client_package.md
           - ■ Googleアプリ:
-              - Googleアナリティクス: observability/observability_telemetry_tools_google_analytics.md
-              - Googleサーチコンソール: observability/observability_telemetry_tools_google_search_console.md
+              - Googleアナリティクス: observability/observability_monitoring_tools_google_analytics.md
+              - Googleサーチコンソール: observability/observability_monitoring_tools_google_search_console.md
       - ■ インシデント管理ツール:
           - PagerDuty: observability/observability_incident_management_pagerduty.md
 
