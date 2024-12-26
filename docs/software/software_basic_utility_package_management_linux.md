@@ -447,6 +447,18 @@ No problems found
 
 ### install
 
+#### ▼ installとは
+
+プラグインをインストールする。
+
+asdfを競合する場合、asdf側で事前にプラグインをアンインストールしておく。
+
+```bash
+$ asdf plugin remove <プラグイン名>
+
+$ mise install
+```
+
 #### ▼ -f
 
 プラグインを再インストールする。
