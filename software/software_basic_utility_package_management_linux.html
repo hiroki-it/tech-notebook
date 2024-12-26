@@ -6640,6 +6640,15 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
+      設定ファイル
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
       セットアップ
     </span>
   </a>
@@ -6651,6 +6660,48 @@
   <a href="#brew_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ brewリポジトリから
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    <span class="md-ellipsis">
+      config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doctor_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      doctor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      install
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="install">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-f" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ -f
     </span>
   </a>
   
@@ -6695,7 +6746,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       セットアップ
     </span>
@@ -24624,6 +24675,15 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
+      設定ファイル
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
       セットアップ
     </span>
   </a>
@@ -24635,6 +24695,48 @@
   <a href="#brew_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ brewリポジトリから
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    <span class="md-ellipsis">
+      config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doctor_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      doctor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      install
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="install">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-f" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ -f
     </span>
   </a>
   
@@ -24679,7 +24781,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       セットアップ
     </span>
@@ -24985,15 +25087,82 @@ $<span class="w"> </span>asdf<span class="w"> </span>plugin<span class="w"> </sp
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_2">セットアップ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h3 id="_2">設定ファイル<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>決められた名前の<code>.toml</code>ファイルを用意しておく。</p>
+<ul>
+<li><code>mise.toml</code></li>
+<li><code>.mise.toml</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">[tools]</span>
+<span class="n">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;1.0.0&#39;</span>
+<span class="n">bar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;1.0.0&#39;</span>
+<span class="n">baz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;1.0.0&#39;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://mise.jdx.dev/configuration.html">https://mise.jdx.dev/configuration.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_3">セットアップ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="brew_2">▼ brewリポジトリから<a class="headerlink" href="#brew_2" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>mise
 </code></pre></div>
 <p><br></p>
+<h3 id="config">config<a class="headerlink" href="#config" title="Permanent link">&para;</a></h3>
+<p>現在参照している<code>.toml</code>ファイルを確認する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mise<span class="w"> </span>config
+Path<span class="w">                    </span>Tools
+~/repository/mise.toml<span class="w">  </span>foo,<span class="w"> </span>bar,<span class="w"> </span>baz
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://mise.jdx.dev/cli/config.html">https://mise.jdx.dev/cli/config.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="doctor_1">doctor<a class="headerlink" href="#doctor_1" title="Permanent link">&para;</a></h3>
+<p>miseに設定されている全てのパラメーターを表示する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mise<span class="w"> </span>doctor
+
+mise<span class="w"> </span>doctor
+version:<span class="w"> </span><span class="m">2024</span>.12.20<span class="w"> </span>macos-arm64<span class="w"> </span><span class="o">(</span><span class="m">2024</span>-12-25<span class="o">)</span>
+activated:<span class="w"> </span>yes
+shims_on_path:<span class="w"> </span>no
+
+...
+
+
+settings:
+
+No<span class="w"> </span>problems<span class="w"> </span>found
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://mise.jdx.dev/cli/doctor.html">https://mise.jdx.dev/cli/doctor.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="install_2">install<a class="headerlink" href="#install_2" title="Permanent link">&para;</a></h3>
+<h4 id="-f">▼ -f<a class="headerlink" href="#-f" title="Permanent link">&para;</a></h4>
+<p>プラグインを再インストールする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mise<span class="w"> </span>install<span class="w"> </span>-f
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://mise.jdx.dev/cli/install.html">https://mise.jdx.dev/cli/install.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="trust">trust<a class="headerlink" href="#trust" title="Permanent link">&para;</a></h3>
-<p>環境変数を出力する。</p>
+<p><code>.toml</code>ファイルを使用してプラグインをインストールする場合に、現在のディレクトリにある<code>.toml</code>ファイルを信頼できるものとして設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>mise<span class="w"> </span>trust
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://mise.jdx.dev/cli/trust.html">https://mise.jdx.dev/cli/trust.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="05-direnv">05. direnv<a class="headerlink" href="#05-direnv" title="Permanent link">&para;</a></h2>
 <h3 id="direnv">direnvとは<a class="headerlink" href="#direnv" title="Permanent link">&para;</a></h3>
@@ -25005,7 +25174,7 @@ $<span class="w"> </span>asdf<span class="w"> </span>plugin<span class="w"> </sp
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_3">セットアップ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_4">セットアップ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="brew_3">▼ brewリポジトリから<a class="headerlink" href="#brew_3" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>direnv
 </code></pre></div>
@@ -25030,7 +25199,7 @@ $<span class="w"> </span>asdf<span class="w"> </span>plugin<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-26</span>
   </span>
 
     
