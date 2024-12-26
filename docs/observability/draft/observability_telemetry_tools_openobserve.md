@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Openobserve＠テレメトリー監視ツール
-description: Openobserve＠テレメトリー監視ツールの知見を記録しています。
+title: 【IT技術の知見】Openobserve＠監視ツール
+description: Openobserve＠監視ツールの知見を記録しています。
 ---
 
-# Openobserve＠テレメトリー監視ツール
+# Openobserve＠監視ツール
 
 ## はじめに
 

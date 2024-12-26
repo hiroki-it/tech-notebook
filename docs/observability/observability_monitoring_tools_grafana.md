@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Grafana＠テレメトリー監視ツール
-description: Grafana＠テレメトリー監視ツールの知見を記録しています。
+title: 【IT技術の知見】Grafana＠監視ツール
+description: Grafana＠監視ツールの知見を記録しています。
 ---
 
-# Grafana＠テレメトリー監視ツール
+# Grafana＠監視ツール
 
 ## はじめに
 
@@ -33,16 +33,16 @@ PromQLに基づいて、収集されたメトリクスを可視化する。
 
 #### ▼ データソース
 
-- PrometheusのローカルDB
-- VictoriaMetrics
-- Graphite
-- InfluxDB
-- Grafana Mimir
-- M3DB
-- Thanos
+- AWS CloudWatch Metrics
 - Cortex
-- AWS CloudWatch Logging、AWS CloudWatch Metrics、AWS X-Ray
-- Google Cloud Logging、Google Cloud Monitoring、Google Cloud Trace
+- Google Cloud Monitoring
+- Graphite
+- Grafana Mimir
+- InfluxDB
+- M3DB
+- PrometheusのローカルDB
+- Thanos
+- VictoriaMetrics
 
 > - https://qiita.com/MetricFire/items/15e024aea40785be622c
 > - https://qiita.com/MetricFire/items/15e024aea40785be622c
@@ -53,11 +53,12 @@ PromQLに基づいて、収集されたメトリクスを可視化する。
 
 #### ▼ データソース
 
+- AWS Athena
+- Google Cloud BigQuery
+- Googleスプレッドシート
 - MySQL
 - PostgreSQL
 - Redis
-- AWS Athena
-- Google Cloud Bigquery
 
 > - https://lab.mo-t.com/blog/grafana
 

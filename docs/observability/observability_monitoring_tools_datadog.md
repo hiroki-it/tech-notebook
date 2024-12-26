@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Datadog＠テレメトリー監視ツール
-description: Datadog＠テレメトリー監視ツールの知見を記録しています。
+title: 【IT技術の知見】Datadog＠監視ツール
+description: Datadog＠監視ツールの知見を記録しています。
 ---
 
-# Datadog＠テレメトリー監視ツール
+# Datadog＠監視ツール
 
 ## はじめに
 

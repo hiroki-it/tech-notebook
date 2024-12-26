@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】FluentBit/Fluentd＠テレメトリー監視ツール
-description: FluentBit/Fluentd＠テレメトリー監視ツールの知見を記録しています。
+title: 【IT技術の知見】FluentBit/Fluentd＠監視ツール
+description: FluentBit/Fluentd＠監視ツールの知見を記録しています。
 ---
 
-# FluentBit/Fluentd＠テレメトリー監視ツール
+# FluentBit/Fluentd＠監視ツール
 
 ## はじめに
 

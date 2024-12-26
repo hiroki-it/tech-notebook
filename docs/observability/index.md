@@ -25,74 +25,74 @@
 
 <br>
 
-### テレメトリー監視ツール
+### 監視ツール
 
-* #### [テレメトリー監視ツール](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools.html)
+* #### [監視ツール](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools.html)
 
 * #### <u>Datadog</u>
-  > * ##### [Datadog](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_datadog.html)
-  > * ##### [︎datadogエージェントの設定](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_datadog_agent_conf.html)
-  > * ##### [︎インテグレーション](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_datadog_integration.html)
+  > * ##### [Datadog](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_datadog.html)
+  > * ##### [︎datadogエージェントの設定](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_datadog_agent_conf.html)
+  > * ##### [︎インテグレーション](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_datadog_integration.html)
   > * ##### <u>テレメトリー収集</u>
-  > > * ##### [︎メトリクス](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_datadog_metrics.html)
-  > > * ##### [︎ログ](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_datadog_log.html)
-  > > * ##### [分散トレース](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_datadog_trace.html)
-  > > * ##### [テレメトリー間の紐付け](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_datadog_telemetry_association.html)
+  > > * ##### [︎メトリクス](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_datadog_metrics.html)
+  > > * ##### [︎ログ](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_datadog_log.html)
+  > > * ##### [分散トレース](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_datadog_trace.html)
+  > > * ##### [テレメトリー間の紐付け](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_datadog_telemetry_association.html)
   > > * ##### <u>クライアントパッケージ</u>
-  > > > * ##### [分散トレース](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_datadog_client_package_trace.html)
+  > > > * ##### [分散トレース](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_datadog_client_package_trace.html)
 
 * #### <u>FluentBit/Fluentd</u>
-  > * ##### [FluentBit/Fluentd](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_fluentbit_fluentd.html)
+  > * ##### [FluentBit/Fluentd](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_fluentbit_fluentd.html)
   > * ##### <u>FluentBit</u>
-  > > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_fluentbit_conf.html)
-  > > * ##### [コマンド](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_fluentbit_command.html)
-  > > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_fluentbit_resource_definition.html)
+  > > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_fluentbit_conf.html)
+  > > * ##### [コマンド](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_fluentbit_command.html)
+  > > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_fluentbit_resource_definition.html)
 
 * #### <u>Grafana</u>
-  > * ##### [︎Grafana](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_grafana.html)
+  > * ##### [︎Grafana](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_grafana.html)
   > * ##### <u>リソース定義</u>
-  > > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_grafana_resource_definition.html)
-  > > * ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_grafana_resource_definition_configmap.html)
-  > > * ##### [ダッシュボード](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_grafana_resource_definition_dashboard.html)
+  > > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_grafana_resource_definition.html)
+  > > * ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_grafana_resource_definition_configmap.html)
+  > > * ##### [ダッシュボード](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_grafana_resource_definition_dashboard.html)
 
 * #### <u>Jaeger</u>
-  > * ##### [Jaeger](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_jaeger.html)
+  > * ##### [Jaeger](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_jaeger.html)
 
 * #### <u>Kiali</u>
-  > * ##### [︎Kiali](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_kiali.html)
+  > * ##### [︎Kiali](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_kiali.html)
   > * ##### <u>リソース定義</u>
-  > > * ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_kiali_resource_definition_configmap.html)
+  > > * ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_kiali_resource_definition_configmap.html)
 
 * #### <u>OpenTelemetry</u>
-  > * ##### [OpenTelemetry](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_open_telemetry.html)
-  > * ##### [リソース定義](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_open_telemetry_resource_definition.html)
+  > * ##### [OpenTelemetry](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_open_telemetry.html)
+  > * ##### [リソース定義](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_open_telemetry_resource_definition.html)
   > * ##### <u>計装</u>
-  > > * ##### [計装](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_open_telemetry_instrumentation.html)
+  > > * ##### [計装](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_open_telemetry_instrumentation.html)
   > > * ##### <u>分散トレース</u>
-  > > > * ##### [クライアントパッケージ](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_open_telemetry_client_package_trace.html)
-  > > > * ##### [Go](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_open_telemetry_client_package_trace_go.html)
-  > > > * ##### [Python](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_open_telemetry_client_package_trace_python.html)
+  > > > * ##### [クライアントパッケージ](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_open_telemetry_client_package_trace.html)
+  > > > * ##### [Go](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_open_telemetry_client_package_trace_go.html)
+  > > > * ##### [Python](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_open_telemetry_client_package_trace_python.html)
   > * ##### <u>OpenTelemetry Collector</u>
-  > > * ##### [OpenTelemetry](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_open_telemetry_collector.html)
-  > > * ##### [リソース定義](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_open_telemetry_collector_resource_definition.html)
+  > > * ##### [OpenTelemetry](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_open_telemetry_collector.html)
+  > > * ##### [リソース定義](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_open_telemetry_collector_resource_definition.html)
 
 * #### <u>Prometheus</u>
-  > * ##### [︎Prometheus](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus.html)
-  > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_conf.html)
-  > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_resource_definition.html)
+  > * ##### [︎Prometheus](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_prometheus.html)
+  > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_prometheus_conf.html)
+  > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_prometheus_resource_definition.html)
   > * ##### <u>Exporter</u>
-  > > * ##### [Exporter](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_exporter.html)
-  > > * ##### [Blackbox Exporter](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_exporter_blackbox_exporter.html)
-  > > * ##### [kube-state-metrics](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_exporter_kube_state_metrics.html)
-  > > * ##### [Node Exporter](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_exporter_node_exporter.html)
+  > > * ##### [Exporter](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_prometheus_exporter.html)
+  > > * ##### [Blackbox Exporter](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_prometheus_exporter_blackbox_exporter.html)
+  > > * ##### [kube-state-metrics](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_prometheus_exporter_kube_state_metrics.html)
+  > > * ##### [Node Exporter](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_prometheus_exporter_node_exporter.html)
   > * ##### <u>メトリクス</u>
-  > > * ##### [メトリクス](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_metrics.html)
-  > > * ##### [︎PromQL](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_metrics_promql.html)
-  > > * ##### [クライアントパッケージ](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_metrics_client_package.html)
+  > > * ##### [メトリクス](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_prometheus_metrics.html)
+  > > * ##### [︎PromQL](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_prometheus_metrics_promql.html)
+  > > * ##### [クライアントパッケージ](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_prometheus_metrics_client_package.html)
 
 * #### <u>Googleアプリ</u>
-  > * ##### [︎Googleアナリティクス](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_google_analytics.html)
-  > * ##### [︎Googleサーチコンソール](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_google_search_console.html)
+  > * ##### [︎Googleアナリティクス](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_google_analytics.html)
+  > * ##### [︎Googleサーチコンソール](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_google_search_console.html)
 
 <br>
 
