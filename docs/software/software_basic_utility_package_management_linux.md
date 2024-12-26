@@ -376,6 +376,12 @@ baz = '1.0.0'
 
 <br>
 
+### 環境変数
+
+> - https://mise.jdx.dev/configuration.html#environment-variables
+
+<br>
+
 ### セットアップ
 
 #### ▼ brewリポジトリから
@@ -383,6 +389,21 @@ baz = '1.0.0'
 ```bash
 $ brew install mise
 ```
+
+<br>
+
+### activate
+
+miseを初期化する。
+
+初期化前にエラー以上のログのみを出力するようにしておくとよい。
+
+```bash
+$ export MISE_LOG_LEVEL=error
+$ mise activate bash
+```
+
+> - https://mise.jdx.dev/cli/activate.html
 
 <br>
 
