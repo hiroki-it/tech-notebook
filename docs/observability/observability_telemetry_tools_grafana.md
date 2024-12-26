@@ -27,9 +27,11 @@ PromQLに基づいて、収集されたメトリクスを可視化する。
 
 <br>
 
-### データソース
+## 02. ユースケース
 
-#### ▼ TSDB
+### システム監視ツールとして
+
+#### ▼ データソース
 
 - PrometheusのローカルDB
 - VictoriaMetrics
@@ -39,26 +41,29 @@ PromQLに基づいて、収集されたメトリクスを可視化する。
 - M3DB
 - Thanos
 - Cortex
+- AWS CloudWatch Logging、AWS CloudWatch Metrics、AWS X-Ray
+- Google Cloud Logging、Google Cloud Monitoring、Google Cloud Trace
 
 > - https://qiita.com/MetricFire/items/15e024aea40785be622c
-
-#### ▼ RDB
-
-- MySQL
-- PostgreSQL
-
-> - https://qiita.com/MetricFire/items/15e024aea40785be622c
-
-#### ▼ クラウドデータソース
-
-- AWS CloudWatch
-- Google Cloud Logging
-
 > - https://qiita.com/MetricFire/items/15e024aea40785be622c
 
 <br>
 
-## 02. マネージドGrafana
+### BIツールとして
+
+#### ▼ データソース
+
+- MySQL
+- PostgreSQL
+- Redis
+- AWS Athena
+- Google Cloud Bigquery
+
+> - https://lab.mo-t.com/blog/grafana
+
+<br>
+
+## 03. マネージドGrafana
 
 Grafanaのコンポーネントを部分的にマネージドにしたサービス。
 
