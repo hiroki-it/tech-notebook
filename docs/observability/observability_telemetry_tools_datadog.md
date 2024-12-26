@@ -13,7 +13,7 @@ description: Datadog＠テレメトリー監視ツールの知見を記録して
 
 <br>
 
-## 01. Datadog
+## 01. Datadogの仕組み
 
 テレメトリーを統合的に監視する。
 
