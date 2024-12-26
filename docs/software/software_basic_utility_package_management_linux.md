@@ -358,6 +358,24 @@ $ asdf uninstall <プラグイン名> 1.0.0
 
 <br>
 
+### 設定ファイル
+
+決められた名前の`.toml`ファイルを用意しておく。
+
+- `mise.toml`
+- `.mise.toml`
+
+```toml
+[tools]
+foo = '1.0.0'
+bar = '1.0.0'
+baz = '1.0.0'
+```
+
+> - https://mise.jdx.dev/configuration.html
+
+<br>
+
 ### セットアップ
 
 #### ▼ brewリポジトリから
@@ -368,13 +386,67 @@ $ brew install mise
 
 <br>
 
+### config
+
+現在参照している`.toml`ファイルを確認する。
+
+```bash
+$ mise config
+Path                    Tools
+~/repository/mise.toml  foo, bar, baz
+```
+
+> - https://mise.jdx.dev/cli/config.html
+
+<br>
+
+### doctor
+
+miseに設定されている全てのパラメーターを表示する。
+
+```bash
+$ mise doctor
+
+mise doctor
+version: 2024.12.20 macos-arm64 (2024-12-25)
+activated: yes
+shims_on_path: no
+
+...
+
+
+settings:
+
+No problems found
+```
+
+> - https://mise.jdx.dev/cli/doctor.html
+
+<br>
+
+### install
+
+#### ▼ -f
+
+プラグインを再インストールする。
+
+```bash
+$ mise install -f
+```
+
+> - https://mise.jdx.dev/cli/install.html
+
+<br>
+
 ### trust
 
-環境変数を出力する。
+`.toml`ファイルを使用してプラグインをインストールする場合に、現在のディレクトリにある`.toml`ファイルを信頼できるものとして設定する。
 
 ```bash
 $ mise trust
 ```
+
+> - https://mise.jdx.dev/cli/trust.html
 
 <br>
 
