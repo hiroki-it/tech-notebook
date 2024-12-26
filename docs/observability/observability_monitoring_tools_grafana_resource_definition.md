@@ -81,7 +81,7 @@ metadata:
   namespace: grafana
   name: foo-grafana-ingress
 spec:
-  ingressClassname: foo-ingress-class
+  ingressClassName: foo-ingress-class
   rules:
     # ドメインを割り当てる場合、Hostヘッダーの合致ルールが必要である。
     - host: foo.grafana.com

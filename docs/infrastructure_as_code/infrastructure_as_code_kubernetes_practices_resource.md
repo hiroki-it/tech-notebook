@@ -362,11 +362,11 @@ IngressをSSL/TLS終端にすると、PodへのリクエストはHTTP通信に�
 
 <br>
 
-## IngressClassの指定にingressClassnameを使用する
+## IngressClassの指定にingressClassNameを使用する
 
-IngressClassの指定方法には、`.spec.ingressClassname` キーと`.metadata.annotations.kubernetes.io/ingress.class` キーがある。
+IngressClassの指定方法には、`.spec.ingressClassName` キーと`.metadata.annotations.kubernetes.io/ingress.class` キーがある。
 
-`.spec.ingressClassname` キーの指定方法が推奨である。
+`.spec.ingressClassName` キーの指定方法が推奨である。
 
 > - [https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation](https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation)
 

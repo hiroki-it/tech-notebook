@@ -156,7 +156,7 @@ metadata:
   namespace: prometheus
   name: foo-prometheus-ingress
 spec:
-  ingressClassname: foo-ingress-class
+  ingressClassName: foo-ingress-class
   rules:
     # ドメインを割り当てる場合、Hostヘッダーの合致ルールが必要である。
     - host: foo.prometheus.com
@@ -225,7 +225,7 @@ metadata:
   namespace: prometheus
   name: foo-alertmanager-ingress
 spec:
-  ingressClassname: foo-ingress-class
+  ingressClassName: foo-ingress-class
   rules:
     # ドメインを割り当てる場合、Hostヘッダーの合致ルールが必要である。
     - host: foo.alertmanager.com
