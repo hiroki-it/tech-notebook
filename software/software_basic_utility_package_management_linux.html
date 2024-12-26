@@ -6649,6 +6649,15 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
+      環境変数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
       セットアップ
     </span>
   </a>
@@ -6667,6 +6676,15 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activate" class="md-nav__link">
+    <span class="md-ellipsis">
+      activate
+    </span>
+  </a>
   
 </li>
         
@@ -6746,7 +6764,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       セットアップ
     </span>
@@ -24684,6 +24702,15 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
+      環境変数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
       セットアップ
     </span>
   </a>
@@ -24702,6 +24729,15 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activate" class="md-nav__link">
+    <span class="md-ellipsis">
+      activate
+    </span>
+  </a>
   
 </li>
         
@@ -24781,7 +24817,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       セットアップ
     </span>
@@ -25104,10 +25140,29 @@ $<span class="w"> </span>asdf<span class="w"> </span>plugin<span class="w"> </sp
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_3">セットアップ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_3">環境変数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://mise.jdx.dev/configuration.html#environment-variables">https://mise.jdx.dev/configuration.html#environment-variables</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_4">セットアップ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="brew_2">▼ brewリポジトリから<a class="headerlink" href="#brew_2" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>mise
 </code></pre></div>
+<p><br></p>
+<h3 id="activate">activate<a class="headerlink" href="#activate" title="Permanent link">&para;</a></h3>
+<p>miseを初期化する。</p>
+<p>初期化前にエラー以上のログのみを出力するようにしておくとよい。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">MISE_LOG_LEVEL</span><span class="o">=</span>error
+$<span class="w"> </span>mise<span class="w"> </span>activate<span class="w"> </span>bash
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://mise.jdx.dev/cli/activate.html">https://mise.jdx.dev/cli/activate.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="config">config<a class="headerlink" href="#config" title="Permanent link">&para;</a></h3>
 <p>現在参照している<code>.toml</code>ファイルを確認する。</p>
@@ -25174,7 +25229,7 @@ No<span class="w"> </span>problems<span class="w"> </span>found
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_4">セットアップ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_5">セットアップ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="brew_3">▼ brewリポジトリから<a class="headerlink" href="#brew_3" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>direnv
 </code></pre></div>
