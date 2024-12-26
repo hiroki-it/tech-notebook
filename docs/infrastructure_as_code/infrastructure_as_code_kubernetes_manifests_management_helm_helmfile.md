@@ -251,6 +251,8 @@ helmfiles:
 
 ただし、Helmfileの自動作成機能でNamespaceは削除されずそのまま残る。
 
+原因不明であるが、ingress-nginxでこれを有効にすると、正常にPodが起動しているのにリリースが終わらない現象になった。
+
 ```yaml
 releases:
   - atomic: "true"
@@ -295,7 +297,7 @@ releases:
     values:
       - foo-values.yaml
     dependencies:
-      - chart: extra
+      - chart: ../extra
         version: 1.0.0
 ```
 
