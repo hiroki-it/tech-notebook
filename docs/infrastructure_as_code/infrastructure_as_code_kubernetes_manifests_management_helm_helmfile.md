@@ -297,7 +297,6 @@ releases:
     dependencies:
       - chart: extra
         version: 1.0.0
-        repository: https://foo.com/foo-chart
 ```
 
 依存先チャートで`values`ファイルの指定はいらないが、extraチャート側でデフォルト値を設定しておく必要がある
