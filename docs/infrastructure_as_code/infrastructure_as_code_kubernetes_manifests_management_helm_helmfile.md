@@ -318,7 +318,8 @@ releases:
     version: 1.0
     values:
       - foo-values.yaml
-  - chart: extra
+  # チャートを相対パスで指定する
+  - chart: ../extra
     name: extra-foo-release
     version: 1.0
     values:
