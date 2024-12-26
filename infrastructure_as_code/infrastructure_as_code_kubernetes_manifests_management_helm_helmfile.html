@@ -25029,6 +25029,7 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
 <h4 id="atomic">▼ atomic<a class="headerlink" href="#atomic" title="Permanent link">&para;</a></h4>
 <p><code>helmfile apply</code>コマンドが正常に完了しなかった場合に、自動的にロールバックする。</p>
 <p>ただし、Helmfileの自動作成機能でNamespaceは削除されずそのまま残る。</p>
+<p>原因不明であるが、ingress-nginxでこれを有効にすると、正常にPodが起動しているのにリリースが終わらない現象になった。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">atomic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
@@ -25055,7 +25056,7 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
 <span class="w">    </span><span class="nt">values</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-values.yaml</span>
 <span class="w">    </span><span class="nt">dependencies</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extra</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../extra</span>
 <span class="w">        </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0.0</span>
 </code></pre></div>
 <p>依存先チャートで<code>values</code>ファイルの指定はいらないが、extraチャート側でデフォルト値を設定しておく必要がある</p>
