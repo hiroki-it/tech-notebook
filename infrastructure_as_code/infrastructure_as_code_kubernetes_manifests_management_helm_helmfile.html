@@ -25057,7 +25057,6 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
 <span class="w">    </span><span class="nt">dependencies</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extra</span>
 <span class="w">        </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0.0</span>
-<span class="w">        </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://foo.com/foo-chart</span>
 </code></pre></div>
 <p>依存先チャートで<code>values</code>ファイルの指定はいらないが、extraチャート側でデフォルト値を設定しておく必要がある</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># extraチャートのデフォルト値</span>
