@@ -14149,13 +14149,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-nodejs" class="md-nav__link">
+  <a href="#03-javascript" class="md-nav__link">
     <span class="md-ellipsis">
-      03. Node.jsによる実装
+      03. JavaScriptによる実装
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. Node.jsによる実装">
+    <nav class="md-nav" aria-label="03. JavaScriptによる実装">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -14178,9 +14178,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#nodejs" class="md-nav__link">
+  <a href="#javascript" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Node.jsの標準パッケージの場合
+      ▼ JavaScriptの標準パッケージの場合
     </span>
   </a>
   
@@ -24686,13 +24686,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-nodejs" class="md-nav__link">
+  <a href="#03-javascript" class="md-nav__link">
     <span class="md-ellipsis">
-      03. Node.jsによる実装
+      03. JavaScriptによる実装
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. Node.jsによる実装">
+    <nav class="md-nav" aria-label="03. JavaScriptによる実装">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24715,9 +24715,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#nodejs" class="md-nav__link">
+  <a href="#javascript" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Node.jsの標準パッケージの場合
+      ▼ JavaScriptの標準パッケージの場合
     </span>
   </a>
   
@@ -24827,7 +24827,7 @@
 <p><code>return</code>または<code>throw</code>を使用して、AWS Lambdaのコール元にレスポンスを返信する。</p>
 <p>レスポンスとして、Promiseオブジェクトを送信もできる。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Node.jsの場合を示す。</p>
+<p>JavaScriptの場合を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">statusCode</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
@@ -24873,7 +24873,7 @@
 </blockquote>
 <p>(※『Non』が翻訳をおかしくしているため、英語版を推奨)</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Node.jsの場合を示す。</p>
+<p>JavaScriptの場合を示す。</p>
 <p>レスポンスを返信するには、<code>done</code>メソッド、<code>succeed</code>メソッド、<code>callback</code>メソッドが必要である。</p>
 <p>また、処理を終える場合は<code>return</code>で返却する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">callback</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -25167,7 +25167,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-nodejs">03. Node.jsによる実装<a class="headerlink" href="#03-nodejs" title="Permanent link">&para;</a></h2>
+<h2 id="03-javascript">03. JavaScriptによる実装<a class="headerlink" href="#03-javascript" title="Permanent link">&para;</a></h2>
 <h3 id="_14">デフォルトで使用できるパッケージ<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <p>以下のパッケージでは、npmを使用する必要はない。</p>
 <p>パッケージから提供されるパッケージの関数のほとんどが非同期処理として実装されている。</p>
@@ -25182,8 +25182,8 @@
 </thead>
 <tbody>
 <tr>
-<td>Node.jsの標準パッケージ</td>
-<td>Node.jsにビルトイン関数を使用できる</td>
+<td>JavaScriptの標準パッケージ</td>
+<td>JavaScriptにビルトイン関数を使用できる</td>
 <td>・<a href="https://nodejs.org/api/index.html">https://nodejs.org/api/index.html</a></td>
 </tr>
 <tr>
@@ -25200,7 +25200,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_15">非同期処理の成否の管理<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<h4 id="nodejs">▼ Node.jsの標準パッケージの場合<a class="headerlink" href="#nodejs" title="Permanent link">&para;</a></h4>
+<h4 id="javascript">▼ JavaScriptの標準パッケージの場合<a class="headerlink" href="#javascript" title="Permanent link">&para;</a></h4>
 <h4 id="aws-sdkjs">▼ aws-sdk.jsの場合<a class="headerlink" href="#aws-sdkjs" title="Permanent link">&para;</a></h4>
 <p>各AWSオブジェクトのメソッドの後に、<code>promise</code>メソッドをチェーンできる。</p>
 <p>これにより、各メソッドの非同期処理の成否をPromiseオブジェクトで管理できるようになる。</p>
@@ -25657,7 +25657,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-27</span>
   </span>
 
     

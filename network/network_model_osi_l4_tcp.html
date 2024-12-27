@@ -24053,7 +24053,7 @@
 <h2 id="02">02. エラー<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="econnrefused">ECONNREFUSED<a class="headerlink" href="#econnrefused" title="Permanent link">&para;</a></h3>
 <p>クライアントが、TCPリクエストを待ち受けていないサーバーのポート番号に対して、リクエストを送信したとする。</p>
-<p>この場合に、サーバーがクライアントに返信するエラーである。</p>
+<p>この場合に、サーバーがTCPリクエストを拒否し、クライアントに返信するエラーである。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">client(192.168.122.181)                   server(192.168.122.216)</span>
 <span class="l l-Scalar l-Scalar-Plain">|                                          |</span>
 <span class="l l-Scalar l-Scalar-Plain">|                                          |</span>
@@ -24072,8 +24072,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="econnreset">ECONNRESET<a class="headerlink" href="#econnreset" title="Permanent link">&para;</a></h3>
-<p>TCPコネクション中にサーバーのプロセスが終了したとする。</p>
-<p>この場合に、サーバーがクライアントに返信するエラーである。</p>
+<p>TCPコネクション中にサーバーのプロセスが終了し、コネクションを強制的に切断したとする。</p>
+<p>この場合に、サーバーがコネクションの予期せぬ切断としてクライアントに返信するエラーである。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">client(192.168.122.181)                   server(192.168.122.216)</span>
 <span class="l l-Scalar l-Scalar-Plain">|                                          |</span>
 <span class="l l-Scalar l-Scalar-Plain">|                                          | nc -kl 11111</span>

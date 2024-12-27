@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Go＠言語の知見を記録しています。">
+        <meta name="description" content="Node.js＠ランタイムの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/draft/language_nodejs.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/draft/language_javascript_runtime_nodejs.html">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】Go＠言語 - 俺の技術ノート</title>
+        <title>【IT技術の知見】Node.js＠ランタイム - 俺の技術ノート</title>
       
     
     
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】Go＠言語
+              【IT技術の知見】Node.js＠ランタイム
             
           </span>
         </div>
@@ -23995,6 +23995,111 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. エラー
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. エラー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#module_not_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      MODULE_NOT_FOUND
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eaddrinuse" class="md-nav__link">
+    <span class="md-ellipsis">
+      EADDRINUSE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eacces" class="md-nav__link">
+    <span class="md-ellipsis">
+      EACCES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unhandled-error-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unhandled 'error' event
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enotfound" class="md-nav__link">
+    <span class="md-ellipsis">
+      ENOTFOUND
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#econnrefused" class="md-nav__link">
+    <span class="md-ellipsis">
+      ECONNREFUSED
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etimedout" class="md-nav__link">
+    <span class="md-ellipsis">
+      ETIMEDOUT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#epipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      EPIPE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#econnreset" class="md-nav__link">
+    <span class="md-ellipsis">
+      ECONNRESET
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      EMFILE
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -24023,7 +24128,13 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-nodejs">01. Node.jsとは<a class="headerlink" href="#01-nodejs" title="Permanent link">&para;</a></h2>
-<p>記入中...</p>
+<p>ブラウザ以外でJavaScriptを実行できるようにするための実行環境である。</p>
+<p>注意点として、言語ではない。</p>
+<blockquote>
+<ul>
+<li><a href="https://kinsta.com/jp/knowledgebase/what-is-node-js/#nodejs-4">https://kinsta.com/jp/knowledgebase/what-is-node-js/#nodejs-4</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="dockerfile">Dockerfile<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h3>
@@ -24038,6 +24149,77 @@
 <span class="c"># 開発環境の場合</span>
 <span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;yarn&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;dev&quot;</span><span class="p">]</span>
 </code></pre></div>
+<p><br></p>
+<h2 id="03">03. エラー<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="module_not_found">MODULE_NOT_FOUND<a class="headerlink" href="#module_not_found" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/sasakir/articles/8457791bdd173a#1.-module_not_found">https://zenn.dev/sasakir/articles/8457791bdd173a#1.-module_not_found</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="eaddrinuse">EADDRINUSE<a class="headerlink" href="#eaddrinuse" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/sasakir/articles/8457791bdd173a#2.-eaddrinuse">https://zenn.dev/sasakir/articles/8457791bdd173a#2.-eaddrinuse</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="eacces">EACCES<a class="headerlink" href="#eacces" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/sasakir/articles/8457791bdd173a#3.-eacces">https://zenn.dev/sasakir/articles/8457791bdd173a#3.-eacces</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="unhandled-error-event">Unhandled 'error' event<a class="headerlink" href="#unhandled-error-event" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/sasakir/articles/8457791bdd173a#4.-unhandled-'error'-event">https://zenn.dev/sasakir/articles/8457791bdd173a#4.-unhandled-'error'-event</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="enotfound">ENOTFOUND<a class="headerlink" href="#enotfound" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/sasakir/articles/8457791bdd173a#5.-enotfound">https://zenn.dev/sasakir/articles/8457791bdd173a#5.-enotfound</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="econnrefused">ECONNREFUSED<a class="headerlink" href="#econnrefused" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/sasakir/articles/8457791bdd173a#6.-econnrefused">https://zenn.dev/sasakir/articles/8457791bdd173a#6.-econnrefused</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="etimedout">ETIMEDOUT<a class="headerlink" href="#etimedout" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/sasakir/articles/8457791bdd173a#7.-etimedout">https://zenn.dev/sasakir/articles/8457791bdd173a#7.-etimedout</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="epipe">EPIPE<a class="headerlink" href="#epipe" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/sasakir/articles/8457791bdd173a#8.-epipe">https://zenn.dev/sasakir/articles/8457791bdd173a#8.-epipe</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="econnreset">ECONNRESET<a class="headerlink" href="#econnreset" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/sasakir/articles/8457791bdd173a#9.-econnreset">https://zenn.dev/sasakir/articles/8457791bdd173a#9.-econnreset</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="emfile">EMFILE<a class="headerlink" href="#emfile" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/sasakir/articles/8457791bdd173a#10.-emfile">https://zenn.dev/sasakir/articles/8457791bdd173a#10.-emfile</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 
@@ -24059,7 +24241,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-27</span>
   </span>
 
     
