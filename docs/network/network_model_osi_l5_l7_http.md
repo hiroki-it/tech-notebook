@@ -183,6 +183,8 @@ Referer: https://foo.co.jp/
 
 #### ▼ X-Forwarded-For
 
+送信元や経由したリバースプロキシサーバーのIPアドレスをもつ。
+
 ```yaml
 # リクエストライン
 GET https://example.com/bar-form.php?text1=a&text2=b
@@ -388,6 +390,8 @@ text=a&text2=b
 ```
 
 #### ▼ X-Forwarded-For
+
+送信元や経由したリバースプロキシサーバーのIPアドレスをもつ。
 
 ```yaml
 # リクエストライン

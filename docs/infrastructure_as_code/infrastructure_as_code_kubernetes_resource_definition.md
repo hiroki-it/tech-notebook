@@ -1409,8 +1409,7 @@ metadata:
   name: foo-ingress-class
   annotations:
     ingressclass.kubernetes.io/is-default-class: "true"
-spec:
-  ...
+spec: ...
 ```
 
 > - https://kubernetes.io/docs/concepts/services-networking/ingress/#default-ingress-class

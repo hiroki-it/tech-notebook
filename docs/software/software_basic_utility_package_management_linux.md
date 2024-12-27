@@ -350,9 +350,7 @@ $ asdf uninstall <プラグイン名> 1.0.0
 
 ### miseとは
 
-パッケージをバージョン管理し、また環境変数を出力できる。
-
-`direnv`と同様の機能があり、`mise`の使用が推奨である。
+パッケージをバージョン管理する。
 
 > - https://blog.sh1ma.dev/articles/20240108_from_asdf_to_mise
 
@@ -413,6 +411,7 @@ $ mise activate bash
 
 ```bash
 $ mise config
+
 Path                    Tools
 ~/repository/mise.toml  foo, bar, baz
 ```
@@ -488,8 +487,6 @@ $ mise trust
 ### direnvとは
 
 特定のディレクトリで`.env`ファイルを読み込み、環境変数をOS上に出力する。
-
-`mise`にも同様の機能があり、そちらの使用が推奨である。
 
 > - https://blog.sh1ma.dev/articles/20240108_from_asdf_to_mise
 
