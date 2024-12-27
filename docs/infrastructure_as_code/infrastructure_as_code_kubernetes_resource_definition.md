@@ -1396,6 +1396,27 @@ spec:
 
 ## IngressClass
 
+### .metadata.annotations
+
+#### ▼ is-default-class
+
+デフォルトのIngressClassとして設定する。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: foo-ingress-class
+  annotations:
+    ingressclass.kubernetes.io/is-default-class: "true"
+spec:
+  ...
+```
+
+> - https://kubernetes.io/docs/concepts/services-networking/ingress/#default-ingress-class
+
+<br>
+
 ### .spec.controller
 
 #### ▼ controllerとは
@@ -1413,8 +1434,6 @@ apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
   name: foo-alb-ingress-class
-  annotations:
-    ingressclass.kubernetes.io/is-default-class: "true"
 spec:
   controller: ingress.k8s.aws/alb
 ```
@@ -1426,8 +1445,6 @@ apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
   name: foo-ingress-class
-  annotations:
-    ingressclass.kubernetes.io/is-default-class: "true"
 spec:
   controller: k8s.io/ingress-nginx
 ```
@@ -1439,8 +1456,6 @@ apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
   name: foo-istio-ingress-class
-  annotations:
-    ingressclass.kubernetes.io/is-default-class: "true"
 spec:
   controller: istio.io/ingress-controller
 ```
