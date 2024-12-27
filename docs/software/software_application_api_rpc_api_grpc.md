@@ -314,7 +314,7 @@ gRPCは、TCPコネクションの確立前にタイムアウト時間を開始�
 ここでは、マイクロサービスが以下のような順で実行されるとする。
 
 ```yaml
-foo # Node.js製
+foo # JavaScript製
 ⬇⬆︎︎
 ⬇⬆︎︎
 bar # Go製
@@ -332,7 +332,7 @@ baz # Python製
 各マイクロサービスのリポジトリでは、アプリケーションのインフラ層に`proto`ファイルを置く。
 
 ```yaml
-# fooサービス (Node.js製)
+# fooサービス (JavaScript製)
 repository/
 ├── src/
 │   ├── interface/
@@ -444,7 +444,7 @@ repository/
 なお、`pb`ファイルはProtocol Bufferの共有リポジトリで管理する。
 
 ```yaml
-# fooサービス (Node.js製)
+# fooサービス (JavaScript製)
 repository/
 ├── src/
 │   ├── interface/

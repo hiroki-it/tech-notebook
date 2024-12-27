@@ -37,11 +37,7 @@ const obj = new Object();
 
 ### Function
 
-**＊実装例＊**
-
-```
-
-```
+記入中...
 
 <br>
 

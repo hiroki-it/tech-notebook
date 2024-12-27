@@ -301,7 +301,7 @@ console.log(response.data);
 
 ### Nodemonとは
 
-JavaScriptのソースコードに変更があれば、Node.jsの実行環境のプロセスを再起動する。
+JavaScriptのソースコードに変更があれば、Node.js上のプロセスを再起動する。
 
 > - https://qiita.com/ckoshien/items/1a8b15fe5cc3bfc15199
 > - https://ashitaka-blog.com/node-js%E3%81%AE%E3%83%9B%E3%83%83%E3%83%88%E3%83%AA%E3%83%AD%E3%83%BC%E3%83%89%E8%A8%AD%E5%AE%9A/
@@ -312,7 +312,7 @@ JavaScriptのソースコードに変更があれば、Node.jsの実行環境の
 
 ### ts-nodeとは
 
-Node.jsの実行環境上で、TypeScriptをJavaScriptにコンパイルせずにそのまま実行する。
+Node.js上で、TypeScriptをJavaScriptにコンパイルせずにそのまま実行する。
 
 > - https://qiita.com/ckoshien/items/1a8b15fe5cc3bfc15199
 

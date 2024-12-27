@@ -72,17 +72,17 @@ NginxまたはEnvoyを使用する場合で考えるとする。
 
 #### ▼ webサーバー、appサーバー、が不要な場合
 
-Go、Node.js、ではwebサーバーとappサーバーがいらない。
+Go、JavaScript、ではwebサーバーとappサーバーがいらない。
 
-| 経路             | Go、Node.jsの場合              |
-| ---------------- | :----------------------------- |
-| リバースプロキシ | Envoy、Nginx                   |
-| ⬇︎⬆︎           | ⬇︎⬆︎                         |
-| webサーバー      | なし                           |
-| ⬇︎⬆︎           | ⬇︎⬆︎                         |
-| appサーバー      | なし (Go、Node.jsのアプリのみ) |
-| ⬇︎⬆︎           | ⬇︎⬆︎                         |
-| dbサーバー       | MySQL、PostgreSQL              |
+| 経路             | Go、JavaScriptの場合              |
+| ---------------- | :-------------------------------- |
+| リバースプロキシ | Envoy、Nginx                      |
+| ⬇︎⬆︎           | ⬇︎⬆︎                            |
+| webサーバー      | なし                              |
+| ⬇︎⬆︎           | ⬇︎⬆︎                            |
+| appサーバー      | なし (Go、JavaScriptのアプリのみ) |
+| ⬇︎⬆︎           | ⬇︎⬆︎                            |
+| dbサーバー       | MySQL、PostgreSQL                 |
 
 > - https://teratail.com/questions/103909
 

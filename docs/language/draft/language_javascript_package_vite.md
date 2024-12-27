@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】vite＠Node.js
-description: vite＠Node.jsの知見を記録しています。
+title: 【IT技術の知見】vite＠JavaScript
+description: vite＠JavaScriptの知見を記録しています。
 ---
 
-# vite＠Node.js
+# vite＠JavaScript
 
 ## はじめに
 

@@ -83,7 +83,7 @@ description: プラクティス集＠Dockerの知見を記録しています。
 
 #### ▼ 対処方法
 
-ここでは、フレームワークではなく、フルスクラッチなNode.jsを取り上げる。
+ここでは、フレームワークではなく、フルスクラッチなJavaScriptを取り上げる。
 
 `tini`の子プロセスを実行する。
 
@@ -105,7 +105,7 @@ COPY . .
 # @see https://github.com/krallin/tini?tab=readme-ov-file#alpine-linux-package
 ENTRYPOINT ["/sbin/tini", "--"]
 
-# npmコマンドやyarnコマンドは、すべてのシグナルをNode.jsに転送できないため、Graceful Shutdownを実行できない
+# npmコマンドやyarnコマンドは、すべてのシグナルをJavaScriptに転送できないため、Graceful Shutdownを実行できない
 # そのため、npm runコマンドやyarn startコマンドではなく、nodeコマンドを直接実行する
 CMD ["node", "index.js"]
 ```

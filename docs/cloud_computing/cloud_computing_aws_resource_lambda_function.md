@@ -37,7 +37,7 @@ AWS Lambdaはハンドラ関数を非同期関数としてコールし、引数�
 
 **＊実装例＊**
 
-Node.jsの場合を示す。
+JavaScriptの場合を示す。
 
 ```javascript
 exports.handler = async (event) => {
@@ -91,7 +91,7 @@ AWS Lambdaはハンドラ関数を同期関数としてコールし、引数 (ev
 
 **＊実装例＊**
 
-Node.jsの場合を示す。
+JavaScriptの場合を示す。
 
 レスポンスを返信するには、`done`メソッド、`succeed`メソッド、`callback`メソッドが必要である。
 
@@ -372,7 +372,7 @@ AWS CloudWatch Logsにてこれを確認する。
 
 <br>
 
-## 03. Node.jsによる実装
+## 03. JavaScriptによる実装
 
 ### デフォルトで使用できるパッケージ
 
@@ -382,10 +382,10 @@ AWS CloudWatch Logsにてこれを確認する。
 
 もし後続の処理で非同期処理の結果を使用したい場合、非同期処理の状態をPromiseオブジェクトで管理する必要がある。
 
-| パッケージ名            | 説明                                                                               | 補足                                                                |
-| ----------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| Node.jsの標準パッケージ | Node.jsにビルトイン関数を使用できる                                                | ・https://nodejs.org/api/index.html                                 |
-| aws-sdk.js              | JavaScriptを使用して、AWS-APIに対してリクエストを送信し、AWSリソースを操作できる。 | ・https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
+| パッケージ名               | 説明                                                                               | 補足                                                                |
+| -------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| JavaScriptの標準パッケージ | JavaScriptにビルトイン関数を使用できる                                             | ・https://nodejs.org/api/index.html                                 |
+| aws-sdk.js                 | JavaScriptを使用して、AWS-APIに対してリクエストを送信し、AWSリソースを操作できる。 | ・https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html
 
@@ -393,7 +393,7 @@ AWS CloudWatch Logsにてこれを確認する。
 
 ### 非同期処理の成否の管理
 
-#### ▼ Node.jsの標準パッケージの場合
+#### ▼ JavaScriptの標準パッケージの場合
 
 #### ▼ aws-sdk.jsの場合
 

@@ -394,7 +394,7 @@ import "<パッケージ名>"
 
 - `ctypes` (Python)
 - `ffi` (Ruby)
-- `node-ffi` (Node.js)
+- `node-ffi` (JavaScript)
 - `jna`、`jni`、`swig` (Java)
 
 > - https://medium.com/learning-the-go-programming-language/calling-go-functions-from-other-languages-4c7d8bcc69bf

@@ -43,10 +43,10 @@ OpenTelemetryのTracerProviderをアプリの実行時に動的にセットア�
 
 **＊例＊**
 
-Node.jsやPythonでは、モンキーパッチで自動計装を実現している。
+JavaScriptやPythonでは、モンキーパッチで自動計装を実現している。
 
 ```bash
-# Node.jsの場合
+# JavaScriptの場合
 $ npm install --save @opentelemetry/api
 $ npm install --save @opentelemetry/auto-instrumentations-node
 $ export OTEL_SERVICE_NAME="<サービス名>"
