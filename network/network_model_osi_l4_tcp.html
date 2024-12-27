@@ -24037,7 +24037,7 @@
   
 
 
-<h1 id="tcpl4">TCP＠<code>L4</code><a class="headerlink" href="#tcpl4" title="Permanent link">&para;</a></h1>
+<h1 id="tcpl4">TCP＠L4<a class="headerlink" href="#tcpl4" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -24048,22 +24048,22 @@
 <p><br></p>
 <h2 id="01-tcp">01. TCPメッセージ<a class="headerlink" href="#01-tcp" title="Permanent link">&para;</a></h2>
 <h3 id="tcp">TCPメッセージとは<a class="headerlink" href="#tcp" title="Permanent link">&para;</a></h3>
-<p>トランスポート層で作成されるデータを、TCPメッセージという。</p>
+<p>トランスポート層で作成されるデータをTCPメッセージという。</p>
 <p><br></p>
 <h2 id="02">02. エラー<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="econnrefused">ECONNREFUSED<a class="headerlink" href="#econnrefused" title="Permanent link">&para;</a></h3>
 <p>クライアントが、TCPリクエストを待ち受けていないサーバーのポート番号に対して、リクエストを送信したとする。</p>
 <p>この場合に、サーバーがクライアントに返信するエラーである。</p>
-<div class="highlight"><pre><span></span><code><span class="w">             </span>client<span class="o">(</span><span class="m">192</span>.168.122.181<span class="o">)</span><span class="w">                   </span>server<span class="o">(</span><span class="m">192</span>.168.122.216<span class="o">)</span>
-<span class="w">                  </span><span class="p">|</span><span class="w">                                          </span><span class="p">|</span>
-<span class="w">                  </span><span class="p">|</span><span class="w">                                          </span><span class="p">|</span>
-<span class="w">                  </span><span class="p">|</span><span class="w">                                          </span><span class="p">|</span>
-<span class="w">  </span>nc<span class="w"> </span>server<span class="w"> </span><span class="m">11111</span><span class="w"> </span><span class="p">|</span>---------------<span class="w"> </span>UDP<span class="w"> </span>datagram<span class="w"> </span>------------&gt;<span class="p">|</span>
-<span class="w">                  </span><span class="p">|</span><span class="w">                                          </span><span class="p">|</span>
-<span class="w">                  </span><span class="p">|</span><span class="w">                                          </span><span class="p">|</span>
-<span class="w">     </span>ECONNREFUSED<span class="w"> </span><span class="p">|</span>&lt;--------------<span class="w"> </span>ICMP<span class="w"> </span>port<span class="w"> </span>unreachable<span class="w"> </span>----<span class="p">|</span>
-<span class="w">                  </span><span class="p">|</span><span class="w">                                          </span><span class="p">|</span>
-<span class="w">                  </span><span class="p">|</span><span class="w">                                          </span><span class="p">|</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">client(192.168.122.181)                   server(192.168.122.216)</span>
+<span class="l l-Scalar l-Scalar-Plain">|                                          |</span>
+<span class="l l-Scalar l-Scalar-Plain">|                                          |</span>
+<span class="l l-Scalar l-Scalar-Plain">|                                          |</span>
+<span class="l l-Scalar l-Scalar-Plain">nc server 11111 |--------------- UDP datagram ------------&gt;|</span>
+<span class="l l-Scalar l-Scalar-Plain">|                                          |</span>
+<span class="l l-Scalar l-Scalar-Plain">|                                          |</span>
+<span class="l l-Scalar l-Scalar-Plain">ECONNREFUSED |&lt;-------------- ICMP port unreachable ----|</span>
+<span class="l l-Scalar l-Scalar-Plain">|                                          |</span>
+<span class="l l-Scalar l-Scalar-Plain">|                                          |</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -24074,21 +24074,21 @@
 <h3 id="econnreset">ECONNRESET<a class="headerlink" href="#econnreset" title="Permanent link">&para;</a></h3>
 <p>TCPコネクション中にサーバーのプロセスが終了したとする。</p>
 <p>この場合に、サーバーがクライアントに返信するエラーである。</p>
-<div class="highlight"><pre><span></span><code><span class="w">             </span>client<span class="o">(</span><span class="m">192</span>.168.122.181<span class="o">)</span><span class="w">                   </span>server<span class="o">(</span><span class="m">192</span>.168.122.216<span class="o">)</span>
-<span class="w">                  </span><span class="p">|</span><span class="w">                                          </span><span class="p">|</span>
-<span class="w">                  </span><span class="p">|</span><span class="w">                                          </span><span class="p">|</span><span class="w"> </span>nc<span class="w"> </span>-kl<span class="w"> </span><span class="m">11111</span>
-<span class="w">                  </span><span class="p">|</span><span class="w">                                          </span><span class="p">|</span>
-<span class="w">                  </span><span class="p">|</span><span class="w">                                          </span><span class="p">|</span>
-<span class="w">  </span>nc<span class="w"> </span>server<span class="w"> </span><span class="m">11111</span><span class="w"> </span><span class="p">|</span>---------------<span class="w"> </span>SYN<span class="w"> </span>---------------------&gt;<span class="p">|</span>
-<span class="w">                  </span><span class="p">|</span>&lt;--------------<span class="w"> </span>SYN+ACK<span class="w"> </span>------------------<span class="p">|</span>
-<span class="w">                  </span><span class="p">|</span>---------------<span class="w"> </span>ACK<span class="w"> </span>---------------------&gt;<span class="p">|</span><span class="w"> </span>-*-
-<span class="w">                  </span><span class="p">|</span><span class="w">                                          </span><span class="p">|</span><span class="w">  </span><span class="p">|</span>
-<span class="w">                  </span><span class="p">|</span><span class="w">                                          </span><span class="p">|</span><span class="w">  </span><span class="p">|</span>
-<span class="w">                  </span><span class="p">|</span><span class="w">                                          </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w"> </span>TCPコネクション確立状態
-<span class="w">                  </span><span class="p">|</span><span class="w">                                          </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">    </span><span class="o">(</span>ESTABLISHED状態<span class="o">)</span>
-<span class="w">                  </span><span class="p">|</span><span class="w">                                          </span><span class="p">|</span><span class="w">  </span><span class="p">|</span>
-<span class="w">       </span>ECONNRESET<span class="w"> </span><span class="p">|</span>&lt;--------------<span class="w"> </span>RST<span class="w"> </span>----------------------<span class="p">|</span><span class="w"> </span>-*-
-<span class="w">                  </span><span class="p">|</span><span class="w">                                          </span><span class="p">|</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">client(192.168.122.181)                   server(192.168.122.216)</span>
+<span class="l l-Scalar l-Scalar-Plain">|                                          |</span>
+<span class="l l-Scalar l-Scalar-Plain">|                                          | nc -kl 11111</span>
+<span class="l l-Scalar l-Scalar-Plain">|                                          |</span>
+<span class="l l-Scalar l-Scalar-Plain">|                                          |</span>
+<span class="l l-Scalar l-Scalar-Plain">nc server 11111 |--------------- SYN ---------------------&gt;|</span>
+<span class="l l-Scalar l-Scalar-Plain">|&lt;-------------- SYN+ACK ------------------|</span>
+<span class="l l-Scalar l-Scalar-Plain">|--------------- ACK ---------------------&gt;| -*-</span>
+<span class="l l-Scalar l-Scalar-Plain">|                                          |  |</span>
+<span class="l l-Scalar l-Scalar-Plain">|                                          |  |</span>
+<span class="l l-Scalar l-Scalar-Plain">|                                          |  | TCPコネクション確立状態</span>
+<span class="l l-Scalar l-Scalar-Plain">|                                          |  |    (ESTABLISHED状態)</span>
+<span class="l l-Scalar l-Scalar-Plain">|                                          |  |</span>
+<span class="l l-Scalar l-Scalar-Plain">ECONNRESET |&lt;-------------- RST ----------------------| -*-</span>
+<span class="l l-Scalar l-Scalar-Plain">|                                          |</span>
 </code></pre></div>
 <blockquote>
 <ul>
