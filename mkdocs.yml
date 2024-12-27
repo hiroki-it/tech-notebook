@@ -480,6 +480,7 @@ nav:
               - HTTP: network/network_model_osi_l5_l7_http.md
           - ■ L4:
               - L4: network/network_model_osi_l4.md
+              - TCP: network/network_model_osi_tcp.md
               - ポート: network/network_model_osi_l4_port.md
           - ■ L3:
               - L3: network/network_model_osi_l3.md
