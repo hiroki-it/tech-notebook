@@ -19066,19 +19066,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#karpenter_1" class="md-nav__link">
+  <a href="#karpenter-controller" class="md-nav__link">
     <span class="md-ellipsis">
-      karpenterコントローラー
+      Karpenter Controller
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="karpenterコントローラー">
+    <nav class="md-nav" aria-label="Karpenter Controller">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#karpenter_2" class="md-nav__link">
+  <a href="#karpenter-controller_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ karpenterコントローラーとは
+      ▼ Karpenter Controllerとは
     </span>
   </a>
   
@@ -19295,7 +19295,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#karpenter_3" class="md-nav__link">
+  <a href="#karpenter_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Karpenterのいいところ
     </span>
@@ -24417,19 +24417,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#karpenter_1" class="md-nav__link">
+  <a href="#karpenter-controller" class="md-nav__link">
     <span class="md-ellipsis">
-      karpenterコントローラー
+      Karpenter Controller
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="karpenterコントローラー">
+    <nav class="md-nav" aria-label="Karpenter Controller">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#karpenter_2" class="md-nav__link">
+  <a href="#karpenter-controller_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ karpenterコントローラーとは
+      ▼ Karpenter Controllerとは
     </span>
   </a>
   
@@ -24646,7 +24646,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#karpenter_3" class="md-nav__link">
+  <a href="#karpenter_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Karpenterのいいところ
     </span>
@@ -24801,7 +24801,7 @@
 <p><br></p>
 <h2 id="01-karpenter">01. Karpenterの仕組み<a class="headerlink" href="#01-karpenter" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Karpenterは、karpenterコントローラーから構成される。</p>
+<p>Karpenterは、Karpenter Controllerから構成される。</p>
 <p><img alt="karpenter_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -24809,11 +24809,11 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="karpenter_1">karpenterコントローラー<a class="headerlink" href="#karpenter_1" title="Permanent link">&para;</a></h3>
-<h4 id="karpenter_2">▼ karpenterコントローラーとは<a class="headerlink" href="#karpenter_2" title="Permanent link">&para;</a></h4>
-<p>karpenterコントローラーは、Karpenterのcustom-controllerとして、カスタムリソースを作成/変更する。</p>
+<h3 id="karpenter-controller">Karpenter Controller<a class="headerlink" href="#karpenter-controller" title="Permanent link">&para;</a></h3>
+<h4 id="karpenter-controller_1">▼ Karpenter Controllerとは<a class="headerlink" href="#karpenter-controller_1" title="Permanent link">&para;</a></h4>
+<p>Karpenter Controllerは、Karpenterのcustom-controllerとして、カスタムリソースを作成/変更する。</p>
 <p>また、カスタムリソースの設定値に応じて、API (例：起動テンプレート、AWS EC2フリート) をコールし、AWSリソース (例：起動テンプレート、AWS EC2) をプロビジョニングする。</p>
-<p>この時、AWS Load Balancerコントローラーも使用していると、Clusterのサブネット内にAWS EC2 Nodeが増えたことを検知し、ターゲットグループにこれを登録してくれる。</p>
+<p>この時、AWS Load Balancer Controllerも使用していると、Clusterのサブネット内にAWS EC2 Nodeが増えたことを検知し、ターゲットグループにこれを登録してくれる。</p>
 <p>なお、NodePool配下のAWS EC2 Nodeは起動テンプレートから作成するが、起動テンプレート自体はAWS EC2 Nodeの作成後に削除するようになっている。</p>
 <p><img alt="karpenter_controller" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png" /></p>
 <blockquote>
@@ -24938,7 +24938,7 @@
 </ul>
 <p>反対に、以下のような条件の場合には統合しない。</p>
 <ul>
-<li>コントローラーが不明なPodがいる</li>
+<li>Controllerが不明なPodがいる</li>
 <li>Podの退避を拒否するPodDisruptionBudget (例：<code>disruptionsAllowed=0</code>) があり、統合を実行してしまうとPodDisruptionBudgetに違反する。</li>
 <li>Podの<code>metadata.annotations</code>キー配下に<code>karpenter.sh/do-not-evict</code>キーがある。</li>
 <li>PodにAffinityがあり、統合を実行してしまうとAffinityに違反する。</li>
@@ -24990,8 +24990,8 @@
 <p><br></p>
 <h3 id="aws">AWSリソースとの連携<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 起動テンプレート<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>Karpenterのkarpenterコントローラーは、起動テンプレートを作成した上で、AWS EC2フリートAPIからAWS EC2 Nodeを作成する。</p>
-<p>執筆時点 (2023/11/04) 時点では、karpenterコントローラーは自身以外 (例：Terraformなど) で作成した起動テンプレートを参照できない。</p>
+<p>KarpenterのKarpenter Controllerは、起動テンプレートを作成した上で、AWS EC2フリートAPIからAWS EC2 Nodeを作成する。</p>
+<p>執筆時点 (2023/11/04) 時点では、Karpenter Controllerは自身以外 (例：Terraformなど) で作成した起動テンプレートを参照できない。</p>
 <p>不都合があって廃止した経緯がある。</p>
 <blockquote>
 <ul>
@@ -25017,7 +25017,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="karpentercluster-autoscaler">Karpenterとcluster-autoscaler<a class="headerlink" href="#karpentercluster-autoscaler" title="Permanent link">&para;</a></h3>
-<h4 id="karpenter_3">▼ Karpenterのいいところ<a class="headerlink" href="#karpenter_3" title="Permanent link">&para;</a></h4>
+<h4 id="karpenter_1">▼ Karpenterのいいところ<a class="headerlink" href="#karpenter_1" title="Permanent link">&para;</a></h4>
 <p>AWSの場合のみ、cluster-autoscalerの代わりにKarpenterを使用できる。</p>
 <p>Karpenterでは、作成されるNodeのスペックを事前に指定する必要がなく、またリソース効率も良い。</p>
 <p>そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件 (例：負荷が激しく変化するようなシステム) でも合っている。</p>
@@ -25109,7 +25109,7 @@
 
 <span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
 
-<span class="c1">  # karpenterコントローラーのPodに紐付けるIAMロール</span>
+<span class="c1">  # Karpenter ControllerのPodに紐付けるIAMロール</span>
 <span class="w">  </span><span class="na">create_role</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-karpenter-controller&quot;</span>
 
@@ -25119,7 +25119,7 @@
 <span class="c1">  # AWS IAMロールに紐付けるIAMポリシー</span>
 <span class="w">  </span><span class="na">role_policy_arns</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_iam_policy.karpenter_controller.arn</span>
 
-<span class="c1">  # karpenterコントローラーのPodのServiceAccount名</span>
+<span class="c1">  # Karpenter ControllerのPodのServiceAccount名</span>
 <span class="c1">  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い</span>
 <span class="w">  </span><span class="na">oidc_fully_qualified_subjects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="s2">&quot;system:serviceaccount:karpenter:karpenter&quot;</span>
@@ -25131,8 +25131,8 @@
 <span class="w">  </span><span class="na">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_iam_policy_document.karpenter_controller_policy.json</span>
 <span class="p">}</span>
 
-<span class="c1"># karpenterコントローラーが操作できるAWS EC2 Nodeを最小限にするために、特定のタグのみを持つAWS EC2を指定できるようにする</span>
-<span class="c1"># EC2NodeClassでユーザー定義のタグを設定し、karpenterコントローラーがAWS EC2を操作できるようにしておく</span>
+<span class="c1"># Karpenter Controllerが操作できるAWS EC2 Nodeを最小限にするために、特定のタグのみを持つAWS EC2を指定できるようにする</span>
+<span class="c1"># EC2NodeClassでユーザー定義のタグを設定し、Karpenter ControllerがAWS EC2を操作できるようにしておく</span>
 <span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aws_iam_policy_document&quot;</span><span class="w"> </span><span class="nv">&quot;karpenter_controller_policy&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
@@ -25301,7 +25301,7 @@
 
 <span class="w">  </span><span class="na">irsa_use_name_prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 
-<span class="c1">  # karpenterコントローラーのPodのServiceAccount名</span>
+<span class="c1">  # Karpenter ControllerのPodのServiceAccount名</span>
 <span class="c1">  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い</span>
 <span class="w">  </span><span class="na">irsa_namespace_service_accounts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="s2">&quot;karpenter:karpenter&quot;</span>
@@ -25350,7 +25350,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-28</span>
   </span>
 
     
