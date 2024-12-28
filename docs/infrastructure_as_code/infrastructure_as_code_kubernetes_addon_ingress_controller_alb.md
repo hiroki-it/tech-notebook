@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】AWS Load Balancerコントローラー＠Ingressコントローラー
-description: AWS Load Balancerコントローラー＠Ingressコントローラーの知見を記録しています。
+title: 【IT技術の知見】AWS Load Balancer Controller＠Ingress Controller
+description: AWS Load Balancer Controller＠Ingress Controllerの知見を記録しています。
 ---
 
-# AWS Load Balancerコントローラー＠Ingressコントローラー
+# AWS Load Balancer Controller＠Ingress Controller
 
 ## はじめに
 
@@ -13,11 +13,11 @@ description: AWS Load Balancerコントローラー＠Ingressコントローラ�
 
 <br>
 
-## 01. AWS Load Balancerコントローラーの仕組み
+## 01. AWS Load Balancer Controllerの仕組み
 
 ### アーキテクチャ
 
-AWS Load Balancerコントローラーは、aws-load-balancer-controller、TargetGroupBinding、といったコンポーネントから構成されている。
+AWS Load Balancer Controllerは、aws-load-balancer-controller、TargetGroupBinding、といったコンポーネントから構成されている。
 
 aws-load-balancer-controllerは、etcd上のIngressのマニフェストを検知し、設定値に応じたAWS ALBやAWS NLBをプロビジョニングし、これらのリスナールールごとにターゲットグループもプロビジョングする。
 
@@ -38,25 +38,25 @@ aws-load-balancer-controllerは、etcd上のIngressのマニフェストを検�
 
 #### ▼ 登録するする流れ
 
-AWS Load Balancerコントローラーは、以下の仕組みでターゲットグループに新しいNodeを登録する。
+AWS Load Balancer Controllerは、以下の仕組みでターゲットグループに新しいNodeを登録する。
 
-1. 対象のClusterのサブネット内にEC2 Nodeが起動状態に移行すると、AWS Load Balancerコントローラーはそれを検知する。
+1. 対象のClusterのサブネット内にEC2 Nodeが起動状態に移行すると、AWS Load Balancer Controllerはそれを検知する。
 2. 検知したEC2 Nodeをターゲットグループに追加する。
 3. EC2 Nodeが正常になれば、Nodeにルーティングできるようになる。
 
 #### ▼ ドレインするする流れ
 
-AWS Load Balancerコントローラーは、以下の仕組みでターゲットグループからEC2 Nodeをドレインする。
+AWS Load Balancer Controllerは、以下の仕組みでターゲットグループからEC2 Nodeをドレインする。
 
-1. EC2 Nodeが停止状態に移行すると、AWS Load Balancerコントローラーはそれを検知する。
+1. EC2 Nodeが停止状態に移行すると、AWS Load Balancer Controllerはそれを検知する。
 2. 検知したEC2 Nodeをターゲットグループからドレインする。
 3. 停止状態移行中のEC2 Node以外のNodeにリクエストをロードバランシングする。
 
 <br>
 
-### AWS Load Balancerコントローラーを使用しない場合
+### AWS Load Balancer Controllerを使用しない場合
 
-もしAWS CLBを作成したい場合は、AWS Load Balancerコントローラーを使用しない。
+もしAWS CLBを作成したい場合は、AWS Load Balancer Controllerを使用しない。
 
 LoadBalancer Serviceを作成すると、AWS EKS内のcloud-controller-managerがAWS CLBを自動的にプロビジョニングする。
 
@@ -66,9 +66,9 @@ LoadBalancer Serviceを作成すると、AWS EKS内のcloud-controller-manager�
 
 NodePort Serviceを使用しなければならない。
 
-AWS Load Balancerコントローラーを使用しない場合は、NodePort Serviceのポート番号に合わせてAWSターゲットグループを作成する必要がある。
+AWS Load Balancer Controllerを使用しない場合は、NodePort Serviceのポート番号に合わせてAWSターゲットグループを作成する必要がある。
 
-AWS Load Balancerコントローラーを使用する場合は、NodePort Serviceのポート番号をランダムにしても、そのポート番号を指定するAWSターゲットグループをAWS Load Balancerコントローラーがプロビジョニングしてくれる。
+AWS Load Balancer Controllerを使用する場合は、NodePort Serviceのポート番号をランダムにしても、そのポート番号を指定するAWSターゲットグループをAWS Load Balancer Controllerがプロビジョニングしてくれる。
 
 ```yaml
 パブリックネットワーク
@@ -76,7 +76,7 @@ AWS Load Balancerコントローラーを使用する場合は、NodePort Servic
 AWS Route53
 ⬇⬆︎︎
 # L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
-AWS Load BalancerコントローラーによるAWS ALB
+AWS Load Balancer ControllerによるAWS ALB
 ⬇⬆︎︎
 # L4ロードバランサー
 NodePort Service (ポート番号はランダムでよい)
@@ -95,7 +95,7 @@ Pod
 
 #### ▼ 共通
 
-AWS Load Balancerコントローラーは、サブネットを自動的に検出し、これにAWS ALBをプロビジョニングする。
+AWS Load Balancer Controllerは、サブネットを自動的に検出し、これにAWS ALBをプロビジョニングする。
 
 Ingressで作成するAWS ALBをパブリックサブネットで作成する場合、`kubernetes.io/role/elb`というタグ (値は`1`または空文字) を全てのパブリックサブネットに設定する。
 
@@ -108,7 +108,7 @@ Ingressで作成するAWS ALBをパブリックサブネットで作成する場
 
 #### ▼ Terraformの公式モジュールの場合
 
-AWS Load Balancerコントローラーのセットアップのうち、AWS側で必要なものをまとめる。
+AWS Load Balancer Controllerのセットアップのうち、AWS側で必要なものをまとめる。
 
 ここでは、Terraformの公式モジュールを使用する。
 
@@ -121,7 +121,7 @@ module "iam_assumable_role_with_oidc_aws_load_balancer_controller" {
 
   version                       = "<バージョン>"
 
-  # AWS Load BalancerコントローラーのPodに紐付けるIAMロール
+  # AWS Load Balancer ControllerのPodに紐付けるIAMロール
   create_role                   = true
   role_name                     = "foo-aws-load-balancer-controller"
 
@@ -133,7 +133,7 @@ module "iam_assumable_role_with_oidc_aws_load_balancer_controller" {
     aws_iam_policy.aws_load_balancer_controller.arn
   ]
 
-  # AWS Load BalancerコントローラーのPodのServiceAccount名
+  # AWS Load Balancer ControllerのPodのServiceAccount名
   # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い
   oidc_fully_qualified_subjects = [
     "system:serviceaccount:kube-system:foo-aws-load-balancer-controller"
@@ -158,7 +158,7 @@ resource "aws_iam_policy" "aws_load_balancer_controller" {
 
 > - https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest#usage
 
-別途、AWS Load BalancerコントローラーのPodに紐付けるServiceAccountを作成し、IAMロールのARNを設定する。
+別途、AWS Load Balancer ControllerのPodに紐付けるServiceAccountを作成し、IAMロールのARNを設定する。
 
 ```yaml
 apiVersion: v1
@@ -178,7 +178,7 @@ IRSAにより、ServiceAccountにAWSのIAMロールが紐づく。
 
 #### ▼ `awscli`コマンド、`eksctl`コマンド、の場合
 
-AWS Load Balancerコントローラーのセットアップのうち、AWS側で必要なものをまとめる。
+AWS Load Balancer Controllerのセットアップのうち、AWS側で必要なものをまとめる。
 
 ここではコマンドを使用しているが、IaC (例：Terraform) を使用しても良い。
 
@@ -224,7 +224,7 @@ $ eksctl utils associate-iam-oidc-provider \
 
 `(4)`
 
-: AWS Load BalancerコントローラーのPodのServiceAccountと、これに紐づくIAMロールを作成する。
+: AWS Load Balancer ControllerのPodのServiceAccountと、これに紐づくIAMロールを作成する。
 
 ```bash
 $ eksctl create iamserviceaccount \
@@ -282,11 +282,11 @@ secrets:
 
 #### ▼ Helmの場合
 
-AWS Load Balancerコントローラーのセットアップのうち、Kubernetes側で必要なものをまとめる。
+AWS Load Balancer Controllerのセットアップのうち、Kubernetes側で必要なものをまとめる。
 
 `(1)`
 
-: 指定したリージョンにAWS Load Balancerコントローラーをデプロイする。
+: 指定したリージョンにAWS Load Balancer Controllerをデプロイする。
 
      この時、事前にマニフェストや`eksclt create iamserviceaccount`コマンドで作成したServiceAcountをALBに紐付ける。
 
@@ -295,7 +295,7 @@ AWS Load Balancerコントローラーのセットアップのうち、Kubernete
 ```bash
 $ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-charts
 
-# FargateにAWS Load Balancerコントローラーをデプロイする場合
+# FargateにAWS Load Balancer Controllerをデプロイする場合
 $ helm install <Helmリリース名> <チャートリポジトリ名>/aws-load-balancer-controller \
     -n kube-system \
     --set clusterName=foo-eks-cluster \
@@ -312,7 +312,7 @@ AWS Load Balancer controller installed!
 ```bash
 $ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-charts
 
-# EC2にAWS Load Balancerコントローラーをデプロイする場合
+# EC2にAWS Load Balancer Controllerをデプロイする場合
 $ helm install <Helmリリース名> <チャートリポジトリ名>/aws-load-balancer-controller \
     -n kube-system \
     --set clusterName=foo-eks-cluster \
@@ -329,7 +329,7 @@ AWS Load Balancer controller installed!
 
 `(2)`
 
-: AWS Load Balancerコントローラーがデプロイされ、READY状態になっていることを確認する。
+: AWS Load Balancer Controllerがデプロイされ、READY状態になっていることを確認する。
 
 ```bash
 $ helm list -n kube-system
@@ -377,7 +377,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 
 ### マニフェストの種類
 
-AWS Load Balancerコントローラーは、Deployment (aws-load-balancer-controller) 、Service (aws-load-balancer-controller-webhook-service) 、TargetGroupBinding、MutatingWebhookConfigurationなどのマニフェストから構成されている。
+AWS Load Balancer Controllerは、Deployment (aws-load-balancer-controller) 、Service (aws-load-balancer-controller-webhook-service) 、TargetGroupBinding、MutatingWebhookConfigurationなどのマニフェストから構成されている。
 
 <br>
 
@@ -508,7 +508,7 @@ webhooks:
 
 ### Service
 
-AWS Load Balancerコントローラーが作成された場合に、WebhookサーバーにWebhookを送信する。
+AWS Load Balancer Controllerが作成された場合に、WebhookサーバーにWebhookを送信する。
 
 ここでは、ClusterIP Serviceを使用する。
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Nginx Ingressコントローラー＠Ingressコントローラー
-description: Nginx Ingressコントローラー＠Ingressコントローラーの知見を記録しています。
+title: 【IT技術の知見】Nginx Ingress Controller＠Ingress Controller
+description: Nginx Ingress Controller＠Ingress Controllerの知見を記録しています。
 ---
 
-# Nginx Ingressコントローラー＠Ingressコントローラー
+# Nginx Ingress Controller＠Ingress Controller
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Nginx Ingressコントローラー＠Ingressコントローラー�
 
 <br>
 
-## 01. Nginx Ingressコントローラーの仕組み
+## 01. Nginx Ingress Controllerの仕組み
 
 `L4`/`L7`ロードバランサーとして、インバウンド通信を`L4`/`L7`ロードバランシングする。
 
@@ -35,9 +35,9 @@ description: Nginx Ingressコントローラー＠Ingressコントローラー�
 
 #### ▼ FastCGIプロトコル
 
-Nginx Ingressコントローラーは、受信したリクエストをFastCGIプロトコルで転送できる。
+Nginx Ingress Controllerは、受信したリクエストをFastCGIプロトコルで転送できる。
 
-ServiceはFastCGIプロトコルで転送できないが、代わりにNginx IngressコントローラーがFastCGIプロトコルで転送してくれる。
+ServiceはFastCGIプロトコルで転送できないが、代わりにNginx Ingress ControllerがFastCGIプロトコルで転送してくれる。
 
 ```yaml
 apiVersion: v1
@@ -48,7 +48,7 @@ spec:
   selector:
     app: foo-app
   ports:
-    # Nginx IngressコントローラーがTCPプロトコルに変換してくれる
+    # Nginx Ingress ControllerがTCPプロトコルに変換してくれる
     - protocol: TCP
       port: 9000
       targetPort: 9000

@@ -338,10 +338,20 @@ $ asdf install
 
 ### uninstall
 
+#### ▼ uninstallとは
+
 プラグインをアンインストールする。
 
 ```bash
 $ asdf uninstall <プラグイン名> 1.0.0
+```
+
+### ▼ uninstallとは
+
+特定のプラグインを全てのバージョンをアンインストールする。
+
+```bash
+$ asdf uninstall <プラグイン名> --all
 ```
 
 <br>

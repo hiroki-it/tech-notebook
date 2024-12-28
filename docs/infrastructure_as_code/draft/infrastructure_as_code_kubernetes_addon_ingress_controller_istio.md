@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Istio Ingressコントローラー＠Ingressコントローラー
-description: Istio Ingressコントローラー＠Ingressコントローラーの知見を記録しています。
+title: 【IT技術の知見】Istio Ingress Controller＠Ingress Controller
+description: Istio Ingress Controller＠Ingress Controllerの知見を記録しています。
 ---
 
-# Istio Ingressコントローラー＠Ingressコントローラー
+# Istio Ingress Controller＠Ingress Controller
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Istio Ingressコントローラー＠Ingressコントローラー�
 
 <br>
 
-## 01. Istio Ingressコントローラー
+## 01. Istio Ingress Controller
 
 `L4`/`L7`ロードバランサーとしての`istio-proxy`を使用して、通信をロードバランシングする。
 

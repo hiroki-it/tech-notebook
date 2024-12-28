@@ -17,7 +17,7 @@ description: Karpenter＠ハードウェアリソース管理系の知見を記�
 
 ### アーキテクチャ
 
-Karpenterは、karpenterコントローラーから構成される。
+Karpenterは、Karpenter Controllerから構成される。
 
 ![karpenter_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_architecture.png)
 
@@ -25,15 +25,15 @@ Karpenterは、karpenterコントローラーから構成される。
 
 <br>
 
-### karpenterコントローラー
+### Karpenter Controller
 
-#### ▼ karpenterコントローラーとは
+#### ▼ Karpenter Controllerとは
 
-karpenterコントローラーは、Karpenterのcustom-controllerとして、カスタムリソースを作成/変更する。
+Karpenter Controllerは、Karpenterのcustom-controllerとして、カスタムリソースを作成/変更する。
 
 また、カスタムリソースの設定値に応じて、API (例：起動テンプレート、AWS EC2フリート) をコールし、AWSリソース (例：起動テンプレート、AWS EC2) をプロビジョニングする。
 
-この時、AWS Load Balancerコントローラーも使用していると、Clusterのサブネット内にAWS EC2 Nodeが増えたことを検知し、ターゲットグループにこれを登録してくれる。
+この時、AWS Load Balancer Controllerも使用していると、Clusterのサブネット内にAWS EC2 Nodeが増えたことを検知し、ターゲットグループにこれを登録してくれる。
 
 なお、NodePool配下のAWS EC2 Nodeは起動テンプレートから作成するが、起動テンプレート自体はAWS EC2 Nodeの作成後に削除するようになっている。
 
@@ -171,7 +171,7 @@ kube-schedulerから情報を取得し、新しいPodをNode上にスケジュ�
 
 反対に、以下のような条件の場合には統合しない。
 
-- コントローラーが不明なPodがいる
+- Controllerが不明なPodがいる
 - Podの退避を拒否するPodDisruptionBudget (例：`disruptionsAllowed=0`) があり、統合を実行してしまうとPodDisruptionBudgetに違反する。
 - Podの`metadata.annotations`キー配下に`karpenter.sh/do-not-evict`キーがある。
 - PodにAffinityがあり、統合を実行してしまうとAffinityに違反する。
@@ -221,9 +221,9 @@ Karpenter外から削除操作 (例：`kubectl delete`コマンド) があった
 
 #### ▼ 起動テンプレート
 
-Karpenterのkarpenterコントローラーは、起動テンプレートを作成した上で、AWS EC2フリートAPIからAWS EC2 Nodeを作成する。
+KarpenterのKarpenter Controllerは、起動テンプレートを作成した上で、AWS EC2フリートAPIからAWS EC2 Nodeを作成する。
 
-執筆時点 (2023/11/04) 時点では、karpenterコントローラーは自身以外 (例：Terraformなど) で作成した起動テンプレートを参照できない。
+執筆時点 (2023/11/04) 時点では、Karpenter Controllerは自身以外 (例：Terraformなど) で作成した起動テンプレートを参照できない。
 
 不都合があって廃止した経緯がある。
 
@@ -356,7 +356,7 @@ module "iam_assumable_role_with_oidc_karpenter_controller" {
 
   version                       = "<バージョン>"
 
-  # karpenterコントローラーのPodに紐付けるIAMロール
+  # Karpenter ControllerのPodに紐付けるIAMロール
   create_role                   = true
   role_name                     = "foo-karpenter-controller"
 
@@ -366,7 +366,7 @@ module "iam_assumable_role_with_oidc_karpenter_controller" {
   # AWS IAMロールに紐付けるIAMポリシー
   role_policy_arns              = aws_iam_policy.karpenter_controller.arn
 
-  # karpenterコントローラーのPodのServiceAccount名
+  # Karpenter ControllerのPodのServiceAccount名
   # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い
   oidc_fully_qualified_subjects = [
     "system:serviceaccount:karpenter:karpenter"
@@ -378,8 +378,8 @@ resource "aws_iam_policy" "karpenter_controller" {
   policy = data.aws_iam_policy_document.karpenter_controller_policy.json
 }
 
-# karpenterコントローラーが操作できるAWS EC2 Nodeを最小限にするために、特定のタグのみを持つAWS EC2を指定できるようにする
-# EC2NodeClassでユーザー定義のタグを設定し、karpenterコントローラーがAWS EC2を操作できるようにしておく
+# Karpenter Controllerが操作できるAWS EC2 Nodeを最小限にするために、特定のタグのみを持つAWS EC2を指定できるようにする
+# EC2NodeClassでユーザー定義のタグを設定し、Karpenter ControllerがAWS EC2を操作できるようにしておく
 data "aws_iam_policy_document" "karpenter_controller_policy" {
 
   statement {
@@ -549,7 +549,7 @@ module "eks_iam_karpenter_controller" {
 
   irsa_use_name_prefix = false
 
-  # karpenterコントローラーのPodのServiceAccount名
+  # Karpenter ControllerのPodのServiceAccount名
   # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い
   irsa_namespace_service_accounts = [
     "karpenter:karpenter"

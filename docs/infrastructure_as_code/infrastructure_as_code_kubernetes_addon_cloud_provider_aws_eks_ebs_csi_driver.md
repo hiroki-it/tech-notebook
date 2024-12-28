@@ -60,7 +60,7 @@ module "iam_assumable_role_with_oidc_ebs_csi_driver" {
 
   version                       = "<バージョン>"
 
-  # AWS EBS CSIコントローラーのPodに紐付けるIAMロール
+  # AWS EBS CSI ControllerのPodに紐付けるIAMロール
   create_role                   = true
   role_name                     = "foo-ebs-csi-driver"
 
@@ -73,7 +73,7 @@ module "iam_assumable_role_with_oidc_ebs_csi_driver" {
     "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
   ]
 
-  # AWS EBS CSIコントローラーのPodのServiceAccount名
+  # AWS EBS CSI ControllerのPodのServiceAccount名
   # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い
   oidc_fully_qualified_subjects = [
     "system:serviceaccount:kube-system:foo-ebs-csi-controller"

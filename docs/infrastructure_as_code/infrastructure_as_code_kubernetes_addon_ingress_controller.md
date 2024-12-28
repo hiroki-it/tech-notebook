@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Ingressコントローラー＠Ingressコントローラー系
-description: Ingressコントローラー＠Ingressコントローラー系の知見を記録しています。
+title: 【IT技術の知見】Ingress Controller＠Ingress Controller系
+description: Ingress Controller＠Ingress Controller系の知見を記録しています。
 ---
 
-# Ingressコントローラー＠Ingressコントローラー系
+# Ingress Controller＠Ingress Controller系
 
 ## はじめに
 
@@ -13,13 +13,13 @@ description: Ingressコントローラー＠Ingressコントローラー系の�
 
 <br>
 
-## 01. Ingressコントローラーとは
+## 01. Ingress Controllerとは
 
-Ingressコントローラーは、kube-controllerのように単一/複数のIngressにwatchイベントを送信する、
+Ingress Controllerは、kube-controllerのように単一/複数のIngressにwatchイベントを送信する、
 
-これのルールに応じたリバースプロキシやロードバランサー (Ingressコントローラーの種類による) を作成し、Node外からの受信した通信をServiceにルーティングする。
+これのルールに応じたリバースプロキシやロードバランサー (Ingress Controllerの種類による) を作成し、Node外からの受信した通信をServiceにルーティングする。
 
-注意点として、IngressコントローラーがServiceにルーティングするのであって、Ingressはあくまでルーティングのルールを定義しているだけである。
+注意点として、Ingress ControllerがServiceにルーティングするのであって、Ingressはあくまでルーティングのルールを定義しているだけである。
 
 Kubernetesの周辺ツール (例：Prometheus、AlertManager、Grafana、ArgoCDなど) のダッシュボードを複数人で共有して参照する場合には、何らかのアクセス制限を付与したIngressを作成することになる。
 
@@ -33,21 +33,21 @@ Kubernetesの周辺ツール (例：Prometheus、AlertManager、Grafana、ArgoCD
 
 <br>
 
-## 02. 外部Ingressコントローラーの使用
+## 02. 外部Ingress Controllerの使用
 
-### 外部Ingressコントローラーの種類
+### 外部Ingress Controllerの種類
 
-Ingressコントローラーには種類があり、コントローラーごとに作成するリバースプロキシやロードバランサーが異なる。
+Ingress Controllerには種類があり、 Controllerごとに作成するリバースプロキシやロードバランサーが異なる。
 
-| 外部Ingressコントローラーの種類                               | リバースプロキシ、ロードバランサー | 開発環境 | 本番環境 |
-| ------------------------------------------------------------- | ---------------------------------- | :------: | :------: |
-| Nginx Ingressコントローラー                                   | Nginx                              |    ✅    |    ✅    |
-| minikubeのingressアドオン (実体はNginx Ingressコントローラー) | Nginx                              |    ✅    |          |
-| AWS Load Balancerコントローラー                               | AWS ALB                            |          |    ✅    |
-| Google Cloud CLBコントローラー                                | Google Cloud CLB                   |          |    ✅    |
-| Istio Ingressコントローラー                                   | Istio IngressGateway (実体はEnvoy) |    ✅    |    ✅    |
-| Contourコントローラー                                         | Envoy                              |    ✅    |    ✅    |
-| ...                                                           | ...                                |   ...    |   ...    |
+| 外部Ingress Controllerの種類                               | リバースプロキシ、ロードバランサー | 開発環境 | 本番環境 |
+| ---------------------------------------------------------- | ---------------------------------- | :------: | :------: |
+| Nginx Ingress Controller                                   | Nginx                              |    ✅    |    ✅    |
+| minikubeのingressアドオン (実体はNginx Ingress Controller) | Nginx                              |    ✅    |          |
+| AWS Load Balancer Controller                               | AWS ALB                            |          |    ✅    |
+| Google Cloud CLB Controller                                | Google Cloud CLB                   |          |    ✅    |
+| Istio Ingress Controller                                   | Istio IngressGateway (実体はEnvoy) |    ✅    |    ✅    |
+| Contour Controller                                         | Envoy                              |    ✅    |    ✅    |
+| ...                                                        | ...                                |   ...    |   ...    |
 
 > - https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
 > - https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
@@ -57,7 +57,7 @@ Ingressコントローラーには種類があり、コントローラーごと�
 
 <br>
 
-### AWS Load Balancerコントローラーの場合
+### AWS Load Balancer Controllerの場合
 
 ```yaml
 パブリックネットワーク
@@ -65,7 +65,7 @@ Ingressコントローラーには種類があり、コントローラーごと�
 AWS Route53
 ⬇⬆︎︎
 # L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
-AWS Load BalancerコントローラーによるAWS ALB
+AWS Load Balancer ControllerによるAWS ALB
 ⬇⬆︎︎
 # L4ロードバランサー
 NodePort Service (ポート番号はランダムでよい)
@@ -75,7 +75,7 @@ Pod
 
 <br>
 
-### Istio Ingressコントローラーの場合
+### Istio Ingress Controllerの場合
 
 ```yaml
 パブリックネットワーク
@@ -106,7 +106,7 @@ Pod
 
 Ingressに定義されたルーティングのルールを検知する。
 
-Kubernetes Clusterに単一のIngressコントローラーを作成するとよい。
+Kubernetes Clusterに単一のIngress Controllerを作成するとよい。
 
 また、各Namespace用に定義されたIngressを使用して、各NamespaceのServiceにルーティングするとよい。
 
@@ -114,7 +114,7 @@ Kubernetes Clusterに単一のIngressコントローラーを作成するとよ�
 
 ### インバウンド/アウトバウンド
 
-Ingressコントローラーは、名前ではIngressとなっているがEgress (アウトバウンド) の通信も扱う。
+Ingress Controllerは、名前ではIngressとなっているがEgress (アウトバウンド) の通信も扱う。
 
 > - https://www.f5.com/ja_jp/company/blog/nginx/guide-to-choosing-ingress-controller-part-1-identify-requirements
 
@@ -122,7 +122,7 @@ Ingressコントローラーは、名前ではIngressとなっているがEgress
 
 ### Ingressの設定値のバリデーション
 
-Ingressコントローラーは、『`***-controller-admission`』というServiceでwebhookサーバーを公開している。
+Ingress Controllerは、『`***-controller-admission`』というServiceでwebhookサーバーを公開している。
 
 このwebhookサーバーは、新しく追加されたIngressの設定値のバリデーションを実行する。
 
@@ -140,7 +140,7 @@ Ingressコントローラーは、『`***-controller-admission`』というServi
 
 ### SSL証明書の割り当て
 
-Ingressコントローラーは、Secretに設定されたSSL証明書を参照し、これを自身のロードバランサー (例：Nginx) に渡す。
+Ingress Controllerは、Secretに設定されたSSL証明書を参照し、これを自身のロードバランサー (例：Nginx) に渡す。
 
 ![kubernetes_ingress-controller_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller_certificate.png)
 

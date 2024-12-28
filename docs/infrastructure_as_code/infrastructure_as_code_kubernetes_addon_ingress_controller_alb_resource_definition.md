@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】リソース定義＠AWS Load Balancerコントローラー
-description: リソース定義＠AWS Load Balancerコントローラーの知見を記録しています。
+title: 【IT技術の知見】リソース定義＠AWS Load Balancer Controller
+description: リソース定義＠AWS Load Balancer Controllerの知見を記録しています。
 ---
 
-# リソース定義＠AWS Load Balancerコントローラー
+# リソース定義＠AWS Load Balancer Controller
 
 ## はじめに
 
@@ -21,7 +21,7 @@ description: リソース定義＠AWS Load Balancerコントローラーの知�
 
 Ingressで`alb`のIngressClassを指定する必要がある。
 
-AWS Load Balancerコントローラーは、Ingressの`.metadata.annotations`キーと`.spec.rules`キーに設定に応じて、AWS ALBを自動的にプロビジョニングする。
+AWS Load Balancer Controllerは、Ingressの`.metadata.annotations`キーと`.spec.rules`キーに設定に応じて、AWS ALBを自動的にプロビジョニングする。
 
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/
@@ -35,7 +35,7 @@ AWS Load Balancerコントローラーは、Ingressの`.metadata.annotations`キ
 
 AWS ALBでHTTPSプロトコルを受け付ける場合、事前に作成したACMのSSL証明書のARNを設定する。
 
-AWS LBコントローラーは、プロビジョニングしたALBにACMのSSL証明書を自動的に紐づける。
+AWS LB Controllerは、プロビジョニングしたALBにACMのSSL証明書を自動的に紐づける。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
