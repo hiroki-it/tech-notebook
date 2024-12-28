@@ -17587,19 +17587,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ingress_3" class="md-nav__link">
+  <a href="#ingress-controller" class="md-nav__link">
     <span class="md-ellipsis">
-      Ingressコントローラー
+      Ingress Controller
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Ingressコントローラー">
+    <nav class="md-nav" aria-label="Ingress Controller">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ingress_4" class="md-nav__link">
+  <a href="#ingress-controller_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Ingressコントローラー
+      ▼ Ingress Controllerとは
     </span>
   </a>
   
@@ -18377,7 +18377,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ingress_5" class="md-nav__link">
+  <a href="#ingress_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Ingressの場合
     </span>
@@ -26097,19 +26097,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ingress_3" class="md-nav__link">
+  <a href="#ingress-controller" class="md-nav__link">
     <span class="md-ellipsis">
-      Ingressコントローラー
+      Ingress Controller
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Ingressコントローラー">
+    <nav class="md-nav" aria-label="Ingress Controller">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ingress_4" class="md-nav__link">
+  <a href="#ingress-controller_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Ingressコントローラー
+      ▼ Ingress Controllerとは
     </span>
   </a>
   
@@ -26887,7 +26887,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ingress_5" class="md-nav__link">
+  <a href="#ingress_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Ingressの場合
     </span>
@@ -27676,7 +27676,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 </blockquote>
 <h4 id="gateway_2">▼ Gatewayとの違い<a class="headerlink" href="#gateway_2" title="Permanent link">&para;</a></h4>
 <p><code>L7</code>プロトコルの通信のみを処理できる。</p>
-<p>また、Ingressそれ自体はルールのみを持ち、Ingressコントローラーがロードバランサーとして機能する。</p>
+<p>また、Ingressそれ自体はルールのみを持ち、Ingress Controllerがロードバランサーとして機能する。</p>
 <h4 id="_9">▼ パスベースルーティング<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>パスの値に基づいて、Serviceにルーティングする。</p>
 <p><img alt="kubernetes_ingress_path" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress_path.png" /></p>
@@ -27697,14 +27697,14 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p><br></p>
 <h3 id="ingressclass">IngressClass<a class="headerlink" href="#ingressclass" title="Permanent link">&para;</a></h3>
 <h4 id="ingressclass_1">▼ IngressClassとは<a class="headerlink" href="#ingressclass_1" title="Permanent link">&para;</a></h4>
-<p>Ingressコントローラーの実体として使用するツールを指定する。</p>
+<p>Ingress Controllerの実体として使用するツールを指定する。</p>
 <p><br></p>
-<h3 id="ingress_3">Ingressコントローラー<a class="headerlink" href="#ingress_3" title="Permanent link">&para;</a></h3>
-<h4 id="ingress_4">▼ Ingressコントローラー<a class="headerlink" href="#ingress_4" title="Permanent link">&para;</a></h4>
-<p>Ingressコントローラーは、<code>L7</code>ロードバランサーとしてPodに通信をルーティングする。</p>
+<h3 id="ingress-controller">Ingress Controller<a class="headerlink" href="#ingress-controller" title="Permanent link">&para;</a></h3>
+<h4 id="ingress-controller_1">▼ Ingress Controllerとは<a class="headerlink" href="#ingress-controller_1" title="Permanent link">&para;</a></h4>
+<p>Ingress Controllerは、<code>L7</code>ロードバランサーとしてPodに通信をルーティングする。</p>
 <p>Node外から通信を受信し、Ingressに定義されたルールに応じて、単一/複数のServiceにルーティングする。</p>
-<p>クラウドプロバイダー (例：AWS) では、Ingressコントローラー状況下でIngressを作成すると、Ingressの設定値に応じた<code>L7</code>ロードバランサー (例：AWS ALBとAWSターゲットグループ) を自動的にプロビジョニングする。</p>
-<p>ただし、クラウドプロバイダーによっては、IngressコントローラーとClusterIP Serviceを仲介するカスタムリソース (例：AWS TargetGroupBindingsなど) を提供している場合がある。</p>
+<p>クラウドプロバイダー (例：AWS) では、Ingress Controller状況下でIngressを作成すると、Ingressの設定値に応じた<code>L7</code>ロードバランサー (例：AWS ALBとAWSターゲットグループ) を自動的にプロビジョニングする。</p>
+<p>ただし、クラウドプロバイダーによっては、Ingress ControllerとClusterIP Serviceを仲介するカスタムリソース (例：AWS TargetGroupBindingsなど) を提供している場合がある。</p>
 <p>この場合、クラウドプロバイダーのリソースとKubernetesが疎結合になり、責務の境界を明確化できる。</p>
 <blockquote>
 <ul>
@@ -27744,7 +27744,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Load Balancerコントローラーなど)</span>
+<span class="l l-Scalar l-Scalar-Plain">Ingress Controller (例：Nginx Ingress Controller、AWS Load Balancer Controllerなど)</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
 <span class="l l-Scalar l-Scalar-Plain">ClusterIP Service</span>
@@ -27772,7 +27772,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">Pod</span>
 </code></pre></div>
-<p>パブリックプロバイダーのLB (例：AWS ALB) を別に置いても良い (このLBは、Ingressコントローラー由来ではない) 。</p>
+<p>パブリックプロバイダーのLB (例：AWS ALB) を別に置いても良い (このLBは、Ingress Controller由来ではない) 。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">AWS Route53</span>
@@ -27791,7 +27791,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Load Balancerコントローラー)</span>
+<span class="l l-Scalar l-Scalar-Plain">Ingress Controller (例：Nginx Ingress Controller、AWS Load Balancer Controller)</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
 <span class="l l-Scalar l-Scalar-Plain">ClusterIP Service (実体はNodePort Service)</span>
@@ -27823,7 +27823,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 </code></pre></div>
 <p>クラウドプロバイダー (例：AWS) では、LoadBalancer Serviceを作成すると、External-IPを宛先とする<code>L4</code>ロードバランサー (例：AWS NLBとAWSターゲットグループ) を自動的にプロビジョニングする。</p>
 <p>クラウドプロバイダーのリソースとKubernetesリソースが密結合になり、責務の境界が曖昧になってしまう。</p>
-<p>なお、注意点として、Ingressコントローラーは<code>L7</code>ロードバランサーを自動的にプロビジョニングする。</p>
+<p>なお、注意点として、Ingress Controllerは<code>L7</code>ロードバランサーを自動的にプロビジョニングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/">https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/</a></li>
@@ -28669,7 +28669,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <li><a href="https://qiita.com/dingtianhongjie/items/983417de88db2553f0c2">https://qiita.com/dingtianhongjie/items/983417de88db2553f0c2</a></li>
 </ul>
 </blockquote>
-<h4 id="ingress_5">▼ Ingressの場合<a class="headerlink" href="#ingress_5" title="Permanent link">&para;</a></h4>
+<h4 id="ingress_3">▼ Ingressの場合<a class="headerlink" href="#ingress_3" title="Permanent link">&para;</a></h4>
 <p>他のPodからの受信する通信のルールを設定する。</p>
 <p>Ingressとは関係がないことに注意する。</p>
 <h4 id="egress">▼ Egressの場合<a class="headerlink" href="#egress" title="Permanent link">&para;</a></h4>
@@ -28695,7 +28695,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-28</span>
   </span>
 
     
