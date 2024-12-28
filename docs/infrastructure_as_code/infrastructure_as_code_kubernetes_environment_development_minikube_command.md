@@ -322,17 +322,29 @@ $ minikube node add --worker
 追加したワーカーNodeに`.metadata.labeles`キーを追加すれば、node affinityやnode selectorを検証できる。
 
 ```bash
+# minikube-m01 はコントロールプレーンNodeのため、ラベルづけ不要である。
+```
+
+```bash
 # ArgoCDを作成するワーカーNodeの場合
-$ kubectl label node minikube-m01 node-type=deploy --overwrite
+$ kubectl label node minikube-m02 node-type=deploy --overwrite
+$ kubectl label node minikube-m02 node-role.kubernetes.io/worker=worker --overwrite
+```
 
+```bash
 # IngressやIngressGatewayを作成するワーカーNodeの場合
-$ kubectl label node minikube-m02 node-type=ingress --overwrite
+$ kubectl label node minikube-m03 node-type=ingress --overwrite
+$ kubectl label node minikube-m03 node-role.kubernetes.io/worker=worker --overwrite
+```
 
+```bash
 # アプリケーションを作成するワーカーNodeの場合
-$ kubectl label node minikube-m03 node-type=app --overwrite
+$ kubectl label node minikube-m04 node-type=app --overwrite
+$ kubectl label node minikube-m04 node-role.kubernetes.io/worker=worker --overwrite
 ```
 
 > - https://qiita.com/zaburo/items/efd7315161281d9822ed
+> - https://stackoverflow.com/a/51563019
 
 <br>
 
