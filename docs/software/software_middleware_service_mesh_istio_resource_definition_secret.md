@@ -23,6 +23,16 @@ Istioの各種コンポーネントの機密な変数やファイルを管理す
 
 ### istio-ca-secretとは
 
+Istiodコントロールプレーンのための証明書を管理する。
+
+Istiodコントロールプレーンは、`istio-ca-secret`を使用して、自身がルート認証局であることを署名する。
+
+![istio_istio-ca-root-cert](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-ca-root-cert.png)
+
+<br>
+
+### ca-cert.pem
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -32,9 +42,49 @@ metadata:
 type: istio.io/ca-root
 data:
   ca-cert.pem: *****
+```
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: istio-ca-secret
+  namespace: istio-system
+type: istio.io/ca-root
+data:
   ca-key.pem: *****
+```
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: istio-ca-secret
+  namespace: istio-system
+type: istio.io/ca-root
+data:
   cert-chain.pem: ""
+```
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: istio-ca-secret
+  namespace: istio-system
+type: istio.io/ca-root
+data:
   key.pem: ""
+```
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: istio-ca-secret
+  namespace: istio-system
+type: istio.io/ca-root
+data:
   root-cert.pem: ""
 ```
 
