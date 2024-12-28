@@ -25793,7 +25793,7 @@
 <h3 id="uid">uid<a class="headerlink" href="#uid" title="Permanent link">&para;</a></h3>
 <p>そのKubernetesリソースを識別するユニークIDを設定する。</p>
 <p>kube-controllerが設定してくれるため、開発者が設定する必要はない。</p>
-<p>また仮に開発者が変更しても、kube-controllerやcustom-controllerが正しい値に自動的に修復する。</p>
+<p>また仮に開発者が変更しても、kube-controllerやCustom Controllerが正しい値に自動的に修復する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -25811,14 +25811,14 @@
 <h4 id="status_1">▼ statusとは<a class="headerlink" href="#status_1" title="Permanent link">&para;</a></h4>
 <p>Kubernetesリソースの現在の状態を設定する。</p>
 <p>kube-controllerが設定してくれるため、開発者が設定する必要はない。</p>
-<p>また仮に開発者が変更しても、kube-controllerやcustom-controllerが正しい値に自動的に修復する。</p>
+<p>また仮に開発者が変更しても、kube-controllerやCustom Controllerが正しい値に自動的に修復する。</p>
 <p>Kubernetesリソースごとに、<code>.status</code>キー配下の構造は異なっており、</p>
 <p><br></p>
 <h3 id="conditions">conditions<a class="headerlink" href="#conditions" title="Permanent link">&para;</a></h3>
 <h4 id="conditions_1">▼ conditionsとは<a class="headerlink" href="#conditions_1" title="Permanent link">&para;</a></h4>
 <p><code>.status</code>キーの履歴を設定する。</p>
 <p>kube-controllerが設定してくれるため、開発者が設定する必要はない。</p>
-<p>また仮に開発者が変更しても、kube-controllerやcustom-controllerが正しい値に自動的に修復する。</p>
+<p>また仮に開発者が変更しても、kube-controllerやCustom Controllerが正しい値に自動的に修復する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">spec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
@@ -25850,10 +25850,10 @@
 <p><br></p>
 <h3 id="observedgeneration">observedGeneration<a class="headerlink" href="#observedgeneration" title="Permanent link">&para;</a></h3>
 <h4 id="observedgeneration_1">▼ observedGenerationとは<a class="headerlink" href="#observedgeneration_1" title="Permanent link">&para;</a></h4>
-<p>kube-controllerやcustom-controllerがKubernetesリソースの状態を管理している場合に、これらが検知した<code>.metadata.generation</code>キーの値を設定する。</p>
+<p>kube-controllerやCustom ControllerがKubernetesリソースの状態を管理している場合に、これらが検知した<code>.metadata.generation</code>キーの値を設定する。</p>
 <p>kube-controllerが設定してくれるため、開発者が設定する必要はない。</p>
-<p>また仮に開発者が変更しても、kube-controllerやcustom-controllerが正しい値に自動的に修復する。</p>
-<p><code>.metadata.generation</code>キーよりも<code>.status.observedGeneration</code>キーの方が世代数が小さい場合、kube-controllerやcustom-controllerがKubernetesリソースを検出できていない不具合を表す。</p>
+<p>また仮に開発者が変更しても、kube-controllerやCustom Controllerが正しい値に自動的に修復する。</p>
+<p><code>.metadata.generation</code>キーよりも<code>.status.observedGeneration</code>キーの方が世代数が小さい場合、kube-controllerやCustom ControllerがKubernetesリソースを検出できていない不具合を表す。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">spec</span><span class="p">:</span>

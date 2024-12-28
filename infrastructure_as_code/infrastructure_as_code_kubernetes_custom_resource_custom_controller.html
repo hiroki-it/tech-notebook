@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="custom-controller＠カスタムリソースの知見を記録しています。">
+        <meta name="description" content="Custom Controller＠カスタムリソースの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】custom-controller＠カスタムリソース - 俺の技術ノート</title>
+        <title>【IT技術の知見】Custom Controller＠カスタムリソース - 俺の技術ノート</title>
       
     
     
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】custom-controller＠カスタムリソース
+              【IT技術の知見】Custom Controller＠カスタムリソース
             
           </span>
         </div>
@@ -17178,7 +17178,7 @@
         <li class="md-nav__item">
   <a href="#01-custom-controller" class="md-nav__link">
     <span class="md-ellipsis">
-      01. custom-controllerとは
+      01. Custom Controllerとは
     </span>
   </a>
   
@@ -17187,11 +17187,11 @@
         <li class="md-nav__item">
   <a href="#02-custom-controller" class="md-nav__link">
     <span class="md-ellipsis">
-      02. custom-controllerの仕組み
+      02. Custom Controllerの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. custom-controllerの仕組み">
+    <nav class="md-nav" aria-label="02. Custom Controllerの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -17255,19 +17255,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#custom-controller-components" class="md-nav__link">
+  <a href="#custom-controller_1" class="md-nav__link">
     <span class="md-ellipsis">
-      custom-controller-componentsコンポーネント
+      custom-controllerコンポーネント
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="custom-controller-componentsコンポーネント">
+    <nav class="md-nav" aria-label="custom-controllerコンポーネント">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#custom-controller-components_1" class="md-nav__link">
+  <a href="#custom-controller_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ custom-controller-componentsコンポーネントとは
+      ▼ custom-controllerコンポーネントとは
     </span>
   </a>
   
@@ -24382,7 +24382,7 @@
         <li class="md-nav__item">
   <a href="#01-custom-controller" class="md-nav__link">
     <span class="md-ellipsis">
-      01. custom-controllerとは
+      01. Custom Controllerとは
     </span>
   </a>
   
@@ -24391,11 +24391,11 @@
         <li class="md-nav__item">
   <a href="#02-custom-controller" class="md-nav__link">
     <span class="md-ellipsis">
-      02. custom-controllerの仕組み
+      02. Custom Controllerの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. custom-controllerの仕組み">
+    <nav class="md-nav" aria-label="02. Custom Controllerの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24459,19 +24459,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#custom-controller-components" class="md-nav__link">
+  <a href="#custom-controller_1" class="md-nav__link">
     <span class="md-ellipsis">
-      custom-controller-componentsコンポーネント
+      custom-controllerコンポーネント
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="custom-controller-componentsコンポーネント">
+    <nav class="md-nav" aria-label="custom-controllerコンポーネント">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#custom-controller-components_1" class="md-nav__link">
+  <a href="#custom-controller_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ custom-controller-componentsコンポーネントとは
+      ▼ custom-controllerコンポーネントとは
     </span>
   </a>
   
@@ -24754,7 +24754,7 @@
   
 
 
-<h1 id="custom-controller">custom-controller＠カスタムリソース<a class="headerlink" href="#custom-controller" title="Permanent link">&para;</a></h1>
+<h1 id="custom-controller">Custom Controller＠カスタムリソース<a class="headerlink" href="#custom-controller" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -24763,14 +24763,14 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-custom-controller">01. custom-controllerとは<a class="headerlink" href="#01-custom-controller" title="Permanent link">&para;</a></h2>
+<h2 id="01-custom-controller">01. Custom Controllerとは<a class="headerlink" href="#01-custom-controller" title="Permanent link">&para;</a></h2>
 <p>カスタムリソースのためのkube-controllerに相当する。</p>
 <p>ただし、kube-controllerとは異なりNode上で稼働する。</p>
 <p>実体はDeploymentやStatefulSet配下のPodであることが多い。</p>
 <p><br></p>
-<h2 id="02-custom-controller">02. custom-controllerの仕組み<a class="headerlink" href="#02-custom-controller" title="Permanent link">&para;</a></h2>
+<h2 id="02-custom-controller">02. Custom Controllerの仕組み<a class="headerlink" href="#02-custom-controller" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>custom-controllerは、client-goコンポーネントとcustom-controller-componentsコンポーネントから構成される。</p>
+<p>Custom Controllerは、client-goコンポーネントとcustom-controllerコンポーネントから構成される。</p>
 <p><img alt="kubernetes_custome-controller_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_custome-controller_architecture.png" /></p>
 <p><br></p>
 <h3 id="client-go">client-goコンポーネント<a class="headerlink" href="#client-go" title="Permanent link">&para;</a></h3>
@@ -24807,8 +24807,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="custom-controller-components">custom-controller-componentsコンポーネント<a class="headerlink" href="#custom-controller-components" title="Permanent link">&para;</a></h3>
-<h4 id="custom-controller-components_1">▼ custom-controller-componentsコンポーネントとは<a class="headerlink" href="#custom-controller-components_1" title="Permanent link">&para;</a></h4>
+<h3 id="custom-controller_1">custom-controllerコンポーネント<a class="headerlink" href="#custom-controller_1" title="Permanent link">&para;</a></h3>
+<h4 id="custom-controller_2">▼ custom-controllerコンポーネントとは<a class="headerlink" href="#custom-controller_2" title="Permanent link">&para;</a></h4>
 <p>リソースイベントハンドラー、ワークキュー、アイテム処理、から構成される。</p>
 <p>これらを組み合わせて、Reconciliationを実行する。</p>
 <blockquote>
@@ -24833,7 +24833,7 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>custom-controllerは、kube-apiserverを介して、etcdにwatchイベントを送信している。</p>
+<p>Custom Controllerは、kube-apiserverを介して、etcdにwatchイベントを送信している。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
@@ -24841,7 +24841,7 @@
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>custom-controllerは、etcd上でカスタムリソースとCRDのマニフェストを検知し、実際にカスタムリソースを作成/変更する。</p>
+<p>Custom Controllerは、etcd上でカスタムリソースとCRDのマニフェストを検知し、実際にカスタムリソースを作成/変更する。</p>
 </dd>
 </dl>
 <p>クライアントからのマニフェストの作成/変更は、etcd上のマニフェストの設定値を変更しているのみで、実際のカスタムリソースを作成/変更しているわけではないことに注意する。</p>
@@ -24857,9 +24857,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="reconciliation">reconciliationループ<a class="headerlink" href="#reconciliation" title="Permanent link">&para;</a></h3>
-<p>kube-controller-managerは、Nodeにあるcustom-controllerを反復的に実行する。</p>
+<p>kube-controller-managerは、NodeにあるCustom Controllerを反復的に実行する。</p>
 <p>これにより、カスタムリソースはCRDの宣言通りに定期的に修復される (reconciliationループ) 。</p>
-<p>ただし、custom-controller自体は<code>kubectl</code>クライアントが作成する必要がある。</p>
+<p>ただし、Custom Controller自体は<code>kubectl</code>クライアントが作成する必要がある。</p>
 <p><br></p>
 <h2 id="04">04. セットアップ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_9">実装パターン<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
@@ -24870,7 +24870,7 @@
 </ul>
 </blockquote>
 <h4 id="_10">▼ 自前で実装する場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>custom-controllerを自前で実装する。</p>
+<p>Custom Controllerを自前で実装する。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/hhiroshell/articles/custom-controller-for-out-of-cluster-events">https://zenn.dev/hhiroshell/articles/custom-controller-for-out-of-cluster-events</a></li>
@@ -24880,7 +24880,7 @@
 <p><br></p>
 <h2 id="05-operator">05. Operatorパターン<a class="headerlink" href="#05-operator" title="Permanent link">&para;</a></h2>
 <h3 id="operator">Operatorパターンとは<a class="headerlink" href="#operator" title="Permanent link">&para;</a></h3>
-<p>custom-controllerを内蔵し、特定のカスタムリソースをセットアップする責務を持つ。</p>
+<p>Custom Controllerを内蔵し、特定のカスタムリソースをセットアップする責務を持つ。</p>
 <blockquote>
 <ul>
 <li><a href="https://zoetrope.github.io/kubebuilder-training/">https://zoetrope.github.io/kubebuilder-training/</a></li>
@@ -24889,7 +24889,7 @@
 <p><br></p>
 <h3 id="operator_1">Operatorパターンの仕組み<a class="headerlink" href="#operator_1" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ アーキテクチャ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>Operatorパターンは、カスタムリソース、custom-controllerのOperator、認可スコープ付与リソース、といったコンポーネントから構成されている。</p>
+<p>Operatorパターンは、カスタムリソース、Custom ControllerのOperator、認可スコープ付与リソース、といったコンポーネントから構成されている。</p>
 <p><img alt="kubernetes_operator_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_operator_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -24898,8 +24898,8 @@
 </ul>
 </blockquote>
 <h4 id="operator_2">▼ Operator<a class="headerlink" href="#operator_2" title="Permanent link">&para;</a></h4>
-<p>custom-controllerとして動作する。</p>
-<p>custom-controllerと同様に、実体はDeploymentやStatefulSet配下のPodであることが多い。</p>
+<p>Custom Controllerとして動作する。</p>
+<p>Custom Controllerと同様に、実体はDeploymentやStatefulSet配下のPodであることが多い。</p>
 <p>Operatorがいる状況で、カスタムリソースとCRDのマニフェストを何らかの方法 (例：<code>kubectl apply</code>コマンド、<code>kubectl edit</code>コマンドなど) でetcd上に永続化したとする。</p>
 <p>するとOperatorは、operatorはetcd上でカスタムリソースとCRDのマニフェストを検知し、実際にカスタムリソースを作成/変更する。</p>
 <p>反対に、CRDを削除すると、Operatorはカスタムリソースを削除する。</p>
@@ -24976,7 +24976,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-28</span>
   </span>
 
     

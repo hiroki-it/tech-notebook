@@ -25236,14 +25236,14 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
 
-<span class="k">class</span> <span class="nc">FooControllerTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="k">class</span> <span class="nc">FooコントローラーTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
 <span class="p">{</span>
     <span class="sd">/**</span>
 <span class="sd">     * @test</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo</span><span class="p">()</span>
     <span class="p">{</span>
-        <span class="c1">// アプリケーション自身のControllerクラスにリクエストを送信する処理。</span>
+        <span class="c1">// アプリケーション自身のコントローラークラスにリクエストを送信する処理。</span>
         <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
         <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
             <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
@@ -25275,91 +25275,91 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <td>POST、PUT</td>
 <td>正常系</td>
 <td>リクエストのボディにて、必須パラメーターにデータを割り当てる。</td>
-<td>・Controllerが<code>200</code>ステータスを含むレスポンスを返信すること。<br>・更新されたデータのIDが期待通りであること。<br>・レスポンスされたデータが期待通りであること。</td>
+<td>・コントローラーが<code>200</code>ステータスを含むレスポンスを返信すること。<br>・更新されたデータのIDが期待通りであること。<br>・レスポンスされたデータが期待通りであること。</td>
 </tr>
 <tr>
 <td></td>
 <td></td>
 <td>リクエストのボディにて、任意パラメーターにデータを割り当てない。</td>
-<td>・Controllerが<code>200</code>ステータスを含むレスポンスを返信すること。<br>・更新されたデータのIDが期待通りであること。<br>・レスポンスされたデータが期待通りであること。</td>
+<td>・コントローラーが<code>200</code>ステータスを含むレスポンスを返信すること。<br>・更新されたデータのIDが期待通りであること。<br>・レスポンスされたデータが期待通りであること。</td>
 </tr>
 <tr>
 <td></td>
 <td></td>
 <td>リクエストのボディにて、空文字や<code>null</code>が許可されたパラメーターに、データを割り当てない。</td>
-<td>・Controllerが<code>200</code>ステータスを含むレスポンスを返信すること。<br>・更新されたデータのIDが期待通りであること。<br>・レスポンスされたデータが期待通りであること。</td>
+<td>・コントローラーが<code>200</code>ステータスを含むレスポンスを返信すること。<br>・更新されたデータのIDが期待通りであること。<br>・レスポンスされたデータが期待通りであること。</td>
 </tr>
 <tr>
 <td></td>
 <td>異常系</td>
 <td>リクエストのボディにて、必須パラメーターにデータを割り当てない。</td>
-<td>・Controllerが<code>400</code>ステータスを含むレスポンスを返信すること。<br>・レスポンスされたデータが期待通りであること。</td>
+<td>・コントローラーが<code>400</code>ステータスを含むレスポンスを返信すること。<br>・レスポンスされたデータが期待通りであること。</td>
 </tr>
 <tr>
 <td></td>
 <td></td>
 <td>リクエストのボディにて、空文字や<code>null</code>が許可されたパラメーターに、空文字や<code>null</code>を割り当てる。</td>
-<td>・Controllerが<code>400</code>ステータスを含むレスポンスを返信すること。<br>・レスポンスされたデータが期待通りであること。</td>
+<td>・コントローラーが<code>400</code>ステータスを含むレスポンスを返信すること。<br>・レスポンスされたデータが期待通りであること。</td>
 </tr>
 <tr>
 <td></td>
 <td></td>
 <td>リクエストのボディにて、パラメーターのデータ型が誤っている。</td>
-<td>・Controllerが<code>400</code>ステータスを含むレスポンスを返信すること。<br>・レスポンスされたデータが期待通りであること。</td>
+<td>・コントローラーが<code>400</code>ステータスを含むレスポンスを返信すること。<br>・レスポンスされたデータが期待通りであること。</td>
 </tr>
 <tr>
 <td>GET</td>
 <td>正常系</td>
 <td>リクエストにて、パラメーターにデータを割り当てる。</td>
-<td>Controllerが<code>200</code>ステータスを含むレスポンスを返信すること。</td>
+<td>コントローラーが<code>200</code>ステータスを含むレスポンスを返信すること。</td>
 </tr>
 <tr>
 <td></td>
 <td>異常系</td>
 <td>リクエストのボディにて、パラメーターに参照禁止のデータを割り当てる。 (認可の失敗)</td>
-<td>Controllerが<code>403</code>ステータスを含むレスポンスを返信すること。</td>
+<td>コントローラーが<code>403</code>ステータスを含むレスポンスを返信すること。</td>
 </tr>
 <tr>
 <td>DELETE</td>
 <td>正常系</td>
 <td>リクエストのボディにて、パラメーターにデータを割り当てる。</td>
-<td>・Controllerが<code>200</code>ステータスを含むレスポンスを返信すること。<br>・削除されたデータのIDが期待通りであること。<br>・レスポンスされたデータが期待通りであること。</td>
+<td>・コントローラーが<code>200</code>ステータスを含むレスポンスを返信すること。<br>・削除されたデータのIDが期待通りであること。<br>・レスポンスされたデータが期待通りであること。</td>
 </tr>
 <tr>
 <td></td>
 <td>異常系</td>
 <td>リクエストのボディにて、パラメーターに削除禁止のデータを割り当てる。 (認可の失敗)</td>
-<td>・Controllerが<code>400</code>ステータスを含むレスポンスを返信すること。<br>・レスポンスされたデータが期待通りであること。</td>
+<td>・コントローラーが<code>400</code>ステータスを含むレスポンスを返信すること。<br>・レスポンスされたデータが期待通りであること。</td>
 </tr>
 <tr>
 <td>認証/認可</td>
 <td>正常系</td>
 <td>リクエストのヘッダーにて、認証されているトークンを割り当てる。 (認証の成功)</td>
-<td>Controllerが<code>200</code>ステータスを含むレスポンスを返信すること。</td>
+<td>コントローラーが<code>200</code>ステータスを含むレスポンスを返信すること。</td>
 </tr>
 <tr>
 <td></td>
 <td>異常系</td>
 <td>リクエストのヘッダーにて、認証されていないトークンを割り当てる。 (認証の失敗)</td>
-<td>Controllerが<code>401</code>ステータスを含むレスポンスを返信すること。</td>
+<td>コントローラーが<code>401</code>ステータスを含むレスポンスを返信すること。</td>
 </tr>
 <tr>
 <td></td>
 <td></td>
 <td>リクエストのボディにて、パラメーターにリクエスト禁止のデータを割り当てる。 (認可の失敗)</td>
-<td>Controllerが<code>403</code>ステータスを含むレスポンスを返信すること。</td>
+<td>コントローラーが<code>403</code>ステータスを含むレスポンスを返信すること。</td>
 </tr>
 </tbody>
 </table>
 <h4 id="get">▼ 正常系GET<a class="headerlink" href="#get" title="Permanent link">&para;</a></h4>
-<p>Controllerが<code>200</code>ステータスを含むレスポンスを返信することを検証する。</p>
+<p>コントローラーが<code>200</code>ステータスを含むレスポンスを返信することを検証する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
 
-<span class="k">class</span> <span class="nc">FooControllerTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="k">class</span> <span class="nc">FooコントローラーTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
 <span class="p">{</span>
    <span class="sd">/**</span>
 <span class="sd">    * @test</span>
@@ -25383,14 +25383,14 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="post">▼ 正常系POST<a class="headerlink" href="#post" title="Permanent link">&para;</a></h4>
-<p>Controllerが<code>200</code>ステータスを含むレスポンスを返信すること、更新されたデータのIDが期待通りであること、レスポンスされたデータが期待通りであることを検証する。</p>
+<p>コントローラーが<code>200</code>ステータスを含むレスポンスを返信すること、更新されたデータのIDが期待通りであること、レスポンスされたデータが期待通りであることを検証する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
 
-<span class="k">class</span> <span class="nc">FooControllerTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="k">class</span> <span class="nc">FooコントローラーTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
 <span class="p">{</span>
     <span class="sd">/**</span>
 <span class="sd">     * @test</span>
@@ -25434,14 +25434,14 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="post_1">▼ 異常系POST<a class="headerlink" href="#post_1" title="Permanent link">&para;</a></h4>
-<p>Controllerが<code>400</code>ステータスを含むレスポンスを返信すること、レスポンスされたデータが期待通りであることを検証する。</p>
+<p>コントローラーが<code>400</code>ステータスを含むレスポンスを返信すること、レスポンスされたデータが期待通りであることを検証する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
 
-<span class="k">class</span> <span class="nc">FooControllerTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="k">class</span> <span class="nc">FooコントローラーTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
 <span class="p">{</span>
     <span class="sd">/**</span>
 <span class="sd">     * @test</span>
@@ -25503,7 +25503,7 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-28</span>
   </span>
 
     

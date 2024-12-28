@@ -24811,7 +24811,7 @@
 <p><br></p>
 <h3 id="karpenter-controller">Karpenter Controller<a class="headerlink" href="#karpenter-controller" title="Permanent link">&para;</a></h3>
 <h4 id="karpenter-controller_1">▼ Karpenter Controllerとは<a class="headerlink" href="#karpenter-controller_1" title="Permanent link">&para;</a></h4>
-<p>Karpenter Controllerは、Karpenterのcustom-controllerとして、カスタムリソースを作成/変更する。</p>
+<p>Karpenter Controllerは、KarpenterのCustom Controllerとして、カスタムリソースを作成/変更する。</p>
 <p>また、カスタムリソースの設定値に応じて、API (例：起動テンプレート、AWS EC2フリート) をコールし、AWSリソース (例：起動テンプレート、AWS EC2) をプロビジョニングする。</p>
 <p>この時、AWS Load Balancer Controllerも使用していると、Clusterのサブネット内にAWS EC2 Nodeが増えたことを検知し、ターゲットグループにこれを登録してくれる。</p>
 <p>なお、NodePool配下のAWS EC2 Nodeは起動テンプレートから作成するが、起動テンプレート自体はAWS EC2 Nodeの作成後に削除するようになっている。</p>
