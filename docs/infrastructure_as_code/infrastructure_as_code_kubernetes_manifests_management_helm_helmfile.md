@@ -31,33 +31,15 @@ description: Helmfile＠Helmの知見を記録しています。
 
 マイクロサービスをチャートの単位とみなし、マイクロサービスごとに別にディレクトリを作成する。
 
-各マイクロサービスのディレクトリには、`helmfile.d`ディレクトリを置き、ここにHelmリリース単位の`helmfile.d`ファイルを置く。
+各マイクロサービスのディレクトリには、`helmfile.d`ディレクトリを置き、ここにHelmリリース単位の`helmfile.yaml`ファイルを置く。
 
 ```yaml
 repository/
 ├── foo/ # fooサービス
 │   ├── helmfile.d/
-│   │   └── helmfile.yaml # helmfile.dファイル
+│   │   └── helmfile.yaml
 │   │
 │   ├── chart/ # チャート (外部チャートを使用する場合は不要)
-│   └── values/ # 環境別のvaluesファイル
-│
-├── bar/ # barサービス
-└── baz/ # bazサービス
-```
-
-Helmリリース単位は、Kubernetesリソースとすると良い。
-
-```yaml
-repository/
-├── foo/ # fooサービス
-│   ├── helmfile.d/
-│   │   ├── deployment.yaml
-│   │   ├── service.yaml
-│   │   ├── persistent-volume.yaml
-│   │   └── persistent-volume-claim.yaml
-│   │
-│   ├── chart/ # ローカルのチャート (リモートのチャートをインストールする場合は不要)
 │   └── values/ # 環境別のvaluesファイル
 │
 ├── bar/ # barサービス
@@ -70,7 +52,7 @@ repository/
 
 ## 03. helmfile.dファイル
 
-### `helmfile.d`ファイルとは
+### `helmfile.yaml`ファイルとは
 
 `helm`コマンドを宣言的に定義する。
 
@@ -86,7 +68,7 @@ $ kubectl create namespace <Namespace名>
 $ helm install <Helmリリース名> <チャートリポジトリ名>/<チャート名> -n <Namespace名> --version <バージョンタグ>
 ```
 
-これを`helmfile.d`ファイルで定義すると、以下のようになる。
+これを`helmfile.yaml`ファイルで定義すると、以下のようになる。
 
 ```yaml
 repositories:
@@ -100,7 +82,7 @@ releases:
     version: <バージョンタグ>
 ```
 
-補足として、`helmfile.d`ファイル内でもHelmの関数を使用できる。
+補足として、`helmfile.yaml`ファイル内でもHelmの関数を使用できる。
 
 ```yaml
 environments:
@@ -127,11 +109,11 @@ releases:
 
 <br>
 
-### `helmfile.d`ファイルで使える変数
+### `helmfile.yaml`ファイルで使える変数
 
 #### ▼ `.Environment.Name`
 
-`helmfile`コマンドの`-e`オプションに渡した値は、`helmfile.d`ファイル内の`.Environment.Name`に出力できる。
+`helmfile`コマンドの`-e`オプションに渡した値は、`helmfile.yaml`ファイル内の`.Environment.Name`に出力できる。
 
 ```bash
 $ helmfile -e prd -f helmfile.yaml
@@ -143,7 +125,7 @@ $ helmfile -e prd -f helmfile.yaml
 
 #### ▼ `.Values`
 
-`helmfile`コマンドの`--state-values-set`オプションに渡した値は、`helmfile.d`ファイル内の`.Values`に出力できる。
+`helmfile`コマンドの`--state-values-set`オプションに渡した値は、`helmfile.yaml`ファイル内の`.Values`に出力できる。
 
 ```bash
 $ helmfile -e prd -f helmfile.yaml --state-values-set region=tokyo
@@ -159,7 +141,7 @@ $ helmfile -e prd -f helmfile.yaml --state-values-set region=tokyo
 
 #### ▼ environments
 
-`helmfile`コマンド時に`helmfile.d`ファイル内に環境名を渡せる。
+`helmfile`コマンド時に`helmfile.yaml`ファイル内に環境名を渡せる。
 
 > - https://helmfile.readthedocs.io/en/latest/#environment-values
 
@@ -250,8 +232,6 @@ helmfiles:
 `helmfile apply`コマンドが正常に完了しなかった場合に、自動的にロールバックする。
 
 ただし、Helmfileの自動作成機能でNamespaceは削除されずそのまま残る。
-
-原因不明であるが、ingress-nginxでこれを有効にすると、正常にPodが起動しているのにリリースが終わらない現象になった。
 
 ```yaml
 releases:
@@ -392,12 +372,26 @@ releases:
 
 #### ▼ values
 
-Helmの実行時に復号化する`values`ファイルを設定する。
+Helmの実行時に使用する上書き用の`values`ファイルを設定する。
+
+チャート内に置いた`values`ファイルを指定する必要はない。
 
 ```yaml
 releases:
   - values:
-      - ./foo-values.yaml
+      - overwrite-values.yaml
+```
+
+```yaml
+repository/
+├── foo/ # fooサービス
+│   ├── helmfile.yaml
+│   │
+│   ├── chart/ # チャート (チャート内のvaluesファイルは指定する必要はない)
+│   └── overwrite-values.yaml # 上書き用のvaluesファイル
+│
+├── bar/ # barサービス
+└── baz/ # bazサービス
 ```
 
 もし`{{ .Environment.Name }}`を使用したい場合は、`environments`キーの方でvaluesファイルを読み込ませるようにする。

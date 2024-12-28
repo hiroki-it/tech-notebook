@@ -1226,6 +1226,8 @@ spec:
 
 Istio IngressGateway/EgressGatewayのPodで待ち受けるポート番号を設定する。
 
+Ingress Nginx Controllerであれば、Nginx Controller Podで待ち受けるコンテナポート番号に相当する。
+
 IngressGatewayの内部的なServiceのタイプに関して、NodePort Serviceを選んだ場合、Nodeの宛先ポート番号に合わせる。
 
 一方で、LoadBalancer Serviceを選んだ場合、LoadBalancerがルーティングできる宛先ポート番号とする。
