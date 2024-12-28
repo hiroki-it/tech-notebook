@@ -23,7 +23,11 @@ Istioの各コンポーネントの機密でない変数やファイルを管理
 
 ### istio-ca-root-certとは
 
-Istiodコントロールプレーン (`discovery`コンテナ) による中間認証局を使用する場合に、ルート認証局から発行されたCA証明書を設定する。
+Istiodコントロールプレーン (`discovery`コンテナ) による中間認証局を使用する場合に、ルート認証局から発行されたCA証明書 (ルート証明書、トラストアンカー) をもつ。
+
+Istiodコントロールプレーンによって自動的に作成され、各マイクロサービスのPodにマウントされる。
+
+> - https://zufardhiyaulhaq.com/Replacing-Istio-CA-certificate/
 
 <br>
 
@@ -38,7 +42,7 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: istio-ca-root-cert
-  namespace: istio-system
+  namespace: app # マイクロサービスのNamespace
 data:
   root-cert.pem: |
     -----BEGIN CERTIFICATE-----
