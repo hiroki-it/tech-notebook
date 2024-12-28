@@ -185,7 +185,7 @@ Nodeに関するヘルスチェック (例：AWS EC2内のkubeletの正常性) �
 
 <br>
 
-## 06. AWS Pod Identityエージェント
+## 06. AWS Pod Identity agent
 
 記入中...
 

@@ -562,8 +562,8 @@ test_istio:
       fi
     # Nodeにラベル付けする
     - |
-      kubectl label node k3d-"${CI_PIPELINE_ID}"-agent-0 node.kubernetes.io/nodetype=ingress
-      kubectl label node k3d-"${CI_PIPELINE_ID}"-agent-1 node.kubernetes.io/nodetype=system
+      kubectl label node k3d-"${CI_PIPELINE_ID}"-agent-0 node.kubernetes.io/nodetype=ingress --overwrite
+      kubectl label node k3d-"${CI_PIPELINE_ID}"-agent-1 node.kubernetes.io/nodetype=system --overwrite
     # 動作を確認する
     - k3d cluster list
     - kubectl get node --show-labels
