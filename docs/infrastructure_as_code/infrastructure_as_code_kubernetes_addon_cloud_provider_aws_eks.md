@@ -174,7 +174,7 @@ Kubernetesのバージョンに応じて、異なるアドオンのバージョ�
 
 <br>
 
-## 05. AWS Node監視エージェント
+## 05. AWS Node monitoring agent
 
 Nodeに関するヘルスチェック (例：AWS EC2内のkubeletの正常性) を実施する。
 
