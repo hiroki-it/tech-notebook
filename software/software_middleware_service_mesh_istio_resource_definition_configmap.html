@@ -25482,8 +25482,8 @@
 <p><br></p>
 <h2 id="02-istio-ca-root-cert">02 istio-ca-root-cert<a class="headerlink" href="#02-istio-ca-root-cert" title="Permanent link">&para;</a></h2>
 <h3 id="istio-ca-root-cert">istio-ca-root-certとは<a class="headerlink" href="#istio-ca-root-cert" title="Permanent link">&para;</a></h3>
-<p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) による中間認証局を使用する場合に、ルート認証局から発行されたCA証明書 (ルート証明書) をもつ。</p>
-<p>Istiodコントロールプレーンによって自動的に作成され、各マイクロサービスのPodにマウントされる。</p>
+<p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) による中間認証局を使用する場合に、<code>istio-ca-root-cert</code>を自動的に作成する。</p>
+<p>ルート認証局から発行されたCA証明書 (ルート証明書) をもち、各マイクロサービスのPodにマウントされる。</p>
 <p><img alt="istio_istio-ca-root-cert" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-ca-root-cert.png" /></p>
 <blockquote>
 <ul>
