@@ -26101,10 +26101,11 @@
 <li>Istiodコントロールプレーンは、<code>istio-ca-secret</code> (Secret) を使用して、ルート認証局であることをオレオレで証明する。</li>
 <li>Istiodコントロールプレーンは、<code>istio-proxy</code>コンテナから送信された秘密鍵と証明書署名要求による署名で、クライアント証明書 / SSL証明書を発行する。特に設定しなければ、<code>istio-proxy</code>コンテナのpilot-agentプロセスが、秘密鍵と証明書署名要求を自動で作成してくれる。</li>
 <li><code>istio-proxy</code>コンテナからのリクエストに応じて、IstiodのSDS-APIがクライアント証明書 / SSL証明書を<code>istio-proxy</code>コンテナに配布する。</li>
-<li>CA証明書を持つ<code>istio-ca-root-cert</code> (ConfigMap) を<code>istio-proxy</code>コンテナにマウントし、証明書を認証する。</li>
+<li>Istiodコントロールプレーンは、CA証明書を持つ<code>istio-ca-root-cert</code> (ConfigMap) を自動的に作成する。これは、<code>istio-proxy</code>コンテナにマウントされ、証明書を認証する。</li>
 <li><code>istio-proxy</code>コンテナ間で相互TLS認証できるようになる。</li>
 <li>証明書が失効すると、<code>istio-proxy</code>コンテナの証明書が自動的に差し代わる。Podの再起動は不要である。</li>
 </ol>
+<p><img alt="istio_istio-ca-root-cert" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-ca-root-cert.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/concepts/security/#pki">https://istio.io/latest/docs/concepts/security/#pki</a></li>
