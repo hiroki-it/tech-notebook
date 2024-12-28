@@ -4888,13 +4888,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-istio-mesh-cm" class="md-nav__link">
+  <a href="#03-istio-mesh-cm-istio-" class="md-nav__link">
     <span class="md-ellipsis">
-      03. istio-mesh-cm
+      03. istio-mesh-cm (istio-&lt;バージョン値&gt;)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. istio-mesh-cm">
+    <nav class="md-nav" aria-label="03. istio-mesh-cm (istio-<バージョン値>)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24794,13 +24794,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-istio-mesh-cm" class="md-nav__link">
+  <a href="#03-istio-mesh-cm-istio-" class="md-nav__link">
     <span class="md-ellipsis">
-      03. istio-mesh-cm
+      03. istio-mesh-cm (istio-&lt;バージョン値&gt;)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. istio-mesh-cm">
+    <nav class="md-nav" aria-label="03. istio-mesh-cm (istio-<バージョン値>)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25482,11 +25482,13 @@
 <p><br></p>
 <h2 id="02-istio-ca-root-cert">02 istio-ca-root-cert<a class="headerlink" href="#02-istio-ca-root-cert" title="Permanent link">&para;</a></h2>
 <h3 id="istio-ca-root-cert">istio-ca-root-certとは<a class="headerlink" href="#istio-ca-root-cert" title="Permanent link">&para;</a></h3>
-<p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) による中間認証局を使用する場合に、ルート認証局から発行されたCA証明書 (ルート証明書、トラストアンカー) をもつ。</p>
+<p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) による中間認証局を使用する場合に、ルート認証局から発行されたCA証明書 (ルート証明書) をもつ。</p>
 <p>Istiodコントロールプレーンによって自動的に作成され、各マイクロサービスのPodにマウントされる。</p>
+<p><img alt="istio_istio-ca-root-cert" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-ca-root-cert.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://zufardhiyaulhaq.com/Replacing-Istio-CA-certificate/">https://zufardhiyaulhaq.com/Replacing-Istio-CA-certificate/</a></li>
+<li><a href="https://training.linuxfoundation.cn/news/407">https://training.linuxfoundation.cn/news/407</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -25505,7 +25507,7 @@
 <span class="w">    </span><span class="no">-----END CERTIFICATE-----</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="03-istio-mesh-cm">03. istio-mesh-cm<a class="headerlink" href="#03-istio-mesh-cm" title="Permanent link">&para;</a></h2>
+<h2 id="03-istio-mesh-cm-istio-">03. istio-mesh-cm (istio-&lt;バージョン値&gt;)<a class="headerlink" href="#03-istio-mesh-cm-istio-" title="Permanent link">&para;</a></h2>
 <h3 id="istio-mesh-cm">istio-mesh-cmとは<a class="headerlink" href="#istio-mesh-cm" title="Permanent link">&para;</a></h3>
 <p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) のため、全ての<code>istio-proxy</code>コンテナにグローバルに設定する変数を管理する。</p>
 <p>代わりに、IstioOperatorの<code>.spec.meshConfig</code>キーで定義することもできるが、これは非推奨である。</p>
