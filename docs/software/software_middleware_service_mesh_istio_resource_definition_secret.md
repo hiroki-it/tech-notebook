@@ -23,10 +23,6 @@ Istioの各種コンポーネントの機密な変数やファイルを管理す
 
 ### istio-ca-secretとは
 
-Istiodコントロールプレーン (`discovery`コンテナ) をルート認証局として使用する場合に、CA証明書を設定する。
-
-`discovery`コンテナは、SSL証明書とペアになる秘密鍵を`istio-ca-root-cert` (ConfigMap) に設定する。
-
 ```yaml
 apiVersion: v1
 kind: Secret
