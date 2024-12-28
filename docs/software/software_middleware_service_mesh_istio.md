@@ -422,7 +422,7 @@ AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、Keycloak、Zi
 1. Istiodコントロールプレーンは、`istio-ca-secret` (Secret) を使用して、ルート認証局であることをオレオレで証明する。
 2. Istiodコントロールプレーンは、`istio-proxy`コンテナから送信された秘密鍵と証明書署名要求による署名で、クライアント証明書 / SSL証明書を発行する。特に設定しなければ、`istio-proxy`コンテナのpilot-agentプロセスが、秘密鍵と証明書署名要求を自動で作成してくれる。
 3. `istio-proxy`コンテナからのリクエストに応じて、IstiodのSDS-APIがクライアント証明書 / SSL証明書を`istio-proxy`コンテナに配布する。
-4. 秘密鍵を持つ`istio-ca-root-cert` (ConfigMap) を`istio-proxy`コンテナにマウントし、秘密鍵とペアになるクライアント証明書 / SSL証明書に紐づける。
+4. CA証明書を持つ`istio-ca-root-cert` (ConfigMap) を`istio-proxy`コンテナにマウントし、証明書を認証する。
 5. `istio-proxy`コンテナ間で相互TLS認証できるようになる。
 6. 証明書が失効すると、`istio-proxy`コンテナの証明書が自動的に差し代わる。Podの再起動は不要である。
 
