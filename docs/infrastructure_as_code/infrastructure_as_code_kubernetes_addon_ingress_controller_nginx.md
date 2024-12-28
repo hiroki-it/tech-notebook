@@ -25,9 +25,7 @@ description: Nginx Ingress Controller＠Ingress Controllerの知見を記録し�
 
 ### Ingress
 
-```yaml
-
-```
+記入中...
 
 <br>
 

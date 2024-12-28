@@ -1163,7 +1163,7 @@ $ kubectl get node -l topology.kubernetes.io/zone=ap-northeast-1a
 
 #### ▼ -L
 
-特定の`.metadata.labels`キーを持つKubernetesリソースを取得する。
+特定の`.metadata.labels`キーを持つKubernetesリソースを取得し、`kubectl get`コマンドの結果に新しい列として追加する。
 
 小文字の`-l`オプションとは異なり、特定のラベルを持つKubernetesリソースを一覧で表示する。
 

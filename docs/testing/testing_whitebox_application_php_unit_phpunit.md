@@ -659,7 +659,7 @@ class FooNotificationTest extends TestCase
 use PHPUnit\Framework\TestCase;
 use GuzzleHttp\Client;
 
-class FooコントローラーTest extends TestCase
+class FooControllerTest extends TestCase
 {
     /**
      * @test
@@ -715,7 +715,7 @@ class FooコントローラーTest extends TestCase
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 
-class FooコントローラーTest extends TestCase
+class FooControllerTest extends TestCase
 {
    /**
     * @test
@@ -751,7 +751,7 @@ class FooコントローラーTest extends TestCase
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 
-class FooコントローラーTest extends TestCase
+class FooControllerTest extends TestCase
 {
     /**
      * @test
@@ -807,7 +807,7 @@ class FooコントローラーTest extends TestCase
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 
-class FooコントローラーTest extends TestCase
+class FooControllerTest extends TestCase
 {
     /**
      * @test

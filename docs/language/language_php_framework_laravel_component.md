@@ -3652,9 +3652,7 @@ Schema::create("foos", function (Blueprint $table) {
 
 ### artisanコマンド
 
-```bash
-
-```
+記入中...
 
 <br>
 
