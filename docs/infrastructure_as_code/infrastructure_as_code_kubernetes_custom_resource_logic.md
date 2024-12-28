@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ロジック＠custom-controller
-description: ロジック＠custom-controllerの知見を記録しています。
+title: 【IT技術の知見】ロジック＠Custom Controller
+description: ロジック＠Custom Controllerの知見を記録しています。
 ---
 
-# ロジック＠custom-controller
+# ロジック＠Custom Controller
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: ロジック＠custom-controllerの知見を記録しています�
 
 <br>
 
-## 01. Fooリソースのcustom-controller
+## 01. FooリソースのCustom Controller
 
 ### CRD
 
@@ -93,11 +93,11 @@ spec:
 
 <br>
 
-### custom-controller
+### Custom Controller
 
 #### ▼ controller.go
 
-このcustom-controllerは、FooリソースをReconciliationし、またDeploymentの状態をwatchする。
+このCustom Controllerは、FooリソースをReconciliationし、またDeploymentの状態をwatchする。
 
 ```go
 package main
@@ -364,7 +364,7 @@ func (c *Controller) syncHandler(ctx context.Context, key string) error {
 		return err
 	}
 
-    // custom-controllerの処理結果をイベントとして登録する
+    // Custom Controllerの処理結果をイベントとして登録する
     // kubectl eventsコマンドで確認できるようになる
 	c.recorder.Event(foo, corev1.EventTypeNormal, SuccessSynced, MessageResourceSynced)
 	return nil
@@ -563,7 +563,7 @@ func main() {
 	// Fooカスタムリソースを操作するために、インフォーマーを作成する
 	exampleInformerFactory := informers.NewSharedInformerFactory(exampleClient, 30 * time.Second)
 
-	// custom-controllerを作成する
+	// Custom Controllerを作成する
 	controller := NewController(
 		ctx,
 		// クライアント
@@ -585,7 +585,7 @@ func main() {
 	exampleInformerFactory.Start(ctx.Done())
 
 	// (1) 〜 (3) 、(8) 〜 (9)
-	// custom-controllerを実行する
+	// Custom Controllerを実行する
 	// ワークキュー以降の処理を実行する
 	// https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md
 	if err = controller.Run(ctx, 2); err != nil {

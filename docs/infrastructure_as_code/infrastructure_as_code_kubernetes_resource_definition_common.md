@@ -498,7 +498,7 @@ metadata:
 
 kube-controllerが設定してくれるため、開発者が設定する必要はない。
 
-また仮に開発者が変更しても、kube-controllerやcustom-controllerが正しい値に自動的に修復する。
+また仮に開発者が変更しても、kube-controllerやCustom Controllerが正しい値に自動的に修復する。
 
 ```yaml
 apiVersion: apps/v1
@@ -522,7 +522,7 @@ Kubernetesリソースの現在の状態を設定する。
 
 kube-controllerが設定してくれるため、開発者が設定する必要はない。
 
-また仮に開発者が変更しても、kube-controllerやcustom-controllerが正しい値に自動的に修復する。
+また仮に開発者が変更しても、kube-controllerやCustom Controllerが正しい値に自動的に修復する。
 
 Kubernetesリソースごとに、`.status`キー配下の構造は異なっており、
 
@@ -536,7 +536,7 @@ Kubernetesリソースごとに、`.status`キー配下の構造は異なって�
 
 kube-controllerが設定してくれるため、開発者が設定する必要はない。
 
-また仮に開発者が変更しても、kube-controllerやcustom-controllerが正しい値に自動的に修復する。
+また仮に開発者が変更しても、kube-controllerやCustom Controllerが正しい値に自動的に修復する。
 
 ```yaml
 apiVersion: apps/v1
@@ -571,13 +571,13 @@ status:
 
 #### ▼ observedGenerationとは
 
-kube-controllerやcustom-controllerがKubernetesリソースの状態を管理している場合に、これらが検知した`.metadata.generation`キーの値を設定する。
+kube-controllerやCustom ControllerがKubernetesリソースの状態を管理している場合に、これらが検知した`.metadata.generation`キーの値を設定する。
 
 kube-controllerが設定してくれるため、開発者が設定する必要はない。
 
-また仮に開発者が変更しても、kube-controllerやcustom-controllerが正しい値に自動的に修復する。
+また仮に開発者が変更しても、kube-controllerやCustom Controllerが正しい値に自動的に修復する。
 
-`.metadata.generation`キーよりも`.status.observedGeneration`キーの方が世代数が小さい場合、kube-controllerやcustom-controllerがKubernetesリソースを検出できていない不具合を表す。
+`.metadata.generation`キーよりも`.status.observedGeneration`キーの方が世代数が小さい場合、kube-controllerやCustom ControllerがKubernetesリソースを検出できていない不具合を表す。
 
 ```yaml
 apiVersion: apps/v1

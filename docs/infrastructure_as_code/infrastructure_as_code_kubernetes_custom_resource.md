@@ -84,15 +84,15 @@ CRDとカスタムリソースを含むチャートをインストールする�
 
 <br>
 
-### custom-controllerによる管理
+### Custom Controllerによる管理
 
 #### ▼ 非チャートとして
 
-custom-controllerのマニフェストを送信し、後はcustom-controllerにカスタムリソースを作成させる。
+Custom Controllerのマニフェストを送信し、後はCustom Controllerにカスタムリソースを作成させる。
 
 #### ▼ チャートとして
 
-custom-controllerのチャートをインストールし、後はcustom-controllerにカスタムリソースを作成させる。
+Custom Controllerのチャートをインストールし、後はCustom Controllerにカスタムリソースを作成させる。
 
 <br>
 
@@ -102,7 +102,7 @@ custom-controllerのチャートをインストールし、後はcustom-controll
 
 カスタムリソースを宣言的に定義する。
 
-ただし、kube-controllerはetcd内のカスタムリソースを検知できず、これを検知するためにはcustom-controllerを作成する必要がある。
+ただし、kube-controllerはetcd内のカスタムリソースを検知できず、これを検知するためにはCustom Controllerを作成する必要がある。
 
 <br>
 

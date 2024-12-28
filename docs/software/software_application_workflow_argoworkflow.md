@@ -56,7 +56,7 @@ type archivedWorkflowMetadata struct {
 
 ### workflow-controllerとは
 
-特にArgoCD Workflowのcustom-controllerとして、ArgoCD Workflowのマニフェストを作成/変更する。
+特にArgoCD WorkflowのCustom Controllerとして、ArgoCD Workflowのマニフェストを作成/変更する。
 
 application-controllerを分離されている理由は、ArgoCD WorkflowのマニフェストはArgoCDのデプロイ先Clusterに作成するためである。
 

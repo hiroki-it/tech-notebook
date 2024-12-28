@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】custom-controller＠カスタムリソース
-description: custom-controller＠カスタムリソースの知見を記録しています。
+title: 【IT技術の知見】Custom Controller＠カスタムリソース
+description: Custom Controller＠カスタムリソースの知見を記録しています。
 ---
 
-# custom-controller＠カスタムリソース
+# Custom Controller＠カスタムリソース
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: custom-controller＠カスタムリソースの知見を記録し�
 
 <br>
 
-## 01. custom-controllerとは
+## 01. Custom Controllerとは
 
 カスタムリソースのためのkube-controllerに相当する。
 
@@ -23,11 +23,11 @@ description: custom-controller＠カスタムリソースの知見を記録し�
 
 <br>
 
-## 02. custom-controllerの仕組み
+## 02. Custom Controllerの仕組み
 
 ### アーキテクチャ
 
-custom-controllerは、client-goコンポーネントとcustom-controller-componentsコンポーネントから構成される。
+Custom Controllerは、client-goコンポーネントとcustom-controllerコンポーネントから構成される。
 
 ![kubernetes_custome-controller_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_custome-controller_architecture.png)
 
@@ -67,9 +67,9 @@ Delta FIFOキューからKubernetesリソースの実体を取得する。
 
 <br>
 
-### custom-controller-componentsコンポーネント
+### custom-controllerコンポーネント
 
-#### ▼ custom-controller-componentsコンポーネントとは
+#### ▼ custom-controllerコンポーネントとは
 
 リソースイベントハンドラー、ワークキュー、アイテム処理、から構成される。
 
@@ -98,7 +98,7 @@ Delta FIFOキューからKubernetesリソースの実体を取得する。
 
 `(1)`
 
-: custom-controllerは、kube-apiserverを介して、etcdにwatchイベントを送信している。
+: Custom Controllerは、kube-apiserverを介して、etcdにwatchイベントを送信している。
 
 `(2)`
 
@@ -106,7 +106,7 @@ Delta FIFOキューからKubernetesリソースの実体を取得する。
 
 `(3)`
 
-: custom-controllerは、etcd上でカスタムリソースとCRDのマニフェストを検知し、実際にカスタムリソースを作成/変更する。
+: Custom Controllerは、etcd上でカスタムリソースとCRDのマニフェストを検知し、実際にカスタムリソースを作成/変更する。
 
 クライアントからのマニフェストの作成/変更は、etcd上のマニフェストの設定値を変更しているのみで、実際のカスタムリソースを作成/変更しているわけではないことに注意する。
 
@@ -125,11 +125,11 @@ kube-controllerに不具合があると、etcd上のCRDの通りにカスタム�
 
 ### reconciliationループ
 
-kube-controller-managerは、Nodeにあるcustom-controllerを反復的に実行する。
+kube-controller-managerは、NodeにあるCustom Controllerを反復的に実行する。
 
 これにより、カスタムリソースはCRDの宣言通りに定期的に修復される (reconciliationループ) 。
 
-ただし、custom-controller自体は`kubectl`クライアントが作成する必要がある。
+ただし、Custom Controller自体は`kubectl`クライアントが作成する必要がある。
 
 <br>
 
@@ -143,7 +143,7 @@ kube-controller-managerは、Nodeにあるcustom-controllerを反復的に実行
 
 #### ▼ 自前で実装する場合
 
-custom-controllerを自前で実装する。
+Custom Controllerを自前で実装する。
 
 > - https://zenn.dev/hhiroshell/articles/custom-controller-for-out-of-cluster-events
 > - https://github.com/hhiroshell/storage-bucket-prober/blob/main/controllers/storagebucket_controller.go
@@ -154,7 +154,7 @@ custom-controllerを自前で実装する。
 
 ### Operatorパターンとは
 
-custom-controllerを内蔵し、特定のカスタムリソースをセットアップする責務を持つ。
+Custom Controllerを内蔵し、特定のカスタムリソースをセットアップする責務を持つ。
 
 > - https://zoetrope.github.io/kubebuilder-training/
 
@@ -164,7 +164,7 @@ custom-controllerを内蔵し、特定のカスタムリソースをセットア
 
 #### ▼ アーキテクチャ
 
-Operatorパターンは、カスタムリソース、custom-controllerのOperator、認可スコープ付与リソース、といったコンポーネントから構成されている。
+Operatorパターンは、カスタムリソース、Custom ControllerのOperator、認可スコープ付与リソース、といったコンポーネントから構成されている。
 
 ![kubernetes_operator_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_operator_architecture.png)
 
@@ -173,9 +173,9 @@ Operatorパターンは、カスタムリソース、custom-controllerのOperato
 
 #### ▼ Operator
 
-custom-controllerとして動作する。
+Custom Controllerとして動作する。
 
-custom-controllerと同様に、実体はDeploymentやStatefulSet配下のPodであることが多い。
+Custom Controllerと同様に、実体はDeploymentやStatefulSet配下のPodであることが多い。
 
 Operatorがいる状況で、カスタムリソースとCRDのマニフェストを何らかの方法 (例：`kubectl apply`コマンド、`kubectl edit`コマンドなど) でetcd上に永続化したとする。
 
