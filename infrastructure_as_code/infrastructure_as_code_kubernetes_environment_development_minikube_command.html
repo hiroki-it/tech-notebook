@@ -25335,18 +25335,24 @@ Server<span class="w"> </span>Version:<span class="w"> </span>version.Info<span 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>node<span class="w"> </span>add<span class="w"> </span>--worker
 </code></pre></div>
 <p>追加したワーカーNodeに<code>.metadata.labeles</code>キーを追加すれば、node affinityやnode selectorを検証できる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># minikube-m01 はコントロールプレーンNodeのため、ラベルづけ不要である。</span>
+</code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># ArgoCDを作成するワーカーNodeの場合</span>
-$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>minikube-m01<span class="w"> </span>node-type<span class="o">=</span>deploy<span class="w"> </span>--overwrite
-
-<span class="c1"># IngressやIngressGatewayを作成するワーカーNodeの場合</span>
-$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>minikube-m02<span class="w"> </span>node-type<span class="o">=</span>ingress<span class="w"> </span>--overwrite
-
-<span class="c1"># アプリケーションを作成するワーカーNodeの場合</span>
-$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>minikube-m03<span class="w"> </span>node-type<span class="o">=</span>app<span class="w"> </span>--overwrite
+$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>minikube-m02<span class="w"> </span>node-type<span class="o">=</span>deploy<span class="w"> </span>--overwrite
+$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>minikube-m02<span class="w"> </span>node-role.kubernetes.io/worker<span class="o">=</span>worker<span class="w"> </span>--overwrite
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># IngressやIngressGatewayを作成するワーカーNodeの場合</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>minikube-m03<span class="w"> </span>node-type<span class="o">=</span>ingress<span class="w"> </span>--overwrite
+$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>minikube-m03<span class="w"> </span>node-role.kubernetes.io/worker<span class="o">=</span>worker<span class="w"> </span>--overwrite
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># アプリケーションを作成するワーカーNodeの場合</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>minikube-m04<span class="w"> </span>node-type<span class="o">=</span>app<span class="w"> </span>--overwrite
+$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>minikube-m04<span class="w"> </span>node-role.kubernetes.io/worker<span class="o">=</span>worker<span class="w"> </span>--overwrite
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/zaburo/items/efd7315161281d9822ed">https://qiita.com/zaburo/items/efd7315161281d9822ed</a></li>
+<li><a href="https://stackoverflow.com/a/51563019">https://stackoverflow.com/a/51563019</a></li>
 </ul>
 </blockquote>
 <p><br></p>
