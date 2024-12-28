@@ -668,7 +668,7 @@ nav:
               - AWS EKS: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_aws_eks.md
       - ■ カスタムリソース:
           - カスタムリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.md
-          - custom-controller: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.md
+          - Custom Controller: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.md
           - ロジック: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_logic.md
 
   - 🌊 K8s開発:
@@ -712,13 +712,13 @@ nav:
       - infrastructure_as_code/kubernetes_addon/index.md
       - ■ コントロールプレーン系:
           - admission-controllers: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.md
-      - ■ Ingressコントローラー系:
-          - Ingressコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.md
-          - ■ AWS Load Balancerコントローラー:
-              - AWS Load Balancerコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.md
+      - ■ Ingress Controller系:
+          - Ingress Controller: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.md
+          - ■ AWS Load Balancer Controller:
+              - AWS Load Balancer Controller: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.md
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb_resource_definition.md
-          - ■ Nginx Ingressコントローラー:
-              - Nginx Ingressコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx.md
+          - ■ Nginx Ingress Controller:
+              - Nginx Ingress Controller: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx.md
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx_resource_definition.md
       - ■ ハードウェアリソース管理系:
           - addon-resizer: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_addon_resizer.md
