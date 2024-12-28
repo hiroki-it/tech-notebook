@@ -139,6 +139,6 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 #### ▼ アグリゲーターパターンの実装例
 
-`L7`ロードバランサーはIngressコントローラー、アグリゲーターはDeploymentなどで実装できる。
+`L7`ロードバランサーはIngress Controller、アグリゲーターはDeploymentなどで実装できる。
 
 <br>

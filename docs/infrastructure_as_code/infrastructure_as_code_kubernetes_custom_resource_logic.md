@@ -195,7 +195,7 @@ func NewController(ctx context.Context, kubeclientset kubernetes.Interface, samp
 
 	logger.Info("Setting up event handlers")
 
-	// 作成するコントローラーのインフォーマーにイベントハンドラーを設定する
+	// 作成するControllerのインフォーマーにイベントハンドラーを設定する
 	// このイベントハンドラーは、Fooリソースの状態をwatchし、状態が変化した時に発火する
 	fooInformer.Informer().AddEventHandler(cache.ResourceEventHandlerFuncs{
 		AddFunc: controller.enqueueFoo,
@@ -204,7 +204,7 @@ func NewController(ctx context.Context, kubeclientset kubernetes.Interface, samp
 		},
 	})
 
-	// 作成するコントローラーのインフォーマーにイベントハンドラーを設定する
+	// 作成するControllerのインフォーマーにイベントハンドラーを設定する
 	// このイベントハンドラーは、Deploymentの状態をwatchし、状態が変化した時に発火する
 	deploymentInformer.Informer().AddEventHandler(cache.ResourceEventHandlerFuncs{
 		AddFunc: controller.handleObject,

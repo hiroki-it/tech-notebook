@@ -35,7 +35,7 @@ AWS Load Balancer Controllerは、Ingressの`.metadata.annotations`キーと`.sp
 
 AWS ALBでHTTPSプロトコルを受け付ける場合、事前に作成したACMのSSL証明書のARNを設定する。
 
-AWS LB Controllerは、プロビジョニングしたALBにACMのSSL証明書を自動的に紐づける。
+AWS Load Balancer Controllerは、プロビジョニングしたALBにACMのSSL証明書を自動的に紐づける。
 
 ```yaml
 apiVersion: networking.k8s.io/v1

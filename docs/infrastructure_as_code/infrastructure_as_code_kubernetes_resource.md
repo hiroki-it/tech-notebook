@@ -714,7 +714,7 @@ NodePort ServiceやLoadBalancer Serviceと同様に、外部からのリクエ�
 
 `L7`プロトコルの通信のみを処理できる。
 
-また、Ingressそれ自体はルールのみを持ち、Ingressコントローラーがロードバランサーとして機能する。
+また、Ingressそれ自体はルールのみを持ち、Ingress Controllerがロードバランサーとして機能する。
 
 #### ▼ パスベースルーティング
 
@@ -740,21 +740,21 @@ NodePort ServiceやLoadBalancer Serviceと同様に、外部からのリクエ�
 
 #### ▼ IngressClassとは
 
-Ingressコントローラーの実体として使用するツールを指定する。
+Ingress Controllerの実体として使用するツールを指定する。
 
 <br>
 
-### Ingressコントローラー
+### Ingress Controller
 
-#### ▼ Ingressコントローラー
+#### ▼ Ingress Controllerとは
 
-Ingressコントローラーは、`L7`ロードバランサーとしてPodに通信をルーティングする。
+Ingress Controllerは、`L7`ロードバランサーとしてPodに通信をルーティングする。
 
 Node外から通信を受信し、Ingressに定義されたルールに応じて、単一/複数のServiceにルーティングする。
 
-クラウドプロバイダー (例：AWS) では、Ingressコントローラー状況下でIngressを作成すると、Ingressの設定値に応じた`L7`ロードバランサー (例：AWS ALBとAWSターゲットグループ) を自動的にプロビジョニングする。
+クラウドプロバイダー (例：AWS) では、Ingress Controller状況下でIngressを作成すると、Ingressの設定値に応じた`L7`ロードバランサー (例：AWS ALBとAWSターゲットグループ) を自動的にプロビジョニングする。
 
-ただし、クラウドプロバイダーによっては、IngressコントローラーとClusterIP Serviceを仲介するカスタムリソース (例：AWS TargetGroupBindingsなど) を提供している場合がある。
+ただし、クラウドプロバイダーによっては、Ingress ControllerとClusterIP Serviceを仲介するカスタムリソース (例：AWS TargetGroupBindingsなど) を提供している場合がある。
 
 この場合、クラウドプロバイダーのリソースとKubernetesが疎結合になり、責務の境界を明確化できる。
 
@@ -807,7 +807,7 @@ Cluster-IPはNode外から宛先として指定できないため、通信にIng
 パブリックネットワーク
 ⬇⬆︎︎
 # L7ロードバランサー
-Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Load Balancerコントローラーなど)
+Ingress Controller (例：Nginx Ingress Controller、AWS Load Balancer Controllerなど)
 ⬇⬆︎︎
 # L4ロードバランサー
 ClusterIP Service
@@ -842,7 +842,7 @@ NodePort Service
 Pod
 ```
 
-パブリックプロバイダーのLB (例：AWS ALB) を別に置いても良い (このLBは、Ingressコントローラー由来ではない) 。
+パブリックプロバイダーのLB (例：AWS ALB) を別に置いても良い (このLBは、Ingress Controller由来ではない) 。
 
 ```yaml
 パブリックネットワーク
@@ -868,7 +868,7 @@ Pod
 パブリックネットワーク
 ⬇⬆︎︎
 # L7ロードバランサー
-Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Load Balancerコントローラー)
+Ingress Controller (例：Nginx Ingress Controller、AWS Load Balancer Controller)
 ⬇⬆︎︎
 # L4ロードバランサー
 ClusterIP Service (実体はNodePort Service)
@@ -911,7 +911,7 @@ Pod
 
 クラウドプロバイダーのリソースとKubernetesリソースが密結合になり、責務の境界が曖昧になってしまう。
 
-なお、注意点として、Ingressコントローラーは`L7`ロードバランサーを自動的にプロビジョニングする。
+なお、注意点として、Ingress Controllerは`L7`ロードバランサーを自動的にプロビジョニングする。
 
 > - https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
 > - https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0

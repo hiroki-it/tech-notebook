@@ -14,16 +14,16 @@
 
 <br>
 
-### Ingressコントローラー系
+### Ingress Controller系
 
-* #### [Ingressコントローラー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.html)
+* #### [Ingress Controller](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.html)
 
-* #### <u>AWS Load Balancerコントローラー</u>
-  > * ##### [AWS Load Balancerコントローラー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.html)
+* #### <u>AWS Load Balancer Controller</u>
+  > * ##### [AWS Load Balancer Controller](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.html)
   > * ##### [リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb_resource_definition.html)
 
-* #### <u>Nginx Ingressコントローラー</u>
-  > * ##### [Nginx Ingressコントローラー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx.html)
+* #### <u>Nginx Ingress Controller</u>
+  > * ##### [Nginx Ingress Controller](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx.html)
   > * ##### [リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx_resource_definition.html)
 
 <br>

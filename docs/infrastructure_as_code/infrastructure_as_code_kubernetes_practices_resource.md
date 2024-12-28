@@ -337,11 +337,11 @@ Nodeグループにあったストレージを割り当てる。
 
 社内向けアプリケーションやテスト環境で、インバウンドな通信を全て許可することは危険である。
 
-Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Load Balancerコントローラー、GCE L7 load balancerコントローラーなど) が提供する機能を使用して、インバウンド通信を制限する。
+Ingress Controller (例：Nginx Ingress Controller、AWS Load Balancer Controller、GCE L7 load Balancer Controllerなど) が提供する機能を使用して、インバウンド通信を制限する。
 
 なお、Ingressのインバウンド通信を制限することはあっても、Egressのアウトバウンド通信を制限するとむしろ不便になるため、Egressのアウトバウンド通信は全て許可しておく。
 
-多くのIngressコントローラーでは、制限のルールをIngressの`.metadata.annotations`キーに直接設定するか、Ingressから切り離して設定するか (例：ConfigMap、AWS WAF、CloudArmor) を選べる。
+多くのIngress Controllerでは、制限のルールをIngressの`.metadata.annotations`キーに直接設定するか、Ingressから切り離して設定するか (例：ConfigMap、AWS WAF、CloudArmor) を選べる。
 
 管理しやすいように、Ingressから切り離して設定すると良い。
 
@@ -447,7 +447,7 @@ metrics-serverはデフォルトでClusterに存在していないため、別�
 
 ### L7のプロトコルの場合
 
-冗長化したワーカーNodeに負荷分散できるように、ワーカーNodeのダウンストリームにIngressコントローラーの管理するL7ロードバランサー (例：Nginx、Envoy、Istio IngressGateway、AWS ALB、Google CLBなど) やこれに相当するもの (例：Gateway-APIを使用しないIstio Ingress Gateway) を置く。
+冗長化したワーカーNodeに負荷分散できるように、ワーカーNodeのダウンストリームにIngress Controllerの管理するL7ロードバランサー (例：Nginx、Envoy、Istio IngressGateway、AWS ALB、Google CLBなど) やこれに相当するもの (例：Gateway-APIを使用しないIstio Ingress Gateway) を置く。
 
 L7ロードバランサーが冗長化されたNodeに適切にインバウンドな通信を振り分ける。
 

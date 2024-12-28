@@ -855,7 +855,7 @@ data:
 
 #### ▼ ingressServiceとは
 
-全ての`istio-proxy`コンテナに関して、使用するIngressコントローラーの`.metadata.labels.istio`キーの値を設定する。
+全ての`istio-proxy`コンテナに関して、使用するIngress Controllerの`.metadata.labels.istio`キーの値を設定する。
 
 デフォルトでは、Ingressとして`ingressgateway`が設定される。
 

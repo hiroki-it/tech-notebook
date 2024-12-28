@@ -112,7 +112,7 @@ cloud-controllerを使用して、kube-apiserverがクラウドインフラを�
 
 AWS EKSの場合、LoadBalancer Serviceを作成すると、AWS EKS内のcloud-controller-managerがAWS CLBを自動的にプロビジョニングする。
 
-もしAWS ALBやAWS NLBを作成したい場合、AWS Load Balancerコントローラーが必要である。
+もしAWS ALBやAWS NLBを作成したい場合、AWS Load Balancer Controllerが必要である。
 
 <br>
 

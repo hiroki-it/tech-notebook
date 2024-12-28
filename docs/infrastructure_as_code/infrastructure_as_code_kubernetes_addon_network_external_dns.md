@@ -17,9 +17,9 @@ description: ExternalDNS＠ネットワーク系の知見を記録していま�
 
 ### アーキテクチャ
 
-ExternalDNSコントローラーは、ネットワークからのリクエストにDNSレコードを必要とするKubernetesリソース (例：Ingress、Serviceなど) の設定値に応じて、DNSプロバイダー (例：AWS AWS Route53) にDNSレコードを自動的に作成する。
+ExternalDNS Controllerは、ネットワークからのリクエストにDNSレコードを必要とするKubernetesリソース (例：Ingress、Serviceなど) の設定値に応じて、DNSプロバイダー (例：AWS AWS Route53) にDNSレコードを自動的に作成する。
 
-Ingressコントローラー (例：aws-load-balancer-controller、glb-controller) と合わせて使用し、パブリックネットワークからのリクエストをArgoCDのダッシュボード (argocd-server) にルーティング可能にする。
+Ingress Controller (例：aws-load-balancer-controller、glb-controller) と合わせて使用し、パブリックネットワークからのリクエストをArgoCDのダッシュボード (argocd-server) にルーティング可能にする。
 
 ![external-dns_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/external-dns_architecture.png)
 
@@ -151,7 +151,7 @@ spec:
 
 #### ▼ external-dns
 
-ExternalDNSコントローラーがDNSプロバイダー (例：AWS Route53) にリクエストを送信できるように、ExternalDNSコントローラーにはClusterRoleに基づく認可スコープを持つ。
+ExternalDNS ControllerがDNSプロバイダー (例：AWS Route53) にリクエストを送信できるように、ExternalDNS ControllerにはClusterRoleに基づく認可スコープを持つ。
 
 ```yaml
 apiVersion: v1

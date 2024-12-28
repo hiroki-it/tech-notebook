@@ -777,7 +777,7 @@ ArgoCD自体をArgoCDで管理することはできないため、手動やマ�
 
 ## 13-02. B/G式のアップグレード (AWS EKSの場合)
 
-### AWS Load Balancerコントローラーを採用している場合
+### AWS Load Balancer Controllerを採用している場合
 
 #### ▼ 新しくAWS ALBを作成する場合
 
@@ -794,7 +794,7 @@ ArgoCD自体をArgoCDで管理することはできないため、手動やマ�
 
 <br>
 
-### AWS ALB、Nginxコントローラーを採用している場合
+### AWS ALB、Nginx Controllerを採用している場合
 
 AWS ALBのターゲットグループでB/G Clusterを切り替える方法。
 

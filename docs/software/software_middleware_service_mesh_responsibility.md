@@ -197,10 +197,10 @@ Kubernetesでは、Podの作成に応じて証明書のKubernetesリソース (C
 
 ### Kubernetesとの親和性
 
-| 責務                  | Istio | Linkerd | Consul | AWS VPC Lattice |
-| --------------------- | :---: | :-----: | :----: | :-------------: |
-| Ingressコントローラー | `⭕️`  |  `⭕️`   |  `⭕️`  |        ×        |
-| Egressコントローラー  | `⭕️`  |    ×    |   ×    |        ×        |
-| カスタムリソース      | `⭕️`  |  `⭕️`   |   ×    |        ×        |
+| 責務               | Istio | Linkerd | Consul | AWS VPC Lattice |
+| ------------------ | :---: | :-----: | :----: | :-------------: |
+| Ingress Controller | `⭕️`  |  `⭕️`   |  `⭕️`  |        ×        |
+| Egress Controller  | `⭕️`  |    ×    |   ×    |        ×        |
+| カスタムリソース   | `⭕️`  |  `⭕️`   |   ×    |        ×        |
 
 <br>

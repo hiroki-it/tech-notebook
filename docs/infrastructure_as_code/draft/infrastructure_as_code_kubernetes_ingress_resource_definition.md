@@ -17,6 +17,6 @@ description: Ingress系＠CNCFの知見を記録しています。
 
 ### IngressClassParamsとは
 
-外部のIngressコントローラーを使用する場合、Ingressに渡すオプションを設定する。
+外部のIngress Controllerを使用する場合、Ingressに渡すオプションを設定する。
 
 <br>

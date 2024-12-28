@@ -211,7 +211,7 @@ data "aws_iam_policy_document" "opentelemetry_collector_policy" {
 
 #### ▼ ゲートウェイパターンの実装例
 
-`L7`ロードバランサーはIngressコントローラーや`istio-proxy`コンテナ、ゲートウェイはDeploymentなどで実装できる。
+`L7`ロードバランサーはIngress Controllerや`istio-proxy`コンテナ、ゲートウェイはDeploymentなどで実装できる。
 
 #### ▼ ゲートウェイパターンのデメリット
 
