@@ -25484,11 +25484,13 @@
 <h3 id="istio-ca-root-cert">istio-ca-root-certとは<a class="headerlink" href="#istio-ca-root-cert" title="Permanent link">&para;</a></h3>
 <p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) による中間認証局を使用する場合に、<code>istio-ca-root-cert</code>を自動的に作成する。</p>
 <p>ルート認証局から発行されたCA証明書 (ルート証明書) をもち、各マイクロサービスのPodにマウントされる。</p>
+<p>各マイクロサービスのPodの証明書を署名するために使用される。</p>
 <p><img alt="istio_istio-ca-root-cert" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-ca-root-cert.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://zufardhiyaulhaq.com/Replacing-Istio-CA-certificate/">https://zufardhiyaulhaq.com/Replacing-Istio-CA-certificate/</a></li>
 <li><a href="https://training.linuxfoundation.cn/news/407">https://training.linuxfoundation.cn/news/407</a></li>
+<li><a href="https://developers.redhat.com/articles/2023/08/24/integrate-openshift-service-mesh-cert-manager-and-vault#default_and_pluggable_ca_scenario">https://developers.redhat.com/articles/2023/08/24/integrate-openshift-service-mesh-cert-manager-and-vault#default_and_pluggable_ca_scenario</a></li>
 </ul>
 </blockquote>
 <p><br></p>

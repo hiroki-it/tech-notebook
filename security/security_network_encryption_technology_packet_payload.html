@@ -25088,7 +25088,7 @@
 <p><br></p>
 <h3 id="_5">成りすましを防ぐため<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>『デジタル署名』によって実現される。</p>
-<p>正しい相手であることを証明することによって、成りすましを防ぐ。</p>
+<p>正しい相手であることを認証することによって、成りすましを防ぐ。</p>
 <p><img alt="盗聴_改竄_成りすまし" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/盗聴_改竄_成りすまし_3.png" /></p>
 <p><br></p>
 <h2 id="02">02. 暗号ダイジェスト (デジタル署名) について<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
@@ -25246,7 +25246,7 @@
 <h3 id="ca">CA証明書 (ルート証明書、トラストアンカー)<a class="headerlink" href="#ca" title="Permanent link">&para;</a></h3>
 <p>『ルート証明書』『トラストアンカー』ともいう。</p>
 <p>ルート認証局が、自身の信頼性を担保するために発行する証明書のこと。</p>
-<p>ルート認証局は、ブラウザの開発会社の厳しい監査を受けているため、CA証明書を使用して自分で自分を証明できる。</p>
+<p>ルート認証局は、ブラウザの開発会社の厳しい監査を受けているため、CA証明書を使用して自分で自分を認証できる。</p>
 <p>CA証明書は、各種OSでインストールできる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Ubuntuの場合</span>
 <span class="c1"># https://ubuntu.com/server/docs/security-trust-store</span>
@@ -25265,7 +25265,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </blockquote>
 <p><br></p>
 <h3 id="ca_1">中間CA証明書<a class="headerlink" href="#ca_1" title="Permanent link">&para;</a></h3>
-<p>中間認証局がルート認証局に自身を証明するために発行する証明書のこと。</p>
+<p>中間認証局がルート認証局に自身を認証するために発行する証明書のこと。</p>
 <p>ルート認証局が中間認証局の中間CA証明書に署名することにより、中間認証局は自身の信頼性を担保する。</p>
 <p>もしルート認証局に署名されていない中間認証局でSSL証明書を署名すると、『このWebサイトで提示されたセキュリティ証明書は、信頼された証明機関から発行されたものではありません』といったような警告文が出る。</p>
 <blockquote>
@@ -25284,9 +25284,9 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <p><br></p>
 <h3 id="ssl">SSL証明書<a class="headerlink" href="#ssl" title="Permanent link">&para;</a></h3>
 <p>デジタル証明書をSSLに使用する場合、特にSSL証明書という。</p>
-<p>Webサイトのドメインの購入者が、ペアになる秘密鍵と組み合わせることにより、ドメインの所有者であることを証明する。</p>
-<p>ただし、ドメインの購入者は自分で自分を証明できないため、代わりにルート認証局がこれを担保する。</p>
-<p>中間CA証明書を使用してSSL証明書を証明する場合、SSL証明書の内容と中間CA証明書と連結する。</p>
+<p>Webサイトのドメインの購入者が、ペアになる秘密鍵と組み合わせることにより、ドメインの所有者であることを認証する。</p>
+<p>ただし、ドメインの購入者は自分で自分を認証できないため、代わりにルート認証局がこれを担保する。</p>
+<p>中間CA証明書を使用してSSL証明書を認証する場合、SSL証明書の内容と中間CA証明書と連結する。</p>
 <p>より下位の証明書から順番に連結していく。</p>
 <div class="highlight"><pre><span></span><code><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">-----BEGIN CERTIFICATE-----</span>
@@ -25747,7 +25747,7 @@ Email<span class="w"> </span>Address<span class="w"> </span><span class="o">[]</
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-29</span>
   </span>
 
     
