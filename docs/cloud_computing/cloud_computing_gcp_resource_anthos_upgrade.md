@@ -374,10 +374,10 @@ metadata:
 
 ```bash
 # Istio IngressGatewayの特定のNamespace
-$ kubectl label namespace ingress istio.io/rev=asm-1140-0 istio-injection- --overwrite
+$ kubectl label ns ingress istio.io/rev=asm-1140-0 istio-injection- --overwrite
 
 # アプリの特定のNamespace
-$ kubectl label namespace app istio.io/rev=asm-1140-0 istio-injection- --overwriteNa
+$ kubectl label ns app istio.io/rev=asm-1140-0 istio-injection- --overwrite
 ```
 
 `(10)`

@@ -1294,6 +1294,10 @@ $ kubectl get pod -w
 $ kubectl label <リソースの種類> <リソース名> foo=bar
 ```
 
+```bash
+$ kubectl label ns default istio.io/rev=stable
+```
+
 #### ▼ オプション無し (キーの削除)
 
 指定したリソースの`.metadata.labels`キーを削除する。
@@ -1305,7 +1309,7 @@ $ kubectl label <リソースの種類> <リソース名> foo-
 **＊例＊**
 
 ```bash
-$ kubectl label namespace default istio.io/rev-
+$ kubectl label ns default istio.io/rev-
 ```
 
 #### ▼ --overwrite
