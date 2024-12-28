@@ -44,6 +44,10 @@ data:
   ca-cert.pem: *****
 ```
 
+<br>
+
+### ca-key.pem
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -54,6 +58,10 @@ type: istio.io/ca-root
 data:
   ca-key.pem: *****
 ```
+
+<br>
+
+### cert-chain.pem
 
 ```yaml
 apiVersion: v1
@@ -66,6 +74,10 @@ data:
   cert-chain.pem: ""
 ```
 
+<br>
+
+### key.pem
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -76,6 +88,10 @@ type: istio.io/ca-root
 data:
   key.pem: ""
 ```
+
+<br>
+
+### root-cert.pem
 
 ```yaml
 apiVersion: v1
