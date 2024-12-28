@@ -17120,7 +17120,7 @@
         
   
   <span class="md-ellipsis">
-    custom-controller
+    Custom Controller
   </span>
   
 
@@ -19148,7 +19148,7 @@
             
   
   <span class="md-ellipsis">
-    ■ Ingressコントローラー系
+    ■ Ingress Controller系
   </span>
   
 
@@ -19158,7 +19158,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_18_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_18_3">
             <span class="md-nav__icon md-icon"></span>
-            ■ Ingressコントローラー系
+            ■ Ingress Controller系
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -19173,7 +19173,7 @@
         
   
   <span class="md-ellipsis">
-    Ingressコントローラー
+    Ingress Controller
   </span>
   
 
@@ -19215,7 +19215,7 @@
             
   
   <span class="md-ellipsis">
-    ■ AWS Load Balancerコントローラー
+    ■ AWS Load Balancer Controller
   </span>
   
 
@@ -19225,7 +19225,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_18_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_18_3_2">
             <span class="md-nav__icon md-icon"></span>
-            ■ AWS Load Balancerコントローラー
+            ■ AWS Load Balancer Controller
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -19240,7 +19240,7 @@
         
   
   <span class="md-ellipsis">
-    AWS Load Balancerコントローラー
+    AWS Load Balancer Controller
   </span>
   
 
@@ -19311,7 +19311,7 @@
             
   
   <span class="md-ellipsis">
-    ■ Nginx Ingressコントローラー
+    ■ Nginx Ingress Controller
   </span>
   
 
@@ -19321,7 +19321,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_18_3_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_18_3_3">
             <span class="md-nav__icon md-icon"></span>
-            ■ Nginx Ingressコントローラー
+            ■ Nginx Ingress Controller
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -19336,7 +19336,7 @@
         
   
   <span class="md-ellipsis">
-    Nginx Ingressコントローラー
+    Nginx Ingress Controller
   </span>
   
 
@@ -25336,13 +25336,13 @@ Server<span class="w"> </span>Version:<span class="w"> </span>version.Info<span 
 </code></pre></div>
 <p>追加したワーカーNodeに<code>.metadata.labeles</code>キーを追加すれば、node affinityやnode selectorを検証できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ArgoCDを作成するワーカーNodeの場合</span>
-$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>minikube-m01<span class="w"> </span>node-type<span class="o">=</span>deploy
+$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>minikube-m01<span class="w"> </span>node-type<span class="o">=</span>deploy<span class="w"> </span>--overwrite
 
 <span class="c1"># IngressやIngressGatewayを作成するワーカーNodeの場合</span>
-$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>minikube-m02<span class="w"> </span>node-type<span class="o">=</span>ingress
+$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>minikube-m02<span class="w"> </span>node-type<span class="o">=</span>ingress<span class="w"> </span>--overwrite
 
 <span class="c1"># アプリケーションを作成するワーカーNodeの場合</span>
-$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>minikube-m03<span class="w"> </span>node-type<span class="o">=</span>app
+$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>node<span class="w"> </span>minikube-m03<span class="w"> </span>node-type<span class="o">=</span>app<span class="w"> </span>--overwrite
 </code></pre></div>
 <blockquote>
 <ul>
