@@ -28264,7 +28264,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="hosts">▼ hosts<a class="headerlink" href="#hosts" title="Permanent link">&para;</a></h4>
 <p>Gatewayでフィルタリングするインバウンド通信の<code>Host</code>ヘッダー名を設定する。</p>
-<p>ドメインレジストラのドメインのみを許可しても良いが、 ワイルドカード (<code>*</code>) を使用して全てのドメインを許可しても良い。</p>
+<p>複数のマイクロサービスでAPIを公開している場合、ワイルドカード (<code>*</code>) を使用して全てのドメインを許可することになる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
@@ -28911,7 +28911,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="spechosts_1">.spec.hosts<a class="headerlink" href="#spechosts_1" title="Permanent link">&para;</a></h3>
 <h4 id="hosts_2">▼ hostsとは<a class="headerlink" href="#hosts_2" title="Permanent link">&para;</a></h4>
 <p>VirtualServiceの設定値を適用する<code>Host</code>ヘッダー値を設定する。</p>
-<p>ドメインレジストラのドメインのみを許可しても良いが、 ワイルドカード (<code>*</code>) を使用して全てのドメインを許可しても良い。</p>
+<p>ワイルドカード (<code>*</code>) を使用して全てのドメインを許可しても良いが、特定のマイクロサービスへのリクエストのみを扱うため、ホスト名もそれのみを許可すると良い。</p>
 <p>なお、<code>.spec.gateways</code>キーで<code>mesh</code>を使用する場合、ワイルドカード以外を設定しないといけない。 (例：<code>.spec.hosts</code>キーを設定しない、特定のホストヘッダー値を設定するなど)</p>
 <p><strong>＊実装例＊</strong></p>
 <p>全てのホストヘッダー値でVirtualServiceを適用する。</p>
@@ -28920,8 +28920,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-virtual-service</span>
 <span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># 特定のマイクロサービスへのリクエストのみを扱うため、ホスト名もそれのみを許可する</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="specgateways">.spec.gateways<a class="headerlink" href="#specgateways" title="Permanent link">&para;</a></h3>
@@ -29198,7 +29199,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-virtual-service</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reviews</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="w">  </span><span class="nt">http</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">headers</span><span class="p">:</span>
