@@ -5789,6 +5789,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#mesh_external" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ MESH_EXTERNAL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mesh_external_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ MESH_EXTERNAL
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -26568,6 +26586,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#mesh_external" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ MESH_EXTERNAL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mesh_external_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ MESH_EXTERNAL
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -28632,13 +28668,28 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="speclocation">.spec.location<a class="headerlink" href="#speclocation" title="Permanent link">&para;</a></h3>
 <h4 id="location">▼ locationとは<a class="headerlink" href="#location" title="Permanent link">&para;</a></h4>
 <p>登録したシステムがサービスメッシュ内か否かを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
+<h4 id="mesh_external">▼ MESH_EXTERNAL<a class="headerlink" href="#mesh_external" title="Permanent link">&para;</a></h4>
+<p>登録したシステムがサービスメッシュ外にあることを表す。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service-entry</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EXTERNAL_MESH</span>
+<span class="w">  </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MESH_EXTERNAL</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/service-entry/#ServiceEntry-Location">https://istio.io/latest/docs/reference/config/networking/service-entry/#ServiceEntry-Location</a></li>
+</ul>
+</blockquote>
+<h4 id="mesh_external_1">▼ MESH_EXTERNAL<a class="headerlink" href="#mesh_external_1" title="Permanent link">&para;</a></h4>
+<p>登録したシステムがサービスメッシュ内にあることを表す。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service-entry</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MESH_INTERNAL</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -28650,6 +28701,16 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="ports">▼ portsとは<a class="headerlink" href="#ports" title="Permanent link">&para;</a></h4>
 <p>コンフィグストレージに登録する宛先のポート番号を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service-entry</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql</span>
+<span class="w">      </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span>
+<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+</code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
 <span class="nt">metadata</span><span class="p">:</span>
