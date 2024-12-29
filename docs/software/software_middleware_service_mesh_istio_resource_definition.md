@@ -2003,6 +2003,10 @@ spec:
     - "*"
   gateways:
     - foo-igressgateway
+  # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
+  # そのため、後続のVirtualServiceでは、複数の種類のホストヘッダー値を受信するため、ワイルドカードとする
+  hosts:
+    - "*"
 ```
 
 #### ▼ `.` (ドット)
@@ -2048,6 +2052,7 @@ metadata:
   name: foo-virtual-service
 spec:
   # 特定のマイクロサービスへのリクエストのみを扱うため、ホスト名もそれのみを許可する
+  # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
   hosts:
     - foo
 ```
@@ -2078,6 +2083,10 @@ metadata:
 spec:
   gateways:
     - foo-namespace/foo-gateway
+  # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
+  # そのため、後続のVirtualServiceでは、複数の種類のホストヘッダー値を受信するため、ワイルドカードとする
+  hosts:
+    - "*"
 ```
 
 #### ▼ `<Gateway名>`
@@ -2096,6 +2105,10 @@ metadata:
 spec:
   gateways:
     - foo-ingressgateway
+  # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
+  # そのため、後続のVirtualServiceでは、複数の種類のホストヘッダー値を受信するため、ワイルドカードとする
+  hosts:
+    - "*"
 ```
 
 ```yaml
@@ -2375,6 +2388,8 @@ kind: VirtualService
 metadata:
   name: foo-virtual-service
 spec:
+  # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
+  # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
   hosts:
     - foo
   http:
@@ -2475,6 +2490,8 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 spec:
+  # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
+  # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
   hosts:
     - foo-service.foo-namespace.svc.cluster.local
   http:
@@ -2498,6 +2515,8 @@ kind: VirtualService
 metadata:
   name: foo-virtual-service
 spec:
+  # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
+  # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
   hosts:
     - foo-service.foo-namespace.svc.cluster.local
   http:
@@ -2528,6 +2547,8 @@ kind: VirtualService
 metadata:
   name: foo-virtual-service
 spec:
+  # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
+  # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
   hosts:
     - foo-service.foo-namespace.svc.cluster.local
   http:
@@ -2565,6 +2586,8 @@ kind: VirtualService
 metadata:
   name: foo-virtual-service
 spec:
+  # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
+  # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
   hosts:
     - foo-service.foo-namespace.svc.cluster.local
   http:
@@ -2624,6 +2647,8 @@ kind: VirtualService
 metadata:
   name: foo-virtual-service
 spec:
+  # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
+  # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
   hosts:
     - foo-service.foo-namespace.svc.cluster.local
   tcp:
@@ -2646,6 +2671,8 @@ kind: VirtualService
 metadata:
   name: foo-virtual-service
 spec:
+  # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
+  # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
   hosts:
     - foo-service.foo-namespace.svc.cluster.local
   tcp:

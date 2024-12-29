@@ -153,6 +153,7 @@ metadata:
 spec:
   hosts:
     # 特定のマイクロサービスへのリクエストのみを扱うため、ホスト名もそれのみを許可する
+    # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
     - foo
   http:
     - route:
@@ -180,6 +181,7 @@ spec:
   exportTo:
     - "."
   # 特定のマイクロサービスへのリクエストのみを扱うため、ホスト名もそれのみを許可する
+  # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
   hosts:
     - foo
   http:
