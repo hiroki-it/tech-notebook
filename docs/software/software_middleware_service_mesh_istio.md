@@ -483,21 +483,20 @@ Prometheusが`discovery`コンテナからデータポイントを取得する�
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
+  name: istiod-service-monitor
   namespace: istio-system
-  name: istiod-monitor
 spec:
   jobLabel: istio
   targetLabels:
     - app
   selector:
     matchExpressions:
-      key: istio
-      operator: In
-      values:
-        - pilot
-  namespaceSelector:
-    matchNames:
-      - istio-system
+      - key: istio
+        operator: In
+        values:
+          - pilot
+  matchNames:
+    - istio-system
   endpoints:
     - port: http-monitoring
       interval: 15s
@@ -509,8 +508,8 @@ spec:
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
+  name: istio-proxy-service-monitor
   namespace: istio-system
-  name: istio-proxy-monitor
 spec:
   selector:
     matchExpressions:
@@ -518,7 +517,7 @@ spec:
         operator: DoesNotExist
   namespaceSelector:
     # istio-proxyをインジェクションしているNamespaceを網羅できるようにする
-    any: "true"
+    any: true
   jobLabel: envoy-stats
   podMetricsEndpoints:
     # istio-proxyコンテナが公開しているメトリクス収集用のエンドポイントを指定する
