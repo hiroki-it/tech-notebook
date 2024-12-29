@@ -152,11 +152,12 @@ metadata:
   name: foo-virtual-service
 spec:
   hosts:
-    - reviews
+    # 特定のマイクロサービスへのリクエストのみを扱うため、ホスト名もそれのみを許可する
+    - foo
   http:
     - route:
         - destination:
-            host: reviews
+            host: foo
             subset: v1
 ```
 
@@ -178,12 +179,13 @@ metadata:
 spec:
   exportTo:
     - "."
+  # 特定のマイクロサービスへのリクエストのみを扱うため、ホスト名もそれのみを許可する
   hosts:
-    - foo-service
+    - foo
   http:
     - route:
         - destination:
-            host: foo-service
+            host: foo
 ```
 
 > - https://istio.io/latest/docs/ops/best-practices/traffic-management/#cross-namespace-configuration
