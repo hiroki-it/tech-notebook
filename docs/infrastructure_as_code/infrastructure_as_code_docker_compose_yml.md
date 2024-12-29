@@ -675,7 +675,9 @@ services:
 
 ### `networks`とは
 
-標準のネットワークを作成する。ただし定義しなくとも自動的に作成される。ネットワーク名は、指定しない場合に『`<プロジェクト名>_default`』になる。
+標準のネットワークを作成する。ただし定義しなくとも自動的に作成される。
+
+ネットワーク名は、指定しない場合に『`<プロジェクト名>_default`』になる。
 
 <br>
 
@@ -747,13 +749,19 @@ $ docker network inspect foo-network
 
 ### `external`
 
+#### ▼ `external`とは
+
 ![docker-compose_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-compose_external.png)
 
-異なる`docker-compose.yml`ファイルから相互に通信できるネットワークを作成する。作成されるネットワーク名は、`<プロジェクト名>_<ネットワーク名>`になる。
+異なる`docker-compose.yml`ファイルから相互に通信できるネットワークを作成する。
+
+作成されるネットワーク名は、`<プロジェクト名>_<ネットワーク名>`になる。
 
 **＊実装例＊**
 
-バックエンドとフロントエンドが異なる`docker-compose.yml`ファイルで管理されている。フロントエンドコンテナとバックエンドコンテナの間で相互に通信できるように、ネットワークを公開する。
+バックエンドとフロントエンドが異なる`docker-compose.yml`ファイルで管理されている。
+
+フロントエンドコンテナとバックエンドコンテナの間で相互に通信できるように、ネットワークを公開する。
 
 (1) ネットワークを作成する。
 
@@ -807,6 +815,14 @@ networks:
 > - https://docs.docker.com/compose/compose-file/compose-file-v2/#external-1
 > - https://nishinatoshiharu.com/external-docker-network/
 > - https://tech.anti-pattern.co.jp/docker-compose/
+
+#### ▼ dockerのネットワーク外からの通信
+
+`external`オプションはdockerのネットワーク間を接続する。
+
+一方で、dockerのネットワーク外からの通信であれば、`external`オプションは不要である。
+
+例えば、仮想サーバーからDBコンテナに接続する場合、仮想サーバーで`localhost`を指定し、
 
 <br>
 

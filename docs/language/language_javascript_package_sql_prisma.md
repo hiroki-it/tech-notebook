@@ -84,14 +84,24 @@ $ yarn prisma db seed
 
 ### datasource
 
+#### ▼ datasourceとは
+
 データベース情報を設定する。
+
+#### ▼ url
+
+プロトコル名として、`mysql`や`postgresql`を設定できる。
 
 ```javascript
 datasource db {
-  provider = "mysql"
-  url      = "mysql://<DBユーザー>:<DBパスワード>@<DBホスト>:<ポート番号>/<DB名>?schema=public&connection_limit=30&pool_timeout=60"
+  provider = "<プロトコル名>"
+  url      = "<プロトコル名>://<DBユーザー>:<DBパスワード>@<DBホスト>:<ポート番号>/<DB名>?schema=public&connection_limit=30&pool_timeout=60"
 }
 ```
+
+> - https://www.prisma.io/docs/orm/reference/connection-urls
+
+#### ▼ urlパラメーター
 
 URLのパラメーターとして、以下などを設定できる。
 
