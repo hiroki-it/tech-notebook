@@ -1715,7 +1715,7 @@ spec:
 
 コンフィグストレージに登録する宛先のドメイン名を設定する。
 
-宛先のドメインレジストラのドメインのみを許可しても良いが、ワイルドカード (`*`) を使用して全てのドメインを許可しても良い。
+部分的にワイルドカード (`*`) を使用できるが、全てのドメインを許可 (ワイルドカードのみ) することはできない。
 
 **＊実装例＊**
 
@@ -1726,8 +1726,20 @@ metadata:
   name: foo-service-entry
 spec:
   hosts:
-    - "*"
+    - foo.com
 ```
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ServiceEntry
+metadata:
+  name: mysql-service-entry
+spec:
+  hosts:
+    - <DBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com
+```
+
+> - https://istio.io/latest/docs/tasks/traffic-management/egress/wildcard-egress-hosts/
 
 <br>
 
