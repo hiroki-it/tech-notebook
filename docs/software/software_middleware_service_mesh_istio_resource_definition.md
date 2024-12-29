@@ -1737,7 +1737,9 @@ spec:
 
 登録したシステムがサービスメッシュ内か否かを設定する。
 
-**＊実装例＊**
+#### ▼ MESH_EXTERNAL
+
+登録したシステムがサービスメッシュ外にあることを表す。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1745,7 +1747,22 @@ kind: ServiceEntry
 metadata:
   name: foo-service-entry
 spec:
-  location: EXTERNAL_MESH
+  location: MESH_EXTERNAL
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/service-entry/#ServiceEntry-Location
+
+#### ▼ MESH_EXTERNAL
+
+登録したシステムがサービスメッシュ内にあることを表す。
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ServiceEntry
+metadata:
+  name: foo-service-entry
+spec:
+  location: MESH_INTERNAL
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/service-entry/#ServiceEntry-Location
@@ -1759,6 +1776,18 @@ spec:
 コンフィグストレージに登録する宛先のポート番号を設定する。
 
 **＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ServiceEntry
+metadata:
+  name: foo-service-entry
+spec:
+  ports:
+    - name: mysql
+      number: 3306
+      protocol: TCP
+```
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
