@@ -355,8 +355,6 @@ metadata:
 spec:
   exportTo:
     - "*"
-  gateways:
-    - foo-igressgateway
 ```
 
 #### ▼ `.` (ドット)
@@ -375,8 +373,6 @@ metadata:
 spec:
   exportTo:
     - "."
-  gateways:
-    - mesh
 ```
 
 <br>
@@ -2015,7 +2011,7 @@ spec:
   exportTo:
     - "*"
   gateways:
-    - foo-igressgateway
+    - foo-igress
   # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
   # そのため、後続のVirtualServiceでは、複数の種類のホストヘッダー値を受信するため、ワイルドカードとする
   hosts:
@@ -2137,7 +2133,7 @@ spec:
     # PodからIstio EgressGatewayのPodへの通信で使用する
     - mesh
     # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
-    - foo-egressgateway
+    - foo-egress
   http:
     # external.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
     - match:
@@ -2154,7 +2150,7 @@ spec:
     - match:
         - gateways:
             # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
-            - foo-egressgateway
+            - foo-egress
           port: 80
       route:
         - destination:
@@ -2178,7 +2174,7 @@ spec:
     # PodからIstio EgressGatewayのPodへの通信で使用する
     - mesh
     # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
-    - foo-egressgateway
+    - foo-egress
   tls:
     # external.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
     - match:
@@ -2198,7 +2194,7 @@ spec:
     - match:
         - gateways:
             # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
-            - foo-egressgateway
+            - foo-egress
           port: 443
       route:
         - destination:
@@ -2439,7 +2435,7 @@ spec:
   hosts:
     - httpbin.org
   gateways:
-    - foo-igressgateway
+    - foo-igress
     - mesh
   http:
     - match:
@@ -2455,7 +2451,7 @@ spec:
     - match:
         - gateways:
             # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
-            - foo-igressgateway
+            - foo-igress
           port: 443
       route:
         - destination:
