@@ -260,7 +260,20 @@ docker@minikube:~$ cat /etc/cni/net.d/100-crio-bridge.conf
 
 Minikubeでdockerドライバーを使用した場合、`minikube`というdockerネットワークが作成される。
 
-外部のdockerネットワークで`minikube`という名前のdockerネットワークを使用すると、Minikubeに接続できる。
+```bash
+$ docker network ls
+                                                                            (minikube/default)
+NETWORK ID     NAME                 DRIVER    SCOPE
+
+...
+
+b1bdec6c4578   minikube             bridge    local
+
+...
+
+```
+
+`minikube`という既存のdockerネットワークを使用すると、Minikubeに接続できる。
 
 ```yaml
 services:
@@ -271,6 +284,7 @@ services:
 
 networks:
   minikube:
+    # ネットワークを新しく作成せずに、既存のネットワークに接続する
     external: true
 ```
 

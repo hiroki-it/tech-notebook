@@ -769,7 +769,7 @@ $ docker network inspect foo-network
 $ docker network create shared-network
 ```
 
-(2) バックエンドのdocker-composeを設定する。
+(2) バックエンドのdocker-composeを設定する。この時、`backend-network`というdockerネットワークを新しく作成し、また既存の`shared-network`に接続する。
 
 ```yaml
 # バックエンドのDocker-compose
@@ -786,14 +786,14 @@ services:
       - backend-network
 
 networks:
-  # 公開しないネットワーク名
+  # backendとdatabaseのサービスのためだけに、新しくdockerネットワークを作成する
   backend-network:
-  # 公開したいネットワーク名
   shared-network:
+    # ネットワークを新しく作成せずに、既存のネットワークに接続する
     external: true
 ```
 
-(3) フロントエンドのdocker-composeを設定する。
+(3) フロントエンドのdocker-composeを設定する。この時、既存の`shared-network`に接続する。
 
 ```yaml
 # フロントエンドのDocker-compose
@@ -805,8 +805,9 @@ services:
       - shared-network
 
 networks:
-  # 公開したいネットワーク名
+  # frontendサービスしかないため、frontend-networkの作成は不要である
   shared-netword:
+    # ネットワークを新しく作成せずに、既存のネットワークに接続する
     external: true
 ```
 
