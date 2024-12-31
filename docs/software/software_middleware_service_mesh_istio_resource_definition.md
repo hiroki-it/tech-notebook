@@ -2042,7 +2042,7 @@ spec:
 
 同じNamespaceからのみリクエストできるようにする。
 
-Pod間通信の場合、他のNamespaceからリクエストを受信しなてもよければ、`.`とする。
+Pod間通信 (`mesh`) の場合、他のNamespaceからリクエストを受信しなてもよければ、`.`とする。
 
 **＊実装例＊**
 
@@ -2055,6 +2055,7 @@ spec:
   exportTo:
     - "."
   gateways:
+    # デフォルト値のため、設定は不要である
     - mesh
 ```
 
@@ -2068,7 +2069,7 @@ VirtualServiceの設定値を適用する`Host`ヘッダー値を設定する。
 
 ワイルドカード (`*`) を使用して全てのドメインを許可しても良いが、特定のマイクロサービスへのリクエストのみを扱うため、ホスト名もそれのみを許可すると良い。
 
-なお、`.spec.gateways`キーで`mesh`を使用する場合、ワイルドカード以外を設定しないといけない。 (例：`.spec.hosts`キーを設定しない、特定のホストヘッダー値を設定するなど)
+なお、`.spec.gateways`キーで`mesh` (デフォルト値) を使用する場合、ワイルドカード以外を設定しないといけない。 (例：`.spec.hosts`キーを設定しない、特定のホストヘッダー値を設定するなど)
 
 **＊実装例＊**
 
@@ -2151,6 +2152,7 @@ spec:
     - external.com
   gateways:
     # PodからIstio EgressGatewayのPodへの通信で使用する
+    # gateway名と両方設定する場合は、デフォルト値としての省略はできない
     - mesh
     # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
     - foo-egress
@@ -2175,6 +2177,7 @@ spec:
       route:
         - destination:
             # ServiceEntryの.spec.hostsキーで指定しているホスト値を設定する
+            # ただし、ServiceEntryがホストに対して名前解決できていないと、そのホスト値を設定できない
             host: external.com
             port:
               number: 80
@@ -2220,6 +2223,7 @@ spec:
       route:
         - destination:
             # ServiceEntryの.spec.hostsキーで指定しているホスト値を設定する
+            # ただし、ServiceEntryがホストに対して名前解決できていないと、そのホスト値を設定できない
             host: external.com
             port:
               number: 443
@@ -2229,7 +2233,7 @@ spec:
 
 #### ▼ mesh
 
-VirtualServiceを、Pod間通信で使用する場合は`mesh`とする。
+VirtualServiceを、Pod間通信で使用する場合は`mesh` (デフォルト値) とする。
 
 ホストヘッダーに`*` (ワイルドカード) を使用できず、特定のホストヘッダーのみを許可する必要がある。
 
@@ -2242,6 +2246,7 @@ metadata:
   name: foo-virtual-service
 spec:
   gateways:
+    # デフォルト値のため、設定は不要である
     - mesh
   hosts:
     # ワイルドカードを指定できず、特定のホストヘッダーを許可する必要がある
@@ -2444,7 +2449,7 @@ spec:
 
 #### ▼ gateways
 
-`.spec.gateways`キーで設定した`<Gateway名>`と`mesh`のうちで、その合致条件に使用する方を設定する。
+`.spec.gateways`キーで設定した`<Gateway名>`と`mesh` (デフォルト値) のうちで、その合致条件に使用する方を設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -2478,6 +2483,7 @@ spec:
       route:
         - destination:
             # ServiceEntryの.spec.hostsキーで指定しているホスト値を設定する
+            # ただし、ServiceEntryがホストに対して名前解決できていないと、そのホスト値を設定できない
             host: httpbin.org
             port:
               number: 443
