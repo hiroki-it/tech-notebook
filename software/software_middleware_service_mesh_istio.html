@@ -5088,18 +5088,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
+  <a href="#prometheus" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ カスタムリソースの場合
+      ▼ Prometheusの設定ファイル
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#prometheus" class="md-nav__link">
+  <a href="#_29" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Prometheusの設定ファイル
+      ▼ カスタムリソースの場合
     </span>
   </a>
   
@@ -25414,18 +25414,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
+  <a href="#prometheus" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ カスタムリソースの場合
+      ▼ Prometheusの設定ファイル
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#prometheus" class="md-nav__link">
+  <a href="#_29" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Prometheusの設定ファイル
+      ▼ カスタムリソースの場合
     </span>
   </a>
   
@@ -26147,6 +26147,38 @@
 </blockquote>
 <p><br></p>
 <h3 id="_28">セットアップ<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<h4 id="prometheus">▼ Prometheusの設定ファイル<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h4>
+<p>Prometheusの設定ファイルとして定義することもできる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">scrape_configs</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Istiodの監視</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
+<span class="w">    </span><span class="nt">kubernetes_sd_configs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">endpoints</span>
+<span class="w">        </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">names</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="w">    </span><span class="nt">relabel_configs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source_labels</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_service_name</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_endpoint_port_name</span>
+<span class="w">        </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keep</span>
+<span class="w">        </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod;http-monitoring</span>
+<span class="w">  </span><span class="c1"># istio-proxyの監視</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-proxy</span>
+<span class="w">    </span><span class="nt">metrics_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/stats/prometheus</span>
+<span class="w">    </span><span class="nt">kubernetes_sd_configs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pod</span>
+<span class="w">    </span><span class="nt">relabel_configs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source_labels</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_container_port_name</span>
+<span class="w">        </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keep</span>
+<span class="w">        </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.*-envoy-prom</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/ops/integrations/prometheus/#option-2-customized-scraping-configurations">https://istio.io/latest/docs/ops/integrations/prometheus/#option-2-customized-scraping-configurations</a></li>
+</ul>
+</blockquote>
 <h4 id="_29">▼ カスタムリソースの場合<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
 <p>Prometheusが<code>discovery</code>コンテナからデータポイントを取得するためには、<code>discovery</code>コンテナのPodを監視するためのServiceMonitorが必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
@@ -26227,37 +26259,9 @@
 <ul>
 <li><a href="https://github.com/istio/istio/blob/1.19.3/samples/addons/extras/prometheus-operator.yaml">https://github.com/istio/istio/blob/1.19.3/samples/addons/extras/prometheus-operator.yaml</a></li>
 <li><a href="https://discuss.istio.io/t/scraping-istio-metrics-from-prometheus-operator-e-g-using-servicemonitor/10632">https://discuss.istio.io/t/scraping-istio-metrics-from-prometheus-operator-e-g-using-servicemonitor/10632</a></li>
-<li><a href="https://istio.io/latest/docs/ops/integrations/prometheus/#option-2-customized-scraping-configurations">https://istio.io/latest/docs/ops/integrations/prometheus/#option-2-customized-scraping-configurations</a></li>
 <li><a href="https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=23">https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=23</a></li>
 </ul>
 </blockquote>
-<h4 id="prometheus">▼ Prometheusの設定ファイル<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">scrape_configs</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Istiodの監視</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;istiod&quot;</span>
-<span class="w">    </span><span class="nt">kubernetes_sd_configs</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">endpoints</span>
-<span class="w">        </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
-<span class="w">    </span><span class="nt">relabel_configs</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source_labels</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_service_name</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_endpoint_port_name</span>
-<span class="w">        </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keep</span>
-<span class="w">        </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod;http-monitoring</span>
-<span class="w">  </span><span class="c1"># istio-proxyの監視</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;envoy-stats&quot;</span>
-<span class="w">    </span><span class="nt">metrics_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/stats/prometheus</span>
-<span class="w">    </span><span class="nt">kubernetes_sd_configs</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pod</span>
-
-<span class="w">    </span><span class="nt">relabel_configs</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source_labels</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_container_port_name</span>
-<span class="w">        </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keep</span>
-<span class="w">        </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;.*-envoy-prom&quot;</span>
-</code></pre></div>
 <p><br></p>
 <h3 id="_30">メトリクスの種類<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
 <h4 id="istiod">▼ Istiod全体に関するメトリクス<a class="headerlink" href="#istiod" title="Permanent link">&para;</a></h4>
