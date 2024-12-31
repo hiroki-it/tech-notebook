@@ -2526,6 +2526,26 @@ $ useradd -m foo
 
 <br>
 
+## watch
+
+### watchとは
+
+任意のコマンドを反復実行する。
+
+<br>
+
+### -n
+
+反復実行する秒数を設定する。
+
+```bash
+$ watch -n 5 curl http://example.com
+```
+
+> - https://www.baeldung.com/linux/curl-repeat-url-request
+
+<br>
+
 ## wc
 
 ### -l

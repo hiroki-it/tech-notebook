@@ -1718,6 +1718,26 @@ spec:
 
 ## 09. ServiceEntry
 
+### .spec.exportTo
+
+#### ▼ exportToとは
+
+そのServiceEntryにリクエストできるNamespaceを設定する。
+
+Istio EgressGatewayが異なるNamespaceにあることも考慮して、全てのNamespaceを許可する (`*`) と良い。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: foo-service-entry
+spec:
+  exportTo:
+    - "*"
+```
+
+<br>
+
 ### .spec.hosts
 
 #### ▼ hostsとは
@@ -2154,6 +2174,7 @@ spec:
           port: 80
       route:
         - destination:
+            # ServiceEntryの.spec.hostsキーで指定しているホスト値を設定する
             host: external.com
             port:
               number: 80
@@ -2198,6 +2219,7 @@ spec:
           port: 443
       route:
         - destination:
+            # ServiceEntryの.spec.hostsキーで指定しているホスト値を設定する
             host: external.com
             port:
               number: 443
@@ -2455,6 +2477,7 @@ spec:
           port: 443
       route:
         - destination:
+            # ServiceEntryの.spec.hostsキーで指定しているホスト値を設定する
             host: httpbin.org
             port:
               number: 443
