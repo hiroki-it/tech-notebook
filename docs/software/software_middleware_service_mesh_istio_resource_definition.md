@@ -414,13 +414,9 @@ VirtualServiceを起点としたPodのカナリアリリースで使用する。
 
 ![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png)
 
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#Subset
-> - https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html
-> - https://blog.1q77.com/2020/03/istio-part3/
-
 **＊実装例＊**
 
-サブセットv1に対するインバウンド通信では、`version`キーの値が`v1`であるPodにルーティングする。
+`subset`が`v1`に対するインバウンド通信では、`version`キーの値が`v1`であるPodにルーティングする。
 
 `v2`も同様である。
 
@@ -438,6 +434,10 @@ spec:
       labels:
         version: v2 # 新Pod
 ```
+
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#Subset
+> - https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html
+> - https://blog.1q77.com/2020/03/istio-part3/
 
 <br>
 

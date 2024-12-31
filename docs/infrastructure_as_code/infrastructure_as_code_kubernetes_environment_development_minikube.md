@@ -256,6 +256,28 @@ docker@minikube:~$ cat /etc/cni/net.d/100-crio-bridge.conf
 
 <br>
 
+### Minikube外のdockerネットワークに接続
+
+Minikubeでdockerドライバーを使用した場合、`minikube`というdockerネットワークが作成される。
+
+外部のdockerネットワークで`minikube`という名前のdockerネットワークを使用すると、Minikubeに接続できる。
+
+```yaml
+services:
+  database:
+    container_name: mysql
+    networks:
+      - minikube
+
+networks:
+  minikube:
+    external: true
+```
+
+> - https://zenn.dev/kacky/articles/1e9e3a9b6306d9#docker-compose%E5%81%B4
+
+<br>
+
 ## 04-02. Podへの接続
 
 ### Minikubeの制約

@@ -816,11 +816,11 @@ networks:
 > - https://nishinatoshiharu.com/external-docker-network/
 > - https://tech.anti-pattern.co.jp/docker-compose/
 
-#### ▼ dockerのネットワーク外からの通信
+#### ▼ dockerネットワーク外からの通信
 
-`external`オプションはdockerのネットワーク間を接続する。
+`external`オプションはdockerネットワーク間を接続する。
 
-一方で、dockerのネットワーク外からの通信であれば、`external`オプションは不要である。
+一方で、dockerネットワーク外からの通信であれば、`external`オプションは不要である。
 
 例えば、仮想サーバーからDBコンテナに接続する場合、仮想サーバーで`localhost` (コンテナの`hostname`オプションではなく) を指定すればよい。
 
