@@ -473,6 +473,39 @@ Prometheusは、`discovery`コンテナの`/stats/prometheus`エンドポイン�
 
 ### セットアップ
 
+#### ▼ Prometheusの設定ファイル
+
+Prometheusの設定ファイルとして定義することもできる。
+
+```yaml
+scrape_configs:
+  # Istiodの監視
+  - job_name: istiod
+    kubernetes_sd_configs:
+      - role: endpoints
+        namespaces:
+          names:
+            - istio-system
+    relabel_configs:
+      - source_labels:
+          - __meta_kubernetes_service_name
+          - __meta_kubernetes_endpoint_port_name
+        action: keep
+        regex: istiod;http-monitoring
+  # istio-proxyの監視
+  - job_name: istio-proxy
+    metrics_path: /stats/prometheus
+    kubernetes_sd_configs:
+      - role: pod
+    relabel_configs:
+      - source_labels:
+          - __meta_kubernetes_pod_container_port_name
+        action: keep
+        regex: .*-envoy-prom
+```
+
+> - https://istio.io/latest/docs/ops/integrations/prometheus/#option-2-customized-scraping-configurations
+
 #### ▼ カスタムリソースの場合
 
 Prometheusが`discovery`コンテナからデータポイントを取得するためには、`discovery`コンテナのPodを監視するためのServiceMonitorが必要である。
@@ -558,38 +591,7 @@ spec:
 
 > - https://github.com/istio/istio/blob/1.19.3/samples/addons/extras/prometheus-operator.yaml
 > - https://discuss.istio.io/t/scraping-istio-metrics-from-prometheus-operator-e-g-using-servicemonitor/10632
-> - https://istio.io/latest/docs/ops/integrations/prometheus/#option-2-customized-scraping-configurations
 > - https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=23
-
-#### ▼ Prometheusの設定ファイル
-
-```yaml
-scrape_configs:
-  # Istiodの監視
-  - job_name: "istiod"
-    kubernetes_sd_configs:
-      - role: endpoints
-        namespaces:
-          names:
-            - istio-system
-    relabel_configs:
-      - source_labels:
-          - __meta_kubernetes_service_name
-          - __meta_kubernetes_endpoint_port_name
-        action: keep
-        regex: istiod;http-monitoring
-  # istio-proxyの監視
-  - job_name: "envoy-stats"
-    metrics_path: /stats/prometheus
-    kubernetes_sd_configs:
-      - role: pod
-
-    relabel_configs:
-      - source_labels:
-          - __meta_kubernetes_pod_container_port_name
-        action: keep
-        regex: ".*-envoy-prom"
-```
 
 <br>
 
