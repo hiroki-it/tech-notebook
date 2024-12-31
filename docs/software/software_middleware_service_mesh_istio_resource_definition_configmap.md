@@ -304,13 +304,18 @@ data:
   mesh: |
     defaultConfig:
       proxyMetadata:
-        ISTIO_META_DNS_CAPTURE: "true"
-        BOOTSTRAP_XDS_AGENT: "true"
-        # ServiceからPod内のistio-proxyへのリクエストがなくなったら、istio-proxyコンテナを終了させる
-        EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "true"
+        ...
 ```
 
+| 環境変数                          | 値     | 説明                                                                                       |
+| --------------------------------- | ------ | ------------------------------------------------------------------------------------------ |
+| `ISTIO_META_DNS_CAPTURE`          | `true` | istio-proxyでDNSのキャッシュを作成するか否か                                               |
+| `ISTIO_META_DNS_AUTO_ALLOCATE`    | `true` | IPアドレスが設定されていないServiceEntryに対して、IPアドレスを自動的に設定する。           |
+| `BOOTSTRAP_XDS_AGENT`             | `true` |                                                                                            |
+| `EXIT_ON_ZERO_ACTIVE_CONNECTIONS` | `true` | ServiceからPod内のistio-proxyへのリクエストがなくなったら、istio-proxyコンテナを終了させる |
+
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
 
 #### ▼ rootNamespace
 
