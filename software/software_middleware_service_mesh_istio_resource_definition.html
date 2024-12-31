@@ -5747,6 +5747,30 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#specexportto_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      .spec.exportTo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.exportTo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exportto_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ exportToとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#spechosts" class="md-nav__link">
     <span class="md-ellipsis">
       .spec.hosts
@@ -5981,7 +6005,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#specexportto_1" class="md-nav__link">
+  <a href="#specexportto_2" class="md-nav__link">
     <span class="md-ellipsis">
       .spec.exportTo
     </span>
@@ -5991,7 +6015,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#exportto_1" class="md-nav__link">
+  <a href="#exportto_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ exportToとは
     </span>
@@ -26544,6 +26568,30 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#specexportto_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      .spec.exportTo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.exportTo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exportto_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ exportToとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#spechosts" class="md-nav__link">
     <span class="md-ellipsis">
       .spec.hosts
@@ -26778,7 +26826,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#specexportto_1" class="md-nav__link">
+  <a href="#specexportto_2" class="md-nav__link">
     <span class="md-ellipsis">
       .spec.exportTo
     </span>
@@ -26788,7 +26836,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#exportto_1" class="md-nav__link">
+  <a href="#exportto_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ exportToとは
     </span>
@@ -28657,6 +28705,19 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <p><br></p>
 <h2 id="09-serviceentry">09. ServiceEntry<a class="headerlink" href="#09-serviceentry" title="Permanent link">&para;</a></h2>
+<h3 id="specexportto_1">.spec.exportTo<a class="headerlink" href="#specexportto_1" title="Permanent link">&para;</a></h3>
+<h4 id="exportto_1">▼ exportToとは<a class="headerlink" href="#exportto_1" title="Permanent link">&para;</a></h4>
+<p>そのServiceEntryにリクエストできるNamespaceを設定する。</p>
+<p>Istio EgressGatewayが異なるNamespaceにあることも考慮して、全てのNamespaceを許可する (<code>*</code>) と良い。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service-entry</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+</code></pre></div>
+<p><br></p>
 <h3 id="spechosts">.spec.hosts<a class="headerlink" href="#spechosts" title="Permanent link">&para;</a></h3>
 <h4 id="hosts_1">▼ hostsとは<a class="headerlink" href="#hosts_1" title="Permanent link">&para;</a></h4>
 <p>コンフィグストレージに登録する宛先のドメイン名を設定する。</p>
@@ -28876,8 +28937,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <p><br></p>
 <h2 id="12-virtualservice">12. VirtualService<a class="headerlink" href="#12-virtualservice" title="Permanent link">&para;</a></h2>
-<h3 id="specexportto_1">.spec.exportTo<a class="headerlink" href="#specexportto_1" title="Permanent link">&para;</a></h3>
-<h4 id="exportto_1">▼ exportToとは<a class="headerlink" href="#exportto_1" title="Permanent link">&para;</a></h4>
+<h3 id="specexportto_2">.spec.exportTo<a class="headerlink" href="#specexportto_2" title="Permanent link">&para;</a></h3>
+<h4 id="exportto_2">▼ exportToとは<a class="headerlink" href="#exportto_2" title="Permanent link">&para;</a></h4>
 <p>そのVirtualServiceにリクエストできるNamespaceを設定する。</p>
 <blockquote>
 <ul>
@@ -29009,6 +29070,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 <span class="w">      </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
+<span class="w">            </span><span class="c1"># ServiceEntryの.spec.hostsキーで指定しているホスト値を設定する</span>
 <span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external.com</span>
 <span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
@@ -29054,6 +29116,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 <span class="w">      </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
+<span class="w">            </span><span class="c1"># ServiceEntryの.spec.hostsキーで指定しているホスト値を設定する</span>
 <span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external.com</span>
 <span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
@@ -29274,6 +29337,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 <span class="w">      </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
+<span class="w">            </span><span class="c1"># ServiceEntryの.spec.hostsキーで指定しているホスト値を設定する</span>
 <span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpbin.org</span>
 <span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
