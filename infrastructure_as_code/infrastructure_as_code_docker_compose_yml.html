@@ -25445,7 +25445,7 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 <p>(1) ネットワークを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> </span>create<span class="w"> </span>shared-network
 </code></pre></div>
-<p>(2) バックエンドのdocker-composeを設定する。</p>
+<p>(2) バックエンドのdocker-composeを設定する。この時、<code>backend-network</code>というdockerネットワークを新しく作成し、また既存の<code>shared-network</code>に接続する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># バックエンドのDocker-compose</span>
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">backend</span><span class="p">:</span>
@@ -25460,13 +25460,13 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend-network</span>
 
 <span class="nt">networks</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># 公開しないネットワーク名</span>
+<span class="w">  </span><span class="c1"># backendとdatabaseのサービスのためだけに、新しくdockerネットワークを作成する</span>
 <span class="w">  </span><span class="nt">backend-network</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># 公開したいネットワーク名</span>
 <span class="w">  </span><span class="nt">shared-network</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># ネットワークを新しく作成せずに、既存のネットワークに接続する</span>
 <span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-<p>(3) フロントエンドのdocker-composeを設定する。</p>
+<p>(3) フロントエンドのdocker-composeを設定する。この時、既存の<code>shared-network</code>に接続する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># フロントエンドのDocker-compose</span>
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">frontend</span><span class="p">:</span>
@@ -25476,8 +25476,9 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shared-network</span>
 
 <span class="nt">networks</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># 公開したいネットワーク名</span>
+<span class="w">  </span><span class="c1"># frontendサービスしかないため、frontend-networkの作成は不要である</span>
 <span class="w">  </span><span class="nt">shared-netword</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># ネットワークを新しく作成せずに、既存のネットワークに接続する</span>
 <span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 <p>(4) 各コンテナは <code>http://localhost:&lt;コンテナごとのポート番号&gt;</code> で相互に接続できるようになる。</p>
