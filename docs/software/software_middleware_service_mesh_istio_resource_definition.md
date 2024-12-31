@@ -348,7 +348,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: foo-destination-rule
@@ -368,7 +368,7 @@ Pod間通信の場合、他のNamespaceからリクエストを受信しなて�
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: foo-destination-rule
@@ -390,7 +390,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: foo-destination-rule
@@ -421,7 +421,7 @@ VirtualServiceを起点としたPodのカナリアリリースで使用する。
 `v2`も同様である。
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: foo-destination-rule
@@ -458,7 +458,7 @@ EnvoyがHTTPプロトコルを処理する場合に、接続当たりのリク�
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: foo-destination-rule
@@ -478,7 +478,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: foo-destination-rule
@@ -496,7 +496,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: foo-destination-rule
@@ -516,7 +516,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: foo-destination-rule
@@ -545,7 +545,7 @@ Podへのルーティング時に使用する負荷分散方式を設定する�
 複数のゾーンのPodに対して、ラウンドロビンでルーティングする。
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: foo-destination-rule
@@ -565,7 +565,7 @@ spec:
 リージョン名やゾーン名は、Podの`topologyKey`キー（`topology.kubernetes.io/region`キー、`topology.kubernetes.io/zone`キーなど) の値を設定する。
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: foo-destination-rule
@@ -589,7 +589,7 @@ spec:
 複数のゾーンのPodに対して、最小リクエスト数でルーティングする。
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: foo-destination-rule
@@ -607,7 +607,7 @@ Podのポート番号別のルーティングの負荷分散方式を設定す�
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: foo-destination-rule
@@ -627,7 +627,7 @@ Podのポート番号別ルーティングで使用するポート番号を設�
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: foo-destination-rule
@@ -647,7 +647,7 @@ Podへのルーティング時に使用するHTTPSプロトコルのタイプを
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: foo-destination-rule
@@ -658,7 +658,7 @@ spec:
 ```
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: foo-destination-rule
@@ -669,7 +669,7 @@ spec:
 ```
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: foo-destination-rule
@@ -680,7 +680,7 @@ spec:
 ```
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: foo-destination-rule
@@ -701,7 +701,7 @@ Istio管理下の相互TLS (`ISTIO_MUTUAL`) の場合、Istiodコントロール
 Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使用する。
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: foo-destination-rule
@@ -723,7 +723,7 @@ Istio管理下の相互TLS (`ISTIO_MUTUAL`) の場合、Istiodコントロール
 Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使用する。
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: foo-destination-rule
@@ -745,7 +745,7 @@ Istio管理下の相互TLS (`ISTIO_MUTUAL`) の場合、Istiodコントロール
 Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使用する。
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: foo-destination-rule
@@ -1179,10 +1179,10 @@ Istio IngressGateway/EgressGatewayに付与された`.metadata.labels`キーを�
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
-  name: gateway
+  name: foo-ingress
 spec:
   selector:
     istio: istio-ingressgateway
@@ -1210,10 +1210,10 @@ Istio IngressGateway/EgressGatewayのPodで待ち受けるポート名を設定�
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
-  name: gateway
+  name: foo-ingress
 spec:
   servers:
     - port:
@@ -1235,10 +1235,10 @@ IngressGatewayの内部的なServiceのタイプに関して、NodePort Service�
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
-  name: gateway
+  name: foo-ingress
 spec:
   servers:
     - port:
@@ -1254,10 +1254,10 @@ Istio IngressGateway/EgressGatewayのPodで受信するプロトコルを設定�
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
-  name: gateway
+  name: foo-ingress
 spec:
   servers:
     - port:
@@ -1273,10 +1273,10 @@ Istio IngressGateway/EgressGatewayのPodの宛先ポート番号を設定する�
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
-  name: gateway
+  name: foo-ingress
 spec:
   servers:
     - port:
@@ -1289,15 +1289,28 @@ spec:
 
 Gatewayでフィルタリングするインバウンド通信の`Host`ヘッダー名を設定する。
 
-複数のマイクロサービスでAPIを公開している場合、ワイルドカード (`*`) を使用して全てのドメインを許可することになる。
+Istio IngressGatewayでは、複数のマイクロサービスでAPIを公開している場合、ワイルドカード (`*`) を使用して全てのドメインを許可することになる。
+
+また、Istio EgressGatewayでも任意のAPIへの接続を許可するために、同様にワイルドカード (`*`) を使用することになる。
 
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
-  name: gateway
+  name: foo-ingress
+spec:
+  servers:
+    - hosts:
+        - "*"
+```
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: bar-egress
 spec:
   servers:
     - hosts:
@@ -1311,10 +1324,10 @@ spec:
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
-  name: gateway
+  name: foo-ingress
 spec:
   servers:
     - tls:
@@ -1334,10 +1347,10 @@ Secretを更新した場合、Podを再起動せずに、PodにSecretを再マ�
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
-  name: gateway
+  name: foo-ingress
 spec:
   servers:
     - tls:
@@ -1357,10 +1370,10 @@ Gatewayの宛先との通信の暗号化方式を設定する。
 クライアント証明書が必要になる。
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
-  name: gateway
+  name: foo-ingress
 spec:
   servers:
     - tls:
@@ -1374,10 +1387,10 @@ spec:
 クライアント証明書は不要にである。
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
-  name: gateway
+  name: foo-ingress
 spec:
   servers:
     - tls:
@@ -1391,10 +1404,10 @@ spec:
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
-  name: gateway
+  name: foo-ingress
 spec:
   servers:
     - tls:
@@ -1414,8 +1427,8 @@ SSL証明書を保持するSecretを指定する場合は、`.spec.servers[*].tl
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
-kind: Gateway
+apiVersion: networking.istio.io/v1
+kind: foo-ingress
 metadata:
   name: gateway
 spec:
@@ -1720,7 +1733,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: ServiceEntry
 metadata:
   name: foo-service-entry
@@ -1730,7 +1743,7 @@ spec:
 ```
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: ServiceEntry
 metadata:
   name: mysql-service-entry
@@ -1754,7 +1767,7 @@ spec:
 登録したシステムがサービスメッシュ外にあることを表す。
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: ServiceEntry
 metadata:
   name: foo-service-entry
@@ -1769,7 +1782,7 @@ spec:
 登録したシステムがサービスメッシュ内にあることを表す。
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: ServiceEntry
 metadata:
   name: foo-service-entry
@@ -1790,7 +1803,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: ServiceEntry
 metadata:
   name: foo-service-entry
@@ -1802,7 +1815,7 @@ spec:
 ```
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: ServiceEntry
 metadata:
   name: foo-service-entry
@@ -1833,7 +1846,7 @@ ServiceEntryに対するリクエストの宛先IPアドレスはIstio EgressGat
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: ServiceEntry
 metadata:
   name: foo-service-entry
@@ -1994,7 +2007,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service
@@ -2018,7 +2031,7 @@ Pod間通信の場合、他のNamespaceからリクエストを受信しなて�
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service
@@ -2046,7 +2059,7 @@ VirtualServiceの設定値を適用する`Host`ヘッダー値を設定する。
 全てのホストヘッダー値でVirtualServiceを適用する。
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service
@@ -2076,7 +2089,7 @@ VirtualServiceとGatewayが同じNamespaceに所属する場合は、Namespace�
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service
@@ -2098,7 +2111,7 @@ VirtualServiceとGatewayが同じNamespaceに所属する場合は、Namespace�
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-ingress-virtual-service
@@ -2112,7 +2125,7 @@ spec:
 ```
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-egress-virtual-service
@@ -2153,7 +2166,7 @@ spec:
 > - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/#egress-gateway-for-http-traffic
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-egress-virtual-service
@@ -2205,7 +2218,7 @@ VirtualServiceを、Pod間通信で使用する場合は`mesh`とする。
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service
@@ -2234,7 +2247,7 @@ HTTP/1.1、HTTP/2 (例：gRPCなど) 、のプロトコルによるインバウ�
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service
@@ -2254,7 +2267,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service
@@ -2278,7 +2291,7 @@ Serviceへのルーティングの失敗ではないことに注意する。
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service
@@ -2300,7 +2313,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service
@@ -2321,7 +2334,7 @@ spec:
 指定した時間以内に、`istio-proxy`コンテナの宛先からレスポンスがなければ、`istio-proxy`コンテナはタイムアウトとして処理する。
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service
@@ -2366,7 +2379,7 @@ spec:
 受信した通信のうち、`x-foo`ヘッダーに`bar`が割り当てられたものだけにルールを適用する。
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service
@@ -2383,7 +2396,7 @@ spec:
 ユーザーエージェントで振り分ける。
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service
@@ -2416,7 +2429,7 @@ spec:
 `.spec.gateways`キーで設定した`<Gateway名>`と`mesh`のうちで、その合致条件に使用する方を設定する。
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service
@@ -2462,7 +2475,7 @@ spec:
 受信した通信のうち、URLの接頭辞が`/foo`のものだけにルールを適用する。
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service
@@ -2487,7 +2500,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 spec:
   # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
@@ -2510,7 +2523,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service
@@ -2542,7 +2555,7 @@ DestinationRuleで受信した通信を、DestinationRuleのサブセットに�
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service
@@ -2581,7 +2594,7 @@ Serviceの重み付けルーティングの割合を設定する。
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service
@@ -2625,7 +2638,7 @@ TCPスリーウェイハンドシェイクの通信を、DestinationRuleに紐�
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service
@@ -2642,7 +2655,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service
@@ -2666,7 +2679,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service
@@ -2692,7 +2705,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: foo-virtual-service

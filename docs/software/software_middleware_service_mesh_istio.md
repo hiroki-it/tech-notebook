@@ -152,7 +152,7 @@ $ istioctl experimental waypoint generate
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
-  name: namespace
+  name: foo
 spec:
   gatewayClassName: istio-waypoint
   listeners:
