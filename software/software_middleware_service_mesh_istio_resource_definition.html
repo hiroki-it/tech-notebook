@@ -5879,6 +5879,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ DNS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#none" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ NONE
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -26700,6 +26718,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ DNS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#none" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ NONE
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -27541,6 +27577,19 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule">https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">egressgateway</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-egressgateway.istio-egress.svc.cluster.local</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/#egress-gateway-for-http-traffic">https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/#egress-gateway-for-http-traffic</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -28808,6 +28857,22 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="specresolution">.spec.resolution<a class="headerlink" href="#specresolution" title="Permanent link">&para;</a></h3>
 <h4 id="resolution">▼ resolutionとは<a class="headerlink" href="#resolution" title="Permanent link">&para;</a></h4>
 <p>コンフィグストレージに登録する宛先のIPアドレスの設定する。</p>
+<h4 id="dns">▼ DNS<a class="headerlink" href="#dns" title="Permanent link">&para;</a></h4>
+<p>DNSサーバーから返信されたIPアドレスを許可する</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service-entry</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DNS</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/">https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/</a></li>
+</ul>
+</blockquote>
+<h4 id="none">▼ NONE<a class="headerlink" href="#none" title="Permanent link">&para;</a></h4>
 <p>なお、Istio EgressGatewayは値に注意が必要である。</p>
 <p>ServiceEntryに対するリクエストの宛先IPアドレスはIstio EgressGatewayに書き換えられている。</p>
 <p>そのため、DNS解決を<code>NONE</code>にすると、Istio EgressGatewayはServiceEntryを見つけられず、自分自身でループしてしまう。</p>
@@ -28817,14 +28882,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service-entry</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># DNSサーバーから返信されたIPアドレスを許可する</span>
 <span class="w">  </span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DNS</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/">https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 <h2 id="10-sidecar">10. Sidecar<a class="headerlink" href="#10-sidecar" title="Permanent link">&para;</a></h2>
 <p>記入中...</p>
