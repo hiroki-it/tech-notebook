@@ -1731,6 +1731,43 @@ spec:
 
 ## 09. ServiceEntry
 
+### .spec.addresses
+
+ルーティング先のIPアドレスを設定する。
+
+HTTPプロトコル以外 (TCP、MySQLなど) のプロトコルでは、ルーティング時にHostヘッダーがない。
+
+これらのプロトコルでは、`.spec.hosts`キーの値を無視し、IPアドレスにリクエストをルーティングする。
+
+なお、`.spec.hosts`キーは必須であり省略できないため、便宜上ではあるが何らかの名前をつけておく。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: foo-mysql
+spec:
+  exportTo:
+    - "*"
+  hosts:
+    # HTTPプロトコル以外では、この設定は実際には使われない
+    - mysqldb
+  address:
+    # HTTPプロトコルでは、この設定でルーティングする
+    - 127.0.0.1/32
+  location: MESH_EXTERNAL
+  ports:
+    - number: 3306
+      name: tcp-mysql
+      protocol: TCP
+  resolution: DNS
+```
+
+> - https://techblog.recruit.co.jp/article-605/
+> - https://istio.io/latest/docs/reference/config/networking/service-entry/#ServiceEntry-addresses
+
+<br>
+
 ### .spec.exportTo
 
 #### ▼ exportToとは
@@ -2062,7 +2099,7 @@ spec:
   gateways:
     - foo-igress
   # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
-  # そのため、後続のVirtualServiceでは、複数の種類のホストヘッダー値を受信するため、ワイルドカードとする
+  # そのため、後続のVirtualServiceでは、複数の種類のHostヘッダー値を受信するため、ワイルドカードとする
   hosts:
     - "*"
 ```
@@ -2098,11 +2135,11 @@ VirtualServiceの設定値を適用する`Host`ヘッダー値を設定する。
 
 ワイルドカード (`*`) を使用して全てのドメインを許可しても良いが、特定のマイクロサービスへのリクエストのみを扱うため、ホスト名もそれのみを許可すると良い。
 
-なお、`.spec.gateways`キーで`mesh` (デフォルト値) を使用する場合、ワイルドカード以外を設定しないといけない。 (例：`.spec.hosts`キーを設定しない、特定のホストヘッダー値を設定するなど)
+なお、`.spec.gateways`キーで`mesh` (デフォルト値) を使用する場合、ワイルドカード以外を設定しないといけない。 (例：`.spec.hosts`キーを設定しない、特定のHostヘッダー値を設定するなど)
 
 **＊実装例＊**
 
-全てのホストヘッダー値でVirtualServiceを適用する。
+全てのHostヘッダー値でVirtualServiceを適用する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -2143,7 +2180,7 @@ spec:
   gateways:
     - foo-namespace/foo-gateway
   # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
-  # そのため、後続のVirtualServiceでは、複数の種類のホストヘッダー値を受信するため、ワイルドカードとする
+  # そのため、後続のVirtualServiceでは、複数の種類のHostヘッダー値を受信するため、ワイルドカードとする
   hosts:
     - "*"
 ```
@@ -2165,7 +2202,7 @@ spec:
   gateways:
     - foo-ingressgateway
   # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
-  # そのため、後続のVirtualServiceでは、複数の種類のホストヘッダー値を受信するため、ワイルドカードとする
+  # そのため、後続のVirtualServiceでは、複数の種類のHostヘッダー値を受信するため、ワイルドカードとする
   hosts:
     - "*"
 ```
@@ -2177,7 +2214,7 @@ metadata:
   name: foo-egress-virtual-service
 spec:
   hosts:
-    #  ホストヘッダー値がexternal.comの時にVirtualServiceを適用する。
+    #  Hostヘッダー値がexternal.comの時にVirtualServiceを適用する。
     - external.com
   gateways:
     # PodからIstio EgressGatewayのPodへの通信で使用する
@@ -2221,7 +2258,7 @@ metadata:
   name: foo-egress-virtual-service
 spec:
   hosts:
-    #  ホストヘッダー値がexternal.comの時にVirtualServiceを適用する。
+    #  Hostヘッダー値がexternal.comの時にVirtualServiceを適用する。
     - external.com
   gateways:
     # PodからIstio EgressGatewayのPodへの通信で使用する
@@ -2264,7 +2301,7 @@ spec:
 
 VirtualServiceを、Pod間通信で使用する場合は`mesh` (デフォルト値) とする。
 
-ホストヘッダーに`*` (ワイルドカード) を使用できず、特定のホストヘッダーのみを許可する必要がある。
+Hostヘッダーに`*` (ワイルドカード) を使用できず、特定のHostヘッダーのみを許可する必要がある。
 
 **＊実装例＊**
 
@@ -2278,7 +2315,7 @@ spec:
     # デフォルト値のため、設定は不要である
     - mesh
   hosts:
-    # ワイルドカードを指定できず、特定のホストヘッダーを許可する必要がある
+    # ワイルドカードを指定できず、特定のHostヘッダーを許可する必要がある
     - account-app
 ```
 
