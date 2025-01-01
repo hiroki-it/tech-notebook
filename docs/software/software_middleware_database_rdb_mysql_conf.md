@@ -66,7 +66,7 @@ DBに接続する。
 pオプションの値にはスペースが不要であることに注意する。
 
 ```bash
-$ mysql -u <ユーザー名> -p<パスワード> -h <DBホスト名> <DB名> -P <ポート番号>
+$ mysql -h "<DBホスト名>" -u "<ユーザー名>" -p"<パスワード>" "<DB名>" -P "<ポート番号>"
 ```
 
 <br>
@@ -202,6 +202,31 @@ character-set-server = utf8mb4
 [mysqld]
 collation_server = utf8mb4_general_ci
 ```
+
+<br>
+
+### default_authentication_plugin
+
+#### ▼ default_authentication_pluginとは
+
+MySQLの認証方法を設定する。
+
+MySQL`v8.0`未満では、認証方法はパスワード認証であった。
+
+```ini
+[mysqld]
+default_authentication_plugin=mysql_native_password
+```
+
+MySQL`v8.0`以降では、SHA-256プラガブル認証がデフォルトになった。
+
+```ini
+[mysqld]
+default_authentication_plugin=caching_sha2_password
+```
+
+> - https://github.com/docker-library/mysql/issues/1048#issuecomment-2091216633
+> - https://next4us-ti.hatenablog.com/entry/2021/12/18/072123
 
 <br>
 
