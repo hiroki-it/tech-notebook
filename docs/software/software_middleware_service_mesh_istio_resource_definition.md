@@ -396,6 +396,19 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule
 
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: egressgateway
+spec:
+  host: istio-egressgateway.istio-egress.svc.cluster.local
+```
+
+> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/#egress-gateway-for-http-traffic
+
 <br>
 
 ### .spec.subsets
@@ -1853,6 +1866,25 @@ spec:
 
 コンフィグストレージに登録する宛先のIPアドレスの設定する。
 
+#### ▼ DNS
+
+DNSサーバーから返信されたIPアドレスを許可する
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: foo-service-entry
+spec:
+  resolution: DNS
+```
+
+> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/
+
+#### ▼ NONE
+
 なお、Istio EgressGatewayは値に注意が必要である。
 
 ServiceEntryに対するリクエストの宛先IPアドレスはIstio EgressGatewayに書き換えられている。
@@ -1867,11 +1899,8 @@ kind: ServiceEntry
 metadata:
   name: foo-service-entry
 spec:
-  # DNSサーバーから返信されたIPアドレスを許可する
   resolution: DNS
 ```
-
-> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/
 
 <br>
 
