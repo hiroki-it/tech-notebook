@@ -227,6 +227,20 @@ MySQL`v8.0`以降では、SHA-256プラガブル認証がデフォルトにな�
 default_authentication_plugin=caching_sha2_password
 ```
 
+```bash
+mysql> select user, host, plugin from mysql.user;
+
++------------------+-----------+-----------------------+
+| user             | host      | plugin                |
++------------------+-----------+-----------------------+
+| root             | %         | mysql_native_password |
+| mysql.infoschema | localhost | caching_sha2_password |
+| mysql.session    | localhost | caching_sha2_password |
+| mysql.sys        | localhost | caching_sha2_password |
+| root             | localhost | mysql_native_password |
++------------------+-----------+-----------------------+
+```
+
 > - https://github.com/docker-library/mysql/issues/1048#issuecomment-2091216633
 > - https://next4us-ti.hatenablog.com/entry/2021/12/18/072123
 

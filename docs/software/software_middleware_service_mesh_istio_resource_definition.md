@@ -1741,6 +1741,8 @@ HTTPプロトコル以外 (TCP、MySQLなど) のプロトコルでは、ルー�
 
 なお、`.spec.hosts`キーは必須であり省略できないため、便宜上ではあるが何らかの名前をつけておく。
 
+irtualServiceでは "." をつけないとエラーになるため、ServiceEntryも合わせておく (例：`mysql.tcp`) とよい。
+
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: ServiceEntry
@@ -1751,7 +1753,8 @@ spec:
     - "*"
   hosts:
     # HTTPプロトコル以外では、この設定は実際には使われない
-    - mysqldb
+    # VirtualServiceでは "." をつけないとエラーになるため、ServiceEntryも合わせておく
+    - mysqldb.tcp
   address:
     # HTTPプロトコルでは、この設定でルーティングする
     - 127.0.0.1/32
