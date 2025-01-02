@@ -5155,18 +5155,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#virtualservice_2" class="md-nav__link">
+  <a href="#serviceentrydestinationrule" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ VirtualService
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#destinationrule_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ DestinationRule
+      ▼ ServiceEntryの前段のDestinationRule
     </span>
   </a>
   
@@ -25024,18 +25015,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#virtualservice_2" class="md-nav__link">
+  <a href="#serviceentrydestinationrule" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ VirtualService
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#destinationrule_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ DestinationRule
+      ▼ ServiceEntryの前段のDestinationRule
     </span>
   </a>
   
@@ -25812,28 +25794,17 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <h3 id="serviceentry_1">ServiceEntryと同時に必要なリソース<a class="headerlink" href="#serviceentry_1" title="Permanent link">&para;</a></h3>
 <h4 id="istio-egressgateway_1">▼ Istio EgressGateway<a class="headerlink" href="#istio-egressgateway_1" title="Permanent link">&para;</a></h4>
 <p>ServiceEntryには、Istio EgressGatewayが必須ではない。</p>
-<p>ただし、Istio EgressGatewayを使用しないと、マイクロサービスからistio-proxyコンテナを経由せずに外部システムに直接HTTPSリクエストを送信できるようになってしまう</p>
-<p>そのため、システムの安全性が低くなります。</p>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#security-note">https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#security-note</a></li>
-</ul>
-</blockquote>
-<h4 id="virtualservice_2">▼ VirtualService<a class="headerlink" href="#virtualservice_2" title="Permanent link">&para;</a></h4>
-<p>Istio EgressGatewayが必要になるため、VirtualServiceも必要になる。</p>
-<p>VirtualServiceは、Istio EgressGatewayのPodへの送信とServiceEntryへの送信の両方で必要になる。</p>
-<p>Istio EgressGatewayのPodへの送信では、<code>L7</code>ヘッダーの持つ情報だけを書き換えて、<code>L4</code>ヘッダーだけを書き換える。</p>
-<p>これにより、Istio EgressGatewayに宛先を変更しつつ、Istio EgressGatewayからServiceEntryの宛先にリクエストを送信できる。</p>
+<p>ただし、Istio EgressGatewayを使用しないと、マイクロサービスからistio-proxyコンテナを経由せずに外部システムに直接HTTPSリクエストを送信できるようになってしまう。</p>
+<p>そのため、システムの安全性が低くなる。</p>
 <blockquote>
 <ul>
 <li><a href="https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic">https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic</a></li>
 <li><a href="https://discuss.istio.io/t/ingress-egress-serviceentry-data-flow-issues-for-istio-api-gateway/14202">https://discuss.istio.io/t/ingress-egress-serviceentry-data-flow-issues-for-istio-api-gateway/14202</a></li>
 </ul>
 </blockquote>
-<h4 id="destinationrule_1">▼ DestinationRule<a class="headerlink" href="#destinationrule_1" title="Permanent link">&para;</a></h4>
-<p>Istio EgressGatewayが必要になるため、DestinationRuleも必要になる。</p>
-<p>DestinationRuleは、EgressGatewayのPodへの送信とServiceEntryから宛先へのHTTPSリクエストで必要になる。</p>
-<p>ServiceEntryから宛先にHTTPリクエストを送信する場合、DestinationRuleは不要である。</p>
+<h4 id="serviceentrydestinationrule">▼ ServiceEntryの前段のDestinationRule<a class="headerlink" href="#serviceentrydestinationrule" title="Permanent link">&para;</a></h4>
+<p>ServiceEntryから外部にHTTPリクエストを送信する場合、DestinationRuleは不要である。</p>
+<p>しかし、ServiceEntryから宛先にHTTPリクエストを送信する場合、DestinationRuleは不要である。</p>
 <blockquote>
 <ul>
 <li><a href="https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic">https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic</a></li>
