@@ -745,10 +745,13 @@ Istio EgressGatewayのPodへの送信では、`L7`ヘッダーの持つ情報だ
 
 Istio EgressGatewayが必要になるため、DestinationRuleも必要になる。
 
-DestinationRuleは、EgressGatewayのPodへの送信とServiceEntryへの送信の両方で必要になる。
+DestinationRuleは、EgressGatewayのPodへの送信とServiceEntryから宛先へのHTTPSリクエストで必要になる。
+
+ServiceEntryから宛先にHTTPリクエストを送信する場合、DestinationRuleは不要である。
 
 > - https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic
 > - https://discuss.istio.io/t/ingress-egress-serviceentry-data-flow-issues-for-istio-api-gateway/14202
+> - https://cloud.google.com/blog/ja/products/containers-kubernetes/moving-and-measuring-services-as-part-of-a-mesh
 
 <br>
 
