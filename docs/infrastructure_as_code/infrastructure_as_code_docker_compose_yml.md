@@ -636,7 +636,7 @@ service:
     image: mysql
     volumes:
       # ボリュームマウント
-      - db-data:/var/lib/mysql
+      - db_data:/var/lib/mysql
 
 volumes:
   # ボリューム名
@@ -852,18 +852,22 @@ version: "3.9"
 
 services:
   app:
-    build: ...
-    ports: ...
-    depends_on: ...
     volumes:
-      - example_data:/data # 下方のオプションが適用される。
+      - app_data:/data # 下方のオプションが適用される。
 
 volumes:
-  example:
+  app_data:
     driver_opts: # NFSプラグインを使用して、NFSストレージに保管。
       type: "nfs"
       o: "addr=10.40.0.199,nolock,soft,rw"
       device: ":/nfs/example"
+```
+
+```bash
+$ docker volume ls
+                                                                                                                                                                                      (minikube/default)
+DRIVER    VOLUME NAME
+local     app_data
 ```
 
 <br>
@@ -899,7 +903,7 @@ services:
     ports:
       - "3307:3306"
     volumes:
-      - db_volume:/var/lib/mysql
+      - db_data:/var/lib/mysql
       # docker-entrypoint-initdb.dディレクトリにバインドマウントを実行する。
       - ./infra/docker/mysql/init:/docker-entrypoint-initdb.d
     environment:
@@ -914,10 +918,19 @@ services:
       - default
 
 volumes:
-  db_volume:
+  db_data:
 ```
 
-また、`docker-entrypoint-initdb.d`ディレクトリ配下に配置するファイルとして、以下の`sql`ファイルを作成する。このファイルでは、`test`というDBを作成するためのSQLを実装する。
+```bash
+$ docker volume ls
+                                                                                                                                                                                      (minikube/default)
+DRIVER    VOLUME NAME
+local     mysql_db_data
+```
+
+また、`docker-entrypoint-initdb.d`ディレクトリ配下に配置するファイルとして、以下の`sql`ファイルを作成する。
+
+このファイルでは、`test`というDBを作成するためのSQLを実装する。
 
 ```sql
 -- /infra/docker/mysql/initにSQLファイルを配置する。
