@@ -1477,7 +1477,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
-apiVersion: install.istio.io/v1alpha1
+apiVersion: security.istio.io/v1
 kind: PeerAuthentication
 metadata:
   # foo内の全てのサイドカーにPeerAuthenticationを適用する
@@ -1756,7 +1756,7 @@ spec:
     # VirtualServiceでは "." をつけないとエラーになるため、ServiceEntryも合わせておく
     - mysqldb.tcp
   address:
-    # HTTPプロトコルでは、この設定でルーティングする
+    # HTTPプロトコル以外では、この設定でルーティングする
     - 127.0.0.1/32
   location: MESH_EXTERNAL
   ports:
@@ -2214,7 +2214,7 @@ spec:
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
-  name: foo-egress-virtual-service
+  name: foo-virtual-service-egress
 spec:
   hosts:
     #  Hostヘッダー値がexternal.comの時にVirtualServiceを適用する。
@@ -2224,7 +2224,7 @@ spec:
     # gateway名と両方設定する場合は、デフォルト値としての省略はできない
     - mesh
     # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
-    - foo-egress
+    - foo-egress-gateway
   http:
     # external.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
     - match:
@@ -2241,7 +2241,7 @@ spec:
     - match:
         - gateways:
             # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
-            - foo-egress
+            - foo-egress-gateway
           port: 80
       route:
         - destination:
@@ -2258,7 +2258,7 @@ spec:
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
-  name: foo-egress-virtual-service
+  name: foo-virtual-service-egress
 spec:
   hosts:
     #  Hostヘッダー値がexternal.comの時にVirtualServiceを適用する。
@@ -2267,7 +2267,7 @@ spec:
     # PodからIstio EgressGatewayのPodへの通信で使用する
     - mesh
     # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
-    - foo-egress
+    - foo-egress-gateway
   tls:
     # external.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
     - match:
@@ -2287,7 +2287,7 @@ spec:
     - match:
         - gateways:
             # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
-            - foo-egress
+            - foo-egress-gateway
           port: 443
       route:
         - destination:
@@ -2298,7 +2298,45 @@ spec:
               number: 443
 ```
 
+```yaml
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: foo-virtual-service-egress
+spec:
+  exportTo:
+    - "*"
+  hosts:
+    # アプリが指定するDBのホスト
+    - mysqldb
+  gateways:
+    - mesh
+    - foo-egress-gateway
+  tcp:
+    - match:
+        - gateways:
+            - mesh
+          port: 3306
+      route:
+        - destination:
+            host: istio-egressgateway.istio-egress.svc.cluster.local
+            port:
+              number: 3306
+    - match:
+        - gateways:
+            - foo-egress
+          port: 3306
+      route:
+        - destination:
+            # Istio上ではFQDNにする必要があるため、便宜的に .tcp をつける
+            # ServiceEntryも同じ値にする
+            host: mysqldb.tcp
+            port:
+              number: 3306
+```
+
 > - https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic
+> - https://istio.io/latest/blog/2018/egress-tcp/
 
 #### ▼ mesh
 
