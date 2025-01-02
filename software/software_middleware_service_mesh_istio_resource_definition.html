@@ -28777,6 +28777,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>HTTPプロトコル以外 (TCP、MySQLなど) のプロトコルでは、ルーティング時にHostヘッダーがない。</p>
 <p>これらのプロトコルでは、<code>.spec.hosts</code>キーの値を無視し、IPアドレスにリクエストをルーティングする。</p>
 <p>なお、<code>.spec.hosts</code>キーは必須であり省略できないため、便宜上ではあるが何らかの名前をつけておく。</p>
+<p>irtualServiceでは "." をつけないとエラーになるため、ServiceEntryも合わせておく (例：<code>mysql.tcp</code>) とよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28786,7 +28787,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># HTTPプロトコル以外では、この設定は実際には使われない</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysqldb</span>
+<span class="w">    </span><span class="c1"># VirtualServiceでは &quot;.&quot; をつけないとエラーになるため、ServiceEntryも合わせておく</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysqldb.tcp</span>
 <span class="w">  </span><span class="nt">address</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># HTTPプロトコルでは、この設定でルーティングする</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1/32</span>

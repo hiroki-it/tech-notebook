@@ -25574,6 +25574,18 @@
 <div class="highlight"><pre><span></span><code><span class="k">[mysqld]</span>
 <span class="na">default_authentication_plugin</span><span class="o">=</span><span class="s">caching_sha2_password</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code>mysql&gt;<span class="w"> </span><span class="k">select</span><span class="w"> </span>user,<span class="w"> </span>host,<span class="w"> </span>plugin<span class="w"> </span>from<span class="w"> </span>mysql.user<span class="p">;</span>
+
++------------------+-----------+-----------------------+
+<span class="p">|</span><span class="w"> </span>user<span class="w">             </span><span class="p">|</span><span class="w"> </span>host<span class="w">      </span><span class="p">|</span><span class="w"> </span>plugin<span class="w">                </span><span class="p">|</span>
++------------------+-----------+-----------------------+
+<span class="p">|</span><span class="w"> </span>root<span class="w">             </span><span class="p">|</span><span class="w"> </span>%<span class="w">         </span><span class="p">|</span><span class="w"> </span>mysql_native_password<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>mysql.infoschema<span class="w"> </span><span class="p">|</span><span class="w"> </span>localhost<span class="w"> </span><span class="p">|</span><span class="w"> </span>caching_sha2_password<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>mysql.session<span class="w">    </span><span class="p">|</span><span class="w"> </span>localhost<span class="w"> </span><span class="p">|</span><span class="w"> </span>caching_sha2_password<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>mysql.sys<span class="w">        </span><span class="p">|</span><span class="w"> </span>localhost<span class="w"> </span><span class="p">|</span><span class="w"> </span>caching_sha2_password<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>root<span class="w">             </span><span class="p">|</span><span class="w"> </span>localhost<span class="w"> </span><span class="p">|</span><span class="w"> </span>mysql_native_password<span class="w"> </span><span class="p">|</span>
++------------------+-----------+-----------------------+
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://github.com/docker-library/mysql/issues/1048#issuecomment-2091216633">https://github.com/docker-library/mysql/issues/1048#issuecomment-2091216633</a></li>
