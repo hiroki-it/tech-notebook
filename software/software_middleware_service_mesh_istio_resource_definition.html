@@ -28539,7 +28539,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </tbody>
 </table>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install.istio.io/v1alpha1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PeerAuthentication</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># foo内の全てのサイドカーにPeerAuthenticationを適用する</span>
@@ -28790,7 +28790,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="c1"># VirtualServiceでは &quot;.&quot; をつけないとエラーになるため、ServiceEntryも合わせておく</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysqldb.tcp</span>
 <span class="w">  </span><span class="nt">address</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># HTTPプロトコルでは、この設定でルーティングする</span>
+<span class="w">    </span><span class="c1"># HTTPプロトコル以外では、この設定でルーティングする</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1/32</span>
 <span class="w">  </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MESH_EXTERNAL</span>
 <span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
@@ -29152,7 +29152,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-egress-virtual-service</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-virtual-service-egress</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="c1">#  Hostヘッダー値がexternal.comの時にVirtualServiceを適用する。</span>
@@ -29162,7 +29162,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="c1"># gateway名と両方設定する場合は、デフォルト値としての省略はできない</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
 <span class="w">    </span><span class="c1"># Istio EgressGatewayからエントリ済みシステムへの通信で使用する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-egress</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-egress-gateway</span>
 <span class="w">  </span><span class="nt">http</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># external.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
@@ -29179,7 +29179,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gateways</span><span class="p">:</span>
 <span class="w">            </span><span class="c1"># Istio EgressGatewayからエントリ済みシステムへの通信で使用する</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-egress</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-egress-gateway</span>
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 <span class="w">      </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
@@ -29197,7 +29197,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-egress-virtual-service</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-virtual-service-egress</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="c1">#  Hostヘッダー値がexternal.comの時にVirtualServiceを適用する。</span>
@@ -29206,7 +29206,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="c1"># PodからIstio EgressGatewayのPodへの通信で使用する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
 <span class="w">    </span><span class="c1"># Istio EgressGatewayからエントリ済みシステムへの通信で使用する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-egress</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-egress-gateway</span>
 <span class="w">  </span><span class="nt">tls</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># external.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
@@ -29226,7 +29226,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gateways</span><span class="p">:</span>
 <span class="w">            </span><span class="c1"># Istio EgressGatewayからエントリ済みシステムへの通信で使用する</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-egress</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-egress-gateway</span>
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 <span class="w">      </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
@@ -29236,9 +29236,45 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-virtual-service-egress</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># アプリが指定するDBのホスト</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysqldb</span>
+<span class="w">  </span><span class="nt">gateways</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-egress-gateway</span>
+<span class="w">  </span><span class="nt">tcp</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gateways</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
+<span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span>
+<span class="w">      </span><span class="nt">route</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-egressgateway.istio-egress.svc.cluster.local</span>
+<span class="w">            </span><span class="nt">port</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gateways</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-egress</span>
+<span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span>
+<span class="w">      </span><span class="nt">route</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
+<span class="w">            </span><span class="c1"># Istio上ではFQDNにする必要があるため、便宜的に .tcp をつける</span>
+<span class="w">            </span><span class="c1"># ServiceEntryも同じ値にする</span>
+<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysqldb.tcp</span>
+<span class="w">            </span><span class="nt">port</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic">https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic</a></li>
+<li><a href="https://istio.io/latest/blog/2018/egress-tcp/">https://istio.io/latest/blog/2018/egress-tcp/</a></li>
 </ul>
 </blockquote>
 <h4 id="mesh">▼ mesh<a class="headerlink" href="#mesh" title="Permanent link">&para;</a></h4>
