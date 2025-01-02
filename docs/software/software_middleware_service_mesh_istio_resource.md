@@ -722,32 +722,18 @@ Istio`v1.3`より前は、ConfigMapでデフォルトで`REGISTRY_ONLY`になっ
 
 ServiceEntryには、Istio EgressGatewayが必須ではない。
 
-ただし、Istio EgressGatewayを使用しないと、マイクロサービスからistio-proxyコンテナを経由せずに外部システムに直接HTTPSリクエストを送信できるようになってしまう
+ただし、Istio EgressGatewayを使用しないと、マイクロサービスからistio-proxyコンテナを経由せずに外部システムに直接HTTPSリクエストを送信できるようになってしまう。
 
-そのため、システムの安全性が低くなります。
-
-> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#security-note
-
-#### ▼ VirtualService
-
-Istio EgressGatewayが必要になるため、VirtualServiceも必要になる。
-
-VirtualServiceは、Istio EgressGatewayのPodへの送信とServiceEntryへの送信の両方で必要になる。
-
-Istio EgressGatewayのPodへの送信では、`L7`ヘッダーの持つ情報だけを書き換えて、`L4`ヘッダーだけを書き換える。
-
-これにより、Istio EgressGatewayに宛先を変更しつつ、Istio EgressGatewayからServiceEntryの宛先にリクエストを送信できる。
+そのため、システムの安全性が低くなる。
 
 > - https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic
 > - https://discuss.istio.io/t/ingress-egress-serviceentry-data-flow-issues-for-istio-api-gateway/14202
 
-#### ▼ DestinationRule
+#### ▼ ServiceEntryの前段のDestinationRule
 
-Istio EgressGatewayが必要になるため、DestinationRuleも必要になる。
+ServiceEntryから外部にHTTPリクエストを送信する場合、DestinationRuleは不要である。
 
-DestinationRuleは、EgressGatewayのPodへの送信とServiceEntryから宛先へのHTTPSリクエストで必要になる。
-
-ServiceEntryから宛先にHTTPリクエストを送信する場合、DestinationRuleは不要である。
+しかし、ServiceEntryから宛先にHTTPリクエストを送信する場合、DestinationRuleは不要である。
 
 > - https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic
 > - https://discuss.istio.io/t/ingress-egress-serviceentry-data-flow-issues-for-istio-api-gateway/14202
