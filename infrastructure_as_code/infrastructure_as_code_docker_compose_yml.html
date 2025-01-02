@@ -25345,15 +25345,21 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="nt">service</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">db</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># ボリュームマウント</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql_volume:/var/lib/mysql</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db-data:/var/lib/mysql</span>
 
 <span class="nt">volumes</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># ボリューム名</span>
-<span class="w">  </span><span class="nt">mysql_volume</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">db_data</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># localで、ホスト側のdockerエリアを指定</span>
 <span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>volume<span class="w"> </span>ls
+<span class="w">                                                                                                                                                                                      </span><span class="o">(</span>minikube/default<span class="o">)</span>
+DRIVER<span class="w">    </span>VOLUME<span class="w"> </span>NAME
+<span class="nb">local</span><span class="w">     </span>mysql_db_data
 </code></pre></div>
 <p>権限、バインドマウントで<code>datadir</code>ディレクトリにマウントしようとすると、権限エラーになってしまう。</p>
 <div class="highlight"><pre><span></span><code>mysqld:<span class="w"> </span>Can<span class="s1">&#39;t create/write to file &#39;</span>/var/lib/mysql/is_writable<span class="err">&#39;</span><span class="w"> </span><span class="o">(</span>Errcode:<span class="w"> </span><span class="m">13</span><span class="w"> </span>-<span class="w"> </span>Permission<span class="w"> </span>denied<span class="o">)</span>
@@ -25508,7 +25514,7 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 <span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 <span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example:/data</span><span class="w"> </span><span class="c1"># 下方のオプションが適用される。</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example_data:/data</span><span class="w"> </span><span class="c1"># 下方のオプションが適用される。</span>
 
 <span class="nt">volumes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">example</span><span class="p">:</span>
@@ -25542,7 +25548,7 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 <span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3307:3306&quot;</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql_volume:/var/lib/mysql</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db_volume:/var/lib/mysql</span>
 <span class="w">      </span><span class="c1"># docker-entrypoint-initdb.dディレクトリにバインドマウントを実行する。</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./infra/docker/mysql/init:/docker-entrypoint-initdb.d</span>
 <span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
@@ -25557,7 +25563,7 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 
 <span class="nt">volumes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">mysql_volume</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">db_volume</span><span class="p">:</span>
 </code></pre></div>
 <p>また、<code>docker-entrypoint-initdb.d</code>ディレクトリ配下に配置するファイルとして、以下の<code>sql</code>ファイルを作成する。このファイルでは、<code>test</code>というDBを作成するためのSQLを実装する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- /infra/docker/mysql/initにSQLファイルを配置する。</span>
@@ -25591,7 +25597,7 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-02</span>
   </span>
 
     
