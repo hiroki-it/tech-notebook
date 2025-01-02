@@ -25348,7 +25348,7 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># ボリュームマウント</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db-data:/var/lib/mysql</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db_data:/var/lib/mysql</span>
 
 <span class="nt">volumes</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># ボリューム名</span>
@@ -25510,18 +25510,20 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example_data:/data</span><span class="w"> </span><span class="c1"># 下方のオプションが適用される。</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app_data:/data</span><span class="w"> </span><span class="c1"># 下方のオプションが適用される。</span>
 
 <span class="nt">volumes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">example</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">app_data</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">driver_opts</span><span class="p">:</span><span class="w"> </span><span class="c1"># NFSプラグインを使用して、NFSストレージに保管。</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nfs&quot;</span>
 <span class="w">      </span><span class="nt">o</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;addr=10.40.0.199,nolock,soft,rw&quot;</span>
 <span class="w">      </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;:/nfs/example&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>volume<span class="w"> </span>ls
+<span class="w">                                                                                                                                                                                      </span><span class="o">(</span>minikube/default<span class="o">)</span>
+DRIVER<span class="w">    </span>VOLUME<span class="w"> </span>NAME
+<span class="nb">local</span><span class="w">     </span>app_data
 </code></pre></div>
 <p><br></p>
 <h2 id="05">05. イメージ別プラクティス<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
@@ -25548,7 +25550,7 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 <span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3307:3306&quot;</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db_volume:/var/lib/mysql</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db_data:/var/lib/mysql</span>
 <span class="w">      </span><span class="c1"># docker-entrypoint-initdb.dディレクトリにバインドマウントを実行する。</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./infra/docker/mysql/init:/docker-entrypoint-initdb.d</span>
 <span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
@@ -25563,9 +25565,15 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 
 <span class="nt">volumes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">db_volume</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">db_data</span><span class="p">:</span>
 </code></pre></div>
-<p>また、<code>docker-entrypoint-initdb.d</code>ディレクトリ配下に配置するファイルとして、以下の<code>sql</code>ファイルを作成する。このファイルでは、<code>test</code>というDBを作成するためのSQLを実装する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>volume<span class="w"> </span>ls
+<span class="w">                                                                                                                                                                                      </span><span class="o">(</span>minikube/default<span class="o">)</span>
+DRIVER<span class="w">    </span>VOLUME<span class="w"> </span>NAME
+<span class="nb">local</span><span class="w">     </span>mysql_db_data
+</code></pre></div>
+<p>また、<code>docker-entrypoint-initdb.d</code>ディレクトリ配下に配置するファイルとして、以下の<code>sql</code>ファイルを作成する。</p>
+<p>このファイルでは、<code>test</code>というDBを作成するためのSQLを実装する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- /infra/docker/mysql/initにSQLファイルを配置する。</span>
 <span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="o">`</span><span class="n">test</span><span class="o">`</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="s1">&#39;utf8mb4_general_ci&#39;</span><span class="w"> </span><span class="nb">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="s1">&#39;utf8mb4&#39;</span><span class="p">;</span>
 <span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;foo&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="w"> </span><span class="p">;</span>
