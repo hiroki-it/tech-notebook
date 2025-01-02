@@ -633,15 +633,23 @@ datadirディレクトリについては、以下のリンクを参考にせよ�
 ```yaml
 service:
   db:
+    image: mysql
     volumes:
       # ボリュームマウント
-      - mysql_volume:/var/lib/mysql
+      - db-data:/var/lib/mysql
 
 volumes:
   # ボリューム名
-  mysql_volume:
+  db_data:
     # localで、ホスト側のdockerエリアを指定
     driver: local
+```
+
+```bash
+$ docker volume ls
+                                                                                                                                                                                      (minikube/default)
+DRIVER    VOLUME NAME
+local     mysql_db_data
 ```
 
 権限、バインドマウントで`datadir`ディレクトリにマウントしようとすると、権限エラーになってしまう。
@@ -848,7 +856,7 @@ services:
     ports: ...
     depends_on: ...
     volumes:
-      - example:/data # 下方のオプションが適用される。
+      - example_data:/data # 下方のオプションが適用される。
 
 volumes:
   example:
@@ -891,7 +899,7 @@ services:
     ports:
       - "3307:3306"
     volumes:
-      - mysql_volume:/var/lib/mysql
+      - db_volume:/var/lib/mysql
       # docker-entrypoint-initdb.dディレクトリにバインドマウントを実行する。
       - ./infra/docker/mysql/init:/docker-entrypoint-initdb.d
     environment:
@@ -906,7 +914,7 @@ services:
       - default
 
 volumes:
-  mysql_volume:
+  db_volume:
 ```
 
 また、`docker-entrypoint-initdb.d`ディレクトリ配下に配置するファイルとして、以下の`sql`ファイルを作成する。このファイルでは、`test`というDBを作成するためのSQLを実装する。
