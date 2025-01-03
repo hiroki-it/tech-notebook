@@ -1735,13 +1735,13 @@ spec:
 
 ルーティング先のIPアドレスを設定する。
 
-HTTPプロトコル以外 (TCP、MySQLなど) のプロトコルでは、ルーティング時にHostヘッダーがない。
+`L4`プロトコル (TCPLなど) では、リクエストにHostヘッダーがない。
 
 これらのプロトコルでは、`.spec.hosts`キーの値を無視し、IPアドレスにリクエストをルーティングする。
 
 なお、`.spec.hosts`キーは必須であり省略できないため、便宜上ではあるが何らかの名前をつけておく。
 
-irtualServiceでは "." をつけないとエラーになるため、ServiceEntryも合わせておく (例：`mysql.tcp`) とよい。
+送信側のVirtualServiceの`destination`では、Hostヘッダーに "." をつけないとエラーになるため、受信側のServiceEntryも合わせておく (例：`tcp.smtp`) とよい。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -1752,17 +1752,39 @@ spec:
   exportTo:
     - "*"
   hosts:
-    # HTTPプロトコル以外では、この設定は実際には使われない
+    # L4プロトコルでは、この設定は実際には使われない
     # VirtualServiceでは "." をつけないとエラーになるため、ServiceEntryも合わせておく
-    - mysqldb.tcp
+    - tcp
   address:
-    # HTTPプロトコル以外では、この設定でルーティングする
+    # L4プロトコルでは、この設定でルーティングする
     - 127.0.0.1/32
+  location: MESH_EXTERNAL
+  ports:
+    - number: 587
+      name: tcp
+      protocol: TCP
+```
+
+`L7`プロトコル (HTTP、HTTPS、MySQLなど) では、リクエストにHostヘッダーがある。
+
+送信側のVirtualServiceの`.spec.http[*].route[*].destination`では、Hostヘッダーに "." をつけないとエラーになるため、受信側のServiceEntryも合わせておく (例：`tcp.smtp`) とよい。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: foo-mysql
+spec:
+  exportTo:
+    - "*"
+  hosts:
+    - rds-cluster.com
   location: MESH_EXTERNAL
   ports:
     - number: 3306
       name: tcp-mysql
       protocol: TCP
+  # Hostヘッダーがあるため、DNSでIPアドレスを取得する
   resolution: DNS
 ```
 
@@ -1908,7 +1930,9 @@ spec:
 
 #### ▼ DNS
 
-DNSサーバーから返信されたIPアドレスを許可する
+DNSサーバーから返信されたIPアドレスを許可する。
+
+サービスメッシュ外のパブリックなドメインに接続する場合は、必須である。
 
 **＊実装例＊**
 
