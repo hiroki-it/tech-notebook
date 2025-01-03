@@ -13388,7 +13388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../network/network_model_osi_tcp.md" class="md-nav__link">
+      <a href="../network/network_model_tcp.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13611,7 +13611,7 @@
         
   
   <span class="md-ellipsis">
-    TCP階層モデル
+    TCP
   </span>
   
 
@@ -28774,10 +28774,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="09-serviceentry">09. ServiceEntry<a class="headerlink" href="#09-serviceentry" title="Permanent link">&para;</a></h2>
 <h3 id="specaddresses">.spec.addresses<a class="headerlink" href="#specaddresses" title="Permanent link">&para;</a></h3>
 <p>ルーティング先のIPアドレスを設定する。</p>
-<p>HTTPプロトコル以外 (TCP、MySQLなど) のプロトコルでは、ルーティング時にHostヘッダーがない。</p>
+<p><code>L4</code>プロトコル (TCPLなど) では、リクエストにHostヘッダーがない。</p>
 <p>これらのプロトコルでは、<code>.spec.hosts</code>キーの値を無視し、IPアドレスにリクエストをルーティングする。</p>
 <p>なお、<code>.spec.hosts</code>キーは必須であり省略できないため、便宜上ではあるが何らかの名前をつけておく。</p>
-<p>irtualServiceでは "." をつけないとエラーになるため、ServiceEntryも合わせておく (例：<code>mysql.tcp</code>) とよい。</p>
+<p>送信側のVirtualServiceの<code>destination</code>では、Hostヘッダーに "." をつけないとエラーになるため、受信側のServiceEntryも合わせておく (例：<code>tcp.smtp</code>) とよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28786,17 +28786,35 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># HTTPプロトコル以外では、この設定は実際には使われない</span>
+<span class="w">    </span><span class="c1"># L4プロトコルでは、この設定は実際には使われない</span>
 <span class="w">    </span><span class="c1"># VirtualServiceでは &quot;.&quot; をつけないとエラーになるため、ServiceEntryも合わせておく</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysqldb.tcp</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tcp</span>
 <span class="w">  </span><span class="nt">address</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># HTTPプロトコル以外では、この設定でルーティングする</span>
+<span class="w">    </span><span class="c1"># L4プロトコルでは、この設定でルーティングする</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1/32</span>
+<span class="w">  </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MESH_EXTERNAL</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">587</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tcp</span>
+<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+</code></pre></div>
+<p><code>L7</code>プロトコル (HTTP、HTTPS、MySQLなど) では、リクエストにHostヘッダーがある。</p>
+<p>送信側のVirtualServiceの<code>.spec.http[*].route[*].destination</code>では、Hostヘッダーに "." をつけないとエラーになるため、受信側のServiceEntryも合わせておく (例：<code>tcp.smtp</code>) とよい。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-mysql</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rds-cluster.com</span>
 <span class="w">  </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MESH_EXTERNAL</span>
 <span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tcp-mysql</span>
 <span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">  </span><span class="c1"># Hostヘッダーがあるため、DNSでIPアドレスを取得する</span>
 <span class="w">  </span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DNS</span>
 </code></pre></div>
 <blockquote>
@@ -28910,7 +28928,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="resolution">▼ resolutionとは<a class="headerlink" href="#resolution" title="Permanent link">&para;</a></h4>
 <p>コンフィグストレージに登録する宛先のIPアドレスの設定する。</p>
 <h4 id="dns">▼ DNS<a class="headerlink" href="#dns" title="Permanent link">&para;</a></h4>
-<p>DNSサーバーから返信されたIPアドレスを許可する</p>
+<p>DNSサーバーから返信されたIPアドレスを許可する。</p>
+<p>サービスメッシュ外のパブリックなドメインに接続する場合は、必須である。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
@@ -29808,7 +29827,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-03</span>
   </span>
 
     
