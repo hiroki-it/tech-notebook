@@ -27647,7 +27647,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>デフォルトでは上限がない。</p>
 <p><code>1</code>とする場合、Envoyによるkeep-aliveを無効化する。</p>
 <p>また、サーキットブレイカーの閾値になる。</p>
-<p>上限を超過した場合、Podへのルーティングが停止し、直近の成功時の処理結果を返信する (サーキットブレイカー) 。</p>
+<p>上限を超過した場合、Podへのルーティングが停止し、何らかの意図したエラーを返信する (サーキットブレイカー) 。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -27716,6 +27716,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="c1"># Podをルーティング先から切り離す秒数</span>
 <span class="w">      </span><span class="nt">baseEjectionTime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
 <span class="w">      </span><span class="nt">maxEjectionPercent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">99</span>
+<span class="w">      </span><span class="c1"># 指定された割合で正常になるように、ルーティング先を決める</span>
+<span class="w">      </span><span class="c1"># 異常なルーティング先がある場合は正常な方にルーティングし、異常なルーティング先が回復することを待つ</span>
+<span class="w">      </span><span class="nt">minHealthPercent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">90</span>
 </code></pre></div>
 <blockquote>
 <ul>
