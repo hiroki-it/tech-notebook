@@ -181,12 +181,33 @@ PHPUnitにおけるスタブについては、以下のリンクを参考にせ�
 
 <br>
 
-### モックツール、スタブツール
+### モックパッケージ、スタブパッケージ
 
 - PHPUnit
 - Phake
 - Mockery
 - JUnit
+
+<br>
+
+### モックサーバー
+
+#### ▼ httpbin
+
+```yaml
+services:
+  httpbin:
+    container_name: httpbin
+    hostname: httpbin.local
+    image: kennethreitz/httpbin:latest
+    ports:
+      - "80:80"
+```
+
+```bash
+# ローカルのhttpbinコンテナにリクエストを送信する
+$ curl http://httpbin.local/get
+```
 
 <br>
 

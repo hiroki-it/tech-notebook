@@ -1778,7 +1778,7 @@ spec:
   exportTo:
     - "*"
   hosts:
-    - rds-cluster.com
+    - <DBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com
   location: MESH_EXTERNAL
   ports:
     - number: 3306
@@ -1900,7 +1900,7 @@ metadata:
   name: foo-service-entry
 spec:
   ports:
-    - name: mysql
+    - name: tcp-mysql
       number: 3306
       protocol: TCP
 ```
@@ -2331,8 +2331,9 @@ spec:
   exportTo:
     - "*"
   hosts:
-    # アプリが指定するDBのホスト
-    - mysqldb
+    # アプリはDBのFQDNを指定する
+    # VirtualSErviceではこれを指定する
+    - <DBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com
   gateways:
     - mesh
     - foo-egress-gateway
@@ -2352,9 +2353,8 @@ spec:
           port: 3306
       route:
         - destination:
-            # Istio上ではFQDNにする必要があるため、便宜的に .tcp をつける
-            # ServiceEntryも同じ値にする
-            host: mysqldb.tcp
+            # ServiceEntryにそのままのHostヘッダーで転送する
+            host: <DBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com
             port:
               number: 3306
 ```
