@@ -2464,6 +2464,8 @@ HTTP/1.1、HTTP/2 (例：gRPCなど) 、のプロトコルによるインバウ�
 
 **＊実装例＊**
 
+`503`ステータスのエラーを`100`%発生させる。
+
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: VirtualService
@@ -2711,6 +2713,60 @@ spec:
 
 <br>
 
+### .spec.http.retries
+
+リトライ条件を設定する。
+
+**＊実装例＊**
+
+500系ステータスの場合に、`attempts`の数だけリトライする。
+
+各リトライで処理の結果が返却されるまでのタイムアウト値を`perTryTimeout`で設定する。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+spec:
+  hosts:
+    - foo-service.foo-namespace.svc.cluster.local
+  http:
+    - route:
+        - destination:
+            host: foo-service.foo-namespace.svc.cluster.local
+      retries:
+        attempts: 3
+        perTryTimeout: 5s
+        # Envoyのx-envoy-retry-onの値
+        retryOn: 5xx
+```
+
+gateway-error (`502`、`503`、`504`ステータス) の場合に、`attempts`の数だけリトライする。
+
+各リトライで処理の結果が返却されるまでのタイムアウト値を`perTryTimeout`で設定する。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+spec:
+  hosts:
+    - foo-service.foo-namespace.svc.cluster.local
+  http:
+    - route:
+        - destination:
+            host: foo-service.foo-namespace.svc.cluster.local
+      retries:
+        attempts: 3
+        perTryTimeout: 5s
+        # Envoyのx-envoy-retry-onの値
+        retryOn: gateway-error
+```
+
+> - https://speakerdeck.com/nutslove/istioru-men?slide=18
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRetry
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
+
+<br>
+
 ### .spec.http.route
 
 #### ▼ destination.host
@@ -2811,6 +2867,8 @@ Serviceの重み付けルーティングの割合を設定する。
 
 `.spec.http[*].route[*].destination.subset`キーの値は、DestinationRuleで設定した`.spec.subsets[*].name`キーに合わせる必要がある。
 
+重み付けの偏りの割合によって、カナリアリリースやB/Gデプロイメントを実現できる。
+
 **＊実装例＊**
 
 ```yaml
@@ -2842,6 +2900,7 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination
+> - https://speakerdeck.com/nutslove/istioru-men?slide=20
 
 <br>
 
