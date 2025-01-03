@@ -518,9 +518,11 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-TCPSettings
 
-#### ▼ outlierDetection
+#### ▼ outlierDetection.interval
 
-サーキットブレイカーを設定する。
+サーキットブレイカーの外れ値の計測間隔を設定する。
+
+間隔内で閾値以上のエラーが発生した場合に、サーキトブレイカーが起こる
 
 **＊実装例＊**
 
@@ -532,21 +534,80 @@ metadata:
 spec:
   trafficPolicy:
     outlierDetection:
-      # エラー検知の間隔
       interval: 10s
-      # サーキットブレイカーを実施するエラーの閾値数
+```
+
+> - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
+> - https://speakerdeck.com/nutslove/istioru-men?slide=25
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection
+
+#### ▼ outlierDetection.consecutiveGatewayErrors
+
+サーキットブレイカーを発動するエラーの閾値数を設定する
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    outlierDetection:
       consecutiveGatewayErrors: 3
-      # Podをルーティング先から切り離す秒数
+```
+
+> - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
+> - https://speakerdeck.com/nutslove/istioru-men?slide=25
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection
+
+#### ▼ outlierDetection.baseEjectionTime
+
+Podをルーティング先から切り離す秒数を設定する
+
+**＊実装例＊**
+
+10秒以内にエラーがが3回以上発生したら、30秒間Podを切り離す。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    outlierDetection:
+      consecutiveGatewayErrors: 3
+      interval: 10s
       baseEjectionTime: 30s
-      maxEjectionPercent: 99
-      # 指定された割合で正常になるように、ルーティング先を決める
-      # 異常なルーティング先がある場合は正常な方にルーティングし、異常なルーティング先が回復することを待つ
+```
+
+> - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
+> - https://speakerdeck.com/nutslove/istioru-men?slide=25
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection
+
+#### ▼ outlierDetection.minHealthPercent
+
+指定された割合で正常になるように、ルーティング先を決める。
+
+異常なルーティング先がある場合は正常な方にルーティングし、異常なルーティング先が回復することを待つ
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    outlierDetection:
       minHealthPercent: 90
 ```
 
-> - https://speakerdeck.com/nutslove/istioru-men?slide=25
-> - https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/
-> - https://istio.io/latest/docs/concepts/traffic-management/#circuit-breakers
+> - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection
 
 #### ▼ loadBalancer
 
