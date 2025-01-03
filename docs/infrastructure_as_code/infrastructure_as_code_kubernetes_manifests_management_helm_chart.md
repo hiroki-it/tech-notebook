@@ -150,12 +150,12 @@ dependencies:
 ```yaml
 # 親チャートのvaluesファイル
 foo:
-  enabled: "true"
+  enabled: true
   # fooサブチャートのvaluesファイルにある.replicasキーに値を渡す。
   replicas: 2
 
 bar:
-  enabled: "true"
+  enabled: true
   # barサブチャートのvaluesファイルにある.replicasキーに値を渡す。
   replicas: 2
 ```
@@ -416,7 +416,7 @@ ingress:
 
 ```yaml
 ingress:
-  annotations: "true"
+  annotations: true
 ```
 
 Ingressの作成を有効化する。
@@ -511,7 +511,7 @@ ServiceAccountの作成を有効化する。
 
 ```yaml
 serviceAccount:
-  create: "true"
+  create: true
 ```
 
 #### ▼ serviceAccount.annotations

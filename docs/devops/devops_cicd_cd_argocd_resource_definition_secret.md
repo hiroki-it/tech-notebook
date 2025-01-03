@@ -314,7 +314,7 @@ data:
   type: helm
   username: foo
   password: bar
-  enableOCI: "true" # OCIリポジトリを有効化する。
+  enableOCI: true # OCIリポジトリを有効化する。
 ---
 # bar-repositoryをポーリングするためのargocd-repo
 apiVersion: v1

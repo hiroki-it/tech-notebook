@@ -235,7 +235,7 @@ helmfiles:
 
 ```yaml
 releases:
-  - atomic: "true"
+  - atomic: true
 ```
 
 #### ▼ chart
@@ -315,7 +315,7 @@ releases:
 
 Helmの実行時に出力する`values`の値を設定する。
 
-キー名にドットを含む場合、エスケープする必要がある。
+キー名にドットを含む場合、`\`でエスケープする必要がある。
 
 ```yaml
 releases:
@@ -323,7 +323,7 @@ releases:
       - name: foo
         value: FOO
       - name: bar\.enabled
-        value: "true"
+        value: true
 ```
 
 #### ▼ name
@@ -442,14 +442,14 @@ OCIリポジトリをチャートリポジトリとして使用する場合に�
 repositories:
   - name: karpenter
     url: public.ecr.aws/karpenter
-    oci: "true"
+    oci: true
 
 releases:
   - name: karpenter
     namespace: karpenter
     chart: karpenter/karpenter
     version: v0.31.0
-    atomic: "true"
+    atomic: true
     values:
       - foo-values.yaml
 ```
