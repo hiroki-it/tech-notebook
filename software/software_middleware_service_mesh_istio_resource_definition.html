@@ -6287,6 +6287,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#spechttpretries" class="md-nav__link">
+    <span class="md-ellipsis">
+      .spec.http.retries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#spechttproute" class="md-nav__link">
     <span class="md-ellipsis">
       .spec.http.route
@@ -27162,6 +27171,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#spechttpretries" class="md-nav__link">
+    <span class="md-ellipsis">
+      .spec.http.retries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#spechttproute" class="md-nav__link">
     <span class="md-ellipsis">
       .spec.http.route
@@ -29433,6 +29451,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="fault">▼ fault<a class="headerlink" href="#fault" title="Permanent link">&para;</a></h4>
 <p>発生させるフォールトインジェクションを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
+<p><code>503</code>ステータスのエラーを<code>100</code>%発生させる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -29649,6 +29668,51 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="spechttpretries">.spec.http.retries<a class="headerlink" href="#spechttpretries" title="Permanent link">&para;</a></h3>
+<p>リトライ条件を設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>500系ステータスの場合に、<code>attempts</code>の数だけリトライする。</p>
+<p>各リトライで処理の結果が返却されるまでのタイムアウト値を<code>perTryTimeout</code>で設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span>
+<span class="w">  </span><span class="nt">http</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">route</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span>
+<span class="w">      </span><span class="nt">retries</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">attempts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">        </span><span class="nt">perTryTimeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
+<span class="w">        </span><span class="c1"># Envoyのx-envoy-retry-onの値</span>
+<span class="w">        </span><span class="nt">retryOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5xx</span>
+</code></pre></div>
+<p>gateway-error (<code>502</code>、<code>503</code>、<code>504</code>ステータス) の場合に、<code>attempts</code>の数だけリトライする。</p>
+<p>各リトライで処理の結果が返却されるまでのタイムアウト値を<code>perTryTimeout</code>で設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span>
+<span class="w">  </span><span class="nt">http</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">route</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span>
+<span class="w">      </span><span class="nt">retries</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">attempts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">        </span><span class="nt">perTryTimeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
+<span class="w">        </span><span class="c1"># Envoyのx-envoy-retry-onの値</span>
+<span class="w">        </span><span class="nt">retryOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway-error</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/nutslove/istioru-men?slide=18">https://speakerdeck.com/nutslove/istioru-men?slide=18</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRetry">https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRetry</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="spechttproute">.spec.http.route<a class="headerlink" href="#spechttproute" title="Permanent link">&para;</a></h3>
 <h4 id="destinationhost">▼ destination.host<a class="headerlink" href="#destinationhost" title="Permanent link">&para;</a></h4>
 <p>受信した通信で宛先のServiceのドメイン名 (あるいはService名) を設定する。</p>
@@ -29736,6 +29800,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="weight">▼ weight<a class="headerlink" href="#weight" title="Permanent link">&para;</a></h4>
 <p>Serviceの重み付けルーティングの割合を設定する。</p>
 <p><code>.spec.http[*].route[*].destination.subset</code>キーの値は、DestinationRuleで設定した<code>.spec.subsets[*].name</code>キーに合わせる必要がある。</p>
+<p>重み付けの偏りの割合によって、カナリアリリースやB/Gデプロイメントを実現できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -29766,6 +29831,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination">https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination</a></li>
+<li><a href="https://speakerdeck.com/nutslove/istioru-men?slide=20">https://speakerdeck.com/nutslove/istioru-men?slide=20</a></li>
 </ul>
 </blockquote>
 <p><br></p>
