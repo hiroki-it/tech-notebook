@@ -12,7 +12,7 @@
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_security_keycloak_conf.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_security_keycloak_command.html">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>Software middleware security keycloak conf - 俺の技術ノート</title>
+        <title>Software middleware security keycloak command - 俺の技術ノート</title>
       
     
     
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Software middleware security keycloak conf
+              Software middleware security keycloak command
             
           </span>
         </div>
@@ -23963,51 +23963,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
+  <a href="#01-start" class="md-nav__link">
     <span class="md-ellipsis">
-      01. 設定方法
+      01. start
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#01_1" class="md-nav__link">
+  <a href="#02-start-dev" class="md-nav__link">
     <span class="md-ellipsis">
-      01. 環境変数
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01. 環境変数">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      管理者
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      データベース
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-conf" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. conf
+      02. start-dev
     </span>
   </a>
   
@@ -24031,10 +23998,10 @@
   
 
 
-<p>title=【IT技術の知見】設定ファイル＠Keycloak
-description=設定ファイル＠Keycloakの知見を記録しています。</p>
+<p>title=【IT技術の知見】コマンド＠Keycloak
+description=コマンド＠Keycloakの知見を記録しています。</p>
 <hr />
-<h1 id="keycloak">設定ファイル＠Keycloak<a class="headerlink" href="#keycloak" title="Permanent link">&para;</a></h1>
+<h1 id="keycloak">コマンド＠Keycloak<a class="headerlink" href="#keycloak" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -24043,92 +24010,14 @@ description=設定ファイル＠Keycloakの知見を記録しています。</p
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. 設定方法<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<p>Keycloakでは、コマンドオプション、環境変数、<code>keycloak.conf</code>ファイルのいずれかでパラメーターを設定できる。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.redhat.com/ja/documentation/red_hat_build_of_keycloak/24.0/html/server_guide/configuration-formats-for-configuration#configuration-example-alternative-formats-based-on-configuration-source">https://docs.redhat.com/ja/documentation/red_hat_build_of_keycloak/24.0/html/server_guide/configuration-formats-for-configuration#configuration-example-alternative-formats-based-on-configuration-source</a></li>
-</ul>
-</blockquote>
-<h2 id="01_1">01. 環境変数<a class="headerlink" href="#01_1" title="Permanent link">&para;</a></h2>
-<h3 id="_2">管理者<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>変数</th>
-<th>値の例</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>KEYCLOAK_ADMIN</code></td>
-<td><code>admin</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>KEYCLOAK_ADMIN_PASSWORD</code></td>
-<td><code>password</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>PROXY_ADDRESS_FORWARDING</code></td>
-<td><code>true</code></td>
-<td>Keycloakの前段にリバースプロキシ (サイドカーも含む) がある場合に<code>true</code>とする。</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://www.keycloak.org/server/all-config#category-bootstrap_admin">https://www.keycloak.org/server/all-config#category-bootstrap_admin</a></li>
-<li><a href="https://blog.linkode.co.jp/entry/2021/06/23/061829#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AB-PROXY_ADDRESS_FORWARDINGtrue-%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B">https://blog.linkode.co.jp/entry/2021/06/23/061829#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AB-PROXY_ADDRESS_FORWARDINGtrue-%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B</a></li>
-</ul>
-</blockquote>
+<h2 id="01-start">01. start<a class="headerlink" href="#01-start" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kc.sh<span class="w"> </span>start
+</code></pre></div>
 <p><br></p>
-<h3 id="_3">データベース<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>変数</th>
-<th>値の例</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>KC_DB</code></td>
-<td><code>mysql</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>KC_DB_URL</code></td>
-<td><code>jdbc:mysql://mysql:3306/keycloak</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>KC_DB_URL_DATABASE</code></td>
-<td><code>keycloak</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>KC_DB_USERNAME</code></td>
-<td><code>keycloak</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>KC_DB_PASSWORD</code></td>
-<td><code>password</code></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://www.keycloak.org/server/all-config#category-database">https://www.keycloak.org/server/all-config#category-database</a></li>
-</ul>
-</blockquote>
+<h2 id="02-start-dev">02. start-dev<a class="headerlink" href="#02-start-dev" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kc.sh<span class="w"> </span>start-dev
+</code></pre></div>
 <p><br></p>
-<h2 id="02-conf">02. conf<a class="headerlink" href="#02-conf" title="Permanent link">&para;</a></h2>
 
 
 
