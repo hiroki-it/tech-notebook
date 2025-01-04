@@ -339,13 +339,11 @@ spec:
 
 #### ▼ `*` (アスタリスク)
 
-全てのNamespaceからリクエストできるようにする。
-
 デフォルト値である。
 
-もし、他のNamespaceのVirtualServiceからリクエストを受信する場合、`*`とする必要がある。
+他のNamespaceのVirtualServiceに紐づける場合、`*`とする必要がある。
 
-同じNamespace内からのリクエストのみ場合、`.`とする。
+もし、同じNamespace内のVirtualServiceと紐づける場合、`.`とする。
 
 **＊実装例＊**
 
@@ -361,11 +359,9 @@ spec:
 
 #### ▼ `.` (ドット)
 
-同じNamespaceからのみリクエストできるようにする。
+同じNamespace内のVirtualServiceと紐づける場合、`.`とする。
 
-もし、他のNamespaceのVirtualServiceからリクエストを受信する場合、`*`とする必要がある。
-
-同じNamespace内からのリクエストのみ場合、`.`とする。
+もし、他のNamespaceのVirtualServiceに紐づける場合、`*`とする必要がある。
 
 **＊実装例＊**
 
@@ -2175,13 +2171,11 @@ spec:
 
 #### ▼ `*` (アスタリスク)
 
-全てのNamespaceのみからリクエストできるようにする。
-
 デフォルト値である。
 
-もし、他のNamespaceのVirtualServiceからリクエストを受信する場合、`*`とする必要がある。
+他のNamespaceのGatewayやDestinationRuleに紐づける場合、`*`とする必要がある。
 
-同じNamespace内からのリクエストのみ場合、`.`とする。
+もし、同じNamespace内のGatewayやDestinationRuleと紐づける場合、`.`とする。
 
 **＊実装例＊**
 
@@ -2203,11 +2197,9 @@ spec:
 
 #### ▼ `.` (ドット)
 
-同じNamespaceからのみリクエストできるようにする。
+同じNamespace内のGatewayやDestinationRuleと紐づける場合、`.`とする。
 
-もし、他のNamespaceのVirtualServiceからリクエストを受信する場合、`*`とする必要がある。
-
-同じNamespace内からのリクエストのみ場合、`.`とする。
+もし、他のNamespaceのGatewayやDestinationRuleに紐づける場合、`*`とする必要がある。
 
 **＊実装例＊**
 
