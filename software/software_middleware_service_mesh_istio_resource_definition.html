@@ -27628,10 +27628,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="_8">▼ <code>*</code> (アスタリスク)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>全てのNamespaceからリクエストできるようにする。</p>
 <p>デフォルト値である。</p>
-<p>もし、他のNamespaceのVirtualServiceからリクエストを受信する場合、<code>*</code>とする必要がある。</p>
-<p>同じNamespace内からのリクエストのみ場合、<code>.</code>とする。</p>
+<p>他のNamespaceのVirtualServiceに紐づける場合、<code>*</code>とする必要がある。</p>
+<p>もし、同じNamespace内のVirtualServiceと紐づける場合、<code>.</code>とする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -27642,9 +27641,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
 </code></pre></div>
 <h4 id="_9">▼ <code>.</code> (ドット)<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>同じNamespaceからのみリクエストできるようにする。</p>
-<p>もし、他のNamespaceのVirtualServiceからリクエストを受信する場合、<code>*</code>とする必要がある。</p>
-<p>同じNamespace内からのリクエストのみ場合、<code>.</code>とする。</p>
+<p>同じNamespace内のVirtualServiceと紐づける場合、<code>.</code>とする。</p>
+<p>もし、他のNamespaceのVirtualServiceに紐づける場合、<code>*</code>とする必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -29205,10 +29203,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="_10">▼ <code>*</code> (アスタリスク)<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>全てのNamespaceのみからリクエストできるようにする。</p>
 <p>デフォルト値である。</p>
-<p>もし、他のNamespaceのVirtualServiceからリクエストを受信する場合、<code>*</code>とする必要がある。</p>
-<p>同じNamespace内からのリクエストのみ場合、<code>.</code>とする。</p>
+<p>他のNamespaceのGatewayやDestinationRuleに紐づける場合、<code>*</code>とする必要がある。</p>
+<p>もし、同じNamespace内のGatewayやDestinationRuleと紐づける場合、<code>.</code>とする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -29225,9 +29222,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
 </code></pre></div>
 <h4 id="_11">▼ <code>.</code> (ドット)<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>同じNamespaceからのみリクエストできるようにする。</p>
-<p>もし、他のNamespaceのVirtualServiceからリクエストを受信する場合、<code>*</code>とする必要がある。</p>
-<p>同じNamespace内からのリクエストのみ場合、<code>.</code>とする。</p>
+<p>同じNamespace内のGatewayやDestinationRuleと紐づける場合、<code>.</code>とする。</p>
+<p>もし、他のNamespaceのGatewayやDestinationRuleに紐づける場合、<code>*</code>とする必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
