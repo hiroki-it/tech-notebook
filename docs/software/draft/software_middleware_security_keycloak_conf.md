@@ -13,6 +13,12 @@ description=設定ファイル＠Keycloakの知見を記録しています。
 
 <br>
 
+## 01. 設定方法
+
+Keycloakでは、コマンドオプション、環境変数、`keycloak.conf`ファイルのいずれかでパラメーターを設定できる。
+
+> - https://docs.redhat.com/ja/documentation/red_hat_build_of_keycloak/24.0/html/server_guide/configuration-formats-for-configuration#configuration-example-alternative-formats-based-on-configuration-source
+
 ## 01. 環境変数
 
 ### 管理者
@@ -41,3 +47,5 @@ description=設定ファイル＠Keycloakの知見を記録しています。
 > - https://www.keycloak.org/server/all-config#category-database
 
 <br>
+
+## 02. conf
