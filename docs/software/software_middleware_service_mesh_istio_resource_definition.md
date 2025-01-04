@@ -343,7 +343,9 @@ spec:
 
 デフォルト値である。
 
-もし他のNamespace (例：`istio-ingress`) 内のIstio IngressGatewayからリクエストを受信する場合、`*`とする必要がある。
+もし、他のNamespaceのVirtualServiceからリクエストを受信する場合、`*`とする必要がある。
+
+同じNamespace内からのリクエストのみ場合、`.`とする。
 
 **＊実装例＊**
 
@@ -361,7 +363,9 @@ spec:
 
 同じNamespaceからのみリクエストできるようにする。
 
-Pod間通信の場合、他のNamespaceからリクエストを受信しなてもよければ、`.`とする。
+もし、他のNamespaceのVirtualServiceからリクエストを受信する場合、`*`とする必要がある。
+
+同じNamespace内からのリクエストのみ場合、`.`とする。
 
 **＊実装例＊**
 
@@ -2175,7 +2179,9 @@ spec:
 
 デフォルト値である。
 
-もし他のNamespace (例：`istio-ingress`) 内のIstio IngressGatewayからリクエストを受信する場合、`*`とする必要がある。
+もし、他のNamespaceのVirtualServiceからリクエストを受信する場合、`*`とする必要がある。
+
+同じNamespace内からのリクエストのみ場合、`.`とする。
 
 **＊実装例＊**
 
@@ -2199,7 +2205,9 @@ spec:
 
 同じNamespaceからのみリクエストできるようにする。
 
-Pod間通信 (`mesh`) の場合、他のNamespaceからリクエストを受信しなてもよければ、`.`とする。
+もし、他のNamespaceのVirtualServiceからリクエストを受信する場合、`*`とする必要がある。
+
+同じNamespace内からのリクエストのみ場合、`.`とする。
 
 **＊実装例＊**
 
