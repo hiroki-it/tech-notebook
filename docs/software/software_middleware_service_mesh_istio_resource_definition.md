@@ -345,6 +345,8 @@ spec:
 
 もし、同じNamespace内のVirtualServiceと紐づける場合、`.`とする。
 
+つまり、Istio IngressGatewayやIstio EgressGatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは`*`とし、それ以外のこれらの場合は`.`とする。
+
 **＊実装例＊**
 
 ```yaml
@@ -362,6 +364,8 @@ spec:
 同じNamespace内のVirtualServiceと紐づける場合、`.`とする。
 
 もし、他のNamespaceのVirtualServiceに紐づける場合、`*`とする必要がある。
+
+つまり、Istio IngressGatewayやIstio EgressGatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは`*`とし、それ以外のこれらの場合は`.`とする。
 
 **＊実装例＊**
 
@@ -1863,7 +1867,7 @@ spec:
 
 そのServiceEntryにリクエストできるNamespaceを設定する。
 
-Istio EgressGatewayが異なるNamespaceにあることも考慮して、全てのNamespaceを許可する (`*`) と良い。
+ServiceEntryはIstio EgressGatewayからリクエストを受信するため、基本的には`*`となるはずである。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -2177,6 +2181,8 @@ spec:
 
 もし、同じNamespace内のGatewayやDestinationRuleと紐づける場合、`.`とする。
 
+つまり、Istio IngressGatewayやIstio EgressGatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは`*`とし、それ以外のこれらの場合は`.`とする。
+
 **＊実装例＊**
 
 ```yaml
@@ -2200,6 +2206,8 @@ spec:
 同じNamespace内のGatewayやDestinationRuleと紐づける場合、`.`とする。
 
 もし、他のNamespaceのGatewayやDestinationRuleに紐づける場合、`*`とする必要がある。
+
+つまり、Istio IngressGatewayやIstio EgressGatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは`*`とし、それ以外のこれらの場合は`.`とする。
 
 **＊実装例＊**
 

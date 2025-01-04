@@ -139,6 +139,8 @@ configs:
 
 Gatewayで受信した通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
 
+GatewayまたはVirtualServiceの設定が誤っている可能性がある。
+
 `istioctl proxy-config route`コマンドで、Gatewayに紐づくVirtualServiceがいるかを確認できる。
 
 ```bash
@@ -491,6 +493,8 @@ NAME     DOMAINS                                      MATCH               VIRTUA
 
 VirtualServiceで受信した通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のServiceが見つからなかったりすると、`404`ステータスを返信する。
 
+GatewayまたはVirtualServiceの設定が誤っている可能性がある。
+
 `istioctl proxy-config cluster`コマンドで、VirtualServiceに紐づくDestinationRuleがいるかを確認できる。
 
 ```bash
@@ -691,6 +695,14 @@ foo-service.foo-namespace.svc.cluster.local   50001                        v1   
 bar-service.bar-namespace.svc.cluster.local   50002                        v1            outbound     EDS                 bar-destination-rule.bar-namespace
 baz-service.baz-namespace.svc.cluster.local   50003                        v1            outbound     EDS                 baz-destination-rule.baz-namespace
 ```
+
+### プラクティス
+
+#### ▼ `503`ステータス
+
+DestinationRuleで受信した通信をPodに送信できない場合に、`503`ステータスを返信する。
+
+<br>
 
 <br>
 
