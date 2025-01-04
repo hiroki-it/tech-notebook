@@ -704,8 +704,6 @@ DestinationRuleで受信した通信をPodに送信できない場合に、`503`
 
 <br>
 
-<br>
-
 ## 05. ServiceEntry
 
 ### ServiceEntryとは

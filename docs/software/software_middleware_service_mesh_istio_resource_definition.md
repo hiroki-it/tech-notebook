@@ -109,6 +109,16 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/gateway -n
 
 ## 02. AuthorizationPolicy
 
+### .metadata.namespace
+
+AuthorizationPolicyの適用範囲の仕組みは、RequestAuthenticationと同じである。
+
+作成したNamespaceに対して適用され、`istio-system`に置いた場合は全てのNamespaceに適用される。
+
+もし、適用範囲を小さくしたい場合は、`.spec.selector`キーを使用する。
+
+<br>
+
 ### .spec.action
 
 #### ▼ actionとは
@@ -116,7 +126,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/gateway -n
 認可スコープで、認証済みの送信元を許可するか否かを設定する。
 
 ```yaml
-apiVersion: security.istio.io/v1beta1
+apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
   name: bar-authorization-policy
@@ -142,7 +152,7 @@ spec:
 ここでは、OAuth2 ProxyをIDプロバイダーとして使用する。
 
 ```yaml
-apiVersion: security.istio.io/v1beta1
+apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
   name: oauth2-proxy-authorization-policy
@@ -196,7 +206,7 @@ data:
 **＊実装例＊**
 
 ```yaml
-apiVersion: security.istio.io/v1beta1
+apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
   name: allow-pod
@@ -215,7 +225,7 @@ spec:
 #### ▼ 特定のNamespaceを許可する
 
 ```yaml
-apiVersion: security.istio.io/v1beta1
+apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
   name: allow-namespace
@@ -238,7 +248,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
-apiVersion: security.istio.io/v1beta1
+apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
   name: allow-jwt
@@ -256,7 +266,7 @@ spec:
 #### ▼ 全てを拒否する
 
 ```yaml
-apiVersion: security.istio.io/v1beta1
+apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
   name: deny-all
@@ -271,7 +281,7 @@ spec:
 #### ▼ 全てを許可する
 
 ```yaml
-apiVersion: security.istio.io/v1beta1
+apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
   name: allow-all
@@ -286,7 +296,7 @@ spec:
 #### ▼ 非TLSを拒否する
 
 ```yaml
-apiVersion: security.istio.io/v1beta1
+apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
   name: deny-non-tls
@@ -312,7 +322,7 @@ AuthorizationPolicyの設定を適用するKubernetesリソースを設定する
 設定したKubernetesリソースに対して認証済みの送信元が通信した場合に、AuthorizationPolicyを適用する。
 
 ```yaml
-apiVersion: security.istio.io/v1beta1
+apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
   name: bar-authorization-policy
@@ -1574,6 +1584,16 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 ## 08. RequestAuthentication
 
+### .metadata.namespace
+
+RequestAuthenticationの適用範囲の仕組みは、AuthorizationPolicyと同じである。
+
+作成したNamespaceに対して適用され、`istio-system`に置いた場合は全てのNamespaceに適用される。
+
+もし、適用範囲を小さくしたい場合は、`.spec.selector`キーを使用する。
+
+<br>
+
 ### .spec.jwtRules
 
 #### ▼ jwtRulesとは
@@ -1587,7 +1607,7 @@ JWTが失効していたり、不正であったりする場合に、認証処�
 代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403`ステータス) として扱う必要がある。
 
 ```yaml
-apiVersion: security.istio.io/v1beta1
+apiVersion: security.istio.io/v1
 kind: RequestAuthentication
 metadata:
   name: foo-request-authentication-jwt
@@ -1605,7 +1625,7 @@ spec:
           prefix: "Bearer "
 ---
 # RequestAuthenticationで設定したAuthorizationヘッダーがない場合には認可エラーとする
-apiVersion: security.istio.io/v1beta1
+apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
   name: foo-authorization-policy
@@ -1631,7 +1651,7 @@ spec:
 代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403`ステータス) として扱う必要がある。
 
 ```yaml
-apiVersion: security.istio.io/v1beta1
+apiVersion: security.istio.io/v1
 kind: RequestAuthentication
 metadata:
   name: foo-request-authentication-jwt
@@ -1649,7 +1669,7 @@ spec:
           prefix: "Bearer "
 ---
 # AuthorizationPolicyでRequestAuthenticationを強制する
-apiVersion: security.istio.io/v1beta1
+apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
   name: foo-authorization-policy
@@ -1674,7 +1694,7 @@ spec:
 代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403`ステータス) として扱う必要がある。
 
 ```yaml
-apiVersion: security.istio.io/v1beta1
+apiVersion: security.istio.io/v1
 kind: RequestAuthentication
 metadata:
   name: foo-request-authentication-jwt
@@ -1692,7 +1712,7 @@ spec:
           prefix: "Bearer "
 ---
 # RequestAuthenticationで設定したAuthorizationヘッダーがない場合には認可エラーとする
-apiVersion: security.istio.io/v1beta1
+apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
   name: foo-authorization-policy
@@ -1718,7 +1738,7 @@ spec:
 代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403`ステータス) として扱う必要がある。
 
 ```yaml
-apiVersion: security.istio.io/v1beta1
+apiVersion: security.istio.io/v1
 kind: RequestAuthentication
 metadata:
   name: foo-request-authentication-jwt
@@ -1735,7 +1755,7 @@ spec:
           prefix: "Bearer "
 ---
 # RequestAuthenticationで設定したAuthorizationヘッダーがない場合には認可エラーとする
-apiVersion: security.istio.io/v1beta1
+apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
   name: foo-authorization-policy
@@ -1782,7 +1802,7 @@ data:
 JWTによるBearer認証を適用するKubernetesリソース名を設定する。
 
 ```yaml
-apiVersion: security.istio.io/v1beta1
+apiVersion: security.istio.io/v1
 kind: RequestAuthentication
 metadata:
   name: foo-request-authentication-jwt"

@@ -523,7 +523,7 @@ AuthorizationPolicyで、認可フェーズの委譲先のIDプロバイダー�
 ここでは、OAuth2 ProxyをIDプロバイダーとして使用する。
 
 ```yaml
-apiVersion: security.istio.io/v1beta1
+apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
   name: oauth2-proxy-authorization-policy
