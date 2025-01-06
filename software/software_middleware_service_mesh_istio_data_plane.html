@@ -4730,15 +4730,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#startprobe" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ startProbe
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -4848,6 +4839,39 @@
   <a href="#envoy_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Envoyとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ヘルスチェック
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ヘルスチェック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#startprobe" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 自身のstartProbe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アプリコンテナのヘルスチェック
     </span>
   </a>
   
@@ -4970,7 +4994,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       実行オプションの渡し方
     </span>
@@ -24612,15 +24636,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#startprobe" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ startProbe
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -24730,6 +24745,39 @@
   <a href="#envoy_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Envoyとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ヘルスチェック
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ヘルスチェック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#startprobe" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 自身のstartProbe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アプリコンテナのヘルスチェック
     </span>
   </a>
   
@@ -24852,7 +24900,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       実行オプションの渡し方
     </span>
@@ -25123,13 +25171,6 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <li><a href="https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers#proposal">https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers#proposal</a></li>
 </ul>
 </blockquote>
-<h4 id="startprobe">▼ startProbe<a class="headerlink" href="#startprobe" title="Permanent link">&para;</a></h4>
-<p>サイドカーは、<code>10</code>分以上起動が完了しないと、Podが終了する。</p>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/news/releases/1.20.x/announcing-1.20/upgrade-notes/#startupprobe-added-to-sidecar-by-default">https://istio.io/latest/news/releases/1.20.x/announcing-1.20/upgrade-notes/#startupprobe-added-to-sidecar-by-default</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 <h3 id="istio-cniistio-validation">istio-cniによる<code>istio-validation</code>コンテナ<a class="headerlink" href="#istio-cniistio-validation" title="Permanent link">&para;</a></h3>
 <h4 id="istio-cni">▼ istio-cniとは<a class="headerlink" href="#istio-cni" title="Permanent link">&para;</a></h4>
@@ -25326,8 +25367,25 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="_6">ヘルスチェック<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="startprobe">▼ 自身のstartProbe<a class="headerlink" href="#startprobe" title="Permanent link">&para;</a></h4>
+<p><code>istio-proxy</code>コンテナは、<code>10</code>分以上起動が完了しないと、Podが終了する。</p>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/news/releases/1.20.x/announcing-1.20/upgrade-notes/#startupprobe-added-to-sidecar-by-default">https://istio.io/latest/news/releases/1.20.x/announcing-1.20/upgrade-notes/#startupprobe-added-to-sidecar-by-default</a></li>
+</ul>
+</blockquote>
+<h4 id="_7">▼ アプリコンテナのヘルスチェック<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p><code>istio-proxy</code>コンテナは、kubeletからのヘルスチェックをアプリコンテナにリダイレクトする。</p>
+<p>リダイレクトしないと、kubeletは<code>istio-proxy</code>コンテナの正常性のみを検知してしまい、アプリコンテナの正常性を検知できない。</p>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/">https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="graceful-drain">Graceful Drainモード<a class="headerlink" href="#graceful-drain" title="Permanent link">&para;</a></h3>
-<p>istio-proxyは、自分自身を安全に停止する。</p>
+<p><code>istio-proxy</code>コンテナは、自分自身を安全に停止する。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -25460,7 +25518,7 @@ istio_request_messages_total<span class="o">{</span>...<span class="o">}</span>
 </blockquote>
 <p><br></p>
 <h2 id="03-pilot-agent">03. pilot-agentコマンド<a class="headerlink" href="#03-pilot-agent" title="Permanent link">&para;</a></h2>
-<h3 id="_6">実行オプションの渡し方<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_8">実行オプションの渡し方<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p><code>istio-proxy</code>コンテナの起動時に引数として渡す。</p>
 <p>Podであれば、<code>.spec.containers[*].args</code>オプションを使用する。</p>
 <p><br></p>
@@ -25494,7 +25552,7 @@ istio_request_messages_total<span class="o">{</span>...<span class="o">}</span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-07</span>
   </span>
 
     
