@@ -479,11 +479,25 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 
 > - https://istio.io/latest/news/releases/1.20.x/announcing-1.20/upgrade-notes/#startupprobe-added-to-sidecar-by-default
 
-#### ▼ アプリコンテナのヘルスチェック
+#### ▼ アプリコンテナのHTTPヘルスチェック
 
-`istio-proxy`コンテナは、kubeletからのヘルスチェックをアプリコンテナにリダイレクトする。
+kubeletはIstioの発行した証明書を持っていない。
 
-リダイレクトしないと、kubeletは`istio-proxy`コンテナの正常性のみを検知してしまい、アプリコンテナの正常性を検知できない。
+そのため、kubeletがHTTPヘルスチェックをも`istio-proxy`コンテナに実施すると、証明書のないエラーになる。
+
+そのため、`istio-proxy`コンテナは、kubeletからのHTTPヘルスチェックをアプリコンテナにリダイレクトする。
+
+アプリコンテナ自体には証明書がないため、HTTPヘルスチェックを実施できるようになる。
+
+#### ▼ アプリコンテナのTCPヘルスチェック
+
+kubeletは、対象のポート番号でプロセスがリクエストを待ち受けているかのみを検証する。
+
+そのため、アプリコンテナが異常であっても`istio-proxy`コンテナが正常である限り、kubeletのTCPヘルスチェックが成功してしまう。
+
+そのため、`istio-proxy`コンテナは、kubeletからのTCPヘルスチェックをアプリコンテナにリダイレクトする。
+
+これにより、kuebletがアプリコンテナにTCPヘルスチェックを実施できるようになる。
 
 > - https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/
 
