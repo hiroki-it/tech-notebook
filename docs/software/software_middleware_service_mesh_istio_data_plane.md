@@ -262,12 +262,6 @@ spec:
 > - https://github.com/istio/istio/blob/1.19.0-beta.0/pkg/kube/inject/inject.go#L426-L436
 > - https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers#proposal
 
-#### ▼ startProbe
-
-サイドカーは、`10`分以上起動が完了しないと、Podが終了する。
-
-> - https://istio.io/latest/news/releases/1.20.x/announcing-1.20/upgrade-notes/#startupprobe-added-to-sidecar-by-default
-
 <br>
 
 ### istio-cniによる`istio-validation`コンテナ
@@ -477,9 +471,27 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 
 <br>
 
+### ヘルスチェック
+
+#### ▼ 自身のstartProbe
+
+`istio-proxy`コンテナは、`10`分以上起動が完了しないと、Podが終了する。
+
+> - https://istio.io/latest/news/releases/1.20.x/announcing-1.20/upgrade-notes/#startupprobe-added-to-sidecar-by-default
+
+#### ▼ アプリコンテナのヘルスチェック
+
+`istio-proxy`コンテナは、kubeletからのヘルスチェックをアプリコンテナにリダイレクトする。
+
+リダイレクトしないと、kubeletは`istio-proxy`コンテナの正常性のみを検知してしまい、アプリコンテナの正常性を検知できない。
+
+> - https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/
+
+<br>
+
 ### Graceful Drainモード
 
-istio-proxyは、自分自身を安全に停止する。
+`istio-proxy`コンテナは、自分自身を安全に停止する。
 
 `(1)`
 

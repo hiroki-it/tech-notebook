@@ -36,13 +36,14 @@ Keycloakでは、コマンドオプション、環境変数、`keycloak.conf`フ
 
 ### データベース
 
-| 変数                 | 値の例                             | 説明 |
-| -------------------- | ---------------------------------- | ---- |
-| `KC_DB`              | `mysql`                            |      |
-| `KC_DB_URL`          | `jdbc:mysql://mysql:3306/keycloak` |      |
-| `KC_DB_URL_DATABASE` | `keycloak`                         |      |
-| `KC_DB_USERNAME`     | `keycloak`                         |      |
-| `KC_DB_PASSWORD`     | `password`                         |      |
+| 変数                 | 値の例                             | 説明                                         |
+| -------------------- | ---------------------------------- | -------------------------------------------- |
+| `KC_DB`              | `mysql`                            |                                              |
+| `KC_DB_URL`          | `jdbc:mysql://mysql:3306/keycloak` |                                              |
+| `KC_DB_URL_DATABASE` | `keycloak`                         |                                              |
+| `KC_DB_USERNAME`     | `keycloak`                         |                                              |
+| `KC_DB_PASSWORD`     | `password`                         |                                              |
+| `KC_HOSTNAME`        | `localhost`                        | Keycloakのダッシュボードのホスト名を設定する |
 
 > - https://www.keycloak.org/server/all-config#category-database
 
