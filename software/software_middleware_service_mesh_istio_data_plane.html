@@ -4869,9 +4869,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#http" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ アプリコンテナのヘルスチェック
+      ▼ アプリコンテナのHTTPヘルスチェック
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アプリコンテナのTCPヘルスチェック
     </span>
   </a>
   
@@ -4994,7 +5003,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       実行オプションの渡し方
     </span>
@@ -24775,9 +24784,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#http" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ アプリコンテナのヘルスチェック
+      ▼ アプリコンテナのHTTPヘルスチェック
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アプリコンテナのTCPヘルスチェック
     </span>
   </a>
   
@@ -24900,7 +24918,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       実行オプションの渡し方
     </span>
@@ -25375,9 +25393,16 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <li><a href="https://istio.io/latest/news/releases/1.20.x/announcing-1.20/upgrade-notes/#startupprobe-added-to-sidecar-by-default">https://istio.io/latest/news/releases/1.20.x/announcing-1.20/upgrade-notes/#startupprobe-added-to-sidecar-by-default</a></li>
 </ul>
 </blockquote>
-<h4 id="_7">▼ アプリコンテナのヘルスチェック<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナは、kubeletからのヘルスチェックをアプリコンテナにリダイレクトする。</p>
-<p>リダイレクトしないと、kubeletは<code>istio-proxy</code>コンテナの正常性のみを検知してしまい、アプリコンテナの正常性を検知できない。</p>
+<h4 id="http">▼ アプリコンテナのHTTPヘルスチェック<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
+<p>kubeletはIstioの発行した証明書を持っていない。</p>
+<p>そのため、kubeletがHTTPヘルスチェックをも<code>istio-proxy</code>コンテナに実施すると、証明書のないエラーになる。</p>
+<p>そのため、<code>istio-proxy</code>コンテナは、kubeletからのHTTPヘルスチェックをアプリコンテナにリダイレクトする。</p>
+<p>アプリコンテナ自体には証明書がないため、HTTPヘルスチェックを実施できるようになる。</p>
+<h4 id="tcp">▼ アプリコンテナのTCPヘルスチェック<a class="headerlink" href="#tcp" title="Permanent link">&para;</a></h4>
+<p>kubeletは、対象のポート番号でプロセスがリクエストを待ち受けているかのみを検証する。</p>
+<p>そのため、アプリコンテナが異常であっても<code>istio-proxy</code>コンテナが正常である限り、kubeletのTCPヘルスチェックが成功してしまう。</p>
+<p>そのため、<code>istio-proxy</code>コンテナは、kubeletからのTCPヘルスチェックをアプリコンテナにリダイレクトする。</p>
+<p>これにより、kuebletがアプリコンテナにTCPヘルスチェックを実施できるようになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/">https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/</a></li>
@@ -25518,7 +25543,7 @@ istio_request_messages_total<span class="o">{</span>...<span class="o">}</span>
 </blockquote>
 <p><br></p>
 <h2 id="03-pilot-agent">03. pilot-agentコマンド<a class="headerlink" href="#03-pilot-agent" title="Permanent link">&para;</a></h2>
-<h3 id="_8">実行オプションの渡し方<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h3 id="_7">実行オプションの渡し方<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p><code>istio-proxy</code>コンテナの起動時に引数として渡す。</p>
 <p>Podであれば、<code>.spec.containers[*].args</code>オプションを使用する。</p>
 <p><br></p>
