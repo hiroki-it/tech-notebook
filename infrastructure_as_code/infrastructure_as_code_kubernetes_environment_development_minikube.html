@@ -17663,9 +17663,42 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#minikube-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ minikube serviceコマンドによる接続
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubectl-port-forward" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ kubectl port-forwardコマンドによる接続
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#loadbalancer-service" class="md-nav__link">
     <span class="md-ellipsis">
       LoadBalancer Serviceの場合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LoadBalancer Serviceの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minikube-tunnel" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ minikube tunnelコマンドによる接続
     </span>
   </a>
   
@@ -17687,27 +17720,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#clusterip-service_1" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ClusterIP Serviceで頑張る
+      ▼ アドオンによる接続
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kubectl-port-forward" class="md-nav__link">
+  <a href="#kubectl-port-forward_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ kubectl port-forwardコマンドを使用する場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nodeport-service_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ NodePort Serviceを別途作成する場合
+      ▼ kubectl port-forwardコマンドによる接続
     </span>
   </a>
   
@@ -24628,9 +24652,42 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#minikube-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ minikube serviceコマンドによる接続
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubectl-port-forward" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ kubectl port-forwardコマンドによる接続
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#loadbalancer-service" class="md-nav__link">
     <span class="md-ellipsis">
       LoadBalancer Serviceの場合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LoadBalancer Serviceの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minikube-tunnel" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ minikube tunnelコマンドによる接続
     </span>
   </a>
   
@@ -24652,27 +24709,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#clusterip-service_1" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ClusterIP Serviceで頑張る
+      ▼ アドオンによる接続
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kubectl-port-forward" class="md-nav__link">
+  <a href="#kubectl-port-forward_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ kubectl port-forwardコマンドを使用する場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nodeport-service_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ NodePort Serviceを別途作成する場合
+      ▼ kubectl port-forwardコマンドによる接続
     </span>
   </a>
   
@@ -25027,6 +25075,7 @@ b1bdec6c4578<span class="w">   </span>minikube<span class="w">             </spa
 </blockquote>
 <p><br></p>
 <h3 id="nodeport-service">NodePort Serviceの場合<a class="headerlink" href="#nodeport-service" title="Permanent link">&para;</a></h3>
+<h4 id="minikube-service">▼ <code>minikube service</code>コマンドによる接続<a class="headerlink" href="#minikube-service" title="Permanent link">&para;</a></h4>
 <p>NodePort Serviceの場合、<code>minikube service</code>コマンドを使用して、Minikube仮想サーバー内のNodeに接続できる。</p>
 <p><code>http://127.0.0.1:&lt;自動的に発行されたトンネルポート番号&gt;</code>の形式でURLが発行されるため、ブラウザや<code>curl</code>コマンドで接続を確認できる。</p>
 <p>NodePort Serviceで指定した宛先ポート番号の数だけ、これに紐づくトンネルポート番号を発行する。</p>
@@ -25055,8 +25104,17 @@ ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">UserKnownH
 <li><a href="https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel">https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel</a></li>
 </ul>
 </blockquote>
+<h4 id="kubectl-port-forward">▼ <code>kubectl port-forward</code>コマンドによる接続<a class="headerlink" href="#kubectl-port-forward" title="Permanent link">&para;</a></h4>
+<p>Ingressを介さずに、Podに直接的に接続する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Podに直接的に指定する場合</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>pod/&lt;Pod名&gt;<span class="w"> </span>&lt;ホストポート番号&gt;:&lt;Podのポート番号&gt;
+
+<span class="c1"># Serviceの情報を使用して、Podを指定する場合</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/&lt;Service名&gt;<span class="w"> </span>&lt;ホストポート番号&gt;:&lt;Podのポート番号&gt;
+</code></pre></div>
 <p><br></p>
-<h4 id="loadbalancer-service">LoadBalancer Serviceの場合<a class="headerlink" href="#loadbalancer-service" title="Permanent link">&para;</a></h4>
+<h3 id="loadbalancer-service">LoadBalancer Serviceの場合<a class="headerlink" href="#loadbalancer-service" title="Permanent link">&para;</a></h3>
+<h4 id="minikube-tunnel">▼ <code>minikube tunnel</code>コマンドによる接続<a class="headerlink" href="#minikube-tunnel" title="Permanent link">&para;</a></h4>
 <p>LoadBalancer Serviceの場合、<code>minikube tunnel</code>コマンドでLoadBalancer Serviceに<code>EXTERNAL-IP</code>が割り当てられるIPアドレスから、Minikube仮想サーバー内のNodeに接続できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>tunnel
 
@@ -25068,7 +25126,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://&lt;minikube<span cl
 </ul>
 </blockquote>
 <h3 id="clusterip-service">ClusterIP Serviceの場合<a class="headerlink" href="#clusterip-service" title="Permanent link">&para;</a></h3>
-<h4 id="clusterip-service_1">▼ ClusterIP Serviceで頑張る<a class="headerlink" href="#clusterip-service_1" title="Permanent link">&para;</a></h4>
+<h4 id="_8">▼ アドオンによる接続<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>ClusterIP Serviceの場合、やや難易度が高くなる。</p>
 <p>クラウドプロバイダーとは状況が異なり、Node外にロードバランサーを構築できず、別の方法でホストから仮想サーバー内のNodeに接続する必要がある。</p>
 <p>minikubeのingressアドオン (Nginx Ingress Controller) を有効化し、Ingressとnginxを指定したIngressClassを作成する。</p>
@@ -25095,22 +25153,14 @@ timeout<span class="w"> </span><span class="m">5</span>
 <li><a href="https://developer.mamezou-tech.com/containers/k8s/tutorial/app/minikube/">https://developer.mamezou-tech.com/containers/k8s/tutorial/app/minikube/</a></li>
 </ul>
 </blockquote>
-<h4 id="kubectl-port-forward">▼ <code>kubectl port-forward</code>コマンドを使用する場合<a class="headerlink" href="#kubectl-port-forward" title="Permanent link">&para;</a></h4>
-<p>妥協策として、Ingressを介さずに、Podに直接的に接続する。</p>
+<h4 id="kubectl-port-forward_1">▼ <code>kubectl port-forward</code>コマンドによる接続<a class="headerlink" href="#kubectl-port-forward_1" title="Permanent link">&para;</a></h4>
+<p>Ingressを介さずに、Podに直接的に接続する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Podに直接的に指定する場合</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>pod/&lt;Pod名&gt;<span class="w"> </span>&lt;ホストポート番号&gt;:&lt;Podのポート番号&gt;
 
 <span class="c1"># Serviceの情報を使用して、Podを指定する場合</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/&lt;Service名&gt;<span class="w"> </span>&lt;ホストポート番号&gt;:&lt;Podのポート番号&gt;
 </code></pre></div>
-<h4 id="nodeport-service_1">▼ NodePort Serviceを別途作成する場合<a class="headerlink" href="#nodeport-service_1" title="Permanent link">&para;</a></h4>
-<p>妥協策として、開発環境のみで使用するNodePort Serviceを作成する。</p>
-<blockquote>
-<ul>
-<li><a href="https://minikube.sigs.k8s.io/docs/handbook/addons/ingress-dns/">https://minikube.sigs.k8s.io/docs/handbook/addons/ingress-dns/</a></li>
-<li><a href="https://developer.mamezou-tech.com/containers/k8s/tutorial/app/minikube/">https://developer.mamezou-tech.com/containers/k8s/tutorial/app/minikube/</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 
 
@@ -25132,7 +25182,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class=
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-07</span>
   </span>
 
     
