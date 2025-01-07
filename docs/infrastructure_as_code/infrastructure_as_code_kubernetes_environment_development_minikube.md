@@ -306,6 +306,8 @@ Minikubeは、クラウドプロバイダーとは状況が異なり、Minikube�
 
 ### NodePort Serviceの場合
 
+#### ▼ `minikube service`コマンドによる接続
+
 NodePort Serviceの場合、`minikube service`コマンドを使用して、Minikube仮想サーバー内のNodeに接続できる。
 
 `http://127.0.0.1:<自動的に発行されたトンネルポート番号>`の形式でURLが発行されるため、ブラウザや`curl`コマンドで接続を確認できる。
@@ -342,9 +344,23 @@ $ minikube service istio-ingressgateway --url -n istio-ingress
 
 > - https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel
 
+#### ▼ `kubectl port-forward`コマンドによる接続
+
+Ingressを介さずに、Podに直接的に接続する。
+
+```bash
+# Podに直接的に指定する場合
+$ kubectl port-forward pod/<Pod名> <ホストポート番号>:<Podのポート番号>
+
+# Serviceの情報を使用して、Podを指定する場合
+$ kubectl port-forward svc/<Service名> <ホストポート番号>:<Podのポート番号>
+```
+
 <br>
 
-#### LoadBalancer Serviceの場合
+### LoadBalancer Serviceの場合
+
+#### ▼ `minikube tunnel`コマンドによる接続
 
 LoadBalancer Serviceの場合、`minikube tunnel`コマンドでLoadBalancer Serviceに`EXTERNAL-IP`が割り当てられるIPアドレスから、Minikube仮想サーバー内のNodeに接続できる。
 
@@ -358,7 +374,7 @@ $ curl http://<minikube tunnelコマンドでLoadBalancer Serviceに割り当て
 
 ### ClusterIP Serviceの場合
 
-#### ▼ ClusterIP Serviceで頑張る
+#### ▼ アドオンによる接続
 
 ClusterIP Serviceの場合、やや難易度が高くなる。
 
@@ -398,9 +414,9 @@ $ curl http://foo.minikube
 > - https://minikube.sigs.k8s.io/docs/handbook/addons/ingress-dns/
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/app/minikube/
 
-#### ▼ `kubectl port-forward`コマンドを使用する場合
+#### ▼ `kubectl port-forward`コマンドによる接続
 
-妥協策として、Ingressを介さずに、Podに直接的に接続する。
+Ingressを介さずに、Podに直接的に接続する。
 
 ```bash
 # Podに直接的に指定する場合
@@ -409,12 +425,5 @@ $ kubectl port-forward pod/<Pod名> <ホストポート番号>:<Podのポート�
 # Serviceの情報を使用して、Podを指定する場合
 $ kubectl port-forward svc/<Service名> <ホストポート番号>:<Podのポート番号>
 ```
-
-#### ▼ NodePort Serviceを別途作成する場合
-
-妥協策として、開発環境のみで使用するNodePort Serviceを作成する。
-
-> - https://minikube.sigs.k8s.io/docs/handbook/addons/ingress-dns/
-> - https://developer.mamezou-tech.com/containers/k8s/tutorial/app/minikube/
 
 <br>
