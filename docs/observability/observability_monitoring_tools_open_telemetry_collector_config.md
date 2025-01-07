@@ -19,7 +19,8 @@ description: 設定ファイル＠OpenTelemetry Collectorの知見を記録し�
 
 #### ▼ otel/opentelemetry-collector
 
-標準機能 (core) に加えて、一部のcontribute機能を使用するために、標準の`otel/opentelemetry-collector-k8s`ではなく`otel/opentelemetry-collector-core`を使用する必要がある。
+標準機能 (core) に加えて、一部のcontribute機能を使用するために、標準の`otel/opentelemetry-collector-k8s`ではなく
+`otel/opentelemetry-collector-core`を使用する必要がある。
 
 エントリポイントが異なるため、コマンド名も異なる。
 
@@ -45,7 +46,8 @@ $ otelcol-k8s --config relay.yaml
 
 #### ▼ otel/opentelemetry-collector-contrib
 
-標準機能 (core) に加えて、contribute機能 (例：AWS Exporter) を使用するために、標準の`otel/opentelemetry-collector-k8s`ではなく`otel/opentelemetry-collector-contrib`を使用する必要がある。
+標準機能 (core) に加えて、contribute機能 (例：AWS Exporter) を使用するために、標準の`otel/opentelemetry-collector-k8s`ではなく
+`otel/opentelemetry-collector-contrib`を使用する必要がある。
 
 エントリポイントが異なるため、コマンド名も異なる。
 
@@ -289,40 +291,40 @@ exporters:
 
 ```yaml
 # スパン一つ当たりの内容
-2024-03-26T04:19:41.450Z	info	ResourceSpans #0
+  2024-03-26T04:19:41.450Z	info	ResourceSpans #0
 Resource SchemaURL:
 Resource attributes:
-     -> service.name: Str(foo-service)
-ScopeSpans #0
+  -> service.name: Str(foo-service)
+  ScopeSpans #0
 ScopeSpans SchemaURL:
-InstrumentationScope "<トレースパッケージ名>"
-Span #0
-    Trace ID       : *****
-    Parent ID      :
-    ID             : *****
-    Name           : "<スパン名>"
-    Kind           : Server
-    Start time     : 2024-03-26 04:19:41.041 +0000 UTC
-    End time       : 2024-03-26 04:19:41.085 +0000 UTC
-    Status code    : Unset
-    Status message :
+  InstrumentationScope "<トレースパッケージ名>"
+  Span #0
+Trace ID: *****
+Parent ID:
+ID: *****
+Name: "<スパン名>"
+Kind: Server
+Start time: 2024-03-26 04:19:41.041 +0000 UTC
+End time: 2024-03-26 04:19:41.085 +0000 UTC
+Status code: Unset
+Status message:
 Attributes:
-     -> http.method: Str(GET)
-     -> http.target: Str("<スパン名>")
-     -> http.route: Str(/)
-     -> http.scheme: Str(http)
-     -> http.flavor: Str(1.1)
-     -> http.user_agent: Str(curl/7.79.1)
-     -> http.request_content_length: Int(0)
-     -> http.response_content_length: Int(905)
-     -> http.status_code: Int(200)
-     -> net.host.name: Str(_)
-     -> net.host.port: Int("<ポート番号>")
-     -> net.sock.peer.addr: Str(127.0.0.6)
-     -> net.sock.peer.port: Int("<ポート番号>")
-     -> env: Str("<実行環境名>")
-     -> service: Str("<サービス名>")
-	{"kind": "exporter", "data_type": "traces", "name": "debug"}
+  -> http.method: Str(GET)
+  -> http.target: Str("<スパン名>")
+  -> http.route: Str(/)
+  -> http.scheme: Str(http)
+  -> http.flavor: Str(1.1)
+  -> http.user_agent: Str(curl/7.79.1)
+  -> http.request_content_length: Int(0)
+  -> http.response_content_length: Int(905)
+  -> http.status_code: Int(200)
+  -> net.host.name: Str(_)
+  -> net.host.port: Int("<ポート番号>")
+  -> net.sock.peer.addr: Str(127.0.0.6)
+  -> net.sock.peer.port: Int("<ポート番号>")
+  -> env: Str("<実行環境名>")
+  -> service: Str("<サービス名>")
+  { "kind": "exporter", "data_type": "traces", "name": "debug" }
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/debugexporter/README.md
@@ -360,6 +362,22 @@ exporters:
 
 <br>
 
+### otlp
+
+#### ▼ otlpとは
+
+OTLP形式で指定したエンドポイントにエンドポイントにテレメトリーを送信する。。
+
+```yaml
+exporters:
+  otlp:
+    endpoint: grafana-tempo.istio-system.svc.cluster.local:4317
+```
+
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/otlpexporter/README.md
+
+<br>
+
 ## 03. extensions
 
 ### extensionとは
@@ -390,6 +408,8 @@ Processorを設定する
 
 ### attribute
 
+#### ▼ attributeとは
+
 テレメトリーに付与する属性を設定する。
 
 可読性が低くなるため、属性はアプリ側で実装した方が良い。
@@ -407,6 +427,26 @@ processors:
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/attributesprocessor/README.md
+
+#### ▼ k8sattribute
+
+コンテナの所属NamespaceやPodなどの属性をテレメトリーに設定する。
+
+```yaml
+processors:
+  k8sattributes:
+    extract:
+      metadata:
+        - k8s.namespace.name
+        - k8s.pod.name
+        - k8s.pod.start_time
+        - k8s.pod.uid
+        - k8s.deployment.name
+        - k8s.node.name
+```
+
+> - https://opentelemetry.io/docs/kubernetes/collector/components/
+> - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/k8sattributesprocessor/README.md
 
 <br>
 

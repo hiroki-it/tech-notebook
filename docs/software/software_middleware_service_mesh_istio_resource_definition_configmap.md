@@ -385,7 +385,7 @@ data:
 
 #### ▼ defaultProvidersとは
 
-テレメトリーの収集ツールを設定する。
+`extensionProviders`キーで定義したもののうち、デフォルトで使用するプロバイダーを設定する。
 
 Envoyを使用してアクセスログを収集する場合、`.mesh.defaultProviders.accessLogging`キーには何も設定しなくてよい。
 
@@ -404,6 +404,15 @@ data:
          - prometheus
        accessLogging:
          - stackdriver
+       tracing:
+         - foo-provider
+    extensionProviders:
+      - name: foo-provider
+        opentelemetry:
+          # OpenTelemetry Collectorを宛先として設定する
+          service: opentelemetry-collector.foo-namespace.svc.cluster.local
+          # gRPC用のエンドポイントを設定する
+          port: 4317
 ```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-DefaultProviders
