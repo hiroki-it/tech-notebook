@@ -29138,7 +29138,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="metadatanamespace_2">.metadata.namespace<a class="headerlink" href="#metadatanamespace_2" title="Permanent link">&para;</a></h3>
 <p>NamespaceでTelemetyの対象のサイドカーを絞れる。</p>
 <p>もし<code>istio-system</code>を指定した場合、Root Namespaceという設定になり、istio-proxyコンテナのある全てのNamespaceが対象になる。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる</span>
@@ -29153,7 +29153,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="accesslogging">accessLogging<a class="headerlink" href="#accesslogging" title="Permanent link">&para;</a></h3>
 <h4 id="accesslogging_1">▼ accessLoggingとは<a class="headerlink" href="#accesslogging_1" title="Permanent link">&para;</a></h4>
 <p>同じNamespace内の<code>istio-proxy</code>コンテナを対象として、アクセスログの作成方法を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">access-log-provider</span>
@@ -29194,10 +29194,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="metrics">metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h3>
 <h4 id="metrics_1">▼ metricsとは<a class="headerlink" href="#metrics_1" title="Permanent link">&para;</a></h4>
 <p>同じNamespace内の<code>istio-proxy</code>コンテナを対象として、メトリクスの作成方法を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">access-log-provider</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metrics-provider</span>
 <span class="w">  </span><span class="c1"># サイドカーをインジェクションしている各Namespaceで作成する</span>
 <span class="w">  </span><span class="c1"># もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
@@ -29208,7 +29208,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">metrics</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
-<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -29219,10 +29218,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="tracing">tracing<a class="headerlink" href="#tracing" title="Permanent link">&para;</a></h3>
 <h4 id="tracing_1">▼ tracingとは<a class="headerlink" href="#tracing_1" title="Permanent link">&para;</a></h4>
 <p>同じNamespace内の<code>istio-proxy</code>コンテナを対象として、スパンの作成方法を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">access-log-provider</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trace-provider</span>
 <span class="w">  </span><span class="c1"># サイドカーをインジェクションしている各Namespaceで作成する</span>
 <span class="w">  </span><span class="c1"># もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
@@ -30052,7 +30051,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-08</span>
   </span>
 
     
