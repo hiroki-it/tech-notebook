@@ -174,6 +174,8 @@ Grafanaの`grafana.ini`ファイルを管理する。
 
 anonymousユーザーは、デフォルトで`Viewer`ロールを持つ。
 
+`Admin`ロールにすれば、ログイン不要で全員が操作できるようになる。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap

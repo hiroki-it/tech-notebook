@@ -588,7 +588,7 @@ Datadogに送信するためには、`mesh.extensionProviders[*].datadog`キー�
 分散トレースの設定は以下の通りである。
 
 ```yaml
-apiVersion: telemetry.istio.io/v1alpha1
+apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
   name: tracing-provider
@@ -610,7 +610,7 @@ spec:
 アクセスログの設定は以下の通りである。
 
 ```yaml
-apiVersion: telemetry.istio.io/v1alpha1
+apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
   name: access-log-provider
@@ -667,7 +667,7 @@ OpenTelemetryに送信するためには、`mesh.extensionProviders[*].opentelem
 分散トレースの設定は以下の通りである。
 
 ```yaml
-apiVersion: telemetry.istio.io/v1alpha1
+apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
   name: tracing-provider
@@ -689,7 +689,7 @@ spec:
 アクセスログの設定は以下の通りである。
 
 ```yaml
-apiVersion: telemetry.istio.io/v1alpha1
+apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
   name: access-log-provider
@@ -697,7 +697,7 @@ metadata:
   # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
   namespace: foo
 spec:
-  # Opentelemetryにアクセスログを送信させるPodを設定する
+  # OpenTelemetryにアクセスログを送信させるPodを設定する
   selector:
     matchLabels:
       name: app
@@ -755,7 +755,7 @@ ZipkinやJaegerに送信するためには、`mesh.extensionProviders[*].zipkin`
 分散トレースの設定は以下の通りである。
 
 ```yaml
-apiVersion: telemetry.istio.io/v1alpha1
+apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
   name: tracing-provider
@@ -777,7 +777,7 @@ spec:
 アクセスログの設定は以下の通りである。
 
 ```yaml
-apiVersion: telemetry.istio.io/v1alpha1
+apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
   name: access-log-provider

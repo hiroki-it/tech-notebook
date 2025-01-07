@@ -3218,6 +3218,28 @@ spec:
 
 <br>
 
+### .spec.containers[*].startupProbe
+
+`failureThreshold` \* `periodSeconds`の間、コンテナの起動を待機する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-mysql
+      image: foo-mysql:1.0.0
+      startupProbe:
+        failureThreshold: 5
+        timeoutSeconds: 1
+```
+
+> - https://egashira.dev/blog/k8s-liveness-readiness-startup-probes#startupprobe
+
+<br>
+
 ### .spec.containers[*].readinessProbe
 
 #### ▼ readinessProbeとは

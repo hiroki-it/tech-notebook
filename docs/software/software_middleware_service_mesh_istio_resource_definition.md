@@ -2071,7 +2071,7 @@ NamespaceでTelemetyの対象のサイドカーを絞れる。
 もし`istio-system`を指定した場合、Root Namespaceという設定になり、istio-proxyコンテナのある全てのNamespaceが対象になる。
 
 ```yaml
-apiVersion: telemetry.istio.io/v1alpha1
+apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
   # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
@@ -2089,7 +2089,7 @@ metadata:
 同じNamespace内の`istio-proxy`コンテナを対象として、アクセスログの作成方法を設定する。
 
 ```yaml
-apiVersion: telemetry.istio.io/v1alpha1
+apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
   name: access-log-provider
@@ -2134,10 +2134,10 @@ data:
 同じNamespace内の`istio-proxy`コンテナを対象として、メトリクスの作成方法を設定する。
 
 ```yaml
-apiVersion: telemetry.istio.io/v1alpha1
+apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
-  name: access-log-provider
+  name: metrics-provider
   # サイドカーをインジェクションしている各Namespaceで作成する
   # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
   namespace: foo
@@ -2148,7 +2148,6 @@ spec:
   metrics:
     - providers:
         - name: prometheus
-          prometheus
 ```
 
 > - https://istio.io/latest/docs/reference/config/telemetry/#Metrics
@@ -2162,10 +2161,10 @@ spec:
 同じNamespace内の`istio-proxy`コンテナを対象として、スパンの作成方法を設定する。
 
 ```yaml
-apiVersion: telemetry.istio.io/v1alpha1
+apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
-  name: access-log-provider
+  name: trace-provider
   # サイドカーをインジェクションしている各Namespaceで作成する
   # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
   namespace: foo

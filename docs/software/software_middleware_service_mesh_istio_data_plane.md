@@ -485,9 +485,13 @@ kubeletはIstioの発行した証明書を持っていない。
 
 そのため、Istioで相互TLSを有効化していると、kubeletがHTTPヘルスチェックをも`istio-proxy`コンテナに実施した場合に、証明書のないエラーでHTTPヘルスチェックは失敗してしまう。
 
-そのため、`istio-proxy`コンテナは、kubeletからのHTTPヘルスチェックをアプリコンテナのpilot-agentにリダイレクトする。
+これの対策として、`istio-proxy`コンテナは、kubeletから受信したHTTPヘルスチェックをpilot-agentのパス (`/app-health/<アプリコンテナ名>/livez`、`/app-health/<アプリコンテナ名>/readyz`、`/app-health/<アプリコンテナ名>/startupz`) にリダイレクトする。
+
+事前にアプリコンテナのヘルスチェックパスの定義をpilot-agentのパスに書き換えることにより、リダイレクトを実現する。
 
 アプリコンテナ自体には証明書がないため、HTTPヘルスチェックを実施できるようになる。
+
+なお、Podの`.metadata.annotations`に`sidecar.istio.io/rewriteAppHTTPProbers: "false"`を設定しておくと、これを無効化できる。
 
 > - https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/
 > - https://ieevee.com/tech/2022/06/27/10-health-check.html#%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B
@@ -498,7 +502,7 @@ kubeletは、対象のポート番号でプロセスがリクエストを待ち�
 
 そのため、アプリコンテナが異常であっても`istio-proxy`コンテナが正常である限り、kubeletのTCPヘルスチェックが成功してしまう。
 
-そのため、`istio-proxy`コンテナは、kubeletからのTCPヘルスチェックをアプリコンテナのpilot-agentにリダイレクトする。
+これの対策として、`istio-proxy`コンテナは、kubeletから受信したTCPヘルスチェックをpilot-agentのポートにリダイレクトする。
 
 これにより、kuebletがアプリコンテナにTCPヘルスチェックを実施できるようになる。
 
