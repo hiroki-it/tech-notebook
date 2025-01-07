@@ -25811,7 +25811,7 @@
 <p><br></p>
 <h3 id="defaultproviders">defaultProviders<a class="headerlink" href="#defaultproviders" title="Permanent link">&para;</a></h3>
 <h4 id="defaultproviders_1">▼ defaultProvidersとは<a class="headerlink" href="#defaultproviders_1" title="Permanent link">&para;</a></h4>
-<p>テレメトリーの収集ツールを設定する。</p>
+<p><code>extensionProviders</code>キーで定義したもののうち、デフォルトで使用するプロバイダーを設定する。</p>
 <p>Envoyを使用してアクセスログを収集する場合、<code>.mesh.defaultProviders.accessLogging</code>キーには何も設定しなくてよい。</p>
 <p>また、Istioがデフォルトで用意している分散トレースツールを使用する場合も同様に不要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -25826,6 +25826,15 @@
 <span class="w">         </span><span class="no">- prometheus</span>
 <span class="w">       </span><span class="no">accessLogging:</span>
 <span class="w">         </span><span class="no">- stackdriver</span>
+<span class="w">       </span><span class="no">tracing:</span>
+<span class="w">         </span><span class="no">- foo-provider</span>
+<span class="w">    </span><span class="no">extensionProviders:</span>
+<span class="w">      </span><span class="no">- name: foo-provider</span>
+<span class="w">        </span><span class="no">opentelemetry:</span>
+<span class="w">          </span><span class="no"># OpenTelemetry Collectorを宛先として設定する</span>
+<span class="w">          </span><span class="no">service: opentelemetry-collector.foo-namespace.svc.cluster.local</span>
+<span class="w">          </span><span class="no"># gRPC用のエンドポイントを設定する</span>
+<span class="w">          </span><span class="no">port: 4317</span>
 </code></pre></div>
 <blockquote>
 <ul>

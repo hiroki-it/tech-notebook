@@ -23242,6 +23242,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#otlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      otlp
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="otlp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#otlp_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ otlpとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23305,6 +23329,30 @@
       attribute
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="attribute">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attribute_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ attributeとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k8sattribute" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ k8sattribute
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -23375,7 +23423,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#otlp" class="md-nav__link">
+  <a href="#otlp_2" class="md-nav__link">
     <span class="md-ellipsis">
       otlp
     </span>
@@ -23385,7 +23433,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#otlp_1" class="md-nav__link">
+  <a href="#otlp_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ otlpとは
     </span>
@@ -24782,6 +24830,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#otlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      otlp
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="otlp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#otlp_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ otlpとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -24845,6 +24917,30 @@
       attribute
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="attribute">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attribute_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ attributeとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k8sattribute" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ k8sattribute
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -24915,7 +25011,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#otlp" class="md-nav__link">
+  <a href="#otlp_2" class="md-nav__link">
     <span class="md-ellipsis">
       otlp
     </span>
@@ -24925,7 +25021,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#otlp_1" class="md-nav__link">
+  <a href="#otlp_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ otlpとは
     </span>
@@ -25066,7 +25162,8 @@
 <h2 id="01">01. 共通<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">コンテナイメージ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="otelopentelemetry-collector">▼ otel/opentelemetry-collector<a class="headerlink" href="#otelopentelemetry-collector" title="Permanent link">&para;</a></h4>
-<p>標準機能 (core) に加えて、一部のcontribute機能を使用するために、標準の<code>otel/opentelemetry-collector-k8s</code>ではなく<code>otel/opentelemetry-collector-core</code>を使用する必要がある。</p>
+<p>標準機能 (core) に加えて、一部のcontribute機能を使用するために、標準の<code>otel/opentelemetry-collector-k8s</code>ではなく
+<code>otel/opentelemetry-collector-core</code>を使用する必要がある。</p>
 <p>エントリポイントが異なるため、コマンド名も異なる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>otelcol<span class="w"> </span>--config<span class="w"> </span>relay.yaml
 </code></pre></div>
@@ -25088,7 +25185,8 @@
 </ul>
 </blockquote>
 <h4 id="otelopentelemetry-collector-contrib">▼ otel/opentelemetry-collector-contrib<a class="headerlink" href="#otelopentelemetry-collector-contrib" title="Permanent link">&para;</a></h4>
-<p>標準機能 (core) に加えて、contribute機能 (例：AWS Exporter) を使用するために、標準の<code>otel/opentelemetry-collector-k8s</code>ではなく<code>otel/opentelemetry-collector-contrib</code>を使用する必要がある。</p>
+<p>標準機能 (core) に加えて、contribute機能 (例：AWS Exporter) を使用するために、標準の<code>otel/opentelemetry-collector-k8s</code>ではなく
+<code>otel/opentelemetry-collector-contrib</code>を使用する必要がある。</p>
 <p>エントリポイントが異なるため、コマンド名も異なる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>otelcol-contrib<span class="w"> </span>--config<span class="w"> </span>relay.yaml
 </code></pre></div>
@@ -25289,40 +25387,40 @@
 <span class="w">    </span><span class="nt">verbosity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">detailed</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># スパン一つ当たりの内容</span>
-<span class="l l-Scalar l-Scalar-Plain">2024-03-26T04:19:41.450Z    info    ResourceSpans</span><span class="w"> </span><span class="c1">#0</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">2024-03-26T04:19:41.450Z  info    ResourceSpans</span><span class="w"> </span><span class="c1">#0</span>
 <span class="nt">Resource SchemaURL</span><span class="p">:</span>
 <span class="nt">Resource attributes</span><span class="p">:</span>
-<span class="w">     </span><span class="nt">-&gt; service.name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(foo-service)</span>
-<span class="l l-Scalar l-Scalar-Plain">ScopeSpans</span><span class="w"> </span><span class="c1">#0</span>
+<span class="w">  </span><span class="nt">-&gt; service.name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(foo-service)</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">ScopeSpans</span><span class="w"> </span><span class="c1">#0</span>
 <span class="nt">ScopeSpans SchemaURL</span><span class="p">:</span>
-<span class="l l-Scalar l-Scalar-Plain">InstrumentationScope &quot;&lt;トレースパッケージ名&gt;&quot;</span>
-<span class="l l-Scalar l-Scalar-Plain">Span</span><span class="w"> </span><span class="c1">#0</span>
-<span class="w">    </span><span class="nt">Trace ID       </span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
-<span class="w">    </span><span class="nt">Parent ID      </span><span class="p">:</span>
-<span class="w">    </span><span class="nt">ID             </span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
-<span class="w">    </span><span class="nt">Name           </span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;スパン名&gt;&quot;</span>
-<span class="w">    </span><span class="nt">Kind           </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Server</span>
-<span class="w">    </span><span class="nt">Start time     </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2024-03-26 04:19:41.041 +0000 UTC</span>
-<span class="w">    </span><span class="nt">End time       </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2024-03-26 04:19:41.085 +0000 UTC</span>
-<span class="w">    </span><span class="nt">Status code    </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unset</span>
-<span class="w">    </span><span class="nt">Status message </span><span class="p">:</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">InstrumentationScope &quot;&lt;トレースパッケージ名&gt;&quot;</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">Span</span><span class="w"> </span><span class="c1">#0</span>
+<span class="nt">Trace ID</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
+<span class="nt">Parent ID</span><span class="p">:</span>
+<span class="nt">ID</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
+<span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;スパン名&gt;&quot;</span>
+<span class="nt">Kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Server</span>
+<span class="nt">Start time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2024-03-26 04:19:41.041 +0000 UTC</span>
+<span class="nt">End time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2024-03-26 04:19:41.085 +0000 UTC</span>
+<span class="nt">Status code</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unset</span>
+<span class="nt">Status message</span><span class="p">:</span>
 <span class="nt">Attributes</span><span class="p">:</span>
-<span class="w">     </span><span class="nt">-&gt; http.method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(GET)</span>
-<span class="w">     </span><span class="nt">-&gt; http.target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(&quot;&lt;スパン名&gt;&quot;)</span>
-<span class="w">     </span><span class="nt">-&gt; http.route</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(/)</span>
-<span class="w">     </span><span class="nt">-&gt; http.scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(http)</span>
-<span class="w">     </span><span class="nt">-&gt; http.flavor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(1.1)</span>
-<span class="w">     </span><span class="nt">-&gt; http.user_agent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(curl/7.79.1)</span>
-<span class="w">     </span><span class="nt">-&gt; http.request_content_length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int(0)</span>
-<span class="w">     </span><span class="nt">-&gt; http.response_content_length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int(905)</span>
-<span class="w">     </span><span class="nt">-&gt; http.status_code</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int(200)</span>
-<span class="w">     </span><span class="nt">-&gt; net.host.name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(_)</span>
-<span class="w">     </span><span class="nt">-&gt; net.host.port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int(&quot;&lt;ポート番号&gt;&quot;)</span>
-<span class="w">     </span><span class="nt">-&gt; net.sock.peer.addr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(127.0.0.6)</span>
-<span class="w">     </span><span class="nt">-&gt; net.sock.peer.port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int(&quot;&lt;ポート番号&gt;&quot;)</span>
-<span class="w">     </span><span class="nt">-&gt; env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(&quot;&lt;実行環境名&gt;&quot;)</span>
-<span class="w">     </span><span class="nt">-&gt; service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(&quot;&lt;サービス名&gt;&quot;)</span>
-<span class="w w-Error">    </span><span class="p p-Indicator">{</span><span class="s">&quot;kind&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;exporter&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;data_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;traces&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;debug&quot;</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">-&gt; http.method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(GET)</span>
+<span class="w">  </span><span class="nt">-&gt; http.target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(&quot;&lt;スパン名&gt;&quot;)</span>
+<span class="w">  </span><span class="nt">-&gt; http.route</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(/)</span>
+<span class="w">  </span><span class="nt">-&gt; http.scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(http)</span>
+<span class="w">  </span><span class="nt">-&gt; http.flavor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(1.1)</span>
+<span class="w">  </span><span class="nt">-&gt; http.user_agent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(curl/7.79.1)</span>
+<span class="w">  </span><span class="nt">-&gt; http.request_content_length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int(0)</span>
+<span class="w">  </span><span class="nt">-&gt; http.response_content_length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int(905)</span>
+<span class="w">  </span><span class="nt">-&gt; http.status_code</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int(200)</span>
+<span class="w">  </span><span class="nt">-&gt; net.host.name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(_)</span>
+<span class="w">  </span><span class="nt">-&gt; net.host.port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int(&quot;&lt;ポート番号&gt;&quot;)</span>
+<span class="w">  </span><span class="nt">-&gt; net.sock.peer.addr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(127.0.0.6)</span>
+<span class="w">  </span><span class="nt">-&gt; net.sock.peer.port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int(&quot;&lt;ポート番号&gt;&quot;)</span>
+<span class="w">  </span><span class="nt">-&gt; env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(&quot;&lt;実行環境名&gt;&quot;)</span>
+<span class="w">  </span><span class="nt">-&gt; service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(&quot;&lt;サービス名&gt;&quot;)</span>
+<span class="w">  </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="s">&quot;kind&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;exporter&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;data_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;traces&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;debug&quot;</span><span class="w"> </span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -25352,6 +25450,19 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="otlp">otlp<a class="headerlink" href="#otlp" title="Permanent link">&para;</a></h3>
+<h4 id="otlp_1">▼ otlpとは<a class="headerlink" href="#otlp_1" title="Permanent link">&para;</a></h4>
+<p>OTLP形式で指定したエンドポイントにエンドポイントにテレメトリーを送信する。。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">otlp</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana-tempo.istio-system.svc.cluster.local:4317</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/otlpexporter/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/otlpexporter/README.md</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="03-extensions">03. extensions<a class="headerlink" href="#03-extensions" title="Permanent link">&para;</a></h2>
 <h3 id="extension">extensionとは<a class="headerlink" href="#extension" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
@@ -25372,6 +25483,7 @@
 <p>Processorを設定する</p>
 <p><br></p>
 <h3 id="attribute">attribute<a class="headerlink" href="#attribute" title="Permanent link">&para;</a></h3>
+<h4 id="attribute_1">▼ attributeとは<a class="headerlink" href="#attribute_1" title="Permanent link">&para;</a></h4>
 <p>テレメトリーに付与する属性を設定する。</p>
 <p>可読性が低くなるため、属性はアプリ側で実装した方が良い。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">processors</span><span class="p">:</span>
@@ -25387,6 +25499,25 @@
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/attributesprocessor/README.md">https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/attributesprocessor/README.md</a></li>
+</ul>
+</blockquote>
+<h4 id="k8sattribute">▼ k8sattribute<a class="headerlink" href="#k8sattribute" title="Permanent link">&para;</a></h4>
+<p>コンテナの所属NamespaceやPodなどの属性をテレメトリーに設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">processors</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">k8sattributes</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">extract</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.namespace.name</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.pod.name</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.pod.start_time</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.pod.uid</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.deployment.name</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.node.name</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://opentelemetry.io/docs/kubernetes/collector/components/">https://opentelemetry.io/docs/kubernetes/collector/components/</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/k8sattributesprocessor/README.md">https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/k8sattributesprocessor/README.md</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -25432,8 +25563,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="otlp">otlp<a class="headerlink" href="#otlp" title="Permanent link">&para;</a></h3>
-<h4 id="otlp_1">▼ otlpとは<a class="headerlink" href="#otlp_1" title="Permanent link">&para;</a></h4>
+<h3 id="otlp_2">otlp<a class="headerlink" href="#otlp_2" title="Permanent link">&para;</a></h3>
+<h4 id="otlp_3">▼ otlpとは<a class="headerlink" href="#otlp_3" title="Permanent link">&para;</a></h4>
 <p>OTLP形式でテレメトリーを受信する。</p>
 <p>クライアントがHTTPクライアントかgRPCクライアントかによって、エンドポイントを使い分ける。</p>
 <p>設定したエンドポイントに応じて、受信サーバーが起動する。</p>
@@ -25574,7 +25705,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-08</span>
   </span>
 
     
