@@ -76,8 +76,8 @@ data:
           no_follow_redirects: true
           preferred_ip_protocol: ip4
           valid_http_versions:
-          - HTTP/1.1
-          - HTTP/2.0
+            - HTTP/1.1
+            - HTTP/2.0
           valid_status_codes: []
         prober: http
         timeout: 5s
