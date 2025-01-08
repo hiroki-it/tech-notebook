@@ -877,12 +877,15 @@ nav:
       - 開発手法論: software_development_methodology/software_development_methodology.md
       - 組織論: software_development_methodology/software_development_organization.md
       - OSSコントリビューション: software_development_methodology/software_development_oss_contribution.md
+      - ■ プロダクトマネジメント:
+          - プロジェクトマネジメント: software_development_methodology/software_development_product_management.md
+          - ■ プロジェクトマネジメント:
+              - プロジェクトマネジメント: software_development_methodology/software_development_product_management_project_management.md
+              - タスク管理: software_development_methodology/software_development_product_management_project_management_task_management.md
+              - 見積もり: software_development_methodology/software_development_product_management_project_management_estimate.md
       - ■ バージョン管理:
           - ■ Git:
               - コマンド: software_development_methodology/software_development_git_command.md
               - GitHub: software_development_methodology/software_development_git_github.md
-      - ■ プロジェクト管理:
-          - プロジェクト管理: software_development_methodology/software_development_project_management.md
-          - タスク管理: software_development_methodology/software_development_project_management_task_management.md
-          - 見積もり: software_development_methodology/software_development_project_management_estimate.md
+
 
