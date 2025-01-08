@@ -181,7 +181,7 @@ fields @timestamp, @message, @logStream
 
 #### ▼ インシデントコマンドシステムとは
 
-インシデントの発生時に、組織が混乱せずに問題に対処できるようにするためのマネージメント手法のこと。
+インシデントの発生時に、組織が混乱せずに問題に対処できるようにするためのマネジメント手法のこと。
 
 > - https://fastalert.jp/column/disaster-prevention/incident-command-system
 
