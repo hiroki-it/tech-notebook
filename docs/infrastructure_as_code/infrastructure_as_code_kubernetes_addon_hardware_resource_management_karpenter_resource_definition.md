@@ -71,7 +71,24 @@ spec:
 
 プロビジョニングするEC2 Nodeのブロックデバイスを設定する。
 
+`100`Gi以上のルートボリュームのデバイスパス (`/dev/xvda`) を設定しないと、ボリューム不足でNodeをプロビジョニングできず、エラーになってしまう。
+
+```yaml
+apiVersion: karpenter.k8s.aws/v1beta1
+kind: EC2NodeClass
+metadata:
+  name: foo-node-class
+spec:
+  blockDeviceMappings:
+    - deviceName: /dev/xvda
+      ebs:
+        volumeSize: 100Gi
+        volumeType: gp3
+        encrypted: true
+```
+
 > - https://karpenter.sh/preview/concepts/nodeclasses/
+> - https://github.com/aws/karpenter-provider-aws/blob/v1.1.1/test/suites/storage/suite_test.go#L372-L389
 
 <br>
 
