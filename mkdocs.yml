@@ -878,7 +878,7 @@ nav:
       - 組織論: software_development_methodology/software_development_organization.md
       - OSSコントリビューション: software_development_methodology/software_development_oss_contribution.md
       - ■ プロダクトマネジメント:
-          - プロジェクトマネジメント: software_development_methodology/software_development_product_management.md
+          - プロダクトマネジメント: software_development_methodology/software_development_product_management.md
           - ■ プロジェクトマネジメント:
               - プロジェクトマネジメント: software_development_methodology/software_development_product_management_project_management.md
               - タスク管理: software_development_methodology/software_development_product_management_project_management_task_management.md
