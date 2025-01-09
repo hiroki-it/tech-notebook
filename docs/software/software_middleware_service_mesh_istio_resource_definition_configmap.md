@@ -27,7 +27,7 @@ Istiodコントロールプレーン (`discovery`コンテナ) による中間�
 
 ルート認証局から発行されたCA証明書 (ルート証明書) をもち、各マイクロサービスのPodにマウントされる。
 
-各マイクロサービスのPodの証明書を署名するために使用される。
+各マイクロサービスに配布された証明書を検証するために使用される。
 
 ![istio_istio-ca-root-cert](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-ca-root-cert.png)
 
