@@ -25225,8 +25225,9 @@
 <p><img alt="ハッシュ関数" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ハッシュ関数.png" /></p>
 <p><br></p>
 <h2 id="03">03. ドメイン認証<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<p>認証局は、『公開鍵基盤』の仕組みを使用して『証明書』を『署名』する。</p>
-<p>この証明書をもつ送受信者が通信を暗号化 / 復号化できる。</p>
+<p>『公開鍵基盤』の仕組みを使用して、証明書を作成し、検証する。</p>
+<p>認証局は、『署名』された『証明書』を作成する。</p>
+<p>CA証明書や署名された証明書を通信の送受信者に配置し、通信のたびに署名の有効性を『検証』する。</p>
 <p><br></p>
 <h2 id="03-02">03-02. 公開鍵基盤<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
 <h3 id="_12">公開鍵基盤とは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
@@ -25237,6 +25238,7 @@
 <p><br></p>
 <h3 id="_13">公開鍵基盤の仕組み<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p><img alt="public-key-infrastructure" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/public-key-infrastructure.gif" /></p>
+<p>公開鍵基盤には、証明書の『署名』と『検証』のフェーズがある。</p>
 <p><strong>＊サーバーが実行すること＊</strong></p>
 <dl>
 <dt><code>(1)</code></dt>

@@ -26176,7 +26176,7 @@
 <li>Istiodコントロールプレーンは、<code>istio-ca-secret</code> (Secret) を自己署名する。</li>
 <li>Istiodコントロールプレーンは、<code>istio-proxy</code>コンテナから送信された秘密鍵と証明書署名要求で署名されたクライアント証明書 / SSL証明書を作成する。特に設定しなければ、<code>istio-proxy</code>コンテナのpilot-agentプロセスが、秘密鍵と証明書署名要求を自動で作成してくれる。</li>
 <li><code>istio-proxy</code>コンテナからのリクエストに応じて、IstiodのSDS-APIがクライアント証明書 / SSL証明書を<code>istio-proxy</code>コンテナに配布する。</li>
-<li>Istiodコントロールプレーンは、CA証明書を持つ<code>istio-ca-root-cert</code> (ConfigMap) を自動的に作成する。これは、<code>istio-proxy</code>コンテナにマウントされ、証明書を署名する。</li>
+<li>Istiodコントロールプレーンは、CA証明書を持つ<code>istio-ca-root-cert</code> (ConfigMap) を自動的に作成する。これは、<code>istio-proxy</code>コンテナにマウントされ、証明書を検証するために使用する。</li>
 <li><code>istio-proxy</code>コンテナ間で相互TLS認証できるようになる。</li>
 <li>証明書が失効すると、<code>istio-proxy</code>コンテナの証明書が自動的に差し代わる。Podの再起動は不要である。</li>
 </ol>
@@ -26186,6 +26186,8 @@
 <li><a href="https://istio.io/latest/docs/concepts/security/#pki">https://istio.io/latest/docs/concepts/security/#pki</a></li>
 <li><a href="https://developers.redhat.com/articles/2023/08/24/integrate-openshift-service-mesh-cert-manager-and-vault#default_and_pluggable_ca_scenario">https://developers.redhat.com/articles/2023/08/24/integrate-openshift-service-mesh-cert-manager-and-vault#default_and_pluggable_ca_scenario</a></li>
 <li><a href="https://www.reddit.com/r/istio/comments/x1l1sm/if_istio_caroot_certificate_expires_do_you_need/">https://www.reddit.com/r/istio/comments/x1l1sm/if_istio_caroot_certificate_expires_do_you_need/</a></li>
+<li><a href="https://zufardhiyaulhaq.com/Replacing-Istio-CA-certificate/">https://zufardhiyaulhaq.com/Replacing-Istio-CA-certificate/</a></li>
+<li><a href="https://training.linuxfoundation.cn/news/407">https://training.linuxfoundation.cn/news/407</a></li>
 </ul>
 </blockquote>
 <h4 id="_26">▼ 外部ツールをルート認証局として使用する場合<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
