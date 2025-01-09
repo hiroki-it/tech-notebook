@@ -473,6 +473,7 @@ nav:
   - 🌏 ネットワーク:
       - network/index.md
       - ネットワーク: network/network.md
+      - TCP階層モデル: network/network_model_tcp.md
       - ■ OSI参照モデル:
           - OSI参照モデル: network/network_model_osi.md
           - ■ L5 ~ L7:
@@ -488,7 +489,6 @@ nav:
               - ルーター: network/network_model_osi_l3_router.md
           - L2: network/network_model_osi_l2.md
           - L1: network/network_model_osi_l1.md
-      - TCP階層モデル: network/network_model_tcp.md
 
   - 🔐 セキュリティ:
       - security/index.md
