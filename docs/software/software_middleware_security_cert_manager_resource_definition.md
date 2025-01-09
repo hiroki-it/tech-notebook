@@ -35,7 +35,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/cert-manag
 
 ### Certificateとは
 
-認証局を使用して、秘密鍵と証明書署名要求による署名で、`X.509`のSSL証明書 (`.crt`ファイル) を作成する。
+認証局を使用して、秘密鍵と証明書署名要求で署名された`X.509`のSSL証明書 (`.crt`ファイル) を作成する。
 
 証明書自体は、紐づくSecretに割り当てられる。
 
@@ -113,7 +113,7 @@ spec:
 
 #### ▼ issuerRefとは
 
-SSL証明書を発行してもらう発行元認証局を設定する。
+SSL証明書を作成してもらう発行元認証局を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -165,7 +165,7 @@ spec:
 
 #### ▼ isCAとは
 
-秘密鍵と証明書署名要求 (`.csr`ファイル) による署名で作成するSSL証明書が、中間CA証明書であるか否かを設定する。
+秘密鍵と証明書署名要求 (`.csr`ファイル) で署名されたSSL証明書が、中間CA証明書であるか否かを設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -245,7 +245,7 @@ spec:
 
 ### ClusterIssuerとは
 
-異なるNamespaceに対して横断的に証明書を発行する発行元認証局を作成する。
+異なるNamespaceに対して横断的に証明書を作成する発行元認証局を作成する。
 
 > - https://blog.1q77.com/2020/03/cert-manager/#issuer-%E3%81%AE%E7%99%BB%E9%8C%B2
 
@@ -334,11 +334,11 @@ spec:
 
 ### Issuerとは
 
-同じNamespaceに対して証明書を発行する認証局を作成する。
+同じNamespaceに対して証明書を作成する認証局を作成する。
 
-同じNamespaceにあるKubernetesリソースに対して証明書を発行する。
+同じNamespaceにあるKubernetesリソースに対して証明書を作成する。
 
-もし複数のNamespaceに対して横断的に証明書を発行したい場合、ClusterIssuerを使用する必要がある。
+もし複数のNamespaceに対して横断的に証明書を作成したい場合、ClusterIssuerを使用する必要がある。
 
 > - https://cert-manager.io/docs/concepts/issuer/
 

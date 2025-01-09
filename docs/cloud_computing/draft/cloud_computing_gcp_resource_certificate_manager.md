@@ -21,7 +21,7 @@ description: Certificate Manager＠Google Cloudリソースの知見を記録し
 
 #### ▼ クライアント証明書
 
-AWS Certificate Managerでクライアント証明書を発行する場合、AWSが署名する認証局 (プライベート認証局) を作成する必要がある。
+AWS Certificate Managerでクライアント証明書を作成する場合、AWSが署名する認証局 (プライベート認証局) を作成する必要がある。
 
 オレオレのクライアント証明書と同じ手順が必要になる。
 

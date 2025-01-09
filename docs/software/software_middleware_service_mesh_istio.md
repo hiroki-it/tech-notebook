@@ -420,7 +420,7 @@ AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、Keycloak、Zi
 クライアント証明書 / SSL証明書を提供しつつ、これを定期的に自動更新する。
 
 1. Istiodコントロールプレーンは、`istio-ca-secret` (Secret) を自己署名する。
-2. Istiodコントロールプレーンは、`istio-proxy`コンテナから送信された秘密鍵と証明書署名要求による署名で、クライアント証明書 / SSL証明書を発行する。特に設定しなければ、`istio-proxy`コンテナのpilot-agentプロセスが、秘密鍵と証明書署名要求を自動で作成してくれる。
+2. Istiodコントロールプレーンは、`istio-proxy`コンテナから送信された秘密鍵と証明書署名要求で署名されたクライアント証明書 / SSL証明書を作成する。特に設定しなければ、`istio-proxy`コンテナのpilot-agentプロセスが、秘密鍵と証明書署名要求を自動で作成してくれる。
 3. `istio-proxy`コンテナからのリクエストに応じて、IstiodのSDS-APIがクライアント証明書 / SSL証明書を`istio-proxy`コンテナに配布する。
 4. Istiodコントロールプレーンは、CA証明書を持つ`istio-ca-root-cert` (ConfigMap) を自動的に作成する。これは、`istio-proxy`コンテナにマウントされ、証明書を署名する。
 5. `istio-proxy`コンテナ間で相互TLS認証できるようになる。
@@ -436,7 +436,7 @@ AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、Keycloak、Zi
 
 Istiodコントロールプレーン (`discovery`コンテナ) を中間認証局として使用し、ルート認証局をIstio以外 (例：HashiCorp Vaultなど) に委譲できる。
 
-外部のルート認証局は、`istio-proxy`コンテナから送信された秘密鍵と証明書署名要求による署名で、SSL証明書を作成する。
+外部のルート認証局は、`istio-proxy`コンテナから送信された秘密鍵と証明書署名要求で署名されたSSL証明書を作成する。
 
 > - https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/
 > - https://istio.io/latest/docs/ops/integrations/certmanager/
