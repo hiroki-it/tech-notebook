@@ -1530,6 +1530,29 @@ spec:
 
 ## 06. PeerAuthentication
 
+### .spec.selector
+
+指定したNamespaceの特定のPodで相互TLSを有効化する
+
+**＊実装例＊**
+
+```yaml
+apiVersion: security.istio.io/v1
+kind: PeerAuthentication
+metadata:
+  # foo内の全てのサイドカーにPeerAuthenticationを適用する
+  namespace: foo
+  name: peer-authentication
+spec:
+  selector:
+    matchLabels:
+      app: foo
+  mtls:
+    mode: STRICT # 相互TLS認証を使用する。
+```
+
+<br>
+
 ### .spec.mtls
 
 #### ▼ mtls
