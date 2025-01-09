@@ -135,9 +135,15 @@ description: アプリケーションデータの暗号化技術＠ネットワ�
 
 ## 03. ドメイン認証
 
-### 公開鍵基盤
+認証局は、『公開鍵基盤』の仕組みを使用して『証明書』を『署名』する。
 
-#### ▼ 公開鍵基盤とは
+この証明書をもつ送受信者が通信を暗号化 / 復号化できる。
+
+<br>
+
+## 03-02. 公開鍵基盤
+
+### 公開鍵基盤とは
 
 公開鍵検証を使用して、秘密鍵とデジタル証明書はドメインの正当性 (偽のサイトではないこと) を担保する仕組みのこと。
 
@@ -145,9 +151,13 @@ description: アプリケーションデータの暗号化技術＠ネットワ�
 
 第三者機関の認証局によって、公開鍵を検証するインフラのことを、公開鍵基盤という。
 
-#### ▼ 公開鍵基盤の仕組み
+![ssl-certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssl-certificate.png)
 
-![ssl-certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssl-certificate.gif)
+<br>
+
+### 公開鍵基盤の仕組み
+
+![public-key-infrastructure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/public-key-infrastructure.gif)
 
 **＊サーバーが実行すること＊**
 
@@ -175,9 +185,9 @@ description: アプリケーションデータの暗号化技術＠ネットワ�
 
 <br>
 
-### 認証局
+## 03-03. 認証局
 
-#### ▼ 認証局とは
+### 認証局とは
 
 自前の中間認証局あるいはクラウドプロバイダーが中間認証局を利用し、デジタル証明書を署名する。
 
@@ -191,7 +201,9 @@ description: アプリケーションデータの暗号化技術＠ネットワ�
 
 > - https://speakerdeck.com/jacopen/gai-metexue-bu-vaultfalseji-ben?slide=54
 
-#### ▼ 中間認証局をルート認証局で署名する理由
+<br>
+
+### 中間認証局をルート認証局で署名する理由
 
 デジタル証明書 (S/MIME証明書、SSL証明書) を発行する中間認証局そのものが、成りすましの可能性がある。
 
@@ -205,7 +217,7 @@ description: アプリケーションデータの暗号化技術＠ネットワ�
 
 <br>
 
-## 03-02. 証明書
+## 03-03. 証明書
 
 ### CA証明書 (ルート証明書、トラストアンカー)
 
@@ -308,7 +320,7 @@ SSL証明書をサーバー側に配置した上で、クライアント証明�
 
 <br>
 
-## 03-03. CA証明書の配置
+## 03-04. CA証明書の配置
 
 ### 自己署名CA証明書 (オレオレCA証明書) の作成
 
@@ -331,7 +343,7 @@ $ openssl x509 \
 
 <br>
 
-## 03-04. SSL証明書の配置
+## 03-05. SSL証明書の配置
 
 ### SSL証明書と秘密鍵の配置場所
 
@@ -562,7 +574,7 @@ $ keytool -import -alias <エイリアス> -file <秘密鍵>.pem -keystore <公�
 
 <br>
 
-## 03-05. クライアント証明書の配置
+## 03-06. クライアント証明書の配置
 
 ### SSL証明書と秘密鍵の配置場所
 
