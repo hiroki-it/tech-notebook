@@ -8,6 +8,12 @@
 
 <br>
 
+### TCP階層モデル
+
+* #### [︎TCP階層モデル](https://hiroki-it.github.io/tech-notebook/network/network_model_tcp.html)
+
+<br>
+
 ### ︎OSI参照モデル
 
 * #### [︎OSI参照モデル](https://hiroki-it.github.io/tech-notebook/network/network_model_osi.html)
@@ -28,9 +34,5 @@
 
 * #### [`L2`](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l2.html)
 * #### [`L1`](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l1.html)
-
-### TCP階層モデル
-
-* #### [︎TCP階層モデル](https://hiroki-it.github.io/tech-notebook/network/network_model_tcp.html)
 
 <br>
