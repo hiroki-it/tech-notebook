@@ -1293,11 +1293,11 @@ Node上にVolumeを作成し、これをコンテナにバインドマウント�
 > - https://kubernetes.io/docs/concepts/storage/volumes/#local
 > - https://qiita.com/sotoiwa/items/09d2f43a35025e7be782#local
 
-#### ▼ 外部サービスのVolume
+#### ▼ ボリュームツールのVolume
 
-外部サービス (例：AWS EBS、NFSなど) が提供するVolumeをコンテナにマウントする。
+ボリュームツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) が提供するVolumeをコンテナにマウントする。
 
-StorageClassとPersistentVolumeClaimを経由して、PersistentVolumeと外部サービスを紐付け、Volumeとしてコンテナにマウントする。
+StorageClassとPersistentVolumeClaimを経由して、PersistentVolumeとボリュームツールを紐付け、Volumeとしてコンテナにマウントする。
 
 また、外部ストレージを使用する場合には、CSIドライバーも必要である。
 
@@ -1311,7 +1311,7 @@ StorageClassとPersistentVolumeClaimを経由して、PersistentVolumeと外部�
 
 ![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
-既存 (例：NFS、iSCSI、Cephなど) のボリュームをそのままKubernetesのVolumeとして使用する。
+ボリュームツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) をそのままKubernetesのVolumeとして使用する。
 
 Podの`.spec.volumes`キーで指定する。
 
@@ -1433,9 +1433,9 @@ Podの既存のストレージ上にVolume (`/var/lib/kubelet/pods/<PodのUUID>/
 > - https://cstoku.dev/posts/2018/k8sdojo-05/
 > - https://pradiptabanerjee.medium.com/how-to-size-a-memory-backed-kubernetes-emptydir-volume-cdfe39d1b7e5
 
-#### ▼ 外部サービスのVolume
+#### ▼ ボリュームツールのVolume
 
-外部サービス (例：AWS EBS、NFSなど) が提供するVolumeをコンテナにマウントする。
+ボリュームツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) が提供するVolumeをコンテナにマウントする。
 
 同一Node上のPod間でこのVolumeを共有でき、同一Pod内のコンテナ間でもVolumeを共有できる。
 

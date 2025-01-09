@@ -124,7 +124,7 @@ EKSの各Node上で、`kube-dns`という名前のDeploymentとして稼働す�
 
 同じCluster内の全てのPodの名前解決を行う。
 
-AWS CoreDNSがAWS EKS Cluster内に無い場合、外部サービス (例：SSOのIDプロバイダーなど) の名前解決を実行できなくなるため、必須である。
+AWS CoreDNSがAWS EKS Cluster内に無い場合、外部のツール (例：SSOのIDプロバイダーなど) を名前解決できなくなるため、必須である。
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html
 

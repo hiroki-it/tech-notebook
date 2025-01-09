@@ -6002,7 +6002,7 @@ provisioner: ebs.csi.aws.com
 
 ### reclaimPolicy
 
-PersistentVolumeClaimが削除された時に、外部サービス (例：AWS EBS、NFSなど) が提供するVolumeを削除する否かを設定する。
+PersistentVolumeClaimが削除された時に、ボリュームツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) が提供するVolumeを削除する否かを設定する。
 
 PersistentVolumeにも同様の機能がある。
 
