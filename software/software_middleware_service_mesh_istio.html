@@ -26174,7 +26174,7 @@
 <p>クライアント証明書 / SSL証明書を提供しつつ、これを定期的に自動更新する。</p>
 <ol>
 <li>Istiodコントロールプレーンは、<code>istio-ca-secret</code> (Secret) を自己署名する。</li>
-<li>Istiodコントロールプレーンは、<code>istio-proxy</code>コンテナから送信された秘密鍵と証明書署名要求による署名で、クライアント証明書 / SSL証明書を発行する。特に設定しなければ、<code>istio-proxy</code>コンテナのpilot-agentプロセスが、秘密鍵と証明書署名要求を自動で作成してくれる。</li>
+<li>Istiodコントロールプレーンは、<code>istio-proxy</code>コンテナから送信された秘密鍵と証明書署名要求で署名されたクライアント証明書 / SSL証明書を作成する。特に設定しなければ、<code>istio-proxy</code>コンテナのpilot-agentプロセスが、秘密鍵と証明書署名要求を自動で作成してくれる。</li>
 <li><code>istio-proxy</code>コンテナからのリクエストに応じて、IstiodのSDS-APIがクライアント証明書 / SSL証明書を<code>istio-proxy</code>コンテナに配布する。</li>
 <li>Istiodコントロールプレーンは、CA証明書を持つ<code>istio-ca-root-cert</code> (ConfigMap) を自動的に作成する。これは、<code>istio-proxy</code>コンテナにマウントされ、証明書を署名する。</li>
 <li><code>istio-proxy</code>コンテナ間で相互TLS認証できるようになる。</li>
@@ -26190,7 +26190,7 @@
 </blockquote>
 <h4 id="_26">▼ 外部ツールをルート認証局として使用する場合<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
 <p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) を中間認証局として使用し、ルート認証局をIstio以外 (例：HashiCorp Vaultなど) に委譲できる。</p>
-<p>外部のルート認証局は、<code>istio-proxy</code>コンテナから送信された秘密鍵と証明書署名要求による署名で、SSL証明書を作成する。</p>
+<p>外部のルート認証局は、<code>istio-proxy</code>コンテナから送信された秘密鍵と証明書署名要求で署名されたSSL証明書を作成する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/">https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/</a></li>
