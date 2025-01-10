@@ -2268,9 +2268,20 @@ spec:
 
 ストレージクラス名を設定する。
 
-これは、PersistentVolumeClaimが特定のPersistentVolumeを要求する時に必要になる。
+特に、PersistentVolumeClaimがStorageClassに対応するPersistentVolumeを要求する時に役立つ。
+
+例えば、StorageClassに数種類のボリュームタイプ (`standard`、`fast`、`slow`、`gp2`など) がある場合に、区別しやすくなる。
+
+PersistentVolumeにストレージクラス名を設定しない場合、これを要求できるのは、同じくストレージクラス名を持たないPersistentVolumeClaimだけである。
 
 注意点として、もし異なるStorageClassNameに変更したい場合は、PersistentVolumeを作成し直す必要がある。
+
+| クラス名   | 説明                                               |
+| ---------- | -------------------------------------------------- |
+| `standard` | 特に特徴がない場合につける。                       |
+| `fast`     | PersistentVolumeに対応するに使用する場合につける。 |
+| `slow`     | PersistentVolumeとして使用する場合につける。       |
+| `gp2`      |                                                    |
 
 **＊実装例＊**
 
@@ -2282,14 +2293,6 @@ metadata:
 spec:
   storageClassName: standard
 ```
-
-名前の例として以下がある。
-
-| クラス名 | 説明                                  | 補足                                                                                                                                                                                                   |
-| -------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| standard | デフォルト値である。                  |                                                                                                                                                                                                        |
-| fast     | SSDをPersistentVolumeとして使用する。 | ・https://kubernetes.io/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B |
-| slow     | HDをPersistentVolumeとして使用する。  | ・https://kubernetes.io/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B |
 
 > - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class
 > - https://stackoverflow.com/questions/61187909/how-do-i-change-the-storage-class-of-existing-persistent-volumes

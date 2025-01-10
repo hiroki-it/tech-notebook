@@ -1475,7 +1475,7 @@ $ kubectl get pv \
 
 Podを直接的に指定する場合と、他のKubernetesリソース (例：Service、Deployment) の情報を使用して、Podを指定する方法がある。
 
-この時、通信自体は他のKubernetesリソースを経由しているわけではないことに注意する。
+この時、通信自体は他のKubernetesリソースを経由しているわけではないことに注意する (例えば、Kialiを確認すると、Ingress Controllerを経由していないことがわかる) 。
 
 開発環境にて、Serviceを介さずに直接的にPodにリクエストを送信したい場合や、SQLクライアントを使用してPod内のDBコンテナにTCP/IP接続したい場合に使用する。
 
