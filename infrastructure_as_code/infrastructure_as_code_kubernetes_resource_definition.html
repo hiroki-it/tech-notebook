@@ -34742,8 +34742,36 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="specstorageclassname">.spec.storageClassName<a class="headerlink" href="#specstorageclassname" title="Permanent link">&para;</a></h3>
 <h4 id="storageclassname">▼ storageClassNameとは<a class="headerlink" href="#storageclassname" title="Permanent link">&para;</a></h4>
 <p>ストレージクラス名を設定する。</p>
-<p>これは、PersistentVolumeClaimが特定のPersistentVolumeを要求する時に必要になる。</p>
+<p>特に、PersistentVolumeClaimがStorageClassに対応するPersistentVolumeを要求する時に役立つ。</p>
+<p>例えば、StorageClassに数種類のボリュームタイプ (<code>standard</code>、<code>fast</code>、<code>slow</code>、<code>gp2</code>など) がある場合に、区別しやすくなる。</p>
+<p>PersistentVolumeにストレージクラス名を設定しない場合、これを要求できるのは、同じくストレージクラス名を持たないPersistentVolumeClaimだけである。</p>
 <p>注意点として、もし異なるStorageClassNameに変更したい場合は、PersistentVolumeを作成し直す必要がある。</p>
+<table>
+<thead>
+<tr>
+<th>クラス名</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>standard</code></td>
+<td>特に特徴がない場合につける。</td>
+</tr>
+<tr>
+<td><code>fast</code></td>
+<td>PersistentVolumeに対応するに使用する場合につける。</td>
+</tr>
+<tr>
+<td><code>slow</code></td>
+<td>PersistentVolumeとして使用する場合につける。</td>
+</tr>
+<tr>
+<td><code>gp2</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
@@ -34752,33 +34780,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">standard</span>
 </code></pre></div>
-<p>名前の例として以下がある。</p>
-<table>
-<thead>
-<tr>
-<th>クラス名</th>
-<th>説明</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>standard</td>
-<td>デフォルト値である。</td>
-<td></td>
-</tr>
-<tr>
-<td>fast</td>
-<td>SSDをPersistentVolumeとして使用する。</td>
-<td>・<a href="https://kubernetes.io/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B">https://kubernetes.io/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B</a></td>
-</tr>
-<tr>
-<td>slow</td>
-<td>HDをPersistentVolumeとして使用する。</td>
-<td>・<a href="https://kubernetes.io/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B">https://kubernetes.io/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B</a></td>
-</tr>
-</tbody>
-</table>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class</a></li>
@@ -38005,7 +38006,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-11</span>
   </span>
 
     
