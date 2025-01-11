@@ -11741,11 +11741,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../network/network_model_tcp.html" class="md-nav__link">
+      <a href="../network/network_model_osi_l4_tcp.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    TCP階層モデル
+    TCP
   </span>
   
 
@@ -17494,7 +17494,7 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ マウント方法
+      ▼ マウントの仕組み
     </span>
   </a>
   
@@ -17521,22 +17521,37 @@
     </span>
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ホストNodeとコンテナ間
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ホストNodeとコンテナ間">
+    <nav class="md-nav" aria-label="Nodeとコンテナ間マウント">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ マウント方法
+      ▼ マウントの仕組み
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ホストからコンテナまで一気通貫マウント
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ホストからコンテナまで一気通貫マウント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ マウントの仕組み
     </span>
   </a>
   
@@ -17582,7 +17597,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#node_3" class="md-nav__link">
+  <a href="#node_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Nodeの場合
     </span>
@@ -17705,7 +17720,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ アドオンによる接続
     </span>
@@ -24543,7 +24558,7 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ マウント方法
+      ▼ マウントの仕組み
     </span>
   </a>
   
@@ -24570,22 +24585,37 @@
     </span>
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ホストNodeとコンテナ間
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ホストNodeとコンテナ間">
+    <nav class="md-nav" aria-label="Nodeとコンテナ間マウント">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ マウント方法
+      ▼ マウントの仕組み
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ホストからコンテナまで一気通貫マウント
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ホストからコンテナまで一気通貫マウント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ マウントの仕組み
     </span>
   </a>
   
@@ -24631,7 +24661,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#node_3" class="md-nav__link">
+  <a href="#node_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Nodeの場合
     </span>
@@ -24754,7 +24784,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ アドオンによる接続
     </span>
@@ -24870,10 +24900,11 @@
 <p><br></p>
 <h2 id="02">02. マウント<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="node">ホストとNode間マウント<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
-<h4 id="_7">▼ マウント方法<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h4 id="_7">▼ マウントの仕組み<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>ホスト側の<code>$MINIKUBE_HOME/files</code>ディレクトリ配下に保管されたファイルは、ゲスト仮想環境内のNodeのルート直下にマウントされる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.minikube/files/etc
 
+<span class="c1"># ホストの$MINIKUBE_HOME/filesにファイルを配置する</span>
 $<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>nameserver<span class="w"> </span><span class="m">8</span>.8.8.8<span class="w"> </span>&gt;<span class="w"> </span>~/.minikube/files/etc/foo.conf
 
 <span class="c1">#  /etc/foo.conf に配置される</span>
@@ -24941,6 +24972,7 @@ $<span class="w"> </span>minikube<span class="w"> </span>start
 </blockquote>
 <p><br></p>
 <h3 id="node_1">Nodeとコンテナ間マウント<a class="headerlink" href="#node_1" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ マウントの仕組み<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>ゲスト仮想環境内のNodeでは、以下のディレクトリからPersistentVolumeが自動的に作成される。</p>
 <p>そのため、Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく、わざわざNodeのPersistentVolumeを作成する必要がない。</p>
 <p>ただし、MinikubeのDockerドライバーとPodmanドライバーを使用する場合は、この機能がないことに注意する。</p>
@@ -24960,8 +24992,8 @@ $<span class="w"> </span>minikube<span class="w"> </span>start
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="node_2">ホストNodeとコンテナ間<a class="headerlink" href="#node_2" title="Permanent link">&para;</a></h3>
-<h4 id="_9">▼ マウント方法<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<h3 id="_10">ホストからコンテナまで一気通貫マウント<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h4 id="_11">▼ マウントの仕組み<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>Minikubeでは、<code>mount</code>コマンド、ホスト側の<code>$MINIKUBE_HOME/files</code>ディレクトリ、ドライバーを使用して、ホスト側のディレクトリをゲスト仮想環境内のNodeのディレクトリにマウントできる。</p>
 <p>またNodeでは、決められたディレクトリからPersistentVolumeを自動的に作成する。</p>
 <p>ここで作成されたPersistentVolumeを、PodのPersistentVolumeClaimで指定する。</p>
@@ -24979,7 +25011,10 @@ $<span class="w"> </span>minikube<span class="w"> </span>start
 <p>HyperKitドライバーを使用する場合、ホストとNode間のマウント機能がない。そこで<code>mount</code>コマンドを使用して、ホスト側のディレクトリをNodeのボリュームにマウントする。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> </span>--driver<span class="o">=</span>hyperkit<span class="w"> </span>--mount<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--mount-string<span class="o">=</span><span class="s2">&quot;/Users/hiroki.hasegawa/projects/foo:/data&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--driver<span class="o">=</span>hyperkit<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--mount<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--mount-string<span class="o">=</span><span class="s2">&quot;/Users/hiroki.hasegawa/projects/foo:/data&quot;</span>
 </code></pre></div>
 <dl>
 <dt><code>(2)</code></dt>
@@ -25019,7 +25054,7 @@ $<span class="w"> </span>minikube<span class="w"> </span>start
 <p><br></p>
 <h2 id="03">03. ネットワーク<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="kubernetescidr">KubernetesリソースのCIDRブロック<a class="headerlink" href="#kubernetescidr" title="Permanent link">&para;</a></h3>
-<h4 id="node_3">▼ Nodeの場合<a class="headerlink" href="#node_3" title="Permanent link">&para;</a></h4>
+<h4 id="node_2">▼ Nodeの場合<a class="headerlink" href="#node_2" title="Permanent link">&para;</a></h4>
 <p>Node内で<code>ip addr</code>コマンドを実行することにより、Nodeに割り当てられたCIDRブロックを確認できる。</p>
 <blockquote>
 <ul>
@@ -25170,7 +25205,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://&lt;minikube<span cl
 </ul>
 </blockquote>
 <h3 id="clusterip-service">ClusterIP Serviceの場合<a class="headerlink" href="#clusterip-service" title="Permanent link">&para;</a></h3>
-<h4 id="_10">▼ アドオンによる接続<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<h4 id="_12">▼ アドオンによる接続<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>ClusterIP Serviceの場合、やや難易度が高くなる。</p>
 <p>クラウドプロバイダーとは状況が異なり、Node外にロードバランサーを構築できず、別の方法でホストから仮想サーバー内のNodeに接続する必要がある。</p>
 <p>minikubeのingressアドオン (Nginx Ingress Controller) を有効化し、Ingressとnginxを指定したIngressClassを作成する。</p>
