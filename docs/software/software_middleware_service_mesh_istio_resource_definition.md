@@ -1603,6 +1603,17 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 記入中...
 
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ProxyConfig
+metadata:
+  name: foo-proxyconfig
+spec:
+  concurrency: 0
+  environmentVariables:
+    OTEL_RESOURCE_ATTRIBUTES: "service.name=istio-proxy"
+```
+
 <br>
 
 ## 08. RequestAuthentication
