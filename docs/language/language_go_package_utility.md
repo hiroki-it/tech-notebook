@@ -1799,7 +1799,7 @@ func SetSpanNameFormatter(next http.Handler) http.Handler {
 
 OTLP形式でテレメトリーを送信するExporterを作成する。
 
-これは、gRPCによるHTTPプロトコルで監視バックエンド (デフォルトでは` https://127.0.0.1:4317`) に送信する。
+これは、gRPCによるHTTPSプロトコルで監視バックエンド (デフォルトでは` https://127.0.0.1:4317`) に送信する。
 
 OpenTelemetry Collectorを使用している場合、ReceiverのgRPC用のエンドポイントに合わせる。
 

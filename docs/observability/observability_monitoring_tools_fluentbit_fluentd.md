@@ -137,8 +137,12 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 > - https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/
 > - https://cloud.google.com/anthos/clusters/docs/attached/how-to/logging-and-monitoring#how_it_works
 
-#### ▼ アグリゲーターパターンの実装例
+#### ▼ フォワーダーアグリゲーターパターンの実装例
 
 `L7`ロードバランサーはIngress Controller、アグリゲーターはDeploymentなどで実装できる。
+
+FluentBit/Fluentd以外で言うと、Nginxで実装されたGrafana Loki Gatewayは`L7`ロードバランサーである。
+
+Grafana Loki Gatewayは、Cluster内のPromtailからログを受信し、Grafana Lokiに送信する。
 
 <br>

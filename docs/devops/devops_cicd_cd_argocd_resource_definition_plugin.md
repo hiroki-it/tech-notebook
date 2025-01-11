@@ -242,7 +242,7 @@ spec:
         # エントリポイントは固定である
         - /var/run/argocd/argocd-cmp-server
       securityContext:
-        runAsNonRoot: "true"
+        runAsNonRoot: true
         # サイドカーのコンテナプロセスのユーザーIDは999とする。
         runAsUser: 999
       volumeMounts:
@@ -266,7 +266,7 @@ spec:
       command:
         - /var/run/argocd/argocd-cmp-server
       securityContext:
-        runAsNonRoot: "true"
+        runAsNonRoot: true
         runAsUser: 999
       volumeMounts:
         - name: var-files
@@ -550,7 +550,7 @@ spec:
         - name: HELM_PLUGINS
           value: /helm-working-dir/plugins
       securityContext:
-        runAsNonRoot: "true"
+        runAsNonRoot: true
         runAsUser: 999
       volumeMounts:
         - mountPath: /var/run/argocd
@@ -755,7 +755,7 @@ spec:
         - name: HELM_PLUGINS
           value: /helm-working-dir/plugins
       securityContext:
-        runAsNonRoot: "true"
+        runAsNonRoot: true
         runAsUser: 999
       volumeMounts:
         - mountPath: /var/run/argocd
@@ -1017,7 +1017,7 @@ metadata:
   annotations:
     # AWS KMSに認可スコープを持つAWS IAMロールと紐付けられるようにする。
     eks.amazonaws.com/role-arn: <AWS IAMロールのARN>
-automountServiceAccountToken: "true"
+automountServiceAccountToken: true
 ```
 
 > - https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#external-key-location

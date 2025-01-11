@@ -60,12 +60,12 @@ spec:
   replicas: 1
   template:
     spec:
-      hostNetwork: "false"
+      hostNetwork: false
       serviceAccountName: kube-state-metrics
       securityContext:
         fsGroup: 65534
         runAsGroup: 65534
-        runAsNonRoot: "true"
+        runAsNonRoot: true
         runAsUser: 65534
         seccompProfile:
           type: RuntimeDefault
