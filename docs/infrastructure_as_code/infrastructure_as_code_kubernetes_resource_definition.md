@@ -5998,13 +5998,24 @@ Node外ストレージツールのプロビジョナーを設定する。
 
 プロビジョナーは、StorageClassに合致するPersistentVolumeを自動的に作成する。
 
+本番環境ではクラウドのNode外ストレージツールのプロビジョナーでPersistentVolumeを作成し、一方で開発環境では開発ツール (例：Minikube) のプロビジョナーを使用するとよい。
+
 ```yaml
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: foo-storage-class
+  name: aws-ebs-csi
 # AWS EBS CSIドライバー
 provisioner: ebs.csi.aws.com
+```
+
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: standard
+# Minikubeドライバー
+provisioner: k8s.io/minikube-hostpath
 ```
 
 <br>
