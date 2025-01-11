@@ -671,7 +671,7 @@ nav:
           - Custom Controller: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.md
           - ロジック: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_logic.md
 
-  - 🌊 K8s開発:
+  - 🌊 K8sアプリ:
       - infrastructure_as_code/development_tools/index.md
       - ■ 開発環境:
           - ■ Minikube:
