@@ -17957,9 +17957,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#volume" class="md-nav__link">
+  <a href="#nodevolume" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ボリュームツールのVolume
+      ▼ Node外ストレージツールのVolume
     </span>
   </a>
   
@@ -17971,7 +17971,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#volume_1" class="md-nav__link">
+  <a href="#volume" class="md-nav__link">
     <span class="md-ellipsis">
       Volume
     </span>
@@ -17981,7 +17981,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#volume_2" class="md-nav__link">
+  <a href="#volume_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Volumeとは
     </span>
@@ -18017,9 +18017,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#volume_3" class="md-nav__link">
+  <a href="#nodevolume_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ボリュームツールのVolume
+      ▼ Node外ストレージツールのVolume
     </span>
   </a>
   
@@ -26542,9 +26542,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#volume" class="md-nav__link">
+  <a href="#nodevolume" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ボリュームツールのVolume
+      ▼ Node外ストレージツールのVolume
     </span>
   </a>
   
@@ -26556,7 +26556,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#volume_1" class="md-nav__link">
+  <a href="#volume" class="md-nav__link">
     <span class="md-ellipsis">
       Volume
     </span>
@@ -26566,7 +26566,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#volume_2" class="md-nav__link">
+  <a href="#volume_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Volumeとは
     </span>
@@ -26602,9 +26602,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#volume_3" class="md-nav__link">
+  <a href="#nodevolume_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ボリュームツールのVolume
+      ▼ Node外ストレージツールのVolume
     </span>
   </a>
   
@@ -28210,8 +28210,8 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 </tr>
 <tr>
 <td>Node外ストレージ</td>
-<td>外部ストレージ</td>
-<td>外部ストレージ</td>
+<td>Node外ストレージ</td>
+<td>Node外ストレージ</td>
 </tr>
 </tbody>
 </table>
@@ -28314,16 +28314,16 @@ Filesystem<span class="w">      </span>Size<span class="w">  </span>Used<span cl
 <li><a href="https://qiita.com/sotoiwa/items/09d2f43a35025e7be782#local">https://qiita.com/sotoiwa/items/09d2f43a35025e7be782#local</a></li>
 </ul>
 </blockquote>
-<h4 id="volume">▼ ボリュームツールのVolume<a class="headerlink" href="#volume" title="Permanent link">&para;</a></h4>
-<p>ボリュームツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) が提供するVolumeをコンテナにマウントする。</p>
-<p>StorageClassとPersistentVolumeClaimを経由して、PersistentVolumeとボリュームツールを紐付け、Volumeとしてコンテナにマウントする。</p>
-<p>また、外部ストレージを使用する場合には、CSIドライバーも必要である。</p>
+<h4 id="nodevolume">▼ Node外ストレージツールのVolume<a class="headerlink" href="#nodevolume" title="Permanent link">&para;</a></h4>
+<p>Node外ストレージツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) が提供するVolumeをコンテナにマウントする。</p>
+<p>StorageClassとPersistentVolumeClaimを経由して、PersistentVolumeとNode外ストレージツールを紐付け、Volumeとしてコンテナにマウントする。</p>
+<p>また、Node外ストレージを使用する場合には、CSIドライバーも必要である。</p>
 <p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
 <p><br></p>
-<h3 id="volume_1">Volume<a class="headerlink" href="#volume_1" title="Permanent link">&para;</a></h3>
-<h4 id="volume_2">▼ Volumeとは<a class="headerlink" href="#volume_2" title="Permanent link">&para;</a></h4>
+<h3 id="volume">Volume<a class="headerlink" href="#volume" title="Permanent link">&para;</a></h3>
+<h4 id="volume_1">▼ Volumeとは<a class="headerlink" href="#volume_1" title="Permanent link">&para;</a></h4>
 <p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
-<p>ボリュームツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) をそのままKubernetesのVolumeとして使用する。</p>
+<p>Node外ストレージツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) をそのままKubernetesのVolumeとして使用する。</p>
 <p>Podの<code>.spec.volumes</code>キーで指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Podに接続する</span>
 $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--<span class="w"> </span>bash
@@ -28424,7 +28424,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 </blockquote>
 <h4 id="emptydir">▼ EmptyDir<a class="headerlink" href="#emptydir" title="Permanent link">&para;</a></h4>
 <p>Podの既存のストレージ上にVolume (<code>/var/lib/kubelet/pods/&lt;PodのUUID&gt;/volumes/kubernetes.io~empty-dir/</code>ディレクトリ) を作成し、コンテナにボリュームマウントする。</p>
-<p>ディレクトリの中身は、Nodeの外部ストレージやメモリ上 (上限はNodeのメモリの<code>50</code>%) に保管できる。</p>
+<p>ディレクトリの中身は、NodeのNode外ストレージやメモリ上 (上限はNodeのメモリの<code>50</code>%) に保管できる。</p>
 <p>同一Node上のPod間でこのVolumeを共有できず、同一Pod内のコンテナ間ではVolumeを共有できる。</p>
 <p>また、Podが削除されるとこのVolumeも同時に削除されてしまう。</p>
 <p>保持期間を設定できるツール (例：Prometheus、Victoria Metrics、Grafana Mimir、など) にて、PodのVolumeをEmptyDirとしている場合、Podを保持期間より先に削除すると、保持期間を待たずにVolumeを削除することになってしまう。</p>
@@ -28435,8 +28435,8 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 <li><a href="https://pradiptabanerjee.medium.com/how-to-size-a-memory-backed-kubernetes-emptydir-volume-cdfe39d1b7e5">https://pradiptabanerjee.medium.com/how-to-size-a-memory-backed-kubernetes-emptydir-volume-cdfe39d1b7e5</a></li>
 </ul>
 </blockquote>
-<h4 id="volume_3">▼ ボリュームツールのVolume<a class="headerlink" href="#volume_3" title="Permanent link">&para;</a></h4>
-<p>ボリュームツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) が提供するVolumeをコンテナにマウントする。</p>
+<h4 id="nodevolume_1">▼ Node外ストレージツールのVolume<a class="headerlink" href="#nodevolume_1" title="Permanent link">&para;</a></h4>
+<p>Node外ストレージツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) が提供するVolumeをコンテナにマウントする。</p>
 <p>同一Node上のPod間でこのVolumeを共有でき、同一Pod内のコンテナ間でもVolumeを共有できる。</p>
 <p>また、Podが削除されてもこのVolumeは削除されない。</p>
 <blockquote>
