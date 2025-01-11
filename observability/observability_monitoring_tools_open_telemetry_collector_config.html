@@ -25537,40 +25537,40 @@
 <span class="w">    </span><span class="nt">verbosity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">detailed</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># スパン一つ当たりの内容</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">2024-03-26T04:19:41.450Z  info    ResourceSpans</span><span class="w"> </span><span class="c1">#0</span>
-<span class="nt">Resource SchemaURL</span><span class="p">:</span>
-<span class="nt">Resource attributes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">-&gt; service.name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(foo-service)</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">ScopeSpans</span><span class="w"> </span><span class="c1">#0</span>
-<span class="nt">ScopeSpans SchemaURL</span><span class="p">:</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">InstrumentationScope &quot;&lt;トレースパッケージ名&gt;&quot;</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">Span</span><span class="w"> </span><span class="c1">#0</span>
-<span class="nt">Trace ID</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
-<span class="nt">Parent ID</span><span class="p">:</span>
-<span class="nt">ID</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
-<span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;スパン名&gt;&quot;</span>
-<span class="nt">Kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Server</span>
-<span class="nt">Start time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2024-03-26 04:19:41.041 +0000 UTC</span>
-<span class="nt">End time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2024-03-26 04:19:41.085 +0000 UTC</span>
-<span class="nt">Status code</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unset</span>
-<span class="nt">Status message</span><span class="p">:</span>
-<span class="nt">Attributes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">-&gt; http.method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(GET)</span>
-<span class="w">  </span><span class="nt">-&gt; http.target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(&quot;&lt;スパン名&gt;&quot;)</span>
-<span class="w">  </span><span class="nt">-&gt; http.route</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(/)</span>
-<span class="w">  </span><span class="nt">-&gt; http.scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(http)</span>
-<span class="w">  </span><span class="nt">-&gt; http.flavor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(1.1)</span>
-<span class="w">  </span><span class="nt">-&gt; http.user_agent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(curl/7.79.1)</span>
-<span class="w">  </span><span class="nt">-&gt; http.request_content_length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int(0)</span>
-<span class="w">  </span><span class="nt">-&gt; http.response_content_length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int(905)</span>
-<span class="w">  </span><span class="nt">-&gt; http.status_code</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int(200)</span>
-<span class="w">  </span><span class="nt">-&gt; net.host.name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(_)</span>
-<span class="w">  </span><span class="nt">-&gt; net.host.port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int(&quot;&lt;ポート番号&gt;&quot;)</span>
-<span class="w">  </span><span class="nt">-&gt; net.sock.peer.addr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(127.0.0.6)</span>
-<span class="w">  </span><span class="nt">-&gt; net.sock.peer.port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int(&quot;&lt;ポート番号&gt;&quot;)</span>
-<span class="w">  </span><span class="nt">-&gt; env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(&quot;&lt;実行環境名&gt;&quot;)</span>
-<span class="w">  </span><span class="nt">-&gt; service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(&quot;&lt;サービス名&gt;&quot;)</span>
-<span class="w">  </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="s">&quot;kind&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;exporter&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;data_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;traces&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;debug&quot;</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="m">2024</span>-03-26T04:19:41.450Z<span class="w">  </span>info<span class="w">    </span>ResourceSpans<span class="w"> </span><span class="c1">#0</span>
+Resource<span class="w"> </span>SchemaURL:
+Resource<span class="w"> </span>attributes:
+<span class="w">  </span>-&gt;<span class="w"> </span>service.name:<span class="w"> </span>Str<span class="o">(</span>foo-service<span class="o">)</span>
+<span class="w">  </span>ScopeSpans<span class="w"> </span><span class="c1">#0</span>
+ScopeSpans<span class="w"> </span>SchemaURL:
+<span class="w">  </span>InstrumentationScope<span class="w"> </span><span class="s2">&quot;&lt;トレースパッケージ名&gt;&quot;</span>
+<span class="w">  </span>Span<span class="w"> </span><span class="c1">#0</span>
+Trace<span class="w"> </span>ID:<span class="w"> </span>*****
+Parent<span class="w"> </span>ID:
+ID:<span class="w"> </span>*****
+Name:<span class="w"> </span><span class="s2">&quot;&lt;スパン名&gt;&quot;</span>
+Kind:<span class="w"> </span>Server
+Start<span class="w"> </span>time:<span class="w"> </span><span class="m">2024</span>-03-26<span class="w"> </span><span class="m">04</span>:19:41.041<span class="w"> </span>+0000<span class="w"> </span>UTC
+End<span class="w"> </span>time:<span class="w"> </span><span class="m">2024</span>-03-26<span class="w"> </span><span class="m">04</span>:19:41.085<span class="w"> </span>+0000<span class="w"> </span>UTC
+Status<span class="w"> </span>code:<span class="w"> </span>Unset
+Status<span class="w"> </span>message:
+Attributes:
+<span class="w">  </span>-&gt;<span class="w"> </span>http.method:<span class="w"> </span>Str<span class="o">(</span>GET<span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span>http.target:<span class="w"> </span>Str<span class="o">(</span><span class="s2">&quot;&lt;スパン名&gt;&quot;</span><span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span>http.route:<span class="w"> </span>Str<span class="o">(</span>/<span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span>http.scheme:<span class="w"> </span>Str<span class="o">(</span>http<span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span>http.flavor:<span class="w"> </span>Str<span class="o">(</span><span class="m">1</span>.1<span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span>http.user_agent:<span class="w"> </span>Str<span class="o">(</span>curl/7.79.1<span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span>http.request_content_length:<span class="w"> </span>Int<span class="o">(</span><span class="m">0</span><span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span>http.response_content_length:<span class="w"> </span>Int<span class="o">(</span><span class="m">905</span><span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span>http.status_code:<span class="w"> </span>Int<span class="o">(</span><span class="m">200</span><span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span>net.host.name:<span class="w"> </span>Str<span class="o">(</span>_<span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span>net.host.port:<span class="w"> </span>Int<span class="o">(</span><span class="s2">&quot;&lt;ポート番号&gt;&quot;</span><span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span>net.sock.peer.addr:<span class="w"> </span>Str<span class="o">(</span><span class="m">127</span>.0.0.6<span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span>net.sock.peer.port:<span class="w"> </span>Int<span class="o">(</span><span class="s2">&quot;&lt;ポート番号&gt;&quot;</span><span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span>env:<span class="w"> </span>Str<span class="o">(</span><span class="s2">&quot;&lt;実行環境名&gt;&quot;</span><span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span>service:<span class="w"> </span>Str<span class="o">(</span><span class="s2">&quot;&lt;サービス名&gt;&quot;</span><span class="o">)</span>
+<span class="w">  </span><span class="o">{</span><span class="w"> </span><span class="s2">&quot;kind&quot;</span>:<span class="w"> </span><span class="s2">&quot;exporter&quot;</span>,<span class="w"> </span><span class="s2">&quot;data_type&quot;</span>:<span class="w"> </span><span class="s2">&quot;traces&quot;</span>,<span class="w"> </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;debug&quot;</span><span class="w"> </span><span class="o">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -25855,7 +25855,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-12</span>
   </span>
 
     
