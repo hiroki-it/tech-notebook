@@ -331,15 +331,13 @@ data:
       rootNamespace: istio-system
 ```
 
-#### ▼ tracing
+#### ▼ tracing (非推奨)
 
 `istio-proxy`コンテナでトレースIDとスパンIDを作成する場合に、いずれのパッケージ (例：Zipkin、Datadog、LightStepなど) で計装するかを設定する。
 
 ZipkinとJaegerはトレースコンテキスト仕様が同じであるため、zipkinパッケージをJaegerのクライアントとしても使用できる。
 
-ただし、これを使用するよりは`extensionProviders`キーを使用した方が良い
-
-`.mesh.defaultConfig.enableTracing`キーを有効化する必要がある。
+`.mesh.defaultConfig.enableTracing`キーも有効化する必要がある。
 
 ```yaml
 apiVersion: v1
@@ -355,6 +353,20 @@ data:
         sampling: 100
         zipkin:
           address: "jaeger-collector.observability:9411"
+```
+
+ただし、これを使用するよりは`extensionProviders`キーを使用した方が良い
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      tracing: {}
 ```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#Tracing
@@ -405,10 +417,10 @@ data:
        accessLogging:
          - stackdriver
        tracing:
-         - foo-provider-by-opentelemetry-grpc
+         - opentelemetry-grpc
     enableTracing: true
     extensionProviders:
-      - name: foo-provider-by-opentelemetry-grpc
+      - name: opentelemetry-grpc
         opentelemetry:
           # OpenTelemetry Collectorを宛先として設定する
           service: opentelemetry-collector.foo-namespace.svc.cluster.local
@@ -432,7 +444,7 @@ data:
     accessLogFile: /dev/stdout
 ```
 
-分散トレースの場合、代わりに`.mesh.enableTracing`キーと`.mesh.defaultConfig`キーを設定する。
+分散トレースの場合、代わりに`.mesh.enableTracing`キーと`.mesh.extensionProviders`キーを設定する。
 
 ```yaml
 apiVersion: v1
@@ -443,11 +455,11 @@ metadata:
 data:
   mesh: |
     enableTracing: "true"
-    defaultConfig:
-      tracing:
-        sampling: 100
-        zipkin:
-          address: "jaeger-collector.observability:9411"
+    extensionProviders:
+      - name: opentelemetry-grpc
+        opentelemetry:
+          service: opentelemetry-collector.foo-namespace.svc.cluster.local
+          port: 4317
 ```
 
 <br>
@@ -575,6 +587,8 @@ spec:
 
 Datadogでは、トレースコンテキスト仕様がdatadogコンテキストになる。
 
+`.mesh.enableTracing`キーも有効化する必要がある。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -585,7 +599,7 @@ data:
   mesh: |
     enableTracing: true
     extensionProviders:
-      - name: foo-provider-by-datadog
+      - name: datadog-http
         datadog:
           # datadogエージェントを宛先として設定する
           service: datadog-agent.foo-namespace.svc.cluster.local
@@ -614,7 +628,7 @@ spec:
   tracing:
     - providers:
         # mesh.extensionProviders[*].nameキーで設定した名前
-        - name: foo-provider-by-datadog
+        - name: datadog-http
       randomSamplingPercentage: 100
 ```
 
@@ -653,6 +667,8 @@ OpenTelemetryでは、トレースコンテキスト仕様はW3C Trace Context�
 
 OTLP形式のエンドポイントであればよいため、OpenTelemetry Collectorも指定できる。
 
+`.mesh.enableTracing`キーも有効化する必要がある。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -663,7 +679,7 @@ data:
   mesh: |
     enableTracing: true
     extensionProviders:
-      - name: foo-provider-by-opentelemetry-grpc
+      - name: opentelemetry-grpc
         opentelemetry:
           # OpenTelemetry Collectorを宛先として設定する
           service: opentelemetry-collector.foo-namespace.svc.cluster.local
@@ -703,7 +719,7 @@ spec:
   tracing:
     - providers:
         # mesh.extensionProviders[*].nameキーで設定した名前
-        - name: foo-provider-by-opentelemetry-grpc
+        - name: opentelemetry-grpc
       randomSamplingPercentage: 100
 ```
 
@@ -752,6 +768,8 @@ Zipkinでは、トレースコンテキスト仕様がB3コンテキストにな
 
 JaegerはB3をサポートしているため、Jaegerのクライアントとしても使用できる。
 
+`.mesh.enableTracing`キーも有効化する必要がある。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -762,7 +780,7 @@ data:
   mesh: |
     enableTracing: true
     extensionProviders:
-      - name: foo-provider-by-jaeger
+      - name: jaeger-http
         jaeger:
           # jaegerエージェントを宛先として設定する
           service: jaeger-agent.foo-namespace.svc.cluster.local
@@ -792,7 +810,7 @@ spec:
   tracing:
     - providers:
         # mesh.extensionProviders[*].nameキーで設定した名前
-        - name: foo-provider-by-jaeger
+        - name: jaeger-http
       randomSamplingPercentage: 100
 ```
 
