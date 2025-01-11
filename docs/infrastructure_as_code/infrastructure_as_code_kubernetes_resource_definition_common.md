@@ -167,10 +167,10 @@ PersistentVolumeClaimに関する情報を設定する。
 
 kube-controllerが設定してくれるため、開発者が設定する必要はない。
 
-| キー                                       | 値の例                                                                                                      | 説明                                                                                                                                                                                                                                      |
-| ------------------------------------------ |----------------------------------------------------------------------------------------------------------| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| キー                                       | 値の例                                                                                                             | 説明                                                                                                                                                                                                                                      |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `volume.kubernetes.io/storage-provisioner` | `ebs.csi.aws.com` (AWS EBS CSIドライバー)、`kubernetes.io/aws-ebs` (非推奨)、`k8s.io/minikube-hostpath` (Minikube) | PersistentVolumeClaimに紐づくPersistentVolumeを作成したツールを設定する。                                                                                                                                                                 |
-| `volume.kubernetes.io/selected-node`       | `ip-*-*-*-*.ap-northeast-1.compute.internal`                                                             | PersistentVolumeClaimに紐づくPersistentVolumeが配置されているNode名を設定する。正しいNode名を指定しないと、`N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector`というエラーになってしまう。 |
+| `volume.kubernetes.io/selected-node`       | `ip-*-*-*-*.ap-northeast-1.compute.internal`                                                                       | PersistentVolumeClaimに紐づくPersistentVolumeが配置されているNode名を設定する。正しいNode名を指定しないと、`N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector`というエラーになってしまう。 |
 
 <br>
 
