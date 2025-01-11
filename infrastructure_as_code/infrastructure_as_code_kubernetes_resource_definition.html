@@ -34489,7 +34489,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </code></pre></div>
 <h4 id="readwriteonce">▼ ReadWriteOnce<a class="headerlink" href="#readwriteonce" title="Permanent link">&para;</a></h4>
 <p>ボリュームに対して、単一のNodeからのみ読み出し/書き込み可能にする。</p>
-<p>NodeごとにDBを分割したい場合に使用する。</p>
+<p>もしNodeにPodのインスタンスが複数ある場合、<code>ReadWriteOnce</code>であっても複数のPodから読み込み/書き込みがある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
@@ -34499,6 +34499,11 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">  </span><span class="nt">accessModes</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteOnce</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/xanadou/items/be8c49eb56e36584891b">https://qiita.com/xanadou/items/be8c49eb56e36584891b</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="speccapacity">.spec.capacity<a class="headerlink" href="#speccapacity" title="Permanent link">&para;</a></h3>
 <h4 id="capacity">▼ capacityとは<a class="headerlink" href="#capacity" title="Permanent link">&para;</a></h4>
