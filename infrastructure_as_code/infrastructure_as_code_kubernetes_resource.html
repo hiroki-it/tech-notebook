@@ -28575,7 +28575,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p><br></p>
 <h3 id="storageclass">StorageClass<a class="headerlink" href="#storageclass" title="Permanent link">&para;</a></h3>
 <h4 id="storageclass_1">▼ StorageClassとは<a class="headerlink" href="#storageclass_1" title="Permanent link">&para;</a></h4>
-<p>Kubernetes外部でプロビジョニングされたストレージ (例：AWS EBS、Azure Diskなど) を要求し、これをVolumeとしてPersistentVolumeClaimに提供する。</p>
+<p>Node外ストレージツール (例：AWS EBS、Azure Diskなど) を要求し、これをVolumeとしてPersistentVolumeClaimに提供する。</p>
 <p>そのため、PersistentVolumeも合わせて作成する必要がある。</p>
 <p>StorageClassを使用する場合は、PersistentVolumeClaimではなくStorageClass側で<code>reclaimPolicy</code>キーとして設定する。</p>
 <p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>

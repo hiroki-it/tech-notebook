@@ -37969,7 +37969,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </code></pre></div>
 <p><br></p>
 <h3 id="provisioner">provisioner<a class="headerlink" href="#provisioner" title="Permanent link">&para;</a></h3>
-<p>Volumeを自動的にプロビジョニングする外部サービスのプロビジョナーを設定する。</p>
+<p>Node外ストレージツールのプロビジョナーを設定する。</p>
+<p>プロビジョナーは、StorageClassに合致するPersistentVolumeを自動的に作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storage.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StorageClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
