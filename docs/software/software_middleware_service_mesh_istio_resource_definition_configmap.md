@@ -405,9 +405,10 @@ data:
        accessLogging:
          - stackdriver
        tracing:
-         - foo-provider-by-opentelemetry
+         - foo-provider-by-opentelemetry-grpc
+    enableTracing: true
     extensionProviders:
-      - name: foo-provider-by-opentelemetry
+      - name: foo-provider-by-opentelemetry-grpc
         opentelemetry:
           # OpenTelemetry Collectorを宛先として設定する
           service: opentelemetry-collector.foo-namespace.svc.cluster.local
@@ -582,6 +583,7 @@ metadata:
   namespace: istio-system
 data:
   mesh: |
+    enableTracing: true
     extensionProviders:
       - name: foo-provider-by-datadog
         datadog:
@@ -659,13 +661,23 @@ metadata:
   namespace: istio-system
 data:
   mesh: |
+    enableTracing: true
     extensionProviders:
-      - name: foo-provider-by-opentelemetry
+      - name: foo-provider-by-opentelemetry-grpc
         opentelemetry:
           # OpenTelemetry Collectorを宛先として設定する
           service: opentelemetry-collector.foo-namespace.svc.cluster.local
           # gRPC用のエンドポイントを設定する
           port: 4317
+      - name: foo-provider-by-opentelemetry-http
+        opentelemetry:
+          # OpenTelemetry Collectorを宛先として設定する
+          service: opentelemetry-collector.foo-namespace.svc.cluster.local
+          # HTTP用のエンドポイントを設定する
+          port: 4318
+            http:
+            # HTTPの場合はパスが必要である
+            path: /v1/traces
       - name: bar-provider-by-envoy
         envoyFileAccessLog:
           path: /dev/stdout
@@ -691,7 +703,7 @@ spec:
   tracing:
     - providers:
         # mesh.extensionProviders[*].nameキーで設定した名前
-        - name: foo-provider-by-opentelemetry
+        - name: foo-provider-by-opentelemetry-grpc
       randomSamplingPercentage: 100
 ```
 
@@ -748,6 +760,7 @@ metadata:
   namespace: istio-system
 data:
   mesh: |
+    enableTracing: true
     extensionProviders:
       - name: foo-provider-by-jaeger
         jaeger:
