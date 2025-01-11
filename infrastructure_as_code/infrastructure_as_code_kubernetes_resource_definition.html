@@ -37971,12 +37971,20 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h3 id="provisioner">provisioner<a class="headerlink" href="#provisioner" title="Permanent link">&para;</a></h3>
 <p>Node外ストレージツールのプロビジョナーを設定する。</p>
 <p>プロビジョナーは、StorageClassに合致するPersistentVolumeを自動的に作成する。</p>
+<p>本番環境ではクラウドのNode外ストレージツールのプロビジョナーでPersistentVolumeを作成し、一方で開発環境では開発ツール (例：Minikube) のプロビジョナーを使用するとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storage.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StorageClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-storage-class</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-ebs-csi</span>
 <span class="c1"># AWS EBS CSIドライバー</span>
 <span class="nt">provisioner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ebs.csi.aws.com</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storage.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StorageClass</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">standard</span>
+<span class="c1"># Minikubeドライバー</span>
+<span class="nt">provisioner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.io/minikube-hostpath</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="reclaimpolicy">reclaimPolicy<a class="headerlink" href="#reclaimpolicy" title="Permanent link">&para;</a></h3>
