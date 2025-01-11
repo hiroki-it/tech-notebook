@@ -2028,7 +2028,7 @@ spec:
 
 PersistentVolumeの一種であるHostPath Volumeを作成する。
 
-Volumeの一種であるHostPath Volumeとは区別すること。
+Volumeの一種であるPodによるHostPath Volumeとは区別すること。
 
 > - https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 
@@ -2276,12 +2276,13 @@ PersistentVolumeにストレージクラス名を設定しない場合、これ�
 
 注意点として、もし異なるStorageClassNameに変更したい場合は、PersistentVolumeを作成し直す必要がある。
 
-| クラス名   | 説明                                               |
-| ---------- | -------------------------------------------------- |
-| `standard` | 特に特徴がない場合につける。                       |
-| `fast`     | PersistentVolumeに対応するに使用する場合につける。 |
-| `slow`     | PersistentVolumeとして使用する場合につける。       |
-| `gp2`      |                                                    |
+| クラス名              | 説明                                                                                                                     |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `""` (明示的な空文字) | PersistentVolumeに対応するStorageClassがない場合 (PersistentVolumeを使用するが、StorageClassは使用しない場合) につける。 |
+| `local`               | PersistentVolumeに対応するStorageClassが中速中容量ストレージの場合につける。                                             |
+| `standard`            | PersistentVolumeに対応するStorageClassが中速中容量ストレージの場合につける。                                             |
+| `fast`                | PersistentVolumeに対応するStorageClassが高速小容量ストレージの場合につける。                                             |
+| `slow`                | PersistentVolumeに対応するStorageClassが低速大容量ストレージの場合につける。                                             |
 
 **＊実装例＊**
 
@@ -2296,6 +2297,7 @@ spec:
 
 > - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class
 > - https://stackoverflow.com/questions/61187909/how-do-i-change-the-storage-class-of-existing-persistent-volumes
+> - https://stackoverflow.com/a/46415672
 
 <br>
 

@@ -1277,7 +1277,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 Nodeのストレージ上にVolumeを作成し、これをコンテナにバインドマウントする。
 
-機能としては、Volumeの一種であるHostPathと同じである。
+機能としては、Volumeの一種であるPodによるHostPathと同じである。
 
 マルチNodeはサポートしていないため、本番環境では非推奨である。
 
@@ -1582,7 +1582,7 @@ $ kubectl describe node ip-*-*-*-*.ap-northeast-1.compute.internal | grep zone
 
 #### ▼ サイズを拡張する
 
-PVCの値が変われば、使用するPVを変えられる。
+PersitentVolumeClaimの値が変われば、使用するPersistentVolumeを変えられる。
 
 `--cascade`オプションでPodを残してStatefulSetを
 
