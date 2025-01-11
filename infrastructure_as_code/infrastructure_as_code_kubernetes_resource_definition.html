@@ -34521,7 +34521,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="spechostpath">.spec.hostPath<a class="headerlink" href="#spechostpath" title="Permanent link">&para;</a></h3>
 <h4 id="hostpath">▼ hostPathとは<a class="headerlink" href="#hostpath" title="Permanent link">&para;</a></h4>
 <p>PersistentVolumeの一種であるHostPath Volumeを作成する。</p>
-<p>Volumeの一種であるHostPath Volumeとは区別すること。</p>
+<p>Volumeの一種であるPodによるHostPath Volumeとは区別すること。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">https://kubernetes.io/docs/concepts/storage/persistent-volumes/</a></li>
@@ -34755,20 +34755,24 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </thead>
 <tbody>
 <tr>
+<td><code>""</code> (明示的な空文字)</td>
+<td>PersistentVolumeに対応するStorageClassがない場合 (PersistentVolumeを使用するが、StorageClassは使用しない場合) につける。</td>
+</tr>
+<tr>
+<td><code>local</code></td>
+<td>PersistentVolumeに対応するStorageClassが中速中容量ストレージの場合につける。</td>
+</tr>
+<tr>
 <td><code>standard</code></td>
-<td>特に特徴がない場合につける。</td>
+<td>PersistentVolumeに対応するStorageClassが中速中容量ストレージの場合につける。</td>
 </tr>
 <tr>
 <td><code>fast</code></td>
-<td>PersistentVolumeに対応するに使用する場合につける。</td>
+<td>PersistentVolumeに対応するStorageClassが高速小容量ストレージの場合につける。</td>
 </tr>
 <tr>
 <td><code>slow</code></td>
-<td>PersistentVolumeとして使用する場合につける。</td>
-</tr>
-<tr>
-<td><code>gp2</code></td>
-<td></td>
+<td>PersistentVolumeに対応するStorageClassが低速大容量ストレージの場合につける。</td>
 </tr>
 </tbody>
 </table>
@@ -34784,6 +34788,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class</a></li>
 <li><a href="https://stackoverflow.com/questions/61187909/how-do-i-change-the-storage-class-of-existing-persistent-volumes">https://stackoverflow.com/questions/61187909/how-do-i-change-the-storage-class-of-existing-persistent-volumes</a></li>
+<li><a href="https://stackoverflow.com/a/46415672">https://stackoverflow.com/a/46415672</a></li>
 </ul>
 </blockquote>
 <p><br></p>

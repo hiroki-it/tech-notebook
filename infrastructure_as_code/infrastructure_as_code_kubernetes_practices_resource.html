@@ -24840,20 +24840,20 @@
 </ul>
 </blockquote>
 <h3 id="specaccessmodereadwriteonce">■ 独自ファイルシステムやファイルのロックが影響する場合は<code>.spec.accessMode=ReadWriteOnce</code>を割り当てる<a class="headerlink" href="#specaccessmodereadwriteonce" title="Permanent link">&para;</a></h3>
-<p>一つのNodeに対してRead/Writeが可能なボリュームとしてマウントする。</p>
-<p>ブロックストレージのような用途でストレージを使用するアプリケーションで指定する。</p>
+<p>一つのNodeに対して読み込み/書き込みが可能なボリュームとしてマウントする。</p>
+<p>ブロックストレージでは、Nodeごとにストレージを分割しつつ、マイクロサービスがそれを占有した方が良い。</p>
 <ul>
 <li>例 データベース</li>
 </ul>
 <h3 id="nodepodspecaccessmodereadwritemany">■ 複数Node/Pod間でファイルを共有するアプリケーションには<code>.spec.accessMode=ReadWriteMany</code>を割り当てる<a class="headerlink" href="#nodepodspecaccessmodereadwritemany" title="Permanent link">&para;</a></h3>
-<p>複数のノードからRead/Writeを行えるボリュームとしてマウントする。
-ファイルシステムのようにファイル共有を行なうアプリケーションで指定する。</p>
+<p>複数のノードから読み込み/書き込みを行えるボリュームとしてマウントする。</p>
+<p>ファイルシステムでは、Node間でストレージを共有した方が良い。</p>
 <ul>
 <li>例 NFS、SMB</li>
 </ul>
 <h3 id="nodepodreadspecaccessmodereadonlymany">■ 複数Node/Pod間でReadのみを許可するアプリケーションには<code>.spec.accessMode=ReadOnlyMany</code>を割り当てる<a class="headerlink" href="#nodepodreadspecaccessmodereadonlymany" title="Permanent link">&para;</a></h3>
-<p>複数のノードからRead/Writeを行えるボリュームとしてマウントする。</p>
-<p>ConfigMapに保管するには大きすぎる設定ファイルや共通データなどを利用するアプリケーションで指定する。</p>
+<p>複数のノードから読み込みのみを行えるボリュームとしてマウントする。</p>
+<p>ConfigMapに保管するには大きすぎる設定ファイルや共通データでは、Node間で読み込みストレージを共有した方が良い。</p>
 <ul>
 <li>例 機械学習モデルのパラメータストア</li>
 </ul>
@@ -24871,15 +24871,15 @@
 <h2 id="reclaim-policy">利用用途に合ったReclaim Policyを設定する<a class="headerlink" href="#reclaim-policy" title="Permanent link">&para;</a></h2>
 <h3 id="delete">■ 特別な理由がない限りDeleteを指定する<a class="headerlink" href="#delete" title="Permanent link">&para;</a></h3>
 <p>KubernetesのデフォルトではReclaim PolicyがDeleteに指定されている。</p>
-<p>Deleteを指定することでPersistentVolumeClaim(PVC)を削除しPersistentVolume(PV)が使用されなくなった時点で自動削除され、PVの管理負荷を削減することができるためReclaim Policyは原則Deleteを利用する。</p>
+<p>Deleteを指定することでPersistentVolumeClaim(PersistentVolumeClaim)を削除しPersistentVolume(PV)が使用されなくなった時点で自動削除され、PVの管理負荷を削減することができるためReclaim Policyは原則Deleteを利用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#delete">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#delete</a></li>
 </ul>
 </blockquote>
-<h3 id="pvcretain">■ 重要なデータを含むPVCはRetainを指定する<a class="headerlink" href="#pvcretain" title="Permanent link">&para;</a></h3>
-<p>データベースやファイルストレージ用途などでPersistentVolumeClaim(PVC)を利用している場合、誤ったPVCの削除によるデータ損失を防ぐ必要がある。</p>
-<p>そのため重要なデータを保管するPVCはReclaim PolicyにRetainを指定し、PVが完全に削除されないよう保護することが出来る。</p>
+<h3 id="persistentvolumeclaimretain">■ 重要なデータを含むPersistentVolumeClaimはRetainを指定する<a class="headerlink" href="#persistentvolumeclaimretain" title="Permanent link">&para;</a></h3>
+<p>データベースやファイルストレージ用途などでPersistentVolumeClaim(PersistentVolumeClaim)を利用している場合、誤ったPersistentVolumeClaimの削除によるデータ損失を防ぐ必要がある。</p>
+<p>そのため重要なデータを保管するPersistentVolumeClaimはReclaim PolicyにRetainを指定し、PVが完全に削除されないよう保護することが出来る。</p>
 <blockquote>
 <ul>
 <li>[<a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain</a></li>
@@ -24888,7 +24888,7 @@
 </blockquote>
 <h3 id="recycledynamic-provisioning">■ RecycleポリシーではなくDynamic Provisioningを利用する<a class="headerlink" href="#recycledynamic-provisioning" title="Permanent link">&para;</a></h3>
 <p>現在RecycleポリシーはDeprecatedされている。</p>
-<p>そのためPVCのみ削除し、PVは削除しないようなユースケースではDynamic Provisioningを利用する。</p>
+<p>そのためPersistentVolumeClaimのみ削除し、PVは削除しないようなユースケースではDynamic Provisioningを利用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recycle">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recycle</a></li>
@@ -25939,7 +25939,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-11</span>
   </span>
 
     
