@@ -1984,7 +1984,7 @@ spec:
 
 ボリュームに対して、単一のNodeからのみ読み出し/書き込み可能にする。
 
-NodeごとにDBを分割したい場合に使用する。
+もしNodeにPodのインスタンスが複数ある場合、`ReadWriteOnce`であっても複数のPodから読み込み/書き込みがある。
 
 **＊実装例＊**
 
@@ -1997,6 +1997,8 @@ spec:
   accessModes:
     - ReadWriteOnce
 ```
+
+> - https://qiita.com/xanadou/items/be8c49eb56e36584891b
 
 <br>
 

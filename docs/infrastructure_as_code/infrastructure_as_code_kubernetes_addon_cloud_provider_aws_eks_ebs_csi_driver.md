@@ -284,7 +284,7 @@ AWS EBSは、AWS EBS CSIドライバーが自動で作成するため、作成�
 
 #### ▼ StorageClass
 
-動的プロビジョニングの場合、StorageClassが必要である。
+自動的にPersistentVolumeを作成する動的プロビジョニングの場合、StorageClassが必要である。
 
 要求するAWS EBSのタイプをStorageClassで指定する。
 

@@ -628,7 +628,7 @@ Generic Ephemeral Volumesを使用して、PodのデータをK8s外部のスト�
 
 一時的なストレージのため、Podの作成時にストレージを払い出し、Podが停止するとストレージは削除される。
 
-EmptyDir Volumeとは異なり、NodeのストレージがVolumeの容量を制限しない。
+EmptyDir Volumeとは異なり、NodeのストレージがPodの容量を制限しない。
 
 そのため、外部ストレージの容量次第では、一時的に保管できるデータ量がEmptyDirよりも多い。
 
@@ -643,7 +643,7 @@ EmptyDir Volumeを使用して、PodのデータをNodeのストレージに一�
 
 少量の一時データを保管したい場合 (例：キャッシュの保管、バッファリングなど) に役立つ。
 
-Generic Ephemeral Volumeとは異なり、NodeのストレージがVolumeの容量を制限する。
+Generic Ephemeral Volumeとは異なり、NodeのストレージがPodの容量を制限する。
 
 そのため、Nodeのストレージ次第では、一時的に保管できるデータ量がEphemeral Volumesよりも少ない。
 
@@ -660,15 +660,15 @@ Podのリソース要求やリソース制限に `ephemeral-storage` のフィ�
 
 > - [https://kubernetes.io/ja/docs/concepts/configuration/manage-resources-containers/#setting-requests-and-limits-for-local-ephemeral-storage](https://kubernetes.io/ja/docs/concepts/configuration/manage-resources-containers/#setting-requests-and-limits-for-local-ephemeral-storage)
 
-### ■ 永続的ストレージを必要とする場合はPersistentVolume(Claim)を使用する
+### ■ 永続的ストレージを必要とする場合はPersistentVolume (Claim) を使用する
 
-PersistentVolume(Claim)を使用することで特定のストレージ製品のボリュームにPodのデータを永続化することができる。
+PersistentVolume (Claim) を使用することで特定のストレージ製品のボリュームにPodのデータを永続化することができる。
 
-使用できるストレージ製品はクラスターのインストールされたボリュームプラグイン(≒ CSI Driver)と実行環境に依存しており、そのプラグインを使用するStorageClass
+使用できるストレージ製品はクラスターのインストールされたボリュームプラグイン (≒ CSI Driver) と実行環境に依存しており、そのプラグインを使用するStorageClass
 
 して、PodのデータをNodeのストレージに永続的に保管できる。
 
-StorageClassによる外部ストレージとは異なり、NodeのストレージがVolumeの容量を制限する。
+StorageClassによる外部ストレージとは異なり、NodeのストレージがPodの容量を制限する。
 
 そのため、Nodeのストレージ次第では、永続的に保管できるデータ量がPersistentVolumeよりも少ない。
 
@@ -676,7 +676,7 @@ StorageClassによる外部ストレージとは異なり、Nodeのストレー�
 
 StorageClassによるK8s外部のストレージ (例：AWS EBS) を使用して、Podのデータを外部ストレージに永続的に保管できる。
 
-PersistentVolumeとは異なり、NodeのストレージがVolumeの容量を制限しない。
+StorageClassでは、NodeのストレージがPodの容量を制限しない。
 
 そのため、外部ストレージの容量次第では、一時的に保管できるデータ量がPersistentVolumeよりも多い。
 
@@ -692,7 +692,9 @@ PersistentVolumeとは異なり、NodeのストレージがVolumeの容量を制
 
 一つのNodeに対して読み込み/書き込みが可能なボリュームとしてマウントする。
 
-ブロックストレージでは、Nodeごとにストレージを分割しつつ、マイクロサービスがそれを占有した方が良い。
+もしNodeにPodのインスタンスが複数ある場合、`ReadWriteOnce`であっても複数のPodから読み込み/書き込みがある。
+
+ロックのあるストレージの場合、Nodeごとにストレージを分割しつつ、Nodeに一つだけスケジューリングされるようにしたPodがストレージを占有した方が良い。
 
 - 例 データベース
 
@@ -737,7 +739,7 @@ Deleteを指定することでPersistentVolumeClaim(PersistentVolumeClaim)を削
 
 ### ■ 重要なデータを含むPersistentVolumeClaimはRetainを指定する
 
-データベースやファイルストレージ用途などでPersistentVolumeClaim(PersistentVolumeClaim)を利用している場合、誤ったPersistentVolumeClaimの削除によるデータ損失を防ぐ必要がある。
+データベースやファイルストレージ用途などでPersistentVolumeClaimを利用している場合、誤ったPersistentVolumeClaimの削除によるデータ損失を防ぐ必要がある。
 
 そのため重要なデータを保管するPersistentVolumeClaimはReclaim PolicyにRetainを指定し、PVが完全に削除されないよう保護することが出来る。
 
