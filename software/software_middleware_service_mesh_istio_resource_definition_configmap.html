@@ -5111,7 +5111,7 @@
           <li class="md-nav__item">
   <a href="#tracing" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ tracing
+      ▼ tracing (非推奨)
     </span>
   </a>
   
@@ -25167,7 +25167,7 @@
           <li class="md-nav__item">
   <a href="#tracing" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ tracing
+      ▼ tracing (非推奨)
     </span>
   </a>
   
@@ -25916,11 +25916,10 @@
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">rootNamespace: istio-system</span>
 </code></pre></div>
-<h4 id="tracing">▼ tracing<a class="headerlink" href="#tracing" title="Permanent link">&para;</a></h4>
+<h4 id="tracing">▼ tracing (非推奨)<a class="headerlink" href="#tracing" title="Permanent link">&para;</a></h4>
 <p><code>istio-proxy</code>コンテナでトレースIDとスパンIDを作成する場合に、いずれのパッケージ (例：Zipkin、Datadog、LightStepなど) で計装するかを設定する。</p>
 <p>ZipkinとJaegerはトレースコンテキスト仕様が同じであるため、zipkinパッケージをJaegerのクライアントとしても使用できる。</p>
-<p>ただし、これを使用するよりは<code>extensionProviders</code>キーを使用した方が良い</p>
-<p><code>.mesh.defaultConfig.enableTracing</code>キーを有効化する必要がある。</p>
+<p><code>.mesh.defaultConfig.enableTracing</code>キーも有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -25934,6 +25933,17 @@
 <span class="w">        </span><span class="no">sampling: 100</span>
 <span class="w">        </span><span class="no">zipkin:</span>
 <span class="w">          </span><span class="no">address: &quot;jaeger-collector.observability:9411&quot;</span>
+</code></pre></div>
+<p>ただし、これを使用するよりは<code>extensionProviders</code>キーを使用した方が良い</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-mesh-cm</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">defaultConfig:</span>
+<span class="w">      </span><span class="no">tracing: {}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -25977,10 +25987,10 @@
 <span class="w">       </span><span class="no">accessLogging:</span>
 <span class="w">         </span><span class="no">- stackdriver</span>
 <span class="w">       </span><span class="no">tracing:</span>
-<span class="w">         </span><span class="no">- foo-provider-by-opentelemetry-grpc</span>
+<span class="w">         </span><span class="no">- opentelemetry-grpc</span>
 <span class="w">    </span><span class="no">enableTracing: true</span>
 <span class="w">    </span><span class="no">extensionProviders:</span>
-<span class="w">      </span><span class="no">- name: foo-provider-by-opentelemetry-grpc</span>
+<span class="w">      </span><span class="no">- name: opentelemetry-grpc</span>
 <span class="w">        </span><span class="no">opentelemetry:</span>
 <span class="w">          </span><span class="no"># OpenTelemetry Collectorを宛先として設定する</span>
 <span class="w">          </span><span class="no">service: opentelemetry-collector.foo-namespace.svc.cluster.local</span>
@@ -26003,7 +26013,7 @@
 <span class="w">    </span><span class="no">accessLogEncoding: JSON</span>
 <span class="w">    </span><span class="no">accessLogFile: /dev/stdout</span>
 </code></pre></div>
-<p>分散トレースの場合、代わりに<code>.mesh.enableTracing</code>キーと<code>.mesh.defaultConfig</code>キーを設定する。</p>
+<p>分散トレースの場合、代わりに<code>.mesh.enableTracing</code>キーと<code>.mesh.extensionProviders</code>キーを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -26012,11 +26022,11 @@
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">enableTracing: &quot;true&quot;</span>
-<span class="w">    </span><span class="no">defaultConfig:</span>
-<span class="w">      </span><span class="no">tracing:</span>
-<span class="w">        </span><span class="no">sampling: 100</span>
-<span class="w">        </span><span class="no">zipkin:</span>
-<span class="w">          </span><span class="no">address: &quot;jaeger-collector.observability:9411&quot;</span>
+<span class="w">    </span><span class="no">extensionProviders:</span>
+<span class="w">      </span><span class="no">- name: opentelemetry-grpc</span>
+<span class="w">        </span><span class="no">opentelemetry:</span>
+<span class="w">          </span><span class="no">service: opentelemetry-collector.foo-namespace.svc.cluster.local</span>
+<span class="w">          </span><span class="no">port: 4317</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="enableprometheusmerge_1">enablePrometheusMerge<a class="headerlink" href="#enableprometheusmerge_1" title="Permanent link">&para;</a></h3>
@@ -26119,6 +26129,7 @@
 <h4 id="datadog">▼ datadog<a class="headerlink" href="#datadog" title="Permanent link">&para;</a></h4>
 <p>分散トレースのクライアントをdatadogパッケージで計装する。</p>
 <p>Datadogでは、トレースコンテキスト仕様がdatadogコンテキストになる。</p>
+<p><code>.mesh.enableTracing</code>キーも有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -26128,12 +26139,12 @@
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">enableTracing: true</span>
 <span class="w">    </span><span class="no">extensionProviders:</span>
-<span class="w">      </span><span class="no">- name: foo-provider-by-datadog</span>
+<span class="w">      </span><span class="no">- name: datadog-http</span>
 <span class="w">        </span><span class="no">datadog:</span>
 <span class="w">          </span><span class="no"># datadogエージェントを宛先として設定する</span>
 <span class="w">          </span><span class="no">service: datadog-agent.foo-namespace.svc.cluster.local</span>
 <span class="w">          </span><span class="no">port: 8126</span>
-<span class="w">      </span><span class="no">- name: bar-provider-by-envoy</span>
+<span class="w">      </span><span class="no">- name: envoy-log</span>
 <span class="w">        </span><span class="no">envoyFileAccessLog</span>
 </code></pre></div>
 <p>Datadogに送信するためには、<code>mesh.extensionProviders[*].datadog</code>キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
@@ -26153,7 +26164,7 @@
 <span class="w">  </span><span class="nt">tracing</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># mesh.extensionProviders[*].nameキーで設定した名前</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provider-by-datadog</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">datadog-http</span>
 <span class="w">      </span><span class="nt">randomSamplingPercentage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
 </code></pre></div>
 <p>アクセスログの設定は以下の通りである。</p>
@@ -26173,7 +26184,7 @@
 <span class="w">  </span><span class="nt">accessLogging</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># mesh.extensionProviders[*].nameキーで設定した名前</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-provider-by-envoy</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy-log</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -26187,6 +26198,7 @@
 <p>分散トレースのクライアントをOpenTelemetryで計装する。</p>
 <p>OpenTelemetryでは、トレースコンテキスト仕様はW3C Trace Contextになる。</p>
 <p>OTLP形式のエンドポイントであればよいため、OpenTelemetry Collectorも指定できる。</p>
+<p><code>.mesh.enableTracing</code>キーも有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -26196,13 +26208,13 @@
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">enableTracing: true</span>
 <span class="w">    </span><span class="no">extensionProviders:</span>
-<span class="w">      </span><span class="no">- name: foo-provider-by-opentelemetry-grpc</span>
+<span class="w">      </span><span class="no">- name: opentelemetry-grpc</span>
 <span class="w">        </span><span class="no">opentelemetry:</span>
 <span class="w">          </span><span class="no"># OpenTelemetry Collectorを宛先として設定する</span>
 <span class="w">          </span><span class="no">service: opentelemetry-collector.foo-namespace.svc.cluster.local</span>
 <span class="w">          </span><span class="no"># gRPC用のエンドポイントを設定する</span>
 <span class="w">          </span><span class="no">port: 4317</span>
-<span class="w">      </span><span class="no">- name: foo-provider-by-opentelemetry-http</span>
+<span class="w">      </span><span class="no">- name: opentelemetry-http</span>
 <span class="w">        </span><span class="no">opentelemetry:</span>
 <span class="w">          </span><span class="no"># OpenTelemetry Collectorを宛先として設定する</span>
 <span class="w">          </span><span class="no">service: opentelemetry-collector.foo-namespace.svc.cluster.local</span>
@@ -26211,7 +26223,7 @@
 <span class="w">            </span><span class="no">http:</span>
 <span class="w">            </span><span class="no"># HTTPの場合はパスが必要である</span>
 <span class="w">            </span><span class="no">path: /v1/traces</span>
-<span class="w">      </span><span class="no">- name: bar-provider-by-envoy</span>
+<span class="w">      </span><span class="no">- name: envoy-log</span>
 <span class="w">        </span><span class="no">envoyFileAccessLog:</span>
 <span class="w">          </span><span class="no">path: /dev/stdout</span>
 </code></pre></div>
@@ -26232,7 +26244,7 @@
 <span class="w">  </span><span class="nt">tracing</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># mesh.extensionProviders[*].nameキーで設定した名前</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provider-by-opentelemetry-grpc</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-grpc</span>
 <span class="w">      </span><span class="nt">randomSamplingPercentage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
 </code></pre></div>
 <p>アクセスログの設定は以下の通りである。</p>
@@ -26252,7 +26264,7 @@
 <span class="w">  </span><span class="nt">accessLogging</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># mesh.extensionProviders[*].nameキーで設定した名前</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-provider-by-envoy</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy-log</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -26277,6 +26289,7 @@
 <p>分散トレースのクライアントをzipkinパッケージで計装する。</p>
 <p>Zipkinでは、トレースコンテキスト仕様がB3コンテキストになる。</p>
 <p>JaegerはB3をサポートしているため、Jaegerのクライアントとしても使用できる。</p>
+<p><code>.mesh.enableTracing</code>キーも有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -26286,12 +26299,12 @@
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">enableTracing: true</span>
 <span class="w">    </span><span class="no">extensionProviders:</span>
-<span class="w">      </span><span class="no">- name: foo-provider-by-jaeger</span>
+<span class="w">      </span><span class="no">- name: jaeger-http</span>
 <span class="w">        </span><span class="no">jaeger:</span>
 <span class="w">          </span><span class="no"># jaegerエージェントを宛先として設定する</span>
 <span class="w">          </span><span class="no">service: jaeger-agent.foo-namespace.svc.cluster.local</span>
 <span class="w">          </span><span class="no">port: 8126</span>
-<span class="w">      </span><span class="no">- name: bar-provider-by-envoy</span>
+<span class="w">      </span><span class="no">- name: envoy-log</span>
 <span class="w">        </span><span class="no">envoyFileAccessLog:</span>
 <span class="w">          </span><span class="no">path: /dev/stdout</span>
 </code></pre></div>
@@ -26312,7 +26325,7 @@
 <span class="w">  </span><span class="nt">tracing</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># mesh.extensionProviders[*].nameキーで設定した名前</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provider-by-jaeger</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jaeger-http</span>
 <span class="w">      </span><span class="nt">randomSamplingPercentage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
 </code></pre></div>
 <p>アクセスログの設定は以下の通りである。</p>
@@ -26332,7 +26345,7 @@
 <span class="w">  </span><span class="nt">accessLogging</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># mesh.extensionProviders[*].nameキーで設定した名前</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-provider-by-envoy</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy-log</span>
 </code></pre></div>
 <blockquote>
 <ul>
