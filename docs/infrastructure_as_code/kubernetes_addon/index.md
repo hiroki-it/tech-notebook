@@ -54,6 +54,13 @@
 
 <br>
 
+### ストレージ系
+
+* #### <u>ストレージCSIドライバー</u>
+  > * ##### [ストレージCSIドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_storage_csi_driver.html)
+
+<br>
+
 ### Secret系
 
 * #### <u>SecretsストアCSIドライバー</u>
