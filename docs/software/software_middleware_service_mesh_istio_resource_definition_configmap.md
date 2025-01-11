@@ -604,7 +604,7 @@ data:
           # datadogエージェントを宛先として設定する
           service: datadog-agent.foo-namespace.svc.cluster.local
           port: 8126
-      - name: bar-provider-by-envoy
+      - name: envoy-log
         envoyFileAccessLog
 ```
 
@@ -651,7 +651,7 @@ spec:
   accessLogging:
     - providers:
         # mesh.extensionProviders[*].nameキーで設定した名前
-        - name: bar-provider-by-envoy
+        - name: envoy-log
 ```
 
 > - https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L26-L27
@@ -685,7 +685,7 @@ data:
           service: opentelemetry-collector.foo-namespace.svc.cluster.local
           # gRPC用のエンドポイントを設定する
           port: 4317
-      - name: foo-provider-by-opentelemetry-http
+      - name: opentelemetry-http
         opentelemetry:
           # OpenTelemetry Collectorを宛先として設定する
           service: opentelemetry-collector.foo-namespace.svc.cluster.local
@@ -694,7 +694,7 @@ data:
             http:
             # HTTPの場合はパスが必要である
             path: /v1/traces
-      - name: bar-provider-by-envoy
+      - name: envoy-log
         envoyFileAccessLog:
           path: /dev/stdout
 ```
@@ -742,7 +742,7 @@ spec:
   accessLogging:
     - providers:
         # mesh.extensionProviders[*].nameキーで設定した名前
-        - name: bar-provider-by-envoy
+        - name: envoy-log
 ```
 
 > - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/#enable-envoys-access-logging
@@ -785,7 +785,7 @@ data:
           # jaegerエージェントを宛先として設定する
           service: jaeger-agent.foo-namespace.svc.cluster.local
           port: 8126
-      - name: bar-provider-by-envoy
+      - name: envoy-log
         envoyFileAccessLog:
           path: /dev/stdout
 ```
@@ -833,7 +833,7 @@ spec:
   accessLogging:
     - providers:
         # mesh.extensionProviders[*].nameキーで設定した名前
-        - name: bar-provider-by-envoy
+        - name: envoy-log
 ```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider
