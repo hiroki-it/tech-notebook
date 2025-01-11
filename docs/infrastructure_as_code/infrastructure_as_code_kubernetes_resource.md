@@ -1181,11 +1181,11 @@ Kubernetesで作成できるストレージは、作成場所で種類を分け�
 
 ![kubernetes_storage_resource_types](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_storage_resource_types.png)
 
-| ストレージの種類 | Volume         | PersistentVolume |
-| ---------------- | -------------- | ---------------- |
-| Pod内ストレージ  | EmptyDir       | なし             |
-| Node内ストレージ | HostPath       | HostPath、Local  |
-| Node外ストレージ | 外部ストレージ | 外部ストレージ   |
+| ストレージの種類 | Volume           | PersistentVolume |
+| ---------------- | ---------------- | ---------------- |
+| Pod内ストレージ  | EmptyDir         | なし             |
+| Node内ストレージ | HostPath         | HostPath、Local  |
+| Node外ストレージ | Node外ストレージ | Node外ストレージ |
 
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
 
@@ -1293,13 +1293,13 @@ Node上にVolumeを作成し、これをコンテナにバインドマウント�
 > - https://kubernetes.io/docs/concepts/storage/volumes/#local
 > - https://qiita.com/sotoiwa/items/09d2f43a35025e7be782#local
 
-#### ▼ ボリュームツールのVolume
+#### ▼ Node外ストレージツールのVolume
 
-ボリュームツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) が提供するVolumeをコンテナにマウントする。
+Node外ストレージツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) が提供するVolumeをコンテナにマウントする。
 
-StorageClassとPersistentVolumeClaimを経由して、PersistentVolumeとボリュームツールを紐付け、Volumeとしてコンテナにマウントする。
+StorageClassとPersistentVolumeClaimを経由して、PersistentVolumeとNode外ストレージツールを紐付け、Volumeとしてコンテナにマウントする。
 
-また、外部ストレージを使用する場合には、CSIドライバーも必要である。
+また、Node外ストレージを使用する場合には、CSIドライバーも必要である。
 
 ![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
@@ -1311,7 +1311,7 @@ StorageClassとPersistentVolumeClaimを経由して、PersistentVolumeとボリ�
 
 ![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
-ボリュームツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) をそのままKubernetesのVolumeとして使用する。
+Node外ストレージツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) をそのままKubernetesのVolumeとして使用する。
 
 Podの`.spec.volumes`キーで指定する。
 
@@ -1421,7 +1421,7 @@ $ docker inspect <コンテナID>
 
 Podの既存のストレージ上にVolume (`/var/lib/kubelet/pods/<PodのUUID>/volumes/kubernetes.io~empty-dir/`ディレクトリ) を作成し、コンテナにボリュームマウントする。
 
-ディレクトリの中身は、Nodeの外部ストレージやメモリ上 (上限はNodeのメモリの`50`%) に保管できる。
+ディレクトリの中身は、NodeのNode外ストレージやメモリ上 (上限はNodeのメモリの`50`%) に保管できる。
 
 同一Node上のPod間でこのVolumeを共有できず、同一Pod内のコンテナ間ではVolumeを共有できる。
 
@@ -1433,9 +1433,9 @@ Podの既存のストレージ上にVolume (`/var/lib/kubelet/pods/<PodのUUID>/
 > - https://cstoku.dev/posts/2018/k8sdojo-05/
 > - https://pradiptabanerjee.medium.com/how-to-size-a-memory-backed-kubernetes-emptydir-volume-cdfe39d1b7e5
 
-#### ▼ ボリュームツールのVolume
+#### ▼ Node外ストレージツールのVolume
 
-ボリュームツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) が提供するVolumeをコンテナにマウントする。
+Node外ストレージツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) が提供するVolumeをコンテナにマウントする。
 
 同一Node上のPod間でこのVolumeを共有でき、同一Pod内のコンテナ間でもVolumeを共有できる。
 
