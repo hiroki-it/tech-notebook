@@ -17533,6 +17533,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#node_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Nodeの永続ディレクトリ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csi" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ CSIドライバーを使用しない場合
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -17597,7 +17615,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#node_2" class="md-nav__link">
+  <a href="#node_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Nodeの場合
     </span>
@@ -24597,6 +24615,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#node_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Nodeの永続ディレクトリ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csi" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ CSIドライバーを使用しない場合
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -24661,7 +24697,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#node_2" class="md-nav__link">
+  <a href="#node_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Nodeの場合
     </span>
@@ -24973,9 +25009,16 @@ $<span class="w"> </span>minikube<span class="w"> </span>start
 <p><br></p>
 <h3 id="node_1">Nodeとコンテナ間マウント<a class="headerlink" href="#node_1" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ マウントの仕組み<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>ゲスト仮想環境内のNodeでは、以下のディレクトリからPersistentVolumeが自動的に作成される。</p>
-<p>そのため、Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく、わざわざNodeのPersistentVolumeを作成する必要がない。</p>
-<p>ただし、MinikubeのDockerドライバーとPodmanドライバーを使用する場合は、この機能がないことに注意する。</p>
+<p>Minikubeには、CSIドライバー (k8s.io/minikube-hostpath) とStorageClassがデフォルトで存在している。</p>
+<p>そのため、PersistentVolumeClaimを作成すれば、ゲスト仮想環境内のNodeにPersistentVolumeが自動的に作成される。</p>
+<blockquote>
+<ul>
+<li><a href="https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/#dynamic-provisioning-and-csi">https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/#dynamic-provisioning-and-csi</a></li>
+</ul>
+</blockquote>
+<h4 id="node_2">▼ Nodeの永続ディレクトリ<a class="headerlink" href="#node_2" title="Permanent link">&para;</a></h4>
+<p>Minikubeでは、Nodeを再起動するとディレクトリ内のファイルも初期される。</p>
+<p>ただ、以下のディレクトリのファイルは再起動後も保持される。</p>
 <ul>
 <li><code>/data</code></li>
 <li><code>/var/lib/minikube</code></li>
@@ -24986,6 +25029,25 @@ $<span class="w"> </span>minikube<span class="w"> </span>start
 <li><code>/tmp/hostpath_pv</code></li>
 <li><code>/tmp/hostpath-provisioner</code></li>
 </ul>
+<blockquote>
+<ul>
+<li><a href="https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/">https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/</a></li>
+</ul>
+</blockquote>
+<h4 id="csi">▼ CSIドライバーを使用しない場合<a class="headerlink" href="#csi" title="Permanent link">&para;</a></h4>
+<p>CSIドライバーを使用しない場合、PersistentVolumeで永続ディレクトリにデータを保管する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pv0001</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">accessModes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteOnce</span>
+<span class="w">  </span><span class="nt">capacity</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5Gi</span>
+<span class="w">  </span><span class="nt">hostPath</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/data/pv0001/</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/">https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/</a></li>
@@ -25054,7 +25116,7 @@ $<span class="w"> </span>minikube<span class="w"> </span>start
 <p><br></p>
 <h2 id="03">03. ネットワーク<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="kubernetescidr">KubernetesリソースのCIDRブロック<a class="headerlink" href="#kubernetescidr" title="Permanent link">&para;</a></h3>
-<h4 id="node_2">▼ Nodeの場合<a class="headerlink" href="#node_2" title="Permanent link">&para;</a></h4>
+<h4 id="node_3">▼ Nodeの場合<a class="headerlink" href="#node_3" title="Permanent link">&para;</a></h4>
 <p>Node内で<code>ip addr</code>コマンドを実行することにより、Nodeに割り当てられたCIDRブロックを確認できる。</p>
 <blockquote>
 <ul>
