@@ -103,11 +103,12 @@ $ minikube start
 
 #### ▼ マウントの仕組み
 
-Minikubeには、CSIドライバー (k8s.io/minikube-hostpath) とStorageClassがデフォルトで存在している。
+Minikubeには、HostPath CSIドライバー (k8s.io/minikube-hostpath) とStorageClassがデフォルトで存在している。
 
 そのため、PersistentVolumeClaimを作成すれば、ゲスト仮想環境内のNodeにPersistentVolumeが自動的に作成される。
 
 > - https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/#dynamic-provisioning-and-csi
+> - https://github.com/kubernetes/minikube/blob/master/pkg/storage/storage_provisioner.go
 
 #### ▼ Nodeの永続ディレクトリ
 

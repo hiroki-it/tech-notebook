@@ -13,19 +13,9 @@ description: SecretsストアCSIドライバー＠Secret系の知見を記録し
 
 <br>
 
-## 01. SecretsストアCSIドライバーの仕組み
+## 01. SecretsストアCSIドライバーとは
 
-### アーキテクチャ
-
-SecretsストアCSIドライバーは、CSIドライバーから構成される。
-
-<br>
-
-### CSIドライバー
-
-#### ▼ CSIドライバーとは
-
-CSIドライバーは、SecretProviderClassで定義されたプロバイダー (例：AWS、Google Cloud、Vault) のAPIと通信し、プロバイダーのSecretストア (例：AWS Secrets Manager、Google Cloud SecretManager、Vault SecretsEngine) から変数を取得する。
+SecretsストアCSIドライバーは、SecretProviderClassで定義されたプロバイダー (例：AWS、Google Cloud、Vault) のAPIと通信し、プロバイダーのSecretストア (例：AWS Secrets Manager、Google Cloud SecretManager、Vault SecretsEngine) から変数を取得する。
 
 その後、Secretは使用せずにPod内コンテナのファイルとしてマウントする。
 
@@ -38,5 +28,13 @@ Secretのデータとして注入するExternalSecretsOperatorやhelm-secrets/va
 > - https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 > - https://github.com/external-secrets/external-secrets/issues/478#issuecomment-964413129
 > - https://www.reddit.com/r/kubernetes/comments/uj4a56/external_secrets_operator_vs_secret_store_csi/
+
+<br>
+
+## 02. SecretsストアCSIドライバーの仕組み
+
+### アーキテクチャ
+
+SecretsストアCSIドライバーは、CSIドライバーから構成される。
 
 <br>
