@@ -1,0 +1,20 @@
+<!--
+ 更新日
+ @see https://github.com/squidfunk/mkdocs-material/discussions/5301
+ -->
+{% if page.meta.source %}
+<div class="source-links">
+    {% for filename in page.meta.source %}
+    <span class="label label-primary">{{ filename }}</span>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if page.meta.git_revision_date_localized %}
+<small>Last update: {{ page.meta.git_revision_date_localized }}</small>
+{% endif %}
+{% if page.meta.git_created_date_localized %}
+<small>Created: {{ page.meta.git_created_date_localized }}</small>
+{% endif %}
+
+{{ page.content }}
