@@ -5994,7 +5994,9 @@ parameters:
 
 ### provisioner
 
-Volumeを自動的にプロビジョニングする外部サービスのプロビジョナーを設定する。
+Node外ストレージツールのプロビジョナーを設定する。
+
+プロビジョナーは、StorageClassに合致するPersistentVolumeを自動的に作成する。
 
 ```yaml
 apiVersion: storage.k8s.io/v1

@@ -1601,7 +1601,7 @@ $ kubectl delete statefulset -l operator.prometheus.io/name=foo-operator --casca
 
 #### ▼ StorageClassとは
 
-Kubernetes外部でプロビジョニングされたストレージ (例：AWS EBS、Azure Diskなど) を要求し、これをVolumeとしてPersistentVolumeClaimに提供する。
+Node外ストレージツール (例：AWS EBS、Azure Diskなど) を要求し、これをVolumeとしてPersistentVolumeClaimに提供する。
 
 そのため、PersistentVolumeも合わせて作成する必要がある。
 
