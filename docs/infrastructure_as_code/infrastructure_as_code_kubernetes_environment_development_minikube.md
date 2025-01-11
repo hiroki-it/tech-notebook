@@ -103,11 +103,17 @@ $ minikube start
 
 #### ▼ マウントの仕組み
 
-ゲスト仮想環境内のNodeでは、以下のディレクトリからPersistentVolumeが自動的に作成される。
+Minikubeには、CSIドライバー (k8s.io/minikube-hostpath) とStorageClassがデフォルトで存在している。
 
-そのため、Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく、わざわざNodeのPersistentVolumeを作成する必要がない。
+そのため、PersistentVolumeClaimを作成すれば、ゲスト仮想環境内のNodeにPersistentVolumeが自動的に作成される。
 
-ただし、MinikubeのDockerドライバーとPodmanドライバーを使用する場合は、この機能がないことに注意する。
+> - https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/#dynamic-provisioning-and-csi
+
+#### ▼ Nodeの永続ディレクトリ
+
+Minikubeでは、Nodeを再起動するとディレクトリ内のファイルも初期される。
+
+ただ、以下のディレクトリのファイルは再起動後も保持される。
 
 - `/data`
 - `/var/lib/minikube`
@@ -117,6 +123,26 @@ $ minikube start
 - `/var/lib/containers`
 - `/tmp/hostpath_pv`
 - `/tmp/hostpath-provisioner`
+
+> - https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
+
+#### ▼ CSIドライバーを使用しない場合
+
+CSIドライバーを使用しない場合、PersistentVolumeで永続ディレクトリにデータを保管する必要がある。
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv0001
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 5Gi
+  hostPath:
+    path: /data/pv0001/
+```
 
 > - https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
 

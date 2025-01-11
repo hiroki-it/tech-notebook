@@ -6014,7 +6014,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: standard
-# Minikubeドライバー
+# Minikube CSIドライバー
 provisioner: k8s.io/minikube-hostpath
 ```
 
