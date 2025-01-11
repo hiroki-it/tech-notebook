@@ -108,6 +108,7 @@ Minikubeには、HostPath CSIドライバー (k8s.io/minikube-hostpath) とStora
 そのため、PersistentVolumeClaimを作成すれば、ゲスト仮想環境内のNodeにPersistentVolumeが自動的に作成される。
 
 > - https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/#dynamic-provisioning-and-csi
+> - https://minikube.sigs.k8s.io/docs/tutorials/volume_snapshots_and_csi/
 > - https://github.com/kubernetes/minikube/blob/master/pkg/storage/storage_provisioner.go
 
 #### ▼ Nodeの永続ディレクトリ

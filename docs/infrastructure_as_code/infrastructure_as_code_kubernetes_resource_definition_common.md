@@ -134,7 +134,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    ingressclass.kubernetes.io/is-default-class: "true"
+    ingressclass.kubernetes.io/is-default-class: true
 ```
 
 > - https://kubernetes.io/docs/concepts/services-networking/ingress/#default-ingress-class
@@ -351,9 +351,9 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   labels:
-    rbac.authorization.k8s.io/aggregate-to-admin: "true"
-    rbac.authorization.k8s.io/aggregate-to-edit: "true"
-    rbac.authorization.k8s.io/aggregate-to-view: "true"
+    rbac.authorization.k8s.io/aggregate-to-admin: true
+    rbac.authorization.k8s.io/aggregate-to-edit: true
+    rbac.authorization.k8s.io/aggregate-to-view: true
   name: foo
 rules: ... # 特定のKubernetesリソースの認可スコープを狭めたい場合は、.rulesキーでそれを定義する
 ```

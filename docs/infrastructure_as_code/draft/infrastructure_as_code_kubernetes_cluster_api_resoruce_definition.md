@@ -155,7 +155,7 @@ spec:
   eksClusterName: foo-cluster
   region: ap-northeast-1
   version: v1.19
-  associateOIDCProvider: "true"
+  associateOIDCProvider: true
 ```
 
 > - https://cluster-api-aws.sigs.k8s.io/topics/bring-your-own-aws-infrastructure.html?highlight=AWSManagedControlPlane#configuring-the-awscluster-specification
@@ -174,7 +174,7 @@ kind: Machine
 metadata:
   name: capi-quickstart-controlplane-0
   labels:
-    cluster.x-k8s.io/control-plane: "true"
+    cluster.x-k8s.io/control-plane: true
     cluster.x-k8s.io/cluster-name: "capi-quickstart"
 spec:
   version: v1.15.3

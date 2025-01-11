@@ -63,7 +63,7 @@ kind: APIService
 metadata:
   name: v1beta1.foo.k8s.io
 spec:
-  insecureSkipTLSVerify: "true"
+  insecureSkipTLSVerify: true
 ```
 
 > - https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
@@ -430,7 +430,7 @@ kind: ConfigMap
 metadata:
   name: foo-config-map
 data:
-  enableFoo: "true" # ダブルクオーテーションで囲う。
+  enableFoo: true # ダブルクオーテーションで囲う。
   number: "1"
 ```
 
@@ -985,9 +985,9 @@ metadata:
   name: foo-endpoint-slice
 endpoints:
   - conditions:
-      ready: "true"
-      serving: "true"
-      terminating: "false"
+      ready: true
+      serving: true
+      terminating: false
 ```
 
 #### ▼ nodeName
@@ -1408,7 +1408,7 @@ kind: IngressClass
 metadata:
   name: foo-ingress-class
   annotations:
-    ingressclass.kubernetes.io/is-default-class: "true"
+    ingressclass.kubernetes.io/is-default-class: true
 spec: ...
 ```
 
@@ -3470,7 +3470,7 @@ spec:
   containers:
     - name: app
       image: app:1.0.0
-  enableServiceLinks: "false"
+  enableServiceLinks: false
 ```
 
 > - https://kakakakakku.hatenablog.com/entry/2022/05/31/093116
@@ -3520,7 +3520,7 @@ spec:
   containers:
     - name: foo-node-exporter
       image: prom/node-exporter:1.0.0
-  hostNetwork: "true"
+  hostNetwork: true
 ```
 
 > - https://stackoverflow.com/a/64793701
@@ -3884,7 +3884,7 @@ spec:
     - name: app
       image: app:1.0.0
   securityContext:
-    runAsNonRoot: "true"
+    runAsNonRoot: true
 ```
 
 > - https://qiita.com/dingtianhongjie/items/51a4cea1265c5ec836cc#root%E3%83%A6%E3%83%BC%E3%82%B6%E3%81%AE%E5%AE%9F%E8%A1%8C%E5%88%B6%E9%99%90
@@ -4690,7 +4690,7 @@ apiVersion: scheduling.k8s.io/v1
 kind: PriorityClass
 metadata:
   name: foo-priority-class
-globalDefault: "false"
+globalDefault: false
 ```
 
 <br>
@@ -5004,7 +5004,7 @@ metadata:
   name: foo-secret
 stringData:
   # ダブルクオーテーションで囲う。
-  enableFoo: "true"
+  enableFoo: true
   number: "1"
 ```
 
@@ -5656,7 +5656,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: foo-service-account
-automountServiceAccountToken: "true"
+automountServiceAccountToken: true
 ```
 
 service-account-admission-controllerは、AdmissionWebhookの仕組みでPodの作成時にマニフェストを変更する。
@@ -5676,10 +5676,10 @@ spec:
         # service-account-admission-controllerは、コンテナに自動的にマウントする
         - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
           name: kube-api-access-*****
-          readOnly: "true"
+          readOnly: true
         - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
           name: aws-iam-token
-          readOnly: "true"
+          readOnly: true
   volumes:
     # kube-apiserverへのリクエストに必要なトークンが設定される
     - name: kube-api-access-*****
@@ -5972,7 +5972,7 @@ metadata:
   name: foo-storage-class
 parameters:
   type: gp3
-allowVolumeExpansion: "true"
+allowVolumeExpansion: true
 ```
 
 > - https://kubernetes.io/docs/concepts/storage/storage-classes/#allow-volume-expansion
@@ -6017,6 +6017,8 @@ metadata:
 # Minikube CSIドライバー
 provisioner: k8s.io/minikube-hostpath
 ```
+
+> - https://cstoku.dev/posts/2018/k8sdojo-12/#pvc-storageclass%E3%82%92pv%E3%82%92%E5%8B%95%E7%9A%84%E3%81%ABprovisioning%E3%81%99%E3%82%8B
 
 <br>
 

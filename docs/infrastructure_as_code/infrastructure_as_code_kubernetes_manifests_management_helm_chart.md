@@ -343,7 +343,7 @@ CRDはCluster内に`1`個あれば十分であるが、Clusterに複数のHelm�
 
 ```yaml
 crds:
-  install: "false"
+  install: false
 ```
 
 #### ▼ fullnameOverride
@@ -474,7 +474,7 @@ nodeSelector:
 
 ```yaml
 securityContext:
-  allowPrivilegeEscalation: "false"
+  allowPrivilegeEscalation: false
 ```
 
 #### ▼ replicaCount

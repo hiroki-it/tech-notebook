@@ -519,7 +519,7 @@ spec:
         evictionMaxPodGracePeriod: 60
         imageGCHighThresholdPercent: 85
         imageGCLowThresholdPercent: 80
-        cpuCFSQuota: "true"
+        cpuCFSQuota: true
         podsPerCore: 2
         maxPods: 20
 ```
