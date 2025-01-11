@@ -525,7 +525,7 @@
   
     
   
-  🌊 K8s開発
+  🌊 K8sアプリ
 
         </a>
       </li>
@@ -17209,7 +17209,7 @@
               
   
   <span class="md-ellipsis">
-    🌊 K8s開発
+    🌊 K8sアプリ
   </span>
   
 
@@ -17225,7 +17225,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_17">
             <span class="md-nav__icon md-icon"></span>
-            🌊 K8s開発
+            🌊 K8sアプリ
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -25009,11 +25009,12 @@ $<span class="w"> </span>minikube<span class="w"> </span>start
 <p><br></p>
 <h3 id="node_1">Nodeとコンテナ間マウント<a class="headerlink" href="#node_1" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ マウントの仕組み<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>Minikubeには、CSIドライバー (k8s.io/minikube-hostpath) とStorageClassがデフォルトで存在している。</p>
+<p>Minikubeには、HostPath CSIドライバー (k8s.io/minikube-hostpath) とStorageClassがデフォルトで存在している。</p>
 <p>そのため、PersistentVolumeClaimを作成すれば、ゲスト仮想環境内のNodeにPersistentVolumeが自動的に作成される。</p>
 <blockquote>
 <ul>
 <li><a href="https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/#dynamic-provisioning-and-csi">https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/#dynamic-provisioning-and-csi</a></li>
+<li><a href="https://github.com/kubernetes/minikube/blob/master/pkg/storage/storage_provisioner.go">https://github.com/kubernetes/minikube/blob/master/pkg/storage/storage_provisioner.go</a></li>
 </ul>
 </blockquote>
 <h4 id="node_2">▼ Nodeの永続ディレクトリ<a class="headerlink" href="#node_2" title="Permanent link">&para;</a></h4>
