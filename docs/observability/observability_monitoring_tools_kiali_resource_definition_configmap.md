@@ -77,7 +77,7 @@ data:
     ingress:
       additional_labels: {}
       class_name: nginx
-      enabled: "false"
+      enabled: false
       override_yaml:
         metadata: {}
     instance_name: kiali
@@ -106,7 +106,7 @@ data:
     service_type: ""
     tolerations: []
     version_label: v1.60.0
-    view_only_mode: "true"
+    view_only_mode: true
 ```
 
 <br>
@@ -127,8 +127,8 @@ data:
       custom_dashboards:
         # Kialiの性能が悪い場合は、自動検出を無効化する。
         # https://kiali.io/docs/faq/general/#why-is-the-workload-or-application-detail-page-so-slow-or-not-responding
-        discovery_enabled: "false"
-        enabled: "true"
+        discovery_enabled: false
+        enabled: true
         prometheus:
           # PrometheusのServiceの宛先情報を設定する。
           url: http://foo-prometheus.foo-namespace.svc.cluster.local:9090
@@ -148,7 +148,7 @@ data:
             variables:
               namespace: var-namespace
               workload: var-workload
-        enabled: "true"
+        enabled: true
         # GrafanaのServiceの宛先情報を設定する。
         in_cluster_url: http://foo-grafana.foo-namespace.svc.cluster.local
         # Kialiダッシュボードからのリダイレクト先とするGrafanaダッシュボードのURLを設定する。
@@ -166,12 +166,12 @@ data:
               namespace: istio-egress
           # Masthead indicatorを表示するかどうかを設定する。
           # https://kiali.io/docs/features/security/#masthead-indicator
-          enabled: "true"
+          enabled: true
         # Istioが使用しているConfigMap名
         config_map_name: istio-<リビジョン番号>
         istio_identity_domain: svc.cluster.local
         istio_sidecar_annotation: sidecar.istio.io/status
-        istio_status_enabled: "true"
+        istio_status_enabled: true
         root_namespace: istio-system
         # サービスメッシュ全体のヘルスチェックのため、IstioのServiceの宛先情報を設定する。
         url_service_version: http://istiod-<リビジョン番号>.istio-system.svc.cluster.local:15014/version
@@ -180,7 +180,10 @@ data:
         # PrometheusのServiceの宛先情報を設定する。
         url: http://foo-prometheus.foo-namespace.svc.cluster.local:9090
       tracing:
-        enabled: "false"
+        enabled: true
+        provider: tempo
+        internal_url: http://grafana-tempo.istio-system.svc.cluster.local:3100
+        use_grpc: false
 ```
 
 <br>
@@ -235,12 +238,12 @@ data:
   config.yaml: |
     kiali_feature_flags:
       certificates_information_indicators:
-        enabled: "true"
+        enabled: true
         secrets:
           - cacerts
           - istio-ca-secret
       clustering:
-        enabled: "true"
+        enabled: true
       disabled_features: []
       validations:
         ignore:
@@ -285,7 +288,7 @@ metadata:
 data:
   config.yaml: |
     server:
-      metrics_enabled: "true"
+      metrics_enabled: true
       metrics_port: 9090
       port: 20001
       web_root: /kiali

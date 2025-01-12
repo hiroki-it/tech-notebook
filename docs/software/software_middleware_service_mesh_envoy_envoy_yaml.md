@@ -998,13 +998,19 @@ static_resources:
 
 #### ▼ ads_configとは
 
-ADS-APIに関して設定する。EnvoyがADS-APIにリクエストを送信するように設定できる。
+ADS-APIに関して設定する。
+
+EnvoyがADS-APIにリクエストを送信するように設定できる。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service
 
 #### ▼ grpc_services
 
-ADS-APIとして使用するクラスター名を設定する。クラスターとはgRPCを使用してパケットを送受信する。ADS-APIの宛先情報は、`static_resources.clusters`キー配下で設定しておく。
+ADS-APIとして使用するクラスター名を設定する。
+
+クラスターとはgRPCを使用してパケットを送受信する。
+
+ADS-APIの宛先情報は、`static_resources.clusters`キー配下で設定しておく。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/grpc_service.proto#envoy-v3-api-msg-config-core-v3-grpcservice-envoygrpc
 

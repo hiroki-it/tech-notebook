@@ -2563,47 +2563,6 @@ spec:
               value: 100
 ```
 
-#### ▼ retries.attempt
-
-`istio-proxy`コンテナのリバースプロキシに失敗した場合の再試行回数を設定する。
-
-Serviceへのルーティングの失敗ではないことに注意する。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: networking.istio.io/v1
-kind: VirtualService
-metadata:
-  name: foo-virtual-service
-spec:
-  http:
-    - retries:
-        attempts: 3
-```
-
-#### ▼ retries.retryOn
-
-再試行する失敗理由を設定する。
-
-`istio-proxy`コンテナは、レスポンスの`x-envoy-retry-on`ヘッダーに割り当てるため、これの値を設定する。
-
-> - https://sreake.com/blog/istio/
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
-
-**＊実装例＊**
-
-```yaml
-apiVersion: networking.istio.io/v1
-kind: VirtualService
-metadata:
-  name: foo-virtual-service
-spec:
-  http:
-    - retries:
-        retryOn: "connect-failure,refused-stream,unavailable,503"
-```
-
 #### ▼ timeout
 
 `istio-proxy`コンテナの宛先にリクエストを送信する時のタイムアウト時間を設定する。
@@ -2647,7 +2606,7 @@ spec:
 
 ### .spec.http.match
 
-#### ▼ http.match
+#### ▼ http.matchとは
 
 受信した通信のうち、ルールを適用するもののメッセージ構造を設定する。
 
@@ -2776,7 +2735,11 @@ spec:
 
 ### .spec.http.retries
 
+#### ▼ http.retriesとは
+
 リトライ条件を設定する。
+
+なお、TCPリクエストには`spec.tcp[*].retries`キーのような同様の設定は存在しない。
 
 **＊実装例＊**
 
@@ -2825,6 +2788,47 @@ spec:
 > - https://speakerdeck.com/nutslove/istioru-men?slide=18
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRetry
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
+
+#### ▼ attempt
+
+`istio-proxy`コンテナのリバースプロキシに失敗した場合の再試行回数を設定する。
+
+Serviceへのルーティングの失敗ではないことに注意する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: foo-virtual-service
+spec:
+  http:
+    - retries:
+        attempts: 3
+```
+
+#### ▼ retryOn
+
+再試行する失敗理由を設定する。
+
+`istio-proxy`コンテナは、レスポンスの`x-envoy-retry-on`ヘッダーに割り当てるため、これの値を設定する。
+
+> - https://sreake.com/blog/istio/
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: foo-virtual-service
+spec:
+  http:
+    - retries:
+        retryOn: "connect-failure,refused-stream,unavailable,503"
+```
 
 <br>
 
