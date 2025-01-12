@@ -131,7 +131,7 @@ data:
         enabled: "true"
         prometheus:
           # PrometheusのServiceの宛先情報を設定する。
-          url: http://foo-prometheus.foo-namespace:9090
+          url: http://foo-prometheus.foo-namespace.svc.cluster.local:9090
       # https://kiali.io/docs/configuration/p8s-jaeger-grafana/grafana/
       grafana:
         auth:
@@ -150,8 +150,8 @@ data:
               workload: var-workload
         enabled: "true"
         # GrafanaのServiceの宛先情報を設定する。
-        in_cluster_url: http://foo-grafana.foo-namespace
-        # GrafanaダッシュボードのURLを設定する。
+        in_cluster_url: http://foo-grafana.foo-namespace.svc.cluster.local
+        # Kialiダッシュボードからのリダイレクト先とするGrafanaダッシュボードのURLを設定する。
         url: http://foo.grafana.com
       # IstiodのPodのステータスを確認するために、Istiodの宛先情報を設定する。
       # https://v1-48.kiali.io/docs/features/istio-component-status/
@@ -173,12 +173,12 @@ data:
         istio_sidecar_annotation: sidecar.istio.io/status
         istio_status_enabled: "true"
         root_namespace: istio-system
-        # サービスメッシュ全体のヘルスチェックのため、IstioのService名を設定する。
-        url_service_version: http://istiod-<リビジョン番号>:15014/version
+        # サービスメッシュ全体のヘルスチェックのため、IstioのServiceの宛先情報を設定する。
+        url_service_version: http://istiod-<リビジョン番号>.istio-system.svc.cluster.local:15014/version
       # https://kiali.io/docs/configuration/p8s-jaeger-grafana/prometheus/
       prometheus:
         # PrometheusのServiceの宛先情報を設定する。
-        url: http://foo-prometheus.foo-namespace:9090
+        url: http://foo-prometheus.foo-namespace.svc.cluster.local:9090
       tracing:
         enabled: "false"
 ```
