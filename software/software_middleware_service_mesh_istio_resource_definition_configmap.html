@@ -26123,7 +26123,7 @@
 </blockquote>
 <h4 id="datadog">▼ datadog<a class="headerlink" href="#datadog" title="Permanent link">&para;</a></h4>
 <p>datadogのトレースコンテキスト仕様 (datadogの独自仕様) でトレースIDとスパンIDを作成する。</p>
-<p>datadogエージェントの宛先情報をIstioに登録する必要があるため、サービスメッシュ内に置くか、サービスメッシュ外においてIstio EgressGatewayやServiceEntry経由で接続できるようにする。</p>
+<p>datadogエージェントの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。</p>
 <p><code>.mesh.enableTracing</code>キーも有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -26192,7 +26192,7 @@
 <h4 id="opentelemetry">▼ opentelemetry<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h4>
 <p>OpenTelemetryのトレースコンテキスト仕様 (W3C Trace Context) でトレースIDとスパンIDを作成する。</p>
 <p>OTLP形式のエンドポイントであればよいため、OpenTelemetry Collectorも指定できる。</p>
-<p>OpenTelemetry Collectorの宛先情報をIstioに登録する必要があるため、サービスメッシュ内に置くか、サービスメッシュ外においてIstio EgressGatewayやServiceEntry経由で接続できるようにする。</p>
+<p>OpenTelemetry Collectorの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。</p>
 <p><code>.mesh.enableTracing</code>キーも有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -26283,7 +26283,7 @@
 <h4 id="zipkin-jaeger">▼ zipkin (jaeger)<a class="headerlink" href="#zipkin-jaeger" title="Permanent link">&para;</a></h4>
 <p>Zipkinのトレースコンテキスト仕様 (B3コンテキスト) でトレースIDとスパンIDを作成する。</p>
 <p>JaegerはB3をサポートしているため、Jaegerのクライアントとしても使用できる。</p>
-<p>Jaegerエージェントの宛先情報をIstioに登録する必要があるため、サービスメッシュ内に置くか、サービスメッシュ外においてIstio EgressGatewayやServiceEntry経由で接続できるようにする。</p>
+<p>Jaegerエージェントの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。</p>
 <p><code>.mesh.enableTracing</code>キーも有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
