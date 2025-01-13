@@ -333,7 +333,7 @@ data:
 
 #### ▼ tracing (非推奨)
 
-`istio-proxy`コンテナでトレースIDとスパンIDを作成する場合に、いずれのパッケージ (例：Zipkin、Datadog、LightStepなど) で計装するかを設定する。
+いずれのトレース仕様 (例：Zipkin、Datadog、LightStepなど) でトレースIDとスパンIDを作成するかを設定する。
 
 ZipkinとJaegerはトレースコンテキスト仕様が同じであるため、zipkinパッケージをJaegerのクライアントとしても使用できる。
 
@@ -348,14 +348,14 @@ metadata:
 data:
   mesh: |
     defaultConfig:
-      enableTracing: "true"
+      enableTracing: true
       tracing:
         sampling: 100
         zipkin:
           address: "jaeger-collector.observability:9411"
 ```
 
-ただし、これを使用するよりは`extensionProviders`キーを使用した方が良い
+ただし、非推奨であるため`extensionProviders`キーを使用した方が良い
 
 ```yaml
 apiVersion: v1
@@ -367,6 +367,8 @@ data:
   mesh: |
     defaultConfig:
       tracing: {}
+    extensionProviders:
+      ...
 ```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#Tracing
@@ -454,7 +456,7 @@ metadata:
   namespace: istio-system
 data:
   mesh: |
-    enableTracing: "true"
+    enableTracing: true
     extensionProviders:
       - name: opentelemetry-grpc
         opentelemetry:
@@ -480,8 +482,6 @@ data:
 
 `istio-proxy`コンテナでトレースIDとスパンIDを作成するか否かを設定する。
 
-これを有効化した場合に、`.mesh.defaultConfig`キー配下で、いずれのパッケージ (例：Zipkin、Jaegerなど) で計装するかを設定する。
-
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -490,13 +490,7 @@ metadata:
   namespace: istio-system
 data:
   mesh: |
-    enableTracing: "true"
-    defaultConfig:
-      tracing:
-        sampling: 100
-        zipkin:
-          # パッケージが提供する Collectorの宛先を設定する。
-          address: "jaeger-collector.observability:9411"
+    enableTracing: true
 ```
 
 > - https://istio.io/latest/docs/tasks/observability/distributed-tracing/mesh-and-proxy-config/#available-tracing-configurations
@@ -583,9 +577,9 @@ spec:
 
 #### ▼ datadog
 
-分散トレースのクライアントをdatadogパッケージで計装する。
+datadogのトレースコンテキスト仕様 (datadogの独自仕様) でトレースIDとスパンIDを作成する。
 
-Datadogでは、トレースコンテキスト仕様がdatadogコンテキストになる。
+datadogエージェントの宛先情報をIstioに登録する必要があるため、サービスメッシュ内に置くか、サービスメッシュ外においてIstio EgressGatewayやServiceEntry経由で接続できるようにする。
 
 `.mesh.enableTracing`キーも有効化する必要がある。
 
@@ -661,11 +655,11 @@ spec:
 
 #### ▼ opentelemetry
 
-分散トレースのクライアントをOpenTelemetryで計装する。
-
-OpenTelemetryでは、トレースコンテキスト仕様はW3C Trace Contextになる。
+OpenTelemetryのトレースコンテキスト仕様 (W3C Trace Context) でトレースIDとスパンIDを作成する。
 
 OTLP形式のエンドポイントであればよいため、OpenTelemetry Collectorも指定できる。
+
+OpenTelemetry Collectorの宛先情報をIstioに登録する必要があるため、サービスメッシュ内に置くか、サービスメッシュ外においてIstio EgressGatewayやServiceEntry経由で接続できるようにする。
 
 `.mesh.enableTracing`キーも有効化する必要がある。
 
@@ -762,11 +756,11 @@ spec:
 
 #### ▼ zipkin (jaeger)
 
-分散トレースのクライアントをzipkinパッケージで計装する。
-
-Zipkinでは、トレースコンテキスト仕様がB3コンテキストになる。
+Zipkinのトレースコンテキスト仕様 (B3コンテキスト) でトレースIDとスパンIDを作成する。
 
 JaegerはB3をサポートしているため、Jaegerのクライアントとしても使用できる。
+
+Jaegerエージェントの宛先情報をIstioに登録する必要があるため、サービスメッシュ内に置くか、サービスメッシュ外においてIstio EgressGatewayやServiceEntry経由で接続できるようにする。
 
 `.mesh.enableTracing`キーも有効化する必要がある。
 

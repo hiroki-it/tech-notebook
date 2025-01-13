@@ -466,7 +466,7 @@ NAME     DOMAINS                                      MATCH               VIRTUA
 以下の理由などでVirtualServiceの設定が誤っていると、`404`ステータスを返信する。
 
 - Gatewayで受信した通信の`Host`ヘッダーとVirtualServiceのそれが合致していない
-- VirtualServiceの`.spec.exportTo`キーで`.`を設定したことにより、Gatewayがルーティング先のVirtualServiceを見つけられない
+- VirtualServiceの`.spec.exportTo`キーで`.`を設定したことにより、Gatewayがルーティング先のVirtualServiceを見つけられない (Istio IngressGatewayからリクエストを受信するPodでは要注意)
 
 `istioctl proxy-config route`コマンドで、Gatewayに紐づくVirtualServiceがいるかを確認できる。
 
@@ -491,7 +491,7 @@ http.50004     blackhole:50004     *           /*                     404
 以下の理由などでVirtualServiceの設定が誤っていると、`503`ステータスを返信する。
 
 - VirtualServiceで受信した通信の`Host`ヘッダーとDestinationRuleのそれが合致していない
-- DestinationRuleの`.spec.exportTo`キーで`.`を設定したことにより、VirtualServiceがルーティング先のDestinationRuleが見つけられない。
+- DestinationRuleの`.spec.exportTo`キーで`.`を設定したことにより、VirtualServiceがルーティング先のDestinationRuleが見つけられない。 (Istio IngressGatewayからリクエストを受信するPodでは要注意)
 
 `istioctl proxy-config cluster`コマンドで、VirtualServiceに紐づくDestinationRuleがいるかを確認できる。
 
