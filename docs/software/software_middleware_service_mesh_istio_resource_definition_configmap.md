@@ -581,6 +581,8 @@ datadogのトレースコンテキスト仕様 (datadogの独自仕様) でト�
 
 datadogエージェントの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。
 
+ただ、datadogエージェントをサービスメッシュ内に配置すると、Telemetryリソースがdatadogエージェント自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。
+
 `.mesh.enableTracing`キーも有効化する必要がある。
 
 ```yaml
@@ -660,6 +662,8 @@ OpenTelemetryのトレースコンテキスト仕様 (W3C Trace Context) でト�
 OTLP形式のエンドポイントであればよいため、OpenTelemetry Collectorも指定できる。
 
 OpenTelemetry Collectorの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。
+
+ただ、OpenTelemetry Collectorをサービスメッシュ内に配置すると、TelemetryリソースがOpenTelemetry Collector自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。
 
 `.mesh.enableTracing`キーも有効化する必要がある。
 
@@ -760,7 +764,9 @@ Zipkinのトレースコンテキスト仕様 (B3コンテキスト) でトレ�
 
 JaegerはB3をサポートしているため、Jaegerのクライアントとしても使用できる。
 
-Jaegerエージェントの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。
+jaegerエージェントの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。
+
+ただ、jaegerエージェントをサービスメッシュ内に配置すると、Telemetryリソースがjaegerエージェント自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。
 
 `.mesh.enableTracing`キーも有効化する必要がある。
 
