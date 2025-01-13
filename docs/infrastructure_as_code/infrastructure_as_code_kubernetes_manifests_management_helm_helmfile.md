@@ -31,7 +31,7 @@ description: Helmfile＠Helmの知見を記録しています。
 
 マイクロサービスをチャートの単位とみなし、マイクロサービスごとに別にディレクトリを作成する。
 
-各マイクロサービスのディレクトリには、`helmfile.d`ディレクトリを置き、ここにHelmリリース単位の`helmfile.yaml`ファイルを置く。
+各マイクロサービスのディレクトリには、`helmfile.d`ディレクトリを置き、ここにHelmリリース単位の`helmfile.yaml`ファイルを配置する。
 
 ```yaml
 repository/

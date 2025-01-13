@@ -45,7 +45,7 @@ repo-serverは、レプリカ当たり同時に1つの処理しかできない�
 
 すると、各Applicationのマニフェスト作成処理はrepo-serverのレプリカ数に影響を受ける。
 
-Applicationがポーリングするリポジトリのパス直下に`.argocd-allow-concurrency`ファイルを置いておくと並行処理をしてくれる。
+Applicationがポーリングするリポジトリのパス直下に`.argocd-allow-concurrency`ファイルを配置しておくと並行処理をしてくれる。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#monorepo-scaling-considerations
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#enable-concurrent-processing

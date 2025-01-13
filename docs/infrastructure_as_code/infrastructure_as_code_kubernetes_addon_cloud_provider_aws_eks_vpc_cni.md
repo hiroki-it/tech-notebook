@@ -531,7 +531,7 @@ L-IPAMデーモンは、元からあるこの機能を利用し、NodeのENIにC
 
 ENIの個数を増やすごとに、`16`個分のIPアドレス (サブネット内の`*.*.*.*/28`) を確保できる。
 
-Prefix delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを`*.*.*.*/28`よりも大きくしておく必要がある。
+Prefix delegationモードを使用する場合、Nodeを配置するAWSサブネットのCIDRを`*.*.*.*/28`よりも大きくしておく必要がある。
 
 ![aws-eks-vpc-cni_prefix-delegation-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni_prefix-delegation-mode.png)
 

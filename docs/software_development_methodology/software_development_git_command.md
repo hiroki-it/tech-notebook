@@ -703,7 +703,7 @@ Please commit your changes or stash them before you switch branches.
 Aborting
 ```
 
-この場合、一度`stash`を行い、『インデックス』 (=`add`) あるいは『HEAD』 (=コミット) を横に置いておく必要がある。
+この場合、一度`stash`を行い、『インデックス』 (=`add`) あるいは『HEAD』 (=コミット) を横に配置しておく必要がある。
 
 ### --include-untracked
 

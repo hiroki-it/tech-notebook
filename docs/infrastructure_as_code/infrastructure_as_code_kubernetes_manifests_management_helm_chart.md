@@ -339,7 +339,7 @@ affinity:
 
 CRDはCluster内に`1`個あれば十分であるが、Clusterに複数のHelmリリースをインストールする場合、`meta.helm.sh`キーでお互いがコンフリクトを起こしてしまう。
 
-そのため、CRDのみHelmの管理外に置くという必要がある。
+そのため、CRDのみHelmの管理外に配置するという必要がある。
 
 ```yaml
 crds:

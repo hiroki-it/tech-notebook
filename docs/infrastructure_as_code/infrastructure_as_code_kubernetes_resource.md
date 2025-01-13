@@ -842,7 +842,7 @@ NodePort Service
 Pod
 ```
 
-パブリックプロバイダーのLB (例：AWS ALB) を別に置いても良い (このLBは、Ingress Controller由来ではない) 。
+パブリックプロバイダーのLB (例：AWS ALB) を別に配置しても良い (このLBは、Ingress Controller由来ではない) 。
 
 ```yaml
 パブリックネットワーク

@@ -471,7 +471,7 @@ spec:
     - name: argocd-repo-server
       image: quay.io/argoproj/argocd:latest
       volumeMounts:
-        # Helmのバイナリファイルを置くパスを指定する。
+        # Helmのバイナリファイルを配置するパスを指定する。
         - mountPath: /usr/local/bin/helm
           # Podの共有Volumeを経由して、コンテナ内でHelmを使用する。
           name: custom-tools
@@ -767,7 +767,7 @@ spec:
         - mountPath: /home/argocd/cmp-server/config/plugin.yaml
           name: argocd-cmp-cm
           subPath: helm-secrets.yaml
-        # SOPSのバイナリファイルを置くパスを指定する。
+        # SOPSのバイナリファイルを配置するパスを指定する。
         - mountPath: /usr/local/bin
           name: custom-tools
         - mountPath: /etc/ssl
@@ -1084,7 +1084,7 @@ spec:
     - name: argocd-repo-server
       image: quay.io/argoproj/argocd:latest
       volumeMounts:
-        # Kustomizeのバイナリファイルを置くパスを指定する。
+        # Kustomizeのバイナリファイルを配置するパスを指定する。
         - mountPath: /usr/local/bin/kustomize
           # Podの共有Volumeを経由して、コンテナ内でKustomizeを使用する。
           name: custom-tools
@@ -1206,7 +1206,7 @@ spec:
       volumeMounts:
         # Podの共有Volumeを経由して、コンテナ内でKustomizeを使用する。
         - name: custom-tools
-          # Kustomizeのバイナリファイルを置くパスを指定する。
+          # Kustomizeのバイナリファイルを配置するパスを指定する。
           # ArgoCDにデフォルトでインストールされたKustomizeを上書きする
           mountPath: /usr/local/bin/kustomize
           subPath: kustomize

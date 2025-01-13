@@ -384,7 +384,7 @@ import "<パッケージ名>"
 
 インポートするということは対象に依存するということであり、互いに依存し合う循環参照エラー (`import cycle not allowed`) になる。
 
-インターフェースと構造体の両方を同じパッケージに置いていると、インターフェースが他からインポートされ、構造体が他をインポートするようになり、発生しやすい。
+インターフェースと構造体の両方を同じパッケージに配置していると、インターフェースが他からインポートされ、構造体が他をインポートするようになり、発生しやすい。
 
 ![golang_import_cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/golang_import_cycle.png)
 

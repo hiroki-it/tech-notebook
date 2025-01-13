@@ -761,7 +761,7 @@ Sagaオーケストレーターのクライアントやマイクロサービス�
 
 各マイクロサービス間の通信方式は、パブリッシュ/サブスクライブパターンにする必要がある。
 
-そのために、マイクロサービス間にメッセージキューやメッセージブローカーを置く。
+そのために、マイクロサービス間にメッセージキューやメッセージブローカーを配置する。
 
 ![choreography](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography.png)
 

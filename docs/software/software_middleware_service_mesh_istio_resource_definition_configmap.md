@@ -579,7 +579,7 @@ spec:
 
 datadogのトレースコンテキスト仕様 (datadogの独自仕様) でトレースIDとスパンIDを作成する。
 
-datadogエージェントの宛先情報をIstioに登録する必要があるため、サービスメッシュ内に置くか、サービスメッシュ外においてIstio EgressGatewayやServiceEntry経由で接続できるようにする。
+datadogエージェントの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。
 
 `.mesh.enableTracing`キーも有効化する必要がある。
 
@@ -659,7 +659,7 @@ OpenTelemetryのトレースコンテキスト仕様 (W3C Trace Context) でト�
 
 OTLP形式のエンドポイントであればよいため、OpenTelemetry Collectorも指定できる。
 
-OpenTelemetry Collectorの宛先情報をIstioに登録する必要があるため、サービスメッシュ内に置くか、サービスメッシュ外においてIstio EgressGatewayやServiceEntry経由で接続できるようにする。
+OpenTelemetry Collectorの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。
 
 `.mesh.enableTracing`キーも有効化する必要がある。
 
@@ -760,7 +760,7 @@ Zipkinのトレースコンテキスト仕様 (B3コンテキスト) でトレ�
 
 JaegerはB3をサポートしているため、Jaegerのクライアントとしても使用できる。
 
-Jaegerエージェントの宛先情報をIstioに登録する必要があるため、サービスメッシュ内に置くか、サービスメッシュ外においてIstio EgressGatewayやServiceEntry経由で接続できるようにする。
+Jaegerエージェントの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。
 
 `.mesh.enableTracing`キーも有効化する必要がある。
 
