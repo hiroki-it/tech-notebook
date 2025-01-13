@@ -26124,6 +26124,7 @@
 <h4 id="datadog">▼ datadog<a class="headerlink" href="#datadog" title="Permanent link">&para;</a></h4>
 <p>datadogのトレースコンテキスト仕様 (datadogの独自仕様) でトレースIDとスパンIDを作成する。</p>
 <p>datadogエージェントの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。</p>
+<p>ただ、datadogエージェントをサービスメッシュ内に配置すると、Telemetryリソースがdatadogエージェント自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。</p>
 <p><code>.mesh.enableTracing</code>キーも有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -26193,6 +26194,7 @@
 <p>OpenTelemetryのトレースコンテキスト仕様 (W3C Trace Context) でトレースIDとスパンIDを作成する。</p>
 <p>OTLP形式のエンドポイントであればよいため、OpenTelemetry Collectorも指定できる。</p>
 <p>OpenTelemetry Collectorの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。</p>
+<p>ただ、OpenTelemetry Collectorをサービスメッシュ内に配置すると、TelemetryリソースがOpenTelemetry Collector自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。</p>
 <p><code>.mesh.enableTracing</code>キーも有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -26283,7 +26285,8 @@
 <h4 id="zipkin-jaeger">▼ zipkin (jaeger)<a class="headerlink" href="#zipkin-jaeger" title="Permanent link">&para;</a></h4>
 <p>Zipkinのトレースコンテキスト仕様 (B3コンテキスト) でトレースIDとスパンIDを作成する。</p>
 <p>JaegerはB3をサポートしているため、Jaegerのクライアントとしても使用できる。</p>
-<p>Jaegerエージェントの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。</p>
+<p>jaegerエージェントの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。</p>
+<p>ただ、jaegerエージェントをサービスメッシュ内に配置すると、Telemetryリソースがjaegerエージェント自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。</p>
 <p><code>.mesh.enableTracing</code>キーも有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
