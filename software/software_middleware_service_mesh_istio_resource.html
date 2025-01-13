@@ -25681,7 +25681,7 @@ NAME<span class="w">     </span>DOMAINS<span class="w">                         
 <p>以下の理由などでVirtualServiceの設定が誤っていると、<code>404</code>ステータスを返信する。</p>
 <ul>
 <li>Gatewayで受信した通信の<code>Host</code>ヘッダーとVirtualServiceのそれが合致していない</li>
-<li>VirtualServiceの<code>.spec.exportTo</code>キーで<code>.</code>を設定したことにより、Gatewayがルーティング先のVirtualServiceを見つけられない</li>
+<li>VirtualServiceの<code>.spec.exportTo</code>キーで<code>.</code>を設定したことにより、Gatewayがルーティング先のVirtualServiceを見つけられない (Istio IngressGatewayからリクエストを受信するPodでは要注意)</li>
 </ul>
 <p><code>istioctl proxy-config route</code>コマンドで、Gatewayに紐づくVirtualServiceがいるかを確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># VirtualServiceが404になっている。</span>
@@ -25705,7 +25705,7 @@ http.50004<span class="w">     </span>blackhole:50004<span class="w">     </span
 <p>以下の理由などでVirtualServiceの設定が誤っていると、<code>503</code>ステータスを返信する。</p>
 <ul>
 <li>VirtualServiceで受信した通信の<code>Host</code>ヘッダーとDestinationRuleのそれが合致していない</li>
-<li>DestinationRuleの<code>.spec.exportTo</code>キーで<code>.</code>を設定したことにより、VirtualServiceがルーティング先のDestinationRuleが見つけられない。</li>
+<li>DestinationRuleの<code>.spec.exportTo</code>キーで<code>.</code>を設定したことにより、VirtualServiceがルーティング先のDestinationRuleが見つけられない。 (Istio IngressGatewayからリクエストを受信するPodでは要注意)</li>
 </ul>
 <p><code>istioctl proxy-config cluster</code>コマンドで、VirtualServiceに紐づくDestinationRuleがいるかを確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># helloworldでは、紐づくDestinationが見つからない</span>

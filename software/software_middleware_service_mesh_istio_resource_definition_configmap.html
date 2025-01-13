@@ -25917,7 +25917,7 @@
 <span class="w">      </span><span class="no">rootNamespace: istio-system</span>
 </code></pre></div>
 <h4 id="tracing">▼ tracing (非推奨)<a class="headerlink" href="#tracing" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナでトレースIDとスパンIDを作成する場合に、いずれのパッケージ (例：Zipkin、Datadog、LightStepなど) で計装するかを設定する。</p>
+<p>いずれのトレース仕様 (例：Zipkin、Datadog、LightStepなど) でトレースIDとスパンIDを作成するかを設定する。</p>
 <p>ZipkinとJaegerはトレースコンテキスト仕様が同じであるため、zipkinパッケージをJaegerのクライアントとしても使用できる。</p>
 <p><code>.mesh.defaultConfig.enableTracing</code>キーも有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -25928,13 +25928,13 @@
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">defaultConfig:</span>
-<span class="w">      </span><span class="no">enableTracing: &quot;true&quot;</span>
+<span class="w">      </span><span class="no">enableTracing: true</span>
 <span class="w">      </span><span class="no">tracing:</span>
 <span class="w">        </span><span class="no">sampling: 100</span>
 <span class="w">        </span><span class="no">zipkin:</span>
 <span class="w">          </span><span class="no">address: &quot;jaeger-collector.observability:9411&quot;</span>
 </code></pre></div>
-<p>ただし、これを使用するよりは<code>extensionProviders</code>キーを使用した方が良い</p>
+<p>ただし、非推奨であるため<code>extensionProviders</code>キーを使用した方が良い</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -25944,6 +25944,8 @@
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">tracing: {}</span>
+<span class="w">    </span><span class="no">extensionProviders:</span>
+<span class="w">      </span><span class="no">...</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -26021,7 +26023,7 @@
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">enableTracing: &quot;true&quot;</span>
+<span class="w">    </span><span class="no">enableTracing: true</span>
 <span class="w">    </span><span class="no">extensionProviders:</span>
 <span class="w">      </span><span class="no">- name: opentelemetry-grpc</span>
 <span class="w">        </span><span class="no">opentelemetry:</span>
@@ -26041,7 +26043,6 @@
 <h3 id="enabletracing">enableTracing<a class="headerlink" href="#enabletracing" title="Permanent link">&para;</a></h3>
 <h4 id="enabletracing_1">▼ enableTracingとは<a class="headerlink" href="#enabletracing_1" title="Permanent link">&para;</a></h4>
 <p><code>istio-proxy</code>コンテナでトレースIDとスパンIDを作成するか否かを設定する。</p>
-<p>これを有効化した場合に、<code>.mesh.defaultConfig</code>キー配下で、いずれのパッケージ (例：Zipkin、Jaegerなど) で計装するかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -26049,13 +26050,7 @@
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">enableTracing: &quot;true&quot;</span>
-<span class="w">    </span><span class="no">defaultConfig:</span>
-<span class="w">      </span><span class="no">tracing:</span>
-<span class="w">        </span><span class="no">sampling: 100</span>
-<span class="w">        </span><span class="no">zipkin:</span>
-<span class="w">          </span><span class="no"># パッケージが提供する Collectorの宛先を設定する。</span>
-<span class="w">          </span><span class="no">address: &quot;jaeger-collector.observability:9411&quot;</span>
+<span class="w">    </span><span class="no">enableTracing: true</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -26127,8 +26122,8 @@
 </ul>
 </blockquote>
 <h4 id="datadog">▼ datadog<a class="headerlink" href="#datadog" title="Permanent link">&para;</a></h4>
-<p>分散トレースのクライアントをdatadogパッケージで計装する。</p>
-<p>Datadogでは、トレースコンテキスト仕様がdatadogコンテキストになる。</p>
+<p>datadogのトレースコンテキスト仕様 (datadogの独自仕様) でトレースIDとスパンIDを作成する。</p>
+<p>datadogエージェントの宛先情報をIstioに登録する必要があるため、サービスメッシュ内に置くか、サービスメッシュ外においてIstio EgressGatewayやServiceEntry経由で接続できるようにする。</p>
 <p><code>.mesh.enableTracing</code>キーも有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -26195,9 +26190,9 @@
 </ul>
 </blockquote>
 <h4 id="opentelemetry">▼ opentelemetry<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h4>
-<p>分散トレースのクライアントをOpenTelemetryで計装する。</p>
-<p>OpenTelemetryでは、トレースコンテキスト仕様はW3C Trace Contextになる。</p>
+<p>OpenTelemetryのトレースコンテキスト仕様 (W3C Trace Context) でトレースIDとスパンIDを作成する。</p>
 <p>OTLP形式のエンドポイントであればよいため、OpenTelemetry Collectorも指定できる。</p>
+<p>OpenTelemetry Collectorの宛先情報をIstioに登録する必要があるため、サービスメッシュ内に置くか、サービスメッシュ外においてIstio EgressGatewayやServiceEntry経由で接続できるようにする。</p>
 <p><code>.mesh.enableTracing</code>キーも有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -26286,9 +26281,9 @@
 </ul>
 </blockquote>
 <h4 id="zipkin-jaeger">▼ zipkin (jaeger)<a class="headerlink" href="#zipkin-jaeger" title="Permanent link">&para;</a></h4>
-<p>分散トレースのクライアントをzipkinパッケージで計装する。</p>
-<p>Zipkinでは、トレースコンテキスト仕様がB3コンテキストになる。</p>
+<p>Zipkinのトレースコンテキスト仕様 (B3コンテキスト) でトレースIDとスパンIDを作成する。</p>
 <p>JaegerはB3をサポートしているため、Jaegerのクライアントとしても使用できる。</p>
+<p>Jaegerエージェントの宛先情報をIstioに登録する必要があるため、サービスメッシュ内に置くか、サービスメッシュ外においてIstio EgressGatewayやServiceEntry経由で接続できるようにする。</p>
 <p><code>.mesh.enableTracing</code>キーも有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -26635,7 +26630,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-13</span>
   </span>
 
     
