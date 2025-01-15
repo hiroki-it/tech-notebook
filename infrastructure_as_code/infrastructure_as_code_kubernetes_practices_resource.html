@@ -25220,16 +25220,16 @@ options ndots:5
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="latest">イメージタグにlatestを設定しない<a class="headerlink" href="#latest" title="Permanent link">&para;</a></h2>
-<p>イメージタグにlatestを指定すると、むやみに新しいバージョンのイメージタグをプルしてしまい、障害が起こりかねない。</p>
-<p>そこで、イメージはセマンティックバージョニングでタグ付けし、特定のバージョンをプルする。</p>
+<h2 id="latest">コンテナイメージのタグにlatestを設定しない<a class="headerlink" href="#latest" title="Permanent link">&para;</a></h2>
+<p>コンテナイメージのタグにlatestを指定すると、むやみに新しいバージョンのコンテナイメージのタグをプルしてしまい、障害が起こりかねない。</p>
+<p>そこで、コンテナイメージはセマンティックバージョニングでタグ付けし、特定のバージョンをプルする。</p>
 <p>なお、各コンテナイメージのアーキテクチャに割り当てられたダイジェスト値を指定することもできるが、K8sがNodeのCPUアーキテクチャに基づいてよしなに選んでくれるため、ダイジェスト値は指定しない。</p>
 <p><br></p>
-<h2 id="_32">イメージが更新された場合のみイメージレジストリからプルする<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h2>
-<p>コンテナ作成のたびにイメージをプルすると、イメージレジストリに負荷がかかる。</p>
-<p>そこで、<code>.spec.containers[*].imagePullPolicy</code>キーに<code>IfNotPresent</code>を使用し、Node上にイメージのキャッシュがない場合のみプルできるようにする。</p>
-<p>K8sでは、一度プルしたコンテナイメージを基本的に削除しないため、キャッシュとして再利用することができる。</p>
-<p>デフォルトでは、コンテナイメージのキャッシュがあれば、イメージをプルせずにキャッシュを使用してくれる。</p>
+<h2 id="_32">コンテナイメージが更新された場合のみコンテナイメージレジストリからプルする<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h2>
+<p>コンテナ作成のたびにコンテナイメージをプルすると、コンテナイメージレジストリに負荷がかかる。</p>
+<p>K8sで、一度プルしたコンテナイメージを基本的に削除しないため、キャッシュとして再利用することができる。</p>
+<p><code>.spec.containers[*].imagePullPolicy</code>キーに<code>IfNotPresent</code>を使用し、Node上にコンテナイメージのキャッシュがない場合のみプルできるようにする。</p>
+<p>もし、キャッシュを使用せずにコンテナイメージをプルしたい場合、一時的に<code>.spec.containers[*].Always</code>キーを使用する。</p>
 <p><br></p>
 <h2 id="node_3">Nodeに永続データを持たせない<a class="headerlink" href="#node_3" title="Permanent link">&para;</a></h2>
 <p>StatefulSetを使用してNodeに永続データを持たせた場合、Nodeの障害が永続データにも影響を与えかねない。</p>
@@ -25542,7 +25542,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <td><a href="https://aquasecurity.github.io/trivy/dev/docs/target/kubernetes/">https://aquasecurity.github.io/trivy/dev/docs/target/kubernetes/</a></td>
 <td>マニフェストの設定値に起因する脆弱性を検証する</td>
 <td>★</td>
-<td>他の競合ツールとは異なり、K8s以外のIaCツール (Terraform、Dockerfile) や、イメージ (コンテナイメージ、マシンイメージ) も検証できるため、他の場面でも知見を流用できる。いずれのツールも、おおよそ同じデータベース (例：GitHub、GitLab、RedHatなど) に基づいて検証するため、脆弱性診断の項目数で優劣を比べない方が良い。</td>
+<td>他の競合ツールとは異なり、K8s以外のIaCツール (Terraform、Dockerfile) や、コンテナイメージ (コンテナイメージ、マシンコンテナイメージ) も検証できるため、他の場面でも知見を流用できる。いずれのツールも、おおよそ同じデータベース (例：GitHub、GitLab、RedHatなど) に基づいて検証するため、脆弱性診断の項目数で優劣を比べない方が良い。</td>
 <td></td>
 </tr>
 <tr>
@@ -25729,7 +25729,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <td></td>
 </tr>
 <tr>
-<td>アプリCIツール(コンテナイメージビルド、アプリのホワイトボックステスト、イメージレジストリ格納など)</td>
+<td>アプリCIツール(コンテナイメージビルド、アプリのホワイトボックステスト、コンテナイメージレジストリ格納など)</td>
 <td>✅</td>
 <td>✅</td>
 <td></td>
@@ -26015,7 +26015,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-15</span>
   </span>
 
     

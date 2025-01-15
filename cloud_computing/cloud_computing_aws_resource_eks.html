@@ -14548,7 +14548,7 @@
           <li class="md-nav__item">
   <a href="#aws-ec2node_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ AWS EC2ワーカーNodeのイメージキャッシュ削除
+      ▼ AWS EC2ワーカーNodeのコンテナイメージキャッシュ削除
     </span>
   </a>
   
@@ -26382,7 +26382,7 @@
           <li class="md-nav__item">
   <a href="#aws-ec2node_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ AWS EC2ワーカーNodeのイメージキャッシュ削除
+      ▼ AWS EC2ワーカーNodeのコンテナイメージキャッシュ削除
     </span>
   </a>
   
@@ -27590,7 +27590,7 @@
 <h4 id="aws-vpcaws">▼ AWS VPC外の他のAWSリソースへのリクエスト<a class="headerlink" href="#aws-vpcaws" title="Permanent link">&para;</a></h4>
 <p>Podをプライベートサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、AWS S3、AWS Systems Manager、AWS CloudWatch Logs、AWS DynamoDBなど) に対してリクエストを送信するためには、AWS NAT GatewayまたはAWS VPCエンドポイントを配置する必要がある。</p>
 <p>この時、クライアント側Podの送信元IPアドレスは、AWS NAT GatewayまたはAWS VPCエンドポイントに紐づくIPアドレスになる。</p>
-<p>以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。</p>
+<p>以下のようなエラーでPodが起動しない場合、Podが何らかの理由でコンテナイメージをプルできない可能性がある。</p>
 <p>また、Podが作成されない限り、ワーカーNodeも作成されないことに注意する。</p>
 <div class="highlight"><pre><span></span><code>Pod<span class="w"> </span>provisioning<span class="w"> </span>timed<span class="w"> </span>out<span class="w"> </span><span class="o">(</span>will<span class="w"> </span>retry<span class="o">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>pod
 </code></pre></div>
@@ -27629,13 +27629,13 @@
 <td>AWS ECR</td>
 <td>Interface</td>
 <td><code>api.ecr.ap-northeast-1.amazonaws.com</code><br><code>*.dkr.ecr.ap-northeast-1.amazonaws.com</code></td>
-<td>イメージのGETリクエストを送信するため。</td>
+<td>コンテナイメージのGETリクエストを送信するため。</td>
 </tr>
 <tr>
 <td>AWS S3</td>
 <td>Gateway</td>
 <td>なし</td>
-<td>イメージのレイヤーをPOSTリクエストを送信するため</td>
+<td>コンテナイメージのレイヤーをPOSTリクエストを送信するため</td>
 </tr>
 <tr>
 <td>AWS Systems Manager</td>
@@ -27717,13 +27717,13 @@
 <td>AWS ECR</td>
 <td>Interface</td>
 <td><code>api.ecr.ap-northeast-1.amazonaws.com</code><br><code>*.dkr.ecr.ap-northeast-1.amazonaws.com</code></td>
-<td>イメージのGETリクエストを送信するため。</td>
+<td>コンテナイメージのGETリクエストを送信するため。</td>
 </tr>
 <tr>
 <td>AWS S3</td>
 <td>Gateway</td>
 <td>なし</td>
-<td>イメージのレイヤーをPOSTリクエストを送信するため</td>
+<td>コンテナイメージのレイヤーをPOSTリクエストを送信するため</td>
 </tr>
 <tr>
 <td>AWS Systems Manager</td>
@@ -27978,7 +27978,7 @@
 </blockquote>
 <h4 id="aws-eks-amazon-linux">▼ AWS EKS 最適化 Amazon Linux<a class="headerlink" href="#aws-eks-amazon-linux" title="Permanent link">&para;</a></h4>
 <p>AWS EKSのための標準的なAWS EC2を作成できる。最も推奨である。</p>
-<p><code>aws ssm get-parameter</code>コマンドを使用すると、公式が提供するマシンイメージのIDを確認できる。</p>
+<p><code>aws ssm get-parameter</code>コマンドを使用すると、公式が提供するマシンコンテナイメージのIDを確認できる。</p>
 <p>注意点として、AWS AMIのマイナーバージョンは固定できるが、パッチバージョンは固定できない。</p>
 <p>そのため、パッチバージョンがアップグレードされる度に、AWS AMIのIDは変わる。</p>
 <p>AWS AMIのIDを固定するためには、AWS AMIをダウンロードして自前で管理する必要がある。</p>
@@ -28170,9 +28170,9 @@
 <li><a href="https://garafu.blogspot.com/2020/08/ec2-set-env-from-paramstore.html">https://garafu.blogspot.com/2020/08/ec2-set-env-from-paramstore.html</a></li>
 </ul>
 </blockquote>
-<h4 id="aws-ec2node_2">▼ AWS EC2ワーカーNodeのイメージキャッシュ削除<a class="headerlink" href="#aws-ec2node_2" title="Permanent link">&para;</a></h4>
-<p>kubeletは、Nodeのイメージのキャッシュを作成する。</p>
-<p>イメージのキャッシュは、kubeletによるガベージコレクションまたはNodeの再作成で削除される。</p>
+<h4 id="aws-ec2node_2">▼ AWS EC2ワーカーNodeのコンテナイメージキャッシュ削除<a class="headerlink" href="#aws-ec2node_2" title="Permanent link">&para;</a></h4>
+<p>kubeletは、Nodeのコンテナイメージのキャッシュを作成する。</p>
+<p>コンテナイメージのキャッシュは、kubeletによるガベージコレクションまたはNodeの再作成で削除される。</p>
 <p>KubeletConfigurationの<code>--image-gc-high-threshold</code>オプションで、キャッシュ削除の閾値とするディスク使用率を設定する。</p>
 <p><code>--image-gc-low-threshold</code>オプションで、解放しようとするディスク使用率を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -28673,7 +28673,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-15</span>
   </span>
 
     
