@@ -1,0 +1,24 @@
+<!--
+ @see https://github.com/squidfunk/mkdocs-material/blob/master/src/overrides/main.html#L35-L51
+ -->
+
+{% extends "base.html" %}
+
+{% block announce %}
+<p style="text-align: right">
+    <a style="color: white;" href="https://x.com/Hiroki__IT">
+        <span class="twemoji x">{% include ".icons/fontawesome/brands/x-twitter.svg" %}</span>
+        <strong> 俺のX</strong>
+    </a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a style="color: white;" href="https://www.linkedin.com/in/h-hasegawa/">
+        <span class="twemoji linkedin">{% include ".icons/fontawesome/brands/linkedin.svg" %}</span>
+        <strong> 俺のLinkedin</strong>
+    </a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a style="color: white;" href="https://speakerdeck.com/hiroki_hasegawa">
+        <span class="twemoji speackerdeck">{% include ".icons/fontawesome/brands/speaker-deck.svg" %}</span>
+        <strong> 俺のSpeakerDeck</strong>
+    </a>
+</p>
+{% endblock %}
