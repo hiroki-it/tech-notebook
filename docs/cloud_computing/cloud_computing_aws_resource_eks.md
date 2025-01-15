@@ -816,7 +816,7 @@ Podをプライベートサブネットに配置した場合に、パブリッ�
 
 この時、クライアント側Podの送信元IPアドレスは、AWS NAT GatewayまたはAWS VPCエンドポイントに紐づくIPアドレスになる。
 
-以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。
+以下のようなエラーでPodが起動しない場合、Podが何らかの理由でコンテナイメージをプルできない可能性がある。
 
 また、Podが作成されない限り、ワーカーNodeも作成されないことに注意する。
 
@@ -838,8 +838,8 @@ AWS EKS Clusterを作成すると、ENIも作成する。
 | ----------------------------- | ------------------ | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | AWS EKSコントロールプレーン   | (たぶん) Interface | マネージド                                                                         | プライベートサブネット内のAWS EC2 NodeからコントロールプレーンのあるAWS VPCにリクエストを送信するため。 |
 | AWS CloudWatch Logs           | Interface          | `logs.ap-northeast-1.amazonaws.com`                                                | Pod内のコンテナのログをPOSTリクエストを送信するため。                                                   |
-| AWS ECR                       | Interface          | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                                                                 |
-| AWS S3                        | Gateway            | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                                                        |
+| AWS ECR                       | Interface          | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | コンテナイメージのGETリクエストを送信するため。                                                         |
+| AWS S3                        | Gateway            | なし                                                                               | コンテナイメージのレイヤーをPOSTリクエストを送信するため                                                |
 | AWS Systems Manager           | Interface          | `ssm.ap-northeast-1.amazonaws.com`                                                 | AWS Systems ManagerのパラメーターストアにGETリクエストを送信するため。                                  |
 | AWS Secrets Manager           | Interface          | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                                                         |
 
@@ -897,8 +897,8 @@ AWS VPC外のAWSリソース (例：AWS EKSコントロールプレーン、AWS 
 | ----------------------------- | ------------------ | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | AWS EKSコントロールプレーン   | (たぶん) Interface | マネージド                                                                         | プライベートサブネット内のAWS EC2 NodeからコントロールプレーンのあるAWS VPCにリクエストを送信するため。 |
 | AWS CloudWatch Logs           | Interface          | `logs.ap-northeast-1.amazonaws.com`                                                | Pod内のコンテナのログをPOSTリクエストを送信するため。                                                   |
-| AWS ECR                       | Interface          | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                                                                 |
-| AWS S3                        | Gateway            | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                                                        |
+| AWS ECR                       | Interface          | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | コンテナイメージのGETリクエストを送信するため。                                                         |
+| AWS S3                        | Gateway            | なし                                                                               | コンテナイメージのレイヤーをPOSTリクエストを送信するため                                                |
 | AWS Systems Manager           | Interface          | `ssm.ap-northeast-1.amazonaws.com`                                                 | AWS Systems ManagerのパラメーターストアにGETリクエストを送信するため。                                  |
 | Secrets Manager               | Interface          | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                                                         |
 
@@ -1103,7 +1103,7 @@ AWS EC2ワーカーNodeを種類ごとに異なるAWS AMIで作成し、特定�
 
 AWS EKSのための標準的なAWS EC2を作成できる。最も推奨である。
 
-`aws ssm get-parameter`コマンドを使用すると、公式が提供するマシンイメージのIDを確認できる。
+`aws ssm get-parameter`コマンドを使用すると、公式が提供するマシンコンテナイメージのIDを確認できる。
 
 注意点として、AWS AMIのマイナーバージョンは固定できるが、パッチバージョンは固定できない。
 
@@ -1291,11 +1291,11 @@ source "${EXPORT_ENVS}"
 > - https://qiita.com/th_/items/8ffb28dd6d27779a6c9d
 > - https://garafu.blogspot.com/2020/08/ec2-set-env-from-paramstore.html
 
-#### ▼ AWS EC2ワーカーNodeのイメージキャッシュ削除
+#### ▼ AWS EC2ワーカーNodeのコンテナイメージキャッシュ削除
 
-kubeletは、Nodeのイメージのキャッシュを作成する。
+kubeletは、Nodeのコンテナイメージのキャッシュを作成する。
 
-イメージのキャッシュは、kubeletによるガベージコレクションまたはNodeの再作成で削除される。
+コンテナイメージのキャッシュは、kubeletによるガベージコレクションまたはNodeの再作成で削除される。
 
 KubeletConfigurationの`--image-gc-high-threshold`オプションで、キャッシュ削除の閾値とするディスク使用率を設定する。
 

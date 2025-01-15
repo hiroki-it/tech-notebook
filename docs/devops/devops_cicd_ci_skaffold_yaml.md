@@ -57,7 +57,7 @@ Skaffoldの各ステージでは、それ専用のツールをコールできる
 
 #### ▼ image
 
-ビルドされるイメージの名前を設定する。
+ビルドされるコンテナイメージの名前を設定する。
 
 ```yaml
 build:
@@ -94,7 +94,7 @@ build:
 | 項目       | 説明                                                         | 補足                                                                         |
 | ---------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------- |
 | dockerfile | マイクロサービスのルートからDockerfileまでのパスを設定する。 | https://skaffold.dev/docs/references/yaml/#build-artifacts-docker-dockerfile |
-| target     | ビルドするイメージのステージを設定する。                     | https://skaffold.dev/docs/references/yaml/#build-artifacts-docker-target     |
+| target     | ビルドするコンテナイメージのステージを設定する。             | https://skaffold.dev/docs/references/yaml/#build-artifacts-docker-target     |
 
 ```yaml
 build:
@@ -139,7 +139,7 @@ build:
 
 BuildKit機能の有効化を設定する。
 
-BuildKitではイメージレイヤーが並列的に作成されるため、ビルド時間を従来よりも短縮できる。
+BuildKitではコンテナイメージレイヤーが並列的に作成されるため、ビルド時間を従来よりも短縮できる。
 
 ```yaml
 build:
@@ -215,7 +215,7 @@ Kubernetesリソースのテスト方法を定義する。
 
 ```yaml
 test:
-  - image: <イメージリポジトリURL> # <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
+  - image: <コンテナイメージリポジトリURL> # <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<コンテナイメージリポジトリ名>:latest
     structureTests:
       - ./structure-tests/foo.yaml
 ```
@@ -223,7 +223,7 @@ test:
 ```yaml
 schemaVersion: 2.0.0
 
-# イメージにファイルが存在するか否かを検証する。
+# コンテナイメージにファイルが存在するか否かを検証する。
 fileExistenceTests:
   - name: PHP file
     path: /var/www/public/index.php
