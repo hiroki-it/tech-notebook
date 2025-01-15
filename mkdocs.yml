@@ -11,7 +11,7 @@ site_url: https://hiroki-it.github.io/tech-notebook/
 site_description: 俺 (長谷川広樹) が、業務や学習から得た技術的な知見をドキュメント形式で記録したサイトです。
 
 # リポジトリ
-repo_name: GitHubアカウントはこちら
+repo_name: 俺のGitHub
 repo_url: https://github.com/hiroki-it/
 
 # テーマ
@@ -22,7 +22,7 @@ theme:
   favicon: assets/images/logo_v2.png
   # テンプレートを読み込む
   # 部分的にテンプレートを挿入する場合、templates配下にpartialsディレクトリを作成する
-  # custom_dir: docs/assets/templates/
+  custom_dir: docs/assets/overrides
   icon:
     repo: fontawesome/brands/github
   font:
