@@ -711,6 +711,7 @@ resource "aws_instance" "foo" {
 }
 
 // サブボリュームは個別にアタッチし、デバイス名は /dev/xvdb とする
+# ※後述の説明を参考にせよ(3)
 resource "aws_volume_attachment" "foo" {
   device_name                    = "/dev/xvdb"
   instance_id                    = aws_instance.foo.id
@@ -727,6 +728,19 @@ resource "aws_volume_attachment" "foo" {
 Internet Gatewayの後にEC2を作成可能にする。
 
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway#argument-reference
+
+#### `(3)`EC2の削除時にEBSボリュームは削除されない
+
+`aws_ami`リソースでAMIを作成する場合、EC2の削除時にEBSボリュームも削除するかどうかを設定できる。
+
+一方で、`aws_volume_attachment`リソースではこのオプションがなく、デフォルトで同時に削除しないようになっている。
+
+同時に削除しないようにしたいため、`aws_volume_attachment`リソースでは特に対処は不要である。
+
+なお、`aws_volume_attachment`リソースでこのオプションを追加するPRが現座進行形で提出されている。
+
+> - https://dev.classmethod.jp/articles/terraform-ec2-ebs_block_device-size-up/
+> - https://github.com/hashicorp/terraform-provider-aws/pull/31869
 
 <br>
 
