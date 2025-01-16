@@ -56,10 +56,16 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/hiroki-it
-      name: GitHubアカウント
-    - icon: fontawesome/brands/twitter
+      name: 俺のGitHub
+    - icon: fontawesome/brands/x-twitter
       link: https://twitter.com/Hiroki__IT
-      name: Twitterアカウント
+      name: 俺のX
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/h-hasegawa/
+      name: 俺のLinkedin
+    - icon: fontawesome/brands/speaker-deck
+      link: https://speakerdeck.com/hiroki_hasegawa
+      name: 俺のSpeakerDeck
 
 # CSS
 extra_css:
