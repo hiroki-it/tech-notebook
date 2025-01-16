@@ -24683,7 +24683,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="albingresskubernetesiohealthcheck-path"><code>alb.ingress.kubernetes.io/healthcheck-path</code>キー<a class="headerlink" href="#albingresskubernetesiohealthcheck-path" title="Permanent link">&para;</a></h3>
-<p>ヘルスチェックのPodのパスを設定する。</p>
+<p>ヘルスチェック対象としてPodのコンテナのパスを設定する。</p>
+<p><code>alb.ingress.kubernetes.io/target-type</code>キー値が<code>instance</code>でも<code>ip</code>でも、ヘルスチェック対象はPodである。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -24707,7 +24708,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="albingresskubernetesiohealthcheck-port"><code>alb.ingress.kubernetes.io/healthcheck-port</code>キー<a class="headerlink" href="#albingresskubernetesiohealthcheck-port" title="Permanent link">&para;</a></h3>
-<p>ヘルスチェックのPodのポート番号を設定する。</p>
+<p>ヘルスチェック対象として、Podのコンテナのポート番号を設定する。</p>
+<p><code>alb.ingress.kubernetes.io/target-type</code>キー値が<code>instance</code>でも<code>ip</code>でも、ヘルスチェック対象はPodである。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 <span class="nt">metadata</span><span class="p">:</span>
