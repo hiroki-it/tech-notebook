@@ -63,7 +63,9 @@ aws-load-balancer-controllerは、Ingressの`.spec.tls`キーや`.spec.rules[*].
 
 ### `alb.ingress.kubernetes.io/healthcheck-path`キー
 
-ヘルスチェックのPodのパスを設定する。
+ヘルスチェック対象としてPodのコンテナのパスを設定する。
+
+`alb.ingress.kubernetes.io/target-type`キー値が`instance`でも`ip`でも、ヘルスチェック対象はPodである。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -91,7 +93,9 @@ metadata:
 
 ### `alb.ingress.kubernetes.io/healthcheck-port`キー
 
-ヘルスチェックのPodのポート番号を設定する。
+ヘルスチェック対象として、Podのコンテナのポート番号を設定する。
+
+`alb.ingress.kubernetes.io/target-type`キー値が`instance`でも`ip`でも、ヘルスチェック対象はPodである。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
