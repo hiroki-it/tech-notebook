@@ -406,7 +406,7 @@ data:
   # 認証情報は設定しない。
   # マニフェストリポジトリ名
   name: foo-repository
-  # https://github.com/hiroki-hasegawa に最長一致する。
+  # https://github.com/hiroki-hasegawa に前方一致する。
   url: https://github.com/hiroki-hasegawa/foo-manifest.git
 ---
 # bar-repositoryをポーリングするためのargocd-repo
@@ -422,13 +422,13 @@ data:
   # 認証情報は設定しない。
   # マニフェストリポジトリ名
   name: bar-repository
-  # https://github.com/hiroki-hasegawa に最長一致する。
+  # https://github.com/hiroki-hasegawa に前方一致する。
   url: https://github.com/hiroki-hasegawa/bar-manifest.git
 ```
 
-ArgoCDは、argocd-repo-credsの`.url`キーを使用して、argocd-repoの`.url`キーに対する最長一致を実施する。
+ArgoCDは、argocd-repo-credsの`.url`キーを使用して、argocd-repoの`.url`キーに対する前方一致を実施する。
 
-最長一致したURLを持つ全てのargocd-repoで、argocd-repo-credsの認証情報 (`.username`キー、`.password`キー) が適用される。
+前方一致したURLを持つ全てのargocd-repoで、argocd-repo-credsの認証情報 (`.username`キー、`.password`キー) が適用される。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
 

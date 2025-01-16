@@ -113,7 +113,13 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/kube-prome
 
 <br>
 
-## 02. MySQL Exporter
+## 02. MySQL Exporter (mysqld-exporter)
+
+### MySQL Exporterとは
+
+MySQLにクエリを実行し、メトリクスとして収集する。
+
+<br>
 
 ### セットアップ
 
@@ -158,6 +164,12 @@ postgres_exporter_build_info{branch="",goversion="go1.15.8",revision="",version=
 <br>
 
 ## 03. PostgreSQL Exporter
+
+### PostgreSQL Exporterとは
+
+PostgreSQLにクエリを実行し、メトリクスとして収集する。
+
+<br>
 
 ### メトリクスの一覧
 
