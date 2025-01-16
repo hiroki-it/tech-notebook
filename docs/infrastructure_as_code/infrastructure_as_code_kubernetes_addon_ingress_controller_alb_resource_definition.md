@@ -260,6 +260,7 @@ metadata:
 
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/guide/ingress/annotations/#traffic-routing
 > - https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
+> - https://dev.classmethod.jp/articles/lbc-service-no-target-group/
 
 <br>
 

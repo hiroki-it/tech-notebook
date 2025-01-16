@@ -133,6 +133,35 @@ NodePort Serviceを選ぶためには、Istio IngressGatewayではなく、Istio
 > - https://github.com/istio/istio/issues/28310#issuecomment-733079966
 > - https://github.com/istio/istio/blob/1.14.3/manifests/charts/gateway/values.yaml#L39
 
+#### ▼ ClusterIP Serviceを選ぶ
+
+AWS Load Balancer Controllerを使用する場合、Istio IngressGatewayでClusterIP Serviceを使用できる。
+
+Ingressにて、`alb.ingress.kubernetes.io/target-type`キー値を`ip`とすると、AWS Load Balancer ControllerはPodにリクエストを直接的にL7ロードバランシングする。
+
+```yaml
+パブリックネットワーク
+⬇⬆︎︎
+AWS Route53
+⬇⬆︎︎
+# L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
+AWS Load Balancer ControllerによるAWS ALB
+⬇⬆︎︎
+# L4ロードバランサー
+ClusterIP Service (Istio IngressGateway)
+⬇⬆︎︎
+Gateway
+⬇⬆︎︎
+VirtualService
+⬇⬆︎︎
+# L4ロードバランサー
+ClusterIP Service
+⬇⬆︎︎
+Pod
+```
+
+> - https://lab.mo-t.com/blog/k8s-update-load-balancer
+
 #### ▼ アプリコンテナごとに作成する
 
 単一障害点になることを防ぐために、`1`個のIstio IngressGatewayで全てのアプリコンテナにルーティングするのではなく、アプリコンテナことに用意する。
