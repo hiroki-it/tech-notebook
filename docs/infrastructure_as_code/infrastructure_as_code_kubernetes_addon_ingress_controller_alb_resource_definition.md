@@ -69,10 +69,23 @@ aws-load-balancer-controllerは、Ingressの`.spec.tls`キーや`.spec.rules[*].
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: foo-alb-ingress
+  name: foo-alb-http-ingress
   annotations:
-    alb.ingress.kubernetes.io/healthcheck-path: /healthz
+    # HTTPのヘルスチェックパス
+    alb.ingress.kubernetes.io/healthcheck-path: /healthz/ready
 ```
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-alb-grpc-ingress
+  annotations:
+    # gRPCのヘルスチェックパス
+    alb.ingress.kubernetes.io/healthcheck-path: /grpc.health.v1.Health/Check
+```
+
+> - https://lab.mo-t.com/blog/k8s-update-load-balancer
 
 <br>
 
