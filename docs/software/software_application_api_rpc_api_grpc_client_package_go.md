@@ -601,6 +601,10 @@ func main() {
 
 分散トレースの作成を無視する場合を設定する。
 
+例えば、フィルター系の`HealthCheck`関数はgRPCのヘルスチェックパス (`/grpc.health.v1.Health/Check`) のプレフィクス (`/grpc.health.v1.Health`) を返却する。
+
+これを`WithInterceptorFilter`関数に渡すと、ヘルスチェックのパスで分散トレースの作成を無効化できる。
+
 ```go
 package main
 
@@ -622,7 +626,7 @@ func main() {
 	grpcServer := grpc.NewServer(
 		// 単項RPCのサーバーインターセプター処理
 		grpc.ChainUnaryInterceptor(
-			// ヘルスチェックへのリクエストを無視する
+			// gRPCのヘルスチェックパス (/grpc.health.v1.Health/Check) へのリクエストを無視する
 	        grpc_recovery.UnaryServerInterceptor(otelgrpc.WithInterceptorFilter(filters.HealthCheck())),
 		),
 	)

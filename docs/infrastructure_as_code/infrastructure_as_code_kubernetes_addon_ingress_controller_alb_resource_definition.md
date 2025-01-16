@@ -47,7 +47,7 @@ metadata:
 ```
 
 > - https://nobelabo.hatenablog.com/entry/2022/10/01/201138
-> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/guide/ingress/cert_discovery/
+> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.11/guide/ingress/cert_discovery/
 
 #### ▼ オートディスカバリー
 
@@ -57,13 +57,13 @@ aws-load-balancer-controllerは、Ingressの`.spec.tls`キーや`.spec.rules[*].
 
 例えばIngressで`.spec.rules[*].hosts`キーに`foo.example.com`を設定していた場合、aws-load-balancer-controllerは`*.example.com`で認証されたSSL証明書をACMから探す。
 
-> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/guide/ingress/cert_discovery/#discover-via-ingress-rule-host
+> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.11/guide/ingress/cert_discovery/#discover-via-ingress-rule-host
 
 <br>
 
 ### `alb.ingress.kubernetes.io/healthcheck-path`キー
 
-ヘルスチェックのパスを設定する。
+ヘルスチェックのPodのパスを設定する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -73,6 +73,23 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/healthcheck-path: /healthz
 ```
+
+<br>
+
+### `alb.ingress.kubernetes.io/healthcheck-port`キー
+
+ヘルスチェックのPodのポート番号を設定する。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-alb-ingress
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-port: 80
+```
+
+> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.11/guide/ingress/annotations/#health-check
 
 <br>
 
