@@ -24687,10 +24687,24 @@
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-alb-ingress</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-alb-http-ingress</span>
 <span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">alb.ingress.kubernetes.io/healthcheck-path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/healthz</span>
+<span class="w">    </span><span class="c1"># HTTPのヘルスチェックパス</span>
+<span class="w">    </span><span class="nt">alb.ingress.kubernetes.io/healthcheck-path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/healthz/ready</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-alb-grpc-ingress</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># gRPCのヘルスチェックパス</span>
+<span class="w">    </span><span class="nt">alb.ingress.kubernetes.io/healthcheck-path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/grpc.health.v1.Health/Check</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://lab.mo-t.com/blog/k8s-update-load-balancer">https://lab.mo-t.com/blog/k8s-update-load-balancer</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="albingresskubernetesiohealthcheck-port"><code>alb.ingress.kubernetes.io/healthcheck-port</code>キー<a class="headerlink" href="#albingresskubernetesiohealthcheck-port" title="Permanent link">&para;</a></h3>
 <p>ヘルスチェックのPodのポート番号を設定する。</p>
