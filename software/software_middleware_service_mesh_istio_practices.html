@@ -4763,9 +4763,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#clusterip-service" class="md-nav__link">
+  <a href="#clusterip-service-aws-load-balancer-controller" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ClusterIP Serviceを選ぶ
+      ▼ ClusterIP Serviceを選ぶ (AWS Load Balancer Controllerを使用する場合のみ)
     </span>
   </a>
   
@@ -4866,6 +4866,15 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clusterip-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      ClusterIP Serviceの場合
+    </span>
+  </a>
   
 </li>
         
@@ -24735,9 +24744,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#clusterip-service" class="md-nav__link">
+  <a href="#clusterip-service-aws-load-balancer-controller" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ClusterIP Serviceを選ぶ
+      ▼ ClusterIP Serviceを選ぶ (AWS Load Balancer Controllerを使用する場合のみ)
     </span>
   </a>
   
@@ -24838,6 +24847,15 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clusterip-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      ClusterIP Serviceの場合
+    </span>
+  </a>
   
 </li>
         
@@ -25156,7 +25174,7 @@
 </ul>
 </blockquote>
 <h4 id="nodeport-service">▼ NodePort Serviceを選ぶ<a class="headerlink" href="#nodeport-service" title="Permanent link">&para;</a></h4>
-<p>Istio IngressGatewayでは、内部的に作成されるServiceのタイプ (NodePort Service、LoadBalancer Service) を選べる。</p>
+<p>Istio IngressGatewayでは、内部的に作成されるServiceのタイプ (NodePort Service、ClusterIP Service、LoadBalancer Service) を選べる。</p>
 <p>NodePort Serviceを選ぶ場合、Nodeのダウンストリームに開発者がロードバランサーを作成し、NodePort Serviceにインバウンド通信をルーティングできるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
@@ -25188,7 +25206,7 @@
 <li><a href="https://github.com/istio/istio/blob/1.14.3/manifests/charts/gateway/values.yaml#L39">https://github.com/istio/istio/blob/1.14.3/manifests/charts/gateway/values.yaml#L39</a></li>
 </ul>
 </blockquote>
-<h4 id="clusterip-service">▼ ClusterIP Serviceを選ぶ<a class="headerlink" href="#clusterip-service" title="Permanent link">&para;</a></h4>
+<h4 id="clusterip-service-aws-load-balancer-controller">▼ ClusterIP Serviceを選ぶ (AWS Load Balancer Controllerを使用する場合のみ)<a class="headerlink" href="#clusterip-service-aws-load-balancer-controller" title="Permanent link">&para;</a></h4>
 <p>AWS Load Balancer Controllerを使用する場合、Istio IngressGatewayでClusterIP Serviceを使用できる。</p>
 <p>Ingressにて、<code>alb.ingress.kubernetes.io/target-type</code>キー値を<code>ip</code>とすると、AWS Load Balancer ControllerはPodにリクエストを直接的にL7ロードバランシングする。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
@@ -25340,6 +25358,34 @@
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">Pod</span>
 </code></pre></div>
+<p><br></p>
+<h3 id="clusterip-service">ClusterIP Serviceの場合<a class="headerlink" href="#clusterip-service" title="Permanent link">&para;</a></h3>
+<p>AWS Load Balancer Controllerを使用する場合、Istio IngressGatewayでClusterIP Serviceを使用できる。</p>
+<p>Ingressにて、<code>alb.ingress.kubernetes.io/target-type</code>キー値を<code>ip</code>とすると、AWS Load Balancer ControllerはPodにリクエストを直接的にL7ロードバランシングする。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">AWS Route53</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)</span>
+<span class="l l-Scalar l-Scalar-Plain">AWS Load Balancer ControllerによるAWS ALB</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service (Istio IngressGateway)</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://lab.mo-t.com/blog/k8s-update-load-balancer">https://lab.mo-t.com/blog/k8s-update-load-balancer</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="03">03. アップグレード<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_5">設計規約<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
