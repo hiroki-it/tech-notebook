@@ -74,6 +74,7 @@ metadata:
   name: foo-alb-http-ingress
   annotations:
     # HTTPのヘルスチェックパス
+    # HTTPのヘルスチェックパスはPodの種類によって異なる
     alb.ingress.kubernetes.io/healthcheck-path: /healthz/ready
 ```
 
@@ -84,10 +85,12 @@ metadata:
   name: foo-alb-grpc-ingress
   annotations:
     # gRPCのヘルスチェックパス
+    # gRPCのヘルスチェックパスはPodの種類によらず同じ
     alb.ingress.kubernetes.io/healthcheck-path: /grpc.health.v1.Health/Check
 ```
 
 > - https://lab.mo-t.com/blog/k8s-update-load-balancer
+> - https://dev.classmethod.jp/articles/ingress-healthcheck-ip-or-instance/#toc-3
 
 <br>
 
@@ -107,6 +110,7 @@ metadata:
 ```
 
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.11/guide/ingress/annotations/#health-check
+> - https://dev.classmethod.jp/articles/ingress-healthcheck-ip-or-instance/#toc-3
 
 <br>
 
