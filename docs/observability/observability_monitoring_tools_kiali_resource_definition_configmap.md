@@ -113,6 +113,8 @@ data:
 
 ### external_services
 
+#### ▼ custom_dashboards
+
 記入中...
 
 ```yaml
@@ -133,58 +135,119 @@ data:
           # PrometheusのServiceの宛先情報を設定する。
           url: http://foo-prometheus.foo-namespace.svc.cluster.local:9090
       # https://kiali.io/docs/configuration/p8s-jaeger-grafana/grafana/
-      grafana:
-        auth:
-          # GrafanaでBasic認証を使用している場合
-          type: basic
-          username: admin
-          password: prom-operator
-        dashboards:
-          - name: Istio Service Dashboard
-            variables:
-              namespace: var-namespace
-              service: var-service
-          - name: Istio Workload Dashboard
-            variables:
-              namespace: var-namespace
-              workload: var-workload
-        enabled: true
-        # GrafanaのServiceの宛先情報を設定する。
-        in_cluster_url: http://foo-grafana.foo-namespace.svc.cluster.local
-        # Kialiダッシュボードからのリダイレクト先とするGrafanaダッシュボードのURLを設定する。
-        url: http://foo.grafana.com
-      # IstiodのPodのステータスを確認するために、Istiodの宛先情報を設定する。
-      # https://v1-48.kiali.io/docs/features/istio-component-status/
-      istio:
-        component_status:
-          # ステータスを連携したいIstioのコンポーネントを設定する
-          components:
-            - app_label: istiod
-            - app_label: istio-ingressgateway
-              namespace: istio-ingress
-            - app_label: istio-egressgateway
-              namespace: istio-egress
-          # Masthead indicatorを表示するかどうかを設定する。
-          # https://kiali.io/docs/features/security/#masthead-indicator
-          enabled: true
-        # Istioが使用しているConfigMap名
-        config_map_name: istio-<リビジョン番号>
-        istio_identity_domain: svc.cluster.local
-        istio_sidecar_annotation: sidecar.istio.io/status
-        istio_status_enabled: true
-        root_namespace: istio-system
-        # サービスメッシュ全体のヘルスチェックのため、IstioのServiceの宛先情報を設定する。
-        url_service_version: http://istiod-<リビジョン番号>.istio-system.svc.cluster.local:15014/version
-      # https://kiali.io/docs/configuration/p8s-jaeger-grafana/prometheus/
-      prometheus:
-        # PrometheusのServiceの宛先情報を設定する。
-        url: http://foo-prometheus.foo-namespace.svc.cluster.local:9090
-      tracing:
-        enabled: true
-        provider: tempo
-        internal_url: http://grafana-tempo.istio-system.svc.cluster.local:3100
-        use_grpc: false
 ```
+
+> - https://kiali.io/docs/configuration/custom-dashboard/
+
+#### ▼ grafana
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    grafana:
+      auth:
+        # GrafanaでBasic認証を使用している場合
+        type: basic
+        username: admin
+        password: prom-operator
+      dashboards:
+        - name: Istio Service Dashboard
+          variables:
+            namespace: var-namespace
+            service: var-service
+        - name: Istio Workload Dashboard
+          variables:
+            namespace: var-namespace
+            workload: var-workload
+      enabled: true
+      # GrafanaのServiceの宛先情報を設定する。
+      in_cluster_url: http://foo-grafana.foo-namespace.svc.cluster.local
+      # Kialiダッシュボードからのリダイレクト先とするGrafanaダッシュボードのURLを設定する。
+      url: http://foo.grafana.com
+```
+
+> - https://kiali.io/docs/configuration/p8s-jaeger-grafana/grafana/
+
+#### ▼ istio
+
+Istioとの連携を設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    istio:
+      component_status:
+        # ステータスを連携したいIstioのコンポーネントを設定する
+        components:
+          - app_label: istiod
+          - app_label: istio-ingressgateway
+            namespace: istio-ingress
+          - app_label: istio-egressgateway
+            namespace: istio-egress
+        # Masthead indicatorを表示するかどうかを設定する。
+        # https://kiali.io/docs/features/security/#masthead-indicator
+        enabled: true
+      # Istioが使用しているConfigMap名
+      config_map_name: istio-<リビジョン番号>
+      istio_identity_domain: svc.cluster.local
+      istio_sidecar_annotation: sidecar.istio.io/status
+      istio_status_enabled: true
+      root_namespace: istio-system
+      # サービスメッシュ全体のヘルスチェックのため、IstioのServiceの宛先情報を設定する。
+      url_service_version: http://istiod-<リビジョン番号>.istio-system.svc.cluster.local:15014/version
+```
+
+#### ▼ prometheus
+
+Prometheusとの連携を設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    prometheus:
+      # PrometheusのServiceの宛先情報を設定する。
+      url: http://foo-prometheus.foo-namespace.svc.cluster.local:9090
+```
+
+> - https://kiali.io/docs/configuration/p8s-jaeger-grafana/prometheus/
+
+#### ▼ tracing
+
+分散トレースの監視バックエンド (例：Tempo、Jaegerなど) との連携を設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    tracing:
+      enabled: true
+      provider: tempo
+      internal_url: http://grafana-tempo.istio-system.svc.cluster.local:3100
+      use_grpc: false
+```
+
+> - https://kiali.io/docs/configuration/p8s-jaeger-grafana/tracing/tempo/
 
 <br>
 
