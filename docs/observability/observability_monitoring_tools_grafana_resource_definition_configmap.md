@@ -252,7 +252,7 @@ data:
     login_cookie_name = anonymous_session
     [auth.anonymous]
     enabled = true
-    org_role = Viewer
+    org_role = Admin
 ```
 
 > - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
