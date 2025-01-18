@@ -4463,6 +4463,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#access_log_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ %ACCESS_LOG_TYPE%
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#req" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ %REQ()
@@ -24558,6 +24567,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#access_log_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ %ACCESS_LOG_TYPE%
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#req" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ %REQ()
@@ -24920,7 +24938,7 @@
 <span class="w">  </span><span class="s">&quot;filter_chain_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;0.0.0.0_9080&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;grpc_status&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;method&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;GET&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;path&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/reviews/0&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;path&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/foo/1&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;protocol&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;HTTP/1.1&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;response_code&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;response_flags&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;-&quot;</span><span class="p p-Indicator">,</span>
@@ -24935,6 +24953,9 @@
 <span class="w">  </span><span class="s">&quot;x_forwarded_for&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
+<h4 id="access_log_type">▼ %ACCESS_LOG_TYPE%<a class="headerlink" href="#access_log_type" title="Permanent link">&para;</a></h4>
+<p>アクセスログの作成のタイミングを表す。</p>
+<p>例えば、<code>DownstreamEnd</code>であれば、<code>http_connection_manager</code>が通信を終了した時に作成されたログである。</p>
 <h4 id="req">▼ %REQ()<a class="headerlink" href="#req" title="Permanent link">&para;</a></h4>
 <p>リクエストヘッダーから値を出力する。</p>
 <table>
@@ -24942,28 +24963,34 @@
 <tr>
 <th>リクエストヘッダー</th>
 <th>出力方法</th>
+<th>例</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>traceparent</td>
 <td><code>%REQ(TRACEPARENT)%</code></td>
+<td><code>00-d34ea2aa01d34d0fda79c6d09b097a83-fd0eae41e95a263c-01</code></td>
 </tr>
 <tr>
 <td>HTTPメソッド</td>
 <td><code>%REQ(:METHOD)%</code></td>
+<td><code>GET</code></td>
 </tr>
 <tr>
 <td>パス</td>
 <td><code>%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%</code></td>
+<td><code>/foo/1</code></td>
 </tr>
 <tr>
 <td>ユーザーエージェント</td>
 <td><code>%REQ(USER-AGENT)%'</code></td>
+<td><code>curl/8.7.1</code></td>
 </tr>
 <tr>
 <td>X-Forwarded-for</td>
 <td><code>%REQ(X-FORWARDED-FOR)%</code></td>
+<td>記入中...</td>
 </tr>
 </tbody>
 </table>

@@ -25215,6 +25215,7 @@
 <p>Grafana Lokiの場合、<code>loki</code>タイプを指定する。</p>
 <p>トレースIDのUIにリダイレクトできるように、<code>derivedFields</code>キーを設定する。</p>
 <p>トレースIDを検索方法 (<code>matcherType</code>キー) として、構造化ログの場合は<code>label</code>とする。</p>
+<p><code>url</code>キーに<code>$${__value.raw}</code>を設定すると、抽出したトレースIDをURLに出力できる。</p>
 <p><code>datasourceUid</code>キーでは、他に登録しているデータソースを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -25232,9 +25233,9 @@
 <span class="w">        </span><span class="no">jsonData:</span>
 <span class="w">          </span><span class="no">derivedFields:</span>
 <span class="w">            </span><span class="no">- name: trace_id</span>
-<span class="w">              </span><span class="no">matcherRegex: &#39;&quot;trace_id&quot;:&quot;(\w+)&quot;&#39;</span>
+<span class="w">              </span><span class="no">matcherRegex: &#39;&quot;trace_id&quot;:&quot;([^&quot;]*)&quot;&#39;</span>
 <span class="w">              </span><span class="no">url: $${__value.raw}</span>
-<span class="w">              </span><span class="no">urlDisplayLabel: View Trace</span>
+<span class="w">              </span><span class="no">urlDisplayLabel: View Grafana Tempo</span>
 <span class="w">              </span><span class="no">datasourceUid: Tempo</span>
 <span class="w">      </span><span class="no">- name: Tempo</span>
 <span class="w">        </span><span class="no">type: tempo</span>

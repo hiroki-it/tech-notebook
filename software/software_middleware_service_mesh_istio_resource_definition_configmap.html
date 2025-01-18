@@ -5329,6 +5329,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#envoyfileaccesslog" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ envoyFileAccessLog
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -25385,6 +25394,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#envoyfileaccesslog" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ envoyFileAccessLog
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -26386,6 +26404,45 @@
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider</a></li>
 <li><a href="https://discuss.istio.io/t/integrating-jaeger-tracing-using-telemetry-api/14759">https://discuss.istio.io/t/integrating-jaeger-tracing-using-telemetry-api/14759</a></li>
+</ul>
+</blockquote>
+<h4 id="envoyfileaccesslog">▼ envoyFileAccessLog<a class="headerlink" href="#envoyfileaccesslog" title="Permanent link">&para;</a></h4>
+<p>Envoyのアクセスログを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-mesh-cm</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">extensionProviders:</span>
+<span class="w">      </span><span class="no">- name: envoy-grpc</span>
+<span class="w">        </span><span class="no">envoyFileAccessLog:</span>
+<span class="w">          </span><span class="no">logFormat:</span>
+<span class="w">            </span><span class="no">labels:</span>
+<span class="w">              </span><span class="no">access_log_type: &#39;%ACCESS_LOG_TYPE%&#39;</span>
+<span class="w">              </span><span class="no">bytes_received: &#39;%BYTES_RECEIVED%&#39;</span>
+<span class="w">              </span><span class="no">bytes_sent: &#39;%BYTES_SENT%&#39;</span>
+<span class="w">              </span><span class="no">downstream_transport_failure_reason: &#39;%DOWNSTREAM_TRANSPORT_FAILURE_REASON%&#39;</span>
+<span class="w">              </span><span class="no">downstream_remote_port: &#39;%DOWNSTREAM_REMOTE_PORT%&#39;</span>
+<span class="w">              </span><span class="no">duration: &#39;%DURATION%&#39;</span>
+<span class="w">              </span><span class="no">grpc_status: &#39;%GRPC_STATUS(CAMEL_STRING)%&#39;</span>
+<span class="w">              </span><span class="no">method: &#39;%REQ(:METHOD)%&#39;</span>
+<span class="w">              </span><span class="no">path: &#39;%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%&#39;</span>
+<span class="w">              </span><span class="no">protocol: &#39;%PROTOCOL%&#39;</span>
+<span class="w">              </span><span class="no">response_code: &#39;%RESPONSE_CODE%&#39;</span>
+<span class="w">              </span><span class="no">response_flags: &#39;%RESPONSE_FLAGS%&#39;</span>
+<span class="w">              </span><span class="no">start_time: &#39;%START_TIME%&#39;</span>
+<span class="w">              </span><span class="no">trace_id: &#39;%TRACE_ID%&#39;</span>
+<span class="w">              </span><span class="no">traceparent: &#39;%REQ(TRACEPARENT)%&#39;</span>
+<span class="w">              </span><span class="no">upstream_remote_port: &#39;%UPSTREAM_REMOTE_PORT%&#39;</span>
+<span class="w">              </span><span class="no">upstream_transport_failure_reason: &#39;%UPSTREAM_TRANSPORT_FAILURE_REASON%&#39;</span>
+<span class="w">              </span><span class="no">user_agent: &#39;%REQ(USER-AGENT)%&#39;</span>
+<span class="w">              </span><span class="no">x_forwarded_for: &#39;%REQ(X-FORWARDED-FOR)%&#39;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules">https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules</a></li>
 </ul>
 </blockquote>
 <p><br></p>
