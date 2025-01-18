@@ -43,7 +43,7 @@ data:
 
 <br>
 
-### auth
+### deployment
 
 記入中...
 
@@ -55,58 +55,96 @@ metadata:
   namespace: istio-system
 data:
   config.yaml: |
-    deployment:
+    deployment: {}
+```
+
+<br>
+
+### accessible_namespaces
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
     accessible_namespaces:
       - '**'
+```
+
+<br>
+
+### additional_service_yaml
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
     additional_service_yaml: {}
+```
+
+<br>
+
+### affinity
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
     affinity:
       node: {}
       pod: {}
       pod_anti: {}
+```
+
+<br>
+
+### configmap_annotations
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
     configmap_annotations: {}
+```
+
+<br>
+
+### custom_secrets
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
     custom_secrets: []
-    host_aliases: []
-    hpa:
-      api_version: autoscaling/v2
-      spec: {}
-    image_digest: ""
-    image_name: quay.io/kiali/kiali
-    image_pull_policy: Always
-    image_pull_secrets: []
-    image_version: v1.60.0
-    ingress:
-      additional_labels: {}
-      class_name: nginx
-      enabled: false
-      override_yaml:
-        metadata: {}
-    instance_name: kiali
-    logger:
-      log_format: text
-      log_level: info
-      sampler_rate: "1"
-      time_field_format: 2006-01-02T15:04:05Z07:00
-    namespace: istio-system
-    override_ingress_yaml:
-      metadata: {}
-    pod_annotations: {}
-    pod_labels: {}
-    priority_class_name: ""
-    replicas: 1
-    resources:
-      limits:
-        cpu: 1000m
-        memory: 1024Mi
-      requests:
-        cpu: 200m
-        memory: 128Mi
-    secret_name: kiali
-    security_context: {}
-    service_annotations: {}
-    service_type: ""
-    tolerations: []
-    version_label: v1.60.0
-    view_only_mode: true
 ```
 
 <br>
@@ -252,6 +290,42 @@ data:
 
 <br>
 
+### host_aliases
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    host_aliases: []
+```
+
+<br>
+
+### hpa
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    hpa:
+      api_version: autoscaling/v2
+      spec: {}
+```
+
+<br>
+
 ### identity
 
 記入中...
@@ -271,6 +345,113 @@ data:
 
 <br>
 
+### image_digest
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    image_digest: ""
+```
+
+<br>
+
+### image_name
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    image_name: quay.io/kiali/kiali
+```
+
+<br>
+
+### image_pull_policy
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    image_pull_policy: Always
+```
+
+<br>
+
+### image_pull_secrets
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    image_pull_secrets: []
+```
+
+<br>
+
+### image_version
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    image_version: v1.60.0
+```
+
+<br>
+
+### ingress
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    ingress:
+      additional_labels: {}
+      class_name: nginx
+      enabled: false
+      override_yaml:
+        metadata: {}
+```
+
+<br>
+
 ### istio_namespace
 
 記入中...
@@ -285,6 +466,67 @@ data:
   config.yaml: |
     istio_namespace: istio-system
 ```
+
+<br>
+
+### instance_name
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    instance_name: kiali
+```
+
+<br>
+
+### logger
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    logger:
+      log_format: text
+      log_level: info
+      sampler_rate: "1"
+      time_field_format: 2006-01-02T15:04:05Z07:00
+```
+
+<br>
+
+### login_token
+
+認証に必要なアクセストークンを設定する。
+
+定期的に自動更新される (デフォルトだと`24`時間) ため、デプロイツール (例：ArgoCD、Flux) ではアクセストークンの差分を無視した方がよい。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    login_token:
+      expiration_seconds: 86400
+      signing_key: *****
+```
+
+> - https://kiali.io/docs/configuration/authentication/session-configs/
 
 <br>
 
@@ -316,11 +558,9 @@ data:
 
 <br>
 
-### login_token
+### namespace
 
-認証に必要なアクセストークンを設定する。
-
-定期的に自動更新される (デフォルトだと`24`時間) ため、デプロイツール (例：ArgoCD、Flux) ではアクセストークンの差分を無視した方がよい。
+記入中...
 
 ```yaml
 apiVersion: v1
@@ -330,12 +570,151 @@ metadata:
   namespace: istio-system
 data:
   config.yaml: |
-    login_token:
-      expiration_seconds: 86400
-      signing_key: *****
+    namespace: istio-system
 ```
 
-> - https://kiali.io/docs/configuration/authentication/session-configs/
+<br>
+
+### override_ingress_yaml
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    override_ingress_yaml:
+      metadata: {}
+```
+
+<br>
+
+### pod_annotations
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    pod_annotations: {}
+```
+
+<br>
+
+### pod_labels
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    pod_labels: {}
+```
+
+<br>
+
+### priority_class_name
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    priority_class_name: ""
+```
+
+<br>
+
+### replicas
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    replicas: 1
+```
+
+<br>
+
+### resources
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 1024Mi
+      requests:
+        cpu: 200m
+        memory: 128Mi
+```
+
+<br>
+
+### secret_name
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    secret_name: kiali
+```
+
+<br>
+
+### security_context
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    security_context: {}
+```
 
 <br>
 
@@ -360,5 +739,90 @@ data:
 
 > - https://kiali.io/docs/configuration/
 > - https://kiali.io/docs/configuration/kialis.kiali.io/#property-details
+
+<br>
+
+### service_annotations
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    service_annotations: {}
+```
+
+<br>
+
+### service_type
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    service_type: ""
+```
+
+<br>
+
+### tolerations
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    tolerations: []
+```
+
+<br>
+
+### version_label
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    version_label: v1.60.0
+```
+
+<br>
+
+### view_only_mode
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    view_only_mode: true
+```
 
 <br>
