@@ -160,5 +160,6 @@ flowchart LR
 そうでないと、`30`代後半で書類選考すら通りにくくなる。
 
 > - https://youtu.be/1u82PcgOgFs?t=289
+> - https://note.com/spectol/n/ne36f77560b6f
 
 <br>

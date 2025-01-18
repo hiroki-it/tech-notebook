@@ -152,6 +152,59 @@ data:
 > - https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/#provision-the-data-source
 > - https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/query-editor/#common-query-editor-fields
 
+#### ▼ Grafana Loki
+
+Grafana Lokiの場合、`loki`タイプを指定する。
+
+トレースIDのUIにリダイレクトできるように、`derivedFields`キーを設定する。
+
+トレースIDを検索方法 (`matcherType`キー) として、構造化ログに対する`label`や非構造化ログに対する`null` (設定しない) がある。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana
+  namespace: prometheus
+data:
+  datasource.yaml: |
+    apiVersion: 1
+    datasources:
+      - name: Loki
+        type: loki
+        url: http://grafana-loki.istio-system.svc.cluster.local:3100/
+        basicAuth: false
+        jsonData:
+          derivedFields:
+          - datasourceUid: Tempo
+            matcherRegex: trace_id
+            matcherType: label
+            name: trace_id
+            url: $${__value.raw}
+            urlDisplayLabel: View Trace
+```
+
+> - https://grafana.com/docs/grafana/latest/datasources/loki/#provision-the-data-source
+> - https://github.com/grafana/loki/issues/9209#issuecomment-1882710470
+
+#### ▼ Grafana Tempo
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana
+  namespace: prometheus
+data:
+  datasource.yaml: |
+    apiVersion: 1
+    datasources:
+      - name: Tempo
+        type: tempo
+        url: http://grafana-tempo.istio-system.svc.cluster.local:3100/
+        basicAuth: false
+```
+
 <br>
 
 ## 02. grafana-ini-cm
