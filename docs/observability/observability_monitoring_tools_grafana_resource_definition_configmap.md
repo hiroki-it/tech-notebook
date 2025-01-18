@@ -160,6 +160,8 @@ Grafana Lokiの場合、`loki`タイプを指定する。
 
 トレースIDを検索方法 (`matcherType`キー) として、構造化ログの場合は`label`とする。
 
+`datasourceUid`キーでは、他に登録しているデータソースを設定する。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -177,11 +179,14 @@ data:
         jsonData:
           derivedFields:
             - name: trace_id
-              matcherType: label
-              matcherRegex: trace_id
+              matcherRegex: '"trace_id":"(\w+)"'
               url: $${__value.raw}
               urlDisplayLabel: View Trace
               datasourceUid: Tempo
+      - name: Tempo
+        type: tempo
+        url: http://grafana-tempo.istio-system.svc.cluster.local:3100/
+        basicAuth: false
 ```
 
 非構造化ログの場合は`null` (設定しない) とする。
@@ -212,8 +217,9 @@ data:
 ```
 
 > - https://grafana.com/docs/grafana/latest/datasources/loki/#provision-the-data-source
-> - https://github.com/grafana/loki/issues/9209#issuecomment-1882710470
 > - https://grafana.com/docs/grafana/next/datasources/loki/configure-loki-data-source/#derived-fields
+> - https://github.com/grafana/loki/issues/9209#issuecomment-1882710470
+> - https://github.com/grafana/grafana/issues/92699#issuecomment-2374259684
 
 #### ▼ Grafana Tempo
 

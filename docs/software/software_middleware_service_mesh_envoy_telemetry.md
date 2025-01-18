@@ -17,11 +17,11 @@ description: テレメトリー＠Envoyの知見を記録しています。
 
 ### アクセスログ形式と変数
 
-#### ▼ アクセスログ形式
+#### ▼ 非構造化ログ (デフォルト)
 
 Envoyは、マイクロサービスへのアクセスログ (インバウンド通信とアウトバウンド通信の両方) を作成し、標準出力に出力する。
 
-デフォルトで以下の形式でアクセスログを出力する。
+例えば、以下の形式と変数で定義したとする。
 
 ```bash
 [%START_TIME%] "%REQ(:METHOD)% %REQ(X-ENVOY-ORIGINAL-PATH?:PATH)% %PROTOCOL%"
@@ -30,6 +30,8 @@ Envoyは、マイクロサービスへのアクセスログ (インバウンド�
 "%REQ(X-REQUEST-ID)%" "%REQ(:AUTHORITY)%" "%UPSTREAM_HOST%"\n
 ```
 
+これにより、以下のアクセスログを出力する。
+
 ```bash
 [2016-04-15T20:17:00.310Z] "POST /api/v1/locations HTTP/2" 204 - 154 0 226 100 "10.0.35.28"
 "nsq2http" "cc21d9b0-cf5c-432b-8c7e-98aeb7988cd2" "locations" "tcp://10.0.2.1:80"
@@ -37,13 +39,104 @@ Envoyは、マイクロサービスへのアクセスログ (インバウンド�
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#default-format-string
 
-なお、`%REQ()`を使用して、好きなリクエストヘッダー値を出力できる。
+#### ▼ 構造化ログ
 
-これは、例えばユーザー定義のIDを使用している場合に役立つ。
+Envoyは、マイクロサービスへのアクセスログ (インバウンド通信とアウトバウンド通信の両方) を作成し、標準出力に出力する。
 
-```bash
-[%START_TIME%] %REQ(<リクエストヘッダー名 (例：ユーザー定義のトレースIDのヘッダー)>)% ...
+デフォルトでは非構造化ログを出力するが、ログを構造化できる。
+
+例えば、以下の形式と変数で定義したとする。
+
+```yaml
+{
+  "access_log_type": "%ACCESS_LOG_TYPE%",
+  "bytes_received": "%BYTES_RECEIVED%",
+  "bytes_sent": "%BYTES_SENT%",
+  "downstream_transport_failure_reason": "%DOWNSTREAM_TRANSPORT_FAILURE_REASON%",
+  "downstream_remote_port": "%DOWNSTREAM_REMOTE_PORT%",
+  "duration": "%DURATION%",
+  "grpc_status": "%GRPC_STATUS(CAMEL_STRING)%",
+  "method": "%REQ(:METHOD)%",
+  "path": "%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%",
+  "protocol": "%PROTOCOL%",
+  "response_code": "%RESPONSE_CODE%",
+  "response_flags": "%RESPONSE_FLAGS%",
+  "start_time": "%START_TIME%",
+  "trace_id": "%TRACE_ID%",
+  "traceparent": "%REQ(TRACEPARENT)%",
+  "upstream_remote_port": "%UPSTREAM_REMOTE_PORT%",
+  "upstream_transport_failure_reason": "%UPSTREAM_TRANSPORT_FAILURE_REASON%",
+  "user_agent": "%REQ(USER-AGENT)%",
+  "x_forwarded_for": "%REQ(X-FORWARDED-FOR)%",
+}
 ```
+
+これにより、以下のアクセスログを出力する。
+
+```yaml
+{
+  "access_log_type": "DownstreamEnd",
+  "bytes_received": 0,
+  "bytes_sent": 438,
+  "downstream_remote_port": 54078,
+  "downstream_transport_failure_reason": null,
+  "duration": 14,
+  "filter_chain_name": "0.0.0.0_9080",
+  "grpc_status": null,
+  "method": "GET",
+  "path": "/reviews/0",
+  "protocol": "HTTP/1.1",
+  "response_code": 200,
+  "response_flags": "-",
+  "start_time": "2025-01-18T13:39:50.094Z",
+  "trace_id": "d34ea2aa01d34d0fda79c6d09b097a83",
+  "traceparent": "00-d34ea2aa01d34d0fda79c6d09b097a83-fd0eae41e95a263c-01",
+  "upstream_host": "10.244.5.8:9080",
+  "upstream_remote_port": 9080,
+  "upstream_transport_failure_reason": null,
+  "user_agent": "curl/8.7.1",
+  "virtual_cluster_name": null,
+  "x_forwarded_for": null,
+}
+```
+
+#### ▼ %REQ()
+
+リクエストヘッダーから値を出力する。
+
+| リクエストヘッダー   | 出力方法                             |
+| -------------------- | ------------------------------------ |
+| traceparent          | `%REQ(TRACEPARENT)%`                 |
+| HTTPメソッド         | `%REQ(:METHOD)%`                     |
+| パス                 | `%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%` |
+| ユーザーエージェント | `%REQ(USER-AGENT)%'`                 |
+| X-Forwarded-for      | `%REQ(X-FORWARDED-FOR)%`             |
+
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules
+
+#### ▼ %RESP()
+
+レスポンスヘッダーから値を出力する。
+
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules
+
+#### ▼ %TRACE_ID%
+
+トレースコンテキスト仕様 (例：traceparentなど) からトレースIDのみを取得し、抽出する。
+
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules
+
+#### ▼ %GRPC_STATUS()%
+
+gRPCのステータスを出力する。
+
+例えば、gRPCのステータスが`InvalidArgument` (ステータスコード`3`) だとする。
+
+`%GRPC_STATUS(CAMEL_STRING)%`であれば、gRPCのステータスをキャメルケース (`InvalidArgument`) で出力する。
+
+`%GRPC_STATUS(NUMBER)%`であれば、gRPCのステータスを数値 (`3`) で出力する。
+
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules
 
 <br>
 

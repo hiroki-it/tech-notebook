@@ -64,6 +64,16 @@ data:
 
 Istiodコントロールプレーン (`discovery`コンテナ) のため、全ての`istio-proxy`コンテナにグローバルに設定する変数を管理する。
 
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+```
+
 代わりに、IstioOperatorの`.spec.meshConfig`キーで定義することもできるが、これは非推奨である。
 
 ```yaml

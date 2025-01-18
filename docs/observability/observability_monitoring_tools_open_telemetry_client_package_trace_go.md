@@ -1177,6 +1177,8 @@ func child(ctx *gin.Context) {
 
 そのため、もしX-Ray形式の各種IDを使用したい場合 (例：ログにX-Ray形式IDを出力したい)、変換処理が必要である。
 
+ここでは、元のW3C Trace Context仕様から指定した位置の文字列を抽出し、`1-***-***`というIDを作成している。
+
 ```go
 func getXrayTraceID(span trace.Span) string {
 
