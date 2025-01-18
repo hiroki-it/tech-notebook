@@ -100,13 +100,13 @@ Envoyは、マイクロサービスへのアクセスログ (インバウンド�
 }
 ```
 
-#### ▼ %ACCESS_LOG_TYPE%
+#### ▼ `%ACCESS_LOG_TYPE%`
 
 アクセスログの作成のタイミングを表す。
 
 例えば、`DownstreamEnd`であれば、`http_connection_manager`が通信を終了した時に作成されたログである。
 
-#### ▼ %REQ()
+#### ▼ `%REQ()`
 
 リクエストヘッダーから値を出力する。
 
@@ -120,19 +120,19 @@ Envoyは、マイクロサービスへのアクセスログ (インバウンド�
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules
 
-#### ▼ %RESP()
+#### ▼ `%RESP()`
 
 レスポンスヘッダーから値を出力する。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules
 
-#### ▼ %TRACE_ID%
+#### ▼ `%TRACE_ID%`
 
 トレースコンテキスト仕様 (例：traceparentなど) からトレースIDのみを取得し、抽出する。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules
 
-#### ▼ %GRPC_STATUS()%
+#### ▼ `%GRPC_STATUS()%`
 
 gRPCのステータスを出力する。
 
@@ -194,7 +194,7 @@ Cluster外からのリクエスト/Pod間通信時のレスポンスの補足メ
 
 #### ▼ メトリクス名のルール
 
-Envoyのメトリクスには、、
+Envoyのメトリクスには、`envoy_`というプレフィクスがついている。
 
 #### ▼ 通信全体に関するメトリクス
 
