@@ -176,7 +176,7 @@ data:
     datasources:
       - name: Loki
         type: loki
-        url: http://grafana-loki.istio-system.svc.cluster.local:3100/
+        url: http://grafana-loki.istio-system.svc.cluster.local:3100
         basicAuth: false
         jsonData:
           derivedFields:
@@ -187,7 +187,7 @@ data:
               datasourceUid: Tempo
       - name: Tempo
         type: tempo
-        url: http://grafana-tempo.istio-system.svc.cluster.local:3100/
+        url: http://grafana-tempo.istio-system.svc.cluster.local:3100
         basicAuth: false
 ```
 
@@ -212,7 +212,7 @@ data:
     datasources:
       - name: Tempo
         type: tempo
-        url: http://grafana-tempo.istio-system.svc.cluster.local:3100/
+        url: http://grafana-tempo.istio-system.svc.cluster.local:3100
         basicAuth: false
 ```
 
