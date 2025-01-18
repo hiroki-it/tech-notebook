@@ -158,9 +158,7 @@ Grafana Lokiの場合、`loki`タイプを指定する。
 
 トレースIDのUIにリダイレクトできるように、`derivedFields`キーを設定する。
 
-トレースIDを検索方法 (`matcherType`キー) として、構造化ログの場合は`label`とする。
-
-`matcherRegex`キーで、正規表現を用いて構造化ログのトレースIDを抽出する (例：`"trace_id":"([^"]*)"`)
+`matcherRegex`キーの正規表現 (例：`"trace_id":"([^"]*)"`、`trace_id=(\\w+)`など) で、トレースIDを抽出する。
 
 `url`キーに`$${__value.raw}`を設定すると、抽出したトレースIDをURLに出力できる。
 
@@ -191,33 +189,6 @@ data:
         type: tempo
         url: http://grafana-tempo.istio-system.svc.cluster.local:3100/
         basicAuth: false
-```
-
-非構造化ログの場合は`null` (設定しない) とする。
-
-また、`matcherRegex`キーは`trace_id=(\\w+)`である。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: grafana
-  namespace: prometheus
-data:
-  datasource.yaml: |
-    apiVersion: 1
-    datasources:
-      - name: Loki
-        type: loki
-        url: http://grafana-loki.istio-system.svc.cluster.local:3100/
-        basicAuth: false
-        jsonData:
-          derivedFields:
-            - name: trace_id
-              matcherRegex: trace_id=(\\w+)
-              url: $${__value.raw}
-              urlDisplayLabel: View Grafana Tempo
-              datasourceUid: Tempo
 ```
 
 > - https://grafana.com/docs/grafana/latest/datasources/loki/#provision-the-data-source
