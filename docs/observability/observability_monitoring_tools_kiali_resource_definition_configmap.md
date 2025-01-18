@@ -21,45 +21,6 @@ Kialiの`config.yaml`ファイルを管理する。
 
 <br>
 
-### auth
-
-記入中...
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: foo-kiali-cm
-  namespace: istio-system
-data:
-  config.yaml: |
-    auth:
-      openid: {}
-      openshift:
-        client_id_prefix: kiali
-      # 認証なしでKialiにログインできるようにする
-      strategy: anonymous
-```
-
-<br>
-
-### deployment
-
-記入中...
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: foo-kiali-cm
-  namespace: istio-system
-data:
-  config.yaml: |
-    deployment: {}
-```
-
-<br>
-
 ### accessible_namespaces
 
 記入中...
@@ -132,6 +93,28 @@ data:
 
 <br>
 
+### auth
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    auth:
+      openid: {}
+      openshift:
+        client_id_prefix: kiali
+      # 認証なしでKialiにログインできるようにする
+      strategy: anonymous
+```
+
+<br>
+
 ### custom_secrets
 
 記入中...
@@ -145,6 +128,23 @@ metadata:
 data:
   config.yaml: |
     custom_secrets: []
+```
+
+<br>
+
+### deployment
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-kiali-cm
+  namespace: istio-system
+data:
+  config.yaml: |
+    deployment: {}
 ```
 
 <br>
