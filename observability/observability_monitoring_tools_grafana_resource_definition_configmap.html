@@ -25138,6 +25138,7 @@
 <p>Grafanaのデータソースを設定する。</p>
 <h4 id="prometheus">▼ Prometheusの場合<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h4>
 <p>Prometheusの場合、ビルトインのプラグインを使用できる。</p>
+<p>GrafanaのデフォルトのデータソースはPrometheusとしておく (<code>isDefault</code>キーが<code>true</code>) とよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -25149,9 +25150,7 @@
 <span class="w">    </span><span class="no">datasources:</span>
 <span class="w">      </span><span class="no">- name: prometheus</span>
 <span class="w">        </span><span class="no">type: prometheus</span>
-<span class="w">        </span><span class="no">url: http://&lt;PrometheusのService名&gt;.&lt;PrometheusのNamespace名&gt;:9090/</span>
-<span class="w">        </span><span class="no">access: proxy</span>
-<span class="w">        </span><span class="no"># デフォルトのデータソースとするか否かを設定する</span>
+<span class="w">        </span><span class="no">url: http://&lt;PrometheusのService名&gt;.&lt;PrometheusのNamespace名&gt;:9090</span>
 <span class="w">        </span><span class="no">isDefault: &quot;true&quot;</span>
 <span class="w">        </span><span class="no">jsonData:</span>
 <span class="w">          </span><span class="no">timeInterval: 30s</span>
