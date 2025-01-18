@@ -158,7 +158,7 @@ Grafana Lokiの場合、`loki`タイプを指定する。
 
 トレースIDのUIにリダイレクトできるように、`derivedFields`キーを設定する。
 
-トレースIDを検索方法 (`matcherType`キー) として、構造化ログに対する`label`や非構造化ログに対する`null` (設定しない) がある。
+トレースIDを検索方法 (`matcherType`キー) として、構造化ログの場合は`label`とする。
 
 ```yaml
 apiVersion: v1
@@ -176,18 +176,48 @@ data:
         basicAuth: false
         jsonData:
           derivedFields:
-          - datasourceUid: Tempo
-            matcherRegex: trace_id
-            matcherType: label
-            name: trace_id
-            url: $${__value.raw}
-            urlDisplayLabel: View Trace
+            - name: trace_id
+              matcherType: label
+              matcherRegex: trace_id
+              url: $${__value.raw}
+              urlDisplayLabel: View Trace
+              datasourceUid: Tempo
+```
+
+非構造化ログの場合は`null` (設定しない) とする。
+
+また、`matcherRegex`キーは`trace_id=(\\w+)`である。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana
+  namespace: prometheus
+data:
+  datasource.yaml: |
+    apiVersion: 1
+    datasources:
+      - name: Loki
+        type: loki
+        url: http://grafana-loki.istio-system.svc.cluster.local:3100/
+        basicAuth: false
+        jsonData:
+          derivedFields:
+            - name: trace_id
+              matcherRegex: trace_id=(\\w+)
+              url: $${__value.raw}
+              urlDisplayLabel: View Trace
+              datasourceUid: Tempo
 ```
 
 > - https://grafana.com/docs/grafana/latest/datasources/loki/#provision-the-data-source
 > - https://github.com/grafana/loki/issues/9209#issuecomment-1882710470
+> - https://grafana.com/docs/grafana/next/datasources/loki/configure-loki-data-source/#derived-fields
 
 #### ▼ Grafana Tempo
+
+Grafana Tempoの場合、`tempo`タイプを指定する。
 
 ```yaml
 apiVersion: v1
