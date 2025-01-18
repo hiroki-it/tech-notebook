@@ -25214,7 +25214,7 @@
 <h4 id="grafana-loki">▼ Grafana Loki<a class="headerlink" href="#grafana-loki" title="Permanent link">&para;</a></h4>
 <p>Grafana Lokiの場合、<code>loki</code>タイプを指定する。</p>
 <p>トレースIDのUIにリダイレクトできるように、<code>derivedFields</code>キーを設定する。</p>
-<p>トレースIDを検索方法 (<code>matcherType</code>キー) として、構造化ログに対する<code>label</code>や非構造化ログに対する<code>null</code> (設定しない) がある。</p>
+<p>トレースIDを検索方法 (<code>matcherType</code>キー) として、構造化ログの場合は<code>label</code>とする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -25230,20 +25230,45 @@
 <span class="w">        </span><span class="no">basicAuth: false</span>
 <span class="w">        </span><span class="no">jsonData:</span>
 <span class="w">          </span><span class="no">derivedFields:</span>
-<span class="w">          </span><span class="no">- datasourceUid: Tempo</span>
-<span class="w">            </span><span class="no">matcherRegex: trace_id</span>
-<span class="w">            </span><span class="no">matcherType: label</span>
-<span class="w">            </span><span class="no">name: trace_id</span>
-<span class="w">            </span><span class="no">url: $${__value.raw}</span>
-<span class="w">            </span><span class="no">urlDisplayLabel: View Trace</span>
+<span class="w">            </span><span class="no">- name: trace_id</span>
+<span class="w">              </span><span class="no">matcherType: label</span>
+<span class="w">              </span><span class="no">matcherRegex: trace_id</span>
+<span class="w">              </span><span class="no">url: $${__value.raw}</span>
+<span class="w">              </span><span class="no">urlDisplayLabel: View Trace</span>
+<span class="w">              </span><span class="no">datasourceUid: Tempo</span>
+</code></pre></div>
+<p>非構造化ログの場合は<code>null</code> (設定しない) とする。</p>
+<p>また、<code>matcherRegex</code>キーは<code>trace_id=(\\w+)</code>である。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">datasource.yaml</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">apiVersion: 1</span>
+<span class="w">    </span><span class="no">datasources:</span>
+<span class="w">      </span><span class="no">- name: Loki</span>
+<span class="w">        </span><span class="no">type: loki</span>
+<span class="w">        </span><span class="no">url: http://grafana-loki.istio-system.svc.cluster.local:3100/</span>
+<span class="w">        </span><span class="no">basicAuth: false</span>
+<span class="w">        </span><span class="no">jsonData:</span>
+<span class="w">          </span><span class="no">derivedFields:</span>
+<span class="w">            </span><span class="no">- name: trace_id</span>
+<span class="w">              </span><span class="no">matcherRegex: trace_id=(\\w+)</span>
+<span class="w">              </span><span class="no">url: $${__value.raw}</span>
+<span class="w">              </span><span class="no">urlDisplayLabel: View Trace</span>
+<span class="w">              </span><span class="no">datasourceUid: Tempo</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://grafana.com/docs/grafana/latest/datasources/loki/#provision-the-data-source">https://grafana.com/docs/grafana/latest/datasources/loki/#provision-the-data-source</a></li>
 <li><a href="https://github.com/grafana/loki/issues/9209#issuecomment-1882710470">https://github.com/grafana/loki/issues/9209#issuecomment-1882710470</a></li>
+<li><a href="https://grafana.com/docs/grafana/next/datasources/loki/configure-loki-data-source/#derived-fields">https://grafana.com/docs/grafana/next/datasources/loki/configure-loki-data-source/#derived-fields</a></li>
 </ul>
 </blockquote>
 <h4 id="grafana-tempo">▼ Grafana Tempo<a class="headerlink" href="#grafana-tempo" title="Permanent link">&para;</a></h4>
+<p>Grafana Tempoの場合、<code>tempo</code>タイプを指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
