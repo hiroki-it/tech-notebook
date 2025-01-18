@@ -76,6 +76,8 @@ Grafanaのデータソースを設定する。
 
 Prometheusの場合、ビルトインのプラグインを使用できる。
 
+GrafanaのデフォルトのデータソースはPrometheusとしておく (`isDefault`キーが`true`) とよい。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -88,9 +90,7 @@ data:
     datasources:
       - name: prometheus
         type: prometheus
-        url: http://<PrometheusのService名>.<PrometheusのNamespace名>:9090/
-        access: proxy
-        # デフォルトのデータソースとするか否かを設定する
+        url: http://<PrometheusのService名>.<PrometheusのNamespace名>:9090
         isDefault: "true"
         jsonData:
           timeInterval: 30s
