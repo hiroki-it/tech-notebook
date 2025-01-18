@@ -24887,14 +24887,10 @@
 <h4 id="_3">▼ 非構造化ログ (デフォルト)<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>Envoyは、マイクロサービスへのアクセスログ (インバウンド通信とアウトバウンド通信の両方) を作成し、標準出力に出力する。</p>
 <p>例えば、以下の形式と変数で定義したとする。</p>
-<div class="highlight"><pre><span></span><code><span class="o">[</span>%START_TIME%<span class="o">]</span><span class="w"> </span><span class="s2">&quot;%REQ(:METHOD)% %REQ(X-ENVOY-ORIGINAL-PATH?:PATH)% %PROTOCOL%&quot;</span>
-%RESPONSE_CODE%<span class="w"> </span>%RESPONSE_FLAGS%<span class="w"> </span>%BYTES_RECEIVED%<span class="w"> </span>%BYTES_SENT%<span class="w"> </span>%DURATION%
-%RESP<span class="o">(</span>X-ENVOY-UPSTREAM-SERVICE-TIME<span class="o">)</span>%<span class="w"> </span><span class="s2">&quot;%REQ(X-FORWARDED-FOR)%&quot;</span><span class="w"> </span><span class="s2">&quot;%REQ(USER-AGENT)%&quot;</span>
-<span class="s2">&quot;%REQ(X-REQUEST-ID)%&quot;</span><span class="w"> </span><span class="s2">&quot;%REQ(:AUTHORITY)%&quot;</span><span class="w"> </span><span class="s2">&quot;%UPSTREAM_HOST%&quot;</span><span class="se">\n</span>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>%START_TIME%<span class="o">]</span><span class="w"> </span><span class="s2">&quot;%REQ(:METHOD)% %REQ(X-ENVOY-ORIGINAL-PATH?:PATH)% %PROTOCOL%&quot;</span><span class="w"> </span><span class="s2">&quot;%RESPONSE_CODE%&quot;</span><span class="w"> </span><span class="s2">&quot;%RESPONSE_FLAGS%&quot;</span><span class="w"> </span><span class="s2">&quot;%BYTES_RECEIVED%&quot;</span><span class="w"> </span><span class="s2">&quot;%BYTES_SENT%&quot;</span><span class="w"> </span><span class="s2">&quot;%DURATION%&quot;</span><span class="w"> </span><span class="s2">&quot;%RESP(X-ENVOY-UPSTREAM-SERVICE-TIME)%&quot;</span><span class="w"> </span><span class="s2">&quot;%REQ(X-FORWARDED-FOR)%&quot;</span><span class="w"> </span><span class="s2">&quot;%REQ(USER-AGENT)%&quot;</span><span class="w"> </span><span class="s2">&quot;%REQ(X-REQUEST-ID)%&quot;</span><span class="w"> </span><span class="s2">&quot;%REQ(:AUTHORITY)%&quot;</span><span class="w"> </span><span class="s2">&quot;%UPSTREAM_HOST%&quot;</span>
 </code></pre></div>
 <p>これにより、以下のアクセスログを出力する。</p>
-<div class="highlight"><pre><span></span><code><span class="o">[</span><span class="m">2016</span>-04-15T20:17:00.310Z<span class="o">]</span><span class="w"> </span><span class="s2">&quot;POST /api/v1/locations HTTP/2&quot;</span><span class="w"> </span><span class="m">204</span><span class="w"> </span>-<span class="w"> </span><span class="m">154</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">226</span><span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="s2">&quot;10.0.35.28&quot;</span>
-<span class="s2">&quot;nsq2http&quot;</span><span class="w"> </span><span class="s2">&quot;cc21d9b0-cf5c-432b-8c7e-98aeb7988cd2&quot;</span><span class="w"> </span><span class="s2">&quot;locations&quot;</span><span class="w"> </span><span class="s2">&quot;tcp://10.0.2.1:80&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="o">[</span><span class="m">2016</span>-04-15T20:17:00.310Z<span class="o">]</span><span class="w"> </span><span class="s2">&quot;POST /api/v1/locations HTTP/2&quot;</span><span class="w"> </span><span class="m">204</span><span class="w"> </span>-<span class="w"> </span><span class="m">154</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">226</span><span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="s2">&quot;10.0.35.28&quot;</span><span class="w"> </span><span class="s2">&quot;nsq2http&quot;</span><span class="w"> </span><span class="s2">&quot;cc21d9b0-cf5c-432b-8c7e-98aeb7988cd2&quot;</span><span class="w"> </span><span class="s2">&quot;locations&quot;</span><span class="w"> </span><span class="s2">&quot;tcp://10.0.2.1:80&quot;</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -24953,10 +24949,10 @@
 <span class="w">  </span><span class="s">&quot;x_forwarded_for&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<h4 id="access_log_type">▼ %ACCESS_LOG_TYPE%<a class="headerlink" href="#access_log_type" title="Permanent link">&para;</a></h4>
+<h4 id="access_log_type">▼ <code>%ACCESS_LOG_TYPE%</code><a class="headerlink" href="#access_log_type" title="Permanent link">&para;</a></h4>
 <p>アクセスログの作成のタイミングを表す。</p>
 <p>例えば、<code>DownstreamEnd</code>であれば、<code>http_connection_manager</code>が通信を終了した時に作成されたログである。</p>
-<h4 id="req">▼ %REQ()<a class="headerlink" href="#req" title="Permanent link">&para;</a></h4>
+<h4 id="req">▼ <code>%REQ()</code><a class="headerlink" href="#req" title="Permanent link">&para;</a></h4>
 <p>リクエストヘッダーから値を出力する。</p>
 <table>
 <thead>
@@ -24999,21 +24995,21 @@
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules">https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules</a></li>
 </ul>
 </blockquote>
-<h4 id="resp">▼ %RESP()<a class="headerlink" href="#resp" title="Permanent link">&para;</a></h4>
+<h4 id="resp">▼ <code>%RESP()</code><a class="headerlink" href="#resp" title="Permanent link">&para;</a></h4>
 <p>レスポンスヘッダーから値を出力する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules">https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules</a></li>
 </ul>
 </blockquote>
-<h4 id="trace_id">▼ %TRACE_ID%<a class="headerlink" href="#trace_id" title="Permanent link">&para;</a></h4>
+<h4 id="trace_id">▼ <code>%TRACE_ID%</code><a class="headerlink" href="#trace_id" title="Permanent link">&para;</a></h4>
 <p>トレースコンテキスト仕様 (例：traceparentなど) からトレースIDのみを取得し、抽出する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules">https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules</a></li>
 </ul>
 </blockquote>
-<h4 id="grpc_status">▼ %GRPC_STATUS()%<a class="headerlink" href="#grpc_status" title="Permanent link">&para;</a></h4>
+<h4 id="grpc_status">▼ <code>%GRPC_STATUS()%</code><a class="headerlink" href="#grpc_status" title="Permanent link">&para;</a></h4>
 <p>gRPCのステータスを出力する。</p>
 <p>例えば、gRPCのステータスが<code>InvalidArgument</code> (ステータスコード<code>3</code>) だとする。</p>
 <p><code>%GRPC_STATUS(CAMEL_STRING)%</code>であれば、gRPCのステータスをキャメルケース (<code>InvalidArgument</code>) で出力する。</p>
@@ -25130,7 +25126,7 @@
 <h2 id="02">02. メトリクス<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">メトリクスの種類<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ メトリクス名のルール<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>Envoyのメトリクスには、、</p>
+<p>Envoyのメトリクスには、<code>envoy_</code>というプレフィクスがついている。</p>
 <h4 id="_8">▼ 通信全体に関するメトリクス<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p><code>envoy_downstream_*****</code> (インバウンド系)、<code>envoy_upstream_*****</code> (アウトバウンド系) のメトリクスがある。</p>
 <blockquote>
