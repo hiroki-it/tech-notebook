@@ -160,6 +160,8 @@ Grafana Lokiの場合、`loki`タイプを指定する。
 
 トレースIDを検索方法 (`matcherType`キー) として、構造化ログの場合は`label`とする。
 
+`url`キーに`$${__value.raw}`を設定すると、抽出したトレースIDをURLに出力できる。
+
 `datasourceUid`キーでは、他に登録しているデータソースを設定する。
 
 ```yaml
@@ -179,9 +181,9 @@ data:
         jsonData:
           derivedFields:
             - name: trace_id
-              matcherRegex: '"trace_id":"(\w+)"'
+              matcherRegex: '"trace_id":"([^"]*)"'
               url: $${__value.raw}
-              urlDisplayLabel: View Trace
+              urlDisplayLabel: View Grafana Tempo
               datasourceUid: Tempo
       - name: Tempo
         type: tempo

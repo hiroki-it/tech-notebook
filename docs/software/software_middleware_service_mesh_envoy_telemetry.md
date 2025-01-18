@@ -84,7 +84,7 @@ Envoyは、マイクロサービスへのアクセスログ (インバウンド�
   "filter_chain_name": "0.0.0.0_9080",
   "grpc_status": null,
   "method": "GET",
-  "path": "/reviews/0",
+  "path": "/foo/1",
   "protocol": "HTTP/1.1",
   "response_code": 200,
   "response_flags": "-",
@@ -100,17 +100,23 @@ Envoyは、マイクロサービスへのアクセスログ (インバウンド�
 }
 ```
 
+#### ▼ %ACCESS_LOG_TYPE%
+
+アクセスログの作成のタイミングを表す。
+
+例えば、`DownstreamEnd`であれば、`http_connection_manager`が通信を終了した時に作成されたログである。
+
 #### ▼ %REQ()
 
 リクエストヘッダーから値を出力する。
 
-| リクエストヘッダー   | 出力方法                             |
-| -------------------- | ------------------------------------ |
-| traceparent          | `%REQ(TRACEPARENT)%`                 |
-| HTTPメソッド         | `%REQ(:METHOD)%`                     |
-| パス                 | `%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%` |
-| ユーザーエージェント | `%REQ(USER-AGENT)%'`                 |
-| X-Forwarded-for      | `%REQ(X-FORWARDED-FOR)%`             |
+| リクエストヘッダー   | 出力方法                             | 例                                                        |
+| -------------------- | ------------------------------------ | --------------------------------------------------------- |
+| traceparent          | `%REQ(TRACEPARENT)%`                 | `00-d34ea2aa01d34d0fda79c6d09b097a83-fd0eae41e95a263c-01` |
+| HTTPメソッド         | `%REQ(:METHOD)%`                     | `GET`                                                     |
+| パス                 | `%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%` | `/foo/1`                                                  |
+| ユーザーエージェント | `%REQ(USER-AGENT)%'`                 | `curl/8.7.1`                                              |
+| X-Forwarded-for      | `%REQ(X-FORWARDED-FOR)%`             | 記入中...                                                 |
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules
 

@@ -849,6 +849,46 @@ spec:
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider
 > - https://discuss.istio.io/t/integrating-jaeger-tracing-using-telemetry-api/14759
 
+#### ▼ envoyFileAccessLog
+
+Envoyのアクセスログを設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    extensionProviders:
+      - name: envoy-grpc
+        envoyFileAccessLog:
+          logFormat:
+            labels:
+              access_log_type: '%ACCESS_LOG_TYPE%'
+              bytes_received: '%BYTES_RECEIVED%'
+              bytes_sent: '%BYTES_SENT%'
+              downstream_transport_failure_reason: '%DOWNSTREAM_TRANSPORT_FAILURE_REASON%'
+              downstream_remote_port: '%DOWNSTREAM_REMOTE_PORT%'
+              duration: '%DURATION%'
+              grpc_status: '%GRPC_STATUS(CAMEL_STRING)%'
+              method: '%REQ(:METHOD)%'
+              path: '%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%'
+              protocol: '%PROTOCOL%'
+              response_code: '%RESPONSE_CODE%'
+              response_flags: '%RESPONSE_FLAGS%'
+              start_time: '%START_TIME%'
+              trace_id: '%TRACE_ID%'
+              traceparent: '%REQ(TRACEPARENT)%'
+              upstream_remote_port: '%UPSTREAM_REMOTE_PORT%'
+              upstream_transport_failure_reason: '%UPSTREAM_TRANSPORT_FAILURE_REASON%'
+              user_agent: '%REQ(USER-AGENT)%'
+              x_forwarded_for: '%REQ(X-FORWARDED-FOR)%'
+```
+
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules
+
 <br>
 
 ### holdApplicationUntilProxyStarts
