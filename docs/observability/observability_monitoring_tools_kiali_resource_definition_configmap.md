@@ -134,7 +134,6 @@ data:
         prometheus:
           # PrometheusのServiceの宛先情報を設定する。
           url: http://foo-prometheus.foo-namespace.svc.cluster.local:9090
-      # https://kiali.io/docs/configuration/p8s-jaeger-grafana/grafana/
 ```
 
 > - https://kiali.io/docs/configuration/custom-dashboard/
@@ -208,6 +207,8 @@ data:
       # サービスメッシュ全体のヘルスチェックのため、IstioのServiceの宛先情報を設定する。
       url_service_version: http://istiod-<リビジョン番号>.istio-system.svc.cluster.local:15014/version
 ```
+
+> - https://kiali.io/docs/configuration/istio/
 
 #### ▼ prometheus
 
