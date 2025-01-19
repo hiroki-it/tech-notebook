@@ -79,6 +79,7 @@
   >   > - ##### [Go](https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_grpc_client_package_go.html)
 
 - #### <u>GraphQL-API</u>
+
   > - ##### [GraphQL](https://hiroki-it.github.io/tech-notebook/software/software_application_api_graphql_api_graphql.html)
 
 <br>
@@ -91,6 +92,7 @@
   > - ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_argoworkflow_resource_definition.html)
 
 - #### Temporal
+
   > - ##### [Temporal](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal.html)
   > - ##### <u>設定ファイル</u>
   >   > - ##### [Clusterスコープ](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal_conf_cluster.html)
