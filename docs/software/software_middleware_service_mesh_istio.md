@@ -149,7 +149,7 @@ waypoint-proxyが`L7` (アプリケーション層) のプロトコル (例：HT
 ```yaml
 $ istioctl experimental waypoint generate
 ---
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: foo

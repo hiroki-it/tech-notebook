@@ -512,6 +512,73 @@ httpbin-app-service.services.svc.cluster.local                                  
 
 > - https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
 
+### 宛先のServiceのポート番号について
+
+Istioは、宛先のServiceに送信しようとするプロトコルを厳格に認識する。
+
+宛先のServiceの`.spec.ports[*].name`キー (`<プロトコル名>-<任意の文字列>`) または`.spec.ports[*].appProtocol`キーを認識し、そのServiceには指定されたプロトコルでしか通信を送れなくなる。
+
+**＊例＊**
+
+appProtocolを使用しない場合は以下の通りとなる。
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-service
+spec:
+  ports:
+    # HTTPのみ
+    - name: http-foo
+      port: 80
+```
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-service
+spec:
+  ports:
+    # TCPのみ
+    - name: tcp-foo
+      port: 9000
+```
+
+**＊例＊**
+
+appProtocolを使用する場合は以下の通りとなる。
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-service
+spec:
+  ports:
+    # HTTPのみをVirtualServiceから送信できる
+    - appProtocol: http
+      port: 80
+```
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-service
+spec:
+  ports:
+    # TCPのみをVirtualServiceから送信できる
+    - appProtocol: tcp
+      port: 9000
+```
+
+> - https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/
+> - https://zenn.dev/toshikish/articles/d0dd54ae067bed
+
+<br>
+
 <br>
 
 ## 04. DestinationRule

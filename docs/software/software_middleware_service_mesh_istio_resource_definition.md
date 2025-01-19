@@ -1603,6 +1603,8 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 ### concurrency
 
+サービスメッシュ全体、特定Namespace、特定ワークロードの`istio-proxy`コンテナにて、ワーカースレッド数を設定する。
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: ProxyConfig
@@ -1613,10 +1615,13 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/proxy-config/#ProxyConfig
+> - https://github.com/istio/istio/discussions/48596#discussioncomment-7993485
 
 <br>
 
 ### environmentVariables
+
+サービスメッシュ全体、特定Namespace、特定ワークロードの`istio-proxy`コンテナにて、環境変数を設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1629,6 +1634,7 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/proxy-config/#ProxyConfig
+> - https://github.com/istio/istio/discussions/48596#discussioncomment-7993485
 
 <br>
 
@@ -2012,7 +2018,7 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/service-entry/#ServiceEntry-Location
 
-#### ▼ MESH_EXTERNAL
+#### ▼ MESH_INTERNAL
 
 登録したシステムがサービスメッシュ内にあることを表す。
 
@@ -3098,81 +3104,28 @@ spec:
 
 <br>
 
-### 宛先のServiceのポート番号について
-
-Istioは、宛先のServiceに送信しようとするプロトコルを厳格に認識する。
-
-宛先のServiceの`.spec.ports[*].name`キー (`<プロトコル名>-<任意の文字列>`) または`.spec.ports[*].appProtocol`キーを認識し、そのServiceには指定されたプロトコルでしか通信を送れなくなる。
-
-**＊例＊**
-
-appProtocolを使用しない場合は以下の通りとなる。
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: foo-service
-spec:
-  ports:
-    # HTTPのみ
-    - name: http-foo
-      port: 80
-```
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: foo-service
-spec:
-  ports:
-    # TCPのみ
-    - name: tcp-foo
-      port: 9000
-```
-
-**＊例＊**
-
-appProtocolを使用する場合は以下の通りとなる。
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: foo-service
-spec:
-  ports:
-    # HTTPのみをVirtualServiceから送信できる
-    - appProtocol: http
-      port: 80
-```
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: foo-service
-spec:
-  ports:
-    # TCPのみをVirtualServiceから送信できる
-    - appProtocol: tcp
-      port: 9000
-```
-
-> - https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/
-> - https://zenn.dev/toshikish/articles/d0dd54ae067bed
-
-<br>
-
 ## 13. WorkloadEntry
 
-記入中...
+Kubernetes Clusterの外にある単一の仮想サーバーをサービスメッシュ内で管理する。
+
+データベースをKubernetes Cluster外の仮想サーバー上で稼働させていたり、一部のマイクロサービスを仮想サーバー上で稼働させなければならない場合に役立つ。
+
+ただし、仮想サーバーのプロキシとして、Envoyをおく必要がある。
+
+> - https://istio.io/latest/blog/2020/workload-entry/
+> - https://qiita.com/ipppppei/items/b376602ae6c325e3a55e
 
 <br>
 
 ## 14. WorkloadGroup
 
-記入中...
+Kubernetes Clusterの外にある複数の仮想サーバーをサービスメッシュ内で管理する。
+
+データベースをKubernetes Cluster外の仮想サーバー上で稼働させていたり、一部のマイクロサービスを仮想サーバー上で稼働させなければならない場合に役立つ。
+
+ただし、仮想サーバーのプロキシとして、Envoyをおく必要がある。
+
+> - https://istio.io/latest/blog/2020/workload-entry/
+> - https://qiita.com/ipppppei/items/b376602ae6c325e3a55e
 
 <br>
