@@ -1166,6 +1166,23 @@ spec:
 
 ### istio-proxy内のpilot-agent
 
+#### ▼ `ISTIO_META_CERT_SIGNER`
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        ISTIO_META_CERT_SIGNER: istio-system
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+
 #### ▼ `ISTIO_META_DNS_CAPTURE`
 
 istio-proxyでDNSのキャッシュを作成するか否かを設定する。
@@ -1222,9 +1239,10 @@ data:
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
-> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
 
 #### ▼ `EXIT_ON_ZERO_ACTIVE_CONNECTIONS`
+
+ServiceからPod内のistio-proxyへのリクエストがなくなったら、istio-proxyコンテナを終了させるか否かを設定する。
 
 ```yaml
 apiVersion: v1
@@ -1239,9 +1257,6 @@ data:
         EXIT_ON_ZERO_ACTIVE_CONNECTIONS: true
 ```
 
-ServiceからPod内のistio-proxyへのリクエストがなくなったら、istio-proxyコンテナを終了させるか否かを設定する。
-
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
-> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
 
 <br>
