@@ -317,16 +317,6 @@ data:
         ...
 ```
 
-| 環境変数                          | 例     | 説明                                                                                       |
-| --------------------------------- | ------ | ------------------------------------------------------------------------------------------ |
-| `ISTIO_META_DNS_CAPTURE`          | `true` | istio-proxyでDNSのキャッシュを作成するか否か                                               |
-| `ISTIO_META_DNS_AUTO_ALLOCATE`    | `true` | IPアドレスが設定されていないServiceEntryに対して、IPアドレスを自動的に設定する。           |
-| `BOOTSTRAP_XDS_AGENT`             | `true` |                                                                                            |
-| `EXIT_ON_ZERO_ACTIVE_CONNECTIONS` | `true` | ServiceからPod内のistio-proxyへのリクエストがなくなったら、istio-proxyコンテナを終了させる |
-
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
-> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
-
 #### ▼ rootNamespace
 
 ```yaml
@@ -1101,7 +1091,7 @@ data:
 
 ### Istiod
 
-#### ▼ CLUSTER_ID
+#### ▼ `CLUSTER_ID`
 
 Istiodのサービスレジストリを設定する。
 
@@ -1122,7 +1112,7 @@ spec:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
 
-#### ▼ PILOT_TRACE_SAMPLING
+#### ▼ `PILOT_TRACE_SAMPLING`
 
 分散トレースの収集率を設定する。
 
@@ -1145,7 +1135,7 @@ spec:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
 
-#### ▼ PILOT_CERT_PROVIDER
+#### ▼ `PILOT_CERT_PROVIDER`
 
 `istio-proxy`コンテナに設定するSSL証明書のプロバイダーを設定する。
 
@@ -1171,5 +1161,87 @@ spec:
 | `none`       | SSL証明書を使用しない。                           |
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+
+<br>
+
+### istio-proxy内のpilot-agent
+
+#### ▼ `ISTIO_META_DNS_CAPTURE`
+
+istio-proxyでDNSのキャッシュを作成するか否かを設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        ISTIO_META_DNS_CAPTURE: true
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
+
+#### ▼ `ISTIO_META_DNS_AUTO_ALLOCATE`
+
+IPアドレスが設定されていないServiceEntryに対して、IPアドレスを自動的に設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        ISTIO_META_DNS_AUTO_ALLOCATE: true
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
+
+#### ▼ `BOOTSTRAP_XDS_AGENT`
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        BOOTSTRAP_XDS_AGENT: true
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
+
+#### ▼ `EXIT_ON_ZERO_ACTIVE_CONNECTIONS`
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        EXIT_ON_ZERO_ACTIVE_CONNECTIONS: true
+```
+
+ServiceからPod内のistio-proxyへのリクエストがなくなったら、istio-proxyコンテナを終了させるか否かを設定する。
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
 
 <br>
