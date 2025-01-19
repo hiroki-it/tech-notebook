@@ -30353,22 +30353,44 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="13-workloadentry">13. WorkloadEntry<a class="headerlink" href="#13-workloadentry" title="Permanent link">&para;</a></h2>
 <p>Kubernetes Clusterの外にある単一の仮想サーバーをサービスメッシュ内で管理する。</p>
 <p>データベースをKubernetes Cluster外の仮想サーバー上で稼働させていたり、一部のマイクロサービスを仮想サーバー上で稼働させなければならない場合に役立つ。</p>
-<p>ただし、仮想サーバーのプロキシとして、Envoyをおく必要がある。</p>
+<p>ただし、仮想サーバー内でistioプロセスをインストールし、実行する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># インストール</span>
+$<span class="w"> </span>curl<span class="w"> </span>-LO<span class="w"> </span>https://storage.googleapis.com/istio-release/releases/1.24.2/deb/istio-sidecar.deb
+$<span class="w"> </span>sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>istio-sidecar.deb
+
+...<span class="w"> </span><span class="c1"># 諸々の手順</span>
+
+<span class="c1"># デーモンプロセスを実行</span>
+$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>istio
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/blog/2020/workload-entry/">https://istio.io/latest/blog/2020/workload-entry/</a></li>
 <li><a href="https://qiita.com/ipppppei/items/b376602ae6c325e3a55e">https://qiita.com/ipppppei/items/b376602ae6c325e3a55e</a></li>
+<li><a href="https://istio.io/latest/docs/setup/install/virtual-machine/#start-istio-within-the-virtual-machine">https://istio.io/latest/docs/setup/install/virtual-machine/#start-istio-within-the-virtual-machine</a></li>
+<li><a href="https://istio.io/latest/docs/examples/virtual-machines/">https://istio.io/latest/docs/examples/virtual-machines/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h2 id="14-workloadgroup">14. WorkloadGroup<a class="headerlink" href="#14-workloadgroup" title="Permanent link">&para;</a></h2>
 <p>Kubernetes Clusterの外にある複数の仮想サーバーをサービスメッシュ内で管理する。</p>
 <p>データベースをKubernetes Cluster外の仮想サーバー上で稼働させていたり、一部のマイクロサービスを仮想サーバー上で稼働させなければならない場合に役立つ。</p>
-<p>ただし、仮想サーバーのプロキシとして、Envoyをおく必要がある。</p>
+<p>ただし、仮想サーバー内でistioプロセスをインストールし、実行する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># インストール</span>
+$<span class="w"> </span>curl<span class="w"> </span>-LO<span class="w"> </span>https://storage.googleapis.com/istio-release/releases/1.24.2/deb/istio-sidecar.deb
+$<span class="w"> </span>sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>istio-sidecar.deb
+
+...<span class="w"> </span><span class="c1"># 諸々の手順</span>
+
+<span class="c1"># デーモンプロセスを実行</span>
+$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>istio
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/blog/2020/workload-entry/">https://istio.io/latest/blog/2020/workload-entry/</a></li>
 <li><a href="https://qiita.com/ipppppei/items/b376602ae6c325e3a55e">https://qiita.com/ipppppei/items/b376602ae6c325e3a55e</a></li>
+<li><a href="https://istio.io/latest/docs/setup/install/virtual-machine/#start-istio-within-the-virtual-machine">https://istio.io/latest/docs/setup/install/virtual-machine/#start-istio-within-the-virtual-machine</a></li>
+<li><a href="https://istio.io/latest/docs/examples/virtual-machines/">https://istio.io/latest/docs/examples/virtual-machines/</a></li>
 </ul>
 </blockquote>
 <p><br></p>

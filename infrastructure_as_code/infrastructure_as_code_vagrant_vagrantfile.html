@@ -25223,10 +25223,22 @@
 <p><br></p>
 <h3 id="configvmbox">config.vm.box<a class="headerlink" href="#configvmbox" title="Permanent link">&para;</a></h3>
 <h4 id="box">▼ boxとは<a class="headerlink" href="#box" title="Permanent link">&para;</a></h4>
-<p>仮想環境のベースとするボックス名を設定する。</p>
+<p>仮想環境のベースとするVirtualBoxのボックス名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
 <span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
+
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン値&gt;&quot;</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
+
+<span class="w">  </span><span class="c1"># Ubuntuベースの仮想サーバー</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ubuntu/trusty64&quot;</span>
+
+<span class="w">  </span><span class="c1"># バージョン</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;20191107.0.0&quot;</span>
 
 <span class="k">end</span>
 </code></pre></div>
@@ -25272,6 +25284,18 @@
 
 <span class="k">end</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
+
+<span class="w">  </span><span class="c1"># MySQLのために3306ポートをフォワーディングする</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span><span class="w"> </span><span class="s2">&quot;forwarded_port&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">guest</span><span class="p">:</span><span class="w"> </span><span class="mi">3306</span><span class="p">,</span><span class="w"> </span><span class="ss">host</span><span class="p">:</span><span class="w"> </span><span class="mi">3306</span>
+
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">inline</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="dl">SHELL</span>
+<span class="sh">    apt-get update</span>
+<span class="sh">    apt-get install -y mysql-server</span>
+<span class="dl">  SHELL</span>
+
+<span class="k">end</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://www.vagrantup.com/docs/networking/forwarded_ports">https://www.vagrantup.com/docs/networking/forwarded_ports</a></li>
@@ -25279,11 +25303,13 @@
 </blockquote>
 <h4 id="private_network">▼ private_network<a class="headerlink" href="#private_network" title="Permanent link">&para;</a></h4>
 <p>仮想環境にプライベートIPアドレスを設定する。</p>
-<p>同じプライベートネットワーク内の他の仮想環境とのみ、通信できるようになる。</p>
+<p>ローカルホスト以外で接続できるようになる。</p>
+<p>また、同じプライベートネットワーク内の他の仮想環境とのみ、通信できるようになる。</p>
 <p>他の仮想環境とIPアドレスが重複しないようにする必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span><span class="w"> </span><span class="s2">&quot;private_network&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">ip</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10.0.0.2&quot;</span>
+<span class="w">  </span><span class="c1"># ローカルホストではなく、192.168.33.10 で接続できるようにする</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span><span class="w"> </span><span class="s2">&quot;private_network&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">ip</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.33.10&quot;</span>
 
 <span class="k">end</span>
 </code></pre></div>
@@ -25434,6 +25460,8 @@
 
 <span class="k">end</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://www.vagrantup.com/docs/synced-folders/basic_usage#type">https://www.vagrantup.com/docs/synced-folders/basic_usage#type</a></li>
@@ -25475,7 +25503,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-19</span>
   </span>
 
     
