@@ -25,112 +25,7 @@ description: TypeScriptの知見を記録しています。
 
 <br>
 
-## 02. セットアップ
-
-### tsconfig.json
-
-#### ▼ exclude
-
-```yaml
-{"exclude": ["<ファイル名>"]}
-```
-
-> - https://qiita.com/ryokkkke/items/390647a7c26933940470#exclude
-
-<br>
-
-#### ▼ include
-
-```yaml
-{"include": ["<ファイル名>"]}
-```
-
-> - https://qiita.com/ryokkkke/items/390647a7c26933940470#include
-
-<br>
-
-#### ▼ compilerOptions
-
-```yaml
-{
-  "compilerOptions": {
-  "lib": [ "DOM", "DOM.Iterable", "ES2019" ],
-  "types": [ "vitest/globals" ],
-  "isolatedModules": true,
-  "esModuleInterop": true,
-  "jsx": "react-jsx",
-  "module": "CommonJS",
-  "moduleResolution": "node",
-  # any型を禁止にする
-  "noImplicitAny": true,
-  "resolveJsonModule": true,
-  "target": "ES2019",
-  "strict": true,
-  "allowJs": true,
-  "forceConsistentCasingInFileNames": true,
-  "baseUrl": ".",
-  "paths": {
-    "~/*": [ "./app/*" ]
-  },
-  "skipLibCheck": true,
-  "noEmit": true
-}
-```
-
-> - https://qiita.com/ryokkkke/items/390647a7c26933940470#compileroptions
-
-<br>
-
-## 03. 環境変数
-
-### 出力
-
-#### ▼ 言語の実行環境
-
-- `export`コマンドで出力する
-- コンテナの環境変数として出力する
-
-#### ▼ dotenvパッケージ
-
-`dotenv`パッケージ
-
-なお、依存パッケージが増えてしまうため、代替の方法があるならそちらの方が良い。
-
-```typescript
-import dotenv from "dotenv";
-
-// .envファイルを読み込む
-dotenv.config();
-
-// なんらかの実装
-```
-
-> - https://www.basedash.com/blog/environment-variables-in-typescript
-> - https://medium.com/@sushantkadam15/using-environment-variables-in-typescript-with-dotenv-dc0c35939059
-
-<br>
-
-### 型の定義
-
-```typescript
-interface Env {
-  DATABASE_NAME: string;
-  DATABASE_PORT?: number;
-}
-
-const myEnv: Env = {
-  DATABASE_NAME: process.env.DATABASE_NAME || "",
-  DATABASE_PORT: process.env.DATABASE_PORT
-    ? parseInt(process.env.DATABASE_PORT)
-    : undefined,
-};
-```
-
-> - https://www.basedash.com/blog/environment-variables-in-typescript
-
-<br>
-
-## 04. 型定義
+## 02. 型定義
 
 ### プリミティブ
 
@@ -321,7 +216,7 @@ const logger = (): void => {
 
 <br>
 
-## 05. 型推論
+## 03. 型推論
 
 ### 暗黙的
 
@@ -344,5 +239,54 @@ let isProgrammer: boolean = true;
 ```
 
 > - https://recursionist.io/learn/languages/typescript/introduction/type-inference
+
+<br>
+
+## 04. 環境変数の定義
+
+### 出力
+
+#### ▼ 言語の実行環境
+
+- `export`コマンドで出力する
+- コンテナの環境変数として出力する
+
+#### ▼ dotenvパッケージ
+
+`dotenv`パッケージ
+
+なお、依存パッケージが増えてしまうため、代替の方法があるならそちらの方が良い。
+
+```typescript
+import dotenv from "dotenv";
+
+// .envファイルを読み込む
+dotenv.config();
+
+// なんらかの実装
+```
+
+> - https://www.basedash.com/blog/environment-variables-in-typescript
+> - https://medium.com/@sushantkadam15/using-environment-variables-in-typescript-with-dotenv-dc0c35939059
+
+<br>
+
+### 型の定義
+
+```typescript
+interface Env {
+  DATABASE_NAME: string;
+  DATABASE_PORT?: number;
+}
+
+const myEnv: Env = {
+  DATABASE_NAME: process.env.DATABASE_NAME || "",
+  DATABASE_PORT: process.env.DATABASE_PORT
+    ? parseInt(process.env.DATABASE_PORT)
+    : undefined,
+};
+```
+
+> - https://www.basedash.com/blog/environment-variables-in-typescript
 
 <br>

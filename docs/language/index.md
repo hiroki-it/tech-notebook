@@ -102,7 +102,9 @@
 
 ### TypeScript
 
-* #### [TypeScript](https://hiroki-it.github.io/tech-notebook/language/language_typescript.html)
+* #### [Typescript](https://hiroki-it.github.io/tech-notebook/language/language_typescript.html)
+
+* #### [設定](https://hiroki-it.github.io/tech-notebook/language/language_typescript_conf.html)
 
 <br>
 
@@ -132,10 +134,12 @@
 ### Python
   
 * #### [︎Python](https://hiroki-it.github.io/tech-notebook/language/language_python.html)
+
 * #### <u>フレームワーク</u>
   > * ##### <u>Flask</u>
   > > * ##### [︎コンポーネント](https://hiroki-it.github.io/tech-notebook/language/language_python_framework_flask_component.html)
   > > * ##### [︎コマンド](https://hiroki-it.github.io/tech-notebook/language/language_python_framework_flask_command.html)
+
 * #### <u>パッケージ</u>
   > * ##### [︎パッケージ管理](https://hiroki-it.github.io/tech-notebook/language/language_python_package_management.html)
 
