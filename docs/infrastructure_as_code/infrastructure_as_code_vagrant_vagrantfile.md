@@ -119,12 +119,26 @@ end
 
 #### ▼ boxとは
 
-仮想環境のベースとするボックス名を設定する。
+仮想環境のベースとするVirtualBoxのボックス名を設定する。
 
 ```ruby
 Vagrant.configure("2") do |config|
 
   config.vm.box = "foo"
+
+  config.vm.box_version = "<バージョン値>"
+
+end
+```
+
+```ruby
+Vagrant.configure("2") do |config|
+
+  # Ubuntuベースの仮想サーバー
+  config.vm.box = "ubuntu/trusty64"
+
+  # バージョン
+  config.vm.box_version = "20191107.0.0"
 
 end
 ```
@@ -185,20 +199,38 @@ Vagrant.configure("2") do |config|
 end
 ```
 
+```ruby
+Vagrant.configure("2") do |config|
+
+  # MySQLのために3306ポートをフォワーディングする
+  config.vm.network "forwarded_port", guest: 3306, host: 3306
+
+  config.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    apt-get install -y mysql-server
+  SHELL
+
+end
+
+```
+
 > - https://www.vagrantup.com/docs/networking/forwarded_ports
 
 #### ▼ private_network
 
 仮想環境にプライベートIPアドレスを設定する。
 
-同じプライベートネットワーク内の他の仮想環境とのみ、通信できるようになる。
+ローカルホスト以外で接続できるようになる。
+
+また、同じプライベートネットワーク内の他の仮想環境とのみ、通信できるようになる。
 
 他の仮想環境とIPアドレスが重複しないようにする必要がある。
 
 ```ruby
 Vagrant.configure("2") do |config|
 
-  config.vm.network "private_network", ip: "10.0.0.2"
+  # ローカルホストではなく、192.168.33.10 で接続できるようにする
+  config.vm.network "private_network", ip: "192.168.33.10"
 
 end
 ```
@@ -366,6 +398,10 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder ".", "/var/www/foo", type: "nfs"
 
 end
+```
+
+```
+
 ```
 
 > - https://www.vagrantup.com/docs/synced-folders/basic_usage#type

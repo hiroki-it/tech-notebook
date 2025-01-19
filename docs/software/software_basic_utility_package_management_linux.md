@@ -366,6 +366,14 @@ $ asdf uninstall <プラグイン名> --all
 
 <br>
 
+### プラグイン一覧
+
+インストール可能なプラグイン一覧をリポジトリから確認できる。
+
+> - https://github.com/mise-plugins/registry/tree/main/plugins
+
+<br>
+
 ### 設定ファイル
 
 決められた名前の`.toml`ファイルを用意しておく。

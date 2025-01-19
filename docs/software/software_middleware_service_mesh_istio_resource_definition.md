@@ -3110,10 +3110,23 @@ Kubernetes Clusterの外にある単一の仮想サーバーをサービスメ�
 
 データベースをKubernetes Cluster外の仮想サーバー上で稼働させていたり、一部のマイクロサービスを仮想サーバー上で稼働させなければならない場合に役立つ。
 
-ただし、仮想サーバーのプロキシとして、Envoyをおく必要がある。
+ただし、仮想サーバー内でistioプロセスをインストールし、実行する必要がある。
+
+```bash
+# インストール
+$ curl -LO https://storage.googleapis.com/istio-release/releases/1.24.2/deb/istio-sidecar.deb
+$ sudo dpkg -i istio-sidecar.deb
+
+... # 諸々の手順
+
+# デーモンプロセスを実行
+$ sudo systemctl start istio
+```
 
 > - https://istio.io/latest/blog/2020/workload-entry/
 > - https://qiita.com/ipppppei/items/b376602ae6c325e3a55e
+> - https://istio.io/latest/docs/setup/install/virtual-machine/#start-istio-within-the-virtual-machine
+> - https://istio.io/latest/docs/examples/virtual-machines/
 
 <br>
 
@@ -3123,9 +3136,22 @@ Kubernetes Clusterの外にある複数の仮想サーバーをサービスメ�
 
 データベースをKubernetes Cluster外の仮想サーバー上で稼働させていたり、一部のマイクロサービスを仮想サーバー上で稼働させなければならない場合に役立つ。
 
-ただし、仮想サーバーのプロキシとして、Envoyをおく必要がある。
+ただし、仮想サーバー内でistioプロセスをインストールし、実行する必要がある。
+
+```bash
+# インストール
+$ curl -LO https://storage.googleapis.com/istio-release/releases/1.24.2/deb/istio-sidecar.deb
+$ sudo dpkg -i istio-sidecar.deb
+
+... # 諸々の手順
+
+# デーモンプロセスを実行
+$ sudo systemctl start istio
+```
 
 > - https://istio.io/latest/blog/2020/workload-entry/
 > - https://qiita.com/ipppppei/items/b376602ae6c325e3a55e
+> - https://istio.io/latest/docs/setup/install/virtual-machine/#start-istio-within-the-virtual-machine
+> - https://istio.io/latest/docs/examples/virtual-machines/
 
 <br>
