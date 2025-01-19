@@ -5577,6 +5577,57 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#istio-proxypilot-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      istio-proxy内のpilot-agent
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="istio-proxy内のpilot-agent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#istio_meta_dns_capture" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ISTIO_META_DNS_CAPTURE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istio_meta_dns_auto_allocate" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ISTIO_META_DNS_AUTO_ALLOCATE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bootstrap_xds_agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ BOOTSTRAP_XDS_AGENT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit_on_zero_active_connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ EXIT_ON_ZERO_ACTIVE_CONNECTIONS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -25642,6 +25693,57 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#istio-proxypilot-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      istio-proxy内のpilot-agent
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="istio-proxy内のpilot-agent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#istio_meta_dns_capture" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ISTIO_META_DNS_CAPTURE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istio_meta_dns_auto_allocate" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ISTIO_META_DNS_AUTO_ALLOCATE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bootstrap_xds_agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ BOOTSTRAP_XDS_AGENT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit_on_zero_active_connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ EXIT_ON_ZERO_ACTIVE_CONNECTIONS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -25923,43 +26025,6 @@
 <span class="w">      </span><span class="no">proxyMetadata:</span>
 <span class="w">        </span><span class="no">...</span>
 </code></pre></div>
-<table>
-<thead>
-<tr>
-<th>環境変数</th>
-<th>例</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ISTIO_META_DNS_CAPTURE</code></td>
-<td><code>true</code></td>
-<td>istio-proxyでDNSのキャッシュを作成するか否か</td>
-</tr>
-<tr>
-<td><code>ISTIO_META_DNS_AUTO_ALLOCATE</code></td>
-<td><code>true</code></td>
-<td>IPアドレスが設定されていないServiceEntryに対して、IPアドレスを自動的に設定する。</td>
-</tr>
-<tr>
-<td><code>BOOTSTRAP_XDS_AGENT</code></td>
-<td><code>true</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code></td>
-<td><code>true</code></td>
-<td>ServiceからPod内のistio-proxyへのリクエストがなくなったら、istio-proxyコンテナを終了させる</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars">https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars</a></li>
-<li><a href="https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started">https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started</a></li>
-</ul>
-</blockquote>
 <h4 id="rootnamespace">▼ rootNamespace<a class="headerlink" href="#rootnamespace" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -26623,7 +26688,7 @@
 <p><br></p>
 <h2 id="05">05. 環境変数<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="istiod">Istiod<a class="headerlink" href="#istiod" title="Permanent link">&para;</a></h3>
-<h4 id="cluster_id">▼ CLUSTER_ID<a class="headerlink" href="#cluster_id" title="Permanent link">&para;</a></h4>
+<h4 id="cluster_id">▼ <code>CLUSTER_ID</code><a class="headerlink" href="#cluster_id" title="Permanent link">&para;</a></h4>
 <p>Istiodのサービスレジストリを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
@@ -26643,7 +26708,7 @@
 <li><a href="https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars">https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars</a></li>
 </ul>
 </blockquote>
-<h4 id="pilot_trace_sampling">▼ PILOT_TRACE_SAMPLING<a class="headerlink" href="#pilot_trace_sampling" title="Permanent link">&para;</a></h4>
+<h4 id="pilot_trace_sampling">▼ <code>PILOT_TRACE_SAMPLING</code><a class="headerlink" href="#pilot_trace_sampling" title="Permanent link">&para;</a></h4>
 <p>分散トレースの収集率を設定する。</p>
 <p>基本的には<code>100</code>% (値は<code>1</code>) を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
@@ -26664,7 +26729,7 @@
 <li><a href="https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars">https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars</a></li>
 </ul>
 </blockquote>
-<h4 id="pilot_cert_provider">▼ PILOT_CERT_PROVIDER<a class="headerlink" href="#pilot_cert_provider" title="Permanent link">&para;</a></h4>
+<h4 id="pilot_cert_provider">▼ <code>PILOT_CERT_PROVIDER</code><a class="headerlink" href="#pilot_cert_provider" title="Permanent link">&para;</a></h4>
 <p><code>istio-proxy</code>コンテナに設定するSSL証明書のプロバイダーを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
@@ -26704,6 +26769,83 @@
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars">https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="istio-proxypilot-agent">istio-proxy内のpilot-agent<a class="headerlink" href="#istio-proxypilot-agent" title="Permanent link">&para;</a></h3>
+<h4 id="istio_meta_dns_capture">▼ <code>ISTIO_META_DNS_CAPTURE</code><a class="headerlink" href="#istio_meta_dns_capture" title="Permanent link">&para;</a></h4>
+<p>istio-proxyでDNSのキャッシュを作成するか否かを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-mesh-cm</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">defaultConfig:</span>
+<span class="w">      </span><span class="no">proxyMetadata:</span>
+<span class="w">        </span><span class="no">ISTIO_META_DNS_CAPTURE: true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars">https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars</a></li>
+<li><a href="https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started">https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started</a></li>
+</ul>
+</blockquote>
+<h4 id="istio_meta_dns_auto_allocate">▼ <code>ISTIO_META_DNS_AUTO_ALLOCATE</code><a class="headerlink" href="#istio_meta_dns_auto_allocate" title="Permanent link">&para;</a></h4>
+<p>IPアドレスが設定されていないServiceEntryに対して、IPアドレスを自動的に設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-mesh-cm</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">defaultConfig:</span>
+<span class="w">      </span><span class="no">proxyMetadata:</span>
+<span class="w">        </span><span class="no">ISTIO_META_DNS_AUTO_ALLOCATE: true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars">https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars</a></li>
+<li><a href="https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started">https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started</a></li>
+</ul>
+</blockquote>
+<h4 id="bootstrap_xds_agent">▼ <code>BOOTSTRAP_XDS_AGENT</code><a class="headerlink" href="#bootstrap_xds_agent" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-mesh-cm</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">defaultConfig:</span>
+<span class="w">      </span><span class="no">proxyMetadata:</span>
+<span class="w">        </span><span class="no">BOOTSTRAP_XDS_AGENT: true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars">https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars</a></li>
+<li><a href="https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started">https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started</a></li>
+</ul>
+</blockquote>
+<h4 id="exit_on_zero_active_connections">▼ <code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code><a class="headerlink" href="#exit_on_zero_active_connections" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-mesh-cm</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">defaultConfig:</span>
+<span class="w">      </span><span class="no">proxyMetadata:</span>
+<span class="w">        </span><span class="no">EXIT_ON_ZERO_ACTIVE_CONNECTIONS: true</span>
+</code></pre></div>
+<p>ServiceからPod内のistio-proxyへのリクエストがなくなったら、istio-proxyコンテナを終了させるか否かを設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars">https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars</a></li>
+<li><a href="https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started">https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started</a></li>
 </ul>
 </blockquote>
 <p><br></p>
