@@ -341,6 +341,7 @@ nav:
                   - Goプラグイン: language/language_data_description_language_protocol_buffer_compiler_go.md
       - ■ PHP:
           - PHP: language/language_php.md
+          - 設定: language/language_php_conf.md
           - コマンド: language/language_php_command.md
           - ■ クラスベース:
               - クラス: language/language_php_class_based.md
@@ -396,6 +397,7 @@ nav:
           - TypeScript: language/language_typescript.md
       - ■ Go:
           - Go: language/language_go.md
+          - 設定: language/language_go_conf.md
           - コマンド: language/language_go_command.md
           - ■ ロジック:
               - データ: language/language_go_logic_data.md
