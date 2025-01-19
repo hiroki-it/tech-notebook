@@ -395,6 +395,7 @@ nav:
               - ブラウザレンダリング: language/language_javascript_browser_rendering.md
       - ■ TypeScript:
           - TypeScript: language/language_typescript.md
+          - 設定: language/language_typescript_conf.md
       - ■ Go:
           - Go: language/language_go.md
           - 設定: language/language_go_conf.md
