@@ -1493,9 +1493,9 @@ processors:
 
 <br>
 
-### 環境変数
+## 08. 環境変数
 
-#### ▼ 一覧
+### 一覧
 
 OpenTelemetryの仕様では、あるべき環境変数が決まっている。
 
@@ -1503,11 +1503,11 @@ OpenTelemetryの仕様では、あるべき環境変数が決まっている。
 
 > - https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables
 
-#### ▼ 全体
+### 共通
 
 指定するSamplerやパラメーターを環境変数で設定できる。
 
-| 環境変数名                 | 説明                                                                                                                              |
+| 環境変数                   | 説明                                                                                                                              |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `OTEL_LOGS_EXPORTER`       | ログのExporter名を設定する。                                                                                                      |
 | `OTEL_METRICS_EXPORTER`    | メトリクスのExporter名を設定する。執筆時点 (2024/02/06) では、`otlp` (HTTP/gRPC) 、`prometheus`、`none`、から設定できる。         |
@@ -1520,9 +1520,11 @@ OpenTelemetryの仕様では、あるべき環境変数が決まっている。
 
 > - https://opentelemetry.io/docs/languages/sdk-configuration/general/
 
-#### ▼ Exporter
+<br>
 
-| 環境変数名                            | 説明 |
+### Exporter
+
+| 環境変数                              | 説明 |
 | ------------------------------------- | ---- |
 | `OTEL_EXPORTER_OTLP_ENDPOINT`         |      |
 | `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`  |      |

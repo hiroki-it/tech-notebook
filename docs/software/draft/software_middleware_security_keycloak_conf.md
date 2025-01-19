@@ -19,7 +19,9 @@ Keycloakでは、コマンドオプション、環境変数、`keycloak.conf`フ
 
 > - https://docs.redhat.com/ja/documentation/red_hat_build_of_keycloak/24.0/html/server_guide/configuration-formats-for-configuration#configuration-example-alternative-formats-based-on-configuration-source
 
-## 01. 環境変数
+<br>
+
+## 02. 環境変数
 
 ### 管理者
 
