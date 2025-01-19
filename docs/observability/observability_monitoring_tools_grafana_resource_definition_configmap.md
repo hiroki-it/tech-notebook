@@ -105,6 +105,8 @@ VictoriaMetricsの場合、ビルトインの`prometheus`タイプを使用で�
 
 VictoriaMetricsからメトリクスのデータポイントを収集するために、PromQLを実行する必要がある。
 
+VictoriaMetricsがClusterの外部にあり、プロキシが前段にある場合は、`access`キーを`proxy`とする。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -117,7 +119,7 @@ data:
     datasources:
       - name: victoria-metrics
         type: prometheus
-        url: http://<VictoriaMetricsのサーバーのIPアドレス>:8248/
+        url: http://<VictoriaMetricsのサーバーのIPアドレス>:8248
         access: proxy
         isDefault: "false"
         jsonData:
