@@ -32,6 +32,8 @@
 
 * #### [PHP](https://hiroki-it.github.io/tech-notebook/language/language_php.html)
 
+* #### [設定](https://hiroki-it.github.io/tech-notebook/language/language_php_conf.html)
+
 * #### [︎コマンド](https://hiroki-it.github.io/tech-notebook/language/language_php_command.html)
 
 * #### <u>クラスベース</u>
@@ -107,6 +109,9 @@
 ### Go
 
 * #### [Go](https://hiroki-it.github.io/tech-notebook/language/language_go.html)
+
+* #### [設定](https://hiroki-it.github.io/tech-notebook/language/language_go_conf.html)
+
 * #### [︎コマンド](https://hiroki-it.github.io/tech-notebook/language/language_go_command.html)
 
 * #### <u>ロジック</u>
