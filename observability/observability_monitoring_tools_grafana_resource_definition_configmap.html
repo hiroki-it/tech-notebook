@@ -25164,6 +25164,7 @@
 <h4 id="victoriametrics">▼ VictoriaMetricsの場合<a class="headerlink" href="#victoriametrics" title="Permanent link">&para;</a></h4>
 <p>VictoriaMetricsの場合、ビルトインの<code>prometheus</code>タイプを使用できる。</p>
 <p>VictoriaMetricsからメトリクスのデータポイントを収集するために、PromQLを実行する必要がある。</p>
+<p>VictoriaMetricsがClusterの外部にあり、プロキシが前段にある場合は、<code>access</code>キーを<code>proxy</code>とする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -25175,7 +25176,7 @@
 <span class="w">    </span><span class="no">datasources:</span>
 <span class="w">      </span><span class="no">- name: victoria-metrics</span>
 <span class="w">        </span><span class="no">type: prometheus</span>
-<span class="w">        </span><span class="no">url: http://&lt;VictoriaMetricsのサーバーのIPアドレス&gt;:8248/</span>
+<span class="w">        </span><span class="no">url: http://&lt;VictoriaMetricsのサーバーのIPアドレス&gt;:8248</span>
 <span class="w">        </span><span class="no">access: proxy</span>
 <span class="w">        </span><span class="no">isDefault: &quot;false&quot;</span>
 <span class="w">        </span><span class="no">jsonData:</span>
