@@ -1,6 +1,6 @@
 ---
 title: 【IT技術の知見】コマンド＠Podman
-description: コマンド＠Dockerの知見を記録しています。
+description: コマンド＠Podmanの知見を記録しています。
 ---
 
 # コマンド＠Podman
