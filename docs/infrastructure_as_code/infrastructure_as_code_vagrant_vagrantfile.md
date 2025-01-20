@@ -400,10 +400,6 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-```
-
-```
-
 > - https://www.vagrantup.com/docs/synced-folders/basic_usage#type
 
 ホストと仮想環境間のファイルのIOPSによって、性能に差がある。

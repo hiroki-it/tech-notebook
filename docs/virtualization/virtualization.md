@@ -40,8 +40,11 @@ description: 仮想化の知見を記録しています。
 
 #### ▼ Provider例
 
-- Oracle VM VirtualBox
-- VMware Workstation
+| OS      | VirtualBox | Lima | QEMU | VMware Workstation | VMware Fusion |
+| ------- | ---------- | ---- | ---- | ------------------ | ------------- |
+| Linux   | ⭕️         | ⭕️   | ⭕️   | ⭕️                 |               |
+| Windows | ⭕️         | ⭕️   | ⭕   | ⭕️                 |               |
+| MacOS   | ⭕️         | ⭕️   | ⭕️   |                    | ⭕️            |
 
 <br>
 

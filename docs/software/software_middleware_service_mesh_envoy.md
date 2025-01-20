@@ -637,6 +637,13 @@ HTTPプロトコルの処理を実施する。
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/rbac_filter
 > - https://qiita.com/ryysud/items/17a4f86819b96eb73f64#authorization-policy-%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF
 
+#### ▼ MySQLフィルター (`mysql_proxy`)
+
+MySQLプロトコル内のSQLを解析、メトリクスとして収集する。
+
+> - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/mysql
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/mysql_proxy_filter#config-network-filters-mysql-proxy
+
 <br>
 
 ### ルート
