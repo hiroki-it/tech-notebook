@@ -13,14 +13,20 @@ description: コマンド＠Limaの知見を記録しています。
 
 <br>
 
-## limactl
+## 01. limactl
 
 ### start template
 
 テンプレートを指定して、仮想サーバーを起動すう。
 
 ```bash
-$ limactl start template://ubuntu-24.10 --name=ubuntu2410
+$ limactl start template://ubuntu-24.10 \
+    --name=ubuntu2410 \
+    --cpu 4 \
+    --memory 8G \
+    --disk 30G
 ```
+
+> - https://lima-vm.io/docs/templates/
 
 <br>
