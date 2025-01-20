@@ -15,6 +15,14 @@ description: コマンド＠Limaの知見を記録しています。
 
 ## 01. limactl
 
+### delete
+
+```bash
+$ limactl delete foo-instance
+```
+
+<br>
+
 ### start template
 
 テンプレートを指定して、仮想サーバーを起動すう。
@@ -28,5 +36,13 @@ $ limactl start template://ubuntu-24.10 \
 ```
 
 > - https://lima-vm.io/docs/templates/
+
+<br>
+
+### stop
+
+```bash
+$ limactl stop foo-instance
+```
 
 <br>

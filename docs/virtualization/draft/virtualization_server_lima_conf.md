@@ -13,13 +13,23 @@ description: 設定ファイル＠Limaの知見を記録しています。
 
 <br>
 
+### vmType
+
 ```yaml
 vmType: null
 ```
 
+<br>
+
+### arch
+
 ```yaml
 arch: null
 ```
+
+<br>
+
+### images
 
 ```yaml
 images:
@@ -53,17 +63,33 @@ images:
     arch: armv7l
 ```
 
+<br>
+
+### cpus
+
 ```yaml
 cpus: null
 ```
+
+<br>
+
+### memory
 
 ```yaml
 memory: null
 ```
 
+<br>
+
+### disk
+
 ```yaml
 disk: null
 ```
+
+<br>
+
+### mounts
 
 ```yaml
 mounts:
@@ -83,22 +109,42 @@ mounts:
     writable: true
 ```
 
+<br>
+
+### mountTypesUnsupported
+
 ```yaml
 mountTypesUnsupported:
   - "9p"
 ```
 
+<br>
+
+### mountType
+
 ```yaml
 mountType: null
 ```
+
+<br>
+
+### mountInotify
 
 ```yaml
 mountInotify: null
 ```
 
+<br>
+
+### additionalDisks
+
 ```yaml
 additionalDisks:
 ```
+
+<br>
+
+### ssh
 
 ```yaml
 ssh:
@@ -109,6 +155,10 @@ ssh:
   forwardX11Trusted: null
 ```
 
+<br>
+
+### caCerts
+
 ```yaml
 caCerts:
   removeDefaults: null
@@ -116,9 +166,17 @@ caCerts:
   certs: null
 ```
 
+<br>
+
+### upgradePackages
+
 ```yaml
 upgradePackages: null
 ```
+
+<br>
+
+### containerd
 
 ```yaml
 containerd:
@@ -126,9 +184,17 @@ containerd:
   user: null
 ```
 
+<br>
+
+### minimumLimaVersion
+
 ```yaml
 minimumLimaVersion: null
 ```
+
+<br>
+
+### user
 
 ```yaml
 user:
@@ -138,19 +204,35 @@ user:
   home: null
 ```
 
+<br>
+
+### vmOpts
+
 ```yaml
 vmOpts:
   qemu:
     minimumVersion: null
 ```
 
+<br>
+
+### os
+
 ```yaml
 os: null
 ```
 
+<br>
+
+### cpuType
+
 ```yaml
 cpuType:
 ```
+
+<br>
+
+### rosetta
 
 ```yaml
 rosetta:
@@ -158,19 +240,35 @@ rosetta:
   binfmt: null
 ```
 
+<br>
+
+### timezone
+
 ```yaml
 timezone: null
 ```
+
+<br>
+
+### firmware
 
 ```yaml
 firmware:
   legacyBIOS: null
 ```
 
+<br>
+
+### audio
+
 ```yaml
 audio:
   device: null
 ```
+
+<br>
+
+### video
 
 ```yaml
 video:
@@ -179,13 +277,25 @@ video:
     display: null
 ```
 
+<br>
+
+### networks
+
 ```yaml
 networks:
 ```
 
+<br>
+
+### propagateProxyEnv
+
 ```yaml
 propagateProxyEnv: null
 ```
+
+<br>
+
+### hostResolver
 
 ```yaml
 hostResolver:
@@ -194,13 +304,25 @@ hostResolver:
   hosts:
 ```
 
+<br>
+
+### guestInstallPrefix
+
 ```yaml
 guestInstallPrefix: null
 ```
 
+<br>
+
+### plain
+
 ```yaml
 plain: null
 ```
+
+<br>
+
+### nestedVirtualization
 
 ```yaml
 nestedVirtualization: null
