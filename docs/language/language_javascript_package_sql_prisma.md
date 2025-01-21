@@ -198,9 +198,9 @@ import {PrismaClient} from '@prisma/client'
 // Prismaクライアントに設定する場合
 const prisma = new PrismaClient({
   transactionOptions: {
-    // データを取得するまでのタイムアウト値
+    // データを取得するまでのタイムアウト値 (デフォルトは2000ms)
     maxWait: 5000,
-    // ロールバックを含めて全体が完了するまでのタイムアウト値
+    // ロールバックを含めて全体が完了するまでのタイムアウト値 (デフォルトは5000ms)
     timeout: 10000,
     // トランザクションの分離レベル
     isolationLevel: Prisma.TransactionIsolationLevel.Serializable,

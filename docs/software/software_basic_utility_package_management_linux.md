@@ -516,6 +516,18 @@ $ mise trust
 $ brew install direnv
 ```
 
+direnvをフックできるようにする。
+
+```bash
+# zshの場合
+$ echo 'eval "$(direnv hook zsh)"' >> ~/.zshrc
+
+# bashの場合
+$ echo 'eval "$(direnv hook bash)"' >> ~/.bash
+```
+
+> - https://direnv.net/docs/hook.html
+
 <br>
 
 ### 設定ファイル
@@ -525,10 +537,12 @@ $ brew install direnv
 `.env`ファイルの読み込み処理や`export`コマンドの実行は、`.envrc`ファイルに定義しておく。
 
 ```bash
+# .envrcファイル
 source .env
 ```
 
 ```bash
+# .envrcファイル
 NAME="foo"
 MAIL="foo@example.com"
 
@@ -536,6 +550,13 @@ export GIT_COMMITTER_NAME=$NAME
 export GIT_COMMITTER_EMAIL=$MAIL
 export GIT_AUTHOR_NAME=$NAME
 export GIT_AUTHOR_EMAIL=$MAIL
+```
+
+`.envrc`ファイルを登録する。
+
+```bash
+# .envrcファイルのあるディレクトリ
+$ direnv allow .
 ```
 
 > - https://blog.nijohando.jp/post/direnv/
