@@ -23,27 +23,19 @@
 
 <br>
 
+## 前提
+
+- mise
+
 ## セットアップ
 
-1. プラグインのURLを確認する。
+1. miseでツールをインストールする。
 
 ```bash
-$ asdf plugin list all | grep <.tool-versionsファイルに記載のプラグイン名>
+$ mise install
 ```
 
-2. 確認したURLを使用して、プラグインを登録する。
-
-```bash
-$ asdf plugin add <プラグイン名> <URL>
-```
-
-3. プラグインをインストールする。
-
-```bash
-$ asdf install
-```
-
-4. NodeでYarnをインストールする
+2. NodeでYarnをインストールする
 
 ```bash
 $ npm install -g yarn
@@ -56,7 +48,7 @@ $ npm install -g yarn
 1. yarnでパッケージをインストールする。
 
 ```bash
-$ yarn
+$ yarn install
 ```
 
 2. フォーマッターを実行する。
