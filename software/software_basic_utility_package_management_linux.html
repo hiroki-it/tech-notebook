@@ -25650,19 +25650,37 @@ $<span class="w"> </span>mise<span class="w"> </span>install
 <h4 id="brew_3">▼ brewリポジトリから<a class="headerlink" href="#brew_3" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>direnv
 </code></pre></div>
+<p>direnvをフックできるようにする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># zshの場合</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;eval &quot;$(direnv hook zsh)&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.zshrc
+
+<span class="c1"># bashの場合</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;eval &quot;$(direnv hook bash)&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://direnv.net/docs/hook.html">https://direnv.net/docs/hook.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_7">設定ファイル<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="envrc">▼ <code>.envrc</code>ファイル<a class="headerlink" href="#envrc" title="Permanent link">&para;</a></h4>
 <p><code>.env</code>ファイルの読み込み処理や<code>export</code>コマンドの実行は、<code>.envrc</code>ファイルに定義しておく。</p>
-<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>.env
+<div class="highlight"><pre><span></span><code><span class="c1"># .envrcファイル</span>
+<span class="nb">source</span><span class="w"> </span>.env
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># .envrcファイル</span>
+<span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span>
 <span class="nv">MAIL</span><span class="o">=</span><span class="s2">&quot;foo@example.com&quot;</span>
 
 <span class="nb">export</span><span class="w"> </span><span class="nv">GIT_COMMITTER_NAME</span><span class="o">=</span><span class="nv">$NAME</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">GIT_COMMITTER_EMAIL</span><span class="o">=</span><span class="nv">$MAIL</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">GIT_AUTHOR_NAME</span><span class="o">=</span><span class="nv">$NAME</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">GIT_AUTHOR_EMAIL</span><span class="o">=</span><span class="nv">$MAIL</span>
+</code></pre></div>
+<p><code>.envrc</code>ファイルを登録する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># .envrcファイルのあるディレクトリ</span>
+$<span class="w"> </span>direnv<span class="w"> </span>allow<span class="w"> </span>.
 </code></pre></div>
 <blockquote>
 <ul>
