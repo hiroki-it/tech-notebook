@@ -176,6 +176,12 @@ $ minikube dashboard
 
 Minikubeのコンポーネントを削除する。
 
+#### ▼ --profile
+
+```bash
+$ minikube delete --profile foo-cluster
+```
+
 #### ▼ all --purge
 
 全てのコンポーネントを削除する。
@@ -805,9 +811,9 @@ MinikubeのClusterに名前をつける。
 Minikubeを使用してマルチClusterを再現できる。
 
 ```bash
-$ minikube start --profile foo-minikube-cluster
+$ minikube start --profile foo-cluster
 
-$ kubectl config use-context foo-minikube-cluster
+$ kubectl config use-context foo-cluster
 Switched to context "foo-cluster".
 ```
 

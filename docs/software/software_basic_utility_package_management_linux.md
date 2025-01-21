@@ -506,8 +506,6 @@ $ mise trust
 
 特定のディレクトリで`.env`ファイルを読み込み、環境変数をOS上に出力する。
 
-> - https://blog.sh1ma.dev/articles/20240108_from_asdf_to_mise
-
 <br>
 
 ### セットアップ
@@ -517,5 +515,29 @@ $ mise trust
 ```bash
 $ brew install direnv
 ```
+
+<br>
+
+### 設定ファイル
+
+#### ▼ `.envrc`ファイル
+
+`.env`ファイルの読み込み処理や`export`コマンドの実行は、`.envrc`ファイルに定義しておく。
+
+```bash
+source .env
+```
+
+```bash
+NAME="foo"
+MAIL="foo@example.com"
+
+export GIT_COMMITTER_NAME=$NAME
+export GIT_COMMITTER_EMAIL=$MAIL
+export GIT_AUTHOR_NAME=$NAME
+export GIT_AUTHOR_EMAIL=$MAIL
+```
+
+> - https://blog.nijohando.jp/post/direnv/
 
 <br>
