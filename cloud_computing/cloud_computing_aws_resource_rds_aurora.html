@@ -14435,9 +14435,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aurora" class="md-nav__link">
+  <a href="#aws-aurora" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Auroraのフェイルオーバーとは
+      ▼ AWS Auroraのフェイルオーバーとは
     </span>
   </a>
   
@@ -25185,9 +25185,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aurora" class="md-nav__link">
+  <a href="#aws-aurora" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Auroraのフェイルオーバーとは
+      ▼ AWS Auroraのフェイルオーバーとは
     </span>
   </a>
   
@@ -25434,8 +25434,8 @@
 </table>
 <blockquote>
 <ul>
-<li><a href="https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/AWS">https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/AWS</a> RDS/</li>
-<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithAWS">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithAWS</a> RDS.SSL.html</li>
+<li><a href="https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/">https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html</a></li>
 </ul>
 </blockquote>
 <h4 id="db_1">▼ DBインスタンス<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h4>
@@ -25483,13 +25483,13 @@
 </table>
 <blockquote>
 <ul>
-<li><a href="https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/AWS">https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/AWS</a> RDS/</li>
+<li><a href="https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/">https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h2 id="03-db">03. DBクラスター<a class="headerlink" href="#03-db" title="Permanent link">&para;</a></h2>
 <h3 id="db_2">DBクラスターとは<a class="headerlink" href="#db_2" title="Permanent link">&para;</a></h3>
-<p>DBエンジンにAuroraを選択した場合にのみ使用できる。</p>
+<p>DBエンジンにAWS Auroraを選択した場合にのみ使用できる。</p>
 <p>DBインスタンスとクラスターボリュームから構成されている。</p>
 <p>コンピューティングとして動作するDBインスタンスと、ストレージとして動作するクラスターボリュームが分離されているため、DBインスタンスが誤って全て削除されてしまったとしても、データを守れる。</p>
 <p>また、両者が分離されていないエンジンタイプと比較して、再起動が早いため、再起動に伴うダウンタイムが短い。</p>
@@ -25696,7 +25696,7 @@
 <h2 id="06">06. アップグレード<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="zdp">ZDP (ゼロダウンタイムパッチ適用)<a class="headerlink" href="#zdp" title="Permanent link">&para;</a></h3>
 <p><img alt="zero-downtime-patching" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/zero-downtime-patching.png" /></p>
-<p>Auroraをエンジンバージョンに選択した場合に使用できる。</p>
+<p>AWS Auroraをエンジンバージョンに選択した場合に使用できる。</p>
 <p>特定の条件下のみで、アプリケーションとプライマリーインスタンスの接続を維持したまま、プライマリーインスタンスのパッチバージョンをアップグレードできる。</p>
 <p>ゼロダウンタイムパッチ適用が発動した場合、AWS RDSのイベントが記録される。</p>
 <p>ただし、この機能に頼り切らない方が良い。</p>
@@ -25736,11 +25736,11 @@
 <p><br></p>
 <h3 id="_14">ダウンタイム<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ ダウンタイムとは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>Auroraでは、設定値 (例：OS、エンジンバージョン、MySQL) のアップグレード時に、DBインスタンスの再起動が必要である。</p>
+<p>AWS Auroraでは、設定値 (例：OS、エンジンバージョン、MySQL) のアップグレード時に、DBインスタンスの再起動が必要である。</p>
 <p>再起動に伴ってダウンタイムが発生し、アプリケーションからDBに接続できなくなる。</p>
 <p>この間、アプリケーションの利用者に与える影響を小さくできるように、計画的にダウンタイムを発生させる必要がある。</p>
 <h4 id="_16">▼ ダウンタイムの発生条件<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>AWS RDSに記載された情報のため、厳密にはAuroraのダウンタイムではない。</p>
+<p>AWS RDSに記載された情報のため、厳密にはAWS Auroraのダウンタイムではない。</p>
 <p>ただし、経験上同じ項目でダウンタイムが発生しているため、参考にする。</p>
 <blockquote>
 <ul>
@@ -25748,12 +25748,12 @@
 </ul>
 </blockquote>
 <h4 id="_17">▼ エンジンタイプによるダウンタイムの最小化<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>コンピューティングとストレージが分離しているAuroraはエンジンタイプの中でもダウンタイムが短い。</p>
+<p>コンピューティングとストレージが分離しているAWS Auroraはエンジンタイプの中でもダウンタイムが短い。</p>
 <h4 id="_18">▼ ダウンタイムの計測例<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>アプリケーションにリクエストを送信する方法と、AWS RDSにクエリを直接的に送信する方法がある。</p>
 <p>レスポンスとAWS RDSイベントログから、ダウンタイムを計測する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Aurora MySQLのアップグレードに伴うダウンタイムを計測する。</p>
+<p>AWS Aurora MySQLのアップグレードに伴うダウンタイムを計測する。</p>
 <p>踏み台サーバーを経由してAWS RDSに接続し、現在時刻を取得するSQLを送信する。</p>
 <p>この時、<code>for</code>文や<code>watch</code>コマンドを使用する。</p>
 <p>ただし、<code>watch</code>コマンドはプリインストールされていない可能性がある。</p>
@@ -25842,7 +25842,7 @@ NOW<span class="o">()</span>
 <p><img alt="rds-event-log_read-replica" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds-event-log_read-replica.png" /></p>
 <p><br></p>
 <h3 id="_19">フェイルオーバー<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
-<h4 id="aurora">▼ Auroraのフェイルオーバーとは<a class="headerlink" href="#aurora" title="Permanent link">&para;</a></h4>
+<h4 id="aws-aurora">▼ AWS Auroraのフェイルオーバーとは<a class="headerlink" href="#aws-aurora" title="Permanent link">&para;</a></h4>
 <p>プライマリーインスタンスで障害が起こった場合に、リードレプリカをプライマリーインスタンスに自動的に昇格する。</p>
 <p>DBクラスター内の全てのDBインスタンスが同じAZに配置されている場合、あらかじめ異なるAZにリードレプリカを新しく作成する必要がある。</p>
 <p>また、フェイルオーバー時に、もしDBクラスター内にリードレプリカが存在していない場合、異なるAZに昇格後のプライマリーインスタンスが自動的に作成される。</p>
@@ -25862,7 +25862,7 @@ NOW<span class="o">()</span>
 <dt><code>(2)</code></dt>
 <dd>
 <p>リードレプリカにダウンタイムの発生する変更を適用する。</p>
-<p>Auroraではフェールオーバーが自動的に実行される。</p>
+<p>AWS Auroraではフェールオーバーが自動的に実行される。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -25877,7 +25877,7 @@ NOW<span class="o">()</span>
 </ul>
 </blockquote>
 <h4 id="db_7">▼ DBインスタンスの昇格優先順位<a class="headerlink" href="#db_7" title="Permanent link">&para;</a></h4>
-<p>Auroraの場合、フェイルオーバーによって昇格するDBインスタンスは次の順番で決定される。</p>
+<p>AWS Auroraの場合、フェイルオーバーによって昇格するDBインスタンスは次の順番で決定される。</p>
 <p>DBインスタンスごとにフェイルオーバーの優先度 (<code>0</code>～<code>15</code>) を設定でき、優先度の数値の小さいDBインスタンスほど優先され、昇格対象になる。</p>
 <p>優先度が同じだと、インスタンスクラスが大きいDBインスタンスが昇格対象になる。</p>
 <p>インスタンスクラスが同じだと、同じサブネットにあるDBインスタンスが昇格対象になる。</p>
@@ -25917,8 +25917,8 @@ NOW<span class="o">()</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="aws-auto-scaling">リードレプリカの手動追加、AWS Auto Scalingグループ<a class="headerlink" href="#aws-auto-scaling" title="Permanent link">&para;</a></h3>
-<p>リードレプリカの手動追加もしくはAWS Auto Scalingグループによって、Auroraに関するメトリクス (例：平均CPU使用率、平均DB接続数など) がターゲット値を維持できるように、リードレプリカの自動水平スケーリング (リードレプリカ数の増減) を実行する。</p>
-<p>注意点として、AWS RDSスケーリングは、ストレージサイズを増加させる垂直スケーリングであり、Auroraのスケーリングとは仕様が異なっている。</p>
+<p>リードレプリカの手動追加もしくはAWS Auto Scalingグループによって、AWS Auroraに関するメトリクス (例：平均CPU使用率、平均DB接続数など) がターゲット値を維持できるように、リードレプリカの自動水平スケーリング (リードレプリカ数の増減) を実行する。</p>
+<p>注意点として、AWS RDSのスケーリングは、ストレージサイズを増加させる垂直スケーリングであり、AWS Auroraのスケーリングとは仕様が異なっている。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Integrating.AutoScaling.html">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Integrating.AutoScaling.html</a></li>
