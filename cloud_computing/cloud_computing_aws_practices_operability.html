@@ -14581,9 +14581,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws-rds-aurora" class="md-nav__link">
+  <a href="#aws-aurora" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ AWS RDS (Aurora)
+      ▼ AWS Aurora
     </span>
   </a>
   
@@ -24615,9 +24615,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws-rds-aurora" class="md-nav__link">
+  <a href="#aws-aurora" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ AWS RDS (Aurora)
+      ▼ AWS Aurora
     </span>
   </a>
   
@@ -24990,7 +24990,7 @@
 <li><a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheMetrics.WhichShouldIMonitor.html">https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheMetrics.WhichShouldIMonitor.html</a></li>
 </ul>
 </blockquote>
-<h4 id="aws-rds-aurora">▼ AWS RDS (Aurora)<a class="headerlink" href="#aws-rds-aurora" title="Permanent link">&para;</a></h4>
+<h4 id="aws-aurora">▼ AWS Aurora<a class="headerlink" href="#aws-aurora" title="Permanent link">&para;</a></h4>
 <p>名前空間をAWS Auroraとしたメトリクスの監視ポリシーは以下の通りである。</p>
 <table>
 <thead>
@@ -25013,14 +25013,14 @@
 <tr>
 <td><code>CPUUtilization</code></td>
 <td>%</td>
-<td>Aurora DBインスタンスのCPU使用率をデータポイントとする。</td>
+<td>AWS Aurora DBインスタンスのCPU使用率をデータポイントとする。</td>
 <td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
 <td></td>
 </tr>
 <tr>
 <td><code>DatabaseConnections</code></td>
 <td>カウント</td>
-<td>Aurora DBインスタンスへの接続数をデータポイントとする。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。</td>
+<td>AWS Aurora DBインスタンスへの接続数をデータポイントとする。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。</td>
 <td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 400</code></td>
 <td>クライアントがDBにリクエストしている時間帯がわかるため、メンテナンスウィンドウを実施時間の参考になる。</td>
 </tr>
@@ -25041,28 +25041,28 @@
 <tr>
 <td><code>DMLLatency</code></td>
 <td>マイクロ秒</td>
-<td>Aurora DBインスタンスに対するDML系クエリの遅延秒数をデータポイントとする。</td>
+<td>AWS Aurora DBインスタンスに対するDML系クエリの遅延秒数をデータポイントとする。</td>
 <td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 2</code>GB</td>
 <td></td>
 </tr>
 <tr>
 <td><code>FreeableMemory</code></td>
 <td>バイト数</td>
-<td>Aurora DBインスタンスの使用できるメモリの最大空きサイズをデータポイントとする。</td>
+<td>AWS Aurora DBインスタンスの使用できるメモリの最大空きサイズをデータポイントとする。</td>
 <td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 2</code>GB</td>
 <td></td>
 </tr>
 <tr>
 <td><code>FreeLocalStorage</code></td>
 <td>バイト数</td>
-<td>Aurora DBインスタンスの使用できるローカルストレージの最大空きサイズをデータポイントとする。</td>
+<td>AWS Aurora DBインスタンスの使用できるローカルストレージの最大空きサイズをデータポイントとする。</td>
 <td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 10</code>GB</td>
 <td>DBインスタンスのローカルストレージは、一時テーブルやログの保管に使用される。</td>
 </tr>
 <tr>
 <td><code>LoginFailures</code></td>
 <td>カウント</td>
-<td>Aurora DBへのログインの失敗回数をデータポイントとする。</td>
+<td>AWS Aurora DBへのログインの失敗回数をデータポイントとする。</td>
 <td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
 <td></td>
 </tr>

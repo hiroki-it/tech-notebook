@@ -28122,7 +28122,7 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <p>ただし、画面からの変更後にTerraformのコードも変更しておく必要がある。</p>
 <p>Terraformを書き換えなくとも問題は起こらないが、Terraformのコードと実インフラが乖離してしまう。</p>
 <h4 id="6for_each"><code>(6)``for_each</code>引数を使用して<a class="headerlink" href="#6for_each" title="Permanent link">&para;</a></h4>
-<p>Auroraでは、クラスターにインスタンスを1つだけ紐付けると、プライマリーインスタンスとして作成される。</p>
+<p>AWS Auroraでは、クラスターにインスタンスを1つだけ紐付けると、プライマリーインスタンスとして作成される。</p>
 <p>また以降インスタンスを紐付けると、リードレプリカとして自動的に作成されていく。</p>
 <p>AZのマップデータに対して<code>for_each</code>引数を使用することにより、各AZに最低1つのインスタンスを配置するように設定できる。</p>
 <blockquote>
@@ -28142,7 +28142,7 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <p>クラスターに <code>count</code>引数で量産したインスタンスを紐付ける。</p>
 <p><code>count</code>引数は本来非推奨であるが、同じ設定のインスタンスを単に量産するだけなため、許容する。</p>
 <h4 id="10az"><code>(10)</code>マルチAZを有効化する<a class="headerlink" href="#10az" title="Permanent link">&para;</a></h4>
-<p>Auroraでは、紐付けられたサブネットグループが複数のAZのサブネットで構成されている場合、各インスタンスを自動的にAZに配置するようになっている。</p>
+<p>AWS Auroraでは、紐付けられたサブネットグループが複数のAZのサブネットで構成されている場合、各インスタンスを自動的にAZに配置するようになっている。</p>
 <p>そのため、サブネットグループに複数のサブネットを紐付けるようにする。</p>
 <blockquote>
 <ul>

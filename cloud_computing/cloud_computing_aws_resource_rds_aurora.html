@@ -25566,7 +25566,7 @@
 <li><a href="https://qiita.com/minorun365/items/2530cf1d1f5793c15c79">https://qiita.com/minorun365/items/2530cf1d1f5793c15c79</a></li>
 </ul>
 </blockquote>
-<p>注意点として、通常のAurora DBクラスターと比較して、機能が制限される。</p>
+<p>注意点として、通常のAWS Aurora DBクラスターと比較して、機能が制限される。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations</a></li>
@@ -25723,7 +25723,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_13">アップグレード可能かのバリデーション<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<p>Aurora DBにSSH接続した上で、DBに対して以下のコマンドを実行すると、<code>v5.7</code>から<code>v8</code>系へのアップグレードで問題が起こるかを解析できる</p>
+<p>AWS AuroraにSSH接続した上で、DBに対して以下のコマンドを実行すると、<code>v5.7</code>から<code>v8</code>系へのアップグレードで問題が起こるかを解析できる</p>
 <p>ただ、アプリ側のSQLのロジックを解析することはできず、あくまでMySQLの設定値のみを解析でき、廃止予定のロジックを使っているかまでは見つけられない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>mysqlsh<span class="w"> </span>util.checkForServerUpgrade<span class="o">()</span>
 </code></pre></div>
@@ -25740,7 +25740,7 @@
 <p>再起動に伴ってダウンタイムが発生し、アプリケーションからDBに接続できなくなる。</p>
 <p>この間、アプリケーションの利用者に与える影響を小さくできるように、計画的にダウンタイムを発生させる必要がある。</p>
 <h4 id="_16">▼ ダウンタイムの発生条件<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>非Auroraに記載された情報のため、厳密にはAuroraのダウンタイムではない。</p>
+<p>AWS RDSに記載された情報のため、厳密にはAuroraのダウンタイムではない。</p>
 <p>ただし、経験上同じ項目でダウンタイムが発生しているため、参考にする。</p>
 <blockquote>
 <ul>

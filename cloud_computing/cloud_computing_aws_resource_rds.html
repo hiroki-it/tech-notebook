@@ -14104,13 +14104,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#auroraaurora" class="md-nav__link">
+  <a href="#aws-aurora" class="md-nav__link">
     <span class="md-ellipsis">
-      Auroraと非Aurora
+      AWS Auroraとの比較
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Auroraと非Aurora">
+    <nav class="md-nav" aria-label="AWS Auroraとの比較">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24671,13 +24671,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#auroraaurora" class="md-nav__link">
+  <a href="#aws-aurora" class="md-nav__link">
     <span class="md-ellipsis">
-      Auroraと非Aurora
+      AWS Auroraとの比較
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Auroraと非Aurora">
+    <nav class="md-nav" aria-label="AWS Auroraとの比較">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24958,18 +24958,18 @@
 </tr>
 <tr>
 <td>エディション</td>
-<td>エンジンバージョンでAuroraを選択した場合の互換性を設定する。</td>
+<td>エンジンバージョンでAWS Auroraを選択した場合の互換性を設定する。</td>
 <td></td>
 </tr>
 <tr>
 <td>エンジンバージョン</td>
 <td>DBエンジンのバージョンを設定する。DBクラスター内の全てのDBインスタンスに適用される。</td>
-<td>・Auroraであれば、<code>SELECT AURORA_VERSION()</code>を使用して、エンジンバージョンを確認できる。</td>
+<td>・AWS Auroraであれば、<code>SELECT AURORA_VERSION()</code>を使用して、エンジンバージョンを確認できる。</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<h3 id="auroraaurora">Auroraと非Aurora<a class="headerlink" href="#auroraaurora" title="Permanent link">&para;</a></h3>
+<h3 id="aws-aurora">AWS Auroraとの比較<a class="headerlink" href="#aws-aurora" title="Permanent link">&para;</a></h3>
 <h4 id="dbmsrdb">▼ DBMSに対応するRDB<a class="headerlink" href="#dbmsrdb" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -24981,7 +24981,7 @@
 </thead>
 <tbody>
 <tr>
-<td>Aurora</td>
+<td>AWS Aurora MySQL</td>
 <td>AWS RDS</td>
 <td>MySQL/PostgreSQL</td>
 </tr>
@@ -25003,7 +25003,7 @@
 </tbody>
 </table>
 <h4 id="_3">▼ 機能の違い<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>RDBがAuroraか非Auroraかで機能に差があり、Auroraの方が耐障害性や可用性が高い。</p>
+<p>RDBがAWS AuroraかAWS RDSかで機能に差があり、AWS Auroraの方が耐障害性や可用性が高い。</p>
 <p>ただし、その分費用が高いことに注意する。</p>
 <blockquote>
 <ul>
@@ -25023,7 +25023,7 @@
 <p><br></p>
 <h3 id="_4">確認方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>Linux x86_64 (AMD64) が使用されているところまでは確認できるが、Linuxのバージョンは隠蔽されている。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">-- Auroraの場合</span>
+<div class="highlight"><pre><span></span><code><span class="c1">-- AWS Auroraの場合</span>
 <span class="k">SHOW</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%version%&#39;</span><span class="p">;</span>
 
 <span class="o">+</span><span class="c1">-------------------------+------------------------------+</span>
@@ -25040,7 +25040,7 @@
 <span class="o">|</span><span class="w"> </span><span class="n">version_compile_os</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">Linux</span><span class="w">                        </span><span class="o">|</span>
 <span class="o">+</span><span class="c1">-------------------------+------------------------------+</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">-- 非Auroraの場合</span>
+<div class="highlight"><pre><span></span><code><span class="c1">-- AWS RDSの場合</span>
 <span class="k">SHOW</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%version%&#39;</span><span class="p">;</span>
 
 <span class="o">+</span><span class="c1">-------------------------+------------------------------+</span>
@@ -25272,7 +25272,7 @@
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html#Concepts.MultiAZ.Failover">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html#Concepts.MultiAZ.Failover</a></li>
 </ul>
 </blockquote>
-<p>(3) 非AuroraのAWS RDSでは条件に当てはまらない場合、リードレプリカを手動でフェイルオーバーさせる。</p>
+<p>(3) AWS RDSのAWS RDSでは条件に当てはまらない場合、リードレプリカを手動でフェイルオーバーさせる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.ReducedDowntime">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.ReducedDowntime</a></li>
