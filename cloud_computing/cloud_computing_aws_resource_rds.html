@@ -22,7 +22,7 @@
         <link rel="prev" href="cloud_computing_aws_resource_lb.html">
       
       
-        <link rel="next" href="cloud_computing_aws_resource_redshift.html">
+        <link rel="next" href="cloud_computing_aws_resource_rds_aurora.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -13959,6 +13959,52 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3_2_30" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_13_3_2_30" id="__nav_13_3_2_30_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ RDS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_13_3_2_30_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13_3_2_30">
+            <span class="md-nav__icon md-icon"></span>
+            ■ RDS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -14015,37 +14061,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-aws-rdsrelational-database-service" class="md-nav__link">
+  <a href="#01-aws-rds" class="md-nav__link">
     <span class="md-ellipsis">
-      01. AWS RDS：Relational Database Service
+      01. AWS RDSとは
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="01. AWS RDS：Relational Database Service">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws-rds" class="md-nav__link">
-    <span class="md-ellipsis">
-      AWS RDSとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-02" class="md-nav__link">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      01-02. セットアップ
+      02. セットアップ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01-02. セットアップ">
+    <nav class="md-nav" aria-label="02. セットアップ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -14105,20 +14136,25 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#os" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-os" class="md-nav__link">
     <span class="md-ellipsis">
-      OSの隠蔽
+      03. OSの隠蔽
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="OSの隠蔽">
+    <nav class="md-nav" aria-label="03. OSの隠蔽">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#os_1" class="md-nav__link">
+  <a href="#os" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ OSの隠蔽とは
+      OSの隠蔽とは
     </span>
   </a>
   
@@ -14127,7 +14163,7 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 確認方法
+      確認方法
     </span>
   </a>
   
@@ -14137,6 +14173,16 @@
     </nav>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. メンテナンスウインドウ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. メンテナンスウインドウ">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
@@ -14145,13 +14191,12 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="メンテナンスウインドウ">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ メンテナンスウインドウ
+      メンテナンスの適切な曜日/時間帯
     </span>
   </a>
   
@@ -14160,7 +14205,7 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ メンテナンスの適切な曜日/時間帯
+      『保留中の変更』『保留中のメンテナンス』
     </span>
   </a>
   
@@ -14169,7 +14214,7 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 『保留中の変更』『保留中のメンテナンス』
+      保留中のメンテナンスの状態
     </span>
   </a>
   
@@ -14178,7 +14223,7 @@
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 保留中のメンテナンスの状態
+      『次のウィンドウ』状態の取り消し
     </span>
   </a>
   
@@ -14187,23 +14232,33 @@
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 『次のウィンドウ』状態の取り消し
+      『保留中の変更』の取り消し
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. ダウンタイム
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05. ダウンタイム">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 『保留中の変更』の取り消し
+      ダウンタイムの発生条件
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -14213,199 +14268,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-aws-rds-aurora" class="md-nav__link">
+  <a href="#06" class="md-nav__link">
     <span class="md-ellipsis">
-      02. AWS RDS (Aurora)
+      06. フェイルオーバー
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. AWS RDS (Aurora)">
+    <nav class="md-nav" aria-label="06. フェイルオーバー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aws-rds-aurora" class="md-nav__link">
+  <a href="#aws-rds" class="md-nav__link">
     <span class="md-ellipsis">
-      AWS RDS (Aurora) とは
+      AWS RDSのフェイルオーバーとは
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02-02. セットアップ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02-02. セットアップ">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-      コンソール画面の場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="コンソール画面の場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ DBクラスター
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ DBインスタンス
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-03-db" class="md-nav__link">
-    <span class="md-ellipsis">
-      02-03. DBクラスター
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02-03. DBクラスター">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      DBクラスターとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      空のDBクラスター
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="空のDBクラスター">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 空のDBクラスターとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-04" class="md-nav__link">
-    <span class="md-ellipsis">
-      02-04. グローバルクラスター
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02-04. グローバルクラスター">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      グローバルクラスターとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db-db" class="md-nav__link">
-    <span class="md-ellipsis">
-      クラスターボリュームのみのセカンダリーDBクラスター (ヘッドレスセカンダリーDBクラスター)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      仕組み
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="仕組み">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ウォームスタンバイ構成
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ コールドスタンバイ構成
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      アップグレード
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      スナップショット
+      フェイルオーバーによるダウンタイムの最小化
     </span>
   </a>
   
@@ -14417,395 +14301,26 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-05-db" class="md-nav__link">
+  <a href="#07" class="md-nav__link">
     <span class="md-ellipsis">
-      02-05. DBインスタンス
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02-05. DBインスタンス">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      DBインスタンスとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      DBインスタンスの種類
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      エンドポイント
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      データベースエンジンのログ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="データベースエンジンのログ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ スロークエリログ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ エラークエリログ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-06" class="md-nav__link">
-    <span class="md-ellipsis">
-      02-06. アップグレード
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02-06. アップグレード">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#zdp" class="md-nav__link">
-    <span class="md-ellipsis">
-      ZDP (ゼロダウンタイムパッチ適用)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      アップグレード可能かのバリデーション
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    <span class="md-ellipsis">
-      ダウンタイム
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ダウンタイム">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ダウンタイムとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ダウンタイムの発生条件
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ エンジンタイプによるダウンタイムの最小化
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ダウンタイムの計測例
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    <span class="md-ellipsis">
-      フェイルオーバー
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="フェイルオーバー">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aurora" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Auroraのフェイルオーバーとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ フェイルオーバーによるダウンタイムの最小化
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ DBインスタンスの昇格優先順位
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ダウンタイムを最小化できない場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bg" class="md-nav__link">
-    <span class="md-ellipsis">
-      B/G式アップグレード
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-07" class="md-nav__link">
-    <span class="md-ellipsis">
-      02-07. 負荷対策
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02-07. 負荷対策">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_32" class="md-nav__link">
-    <span class="md-ellipsis">
-      エンドポイントの使い分け
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws-auto-scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      リードレプリカの手動追加、AWS Auto Scalingグループ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_33" class="md-nav__link">
-    <span class="md-ellipsis">
-      クエリキャッシュの利用
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_34" class="md-nav__link">
-    <span class="md-ellipsis">
-      ユニークキーまたはインデックスの利用
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_35" class="md-nav__link">
-    <span class="md-ellipsis">
-      テーブルを正規化し過ぎない
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_36" class="md-nav__link">
-    <span class="md-ellipsis">
-      インスタンスタイプのスケールアップ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-08" class="md-nav__link">
-    <span class="md-ellipsis">
-      02-08. イベント
+      07. イベント
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-aws-rds-aurora" class="md-nav__link">
+  <a href="#08-aws-rds" class="md-nav__link">
     <span class="md-ellipsis">
-      03. AWS RDS (非Aurora)
+      08. AWS RDSプロキシ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. AWS RDS (非Aurora)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_37" class="md-nav__link">
-    <span class="md-ellipsis">
-      ダウンタイム
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ダウンタイム">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_38" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ダウンタイムの発生条件
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_39" class="md-nav__link">
-    <span class="md-ellipsis">
-      フェイルオーバー
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="フェイルオーバー">
+    <nav class="md-nav" aria-label="08. AWS RDSプロキシ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#aws-rds_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ AWS RDSのフェイルオーバーとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_40" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ フェイルオーバーによるダウンタイムの最小化
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_41" class="md-nav__link">
-    <span class="md-ellipsis">
-      イベント
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-aws-rds" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. AWS RDSプロキシ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. AWS RDSプロキシ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws-rds_2" class="md-nav__link">
     <span class="md-ellipsis">
       AWS RDSプロキシとは
     </span>
@@ -14814,7 +14329,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_42" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       コネクションプールの管理
     </span>
@@ -14830,6 +14345,35 @@
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_rds_aurora.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aurora
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -25084,37 +24628,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-aws-rdsrelational-database-service" class="md-nav__link">
+  <a href="#01-aws-rds" class="md-nav__link">
     <span class="md-ellipsis">
-      01. AWS RDS：Relational Database Service
+      01. AWS RDSとは
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="01. AWS RDS：Relational Database Service">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws-rds" class="md-nav__link">
-    <span class="md-ellipsis">
-      AWS RDSとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-02" class="md-nav__link">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      01-02. セットアップ
+      02. セットアップ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01-02. セットアップ">
+    <nav class="md-nav" aria-label="02. セットアップ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25174,20 +24703,25 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#os" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-os" class="md-nav__link">
     <span class="md-ellipsis">
-      OSの隠蔽
+      03. OSの隠蔽
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="OSの隠蔽">
+    <nav class="md-nav" aria-label="03. OSの隠蔽">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#os_1" class="md-nav__link">
+  <a href="#os" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ OSの隠蔽とは
+      OSの隠蔽とは
     </span>
   </a>
   
@@ -25196,7 +24730,7 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 確認方法
+      確認方法
     </span>
   </a>
   
@@ -25206,6 +24740,16 @@
     </nav>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. メンテナンスウインドウ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. メンテナンスウインドウ">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
@@ -25214,13 +24758,12 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="メンテナンスウインドウ">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ メンテナンスウインドウ
+      メンテナンスの適切な曜日/時間帯
     </span>
   </a>
   
@@ -25229,7 +24772,7 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ メンテナンスの適切な曜日/時間帯
+      『保留中の変更』『保留中のメンテナンス』
     </span>
   </a>
   
@@ -25238,7 +24781,7 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 『保留中の変更』『保留中のメンテナンス』
+      保留中のメンテナンスの状態
     </span>
   </a>
   
@@ -25247,7 +24790,7 @@
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 保留中のメンテナンスの状態
+      『次のウィンドウ』状態の取り消し
     </span>
   </a>
   
@@ -25256,23 +24799,33 @@
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 『次のウィンドウ』状態の取り消し
+      『保留中の変更』の取り消し
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. ダウンタイム
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05. ダウンタイム">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 『保留中の変更』の取り消し
+      ダウンタイムの発生条件
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -25282,199 +24835,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-aws-rds-aurora" class="md-nav__link">
+  <a href="#06" class="md-nav__link">
     <span class="md-ellipsis">
-      02. AWS RDS (Aurora)
+      06. フェイルオーバー
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. AWS RDS (Aurora)">
+    <nav class="md-nav" aria-label="06. フェイルオーバー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aws-rds-aurora" class="md-nav__link">
+  <a href="#aws-rds" class="md-nav__link">
     <span class="md-ellipsis">
-      AWS RDS (Aurora) とは
+      AWS RDSのフェイルオーバーとは
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02-02. セットアップ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02-02. セットアップ">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-      コンソール画面の場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="コンソール画面の場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ DBクラスター
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ DBインスタンス
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-03-db" class="md-nav__link">
-    <span class="md-ellipsis">
-      02-03. DBクラスター
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02-03. DBクラスター">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      DBクラスターとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      空のDBクラスター
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="空のDBクラスター">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 空のDBクラスターとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-04" class="md-nav__link">
-    <span class="md-ellipsis">
-      02-04. グローバルクラスター
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02-04. グローバルクラスター">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      グローバルクラスターとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db-db" class="md-nav__link">
-    <span class="md-ellipsis">
-      クラスターボリュームのみのセカンダリーDBクラスター (ヘッドレスセカンダリーDBクラスター)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      仕組み
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="仕組み">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ウォームスタンバイ構成
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ コールドスタンバイ構成
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      アップグレード
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      スナップショット
+      フェイルオーバーによるダウンタイムの最小化
     </span>
   </a>
   
@@ -25486,395 +24868,26 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-05-db" class="md-nav__link">
+  <a href="#07" class="md-nav__link">
     <span class="md-ellipsis">
-      02-05. DBインスタンス
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02-05. DBインスタンス">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      DBインスタンスとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      DBインスタンスの種類
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      エンドポイント
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      データベースエンジンのログ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="データベースエンジンのログ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ スロークエリログ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ エラークエリログ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-06" class="md-nav__link">
-    <span class="md-ellipsis">
-      02-06. アップグレード
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02-06. アップグレード">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#zdp" class="md-nav__link">
-    <span class="md-ellipsis">
-      ZDP (ゼロダウンタイムパッチ適用)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      アップグレード可能かのバリデーション
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    <span class="md-ellipsis">
-      ダウンタイム
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ダウンタイム">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ダウンタイムとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ダウンタイムの発生条件
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ エンジンタイプによるダウンタイムの最小化
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ダウンタイムの計測例
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    <span class="md-ellipsis">
-      フェイルオーバー
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="フェイルオーバー">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aurora" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Auroraのフェイルオーバーとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ フェイルオーバーによるダウンタイムの最小化
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ DBインスタンスの昇格優先順位
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ダウンタイムを最小化できない場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bg" class="md-nav__link">
-    <span class="md-ellipsis">
-      B/G式アップグレード
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-07" class="md-nav__link">
-    <span class="md-ellipsis">
-      02-07. 負荷対策
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02-07. 負荷対策">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_32" class="md-nav__link">
-    <span class="md-ellipsis">
-      エンドポイントの使い分け
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws-auto-scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      リードレプリカの手動追加、AWS Auto Scalingグループ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_33" class="md-nav__link">
-    <span class="md-ellipsis">
-      クエリキャッシュの利用
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_34" class="md-nav__link">
-    <span class="md-ellipsis">
-      ユニークキーまたはインデックスの利用
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_35" class="md-nav__link">
-    <span class="md-ellipsis">
-      テーブルを正規化し過ぎない
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_36" class="md-nav__link">
-    <span class="md-ellipsis">
-      インスタンスタイプのスケールアップ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-08" class="md-nav__link">
-    <span class="md-ellipsis">
-      02-08. イベント
+      07. イベント
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-aws-rds-aurora" class="md-nav__link">
+  <a href="#08-aws-rds" class="md-nav__link">
     <span class="md-ellipsis">
-      03. AWS RDS (非Aurora)
+      08. AWS RDSプロキシ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. AWS RDS (非Aurora)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_37" class="md-nav__link">
-    <span class="md-ellipsis">
-      ダウンタイム
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ダウンタイム">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_38" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ダウンタイムの発生条件
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_39" class="md-nav__link">
-    <span class="md-ellipsis">
-      フェイルオーバー
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="フェイルオーバー">
+    <nav class="md-nav" aria-label="08. AWS RDSプロキシ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#aws-rds_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ AWS RDSのフェイルオーバーとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_40" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ フェイルオーバーによるダウンタイムの最小化
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_41" class="md-nav__link">
-    <span class="md-ellipsis">
-      イベント
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-aws-rds" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. AWS RDSプロキシ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. AWS RDSプロキシ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws-rds_2" class="md-nav__link">
     <span class="md-ellipsis">
       AWS RDSプロキシとは
     </span>
@@ -25883,7 +24896,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_42" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       コネクションプールの管理
     </span>
@@ -25923,10 +24936,10 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-aws-rdsrelational-database-service">01. AWS RDS：Relational Database Service<a class="headerlink" href="#01-aws-rdsrelational-database-service" title="Permanent link">&para;</a></h2>
-<h3 id="aws-rds">AWS RDSとは<a class="headerlink" href="#aws-rds" title="Permanent link">&para;</a></h3>
+<h2 id="01-aws-rds">01. AWS RDSとは<a class="headerlink" href="#01-aws-rds" title="Permanent link">&para;</a></h2>
+<p>記入中...</p>
 <p><br></p>
-<h2 id="01-02">01-02. セットアップ<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
+<h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">コンソール画面の場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="db">▼ DBエンジン<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
 <table>
@@ -25998,8 +25011,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="os">OSの隠蔽<a class="headerlink" href="#os" title="Permanent link">&para;</a></h3>
-<h4 id="os_1">▼ OSの隠蔽とは<a class="headerlink" href="#os_1" title="Permanent link">&para;</a></h4>
+<h2 id="03-os">03. OSの隠蔽<a class="headerlink" href="#03-os" title="Permanent link">&para;</a></h2>
+<h3 id="os">OSの隠蔽とは<a class="headerlink" href="#os" title="Permanent link">&para;</a></h3>
 <p>AWS RDSは、EC2内にDBMSが稼働したものであるが、このほとんどが隠蔽されている。</p>
 <p>そのためdbサーバーのようには操作できず、OSのバージョン確認やSSH公開鍵認証を行えない。</p>
 <blockquote>
@@ -26007,7 +25020,8 @@
 <li><a href="https://xtech.nikkei.com/it/article/COLUMN/20131108/516863/">https://xtech.nikkei.com/it/article/COLUMN/20131108/516863/</a></li>
 </ul>
 </blockquote>
-<h4 id="_4">▼ 確認方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_4">確認方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>Linux x86_64 (AMD64) が使用されているところまでは確認できるが、Linuxのバージョンは隠蔽されている。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Auroraの場合</span>
 <span class="k">SHOW</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%version%&#39;</span><span class="p">;</span>
@@ -26043,18 +25057,20 @@
 <span class="o">+</span><span class="c1">-------------------------+------------------------------+</span>
 </code></pre></div>
 <p><br></p>
+<h2 id="04">04. メンテナンスウインドウ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_5">メンテナンスウインドウ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<h4 id="_6">▼ メンテナンスウインドウ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>DBクラスター/DBインスタンスの設定の変更をスケジューリングさせる。</p>
 <blockquote>
 <ul>
 <li><a href="https://dev.classmethod.jp/articles/amazon-rds-maintenance-questions/">https://dev.classmethod.jp/articles/amazon-rds-maintenance-questions/</a></li>
 </ul>
 </blockquote>
-<h4 id="_7">▼ メンテナンスの適切な曜日/時間帯<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_6">メンテナンスの適切な曜日/時間帯<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>AWS CloudWatch Metricsの<code>DatabaseConnections</code>メトリクスから、DBの接続数が低くなる時間帯を調査し、その時間帯にメンテナンスウィンドウを設定する。</p>
 <p>また、メンテナンスウィンドウの実施曜日が週末であると、サイトが停止したまま休日を迎える可能性があるため、週末以外になるように設定する (メンテナンスウィンドウがUTCであることに注意) 。</p>
-<h4 id="_8">▼ 『保留中の変更』『保留中のメンテナンス』<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_7">『保留中の変更』『保留中のメンテナンス』<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p><img alt="rds_pending-maintenance" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_pending-maintenance.png" /></p>
 <p>ユーザーが予定した設定変更は『保留中の変更』として表示される一方で、AWSによって定期的に行われるハードウェア/OS/DBエンジンのバージョンを強制アップグレードは『保留中のメンテナンス』として表示される。</p>
 <p>『次のメンテナンスウィンドウ』を選択すれば実行タイミングをメンテナンスウィンドウの間設定できるが、これを行わない場合は『日付の適用』に表示された時間帯に強制実行される。</p>
@@ -26070,7 +25086,8 @@
 <li><a href="https://dev.classmethod.jp/articles/rds-pending-maintenance-actions/">https://dev.classmethod.jp/articles/rds-pending-maintenance-actions/</a></li>
 </ul>
 </blockquote>
-<h4 id="_9">▼ 保留中のメンテナンスの状態<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_8">保留中のメンテナンスの状態<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -26097,7 +25114,8 @@
 </tr>
 </tbody>
 </table>
-<h4 id="_10">▼ 『次のウィンドウ』状態の取り消し<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_9">『次のウィンドウ』状態の取り消し<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>設定の変更が『次のウィンドウ』状態にある場合、画面上からは『必須』や『利用可能』といった実行タイミングが未定の状態に戻せない。</p>
 <p>しかし、CLIを使用すると戻せる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>rds<span class="w"> </span>describe-pending-maintenance-actions<span class="w"> </span>--output<span class="o">=</span>table
@@ -26140,7 +25158,8 @@
 <li><a href="https://dev.classmethod.jp/articles/mean-of-next-window-in-pending-maintenance-and-set-maintenance-schedule/">https://dev.classmethod.jp/articles/mean-of-next-window-in-pending-maintenance-and-set-maintenance-schedule/</a></li>
 </ul>
 </blockquote>
-<h4 id="_11">▼ 『保留中の変更』の取り消し<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_10">『保留中の変更』の取り消し<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>保留中の変更を画面上からは取り消せない。</p>
 <p>しかし、CLIを使用すると戻せる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>rds<span class="w"> </span>modify-db-instance<span class="w"> </span><span class="se">\</span>
@@ -26155,634 +25174,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-aws-rds-aurora">02. AWS RDS (Aurora)<a class="headerlink" href="#02-aws-rds-aurora" title="Permanent link">&para;</a></h2>
-<h3 id="aws-rds-aurora">AWS RDS (Aurora) とは<a class="headerlink" href="#aws-rds-aurora" title="Permanent link">&para;</a></h3>
-<p><br></p>
-<h2 id="02-02">02-02. セットアップ<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
-<h3 id="_12">コンソール画面の場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<h4 id="db_1">▼ DBクラスター<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h4>
-<p>ベストプラクティスについては、以下のリンクを参考にせよ。</p>
-<table>
-<thead>
-<tr>
-<th>設定項目</th>
-<th>説明</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>レプリケーション</td>
-<td>単一のプライマリーインスタンス (シングルマスター) または複数のプライマリーインスタンス (マルチマスター) とするかを設定する。</td>
-<td>フェイルオーバーを利用したダウンタイムの最小化時に、マルチマスターであれば変更の順番を気にしなくてよくなる。ただし、DBクラスターをクローンできないなどのデメリットもある。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms</a></td>
-</tr>
-<tr>
-<td>DBクラスター識別子</td>
-<td>DBクラスター名を設定する。</td>
-<td>インスタンス名は、最初に設定できず、AWS RDSの作成後に設定できる。</td>
-</tr>
-<tr>
-<td>VPCとサブネットグループ</td>
-<td>DBクラスターを配置するVPCとサブネットを設定する。</td>
-<td>DBが配置されるサブネットはプライベートサブネットにする、これには、data storeサブネットと名付ける。アプリケーション以外は、踏み台サーバー経由でしかDBにリクエストできないようにする。<br><img alt="subnet_component-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_component-type.png" /></td>
-</tr>
-<tr>
-<td>パラメーターグループ</td>
-<td>グローバルオプションを設定する。</td>
-<td>デフォルトを使用せずに自前定義する場合、事前に作成しておく必要がある。クラスターパラメーターグループとインスタンスパラメーターグループがあるが、全てのインスタンスに同じパラメーターループを設定する必要があるなため、クラスターパラメーターを使用すれば良い。各パラメーターに適用タイプ (dynamic/static) があり、dynamicタイプは設定の適用に再起動が必要である。新しく作成したクラスタパラメーターグループにて以下の値を設定すると良い。<br>・<code>time_zone=Asia/Tokyo</code><br>・<code>character_set_client=utf8mb4</code><br>・<code>character_set_connection=utf8mb4</code><br>・<code>character_set_database=utf8mb4</code><br>・<code>character_set_results=utf8mb4</code><br>・<code>character_set_server=utf8mb4</code><br>・<code>server_audit_logging=1</code> (監査ログをAWS CloudWatchに送信するか否か) <br>・<code>server_audit_logs_upload=1</code><br>・<code>general_log=1</code> (通常クエリログをAWS CloudWatchに送信するか否か) <br>・<code>slow_query_log=1</code> (スロークエリログをAWS CloudWatchに送信するか否か) <br>・<code>long_query_time=3</code> (スロークエリと見なす最短秒数)</td>
-</tr>
-<tr>
-<td>DB認証</td>
-<td>DBに接続するための認証方法を設定する。</td>
-<td>各DBインスタンスに異なるDB認証を設定できるが、全てのDBインスタンスに同じ認証方法を設定すべきなため、DBクラスターでこれを設定すれば良い。</td>
-</tr>
-<tr>
-<td>マスタユーザー名</td>
-<td>DBのroot権限の実行ユーザーを設定</td>
-<td></td>
-</tr>
-<tr>
-<td>マスターパスワード</td>
-<td>DBのroot権限の実行ユーザーのパスワードを設定</td>
-<td></td>
-</tr>
-<tr>
-<td>暗号化キー</td>
-<td>KMSを使用して、データを暗号化して保管する。</td>
-<td></td>
-</tr>
-<tr>
-<td>バックアップ保管期間</td>
-<td>DBクラスター がバックアップを保管する期間を設定する。</td>
-<td><code>7</code>日間にしておく。</td>
-</tr>
-<tr>
-<td>ログのエクスポート</td>
-<td>AWS CloudWatch Logsに送信するデータエンジン (例：MySQL) のログを設定する。データベースエンジンの一般ログ、エラーログ、スロークエリログ、監査ログなどを選択できる。</td>
-<td>全てのログを選択するとよい。</td>
-</tr>
-<tr>
-<td>セキュリティグループ</td>
-<td>DBクラスターのセキュリティグループを設定する。</td>
-<td>コンピューティングからのリクエストのみを許可するように、これらのプライベートIPアドレス (<code>*.*.*.*/32</code>) を設定する。</td>
-</tr>
-<tr>
-<td>認証機関</td>
-<td>DBクラスターに紐づけるSSL証明書を署名するルート認証局を設定する。</td>
-<td>アプリケーションがDBクラスターにHTTPSで通信する場合に必要である。</td>
-</tr>
-<tr>
-<td>削除保護</td>
-<td>DBクラスターの削除を防ぐ。</td>
-<td>DBクラスターを削除するとクラスターボリュームも削除されるため、これを防ぐ。補足として、DBクラスターの削除保護になっていてもDBインスタンスは削除できる。DBインスタンスを削除しても、再作成すればクラスターボリュームに接続されて元のデータにリクエストを送信できる。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection</a></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/AWS">https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/AWS</a> RDS/</li>
-<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithAWS">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithAWS</a> RDS.SSL.html</li>
-</ul>
-</blockquote>
-<h4 id="db_2">▼ DBインスタンス<a class="headerlink" href="#db_2" title="Permanent link">&para;</a></h4>
-<p>ベストプラクティスについては、以下のリンクを参考にせよ。</p>
-<table>
-<thead>
-<tr>
-<th>設定項目</th>
-<th>説明</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>インスタンスクラス</td>
-<td>DBインスタンスのスペックを設定する。サーバーレス、メモリ最適化、バースト可能などを選択できる。</td>
-<td>バースト可能クラスを選択するとよい。補足として、AuroraのDBサイズは自動的にスケーリングするため、設定する必要がない。</td>
-</tr>
-<tr>
-<td>パブリックアクセス</td>
-<td>DBインスタンスにIPアドレスを割り当てるか否かを設定する。</td>
-<td></td>
-</tr>
-<tr>
-<td>キャパシティタイプ</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>マルチAZ配置</td>
-<td>プライマリーインスタンスとは別に、リードレプリカをマルチAZ配置で追加するか否かを設定する。</td>
-<td>後からでもリードレプリカを追加できる。また、フェイルオーバー時にリードレプリカが存在していなければ、昇格後のプライマリーインスタンスが自動的に作成される。</td>
-</tr>
-<tr>
-<td>最初のDB名</td>
-<td>DBインスタンスに自動的に作成されるDB名を設定</td>
-<td></td>
-</tr>
-<tr>
-<td>マイナーバージョンの自動アップグレード</td>
-<td>DBインスタンスのDBエンジンのバージョンを自動的に更新するかを設定する。</td>
-<td>開発環境では有効化、本番環境とステージング環境では無効化しておく。開発環境で新バージョンに問題が起こらなければ、ステージング環境と本番環境にも適用する。</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/AWS">https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/AWS</a> RDS/</li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="02-03-db">02-03. DBクラスター<a class="headerlink" href="#02-03-db" title="Permanent link">&para;</a></h2>
-<h3 id="db_3">DBクラスターとは<a class="headerlink" href="#db_3" title="Permanent link">&para;</a></h3>
-<p>DBエンジンにAuroraを選択した場合にのみ使用できる。</p>
-<p>DBインスタンスとクラスターボリュームから構成されている。</p>
-<p>コンピューティングとして動作するDBインスタンスと、ストレージとして動作するクラスターボリュームが分離されているため、DBインスタンスが誤って全て削除されてしまったとしても、データを守れる。</p>
-<p>また、両者が分離されていないエンジンタイプと比較して、再起動が早いため、再起動に伴うダウンタイムが短い。</p>
-<p><img alt="aurora-db-cluster" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aurora-db-cluster.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="db_4">空のDBクラスター<a class="headerlink" href="#db_4" title="Permanent link">&para;</a></h3>
-<h4 id="db_5">▼ 空のDBクラスターとは<a class="headerlink" href="#db_5" title="Permanent link">&para;</a></h4>
-<p>コンソール画面にて、DBクラスター内の全てのDBインスタンスを削除すると、DBクラスターも自動的に削除される。</p>
-<p>一方で、AWS-APIをコールして全てのDBインスタンスを削除する場合、DBクラスターは自動的に削除されずに、空の状態になる。</p>
-<p>例えば、Terraformを使用してDBクラスターを作成する時に、インスタンスの作成に失敗するとDBクラスターが空になる、</p>
-<p>これは、TerraformがAWS-APIをコールした作成を行っているためである。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeleteCluster.DeleteCluster">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeleteCluster.DeleteCluster</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="02-04">02-04. グローバルクラスター<a class="headerlink" href="#02-04" title="Permanent link">&para;</a></h2>
-<h3 id="_13">グローバルクラスターとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<p>リージョン間に跨いだDBクラスターから構成されている。</p>
-<p>メインリージョンにあるプライマリークラスターのクラスターボリュームと、DRリージョンのセカンダリークラスターのクラスターボリュームのデータは、定期的に同期される。</p>
-<p>プライマリーインスタンスは、プライマリークラスターのみに存在している。</p>
-<p><img alt="aurora-db-cluster_global" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aurora-db-cluster_global.png" /></p>
-<p><br></p>
-<h3 id="db-db">クラスターボリュームのみのセカンダリーDBクラスター (ヘッドレスセカンダリーDBクラスター)<a class="headerlink" href="#db-db" title="Permanent link">&para;</a></h3>
-<p>『ヘッドレスセカンダリーDBクラスター』ともいう。</p>
-<p>コスト削減などを目的として、クラスターボリュームのみのセカンダリDBクラスターがある。</p>
-<p>セカンダリーDBクラスターのリードレプリカを削除すると、ヘッドレスセカンダリーDBクラスターを作成できる。</p>
-<p><img alt="aurora-db-cluster_global_secondary-headless" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aurora-db-cluster_global_secondary-headless.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://aws.amazon.com/blogs/database/achieve-cost-effective-multi-region-resiliency-with-amazon-aurora-global-database-headless-clusters/">https://aws.amazon.com/blogs/database/achieve-cost-effective-multi-region-resiliency-with-amazon-aurora-global-database-headless-clusters/</a>_</li>
-<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-getting-started.html#aurora-global-database-attach.console.headless">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-getting-started.html#aurora-global-database-attach.console.headless</a></li>
-<li><a href="https://aws.amazon.com/blogs/database/achieve-cost-effective-multi-region-resiliency-with-amazon-aurora-global-database-headless-clusters/">https://aws.amazon.com/blogs/database/achieve-cost-effective-multi-region-resiliency-with-amazon-aurora-global-database-headless-clusters/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_14">仕組み<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<h4 id="_15">▼ ウォームスタンバイ構成<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>ウォームスタンバイ構成の場合、メインリージョンにはプライマリーインスタンスとリードレプリカ (クラスターボリュームを含む) がおり、DRリージョンにはリードレプリカ (クラスターボリュームを含む) のみがいる。</p>
-<p>メインリージョンで障害が起こった場合は、DRリージョンのリードレプリカがプライマリインスタンスに昇格する。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>メインリージョンで障害が発生する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
-<p>DRリージョンのセカンダリークラスターがプライマリークラスターに昇格し、クラスター内のリードレプリカインスタンスがプライマリーインスタンスになる。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
-<p>メインリージョンのプライマリーインスタンスをフェイルオーバーさせる。</p>
-<p>各種エンドポイントが無効化され、アクセスできなくなる (<code>NXDOMAIN</code>になる) 。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
-<p>メインリージョンの障害が復旧する。</p>
-</dd>
-<dt><code>(5)</code></dt>
-<dd>
-<p>DRリージョンをフェイルオーバーさせる。</p>
-<p>メインリージョンのクラスターがプライマリークラスター、DRリージョンのクラスターがセカンダリークラスターになる。</p>
-</dd>
-</dl>
-<blockquote>
-<ul>
-<li><a href="https://dev.classmethod.jp/articles/amazon-aurora-global-database-failover-between-region/#toc-2">https://dev.classmethod.jp/articles/amazon-aurora-global-database-failover-between-region/#toc-2</a></li>
-<li><a href="https://qiita.com/minorun365/items/2530cf1d1f5793c15c79">https://qiita.com/minorun365/items/2530cf1d1f5793c15c79</a></li>
-</ul>
-</blockquote>
-<p>注意点として、通常のAurora DBクラスターと比較して、機能が制限される。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations</a></li>
-</ul>
-</blockquote>
-<h4 id="_16">▼ コールドスタンバイ構成<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>コールドスタンバイ構成の場合、メインリージョンにはプライマリーインスタンスとリードレプリカがおり、DRリージョンにクラスターボリュームのみがいる。</p>
-<p>つまり、DRリージョンにDBインスタンスがない。</p>
-<blockquote>
-<ul>
-<li><a href="https://dev.classmethod.jp/articles/amazon-aurora-global-database-failover-between-region/#toc-4">https://dev.classmethod.jp/articles/amazon-aurora-global-database-failover-between-region/#toc-4</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_17">アップグレード<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<p>グローバルクラスターでは、プライマリークラスターとセカンダリークラスターを同時にアップグレードできない。</p>
-<p>マイナーバージョンのアップグレードの場合は、セカンダリーDBクラスターからアップグレードする。</p>
-<p>メジャーバージョンのアップグレードの場合は、グローバルクラスター自体をアップグレードする。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-upgrade.html">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-upgrade.html</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_18">スナップショット<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
-<p>グローバルクラスターでは、リージョン間でデータをコピーしている。</p>
-<p>そのため、メインリージョンのプライマリークラスターでスナップショットを作成し、これをDRリージョンにコピーするようにする。</p>
-<blockquote>
-<ul>
-<li><a href="https://dev.classmethod.jp/articles/lim-rds-move-region-jp/#toc-7">https://dev.classmethod.jp/articles/lim-rds-move-region-jp/#toc-7</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="02-05-db">02-05. DBインスタンス<a class="headerlink" href="#02-05-db" title="Permanent link">&para;</a></h2>
-<h3 id="db_6">DBインスタンスとは<a class="headerlink" href="#db_6" title="Permanent link">&para;</a></h3>
-<p>コンピューティング機能を持ち、クラスターボリュームを操作できる。</p>
-<p><br></p>
-<h3 id="db_7">DBインスタンスの種類<a class="headerlink" href="#db_7" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>プライマリーインスタンス</th>
-<th>リードレプリカ</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ロール</td>
-<td>読み出し/書き込みインスタンス</td>
-<td>読み出しオンリーインスタンス</td>
-</tr>
-<tr>
-<td>CRUD制限</td>
-<td>制限なし。ユーザーの認可スコープに依存する。</td>
-<td>ユーザーの認可スコープに関係なく、READしか実行できない。</td>
-</tr>
-<tr>
-<td>エンドポイント</td>
-<td>各DBインスタンスに、リージョンのイニシャルに合わせたエンドポイントが割り振られる。</td>
-<td>各DBインスタンスに、リージョンのイニシャルに合わせたエンドポイントが割り振られる。</td>
-</tr>
-<tr>
-<td>データ同期</td>
-<td>DBクラスターに対するデータ変更を受けつける。</td>
-<td>読み出し/書き込みインスタンスのデータの変更が同期される。</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h3 id="_19">エンドポイント<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
-<p><img alt="rds_endpoint" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_endpoint.png" /></p>
-<table>
-<thead>
-<tr>
-<th>エンドポイント名</th>
-<th>役割</th>
-<th>送信先</th>
-<th>エンドポイント：ポート番号</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>クラスターエンドポイント</td>
-<td>書き込み/読み出し</td>
-<td>プライマリインスタンスのみ</td>
-<td><code>&lt;DBクラスター名&gt;.cluster-&lt;id&gt;.ap-northeast-1.rds.amazonaws.com:&lt;ポート番号&gt;</code></td>
-<td>プライマリーインスタンスに通信できる。プライマリーインスタンスがダウンし、フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わった場合、エンドポイントの転送先は新しいプライマリーインスタンスに変更される。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Cluster">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Cluster</a></td>
-</tr>
-<tr>
-<td>リーダーエンドポイント</td>
-<td>読み出し</td>
-<td>複数のリードレプリカに分散</td>
-<td><code>&lt;DBクラスター名&gt;.cluster-ro-&lt;id&gt;.ap-northeast-1.rds.amazonaws.com:&lt;ポート番号&gt;</code></td>
-<td>リードレプリカに通信できる。DBインスタンスが複数ある場合、クエリが自動的に割り振られる。フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わった場合、エンドポイントの転送先は新しいプライマリーインスタンスに変更される。もしリードレプリカが全てダウンし、プライマリーインスタンスしか稼働していない状況の場合、プライマリーインスタンスに転送するようになる。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Reader">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Reader</a></td>
-</tr>
-<tr>
-<td>インスタンスエンドポイント</td>
-<td>書き込み/読み出し (指定したDBインスタンスによる)</td>
-<td>特定のDBインスタンス</td>
-<td><code>&lt;DBインスタンス名&gt;.cwgrq25vlygf.ap-northeast-1.rds.amazonaws.com:&lt;ポート番号&gt;</code></td>
-<td>選択したDBインスタンスに通信できる。フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わっても、エンドポイントそのままなため、アプリケーションが影響を付ける。非推奨である。</td>
-</tr>
-<tr>
-<td>カスタムエンドポイント</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://xtech.nikkei.com/it/atcl/column/16/041400085/042600030/">https://xtech.nikkei.com/it/atcl/column/16/041400085/042600030/</a></li>
-<li><a href="https://qiita.com/pensuke628/items/5ca7f2d2a53a71528ad1">https://qiita.com/pensuke628/items/5ca7f2d2a53a71528ad1</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_20">データベースエンジンのログ<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
-<h4 id="_21">▼ スロークエリログ<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>AWS CloudWatch Logsの<code>/aws/rds/cluster/&lt;DBクラスター名&gt;/slowquery</code>というロググループにスロークエリログが出力される。</p>
-<h4 id="_22">▼ エラークエリログ<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>AWS CloudWatch Logsの<code>/aws/rds/cluster/&lt;DBクラスター名&gt;/error</code>というロググループにエラーログが出力される。</p>
-<p><br></p>
-<h2 id="02-06">02-06. アップグレード<a class="headerlink" href="#02-06" title="Permanent link">&para;</a></h2>
-<h3 id="zdp">ZDP (ゼロダウンタイムパッチ適用)<a class="headerlink" href="#zdp" title="Permanent link">&para;</a></h3>
-<p><img alt="zero-downtime-patching" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/zero-downtime-patching.png" /></p>
-<p>Auroraをエンジンバージョンに選択した場合に使用できる。</p>
-<p>特定の条件下のみで、アプリケーションとプライマリーインスタンスの接続を維持したまま、プライマリーインスタンスのパッチバージョンをアップグレードできる。</p>
-<p>ゼロダウンタイムパッチ適用が発動した場合、AWS RDSのイベントが記録される。</p>
-<p>ただし、この機能に頼り切らない方が良い。</p>
-<p>ゼロダウンタイムパッチ適用の発動はAWSから事前にお知らせされるわけでもなく、ユーザーが条件を見て発動の有無を判断しなければならない。</p>
-<p>また、実際に発動していても、ダウンタイムが発生した事例が報告されている。</p>
-<p>ゼロダウンタイムパッチ適用時、以下の手順でエンジンバージョンがアップグレードされる。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>プライマリーインスタンスのエンジンがアップグレードされ、この時にダウンタイムが発生しない代わりに、<code>5</code>秒ほどプライマリーインスタンスの性能が低下する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
-<p>リードレプリカが再起動され、この時に<code>20</code>～<code>30</code>秒ほどダウンタイムが発生する。これらの仕組みのため、アプリケーションでは読み出しエンドポイントを接続先として使用しないようにする必要がある。</p>
-</dd>
-</dl>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/tonishy/items/542f7dd10cc43fd299ab">https://qiita.com/tonishy/items/542f7dd10cc43fd299ab</a></li>
-<li><a href="https://qiita.com/tmiki/items/7ade95c33b8e43c7cb5f">https://qiita.com/tmiki/items/7ade95c33b8e43c7cb5f</a></li>
-<li><a href="https://noname.work/2407.html">https://noname.work/2407.html</a></li>
-<li><a href="https://www.yuulinux.tokyo/8070/">https://www.yuulinux.tokyo/8070/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_23">アップグレード可能かのバリデーション<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
-<p>Aurora DBにSSH接続した上で、DBに対して以下のコマンドを実行すると、<code>v5.7</code>から<code>v8</code>系へのアップグレードで問題が起こるかを解析できる</p>
-<p>ただ、アプリ側のSQLのロジックを解析することはできず、あくまでMySQLの設定値のみを解析でき、廃止予定のロジックを使っているかまでは見つけられない。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mysqlsh<span class="w"> </span>util.checkForServerUpgrade<span class="o">()</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://mita2db.hateblo.jp/entry/2023/05/24/214131">https://mita2db.hateblo.jp/entry/2023/05/24/214131</a></li>
-<li><a href="https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-utilities-upgrade.html">https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-utilities-upgrade.html</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_24">ダウンタイム<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
-<h4 id="_25">▼ ダウンタイムとは<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
-<p>Auroraでは、設定値 (例：OS、エンジンバージョン、MySQL) のアップグレード時に、DBインスタンスの再起動が必要である。</p>
-<p>再起動に伴ってダウンタイムが発生し、アプリケーションからDBに接続できなくなる。</p>
-<p>この間、アプリケーションの利用者に与える影響を小さくできるように、計画的にダウンタイムを発生させる必要がある。</p>
-<h4 id="_26">▼ ダウンタイムの発生条件<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
-<p>非Auroraに記載された情報のため、厳密にはAuroraのダウンタイムではない。</p>
-<p>ただし、経験上同じ項目でダウンタイムが発生しているため、参考にする。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings</a></li>
-</ul>
-</blockquote>
-<h4 id="_27">▼ エンジンタイプによるダウンタイムの最小化<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
-<p>コンピューティングとストレージが分離しているAuroraはエンジンタイプの中でもダウンタイムが短い。</p>
-<h4 id="_28">▼ ダウンタイムの計測例<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
-<p>アプリケーションにリクエストを送信する方法と、AWS RDSにクエリを直接的に送信する方法がある。</p>
-<p>レスポンスとAWS RDSイベントログから、ダウンタイムを計測する。</p>
-<p><strong>＊実装例＊</strong></p>
-<p>Aurora MySQLのアップグレードに伴うダウンタイムを計測する。</p>
-<p>踏み台サーバーを経由してAWS RDSに接続し、現在時刻を取得するSQLを送信する。</p>
-<p>この時、<code>for</code>文や<code>watch</code>コマンドを使用する。</p>
-<p>ただし、<code>watch</code>コマンドはプリインストールされていない可能性がある。</p>
-<p>平常アクセス時のも同時に実行することにより、より正確なダウンタイムを取得する。</p>
-<p>また、ヘルスチェックの時刻を正しくロギングできるように、ローカルマシンから時刻を取得する。</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-
-<span class="nb">set</span><span class="w"> </span>-x
-
-<span class="nv">BASTION_HOST</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">BASTION_USER</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">DB_HOST</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">DB_PASSWORD</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">DB_USER</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">SECRET_KEY</span><span class="o">=</span><span class="s2">&quot;~/.ssh/foo.pem&quot;</span>
-<span class="nv">SQL</span><span class="o">=</span><span class="s2">&quot;SELECT NOW();&quot;</span>
-
-ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">serveraliveinterval</span><span class="o">=</span><span class="m">60</span><span class="w"> </span>-f<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="m">3306</span>:<span class="si">${</span><span class="nv">DB_HOST</span><span class="si">}</span>:3306<span class="w"> </span>-i<span class="w"> </span><span class="si">${</span><span class="nv">SECRET_KEY</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">BASTION_USER</span><span class="si">}</span>@<span class="si">${</span><span class="nv">BASTION_HOST</span><span class="si">}</span><span class="w"> </span>-p<span class="w"> </span><span class="m">22</span>
-
-<span class="c1"># 約15分間コマンドを繰り返す。</span>
-<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..900<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;---------- No. </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="s2"> Local PC: </span><span class="k">$(</span>date<span class="w"> </span>+<span class="s2">&quot;%Y-%m-%d %H:%M:%S&quot;</span><span class="k">)</span><span class="s2"> ------------&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>health_check.txt
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SQL</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>mysql<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$DB_USER</span><span class="s2">&quot;</span><span class="w"> </span>-P<span class="w"> </span><span class="m">3306</span><span class="w"> </span>-p<span class="s2">&quot;</span><span class="nv">$DB_PASSWORD</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>health_check.txt<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
-<span class="w">  </span><span class="c1"># 1秒待機する。</span>
-<span class="w">  </span>sleep<span class="w"> </span><span class="m">1</span>
-<span class="k">done</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-
-<span class="nb">set</span><span class="w"> </span>-x
-
-<span class="nv">BASTION_HOST</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">BASTION_USER</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">DB_HOST</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">DB_PASSWORD</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">DB_USER</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">SECRET_KEY</span><span class="o">=</span><span class="s2">&quot;~/.ssh/foo.pem&quot;</span>
-<span class="nv">SQL</span><span class="o">=</span><span class="s2">&quot;SELECT NOW();&quot;</span>
-
-ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">serveraliveinterval</span><span class="o">=</span><span class="m">60</span><span class="w"> </span>-f<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="m">3306</span>:<span class="si">${</span><span class="nv">DB_HOST</span><span class="si">}</span>:3306<span class="w"> </span>-i<span class="w"> </span><span class="si">${</span><span class="nv">SECRET_KEY</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">BASTION_USER</span><span class="si">}</span>@<span class="si">${</span><span class="nv">BASTION_HOST</span><span class="si">}</span><span class="w"> </span>-p<span class="w"> </span><span class="m">22</span>
-
-<span class="c1"># 1秒ごとにコマンドを繰り返す。</span>
-watch<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="s1">&#39;echo &quot;---------- No. ${i} Local PC: $(date +&quot;%Y-%m-%d %H:%M:%S&quot;) ------------&quot; &gt;&gt; health_check.txt &amp;&amp; \</span>
-<span class="s1">  echo ${SQL} | mysql -u ${DB_USER} -P 3306 -p${DB_PASSWORD} &gt;&gt; health_check.txt 2&gt;&amp;1&#39;</span>
-</code></pre></div>
-<p>上記のシェルスクリプトにより、例えば次のようなMySQLのログを取得できる。</p>
-<p>このログからは、<code>15:23:09</code> 〜 <code>15:23:14</code>の間で、接続に失敗していることを確認できる。</p>
-<div class="highlight"><pre><span></span><code>----------<span class="w"> </span>No.<span class="w"> </span><span class="m">242</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:06<span class="w"> </span>------------
-mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
-NOW<span class="o">()</span>
-<span class="m">2021</span>-04-21<span class="w"> </span><span class="m">06</span>:23:06
-----------<span class="w"> </span>No.<span class="w"> </span><span class="m">243</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:07<span class="w"> </span>------------
-mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
-NOW<span class="o">()</span>
-<span class="m">2021</span>-04-21<span class="w"> </span><span class="m">06</span>:23:08
-----------<span class="w"> </span>No.<span class="w"> </span><span class="m">244</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:08<span class="w"> </span>------------
-mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
-ERROR<span class="w"> </span><span class="m">2026</span><span class="w"> </span><span class="o">(</span>HY000<span class="o">)</span>:<span class="w"> </span>SSL<span class="w"> </span>connection<span class="w"> </span>error:<span class="w"> </span>error:00000000:lib<span class="o">(</span><span class="m">0</span><span class="o">)</span>:func<span class="o">(</span><span class="m">0</span><span class="o">)</span>:reason<span class="o">(</span><span class="m">0</span><span class="o">)</span>
-----------<span class="w"> </span>No.<span class="w"> </span><span class="m">245</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:09<span class="w"> </span>------------
-mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
-ERROR<span class="w"> </span><span class="m">2013</span><span class="w"> </span><span class="o">(</span>HY000<span class="o">)</span>:<span class="w"> </span>Lost<span class="w"> </span>connection<span class="w"> </span>to<span class="w"> </span>MySQL<span class="w"> </span>server<span class="w"> </span>at<span class="w"> </span><span class="s1">&#39;reading initial communication packet&#39;</span>,<span class="w"> </span>system<span class="w"> </span>error:<span class="w"> </span><span class="m">0</span>
-----------<span class="w"> </span>No.<span class="w"> </span><span class="m">246</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:10<span class="w"> </span>------------
-mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
-ERROR<span class="w"> </span><span class="m">2013</span><span class="w"> </span><span class="o">(</span>HY000<span class="o">)</span>:<span class="w"> </span>Lost<span class="w"> </span>connection<span class="w"> </span>to<span class="w"> </span>MySQL<span class="w"> </span>server<span class="w"> </span>at<span class="w"> </span><span class="s1">&#39;reading initial communication packet&#39;</span>,<span class="w"> </span>system<span class="w"> </span>error:<span class="w"> </span><span class="m">0</span>
-----------<span class="w"> </span>No.<span class="w"> </span><span class="m">247</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:11<span class="w"> </span>------------
-mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
-ERROR<span class="w"> </span><span class="m">2013</span><span class="w"> </span><span class="o">(</span>HY000<span class="o">)</span>:<span class="w"> </span>Lost<span class="w"> </span>connection<span class="w"> </span>to<span class="w"> </span>MySQL<span class="w"> </span>server<span class="w"> </span>at<span class="w"> </span><span class="s1">&#39;reading initial communication packet&#39;</span>,<span class="w"> </span>system<span class="w"> </span>error:<span class="w"> </span><span class="m">0</span>
-----------<span class="w"> </span>No.<span class="w"> </span><span class="m">248</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:13<span class="w"> </span>------------
-mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
-ERROR<span class="w"> </span><span class="m">2013</span><span class="w"> </span><span class="o">(</span>HY000<span class="o">)</span>:<span class="w"> </span>Lost<span class="w"> </span>connection<span class="w"> </span>to<span class="w"> </span>MySQL<span class="w"> </span>server<span class="w"> </span>at<span class="w"> </span><span class="s1">&#39;reading initial communication packet&#39;</span>,<span class="w"> </span>system<span class="w"> </span>error:<span class="w"> </span><span class="m">0</span>
-----------<span class="w"> </span>No.<span class="w"> </span><span class="m">249</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:14<span class="w"> </span>------------
-mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
-ERROR<span class="w"> </span><span class="m">2013</span><span class="w"> </span><span class="o">(</span>HY000<span class="o">)</span>:<span class="w"> </span>Lost<span class="w"> </span>connection<span class="w"> </span>to<span class="w"> </span>MySQL<span class="w"> </span>server<span class="w"> </span>at<span class="w"> </span><span class="s1">&#39;reading initial communication packet&#39;</span>,<span class="w"> </span>system<span class="w"> </span>error:<span class="w"> </span><span class="m">0</span>
-----------<span class="w"> </span>No.<span class="w"> </span><span class="m">250</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:15<span class="w"> </span>------------
-mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
-NOW<span class="o">()</span>
-<span class="m">2021</span>-04-21<span class="w"> </span><span class="m">06</span>:23:16
-----------<span class="w"> </span>No.<span class="w"> </span><span class="m">251</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:16<span class="w"> </span>------------
-mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
-NOW<span class="o">()</span>
-<span class="m">2021</span>-04-21<span class="w"> </span><span class="m">06</span>:23:17
-</code></pre></div>
-<p>アップグレード時のプライマリーインスタンスのAWS RDSイベントログは以下の通りで、ログによるダウンタイムは、再起動からシャットダウンまでの期間と一致することを確認する。</p>
-<p><img alt="rds-event-log_primary-instance" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds-event-log_primary-instance.png" /></p>
-<p>補足として、リードレプリカは再起動のみを実行していることがわかる。</p>
-<p><img alt="rds-event-log_read-replica" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds-event-log_read-replica.png" /></p>
-<p><br></p>
-<h3 id="_29">フェイルオーバー<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
-<h4 id="aurora">▼ Auroraのフェイルオーバーとは<a class="headerlink" href="#aurora" title="Permanent link">&para;</a></h4>
-<p>プライマリーインスタンスで障害が起こった場合に、リードレプリカをプライマリーインスタンスに自動的に昇格する。</p>
-<p>DBクラスター内の全てのDBインスタンスが同じAZに配置されている場合、あらかじめ異なるAZにリードレプリカを新しく作成する必要がある。</p>
-<p>また、フェイルオーバー時に、もしDBクラスター内にリードレプリカが存在していない場合、異なるAZに昇格後のプライマリーインスタンスが自動的に作成される。</p>
-<p>リードレプリカが存在している場合、これがプライマリーインスタンスに昇格する。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html#Aurora.Managing.FaultTolerance">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html#Aurora.Managing.FaultTolerance</a></li>
-</ul>
-</blockquote>
-<h4 id="_30">▼ フェイルオーバーによるダウンタイムの最小化<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
-<p>DBインスタンスがマルチAZ構成の場合、以下の手順を使用してダウンタイムを最小化できる。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>アプリケーションの接続先をプライマリーインスタンスにする。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
-<p>リードレプリカにダウンタイムの発生する変更を適用する。</p>
-<p>Auroraではフェールオーバーが自動的に実行される。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
-<p>フェイルオーバー時に約<code>1</code>～<code>2</code>分のダウンタイムが発生する。</p>
-<p>フェイルオーバーを使用しない場合、DBインスタンスの再起動でダウンタイムが発生する。</p>
-<p>ただし、これよりは時間が短いため、相対的にダウンタイムを短縮できる。</p>
-</dd>
-</dl>
-<blockquote>
-<ul>
-<li><a href="https://lab.taf-jp.com/rds%E3%81%AE%E3%83%95%E3%82%A7%E3%82%A4%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E6%99%82%E3%81%AE%E6%8C%99%E5%8B%95%E3%82%92%E7%90%86%E8%A7%A3%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/">https://lab.taf-jp.com/rds%E3%81%AE%E3%83%95%E3%82%A7%E3%82%A4%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E6%99%82%E3%81%AE%E6%8C%99%E5%8B%95%E3%82%92%E7%90%86%E8%A7%A3%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/</a></li>
-</ul>
-</blockquote>
-<h4 id="db_8">▼ DBインスタンスの昇格優先順位<a class="headerlink" href="#db_8" title="Permanent link">&para;</a></h4>
-<p>Auroraの場合、フェイルオーバーによって昇格するDBインスタンスは次の順番で決定される。</p>
-<p>DBインスタンスごとにフェイルオーバーの優先度 (<code>0</code>～<code>15</code>) を設定でき、優先度の数値の小さいDBインスタンスほど優先され、昇格対象になる。</p>
-<p>優先度が同じだと、インスタンスクラスが大きいDBインスタンスが昇格対象になる。</p>
-<p>インスタンスクラスが同じだと、同じサブネットにあるDBインスタンスが昇格対象になる。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>優先度の順番</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
-<p>インスタンスクラスの大きさ</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
-<p>同じサブネット</p>
-</dd>
-</dl>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html</a></li>
-</ul>
-</blockquote>
-<h4 id="_31">▼ ダウンタイムを最小化できない場合<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
-<p>エンジンバージョンのアップグレードは両方のDBインスタンスで同時に実行する必要があるため、フェイルオーバーを使用できず、ダウンタイムを最小化できない。</p>
-<p><br></p>
-<h3 id="bg">B/G式アップグレード<a class="headerlink" href="#bg" title="Permanent link">&para;</a></h3>
-<p>アップグレード時に、新しいバージョンからなるDBクラスター (グリーン環境) を作成する。</p>
-<p>クラスターエンドポイントを起点として、アプリのクエリの向き先を既存のDBクラスター (ブルー環境) から新DBクラスター (グリーン環境) に切り替える。</p>
-<p>グリーン環境でアプリが問題なく動作すれば、既存のDBクラスター (ブルー環境) を削除する。</p>
-<p><br></p>
-<h2 id="02-07">02-07. 負荷対策<a class="headerlink" href="#02-07" title="Permanent link">&para;</a></h2>
-<h3 id="_32">エンドポイントの使い分け<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
-<p>DBインスタンスに応じたエンドポイントが用意されている。</p>
-<p>アプリケーションからのCRUDの種類に応じて、アクセス先を振り分けることにより、負荷を分散させられる。</p>
-<p>読み出しオンリーエンドポイントに対して、READ以外の処理を行うと、以下の通り、エラーとなる。</p>
-<div class="highlight"><pre><span></span><code>/*<span class="w"> </span>SQL<span class="w"> </span>Error<span class="w"> </span><span class="o">(</span><span class="m">1290</span><span class="o">)</span>:<span class="w"> </span>The<span class="w"> </span>MySQL<span class="w"> </span>server<span class="w"> </span>is<span class="w"> </span>running<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>--read-only<span class="w"> </span>option<span class="w"> </span>so<span class="w"> </span>it<span class="w"> </span>cannot<span class="w"> </span>execute<span class="w"> </span>this<span class="w"> </span>statement<span class="w"> </span>*/
-</code></pre></div>
-<p><br></p>
-<h3 id="aws-auto-scaling">リードレプリカの手動追加、AWS Auto Scalingグループ<a class="headerlink" href="#aws-auto-scaling" title="Permanent link">&para;</a></h3>
-<p>リードレプリカの手動追加もしくはAWS Auto Scalingグループによって、Auroraに関するメトリクス (例：平均CPU使用率、平均DB接続数など) がターゲット値を維持できるように、リードレプリカの自動水平スケーリング (リードレプリカ数の増減) を実行する。</p>
-<p>注意点として、AWS RDS (非Aurora) スケーリングは、ストレージサイズを増加させる垂直スケーリングであり、Auroraのスケーリングとは仕様が異なっている。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Integrating.AutoScaling.html">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Integrating.AutoScaling.html</a></li>
-<li><a href="https://engineers.weddingpark.co.jp/aws-aurora-autoscaling/">https://engineers.weddingpark.co.jp/aws-aurora-autoscaling/</a></li>
-<li><a href="https://qiita.com/1_ta/items/3880a8da8a29e4c8d8f0">https://qiita.com/1_ta/items/3880a8da8a29e4c8d8f0</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_33">クエリキャッシュの利用<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
-<p>MySQLやRedisのクエリキャッシュ機能を利用する。</p>
-<p>ただし、MySQLのクエリキャッシュ機能は、バージョン<code>8</code>で廃止されることになっている。</p>
-<p><br></p>
-<h3 id="_34">ユニークキーまたはインデックスの利用<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
-<p>スロークエリを検出し、そのSQLで対象としているカラムにユニークキーやインデックスを設定する。</p>
-<p>スロークエリを検出する方法として、AWS RDSの<code>long_query_time</code>パラメーターによる閾値や、<code>EXPLAIN</code>句による予想実行時間の比較などがある。</p>
-<p>CloudWatch Logsインサイト上で、閾値以上の実行時間のスロークエリを実行時間の昇順で取得できる。</p>
-<div class="highlight"><pre><span></span><code>fields<span class="w"> </span>@timestamp,<span class="w"> </span>@message
-<span class="p">|</span><span class="w"> </span>parse<span class="w"> </span>@message<span class="w"> </span>/Query_time:<span class="se">\s</span>*<span class="o">(</span>?&lt;Query_time&gt;<span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">(</span>?:<span class="se">\.</span><span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">)</span>?<span class="o">)</span><span class="se">\s</span>*<span class="o">[</span><span class="se">\s\S</span><span class="o">]</span>*?<span class="p">;</span>/
-<span class="p">|</span><span class="w"> </span>display<span class="w"> </span>@timestamp,<span class="w"> </span>Query_time,<span class="w"> </span>@message
-<span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>Query_time<span class="w"> </span>desc
-<span class="p">|</span><span class="w"> </span>limit<span class="w"> </span><span class="m">100</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://tech.excite.co.jp/entry/2023/02/17/114538">https://tech.excite.co.jp/entry/2023/02/17/114538</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_35">テーブルを正規化し過ぎない<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
-<p>テーブルを正規化すると保守性が高まるが、アプリケーションのSQLで<code>JOIN</code>句が必要になる。</p>
-<p>しかし、<code>JOIN</code>句を含むSQLは、含まないSQLと比較して、実行速度が遅くなる。</p>
-<p>そこで、戦略的に正規化し過ぎないようにする。</p>
-<p><br></p>
-<h3 id="_36">インスタンスタイプのスケールアップ<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
-<p>インスタンスタイプをスケールアップさせることにより、接続過多のエラー (<code>ERROR 1040 (HY000): Too many connections</code>) に対処する。</p>
-<p>補足として現在の最大接続数はパラメーターグループの値から確認できる。</p>
-<p>コンソール画面からはおおよその値しかわからないため、SQLで確認した方が良い。</p>
-<div class="highlight"><pre><span></span><code><span class="k">SHOW</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;max_connections&#39;</span><span class="p">;</span>
-
-<span class="o">+</span><span class="c1">-----------------+-------+</span>
-<span class="o">|</span><span class="w"> </span><span class="n">Variable_name</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">|</span>
-<span class="o">+</span><span class="c1">-----------------+-------+</span>
-<span class="o">|</span><span class="w"> </span><span class="n">max_connections</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">640</span><span class="w">  </span><span class="o">|</span>
-<span class="o">+</span><span class="c1">-----------------+-------+</span>
-<span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span>
-</code></pre></div>
-<p><br></p>
-<h2 id="02-08">02-08. イベント<a class="headerlink" href="#02-08" title="Permanent link">&para;</a></h2>
-<p>コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探した方が良い。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Events.Messages.html">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Events.Messages.html</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="03-aws-rds-aurora">03. AWS RDS (非Aurora)<a class="headerlink" href="#03-aws-rds-aurora" title="Permanent link">&para;</a></h2>
-<h3 id="_37">ダウンタイム<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
-<h4 id="_38">▼ ダウンタイムの発生条件<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
+<h2 id="05">05. ダウンタイム<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="_11">ダウンタイムの発生条件<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -26850,13 +25243,14 @@ NOW<span class="o">()</span>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_39">フェイルオーバー<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
-<h4 id="aws-rds_1">▼ AWS RDSのフェイルオーバーとは<a class="headerlink" href="#aws-rds_1" title="Permanent link">&para;</a></h4>
+<h2 id="06">06. フェイルオーバー<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<h3 id="aws-rds">AWS RDSのフェイルオーバーとは<a class="headerlink" href="#aws-rds" title="Permanent link">&para;</a></h3>
 <p>スタンバイレプリカがプライマリーインスタンスに昇格する。</p>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html</a></li>
 </ul>
-<h4 id="_40">▼ フェイルオーバーによるダウンタイムの最小化<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_12">フェイルオーバーによるダウンタイムの最小化<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>DBインスタンスがマルチAZ構成の場合、以下の手順を使用してダウンタイムを最小化できる。</p>
 <blockquote>
 <ul>
@@ -26887,7 +25281,7 @@ NOW<span class="o">()</span>
 <p>(4) フェイルオーバー時に約<code>1</code>～<code>2</code>分のダウンタイムが発生する。</p>
 <p>フェイルオーバーを使用しない場合、DBインスタンスの再起動でダウンタイムが発生するが、これよりは時間が短いため、相対的にダウンタイムを短縮できる。</p>
 <p><br></p>
-<h3 id="_41">イベント<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h3>
+<h2 id="07">07. イベント<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <p>コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探した方が良い。</p>
 <blockquote>
 <ul>
@@ -26895,11 +25289,11 @@ NOW<span class="o">()</span>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04-aws-rds">04. AWS RDSプロキシ<a class="headerlink" href="#04-aws-rds" title="Permanent link">&para;</a></h2>
-<h3 id="aws-rds_2">AWS RDSプロキシとは<a class="headerlink" href="#aws-rds_2" title="Permanent link">&para;</a></h3>
+<h2 id="08-aws-rds">08. AWS RDSプロキシ<a class="headerlink" href="#08-aws-rds" title="Permanent link">&para;</a></h2>
+<h3 id="aws-rds_1">AWS RDSプロキシとは<a class="headerlink" href="#aws-rds_1" title="Permanent link">&para;</a></h3>
 <p>クラウドDBプロキシとして働く。</p>
 <p><br></p>
-<h3 id="_42">コネクションプールの管理<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h3>
+<h3 id="_13">コネクションプールの管理<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p>アプリからAWS RDSにクエリが送信された時、コネクションを新しく作成せずに、コネクションプール内の非アクティブなコネクションを再利用し、AWS RDSに転送する。</p>
 <p>アプリからDBのインスタンスに直接的にクエリを送信する場合、アプリはAWS RDSの同時接続の上限数 (インスタンスタイプで決まる) を考慮しない。</p>
 <p>そのため、接続数が多くなりやすいアプリ (例：AWS Lambda、マルチスレッド) を使用していると、アプリが無制限にコネクションを新しく作成することになる。</p>
@@ -26933,7 +25327,7 @@ NOW<span class="o">()</span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-23</span>
   </span>
 
     
