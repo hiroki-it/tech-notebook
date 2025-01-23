@@ -14136,25 +14136,20 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-os" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. OSの隠蔽
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. OSの隠蔽">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#os" class="md-nav__link">
     <span class="md-ellipsis">
-      OSの隠蔽とは
+      OSの隠蔽
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OSの隠蔽">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#os_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ OSの隠蔽とは
     </span>
   </a>
   
@@ -14163,9 +14158,14 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      確認方法
+      ▼ 確認方法
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -24703,25 +24703,20 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-os" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. OSの隠蔽
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. OSの隠蔽">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#os" class="md-nav__link">
     <span class="md-ellipsis">
-      OSの隠蔽とは
+      OSの隠蔽
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OSの隠蔽">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#os_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ OSの隠蔽とは
     </span>
   </a>
   
@@ -24730,9 +24725,14 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      確認方法
+      ▼ 確認方法
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -25011,35 +25011,18 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-os">03. OSの隠蔽<a class="headerlink" href="#03-os" title="Permanent link">&para;</a></h2>
-<h3 id="os">OSの隠蔽とは<a class="headerlink" href="#os" title="Permanent link">&para;</a></h3>
+<h3 id="os">OSの隠蔽<a class="headerlink" href="#os" title="Permanent link">&para;</a></h3>
+<h4 id="os_1">▼ OSの隠蔽とは<a class="headerlink" href="#os_1" title="Permanent link">&para;</a></h4>
 <p>AWS RDSは、EC2内にDBMSが稼働したものであるが、このほとんどが隠蔽されている。</p>
-<p>そのためdbサーバーのようには操作できず、OSのバージョン確認やSSH公開鍵認証を行えない。</p>
+<p>そのためDBサーバーのようには操作できず、OSのバージョン確認やSSH公開鍵認証を行えない。</p>
 <blockquote>
 <ul>
 <li><a href="https://xtech.nikkei.com/it/article/COLUMN/20131108/516863/">https://xtech.nikkei.com/it/article/COLUMN/20131108/516863/</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h3 id="_4">確認方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ 確認方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>Linux x86_64 (AMD64) が使用されているところまでは確認できるが、Linuxのバージョンは隠蔽されている。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">-- AWS Auroraの場合</span>
-<span class="k">SHOW</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%version%&#39;</span><span class="p">;</span>
-
-<span class="o">+</span><span class="c1">-------------------------+------------------------------+</span>
-<span class="o">|</span><span class="w"> </span><span class="n">Variable_name</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="n">Value</span><span class="w">                        </span><span class="o">|</span>
-<span class="o">+</span><span class="c1">-------------------------+------------------------------+</span>
-<span class="o">|</span><span class="w"> </span><span class="n">aurora_version</span><span class="w">          </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="p">.</span><span class="mi">09</span><span class="p">.</span><span class="mi">0</span><span class="w">                       </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="n">innodb_version</span><span class="w">          </span><span class="o">|</span><span class="w"> </span><span class="mi">5</span><span class="p">.</span><span class="mi">7</span><span class="p">.</span><span class="mi">0</span><span class="w">                        </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="n">protocol_version</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="mi">10</span><span class="w">                           </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="n">slave_type_conversions</span><span class="w">  </span><span class="o">|</span><span class="w">                              </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="n">tls_version</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="n">TLSv1</span><span class="p">,</span><span class="n">TLSv1</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span><span class="n">TLSv1</span><span class="p">.</span><span class="mi">2</span><span class="w">        </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="k">version</span><span class="w">                 </span><span class="o">|</span><span class="w"> </span><span class="mi">5</span><span class="p">.</span><span class="mi">7</span><span class="p">.</span><span class="mi">12</span><span class="o">-</span><span class="n">log</span><span class="w">                   </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="n">version_comment</span><span class="w">         </span><span class="o">|</span><span class="w"> </span><span class="n">MySQL</span><span class="w"> </span><span class="n">Community</span><span class="w"> </span><span class="n">Server</span><span class="w"> </span><span class="p">(</span><span class="n">GPL</span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="n">version_compile_machine</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">x86_64</span><span class="w">                       </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="n">version_compile_os</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">Linux</span><span class="w">                        </span><span class="o">|</span>
-<span class="o">+</span><span class="c1">-------------------------+------------------------------+</span>
-</code></pre></div>
+<p>AWS Auroraでも確認方法は同じである。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- AWS RDSの場合</span>
 <span class="k">SHOW</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%version%&#39;</span><span class="p">;</span>
 
