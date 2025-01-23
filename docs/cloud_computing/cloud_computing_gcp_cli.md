@@ -654,11 +654,11 @@ $ gcloud storage cp --recursive gs://<Google Cloud Storage名>/<オブジェク�
 
 <br>
 
-### KMS
+### Google Cloud KMS
 
 #### ▼ describeとは
 
-KMSの暗号化キーを取得する。
+Google Cloud KMSの暗号化キーを取得する。
 
 ```bash
 $ gcloud kms keys describe <KMSのリソースID>
