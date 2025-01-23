@@ -108,6 +108,32 @@ SHOW variables LIKE '%version%';
 
 <br>
 
+### 接続方法
+
+#### ▼ SSH公開鍵認証を使用する場合
+
+SSH公開鍵認証を使用する場合、ユーザーが自前でDB接続者を管理する必要がある。
+
+> - https://qiita.com/shimi7o/items/732e91126ab4a06162a7
+
+#### ▼ AWS SSM Session Managerの認証を使用する場合
+
+AWS SSM Session Managerの認証を使用する場合、AWS IAMでDB接続者を管理する。
+
+```bash
+# ポートフォワーディング
+$ aws ssm start-session --target <踏み台のAWS EC2インスタンスID> \
+    --document-name AWS-StartPortForwardingSessionToRemoteHost \
+    --parameters '{"host":["<AWS Auroraのクラスターエンドポイント>"],"portNumber":["<AWS Auroraのポート番号>"], "localPortNumber":["<ローカルPCのポート番号>"]}'
+
+# 別のターミナルでmysqlコマンドを実行する
+$ mysql -u <AWS Auroraのユーザー> -p<AWS Auroraのパスワード> -h localhost -P <ローカルPCのポート番号>
+```
+
+> - https://qiita.com/shimi7o/items/732e91126ab4a06162a7
+
+<br>
+
 ## 03. AWS AuroraのDBクラスター
 
 ### AWS AuroraのDBクラスターとは
