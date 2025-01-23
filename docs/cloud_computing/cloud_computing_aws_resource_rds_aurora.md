@@ -45,8 +45,8 @@ AWS RDSをよりマネージドにしたAWSリソースである。
 | 認証機関                | DBクラスターに紐づけるSSL証明書を署名するルート認証局を設定する。                                                                                                  | アプリケーションがDBクラスターにHTTPSで通信する場合に必要である。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | 削除保護                | DBクラスターの削除を防ぐ。                                                                                                                                         | DBクラスターを削除するとクラスターボリュームも削除されるため、これを防ぐ。補足として、DBクラスターの削除保護になっていてもDBインスタンスは削除できる。DBインスタンスを削除しても、再作成すればクラスターボリュームに接続されて元のデータにリクエストを送信できる。<br>https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
-> - https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/AWS RDS/
-> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithAWS RDS.SSL.html
+> - https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/
+> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html
 
 #### ▼ DBインスタンス
 
@@ -61,7 +61,7 @@ AWS RDSをよりマネージドにしたAWSリソースである。
 | 最初のDB名                             | DBインスタンスに自動的に作成されるDB名を設定                                                   |                                                                                                                                                            |
 | マイナーバージョンの自動アップグレード | DBインスタンスのDBエンジンのバージョンを自動的に更新するかを設定する。                         | 開発環境では有効化、本番環境とステージング環境では無効化しておく。開発環境で新バージョンに問題が起こらなければ、ステージング環境と本番環境にも適用する。   |
 
-> - https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/AWS RDS/
+> - https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/
 
 <br>
 
@@ -69,7 +69,7 @@ AWS RDSをよりマネージドにしたAWSリソースである。
 
 ### DBクラスターとは
 
-DBエンジンにAuroraを選択した場合にのみ使用できる。
+DBエンジンにAWS Auroraを選択した場合にのみ使用できる。
 
 DBインスタンスとクラスターボリュームから構成されている。
 
@@ -253,7 +253,7 @@ AWS CloudWatch Logsの`/aws/rds/cluster/<DBクラスター名>/error`という�
 
 ![zero-downtime-patching](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/zero-downtime-patching.png)
 
-Auroraをエンジンバージョンに選択した場合に使用できる。
+AWS Auroraをエンジンバージョンに選択した場合に使用できる。
 
 特定の条件下のみで、アプリケーションとプライマリーインスタンスの接続を維持したまま、プライマリーインスタンスのパッチバージョンをアップグレードできる。
 
@@ -301,7 +301,7 @@ $ mysqlsh util.checkForServerUpgrade()
 
 #### ▼ ダウンタイムとは
 
-Auroraでは、設定値 (例：OS、エンジンバージョン、MySQL) のアップグレード時に、DBインスタンスの再起動が必要である。
+AWS Auroraでは、設定値 (例：OS、エンジンバージョン、MySQL) のアップグレード時に、DBインスタンスの再起動が必要である。
 
 再起動に伴ってダウンタイムが発生し、アプリケーションからDBに接続できなくなる。
 
@@ -309,7 +309,7 @@ Auroraでは、設定値 (例：OS、エンジンバージョン、MySQL) のア
 
 #### ▼ ダウンタイムの発生条件
 
-AWS RDSに記載された情報のため、厳密にはAuroraのダウンタイムではない。
+AWS RDSに記載された情報のため、厳密にはAWS Auroraのダウンタイムではない。
 
 ただし、経験上同じ項目でダウンタイムが発生しているため、参考にする。
 
@@ -317,7 +317,7 @@ AWS RDSに記載された情報のため、厳密にはAuroraのダウンタイ�
 
 #### ▼ エンジンタイプによるダウンタイムの最小化
 
-コンピューティングとストレージが分離しているAuroraはエンジンタイプの中でもダウンタイムが短い。
+コンピューティングとストレージが分離しているAWS Auroraはエンジンタイプの中でもダウンタイムが短い。
 
 #### ▼ ダウンタイムの計測例
 
@@ -327,7 +327,7 @@ AWS RDSに記載された情報のため、厳密にはAuroraのダウンタイ�
 
 **＊実装例＊**
 
-Aurora MySQLのアップグレードに伴うダウンタイムを計測する。
+AWS Aurora MySQLのアップグレードに伴うダウンタイムを計測する。
 
 踏み台サーバーを経由してAWS RDSに接続し、現在時刻を取得するSQLを送信する。
 
@@ -436,7 +436,7 @@ NOW()
 
 ### フェイルオーバー
 
-#### ▼ Auroraのフェイルオーバーとは
+#### ▼ AWS Auroraのフェイルオーバーとは
 
 プライマリーインスタンスで障害が起こった場合に、リードレプリカをプライマリーインスタンスに自動的に昇格する。
 
@@ -460,7 +460,7 @@ DBインスタンスがマルチAZ構成の場合、以下の手順を使用し�
 
 : リードレプリカにダウンタイムの発生する変更を適用する。
 
-     Auroraではフェールオーバーが自動的に実行される。
+     AWS Auroraではフェールオーバーが自動的に実行される。
 
 `(3)`
 
@@ -474,7 +474,7 @@ DBインスタンスがマルチAZ構成の場合、以下の手順を使用し�
 
 #### ▼ DBインスタンスの昇格優先順位
 
-Auroraの場合、フェイルオーバーによって昇格するDBインスタンスは次の順番で決定される。
+AWS Auroraの場合、フェイルオーバーによって昇格するDBインスタンスは次の順番で決定される。
 
 DBインスタンスごとにフェイルオーバーの優先度 (`0`～`15`) を設定でき、優先度の数値の小さいDBインスタンスほど優先され、昇格対象になる。
 
@@ -530,9 +530,9 @@ DBインスタンスに応じたエンドポイントが用意されている。
 
 ### リードレプリカの手動追加、AWS Auto Scalingグループ
 
-リードレプリカの手動追加もしくはAWS Auto Scalingグループによって、Auroraに関するメトリクス (例：平均CPU使用率、平均DB接続数など) がターゲット値を維持できるように、リードレプリカの自動水平スケーリング (リードレプリカ数の増減) を実行する。
+リードレプリカの手動追加もしくはAWS Auto Scalingグループによって、AWS Auroraに関するメトリクス (例：平均CPU使用率、平均DB接続数など) がターゲット値を維持できるように、リードレプリカの自動水平スケーリング (リードレプリカ数の増減) を実行する。
 
-注意点として、AWS RDSスケーリングは、ストレージサイズを増加させる垂直スケーリングであり、Auroraのスケーリングとは仕様が異なっている。
+注意点として、AWS RDSのスケーリングは、ストレージサイズを増加させる垂直スケーリングであり、AWS Auroraのスケーリングとは仕様が異なっている。
 
 > - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Integrating.AutoScaling.html
 > - https://engineers.weddingpark.co.jp/aws-aurora-autoscaling/

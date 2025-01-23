@@ -433,19 +433,19 @@ AWS IAMポリシーの取得に使用する文字列の条件の厳格さを設�
 
 ### AWS IAMユーザーに対する紐付け
 
-![AWS IAMユーザにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AWS IAMユーザーにポリシーを付与.jpeg)
+![AWS IAMユーザにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMユーザーにポリシーを付与.jpeg)
 
 <br>
 
 ### AWS IAMグループに対する紐付け
 
-![AWS IAMグループにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AWS IAMグループにポリシーを付与.jpeg)
+![AWS IAMグループにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMグループにポリシーを付与.jpeg)
 
 <br>
 
 ### AWS IAMロールに対する紐付け
 
-![AWS IAMロールにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AWS IAMロールにポリシーを付与.jpeg)
+![AWS IAMロールにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMロールにポリシーを付与.jpeg)
 
 <br>
 

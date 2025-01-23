@@ -42,7 +42,7 @@ description: 分散DB＠DB系ミドルウェアの知見を記録しています
 
 #### ▼ RDB
 
-注意点として、AWS Aurora MySQLは分散DBではない。
+注意点として、AWS Auroraは分散DBではない。
 
 - YugabyteDB Managed
 

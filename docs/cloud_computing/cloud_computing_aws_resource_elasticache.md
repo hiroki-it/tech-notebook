@@ -88,7 +88,7 @@ Redisノードのグループであり、処理の実行単位でもある。
 
 同じRedisシャード内にあるRedisノード間では、セッションやクエリキャッシュが同期される。
 
-一方で、AuroraのDBクラスターはこれに相当する概念である。
+一方で、AWS AuroraのDBクラスターはこれに相当する概念である。
 
 > - https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.Shards
 

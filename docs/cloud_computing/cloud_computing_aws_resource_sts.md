@@ -359,7 +359,7 @@ IRSAにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。
 
 SAMLによる認証/認可を使用する。
 
-> - https://docs.aws.amazon.com/AWS IAM/latest/UserGuide/id_roles_providers_saml.html
+> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html
 
 <br>
 
@@ -383,7 +383,7 @@ AWS IAMロールと同じ/異なるAWSアカウントのAWS IAMユーザーに�
 
 AWS IAMユーザーの場合、外部IDが必要になる。
 
-> - https://docs.aws.amazon.com/AWS IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html
+> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html
 
 #### ▼ AWSリソース
 
@@ -391,7 +391,7 @@ AWS IAMロールと同じ/異なるAWSアカウントのAWSリソースに委譲
 
 AWS IAMリソースの場合、外部IDが必要になる。
 
-> - https://docs.aws.amazon.com/AWS IAM/latest/UserGuide/id_roles_common-scenarios_services.html
+> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_services.html
 
 #### ▼ フェデレーテッドユーザー
 
@@ -399,8 +399,8 @@ OIDC、SAML、によって発行されたユーザーに委譲できる。
 
 OIDCのフェデレーテッドユーザーの場合、発行されたJWTが必要になる。
 
-> - https://docs.aws.amazon.com/AWS IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html
-> - https://docs.aws.amazon.com/AWS IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
+> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html
+> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
 
 <br>
 
@@ -430,7 +430,7 @@ AWS IAMロールの信頼されたエンティティに、AWS OIDCで発行さ�
 }
 ```
 
-> - https://docs.aws.amazon.com/AWS IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
 #### ▼ 外部OIDC
 
@@ -454,7 +454,7 @@ AWS IAMロールの信頼されたエンティティに、外部OIDCサービス
 }
 ```
 
-> - https://docs.aws.amazon.com/AWS IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
 #### ▼ AWS SAML
 
@@ -481,6 +481,6 @@ AWS IAMロールの信頼されたエンティティに、AWS SAMLで発行さ�
 }
 ```
 
-> - https://docs.aws.amazon.com/AWS IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
+> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
 
 <br>
