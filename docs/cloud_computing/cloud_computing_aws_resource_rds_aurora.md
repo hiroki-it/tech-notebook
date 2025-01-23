@@ -63,6 +63,41 @@ AWS RDSをよりマネージドにしたAWSリソースである。
 
 > - https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/
 
+### OSの隠蔽
+
+#### ▼ OSの隠蔽とは
+
+AWS Auroraは、EC2内にDBMSが稼働したものであるが、このほとんどが隠蔽されている。
+
+そのためDBサーバーのようには操作できず、OSのバージョン確認やSSH公開鍵認証を行えない。
+
+> - https://xtech.nikkei.com/it/article/COLUMN/20131108/516863/
+
+#### ▼ 確認方法
+
+Linux x86_64 (AMD64) が使用されているところまでは確認できるが、Linuxのバージョンは隠蔽されている。
+
+AWS RDSでも確認方法は同じである。
+
+```sql
+-- AWS Auroraの場合
+SHOW variables LIKE '%version%';
+
++-------------------------+------------------------------+
+| Variable_name           | Value                        |
++-------------------------+------------------------------+
+| aurora_version          | 2.09.0                       |
+| innodb_version          | 5.7.0                        |
+| protocol_version        | 10                           |
+| slave_type_conversions  |                              |
+| tls_version             | TLSv1,TLSv1.1,TLSv1.2        |
+| version                 | 5.7.12-log                   |
+| version_comment         | MySQL Community Server (GPL) |
+| version_compile_machine | x86_64                       |
+| version_compile_os      | Linux                        |
++-------------------------+------------------------------+
+```
+
 <br>
 
 ## 03. AWS AuroraのDBクラスター

@@ -25,13 +25,13 @@ description: Playbook＠Ansibleの知見を記録しています。
 
 **＊実装例＊**
 
-appサーバー、dbサーバー、webサーバーをセットアップする。
+Appサーバー、DBサーバー、Webサーバーをセットアップする。
 
 各コンポーネントは`roles`ディレクトリに切り分けている。
 
 ```yaml
 # roleファイル
-# appサーバー
+# Appサーバー
 - hosts: app
   become: yes
   force_handlers: "true"
@@ -40,7 +40,7 @@ appサーバー、dbサーバー、webサーバーをセットアップする。
     - shared
     - app
 
-# dbサーバー
+# DBサーバー
 - hosts: db
   become: yes
   force_handlers: "true"
@@ -48,7 +48,7 @@ appサーバー、dbサーバー、webサーバーをセットアップする。
     - shared
     - db
 
-# webサーバー
+# Webサーバー
 - hosts: web
   become: yes
   force_handlers: "true"
@@ -126,7 +126,7 @@ playbookファイルから切り分けたセットアップ処理が設定され
 
 **＊実装例＊**
 
-PHP製のアプリケーションが稼働するappサーバーをセットアップする。
+PHP製のアプリケーションが稼働するAppサーバーをセットアップする。
 
 ```yaml
 # taskファイル
@@ -316,7 +316,7 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
       # 冗長化サーバーa
       server_a:
         hosts:
-          # appサーバー
+          # Appサーバー
           app:
             # 管理対象ノードのIPアドレス
             ansible_host: 192.168.100.101
@@ -326,7 +326,7 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
             ansible_password: ubuntu
             # 管理対象ノードへのSSH公開鍵認証に使用する秘密鍵
             ansible_ssh_private_key_file: /etc/ansible/ssh_keys/prd-foo.pem
-          # webサーバー
+          # Webサーバー
           web:
             ansible_host: 192.168.100.10
             ansible_user: ubuntu
@@ -335,13 +335,13 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
       # 冗長化サーバーc
       server_c:
         hosts:
-          # appサーバー
+          # Appサーバー
           app:
             ansible_host: 192.168.100.102
             ansible_user: ubuntu
             ansible_password: ubuntu
             ansible_ssh_private_key_file: /etc/ansible/ssh_keys/prd-foo.pem
-          # webサーバー
+          # Webサーバー
           web:
             ansible_host: 192.168.100.11
             ansible_user: ubuntu
@@ -361,7 +361,7 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
 # 冗長化サーバーa
 # -------------------
 
-# appサーバー
+# Appサーバー
 [server_a.hosts.app]
 # 管理対象ノードのIPアドレス
 ansible_host=192.168.100.101
@@ -372,7 +372,7 @@ ansible_password=ubuntu
 # 管理対象ノードへのSSH公開鍵認証に使用する秘密鍵
 ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
 
-# webサーバー
+# Webサーバー
 [server_a.hosts.web]
 ansible_host=192.168.100.10
 ansible_user=ubuntu
@@ -383,14 +383,14 @@ ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
 # 冗長化サーバーc
 # -------------------
 
-# appサーバー
+# Appサーバー
 [server_c.hosts.app]
 ansible_host=192.168.100.102
 ansible_user=ubuntu
 ansible_password=ubuntu
 ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
 
-# webサーバー
+# Webサーバー
 [server_c.hosts.web]
 ansible_host=192.168.100.11
 ansible_user=ubuntu
@@ -406,14 +406,14 @@ ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
 # 冗長化サーバーa
 # -------------------
 
-# appサーバー
+# Appサーバー
 [server_a.hosts.app]
 ansible_host=192.168.100.101
 ansible_user=ubuntu
 ansible_password=ubuntu
 ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
 
-# webサーバー
+# Webサーバー
 [server_a.hosts.web]
 ansible_host=192.168.100.10
 ansible_user=ubuntu
@@ -424,14 +424,14 @@ ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
 # 冗長化サーバーc
 # -------------------
 
-# appサーバー
+# Appサーバー
 [server_c.hosts.app]
 ansible_host=192.168.100.102
 ansible_user=ubuntu
 ansible_password=ubuntu
 ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
 
-# webサーバー
+# Webサーバー
 [server_c.hosts.web]
 ansible_host=192.168.100.11
 ansible_user=ubuntu

@@ -29,7 +29,7 @@ WSGIプロトコルを使用したアプリケーション系ミドルウェア�
 
 リバースプロキシのミドルウェアとして使用できる。
 
-この場合、uWSGIをパブリックネットワークに公開しさえすれば、パブリックネットワークからuWSGIを経由して、後段のwebサーバーにリクエストを送信できるようになる。
+この場合、uWSGIをパブリックネットワークに公開しさえすれば、パブリックネットワークからuWSGIを経由して、後段のWebサーバーにリクエストを送信できるようになる。
 
 ![uwsgi](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/uwsgi.png)
 

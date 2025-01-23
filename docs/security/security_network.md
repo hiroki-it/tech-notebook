@@ -43,7 +43,7 @@ description: ︎ネットワークセキュリティ＠セキュリティの知�
 
 パケットのペイロードは検査しない。
 
-ネットワークファイアウォールとwebサーバーの間には、NATルーターやNAPTルーターが配置されている。
+ネットワークファイアウォールとWebサーバーの間には、NATルーターやNAPTルーターが配置されている。
 
 ![パケットフィルタリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットフィルタリング.gif)
 

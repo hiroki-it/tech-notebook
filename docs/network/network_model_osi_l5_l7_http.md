@@ -464,7 +464,7 @@ curl_close($curl);
 Content-Type: text/html;charset=UTF-8
 Transfer-Encoding: chunked
 Connection: close
-# webサーバー (nginx、apache、AmazonS3などが表示される)
+# Webサーバー (nginx、apache、AmazonS3などが表示される)
 Server: nginx
 Date: Sat, 26 Sep 2020 04:25:08 GMT
 # リファラポリシー (nginx、apacheなどで実装可能)

@@ -122,7 +122,7 @@ repository/
 repository/
 ├── playbook.yml
 ├── roles/
-│   ├── app/ # appサーバー
+│   ├── app/ # Appサーバー
 │   │   ├── defaults/ # rolesディレクトリ内で使用するデフォルト変数を配置する。
 │   │   │   └── foo.yml
 │   │   │
@@ -145,8 +145,8 @@ repository/
 │   │       └── main.yml
 │   │
 │   ├── shared/ # 共通
-│   ├── db/ # dbサーバー
-│   └── web/ # webサーバー
+│   ├── db/ # DBサーバー
+│   └── web/ # Webサーバー
 │
 ...
 ```

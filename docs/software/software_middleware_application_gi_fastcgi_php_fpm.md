@@ -43,7 +43,7 @@ PHP-FPMでは、リクエストのたびにプロセスを起動するわけで�
 
 ### FastCGIとして
 
-PHP-FPMは、FastCGIとしてwebサーバーとPHPファイルの間でデータ通信を実行する。
+PHP-FPMは、FastCGIとしてWebサーバーとPHPファイルの間でデータ通信を実行する。
 
 PHP-FPMとPHPは、それぞれ独立した子プロセスとして実行されている。
 

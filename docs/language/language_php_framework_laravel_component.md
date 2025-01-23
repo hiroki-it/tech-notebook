@@ -1206,16 +1206,16 @@ RouteServiceProviderも参照せよ。
 
 以下のような構成があるとする。
 
-webサーバーではヘルスチェックエンドポイントを設けず、appサーバー側にヘルスエンドポイント (例：`/healthcheck`) を設ける。
+Webサーバーではヘルスチェックエンドポイントを設けず、Appサーバー側にヘルスエンドポイント (例：`/healthcheck`) を設ける。
 
 ```yaml
 ロードバランサー # /healthcheckにヘルスチェックを送信する
 ⬇⬆︎︎
 ⬇⬆︎︎
-webサーバー
+Webサーバー
 ⬇⬆︎︎
 ⬇⬆︎︎
-appサーバー # /healthcheckで、200を返却する
+Appサーバー # /healthcheckで、200を返却する
 ```
 
 ```php

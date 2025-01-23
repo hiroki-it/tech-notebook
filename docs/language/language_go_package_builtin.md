@@ -1163,7 +1163,7 @@ HTTPクライアントまたはWebサーバを提供する。
 
 そのため、GoではNginxやApacheが不要である。
 
-ただし、Goによるwebサーバーは機能が不十分である、そのため、NginxやApacheをWebサーバとして、GoをAppサーバとして使用した方が良い。
+ただし、GoによるWebサーバーは機能が不十分である、そのため、NginxやApacheをWebサーバとして、GoをAppサーバとして使用した方が良い。
 
 > - https://golang.org/pkg/net/http/#pkg-index
 > - https://stackoverflow.com/questions/17776584/what-are-the-benefits-of-using-nginx-in-front-of-a-webserver-for-go
