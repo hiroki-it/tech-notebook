@@ -14195,9 +14195,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws-ssm-session-manager" class="md-nav__link">
+  <a href="#aws-ssm-session-managerssh" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ AWS SSM Session Managerの認証を使用する場合
+      ▼ AWS SSM Session ManagerのSSHセッションを使用する場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-ssm-session-managerstartportforwardingsessiontoremotehost" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ AWS SSM Session ManagerのStartPortForwardingSessionToRemoteHostを使用する場合
     </span>
   </a>
   
@@ -25020,9 +25029,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws-ssm-session-manager" class="md-nav__link">
+  <a href="#aws-ssm-session-managerssh" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ AWS SSM Session Managerの認証を使用する場合
+      ▼ AWS SSM Session ManagerのSSHセッションを使用する場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-ssm-session-managerstartportforwardingsessiontoremotehost" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ AWS SSM Session ManagerのStartPortForwardingSessionToRemoteHostを使用する場合
     </span>
   </a>
   
@@ -25701,9 +25719,19 @@
 <li><a href="https://qiita.com/shimi7o/items/732e91126ab4a06162a7">https://qiita.com/shimi7o/items/732e91126ab4a06162a7</a></li>
 </ul>
 </blockquote>
-<h4 id="aws-ssm-session-manager">▼ AWS SSM Session Managerの認証を使用する場合<a class="headerlink" href="#aws-ssm-session-manager" title="Permanent link">&para;</a></h4>
+<h4 id="aws-ssm-session-managerssh">▼ AWS SSM Session ManagerのSSHセッションを使用する場合<a class="headerlink" href="#aws-ssm-session-managerssh" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-start-ssh">https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-start-ssh</a></li>
+</ul>
+</blockquote>
+<h4 id="aws-ssm-session-managerstartportforwardingsessiontoremotehost">▼ AWS SSM Session ManagerのStartPortForwardingSessionToRemoteHostを使用する場合<a class="headerlink" href="#aws-ssm-session-managerstartportforwardingsessiontoremotehost" title="Permanent link">&para;</a></h4>
 <p>AWS SSM Session Managerの認証を使用する場合、AWS IAMでDB接続者を管理する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># ポートフォワーディング</span>
+<p>まずは、事前にAWS Session Managerプラグインをインストールする。</p>
+<p>その後、<code>aws ssm</code>コマンドでポートフォワーディングを実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ローカルPC</span>
+
+<span class="c1"># ポートフォワーディングのコマンドを実行する (事前にAWS Session Managerプラグインをインストールしないとエラーになる)</span>
 $<span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>start-session<span class="w"> </span>--target<span class="w"> </span>&lt;踏み台のAWS<span class="w"> </span>EC2インスタンスID&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--document-name<span class="w"> </span>AWS-StartPortForwardingSessionToRemoteHost<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--parameters<span class="w"> </span><span class="s1">&#39;{&quot;host&quot;:[&quot;&lt;AWS Auroraのクラスターエンドポイント&gt;&quot;],&quot;portNumber&quot;:[&quot;&lt;AWS Auroraのポート番号&gt;&quot;], &quot;localPortNumber&quot;:[&quot;&lt;ローカルPCのポート番号&gt;&quot;]}&#39;</span>
@@ -25714,6 +25742,8 @@ $<span class="w"> </span>mysql<span class="w"> </span>-u<span class="w"> </span>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/shimi7o/items/732e91126ab4a06162a7">https://qiita.com/shimi7o/items/732e91126ab4a06162a7</a></li>
+<li><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-remote-port-forwarding">https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-remote-port-forwarding</a></li>
+<li><a href="https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/install-plugin-macos-overview.html">https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/install-plugin-macos-overview.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
