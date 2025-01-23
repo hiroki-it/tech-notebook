@@ -14086,31 +14086,16 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="コンソール画面の場合">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#db" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ DBエンジン
+      他のDBエンジンの比較
     </span>
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws-aurora" class="md-nav__link">
-    <span class="md-ellipsis">
-      AWS Auroraとの比較
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AWS Auroraとの比較">
+    <nav class="md-nav" aria-label="他のDBエンジンの比較">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24653,31 +24638,16 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="コンソール画面の場合">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#db" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ DBエンジン
+      他のDBエンジンの比較
     </span>
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws-aurora" class="md-nav__link">
-    <span class="md-ellipsis">
-      AWS Auroraとの比較
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AWS Auroraとの比較">
+    <nav class="md-nav" aria-label="他のDBエンジンの比較">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24941,35 +24911,7 @@
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">コンソール画面の場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="db">▼ DBエンジン<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>設定項目</th>
-<th>説明</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>エンジンタイプ</td>
-<td>ミドルウェアのDBMSの種類を設定する。</td>
-<td></td>
-</tr>
-<tr>
-<td>エディション</td>
-<td>エンジンバージョンでAWS Auroraを選択した場合の互換性を設定する。</td>
-<td></td>
-</tr>
-<tr>
-<td>エンジンバージョン</td>
-<td>DBエンジンのバージョンを設定する。DBクラスター内の全てのDBインスタンスに適用される。</td>
-<td>・AWS Auroraであれば、<code>SELECT AURORA_VERSION()</code>を使用して、エンジンバージョンを確認できる。</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h3 id="aws-aurora">AWS Auroraとの比較<a class="headerlink" href="#aws-aurora" title="Permanent link">&para;</a></h3>
+<h3 id="db">他のDBエンジンの比較<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
 <h4 id="dbmsrdb">▼ DBMSに対応するRDB<a class="headerlink" href="#dbmsrdb" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -25177,11 +25119,6 @@
 <td>サブネットグループ</td>
 <td>あり</td>
 <td></td>
-</tr>
-<tr>
-<td>エンジンバージョン</td>
-<td>あり</td>
-<td><code>20</code>～<code>30</code>秒のダウンタイムが発生する。この時間は、ワークロード、クラスターサイズ、バイナリログデータのサイズ、ゼロダウンタイムパッチ適用の発動可否、によって変動する。<br>・<a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html</a> <br>・<a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.Patching.html#AuroraMySQL.Updates.AMVU">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.Patching.html#AuroraMySQL.Updates.AMVU</a> <br>また、メジャーバージョンのアップグレードには<code>10</code>分のダウンタイムが発生する。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.Major.Overview">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.Major.Overview</a></td>
 </tr>
 <tr>
 <td>メンテナンスウィンドウ</td>
