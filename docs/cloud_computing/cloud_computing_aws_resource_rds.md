@@ -25,28 +25,28 @@ description: AWS RDS＠AWSリソース
 
 #### ▼ DBエンジン
 
-| 設定項目           | 説明                                                                                 | 補足                                                                                    |
-| ------------------ | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
-| エンジンタイプ     | ミドルウェアのDBMSの種類を設定する。                                                 |                                                                                         |
-| エディション       | エンジンバージョンでAuroraを選択した場合の互換性を設定する。                         |                                                                                         |
-| エンジンバージョン | DBエンジンのバージョンを設定する。DBクラスター内の全てのDBインスタンスに適用される。 | ・Auroraであれば、`SELECT AURORA_VERSION()`を使用して、エンジンバージョンを確認できる。 |
+| 設定項目           | 説明                                                                                 | 補足                                                                                        |
+| ------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
+| エンジンタイプ     | ミドルウェアのDBMSの種類を設定する。                                                 |                                                                                             |
+| エディション       | エンジンバージョンでAWS Auroraを選択した場合の互換性を設定する。                     |                                                                                             |
+| エンジンバージョン | DBエンジンのバージョンを設定する。DBクラスター内の全てのDBインスタンスに適用される。 | ・AWS Auroraであれば、`SELECT AURORA_VERSION()`を使用して、エンジンバージョンを確認できる。 |
 
 <br>
 
-### Auroraと非Aurora
+### AWS Auroraとの比較
 
 #### ▼ DBMSに対応するRDB
 
-| DBMS       | RDB     | 互換性           |
-| ---------- | ------- | ---------------- |
-| Aurora     | AWS RDS | MySQL/PostgreSQL |
-| MariaDB    | AWS RDS | MariaDB          |
-| MySQL      | AWS RDS | MySQL            |
-| PostgreSQL | AWS RDS | PostgreSQL       |
+| DBMS             | RDB     | 互換性           |
+| ---------------- | ------- | ---------------- |
+| AWS Aurora MySQL | AWS RDS | MySQL/PostgreSQL |
+| MariaDB          | AWS RDS | MariaDB          |
+| MySQL            | AWS RDS | MySQL            |
+| PostgreSQL       | AWS RDS | PostgreSQL       |
 
 #### ▼ 機能の違い
 
-RDBがAuroraか非Auroraかで機能に差があり、Auroraの方が耐障害性や可用性が高い。
+RDBがAWS AuroraかAWS RDSかで機能に差があり、AWS Auroraの方が耐障害性や可用性が高い。
 
 ただし、その分費用が高いことに注意する。
 
@@ -71,7 +71,7 @@ AWS RDSは、EC2内にDBMSが稼働したものであるが、このほとんど
 Linux x86_64 (AMD64) が使用されているところまでは確認できるが、Linuxのバージョンは隠蔽されている。
 
 ```sql
--- Auroraの場合
+-- AWS Auroraの場合
 SHOW variables LIKE '%version%';
 
 +-------------------------+------------------------------+
@@ -90,7 +90,7 @@ SHOW variables LIKE '%version%';
 ```
 
 ```sql
--- 非Auroraの場合
+-- AWS RDSの場合
 SHOW variables LIKE '%version%';
 
 +-------------------------+------------------------------+
@@ -270,7 +270,7 @@ DBインスタンスがマルチAZ構成の場合、以下の手順を使用し�
 
 > - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html#Concepts.MultiAZ.Failover
 
-(3) 非AuroraのAWS RDSでは条件に当てはまらない場合、リードレプリカを手動でフェイルオーバーさせる。
+(3) AWS RDSのAWS RDSでは条件に当てはまらない場合、リードレプリカを手動でフェイルオーバーさせる。
 
 > - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.ReducedDowntime
 

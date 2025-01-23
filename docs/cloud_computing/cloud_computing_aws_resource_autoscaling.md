@@ -280,7 +280,7 @@ CPU平均使用率に段階的な閾値を設定する。
 **＊例＊**
 
 - AWS ECSサービスのAWS ECSタスク数
-- DBクラスターのAuroraのリードレプリカ数
+- DBクラスターのAWS Auroraのリードレプリカ数
 - Lambdaのスクリプト同時実行数
 
 #### ▼ AWS ECSの場合

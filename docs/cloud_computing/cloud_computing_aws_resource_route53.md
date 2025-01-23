@@ -59,14 +59,14 @@ description: AWS Route53＠AWSリソース
 
 ![URLと電子メールの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/URLと電子メールの構造.png)
 
-| 種別             | AWSリソース      | 例                                                                                  |
-| ---------------- | ---------------- | ----------------------------------------------------------------------------------- |
-| DNS名            | AWS ALB          | `<ALB名>-<ランダムな文字列>.ap-northeast-1.elb.amazonaws.com`                       |
-|                  | AWS EC2          | `ec2-<パブリックIPをハイフン区切りにしたもの>.ap-northeast-1.compute.amazonaws.com` |
-| ドメイン名       | AWS CloudFront   | `<発行されたランダム文字列>.cloudfront.net`                                         |
-| エンドポイント名 | AWS RDS (Aurora) | `<DBクラスター名><ランダムな文字列>.ap-northeast-1.rds.amazonaws.com.`              |
-|                  | AWS RDS          | `<DBインスタンス名><ランダムな文字列>.ap-northeast-1.rds.amazonaws.com.`            |
-|                  | AWS S3           | `<バケット名>.ap-northeast-1.amazonaws.com`                                         |
+| 種別             | AWSリソース    | 例                                                                                  |
+| ---------------- | -------------- | ----------------------------------------------------------------------------------- |
+| DNS名            | AWS ALB        | `<ALB名>-<ランダムな文字列>.ap-northeast-1.elb.amazonaws.com`                       |
+|                  | AWS EC2        | `ec2-<パブリックIPをハイフン区切りにしたもの>.ap-northeast-1.compute.amazonaws.com` |
+| ドメイン名       | AWS CloudFront | `<発行されたランダム文字列>.cloudfront.net`                                         |
+| エンドポイント名 | AWS Aurora     | `<DBクラスター名><ランダムな文字列>.ap-northeast-1.rds.amazonaws.com.`              |
+|                  | AWS RDS        | `<DBインスタンス名><ランダムな文字列>.ap-northeast-1.rds.amazonaws.com.`            |
+|                  | AWS S3         | `<バケット名>.ap-northeast-1.amazonaws.com`                                         |
 
 #### ▼ AWS以外でドメインを購入した場合
 

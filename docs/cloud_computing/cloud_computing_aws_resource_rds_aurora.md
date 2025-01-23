@@ -164,7 +164,7 @@ DBインスタンスとクラスターボリュームから構成されている
 > - https://dev.classmethod.jp/articles/amazon-aurora-global-database-failover-between-region/#toc-2
 > - https://qiita.com/minorun365/items/2530cf1d1f5793c15c79
 
-注意点として、通常のAurora DBクラスターと比較して、機能が制限される。
+注意点として、通常のAWS Aurora DBクラスターと比較して、機能が制限される。
 
 > - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations
 
@@ -284,7 +284,7 @@ Auroraをエンジンバージョンに選択した場合に使用できる。
 
 ### アップグレード可能かのバリデーション
 
-Aurora DBにSSH接続した上で、DBに対して以下のコマンドを実行すると、`v5.7`から`v8`系へのアップグレードで問題が起こるかを解析できる
+AWS AuroraにSSH接続した上で、DBに対して以下のコマンドを実行すると、`v5.7`から`v8`系へのアップグレードで問題が起こるかを解析できる
 
 ただ、アプリ側のSQLのロジックを解析することはできず、あくまでMySQLの設定値のみを解析でき、廃止予定のロジックを使っているかまでは見つけられない。
 
@@ -309,7 +309,7 @@ Auroraでは、設定値 (例：OS、エンジンバージョン、MySQL) のア
 
 #### ▼ ダウンタイムの発生条件
 
-非Auroraに記載された情報のため、厳密にはAuroraのダウンタイムではない。
+AWS RDSに記載された情報のため、厳密にはAuroraのダウンタイムではない。
 
 ただし、経験上同じ項目でダウンタイムが発生しているため、参考にする。
 
