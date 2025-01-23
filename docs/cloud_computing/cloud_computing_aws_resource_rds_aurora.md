@@ -116,12 +116,22 @@ SSH公開鍵認証を使用する場合、ユーザーが自前でDB接続者を
 
 > - https://qiita.com/shimi7o/items/732e91126ab4a06162a7
 
-#### ▼ AWS SSM Session Managerの認証を使用する場合
+#### ▼ AWS SSM Session ManagerのSSHセッションを使用する場合
+
+> - https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-start-ssh
+
+#### ▼ AWS SSM Session ManagerのStartPortForwardingSessionToRemoteHostを使用する場合
 
 AWS SSM Session Managerの認証を使用する場合、AWS IAMでDB接続者を管理する。
 
+まずは、事前にAWS Session Managerプラグインをインストールする。
+
+その後、`aws ssm`コマンドでポートフォワーディングを実行する。
+
 ```bash
-# ポートフォワーディング
+# ローカルPC
+
+# ポートフォワーディングのコマンドを実行する (事前にAWS Session Managerプラグインをインストールしないとエラーになる)
 $ aws ssm start-session --target <踏み台のAWS EC2インスタンスID> \
     --document-name AWS-StartPortForwardingSessionToRemoteHost \
     --parameters '{"host":["<AWS Auroraのクラスターエンドポイント>"],"portNumber":["<AWS Auroraのポート番号>"], "localPortNumber":["<ローカルPCのポート番号>"]}'
@@ -131,6 +141,8 @@ $ mysql -u <AWS Auroraのユーザー> -p<AWS Auroraのパスワード> -h local
 ```
 
 > - https://qiita.com/shimi7o/items/732e91126ab4a06162a7
+> - https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-remote-port-forwarding
+> - https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/install-plugin-macos-overview.html
 
 <br>
 
