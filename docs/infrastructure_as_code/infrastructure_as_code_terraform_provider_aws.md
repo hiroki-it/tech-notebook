@@ -1236,7 +1236,7 @@ status code: 400, request id: *****
 
 <br>
 
-## AWS RDS (Aurora) の場合
+## AWS Auroraの場合
 
 ### resource
 

@@ -48,7 +48,9 @@
   >   > - ##### [︎Lambda関数](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_lambda_function.html)
   > - ##### [LB](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_lb.html)
   > - ##### [Redshift](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_redshift.html)
-  > - ##### [RDS](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_rds.html)
+  > - ##### <u>RDS</u>
+  >   > - ##### [RDS](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_rds.html)
+  >   > - ##### [Aurora](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_rds_aurora.html)
   > - ##### [Route53](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_route53.html)
   > - ##### [S3](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_s3.html)
   > - ##### [Secrets Manager](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_secrets_manager.html)
