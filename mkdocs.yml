@@ -751,6 +751,8 @@ nav:
               - ︎リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver_resource_definition.md
           - ■ ExternalSecretsOperator:
               - ExternalSecretsOperator: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_external_secrets_oprator.md
+      - ■ デバッグ系:
+          - Telepresence: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_debug_telepresence.md
       - ■ AWS EKS系:
           - AWS EKSアドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.md
           - AWS EBS CSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.md
