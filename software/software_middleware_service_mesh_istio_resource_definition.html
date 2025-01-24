@@ -29381,7 +29381,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="c1"># JWTの発行元認証局を指定する</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">request.auth.claims[iss]</span>
 <span class="w">          </span><span class="c1"># 発行元認証局の期待値を設定する</span>
-<span class="w">          </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;https://&lt;Keycloakのドメイン&gt;/realms/&lt;realm名&gt;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">          </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">[</span><span class="s">&quot;http://keycloak.foo-namespace.svc.cluster.local/realms/&lt;realm名&gt;&quot;</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <blockquote>
 <ul>
