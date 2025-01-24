@@ -59,8 +59,6 @@ description: 認証/認可＠マイクロサービス領域の知見を記録し
 
 結果に応じて、後続のマイクロサービスにルーティングするかどうかを決める。
 
-この時、フロントエンドとAPI Gateway間、またはAPI Gatewayとマイクロサービス間で使用するJWTは、同一であっても異なっていても (Token Exchange) よい。
-
 ![microservices_authentication_type_sso_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_sso_gateway.png)
 
 > - https://www.jerney.io/secure-apis-kong-keycloak-1/

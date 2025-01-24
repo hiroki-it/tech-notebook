@@ -181,6 +181,8 @@ JWTの発行元認証局を取得できる。
 
 フローに応じたトークン (アクセストークン、IDトークン) や認可コードを取得できる。
 
+また、Token Exchangeを使用すると新しいトークンに交換したり、別のIDプロバイダーのトークンに変換できる。
+
 なお、KeycloakはJWT仕様のアクセストークンを採用している。
 
 ```bash
@@ -189,6 +191,7 @@ JWTの発行元認証局を取得できる。
 
 > - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
 > - https://thinkit.co.jp/article/17621
+> - https://www.keycloak.org/securing-apps/token-exchange
 
 #### ▼ ユーザー情報エンドポイント
 
