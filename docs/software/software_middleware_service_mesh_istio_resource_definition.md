@@ -1783,7 +1783,8 @@ spec:
         # JWTの発行元認証局を指定する
         - key: request.auth.claims[iss]
           # 発行元認証局の期待値を設定する
-          values: ["https://<Keycloakのドメイン>/realms/<realm名>"]
+          values:
+            ["http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>"]
 ```
 
 > - https://thinkit.co.jp/article/18023

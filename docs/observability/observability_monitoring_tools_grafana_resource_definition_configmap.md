@@ -284,9 +284,9 @@ data:
     email_attribute_path = email
     login_attribute_path = username
     name_attribute_path = full_name
-    auth_url = https://<PROVIDER_DOMAIN>/realms/<REALM_NAME>/protocol/openid-connect/auth
-    token_url = https://<PROVIDER_DOMAIN>/realms/<REALM_NAME>/protocol/openid-connect/token
-    api_url = https://<PROVIDER_DOMAIN>/realms/<REALM_NAME>/protocol/openid-connect/userinfo
+    auth_url = http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/auth
+    token_url = http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/token
+    api_url = http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/userinfo
     role_attribute_path = contains(roles[*], 'admin') && 'Admin' || contains(roles[*], 'editor') && 'Editor' || 'Viewer'
 ```
 

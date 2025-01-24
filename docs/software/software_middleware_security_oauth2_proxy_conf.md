@@ -60,7 +60,7 @@ OIDCのアクセストークンの発行元認証局の認可エンドポイン�
 # 認証方法がOIDCで、IDプロバイダーがKeycloakの場合
 providers:
   - oidcConfig:
-      issuerURL: "https://<Keycloakのドメイン>/realms/<realm名>"
+      issuerURL: "http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>"
 ```
 
 > - https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#oidcoptions

@@ -61,7 +61,7 @@ connectors:
     name: keycloak
     config:
       # 認可エンドポイント
-      issuer: https://<Keycloakのドメイン>/realms/<realm名>
+      issuer: http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>
       clientID: <Keycloakに認可リクエストを送信するクライアント名>
       clientSecret: *****
       redirectURI: <コールバックURL>
