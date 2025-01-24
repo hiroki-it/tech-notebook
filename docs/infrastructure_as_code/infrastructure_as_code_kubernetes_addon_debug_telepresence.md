@@ -15,9 +15,7 @@ description: Telepresence＠デバッグ系の知見を記録しています。
 
 ## 01. Telepresenceとは
 
-ローカルPCをKubernetes Cluster内のPodのように使用できる。
-
-Kubernetes Cluster内のPodで送受信したリクエストをローカルPCで確認できる。
+Kubernetes Cluster内のPodで送受信するリクエストをローカルPCで確認できるようにする。
 
 ![telescope_usecase.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/telescope_usecase.png)
 
@@ -40,7 +38,7 @@ Pod内にtraffic-agentを挿入し、そのPodに対する通信をローカル�
 
 ## 02. セットアップ
 
-### brew
+### brewリポジトリから
 
 ```bash
 $ brew install telepresenceio/telepresence/telepresence-oss
