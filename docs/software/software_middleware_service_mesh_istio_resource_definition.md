@@ -1673,7 +1673,7 @@ spec:
     - issuer: foo-issuer.com
       # 公開鍵のURLを設定する
       jwksUri: https://example.com/.well-known/jwks.json
-      # 既存のJWTの文字列を変更せずに、後続のマイクロサービスにそのまま転送する
+      # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true
       # Authorizationヘッダーを指定する
       fromHeaders:
@@ -1719,7 +1719,7 @@ spec:
     - issuer: https://<Auth0のドメイン>/
       # 公開鍵のエンドポイントを設定する
       jwksUri: https://<Auth0のドメイン>/.well-known/jwks.json
-      # 既存のJWTの文字列を変更せずに、後続のマイクロサービスにそのまま転送する
+      # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true
       # Authorizationヘッダーを指定する
       fromHeaders:
@@ -1764,7 +1764,7 @@ spec:
     - issuer: keycloak.foo-namespace.svc.cluster.local/realms/<realm名>
       # 公開鍵のエンドポイントを設定する
       jwksUri: keycloak.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
-      # 既存のJWTの文字列を変更せずに、後続のマイクロサービスにそのまま転送する
+      # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true
       # Authorizationヘッダーを指定する
       fromHeaders:
@@ -1809,7 +1809,7 @@ spec:
     # OAuth2 Proxyに送信する
     - issuer: oauth2-proxy.foo-namespace.svc.cluster.local/realms/<realm名>
       jwksUri: oauth2-proxy.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
-      # 既存のJWTの文字列を変更せずに、後続のマイクロサービスにそのまま転送する
+      # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true
       # Authorizationヘッダーを指定する
       fromHeaders:
