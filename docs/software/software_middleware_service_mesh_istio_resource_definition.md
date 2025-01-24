@@ -1670,7 +1670,7 @@ metadata:
 spec:
   jwtRules:
     # JWTの発行元認証局を設定する
-    - issuer: foo-issuer.com
+    - issuer: https://foo-issuer.com
       # 公開鍵のURLを設定する
       jwksUri: https://example.com/.well-known/jwks.json
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
@@ -1761,9 +1761,9 @@ metadata:
 spec:
   jwtRules:
     # JWTの発行元認証局エンドポイントを設定する
-    - issuer: keycloak.foo-namespace.svc.cluster.local/realms/<realm名>
+    - issuer: http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>
       # 公開鍵のエンドポイントを設定する
-      jwksUri: keycloak.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
+      jwksUri: http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true
       # Authorizationヘッダーを指定する
@@ -1807,8 +1807,8 @@ metadata:
 spec:
   jwtRules:
     # OAuth2 Proxyに送信する
-    - issuer: oauth2-proxy.foo-namespace.svc.cluster.local/realms/<realm名>
-      jwksUri: oauth2-proxy.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
+    - issuer: http://oauth2-proxy.foo-namespace.svc.cluster.local/realms/<realm名>
+      jwksUri: http://oauth2-proxy.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true
       # Authorizationヘッダーを指定する
