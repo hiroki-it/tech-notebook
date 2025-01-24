@@ -75,6 +75,12 @@
 
 <br>
 
+### デバッグ系
+
+- #### [Telepresence](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_debug_telepresence.html)
+
+<br>
+
 ### AWS系
 
 - #### [AWS EKSアドオン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html)

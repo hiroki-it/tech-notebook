@@ -48,8 +48,6 @@ $ brew install telepresenceio/telepresence/telepresence-oss
 
 Kubernetes Clusterに接続する。
 
-
-
 #### ▼ -n
 
 ローカルPCとつなぐPodをいずれのNamespaceにおくかを設定する。
@@ -69,8 +67,8 @@ connected to context <Kubernetes Clusterのコンテキスト>
 設定を確認する。
 
 ```bash
-telepresence config view          
-                                                                                                             
+telepresence config view
+
 clientConfig:
   routing:
     neverProxySubnets:
