@@ -27,9 +27,12 @@ OSSのPostgreSQLでは使用できず、Enterprised PostgreSQLを使用してい
 
 repmgrは、PostgreSQLのDBをクラスタリングし、クラスターのインスタンス (プライマリーインスタンス、スタンバイインスタンス) として管理できるようにする。
 
+また、インスタンス間でレプリケーション通信を実施し、データを同期する。
+
 ![repmgr_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/repmgr_architecture.png)
 
 > - https://www.2ndquadrant.com/en/resources-old/repmgr/
+> - https://medium.com/@kiwiv/implement-replication-with-repmgr-and-barman-f1643d3ba9b7
 
 <br>
 
