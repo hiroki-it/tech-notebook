@@ -52,6 +52,9 @@ Keycloakは、認証処理サービス、Infinispan、アカウント管理用�
 
 JGroupsパッケージを使用して、インスタンス間でレプリケーション通信を実施し、セッションデータを同期する。
 
+![keycloak_clustering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_clustering.png)
+
+> - https://qiita.com/yoonis/items/4f4a9df0f6f8e858bd4a#keycloak%E5%86%97%E9%95%B7%E6%A7%8B%E6%88%90%E3%81%AE%E6%A6%82%E8%A6%81
 > - https://qiita.com/yo-tabata/items/6d29795fc3afa72d1b08#keycloakx%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E9%96%93%E9%80%9A%E4%BF%A1%E3%82%92tcp%E3%81%AB%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B
 
 <br>
