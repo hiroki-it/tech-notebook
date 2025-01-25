@@ -28,9 +28,14 @@ import React from "react";
 import {createRoot} from "react-dom/client";
 import {AuthProvider, useAuth} from "../src/.";
 
+// 認可リクエスト時に必要になる情報
 const oidcConfig = {
   authority: "<IDプロバイダーのIssuer値>",
+  // クライアントを表す名前を設定する
+  // 例：frontend
   client_id: "<クライアントID>",
+  // IDプロバイダー側で設定したコールバックURLを設定する。ホスト名は window.location.origin とする。
+  // 例：window.location.origin + "/authentication/callback"
   redirect_uri: "<コールバックURL>",
 };
 

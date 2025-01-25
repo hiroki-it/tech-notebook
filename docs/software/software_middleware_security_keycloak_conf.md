@@ -42,9 +42,10 @@ Keycloakでは、コマンドオプション、環境変数、`keycloak.conf`フ
 
 ### Cache
 
-| 変数       | 値の例 | 説明                                                                                   |
-| ---------- | ------ | -------------------------------------------------------------------------------------- |
-| `KC_CACHE` | `ispn` | セッションデータ管理の仕組みを設定する。`ispn`の場合、Infinispanクラスターを実行する。 |
+| 変数             | 値の例       | 説明                                                                                                                                     |
+| ---------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `KC_CACHE`       | `ispn`       | セッションデータ管理の仕組みを設定する。例えば`ispn`の場合、KeycloakクラスターでInfinispanを使用する。                                   |
+| `KC_CACHE_STACK` | `kubernetes` | Keycloakクラスター内のインスタンス間の通信方法を設定する。例えば`kubernetes`の場合、KeycloakクラスターでKubernetesによる通信を使用する。 |
 
 <br>
 
@@ -84,10 +85,10 @@ Keycloakでは、コマンドオプション、環境変数、`keycloak.conf`フ
 
 ### JAVA_OPTS_APPEND
 
-| 変数                         | 値の例                                         | 説明                                                      |
-| ---------------------------- | ---------------------------------------------- | --------------------------------------------------------- |
-| `-Djgroups.dns.query`        | `keycloak-headless.keycloak.svc.cluster.local` | Keycloakクラスターのインスタンスを返却するDNSを設定する。 |
-| `-Djava.net.preferIPv4Stack` | `true`                                         |                                                           |
+| 変数                         | 値の例                                         | 説明                                                                |
+| ---------------------------- | ---------------------------------------------- | ------------------------------------------------------------------- |
+| `-Djgroups.dns.query`        | `keycloak-headless.keycloak.svc.cluster.local` | Keycloakクラスター内のKeycloakインスタンスを返却するDNSを設定する。 |
+| `-Djava.net.preferIPv4Stack` | `true`                                         |                                                                     |
 
 > - https://www.keycloak.org/server/configuration-production
 > - https://docs.redhat.com/en/documentation/red_hat_data_grid/8.0/html/configuring_data_grid/cluster_transport#jgroups_system_props-configuring

@@ -24,7 +24,11 @@ import {OidcClient, UserManager} from "oidc-client-ts";
 
 const client = new OidcClient({
   authority: "<IDプロバイダーのIssuer値>",
+  // クライアントを表す名前を設定する
+  // 例：frontend
   client_id: "<クライアントID>",
+  // IDプロバイダー側で設定したコールバックURLを設定する。ホスト名は window.location.origin とする。
+  // 例：window.location.origin + "/authentication/callback"
   redirect_uri: "<コールバックURL>",
 });
 
