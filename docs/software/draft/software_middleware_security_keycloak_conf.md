@@ -25,14 +25,12 @@ Keycloakでは、コマンドオプション、環境変数、`keycloak.conf`フ
 
 ### Bootstrap Admin
 
-| 変数                          | 値の例     | 説明                                                                           |
-| ----------------------------- | ---------- | ------------------------------------------------------------------------------ |
-| `KC_BOOTSTRAP_ADMIN_USERNAME` | `admin`    | Keycloakのルートユーザー名を設定する。                                         |
-| `KC_BOOTSTRAP_ADMIN_PASSWORD` | `password` | Keycloakのルートユーザーのパスワードを設定する。                               |
-| `PROXY_ADDRESS_FORWARDING`    | `true`     | Keycloakの前段にリバースプロキシ (サイドカーも含む) がある場合に`true`とする。 |
+| 変数                          | 値の例     | 説明                                             |
+| ----------------------------- | ---------- | ------------------------------------------------ |
+| `KC_BOOTSTRAP_ADMIN_USERNAME` | `admin`    | Keycloakのルートユーザー名を設定する。           |
+| `KC_BOOTSTRAP_ADMIN_PASSWORD` | `password` | Keycloakのルートユーザーのパスワードを設定する。 |
 
 > - https://www.keycloak.org/server/all-config#category-bootstrap_admin
-> - https://blog.linkode.co.jp/entry/2021/06/23/061829#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AB-PROXY_ADDRESS_FORWARDINGtrue-%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B
 
 <br>
 
@@ -67,6 +65,18 @@ Keycloakでは、コマンドオプション、環境変数、`keycloak.conf`フ
 | `KC_LOG_LEVEL` | `debug` | Keycloakのログレベルを設定する。 |
 
 > - https://www.keycloak.org/server/all-config#category-logging
+
+<br>
+
+### JAVA_OPTS_APPEND
+
+| 変数                         | 値の例                                         | 説明                                                      |
+| ---------------------------- | ---------------------------------------------- | --------------------------------------------------------- |
+| `-Djgroups.dns.query`        | `keycloak-headless.keycloak.svc.cluster.local` | Keycloakクラスターのインスタンスを返却するDNSを設定する。 |
+| `-Djava.net.preferIPv4Stack` | `true`                                         |                                                           |
+
+> - https://www.keycloak.org/server/configuration-production
+> - https://docs.redhat.com/en/documentation/red_hat_data_grid/8.0/html/configuring_data_grid/cluster_transport#jgroups_system_props-configuring
 
 <br>
 
