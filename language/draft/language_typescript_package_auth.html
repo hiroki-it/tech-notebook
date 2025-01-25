@@ -24390,6 +24390,54 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="01. oidc-client-ts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oidc-client-ts" class="md-nav__link">
+    <span class="md-ellipsis">
+      oidc-client-tsとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      認証
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="認証">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 全体
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 認証済みユーザーの取得
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -24420,8 +24468,12 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-oidc-client-ts">01. oidc-client-ts<a class="headerlink" href="#01-oidc-client-ts" title="Permanent link">&para;</a></h2>
+<h3 id="oidc-client-ts">oidc-client-tsとは<a class="headerlink" href="#oidc-client-ts" title="Permanent link">&para;</a></h3>
 <p>TypeScriptでOIDCを実施するためのパッケージ。</p>
 <p>フレームワークによっては、ラッパー (例：<code>react-oidc-context</code>) が提供されている。</p>
+<p><br></p>
+<h3 id="_2">認証<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ 全体<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">OidcClient</span><span class="p">,</span><span class="w"> </span><span class="nx">UserManager</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;oidc-client-ts&quot;</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OidcClient</span><span class="p">({</span>
@@ -24460,6 +24512,13 @@
 <li><a href="https://authts.github.io/oidc-client-ts/interfaces/OidcClientSettings.html">https://authts.github.io/oidc-client-ts/interfaces/OidcClientSettings.html</a></li>
 <li><a href="https://authts.github.io/oidc-client-ts/classes/OidcClient.html">https://authts.github.io/oidc-client-ts/classes/OidcClient.html</a></li>
 <li><a href="https://dev.classmethod.jp/articles/openidconnect-devio2023/#P.24%2520React%25E5%2581%25B4%25E3%2581%25AE%25E8%25A8%25AD%25E5%25AE%259A%25E5%2586%2585%25E5%25AE%25B9%25E7%25A2%25BA%25E8%25AA%258D">https://dev.classmethod.jp/articles/openidconnect-devio2023/#P.24%2520React%25E5%2581%25B4%25E3%2581%25AE%25E8%25A8%25AD%25E5%25AE%259A%25E5%2586%2585%25E5%25AE%25B9%25E7%25A2%25BA%25E8%25AA%258D</a></li>
+</ul>
+</blockquote>
+<h4 id="_4">▼ 認証済みユーザーの取得<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>ログイン時に、Authorizationヘッダー上のアクセストークンをIDプロバイダーに送信し、ユーザーを取得する。</p>
+<blockquote>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/openidconnect-devio2023/#P.33%2520%25E3%2583%25AA%25E3%2582%25AF%25E3%2582%25A8%25E3%2582%25B9%25E3%2583%2588%25E3%2581%25AE%25E5%258B%2595%25E3%2581%258D%25E3%2582%2592%25E8%25A6%258B%25E3%2581%25A6%25E3%2581%25BF%25E3%2582%2588%25E3%2581%2586%25EF%25BC%2588UserInfo%25E3%2583%25AA%25E3%2582%25AF%25E3%2582%25A8%25E3%2582%25B9%25E3%2583%2588%25EF%25BC%2589">https://dev.classmethod.jp/articles/openidconnect-devio2023/#P.33%2520%25E3%2583%25AA%25E3%2582%25AF%25E3%2582%25A8%25E3%2582%25B9%25E3%2583%2588%25E3%2581%25AE%25E5%258B%2595%25E3%2581%258D%25E3%2582%2592%25E8%25A6%258B%25E3%2581%25A6%25E3%2581%25BF%25E3%2582%2588%25E3%2581%2586%25EF%25BC%2588UserInfo%25E3%2583%25AA%25E3%2582%25AF%25E3%2582%25A8%25E3%2582%25B9%25E3%2583%2588%25EF%25BC%2589</a></li>
 </ul>
 </blockquote>
 <p><br></p>
