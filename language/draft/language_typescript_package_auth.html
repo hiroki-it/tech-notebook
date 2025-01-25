@@ -24425,11 +24425,12 @@
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">OidcClient</span><span class="p">,</span><span class="w"> </span><span class="nx">UserManager</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;oidc-client-ts&quot;</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OidcClient</span><span class="p">({</span>
+<span class="w">  </span><span class="c1">// 例：https://&lt;IDプロバイダーのドメイン&gt;/realms/&lt;realm名&gt;</span>
 <span class="w">  </span><span class="nx">authority</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;IDプロバイダーのIssuer値&gt;&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="c1">// クライアントを表す名前を設定する</span>
 <span class="w">  </span><span class="c1">// 例：frontend</span>
 <span class="w">  </span><span class="nx">client_id</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;クライアントID&gt;&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="c1">// IDプロバイダー側で設定したコールバックURLを設定する。ホスト名は window.location.origin とする。</span>
+<span class="w">  </span><span class="c1">// ホスト名は window.location.origin とする。</span>
 <span class="w">  </span><span class="c1">// 例：window.location.origin + &quot;/authentication/callback&quot;</span>
 <span class="w">  </span><span class="nx">redirect_uri</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;コールバックURL&gt;&quot;</span><span class="p">,</span>
 <span class="p">});</span>

@@ -24443,11 +24443,12 @@ import {AuthProvider, useAuth} from &quot;../src/.&quot;;
 
 // 認可リクエスト時に必要になる情報
 const oidcConfig = {
+  // 例：https://&lt;IDプロバイダーのドメイン&gt;/realms/&lt;realm名&gt;
   authority: &quot;&lt;IDプロバイダーのIssuer値&gt;&quot;,
   // クライアントを表す名前を設定する
   // 例：frontend
   client_id: &quot;&lt;クライアントID&gt;&quot;,
-  // IDプロバイダー側で設定したコールバックURLを設定する。ホスト名は window.location.origin とする。
+  // ホスト名は window.location.origin とする。
   // 例：window.location.origin + &quot;/authentication/callback&quot;
   redirect_uri: &quot;&lt;コールバックURL&gt;&quot;,
 };
