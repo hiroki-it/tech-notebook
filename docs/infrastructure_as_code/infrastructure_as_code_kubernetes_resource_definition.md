@@ -3819,6 +3819,62 @@ DaemonSetでは、特定のNodeにPodをスケジューリングさせられる�
 
 <br>
 
+### .spec.restartPolicy
+
+#### ▼ restartPolicyとは
+
+Pod内のコンテナのライフサイクルの再起動ポリシーを設定する。
+
+#### ▼ Always
+
+コンテナが停止した場合、これが正常 (終了ステータス`0`) か異常 (終了ステータス`1`) か否かに関わらず、常にコンテナを再起動する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+  restartPolicy: Always
+```
+
+#### ▼ Never
+
+コンテナが停止した場合、コンテナを再起動しない。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+  restartPolicy: Never
+```
+
+#### ▼ OnFailure
+
+コンテナが停止した場合、これが異常 (終了ステータス`1`) の場合にのみ、常にコンテナを再起動する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+  restartPolicy: OnFailure
+```
+
+<br>
+
 ### .spec.securityContext
 
 #### ▼ securityContextとは
@@ -3919,31 +3975,15 @@ spec:
 
 <br>
 
-### .spec.restartPolicy
+### .spec.serviceAccountName
 
-#### ▼ restartPolicyとは
+#### ▼ serviceAccountNameとは
 
-Pod内のコンテナのライフサイクルの再起動ポリシーを設定する。
+PodにServiceAccountを紐付ける。
 
-#### ▼ Always
+Podのプロセスに認証済みのIDが付与され、Kubernetesと通信できるようになる。
 
-コンテナが停止した場合、これが正常 (終了ステータス`0`) か異常 (終了ステータス`1`) か否かに関わらず、常にコンテナを再起動する。
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: app
-      image: app:1.0.0
-  restartPolicy: Always
-```
-
-#### ▼ Never
-
-コンテナが停止した場合、コンテナを再起動しない。
+**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -3954,12 +3994,22 @@ spec:
   containers:
     - name: app
       image: app:1.0.0
-  restartPolicy: Never
+  serviceAccountName: foo-service-account
 ```
 
-#### ▼ OnFailure
+<br>
 
-コンテナが停止した場合、これが異常 (終了ステータス`1`) の場合にのみ、常にコンテナを再起動する。
+### .spec.terminationGracePeriodSeconds
+
+#### ▼ terminationGracePeriodSecondsとは
+
+![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png)
+
+Podの終了プロセスを開始するまで待機時間を設定する。
+
+この時間を超えてもPodを終了できていない場合は、コンテナを強制的に停止する。
+
+なお、Pod側でコンテナの終了時間を制御することはできない。
 
 ```yaml
 apiVersion: v1
@@ -3970,8 +4020,12 @@ spec:
   containers:
     - name: app
       image: app:1.0.0
-  restartPolicy: OnFailure
+  terminationGracePeriodSeconds: 300
 ```
+
+> - https://nulab.com/ja/blog/backlog/graceful-shutdown-of-kubernetes-application/
+> - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
+> - https://speakerdeck.com/masayaaoyama/jkd1812-prd-manifests?slide=16
 
 <br>
 
@@ -4116,60 +4170,6 @@ spec:
 
 > - https://blog.devops.dev/taints-and-tollerations-vs-node-affinity-42ec5305e11a
 > - https://qiita.com/sheepland/items/8fedae15e157c102757f#effect%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%81%A8%E3%81%9D%E3%81%AE%E5%8A%B9%E6%9E%9C
-
-<br>
-
-### .spec.serviceAccountName
-
-#### ▼ serviceAccountNameとは
-
-PodにServiceAccountを紐付ける。
-
-Podのプロセスに認証済みのIDが付与され、Kubernetesと通信できるようになる。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: app
-      image: app:1.0.0
-  serviceAccountName: foo-service-account
-```
-
-<br>
-
-### .spec.terminationGracePeriodSeconds
-
-#### ▼ terminationGracePeriodSecondsとは
-
-![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png)
-
-Podの終了プロセスを開始するまで待機時間を設定する。
-
-この時間を超えてもPodを終了できていない場合は、コンテナを強制的に停止する。
-
-なお、Pod側でコンテナの終了時間を制御することはできない。
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: app
-      image: app:1.0.0
-  terminationGracePeriodSeconds: 300
-```
-
-> - https://nulab.com/ja/blog/backlog/graceful-shutdown-of-kubernetes-application/
-> - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
-> - https://speakerdeck.com/masayaaoyama/jkd1812-prd-manifests?slide=16
 
 <br>
 
