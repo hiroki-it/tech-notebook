@@ -46,9 +46,15 @@ IDプロバイダーとして、DBからセッションデータを取得し、�
 
 Keycloakからセッションデータを取得し、DBに永続化する。
 
-Infinispanは、クラスタリング構成になっている。
+<br>
 
-Infinispanクラスターでは、JGroupsパッケージを使用してインスタンス間でレプリケーション通信 (例：TCP、UDP) を実施し、Infinispanのインスタンス間でセッションデータを同期する。
+### クラスタリング
+
+Keycloakでは、クラスタリング構成を使用できる。
+
+Keycloakクラスターでは、JGroupsパッケージを使用してインスタンス間でレプリケーション通信 (例：TCP、UDP) を実施する。
+
+レプリケーション通信によって、Keycloakクラスター内のInfinispanインスタンス間でセッションデータを同期する。
 
 ![keycloak_clustering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_clustering.png)
 
