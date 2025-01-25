@@ -5398,6 +5398,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      認証処理サービス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#infinispan" class="md-nav__link">
     <span class="md-ellipsis">
       Infinispan
@@ -5410,15 +5419,6 @@
   <a href="#rdbms" class="md-nav__link">
     <span class="md-ellipsis">
       RDBMS
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      クラスタリング
     </span>
   </a>
   
@@ -24824,6 +24824,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      認証処理サービス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#infinispan" class="md-nav__link">
     <span class="md-ellipsis">
       Infinispan
@@ -24836,15 +24845,6 @@
   <a href="#rdbms" class="md-nav__link">
     <span class="md-ellipsis">
       RDBMS
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      クラスタリング
     </span>
   </a>
   
@@ -25217,14 +25217,13 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="_3">認証処理サービス<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>IDプロバイダーとして、DBからセッションデータを取得し、認証処理を実施する。</p>
+<p><br></p>
 <h3 id="infinispan">Infinispan<a class="headerlink" href="#infinispan" title="Permanent link">&para;</a></h3>
-<p>セッションデータを保管する。</p>
-<p><br></p>
-<h3 id="rdbms">RDBMS<a class="headerlink" href="#rdbms" title="Permanent link">&para;</a></h3>
-<p>認証情報を保管する。</p>
-<p><br></p>
-<h3 id="_3">クラスタリング<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>JGroupsパッケージを使用してインスタンス間でレプリケーション通信 (例：TCP、UDP) を実施し、Infinispan間でセッションデータを同期する。</p>
+<p>Keycloakからセッションデータを取得し、DBに永続化する。</p>
+<p>Infinispanは、クラスタリング構成になっている。</p>
+<p>Infinispanクラスターでは、JGroupsパッケージを使用してインスタンス間でレプリケーション通信 (例：TCP、UDP) を実施し、Infinispanのインスタンス間でセッションデータを同期する。</p>
 <p><img alt="keycloak_clustering" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_clustering.png" /></p>
 <blockquote>
 <ul>
@@ -25232,6 +25231,9 @@
 <li><a href="https://qiita.com/yo-tabata/items/6d29795fc3afa72d1b08#keycloakx%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E9%96%93%E9%80%9A%E4%BF%A1%E3%82%92tcp%E3%81%AB%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B">https://qiita.com/yo-tabata/items/6d29795fc3afa72d1b08#keycloakx%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E9%96%93%E9%80%9A%E4%BF%A1%E3%82%92tcp%E3%81%AB%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="rdbms">RDBMS<a class="headerlink" href="#rdbms" title="Permanent link">&para;</a></h3>
+<p>セッションデータを保管する。</p>
 <p><br></p>
 <h2 id="02">02. 認証認可<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="realm">Realm<a class="headerlink" href="#realm" title="Permanent link">&para;</a></h3>
