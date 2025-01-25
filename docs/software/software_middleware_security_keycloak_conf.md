@@ -21,7 +21,14 @@ Keycloakでは、コマンドオプション、環境変数、`keycloak.conf`フ
 
 <br>
 
-## 02. 環境変数
+## 02. keycloak.conf
+
+記入中...
+
+<br>
+
+
+## 03. 環境変数
 
 ### Bootstrap Admin
 
@@ -88,8 +95,3 @@ Keycloakでは、コマンドオプション、環境変数、`keycloak.conf`フ
 
 <br>
 
-## 02. conf
-
-記入中...
-
-<br>
