@@ -38,7 +38,7 @@ Keycloakは、認証処理サービス、Infinispan、アカウント管理用�
 
 ### Infinispan
 
-キャッシュを保管する。
+セッションデータを保管する。
 
 <br>
 
@@ -50,7 +50,7 @@ Keycloakは、認証処理サービス、Infinispan、アカウント管理用�
 
 ### クラスタリング
 
-JGroupsパッケージを使用して、インスタンス間でレプリケーション通信を実施し、セッションデータを同期する。
+JGroupsパッケージを使用してインスタンス間でレプリケーション通信 (例：TCP、UDP) を実施し、Infinispan間でセッションデータを同期する。
 
 ![keycloak_clustering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_clustering.png)
 
