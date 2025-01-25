@@ -24415,6 +24415,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#java_opts_append" class="md-nav__link">
+    <span class="md-ellipsis">
+      JAVA_OPTS_APPEND
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -24488,17 +24497,11 @@ description=設定ファイル＠Keycloakの知見を記録しています。</p
 <td><code>password</code></td>
 <td>Keycloakのルートユーザーのパスワードを設定する。</td>
 </tr>
-<tr>
-<td><code>PROXY_ADDRESS_FORWARDING</code></td>
-<td><code>true</code></td>
-<td>Keycloakの前段にリバースプロキシ (サイドカーも含む) がある場合に<code>true</code>とする。</td>
-</tr>
 </tbody>
 </table>
 <blockquote>
 <ul>
 <li><a href="https://www.keycloak.org/server/all-config#category-bootstrap_admin">https://www.keycloak.org/server/all-config#category-bootstrap_admin</a></li>
-<li><a href="https://blog.linkode.co.jp/entry/2021/06/23/061829#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AB-PROXY_ADDRESS_FORWARDINGtrue-%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B">https://blog.linkode.co.jp/entry/2021/06/23/061829#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AB-PROXY_ADDRESS_FORWARDINGtrue-%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -24588,6 +24591,35 @@ description=設定ファイル＠Keycloakの知見を記録しています。</p
 <blockquote>
 <ul>
 <li><a href="https://www.keycloak.org/server/all-config#category-logging">https://www.keycloak.org/server/all-config#category-logging</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="java_opts_append">JAVA_OPTS_APPEND<a class="headerlink" href="#java_opts_append" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>変数</th>
+<th>値の例</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-Djgroups.dns.query</code></td>
+<td><code>keycloak-headless.keycloak.svc.cluster.local</code></td>
+<td>Keycloakクラスターのインスタンスを返却するDNSを設定する。</td>
+</tr>
+<tr>
+<td><code>-Djava.net.preferIPv4Stack</code></td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://www.keycloak.org/server/configuration-production">https://www.keycloak.org/server/configuration-production</a></li>
+<li><a href="https://docs.redhat.com/en/documentation/red_hat_data_grid/8.0/html/configuring_data_grid/cluster_transport#jgroups_system_props-configuring">https://docs.redhat.com/en/documentation/red_hat_data_grid/8.0/html/configuring_data_grid/cluster_transport#jgroups_system_props-configuring</a></li>
 </ul>
 </blockquote>
 <p><br></p>
