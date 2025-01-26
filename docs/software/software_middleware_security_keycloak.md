@@ -155,7 +155,7 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
   "end_session_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/logout",
   "frontchannel_logout_session_supported": true,
   "frontchannel_logout_supported": true,
-  # JWTの署名を検証するための公開鍵
+  # JWKsエンドポイント
   "jwks_uri": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/certs",
   "check_session_iframe": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/login-status-iframe.html",
   "registration_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/clients-registrations/openid-connect",
@@ -233,9 +233,9 @@ JWTの発行元認証局を取得できる。
 
 > - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
 
-#### ▼ 公開鍵エンドポイント
+#### ▼ 公開鍵エンドポイント (JWKsエンドポイント)
 
-認証が失効していないか、また不正でないかを検証できる。
+アクセストークンが署名されたものかどうかを検証する。
 
 ```bash
 /realms/<realm名>/protocol/openid-connect/certs
@@ -245,7 +245,9 @@ JWTの発行元認証局を取得できる。
 
 #### ▼ イントロスペクションエンドポイント
 
-アクセストークンの有効性を検証する。
+署名されたアクセストークンの有効期限が失効しているかどうかを検証する。
+
+(JWsKエンドポイントとの違いがわからない)
 
 ```bash
 /realms/<realm名>/protocol/openid-connect/token/introspect
