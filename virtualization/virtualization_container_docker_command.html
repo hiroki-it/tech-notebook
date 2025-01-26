@@ -15255,6 +15255,24 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#buildx_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ buildxとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bake" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ bake
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#build_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ build
@@ -25253,6 +25271,24 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#buildx_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ buildxとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bake" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ bake
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#build_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ build
@@ -25953,11 +25989,31 @@ $<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </s
 </blockquote>
 <p><br></p>
 <h3 id="buildx">buildx<a class="headerlink" href="#buildx" title="Permanent link">&para;</a></h3>
+<h4 id="buildx_1">▼ buildxとは<a class="headerlink" href="#buildx_1" title="Permanent link">&para;</a></h4>
+<p><code>docker build</code>コマンドを拡張する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/docker/buildx">https://github.com/docker/buildx</a></li>
+</ul>
+</blockquote>
+<h4 id="bake">▼ bake<a class="headerlink" href="#bake" title="Permanent link">&para;</a></h4>
+<p>複数のコンテナイメージを並列的にビルドする。</p>
+<p><code>--push</code>オプションで、ビルド後にコンテナレジストリにプッシュできる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>bake<span class="w"> </span>--push
+</code></pre></div>
 <h4 id="build_1">▼ build<a class="headerlink" href="#build_1" title="Permanent link">&para;</a></h4>
-<p>マルチCPUアーキテクチャに対応するコンテナイメージをビルドする。</p>
-<p><code>--push</code>オプションでコンテナレジストリにプッシュできる。</p>
+<p>コンテナイメージをビルドする。</p>
+<p><code>--push</code>オプションで、ビルド後にコンテナレジストリにプッシュできる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>build<span class="w"> </span>--push
 </code></pre></div>
+<p><code>--platform</code>オプションで、任意のCPUアーキテクチャーに対応するコンテナイメージをビルドできる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>build<span class="w"> </span>--platform<span class="w"> </span>linux/amd64
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.docker.com/reference/cli/docker/buildx/build/">https://docs.docker.com/reference/cli/docker/buildx/build/</a></li>
+</ul>
+</blockquote>
 <h4 id="create">▼ create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h4>
 <p>ビルダーインスタンスを起動する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>foo-instance
