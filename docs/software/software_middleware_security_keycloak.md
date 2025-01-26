@@ -237,6 +237,8 @@ JWTの発行元認証局を取得できる。
 
 アクセストークンが署名されたものかどうかを検証する。
 
+(イントロスペクションエンドポイントとの違いがややこしい)
+
 ```bash
 /realms/<realm名>/protocol/openid-connect/certs
 ```
@@ -247,7 +249,7 @@ JWTの発行元認証局を取得できる。
 
 署名されたアクセストークンの有効期限が失効しているかどうかを検証する。
 
-(JWsKエンドポイントとの違いがわからない)
+(JWKsエンドポイントとの違いがややこしい)
 
 ```bash
 /realms/<realm名>/protocol/openid-connect/token/introspect

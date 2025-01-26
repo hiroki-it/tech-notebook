@@ -171,3 +171,29 @@ if __name__ == '__main__':
 > - https://serip39.hatenablog.com/entry/2020/07/06/070000
 
 <br>
+
+## 04. パッケージ
+
+### flask-oidc
+
+#### ▼ client_secrets.json
+
+```yaml
+{
+  "web":
+    {
+      "issuer": "http://localhost:8081/auth/realms/pysaar",
+      "auth_uri": "http://localhost:8081/auth/realms/pysaar/protocol/openid-connect/auth",
+      "client_id": "flask-app",
+      "client_secret": "a41060dd-b5a8-472e-a91f-6a3ab0e04714",
+      "redirect_uris": ["http://localhost:5000/*"],
+      "userinfo_uri": "http://localhost:8081/auth/realms/pysaar/protocol/openid-connect/userinfo",
+      "token_uri": "http://localhost:8081/auth/realms/pysaar/protocol/openid-connect/token",
+      "token_introspection_uri": "http://localhost:8081/auth/realms/pysaar/protocol/openid-connect/token/introspect",
+    },
+}
+```
+
+> - https://gist.github.com/thomasdarimont/145dc9aa857b831ff2eff221b79d179a#file-client_secrets-json
+
+<br>
