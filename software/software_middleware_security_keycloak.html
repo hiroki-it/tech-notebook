@@ -5638,16 +5638,16 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#jwks" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 公開鍵エンドポイント
+      ▼ 公開鍵エンドポイント (JWKsエンドポイント)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ イントロスペクションエンドポイント
     </span>
@@ -5676,7 +5676,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       バックチャネル
     </span>
@@ -5695,7 +5695,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ アプリケーションへのリクエスト
     </span>
@@ -5718,7 +5718,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       フロントチャネル
     </span>
@@ -25094,16 +25094,16 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#jwks" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 公開鍵エンドポイント
+      ▼ 公開鍵エンドポイント (JWKsエンドポイント)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ イントロスペクションエンドポイント
     </span>
@@ -25132,7 +25132,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       バックチャネル
     </span>
@@ -25151,7 +25151,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ アプリケーションへのリクエスト
     </span>
@@ -25174,7 +25174,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       フロントチャネル
     </span>
@@ -25342,7 +25342,7 @@
 <span class="w">  </span><span class="s2">&quot;end_session_endpoint&quot;</span>:<span class="w"> </span><span class="s2">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/logout&quot;</span>,
 <span class="w">  </span><span class="s2">&quot;frontchannel_logout_session_supported&quot;</span>:<span class="w"> </span>true,
 <span class="w">  </span><span class="s2">&quot;frontchannel_logout_supported&quot;</span>:<span class="w"> </span>true,
-<span class="w">  </span><span class="c1"># JWTの署名を検証するための公開鍵</span>
+<span class="w">  </span><span class="c1"># JWKsエンドポイント</span>
 <span class="w">  </span><span class="s2">&quot;jwks_uri&quot;</span>:<span class="w"> </span><span class="s2">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/certs&quot;</span>,
 <span class="w">  </span><span class="s2">&quot;check_session_iframe&quot;</span>:<span class="w"> </span><span class="s2">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/login-status-iframe.html&quot;</span>,
 <span class="w">  </span><span class="s2">&quot;registration_endpoint&quot;</span>:<span class="w"> </span><span class="s2">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/clients-registrations/openid-connect&quot;</span>,
@@ -25409,8 +25409,8 @@
 <li><a href="https://www.keycloak.org/securing-apps/oidc-layers#_endpoints">https://www.keycloak.org/securing-apps/oidc-layers#_endpoints</a></li>
 </ul>
 </blockquote>
-<h4 id="_15">▼ 公開鍵エンドポイント<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>認証が失効していないか、また不正でないかを検証できる。</p>
+<h4 id="jwks">▼ 公開鍵エンドポイント (JWKsエンドポイント)<a class="headerlink" href="#jwks" title="Permanent link">&para;</a></h4>
+<p>アクセストークンが署名されたものかどうかを検証する。</p>
 <div class="highlight"><pre><span></span><code>/realms/&lt;realm名&gt;/protocol/openid-connect/certs
 </code></pre></div>
 <blockquote>
@@ -25418,8 +25418,9 @@
 <li><a href="https://www.keycloak.org/securing-apps/oidc-layers#_endpoints">https://www.keycloak.org/securing-apps/oidc-layers#_endpoints</a></li>
 </ul>
 </blockquote>
-<h4 id="_16">▼ イントロスペクションエンドポイント<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>アクセストークンの有効性を検証する。</p>
+<h4 id="_15">▼ イントロスペクションエンドポイント<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>署名されたアクセストークンの有効期限が失効しているかどうかを検証する。</p>
+<p>(JWsKエンドポイントとの違いがわからない)</p>
 <div class="highlight"><pre><span></span><code>/realms/&lt;realm名&gt;/protocol/openid-connect/token/introspect
 </code></pre></div>
 <blockquote>
@@ -25429,7 +25430,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="04-slo">04. SLO：シングルログアウト<a class="headerlink" href="#04-slo" title="Permanent link">&para;</a></h2>
-<h3 id="_17">バックチャネル<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h3 id="_16">バックチャネル<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="id">▼ IDプロバイダーへのリクエスト<a class="headerlink" href="#id" title="Permanent link">&para;</a></h4>
 <p>アプリケーションは、IDプロバイダーのログアウトエンドポイント (<code>/logout</code>) にPOSTリクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># リクエスト</span>
@@ -25470,7 +25471,7 @@
 <li><a href="https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6</a></li>
 </ul>
 </blockquote>
-<h4 id="_18">▼ アプリケーションへのリクエスト<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<h4 id="_17">▼ アプリケーションへのリクエスト<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>IDプロバイダーは、バックエンドアプリケーションのバックチャネルログアウトエンドポイント (<code>/k_logout</code>) にPOSTリクエストを送信する。</p>
 <p>全てのアプリケーションに対して、この処理を繰り返す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># リクエスト</span>
@@ -25515,7 +25516,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_19">フロントチャネル<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<h3 id="_18">フロントチャネル<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <h4 id="id_2">▼ IDプロバイダーへのリクエスト<a class="headerlink" href="#id_2" title="Permanent link">&para;</a></h4>
 <p>ブラウザは、IDプロバイダーのログアウトエンドポイント (<code>/logout</code>) にGETリクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># リクエスト</span>
