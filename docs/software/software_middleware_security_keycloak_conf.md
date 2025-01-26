@@ -63,6 +63,16 @@ Keycloakでは、コマンドオプション、環境変数、`keycloak.conf`フ
 
 <br>
 
+### HTTP
+
+| 変数                    | 値の例 | 説明                                                   |
+| ----------------------- | ------ | ------------------------------------------------------ |
+| `KC_HTTP_RELATIVE_PATH` | `/`    | Keycloakの認証エンドポイントのプレフィクスを設定する。 |
+
+> - https://www.keycloak.org/server/all-config#category-http
+
+<br>
+
 ### Hostname
 
 | 変数          | 値の例      | 説明                                         |
@@ -218,8 +228,7 @@ Realmをインポートすることにより、設定を宣言的に定義でき
           },
         ],
     },
-  "clients":
-    [
+  "clients": [
       {
         "id": "8374c3ae-b8e1-4857-8ac6-bcb5511349ed",
         "clientId": "account",
@@ -488,6 +497,7 @@ Realmをインポートすることにより、設定を宣言的に定義でき
       },
       {
         "id": "033f1115-baf8-4ca6-87b4-5d2938bcc665",
+        # クライアントID
         "clientId": "service",
         "name": "service",
         "description": "",
@@ -498,9 +508,11 @@ Realmをインポートすることにより、設定を宣言的に定義でき
         "enabled": true,
         "alwaysDisplayInConsole": false,
         "clientAuthenticatorType": "client-secret",
+        # クライアントシークレット
         "secret": "ZQBzxI5CU36UiQmrWtDbJkY3VOX5LJRY",
-        "redirectUris":
-          [
+        ? コールバックURL
+          "redirectUris"
+        : [
             "http://keycloak-http.keycloak.svc.cluster.local:9080/authentication/callback",
           ],
         "webOrigins": ["http://keycloak-http.keycloak.svc.cluster.local:9080"],

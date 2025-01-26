@@ -443,6 +443,8 @@ $ crane copy nginx:<バージョン> *****.dkr.ecr.ap-northeast-1.amazonaws.com/
 
 ### CPUアーキテクチャの指定
 
+#### ▼ CPUアーキテクチャの指定
+
 イメージの対応するCPUアーキテクチャ (例：Intel、AMD、ARM) を設定する。
 
 ただし、DockerがホストのOSを認識して、自動的に選んでくれるため、ユーザーが設定する必要はない。
@@ -452,6 +454,38 @@ FROM --platform=linux/amd64 python:latest-slim
 ```
 
 > - https://stackoverflow.com/questions/60251383/dockerfile-from-platform-option
+
+#### ▼ マルチCPUアーキテクチャへの対応
+
+`docker buildx`コマンド時に、`Multi-platform build is not supported for the docker driver.`というエラーになることがある。
+
+これのために、マルチCPUアーキテクチャをビルドする実行環境を構築する必要がある。
+
+1. ビルダーインスタンスを起動する。
+
+```bash
+$ docker buildx create --name foo-instance
+```
+
+2. ビルダーインスタンスの使用を宣言する。
+
+```bash
+$ docker buildx use foo-instance
+```
+
+3. ビルダーインスタンスを起動する。
+
+```bash
+$ docker buildx inspect --bootstrap
+```
+
+4. `docker buildx`コマンドを実行する。
+
+```bash
+$ docker buildx build --platform linux/amd64,linux/arm64 -t :latest . --push
+```
+
+> - https://qiita.com/SuyamaDaichi/items/cadc31df50fd42689661
 
 <br>
 
