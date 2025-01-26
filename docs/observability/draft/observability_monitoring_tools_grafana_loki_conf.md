@@ -17,6 +17,8 @@ description: 設定ファイル＠Grafana Lokiの知見を記録しています�
 
 ### auth_enabled
 
+GrafanaからGrafana Lokiへの接続で認証を必要にする。
+
 ```yaml
 auth_enabled: false
 ```
@@ -69,15 +71,38 @@ chunk_store_config:
 
 ### common
 
+#### ▼ compactor_address
+
 ```yaml
 common:
   compactor_address: http://grafana-loki:3100
+```
+
+#### ▼ path_prefix
+
+```yaml
+common:
   path_prefix: /var/loki
+```
+
+#### ▼ replication_factor
+
+```yaml
+common:
   replication_factor: 1
+```
+
+#### ▼ storage
+
+ログの保管ストレージを設定する。
+
+```yaml
+common:
   storage:
     s3:
       access_key_id: root
       bucketnames: grafana-loki-chunks
+      # MinIOを使用する場合
       endpoint: minio.istio-system.svc.cluster.local:9000
       insecure: true
       s3forcepathstyle: true
@@ -149,11 +174,37 @@ pattern_ingester:
 
 ### query_range
 
+#### ▼ align_queries_with_step
+
 ```yaml
 query_range:
   align_queries_with_step: true
+```
+
+#### ▼ cache_results
+
+```yaml
+query_range:
   cache_results: true
+```
+
+#### ▼ parallelise_shardable_queries
+
+クエリ処理を並列化する。
+
+Grafana Lokiで`context canceled`エラーが出る場合、こちらを無効化すると良い。
+
+```yaml
+query_range:
   parallelise_shardable_queries: false
+```
+
+> - https://github.com/grafana/loki/issues/7649#issuecomment-1625645403
+
+#### ▼ results_cache
+
+```yaml
+query_range:
   results_cache:
     cache:
       background:
