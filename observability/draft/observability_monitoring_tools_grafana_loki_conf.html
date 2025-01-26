@@ -24436,6 +24436,48 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="common">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compactor_address" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ compactor_address
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path_prefix" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ path_prefix
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replication_factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ replication_factor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ storage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -24498,6 +24540,48 @@
       query_range
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="query_range">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#align_queries_with_step" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ align_queries_with_step
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache_results" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ cache_results
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallelise_shardable_queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ parallelise_shardable_queries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results_cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ results_cache
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -24589,6 +24673,7 @@
 <p><br></p>
 <h2 id="01-configyaml">01. config.yaml<a class="headerlink" href="#01-configyaml" title="Permanent link">&para;</a></h2>
 <h3 id="auth_enabled">auth_enabled<a class="headerlink" href="#auth_enabled" title="Permanent link">&para;</a></h3>
+<p>GrafanaからGrafana Lokiへの接続で認証を必要にする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">auth_enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 <p><br></p>
@@ -24625,14 +24710,26 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="common">common<a class="headerlink" href="#common" title="Permanent link">&para;</a></h3>
+<h4 id="compactor_address">▼ compactor_address<a class="headerlink" href="#compactor_address" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">common</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">compactor_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://grafana-loki:3100</span>
+</code></pre></div>
+<h4 id="path_prefix">▼ path_prefix<a class="headerlink" href="#path_prefix" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">common</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">path_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/loki</span>
+</code></pre></div>
+<h4 id="replication_factor">▼ replication_factor<a class="headerlink" href="#replication_factor" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">common</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">replication_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
+<h4 id="storage">▼ storage<a class="headerlink" href="#storage" title="Permanent link">&para;</a></h4>
+<p>ログの保管ストレージを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">common</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">storage</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">s3</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">access_key_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
 <span class="w">      </span><span class="nt">bucketnames</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana-loki-chunks</span>
+<span class="w">      </span><span class="c1"># MinIOを使用する場合</span>
 <span class="w">      </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">minio.istio-system.svc.cluster.local:9000</span>
 <span class="w">      </span><span class="nt">insecure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">      </span><span class="nt">s3forcepathstyle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -24677,10 +24774,27 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="query_range">query_range<a class="headerlink" href="#query_range" title="Permanent link">&para;</a></h3>
+<h4 id="align_queries_with_step">▼ align_queries_with_step<a class="headerlink" href="#align_queries_with_step" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">query_range</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">align_queries_with_step</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<h4 id="cache_results">▼ cache_results<a class="headerlink" href="#cache_results" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">query_range</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">cache_results</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<h4 id="parallelise_shardable_queries">▼ parallelise_shardable_queries<a class="headerlink" href="#parallelise_shardable_queries" title="Permanent link">&para;</a></h4>
+<p>クエリ処理を並列化する。</p>
+<p>Grafana Lokiで<code>context canceled</code>エラーが出る場合、こちらを無効化すると良い。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">query_range</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">parallelise_shardable_queries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/grafana/loki/issues/7649#issuecomment-1625645403">https://github.com/grafana/loki/issues/7649#issuecomment-1625645403</a></li>
+</ul>
+</blockquote>
+<h4 id="results_cache">▼ results_cache<a class="headerlink" href="#results_cache" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">query_range</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">results_cache</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">cache</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">background</span><span class="p">:</span>
