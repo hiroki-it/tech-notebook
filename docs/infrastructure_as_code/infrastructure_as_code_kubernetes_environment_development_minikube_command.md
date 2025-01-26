@@ -179,7 +179,7 @@ Minikubeのコンポーネントを削除する。
 #### ▼ --profile
 
 ```bash
-$ minikube delete --profile foo-cluster
+$ minikube delete --profile foo
 ```
 
 #### ▼ all --purge
@@ -808,13 +808,25 @@ nginx-deployment-*****   1/1     Running   0          16m   10.244.1.2   minikub
 
 MinikubeのClusterに名前をつける。
 
+Nodeのプレフィクスにもなる。
+
 Minikubeを使用してマルチClusterを再現できる。
 
 ```bash
-$ minikube start --profile foo-cluster
+$ minikube start --profile foo
 
-$ kubectl config use-context foo-cluster
-Switched to context "foo-cluster".
+$ kubectl config use-context foo
+Switched to context "foo".
+
+$ kubectl get nodes
+
+NAME      STATUS   ROLES           AGE   VERSION
+foo       Ready    control-plane   13d   v1.32.0
+foo-m02   Ready    worker          13d   v1.32.0
+foo-m03   Ready    worker          13d   v1.32.0
+foo-m04   Ready    worker          13d   v1.32.0
+foo-m05   Ready    worker          13d   v1.32.0
+foo-m06   Ready    worker          13d   v1.32.0
 ```
 
 <br>
