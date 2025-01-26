@@ -290,7 +290,9 @@ docker@minikube:~$ cat /etc/cni/net.d/100-crio-bridge.conf
 
 ### Minikube外のdockerネットワークに接続
 
-Minikubeでdockerドライバーを使用した場合、`minikube`というdockerネットワークが作成される。
+Minikubeは、dockerドライバーを使用した場合、デフォルトで`minikube`というdockerネットワークが作成する。
+
+プロファイル名を指定した場合、その名前のネットワークになる。
 
 ```bash
 $ docker network ls
@@ -312,6 +314,7 @@ services:
   database:
     container_name: mysql
     networks:
+      # Minikubeのプロファイル名によって、ネットワーク名は異なる (デフォルトは minikube)
       - minikube
 
 networks:

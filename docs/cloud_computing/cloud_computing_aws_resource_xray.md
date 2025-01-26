@@ -442,7 +442,7 @@ W3C Trace Context仕様のスパンのIDに相当する。
 {
   "sql":
     {
-      "url": "jdbc:postgresql://aawijb5u25wdoy.cpamxznpdoq8.us-west-2.rds.amazonaws.com:5432/ebdb",
+      "url": "jdbc:postgresql://<ホスト名>:5432/<データベース名>",
       "preparation": "statement",
       "database_type": "PostgreSQL",
       "database_version": "9.5.4",

@@ -808,9 +808,12 @@ nginx-deployment-*****   1/1     Running   0          16m   10.244.1.2   minikub
 
 MinikubeのClusterに名前をつける。
 
-Nodeのプレフィクスにもなる。
-
 Minikubeを使用してマルチClusterを再現できる。
+
+Cluster名以外にも、例えば以下に影響する。
+
+- Nodeのプレフィクス
+- Dockerのネットワーク名
 
 ```bash
 $ minikube start --profile foo
