@@ -16081,6 +16081,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="CPUアーキテクチャの指定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ CPUアーキテクチャの指定
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ マルチCPUアーキテクチャへの対応
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -25384,6 +25408,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="CPUアーキテクチャの指定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ CPUアーキテクチャの指定
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ マルチCPUアーキテクチャへの対応
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -25807,6 +25855,7 @@ $<span class="w"> </span>crane<span class="w"> </span>copy<span class="w"> </spa
 <p><code>crane auth</code>コマンドを簡略化したコマンド</p>
 <p><br></p>
 <h3 id="cpu">CPUアーキテクチャの指定<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h3>
+<h4 id="cpu_1">▼ CPUアーキテクチャの指定<a class="headerlink" href="#cpu_1" title="Permanent link">&para;</a></h4>
 <p>イメージの対応するCPUアーキテクチャ (例：Intel、AMD、ARM) を設定する。</p>
 <p>ただし、DockerがホストのOSを認識して、自動的に選んでくれるため、ユーザーが設定する必要はない。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">--platform=linux/amd64</span><span class="w"> </span>python:latest-slim
@@ -25814,6 +25863,34 @@ $<span class="w"> </span>crane<span class="w"> </span>copy<span class="w"> </spa
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/questions/60251383/dockerfile-from-platform-option">https://stackoverflow.com/questions/60251383/dockerfile-from-platform-option</a></li>
+</ul>
+</blockquote>
+<h4 id="cpu_2">▼ マルチCPUアーキテクチャへの対応<a class="headerlink" href="#cpu_2" title="Permanent link">&para;</a></h4>
+<p><code>docker buildx</code>コマンド時に、<code>Multi-platform build is not supported for the docker driver.</code>というエラーになることがある。</p>
+<p>これのために、マルチCPUアーキテクチャをビルドする実行環境を構築する必要がある。</p>
+<ol>
+<li>ビルダーインスタンスを起動する。</li>
+</ol>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>foo-instance
+</code></pre></div>
+<ol>
+<li>ビルダーインスタンスの使用を宣言する。</li>
+</ol>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>use<span class="w"> </span>foo-instance
+</code></pre></div>
+<ol>
+<li>ビルダーインスタンスを起動する。</li>
+</ol>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>inspect<span class="w"> </span>--bootstrap
+</code></pre></div>
+<ol>
+<li><code>docker buildx</code>コマンドを実行する。</li>
+</ol>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>build<span class="w"> </span>--platform<span class="w"> </span>linux/amd64,linux/arm64<span class="w"> </span>-t<span class="w"> </span>:latest<span class="w"> </span>.<span class="w"> </span>--push
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/SuyamaDaichi/items/cadc31df50fd42689661">https://qiita.com/SuyamaDaichi/items/cadc31df50fd42689661</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -25866,7 +25943,7 @@ $<span class="w"> </span>crane<span class="w"> </span>copy<span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-27</span>
   </span>
 
     

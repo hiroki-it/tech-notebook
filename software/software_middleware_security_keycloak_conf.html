@@ -5448,6 +5448,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#hostname" class="md-nav__link">
     <span class="md-ellipsis">
       Hostname
@@ -24595,6 +24604,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#hostname" class="md-nav__link">
     <span class="md-ellipsis">
       Hostname
@@ -24765,6 +24783,29 @@
 <blockquote>
 <ul>
 <li><a href="https://www.keycloak.org/server/all-config#category-database">https://www.keycloak.org/server/all-config#category-database</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="http">HTTP<a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>変数</th>
+<th>値の例</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KC_HTTP_RELATIVE_PATH</code></td>
+<td><code>/</code></td>
+<td>Keycloakの認証エンドポイントのプレフィクスを設定する。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://www.keycloak.org/server/all-config#category-http">https://www.keycloak.org/server/all-config#category-http</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -24963,8 +25004,7 @@
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">        </span><span class="p p-Indicator">],</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;clients&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="p p-Indicator">[</span>
+<span class="w">  </span><span class="s">&quot;clients&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
 <span class="w">        </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;8374c3ae-b8e1-4857-8ac6-bcb5511349ed&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="s">&quot;clientId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;account&quot;</span><span class="p p-Indicator">,</span>
@@ -25233,6 +25273,7 @@
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
 <span class="w">        </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;033f1115-baf8-4ca6-87b4-5d2938bcc665&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="c1"># クライアントID</span>
 <span class="w">        </span><span class="s">&quot;clientId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;service&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;service&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="s">&quot;description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
@@ -25243,9 +25284,11 @@
 <span class="w">        </span><span class="s">&quot;enabled&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="s">&quot;alwaysDisplayInConsole&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="s">&quot;clientAuthenticatorType&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;client-secret&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="c1"># クライアントシークレット</span>
 <span class="w">        </span><span class="s">&quot;secret&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ZQBzxI5CU36UiQmrWtDbJkY3VOX5LJRY&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;redirectUris&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="p p-Indicator">[</span>
+<span class="w">        </span><span class="p p-Indicator">?</span><span class="w"> </span><span class="nv">コールバックURL</span>
+<span class="w">          </span><span class="nv">&quot;redirectUris&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">            </span><span class="s">&quot;http://keycloak-http.keycloak.svc.cluster.local:9080/authentication/callback&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">],</span>
 <span class="w">        </span><span class="s">&quot;webOrigins&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;http://keycloak-http.keycloak.svc.cluster.local:9080&quot;</span><span class="p p-Indicator">],</span>
