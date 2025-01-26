@@ -17,6 +17,10 @@ description: 設定ファイル＠Promtailの知見を記録しています。
 
 ### clients
 
+Promtailのログの送信先を設定する。
+
+Grafana Lokiの場合、`/loki/api/v1/push`パスを設定する。
+
 ```yaml
 clients:
   - url: http://grafana-loki.istio-system.svc.cluster.local:3100/loki/api/v1/push
