@@ -10,13 +10,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="設定ファイル＠Promtailの知見を記録しています。">
+        <meta name="description" content="設定ファイル＠Grafana Lokiの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/observability/draft/observability_monitoring_tools_grafana_promtail_conf.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/observability/draft/observability_monitoring_tools_grafana_loki_conf.html">
       
       
       
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】設定ファイル＠Promtail - 俺の技術ノート</title>
+        <title>【IT技術の知見】設定ファイル＠Grafana Loki - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#promtail" class="md-skip">
+        <a href="#grafana-loki" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -150,7 +150,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】設定ファイル＠Promtail
+              【IT技術の知見】設定ファイル＠Grafana Loki
             
           </span>
         </div>
@@ -24384,19 +24384,82 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-promtailyaml" class="md-nav__link">
+  <a href="#01-configyaml" class="md-nav__link">
     <span class="md-ellipsis">
-      01. promtail.yaml
+      01. config.yaml
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. promtail.yaml">
+    <nav class="md-nav" aria-label="01. config.yaml">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#clients" class="md-nav__link">
+  <a href="#auth_enabled" class="md-nav__link">
     <span class="md-ellipsis">
-      clients
+      auth_enabled
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloom_build" class="md-nav__link">
+    <span class="md-ellipsis">
+      bloom_build
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloom_gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      bloom_gateway
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chunk_store_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      chunk_store_config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common" class="md-nav__link">
+    <span class="md-ellipsis">
+      common
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      frontend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontend_worker" class="md-nav__link">
+    <span class="md-ellipsis">
+      frontend_worker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index_gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      index_gateway
     </span>
   </a>
   
@@ -24412,18 +24475,54 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#positions" class="md-nav__link">
+  <a href="#memberlist" class="md-nav__link">
     <span class="md-ellipsis">
-      positions
+      memberlist
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#scrape_configs" class="md-nav__link">
+  <a href="#pattern_ingester" class="md-nav__link">
     <span class="md-ellipsis">
-      scrape_configs
+      pattern_ingester
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query_range" class="md-nav__link">
+    <span class="md-ellipsis">
+      query_range
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ruler" class="md-nav__link">
+    <span class="md-ellipsis">
+      ruler
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      runtime_config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schema_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      schema_config
     </span>
   </a>
   
@@ -24433,6 +24532,15 @@
   <a href="#server" class="md-nav__link">
     <span class="md-ellipsis">
       server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      storage_config
     </span>
   </a>
   
@@ -24470,7 +24578,7 @@
   
 
 
-<h1 id="promtail">設定ファイル＠Promtail<a class="headerlink" href="#promtail" title="Permanent link">&para;</a></h1>
+<h1 id="grafana-loki">設定ファイル＠Grafana Loki<a class="headerlink" href="#grafana-loki" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -24479,102 +24587,168 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-promtailyaml">01. promtail.yaml<a class="headerlink" href="#01-promtailyaml" title="Permanent link">&para;</a></h2>
-<h3 id="clients">clients<a class="headerlink" href="#clients" title="Permanent link">&para;</a></h3>
-<p>Promtailのログの送信先を設定する。</p>
-<p>Grafana Lokiの場合、<code>/loki/api/v1/push</code>パスを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">clients</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://grafana-loki.istio-system.svc.cluster.local:3100/loki/api/v1/push</span>
+<h2 id="01-configyaml">01. config.yaml<a class="headerlink" href="#01-configyaml" title="Permanent link">&para;</a></h2>
+<h3 id="auth_enabled">auth_enabled<a class="headerlink" href="#auth_enabled" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">auth_enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="bloom_build">bloom_build<a class="headerlink" href="#bloom_build" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">bloom_build</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">builder</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">planner_address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="bloom_gateway">bloom_gateway<a class="headerlink" href="#bloom_gateway" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">bloom_gateway</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">client</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">addresses</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="chunk_store_config">chunk_store_config<a class="headerlink" href="#chunk_store_config" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">chunk_store_config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">chunk_cache_config</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">background</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">writeback_buffer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500000</span>
+<span class="w">      </span><span class="nt">writeback_goroutines</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="nt">writeback_size_limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500MB</span>
+<span class="w">    </span><span class="nt">default_validity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0s</span>
+<span class="w">    </span><span class="nt">memcached</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">batch_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">      </span><span class="nt">parallelism</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">    </span><span class="nt">memcached_client</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">addresses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dnssrvnoa+_memcached-client._tcp.grafana-loki-chunks-cache.istio-system.svc</span>
+<span class="w">      </span><span class="nt">consistent_hash</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">max_idle_conns</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">72</span>
+<span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2000ms</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="common">common<a class="headerlink" href="#common" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">common</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">compactor_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://grafana-loki:3100</span>
+<span class="w">  </span><span class="nt">path_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/loki</span>
+<span class="w">  </span><span class="nt">replication_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">storage</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">s3</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">access_key_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">      </span><span class="nt">bucketnames</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana-loki-chunks</span>
+<span class="w">      </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">minio.istio-system.svc.cluster.local:9000</span>
+<span class="w">      </span><span class="nt">insecure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">s3forcepathstyle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">secret_access_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="frontend">frontend<a class="headerlink" href="#frontend" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">frontend</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">scheduler_address</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">tail_proxy_url</span><span class="p">:</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="frontend_worker">frontend_worker<a class="headerlink" href="#frontend_worker" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">frontend_worker</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">scheduler_address</span><span class="p">:</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="index_gateway">index_gateway<a class="headerlink" href="#index_gateway" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">index_gateway</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">simple</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="limits_config">limits_config<a class="headerlink" href="#limits_config" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">limits_config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+<div class="highlight"><pre><span></span><code><span class="nt">limits_config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">max_cache_freshness_per_query</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10m</span>
+<span class="w">  </span><span class="nt">query_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300s</span>
+<span class="w">  </span><span class="nt">reject_old_samples</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">reject_old_samples_max_age</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">168h</span>
+<span class="w">  </span><span class="nt">split_queries_by_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15m</span>
+<span class="w">  </span><span class="nt">volume_enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="positions">positions<a class="headerlink" href="#positions" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">positions</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/run/promtail/positions.yaml</span>
+<h3 id="memberlist">memberlist<a class="headerlink" href="#memberlist" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">memberlist</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">join_members</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loki-memberlist</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="scrape_configs">scrape_configs<a class="headerlink" href="#scrape_configs" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">scrape_configs</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes-pods</span>
-<span class="w">    </span><span class="nt">kubernetes_sd_configs</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pod</span>
-<span class="w">    </span><span class="nt">pipeline_stages</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">cri</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">relabel_configs</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace</span>
-<span class="w">        </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">([0-9a-z-.]+?)(-[0-9a-f]{8,10})?</span>
-<span class="w">        </span><span class="nt">source_labels</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_controller_name</span>
-<span class="w">        </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__tmp_controller_name</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace</span>
-<span class="w">        </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^;*([^;]+)(;.*)?$</span>
-<span class="w">        </span><span class="nt">source_labels</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_label_app_kubernetes_io_component</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_label_component</span>
-<span class="w">        </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">component</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace</span>
-<span class="w">        </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^;*([^;]+)(;.*)?$</span>
-<span class="w">        </span><span class="nt">source_labels</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_label_app_kubernetes_io_instance</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_label_instance</span>
-<span class="w">        </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instance</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace</span>
-<span class="w">        </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^;*([^;]+)(;.*)?$</span>
-<span class="w">        </span><span class="nt">source_labels</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_label_app_kubernetes_io_name</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_label_app</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_name</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__tmp_controller_name</span>
-<span class="w">        </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace</span>
-<span class="w">        </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true/(.*)</span>
-<span class="w">        </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/log/pods/*$1/*.log</span>
-<span class="w">        </span><span class="nt">separator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
-<span class="w">        </span><span class="nt">source_labels</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_annotation_kubernetes_io_config_hash</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_annotationpresent_kubernetes_io_config_hash</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_container_name</span>
-<span class="w">        </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__path__</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace</span>
-<span class="w">        </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/log/pods/*$1/*.log</span>
-<span class="w">        </span><span class="nt">separator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
-<span class="w">        </span><span class="nt">source_labels</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_container_name</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_uid</span>
-<span class="w">        </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__path__</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace</span>
-<span class="w">        </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$1</span>
-<span class="w">        </span><span class="nt">separator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
-<span class="w">        </span><span class="nt">source_labels</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace</span>
-<span class="w">        </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">job</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace</span>
-<span class="w">        </span><span class="nt">source_labels</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_namespace</span>
-<span class="w">        </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace</span>
-<span class="w">        </span><span class="nt">source_labels</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_container_name</span>
-<span class="w">        </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">container</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace</span>
-<span class="w">        </span><span class="nt">source_labels</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_name</span>
-<span class="w">        </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pod</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace</span>
-<span class="w">        </span><span class="nt">source_labels</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_node_name</span>
-<span class="w">        </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node_name</span>
+<h3 id="pattern_ingester">pattern_ingester<a class="headerlink" href="#pattern_ingester" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">pattern_ingester</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="query_range">query_range<a class="headerlink" href="#query_range" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">query_range</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">align_queries_with_step</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">cache_results</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">parallelise_shardable_queries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">results_cache</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cache</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">background</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">writeback_buffer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500000</span>
+<span class="w">        </span><span class="nt">writeback_goroutines</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">        </span><span class="nt">writeback_size_limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500MB</span>
+<span class="w">      </span><span class="nt">default_validity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12h</span>
+<span class="w">      </span><span class="nt">memcached_client</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">addresses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dnssrvnoa+_memcached-client._tcp.grafana-loki-results-cache.istio-system.svc</span>
+<span class="w">        </span><span class="nt">consistent_hash</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500ms</span>
+<span class="w">        </span><span class="nt">update_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1m</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="ruler">ruler<a class="headerlink" href="#ruler" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">ruler</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">storage</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">s3</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">access_key_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">      </span><span class="nt">bucketnames</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana-loki-ruler</span>
+<span class="w">      </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">minio.istio-system.svc.cluster.local:9000</span>
+<span class="w">      </span><span class="nt">insecure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">s3forcepathstyle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">secret_access_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s3</span>
+<span class="w">  </span><span class="nt">wal</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/loki/ruler-wal</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="runtime_config">runtime_config<a class="headerlink" href="#runtime_config" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">runtime_config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/loki/runtime-config/runtime-config.yaml</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="schema_config">schema_config<a class="headerlink" href="#schema_config" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">schema_config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">configs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2024-04-01</span>
+<span class="w">      </span><span class="nt">index</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">period</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24h</span>
+<span class="w">        </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index_</span>
+<span class="w">      </span><span class="nt">object_store</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filesystem</span>
+<span class="w">      </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v13</span>
+<span class="w">      </span><span class="nt">store</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tsdb</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="server">server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">server</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">http_listen_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3101</span>
-<span class="w">  </span><span class="nt">log_format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">logfmt</span>
-<span class="w">  </span><span class="nt">log_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">info</span>
+<span class="w">  </span><span class="nt">grpc_listen_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9095</span>
+<span class="w">  </span><span class="nt">http_listen_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3100</span>
+<span class="w">  </span><span class="nt">http_server_read_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">600s</span>
+<span class="w">  </span><span class="nt">http_server_write_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">600s</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="storage_config">storage_config<a class="headerlink" href="#storage_config" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">storage_config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">bloom_shipper</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">working_directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/loki/data/bloomshipper</span>
+<span class="w">  </span><span class="nt">boltdb_shipper</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">index_gateway_client</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">server_address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">  </span><span class="nt">hedging</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">at</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">250ms</span>
+<span class="w">    </span><span class="nt">max_per_second</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+<span class="w">    </span><span class="nt">up_to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">  </span><span class="nt">tsdb_shipper</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">index_gateway_client</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">server_address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="tracing">tracing<a class="headerlink" href="#tracing" title="Permanent link">&para;</a></h3>
