@@ -41,6 +41,18 @@ $ kc.sh start
 
 > - https://www.keycloak.org/server/configuration#_starting_keycloak
 
+#### ▼ --import-realm
+
+起動時に`/opt/keycloak/data/import`ディレクトリ内にあるrealm定義ファイル (`<任意の名前>.json`ファイル) をインポートする。
+
+コンテナであれば、`/opt/keycloak/data/import`ディレクトリ内にrealm定義ファイルをマウントしておく。
+
+```bash
+$ kc.sh start --import-realm
+```
+
+> - https://www.keycloak.org/server/importExport#_importing_a_realm_during_startup
+
 #### ▼ --optimized
 
 ```bash
