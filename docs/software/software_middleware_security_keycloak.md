@@ -155,6 +155,7 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
   "end_session_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/logout",
   "frontchannel_logout_session_supported": true,
   "frontchannel_logout_supported": true,
+  # JWTの署名を検証するための公開鍵
   "jwks_uri": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/certs",
   "check_session_iframe": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/login-status-iframe.html",
   "registration_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/clients-registrations/openid-connect",
