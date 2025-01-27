@@ -198,6 +198,8 @@ $ curl -d "grant_type=authorization_code&code=<認証コード>&redirect_uri=htt
 }
 ```
 
+> - https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow
+
 #### ▼ ユーザー情報の取得
 
 ```bash
@@ -211,6 +213,18 @@ $ curl -H "Authorization: Bearer <アクセストークン>" http://<Keycloakの
   "family_name": ""
 }
 ```
+
+> - https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow
+
+#### ▼ アクセストークンの再作成
+
+リフレッシュトークンを使用して、アクセストークンを再作成する。
+
+```bash
+$ curl -X POST -d "client_id=rp1&client_secret=<Client Secret>&grant_type=refresh_token&refresh_token=<リフレッシュトークン>&scope=openid profile" http://<Keycloakのドメイン>/realms/oidc-sample/protocol/openid-connect/token
+```
+
+> - https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow
 
 <br>
 
