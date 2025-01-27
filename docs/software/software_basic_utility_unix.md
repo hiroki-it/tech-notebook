@@ -820,6 +820,7 @@ $ echo $VAR
 ```bash
 # シェル変数を設定
 $ PATH=$PATH:<バイナリファイルへのあるディレクトリへの絶対パス>
+
 # 環境変数に追加
 $ export PATH
 ```
@@ -1896,6 +1897,12 @@ $ printenv
 
 ```bash
 $ printenv VAR
+```
+
+出力した環境変数をアルファベット順に並び替える。
+
+```bash
+$ printenv | sort -f
 ```
 
 <br>

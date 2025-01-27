@@ -530,15 +530,19 @@ $ echo 'eval "$(direnv hook bash)"' >> ~/.bash
 
 <br>
 
-### 設定ファイル
+### `.envrc`ファイル
 
-#### ▼ `.envrc`ファイル
+#### ▼ `.envrc`ファイルの作成
 
 `.env`ファイルの読み込み処理や`export`コマンドの実行は、`.envrc`ファイルに定義しておく。
 
+`set -a`コマンドを使用すると、`source`コマンドで読み込んだ変数を`set`コマンドで環境変数として出力するようにした
+
 ```bash
 # .envrcファイル
+set -a
 source .env
+set +a
 ```
 
 ```bash
@@ -552,6 +556,10 @@ export GIT_AUTHOR_NAME=$NAME
 export GIT_AUTHOR_EMAIL=$MAIL
 ```
 
+> - https://blog.nijohando.jp/post/direnv/
+
+#### ▼ `.envrc`ファイルの登録
+
 `.envrc`ファイルを登録する。
 
 ```bash
@@ -559,6 +567,14 @@ export GIT_AUTHOR_EMAIL=$MAIL
 $ direnv allow .
 ```
 
-> - https://blog.nijohando.jp/post/direnv/
+#### ▼ 確認
+
+実行環境に環境変数が出力されていることを確認できる。
+
+```bash
+$ printenv
+```
+
+> - https://note.com/shimakaze_soft/n/n53949cc818d1
 
 <br>
