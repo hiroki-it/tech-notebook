@@ -204,9 +204,11 @@ data:
 
 サービスメッシュ外へのリクエストの宛先の種類 (`PassthroughCluster`、`BlackHoleCluster`) を設定する。
 
-#### ▼ ALLOW_ANY
+#### ▼ ALLOW_ANY (デフォルト)
 
 サービスメッシュ外へのリクエストの宛先を、デフォルトで`PassthroughCluster`として扱う。
+
+また、ServiceEntryとして登録した宛先には固有の名前がつく。
 
 ```yaml
 apiVersion: v1
@@ -226,9 +228,11 @@ data:
 
 #### ▼ REGISTRY_ONLY
 
-サービスメッシュ外へのリクエストの宛先を、デフォルトで`BlackHoleCluster` (`502 Bad Gateway`) として扱う。
+サービスメッシュ外へのリクエストの宛先を、デフォルトで`BlackHoleCluster` (`502 Bad Gateway`で通信負荷) として扱う。
 
-`PassthroughCluster`として扱いたい宛先は、ServiceEntryに設定する。
+また、ServiceEntryとして登録した宛先には固有の名前がつく。
+
+サービスメッシュ外への通信のたびにServiceEntryを作成しなければならず、少しめんどくさくなる。
 
 ```yaml
 apiVersion: v1

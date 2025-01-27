@@ -154,6 +154,66 @@ OAuthの認可コードフローと仕組みが似ており、アクセストー
 
 <br>
 
+### Keycloakの場合
+
+#### ▼ 認可リクエスト送信
+
+アプリからKeycloakに宛に認可リクエストを送信する。
+
+```bash
+$ curl http://<Keycloakのドメイン>/realms/oidc-sample/protocol/openid-connect/auth?response_type=code&client_id=rp1&redirect_uri=http://<アプリのドメイン>/oidc&scope=openid
+```
+
+> - https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow
+
+#### ▼ 認可レスポンス受信
+
+認可レスポンスを受信し、アプリに対してリダイレクトを送信する。
+
+```bash
+$ curl http://<アプリのドメイン>/oidc?session_state= ... &code=<認証コード>
+```
+
+> - https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow
+
+#### ▼ トークンリクエスト送信
+
+認可コードを使用して、Keycloakにトークンリクエストを送信する。
+
+IDトークンとアクセストークンを取得できる。
+
+```bash
+$ curl -d "grant_type=authorization_code&code=<認証コード>&redirect_uri=http://<アプリのドメイン>/oidc&client_id=rp1&client_secret=<Client secret>" http://<Keycloakのドメイン>/realms/oidc-sample/protocol/openid-connect/token
+
+{
+  "access_token": <アクセストークン>,
+  "expires_in": 300,
+  "refresh_expires_in": 1800,
+  "refresh_token": <リフレッシュトークン>,
+  "token_type": "Bearer",
+  "id_token": <IDトークン>,
+  "not-before-policy": 0,
+  "session_state": "8468db1c-feb4-4803-bfeb-213149b560cf",
+  "scope": "openid email profile"
+}
+```
+
+#### ▼ ユーザー情報の取得
+
+```bash
+$ curl -H "Authorization: Bearer <アクセストークン>" http://<Keycloakのドメイン>/realms/oidc-sample/protocol/openid-connect/userinfo
+
+{
+  "sub": <User ID>,
+  "email_verified": false,
+  "preferred_username": "admin",
+  "given_name": "",
+  "family_name": ""
+}
+```
+
+<br>
+
 ### 運搬
 
 アクセストークンを`Authorization`ヘッダーで運べる。
