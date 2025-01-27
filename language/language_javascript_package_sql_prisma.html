@@ -25006,59 +25006,54 @@ const<span class="w"> </span><span class="nv">prisma</span><span class="w"> </sp
 <h3 id="transaction">$transaction<a class="headerlink" href="#transaction" title="Permanent link">&para;</a></h3>
 <h4 id="transaction_1">▼ $transaction<a class="headerlink" href="#transaction_1" title="Permanent link">&para;</a></h4>
 <p>複数のクエリ処理を実行するトランザクションを定義する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@prisma/client&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">prisma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PrismaClient</span><span class="p">()</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">prisma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PrismaClient</span><span class="p">();</span>
 
-<span class="kd">function</span><span class="w"> </span><span class="nx">transfer</span><span class="p">(</span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="nx">amount</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
+<span class="kd">function</span><span class="w"> </span><span class="nx">transfer</span><span class="p">(</span><span class="nx">from</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">amount</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// トランザクション</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">$transaction</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">tx</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">    </span><span class="c1">// CRUD処理</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">sender</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">account</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span>
 <span class="w">      </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">balance</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nx">decrement</span><span class="o">:</span><span class="w"> </span><span class="nx">amount</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">decrement</span><span class="o">:</span><span class="w"> </span><span class="kt">amount</span><span class="p">,</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kr">from</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">from</span><span class="p">,</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">});</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sender</span><span class="p">.</span><span class="nx">balance</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="kr">from</span><span class="si">}</span><span class="sb"> doesn&#39;t have enough to send </span><span class="si">${</span><span class="nx">amount</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="kr">from</span><span class="si">}</span><span class="sb"> doesn&#39;t have enough to send </span><span class="si">${</span><span class="nx">amount</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// CRUD処理</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">recipient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">account</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span>
 <span class="w">      </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">balance</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nx">increment</span><span class="o">:</span><span class="w"> </span><span class="nx">amount</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">increment</span><span class="o">:</span><span class="w"> </span><span class="kt">amount</span><span class="p">,</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="nx">to</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">to</span><span class="p">,</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">});</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">recipient</span>
-<span class="w">  </span><span class="p">})</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">recipient</span><span class="p">;</span>
+<span class="w">  </span><span class="p">});</span>
 <span class="p">}</span>
 
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">  </span><span class="c1">// $transaction関数の実行をtry-catchブロックで囲む</span>
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">transfer</span><span class="p">(</span><span class="s1">&#39;alice@prisma.io&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;bob@prisma.io&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span>
-<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">transfer</span><span class="p">(</span><span class="s1">&#39;alice@prisma.io&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;bob@prisma.io&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">  </span><span class="p">}</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">transfer</span><span class="p">(</span><span class="s2">&quot;alice@prisma.io&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bob@prisma.io&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">transfer</span><span class="p">(</span><span class="s2">&quot;alice@prisma.io&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bob@prisma.io&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">}</span>
 
-<span class="nx">main</span><span class="p">()</span>
+<span class="nx">main</span><span class="p">();</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -25068,23 +25063,28 @@ const<span class="w"> </span><span class="nv">prisma</span><span class="w"> </sp
 <h4 id="_3">▼ オプション<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@prisma/client&#39;</span>
 
-<span class="c1">// Prismaクライアントに設定する場合</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">prisma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PrismaClient</span><span class="p">({</span>
+<span class="c1">// トランザクションのオプションはトランザクション全体で統一する</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">prismaClientOption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// データを取得するまでのタイムアウト値 (デフォルトは2000ms)</span>
 <span class="w">  </span><span class="nx">transactionOptions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// データを取得するまでのタイムアウト値 (デフォルトは2000ms)</span>
-<span class="w">    </span><span class="nx">maxWait</span><span class="o">:</span><span class="w"> </span><span class="mf">5000</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">maxWait</span><span class="o">:</span><span class="w"> </span><span class="kt">5000</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// ロールバックを含めて全体が完了するまでのタイムアウト値 (デフォルトは5000ms)</span>
-<span class="w">    </span><span class="nx">timeout</span><span class="o">:</span><span class="w"> </span><span class="mf">10000</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">timeout</span><span class="o">:</span><span class="w"> </span><span class="kt">10000</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// トランザクションの分離レベル</span>
-<span class="w">    </span><span class="nx">isolationLevel</span><span class="o">:</span><span class="w"> </span><span class="nx">Prisma</span><span class="p">.</span><span class="nx">TransactionIsolationLevel</span><span class="p">.</span><span class="nx">Serializable</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">isolationLevel</span><span class="o">:</span><span class="w"> </span><span class="kt">Prisma.TransactionIsolationLevel.Serializable</span><span class="p">,</span>
 <span class="w">  </span><span class="p">}</span>
-<span class="p">})</span>
+<span class="p">}</span>
+
+<span class="c1">// Prismaクライアントに設定する</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">prisma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PrismaClient</span><span class="p">(</span><span class="nx">prismaClientOption</span><span class="p">)</span>
 
 <span class="kd">function</span><span class="w"> </span><span class="nx">transfer</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">$transaction</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">tx</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// CRUD処理</span>
-<span class="w">  </span><span class="p">})</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">$transaction</span><span class="p">(</span>
+<span class="w">      </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">tx</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// CRUD処理</span>
+<span class="w">      </span><span class="p">})</span>
 <span class="p">}</span>
 
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -25102,20 +25102,27 @@ const<span class="w"> </span><span class="nv">prisma</span><span class="w"> </sp
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">prisma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PrismaClient</span><span class="p">()</span>
 
-<span class="kd">function</span><span class="w"> </span><span class="nx">transfer</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">  </span><span class="c1">// トランザクションに個別に設定する場合</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">$transaction</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">tx</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// CRUD処理</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// データを取得するまでのタイムアウト値</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">prismaClientOption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// データを取得するまでのタイムアウト値 (デフォルトは2000ms)</span>
+<span class="w">  </span><span class="nx">transactionOptions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// データを取得するまでのタイムアウト値 (デフォルトは2000ms)</span>
 <span class="w">    </span><span class="nx">maxWait</span><span class="o">:</span><span class="w"> </span><span class="mf">5000</span><span class="p">,</span>
-<span class="w">    </span><span class="c1">// ロールバックを含めて全体が完了するまでのタイムアウト値</span>
+<span class="w">    </span><span class="c1">// ロールバックを含めて全体が完了するまでのタイムアウト値 (デフォルトは5000ms)</span>
 <span class="w">    </span><span class="nx">timeout</span><span class="o">:</span><span class="w"> </span><span class="mf">10000</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// トランザクションの分離レベル</span>
 <span class="w">    </span><span class="nx">isolationLevel</span><span class="o">:</span><span class="w"> </span><span class="nx">Prisma</span><span class="p">.</span><span class="nx">TransactionIsolationLevel</span><span class="p">.</span><span class="nx">Serializable</span><span class="p">,</span>
-<span class="w">  </span><span class="p">})</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">transfer</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">$transaction</span><span class="p">(</span>
+<span class="w">      </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">tx</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// CRUD処理</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="c1">// トランザクションに個別に設定する</span>
+<span class="w">      </span><span class="nx">prismaClientOption</span>
+<span class="w">  </span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
