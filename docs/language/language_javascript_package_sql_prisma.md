@@ -148,16 +148,14 @@ generator client {
 
 複数のクエリ処理を実行するトランザクションを定義する。
 
-```javascript
-import {PrismaClient} from '@prisma/client'
+```typescript
+import {PrismaClient} from "@prisma/client";
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 function transfer(from: string, to: string, amount: number) {
-
   // トランザクション
   return prisma.$transaction(async (tx) => {
-
     // CRUD処理
     const sender = await tx.account.update({
       data: {
@@ -168,10 +166,10 @@ function transfer(from: string, to: string, amount: number) {
       where: {
         email: from,
       },
-    })
+    });
 
     if (sender.balance < 0) {
-      throw new Error(`${from} doesn't have enough to send ${amount}`)
+      throw new Error(`${from} doesn't have enough to send ${amount}`);
     }
 
     // CRUD処理
@@ -184,35 +182,33 @@ function transfer(from: string, to: string, amount: number) {
       where: {
         email: to,
       },
-    })
+    });
 
-    return recipient
-  })
+    return recipient;
+  });
 }
 
 async function main() {
-
   // $transaction関数の実行をtry-catchブロックで囲む
   try {
-    await transfer('alice@prisma.io', 'bob@prisma.io', 100)
-    await transfer('alice@prisma.io', 'bob@prisma.io', 100)
-  } catch (err) {
-
-  }
+    await transfer("alice@prisma.io", "bob@prisma.io", 100);
+    await transfer("alice@prisma.io", "bob@prisma.io", 100);
+  } catch (err) {}
 }
 
-main()
+main();
 ```
 
 > - https://www.prisma.io/docs/orm/prisma-client/queries/transactions#interactive-transactions
 
 #### ▼ オプション
 
-```javascript
+```typescript
 import {PrismaClient} from '@prisma/client'
 
-// Prismaクライアントに設定する場合
-const prisma = new PrismaClient({
+// トランザクションのオプションはトランザクション全体で統一する
+let prismaClientOption = {
+  // データを取得するまでのタイムアウト値 (デフォルトは2000ms)
   transactionOptions: {
     // データを取得するまでのタイムアウト値 (デフォルトは2000ms)
     maxWait: 5000,
@@ -221,13 +217,17 @@ const prisma = new PrismaClient({
     // トランザクションの分離レベル
     isolationLevel: Prisma.TransactionIsolationLevel.Serializable,
   }
-})
+}
+
+// Prismaクライアントに設定する
+const prisma = new PrismaClient(prismaClientOption)
 
 function transfer(...) {
 
-  return prisma.$transaction(async (tx) => {
-    // CRUD処理
-  })
+  return prisma.$transaction(
+      async (tx) => {
+        // CRUD処理
+      })
 }
 
 async function main() {
@@ -247,20 +247,27 @@ import {PrismaClient} from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-function transfer(...) {
-
-  // トランザクションに個別に設定する場合
-  return prisma.$transaction(async (tx) => {
-    // CRUD処理
-  },
-  {
-    // データを取得するまでのタイムアウト値
+let prismaClientOption = {
+  // データを取得するまでのタイムアウト値 (デフォルトは2000ms)
+  transactionOptions: {
+    // データを取得するまでのタイムアウト値 (デフォルトは2000ms)
     maxWait: 5000,
-    // ロールバックを含めて全体が完了するまでのタイムアウト値
+    // ロールバックを含めて全体が完了するまでのタイムアウト値 (デフォルトは5000ms)
     timeout: 10000,
     // トランザクションの分離レベル
     isolationLevel: Prisma.TransactionIsolationLevel.Serializable,
-  })
+  }
+}
+
+function transfer(...) {
+
+  return prisma.$transaction(
+      async (tx) => {
+        // CRUD処理
+      },
+      // トランザクションに個別に設定する
+      prismaClientOption
+  )
 }
 
 async function main() {
