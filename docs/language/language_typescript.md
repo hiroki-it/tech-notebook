@@ -157,18 +157,23 @@ console.log(await asyncFn());
 
 #### ▼ 型変数
 
-ここでは、引数と返却値の型を変数として定義している。
+型変数では、定義した時点で型が決まっていない。
 
-変数に任意の型を代入すると、それに合わせた引数と返却値の型の関数を定義できる。
+コール時に型変数に任意の型を代入すると、それに合わせた引数と返却値の型の関数を定義できる。
 
 ```typescript
+// この時点では、型変数 (T、U) の型は決まっていない
 const addKeys = <T, U>(key1: T, key2: U): Array<T | U> => {
   return [key1, key2];
 };
 
+// 型変数に型を代入すると、それに合わせた処理になる
 addKeys<string, string>("a", "b");
+
 addKeys<number, number>(1, 2);
+
 addKeys<boolean, boolean>(true, false);
+
 addKeys<string, number>("a", 1);
 ```
 
@@ -186,7 +191,9 @@ const sum = (x: number, y: number) => {
 };
 
 console.log(sum(1, 2));
+
 console.log(sum(1, "2")); // Argument of type 'string' is not assignable to parameter of type 'number'.
+
 console.log(sum(1)); // Expected 2 arguments, but got 1.
 ```
 

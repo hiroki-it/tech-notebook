@@ -557,6 +557,8 @@ export GIT_AUTHOR_EMAIL=$MAIL
 ```
 
 > - https://blog.nijohando.jp/post/direnv/
+> - https://zenn.dev/yumainaura/articles/qiita-2020-03-03t14_16_50-09_00-#set--a-%E3%81%A8%E3%81%AF
+> - https://note.com/shimakaze_soft/n/n53949cc818d1
 
 #### ▼ `.envrc`ファイルの登録
 
@@ -574,7 +576,5 @@ $ direnv allow .
 ```bash
 $ printenv
 ```
-
-> - https://note.com/shimakaze_soft/n/n53949cc818d1
 
 <br>
