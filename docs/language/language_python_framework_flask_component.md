@@ -174,7 +174,11 @@ if __name__ == '__main__':
 
 ## 04. パッケージ
 
-### authlib
+### authlib.integrations.flask_client
+
+#### ▼ authlib.integrations.flask_clientとは
+
+> - https://github.com/lepture/authlib/tree/master/authlib/integrations/flask_client
 
 #### ▼ 初期化
 
@@ -204,6 +208,7 @@ oauth.register(
 
 > - https://docs.authlib.org/en/latest/client/flask.html
 > - https://docs.authlib.org/en/latest/client/flask.html#flask-openid-connect-client
+> - https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py
 
 #### ▼ ログイン
 
@@ -225,6 +230,7 @@ def authorize():
 ```
 
 > - https://docs.authlib.org/en/latest/client/flask.html#routes-for-authorization
+> - https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py
 
 #### ▼ アカウントの取得
 
@@ -240,10 +246,11 @@ def show_github_profile():
 ```
 
 > - https://docs.authlib.org/en/latest/client/flask.html#accessing-oauth-resources
+> - https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py
 
 <br>
 
-### flask-oidc
+### flask_oidc.OpenIDConnect
 
 ```python
 from flask_oidc import OpenIDConnect
