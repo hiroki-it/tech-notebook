@@ -70,3 +70,35 @@ I/Oバウンドが発生しない場合や`async/await`宣言をサポートし�
 > - https://qiita.com/ffggss/items/e4c06f86fb28a62948e0
 
 <br>
+
+
+## 03. 関数
+
+### url_for
+
+#### ▼ _external
+
+ホスト名とデフォルトのプロトコル名 (HTTP) のあるURLを作成する。
+
+```python
+with app.test_request_context():
+    # http://localhost/
+    print(url_for('index', _external=True))
+```
+
+> - https://flask-web-academy.com/article/flask-urlfor/
+
+#### ▼ _scheme
+
+ホスト名と指定したプロトコル名のあるURLを作成する。
+
+
+```python
+ith app.test_request_context():
+    # https://localhost/
+    print(url_for('index', _external=True, _scheme='https'))
+```
+
+> - https://flask-web-academy.com/article/flask-urlfor/
+
+<br>
