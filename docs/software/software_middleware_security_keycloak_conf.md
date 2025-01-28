@@ -31,10 +31,10 @@ Keycloakでは、コマンドオプション、環境変数、`keycloak.conf`フ
 
 ### Bootstrap Admin
 
-| 変数                          | 値の例     | 説明                                             |
-| ----------------------------- | ---------- | ------------------------------------------------ |
-| `KC_BOOTSTRAP_ADMIN_USERNAME` | `admin`    | Keycloakのルートユーザー名を設定する。           |
-| `KC_BOOTSTRAP_ADMIN_PASSWORD` | `password` | Keycloakのルートユーザーのパスワードを設定する。 |
+| 変数                          | 値の例  | 説明                                             |
+| ----------------------------- | ------- | ------------------------------------------------ |
+| `KC_BOOTSTRAP_ADMIN_USERNAME` | `admin` | Keycloakのルートユーザー名を設定する。           |
+| `KC_BOOTSTRAP_ADMIN_PASSWORD` | `admin` | Keycloakのルートユーザーのパスワードを設定する。 |
 
 > - https://www.keycloak.org/server/all-config#category-bootstrap_admin
 
@@ -75,9 +75,9 @@ Keycloakでは、コマンドオプション、環境変数、`keycloak.conf`フ
 
 ### Hostname
 
-| 変数          | 値の例      | 説明                                                                                                 |
-| ------------- | ----------- |----------------------------------------------------------------------------------------------------|
-| `KC_HOSTNAME` | `localhost` | Keycloakのエンドポイントのホスト名を設定する。`/.well-known/openid-configuration`ファイルからエンドポイントのホスト名を確認でき、認証認可全体に影響する。 |
+| 変数          | 値の例                                                                                | 説明                                                                                           |
+| ------------- | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `KC_HOSTNAME` | `localhost` (Dockerの場合) 、`keycloak-http.app.svc.cluster.local` (Kubernetesの場合) | Keycloakのエンドポイントのホスト名を設定する。各種認証エンドポイント全体のホスト名に影響する。 |
 
 > - https://www.keycloak.org/server/all-config#category-hostname_v2
 

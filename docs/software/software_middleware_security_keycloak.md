@@ -133,7 +133,7 @@ Keycloakクライアントは、『ヘッダー』『ペイロード』『署名
 
 ### OIDC
 
-#### ▼ 全体
+#### ▼ ディスカバリーエンドポイント
 
 全ての設定を取得できる。
 
@@ -155,7 +155,6 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
   "end_session_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/logout",
   "frontchannel_logout_session_supported": true,
   "frontchannel_logout_supported": true,
-  # JWKsエンドポイント
   "jwks_uri": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/certs",
   "check_session_iframe": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/login-status-iframe.html",
   "registration_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/clients-registrations/openid-connect",
@@ -179,7 +178,7 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
 }
 ```
 
-#### ▼ issuer
+#### ▼ / (issuerエンドポイント)
 
 JWTの発行元認証局を取得できる。
 
@@ -191,7 +190,7 @@ JWTの発行元認証局を取得できる。
 
 > - https://dev.classmethod.jp/articles/openidconnect-devio2023/#P.24%2520React%25E5%2581%25B4%25E3%2581%25AE%25E8%25A8%25AD%25E5%25AE%259A%25E5%2586%2585%25E5%25AE%25B9%25E7%25A2%25BA%25E8%25AA%258D
 
-#### ▼ 認可エンドポイント
+#### ▼ /auth (認可エンドポイント)
 
 ```bash
 /realms/<realm名>/protocol/openid-connect/auth
@@ -199,7 +198,31 @@ JWTの発行元認証局を取得できる。
 
 > - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
 
-#### ▼ トークンエンドポイント
+#### ▼ /certs (JWKsエンドポイント)
+
+アクセストークンが署名されたものかどうかを検証する。
+
+(イントロスペクションエンドポイントとの違いがややこしい)
+
+```bash
+/realms/<realm名>/protocol/openid-connect/certs
+```
+
+> - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
+
+#### ▼ /introspect (イントロスペクションエンドポイント)
+
+署名されたアクセストークンの有効期限が失効しているかどうかを検証する。
+
+(JWKsエンドポイントとの違いがややこしい)
+
+```bash
+/realms/<realm名>/protocol/openid-connect/token/introspect
+```
+
+> - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
+
+#### ▼ token
 
 フローに応じたトークン (アクセストークン、IDトークン) や認可コードを取得できる。
 
@@ -215,7 +238,7 @@ JWTの発行元認証局を取得できる。
 > - https://thinkit.co.jp/article/17621
 > - https://www.keycloak.org/securing-apps/token-exchange
 
-#### ▼ ユーザー情報エンドポイント
+#### ▼ /userinfo
 
 クレームを取得できる。
 
@@ -223,36 +246,12 @@ JWTの発行元認証局を取得できる。
 /realms/<realm名>/protocol/openid-connect/userinfo
 ```
 
-#### ▼ ログアウトエンドポイント
+#### ▼ /logout
 
 認証を意図的に無効化する。
 
 ```bash
 /realms/<realm名>/protocol/openid-connect/logout
-```
-
-> - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
-
-#### ▼ 公開鍵エンドポイント (JWKsエンドポイント)
-
-アクセストークンが署名されたものかどうかを検証する。
-
-(イントロスペクションエンドポイントとの違いがややこしい)
-
-```bash
-/realms/<realm名>/protocol/openid-connect/certs
-```
-
-> - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
-
-#### ▼ イントロスペクションエンドポイント
-
-署名されたアクセストークンの有効期限が失効しているかどうかを検証する。
-
-(JWKsエンドポイントとの違いがややこしい)
-
-```bash
-/realms/<realm名>/protocol/openid-connect/token/introspect
 ```
 
 > - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
