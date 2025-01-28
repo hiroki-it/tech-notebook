@@ -5475,6 +5475,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proxy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#java_opts_append" class="md-nav__link">
     <span class="md-ellipsis">
       JAVA_OPTS_APPEND
@@ -24631,6 +24640,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proxy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#java_opts_append" class="md-nav__link">
     <span class="md-ellipsis">
       JAVA_OPTS_APPEND
@@ -24821,8 +24839,8 @@
 <tbody>
 <tr>
 <td><code>KC_HOSTNAME</code></td>
-<td><code>localhost</code> (Dockerの場合) 、<code>keycloak-http.app.svc.cluster.local</code> (Kubernetesの場合)</td>
-<td>Keycloakのエンドポイントのホスト名を設定する。各種認証エンドポイント全体のホスト名に影響する。</td>
+<td><code>localhost</code> (Dockerの場合)</td>
+<td>Keycloakのエンドポイントのホスト名を設定する。各種認証エンドポイント全体のホスト名に影響する。Kubernetes内にKeycloakを置く場合、これは設定しない。</td>
 </tr>
 </tbody>
 </table>
@@ -24854,6 +24872,24 @@
 <li><a href="https://www.keycloak.org/server/all-config#category-logging">https://www.keycloak.org/server/all-config#category-logging</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="proxy">Proxy<a class="headerlink" href="#proxy" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>変数</th>
+<th>値の例</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KC_PROXY</code></td>
+<td><code>edge</code></td>
+<td>Keycloalyがリバースプロキシを後ろにあること有効化する。Kubernetesではこれを<code>edge</code>を設定する必要がある。</td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
 <h3 id="java_opts_append">JAVA_OPTS_APPEND<a class="headerlink" href="#java_opts_append" title="Permanent link">&para;</a></h3>
 <table>
