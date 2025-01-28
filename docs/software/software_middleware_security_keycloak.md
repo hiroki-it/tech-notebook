@@ -254,16 +254,20 @@ GET https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-conne
 
 認証を意図的に無効化する。
 
-- client_id
-- client_secret
-- refresh_token
+フロントチャネルとバックチャネルのエンドポイントがある。
+
+```bash
+GET https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/logout?id_token_hint=<IDトークン>&post_logout_redirect_uri=<クライアントシークレット>
+```
 
 ```bash
 POST https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/logout?client_id=<クライアントID>&client_secret=<クライアントシークレット>&refresh_token=<リフレッシュトークン>
 ```
 
 > - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
+> - https://gist.github.com/thomasdarimont/145dc9aa857b831ff2eff221b79d179a?permalink_comment_id=4884254#gistcomment-4884254
 > - https://qiita.com/suke_masa/items/e04880c5cf7232b60004
+> - https://qiita.com/i7a7467/items/b7eaa2deb0378fc3b2aa
 
 <br>
 
