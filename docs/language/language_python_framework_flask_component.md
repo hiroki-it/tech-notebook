@@ -174,6 +174,24 @@ if __name__ == '__main__':
 
 ## 04. パッケージ
 
+### authlib
+
+```python
+app = Flask(__name__)
+
+oauth = OAuth(app)
+oauth.register(
+    name="keycloak",
+    client_id="foo-client",
+    client_secret="*****",
+    client_kwargs={"scope": "openid profile email"},
+    api_base_url="http://localhost:8080/",
+    authorize_url="http://localhost:8080/auth/realms/dev/protocol/openid-connect/auth",
+)
+```
+
+> - https://docs.authlib.org/en/latest/client/flask.html
+
 ### flask-oidc
 
 #### ▼ client_secrets.json

@@ -192,7 +192,9 @@ https://<Keycloakのドメイン名>//realms/<realm名>
 
 #### ▼ /auth (認可エンドポイント)
 
-アプリケーションが接続するエンドポイントである。
+アプリケーションがブラウザ経由で接続するエンドポイントである。
+
+Keycloakの他のエンドポイントとは異なり、インターネットから接続できるように公開する必要がある。
 
 ```bash
 https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/auth
