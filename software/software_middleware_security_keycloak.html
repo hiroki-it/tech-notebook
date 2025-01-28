@@ -5631,7 +5631,7 @@
           <li class="md-nav__item">
   <a href="#token" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ token
+      ▼ /token
     </span>
   </a>
   
@@ -25087,7 +25087,7 @@
           <li class="md-nav__item">
   <a href="#token" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ token
+      ▼ /token
     </span>
   </a>
   
@@ -25367,7 +25367,7 @@
 <h4 id="issuer">▼ / (issuerエンドポイント)<a class="headerlink" href="#issuer" title="Permanent link">&para;</a></h4>
 <p>JWTの発行元認証局を取得できる。</p>
 <p>クライアント側では<code>authority</code>値として指定する。</p>
-<div class="highlight"><pre><span></span><code>/realms/&lt;realm名&gt;
+<div class="highlight"><pre><span></span><code>https://&lt;Keycloakのドメイン名&gt;//realms/&lt;realm名&gt;
 </code></pre></div>
 <blockquote>
 <ul>
@@ -25375,7 +25375,8 @@
 </ul>
 </blockquote>
 <h4 id="auth">▼ /auth (認可エンドポイント)<a class="headerlink" href="#auth" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>/realms/&lt;realm名&gt;/protocol/openid-connect/auth
+<p>アプリケーションが接続するエンドポイントである。</p>
+<div class="highlight"><pre><span></span><code>https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/auth
 </code></pre></div>
 <blockquote>
 <ul>
@@ -25385,7 +25386,7 @@
 <h4 id="certs-jwks">▼ /certs (JWKsエンドポイント)<a class="headerlink" href="#certs-jwks" title="Permanent link">&para;</a></h4>
 <p>アクセストークンが署名されたものかどうかを検証する。</p>
 <p>(イントロスペクションエンドポイントとの違いがややこしい)</p>
-<div class="highlight"><pre><span></span><code>/realms/&lt;realm名&gt;/protocol/openid-connect/certs
+<div class="highlight"><pre><span></span><code>https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/certs
 </code></pre></div>
 <blockquote>
 <ul>
@@ -25395,18 +25396,18 @@
 <h4 id="introspect">▼ /introspect (イントロスペクションエンドポイント)<a class="headerlink" href="#introspect" title="Permanent link">&para;</a></h4>
 <p>署名されたアクセストークンの有効期限が失効しているかどうかを検証する。</p>
 <p>(JWKsエンドポイントとの違いがややこしい)</p>
-<div class="highlight"><pre><span></span><code>/realms/&lt;realm名&gt;/protocol/openid-connect/token/introspect
+<div class="highlight"><pre><span></span><code>https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/token/introspect
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://www.keycloak.org/securing-apps/oidc-layers#_endpoints">https://www.keycloak.org/securing-apps/oidc-layers#_endpoints</a></li>
 </ul>
 </blockquote>
-<h4 id="token">▼ token<a class="headerlink" href="#token" title="Permanent link">&para;</a></h4>
+<h4 id="token">▼ /token<a class="headerlink" href="#token" title="Permanent link">&para;</a></h4>
 <p>フローに応じたトークン (アクセストークン、IDトークン) や認可コードを取得できる。</p>
 <p>また、Token Exchangeを使用すると新しいトークンに交換したり、別のIDプロバイダーのトークンに変換できる。</p>
 <p>なお、KeycloakはJWT仕様のアクセストークンを採用している。</p>
-<div class="highlight"><pre><span></span><code>/realms/&lt;realm名&gt;/protocol/openid-connect/token
+<div class="highlight"><pre><span></span><code>https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/token
 </code></pre></div>
 <blockquote>
 <ul>
@@ -25417,11 +25418,11 @@
 </blockquote>
 <h4 id="userinfo">▼ /userinfo<a class="headerlink" href="#userinfo" title="Permanent link">&para;</a></h4>
 <p>クレームを取得できる。</p>
-<div class="highlight"><pre><span></span><code>/realms/&lt;realm名&gt;/protocol/openid-connect/userinfo
+<div class="highlight"><pre><span></span><code>https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/userinfo
 </code></pre></div>
 <h4 id="logout">▼ /logout<a class="headerlink" href="#logout" title="Permanent link">&para;</a></h4>
 <p>認証を意図的に無効化する。</p>
-<div class="highlight"><pre><span></span><code>/realms/&lt;realm名&gt;/protocol/openid-connect/logout
+<div class="highlight"><pre><span></span><code>https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/logout
 </code></pre></div>
 <blockquote>
 <ul>
