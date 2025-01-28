@@ -24709,7 +24709,7 @@
 </tr>
 <tr>
 <td><code>KC_BOOTSTRAP_ADMIN_PASSWORD</code></td>
-<td><code>password</code></td>
+<td><code>admin</code></td>
 <td>Keycloakのルートユーザーのパスワードを設定する。</td>
 </tr>
 </tbody>
@@ -24821,8 +24821,8 @@
 <tbody>
 <tr>
 <td><code>KC_HOSTNAME</code></td>
-<td><code>localhost</code></td>
-<td>Keycloakのエンドポイントのホスト名を設定する。<code>/.well-known/openid-configuration</code>ファイルからエンドポイントのホスト名を確認でき、認証認可全体に影響する。</td>
+<td><code>localhost</code> (Dockerの場合) 、<code>keycloak-http.app.svc.cluster.local</code> (Kubernetesの場合)</td>
+<td>Keycloakのエンドポイントのホスト名を設定する。各種認証エンドポイント全体のホスト名に影響する。</td>
 </tr>
 </tbody>
 </table>

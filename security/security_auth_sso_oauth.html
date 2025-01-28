@@ -25110,6 +25110,7 @@
 <tr>
 <th>クエリストリングの種類</th>
 <th>値</th>
+<th>例</th>
 <th>認可リクエスト時に必須/任意</th>
 </tr>
 </thead>
@@ -25117,36 +25118,43 @@
 <tr>
 <td><code>response_type</code></td>
 <td>認可コードフローを指定する場合は、<code>code</code></td>
+<td></td>
 <td>必須</td>
 </tr>
 <tr>
 <td><code>client_id</code></td>
 <td>クライアントID</td>
+<td><code>foo-service</code></td>
 <td>必須</td>
 </tr>
 <tr>
 <td><code>redirect_uri</code></td>
 <td>リダイレクトURL</td>
+<td></td>
 <td>条件により必須</td>
 </tr>
 <tr>
 <td><code>state</code></td>
 <td>任意の文字列</td>
+<td></td>
 <td>推奨</td>
 </tr>
 <tr>
 <td><code>scope</code></td>
 <td>クレームグループ</td>
+<td></td>
 <td>任意</td>
 </tr>
 <tr>
 <td><code>code_challenge</code></td>
 <td>チャレンジ</td>
+<td></td>
 <td>任意</td>
 </tr>
 <tr>
 <td><code>code_challege_method</code></td>
 <td>メソッド</td>
+<td></td>
 <td>任意</td>
 </tr>
 </tbody>
@@ -25185,6 +25193,7 @@
 <tr>
 <th>クエリストリングのキーの種類</th>
 <th>値</th>
+<th>例</th>
 <th>必須/任意</th>
 </tr>
 </thead>
@@ -25192,11 +25201,13 @@
 <tr>
 <td><code>code</code></td>
 <td>認可コード</td>
+<td></td>
 <td>必須</td>
 </tr>
 <tr>
 <td><code>state</code></td>
 <td>任意の文字列</td>
+<td></td>
 <td>認可リクエストのクエリストリングで、<code>state</code>キーが使用されていれば必須</td>
 </tr>
 </tbody>
@@ -25231,6 +25242,7 @@
 <tr>
 <th>ボディのキーの種類</th>
 <th>値</th>
+<th>例</th>
 <th>トークンリクエスト時に必須/任意</th>
 </tr>
 </thead>
@@ -25238,31 +25250,37 @@
 <tr>
 <td><code>grant_type</code></td>
 <td>authorization_code</td>
+<td></td>
 <td>必須</td>
 </tr>
 <tr>
 <td><code>code</code></td>
 <td>認可コード</td>
+<td></td>
 <td>必須</td>
 </tr>
 <tr>
 <td><code>redirect_uri</code></td>
 <td>リダイレクトURL</td>
+<td></td>
 <td>認可リクエストのクエリストリングで、<code>redirect_uri</code>キーが使用されていれば、必須である。</td>
 </tr>
 <tr>
 <td><code>code_verifier</code></td>
 <td>ベリファイア</td>
+<td></td>
 <td>認可リクエストのクエリストリングで、<code>code_verifier</code>キーが使用されていれば、必須である。</td>
 </tr>
 <tr>
 <td><code>client_id</code></td>
 <td>クライアントID</td>
+<td><code>foo-service</code></td>
 <td>条件により必須</td>
 </tr>
 <tr>
 <td><code>client_secret</code></td>
 <td>クライアントシークレット</td>
+<td><code>*****</code></td>
 <td>条件により必須</td>
 </tr>
 </tbody>
@@ -25355,7 +25373,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-28</span>
   </span>
 
     
