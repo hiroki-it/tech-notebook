@@ -185,15 +185,17 @@ JWTの発行元認証局を取得できる。
 クライアント側では`authority`値として指定する。
 
 ```bash
-/realms/<realm名>
+https://<Keycloakのドメイン名>//realms/<realm名>
 ```
 
 > - https://dev.classmethod.jp/articles/openidconnect-devio2023/#P.24%2520React%25E5%2581%25B4%25E3%2581%25AE%25E8%25A8%25AD%25E5%25AE%259A%25E5%2586%2585%25E5%25AE%25B9%25E7%25A2%25BA%25E8%25AA%258D
 
 #### ▼ /auth (認可エンドポイント)
 
+アプリケーションが接続するエンドポイントである。
+
 ```bash
-/realms/<realm名>/protocol/openid-connect/auth
+https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/auth
 ```
 
 > - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
@@ -205,7 +207,7 @@ JWTの発行元認証局を取得できる。
 (イントロスペクションエンドポイントとの違いがややこしい)
 
 ```bash
-/realms/<realm名>/protocol/openid-connect/certs
+https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/certs
 ```
 
 > - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
@@ -217,12 +219,12 @@ JWTの発行元認証局を取得できる。
 (JWKsエンドポイントとの違いがややこしい)
 
 ```bash
-/realms/<realm名>/protocol/openid-connect/token/introspect
+https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/token/introspect
 ```
 
 > - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
 
-#### ▼ token
+#### ▼ /token
 
 フローに応じたトークン (アクセストークン、IDトークン) や認可コードを取得できる。
 
@@ -231,7 +233,7 @@ JWTの発行元認証局を取得できる。
 なお、KeycloakはJWT仕様のアクセストークンを採用している。
 
 ```bash
-/realms/<realm名>/protocol/openid-connect/token
+https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/token
 ```
 
 > - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
@@ -243,7 +245,7 @@ JWTの発行元認証局を取得できる。
 クレームを取得できる。
 
 ```bash
-/realms/<realm名>/protocol/openid-connect/userinfo
+https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/userinfo
 ```
 
 #### ▼ /logout
@@ -251,7 +253,7 @@ JWTの発行元認証局を取得できる。
 認証を意図的に無効化する。
 
 ```bash
-/realms/<realm名>/protocol/openid-connect/logout
+https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/logout
 ```
 
 > - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
