@@ -176,17 +176,22 @@ if __name__ == '__main__':
 
 ### authlib
 
+#### ▼ 初期化
+
 `api_base_url`と`authorize_url`のドメインには、外部から接続できるKeycloakのドメインを設定する。
 
 Kubernetes Serviceのドメインではダメ。
 
 ```python
+from authlib.integrations.flask_client import OAuth
+
 app = Flask(__name__)
 
 oauth = OAuth(app)
 
 oauth.register(
-    name="keycloak",
+    # 例：keycloak、googleなど
+    name="<IDプロバイダー名>",
     client_id="foo-client",
     client_secret="*****",
     client_kwargs={"scope": "openid profile email"},
@@ -198,12 +203,51 @@ oauth.register(
 ```
 
 > - https://docs.authlib.org/en/latest/client/flask.html
+> - https://docs.authlib.org/en/latest/client/flask.html#flask-openid-connect-client
+
+#### ▼ ログイン
+
+```python
+from flask import url_for, redirect
+
+@app.route('/login')
+def login():
+    redirect_uri = url_for('authorize', _external=True)
+    return oauth.twitter.authorize_redirect(redirect_uri)
+
+@app.route('/authorize')
+def authorize():
+    token = oauth.twitter.authorize_access_token()
+    resp = oauth.twitter.get('account/verify_credentials.json')
+    resp.raise_for_status()
+    profile = resp.json()
+    return redirect('/')
+```
+
+> - https://docs.authlib.org/en/latest/client/flask.html#routes-for-authorization
+
+#### ▼ アカウントの取得
+
+```python
+from flask import render_template
+
+@app.route('/github')
+def show_github_profile():
+    resp = oauth.github.get('user')
+    resp.raise_for_status()
+    profile = resp.json()
+    return render_template('github.html', profile=profile)
+```
+
+> - https://docs.authlib.org/en/latest/client/flask.html#accessing-oauth-resources
 
 <br>
 
 ### flask-oidc
 
 ```python
+from flask_oidc import OpenIDConnect
+
 app = Flask(__name__)
 
 app.config.update({
@@ -214,6 +258,9 @@ app.config.update({
 
 oidc = OpenIDConnect(app)
 ```
+
+> - https://github.com/fedora-infra/flask-oidc/
+> - https://gist.github.com/thomasdarimont/145dc9aa857b831ff2eff221b79d179a?permalink_comment_id=4983728#gistcomment-4983728
 
 #### ▼ client_secrets.json
 
