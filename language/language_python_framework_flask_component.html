@@ -9723,18 +9723,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_external" class="md-nav__link">
+  <a href="#external" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ _external
+      ▼ external
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_scheme" class="md-nav__link">
+  <a href="#scheme" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ _scheme
+      ▼ scheme
     </span>
   </a>
   
@@ -10125,18 +10125,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_external" class="md-nav__link">
+  <a href="#external" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ _external
+      ▼ external
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_scheme" class="md-nav__link">
+  <a href="#scheme" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ _scheme
+      ▼ scheme
     </span>
   </a>
   
@@ -25367,18 +25367,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_external" class="md-nav__link">
+  <a href="#external" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ _external
+      ▼ external
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_scheme" class="md-nav__link">
+  <a href="#scheme" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ _scheme
+      ▼ scheme
     </span>
   </a>
   
@@ -25690,7 +25690,7 @@
 <p><br></p>
 <h2 id="04">04. ビルトイン関数<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="url_for">url_for<a class="headerlink" href="#url_for" title="Permanent link">&para;</a></h3>
-<h4 id="_external">▼ _external<a class="headerlink" href="#_external" title="Permanent link">&para;</a></h4>
+<h4 id="external">▼ external<a class="headerlink" href="#external" title="Permanent link">&para;</a></h4>
 <p>ホスト名とデフォルトのプロトコル名 (HTTP) のあるURLを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">test_request_context</span><span class="p">():</span>
     <span class="c1"># http://localhost/</span>
@@ -25701,7 +25701,7 @@
 <li><a href="https://flask-web-academy.com/article/flask-urlfor/">https://flask-web-academy.com/article/flask-urlfor/</a></li>
 </ul>
 </blockquote>
-<h4 id="_scheme">▼ _scheme<a class="headerlink" href="#_scheme" title="Permanent link">&para;</a></h4>
+<h4 id="scheme">▼ scheme<a class="headerlink" href="#scheme" title="Permanent link">&para;</a></h4>
 <p>ホスト名と指定したプロトコル名のあるURLを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="n">ith</span> <span class="n">app</span><span class="o">.</span><span class="n">test_request_context</span><span class="p">():</span>
     <span class="c1"># https://localhost/</span>
@@ -25722,8 +25722,8 @@
 </ul>
 </blockquote>
 <h4 id="_7">▼ 初期化<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p><code>api_base_url</code>と<code>authorize_url</code>のドメインには、外部から接続できるKeycloakのドメインを設定する。</p>
-<p>Kubernetes Serviceのドメインではダメ。</p>
+<p>特にKubernetes内では、<code>api_base_url</code>と<code>authorize_url</code>のドメインに、外部から接続できるKeycloakのドメインを設定する。</p>
+<p>一方で、<code>access_token_url</code>と<code>jwks_uri</code>はKubernetes内部からのみ接続できるように、Serviceのドメインとする。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">authlib.integrations.flask_client</span> <span class="kn">import</span> <span class="n">OAuth</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -25740,7 +25740,15 @@
     <span class="n">api_base_url</span><span class="o">=</span><span class="s2">&quot;http://&lt;Keycloakのドメイン&gt;/&quot;</span><span class="p">,</span>
     <span class="c1"># 外部から接続できるKeycloakのドメインを設定する。Kubernetes Serviceのドメインではダメ。</span>
     <span class="n">authorize_url</span><span class="o">=</span><span class="s2">&quot;http://&lt;Keycloakのドメイン&gt;/auth/realms/&lt;realm名&gt;&gt;/protocol/openid-connect/auth&quot;</span><span class="p">,</span>
+    <span class="c1"># Serviceの完全修飾ドメイン名</span>
+    <span class="n">access_token_url</span><span class="o">=</span><span class="s2">&quot;http://keycloak-http.app.svc.cluster.local:8080/auth/realms/dev/protocol/openid-connect/token&quot;</span><span class="p">,</span>
+    <span class="c1"># Serviceの完全修飾ドメイン名</span>
+    <span class="n">jwks_uri</span><span class="o">=</span><span class="s2">&quot;http://keycloak-http.app.svc.cluster.local:8080/auth/realms/dev/protocol/openid-connect/certs&quot;</span>
 <span class="p">)</span>
+</code></pre></div>
+<p>IDプロバイダー名を指定し、ここで設定した変数を取得できる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># http://&lt;Keycloakのドメイン&gt;/</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">oauth</span><span class="o">.&lt;</span><span class="n">IDプロバイダー名</span><span class="o">&gt;.</span><span class="n">api_base_url</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <ul>
