@@ -176,7 +176,7 @@ if __name__ == '__main__':
 
 ### url_for
 
-#### ▼ \_external
+#### ▼ external
 
 ホスト名とデフォルトのプロトコル名 (HTTP) のあるURLを作成する。
 
@@ -188,7 +188,7 @@ with app.test_request_context():
 
 > - https://flask-web-academy.com/article/flask-urlfor/
 
-#### ▼ \_scheme
+#### ▼ scheme
 
 ホスト名と指定したプロトコル名のあるURLを作成する。
 
@@ -212,9 +212,9 @@ ith app.test_request_context():
 
 #### ▼ 初期化
 
-`api_base_url`と`authorize_url`のドメインには、外部から接続できるKeycloakのドメインを設定する。
+特にKubernetes内では、`api_base_url`と`authorize_url`のドメインに、外部から接続できるKeycloakのドメインを設定する。
 
-Kubernetes Serviceのドメインではダメ。
+一方で、`access_token_url`と`jwks_uri`はKubernetes内部からのみ接続できるように、Serviceのドメインとする。
 
 ```python
 from authlib.integrations.flask_client import OAuth
@@ -233,7 +233,18 @@ oauth.register(
     api_base_url="http://<Keycloakのドメイン>/",
     # 外部から接続できるKeycloakのドメインを設定する。Kubernetes Serviceのドメインではダメ。
     authorize_url="http://<Keycloakのドメイン>/auth/realms/<realm名>>/protocol/openid-connect/auth",
+    # Serviceの完全修飾ドメイン名
+    access_token_url="http://keycloak-http.app.svc.cluster.local:8080/auth/realms/dev/protocol/openid-connect/token",
+    # Serviceの完全修飾ドメイン名
+    jwks_uri="http://keycloak-http.app.svc.cluster.local:8080/auth/realms/dev/protocol/openid-connect/certs"
 )
+```
+
+IDプロバイダー名を指定し、ここで設定した変数を取得できる。
+
+```python
+# http://<Keycloakのドメイン>/
+print(oauth.<IDプロバイダー名>.api_base_url)
 ```
 
 > - https://docs.authlib.org/en/latest/client/flask.html
