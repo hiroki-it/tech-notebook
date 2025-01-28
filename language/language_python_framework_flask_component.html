@@ -9719,6 +9719,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="authlib">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 初期化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ログイン
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アカウントの取得
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -10030,6 +10063,39 @@
       authlib
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="authlib">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 初期化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ログイン
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アカウントの取得
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -25183,6 +25249,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="authlib">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 初期化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ログイン
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アカウントの取得
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -25420,14 +25519,18 @@
 <p><br></p>
 <h2 id="04">04. パッケージ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="authlib">authlib<a class="headerlink" href="#authlib" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ 初期化<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p><code>api_base_url</code>と<code>authorize_url</code>のドメインには、外部から接続できるKeycloakのドメインを設定する。</p>
 <p>Kubernetes Serviceのドメインではダメ。</p>
-<div class="highlight"><pre><span></span><code><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">authlib.integrations.flask_client</span> <span class="kn">import</span> <span class="n">OAuth</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="n">oauth</span> <span class="o">=</span> <span class="n">OAuth</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 
 <span class="n">oauth</span><span class="o">.</span><span class="n">register</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;keycloak&quot;</span><span class="p">,</span>
+    <span class="c1"># 例：keycloak、googleなど</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;&lt;IDプロバイダー名&gt;&quot;</span><span class="p">,</span>
     <span class="n">client_id</span><span class="o">=</span><span class="s2">&quot;foo-client&quot;</span><span class="p">,</span>
     <span class="n">client_secret</span><span class="o">=</span><span class="s2">&quot;*****&quot;</span><span class="p">,</span>
     <span class="n">client_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;openid profile email&quot;</span><span class="p">},</span>
@@ -25440,11 +25543,50 @@
 <blockquote>
 <ul>
 <li><a href="https://docs.authlib.org/en/latest/client/flask.html">https://docs.authlib.org/en/latest/client/flask.html</a></li>
+<li><a href="https://docs.authlib.org/en/latest/client/flask.html#flask-openid-connect-client">https://docs.authlib.org/en/latest/client/flask.html#flask-openid-connect-client</a></li>
+</ul>
+</blockquote>
+<h4 id="_8">▼ ログイン<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">redirect</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">login</span><span class="p">():</span>
+    <span class="n">redirect_uri</span> <span class="o">=</span> <span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;authorize&#39;</span><span class="p">,</span> <span class="n">_external</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">oauth</span><span class="o">.</span><span class="n">twitter</span><span class="o">.</span><span class="n">authorize_redirect</span><span class="p">(</span><span class="n">redirect_uri</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/authorize&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">authorize</span><span class="p">():</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">oauth</span><span class="o">.</span><span class="n">twitter</span><span class="o">.</span><span class="n">authorize_access_token</span><span class="p">()</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">oauth</span><span class="o">.</span><span class="n">twitter</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;account/verify_credentials.json&#39;</span><span class="p">)</span>
+    <span class="n">resp</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.authlib.org/en/latest/client/flask.html#routes-for-authorization">https://docs.authlib.org/en/latest/client/flask.html#routes-for-authorization</a></li>
+</ul>
+</blockquote>
+<h4 id="_9">▼ アカウントの取得<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/github&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">show_github_profile</span><span class="p">():</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">oauth</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">)</span>
+    <span class="n">resp</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;github.html&#39;</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="n">profile</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.authlib.org/en/latest/client/flask.html#accessing-oauth-resources">https://docs.authlib.org/en/latest/client/flask.html#accessing-oauth-resources</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h3 id="flask-oidc">flask-oidc<a class="headerlink" href="#flask-oidc" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask_oidc</span> <span class="kn">import</span> <span class="n">OpenIDConnect</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
     <span class="c1"># client_secrets.jsonファイルのパスを設定する</span>
@@ -25454,6 +25596,12 @@
 
 <span class="n">oidc</span> <span class="o">=</span> <span class="n">OpenIDConnect</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/fedora-infra/flask-oidc/">https://github.com/fedora-infra/flask-oidc/</a></li>
+<li><a href="https://gist.github.com/thomasdarimont/145dc9aa857b831ff2eff221b79d179a?permalink_comment_id=4983728#gistcomment-4983728">https://gist.github.com/thomasdarimont/145dc9aa857b831ff2eff221b79d179a?permalink_comment_id=4983728#gistcomment-4983728</a></li>
+</ul>
+</blockquote>
 <h4 id="client_secretsjson">▼ client_secrets.json<a class="headerlink" href="#client_secretsjson" title="Permanent link">&para;</a></h4>
 <p>認証情報をJSONファイルで定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
