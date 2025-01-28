@@ -25420,16 +25420,21 @@
 <p><br></p>
 <h2 id="04">04. パッケージ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="authlib">authlib<a class="headerlink" href="#authlib" title="Permanent link">&para;</a></h3>
+<p><code>api_base_url</code>と<code>authorize_url</code>のドメインには、外部から接続できるKeycloakのドメインを設定する。</p>
+<p>Kubernetes Serviceのドメインではダメ。</p>
 <div class="highlight"><pre><span></span><code><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="n">oauth</span> <span class="o">=</span> <span class="n">OAuth</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
 <span class="n">oauth</span><span class="o">.</span><span class="n">register</span><span class="p">(</span>
     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;keycloak&quot;</span><span class="p">,</span>
     <span class="n">client_id</span><span class="o">=</span><span class="s2">&quot;foo-client&quot;</span><span class="p">,</span>
     <span class="n">client_secret</span><span class="o">=</span><span class="s2">&quot;*****&quot;</span><span class="p">,</span>
     <span class="n">client_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;openid profile email&quot;</span><span class="p">},</span>
-    <span class="n">api_base_url</span><span class="o">=</span><span class="s2">&quot;http://localhost:8080/&quot;</span><span class="p">,</span>
-    <span class="n">authorize_url</span><span class="o">=</span><span class="s2">&quot;http://localhost:8080/auth/realms/dev/protocol/openid-connect/auth&quot;</span><span class="p">,</span>
+    <span class="c1"># 外部から接続できるKeycloakのドメインを設定する。Kubernetes Serviceのドメインではダメ。</span>
+    <span class="n">api_base_url</span><span class="o">=</span><span class="s2">&quot;http://&lt;Keycloakのドメイン&gt;/&quot;</span><span class="p">,</span>
+    <span class="c1"># 外部から接続できるKeycloakのドメインを設定する。Kubernetes Serviceのドメインではダメ。</span>
+    <span class="n">authorize_url</span><span class="o">=</span><span class="s2">&quot;http://&lt;Keycloakのドメイン&gt;/auth/realms/&lt;realm名&gt;&gt;/protocol/openid-connect/auth&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 </code></pre></div>
 <blockquote>
@@ -25437,19 +25442,31 @@
 <li><a href="https://docs.authlib.org/en/latest/client/flask.html">https://docs.authlib.org/en/latest/client/flask.html</a></li>
 </ul>
 </blockquote>
+<p><br></p>
 <h3 id="flask-oidc">flask-oidc<a class="headerlink" href="#flask-oidc" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="c1"># client_secrets.jsonファイルのパスを設定する</span>
+    <span class="s1">&#39;OIDC_CLIENT_SECRETS&#39;</span><span class="p">:</span> <span class="s1">&#39;client_secrets.json&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;OIDC_SCOPES&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;openid&#39;</span><span class="p">,</span> <span class="s1">&#39;profile&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">],</span>
+<span class="p">})</span>
+
+<span class="n">oidc</span> <span class="o">=</span> <span class="n">OpenIDConnect</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</code></pre></div>
 <h4 id="client_secretsjson">▼ client_secrets.json<a class="headerlink" href="#client_secretsjson" title="Permanent link">&para;</a></h4>
+<p>認証情報をJSONファイルで定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;web&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;issuer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;http://localhost:8081/auth/realms/pysaar&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;auth_uri&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;http://localhost:8081/auth/realms/pysaar/protocol/openid-connect/auth&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;issuer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;http://localhost:8081/auth/realms/&lt;realm名&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;auth_uri&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;http://localhost:8081/auth/realms/&lt;realm名&gt;/protocol/openid-connect/auth&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="s">&quot;client_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;flask-app&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="s">&quot;client_secret&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;a41060dd-b5a8-472e-a91f-6a3ab0e04714&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="s">&quot;redirect_uris&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;http://localhost:5000/*&quot;</span><span class="p p-Indicator">],</span>
-<span class="w">      </span><span class="s">&quot;userinfo_uri&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;http://localhost:8081/auth/realms/pysaar/protocol/openid-connect/userinfo&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;token_uri&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;http://localhost:8081/auth/realms/pysaar/protocol/openid-connect/token&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;token_introspection_uri&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;http://localhost:8081/auth/realms/pysaar/protocol/openid-connect/token/introspect&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;userinfo_uri&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;http://localhost:8081/auth/realms/&lt;realm名&gt;/protocol/openid-connect/userinfo&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;token_uri&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;http://localhost:8081/auth/realms/&lt;realm名&gt;/protocol/openid-connect/token&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;token_introspection_uri&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;http://localhost:8081/auth/realms/&lt;realm名&gt;/protocol/openid-connect/token/introspect&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
