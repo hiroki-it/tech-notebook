@@ -176,38 +176,61 @@ if __name__ == '__main__':
 
 ### authlib
 
+`api_base_url`と`authorize_url`のドメインには、外部から接続できるKeycloakのドメインを設定する。
+
+Kubernetes Serviceのドメインではダメ。
+
 ```python
 app = Flask(__name__)
 
 oauth = OAuth(app)
+
 oauth.register(
     name="keycloak",
     client_id="foo-client",
     client_secret="*****",
     client_kwargs={"scope": "openid profile email"},
-    api_base_url="http://localhost:8080/",
-    authorize_url="http://localhost:8080/auth/realms/dev/protocol/openid-connect/auth",
+    # 外部から接続できるKeycloakのドメインを設定する。Kubernetes Serviceのドメインではダメ。
+    api_base_url="http://<Keycloakのドメイン>/",
+    # 外部から接続できるKeycloakのドメインを設定する。Kubernetes Serviceのドメインではダメ。
+    authorize_url="http://<Keycloakのドメイン>/auth/realms/<realm名>>/protocol/openid-connect/auth",
 )
 ```
 
 > - https://docs.authlib.org/en/latest/client/flask.html
 
+<br>
+
 ### flask-oidc
 
+```python
+app = Flask(__name__)
+
+app.config.update({
+    # client_secrets.jsonファイルのパスを設定する
+    'OIDC_CLIENT_SECRETS': 'client_secrets.json',
+    'OIDC_SCOPES': ['openid', 'profile', 'email'],
+})
+
+oidc = OpenIDConnect(app)
+```
+
 #### ▼ client_secrets.json
+
+認証情報をJSONファイルで定義する。
 
 ```yaml
 {
   "web":
     {
-      "issuer": "http://localhost:8081/auth/realms/pysaar",
-      "auth_uri": "http://localhost:8081/auth/realms/pysaar/protocol/openid-connect/auth",
+      "issuer": "http://localhost:8081/auth/realms/<realm名>",
+      "auth_uri": "http://localhost:8081/auth/realms/<realm名>/protocol/openid-connect/auth",
       "client_id": "flask-app",
       "client_secret": "a41060dd-b5a8-472e-a91f-6a3ab0e04714",
       "redirect_uris": ["http://localhost:5000/*"],
-      "userinfo_uri": "http://localhost:8081/auth/realms/pysaar/protocol/openid-connect/userinfo",
-      "token_uri": "http://localhost:8081/auth/realms/pysaar/protocol/openid-connect/token",
-      "token_introspection_uri": "http://localhost:8081/auth/realms/pysaar/protocol/openid-connect/token/introspect",
+      "userinfo_uri": "http://localhost:8081/auth/realms/<realm名>/protocol/openid-connect/userinfo",
+      "token_uri": "http://localhost:8081/auth/realms/<realm名>/protocol/openid-connect/token",
+      "token_introspection_uri": "http://localhost:8081/auth/realms/<realm名>/protocol/openid-connect/token/introspect",
     },
 }
 ```
