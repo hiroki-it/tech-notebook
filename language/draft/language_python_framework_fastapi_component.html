@@ -24455,54 +24455,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. 関数
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. 関数">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#url_for" class="md-nav__link">
-    <span class="md-ellipsis">
-      url_for
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="url_for">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_external" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ _external
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_scheme" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ _scheme
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -24573,31 +24525,6 @@
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/ffggss/items/e4c06f86fb28a62948e0">https://qiita.com/ffggss/items/e4c06f86fb28a62948e0</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="03">03. 関数<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="url_for">url_for<a class="headerlink" href="#url_for" title="Permanent link">&para;</a></h3>
-<h4 id="_external">▼ _external<a class="headerlink" href="#_external" title="Permanent link">&para;</a></h4>
-<p>ホスト名とデフォルトのプロトコル名 (HTTP) のあるURLを作成する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">test_request_context</span><span class="p">():</span>
-    <span class="c1"># http://localhost/</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">_external</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://flask-web-academy.com/article/flask-urlfor/">https://flask-web-academy.com/article/flask-urlfor/</a></li>
-</ul>
-</blockquote>
-<h4 id="_scheme">▼ _scheme<a class="headerlink" href="#_scheme" title="Permanent link">&para;</a></h4>
-<p>ホスト名と指定したプロトコル名のあるURLを作成する。</p>
-<div class="highlight"><pre><span></span><code><span class="n">ith</span> <span class="n">app</span><span class="o">.</span><span class="n">test_request_context</span><span class="p">():</span>
-    <span class="c1"># https://localhost/</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">_external</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">_scheme</span><span class="o">=</span><span class="s1">&#39;https&#39;</span><span class="p">))</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://flask-web-academy.com/article/flask-urlfor/">https://flask-web-academy.com/article/flask-urlfor/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
