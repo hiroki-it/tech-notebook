@@ -50,5 +50,3 @@ class Foo:
 ```
 
 <br>
-
-
