@@ -185,7 +185,7 @@ JWTの発行元認証局を取得できる。
 クライアント側では`authority`値として指定する。
 
 ```bash
-https://<Keycloakのドメイン名>//realms/<realm名>
+GET https://<Keycloakのドメイン名>//realms/<realm名>
 ```
 
 > - https://dev.classmethod.jp/articles/openidconnect-devio2023/#P.24%2520React%25E5%2581%25B4%25E3%2581%25AE%25E8%25A8%25AD%25E5%25AE%259A%25E5%2586%2585%25E5%25AE%25B9%25E7%25A2%25BA%25E8%25AA%258D
@@ -197,7 +197,7 @@ https://<Keycloakのドメイン名>//realms/<realm名>
 Keycloakの他のエンドポイントとは異なり、インターネットから接続できるように公開する必要がある。
 
 ```bash
-https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/auth
+GET https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/auth
 ```
 
 > - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
@@ -209,7 +209,7 @@ https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/a
 (イントロスペクションエンドポイントとの違いがややこしい)
 
 ```bash
-https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/certs
+GET https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/certs
 ```
 
 > - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
@@ -221,7 +221,7 @@ https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/c
 (JWKsエンドポイントとの違いがややこしい)
 
 ```bash
-https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/token/introspect
+POST https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/token/introspect
 ```
 
 > - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
@@ -235,7 +235,7 @@ https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/t
 なお、KeycloakはJWT仕様のアクセストークンを採用している。
 
 ```bash
-https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/token
+GET https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/token
 ```
 
 > - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
@@ -247,18 +247,23 @@ https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/t
 クレームを取得できる。
 
 ```bash
-https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/userinfo
+GET https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/userinfo
 ```
 
 #### ▼ /logout
 
 認証を意図的に無効化する。
 
+- client_id
+- client_secret
+- refresh_token
+
 ```bash
-https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/logout
+POST https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/logout?client_id=<クライアントID>&client_secret=<クライアントシークレット>&refresh_token=<リフレッシュトークン>
 ```
 
 > - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
+> - https://qiita.com/suke_masa/items/e04880c5cf7232b60004
 
 <br>
 
