@@ -416,8 +416,8 @@ nav:
           - ■ フレームワーク:
               - ■ Flask:
                   - コンポーネント: language/language_python_framework_flask_component.md
-                  - コンポーネント: language/language_python_framework_flask_component.md
                   - コマンド: language/language_python_framework_flask_command.md
+                  - パッケージ: language/language_python_framework_flask_package.md
           - ■ パッケージ:
               - パッケージ管理: language/language_python_package_management.md
       - R: language/language_r.md
