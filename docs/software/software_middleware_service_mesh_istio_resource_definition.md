@@ -2409,7 +2409,7 @@ spec:
     # gateway名と両方設定する場合は、デフォルト値としての省略はできない
     - mesh
     # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
-    - foo-egress-gateway
+    - foo-egressgateway
   http:
     # external.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
     - match:
@@ -2426,7 +2426,7 @@ spec:
     - match:
         - gateways:
             # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
-            - foo-egress-gateway
+            - foo-egressgateway
           port: 80
       route:
         - destination:
@@ -2452,7 +2452,7 @@ spec:
     # PodからIstio EgressGatewayのPodへの通信で使用する
     - mesh
     # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
-    - foo-egress-gateway
+    - foo-egressgateway
   tls:
     # external.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
     - match:
@@ -2472,7 +2472,7 @@ spec:
     - match:
         - gateways:
             # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
-            - foo-egress-gateway
+            - foo-egressgateway
           port: 443
       route:
         - destination:
@@ -2497,7 +2497,7 @@ spec:
     - <DBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com
   gateways:
     - mesh
-    - foo-egress-gateway
+    - foo-egressgateway
   tcp:
     - match:
         - gateways:
@@ -2708,14 +2708,14 @@ spec:
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
-  name: foo-virtual-service
+  name: foo-virtual-ingress
 spec:
   exportTo:
     - "*"
   hosts:
     - httpbin.org
   gateways:
-    - foo-igress
+    - foo-ingressgateway
     - mesh
   http:
     - match:
@@ -2731,7 +2731,7 @@ spec:
     - match:
         - gateways:
             # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
-            - foo-igress
+            - foo-ingressgateway
           port: 443
       route:
         - destination:
