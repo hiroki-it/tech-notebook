@@ -17770,6 +17770,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 複数のポートをフォワーディングする
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -26311,6 +26320,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 複数のポートをフォワーディングする
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -27512,6 +27530,39 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:&lt;ホス
 <li><a href="https://qiita.com/superbrothers/items/0dca5d2a10727fc14734#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E5%A4%96%E3%81%8B%E3%82%89-clusterip-%E3%81%AB%E7%B4%90%E3%81%A5%E3%81%8F-pod-%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B">https://qiita.com/superbrothers/items/0dca5d2a10727fc14734#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E5%A4%96%E3%81%8B%E3%82%89-clusterip-%E3%81%AB%E7%B4%90%E3%81%A5%E3%81%8F-pod-%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B</a></li>
 </ul>
 </blockquote>
+<h4 id="_6">▼ 複数のポートをフォワーディングする<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>同じPodやServiceで複数のポートが公開されている場合、同時にポートフォワーディングできる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/&lt;Service名&gt;<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span><span class="m">8443</span>:8443<span class="w"> </span><span class="m">9090</span>:9090
+
+Forwarding<span class="w"> </span>from<span class="w"> </span><span class="m">127</span>.0.0.1:8080<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">8080</span>
+Forwarding<span class="w"> </span>from<span class="w"> </span><span class="o">[</span>::1<span class="o">]</span>:8080<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">8080</span>
+Forwarding<span class="w"> </span>from<span class="w"> </span><span class="m">127</span>.0.0.1:8443<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">8443</span>
+Forwarding<span class="w"> </span>from<span class="w"> </span><span class="o">[</span>::1<span class="o">]</span>:8443<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">8443</span>
+Forwarding<span class="w"> </span>from<span class="w"> </span><span class="m">127</span>.0.0.1:8443<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">9090</span>
+Forwarding<span class="w"> </span>from<span class="w"> </span><span class="o">[</span>::1<span class="o">]</span>:8443<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">9090</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/derailed/k9s/issues/779#issue-642826402">https://github.com/derailed/k9s/issues/779#issue-642826402</a></li>
+</ul>
+</blockquote>
+<p>異なるPodやServiceの場合、<code>&amp;</code> (一つだけ) でつなぐと、同時にポートフォワーディングできる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/&lt;Service名&gt;<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/&lt;Service名&gt;<span class="w"> </span><span class="m">8443</span>:8443<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/&lt;Service名&gt;<span class="w"> </span><span class="m">9090</span>:9090
+
+Forwarding<span class="w"> </span>from<span class="w"> </span><span class="m">127</span>.0.0.1:8080<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">8080</span>
+Forwarding<span class="w"> </span>from<span class="w"> </span><span class="o">[</span>::1<span class="o">]</span>:8080<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">8080</span>
+Forwarding<span class="w"> </span>from<span class="w"> </span><span class="m">127</span>.0.0.1:8443<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">8443</span>
+Forwarding<span class="w"> </span>from<span class="w"> </span><span class="o">[</span>::1<span class="o">]</span>:8443<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">8443</span>
+Forwarding<span class="w"> </span>from<span class="w"> </span><span class="m">127</span>.0.0.1:8443<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">9090</span>
+Forwarding<span class="w"> </span>from<span class="w"> </span><span class="o">[</span>::1<span class="o">]</span>:8443<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">9090</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/72983554">https://stackoverflow.com/a/72983554</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="proxy">proxy<a class="headerlink" href="#proxy" title="Permanent link">&para;</a></h3>
 <h4 id="proxy_1">▼ proxyとは<a class="headerlink" href="#proxy_1" title="Permanent link">&para;</a></h4>
@@ -27697,7 +27748,7 @@ Server<span class="w"> </span>Version:<span class="w"> </span>version.Info<span 
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-30</span>
   </span>
 
     
