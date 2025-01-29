@@ -356,7 +356,7 @@ ff02::2 ip6-allrouters
 192.168.58.2    control-plane.minikube
 ```
 
-少しややこしいが、
+(フロントエンドのPodがKeycloakのPodとの間で認証処理を実施する時は、実際には`localhost`でリクエストを送信する必要があり、なぜかよくわからない...)
 
 > - https://minikube.sigs.k8s.io/docs/handbook/host-access/
 

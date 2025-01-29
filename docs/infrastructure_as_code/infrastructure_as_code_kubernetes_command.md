@@ -1494,6 +1494,40 @@ $ curl http://127.0.0.1:<ホストポート番号>
 > - https://stackoverflow.com/questions/53898627/mysql-remote-connect-over-ssh-to-a-kubernetes-pod
 > - https://qiita.com/superbrothers/items/0dca5d2a10727fc14734#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E5%A4%96%E3%81%8B%E3%82%89-clusterip-%E3%81%AB%E7%B4%90%E3%81%A5%E3%81%8F-pod-%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B
 
+#### ▼ 複数のポートをフォワーディングする
+
+同じPodやServiceで複数のポートが公開されている場合、同時にポートフォワーディングできる。
+
+```bash
+$ kubectl port-forward svc/<Service名> 8080:8080 8443:8443 9090:9090
+
+Forwarding from 127.0.0.1:8080 -> 8080
+Forwarding from [::1]:8080 -> 8080
+Forwarding from 127.0.0.1:8443 -> 8443
+Forwarding from [::1]:8443 -> 8443
+Forwarding from 127.0.0.1:8443 -> 9090
+Forwarding from [::1]:8443 -> 9090
+```
+
+> - https://github.com/derailed/k9s/issues/779#issue-642826402
+
+異なるPodやServiceの場合、`&` (一つだけ) でつなぐと、同時にポートフォワーディングできる。
+
+```bash
+$ kubectl port-forward svc/<Service名> 8080:8080 & \
+    kubectl port-forward svc/<Service名> 8443:8443 & \
+    kubectl port-forward svc/<Service名> 9090:9090
+
+Forwarding from 127.0.0.1:8080 -> 8080
+Forwarding from [::1]:8080 -> 8080
+Forwarding from 127.0.0.1:8443 -> 8443
+Forwarding from [::1]:8443 -> 8443
+Forwarding from 127.0.0.1:8443 -> 9090
+Forwarding from [::1]:8443 -> 9090
+```
+
+> - https://stackoverflow.com/a/72983554
+
 <br>
 
 ### proxy

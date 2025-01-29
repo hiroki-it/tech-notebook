@@ -630,7 +630,9 @@ $ tracepath -n google.com
 
 #### ▼ tcptracerouteとは
 
-`traceroute`コマンドのバージョンによっては、`-T`オプションがない場合があり、代わりとして`tcptraceroute`コマンドを使用する。
+`traceroute`コマンドのバージョンによっては、`-T`オプションがない場合がある。
+
+その場合の代わりとして`tcptraceroute`コマンドを使用する。
 
 > - https://succzero.hatenablog.com/entry/2013/09/01/181615
 
