@@ -43,20 +43,20 @@ oauth.register(
     client_secret="*****",
     client_kwargs={"scope": "openid profile email"},
     # 外部から接続できるKeycloakのドメインを設定する。Kubernetes Serviceのドメインではダメ。
-    api_base_url="http://<Keycloakのドメイン>/",
+    api_base_url="http://<KeycloakのAPIのドメイン (Serviceの完全修飾ドメイン名) >/",
     # 外部から接続できるKeycloakのドメインを設定する。Kubernetes Serviceのドメインではダメ。
-    authorize_url="http://<Keycloakのドメイン>/realms/<realm名>>/protocol/openid-connect/auth",
+    authorize_url="http://<KeycloakのWebのドメイン>/realms/<realm名>>/protocol/openid-connect/auth",
     # Serviceの完全修飾ドメイン名
-    access_token_url="http://keycloak-http.app.svc.cluster.local:8080/realms/dev/protocol/openid-connect/token",
+    access_token_url="http://<KeycloakのAPIのドメイン>:8080/realms/dev/protocol/openid-connect/token",
     # Serviceの完全修飾ドメイン名
-    jwks_uri="http://keycloak-http.app.svc.cluster.local:8080/realms/dev/protocol/openid-connect/certs"
+    jwks_uri="http://<KeycloakのAPIのドメイン (Serviceの完全修飾ドメイン名) >:8080/realms/dev/protocol/openid-connect/certs"
 )
 ```
 
 IDプロバイダー名を指定し、ここで設定した変数を取得できる。
 
 ```python
-# http://<Keycloakのドメイン>/
+# http://<KeycloakのAPIのドメイン>/
 print(oauth.<IDプロバイダー名>.api_base_url)
 ```
 
@@ -111,7 +111,7 @@ from flask import url_for, redirect
 @app.route('/logout')
 def logout():
     # Keycloakからログアウトする
-    redirect_uri = ("%s/realms/dev/protocol/openid-connect/logout?id_token_hint=%s&post_logout_redirect_uri=%s" % (oauth.keycloak.api_base_url, session.get('id_token', ''), url_for("front", _external=True)))
+    redirect_uri = ("<KeycloakのWebのドメイン>/realms/dev/protocol/openid-connect/logout?id_token_hint=%s&post_logout_redirect_uri=%s" % (session.get('id_token', ''), url_for("front", _external=True)))
 
     # セッションデータを削除する
     session.pop('access_token', None)

@@ -43,7 +43,7 @@ import Keycloak from "keycloak-js";
 
 // JavaScriptパッケージを初期化する
 const keycloak = new Keycloak({
-  url: "http://<Keycloakのドメイン名>",
+  url: "http://<KeycloakのWebのドメイン名>",
   realm: "<realm名>",
   clientId: "<クライアントID>",
 });
@@ -89,7 +89,7 @@ const authLink = setContext((_, {headers}) => {
 import Keycloak from "keycloak-js";
 
 const keycloak = new Keycloak({
-  url: "http://<Keycloakのドメイン名>",
+  url: "http://<KeycloakのWebのドメイン名>",
   realm: "<realm名>",
   clientId: "<クライアントID>",
 });
@@ -111,7 +111,7 @@ keycloak.onAuthSuccess = () => {
 import Keycloak from "keycloak-js";
 
 const keycloak = new Keycloak({
-  url: "http://<Keycloakのドメイン名>",
+  url: "http://<KeycloakのWebのドメイン名>",
   realm: "<realm名>",
   clientId: "<クライアントID>",
 });
