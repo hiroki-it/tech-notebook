@@ -1648,6 +1648,12 @@ RequestAuthenticationの適用範囲の仕組みは、AuthorizationPolicyと同�
 
 もし、適用範囲を小さくしたい場合は、`.spec.selector`キーを使用する。
 
+IstioコントロールプレーンのログからRequestAuthenticationをデバッグできる。
+
+```bash
+$ kubectl logs <IstiodコントロールプレーンのPod> -n istio-system
+```
+
 <br>
 
 ### .spec.jwtRules

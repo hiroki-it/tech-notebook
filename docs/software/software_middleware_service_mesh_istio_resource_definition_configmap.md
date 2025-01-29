@@ -29,6 +29,19 @@ Istiodコントロールプレーン (`discovery`コンテナ) による中間�
 
 各マイクロサービスに配布された証明書を検証するために使用される。
 
+Istioコントロールプレーンのログから、CA証明書の作成を確認できる。
+
+```bash
+2025-01-26T11:21:09.391516Z	info	initializing Istiod DNS certificates host: istiod-1-24-2.istio-system.svc, custom host:
+2025-01-29T11:43:03.694183Z	info	Generating istiod-signed cert for [istio-pilot.istio-system.svc istiod-1-24-2.istio-system.svc istiod-remote.istio-system.svc istiod.istio-system.svc]:
+
+-----BEGIN CERTIFICATE-----
+*****
+-----END CERTIFICATE-----
+
+
+```
+
 ![istio_istio-ca-root-cert](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-ca-root-cert.png)
 
 > - https://zufardhiyaulhaq.com/Replacing-Istio-CA-certificate/

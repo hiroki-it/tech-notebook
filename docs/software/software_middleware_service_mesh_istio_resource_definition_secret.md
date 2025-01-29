@@ -23,9 +23,22 @@ Istioの各種コンポーネントの機密な変数やファイルを管理す
 
 ### istio-ca-secretとは
 
-Istiodコントロールプレーンのための証明書を管理する。
+Istiodコントロールプレーンの自己署名のための証明書を管理する。
 
 Istiodコントロールプレーンは、`istio-ca-secret`を使用して、自身がルート認証局であることを署名する。
+
+Istioコントロールプレーンのログから、自己署名のための証明書の作成を確認できる。
+
+```bash
+2025-01-26T11:21:09.206877Z	info	Use self-signed certificate as the CA certificate
+2025-01-26T11:21:09.208455Z	info	pkica	CASecret istio-ca-secret not found, will create one
+2025-01-26T11:21:09.388146Z	info	pkica	Using self-generated public key:
+
+-----BEGIN CERTIFICATE-----
+*****
+-----END CERTIFICATE-----
+
+```
 
 ![istio_istio-ca-root-cert](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-ca-root-cert.png)
 
