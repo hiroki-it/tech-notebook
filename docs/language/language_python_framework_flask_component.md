@@ -311,36 +311,45 @@ from flask import url_for, redirect
 
 @app.route('/login')
 def login():
-    redirect_uri = url_for('authorize', _external=True)
-    return oauth.twitter.authorize_redirect(redirect_uri)
+    redirect_uri = url_for("callback", _external=True)
+    return oauth.keycloak.authorize_redirect(redirect_uri)
 
-@app.route('/authorize')
-def authorize():
-    token = oauth.twitter.authorize_access_token()
-    resp = oauth.twitter.get('account/verify_credentials.json')
-    resp.raise_for_status()
-    profile = resp.json()
-    return redirect('/')
+@app.route("/callback")
+def callback():
+    # 認可レスポンスを取得する
+    authorization_response = oauth.keycloak.authorize_access_token()
+    session['access_token'] = authorization_response['access_token']
+    session['id_token'] = authorization_response['id_token']
+
+    # デコードしたIDトークンを認可レスポンスから取得する
+    id_token = oauth.keycloak.parse_id_token(authorization_response, None)
+    session['user'] = id_token['given_name']
+
+    # ホームにリダイレクトする
+    redirect_uri = url_for('front', _external=True)
+    return redirect(redirect_uri)
 ```
 
 > - https://docs.authlib.org/en/latest/client/flask.html#routes-for-authorization
 > - https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py
 
-#### ▼ アカウントの取得
+#### ▼ ログアウト
 
 ```python
-from flask import render_template
+from flask import url_for, redirect
 
-@app.route('/github')
-def show_github_profile():
-    resp = oauth.github.get('user')
-    resp.raise_for_status()
-    profile = resp.json()
-    return render_template('github.html', profile=profile)
+@app.route('/logout')
+def logout():
+    # Keycloakからログアウトする
+    redirect_uri = ("%s/realms/dev/protocol/openid-connect/logout?id_token_hint=%s&post_logout_redirect_uri=%s" % (oauth.keycloak.api_base_url, session.get('id_token', ''), url_for("front", _external=True)))
+
+    # セッションデータを削除する
+    session.pop('access_token', None)
+    session.pop('id_token', None)
+    session.pop('user', None)
+
+    return redirect(redirect_uri)
 ```
-
-> - https://docs.authlib.org/en/latest/client/flask.html#accessing-oauth-resources
-> - https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py
 
 <br>
 
