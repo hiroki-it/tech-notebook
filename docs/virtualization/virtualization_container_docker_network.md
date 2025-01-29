@@ -129,8 +129,6 @@ $ curl --fail http://127.0.0.1:8080
 
 コンテナ間のネットワーク接続の成否を確認できる。
 
-コンテナのホスト名の定義方法については、以下のリンクを参考にせよ。
-
 **＊例＊**
 
 『アプリコンテナ』から『Webコンテナ』に対して、リクエストを送信し、アプリコンテナとWebコンテナの間の成否を確認する。
@@ -139,8 +137,6 @@ $ curl --fail http://127.0.0.1:8080
 # コンテナ内で実行
 $ curl --fail http://<webコンテナに割り当てたホスト名>:80/
 ```
-
-> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html
 
 #### ▼ 『コンテナ』から『ホスト (`host.docker.internal`) 』にリクエスト
 

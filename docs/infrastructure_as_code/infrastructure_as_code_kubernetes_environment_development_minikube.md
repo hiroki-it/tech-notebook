@@ -288,7 +288,7 @@ docker@minikube:~$ cat /etc/cni/net.d/100-crio-bridge.conf
 
 <br>
 
-### Minikube外のdockerネットワークに接続
+### Minikube外のdockerネットワーク宛にリクエスト
 
 Minikubeは、dockerドライバーを使用した場合、デフォルトで`minikube`というdockerネットワークが作成する。
 
@@ -324,6 +324,41 @@ networks:
 ```
 
 > - https://zenn.dev/kacky/articles/1e9e3a9b6306d9#docker-compose%E5%81%B4
+
+<br>
+
+### Minikube内の『コンテナ』からホスト (`host.minikube.internal`) にリクエスト
+
+Minikube内の『コンテナ』から『ホスト』に対して、リクエストを送信する。
+
+```bash
+# コンテナに接続する
+$ kubectl exec -it <Pod名> -- bash
+
+# コンテナからホストにリクエストを送信する
+$ curl host.minikube.internal
+```
+
+DNS名は、Minikube内の`/etc/hosts`ファイルに定義されている。
+
+```bash
+$ minikube ssh
+                                                                        (current-context is not set)
+docker@minikube:~$ cat /etc/hosts
+127.0.0.1       localhost
+::1     localhost ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+192.168.58.2    minikube
+192.168.65.254  host.minikube.internal
+192.168.58.2    control-plane.minikube
+```
+
+少しややこしいが、
+
+> - https://minikube.sigs.k8s.io/docs/handbook/host-access/
 
 <br>
 
