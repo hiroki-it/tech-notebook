@@ -17836,7 +17836,16 @@
           <li class="md-nav__item">
   <a href="#minikubedocker" class="md-nav__link">
     <span class="md-ellipsis">
-      Minikube外のdockerネットワークに接続
+      Minikube外のdockerネットワーク宛にリクエスト
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minikube-hostminikubeinternal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minikube内の『コンテナ』からホスト (host.minikube.internal) にリクエスト
     </span>
   </a>
   
@@ -25068,7 +25077,16 @@
           <li class="md-nav__item">
   <a href="#minikubedocker" class="md-nav__link">
     <span class="md-ellipsis">
-      Minikube外のdockerネットワークに接続
+      Minikube外のdockerネットワーク宛にリクエスト
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minikube-hostminikubeinternal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minikube内の『コンテナ』からホスト (host.minikube.internal) にリクエスト
     </span>
   </a>
   
@@ -25523,7 +25541,7 @@ docker@minikube:~$<span class="w"> </span>cat<span class="w"> </span>/etc/cni/ne
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="minikubedocker">Minikube外のdockerネットワークに接続<a class="headerlink" href="#minikubedocker" title="Permanent link">&para;</a></h3>
+<h3 id="minikubedocker">Minikube外のdockerネットワーク宛にリクエスト<a class="headerlink" href="#minikubedocker" title="Permanent link">&para;</a></h3>
 <p>Minikubeは、dockerドライバーを使用した場合、デフォルトで<code>minikube</code>というdockerネットワークが作成する。</p>
 <p>プロファイル名を指定した場合、その名前のネットワークになる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> </span>ls
@@ -25552,6 +25570,35 @@ b1bdec6c4578<span class="w">   </span>minikube<span class="w">             </spa
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/kacky/articles/1e9e3a9b6306d9#docker-compose%E5%81%B4">https://zenn.dev/kacky/articles/1e9e3a9b6306d9#docker-compose%E5%81%B4</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="minikube-hostminikubeinternal">Minikube内の『コンテナ』からホスト (<code>host.minikube.internal</code>) にリクエスト<a class="headerlink" href="#minikube-hostminikubeinternal" title="Permanent link">&para;</a></h3>
+<p>Minikube内の『コンテナ』から『ホスト』に対して、リクエストを送信する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># コンテナに接続する</span>
+$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>--<span class="w"> </span>bash
+
+<span class="c1"># コンテナからホストにリクエストを送信する</span>
+$<span class="w"> </span>curl<span class="w"> </span>host.minikube.internal
+</code></pre></div>
+<p>DNS名は、Minikube内の<code>/etc/hosts</code>ファイルに定義されている。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>ssh
+<span class="w">                                                                        </span><span class="o">(</span>current-context<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span><span class="nb">set</span><span class="o">)</span>
+docker@minikube:~$<span class="w"> </span>cat<span class="w"> </span>/etc/hosts
+<span class="m">127</span>.0.0.1<span class="w">       </span>localhost
+::1<span class="w">     </span>localhost<span class="w"> </span>ip6-localhost<span class="w"> </span>ip6-loopback
+fe00::0<span class="w"> </span>ip6-localnet
+ff00::0<span class="w"> </span>ip6-mcastprefix
+ff02::1<span class="w"> </span>ip6-allnodes
+ff02::2<span class="w"> </span>ip6-allrouters
+<span class="m">192</span>.168.58.2<span class="w">    </span>minikube
+<span class="m">192</span>.168.65.254<span class="w">  </span>host.minikube.internal
+<span class="m">192</span>.168.58.2<span class="w">    </span>control-plane.minikube
+</code></pre></div>
+<p>少しややこしいが、</p>
+<blockquote>
+<ul>
+<li><a href="https://minikube.sigs.k8s.io/docs/handbook/host-access/">https://minikube.sigs.k8s.io/docs/handbook/host-access/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -25673,7 +25720,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class=
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-29</span>
   </span>
 
     

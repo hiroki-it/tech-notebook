@@ -24937,17 +24937,11 @@ $<span class="w"> </span>curl<span class="w"> </span>--fail<span class="w"> </sp
 <p>ここでのコンテナのホスト名は、コンテナ内の『<code>/etc/hosts</code>』に定義されたものとなる。</p>
 <p>リクエストはホストを経由せず、そのままコンテナに送信される。</p>
 <p>コンテナ間のネットワーク接続の成否を確認できる。</p>
-<p>コンテナのホスト名の定義方法については、以下のリンクを参考にせよ。</p>
 <p><strong>＊例＊</strong></p>
 <p>『アプリコンテナ』から『Webコンテナ』に対して、リクエストを送信し、アプリコンテナとWebコンテナの間の成否を確認する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># コンテナ内で実行</span>
 $<span class="w"> </span>curl<span class="w"> </span>--fail<span class="w"> </span>http://&lt;webコンテナに割り当てたホスト名&gt;:80/
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html">https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html</a></li>
-</ul>
-</blockquote>
 <h4 id="hostdockerinternal">▼ 『コンテナ』から『ホスト (<code>host.docker.internal</code>) 』にリクエスト<a class="headerlink" href="#hostdockerinternal" title="Permanent link">&para;</a></h4>
 <p>『コンテナ』から『ホスト』に対して、リクエストを送信する。</p>
 <p>ここでのホスト側のホスト名は、『<code>host.docker.internal</code>』になる。</p>
@@ -24978,7 +24972,7 @@ $<span class="w"> </span>curl<span class="w"> </span>--fail<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-29</span>
   </span>
 
     
