@@ -232,11 +232,11 @@ oauth.register(
     # 外部から接続できるKeycloakのドメインを設定する。Kubernetes Serviceのドメインではダメ。
     api_base_url="http://<Keycloakのドメイン>/",
     # 外部から接続できるKeycloakのドメインを設定する。Kubernetes Serviceのドメインではダメ。
-    authorize_url="http://<Keycloakのドメイン>/auth/realms/<realm名>>/protocol/openid-connect/auth",
+    authorize_url="http://<Keycloakのドメイン>/realms/<realm名>>/protocol/openid-connect/auth",
     # Serviceの完全修飾ドメイン名
-    access_token_url="http://keycloak-http.app.svc.cluster.local:8080/auth/realms/dev/protocol/openid-connect/token",
+    access_token_url="http://keycloak-http.app.svc.cluster.local:8080/realms/dev/protocol/openid-connect/token",
     # Serviceの完全修飾ドメイン名
-    jwks_uri="http://keycloak-http.app.svc.cluster.local:8080/auth/realms/dev/protocol/openid-connect/certs"
+    jwks_uri="http://keycloak-http.app.svc.cluster.local:8080/realms/dev/protocol/openid-connect/certs"
 )
 ```
 
@@ -318,14 +318,14 @@ oidc = OpenIDConnect(app)
 {
   "web":
     {
-      "issuer": "http://localhost:8081/auth/realms/<realm名>",
-      "auth_uri": "http://localhost:8081/auth/realms/<realm名>/protocol/openid-connect/auth",
+      "issuer": "http://localhost:8081/realms/<realm名>",
+      "auth_uri": "http://localhost:8081/realms/<realm名>/protocol/openid-connect/auth",
       "client_id": "flask-app",
       "client_secret": "a41060dd-b5a8-472e-a91f-6a3ab0e04714",
       "redirect_uris": ["http://localhost:5000/*"],
-      "userinfo_uri": "http://localhost:8081/auth/realms/<realm名>/protocol/openid-connect/userinfo",
-      "token_uri": "http://localhost:8081/auth/realms/<realm名>/protocol/openid-connect/token",
-      "token_introspection_uri": "http://localhost:8081/auth/realms/<realm名>/protocol/openid-connect/token/introspect",
+      "userinfo_uri": "http://localhost:8081/realms/<realm名>/protocol/openid-connect/userinfo",
+      "token_uri": "http://localhost:8081/realms/<realm名>/protocol/openid-connect/token",
+      "token_introspection_uri": "http://localhost:8081/realms/<realm名>/protocol/openid-connect/token/introspect",
     },
 }
 ```

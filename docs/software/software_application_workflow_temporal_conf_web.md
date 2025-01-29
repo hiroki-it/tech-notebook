@@ -42,7 +42,7 @@ enabled: true
     issuerUrl:
     clientId: xxxxx-xxxx.apps.googleusercontent.com
     clientSecret: xxxxxxxxxxxxxxxxxxxx
-    callbackUrl: https://xxxx.com:8080/auth/sso/callback
+    callbackUrl: https://xxxx.com:8080/sso/callback
     scopes:
       - openid
       - profile

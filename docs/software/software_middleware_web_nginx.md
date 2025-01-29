@@ -555,7 +555,7 @@ http {
             proxy_set_header    X-Forwarded-Proto  $scheme;
         }
 
-        location /keycloak/auth/ {
+        location /keycloak/ {
             # 認可エンドポイントにトークン検証リクエストを送信する
             proxy_pass          $scheme://<Keycloakのドメイン>/realms/<realm名>;
             proxy_set_header    Host               $host;

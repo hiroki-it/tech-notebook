@@ -258,6 +258,8 @@ GET https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-conne
 
 ```bash
 GET https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/logout?id_token_hint=<IDトークン>&post_logout_redirect_uri=<クライアントシークレット>
+
+# state、ui_locakesが必要な場合もある
 ```
 
 ```bash
@@ -282,7 +284,7 @@ POST https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-conn
 ```yaml
 # リクエスト
 # IDプロバイダーのログアウトエンドポイント
-POST /auth/realms/<realm名>/protocol/openid-connect/logout HTTP/1.1
+POST /realms/<realm名>/protocol/openid-connect/logout HTTP/1.1
 ---
 Host: <Keycloakのドメイン名>
 Content-Type: application/x-www-form-urlencoded
@@ -309,7 +311,7 @@ IDプロバイダーは、バックエンドアプリケーションのバック
 ```yaml
 # リクエスト
 # バックエンドアプリケーションのバックチャネルログアウトエンドポイント
-POST /auth/k_logout HTTP/1.1
+POST /k_logout HTTP/1.1
 ---
 Host: localhost:8000
 Content-Type: application/x-www-form-urlencoded
@@ -363,7 +365,7 @@ HTTP/1.1 204 No Content
 ```yaml
 # リクエスト
 # IDプロバイダーのログアウトエンドポイント
-GET http://<Keycloakのドメイン名>/auth/realms/<realm名>/protocol/openid-connect/logout?id_token_hint=eyJhbGciOiJS...RE2AZmGgKJAj-HlHw&post_logout_redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fauth%2Flogout%2Fcomplete&state=e18689b0503aab42574427fb575645aca0065bb758aa8463acf4506fe8a61e81
+GET http://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/logout?id_token_hint=eyJhbGciOiJS...RE2AZmGgKJAj-HlHw&post_logout_redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fauth%2Flogout%2Fcomplete&state=e18689b0503aab42574427fb575645aca0065bb758aa8463acf4506fe8a61e81
 ```
 
 | パラメーター               | 説明                          |
@@ -382,7 +384,7 @@ IDプロバイダーのログアウトエンドポイントは、ブラウザに
 ```yaml
 # レスポンス
 HTTP/1.1 307 Temporary Redirect
-http://localhost:8000/auth/logout/complete?state=e18689b0503aab42574427fb575645aca0065bb758aa8463acf4506fe8a61e81
+http://localhost:8000/logout/complete?state=e18689b0503aab42574427fb575645aca0065bb758aa8463acf4506fe8a61e81
 ```
 
 | パラメーター | 説明                                  |
