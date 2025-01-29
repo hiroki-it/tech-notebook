@@ -154,6 +154,7 @@
   > - ##### <u>Flask</u>
   >   > - ##### [︎コンポーネント](https://hiroki-it.github.io/tech-notebook/language/language_python_framework_flask_component.html)
   >   > - ##### [︎コマンド](https://hiroki-it.github.io/tech-notebook/language/language_python_framework_flask_command.html)
+  >   > - ##### [パッケージ](https://hiroki-it.github.io/tech-notebook/language/language_python_framework_flask_package.html)
 
 - #### <u>パッケージ</u>
   > - ##### [︎パッケージ管理](https://hiroki-it.github.io/tech-notebook/language/language_python_package_management.html)

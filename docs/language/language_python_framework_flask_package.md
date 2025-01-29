@@ -15,7 +15,7 @@ description: パッケージ＠Flaskの知見を記録しています。
 
 ## 01. authlib.integrations.flask_client
 
-###  authlib.integrations.flask_clientとは
+### authlib.integrations.flask_clientとは
 
 > - https://github.com/lepture/authlib/tree/master/authlib/integrations/flask_client
 
@@ -24,7 +24,6 @@ description: パッケージ＠Flaskの知見を記録しています。
 ### 初期化
 
 #### ▼ 全体
-
 
 特にKubernetes内では、`api_base_url`と`authorize_url`のドメインに、外部から接続できるKeycloakのドメインを設定する。
 
@@ -83,7 +82,7 @@ def login():
 def callback():
     # 認可レスポンスを取得する
     authorization_response = oauth.keycloak.authorize_access_token()
-    
+
     # アクセストークンやIDトークンをセッションデータとして保存する
     session['access_token'] = authorization_response['access_token']
     session['id_token'] = authorization_response['id_token']
@@ -105,7 +104,6 @@ def callback():
 ### ログアウト
 
 #### ▼ 全体
-
 
 ```python
 from flask import url_for, redirect
