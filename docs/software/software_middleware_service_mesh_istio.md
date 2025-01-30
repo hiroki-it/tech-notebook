@@ -708,6 +708,8 @@ Istio上のEnvoyは、アクセスログをログ収集ツール (例：OpenTele
 
 #### ▼ スパンの作成
 
+![istio_distributed_tracing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_distributed_tracing.png)
+
 Istio上のEnvoyは、スパンを作成する。
 
 スパンの作成場所としては、いくつか種類がある。
