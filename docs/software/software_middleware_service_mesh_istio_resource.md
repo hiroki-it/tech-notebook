@@ -785,6 +785,20 @@ Istio`v1.3`より前は、ConfigMapでデフォルトで`REGISTRY_ONLY`になっ
 
 <br>
 
+## 06. Sidecar
+
+### Sidecarとは
+
+`istio-proxy`コンテナに最初限のネットワーク設定を適用する。
+
+デフォルトでは、サービスメッシュに登録した全てのPod間が通信できる。
+
+Sidecarを使用すると、指定した設定以外の通信を除去し、特定のPod間でのみ通信できるようになる。
+
+> - https://jksdaba.hatenablog.com/entry/2021/03/29/013423
+
+<br>
+
 ### ServiceEntryと同時に必要なリソース
 
 #### ▼ Istio EgressGateway

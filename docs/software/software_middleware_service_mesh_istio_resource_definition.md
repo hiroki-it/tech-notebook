@@ -2128,7 +2128,72 @@ spec:
 
 ## 10. Sidecar
 
-記入中...
+### .spec.workloadSelector
+
+適用対象のWorkloadを設定する。
+
+設定しない場合、Namespace内の全てのPodが対象になる。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: Sidecar
+metadata:
+  name: foo
+  namespace: foo
+spec:
+  workloadSelector:
+    labels:
+      app: foo-1
+```
+
+<br>
+
+### .spec.ingress
+
+インバウンド通信のプロキシ時の接続情報を設定する。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: Sidecar
+metadata:
+  name: foo
+  namespace: foo
+spec:
+  workloadSelector:
+    labels:
+      app: foo-1
+  ingress:
+    - port:
+        number: 80
+        protocol: HTTP
+        name: http-ingress
+      defaultEndpoint: 127.0.0.1:80
+```
+
+<br>
+
+### .spec.egress
+
+アウトバウンド通信のプロキシ時の接続情報を設定する。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: Sidecar
+metadata:
+  name: foo
+  namespace: foo
+spec:
+  workloadSelector:
+    labels:
+      app: foo-1
+  egress:
+    - port:
+        number: 80
+        protocol: HTTP
+        name: http-egress
+      hosts:
+        - bar-namespace.svc.cluster.local
+```
 
 <br>
 
