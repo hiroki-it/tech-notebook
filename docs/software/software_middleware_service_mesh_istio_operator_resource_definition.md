@@ -149,9 +149,6 @@ baseコンポーネントのオプションを設定する。
 
 baseコンポーネントを有効化しないと、カスタムリソースを作成できない。
 
-> - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
-> - https://github.com/istio/istio/issues/22491#issuecomment-604745090
-
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
@@ -164,11 +161,12 @@ spec:
       enabled: "true"
 ```
 
+> - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
+> - https://github.com/istio/istio/issues/22491#issuecomment-604745090
+
 #### ▼ cni
 
 istio-cniコンポーネントのオプションを設定する。
-
-> - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -182,6 +180,8 @@ spec:
       enabled: "true"
       namespace: kube-system
 ```
+
+> - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 
 #### ▼ egressGateways
 
@@ -245,11 +245,6 @@ spec:
                 targetPort: 80
 ```
 
-補足として、以下の方法でユーザー定義のIstio IngressGatewayを作成できる (かなり大変) 。
-
-> - https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d
-> - https://github.com/istio/istio/issues/23303
-
 最終的な設定値は、`kubectl get`コマンドで確認できる。
 
 ```yaml
@@ -311,11 +306,14 @@ status:
     - ip: *.*.*.*
 ```
 
+補足として、以下の方法でユーザー定義のIstio IngressGatewayを作成できる (かなり大変) 。
+
+> - https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d
+> - https://github.com/istio/istio/issues/23303
+
 #### ▼ istiodRemote
 
 istiodコンポーネントのオプションを設定する。
-
-> - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -329,9 +327,9 @@ spec:
       enabled: "false"
 ```
 
-#### ▼ pilot
-
 > - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
+
+#### ▼ pilot
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -345,13 +343,13 @@ spec:
       enabled: "true"
 ```
 
+> - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
+
 <br>
 
 ### .spec.defaultRevision
 
 #### ▼ defaultRevisionとは
-
-> - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -362,6 +360,8 @@ metadata:
 spec:
   defaultRevision: "true"
 ```
+
+> - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
 <br>
 
@@ -389,8 +389,6 @@ spec:
 
 IstioOperator管理で作成されるIstioリソースのNamespaceを設定する。
 
-> - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
-
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
@@ -400,6 +398,8 @@ metadata:
 spec:
   namespace: foo-namespace
 ```
+
+> - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
 <br>
 
@@ -411,8 +411,6 @@ spec:
 
 実際には設定済みのIstioOperatorである。
 
-> - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
-
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
@@ -422,6 +420,8 @@ metadata:
 spec:
   profile: default
 ```
+
+> - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
 <br>
 
@@ -433,9 +433,6 @@ Istiodコントロールプレーンをカナリアリリースを使用して�
 
 バージョンの表記方法がハイフン繋ぎであることに注意する。
 
-> - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
-> - https://istio.io/latest/docs/setup/upgrade/canary/
-
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
@@ -446,6 +443,9 @@ spec:
   revision: 1-10-0 # ハイフン繋ぎのバージョン表記
 ```
 
+> - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
+> - https://istio.io/latest/docs/setup/upgrade/canary/
+
 <br>
 
 ### .spec.tag
@@ -453,9 +453,6 @@ spec:
 #### ▼ tagとは
 
 Istioリソースを構成するコンテナのベースイメージのバージョンを設定する。
-
-> - https://hub.docker.com/r/istio/proxyv2/tags
-> - https://github.com/istio/istio/blob/1.14.3/pilot/docker/Dockerfile.proxyv2
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -466,6 +463,9 @@ metadata:
 spec:
   tag: 1.12.1
 ```
+
+> - https://hub.docker.com/r/istio/proxyv2/tags
+> - https://github.com/istio/istio/blob/1.14.3/pilot/docker/Dockerfile.proxyv2
 
 <br>
 
@@ -608,8 +608,6 @@ spec:
 
 `istio-proxy`コンテナごとのオプション値を設定する。
 
-> - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#custom-templates-experimental
-
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
@@ -626,5 +624,7 @@ spec:
             - name: istio-proxy
               ...
 ```
+
+> - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#custom-templates-experimental
 
 <br>
