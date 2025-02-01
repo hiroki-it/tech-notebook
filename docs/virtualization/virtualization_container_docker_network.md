@@ -21,7 +21,15 @@ description: ネットワーク＠Dockerの知見を記録しています。
 
 ![docker_bridge-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_bridge-network.png)
 
-bridgeネットワークは、コンテナのネットワークインターフェース (`eth`) 、ホストの仮想ネットワークインターフェース (`veth`) 、ホストのブリッジ (`docker0`) 、NATルーター (iptables) 、ホストのネットワークインターフェース (`eth`) 、といったコンポーネントから構成される。
+bridgeネットワークは、
+
+-
+- 両端にネットワークインターフェースをもつ仮想イーサネット (`veth`)
+- 仮想ブリッジ (`docker0`)
+- NATルーター (iptables)
+- 両端にネットワークインターフェースをもつホストイーサネット (`eth`)
+
+といったコンポーネントから構成される。
 
 ホスト上にブリッジを作成し、`L2` (データリンク層) で複数のコンテナ間を接続する。
 
@@ -37,6 +45,47 @@ docker0         8000.02426c931c59       no              vethc06ae92
 ```
 
 > - https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html
+> - https://tech.quartetcom.co.jp/2022/06/29/docker-bridge-network/
+
+仮想ネットワークインターフェースのIPアドレス
+
+```bash
+docker network inspect foo-network
+
+[
+    {
+        "Name": "foo-network",
+        "Id": "*****",
+        "Created": "2025-02-01T09:10:16.535005673Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    # ネットワークのサブネットマスク
+                    "Subnet": "172.18.0.0/16",
+                    # ホストの仮想ネットワークインターフェース (veth)
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {},
+        "Options": {},
+        "Labels": {}
+    }
+]
+
+```
 
 #### ▼ 経路例
 

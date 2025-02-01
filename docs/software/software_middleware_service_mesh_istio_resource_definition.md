@@ -2146,6 +2146,8 @@ spec:
       app: foo-1
 ```
 
+> - https://istio.io/latest/docs/reference/config/networking/sidecar/#Sidecar
+
 <br>
 
 ### .spec.ingress
@@ -2169,6 +2171,8 @@ spec:
         name: http-ingress
       defaultEndpoint: 127.0.0.1:80
 ```
+
+> - https://istio.io/latest/docs/reference/config/networking/sidecar/#IstioIngressListener
 
 <br>
 
@@ -2194,6 +2198,8 @@ spec:
       hosts:
         - bar-namespace.svc.cluster.local
 ```
+
+> - https://istio.io/latest/docs/reference/config/networking/sidecar/#IstioEgressListener
 
 <br>
 
