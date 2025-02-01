@@ -23,7 +23,7 @@ description: ネットワーク＠Dockerの知見を記録しています。
 
 bridgeネットワークは、
 
--
+- コンテナイーサネット (`eth`)
 - 両端にネットワークインターフェースをもつ仮想イーサネット (`veth`)
 - 仮想ブリッジ (`docker0`)
 - NATルーター (iptables)
@@ -31,7 +31,7 @@ bridgeネットワークは、
 
 といったコンポーネントから構成される。
 
-ホスト上にブリッジを作成し、`L2` (データリンク層) で複数のコンテナ間を接続する。
+ホスト上に`docker0`ブリッジを作成し、`L2` (データリンク層) で複数のコンテナ間を接続する。
 
 また、ホストのiptablesがNAPTルーターとして働き、ブリッジとホストの間を接続する。
 
@@ -43,9 +43,6 @@ $ brctl show docker0
 bridge name     bridge id               STP enabled     interfaces
 docker0         8000.02426c931c59       no              vethc06ae92
 ```
-
-> - https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html
-> - https://tech.quartetcom.co.jp/2022/06/29/docker-bridge-network/
 
 仮想ネットワークインターフェースのIPアドレス
 
@@ -65,9 +62,9 @@ docker network inspect foo-network
             "Options": {},
             "Config": [
                 {
-                    # ネットワークのサブネットマスク
+                    # docker0ブリッジのサブネットマスク
                     "Subnet": "172.18.0.0/16",
-                    # ホストの仮想ネットワークインターフェース (veth)
+                    # docker0ブリッジのゲートウェイのIPアドレス
                     "Gateway": "172.18.0.1"
                 }
             ]
@@ -84,8 +81,17 @@ docker network inspect foo-network
         "Labels": {}
     }
 ]
-
 ```
+
+ブリッジのサブネットマスクとゲートウェイのIPアドレスは自動で割り当てられるが、明示的に設定することもできる。
+
+```bash
+$ docker network create foo-network --subnet=172.18.0.0/16 --gateway=172.18.0.1
+```
+
+> - https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html
+> - https://tech.quartetcom.co.jp/2022/06/29/docker-bridge-network/
+> - https://qiita.com/Toyo_m/items/52fa81948d5746dd2afc#docker%E3%81%AE%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9
 
 #### ▼ 経路例
 
