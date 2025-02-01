@@ -24810,7 +24810,13 @@
 <h3 id="bridge">bridgeネットワーク<a class="headerlink" href="#bridge" title="Permanent link">&para;</a></h3>
 <h4 id="bridge_1">▼ bridgeネットワークとは<a class="headerlink" href="#bridge_1" title="Permanent link">&para;</a></h4>
 <p><img alt="docker_bridge-network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_bridge-network.png" /></p>
-<p>bridgeネットワークは、コンテナのネットワークインターフェース (<code>eth</code>) 、ホストの仮想ネットワークインターフェース (<code>veth</code>) 、ホストのブリッジ (<code>docker0</code>) 、NATルーター (iptables) 、ホストのネットワークインターフェース (<code>eth</code>) 、といったコンポーネントから構成される。</p>
+<p>bridgeネットワークは、</p>
+<p>-
+- 両端にネットワークインターフェースをもつ仮想イーサネット (<code>veth</code>)
+- 仮想ブリッジ (<code>docker0</code>)
+- NATルーター (iptables)
+- 両端にネットワークインターフェースをもつホストイーサネット (<code>eth</code>)</p>
+<p>といったコンポーネントから構成される。</p>
 <p>ホスト上にブリッジを作成し、<code>L2</code> (データリンク層) で複数のコンテナ間を接続する。</p>
 <p>また、ホストのiptablesがNAPTルーターとして働き、ブリッジとホストの間を接続する。</p>
 <p><code>brctl</code>コマンドを使用し、<code>docker0</code>ブリッジがどの仮想インターフェースと接続されているかを確認できる。</p>
@@ -24822,8 +24828,45 @@ docker0<span class="w">         </span><span class="m">8000</span>.02426c931c59<
 <blockquote>
 <ul>
 <li><a href="https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html">https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html</a></li>
+<li><a href="https://tech.quartetcom.co.jp/2022/06/29/docker-bridge-network/">https://tech.quartetcom.co.jp/2022/06/29/docker-bridge-network/</a></li>
 </ul>
 </blockquote>
+<p>仮想ネットワークインターフェースのIPアドレス</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>network<span class="w"> </span>inspect<span class="w"> </span>foo-network
+
+<span class="o">[</span>
+<span class="w">    </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;Name&quot;</span>:<span class="w"> </span><span class="s2">&quot;foo-network&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;Id&quot;</span>:<span class="w"> </span><span class="s2">&quot;*****&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;Created&quot;</span>:<span class="w"> </span><span class="s2">&quot;2025-02-01T09:10:16.535005673Z&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;Scope&quot;</span>:<span class="w"> </span><span class="s2">&quot;local&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;Driver&quot;</span>:<span class="w"> </span><span class="s2">&quot;bridge&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;EnableIPv6&quot;</span>:<span class="w"> </span>false,
+<span class="w">        </span><span class="s2">&quot;IPAM&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">&quot;Driver&quot;</span>:<span class="w"> </span><span class="s2">&quot;default&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;Options&quot;</span>:<span class="w"> </span><span class="o">{}</span>,
+<span class="w">            </span><span class="s2">&quot;Config&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">                </span><span class="o">{</span>
+<span class="w">                    </span><span class="c1"># ネットワークのサブネットマスク</span>
+<span class="w">                    </span><span class="s2">&quot;Subnet&quot;</span>:<span class="w"> </span><span class="s2">&quot;172.18.0.0/16&quot;</span>,
+<span class="w">                    </span><span class="c1"># ホストの仮想ネットワークインターフェース (veth)</span>
+<span class="w">                    </span><span class="s2">&quot;Gateway&quot;</span>:<span class="w"> </span><span class="s2">&quot;172.18.0.1&quot;</span>
+<span class="w">                </span><span class="o">}</span>
+<span class="w">            </span><span class="o">]</span>
+<span class="w">        </span><span class="o">}</span>,
+<span class="w">        </span><span class="s2">&quot;Internal&quot;</span>:<span class="w"> </span>false,
+<span class="w">        </span><span class="s2">&quot;Attachable&quot;</span>:<span class="w"> </span>false,
+<span class="w">        </span><span class="s2">&quot;Ingress&quot;</span>:<span class="w"> </span>false,
+<span class="w">        </span><span class="s2">&quot;ConfigFrom&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">&quot;Network&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">        </span><span class="o">}</span>,
+<span class="w">        </span><span class="s2">&quot;ConfigOnly&quot;</span>:<span class="w"> </span>false,
+<span class="w">        </span><span class="s2">&quot;Containers&quot;</span>:<span class="w"> </span><span class="o">{}</span>,
+<span class="w">        </span><span class="s2">&quot;Options&quot;</span>:<span class="w"> </span><span class="o">{}</span>,
+<span class="w">        </span><span class="s2">&quot;Labels&quot;</span>:<span class="w"> </span><span class="o">{}</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="o">]</span>
+</code></pre></div>
 <h4 id="_2">▼ 経路例<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p>サーバーに対するリクエストがコンテナに届くまでを以下に示す。サーバーの<code>8080</code>番ポートと、WWWコンテナの<code>80</code>番ポートのアプリケーションの間で、ポートフォワーディングを行う。これにより、『<code>http://&lt;サーバーのプライベートIPアドレス (localhost) &gt;:8080</code>』にリクエストを送信すると、WWWコンテナのポート番号に転送されるようになる。</p>
 <table>
@@ -24972,7 +25015,7 @@ $<span class="w"> </span>curl<span class="w"> </span>--fail<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-01</span>
   </span>
 
     

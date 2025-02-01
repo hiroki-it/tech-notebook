@@ -29766,6 +29766,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-1</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/sidecar/#Sidecar">https://istio.io/latest/docs/reference/config/networking/sidecar/#Sidecar</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="specingress">.spec.ingress<a class="headerlink" href="#specingress" title="Permanent link">&para;</a></h3>
 <p>インバウンド通信のプロキシ時の接続情報を設定する。</p>
@@ -29785,6 +29790,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-ingress</span>
 <span class="w">      </span><span class="nt">defaultEndpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1:80</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/sidecar/#IstioIngressListener">https://istio.io/latest/docs/reference/config/networking/sidecar/#IstioIngressListener</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="specegress">.spec.egress<a class="headerlink" href="#specegress" title="Permanent link">&para;</a></h3>
 <p>アウトバウンド通信のプロキシ時の接続情報を設定する。</p>
@@ -29805,6 +29815,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-namespace.svc.cluster.local</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/sidecar/#IstioEgressListener">https://istio.io/latest/docs/reference/config/networking/sidecar/#IstioEgressListener</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="11-telemetry">11. Telemetry<a class="headerlink" href="#11-telemetry" title="Permanent link">&para;</a></h2>
 <h3 id="metadatanamespace_2">.metadata.namespace<a class="headerlink" href="#metadatanamespace_2" title="Permanent link">&para;</a></h3>
@@ -30709,7 +30724,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-01</span>
   </span>
 
     
