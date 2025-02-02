@@ -143,25 +143,57 @@ kind: Namespace
 metadata:
   name: app
   labels:
-    istio.io/use-waypoint: istio-waypoint-ingress
+    # Gatewayの名前
+    istio.io/use-waypoint: istio-waypoint
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: istio-egress
   labels:
-    istio.io/use-waypoint: istio-waypoint-egress
+    # Gatewayの名前
+    istio.io/use-waypoint: istio-waypoint
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: istio-ingress
   labels:
-    istio.io/use-waypoint: istio-waypoint-ingress
+    # Gatewayの名前
+    istio.io/use-waypoint: istio-waypoint
 ```
 
 > - https://istio.io/latest/docs/reference/config/labels/#IoIstioUseWaypoint
 > - https://istio.io/latest/docs/ambient/architecture/data-plane/
+
+<br>
+
+### istio.io/waypoint-for
+
+waypoint-proxyの宛先とするKubernetesリソースを設定する。
+
+- `service` (Service)
+- `workload` (Pod、Virtual Machine)
+- `all` (Service、Pod、Virtual Machine)
+- `none` (無効にする)
+
+```yaml
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  labels:
+    istio.io/waypoint-for: service
+  name: istio-waypoint
+spec:
+  gatewayClassName: istio-waypoint
+  listeners:
+    - name: tcp-ztunnel
+      port: 15008
+      protocol: HBONE
+      allowedRoutes:
+        namespaces:
+          from: All
+```
 
 <br>
 
