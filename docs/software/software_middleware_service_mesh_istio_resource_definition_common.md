@@ -58,6 +58,8 @@ metadata:
 
 ### istio.io/rev
 
+#### ▼ istio.io/revとは
+
 指定したNamespaceに所属するPod内に`istio-proxy`コンテナを自動的にインジェクションするか否かを設定する。
 
 IstoOperatorの`.spec.revision`キーと同じである。
@@ -97,6 +99,8 @@ metadata:
 
 ### istio.io/dataplane-mode
 
+#### ▼ istio.io/dataplane-modeとは
+
 アンビエントモードの場合に、設定したNamespaceでZtunnelを有効化する。
 
 このラベルがついているNamespaceのみで、ZtunnelへのリダイレクトによってPodは`L4`のトラフィックを送受信できる。
@@ -126,16 +130,21 @@ metadata:
 
 > - https://istio.io/latest/docs/reference/config/labels/#IoIstioDataplaneMode
 > - https://istio.io/latest/docs/ambient/architecture/data-plane/
+> - https://istio.io/latest/docs/ambient/usage/add-workloads/#ambient-labels
 
 <br>
 
 ### istio.io/use-waypoint
+
+#### ▼ istio.io/use-waypointとは
 
 アンビエントモードの場合に、設定したNamespaceでwaypoint-proxyを有効化する。
 
 waypoint-proxyと紐づくGateway名 (Gateway API) を指定する。
 
 このラベルがついているNamespaceのみで、waypoint-proxyへのリダイレクトによってPodは`L7`のトラフィックを送受信できる。
+
+もし、`istio.io/use-waypoint`を設定したNamespaceにwaypoint-proxyが一緒にいない場合は、`istio.io/use-waypoint-namespace`でwaypoint-proxyにいるNamespaceを指定する必要がある。
 
 ```yaml
 apiVersion: v1
@@ -165,10 +174,13 @@ metadata:
 
 > - https://istio.io/latest/docs/reference/config/labels/#IoIstioUseWaypoint
 > - https://istio.io/latest/docs/ambient/architecture/data-plane/
+> - https://istio.io/latest/docs/ambient/usage/waypoint/#configure-resources-to-use-a-cross-namespace-waypoint-proxy
 
 <br>
 
 ### istio.io/waypoint-for
+
+#### ▼ istio.io/waypoint-forとは
 
 waypoint-proxyの宛先とするKubernetesリソースを設定する。
 

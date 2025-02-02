@@ -203,7 +203,7 @@ data:
   mesh: |
     discoverySelectors:
       - matchLabels:
-          istio.io/rev: stable
+          istio.io/rev: default
 ```
 
 > - https://istio.io/latest/news/releases/1.22.x/announcing-1.22/upgrade-notes/#default-value-of-the-feature-flag-enhanced_resource_scoping-to-true
