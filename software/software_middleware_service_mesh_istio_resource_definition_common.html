@@ -4868,9 +4868,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#istioiorev_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ istio.io/revとは
+      ▼ サイドカーモードの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アンビエンドモードの場合
     </span>
   </a>
   
@@ -4930,6 +4939,30 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#istioiouse-waypoint-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      istio.io/use-waypoint-namespace
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="istio.io/use-waypoint-namespace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#istioiouse-waypoint-namespace_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ istio.io/use-waypoint-namespaceとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#istioiowaypoint-for" class="md-nav__link">
     <span class="md-ellipsis">
       istio.io/waypoint-for
@@ -4978,7 +5011,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#istioiorev_2" class="md-nav__link">
+  <a href="#istioiorev_1" class="md-nav__link">
     <span class="md-ellipsis">
       istio.io/rev
     </span>
@@ -24713,9 +24746,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#istioiorev_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ istio.io/revとは
+      ▼ サイドカーモードの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アンビエンドモードの場合
     </span>
   </a>
   
@@ -24775,6 +24817,30 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#istioiouse-waypoint-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      istio.io/use-waypoint-namespace
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="istio.io/use-waypoint-namespace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#istioiouse-waypoint-namespace_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ istio.io/use-waypoint-namespaceとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#istioiowaypoint-for" class="md-nav__link">
     <span class="md-ellipsis">
       istio.io/waypoint-for
@@ -24823,7 +24889,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#istioiorev_2" class="md-nav__link">
+  <a href="#istioiorev_1" class="md-nav__link">
     <span class="md-ellipsis">
       istio.io/rev
     </span>
@@ -24985,8 +25051,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="istioiorev">istio.io/rev<a class="headerlink" href="#istioiorev" title="Permanent link">&para;</a></h3>
-<h4 id="istioiorev_1">▼ istio.io/revとは<a class="headerlink" href="#istioiorev_1" title="Permanent link">&para;</a></h4>
+<h4 id="_2">▼ サイドカーモードの場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p>指定したNamespaceに所属するPod内に<code>istio-proxy</code>コンテナを自動的にインジェクションするか否かを設定する。</p>
+<p>また、サイドカーモードのカナリアアップグレードにも使用できる。</p>
 <p>IstoOperatorの<code>.spec.revision</code>キーと同じである。</p>
 <p><code>.metadata.labels.istio-injection</code>キーとはコンフリクトを発生させるため、どちらかしか使えない (<code>.metadata.labels.istio-injection</code>キーの値が<code>disabled</code>の場合は共存できる) 。</p>
 <p><code>.metadata.labels.istio.io/rev</code>キーを使用する場合、Istioのアップグレードがカナリア方式になる。</p>
@@ -25017,6 +25084,23 @@
 <li><a href="https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110">https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110</a></li>
 </ul>
 </blockquote>
+<h4 id="_3">▼ アンビエンドモードの場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p><code>istio-proxy</code>コンテナからwaypoint-proxyを作成する。</p>
+<p>また、アンビエントモードのカナリアアップグレードにも使用できる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">istio.io/dataplane-mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ambient</span>
+<span class="w">    </span><span class="nt">istio.io/use-waypoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-waypoint</span>
+<span class="w">    </span><span class="nt">istio.io/rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/ambient/upgrade/helm/">https://istio.io/latest/docs/ambient/upgrade/helm/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="istioiodataplane-mode">istio.io/dataplane-mode<a class="headerlink" href="#istioiodataplane-mode" title="Permanent link">&para;</a></h3>
 <h4 id="istioiodataplane-mode_1">▼ istio.io/dataplane-modeとは<a class="headerlink" href="#istioiodataplane-mode_1" title="Permanent link">&para;</a></h4>
@@ -25033,15 +25117,13 @@
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-egress</span>
-<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">istio.io/dataplane-mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ambient</span>
+<span class="w">  </span><span class="c1"># istio-engressにはラベルは不要である</span>
 <span class="nn">---</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-ingress</span>
-<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">istio.io/dataplane-mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ambient</span>
+<span class="w">  </span><span class="c1"># istio-engressにはラベルは不要である</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -25056,7 +25138,25 @@
 <p>アンビエントモードの場合に、設定したNamespaceでwaypoint-proxyを有効化する。</p>
 <p>waypoint-proxyと紐づくGateway名 (Gateway API) を指定する。</p>
 <p>このラベルがついているNamespaceのみで、waypoint-proxyへのリダイレクトによってPodは<code>L7</code>のトラフィックを送受信できる。</p>
-<p>もし、<code>istio.io/use-waypoint</code>を設定したNamespaceにwaypoint-proxyが一緒にいない場合は、<code>istio.io/use-waypoint-namespace</code>でwaypoint-proxyにいるNamespaceを指定する必要がある。</p>
+<p>もし、<code>istio.io/use-waypoint</code>を設定したNamespaceにwaypoint-proxy (Gateway APIのNamespaceによって決まる) が一緒にいない場合は、<code>istio.io/use-waypoint-namespace</code>でwaypoint-proxyにいるNamespaceを指定する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># Gatewayの名前</span>
+<span class="w">    </span><span class="nt">istio.io/use-waypoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-waypoint</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/labels/#IoIstioUseWaypoint">https://istio.io/latest/docs/reference/config/labels/#IoIstioUseWaypoint</a></li>
+<li><a href="https://istio.io/latest/docs/ambient/architecture/data-plane/">https://istio.io/latest/docs/ambient/architecture/data-plane/</a></li>
+<li><a href="https://istio.io/latest/docs/ambient/usage/waypoint/#configure-resources-to-use-a-cross-namespace-waypoint-proxy">https://istio.io/latest/docs/ambient/usage/waypoint/#configure-resources-to-use-a-cross-namespace-waypoint-proxy</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="istioiouse-waypoint-namespace">istio.io/use-waypoint-namespace<a class="headerlink" href="#istioiouse-waypoint-namespace" title="Permanent link">&para;</a></h3>
+<h4 id="istioiouse-waypoint-namespace_1">▼ istio.io/use-waypoint-namespaceとは<a class="headerlink" href="#istioiouse-waypoint-namespace_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -25070,21 +25170,22 @@
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-egress</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># Gatewayの名前</span>
 <span class="w">    </span><span class="nt">istio.io/use-waypoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-waypoint</span>
+<span class="w">    </span><span class="c1"># Gatewayの名前</span>
+<span class="w">    </span><span class="nt">istio.io/use-namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 <span class="nn">---</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-ingress</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># Gatewayの名前</span>
 <span class="w">    </span><span class="nt">istio.io/use-waypoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-waypoint</span>
+<span class="w">    </span><span class="c1"># Gatewayの名前</span>
+<span class="w">    </span><span class="nt">istio.io/use-namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://istio.io/latest/docs/reference/config/labels/#IoIstioUseWaypoint">https://istio.io/latest/docs/reference/config/labels/#IoIstioUseWaypoint</a></li>
-<li><a href="https://istio.io/latest/docs/ambient/architecture/data-plane/">https://istio.io/latest/docs/ambient/architecture/data-plane/</a></li>
+<li><a href="https://www.solo.io/blog/istio-ambient-waypoint-proxy-deployment-model-explained">https://www.solo.io/blog/istio-ambient-waypoint-proxy-deployment-model-explained</a></li>
 <li><a href="https://istio.io/latest/docs/ambient/usage/waypoint/#configure-resources-to-use-a-cross-namespace-waypoint-proxy">https://istio.io/latest/docs/ambient/usage/waypoint/#configure-resources-to-use-a-cross-namespace-waypoint-proxy</a></li>
 </ul>
 </blockquote>
@@ -25124,7 +25225,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="istioiorev_2">istio.io/rev<a class="headerlink" href="#istioiorev_2" title="Permanent link">&para;</a></h3>
+<h3 id="istioiorev_1">istio.io/rev<a class="headerlink" href="#istioiorev_1" title="Permanent link">&para;</a></h3>
 <p>IstoOperatorの<code>.spec.revision</code>キーと同じ。</p>
 <p>特定のPodで、Istioとこれのカナリアリリースを有効化するか否かを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
