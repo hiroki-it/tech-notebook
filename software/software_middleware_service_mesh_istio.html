@@ -26350,7 +26350,7 @@
 <h4 id="_5">▼ 仕組み<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>実体はDaemonSet配下のPodであり、Nodeごとにスケジューリングされている。</p>
 <p>ztunnelは、<code>/var/run/ztunnel/ztunnel.sock</code>ファイル経由でistio-cniに接続する。</p>
-<p>そのため、ztunnelはIstio CNIと同じNode上に作成する必要がある (Namespaceは違っていても良い) 。</p>
+<p>そのため、ztunnelはistio-cniと同じNode上に作成する必要がある (Namespaceは違っていても良い) 。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/istio/istio/wiki/Troubleshooting-Istio-Ambient#scenario-pod-fails-to-run-with-failed-to-create-pod-sandbox">https://github.com/istio/istio/wiki/Troubleshooting-Istio-Ambient#scenario-pod-fails-to-run-with-failed-to-create-pod-sandbox</a></li>
@@ -26383,6 +26383,10 @@
 <h3 id="istio-cni">istio-cni<a class="headerlink" href="#istio-cni" title="Permanent link">&para;</a></h3>
 <h4 id="istio-cni_1">▼ istio-cniとは<a class="headerlink" href="#istio-cni_1" title="Permanent link">&para;</a></h4>
 <p>アンビエントモードにおいて、サイドカーモードの<code>istio-init</code>コンテナと同じ役割をもつ。</p>
+<p>DaemonSetとして稼働する。</p>
+<p><code>kube-system</code>のNamespaceにおき、PriorityClassを<code>system-node-critical</code>とすることが推奨である。</p>
+<p>istio-cniは、<code>/var/run/ztunnel/ztunnel.sock</code>ファイル経由でztunnelから接続される。</p>
+<p>そのため、istio-cniはztunnelと同じNode上に作成する必要がある (Namespaceは違っていても良い) 。</p>
 <p><br></p>
 <h3 id="envoy">Envoy<a class="headerlink" href="#envoy" title="Permanent link">&para;</a></h3>
 <p>(たぶん) Envoyの設定値は以下のように機能している。</p>
