@@ -95,9 +95,11 @@ metadata:
 
 <br>
 
-### istio.io/use-waypoint
+### istio.io/dataplane-mode
 
-アンビエントモードの場合に、設定したNamespaceでサービスメッシュの管理を有効化する。
+アンビエントモードの場合に、設定したNamespaceでZtunnelを有効化する。
+
+このラベルがついているNamespaceのみで、ZtunnelへのリダイレクトによってPodは`L4`のトラフィックを送受信できる。
 
 ```yaml
 apiVersion: v1
@@ -122,15 +124,18 @@ metadata:
     istio.io/dataplane-mode: ambient
 ```
 
+> - https://istio.io/latest/docs/reference/config/labels/#IoIstioDataplaneMode
+> - https://istio.io/latest/docs/ambient/architecture/data-plane/
+
 <br>
 
 ### istio.io/use-waypoint
 
-アンビエントモードの場合に、設定したNamespaceでWaypointを有効化する。
+アンビエントモードの場合に、設定したNamespaceでwaypoint-proxyを有効化する。
 
-Waypointと紐づくGateway名 (Gateway API) を指定する。
+waypoint-proxyと紐づくGateway名 (Gateway API) を指定する。
 
-このラベルがついているNamespaceのみで、`L7`がWaypointにリダイレクトされる。
+このラベルがついているNamespaceのみで、waypoint-proxyへのリダイレクトによってPodは`L7`のトラフィックを送受信できる。
 
 ```yaml
 apiVersion: v1
@@ -154,6 +159,9 @@ metadata:
   labels:
     istio.io/use-waypoint: istio-waypoint-ingress
 ```
+
+> - https://istio.io/latest/docs/reference/config/labels/#IoIstioUseWaypoint
+> - https://istio.io/latest/docs/ambient/architecture/data-plane/
 
 <br>
 
