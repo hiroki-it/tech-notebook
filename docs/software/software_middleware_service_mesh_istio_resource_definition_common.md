@@ -58,9 +58,11 @@ metadata:
 
 ### istio.io/rev
 
-#### ▼ istio.io/revとは
+#### ▼ サイドカーモードの場合
 
 指定したNamespaceに所属するPod内に`istio-proxy`コンテナを自動的にインジェクションするか否かを設定する。
+
+また、サイドカーモードのカナリアアップグレードにも使用できる。
 
 IstoOperatorの`.spec.revision`キーと同じである。
 
@@ -95,6 +97,25 @@ metadata:
 
 > - https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
 
+#### ▼ アンビエンドモードの場合
+
+`istio-proxy`コンテナからwaypoint-proxyを作成する。
+
+また、アンビエントモードのカナリアアップグレードにも使用できる。
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app
+  labels:
+    istio.io/dataplane-mode: ambient
+    istio.io/use-waypoint: istio-waypoint
+    istio.io/rev: default
+```
+
+> - https://istio.io/latest/docs/ambient/upgrade/helm/
+
 <br>
 
 ### istio.io/dataplane-mode
@@ -117,15 +138,13 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: istio-egress
-  labels:
-    istio.io/dataplane-mode: ambient
+  # istio-engressにはラベルは不要である
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: istio-ingress
-  labels:
-    istio.io/dataplane-mode: ambient
+  # istio-engressにはラベルは不要である
 ```
 
 > - https://istio.io/latest/docs/reference/config/labels/#IoIstioDataplaneMode
@@ -144,7 +163,27 @@ waypoint-proxyと紐づくGateway名 (Gateway API) を指定する。
 
 このラベルがついているNamespaceのみで、waypoint-proxyへのリダイレクトによってPodは`L7`のトラフィックを送受信できる。
 
-もし、`istio.io/use-waypoint`を設定したNamespaceにwaypoint-proxyが一緒にいない場合は、`istio.io/use-waypoint-namespace`でwaypoint-proxyにいるNamespaceを指定する必要がある。
+もし、`istio.io/use-waypoint`を設定したNamespaceにwaypoint-proxy (Gateway APIのNamespaceによって決まる) が一緒にいない場合は、`istio.io/use-waypoint-namespace`でwaypoint-proxyにいるNamespaceを指定する必要がある。
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app
+  labels:
+    # Gatewayの名前
+    istio.io/use-waypoint: istio-waypoint
+```
+
+> - https://istio.io/latest/docs/reference/config/labels/#IoIstioUseWaypoint
+> - https://istio.io/latest/docs/ambient/architecture/data-plane/
+> - https://istio.io/latest/docs/ambient/usage/waypoint/#configure-resources-to-use-a-cross-namespace-waypoint-proxy
+
+<br>
+
+### istio.io/use-waypoint-namespace
+
+#### ▼ istio.io/use-waypoint-namespaceとは
 
 ```yaml
 apiVersion: v1
@@ -160,20 +199,21 @@ kind: Namespace
 metadata:
   name: istio-egress
   labels:
-    # Gatewayの名前
     istio.io/use-waypoint: istio-waypoint
+    # Gatewayの名前
+    istio.io/use-namespace: app
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: istio-ingress
   labels:
-    # Gatewayの名前
     istio.io/use-waypoint: istio-waypoint
+    # Gatewayの名前
+    istio.io/use-namespace: app
 ```
 
-> - https://istio.io/latest/docs/reference/config/labels/#IoIstioUseWaypoint
-> - https://istio.io/latest/docs/ambient/architecture/data-plane/
+> - https://www.solo.io/blog/istio-ambient-waypoint-proxy-deployment-model-explained
 > - https://istio.io/latest/docs/ambient/usage/waypoint/#configure-resources-to-use-a-cross-namespace-waypoint-proxy
 
 <br>
