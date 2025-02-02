@@ -396,7 +396,7 @@ metadata:
   namespace: istio-system
   name: istio-operator
 spec:
-  namespace: foo-namespace
+  namespace: foo
 ```
 
 > - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec

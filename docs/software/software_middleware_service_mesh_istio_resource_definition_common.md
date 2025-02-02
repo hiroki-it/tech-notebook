@@ -29,7 +29,7 @@ description: メタデータ＠Istioの知見を記録しています。
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: app-namespace
+  name: app
   labels:
     istio-injection: enabled
 ```
@@ -40,14 +40,14 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: observability-namespace
+  name: observability
   labels:
     istio-injection: disabled # disabledであれば、istio.io/revキーと共存できる。
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: chaos-mesh-namespace
+  name: chaos-mesh
   labels:
     istio-injection: disabled # disabledであれば、istio.io/revキーと共存できる。
 ```
@@ -72,26 +72,88 @@ IstoOperatorの`.spec.revision`キーと同じである。
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: app-namespace
+  name: app
   labels:
     istio.io/rev: default
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: observability-namespace
+  name: observability
   labels:
     istio-injection: disabled # disabledであれば、istio.io/revキーと共存できる。
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: chaos-mesh-namespace
+  name: chaos-mesh
   labels:
     istio-injection: disabled # disabledであれば、istio.io/revキーと共存できる。
 ```
 
 > - https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
+
+<br>
+
+### istio.io/use-waypoint
+
+アンビエントモードの場合に、設定したNamespaceでサービスメッシュの管理を有効化する。
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app
+  labels:
+    istio.io/dataplane-mode: ambient
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: istio-egress
+  labels:
+    istio.io/dataplane-mode: ambient
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: istio-ingress
+  labels:
+    istio.io/dataplane-mode: ambient
+```
+
+<br>
+
+### istio.io/use-waypoint
+
+アンビエントモードの場合に、設定したNamespaceでWaypointを有効化する。
+
+Waypointと紐づくGateway名 (Gateway API) を指定する。
+
+このラベルがついているNamespaceのみで、`L7`がWaypointにリダイレクトされる。
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app
+  labels:
+    istio.io/use-waypoint: istio-waypoint-ingress
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: istio-egress
+  labels:
+    istio.io/use-waypoint: istio-waypoint-egress
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: istio-ingress
+  labels:
+    istio.io/use-waypoint: istio-waypoint-ingress
+```
 
 <br>
 
