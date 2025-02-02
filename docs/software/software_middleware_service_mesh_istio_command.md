@@ -66,14 +66,14 @@ Istioの機能のセットを提供する。
 
 #### ▼ プロファイルの種類
 
-| ユースケース         | default  |   demo   |                 empty                 | external |       minimal        | openshift | preview | remote |
-| :------------------- | :------: | :------: | :-----------------------------------: | :------: | :------------------: | :-------: | :-----: | :----: |
-| 概要                 | 本番環境 | 開発環境 | Istioリソースを全てカスタマイズしたい |   なし   | 最小限の機能が欲しい |    ？     |  なし   |   ？   |
-| istio-egressgateway  |   なし   |    ✅    |                 なし                  |   なし   |         なし         |    ？     |  なし   |   ？   |
-| istio-ingressgateway |    ✅    |    ✅    |                 なし                  |   なし   |         なし         |    ？     |   ✅    |   ？   |
-| istiod               |    ✅    |    ✅    |                 なし                  |   なし   |          ✅          |    ？     |   ✅    |   ？   |
+| ユースケース         | default  |   demo   |                 empty                 | external |       minimal        | openshift | preview | remote | ambient   |
+| :------------------- | :------: | :------: | :-----------------------------------: | :------: | :------------------: | :-------: | :-----: | :----: | --------- |
+| 概要                 | 本番環境 | 開発環境 | Istioリソースを全てカスタマイズしたい |   なし   | 最小限の機能が欲しい |    ？     |  なし   |   ？   | 記入中... |
+| istio-egressgateway  |   なし   |    ✅    |                 なし                  |   なし   |         なし         |    ？     |  なし   |   ？   | 記入中... |
+| istio-ingressgateway |    ✅    |    ✅    |                 なし                  |   なし   |         なし         |    ？     |   ✅    |   ？   | 記入中... |
+| istiod               |    ✅    |    ✅    |                 なし                  |   なし   |          ✅          |    ？     |   ✅    |   ？   | 記入中... |
 
-> - https://github.com/istio/istio/blob/1.14.3/manifests/profiles
+> - https://github.com/istio/istio/tree/1.24.2/manifests/profiles
 > - https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html
 > - https://betterprogramming.pub/getting-started-with-istio-on-kubernetes-e582800121ea
 
