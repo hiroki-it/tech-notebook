@@ -152,7 +152,7 @@ ztunnelが`L4` (トランスポート層) のプロトコル (例：TCP、UDPな
 
 ztunnelは、`/var/run/ztunnel/ztunnel.sock`ファイル経由でistio-cniに接続する。
 
-そのため、ztunnelはIstio CNIと同じNode上に作成する必要がある (Namespaceは違っていても良い) 。
+そのため、ztunnelはistio-cniと同じNode上に作成する必要がある (Namespaceは違っていても良い) 。
 
 > - https://github.com/istio/istio/wiki/Troubleshooting-Istio-Ambient#scenario-pod-fails-to-run-with-failed-to-create-pod-sandbox
 
@@ -190,6 +190,14 @@ spec:
 #### ▼ istio-cniとは
 
 アンビエントモードにおいて、サイドカーモードの`istio-init`コンテナと同じ役割をもつ。
+
+DaemonSetとして稼働する。
+
+`kube-system`のNamespaceにおき、PriorityClassを` system-node-critical`とすることが推奨である。
+
+istio-cniは、`/var/run/ztunnel/ztunnel.sock`ファイル経由でztunnelから接続される。
+
+そのため、istio-cniはztunnelと同じNode上に作成する必要がある (Namespaceは違っていても良い) 。
 
 <br>
 
