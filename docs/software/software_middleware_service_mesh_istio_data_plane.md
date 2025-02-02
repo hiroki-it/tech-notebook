@@ -15,9 +15,9 @@ description: データプレーン＠Istioの知見を記録しています。
 
 ## 01. データプレーンとは
 
-### サイドカーパターンの場合
+### サイドカーモードの場合
 
-サイドカーパターンのデータプレーンは、istio-iptables、 `istio-init`コンテナ、`istio-proxy`コンテナ、といったコンポーネントから構成される。
+サイドカーモードのデータプレーンは、istio-iptables、 `istio-init`コンテナ、`istio-proxy`コンテナ、といったコンポーネントから構成される。
 
 > - https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
 
@@ -286,7 +286,7 @@ spec:
 
 #### ▼ `istio-validation`コンテナ
 
-istio-cniを採用している場合にのみそう挿入されるコンテナ。
+istio-cniを採用している場合にのみ挿入されるコンテナ。
 
 istio-cniのDaemonSetがistio-iptablesを適用し終了することを待機するために、これが完了したかどうかを検証する。
 
