@@ -4867,16 +4867,16 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#istioiouse-waypoint" class="md-nav__link">
+  <a href="#istioiodataplane-mode" class="md-nav__link">
     <span class="md-ellipsis">
-      istio.io/use-waypoint
+      istio.io/dataplane-mode
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#istioiouse-waypoint_1" class="md-nav__link">
+  <a href="#istioiouse-waypoint" class="md-nav__link">
     <span class="md-ellipsis">
       istio.io/use-waypoint
     </span>
@@ -24643,16 +24643,16 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#istioiouse-waypoint" class="md-nav__link">
+  <a href="#istioiodataplane-mode" class="md-nav__link">
     <span class="md-ellipsis">
-      istio.io/use-waypoint
+      istio.io/dataplane-mode
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#istioiouse-waypoint_1" class="md-nav__link">
+  <a href="#istioiouse-waypoint" class="md-nav__link">
     <span class="md-ellipsis">
       istio.io/use-waypoint
     </span>
@@ -24879,8 +24879,9 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="istioiouse-waypoint">istio.io/use-waypoint<a class="headerlink" href="#istioiouse-waypoint" title="Permanent link">&para;</a></h3>
-<p>アンビエントモードの場合に、設定したNamespaceでサービスメッシュの管理を有効化する。</p>
+<h3 id="istioiodataplane-mode">istio.io/dataplane-mode<a class="headerlink" href="#istioiodataplane-mode" title="Permanent link">&para;</a></h3>
+<p>アンビエントモードの場合に、設定したNamespaceでZtunnelを有効化する。</p>
+<p>このラベルがついているNamespaceのみで、ZtunnelへのリダイレクトによってPodは<code>L4</code>のトラフィックを送受信できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -24902,11 +24903,17 @@
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">istio.io/dataplane-mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ambient</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/labels/#IoIstioDataplaneMode">https://istio.io/latest/docs/reference/config/labels/#IoIstioDataplaneMode</a></li>
+<li><a href="https://istio.io/latest/docs/ambient/architecture/data-plane/">https://istio.io/latest/docs/ambient/architecture/data-plane/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h3 id="istioiouse-waypoint_1">istio.io/use-waypoint<a class="headerlink" href="#istioiouse-waypoint_1" title="Permanent link">&para;</a></h3>
-<p>アンビエントモードの場合に、設定したNamespaceでWaypointを有効化する。</p>
-<p>Waypointと紐づくGateway名 (Gateway API) を指定する。</p>
-<p>このラベルがついているNamespaceのみで、<code>L7</code>がWaypointにリダイレクトされる。</p>
+<h3 id="istioiouse-waypoint">istio.io/use-waypoint<a class="headerlink" href="#istioiouse-waypoint" title="Permanent link">&para;</a></h3>
+<p>アンビエントモードの場合に、設定したNamespaceでwaypoint-proxyを有効化する。</p>
+<p>waypoint-proxyと紐づくGateway名 (Gateway API) を指定する。</p>
+<p>このラベルがついているNamespaceのみで、waypoint-proxyへのリダイレクトによってPodは<code>L7</code>のトラフィックを送受信できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -24928,6 +24935,12 @@
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">istio.io/use-waypoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-waypoint-ingress</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/labels/#IoIstioUseWaypoint">https://istio.io/latest/docs/reference/config/labels/#IoIstioUseWaypoint</a></li>
+<li><a href="https://istio.io/latest/docs/ambient/architecture/data-plane/">https://istio.io/latest/docs/ambient/architecture/data-plane/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="02-podmetadataannotations">02. Podの<code>.metadata.annotations</code>キー<a class="headerlink" href="#02-podmetadataannotations" title="Permanent link">&para;</a></h2>
 <h3 id="annotations">annotationsとは<a class="headerlink" href="#annotations" title="Permanent link">&para;</a></h3>
