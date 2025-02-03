@@ -139,7 +139,7 @@ ConfigMapやSecretのファイル変更に合わせてチェックサム値を�
 
 #### ▼ RootのApplication名の重複
 
-単一のClusterでNamespacedスコープのArgoCDを構築している時、RootのApplicationを`default`というAppProjectに配置すると、この問題が起こる可能性がある。
+単一のKubernetes ClusterでNamespacedスコープのArgoCDを構築している時、RootのApplicationを`default`というAppProjectに配置すると、この問題が起こる可能性がある。
 
 `default`のAppProjectに所属したApplicationは、Namespacedスコープのapplication-controllerであって、他のNamespaceも見てしまうようである。
 

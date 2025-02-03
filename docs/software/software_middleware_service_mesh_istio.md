@@ -908,7 +908,7 @@ Prometheus上でメトリクスをクエリすると、Istiodコントロール�
 | -------------------------------- | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `connection_security_policy`     | Pod値の通信方法を表す。                                                           | `mutual_tls` (相互TLS認証)                                             |
 | `destination_app`                | リクエストの宛先のコンテナ名を表す。                                              | `foo-container`                                                        |
-| `destination_cluster`            | リクエストの宛先のCluster名を表す。                                               | `Kubernetes`                                                           |
+| `destination_cluster`            | リクエストの宛先のKubernetes Cluster名を表す。                                    | `Kubernetes`                                                           |
 | `destination_service`            | リクエストの宛先のService名を表す。                                               | `foo-service`                                                          |
 | `destination_workload`           | リクエストの宛先のDeployment名を表す。                                            | `foo-deployment                                                        |
 | `destination_workload_namespace` | クライアント側のNamespace名を表す。                                               |                                                                        |
@@ -916,7 +916,7 @@ Prometheus上でメトリクスをクエリすると、Istiodコントロール�
 | `response_flags`                 | Envoyの`%RESPONSE_FLAGS%`変数を表す。                                             | `-` (値なし)                                                           |
 | `response_code`                  | `istio-proxy`コンテナが返信したレスポンスコードの値を表す。                       | `200`、`404`、`0` (クライアントが切断した場合)                         |
 | `source_app`                     | クライアント側のコンテナ名を表す。                                                | `foo-container`                                                        |
-| `source_cluster`                 | クライアント側のCluster名を表す。                                                 | `Kubernetes`                                                           |
+| `source_cluster`                 | クライアント側のKubernetes Cluster名を表す。                                      | `Kubernetes`                                                           |
 | `source_workload`                | クライアント側のDeployment名を表す。                                              | `foo-deployment`                                                       |
 
 > - https://istio.io/latest/docs/reference/config/metrics/#labels
@@ -1015,11 +1015,11 @@ Envoyでは宛先としてサポートしていても、Istio上のEnvoyでは�
 
 <br>
 
-## 07. マルチClusterメッシュ
+## 07. シングルコントロールプレーン
 
-### マルチClusterメッシュとは
+### シングルコントロールプレーンとは
 
-複数のClusterのネットワークを横断的に管理するサービスメッシュ。
+複数のKubernetes Clusterのネットワークを横断的に管理するIstioコントロールプレーンを作成する。
 
 Istiodコントロールプレーンを持つプライマリCluster、サービスメッシュに参加するClusterのリモートCluster、からなる。
 
@@ -1090,5 +1090,40 @@ Istiodコントロールプレーンを持つプライマリCluster、サービ�
 > - https://aws.amazon.com/blogs/containers/transforming-istio-into-an-enterprise-ready-service-mesh-for-amazon-ecs/
 > - https://github.com/solo-io/ecs-demo/blob/main/tf/ecs_eks_cluster.tf#L126-L151
 > - https://github.com/solo-io/ecs-demo/blob/main/README.md#install-istio-in-ambient-mode-with-ecs-cluster-integration
+
+<br>
+
+## 08. テナント分離
+
+### Namespaceテナント
+
+Istioのサービスメッシュは、管理下の複数のNamespaceをテナントとして分離する。
+
+Namespace as-a-Serviceとして提供する。
+
+> - https://istio.io/latest/docs/ops/deployment/deployment-models/#namespace-tenancy
+
+<br>
+
+### Clusterテナント
+
+Istioのサービスメッシュは、管理下の複数のKubernetes Clusterをテナントとして分離する。
+
+Clusters as-a-Serviceとして提供する。
+
+> - https://istio.io/latest/docs/ops/deployment/deployment-models/#cluster-tenancy
+
+<br>
+
+### メッシュテナント
+
+Istioのサービスメッシュは、管理下の単一のKubernetes Clusterをテナントとして分離する。
+
+各Kubernetes Clusterのサービスメッシュは独立しているが、互いに通信できる。
+
+メッシュテナントを採用すると、マルチメッシュパターンになる。
+
+> - https://istio.io/latest/docs/ops/deployment/deployment-models/#mesh-tenancy
+> - https://istio.io/latest/docs/ops/deployment/deployment-models/#multiple-meshes
 
 <br>

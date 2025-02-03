@@ -161,7 +161,7 @@ spec:
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/
 
-なお、執筆時点 (2023/08/02) 時点で、単一のClusterの処理をapplication-controllerの異なるレプリカに分散できない。
+なお、執筆時点 (2023/08/02) 時点で、単一のKubernetes Clusterの処理をapplication-controllerの異なるレプリカに分散できない。
 
 > - https://github.com/argoproj/argo-cd/issues/6125#issuecomment-1660341387
 
@@ -279,7 +279,7 @@ ApplicationとClusterを一括で管理できる。
 
 ArgoCDのApplicationと、ポーリング対象のClusterを別々のClusterで管理する。
 
-複数のClusterにデプロイするApplicationを管理しやすい。
+複数のKubernetes ClusterにデプロイするApplicationを管理しやすい。
 
 > - https://twitter.com/yaml_villager/status/1625857205928075267
 
@@ -1018,7 +1018,7 @@ ArgoCDのコンポーネント (特に、application-controller、argocd-server)
 
 そのため、NamespaceごとにArgoCDのコンポーネントを分割したとしても、argocd-serverが異なるNamespaceのapplication-controllerの処理結果を取得してしまい、想定外のエラーが起こる。
 
-そこで、異なるCluster用のArgoCDを単一のClusterで管理する場合、以下方法でマルチテナントを実現する。
+そこで、異なるCluster用のArgoCDを単一のKubernetes Clusterで管理する場合、以下方法でマルチテナントを実現する。
 
 > - https://akuity.io/blog/argo-cd-architectures-explained/
 

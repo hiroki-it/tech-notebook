@@ -444,7 +444,7 @@ kube-apiserverの監査ログから非推奨apiVersionを検出する。
 
 FargateワーカーNodeやAWS EC2ワーカーNodeの管理グループ単位のこと。
 
-KubernetesのClusterに相当する。
+Kubernetes Clusterに相当する。
 
 > - https://www.sunnycloud.jp/column/20210315-01/
 

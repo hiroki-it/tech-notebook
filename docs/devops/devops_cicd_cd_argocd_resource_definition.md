@@ -1537,7 +1537,7 @@ kube-apiserverのURLを設定する。
 
 ArgoCDの稼働しているClusterを指定する場合は、in-cluster (`https://kubernetes.default.svc`) を設定する。
 
-一方で、外部のClusterを指定する場合、これのkube-apiserverのエンドポイントを指定する必要がある。
+一方で、外部のKubernetes Clusterを指定する場合、これのkube-apiserverのエンドポイントを指定する必要がある。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1691,7 +1691,7 @@ spec:
 
 ### AppProjectとは
 
-単一のCluster内で、Applicationの責務境界のテナントを作成する。
+単一のKubernetes Cluster内で、Applicationの責務境界のテナントを作成する。
 
 CRDの設定 (`scoped: Namespace`) からもわかるように、AppProjectはNamespacedスコープなカスタムリソースである。
 
