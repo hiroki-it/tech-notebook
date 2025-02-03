@@ -26300,11 +26300,18 @@
 <h3 id="defaultconfig">defaultConfig<a class="headerlink" href="#defaultconfig" title="Permanent link">&para;</a></h3>
 <h4 id="defaultconfig_1">▼ defaultConfigとは<a class="headerlink" href="#defaultconfig_1" title="Permanent link">&para;</a></h4>
 <p>Istioの全てのコンポーネントに適用する変数のデフォルト値を設定する。</p>
-<p>各Podで個別に設定したい場合、<code>.metadata.annotations.proxy.istio.io/config.configPath</code>キーにオプションを設定する。</p>
+<p>各Podで個別に設定したい場合、<code>.metadata.annotations.proxy.istio.io/config</code>キーにオプションを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">meshConfig</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">defaultConfig</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">discoveryAddress</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod:15012</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">proxy.istio.io/config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">discoveryAddress: istiod:15012</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig</a></li>
-<li><a href="https://github.com/istio/istio/blob/1.14.3/manifests/profiles/preview.yaml">https://github.com/istio/istio/blob/1.14.3/manifests/profiles/preview.yaml</a></li>
 </ul>
 </blockquote>
 <h4 id="discoveryaddress">▼ discoveryAddress<a class="headerlink" href="#discoveryaddress" title="Permanent link">&para;</a></h4>
@@ -26342,6 +26349,7 @@
 </code></pre></div>
 <h4 id="image">▼ image<a class="headerlink" href="#image" title="Permanent link">&para;</a></h4>
 <p><code>istio-proxy</code>コンテナのコンテナイメージのタイプを設定する。</p>
+<p>これは、ConfigMapではなくProxyConfigでも設定できる。</p>
 <p><code>distroless</code>型を選ぶと、<code>istio-proxy</code>コンテナにログインできなくなり、より安全なイメージになる。</p>
 <p>一方で、デバッグしにくくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
