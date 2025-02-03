@@ -10,19 +10,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="tfstateファイルの分割＠プラクティス集の知見を記録しています。">
+        <meta name="description" content="Kind＠開発環境の知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_practices_tfstate.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_kind.html">
       
       
-        <link rel="prev" href="infrastructure_as_code_terraform_practices.html">
+        <link rel="prev" href="infrastructure_as_code_kubernetes_environment_development_minikube_command.html">
       
       
-        <link rel="next" href="infrastructure_as_code_vagrant_vagrantfile.html">
+        <link rel="next" href="infrastructure_as_code_kubernetes_environment_development_kind_command.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -30,7 +30,7 @@
     
     
       
-        <title>【IT技術の知見】tfstateファイルの分割＠プラクティス集 - 俺の技術ノート</title>
+        <title>【IT技術の知見】Kind＠開発環境 - 俺の技術ノート</title>
       
     
     
@@ -94,7 +94,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tfstate" class="md-skip">
+        <a href="#kind" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -154,7 +154,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】tfstateファイルの分割＠プラクティス集
+              【IT技術の知見】Kind＠開発環境
             
           </span>
         </div>
@@ -503,12 +503,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="index.html" class="md-tabs__link">
           
   
@@ -545,10 +543,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="development_tools/index.html" class="md-tabs__link">
           
   
@@ -15269,8 +15269,6 @@
       
   
   
-    
-  
   
   
     
@@ -15289,17 +15287,16 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_15" >
         
           
           
@@ -15315,13 +15312,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_15" id="__nav_15_label" tabindex="">
+              <label class="md-nav__link " for="__nav_15" id="__nav_15_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_15">
             <span class="md-nav__icon md-icon"></span>
             ⚙️ IaC
@@ -15693,10 +15690,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -15718,11 +15713,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_4" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_15_4" >
         
           
           <label class="md-nav__link" for="__nav_15_4" id="__nav_15_4_label" tabindex="0">
@@ -15736,7 +15733,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_15_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_15_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_15_4">
             <span class="md-nav__icon md-icon"></span>
             ■ 宣言型
@@ -16154,10 +16151,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -16179,11 +16174,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_4_5" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_15_4_5" >
         
           
           <label class="md-nav__link" for="__nav_15_4_5" id="__nav_15_4_5_label" tabindex="0">
@@ -16197,7 +16194,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_15_4_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_15_4_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_15_4_5">
             <span class="md-nav__icon md-icon"></span>
             ■ Terraform
@@ -16463,10 +16460,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -16480,11 +16475,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_4_5_6" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_15_4_5_6" >
         
           
           <label class="md-nav__link" for="__nav_15_4_5_6" id="__nav_15_4_5_6_label" tabindex="0">
@@ -16498,7 +16495,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_15_4_5_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_15_4_5_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_15_4_5_6">
             <span class="md-nav__icon md-icon"></span>
             ■ プラクティス集
@@ -16530,30 +16527,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    tfstateファイル分割
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="infrastructure_as_code_terraform_practices_tfstate.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_terraform_practices_tfstate.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16562,106 +16539,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      はじめに
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-tfstate" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. tfstateファイルの分割について
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. ローカル/リモートモジュールのディレクトリ構成
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. ローカル/リモートモジュールのディレクトリ構成">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws" class="md-nav__link">
-    <span class="md-ellipsis">
-      依存先AWSリソース別
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      リソース別
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      リージョン別
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      実行環境別
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-tfstate" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. モノリスなtfstateファイルを分割する
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -17512,6 +17389,8 @@
       
   
   
+    
+  
   
   
     
@@ -17530,16 +17409,17 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" checked>
         
           
           
@@ -17555,13 +17435,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_17" id="__nav_17_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_17" id="__nav_17_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_17">
             <span class="md-nav__icon md-icon"></span>
             🌊 K8sアプリ
@@ -17574,8 +17454,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -17593,13 +17475,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17_2" checked>
         
           
           <label class="md-nav__link" for="__nav_17_2" id="__nav_17_2_label" tabindex="0">
@@ -17613,7 +17493,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_17_2">
             <span class="md-nav__icon md-icon"></span>
             ■ 開発環境
@@ -17720,8 +17600,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -17737,13 +17619,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17_2_2" checked>
         
           
           <label class="md-nav__link" for="__nav_17_2_2" id="__nav_17_2_2_label" tabindex="0">
@@ -17757,7 +17637,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_17_2_2">
             <span class="md-nav__icon md-icon"></span>
             ■ Kind
@@ -17768,10 +17648,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_environment_development_kind.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Kind
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_kubernetes_environment_development_kind.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -17780,6 +17680,61 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      はじめに
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-kind" class="md-nav__link">
+    <span class="md-ellipsis">
+      01. Kindの仕組み
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. Kindの仕組み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      アーキテクチャ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -24559,55 +24514,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-tfstate" class="md-nav__link">
+  <a href="#01-kind" class="md-nav__link">
     <span class="md-ellipsis">
-      01. tfstateファイルの分割について
+      01. Kindの仕組み
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. ローカル/リモートモジュールのディレクトリ構成
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. ローカル/リモートモジュールのディレクトリ構成">
+    <nav class="md-nav" aria-label="01. Kindの仕組み">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws" class="md-nav__link">
-    <span class="md-ellipsis">
-      依存先AWSリソース別
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      リソース別
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      リージョン別
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      実行環境別
+      アーキテクチャ
     </span>
   </a>
   
@@ -24615,15 +24534,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-tfstate" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. モノリスなtfstateファイルを分割する
-    </span>
-  </a>
   
 </li>
       
@@ -24645,7 +24555,7 @@
   
 
 
-<h1 id="tfstate"><code>tfstate</code>ファイルの分割＠プラクティス集<a class="headerlink" href="#tfstate" title="Permanent link">&para;</a></h1>
+<h1 id="kind">Kind＠開発環境<a class="headerlink" href="#kind" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -24654,269 +24564,15 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-tfstate">01. <code>tfstate</code>ファイルの分割について<a class="headerlink" href="#01-tfstate" title="Permanent link">&para;</a></h2>
+<h2 id="01-kind">01. Kindの仕組み<a class="headerlink" href="#01-kind" title="Permanent link">&para;</a></h2>
+<h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>ホスト上にコンテナを作成する。</p>
+<p>このコンテナ内にMinikube仮想サーバーを作成し、仮想サーバー上にNodeを持つClusterを作成する。</p>
 <blockquote>
 <ul>
-<li><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2023/07/05/001756">https://hiroki-hasegawa.hatenablog.jp/entry/2023/07/05/001756</a></li>
+<li><a href="https://kind.sigs.k8s.io/docs/design/initial">https://kind.sigs.k8s.io/docs/design/initial</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h2 id="02">02. ローカル/リモートモジュールのディレクトリ構成<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<p>ここから先の話は遊びみたいなもんです👶🏻</p>
-<p>ローカルモジュールとリモートモジュールは、”汎用的に使用できる<code>resource</code>ブロックや<code>data</code>ブロックのセット” である。</p>
-<p>これらは、モジュールがローカルリポジトリまたはリモートリポジトリのいずれにあるかの違いしかない。</p>
-<p>そのため、このディレクトリ構成はローカル / リモートモジュールの両方に適用できる。</p>
-<p>ローカルモジュールに関して、これをリポジトリ内で汎用的に使い回すユースケースのみ作成するべきである。</p>
-<p>そのためローカルモジュールに関しては、</p>
-<ul>
-<li>そもそもローカルモジュールを制限使用にする</li>
-<li>ローカルモジュールは自前リモートモジュール化する</li>
-<li>公式リモートモジュールを使用する</li>
-</ul>
-<p>のほうが良い。</p>
-<p>ローカル/リモートモジュールのディレクトリ構成に関して、<strong><code>tfstate</code>ファイルは粒度に関係ないので、これといった目安はない</strong>が、参考までに今までに観測したことのある例をあげた。</p>
-<p><br></p>
-<h3 id="aws">依存先AWSリソース別<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
-<p>依存先の多いAWSリソースに関して、依存先のAWSリソース別にローカルモジュールを分割する。</p>
-<p>依存先AWSリソース別の分割方法は、Terraformの公式リモートモジュールに一番多い構成である。</p>
-<p><strong>＊例＊</strong></p>
-<p>ローカルモジュールの場合</p>
-<p>ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうが良い。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── eks/</span><span class="w"> </span><span class="c1"># EKS</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── auto_scaling/</span><span class="w"> </span><span class="c1"># AutoScaling</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── iam/</span><span class="w"> </span><span class="c1"># IAMロール</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── kubernetes/</span><span class="w"> </span><span class="c1"># Kubernetesリソース（例：RoleBinding、StorageClassなど）</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── launch_template/</span><span class="w"> </span><span class="c1"># 起動テンプレート</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── security_group/</span><span class="w"> </span><span class="c1"># セキュリティグループ</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── node_group/</span><span class="w"> </span><span class="c1"># Nodeグループ</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── main.tf</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── outputs.tf</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">└── variables.tf</span>
-</code></pre></div>
-<p><strong>＊例＊</strong></p>
-<p>リモートモジュールの場合</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-remote-repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">└── eks/</span><span class="w"> </span><span class="c1"># EKS</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── auto_scaling/</span><span class="w"> </span><span class="c1"># AutoScaling</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── iam/</span><span class="w"> </span><span class="c1"># IAMロール</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── kubernetes/</span><span class="w"> </span><span class="c1"># Kubernetesリソース（例：RoleBinding、StorageClassなど）</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── launch_template/</span><span class="w"> </span><span class="c1"># 起動テンプレート</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── security_group/</span><span class="w"> </span><span class="c1"># セキュリティグループ</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── node_group/</span><span class="w"> </span><span class="c1"># Nodeグループ</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── main.tf</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── outputs.tf</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── variables.tf</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="_2">リソース別<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>最上層は、AWSリソースで分割する。</p>
-<p>またスクリプトを使用するAWSリソース（例：Lambda）では、そのソースコードをモジュール下で管理する。</p>
-<p><strong>＊例＊</strong></p>
-<p>ローカルモジュールの場合</p>
-<p>ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうが良い。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── acm/</span><span class="w"> </span><span class="c1"># ACM</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── alb/</span><span class="w"> </span><span class="c1"># ALB</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── lambda/</span><span class="w"> </span><span class="c1"># Lambda</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── foo_function_src/</span><span class="w"> </span><span class="c1"># とある関数のソースコード</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-</code></pre></div>
-<p><strong>＊例＊</strong></p>
-<p>リモートモジュールの場合</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-remote-repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── acm/</span><span class="w"> </span><span class="c1"># ACM</span>
-<span class="l l-Scalar l-Scalar-Plain">├── alb/</span><span class="w"> </span><span class="c1"># ALB</span>
-<span class="l l-Scalar l-Scalar-Plain">├── lambda/</span><span class="w"> </span><span class="c1"># Lambda</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── foo_function_src/</span><span class="w"> </span><span class="c1"># とある関数のソースコード</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="_3">リージョン別<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>AWSリソースのプロビジョニング先のリージョン別にローカルモジュールを分割する。</p>
-<p>例えば、ACMは同じリージョンのAWSリソースにしかアタッチできない制約があるため、AWSリソースによっては複数リージョン必要になる。</p>
-<p><strong>＊例＊</strong></p>
-<p>ローカルモジュールの場合</p>
-<p>ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうが良い。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── acm/</span><span class="w"> </span><span class="c1"># ACM</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── ap-northeast-1/</span><span class="w"> </span><span class="c1"># 東京リージョン</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── us-east-1/</span><span class="w">      </span><span class="c1"># バージニアリージョン</span>
-</code></pre></div>
-<p><strong>＊例＊</strong></p>
-<p>リモートモジュールの場合</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-remote-repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">└── acm/</span><span class="w"> </span><span class="c1"># ACM</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── ap-northeast-1/</span><span class="w"> </span><span class="c1"># 東京リージョン</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── us-east-1/</span><span class="w">      </span><span class="c1"># バージニアリージョン</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="_4">実行環境別<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>環境ごとに差分が大きいAWSリソースに関して、実行環境別にローカルモジュールを分割する。</p>
-<p>なおcountで条件分岐しても良い</p>
-<p><strong>＊例＊</strong></p>
-<p>ローカルモジュールの場合</p>
-<p>ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうが良い。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── route53/</span><span class="w"> </span><span class="c1"># Route53</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── tes/</span><span class="w"> </span><span class="c1"># テスト環境</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── stg/</span><span class="w"> </span><span class="c1"># ステージング環境</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── prd/</span><span class="w"> </span><span class="c1"># 本番環境</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── ssm/</span><span class="w"> </span><span class="c1"># AWS Systems Manager</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── tes/</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── stg/</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── prd/</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── waf/</span><span class="w"> </span><span class="c1"># WAF</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── alb/</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── tes/</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── prd/</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">└── stg/</span>
-</code></pre></div>
-<p><strong>＊例＊</strong></p>
-<p>リモートモジュールの場合</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-remote-repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── route53/</span><span class="w"> </span><span class="c1"># Route53</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── tes/</span><span class="w"> </span><span class="c1"># テスト環境</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── stg/</span><span class="w"> </span><span class="c1"># ステージング環境</span>
-<span class="l l-Scalar l-Scalar-Plain">│   └── prd/</span><span class="w"> </span><span class="c1"># 本番環境</span>
-<span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="l l-Scalar l-Scalar-Plain">├── ssm/</span><span class="w"> </span><span class="c1"># AWS Systems Manager</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── tes/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── stg/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   └── prd/</span>
-<span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="l l-Scalar l-Scalar-Plain">└── waf/</span><span class="w"> </span><span class="c1"># WAF</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── alb/</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── tes/</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── prd/</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── stg/</span>
-</code></pre></div>
-<p><br></p>
-<h2 id="03-tfstate">03. モノリスな<code>tfstate</code>ファイルを分割する<a class="headerlink" href="#03-tfstate" title="Permanent link">&para;</a></h2>
-<p>モノリスな<code>tfstate</code>ファイルとは、例えば特定のAWSアカウント内のAWSリソースを全て一つの<code>tfstate</code>ファイルで管理している場合である。</p>
-<p>AWSリソース値を参照しない関係であれば、これらは別の<code>tfstate</code>ファイルに分割できる。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>既存のバックエンド内に新しいディレクトリを作成し、その配下に<code>tfstate</code>ファイルを新しく作成する。</p>
-<p>ここでは、サブシステムを分割すると仮定する。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── foo/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tf</span><span class="w"> </span><span class="c1"># バックエンド内の/foo/terraform.tfstate</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
-<span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="l l-Scalar l-Scalar-Plain">├── bar/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tf</span><span class="w"> </span><span class="c1"># バックエンド内の/bar/terraform.tfstate</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── remote_state.tfvars</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、fooのtfstateファイルから状態を参照する</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── resource.tf</span><span class="w"> </span><span class="c1"># fooのtfstateファイルから参照した状態を使用する</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
-<span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="nn">...</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;s3&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-tfstate&quot;</span>
-<span class="w">    </span><span class="na">key</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-sub-system/terraform.tfstate&quot;</span>
-<span class="w">    </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
-<p>bar側では、foo側の<code>tfstate</code>ファイルからリソース値を取得しつつ、</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code><span class="c1"># 分割した異なるfooというtfstateファイルから取得する</span>
-<span class="kr">data</span><span class="w"> </span><span class="nc">&quot;terraform_remote_state&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;s3&quot;</span>
-
-<span class="w">  </span><span class="nb">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-tfstate&quot;</span>
-<span class="w">    </span><span class="na">key</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo/terraform.tfstate&quot;</span>
-<span class="w">    </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
-<p>新しい<code>tfstate</code>ファイルに、既存のサブシステムの状態をインポートする。</p>
-<p>事前に、バックエンドを新しいサブシステムの<code>tfstate</code>ファイルに切り替える。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-reconfigure<span class="w"> </span>-backend-config<span class="o">=</span>foo-sub-backend.tfvars
-$<span class="w"> </span>terraform<span class="w"> </span>import
-</code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
-<p>サブシステムの<code>tfstate</code>ファイルで差分がないことを確認する。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-reconfigure<span class="w"> </span>-backend-config<span class="o">=</span>foo-sub-backend.tfvars
-$<span class="w"> </span>terraform<span class="w"> </span>plan
-</code></pre></div>
-<dl>
-<dt><code>(5)</code></dt>
-<dd>
-<p>モノリスな<code>tfstate</code>ファイルから、サブシステムの状態を削除する。</p>
-<p>事前に、バックエンドをモノリスな<code>tfstate</code>ファイルに切り替える。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-reconfigure<span class="w"> </span>-backend-config<span class="o">=</span>foo-backend.tfvars
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>&lt;サブシステムの状態&gt;
-</code></pre></div>
 <p><br></p>
 
 
@@ -24938,7 +24594,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> 
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-03</span>
   </span>
 
     
