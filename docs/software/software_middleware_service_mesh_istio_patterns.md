@@ -25,7 +25,6 @@ Istiodコントロールプレーンを持つプライマリCluster、サービ�
 
 <br>
 
-
 ## 01-02. マルチIstiodコントロールプレーン
 
 ### マルチIstiodコントロールプレーンとは
@@ -74,7 +73,6 @@ Istioコントロールプレーンとデータプレーンが異なる実行環
 
 <br>
 
-
 ### 外部の仮想サーバー
 
 #### ▼ 同じプライベートネットワーク内の場合
@@ -116,7 +114,6 @@ Istioコントロールプレーンとデータプレーンが異なる実行環
 > - https://github.com/solo-io/ecs-demo/blob/main/README.md#install-istio-in-ambient-mode-with-ecs-cluster-integration
 
 <br>
-
 
 ## 03. テナント分離
 
