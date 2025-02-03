@@ -13,12 +13,42 @@ description: Traefik＠サービスメッシュ系ミドルウェアの知見を
 
 <br>
 
-## ログ
+## 回復性管理
 
-### アクセスログ
+> - https://doc.traefik.io/traefik/middlewares/http/circuitbreaker/
+
+<br>
+
+## セキュリティ
+
+### 認証認可
+
+IDプロバイダーと通信し、認証認可を実施する。
+
+> - https://doc.traefik.io/traefik/middlewares/http/forwardauth/
+
+### 証明書管理
+
+Cert Managerと連携する必要がある。
+
+> - https://doc.traefik.io/traefik/user-guides/cert-manager/
+
+<br>
+
+## オブザーバビリティー
+
+### ログ
+
+#### ▼ 実行ログ
+
+記入中...
+
+#### ▼ アクセスログ
 
 ```yaml
-{"jsonPayload": {
+{
+  # JSON形式
+  "jsonPayload": {
       "Duration": 5446226,
       "TLSVersion": "1.3",
       "time": "2023-05-26T18:53:47Z",
@@ -65,7 +95,10 @@ description: Traefik＠サービスメッシュ系ミドルウェアの知見を
         },
       "OriginContentSize": 604,
       "DownstreamContentSize": 604,
-    }}
+    },
+}
 ```
 
 > - https://doc.traefik.io/traefik/v1.7/configuration/logs/
+
+<br>
