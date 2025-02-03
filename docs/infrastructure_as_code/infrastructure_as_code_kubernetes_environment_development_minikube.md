@@ -21,7 +21,7 @@ description: Minikube＠開発環境の知見を記録しています。
 
 ホスト上にMinikube仮想サーバーを作成する。
 
-このMinikube仮想サーバー上に、Nodeを持つClusterを作成する。
+このMinikube仮想サーバー上に、Nodeを持つMinikube Clusterを作成する。
 
 ![minikube_architecture_virtual_machine_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/minikube_architecture_virtual_machine_driver.png)
 

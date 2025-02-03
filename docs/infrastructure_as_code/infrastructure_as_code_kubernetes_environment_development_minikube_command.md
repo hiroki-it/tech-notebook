@@ -759,7 +759,7 @@ $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/fo
 
 作成するNode数を指定し、`start`コマンドを実行する。
 
-マルチNodeのClusterを作成できる。
+マルチNodeのMinikube Clusterを作成できる。
 
 **＊例＊**
 
@@ -806,9 +806,7 @@ nginx-deployment-*****   1/1     Running   0          16m   10.244.1.2   minikub
 
 #### ▼ --profile
 
-MinikubeのClusterに名前をつける。
-
-Minikubeを使用してマルチClusterを再現できる。
+Minikube Clusterに名前をつけ、複数のMinikube Clusterを作成できる。
 
 Cluster名以外にも、例えば以下に影響する。
 
@@ -831,6 +829,25 @@ foo-m04   Ready    worker          13d   v1.32.0
 foo-m05   Ready    worker          13d   v1.32.0
 foo-m06   Ready    worker          13d   v1.32.0
 ```
+
+注意点として、執筆時点 (2025/02/03) では複数のMinikube Cluster間を同一のネットワークに接続できない。
+
+異なるネットワークにおいて、ホストOSのドメイン (`host.minikube.internal`) を介して通信するしかない。
+
+> - https://github.com/kubernetes/minikube/issues/14799#issuecomment-1216224631
+
+#### ▼ --static-ip
+
+MinikubeのNodeのIPアドレスを固定する。
+
+マルチNodeに対応しておらず、Nodeを一台にしなければならない。
+
+```bash
+$ minikube start --static-ip 192.168.200.200
+```
+
+> - https://minikube.sigs.k8s.io/docs/tutorials/static_ip/
+> - https://github.com/kubernetes/minikube/issues/18567
 
 <br>
 

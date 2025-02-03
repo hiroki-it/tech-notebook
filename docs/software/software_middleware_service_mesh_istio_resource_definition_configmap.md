@@ -71,7 +71,33 @@ data:
 
 <br>
 
-## 03. istio-mesh-cm (istio-<バージョン値>)
+## 03. istio-cni-config
+
+```yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: istio-cni-config
+  namespace: kube-system
+data:
+  CURRENT_AGENT_VERSION: 1.24.2
+  AMBIENT_ENABLED: true
+  AMBIENT_DNS_CAPTURE: false
+  AMBIENT_IPV6: true
+  CHAINED_CNI_PLUGIN: true
+  EXCLUDED_NAMESPACES: kube-system
+  REPAIR_ENABLED: true
+  REPAIR_LABEL_PODS: false
+  REPAIR_DELETE_PODS: false
+  REPAIR_REPAIR_PODS: true
+  REPAIR_INIT_CONTAINER_NAME: istio-validation
+  REPAIR_BROKEN_POD_LABEL_KEY: cni.istio.io/uninitialized
+  REPAIR_BROKEN_POD_LABEL_VALUE: true
+```
+
+<br>
+
+## 04. istio-mesh-cm (istio-<バージョン値>)
 
 ### istio-mesh-cmとは
 
@@ -300,7 +326,7 @@ metadata:
 data:
   mesh: |
     defaultConfig:
-      enablePrometheusMerge: "true"
+      enablePrometheusMerge: true
 ```
 
 #### ▼ holdApplicationUntilProxyStarts
@@ -314,8 +340,35 @@ metadata:
 data:
   mesh: |
     defaultConfig:
-      holdApplicationUntilProxyStarts: "true"
+      holdApplicationUntilProxyStarts: true
 ```
+
+#### ▼ image
+
+`istio-proxy`コンテナのコンテナイメージのタイプを設定する。
+
+`distroless`型を選ぶと、`istio-proxy`コンテナにログインできなくなり、より安全なイメージになる。
+
+一方で、デバッグしにくくなる。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      image:
+        imageType: distroless
+```
+
+`istio-cni`でも、Helmチャートで別に設定すれば、`distroless`型を選べる。
+
+> - https://istio.io/latest/docs/reference/config/networking/proxy-config/#ProxyImage
+> - https://cloud.google.com/service-mesh/docs/enable-optional-features-in-cluster?hl=ja#distroless_proxy_image
+> - https://istio.io/latest/docs/ops/configuration/security/harden-docker-images/
 
 #### ▼ proxyMetadata
 
@@ -912,7 +965,7 @@ metadata:
   namespace: istio-system
 data:
   mesh: |
-    holdApplicationUntilProxyStarts: "true"
+    holdApplicationUntilProxyStarts: true
 ```
 
 > - https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB
@@ -1028,7 +1081,7 @@ data:
 
 <br>
 
-## 04. istio-sidecar-injector
+## 05. istio-sidecar-injector
 
 ### config
 
@@ -1104,7 +1157,7 @@ data:
 
 <br>
 
-## 05. 環境変数
+## 06. 環境変数
 
 ### Istiod
 
