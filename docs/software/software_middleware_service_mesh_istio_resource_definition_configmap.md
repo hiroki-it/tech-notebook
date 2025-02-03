@@ -296,10 +296,21 @@ data:
 
 Istioの全てのコンポーネントに適用する変数のデフォルト値を設定する。
 
-各Podで個別に設定したい場合、`.metadata.annotations.proxy.istio.io/config.configPath`キーにオプションを設定する。
+各Podで個別に設定したい場合、`.metadata.annotations.proxy.istio.io/config`キーにオプションを設定する。
+
+```yaml
+meshConfig:
+  defaultConfig:
+    discoveryAddress: istiod:15012
+```
+
+```yaml
+annotations:
+  proxy.istio.io/config: |
+    discoveryAddress: istiod:15012
+```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
-> - https://github.com/istio/istio/blob/1.14.3/manifests/profiles/preview.yaml
 
 #### ▼ discoveryAddress
 
@@ -346,6 +357,8 @@ data:
 #### ▼ image
 
 `istio-proxy`コンテナのコンテナイメージのタイプを設定する。
+
+これは、ConfigMapではなくProxyConfigでも設定できる。
 
 `distroless`型を選ぶと、`istio-proxy`コンテナにログインできなくなり、より安全なイメージになる。
 
