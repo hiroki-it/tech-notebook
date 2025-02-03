@@ -13,19 +13,35 @@ description: Traefik＠サービスメッシュ系ミドルウェアの知見を
 
 <br>
 
-## 回復性管理
+## 01. トラフィック管理
+
+### サービス検出
+
+> - https://doc.traefik.io/traefik/providers/overview/
+
+<br>
+
+### ロードバランシング
+
+> - https://doc.traefik.io/traefik/routing/overview/
+
+<br>
+
+## 02. 回復性管理
 
 > - https://doc.traefik.io/traefik/middlewares/http/circuitbreaker/
 
 <br>
 
-## セキュリティ
+## 03. セキュリティ
 
 ### 認証認可
 
 IDプロバイダーと通信し、認証認可を実施する。
 
 > - https://doc.traefik.io/traefik/middlewares/http/forwardauth/
+
+<br>
 
 ### 証明書管理
 
@@ -35,7 +51,7 @@ Cert Managerと連携する必要がある。
 
 <br>
 
-## オブザーバビリティー
+## 04. オブザーバビリティー
 
 ### ログ
 
