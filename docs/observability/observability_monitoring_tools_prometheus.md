@@ -223,16 +223,27 @@ Prometheusと外部のTSDBの両方を冗長化する場合、冗長化された
 
 ### ダイナミックキュー
 
-リモートストレージにメトリクスを送信する場合、送信する前にメトリクスをキューイングする。
+#### ▼ ダイナミックキューとは
+
+リモートストレージにメトリクスを送信する場合、送信前にメトリクス (実体はWALファイル) をキューイングする。
 
 ダイナミックキューは、メトリクスのスループットの高さに応じて、キューイングの実行単位であるシャードを増減させる。
-
-また、リモートストレージで障害が起こっている場合に送信内容を一時的に保持しておき、障害が回復次第まとめて送信する。
 
 ![prometheus_dynamic-queues_shard](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus_dynamic-queues_shard.png)
 
 > - https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52
-> - https://prometheus.io/docs/practices/remote_write/
+
+#### ▼ リモートストレージの障害時の書き込み待機
+
+リモートストレージで障害が起こっている場合、キューにメトリクス (WALファイル) がいっぱいになったあと、メトリクスのキューイングを待機する。
+
+`2`時間はWALファイルのキューイングを待機し、リモートストレージの障害が回復次第、リモートストレージへの書き込みとWALファイルのキューイングを再開する。
+
+タイムスタンプはそのままなので、リモートストレージ上ではメトリクスを欠損なく永続化できる。
+
+`2`時間が過ぎると、WALファイルは圧縮されて失われる。
+
+> - https://prometheus.io/docs/practices/remote_write/#remote-write-characteristics
 
 <br>
 
