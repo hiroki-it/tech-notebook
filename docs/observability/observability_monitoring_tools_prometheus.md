@@ -223,13 +223,16 @@ Prometheusと外部のTSDBの両方を冗長化する場合、冗長化された
 
 ### ダイナミックキュー
 
-リモートストレージにメトリクスを送信する場合、送信されたメトリクスをキューイングする。
+リモートストレージにメトリクスを送信する場合、送信する前にメトリクスをキューイングする。
 
 ダイナミックキューは、メトリクスのスループットの高さに応じて、キューイングの実行単位であるシャードを増減させる。
+
+また、リモートストレージで障害が起こっている場合に送信内容を一時的に保持しておき、障害が回復次第まとめて送信する。
 
 ![prometheus_dynamic-queues_shard](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus_dynamic-queues_shard.png)
 
 > - https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52
+> - https://prometheus.io/docs/practices/remote_write/
 
 <br>
 

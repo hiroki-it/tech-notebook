@@ -153,6 +153,33 @@ RootのApplication名が重複している場合、たとえNamespaceが異な�
 
 <br>
 
+### application.resourceTrackingMethod
+
+#### ▼ application.resourceTrackingMethodとは
+
+トラッキングIDを有効化する。
+
+- `label` (`argocd.argoproj.io/instance`ラベルを指す)
+- `annotation+label`
+- `annotation`
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  application.resourceTrackingMethod: annotation
+```
+
+> - https://argo-cd.readthedocs.io/en/latest/user-guide/resource_tracking/#choosing-a-tracking-method
+> - https://ca-srg.dev/b40dd428e47641699959c4f2d70c8428
+
+<br>
+
 ### globalProjects
 
 #### ▼ globalProjectsとは
