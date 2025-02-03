@@ -17,6 +17,7 @@
 
 - #### <u>Kind</u>
 
+  > - ##### [Kind](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_kind.html)
   > - ##### [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_kind_command.html)
   > - ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_kind_conf.html)
 

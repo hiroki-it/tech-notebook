@@ -34,6 +34,8 @@ description: Minikube＠開発環境の知見を記録しています。
 
 このコンテナ内にMinikube仮想サーバーを作成し、仮想サーバー上にNodeを持つClusterを作成する。
 
+これは、別のツールであるKindと同じ仕組みである。
+
 ![minikube_architecture_docker_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/minikube_architecture_docker_driver.png)
 
 > - https://zenn.dev/castaneai/articles/local-kubernetes-networking

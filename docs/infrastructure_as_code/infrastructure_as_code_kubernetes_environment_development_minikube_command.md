@@ -745,6 +745,16 @@ $ minikube start --kubernetes-version=v1.23.0
 
 > - https://minikube.sigs.k8s.io/docs/handbook/config/#kubernetes-configuration
 
+#### ▼ --listen--address
+
+Minikube Clusterに、ホストPC以外の外部から接続できるようにする。
+
+```bash
+$ minikube start --listen-address=0.0.0.0
+```
+
+> - https://minikube.sigs.k8s.io/docs/faq/#how-can-i-access-a-minikube-cluster-from-a-remote-network
+
 #### ▼ --mount、--mount--string
 
 ホストとゲスト仮想環境間のマウントディレクトリを指定しつつ、`start`コマンドを実行する。
