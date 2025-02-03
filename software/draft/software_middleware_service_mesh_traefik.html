@@ -24430,22 +24430,55 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      01. トラフィック管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. トラフィック管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      回復性管理
+      サービス検出
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ロードバランシング
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. 回復性管理
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      セキュリティ
+      03. セキュリティ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="セキュリティ">
+    <nav class="md-nav" aria-label="03. セキュリティ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24472,17 +24505,17 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      オブザーバビリティー
+      04. オブザーバビリティー
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="オブザーバビリティー">
+    <nav class="md-nav" aria-label="04. オブザーバビリティー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ログ
     </span>
@@ -24492,7 +24525,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 実行ログ
     </span>
@@ -24501,7 +24534,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ アクセスログ
     </span>
@@ -24546,14 +24579,29 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="_2">回復性管理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. トラフィック管理<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">サービス検出<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://doc.traefik.io/traefik/providers/overview/">https://doc.traefik.io/traefik/providers/overview/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_3">ロードバランシング<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://doc.traefik.io/traefik/routing/overview/">https://doc.traefik.io/traefik/routing/overview/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02">02. 回復性管理<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <blockquote>
 <ul>
 <li><a href="https://doc.traefik.io/traefik/middlewares/http/circuitbreaker/">https://doc.traefik.io/traefik/middlewares/http/circuitbreaker/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="_3">セキュリティ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="03">03. セキュリティ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_4">認証認可<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>IDプロバイダーと通信し、認証認可を実施する。</p>
 <blockquote>
@@ -24561,6 +24609,7 @@
 <li><a href="https://doc.traefik.io/traefik/middlewares/http/forwardauth/">https://doc.traefik.io/traefik/middlewares/http/forwardauth/</a></li>
 </ul>
 </blockquote>
+<p><br></p>
 <h3 id="_5">証明書管理<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>Cert Managerと連携する必要がある。</p>
 <blockquote>
@@ -24569,11 +24618,11 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="_6">オブザーバビリティー<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<h3 id="_7">ログ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<h4 id="_8">▼ 実行ログ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h2 id="04">04. オブザーバビリティー<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="_6">ログ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ 実行ログ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
-<h4 id="_9">▼ アクセスログ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<h4 id="_8">▼ アクセスログ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="c1"># JSON形式</span>
 <span class="w">  </span><span class="s">&quot;jsonPayload&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
