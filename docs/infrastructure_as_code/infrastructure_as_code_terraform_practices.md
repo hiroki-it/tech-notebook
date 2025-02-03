@@ -316,7 +316,7 @@ environment       = "stg"
 service           = "bar"
 ```
 
-一方で、特定のリソースのみで使用する環境変数/通常変数の場合は、対象のリソース、種類名、オプション名、がわかるように命名する。
+一方で、特定のリソースのみで使用する環境変数/通常変数の場合は、対象のリソース、種類名、オプション名がわかるように命名する。
 
 > - https://cloud.google.com/docs/terraform/best-practices-for-terraform#naming-convention
 

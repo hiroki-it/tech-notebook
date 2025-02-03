@@ -92,7 +92,7 @@ description: オブジェクト指向＠アーキテクチャの知見を記録�
 
 ### ダイアグラムの種類
 
-UML、概念データモデリング、構造化分析、リアルタイム分析、がある。
+UML、概念データモデリング、構造化分析、リアルタイム分析がある。
 
 ![diagrams](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/diagrams.png)
 

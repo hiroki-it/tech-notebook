@@ -39,7 +39,7 @@ Temporalクライアントは、Temporalサーバーをコールし、Temporal�
 
 ### Temporalサーバー
 
-Temporalサーバーは、内臓するメッセージキューを操作してワークフローの現在のステートを管理し、またステートの履歴をデータベースに永続化する。
+Temporalサーバーは、内臓するメッセージ仲介システムを操作してワークフローの現在のステートを管理し、またステートの履歴をデータベースに永続化する。
 
 > - https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d
 > - https://temporal.io/blog/sergey-inversion-of-execution
@@ -118,9 +118,9 @@ temporal=# \dt
 『制御の反転』という仕組みになっており、実際にワークフローやアクティビティを実行するのは、TemporalサーバーではなくTemporalワーカーである。
 
 1. Temporalワーカーは、Temporalサーバーにワークフローやアクティビティを登録する。
-2. Temporalワーカーは、Temporalサーバー内のメッセージキューにポーリングを実施し、ワークフローの現在のステートを取得する。
+2. Temporalワーカーは、Temporalサーバー内のメッセージ仲介システムにポーリングを実施し、ワークフローの現在のステートを取得する。
 3. Temporalクライアントは、ワークフローを開始する。
-4. Temporalワーカーは、ワークフロー内のアクティビティを実行し、結果をTemporalサーバーのメッセージキューに格納する。
+4. Temporalワーカーは、ワークフロー内のアクティビティを実行し、結果をTemporalサーバーのメッセージ仲介システムに格納する。
 5. Temporalワーカーは、ワークフローの現在のステートに応じて次のアクティビティを実行する。
 
 ![temporal_worker_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_worker_architecture.png)
@@ -138,9 +138,9 @@ temporal=# \dt
 
 TemporalをSagaパターンのオーケストレーターとして使用する。
 
-なお、Temporalサーバー内にメッセージキューが内臓されている。
+なお、Temporalサーバー内にメッセージ仲介システムが内臓されている。
 
-そのため、タイムアウト処理、リトライ処理、キャンセル処理などの点でTemporalの外部にメッセージキュー (例：AWS SQS) やメッセージブローカー (例：RebbitMQ) は不要である。
+そのため、タイムアウト処理、リトライ処理、キャンセル処理などの点でTemporalの外部にメッセージ仲介システム (例：AWS SQS) やメッセージブローカー (例：RebbitMQ) は不要である。
 
 ![temporal_saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_saga-pattern.png)
 

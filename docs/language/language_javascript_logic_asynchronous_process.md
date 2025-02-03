@@ -73,7 +73,7 @@ const asyncFunc = () => {
 
 ### Promiseオブジェクトの種類
 
-ネイティブなJavaScriptのPromiseオブジェクト、JQueryのPromiseオブジェクト、がある。
+ネイティブなJavaScriptのPromiseオブジェクト、JQueryのPromiseオブジェクトがある。
 
 ネイティブの方が、Promiseオブジェクトの仕様により則った機能を持つ。
 

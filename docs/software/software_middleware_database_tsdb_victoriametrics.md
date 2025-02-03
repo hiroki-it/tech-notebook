@@ -41,7 +41,7 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 vm-agent、vmstorage、vm-alert、といったコンポーネントから構成されている。
 
-また、アラートの通知のためにalertmanager、可視化のためにGrafana、が必要である。
+また、アラートの通知のためにalertmanager、可視化のためにGrafanaが必要である。
 
 vm-agentがPull型でメトリクスのデータポイントを収集し、vmstorageに保管する。
 

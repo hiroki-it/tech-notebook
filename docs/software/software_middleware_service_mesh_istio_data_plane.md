@@ -198,7 +198,7 @@ Pod外からアプリコンテナへのインバウンド通信は、istio-iptab
 
 Dockerfileとしては、Envoyのバイナリファイルをインストールした後にpilot-agentを実行している。
 
-そのため、pilot-agent、Envoy、が稼働している。
+そのため、pilot-agent、Envoyが稼働している。
 
 ```dockerfile
 

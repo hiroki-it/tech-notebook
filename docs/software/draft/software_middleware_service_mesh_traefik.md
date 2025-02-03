@@ -118,3 +118,11 @@ Cert Managerと連携する必要がある。
 > - https://doc.traefik.io/traefik/v1.7/configuration/logs/
 
 <br>
+
+## 05. サービスメッシュ
+
+Traefikをサービスメッシュとして各マイクロサービスに提供する。
+
+> - https://doc.traefik.io/traefik-mesh/
+
+<br>
