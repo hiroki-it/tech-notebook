@@ -21456,6 +21456,30 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#applicationresourcetrackingmethod" class="md-nav__link">
+    <span class="md-ellipsis">
+      application.resourceTrackingMethod
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="application.resourceTrackingMethod">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#applicationresourcetrackingmethod_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ application.resourceTrackingMethodとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#globalprojects" class="md-nav__link">
     <span class="md-ellipsis">
       globalProjects
@@ -25172,6 +25196,30 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#applicationresourcetrackingmethod" class="md-nav__link">
+    <span class="md-ellipsis">
+      application.resourceTrackingMethod
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="application.resourceTrackingMethod">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#applicationresourcetrackingmethod_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ application.resourceTrackingMethodとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#globalprojects" class="md-nav__link">
     <span class="md-ellipsis">
       globalProjects
@@ -25771,6 +25819,31 @@
 <li><a href="https://github.com/argoproj/argo-cd/issues/9420">https://github.com/argoproj/argo-cd/issues/9420</a></li>
 <li><a href="https://github.com/argoproj/argo-cd/issues/2352">https://github.com/argoproj/argo-cd/issues/2352</a></li>
 <li><a href="https://github.com/argoproj/argo-cd/issues/2785">https://github.com/argoproj/argo-cd/issues/2785</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="applicationresourcetrackingmethod">application.resourceTrackingMethod<a class="headerlink" href="#applicationresourcetrackingmethod" title="Permanent link">&para;</a></h3>
+<h4 id="applicationresourcetrackingmethod_1">▼ application.resourceTrackingMethodとは<a class="headerlink" href="#applicationresourcetrackingmethod_1" title="Permanent link">&para;</a></h4>
+<p>トラッキングIDを有効化する。</p>
+<ul>
+<li><code>label</code> (<code>argocd.argoproj.io/instance</code>ラベルを指す)</li>
+<li><code>annotation+label</code></li>
+<li><code>annotation</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-cm</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">application.resourceTrackingMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">annotation</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://argo-cd.readthedocs.io/en/latest/user-guide/resource_tracking/#choosing-a-tracking-method">https://argo-cd.readthedocs.io/en/latest/user-guide/resource_tracking/#choosing-a-tracking-method</a></li>
+<li><a href="https://ca-srg.dev/b40dd428e47641699959c4f2d70c8428">https://ca-srg.dev/b40dd428e47641699959c4f2d70c8428</a></li>
 </ul>
 </blockquote>
 <p><br></p>
