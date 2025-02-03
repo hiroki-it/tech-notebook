@@ -176,9 +176,9 @@ $ openssl x509 -noout -dates -in <証明書へのパス>
 
 一番簡単である。
 
-#### ▼ 複数のKubernetes Clusterを一元管理
+#### ▼ 複数Kubernetes Clusterを一元管理
 
-以下のツールを使用して、複数のKubernetes Clusterを一元管理できる。
+以下のツールを使用して、複数Kubernetes Clusterを一元管理できる。
 
 - Rancher Multi-cluster Apps
 - Gardener

@@ -123,7 +123,7 @@ data:
 
 ### istio-remote-secretとは
 
-マルチClusterメッシュを採用する場合に必要である。
+複数Kubernetes Clusterメッシュを採用する場合に必要である。
 
 プライマリClusterがリモートClusterのkube-apiserverをコールできるように、SSL証明書を持つ。
 

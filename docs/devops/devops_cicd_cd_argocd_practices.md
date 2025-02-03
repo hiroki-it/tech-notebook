@@ -279,7 +279,7 @@ ApplicationとClusterを一括で管理できる。
 
 ArgoCDのApplicationと、ポーリング対象のClusterを別々のClusterで管理する。
 
-複数のKubernetes ClusterにデプロイするApplicationを管理しやすい。
+複数Kubernetes ClusterにデプロイするApplicationを管理しやすい。
 
 > - https://twitter.com/yaml_villager/status/1625857205928075267
 
@@ -1026,7 +1026,7 @@ ArgoCDのコンポーネント (特に、application-controller、argocd-server)
 
 ### AppProjectを使用する場合
 
-単一Cluster上に複数のAppProjectを作成し、これを単位としてArgoCDを作成する。
+単一Kubernetes Cluster上に複数のAppProjectを作成し、これを単位としてArgoCDを作成する。
 
 各テナントは、ArgoCDを共有する。
 
@@ -1040,7 +1040,7 @@ ArgoCDのコンポーネント (特に、application-controller、argocd-server)
 
 ### 仮想Cluster単位の場合
 
-単一Cluster内に仮想Cluster (例：vcluster) を構築し、これを単位としてArgoCDを作成する。
+単一Kubernetes Cluster内に仮想Cluster (例：vcluster) を構築し、これを単位としてArgoCDを作成する。
 
 各テナントは、ArgoCDを共有しない。
 

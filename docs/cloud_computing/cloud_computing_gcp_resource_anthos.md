@@ -164,9 +164,9 @@ Google Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理で�
 
 ### on-ベアメタルの仕組み
 
-#### ▼ マルチClusterタイプ
+#### ▼ 複数Kubernetes Clusterタイプ
 
-マルチClusterタイプのon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeの所属する管理Cluster、ワーカーNodeの所属するユーザーCluster、`L4` (トランスポート層) のロードバランサーから構成される。
+複数Kubernetes Clusterタイプのon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeの所属する管理Cluster、ワーカーNodeの所属するユーザーCluster、`L4` (トランスポート層) のロードバランサーから構成される。
 
 Google CloudのAPIを経由して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にGoogle Anthos GKE Clusterを作成する。
 

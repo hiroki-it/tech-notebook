@@ -13,11 +13,31 @@ description: 設計パターン＠Istioの知見を記録しています。
 
 <br>
 
-## 01. シングルIstiodコントロールプレーン
+## 01. 管理下のKubernetes Cluster数
+
+### 単一Kubernetes Cluster
+
+記入中...
+
+<br>
+
+### 複数Kubernetes Cluster
+
+記入中...
+
+<br>
+
+## 01. Istiodコントロールプレーン数
+
+Istiodコントロールプレーン数に関するパターンである。
+
+<br>
+
+## 01-02. シングルIstiodコントロールプレーン
 
 ### シングルIstiodコントロールプレーンとは
 
-複数のKubernetes Clusterのネットワークを横断的に管理するIstiodコントロールプレーンを作成する。
+複数Kubernetes Clusterのネットワークを横断的に管理するIstiodコントロールプレーンを作成する。
 
 Istiodコントロールプレーンを持つプライマリCluster、サービスメッシュに参加するClusterのリモートCluster、からなる。
 
@@ -25,7 +45,7 @@ Istiodコントロールプレーンを持つプライマリCluster、サービ�
 
 <br>
 
-## 01-02. マルチIstiodコントロールプレーン
+## 01-03. マルチIstiodコントロールプレーン
 
 ### マルチIstiodコントロールプレーンとは
 
@@ -79,7 +99,7 @@ Istioコントロールプレーンとデータプレーンを異なる実行環
 
 <br>
 
-### データプレーンがが仮想サーバーの場合
+### データプレーンが仮想サーバーの場合
 
 #### ▼ 同じプライベートネットワーク内の場合
 
@@ -121,7 +141,17 @@ Istioコントロールプレーンとデータプレーンを異なる実行環
 
 <br>
 
-## 03. テナント分離
+## 03. 接続メッシュ数
+
+### シングルメッシュ
+
+<br>
+
+### マルチメッシュ
+
+<br>
+
+## 04. テナント分離
 
 ### Namespaceテナント
 
@@ -135,7 +165,7 @@ Namespace as-a-Serviceとして提供する。
 
 ### Clusterテナント
 
-Istioのサービスメッシュは、管理下の複数のKubernetes Clusterをテナントとして分離する。
+Istioのサービスメッシュは、管理下の複数Kubernetes Clusterをテナントとして分離する。
 
 Clusters as-a-Serviceとして提供する。
 
