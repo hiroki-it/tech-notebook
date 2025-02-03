@@ -747,7 +747,7 @@ $ minikube start --kubernetes-version=v1.23.0
 
 #### ▼ --listen--address
 
-Minikube Clusterに、ホストPC以外の外部から接続できるようにする。
+Kubernetes Clusterに、ホストPC以外の外部から接続できるようにする。
 
 ```bash
 $ minikube start --listen-address=0.0.0.0
@@ -769,7 +769,7 @@ $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/fo
 
 作成するNode数を指定し、`start`コマンドを実行する。
 
-マルチNodeのMinikube Clusterを作成できる。
+マルチNodeのKubernetes Clusterを作成できる。
 
 **＊例＊**
 
@@ -816,7 +816,7 @@ nginx-deployment-*****   1/1     Running   0          16m   10.244.1.2   minikub
 
 #### ▼ --profile
 
-Minikube Clusterに名前をつけ、複数のMinikube Clusterを作成できる。
+Kubernetes Clusterに名前をつけ、複数のKubernetes Clusterを作成できる。
 
 Cluster名以外にも、例えば以下に影響する。
 
@@ -840,7 +840,7 @@ foo-m05   Ready    worker          13d   v1.32.0
 foo-m06   Ready    worker          13d   v1.32.0
 ```
 
-注意点として、執筆時点 (2025/02/03) では複数のMinikube Cluster間を同一のネットワークに接続できない。
+注意点として、執筆時点 (2025/02/03) では複数のKubernetes Cluster間を同一のネットワークに接続できない。
 
 異なるネットワークにおいて、ホストOSのドメイン (`host.minikube.internal`) を介して通信するしかない。
 

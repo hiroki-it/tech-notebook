@@ -33,7 +33,7 @@ $ kubectl cluster-info
 
 ### create
 
-Kind Clusterを作成する。
+Kubernetes Clusterを作成する。
 
 #### ▼ --config
 
@@ -45,7 +45,7 @@ $ kind create cluster --config kind-config.yaml
 
 #### ▼ --name
 
-Kind Clusterの名前を設定する。
+Kubernetes Clusterの名前を設定する。
 
 ```bash
 $ kind create cluster --name foo-cluster
@@ -93,9 +93,9 @@ $ kind create cluster --wait 3m
 
 ### delete
 
-Kind Clusterを削除する。
+Kubernetes Clusterを削除する。
 
-CIの実行コンテナでKind Clusterを作成する場合、コンテナが残らないように、`kind delete cluster`コマンドを実行する。
+CIの実行コンテナでKubernetes Clusterを作成する場合、コンテナが残らないように、`kind delete cluster`コマンドを実行する。
 
 ```bash
 $ kind delete cluster --name foo-cluster
@@ -107,7 +107,7 @@ $ kind delete cluster --name foo-cluster
 
 ### export
 
-Kind Clusterのログを出力する。
+Kubernetes Clusterのログを出力する。
 
 ```bash
 $ kind export logs
@@ -119,7 +119,7 @@ $ kind export logs
 
 ### load
 
-Kind Cluster内にコンテナイメージをプルする。
+Kubernetes Cluster内にコンテナイメージをプルする。
 
 ```bash
 $ kind load docker-image -name dev nginx:latest

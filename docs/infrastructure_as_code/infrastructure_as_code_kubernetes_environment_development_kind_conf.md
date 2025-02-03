@@ -25,7 +25,7 @@ description: 設定ファイル＠Kindの知見を記録しています。
 
 #### ▼ nodes
 
-Kind ClusterのNode (コントロールプレーンNode、ワーカーNode) を設定する。
+Kubernetes ClusterのNode (コントロールプレーンNode、ワーカーNode) を設定する。
 
 #### ▼ extraPortMappings
 

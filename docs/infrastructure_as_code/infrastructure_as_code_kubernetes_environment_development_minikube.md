@@ -21,7 +21,7 @@ description: Minikube＠開発環境の知見を記録しています。
 
 ホスト上にMinikube仮想サーバーを作成する。
 
-このMinikube仮想サーバー上に、Nodeを持つMinikube Clusterを作成する。
+このMinikube仮想サーバー上に、Nodeを持つKubernetes Clusterを作成する。
 
 ![minikube_architecture_virtual_machine_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/minikube_architecture_virtual_machine_driver.png)
 
@@ -34,7 +34,7 @@ description: Minikube＠開発環境の知見を記録しています。
 
 このコンテナ内にMinikube仮想サーバーを作成し、仮想サーバー上にNodeを持つClusterを作成する。
 
-これは、別のツールであるKindと同じ仕組みである。
+なお、別のツールであるKindと同じ仕組みである。
 
 ![minikube_architecture_docker_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/minikube_architecture_docker_driver.png)
 

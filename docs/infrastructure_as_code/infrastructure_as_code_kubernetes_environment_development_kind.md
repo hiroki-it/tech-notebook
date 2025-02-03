@@ -19,7 +19,9 @@ description: Kind＠開発環境の知見を記録しています。
 
 ホスト上にコンテナを作成する。
 
-このコンテナ内にMinikube仮想サーバーを作成し、仮想サーバー上にNodeを持つClusterを作成する。
+このコンテナ内にKind仮想サーバーを作成し、仮想サーバー上にNodeを持つKubernetes Clusterを作成する。
+
+なお、MinikubeのDockerドライバーも同じ仕組みである。
 
 > - https://kind.sigs.k8s.io/docs/design/initial
 
