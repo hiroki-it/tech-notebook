@@ -15065,16 +15065,16 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cluster_1" class="md-nav__link">
+  <a href="#kubernetes-cluster" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ マルチClusterタイプ
+      ▼ 複数Kubernetes Clusterタイプ
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cluster_2" class="md-nav__link">
+  <a href="#cluster_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ スタンドアローンClusterタイプ (ハイブリッドタイプ)
     </span>
@@ -15107,7 +15107,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cluster_3" class="md-nav__link">
+  <a href="#cluster_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ブートストラップCluster
     </span>
@@ -25174,16 +25174,16 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cluster_1" class="md-nav__link">
+  <a href="#kubernetes-cluster" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ マルチClusterタイプ
+      ▼ 複数Kubernetes Clusterタイプ
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cluster_2" class="md-nav__link">
+  <a href="#cluster_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ スタンドアローンClusterタイプ (ハイブリッドタイプ)
     </span>
@@ -25216,7 +25216,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cluster_3" class="md-nav__link">
+  <a href="#cluster_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ブートストラップCluster
     </span>
@@ -25536,8 +25536,8 @@
 <p><br></p>
 <h2 id="02-02-on-">02-02. on-ベアメタル<a class="headerlink" href="#02-02-on-" title="Permanent link">&para;</a></h2>
 <h3 id="on-_1">on-ベアメタルの仕組み<a class="headerlink" href="#on-_1" title="Permanent link">&para;</a></h3>
-<h4 id="cluster_1">▼ マルチClusterタイプ<a class="headerlink" href="#cluster_1" title="Permanent link">&para;</a></h4>
-<p>マルチClusterタイプのon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeの所属する管理Cluster、ワーカーNodeの所属するユーザーCluster、<code>L4</code> (トランスポート層) のロードバランサーから構成される。</p>
+<h4 id="kubernetes-cluster">▼ 複数Kubernetes Clusterタイプ<a class="headerlink" href="#kubernetes-cluster" title="Permanent link">&para;</a></h4>
+<p>複数Kubernetes Clusterタイプのon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeの所属する管理Cluster、ワーカーNodeの所属するユーザーCluster、<code>L4</code> (トランスポート層) のロードバランサーから構成される。</p>
 <p>Google CloudのAPIを経由して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にGoogle Anthos GKE Clusterを作成する。</p>
 <p>Google Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。</p>
 <p><img alt="anthos_on_bare-metal_multi-cluster" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_bare-metal_multi-cluster.png" /></p>
@@ -25547,7 +25547,7 @@
 <li><a href="https://medium.com/google-cloud-jp/%E7%B0%A1%E5%8D%98%E6%A7%8B%E7%AF%89-nuc-%E3%81%A7%E3%81%8A%E3%81%86%E3%81%A1-anthos-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86-682e95112116">https://medium.com/google-cloud-jp/%E7%B0%A1%E5%8D%98%E6%A7%8B%E7%AF%89-nuc-%E3%81%A7%E3%81%8A%E3%81%86%E3%81%A1-anthos-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86-682e95112116</a></li>
 </ul>
 </blockquote>
-<h4 id="cluster_2">▼ スタンドアローンClusterタイプ (ハイブリッドタイプ)<a class="headerlink" href="#cluster_2" title="Permanent link">&para;</a></h4>
+<h4 id="cluster_1">▼ スタンドアローンClusterタイプ (ハイブリッドタイプ)<a class="headerlink" href="#cluster_1" title="Permanent link">&para;</a></h4>
 <p>スタンドアローンClusterタイプ (ハイブリッドタイプ) のon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeとワーカーNodeの両方が所属するベアメタルCluster、といったコンポーネントから構成される。</p>
 <p>ワークステーションにて、Google CloudのAPIを経由してベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にGoogle Anthos GKE Clusterを作成する。</p>
 <p>Google Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。</p>
@@ -25567,7 +25567,7 @@
 <p>Kindがコンテナを構築するために、Google Anthos Clusterの構築前に、<code>docker</code>プロセスを起動しておく必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>docker
 </code></pre></div>
-<h4 id="cluster_3">▼ ブートストラップCluster<a class="headerlink" href="#cluster_3" title="Permanent link">&para;</a></h4>
+<h4 id="cluster_2">▼ ブートストラップCluster<a class="headerlink" href="#cluster_2" title="Permanent link">&para;</a></h4>
 <p>Kindがコンテナ内で作成する仮想的なGoogle Anthos Clusterのこと。</p>
 <p>VClusterを使用して、仮想的なGoogle Anthos Clusterを作成している。</p>
 <p><code>~/baremetal/bmctl-workspace/foo-anthos-cluster/.kindkubeconfig</code>ファイルを指定することにより、ブートストラップClusterのkube-apiserverにリクエストを送信できる。</p>
@@ -25633,7 +25633,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-03</span>
   </span>
 
     

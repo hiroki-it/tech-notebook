@@ -26737,7 +26737,7 @@
 <p><br></p>
 <h3 id="cluster_1">外部Clusterパターン<a class="headerlink" href="#cluster_1" title="Permanent link">&para;</a></h3>
 <p>ArgoCDのApplicationと、ポーリング対象のClusterを別々のClusterで管理する。</p>
-<p>複数のKubernetes ClusterにデプロイするApplicationを管理しやすい。</p>
+<p>複数Kubernetes ClusterにデプロイするApplicationを管理しやすい。</p>
 <blockquote>
 <ul>
 <li><a href="https://twitter.com/yaml_villager/status/1625857205928075267">https://twitter.com/yaml_villager/status/1625857205928075267</a></li>
@@ -27471,7 +27471,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="appproject_2">AppProjectを使用する場合<a class="headerlink" href="#appproject_2" title="Permanent link">&para;</a></h3>
-<p>単一Cluster上に複数のAppProjectを作成し、これを単位としてArgoCDを作成する。</p>
+<p>単一Kubernetes Cluster上に複数のAppProjectを作成し、これを単位としてArgoCDを作成する。</p>
 <p>各テナントは、ArgoCDを共有する。</p>
 <p>この場合、レプリカ数やCPU数を増やすことにより、並列処理数を増やす必要がある。</p>
 <blockquote>
@@ -27483,7 +27483,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="cluster_2">仮想Cluster単位の場合<a class="headerlink" href="#cluster_2" title="Permanent link">&para;</a></h3>
-<p>単一Cluster内に仮想Cluster (例：vcluster) を構築し、これを単位としてArgoCDを作成する。</p>
+<p>単一Kubernetes Cluster内に仮想Cluster (例：vcluster) を構築し、これを単位としてArgoCDを作成する。</p>
 <p>各テナントは、ArgoCDを共有しない。</p>
 <blockquote>
 <ul>
