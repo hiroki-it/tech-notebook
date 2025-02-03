@@ -185,6 +185,10 @@ metadata:
 
 #### ▼ istio.io/use-waypoint-namespaceとは
 
+`istio.io/use-waypoint`を設定したNamespaceにwaypoint-proxy (Gateway APIのNamespaceによって決まる) が一緒にいない場合は、`istio.io/use-waypoint-namespace`でwaypoint-proxyにいるNamespaceを指定する必要がある。
+
+例えば、`app`でGatewayとistio-waypointを作成している場合、waypoint-proxyを使用する他のNamespaceでは、`istio.io/use-namespace: app`とする。
+
 ```yaml
 apiVersion: v1
 kind: Namespace
@@ -199,8 +203,9 @@ kind: Namespace
 metadata:
   name: istio-egress
   labels:
-    istio.io/use-waypoint: istio-waypoint
     # Gatewayの名前
+    istio.io/use-waypoint: istio-waypoint
+    # appにwaypoint-proxyがある
     istio.io/use-namespace: app
 ---
 apiVersion: v1
@@ -208,8 +213,9 @@ kind: Namespace
 metadata:
   name: istio-ingress
   labels:
-    istio.io/use-waypoint: istio-waypoint
     # Gatewayの名前
+    istio.io/use-waypoint: istio-waypoint
+    # appにwaypoint-proxyがある
     istio.io/use-namespace: app
 ```
 
