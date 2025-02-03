@@ -27,15 +27,15 @@ description: 設計パターン＠Istioの知見を記録しています。
 
 <br>
 
-## 01. Istiodコントロールプレーン数
+## 02. Istiodコントロールプレーン数
 
 Istiodコントロールプレーン数に関するパターンである。
 
 <br>
 
-## 01-02. シングルIstiodコントロールプレーン
+## 02-02. 単一Istiodコントロールプレーン
 
-### シングルIstiodコントロールプレーンとは
+### 単一Istiodコントロールプレーンとは
 
 複数Kubernetes Clusterのネットワークを横断的に管理するIstiodコントロールプレーンを作成する。
 
@@ -45,9 +45,9 @@ Istiodコントロールプレーンを持つプライマリCluster、サービ�
 
 <br>
 
-## 01-03. マルチIstiodコントロールプレーン
+## 02-03. 複数Istiodコントロールプレーン
 
-### マルチIstiodコントロールプレーンとは
+### 複数Istiodコントロールプレーンとは
 
 Kubernetes ClusterごとにIstiodコントロールプレーンを作成する。
 
@@ -79,7 +79,7 @@ Kubernetes ClusterごとにIstiodコントロールプレーンを作成する�
 
 <br>
 
-## 02. 外部Istiodコントロールプレーン
+## 03. 外部Istiodコントロールプレーン
 
 ### 外部Istiodコントロールプレーンとは
 
@@ -141,17 +141,21 @@ Istioコントロールプレーンとデータプレーンを異なる実行環
 
 <br>
 
-## 03. 接続メッシュ数
+## 04. 接続メッシュ数
 
-### シングルメッシュ
+### 単一メッシュ
 
-<br>
-
-### マルチメッシュ
+記入中...
 
 <br>
 
-## 04. テナント分離
+### 複数メッシュ
+
+記入中...
+
+<br>
+
+## 05. テナント分離
 
 ### Namespaceテナント
 
@@ -179,7 +183,7 @@ Istioのサービスメッシュは、管理下の単一のKubernetes Clusterを
 
 各Kubernetes Clusterのサービスメッシュは独立しているが、互いに通信できる。
 
-メッシュテナントを採用すると、マルチメッシュパターンになる。
+メッシュテナントを採用すると、複数メッシュパターンになる。
 
 > - https://istio.io/latest/docs/ops/deployment/deployment-models/#mesh-tenancy
 > - https://istio.io/latest/docs/ops/deployment/deployment-models/#multiple-meshes
