@@ -59,21 +59,27 @@ Kubernetes ClusterごとにIstiodコントロールプレーンを作成する�
 
 <br>
 
-## 02. 外部データプレーン
+## 02. 外部Istiodコントロールプレーン
 
-### 外部データプレーンとは
+### 外部Istiodコントロールプレーンとは
 
-Istioコントロールプレーンとデータプレーンが異なる実行環境にある。
+Istioコントロールプレーンとデータプレーンを異なる実行環境にデプロイする。
+
+ただ、データプレーン側に仲介役のIstioコントロールプレーンをデプロイしておく必要がある。
 
 <br>
 
-### 外部のKubernetes Cluster
+### データプレーンがKubernetes Clusterの場合
 
 記入中...
 
+> - https://istio.io/latest/docs/setup/install/external-controlplane/
+> - https://istio.io/latest/blog/2020/new-deployment-model/
+> - https://github.com/istio/istio/wiki/External-Istiod-single-cluster-steps
+
 <br>
 
-### 外部の仮想サーバー
+### データプレーンがが仮想サーバーの場合
 
 #### ▼ 同じプライベートネットワーク内の場合
 
@@ -103,7 +109,7 @@ Istioコントロールプレーンとデータプレーンが異なる実行環
 
 <br>
 
-### 外部のクラウド上のコンテナ
+### データプレーンが非Kubernetesのコンテナの場合
 
 クラウド上のコンテナ (例：AWS ECS) がコントロールプレーンNodeと同じプライベートネットワーク内に所属している場合に、クラウド上のコンテナをサービスメッシュに参加させる。
 
