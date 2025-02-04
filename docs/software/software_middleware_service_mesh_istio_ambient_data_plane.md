@@ -38,13 +38,24 @@ description: データプレーン＠Istioアンビエントの知見を記録�
 
 ### ztunnel
 
-Node外からの`L4`インバウンド通信をiptablesを介して受信し、Node内の宛先Podに送信する。
+#### ▼ アウトバウンド通信
 
-また一方で、送信元Podからの`L4`アウトバウンド通信をiptablesを介して受信し、Node外に送信する。
+送信元Podからの`L4`アウトバウンド通信をiptablesとgeneve tunnelを介して受信し、Node外に送信する。
 
 なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesの代わりにeBPFを使用する方法もある。
 
-![istio_ambient-mesh_ztunnel](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel.png)
+![istio_ambient-mesh_ztunnel_outbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_outbound.png)
+
+> - https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels
+> - https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint
+
+#### ▼ インバウンド通信
+
+Node外からの`L4`インバウンド通信をiptablesを介して受信し、Node内の宛先Podに送信する。
+
+なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesの代わりにeBPFを使用する方法もある。
+
+![istio_ambient-mesh_ztunnel_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inbound.png)
 
 > - https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels
 > - https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint
