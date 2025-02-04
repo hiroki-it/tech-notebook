@@ -4795,6 +4795,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#inpod-redirection" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ inpod redirection
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -24770,6 +24779,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#inpod-redirection" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ inpod redirection
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -24847,13 +24865,20 @@
 </ul>
 </blockquote>
 <h4 id="_3">▼ インバウンド通信<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>他Node上のztunnel Podからの<code>L4</code>インバウンド通信をHBORNとiptablesを介して受信し、Node内の宛先Podに送信する。</p>
+<p>他Node上のztunnel Podからの<code>L4</code>インバウンド通信をHBORN (<code>15008</code>) とiptablesを介して受信し、Node内の宛先Podに送信する。</p>
 <p>なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesの代わりにeBPFを使用する方法もある。</p>
 <p><img alt="istio_ambient-mesh_ztunnel_inbound" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inbound.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels">https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels</a></li>
 <li><a href="https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint">https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint</a></li>
+</ul>
+</blockquote>
+<h4 id="inpod-redirection">▼ inpod redirection<a class="headerlink" href="#inpod-redirection" title="Permanent link">&para;</a></h4>
+<p><img alt="istio_ambient-mesh_ztunnel_inpod-redirection" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.solo.io/blog/istio-ambient-mesh-any-cni">https://www.solo.io/blog/istio-ambient-mesh-any-cni</a></li>
 </ul>
 </blockquote>
 <p><br></p>
