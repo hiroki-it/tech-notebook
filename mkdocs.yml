@@ -258,8 +258,12 @@ nav:
               - プラクティス: software/software_middleware_service_mesh_envoy_practice.md
           - ■ Istio:
               - Istio: software/software_middleware_service_mesh_istio.md
-              - コントロールプレーン: software/software_middleware_service_mesh_istio_control_plane.md
-              - データプレーン: software/software_middleware_service_mesh_istio_data_plane.md
+              - ■ サイドカーモード:
+                  - コントロールプレーン: software/software_middleware_service_mesh_istio_sidecar_control_plane.md
+                  - データプレーン: software/software_middleware_service_mesh_istio_sidecar_data_plane.md
+              - ■ アンビエントモード:
+                    - コントロールプレーン: software/software_middleware_service_mesh_istio_ambient_control_plane.md
+                    - データプレーン: software/software_middleware_service_mesh_istio_ambient_data_plane.md
               - Istioを採用しない場合との比較: software/software_middleware_service_mesh_istio_non.md
               - コマンド: software/software_middleware_service_mesh_istio_command.md
               - プラクティス集: software/software_middleware_service_mesh_istio_practices.md
