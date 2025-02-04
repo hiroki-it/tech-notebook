@@ -23,11 +23,13 @@ description: データプレーン＠Istioアンビエントの知見を記録�
 
 ### istio-cni
 
-以下を設定し、`L4`インバウンド/アウトバウンド通信をztunnel Podへリダイレクトできるようにする
+以下を設定し、`L4`インバウンド/アウトバウンド通信をztunnel Podへリダイレクトできるようにする。
 
 - Nodeのiptables
 - ztunnel Podのiptables
 - geneve tunnel
+
+また、ztunnelが受信ポートを公開するように、通知する。
 
 なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesとgeneve tunnelの代わりにeBPFを使用する方法もある。
 
@@ -39,13 +41,17 @@ description: データプレーン＠Istioアンビエントの知見を記録�
 
 ### ztunnel
 
+#### ▼ ztunnelとは
+
+サービスメッシュ内の`L4`トラフィックを管理する。
+
 #### ▼ 新しい仕組み (inpod redirection)
 
 ztunnelへのリダイレクトの仕組みは一度リプレイスされている。
 
 新しい仕組みでは、サイドカーパターンでアプリコンテナからの通信が`istio-proxy`コンテナにリダイレクトされるのと同じような仕組みになっている。
 
-![istio_ambient-mesh_ztunnel_inpod-redirection_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_overview.png)
+![istio_ambient-mesh_ztunnel_inpod-redirection_l4_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_l4_overview.png)
 
 アウトバウンドの仕組みは以下の通りである。
 
@@ -59,10 +65,11 @@ ztunnelへのリダイレクトの仕組みは一度リプレイスされてい�
 2. Pod内iptablesが通信をztunnel Podにリダイレクトする。
 3. Pod内アプリコンテナが`L4`アウトバウンド通信を受信する。
 
-![istio_ambient-mesh_ztunnel_inpod-redirection_detail](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_detail.png)
+![istio_ambient-mesh_ztunnel_inpod-redirection_l4_detail](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_l4_detail.png)
 
 > - https://www.solo.io/blog/istio-ambient-mesh-any-cni
 > - https://medium.com/@Nick_Chekushkin/implementation-and-benefits-of-istio-ambient-mesh-optimizing-resources-and-improving-security-in-189ce4bad313
+> - https://imesh.ai/blog/istio-ambient-install-eks/
 
 #### ▼ 古い仕組み
 
@@ -78,11 +85,21 @@ ztunnelへのリダイレクトの仕組みは一度リプレイスされてい�
 
 ### waypoint-proxy
 
+#### ▼ waypoint-proxyとは
+
+サービスメッシュ内の`L7`トラフィックを管理する。
+
+#### ▼ 仕組み
+
 Namespace外からの`L7`インバウンド通信を受信し、Namespace内の宛先Podに送信する。
+
+#### ▼ Namespaceのリバースプロキシとして
+
+waypoint-proxyは、Namespaceのリバースプロキシである。
 
 アウトバウンド通信には関与せず、サーバー側のリバースプロキシとしてのみ機能する。
 
-![istio_ambient-mesh_waypoint-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy.png)
+![istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7.png)
 
 > - https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint
 
