@@ -4742,33 +4742,9 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. アンビエントモード
+      01. アンビエントモードのデータプレーンの仕組み
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="01. アンビエントモード">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      アンビエントモードとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#envoy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Envoyの設定値
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4802,7 +4778,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 仕組み
     </span>
@@ -4844,7 +4820,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 古い仕組み
     </span>
@@ -4877,7 +4853,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 仕組み
     </span>
@@ -24807,33 +24783,9 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. アンビエントモード
+      01. アンビエントモードのデータプレーンの仕組み
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="01. アンビエントモード">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      アンビエントモードとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#envoy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Envoyの設定値
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -24867,7 +24819,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 仕組み
     </span>
@@ -24909,7 +24861,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 古い仕組み
     </span>
@@ -24942,7 +24894,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 仕組み
     </span>
@@ -24996,8 +24948,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. アンビエントモード<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_2">アンビエントモードとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h2 id="01">01. アンビエントモードのデータプレーンの仕組み<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <p><img alt="istio_ambient-mesh_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_architecture.png" /></p>
 <p>アンビエントモードは、データプレーン、コントロールプレーンNode、といったコンポーネントから構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。</p>
 <p>マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービスディスカバリーの必要性、マイクロサービス間通信の暗号化、テレメトリー作成など) を解決する責務を持つ。</p>
@@ -25064,36 +25015,6 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="envoy">Envoyの設定値<a class="headerlink" href="#envoy" title="Permanent link">&para;</a></h3>
-<p>(たぶん) Envoyの設定値は以下のように機能している。</p>
-<p>送信元ztunnelのEnvoyの<code>L4</code>処理で</p>
-<ol>
-<li>前半のListenerとCluster：宛先マイクロサービスを決める</li>
-<li>後半のListenerとCluster：宛先waypoint-proxyを決める</li>
-</ol>
-<p>waypoint-proxyのEnvoyの<code>L7</code>処理で</p>
-<ol>
-<li>inbound_CONNECT_terminate Listener：HBORNを経由したリクエストを受信する</li>
-<li>Internal Inbound VIP Cluster：Inbound VIP Listenerにルーティングする</li>
-<li>Inbound VIP Listener：VirtualServiceのルーティングポリシーを適用する</li>
-<li>Inbound VIP Cluster：Inbound Pod Listenerにロードバランシングする</li>
-<li>Inbound Pod Listener：HBORNのメタデータをセットアップする</li>
-<li>Inbound Pod Cluster</li>
-<li>inbound_CONNECT_originate Listener</li>
-<li>inbound_CONNECT_originate Cluster：宛先ztunnelを決める</li>
-</ol>
-<p>宛先ztunnelのEnvoyの<code>L4</code>処理で</p>
-<ol>
-<li>ListenerとCluster：宛先マイクロサービスを決める</li>
-</ol>
-<blockquote>
-<ul>
-<li><a href="https://jimmysong.io/en/blog/ambient-mesh-l7-traffic-path/">https://jimmysong.io/en/blog/ambient-mesh-l7-traffic-path/</a></li>
-<li><a href="https://juejin.cn/post/7161975827473645575">https://juejin.cn/post/7161975827473645575</a></li>
-<li><a href="https://www.zhaohuabing.com/post/2022-10-17-ambient-deep-dive-3/">https://www.zhaohuabing.com/post/2022-10-17-ambient-deep-dive-3/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
 <h2 id="02">02. データプレーンの要素<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="istio-cni">istio-cni<a class="headerlink" href="#istio-cni" title="Permanent link">&para;</a></h3>
 <h4 id="istio-cni_1">▼ istio-cniとは<a class="headerlink" href="#istio-cni_1" title="Permanent link">&para;</a></h4>
@@ -25101,7 +25022,7 @@
 <p><code>kube-system</code>のNamespaceにおき、PriorityClassを<code>system-node-critical</code>とすることが推奨である。</p>
 <p>istio-cniは、<code>/var/run/ztunnel/ztunnel.sock</code>ファイル経由でztunnelから接続される。</p>
 <p>そのため、istio-cniはztunnelと同じNode上に作成する必要がある (Namespaceは違っていても良い) 。</p>
-<h4 id="_3">▼ 仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h4 id="_2">▼ 仕組み<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p>以下を設定し、<code>L4</code>インバウンド/アウトバウンド通信をztunnel Podへリダイレクトできるようにする。</p>
 <ul>
 <li>Nodeのiptables</li>
@@ -25153,7 +25074,7 @@
 <li><a href="https://imesh.ai/blog/istio-ambient-install-eks/">https://imesh.ai/blog/istio-ambient-install-eks/</a></li>
 </ul>
 </blockquote>
-<h4 id="_4">▼ 古い仕組み<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h4 id="_3">▼ 古い仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>ztunnelへのリダイレクトの仕組みは一度リプレイスされている。</p>
 <p>新しい仕組みは『inpod redirection』と呼ばれている。</p>
 <blockquote>
@@ -25415,7 +25336,7 @@
 <span class="w">                    </span><span class="nt">fieldPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metadata.namespace</span>
 <span class="w">                  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace</span>
 </code></pre></div>
-<h4 id="_5">▼ 仕組み<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h4 id="_4">▼ 仕組み<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>Namespace外からの<code>L7</code>インバウンド通信をHBORNを経由して受信し、Namespace内の宛先Podに送信する。</p>
 <p><img alt="istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7_overview" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7_overview.png" /></p>
 <h4 id="namespace">▼ Namespaceのリバースプロキシとして<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h4>

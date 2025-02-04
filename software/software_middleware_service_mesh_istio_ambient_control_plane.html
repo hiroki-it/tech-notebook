@@ -4721,9 +4721,33 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. コントロールプレーンとは
+      01. アンビエントモードのコントロールプレーン
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="01. アンビエントモードのコントロールプレーン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      仕組み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envoy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Envoyの設定値への変換
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -24651,9 +24675,33 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. コントロールプレーンとは
+      01. アンビエントモードのコントロールプレーン
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="01. アンビエントモードのコントロールプレーン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      仕組み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envoy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Envoyの設定値への変換
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -24684,8 +24732,39 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. コントロールプレーンとは<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. アンビエントモードのコントロールプレーン<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">仕組み<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
+<p><br></p>
+<h3 id="envoy">Envoyの設定値への変換<a class="headerlink" href="#envoy" title="Permanent link">&para;</a></h3>
+<p>(たぶん) Envoyの設定値は以下のように機能している。</p>
+<p>送信元ztunnelのEnvoyの<code>L4</code>処理で</p>
+<ol>
+<li>前半のListenerとCluster：宛先マイクロサービスを決める</li>
+<li>後半のListenerとCluster：宛先waypoint-proxyを決める</li>
+</ol>
+<p>waypoint-proxyのEnvoyの<code>L7</code>処理で</p>
+<ol>
+<li>inbound_CONNECT_terminate Listener：HBORNを経由したリクエストを受信する</li>
+<li>Internal Inbound VIP Cluster：Inbound VIP Listenerにルーティングする</li>
+<li>Inbound VIP Listener：VirtualServiceのルーティングポリシーを適用する</li>
+<li>Inbound VIP Cluster：Inbound Pod Listenerにロードバランシングする</li>
+<li>Inbound Pod Listener：HBORNのメタデータをセットアップする</li>
+<li>Inbound Pod Cluster</li>
+<li>inbound_CONNECT_originate Listener</li>
+<li>inbound_CONNECT_originate Cluster：宛先ztunnelを決める</li>
+</ol>
+<p>宛先ztunnelのEnvoyの<code>L4</code>処理で</p>
+<ol>
+<li>ListenerとCluster：宛先マイクロサービスを決める</li>
+</ol>
+<blockquote>
+<ul>
+<li><a href="https://jimmysong.io/en/blog/ambient-mesh-l7-traffic-path/">https://jimmysong.io/en/blog/ambient-mesh-l7-traffic-path/</a></li>
+<li><a href="https://juejin.cn/post/7161975827473645575">https://juejin.cn/post/7161975827473645575</a></li>
+<li><a href="https://www.zhaohuabing.com/post/2022-10-17-ambient-deep-dive-3/">https://www.zhaohuabing.com/post/2022-10-17-ambient-deep-dive-3/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 
@@ -24707,7 +24786,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-05</span>
   </span>
 
     
