@@ -38,33 +38,35 @@ description: データプレーン＠Istioアンビエントの知見を記録�
 
 ### ztunnel
 
-#### ▼ アウトバウンド通信
+#### ▼ inpod redirectionによるアウトバウンド通信
 
-送信元Podからの`L4`アウトバウンド通信をiptablesとgeneve tunnelを介して受信し、Node外に送信する。
-
-なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesの代わりにeBPFを使用する方法もある。
-
-![istio_ambient-mesh_ztunnel_outbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_outbound.png)
-
-> - https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels
-> - https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint
-
-#### ▼ インバウンド通信
-
-他Node上のztunnel Podからの`L4`インバウンド通信をHBORN (`15008`) とiptablesを介して受信し、Node内の宛先Podに送信する。
-
-なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesの代わりにeBPFを使用する方法もある。
-
-![istio_ambient-mesh_ztunnel_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inbound.png)
-
-> - https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels
-> - https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint
-
-#### ▼ inpod redirection
+1. Pod内コンテナが`L4`アウトバウンド通信を送信する。
+2. Pod内iptablesが通信をztunnel Podにリダイレクトする。
+3. ztunnel Podは通信を宛先に送信する。
 
 ![istio_ambient-mesh_ztunnel_inpod-redirection](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection.png)
 
 > - https://www.solo.io/blog/istio-ambient-mesh-any-cni
+
+#### ▼ inpod redirectionによるインバウンド通信
+
+1. Podが`L4`インバウンド通信を受信する。
+2. Pod内iptablesが通信をztunnel Podにリダイレクトする。
+3. Pod内コンテナが`L4`アウトバウンド通信を受信する。
+
+![istio_ambient-mesh_ztunnel_inpod-redirection](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection.png)
+
+> - https://www.solo.io/blog/istio-ambient-mesh-any-cni
+
+#### ▼ 古い仕組み
+
+ztunnelへのリダイレクトの仕組みは一度リプレイスされている。
+
+新しい仕組みは『inpod redirection』と呼ばれている。
+
+> - https://www.solo.io/blog/istio-ambient-mesh-any-cni
+> - https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels
+> - https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint
 
 <br>
 
