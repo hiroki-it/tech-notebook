@@ -24773,20 +24773,24 @@
 <p><br></p>
 <h2 id="02">02. データプレーンの要素<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="istio-cni">istio-cni<a class="headerlink" href="#istio-cni" title="Permanent link">&para;</a></h3>
-<p>以下を設定し、<code>L4</code>インバウンド/アウトバウンド通信をztunnelのPodへルーティングできるようにする</p>
+<p>以下を設定し、<code>L4</code>インバウンド/アウトバウンド通信をztunnelのPodへリダイレクトできるようにする</p>
 <ul>
 <li>Nodeのiptables</li>
 <li>ztunnel Podのiptables</li>
+<li>geneve tunnel</li>
 </ul>
+<p>なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesとgeneve tunnelの代わりにeBPFを使用する方法もある。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration">https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc8926.html">https://www.rfc-editor.org/rfc/rfc8926.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h3 id="ztunnel">ztunnel<a class="headerlink" href="#ztunnel" title="Permanent link">&para;</a></h3>
 <p>Node外からの<code>L4</code>インバウンド通信をiptablesを介して受信し、Node内の宛先Podに送信する。</p>
 <p>また一方で、送信元Podからの<code>L4</code>アウトバウンド通信をiptablesを介して受信し、Node外に送信する。</p>
+<p>なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesの代わりにeBPFを使用する方法もある。</p>
 <p><img alt="istio_ambient-mesh_ztunnel" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel.png" /></p>
 <blockquote>
 <ul>
