@@ -24821,7 +24821,7 @@
 <p><br></p>
 <h2 id="02">02. データプレーンの要素<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="istio-cni">istio-cni<a class="headerlink" href="#istio-cni" title="Permanent link">&para;</a></h3>
-<p>以下を設定し、<code>L4</code>インバウンド/アウトバウンド通信をztunnelのPodへリダイレクトできるようにする</p>
+<p>以下を設定し、<code>L4</code>インバウンド/アウトバウンド通信をztunnel Podへリダイレクトできるようにする</p>
 <ul>
 <li>Nodeのiptables</li>
 <li>ztunnel Podのiptables</li>
@@ -24847,7 +24847,7 @@
 </ul>
 </blockquote>
 <h4 id="_3">▼ インバウンド通信<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>Node外からの<code>L4</code>インバウンド通信をiptablesを介して受信し、Node内の宛先Podに送信する。</p>
+<p>他Node上のztunnel Podからの<code>L4</code>インバウンド通信をHBORNとiptablesを介して受信し、Node内の宛先Podに送信する。</p>
 <p>なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesの代わりにeBPFを使用する方法もある。</p>
 <p><img alt="istio_ambient-mesh_ztunnel_inbound" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inbound.png" /></p>
 <blockquote>

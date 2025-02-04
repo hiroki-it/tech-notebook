@@ -26297,9 +26297,9 @@
 <p><img alt="istio_ambient-mesh_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_architecture.png" /></p>
 <p>アンビエントモードは、データプレーン、コントロールプレーンNode、といったコンポーネントから構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。</p>
 <p>マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービスディスカバリーの必要性、マイクロサービス間通信の暗号化、テレメトリー作成など) を解決する責務を持つ。</p>
-<p>Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnelのPodを経由して、一度waypoint-proxyのPodにリダイレクトされる。</p>
+<p>Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnel Podを経由して、一度waypoint-proxy Podにリダイレクトされる。</p>
 <p>サイドカーモードを将来的に廃止するということはなく、好きな方を選べるようにするらしい。</p>
-<p>ztunnelのPodを経由した段階でHTTPSプロトコルになる。</p>
+<p>ztunnel Podを経由した段階でHTTPSプロトコルになる。</p>
 <p>ハードウェアリソースの消費量の少ない<code>L4</code>プロトコルと、消費量の多い<code>L7</code>プロトコルのプロコトルの処理の責務が分離されているため、サイドカーモードと比較して、<code>L4</code>プロトコルのみを処理する場合に、Nodeのハードウェアリソース消費量を節約できる。</p>
 <p>サービスメッシュ内へのリクエストの経路は以下の通りである。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
@@ -26307,12 +26307,12 @@
 <span class="l l-Scalar l-Scalar-Plain">リダイレクト</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">ztunnelのPod (L4)</span><span class="w"> </span><span class="c1"># DaemonSet配下のPodなので、Nodeごとにいる</span>
+<span class="l l-Scalar l-Scalar-Plain">ztunnel Pod (L4)</span><span class="w"> </span><span class="c1"># DaemonSet配下のPodなので、Nodeごとにいる</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span><span class="w"> </span><span class="c1"># HBONE</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">waypoint-proxyのPod (L7)</span><span class="w"> </span><span class="c1"># Deployment配下のPodなので、任意のNodeにいる</span>
+<span class="l l-Scalar l-Scalar-Plain">waypoint-proxy Pod (L7)</span><span class="w"> </span><span class="c1"># Deployment配下のPodなので、任意のNodeにいる</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">アプリコンテナのPod</span>
 </code></pre></div>
@@ -26320,17 +26320,17 @@
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">アプリコンテナのPod</span><span class="w"> </span><span class="c1"># クライアント側</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">ztunnelのPod (L4)</span><span class="w"> </span><span class="c1"># DaemonSet配下のPodなので、Nodeごとにいる</span>
+<span class="l l-Scalar l-Scalar-Plain">ztunnel Pod (L4)</span><span class="w"> </span><span class="c1"># DaemonSet配下のPodなので、Nodeごとにいる</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span><span class="w"> </span><span class="c1"># HBONE</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">waypoint-proxyのPod (L7)</span><span class="w"> </span><span class="c1"># Deployment配下のPodなので、任意のNodeにいる</span>
+<span class="l l-Scalar l-Scalar-Plain">waypoint-proxy Pod (L7)</span><span class="w"> </span><span class="c1"># Deployment配下のPodなので、任意のNodeにいる</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span><span class="w"> </span><span class="c1"># HBONE</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">ztunnelのPod (L4)</span><span class="w"> </span><span class="c1"># DaemonSet配下のPodなので、Nodeごとにいる</span>
+<span class="l l-Scalar l-Scalar-Plain">ztunnel Pod (L4)</span><span class="w"> </span><span class="c1"># DaemonSet配下のPodなので、Nodeごとにいる</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">アプリコンテナのPod</span><span class="w"> </span><span class="c1"># サーバー側</span>
 </code></pre></div>
@@ -26338,12 +26338,12 @@
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬆︎⬇</span>
 <span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">waypoint-proxyのPod (L7)</span><span class="w"> </span><span class="c1"># Deployment配下なので、任意のNodeにいる</span>
+<span class="l l-Scalar l-Scalar-Plain">waypoint-proxy Pod (L7)</span><span class="w"> </span><span class="c1"># Deployment配下なので、任意のNodeにいる</span>
 <span class="l l-Scalar l-Scalar-Plain">⬆︎⬇</span>
 <span class="l l-Scalar l-Scalar-Plain">⬆︎⬇</span><span class="w"> </span><span class="c1"># HBONE</span>
 <span class="l l-Scalar l-Scalar-Plain">⬆︎⬇</span>
 <span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">ztunnelのPod (L4)</span><span class="w"> </span><span class="c1"># DaemonSet配下なので、Nodeごとにいる</span>
+<span class="l l-Scalar l-Scalar-Plain">ztunnel Pod (L4)</span><span class="w"> </span><span class="c1"># DaemonSet配下なので、Nodeごとにいる</span>
 <span class="l l-Scalar l-Scalar-Plain">⬆︎⬇</span>
 <span class="l l-Scalar l-Scalar-Plain">リダイレクト</span>
 <span class="l l-Scalar l-Scalar-Plain">⬆︎⬇</span>
@@ -26362,11 +26362,11 @@
 <p><br></p>
 <h3 id="ztunnel">ztunnel<a class="headerlink" href="#ztunnel" title="Permanent link">&para;</a></h3>
 <h4 id="ztunnel_1">▼ ztunnelとは<a class="headerlink" href="#ztunnel_1" title="Permanent link">&para;</a></h4>
-<p>ztunnelのPodが<code>L4</code> (トランスポート層) のプロトコル (例：TCP、UDPなど) を処理できる。</p>
+<p>ztunnel Podが<code>L4</code> (トランスポート層) のプロトコル (例：TCP、UDPなど) を処理できる。</p>
 <h4 id="_5">▼ 仕組み<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>実体はDaemonSet配下のPodであり、Nodeごとにスケジューリングされている。</p>
-<p>ztunnelのPodは、<code>/var/run/ztunnel/ztunnel.sock</code>ファイル経由でistio-cniに接続する。</p>
-<p>そのため、ztunnelのPodはistio-cniと同じNode上に作成する必要がある (Namespaceは違っていても良い) 。</p>
+<p>ztunnel Podは、<code>/var/run/ztunnel/ztunnel.sock</code>ファイル経由でistio-cniに接続する。</p>
+<p>そのため、ztunnel Podはistio-cniと同じNode上に作成する必要がある (Namespaceは違っていても良い) 。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/istio/istio/wiki/Troubleshooting-Istio-Ambient#scenario-pod-fails-to-run-with-failed-to-create-pod-sandbox">https://github.com/istio/istio/wiki/Troubleshooting-Istio-Ambient#scenario-pod-fails-to-run-with-failed-to-create-pod-sandbox</a></li>
