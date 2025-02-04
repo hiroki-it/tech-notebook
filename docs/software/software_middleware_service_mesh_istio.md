@@ -144,15 +144,15 @@ ztunnelのPod (L4) # DaemonSet配下なので、Nodeごとにいる
 
 #### ▼ ztunnelとは
 
-ztunnelが`L4` (トランスポート層) のプロトコル (例：TCP、UDPなど) を処理できる。
+ztunnelのPodが`L4` (トランスポート層) のプロトコル (例：TCP、UDPなど) を処理できる。
 
 #### ▼ 仕組み
 
 実体はDaemonSet配下のPodであり、Nodeごとにスケジューリングされている。
 
-ztunnelは、`/var/run/ztunnel/ztunnel.sock`ファイル経由でistio-cniに接続する。
+ztunnelのPodは、`/var/run/ztunnel/ztunnel.sock`ファイル経由でistio-cniに接続する。
 
-そのため、ztunnelはistio-cniと同じNode上に作成する必要がある (Namespaceは違っていても良い) 。
+そのため、ztunnelのPodはistio-cniと同じNode上に作成する必要がある (Namespaceは違っていても良い) 。
 
 > - https://github.com/istio/istio/wiki/Troubleshooting-Istio-Ambient#scenario-pod-fails-to-run-with-failed-to-create-pod-sandbox
 

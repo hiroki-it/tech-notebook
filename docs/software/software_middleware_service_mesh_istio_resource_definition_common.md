@@ -122,9 +122,9 @@ metadata:
 
 #### ▼ istio.io/dataplane-modeとは
 
-アンビエントモードの場合に、設定したNamespaceでZtunnelを有効化する。
+アンビエントモードの場合に、設定したNamespaceでztunnelのPodを有効化する。
 
-このラベルがついているNamespaceのみで、ZtunnelへのリダイレクトによってPodは`L4`のトラフィックを送受信できる。
+このラベルがついているNamespaceのみで、ztunnelのPodへのリダイレクトによってPodは`L4`のトラフィックを送受信できる。
 
 ```yaml
 apiVersion: v1
