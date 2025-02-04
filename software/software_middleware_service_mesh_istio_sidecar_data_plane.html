@@ -10,19 +10,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="コントロールプレーン＠Istioの知見を記録しています。">
+        <meta name="description" content="データプレーン＠Istioサイドカーの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_control_plane.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_sidecar_data_plane.html">
       
       
-        <link rel="prev" href="software_middleware_service_mesh_istio.html">
+        <link rel="prev" href="software_middleware_service_mesh_istio_sidecar_control_plane.html">
       
       
-        <link rel="next" href="software_middleware_service_mesh_istio_data_plane.html">
+        <link rel="next" href="software_middleware_service_mesh_istio_ambient_control_plane.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -30,7 +30,7 @@
     
     
       
-        <title>【IT技術の知見】コントロールプレーン＠Istio - 俺の技術ノート</title>
+        <title>【IT技術の知見】データプレーン＠Istioサイドカー - 俺の技術ノート</title>
       
     
     
@@ -154,7 +154,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】コントロールプレーン＠Istio
+              【IT技術の知見】データプレーン＠Istioサイドカー
             
           </span>
         </div>
@@ -4521,6 +4521,73 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_8_3_2" id="__nav_6_8_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ サイドカーモード
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_8_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_8_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ サイドカーモード
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_middleware_service_mesh_istio_sidecar_control_plane.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コントロールプレーン
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -4533,18 +4600,18 @@
           
   
   <span class="md-ellipsis">
-    コントロールプレーン
+    データプレーン
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="software_middleware_service_mesh_istio_control_plane.html" class="md-nav__link md-nav__link--active">
+      <a href="software_middleware_service_mesh_istio_sidecar_data_plane.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    コントロールプレーン
+    データプレーン
   </span>
   
 
@@ -4577,19 +4644,98 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-istiod" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. コントロールプレーン (Istiodコントロールプレーン) とは
+      01. データプレーンとは
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. コントロールプレーン (Istiodコントロールプレーン) とは">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. データプレーンの要素
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. データプレーンの要素">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#istio-init" class="md-nav__link">
+    <span class="md-ellipsis">
+      istio-initコンテナ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="istio-initコンテナ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#istio-init_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ istio-initコンテナとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istio-iptables" class="md-nav__link">
+    <span class="md-ellipsis">
+      istio-iptables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="istio-iptables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#istio-iptables_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ istio-iptablesとは
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      サイドカーモードの場合
+      ▼ ルール
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#127001" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ローカルホストは127.0.0.1ではない
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Pod外からのインバウンド通信の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Pod外へのアウトバウンド通信の場合
     </span>
   </a>
   
@@ -4598,7 +4744,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      アンビエンドメッシュの場合
+      ▼ ローカスホスト通信の場合
     </span>
   </a>
   
@@ -4608,40 +4754,195 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#01-02" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#istio-proxy" class="md-nav__link">
     <span class="md-ellipsis">
-      01-02. マニフェスト
+      istio-proxyコンテナ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01-02. マニフェスト">
+    <nav class="md-nav" aria-label="istio-proxyコンテナ">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#istio-proxy_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ istio-proxyコンテナとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initcontainer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ InitContainerとして
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istio-cniistio-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      istio-cniによるistio-validationコンテナ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="istio-cniによるistio-validationコンテナ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#istio-ini" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ istio-iniとの関係性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istio-cni" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ istio-cniとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istio-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ istio-validationコンテナ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02-istio-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      02-02. istio-proxyコンテナ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. istio-proxyコンテナ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pilot-agent-istio-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      pilot-agent (新istio-agent)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="pilot-agent (新istio-agent)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pilot-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ pilot-agentとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ads" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ADSクライアントの実装
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adsistioctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ADSクライアントとしてのistioctlコマンドの実装
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envoy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Envoy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Envoy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#envoy_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Envoyとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      マニフェストの種類
+      ヘルスチェック
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ヘルスチェック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#startprobe" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 自身のstartProbe
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#deployment" class="md-nav__link">
+  <a href="#http" class="md-nav__link">
     <span class="md-ellipsis">
-      Deployment
+      ▼ アプリコンテナのHTTPヘルスチェック
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Deployment">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#istiod" class="md-nav__link">
+  <a href="#tcp" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ istiod
+      ▼ アプリコンテナのTCPヘルスチェック
     </span>
   </a>
   
@@ -4653,59 +4954,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#horizontalpodautoscaler" class="md-nav__link">
+  <a href="#graceful-drain" class="md-nav__link">
     <span class="md-ellipsis">
-      HorizontalPodAutoscaler
+      Graceful Drainモード
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#service" class="md-nav__link">
-    <span class="md-ellipsis">
-      Service
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Service">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#istiod_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ istiod
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mutatingwebhookconfiguration" class="md-nav__link">
-    <span class="md-ellipsis">
-      MutatingWebhookConfiguration
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="MutatingWebhookConfiguration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#istio-revision-tag-default" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ istio-revision-tag-default
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -4715,38 +4968,82 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-discovery" class="md-nav__link">
+  <a href="#02-03" class="md-nav__link">
     <span class="md-ellipsis">
-      02. discoveryコンテナ
+      02-03. 待ち受けるポート番号
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. discoveryコンテナ">
+    <nav class="md-nav" aria-label="02-03. 待ち受けるポート番号">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#discovery" class="md-nav__link">
+  <a href="#15000" class="md-nav__link">
     <span class="md-ellipsis">
-      discoveryコンテナの仕組み
+      15000番
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#config-ingestion" class="md-nav__link">
+  <a href="#15001" class="md-nav__link">
     <span class="md-ellipsis">
-      Config Ingestionレイヤー
+      15001番
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Config Ingestionレイヤー">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#config-ingestion_1" class="md-nav__link">
+  <a href="#15004" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Config Ingestionレイヤーとは
+      15004番
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15006" class="md-nav__link">
+    <span class="md-ellipsis">
+      15006番
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15020" class="md-nav__link">
+    <span class="md-ellipsis">
+      15020番
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15021" class="md-nav__link">
+    <span class="md-ellipsis">
+      15021番
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15053" class="md-nav__link">
+    <span class="md-ellipsis">
+      15053番
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15090" class="md-nav__link">
+    <span class="md-ellipsis">
+      15090番
     </span>
   </a>
   
@@ -4756,213 +5053,19 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#config-translation" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#03-pilot-agent" class="md-nav__link">
     <span class="md-ellipsis">
-      Config translationレイヤー
+      03. pilot-agentコマンド
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Config translationレイヤー">
+    <nav class="md-nav" aria-label="03. pilot-agentコマンド">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#config-translation_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Config translationレイヤーとは
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ リスナーの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ルートの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ クラスターの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ エンドポイントの場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#config-serving" class="md-nav__link">
-    <span class="md-ellipsis">
-      Config servingレイヤー
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Config servingレイヤー">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#config-serving_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Config servingレイヤーとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#xds-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ XDS-API
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#xds-api_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ XDS-APIの実装
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      インメモリストレージ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02-02. 待ち受けるポート番号
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02-02. 待ち受けるポート番号">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ポート番号の確認
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#8080" class="md-nav__link">
-    <span class="md-ellipsis">
-      8080番
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#9876" class="md-nav__link">
-    <span class="md-ellipsis">
-      9876番
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#15010" class="md-nav__link">
-    <span class="md-ellipsis">
-      15010番
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#15012" class="md-nav__link">
-    <span class="md-ellipsis">
-      15012番
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#15014" class="md-nav__link">
-    <span class="md-ellipsis">
-      15014番
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#15017" class="md-nav__link">
-    <span class="md-ellipsis">
-      15017番
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-pilot-discovery" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. pilot-discoveryコマンド
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. pilot-discoveryコマンド">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       実行オプションの渡し方
     </span>
@@ -4971,62 +5074,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#discovery_1" class="md-nav__link">
+  <a href="#wait" class="md-nav__link">
     <span class="md-ellipsis">
-      discovery
+      wait
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="discovery">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#clusterregistriesnamespace" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ clusterRegistriesNamespace
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#keepalivemaxserverconnectionage" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ keepaliveMaxServerConnectionAge
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#log_output_level" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ log_output_level
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#monitoringaddr" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ monitoringAddr
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#domain" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ domain
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -5044,6 +5096,60 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_8_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_8_3_3" id="__nav_6_8_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ アンビエントモード
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_8_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_8_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ アンビエントモード
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
               
                 
   
@@ -5051,7 +5157,28 @@
   
   
     <li class="md-nav__item">
-      <a href="software_middleware_service_mesh_istio_data_plane.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_ambient_control_plane.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コントロールプレーン
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_middleware_service_mesh_istio_ambient_data_plane.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5060,6 +5187,14 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -24949,19 +25084,98 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-istiod" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. コントロールプレーン (Istiodコントロールプレーン) とは
+      01. データプレーンとは
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. コントロールプレーン (Istiodコントロールプレーン) とは">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. データプレーンの要素
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. データプレーンの要素">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#istio-init" class="md-nav__link">
+    <span class="md-ellipsis">
+      istio-initコンテナ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="istio-initコンテナ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#istio-init_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ istio-initコンテナとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istio-iptables" class="md-nav__link">
+    <span class="md-ellipsis">
+      istio-iptables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="istio-iptables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#istio-iptables_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ istio-iptablesとは
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      サイドカーモードの場合
+      ▼ ルール
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#127001" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ローカルホストは127.0.0.1ではない
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Pod外からのインバウンド通信の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Pod外へのアウトバウンド通信の場合
     </span>
   </a>
   
@@ -24970,7 +25184,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      アンビエンドメッシュの場合
+      ▼ ローカスホスト通信の場合
     </span>
   </a>
   
@@ -24980,40 +25194,195 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#01-02" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#istio-proxy" class="md-nav__link">
     <span class="md-ellipsis">
-      01-02. マニフェスト
+      istio-proxyコンテナ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01-02. マニフェスト">
+    <nav class="md-nav" aria-label="istio-proxyコンテナ">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#istio-proxy_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ istio-proxyコンテナとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initcontainer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ InitContainerとして
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istio-cniistio-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      istio-cniによるistio-validationコンテナ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="istio-cniによるistio-validationコンテナ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#istio-ini" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ istio-iniとの関係性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istio-cni" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ istio-cniとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istio-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ istio-validationコンテナ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02-istio-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      02-02. istio-proxyコンテナ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. istio-proxyコンテナ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pilot-agent-istio-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      pilot-agent (新istio-agent)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="pilot-agent (新istio-agent)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pilot-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ pilot-agentとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ads" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ADSクライアントの実装
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adsistioctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ADSクライアントとしてのistioctlコマンドの実装
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envoy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Envoy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Envoy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#envoy_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Envoyとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      マニフェストの種類
+      ヘルスチェック
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ヘルスチェック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#startprobe" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 自身のstartProbe
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#deployment" class="md-nav__link">
+  <a href="#http" class="md-nav__link">
     <span class="md-ellipsis">
-      Deployment
+      ▼ アプリコンテナのHTTPヘルスチェック
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Deployment">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#istiod" class="md-nav__link">
+  <a href="#tcp" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ istiod
+      ▼ アプリコンテナのTCPヘルスチェック
     </span>
   </a>
   
@@ -25025,59 +25394,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#horizontalpodautoscaler" class="md-nav__link">
+  <a href="#graceful-drain" class="md-nav__link">
     <span class="md-ellipsis">
-      HorizontalPodAutoscaler
+      Graceful Drainモード
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#service" class="md-nav__link">
-    <span class="md-ellipsis">
-      Service
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Service">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#istiod_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ istiod
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mutatingwebhookconfiguration" class="md-nav__link">
-    <span class="md-ellipsis">
-      MutatingWebhookConfiguration
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="MutatingWebhookConfiguration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#istio-revision-tag-default" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ istio-revision-tag-default
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -25087,38 +25408,82 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-discovery" class="md-nav__link">
+  <a href="#02-03" class="md-nav__link">
     <span class="md-ellipsis">
-      02. discoveryコンテナ
+      02-03. 待ち受けるポート番号
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. discoveryコンテナ">
+    <nav class="md-nav" aria-label="02-03. 待ち受けるポート番号">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#discovery" class="md-nav__link">
+  <a href="#15000" class="md-nav__link">
     <span class="md-ellipsis">
-      discoveryコンテナの仕組み
+      15000番
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#config-ingestion" class="md-nav__link">
+  <a href="#15001" class="md-nav__link">
     <span class="md-ellipsis">
-      Config Ingestionレイヤー
+      15001番
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Config Ingestionレイヤー">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#config-ingestion_1" class="md-nav__link">
+  <a href="#15004" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Config Ingestionレイヤーとは
+      15004番
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15006" class="md-nav__link">
+    <span class="md-ellipsis">
+      15006番
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15020" class="md-nav__link">
+    <span class="md-ellipsis">
+      15020番
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15021" class="md-nav__link">
+    <span class="md-ellipsis">
+      15021番
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15053" class="md-nav__link">
+    <span class="md-ellipsis">
+      15053番
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15090" class="md-nav__link">
+    <span class="md-ellipsis">
+      15090番
     </span>
   </a>
   
@@ -25128,213 +25493,19 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#config-translation" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#03-pilot-agent" class="md-nav__link">
     <span class="md-ellipsis">
-      Config translationレイヤー
+      03. pilot-agentコマンド
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Config translationレイヤー">
+    <nav class="md-nav" aria-label="03. pilot-agentコマンド">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#config-translation_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Config translationレイヤーとは
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ リスナーの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ルートの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ クラスターの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ エンドポイントの場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#config-serving" class="md-nav__link">
-    <span class="md-ellipsis">
-      Config servingレイヤー
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Config servingレイヤー">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#config-serving_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Config servingレイヤーとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#xds-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ XDS-API
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#xds-api_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ XDS-APIの実装
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      インメモリストレージ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02-02. 待ち受けるポート番号
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02-02. 待ち受けるポート番号">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ポート番号の確認
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#8080" class="md-nav__link">
-    <span class="md-ellipsis">
-      8080番
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#9876" class="md-nav__link">
-    <span class="md-ellipsis">
-      9876番
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#15010" class="md-nav__link">
-    <span class="md-ellipsis">
-      15010番
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#15012" class="md-nav__link">
-    <span class="md-ellipsis">
-      15012番
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#15014" class="md-nav__link">
-    <span class="md-ellipsis">
-      15014番
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#15017" class="md-nav__link">
-    <span class="md-ellipsis">
-      15017番
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-pilot-discovery" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. pilot-discoveryコマンド
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. pilot-discoveryコマンド">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       実行オプションの渡し方
     </span>
@@ -25343,62 +25514,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#discovery_1" class="md-nav__link">
+  <a href="#wait" class="md-nav__link">
     <span class="md-ellipsis">
-      discovery
+      wait
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="discovery">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#clusterregistriesnamespace" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ clusterRegistriesNamespace
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#keepalivemaxserverconnectionage" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ keepaliveMaxServerConnectionAge
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#log_output_level" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ log_output_level
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#monitoringaddr" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ monitoringAddr
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#domain" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ domain
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -25425,7 +25545,7 @@
   
 
 
-<h1 id="istio">コントロールプレーン＠Istio<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h1>
+<h1 id="istio">データプレーン＠Istioサイドカー<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -25434,530 +25554,606 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-istiod">01. コントロールプレーン (Istiodコントロールプレーン) とは<a class="headerlink" href="#01-istiod" title="Permanent link">&para;</a></h2>
-<h3 id="_2">サイドカーモードの場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>サイドカーモードのIstiodコントロールプレーンは、istiod-serviceを介して、各種ポート番号で<code>istio-proxy</code>コンテナからのリモートプロシージャーコールを待ち受ける。</p>
-<p>語尾の『<code>d</code>』は、デーモンの意味であるが、Istiodコントロールプレーンの実体は、Deploymentである。</p>
-<p><img alt="istio_control-plane_ports" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_ports.png" /></p>
+<h2 id="01">01. データプレーンとは<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<p>サイドカーモードのデータプレーンは、istio-iptables、 <code>istio-init</code>コンテナ、<code>istio-proxy</code>コンテナ、といったコンポーネントから構成される。</p>
 <blockquote>
 <ul>
+<li><a href="https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/">https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02">02. データプレーンの要素<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="istio-init"><code>istio-init</code>コンテナ<a class="headerlink" href="#istio-init" title="Permanent link">&para;</a></h3>
+<h4 id="istio-init_1">▼ <code>istio-init</code>コンテナとは<a class="headerlink" href="#istio-init_1" title="Permanent link">&para;</a></h4>
+<p>コンテナの起動時に、<code>istio-iptables</code>コマンドを実行することにより、istio-iptablesをPodに適用する。</p>
+<p><img alt="istio_istio-init" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-init.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process">https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="istio-iptables">istio-iptables<a class="headerlink" href="#istio-iptables" title="Permanent link">&para;</a></h3>
+<h4 id="istio-iptables_1">▼ istio-iptablesとは<a class="headerlink" href="#istio-iptables_1" title="Permanent link">&para;</a></h4>
+<p>istio-iptablesは、<code>istio-proxy</code>コンテナを持つPod内のネットワークの経路を制御する。</p>
+<p>サービスディスカバリーとしてPodのIPアドレスを持つのは<code>istio-proxy</code>コンテナであり、istio-iptablesではないことに注意する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># istio-initコンテナの起動時に実行する。</span>
+$<span class="w"> </span>istio-iptables<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">15001</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-z<span class="w"> </span><span class="m">15006</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-u<span class="w"> </span><span class="m">1337</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-m<span class="w"> </span>REDIRECT<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-i<span class="w"> </span>*<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-x<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-b<span class="w"> </span>*<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="m">15090</span>,15020
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/tayusa/articles/aa54bbff3d0d2d#iptables%E3%81%8C%E6%9B%B4%E6%96%B0%E3%81%95%E3%82%8C%E3%82%8B%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0">https://zenn.dev/tayusa/articles/aa54bbff3d0d2d#iptables%E3%81%8C%E6%9B%B4%E6%96%B0%E3%81%95%E3%82%8C%E3%82%8B%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0</a></li>
+</ul>
+</blockquote>
+<h4 id="_2">▼ ルール<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p><code>ps</code>コマンドを使用して、<code>istio-proxy</code>コンテナの<code>envoy</code>プロセスのID (PID) を取得する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="c1"># PIDが出力結果の2行目である。そのため、awkコマンドを使用して、2行目のみを取得している。</span>
+$<span class="w"> </span>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>envoy<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span>
+
+<span class="m">1234567</span>
+<span class="m">2345678</span>
+<span class="m">3456789</span>
+</code></pre></div>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p><code>nsenter</code>コマンドを使用して、コンテナの稼働するユーザー空間を介し、コンテナに<code>iptables</code>コマンドを送信する。Istioによって管理されているChainのルールを取得できる。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nsenter<span class="w"> </span>-t<span class="w"> </span>&lt;istio-proxyコンテナのPID&gt;<span class="w"> </span>-n<span class="w"> </span>iptables<span class="w"> </span>-L<span class="w"> </span>-n<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>--line-number
+
+
+Chain<span class="w"> </span>PREROUTING<span class="w"> </span><span class="o">(</span>policy<span class="w"> </span>ACCEPT<span class="o">)</span>
+...
+
+
+Chain<span class="w"> </span>INPUT<span class="w"> </span><span class="o">(</span>policy<span class="w"> </span>ACCEPT<span class="o">)</span>
+...
+
+
+Chain<span class="w"> </span>OUTPUT<span class="w"> </span><span class="o">(</span>policy<span class="w"> </span>ACCEPT<span class="o">)</span>
+...
+
+
+Chain<span class="w"> </span>POSTROUTING<span class="w"> </span><span class="o">(</span>policy<span class="w"> </span>ACCEPT<span class="o">)</span>
+...
+
+
+<span class="c1"># istio-proxyコンテナへのインバウンド通信時に、NAPT処理を実行する。</span>
+Chain<span class="w"> </span>ISTIO_INBOUND<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>references<span class="o">)</span>
+num<span class="w">  </span>target<span class="w">             </span>prot<span class="w">  </span>opt<span class="w">  </span><span class="nb">source</span><span class="w">     </span>destination
+<span class="m">1</span><span class="w">    </span>RETURN<span class="w">             </span>tcp<span class="w">   </span>--<span class="w">   </span><span class="m">0</span>.0.0.0/0<span class="w">  </span><span class="m">0</span>.0.0.0/0<span class="w">    </span>tcp<span class="w"> </span>dpt:15008
+<span class="m">2</span><span class="w">    </span>RETURN<span class="w">             </span>tcp<span class="w">   </span>--<span class="w">   </span><span class="m">0</span>.0.0.0/0<span class="w">  </span><span class="m">0</span>.0.0.0/0<span class="w">    </span>tcp<span class="w"> </span>dpt:15090<span class="w"> </span><span class="c1"># メトリクス収集ツールからのリクエストを待ち受ける。</span>
+<span class="m">3</span><span class="w">    </span>RETURN<span class="w">             </span>tcp<span class="w">   </span>--<span class="w">   </span><span class="m">0</span>.0.0.0/0<span class="w">  </span><span class="m">0</span>.0.0.0/0<span class="w">    </span>tcp<span class="w"> </span>dpt:15021<span class="w"> </span><span class="c1"># kubeletからのReadinessProbeチェックを待ち受ける。</span>
+<span class="m">4</span><span class="w">    </span>RETURN<span class="w">             </span>tcp<span class="w">   </span>--<span class="w">   </span><span class="m">0</span>.0.0.0/0<span class="w">  </span><span class="m">0</span>.0.0.0/0<span class="w">    </span>tcp<span class="w"> </span>dpt:15020<span class="w"> </span><span class="c1"># データプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。</span>
+<span class="m">5</span><span class="w">    </span>ISTIO_IN_REDIRECT<span class="w">  </span>tcp<span class="w">   </span>--<span class="w">   </span><span class="m">0</span>.0.0.0/0<span class="w">  </span><span class="m">0</span>.0.0.0/0
+
+
+Chain<span class="w"> </span>ISTIO_IN_REDIRECT<span class="w"> </span><span class="o">(</span><span class="m">3</span><span class="w"> </span>references<span class="o">)</span>
+num<span class="w">  </span>target<span class="w">    </span>prot<span class="w">  </span>opt<span class="w">  </span><span class="nb">source</span><span class="w">     </span>destination
+<span class="m">1</span><span class="w">    </span>REDIRECT<span class="w">  </span>tcp<span class="w">   </span>--<span class="w">   </span><span class="m">0</span>.0.0.0/0<span class="w">  </span><span class="m">0</span>.0.0.0/0<span class="w">    </span>redir<span class="w"> </span>ports<span class="w"> </span><span class="m">15006</span><span class="w"> </span><span class="c1">#</span>
+
+
+<span class="c1"># istio-proxyコンテナからのアウトバウンド通信時に、NAPT処理を実行する。</span>
+Chain<span class="w"> </span>ISTIO_OUTPUT<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>references<span class="o">)</span>
+num<span class="w">  </span>target<span class="w">             </span>prot<span class="w">  </span>opt<span class="w">  </span><span class="nb">source</span><span class="w">     </span>destination
+<span class="m">1</span><span class="w">    </span>RETURN<span class="w">             </span>all<span class="w">   </span>--<span class="w">   </span><span class="m">127</span>.0.0.6<span class="w">  </span><span class="m">0</span>.0.0.0/0
+<span class="m">2</span><span class="w">    </span>ISTIO_IN_REDIRECT<span class="w">  </span>all<span class="w">   </span>--<span class="w">   </span><span class="m">0</span>.0.0.0/0<span class="w">  </span>!127.0.0.1<span class="w">   </span>owner<span class="w"> </span>UID<span class="w"> </span>match<span class="w"> </span><span class="m">1337</span>
+<span class="m">3</span><span class="w">    </span>RETURN<span class="w">             </span>all<span class="w">   </span>--<span class="w">   </span><span class="m">0</span>.0.0.0/0<span class="w">  </span><span class="m">0</span>.0.0.0/0<span class="w">    </span>!<span class="w"> </span>owner<span class="w"> </span>UID<span class="w"> </span>match<span class="w"> </span><span class="m">1337</span>
+<span class="m">4</span><span class="w">    </span>RETURN<span class="w">             </span>all<span class="w">   </span>--<span class="w">   </span><span class="m">0</span>.0.0.0/0<span class="w">  </span><span class="m">0</span>.0.0.0/0<span class="w">    </span>owner<span class="w"> </span>UID<span class="w"> </span>match<span class="w"> </span><span class="m">1337</span>
+<span class="m">5</span><span class="w">    </span>ISTIO_IN_REDIRECT<span class="w">  </span>all<span class="w">   </span>--<span class="w">   </span><span class="m">0</span>.0.0.0/0<span class="w">  </span>!127.0.0.1<span class="w">   </span>owner<span class="w"> </span>GID<span class="w"> </span>match<span class="w"> </span><span class="m">1337</span>
+<span class="m">6</span><span class="w">    </span>RETURN<span class="w">             </span>all<span class="w">   </span>--<span class="w">   </span><span class="m">0</span>.0.0.0/0<span class="w">  </span><span class="m">0</span>.0.0.0/0<span class="w">    </span>!<span class="w"> </span>owner<span class="w"> </span>GID<span class="w"> </span>match<span class="w"> </span><span class="m">1337</span>
+<span class="m">7</span><span class="w">    </span>RETURN<span class="w">             </span>all<span class="w">   </span>--<span class="w">   </span><span class="m">0</span>.0.0.0/0<span class="w">  </span><span class="m">0</span>.0.0.0/0<span class="w">    </span>owner<span class="w"> </span>GID<span class="w"> </span>match<span class="w"> </span><span class="m">1337</span>
+<span class="m">8</span><span class="w">    </span>RETURN<span class="w">             </span>all<span class="w">   </span>--<span class="w">   </span><span class="m">0</span>.0.0.0/0<span class="w">  </span><span class="m">127</span>.0.0.1
+<span class="m">9</span><span class="w">    </span>ISTIO_REDIRECT<span class="w">     </span>all<span class="w">   </span>--<span class="w">   </span><span class="m">0</span>.0.0.0/0<span class="w">  </span><span class="m">0</span>.0.0.0/0
+
+
+Chain<span class="w"> </span>ISTIO_REDIRECT<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>references<span class="o">)</span>
+num<span class="w">  </span>target<span class="w">     </span>prot<span class="w">  </span>opt<span class="w">  </span><span class="nb">source</span><span class="w">     </span>destination
+<span class="m">1</span><span class="w">    </span>REDIRECT<span class="w">   </span>tcp<span class="w">   </span>--<span class="w">   </span><span class="m">0</span>.0.0.0/0<span class="w">  </span><span class="m">0</span>.0.0.0/0<span class="w">    </span>redir<span class="w"> </span>ports<span class="w"> </span><span class="m">15001</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://jimmysong.io/en/blog/sidecar-injection-iptables-and-traffic-routing/">https://jimmysong.io/en/blog/sidecar-injection-iptables-and-traffic-routing/</a></li>
+<li><a href="https://www.mapion.co.jp/news/column/cobs2366068-1-all/">https://www.mapion.co.jp/news/column/cobs2366068-1-all/</a></li>
+<li><a href="https://zenn.dev/tayusa/articles/aa54bbff3d0d2d">https://zenn.dev/tayusa/articles/aa54bbff3d0d2d</a></li>
+</ul>
+</blockquote>
+<h4 id="127001">▼ ローカルホストは<code>127.0.0.1</code>ではない<a class="headerlink" href="#127001" title="Permanent link">&para;</a></h4>
+<p><code>istio-proxy</code>コンテナがインバウンドをマイクロサービスにプロキシする時、<code>127.0.0.6</code>にリクエストを送信する。</p>
+<p><code>127.0.0.1</code>にするとiptables上で処理がループしてしまう。</p>
+<p>Istio<code>v1.9</code>までは<code>127.0.0.1</code>で、<code>v1.10</code>から<code>127.0.0.6</code>になった。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.google.com/document/d/1j-5_XpeMTnT9mV_8dbSOeU7rfH-5YNtN_JJFZ2mmQ_w">https://docs.google.com/document/d/1j-5_XpeMTnT9mV_8dbSOeU7rfH-5YNtN_JJFZ2mmQ_w</a></li>
+<li><a href="https://github.com/istio/istio/issues/29603">https://github.com/istio/istio/issues/29603</a></li>
+<li><a href="https://jimmysong.io/en/blog/sidecar-injection-iptables-and-traffic-routing/">https://jimmysong.io/en/blog/sidecar-injection-iptables-and-traffic-routing/</a></li>
+<li><a href="https://engineering.mercari.com/blog/entry/20211021-istio1-10-inbound-fowarding/">https://engineering.mercari.com/blog/entry/20211021-istio1-10-inbound-fowarding/</a></li>
+</ul>
+</blockquote>
+<h4 id="pod">▼ Pod外からのインバウンド通信の場合<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
+<p>Pod外からアプリコンテナへのインバウンド通信は、istio-iptablesにより、<code>istio-proxy</code>コンテナの<code>15006</code>番ポートにリダイレクトされる。</p>
+<p><code>istio-proxy</code>コンテナはこれを受信し、ローカルホスト (<code>http://127.0.0.6:&lt;アプリコンテナのポート番号&gt;</code>) のアプリコンテナにルーティングする。</p>
+<p><img alt="istio_iptables_inbound" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_inbound.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process">https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process</a></li>
+<li><a href="https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-1-remote-pod---local-pod">https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-1-remote-pod---local-pod</a></li>
+</ul>
+</blockquote>
+<h4 id="pod_1">▼ Pod外へのアウトバウンド通信の場合<a class="headerlink" href="#pod_1" title="Permanent link">&para;</a></h4>
+<p>アプリコンテナからPod外へのアウトバウンド通信は、istio-iptablesにより、<code>istio-proxy</code>コンテナの<code>15001</code>番ポートにリダイレクトされる。</p>
+<p>サービスディスカバリーによってPod等の宛先情報が、<code>istio-proxy</code>コンテナ内のEnvoyに登録されており、<code>istio-proxy</code>コンテナはアウトバウンド通信をPodに向けてルーティングする。</p>
+<p><img alt="istio_iptables_outbound_other" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_outbound_other.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process">https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process</a></li>
+<li><a href="https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-2-local-pod---remote-pod">https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-2-local-pod---remote-pod</a></li>
+</ul>
+</blockquote>
+<h4 id="_3">▼ ローカスホスト通信の場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>アプリコンテナからローカルホスト (<code>http://127.0.0.6:&lt;ポート番号&gt;</code>) へのアウトバウンド通信は、istio-iptablesにより、<code>istio-proxy</code>コンテナの<code>15001</code>番ポートにリダイレクトされる。</p>
+<p><img alt="istio_iptables_outbound_self" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_outbound_self.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-4-local-pod---local-pod">https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-4-local-pod---local-pod</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="istio-proxy"><code>istio-proxy</code>コンテナ<a class="headerlink" href="#istio-proxy" title="Permanent link">&para;</a></h3>
+<h4 id="istio-proxy_1">▼ <code>istio-proxy</code>コンテナとは<a class="headerlink" href="#istio-proxy_1" title="Permanent link">&para;</a></h4>
+<p><img alt="istio_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-proxy.png" /></p>
+<p>リバースプロキシの能力を持つサイドカーコンテナである。</p>
+<p>Dockerfileとしては、Envoyのバイナリファイルをインストールした後にpilot-agentを実行している。</p>
+<p>そのため、pilot-agent、Envoyが稼働している。</p>
+<div class="highlight"><pre><span></span><code>...
+
+<span class="c"># Install Envoy.</span>
+<span class="k">ARG</span><span class="w"> </span>TARGETARCH
+<span class="k">COPY</span><span class="w"> </span><span class="si">${</span><span class="nv">TARGETARCH</span><span class="k">:-</span><span class="nv">amd64</span><span class="si">}</span>/<span class="si">${</span><span class="nv">SIDECAR</span><span class="si">}</span><span class="w"> </span>/usr/local/bin/<span class="si">${</span><span class="nv">SIDECAR</span><span class="si">}</span>
+
+...
+
+<span class="c"># The pilot-agent will bootstrap Envoy.</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/local/bin/pilot-agent&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p><code>istio-proxy</code>コンテナは、アプリコンテナのあるPodのみでなく、Istio IngressGatewayのPod内にも存在している。</p>
+<p>Istioのサービスメッシュ外のネットワークからのインバウンド通信では、Istio IngressGateway内の<code>istio-proxy</code>コンテナにて、Pod等の宛先情報に基づいて、ルーティングを実行している。</p>
+<p>一方で、アプリコンテナを持つPod間通信では、Pod内の<code>istio-proxy</code>コンテナに登録されたものに基づいて、Pod間で直接的に通信している。</p>
+<p>仕様上、NginxやApacheを必須とする言語 (例：PHP) では、Pod内にリバースプロキシが<code>2</code>個ある構成になってしまうことに注意する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/istio/istio/blob/1.14.3/pilot/docker/Dockerfile.proxyv2">https://github.com/istio/istio/blob/1.14.3/pilot/docker/Dockerfile.proxyv2</a></li>
 <li><a href="https://www.amazon.co.jp/dp/1617295825">https://www.amazon.co.jp/dp/1617295825</a></li>
-<li><a href="https://istio.io/latest/docs/ops/deployment/requirements/#ports-used-by-istio">https://istio.io/latest/docs/ops/deployment/requirements/#ports-used-by-istio</a></li>
-<li><a href="https://istio.io/latest/docs/ops/integrations/prometheus/#configuration">https://istio.io/latest/docs/ops/integrations/prometheus/#configuration</a></li>
+<li><a href="https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process">https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process</a></li>
+<li><a href="https://jimmysong.io/en/blog/istio-sidecar-traffic-types/">https://jimmysong.io/en/blog/istio-sidecar-traffic-types/</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h3 id="_3">アンビエンドメッシュの場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
-<p><br></p>
-<h2 id="01-02">01-02. マニフェスト<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
-<h3 id="_4">マニフェストの種類<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>Istiodコントロールプレーンは、Deployment、Service、MutatingWebhookConfigurationなどのマニフェストから構成される。</p>
-<p><br></p>
-<h3 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h3>
-<h4 id="istiod">▼ istiod<a class="headerlink" href="#istiod" title="Permanent link">&para;</a></h4>
-<p>コントロールプレーンのPodの可用性を高めるため、これを冗長化する。</p>
-<p>Deployment配下のPodは、Istiodコントロールプレーンの実体である。</p>
-<p>Pod内では<code>discovery</code>コンテナが稼働している。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
-<span class="w">    </span><span class="nt">istio.io/rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;リビジョン番号&gt;</span>
-<span class="w">    </span><span class="nt">release</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod-&lt;リビジョン番号&gt;</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
-<span class="w">      </span><span class="nt">istio.io/rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;リビジョン番号&gt;</span>
-<span class="w">  </span><span class="nt">strategy</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">rollingUpdate</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">maxSurge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100%</span>
-<span class="w">      </span><span class="nt">maxUnavailable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25%</span>
-<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RollingUpdate</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
-<span class="w">        </span><span class="nt">istio.io/rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;リビジョン番号&gt;</span>
-<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">args</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
-<span class="w">            </span><span class="c1"># pilot-discoveryコマンドのオプション</span>
-<span class="w">            </span><span class="c1"># 15014番ポートの開放</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--monitoringAddr=:15014</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--log_output_level=default:info</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--domain</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster.local</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--keepaliveMaxServerConnectionAge</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30m</span>
-<span class="w">          </span><span class="c1"># pilotイメージ</span>
-<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker.io/istio/pilot:&lt;リビジョン番号&gt;</span>
-<span class="w">          </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
-<span class="w">          </span><span class="c1"># discoveryコンテナ</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
-<span class="w">          </span><span class="c1"># 待ち受けるポート番号の仕様</span>
-<span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># 8080番ポートの開放</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
-<span class="w">              </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-<span class="w">            </span><span class="c1"># 15010番ポートの開放</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15010</span>
-<span class="w">              </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-<span class="w">            </span><span class="c1"># 15017番ポートの開放</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15017</span>
-<span class="w">              </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-<span class="w">          </span><span class="nt">env</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># 15012番ポートの開放</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ISTIOD_ADDR</span>
-<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod-&lt;リビジョン番号&gt;.istio-system.svc:15012</span><span class="w"> </span><span class="c1"># 15012番ポートの開放</span>
-
-<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-
-<span class="c1"># 重要なところ以外を省略しているので、全体像はその都度確認すること。</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/istio/istio/blob/1.14.3/pilot/pkg/bootstrap/server.go#L412-L476">https://github.com/istio/istio/blob/1.14.3/pilot/pkg/bootstrap/server.go#L412-L476</a></li>
-</ul>
-</blockquote>
-<p>Dockerfileとしては、最後に<code>pilot-discovery</code>コマンドでIstioコントロールプレーンを実行している。</p>
-<div class="highlight"><pre><span></span><code><span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/local/bin/pilot-discovery&quot;</span><span class="p">]</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/istio/istio/blob/1.24.2/pilot/docker/Dockerfile.pilot">https://github.com/istio/istio/blob/1.24.2/pilot/docker/Dockerfile.pilot</a></li>
-<li><a href="https://zenn.dev/link/comments/e8a978a00c6325">https://zenn.dev/link/comments/e8a978a00c6325</a></li>
-</ul>
-</blockquote>
-<p>そのため、Istioコントロールプレーンを起動する<code>pilot-discovery</code>コマンドの実体は、GitHubの<code>pilot-discovery</code>ディレクトリ配下の<code>main.go</code>ファイルで実行されるGoのバイナリファイルである。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/istio/istio/blob/1.14.3/pilot/cmd/pilot-discovery/main.go">https://github.com/istio/istio/blob/1.14.3/pilot/cmd/pilot-discovery/main.go</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="horizontalpodautoscaler">HorizontalPodAutoscaler<a class="headerlink" href="#horizontalpodautoscaler" title="Permanent link">&para;</a></h3>
-<p>Deployment配下のPodには、HorizontalPodAutoscalerが設定されている。</p>
-<p>コントロールプレーンの可用性を高められる。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">autoscaling/v2</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HorizontalPodAutoscaler</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod-&lt;リビジョン番号&gt;</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
-<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
-<span class="w">    </span><span class="nt">istio.io/rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;リビジョン番号&gt;</span>
-<span class="w">    </span><span class="nt">release</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">maxReplicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-<span class="w">  </span><span class="nt">minReplicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">  </span><span class="nt">scaleTargetRef</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
-<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod-&lt;リビジョン番号&gt;</span>
-<span class="w">  </span><span class="nt">targetCPUUtilizationPercentage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="service">Service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
-<h4 id="istiod_1">▼ istiod<a class="headerlink" href="#istiod_1" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナからのリクエストを、Istiodコントロールプレーン (Deployment配下のPod) にポートフォワーディングする。</p>
+<h4 id="initcontainer">▼ InitContainerとして<a class="headerlink" href="#initcontainer" title="Permanent link">&para;</a></h4>
+<p>Kubernetesの<code>v1.28</code>では、InitContainerでサイドカーを作成できるようになった。</p>
+<p>Istioでもこれをサポートしている。</p>
+<p><code>istio-proxy</code>コンテナのインジェクションの仕組みはそのままで、PodのマニフェストのPatch処理の内容をInitContainerのインジェクションに変更している。</p>
+<p>これにより、Podの作成時にInitContainerをインジェクションできるようになる。</p>
+<p>今まで、<code>.spec.containers[*].lifecycle.preStop</code>キーや<code>.spec.containers[*].lifecycle.postStart</code>キーに自前のコマンドを定義して<code>istio-proxy</code>コンテナの起動/終了タイミングを制御する必要があったが、InitContainerではそれが不要になる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod-&lt;リビジョン番号&gt;</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
-<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
-<span class="w">    </span><span class="nt">istio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pilot</span>
-<span class="w">    </span><span class="nt">istio.io/rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;リビジョン番号&gt;</span>
-<span class="w">    </span><span class="nt">release</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># webhookサーバーに対するリクエストを待ち受ける。</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https-webhook</span>
-<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
-<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-<span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15017</span>
-<span class="w">    </span><span class="c1"># xDSサーバーに対するリクエストを待ち受ける。</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grpc-xds</span>
-<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15010</span>
-<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-<span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15010</span>
-<span class="w">    </span><span class="c1"># SSL証明書に関するリクエストを待ち受ける。</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https-dns</span>
-<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15012</span>
-<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-<span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15012</span>
-<span class="w">    </span><span class="c1"># メトリクス収集に関するリクエストを待ち受ける。</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-monitoring</span>
-<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15014</span>
-<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-<span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15014</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># ルーティング先のistiodコントールプレーン (Deployment配下のPod)</span>
-<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
-<span class="w">    </span><span class="nt">istio.io/rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;リビジョン番号&gt;</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app-volume</span>
+<span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/go/src</span>
+<span class="w">  </span><span class="nt">initContainers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-proxy</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio/proxyv2:latest</span>
+<span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span>
 </code></pre></div>
-<p><br></p>
-<h3 id="mutatingwebhookconfiguration">MutatingWebhookConfiguration<a class="headerlink" href="#mutatingwebhookconfiguration" title="Permanent link">&para;</a></h3>
-<h4 id="istio-revision-tag-default">▼ istio-revision-tag-default<a class="headerlink" href="#istio-revision-tag-default" title="Permanent link">&para;</a></h4>
-<p>Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、MutatingWebhookConfigurationでMutatingAdmissionWebhookプラグインを設定する。</p>
-<p><code>.webhooks.failurePolicy</code>キーで設定している通り、webhookサーバーのコールに失敗した場合は、Podの作成のためのkube-apiserverのコール自体がエラーとなる。</p>
-<p>そのため、Istioが起動に失敗し続けると、サイドカーコンテナのインジェクションを有効しているPodがいつまでも作成されないことになる。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admissionregistration.k8s.io/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MutatingWebhookConfiguration</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-revision-tag-default</span>
-<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sidecar-injector</span>
-<span class="w">    </span><span class="nt">istio.io/rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;リビジョン番号&gt;</span>
-<span class="w">    </span><span class="nt">istio.io/tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;エイリアス&gt;</span>
-<span class="nt">webhooks</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rev.namespace.sidecar-injector.istio.io</span>
-<span class="w">    </span><span class="c1"># mutating-admissionステップ発火条件を登録する。</span>
-<span class="w">    </span><span class="nt">rules</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">apiVersions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;v1&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">operations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CREATE&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;UPDATE&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;pods&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
-<span class="w">    </span><span class="c1"># WebhookのダウンストリームにあるServiceの情報を登録する。</span>
-<span class="w">    </span><span class="nt">clientConfig</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">service</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod-&lt;リビジョン番号&gt;</span>
-<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
-<span class="w">        </span><span class="c1"># エンドポイント</span>
-<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/inject&quot;</span>
-<span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
-<span class="w">      </span><span class="nt">caBundle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ci0tLS0tQk...</span>
-<span class="w">    </span><span class="c1"># webhookサーバーのコールに失敗した場合の処理を設定する。</span>
-<span class="w">    </span><span class="nt">failurePolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Fail</span>
-<span class="w">    </span><span class="nt">matchPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equivalent</span>
-<span class="w">    </span><span class="c1"># 適用するNamespaceを設定する。</span>
-<span class="w">    </span><span class="nt">namespaceSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio.io/rev</span>
-<span class="w">          </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
-<span class="w">          </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;エイリアス&gt;</span>
-</code></pre></div>
-<p><br></p>
-<h2 id="02-discovery">02. <code>discovery</code>コンテナ<a class="headerlink" href="#02-discovery" title="Permanent link">&para;</a></h2>
-<h3 id="discovery"><code>discovery</code>コンテナの仕組み<a class="headerlink" href="#discovery" title="Permanent link">&para;</a></h3>
-<p>Istio (<code>v1.1</code>) の<code>discovery</code>コンテナは、Config Ingestionレイヤー、Core Data Modelレイヤー、Proxy Servingレイヤー、インメモリストレージ、といった要素からなる。</p>
-<p><img alt="istio_control-plane_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_architecture.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1">https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1</a></li>
-<li><a href="https://zhonghua.io/2019/05/12/istio-analysis-4/">https://zhonghua.io/2019/05/12/istio-analysis-4/</a></li>
+<li><a href="https://github.com/istio/istio/blob/1.19.0-beta.0/pkg/kube/inject/inject.go#L426-L436">https://github.com/istio/istio/blob/1.19.0-beta.0/pkg/kube/inject/inject.go#L426-L436</a></li>
+<li><a href="https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers#proposal">https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers#proposal</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="config-ingestion">Config Ingestionレイヤー<a class="headerlink" href="#config-ingestion" title="Permanent link">&para;</a></h3>
-<h4 id="config-ingestion_1">▼ Config Ingestionレイヤーとは<a class="headerlink" href="#config-ingestion_1" title="Permanent link">&para;</a></h4>
-<p>Clusterで作成されたIstioリソースの状態を取得する。</p>
+<h3 id="istio-cniistio-validation">istio-cniによる<code>istio-validation</code>コンテナ<a class="headerlink" href="#istio-cniistio-validation" title="Permanent link">&para;</a></h3>
+<h4 id="istio-ini">▼ istio-iniとの関係性<a class="headerlink" href="#istio-ini" title="Permanent link">&para;</a></h4>
+<p><img alt="istio_istio-cni" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-cni.png" /></p>
+<p><code>istio-init</code>コンテナはistio-iptablesをPodに適用する権限を持っている。</p>
+<p>しかし、Linuxのiptablesを操作するためにはroot権限が必要になるため、脆弱性が指摘されている (同様にして、ユーザーが<code>iptables</code>コマンドを実行する時も<code>sudo</code>権限が必要である) 。</p>
+<p><code>istio-init</code>コンテナの代替案として、istio-cniが提供されている。</p>
+<p>もしistio-cniを使用する場合は、<code>istio-init</code>コンテナが不要になる代わりに、<code>istio-validation</code>コンテナが必要になる。</p>
 <blockquote>
 <ul>
-<li><a href="https://github.com/istio/istio/blob/master/architecture/networking/pilot.md">https://github.com/istio/istio/blob/master/architecture/networking/pilot.md</a></li>
+<li><a href="https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/">https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/</a></li>
+<li><a href="https://www.redhat.com/architect/istio-CNI-plugin">https://www.redhat.com/architect/istio-CNI-plugin</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Iptables">https://en.wikipedia.org/wiki/Iptables</a></li>
+</ul>
+</blockquote>
+<h4 id="istio-cni">▼ istio-cniとは<a class="headerlink" href="#istio-cni" title="Permanent link">&para;</a></h4>
+<p>各Node上で、istio-cniは<code>istio-cni-node</code>という名前のDaemonSetとして稼働する。</p>
+<p>istio-cniは、バイナリと設定をNode上のファイルシステムにコピーする。</p>
+<p>コンテナランタイムはこれをコピーし、Pod内のiptablesに適用する。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration">https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration</a></li>
+</ul>
+</blockquote>
+<h4 id="istio-validation">▼ <code>istio-validation</code>コンテナ<a class="headerlink" href="#istio-validation" title="Permanent link">&para;</a></h4>
+<p>istio-cniを採用している場合にのみ挿入されるコンテナ。</p>
+<p>istio-cniのDaemonSetがistio-iptablesを適用し終了することを待機するために、これが完了したかどうかを検証する。</p>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation">https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="config-translation">Config translationレイヤー<a class="headerlink" href="#config-translation" title="Permanent link">&para;</a></h3>
-<h4 id="config-translation_1">▼ Config translationレイヤーとは<a class="headerlink" href="#config-translation_1" title="Permanent link">&para;</a></h4>
-<p>取得したカスタムリソースの状態をEnvoyの設定値に変換する。</p>
+<h2 id="02-02-istio-proxy">02-02. <code>istio-proxy</code>コンテナ<a class="headerlink" href="#02-02-istio-proxy" title="Permanent link">&para;</a></h2>
+<h3 id="pilot-agent-istio-agent">pilot-agent (新istio-agent)<a class="headerlink" href="#pilot-agent-istio-agent" title="Permanent link">&para;</a></h3>
+<h4 id="pilot-agent">▼ pilot-agentとは<a class="headerlink" href="#pilot-agent" title="Permanent link">&para;</a></h4>
+<p>元々は、istio-agentといわれていた。</p>
+<p>実体は、GitHubの<code>pilot-agent</code>ディレクトリ配下の<code>main.go</code>ファイルで実行されるGoのバイナリファイルである。</p>
+<p>ADS-APIとの間で双方向ストリーミングRPCを確立し、EnvoyからのADS-APIへのリクエストと反対にADS-APIからのリクエストを仲介する。</p>
 <blockquote>
 <ul>
-<li><a href="https://github.com/istio/istio/blob/1.20.0/architecture/networking/pilot.md">https://github.com/istio/istio/blob/1.20.0/architecture/networking/pilot.md</a></li>
-<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/discovery.go#L529-L565">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/discovery.go#L529-L565</a></li>
-<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/configgen.go#L29-L55">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/configgen.go#L29-L55</a></li>
-</ul>
-</blockquote>
-<h4 id="_5">▼ リスナーの場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>IstioリソースをEnvoyのリスナーに変換する。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/lds.go#L92-L105">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/lds.go#L92-L105</a></li>
-<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/grpcgen/lds.go#L61-L71">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/grpcgen/lds.go#L61-L71</a></li>
-<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/listener.go#L96-L118">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/listener.go#L96-L118</a></li>
-</ul>
-</blockquote>
-<h4 id="_6">▼ ルートの場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>IstioリソースをEnvoyのルートに変換する。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/rds.go#L62-L68">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/rds.go#L62-L68</a></li>
-<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/grpcgen/rds.go#L29-L40">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/grpcgen/rds.go#L29-L40</a></li>
-<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/httproute.go#L57-L113">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/httproute.go#L57-L113</a></li>
-</ul>
-</blockquote>
-<h4 id="_7">▼ クラスターの場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>IstioリソースをEnvoyのクラスターに変換する。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/cds.go#L75-L81">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/cds.go#L75-L81</a></li>
-<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/grpcgen/cds.go#L35-L60">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/grpcgen/cds.go#L35-L60</a></li>
-<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/cluster.go#L198-L269">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/cluster.go#L198-L269</a></li>
-</ul>
-</blockquote>
-<h4 id="_8">▼ エンドポイントの場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>IstioリソースをEnvoyのエンドポイントに変換する。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/eds.go#L118-L124">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/eds.go#L118-L124</a></li>
-<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/eds.go#L183-L245">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/eds.go#L183-L245</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="config-serving">Config servingレイヤー<a class="headerlink" href="#config-serving" title="Permanent link">&para;</a></h3>
-<h4 id="config-serving_1">▼ Config servingレイヤーとは<a class="headerlink" href="#config-serving_1" title="Permanent link">&para;</a></h4>
-<p>Envoyの設定値に基づいて、<code>istio-proxy</code>コンテナをPodに提供する。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1">https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1</a></li>
-<li><a href="https://zhonghua.io/2019/05/12/istio-analysis-4/">https://zhonghua.io/2019/05/12/istio-analysis-4/</a></li>
-<li><a href="https://github.com/istio/istio/blob/master/architecture/networking/pilot.md">https://github.com/istio/istio/blob/master/architecture/networking/pilot.md</a></li>
-</ul>
-</blockquote>
-<h4 id="xds-api">▼ XDS-API<a class="headerlink" href="#xds-api" title="Permanent link">&para;</a></h4>
-<p>pilot-agentを介して、Envoyとの間で定期的にリモートプロシージャーコールを双方向で実行し、宛先情報を送信する。</p>
-<blockquote>
-<ul>
-<li><a href="https://cloudnative.to/blog/istio-pilot-3/">https://cloudnative.to/blog/istio-pilot-3/</a></li>
+<li><a href="https://rocdu.gitbook.io/deep-understanding-of-istio/6/5">https://rocdu.gitbook.io/deep-understanding-of-istio/6/5</a></li>
+<li><a href="https://www.jianshu.com/p/60e45bc9c4ac">https://www.jianshu.com/p/60e45bc9c4ac</a></li>
 <li><a href="https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/">https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/</a></li>
-<li><a href="https://rocdu.gitbook.io/deep-understanding-of-istio/10/1#streamaggregatedresources">https://rocdu.gitbook.io/deep-understanding-of-istio/10/1#streamaggregatedresources</a></li>
-<li><a href="https://www.cnblogs.com/luozhiyun/p/14088989.html">https://www.cnblogs.com/luozhiyun/p/14088989.html</a></li>
+<li><a href="https://www.oreilly.com/library/view/the-enterprise-path/9781492041795/ch04.html">https://www.oreilly.com/library/view/the-enterprise-path/9781492041795/ch04.html</a></li>
 </ul>
 </blockquote>
-<h4 id="xds-api_1">▼ XDS-APIの実装<a class="headerlink" href="#xds-api_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">xds</span>
+<h4 id="ads">▼ ADSクライアントの実装<a class="headerlink" href="#ads" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">adsc</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+
+<span class="w">  </span><span class="o">...</span>
+
+<span class="w">  </span><span class="nx">discovery</span><span class="w"> </span><span class="s">&quot;github.com/envoyproxy/go-control-plane/envoy/service/discovery/v3&quot;</span>
+
+<span class="w">  </span><span class="o">...</span>
+<span class="p">)</span>
 
 <span class="o">...</span>
 
-<span class="c1">// ADS-APIからEnvoyに宛先情報をリモートプロシージャーコールする。</span>
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">DiscoveryServer</span><span class="p">)</span><span class="w"> </span><span class="nx">StreamAggregatedResources</span><span class="p">(</span><span class="nx">stream</span><span class="w"> </span><span class="nx">DiscoveryStream</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">Stream</span><span class="p">(</span><span class="nx">stream</span><span class="p">)</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="nx">ADSC</span><span class="p">)</span><span class="w"> </span><span class="nx">Run</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span>
+
+<span class="w">    </span><span class="c1">// 双方向ストリーミングRPCの接続を確立する。</span>
+<span class="w">    </span><span class="nx">a</span><span class="p">.</span><span class="nx">client</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">discovery</span><span class="p">.</span><span class="nx">NewAggregatedDiscoveryServiceClient</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">conn</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// Envoyのgo-control-planeパッケージから提供されている。</span>
+<span class="w">    </span><span class="c1">// https://github.com/envoyproxy/go-control-plane/blob/v0.11.0/envoy/service/discovery/v3/ads.pb.go#L213-L220</span>
+<span class="w">    </span><span class="c1">// また。.protoファイルで双方向ストリーミングRPCとして定義されている。</span>
+<span class="w">    </span><span class="c1">// https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/discovery/v3/ads.proto#L32-L33</span>
+<span class="w">    </span><span class="nx">a</span><span class="p">.</span><span class="nx">stream</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">StreamAggregatedResources</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">())</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">a</span><span class="p">.</span><span class="nx">sendNodeMeta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="w">    </span><span class="nx">a</span><span class="p">.</span><span class="nx">InitialLoad</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">cfg</span><span class="p">.</span><span class="nx">InitialDiscoveryRequests</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">TypeUrl</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">v3</span><span class="p">.</span><span class="nx">ClusterType</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">a</span><span class="p">.</span><span class="nx">watchTime</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// istio-proxyコンテナの起動時に、Istiodコントロールプレーンにリクエストを送信する。</span>
+<span class="w">        </span><span class="nx">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+
+<span class="w">    </span><span class="nx">a</span><span class="p">.</span><span class="nx">RecvWg</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// ADS-APIからリクエストを受信し、Envoyの各処理コンポーネント別に整理する。</span>
+<span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">handleRecv</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/istio/istio/blob/1.14.3/pkg/adsc/adsc.go#L420-L446">https://github.com/istio/istio/blob/1.14.3/pkg/adsc/adsc.go#L420-L446</a></li>
+</ul>
+</blockquote>
+<p><code>handleRecv</code>メソッド内で、Envoyの各処理コンポーネントを整理し、最後に<code>XDSUpdates</code>チャネルに値を送信している。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="nx">ADSC</span><span class="p">)</span><span class="w"> </span><span class="nx">handleRecv</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">DiscoveryServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Stream</span><span class="p">(</span><span class="nx">stream</span><span class="w"> </span><span class="nx">DiscoveryStream</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">        </span><span class="o">...</span>
 
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">a</span><span class="p">.</span><span class="nx">VersionInfo</span><span class="p">[</span><span class="nx">msg</span><span class="p">.</span><span class="nx">TypeUrl</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">VersionInfo</span>
+<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">TypeUrl</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="c1">// 受信した宛先Podのリスナーを処理する。</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nx">v3</span><span class="p">.</span><span class="nx">ListenerType</span><span class="p">:</span>
+<span class="w">            </span><span class="nx">listeners</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="o">*</span><span class="nx">listener</span><span class="p">.</span><span class="nx">Listener</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">Resources</span><span class="p">))</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">rsc</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">Resources</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="o">...</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="nx">a</span><span class="p">.</span><span class="nx">handleLDS</span><span class="p">(</span><span class="nx">listeners</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c1">// 受信した宛先Podのクラスターを処理する。</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nx">v3</span><span class="p">.</span><span class="nx">ClusterType</span><span class="p">:</span>
+<span class="w">            </span><span class="nx">clusters</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="o">*</span><span class="nx">cluster</span><span class="p">.</span><span class="nx">Cluster</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">Resources</span><span class="p">))</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">rsc</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">Resources</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="o">...</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="nx">a</span><span class="p">.</span><span class="nx">handleCDS</span><span class="p">(</span><span class="nx">clusters</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c1">// 受信した宛先Podのエンドポイントを処理する。</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nx">v3</span><span class="p">.</span><span class="nx">EndpointType</span><span class="p">:</span>
+<span class="w">            </span><span class="nx">eds</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="o">*</span><span class="nx">endpoint</span><span class="p">.</span><span class="nx">ClusterLoadAssignment</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">Resources</span><span class="p">))</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">rsc</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">Resources</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="o">...</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="nx">a</span><span class="p">.</span><span class="nx">handleEDS</span><span class="p">(</span><span class="nx">eds</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c1">// 受信した宛先Podのルートを処理する。</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nx">v3</span><span class="p">.</span><span class="nx">RouteType</span><span class="p">:</span>
+<span class="w">            </span><span class="nx">routes</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="o">*</span><span class="nx">route</span><span class="p">.</span><span class="nx">RouteConfiguration</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">Resources</span><span class="p">))</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">rsc</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">Resources</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="o">...</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="nx">a</span><span class="p">.</span><span class="nx">handleRDS</span><span class="p">(</span><span class="nx">routes</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">default</span><span class="p">:</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">isMCP</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">a</span><span class="p">.</span><span class="nx">handleMCP</span><span class="p">(</span><span class="nx">gvk</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">Resources</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="o">...</span>
 
 <span class="w">        </span><span class="k">select</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">        </span><span class="c1">// 先に終了したcaseに条件分岐する</span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">con</span><span class="p">.</span><span class="nx">reqChan</span><span class="p">:</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="c1">// pilot-agentからリクエストを受信する。</span>
-<span class="w">                </span><span class="c1">// 受信内容に応じて、送信内容を作成する。</span>
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">processRequest</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">con</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">con</span><span class="p">.</span><span class="nx">errorChan</span>
-<span class="w">            </span><span class="p">}</span>
-
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nx">pushEv</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">con</span><span class="p">.</span><span class="nx">pushChannel</span><span class="p">:</span>
-
-<span class="w">            </span><span class="c1">// pilot-agentにリクエストを送信する。</span>
-<span class="w">            </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">pushConnection</span><span class="p">(</span><span class="nx">con</span><span class="p">,</span><span class="w"> </span><span class="nx">pushEv</span><span class="p">)</span>
-<span class="w">            </span><span class="nx">pushEv</span><span class="p">.</span><span class="nx">done</span><span class="p">()</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">con</span><span class="p">.</span><span class="nx">stop</span><span class="p">:</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">        </span><span class="c1">// XDSUpdatesチャネルに値を送信する。</span>
+<span class="w">        </span><span class="c1">// 最終的に、Envoyに設定する。</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">XDSUpdates</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nx">msg</span><span class="p">:</span>
+<span class="w">        </span><span class="k">default</span><span class="p">:</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/istio/istio/blob/1.14.3/pilot/pkg/xds/ads.go#L236-L238">https://github.com/istio/istio/blob/1.14.3/pilot/pkg/xds/ads.go#L236-L238</a></li>
-<li><a href="https://github.com/istio/istio/blob/1.14.3/pilot/pkg/xds/ads.go#L307-L348">https://github.com/istio/istio/blob/1.14.3/pilot/pkg/xds/ads.go#L307-L348</a></li>
-<li><a href="https://github.com/istio/istio/blob/1.14.3/pilot/pkg/xds/ads.go#L190-L233">https://github.com/istio/istio/blob/1.14.3/pilot/pkg/xds/ads.go#L190-L233</a></li>
+<li><a href="https://github.com/istio/istio/blob/1.14.3/pkg/adsc/adsc.go#L544-L587">https://github.com/istio/istio/blob/1.14.3/pkg/adsc/adsc.go#L544-L587</a></li>
 </ul>
 </blockquote>
-<p>実装が移行途中のため、xds-proxyにも、Envoyからのリモートプロシージャーコールを処理する同名のメソッドがある。</p>
+<h4 id="adsistioctl">▼ ADSクライアントとしての<code>istioctl</code>コマンドの実装<a class="headerlink" href="#adsistioctl" title="Permanent link">&para;</a></h4>
+<p><code>Run</code>メソッドによるXDS-APIとの通信は、<code>istioctl</code>コマンドでも使用されている。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">GetXdsResponse</span><span class="p">(</span><span class="nx">dr</span><span class="w"> </span><span class="o">*</span><span class="nx">discovery</span><span class="p">.</span><span class="nx">DiscoveryRequest</span><span class="p">,</span><span class="w"> </span><span class="nx">ns</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">serviceAccount</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="w"> </span><span class="nx">clioptions</span><span class="p">.</span><span class="nx">CentralControlPlaneOptions</span><span class="p">,</span><span class="w"> </span><span class="nx">grpcOpts</span><span class="w"> </span><span class="p">[]</span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialOption</span><span class="p">,)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">discovery</span><span class="p">.</span><span class="nx">DiscoveryResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">adscConn</span><span class="p">.</span><span class="nx">Run</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;ADSC: failed running %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">adscConn</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">dr</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">response</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">adscConn</span><span class="p">.</span><span class="nx">WaitVersion</span><span class="p">(</span><span class="nx">opts</span><span class="p">.</span><span class="nx">Timeout</span><span class="p">,</span><span class="w"> </span><span class="nx">dr</span><span class="p">.</span><span class="nx">TypeUrl</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="p">}</span>
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/istio/istio/blob/1.14.3/pkg/istio-agent/xds_proxy.go#L299-L306">https://github.com/istio/istio/blob/1.14.3/pkg/istio-agent/xds_proxy.go#L299-L306</a></li>
+<li><a href="https://github.com/istio/istio/blob/1.14.3/istioctl/pkg/xds/client.go#L44-L73">https://github.com/istio/istio/blob/1.14.3/istioctl/pkg/xds/client.go#L44-L73</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_9">インメモリストレージ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h3 id="envoy">Envoy<a class="headerlink" href="#envoy" title="Permanent link">&para;</a></h3>
+<h4 id="envoy_1">▼ Envoyとは<a class="headerlink" href="#envoy_1" title="Permanent link">&para;</a></h4>
+<p><code>istio-proxy</code>コンテナにて、リバースプロキシとして動作する。Envoyは、pilot-agentを介して、ADS-APIにリモートプロシージャーコールを実行する。また反対に、XDS-APIからのリモートプロシージャーコールをpilot-agentを介して受信する。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/">https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/</a></li>
+<li><a href="https://www.programmersought.com/article/5797698845/">https://www.programmersought.com/article/5797698845/</a></li>
+<li><a href="https://blog.51cto.com/wangguishe/5800533">https://blog.51cto.com/wangguishe/5800533</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_4">ヘルスチェック<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="startprobe">▼ 自身のstartProbe<a class="headerlink" href="#startprobe" title="Permanent link">&para;</a></h4>
+<p><code>istio-proxy</code>コンテナは、<code>10</code>分以上起動が完了しないと、Podが終了する。</p>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/news/releases/1.20.x/announcing-1.20/upgrade-notes/#startupprobe-added-to-sidecar-by-default">https://istio.io/latest/news/releases/1.20.x/announcing-1.20/upgrade-notes/#startupprobe-added-to-sidecar-by-default</a></li>
+</ul>
+</blockquote>
+<h4 id="http">▼ アプリコンテナのHTTPヘルスチェック<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
+<p>kubeletはIstioの発行した証明書を持っていない。</p>
+<p>そのため、Istioで相互TLSを有効化していると、kubeletがHTTPヘルスチェックをも<code>istio-proxy</code>コンテナに実施した場合に、証明書のないエラーでHTTPヘルスチェックは失敗してしまう。</p>
+<p>これの対策として、<code>istio-proxy</code>コンテナは、kubeletから受信したHTTPヘルスチェックをpilot-agentのパス (<code>/app-health/&lt;アプリコンテナ名&gt;/livez</code>、<code>/app-health/&lt;アプリコンテナ名&gt;/readyz</code>、<code>/app-health/&lt;アプリコンテナ名&gt;/startupz</code>) にリダイレクトする。</p>
+<p>事前にアプリコンテナのヘルスチェックパスの定義をpilot-agentのパスに書き換えることにより、リダイレクトを実現する。</p>
+<p>アプリコンテナ自体には証明書がないため、HTTPヘルスチェックを実施できるようになる。</p>
+<p>なお、Podの<code>.metadata.annotations</code>に<code>sidecar.istio.io/rewriteAppHTTPProbers: "false"</code>を設定しておくと、これを無効化できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/">https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/</a></li>
+<li><a href="https://ieevee.com/tech/2022/06/27/10-health-check.html#%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B">https://ieevee.com/tech/2022/06/27/10-health-check.html#%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B</a></li>
+</ul>
+</blockquote>
+<h4 id="tcp">▼ アプリコンテナのTCPヘルスチェック<a class="headerlink" href="#tcp" title="Permanent link">&para;</a></h4>
+<p>kubeletは、対象のポート番号でプロセスがリクエストを待ち受けているかのみを検証する。</p>
+<p>そのため、アプリコンテナが異常であっても<code>istio-proxy</code>コンテナが正常である限り、kubeletのTCPヘルスチェックが成功してしまう。</p>
+<p>これの対策として、<code>istio-proxy</code>コンテナは、kubeletから受信したTCPヘルスチェックをpilot-agentのポートにリダイレクトする。</p>
+<p>これにより、kuebletがアプリコンテナにTCPヘルスチェックを実施できるようになる。</p>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/">https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/</a></li>
+<li><a href="https://ieevee.com/tech/2022/06/27/10-health-check.html#%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B">https://ieevee.com/tech/2022/06/27/10-health-check.html#%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="graceful-drain">Graceful Drainモード<a class="headerlink" href="#graceful-drain" title="Permanent link">&para;</a></h3>
+<p><code>istio-proxy</code>コンテナは、自分自身を安全に停止する。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>現在のEnvoyプロセスがホットリロードを実行し、新しいEnvoyプロセスが起動する。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p><code>terminationDrainDuration</code>値 (デフォルト<code>5</code>秒) によるGraceful Drainモード待機時間が開始する。</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>現在のEnvoyプロセスは、Graceful Drainモードを開始する。</p>
+</dd>
+<dt><code>(4)</code></dt>
+<dd>
+<p>現在のEnvoyプロセスへの接続を新しいEnvoyに段階的に移行する。</p>
+<p>この時、現在のEnvoyプロセスはすぐに通信を閉じず、<code>drainDuration</code>値 (デフォルト<code>5</code>秒) による待機時間だけ、リクエストを受信しながら移行していく。</p>
+</dd>
+<dt><code>(5)</code></dt>
+<dd>
+<p>現在のEnvoyは、プロセスのGraceful Drainモードを終了する。</p>
+</dd>
+<dt><code>(6)</code></dt>
+<dd>
+<p>Graceful Drainモードの終了後、<code>terminationDrainDuration</code>によるGraceful Drainモード待機時間が完了する。</p>
+</dd>
+<dt><code>(7)</code></dt>
+<dd>
+<p>現行EnvoyプロセスにSIGKILLを送信する。</p>
+</dd>
+</dl>
+<p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://sreake.com/blog/istio-proxy-stop-behavior/">https://sreake.com/blog/istio-proxy-stop-behavior/</a></li>
+<li><a href="https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy">https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02-03">02-03. 待ち受けるポート番号<a class="headerlink" href="#02-03" title="Permanent link">&para;</a></h2>
+<h3 id="15000"><code>15000</code>番<a class="headerlink" href="#15000" title="Permanent link">&para;</a></h3>
+<p><code>istio-proxy</code>コンテナの<code>15000</code>番ポートでは、Envoyのダッシュボードに対するリクエストを待ち受ける。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># istio-proxyコンテナ内でローカルホストにリクエストを送信する。</span>
+istio-proxy@&lt;Pod名&gt;:<span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15000/config_dump
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump">https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump</a></li>
+<li><a href="https://jimmysong.io/en/blog/istio-components-and-ports/#15000">https://jimmysong.io/en/blog/istio-components-and-ports/#15000</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/operations/admin">https://www.envoyproxy.io/docs/envoy/latest/operations/admin</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="15001"><code>15001</code>番<a class="headerlink" href="#15001" title="Permanent link">&para;</a></h3>
+<p><code>istio-proxy</code>コンテナの<code>15001</code>番ポートでは、アプリコンテナからのアウトバウンド通信を待ち受ける。</p>
+<p>アプリコンテナからのアウトバウンド通信は、一度、<code>istio-proxy</code>コンテナの<code>15001</code>番ポートにリダイレクトされる。</p>
+<blockquote>
+<ul>
+<li><a href="https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar">https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="15004"><code>15004</code>番<a class="headerlink" href="#15004" title="Permanent link">&para;</a></h3>
+<p><code>istio-proxy</code>コンテナの<code>15004</code>番ポートでは、コントロールプレーンのコンテナの<code>8080</code>番ポートと一緒に使用される。</p>
+<p>用途がわからず記入中...</p>
+<blockquote>
+<ul>
+<li><a href="https://jimmysong.io/en/blog/istio-components-and-ports/#15004">https://jimmysong.io/en/blog/istio-components-and-ports/#15004</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="15006"><code>15006</code>番<a class="headerlink" href="#15006" title="Permanent link">&para;</a></h3>
+<p><code>istio-proxy</code>コンテナの<code>15006</code>番ポートでは、アプリコンテナへのインバウンド通信を待ち受ける。</p>
+<p>アプリコンテナへのインバウンド通信は、一度、<code>istio-proxy</code>コンテナの<code>15006</code>番ポートにリダイレクトされる。</p>
+<blockquote>
+<ul>
+<li><a href="https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar">https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="15020"><code>15020</code>番<a class="headerlink" href="#15020" title="Permanent link">&para;</a></h3>
+<p><code>istio-proxy</code>コンテナの<code>15020</code>番ポートでは、データプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。</p>
+<blockquote>
+<ul>
+<li><a href="https://jimmysong.io/en/blog/istio-components-and-ports/#15020">https://jimmysong.io/en/blog/istio-components-and-ports/#15020</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="15021"><code>15021</code>番<a class="headerlink" href="#15021" title="Permanent link">&para;</a></h3>
+<p><code>istio-proxy</code>コンテナの<code>15021</code>番ポートでは、kubeletからのReadinessProbeチェックを待ち受ける。</p>
+<p><code>istio-proxy</code>コンテナ内のEnvoyが、<code>/healthz/ready</code>エンドポイントでReadinessProbeチェックを待ち受けており、もしEnvoyが停止してれば<code>503</code>ステータスのレスポンスを返却する。</p>
+<blockquote>
+<ul>
+<li><a href="https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar">https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar</a></li>
+<li><a href="https://sreake.com/blog/istio-proxy-stop-behavior/">https://sreake.com/blog/istio-proxy-stop-behavior/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="15053"><code>15053</code>番<a class="headerlink" href="#15053" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
+<blockquote>
+<ul>
+<li><a href="https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar">https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h2 id="02-02">02-02. 待ち受けるポート番号<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
-<h3 id="_10">ポート番号の確認<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>foo-istiod<span class="w"> </span>-n<span class="w"> </span>istio-system<span class="w"> </span>--<span class="w"> </span>netstat<span class="w"> </span>-tulpn
+<h3 id="15090"><code>15090</code>番<a class="headerlink" href="#15090" title="Permanent link">&para;</a></h3>
+<p><code>istio-proxy</code>コンテナの<code>15090</code>番ポートでは、<code>istio-proxy</code>コンテナのメトリクス収集ツール (例：Prometheus) からのリクエストを待ち受ける。</p>
+<p><code>istio-proxy</code>コンテナ内のEnvoyが、<code>/stats/prometheus</code>エンドポイントでリクエストを待ち受けており、データポイントを含むレスポンスを返信する。</p>
+<p>ただ、<code>discovery</code>コンテナにも<code>/stats/prometheus</code>エンドポイントがあり、メトリクス収集ツールはこれを指定することが多い。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-it<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-c<span class="w"> </span>istio-proxy<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;curl http://127.0.0.1:15090/stats/prometheus&quot;</span>
 
-Active<span class="w"> </span>Internet<span class="w"> </span>connections<span class="w"> </span><span class="o">(</span>only<span class="w"> </span>servers<span class="o">)</span>
+istio_build<span class="o">{</span><span class="nv">component</span><span class="o">=</span><span class="s2">&quot;proxy&quot;</span>,tag<span class="o">=</span><span class="s2">&quot;&lt;リビジョン番号&gt;&quot;</span><span class="o">}</span><span class="w"> </span><span class="m">1</span>
 
-Proto<span class="w"> </span>Recv-Q<span class="w"> </span>Send-Q<span class="w"> </span>Local<span class="w"> </span>Address<span class="w">           </span>Foreign<span class="w"> </span>Address<span class="w">         </span>State<span class="w">       </span>PID/Program<span class="w"> </span>name
-tcp<span class="w">        </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="m">127</span>.0.0.1:9876<span class="w">          </span><span class="m">0</span>.0.0.0:*<span class="w">               </span>LISTEN<span class="w">      </span><span class="m">1</span>/pilot-discovery
-tcp6<span class="w">       </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>:::15017<span class="w">                </span>:::*<span class="w">                    </span>LISTEN<span class="w">      </span><span class="m">1</span>/pilot-discovery
-tcp6<span class="w">       </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>:::8080<span class="w">                 </span>:::*<span class="w">                    </span>LISTEN<span class="w">      </span><span class="m">1</span>/pilot-discovery
-tcp6<span class="w">       </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>:::15010<span class="w">                </span>:::*<span class="w">                    </span>LISTEN<span class="w">      </span><span class="m">1</span>/pilot-discovery
-tcp6<span class="w">       </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>:::15012<span class="w">                </span>:::*<span class="w">                    </span>LISTEN<span class="w">      </span><span class="m">1</span>/pilot-discovery
-tcp6<span class="w">       </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>:::15014<span class="w">                </span>:::*<span class="w">                    </span>LISTEN<span class="w">      </span><span class="m">1</span>/pilot-discovery
-</code></pre></div>
-<h3 id="8080"><code>8080</code>番<a class="headerlink" href="#8080" title="Permanent link">&para;</a></h3>
-<p><code>discovery</code>コンテナの<code>8080</code>番ポートでは、コントロールプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。</p>
-<p><code>discovery</code>コンテナの<code>15014</code>番ポートにポートフォワーディングしながら、別に<code>go tool pprof</code>コマンドを実行することにより、Istioを実装するパッケージのリソース使用量を可視化できる。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># ポートフォワーディングを実行する。</span>
-$<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/istiod-&lt;リビジョン番号&gt;<span class="w"> </span><span class="m">15014</span><span class="w"> </span>-n<span class="w"> </span>istio-system
+...
 
-$<span class="w"> </span>go<span class="w"> </span>tool<span class="w"> </span>pprof<span class="w"> </span>-http<span class="o">=</span>:8080<span class="w"> </span><span class="m">127</span>.0.0.1:15014/debug/pprof/heap
+istio_request_bytes_count<span class="o">{</span>...<span class="o">}</span>
+istio_request_messages_total<span class="o">{</span>...<span class="o">}</span>
 
-Fetching<span class="w"> </span>profile<span class="w"> </span>over<span class="w"> </span>HTTP<span class="w"> </span>from<span class="w"> </span>http://127.0.0.1:15014/debug/pprof/heap
-Saved<span class="w"> </span>profile<span class="w"> </span><span class="k">in</span><span class="w"> </span>/Users/hiroki-hasegawa/pprof/pprof.pilot-discovery.alloc_objects.alloc_space.inuse_objects.inuse_space.002.pb.gz
-Serving<span class="w"> </span>web<span class="w"> </span>UI<span class="w"> </span>on<span class="w"> </span>http://127.0.0.1:8080
-
-<span class="c1"># どのパッケージでどのくらいハードウェアリソースを消費しているか</span>
-$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:8080/ui/flamegraph?si<span class="o">=</span>alloc_objects
+...
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#%E6%9F%A5%E7%9C%8B-istiod-%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8">https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#%E6%9F%A5%E7%9C%8B-istiod-%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8</a></li>
+<li><a href="https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar">https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="9876"><code>9876</code>番<a class="headerlink" href="#9876" title="Permanent link">&para;</a></h3>
-<p><code>discovery</code>コンテナの<code>9876</code>番ポートでは、ControlZダッシュボードに対するリクエストを待ち受ける。</p>
-<p>ControlZダッシュボードでは、istiodコントロールプレーンの設定値を変更できる。</p>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/ops/diagnostic-tools/controlz/">https://istio.io/latest/docs/ops/diagnostic-tools/controlz/</a></li>
-<li><a href="https://jimmysong.io/en/blog/istio-components-and-ports/">https://jimmysong.io/en/blog/istio-components-and-ports/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="15010"><code>15010</code>番<a class="headerlink" href="#15010" title="Permanent link">&para;</a></h3>
-<p><img alt="istio_control-plane_service-discovery" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_service-discovery.png" /></p>
-<p><code>discovery</code>コンテナの<code>15010</code>番ポートでは、<code>istio-proxy</code>コンテナからのxDSサーバーに対するリモートプロシージャーコールを待ち受け、<code>discovery</code>コンテナ内のプロセスに渡す。</p>
-<p>コールの内容に応じて、他のサービス (Pod、Node)の宛先情報を含むレスポンスを返信する。</p>
-<p><code>istio-proxy</code>コンテナはこれを受信し、pilot-agentがEnvoyの宛先情報設定を動的に変更する (サービスディスカバリー) 。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/">https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/</a></li>
-</ul>
-</blockquote>
-<p><img alt="istio_service-registry" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_service-registry.png" /></p>
-<p>Istiodコントロールプレーンは、サービスレジストリ (例：etcd、consul catalog、nocos、cloud foundry) に登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言 (ServiceEntry、WorkloadEntry) から、他のサービス (Pod、Node) の宛先情報を取得する。</p>
-<p><code>discovery</code>コンテナは、取得した宛先情報を自身に保管する。</p>
-<blockquote>
-<ul>
-<li><a href="https://juejin.cn/post/7028572651421433892">https://juejin.cn/post/7028572651421433892</a></li>
-<li><a href="https://www.zhaohuabing.com/post/2019-02-18-pilot-service-registry-code-analysis/">https://www.zhaohuabing.com/post/2019-02-18-pilot-service-registry-code-analysis/</a></li>
-<li><a href="https://github.com/istio/istio/blob/1.14.3/pilot/pkg/serviceregistry/provider/providers.go#L20-L27">https://github.com/istio/istio/blob/1.14.3/pilot/pkg/serviceregistry/provider/providers.go#L20-L27</a></li>
-<li><a href="https://www.kubernetes.org.cn/4208.html">https://www.kubernetes.org.cn/4208.html</a></li>
-<li><a href="https://etcd.io/docs/v3.3/learning/why/#comparison-chart">https://etcd.io/docs/v3.3/learning/why/#comparison-chart</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="15012"><code>15012</code>番<a class="headerlink" href="#15012" title="Permanent link">&para;</a></h3>
-<p><code>discovery</code>コンテナの<code>15012</code>番ポートでは、アプリコンテナ間で相互TLSによるHTTPSプロトコルを使用する場合に、<code>istio-proxy</code>コンテナからのSSL証明書に関するリクエストを待ち受け、<code>discovery</code>コンテナ内のプロセスに渡す。</p>
-<p>リクエストの内容に応じて、SSL証明書と秘密鍵を含むレスポンスを返信する。</p>
-<p><code>istio-proxy</code>コンテナはこれを受信し、pilot-agentはEnvoyにこれらを紐付ける。</p>
-<p>また、SSL証明書の期限が切れれば、<code>istio-proxy</code>コンテナからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。</p>
-<p><img alt="istio_control-plane_certificate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_certificate.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/concepts/security/#pki">https://istio.io/latest/docs/concepts/security/#pki</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="15014"><code>15014</code>番<a class="headerlink" href="#15014" title="Permanent link">&para;</a></h3>
-<p>コンテナの<code>15014</code>番ポートでは、Istiodコントロールプレーンのメトリクスを監視するツールからのリクエストを待ち受け、<code>discovery</code>コンテナ内のプロセスに渡す。</p>
-<p>リクエストの内容に応じて、データポイントを含むレスポンスを返信する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># ポートフォワーディングを実行する。</span>
-$<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/istiod-&lt;リビジョン番号&gt;<span class="w"> </span><span class="m">15014</span><span class="w"> </span>-n<span class="w"> </span>istio-system
-
-<span class="c1"># デバッグダッシュボードにリクエストを送信する。</span>
-$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15014/debug
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#metrics">https://istio.io/latest/docs/reference/commands/pilot-discovery/#metrics</a></li>
-<li><a href="https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#istio-%E8%B0%83%E8%AF%95%E6%8E%A5%E5%8F%A3">https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#istio-%E8%B0%83%E8%AF%95%E6%8E%A5%E5%8F%A3</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="15017"><code>15017</code>番<a class="headerlink" href="#15017" title="Permanent link">&para;</a></h3>
-<p><code>discovery</code>コンテナの<code>15017</code>番ポートでは、Istioの<code>istiod-&lt;リビジョン番号&gt;</code>というServiceからのポートフォワーディングを待ち受け、<code>discovery</code>コンテナ内のプロセスに渡す。AdmissionReviewを含むレスポンスを返信する。</p>
-<p><br></p>
-<h2 id="03-pilot-discovery">03. pilot-discoveryコマンド<a class="headerlink" href="#03-pilot-discovery" title="Permanent link">&para;</a></h2>
-<h3 id="_11">実行オプションの渡し方<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p><code>discovery</code>コンテナの起動時に引数として渡す。</p>
+<h2 id="03-pilot-agent">03. pilot-agentコマンド<a class="headerlink" href="#03-pilot-agent" title="Permanent link">&para;</a></h2>
+<h3 id="_5">実行オプションの渡し方<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><code>istio-proxy</code>コンテナの起動時に引数として渡す。</p>
 <p>Podであれば、<code>.spec.containers[*].args</code>オプションを使用する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod-&lt;リビジョン番号&gt;</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">args</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--monitoringAddr=:15014</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--log_output_level=default:info</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--domain</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster.local</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--keepaliveMaxServerConnectionAge</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30m</span>
-</code></pre></div>
 <p><br></p>
-<h3 id="discovery_1">discovery<a class="headerlink" href="#discovery_1" title="Permanent link">&para;</a></h3>
-<h4 id="clusterregistriesnamespace">▼ clusterRegistriesNamespace<a class="headerlink" href="#clusterregistriesnamespace" title="Permanent link">&para;</a></h4>
-<p>IstioのConfigMap (<code>istio-mesh-cm</code>) のあるNamespaceを設定する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pilot-discovery<span class="w"> </span>discovery<span class="w"> </span>--clusterRegistriesNamespace<span class="w"> </span>istio-system
+<h3 id="wait">wait<a class="headerlink" href="#wait" title="Permanent link">&para;</a></h3>
+<p><code>istio-proxy</code>コンテナのプロセスが起動完了するまで待機する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pilot-agent<span class="w"> </span><span class="nb">wait</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery">https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery</a></li>
-</ul>
-</blockquote>
-<h4 id="keepalivemaxserverconnectionage">▼ keepaliveMaxServerConnectionAge<a class="headerlink" href="#keepalivemaxserverconnectionage" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナからのgRPCリクエスト受信時のKeepalive (クライアントの状態に応じて、その接続をタイムアウトにするか否か) を設定する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pilot-discovery<span class="w"> </span>discovery<span class="w"> </span>--keepaliveMaxServerConnectionAge<span class="w"> </span>30m
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery">https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery</a></li>
-</ul>
-</blockquote>
-<h4 id="log_output_level">▼ log_output_level<a class="headerlink" href="#log_output_level" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pilot-discovery<span class="w"> </span>discovery<span class="w"> </span>--log_output_level<span class="w"> </span>none
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery">https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery</a></li>
-</ul>
-</blockquote>
-<h4 id="monitoringaddr">▼ monitoringAddr<a class="headerlink" href="#monitoringaddr" title="Permanent link">&para;</a></h4>
-<p>Prometheusによるメトリクス収集のポート番号を設定する。</p>
-<p><code>:15014</code>を設定する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pilot-discovery<span class="w"> </span>discovery<span class="w"> </span>--monitoringAddr<span class="w"> </span>:15014
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery">https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery</a></li>
-</ul>
-</blockquote>
-<h4 id="domain">▼ domain<a class="headerlink" href="#domain" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pilot-discovery<span class="w"> </span>discovery<span class="w"> </span>--domain<span class="w"> </span>cluster.local
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery">https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery</a></li>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-agent/#pilot-agent-wait">https://istio.io/latest/docs/reference/commands/pilot-agent/#pilot-agent-wait</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -25981,7 +26177,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15014/debu
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-04</span>
   </span>
 
     
