@@ -31,6 +31,7 @@ description: データプレーン＠Istioアンビエントの知見を記録�
 
 なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesとgeneve tunnelの代わりにeBPFを使用する方法もある。
 
+> - https://sreake.com/blog/istio-ambient-mesh-inpod-redirection/#inpod_redirection_%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3
 > - https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration
 > - https://www.rfc-editor.org/rfc/rfc8926.html
 
@@ -38,25 +39,30 @@ description: データプレーン＠Istioアンビエントの知見を記録�
 
 ### ztunnel
 
-#### ▼ inpod redirectionによるアウトバウンド通信
+#### ▼ 新しい仕組み (inpod redirection)
 
-1. Pod内コンテナが`L4`アウトバウンド通信を送信する。
+ztunnelへのリダイレクトの仕組みは一度リプレイスされている。
+
+新しい仕組みでは、サイドカーパターンでアプリコンテナからの通信が`istio-proxy`コンテナにリダイレクトされるのと同じような仕組みになっている。
+
+![istio_ambient-mesh_ztunnel_inpod-redirection_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_overview.png)
+
+アウトバウンドの仕組みは以下の通りである。
+
+1. Pod内アプリコンテナが`L4`アウトバウンド通信を送信する。
 2. Pod内iptablesが通信をztunnel Podにリダイレクトする。
 3. ztunnel Podは通信を宛先に送信する。
 
-![istio_ambient-mesh_ztunnel_inpod-redirection](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection.png)
-
-> - https://www.solo.io/blog/istio-ambient-mesh-any-cni
-
-#### ▼ inpod redirectionによるインバウンド通信
+一方で、インバウンドの仕組みは以下の通りである。
 
 1. Podが`L4`インバウンド通信を受信する。
 2. Pod内iptablesが通信をztunnel Podにリダイレクトする。
-3. Pod内コンテナが`L4`アウトバウンド通信を受信する。
+3. Pod内アプリコンテナが`L4`アウトバウンド通信を受信する。
 
-![istio_ambient-mesh_ztunnel_inpod-redirection](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection.png)
+![istio_ambient-mesh_ztunnel_inpod-redirection_detail](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_detail.png)
 
 > - https://www.solo.io/blog/istio-ambient-mesh-any-cni
+> - https://medium.com/@Nick_Chekushkin/implementation-and-benefits-of-istio-ambient-mesh-optimizing-resources-and-improving-security-in-189ce4bad313
 
 #### ▼ 古い仕組み
 
