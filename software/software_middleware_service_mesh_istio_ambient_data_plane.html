@@ -4778,6 +4778,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#ztunnel_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ztunnelとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#inpod-redirection" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 新しい仕組み (inpod redirection)
@@ -4806,6 +4815,39 @@
       waypoint-proxy
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="waypoint-proxy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#waypoint-proxy_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ waypoint-proxyとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 仕組み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Namespaceのリバースプロキシとして
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -24753,6 +24795,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#ztunnel_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ztunnelとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#inpod-redirection" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 新しい仕組み (inpod redirection)
@@ -24781,6 +24832,39 @@
       waypoint-proxy
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="waypoint-proxy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#waypoint-proxy_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ waypoint-proxyとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 仕組み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Namespaceのリバースプロキシとして
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -24821,12 +24905,13 @@
 <p><br></p>
 <h2 id="02">02. データプレーンの要素<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="istio-cni">istio-cni<a class="headerlink" href="#istio-cni" title="Permanent link">&para;</a></h3>
-<p>以下を設定し、<code>L4</code>インバウンド/アウトバウンド通信をztunnel Podへリダイレクトできるようにする</p>
+<p>以下を設定し、<code>L4</code>インバウンド/アウトバウンド通信をztunnel Podへリダイレクトできるようにする。</p>
 <ul>
 <li>Nodeのiptables</li>
 <li>ztunnel Podのiptables</li>
 <li>geneve tunnel</li>
 </ul>
+<p>また、ztunnelが受信ポートを公開するように、通知する。</p>
 <p>なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesとgeneve tunnelの代わりにeBPFを使用する方法もある。</p>
 <blockquote>
 <ul>
@@ -24837,10 +24922,12 @@
 </blockquote>
 <p><br></p>
 <h3 id="ztunnel">ztunnel<a class="headerlink" href="#ztunnel" title="Permanent link">&para;</a></h3>
+<h4 id="ztunnel_1">▼ ztunnelとは<a class="headerlink" href="#ztunnel_1" title="Permanent link">&para;</a></h4>
+<p>サービスメッシュ内の<code>L4</code>トラフィックを管理する。</p>
 <h4 id="inpod-redirection">▼ 新しい仕組み (inpod redirection)<a class="headerlink" href="#inpod-redirection" title="Permanent link">&para;</a></h4>
 <p>ztunnelへのリダイレクトの仕組みは一度リプレイスされている。</p>
 <p>新しい仕組みでは、サイドカーパターンでアプリコンテナからの通信が<code>istio-proxy</code>コンテナにリダイレクトされるのと同じような仕組みになっている。</p>
-<p><img alt="istio_ambient-mesh_ztunnel_inpod-redirection_overview" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_overview.png" /></p>
+<p><img alt="istio_ambient-mesh_ztunnel_inpod-redirection_l4_overview" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_l4_overview.png" /></p>
 <p>アウトバウンドの仕組みは以下の通りである。</p>
 <ol>
 <li>Pod内アプリコンテナが<code>L4</code>アウトバウンド通信を送信する。</li>
@@ -24853,11 +24940,12 @@
 <li>Pod内iptablesが通信をztunnel Podにリダイレクトする。</li>
 <li>Pod内アプリコンテナが<code>L4</code>アウトバウンド通信を受信する。</li>
 </ol>
-<p><img alt="istio_ambient-mesh_ztunnel_inpod-redirection_detail" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_detail.png" /></p>
+<p><img alt="istio_ambient-mesh_ztunnel_inpod-redirection_l4_detail" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_l4_detail.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.solo.io/blog/istio-ambient-mesh-any-cni">https://www.solo.io/blog/istio-ambient-mesh-any-cni</a></li>
 <li><a href="https://medium.com/@Nick_Chekushkin/implementation-and-benefits-of-istio-ambient-mesh-optimizing-resources-and-improving-security-in-189ce4bad313">https://medium.com/@Nick_Chekushkin/implementation-and-benefits-of-istio-ambient-mesh-optimizing-resources-and-improving-security-in-189ce4bad313</a></li>
+<li><a href="https://imesh.ai/blog/istio-ambient-install-eks/">https://imesh.ai/blog/istio-ambient-install-eks/</a></li>
 </ul>
 </blockquote>
 <h4 id="_2">▼ 古い仕組み<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
@@ -24872,9 +24960,14 @@
 </blockquote>
 <p><br></p>
 <h3 id="waypoint-proxy">waypoint-proxy<a class="headerlink" href="#waypoint-proxy" title="Permanent link">&para;</a></h3>
+<h4 id="waypoint-proxy_1">▼ waypoint-proxyとは<a class="headerlink" href="#waypoint-proxy_1" title="Permanent link">&para;</a></h4>
+<p>サービスメッシュ内の<code>L7</code>トラフィックを管理する。</p>
+<h4 id="_3">▼ 仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>Namespace外からの<code>L7</code>インバウンド通信を受信し、Namespace内の宛先Podに送信する。</p>
+<h4 id="namespace">▼ Namespaceのリバースプロキシとして<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h4>
+<p>waypoint-proxyは、Namespaceのリバースプロキシである。</p>
 <p>アウトバウンド通信には関与せず、サーバー側のリバースプロキシとしてのみ機能する。</p>
-<p><img alt="istio_ambient-mesh_waypoint-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy.png" /></p>
+<p><img alt="istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint">https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint</a></li>
