@@ -23,12 +23,16 @@ description: データプレーン＠Istioアンビエントの知見を記録�
 
 ### istio-cni
 
-以下を設定し、`L4`インバウンド/アウトバウンド通信をztunnelのPodへルーティングできるようにする
+以下を設定し、`L4`インバウンド/アウトバウンド通信をztunnelのPodへリダイレクトできるようにする
 
 - Nodeのiptables
 - ztunnel Podのiptables
+- geneve tunnel
+
+なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesとgeneve tunnelの代わりにeBPFを使用する方法もある。
 
 > - https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration
+> - https://www.rfc-editor.org/rfc/rfc8926.html
 
 <br>
 
@@ -37,6 +41,8 @@ description: データプレーン＠Istioアンビエントの知見を記録�
 Node外からの`L4`インバウンド通信をiptablesを介して受信し、Node内の宛先Podに送信する。
 
 また一方で、送信元Podからの`L4`アウトバウンド通信をiptablesを介して受信し、Node外に送信する。
+
+なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesの代わりにeBPFを使用する方法もある。
 
 ![istio_ambient-mesh_ztunnel](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel.png)
 
