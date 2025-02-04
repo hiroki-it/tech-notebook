@@ -93,13 +93,15 @@ ztunnelへのリダイレクトの仕組みは一度リプレイスされてい�
 
 Namespace外からの`L7`インバウンド通信を受信し、Namespace内の宛先Podに送信する。
 
+![istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7_overview.png)
+
 #### ▼ Namespaceのリバースプロキシとして
 
 waypoint-proxyは、Namespaceのリバースプロキシである。
 
 アウトバウンド通信には関与せず、サーバー側のリバースプロキシとしてのみ機能する。
 
-![istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7.png)
+![istio_ambient-mesh_waypoint-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy_reverse-proxy.png)
 
 > - https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint
 
