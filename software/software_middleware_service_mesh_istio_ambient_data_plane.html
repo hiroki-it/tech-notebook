@@ -4774,6 +4774,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="ztunnel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アウトバウンド通信
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ インバウンド通信
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -24725,6 +24749,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="ztunnel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アウトバウンド通信
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ インバウンド通信
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -24788,10 +24836,20 @@
 </blockquote>
 <p><br></p>
 <h3 id="ztunnel">ztunnel<a class="headerlink" href="#ztunnel" title="Permanent link">&para;</a></h3>
-<p>Node外からの<code>L4</code>インバウンド通信をiptablesを介して受信し、Node内の宛先Podに送信する。</p>
-<p>また一方で、送信元Podからの<code>L4</code>アウトバウンド通信をiptablesを介して受信し、Node外に送信する。</p>
+<h4 id="_2">▼ アウトバウンド通信<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>送信元Podからの<code>L4</code>アウトバウンド通信をiptablesとgeneve tunnelを介して受信し、Node外に送信する。</p>
 <p>なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesの代わりにeBPFを使用する方法もある。</p>
-<p><img alt="istio_ambient-mesh_ztunnel" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel.png" /></p>
+<p><img alt="istio_ambient-mesh_ztunnel_outbound" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_outbound.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels">https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels</a></li>
+<li><a href="https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint">https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint</a></li>
+</ul>
+</blockquote>
+<h4 id="_3">▼ インバウンド通信<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>Node外からの<code>L4</code>インバウンド通信をiptablesを介して受信し、Node内の宛先Podに送信する。</p>
+<p>なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesの代わりにeBPFを使用する方法もある。</p>
+<p><img alt="istio_ambient-mesh_ztunnel_inbound" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inbound.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels">https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels</a></li>
