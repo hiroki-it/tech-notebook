@@ -4780,16 +4780,7 @@
           <li class="md-nav__item">
   <a href="#inpod-redirection" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ inpod redirectionによるアウトバウンド通信
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#inpod-redirection_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ inpod redirectionによるインバウンド通信
+      ▼ 新しい仕組み (inpod redirection)
     </span>
   </a>
   
@@ -24764,16 +24755,7 @@
           <li class="md-nav__item">
   <a href="#inpod-redirection" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ inpod redirectionによるアウトバウンド通信
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#inpod-redirection_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ inpod redirectionによるインバウンド通信
+      ▼ 新しい仕組み (inpod redirection)
     </span>
   </a>
   
@@ -24848,34 +24830,34 @@
 <p>なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesとgeneve tunnelの代わりにeBPFを使用する方法もある。</p>
 <blockquote>
 <ul>
+<li><a href="https://sreake.com/blog/istio-ambient-mesh-inpod-redirection/#inpod_redirection_%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3">https://sreake.com/blog/istio-ambient-mesh-inpod-redirection/#inpod_redirection_%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3</a></li>
 <li><a href="https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration">https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration</a></li>
 <li><a href="https://www.rfc-editor.org/rfc/rfc8926.html">https://www.rfc-editor.org/rfc/rfc8926.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h3 id="ztunnel">ztunnel<a class="headerlink" href="#ztunnel" title="Permanent link">&para;</a></h3>
-<h4 id="inpod-redirection">▼ inpod redirectionによるアウトバウンド通信<a class="headerlink" href="#inpod-redirection" title="Permanent link">&para;</a></h4>
+<h4 id="inpod-redirection">▼ 新しい仕組み (inpod redirection)<a class="headerlink" href="#inpod-redirection" title="Permanent link">&para;</a></h4>
+<p>ztunnelへのリダイレクトの仕組みは一度リプレイスされている。</p>
+<p>新しい仕組みでは、サイドカーパターンでアプリコンテナからの通信が<code>istio-proxy</code>コンテナにリダイレクトされるのと同じような仕組みになっている。</p>
+<p><img alt="istio_ambient-mesh_ztunnel_inpod-redirection_overview" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_overview.png" /></p>
+<p>アウトバウンドの仕組みは以下の通りである。</p>
 <ol>
-<li>Pod内コンテナが<code>L4</code>アウトバウンド通信を送信する。</li>
+<li>Pod内アプリコンテナが<code>L4</code>アウトバウンド通信を送信する。</li>
 <li>Pod内iptablesが通信をztunnel Podにリダイレクトする。</li>
 <li>ztunnel Podは通信を宛先に送信する。</li>
 </ol>
-<p><img alt="istio_ambient-mesh_ztunnel_inpod-redirection" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://www.solo.io/blog/istio-ambient-mesh-any-cni">https://www.solo.io/blog/istio-ambient-mesh-any-cni</a></li>
-</ul>
-</blockquote>
-<h4 id="inpod-redirection_1">▼ inpod redirectionによるインバウンド通信<a class="headerlink" href="#inpod-redirection_1" title="Permanent link">&para;</a></h4>
+<p>一方で、インバウンドの仕組みは以下の通りである。</p>
 <ol>
 <li>Podが<code>L4</code>インバウンド通信を受信する。</li>
 <li>Pod内iptablesが通信をztunnel Podにリダイレクトする。</li>
-<li>Pod内コンテナが<code>L4</code>アウトバウンド通信を受信する。</li>
+<li>Pod内アプリコンテナが<code>L4</code>アウトバウンド通信を受信する。</li>
 </ol>
-<p><img alt="istio_ambient-mesh_ztunnel_inpod-redirection" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection.png" /></p>
+<p><img alt="istio_ambient-mesh_ztunnel_inpod-redirection_detail" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_detail.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.solo.io/blog/istio-ambient-mesh-any-cni">https://www.solo.io/blog/istio-ambient-mesh-any-cni</a></li>
+<li><a href="https://medium.com/@Nick_Chekushkin/implementation-and-benefits-of-istio-ambient-mesh-optimizing-resources-and-improving-security-in-189ce4bad313">https://medium.com/@Nick_Chekushkin/implementation-and-benefits-of-istio-ambient-mesh-optimizing-resources-and-improving-security-in-189ce4bad313</a></li>
 </ul>
 </blockquote>
 <h4 id="_2">▼ 古い仕組み<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
