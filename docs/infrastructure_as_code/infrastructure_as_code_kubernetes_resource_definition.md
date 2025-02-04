@@ -3037,11 +3037,9 @@ spec:
 
 #### ▼ livenessProbeとは
 
-kubeletは、Pod内のコンテナが稼働しているか否かのヘルスチェックを実行する。
+kubeletがヘルスチェックを実行することで、コンテナが正常に動作しているか確認する。
 
-ReadinessProbeチェックよりもヘルスチェックの意味合いが強い。
-
-コンテナのLivenessProbeヘルスチェックに失敗すると、Podはコンテナを自動的に再起動する。
+注意点として、LivenessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。
 
 > - https://www.ianlewis.org/jp/kubernetes-health-check
 > - https://amateur-engineer-blog.com/livenessprobe-readinessprobe/
@@ -3227,7 +3225,11 @@ spec:
 
 ### .spec.containers[*].startupProbe
 
-`failureThreshold` \* `periodSeconds`の間、コンテナの起動を待機する。
+#### ▼ startupProbeとは
+
+kubeletがヘルスチェックを実行することで、アプリケーションの起動が完了したかを確認する。
+
+ReadinessProbeよりも前に実行される。
 
 ```yaml
 apiVersion: v1
