@@ -13,11 +13,19 @@ description: データプレーン＠Istioサイドカーの知見を記録し�
 
 <br>
 
-## 01. データプレーンとは
+## 01. サイドカーモードのデータプレーンの仕組み
+
+![istio_sidecar-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_sidecar-mesh_architecture.png)
 
 サイドカーモードのデータプレーンは、istio-iptables、 `istio-init`コンテナ、`istio-proxy`コンテナ、といったコンポーネントから構成される。
 
-> - https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
+サイドカープロキシを使用して、サービスメッシュを実装する。
+
+サイドカーは、`L4` (トランスポート層) のプロトコル (例：TCP、UDPなど) と`L7` (アプリケーション層) のプロトコル (例：HTTP、HTTPSなど) を処理できる。
+
+> - https://istio.io/latest/docs/ops/deployment/architecture/
+> - https://techblog.zozo.com/entry/zozotown-istio-production-ready
+> - https://www.amazon.co.jp/dp/1617295825
 
 <br>
 
