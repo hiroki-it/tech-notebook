@@ -23,7 +23,7 @@ description: データプレーン＠Istioアンビエントの知見を記録�
 
 ### istio-cni
 
-以下を設定し、`L4`インバウンド/アウトバウンド通信をztunnelのPodへリダイレクトできるようにする
+以下を設定し、`L4`インバウンド/アウトバウンド通信をztunnel Podへリダイレクトできるようにする
 
 - Nodeのiptables
 - ztunnel Podのiptables
@@ -51,7 +51,7 @@ description: データプレーン＠Istioアンビエントの知見を記録�
 
 #### ▼ インバウンド通信
 
-Node外からの`L4`インバウンド通信をiptablesを介して受信し、Node内の宛先Podに送信する。
+他Node上のztunnel Podからの`L4`インバウンド通信をHBORNとiptablesを介して受信し、Node内の宛先Podに送信する。
 
 なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesの代わりにeBPFを使用する方法もある。
 
