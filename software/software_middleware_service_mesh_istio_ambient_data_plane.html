@@ -4748,6 +4748,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. データプレーンの要素
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. データプレーンの要素">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#istio-cni" class="md-nav__link">
+    <span class="md-ellipsis">
+      istio-cni
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ztunnel" class="md-nav__link">
+    <span class="md-ellipsis">
+      ztunnel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waypoint-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      waypoint-proxy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -24657,6 +24699,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. データプレーンの要素
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. データプレーンの要素">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#istio-cni" class="md-nav__link">
+    <span class="md-ellipsis">
+      istio-cni
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ztunnel" class="md-nav__link">
+    <span class="md-ellipsis">
+      ztunnel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waypoint-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      waypoint-proxy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -24686,6 +24770,40 @@
 <p><br></p>
 <h2 id="01">01. データプレーンとは<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <p>記入中...</p>
+<p><br></p>
+<h2 id="02">02. データプレーンの要素<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="istio-cni">istio-cni<a class="headerlink" href="#istio-cni" title="Permanent link">&para;</a></h3>
+<p>以下を設定し、<code>L4</code>インバウンド/アウトバウンド通信をztunnelのPodへルーティングできるようにする</p>
+<ul>
+<li>Nodeのiptables</li>
+<li>ztunnel Podのiptables</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration">https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="ztunnel">ztunnel<a class="headerlink" href="#ztunnel" title="Permanent link">&para;</a></h3>
+<p>Node外からの<code>L4</code>インバウンド通信をiptablesを介して受信し、Node内の宛先Podに送信する。</p>
+<p>また一方で、送信元Podからの<code>L4</code>アウトバウンド通信をiptablesを介して受信し、Node外に送信する。</p>
+<p><img alt="istio_ambient-mesh_ztunnel" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels">https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels</a></li>
+<li><a href="https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint">https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="waypoint-proxy">waypoint-proxy<a class="headerlink" href="#waypoint-proxy" title="Permanent link">&para;</a></h3>
+<p>Namespace外からの<code>L7</code>インバウンド通信を受信し、Namespace内の宛先Podに送信する。</p>
+<p>アウトバウンド通信には関与せず、サーバー側のリバースプロキシとしてのみ機能する。</p>
+<p><img alt="istio_ambient-mesh_waypoint-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint">https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 

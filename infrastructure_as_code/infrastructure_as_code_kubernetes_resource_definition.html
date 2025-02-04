@@ -36231,7 +36231,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <p><br></p>
 <h3 id="speccontainersreadinessprobe">.spec.containers[*].readinessProbe<a class="headerlink" href="#speccontainersreadinessprobe" title="Permanent link">&para;</a></h3>
 <h4 id="readinessprobe">▼ readinessProbeとは<a class="headerlink" href="#readinessprobe" title="Permanent link">&para;</a></h4>
-<p>kubeletがヘルスチェックを実行することで、コンテナがトラフィックを処理可能かを確認する。 </p>
+<p>kubeletがヘルスチェックを実行することで、コンテナがトラフィックを処理可能かを確認する。</p>
 <p>コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例: Nginxの最初の設定ファイル読み込み完了まで、MySQLの最初のコネクション受信準備完了まで) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。</p>
 <p>注意点として、ReadinessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。</p>
 <p>そのため、<code>READY</code>は<code>0</code>で、<code>STATUS</code>は<code>Running</code>になる。</p>
