@@ -112,8 +112,12 @@
 
 - #### <u>Istio</u>
   > - ##### [︎Istio](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio.html)
-  > - ##### [コントロールプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_control_plane.html)
-  > - ##### [データプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_data_plane.html)
+  > - ##### <u>サイドカーモード</u>
+  >   > - ##### [コントロールプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_sidecar_control_plane.html)
+  >   > - ##### [データプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_sidecar_data_plane.html)
+  > - ##### <u>アンビエントモード</u>
+  >   > - ##### [コントロールプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_ambient_control_plane.html)
+  >   > - ##### [データプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_ambient_data_plane.html)
   > - ##### [Istioを採用しない場合との比較](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_non.html)
   > - ##### [︎コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_command.html)
   > - ##### [︎プラクティス集](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_practices.html)

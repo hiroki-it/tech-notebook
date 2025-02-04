@@ -97,7 +97,7 @@ metadata:
 
 > - https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
 
-#### ▼ アンビエンドモードの場合
+#### ▼ アンビエントモードの場合
 
 `istio-proxy`コンテナからwaypoint-proxyを作成する。
 
