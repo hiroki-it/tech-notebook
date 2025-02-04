@@ -4778,27 +4778,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ アウトバウンド通信
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ インバウンド通信
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#inpod-redirection" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ inpod redirection
+      ▼ inpod redirectionによるアウトバウンド通信
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inpod-redirection_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ inpod redirectionによるインバウンド通信
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 古い仕組み
     </span>
   </a>
   
@@ -24762,27 +24762,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ アウトバウンド通信
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ インバウンド通信
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#inpod-redirection" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ inpod redirection
+      ▼ inpod redirectionによるアウトバウンド通信
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inpod-redirection_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ inpod redirectionによるインバウンド通信
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 古い仕組み
     </span>
   </a>
   
@@ -24854,31 +24854,38 @@
 </blockquote>
 <p><br></p>
 <h3 id="ztunnel">ztunnel<a class="headerlink" href="#ztunnel" title="Permanent link">&para;</a></h3>
-<h4 id="_2">▼ アウトバウンド通信<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>送信元Podからの<code>L4</code>アウトバウンド通信をiptablesとgeneve tunnelを介して受信し、Node外に送信する。</p>
-<p>なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesの代わりにeBPFを使用する方法もある。</p>
-<p><img alt="istio_ambient-mesh_ztunnel_outbound" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_outbound.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels">https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels</a></li>
-<li><a href="https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint">https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint</a></li>
-</ul>
-</blockquote>
-<h4 id="_3">▼ インバウンド通信<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>他Node上のztunnel Podからの<code>L4</code>インバウンド通信をHBORN (<code>15008</code>) とiptablesを介して受信し、Node内の宛先Podに送信する。</p>
-<p>なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesの代わりにeBPFを使用する方法もある。</p>
-<p><img alt="istio_ambient-mesh_ztunnel_inbound" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inbound.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels">https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels</a></li>
-<li><a href="https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint">https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint</a></li>
-</ul>
-</blockquote>
-<h4 id="inpod-redirection">▼ inpod redirection<a class="headerlink" href="#inpod-redirection" title="Permanent link">&para;</a></h4>
+<h4 id="inpod-redirection">▼ inpod redirectionによるアウトバウンド通信<a class="headerlink" href="#inpod-redirection" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Pod内コンテナが<code>L4</code>アウトバウンド通信を送信する。</li>
+<li>Pod内iptablesが通信をztunnel Podにリダイレクトする。</li>
+<li>ztunnel Podは通信を宛先に送信する。</li>
+</ol>
 <p><img alt="istio_ambient-mesh_ztunnel_inpod-redirection" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.solo.io/blog/istio-ambient-mesh-any-cni">https://www.solo.io/blog/istio-ambient-mesh-any-cni</a></li>
+</ul>
+</blockquote>
+<h4 id="inpod-redirection_1">▼ inpod redirectionによるインバウンド通信<a class="headerlink" href="#inpod-redirection_1" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Podが<code>L4</code>インバウンド通信を受信する。</li>
+<li>Pod内iptablesが通信をztunnel Podにリダイレクトする。</li>
+<li>Pod内コンテナが<code>L4</code>アウトバウンド通信を受信する。</li>
+</ol>
+<p><img alt="istio_ambient-mesh_ztunnel_inpod-redirection" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.solo.io/blog/istio-ambient-mesh-any-cni">https://www.solo.io/blog/istio-ambient-mesh-any-cni</a></li>
+</ul>
+</blockquote>
+<h4 id="_2">▼ 古い仕組み<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>ztunnelへのリダイレクトの仕組みは一度リプレイスされている。</p>
+<p>新しい仕組みは『inpod redirection』と呼ばれている。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.solo.io/blog/istio-ambient-mesh-any-cni">https://www.solo.io/blog/istio-ambient-mesh-any-cni</a></li>
+<li><a href="https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels">https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels</a></li>
+<li><a href="https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint">https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint</a></li>
 </ul>
 </blockquote>
 <p><br></p>
