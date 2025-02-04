@@ -19885,6 +19885,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label=".spec.containers[*].startupProbe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#startupprobe" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ startupProbeとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -31478,6 +31493,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label=".spec.containers[*].startupProbe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#startupprobe" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ startupProbeとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -35859,9 +35889,8 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <p><br></p>
 <h3 id="speccontainerslivenessprobe">.spec.containers[*].livenessProbe<a class="headerlink" href="#speccontainerslivenessprobe" title="Permanent link">&para;</a></h3>
 <h4 id="livenessprobe">▼ livenessProbeとは<a class="headerlink" href="#livenessprobe" title="Permanent link">&para;</a></h4>
-<p>kubeletは、Pod内のコンテナが稼働しているか否かのヘルスチェックを実行する。</p>
-<p>ReadinessProbeチェックよりもヘルスチェックの意味合いが強い。</p>
-<p>コンテナのLivenessProbeヘルスチェックに失敗すると、Podはコンテナを自動的に再起動する。</p>
+<p>kubeletがヘルスチェックを実行することで、コンテナが正常に動作しているか確認する。</p>
+<p>注意点として、LivenessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.ianlewis.org/jp/kubernetes-health-check">https://www.ianlewis.org/jp/kubernetes-health-check</a></li>
@@ -36029,7 +36058,9 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </code></pre></div>
 <p><br></p>
 <h3 id="speccontainersstartupprobe">.spec.containers[*].startupProbe<a class="headerlink" href="#speccontainersstartupprobe" title="Permanent link">&para;</a></h3>
-<p><code>failureThreshold</code> * <code>periodSeconds</code>の間、コンテナの起動を待機する。</p>
+<h4 id="startupprobe">▼ startupProbeとは<a class="headerlink" href="#startupprobe" title="Permanent link">&para;</a></h4>
+<p>kubeletがヘルスチェックを実行することで、アプリケーションの起動が完了したかを確認する。</p>
+<p>ReadinessProbeよりも前に実行される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -38428,7 +38459,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-04</span>
   </span>
 
     
