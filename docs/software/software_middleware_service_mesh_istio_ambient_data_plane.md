@@ -51,7 +51,7 @@ description: データプレーン＠Istioアンビエントの知見を記録�
 
 #### ▼ インバウンド通信
 
-他Node上のztunnel Podからの`L4`インバウンド通信をHBORNとiptablesを介して受信し、Node内の宛先Podに送信する。
+他Node上のztunnel Podからの`L4`インバウンド通信をHBORN (`15008`) とiptablesを介して受信し、Node内の宛先Podに送信する。
 
 なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesの代わりにeBPFを使用する方法もある。
 
@@ -59,6 +59,12 @@ description: データプレーン＠Istioアンビエントの知見を記録�
 
 > - https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels
 > - https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint
+
+#### ▼ inpod redirection
+
+![istio_ambient-mesh_ztunnel_inpod-redirection](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection.png)
+
+> - https://www.solo.io/blog/istio-ambient-mesh-any-cni
 
 <br>
 
