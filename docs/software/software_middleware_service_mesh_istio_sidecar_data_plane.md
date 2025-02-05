@@ -231,6 +231,8 @@ Istioのサービスメッシュ外のネットワークからのインバウン
 
 Kubernetesの`v1.28`では、InitContainerでサイドカーを作成できるようになった。
 
+`pilot-agent`コマンドの実行時に`ENABLE_NATIVE_SIDECARS`変数を渡せば良い。
+
 Istioでもこれをサポートしている。
 
 `istio-proxy`コンテナのインジェクションの仕組みはそのままで、PodのマニフェストのPatch処理の内容をInitContainerのインジェクションに変更している。

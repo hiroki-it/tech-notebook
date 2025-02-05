@@ -442,7 +442,11 @@ spec:
 
 Namespace外からの`L7`インバウンド通信をHBORNを経由して受信し、Namespace内の宛先Podに送信する。
 
+waypoint-proxyは、サービスディスカバリーにより宛先情報を取得し、また証明書を管理する。
+
 ![istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7_overview.png)
+
+> - https://www.anyflow.net/sw-engineer/istio-ambient-mode
 
 #### ▼ Namespaceのリバースプロキシとして
 

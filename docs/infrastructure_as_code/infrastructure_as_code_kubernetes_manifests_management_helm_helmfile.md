@@ -109,7 +109,7 @@ releases:
 
 <br>
 
-### `helmfile.yaml`ファイルで使える変数
+### 変数
 
 #### ▼ `.Environment.Name`
 
@@ -412,6 +412,42 @@ Helmリリースのバージョンを設定する。
 ```yaml
 releases:
   - version: <バージョンタグ>
+```
+
+#### ▼ 同じチャートを異なるNamespaceでデプロイ
+
+`release`キー配下に同じチャートを宣言すれば、同じチャートを異なるNamespaceにデプロイできる。
+
+Istio PeerAuthenticationのように、Namespace単位で作成する必要があるリソースで役立つ。
+
+```yaml
+releases:
+  - name: foo
+    chart: chart
+    version: 1.0.0
+    namespace: foo
+    atomic: true
+  - name: bar
+    chart: chart
+    version: 1.0.0
+    namespace: bar
+    atomic: true
+  - name: baz
+    chart: chart
+    version: 1.0.0
+    namespace: baz
+    atomic: true
+```
+
+```yaml
+apiVersion: security.istio.io/v1
+kind: PeerAuthentication
+metadata:
+  # Namespaceを出力する
+  name: {{.Release.Namespace}}
+spec:
+  mtls:
+    mode: STRICT
 ```
 
 <br>
