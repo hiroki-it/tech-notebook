@@ -18722,13 +18722,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#helmfileyaml_1" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      helmfile.yamlファイルで使える変数
+      変数
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="helmfile.yamlファイルで使える変数">
+    <nav class="md-nav" aria-label="変数">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -18774,7 +18774,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 実行環境名を渡したいだけの場合
     </span>
@@ -18783,7 +18783,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 実行環境名を渡す以外こともやりたい場合
     </span>
@@ -18905,6 +18905,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#namespace_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 同じチャートを異なるNamespaceでデプロイ
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -18996,7 +19005,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 空行を挿入したくない
     </span>
@@ -25118,13 +25127,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#helmfileyaml_1" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      helmfile.yamlファイルで使える変数
+      変数
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="helmfile.yamlファイルで使える変数">
+    <nav class="md-nav" aria-label="変数">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25170,7 +25179,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 実行環境名を渡したいだけの場合
     </span>
@@ -25179,7 +25188,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 実行環境名を渡す以外こともやりたい場合
     </span>
@@ -25301,6 +25310,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#namespace_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 同じチャートを異なるNamespaceでデプロイ
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -25392,7 +25410,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 空行を挿入したくない
     </span>
@@ -25561,7 +25579,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="helmfileyaml_1"><code>helmfile.yaml</code>ファイルで使える変数<a class="headerlink" href="#helmfileyaml_1" title="Permanent link">&para;</a></h3>
+<h3 id="_4">変数<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="environmentname">▼ <code>.Environment.Name</code><a class="headerlink" href="#environmentname" title="Permanent link">&para;</a></h4>
 <p><code>helmfile</code>コマンドの<code>-e</code>オプションに渡した値は、<code>helmfile.yaml</code>ファイル内の<code>.Environment.Name</code>に出力できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>-f<span class="w"> </span>helmfile.yaml
@@ -25583,7 +25601,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://helmfile.readthedocs.io/en/latest/#environment-values">https://helmfile.readthedocs.io/en/latest/#environment-values</a></li>
 </ul>
 </blockquote>
-<h4 id="_4">▼ 実行環境名を渡したいだけの場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h4 id="_5">▼ 実行環境名を渡したいだけの場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>実行環境名を渡したいだけの場合、<code>environments</code>キー配下のキー自体を<code>{{ .Environment.Name }}</code>のように変数化する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">environments</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">.Environment.Name</span><span class="p p-Indicator">}}:</span>
@@ -25609,7 +25627,7 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
 <li><a href="https://speakerdeck.com/j5ik2o/helmfilenituite?slide=22">https://speakerdeck.com/j5ik2o/helmfilenituite?slide=22</a></li>
 </ul>
 </blockquote>
-<h4 id="_5">▼ 実行環境名を渡す以外こともやりたい場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h4 id="_6">▼ 実行環境名を渡す以外こともやりたい場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>実行環境名を渡す以外こともやりたい場合、<code>environments</code>キー配下のキー自体に実行環境名を設定する。</p>
 <p>あまりユースケースがないかもしれない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">environments</span><span class="p">:</span>
@@ -25782,6 +25800,35 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
 <div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;バージョンタグ&gt;</span>
 </code></pre></div>
+<h4 id="namespace_1">▼ 同じチャートを異なるNamespaceでデプロイ<a class="headerlink" href="#namespace_1" title="Permanent link">&para;</a></h4>
+<p><code>release</code>キー配下に同じチャートを宣言すれば、同じチャートを異なるNamespaceにデプロイできる。</p>
+<p>Istio PeerAuthenticationのように、Namespace単位で作成する必要があるリソースで役立つ。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chart</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0.0</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="nt">atomic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
+<span class="w">    </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chart</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0.0</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
+<span class="w">    </span><span class="nt">atomic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz</span>
+<span class="w">    </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chart</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0.0</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz</span>
+<span class="w">    </span><span class="nt">atomic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PeerAuthentication</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Namespaceを出力する</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Release.Namespace</span><span class="p p-Indicator">}}</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mtls</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">STRICT</span>
+</code></pre></div>
 <p><br></p>
 <h3 id="repositories">repositories<a class="headerlink" href="#repositories" title="Permanent link">&para;</a></h3>
 <h4 id="name_1">▼ name<a class="headerlink" href="#name_1" title="Permanent link">&para;</a></h4>
@@ -25863,7 +25910,7 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
 <span class="c1">#</span>
 <span class="c1">#     foo, bar, baz</span>
 </code></pre></div>
-<h4 id="_6">▼ 空行を挿入したくない<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_7">▼ 空行を挿入したくない<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>空行を挿入したくない場合、パイプの後にそのまま<code>readFile</code>関数を定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -25973,7 +26020,7 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-06</span>
   </span>
 
     
