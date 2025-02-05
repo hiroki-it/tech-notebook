@@ -101,6 +101,10 @@ rule_files:
   - /etc/prometheus/pod_memory_utilized_rule.yaml
 ```
 
+**＊実装例＊**
+
+PodのCPU使用率とメモリ使用率が閾値を超えた場合に、アラートを作成する。
+
 ```yaml
 groups:
   - name: pod_cpu_utilized_rule
@@ -142,6 +146,26 @@ groups:
 ```
 
 > - https://amateur-engineer-blog.com/alertmanager-docker-compose/
+
+**＊実装例＊**
+
+SSL証明書の有効期限のタイムスタンプと現在の時刻を比較し、`7`日以内であればアラートを作成する。
+
+```yaml
+groups:
+  - name: tls-cert-rules
+    rules:
+      - alert: TLSCertificateExpiring
+        expr: probe_ssl_earliest_cert_expiry - time() < 7*24*3600
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Certificate for {{ $labels.instance }} is about to expire"
+          description: "The certificate for {{ $labels.instance }} is about to expire in less than 7 days."
+```
+
+> - https://promlabs.com/blog/2024/02/06/monitoring-tls-endpoint-certificate-expiration-with-prometheus/
 
 #### ▼ scrape_configsセクション
 
