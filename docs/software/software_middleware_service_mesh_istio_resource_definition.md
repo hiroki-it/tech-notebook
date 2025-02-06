@@ -1150,7 +1150,151 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  name: ingress-ratelimit
+  name: filter-local-ratelimit-svc
+  namespace: istio-system
+spec:
+  workloadSelector:
+    labels:
+      app: productpage
+  configPatches:
+    - applyTo: HTTP_FILTER
+      match:
+        # istio-proxyコンテナのインバウンドの処理に適用する
+        context: SIDECAR_INBOUND
+        listener:
+          filterChain:
+            filter:
+              name: "envoy.filters.network.http_connection_manager"
+      patch:
+        operation: INSERT_BEFORE
+        value:
+          name: envoy.filters.http.local_ratelimit
+          typed_config:
+            "@type": type.googleapis.com/udpa.type.v1.TypedStruct
+            type_url: type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit
+            value:
+              stat_prefix: http_local_rate_limiter
+              token_bucket:
+                max_tokens: 4
+                tokens_per_fill: 4
+                fill_interval: 60s
+              filter_enabled:
+                runtime_key: local_rate_limit_enabled
+                default_value:
+                  numerator: 100
+                  denominator: HUNDRED
+              filter_enforced:
+                runtime_key: local_rate_limit_enforced
+                default_value:
+                  numerator: 100
+                  denominator: HUNDRED
+              response_headers_to_add:
+                - append: false
+                  header:
+                    key: x-local-rate-limit
+                    value: "true"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: filter-local-ratelimit-svc
+  namespace: istio-system
+spec:
+  workloadSelector:
+    labels:
+      app: productpage
+  configPatches:
+    - applyTo: HTTP_FILTER
+      match:
+        # istio-proxyコンテナのインバウンドの処理に適用する
+        context: SIDECAR_INBOUND
+        listener:
+          filterChain:
+            filter:
+              name: "envoy.filters.network.http_connection_manager"
+      patch:
+        operation: INSERT_BEFORE
+        value:
+          name: envoy.filters.http.local_ratelimit
+          typed_config:
+            "@type": type.googleapis.com/udpa.type.v1.TypedStruct
+            type_url: type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit
+            value:
+              stat_prefix: http_local_rate_limiter
+    - applyTo: HTTP_ROUTE
+      match:
+        # istio-proxyコンテナのインバウンドの処理に適用する
+        context: SIDECAR_INBOUND
+        routeConfiguration:
+          vhost:
+            name: "inbound|http|9080"
+            route:
+              action: ANY
+      patch:
+        operation: MERGE
+        value:
+          typed_per_filter_config:
+            envoy.filters.http.local_ratelimit:
+              "@type": type.googleapis.com/udpa.type.v1.TypedStruct
+              type_url: type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit
+              value:
+                stat_prefix: http_local_rate_limiter
+                token_bucket:
+                  max_tokens: 4
+                  tokens_per_fill: 4
+                  fill_interval: 60s
+                filter_enabled:
+                  runtime_key: local_rate_limit_enabled
+                  default_value:
+                    numerator: 100
+                    denominator: HUNDRED
+                filter_enforced:
+                  runtime_key: local_rate_limit_enforced
+                  default_value:
+                    numerator: 100
+                    denominator: HUNDRED
+                response_headers_to_add:
+                  - append: false
+                    header:
+                      key: x-local-rate-limit
+                      value: "true"
+```
+
+> - https://istio.io/latest/docs/tasks/policy-enforcement/rate-limit/#local-rate-limit
+> - https://learncloudnative.com/blog/2022-09-08-ratelimit-istio
+
+#### ▼ グローバルレートリミット
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ratelimit-config
+data:
+  config.yaml: |
+    domain: ratelimit
+    descriptors:
+      - key: PATH
+        value: "/productpage"
+        rate_limit:
+          unit: minute
+          requests_per_unit: 1
+      - key: PATH
+        value: "api"
+        rate_limit:
+          unit: minute
+          requests_per_unit: 2
+      - key: PATH
+        rate_limit:
+          unit: minute
+          requests_per_unit: 100
+```
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: filter-ratelimit
   namespace: istio-system
 spec:
   workloadSelector:
@@ -1171,41 +1315,47 @@ spec:
       patch:
         operation: INSERT_BEFORE
         value:
-          name: envoy.filters.http.local_ratelimit
+          name: envoy.filters.http.ratelimit
           typed_config:
-            "@type": type.googleapis.com/udpa.type.v1.TypedStruct
-            type_url: type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit
-            value:
-              stat_prefix: http_local_rate_limiter
-              token_bucket:
-                max_tokens: 50
-                tokens_per_fill: 10
-                fill_interval: 120s
-              filter_enabled:
-                runtime_key: local_rate_limit_enabled
-                default_value:
-                  numerator: 100
-                  denominator: HUNDRED
-              filter_enforced:
-                runtime_key: local_rate_limit_enforced
-                default_value:
-                  numerator: 100
-                  denominator: HUNDRED
-              response_headers_to_add:
-                - append_action: APPEND_IF_EXISTS_OR_ADD
-                  header:
-                    key: x-rate-limited
-                    value: TOO_MANY_REQUESTS
-              status:
-                code: BadRequest
+            "@type": type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimit
+            domain: ratelimit
+            failure_mode_deny: true
+            timeout: 10s
+            rate_limit_service:
+              grpc_service:
+                envoy_grpc:
+                  cluster_name: outbound|8081||ratelimit.default.svc.cluster.local
+                  authority: ratelimit.default.svc.cluster.local
+              transport_api_version: V3
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: filter-ratelimit-svc
+  namespace: istio-system
+spec:
+  workloadSelector:
+    labels:
+      istio: ingressgateway
+  configPatches:
+    - applyTo: VIRTUAL_HOST
+      match:
+        # Gatewayの処理に適用する
+        context: GATEWAY
+        routeConfiguration:
+          vhost:
+            name: ""
+            route:
+              action: ANY
+      patch:
+        operation: MERGE
+        value:
+          rate_limits:
+            - actions:
+                - request_headers:
+                    header_name: ":path"
+                    descriptor_key: "PATH"
 ```
-
-> - https://istio.io/latest/docs/tasks/policy-enforcement/rate-limit/#local-rate-limit
-> - https://learncloudnative.com/blog/2022-09-08-ratelimit-istio
-
-#### ▼ グローバルレートリミット
-
-記入中...
 
 <br>
 
