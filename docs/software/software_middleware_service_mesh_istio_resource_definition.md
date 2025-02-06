@@ -1161,6 +1161,7 @@ spec:
       match:
         # istio-proxyコンテナのインバウンドの処理に適用する
         context: SIDECAR_INBOUND
+        # Listenerにレートリミットを設定する
         listener:
           filterChain:
             filter:
@@ -1295,6 +1296,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
   name: filter-ratelimit
+  # サービスメッシュ全体に適用する
   namespace: istio-system
 spec:
   workloadSelector:
@@ -1306,12 +1308,14 @@ spec:
       match:
         # Gatewayの処理に適用する
         context: GATEWAY
+        # Listenerにレートリミットを設定する
         listener:
           filterChain:
             filter:
               name: "envoy.filters.network.http_connection_manager"
               subFilter:
                 name: "envoy.filters.http.router"
+      # 変更内容を設定する
       patch:
         operation: INSERT_BEFORE
         value:
@@ -1319,11 +1323,14 @@ spec:
           typed_config:
             "@type": type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimit
             domain: ratelimit
+            # true：istio-proxyコンテナが失敗のレスポンスを返信する
+            # false：アプリコンテナが失敗のレスポンスを返信する
             failure_mode_deny: true
             timeout: 10s
             rate_limit_service:
               grpc_service:
                 envoy_grpc:
+                  # レートリミットの対象を設定する
                   cluster_name: outbound|8081||ratelimit.default.svc.cluster.local
                   authority: ratelimit.default.svc.cluster.local
               transport_api_version: V3
@@ -1332,6 +1339,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
   name: filter-ratelimit-svc
+  # サービスメッシュ全体に適用する
   namespace: istio-system
 spec:
   workloadSelector:
@@ -1347,6 +1355,7 @@ spec:
             name: ""
             route:
               action: ANY
+      # 変更内容を設定する
       patch:
         operation: MERGE
         value:
@@ -1356,6 +1365,8 @@ spec:
                     header_name: ":path"
                     descriptor_key: "PATH"
 ```
+
+> - https://istio.io/latest/docs/tasks/policy-enforcement/rate-limit/#global-rate-limit
 
 <br>
 
@@ -1378,6 +1389,7 @@ spec:
         listener:
           name: 0.0.0.0_8443
           portNumber: 8443
+      # 変更内容を設定する
       patch:
         operation: MERGE
         value:
