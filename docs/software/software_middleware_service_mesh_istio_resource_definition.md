@@ -1134,6 +1134,81 @@ spec:
 
 ## 04-02. EnvoyFilter例
 
+### レートリミット
+
+#### ▼ Istioのレートリミットとは
+
+執筆時点で、Istioのトラフィック管理系リソースにはレートリミットの設定がない。
+
+これはEnvoyFilterで設定する必要がある。
+
+複数の`istio-proxy`コンテナにレートリミットを設定するグローバルレートリミットと、特定のものに設定するローカルレートリミットがある。
+
+#### ▼ ローカルリミット
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: ingress-ratelimit
+  namespace: istio-system
+spec:
+  workloadSelector:
+    labels:
+      # Istio IngressGatewayに合致させる
+      istio: ingressgateway
+  configPatches:
+    - applyTo: HTTP_FILTER
+      match:
+        # Gatewayの処理に適用する
+        context: GATEWAY
+        listener:
+          filterChain:
+            filter:
+              name: "envoy.filters.network.http_connection_manager"
+              subFilter:
+                name: "envoy.filters.http.router"
+      patch:
+        operation: INSERT_BEFORE
+        value:
+          name: envoy.filters.http.local_ratelimit
+          typed_config:
+            "@type": type.googleapis.com/udpa.type.v1.TypedStruct
+            type_url: type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit
+            value:
+              stat_prefix: http_local_rate_limiter
+              token_bucket:
+                max_tokens: 50
+                tokens_per_fill: 10
+                fill_interval: 120s
+              filter_enabled:
+                runtime_key: local_rate_limit_enabled
+                default_value:
+                  numerator: 100
+                  denominator: HUNDRED
+              filter_enforced:
+                runtime_key: local_rate_limit_enforced
+                default_value:
+                  numerator: 100
+                  denominator: HUNDRED
+              response_headers_to_add:
+                - append_action: APPEND_IF_EXISTS_OR_ADD
+                  header:
+                    key: x-rate-limited
+                    value: TOO_MANY_REQUESTS
+              status:
+                code: BadRequest
+```
+
+> - https://istio.io/latest/docs/tasks/policy-enforcement/rate-limit/#local-rate-limit
+> - https://learncloudnative.com/blog/2022-09-08-ratelimit-istio
+
+#### ▼ グローバルレートリミット
+
+記入中...
+
+<br>
+
 ### KeepAliveの設定
 
 istio-ingressgateway内の`istio-proxy`コンテナで、KeepAliveを実行できるようにする。
