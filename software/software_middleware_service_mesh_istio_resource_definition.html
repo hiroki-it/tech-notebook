@@ -5643,6 +5643,48 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      レートリミット
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="レートリミット">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#istio_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Istioのレートリミットとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ローカルリミット
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ グローバルレートリミット
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#keepalive" class="md-nav__link">
     <span class="md-ellipsis">
       KeepAliveの設定
@@ -6364,7 +6406,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ * (アスタリスク)
     </span>
@@ -6373,7 +6415,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ . (ドット)
     </span>
@@ -6523,7 +6565,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ &lt;ヘッダー名&gt;
     </span>
@@ -27032,6 +27074,48 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      レートリミット
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="レートリミット">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#istio_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Istioのレートリミットとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ローカルリミット
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ グローバルレートリミット
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#keepalive" class="md-nav__link">
     <span class="md-ellipsis">
       KeepAliveの設定
@@ -27753,7 +27837,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ * (アスタリスク)
     </span>
@@ -27762,7 +27846,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ . (ドット)
     </span>
@@ -27912,7 +27996,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ &lt;ヘッダー名&gt;
     </span>
@@ -29093,6 +29177,73 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <p><br></p>
 <h2 id="04-02-envoyfilter">04-02. EnvoyFilter例<a class="headerlink" href="#04-02-envoyfilter" title="Permanent link">&para;</a></h2>
+<h3 id="_10">レートリミット<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h4 id="istio_1">▼ Istioのレートリミットとは<a class="headerlink" href="#istio_1" title="Permanent link">&para;</a></h4>
+<p>執筆時点で、Istioのトラフィック管理系リソースにはレートリミットの設定がない。</p>
+<p>これはEnvoyFilterで設定する必要がある。</p>
+<p>複数の<code>istio-proxy</code>コンテナにレートリミットを設定するグローバルレートリミットと、特定のものに設定するローカルレートリミットがある。</p>
+<h4 id="_11">▼ ローカルリミット<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingress-ratelimit</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">workloadSelector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Istio IngressGatewayに合致させる</span>
+<span class="w">      </span><span class="nt">istio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingressgateway</span>
+<span class="w">  </span><span class="nt">configPatches</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">applyTo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP_FILTER</span>
+<span class="w">      </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># Gatewayの処理に適用する</span>
+<span class="w">        </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GATEWAY</span>
+<span class="w">        </span><span class="nt">listener</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">filterChain</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">filter</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;envoy.filters.network.http_connection_manager&quot;</span>
+<span class="w">              </span><span class="nt">subFilter</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;envoy.filters.http.router&quot;</span>
+<span class="w">      </span><span class="nt">patch</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INSERT_BEFORE</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.http.local_ratelimit</span>
+<span class="w">          </span><span class="nt">typed_config</span><span class="p">:</span>
+<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
+<span class="w">            </span><span class="nt">type_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">stat_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http_local_rate_limiter</span>
+<span class="w">              </span><span class="nt">token_bucket</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">max_tokens</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
+<span class="w">                </span><span class="nt">tokens_per_fill</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">                </span><span class="nt">fill_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">120s</span>
+<span class="w">              </span><span class="nt">filter_enabled</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">runtime_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local_rate_limit_enabled</span>
+<span class="w">                </span><span class="nt">default_value</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">numerator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">                  </span><span class="nt">denominator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HUNDRED</span>
+<span class="w">              </span><span class="nt">filter_enforced</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">runtime_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local_rate_limit_enforced</span>
+<span class="w">                </span><span class="nt">default_value</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">numerator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">                  </span><span class="nt">denominator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HUNDRED</span>
+<span class="w">              </span><span class="nt">response_headers_to_add</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">append_action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">APPEND_IF_EXISTS_OR_ADD</span>
+<span class="w">                  </span><span class="nt">header</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x-rate-limited</span>
+<span class="w">                    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TOO_MANY_REQUESTS</span>
+<span class="w">              </span><span class="nt">status</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">code</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BadRequest</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/tasks/policy-enforcement/rate-limit/#local-rate-limit">https://istio.io/latest/docs/tasks/policy-enforcement/rate-limit/#local-rate-limit</a></li>
+<li><a href="https://learncloudnative.com/blog/2022-09-08-ratelimit-istio">https://learncloudnative.com/blog/2022-09-08-ratelimit-istio</a></li>
+</ul>
+</blockquote>
+<h4 id="_12">▼ グローバルレートリミット<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<p><br></p>
 <h3 id="keepalive">KeepAliveの設定<a class="headerlink" href="#keepalive" title="Permanent link">&para;</a></h3>
 <p>istio-ingressgateway内の<code>istio-proxy</code>コンテナで、KeepAliveを実行できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
@@ -30132,7 +30283,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService">https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService</a></li>
 </ul>
 </blockquote>
-<h4 id="_10">▼ <code>*</code> (アスタリスク)<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<h4 id="_13">▼ <code>*</code> (アスタリスク)<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>デフォルト値である。</p>
 <p>他のNamespaceのGatewayやDestinationRuleに紐づける場合、<code>*</code>とする必要がある。</p>
 <p>もし、同じNamespace内のGatewayやDestinationRuleと紐づける場合、<code>.</code>とする。</p>
@@ -30152,7 +30303,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
 </code></pre></div>
-<h4 id="_11">▼ <code>.</code> (ドット)<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<h4 id="_14">▼ <code>.</code> (ドット)<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>同じNamespace内のGatewayやDestinationRuleと紐づける場合、<code>.</code>とする。</p>
 <p>もし、他のNamespaceのGatewayやDestinationRuleに紐づける場合、<code>*</code>とする必要がある。</p>
 <p>つまり、Istio IngressGatewayやIstio EgressGatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは<code>*</code>とし、それ以外のこれらの場合は<code>.</code>とする。</p>
@@ -30457,7 +30608,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="spechttpmatch">.spec.http.match<a class="headerlink" href="#spechttpmatch" title="Permanent link">&para;</a></h3>
 <h4 id="httpmatch">▼ http.matchとは<a class="headerlink" href="#httpmatch" title="Permanent link">&para;</a></h4>
 <p>受信した通信のうち、ルールを適用するもののメッセージ構造を設定する。</p>
-<h4 id="_12">▼ &lt;ヘッダー名&gt;<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<h4 id="_15">▼ &lt;ヘッダー名&gt;<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>ヘッダー名で合致条件を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>受信した通信のうち、<code>x-foo</code>ヘッダーに<code>bar</code>が割り当てられたものだけにルールを適用する。</p>
@@ -30920,7 +31071,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-06</span>
   </span>
 
     
