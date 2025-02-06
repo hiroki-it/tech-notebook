@@ -29197,6 +29197,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># istio-proxyコンテナのインバウンドの処理に適用する</span>
 <span class="w">        </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIDECAR_INBOUND</span>
+<span class="w">        </span><span class="c1"># Listenerにレートリミットを設定する</span>
 <span class="w">        </span><span class="nt">listener</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">filterChain</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">filter</span><span class="p">:</span>
@@ -29329,6 +29330,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter-ratelimit</span>
+<span class="w">  </span><span class="c1"># サービスメッシュ全体に適用する</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">workloadSelector</span><span class="p">:</span>
@@ -29340,12 +29342,14 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># Gatewayの処理に適用する</span>
 <span class="w">        </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GATEWAY</span>
+<span class="w">        </span><span class="c1"># Listenerにレートリミットを設定する</span>
 <span class="w">        </span><span class="nt">listener</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">filterChain</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">filter</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;envoy.filters.network.http_connection_manager&quot;</span>
 <span class="w">              </span><span class="nt">subFilter</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;envoy.filters.http.router&quot;</span>
+<span class="w">      </span><span class="c1"># 変更内容を設定する</span>
 <span class="w">      </span><span class="nt">patch</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INSERT_BEFORE</span>
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
@@ -29353,11 +29357,14 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">          </span><span class="nt">typed_config</span><span class="p">:</span>
 <span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimit</span>
 <span class="w">            </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ratelimit</span>
+<span class="w">            </span><span class="c1"># true：istio-proxyコンテナが失敗のレスポンスを返信する</span>
+<span class="w">            </span><span class="c1"># false：アプリコンテナが失敗のレスポンスを返信する</span>
 <span class="w">            </span><span class="nt">failure_mode_deny</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">            </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
 <span class="w">            </span><span class="nt">rate_limit_service</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">grpc_service</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">envoy_grpc</span><span class="p">:</span>
+<span class="w">                  </span><span class="c1"># レートリミットの対象を設定する</span>
 <span class="w">                  </span><span class="nt">cluster_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|8081||ratelimit.default.svc.cluster.local</span>
 <span class="w">                  </span><span class="nt">authority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ratelimit.default.svc.cluster.local</span>
 <span class="w">              </span><span class="nt">transport_api_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">V3</span>
@@ -29366,6 +29373,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter-ratelimit-svc</span>
+<span class="w">  </span><span class="c1"># サービスメッシュ全体に適用する</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">workloadSelector</span><span class="p">:</span>
@@ -29381,6 +29389,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 <span class="w">            </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ANY</span>
+<span class="w">      </span><span class="c1"># 変更内容を設定する</span>
 <span class="w">      </span><span class="nt">patch</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MERGE</span>
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
@@ -29390,6 +29399,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">                    </span><span class="nt">header_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;:path&quot;</span>
 <span class="w">                    </span><span class="nt">descriptor_key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;PATH&quot;</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/tasks/policy-enforcement/rate-limit/#global-rate-limit">https://istio.io/latest/docs/tasks/policy-enforcement/rate-limit/#global-rate-limit</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="keepalive">KeepAliveの設定<a class="headerlink" href="#keepalive" title="Permanent link">&para;</a></h3>
 <p>istio-ingressgateway内の<code>istio-proxy</code>コンテナで、KeepAliveを実行できるようにする。</p>
@@ -29407,6 +29421,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">listener</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0_8443</span>
 <span class="w">          </span><span class="nt">portNumber</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8443</span>
+<span class="w">      </span><span class="c1"># 変更内容を設定する</span>
 <span class="w">      </span><span class="nt">patch</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MERGE</span>
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
