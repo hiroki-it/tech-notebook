@@ -13,7 +13,35 @@ description: パッケージ管理＠Pythonの知見を記録しています。
 
 <br>
 
-## 01. ログ
+## 01. 構造化ログ
+
+### 自前
+
+```python
+import logging
+import json
+
+class JsonFormatter(logging.Formatter):
+    def format(self, record):
+        log_data = {
+            "timestamp": self.formatTime(record),
+            "level": record.levelname,
+            "message": record.getMessage(),
+            # その他の必要な情報を追加
+        }
+        return json.dumps(log_data)
+
+logger = logging.getLogger(__name__)
+handler = logging.StreamHandler()
+formatter = JsonFormatter()
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+
+# ログを出力する
+logger.info("<メッセージ>")
+```
+
+<br>
 
 ### python-json-logger
 
@@ -27,6 +55,9 @@ logHandler = logging.StreamHandler()
 formatter = jsonlogger.JsonFormatter()
 logHandler.setFormatter(formatter)
 logger.addHandler(logHandler)
+
+# ログを出力する
+logger.info("<メッセージ>")
 ```
 
 > - https://github.com/madzak/python-json-logger
@@ -54,13 +85,28 @@ structlog.configure(
     cache_logger_on_first_use=False
 )
 
-
 log = structlog.get_logger()
 
+# ログを出力する
 log.info("<メッセージ>")
 ```
 
 > - https://github.com/hynek/structlog
 > - https://www.structlog.org/en/stable/getting-started.html
+
+<br>
+
+### loguru
+
+```python
+from loguru import logger
+
+# serializeを有効化する
+logger.add(custom_sink_function, serialize=True)
+
+context_logger.info("Contextualize your logger easily")
+```
+
+> - https://github.com/Delgan/loguru?tab=readme-ov-file#structured-logging-as-needed
 
 <br>
