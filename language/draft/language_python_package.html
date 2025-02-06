@@ -24582,12 +24582,21 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. ログ
+      01. 構造化ログ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. ログ">
+    <nav class="md-nav" aria-label="01. 構造化ログ">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      自前
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#python-json-logger" class="md-nav__link">
@@ -24602,6 +24611,15 @@
   <a href="#structlog" class="md-nav__link">
     <span class="md-ellipsis">
       structlog
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loguru" class="md-nav__link">
+    <span class="md-ellipsis">
+      loguru
     </span>
   </a>
   
@@ -24639,7 +24657,31 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. ログ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. 構造化ログ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">自前<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">class</span> <span class="nc">JsonFormatter</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
+        <span class="n">log_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">formatTime</span><span class="p">(</span><span class="n">record</span><span class="p">),</span>
+            <span class="s2">&quot;level&quot;</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">levelname</span><span class="p">,</span>
+            <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">getMessage</span><span class="p">(),</span>
+            <span class="c1"># その他の必要な情報を追加</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">log_data</span><span class="p">)</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">JsonFormatter</span><span class="p">()</span>
+<span class="n">handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+
+<span class="c1"># ログを出力する</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;&lt;メッセージ&gt;&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><br></p>
 <h3 id="python-json-logger">python-json-logger<a class="headerlink" href="#python-json-logger" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">pythonjsonlogger</span> <span class="kn">import</span> <span class="n">jsonlogger</span>
@@ -24650,6 +24692,9 @@
 <span class="n">formatter</span> <span class="o">=</span> <span class="n">jsonlogger</span><span class="o">.</span><span class="n">JsonFormatter</span><span class="p">()</span>
 <span class="n">logHandler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
 <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">logHandler</span><span class="p">)</span>
+
+<span class="c1"># ログを出力する</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;&lt;メッセージ&gt;&quot;</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -24676,15 +24721,29 @@
     <span class="n">cache_logger_on_first_use</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">)</span>
 
-
 <span class="n">log</span> <span class="o">=</span> <span class="n">structlog</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span>
 
+<span class="c1"># ログを出力する</span>
 <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;&lt;メッセージ&gt;&quot;</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://github.com/hynek/structlog">https://github.com/hynek/structlog</a></li>
 <li><a href="https://www.structlog.org/en/stable/getting-started.html">https://www.structlog.org/en/stable/getting-started.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="loguru">loguru<a class="headerlink" href="#loguru" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">loguru</span> <span class="kn">import</span> <span class="n">logger</span>
+
+<span class="c1"># serializeを有効化する</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">custom_sink_function</span><span class="p">,</span> <span class="n">serialize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">context_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Contextualize your logger easily&quot;</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/Delgan/loguru?tab=readme-ov-file#structured-logging-as-needed">https://github.com/Delgan/loguru?tab=readme-ov-file#structured-logging-as-needed</a></li>
 </ul>
 </blockquote>
 <p><br></p>
