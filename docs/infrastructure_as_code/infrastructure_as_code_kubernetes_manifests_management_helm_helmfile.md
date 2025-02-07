@@ -116,7 +116,7 @@ releases:
 `helmfile`コマンドの`-e`オプションに渡した値は、`helmfile.yaml`ファイル内の`.Environment.Name`に出力できる。
 
 ```bash
-$ helmfile -e prd -f helmfile.yaml
+$ helmfile -e prd -f helmfile.yaml apply
 ```
 
 ```yaml
@@ -128,7 +128,7 @@ $ helmfile -e prd -f helmfile.yaml
 `helmfile`コマンドの`--state-values-set`オプションに渡した値は、`helmfile.yaml`ファイル内の`.Values`に出力できる。
 
 ```bash
-$ helmfile -e prd -f helmfile.yaml --state-values-set region=tokyo
+$ helmfile -e prd -f helmfile.yaml apply --state-values-set region=tokyo
 ```
 
 ```yaml
