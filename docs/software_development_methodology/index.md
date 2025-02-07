@@ -32,6 +32,12 @@
 
 <br>
 
+### テクノロジーマネジメント
+
+- #### [テクノロジーマネジメント](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_techology_management.html)
+
+<br>
+
 ### バージョン管理
 
 - #### <u>Git</u>
