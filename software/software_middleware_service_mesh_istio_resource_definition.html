@@ -29028,7 +29028,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="tlsmode">▼ tls.mode<a class="headerlink" href="#tlsmode" title="Permanent link">&para;</a></h4>
-<p>Podへのルーティング時に使用するHTTPSプロトコルのタイプを設定する。</p>
+<p>DestinationRuleと宛先の間の暗号化方式を設定する。</p>
+<p>Gatewayにも似た設定があるが、あちらは送信元とGatewayの間の暗号化方式を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -29879,14 +29880,14 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="specserverstlsmode">.spec.servers.tls.mode<a class="headerlink" href="#specserverstlsmode" title="Permanent link">&para;</a></h3>
 <h4 id="mode">▼ modeとは<a class="headerlink" href="#mode" title="Permanent link">&para;</a></h4>
-<p>クライアントとGatewayの間の暗号化方式を設定する。</p>
+<p>送信元とGatewayの間の暗号化方式を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings-TLSmode">https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings-TLSmode</a></li>
 </ul>
 </blockquote>
 <h4 id="simple">▼ SIMPLE<a class="headerlink" href="#simple" title="Permanent link">&para;</a></h4>
-<p>クライアントとGatewayの通信間で通常のHTTPSを実施する。</p>
+<p>送信元とGatewayの通信間で通常のHTTPSを実施する。</p>
 <p>クライアント証明書は不要にである。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -29899,7 +29900,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIMPLE</span>
 </code></pre></div>
 <h4 id="mutual">▼ MUTUAL<a class="headerlink" href="#mutual" title="Permanent link">&para;</a></h4>
-<p>クライアントとGatewayの間で、Istioの作成していない証明書による相互TLSを実施する。</p>
+<p>送信元とGatewayの間で、Istioの作成していない証明書による相互TLSを実施する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
@@ -29911,7 +29912,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MUTUAL</span>
 </code></pre></div>
 <h4 id="istio_mutual">▼ ISTIO_MUTUAL<a class="headerlink" href="#istio_mutual" title="Permanent link">&para;</a></h4>
-<p>クライアントとGatewayの間で、Istioの作成した証明書による相互TLSを実施する。</p>
+<p>送信元とGatewayの間で、Istioの作成した証明書による相互TLSを実施する。</p>
 <p><code>istio-proxy</code>コンテナとIstio EgressGatewayの間で相互TLSを実施する場合、これを使用する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -29924,8 +29925,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ISTIO_MUTUAL</span>
 </code></pre></div>
 <h4 id="passthrough">▼ PASSTHROUGH<a class="headerlink" href="#passthrough" title="Permanent link">&para;</a></h4>
-<p>クライアントがHTTPS</p>
-<p><code>istio-proxy</code>コンテナとIstio EgressGatewayの間で相互TLSを実施する場合、これを使用する。</p>
+<p>GatewayでHTTPSリクエストを受信した場合に、SSL証明書を検証をせずに、HTTPSをそのまま通過させる。</p>
+<p>つまり、Gatewayの宛先にSSL証明書を設定する必要がある。</p>
+<p><code>PASSTHROUGH</code>以外のモードでは、GatewayでSSLを検証し、場合にとってはSSL終端となる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
@@ -29939,6 +29941,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <blockquote>
 <ul>
 <li><a href="https://www.danielstechblog.io/run-the-istio-ingress-gateway-with-tls-termination-and-tls-passthrough/amp/">https://www.danielstechblog.io/run-the-istio-ingress-gateway-with-tls-termination-and-tls-passthrough/amp/</a></li>
+<li><a href="https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-sni-passthrough/#configure-an-ingress-gateway">https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-sni-passthrough/#configure-an-ingress-gateway</a></li>
 </ul>
 </blockquote>
 <p><br></p>
