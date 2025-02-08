@@ -1699,13 +1699,11 @@ spec:
 
 #### ▼ tls.mode
 
-Gatewayの宛先との通信の暗号化方式を設定する。
+Gatewayの送信元との通信の暗号化方式を設定する。
 
 **＊実装例＊**
 
-クライアントとGatewayの通信間で相互TLSを実施する。
-
-クライアント証明書が必要になる。
+クライアントとGatewayの間で、Istioの作成していない証明書による相互TLSを実施する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -1716,6 +1714,23 @@ spec:
   servers:
     - tls:
         mode: MUTUAL
+```
+
+**＊実装例＊**
+
+クライアントとGatewayの間で、Istioの作成した証明書による相互TLSを実施する。
+
+`istio-proxy`コンテナとIstio EgressGatewayの間で相互TLSを実施する場合、これを使用する。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: foo-ingress
+spec:
+  servers:
+    - tls:
+        mode: ISTIO_MUTUAL
 ```
 
 **＊実装例＊**
