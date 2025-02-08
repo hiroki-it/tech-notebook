@@ -1539,9 +1539,9 @@ metadata:
 
 <br>
 
-### .spec.servers
+### .spec.servers.port
 
-#### ▼ port.name
+#### ▼ name
 
 Istio IngressGateway/EgressGatewayのPodで待ち受けるポート名を設定する。
 
@@ -1560,7 +1560,7 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
-#### ▼ port.number
+#### ▼ number
 
 Istio IngressGateway/EgressGatewayのPodで待ち受けるポート番号を設定する。
 
@@ -1585,7 +1585,7 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
-#### ▼ port.protocol
+#### ▼ protocol
 
 Istio IngressGateway/EgressGatewayのPodで受信するプロトコルを設定する。
 
@@ -1604,7 +1604,7 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
-#### ▼ port.targetPort
+#### ▼ targetPort
 
 Istio IngressGateway/EgressGatewayのPodの宛先ポート番号を設定する。
 
@@ -1623,7 +1623,9 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
-#### ▼ hosts
+<br>
+
+### .spec.servers.hosts
 
 Gatewayでフィルタリングするインバウンド通信の`Host`ヘッダー名を設定する。
 
@@ -1655,7 +1657,9 @@ spec:
         - "*"
 ```
 
-#### ▼ tls.caCertificates
+<br>
+
+### .spec.servers.tls.caCertificates
 
 `.spec.servers.tls.mode`キーで相互TLSを設定している場合、クライアント証明書のペアになるCA証明書が必要である。
 
@@ -1674,7 +1678,9 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
 
-#### ▼ tls.credentialName
+<br>
+
+### .spec.servers.tls.credentialName
 
 CAを含むSSL証明書を保持するSecretを設定する。
 
@@ -1697,47 +1703,23 @@ spec:
 
 > - https://stackoverflow.com/questions/63621461/updating-istio-ingressgateway-tls-cert
 
-#### ▼ tls.mode
+<br>
 
-Gatewayの送信元との通信の暗号化方式を設定する。
+### .spec.servers.tls.mode
 
-**＊実装例＊**
+#### ▼ modeとは
 
-クライアントとGatewayの間で、Istioの作成していない証明書による相互TLSを実施する。
+クライアントとGatewayの間の暗号化方式を設定する。
 
-```yaml
-apiVersion: networking.istio.io/v1
-kind: Gateway
-metadata:
-  name: foo-ingress
-spec:
-  servers:
-    - tls:
-        mode: MUTUAL
-```
+> - https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings-TLSmode
 
-**＊実装例＊**
-
-クライアントとGatewayの間で、Istioの作成した証明書による相互TLSを実施する。
-
-`istio-proxy`コンテナとIstio EgressGatewayの間で相互TLSを実施する場合、これを使用する。
-
-```yaml
-apiVersion: networking.istio.io/v1
-kind: Gateway
-metadata:
-  name: foo-ingress
-spec:
-  servers:
-    - tls:
-        mode: ISTIO_MUTUAL
-```
-
-**＊実装例＊**
+#### ▼ SIMPLE
 
 クライアントとGatewayの通信間で通常のHTTPSを実施する。
 
 クライアント証明書は不要にである。
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -1750,9 +1732,68 @@ spec:
         mode: SIMPLE
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings-TLSmode
+#### ▼ MUTUAL
 
-#### ▼ tls.privateKey
+クライアントとGatewayの間で、Istioの作成していない証明書による相互TLSを実施する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: foo-ingress
+spec:
+  servers:
+    - tls:
+        mode: MUTUAL
+```
+
+#### ▼ ISTIO_MUTUAL
+
+クライアントとGatewayの間で、Istioの作成した証明書による相互TLSを実施する。
+
+`istio-proxy`コンテナとIstio EgressGatewayの間で相互TLSを実施する場合、これを使用する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: foo-ingress
+spec:
+  servers:
+    - tls:
+        mode: ISTIO_MUTUAL
+```
+
+#### ▼ PASSTHROUGH
+
+クライアントがHTTPS
+
+`istio-proxy`コンテナとIstio EgressGatewayの間で相互TLSを実施する場合、これを使用する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: foo-ingress
+spec:
+  servers:
+    - tls:
+        mode: PASSTHROUGH
+```
+
+> - https://www.danielstechblog.io/run-the-istio-ingress-gateway-with-tls-termination-and-tls-passthrough/amp/
+
+<br>
+
+### .spec.servers.tls
+
+#### ▼ privateKey
 
 **＊実装例＊**
 
@@ -1769,7 +1810,11 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
 
-#### ▼ tls.serverCertificate
+<br>
+
+### .spec.servers.tls
+
+#### ▼ serverCertificate
 
 SSL証明書のファイルを設定する。
 
