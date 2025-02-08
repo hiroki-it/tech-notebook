@@ -363,10 +363,22 @@ spec:
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
-  name: foo-destination-rule
+  name: ingressgateway
 spec:
   exportTo:
     - "*"
+  host: istio-inressgateway.istio-inress.svc.cluster.local
+```
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: egressgateway
+spec:
+  exportTo:
+    - "*"
+  host: istio-egressgateway.istio-egress.svc.cluster.local
 ```
 
 #### ▼ `.` (ドット)
@@ -418,6 +430,8 @@ kind: DestinationRule
 metadata:
   name: egressgateway
 spec:
+  exportTo:
+    - "*"
   host: istio-egressgateway.istio-egress.svc.cluster.local
 ```
 

@@ -2131,6 +2131,7 @@
     "clientOfflineSessionIdleTimeout": "0",
     "cibaInterval": "5",
     "realmReusableOtpCode": "false",
+    # テーマ
     "darkMode": "false"
   },
   "keycloakVersion": "26.1.0",

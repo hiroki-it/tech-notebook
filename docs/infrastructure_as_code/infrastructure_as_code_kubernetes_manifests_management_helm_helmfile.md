@@ -414,42 +414,6 @@ releases:
   - version: <バージョンタグ>
 ```
 
-#### ▼ 同じチャートを異なるNamespaceでデプロイ
-
-`release`キー配下に同じチャートを宣言すれば、同じチャートを異なるNamespaceにデプロイできる。
-
-Istio PeerAuthenticationのように、Namespace単位で作成する必要があるリソースで役立つ。
-
-```yaml
-releases:
-  - name: foo
-    chart: chart
-    version: 1.0.0
-    namespace: foo
-    atomic: true
-  - name: bar
-    chart: chart
-    version: 1.0.0
-    namespace: bar
-    atomic: true
-  - name: baz
-    chart: chart
-    version: 1.0.0
-    namespace: baz
-    atomic: true
-```
-
-```yaml
-apiVersion: security.istio.io/v1
-kind: PeerAuthentication
-metadata:
-  # Namespaceを出力する
-  name: {{.Release.Namespace}}
-spec:
-  mtls:
-    mode: STRICT
-```
-
 <br>
 
 ### repositories
@@ -524,6 +488,106 @@ secrets:
 <br>
 
 ## 04. Helmfile固有の関数
+
+### Helmリリースのリスト
+
+#### ▼ 同じチャートを異なるNamespaceでデプロイ
+
+`release`キー配下に同じチャートを宣言すれば、同じチャートを異なるNamespaceにデプロイできる。
+
+```yaml
+releases:
+  - name: foo
+    chart: chart
+    version: 1.0.0
+    namespace: foo
+    atomic: true
+  - name: bar
+    chart: chart
+    version: 1.0.0
+    namespace: bar
+    atomic: true
+  - name: baz
+    chart: chart
+    version: 1.0.0
+    namespace: baz
+    atomic: true
+```
+
+#### ▼ Istio PeerAuthentication
+
+Istio PeerAuthenticationのように、Namespace単位で作成する必要があるリソースで役立つ。
+
+```yaml
+releases:
+  - name: foo-peer-authentication
+    chart: chart
+    version: 1.0.0
+    namespace: foo
+    atomic: true
+  - name: bar-peer-authentication
+    chart: chart
+    version: 1.0.0
+    namespace: bar
+    atomic: true
+  - name: baz-peer-authentication
+    chart: chart
+    version: 1.0.0
+    namespace: baz
+    atomic: true
+```
+
+```yaml
+apiVersion: security.istio.io/v1
+kind: PeerAuthentication
+metadata:
+  # Namespaceを出力する
+  name: {{.Release.Namespace}}
+spec:
+  mtls:
+    mode: STRICT
+```
+
+#### ▼ Istio Telemetry
+
+Istio Telemetryのように、Namespace単位で作成する必要があるリソースで役立つ。
+
+```yaml
+releases:
+  - name: foo-telemetry
+    chart: chart
+    version: 1.0.0
+    namespace: foo
+    atomic: true
+  - name: bar-telemetry
+    chart: chart
+    version: 1.0.0
+    namespace: bar
+    atomic: true
+  - name: baz-telemetry
+    chart: chart
+    version: 1.0.0
+    namespace: baz
+    atomic: true
+```
+
+```yaml
+apiVersion: telemetry.istio.io/v1
+kind: Telemetry
+metadata:
+  # Namespaceを出力する
+  name: {{.Release.Namespace}}
+spec:
+  accessLogging:
+    - providers:
+        - name: envoy-grpc
+  tracing:
+    - providers:
+        - name: opentelemetry-grpc
+      randomSamplingPercentage: 100
+```
+
+<>br
 
 ### readFile
 
