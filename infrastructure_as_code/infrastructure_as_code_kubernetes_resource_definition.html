@@ -18402,6 +18402,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="HTTPRoute">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parentrefs" class="md-nav__link">
+    <span class="md-ellipsis">
+      parentRefs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      rules
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -18665,7 +18689,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#rules" class="md-nav__link">
+  <a href="#rules_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ rulesとは
     </span>
@@ -18866,6 +18890,15 @@
   <a href="#gatewayclassname" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ gatewayClassNameとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Nginxの場合
     </span>
   </a>
   
@@ -30033,6 +30066,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="HTTPRoute">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parentrefs" class="md-nav__link">
+    <span class="md-ellipsis">
+      parentRefs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      rules
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -30296,7 +30353,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#rules" class="md-nav__link">
+  <a href="#rules_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ rulesとは
     </span>
@@ -30497,6 +30554,15 @@
   <a href="#gatewayclassname" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ gatewayClassNameとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Nginxの場合
     </span>
   </a>
   
@@ -33721,7 +33787,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="nt">users</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">user</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">exec</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">client.authentication.k8s.io/v1beta1</span>
+<span class="w">        </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">client.authentication.k8s.io/v1</span>
 <span class="w">        </span><span class="nt">args</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--region</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1</span>
@@ -34276,28 +34342,53 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </code></pre></div>
 <p><br></p>
 <h2 id="httproute">HTTPRoute<a class="headerlink" href="#httproute" title="Permanent link">&para;</a></h2>
-<p>記入中...</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1beta1</span>
+<h3 id="parentrefs">parentRefs<a class="headerlink" href="#parentrefs" title="Permanent link">&para;</a></h3>
+<p>紐づけるGatewayを設定する。</p>
+<p>Gatewayは共有のNamespaceに配置し、HTTPRouteはマイクロサービスのある個別のNamespaceに配置する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTPRoute</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">parentRefs</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingress-nginx</span>
+<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingress-nginx</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTPRoute</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">parentRefs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-ingressgateway</span>
 <span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-ingress</span>
-<span class="w">      </span><span class="nt">sectionName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
-<span class="w">  </span><span class="nt">hostnames</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;foo.example.com&quot;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://gateway-api.sigs.k8s.io/concepts/api-overview/?h=reencrypt#attaching-routes-to-gateways">https://gateway-api.sigs.k8s.io/concepts/api-overview/?h=reencrypt#attaching-routes-to-gateways</a></li>
+<li><a href="https://kubernetes.io/blog/2021/04/22/evolving-kubernetes-networking-with-the-gateway-api/#what-does-the-gateway-api-look-like">https://kubernetes.io/blog/2021/04/22/evolving-kubernetes-networking-with-the-gateway-api/#what-does-the-gateway-api-look-like</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="rules">rules<a class="headerlink" href="#rules" title="Permanent link">&para;</a></h3>
+<p>宛先のServiceを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTPRoute</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">matches</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PathPrefix</span>
-<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/foo</span>
-<span class="w">      </span><span class="nt">backendRefs</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">backendRefs</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://gateway-api.sigs.k8s.io/concepts/api-overview/?h=reencrypt#attaching-routes-to-gateways">https://gateway-api.sigs.k8s.io/concepts/api-overview/?h=reencrypt#attaching-routes-to-gateways</a></li>
+<li><a href="https://kubernetes.io/blog/2021/04/22/evolving-kubernetes-networking-with-the-gateway-api/#what-does-the-gateway-api-look-like">https://kubernetes.io/blog/2021/04/22/evolving-kubernetes-networking-with-the-gateway-api/#what-does-the-gateway-api-look-like</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="horizontalpodautoscaler">HorizontalPodAutoscaler<a class="headerlink" href="#horizontalpodautoscaler" title="Permanent link">&para;</a></h2>
 <h3 id="specmaxreplicasspecminreplicas">.spec.maxReplicas、spec.minReplicas<a class="headerlink" href="#specmaxreplicasspecminreplicas" title="Permanent link">&para;</a></h3>
@@ -34470,7 +34561,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </code></pre></div>
 <p><br></p>
 <h3 id="specrules">.spec.rules<a class="headerlink" href="#specrules" title="Permanent link">&para;</a></h3>
-<h4 id="rules">▼ rulesとは<a class="headerlink" href="#rules" title="Permanent link">&para;</a></h4>
+<h4 id="rules_1">▼ rulesとは<a class="headerlink" href="#rules_1" title="Permanent link">&para;</a></h4>
 <p>Serviceへのルーティングルールを設定する。</p>
 <p>複数のServiceにインバウンド通信を振り分けられる。</p>
 <p>Ingressを使用する場合、宛先のServiceは、ClusterIP Serviceとする。</p>
@@ -34678,9 +34769,32 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="specgatewayclassname">spec.gatewayClassName<a class="headerlink" href="#specgatewayclassname" title="Permanent link">&para;</a></h3>
 <h4 id="gatewayclassname">▼ gatewayClassNameとは<a class="headerlink" href="#gatewayclassname" title="Permanent link">&para;</a></h4>
 <p>GatewayClassの<code>.metadata.name</code>キーの値を設定する。</p>
+<p>Gatewayは共有のNamespaceに配置し、HTTPRouteはマイクロサービスのある個別のNamespaceに配置する。</p>
+<blockquote>
+<ul>
+<li><a href="https://gateway-api.sigs.k8s.io/concepts/api-overview/?h=reencrypt#attaching-routes-to-gateways">https://gateway-api.sigs.k8s.io/concepts/api-overview/?h=reencrypt#attaching-routes-to-gateways</a></li>
+<li><a href="https://kubernetes.io/blog/2021/04/22/evolving-kubernetes-networking-with-the-gateway-api/#what-does-the-gateway-api-look-like">https://kubernetes.io/blog/2021/04/22/evolving-kubernetes-networking-with-the-gateway-api/#what-does-the-gateway-api-look-like</a></li>
+</ul>
+</blockquote>
+<h4 id="nginx">▼ Nginxの場合<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h4>
+<p>Nginxを作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-ingress</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gatewayClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://gateway-api.sigs.k8s.io/api-types/gateway/">https://gateway-api.sigs.k8s.io/api-types/gateway/</a></li>
+<li><a href="https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/">https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/</a></li>
+</ul>
+</blockquote>
 <h4 id="istio">▼ istioの場合<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h4>
-<p>Istio IngressGatewayを作成する</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1beta1</span>
+<p>Istio IngressGatewayを作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
@@ -34695,8 +34809,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="istio-waypoint">▼ istio-waypointの場合<a class="headerlink" href="#istio-waypoint" title="Permanent link">&para;</a></h4>
-<p>Istioのwaypoint-proxyを作成する</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1beta1</span>
+<p>Istioのwaypoint-proxyを作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
@@ -34711,7 +34825,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </blockquote>
 <p><br></p>
 <h3 id="speclisteners">spec.listeners<a class="headerlink" href="#speclisteners" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1beta1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
@@ -34757,7 +34871,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="envoy">▼ Envoyの場合<a class="headerlink" href="#envoy" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1beta1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GatewayClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy-gateway</span>
@@ -34770,7 +34884,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="istio_1">▼ Istioの場合<a class="headerlink" href="#istio_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1alpha2</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GatewayClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio</span>
@@ -34787,7 +34901,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p>記入中...</p>
 <h4 id="aws-vpc-lattice">▼ AWS VPC Latticeの場合<a class="headerlink" href="#aws-vpc-lattice" title="Permanent link">&para;</a></h4>
 <p>AWS VPC Latticeをプロビジョニングする。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1beta1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GatewayClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amazon-vpc-lattice</span>
@@ -37422,7 +37536,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <p>古いPodをNodeから退避させる時に、Nodeで退避できる古いPodの最大数を設定する。</p>
 <p>これを設定しないと、特定のWorkload (例：Deployment、DaemonSet、StatefulSet、Jobなど) 配下のPodを全て退避してしまう問題が起こる。</p>
 <p>まずは<code>.spec.minAvailable</code>キーでスケジューリングさせられる新しいPodの個数を制御し、その後に<code>.spec.minAvailable</code>キーで退避できる古いPodの個数を制御する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">policy/v1beta1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">policy/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PodDisruptionBudget</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod-disruption-budget</span>
@@ -37441,7 +37555,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <p>古いPodをNodeから退避させる時に、他のNodeで新しいPodのスケジューリングの完了を待機してから、古いPodを退避させられる。</p>
 <p>このスケジューリングを待機する新しいPodの最低限数を設定する。</p>
 <p>まずは<code>.spec.minAvailable</code>キーでスケジューリングさせられる新しいPodの個数を制御し、その後に<code>.spec.minAvailable</code>キーで退避できる古いPodの個数を制御する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">policy/v1beta1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">policy/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PodDisruptionBudget</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod-disruption-budget</span>
@@ -37458,7 +37572,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <p><br></p>
 <h3 id="specselector_1">.spec.selector<a class="headerlink" href="#specselector_1" title="Permanent link">&para;</a></h3>
 <p>古いPodをNodeから退避させる時に、Podの<code>metadata.labels</code>キーを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">policy/v1beta1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">policy/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PodDisruptionBudget</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod-disruption-budget</span>
@@ -38632,7 +38746,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-08</span>
   </span>
 
     
