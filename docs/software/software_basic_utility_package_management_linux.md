@@ -462,6 +462,22 @@ No problems found
 
 <br>
 
+### cache
+
+#### ▼ prune
+
+不要なキャッシュファイルを削除する。
+
+ダウンロードに関する問題を解決できる場合がある。
+
+```bash
+$ mise cache prune
+```
+
+> - https://github.com/jdx/mise/issues/2962#issuecomment-2643564685
+
+<br>
+
 ### install
 
 #### ▼ installとは
@@ -499,6 +515,18 @@ $ mise trust
 > - https://mise.jdx.dev/cli/trust.html
 
 <br>
+
+### uninstall
+
+#### ▼ uninstallとは
+
+プラグインをアンインストールする。
+
+複数のバージョンをアンインストールするために、`--all`を有効化すると良い。
+
+```bash
+$ mise uninstall --all
+```
 
 ## 05. direnv
 

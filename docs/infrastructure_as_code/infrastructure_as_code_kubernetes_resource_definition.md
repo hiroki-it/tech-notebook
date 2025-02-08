@@ -374,7 +374,7 @@ kind: Config
 users:
   - user:
       exec:
-        apiVersion: client.authentication.k8s.io/v1beta1
+        apiVersion: client.authentication.k8s.io/v1
         args:
           - --region
           - ap-northeast-1
@@ -1059,30 +1059,58 @@ ports:
 
 ## HTTPRoute
 
-記入中...
+### parentRefs
+
+紐づけるGatewayを設定する。
+
+Gatewayは共有のNamespaceに配置し、HTTPRouteはマイクロサービスのある個別のNamespaceに配置する。
 
 ```yaml
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: http
-  namespace: foo
+  name: foo
 spec:
   parentRefs:
-    - name: gateway
+    - name: ingress-nginx
+      namespace: ingress-nginx
+```
+
+```yaml
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: foo
+spec:
+  parentRefs:
+    - name: istio-ingressgateway
       namespace: istio-ingress
-      sectionName: default
-  hostnames:
-    - "foo.example.com"
+```
+
+> - https://gateway-api.sigs.k8s.io/concepts/api-overview/?h=reencrypt#attaching-routes-to-gateways
+> - https://kubernetes.io/blog/2021/04/22/evolving-kubernetes-networking-with-the-gateway-api/#what-does-the-gateway-api-look-like
+
+<br>
+
+### rules
+
+宛先のServiceを設定する。
+
+```yaml
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: foo
+spec:
   rules:
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /foo
-      backendRefs:
-        - name: foo
+    - backendRefs:
+        - kind: Service
+          name: foo
           port: 80
 ```
+
+> - https://gateway-api.sigs.k8s.io/concepts/api-overview/?h=reencrypt#attaching-routes-to-gateways
+> - https://kubernetes.io/blog/2021/04/22/evolving-kubernetes-networking-with-the-gateway-api/#what-does-the-gateway-api-look-like
 
 <br>
 
@@ -1498,12 +1526,34 @@ spec:
 
 GatewayClassの`.metadata.name`キーの値を設定する。
 
-#### ▼ istioの場合
+Gatewayは共有のNamespaceに配置し、HTTPRouteはマイクロサービスのある個別のNamespaceに配置する。
 
-Istio IngressGatewayを作成する
+> - https://gateway-api.sigs.k8s.io/concepts/api-overview/?h=reencrypt#attaching-routes-to-gateways
+> - https://kubernetes.io/blog/2021/04/22/evolving-kubernetes-networking-with-the-gateway-api/#what-does-the-gateway-api-look-like
+
+#### ▼ Nginxの場合
+
+Nginxを作成する。
 
 ```yaml
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: gateway
+  namespace: istio-ingress
+spec:
+  gatewayClassName: istio
+```
+
+> - https://gateway-api.sigs.k8s.io/api-types/gateway/
+> - https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/
+
+#### ▼ istioの場合
+
+Istio IngressGatewayを作成する。
+
+```yaml
+apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: gateway
@@ -1517,10 +1567,10 @@ spec:
 
 #### ▼ istio-waypointの場合
 
-Istioのwaypoint-proxyを作成する
+Istioのwaypoint-proxyを作成する。
 
 ```yaml
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: gateway
@@ -1536,7 +1586,7 @@ spec:
 ### spec.listeners
 
 ```yaml
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: gateway
@@ -1586,7 +1636,7 @@ spec:
 #### ▼ Envoyの場合
 
 ```yaml
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1
 kind: GatewayClass
 metadata:
   name: envoy-gateway
@@ -1599,7 +1649,7 @@ spec:
 #### ▼ Istioの場合
 
 ```yaml
-apiVersion: gateway.networking.k8s.io/v1alpha2
+apiVersion: gateway.networking.k8s.io/v1
 kind: GatewayClass
 metadata:
   name: istio
@@ -1619,7 +1669,7 @@ spec:
 AWS VPC Latticeをプロビジョニングする。
 
 ```yaml
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1
 kind: GatewayClass
 metadata:
   name: amazon-vpc-lattice
@@ -4612,7 +4662,7 @@ data:
 まずは`.spec.minAvailable`キーでスケジューリングさせられる新しいPodの個数を制御し、その後に`.spec.minAvailable`キーで退避できる古いPodの個数を制御する。
 
 ```yaml
-apiVersion: policy/v1beta1
+apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
   name: foo-pod-disruption-budget
@@ -4635,7 +4685,7 @@ spec:
 まずは`.spec.minAvailable`キーでスケジューリングさせられる新しいPodの個数を制御し、その後に`.spec.minAvailable`キーで退避できる古いPodの個数を制御する。
 
 ```yaml
-apiVersion: policy/v1beta1
+apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
   name: foo-pod-disruption-budget
@@ -4654,7 +4704,7 @@ spec:
 古いPodをNodeから退避させる時に、Podの`metadata.labels`キーを設定する。
 
 ```yaml
-apiVersion: policy/v1beta1
+apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
   name: foo-pod-disruption-budget
