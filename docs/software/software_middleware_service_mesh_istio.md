@@ -482,13 +482,13 @@ Prometheus上でメトリクスをクエリすると、Istiodコントロール�
 | `destination_cluster`            | リクエストの宛先のKubernetes Cluster名を表す。                                    | `Kubernetes`                                                           |
 | `destination_service`            | リクエストの宛先のService名を表す。                                               | `foo-service`                                                          |
 | `destination_workload`           | リクエストの宛先のDeployment名を表す。                                            | `foo-deployment                                                        |
-| `destination_workload_namespace` | クライアント側のNamespace名を表す。                                               |                                                                        |
+| `destination_workload_namespace` | 送信元のNamespace名を表す。                                                       |                                                                        |
 | `reporter`                       | メトリクスの収集者を表す。`istio-proxy`コンテナかIngressGatewayのいずれかである。 | ・`destination` (`istio-proxy`コンテナ)<br>・`source` (IngressGateway) |
 | `response_flags`                 | Envoyの`%RESPONSE_FLAGS%`変数を表す。                                             | `-` (値なし)                                                           |
 | `response_code`                  | `istio-proxy`コンテナが返信したレスポンスコードの値を表す。                       | `200`、`404`、`0` (クライアントが切断した場合)                         |
-| `source_app`                     | クライアント側のコンテナ名を表す。                                                | `foo-container`                                                        |
-| `source_cluster`                 | クライアント側のKubernetes Cluster名を表す。                                      | `Kubernetes`                                                           |
-| `source_workload`                | クライアント側のDeployment名を表す。                                              | `foo-deployment`                                                       |
+| `source_app`                     | 送信元のコンテナ名を表す。                                                        | `foo-container`                                                        |
+| `source_cluster`                 | 送信元のKubernetes Cluster名を表す。                                              | `Kubernetes`                                                           |
+| `source_workload`                | 送信元のDeployment名を表す。                                                      | `foo-deployment`                                                       |
 
 > - https://istio.io/latest/docs/reference/config/metrics/#labels
 

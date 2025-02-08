@@ -743,7 +743,9 @@ spec:
 
 #### ▼ tls.mode
 
-Podへのルーティング時に使用するHTTPSプロトコルのタイプを設定する。
+DestinationRuleと宛先の間の暗号化方式を設定する。
+
+Gatewayにも似た設定があるが、あちらは送信元とGatewayの間の暗号化方式を設定する。
 
 **＊実装例＊**
 
@@ -1709,13 +1711,13 @@ spec:
 
 #### ▼ modeとは
 
-クライアントとGatewayの間の暗号化方式を設定する。
+送信元とGatewayの間の暗号化方式を設定する。
 
 > - https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings-TLSmode
 
 #### ▼ SIMPLE
 
-クライアントとGatewayの通信間で通常のHTTPSを実施する。
+送信元とGatewayの通信間で通常のHTTPSを実施する。
 
 クライアント証明書は不要にである。
 
@@ -1734,7 +1736,7 @@ spec:
 
 #### ▼ MUTUAL
 
-クライアントとGatewayの間で、Istioの作成していない証明書による相互TLSを実施する。
+送信元とGatewayの間で、Istioの作成していない証明書による相互TLSを実施する。
 
 **＊実装例＊**
 
@@ -1751,7 +1753,7 @@ spec:
 
 #### ▼ ISTIO_MUTUAL
 
-クライアントとGatewayの間で、Istioの作成した証明書による相互TLSを実施する。
+送信元とGatewayの間で、Istioの作成した証明書による相互TLSを実施する。
 
 `istio-proxy`コンテナとIstio EgressGatewayの間で相互TLSを実施する場合、これを使用する。
 
@@ -1770,9 +1772,11 @@ spec:
 
 #### ▼ PASSTHROUGH
 
-クライアントがHTTPS
+GatewayでHTTPSリクエストを受信した場合に、SSL証明書を検証をせずに、HTTPSをそのまま通過させる。
 
-`istio-proxy`コンテナとIstio EgressGatewayの間で相互TLSを実施する場合、これを使用する。
+つまり、Gatewayの宛先にSSL証明書を設定する必要がある。
+
+`PASSTHROUGH`以外のモードでは、GatewayでSSLを検証し、場合にとってはSSL終端となる。
 
 **＊実装例＊**
 
@@ -1788,6 +1792,7 @@ spec:
 ```
 
 > - https://www.danielstechblog.io/run-the-istio-ingress-gateway-with-tls-termination-and-tls-passthrough/amp/
+> - https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-sni-passthrough/#configure-an-ingress-gateway
 
 <br>
 

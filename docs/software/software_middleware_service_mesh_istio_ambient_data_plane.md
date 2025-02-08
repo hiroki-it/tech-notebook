@@ -50,7 +50,7 @@ waypoint-proxy Pod (L7) # Deployment配下のPodなので、任意のNodeにい�
 サービスメッシュ内のリクエストの経路は以下の通りである。
 
 ```yaml
-アプリコンテナのPod # クライアント側
+アプリコンテナのPod # 送信元
 ⬇⬆︎︎
 # L4ロードバランサー
 ztunnel Pod (L4) # DaemonSet配下のPodなので、Nodeごとにいる
@@ -65,7 +65,7 @@ waypoint-proxy Pod (L7) # Deployment配下のPodなので、任意のNodeにい�
 # L4ロードバランサー
 ztunnel Pod (L4) # DaemonSet配下のPodなので、Nodeごとにいる
 ⬇⬆︎︎
-アプリコンテナのPod # サーバー側
+アプリコンテナのPod # 宛先
 ```
 
 サービスメッシュ外へのリクエストの経路は以下の通りである。
@@ -452,7 +452,7 @@ waypoint-proxyは、サービスディスカバリーにより宛先情報を取
 
 waypoint-proxyは、Namespaceのリバースプロキシである。
 
-アウトバウンド通信には関与せず、サーバー側のリバースプロキシとしてのみ機能する。
+アウトバウンド通信には関与せず、宛先リバースプロキシとしてのみ機能する。
 
 ![istio_ambient-mesh_waypoint-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy_reverse-proxy.png)
 
