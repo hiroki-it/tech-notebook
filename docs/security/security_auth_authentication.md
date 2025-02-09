@@ -308,20 +308,6 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 ブラウザのストレージ機能であり、ブラウザを閉じると削除される。
 
-```javascript
-<script type="text/javascript">
-  window.sessionStorage.setItem("access_token", "*****")
-</script>
-```
-
-```javascript
-<script type="text/javascript">
-  window.sessionStorage.getItem("access_token")
-</script>
-```
-
-> - https://developer.mozilla.org/ja/docs/Web/API/Window/sessionStorage#%E4%BE%8B
-
 #### ▼ アクセストークンの保存
 
 セッションIDで認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。
@@ -330,7 +316,23 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 ブラウザを閉じると、ブラウザはSessionStorageのセッションIDを破棄し、認証はやり直しになる。
 
-> - https://developer.chrome.com/docs/devtools/storage/sessionstorage/
+```javascript
+<script>window.sessionStorage.setItem("access_token", "*****")</script>
+```
+
+```javascript
+<script>window.sessionStorage.getItem("access_token")</script>
+```
+
+```javascript
+<script>window.sessionStorage.removeItem("access_token")</script>
+```
+
+```javascript
+<script>window.sessionStorage.clear();</script>
+```
+
+> - https://developer.mozilla.org/ja/docs/Web/API/Window/sessionStorage#%E4%BE%8B
 > - https://zenn.dev/simsim/articles/3f3e043dd750e8
 > - https://magazine.techacademy.jp/magazine/32870
 > - https://mizumotok.hatenablog.jp/entry/2021/08/04/114431#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%A7%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%92%E4%BF%9D%E5%AD%98%E3%81%A7%E3%81%8D%E3%82%8B%E5%A0%B4%E6%89%80
@@ -351,21 +353,6 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 ブラウザのストレージ機能であり、明示的に削除しない限りは保存し続ける。
 
-```javascript
-<script type="text/javascript">
-  window.localStorage.setItem("access_token", "*****")
-</script>
-```
-
-```javascript
-<script type="text/javascript">
-  window.localStorage.getItem("access_token")
-</script>
-```
-
-> - https://developer.mozilla.org/ja/docs/Web/API/Window/localStorage#%E4%BE%8B
-> - https://qiita.com/masuda-sankosc/items/cff6131efd6e1b5138e6#%E6%A7%8B%E6%96%87
-
 #### ▼ アクセストークンの保存
 
 トークンで認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。
@@ -375,6 +362,25 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 ブラウザを閉じても、ブラウザはLocalStorageのトークンを破棄せず、認証の成功状態を維持できる。
 
 LocalStorageはSessionStorageと比べて保管期間が長いため、XSSの危険性がより高い。
+
+```javascript
+<script>window.localStorage.setItem("access_token", "*****")</script>
+```
+
+```javascript
+<script>window.localStorage.getItem("access_token")</script>
+```
+
+```javascript
+<script>window.localStorage.removeItem("access_token")</script>
+```
+
+```javascript
+<script>window.localStorage.clear();</script>
+```
+
+> - https://developer.mozilla.org/ja/docs/Web/API/Window/localStorage#%E4%BE%8B
+> - https://qiita.com/masuda-sankosc/items/cff6131efd6e1b5138e6#%E6%A7%8B%E6%96%87
 
 #### ▼ 閲覧履歴の保存
 

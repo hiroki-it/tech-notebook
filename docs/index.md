@@ -64,7 +64,7 @@ title: 【IT技術の知見】はじめに
 
 そのため、冗長な記載となることをご容赦いただけると幸いです🙇🏻‍
 
-> - https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/how-to-write.pdf>
+> - https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/how-to-write.pdf
 
 <br>
 

@@ -70,7 +70,7 @@ description: オブジェクト指向＠アーキテクチャの知見を記録�
 
 ソフトウェアの静的構造を設計するクラス図と、動的な振舞を設計するシーケンス図の間の整合性から、設計を妥当性をレビューする。
 
-> - https://www.sparxsystems.jp/bin/docs/ClassAndSeq.pdf>
+> - https://www.sparxsystems.jp/bin/docs/ClassAndSeq.pdf
 
 #### 4. デザインパターンの導入
 
@@ -96,7 +96,7 @@ UML、概念データモデリング、構造化分析、リアルタイム分�
 
 ![diagrams](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/diagrams.png)
 
-> - https://home.jeita.or.jp/page_file/20151221161211_Pkr0lJhRIV.pdf>
+> - https://home.jeita.or.jp/page_file/20151221161211_Pkr0lJhRIV.pdf
 
 <br>
 
