@@ -559,55 +559,11 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-TCPSettings
 
-#### ▼ outlierDetection.interval
-
-サーキットブレイカーの外れ値の計測間隔を設定する。
-
-間隔内で閾値以上のエラーが発生した場合に、サーキトブレイカーが起こる
-
-**＊実装例＊**
-
-```yaml
-apiVersion: networking.istio.io/v1
-kind: DestinationRule
-metadata:
-  name: foo-destination-rule
-spec:
-  trafficPolicy:
-    outlierDetection:
-      interval: 10s
-```
-
-> - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
-> - https://speakerdeck.com/nutslove/istioru-men?slide=25
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection
-
-#### ▼ outlierDetection.consecutiveGatewayErrors
-
-サーキットブレイカーを発動するエラーの閾値数を設定する
-
-**＊実装例＊**
-
-```yaml
-apiVersion: networking.istio.io/v1
-kind: DestinationRule
-metadata:
-  name: foo-destination-rule
-spec:
-  trafficPolicy:
-    outlierDetection:
-      consecutiveGatewayErrors: 3
-      interval: 10s
-      baseEjectionTime: 30s
-```
-
-> - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
-> - https://speakerdeck.com/nutslove/istioru-men?slide=25
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection
-
 #### ▼ outlierDetection.baseEjectionTime
 
-Podをルーティング先から切り離す秒数を設定する
+Podをルーティング先から切り離す秒数を設定する。
+
+`baseEjectionTime`後、宛先の正常性を確認し、もしエラーが発生していなければサーキットブレイカーを停止する。
 
 **＊実装例＊**
 
@@ -632,6 +588,10 @@ spec:
 
 #### ▼ outlierDetection.consecutiveGatewayErrors
 
+サーキットブレイカーを開始するGateway系ステータス (`502`、`503`、`504`)の閾値を設定する。
+
+似た設定として、`500`系ステータスの閾値を設定する`consecutive5xxErrors`キーがあるが、併用できる。
+
 **＊実装例＊**
 
 ```yaml
@@ -647,13 +607,19 @@ spec:
       baseEjectionTime: 30s
 ```
 
+> - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
+> - https://speakerdeck.com/nutslove/istioru-men?slide=25
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection-consecutive_gateway_errors
+
 #### ▼ outlierDetection.consecutive5xxErrors
 
 サーキットブレイカーを開始する`500`系ステータスの閾値を設定する。
 
+似た設定として、Gateway系ステータスの閾値を設定する`consecutiveGatewayErrors`キーがあるが、併用できる。
+
 **＊実装例＊**
 
-`500`系ステータスが3回以上発生したらサーキットブレイカーを開始する。
+`500`系ステータスが10回以上発生したらサーキットブレイカーを開始する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -667,6 +633,30 @@ spec:
 ```
 
 > - https://techblog.zozo.com/entry/zozotown-istio-circuit-breaker
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection-consecutive_5xx_errors
+
+#### ▼ outlierDetection.interval
+
+サーキットブレイカーの外れ値の計測間隔を設定する。
+
+間隔内で閾値以上のエラーが発生した場合に、サーキトブレイカーが起こる
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    outlierDetection:
+      interval: 10s
+```
+
+> - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
+> - https://speakerdeck.com/nutslove/istioru-men?slide=25
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection
 
 #### ▼ outlierDetection.minHealthPercent
 
@@ -1482,7 +1472,7 @@ spec:
               state: STATE_PREBIND
             - level: 6
               name: 6
-              # 3回応答がなければ終了する
+              # 10回応答がなければ終了する
               int_value: 3
               state: STATE_PREBIND
 ```
