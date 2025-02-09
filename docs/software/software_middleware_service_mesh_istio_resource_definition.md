@@ -503,7 +503,20 @@ spec:
   trafficPolicy:
     connectionPool:
       http:
+        # keep-aliveを無効にする
         maxRequestsPerConnection: 1
+```
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    connectionPool:
+      http:
+        maxRequestsPerConnection: 100
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings
@@ -523,7 +536,7 @@ spec:
   trafficPolicy:
     connectionPool:
       http:
-        http1MaxPendingRequests: 1
+        http1MaxPendingRequests: 100
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings
@@ -584,6 +597,8 @@ spec:
   trafficPolicy:
     outlierDetection:
       consecutiveGatewayErrors: 3
+      interval: 10s
+      baseEjectionTime: 30s
 ```
 
 > - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
@@ -596,7 +611,7 @@ Podをルーティング先から切り離す秒数を設定する
 
 **＊実装例＊**
 
-10秒以内にエラーがが3回以上発生したら、30秒間Podを切り離す。
+10秒以内にエラーが10回以上発生したらサーキットブレイカーを開始し、30秒間Podを切り離す。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -606,7 +621,7 @@ metadata:
 spec:
   trafficPolicy:
     outlierDetection:
-      consecutiveGatewayErrors: 3
+      consecutiveGatewayErrors: 10
       interval: 10s
       baseEjectionTime: 30s
 ```
@@ -614,6 +629,44 @@ spec:
 > - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
 > - https://speakerdeck.com/nutslove/istioru-men?slide=25
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection
+
+#### ▼ outlierDetection.consecutiveGatewayErrors
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    outlierDetection:
+      consecutiveGatewayErrors: 10
+      interval: 10s
+      baseEjectionTime: 30s
+```
+
+#### ▼ outlierDetection.consecutive5xxErrors
+
+サーキットブレイカーを開始する`500`系ステータスの閾値を設定する。
+
+**＊実装例＊**
+
+`500`系ステータスが3回以上発生したらサーキットブレイカーを開始する。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    outlierDetection:
+      consecutive5xxErrors: 10
+```
+
+> - https://techblog.zozo.com/entry/zozotown-istio-circuit-breaker
 
 #### ▼ outlierDetection.minHealthPercent
 
@@ -632,6 +685,8 @@ spec:
   trafficPolicy:
     outlierDetection:
       minHealthPercent: 90
+      interval: 10s
+      baseEjectionTime: 30s
 ```
 
 > - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
@@ -678,8 +733,8 @@ spec:
         distribute:
           - from: <リージョン名>/<ゾーン名>/*
             to:
-              "<リージョン名>/<ゾーン名>/*": 70
-              "<リージョン名>/<ゾーン名>/*": 30
+              "<リージョン名1>/<ゾーン名1>/*": 70
+              "<リージョン名2>/<ゾーン名2>/*": 30
 ```
 
 > - https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/distribute/
