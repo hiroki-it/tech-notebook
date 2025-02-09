@@ -29623,6 +29623,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="outlierdetectionbaseejectiontime">▼ outlierDetection.baseEjectionTime<a class="headerlink" href="#outlierdetectionbaseejectiontime" title="Permanent link">&para;</a></h4>
 <p>Podをルーティング先から切り離す秒数を設定する。</p>
 <p><code>baseEjectionTime</code>後、宛先の正常性を確認し、もしエラーが発生していなければサーキットブレイカーを停止する。</p>
+<p>どのくらいの期間で10回以上を判定するかは、<code>interval</code>キーで設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>10秒以内にエラーが10回以上発生したらサーキットブレイカーを開始し、30秒間Podを切り離す。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -29646,6 +29647,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="outlierdetectionconsecutivegatewayerrors">▼ outlierDetection.consecutiveGatewayErrors<a class="headerlink" href="#outlierdetectionconsecutivegatewayerrors" title="Permanent link">&para;</a></h4>
 <p>サーキットブレイカーを開始するGateway系ステータス (<code>502</code>、<code>503</code>、<code>504</code>)の閾値を設定する。</p>
 <p>似た設定として、<code>500</code>系ステータスの閾値を設定する<code>consecutive5xxErrors</code>キーがあるが、併用できる。</p>
+<p>どのくらいの期間で10回以上を判定するかは、<code>interval</code>キーで設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -29668,6 +29670,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="outlierdetectionconsecutive5xxerrors">▼ outlierDetection.consecutive5xxErrors<a class="headerlink" href="#outlierdetectionconsecutive5xxerrors" title="Permanent link">&para;</a></h4>
 <p>サーキットブレイカーを開始する<code>500</code>系ステータスの閾値を設定する。</p>
 <p>似た設定として、Gateway系ステータスの閾値を設定する<code>consecutiveGatewayErrors</code>キーがあるが、併用できる。</p>
+<p>どのくらいの期間で10回以上を判定するかは、<code>interval</code>キーで設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p><code>500</code>系ステータスが10回以上発生したらサーキットブレイカーを開始する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -29678,6 +29681,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">outlierDetection</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">consecutive5xxErrors</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
+<span class="w">      </span><span class="nt">baseEjectionTime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -29687,7 +29692,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="outlierdetectioninterval">▼ outlierDetection.interval<a class="headerlink" href="#outlierdetectioninterval" title="Permanent link">&para;</a></h4>
 <p>サーキットブレイカーの外れ値の計測間隔を設定する。</p>
-<p>間隔内で閾値以上のエラーが発生した場合に、サーキトブレイカーが起こる</p>
+<p>間隔内で閾値以上のエラーが発生した場合に、サーキトブレイカーが起こる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
