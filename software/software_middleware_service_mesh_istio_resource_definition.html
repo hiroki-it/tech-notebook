@@ -5527,9 +5527,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#outlierdetectioninterval" class="md-nav__link">
+  <a href="#outlierdetectionbaseejectiontime" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ outlierDetection.interval
+      ▼ outlierDetection.baseEjectionTime
     </span>
   </a>
   
@@ -5545,27 +5545,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#outlierdetectionbaseejectiontime" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ outlierDetection.baseEjectionTime
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#outlierdetectionconsecutivegatewayerrors_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ outlierDetection.consecutiveGatewayErrors
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#outlierdetectionconsecutive5xxerrors" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ outlierDetection.consecutive5xxErrors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outlierdetectioninterval" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ outlierDetection.interval
     </span>
   </a>
   
@@ -27685,9 +27676,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#outlierdetectioninterval" class="md-nav__link">
+  <a href="#outlierdetectionbaseejectiontime" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ outlierDetection.interval
+      ▼ outlierDetection.baseEjectionTime
     </span>
   </a>
   
@@ -27703,27 +27694,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#outlierdetectionbaseejectiontime" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ outlierDetection.baseEjectionTime
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#outlierdetectionconsecutivegatewayerrors_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ outlierDetection.consecutiveGatewayErrors
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#outlierdetectionconsecutive5xxerrors" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ outlierDetection.consecutive5xxErrors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outlierdetectioninterval" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ outlierDetection.interval
     </span>
   </a>
   
@@ -29638,49 +29620,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-TCPSettings">https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-TCPSettings</a></li>
 </ul>
 </blockquote>
-<h4 id="outlierdetectioninterval">▼ outlierDetection.interval<a class="headerlink" href="#outlierdetectioninterval" title="Permanent link">&para;</a></h4>
-<p>サーキットブレイカーの外れ値の計測間隔を設定する。</p>
-<p>間隔内で閾値以上のエラーが発生した場合に、サーキトブレイカーが起こる</p>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">outlierDetection</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9">https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9</a></li>
-<li><a href="https://speakerdeck.com/nutslove/istioru-men?slide=25">https://speakerdeck.com/nutslove/istioru-men?slide=25</a></li>
-<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection">https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection</a></li>
-</ul>
-</blockquote>
-<h4 id="outlierdetectionconsecutivegatewayerrors">▼ outlierDetection.consecutiveGatewayErrors<a class="headerlink" href="#outlierdetectionconsecutivegatewayerrors" title="Permanent link">&para;</a></h4>
-<p>サーキットブレイカーを発動するエラーの閾値数を設定する</p>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">outlierDetection</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">consecutiveGatewayErrors</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
-<span class="w">      </span><span class="nt">baseEjectionTime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9">https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9</a></li>
-<li><a href="https://speakerdeck.com/nutslove/istioru-men?slide=25">https://speakerdeck.com/nutslove/istioru-men?slide=25</a></li>
-<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection">https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection</a></li>
-</ul>
-</blockquote>
 <h4 id="outlierdetectionbaseejectiontime">▼ outlierDetection.baseEjectionTime<a class="headerlink" href="#outlierdetectionbaseejectiontime" title="Permanent link">&para;</a></h4>
-<p>Podをルーティング先から切り離す秒数を設定する</p>
+<p>Podをルーティング先から切り離す秒数を設定する。</p>
+<p><code>baseEjectionTime</code>後、宛先の正常性を確認し、もしエラーが発生していなければサーキットブレイカーを停止する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>10秒以内にエラーが10回以上発生したらサーキットブレイカーを開始し、30秒間Podを切り離す。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -29701,7 +29643,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection">https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection</a></li>
 </ul>
 </blockquote>
-<h4 id="outlierdetectionconsecutivegatewayerrors_1">▼ outlierDetection.consecutiveGatewayErrors<a class="headerlink" href="#outlierdetectionconsecutivegatewayerrors_1" title="Permanent link">&para;</a></h4>
+<h4 id="outlierdetectionconsecutivegatewayerrors">▼ outlierDetection.consecutiveGatewayErrors<a class="headerlink" href="#outlierdetectionconsecutivegatewayerrors" title="Permanent link">&para;</a></h4>
+<p>サーキットブレイカーを開始するGateway系ステータス (<code>502</code>、<code>503</code>、<code>504</code>)の閾値を設定する。</p>
+<p>似た設定として、<code>500</code>系ステータスの閾値を設定する<code>consecutive5xxErrors</code>キーがあるが、併用できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -29714,10 +29658,18 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
 <span class="w">      </span><span class="nt">baseEjectionTime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9">https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9</a></li>
+<li><a href="https://speakerdeck.com/nutslove/istioru-men?slide=25">https://speakerdeck.com/nutslove/istioru-men?slide=25</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection-consecutive_gateway_errors">https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection-consecutive_gateway_errors</a></li>
+</ul>
+</blockquote>
 <h4 id="outlierdetectionconsecutive5xxerrors">▼ outlierDetection.consecutive5xxErrors<a class="headerlink" href="#outlierdetectionconsecutive5xxerrors" title="Permanent link">&para;</a></h4>
 <p>サーキットブレイカーを開始する<code>500</code>系ステータスの閾値を設定する。</p>
+<p>似た設定として、Gateway系ステータスの閾値を設定する<code>consecutiveGatewayErrors</code>キーがあるが、併用できる。</p>
 <p><strong>＊実装例＊</strong></p>
-<p><code>500</code>系ステータスが3回以上発生したらサーキットブレイカーを開始する。</p>
+<p><code>500</code>系ステータスが10回以上発生したらサーキットブレイカーを開始する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -29730,6 +29682,27 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <blockquote>
 <ul>
 <li><a href="https://techblog.zozo.com/entry/zozotown-istio-circuit-breaker">https://techblog.zozo.com/entry/zozotown-istio-circuit-breaker</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection-consecutive_5xx_errors">https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection-consecutive_5xx_errors</a></li>
+</ul>
+</blockquote>
+<h4 id="outlierdetectioninterval">▼ outlierDetection.interval<a class="headerlink" href="#outlierdetectioninterval" title="Permanent link">&para;</a></h4>
+<p>サーキットブレイカーの外れ値の計測間隔を設定する。</p>
+<p>間隔内で閾値以上のエラーが発生した場合に、サーキトブレイカーが起こる</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">outlierDetection</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9">https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9</a></li>
+<li><a href="https://speakerdeck.com/nutslove/istioru-men?slide=25">https://speakerdeck.com/nutslove/istioru-men?slide=25</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection">https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection</a></li>
 </ul>
 </blockquote>
 <h4 id="outlierdetectionminhealthpercent">▼ outlierDetection.minHealthPercent<a class="headerlink" href="#outlierdetectionminhealthpercent" title="Permanent link">&para;</a></h4>
@@ -30458,7 +30431,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">              </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">STATE_PREBIND</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
 <span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
-<span class="w">              </span><span class="c1"># 3回応答がなければ終了する</span>
+<span class="w">              </span><span class="c1"># 10回応答がなければ終了する</span>
 <span class="w">              </span><span class="nt">int_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="w">              </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">STATE_PREBIND</span>
 </code></pre></div>
