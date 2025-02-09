@@ -316,20 +316,31 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 ブラウザを閉じると、ブラウザはSessionStorageのセッションIDを破棄し、認証はやり直しになる。
 
-```javascript
-<script>window.sessionStorage.setItem("access_token", "*****")</script>
+```html
+<!-- string型で値を設定する必要がある -->
+<script>
+  window.sessionStorage.setItem("access_token", "*****");
+</script>
 ```
 
-```javascript
-<script>window.sessionStorage.getItem("access_token")</script>
+```html
+<script>
+  const access_token = window.sessionStorage.getItem("access_token");
+  const header = new Headers();
+  header.set("Authorization", "Bearer " + access_token);
+</script>
 ```
 
-```javascript
-<script>window.sessionStorage.removeItem("access_token")</script>
+```html
+<script>
+  window.sessionStorage.removeItem("access_token");
+</script>
 ```
 
-```javascript
-<script>window.sessionStorage.clear();</script>
+```html
+<script>
+  window.sessionStorage.clear();
+</script>
 ```
 
 > - https://developer.mozilla.org/ja/docs/Web/API/Window/sessionStorage#%E4%BE%8B
@@ -363,20 +374,30 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 LocalStorageはSessionStorageと比べて保管期間が長いため、XSSの危険性がより高い。
 
-```javascript
-<script>window.localStorage.setItem("access_token", "*****")</script>
+```html
+<script>
+  window.localStorage.setItem("access_token", "*****");
+</script>
 ```
 
-```javascript
-<script>window.localStorage.getItem("access_token")</script>
+```html
+<script>
+  const access_token = window.localStorage.getItem("access_token");
+  const header = new Headers();
+  header.set("Authorization", "Bearer " + access_token);
+</script>
 ```
 
-```javascript
-<script>window.localStorage.removeItem("access_token")</script>
+```html
+<script>
+  window.localStorage.removeItem("access_token");
+</script>
 ```
 
-```javascript
-<script>window.localStorage.clear();</script>
+```html
+<script>
+  window.localStorage.clear();
+</script>
 ```
 
 > - https://developer.mozilla.org/ja/docs/Web/API/Window/localStorage#%E4%BE%8B
