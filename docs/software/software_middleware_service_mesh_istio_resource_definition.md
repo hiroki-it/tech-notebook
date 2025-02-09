@@ -523,7 +523,9 @@ spec:
 
 #### ▼ connectionPool.http.http1MaxPendingRequests
 
-記入中...
+キューに入れられるHTTPリクエストのレートリミットを設定する。
+
+キューを超えるHTTPリクエストに対しては、`503`ステータスを返信する。
 
 **＊実装例＊**
 
@@ -540,8 +542,13 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings
+> - https://qiita.com/sonq/items/4cee6f85f91ea7dfcbbf#http1maxpendingrequests
 
 #### ▼ connectionPool.tcp.maxConnections
+
+キューに入れられるTCPリクエストのレートリミットを設定する。
+
+キューを超えるTCPリクエストに対しては、レスポンスを返信できるまで待機する。
 
 **＊実装例＊**
 
@@ -558,6 +565,7 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-TCPSettings
+> - https://qiita.com/sonq/items/4cee6f85f91ea7dfcbbf#maxconnections
 
 #### ▼ outlierDetection.baseEjectionTime
 
