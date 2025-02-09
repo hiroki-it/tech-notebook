@@ -308,7 +308,21 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 ブラウザのストレージ機能であり、ブラウザを閉じると削除される。
 
-#### ▼ SessionStorage
+```javascript
+<script type="text/javascript">
+  window.sessionStorage.setItem("access_token", "*****")
+</script>
+```
+
+```javascript
+<script type="text/javascript">
+  window.sessionStorage.getItem("access_token")
+</script>
+```
+
+> - https://developer.mozilla.org/ja/docs/Web/API/Window/sessionStorage#%E4%BE%8B
+
+#### ▼ アクセストークンの保存
 
 セッションIDで認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。
 
@@ -349,15 +363,8 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 </script>
 ```
 
+> - https://developer.mozilla.org/ja/docs/Web/API/Window/localStorage#%E4%BE%8B
 > - https://qiita.com/masuda-sankosc/items/cff6131efd6e1b5138e6#%E6%A7%8B%E6%96%87
-
-#### ▼ 閲覧履歴の保存
-
-閲覧した情報をLocalStorageに保存しておく。
-
-次回のログイン時に、最近閲覧した情報として表示する。
-
-> - https://webliker.info/web-skill/how-to-use-localstrage/
 
 #### ▼ アクセストークンの保存
 
@@ -368,6 +375,14 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 ブラウザを閉じても、ブラウザはLocalStorageのトークンを破棄せず、認証の成功状態を維持できる。
 
 LocalStorageはSessionStorageと比べて保管期間が長いため、XSSの危険性がより高い。
+
+#### ▼ 閲覧履歴の保存
+
+閲覧した情報をLocalStorageに保存しておく。
+
+次回のログイン時に、最近閲覧した情報として表示する。
+
+> - https://webliker.info/web-skill/how-to-use-localstrage/
 
 #### ▼ 場所
 
