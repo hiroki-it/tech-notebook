@@ -13644,7 +13644,7 @@
           <li class="md-nav__item">
   <a href="#cookie_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Cookieディレクトリ
+      ▼ Cookieディレクトリとは
     </span>
   </a>
   
@@ -13661,6 +13661,15 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      セッションストレージツール (例：Redis)
+    </span>
+  </a>
   
 </li>
         
@@ -26376,7 +26385,7 @@
           <li class="md-nav__item">
   <a href="#cookie_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Cookieディレクトリ
+      ▼ Cookieディレクトリとは
     </span>
   </a>
   
@@ -26393,6 +26402,15 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      セッションストレージツール (例：Redis)
+    </span>
+  </a>
   
 </li>
         
@@ -26793,6 +26811,7 @@
 <h2 id="06">06. 認証情報の保管の種類<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="sessionstorage">SessionStorage<a class="headerlink" href="#sessionstorage" title="Permanent link">&para;</a></h3>
 <h4 id="sessionstorage_1">▼ SessionStorageとは<a class="headerlink" href="#sessionstorage_1" title="Permanent link">&para;</a></h4>
+<p>フロントエンドアプリケーションがCSRの場合に採用できる。</p>
 <p>ブラウザのストレージ機能であり、ブラウザを閉じると削除される。</p>
 <h4 id="_11">▼ アクセストークンの保存<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>セッションIDで認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。</p>
@@ -26836,6 +26855,7 @@
 <p><br></p>
 <h3 id="localstorage">LocalStorage<a class="headerlink" href="#localstorage" title="Permanent link">&para;</a></h3>
 <h4 id="localstorage_1">▼ LocalStorageとは<a class="headerlink" href="#localstorage_1" title="Permanent link">&para;</a></h4>
+<p>フロントエンドアプリケーションがCSRの場合に採用できる。</p>
 <p>ブラウザのストレージ機能であり、明示的に削除しない限りは保存し続ける。</p>
 <h4 id="_13">▼ アクセストークンの保存<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>トークンで認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。</p>
@@ -26892,13 +26912,15 @@
 </blockquote>
 <p><br></p>
 <h3 id="cookie_1">ローカルマシンの<code>Cookie</code>ディレクトリ<a class="headerlink" href="#cookie_1" title="Permanent link">&para;</a></h3>
-<h4 id="cookie_2">▼ <code>Cookie</code>ディレクトリ<a class="headerlink" href="#cookie_2" title="Permanent link">&para;</a></h4>
+<h4 id="cookie_2">▼ <code>Cookie</code>ディレクトリとは<a class="headerlink" href="#cookie_2" title="Permanent link">&para;</a></h4>
+<p>フロントエンドアプリケーションがCSRまたはSSRの場合に採用できる。</p>
 <p>トークン (例：アクセストークン、IDトークンなど) で認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。</p>
 <p>ブラウザは、ローカルマシンの<code>Cookie</code>ディレクトリにトークンを保管する。</p>
 <p>ブラウザを閉じても、ブラウザはローカルマシンのディレクトリのトークンを破棄せず、認証の成功状態を維持できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://developer.chrome.com/docs/devtools/storage/cookies/">https://developer.chrome.com/docs/devtools/storage/cookies/</a></li>
+<li><a href="https://zenn.dev/link/comments/90928f69712b11">https://zenn.dev/link/comments/90928f69712b11</a></li>
 </ul>
 </blockquote>
 <h4 id="_16">▼ 場所<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
@@ -26907,6 +26929,14 @@
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/EasyCoder/items/8ce7dfd75d05079be9d7#cookie%E3%81%AF%E3%81%A9%E3%81%93%E3%81%AB%E4%BF%9D%E5%AD%98%E3%81%95%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B">https://qiita.com/EasyCoder/items/8ce7dfd75d05079be9d7#cookie%E3%81%AF%E3%81%A9%E3%81%93%E3%81%AB%E4%BF%9D%E5%AD%98%E3%81%95%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="redis">セッションストレージツール (例：Redis)<a class="headerlink" href="#redis" title="Permanent link">&para;</a></h3>
+<p>フロントエンドアプリケーションがSSRの場合に採用できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://redis.io/solutions/authentication-token-storage/">https://redis.io/solutions/authentication-token-storage/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
