@@ -302,9 +302,9 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 ## 06. 認証情報の保管の種類
 
-### SessionStorage
+### ブラウザのSessionStorage
 
-#### ▼ SessionStorageとは
+#### ▼ ブラウザのSessionStorageとは
 
 ブラウザのストレージ機能であり、ブラウザを閉じると削除される。
 
@@ -362,9 +362,9 @@ SSRでは、レンダリング後の処理に関与できないため、ブラ�
 
 <br>
 
-### LocalStorage
+### ブラウザのLocalStorage
 
-#### ▼ LocalStorageとは
+#### ▼ ブラウザのLocalStorageとは
 
 ブラウザのストレージ機能であり、明示的に削除しない限りは保存し続ける。
 
@@ -434,11 +434,11 @@ LocalStorageはSessionStorageと比べて保管期間が長いため、XSSの危
 
 <br>
 
-### ローカルマシンの`Cookie`ディレクトリ
+### クライアント側の`Cookie`ディレクトリ
 
 #### ▼ `Cookie`ディレクトリとは
 
-ホストPCのストレージ機能であり、明示的に削除しない限りは保存し続ける。
+クライアント側のPCのストレージ機能であり、明示的に削除しない限りは保存し続ける。
 
 > - https://developer.chrome.com/docs/devtools/storage/cookies/
 
@@ -465,7 +465,15 @@ LocalStorageはSessionStorageと比べて保管期間が長いため、XSSの危
 
 <br>
 
-### セッションストレージツール (例：Redis)
+### サーバー側のアプリケーションのセッション
+
+フロントエンドアプリケーションがSSRの場合に採用できる。
+
+アプリケーションのセッションファイル上で管理する。
+
+<br>
+
+### サーバー側のセッションストレージツール (例：Redis)
 
 フロントエンドアプリケーションがSSRの場合に採用できる。
 
