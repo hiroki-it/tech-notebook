@@ -287,3 +287,20 @@ def foo():
 ```
 
 <br>
+
+## 05. 関数
+
+### print
+
+Pythonでは、`print`関数の結果を即時に出力するわけではない。
+
+`flush`を有効化すると、即時に出力できる。
+
+```python
+print("foo", flush=True)
+```
+
+> - https://stackoverflow.com/questions/230751/how-can-i-flush-the-output-of-the-print-function
+> - https://jitaku.work/it/language/python/print-flush/
+
+<br>
