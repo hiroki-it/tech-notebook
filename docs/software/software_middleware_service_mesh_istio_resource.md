@@ -289,6 +289,17 @@ Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのク
 
 <br>
 
+### 送信元PodとIstio EgressGateway間の通信
+
+- HTTP
+- HTTPS
+- HTTPS (相互TLS)
+
+> - https://istio.io/v1.16/blog/2018/egress-monitoring-access-control/#comparison-with-https-egress-traffic-control
+> - https://cloud.google.com/service-mesh/docs/security/egress-gateway-gke-tutorial?hl=ja
+
+<br>
+
 ## 03. VirtualService
 
 ### VirtualServiceとは

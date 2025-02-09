@@ -304,6 +304,10 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 ### SessionStorage
 
+#### ▼ SessionStorageとは
+
+ブラウザのストレージ機能であり、ブラウザを閉じると削除される。
+
 #### ▼ SessionStorage
 
 セッションIDで認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。
@@ -330,6 +334,18 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 ### LocalStorage
 
 #### ▼ LocalStorageとは
+
+ブラウザのストレージ機能であり、明示的に削除しない限りは保存し続ける。
+
+#### ▼ 閲覧履歴の保存
+
+閲覧した情報をローカルストレージに保存しておく。
+
+次回のログイン時に、最近閲覧した情報として表示する。
+
+> - https://webliker.info/web-skill/how-to-use-localstrage/
+
+#### ▼ アクセストークンの保存
 
 トークンで認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。
 

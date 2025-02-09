@@ -1778,6 +1778,8 @@ GatewayでHTTPSリクエストを受信した場合に、SSL証明書を検証�
 
 `PASSTHROUGH`以外のモードでは、GatewayでSSLを検証し、場合にとってはSSL終端となる。
 
+注意点として、Gatewayは受信したHTTPSをTCPプロトコルとして処理するため、HTTPヘッダーやパスを使用してトラフィックを制御できない。
+
 **＊実装例＊**
 
 ```yaml
@@ -1791,6 +1793,7 @@ spec:
         mode: PASSTHROUGH
 ```
 
+> - https://cloud.google.com/service-mesh/docs/security/egress-gateway-gke-tutorial?hl=ja#pass-through_of_httpstls_connections
 > - https://www.danielstechblog.io/run-the-istio-ingress-gateway-with-tls-termination-and-tls-passthrough/amp/
 > - https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-sni-passthrough/#configure-an-ingress-gateway
 
