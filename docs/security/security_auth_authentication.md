@@ -337,9 +337,23 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 ブラウザのストレージ機能であり、明示的に削除しない限りは保存し続ける。
 
+```javascript
+<script type="text/javascript">
+  window.localStorage.setItem("access_token", "*****")
+</script>
+```
+
+```javascript
+<script type="text/javascript">
+  window.localStorage.getItem("access_token")
+</script>
+```
+
+> - https://qiita.com/masuda-sankosc/items/cff6131efd6e1b5138e6#%E6%A7%8B%E6%96%87
+
 #### ▼ 閲覧履歴の保存
 
-閲覧した情報をローカルストレージに保存しておく。
+閲覧した情報をLocalStorageに保存しておく。
 
 次回のログイン時に、最近閲覧した情報として表示する。
 

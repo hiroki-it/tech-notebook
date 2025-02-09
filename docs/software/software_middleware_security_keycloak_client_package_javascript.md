@@ -56,14 +56,15 @@ keycloak.init({onLoad: "login-required"}).then((auth) => {
   } else {
     console.log("Authenticated");
     console.log(keycloak);
-    // LocalStorageにトークンを設定する
-    localStorage.setItem("token", keycloak.token);
+    // LocalStorageにアクセストークンを設定する
+    // もしすでにアクセストークンがある場合、上書きする
+    localStorage.setItem("access_token", keycloak.token);
   }
 });
 
 const authLink = setContext((_, {headers}) => {
-  // LocalStorageからトークンを取得する
-  const token = localStorage.getItem("token");
+  // LocalStorageからアクセストークンを取得する
+  const token = localStorage.getItem("access_token");
 
   return {
     headers: {
