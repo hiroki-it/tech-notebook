@@ -13653,6 +13653,15 @@
           <li class="md-nav__item">
   <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
+      ▼ アクセストークンの保存
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
       ▼ 場所
     </span>
   </a>
@@ -13699,7 +13708,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 二段階認証とは
     </span>
@@ -13723,7 +13732,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 二要素認証とは
     </span>
@@ -13747,7 +13756,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
+  <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 多要素認証とは
     </span>
@@ -26394,6 +26403,15 @@
           <li class="md-nav__item">
   <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
+      ▼ アクセストークンの保存
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
       ▼ 場所
     </span>
   </a>
@@ -26440,7 +26458,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 二段階認証とは
     </span>
@@ -26464,7 +26482,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 二要素認証とは
     </span>
@@ -26488,7 +26506,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
+  <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 多要素認証とは
     </span>
@@ -26811,9 +26829,10 @@
 <h2 id="06">06. 認証情報の保管の種類<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="sessionstorage">SessionStorage<a class="headerlink" href="#sessionstorage" title="Permanent link">&para;</a></h3>
 <h4 id="sessionstorage_1">▼ SessionStorageとは<a class="headerlink" href="#sessionstorage_1" title="Permanent link">&para;</a></h4>
-<p>フロントエンドアプリケーションがCSRの場合に採用できる。</p>
 <p>ブラウザのストレージ機能であり、ブラウザを閉じると削除される。</p>
 <h4 id="_11">▼ アクセストークンの保存<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>レンダリング後にブラウザから取得したアクセストークンを設定する必要があるため、フロントエンドアーキテクチャがCSRの場合に採用できる。</p>
+<p>SSRでは、レンダリング後の処理に関与できないため、ブラウザのアクセストークンをSSRのアプリケーションに渡せない。</p>
 <p>セッションIDで認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。</p>
 <p>ブラウザは、SessionStorageにセッションIDを保管する。</p>
 <p>ブラウザを閉じると、ブラウザはSessionStorageのセッションIDを破棄し、認証はやり直しになる。</p>
@@ -26855,9 +26874,10 @@
 <p><br></p>
 <h3 id="localstorage">LocalStorage<a class="headerlink" href="#localstorage" title="Permanent link">&para;</a></h3>
 <h4 id="localstorage_1">▼ LocalStorageとは<a class="headerlink" href="#localstorage_1" title="Permanent link">&para;</a></h4>
-<p>フロントエンドアプリケーションがCSRの場合に採用できる。</p>
 <p>ブラウザのストレージ機能であり、明示的に削除しない限りは保存し続ける。</p>
 <h4 id="_13">▼ アクセストークンの保存<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>レンダリング後にブラウザから取得したアクセストークンを設定する必要があるため、フロントエンドアーキテクチャがCSRの場合に採用できる。</p>
+<p>SSRでは、レンダリング後の処理に関与できないため、ブラウザのアクセストークンをSSRのアプリケーションに渡せない。</p>
 <p>トークンで認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。</p>
 <p>ブラウザは、LocalStorageにトークンを保管する。</p>
 <p>ブラウザを閉じても、ブラウザはLocalStorageのトークンを破棄せず、認証の成功状態を維持できる。</p>
@@ -26913,17 +26933,24 @@
 <p><br></p>
 <h3 id="cookie_1">ローカルマシンの<code>Cookie</code>ディレクトリ<a class="headerlink" href="#cookie_1" title="Permanent link">&para;</a></h3>
 <h4 id="cookie_2">▼ <code>Cookie</code>ディレクトリとは<a class="headerlink" href="#cookie_2" title="Permanent link">&para;</a></h4>
+<p>ホストPCのストレージ機能であり、明示的に削除しない限りは保存し続ける。</p>
+<blockquote>
+<ul>
+<li><a href="https://developer.chrome.com/docs/devtools/storage/cookies/">https://developer.chrome.com/docs/devtools/storage/cookies/</a></li>
+</ul>
+</blockquote>
+<h4 id="_16">▼ アクセストークンの保存<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>フロントエンドアプリケーションがCSRまたはSSRの場合に採用できる。</p>
 <p>トークン (例：アクセストークン、IDトークンなど) で認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。</p>
 <p>ブラウザは、ローカルマシンの<code>Cookie</code>ディレクトリにトークンを保管する。</p>
 <p>ブラウザを閉じても、ブラウザはローカルマシンのディレクトリのトークンを破棄せず、認証の成功状態を維持できる。</p>
 <blockquote>
 <ul>
-<li><a href="https://developer.chrome.com/docs/devtools/storage/cookies/">https://developer.chrome.com/docs/devtools/storage/cookies/</a></li>
 <li><a href="https://zenn.dev/link/comments/90928f69712b11">https://zenn.dev/link/comments/90928f69712b11</a></li>
+<li><a href="https://zenn.dev/marton/articles/67f7ec30cda716">https://zenn.dev/marton/articles/67f7ec30cda716</a></li>
 </ul>
 </blockquote>
-<h4 id="_16">▼ 場所<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<h4 id="_17">▼ 場所<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
 <p>ローカルマシンがMacOSであれば、Chromeは<code>/Users/&lt;ユーザー名&gt;/Library/Application Support/Google/Chrome/Default/Cookies</code>ディレクトリに<code>Cookie</code>ヘッダーの値を保管する。</p>
 <blockquote>
@@ -26942,7 +26969,7 @@
 <p><br></p>
 <h2 id="07">07. 複数の認証の組み合わせ<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <h3 id="tsvtwo-step-verification">TSV：Two Step Verification (二段階認証)<a class="headerlink" href="#tsvtwo-step-verification" title="Permanent link">&para;</a></h3>
-<h4 id="_17">▼ 二段階認証とは<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<h4 id="_18">▼ 二段階認証とは<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p><code>2</code>個の認証方法を設定し、クライアントを照合する。</p>
 <table>
 <thead>
@@ -26982,7 +27009,7 @@
 </table>
 <p><br></p>
 <h3 id="tfatwo-factor-authorization">TFA：Two Factor Authorization (二要素認証)<a class="headerlink" href="#tfatwo-factor-authorization" title="Permanent link">&para;</a></h3>
-<h4 id="_18">▼ 二要素認証とは<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<h4 id="_19">▼ 二要素認証とは<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>二段階認証のうちで特に、認証時に異なる要素の方法を使用して、段階的にクライアントを照合すること方法のこと。</p>
 <table>
 <thead>
@@ -27029,7 +27056,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="mfamultiple-factor-authorization">MFA：Multiple Factor Authorization (多要素認証)<a class="headerlink" href="#mfamultiple-factor-authorization" title="Permanent link">&para;</a></h3>
-<h4 id="_19">▼ 多要素認証とは<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<h4 id="_20">▼ 多要素認証とは<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <p><br></p>
 
