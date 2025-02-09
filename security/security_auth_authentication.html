@@ -26818,8 +26818,21 @@
 <h3 id="localstorage">LocalStorage<a class="headerlink" href="#localstorage" title="Permanent link">&para;</a></h3>
 <h4 id="localstorage_1">▼ LocalStorageとは<a class="headerlink" href="#localstorage_1" title="Permanent link">&para;</a></h4>
 <p>ブラウザのストレージ機能であり、明示的に削除しない限りは保存し続ける。</p>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="nx">script</span><span class="w"> </span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="nb">window</span><span class="p">.</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s2">&quot;access_token&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;*****&quot;</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="err">/script&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="nx">script</span><span class="w"> </span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="nb">window</span><span class="p">.</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s2">&quot;access_token&quot;</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="err">/script&gt;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/masuda-sankosc/items/cff6131efd6e1b5138e6#%E6%A7%8B%E6%96%87">https://qiita.com/masuda-sankosc/items/cff6131efd6e1b5138e6#%E6%A7%8B%E6%96%87</a></li>
+</ul>
+</blockquote>
 <h4 id="_12">▼ 閲覧履歴の保存<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>閲覧した情報をローカルストレージに保存しておく。</p>
+<p>閲覧した情報をLocalStorageに保存しておく。</p>
 <p>次回のログイン時に、最近閲覧した情報として表示する。</p>
 <blockquote>
 <ul>
