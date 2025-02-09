@@ -30663,6 +30663,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>GatewayでHTTPSリクエストを受信した場合に、SSL証明書を検証をせずに、HTTPSをそのまま通過させる。</p>
 <p>つまり、Gatewayの宛先にSSL証明書を設定する必要がある。</p>
 <p><code>PASSTHROUGH</code>以外のモードでは、GatewayでSSLを検証し、場合にとってはSSL終端となる。</p>
+<p>注意点として、Gatewayは受信したHTTPSをTCPプロトコルとして処理するため、HTTPヘッダーやパスを使用してトラフィックを制御できない。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
@@ -30675,6 +30676,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://cloud.google.com/service-mesh/docs/security/egress-gateway-gke-tutorial?hl=ja#pass-through_of_httpstls_connections">https://cloud.google.com/service-mesh/docs/security/egress-gateway-gke-tutorial?hl=ja#pass-through_of_httpstls_connections</a></li>
 <li><a href="https://www.danielstechblog.io/run-the-istio-ingress-gateway-with-tls-termination-and-tls-passthrough/amp/">https://www.danielstechblog.io/run-the-istio-ingress-gateway-with-tls-termination-and-tls-passthrough/amp/</a></li>
 <li><a href="https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-sni-passthrough/#configure-an-ingress-gateway">https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-sni-passthrough/#configure-an-ingress-gateway</a></li>
 </ul>
