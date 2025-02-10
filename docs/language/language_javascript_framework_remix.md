@@ -489,7 +489,60 @@ export default function SomeParent() {
 
 <br>
 
-## 06. エラー
+## 06. Cookieを使用した認証
+
+### Cookieヘッダーの作成
+
+<br>
+
+### Cookieの保存
+
+#### ▼ ブラウザのCookieへの保存
+
+ブラウザのCookieに認証情報を保存する。
+
+```jsx
+export const cookieSessionStorage = createCookieSessionStorage({
+  cookie: {
+    name: "__session",
+    httpOnly: true,
+    path: "/",
+    sameSite: "lax",
+    secrets: [process.env.SESSION_SECRET],
+  },
+});
+```
+
+> - https://remix.run/docs/en/main/utils/sessions#createcookiesessionstorage
+
+#### ▼ サーバーのメモリへの保存
+
+サーバーのメモリに認証情報を保存する。
+
+```jsx
+export const memorySessionStorage = createMemorySessionStorage({
+  cookie: sessionCookie,
+});
+```
+
+> - https://remix.run/docs/en/main/utils/sessions#creatememorysessionstorage
+
+#### ▼ サーバー上のファイルへの保存
+
+サーバー上のファイルに認証情報を保存する。
+
+```jsx
+export const memorySessionStorage = createFileSessionStorage({
+  dir: "/app/sessions",
+  cookie: sessionCookie,
+});
+```
+
+> - https://remix.run/docs/en/main/utils/sessions#creatememorysessionstorage
+
+<br>
+
+## 07. エラー
 
 | データ名   | 説明                               | 例                   |
 | ---------- | ---------------------------------- | -------------------- |
