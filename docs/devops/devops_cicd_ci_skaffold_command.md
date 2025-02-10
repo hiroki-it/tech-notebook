@@ -83,7 +83,7 @@ $ skaffold dev --no-prune=false --cache-artifacts=false
 
 #### ▼ --port-forward
 
-ポートフォワードを実行しつつ、`dev`コマンドを実行する。
+ポートフォワーディングを実行しつつ、`dev`コマンドを実行する。
 
 ```bash
 $ skaffold dev --port-forward
@@ -127,7 +127,7 @@ $ skaffold run --tail
 
 #### ▼ --port-forward
 
-ポートフォワードを実行しつつ、`skaffold run`コマンドを実行する。
+ポートフォワーディングを実行しつつ、`skaffold run`コマンドを実行する。
 
 ```bash
 $ skaffold run --port-forward

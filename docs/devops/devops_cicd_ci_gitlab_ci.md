@@ -55,7 +55,7 @@ GitLab CIの`gitlab-ci.yml`ファイルで定義されたパイプラインを�
 #### ▼ 最新バージョンタグバッジ
 
 ```markdown
-![release](https://gitlab.com/foo-project/foo-repository/badges/-/badges/release.svg)
+![release](https://gitlab.com/foo-project/foo-repository/-/badges/release.svg)
 ```
 
 > - https://docs.gitlab.com/ee/user/project/badges.html#latest-release-badges
