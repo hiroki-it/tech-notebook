@@ -9181,28 +9181,28 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cookie" class="md-nav__link">
+  <a href="#localstoragesessionstoragecookie" class="md-nav__link">
     <span class="md-ellipsis">
-      Cookieヘッダーの作成
+      LocalStorageやSessionStorageではなくCookie
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cookie_1" class="md-nav__link">
+  <a href="#cookie" class="md-nav__link">
     <span class="md-ellipsis">
-      Cookieの保存
+      Cookieの作成と保存
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Cookieの保存">
+    <nav class="md-nav" aria-label="Cookieの作成と保存">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cookie_2" class="md-nav__link">
+  <a href="#cookie_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ブラウザのCookieへの保存
+      ▼ ブラウザのCookieに保存する場合
     </span>
   </a>
   
@@ -9211,7 +9211,7 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ サーバーのメモリへの保存
+      ▼ サーバーのメモリに保存する場合
     </span>
   </a>
   
@@ -9220,7 +9220,7 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ サーバー上のファイルへの保存
+      ▼ サーバー上のファイルに保存する場合
     </span>
   </a>
   
@@ -26022,28 +26022,28 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cookie" class="md-nav__link">
+  <a href="#localstoragesessionstoragecookie" class="md-nav__link">
     <span class="md-ellipsis">
-      Cookieヘッダーの作成
+      LocalStorageやSessionStorageではなくCookie
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cookie_1" class="md-nav__link">
+  <a href="#cookie" class="md-nav__link">
     <span class="md-ellipsis">
-      Cookieの保存
+      Cookieの作成と保存
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Cookieの保存">
+    <nav class="md-nav" aria-label="Cookieの作成と保存">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cookie_2" class="md-nav__link">
+  <a href="#cookie_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ブラウザのCookieへの保存
+      ▼ ブラウザのCookieに保存する場合
     </span>
   </a>
   
@@ -26052,7 +26052,7 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ サーバーのメモリへの保存
+      ▼ サーバーのメモリに保存する場合
     </span>
   </a>
   
@@ -26061,7 +26061,7 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ サーバー上のファイルへの保存
+      ▼ サーバー上のファイルに保存する場合
     </span>
   </a>
   
@@ -26528,10 +26528,18 @@
 </blockquote>
 <p><br></p>
 <h2 id="06-cookie">06. Cookieを使用した認証<a class="headerlink" href="#06-cookie" title="Permanent link">&para;</a></h2>
-<h3 id="cookie">Cookieヘッダーの作成<a class="headerlink" href="#cookie" title="Permanent link">&para;</a></h3>
+<h3 id="localstoragesessionstoragecookie">LocalStorageやSessionStorageではなくCookie<a class="headerlink" href="#localstoragesessionstoragecookie" title="Permanent link">&para;</a></h3>
+<p>RemixはSSRのフロントエンドアプリケーションを作成する。</p>
+<p>SSRでは、ブラウザのLocalStorageやSessionStorageを操作できない。</p>
+<p>代わりに、ブラウザのCookie、サーバーのメモリ、サーバー上のファイルなどに認証情報を保存することになる。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/vercel/next.js/discussions/39915#discussioncomment-3467720">https://github.com/vercel/next.js/discussions/39915#discussioncomment-3467720</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h3 id="cookie_1">Cookieの保存<a class="headerlink" href="#cookie_1" title="Permanent link">&para;</a></h3>
-<h4 id="cookie_2">▼ ブラウザのCookieへの保存<a class="headerlink" href="#cookie_2" title="Permanent link">&para;</a></h4>
+<h3 id="cookie">Cookieの作成と保存<a class="headerlink" href="#cookie" title="Permanent link">&para;</a></h3>
+<h4 id="cookie_1">▼ ブラウザのCookieに保存する場合<a class="headerlink" href="#cookie_1" title="Permanent link">&para;</a></h4>
 <p>ブラウザのCookieに認証情報を保存する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">cookieSessionStorage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createCookieSessionStorage</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">cookie</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
@@ -26548,7 +26556,7 @@
 <li><a href="https://remix.run/docs/en/main/utils/sessions#createcookiesessionstorage">https://remix.run/docs/en/main/utils/sessions#createcookiesessionstorage</a></li>
 </ul>
 </blockquote>
-<h4 id="_6">▼ サーバーのメモリへの保存<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_6">▼ サーバーのメモリに保存する場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>サーバーのメモリに認証情報を保存する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">memorySessionStorage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createMemorySessionStorage</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">cookie</span><span class="o">:</span><span class="w"> </span><span class="nx">sessionCookie</span><span class="p">,</span>
@@ -26559,7 +26567,7 @@
 <li><a href="https://remix.run/docs/en/main/utils/sessions#creatememorysessionstorage">https://remix.run/docs/en/main/utils/sessions#creatememorysessionstorage</a></li>
 </ul>
 </blockquote>
-<h4 id="_7">▼ サーバー上のファイルへの保存<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h4 id="_7">▼ サーバー上のファイルに保存する場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>サーバー上のファイルに認証情報を保存する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">memorySessionStorage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createFileSessionStorage</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">dir</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/app/sessions&quot;</span><span class="p">,</span>
