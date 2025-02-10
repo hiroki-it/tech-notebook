@@ -13649,17 +13649,17 @@
           <li class="md-nav__item">
   <a href="#cookie_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Cookie
+      ブラウザのCookie
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Cookie">
+    <nav class="md-nav" aria-label="ブラウザのCookie">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#cookie_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Cookieとは
+      ▼ ブラウザのCookieとは
     </span>
   </a>
   
@@ -26423,17 +26423,17 @@
           <li class="md-nav__item">
   <a href="#cookie_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Cookie
+      ブラウザのCookie
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Cookie">
+    <nav class="md-nav" aria-label="ブラウザのCookie">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#cookie_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Cookieとは
+      ▼ ブラウザのCookieとは
     </span>
   </a>
   
@@ -26800,7 +26800,7 @@
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
-<p>レスポンスの<code>Set-Cookie</code>ヘッダーにセッションIDを割り当て、クライアントに送信する。</p>
+<p>レスポンスの<code>Set-Cookie</code>ヘッダーにセッションIDを割り当て、クライアントに送信する。<code>Set-Cookie</code>ヘッダーにより、クライアントは<code>Cookie</code>ヘッダーを設定しなければいけなくなる。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
@@ -26880,8 +26880,8 @@
 <h4 id="sessionstorage_1">▼ ブラウザのSessionStorageとは<a class="headerlink" href="#sessionstorage_1" title="Permanent link">&para;</a></h4>
 <p>ブラウザのストレージ機能であり、ブラウザを閉じると削除される。</p>
 <h4 id="id_4">▼ セッションIDの保存<a class="headerlink" href="#id_4" title="Permanent link">&para;</a></h4>
-<p>レンダリング後にブラウザから取得したトークンを設定する必要があるため、フロントエンドアーキテクチャがCSRの場合に採用できる。</p>
-<p>SSRでは、レンダリング後の処理に関与できないため、ブラウザのトークンをSSRのアプリケーションに渡せない。</p>
+<p>フロントエンドアーキテクチャがCSRの場合に採用できる。</p>
+<p>SSRのアプリケーションはブラウザを操作できないため、ブラウザのLocalStorageをSSRのアプリケーションに渡せない。</p>
 <p>セッションIDで認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。</p>
 <p>ブラウザは、SessionStorageにセッションIDを保管する。</p>
 <p>ブラウザを閉じると、ブラウザはSessionStorageのセッションIDを破棄し、認証はやり直しになる。</p>
@@ -26925,8 +26925,8 @@
 <h4 id="localstorage_1">▼ ブラウザのLocalStorageとは<a class="headerlink" href="#localstorage_1" title="Permanent link">&para;</a></h4>
 <p>ブラウザのストレージ機能であり、明示的に削除しない限りは保存し続ける。</p>
 <h4 id="_13">▼ トークンの保存<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>レンダリング後にブラウザから取得したトークンを設定する必要があるため、フロントエンドアーキテクチャがCSRの場合に採用できる。</p>
-<p>SSRでは、レンダリング後の処理に関与できないため、ブラウザのトークンをSSRのアプリケーションに渡せない。</p>
+<p>フロントエンドアーキテクチャがCSRの場合に採用できる。</p>
+<p>SSRのアプリケーションはブラウザを操作できないため、ブラウザのLocalStorageをSSRのアプリケーションに渡せない。</p>
 <p>トークン (例：アクセストークン、IDトークンなど) で認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。</p>
 <p>ブラウザは、LocalStorageにトークンを保管する。</p>
 <p>ブラウザを閉じても、ブラウザはLocalStorageのトークンを破棄せず、認証の成功状態を維持できる。</p>
@@ -26980,9 +26980,9 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="cookie_1">Cookie<a class="headerlink" href="#cookie_1" title="Permanent link">&para;</a></h3>
-<h4 id="cookie_2">▼ Cookieとは<a class="headerlink" href="#cookie_2" title="Permanent link">&para;</a></h4>
-<p>クライアントPCのストレージ機能であり、明示的に削除しない限りは保存し続ける。</p>
+<h3 id="cookie_1">ブラウザのCookie<a class="headerlink" href="#cookie_1" title="Permanent link">&para;</a></h3>
+<h4 id="cookie_2">▼ ブラウザのCookieとは<a class="headerlink" href="#cookie_2" title="Permanent link">&para;</a></h4>
+<p>ブラウザのストレージ機能であり、明示的に削除しない限りは保存し続ける。</p>
 <blockquote>
 <ul>
 <li><a href="https://developer.chrome.com/docs/devtools/storage/cookies/">https://developer.chrome.com/docs/devtools/storage/cookies/</a></li>
@@ -26990,9 +26990,10 @@
 </blockquote>
 <h4 id="_16">▼ トークンの保存<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>フロントエンドアプリケーションがCSRまたはSSRの場合に採用できる。</p>
+<p>SSRのアプリケーションは、<code>Cookie</code>ヘッダーを介してブラウザのCookieを操作できる。</p>
 <p>トークン (例：アクセストークン、IDトークンなど) で認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。</p>
 <p>ブラウザは、Cookieにトークンを保管する。</p>
-<p>ブラウザを閉じても、ブラウザはクライアントPCのディレクトリのトークンを破棄せず、認証の成功状態を維持できる。</p>
+<p>ブラウザを閉じても、ブラウザはCookieのトークンを破棄せず、認証の成功状態を維持できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/vercel/next.js/discussions/39915#discussioncomment-3467720">https://github.com/vercel/next.js/discussions/39915#discussioncomment-3467720</a></li>
