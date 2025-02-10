@@ -491,13 +491,21 @@ export default function SomeParent() {
 
 ## 06. Cookieを使用した認証
 
-### Cookieヘッダーの作成
+### LocalStorageやSessionStorageではなくCookie
+
+RemixはSSRのフロントエンドアプリケーションを作成する。
+
+SSRでは、ブラウザのLocalStorageやSessionStorageを操作できない。
+
+代わりに、ブラウザのCookie、サーバーのメモリ、サーバー上のファイルなどに認証情報を保存することになる。
+
+> - https://github.com/vercel/next.js/discussions/39915#discussioncomment-3467720
 
 <br>
 
-### Cookieの保存
+### Cookieの作成と保存
 
-#### ▼ ブラウザのCookieへの保存
+#### ▼ ブラウザのCookieに保存する場合
 
 ブラウザのCookieに認証情報を保存する。
 
@@ -515,7 +523,7 @@ export const cookieSessionStorage = createCookieSessionStorage({
 
 > - https://remix.run/docs/en/main/utils/sessions#createcookiesessionstorage
 
-#### ▼ サーバーのメモリへの保存
+#### ▼ サーバーのメモリに保存する場合
 
 サーバーのメモリに認証情報を保存する。
 
@@ -527,7 +535,7 @@ export const memorySessionStorage = createMemorySessionStorage({
 
 > - https://remix.run/docs/en/main/utils/sessions#creatememorysessionstorage
 
-#### ▼ サーバー上のファイルへの保存
+#### ▼ サーバー上のファイルに保存する場合
 
 サーバー上のファイルに認証情報を保存する。
 

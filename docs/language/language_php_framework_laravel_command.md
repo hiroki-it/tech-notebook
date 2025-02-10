@@ -140,8 +140,6 @@ $ php artisan migrate:status
 
 指定した履歴数だけ、ロールバックする。
 
-> - https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
-
 ```bash
 $ php artisan migrate:rollback --step=<ロールバック数>
 ```
@@ -156,15 +154,17 @@ $ php artisan migrate:rollback --step=1
 $ php artisan migrate
 ```
 
+> - https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
+
 #### ▼ reset
 
 初期の状態まで、全てロールバックする。
 
-> - https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
-
 ```bash
 $ php artisan migrate:reset
 ```
+
+> - https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
 
 #### ▼ refresh
 

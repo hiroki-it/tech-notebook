@@ -79,8 +79,30 @@ const prisma = new PrismaClient()
 ローカル環境用のマイグレーションを実行する。
 
 ```bash
-$ yarn prisma migrate dev
+$ prisma migrate dev
 ```
+
+#### ▼ deploy
+
+本番環境用のマイグレーションを実行する。
+
+```bash
+$ prisma migrate deploy
+```
+
+> - https://tech-blog.s-yoshiki.com/entry/315
+
+#### ▼ reset
+
+初期の状態まで、全てロールバックする。
+
+`--force`オプションで警告を無視できる。
+
+```bash
+$ prisma migrate reset --force
+```
+
+> - https://tech-blog.s-yoshiki.com/entry/315
 
 <br>
 
