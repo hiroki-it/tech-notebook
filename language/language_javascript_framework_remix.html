@@ -9171,9 +9171,75 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#06" class="md-nav__link">
+  <a href="#06-cookie" class="md-nav__link">
     <span class="md-ellipsis">
-      06. エラー
+      06. Cookieを使用した認証
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06. Cookieを使用した認証">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cookie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cookieヘッダーの作成
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookie_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cookieの保存
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cookieの保存">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cookie_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ブラウザのCookieへの保存
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ サーバーのメモリへの保存
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ サーバー上のファイルへの保存
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    <span class="md-ellipsis">
+      07. エラー
     </span>
   </a>
   
@@ -25946,9 +26012,75 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#06" class="md-nav__link">
+  <a href="#06-cookie" class="md-nav__link">
     <span class="md-ellipsis">
-      06. エラー
+      06. Cookieを使用した認証
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06. Cookieを使用した認証">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cookie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cookieヘッダーの作成
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookie_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cookieの保存
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cookieの保存">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cookie_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ブラウザのCookieへの保存
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ サーバーのメモリへの保存
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ サーバー上のファイルへの保存
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    <span class="md-ellipsis">
+      07. エラー
     </span>
   </a>
   
@@ -26395,7 +26527,52 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="06">06. エラー<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<h2 id="06-cookie">06. Cookieを使用した認証<a class="headerlink" href="#06-cookie" title="Permanent link">&para;</a></h2>
+<h3 id="cookie">Cookieヘッダーの作成<a class="headerlink" href="#cookie" title="Permanent link">&para;</a></h3>
+<p><br></p>
+<h3 id="cookie_1">Cookieの保存<a class="headerlink" href="#cookie_1" title="Permanent link">&para;</a></h3>
+<h4 id="cookie_2">▼ ブラウザのCookieへの保存<a class="headerlink" href="#cookie_2" title="Permanent link">&para;</a></h4>
+<p>ブラウザのCookieに認証情報を保存する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">cookieSessionStorage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createCookieSessionStorage</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">cookie</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;__session&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">httpOnly</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">sameSite</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;lax&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">secrets</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">SESSION_SECRET</span><span class="p">],</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://remix.run/docs/en/main/utils/sessions#createcookiesessionstorage">https://remix.run/docs/en/main/utils/sessions#createcookiesessionstorage</a></li>
+</ul>
+</blockquote>
+<h4 id="_6">▼ サーバーのメモリへの保存<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>サーバーのメモリに認証情報を保存する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">memorySessionStorage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createMemorySessionStorage</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">cookie</span><span class="o">:</span><span class="w"> </span><span class="nx">sessionCookie</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://remix.run/docs/en/main/utils/sessions#creatememorysessionstorage">https://remix.run/docs/en/main/utils/sessions#creatememorysessionstorage</a></li>
+</ul>
+</blockquote>
+<h4 id="_7">▼ サーバー上のファイルへの保存<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>サーバー上のファイルに認証情報を保存する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">memorySessionStorage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createFileSessionStorage</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">dir</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/app/sessions&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">cookie</span><span class="o">:</span><span class="w"> </span><span class="nx">sessionCookie</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://remix.run/docs/en/main/utils/sessions#creatememorysessionstorage">https://remix.run/docs/en/main/utils/sessions#creatememorysessionstorage</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="07">07. エラー<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -26448,7 +26625,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-18</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-10</span>
   </span>
 
     
