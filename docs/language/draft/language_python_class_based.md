@@ -79,3 +79,5 @@ class User:
 name = UserName()
 user = User(name) # インジェクション
 ```
+
+<br>

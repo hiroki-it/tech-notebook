@@ -70,7 +70,7 @@ JWT仕様のトークン (例：IDトークン) の有効期限や発行元認�
 2. アプリケーションは、フォームの入力情報を含むリクエストを受信する。また、DBのユーザー情報と照合して認証処理を実行する。
 3. 認証が成功すれば、アプリケーションは秘密鍵を使用してJWTを作成する。
 4. アプリケーションは、JWTをレスポンスに含め、ユーザーに返信する。
-5. ブラウザは、JWTをLocalStorageやローカルマシンの`Cookie`ディレクトリに保管する。
+5. ブラウザは、JWTをLocalStorageやCookieに保管する。
 
 ![jwt_common_generate_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_common_generate_token.png)
 
@@ -110,7 +110,7 @@ JWT仕様のトークン (例：IDトークン) の有効期限や発行元認�
 2. IDプロバイダーは、フォームの入力情報を含むリクエストを受信し、認証処理を実行する。また、DBのユーザー情報と照合して認証処理を実行する。
 3. 認証が成功すれば、IDプロバイダーは秘密鍵を使用してJWTを作成する。
 4. IDプロバイダーは、JWTをレスポンスに含め、ユーザーに返信する。
-5. ブラウザは、JWTをLocalStorageやローカルマシンの`Cookie`ディレクトリに保管する。
+5. ブラウザは、JWTをLocalStorageやCookieに保管する。
 
 ![jwt_public_generate_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_public_generate_token.png)
 

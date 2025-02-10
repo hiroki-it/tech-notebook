@@ -17,30 +17,78 @@ description: 認証＠JavaScriptを記録しています。
 
 ### SessionStorage
 
-記入中...
+#### ▼ 保管
+
+```html
+<!-- string型で値を設定する必要がある -->
+<script>
+  window.sessionStorage.setItem("session_id", "*****");
+</script>
+```
+
+#### ▼ 取得
+
+```html
+<script>
+  const access_token = window.sessionStorage.getItem("session_id");
+  const header = new Headers();
+  header.set("Cookie", "session_id");
+</script>
+```
+
+#### ▼ 削除
+
+```html
+<script>
+  window.sessionStorage.removeItem("session_id");
+</script>
+```
+
+```html
+<script>
+  window.sessionStorage.clear();
+</script>
+```
 
 <br>
 
 ### LocalStorage
 
-記入中...
+#### ▼ 保管
 
-<br>
-
-### ローカルマシンの`Cookie`ディレクトリ
+```html
+<script>
+  window.localStorage.setItem("access_token", "*****");
+</script>
+```
 
 #### ▼ 取得
 
-`document.cookie`から値を出力する。
-
-```javascript
-const cookie = document.cookie;
-
-// key=value; key=value; key=value; key=value; key=value; key=value;
-console.log(cookie);
+```html
+<script>
+  const access_token = window.localStorage.getItem("access_token");
+  const header = new Headers();
+  header.set("Authorization", "Bearer " + access_token);
+</script>
 ```
 
-> - https://tcd-theme.com/2021/11/javascript-cookie.html
+#### ▼ 削除
+
+```html
+<script>
+  window.localStorage.removeItem("access_token");
+</script>
+```
+
+```html
+<script>
+  window.localStorage.clear();
+</script>
+```
+
+<br>
+
+### Cookie
 
 #### ▼ 保管
 
@@ -52,6 +100,19 @@ document.cookie = "user=Tarou";
 
 // user=Tarou
 console.log(document.cookie);
+```
+
+> - https://tcd-theme.com/2021/11/javascript-cookie.html
+
+#### ▼ 取得
+
+`document.cookie`から値を出力する。
+
+```javascript
+const cookie = document.cookie;
+
+// key=value; key=value; key=value; key=value; key=value; key=value;
+console.log(cookie);
 ```
 
 > - https://tcd-theme.com/2021/11/javascript-cookie.html
