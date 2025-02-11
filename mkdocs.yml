@@ -641,7 +641,8 @@ nav:
               - コマンド: infrastructure_as_code/infrastructure_as_code_docker_kaniko_command.md
           - ■ Packer:
               - Packer: infrastructure_as_code/infrastructure_as_code_packer.md
-              - template.json: infrastructure_as_code/infrastructure_as_code_packer_template.md
+              - コマンド: infrastructure_as_code/infrastructure_as_code_packer_command.md
+              - テンプレート: infrastructure_as_code/infrastructure_as_code_packer_template.md
           - ■ Serverless Framework:
               - serverless.yml: infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_command.md
