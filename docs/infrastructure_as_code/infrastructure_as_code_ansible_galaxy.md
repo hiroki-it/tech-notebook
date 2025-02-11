@@ -81,9 +81,22 @@ repository/
 
 リモート参照するリポジトリのURLを設定する。
 
+Ansibleのロールを別リポジトリに切り分けている場合に役立つ。
+
 ```yaml
-- name: foo
-  src: https://github.com/hiroki-hasegawa/foo-ansible-module.git
+- name: foo-role
+  scm: git
+  src: https://github.com/hiroki-hasegawa/foo-ansible-role.git
+  version: main
+
+- name: bar-role
+  scm: git
+  src: https://github.com/hiroki-hasegawa/bar-ansible-role.git
+  version: main
+
+- name: baz-role
+  scm: git
+  src: https://github.com/hiroki-hasegawa/baz-ansible-role.git
   version: main
 ```
 
