@@ -343,7 +343,7 @@ $ helm lint <チャートへのパス> -f foo-values.yaml
 
 #### ▼ --quiet
 
-warning、danger、のみを検出するようにを設定する。
+warning、dangerのみを検出するようにを設定する。
 
 ```bash
 $ helm lint <チャートへのパス> --quiet -f foo-values.yaml

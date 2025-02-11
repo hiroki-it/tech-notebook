@@ -318,7 +318,7 @@ Karpenterは、スケジューリングできないPod (`Pending`状態) が出�
 
 #### ▼ スケールイン/スケールダウンの場合
 
-Expiration、Drift、Consolidation、の順にNodeを検証し、削除可能なNodeを選ぶ。
+Expiration、Drift、Consolidationの順にNodeを検証し、削除可能なNodeを選ぶ。
 
 > - https://karpenter.sh/preview/concepts/disruption/
 > - https://karpenter.sh/preview/concepts/disruption/#automated-methods

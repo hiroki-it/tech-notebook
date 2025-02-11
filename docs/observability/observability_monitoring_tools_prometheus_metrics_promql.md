@@ -121,7 +121,7 @@ avg(avg_over_time(rate(istio_request_duration_milliseconds_sum{destination_servi
 
 複数の種類で集約することもできる。
 
-直近1時間に関して、Istioの`istio-proxy`コンテナで収集したレスポンスの補足メッセージ (`%RESPONSE_FLAGS%`変数) を、Pod名、変数値、の種類ごとに集約する。
+直近1時間に関して、Istioの`istio-proxy`コンテナで収集したレスポンスの補足メッセージ (`%RESPONSE_FLAGS%`変数) を、Pod名、変数値の種類ごとに集約する。
 
 ```bash
 sum(idelta(istio_requests_total{response_flags!="-"}[1h])) by (pod_name, response_flags)

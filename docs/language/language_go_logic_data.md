@@ -1178,7 +1178,7 @@ func main() {
 
 **＊実装例＊**
 
-InspectImpl構造体にAnimalインターフェースを埋め込み、構造体に`Eat`関数、`Sleep`関数、`Mating`関数、の処理を委譲する。
+InspectImpl構造体にAnimalインターフェースを埋め込み、構造体に`Eat`関数、`Sleep`関数、`Mating`関数の処理を委譲する。
 
 ```go
 package main

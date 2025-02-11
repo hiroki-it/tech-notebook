@@ -2953,7 +2953,9 @@ spec:
 
 #### ▼ httpとは
 
-HTTP/1.1、HTTP/2 (例：gRPCなど) 、のプロトコルによるインバウンド通信をDestinationRuleに紐づくPodにルーティングする。
+HTTP/1.1、HTTP/2 (例：gRPCなど) のプロトコルによる通信をDestinationRuleに紐づくPodにルーティングする。
+
+マイクロサービスがHTTPプロトコルで通信を送受信し、`istio-proxy`コンテナ間で相互TLSを実施する場合、これを使用する。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRoute
 
@@ -3411,7 +3413,7 @@ spec:
 
 #### ▼ tcpとは
 
-TCPスリーウェイハンドシェイクの通信を、DestinationRuleに紐づくPodにルーティングする。
+TCPプロトコルや独自プロトコル (例：MySQLなど) による通信をDestinationRuleに紐づくPodにルーティングする。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute
 
@@ -3511,6 +3513,20 @@ spec:
             subset: v2 # 新Pod
           weight: 30
 ```
+
+<br>
+
+### .spec.tls
+
+#### ▼ tlsとは
+
+HTTPSプロトコルの通信をDestinationRuleに紐づくPodにルーティングする。
+
+マイクロサービスがHTTPSプロトコルで通信を送受信し、`istio-proxy`コンテナ間で相互TLSを実施する場合、これを使用する。
+
+他に、マイクロサービスがHTTPSリクエストを送信し、Istio EgressGatewayでこれをそのまま通過させる (`PASSTHROUGH`) 場合も必要になる。
+
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#TLSRoute
 
 <br>
 

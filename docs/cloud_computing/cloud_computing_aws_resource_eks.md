@@ -63,7 +63,7 @@ AWS EKSのコントロールプレーンは、開発者や他のAWSリソース�
 | CIDRブロック                     | ClusterIP Serviceに割り当てるIPアドレスのCIDRブロックを設定する。                           |                                                                                                                                                                                                                                                                                                                       |
 | クラスターエンドポイントアクセス | kube-apiserverのリクエスト制限を設定する。                                                  |                                                                                                                                                                                                                                                                                                                       |
 | ネットワークアドオン             | ネットワークに関するAWS EKSアドオンを設定する。                                             | 執筆時点 (2023/02/05) では、AWS kube-proxy、AWS CoreDNS、AWS VPC CNI、を使用できる。                                                                                                                                                                                                                                  |
-| コントロールプレーンのログ       | コントロールプレーンコンポーネントのログをAWS CloudWatch Logsに出力するかどうかを設定する。 | 執筆時点 (2023/02/05) では、kube-apiserver (処理ログと監査ログの両方) 、aws-iam-authenticator-server (処理ログ) 、kube-controller-manager (処理ログ) 、cloud-controller-manager (処理ログ) 、kube-scheduler (処理ログ) 、のログを出力できる。                                                                         |
+| コントロールプレーンのログ       | コントロールプレーンコンポーネントのログをAWS CloudWatch Logsに出力するかどうかを設定する。 | 執筆時点 (2023/02/05) では、kube-apiserver (処理ログと監査ログの両方) 、aws-iam-authenticator-server (処理ログ) 、kube-controller-manager (処理ログ) 、cloud-controller-manager (処理ログ) 、kube-scheduler (処理ログ) のログを出力できる。                                                                           |
 
 <br>
 
@@ -260,7 +260,7 @@ data:
 
 `(5)`
 
-: aws-iam-authenticator-serverは、UserAccount / ServiceAccount / Group、RoleBindingやClusterRoleBinding、の情報を含むレスポンスをkube-apiserverに返信する。
+: aws-iam-authenticator-serverは、UserAccount / ServiceAccount / Group、RoleBindingやClusterRoleBindingの情報を含むレスポンスをkube-apiserverに返信する。
 
 `(6)`
 

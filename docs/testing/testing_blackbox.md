@@ -227,8 +227,8 @@ Grafanaのテストケースを示す。
 | IT                                                 | Grafana + <br>Prometheus + <br>Kubernetes | ユーザ定義のダッシュボードでPromQLを入力し、Prometheusのメトリクスを確認できる。                                                                                             |
 | IT                                                 | Grafana + <br>Prometheus + <br>Kubernetes | ビルトインのダッシュボード (`mixin`タグを持つ) でPrometheusのメトリクスのリアルタイムデータを確認できる。                                                                    |
 | IT                                                 | Grafana + <br>Prometheus + <br>Kubernetes | ユーザ定義のダッシュボードでPrometheusのメトリクスのリアルタイムデータを確認できる。                                                                                         |
-| IT                                                 | Grafana + <br>Prometheus + <br>Kubernetes | ビルトインのダッシュボード (`mixin`タグを持つ) で、datasource、namespace、type、resolusion、の条件を変更し、リアルタイムデータを確認できる。                                 |
-| IT                                                 | Grafana + <br>Prometheus + <br>Kubernetes | ユーザ定義のダッシュボードで、datasource、namespace、type、resolusion、の条件を変更し、リアルタイムデータを確認できる。                                                      |
+| IT                                                 | Grafana + <br>Prometheus + <br>Kubernetes | ビルトインのダッシュボード (`mixin`タグを持つ) で、datasource、namespace、type、resolusionの条件を変更し、リアルタイムデータを確認できる。                                   |
+| IT                                                 | Grafana + <br>Prometheus + <br>Kubernetes | ユーザ定義のダッシュボードで、datasource、namespace、type、resolusionの条件を変更し、リアルタイムデータを確認できる。                                                        |
 
 #### ▼ PrometheusOperatorの場合
 

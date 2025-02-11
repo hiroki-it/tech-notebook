@@ -4871,7 +4871,7 @@ metadata:
 rules:
   - apiGroups: [""]
     resources: ["pods"]
-    # Get、Watch、List、のアクションを実行可能にする。
+    # Get、Watch、Listのアクションを実行可能にする。
     verbs: ["get", "watch", "list"]
 ```
 
@@ -5176,7 +5176,7 @@ secrets:
 
 SSL/TLSを使用するための変数を設定する。
 
-SSL証明書、SSL証明書とペアになる秘密鍵、の文字列が必要である。
+SSL証明書、SSL証明書とペアになる秘密鍵の文字列が必要である。
 
 ユースケースとしては、変数をIngressに割り当て、IngressとServiceの間をHTTPSプロトコルでパケットを送受信する例がある。
 

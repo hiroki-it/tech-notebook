@@ -620,7 +620,7 @@ const postMessageToSlack = (message) => {
         tmp = error;
       });
 
-      //  data、error、end、の間でawaitの効力は横断できない。
+      //  data、error、endの間でawaitの効力は横断できない。
       // そのため、できるだけendで事後処理を実装し、awaitを使用する。
       response.on("end", async () => {
         tmp = param.toString(tmp);

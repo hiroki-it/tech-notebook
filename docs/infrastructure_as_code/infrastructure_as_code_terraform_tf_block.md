@@ -611,7 +611,7 @@ resource "aws_lb_target_group" "this" {
 
 例として、AWS NAT Gatewayを示す。
 
-AWS NAT Gateway、Internet Gateway、の`resource`ブロックを適切な順番で作成できない。
+AWS NAT Gateway、Internet Gatewayの`resource`ブロックを適切な順番で作成できない。
 
 そのため、Internet Gatewayの作成後に、AWS NAT Gatewayを作成するように定義する必要がある。
 

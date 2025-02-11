@@ -176,7 +176,7 @@ IRSAにより、ServiceAccountにAWSのIAMロールが紐づく。
 
 > - https://qiita.com/crml1206/items/3f5ceeaae27bba033bb1#ingress%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E6%A4%9C%E7%9F%A5%E3%81%97%E3%81%A6alb%E3%81%8C%E4%BD%9C%E6%88%90%E3%81%95%E3%82%8C%E3%82%8B
 
-#### ▼ `awscli`コマンド、`eksctl`コマンド、の場合
+#### ▼ `awscli`コマンド、`eksctl`コマンドの場合
 
 AWS Load Balancer Controllerのセットアップのうち、AWS側で必要なものをまとめる。
 
