@@ -6995,6 +6995,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#spectls" class="md-nav__link">
+    <span class="md-ellipsis">
+      .spec.tls
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.tls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tls_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ tlsとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -29195,6 +29219,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#spectls" class="md-nav__link">
+    <span class="md-ellipsis">
+      .spec.tls
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.tls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tls_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ tlsとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -31758,7 +31806,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="spechttp">.spec.http<a class="headerlink" href="#spechttp" title="Permanent link">&para;</a></h3>
 <h4 id="http">▼ httpとは<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
-<p>HTTP/1.1、HTTP/2 (例：gRPCなど) 、のプロトコルによるインバウンド通信をDestinationRuleに紐づくPodにルーティングする。</p>
+<p>HTTP/1.1、HTTP/2 (例：gRPCなど) のプロトコルによる通信をDestinationRuleに紐づくPodにルーティングする。</p>
+<p>マイクロサービスがHTTPプロトコルで通信を送受信し、<code>istio-proxy</code>コンテナ間で相互TLSを実施する場合、これを使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRoute">https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRoute</a></li>
@@ -32155,7 +32204,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="spectcp">.spec.tcp<a class="headerlink" href="#spectcp" title="Permanent link">&para;</a></h3>
 <h4 id="tcp">▼ tcpとは<a class="headerlink" href="#tcp" title="Permanent link">&para;</a></h4>
-<p>TCPスリーウェイハンドシェイクの通信を、DestinationRuleに紐づくPodにルーティングする。</p>
+<p>TCPプロトコルや独自プロトコル (例：MySQLなど) による通信をDestinationRuleに紐づくPodにルーティングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute">https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute</a></li>
@@ -32239,6 +32288,17 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="nt">subset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v2</span><span class="w"> </span><span class="c1"># 新Pod</span>
 <span class="w">          </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
 </code></pre></div>
+<p><br></p>
+<h3 id="spectls">.spec.tls<a class="headerlink" href="#spectls" title="Permanent link">&para;</a></h3>
+<h4 id="tls_1">▼ tlsとは<a class="headerlink" href="#tls_1" title="Permanent link">&para;</a></h4>
+<p>HTTPSプロトコルの通信をDestinationRuleに紐づくPodにルーティングする。</p>
+<p>マイクロサービスがHTTPSプロトコルで通信を送受信し、<code>istio-proxy</code>コンテナ間で相互TLSを実施する場合、これを使用する。</p>
+<p>他に、マイクロサービスがHTTPSリクエストを送信し、Istio EgressGatewayでこれをそのまま通過させる (<code>PASSTHROUGH</code>) 場合も必要になる。</p>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#TLSRoute">https://istio.io/latest/docs/reference/config/networking/virtual-service/#TLSRoute</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="13-workloadentry">13. WorkloadEntry<a class="headerlink" href="#13-workloadentry" title="Permanent link">&para;</a></h2>
 <p>Kubernetes Clusterの外にある単一の仮想サーバーをサービスメッシュ内で管理する。</p>

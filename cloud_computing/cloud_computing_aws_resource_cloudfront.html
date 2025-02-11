@@ -14309,7 +14309,7 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ オリジンリクエストの可否、キャッシュ作成の有無、の決まり方
+      ▼ オリジンリクエストの可否、キャッシュ作成の有無の決まり方
     </span>
   </a>
   
@@ -26061,7 +26061,7 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ オリジンリクエストの可否、キャッシュ作成の有無、の決まり方
+      ▼ オリジンリクエストの可否、キャッシュ作成の有無の決まり方
     </span>
   </a>
   
@@ -26472,7 +26472,7 @@
 <tr>
 <td>TTL</td>
 <td>AWS CloudFrontにキャッシュを保管しておく秒数を詳細に設定する。</td>
-<td>・Min、Max、Default、の全てを<code>0</code>秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロである必要がある。<br>・キャッシュの最終的な有効期間は、AWS CloudFrontのTTL秒の設定、<code>Cache-Control</code>ヘッダー、<code>Expires</code>ヘッダー値の組み合わせによって決まる。</td>
+<td>・Min、Max、Defaultの全てを<code>0</code>秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロである必要がある。<br>・キャッシュの最終的な有効期間は、AWS CloudFrontのTTL秒の設定、<code>Cache-Control</code>ヘッダー、<code>Expires</code>ヘッダー値の組み合わせによって決まる。</td>
 </tr>
 <tr>
 <td>Whitelist Header</td>
@@ -26587,7 +26587,7 @@
 <p><br></p>
 <h2 id="04">04. キャッシュ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_5">オリジンリクエストの可否、キャッシュ作成の有無<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<h4 id="_6">▼ オリジンリクエストの可否、キャッシュ作成の有無、の決まり方<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_6">▼ オリジンリクエストの可否、キャッシュ作成の有無の決まり方<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>オリジンにルーティングする必要があるリクエストを、各種パラメーターのAll (全許可) /一部許可/None (全拒否) で設定できる。</p>
 <p>また、キャッシュ作成の有無にも関係している。</p>
 <p>AWS CloudFrontではリクエストがJSONとして扱われており、JSONの値が過去のリクエストに合致した時のみ、そのリクエストと過去のものが同一であると見なす仕組みになっている。</p>
