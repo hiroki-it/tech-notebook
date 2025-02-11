@@ -6276,6 +6276,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#outputpayloadtoheader" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ outputPayloadToHeader
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -28467,6 +28476,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#outputpayloadtoheader" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ outputPayloadToHeader
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -31020,6 +31038,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">jwtRules</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">issuer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://foo-issuer.com</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-issuer">https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-issuer</a></li>
+</ul>
+</blockquote>
 <h4 id="jwksuri">▼ jwksUri<a class="headerlink" href="#jwksuri" title="Permanent link">&para;</a></h4>
 <p>JWTの署名を検証するための公開鍵のURLを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
@@ -31030,8 +31053,13 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">jwtRules</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">jwksUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.com/.well-known/jwks.json</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-jwks_uri">https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-jwks_uri</a></li>
+</ul>
+</blockquote>
 <h4 id="forwardoriginaltoken">▼ forwardOriginalToken<a class="headerlink" href="#forwardoriginaltoken" title="Permanent link">&para;</a></h4>
-<p>既存のJWTを再利用し、後続のマイクロサービスにそのまま転送するかどうかを設定する。</p>
+<p>既存のJWTを再利用し、後続のマイクロサービスにそのまま伝播するかどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RequestAuthentication</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -31040,6 +31068,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">jwtRules</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">forwardOriginalToken</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-forward_original_token">https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-forward_original_token</a></li>
+</ul>
+</blockquote>
 <h4 id="fromcookies">▼ fromCookies<a class="headerlink" href="#fromcookies" title="Permanent link">&para;</a></h4>
 <p><code>Cookie</code>ヘッダーの指定したキー名からアクセストークンを取得する。</p>
 <p><code>Cookie</code>ヘッダーを使用して認証情報を運ぶ場合 (例：フロントエンドアプリケーションがCSRやSSR) に役立つ。</p>
@@ -31053,6 +31086,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="c1"># sessionキーを指定する</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">session</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-from_cookies">https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-from_cookies</a></li>
+</ul>
+</blockquote>
 <h4 id="fromheaders">▼ fromHeaders<a class="headerlink" href="#fromheaders" title="Permanent link">&para;</a></h4>
 <p>指定したヘッダーからアクセストークンを取得する。</p>
 <p><code>Authorization</code>ヘッダーを使用して認証情報を運ぶ場合 (例：フロントエンドアプリケーションがCSR) に役立つ。</p>
@@ -31067,6 +31105,28 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authorization</span>
 <span class="w">        </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Bearer</span><span class="nv"> </span><span class="s">&quot;</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-from_headers">https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-from_headers</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTHeader">https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTHeader</a></li>
+</ul>
+</blockquote>
+<h4 id="outputpayloadtoheader">▼ outputPayloadToHeader<a class="headerlink" href="#outputpayloadtoheader" title="Permanent link">&para;</a></h4>
+<p>JWTを伝播するための新しいヘッダー名を設定する。</p>
+<p>検証後のJWTを新しいヘッダーに割り当て、後続のマイクロサービスに伝播する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RequestAuthentication</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-request-authentication-jwt</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">jwtRules</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">outputPayloadToHeader</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">X-Authorization</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://discuss.istio.io/t/passing-authorization-headers-automatically-jwt-between-microservices/9053/5">https://discuss.istio.io/t/passing-authorization-headers-automatically-jwt-between-microservices/9053/5</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="specselector_3">.spec.selector<a class="headerlink" href="#specselector_3" title="Permanent link">&para;</a></h3>
 <p>JWTによるBearer認証を適用するKubernetesリソース名を設定する。</p>
