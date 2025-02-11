@@ -35,7 +35,9 @@ foo-role-module-repository/ # roleモジュール
 │   └── main.yml
 │
 ├── files/
-│   └── foo.conf
+│   ├── foo1.conf
+│   ├── foo2.conf
+│   └── foo3.conf
 │
 ├── meta/
 │   └── main.yml
