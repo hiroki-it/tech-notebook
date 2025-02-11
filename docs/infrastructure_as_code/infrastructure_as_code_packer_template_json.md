@@ -105,26 +105,34 @@ build_ami:
 
 AWS AMIの名前を設定する。
 
-```yaml
-{"builders": [{"type": "amazon-ebs", "ami_name": "bar-ami"}]}
+```hcl
+source "amazon-ebs" "foo" {
+  "ami_name" = "bar-ami"
+}
 ```
 
 #### ▼ ami_users
 
-```yaml
-{"builders": [{"type": "amazon-ebs", "ami_users": "<AWSアカウントID>"}]}
+```hcl
+source "amazon-ebs" "foo" {
+  "ami_users" = "<AWSアカウントID>"
+}
 ```
 
 #### ▼ ena_support
 
-```yaml
-{"builders": [{"type": "amazon-ebs", "ena_support": "true"}]}
+```hcl
+source "amazon-ebs" "foo" {
+  "ena_support" = true
+}
 ```
 
 #### ▼ encrypt_boot
 
-```yaml
-{"builders": [{"type": "amazon-ebs", "encrypt_boot": "false"}]}
+```hcl
+source "amazon-ebs" "foo" {
+  "encrypt_boot" = false
+}
 ```
 
 #### ▼ force_deregister
@@ -137,53 +145,65 @@ Packerの作成するマシンイメージの名前は、ランダム値をつ�
 
 そういった場合に必要になる。
 
-```yaml
-{"builders": [{"type": "amazon-ebs", "force_deregister": "true"}]}
+```hcl
+source "amazon-ebs" "foo" {
+  "force_deregister" = true
+}
 ```
 
 #### ▼ instance_type
 
-```yaml
-{"builders": [{"type": "amazon-ebs", "instance_type": "t2.micro"}]}
+```hcl
+source "amazon-ebs" "foo" {
+  "instance_type" = "t2.micro"
+}
 ```
 
 #### ▼ launch_block_device_mappings
 
 EC2に紐付けるルートデバイスボリュームを設定する。
 
-```yaml
-{"builders": [{"type": "amazon-ebs", "launch_block_device_mappings": [
-            {
-              # ルートボリューム
-              "device_name": "/dev/xvda",
-              "volume_type": "gp2",
-              # AWS AMIの作成後に、元となったEC2のボリュームを削除する
-              "delete_on_termination": "true",
-              "volume_size": "300",
-            },
-          ]}]}
+```hcl
+source "amazon-ebs" "foo" {
+  "launch_block_device_mappings" = [
+    {
+      # ルートボリューム
+      "device_name": "/dev/xvda",
+      "volume_type": "gp2",
+      # AWS AMIの作成後に、元となったEC2のボリュームを削除する
+      "delete_on_termination": "true",
+      "volume_size": "300",
+    },
+  ]
+}
 ```
 
 #### ▼ region
 
 AWS AMIを作成するリージョンを設定する。
 
-```yaml
-{"builders": [{"type": "amazon-ebs", "region": "ap-northeast-1"}]}
+```hcl
+source "amazon-ebs" "foo" {
+  "region" = "ap-northeast-1"
+}
 ```
 
 #### ▼ snapshot_users
 
-```yaml
-{"builders": [{"type": "amazon-ebs", "snapshot_users": "<AWSアカウントID>"}]}
+```hcl
+source "amazon-ebs" "foo" {
+  "snapshot_users" = "<AWSアカウントID>"
+}
 ```
 
 #### ▼ source_ami
 
 AWS AMIの基とするAWS AMI (例：Amazon Linux 2 AMI) を設定する。
 
-```yaml
-{"builders": [{"type": "amazon-ebs", "source_ami": "ami-0b7546e839d7ace12"}]}
+```hcl
+source "amazon-ebs" "foo" {
+  "source_ami" = "ami-0b7546e839d7ace12"
+}
 ```
 
 > - https://developer.hashicorp.com/packer/integrations/hashicorp/amazon/latest/components/builder/ebs#run-configuration
@@ -192,8 +212,10 @@ AWS AMIの基とするAWS AMI (例：Amazon Linux 2 AMI) を設定する。
 
 EC2へのSSH公開鍵認証時に使用するユーザー名を設定する。
 
-```yaml
-{"builders": [{"type": "amazon-ebs", "ssh_username": "ec2-user"}]}
+```hcl
+source "amazon-ebs" "foo" {
+  "ssh_username" = "ec2-user"
+}
 ```
 
 > - https://developer.hashicorp.com/packer/integrations/hashicorp/amazon/latest/components/builder/ebs#communicator-configuration
@@ -202,8 +224,10 @@ EC2へのSSH公開鍵認証時に使用するユーザー名を設定する。
 
 暗号化キーの種類を設定する。
 
-```yaml
-{"builders": [{"type": "amazon-ebs", "temporary_key_pair_type": "rsa"}]}
+```hcl
+source "amazon-ebs" "foo" {
+  "temporary_key_pair_type" = "rsa"
+}
 ```
 
 > - https://developer.hashicorp.com/packer/integrations/hashicorp/amazon/latest/components/builder/ebs#communicator-configuration
@@ -224,14 +248,24 @@ EC2へのSSH公開鍵認証時に使用するユーザー名を設定する。
 
 #### ▼ playbook_file
 
-```yaml
-{"provisioners": [{"type": "ansible", "playbook_file": "./playbook.yml"}]}
+```hcl
+build {
+
+  provisioner "ansible" {
+    playbook_file = "playbook.yml"
+  }
+}
 ```
 
 #### ▼ user
 
-```yaml
-{"provisioners": [{"type": "ansible", "user": "ec2-user"}]}
+```hcl
+build {
+
+  provisioner "ansible" {
+    user          = "ec2-user"
+  }
+}
 ```
 
 <br>
@@ -240,8 +274,13 @@ EC2へのSSH公開鍵認証時に使用するユーザー名を設定する。
 
 #### ▼ inline
 
-```yaml
-{"provisioners": [{"type": "shell", "inline": ["echo Hello World"]}]}
+```hcl
+build {
+
+  provisioner "shell" {
+    inline = ["echo Hello World"]
+  }
+}
 ```
 
 <br>
@@ -252,10 +291,14 @@ EC2へのSSH公開鍵認証時に使用するユーザー名を設定する。
 
 ファイル内で使用する変数を設定する。
 
-```yaml
-{
-  "variables": {"region": "ap-northeast-1"},
-  "builders": [{"region": "{{ user `region` }}"}],
+```hcl
+variable "region" {
+  type    = string
+  default = "ap-northeast-1"
+}
+
+source "amazon-ebs" "foo" {
+  "region" = "${var.region}"
 }
 ```
 
