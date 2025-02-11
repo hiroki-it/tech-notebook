@@ -310,7 +310,7 @@ gRPCに関するミドルウェア処理 (例：認証、ロギング、メト�
 
 `v1`系と`v2`系があり、関数の引数の設定方法が異なる。
 
-これを`Chain`関数に渡せば、gRPCで様々なインターセプターを簡単に実行できる。
+これを`Chain`関数に渡せば、gRPCでさまざまなインターセプターを簡単に実行できる。
 
 > - https://github.com/grpc-ecosystem/go-grpc-middleware/tree/main#interceptors
 > - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152
@@ -1896,7 +1896,7 @@ func NewDbMock(t *testing.T) (*gorm.DB, sqlmock.Sqlmock, error) {
 
 Carrierのインターフェースである。
 
-様々な計装ツールのCarrierがこのインターフェースの実装になっている。
+さまざまな計装ツールのCarrierがこのインターフェースの実装になっている。
 
 `otel/propagation`パッケージには、HTTPヘッダーをCarrierとして使用するための`TextMapCarrier`インターフェースの実装がある。
 

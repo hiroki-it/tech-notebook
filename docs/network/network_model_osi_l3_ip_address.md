@@ -185,7 +185,7 @@ URLは『`プロトコル + 完全修飾ドメイン名 + パス`』から、メ
 
 #### ▼ DNSゾーン
 
-同じドメイン名を持つ様々な完全修飾ドメイン名 (`www.example.com`、`www.stg.example.com`、`www.dev.example.com`) の集合のこと。
+同じドメイン名を持つさまざまな完全修飾ドメイン名 (`www.example.com`、`www.stg.example.com`、`www.dev.example.com`) の集合のこと。
 
 一般的なパブリックネットワークで使用するDNSゾーンタイプを『パブリックゾーン』、一方でプライベートネットワークの場合を『プライベートゾーン』という。
 

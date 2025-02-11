@@ -625,7 +625,7 @@ url: https://github.com/hiroki-hasegawa/foo-repository.git
 
 #### ▼ printfとは
 
-様々なデータ型をstring型で出力する。
+さまざまなデータ型をstring型で出力する。
 
 > - https://helm.sh/docs/chart_template_guide/function_list/#printf
 

@@ -17,7 +17,7 @@ description: CNI＠ネットワーク系の知見を記録しています。
 
 ### CNIとは
 
-CNIは、Cluster内に`L2`または`L3`を提供する (CNIによって様々) 。
+CNIは、Cluster内に`L2`または`L3`を提供する (CNIによってさまざま) 。
 
 Podを新しく作成する時に、kubeletからのリクエストによって、新しいPodをClusterネットワークに参加させる。
 

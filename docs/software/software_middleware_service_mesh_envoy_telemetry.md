@@ -263,7 +263,7 @@ Envoyは、自身を通過したリクエストのCarrier (例：HTTPヘッダ�
 
 #### ▼ Carrierの種類
 
-Envoyでは、様々なCarrierを使用できる。
+Envoyでは、さまざまなCarrierを使用できる。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
 

@@ -1045,7 +1045,7 @@ usage: grep [-abcdDEFGHhIiJLlMmnOopqRSsUVvwXxZz] [-A num] [-B num] [-C[num]]
 
 ### 基本的な使い方
 
-文字列の表示に関する様々なユーティリティ (例：`ls`、`cat`、`find`など) と組み合わせて使用する。
+文字列の表示に関するさまざまなユーティリティ (例：`ls`、`cat`、`find`など) と組み合わせて使用する。
 
 ```bash
 $ cat foo.txt | grep bar
@@ -2057,7 +2057,7 @@ $ find ./* \
 
 ## service
 
-アプリケーション系ミドルウェア (PHP-FPM、uWSGI) 、Web系ミドルウェア (Apache、Nginx) 、データ収集系エージェント (datadogエージェント、cloudwatchエージェント) などで様々なデーモンの操作に使用される。ただし、デーモン自体もコマンドを提供しているため、できる限りデーモンを使用する。
+アプリケーション系ミドルウェア (PHP-FPM、uWSGI) 、Web系ミドルウェア (Apache、Nginx) 、データ収集系エージェント (datadogエージェント、cloudwatchエージェント) などでさまざまなデーモンの操作に使用される。ただし、デーモン自体もコマンドを提供しているため、できる限りデーモンを使用する。
 
 <br>
 

@@ -1505,7 +1505,7 @@ PersistentVolumeClaimは、条件に応じてPersistentVolumeを探す。
 N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector
 ```
 
-これが起こる原因は様々ある (例：Nodeの再作成時にPodのあるNodeのAZが変わる、AWSのスポットインスタンスで特定のAZにしかNodeが作成されない)。
+これが起こる原因はさまざまある (例：Nodeの再作成時にPodのあるNodeのAZが変わる、AWSのスポットインスタンスで特定のAZにしかNodeが作成されない)。
 
 **＊解決例＊**
 

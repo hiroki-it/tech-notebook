@@ -15,9 +15,9 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 ## 01. 管理ユーティリティの種類
 
-### 様々な管理ユーティリティ
+### さまざまな管理ユーティリティ
 
-様々な粒度のプログラムを対象にした管理ユーティリティがある。
+さまざまな粒度のプログラムを対象にした管理ユーティリティがある。
 
 ![library_package_module](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/library_package_module.png)
 

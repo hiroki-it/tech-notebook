@@ -87,7 +87,7 @@ sysctlコマンドで一時的に設定するか、/etc/sysctl.confファイル�
 
 #### ▼ 実行可能ファイルの存在チェック
 
-このチェックでは、PATHにある様々な実行可能ファイルを探す。
+このチェックでは、PATHにあるさまざまな実行可能ファイルを探す。
 
 現在、ip, iptables, mount, nsenter, ebtables, ethtool, socat, tc, touchの実行ファイルがあるか否かをチェックする。
 

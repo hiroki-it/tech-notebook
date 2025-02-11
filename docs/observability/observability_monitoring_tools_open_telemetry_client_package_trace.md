@@ -1385,7 +1385,7 @@ func NewTracerProvider() {
 
 #### ▼ HTTP/gRPCリクエストの場合
 
-デフォルトで、様々な属性を持っている。
+デフォルトで、さまざまな属性を持っている。
 
 例えばGoであれば、`go.opentelemetry.io/otel/resource`パッケージからコールできる。
 
@@ -1406,7 +1406,7 @@ func NewTracerProvider() {
 
 #### ▼ DBクエリの場合
 
-デフォルトで、様々な属性を持っている。
+デフォルトで、さまざまな属性を持っている。
 
 ```yaml
 {

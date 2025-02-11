@@ -15,7 +15,7 @@ description: golangci-lint＠静的解析の知見を記録しています。
 
 ## 01. golangci-lintとは
 
-Goの様々な静的解析ツールをまとめて実行できる。
+Goのさまざまな静的解析ツールをまとめて実行できる。
 
 > - https://golangci-lint.run/usage/linters/
 > - https://zenn.dev/sanpo_shiho/books/61bc1e1a30bf27/viewer/642fe9

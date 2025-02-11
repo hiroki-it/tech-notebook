@@ -133,7 +133,7 @@ AWS KMSの暗号化キーを使用すると、パラメーターストアに永�
 
 セキュリティ上の理由で、本来はできないSecretのバージョン管理が、AWS KMSで暗号化することにより、可能になる。
 
-たとえ同じ文字列を暗号化する場合でも、その時のタイムスタンプなど様々な要素で暗号化されるため、毎回異なるハッシュ値に暗号化される。
+たとえ同じ文字列を暗号化する場合でも、その時のタイムスタンプなどさまざまな要素で暗号化されるため、毎回異なるハッシュ値に暗号化される。
 
 ![parameter-store_kms](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/parameter-store_kms.png)
 

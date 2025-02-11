@@ -1317,7 +1317,7 @@ Insect does not implement Animal (missing Eat method)
 
 ### 緩い型としてのインターフェース
 
-様々な値をインターフェース型として定義できる。
+さまざまな値をインターフェース型として定義できる。
 
 エイリアスとして、`any`型でも定義できる。
 

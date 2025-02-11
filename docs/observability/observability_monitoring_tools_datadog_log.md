@@ -830,7 +830,7 @@ AWS CloudWatch Logsから、以下のようなAWS API Gatewayアクセスログ�
 }
 ```
 
-これに対して、以下のようなカテゴリパーサーのルールを定義する。各Lambdaの`aws.invoked_function_arn`属性のARNに応じて、`service`属性にサービス値 (`foo-apigateway`、`bar-apigateway`、`baz-apigateway`) を付与する。この属性を使用する理由は、様々なAWSリソースの構造化ログが持っているためである (`owner`属性でも良い。ただし、おそらくS3からログを収集する場合はこれがない？) 。元の構造化ログにすでに`service`属性があるため、この値が上書きされる。
+これに対して、以下のようなカテゴリパーサーのルールを定義する。各Lambdaの`aws.invoked_function_arn`属性のARNに応じて、`service`属性にサービス値 (`foo-apigateway`、`bar-apigateway`、`baz-apigateway`) を付与する。この属性を使用する理由は、さまざまなAWSリソースの構造化ログが持っているためである (`owner`属性でも良い。ただし、おそらくS3からログを収集する場合はこれがない？) 。元の構造化ログにすでに`service`属性があるため、この値が上書きされる。
 
 ```
 foo-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****"

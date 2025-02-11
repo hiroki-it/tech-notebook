@@ -1072,7 +1072,7 @@ Envoyはマルチスレッドでパケットを処理する。
 - XDS-APIに関する処理
 - ランタイム
 - メモリバッファ上の統計情報のフラッシュ
-- Envoyのプロセスの様々な処理 (ホットリロードなど)
+- Envoyのプロセスのさまざまな処理 (ホットリロードなど)
 
 > - https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310
 > - https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy
