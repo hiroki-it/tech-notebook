@@ -92,15 +92,136 @@ build_ami:
 
 <br>
 
-## 02. builders
+## 02. build
 
-### buildersとは
+### sources
+
+実行する`source`を設定する。
+
+```hcl
+build {
+  sources = ["source.amazon-ebs.foo"]
+}
+```
+
+<br>
+
+### provisioner
+
+```hcl
+build {
+
+  provisioner "shell-local" {
+
+  }
+}
+```
+
+```hcl
+build {
+
+  provisioner "shell" {
+
+  }
+}
+```
+
+```hcl
+build {
+
+  provisioner "ansible" {
+
+  }
+}
+```
+
+<br>
+
+## 03. provisioner
+
+### provisionerとは
+
+サーバー/コンテナのプロビジョナーを設定する。
+
+<br>
+
+### ansibleの場合
+
+#### ▼ playbook_file
+
+```hcl
+build {
+
+  provisioner "ansible" {
+    playbook_file = "playbook.yml"
+  }
+}
+```
+
+#### ▼ user
+
+```hcl
+build {
+
+  provisioner "ansible" {
+    user = "ec2-user"
+  }
+}
+```
+
+<br>
+
+### shell-localの場合
+
+#### ▼ shell-local
+
+Ansibleは、コントロールノード (ansibleデプロイサーバー) と管理対象ノード (ansibleデプロイ先サーバー) から構成される。
+
+コントロールノードで実行するコマンドを設定する。
+
+#### ▼ inline
+
+```hcl
+build {
+
+  provisioner "shell-local" {
+    command = "ansible-galaxy install -f -r requirements.yml -p roles"
+  }
+}
+```
+
+<br>
+
+### shellの場合
+
+#### ▼ shellとは
+
+Ansibleは、コントロールノード (ansibleデプロイサーバー) と管理対象ノード (ansibleデプロイ先サーバー) から構成される。
+
+管理対象ノードで実行するコマンドを設定する。
+
+#### ▼ inline
+
+```hcl
+build {
+
+  provisioner "shell" {
+    inline = ["echo Hello World"]
+  }
+}
+```
+
+<br>
+
+## 04. source
+
+### sourceとは
 
 作成するマシンイメージやコンテナイメージの内容を設定する。
 
 <br>
 
-### typeがamazon-ebsの場合
+### amazon-ebsの場合
 
 #### ▼ ami_name
 
@@ -235,60 +356,9 @@ source "amazon-ebs" "foo" {
 
 <br>
 
-## 03. provisioners
+## 05. variable
 
-### type
-
-#### ▼ typeとは
-
-サーバー/コンテナのプロビジョナーを設定する。
-
-<br>
-
-### ansibleの場合
-
-#### ▼ playbook_file
-
-```hcl
-build {
-
-  provisioner "ansible" {
-    playbook_file = "playbook.yml"
-  }
-}
-```
-
-#### ▼ user
-
-```hcl
-build {
-
-  provisioner "ansible" {
-    user          = "ec2-user"
-  }
-}
-```
-
-<br>
-
-### shellの場合
-
-#### ▼ inline
-
-```hcl
-build {
-
-  provisioner "shell" {
-    inline = ["echo Hello World"]
-  }
-}
-```
-
-<br>
-
-## 04. variables
-
-### variablesとは
+### variableとは
 
 ファイル内で使用する変数を設定する。
 
