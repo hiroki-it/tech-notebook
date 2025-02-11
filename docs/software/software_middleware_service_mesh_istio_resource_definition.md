@@ -2086,6 +2086,85 @@ spec:
 > - https://news.mynavi.jp/techplus/article/kubernetes-30/
 > - https://github.com/istio/istio/issues/26559#issuecomment-675682440
 
+#### ▼ issuer
+
+JWTの発行元認証局を設定する。
+
+```yaml
+apiVersion: security.istio.io/v1
+kind: RequestAuthentication
+metadata:
+  name: foo-request-authentication-jwt
+spec:
+  jwtRules:
+    - issuer: https://foo-issuer.com
+```
+
+#### ▼ jwksUri
+
+JWTの署名を検証するための公開鍵のURLを設定する。
+
+```yaml
+apiVersion: security.istio.io/v1
+kind: RequestAuthentication
+metadata:
+  name: foo-request-authentication-jwt
+spec:
+  jwtRules:
+    - jwksUri: https://example.com/.well-known/jwks.json
+```
+
+#### ▼ forwardOriginalToken
+
+既存のJWTを再利用し、後続のマイクロサービスにそのまま転送するかどうかを設定する。
+
+```yaml
+apiVersion: security.istio.io/v1
+kind: RequestAuthentication
+metadata:
+  name: foo-request-authentication-jwt
+spec:
+  jwtRules:
+    - forwardOriginalToken: true
+```
+
+#### ▼ fromCookies
+
+`Cookie`ヘッダーの指定したキー名からアクセストークンを取得する。
+
+`Cookie`ヘッダーを使用して認証情報を運ぶ場合 (例：フロントエンドアプリケーションがCSRやSSR) に役立つ。
+
+```yaml
+apiVersion: security.istio.io/v1
+kind: RequestAuthentication
+metadata:
+  name: foo-request-authentication-jwt
+spec:
+  jwtRules:
+    fromCookies:
+      # sessionキーを指定する
+      - session
+```
+
+#### ▼ fromHeaders
+
+指定したヘッダーからアクセストークンを取得する。
+
+`Authorization`ヘッダーを使用して認証情報を運ぶ場合 (例：フロントエンドアプリケーションがCSR) に役立つ。
+
+```yaml
+apiVersion: security.istio.io/v1
+kind: RequestAuthentication
+metadata:
+  name: foo-request-authentication-jwt
+spec:
+  jwtRules:
+    fromHeaders:
+      # Authorizationヘッダーを指定する
+      - name: Authorization
+        prefix: "Bearer "
+```
+
 <br>
 
 ### .spec.selector
