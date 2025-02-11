@@ -45,7 +45,8 @@
 - #### <u>Packer</u>
 
   > - ##### [Packer](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_packer.html)
-  > - ##### [template.json](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_packer_template.html)
+  > - ##### [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_packer_command.html)
+  > - ##### [テンプレート](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_packer_template.html)
 
 - #### <u>Serverless Framework</u>
 

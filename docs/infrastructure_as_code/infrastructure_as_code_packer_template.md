@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】template.json＠Packer
-description: template.json＠Packerの知見を記録しています。
+title: 【IT技術の知見】テンプレート＠Packer
+description: テンプレート＠Packerの知見を記録しています。
 ---
 
-# template.json＠Packer
+# テンプレート＠Packer
 
 ## はじめに
 
@@ -77,7 +77,8 @@ build_ami:
     - export SOURCE_IMAGE_ID=$(aws ssm get-parameters --names /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64 --region ${AWS_DEFAULT_REGION} --query 'Parameters[0].Value' --output text)
     - echo "source ami-id: $SOURCE_IMAGE_ID"
     # Packerを実行する
-    - packer build template.json
+    - packer init template.pkr.hcl
+    - packer build template.pkr.hcl
     - AMI_NAME="foo-$(date "+%Y-%m-%d")"
     - AMI_ID=$(aws ec2 describe-images --region ${AWS_DEFAULT_REGION} --owners self --filters "Name=name,Values=${AMI_NAME}" --query 'Images[*][ImageId]' --output text)
     - SOURCE_IMAGE_NAME=$(git tag -l $CI_COMMIT_TAG -n | awk '{print $2}' | jq -r .image_name)
