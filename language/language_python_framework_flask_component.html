@@ -10082,6 +10082,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#session_cookie_name" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ SESSION_COOKIE_NAME
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secret_key" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ SECRET_KEY
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -25836,6 +25854,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#session_cookie_name" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ SESSION_COOKIE_NAME
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secret_key" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ SECRET_KEY
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -26157,6 +26193,33 @@
 <li><a href="https://www.twilio.com/blog/how-to-run-a-flask-application-jp">https://www.twilio.com/blog/how-to-run-a-flask-application-jp</a></li>
 </ul>
 </blockquote>
+<h4 id="session_cookie_name">▼ SESSION_COOKIE_NAME<a class="headerlink" href="#session_cookie_name" title="Permanent link">&para;</a></h4>
+<p><code>Cookie</code>ヘッダーでセッション情報 (ペイロード + タイムスタンプ + 署名) を運ぶ時のキー名を設定する。</p>
+<p>デフォルトでは、キー名は<code>session</code>になる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># レスポンス</span>
+<span class="l l-Scalar l-Scalar-Plain">200 OK</span>
+<span class="nn">---</span>
+<span class="nt">Set-Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">session=*****</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># リクエスト</span>
+<span class="c1"># レスポンスのSet-Cookieヘッダーによって、Cookieヘッダーをつける必要がある</span>
+<span class="l l-Scalar l-Scalar-Plain">GET /foo/</span>
+<span class="nn">---</span>
+<span class="nt">Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">session=*****</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/showchan33/items/b714cca80985b3db2565#web%E3%82%B5%E3%83%BC%E3%83%90%E3%81%AE%E5%AE%9F%E8%A3%85%E8%B5%B7%E5%8B%95">https://qiita.com/showchan33/items/b714cca80985b3db2565#web%E3%82%B5%E3%83%BC%E3%83%90%E3%81%AE%E5%AE%9F%E8%A3%85%E8%B5%B7%E5%8B%95</a></li>
+</ul>
+</blockquote>
+<h4 id="secret_key">▼ SECRET_KEY<a class="headerlink" href="#secret_key" title="Permanent link">&para;</a></h4>
+<p><code>Cookie</code>ヘッダーでペイロードとタイムスタンプを署名するためのキーを設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/showchan33/items/b714cca80985b3db2565#3%E3%81%A4%E7%9B%AE%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AF%E7%BD%B2%E5%90%8D">https://qiita.com/showchan33/items/b714cca80985b3db2565#3%E3%81%A4%E7%9B%AE%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AF%E7%BD%B2%E5%90%8D</a></li>
+<li><a href="https://flask.palletsprojects.com/en/stable/api/#flask.Flask.secret_key">https://flask.palletsprojects.com/en/stable/api/#flask.Flask.secret_key</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="03">03. ベストプラクティス<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_3">アプリケーションファクトリーパターン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -26292,7 +26355,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-11</span>
   </span>
 
     
