@@ -2122,6 +2122,8 @@ spec:
 
 既存のJWTを再利用し、後続のマイクロサービスにそのまま伝播するかどうかを設定する。
 
+もし後続のマイクロサービスがおらず、Istio EgressGatewayを通過する場合には、これを`false`としないとIstio EgressGatewayにアウトバウンドを拒否されてしまう (原因わからず) 。
+
 ```yaml
 apiVersion: security.istio.io/v1
 kind: RequestAuthentication
@@ -2438,7 +2440,7 @@ spec:
 
 #### ▼ NONE
 
-なお、Istio EgressGatewayは値に注意が必要である。
+Istio EgressGatewayは値に注意が必要である。
 
 ServiceEntryに対するリクエストの宛先IPアドレスはIstio EgressGatewayに書き換えられている。
 
