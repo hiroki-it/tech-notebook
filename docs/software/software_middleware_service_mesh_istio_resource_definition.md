@@ -2100,6 +2100,8 @@ spec:
     - issuer: https://foo-issuer.com
 ```
 
+> - https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-issuer
+
 #### ▼ jwksUri
 
 JWTの署名を検証するための公開鍵のURLを設定する。
@@ -2114,9 +2116,11 @@ spec:
     - jwksUri: https://example.com/.well-known/jwks.json
 ```
 
+> - https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-jwks_uri
+
 #### ▼ forwardOriginalToken
 
-既存のJWTを再利用し、後続のマイクロサービスにそのまま転送するかどうかを設定する。
+既存のJWTを再利用し、後続のマイクロサービスにそのまま伝播するかどうかを設定する。
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -2127,6 +2131,8 @@ spec:
   jwtRules:
     - forwardOriginalToken: true
 ```
+
+> - https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-forward_original_token
 
 #### ▼ fromCookies
 
@@ -2146,6 +2152,8 @@ spec:
       - session
 ```
 
+> - https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-from_cookies
+
 #### ▼ fromHeaders
 
 指定したヘッダーからアクセストークンを取得する。
@@ -2164,6 +2172,27 @@ spec:
       - name: Authorization
         prefix: "Bearer "
 ```
+
+> - https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-from_headers
+> - https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTHeader
+
+#### ▼ outputPayloadToHeader
+
+JWTを伝播するための新しいヘッダー名を設定する。
+
+検証後のJWTを新しいヘッダーに割り当て、後続のマイクロサービスに伝播する。
+
+```yaml
+apiVersion: security.istio.io/v1
+kind: RequestAuthentication
+metadata:
+  name: foo-request-authentication-jwt
+spec:
+  jwtRules:
+    - outputPayloadToHeader: X-Authorization
+```
+
+> - https://discuss.istio.io/t/passing-authorization-headers-automatically-jwt-between-microservices/9053/5
 
 <br>
 
