@@ -458,14 +458,14 @@ spec:
 
 Prometheus上でメトリクスをクエリすると、Istiodコントロールプレーン (`discovery`コンテナ) から収集したデータポイントを取得できる。
 
-| メトリクス名                              | 単位     | 説明                                                                                                                                                                                       |
-| ----------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| メトリクス名                              | 単位     | 説明                                                                                                                                                                                           |
+| ----------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `istio_requests_total`                    | カウント | `istio-proxy`コンテナが受信した総リクエスト数を表す。メトリクスの名前空間に対してさまざまなディメンションを設定できる。<br>・https://blog.christianposta.com/understanding-istio-telemetry-v2/ |
-| `istio_request_duration_milliseconds`     | カウント | `istio-proxy`コンテナが受信したリクエストに関して、処理の所要時間を表す。                                                                                                                  |
-| `istio_request_messages_total`            | カウント | `istio-proxy`コンテナが受信したgRPCによる総HTTPリクエスト数を表す。                                                                                                                        |
-| `istio_response_messages_total`           | カウント | `istio-proxy`コンテナが受信した総gRPCレスポンス数を表す。                                                                                                                                  |
-| `envoy_cluster_upstream_rq_retry`         | カウント | `istio-proxy`コンテナの他のPodへのリクエストに関する再試行数を表す。                                                                                                                       |
-| `envoy_cluster_upstream_rq_retry_success` | カウント | `istio-proxy`コンテナが他のPodへのリクエストに関する再試行成功数を表す。                                                                                                                   |
+| `istio_request_duration_milliseconds`     | カウント | `istio-proxy`コンテナが受信したリクエストに関して、処理の所要時間を表す。                                                                                                                      |
+| `istio_request_messages_total`            | カウント | `istio-proxy`コンテナが受信したgRPCによる総HTTPリクエスト数を表す。                                                                                                                            |
+| `istio_response_messages_total`           | カウント | `istio-proxy`コンテナが受信した総gRPCレスポンス数を表す。                                                                                                                                      |
+| `envoy_cluster_upstream_rq_retry`         | カウント | `istio-proxy`コンテナの他のPodへのリクエストに関する再試行数を表す。                                                                                                                           |
+| `envoy_cluster_upstream_rq_retry_success` | カウント | `istio-proxy`コンテナが他のPodへのリクエストに関する再試行成功数を表す。                                                                                                                       |
 
 > - https://istio.io/latest/docs/reference/config/metrics/#metrics
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_stats

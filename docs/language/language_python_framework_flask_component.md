@@ -114,6 +114,36 @@ app.run()
 
 > - https://www.twilio.com/blog/how-to-run-a-flask-application-jp
 
+#### ▼ SESSION_COOKIE_NAME
+
+`Cookie`ヘッダーでセッション情報 (ペイロード + タイムスタンプ + 署名) を運ぶ時のキー名を設定する。
+
+デフォルトでは、キー名は`session`になる。
+
+```yaml
+# レスポンス
+200 OK
+---
+Set-Cookie: session=*****
+```
+
+```yaml
+# リクエスト
+# レスポンスのSet-Cookieヘッダーによって、Cookieヘッダーをつける必要がある
+GET /foo/
+---
+Cookie: session=*****
+```
+
+> - https://qiita.com/showchan33/items/b714cca80985b3db2565#web%E3%82%B5%E3%83%BC%E3%83%90%E3%81%AE%E5%AE%9F%E8%A3%85%E8%B5%B7%E5%8B%95
+
+#### ▼ SECRET_KEY
+
+`Cookie`ヘッダーでペイロードとタイムスタンプを署名するためのキーを設定する。
+
+> - https://qiita.com/showchan33/items/b714cca80985b3db2565#3%E3%81%A4%E7%9B%AE%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AF%E7%BD%B2%E5%90%8D
+> - https://flask.palletsprojects.com/en/stable/api/#flask.Flask.secret_key
+
 <br>
 
 ## 03. ベストプラクティス
