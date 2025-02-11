@@ -10,19 +10,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="template.json＠Packerの知見を記録しています。">
+        <meta name="description" content="コマンド＠Packerの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_packer_template_json.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_packer_command.html">
       
       
         <link rel="prev" href="infrastructure_as_code_packer.html">
       
       
-        <link rel="next" href="infrastructure_as_code_serverless_framework_serverless_yml.html">
+        <link rel="next" href="infrastructure_as_code_packer_template.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -30,7 +30,7 @@
     
     
       
-        <title>【IT技術の知見】template.json＠Packer - 俺の技術ノート</title>
+        <title>【IT技術の知見】コマンド＠Packer - 俺の技術ノート</title>
       
     
     
@@ -94,7 +94,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#templatejsonpacker" class="md-skip">
+        <a href="#packer" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -154,7 +154,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】template.json＠Packer
+              【IT技術の知見】コマンド＠Packer
             
           </span>
         </div>
@@ -16600,6 +16600,8 @@
       
         
       
+        
+      
     
     
       
@@ -16674,7 +16676,7 @@
           
   
   <span class="md-ellipsis">
-    template.json
+    コマンド
     
   </span>
   
@@ -16682,11 +16684,11 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="infrastructure_as_code_packer_template_json.html" class="md-nav__link md-nav__link--active">
+      <a href="infrastructure_as_code_packer_command.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    template.json
+    コマンド
     
   </span>
   
@@ -16720,325 +16722,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
+  <a href="#01-packer" class="md-nav__link">
     <span class="md-ellipsis">
-      01. セットアップ
+      01. packer
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. セットアップ">
+    <nav class="md-nav" aria-label="01. packer">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#build" class="md-nav__link">
     <span class="md-ellipsis">
-      インストール
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="インストール">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#apt" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ aptリポジトリから
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ci" class="md-nav__link">
-    <span class="md-ellipsis">
-      CIによる自動化
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="CIによる自動化">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gitlab-ci" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ GitLab CI
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-builders" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. builders
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. builders">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#builders" class="md-nav__link">
-    <span class="md-ellipsis">
-      buildersとは
+      build
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#typeamazon-ebs" class="md-nav__link">
+  <a href="#init" class="md-nav__link">
     <span class="md-ellipsis">
-      typeがamazon-ebsの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="typeがamazon-ebsの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ami_name" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ami_name
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ami_users" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ami_users
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ena_support" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ena_support
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#encrypt_boot" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ encrypt_boot
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#force_deregister" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ force_deregister
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#instance_type" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ instance_type
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#launch_block_device_mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ launch_block_device_mappings
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#region" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ region
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#snapshot_users" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ snapshot_users
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#source_ami" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ source_ami
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssh_username" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ssh_username
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#temporary_key_pair_type" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ temporary_key_pair_type
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-provisioners" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. provisioners
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. provisioners">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#type" class="md-nav__link">
-    <span class="md-ellipsis">
-      type
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="type">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#type_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ typeとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ansible" class="md-nav__link">
-    <span class="md-ellipsis">
-      ansibleの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ansibleの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#playbook_file" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ playbook_file
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#user" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ user
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#shell" class="md-nav__link">
-    <span class="md-ellipsis">
-      shellの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="shellの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#inline" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ inline
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. variables
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. variables">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      variablesとは
+      init
     </span>
   </a>
   
@@ -17053,6 +16758,28 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_packer_template.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    テンプレート
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -25727,325 +25454,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
+  <a href="#01-packer" class="md-nav__link">
     <span class="md-ellipsis">
-      01. セットアップ
+      01. packer
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. セットアップ">
+    <nav class="md-nav" aria-label="01. packer">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#build" class="md-nav__link">
     <span class="md-ellipsis">
-      インストール
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="インストール">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#apt" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ aptリポジトリから
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ci" class="md-nav__link">
-    <span class="md-ellipsis">
-      CIによる自動化
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="CIによる自動化">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gitlab-ci" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ GitLab CI
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-builders" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. builders
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. builders">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#builders" class="md-nav__link">
-    <span class="md-ellipsis">
-      buildersとは
+      build
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#typeamazon-ebs" class="md-nav__link">
+  <a href="#init" class="md-nav__link">
     <span class="md-ellipsis">
-      typeがamazon-ebsの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="typeがamazon-ebsの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ami_name" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ami_name
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ami_users" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ami_users
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ena_support" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ena_support
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#encrypt_boot" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ encrypt_boot
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#force_deregister" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ force_deregister
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#instance_type" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ instance_type
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#launch_block_device_mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ launch_block_device_mappings
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#region" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ region
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#snapshot_users" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ snapshot_users
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#source_ami" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ source_ami
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssh_username" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ssh_username
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#temporary_key_pair_type" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ temporary_key_pair_type
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-provisioners" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. provisioners
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. provisioners">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#type" class="md-nav__link">
-    <span class="md-ellipsis">
-      type
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="type">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#type_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ typeとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ansible" class="md-nav__link">
-    <span class="md-ellipsis">
-      ansibleの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ansibleの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#playbook_file" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ playbook_file
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#user" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ user
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#shell" class="md-nav__link">
-    <span class="md-ellipsis">
-      shellの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="shellの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#inline" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ inline
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. variables
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. variables">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      variablesとは
+      init
     </span>
   </a>
   
@@ -26075,7 +25505,7 @@
   
 
 
-<h1 id="templatejsonpacker">template.json＠Packer<a class="headerlink" href="#templatejsonpacker" title="Permanent link">&para;</a></h1>
+<h1 id="packer">コマンド＠Packer<a class="headerlink" href="#packer" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -26084,223 +25514,13 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_2">インストール<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="apt">▼ aptリポジトリから<a class="headerlink" href="#apt" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://www.packer.io/downloads">https://www.packer.io/downloads</a></li>
-</ul>
-</blockquote>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span>https://apt.releases.hashicorp.com/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
-$<span class="w"> </span>sudo<span class="w"> </span>apt-add-repository<span class="w"> </span><span class="s2">&quot;deb [arch=amd64] https://apt.releases.hashicorp.com </span><span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> main&quot;</span>
-$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>packer
+<h2 id="01-packer">01. packer<a class="headerlink" href="#01-packer" title="Permanent link">&para;</a></h2>
+<h3 id="build">build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>packer<span class="w"> </span>build<span class="w"> </span>template.pkr.hcl
 </code></pre></div>
 <p><br></p>
-<h3 id="ci">CIによる自動化<a class="headerlink" href="#ci" title="Permanent link">&para;</a></h3>
-<h4 id="gitlab-ci">▼ GitLab CI<a class="headerlink" href="#gitlab-ci" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">AWS_DEFAULT_REGION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ap-northeast-1&quot;</span>
-<span class="w">  </span><span class="nt">AWS_ACCOUNT_ID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span>
-<span class="w">  </span><span class="nt">AWS_IAM_ROLE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;gitlab-ci-packer&quot;</span>
-
-<span class="nt">stages</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-
-<span class="nt">build_ami</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">  </span><span class="c1"># CIの実行環境</span>
-<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker:19.03.0</span>
-<span class="w">  </span><span class="c1"># サービスコンテナ</span>
-<span class="w">  </span><span class="nt">services</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker:19.03.0-dind</span>
-<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">GIT_SUBMODULE_STRATEGY</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;recursive&quot;</span>
-<span class="w">  </span><span class="nt">id_tokens</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">GITLAB_OIDC_TOKEN</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">aud</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;GitLabのURL&gt;</span>
-<span class="w">  </span><span class="nt">before_script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apt-get update &amp;&amp; apt-get install -y git jq awscli</span>
-<span class="w">    </span><span class="c1"># クレデンシャルを取得する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">      </span><span class="no">echo &quot;sleeping random seconds (&lt;15s)&quot;</span>
-<span class="w">      </span><span class="no">sleep $(( $RANDOM % 15 ))</span>
-<span class="w">      </span><span class="no">count=0</span>
-<span class="w">      </span><span class="no">backoff=1</span>
-<span class="w">      </span><span class="no">until STS=($(aws sts assume-role-with-web-identity \</span>
-<span class="w">      </span><span class="no">--role-arn arn:aws:iam::${AWS_ACCOUNT_ID}:role/${AWS_IAM_ROLE} \</span>
-<span class="w">      </span><span class="no">--role-session-name &quot;&quot;&lt;任意のセッション名&gt;&quot; \</span>
-<span class="w">      </span><span class="no">--web-identity-token $GITLAB_OIDC_TOKEN \</span>
-<span class="w">      </span><span class="no">--duration-seconds 1800 \</span>
-<span class="w">      </span><span class="no">--query &#39;Credentials.[AccessKeyId,SecretAccessKey,SessionToken]&#39; \</span>
-<span class="w">      </span><span class="no">--output text)) || (( count++ &gt;= 5 )); do echo &quot;Retrying: $backoff&quot;; sleep $backoff; (( backoff*=2 )); done</span>
-<span class="w">      </span><span class="no">export AWS_ACCESS_KEY_ID=&quot;${STS[0]}&quot;</span>
-<span class="w">      </span><span class="no">export AWS_SECRET_ACCESS_KEY=&quot;${STS[1]}&quot;</span>
-<span class="w">      </span><span class="no">export AWS_SESSION_TOKEN=&quot;${STS[2]}&quot;</span>
-<span class="w">      </span><span class="no">aws sts get-caller-identity</span>
-<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export SOURCE_IMAGE_ID=$(aws ssm get-parameters --names /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64 --region ${AWS_DEFAULT_REGION} --query &#39;Parameters[0].Value&#39; --output text)</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;source ami-id</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$SOURCE_IMAGE_ID&quot;</span>
-<span class="w">    </span><span class="c1"># Packerを実行する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">packer build template.json</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMI_NAME=&quot;foo-$(date &quot;+%Y-%m-%d&quot;)&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMI_ID=$(aws ec2 describe-images --region ${AWS_DEFAULT_REGION} --owners self --filters &quot;Name=name,Values=${AMI_NAME}&quot; --query &#39;Images[*][ImageId]&#39; --output text)</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SOURCE_IMAGE_NAME=$(git tag -l $CI_COMMIT_TAG -n | awk &#39;{print $2}&#39; | jq -r .image_name)</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo $SOURCE_IMAGE_NAME</span>
-<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_TAG</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manual</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-public-parameters-ami.html">https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-public-parameters-ami.html</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="02-builders">02. builders<a class="headerlink" href="#02-builders" title="Permanent link">&para;</a></h2>
-<h3 id="builders">buildersとは<a class="headerlink" href="#builders" title="Permanent link">&para;</a></h3>
-<p>作成するマシンイメージやコンテナイメージの内容を設定する。</p>
-<p><br></p>
-<h3 id="typeamazon-ebs">typeがamazon-ebsの場合<a class="headerlink" href="#typeamazon-ebs" title="Permanent link">&para;</a></h3>
-<h4 id="ami_name">▼ ami_name<a class="headerlink" href="#ami_name" title="Permanent link">&para;</a></h4>
-<p>AWS AMIの名前を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;ami_name&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bar-ami&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="ami_users">▼ ami_users<a class="headerlink" href="#ami_users" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;ami_users&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;AWSアカウントID&gt;&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="ena_support">▼ ena_support<a class="headerlink" href="#ena_support" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;ena_support&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="encrypt_boot">▼ encrypt_boot<a class="headerlink" href="#encrypt_boot" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;encrypt_boot&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="force_deregister">▼ force_deregister<a class="headerlink" href="#force_deregister" title="Permanent link">&para;</a></h4>
-<p>同じ名前のマシンイメージが存在する場合に、既存のマシンイメージを登録解除してからこれを作成するか否か、を設定する。</p>
-<p>Packerの作成するマシンイメージの名前は、ランダム値をつけない限り、常に同じである。</p>
-<p>マシンイメージの名前の重複を許可しないプロバイダー (例：AWS) では、<code>1</code>個の名前のマシンイメージを一回しか作成できないことになってしまう。</p>
-<p>そういった場合に必要になる。</p>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;force_deregister&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="instance_type">▼ instance_type<a class="headerlink" href="#instance_type" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;instance_type&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t2.micro&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="launch_block_device_mappings">▼ launch_block_device_mappings<a class="headerlink" href="#launch_block_device_mappings" title="Permanent link">&para;</a></h4>
-<p>EC2に紐付けるルートデバイスボリュームを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;launch_block_device_mappings&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="c1">      # ルートボリューム</span>
-<span class="w">      </span><span class="s2">&quot;device_name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/dev/xvda&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;volume_type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;gp2&quot;</span><span class="p">,</span>
-<span class="c1">      # AWS AMIの作成後に、元となったEC2のボリュームを削除する</span>
-<span class="w">      </span><span class="s2">&quot;delete_on_termination&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;volume_size&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;300&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="region">▼ region<a class="headerlink" href="#region" title="Permanent link">&para;</a></h4>
-<p>AWS AMIを作成するリージョンを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;region&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="snapshot_users">▼ snapshot_users<a class="headerlink" href="#snapshot_users" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;snapshot_users&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;AWSアカウントID&gt;&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="source_ami">▼ source_ami<a class="headerlink" href="#source_ami" title="Permanent link">&para;</a></h4>
-<p>AWS AMIの基とするAWS AMI (例：Amazon Linux 2 AMI) を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;source_ami&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0b7546e839d7ace12&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://developer.hashicorp.com/packer/integrations/hashicorp/amazon/latest/components/builder/ebs#run-configuration">https://developer.hashicorp.com/packer/integrations/hashicorp/amazon/latest/components/builder/ebs#run-configuration</a></li>
-</ul>
-</blockquote>
-<h4 id="ssh_username">▼ ssh_username<a class="headerlink" href="#ssh_username" title="Permanent link">&para;</a></h4>
-<p>EC2へのSSH公開鍵認証時に使用するユーザー名を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;ssh_username&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ec2-user&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://developer.hashicorp.com/packer/integrations/hashicorp/amazon/latest/components/builder/ebs#communicator-configuration">https://developer.hashicorp.com/packer/integrations/hashicorp/amazon/latest/components/builder/ebs#communicator-configuration</a></li>
-</ul>
-</blockquote>
-<h4 id="temporary_key_pair_type">▼ temporary_key_pair_type<a class="headerlink" href="#temporary_key_pair_type" title="Permanent link">&para;</a></h4>
-<p>暗号化キーの種類を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;temporary_key_pair_type&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;rsa&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://developer.hashicorp.com/packer/integrations/hashicorp/amazon/latest/components/builder/ebs#communicator-configuration">https://developer.hashicorp.com/packer/integrations/hashicorp/amazon/latest/components/builder/ebs#communicator-configuration</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="03-provisioners">03. provisioners<a class="headerlink" href="#03-provisioners" title="Permanent link">&para;</a></h2>
-<h3 id="type">type<a class="headerlink" href="#type" title="Permanent link">&para;</a></h3>
-<h4 id="type_1">▼ typeとは<a class="headerlink" href="#type_1" title="Permanent link">&para;</a></h4>
-<p>サーバー/コンテナのプロビジョナーを設定する。</p>
-<p><br></p>
-<h3 id="ansible">ansibleの場合<a class="headerlink" href="#ansible" title="Permanent link">&para;</a></h3>
-<h4 id="playbook_file">▼ playbook_file<a class="headerlink" href="#playbook_file" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nb">build</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">&quot;ansible&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">playbook_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;playbook.yml&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="user">▼ user<a class="headerlink" href="#user" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nb">build</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">&quot;ansible&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">user</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ec2-user&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="shell">shellの場合<a class="headerlink" href="#shell" title="Permanent link">&para;</a></h3>
-<h4 id="inline">▼ inline<a class="headerlink" href="#inline" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nb">build</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">&quot;shell&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">inline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;echo Hello World&quot;</span><span class="p">]</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><br></p>
-<h2 id="04-variables">04. variables<a class="headerlink" href="#04-variables" title="Permanent link">&para;</a></h2>
-<h3 id="variables">variablesとは<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h3>
-<p>ファイル内で使用する変数を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;region&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
-<span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
-<span class="p">}</span>
-
-<span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;region&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.region}&quot;</span>
-<span class="p">}</span>
+<h3 id="init">init<a class="headerlink" href="#init" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>packer<span class="w"> </span>init<span class="w"> </span>template.pkr.hcl
 </code></pre></div>
 <p><br></p>
 
