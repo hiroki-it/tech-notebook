@@ -238,9 +238,9 @@ $ /fluent-bit/bin/fluent-bit \
 
 <br>
 
-### kubernetes_eventsプラグイン
+### kubernetes-eventsプラグイン
 
-#### ▼ kubernetes_eventsプラグインとは
+#### ▼ kubernetes-eventsプラグインとは
 
 Kubernetesリソースのイベントをログとして収集する。
 
