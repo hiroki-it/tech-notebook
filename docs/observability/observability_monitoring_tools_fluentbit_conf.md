@@ -238,6 +238,35 @@ $ /fluent-bit/bin/fluent-bit \
 
 <br>
 
+### kubernetes_eventsプラグイン
+
+#### ▼ kubernetes_eventsプラグインとは
+
+Kubernetesリソースのイベントをログとして収集する。
+
+kubernetes-event-exporterの代わりに使用できる。
+
+> - https://github.com/resmoio/kubernetes-event-exporter
+
+#### ▼ セットアップ
+
+**＊実装例＊**
+
+```bash
+[INPUT]
+    # プラグイン名
+    Name              kubernetes_events
+    Tag               k8s_events
+    # kube-apiserverのURL
+    Kube_URL          https://kubernetes.default.svc
+    Kube_CA_File      /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+    Kube_Token_File   /var/run/secrets/kubernetes.io/serviceaccount/token
+```
+
+> - https://docs.fluentbit.io/manual/pipeline/inputs/kubernetes-events
+
+<br>
+
 ### tailプラグイン
 
 #### ▼ tailプラグインとは

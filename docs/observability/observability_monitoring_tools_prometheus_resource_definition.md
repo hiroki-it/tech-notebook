@@ -887,7 +887,7 @@ Prometheusは、Podから直接的にデータポイントを収集できるが�
 注意点として、アプリケーションのPodだけでなく、以下のPodも動的に検出する必要があるため、同様にServiceMonitorが必要である。
 
 - Kubernetesコンポーネント (例：kube-apiserver、kubeletに内蔵されたcAdvisorなど)
-- PrometheusのExporter (例：node-exporter、kube-state-metricsなど)
+- PrometheusのExporter (例：Node Exporter、kube-state-metricsなど)
 
 ![prometheus-operator_service-monitor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus-operator_service-monitor.png)
 
@@ -983,7 +983,7 @@ ServiceMonitorでは、Kubernetes SD configurationsのメタラベルのうち�
 
 **＊例＊**
 
-node-exporterが作成したメトリクスでは、`instance`ラベルが`*.*.*.*:<ポート番号>`になっている。
+Node Exporterが作成したメトリクスでは、`instance`ラベルが`*.*.*.*:<ポート番号>`になっている。
 
 これだとわかりにくいため、Podの`__meta_kubernetes_pod_node_name`ラベルの値 (Nodeのホスト名) に変換する。
 
@@ -1161,7 +1161,7 @@ metadata:
 
 **＊例＊**
 
-node-exporterのPodからメトリクスを収集する。
+Node ExporterのPodからメトリクスを収集する。
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
