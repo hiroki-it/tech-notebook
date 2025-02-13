@@ -10911,8 +10911,6 @@
       
         
       
-        
-      
     
     
       
@@ -11050,81 +11048,6 @@
   
   <span class="md-ellipsis">
     リソース定義
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_4_1_3_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_9_2_4_1_3_3" id="__nav_9_2_4_1_3_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ OpenPolicyAgent
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="6" aria-labelledby="__nav_9_2_4_1_3_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_2_4_1_3_3">
-            <span class="md-nav__icon md-icon"></span>
-            ■ OpenPolicyAgent
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../testing/testing_whitebox_infrastructure_lint_code_conventions_open_policy_agent.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    OpenPolicyAgent
     
   </span>
   
@@ -13249,6 +13172,8 @@
       
         
       
+        
+      
     
     
       
@@ -13295,6 +13220,28 @@
   
   <span class="md-ellipsis">
     認可
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/security_auth_authorization_open_policy_agent.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenPolicyAgent
     
   </span>
   
@@ -26920,9 +26867,6 @@
 </tbody>
 </table>
 <h4 id="aws-ec2_1">▼ 踏み台AWS EC2の場合<a class="headerlink" href="#aws-ec2_1" title="Permanent link">&para;</a></h4>
-<p>以下のコマンドをローカルPCで実行することになる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">serveraliveinterval</span><span class="o">=</span><span class="m">60</span><span class="w"> </span>-f<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="m">3306</span>:&lt;AWS<span class="w"> </span>Auroraのリーダーエンドポイント&gt;:3306<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;~/.ssh/foo.pem&quot;</span><span class="w"> </span>&lt;踏み台サーバーの実行ユーザー&gt;@&lt;踏み台サーバーのホスト&gt;<span class="w"> </span>-p<span class="w"> </span><span class="m">22</span>
-</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -26943,6 +26887,9 @@
 </tr>
 </tbody>
 </table>
+<p>以下のコマンドをローカルPCで実行することになる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">serveraliveinterval</span><span class="o">=</span><span class="m">60</span><span class="w"> </span>-f<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="m">3306</span>:&lt;AWS<span class="w"> </span>Auroraのリーダーエンドポイント&gt;:3306<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;~/.ssh/foo.pem&quot;</span><span class="w"> </span>&lt;踏み台サーバーの実行ユーザー&gt;@&lt;踏み台サーバーのホスト&gt;<span class="w"> </span>-p<span class="w"> </span><span class="m">22</span>
+</code></pre></div>
 <h4 id="efs">▼ EFSの場合<a class="headerlink" href="#efs" title="Permanent link">&para;</a></h4>
 <p>AWS EC2に割り振られる可能性のあるIPアドレスを許可するために、AWS EC2のセキュリティグループID、またはサブネットのCIDRブロックを設定する。</p>
 <table>

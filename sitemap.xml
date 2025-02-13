@@ -1617,6 +1617,10 @@
          <lastmod>2025-02-13</lastmod>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/security/security_auth_authorization_open_policy_agent.html</loc>
+         <lastmod>2025-02-13</lastmod>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/security/security_auth_sso.html</loc>
          <lastmod>2025-02-13</lastmod>
     </url>
@@ -2426,10 +2430,6 @@
     </url>
     <url>
          <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_code_conventions_kyverno_resource_definition.html</loc>
-         <lastmod>2025-02-13</lastmod>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_code_conventions_open_policy_agent.html</loc>
          <lastmod>2025-02-13</lastmod>
     </url>
     <url>
