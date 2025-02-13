@@ -114,6 +114,10 @@ SHOW variables LIKE '%version%';
 
 SSH公開鍵認証を使用する場合、ユーザーが自前でDB接続者を管理する必要がある。
 
+```bash
+$ ssh -o serveraliveinterval=60 -f -N -L 3306:<AWS Auroraのリーダーエンドポイント>:3306 -i "~/.ssh/foo.pem" <踏み台サーバーの実行ユーザー>@<踏み台サーバーのホスト> -p 22
+```
+
 > - https://qiita.com/shimi7o/items/732e91126ab4a06162a7
 
 #### ▼ AWS SSM Session ManagerのSSHセッションを使用する場合
