@@ -30,7 +30,6 @@
   >   > - ##### [kubeconform](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_grammatical_mistake_kubeconform.html)
   > - ##### <u>コード規約違反テスト</u>
   >   > - ##### [confest](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_code_conventions_violation_confest.html)
-  >   > - ##### [OpenPolicyAgent](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_code_conventions_open_policy_agent.html)
   >   > - ##### <u>Kyverno</u>
   >   >   > - ##### [Kyverno](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_code_conventions_kyverno.html)
   >   >   > - ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_code_conventions_kyverno_resource_definition.html)

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】OpenPolicyAgent＠コード規約違反
-description: OpenPolicyAgent＠コード規約違反の知見を記録しています。
+title: 【IT技術の知見】OpenPolicyAgent＠認可
+description: OpenPolicyAgent＠認可の知見を記録しています。
 ---
 
-# OpenPolicyAgent＠コード規約違反
+# OpenPolicyAgent＠認可
 
 ## はじめに
 
