@@ -562,7 +562,7 @@ $ cp chart/values.example.yaml values.yaml
 name: port-forward-for-aws-aurora
 
 remote:
-  # AWS Auroraのリーダーエンドポイントを設定する
+  # AWS Auroraのホスト (例：リーダーエンドポイント) を設定する
   host:
   # AWS Auroraのポート番号を設定する
   port:
@@ -571,23 +571,32 @@ remote:
 #### ▼ pod.yaml
 
 ```yaml
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: {{.Values.name}}
 spec:
-  containers:
-    - name: {{.Values.name}}
-      image: marcnuri/port-forward:latest
-      ports:
-        - containerPort: 3306
-      env:
-        - name: LOCAL_PORT
-          value: "3306"
-        - name: REMOTE_HOST
-          value: {{.Values.remote.host}}
-        - name: REMOTE_PORT
-          value: {{.Values.remote.port | quote}}
+  replicas: 1
+  selector:
+    matchLabels:
+      name: {{.Values.name}}
+  template:
+    metadata:
+      labels:
+        name: {{.Values.name}}
+    spec:
+      containers:
+        - name: {{.Values.name}}
+          image: marcnuri/port-forward:latest
+          ports:
+            - containerPort: 443
+          env:
+            - name: LOCAL_PORT
+              value: "443"
+            - name: REMOTE_HOST
+              value: {{.Values.remote.host}}
+            - name: REMOTE_PORT
+              value: {{.Values.remote.port | quote}}
 ```
 
 > - https://hub.docker.com/r/marcnuri/port-forward
@@ -597,7 +606,7 @@ spec:
 AWS Auroraにポートフォワーディングを実行する。
 
 ```bash
-$ kubectl port-forward port-forward-for-aws-aurora -n <Namespace名> <ローカルPCの好きなポート番号>:3306
+$ kubectl port-forward deployment/port-forward-for-aws-aurora -n <Namespace名> <ローカルPCの好きなポート番号>:443
 ```
 
 別ターミナルを開き、AWS AuroraのDBにログインする。

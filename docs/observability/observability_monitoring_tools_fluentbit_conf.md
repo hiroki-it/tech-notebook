@@ -188,6 +188,35 @@ $ /fluent-bit/bin/fluent-bit -i dummy -o stdout
 
 <br>
 
+### fluentbit_metricsプラグイン
+
+#### ▼ fluentbit_metricsプラグインとは
+
+自身のメトリクスを収集する。
+
+OUTPUTでprometheus_exporterプラグインを使用することにより、Prometheusがスクレイピングを実施するためのエンドポイントを公開できる。
+
+```bash
+[SERVICE]
+    flush           1
+    log_level       info
+
+[INPUT]
+    name            fluentbit_metrics
+    tag             internal_metrics
+    scrape_interval 2
+
+[OUTPUT]
+    name            prometheus_exporter
+    match           internal_metrics
+    host            0.0.0.0
+    port            2021
+```
+
+> - https://docs.fluentbit.io/manual/pipeline/inputs/fluentbit-metrics
+
+<br>
+
 ### forwardプラグイン
 
 #### ▼ forwardプラグインとは

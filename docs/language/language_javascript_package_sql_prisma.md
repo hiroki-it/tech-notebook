@@ -133,6 +133,7 @@ $ yarn prisma db seed
 ```javascript
 datasource db {
   provider = "<プロトコル名>"
+  // 例：mysql://user:password@<AWS Auroraクラスターのリーダーエンドポイント>:3306/foo
   url      = "<プロトコル名>://<DBユーザー>:<DBパスワード>@<DBホスト>:<ポート番号>/<DB名>?schema=public&connection_limit=30&pool_timeout=60"
 }
 ```

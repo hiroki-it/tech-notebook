@@ -17,11 +17,11 @@ description: Exporter＠Prometheus
 
 ### Exporterとは
 
-PrometheusがPull型通信でメトリクスのデータポイントを収集するためのエンドポイントとして動作する。
+PrometheusがPull型スクレイピングでメトリクスのデータポイントを収集するためのエンドポイントとして動作する。
 
 基本的にはデータポイントを収集したいNode内で稼働させるが、一部のExporter (例：外形監視のblack-exporter) は、Node外で稼働させる。
 
-Pull型通信により、アプリケーションはPrometheusの存在を知る必要がなく、関心を分離できる。収集したいメトリクスに合わせて、ExporterをKubernetesのNodeに導入する必要がある。
+Pull型スクレイピングにより、アプリケーションはPrometheusの存在を知る必要がなく、関心を分離できる。収集したいメトリクスに合わせて、ExporterをKubernetesのNodeに導入する必要がある。
 
 また、各Exporterは待ち受けるエンドポイントやポート番号が異なっており、Prometheusが各Exporterからメトリクスを収集できるように、各Nodeでエンドポイントやポート番号へのインバウンド通信を許可する必要がある。
 

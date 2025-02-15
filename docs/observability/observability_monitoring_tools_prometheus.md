@@ -311,7 +311,7 @@ Silenceされている期間、無効化されたアラートはAlertmanagerのU
 
 ### PushGatewayとは
 
-PrometheusがPush型メトリクスを対象から収集するためのエンドポイントとして動作する。
+PrometheusがPush型スクレイピングでメトリクスを収集するためのエンドポイントとして動作する。
 
 > - https://prometheus.io/docs/practices/pushing/
 
@@ -321,7 +321,7 @@ PrometheusがPush型メトリクスを対象から収集するためのエンド
 
 ### ServiceDiscoveryとは
 
-Pull型通信の宛先のIPアドレスが動的に変化する (例：スケーリングなど) 場合、宛先を動的に検出し、データポイントを収集し続けられるようにする。
+Pull型スクレイピングの宛先のIPアドレスが動的に変化する (例：スケーリングなど) 場合、宛先を動的に検出し、データポイントを収集し続けられるようにする。
 
 > - https://christina04.hatenablog.com/entry/prometheus-service-discovery
 
