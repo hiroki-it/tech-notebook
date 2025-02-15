@@ -26195,9 +26195,9 @@
 <p><br></p>
 <h2 id="01-exporter">01. Exporter<a class="headerlink" href="#01-exporter" title="Permanent link">&para;</a></h2>
 <h3 id="exporter">Exporterとは<a class="headerlink" href="#exporter" title="Permanent link">&para;</a></h3>
-<p>PrometheusがPull型スクレイピングでメトリクスのデータポイントを収集するためのエンドポイントとして動作する。</p>
+<p>PrometheusがPull型収集でメトリクスのデータポイントを収集するためのエンドポイントとして動作する。</p>
 <p>基本的にはデータポイントを収集したいNode内で稼働させるが、一部のExporter (例：外形監視のblack-exporter) は、Node外で稼働させる。</p>
-<p>Pull型スクレイピングにより、アプリケーションはPrometheusの存在を知る必要がなく、関心を分離できる。収集したいメトリクスに合わせて、ExporterをKubernetesのNodeに導入する必要がある。</p>
+<p>Pull型収集により、アプリケーションはPrometheusの存在を知る必要がなく、関心を分離できる。収集したいメトリクスに合わせて、ExporterをKubernetesのNodeに導入する必要がある。</p>
 <p>また、各Exporterは待ち受けるエンドポイントやポート番号が異なっており、Prometheusが各Exporterからメトリクスを収集できるように、各Nodeでエンドポイントやポート番号へのインバウンド通信を許可する必要がある。</p>
 <blockquote>
 <ul>
@@ -26296,7 +26296,7 @@
 </tr>
 <tr>
 <td style="text-align: left;"><a href="https://github.com/prometheus/blackbox_exporter">Blackbox Exporter</a></td>
-<td>指定したプロトコルで外形監視を実施する。外形監視のため、スクレイピングは一度Cluster外に出る。スクレイピングの成否以外にも、各種メトリクス (レスポンスタイム、HTTPステータスなど) を収集できる。<br>・<a href="https://handon.hatenablog.jp/entry/2019/01/29/005935">https://handon.hatenablog.jp/entry/2019/01/29/005935</a> <br>・<a href="https://medium.com/@lambdaEranga/monitor-kubernets-services-endpoints-with-prometheus-blackbox-exporter-a64e062c05d5">https://medium.com/@lambdaEranga/monitor-kubernets-services-endpoints-with-prometheus-blackbox-exporter-a64e062c05d5</a></td>
+<td>指定したプロトコルで外形監視を実施する。外形監視のため、リクエストは一度Cluster外に出る。リクエストの成否以外にも、各種メトリクス (レスポンスタイム、HTTPステータスなど) を収集できる。<br>・<a href="https://handon.hatenablog.jp/entry/2019/01/29/005935">https://handon.hatenablog.jp/entry/2019/01/29/005935</a> <br>・<a href="https://medium.com/@lambdaEranga/monitor-kubernets-services-endpoints-with-prometheus-blackbox-exporter-a64e062c05d5">https://medium.com/@lambdaEranga/monitor-kubernets-services-endpoints-with-prometheus-blackbox-exporter-a64e062c05d5</a></td>
 <td><code>9115</code></td>
 <td>同上</td>
 <td></td>

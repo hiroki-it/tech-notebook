@@ -26246,7 +26246,7 @@ prometheus-prometheus-kube-prometheus-prometheus.yaml
 <h2 id="02-03-http-server">02-03. HTTP server<a class="headerlink" href="#02-03-http-server" title="Permanent link">&para;</a></h2>
 <h3 id="http-server">HTTP serverとは<a class="headerlink" href="#http-server" title="Permanent link">&para;</a></h3>
 <p>データポイントを参照するためのエンドポイントを公開する。</p>
-<p>PromQLをスクレイピングとして受信し、ローカルストレージからデータポイントをメトリクスとして返却する。</p>
+<p>PromQLリクエストを受信し、ローカルストレージからデータポイントをメトリクスとして返却する。</p>
 <p><br></p>
 <h3 id="_4">エンドポイント<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="metrics">▼ <code>/metrics</code><a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h4>
@@ -26444,7 +26444,7 @@ $<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>/v
 <p><br></p>
 <h2 id="04-pushgateway">04. PushGateway<a class="headerlink" href="#04-pushgateway" title="Permanent link">&para;</a></h2>
 <h3 id="pushgateway">PushGatewayとは<a class="headerlink" href="#pushgateway" title="Permanent link">&para;</a></h3>
-<p>PrometheusがPush型スクレイピングでメトリクスを収集するためのエンドポイントとして動作する。</p>
+<p>PrometheusがPush型収集でメトリクスを収集するためのエンドポイントとして動作する。</p>
 <blockquote>
 <ul>
 <li><a href="https://prometheus.io/docs/practices/pushing/">https://prometheus.io/docs/practices/pushing/</a></li>
@@ -26453,7 +26453,7 @@ $<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>/v
 <p><br></p>
 <h2 id="05-servicediscovery">05. ServiceDiscovery<a class="headerlink" href="#05-servicediscovery" title="Permanent link">&para;</a></h2>
 <h3 id="servicediscovery">ServiceDiscoveryとは<a class="headerlink" href="#servicediscovery" title="Permanent link">&para;</a></h3>
-<p>Pull型スクレイピングの宛先のIPアドレスが動的に変化する (例：スケーリングなど) 場合、宛先を動的に検出し、データポイントを収集し続けられるようにする。</p>
+<p>Pull型収集の宛先のIPアドレスが動的に変化する (例：スケーリングなど) 場合、宛先を動的に検出し、データポイントを収集し続けられるようにする。</p>
 <blockquote>
 <ul>
 <li><a href="https://christina04.hatenablog.com/entry/prometheus-service-discovery">https://christina04.hatenablog.com/entry/prometheus-service-discovery</a></li>
