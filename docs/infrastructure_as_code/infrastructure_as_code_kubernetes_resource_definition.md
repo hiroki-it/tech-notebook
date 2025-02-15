@@ -4670,7 +4670,7 @@ data:
 
 ### .spec.maxUnavailable
 
-古いPodをNodeから退避させる時に、Nodeで退避できる古いPodの最大数を設定する。
+古いPodをNodeから退避させる時に、Nodeで退避できるPodの最大数を設定する。
 
 これを設定しないと、特定のWorkload (例：Deployment、DaemonSet、StatefulSet、Jobなど) 配下のPodを全て退避してしまう問題が起こる。
 
@@ -4682,7 +4682,7 @@ kind: PodDisruptionBudget
 metadata:
   name: foo-pod-disruption-budget
 spec:
-  # 古いPodをNodeから退避させる時に、古いPod1個のみを退避できる。
+  # PodをNodeから退避させる時に、Pod1個のみを退避できる。
   maxUnavailable: 1
 ```
 
@@ -4693,9 +4693,9 @@ spec:
 
 ### .spec.minAvailable
 
-古いPodをNodeから退避させる時に、他のNodeで新しいPodのスケジューリングの完了を待機してから、古いPodを退避させられる。
+古いPodをNodeから退避させる時に、起動し続ける利用可能なPodの最小数を設定する。
 
-このスケジューリングを待機する新しいPodの最低限数を設定する。
+他のNodeで新しいPodのスケジューリングの完了を待機してから、古いPodを退避させられる。
 
 まずは`.spec.minAvailable`キーでスケジューリングさせられる新しいPodの個数を制御し、その後に`.spec.minAvailable`キーで退避できる古いPodの個数を制御する。
 
@@ -4705,7 +4705,7 @@ kind: PodDisruptionBudget
 metadata:
   name: foo-pod-disruption-budget
 spec:
-  # 古いPodをNodeから退避させる時に、他のNodeで新しいPod3個のスケジューリングが完了するまで待機できる。
+  # PodをNodeから退避させる時に、他のNodeで新しいPod3個のスケジューリングが完了するまで待機できる。
   minAvailable: 3
 ```
 

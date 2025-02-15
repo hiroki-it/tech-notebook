@@ -495,11 +495,13 @@ DaemonSet配下のPodは、各Nodeの最低一つずつスケジューリング�
 
 ## DeploymentやStatefulSetを使用する場合はPodDisruptionBudgetも合わせて作成する
 
-Nodeのスケールインやアップグレード時に、Nodeはドレイン処理を実行し、Podを退避させる。
+Nodeのスケールインやアップグレード時に、Nodeはドレイン処理を実行し、古いPodを退避させる。
 
-この時にPodDisruptionBudgetを作成しないと、DeploymentやStatefulSet配下のPodが一斉に退避し、1個でもPodを動かすことで、ダウンタイムを避けるべきである。
+この時にPodDisruptionBudgetを作成しないと、DeploymentやStatefulSet配下の古いPodが一斉に退避してしまう。
 
-そこで、PodDisruptionBudgetを使用すると、ドレイン中にNode上で動かしておく最小最大のPod数を設定できる。
+1個でも古いPodを動かすことで、ダウンタイムを避けるべきである。
+
+そこで、PodDisruptionBudgetを使用すると、Nodeのドレイン中に退避させるPodの最小最大数 (`spec.maxUnavailable`キー、`spec.minUnavailable`キー) や起動し続ける利用可能なPodの最小最大数 (`spec.minAvailable`キー,`spec.maxAvailable`キー) を設定できる。
 
 <br>
 
