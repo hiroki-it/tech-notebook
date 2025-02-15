@@ -857,7 +857,7 @@ spec:
         app.kubernetes.io/component: app
 ```
 
-この場合、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。
+この場合、RollingUpdate戦略時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。
 
 `.spec.strategy.rollingUpdate.maxSurge`キーにより、`10`個の新しいPodを並行的に作成する (つまり、デプロイ時に新旧Podが合計`20`個ある) 。
 
@@ -900,7 +900,7 @@ spec:
         app.kubernetes.io/component: app
 ```
 
-この場合、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。
+この場合、RollingUpdate戦略時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。
 
 `.spec.strategy.rollingUpdate.maxSurge`キーにより、`10`個の新しいPodを並行的に作成する (つまり、デプロイ時に新旧Podが合計`20`個ある)。
 
