@@ -941,14 +941,6 @@ Headless Service以外のServiceは、負荷分散方式により、配下のい
 
 その一方で、Headless Serviceは配下の全てのPodのIPアドレスを同時に返却する。
 
-例えば、StatefulSetでMySQLをクラスタリングした場合、ライターPodとリーダーPodがいる。
-
-アプリケーションはライターPodとリーダーPodの両方のIPアドレスを認識し、いずれに永続化するべきかを判断する必要がある。
-
-この場合、全てのPodのIPアドレスを返却するHeadless Serviceが適している。
-
-他の例として、KeycloakのプライマリーPodとセカンダリーPodのクラスタリングがある。
-
 ```bash
 $ dig <Serviceの完全修飾ドメイン名>
 
@@ -1079,6 +1071,26 @@ coredns-69c47794-cgn9k   1/1     Running   0          7d9h   172.16.10.42   aks-
 > - https://zenn.dev/microsoft/articles/how-cluster-ip-service-is-implemented
 > - https://speakerdeck.com/bells17/kube-proxyru-men?slide=36
 > - https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown
+
+<br>
+
+### Headless Serviceのユースケース
+
+#### ▼ ライターPodとリーダーPodのクラスタリングする場合
+
+StatefulSetでMySQLをクラスタリングした場合、ライターPodとリーダーPodがいる。
+
+アプリケーションはライターPodとリーダーPodの両方のIPアドレスを認識し、いずれに永続化するべきかを判断する必要がある。
+
+この場合、全てのPodのIPアドレスを返却するHeadless Serviceが適している。
+
+#### ▼ Pod間でデータ同期が必要な場合
+
+StatefulSetでKeycloakをクラスタリングした場合、JGroupsはInfinispanインスタンス間でセッションデータを同期する。
+
+JGroupsが全てのInfinispanインスタンス間でセッションデータを同期できるように、Infinispanを内蔵した全てのKeycloak Podを認識できるようにする必要がある。
+
+> - https://zenn.dev/cloud_ace/articles/gke-keycloak#headless-service-%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%AA%E7%90%86%E7%94%B1
 
 <br>
 
