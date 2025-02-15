@@ -97,11 +97,9 @@ AWS API Gatewayは、メソッドリクエスト、統合リクエスト、統�
 
 > - https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_api_gateway_import.html
 
-#### ▼ CORSの有効化
+#### ▼ CORSの突破
 
-CORSを有効化し、異なるオリジンによって表示されたページからのリクエストを許可する。
-
-以下のリンクを参考にせよ。
+正しいリクエストがCORSを突破できるように、異なるオリジンによって表示されたページからのリクエストを許可する。
 
 > - https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-cors.html
 
