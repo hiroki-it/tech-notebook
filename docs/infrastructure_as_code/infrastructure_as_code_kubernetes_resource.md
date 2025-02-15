@@ -935,11 +935,19 @@ CoreDNSの代わりとして使用できる。
 
 #### ▼ Headless Service
 
-Serviceに対する通信を、そのままPodにルーティングする。
+![kuberentes_headless-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kuberentes_headless-service.png)
 
-StatefulSet配下のPodにルーティングする場合に特に役立つ。
+Headless Service以外のServiceは、負荷分散方式により、配下のいずれかのPodのIPアドレスを返却する。
 
-Podが複数ある場合は、ラウンドロビン方式でIPアドレスが返却されるため、負荷の高いPodにルーティングされる可能性があり、負荷分散には向いていない。
+その一方で、Headless Serviceは配下の全てのPodのIPアドレスを同時に返却する。
+
+例えば、StatefulSetでMySQLをクラスタリングした場合、ライターPodとリーダーPodがいる。
+
+アプリケーションはライターPodとリーダーPodの両方のIPアドレスを認識し、いずれに永続化するべきかを判断する必要がある。
+
+この場合、全てのPodのIPアドレスを返却するHeadless Serviceが適している。
+
+他の例として、KeycloakのプライマリーPodとセカンダリーPodのクラスタリングがある。
 
 ```bash
 $ dig <Serviceの完全修飾ドメイン名>
@@ -953,10 +961,11 @@ $ dig <Serviceの完全修飾ドメイン名>
 <Serviceの完全修飾ドメイン名>. 30 IN A       10.8.2.55
 ```
 
-> - https://thinkit.co.jp/article/13739
-> - https://hyoublog.com/2020/05/22/kubernetes-headless-service/
+> - https://www.linkedin.com/posts/jack-liu-b73b7b2a8_headless-service-in-kubernetes-a-headless-activity-7211615318547345409-qdgg/
+> - https://stackoverflow.com/a/52713482/12771072
+> - https://stackoverflow.com/a/50892280/12771072
 
-また、Headless ServiceからStatefulSetにルーティングする場合は、唯一、Podで直接的に名前解決できるようになる。
+なお、Headless ServiceからStatefulSetにルーティングする場合は、唯一、Podで直接的に名前解決できるようになる。
 
 ```bash
 $ dig <Pod名>.<Serviceの完全修飾ドメイン名>

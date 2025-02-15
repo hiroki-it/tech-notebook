@@ -194,7 +194,7 @@ $ /fluent-bit/bin/fluent-bit -i dummy -o stdout
 
 自身のメトリクスを収集する。
 
-OUTPUTでprometheus_exporterプラグインを使用することにより、Prometheusがリクエストを送信するためのエンドポイントを公開できる。
+合わせて、OUTPUTセクションでprometheus_exporterプラグインを使用し、Prometheusがリクエストを送信するためのエンドポイントを公開できる。
 
 ```bash
 [SERVICE]
@@ -204,12 +204,16 @@ OUTPUTでprometheus_exporterプラグインを使用することにより、Prom
 [INPUT]
     name            fluentbit_metrics
     tag             internal_metrics
-    scrape_interval 2
+    # メトリクスを作成する間隔
+    # 間隔が短すぎると、メトリクスが重複してしまう (例：2秒)
+    scrape_interval 5
 
 [OUTPUT]
     name            prometheus_exporter
     match           internal_metrics
+    # Prometheusからのリクエストを待ち受けるIPアドレス
     host            0.0.0.0
+    # Prometheusからのリクエストを待ち受けるポート番号
     port            2021
 ```
 
