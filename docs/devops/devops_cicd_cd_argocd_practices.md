@@ -932,7 +932,7 @@ spec:
 
 #### ▼ Service
 
-スクレイピング専用のServiceを作成し、ServiceMonitorからリクエストを受信できるようにする。
+リクエスト専用のServiceを作成し、ServiceMonitorからリクエストを受信できるようにする。
 
 ```yaml
 # application-controller用のServiceMonitorからリクエストを受信する

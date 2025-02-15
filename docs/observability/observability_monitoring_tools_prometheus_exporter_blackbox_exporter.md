@@ -171,7 +171,7 @@ spec:
 
 #### ▼ http
 
-外形監視でHTTPのスクレイピングを実施する。
+外形監視でHTTPリクエストを送信する。
 
 ```yaml
 modules:
@@ -193,7 +193,7 @@ modules:
 
 #### ▼ dns
 
-外形監視でHTTPのスクレイピングを実施する。
+外形監視でHTTPリクエストを送信する。
 
 ```yaml
 modules:
@@ -204,7 +204,7 @@ modules:
 
 #### ▼ icmp
 
-外形監視でPing (ICMPエコーリクエスト) のスクレイピングを実施する。
+外形監視でPing (ICMPエコーリクエスト) リクエストを送信する。
 
 ```yaml
 modules:
@@ -215,7 +215,7 @@ modules:
 
 #### ▼ grpc
 
-外形監視でgRPCによるHTTPのスクレイピングを実施する。
+外形監視でgRPCによるHTTPリクエストを送信する。
 
 ```yaml
 modules:
@@ -230,7 +230,7 @@ modules:
 
 #### ▼ http probeとは
 
-監視対象に送信するHTTPのスクレイピングを定義する。
+監視対象に送信するHTTPのリクエストを定義する。
 
 #### ▼ GETリクエストの場合
 

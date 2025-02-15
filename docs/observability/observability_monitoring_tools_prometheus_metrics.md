@@ -68,7 +68,7 @@ process_cpu_seconds_total
 ```
 
 ```bash
-# HTTPのスクレイピング
+# HTTPのリクエスト
 http_request_duration_seconds
 ```
 

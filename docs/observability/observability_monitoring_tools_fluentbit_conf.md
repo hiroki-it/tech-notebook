@@ -194,7 +194,7 @@ $ /fluent-bit/bin/fluent-bit -i dummy -o stdout
 
 自身のメトリクスを収集する。
 
-OUTPUTでprometheus_exporterプラグインを使用することにより、Prometheusがスクレイピングを実施するためのエンドポイントを公開できる。
+OUTPUTでprometheus_exporterプラグインを使用することにより、Prometheusがリクエストを送信するためのエンドポイントを公開できる。
 
 ```bash
 [SERVICE]

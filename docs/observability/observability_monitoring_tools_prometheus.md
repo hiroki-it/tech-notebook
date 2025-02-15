@@ -96,7 +96,7 @@ prometheus-prometheus-kube-prometheus-prometheus.yaml
 
 データポイントを参照するためのエンドポイントを公開する。
 
-PromQLをスクレイピングとして受信し、ローカルストレージからデータポイントをメトリクスとして返却する。
+PromQLリクエストを受信し、ローカルストレージからデータポイントをメトリクスとして返却する。
 
 <br>
 
@@ -311,7 +311,7 @@ Silenceされている期間、無効化されたアラートはAlertmanagerのU
 
 ### PushGatewayとは
 
-PrometheusがPush型スクレイピングでメトリクスを収集するためのエンドポイントとして動作する。
+PrometheusがPush型収集でメトリクスを収集するためのエンドポイントとして動作する。
 
 > - https://prometheus.io/docs/practices/pushing/
 
@@ -321,7 +321,7 @@ PrometheusがPush型スクレイピングでメトリクスを収集するため
 
 ### ServiceDiscoveryとは
 
-Pull型スクレイピングの宛先のIPアドレスが動的に変化する (例：スケーリングなど) 場合、宛先を動的に検出し、データポイントを収集し続けられるようにする。
+Pull型収集の宛先のIPアドレスが動的に変化する (例：スケーリングなど) 場合、宛先を動的に検出し、データポイントを収集し続けられるようにする。
 
 > - https://christina04.hatenablog.com/entry/prometheus-service-discovery
 

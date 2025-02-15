@@ -455,7 +455,7 @@ spec:
 以下の仕組みで、PrometheusのメトリクスをAWS CloudWatch Container Insightsで監視できるようにする。
 
 1. Prometheusは、メトリクスを収集する。
-2. OpenTelemetry Collectorは、Prometheus ReceiverでPrometheusをスクレイピングする。
+2. OpenTelemetry Collectorは、Prometheus ReceiverでPrometheusからリクエストを受信する。
 3. OpenTelemetry Collectorは、AWS CloudWatch EMF Exporterを使用して、Prometheusメトリクスを埋め込みメトリクスフォーマットを持つログに変換する。
 4. OpenTelemetry Collectorは、AWS CloudWatch Logsのロググループ (`/aws/containerinsights/<Cluster名>/performance`) にログを送信する。
 5. AWS CloudWatch Logsは、埋め込みメトリクスフォーマットを受信する。
