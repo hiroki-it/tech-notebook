@@ -34895,7 +34895,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">        </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
 <span class="w">        </span><span class="nt">app.kubernetes.io/component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 </code></pre></div>
-<p>この場合、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。</p>
+<p>この場合、RollingUpdate戦略時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。</p>
 <p><code>.spec.strategy.rollingUpdate.maxSurge</code>キーにより、<code>10</code>個の新しいPodを並行的に作成する (つまり、デプロイ時に新旧Podが合計<code>20</code>個ある) 。</p>
 <p><code>.spec.strategy.rollingUpdate.maxUnavailable</code>キーにより、<code>0</code>個が停止している状態にならないようにする (停止するPodがない)。</p>
 <p>また、Podの停止数がレプリカ数を下回らないようになる。</p>
@@ -34932,7 +34932,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">        </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
 <span class="w">        </span><span class="nt">app.kubernetes.io/component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 </code></pre></div>
-<p>この場合、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。</p>
+<p>この場合、RollingUpdate戦略時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。</p>
 <p><code>.spec.strategy.rollingUpdate.maxSurge</code>キーにより、<code>10</code>個の新しいPodを並行的に作成する (つまり、デプロイ時に新旧Podが合計<code>20</code>個ある)。</p>
 <p><code>.spec.strategy.rollingUpdate.maxUnavailable</code>キーにより、<code>0</code>個が停止している状態にならないようにする (停止するPodがない)。</p>
 <p>また、Podの停止数がレプリカ数を下回らないようになる。</p>

@@ -25966,14 +25966,14 @@
 <p><br></p>
 <h2 id="deploymentstatefulsetpoddisruptionbudget">DeploymentやStatefulSetを使用する場合はPodDisruptionBudgetも合わせて作成する<a class="headerlink" href="#deploymentstatefulsetpoddisruptionbudget" title="Permanent link">&para;</a></h2>
 <p>Nodeのスケールインやアップグレード時に、Nodeはドレイン処理を実行し、Podを退避させる。</p>
-<p>この時にPodDisruptionBudgeを作成しないと、DeploymentやStatefulSet配下のPodが一斉に退避し、1個でもPodを動かすことで、ダウンタイムを避けるべきである。</p>
-<p>そこで、PodDisruptionBudgeを使用すると、ドレイン中にNode上で動かしておく最小最大のPod数を設定できる。</p>
+<p>この時にPodDisruptionBudgetを作成しないと、DeploymentやStatefulSet配下のPodが一斉に退避し、1個でもPodを動かすことで、ダウンタイムを避けるべきである。</p>
+<p>そこで、PodDisruptionBudgetを使用すると、ドレイン中にNode上で動かしておく最小最大のPod数を設定できる。</p>
 <p><br></p>
 <h2 id="deployment">Deploymentでは適切なデプロイ戦略をぶ<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h2>
-<h3 id="rolling-update">■ 基本的にはRolling Update戦略を選ぶ<a class="headerlink" href="#rolling-update" title="Permanent link">&para;</a></h3>
-<p>Rolling Update戦略では、既存のPodを稼働させながら、新しいPodをデプロイする。</p>
+<h3 id="rollingupdate">■ 基本的にはRollingUpdate戦略を選ぶ<a class="headerlink" href="#rollingupdate" title="Permanent link">&para;</a></h3>
+<p>RollingUpdate戦略では、既存のPodを稼働させながら、新しいPodをデプロイする。</p>
 <p>新旧Podが並列的に稼働するため、クライアントからのリクエストを処理しながら、ダウンタイムなくPodをデプロイできる。</p>
-<p>ほとんどのユースケースで、Rolling Update戦略を選ぶようにする。</p>
+<p>ほとんどのユースケースで、RollingUpdate戦略を選ぶようにする。</p>
 <h3 id="podrecreate">■ 新旧Podが並列的に稼働することを許容しない場合はRecreate戦略を選ぶ<a class="headerlink" href="#podrecreate" title="Permanent link">&para;</a></h3>
 <p>Recreate戦略では、既存のPodを削除した後、新しいPodをデプロイする。</p>
 <p>RollingUpdate戦略では、デプロイ時に新旧Podが並列的に稼働するため、アプリの仕様上で不都合がある場合に適さない。</p>
@@ -26863,7 +26863,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tr>
 <tr>
 <td>Workloadのデプロイ戦略が正しく動作していることを確認する。</td>
-<td>Workload (例：Deployment、DaemonSet、StatefulSet、Jobなど) のデプロイ戦略 (例：Rolling Update) が設定に応じた割合で行われ、Podの入れ替えが行われていることを確認する。</td>
+<td>Workload (例：Deployment、DaemonSet、StatefulSet、Jobなど) のデプロイ戦略 (例：RollingUpdate) が設定に応じた割合で行われ、Podの入れ替えが行われていることを確認する。</td>
 </tr>
 <tr>
 <td>WorkloadがPodのレプリカ数を維持できることを確認する。</td>
