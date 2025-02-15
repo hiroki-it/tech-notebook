@@ -14856,17 +14856,17 @@
           <li class="md-nav__item">
   <a href="#cors" class="md-nav__link">
     <span class="md-ellipsis">
-      CORS設定
+      CORSの突破
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="CORS設定">
+    <nav class="md-nav" aria-label="CORSの突破">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#cors_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ なぜCORS設定
+      ▼ CORSについて
     </span>
   </a>
   
@@ -25710,17 +25710,17 @@
           <li class="md-nav__item">
   <a href="#cors" class="md-nav__link">
     <span class="md-ellipsis">
-      CORS設定
+      CORSの突破
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="CORS設定">
+    <nav class="md-nav" aria-label="CORSの突破">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#cors_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ なぜCORS設定
+      ▼ CORSについて
     </span>
   </a>
   
@@ -26063,11 +26063,12 @@
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="cors">CORS設定<a class="headerlink" href="#cors" title="Permanent link">&para;</a></h3>
-<h4 id="cors_1">▼ なぜCORS設定<a class="headerlink" href="#cors_1" title="Permanent link">&para;</a></h4>
+<h3 id="cors">CORSの突破<a class="headerlink" href="#cors" title="Permanent link">&para;</a></h3>
+<h4 id="cors_1">▼ CORSについて<a class="headerlink" href="#cors_1" title="Permanent link">&para;</a></h4>
+<p>ブラウザではデフォルトでCORSが有効になっており、正しいリクエストがCORSを突破できるように対処する必要がある。</p>
 <p>ドメインを割り当ててAWS S3バケットを公開する場合、クライアント側 (例：AWS API Gatewayを介したブラウザ) とサーバー側のAWS S3ドメインが異なる。</p>
-<p>そのため、CORSでAWS S3への通信が防御されてしまう。</p>
-<p>これに対処する必要がある。</p>
+<p>そのため、ブラウザのCORSでAWS S3への通信が防御されてしまう。</p>
+<p>これを突破できるように、対処する必要がある。</p>
 <h4 id="access-control-allow-origin">▼ Access-Control-Allow-Originヘッダー<a class="headerlink" href="#access-control-allow-origin" title="Permanent link">&para;</a></h4>
 <p>サーバー側のAWS S3では、<code>Access-Control-Allow-Origin</code>ヘッダーに必要な値を設定して返却する。</p>
 <p>クライアント側 (例：AWS API Gatewayを介したブラウザ) では<code>Origin</code>ヘッダーは、デフォルトで『プロトコル + ドメイン + ポート番号』に設定されるため、特に対処する必要はない。</p>
@@ -26113,7 +26114,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-15</span>
   </span>
 
     
