@@ -26246,13 +26246,12 @@ baz<span class="w">        </span>baz-deployment<span class="w">   </span>Deploy
 </ul>
 </blockquote>
 <h4 id="_8">▼ レプリカ数との衝突<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>Deploymentのレプリカ数よりも、HorizontalPodAutoscalerが優先される。</p>
-<p>そのため、もしDeploymentにレプリカ数が設定されていると、マニフェストをデプロイした場合に一度レプリカ数に戻される。</p>
-<p>HorizontalPodAutoscalerを使用する場合、Deploymentのレプリカ数の設定を削除する。</p>
+<p>最初、Deploymentの<code>spec.replicas</code>キーに合わせてPodが作成され、次にHorizontalPodAutoscalerの<code>.spec.minReplicas</code>キーが優先される。</p>
+<p>この挙動は混乱につながるため、HorizontalPodAutoscalerを使用する場合、Deploymentの<code>spec.replicas</code>キーの設定を削除しておくことが推奨である。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#migrating-deployments-and-statefulsets-to-horizontal-autoscaling">https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#migrating-deployments-and-statefulsets-to-horizontal-autoscaling</a></li>
-<li><a href="https://subscription.packtpub.com/book/cloud-and-networking/9781838647513/1/ch01lvl1sec05/to-replicas-or-not-to-replicas-in-deployments-and-statefulsets">https://subscription.packtpub.com/book/cloud-and-networking/9781838647513/1/ch01lvl1sec05/to-replicas-or-not-to-replicas-in-deployments-and-statefulsets</a></li>
+<li><a href="https://stackoverflow.com/a/66431624/12771072">https://stackoverflow.com/a/66431624/12771072</a></li>
 </ul>
 </blockquote>
 <h4 id="pod_3">▼ メトリクスでのPodの増減<a class="headerlink" href="#pod_3" title="Permanent link">&para;</a></h4>
@@ -26316,7 +26315,7 @@ baz<span class="w">        </span>baz-deployment<span class="w">   </span>Deploy
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-16</span>
   </span>
 
     
