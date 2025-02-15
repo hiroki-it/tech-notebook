@@ -2953,15 +2953,29 @@ spec:
 
 ### .spec.http
 
-#### ▼ httpとは
-
 HTTP/1.1、HTTP/2 (例：gRPCなど) のプロトコルによる通信をDestinationRuleに紐づくPodにルーティングする。
 
-マイクロサービスがHTTPプロトコルで通信を送受信し、`istio-proxy`コンテナ間で相互TLSを実施する場合、これを使用する。
+`.spec.tcp`キーや`.spec.tls`キーとは異なり、マイクロサービスがHTTPプロトコルで通信を送受信し、`istio-proxy`コンテナ間で相互TLSを実施する場合、これを使用する。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRoute
 
-#### ▼ fault
+<br>
+
+### .spec.http.corsPolicy
+
+#### ▼ corsPolicyとは
+
+ブラウザではデフォルトでCORSが有効になっており、正しいリクエストがCORSを突破できるように対処する必要がある。
+
+多くの場合、バックエンドアプリケーションにCORSに対処することが多いが、`istio-proxy`コンテナで対処することもできる。
+
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#CorsPolicy
+
+<br>
+
+### .spec.http.fault
+
+#### ▼ faultとは
 
 発生させるフォールトインジェクションを設定する。
 
@@ -3005,62 +3019,11 @@ spec:
               value: 100
 ```
 
-#### ▼ timeout
-
-`istio-proxy`コンテナの宛先にリクエストを送信する時のタイムアウト時間を設定する。
-
-`0`秒の場合、タイムアウトは無制限になる。
-
-これは、Envoyのルートの`grpc_timeout_header_max`と`timeout`の両方に適用される。
-
-指定した時間以内に、`istio-proxy`コンテナの宛先からレスポンスがなければ、`istio-proxy`コンテナはタイムアウトとして処理する。
-
-```yaml
-apiVersion: networking.istio.io/v1
-kind: VirtualService
-metadata:
-  name: foo-virtual-service
-spec:
-  http:
-    # destinationにリクエストを送信する時のタイムアウト時間
-    - timeout: 40s
-      route:
-        - destination:
-            # Service名でも良い
-            host: foo-service.foo-namespace.svc.cluster.local
-            port:
-              number: 80
-            subset: v1 # 旧Pod
-          weight: 70
-        - destination:
-            # Service名でも良い
-            host: foo-service.foo-namespace.svc.cluster.local
-            port:
-              number: 80
-            subset: v2 # 新Pod
-          weight: 30
-```
-
-> - https://istio.io/latest/docs/tasks/traffic-management/request-timeouts/
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto
-
-<br>
-
-### .spec.http.corsPolicy
-
-#### ▼ http.corsPolicyとは
-
-ブラウザではデフォルトでCORSが有効になっており、正しいリクエストがCORSを突破できるように対処する必要がある。
-
-多くの場合、バックエンドアプリケーションにCORSに対処することが多いが、`istio-proxy`コンテナで対処することもできる。
-
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#CorsPolicy
-
 <br>
 
 ### .spec.http.match
 
-#### ▼ http.matchとは
+#### ▼ matchとは
 
 受信した通信のうち、ルールを適用するもののメッセージ構造を設定する。
 
@@ -3189,7 +3152,7 @@ spec:
 
 ### .spec.http.retries
 
-#### ▼ http.retriesとは
+#### ▼ retriesとは
 
 リトライ条件を設定する。
 
@@ -3423,11 +3386,54 @@ spec:
 
 <br>
 
+### .spec.http.timeout
+
+#### ▼ timeoutとは
+
+`istio-proxy`コンテナの宛先にリクエストを送信する時のタイムアウト時間を設定する。
+
+`0`秒の場合、タイムアウトは無制限になる。
+
+これは、Envoyのルートの`grpc_timeout_header_max`と`timeout`の両方に適用される。
+
+指定した時間以内に、`istio-proxy`コンテナの宛先からレスポンスがなければ、`istio-proxy`コンテナはタイムアウトとして処理する。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: foo-virtual-service
+spec:
+  http:
+    # destinationにリクエストを送信する時のタイムアウト時間
+    - timeout: 40s
+      route:
+        - destination:
+            # Service名でも良い
+            host: foo-service.foo-namespace.svc.cluster.local
+            port:
+              number: 80
+            subset: v1 # 旧Pod
+          weight: 70
+        - destination:
+            # Service名でも良い
+            host: foo-service.foo-namespace.svc.cluster.local
+            port:
+              number: 80
+            subset: v2 # 新Pod
+          weight: 30
+```
+
+> - https://istio.io/latest/docs/tasks/traffic-management/request-timeouts/
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto
+
+<br>
+
 ### .spec.tcp
 
 #### ▼ tcpとは
 
-TCPプロトコルや独自プロトコル (例：MySQLなど) による通信をDestinationRuleに紐づくPodにルーティングする。
+`.spec.http`キーや`.spec.tls`キーとは異なり、TCPプロトコルや独自プロトコル (例：MySQLなど) による通信をDestinationRuleに紐づくPodにルーティングする。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute
 
@@ -3534,7 +3540,7 @@ spec:
 
 #### ▼ tlsとは
 
-HTTPSプロトコルの通信をDestinationRuleに紐づくPodにルーティングする。
+`.spec.http`キーや`.spec.tcp`キーとは異なり、HTTPSプロトコルの通信をDestinationRuleに紐づくPodにルーティングする。
 
 マイクロサービスがHTTPSプロトコルで通信を送受信し、`istio-proxy`コンテナ間で相互TLSを実施する場合、これを使用する。
 
