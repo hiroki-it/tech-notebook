@@ -27545,7 +27545,7 @@
 <h3 id="fluentbit_metrics">fluentbit_metricsプラグイン<a class="headerlink" href="#fluentbit_metrics" title="Permanent link">&para;</a></h3>
 <h4 id="fluentbit_metrics_1">▼ fluentbit_metricsプラグインとは<a class="headerlink" href="#fluentbit_metrics_1" title="Permanent link">&para;</a></h4>
 <p>自身のメトリクスを収集する。</p>
-<p>OUTPUTでprometheus_exporterプラグインを使用することにより、Prometheusがリクエストを送信するためのエンドポイントを公開できる。</p>
+<p>合わせて、OUTPUTセクションでprometheus_exporterプラグインを使用し、Prometheusがリクエストを送信するためのエンドポイントを公開できる。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>SERVICE<span class="o">]</span>
 <span class="w">    </span>flush<span class="w">           </span><span class="m">1</span>
 <span class="w">    </span>log_level<span class="w">       </span>info
@@ -27553,12 +27553,16 @@
 <span class="o">[</span>INPUT<span class="o">]</span>
 <span class="w">    </span>name<span class="w">            </span>fluentbit_metrics
 <span class="w">    </span>tag<span class="w">             </span>internal_metrics
-<span class="w">    </span>scrape_interval<span class="w"> </span><span class="m">2</span>
+<span class="w">    </span><span class="c1"># メトリクスを作成する間隔</span>
+<span class="w">    </span><span class="c1"># 間隔が短すぎると、メトリクスが重複してしまう (例：2秒)</span>
+<span class="w">    </span>scrape_interval<span class="w"> </span><span class="m">5</span>
 
 <span class="o">[</span>OUTPUT<span class="o">]</span>
 <span class="w">    </span>name<span class="w">            </span>prometheus_exporter
 <span class="w">    </span>match<span class="w">           </span>internal_metrics
+<span class="w">    </span><span class="c1"># Prometheusからのリクエストを待ち受けるIPアドレス</span>
 <span class="w">    </span>host<span class="w">            </span><span class="m">0</span>.0.0.0
+<span class="w">    </span><span class="c1"># Prometheusからのリクエストを待ち受けるポート番号</span>
 <span class="w">    </span>port<span class="w">            </span><span class="m">2021</span>
 </code></pre></div>
 <blockquote>
