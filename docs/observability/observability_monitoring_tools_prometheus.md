@@ -96,7 +96,7 @@ prometheus-prometheus-kube-prometheus-prometheus.yaml
 
 データポイントを参照するためのエンドポイントを公開する。
 
-PromQLをリクエストとして受信し、ローカルストレージからデータポイントをメトリクスとして返却する。
+PromQLをスクレイピングとして受信し、ローカルストレージからデータポイントをメトリクスとして返却する。
 
 <br>
 

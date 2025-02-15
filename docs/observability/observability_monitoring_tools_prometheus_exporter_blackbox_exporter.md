@@ -171,7 +171,7 @@ spec:
 
 #### ▼ http
 
-外形監視でHTTPのスクレイピングを送信する。
+外形監視でHTTPのスクレイピングを実施する。
 
 ```yaml
 modules:
@@ -193,7 +193,7 @@ modules:
 
 #### ▼ dns
 
-外形監視でHTTPのスクレイピングを送信する。
+外形監視でHTTPのスクレイピングを実施する。
 
 ```yaml
 modules:
@@ -204,7 +204,7 @@ modules:
 
 #### ▼ icmp
 
-外形監視でPing (ICMPエコーリクエスト) のスクレイピングを送信する。
+外形監視でPing (ICMPエコーリクエスト) のスクレイピングを実施する。
 
 ```yaml
 modules:
@@ -215,7 +215,7 @@ modules:
 
 #### ▼ grpc
 
-外形監視でgRPCによるHTTPのスクレイピングを送信する。
+外形監視でgRPCによるHTTPのスクレイピングを実施する。
 
 ```yaml
 modules:
