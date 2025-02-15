@@ -1122,6 +1122,10 @@ spec:
 
 自動水平スケーリングのスケールアウト時の最大Pod数を設定する。
 
+最初、Deploymentの`spec.replicas`キーに合わせてPodが作成され、次にHorizontalPodAutoscalerの`.spec.minReplicas`キーが優先される。
+
+この挙動は混乱につながるため、HorizontalPodAutoscalerを使用する場合、Deploymentの`spec.replicas`キーの設定を削除しておくことが推奨である。
+
 ```yaml
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
@@ -1132,10 +1136,16 @@ spec:
 ```
 
 > - https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
+> - https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#migrating-deployments-and-statefulsets-to-horizontal-autoscaling
+> - https://stackoverflow.com/a/66431624/12771072
 
 #### ▼ minReplicasとは
 
 自動水平スケーリングのスケールイン時の最小Pod数を設定する。
+
+最初、Deploymentの`spec.replicas`キーに合わせてPodが作成され、次にHorizontalPodAutoscalerの`.spec.minReplicas`キーが優先される。
+
+この挙動は混乱につながるため、HorizontalPodAutoscalerを使用する場合、Deploymentの`spec.replicas`キーの設定を削除しておくことが推奨である。
 
 ```yaml
 apiVersion: autoscaling/v2
@@ -1147,6 +1157,8 @@ spec:
 ```
 
 > - https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
+> - https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#migrating-deployments-and-statefulsets-to-horizontal-autoscaling
+> - https://stackoverflow.com/a/66431624/12771072
 
 <br>
 

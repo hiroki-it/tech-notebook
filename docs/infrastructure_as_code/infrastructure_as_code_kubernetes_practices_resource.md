@@ -438,8 +438,14 @@ HorizontalPodAutoscalerは、metrics-serverの提供するメトリクス (例�
 
 metrics-serverはデフォルトでClusterに存在していないため、別途インストールしておく必要がある。
 
-> - [https://github.com/kubernetes-sigs/metrics-server](https://github.com/kubernetes-sigs/metrics-server
-> - [https://speakerdeck.com/hhiroshell/a-practical-guide-to-horizontal-autoscaling-in-kubernetes?slide=33](https://speakerdeck.com/hhiroshell/a-practical-guide-to-horizontal-autoscaling-in-kubernetes?slide=33)
+最初、Deploymentの`spec.replicas`キーに合わせてPodが作成され、次にHorizontalPodAutoscalerの`.spec.minReplicas`キーが優先される。
+
+この挙動は混乱につながるため、HorizontalPodAutoscalerを使用する場合、Deploymentの`spec.replicas`キーの設定を削除しておくことが推奨である。
+
+> - https://github.com/kubernetes-sigs/metrics-server
+> - https://speakerdeck.com/hhiroshell/a-practical-guide-to-horizontal-autoscaling-in-kubernetes?slide=33
+> - https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#migrating-deployments-and-statefulsets-to-horizontal-autoscaling
+> - https://stackoverflow.com/a/66431624/12771072
 
 <br>
 
@@ -451,13 +457,13 @@ metrics-serverはデフォルトでClusterに存在していないため、別�
 
 L7ロードバランサーが冗長化されたNodeに適切にインバウンドな通信を振り分ける。
 
-> - [https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/](https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/)
+> - https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/
 
 ### L4のプロトコルの場合
 
 冗長化したPodに負荷分散できるように、PodのダウンストリームにL4ロードバランサーとしてServiceを配置する。
 
-> - [https://www.copado.com/devops-hub/blog/kubernetes-deployment-vs-service-managing-your-pods](https://www.copado.com/devops-hub/blog/kubernetes-deployment-vs-service-managing-your-pods)
+> - https://www.copado.com/devops-hub/blog/kubernetes-deployment-vs-service-managing-your-pods
 
 <br>
 

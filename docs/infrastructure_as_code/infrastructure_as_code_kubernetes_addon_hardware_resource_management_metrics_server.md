@@ -318,14 +318,12 @@ baz        baz-deployment   Deployment/baz-deployment   <unknown>/80%   1       
 
 #### ▼ レプリカ数との衝突
 
-Deploymentのレプリカ数よりも、HorizontalPodAutoscalerが優先される。
+最初、Deploymentの`spec.replicas`キーに合わせてPodが作成され、次にHorizontalPodAutoscalerの`.spec.minReplicas`キーが優先される。
 
-そのため、もしDeploymentにレプリカ数が設定されていると、マニフェストをデプロイした場合に一度レプリカ数に戻される。
-
-HorizontalPodAutoscalerを使用する場合、Deploymentのレプリカ数の設定を削除する。
+この挙動は混乱につながるため、HorizontalPodAutoscalerを使用する場合、Deploymentの`spec.replicas`キーの設定を削除しておくことが推奨である。
 
 > - https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#migrating-deployments-and-statefulsets-to-horizontal-autoscaling
-> - https://subscription.packtpub.com/book/cloud-and-networking/9781838647513/1/ch01lvl1sec05/to-replicas-or-not-to-replicas-in-deployments-and-statefulsets
+> - https://stackoverflow.com/a/66431624/12771072
 
 #### ▼ メトリクスでのPodの増減
 
