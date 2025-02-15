@@ -18558,6 +18558,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#headless-service_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Headless Serviceのユースケース
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Headless Serviceのユースケース">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#podpod" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ライターPodとリーダーPodのクラスタリングする場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Pod間でデータ同期が必要な場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -27558,6 +27591,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#headless-service_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Headless Serviceのユースケース
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Headless Serviceのユースケース">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#podpod" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ライターPodとリーダーPodのクラスタリングする場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Pod間でデータ同期が必要な場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -29194,10 +29260,6 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <p><img alt="kuberentes_headless-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kuberentes_headless-service.png" /></p>
 <p>Headless Service以外のServiceは、負荷分散方式により、配下のいずれかのPodのIPアドレスを返却する。</p>
 <p>その一方で、Headless Serviceは配下の全てのPodのIPアドレスを同時に返却する。</p>
-<p>例えば、StatefulSetでMySQLをクラスタリングした場合、ライターPodとリーダーPodがいる。</p>
-<p>アプリケーションはライターPodとリーダーPodの両方のIPアドレスを認識し、いずれに永続化するべきかを判断する必要がある。</p>
-<p>この場合、全てのPodのIPアドレスを返却するHeadless Serviceが適している。</p>
-<p>他の例として、KeycloakのプライマリーPodとセカンダリーPodのクラスタリングがある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dig<span class="w"> </span>&lt;Serviceの完全修飾ドメイン名&gt;
 
 <span class="p">;;</span><span class="w"> </span>QUESTION<span class="w"> </span>SECTION:
@@ -29313,6 +29375,20 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 <li><a href="https://zenn.dev/microsoft/articles/how-cluster-ip-service-is-implemented">https://zenn.dev/microsoft/articles/how-cluster-ip-service-is-implemented</a></li>
 <li><a href="https://speakerdeck.com/bells17/kube-proxyru-men?slide=36">https://speakerdeck.com/bells17/kube-proxyru-men?slide=36</a></li>
 <li><a href="https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown">https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="headless-service_1">Headless Serviceのユースケース<a class="headerlink" href="#headless-service_1" title="Permanent link">&para;</a></h3>
+<h4 id="podpod">▼ ライターPodとリーダーPodのクラスタリングする場合<a class="headerlink" href="#podpod" title="Permanent link">&para;</a></h4>
+<p>StatefulSetでMySQLをクラスタリングした場合、ライターPodとリーダーPodがいる。</p>
+<p>アプリケーションはライターPodとリーダーPodの両方のIPアドレスを認識し、いずれに永続化するべきかを判断する必要がある。</p>
+<p>この場合、全てのPodのIPアドレスを返却するHeadless Serviceが適している。</p>
+<h4 id="pod_9">▼ Pod間でデータ同期が必要な場合<a class="headerlink" href="#pod_9" title="Permanent link">&para;</a></h4>
+<p>StatefulSetでKeycloakをクラスタリングした場合、JGroupsはInfinispanインスタンス間でセッションデータを同期する。</p>
+<p>JGroupsが全てのInfinispanインスタンス間でセッションデータを同期できるように、Infinispanを内蔵した全てのKeycloak Podを認識できるようにする必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/cloud_ace/articles/gke-keycloak#headless-service-%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%AA%E7%90%86%E7%94%B1">https://zenn.dev/cloud_ace/articles/gke-keycloak#headless-service-%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%AA%E7%90%86%E7%94%B1</a></li>
 </ul>
 </blockquote>
 <p><br></p>
