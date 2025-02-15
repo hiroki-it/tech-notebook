@@ -26035,7 +26035,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="03-blackboxyaml">03. blackbox.yaml<a class="headerlink" href="#03-blackboxyaml" title="Permanent link">&para;</a></h2>
 <h3 id="module">module<a class="headerlink" href="#module" title="Permanent link">&para;</a></h3>
 <h4 id="http">▼ http<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
-<p>外形監視でHTTPリクエストを送信する。</p>
+<p>外形監視でHTTPのスクレイピングを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">modules</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">&lt;好きな名前&gt;</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">prober</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
@@ -26049,21 +26049,21 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="nt">tcp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <h4 id="dns">▼ dns<a class="headerlink" href="#dns" title="Permanent link">&para;</a></h4>
-<p>外形監視でHTTPリクエストを送信する。</p>
+<p>外形監視でHTTPのスクレイピングを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">modules</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">&lt;好きな名前&gt;</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">prober</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns</span>
 <span class="w">    </span><span class="nt">dns</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <h4 id="icmp">▼ icmp<a class="headerlink" href="#icmp" title="Permanent link">&para;</a></h4>
-<p>外形監視でPing (ICMPエコーリクエスト) を送信する。</p>
+<p>外形監視でPing (ICMPエコーリクエスト) のスクレイピングを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">modules</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">&lt;好きな名前&gt;</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">prober</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">icmp</span>
 <span class="w">    </span><span class="nt">http</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <h4 id="grpc">▼ grpc<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h4>
-<p>外形監視でgRPCによるHTTPリクエストを送信する。</p>
+<p>外形監視でgRPCによるHTTPのスクレイピングを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">modules</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">&lt;好きな名前&gt;</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">prober</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grpc</span>
@@ -26072,7 +26072,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="http-probe">http probe<a class="headerlink" href="#http-probe" title="Permanent link">&para;</a></h3>
 <h4 id="http-probe_1">▼ http probeとは<a class="headerlink" href="#http-probe_1" title="Permanent link">&para;</a></h4>
-<p>監視対象に送信するHTTPリクエストを定義する。</p>
+<p>監視対象に送信するHTTPのスクレイピングを定義する。</p>
 <h4 id="get">▼ GETリクエストの場合<a class="headerlink" href="#get" title="Permanent link">&para;</a></h4>
 <p>外形監視でGETリクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">modules</span><span class="p">:</span>
@@ -26221,7 +26221,7 @@ probe_success
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-15</span>
   </span>
 
     
