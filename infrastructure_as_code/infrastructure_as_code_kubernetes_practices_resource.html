@@ -25580,7 +25580,7 @@
 <p>オンプレ環境などでコントロールプレーンNodeを管理する必要がある場合、コントロールプレーンNodeは<code>3</code>台以上に設定して冗長化を実行する。</p>
 <blockquote>
 <ul>
-<li>[Why should a Kubernetes control plane be three nodes? - Sidero Labs](<a href="https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/">https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/</a></li>
+<li><a href="https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/">https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/</a></li>
 <li><a href="https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/">https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/</a></li>
 </ul>
 </blockquote>
@@ -26292,14 +26292,14 @@
 <p>これにより、DNS の検索パスを補間しなくなるため、名前解決の無駄なリクエストが発生しない。</p>
 <blockquote>
 <ul>
-<li><a href="https://qiita.com/corestate55/items/8cf2f713b10d0197c29e#%E6%83%B3%E5%AE%9A%E3%81%95%E3%82%8C%E3%82%8Bdns-qeury%E3%81%A8%E5%AE%9F%E9%9A%9B%E3%81%AE%E5%8B%95%E4%BD%9C%E3%81%AE%E6%AF%94%E8%BC%83">https://qiita.com/corestate55/items/8cf2f713b10d0197c29e#想定されるdns-qeuryと実際の動作の比較</a></li>
+<li><a href="https://qiita.com/corestate55/items/8cf2f713b10d0197c29e#%E6%83%B3%E5%AE%9A%E3%81%95%E3%82%8C%E3%82%8Bdns-qeury%E3%81%A8%E5%AE%9F%E9%9A%9B%E3%81%AE%E5%8B%95%E4%BD%9C%E3%81%AE%E6%AF%94%E8%BC%83">https://qiita.com/corestate55/items/8cf2f713b10d0197c29e#%E6%83%B3%E5%AE%9A%E3%81%95%E3%82%8C%E3%82%8Bdns-qeury%E3%81%A8%E5%AE%9F%E9%9A%9B%E3%81%AE%E5%8B%95%E4%BD%9C%E3%81%AE%E6%AF%94%E8%BC%83</a></li>
 </ul>
 </blockquote>
 <p>別の方法として、<code>/etc/resolv.conf</code>ファイルのndots値を<code>1</code>に変更してもよい。</p>
 <p>デフォルトでは、コンテナの<code>/etc/resolv.conf</code>ファイルには、<code>ndots:5</code>が設定されている。</p>
-<div class="highlight"><pre><span></span><code>nameserver 172.20.0.10
-search foo.svc.cluster.local svc.cluster.local cluster.local
-options ndots:5
+<div class="highlight"><pre><span></span><code>nameserver<span class="w"> </span><span class="m">172</span>.20.0.10
+search<span class="w"> </span>foo.svc.cluster.local<span class="w"> </span>svc.cluster.local<span class="w"> </span>cluster.local
+options<span class="w"> </span>ndots:5
 </code></pre></div>
 <p>これにより、ドメインのドット数が<code>5</code>未満の場合は、Cluster内で名前解決を実行しようとする。</p>
 <p>しかし、Cluster外へしかリクエストを送信しないコンテナでは、Cluster内で名前解決を実行する必要はない。</p>
@@ -26320,8 +26320,8 @@ options ndots:5
 </code></pre></div>
 <blockquote>
 <ul>
-<li>[<a href="https://zenn.dev/toversus/articles/d9faba80f68ea2](https://zenn.dev/toversus/articles/d9faba80f68ea2">https://zenn.dev/toversus/articles/d9faba80f68ea2](https://zenn.dev/toversus/articles/d9faba80f68ea2</a></li>
-<li>[<a href="https://developer.feedforce.jp/entry/2021/09/02/134725](https://developer.feedforce.jp/entry/2021/09/02/134725">https://developer.feedforce.jp/entry/2021/09/02/134725](https://developer.feedforce.jp/entry/2021/09/02/134725</a></li>
+<li><a href="https://zenn.dev/toversus/articles/d9faba80f68ea2">https://zenn.dev/toversus/articles/d9faba80f68ea2</a></li>
+<li><a href="https://developer.feedforce.jp/entry/2021/09/02/134725">https://developer.feedforce.jp/entry/2021/09/02/134725</a></li>
 <li><a href="https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config">https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config</a></li>
 </ul>
 </blockquote>
@@ -26384,7 +26384,7 @@ options ndots:5
 <p>なおLimitRangeを使用すれば、<code>.spec.containers[*].resources</code>キー配下に設定がなくとも、コンテナの実行時に自動的に挿入してくれる。</p>
 <blockquote>
 <ul>
-<li>[<a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/">https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/">https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/</a></li>
 <li><a href="https://kubernetes.io/docs/concepts/policy/limit-range/">https://kubernetes.io/docs/concepts/policy/limit-range/</a></li>
 </ul>
 </blockquote>
