@@ -208,33 +208,36 @@ if __name__ == '__main__':
 
 #### ▼ セッションデータの作成
 
-アプリのファイルシステム上にセッションデータを作成する。
+セッションデータを作成し、レスポンスの`Set-Cookie`ヘッダーに保管する。
 
 ```python
-session['user'] = user
+session['username'] = user
 ```
 
+> - https://flask.palletsprojects.com/en/stable/quickstart/#sessions
 > - https://qiita.com/eee-lin/items/4e9a2a308ca52b58fd1e#%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF
 
 #### ▼ セッションデータの取得
 
-セッションデータを取得する。
+レスポンスの`Set-Cookie`ヘッダーやリクエストの`Cookie`ヘッダーから、セッションデータを取得する。
 
 ```python
-user = session['user']
+session['username'] = request.form['username']
+username = session['username']
 ```
 
 `session.get`関数でも取得でき、デフォルト値を設定できる。
 
 ```python
-session.get('user', 'None')
+session.get('username', 'None')
 ```
 
+> - https://flask.palletsprojects.com/en/stable/quickstart/#sessions
 > - https://qiita.com/eee-lin/items/4e9a2a308ca52b58fd1e#%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF
 
 #### ▼ セッションデータの保持期間
 
-`app.permanent_session_lifetime`でセッションデータの保持期間を設定できる。
+`app.permanent_session_lifetime`で、セッションデータの保持期間を設定できる。
 
 ```python
 app = Flask(__name__)
@@ -242,18 +245,16 @@ app = Flask(__name__)
 app.permanent_session_lifetime = timedelta(days=5)
 ```
 
-> - https://qiita.com/eee-lin/items/4e9a2a308ca52b58fd1e#%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF
-
-#### ▼ セッションデータの永続化
-
-セッションデータを作成する前に`session.permanent`を有効化しておくと、セッションデータを永続化できる。
+セッションデータを作成する前に`session.permanent`を有効化しておくと、セッションデータの保持期間を無期限にできる。
 
 この場合、保持期間は無視される。
 
 ```python
 session.permanent = True
-user = session['user']
+session['username'] = user
 ```
+
+> - https://qiita.com/eee-lin/items/4e9a2a308ca52b58fd1e#%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF
 
 <br>
 
