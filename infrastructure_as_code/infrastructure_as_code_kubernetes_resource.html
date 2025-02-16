@@ -29999,7 +29999,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p>kube-apiserverが、クライアント側を認証可能にする。</p>
 <p>kube-apiserverが、Kubernetesリソース (特にPod) を認証可能にする。</p>
 <p>別途、RoleBindingやClusterRoleBindingを使用してKubernetesリソースに認可スコープを設定する必要がある。</p>
-<p>標準のKubernetesリソースには自動的にServiceAccountが設定される。</p>
+<p>PodでServiceAccountの指定がない場合、service-account-admission-controllerはPodにServiceAccountを自動的に設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/access-authn-authz/authentication/">https://kubernetes.io/docs/reference/access-authn-authz/authentication/</a></li>
