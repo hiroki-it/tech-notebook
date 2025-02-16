@@ -1669,7 +1669,7 @@ kube-apiserverが、Kubernetesリソース (特にPod) を認証可能にする�
 
 別途、RoleBindingやClusterRoleBindingを使用してKubernetesリソースに認可スコープを設定する必要がある。
 
-標準のKubernetesリソースには自動的にServiceAccountが設定される。
+PodでServiceAccountの指定がない場合、service-account-admission-controllerはPodにServiceAccountを自動的に設定する。
 
 > - https://kubernetes.io/docs/reference/access-authn-authz/authentication/
 > - https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/
