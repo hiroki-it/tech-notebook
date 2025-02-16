@@ -134,8 +134,8 @@ Kubernetes Clusterの規模や運用しているシステム、アップグレ�
 
 オンプレ環境などでコントロールプレーンNodeを管理する必要がある場合、コントロールプレーンNodeは`3`台以上に設定して冗長化を実行する。
 
-> - [Why should a Kubernetes control plane be three nodes? - Sidero Labs](https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/
-> - [https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/](https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/)
+> - https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/
+> - https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/
 
 <br>
 
@@ -380,7 +380,7 @@ CronJobでJobが失敗した時、CronJobはデフォルトで過去`1`回分の
 
 トラブルシューティングしやすくするために、`.spec.startingDeadlineSeconds`キーで`3`回分以上を設定しておく。
 
-> - [https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk](https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk)
+> - https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk
 
 <br>
 
@@ -398,7 +398,7 @@ CronJobのデフォルトの仕様として、Jobが`100`回連続で失敗す�
 
 `100`回連続を判定する期間を短くすることで、再作成しなくてもよくなるようにする。
 
-> - [https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/](https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/)
+> - https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/
 
 <br>
 
@@ -876,13 +876,13 @@ Cluster外へのリクエストでは、ドメインの末尾にドットをつ�
 
 これにより、DNS の検索パスを補間しなくなるため、名前解決の無駄なリクエストが発生しない。
 
-> - [https://qiita.com/corestate55/items/8cf2f713b10d0197c29e#想定されるdns-qeuryと実際の動作の比較](https://qiita.com/corestate55/items/8cf2f713b10d0197c29e#%E6%83%B3%E5%AE%9A%E3%81%95%E3%82%8C%E3%82%8Bdns-qeury%E3%81%A8%E5%AE%9F%E9%9A%9B%E3%81%AE%E5%8B%95%E4%BD%9C%E3%81%AE%E6%AF%94%E8%BC%83)
+> - https://qiita.com/corestate55/items/8cf2f713b10d0197c29e#%E6%83%B3%E5%AE%9A%E3%81%95%E3%82%8C%E3%82%8Bdns-qeury%E3%81%A8%E5%AE%9F%E9%9A%9B%E3%81%AE%E5%8B%95%E4%BD%9C%E3%81%AE%E6%AF%94%E8%BC%83
 
 別の方法として、`/etc/resolv.conf`ファイルのndots値を`1`に変更してもよい。
 
 デフォルトでは、コンテナの`/etc/resolv.conf`ファイルには、`ndots:5`が設定されている。
 
-```
+```bash
 nameserver 172.20.0.10
 search foo.svc.cluster.local svc.cluster.local cluster.local
 options ndots:5
@@ -910,9 +910,9 @@ spec:
         value: 1
 ```
 
-> - [https://zenn.dev/toversus/articles/d9faba80f68ea2](https://zenn.dev/toversus/articles/d9faba80f68ea2
-> - [https://developer.feedforce.jp/entry/2021/09/02/134725](https://developer.feedforce.jp/entry/2021/09/02/134725
-> - [https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config)
+> - https://zenn.dev/toversus/articles/d9faba80f68ea2
+> - https://developer.feedforce.jp/entry/2021/09/02/134725
+> - https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config
 
 前述の2つの対策を講じてもCluster DNSに必要以上の負荷がかかったり、ノード上の conntrack テーブルが溢れるなどの問題がある場合、NodeLocal DNSCacheの採用を検討する。
 
@@ -964,8 +964,8 @@ Pod内のコンテナが要求する合計CPU/メモリに見合ったCPU/メモ
 
 なおLimitRangeを使用すれば、`.spec.containers[*].resources`キー配下に設定がなくとも、コンテナの実行時に自動的に挿入してくれる。
 
-> - [https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-> - [https://kubernetes.io/docs/concepts/policy/limit-range/](https://kubernetes.io/docs/concepts/policy/limit-range/)
+> - https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+> - https://kubernetes.io/docs/concepts/policy/limit-range/
 
 ### ■ ストレージをサイジングする
 

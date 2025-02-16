@@ -1675,18 +1675,6 @@ kube-apiserverが、Kubernetesリソース (特にPod) を認証可能にする�
 > - https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/
 > - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
 
-#### ▼ ServiceAccountの仕組み
-
-ServiceAccountは、ServiceAccount本体、service-account-controller、token-controller、service-account-admission-controller、といったコンポーネントから構成されている。
-
-| コンポーネント                       |                                                                                                                                                                                                                                                                      |
-| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| service-account-controller           | Namespace内に`default`というServiceAccountを自動的に作成する。                                                                                                                                                                                                       |
-| token-controller                     | ServiceAccount用のSecretの作成をポーリングし、Secretにトークン文字列を追加する。一方で、Secretの削除をポーリングし、ServiceAccountからSecretの指定を削除する。また、ServiceAccountの削除をポーリングし、token-controllerはSecretのトークン文字列を自動的に削除する。 |
-| service-account-admission-controller | AdmissionWebhookの仕組みの中で、Podの作成時に、Volume上の`/var/run/secrets/kubernetes.io/serviceaccount`ディレクトリをコンテナにマウントする。トークンの文字列は、`/var/run/secrets/kubernetes.io/serviceaccount/token`ファイルに記載されている。                    |
-
-> - https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#control-plane-details
-
 #### ▼ ServiceAccountのユーザー名
 
 特にServiceAccountには、より正確な定義のユーザー名がある。
@@ -1697,6 +1685,35 @@ ServiceAccountのユーザー名は、`system:serviceaccount:＜Namespace名＞:
 
 > - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#referring-to-subjects
 > - https://knowledge.sakura.ad.jp/21129/
+
+#### ▼ service-account-controller
+
+各Namespace内に`default`というServiceAccountを自動的に作成する。
+
+これは、`default`のNamespaceとは無関係である。
+
+> - https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#control-plane-details
+> - https://qiita.com/knqyf263/items/ecc799650fe247dce9c5#service-account-admission-controller
+
+#### ▼ token-controller
+
+ServiceAccount用のSecretの作成をポーリングし、Secretにトークン文字列を追加する。
+
+一方で、Secretの削除をポーリングし、ServiceAccountからSecretの指定を削除する。
+
+また、ServiceAccountの削除をポーリングし、token-controllerはSecretのトークン文字列を自動的に削除する。
+
+> - https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#control-plane-details
+> - https://qiita.com/knqyf263/items/ecc799650fe247dce9c5#service-account-admission-controller
+
+#### ▼ service-account-admission-controller
+
+AdmissionWebhookの仕組みの中で、Podの作成時にVolume上の`/var/run/secrets/kubernetes.io/serviceaccount`ディレクトリをコンテナにマウントする。
+
+トークンの文字列は、`/var/run/secrets/kubernetes.io/serviceaccount/token`ファイルに記載されている。
+
+> - https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#control-plane-details
+> - https://qiita.com/knqyf263/items/ecc799650fe247dce9c5#service-account-admission-controller
 
 <br>
 
