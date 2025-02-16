@@ -254,6 +254,7 @@ session.permanent = True
 session['username'] = user
 ```
 
+> - https://flask.palletsprojects.com/en/stable/api/#flask.session.permanent
 > - https://qiita.com/eee-lin/items/4e9a2a308ca52b58fd1e#%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF
 
 <br>

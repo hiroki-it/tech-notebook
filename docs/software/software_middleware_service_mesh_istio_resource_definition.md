@@ -2122,8 +2122,6 @@ spec:
 
 既存のJWTを再利用し、後続のマイクロサービスにそのまま伝播するかどうかを設定する。
 
-もし後続のマイクロサービスがおらず、Istio EgressGatewayを通過する場合には、これを`false`としないとIstio EgressGatewayにアウトバウンドを拒否されてしまう (原因わからず) 。
-
 ```yaml
 apiVersion: security.istio.io/v1
 kind: RequestAuthentication
@@ -2132,6 +2130,20 @@ metadata:
 spec:
   jwtRules:
     - forwardOriginalToken: true
+```
+
+外部API (例：Google APIs) によっては、不要なJWTがリクエストヘッダーにあると、`401`ステータスを返信する。
+
+そのため、外部APIに接続するマイクロサービスのRequestAuthenticationでは、`forwardOriginalToken`を`false`とし、JWTを削除しておく。
+
+```yaml
+apiVersion: security.istio.io/v1
+kind: RequestAuthentication
+metadata:
+  name: foo-request-authentication-jwt
+spec:
+  jwtRules:
+    - forwardOriginalToken: false
 ```
 
 > - https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-forward_original_token
