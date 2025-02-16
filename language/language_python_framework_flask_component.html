@@ -10214,15 +10214,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ セッションデータの永続化
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -25933,15 +25924,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ セッションデータの永続化
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -26220,43 +26202,45 @@
 <h2 id="04">04. ビルトイン関数<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="session">session<a class="headerlink" href="#session" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ セッションデータの作成<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>アプリのファイルシステム上にセッションデータを作成する。</p>
-<div class="highlight"><pre><span></span><code><span class="n">session</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span>
+<p>セッションデータを作成し、レスポンスの<code>Set-Cookie</code>ヘッダーに保管する。</p>
+<div class="highlight"><pre><span></span><code><span class="n">session</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span>
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://flask.palletsprojects.com/en/stable/quickstart/#sessions">https://flask.palletsprojects.com/en/stable/quickstart/#sessions</a></li>
 <li><a href="https://qiita.com/eee-lin/items/4e9a2a308ca52b58fd1e#%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF">https://qiita.com/eee-lin/items/4e9a2a308ca52b58fd1e#%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF</a></li>
 </ul>
 </blockquote>
 <h4 id="_8">▼ セッションデータの取得<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>セッションデータを取得する。</p>
-<div class="highlight"><pre><span></span><code><span class="n">user</span> <span class="o">=</span> <span class="n">session</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">]</span>
+<p>レスポンスの<code>Set-Cookie</code>ヘッダーやリクエストの<code>Cookie</code>ヘッダーから、セッションデータを取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="n">session</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
+<span class="n">username</span> <span class="o">=</span> <span class="n">session</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
 </code></pre></div>
 <p><code>session.get</code>関数でも取得でき、デフォルト値を設定できる。</p>
-<div class="highlight"><pre><span></span><code><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;None&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;None&#39;</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://flask.palletsprojects.com/en/stable/quickstart/#sessions">https://flask.palletsprojects.com/en/stable/quickstart/#sessions</a></li>
 <li><a href="https://qiita.com/eee-lin/items/4e9a2a308ca52b58fd1e#%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">https://qiita.com/eee-lin/items/4e9a2a308ca52b58fd1e#%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF</a></li>
 </ul>
 </blockquote>
 <h4 id="_9">▼ セッションデータの保持期間<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p><code>app.permanent_session_lifetime</code>でセッションデータの保持期間を設定できる。</p>
+<p><code>app.permanent_session_lifetime</code>で、セッションデータの保持期間を設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="n">app</span><span class="o">.</span><span class="n">permanent_session_lifetime</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+<p>セッションデータを作成する前に<code>session.permanent</code>を有効化しておくと、セッションデータの保持期間を無期限にできる。</p>
+<p>この場合、保持期間は無視される。</p>
+<div class="highlight"><pre><span></span><code><span class="n">session</span><span class="o">.</span><span class="n">permanent</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">session</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/eee-lin/items/4e9a2a308ca52b58fd1e#%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">https://qiita.com/eee-lin/items/4e9a2a308ca52b58fd1e#%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF</a></li>
 </ul>
 </blockquote>
-<h4 id="_10">▼ セッションデータの永続化<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>セッションデータを作成する前に<code>session.permanent</code>を有効化しておくと、セッションデータを永続化できる。</p>
-<p>この場合、保持期間は無視される。</p>
-<div class="highlight"><pre><span></span><code><span class="n">session</span><span class="o">.</span><span class="n">permanent</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">user</span> <span class="o">=</span> <span class="n">session</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">]</span>
-</code></pre></div>
 <p><br></p>
 <h3 id="url_for">url_for<a class="headerlink" href="#url_for" title="Permanent link">&para;</a></h3>
 <h4 id="external">▼ external<a class="headerlink" href="#external" title="Permanent link">&para;</a></h4>
@@ -26302,7 +26286,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-16</span>
   </span>
 
     
