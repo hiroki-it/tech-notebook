@@ -793,7 +793,7 @@ SessionStorage (例：Redis、ElastiCacheなど) やDB (例：MySQL) にて、�
 
 > - https://blog.frevo-works.co.jp/entry/2019/09/24/112603
 
-### セッションの有効期限と初期化確率
+### セッションデータの有効期限と初期化確率
 
 セッションの有効期限を設定できる。
 
@@ -801,7 +801,7 @@ SessionStorage (例：Redis、ElastiCacheなど) やDB (例：MySQL) にて、�
 
 **実装例**
 
-PHPの場合、セッションの有効期限は`/etc/php.ini`ファイルで定義できる。
+PHPの場合、セッションデータの有効期限は`/etc/php.ini`ファイルで定義できる。
 
 ```ini
 # 24時間

@@ -495,7 +495,7 @@ Istiodコントロールプレーンは、サービスレジストリ (例：etc
 
 `istio-proxy`コンテナはこれを受信し、pilot-agentはEnvoyにこれらを紐付ける。
 
-また、SSL証明書の期限が切れれば、`istio-proxy`コンテナからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。
+また、SSL証明書の有効期限が切れれば、`istio-proxy`コンテナからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。
 
 ![istio_control-plane_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_certificate.png)
 

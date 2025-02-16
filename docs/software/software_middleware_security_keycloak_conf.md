@@ -113,7 +113,54 @@ Keycloakでは、コマンドオプション、環境変数、`keycloak.conf`フ
 
 <br>
 
-## 04. JSON
+## 04. Cookie
+
+### AUTH_SESSION_ID
+
+Keycloakのログインによってブラウザに保管されるセッションデータである。
+
+`<セッションID>.keycloak-0-27504`の形式になる。
+
+> - https://qiita.com/i7a7467/items/57ef85d601a854519ff3#auth_session_id
+
+<br>
+
+### KEYCLOAK_IDENTITY
+
+アクセストークンである。
+
+JWTのサイトでデコードすると、中身を確認できる。
+
+```yaml
+{"alg": "HS512", "typ": "JWT", "kid": "*****"}
+```
+
+```yaml
+{
+  "exp": 1739761077,
+  "iat": 1739725077,
+  "jti": "*****",
+  "iss": "http://localhost:8080/realms/<Realm名>",
+  "sub": "*****",
+  "typ": "Serialized-ID",
+  "sid": "*****",
+  "state_checker": "*****",
+}
+```
+
+> - https://qiita.com/i7a7467/items/57ef85d601a854519ff3#keycloak_identity
+> - https://stackoverflow.com/a/50840122
+
+<br>
+
+### KEYCLOAK_SESSION
+
+> - https://qiita.com/i7a7467/items/57ef85d601a854519ff3#keycloak_session
+> - https://stackoverflow.com/a/50840122
+
+<br>
+
+## 05. JSON
 
 Realmをインポートすることにより、設定を宣言的に定義できる。
 
