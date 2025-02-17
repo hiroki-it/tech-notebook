@@ -26737,6 +26737,7 @@
 <h3 id="_4">接続方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="ssh">▼ SSH公開鍵認証を使用する場合<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h4>
 <p>SSH公開鍵認証を使用する場合、ユーザーが自前でDB接続者を管理する必要がある。</p>
+<p>この場合、AWS EC2をパブリックサブネットに置く必要があり、プライベートサブネットには置けない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">serveraliveinterval</span><span class="o">=</span><span class="m">60</span><span class="w"> </span>-f<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="m">3306</span>:&lt;AWS<span class="w"> </span>Auroraのリーダーエンドポイント&gt;:3306<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;~/.ssh/foo.pem&quot;</span><span class="w"> </span>&lt;踏み台サーバーの実行ユーザー&gt;@&lt;踏み台サーバーのホスト&gt;<span class="w"> </span>-p<span class="w"> </span><span class="m">22</span>
 </code></pre></div>
 <blockquote>
@@ -26745,6 +26746,7 @@
 </ul>
 </blockquote>
 <h4 id="aws-ssm-session-managerssh">▼ AWS SSM Session ManagerのSSHセッションを使用する場合<a class="headerlink" href="#aws-ssm-session-managerssh" title="Permanent link">&para;</a></h4>
+<p>この場合、AWS SSM Session Managerを使用するため、AWS EC2をプライベートサブネットに置ける。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-start-ssh">https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-start-ssh</a></li>
@@ -26752,15 +26754,16 @@
 </blockquote>
 <h4 id="aws-ssm-session-managerstartportforwardingsessiontoremotehost">▼ AWS SSM Session ManagerのStartPortForwardingSessionToRemoteHostを使用する場合<a class="headerlink" href="#aws-ssm-session-managerstartportforwardingsessiontoremotehost" title="Permanent link">&para;</a></h4>
 <p>AWS SSM Session Managerの認証を使用する場合、AWS IAMでDB接続者を管理する。</p>
-<p>事前に、踏み台AWS EC2のセキュリティグループのインバウンドルールでポート番号を開放しておく。</p>
+<p>事前に、踏み台サーバー (AWS EC2) のセキュリティグループのインバウンドルールでポート番号を開放しておく。</p>
 <p>また、AWS Session Managerプラグインをインストールしておく。</p>
 <p>その後、<code>aws ssm</code>コマンドでポートフォワーディングを実行する。</p>
+<p>この場合、AWS SSM Session Managerを使用するため、AWS EC2をプライベートサブネットに置ける。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ローカルPC</span>
 
 <span class="c1"># ポートフォワーディングのコマンドを実行する (事前にAWS Session Managerプラグインをインストールしないとエラーになる)</span>
 $<span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>start-session<span class="w"> </span>--target<span class="w"> </span>&lt;踏み台のAWS<span class="w"> </span>EC2インスタンスID&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--document-name<span class="w"> </span>AWS-StartPortForwardingSessionToRemoteHost<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--parameters<span class="w"> </span><span class="s1">&#39;{&quot;host&quot;:[&quot;&lt;AWS Auroraのクラスターエンドポイント&gt;&quot;],&quot;portNumber&quot;:[&quot;&lt;踏み台AWS EC2インスタンスのポート番号&gt;&quot;], &quot;localPortNumber&quot;:[&quot;&lt;ローカルPCのポート番号&gt;&quot;]}&#39;</span>
+<span class="w">    </span>--parameters<span class="w"> </span><span class="s1">&#39;{&quot;host&quot;:[&quot;&lt;AWS Auroraのクラスターエンドポイント&gt;&quot;],&quot;portNumber&quot;:[&quot;&lt;踏み台サーバー (AWS EC2) のポート番号&gt;&quot;], &quot;localPortNumber&quot;:[&quot;&lt;ローカルPCのポート番号&gt;&quot;]}&#39;</span>
 
 <span class="c1"># 別のターミナルでmysqlコマンドを実行する</span>
 $<span class="w"> </span>mysql<span class="w"> </span>-u<span class="w"> </span>&lt;AWS<span class="w"> </span>Auroraのユーザー&gt;<span class="w"> </span>-p&lt;AWS<span class="w"> </span>Auroraのパスワード&gt;<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-P<span class="w"> </span>&lt;ローカルPCのポート番号&gt;
@@ -26968,7 +26971,7 @@ $<span class="w"> </span>mysql<span class="w"> </span>-u<span class="w"> </span>
 <p>レスポンスとAWS RDSイベントログから、ダウンタイムを計測する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>AWS Aurora MySQLのアップグレードに伴うダウンタイムを計測する。</p>
-<p>踏み台サーバーを経由してAWS RDSに接続し、現在時刻を取得するSQLを送信する。</p>
+<p>踏み台サーバー (AWS EC2) を経由してAWS RDSに接続し、現在時刻を取得するSQLを送信する。</p>
 <p>この時、<code>for</code>文や<code>watch</code>コマンドを使用する。</p>
 <p>ただし、<code>watch</code>コマンドはプリインストールされていない可能性がある。</p>
 <p>平常アクセス時のも同時に実行することにより、より正確なダウンタイムを取得する。</p>
@@ -27296,7 +27299,7 @@ NOW<span class="o">()</span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-17</span>
   </span>
 
     

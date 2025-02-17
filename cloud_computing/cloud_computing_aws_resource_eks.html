@@ -28706,7 +28706,7 @@
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#!/login HTTP/1.1</span>
 </code></pre></div>
 <h4 id="node-aws-ec2fargate">▼ ワーカーNode (例：AWS EC2、Fargate) への接続<a class="headerlink" href="#node-aws-ec2fargate" title="Permanent link">&para;</a></h4>
-<p>セッションマネージャーを使用して、ワーカーNode (例：AWS EC2、Fargate) に接続できる。</p>
+<p>AWS SSM Session Managerを使用して、ワーカーNode (例：AWS EC2、Fargate) に接続できる。</p>
 <p><br></p>
 <h2 id="03-02-clusterip">03-02. Cluster内のIPアドレス<a class="headerlink" href="#03-02-clusterip" title="Permanent link">&para;</a></h2>
 <h3 id="serviceip">ServiceのためのIPアドレス<a class="headerlink" href="#serviceip" title="Permanent link">&para;</a></h3>
@@ -28948,21 +28948,21 @@
 <thead>
 <tr>
 <th>接続元パターン</th>
-<th>接続方法パターン</th>
+<th>ログインシェル</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>ローカルマシン</td>
-<td>セッションマネージャー</td>
+<td>AWS SSM Session Manager</td>
 </tr>
 <tr>
 <td>AWS VPC内の踏み台AWS EC2</td>
-<td>セッションマネージャー、SSH</td>
+<td>AWS SSM Session Manager</td>
 </tr>
 <tr>
 <td>AWS VPC内のCloud9</td>
-<td>セッションマネージャー、SSH</td>
+<td>AWS SSM Session Manager</td>
 </tr>
 </tbody>
 </table>
@@ -29869,7 +29869,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-17</span>
   </span>
 
     

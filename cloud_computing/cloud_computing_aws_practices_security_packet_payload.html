@@ -15313,16 +15313,25 @@
           <li class="md-nav__item">
   <a href="#aws-ec2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ アプリケーションAWS EC2の場合
+      ▼ アプリケーションサーバー (AWS EC2) の場合
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws-ec2_1" class="md-nav__link">
+  <a href="#ssh-aws-ec2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 踏み台AWS EC2の場合
+      ▼ SSHの踏み台サーバー (AWS EC2) の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-ssm-session-manager-aws-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ AWS SSM Session Managerの踏み台サーバー (AWS EC2) の場合
     </span>
   </a>
   
@@ -26152,16 +26161,25 @@
           <li class="md-nav__item">
   <a href="#aws-ec2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ アプリケーションAWS EC2の場合
+      ▼ アプリケーションサーバー (AWS EC2) の場合
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws-ec2_1" class="md-nav__link">
+  <a href="#ssh-aws-ec2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 踏み台AWS EC2の場合
+      ▼ SSHの踏み台サーバー (AWS EC2) の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-ssm-session-manager-aws-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ AWS SSM Session Managerの踏み台サーバー (AWS EC2) の場合
     </span>
   </a>
   
@@ -26837,7 +26855,7 @@
 <p>これらにより、インターネットからは信頼できるクライアントからのアクセスのみを受信し、Nodeグループ間でも最小限のアクセスのみに制限できる</p>
 <p>なお、ACLでも<code>L3</code>を防御できるが、ネットワークが複雑になることを防ぐためにACLでは通信制限は採用しなくてもよい。</p>
 <h3 id="_10">セキュリティグループ (インバウンド) による防御<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<h4 id="aws-ec2">▼ アプリケーションAWS EC2の場合<a class="headerlink" href="#aws-ec2" title="Permanent link">&para;</a></h4>
+<h4 id="aws-ec2">▼ アプリケーションサーバー (AWS EC2) の場合<a class="headerlink" href="#aws-ec2" title="Permanent link">&para;</a></h4>
 <p>AWS ALBに割り振られる可能性のあるIPアドレスを許可するために、AWS ALBのセキュリティグループID、またはサブネットのCIDRブロックを設定する。</p>
 <table>
 <thead>
@@ -26861,12 +26879,16 @@
 <td>HTTPS</td>
 <td>TCP</td>
 <td><code>443</code></td>
-<td>踏み台AWS EC2のセキュリティグループID</td>
+<td>踏み台サーバー (AWS EC2) のセキュリティグループID</td>
 <td>SSH access from bastion AWS EC2</td>
 </tr>
 </tbody>
 </table>
-<h4 id="aws-ec2_1">▼ 踏み台AWS EC2の場合<a class="headerlink" href="#aws-ec2_1" title="Permanent link">&para;</a></h4>
+<h4 id="ssh-aws-ec2">▼ SSHの踏み台サーバー (AWS EC2) の場合<a class="headerlink" href="#ssh-aws-ec2" title="Permanent link">&para;</a></h4>
+<p><code>ssh</code>コマンドを実行してポートフォワーディングを実施する場合、踏み台サーバーをパブリックサブネットに配置する必要がある。</p>
+<p>また、セキュリティグループのインバウンドルールでSSHプロトコルを許可する必要がある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">serveraliveinterval</span><span class="o">=</span><span class="m">60</span><span class="w"> </span>-f<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="m">3306</span>:&lt;AWS<span class="w"> </span>Auroraのリーダーエンドポイント&gt;:3306<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;~/.ssh/foo.pem&quot;</span><span class="w"> </span>&lt;踏み台サーバーの実行ユーザー&gt;@&lt;踏み台サーバーのホスト&gt;<span class="w"> </span>-p<span class="w"> </span><span class="m">22</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -26887,9 +26909,39 @@
 </tr>
 </tbody>
 </table>
-<p>以下のコマンドをローカルPCで実行することになる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">serveraliveinterval</span><span class="o">=</span><span class="m">60</span><span class="w"> </span>-f<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="m">3306</span>:&lt;AWS<span class="w"> </span>Auroraのリーダーエンドポイント&gt;:3306<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;~/.ssh/foo.pem&quot;</span><span class="w"> </span>&lt;踏み台サーバーの実行ユーザー&gt;@&lt;踏み台サーバーのホスト&gt;<span class="w"> </span>-p<span class="w"> </span><span class="m">22</span>
+<h4 id="aws-ssm-session-manager-aws-ec2">▼ AWS SSM Session Managerの踏み台サーバー (AWS EC2) の場合<a class="headerlink" href="#aws-ssm-session-manager-aws-ec2" title="Permanent link">&para;</a></h4>
+<p><code>aws ssm start-session</code>コマンドを実行してポートフォワーディングを実施する場合、踏み台サーバーをパブリックサブネットに配置する必要がある。</p>
+<p>セキュリティグループのインバウンドルールでは何も許可する必要がない。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>start-session<span class="w"> </span>--target<span class="w"> </span>&lt;踏み台のAWS<span class="w"> </span>EC2インスタンスID&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--document-name<span class="w"> </span>AWS-StartPortForwardingSessionToRemoteHost<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--parameters<span class="w"> </span><span class="s1">&#39;{&quot;host&quot;:[&quot;&lt;AWS Auroraのクラスターエンドポイント&gt;&quot;],&quot;portNumber&quot;:[&quot;&lt;踏み台サーバー (AWS EC2) のポート番号&gt;&quot;], &quot;localPortNumber&quot;:[&quot;&lt;ローカルPCのポート番号&gt;&quot;]}&#39;</span>
 </code></pre></div>
+<table>
+<thead>
+<tr>
+<th>タイプ</th>
+<th>プロトコル</th>
+<th>ポート</th>
+<th>ソース</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>設定なし</td>
+<td>設定なし</td>
+<td>設定なし</td>
+<td>設定なし</td>
+<td>設定なしs</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/s_yanada/items/0f64f746095d85ba3e4c">https://qiita.com/s_yanada/items/0f64f746095d85ba3e4c</a></li>
+<li><a href="https://blog.dcs.co.jp/aws/20221124-serverless-bastion.html">https://blog.dcs.co.jp/aws/20221124-serverless-bastion.html</a></li>
+</ul>
+</blockquote>
 <h4 id="efs">▼ EFSの場合<a class="headerlink" href="#efs" title="Permanent link">&para;</a></h4>
 <p>AWS EC2に割り振られる可能性のあるIPアドレスを許可するために、AWS EC2のセキュリティグループID、またはサブネットのCIDRブロックを設定する。</p>
 <table>
@@ -27342,7 +27394,7 @@
 <p><br></p>
 <h2 id="04-04-aws-systems-manager">04-04. AWS Systems Manager<a class="headerlink" href="#04-04-aws-systems-manager" title="Permanent link">&para;</a></h2>
 <h3 id="aws-systems-manager">AWS Systems Managerによる防御<a class="headerlink" href="#aws-systems-manager" title="Permanent link">&para;</a></h3>
-<p>開発者がAWS EC2へリモート接続する方法として、AWS Systems Managerのセッションマネージャーを採用する。</p>
+<p>開発者がAWS EC2へリモート接続する方法として、AWS SSM Session Managerを採用する。</p>
 <p>SSH公開鍵認証を採用しないことにより、SSH公開鍵を管理する負荷や漏洩のリスクを低減する。</p>
 <blockquote>
 <ul>
@@ -27370,7 +27422,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-17</span>
   </span>
 
     
