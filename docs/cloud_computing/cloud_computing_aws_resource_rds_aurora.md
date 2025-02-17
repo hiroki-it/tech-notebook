@@ -108,9 +108,9 @@ SHOW variables LIKE '%version%';
 
 <br>
 
-### 接続方法
+## 02-02. 接続方法
 
-#### ▼ SSH公開鍵認証を使用する場合
+### SSH公開鍵認証を使用する場合
 
 SSH公開鍵認証を使用する場合、ユーザーが自前でDB接続者を管理する必要がある。
 
@@ -122,13 +122,17 @@ $ ssh -o serveraliveinterval=60 -f -N -L 3306:<AWS Auroraのリーダーエン�
 
 > - https://qiita.com/shimi7o/items/732e91126ab4a06162a7
 
-#### ▼ AWS SSM Session ManagerのSSHセッションを使用する場合
+<br>
+
+### AWS SSM Session ManagerのSSHセッションを使用する場合
 
 この場合、AWS SSM Session Managerを使用するため、踏み台サーバー (AWS EC2) をプライベートサブネットに置ける。
 
 > - https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-start-ssh
 
-#### ▼ AWS SSM Session ManagerのStartPortForwardingSessionToRemoteHostを使用する場合
+<br>
+
+### AWS SSM Session ManagerのStartPortForwardingSessionToRemoteHostを使用する場合
 
 AWS SSM Session Managerの認証を使用する場合、AWS IAMでDB接続者を管理する。
 
@@ -155,6 +159,107 @@ $ mysql -u <AWS Auroraのユーザー> -p<AWS Auroraのパスワード> -h local
 > - https://dev.classmethod.jp/articles/ssm-session-manage-port-forwarding/#toc-1
 > - https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-remote-port-forwarding
 > - https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/install-plugin-macos-overview.html
+
+<br>
+
+### 踏み台Kubernetes Pod
+
+#### ▼ 踏み台Kubernetes Podとは
+
+これは、AWS EKSを使用している場合に使用できる。
+
+データベースに接続したい場合、ポートフォワーディング用の踏み台Kubernetes PodをAWS EKS内に作成する。
+
+Helmチャートを作成しておくと、簡単にセットアップできる。
+
+> - https://zenn.dev/toshikish/articles/6a06017747cbba#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AB%E5%A4%A7%E9%87%8F%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%8C%BF%E5%85%A5%E3%81%97%E3%81%9F%E3%81%84
+
+#### ▼ troubleshootingリポジトリ
+
+```yaml
+troubleshooting/
+├── README.md
+├── chart/
+│   ├── Chart.yaml
+│   ├── templates
+│   │   └── pod.yaml
+│   ├── values.example.yaml
+│   └── values.yaml
+└── helmfile.yaml
+```
+
+#### ▼ values.example.yaml
+
+`.env`ファイルのように、バージョン管理しない`values.example.yaml`ファイルを用意しておく。
+
+各開発者がローカルPCで`values.example.yaml`ファイルから`values.yaml`ファイルを作成する。
+
+```bash
+$ cp chart/values.example.yaml values.yaml
+```
+
+```yaml
+name: port-forward-for-aws-aurora
+
+remote:
+  # AWS Auroraのホスト (例：リーダーエンドポイント) を設定する
+  host:
+  # AWS Auroraのポート番号を設定する
+  port:
+```
+
+#### ▼ pod.yaml
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.name}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: {{.Values.name}}
+  template:
+    metadata:
+      labels:
+        name: {{.Values.name}}
+    spec:
+      containers:
+        - name: {{.Values.name}}
+          image: marcnuri/port-forward:latest
+          ports:
+            - containerPort: 443
+          env:
+            - name: LOCAL_PORT
+              value: "443"
+            - name: REMOTE_HOST
+              value: {{.Values.remote.host}}
+            - name: REMOTE_PORT
+              value: {{.Values.remote.port | quote}}
+```
+
+> - https://hub.docker.com/r/marcnuri/port-forward
+
+#### ▼ コマンド
+
+AWS Auroraにポートフォワーディングを実行する。
+
+```bash
+$ kubectl port-forward deployment/port-forward-for-aws-aurora -n <Namespace名> <ローカルPCの好きなポート番号>:443
+```
+
+別ターミナルを開き、AWS AuroraのDBにログインする。
+
+AWS EKSのコンソール画面のSecretでユーザー名やパスワードを確認できる。
+
+```bash
+$ mysql -h localhost -P 3306 -u <ユーザー名> -p<パスワード>
+
+mysql> ...
+```
+
+> - https://zenn.dev/toshikish/articles/6a06017747cbba#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AB%E5%A4%A7%E9%87%8F%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%8C%BF%E5%85%A5%E3%81%97%E3%81%9F%E3%81%84
 
 <br>
 
