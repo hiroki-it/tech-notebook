@@ -257,7 +257,7 @@ $ ssh -o serveraliveinterval=60 -f -N -L 3306:<AWS Auroraのリーダーエン�
 また、セキュリティグループのインバウンドルールでは何も許可する必要がない。
 
 ```bash
-$ aws ssm start-session --target <踏み台のAWS EC2インスタンスID> \
+$ aws ssm start-session --target <踏み台サーバー (AWS EC2) インスタンスID> \
     --document-name AWS-StartPortForwardingSessionToRemoteHost \
     --parameters '{"host":["<AWS Auroraのクラスターエンドポイント>"],"portNumber":["<踏み台サーバー (AWS EC2) のポート番号>"], "localPortNumber":["<ローカルPCのポート番号>"]}'
 ```

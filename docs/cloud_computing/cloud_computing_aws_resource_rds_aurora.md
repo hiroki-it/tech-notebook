@@ -148,7 +148,7 @@ AWS SSM Session Managerの認証を使用する場合、AWS IAMでDB接続者を
 # ローカルPC
 
 # ポートフォワーディングのコマンドを実行する (事前にAWS Session Managerプラグインをインストールしないとエラーになる)
-$ aws ssm start-session --target <踏み台のAWS EC2インスタンスID> \
+$ aws ssm start-session --target <踏み台サーバー (AWS EC2) インスタンスID> \
     --document-name AWS-StartPortForwardingSessionToRemoteHost \
     --parameters '{"host":["<AWS Auroraのクラスターエンドポイント>"],"portNumber":["<踏み台サーバー (AWS EC2) のポート番号>"], "localPortNumber":["<ローカルPCのポート番号>"]}'
 

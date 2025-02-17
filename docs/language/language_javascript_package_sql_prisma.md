@@ -138,7 +138,26 @@ datasource db {
 }
 ```
 
+注意点として、DBパスワードに特殊記号が含まれている場合、URLエンコードする必要がある。
+
+```bash
+$ alias urldecode='python3 -c "import sys, urllib.parse as ul; \
+    print(ul.unquote_plus(sys.argv[1]))"'
+
+$ urldecode 'q+werty%3D%2F%3B'
+q werty=/;
+```
+
+```bash
+$ alias urlencode='python3 -c "import sys, urllib.parse as ul; \
+    print (ul.quote_plus(sys.argv[1]))"'
+
+$ urlencode 'q werty=/;'
+q+werty%3D%2F%3B
+```
+
 > - https://www.prisma.io/docs/orm/reference/connection-urls
+> - https://unix.stackexchange.com/a/159254
 
 #### ▼ urlパラメーター
 
