@@ -26743,27 +26743,23 @@
 <th>名前</th>
 <th>種類</th>
 <th>役割</th>
-<th>配置例</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>frontendサブネット</td>
 <td>パブリック</td>
-<td>非武装地帯として動作する。<code>L7</code>ロードバランサー、ルーター、踏み台サーバーを配置する。</td>
-<td>AWS ALB、AWS NAT Gateway</td>
+<td>非武装地帯として動作する。<code>L7</code>ロードバランサー (AWS ALB) 、ルーター (AWS NAT Gateway) 、<code>ssh</code>コマンド用の踏み台サーバー (AWS EC2) を配置する。</td>
 </tr>
 <tr>
 <td>applicationサブネット</td>
 <td>プライベート</td>
-<td>内部ネットワークとして動作する。Appサーバー、リバースプロキシサーバーを配置する。</td>
-<td>AWS EC2、Fargate</td>
+<td>内部ネットワークとして動作する。Appサーバー (AWS EC2、AWS ECS、AWS EKS) 、リバースプロキシサーバー (AWS EC2、AWS ECS、AWS EKS) 、<code>aws ssm</code>コマンド用の踏み台サーバー (AWS EC2) を配置する。</td>
 </tr>
 <tr>
 <td>datastoreサブネット</td>
 <td>プライベート</td>
-<td>内部ネットワークとして動作する。DBサーバーを配置する。</td>
-<td>AWS RDS、Redis</td>
+<td>内部ネットワークとして動作する。DBサーバー (AWS Aurora、AWS Redis) を配置する。</td>
 </tr>
 </tbody>
 </table>
@@ -26885,7 +26881,7 @@
 </tbody>
 </table>
 <h4 id="ssh-aws-ec2">▼ SSHの踏み台サーバー (AWS EC2) の場合<a class="headerlink" href="#ssh-aws-ec2" title="Permanent link">&para;</a></h4>
-<p><code>ssh</code>コマンドを実行してポートフォワーディングを実施する場合、踏み台サーバーをパブリックサブネットに配置する必要がある。</p>
+<p><code>ssh</code>コマンドを実行してポートフォワーディングを実施する場合、踏み台サーバー (AWS EC2) をパブリックサブネットに配置する必要がある。</p>
 <p>また、セキュリティグループのインバウンドルールでSSHプロトコルを許可する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">serveraliveinterval</span><span class="o">=</span><span class="m">60</span><span class="w"> </span>-f<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="m">3306</span>:&lt;AWS<span class="w"> </span>Auroraのリーダーエンドポイント&gt;:3306<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;~/.ssh/foo.pem&quot;</span><span class="w"> </span>&lt;踏み台サーバーの実行ユーザー&gt;@&lt;踏み台サーバーのホスト&gt;<span class="w"> </span>-p<span class="w"> </span><span class="m">22</span>
 </code></pre></div>
@@ -26910,8 +26906,8 @@
 </tbody>
 </table>
 <h4 id="aws-ssm-session-manager-aws-ec2">▼ AWS SSM Session Managerの踏み台サーバー (AWS EC2) の場合<a class="headerlink" href="#aws-ssm-session-manager-aws-ec2" title="Permanent link">&para;</a></h4>
-<p><code>aws ssm start-session</code>コマンドを実行してポートフォワーディングを実施する場合、踏み台サーバーをパブリックサブネットに配置する必要がある。</p>
-<p>セキュリティグループのインバウンドルールでは何も許可する必要がない。</p>
+<p><code>aws ssm start-session</code>コマンドを実行してポートフォワーディングを実施する場合、踏み台サーバー (AWS EC2) をプライベートサブネットに配置できる。</p>
+<p>また、セキュリティグループのインバウンドルールでは何も許可する必要がない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>start-session<span class="w"> </span>--target<span class="w"> </span>&lt;踏み台のAWS<span class="w"> </span>EC2インスタンスID&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--document-name<span class="w"> </span>AWS-StartPortForwardingSessionToRemoteHost<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--parameters<span class="w"> </span><span class="s1">&#39;{&quot;host&quot;:[&quot;&lt;AWS Auroraのクラスターエンドポイント&gt;&quot;],&quot;portNumber&quot;:[&quot;&lt;踏み台サーバー (AWS EC2) のポート番号&gt;&quot;], &quot;localPortNumber&quot;:[&quot;&lt;ローカルPCのポート番号&gt;&quot;]}&#39;</span>
@@ -26932,7 +26928,7 @@
 <td>設定なし</td>
 <td>設定なし</td>
 <td>設定なし</td>
-<td>設定なしs</td>
+<td>設定なし</td>
 </tr>
 </tbody>
 </table>

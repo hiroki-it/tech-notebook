@@ -26596,7 +26596,7 @@
 <tr>
 <td>VPCとサブネットグループ</td>
 <td>AWS AuroraのDBクラスターを配置するVPCとサブネットを設定する。</td>
-<td>DBが配置されるサブネットはプライベートサブネットにする、これには、data storeサブネットと名付ける。アプリケーション以外は、踏み台サーバー経由でしかDBにリクエストできないようにする。<br><img alt="subnet_component-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_component-type.png" /></td>
+<td>DBが配置されるサブネットはプライベートサブネットにする、これには、data storeサブネットと名付ける。アプリケーション以外は、踏み台サーバー (AWS EC2) 経由でしかDBにリクエストできないようにする。<br><img alt="subnet_component-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_component-type.png" /></td>
 </tr>
 <tr>
 <td>パラメーターグループ</td>
@@ -26737,8 +26737,8 @@
 <h3 id="_4">接続方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="ssh">▼ SSH公開鍵認証を使用する場合<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h4>
 <p>SSH公開鍵認証を使用する場合、ユーザーが自前でDB接続者を管理する必要がある。</p>
-<p>この場合、AWS EC2をパブリックサブネットに置く必要があり、プライベートサブネットには置けない。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">serveraliveinterval</span><span class="o">=</span><span class="m">60</span><span class="w"> </span>-f<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="m">3306</span>:&lt;AWS<span class="w"> </span>Auroraのリーダーエンドポイント&gt;:3306<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;~/.ssh/foo.pem&quot;</span><span class="w"> </span>&lt;踏み台サーバーの実行ユーザー&gt;@&lt;踏み台サーバーのホスト&gt;<span class="w"> </span>-p<span class="w"> </span><span class="m">22</span>
+<p>この場合、踏み台サーバー (AWS EC2) をパブリックサブネットに置く必要があり、プライベートサブネットには置けない。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">serveraliveinterval</span><span class="o">=</span><span class="m">60</span><span class="w"> </span>-f<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="m">3306</span>:&lt;AWS<span class="w"> </span>Auroraのリーダーエンドポイント&gt;:3306<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;~/.ssh/foo.pem&quot;</span><span class="w"> </span>&lt;踏み台サーバーの実行ユーザー&gt;@&lt;踏み台サーバー<span class="w"> </span><span class="o">(</span>AWS<span class="w"> </span>EC2<span class="o">)</span><span class="w"> </span>のホスト&gt;<span class="w"> </span>-p<span class="w"> </span><span class="m">22</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -26746,7 +26746,7 @@
 </ul>
 </blockquote>
 <h4 id="aws-ssm-session-managerssh">▼ AWS SSM Session ManagerのSSHセッションを使用する場合<a class="headerlink" href="#aws-ssm-session-managerssh" title="Permanent link">&para;</a></h4>
-<p>この場合、AWS SSM Session Managerを使用するため、AWS EC2をプライベートサブネットに置ける。</p>
+<p>この場合、AWS SSM Session Managerを使用するため、踏み台サーバー (AWS EC2) をプライベートサブネットに置ける。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-start-ssh">https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-start-ssh</a></li>
@@ -26757,7 +26757,7 @@
 <p>事前に、踏み台サーバー (AWS EC2) のセキュリティグループのインバウンドルールでポート番号を開放しておく。</p>
 <p>また、AWS Session Managerプラグインをインストールしておく。</p>
 <p>その後、<code>aws ssm</code>コマンドでポートフォワーディングを実行する。</p>
-<p>この場合、AWS SSM Session Managerを使用するため、AWS EC2をプライベートサブネットに置ける。</p>
+<p>この場合、AWS SSM Session Managerを使用するため、踏み台サーバー (AWS EC2) をプライベートサブネットに置ける。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ローカルPC</span>
 
 <span class="c1"># ポートフォワーディングのコマンドを実行する (事前にAWS Session Managerプラグインをインストールしないとエラーになる)</span>

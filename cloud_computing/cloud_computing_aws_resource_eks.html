@@ -28944,28 +28944,11 @@
 <p>プライベートのみを許可する場合、このNLBは閉じられ、AWS VPC内からしかkube-apiserverにリクエストを送信できなくなる。</p>
 <p>プライベートサブネット内にワーカーNodeがある場合、AWS VPCエンドポイントを経由して、kube-apiserverにリクエストを送信することになる。</p>
 <p>この状態で、<code>kubectl</code>コマンドでkube-apiserverにリクエストを送信できるようにする方法としては、以下のパターンがある。</p>
-<table>
-<thead>
-<tr>
-<th>接続元パターン</th>
-<th>ログインシェル</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ローカルマシン</td>
-<td>AWS SSM Session Manager</td>
-</tr>
-<tr>
-<td>AWS VPC内の踏み台AWS EC2</td>
-<td>AWS SSM Session Manager</td>
-</tr>
-<tr>
-<td>AWS VPC内のCloud9</td>
-<td>AWS SSM Session Manager</td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li>ローカルマシンから</li>
+<li>AWS VPC内の踏み台AWS EC2から</li>
+<li>AWS VPC内のCloud9から</li>
+</ul>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access">https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access</a></li>
