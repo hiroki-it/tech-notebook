@@ -26918,7 +26918,7 @@
 <h4 id="aws-ssm-session-manager-aws-ec2">▼ AWS SSM Session Managerで接続する踏み台サーバー (AWS EC2) の場合<a class="headerlink" href="#aws-ssm-session-manager-aws-ec2" title="Permanent link">&para;</a></h4>
 <p><code>aws ssm start-session</code>コマンドで踏み台サーバー (AWS EC2) に接続する場合、踏み台サーバー (AWS EC2) をプライベートサブネットに配置できる。</p>
 <p>また、セキュリティグループのインバウンドルールでは何も許可する必要がない。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>start-session<span class="w"> </span>--target<span class="w"> </span>&lt;踏み台のAWS<span class="w"> </span>EC2インスタンスID&gt;<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>start-session<span class="w"> </span>--target<span class="w"> </span>&lt;踏み台サーバー<span class="w"> </span><span class="o">(</span>AWS<span class="w"> </span>EC2<span class="o">)</span><span class="w"> </span>インスタンスID&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--document-name<span class="w"> </span>AWS-StartPortForwardingSessionToRemoteHost<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--parameters<span class="w"> </span><span class="s1">&#39;{&quot;host&quot;:[&quot;&lt;AWS Auroraのクラスターエンドポイント&gt;&quot;],&quot;portNumber&quot;:[&quot;&lt;踏み台サーバー (AWS EC2) のポート番号&gt;&quot;], &quot;localPortNumber&quot;:[&quot;&lt;ローカルPCのポート番号&gt;&quot;]}&#39;</span>
 </code></pre></div>
