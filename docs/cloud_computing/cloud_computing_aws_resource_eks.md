@@ -912,11 +912,9 @@ AWS VPC外のAWSリソース (例：AWS EKSコントロールプレーン、AWS 
 
 この状態で、`kubectl`コマンドでkube-apiserverにリクエストを送信できるようにする方法としては、以下のパターンがある。
 
-| 接続元パターン           | ログインシェル          |
-| ------------------------ | ----------------------- |
-| ローカルマシン           | AWS SSM Session Manager |
-| AWS VPC内の踏み台AWS EC2 | AWS SSM Session Manager |
-| AWS VPC内のCloud9        | AWS SSM Session Manager |
+- ローカルマシンから
+- AWS VPC内の踏み台AWS EC2から
+- AWS VPC内のCloud9から
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access
 > - https://note.com/tyrwzl/n/nf28cd4372b18
