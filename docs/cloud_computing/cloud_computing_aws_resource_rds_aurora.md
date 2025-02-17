@@ -162,7 +162,7 @@ $ mysql -u <AWS Auroraのユーザー> -p<AWS Auroraのパスワード> -h local
 
 <br>
 
-### 踏み台Kubernetes Pod
+### 踏み台Kubernetes Podを使用する場合
 
 #### ▼ 踏み台Kubernetes Podとは
 
