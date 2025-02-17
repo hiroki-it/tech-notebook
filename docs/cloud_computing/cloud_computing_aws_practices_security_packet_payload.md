@@ -227,26 +227,47 @@ AWS VPCのIPアドレスの最初から、パブリックサブネットとプ�
 
 ### セキュリティグループ (インバウンド) による防御
 
-#### ▼ アプリケーションAWS EC2の場合
+#### ▼ アプリケーションサーバー (AWS EC2) の場合
 
 AWS ALBに割り振られる可能性のあるIPアドレスを許可するために、AWS ALBのセキュリティグループID、またはサブネットのCIDRブロックを設定する。
 
-| タイプ | プロトコル | ポート | ソース                                | 説明                            |
-| ------ | ---------- | ------ | ------------------------------------- | ------------------------------- |
-| HTTP   | TCP        | `80`   | AWS ALBのセキュリティグループID       | HTTP access from AWS ALB        |
-| HTTPS  | TCP        | `443`  | 踏み台AWS EC2のセキュリティグループID | SSH access from bastion AWS EC2 |
+| タイプ | プロトコル | ポート | ソース                                            | 説明                            |
+| ------ | ---------- | ------ | ------------------------------------------------- | ------------------------------- |
+| HTTP   | TCP        | `80`   | AWS ALBのセキュリティグループID                   | HTTP access from AWS ALB        |
+| HTTPS  | TCP        | `443`  | 踏み台サーバー (AWS EC2) のセキュリティグループID | SSH access from bastion AWS EC2 |
 
-#### ▼ 踏み台AWS EC2の場合
+#### ▼ SSHの踏み台サーバー (AWS EC2) の場合
+
+`ssh`コマンドを実行してポートフォワーディングを実施する場合、踏み台サーバーをパブリックサブネットに配置する必要がある。
+
+また、セキュリティグループのインバウンドルールでSSHプロトコルを許可する必要がある。
+
+```bash
+$ ssh -o serveraliveinterval=60 -f -N -L 3306:<AWS Auroraのリーダーエンドポイント>:3306 -i "~/.ssh/foo.pem" <踏み台サーバーの実行ユーザー>@<踏み台サーバーのホスト> -p 22
+```
 
 | タイプ | プロトコル | ポート | ソース                     | 説明                              |
 | ------ | ---------- | ------ | -------------------------- | --------------------------------- |
 | SSH    | TCP        | `22`   | 社内のグローバルIPアドレス | SSH access from global ip address |
 
-以下のコマンドをローカルPCで実行することになる。
+#### ▼ AWS SSM Session Managerの踏み台サーバー (AWS EC2) の場合
+
+`aws ssm start-session`コマンドを実行してポートフォワーディングを実施する場合、踏み台サーバーをパブリックサブネットに配置する必要がある。
+
+セキュリティグループのインバウンドルールでは何も許可する必要がない。
 
 ```bash
-$ ssh -o serveraliveinterval=60 -f -N -L 3306:<AWS Auroraのリーダーエンドポイント>:3306 -i "~/.ssh/foo.pem" <踏み台サーバーの実行ユーザー>@<踏み台サーバーのホスト> -p 22
+$ aws ssm start-session --target <踏み台のAWS EC2インスタンスID> \
+    --document-name AWS-StartPortForwardingSessionToRemoteHost \
+    --parameters '{"host":["<AWS Auroraのクラスターエンドポイント>"],"portNumber":["<踏み台サーバー (AWS EC2) のポート番号>"], "localPortNumber":["<ローカルPCのポート番号>"]}'
 ```
+
+| タイプ   | プロトコル | ポート   | ソース   | 説明      |
+| -------- | ---------- | -------- | -------- | --------- |
+| 設定なし | 設定なし   | 設定なし | 設定なし | 設定なしs |
+
+> - https://qiita.com/s_yanada/items/0f64f746095d85ba3e4c
+> - https://blog.dcs.co.jp/aws/20221124-serverless-bastion.html
 
 #### ▼ EFSの場合
 
@@ -486,7 +507,7 @@ AWS ALBのIPアドレスは定期的に変化するため、任意のIPアドレ
 
 ### AWS Systems Managerによる防御
 
-開発者がAWS EC2へリモート接続する方法として、AWS Systems Managerのセッションマネージャーを採用する。
+開発者がAWS EC2へリモート接続する方法として、AWS SSM Session Managerを採用する。
 
 SSH公開鍵認証を採用しないことにより、SSH公開鍵を管理する負荷や漏洩のリスクを低減する。
 

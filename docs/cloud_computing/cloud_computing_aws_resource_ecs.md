@@ -716,29 +716,29 @@ AWS NAT GatewayとVPCエンドポイントの両方を作成している場合�
 
 ### Fargate上のコンテナへの接続
 
-#### ▼ セッションマネージャーを使用したECS Exec
+#### ▼ AWS SSM Session Managerを使用したECS Exec
 
 ![fargate_ecs-exec](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fargate_ecs-exec.png)
 
-セッションマネージャーを使用してECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。
+AWS SSM Session Managerを使用してECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。
 
 AWS Systems Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。
 
-ただし、FargateとしてのEC2には、systems-managerエージェントがプリインストールされているため、これは不要である。
+ただし、AWS FargateとしてのAWS EC2には、systems-managerエージェントがプリインストールされているため、これは不要である。
 
 `(1)`
 
-: ECSサービスで、ECS-Execオプションを有効化する。
+: AWS ECSサービスで、ECS-Execオプションを有効化する。
 
 `(2)`
 
-: VPCエンドポイントにて、ssmmessagesエンドポイントを作成する。
+: AWS VPCエンドポイントにて、ssmmessagesエンドポイントを作成する。
 
 `(3)`
 
-: ECSタスク実行ロールにIAMポリシーを付与する。
+: AWS ECSタスク実行ロールにIAMポリシーを付与する。
 
-     これにより、ECSタスクがセッションマネージャーにリクエストを送信できるようになる。
+     これにより、AWS ECSタスクがAWS SSM Session Managerにリクエストを送信できるようになる。
 
 ```yaml
 {

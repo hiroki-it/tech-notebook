@@ -717,7 +717,7 @@ GET http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:
 
 #### ▼ ワーカーNode (例：AWS EC2、Fargate) への接続
 
-セッションマネージャーを使用して、ワーカーNode (例：AWS EC2、Fargate) に接続できる。
+AWS SSM Session Managerを使用して、ワーカーNode (例：AWS EC2、Fargate) に接続できる。
 
 <br>
 
@@ -912,11 +912,11 @@ AWS VPC外のAWSリソース (例：AWS EKSコントロールプレーン、AWS 
 
 この状態で、`kubectl`コマンドでkube-apiserverにリクエストを送信できるようにする方法としては、以下のパターンがある。
 
-| 接続元パターン           | 接続方法パターン            |
-| ------------------------ | --------------------------- |
-| ローカルマシン           | セッションマネージャー      |
-| AWS VPC内の踏み台AWS EC2 | セッションマネージャー、SSH |
-| AWS VPC内のCloud9        | セッションマネージャー、SSH |
+| 接続元パターン           | ログインシェル          |
+| ------------------------ | ----------------------- |
+| ローカルマシン           | AWS SSM Session Manager |
+| AWS VPC内の踏み台AWS EC2 | AWS SSM Session Manager |
+| AWS VPC内のCloud9        | AWS SSM Session Manager |
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access
 > - https://note.com/tyrwzl/n/nf28cd4372b18

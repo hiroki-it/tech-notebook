@@ -114,6 +114,8 @@ SHOW variables LIKE '%version%';
 
 SSH公開鍵認証を使用する場合、ユーザーが自前でDB接続者を管理する必要がある。
 
+この場合、AWS EC2をパブリックサブネットに置く必要があり、プライベートサブネットには置けない。
+
 ```bash
 $ ssh -o serveraliveinterval=60 -f -N -L 3306:<AWS Auroraのリーダーエンドポイント>:3306 -i "~/.ssh/foo.pem" <踏み台サーバーの実行ユーザー>@<踏み台サーバーのホスト> -p 22
 ```
@@ -122,17 +124,21 @@ $ ssh -o serveraliveinterval=60 -f -N -L 3306:<AWS Auroraのリーダーエン�
 
 #### ▼ AWS SSM Session ManagerのSSHセッションを使用する場合
 
+この場合、AWS SSM Session Managerを使用するため、AWS EC2をプライベートサブネットに置ける。
+
 > - https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-start-ssh
 
 #### ▼ AWS SSM Session ManagerのStartPortForwardingSessionToRemoteHostを使用する場合
 
 AWS SSM Session Managerの認証を使用する場合、AWS IAMでDB接続者を管理する。
 
-事前に、踏み台AWS EC2のセキュリティグループのインバウンドルールでポート番号を開放しておく。
+事前に、踏み台サーバー (AWS EC2) のセキュリティグループのインバウンドルールでポート番号を開放しておく。
 
 また、AWS Session Managerプラグインをインストールしておく。
 
 その後、`aws ssm`コマンドでポートフォワーディングを実行する。
+
+この場合、AWS SSM Session Managerを使用するため、AWS EC2をプライベートサブネットに置ける。
 
 ```bash
 # ローカルPC
@@ -140,7 +146,7 @@ AWS SSM Session Managerの認証を使用する場合、AWS IAMでDB接続者を
 # ポートフォワーディングのコマンドを実行する (事前にAWS Session Managerプラグインをインストールしないとエラーになる)
 $ aws ssm start-session --target <踏み台のAWS EC2インスタンスID> \
     --document-name AWS-StartPortForwardingSessionToRemoteHost \
-    --parameters '{"host":["<AWS Auroraのクラスターエンドポイント>"],"portNumber":["<踏み台AWS EC2インスタンスのポート番号>"], "localPortNumber":["<ローカルPCのポート番号>"]}'
+    --parameters '{"host":["<AWS Auroraのクラスターエンドポイント>"],"portNumber":["<踏み台サーバー (AWS EC2) のポート番号>"], "localPortNumber":["<ローカルPCのポート番号>"]}'
 
 # 別のターミナルでmysqlコマンドを実行する
 $ mysql -u <AWS Auroraのユーザー> -p<AWS Auroraのパスワード> -h localhost -P <ローカルPCのポート番号>
@@ -319,7 +325,7 @@ AWS RDSにはダウンタイムに関する情報が多いが、AWS Auroraには
 
 AWS Aurora MySQLのアップグレードに伴うダウンタイムを計測する。
 
-踏み台サーバーを経由してAWS RDSに接続し、現在時刻を取得するSQLを送信する。
+踏み台サーバー (AWS EC2) を経由してAWS RDSに接続し、現在時刻を取得するSQLを送信する。
 
 この時、`for`文や`watch`コマンドを使用する。
 
