@@ -101,11 +101,7 @@ Fluent Bit v1.8.6
 
 ![fluent-bit_input](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_input.png)
 
-> - https://docs.fluentbit.io/manual/concepts/data-pipeline/input
-
 プラグインを使用して、ログのインプット方法を設定する。
-
-> - https://docs.fluentbit.io/manual/pipeline/inputs
 
 コマンドの`-i`オプションでINPUT名を指定し、実行もできる。
 
@@ -139,6 +135,9 @@ Inputs
   forward                 Fluentd in-forward
   random                  Random
 ```
+
+> - https://docs.fluentbit.io/manual/concepts/data-pipeline/input
+> - https://docs.fluentbit.io/manual/pipeline/inputs
 
 <br>
 

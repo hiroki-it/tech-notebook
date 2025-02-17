@@ -162,13 +162,13 @@ $ mysql -u <AWS Auroraのユーザー> -p<AWS Auroraのパスワード> -h local
 
 <br>
 
-### 踏み台Kubernetes Podを使用する場合
+### 踏み台Podを使用する場合
 
-#### ▼ 踏み台Kubernetes Podとは
+#### ▼ 踏み台Podとは
 
 これは、AWS EKSを使用している場合に使用できる。
 
-データベースに接続したい場合、ポートフォワーディング用の踏み台Kubernetes PodをAWS EKS内に作成する。
+データベースに接続したい場合、ポートフォワーディング用の踏み台PodをAWS EKS内に作成する。
 
 Helmチャートを作成しておくと、簡単にセットアップできる。
 
