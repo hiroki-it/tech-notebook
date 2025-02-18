@@ -26804,19 +26804,9 @@
 <h3 id="wildcard"><code>WILDCARD</code>句<a class="headerlink" href="#wildcard" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ 使い方<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="o">*</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
-<span class="k">WHERE</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="ss">&quot;%営業&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="ss">&quot;%営業&quot;</span><span class="p">;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="o">*</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
-<span class="k">WHERE</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="ss">&quot;_営業&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="ss">&quot;_営業&quot;</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="between"><code>BETWEEN</code>句<a class="headerlink" href="#between" title="Permanent link">&para;</a></h3>
@@ -26880,14 +26870,7 @@
 <span class="w">    </span><span class="k">sum</span><span class="p">(</span><span class="n">data_length</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">index_length</span><span class="p">)</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="_13">▼ カラムの検索<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="k">table_name</span><span class="p">,</span>
-<span class="w">    </span><span class="k">column_name</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="n">information_schema</span><span class="p">.</span><span class="n">columns</span>
-<span class="k">WHERE</span>
-<span class="w">    </span><span class="k">column_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="err">検索したいカラム名</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">table_schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="err">検索対象の</span><span class="n">DB名</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">table_name</span><span class="p">,</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="n">columns</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="err">検索したいカラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">table_schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="err">検索対象の</span><span class="n">DB名</span><span class="o">&gt;</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03-explain">03. EXPLAIN<a class="headerlink" href="#03-explain" title="Permanent link">&para;</a></h2>
@@ -27022,8 +27005,7 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
 <p><strong>＊実装例＊</strong></p>
 <p><code>SELECT</code>文のstored procedureを作成する例を考える。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- PROCEDUREを作成し、DBへ格納しておく。</span>
-<span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">SelectContact</span><span class="w"> </span><span class="k">AS</span>
-<span class="k">SELECT</span><span class="w"> </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">SelectContact</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">-- PROCEDUREを実行</span>
 <span class="k">EXEC</span><span class="w"> </span><span class="n">SelectContact</span>
