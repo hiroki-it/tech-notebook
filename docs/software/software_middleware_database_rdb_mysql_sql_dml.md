@@ -68,10 +68,7 @@ SELECT AVG(<カラム名>) FROM <テーブル名>;
 指定したカラムで、『フィールド』の最小値を取得する。
 
 ```sql
-SELECT
-    MIN(<カラム名>)
-FROM
-    <テーブル名>;
+SELECT MIN(<カラム名>) FROM <テーブル名>;
 ```
 
 #### ▼ `MAX`関数
@@ -79,10 +76,7 @@ FROM
 指定したカラムで、『フィールド』の最大値を取得する。
 
 ```sql
-SELECT
-    MAX(<カラム名>)
-FROM
-    <テーブル名>;
+SELECT MAX(<カラム名>) FROM <テーブル名>;
 ```
 
 #### ▼ `COUNT`関数
@@ -90,10 +84,7 @@ FROM
 指定したカラムで、『フィールド』の個数を取得する。
 
 ```sql
-SELECT
-    <カラム名> COUNT(*)
-FROM
-    <テーブル名>;
+SELECT <カラム名> COUNT(*) FROM <テーブル名>;
 ```
 
 **※消去法の小技：集合関数を入れ子状にはできない**
@@ -103,26 +94,19 @@ FROM
 集合関数を集合関数の中に入れ子状にできない。
 
 ```sql
-SELECT
-    AVG(SUM(<カラム名>))
-FROM
-    <テーブル名>;
+SELECT AVG(SUM(<カラム名>)) FROM <テーブル名>;
 ```
 
 指定したカラムで、値無しも含む『フィールド』を取得する。
 
 ```sql
-SELECT
-    <カラム名> COUNT(*)
-FROM
-    <テーブル名>;
+SELECT COUNT(<カラム名>) FROM <テーブル名>;
 ```
 
 指定したカラムで、値無しを除いた『フィールド』を取得する。
 
 ```sql
-SELECT
-    <カラム名> COUNT(*);
+SELECT COUNT(<カラム名>);
 ```
 
 #### ▼ `LAST_INSERT_ID`関数
@@ -274,54 +258,25 @@ SELECT * FROM <テーブル名> WHERE <カラム名> in (foo, bar,...);
 指定したカラムで、指定した値以外の『フィールド』を取得する。
 
 ```sql
-SELECT
-    *
-FROM
-    <テーブル名>
-WHERE
-    <カラム名> not in (<レコード名1>, <レコード名2>,...);
+SELECT * FROM <テーブル名> WHERE <カラム名> not in (<レコード名1>, <レコード名2>,...);
 ```
 
 指定したカラムで、`SELECT`で読み出した値以外の『フィールド』を取得する。
 
 ```sql
-SELECT
-    *
-FROM
-    <テーブル名>
-WHERE
-    <カラム名> not in (
-        --
-        SELECT
-            <カラム名>
-        FROM
-            <テーブル名>
-        WHERE
-            <レコード名> >= 160
-    );
+SELECT * FROM <テーブル名> WHERE <カラム名> not in (SELECT <カラム名> FROM <テーブル名> WHERE <レコード名> >= 160);
 ```
 
 **【IN句を使用しなかった場合】**
 
 ```sql
-SELECT
-    *
-FROM
-    fruit
-WHERE
-    name = "みかん"
-    OR name = "りんご";
+SELECT * FROM fruit WHERE name = "みかん" OR name = "りんご";
 ```
 
 **【IN句を使用した場合】**
 
 ```sql
-SELECT
-    *
-FROM
-    fruit
-WHERE
-    name IN("みかん", "りんご");
+SELECT * FROM fruit WHERE name IN("みかん", "りんご");
 ```
 
 #### ▼ `ANY`句の使い方
@@ -350,13 +305,7 @@ WHERE
 指定したカラムをグループ化し、フィールドの値の平均値を算出する。
 
 ```sql
-SELECT
-    <カラム名1>,
-    AVG(<カラム名2>)
-FROM
-    <テーブル名>
-GROUP BY
-    <カラム名1>;
+SELECT <カラム名1> AVG(<カラム名2>) FROM <テーブル名> GROUP BY <カラム名1>;
 ```
 
 <br>
@@ -388,25 +337,11 @@ HAVING
 以下の場合、`GROUP BY + HAVING`や`WHERE`を使用しても、同じ出力結果になる。
 
 ```sql
-SELECT
-    <カラム名>
-FROM
-    <テーブル名>
-GROUP BY
-    <カラム名>
-HAVING
-    <レコード名>;
+SELECT <カラム名> FROM <テーブル名> GROUP BY <カラム名> HAVING <レコード名>;
 ```
 
 ```sql
-SELECT
-    <カラム名>
-FROM
-    <テーブル名>
-WHERE
-    <レコード名>
-GROUP BY
-    <カラム名>;
+SELECT <カラム名> FROM <テーブル名> WHERE <レコード名> GROUP BY <カラム名>;
 ```
 
 <br>
