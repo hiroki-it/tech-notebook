@@ -353,21 +353,11 @@ SELECT <カラム名> FROM <テーブル名> WHERE <レコード名> GROUP BY <�
 **＊実装例＊**
 
 ```sql
-SELECT
-    *
-FROM
-    <テーブル名>
-WHERE
-    <カラム名> LIKE "%営業";
+SELECT * FROM <テーブル名> WHERE <カラム名> LIKE "%営業";
 ```
 
 ```sql
-SELECT
-    *
-FROM
-    <テーブル名>
-WHERE
-    <カラム名> LIKE "_営業";
+SELECT * FROM <テーブル名> WHERE <カラム名> LIKE "_営業";
 ```
 
 <br>
@@ -459,14 +449,7 @@ ORDER BY
 #### ▼ カラムの検索
 
 ```sql
-SELECT
-    table_name,
-    column_name
-FROM
-    information_schema.columns
-WHERE
-    column_name = <検索したいカラム名>
-    AND table_schema = <検索対象のDB名>
+SELECT table_name, column_name FROM information_schema.columns WHERE column_name = <検索したいカラム名> AND table_schema = <検索対象のDB名>
 ```
 
 <br>
@@ -600,8 +583,7 @@ mysql> SHOW TABLES;
 
 ```sql
 -- PROCEDUREを作成し、DBへ格納しておく。
-CREATE PROCEDURE SelectContact AS
-SELECT <カラム名> FROM <テーブル名>
+CREATE PROCEDURE SelectContact AS SELECT <カラム名> FROM <テーブル名>
 ```
 
 ```sql

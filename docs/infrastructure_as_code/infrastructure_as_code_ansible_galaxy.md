@@ -31,23 +31,42 @@ description: Ansible Galaxy＠Ansibleの知見を記録しています。
 
 ```yaml
 foo-role-module-repository/ # roleモジュール
+│
 ├── defaults/
 │   └── main.yml
 │
 ├── files/
-│   ├── foo1.conf
-│   ├── foo2.conf
-│   └── foo3.conf
+│   │
+│   ├── foo1/
+│   │   └── x.conf
+│   │
+│   ├── foo2/
+│   │   └── y.conf
+│   │
+│   └── foo3/
+│       └── z.conf
+│
+├── handlers/
+│   └── foo1.yml
+│
+├── tasks/
+│   ├── foo1.yaml
+│   ├── foo2.yaml
+│   └── foo3.yml
+│
+├── template/
+│   └── x.j2 # tasks/x.confファイルに対応している
 │
 ├── meta/
 │   └── main.yml
 │
-└── tasks/
-    ├── foo1.yaml
+└── vars/
+    ├── foo1.yaml # tasks/foo.yamlファイルに対応している
     ├── foo2.yaml
     └── foo3.yml
 ```
 
+> - https://docs.ansible.com/ansible/latest/galaxy/dev_guide.html#creating-roles-for-galaxy
 > - https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
 
 #### ▼ main.yml
