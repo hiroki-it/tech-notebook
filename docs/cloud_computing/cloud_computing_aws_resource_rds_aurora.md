@@ -112,9 +112,13 @@ SHOW variables LIKE '%version%';
 
 ### SSH公開鍵認証を使用する場合
 
+#### ▼ この方法について
+
 SSH公開鍵認証を使用する場合、ユーザーが自前でDB接続者を管理する必要がある。
 
 この場合、踏み台サーバー (AWS EC2) をパブリックサブネットに置く必要があり、プライベートサブネットには置けない。
+
+#### ▼ セットアップ
 
 ```bash
 $ ssh -o serveraliveinterval=60 -f -N -L 3306:<AWS Auroraのリーダーエンドポイント>:3306 -i "~/.ssh/foo.pem" <踏み台サーバーの実行ユーザー>@<踏み台サーバー (AWS EC2) のホスト> -p 22
@@ -126,6 +130,8 @@ $ ssh -o serveraliveinterval=60 -f -N -L 3306:<AWS Auroraのリーダーエン�
 
 ### AWS SSM Session ManagerのSSHセッションを使用する場合
 
+#### ▼ この方法について
+
 この場合、AWS SSM Session Managerを使用するため、踏み台サーバー (AWS EC2) をプライベートサブネットに置ける。
 
 > - https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-start-ssh
@@ -134,31 +140,53 @@ $ ssh -o serveraliveinterval=60 -f -N -L 3306:<AWS Auroraのリーダーエン�
 
 ### AWS SSM Session ManagerのStartPortForwardingSessionToRemoteHostを使用する場合
 
+#### ▼ この方法について
+
 AWS SSM Session Managerの認証を使用する場合、AWS IAMでDB接続者を管理する。
-
-事前に、踏み台サーバー (AWS EC2) のセキュリティグループのインバウンドルールでポート番号を開放しておく。
-
-また、AWS Session Managerプラグインをインストールしておく。
-
-その後、`aws ssm`コマンドでポートフォワーディングを実行する。
 
 この場合、AWS SSM Session Managerを使用するため、踏み台サーバー (AWS EC2) をプライベートサブネットに置ける。
 
-```bash
-# ローカルPC
+#### ▼ 前提条件
 
+事前に、踏み台サーバー (AWS EC2) のセキュリティグループのインバウンドルールでポート番号を開放しておく。
+
+以下のツールをインストールすること
+
+- AWS CLI (セットアップ時点で最新のもの)
+- [Session Managerプラグイン](https://docs.aws.amazon.com/systems-manager/latest/userguide/install-plugin-macos-overview.html) (使用中のPCのOSに合わせること)
+
+#### ▼ セットアップ
+
+ローカルPCの好きなポート番号を使用して、ポートフォワーディングを実施する。
+
+ローカルPCでは、コンテナなどが3306番ポートをすでに使用している可能性があり、他のポート番号がおすすめである。
+
+```bash
 # ポートフォワーディングのコマンドを実行する (事前にAWS Session Managerプラグインをインストールしないとエラーになる)
 $ aws ssm start-session --target <踏み台サーバー (AWS EC2) インスタンスID> \
     --document-name AWS-StartPortForwardingSessionToRemoteHost \
-    --parameters '{"host":["<AWS Auroraのクラスターエンドポイント>"],"portNumber":["<踏み台サーバー (AWS EC2) のポート番号>"], "localPortNumber":["<ローカルPCのポート番号>"]}'
+    --parameters '{"host":["<AWS Auroraのリーダーエンドポイント>"],"portNumber":["<AWS Auroraのポート番号>"], "localPortNumber":["<ローカルPCのポート番号>"]}'
+```
 
-# 別のターミナルでmysqlコマンドを実行する
-$ mysql -u <AWS Auroraのユーザー> -p<AWS Auroraのパスワード> -h localhost -P <ローカルPCのポート番号>
+別ターミナルを開き、AWS AuroraのDBにログインする。
+
+AWS Secrets ManagerのDBのユーザー名やパスワードを確認できる。
+
+```bash
+$ docker exec -it <DBコンテナ名> bash
+
+bash# mysql -h host.docker.internal -P <前の手順で設定したローカルPCの好きなポート番号> -u <ユーザー名> -p<パスワード> <DB名>
+
+mysql> SHOW TABLES;
++-------------------------------+
+| Tables_in_<DB名>              |
++-------------------------------+
+...
 ```
 
 > - https://dev.classmethod.jp/articles/ssm-session-manage-port-forwarding/#toc-1
 > - https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-remote-port-forwarding
-> - https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/install-plugin-macos-overview.html
+> - https://docs.aws.amazon.com/systems-manager/latest/userguide/install-plugin-macos-overview.html
 
 <br>
 
@@ -202,10 +230,10 @@ $ cp chart/values.example.yaml values.yaml
 name: port-forward-for-aws-aurora
 
 remote:
-  # AWS Auroraのホスト (例：リーダーエンドポイント) を設定する
-  host:
+  # AWS Auroraのリーダーエンドポイントを設定する
+  host: <ここに自分で値を設定する>
   # AWS Auroraのポート番号を設定する
-  port:
+  port: <ここに自分で値を設定する>
 ```
 
 #### ▼ pod.yaml
@@ -239,24 +267,38 @@ spec:
               value: {{.Values.remote.port | quote}}
 ```
 
+```bash
+$ helmfile -f helmfile.yaml diff
+
+$ helmfile -f helmfile.yaml apply
+```
+
 > - https://hub.docker.com/r/marcnuri/port-forward
 
 #### ▼ コマンド
 
-AWS Auroraにポートフォワーディングを実行する。
+ローカルPCの好きなポート番号を使用して、AWS Auroraにポートフォワーディングを実行する。
+
+ローカルPCでは、コンテナなどが3306番ポートをすでに使用している可能性があり、他のポート番号がおすすめである。
 
 ```bash
-$ kubectl port-forward deployment/port-forward-for-aws-aurora -n <Namespace名> <ローカルPCの好きなポート番号>:443
+$ kubectl port-forward deployment/port-forwarding-for-aws-aurora -n <Namespace名> <ローカルPCの好きなポート番号>:443
 ```
 
 別ターミナルを開き、AWS AuroraのDBにログインする。
 
-AWS EKSのコンソール画面のSecretでユーザー名やパスワードを確認できる。
+AWS Secrets ManagerのDBのユーザー名やパスワードを確認できる。
 
 ```bash
-$ mysql -h localhost -P 3306 -u <ユーザー名> -p<パスワード>
+$ docker exec -it <DBコンテナ名> bash
 
-mysql> ...
+bash# mysql -h host.docker.internal -P <前の手順で設定したローカルPCの好きなポート番号> -u <ユーザー名> -p<パスワード> <DB名>
+
+mysql> SHOW TABLES;
++-------------------------------+
+| Tables_in_<DB名>              |
++-------------------------------+
+...
 ```
 
 > - https://zenn.dev/toshikish/articles/6a06017747cbba#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AB%E5%A4%A7%E9%87%8F%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%8C%BF%E5%85%A5%E3%81%97%E3%81%9F%E3%81%84
