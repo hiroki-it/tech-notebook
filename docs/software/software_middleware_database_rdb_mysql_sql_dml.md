@@ -44,10 +44,7 @@ MySQLでは、取得結果の並び順が毎回異なるため、プライマリ
 > - https://www.quora.com/What-is-the-default-order-of-records-for-a-SELECT-statement-in-MySQL
 
 ```sql
-SELECT
-    *
-FROM
-    <テーブル名>;
+SELECT * FROM <テーブル名>;
 ```
 
 #### ▼ `SUM`関数
@@ -55,10 +52,7 @@ FROM
 指定したカラムで、『フィールド』の合計を取得する。
 
 ```sql
-SELECT
-    SUM(<カラム名>)
-FROM
-    <テーブル名>;
+SELECT SUM(<カラム名>) FROM <テーブル名>;
 ```
 
 #### ▼ `AVG`関数
@@ -66,10 +60,7 @@ FROM
 指定したカラムで、『フィールド』の平均値を取得する。
 
 ```sql
-SELECT
-    AVG(<カラム名>)
-FROM
-    <テーブル名>;
+SELECT AVG(<カラム名>) FROM <テーブル名>;
 ```
 
 #### ▼ `MIN`関数
@@ -247,9 +238,9 @@ $expression = call_user_func(function () use ($orders, $joinedIdList) {
             switch ($key) {
                 case "id":
                     return sprintf("ss.id %s", $order);
-           >
-       >
-   >
+            }
+        }
+    }
 
     // IN句順の場合
     return sprintf("FIELD(ss.id, %s)", $idList);
@@ -277,12 +268,7 @@ $sql = <<<SQL
 指定したカラムで、指定した値の『フィールド』を取得する。
 
 ```sql
-SELECT
-    *
-FROM
-    <テーブル名>
-WHERE
-    <カラム名> in (foo, bar,...);
+SELECT * FROM <テーブル名> WHERE <カラム名> in (foo, bar,...);
 ```
 
 指定したカラムで、指定した値以外の『フィールド』を取得する。
@@ -680,10 +666,7 @@ mysql> SHOW TABLES;
 ```sql
 -- PROCEDUREを作成し、DBへ格納しておく。
 CREATE PROCEDURE SelectContact AS
-SELECT
-    <カラム名>
-FROM
-    <テーブル名>
+SELECT <カラム名> FROM <テーブル名>
 ```
 
 ```sql

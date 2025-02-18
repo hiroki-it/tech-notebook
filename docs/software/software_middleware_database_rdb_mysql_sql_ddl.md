@@ -64,10 +64,7 @@ CREATE TABLE order_data (
 
 ```sql
 CREATE VIEW <テーブル名> AS
-SELECT
-    *
-FROM
-    <テーブル名>;
+SELECT * FROM <テーブル名>;
 ```
 
 <br>
@@ -98,10 +95,7 @@ CREATE USER "<ユーザー名>" IDENTIFIED BY "<パスワード>";
 ALL特権は異なる。
 
 ```sql
-SELECT
-    *
-FROM
-    mysql.user;
+SELECT * FROM mysql.user;
 ```
 
 <br>

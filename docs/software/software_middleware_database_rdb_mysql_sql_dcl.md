@@ -71,7 +71,7 @@ COMMIT;
 
 ```sql
 -- DB名をクオーテーションで囲う必要はない
-GRANT ALL PRIVILEGES ON {DB名}.* TO '<ユーザー名>'
+GRANT ALL PRIVILEGES ON <DB名>.* TO '<ユーザー名>'
 ```
 
 #### ▼ 読み出し/書き込みユーザー
@@ -80,7 +80,7 @@ GRANT ALL PRIVILEGES ON {DB名}.* TO '<ユーザー名>'
 
 ```sql
 -- DB名をクオーテーションで囲う必要はない
-GRANT ALL PRIVILEGES ON {DB名}.* TO '<ユーザー名>'
+GRANT ALL PRIVILEGES ON <DB名>.* TO '<ユーザー名>'
 ```
 
 #### ▼ 読み出しのみユーザー
@@ -89,7 +89,7 @@ GRANT ALL PRIVILEGES ON {DB名}.* TO '<ユーザー名>'
 
 ```sql
 -- DB名をクオーテーションで囲う必要はない
-GRANT SELECT ON {DB名}.* TO '<ユーザー名>';
+GRANT SELECT ON <DB名>.* TO '<ユーザー名>';
 ```
 
 <br>
@@ -111,7 +111,7 @@ GRANT ALL PRIVILEGES ON `%`.* TO "<ユーザー名>";
 ```sql
 -- AWS Auroraも同じく
 -- 特定のDBに関する全権限を付与
-GRANT ALL PRIVILEGES ON {DB名}.* TO "<ユーザー名>";
+GRANT ALL PRIVILEGES ON <DB名>.* TO "<ユーザー名>";
 ```
 
 <br>
@@ -121,7 +121,7 @@ GRANT ALL PRIVILEGES ON {DB名}.* TO "<ユーザー名>";
 特定のDBに関する読み出し権限のみ付与する。
 
 ```sql
-GRANT SELECT ON {DB名}.* TO "<ユーザー名>";
+GRANT SELECT ON <DB名>.* TO "<ユーザー名>";
 ```
 
 <br>
@@ -156,7 +156,7 @@ REVOKE ALL PRIVILEGES ON `%`.*
 FROM
     "<ユーザー名>";
 
-REVOKE ALL PRIVILEGES ON { DB名>.*
+REVOKE ALL PRIVILEGES ON <DB名>.*
 FROM
     "<ユーザー名>";
 ```
