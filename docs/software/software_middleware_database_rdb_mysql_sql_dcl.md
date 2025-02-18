@@ -71,7 +71,7 @@ COMMIT;
 
 ```sql
 -- DB名をクオーテーションで囲う必要はない
-GRANT ALL PRIVILEGES ON {DB名}.* TO '{ ユーザー名 }'
+GRANT ALL PRIVILEGES ON {DB名}.* TO '<ユーザー名>'
 ```
 
 #### ▼ 読み出し/書き込みユーザー
@@ -80,7 +80,7 @@ GRANT ALL PRIVILEGES ON {DB名}.* TO '{ ユーザー名 }'
 
 ```sql
 -- DB名をクオーテーションで囲う必要はない
-GRANT ALL PRIVILEGES ON {DB名}.* TO '{ ユーザー名 }'
+GRANT ALL PRIVILEGES ON {DB名}.* TO '<ユーザー名>'
 ```
 
 #### ▼ 読み出しのみユーザー
@@ -89,7 +89,7 @@ GRANT ALL PRIVILEGES ON {DB名}.* TO '{ ユーザー名 }'
 
 ```sql
 -- DB名をクオーテーションで囲う必要はない
-GRANT SELECT ON {DB名}.* TO '{ ユーザー名 }';
+GRANT SELECT ON {DB名}.* TO '<ユーザー名>';
 ```
 
 <br>
@@ -102,16 +102,16 @@ DB名は、シングルクオーテーションで囲う必要が無い。
 
 ```sql
 -- 全てのDBに関する権限を付与
-GRANT ALL PRIVILEGES ON *.* TO "{ ユーザー名 }";
+GRANT ALL PRIVILEGES ON *.* TO "<ユーザー名>";
 
 -- AWS AuroraまたはAWS RDSの場合はこちら
-GRANT ALL PRIVILEGES ON `%`.* TO "{ ユーザー名 }";
+GRANT ALL PRIVILEGES ON `%`.* TO "<ユーザー名>";
 ```
 
 ```sql
 -- AWS Auroraも同じく
 -- 特定のDBに関する全権限を付与
-GRANT ALL PRIVILEGES ON {DB名}.* TO "{ ユーザー名 }";
+GRANT ALL PRIVILEGES ON {DB名}.* TO "<ユーザー名>";
 ```
 
 <br>
@@ -121,7 +121,7 @@ GRANT ALL PRIVILEGES ON {DB名}.* TO "{ ユーザー名 }";
 特定のDBに関する読み出し権限のみ付与する。
 
 ```sql
-GRANT SELECT ON {DB名}.* TO "{ ユーザー名 }";
+GRANT SELECT ON {DB名}.* TO "<ユーザー名>";
 ```
 
 <br>
@@ -131,13 +131,13 @@ GRANT SELECT ON {DB名}.* TO "{ ユーザー名 }";
 ユーザーに付与されている権限を取得する。
 
 ```sql
-SHOW GRANTS FOR "{ ユーザー名 }";
+SHOW GRANTS FOR "<ユーザー名>";
 ```
 
 作成したのみで権限を何も付与してないユーザーの場合、『DBサーバー内の全DBに関して、全権限なし』を表す`USAGE`として表示される。
 
 ```sql
-GRANT USAGE ON *.* TO "{ ユーザー名 }";
+GRANT USAGE ON *.* TO "<ユーザー名>";
 ```
 
 特定のDBの認可スコープを与えると、上記に加えて、付与したGRANT権限も表示されるようになる。
@@ -154,11 +154,11 @@ GRANT USAGE ON *.* TO "{ ユーザー名 }";
 -- AWS AuroraまたはAWS RDSの場合
 REVOKE ALL PRIVILEGES ON `%`.*
 FROM
-    "{ ユーザー名 }";
+    "<ユーザー名>";
 
-REVOKE ALL PRIVILEGES ON { DB名 }.*
+REVOKE ALL PRIVILEGES ON { DB名>.*
 FROM
-    "{ ユーザー名 }";
+    "<ユーザー名>";
 ```
 
 <br>
@@ -166,7 +166,7 @@ FROM
 ### ユーザー名変更
 
 ```sql
-RENAME USER "{ 古いユーザー名 }" TO "{ 新しいユーザー名 }";
+RENAME USER "<古いユーザー名>" TO "<新しいユーザー名>";
 ```
 
 <br>

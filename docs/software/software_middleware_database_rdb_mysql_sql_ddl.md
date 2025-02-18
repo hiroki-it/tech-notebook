@@ -63,11 +63,11 @@ CREATE TABLE order_data (
 **＊実装例＊**
 
 ```sql
-CREATE VIEW { テーブル名 } AS
+CREATE VIEW <テーブル名> AS
 SELECT
     *
 FROM
-    { テーブル名 };
+    <テーブル名>;
 ```
 
 <br>
@@ -81,7 +81,7 @@ CREATEで以下の４種類を作成する。
 パスワードは、例えば`8`文字のパスワードを割り当てる。
 
 ```sql
-CREATE USER "{ ユーザー名 }" IDENTIFIED BY "{ パスワード }";
+CREATE USER "<ユーザー名>" IDENTIFIED BY "<パスワード>";
 ```
 
 | ユーザーの種類            | 例                | 補足                                                         |
@@ -117,7 +117,7 @@ FROM
 SELECT * FROM mysql.user;
 
 -- ホストが『%』だった場合
-DROP USER { ユーザー名 }@`%`;
+DROP USER <ユーザー名>@`%`;
 ```
 
 <br>

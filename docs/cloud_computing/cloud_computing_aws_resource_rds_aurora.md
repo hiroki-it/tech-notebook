@@ -207,13 +207,22 @@ Helmチャートを作成しておくと、簡単にセットアップできる�
 ```yaml
 troubleshooting/
 ├── README.md
+├── .gitignore
 ├── chart/
 │   ├── Chart.yaml
 │   ├── templates
-│   │   └── pod.yaml
+│   │   └── deployment.yaml
+│   │
+│   ├── .helmignore
 │   ├── values.example.yaml
 │   └── values.yaml
 └── helmfile.yaml
+```
+
+`.gitignore`ファイルでは、`values.example.yaml`ファイルのコピーから作成される`values.yaml`ファイルのバージョン管理を無視するように実装する。
+
+```ignore
+**/**/values.yaml
 ```
 
 #### ▼ values.example.yaml

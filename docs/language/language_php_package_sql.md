@@ -108,7 +108,7 @@ print_r($data);
 ```php
 <?php
 
-$sql = "SELECT { カラム名 }OUNT(*) FROM doraemon_characters";
+$sql = "SELECT COUNT(*) FROM doraemon_characters";
 $stmt = $dbh->prepare($sql); // プリペアードステートメントを定義。
 $stmt->execute(); // 実行。
 
