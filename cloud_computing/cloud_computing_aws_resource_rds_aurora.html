@@ -27083,13 +27083,19 @@ mysql&gt;<span class="w"> </span>SHOW<span class="w"> </span>TABLES<span class="
 <h4 id="troubleshooting">▼ troubleshootingリポジトリ<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">troubleshooting/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── README.md</span>
+<span class="l l-Scalar l-Scalar-Plain">├── .gitignore</span>
 <span class="l l-Scalar l-Scalar-Plain">├── chart/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── Chart.yaml</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── templates</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   └── pod.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── deployment.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── .helmignore</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── values.example.yaml</span>
 <span class="l l-Scalar l-Scalar-Plain">│   └── values.yaml</span>
 <span class="l l-Scalar l-Scalar-Plain">└── helmfile.yaml</span>
+</code></pre></div>
+<p><code>.gitignore</code>ファイルでは、<code>values.example.yaml</code>ファイルのコピーから作成される<code>values.yaml</code>ファイルのバージョン管理を無視するように実装する。</p>
+<div class="highlight"><pre><span></span><code>**/**/values.yaml
 </code></pre></div>
 <h4 id="valuesexampleyaml">▼ values.example.yaml<a class="headerlink" href="#valuesexampleyaml" title="Permanent link">&para;</a></h4>
 <p><code>.env</code>ファイルのように、バージョン管理しない<code>values.example.yaml</code>ファイルを用意しておく。</p>

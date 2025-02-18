@@ -4211,13 +4211,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#06-exec" class="md-nav__link">
+  <a href="#06-show" class="md-nav__link">
     <span class="md-ellipsis">
-      06. EXEC
+      06. SHOW
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="06. EXEC">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-exec" class="md-nav__link">
+    <span class="md-ellipsis">
+      07. EXEC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="07. EXEC">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26500,13 +26509,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#06-exec" class="md-nav__link">
+  <a href="#06-show" class="md-nav__link">
     <span class="md-ellipsis">
-      06. EXEC
+      06. SHOW
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="06. EXEC">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-exec" class="md-nav__link">
+    <span class="md-ellipsis">
+      07. EXEC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="07. EXEC">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26598,63 +26616,54 @@
 <li><a href="https://www.quora.com/What-is-the-default-order-of-records-for-a-SELECT-statement-in-MySQL">https://www.quora.com/What-is-the-default-order-of-records-for-a-SELECT-statement-in-MySQL</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="o">*</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="sum">▼ <code>SUM</code>関数<a class="headerlink" href="#sum" title="Permanent link">&para;</a></h4>
 <p>指定したカラムで、『フィールド』の合計を取得する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="p">)</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="avg">▼ <code>AVG</code>関数<a class="headerlink" href="#avg" title="Permanent link">&para;</a></h4>
 <p>指定したカラムで、『フィールド』の平均値を取得する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="p">)</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="min">▼ <code>MIN</code>関数<a class="headerlink" href="#min" title="Permanent link">&para;</a></h4>
 <p>指定したカラムで、『フィールド』の最小値を取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="k">MIN</span><span class="p">(</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="p">)</span>
+<span class="w">    </span><span class="k">MIN</span><span class="p">(</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="max">▼ <code>MAX</code>関数<a class="headerlink" href="#max" title="Permanent link">&para;</a></h4>
 <p>指定したカラムで、『フィールド』の最大値を取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="p">)</span>
+<span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="count">▼ <code>COUNT</code>関数<a class="headerlink" href="#count" title="Permanent link">&para;</a></h4>
 <p>指定したカラムで、『フィールド』の個数を取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
 <span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <p><strong>※消去法の小技：集合関数を入れ子状にはできない</strong></p>
 <p><strong>＊実装例＊</strong></p>
 <p>集合関数を集合関数の中に入れ子状にできない。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="k">SUM</span><span class="p">(</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="p">))</span>
+<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="k">SUM</span><span class="p">(</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="p">))</span>
 <span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <p>指定したカラムで、値無しも含む『フィールド』を取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
 <span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <p>指定したカラムで、値無しを除いた『フィールド』を取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">);</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="last_insert_id">▼ <code>LAST_INSERT_ID</code>関数<a class="headerlink" href="#last_insert_id" title="Permanent link">&para;</a></h4>
 <p>任意のテーブルに最後に挿入されたIDを読み出す。</p>
@@ -26671,11 +26680,11 @@
 <p><code>false</code>であったら、カラム3を取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
 <span class="w">    </span><span class="k">CASE</span>
-<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">エイリアス</span><span class="w"> </span><span class="err">}</span><span class="p">.</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">エイリアス</span><span class="w"> </span><span class="err">}</span><span class="p">.</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">2</span><span class="w"> </span><span class="err">}</span>
-<span class="w">        </span><span class="k">ELSE</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">エイリアス</span><span class="w"> </span><span class="err">}</span><span class="p">.</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">3</span><span class="w"> </span><span class="err">}</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="o">&lt;</span><span class="err">エイリアス</span><span class="o">&gt;</span><span class="p">.</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="o">&lt;</span><span class="err">エイリアス</span><span class="o">&gt;</span><span class="p">.</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">2</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="k">ELSE</span><span class="w"> </span><span class="o">&lt;</span><span class="err">エイリアス</span><span class="o">&gt;</span><span class="p">.</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">3</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">name</span>
 <span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">エイリアス</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="o">&lt;</span><span class="err">エイリアス</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="from"><code>FROM</code>句<a class="headerlink" href="#from" title="Permanent link">&para;</a></h3>
@@ -26691,31 +26700,31 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- 『カラム』のみでなく、どの『表』なの物なのかも指定</span>
 <span class="k">SELECT</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">.</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">,</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">.</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">-- 複数の表を指定</span>
 <span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">,</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">2</span><span class="w"> </span><span class="err">}</span><span class="p">,</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">-- まず、1つ目のフィールドと2つ目のフィールドが同じレコードを取得する。</span>
 <span class="k">WHERE</span>
 <span class="w">    </span><span class="c1">-- 次に、上記で取得したレコードのうち、次の条件も満たすレコードのみを取得する。</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">レコード名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">レコード名</span><span class="mi">2</span><span class="w"> </span><span class="err">}</span>
-<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">レコード名</span><span class="mi">2</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">レコード名</span><span class="mi">3</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">レコード名</span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="err">レコード名</span><span class="mi">2</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="o">&lt;</span><span class="err">レコード名</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="err">レコード名</span><span class="mi">3</span><span class="o">&gt;</span>
 </code></pre></div>
 <h4 id="inner-join-on">▼ 内部結合に<code>INNER JOIN ON</code>を使用する場合<a class="headerlink" href="#inner-join-on" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- 『カラム』のみでなく、どの『表』なの物なのかも指定</span>
 <span class="k">SELECT</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">.</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">,</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">.</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">-- 複数の表を指定</span>
 <span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="mi">1</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="c1">-- 2つ目の表の『レコード』と照合</span>
-<span class="w">    </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">2</span><span class="w"> </span><span class="err">}</span>
-<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">.</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">2</span><span class="w"> </span><span class="err">}</span><span class="p">.</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">2</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="mi">2</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">.</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">.</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">2</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="c1">-- 3個目の表の『レコード』と照合</span>
-<span class="w">    </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">3</span><span class="w"> </span><span class="err">}</span>
-<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">.</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">3</span><span class="w"> </span><span class="err">}</span><span class="p">.</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">3</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="mi">3</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">.</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="mi">3</span><span class="o">&gt;</span><span class="p">.</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">3</span><span class="o">&gt;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="order-by"><code>ORDER BY</code>句<a class="headerlink" href="#order-by" title="Permanent link">&para;</a></h3>
@@ -26753,35 +26762,30 @@
 <p>指定した値と同じ『フィールド』を取得する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>指定したカラムで、指定した値の『フィールド』を取得する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="o">*</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
-<span class="k">WHERE</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,...);</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,...);</span>
 </code></pre></div>
 <p>指定したカラムで、指定した値以外の『フィールド』を取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
 <span class="w">    </span><span class="o">*</span>
 <span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
 <span class="k">WHERE</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="err">{</span><span class="w"> </span><span class="err">レコード名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">,</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">レコード名</span><span class="mi">2</span><span class="w"> </span><span class="err">}</span><span class="p">,...);</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="o">&lt;</span><span class="err">レコード名</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;</span><span class="err">レコード名</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">,...);</span>
 </code></pre></div>
 <p>指定したカラムで、<code>SELECT</code>で読み出した値以外の『フィールド』を取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
 <span class="w">    </span><span class="o">*</span>
 <span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
 <span class="k">WHERE</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span>
 <span class="w">        </span><span class="c1">--</span>
 <span class="w">        </span><span class="k">SELECT</span>
-<span class="w">            </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span>
 <span class="w">        </span><span class="k">FROM</span>
-<span class="w">            </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
 <span class="w">        </span><span class="k">WHERE</span>
-<span class="w">            </span><span class="err">{</span><span class="w"> </span><span class="err">レコード名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">160</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="err">レコード名</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">160</span>
 <span class="w">    </span><span class="p">);</span>
 </code></pre></div>
 <p><strong>【IN句を使用しなかった場合】</strong></p>
@@ -26806,9 +26810,9 @@
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
 <span class="w">    </span><span class="o">*</span>
 <span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
 <span class="k">WHERE</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">ANY</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">baz</span><span class="p">);</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">ANY</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">baz</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="group-by"><code>GROUP BY</code>句<a class="headerlink" href="#group-by" title="Permanent link">&para;</a></h3>
@@ -26817,12 +26821,12 @@
 <p><strong>＊実装例＊</strong></p>
 <p>指定したカラムをグループ化し、フィールドの値の平均値を算出する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">,</span>
-<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">2</span><span class="w"> </span><span class="err">}</span><span class="p">)</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
 <span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="having"><code>HAVING</code>句<a class="headerlink" href="#having" title="Permanent link">&para;</a></h3>
@@ -26832,34 +26836,34 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- HAVINGによる集計結果を指定して出力。</span>
 <span class="k">SELECT</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">,</span>
-<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">2</span><span class="w"> </span><span class="err">}</span><span class="p">)</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
 <span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span>
 <span class="c1">-- グループ化した結果を集計し、2個以上の『フィールド』を取得する。</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">1</span><span class="o">&gt;</span>
 <span class="k">HAVING</span>
 <span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 </code></pre></div>
 <p>以下の場合、<code>GROUP BY + HAVING</code>や<code>WHERE</code>を使用しても、同じ出力結果になる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span>
 <span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
 <span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span>
 <span class="k">HAVING</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">レコード名</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">レコード名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span>
 <span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
 <span class="k">WHERE</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">レコード名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">レコード名</span><span class="o">&gt;</span>
 <span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="wildcard"><code>WILDCARD</code>句<a class="headerlink" href="#wildcard" title="Permanent link">&para;</a></h3>
@@ -26868,16 +26872,16 @@
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
 <span class="w">    </span><span class="o">*</span>
 <span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
 <span class="k">WHERE</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="ss">&quot;%営業&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="ss">&quot;%営業&quot;</span><span class="p">;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
 <span class="w">    </span><span class="o">*</span>
 <span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
 <span class="k">WHERE</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="ss">&quot;_営業&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="ss">&quot;_営業&quot;</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="between"><code>BETWEEN</code>句<a class="headerlink" href="#between" title="Permanent link">&para;</a></h3>
@@ -26887,7 +26891,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
 <span class="w">    </span><span class="o">*</span>
 <span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">1</span>
 <span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
 </code></pre></div>
@@ -26896,17 +26900,17 @@
 <h4 id="_10">▼ 使い方<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">SET</span>
-<span class="w">    </span><span class="o">@</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">パラメーター値</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+<span class="w">    </span><span class="o">@</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="err">パラメーター値</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="k">SET</span>
-<span class="w">    </span><span class="o">@</span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">パラメーター値</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+<span class="w">    </span><span class="o">@</span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="err">パラメーター値</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="k">UPDATE</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
 <span class="k">SET</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">A</span><span class="p">,</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">A</span><span class="p">,</span>
 <span class="k">WHERE</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">B</span><span class="p">;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">B</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_11">サブクエリ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
@@ -26917,14 +26921,14 @@
 <span class="k">SELECT</span>
 <span class="w">    </span><span class="o">*</span>
 <span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
 <span class="k">WHERE</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="p">(</span>
 <span class="w">        </span><span class="c1">-- Sub-query</span>
 <span class="w">        </span><span class="k">SELECT</span>
-<span class="w">            </span><span class="k">max</span><span class="p">(</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="p">)</span>
+<span class="w">            </span><span class="k">max</span><span class="p">(</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="w">        </span><span class="k">FROM</span>
-<span class="w">            </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
@@ -26947,8 +26951,8 @@
 <span class="k">FROM</span>
 <span class="w">    </span><span class="n">information_schema</span><span class="p">.</span><span class="n">columns</span>
 <span class="k">WHERE</span>
-<span class="w">    </span><span class="k">column_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">検索したいカラム名</span><span class="w"> </span><span class="err">}</span>
-<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">table_schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">検索対象の</span><span class="n">DB名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="k">column_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="err">検索したいカラム名</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">table_schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="err">検索対象の</span><span class="n">DB名</span><span class="o">&gt;</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03-explain">03. EXPLAIN<a class="headerlink" href="#03-explain" title="Permanent link">&para;</a></h2>
@@ -27056,10 +27060,20 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
 <h2 id="05-insert">05. INSERT<a class="headerlink" href="#05-insert" title="Permanent link">&para;</a></h2>
 <h3 id="_16">バルクインサート<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <p>一度のINSERT文で複数の値を挿入する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;&lt;カラム名&gt;&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;レコード値&gt;&#39;</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;&lt;カラム名&gt;&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;レコード値&gt;&#39;</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;&lt;カラム名&gt;&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;レコード値&gt;&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;&lt;カラム名&gt;&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;レコード値&gt;&#39;</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;&lt;カラム名&gt;&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;レコード値&gt;&#39;</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;&lt;カラム名&gt;&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;レコード値&gt;&#39;</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="06-exec">06. EXEC<a class="headerlink" href="#06-exec" title="Permanent link">&para;</a></h2>
+<h2 id="06-show">06. SHOW<a class="headerlink" href="#06-show" title="Permanent link">&para;</a></h2>
+<p>データベースを閲覧する。</p>
+<p>主に動作確認使用できる。</p>
+<div class="highlight"><pre><span></span><code>mysql&gt;<span class="w"> </span>SHOW<span class="w"> </span>TABLES<span class="p">;</span>
+
++-------------------------------+
+<span class="p">|</span><span class="w"> </span>Tables_in_&lt;DB名&gt;<span class="w">              </span><span class="p">|</span>
++-------------------------------+
+</code></pre></div>
+<p><br></p>
+<h2 id="07-exec">07. EXEC<a class="headerlink" href="#07-exec" title="Permanent link">&para;</a></h2>
 <h3 id="stored-procedure">stored procedure<a class="headerlink" href="#stored-procedure" title="Permanent link">&para;</a></h3>
 <h4 id="stored-procedure_1">▼ stored procedureとは<a class="headerlink" href="#stored-procedure_1" title="Permanent link">&para;</a></h4>
 <p>あらかじめ一連のSQL文をDBに格納しておき、Call文でコールする方式。</p>
@@ -27074,10 +27088,7 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
 <p><code>SELECT</code>文のstored procedureを作成する例を考える。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- PROCEDUREを作成し、DBへ格納しておく。</span>
 <span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">SelectContact</span><span class="w"> </span><span class="k">AS</span>
-<span class="k">SELECT</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">-- PROCEDUREを実行</span>
 <span class="k">EXEC</span><span class="w"> </span><span class="n">SelectContact</span>
@@ -27103,7 +27114,7 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-18</span>
   </span>
 
     
