@@ -26628,42 +26628,26 @@
 </code></pre></div>
 <h4 id="min">▼ <code>MIN</code>関数<a class="headerlink" href="#min" title="Permanent link">&para;</a></h4>
 <p>指定したカラムで、『フィールド』の最小値を取得する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="k">MIN</span><span class="p">(</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="p">)</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">MIN</span><span class="p">(</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="max">▼ <code>MAX</code>関数<a class="headerlink" href="#max" title="Permanent link">&para;</a></h4>
 <p>指定したカラムで、『フィールド』の最大値を取得する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="p">)</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="count">▼ <code>COUNT</code>関数<a class="headerlink" href="#count" title="Permanent link">&para;</a></h4>
 <p>指定したカラムで、『フィールド』の個数を取得する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <p><strong>※消去法の小技：集合関数を入れ子状にはできない</strong></p>
 <p><strong>＊実装例＊</strong></p>
 <p>集合関数を集合関数の中に入れ子状にできない。</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="k">SUM</span><span class="p">(</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="p">))</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="k">SUM</span><span class="p">(</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="p">))</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <p>指定したカラムで、値無しも含む『フィールド』を取得する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <p>指定したカラムで、値無しを除いた『フィールド』を取得する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="last_insert_id">▼ <code>LAST_INSERT_ID</code>関数<a class="headerlink" href="#last_insert_id" title="Permanent link">&para;</a></h4>
 <p>任意のテーブルに最後に挿入されたIDを読み出す。</p>
@@ -26765,45 +26749,16 @@
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,...);</span>
 </code></pre></div>
 <p>指定したカラムで、指定した値以外の『フィールド』を取得する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="o">*</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
-<span class="k">WHERE</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="o">&lt;</span><span class="err">レコード名</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;</span><span class="err">レコード名</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">,...);</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="o">&lt;</span><span class="err">レコード名</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;</span><span class="err">レコード名</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">,...);</span>
 </code></pre></div>
 <p>指定したカラムで、<code>SELECT</code>で読み出した値以外の『フィールド』を取得する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="o">*</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
-<span class="k">WHERE</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span>
-<span class="w">        </span><span class="c1">--</span>
-<span class="w">        </span><span class="k">SELECT</span>
-<span class="w">            </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="k">FROM</span>
-<span class="w">            </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="k">WHERE</span>
-<span class="w">            </span><span class="o">&lt;</span><span class="err">レコード名</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">160</span>
-<span class="w">    </span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="o">&lt;</span><span class="err">レコード名</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">160</span><span class="p">);</span>
 </code></pre></div>
 <p><strong>【IN句を使用しなかった場合】</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="o">*</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="n">fruit</span>
-<span class="k">WHERE</span>
-<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;みかん&quot;</span>
-<span class="w">    </span><span class="k">OR</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;りんご&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">fruit</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;みかん&quot;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;りんご&quot;</span><span class="p">;</span>
 </code></pre></div>
 <p><strong>【IN句を使用した場合】</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="o">*</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="n">fruit</span>
-<span class="k">WHERE</span>
-<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="k">IN</span><span class="p">(</span><span class="ss">&quot;みかん&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;りんご&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">fruit</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">IN</span><span class="p">(</span><span class="ss">&quot;みかん&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;りんご&quot;</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="any">▼ <code>ANY</code>句の使い方<a class="headerlink" href="#any" title="Permanent link">&para;</a></h4>
 <p>書き方が異なるのみで、<code>in</code>と同じ出力</p>
@@ -26820,13 +26775,7 @@
 <p>カラムをグループ化し、集合関数を使用して、フィールドの値を算出する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>指定したカラムをグループ化し、フィールドの値の平均値を算出する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">)</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
-<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="having"><code>HAVING</code>句<a class="headerlink" href="#having" title="Permanent link">&para;</a></h3>
@@ -26847,23 +26796,9 @@
 <span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 </code></pre></div>
 <p>以下の場合、<code>GROUP BY + HAVING</code>や<code>WHERE</code>を使用しても、同じ出力結果になる。</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
-<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span>
-<span class="k">HAVING</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">レコード名</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">HAVING</span><span class="w"> </span><span class="o">&lt;</span><span class="err">レコード名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span>
-<span class="k">WHERE</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">レコード名</span><span class="o">&gt;</span>
-<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="err">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="o">&lt;</span><span class="err">レコード名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="o">&lt;</span><span class="err">カラム名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="wildcard"><code>WILDCARD</code>句<a class="headerlink" href="#wildcard" title="Permanent link">&para;</a></h3>
