@@ -118,6 +118,43 @@ repository/
 
 #### ▼ `roles`ディレクトリの構成
 
+モノリポジトリの場合、以下とする。
+
+```yaml
+repository/
+├── playbook.yml
+├── roles/
+│   ├── app/ # Appサーバー
+│   │   ├── defaults/ # rolesディレクトリ内で使用するデフォルト変数を配置する。
+│   │   │   └── foo.yml
+│   │   │
+│   │   ├── files/ # 管理対象ノードにコピーするファイルを配置する。
+│   │   │   └── foo.conf
+│   │   │
+│   │   ├── handlers/
+│   │   │   └── main.yml
+│   │   │
+│   │   ├── meta/
+│   │   │   └── main.yml
+│   │   │
+│   │   ├── tasks/ # プロビジョニング時に実行するコマンドを配置する。
+│   │   │   └── main.yml
+│   │   │
+│   │   ├── templates/ # テンプレートを配置する。
+│   │   │   └── foo.conf.j2
+│   │   │
+│   │   └── vars/ # rolesディレクトリ内で使用する上書き変数を配置する。
+│   │       └── main.yml
+│   │
+│   ├── shared/ # 共通
+│   ├── db/ # DBサーバー
+│   └── web/ # Webサーバー
+│
+...
+```
+
+ポリリポジトリの場合、以下とする。
+
 ```yaml
 repository/
 ├── playbook.yml

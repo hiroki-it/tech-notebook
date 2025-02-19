@@ -400,3 +400,15 @@ source "amazon-ebs" "foo" {
 ```
 
 <br>
+
+## 07. 関数
+
+### 関数を使用できるブロック
+
+Packerでは、`variables`ブロックには定数を設定する必要があるため、関数は`variables`ブロックで使用できない。
+
+`variables`ブロックの値を一度`locals`ブロックで加工する必要がある。
+
+> - https://github.com/hashicorp/packer/issues/9430#issuecomment-645276351
+
+<br>
