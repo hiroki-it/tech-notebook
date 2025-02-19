@@ -16920,13 +16920,46 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-source" class="md-nav__link">
+  <a href="#04-packer" class="md-nav__link">
     <span class="md-ellipsis">
-      04. source
+      04. packer
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. source">
+    <nav class="md-nav" aria-label="04. packer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packer_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      packerとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required_plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      required_plugins
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. source
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05. source">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -17067,13 +17100,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#05-variable" class="md-nav__link">
+  <a href="#06-variable" class="md-nav__link">
     <span class="md-ellipsis">
-      05. variable
+      06. variable
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. variable">
+    <nav class="md-nav" aria-label="06. variable">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25987,13 +26020,46 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-source" class="md-nav__link">
+  <a href="#04-packer" class="md-nav__link">
     <span class="md-ellipsis">
-      04. source
+      04. packer
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. source">
+    <nav class="md-nav" aria-label="04. packer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packer_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      packerとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required_plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      required_plugins
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. source
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05. source">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26134,13 +26200,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#05-variable" class="md-nav__link">
+  <a href="#06-variable" class="md-nav__link">
     <span class="md-ellipsis">
-      05. variable
+      06. variable
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. variable">
+    <nav class="md-nav" aria-label="06. variable">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26338,7 +26404,26 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="04-source">04. source<a class="headerlink" href="#04-source" title="Permanent link">&para;</a></h2>
+<h2 id="04-packer">04. packer<a class="headerlink" href="#04-packer" title="Permanent link">&para;</a></h2>
+<h3 id="packer_1">packerとは<a class="headerlink" href="#packer_1" title="Permanent link">&para;</a></h3>
+<p><br></p>
+<h3 id="required_plugins">required_plugins<a class="headerlink" href="#required_plugins" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nb">packer</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="nb">required_plugins</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb">amazon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;github.com/hashicorp/amazon&quot;</span>
+<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt; 1&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nb">ansible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;github.com/hashicorp/ansible&quot;</span>
+<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt; 1&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="05-source">05. source<a class="headerlink" href="#05-source" title="Permanent link">&para;</a></h2>
 <h3 id="source">sourceとは<a class="headerlink" href="#source" title="Permanent link">&para;</a></h3>
 <p>作成するマシンイメージやコンテナイメージの内容を設定する。</p>
 <p><br></p>
@@ -26438,7 +26523,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="05-variable">05. variable<a class="headerlink" href="#05-variable" title="Permanent link">&para;</a></h2>
+<h2 id="06-variable">06. variable<a class="headerlink" href="#06-variable" title="Permanent link">&para;</a></h2>
 <h3 id="variable">variableとは<a class="headerlink" href="#variable" title="Permanent link">&para;</a></h3>
 <p>ファイル内で使用する変数を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;region&quot;</span><span class="w"> </span><span class="p">{</span>
@@ -26471,7 +26556,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-19</span>
   </span>
 
     
