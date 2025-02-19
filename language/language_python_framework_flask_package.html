@@ -10055,9 +10055,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#authorization" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 全体
+      ▼ アクセストークンをAuthorizationヘッダーで運搬する場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookie" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アクセストークンをCookieヘッダーで運搬する場合
     </span>
   </a>
   
@@ -10069,7 +10078,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       ログアウト
     </span>
@@ -10079,7 +10088,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 全体
     </span>
@@ -25560,9 +25569,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#authorization" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 全体
+      ▼ アクセストークンをAuthorizationヘッダーで運搬する場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookie" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アクセストークンをCookieヘッダーで運搬する場合
     </span>
   </a>
   
@@ -25574,7 +25592,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       ログアウト
     </span>
@@ -25584,7 +25602,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 全体
     </span>
@@ -25710,7 +25728,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="_4">ログイン<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ 全体<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h4 id="authorization">▼ アクセストークンをAuthorizationヘッダーで運搬する場合<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h4>
+<p>フロントエンドアプリケーションがCSRまたはSSRの場合に採用できる。</p>
+<p>CSRまたはSSRのアプリケーションは、<code>Cookie</code>ヘッダーを介してブラウザのCookieにトークンを保存できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">redirect</span>
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">)</span>
@@ -25741,9 +25761,45 @@
 <li><a href="https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py">https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py</a></li>
 </ul>
 </blockquote>
+<h4 id="cookie">▼ アクセストークンをCookieヘッダーで運搬する場合<a class="headerlink" href="#cookie" title="Permanent link">&para;</a></h4>
+<p>フロントエンドアプリケーションがCSRまたはSSRの場合に採用できる。</p>
+<p>CSRまたはSSRのアプリケーションは、<code>Cookie</code>ヘッダーを介してブラウザのCookieにトークンを保存できる。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">redirect</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">login</span><span class="p">():</span>
+    <span class="n">redirect_uri</span> <span class="o">=</span> <span class="n">url_for</span><span class="p">(</span><span class="s2">&quot;callback&quot;</span><span class="p">,</span> <span class="n">_external</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">oauth</span><span class="o">.</span><span class="n">keycloak</span><span class="o">.</span><span class="n">authorize_redirect</span><span class="p">(</span><span class="n">redirect_uri</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/callback&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">callback</span><span class="p">():</span>
+    <span class="c1"># 認可レスポンスを取得する</span>
+    <span class="n">authorization_response</span> <span class="o">=</span> <span class="n">oauth</span><span class="o">.</span><span class="n">keycloak</span><span class="o">.</span><span class="n">authorize_access_token</span><span class="p">()</span>
+
+    <span class="c1"># IDトークンをセッションデータとして保存する</span>
+    <span class="n">session</span><span class="p">[</span><span class="s1">&#39;id_token&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">authorization_response</span><span class="p">[</span><span class="s1">&#39;id_token&#39;</span><span class="p">]</span>
+
+    <span class="c1"># デコードしたIDトークンを認可レスポンスから取得する</span>
+    <span class="n">id_token</span> <span class="o">=</span> <span class="n">oauth</span><span class="o">.</span><span class="n">keycloak</span><span class="o">.</span><span class="n">parse_id_token</span><span class="p">(</span><span class="n">authorization_response</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="n">session</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">id_token</span><span class="p">[</span><span class="s1">&#39;given_name&#39;</span><span class="p">]</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">make_response</span><span class="p">(</span><span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;front&#39;</span><span class="p">,</span> <span class="n">_external</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
+
+    <span class="c1"># Cookieにアクセストークンを設定する</span>
+    <span class="c1"># レスポンスにSet-Cookieヘッダーが追加される</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">set_cookie</span><span class="p">(</span><span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="n">authorization_response</span><span class="p">[</span><span class="s1">&#39;access_token&#39;</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://flask.palletsprojects.com/en/stable/api/#flask.Response.set_cookie">https://flask.palletsprojects.com/en/stable/api/#flask.Response.set_cookie</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h3 id="_6">ログアウト<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<h4 id="_7">▼ 全体<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h3 id="_5">ログアウト<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ 全体<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">redirect</span>
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/logout&#39;</span><span class="p">)</span>
@@ -25822,7 +25878,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-19</span>
   </span>
 
     
