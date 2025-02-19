@@ -21,11 +21,11 @@ description: Ansible Galaxy＠Ansibleの知見を記録しています。
 
 <br>
 
-## 02. セットアップ
+## 02. 参照される側
 
-### 参照される側
+### roleモジュールのディレクトリ構成
 
-#### ▼ roleモジュールのディレクトリ構成
+#### ▼ 複数のtaskがある場合
 
 `meta`ディレクトリ配下に、roleモジュールを宣言する設定ファイルを配置する。
 
@@ -69,7 +69,41 @@ foo-role-module-repository/ # roleモジュール
 > - https://docs.ansible.com/ansible/latest/galaxy/dev_guide.html#creating-roles-for-galaxy
 > - https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
 
-#### ▼ main.yml
+#### ▼ 複数のtaskがある場合
+
+`meta`ディレクトリ配下に、roleモジュールを宣言する設定ファイルを配置する。
+
+```yaml
+foo-role-module-repository/ # roleモジュール
+│
+├── defaults/
+│   └── main.yml
+│
+├── files/
+│   └── x.conf
+│
+├── handlers/
+│   └── foo.yml
+│
+├── tasks/
+│   └── foo.yml
+│
+├── template/
+│   └── x.j2 # tasks/x.confファイルに対応している
+│
+├── meta/
+│   └── main.yml
+│
+└── vars/
+    └── foo.yml # tasks/foo.yamlファイルに対応している
+```
+
+> - https://docs.ansible.com/ansible/latest/galaxy/dev_guide.html#creating-roles-for-galaxy
+> - https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
+
+<br>
+
+### meta/meta.yml
 
 `meta`ディレクトリ配下の`main.yml`ファイルで、roleモジュールであることを宣言する。
 
@@ -84,9 +118,9 @@ dependencies: []
 
 <br>
 
-### 参照する側
+## 03. 参照する側
 
-#### ▼ ディレクトリ構成
+### ディレクトリ構成
 
 `meta`ディレクトリ配下に、roleモジュールを宣言する設定ファイルを配置する。
 
@@ -98,7 +132,9 @@ repository/
 
 > - https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
 
-#### ▼ requirements.yml
+<br>
+
+### requirements.yml
 
 リモート参照するroleモジュールのURLを設定する。
 
@@ -119,7 +155,7 @@ repository/
   version: main
 ```
 
-#### ▼ playbook.yml
+### playbook.yml
 
 `playbook.yml`ファイルでroleモジュール名を設定する。
 
