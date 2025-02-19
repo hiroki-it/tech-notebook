@@ -141,18 +141,22 @@ repository/
 ```yaml
 - name: foo-role
   scm: git
+  # roleモジュールのあるリポジトリ
   src: https://github.com/hiroki-hasegawa/foo-role-module-repository.git
+  # ブランチ
   version: main
 
 - name: bar-role
   scm: git
   src: https://github.com/hiroki-hasegawa/bar-role-module-repository.git
-  version: main
+  # タグ
+  version: 1.0.0
 
 - name: baz-role
   scm: git
   src: https://github.com/hiroki-hasegawa/baz-role-module-repository.git
-  version: main
+  # コミットハッシュ値
+  version: ee8aa41
 ```
 
 ### playbook.yml
@@ -163,7 +167,7 @@ repository/
 - hosts: all
   become: "true"
   roles:
-    - foo
+    - foo-role
 ```
 
 <br>
