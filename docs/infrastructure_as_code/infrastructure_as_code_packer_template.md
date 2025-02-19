@@ -213,7 +213,33 @@ build {
 
 <br>
 
-## 04. source
+## 04. packer
+
+### packerとは
+
+<br>
+
+### required_plugins
+
+```hcl
+packer {
+
+  required_plugins {
+    amazon = {
+      source  = "github.com/hashicorp/amazon"
+      version = "~> 1"
+    }
+    ansible = {
+      source  = "github.com/hashicorp/ansible"
+      version = "~> 1"
+    }
+  }
+}
+```
+
+<br>
+
+## 05. source
 
 ### sourceとは
 
@@ -356,7 +382,7 @@ source "amazon-ebs" "foo" {
 
 <br>
 
-## 05. variable
+## 06. variable
 
 ### variableとは
 

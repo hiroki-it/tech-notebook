@@ -83,10 +83,10 @@ foo-role-module-repository/ # roleモジュール
 │   └── x.conf
 │
 ├── handlers/
-│   └── foo.yml
+│   └── main.yml
 │
 ├── tasks/
-│   └── foo.yml
+│   └── main.yml
 │
 ├── template/
 │   └── x.j2 # tasks/x.confファイルに対応している
@@ -95,7 +95,7 @@ foo-role-module-repository/ # roleモジュール
 │   └── main.yml
 │
 └── vars/
-    └── foo.yml # tasks/foo.yamlファイルに対応している
+    └── main.yml # tasks/foo.yamlファイルに対応している
 ```
 
 > - https://docs.ansible.com/ansible/latest/galaxy/dev_guide.html#creating-roles-for-galaxy
