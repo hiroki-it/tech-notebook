@@ -2148,11 +2148,13 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-forward_original_token
 
-#### ▼ fromCookies
+#### ▼ from_cookies
 
 `Cookie`ヘッダーの指定したキー名からアクセストークンを取得する。
 
 `Cookie`ヘッダーを使用して認証情報を運ぶ場合 (例：フロントエンドアプリケーションがCSRやSSR) に役立つ。
+
+大文字 (`.spec.jwtRules.fromCookies`キー) ではないことに注意する。
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -2161,9 +2163,9 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    fromCookies:
-      # sessionキーを指定する
-      - session
+    from_cookies:
+      # Cookieヘッダーの中でアクセストークンが設定されたキーを指定する
+      - <アクセストークンキー>
 ```
 
 > - https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-from_cookies

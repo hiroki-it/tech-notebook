@@ -113,11 +113,11 @@ Keycloakでは、コマンドオプション、環境変数、`keycloak.conf`フ
 
 <br>
 
-## 04. Cookie
+## 04. `Cookie`ヘッダー
 
 ### AUTH_SESSION_ID
 
-Keycloakのログインによってブラウザに保管されるセッションデータである。
+Keycloakのログイン後、`Cookie`ヘッダーによって運搬されるセッションデータである。
 
 `<セッションID>.keycloak-0-27504`の形式になる。
 
