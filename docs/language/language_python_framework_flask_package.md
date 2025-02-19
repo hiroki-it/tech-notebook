@@ -132,7 +132,7 @@ def callback():
 
     response = app.make_response(redirect(url_for('front', _external=True)))
 
-    # Cookieにアクセストークンを設定する
+    # access_tokenというキー名でCookieにアクセストークンを設定する
     # レスポンスにSet-Cookieヘッダーが追加される
     response.set_cookie('access_token', authorization_response['access_token'])
 
