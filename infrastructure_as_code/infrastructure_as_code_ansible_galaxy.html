@@ -25751,25 +25751,29 @@
 <p>リモート参照するroleモジュールのURLを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-role</span>
 <span class="w">  </span><span class="nt">scm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git</span>
+<span class="w">  </span><span class="c1"># roleモジュールのあるリポジトリ</span>
 <span class="w">  </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/foo-role-module-repository.git</span>
+<span class="w">  </span><span class="c1"># ブランチ</span>
 <span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
 
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-role</span>
 <span class="w">  </span><span class="nt">scm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git</span>
 <span class="w">  </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/bar-role-module-repository.git</span>
-<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">  </span><span class="c1"># タグ</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0.0</span>
 
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz-role</span>
 <span class="w">  </span><span class="nt">scm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git</span>
 <span class="w">  </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/baz-role-module-repository.git</span>
-<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">  </span><span class="c1"># コミットハッシュ値</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ee8aa41</span>
 </code></pre></div>
 <h3 id="playbookyml">playbook.yml<a class="headerlink" href="#playbookyml" title="Permanent link">&para;</a></h3>
 <p><code>playbook.yml</code>ファイルでroleモジュール名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span>
 <span class="w">  </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 <span class="w">  </span><span class="nt">roles</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-role</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_3">コマンド<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
