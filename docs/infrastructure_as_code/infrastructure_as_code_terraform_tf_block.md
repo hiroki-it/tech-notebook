@@ -1624,6 +1624,16 @@ integer型を通常変数として渡せるように、拡張子をjsonではな
 
 ## 08. 関数
 
+### 関数を使用できるブロック
+
+Terraformでは、`variables`ブロックには定数を設定する必要があるため、関数は`variables`ブロックで使用できない。
+
+`variables`ブロックの値を一度`locals`ブロックで加工する必要がある。
+
+> - https://github.com/hashicorp/terraform/issues/17229#issuecomment-361352965
+
+<br>
+
 ### jsonencode
 
 Terraformのデータ型をJSON文字列型に変換する。

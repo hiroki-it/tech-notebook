@@ -30,7 +30,7 @@ Ansible自体を設定する。
 
 #### ▼ hostfileとは
 
-inventoryファイルの場所を指定する
+`inventory`ファイルの場所を指定する
 
 ```ini
 [defaults]
