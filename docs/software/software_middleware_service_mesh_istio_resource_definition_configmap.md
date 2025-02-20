@@ -1249,63 +1249,6 @@ spec:
 
 ### istio-proxy内のpilot-agent
 
-#### ▼ `ISTIO_META_CERT_SIGNER`
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      proxyMetadata:
-        ISTIO_META_CERT_SIGNER: istio-system
-```
-
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
-
-#### ▼ `ISTIO_META_DNS_CAPTURE`
-
-istio-proxyでDNSのキャッシュを作成するか否かを設定する。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      proxyMetadata:
-        ISTIO_META_DNS_CAPTURE: true
-```
-
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
-> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
-
-#### ▼ `ISTIO_META_DNS_AUTO_ALLOCATE`
-
-IPアドレスが設定されていないServiceEntryに対して、IPアドレスを自動的に設定する。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      proxyMetadata:
-        ISTIO_META_DNS_AUTO_ALLOCATE: true
-```
-
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
-> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
-
 #### ▼ `BOOTSTRAP_XDS_AGENT`
 
 ```yaml
@@ -1323,9 +1266,11 @@ data:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
 
-#### ▼ `EXIT_ON_ZERO_ACTIVE_CONNECTIONS`
+#### ▼ `ENABLE_INBOUND_RETRY_POLICY`
 
-ServiceからPod内のistio-proxyへのリクエストがなくなったら、istio-proxyコンテナを終了させるか否かを設定する。
+`istio-proxy`コンテナがインバウンド通信をアプリコンテナに送信するときの再試行を設定する。
+
+デフォルトで`true`である。
 
 ```yaml
 apiVersion: v1
@@ -1337,9 +1282,94 @@ data:
   mesh: |
     defaultConfig:
       proxyMetadata:
-        EXIT_ON_ZERO_ACTIVE_CONNECTIONS: true
+        ENABLE_INBOUND_RETRY_POLICY: true
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
+
+#### ▼ `EXIT_ON_ZERO_ACTIVE_CONNECTIONS`
+
+ServiceからPod内のistio-proxyへのリクエストがなくなったら、istio-proxyコンテナを終了させるか否かを設定する。
+
+デフォルトで`false`である。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        EXIT_ON_ZERO_ACTIVE_CONNECTIONS: false
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+
+#### ▼ `ISTIO_META_CERT_SIGNER`
+
+デフォルトで`""`である。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        ISTIO_META_CERT_SIGNER: ""
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+
+#### ▼ `ISTIO_META_DNS_AUTO_ALLOCATE`
+
+IPアドレスが設定されていないServiceEntryに対して、IPアドレスを自動的に設定する。
+
+デフォルトで`false`である。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        ISTIO_META_DNS_AUTO_ALLOCATE: false
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
+
+#### ▼ `ISTIO_META_DNS_CAPTURE`
+
+istio-proxyでDNSのキャッシュを作成するか否かを設定する。
+
+デフォルトで`false`である。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        ISTIO_META_DNS_CAPTURE: false
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
 
 <br>

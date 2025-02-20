@@ -254,9 +254,9 @@ $ npm install --save
 
 #### ▼ --save
 
-デフォルトで有効化されている。
-
 パッケージを各プロジェクトの`node_modules`ディレクトリにインストールし、`dependencies`キーにパッケージ名とバージョンを書き込む。
+
+デフォルトで`true`である。
 
 ```bash
 $ npm install --save

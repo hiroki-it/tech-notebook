@@ -5722,7 +5722,7 @@ status:
 
 ServiceAccountのPod内のコンテナへのマウントを有効化する。
 
-デフォルトで有効化されている。
+デフォルトで`true`である。
 
 ```yaml
 apiVersion: v1
