@@ -804,7 +804,7 @@ spec:
 
 #### ▼ tls.mode
 
-DestinationRuleと宛先の間の暗号化方式を設定する。
+DestinationRuleと宛先 (特にサービスメッシュ外にある対象) の間の暗号化方式を設定する。
 
 Gatewayにも似た設定があるが、あちらは送信元とGatewayの間の暗号化方式を設定する。
 
@@ -921,6 +921,24 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings
+
+#### ▼ warmup
+
+アプリの起動にウォームアッププロセスが必要な言語 (例：Java) で作られたアプリコンテナで役立つ。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    warmup:
+      duration: 30
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration
 
 <br>
 
