@@ -125,14 +125,6 @@ description: アプリケーションデータの暗号化技術＠ネットワ�
 
 <br>
 
-### ハッシュ関数によるハッシュ化
-
-何かのアプリケーションデータを入力すると、規則性のない一定の桁数の値を出力する演算手法。
-
-![ハッシュ関数](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ハッシュ関数.png)
-
-<br>
-
 ## 03. ドメイン認証
 
 『公開鍵基盤』の仕組みを使用して、証明書を作成し、検証する。

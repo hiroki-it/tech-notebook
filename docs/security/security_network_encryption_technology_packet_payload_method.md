@@ -143,3 +143,59 @@ description: 暗号方式＠アプリケーションデータの暗号化技術�
 ![ハイブリッド暗号](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ハイブリッド暗号.png)
 
 <br>
+
+## 03. ハッシュ化
+
+### ハッシュ化とは
+
+何かのアプリケーションデータを入力すると、規則性のない一定の桁数の値を出力する演算手法。
+
+![ハッシュ関数](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ハッシュ関数.png)
+
+<br>
+
+### SHA256
+
+<br>
+
+### SHA384
+
+<br>
+
+## 04. 暗号スイート
+
+### TLS_AES_128_GCM_SHA256
+
+> - https://xtech.nikkei.com/atcl/nxt/column/18/02306/121900003/
+
+<br>
+
+### TLS_AES_256_GCM_SHA384
+
+> - https://xtech.nikkei.com/atcl/nxt/column/18/02306/121900003/
+
+<br>
+
+### TLS_CHACHA20_POLY1305_SHA256
+
+> - https://xtech.nikkei.com/atcl/nxt/column/18/02306/121900003/
+
+<br>
+
+### TLS_AES_128_GCM_SHA256
+
+> - https://xtech.nikkei.com/atcl/nxt/column/18/02306/121900003/
+
+<br>
+
+### TLS_AES_128_CCM_SHA256
+
+> - https://xtech.nikkei.com/atcl/nxt/column/18/02306/121900003/
+
+<br>
+
+### TLS_AES_128_CCM_8_SHA256
+
+> - https://xtech.nikkei.com/atcl/nxt/column/18/02306/121900003/
+
+<br>
