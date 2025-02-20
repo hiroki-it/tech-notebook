@@ -5877,6 +5877,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#exclude_unsafe_503_from_default_retry" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#enable_deferred_cluster_creation" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ENABLE_DEFERRED_CLUSTER_CREATION
@@ -5955,7 +5964,16 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#exclude_unsafe_503_from_default_retry" class="md-nav__link">
+  <a href="#enable_deferred_cluster_creation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ENABLE_DEFERRED_CLUSTER_CREATION
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exclude_unsafe_503_from_default_retry_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY
     </span>
@@ -26946,6 +26964,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#exclude_unsafe_503_from_default_retry" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#enable_deferred_cluster_creation" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ENABLE_DEFERRED_CLUSTER_CREATION
@@ -27024,7 +27051,16 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#exclude_unsafe_503_from_default_retry" class="md-nav__link">
+  <a href="#enable_deferred_cluster_creation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ENABLE_DEFERRED_CLUSTER_CREATION
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exclude_unsafe_503_from_default_retry_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY
     </span>
@@ -28110,6 +28146,29 @@
 <li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
 </ul>
 </blockquote>
+<h4 id="exclude_unsafe_503_from_default_retry">▼ <code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code><a class="headerlink" href="#exclude_unsafe_503_from_default_retry" title="Permanent link">&para;</a></h4>
+<p><code>503</code>ステータスが返信された場合に再試行しないようにする。</p>
+<p>再試行の結果で<code>istio-proxy</code>コンテナが<code>503</code>ステータスを返信する場合とは区別する。</p>
+<p>デフォルトで<code>true</code>である。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
+<li><a href="https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries">https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries</a></li>
+</ul>
+</blockquote>
 <h4 id="enable_deferred_cluster_creation">▼ <code>ENABLE_DEFERRED_CLUSTER_CREATION</code><a class="headerlink" href="#enable_deferred_cluster_creation" title="Permanent link">&para;</a></h4>
 <p>複数のDestinationRuleで<code>.spec.exportTo</code>キーの対象のNamespaceが同じ場合、これらの設定をマージして処理する。</p>
 <p>もし対象のNamespaceが異なる場合、独立した設定として処理する。</p>
@@ -28279,9 +28338,26 @@
 <li><a href="https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars">https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars</a></li>
 </ul>
 </blockquote>
-<h4 id="exclude_unsafe_503_from_default_retry">▼ <code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code><a class="headerlink" href="#exclude_unsafe_503_from_default_retry" title="Permanent link">&para;</a></h4>
-<p><code>503</code>ステータスが返信された場合に再試行しないようにする。</p>
-<p>再試行の結果で<code>istio-proxy</code>コンテナが<code>503</code>ステータスを返信する場合とは区別する。</p>
+<h4 id="enable_deferred_cluster_creation_1">▼ <code>ENABLE_DEFERRED_CLUSTER_CREATION</code><a class="headerlink" href="#enable_deferred_cluster_creation_1" title="Permanent link">&para;</a></h4>
+<p><code>pilot-discovery</code>コマンドでも設定できるため、そちらを参照せよ。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-mesh-cm</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">defaultConfig:</span>
+<span class="w">      </span><span class="no">proxyMetadata:</span>
+<span class="w">        </span><span class="no">ENABLE_DEFERRED_CLUSTER_CREATION: true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars">https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars</a></li>
+</ul>
+</blockquote>
+<h4 id="exclude_unsafe_503_from_default_retry_1">▼ <code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code><a class="headerlink" href="#exclude_unsafe_503_from_default_retry_1" title="Permanent link">&para;</a></h4>
+<p><code>pilot-discovery</code>コマンドでも設定できるため、そちらを参照せよ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28300,8 +28376,7 @@
 </ul>
 </blockquote>
 <h4 id="enable_inbound_retry_policy_1">▼ <code>ENABLE_INBOUND_RETRY_POLICY</code><a class="headerlink" href="#enable_inbound_retry_policy_1" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナがインバウンド通信をアプリコンテナに送信するときの再試行を設定する。</p>
-<p>デフォルトで<code>true</code>である。</p>
+<p><code>pilot-discovery</code>コマンドでも設定できるため、そちらを参照せよ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
