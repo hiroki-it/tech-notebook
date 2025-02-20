@@ -5858,13 +5858,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#istiod" class="md-nav__link">
+  <a href="#pilot-discovery" class="md-nav__link">
     <span class="md-ellipsis">
-      Istiod
+      pilot-discoveryコマンド
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Istiod">
+    <nav class="md-nav" aria-label="pilot-discoveryコマンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5900,19 +5900,28 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#istio-proxypilot-agent" class="md-nav__link">
+  <a href="#defaultconfigproxymetadata" class="md-nav__link">
     <span class="md-ellipsis">
-      istio-proxy内のpilot-agent
+      defaultConfig.proxyMetadata
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="istio-proxy内のpilot-agent">
+    <nav class="md-nav" aria-label="defaultConfig.proxyMetadata">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#bootstrap_xds_agent" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ BOOTSTRAP_XDS_AGENT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exclude_unsafe_503_from_default_retry" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY
     </span>
   </a>
   
@@ -26882,13 +26891,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#istiod" class="md-nav__link">
+  <a href="#pilot-discovery" class="md-nav__link">
     <span class="md-ellipsis">
-      Istiod
+      pilot-discoveryコマンド
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Istiod">
+    <nav class="md-nav" aria-label="pilot-discoveryコマンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26924,19 +26933,28 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#istio-proxypilot-agent" class="md-nav__link">
+  <a href="#defaultconfigproxymetadata" class="md-nav__link">
     <span class="md-ellipsis">
-      istio-proxy内のpilot-agent
+      defaultConfig.proxyMetadata
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="istio-proxy内のpilot-agent">
+    <nav class="md-nav" aria-label="defaultConfig.proxyMetadata">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#bootstrap_xds_agent" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ BOOTSTRAP_XDS_AGENT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exclude_unsafe_503_from_default_retry" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY
     </span>
   </a>
   
@@ -27999,7 +28017,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="06">06. 環境変数<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
-<h3 id="istiod">Istiod<a class="headerlink" href="#istiod" title="Permanent link">&para;</a></h3>
+<h3 id="pilot-discovery">pilot-discoveryコマンド<a class="headerlink" href="#pilot-discovery" title="Permanent link">&para;</a></h3>
 <h4 id="cluster_id">▼ <code>CLUSTER_ID</code><a class="headerlink" href="#cluster_id" title="Permanent link">&para;</a></h4>
 <p>Istiodのサービスレジストリを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
@@ -28017,7 +28035,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars">https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars</a></li>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
 </ul>
 </blockquote>
 <h4 id="pilot_trace_sampling">▼ <code>PILOT_TRACE_SAMPLING</code><a class="headerlink" href="#pilot_trace_sampling" title="Permanent link">&para;</a></h4>
@@ -28038,7 +28056,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars">https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars</a></li>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
 </ul>
 </blockquote>
 <h4 id="pilot_cert_provider">▼ <code>PILOT_CERT_PROVIDER</code><a class="headerlink" href="#pilot_cert_provider" title="Permanent link">&para;</a></h4>
@@ -28080,11 +28098,11 @@
 </table>
 <blockquote>
 <ul>
-<li><a href="https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars">https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars</a></li>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="istio-proxypilot-agent">istio-proxy内のpilot-agent<a class="headerlink" href="#istio-proxypilot-agent" title="Permanent link">&para;</a></h3>
+<h3 id="defaultconfigproxymetadata">defaultConfig.proxyMetadata<a class="headerlink" href="#defaultconfigproxymetadata" title="Permanent link">&para;</a></h3>
 <h4 id="bootstrap_xds_agent">▼ <code>BOOTSTRAP_XDS_AGENT</code><a class="headerlink" href="#bootstrap_xds_agent" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -28100,6 +28118,26 @@
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars">https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars</a></li>
+</ul>
+</blockquote>
+<h4 id="exclude_unsafe_503_from_default_retry">▼ <code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code><a class="headerlink" href="#exclude_unsafe_503_from_default_retry" title="Permanent link">&para;</a></h4>
+<p><code>503</code>ステータスが返信された場合に再試行しないようにする。</p>
+<p>再試行の結果で<code>istio-proxy</code>コンテナが<code>503</code>ステータスを返信する場合とは区別する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-mesh-cm</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">defaultConfig:</span>
+<span class="w">      </span><span class="no">proxyMetadata:</span>
+<span class="w">        </span><span class="no">EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY: true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars">https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars</a></li>
+<li><a href="https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries">https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries</a></li>
 </ul>
 </blockquote>
 <h4 id="enable_inbound_retry_policy">▼ <code>ENABLE_INBOUND_RETRY_POLICY</code><a class="headerlink" href="#enable_inbound_retry_policy" title="Permanent link">&para;</a></h4>
