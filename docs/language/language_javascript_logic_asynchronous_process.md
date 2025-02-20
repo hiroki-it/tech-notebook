@@ -457,7 +457,7 @@ const asyncFunc = async () => {
 
 #### ▼ async-retryとは
 
-`async`による非同期処理をリトライする。
+`async`による非同期処理を再試行する。
 
 `await`宣言した関数を`retry`関数に渡す。
 
@@ -481,7 +481,7 @@ const response = await retry(
     const response = await fetch("https://google.com");
 
     if (403 === response.status) {
-      // 403のときはリトライしない
+      // 403のときは再試行しない
       bail(new Error("Unauthorized"));
       return;
     }
@@ -490,7 +490,7 @@ const response = await retry(
   },
   // オプション
   {
-    // 最大リトライ回数
+    // 最大再試行回数
     retries: 10,
     // 指数関数的バックオフのfactor
     factor: 2,
@@ -500,7 +500,7 @@ const response = await retry(
     maxTimeout: Infinity,
     // ランダム化時の係数(1~2)
     randomize: true,
-    // リトライ時に呼ばれる関数
+    // 再試行時に呼ばれる関数
     onRetry: (err, num) => console.error(err, num),
   },
 );

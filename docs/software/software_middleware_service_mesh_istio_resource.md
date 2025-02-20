@@ -300,6 +300,14 @@ Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのク
 
 <br>
 
+### 関連するIstioリソース
+
+Istioサイドカーモードとアンビエントモードの間で、Istio EgressGatewayに必要なIstioリソースが異なる。
+
+> - https://www.solo.io/blog/egress-gateways-made-easy
+
+<br>
+
 ## 03. VirtualService
 
 ### VirtualServiceとは

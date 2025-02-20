@@ -328,7 +328,7 @@ rate(prometheus_remote_storage_bytes_total[1h]) *
 
 #### ▼ 送信メタデータサイズ
 
-リモートストレージに送信したメタデータのうち、送信に失敗してリトライしたサンプル数の合計を表す。
+リモートストレージに送信したメタデータのうち、送信に失敗して再試行したサンプル数の合計を表す。
 
 ```bash
 prometheus_remote_storage_metadata_retried_total[1h]) *
@@ -337,7 +337,7 @@ prometheus_remote_storage_metadata_retried_total[1h]) *
 
 #### ▼ 送信データサイズ
 
-リモートストレージに送信したデータのうち、送信に失敗してリトライしたサンプル数の合計を表す。
+リモートストレージに送信したデータのうち、送信に失敗して再試行したサンプル数の合計を表す。
 
 ```bash
 rate(prometheus_remote_storage_samples_retries_total[1h]) *

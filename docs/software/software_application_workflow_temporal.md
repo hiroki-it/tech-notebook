@@ -140,7 +140,7 @@ TemporalをSagaパターンのオーケストレーターとして使用する�
 
 なお、Temporalサーバー内にメッセージ仲介システムが内臓されている。
 
-そのため、タイムアウト処理、リトライ処理、キャンセル処理などの点でTemporalの外部にメッセージ仲介システム (例：AWS SQS) やメッセージブローカー (例：RebbitMQ) は不要である。
+そのため、タイムアウト処理、再試行処理、キャンセル処理などの点でTemporalの外部にメッセージ仲介システム (例：AWS SQS) やメッセージブローカー (例：RebbitMQ) は不要である。
 
 ![temporal_saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_saga-pattern.png)
 

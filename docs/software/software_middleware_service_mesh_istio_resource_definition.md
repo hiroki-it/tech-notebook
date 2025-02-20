@@ -3168,15 +3168,15 @@ spec:
 
 #### ▼ retriesとは
 
-リトライ条件を設定する。
+再試行条件を設定する。
 
 なお、TCPリクエストには`spec.tcp[*].retries`キーのような同様の設定は存在しない。
 
 **＊実装例＊**
 
-500系ステータスの場合に、`attempts`の数だけリトライする。
+500系ステータスの場合に、`attempts`の数だけ再試行する。
 
-各リトライで処理の結果が返却されるまでのタイムアウト値を`perTryTimeout`で設定する。
+各再試行で処理の結果が返却されるまでのタイムアウト値を`perTryTimeout`で設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3195,9 +3195,9 @@ spec:
         retryOn: 5xx
 ```
 
-gateway-error (`502`、`503`、`504`ステータス) の場合に、`attempts`の数だけリトライする。
+gateway-error (`502`、`503`、`504`ステータス) の場合に、`attempts`の数だけ再試行する。
 
-各リトライで処理の結果が返却されるまでのタイムアウト値を`perTryTimeout`で設定する。
+各再試行で処理の結果が返却されるまでのタイムアウト値を`perTryTimeout`で設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3245,10 +3245,9 @@ spec:
 
 `istio-proxy`コンテナは、レスポンスの`x-envoy-retry-on`ヘッダーに割り当てるため、これの値を設定する。
 
-> - https://sreake.com/blog/istio/
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
-
 **＊実装例＊**
+
+デフォルトでは、再試行の条件は`connect-failure,refused-stream,unavailable,503`である。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3260,6 +3259,16 @@ spec:
     - retries:
         retryOn: "connect-failure,refused-stream,unavailable,503"
 ```
+
+| 設定              | 起こる状況                                                                                        |
+| ----------------- | ------------------------------------------------------------------------------------------------- |
+| `connect-failure` | 宛先`istio-proxy`コンテナまたはアプリコンテナへの接続でタイムアウトが起こった。                   |
+| `refused-stream`  | 宛先`istio-proxy`コンテナまたはアプリコンテナが`REFUSED_STREAM`エラーコードで接続をリセットした。 |
+| `unavailable`     | 宛先`istio-proxy`コンテナまたはアプリコンテナgRPCの`Unavailable` (`14`) ステータスを返信した。    |
+| `503`             | 再試行に失敗した場合に、宛先`istio-proxy`コンテナが送信元に返却するステータスコードである。       |
+
+> - https://sreake.com/blog/istio/
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
 
 <br>
 
