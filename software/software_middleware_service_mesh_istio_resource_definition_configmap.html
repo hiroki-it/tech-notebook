@@ -5877,6 +5877,42 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#enable_deferred_cluster_creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ENABLE_DEFERRED_CLUSTER_CREATION
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable_enhanced_resource_scoping" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ENABLE_ENHANCED_RESOURCE_SCOPING
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable_enhanced_destinationrule_merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ENABLE_ENHANCED_DESTINATIONRULE_MERGE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable_inbound_retry_policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ENABLE_INBOUND_RETRY_POLICY
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pilot_trace_sampling" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ PILOT_TRACE_SAMPLING
@@ -5928,7 +5964,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#enable_inbound_retry_policy" class="md-nav__link">
+  <a href="#enable_inbound_retry_policy_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ENABLE_INBOUND_RETRY_POLICY
     </span>
@@ -26910,6 +26946,42 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#enable_deferred_cluster_creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ENABLE_DEFERRED_CLUSTER_CREATION
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable_enhanced_resource_scoping" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ENABLE_ENHANCED_RESOURCE_SCOPING
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable_enhanced_destinationrule_merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ENABLE_ENHANCED_DESTINATIONRULE_MERGE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable_inbound_retry_policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ENABLE_INBOUND_RETRY_POLICY
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pilot_trace_sampling" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ PILOT_TRACE_SAMPLING
@@ -26961,7 +27033,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#enable_inbound_retry_policy" class="md-nav__link">
+  <a href="#enable_inbound_retry_policy_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ENABLE_INBOUND_RETRY_POLICY
     </span>
@@ -28038,6 +28110,93 @@
 <li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
 </ul>
 </blockquote>
+<h4 id="enable_deferred_cluster_creation">▼ <code>ENABLE_DEFERRED_CLUSTER_CREATION</code><a class="headerlink" href="#enable_deferred_cluster_creation" title="Permanent link">&para;</a></h4>
+<p>複数のDestinationRuleで<code>.spec.exportTo</code>キーの対象のNamespaceが同じ場合、これらの設定をマージして処理する。</p>
+<p>もし対象のNamespaceが異なる場合、独立した設定として処理する。</p>
+<p>デフォルトで<code>true</code>である。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_DEFERRED_CLUSTER_CREATION</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
+</ul>
+</blockquote>
+<h4 id="enable_enhanced_resource_scoping">▼ <code>ENABLE_ENHANCED_RESOURCE_SCOPING</code><a class="headerlink" href="#enable_enhanced_resource_scoping" title="Permanent link">&para;</a></h4>
+<p><code>meshConfig.discoverySelectors</code>キーを使用できるようにする。</p>
+<p>デフォルトで<code>true</code>である。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_ENHANCED_RESOURCE_SCOPING</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
+</ul>
+</blockquote>
+<h4 id="enable_enhanced_destinationrule_merge">▼ <code>ENABLE_ENHANCED_DESTINATIONRULE_MERGE</code><a class="headerlink" href="#enable_enhanced_destinationrule_merge" title="Permanent link">&para;</a></h4>
+<p>リクエストがある場合にのみ、Envoyのクラスターを作成する。</p>
+<p>実際に使用されていないEnvoyのクラスターを作成しないことにより、ハードウェアリソースを節約できる。</p>
+<p>デフォルトで<code>true</code>である。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_ENHANCED_DESTINATIONRULE_MERGE</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
+</ul>
+</blockquote>
+<h4 id="enable_inbound_retry_policy">▼ <code>ENABLE_INBOUND_RETRY_POLICY</code><a class="headerlink" href="#enable_inbound_retry_policy" title="Permanent link">&para;</a></h4>
+<p><code>istio-proxy</code>コンテナがインバウンド通信をアプリコンテナに送信するときの再試行を設定する。</p>
+<p>デフォルトで<code>true</code>である。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_INBOUND_RETRY_POLICY</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
+<li><a href="https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries">https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries</a></li>
+</ul>
+</blockquote>
 <h4 id="pilot_trace_sampling">▼ <code>PILOT_TRACE_SAMPLING</code><a class="headerlink" href="#pilot_trace_sampling" title="Permanent link">&para;</a></h4>
 <p>分散トレースの収集率を設定する。</p>
 <p>基本的には<code>100</code>% (値は<code>1</code>) を設定する。</p>
@@ -28140,7 +28299,7 @@
 <li><a href="https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries">https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries</a></li>
 </ul>
 </blockquote>
-<h4 id="enable_inbound_retry_policy">▼ <code>ENABLE_INBOUND_RETRY_POLICY</code><a class="headerlink" href="#enable_inbound_retry_policy" title="Permanent link">&para;</a></h4>
+<h4 id="enable_inbound_retry_policy_1">▼ <code>ENABLE_INBOUND_RETRY_POLICY</code><a class="headerlink" href="#enable_inbound_retry_policy_1" title="Permanent link">&para;</a></h4>
 <p><code>istio-proxy</code>コンテナがインバウンド通信をアプリコンテナに送信するときの再試行を設定する。</p>
 <p>デフォルトで<code>true</code>である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -28180,7 +28339,7 @@
 </ul>
 </blockquote>
 <h4 id="istio_meta_cert_signer">▼ <code>ISTIO_META_CERT_SIGNER</code><a class="headerlink" href="#istio_meta_cert_signer" title="Permanent link">&para;</a></h4>
-<p>デフォルトで<code>""</code>である。</p>
+<p>デフォルトで<code>""</code> (空文字) である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
