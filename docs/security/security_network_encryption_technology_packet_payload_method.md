@@ -144,9 +144,9 @@ description: 暗号方式＠アプリケーションデータの暗号化技術�
 
 <br>
 
-## 03. ハッシュ化
+## 03. ハッシュ関数
 
-### ハッシュ化とは
+### ハッシュ関数とは
 
 何かのアプリケーションデータを入力すると、規則性のない一定の桁数の値を出力する演算手法。
 
@@ -164,38 +164,27 @@ description: 暗号方式＠アプリケーションデータの暗号化技術�
 
 ## 04. 暗号スイート
 
-### TLS_AES_128_GCM_SHA256
+### 暗号スイートとは
+
+『`TLS` + 鍵交換方式 + 認証方式 + `WITH` + 暗号アルゴリズム + ハッシュ関数』で表される暗号化技術の組み合わせのこと。
 
 > - https://xtech.nikkei.com/atcl/nxt/column/18/02306/121900003/
+> - https://active.nikkeibp.co.jp/atclact/active/17/032000256/032000005/
 
 <br>
 
-### TLS_AES_256_GCM_SHA384
+### 暗号スイートの種類
+
+- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
+- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+- TLS_RSA_WITH_AES_256_GCM_SHA384
+- TLS_RSA_WITH_AES_128_GCM_SHA256
 
 > - https://xtech.nikkei.com/atcl/nxt/column/18/02306/121900003/
-
-<br>
-
-### TLS_CHACHA20_POLY1305_SHA256
-
-> - https://xtech.nikkei.com/atcl/nxt/column/18/02306/121900003/
-
-<br>
-
-### TLS_AES_128_GCM_SHA256
-
-> - https://xtech.nikkei.com/atcl/nxt/column/18/02306/121900003/
-
-<br>
-
-### TLS_AES_128_CCM_SHA256
-
-> - https://xtech.nikkei.com/atcl/nxt/column/18/02306/121900003/
-
-<br>
-
-### TLS_AES_128_CCM_8_SHA256
-
-> - https://xtech.nikkei.com/atcl/nxt/column/18/02306/121900003/
+> - https://active.nikkeibp.co.jp/atclact/active/17/032000256/032000005/
 
 <br>
