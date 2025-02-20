@@ -1195,6 +1195,103 @@ spec:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 
+#### ▼ `ENABLE_DEFERRED_CLUSTER_CREATION`
+
+複数のDestinationRuleで`.spec.exportTo`キーの対象のNamespaceが同じ場合、これらの設定をマージして処理する。
+
+もし対象のNamespaceが異なる場合、独立した設定として処理する。
+
+デフォルトで`true`である。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istiod
+  namespace: istio-system
+spec:
+  template:
+    containers:
+      - name: discovery
+        env:
+          - name: ENABLE_DEFERRED_CLUSTER_CREATION
+            value: true
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+
+#### ▼ `ENABLE_ENHANCED_RESOURCE_SCOPING`
+
+`meshConfig.discoverySelectors`キーを使用できるようにする。
+
+デフォルトで`true`である。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istiod
+  namespace: istio-system
+spec:
+  template:
+    containers:
+      - name: discovery
+        env:
+          - name: ENABLE_ENHANCED_RESOURCE_SCOPING
+            value: true
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+
+#### ▼ `ENABLE_ENHANCED_DESTINATIONRULE_MERGE`
+
+リクエストがある場合にのみ、Envoyのクラスターを作成する。
+
+実際に使用されていないEnvoyのクラスターを作成しないことにより、ハードウェアリソースを節約できる。
+
+デフォルトで`true`である。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istiod
+  namespace: istio-system
+spec:
+  template:
+    containers:
+      - name: discovery
+        env:
+          - name: ENABLE_ENHANCED_DESTINATIONRULE_MERGE
+            value: true
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+
+#### ▼ `ENABLE_INBOUND_RETRY_POLICY`
+
+`istio-proxy`コンテナがインバウンド通信をアプリコンテナに送信するときの再試行を設定する。
+
+デフォルトで`true`である。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istiod
+  namespace: istio-system
+spec:
+  template:
+    containers:
+      - name: discovery
+        env:
+          - name: ENABLE_INBOUND_RETRY_POLICY
+            value: true
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+> - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
+
 #### ▼ `PILOT_TRACE_SAMPLING`
 
 分散トレースの収集率を設定する。
@@ -1333,7 +1430,7 @@ data:
 
 #### ▼ `ISTIO_META_CERT_SIGNER`
 
-デフォルトで`""`である。
+デフォルトで`""` (空文字) である。
 
 ```yaml
 apiVersion: v1
