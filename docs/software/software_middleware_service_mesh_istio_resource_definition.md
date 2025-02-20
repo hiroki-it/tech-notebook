@@ -922,7 +922,11 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings
 
-#### ▼ warmup
+#### ▼ warmup.aggression
+
+ウォームアップ処理 (インバウンド通信のリクエスト数を少しずつ増加させる) で、増加率を設定する。
+
+`1`の場合は、直線的に増加する。
 
 アプリの起動にウォームアッププロセスが必要な言語 (例：Java) で作られたアプリコンテナで役立つ。
 
@@ -935,6 +939,28 @@ spec:
   trafficPolicy:
     warmup:
       duration: 30
+      aggression: 1
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration
+
+#### ▼ warmup.duration
+
+ウォームアップ処理 (インバウンド通信のリクエスト数を少しずつ増加させる) で、ウォームアップ期間を設定する。
+
+アプリの起動にウォームアッププロセスが必要な言語 (例：Java) で作られたアプリコンテナで役立つ。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    warmup:
+      duration: 30
+      aggression: 1
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup
