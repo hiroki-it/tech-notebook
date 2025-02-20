@@ -1172,7 +1172,7 @@ data:
 
 ## 06. 環境変数
 
-### Istiod
+### pilot-discoveryコマンド
 
 #### ▼ `CLUSTER_ID`
 
@@ -1193,7 +1193,7 @@ spec:
             value: Kubernetes
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 
 #### ▼ `PILOT_TRACE_SAMPLING`
 
@@ -1216,7 +1216,7 @@ spec:
             value: 1
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 
 #### ▼ `PILOT_CERT_PROVIDER`
 
@@ -1243,11 +1243,11 @@ spec:
 | `kubernetes` | KubernetesのSecretで管理するSSL証明書を使用する。 |
 | `none`       | SSL証明書を使用しない。                           |
 
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 
 <br>
 
-### istio-proxy内のpilot-agent
+### defaultConfig.proxyMetadata
 
 #### ▼ `BOOTSTRAP_XDS_AGENT`
 
@@ -1265,6 +1265,28 @@ data:
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+
+#### ▼ `EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`
+
+`503`ステータスが返信された場合に再試行しないようにする。
+
+再試行の結果で`istio-proxy`コンテナが`503`ステータスを返信する場合とは区別する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY: true
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
 
 #### ▼ `ENABLE_INBOUND_RETRY_POLICY`
 
