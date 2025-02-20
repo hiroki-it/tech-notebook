@@ -5635,9 +5635,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#warmup" class="md-nav__link">
+  <a href="#warmupaggression" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ warmup
+      ▼ warmup.aggression
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warmupduration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ warmup.duration
     </span>
   </a>
   
@@ -27864,9 +27873,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#warmup" class="md-nav__link">
+  <a href="#warmupaggression" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ warmup
+      ▼ warmup.aggression
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warmupduration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ warmup.duration
     </span>
   </a>
   
@@ -30108,7 +30126,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings">https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings</a></li>
 </ul>
 </blockquote>
-<h4 id="warmup">▼ warmup<a class="headerlink" href="#warmup" title="Permanent link">&para;</a></h4>
+<h4 id="warmupaggression">▼ warmup.aggression<a class="headerlink" href="#warmupaggression" title="Permanent link">&para;</a></h4>
+<p>ウォームアップ処理 (インバウンド通信のリクエスト数を少しずつ増加させる) で、増加率を設定する。</p>
+<p><code>1</code>の場合は、直線的に増加する。</p>
 <p>アプリの起動にウォームアッププロセスが必要な言語 (例：Java) で作られたアプリコンテナで役立つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -30118,6 +30138,26 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">warmup</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+<span class="w">      </span><span class="nt">aggression</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup">https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration">https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration</a></li>
+</ul>
+</blockquote>
+<h4 id="warmupduration">▼ warmup.duration<a class="headerlink" href="#warmupduration" title="Permanent link">&para;</a></h4>
+<p>ウォームアップ処理 (インバウンド通信のリクエスト数を少しずつ増加させる) で、ウォームアップ期間を設定する。</p>
+<p>アプリの起動にウォームアッププロセスが必要な言語 (例：Java) で作られたアプリコンテナで役立つ。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">warmup</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+<span class="w">      </span><span class="nt">aggression</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 </code></pre></div>
 <blockquote>
 <ul>
