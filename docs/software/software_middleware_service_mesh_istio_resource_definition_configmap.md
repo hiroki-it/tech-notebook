@@ -1195,6 +1195,32 @@ spec:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 
+#### ▼ `EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`
+
+`503`ステータスが返信された場合に再試行しないようにする。
+
+再試行の結果で`istio-proxy`コンテナが`503`ステータスを返信する場合とは区別する。
+
+デフォルトで`true`である。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istiod
+  namespace: istio-system
+spec:
+  template:
+    containers:
+      - name: discovery
+        env:
+          - name: EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY
+            value: true
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+> - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
+
 #### ▼ `ENABLE_DEFERRED_CLUSTER_CREATION`
 
 複数のDestinationRuleで`.spec.exportTo`キーの対象のNamespaceが同じ場合、これらの設定をマージして処理する。
@@ -1363,11 +1389,28 @@ data:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
 
+#### ▼ `ENABLE_DEFERRED_CLUSTER_CREATION`
+
+`pilot-discovery`コマンドでも設定できるため、そちらを参照せよ。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        ENABLE_DEFERRED_CLUSTER_CREATION: true
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+
 #### ▼ `EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`
 
-`503`ステータスが返信された場合に再試行しないようにする。
-
-再試行の結果で`istio-proxy`コンテナが`503`ステータスを返信する場合とは区別する。
+`pilot-discovery`コマンドでも設定できるため、そちらを参照せよ。
 
 ```yaml
 apiVersion: v1
@@ -1387,9 +1430,7 @@ data:
 
 #### ▼ `ENABLE_INBOUND_RETRY_POLICY`
 
-`istio-proxy`コンテナがインバウンド通信をアプリコンテナに送信するときの再試行を設定する。
-
-デフォルトで`true`である。
+`pilot-discovery`コマンドでも設定できるため、そちらを参照せよ。
 
 ```yaml
 apiVersion: v1
