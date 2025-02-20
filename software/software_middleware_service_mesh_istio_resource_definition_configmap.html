@@ -28368,7 +28368,10 @@
 </blockquote>
 <h4 id="enable_inbound_retry_policy">▼ <code>ENABLE_INBOUND_RETRY_POLICY</code><a class="headerlink" href="#enable_inbound_retry_policy" title="Permanent link">&para;</a></h4>
 <p><code>istio-proxy</code>コンテナがインバウンド通信をアプリコンテナに送信するときの再試行を設定する。</p>
+<p>今後は、宛先<code>istio-proxy</code>コンテナがアプリコンテナに対してリトライできるようになる。</p>
+<p><code>istio-proxy</code>コンテナ間の問題の切り分けがしやすくなる。</p>
 <p>デフォルトで<code>true</code>である。</p>
+<p><code>false</code>の場合、送信元<code>istio-proxy</code>コンテナから宛先<code>istio-proxy</code>コンテナへ通信時に、送信元<code>istio-proxy</code>コンテナしかリトライできない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
