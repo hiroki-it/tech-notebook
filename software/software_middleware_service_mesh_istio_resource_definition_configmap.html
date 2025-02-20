@@ -5868,9 +5868,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#citadel_self_signed_ca_cert_ttl" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ CITADEL_SELF_SIGNED_CA_CERT_TTL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#citadel_self_signed_root_cert_check_interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ CITADEL_SELF_SIGNED_ROOT_CERT_CHECK_INTERVAL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cluster_id" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ CLUSTER_ID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default_workload_cert_ttl" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ DEFAULT_WORKLOAD_CERT_TTL
     </span>
   </a>
   
@@ -5934,6 +5961,15 @@
   <a href="#pilot_cert_provider" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ PILOT_CERT_PROVIDER
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pilot_jwt_pub_key_refresh_interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ PILOT_JWT_PUB_KEY_REFRESH_INTERVAL
     </span>
   </a>
   
@@ -26955,9 +26991,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#citadel_self_signed_ca_cert_ttl" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ CITADEL_SELF_SIGNED_CA_CERT_TTL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#citadel_self_signed_root_cert_check_interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ CITADEL_SELF_SIGNED_ROOT_CERT_CHECK_INTERVAL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cluster_id" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ CLUSTER_ID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default_workload_cert_ttl" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ DEFAULT_WORKLOAD_CERT_TTL
     </span>
   </a>
   
@@ -27021,6 +27084,15 @@
   <a href="#pilot_cert_provider" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ PILOT_CERT_PROVIDER
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pilot_jwt_pub_key_refresh_interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ PILOT_JWT_PUB_KEY_REFRESH_INTERVAL
     </span>
   </a>
   
@@ -28126,6 +28198,46 @@
 <p><br></p>
 <h2 id="06">06. 環境変数<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="pilot-discovery">pilot-discoveryコマンド<a class="headerlink" href="#pilot-discovery" title="Permanent link">&para;</a></h3>
+<h4 id="citadel_self_signed_ca_cert_ttl">▼ <code>CITADEL_SELF_SIGNED_CA_CERT_TTL</code><a class="headerlink" href="#citadel_self_signed_ca_cert_ttl" title="Permanent link">&para;</a></h4>
+<p>Istioコントロールプレーンが自身を署名するオレオレ証明書の有効期限を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CITADEL_SELF_SIGNED_CA_CERT_TTL</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">87600h0m0s</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
+</ul>
+</blockquote>
+<h4 id="citadel_self_signed_root_cert_check_interval">▼ <code>CITADEL_SELF_SIGNED_ROOT_CERT_CHECK_INTERVAL</code><a class="headerlink" href="#citadel_self_signed_root_cert_check_interval" title="Permanent link">&para;</a></h4>
+<p>Istioコントロールプレーンのオレオレ証明書の検証間隔を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CITADEL_SELF_SIGNED_ROOT_CERT_CHECK_INTERVAL</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1h0m0s</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
+</ul>
+</blockquote>
 <h4 id="cluster_id">▼ <code>CLUSTER_ID</code><a class="headerlink" href="#cluster_id" title="Permanent link">&para;</a></h4>
 <p>Istiodのサービスレジストリを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
@@ -28140,6 +28252,26 @@
 <span class="w">        </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CLUSTER_ID</span>
 <span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Kubernetes</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
+</ul>
+</blockquote>
+<h4 id="default_workload_cert_ttl">▼ <code>DEFAULT_WORKLOAD_CERT_TTL</code><a class="headerlink" href="#default_workload_cert_ttl" title="Permanent link">&para;</a></h4>
+<p><code>istio-proxy</code>コンテナの証明書の有効期限を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_WORKLOAD_CERT_TTL</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24h0m0s</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -28314,6 +28446,26 @@
 </tr>
 </tbody>
 </table>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
+</ul>
+</blockquote>
+<h4 id="pilot_jwt_pub_key_refresh_interval">▼ <code>PILOT_JWT_PUB_KEY_REFRESH_INTERVAL</code><a class="headerlink" href="#pilot_jwt_pub_key_refresh_interval" title="Permanent link">&para;</a></h4>
+<p>アクセストークンの検証の間隔を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PILOT_JWT_PUB_KEY_REFRESH_INTERVAL</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20m0s</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
