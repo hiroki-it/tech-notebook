@@ -1184,6 +1184,7 @@ AWS EC2ワーカーNodeのkubeletを設定する。
   "protectKernelDefaults": "true",
   "serializeImagePulls": "false",
   "serverTLSBootstrap": "true",
+  # 暗号スイート
   "tlsCipherSuites":
     [
       "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
