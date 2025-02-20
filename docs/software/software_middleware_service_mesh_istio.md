@@ -252,6 +252,17 @@ AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、Keycloak、Zi
 
 > - https://istio.io/latest/docs/concepts/security/#authentication-architecture
 
+#### 暗号スイート
+
+- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_AES_256_GCM_SHA384
+- TLS_AES_128_GCM_SHA256
+
+> - https://istio.io/latest/docs/concepts/security/#mutual-tls-authentication
+
 #### ▼ TLSタイムアウト
 
 アウトバウンド時、`istio-proxy`コンテナは宛先にHTTPSリクエストを送信する。

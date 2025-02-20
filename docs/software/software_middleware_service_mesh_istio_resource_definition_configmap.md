@@ -1361,7 +1361,13 @@ spec:
 
 `istio-proxy`コンテナがインバウンド通信をアプリコンテナに送信するときの再試行を設定する。
 
+今後は、宛先`istio-proxy`コンテナがアプリコンテナに対してリトライできるようになる。
+
+`istio-proxy`コンテナ間の問題の切り分けがしやすくなる。
+
 デフォルトで`true`である。
+
+`false`の場合、送信元`istio-proxy`コンテナから宛先`istio-proxy`コンテナへ通信時に、送信元`istio-proxy`コンテナしかリトライできない。
 
 ```yaml
 apiVersion: apps/v1
