@@ -1174,6 +1174,48 @@ data:
 
 ### pilot-discoveryコマンド
 
+#### ▼ `CITADEL_SELF_SIGNED_CA_CERT_TTL`
+
+Istioコントロールプレーンが自身を署名するオレオレ証明書の有効期限を設定する。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istiod
+  namespace: istio-system
+spec:
+  template:
+    containers:
+      - name: discovery
+        env:
+          - name: CITADEL_SELF_SIGNED_CA_CERT_TTL
+            value: 87600h0m0s
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+
+#### ▼ `CITADEL_SELF_SIGNED_ROOT_CERT_CHECK_INTERVAL`
+
+Istioコントロールプレーンのオレオレ証明書の検証間隔を設定する。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istiod
+  namespace: istio-system
+spec:
+  template:
+    containers:
+      - name: discovery
+        env:
+          - name: CITADEL_SELF_SIGNED_ROOT_CERT_CHECK_INTERVAL
+            value: 1h0m0s
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+
 #### ▼ `CLUSTER_ID`
 
 Istiodのサービスレジストリを設定する。
@@ -1191,6 +1233,27 @@ spec:
         env:
           - name: CLUSTER_ID
             value: Kubernetes
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+
+#### ▼ `DEFAULT_WORKLOAD_CERT_TTL`
+
+`istio-proxy`コンテナの証明書の有効期限を設定する。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istiod
+  namespace: istio-system
+spec:
+  template:
+    containers:
+      - name: discovery
+        env:
+          - name: DEFAULT_WORKLOAD_CERT_TTL
+            value: 24h0m0s
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
@@ -1365,6 +1428,27 @@ spec:
 | `istiod`     | Istiodが提供するSSL証明書を使用する。             |
 | `kubernetes` | KubernetesのSecretで管理するSSL証明書を使用する。 |
 | `none`       | SSL証明書を使用しない。                           |
+
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+
+#### ▼ `PILOT_JWT_PUB_KEY_REFRESH_INTERVAL`
+
+アクセストークンの検証の間隔を設定する。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istiod
+  namespace: istio-system
+spec:
+  template:
+    containers:
+      - name: discovery
+        env:
+          - name: PILOT_JWT_PUB_KEY_REFRESH_INTERVAL
+            value: 20m0s
+```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 
