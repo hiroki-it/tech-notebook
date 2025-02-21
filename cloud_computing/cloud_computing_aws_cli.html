@@ -14348,13 +14348,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws-aurora" class="md-nav__link">
+  <a href="#aws-rdsaws-aurora" class="md-nav__link">
     <span class="md-ellipsis">
-      AWS Aurora
+      AWS RDS、AWS Aurora
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="AWS Aurora">
+    <nav class="md-nav" aria-label="AWS RDS、AWS Aurora">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -27101,13 +27101,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws-aurora" class="md-nav__link">
+  <a href="#aws-rdsaws-aurora" class="md-nav__link">
     <span class="md-ellipsis">
-      AWS Aurora
+      AWS RDS、AWS Aurora
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="AWS Aurora">
+    <nav class="md-nav" aria-label="AWS RDS、AWS Aurora">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -27738,6 +27738,7 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <h3 id="aws-ec2">AWS EC2<a class="headerlink" href="#aws-ec2" title="Permanent link">&para;</a></h3>
 <h4 id="describe-instances">▼ describe-instances<a class="headerlink" href="#describe-instances" title="Permanent link">&para;</a></h4>
 <p>AWS EC2の情報を取得する。</p>
+<p>ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続するために、AWS EC2のインスタンスIDを取得したい場合に役立つ。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--filters<span class="w"> </span><span class="s2">&quot;Name=tag:Name,Values=&lt;AWS EC2名&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--query<span class="w"> </span><span class="s2">&quot;Reservations[].Instances[].InstanceId&quot;</span><span class="w"> </span><span class="se">\</span>
@@ -27790,9 +27791,10 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <span class="w">    </span>--tag-filters<span class="w"> </span><span class="nv">Key</span><span class="o">=</span>&lt;タグ名&gt;,Values<span class="o">=</span>&lt;タグ値&gt;
 </code></pre></div>
 <p><br></p>
-<h3 id="aws-aurora">AWS Aurora<a class="headerlink" href="#aws-aurora" title="Permanent link">&para;</a></h3>
+<h3 id="aws-rdsaws-aurora">AWS RDS、AWS Aurora<a class="headerlink" href="#aws-rdsaws-aurora" title="Permanent link">&para;</a></h3>
 <h4 id="describe-db-clusters">▼ describe-db-clusters<a class="headerlink" href="#describe-db-clusters" title="Permanent link">&para;</a></h4>
 <p>AWS EC2の情報を取得する。</p>
+<p>ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続するために、AWS Auroraのクラスター名を取得したい場合に役立つ。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-clusters<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--db-cluster-identifier<span class="w"> </span>&lt;AWS<span class="w"> </span>Auroraのクラスター名&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--query<span class="w"> </span><span class="s2">&quot;DBClusters[0].ReaderEndpoint&quot;</span><span class="w"> </span>--output<span class="w"> </span>text
@@ -27874,6 +27876,7 @@ $<span class="w"> </span>aws<span class="w"> </span>sqs<span class="w"> </span>r
 <h3 id="aws-secrets-manager">AWS Secrets Manager<a class="headerlink" href="#aws-secrets-manager" title="Permanent link">&para;</a></h3>
 <h4 id="get-secret-value">▼ get-secret-value<a class="headerlink" href="#get-secret-value" title="Permanent link">&para;</a></h4>
 <p>特定のSecretに格納されている文字列を取得する。</p>
+<p>ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続するために、AWS Auroraのユーザー名とパスワードを取得したい場合に役立つ。</p>
 <p>注意点として、出力した文字列はダブルクオーテーションで囲われている。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># こちらより、後述の --output=text の使用がおすすめである</span>
 $<span class="w"> </span>aws<span class="w"> </span>secretsmanager<span class="w"> </span>get-secret-value<span class="w"> </span><span class="se">\</span>
