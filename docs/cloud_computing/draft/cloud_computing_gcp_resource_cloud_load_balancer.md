@@ -23,8 +23,8 @@ description: Load Balancer＠Google Cloudリソースの知見を記録してい
 
 ### `L7`ロードバランサー
 
-- 外部HTTPS負荷分散プロキシー
-- 内部HTTPS負荷分散プロキシー
+- 外部HTTPS負荷分散プロキシ
+- 内部HTTPS負荷分散プロキシ
 
 ![google_cloud_load_balancer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_load_balancer.png)
 
@@ -34,7 +34,7 @@ description: Load Balancer＠Google Cloudリソースの知見を記録してい
 
 ### `L4`ロードバランサー
 
-- TCP/SSLプロキシ負荷分散プロキシー
+- TCP/SSLプロキシ負荷分散プロキシ
 - TCP/UDPネットワーク負荷分散パススルー
 - 内部TCP/UDP負荷分散パススルー
 
