@@ -503,6 +503,8 @@ $ aws deploy register-on-premises-instance \
 
 AWS EC2の情報を取得する。
 
+ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続するために、AWS EC2のインスタンスIDを取得したい場合に役立つ。
+
 ```bash
 $ aws ec2 describe-instances \
     --filters "Name=tag:Name,Values=<AWS EC2名>" \
@@ -580,11 +582,13 @@ $ aws resourcegroupstaggingapi get-resources \
 
 <br>
 
-### AWS Aurora
+### AWS RDS、AWS Aurora
 
 #### ▼ describe-db-clusters
 
 AWS EC2の情報を取得する。
+
+ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続するために、AWS Auroraのクラスター名を取得したい場合に役立つ。
 
 ```bash
 $ aws rds describe-db-clusters \
@@ -706,6 +710,8 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 #### ▼ get-secret-value
 
 特定のSecretに格納されている文字列を取得する。
+
+ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続するために、AWS Auroraのユーザー名とパスワードを取得したい場合に役立つ。
 
 注意点として、出力した文字列はダブルクオーテーションで囲われている。
 
