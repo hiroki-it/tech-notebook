@@ -334,7 +334,22 @@ AWS Lambda@Edgeを実行するためには、最低限、以下の認可スコ�
 
 <br>
 
-## 03. AWS Lambdaによるマイクロサービスアーキテクチャ
+## 03. AWS Lambda Web Adapter
+
+AWS Lambdaの拡張機能である。
+
+通常のAWS Lambdaでは動かせないフレームワーク (例：Express.js、Next.js、SprintBoot、ASP.NET、Laravelなど) のアプリを動かせるようにする。
+
+アプリのプロセスの前段でリクエストを変換し、アプリがリクエストを処理できるようにする。
+
+![lambda-web-adapter.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-web-adapter.png)
+
+> - https://aws.amazon.com/jp/builders-flash/202301/lambda-web-adapter/
+> - https://github.com/awslabs/aws-lambda-web-adapter
+
+<br>
+
+## 04. AWS Lambdaによるマイクロサービスアーキテクチャ
 
 AWS Lambdaをマイクロサービス単位で稼働させる。
 
