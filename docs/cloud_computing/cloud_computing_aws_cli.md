@@ -482,7 +482,7 @@ $ aws cloudwatch get-metric-statistics \
 
 <br>
 
-### CodeDeploy
+### AWS CodeDeploy
 
 #### ▼ register-on-premises-instance
 
@@ -493,6 +493,21 @@ $ aws deploy register-on-premises-instance \
     --region ap-northeast-1 \
     --instance-name foo-on-premises-instance \
     --iam_session_arn <AWS IAM Session ARN>
+```
+
+<br>
+
+### AWS EC2
+
+#### ▼ describe-instances
+
+AWS EC2の情報を取得する。
+
+```bash
+$ aws ec2 describe-instances \
+    --filters "Name=tag:Name,Values=<AWS EC2名>" \
+    --query "Reservations[].Instances[].InstanceId" \
+    --output text
 ```
 
 <br>
@@ -542,7 +557,7 @@ $ aws iam update-user \
 
 <br>
 
-### Resource Groups
+### AWS Resource Groups
 
 #### ▼ get-resources
 
@@ -561,6 +576,20 @@ AWSリソースの種類 (ec2、albなど) を指定して、特定のAWSリソ�
 $ aws resourcegroupstaggingapi get-resources \
     --resource-type-filters <AWSリソースの種類> \
     --tag-filters Key=<タグ名>,Values=<タグ値>
+```
+
+<br>
+
+### AWS Aurora
+
+#### ▼ describe-db-clusters
+
+AWS EC2の情報を取得する。
+
+```bash
+$ aws rds describe-db-clusters \
+    --db-cluster-identifier <AWS Auroraのクラスター名> \
+    --query "DBClusters[0].ReaderEndpoint" --output text
 ```
 
 <br>
@@ -626,7 +655,7 @@ $ aws s3 sync s3://<コピー元S3バケット名>/<ディレクトリ名> s3://
 
 <br>
 
-### SQS
+### AWS SQS
 
 #### ▼ get-queue-url
 
@@ -681,6 +710,7 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 注意点として、出力した文字列はダブルクオーテーションで囲われている。
 
 ```bash
+# こちらより、後述の --output=text の使用がおすすめである
 $ aws secretsmanager get-secret-value \
     --secret-id=<シークレット名> \
     --query=SecretString
@@ -707,7 +737,7 @@ $ aws secretsmanager get-secret-value \
 
 <br>
 
-### STS
+### AWS STS
 
 #### ▼ decode-authorization-message
 
@@ -811,7 +841,7 @@ $ aws ssm get-parameters-by-path --path "/FOO"
 
 <br>
 
-### Security Group
+### AWS Security Group
 
 #### ▼ authorize-security-group-ingress
 

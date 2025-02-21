@@ -88,7 +88,7 @@ APIクライアントは、IDプロバイダーに認証情報 (例：クライ�
 - Auth0
 - Facebook
 - Keycloak
-- AWS Cognito
+- AWS Cognito (代わりに認証プロキシとしても使用できる)
 - Google Cloud Auth
 
 ![auth0_sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/auth0_sso.png)
