@@ -944,6 +944,7 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration
+> - https://stackoverflow.com/a/75942527/12771072
 
 #### ▼ warmup.duration
 
