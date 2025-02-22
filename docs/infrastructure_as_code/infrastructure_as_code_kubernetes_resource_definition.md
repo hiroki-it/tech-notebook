@@ -3117,9 +3117,10 @@ spec:
       image: foo-app-springboot:1.0.0
       livenessProbe:
         httpGet:
-          port: 80
+          port: 8080
+          # SpringBootのlivenessエンドポイント
           path: /actuator/health/liveness
-        periodSeconds: 5
+        periodSeconds: 10
 ```
 
 > - https://www.ianlewis.org/jp/kubernetes-health-check
@@ -3329,7 +3330,8 @@ spec:
       image: foo-app-springboot:1.0.0
       startupProbe:
         httpGet:
-          port: 80
+          port: 8080
+          # SpringBootのstartupエンドポイント
           path: /actuator/startup
         failureThreshold: 30
         periodSeconds: 10
@@ -3357,9 +3359,10 @@ spec:
       image: foo-app-springboot:1.0.0
       readinessProbe:
         httpGet:
-          port: 80
+          port: 8080
+          # SpringBootのredinessエンドポイント
           path: /actuator/health/readiness
-        periodSeconds: 5
+        periodSeconds: 10
 ```
 
 コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例: Nginxの最初の設定ファイル読み込み完了まで、MySQLの最初のコネクション受信準備完了まで) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。
