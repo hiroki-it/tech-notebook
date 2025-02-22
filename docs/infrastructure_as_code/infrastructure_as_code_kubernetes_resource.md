@@ -805,13 +805,13 @@ Cluster-IPはNode外から宛先として指定できないため、通信にIng
 
 ```yaml
 パブリックネットワーク
-⬇⬆︎︎
+⬇⬆️︎
 # L7ロードバランサー
 Ingress Controller (例：Nginx Ingress Controller、AWS Load Balancer Controllerなど)
-⬇⬆︎︎
+⬇⬆️︎
 # L4ロードバランサー
 ClusterIP Service
-⬇⬆︎︎
+⬇⬆️︎
 Pod
 ```
 
@@ -835,10 +835,10 @@ NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定�
 
 ```yaml
 パブリックネットワーク
-⬇⬆︎︎
+⬇⬆️︎
 # L4ロードバランサー
 NodePort Service
-⬇⬆︎︎
+⬇⬆️︎
 Pod
 ```
 
@@ -846,15 +846,15 @@ Pod
 
 ```yaml
 パブリックネットワーク
-⬇⬆︎︎
+⬇⬆️︎
 AWS Route53
-⬇⬆︎︎
+⬇⬆️︎
 # L7ロードバランサー
 AWS ALB
-⬇⬆︎︎
+⬇⬆️︎
 # L4ロードバランサー
 NodePort Service
-⬇⬆︎︎
+⬇⬆️︎
 Pod
 ```
 
@@ -866,13 +866,13 @@ Pod
 
 ```yaml
 パブリックネットワーク
-⬇⬆︎︎
+⬇⬆️︎
 # L7ロードバランサー
 Ingress Controller (例：Nginx Ingress Controller、AWS Load Balancer Controller)
-⬇⬆︎︎
+⬇⬆️︎
 # L4ロードバランサー
 ClusterIP Service (実体はNodePort Service)
-⬇⬆︎︎
+⬇⬆️︎
 Pod
 ```
 
@@ -898,12 +898,12 @@ External-IPはNode外から宛先IPアドレスとして指定できる。
 
 ```yaml
 パブリックネットワーク
-⬇⬆︎︎
+⬇⬆️︎
 AWS Route53
-⬇⬆︎︎
+⬇⬆️︎
 # L4ロードバランサー
 LoadBalancer ServiceによるAWS NLB
-⬇⬆︎︎
+⬇⬆️︎
 Pod
 ```
 

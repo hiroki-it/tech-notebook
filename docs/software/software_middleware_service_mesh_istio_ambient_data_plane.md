@@ -33,17 +33,17 @@ ztunnel Podを経由した段階でHTTPSプロトコルになる。
 
 ```yaml
 パブリックネットワーク
-⬇⬆︎︎
+⬇⬆️︎
 リダイレクト
-⬇⬆︎︎
+⬇⬆️︎
 # L4ロードバランサー
 ztunnel Pod (L4) # DaemonSet配下のPodなので、Nodeごとにいる
-⬇⬆︎︎
-⬇⬆︎︎ # HBONE
-⬇⬆︎︎
+⬇⬆️︎
+⬇⬆️︎ # HBONE
+⬇⬆️︎
 # L7ロードバランサー
 waypoint-proxy Pod (L7) # Deployment配下のPodなので、任意のNodeにいる
-⬇⬆︎︎
+⬇⬆️︎
 アプリコンテナのPod
 ```
 
@@ -51,20 +51,20 @@ waypoint-proxy Pod (L7) # Deployment配下のPodなので、任意のNodeにい�
 
 ```yaml
 アプリコンテナのPod # 送信元
-⬇⬆︎︎
+⬇⬆️︎
 # L4ロードバランサー
 ztunnel Pod (L4) # DaemonSet配下のPodなので、Nodeごとにいる
-⬇⬆︎︎
-⬇⬆︎︎ # HBONE
-⬇⬆︎︎
+⬇⬆️︎
+⬇⬆️︎ # HBONE
+⬇⬆️︎
 # L7ロードバランサー
 waypoint-proxy Pod (L7) # Deployment配下のPodなので、任意のNodeにいる
-⬇⬆︎︎
-⬇⬆︎︎ # HBONE
-⬇⬆︎︎
+⬇⬆️︎
+⬇⬆️︎ # HBONE
+⬇⬆️︎
 # L4ロードバランサー
 ztunnel Pod (L4) # DaemonSet配下のPodなので、Nodeごとにいる
-⬇⬆︎︎
+⬇⬆️︎
 アプリコンテナのPod # 宛先
 ```
 
@@ -72,17 +72,17 @@ ztunnel Pod (L4) # DaemonSet配下のPodなので、Nodeごとにいる
 
 ```yaml
 パブリックネットワーク
-⬆︎⬇
+⬆️⬇
 # L7ロードバランサー
 waypoint-proxy Pod (L7) # Deployment配下なので、任意のNodeにいる
-⬆︎⬇
-⬆︎⬇ # HBONE
-⬆︎⬇
+⬆️⬇
+⬆️⬇ # HBONE
+⬆️⬇
 # L4ロードバランサー
 ztunnel Pod (L4) # DaemonSet配下なので、Nodeごとにいる
-⬆︎⬇
+⬆️⬇
 リダイレクト
-⬆︎⬇
+⬆️⬇
 アプリコンテナのPod
 ```
 

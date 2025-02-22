@@ -237,9 +237,9 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 > - https://skyao.io/learning-envoy/architecture/concept/#%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E6%A6%82%E5%BF%B5
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
-#### ▼ インバウンド通信 / アウトバウンド通信 の場合
+#### ▼ インバウンド通信／アウトバウンド通信 の場合
 
-インバウンド通信 / アウトバウンド通信であっても、同じである。
+インバウンド通信／アウトバウンド通信であっても、同じである。
 
 インバウンド通信の場合はリスナーはIngressリスナーとして、アウトバウンド通信も場合はEgressリスナーとして、同じ構成の処理を辿る。
 
@@ -1102,7 +1102,7 @@ Envoyはマルチスレッドでパケットを処理する。
 
 ### リバースプロキシのミドルウェアとして
 
-#### ▼ 外からインバウンド通信から待ち受ける (Ingressリスナー / インバウンドリスナー)
+#### ▼ 外からインバウンド通信から待ち受ける (Ingressリスナー／インバウンドリスナー)
 
 Envoyは、リバースプロキシとして、外部 (例：ロードバランサー、他のEnvoy) からインバウンド通信を待ち受ける。
 
@@ -1117,7 +1117,7 @@ Envoyは、リバースプロキシとして、外部 (例：ロードバラン�
 > - https://blog.51cto.com/wangguishe/5789228
 > - https://www.zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/
 
-#### ▼ ローカルホストにあるマイクロサービスから待ち受ける (Egressリスナー / アウトバウンドリスナー)
+#### ▼ ローカルホストにあるマイクロサービスから待ち受ける (Egressリスナー／アウトバウンドリスナー)
 
 Envoyは、リバースプロキシとして、ローカルホストにあるマイクロサービスからアウトバウンド通信を待ち受ける。
 
@@ -1138,9 +1138,9 @@ Envoyは、リバースプロキシとして、ローカルホスト外にある
 
 ```yaml
 Envoy
-⬇⬆︎
-⬇⬆︎ # HTTP/TCPプロトコル
-⬇⬆︎
+⬇⬆️
+⬇⬆️ # HTTP/TCPプロトコル
+⬇⬆️
 マイクロサービス
 ```
 
@@ -1150,13 +1150,13 @@ Envoy
 
 ```yaml
 Envoy
-⬇⬆︎
-⬇⬆︎ # TCPプロトコル
-⬇⬆︎
+⬇⬆️
+⬇⬆️ # TCPプロトコル
+⬇⬆️
 Nginx
-⬇⬆︎
-⬇⬆︎ # FastCGIプロトコル
-⬇⬆︎
+⬇⬆️
+⬇⬆️ # FastCGIプロトコル
+⬇⬆️
 マイクロサービス
 ```
 

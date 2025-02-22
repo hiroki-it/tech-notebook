@@ -1062,13 +1062,13 @@ ArgoCDのコンポーネント (特に、application-controller、argocd-server)
 
 ```yaml
 ローカルマシン
-⬇︎
+⬇️
 (アクセス制御)
-⬇︎
+⬇️
 ArgoCD
-⬇︎
+⬇️
 (アクセス制御)
-⬇︎
+⬇️
 Cluster
 ```
 
@@ -1079,13 +1079,13 @@ Cluster
 
 ```yaml
 ローカルマシン
-⬇︎
+⬇️
 (アクセス制御)
-⬇︎
+⬇️
 ArgoCD
-⬇︎
+⬇️
 (アクセス制御)
-⬇︎
+⬇️
 Cluster
 ```
 

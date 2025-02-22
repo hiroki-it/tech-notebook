@@ -101,22 +101,22 @@ NodePort Serviceを選ぶ場合、Nodeのダウンストリームに開発者が
 
 ```yaml
 パブリックネットワーク
-⬇⬆︎︎
+⬇⬆️︎
 AWS Route53
-⬇⬆︎︎
+⬇⬆️︎
 # L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
 AWS ALB
-⬇⬆︎︎
+⬇⬆️︎
 # L4ロードバランサー
 NodePort Service (Istio IngressGateway)
-⬇⬆︎︎
+⬇⬆️︎
 Gateway
-⬇⬆︎︎
+⬇⬆️︎
 VirtualService
-⬇⬆︎︎
+⬇⬆️︎
 # L4ロードバランサー
 ClusterIP Service
-⬇⬆︎︎
+⬇⬆️︎
 Pod
 ```
 
@@ -141,22 +141,22 @@ Ingressにて、`alb.ingress.kubernetes.io/target-type`キー値を`ip`とする
 
 ```yaml
 パブリックネットワーク
-⬇⬆︎︎
+⬇⬆️︎
 AWS Route53
-⬇⬆︎︎
+⬇⬆️︎
 # L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
 AWS Load Balancer ControllerによるAWS ALB
-⬇⬆︎︎
+⬇⬆️︎
 # L4ロードバランサー
 ClusterIP Service (Istio IngressGateway)
-⬇⬆︎︎
+⬇⬆️︎
 Gateway
-⬇⬆︎︎
+⬇⬆️︎
 VirtualService
-⬇⬆︎︎
+⬇⬆️︎
 # L4ロードバランサー
 ClusterIP Service
-⬇⬆︎︎
+⬇⬆️︎
 Pod
 ```
 
@@ -247,19 +247,19 @@ LoadBalancer Serviceを使用する場合、以下のようなネットワーク
 
 ```yaml
 パブリックネットワーク
-⬇⬆︎︎
+⬇⬆️︎
 AWS Route53
-⬇⬆︎︎
+⬇⬆️︎
 # L4ロードバランサー
 LoadBalancer Service (Istio IngressGateway) によるAWS NLB
-⬇⬆︎︎
+⬇⬆️︎
 Gateway
-⬇⬆︎︎
+⬇⬆️︎
 VirtualService
-⬇⬆︎︎
+⬇⬆️︎
 # L4ロードバランサー
 ClusterIP Service
-⬇⬆︎︎
+⬇⬆️︎
 Pod
 ```
 
@@ -275,17 +275,17 @@ NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定�
 
 ```yaml
 パブリックネットワーク
-⬇⬆︎︎
+⬇⬆️︎
 # L4ロードバランサー
 NodePort Service (Istio IngressGateway)
-⬇⬆︎︎
+⬇⬆️︎
 Gateway
-⬇⬆︎︎
+⬇⬆️︎
 VirtualService
-⬇⬆︎︎
+⬇⬆️︎
 # L4ロードバランサー
 ClusterIP Service
-⬇⬆︎︎
+⬇⬆️︎
 Pod
 ```
 
@@ -299,22 +299,22 @@ Pod
 
 ```yaml
 パブリックネットワーク
-⬇⬆︎︎
+⬇⬆️︎
 AWS Route53
-⬇⬆︎︎
+⬇⬆️︎
 # L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
 AWS ALB
-⬇⬆︎︎
+⬇⬆️︎
 # L4ロードバランサー
 NodePort Service (Istio IngressGateway)
-⬇⬆︎︎
+⬇⬆️︎
 Gateway
-⬇⬆︎︎
+⬇⬆️︎
 VirtualService
-⬇⬆︎︎
+⬇⬆️︎
 # L4ロードバランサー
 ClusterIP Service
-⬇⬆︎︎
+⬇⬆️︎
 Pod
 ```
 
@@ -328,22 +328,22 @@ Ingressにて、`alb.ingress.kubernetes.io/target-type`キー値を`ip`とする
 
 ```yaml
 パブリックネットワーク
-⬇⬆︎︎
+⬇⬆️︎
 AWS Route53
-⬇⬆︎︎
+⬇⬆️︎
 # L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
 AWS Load Balancer ControllerによるAWS ALB
-⬇⬆︎︎
+⬇⬆️︎
 # L4ロードバランサー
 ClusterIP Service (Istio IngressGateway)
-⬇⬆︎︎
+⬇⬆️︎
 Gateway
-⬇⬆︎︎
+⬇⬆️︎
 VirtualService
-⬇⬆︎︎
+⬇⬆️︎
 # L4ロードバランサー
 ClusterIP Service
-⬇⬆︎︎
+⬇⬆️︎
 Pod
 ```
 
