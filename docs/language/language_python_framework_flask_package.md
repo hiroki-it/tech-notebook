@@ -145,22 +145,21 @@ def callback():
 
 ### ログアウト
 
-#### ▼ 全体
+#### ▼ アクセストークンをCookieヘッダーで運搬する場合
 
 ```python
 from flask import url_for, redirect
 
 @app.route('/logout')
 def logout():
-    # Keycloakからログアウトする
-    redirect_uri = ("<KeycloakのWebのドメイン>/realms/dev/protocol/openid-connect/logout?id_token_hint=%s&post_logout_redirect_uri=%s" % (session.get('id_token', ''), url_for("front", _external=True)))
-
-    # セッションデータを削除する
-    session.pop('access_token', None)
+    # Keycloakからログアウトし、ホームにリダイレクトする
+    redirect_uri = ("http://localhost:8080/realms/dev/protocol/openid-connect/logout?id_token_hint=%s&post_logout_redirect_uri=%s" % (session.get('id_token', ''), url_for("home", _external=True)))
     session.pop('id_token', None)
     session.pop('user', None)
-
-    return redirect(redirect_uri)
+    response = app.make_response(redirect(redirect_uri))
+    # Cookieのアクセストークンを削除する
+    response.delete_cookie('access_token')
+    return response
 ```
 
 <br>

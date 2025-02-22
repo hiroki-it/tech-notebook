@@ -378,7 +378,9 @@ baz:
 ルートを明示することにより、`range`関数内でも`yaml`ファイルの正しいルートにリクエストを送信できるようなる。
 
 ```yaml
+# マニフェスト全体をrange関数で囲う場合は、区切り記号 (---) を入れる
 {{- range $.Values.foo.namespaces }}
+---
 apiVersion: apps/v1
 kind: Secret
 metadata:
@@ -459,7 +461,9 @@ config:
 ```
 
 ```yaml
+# マニフェスト全体をrange関数で囲う場合は、区切り記号 (---) を入れる
 {{- range $key, $value := .Values.config }}
+---
 {{- if or (eq $key "foo") (eq $key "baz") }}
 apiVersion: v1
 kind: ConfigMap
@@ -802,7 +806,9 @@ repositoryUrls:
 ```
 
 ```yaml
+# マニフェスト全体をrange関数で囲う場合は、区切り記号 (---) を入れる
 {{- range .Values.repositoryUrls | b64enc }}
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -1140,7 +1146,9 @@ foo:
 `.Files.Glob`関数で複数のファイルをmap型で取得できる。
 
 ```yaml
+# マニフェスト全体をrange関数で囲う場合は、区切り記号 (---) を入れる
 {{- range $filePath, $_ := .Files.Glob "dashboards/*.json" }}
+---
 {{- $dashboardName := regexReplaceAll "(^.*/)(.*)\\.json$" $path "${2}" }}
 apiVersion: v1
 kind: ConfigMap
