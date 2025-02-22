@@ -3321,6 +3321,8 @@ kubeletがヘルスチェックを実行することで、アプリケーショ�
 
 ReadinessProbeよりも前に実行される。
 
+言語やフレームワークによってはStartupProbe用のエンドポイントが提供されていない場合があり、ReadinessProbe用のエンドポイントで代用する。
+
 ```yaml
 apiVersion: v1
 kind: Pod
