@@ -26248,27 +26248,27 @@
 </tr>
 <tr>
 <td>エンドポイント</td>
-<td>ヘルスチェックエンドポイントLivenessProbeと同じエンドポイント(例：Nginxなら200を返却するだけの/healthcheckを定義する)</td>
+<td>ヘルスチェックエンドポイントLivenessProbeと同じエンドポイント (例：Nginxなら<code>200</code>ステータスを返却するだけの<code>/healthcheck</code>を定義する)</td>
 <td style="text-align: center;">➡️</td>
-<td>ヘルスチェックエンドポイント(例：Nginxなら200を返却するだけの/healthcheckを定義する)</td>
+<td>ヘルスチェックエンドポイント (例：Nginxなら<code>200</code>ステータスを返却するだけの<code>/healthcheck</code>を定義する)</td>
 <td style="text-align: center;">➡️</td>
-<td>readyエンドポイント(例：Nginxなら用意してくれてる:8081/nginx-readyを使用する)</td>
+<td>readyエンドポイント (例：Nginxなら用意してくれてる<code>:8081/nginx-ready</code>を使用する)</td>
 </tr>
 <tr>
 <td>正常時</td>
 <td>LivenessProbeまたはReadinessProbeを実行する。</td>
 <td style="text-align: center;">➡️</td>
-<td>HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが200から399ステータスを返却すれば正常とみなす。</td>
+<td>HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが<code>200</code>ステータスから<code>399</code>ステータスまでを返却すれば正常とみなす。</td>
 <td style="text-align: center;">➡️</td>
-<td>HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが200から399ステータスを返却すれば正常とみなす。</td>
+<td>HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが<code>200</code>から<code>399</code>ステータスを返却すれば正常とみなす。</td>
 </tr>
 <tr>
 <td>異常時</td>
-<td>LivenessProbeまたはReadinessProbeを実行しない。</td>
+<td>コンテナを再起動する。LivenessProbeまたはReadinessProbeを実行しない。</td>
 <td style="text-align: center;">➡️</td>
-<td>コンテナで障害 (例：デッドロック) が起こって応答しなくなると、コンテナを強制的に再起動してくれる。</td>
+<td>コンテナを再起動する。コンテナで障害 (例：デッドロック) が起こって応答しなくなると、コンテナを強制的に再起動してくれる。</td>
 <td style="text-align: center;">➡️</td>
-<td>コンテナのプロセスの準備が完了しない間、そのコンテナが処理できるようになるまで通信を流さないようにしてくれる。</td>
+<td>コンテナのプロセスの準備が完了しない間、そのコンテナが処理できるようになるまで、ServiceからPodに通信を流さないようにしてくれる。コンテナは再起動しない。</td>
 </tr>
 </tbody>
 </table>
