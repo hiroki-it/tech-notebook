@@ -16,7 +16,7 @@
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_lb.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_load_balancer.html">
       
       
         <link rel="prev" href="cloud_computing_aws_resource_lambda_function.html">
@@ -14504,7 +14504,7 @@
           
   
   <span class="md-ellipsis">
-    LB
+    Load Balancer
     
   </span>
   
@@ -14512,11 +14512,11 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="cloud_computing_aws_resource_lb.html" class="md-nav__link md-nav__link--active">
+      <a href="cloud_computing_aws_resource_load_balancer.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    LB
+    Load Balancer
     
   </span>
   
@@ -14773,13 +14773,22 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ スロースタート
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       アクセスログ
     </span>
@@ -25877,13 +25886,22 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ スロースタート
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       アクセスログ
     </span>
@@ -26209,8 +26227,17 @@
 <li><a href="https://www.infraexpert.com/study/loadbalancer4.html">https://www.infraexpert.com/study/loadbalancer4.html</a></li>
 </ul>
 </blockquote>
+<h4 id="_13">▼ スロースタート<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>受信したリクエストをルーティングする時に、スロースタート処理 (通過させるリクエストの数を少しずつ増加させる) を実施する。</p>
+<p>リクエスト数の非常に多い高トラフィックなシステムで、キャッシュに依存するアプリケーションにいきなり高負荷をかけないようにできる。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/edit-target-group-attributes.html#slow-start-mode">https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/edit-target-group-attributes.html#slow-start-mode</a></li>
+<li><a href="https://aws.amazon.com/jp/about-aws/whats-new/2018/05/application-load-balancer-announces-slow-start-support/">https://aws.amazon.com/jp/about-aws/whats-new/2018/05/application-load-balancer-announces-slow-start-support/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h3 id="_13">アクセスログ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h3 id="_14">アクセスログ<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="https">▼ HTTPSの場合<a class="headerlink" href="#https" title="Permanent link">&para;</a></h4>
 <p>HTTPSのアクセスログのフォーマットは以下の通りである。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">https 2018-07-02T22:23:00.186641Z app/my-loadbalancer/50dc6c495c0c9188 192.168.131.39:2817 10.0.0.1:80 0.086 0.048 0.037 200 200 0 57 &quot;GET https://www.example.com:443/ HTTP/1.1&quot; &quot;curl/7.46.0&quot; ECDHE-RSA-AES128-GCM-SHA256 TLSv1.2 arn:aws:elasticloadbalancing:us-east-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067 &quot;Root=1-58337281-1d84f3d73c47ec4e58577259&quot; &quot;www.example.com&quot; &quot;arn:aws:acm:us-east-2:123456789012:certificate/12345678-1234-1234-1234-123456789012&quot; 1 2018-07-02T22:22:48.364000Z &quot;authenticate,forward&quot; &quot;-&quot; &quot;-&quot; &quot;10.0.0.1:80&quot; &quot;200&quot; &quot;-&quot; &quot;-&quot; TID_123456</span>

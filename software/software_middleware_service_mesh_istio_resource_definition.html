@@ -16523,11 +16523,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_lb.html" class="md-nav__link">
+      <a href="../cloud_computing/cloud_computing_aws_resource_load_balancer.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    LB
+    Load Balancer
     
   </span>
   
@@ -30127,9 +30127,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="warmupaggression">▼ warmup.aggression<a class="headerlink" href="#warmupaggression" title="Permanent link">&para;</a></h4>
-<p>ウォームアップ処理 (インバウンド通信のリクエスト数を少しずつ増加させる) で、増加率を設定する。</p>
+<p>スロースタート処理 (通過させるリクエストの数を少しずつ増加させる) で、増加率を設定する。</p>
 <p><code>1</code>の場合は、直線的に増加する。</p>
-<p>アプリケーションの起動にウォームアッププロセスが必要な言語 (例：Java) で作られたアプリコンテナで役立つ。</p>
+<p>リクエスト数の非常に多い高トラフィックなシステムで、キャッシュに依存するアプリケーションにいきなり高負荷をかけないようにできる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -30148,8 +30148,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="warmupduration">▼ warmup.duration<a class="headerlink" href="#warmupduration" title="Permanent link">&para;</a></h4>
-<p>ウォームアップ処理 (インバウンド通信のリクエスト数を少しずつ増加させる) で、ウォームアップ期間を設定する。</p>
-<p>アプリケーションの起動にウォームアッププロセスが必要な言語 (例：Java) で作られたアプリコンテナで役立つ。</p>
+<p>スロースタート処理 (通過させるリクエストの数を少しずつ増加させる) で、スロースタートの期間を設定する。</p>
+<p>リクエスト数の非常に多い高トラフィックなシステムで、キャッシュに依存するアプリケーションにいきなり高負荷をかけないようにできる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
