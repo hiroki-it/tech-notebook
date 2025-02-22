@@ -928,7 +928,7 @@ spec:
 
 `1`の場合は、直線的に増加する。
 
-リクエスト数の非常に多い高トラフィックなシステムで、キャッシュに依存するアプリケーションにいきなり高負荷をかけないようにできる。
+リクエスト数の非常に多い高トラフィックなシステムで、初動のパフォーマンスが悪いアプリケーション (例：キャッシュに依存する。接続プールの作成が必要。) にいきなり高負荷をかけないようにできる。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -945,12 +945,13 @@ spec:
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration
 > - https://stackoverflow.com/a/75942527/12771072
+> - https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692
 
 #### ▼ warmup.duration
 
 スロースタート処理 (通過させるリクエストの数を少しずつ増加させる) で、スロースタートの期間を設定する。
 
-リクエスト数の非常に多い高トラフィックなシステムで、キャッシュに依存するアプリケーションにいきなり高負荷をかけないようにできる。
+リクエスト数の非常に多い高トラフィックなシステムで、初動のパフォーマンスが悪いアプリケーション (例：キャッシュに依存する。接続プールの作成が必要。) にいきなり高負荷をかけないようにできる。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -966,6 +967,7 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration
+> - https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692
 
 <br>
 

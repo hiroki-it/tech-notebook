@@ -181,17 +181,17 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 受信したリクエストを、ターゲットに均等にルーティングする。
 
-#### ▼ 最小未処理リクエスト (ファステスト)
+#### ▼ 最小未処理リクエスト方式 (ファステスト)
 
 受信したリクエストを、未処理のリクエスト数が最も少ないターゲットにルーティングする。
 
 > - https://www.infraexpert.com/study/loadbalancer4.html
 
-#### ▼ スロースタート
+#### ▼ スロースタート方式
 
 受信したリクエストをルーティングする時に、スロースタート処理 (通過させるリクエストの数を少しずつ増加させる) を実施する。
 
-リクエスト数の非常に多い高トラフィックなシステムで、キャッシュに依存するアプリケーションにいきなり高負荷をかけないようにできる。
+リクエスト数の非常に多い高トラフィックなシステムで、初動のパフォーマンスが悪いアプリケーション (例：キャッシュに依存する。接続プールの作成が必要。) にいきなり高負荷をかけないようにできる。
 
 > - https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/edit-target-group-attributes.html#slow-start-mode
 > - https://aws.amazon.com/jp/about-aws/whats-new/2018/05/application-load-balancer-announces-slow-start-support/
