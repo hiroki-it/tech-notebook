@@ -26227,6 +26227,7 @@
 <p><img alt="kubernetes_probe" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_probe.png" /></p>
 <p>kubeletは、コンテナをヘルスチェック (例：StartupProbe ➡️ LivenessProbe／ReadinessProbe) し、障害を防ぐ。</p>
 <p>LivenessProbeとReadinessProbeの間に順番はなく、独立して実行される。</p>
+<p>言語やフレームワークによってはStartupProbe用のエンドポイントが提供されていない場合があり、ReadinessProbe用のエンドポイントをStartupProbeの対象として代用する。</p>
 <table>
 <thead>
 <tr>
@@ -26247,7 +26248,7 @@
 </tr>
 <tr>
 <td>エンドポイント例</td>
-<td>・SpringBoot製のJavaアプリなら<code>/actuator/startup</code>を使用する。<br>・Nginxなら<code>200</code>ステータスを返却するだけの<code>/healthcheck</code>を定義する。</td>
+<td>・SpringBoot製のJavaアプリなら<code>/actuator/startup</code>を使用する。<br>・NginxならReadiness用のエンドポイントで代用する。</td>
 <td style="text-align: center;">➡️</td>
 <td>・SpringBoot製のJavaアプリなら<code>/actuator/health/liveness</code>を使用する。<br>Nginxなら<code>200</code>ステータスを返却するだけの<code>/healthcheck</code>を定義する。</td>
 <td>・SpringBoot製のJavaアプリなら<code>/actuator/health/readiness</code>を使用する。<br>Nginxなら<code>/nginx-ready</code>を使用する。</td>

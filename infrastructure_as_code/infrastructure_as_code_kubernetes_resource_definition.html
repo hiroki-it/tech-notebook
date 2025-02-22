@@ -37131,6 +37131,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <h4 id="startupprobe">▼ startupProbeとは<a class="headerlink" href="#startupprobe" title="Permanent link">&para;</a></h4>
 <p>kubeletがヘルスチェックを実行することで、アプリケーションの起動が完了したかを確認する。</p>
 <p>ReadinessProbeよりも前に実行される。</p>
+<p>言語やフレームワークによってはStartupProbe用のエンドポイントが提供されていない場合があり、ReadinessProbe用のエンドポイントで代用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
