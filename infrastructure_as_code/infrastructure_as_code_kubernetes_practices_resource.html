@@ -26226,6 +26226,7 @@
 <h2 id="startupprobe-livenessprobereadinessprobe">StartupProbe ➡️ LivenessProbe／ReadinessProbeを設定する<a class="headerlink" href="#startupprobe-livenessprobereadinessprobe" title="Permanent link">&para;</a></h2>
 <p><img alt="kubernetes_probe" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_probe.png" /></p>
 <p>kubeletは、コンテナをヘルスチェック (例：StartupProbe ➡️ LivenessProbe／ReadinessProbe) し、障害を防ぐ。</p>
+<p>LivenessProbeとReadinessProbeの間に順番はなく、独立して実行される。</p>
 <table>
 <thead>
 <tr>
@@ -26245,22 +26246,22 @@
 <td>ヘルスチェックを実行することで、コンテナがトラフィックを処理可能かを確認する。 コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例: Nginxの最初の設定ファイル読み込み完了まで、MySQLの最初のコネクション受信準備完了まで) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。注意点として、ReadinessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。</td>
 </tr>
 <tr>
-<td>エンドポイント</td>
-<td>ヘルスチェックエンドポイントLivenessProbeと同じエンドポイント (例：Nginxなら<code>200</code>ステータスを返却するだけの<code>/healthcheck</code>を定義する)</td>
+<td>エンドポイント例</td>
+<td>・SpringBoot製のJavaアプリなら<code>/actuator/startup</code>を使用する。<br>・Nginxなら<code>200</code>ステータスを返却するだけの<code>/healthcheck</code>を定義する。</td>
 <td style="text-align: center;">➡️</td>
-<td>ヘルスチェックエンドポイント (例：Nginxなら<code>200</code>ステータスを返却するだけの<code>/healthcheck</code>を定義する)</td>
-<td>readyエンドポイント (例：Nginxなら用意してくれてる<code>:8081/nginx-ready</code>を使用する)</td>
+<td>・SpringBoot製のJavaアプリなら<code>/actuator/health/liveness</code>を使用する。<br>Nginxなら<code>200</code>ステータスを返却するだけの<code>/healthcheck</code>を定義する。</td>
+<td>・SpringBoot製のJavaアプリなら<code>/actuator/health/readiness</code>を使用する。<br>Nginxなら<code>/nginx-ready</code>を使用する。</td>
 </tr>
 <tr>
 <td>正常時</td>
-<td>LivenessProbeまたはReadinessProbeを実行する。</td>
+<td>LivenessProbe／ReadinessProbeを実行する。</td>
 <td style="text-align: center;">➡️</td>
 <td>HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが<code>200</code>ステータスから<code>399</code>ステータスまでを返却すれば正常とみなす。</td>
 <td>HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが<code>200</code>から<code>399</code>ステータスを返却すれば正常とみなす。</td>
 </tr>
 <tr>
 <td>異常時</td>
-<td>コンテナを再起動する。LivenessProbeまたはReadinessProbeを実行しない。</td>
+<td>コンテナを再起動する。LivenessProbe／ReadinessProbeを実行しない。</td>
 <td style="text-align: center;">➡️</td>
 <td>コンテナを再起動する。コンテナで障害 (例：デッドロック) が起こって応答しなくなると、コンテナを強制的に再起動してくれる。</td>
 <td>コンテナのプロセスの準備が完了しない間、そのコンテナが処理できるようになるまで、ServiceからPodに通信を流さないようにしてくれる。コンテナは再起動しない。</td>
