@@ -3120,6 +3120,7 @@ spec:
           port: 8080
           # SpringBootのlivenessエンドポイント
           path: /actuator/health/liveness
+          scheme: HTTP
         periodSeconds: 10
 ```
 
@@ -3174,6 +3175,7 @@ spec:
         httpGet:
           port: 80
           path: /healthcheck
+          scheme: HTTP
 ```
 
 自身のアプリケーションではエンドポイントを実装する必要があるが、OSSではすでに用意されていることが多い。
@@ -3362,10 +3364,11 @@ spec:
           port: 8080
           # SpringBootのredinessエンドポイント
           path: /actuator/health/readiness
+          scheme: HTTP
         periodSeconds: 10
 ```
 
-コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例: Nginxの最初の設定ファイル読み込み完了まで、MySQLの最初のコネクション受信準備完了まで) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。
+コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例：Javaのウォームアップ完了まで。Nginxの最初の設定ファイル読み込み完了まで。MySQLの最初のコネクション受信準備完了まで。) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。
 
 注意点として、ReadinessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。
 
@@ -3413,6 +3416,30 @@ spec:
 ```
 
 > - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-liveness-command
+
+#### ▼ httpGet
+
+コンテナのRedinessヘルスチェックで、`L7`チェックを実行する。
+
+`200`ステータスから`399`ステータスまでの間なら成功である。
+
+具体的には、コンテナの指定したエンドポイントにGETメソッドでHTTPリクエストを送信し、レスポンスのステータスコードを検証する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      readinessProbe:
+        httpGet:
+          port: 80
+          path: /healthcheck
+          scheme: HTTP
+```
 
 #### ▼ failureThreshold
 
