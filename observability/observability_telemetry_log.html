@@ -25939,7 +25939,7 @@ jsonPayload.traceId<span class="o">=</span><span class="s2">&quot;&lt;トレー�
 <p>以下のような場合にFATALとする。</p>
 <ul>
 <li>アプリに必要不可欠な外部依存システム（例：DB、APIなど) が動作しなくなった場合</li>
-<li>サーバーのディスク容量やメモリが不足し、アプリが停止したり応答しなくなった場合</li>
+<li>サーバーのディスク容量やメモリが不足し、アプリケーションが停止したり応答しなくなった場合</li>
 <li>セキュリティ侵害や機密データへの不正アクセスを検出した場合</li>
 </ul>
 <blockquote>
@@ -25952,9 +25952,9 @@ jsonPayload.traceId<span class="o">=</span><span class="s2">&quot;&lt;トレー�
 <p>重要なビジネス機能は動作しているが、その他の一部が動作しなくなったことを表す。</p>
 <p>以下のような場合にERRORレベルとする。</p>
 <ul>
-<li>アプリの機能に影響を与える外部依存システム (例：DB、APIなど) で障害が起こった場合</li>
+<li>アプリケーションの機能に影響を与える外部依存システム (例：DB、APIなど) で障害が起こった場合</li>
 <li>接続のタイムアウトやDNS解決の失敗などのネットワーク接続で問題が起こった場合</li>
-<li>アプリのCRUD処理に失敗した場合</li>
+<li>アプリケーションのCRUD処理に失敗した場合</li>
 <li>JSONオブジェクトのデコードに失敗した場合</li>
 </ul>
 <blockquote>
@@ -25968,7 +25968,7 @@ jsonPayload.traceId<span class="o">=</span><span class="s2">&quot;&lt;トレー�
 <ul>
 <li>再試行で回復の可能性があるエラー (例：ネットワーク接続の問題など) の場合</li>
 <li>ハードウェアリソースの閾値を超えそうな場合</li>
-<li>アプリの機能に影響を与える外部依存システム (例：DB、APIなど) のレスポンス速度が閾値を超えている場合</li>
+<li>アプリケーションの機能に影響を与える外部依存システム (例：DB、APIなど) のレスポンス速度が閾値を超えている場合</li>
 <li>推奨の設定になっていない場合</li>
 <li>脆弱性がある場合</li>
 </ul>
@@ -25982,7 +25982,7 @@ jsonPayload.traceId<span class="o">=</span><span class="s2">&quot;&lt;トレー�
 <p>以下のような場合にINFOレベルとする。</p>
 <ul>
 <li>イベントの変化 (例：<code>PENDING</code>イベントから<code>IN PROGRESS</code>イベントへの移行など) が起こった場合</li>
-<li>アプリの機能に影響を与える外部依存システム (例：DB、APIなど) でイベントが起こった場合</li>
+<li>アプリケーションの機能に影響を与える外部依存システム (例：DB、APIなど) でイベントが起こった場合</li>
 </ul>
 <blockquote>
 <ul>
@@ -25991,9 +25991,9 @@ jsonPayload.traceId<span class="o">=</span><span class="s2">&quot;&lt;トレー�
 </blockquote>
 <h4 id="debug">▼ DEBUG<a class="headerlink" href="#debug" title="Permanent link">&para;</a></h4>
 <p>開発者が開発しやすくするための詳細な情報を含むイベントが起こったことを表す。</p>
-<p>詳細な情報を持つ、アプリのパフォーマンスに影響が出るため、本番環境では無効にしておく。</p>
+<p>詳細な情報を持つ、アプリケーションのパフォーマンスに影響が出るため、本番環境では無効にしておく。</p>
 <ul>
-<li>アプリのイベントに関する詳細情報</li>
+<li>アプリケーションのイベントに関する詳細情報</li>
 <li>外部依存システム (例：DB、APIなど) の送信 (例：リクエスト、クエリ) と受信 (例：レスポンス、DBレコード) の詳細情報</li>
 </ul>
 <blockquote>
@@ -26022,7 +26022,7 @@ jsonPayload.traceId<span class="o">=</span><span class="s2">&quot;&lt;トレー�
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-22</span>
   </span>
 
     

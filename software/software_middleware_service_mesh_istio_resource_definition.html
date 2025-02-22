@@ -29511,7 +29511,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>認可スコープで、実施条件 (例：いずれのKubernetesリソース、HTTPリクエストのメソッド、JWTの発行元認証局の識別子) を設定する。</p>
 <p>その条件に合致した場合に、認証済みの送信元を許可するか否かを実施する。</p>
 <h4 id="serviceaccountpod">▼ 特定のServiceAccountを持つPodを許可する<a class="headerlink" href="#serviceaccountpod" title="Permanent link">&para;</a></h4>
-<p>送信元のPod紐づくServiceAccountが適切な場合に、認可を実施するように設定する。</p>
+<p>送信元Podに紐づくServiceAccountが適切な場合に、認可を実施するように設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AuthorizationPolicy</span>
@@ -30129,7 +30129,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="warmupaggression">▼ warmup.aggression<a class="headerlink" href="#warmupaggression" title="Permanent link">&para;</a></h4>
 <p>ウォームアップ処理 (インバウンド通信のリクエスト数を少しずつ増加させる) で、増加率を設定する。</p>
 <p><code>1</code>の場合は、直線的に増加する。</p>
-<p>アプリの起動にウォームアッププロセスが必要な言語 (例：Java) で作られたアプリコンテナで役立つ。</p>
+<p>アプリケーションの起動にウォームアッププロセスが必要な言語 (例：Java) で作られたアプリコンテナで役立つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -30149,7 +30149,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="warmupduration">▼ warmup.duration<a class="headerlink" href="#warmupduration" title="Permanent link">&para;</a></h4>
 <p>ウォームアップ処理 (インバウンド通信のリクエスト数を少しずつ増加させる) で、ウォームアップ期間を設定する。</p>
-<p>アプリの起動にウォームアッププロセスが必要な言語 (例：Java) で作られたアプリコンテナで役立つ。</p>
+<p>アプリケーションの起動にウォームアッププロセスが必要な言語 (例：Java) で作られたアプリコンテナで役立つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
