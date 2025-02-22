@@ -25,7 +25,7 @@ OpenTelemetryのTracerProviderを手動でセットアップする。
 
 #### ▼ 自動計装とは
 
-OpenTelemetryのTracerProviderをアプリの実行時に動的にセットアップする。
+OpenTelemetryのTracerProviderをアプリケーションの実行時に動的にセットアップする。
 
 ファイルの構造や環境変数名から、自動的に言語を検出してくれる。
 

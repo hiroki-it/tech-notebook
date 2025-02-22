@@ -161,7 +161,7 @@ OAuthの認可コードフローと仕組みが似ており、アクセストー
 アプリからKeycloakに宛に認可リクエストを送信する。
 
 ```bash
-$ curl http://<Keycloakのドメイン>/realms/oidc-sample/protocol/openid-connect/auth?response_type=code&client_id=rp1&redirect_uri=http://<アプリのドメイン>/oidc&scope=openid
+$ curl http://<Keycloakのドメイン>/realms/oidc-sample/protocol/openid-connect/auth?response_type=code&client_id=rp1&redirect_uri=http://<アプリケーションのドメイン>/oidc&scope=openid
 ```
 
 > - https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow
@@ -171,7 +171,7 @@ $ curl http://<Keycloakのドメイン>/realms/oidc-sample/protocol/openid-conne
 認可レスポンスを受信し、アプリに対してリダイレクトを送信する。
 
 ```bash
-$ curl http://<アプリのドメイン>/oidc?session_state= ... &code=<認証コード>
+$ curl http://<アプリケーションのドメイン>/oidc?session_state= ... &code=<認証コード>
 ```
 
 > - https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow
@@ -183,7 +183,7 @@ $ curl http://<アプリのドメイン>/oidc?session_state= ... &code=<認証�
 IDトークンとアクセストークンを取得できる。
 
 ```bash
-$ curl -d "grant_type=authorization_code&code=<認証コード>&redirect_uri=http://<アプリのドメイン>/oidc&client_id=rp1&client_secret=<Client secret>" http://<Keycloakのドメイン>/realms/oidc-sample/protocol/openid-connect/token
+$ curl -d "grant_type=authorization_code&code=<認証コード>&redirect_uri=http://<アプリケーションのドメイン>/oidc&client_id=rp1&client_secret=<Client secret>" http://<Keycloakのドメイン>/realms/oidc-sample/protocol/openid-connect/token
 
 {
   "access_token": <アクセストークン>,

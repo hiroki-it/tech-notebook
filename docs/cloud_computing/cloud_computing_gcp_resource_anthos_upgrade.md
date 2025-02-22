@@ -376,7 +376,7 @@ metadata:
 # Istio IngressGatewayの特定のNamespace
 $ kubectl label ns ingress istio.io/rev=asm-1140-0 istio-injection- --overwrite
 
-# アプリの特定のNamespace
+# アプリケーションの特定のNamespace
 $ kubectl label ns app istio.io/rev=asm-1140-0 istio-injection- --overwrite
 ```
 

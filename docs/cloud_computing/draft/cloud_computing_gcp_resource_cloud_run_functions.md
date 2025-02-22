@@ -20,7 +20,7 @@ description: Google Cloud Run Functions＠Google Cloudリソースの知見を�
 | 項目               | 説明                                                                 |
 | ------------------ | -------------------------------------------------------------------- |
 | トリガー           | Google Cloud Run Functionsを発火させる方法を設定する。               |
-| ランタイム         | CloudFunctionで実行するアプリのランタイムを設定する。                |
+| ランタイム         | CloudFunctionで実行するアプリケーションのランタイムを設定する。      |
 | エントリーポイント | Google Cloud Run Functionsのエントリーポイントとする関数を設定する。 |
 
 <br>

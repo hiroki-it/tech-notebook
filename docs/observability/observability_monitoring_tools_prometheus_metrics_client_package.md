@@ -42,7 +42,7 @@ func init() {
 ```
 
 ```bash
-$ curl http://<アプリのIPアドレス>:2112/metrics
+$ curl http://<アプリケーションのIPアドレス>:2112/metrics
 
 # メトリクスの一覧を取得できる
 ...

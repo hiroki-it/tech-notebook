@@ -67,11 +67,11 @@ SREingとは異なり、開発者体験の向上からDevOpsを実現する。
 
 ### Internal developer portals (Web portal)
 
-アプリのテンプレートや共通パッケージを利用できるポータルサイトを提供する。
+アプリケーションのテンプレートや共通パッケージを利用できるポータルサイトを提供する。
 
 また、これらのツールの利用状況も可視化できる。
 
-アプリ/インフラチームがアプリを素早く作成できるようになる。
+アプリ/インフラチームがアプリケーションを素早く作成できるようになる。
 
 > - https://tag-app-delivery.cncf.io/wgs/platforms/whitepaper/#capabilities-of-platforms
 

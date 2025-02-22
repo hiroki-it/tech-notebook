@@ -45,11 +45,11 @@ description: フロントエンドアーキテクチャ＠アーキテクチャ�
 
 ## 02. SST：Server Side Templating
 
-サーバーサイドのアプリがテンプレートエンジンを使用してHTMLを生成する。
+サーバーサイドのアプリケーションがテンプレートエンジンを使用してHTMLを生成する。
 
 このHTMLをブラウザにレンダリングする。
 
-サーバーサイドのフレームワークを使用して単純なアプリを作る場合、まだまだ現役の技術である。
+サーバーサイドのフレームワークを使用して単純なアプリケーションを作る場合、まだまだ現役の技術である。
 
 > - https://qiita.com/kimizuy/items/d33420330479f8c85449
 
@@ -176,7 +176,7 @@ function App() {
 
 MPAと比較して、データを非同期的に通信できるため、1つのWebページの中で必要なデータのみを通信すればよく、レンダリングが速い。
 
-![従来WebアプリとSPアプリの処理速度の違い](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/従来WebアプリとSPアプリの処理速度の違い.png)
+![従来WebアプリとSPアプリケーションの処理速度の違い](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/従来WebアプリとSPアプリケーションの処理速度の違い.png)
 
 > - https://www.switchitmaker2.com/seo/spa/
 
@@ -321,7 +321,7 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 #### ▼ ビルド時合成パターンとは
 
-フロントエンドアプリのビルド時に合成する。
+フロントエンドアプリケーションのビルド時に合成する。
 
 <br>
 

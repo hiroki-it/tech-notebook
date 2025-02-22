@@ -340,7 +340,7 @@ AWS Lambdaの拡張機能である。
 
 通常のAWS Lambdaでは動かせないフレームワーク (例：Express.js、Next.js、SprintBoot、ASP.NET、Laravelなど) のアプリを動かせるようにする。
 
-アプリのプロセスの前段でリクエストを変換し、アプリがリクエストを処理できるようにする。
+アプリケーションのプロセスの前段でリクエストを変換し、アプリケーションがリクエストを処理できるようにする。
 
 ![lambda-web-adapter.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-web-adapter.png)
 

@@ -165,7 +165,7 @@ server:
 コールバックURL (IDプロバイダーからの認可レスポンスのリダイレクト先URL) を設定する。
 
 ```yaml
-redirect_url: "https://<アプリのドメイン>/oauth2/callback"
+redirect_url: "https://<アプリケーションのドメイン>/oauth2/callback"
 ```
 
 > - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#command-line-options
@@ -189,7 +189,7 @@ reverse_proxy: true
 
 ### リバースプロキシがNginxの場合
 
-まずは、クライアントアプリが、Nginxを介さずに認可リクエストを直接的にIDプロバイダーに送信する。
+まずは、クライアントアプリケーションが、Nginxを介さずに認可リクエストを直接的にIDプロバイダーに送信する。
 
 IDプロバイダーがトークンの発行を終え、クライアントが再びリクエストを送信した時、これはNginxを通過する。
 

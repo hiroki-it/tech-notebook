@@ -3343,6 +3343,7 @@ spec:
 
 > - https://egashira.dev/blog/k8s-liveness-readiness-startup-probes#startupprobe
 > - https://docs.spring.io/spring-boot/api/rest/actuator/startup.html
+> - https://qiita.com/suke_masa/items/05570b64b73f3650b807#spring-boot-actuator%E3%81%AEprobe%E5%AF%BE%E5%BF%9C
 
 <br>
 

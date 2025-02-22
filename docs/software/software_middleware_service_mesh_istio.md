@@ -195,24 +195,24 @@ Pod間通信時に、正しい送信元Envoyの通信であることを認証す
 
 #### ▼ 相互TLS認証
 
-相互TLS認証を実施し、送信元のPodの通信を認証する。
+相互TLS認証を実施し、送信元Podの通信を認証する。
 
 > - https://istio.io/latest/docs/concepts/security/#authentication
 
 #### ▼ JWTによるBearer認証 (IDプロバイダーに認証フェーズを委譲)
 
-JWTによるBearer認証を実施し、送信元のPodの通信を認証する。
+JWTによるBearer認証を実施し、送信元Podの通信を認証する。
 
 この場合、認証フェーズをIDプロバイダー (例：Auth0、GitHub、Keycloak、Zitadel、AWS Cognito、Google Cloud Auth) に委譲することになる。
 
 JWTの取得方法として、例えば以下の方法がある。
 
-- 送信元のPodがIDプロバイダーからJWTを直接取得する。
+- 送信元PodがIDプロバイダーからJWTを直接取得する。
 - 送信元/宛先の間に認証プロキシ (例：OAuth2 Proxy、Dexなど) を配置し、認証プロキシでIDプロバイダーからJWTを取得する。
 
 > - https://istio.io/latest/docs/concepts/security/#authentication-architecture
 
-#### ▼ アプリの認証について
+#### ▼ アプリケーションの認証について
 
 アプリ側の認証については、Istioの管理外である。
 
@@ -236,7 +236,7 @@ AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、Keycloak、Zi
 
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E5%9B%B3
 
-#### ▼ アプリの認可について
+#### ▼ アプリケーションの認可について
 
 アプリ側の認可については、Istioの管理外である。
 

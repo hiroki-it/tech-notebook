@@ -253,7 +253,7 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#062
 
-#### `(9)` ミドルウェア/アプリのロジックの問題
+#### `(9)` ミドルウェア/アプリケーションのロジックの問題
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#063
 
@@ -277,7 +277,7 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#068
 
-#### `(15)` ミドルウェア/アプリのその他の問題
+#### `(15)` ミドルウェア/アプリケーションのその他の問題
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#069
 
