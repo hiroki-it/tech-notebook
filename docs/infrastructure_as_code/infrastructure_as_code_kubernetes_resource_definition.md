@@ -3244,8 +3244,9 @@ spec:
   containers:
     - name: app
       image: app:1.0.0
-      tcpSocket:
-        port: 8080
+      livenessProbe:
+        tcpSocket:
+          port: 8080
 ```
 
 #### ▼ timeoutSeconds
@@ -3303,8 +3304,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-mysql
-      image: foo-mysql:1.0.0
+    - name: foo
+      image: foo:1.0.0
       startupProbe:
         failureThreshold: 5
         timeoutSeconds: 1
@@ -3342,6 +3343,28 @@ Readiness probe failed: Get "http://*.*.*.*:*/ready": dial tcp *.*.*.*:*: connec
 > - https://amateur-engineer-blog.com/livenessprobe-readinessprobe/#toc4
 > - https://kodekloud.com/community/t/what-is-the-meaning-for-a-pod-with-ready-0-1-and-state-running/21660
 
+#### ▼ exec
+
+ReadinessProbeチェックで任意のコマンドを実行する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo
+      image: foo:1.0.0
+      readinessProbe:
+        exec:
+          command:
+            - cat
+            - /tmp/healthy
+```
+
+> - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-liveness-command
+
 #### ▼ failureThreshold
 
 ReadinessProbeチェックが失敗したとみなす試行回数を設定する。
@@ -3353,8 +3376,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-mysql
-      image: foo-mysql:1.0.0
+    - name: foo
+      image: foo:1.0.0
       readinessProbe:
         failureThreshold: 5
 ```
@@ -3376,8 +3399,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-mysql
-      image: foo-mysql:1.0.0
+    - name: foo
+      image: foo:1.0.0
       readinessProbe:
         # 2回目以降のReadinessProbeヘルスチェックを実行するまでに5秒間待機する。
         gracePeriodSeconds: 5
@@ -3400,8 +3423,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-mysql
-      image: foo-mysql:1.0.0
+    - name: foo
+      image: foo:1.0.0
       readinessProbe:
         initialDelaySeconds: 10
 ```
@@ -3417,8 +3440,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-mysql
-      image: foo-mysql:1.0.0
+    - name: foo
+      image: foo:1.0.0
       readinessProbe:
         periodSeconds: 5
 ```
@@ -3434,12 +3457,14 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-mysql
-      image: foo-mysql:1.0.0
+    - name: foo
+      image: foo:1.0.0
       readinessProbe:
         tcpSocket:
           port: 3306
 ```
+
+> - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-tcp-liveness-probe
 
 <br>
 
