@@ -3106,8 +3106,25 @@ kubeletがヘルスチェックを実行することで、コンテナが正常�
 
 注意点として、LivenessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。
 
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-app-springboot
+      image: foo-app-springboot:1.0.0
+      livenessProbe:
+        httpGet:
+          port: 80
+          path: /actuator/health/liveness
+        periodSeconds: 5
+```
+
 > - https://www.ianlewis.org/jp/kubernetes-health-check
 > - https://amateur-engineer-blog.com/livenessprobe-readinessprobe/
+> - https://spring.io/blog/2020/03/25/liveness-and-readiness-probes-with-spring-boot
 
 #### ▼ exec
 
@@ -3308,14 +3325,18 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo
-      image: foo:1.0.0
+    - name: foo-app-springboot
+      image: foo-app-springboot:1.0.0
       startupProbe:
-        failureThreshold: 5
-        timeoutSeconds: 1
+        httpGet:
+          port: 80
+          path: /actuator/startup
+        failureThreshold: 30
+        periodSeconds: 10
 ```
 
 > - https://egashira.dev/blog/k8s-liveness-readiness-startup-probes#startupprobe
+> - https://docs.spring.io/spring-boot/api/rest/actuator/startup.html
 
 <br>
 
@@ -3324,6 +3345,22 @@ spec:
 #### ▼ readinessProbeとは
 
 kubeletがヘルスチェックを実行することで、コンテナがトラフィックを処理可能かを確認する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-app-springboot
+      image: foo-app-springboot:1.0.0
+      readinessProbe:
+        httpGet:
+          port: 80
+          path: /actuator/health/readiness
+        periodSeconds: 5
+```
 
 コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例: Nginxの最初の設定ファイル読み込み完了まで、MySQLの最初のコネクション受信準備完了まで) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。
 
@@ -3346,6 +3383,7 @@ Readiness probe failed: Get "http://*.*.*.*:*/ready": dial tcp *.*.*.*:*: connec
 > - https://www.ianlewis.org/jp/kubernetes-health-check
 > - https://amateur-engineer-blog.com/livenessprobe-readinessprobe/#toc4
 > - https://kodekloud.com/community/t/what-is-the-meaning-for-a-pod-with-ready-0-1-and-state-running/21660
+> - https://spring.io/blog/2020/03/25/liveness-and-readiness-probes-with-spring-boot
 
 #### ▼ exec
 
@@ -3362,8 +3400,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo
-      image: foo:1.0.0
+    - name: app
+      image: app:1.0.0
       readinessProbe:
         exec:
           command:
@@ -3384,8 +3422,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo
-      image: foo:1.0.0
+    - name: app
+      image: app:1.0.0
       readinessProbe:
         failureThreshold: 5
 ```
@@ -3407,8 +3445,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo
-      image: foo:1.0.0
+    - name: app
+      image: app:1.0.0
       readinessProbe:
         initialDelaySeconds: 10
 ```
@@ -3424,8 +3462,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo
-      image: foo:1.0.0
+    - name: app
+      image: app:1.0.0
       readinessProbe:
         periodSeconds: 5
 ```
@@ -3443,8 +3481,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo
-      image: foo:1.0.0
+    - name: app
+      image: app:1.0.0
       readinessProbe:
         tcpSocket:
           port: 3306
@@ -3469,8 +3507,8 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo
-      image: foo:1.0.0
+    - name: app
+      image: app:1.0.0
       readinessProbe:
         # 2回目以降のReadinessProbeヘルスチェックを実行するまでに5秒間待機する。
         terminationGracePeriodSeconds: 5
@@ -3516,14 +3554,14 @@ spec:
     - name: app
       image: app:1.0.0
       volumeMounts:
-        - name: foo-volume
+        - name: app-volume
           # foo-volumeにあるwwwディレクトリを指定する
           subPath: www
           # コンテナのvarディレクトリをマウントする
           mountPath: /var
 
   volumes:
-    - name: foo-volume
+    - name: app-volume
       emptyDir: {}
 ```
 
@@ -3542,14 +3580,14 @@ spec:
     - name: app
       image: app:1.0.0
       volumeMounts:
-        - name: foo-volume
+        - name: app-volume
           # foo-volumeにあるwww.confファイルを指定する
           subPath: www.conf
           # コンテナに/etc/www.confファイルとしてマウントする
           mountPath: /etc/www.conf
 
   volumes:
-    - name: foo-volume
+    - name: app-volume
       emptyDir: {}
 ```
 
@@ -3649,7 +3687,7 @@ spec:
     - name: app
       image: private-app:1.0.0 # プライベートプライベートイメージリポジトリ
   imagePullSecrets:
-    - name: foo-repository-credentials-secret # プライベートイメージリポジトリの認証情報を持つSecret
+    - name: app-repository-credentials-secret # プライベートイメージリポジトリの認証情報を持つSecret
 ```
 
 > - https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
