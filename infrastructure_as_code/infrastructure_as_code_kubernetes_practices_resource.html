@@ -25748,10 +25748,10 @@
 </tr>
 <tr>
 <td></td>
-<td>↓</td>
-<td>↓</td>
-<td>↓</td>
-<td>↓</td>
+<td>⬇️</td>
+<td>⬇️</td>
+<td>⬇️</td>
+<td>⬇️</td>
 </tr>
 <tr>
 <td>Nodeの冗長化の程度</td>
@@ -25824,10 +25824,10 @@
 </tr>
 <tr>
 <td></td>
-<td>↓</td>
-<td>↓</td>
-<td>↓</td>
-<td>↓</td>
+<td>⬇️</td>
+<td>⬇️</td>
+<td>⬇️</td>
+<td>⬇️</td>
 </tr>
 <tr>
 <td>対処例</td>
@@ -26224,13 +26224,16 @@
 <p><br></p>
 <h1 id="_27">コンテナ<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h1>
 <h2 id="startupprobereadinessprobelivenessprobe">startupProbe、readinessProbe、livenessProbeを設定する<a class="headerlink" href="#startupprobereadinessprobelivenessprobe" title="Permanent link">&para;</a></h2>
+<p><img alt="kubernetes_probe" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_probe.png" /></p>
 <p>kubeletは、コンテナをヘルスチェック (例：StartupProbe、LivenessProbe、ReadinessProbe) し、障害を防ぐ。</p>
 <table>
 <thead>
 <tr>
 <th></th>
 <th>StartupProbe</th>
+<th style="text-align: center;"></th>
 <th>LivenessProbe</th>
+<th style="text-align: center;"></th>
 <th>ReadinessProbe</th>
 </tr>
 </thead>
@@ -26238,35 +26241,43 @@
 <tr>
 <td>説明</td>
 <td>ヘルスチェックを実行することで、アプリケーションの起動が完了したかを確認する。ReadinessProbeよりも前に実行される。ReadinessProbeと違って起動時にしか実行されない。ウォームアップが必要なプロセスのチェックに役立つ。</td>
+<td style="text-align: center;">➡️</td>
 <td>ヘルスチェックを実行することで、コンテナが正常に動作しているか確認する。 注意点として、LivenessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。</td>
+<td style="text-align: center;">➡️</td>
 <td>ヘルスチェックを実行することで、コンテナがトラフィックを処理可能かを確認する。 コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例: Nginxの最初の設定ファイル読み込み完了まで、MySQLの最初のコネクション受信準備完了まで) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。注意点として、ReadinessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。</td>
 </tr>
 <tr>
 <td>エンドポイント</td>
 <td>ヘルスチェックエンドポイントLivenessProbeと同じエンドポイント(例：Nginxなら200を返却するだけの/healthcheckを定義する)</td>
+<td style="text-align: center;">➡️</td>
 <td>ヘルスチェックエンドポイント(例：Nginxなら200を返却するだけの/healthcheckを定義する)</td>
+<td style="text-align: center;">➡️</td>
 <td>readyエンドポイント(例：Nginxなら用意してくれてる:8081/nginx-readyを使用する)</td>
 </tr>
 <tr>
 <td>正常時</td>
 <td>LivenessProbeまたはReadinessProbeを実行する。</td>
+<td style="text-align: center;">➡️</td>
 <td>HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが200から399ステータスを返却すれば正常とみなす。</td>
+<td style="text-align: center;">➡️</td>
 <td>HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが200から399ステータスを返却すれば正常とみなす。</td>
 </tr>
 <tr>
 <td>異常時</td>
 <td>LivenessProbeまたはReadinessProbeを実行しない。</td>
+<td style="text-align: center;">➡️</td>
 <td>コンテナで障害 (例：デッドロック) が起こって応答しなくなると、コンテナを強制的に再起動してくれる。</td>
+<td style="text-align: center;">➡️</td>
 <td>コンテナのプロセスの準備が完了しない間、そのコンテナが処理できるようになるまで通信を流さないようにしてくれる。</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
 <ul>
-<li>[<a href="https://zenn.dev/toversus/articles/5d1292160f5035](https://zenn.dev/toversus/articles/5d1292160f5035">https://zenn.dev/toversus/articles/5d1292160f5035](https://zenn.dev/toversus/articles/5d1292160f5035</a></li>
-<li>[<a href="https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html](https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html">https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html](https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html</a></li>
-<li>[<a href="https://stackoverflow.com/questions/42567475/docker-compose-check-if-mysql-connection-is-ready](https://stackoverflow.com/questions/42567475/docker-compose-check-if-mysql-connection-is-ready">https://stackoverflow.com/questions/42567475/docker-compose-check-if-mysql-connection-is-ready](https://stackoverflow.com/questions/42567475/docker-compose-check-if-mysql-connection-is-ready</a></li>
-<li>[<a href="https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status](https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status">https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status](https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status</a></li>
+<li><a href="https://zenn.dev/toversus/articles/5d1292160f5035">https://zenn.dev/toversus/articles/5d1292160f5035</a></li>
+<li><a href="https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html">https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html</a></li>
+<li><a href="https://stackoverflow.com/questions/42567475/docker-compose-check-if-mysql-connection-is-ready">https://stackoverflow.com/questions/42567475/docker-compose-check-if-mysql-connection-is-ready</a></li>
+<li><a href="https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status">https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status</a></li>
 <li><a href="https://thinkit.co.jp/article/17500">https://thinkit.co.jp/article/17500</a></li>
 </ul>
 </blockquote>
@@ -26287,6 +26298,7 @@
 </ul>
 <p>なお、<code>.spec.terminationGracePeriodSeconds</code>の秒数が長すぎるとPodの終了に時間がかかりすぎるようになり、Podの更新やClusterのアップグレードに時間に影響が出る。</p>
 <p>長くとも<code>120</code>秒以内にするとよい。</p>
+<p><img alt="pod_terminating_process" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown">https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown</a></li>
@@ -27226,7 +27238,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-22</span>
   </span>
 
     
