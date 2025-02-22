@@ -568,7 +568,7 @@ nav:
               - ■ Lambda:
                   - Lambda: cloud_computing/cloud_computing_aws_resource_lambda.md
                   - Lambda関数: cloud_computing/cloud_computing_aws_resource_lambda_function.md
-              - LB: cloud_computing/cloud_computing_aws_resource_lb.md
+              - Load Balancer: cloud_computing/cloud_computing_aws_resource_load_balancer.md
               - ■ RDS:
                   - RDS: cloud_computing/cloud_computing_aws_resource_rds.md
                   - Aurora: cloud_computing/cloud_computing_aws_resource_rds_aurora.md
