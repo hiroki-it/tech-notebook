@@ -1058,7 +1058,7 @@ ArgoCDのコンポーネント (特に、application-controller、argocd-server)
 
 ## 16. アクセスを制御する
 
-### ローカルマシン → (アクセス制御) → ArgoCD の部分
+### ローカルマシン ➡️ (アクセス制御) ➡️ ArgoCD の部分
 
 ```yaml
 ローカルマシン
@@ -1075,7 +1075,7 @@ Cluster
 - ArgoCDのダウンストリームのAWS ALBにWAFを紐づけ、特定のIPアドレス以外を `403`ステータス (認可エラー) にする。
 - ArgoCDのログインにSSOを使用し、利用者以外を `401`ステータス (認証エラー) にする
 
-### ArgoCD → (アクセス制御) → Cluster の部分
+### ArgoCD ➡️ (アクセス制御) ➡️ Cluster の部分
 
 ```yaml
 ローカルマシン

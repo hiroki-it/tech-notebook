@@ -366,7 +366,7 @@ AWS CloudWatch Logsにてこれを確認する。
 
 ## 02-02. 関数例
 
-### Amplify ➡︎ EventBridge ➡︎ AWS Lambda ➡︎ Slack-API
+### Amplify ➡️ EventBridge ➡️ AWS Lambda ➡️ Slack-API
 
 > - https://github.com/hiroki-it/notify-slack-of-amplify-events
 
@@ -433,7 +433,7 @@ exports.handler = async (event) => {
 
 ## 03-02. 関数例
 
-### Amplify ➡︎ EventBridge ➡︎ AWS Lambda ➡︎ Slack-API
+### Amplify ➡️ EventBridge ➡️ AWS Lambda ➡️ Slack-API
 
 **＊実装例＊**
 
@@ -655,7 +655,7 @@ const postMessageToSlack = (message) => {
 
 <br>
 
-### AWS API Gateway ➡︎ AWS Lambda ➡︎ AWS S3
+### AWS API Gateway ➡️ AWS Lambda ➡️ AWS S3
 
 **＊実装例＊**
 
@@ -714,7 +714,7 @@ exports.handler = (event, context, callback) => {
 
 <br>
 
-### CloudFront ➡︎ AWS Lambda@Edge ➡︎ AWS S3
+### CloudFront ➡️ AWS Lambda@Edge ➡️ AWS S3
 
 ![lambda-edge_dynamic-origin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-edge_dynamic-origin.png)
 
