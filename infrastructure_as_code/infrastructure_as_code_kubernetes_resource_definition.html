@@ -20510,9 +20510,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#graceperiodseconds" class="md-nav__link">
+  <a href="#terminationgraceperiodseconds" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ gracePeriodSeconds
+      ▼ terminationGracePeriodSeconds
     </span>
   </a>
   
@@ -20621,15 +20621,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#graceperiodseconds_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ gracePeriodSeconds
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#initialdelayseconds_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ initialDelaySeconds
@@ -20651,6 +20642,15 @@
   <a href="#tcpsocket_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ tcpSocket
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terminationgraceperiodseconds_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ terminationGracePeriodSeconds
     </span>
   </a>
   
@@ -21086,7 +21086,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#terminationgraceperiodseconds" class="md-nav__link">
+  <a href="#terminationgraceperiodseconds_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ terminationGracePeriodSecondsとは
     </span>
@@ -32400,9 +32400,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#graceperiodseconds" class="md-nav__link">
+  <a href="#terminationgraceperiodseconds" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ gracePeriodSeconds
+      ▼ terminationGracePeriodSeconds
     </span>
   </a>
   
@@ -32511,15 +32511,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#graceperiodseconds_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ gracePeriodSeconds
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#initialdelayseconds_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ initialDelaySeconds
@@ -32541,6 +32532,15 @@
   <a href="#tcpsocket_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ tcpSocket
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terminationgraceperiodseconds_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ terminationGracePeriodSeconds
     </span>
   </a>
   
@@ -32976,7 +32976,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#terminationgraceperiodseconds" class="md-nav__link">
+  <a href="#terminationgraceperiodseconds_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ terminationGracePeriodSecondsとは
     </span>
@@ -37010,7 +37010,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">      </span><span class="nt">livenessProbe</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
 </code></pre></div>
-<h4 id="graceperiodseconds">▼ gracePeriodSeconds<a class="headerlink" href="#graceperiodseconds" title="Permanent link">&para;</a></h4>
+<h4 id="terminationgraceperiodseconds">▼ terminationGracePeriodSeconds<a class="headerlink" href="#terminationgraceperiodseconds" title="Permanent link">&para;</a></h4>
 <p><code>2</code>回目以降のLivenessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
 <p>注意として、初回のLivenessProbeヘルスチェックは、<code>.spec.containers[*].livenessProbe.initialDelaySeconds</code>キーで設定する。</p>
 <p>この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
@@ -37025,11 +37025,11 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
 <span class="w">      </span><span class="nt">livenessProbe</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># 2回目以降のLivenessProbeヘルスチェックを実行するまでに5秒間待機する。</span>
-<span class="w">        </span><span class="nt">gracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">        </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
 </code></pre></div>
 <h4 id="initialdelayseconds">▼ initialDelaySeconds<a class="headerlink" href="#initialdelayseconds" title="Permanent link">&para;</a></h4>
 <p>初回のLivenessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
-<p>注意として、<code>2</code>回目以降のLivenessProbeによる再起動は、<code>.spec.containers[*].livenessProbe.gracePeriodSeconds</code>キーで設定する。</p>
+<p>注意として、<code>2</code>回目以降のLivenessProbeによる再起動は、<code>.spec.containers[*].livenessProbe.terminationGracePeriodSeconds</code>キーで設定する。</p>
 <p>この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
 <p>設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -37166,23 +37166,6 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <span class="w">      </span><span class="nt">readinessProbe</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
 </code></pre></div>
-<h4 id="graceperiodseconds_1">▼ gracePeriodSeconds<a class="headerlink" href="#graceperiodseconds_1" title="Permanent link">&para;</a></h4>
-<p><code>2</code>回目以降のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
-<p>注意として、初回のReadinessProbeヘルスチェックは、<code>.spec.containers[*].readinessProbe.initialDelaySeconds</code>キーで設定する。</p>
-<p>この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
-<p>設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
-<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo:1.0.0</span>
-<span class="w">      </span><span class="nt">readinessProbe</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># 2回目以降のReadinessProbeヘルスチェックを実行するまでに5秒間待機する。</span>
-<span class="w">        </span><span class="nt">gracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-</code></pre></div>
 <h4 id="initialdelayseconds_1">▼ initialDelaySeconds<a class="headerlink" href="#initialdelayseconds_1" title="Permanent link">&para;</a></h4>
 <p>初回のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
 <p>注意として、<code>2</code>回目以降のreadinessProbeによる再起動は、<code>.spec.containers[*].readinessProbe.gracePeriodSeconds</code>キーで設定する。</p>
@@ -37231,7 +37214,26 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-tcp-liveness-probe">https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-tcp-liveness-probe</a></li>
 </ul>
 </blockquote>
+<h4 id="terminationgraceperiodseconds_1">▼ terminationGracePeriodSeconds<a class="headerlink" href="#terminationgraceperiodseconds_1" title="Permanent link">&para;</a></h4>
+<p><code>2</code>回目以降のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
+<p>注意として、初回のReadinessProbeヘルスチェックは、<code>.spec.containers[*].readinessProbe.initialDelaySeconds</code>キーで設定する。</p>
+<p>この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
+<p>設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo:1.0.0</span>
+<span class="w">      </span><span class="nt">readinessProbe</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># 2回目以降のReadinessProbeヘルスチェックを実行するまでに5秒間待機する。</span>
+<span class="w">        </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+</code></pre></div>
+<blockquote>
 <p><br></p>
+</blockquote>
 <h3 id="speccontainerssecuritycontext">.spec.containers[*].securityContext<a class="headerlink" href="#speccontainerssecuritycontext" title="Permanent link">&para;</a></h3>
 <h4 id="securitycontext">▼ securityContextとは<a class="headerlink" href="#securitycontext" title="Permanent link">&para;</a></h4>
 <p>Pod内の特定のコンテナに対して、認可スコープを設定する。</p>
@@ -37791,7 +37793,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 </code></pre></div>
 <p><br></p>
 <h3 id="specterminationgraceperiodseconds">.spec.terminationGracePeriodSeconds<a class="headerlink" href="#specterminationgraceperiodseconds" title="Permanent link">&para;</a></h3>
-<h4 id="terminationgraceperiodseconds">▼ terminationGracePeriodSecondsとは<a class="headerlink" href="#terminationgraceperiodseconds" title="Permanent link">&para;</a></h4>
+<h4 id="terminationgraceperiodseconds_2">▼ terminationGracePeriodSecondsとは<a class="headerlink" href="#terminationgraceperiodseconds_2" title="Permanent link">&para;</a></h4>
 <p><img alt="pod_terminating_process" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png" /></p>
 <p>Podの終了プロセスを開始するまで待機時間を設定する。</p>
 <p>この時間を超えてもPodを終了できていない場合は、コンテナを強制的に停止する。</p>
