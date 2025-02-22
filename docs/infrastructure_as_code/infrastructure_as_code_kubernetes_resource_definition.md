@@ -3249,30 +3249,6 @@ spec:
           port: 8080
 ```
 
-#### ▼ terminationGracePeriodSeconds
-
-`2`回目以降のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。
-
-注意として、初回のReadinessProbeヘルスチェックは、`.spec.containers[*].readinessProbe.initialDelaySeconds`キーで設定する。
-
-この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。
-
-設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: foo
-      image: foo:1.0.0
-      readinessProbe:
-        # 2回目以降のReadinessProbeヘルスチェックを実行するまでに5秒間待機する。
-        terminationGracePeriodSeconds: 5
-```
-
 #### ▼ timeoutSeconds
 
 コンテナのLivenessProbeヘルスチェックのタイムアウト時間を設定する。
@@ -3466,7 +3442,31 @@ spec:
 
 > - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-tcp-liveness-probe
 
-<br>
+#### ▼ terminationGracePeriodSeconds
+
+`2`回目以降のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。
+
+注意として、初回のReadinessProbeヘルスチェックは、`.spec.containers[*].readinessProbe.initialDelaySeconds`キーで設定する。
+
+この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。
+
+設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo
+      image: foo:1.0.0
+      readinessProbe:
+        # 2回目以降のReadinessProbeヘルスチェックを実行するまでに5秒間待機する。
+        terminationGracePeriodSeconds: 5
+```
+
+> <br>
 
 ### .spec.containers[*].securityContext
 
