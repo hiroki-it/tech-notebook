@@ -36929,7 +36929,8 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </ul>
 </blockquote>
 <h4 id="exec">▼ exec<a class="headerlink" href="#exec" title="Permanent link">&para;</a></h4>
-<p>コンテナのLivenessProbeヘルスチェックで、ユーザー定義のヘルスチェックを実行する。</p>
+<p>コンテナのLivenessProbeヘルスチェックで、任意のコマンドによるヘルスチェックを実行する。</p>
+<p>終了コード<code>0</code>なら成功である。</p>
 <p>LivenessProbeが対応可能なプロトコル (HTTP、TCP、gRPCによるHTTP) 以外で、ヘルスチェックを実行したい場合に役立つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -36952,6 +36953,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </blockquote>
 <h4 id="httpget">▼ httpGet<a class="headerlink" href="#httpget" title="Permanent link">&para;</a></h4>
 <p>コンテナのLivenessProbeヘルスチェックで、<code>L7</code>チェックを実行する。</p>
+<p><code>200</code>ステータスから<code>399</code>ステータスまでの間なら成功である。</p>
 <p>具体的には、コンテナの指定したエンドポイントにGETメソッドでHTTPリクエストを送信し、レスポンスのステータスコードを検証する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -37133,7 +37135,9 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </ul>
 </blockquote>
 <h4 id="exec_1">▼ exec<a class="headerlink" href="#exec_1" title="Permanent link">&para;</a></h4>
-<p>ReadinessProbeチェックで任意のコマンドを実行する。</p>
+<p>コンテナのLivenessProbeヘルスチェックで、任意のコマンドのヘルスチェックを実行する。</p>
+<p>終了コード<code>0</code>なら成功である。</p>
+<p>LivenessProbeが対応可能なプロトコル (HTTP、TCP、gRPCによるHTTP) 以外で、ヘルスチェックを実行したい場合に役立つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37145,8 +37149,8 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <span class="w">      </span><span class="nt">readinessProbe</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">exec</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">command</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp/healthy</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">source</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">healthcheck.sh</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -37197,6 +37201,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </code></pre></div>
 <h4 id="tcpsocket_1">▼ tcpSocket<a class="headerlink" href="#tcpsocket_1" title="Permanent link">&para;</a></h4>
 <p>ReadinessProbeチェックのTCPプロトコルのポート番号を設定する。</p>
+<p>TCPコネクションを確立できれば成功である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
