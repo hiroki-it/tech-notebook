@@ -1286,9 +1286,9 @@ spec:
 
 #### ▼ `ENABLE_DEFERRED_CLUSTER_CREATION`
 
-複数のDestinationRuleで`.spec.exportTo`キーの対象のNamespaceが同じ場合、これらの設定をマージして処理する。
+リクエストがある場合にのみ、Envoyのクラスターを作成する。
 
-もし対象のNamespaceが異なる場合、独立した設定として処理する。
+実際に使用されていないEnvoyのクラスターを作成しないことにより、ハードウェアリソースを節約できる。
 
 デフォルトで`true`である。
 
@@ -1334,9 +1334,9 @@ spec:
 
 #### ▼ `ENABLE_ENHANCED_DESTINATIONRULE_MERGE`
 
-リクエストがある場合にのみ、Envoyのクラスターを作成する。
+複数のDestinationRuleで`.spec.exportTo`キーの対象のNamespaceが同じ場合、これらの設定をマージして処理する。
 
-実際に使用されていないEnvoyのクラスターを作成しないことにより、ハードウェアリソースを節約できる。
+もし対象のNamespaceが異なる場合、独立した設定として処理する。
 
 デフォルトで`true`である。
 
