@@ -3319,9 +3319,13 @@ spec:
 
 #### ▼ terminationGracePeriodSeconds
 
-コンテナのプロセスが安全に終了できるまでの待機時間を設定する。
+コンテナの終了プロセスを開始するまで待機時間を設定する。
 
-設定した時間が長すぎると、Podの終了プロセスに時間がかかり、Podの削除までに時間がかかりすぎてしまう。
+この時間を超えてもコンテナを終了できていない場合は、コンテナを強制的に停止する。
+
+設定した時間が長すぎると、Pod全体の終了プロセスに時間がかかり、Podの削除までに時間がかかりすぎてしまう。
+
+なお、`.spec.terminationGracePeriodSeconds`キーでPod単位での待機時間を設定することもできる。
 
 ```yaml
 apiVersion: v1
@@ -3628,9 +3632,13 @@ spec:
 
 #### ▼ terminationGracePeriodSeconds
 
-コンテナのプロセスが安全に終了できるまでの待機時間を設定する。
+コンテナの終了プロセスを開始するまで待機時間を設定する。
 
-設定した時間が長すぎると、Podの終了プロセスに時間がかかり、Podの削除までに時間がかかりすぎてしまう。
+この時間を超えてもPodを終了できていない場合は、コンテナを強制的に停止する。
+
+設定した時間が長すぎると、Pod全体の終了プロセスに時間がかかり、Podの削除までに時間がかかりすぎてしまう。
+
+なお、`.spec.terminationGracePeriodSeconds`キーでPod単位での待機時間を設定することもできる。
 
 ```yaml
 apiVersion: v1
@@ -4304,7 +4312,7 @@ Podの終了プロセスを開始するまで待機時間を設定する。
 
 この時間を超えてもPodを終了できていない場合は、コンテナを強制的に停止する。
 
-なお、Pod側でコンテナの終了時間を制御することはできない。
+なお、`.spec.containers[*].xxxProbe.terminationGracePeriodSeconds`キーでコンテナ単位での待機時間を設定することもできる。
 
 ```yaml
 apiVersion: v1
@@ -4315,12 +4323,18 @@ spec:
   containers:
     - name: app
       image: app:1.0.0
-  terminationGracePeriodSeconds: 300
+  terminationGracePeriodSeconds: 45
 ```
 
 > - https://nulab.com/ja/blog/backlog/graceful-shutdown-of-kubernetes-application/
 > - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
 > - https://speakerdeck.com/masayaaoyama/jkd1812-prd-manifests?slide=16
+
+#### ▼ コンテナが複数個ある場合
+
+Pod内にアプリコンテナ以外にコンテナ (`istio-proxy`コンテナなど) がある場合、全てのコンテナの終了プロセスの時間を考慮する必要がある。
+
+![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
 
 <br>
 
