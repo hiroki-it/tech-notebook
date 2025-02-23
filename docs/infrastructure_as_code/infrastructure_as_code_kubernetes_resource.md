@@ -537,7 +537,7 @@ spec:
               cpu: 1000m
               memory: 2048Mi
       priorityClassName: foo-balloon
-      terminationGracePeriodSeconds: 0
+      terminationGracePeriodSeconds: 10
       # Podを同じゾーンにスケジューリングさせない
       topologySpreadConstraints:
         - labelSelector:

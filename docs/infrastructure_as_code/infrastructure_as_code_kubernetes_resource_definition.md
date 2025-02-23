@@ -3126,6 +3126,7 @@ spec:
         timeoutSeconds: 10
         successThreshold: 1
         failureThreshold: 5
+        terminationGracePeriodSeconds: 10
 ```
 
 > - https://www.ianlewis.org/jp/kubernetes-health-check
@@ -3233,7 +3234,7 @@ spec:
 
 初回のLivenessProbeヘルスチェックを開始するまでの待機時間を設定する。
 
-注意として、`2`回目以降のLivenessProbeによる再起動は、`.spec.containers[*].livenessProbe.terminationGracePeriodSeconds`キーで設定する。
+注意として、2回目以降のLivenessProbeによる再起動は、`.spec.containers[*].livenessProbe.terminationGracePeriodSeconds`キーで設定する。
 
 この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。
 
@@ -3318,13 +3319,9 @@ spec:
 
 #### ▼ terminationGracePeriodSeconds
 
-`2`回目以降のLivenessProbeヘルスチェックを開始するまでの待機時間を設定する。
+コンテナのプロセスが安全に終了できるまでの待機時間を設定する。
 
-注意として、初回のLivenessProbeヘルスチェックは、`.spec.containers[*].livenessProbe.initialDelaySeconds`キーで設定する。
-
-この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。
-
-設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。
+設定した時間が長すぎると、Podの終了プロセスに時間がかかり、Podの削除までに時間がかかりすぎてしまう。
 
 ```yaml
 apiVersion: v1
@@ -3336,8 +3333,7 @@ spec:
     - name: app
       image: app:1.0.0
       livenessProbe:
-        # 2回目以降のLivenessProbeヘルスチェックを実行するまでに5秒間待機する。
-        terminationGracePeriodSeconds: 5
+        terminationGracePeriodSeconds: 10
 ```
 
 > - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
@@ -3395,6 +3391,7 @@ spec:
         timeoutSeconds: 10
         successThreshold: 1
         failureThreshold: 5
+        terminationGracePeriodSeconds: 10
 ```
 
 > - https://egashira.dev/blog/k8s-liveness-readiness-startup-probes#startupprobe
@@ -3429,6 +3426,7 @@ spec:
         timeoutSeconds: 10
         successThreshold: 1
         failureThreshold: 5
+        terminationGracePeriodSeconds: 10
 ```
 
 コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例：Javaのウォームアップ完了まで。Nginxの最初の設定ファイル読み込み完了まで。MySQLの最初のコネクション受信準備完了まで。) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。
@@ -3545,7 +3543,7 @@ spec:
 
 初回のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。
 
-注意として、`2`回目以降のReadinessProbeヘルスチェックによる再起動は、`.spec.containers[*].readinessProbe.gracePeriodSeconds`キーで設定する。
+注意として、2回目以降のReadinessProbeヘルスチェックによる再起動は、`.spec.containers[*].readinessProbe.gracePeriodSeconds`キーで設定する。
 
 この時間を過ぎてもコンテナのReadinessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。
 
@@ -3630,13 +3628,9 @@ spec:
 
 #### ▼ terminationGracePeriodSeconds
 
-`2`回目以降のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。
+コンテナのプロセスが安全に終了できるまでの待機時間を設定する。
 
-注意として、初回のReadinessProbeヘルスチェックは、`.spec.containers[*].readinessProbe.initialDelaySeconds`キーで設定する。
-
-この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。
-
-設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。
+設定した時間が長すぎると、Podの終了プロセスに時間がかかり、Podの削除までに時間がかかりすぎてしまう。
 
 ```yaml
 apiVersion: v1
@@ -3648,8 +3642,7 @@ spec:
     - name: app
       image: app:1.0.0
       readinessProbe:
-        # 2回目以降のReadinessProbeヘルスチェックを実行するまでに5秒間待機する。
-        terminationGracePeriodSeconds: 5
+        terminationGracePeriodSeconds: 10
 ```
 
 > - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
