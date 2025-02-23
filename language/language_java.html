@@ -25682,7 +25682,6 @@
 <p><br></p>
 <h3 id="cpu">CPU消費<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h3>
 <h4 id="_2">▼ ウォームアップとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p><img alt="java_compile" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/java_compile.png" /></p>
 <p>JVM言語 (例：Java、Scala、Kotlinなど) 製のアプリケーションは、最初の実行時に以下の理由でCPUを大量に消費するために、パフォーマンスが低い。</p>
 <ul>
 <li>JVM内のクラスローダーはクラスファイル (<code>.class</code>ファイル) をJVM内に取得する。</li>
@@ -25690,6 +25689,7 @@
 </ul>
 <p>アプリケーションをユーザーに公開する前に、本番環境と同じデータを使ってアプリケーションを実行して上記を済ませておくとよい (ウォームアップ) 。</p>
 <p>これにより、パフォーマンスが高い状態でユーザーにアプリケーションを公開できる。</p>
+<p><img alt="java_compile" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/java_compile.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/1481903/12771072">https://stackoverflow.com/a/1481903/12771072</a></li>
@@ -25711,6 +25711,7 @@
 <blockquote>
 <ul>
 <li><a href="https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=48">https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=48</a></li>
+<li><a href="https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=49">https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=49</a></li>
 <li><a href="https://techblog.zozo.com/entry/zozomat-jvm-warmup">https://techblog.zozo.com/entry/zozomat-jvm-warmup</a></li>
 </ul>
 </blockquote>

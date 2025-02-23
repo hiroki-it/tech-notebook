@@ -37264,7 +37264,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </code></pre></div>
 <h4 id="initialdelayseconds_1">▼ initialDelaySeconds<a class="headerlink" href="#initialdelayseconds_1" title="Permanent link">&para;</a></h4>
 <p>初回のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
-<p>注意として、<code>2</code>回目以降のreadinessProbeによる再起動は、<code>.spec.containers[*].readinessProbe.gracePeriodSeconds</code>キーで設定する。</p>
+<p>注意として、<code>2</code>回目以降のreadinessProbeヘルスチェックによる再起動は、<code>.spec.containers[*].readinessProbe.gracePeriodSeconds</code>キーで設定する。</p>
 <p>この時間を過ぎてもコンテナのReadinessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
 <p>設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
