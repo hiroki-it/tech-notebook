@@ -25626,7 +25626,7 @@
   
 
 
-<h1 id="java">プラクティス集＠Java<a class="headerlink" href="#java" title="Permanent link">&para;</a></h1>
+<h1 id="java">Java<a class="headerlink" href="#java" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -25699,11 +25699,11 @@
 </ul>
 </blockquote>
 <h4 id="_3">▼ ウォームアップの実装<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>フレームワーク (例：SpringBoot) によっては、StartUpエンドポイント (例：<code>/actuator/startup</code>) を公開している。</p>
+<p>フレームワーク (例：SpringBoot) によっては、Readinessエンドポイント (例：<code>/actuator/health/readiness</code>) を公開している。</p>
 <p>ユーザーへの公開前に、このエンドポイントにリクエストを送信しておく。</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.spring.io/spring-boot/api/rest/actuator/startup.html">https://docs.spring.io/spring-boot/api/rest/actuator/startup.html</a></li>
+<li><a href="https://spring.io/blog/2020/03/25/liveness-and-readiness-probes-with-spring-boot">https://spring.io/blog/2020/03/25/liveness-and-readiness-probes-with-spring-boot</a></li>
 </ul>
 </blockquote>
 <h4 id="kubernetes">▼ Kubernetes環境の場合<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h4>
