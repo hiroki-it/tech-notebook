@@ -133,7 +133,7 @@ checks:
   # PodのpriorityClassの設定し忘れ
   priorityClassNotSet: danger
 
-  # PodのreadinessProbeの設定し忘れ
+  # PodのReadinessProbeヘルスチェックの設定し忘れ
   readinessProbeMissing: danger
 ```
 

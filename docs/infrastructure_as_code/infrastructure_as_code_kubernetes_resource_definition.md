@@ -3465,7 +3465,7 @@ spec:
 
 初回のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。
 
-注意として、`2`回目以降のreadinessProbeによる再起動は、`.spec.containers[*].readinessProbe.gracePeriodSeconds`キーで設定する。
+注意として、`2`回目以降のreadinessProbeヘルスチェックによる再起動は、`.spec.containers[*].readinessProbe.gracePeriodSeconds`キーで設定する。
 
 この時間を過ぎてもコンテナのReadinessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。
 

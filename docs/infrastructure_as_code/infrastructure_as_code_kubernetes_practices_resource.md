@@ -835,13 +835,13 @@ LivenessProbeヘルスチェックとReadinessProbeヘルスチェックの間�
 | 正常時           | LivenessProbe／ReadinessProbeを実行する。                                                                                                                                      | ➡️  | HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが`200`ステータスから`399`ステータスまでを返却すれば正常とみなす。                           | HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが`200`から`399`ステータスを返却すれば正常とみなす。                                                                                                                                                                                                    |
 | 異常時           | コンテナを再起動する。LivenessProbe／ReadinessProbeを実行しない。                                                                                                              | ➡️  | コンテナを再起動する。コンテナで障害 (例：デッドロック) が起こって応答しなくなると、コンテナを強制的に再起動してくれる。                                  | コンテナのプロセスの準備が完了しない間、そのコンテナが処理できるようになるまで、ServiceからPodに通信を流さないようにしてくれる。コンテナは再起動しない。                                                                                                                                                             |
 
-> - https://zenn.dev/toversus/articles/5d1292160f5035
 > - https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html
 > - https://stackoverflow.com/questions/42567475/docker-compose-check-if-mysql-connection-is-ready
 > - https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status
-> - https://thinkit.co.jp/article/17500
+> - https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=48
+> - https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=49
 
-<br>
+> <br>
 
 ## preStopとterminationGracePeriodSecondsを組み合わせてPodを安全に終了する
 

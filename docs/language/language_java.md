@@ -68,8 +68,6 @@ Javaでは、コードの実行前と実行中の二段階で機械語を翻訳�
 
 #### ▼ ウォームアップとは
 
-![java_compile](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/java_compile.png)
-
 JVM言語 (例：Java、Scala、Kotlinなど) 製のアプリケーションは、最初の実行時に以下の理由でCPUを大量に消費するために、パフォーマンスが低い。
 
 - JVM内のクラスローダーはクラスファイル (`.class`ファイル) をJVM内に取得する。
@@ -78,6 +76,8 @@ JVM言語 (例：Java、Scala、Kotlinなど) 製のアプリケーションは�
 アプリケーションをユーザーに公開する前に、本番環境と同じデータを使ってアプリケーションを実行して上記を済ませておくとよい (ウォームアップ) 。
 
 これにより、パフォーマンスが高い状態でユーザーにアプリケーションを公開できる。
+
+![java_compile](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/java_compile.png)
 
 > - https://stackoverflow.com/a/1481903/12771072
 > - https://www.baeldung.com/java-jvm-warmup
@@ -97,6 +97,7 @@ JVM言語 (例：Java、Scala、Kotlinなど) 製のアプリケーションは�
 ReadinessProbeヘルスチェックでウォームアップを実施する。
 
 > - https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=48
+> - https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=49
 > - https://techblog.zozo.com/entry/zozomat-jvm-warmup
 
 <br>
