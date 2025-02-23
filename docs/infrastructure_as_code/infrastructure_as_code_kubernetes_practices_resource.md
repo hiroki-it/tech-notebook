@@ -841,7 +841,7 @@ LivenessProbeヘルスチェックとReadinessProbeヘルスチェックの間�
 > - https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=48
 > - https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=49
 
-> <br>
+<br>
 
 ## preStopとterminationGracePeriodSecondsを組み合わせてPodを安全に終了する
 

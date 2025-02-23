@@ -3227,6 +3227,8 @@ spec:
         failureThreshold: 5
 ```
 
+> - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
+
 #### ▼ initialDelaySeconds
 
 初回のLivenessProbeヘルスチェックを開始するまでの待機時間を設定する。
@@ -3253,6 +3255,8 @@ spec:
         initialDelaySeconds: 10
 ```
 
+> - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
+
 #### ▼ periodSeconds
 
 コンテナのLivenessProbeヘルスチェックの試行当たりの間隔を設定する。
@@ -3270,6 +3274,27 @@ spec:
         # 5秒ごとにLivenessProbeヘルスチェックを実行する。
         periodSeconds: 5
 ```
+
+> - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
+
+#### ▼ successThreshold
+
+LivenessProbeヘルスチェックの失敗後の再試行で、成功と判定する最小試行回数を設定する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      livenessProbe:
+        successThreshold: 1
+```
+
+> - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
 
 #### ▼ tcpSocket
 
@@ -3315,6 +3340,8 @@ spec:
         terminationGracePeriodSeconds: 5
 ```
 
+> - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
+
 #### ▼ timeoutSeconds
 
 コンテナのLivenessProbeヘルスチェックのタイムアウト時間を設定する。
@@ -3334,6 +3361,8 @@ spec:
         # LivenessProbeヘルスチェックのタイムアウト時間を30秒とする。
         timeoutSeconds: 10
 ```
+
+> - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
 
 <br>
 
@@ -3510,6 +3539,8 @@ spec:
         failureThreshold: 5
 ```
 
+> - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
+
 #### ▼ initialDelaySeconds
 
 初回のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。
@@ -3535,6 +3566,8 @@ spec:
         initialDelaySeconds: 10
 ```
 
+> - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
+
 #### ▼ periodSeconds
 
 ReadinessProbeヘルスチェックの試行当たりの間隔を設定する。
@@ -3551,6 +3584,27 @@ spec:
       readinessProbe:
         periodSeconds: 5
 ```
+
+> - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
+
+#### ▼ successThreshold
+
+ReadinessProbeヘルスチェックの失敗後の再試行で、成功と判定する最小試行回数を設定する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      readinessProbe:
+        successThreshold: 1
+```
+
+> - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
 
 #### ▼ tcpSocket
 
@@ -3598,7 +3652,31 @@ spec:
         terminationGracePeriodSeconds: 5
 ```
 
-> <br>
+> - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
+
+#### ▼ timeoutSeconds
+
+コンテナのReadinessProbeヘルスチェックのタイムアウト時間を設定する。
+
+この時間を過ぎてもコンテナのReadinessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      readinessProbe:
+        # ReadinessProbeヘルスチェックのタイムアウト時間を30秒とする。
+        timeoutSeconds: 10
+```
+
+> - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
+
+<br>
 
 ### .spec.containers[*].securityContext
 
