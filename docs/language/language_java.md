@@ -84,9 +84,17 @@ JVM言語 (例：Java、Scala、Kotlinなど) 製のアプリケーションは�
 > - https://eng-entrance.com/java-jlt
 > - https://levelup.gitconnected.com/a-deep-dive-into-classloader-reflection-dynamic-typing-and-runtime-modifiable-classes-in-java-c83d6d689b2
 
-#### ▼ Kubernetesでの注意点
+#### ▼ ウォームアップの実装
 
-暖機運転が完了した後に、ReadinessProbeが成功となるように設定する。
+フレームワーク (例：SpringBoot) によっては、StartUpエンドポイント (例：`/actuator/startup`) を公開している。
+
+ユーザーへの公開前に、このエンドポイントにリクエストを送信しておく。
+
+> - https://docs.spring.io/spring-boot/api/rest/actuator/startup.html
+
+#### ▼ Kubernetes環境の場合
+
+ReadinessProbeヘルスチェックでウォームアップを実施する。
 
 > - https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=48
 > - https://techblog.zozo.com/entry/zozomat-jvm-warmup

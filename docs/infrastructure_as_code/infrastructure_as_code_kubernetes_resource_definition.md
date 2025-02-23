@@ -3118,7 +3118,7 @@ spec:
       livenessProbe:
         httpGet:
           port: 8080
-          # SpringBootのlivenessエンドポイント
+          # SpringBoot製Javaアプリのlivenessエンドポイント
           path: /actuator/health/liveness
           scheme: HTTP
         periodSeconds: 10
@@ -3335,7 +3335,7 @@ spec:
       startupProbe:
         httpGet:
           port: 8080
-          # SpringBootのstartupエンドポイント
+          # SpringBoot製Javaアプリののstartupエンドポイント
           path: /actuator/startup
         failureThreshold: 30
         periodSeconds: 10
@@ -3365,7 +3365,7 @@ spec:
       readinessProbe:
         httpGet:
           port: 8080
-          # SpringBootのredinessエンドポイント
+          # SpringBoot製JavaアプリのReadinessエンドポイント
           path: /actuator/health/readiness
           scheme: HTTP
         periodSeconds: 10
@@ -3422,7 +3422,7 @@ spec:
 
 #### ▼ httpGet
 
-コンテナのRedinessヘルスチェックで、`L7`チェックを実行する。
+コンテナのReadinessProbeヘルスチェックで、`L7`チェックを実行する。
 
 `200`ステータスから`399`ステータスまでの間なら成功である。
 
@@ -3446,7 +3446,7 @@ spec:
 
 #### ▼ failureThreshold
 
-ReadinessProbeチェックが失敗したとみなす試行回数を設定する。
+ReadinessProbeヘルスチェックが失敗したとみなす試行回数を設定する。
 
 ```yaml
 apiVersion: v1
