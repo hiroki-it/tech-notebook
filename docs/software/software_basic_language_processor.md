@@ -161,46 +161,15 @@ exeファイルとなる。
 
 ### 中間言語方式とは
 
-記入中...
+コードを一度中間ファイルに変換する。
+
+その後、この中間ファイルを機械語に翻訳する。
+
+JVM言語 (例：Java、Scala、Kotlinなど) に当てはまる。
+
+<br>
 
 ### 仕組み
-
-![java_compile](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/java_compile.png)
-
-Javaでは、コードの実行前と実行中の二段階で機械語を翻訳する。
-
-`(1)`
-
-: Javaコンパイラ (javac) は、JVM言語のコード (`.java`ファイル) を、Javaバイトコードを含むクラスファイル (`.class`ファイル) に変換する。
-
-`(2)`
-
-: アプリケーションの実行前に、JVM内のJavaインタプリタはクラスファイルを機械語に翻訳する。
-
-`(3)`
-
-: アプリケーションの実行中に、JVM内のクラスローダーはクラスファイルをJVM内に取得する。
-
-    クラスローダーの処理はCPUを大量に消費するため、ユーザーへの公開前にウォームアップを実施すると良い。
-
-![java_class-loader.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/java_class-loader.png)
-
-`(4)`
-
-: アプリケーションの実行中に、JVM内のJITコンパイラは実行中メソッドのみを機械語に翻訳する。
-
-    また、繰り返し実行されるメソッドの翻訳を最適化する (例：不要な処理を省く) 。
-
-    JITコンパイラの処理はCPUを大量に消費するため、ユーザーへの公開前にウォームアップを実施すると良い。
-
-`(5)`
-
-: 結果的に、OS (制御プログラム？) に依存せずに、命令を実行できる (C言語) 。
-
-> - https://stackoverflow.com/a/1481903/12771072
-> - https://www.baeldung.com/java-jvm-warmup
-> - https://eng-entrance.com/java-jlt
-> - https://levelup.gitconnected.com/a-deep-dive-into-classloader-reflection-dynamic-typing-and-runtime-modifiable-classes-in-java-c83d6d689b2
 
 <br>
 
