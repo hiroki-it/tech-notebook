@@ -165,27 +165,33 @@ exeファイルとなる。
 
 ### 仕組み
 
+![java_compile](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/java_compile.png)
+
+Javaでは、コードの実行前と実行中の二段階で機械語を翻訳する。
+
 `(1)`
 
-: JVMがJVM言語 (例：Java、Scala、Kotlinなど) のコードを、Javaバイトコードを含むクラスファイルに変換する。
+: Javaコンパイラ (javac) は、JVM言語のコード (`.java`ファイル) を、Javaバイトコードを含むクラスファイル (`.class`ファイル) に変換する。
 
 `(2)`
 
-: JVM内で、インタプリタによって、クラスデータを機械語に翻訳する。
+: アプリケーションの実行前に、JVM内のJavaインタプリタはクラスファイルを機械語に翻訳する。
 
-`(3)`
+`(2)`
+
+: アプリケーションの実行中に、JVM内のJITコンパイラは実行中メソッドのみを機械語に翻訳する。
+
+    また、繰り返し実行されるメソッドの翻訳を最適化する (例：不要な処理を省く) 。
+
+    JITコンパイラのこれらの処理はCPUを大量に消費するため、ユーザーへの公開前にウォームアップを実施すると良い。
+
+`(4)`
 
 : 結果的に、OS (制御プログラム？) に依存せずに、命令を実行できる (C言語) 。
 
-![Javaによる言語処理_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Javaによる言語処理_1.png)
-
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
-
-![Javaによる言語処理_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Javaによる言語処理_2.png)
-
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
-
-![Javaによる言語処理_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Javaによる言語処理_3.png)
+> - https://stackoverflow.com/a/1481903/12771072
+> - https://devcenter.heroku.com/articles/warming-up-a-java-process
+> - https://eng-entrance.com/java-jlt
 
 <br>
 
