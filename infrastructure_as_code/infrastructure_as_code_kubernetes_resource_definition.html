@@ -20542,6 +20542,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#successthreshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ successThreshold
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tcpsocket" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ tcpSocket
@@ -20662,6 +20671,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#successthreshold_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ successThreshold
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tcpsocket_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ tcpSocket
@@ -20674,6 +20692,15 @@
   <a href="#terminationgraceperiodseconds_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ terminationGracePeriodSeconds
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeoutseconds_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ timeoutSeconds
     </span>
   </a>
   
@@ -32441,6 +32468,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#successthreshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ successThreshold
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tcpsocket" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ tcpSocket
@@ -32561,6 +32597,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#successthreshold_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ successThreshold
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tcpsocket_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ tcpSocket
@@ -32573,6 +32618,15 @@
   <a href="#terminationgraceperiodseconds_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ terminationGracePeriodSeconds
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeoutseconds_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ timeoutSeconds
     </span>
   </a>
   
@@ -37082,6 +37136,11 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">      </span><span class="nt">livenessProbe</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes">https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes</a></li>
+</ul>
+</blockquote>
 <h4 id="initialdelayseconds">▼ initialDelaySeconds<a class="headerlink" href="#initialdelayseconds" title="Permanent link">&para;</a></h4>
 <p>初回のLivenessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
 <p>注意として、<code>2</code>回目以降のLivenessProbeによる再起動は、<code>.spec.containers[*].livenessProbe.terminationGracePeriodSeconds</code>キーで設定する。</p>
@@ -37100,6 +37159,11 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">        </span><span class="c1"># 初回以降のLivenessProbeヘルスチェックを実行するまでに5秒間待機する。</span>
 <span class="w">        </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes">https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes</a></li>
+</ul>
+</blockquote>
 <h4 id="periodseconds">▼ periodSeconds<a class="headerlink" href="#periodseconds" title="Permanent link">&para;</a></h4>
 <p>コンテナのLivenessProbeヘルスチェックの試行当たりの間隔を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -37114,6 +37178,29 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">        </span><span class="c1"># 5秒ごとにLivenessProbeヘルスチェックを実行する。</span>
 <span class="w">        </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes">https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes</a></li>
+</ul>
+</blockquote>
+<h4 id="successthreshold">▼ successThreshold<a class="headerlink" href="#successthreshold" title="Permanent link">&para;</a></h4>
+<p>LivenessProbeヘルスチェックの失敗後の再試行で、成功と判定する最小試行回数を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
+<span class="w">      </span><span class="nt">livenessProbe</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes">https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes</a></li>
+</ul>
+</blockquote>
 <h4 id="tcpsocket">▼ tcpSocket<a class="headerlink" href="#tcpsocket" title="Permanent link">&para;</a></h4>
 <p>コンテナのLivenessProbeヘルスチェックで、<code>L4</code>チェックを実行する。</p>
 <p>具体的には、コンテナにTCPスリーウェイハンドシェイクを実行し、TCPコネクションを確立できるかを検証する。</p>
@@ -37146,6 +37233,11 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">        </span><span class="c1"># 2回目以降のLivenessProbeヘルスチェックを実行するまでに5秒間待機する。</span>
 <span class="w">        </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes">https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes</a></li>
+</ul>
+</blockquote>
 <h4 id="timeoutseconds">▼ timeoutSeconds<a class="headerlink" href="#timeoutseconds" title="Permanent link">&para;</a></h4>
 <p>コンテナのLivenessProbeヘルスチェックのタイムアウト時間を設定する。</p>
 <p>この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
@@ -37161,6 +37253,11 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">        </span><span class="c1"># LivenessProbeヘルスチェックのタイムアウト時間を30秒とする。</span>
 <span class="w">        </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes">https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="speccontainersstartupprobe">.spec.containers[*].startupProbe<a class="headerlink" href="#speccontainersstartupprobe" title="Permanent link">&para;</a></h3>
 <h4 id="startupprobe">▼ startupProbeとは<a class="headerlink" href="#startupprobe" title="Permanent link">&para;</a></h4>
@@ -37306,6 +37403,11 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <span class="w">      </span><span class="nt">readinessProbe</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes">https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes</a></li>
+</ul>
+</blockquote>
 <h4 id="initialdelayseconds_1">▼ initialDelaySeconds<a class="headerlink" href="#initialdelayseconds_1" title="Permanent link">&para;</a></h4>
 <p>初回のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
 <p>注意として、<code>2</code>回目以降のReadinessProbeヘルスチェックによる再起動は、<code>.spec.containers[*].readinessProbe.gracePeriodSeconds</code>キーで設定する。</p>
@@ -37323,6 +37425,11 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <span class="w">      </span><span class="nt">readinessProbe</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes">https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes</a></li>
+</ul>
+</blockquote>
 <h4 id="periodseconds_1">▼ periodSeconds<a class="headerlink" href="#periodseconds_1" title="Permanent link">&para;</a></h4>
 <p>ReadinessProbeヘルスチェックの試行当たりの間隔を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -37336,6 +37443,29 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <span class="w">      </span><span class="nt">readinessProbe</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes">https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes</a></li>
+</ul>
+</blockquote>
+<h4 id="successthreshold_1">▼ successThreshold<a class="headerlink" href="#successthreshold_1" title="Permanent link">&para;</a></h4>
+<p>ReadinessProbeヘルスチェックの失敗後の再試行で、成功と判定する最小試行回数を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
+<span class="w">      </span><span class="nt">readinessProbe</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes">https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes</a></li>
+</ul>
+</blockquote>
 <h4 id="tcpsocket_1">▼ tcpSocket<a class="headerlink" href="#tcpsocket_1" title="Permanent link">&para;</a></h4>
 <p>ReadinessProbeヘルスチェックで、<code>L4</code>チェックを実行する。</p>
 <p>コンテナにTCPスリーウェイハンドシェイクを実行し、TCPコネクションを確立できるかを検証する。</p>
@@ -37374,8 +37504,31 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <span class="w">        </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
 </code></pre></div>
 <blockquote>
-<p><br></p>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes">https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes</a></li>
+</ul>
 </blockquote>
+<h4 id="timeoutseconds_1">▼ timeoutSeconds<a class="headerlink" href="#timeoutseconds_1" title="Permanent link">&para;</a></h4>
+<p>コンテナのReadinessProbeヘルスチェックのタイムアウト時間を設定する。</p>
+<p>この時間を過ぎてもコンテナのReadinessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
+<span class="w">      </span><span class="nt">readinessProbe</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># ReadinessProbeヘルスチェックのタイムアウト時間を30秒とする。</span>
+<span class="w">        </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes">https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="speccontainerssecuritycontext">.spec.containers[*].securityContext<a class="headerlink" href="#speccontainerssecuritycontext" title="Permanent link">&para;</a></h3>
 <h4 id="securitycontext">▼ securityContextとは<a class="headerlink" href="#securitycontext" title="Permanent link">&para;</a></h4>
 <p>Pod内の特定のコンテナに対して、認可スコープを設定する。</p>
