@@ -3104,7 +3104,9 @@ spec:
 
 kubeletがヘルスチェックを実行することで、コンテナが正常に動作しているか確認する。
 
-注意点として、LivenessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。
+注意点として、LivenessProbeヘルスチェックの間隔が短すぎると、kubeletに必要以上に負荷がかかる。
+
+`terminationGracePeriodSeconds`に関しては、`.spec.terminationGracePeriodSeconds`キーでPod単位での待機時間を設定することもできる。
 
 ```yaml
 apiVersion: v1
@@ -3127,6 +3129,7 @@ spec:
         successThreshold: 1
         failureThreshold: 5
         terminationGracePeriodSeconds: 10
+  terminationGracePeriodSeconds: 45
 ```
 
 > - https://www.ianlewis.org/jp/kubernetes-health-check
@@ -3338,6 +3341,7 @@ spec:
       image: app:1.0.0
       livenessProbe:
         terminationGracePeriodSeconds: 10
+  terminationGracePeriodSeconds: 45
 ```
 
 > - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
@@ -3410,6 +3414,8 @@ spec:
 
 kubeletがヘルスチェックを実行することで、コンテナがトラフィックを処理可能かを確認する。
 
+`terminationGracePeriodSeconds`に関しては、`.spec.terminationGracePeriodSeconds`キーでPod単位での待機時間を設定することもできる。
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -3431,6 +3437,7 @@ spec:
         successThreshold: 1
         failureThreshold: 5
         terminationGracePeriodSeconds: 10
+  terminationGracePeriodSeconds: 45
 ```
 
 コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例：Javaのウォームアップ完了まで。Nginxの最初の設定ファイル読み込み完了まで。MySQLの最初のコネクション受信準備完了まで。) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。
@@ -3651,6 +3658,7 @@ spec:
       image: app:1.0.0
       readinessProbe:
         terminationGracePeriodSeconds: 10
+  terminationGracePeriodSeconds: 45
 ```
 
 > - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
@@ -4335,6 +4343,9 @@ spec:
 Pod内にアプリコンテナ以外にコンテナ (`istio-proxy`コンテナなど) がある場合、全てのコンテナの終了プロセスの時間を考慮する必要がある。
 
 ![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
+
+> - https://sreake.com/blog/istio-proxy-stop-behavior/
+> - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
 
 <br>
 
