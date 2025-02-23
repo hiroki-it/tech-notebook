@@ -189,9 +189,9 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 #### ▼ スロースタート方式
 
-受信したリクエストをルーティングする時に、スロースタート処理 (通過させるリクエストの数を少しずつ増加させる) を実施する。
+受信したリクエストをルーティングする時に、スロースタート方式 (通過させるリクエストの数を少しずつ増加させる) で負荷分散を実施する。
 
-リクエスト数の非常に多い高トラフィックなシステムで、初動のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、コネクションプールの作成が必要) にいきなり高負荷をかけないようにできる。
+リクエスト数の非常に多い高トラフィックなシステムで、初動のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、コネクションプールの作成が必要、JVM系のアプリケーション) にいきなり高負荷をかけないようにできる。
 
 > - https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/edit-target-group-attributes.html#slow-start-mode
 > - https://aws.amazon.com/jp/about-aws/whats-new/2018/05/application-load-balancer-announces-slow-start-support/
