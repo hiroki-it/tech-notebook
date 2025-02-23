@@ -25468,12 +25468,13 @@
 <p><br></p>
 <h3 id="jvm_1">JVM言語のウォームアップ<a class="headerlink" href="#jvm_1" title="Permanent link">&para;</a></h3>
 <h4 id="_2">▼ ウォームアップとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>JVM言語 (例：Java、Scala、Kotlinなど) 製のアプリケーションは、最初の実行時にCPUを消費して以下を実施するために、パフォーマンスが低い。</p>
+<p><img alt="java_compile" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/java_compile.png" /></p>
+<p>JVM言語 (例：Java、Scala、Kotlinなど) 製のアプリケーションは、最初の実行時に以下の理由でCPUを大量に消費するために、パフォーマンスが低い。</p>
 <ul>
-<li>JITコンパイラはJavaバイトコードを解析し、コードをコンパイルする</li>
-<li>低速なクラスを読み込む</li>
+<li>JVM内のクラスローダーはクラスファイル (<code>.class</code>ファイル) をJVM内に取得する。</li>
+<li>JVM内のJITコンパイラは実行中メソッドのみを機械語に翻訳する。</li>
 </ul>
-<p>アプリケーションをユーザーに公開する前に、本番環境と同じデータを使ってアプリケーションを実行して上記を済ませておく。</p>
+<p>アプリケーションをユーザーに公開する前に、本番環境と同じデータを使ってアプリケーションを実行して上記を済ませておくとよい (ウォームアップ) 。</p>
 <p>これにより、パフォーマンスが高い状態でユーザーにアプリケーションを公開できる。</p>
 <blockquote>
 <ul>
