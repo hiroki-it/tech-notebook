@@ -26115,25 +26115,35 @@
 <h3 id="_13">中間言語方式とは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <h3 id="_14">仕組み<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p><img alt="java_compile" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/java_compile.png" /></p>
+<p>Javaでは、コードの実行前と実行中の二段階で機械語を翻訳する。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>JVMがJVM言語 (例：Java、Scala、Kotlinなど) のコードを、Javaバイトコードを含むクラスファイルに変換する。</p>
+<p>Javaコンパイラ (javac) は、JVM言語のコード (<code>.java</code>ファイル) を、Javaバイトコードを含むクラスファイル (<code>.class</code>ファイル) に変換する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>JVM内で、インタプリタによって、クラスデータを機械語に翻訳する。</p>
+<p>アプリケーションの実行前に、JVM内のJavaインタプリタはクラスファイルを機械語に翻訳する。</p>
 </dd>
-<dt><code>(3)</code></dt>
+<dt><code>(2)</code></dt>
+<dd>
+<p>アプリケーションの実行中に、JVM内のJITコンパイラは実行中メソッドのみを機械語に翻訳する。</p>
+<p>また、繰り返し実行されるメソッドの翻訳を最適化する (例：不要な処理を省く) 。</p>
+<p>JITコンパイラのこれらの処理はCPUを大量に消費するため、ユーザーへの公開前にウォームアップを実施すると良い。</p>
+</dd>
+<dt><code>(4)</code></dt>
 <dd>
 <p>結果的に、OS (制御プログラム？) に依存せずに、命令を実行できる (C言語) 。</p>
 </dd>
 </dl>
-<p><img alt="Javaによる言語処理_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Javaによる言語処理_1.png" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="Javaによる言語処理_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Javaによる言語処理_2.png" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="Javaによる言語処理_3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Javaによる言語処理_3.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/1481903/12771072">https://stackoverflow.com/a/1481903/12771072</a></li>
+<li><a href="https://devcenter.heroku.com/articles/warming-up-a-java-process">https://devcenter.heroku.com/articles/warming-up-a-java-process</a></li>
+<li><a href="https://eng-entrance.com/java-jlt">https://eng-entrance.com/java-jlt</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="cjavaos">C言語とJavaのOSへの依存度比較<a class="headerlink" href="#cjavaos" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>

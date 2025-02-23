@@ -10,13 +10,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="プラクティス集＠Javaの知見を記録しています。">
+        <meta name="description" content="Javaの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/draft/language_java_practices.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/draft/language_java.html">
       
       
       
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】プラクティス集＠Java - 俺の技術ノート</title>
+        <title>【IT技術の知見】Java - 俺の技術ノート</title>
       
     
     
@@ -150,7 +150,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】プラクティス集＠Java
+              【IT技術の知見】Java
             
           </span>
         </div>
@@ -25317,26 +25317,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
+  <a href="#01-java" class="md-nav__link">
     <span class="md-ellipsis">
-      01. コンテナ化
+      01. Javaとは
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="01. コンテナ化">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      コンテナイメージの軽量化
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -25379,7 +25364,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ウォームアップとは
     </span>
@@ -25398,6 +25383,30 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. コンテナ化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. コンテナ化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンテナイメージの軽量化
+    </span>
+  </a>
   
 </li>
         
@@ -25434,15 +25443,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. コンテナ化<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_2">コンテナイメージの軽量化<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>コンテナイメージは、LTS (headless) が軽量なのでおすすめ。</p>
-<blockquote>
-<ul>
-<li><a href="https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=27">https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=27</a></li>
-</ul>
-</blockquote>
-<p><br></p>
+<h2 id="01-java">01. Javaとは<a class="headerlink" href="#01-java" title="Permanent link">&para;</a></h2>
 <h2 id="02-jvm">02. JVM<a class="headerlink" href="#02-jvm" title="Permanent link">&para;</a></h2>
 <h3 id="jvmjava-virtual-machine">JVMとは：Java Virtual Machine<a class="headerlink" href="#jvmjava-virtual-machine" title="Permanent link">&para;</a></h3>
 <p>JVM言語 (例：Java、Scala、Kotlinなど) のコードを、Javaバイトコードを含むクラスファイルに変換する。</p>
@@ -25466,16 +25467,19 @@
 </blockquote>
 <p><br></p>
 <h3 id="jvm_1">JVM言語のウォームアップ<a class="headerlink" href="#jvm_1" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ ウォームアップとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>JVM言語 (例：Java、Scala、Kotlinなど) 製のアプリケーションは、最初の実行時はパフォーマンスが低い。</p>
-<p>これは、最初の実行時に、低速なクラスの読み込みとJITコンパイルの最適化が起こるためである。</p>
-<p>そのため、アプリケーションをユーザーに公開する前に、本番環境と同じデータを使ってアプリケーションを実行しておく。</p>
+<h4 id="_2">▼ ウォームアップとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>JVM言語 (例：Java、Scala、Kotlinなど) 製のアプリケーションは、最初の実行時にCPUを消費して以下を実施するために、パフォーマンスが低い。</p>
+<ul>
+<li>JITコンパイラはJavaバイトコードを解析し、コードをコンパイルする</li>
+<li>低速なクラスを読み込む</li>
+</ul>
+<p>アプリケーションをユーザーに公開する前に、本番環境と同じデータを使ってアプリケーションを実行して上記を済ませておく。</p>
 <p>これにより、パフォーマンスが高い状態でユーザーにアプリケーションを公開できる。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.fujitsu.com/jp/about/faq/sfw-interstage/applicationserver/11883.html">https://www.fujitsu.com/jp/about/faq/sfw-interstage/applicationserver/11883.html</a></li>
-<li><a href="https://techblog.zozo.com/entry/zozomat-jvm-warmup">https://techblog.zozo.com/entry/zozomat-jvm-warmup</a></li>
-<li><a href="https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=46">https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=46</a></li>
+<li><a href="https://devcenter.heroku.com/ja/articles/warming-up-a-java-process">https://devcenter.heroku.com/ja/articles/warming-up-a-java-process</a></li>
+<li><a href="https://stackoverflow.com/a/1481903/12771072">https://stackoverflow.com/a/1481903/12771072</a></li>
+<li><a href="https://javanexus.com/blog/maximizing-jvm-warm-up-time">https://javanexus.com/blog/maximizing-jvm-warm-up-time</a></li>
 </ul>
 </blockquote>
 <h4 id="kubernetes">▼ Kubernetesでの注意点<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h4>
@@ -25483,6 +25487,16 @@
 <blockquote>
 <ul>
 <li><a href="https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=48">https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=48</a></li>
+<li><a href="https://techblog.zozo.com/entry/zozomat-jvm-warmup">https://techblog.zozo.com/entry/zozomat-jvm-warmup</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03">03. コンテナ化<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_3">コンテナイメージの軽量化<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>コンテナイメージは、LTS (headless) が軽量なのでおすすめ。</p>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=27">https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=27</a></li>
 </ul>
 </blockquote>
 <p><br></p>
