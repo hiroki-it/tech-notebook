@@ -7987,9 +7987,18 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ウォームアップの実装
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#kubernetes" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Kubernetesでの注意点
+      ▼ Kubernetes環境の場合
     </span>
   </a>
   
@@ -8001,7 +8010,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       メモリ消費
     </span>
@@ -8025,7 +8034,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       コンテナイメージの軽量化
     </span>
@@ -25538,9 +25547,18 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ウォームアップの実装
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#kubernetes" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Kubernetesでの注意点
+      ▼ Kubernetes環境の場合
     </span>
   </a>
   
@@ -25552,7 +25570,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       メモリ消費
     </span>
@@ -25576,7 +25594,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       コンテナイメージの軽量化
     </span>
@@ -25680,8 +25698,16 @@
 <li><a href="https://levelup.gitconnected.com/a-deep-dive-into-classloader-reflection-dynamic-typing-and-runtime-modifiable-classes-in-java-c83d6d689b2">https://levelup.gitconnected.com/a-deep-dive-into-classloader-reflection-dynamic-typing-and-runtime-modifiable-classes-in-java-c83d6d689b2</a></li>
 </ul>
 </blockquote>
-<h4 id="kubernetes">▼ Kubernetesでの注意点<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h4>
-<p>暖機運転が完了した後に、ReadinessProbeが成功となるように設定する。</p>
+<h4 id="_3">▼ ウォームアップの実装<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>フレームワーク (例：SpringBoot) によっては、StartUpエンドポイント (例：<code>/actuator/startup</code>) を公開している。</p>
+<p>ユーザーへの公開前に、このエンドポイントにリクエストを送信しておく。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.spring.io/spring-boot/api/rest/actuator/startup.html">https://docs.spring.io/spring-boot/api/rest/actuator/startup.html</a></li>
+</ul>
+</blockquote>
+<h4 id="kubernetes">▼ Kubernetes環境の場合<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h4>
+<p>ReadinessProbeヘルスチェックでウォームアップを実施する。</p>
 <blockquote>
 <ul>
 <li><a href="https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=48">https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=48</a></li>
@@ -25689,7 +25715,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_3">メモリ消費<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_4">メモリ消費<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>JavaのJVMではOOMキラーが起こることがある。</p>
 <p>JVMは以下でメモリを消費するため、これら全てを合計したメモリサイズ以上を割り当てる必要がある。</p>
 <ul>
@@ -25708,7 +25734,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="04">04. コンテナ化<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="_4">コンテナイメージの軽量化<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_5">コンテナイメージの軽量化<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>コンテナイメージは、LTS (headless) が軽量なのでおすすめ。</p>
 <blockquote>
 <ul>

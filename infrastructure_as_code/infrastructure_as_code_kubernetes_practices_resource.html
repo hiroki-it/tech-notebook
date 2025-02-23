@@ -26237,35 +26237,35 @@
 </blockquote>
 <p><br></p>
 <h1 id="_27">コンテナ<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h1>
-<h2 id="startupprobe-livenessprobereadinessprobe">StartupProbe ➡️ LivenessProbe／ReadinessProbeを設定する<a class="headerlink" href="#startupprobe-livenessprobereadinessprobe" title="Permanent link">&para;</a></h2>
+<h2 id="_28">ヘルスチェックを設定する<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h2>
 <p><img alt="kubernetes_probe" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_probe.png" /></p>
 <p>kubeletは、コンテナをヘルスチェック (例：StartupProbe ➡️ LivenessProbe／ReadinessProbe) し、障害を防ぐ。</p>
-<p>LivenessProbeとReadinessProbeの間に順番はなく、独立して実行される。</p>
-<p>言語やフレームワークによってはStartupProbe用のエンドポイントが提供されていない場合があり、ReadinessProbe用のエンドポイントをStartupProbeの対象として代用する。</p>
+<p>LivenessProbeヘルスチェックとReadinessProbeヘルスチェックの間に順番はなく、独立して実行される。</p>
+<p>言語やフレームワークによってはStartupProbe用のエンドポイントが提供されていない場合があり、ReadinessProbeヘルスチェック用のエンドポイントをStartupProbeヘルスチェックの対象として代用する。</p>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>StartupProbe</th>
+<th>StartupProbeヘルスチェック</th>
 <th style="text-align: center;"></th>
-<th>LivenessProbe</th>
-<th>ReadinessProbe</th>
+<th>LivenessProbeヘルスチェック</th>
+<th>ReadinessProbeヘルスチェック</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>説明</td>
-<td>ヘルスチェックを実行することで、コンテナ内のアプリケーションの起動が完了したかを確認する。ReadinessProbeよりも前に実行される。ReadinessProbeと違って起動時にしか実行されない。ウォームアップが必要なプロセスのチェックに役立つ。</td>
+<td>ヘルスチェックを実行することで、コンテナ内のアプリケーションの起動が完了したかを確認する。ReadinessProbeよりも前に実行される。ReadinessProbeと違って起動時にしか実行されない。</td>
 <td style="text-align: center;">➡️</td>
 <td>ヘルスチェックを実行することで、コンテナが正常に動作しているか確認する。 注意点として、LivenessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。</td>
-<td>ヘルスチェックを実行することで、コンテナがトラフィックを処理可能かを確認する。 コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例: Javaのウォームアップ完了まで。Nginxの最初の設定ファイル読み込み完了まで。MySQLの最初のコネクション受信準備完了まで) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。注意点として、ReadinessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。</td>
+<td>ヘルスチェックを実行することで、コンテナがトラフィックを処理可能かを確認する。 コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合や、問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。注意点として、ReadinessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。</td>
 </tr>
 <tr>
 <td>エンドポイント例</td>
 <td>・SpringBoot製のJavaアプリなら<code>/actuator/startup</code>を使用する。<br>・NginxならReadiness用のエンドポイントで代用する。</td>
 <td style="text-align: center;">➡️</td>
-<td>・SpringBoot製のJavaアプリなら<code>/actuator/health/liveness</code>を使用する。<br>Nginxなら<code>200</code>ステータスを返却するだけの<code>/healthcheck</code>を定義する。</td>
-<td>・SpringBoot製のJavaアプリなら<code>/actuator/health/readiness</code>を使用する。<br>Nginxなら<code>/nginx-ready</code>を使用する。</td>
+<td>・SpringBoot製のJavaアプリなら<code>/actuator/health/liveness</code>を使用する。<br>・Nginxなら<code>200</code>ステータスを返却するだけの<code>/healthcheck</code>を定義する。</td>
+<td>・SpringBoot製のJavaアプリなら<code>/actuator/health/readiness</code> (ウォームアップ実施エンドポイント) を使用する。<br>・Nginxなら<code>/nginx-ready</code> (設定ファイル読み込み状態エンドポイント) を使用する。<br>・MySQLならコネクション受信準備完了エンドポイントを使用する。</td>
 </tr>
 <tr>
 <td>正常時</td>
@@ -26367,7 +26367,7 @@ options<span class="w"> </span>ndots:5
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="_28">機密性の高い情報を守る<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h2>
+<h2 id="_29">機密性の高い情報を守る<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h2>
 <h3 id="envconfigmap">■ env変数やConfigMapに機密性の高い情報を設定しない<a class="headerlink" href="#envconfigmap" title="Permanent link">&para;</a></h3>
 <p>ConfigMapやSecret上のファイルやデータを、コンテナにファイルや環境変数として渡せる。</p>
 <p>この時、ConfigMapでは情報を平文で保持することになる。</p>
@@ -26410,7 +26410,7 @@ options<span class="w"> </span>ndots:5
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="_29">ハードウェアをサイジングする<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h2>
+<h2 id="_30">ハードウェアをサイジングする<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h2>
 <h3 id="cpu_2">■ CPU/メモリをサイジングする<a class="headerlink" href="#cpu_2" title="Permanent link">&para;</a></h3>
 <p>Pod内のコンテナが要求する合計CPU/メモリに見合ったCPU/メモリを割り当てる。</p>
 <p>また、NodeのCPU/メモリの割り当てに関係するため、Podの合計数やPod当たりのCPU/メモリ要求量を算出しておく。</p>
@@ -26421,10 +26421,10 @@ options<span class="w"> </span>ndots:5
 <li><a href="https://kubernetes.io/docs/concepts/policy/limit-range/">https://kubernetes.io/docs/concepts/policy/limit-range/</a></li>
 </ul>
 </blockquote>
-<h3 id="_30">■ ストレージをサイジングする<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
+<h3 id="_31">■ ストレージをサイジングする<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <p><br></p>
-<h2 id="_31">ハードウェアリソース要求量の上限下限値は設定する<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h2>
+<h2 id="_32">ハードウェアリソース要求量の上限下限値は設定する<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h2>
 <p>ハードウェアリソース要求量の上限 (<code>limits</code>) / 下限 (<code>requests</code>) 値を設定しないと、コンテナはハードウェアリソースを自由に要求してしまい、Nodeのハードウェアリソース不足になりかねない。</p>
 <p><code>.spec.containers[*].resources</code>キーを使用すれば、コンテナのハードウェアリソース要求量の上限下限値を設定できる。</p>
 <p>なお、コンテナの特性に合わせて、上限下限値を設定すると良い。</p>
@@ -26459,7 +26459,7 @@ options<span class="w"> </span>ndots:5
 <p>そこで、コンテナイメージはセマンティックバージョニングでタグ付けし、特定のバージョンをプルする。</p>
 <p>なお、各コンテナイメージのアーキテクチャに割り当てられたダイジェスト値を指定することもできるが、K8sがNodeのCPUアーキテクチャに基づいてよしなに選んでくれるため、ダイジェスト値は指定しない。</p>
 <p><br></p>
-<h2 id="_32">コンテナイメージが更新された場合のみコンテナイメージレジストリからプルする<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h2>
+<h2 id="_33">コンテナイメージが更新された場合のみコンテナイメージレジストリからプルする<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h2>
 <p>コンテナ作成のたびにコンテナイメージをプルすると、コンテナイメージレジストリに負荷がかかる。</p>
 <p>K8sで、一度プルしたコンテナイメージを基本的に削除しないため、キャッシュとして再利用することができる。</p>
 <p><code>.spec.containers[*].imagePullPolicy</code>キーに<code>IfNotPresent</code>を使用し、Node上にコンテナイメージのキャッシュがない場合のみプルできるようにする。</p>
@@ -26469,7 +26469,7 @@ options<span class="w"> </span>ndots:5
 <p>StatefulSetを使用してNodeに永続データを持たせた場合、Nodeの障害が永続データにも影響を与えかねない。</p>
 <p>そこで、Nodeに永続データを持たせずに、外部のサーバー (例：AWS RDS、MySQL) を使用する。</p>
 <p><br></p>
-<h2 id="_33">コンテナにセッションデータを持たせない<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h2>
+<h2 id="_34">コンテナにセッションデータを持たせない<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h2>
 <p>StatefulSetを使用してコンテナにセッションデータを持たせた場合、以下が起こると、コンテナが入れ替わってコンテナ上のセッションデータを削除してしまう。</p>
 <ul>
 <li>Podが再起動する</li>
@@ -26689,9 +26689,9 @@ options<span class="w"> </span>ndots:5
 </ul>
 </blockquote>
 <p><br></p>
-<h1 id="_34">テスト<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h1>
-<h2 id="_35">マニフェスト静的解析ツールを使用する<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h2>
-<h3 id="_36">■ 検証したい項目を選ぶ<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
+<h1 id="_35">テスト<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h1>
+<h2 id="_36">マニフェスト静的解析ツールを使用する<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h2>
+<h3 id="_37">■ 検証したい項目を選ぶ<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
 <p>Kubernetesのマニフェストファイルに対する静的解析ツールが存在するため、必要に応じてエディタやCIなどに組み込んで使用する。</p>
 <p>マニフェストファイルは、例えば以下の観点で静的解析することが望ましい。</p>
 <ul>
@@ -26703,7 +26703,7 @@ options<span class="w"> </span>ndots:5
 <li>マニフェストの非推奨なAPI</li>
 <li>Helmチャートの構造</li>
 </ul>
-<h3 id="_37">■ 適切なツールを選び<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
+<h3 id="_38">■ 適切なツールを選び<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
 <p>ここでは、各観点を解析できるツールと、執筆時点 (2023/11) での推奨ツール (★) とその理由、開発初期時点で採用を推奨するツール (✅) を紹介している。</p>
 <p>最終的に、全ての観点を解析する必要はなく、例えば ”CPU/メモリのサイジングの最適値” の解析は紹介だけにとどめている。</p>
 <p>なお、HelmチャートやKustomizeを使用している場合、テンプレートからマニフェストを作成し、これをツールに渡すとよい。</p>
@@ -26823,7 +26823,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </table>
 <p><br></p>
 <h2 id="helm">Helmチャートの静的解析ツールを使用する<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h2>
-<h3 id="_38">■ 検証したい項目を選ぶ<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
+<h3 id="_39">■ 検証したい項目を選ぶ<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
 <p>Helmチャート専用の静的解析ツールが存在するため、必要に応じてエディタやCIなどに組み込んで使用する。</p>
 <p>ここでは、各観点を解析できるツールと、執筆時点 (2023/11) での推奨ツール (★) とその理由、開発初期時点で採用を推奨するツール (✅) を紹介している。</p>
 <p>最終的に、全ての観点を解析する必要はなく、例えば ”チャートのバージョン” の解析は紹介だけにとどめている。</p>
@@ -26874,8 +26874,8 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tbody>
 </table>
 <p><br></p>
-<h2 id="_39">ブラックボックステスト<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h2>
-<h3 id="_40">■ ロードテストを実施する<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h3>
+<h2 id="_40">ブラックボックステスト<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h2>
+<h3 id="_41">■ ロードテストを実施する<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h3>
 <p>過去 (平常時、ピーク時、障害時) から予想できる負荷をClusterにかける。</p>
 <p>この時の性能が、非機能要件の期待値を満たしているかを検証する。</p>
 <h3 id="kuberneteskubernetes">■ Kubernetesのアップグレード後には各Kubernetesリソースの動作確認する<a class="headerlink" href="#kuberneteskubernetes" title="Permanent link">&para;</a></h3>
@@ -26914,9 +26914,9 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tbody>
 </table>
 <p><br></p>
-<h1 id="_41">運用<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h1>
-<h2 id="_42">運用しやすいチームを作る<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h2>
-<h3 id="_43">■ チームを体制する<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h3>
+<h1 id="_42">運用<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h1>
+<h2 id="_43">運用しやすいチームを作る<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h2>
+<h3 id="_44">■ チームを体制する<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h3>
 <p>K8s Clusterを使用したプロダクトのチームメンバー構成の例を挙げる。</p>
 <p>前提として、実Clusterをマルチテナントの単位とし、テナントごとにClusterを管理しているとする。</p>
 <p>チームメンバーが少なければ、兼任することになる。</p>
@@ -26927,7 +26927,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <li>アプリ寄りインフラメンバー</li>
 <li>インフラメンバー</li>
 </ul>
-<h3 id="_44">■ メンバーで領域を分担する<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h3>
+<h3 id="_45">■ メンバーで領域を分担する<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h3>
 <p>担当領域の例を挙げる。</p>
 <p>チームメンバーが少なければ、一人当たりの担当領域はより増えてしまう。</p>
 <table>
@@ -27035,8 +27035,8 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tbody>
 </table>
 <p><br></p>
-<h2 id="_45">運用しやすいテナントに分割する<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h2>
-<h3 id="_46">■ マルチテナントパターン<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h3>
+<h2 id="_46">運用しやすいテナントに分割する<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h2>
+<h3 id="_47">■ マルチテナントパターン<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h3>
 <p>K8sリソースをグルーピングしたテナントを作成し、影響範囲を小さくする。</p>
 <p>テナントには作成パターンがあり、それぞれのパターンでテナントに役割 (例：プロダクト、実行環境など) を割り当てる。</p>
 <table>
@@ -27074,7 +27074,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tbody>
 </table>
 <p><br></p>
-<h2 id="_47">マニフェストを管理しやすくする<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h2>
+<h2 id="_48">マニフェストを管理しやすくする<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h2>
 <h3 id="k8s">■ K8sリソースのラベル付けする<a class="headerlink" href="#k8s" title="Permanent link">&para;</a></h3>
 <p>マニフェストに意味付けするために、ラベルを付与する。</p>
 <p>適切にラベルを付与しておくと、仕様を理解する上での助けになる。</p>
@@ -27119,16 +27119,16 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <li><a href="https://kubernetes.io/ja/docs/concepts/overview/working-with-objects/common-labels/">https://kubernetes.io/ja/docs/concepts/overview/working-with-objects/common-labels/</a></li>
 </ul>
 </blockquote>
-<h3 id="_48">■ マニフェスト管理ツールを使用する<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h3>
+<h3 id="_49">■ マニフェスト管理ツールを使用する<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h3>
 <p>大量のマニフェストファイルを個別にバージョン管理することは大変であり、一括して管理できるように、マニフェスト管理ツールを使用する。</p>
 <ul>
 <li>Helm</li>
 <li>Kustomize</li>
 </ul>
 <p><br></p>
-<h1 id="_49">監視<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h1>
-<h2 id="_50">監視したいデータを決める<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h2>
-<h3 id="_51">■ ログを選ぶ<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h3>
+<h1 id="_50">監視<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h1>
+<h2 id="_51">監視したいデータを決める<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h2>
+<h3 id="_52">■ ログを選ぶ<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h3>
 <p>監視したいログを決める。</p>
 <p>むやみやたらにログを収集すると、保管が大変なため、必要最低限のログにする。</p>
 <ul>
@@ -27142,7 +27142,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </ul>
 </li>
 </ul>
-<h3 id="_52">■ メトリクス選ぶ<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h3>
+<h3 id="_53">■ メトリクス選ぶ<a class="headerlink" href="#_53" title="Permanent link">&para;</a></h3>
 <p>監視したいメトリクスを決める。</p>
 <p>むやみやたらにメトリクスを収集すると、収集対象に負荷がかかるため、必要最低限のメトリクスにする。</p>
 <p>監視したいメトリクスを決める。</p>
@@ -27170,8 +27170,8 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tbody>
 </table>
 <p><br></p>
-<h2 id="_53">対象のデータを収集する<a class="headerlink" href="#_53" title="Permanent link">&para;</a></h2>
-<h3 id="_54">■ ログを収集する<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h3>
+<h2 id="_54">対象のデータを収集する<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h2>
+<h3 id="_55">■ ログを収集する<a class="headerlink" href="#_55" title="Permanent link">&para;</a></h3>
 <p>監視したいログを収集する。</p>
 <table>
 <thead>
@@ -27194,10 +27194,10 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tr>
 </tbody>
 </table>
-<h3 id="_55">■ メトリクスを収集する<a class="headerlink" href="#_55" title="Permanent link">&para;</a></h3>
+<h3 id="_56">■ メトリクスを収集する<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h3>
 <p>監視したいメトリクスを収集する。</p>
 <p>ここにメトリクス収集の設計パターンを書く…</p>
-<h2 id="_56">収集したログ/メトリクスを保管する<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h2>
+<h2 id="_57">収集したログ/メトリクスを保管する<a class="headerlink" href="#_57" title="Permanent link">&para;</a></h2>
 <p>収集したログ/メトリクスをストレージに保管する。</p>
 <table>
 <thead>
@@ -27249,7 +27249,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-23</span>
   </span>
 
     
