@@ -3152,7 +3152,24 @@ spec:
             - healthcheck.sh
 ```
 
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      livenessProbe:
+        exec:
+          command:
+            - /bin/grpc_health_probe
+            - -addr=:5000
+```
+
 > - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-liveness-command
+> - https://github.com/grpc-ecosystem/grpc-health-probe?tab=readme-ov-file#example-grpc-health-checking-on-kubernetes
 
 #### ▼ httpGet
 
@@ -3175,6 +3192,7 @@ spec:
         httpGet:
           port: 80
           path: /healthcheck
+          # またはHTTPS
           scheme: HTTP
 ```
 
@@ -3418,7 +3436,24 @@ spec:
             - healthcheck.sh
 ```
 
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      readinessProbe:
+        exec:
+          command:
+            - /bin/grpc_health_probe
+            - -addr=:5000
+```
+
 > - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-liveness-command
+> - https://github.com/grpc-ecosystem/grpc-health-probe?tab=readme-ov-file#example-grpc-health-checking-on-kubernetes
 
 #### ▼ httpGet
 
@@ -3441,6 +3476,7 @@ spec:
         httpGet:
           port: 80
           path: /healthcheck
+          # またはHTTPS
           scheme: HTTP
 ```
 
