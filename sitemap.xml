@@ -1021,6 +1021,10 @@
          <lastmod>2025-02-23</lastmod>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/language/language_java.html</loc>
+         <lastmod>2025-02-23</lastmod>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/language/language_javascript_browser_rendering.html</loc>
          <lastmod>2025-02-23</lastmod>
     </url>
@@ -1214,10 +1218,6 @@
     </url>
     <url>
          <loc>https://hiroki-it.github.io/tech-notebook/language/draft/language_data_description_language_yaml_query.html</loc>
-         <lastmod>2025-02-23</lastmod>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/language/draft/language_java.html</loc>
          <lastmod>2025-02-23</lastmod>
     </url>
     <url>
@@ -2498,6 +2498,66 @@
     </url>
     <url>
          <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_infrastructure_unit_terraform.html</loc>
+         <lastmod>2025-02-23</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/virtualization/index.html</loc>
+         <lastmod>2025-02-23</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/virtualization/virtualization.html</loc>
+         <lastmod>2025-02-23</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container.html</loc>
+         <lastmod>2025-02-23</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_containerd.html</loc>
+         <lastmod>2025-02-23</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_containerd_command.html</loc>
+         <lastmod>2025-02-23</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker.html</loc>
+         <lastmod>2025-02-23</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker_command.html</loc>
+         <lastmod>2025-02-23</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker_network.html</loc>
+         <lastmod>2025-02-23</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker_storage.html</loc>
+         <lastmod>2025-02-23</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/virtualization/draft/virtualization_container_podman_command.html</loc>
+         <lastmod>2025-02-23</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/virtualization/draft/virtualization_container_runc.html</loc>
+         <lastmod>2025-02-23</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/virtualization/draft/virtualization_server_lima.html</loc>
+         <lastmod>2025-02-23</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/virtualization/draft/virtualization_server_lima_command.html</loc>
+         <lastmod>2025-02-23</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/virtualization/draft/virtualization_server_lima_conf.html</loc>
+         <lastmod>2025-02-23</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/virtualization/draft/virtualization_server_virtualbox.html</loc>
          <lastmod>2025-02-23</lastmod>
     </url>
 </urlset>
