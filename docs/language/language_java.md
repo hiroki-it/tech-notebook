@@ -3,7 +3,7 @@ title: 【IT技術の知見】Java
 description: Javaの知見を記録しています。
 ---
 
-# プラクティス集＠Java
+# Java
 
 ## はじめに
 
