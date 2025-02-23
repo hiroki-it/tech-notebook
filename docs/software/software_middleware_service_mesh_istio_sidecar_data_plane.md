@@ -110,7 +110,7 @@ Chain ISTIO_INBOUND (1 references)
 num  target             prot  opt  source     destination
 1    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15008
 2    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15090 # メトリクス収集ツールからのリクエストを待ち受ける。
-3    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15021 # kubeletからのReadinessProbeチェックを待ち受ける。
+3    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15021 # kubeletからのReadinessProbeヘルスチェックを待ち受ける。
 4    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15020 # データプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。
 5    ISTIO_IN_REDIRECT  tcp   --   0.0.0.0/0  0.0.0.0/0
 
@@ -619,9 +619,9 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 ### `15021`番
 
-`istio-proxy`コンテナの`15021`番ポートでは、kubeletからのReadinessProbeチェックを待ち受ける。
+`istio-proxy`コンテナの`15021`番ポートでは、kubeletからのReadinessProbeヘルスチェックを待ち受ける。
 
-`istio-proxy`コンテナ内のEnvoyが、`/healthz/ready`エンドポイントでReadinessProbeチェックを待ち受けており、もしEnvoyが停止してれば`503`ステータスのレスポンスを返却する。
+`istio-proxy`コンテナ内のEnvoyが、`/healthz/ready`エンドポイントでReadinessProbeヘルスチェックを待ち受けており、もしEnvoyが停止してれば`503`ステータスのレスポンスを返却する。
 
 > - https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 > - https://sreake.com/blog/istio-proxy-stop-behavior/
