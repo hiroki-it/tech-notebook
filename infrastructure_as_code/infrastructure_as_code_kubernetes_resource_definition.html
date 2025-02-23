@@ -36968,6 +36968,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">          </span><span class="c1"># SpringBoot製Javaアプリのlivenessエンドポイント</span>
 <span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/actuator/health/liveness</span>
 <span class="w">          </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP</span>
+<span class="w">        </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
 <span class="w">        </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 </code></pre></div>
 <blockquote>
@@ -37110,7 +37111,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
 <span class="w">      </span><span class="nt">livenessProbe</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># 初回以降のLivenessProbeヘルスチェックを実行するまでに5秒間待機する。</span>
-<span class="w">        </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">        </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 </code></pre></div>
 <h4 id="tcpsocket">▼ tcpSocket<a class="headerlink" href="#tcpsocket" title="Permanent link">&para;</a></h4>
 <p>コンテナのLivenessProbeヘルスチェックで、<code>L4</code>チェックを実行する。</p>
@@ -37140,7 +37141,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
 <span class="w">      </span><span class="nt">livenessProbe</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># LivenessProbeヘルスチェックのタイムアウト時間を30秒とする。</span>
-<span class="w">        </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+<span class="w">        </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 </code></pre></div>
 <h4 id="periodseconds">▼ periodSeconds<a class="headerlink" href="#periodseconds" title="Permanent link">&para;</a></h4>
 <p>コンテナのLivenessProbeヘルスチェックの試行当たりの間隔を設定する。</p>
@@ -37175,7 +37176,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
 <span class="w">          </span><span class="c1"># SpringBoot製Javaアプリののstartupエンドポイント</span>
 <span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/actuator/startup</span>
-<span class="w">        </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+<span class="w">        </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
 <span class="w">        </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 </code></pre></div>
 <blockquote>
@@ -37203,6 +37204,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">          </span><span class="c1"># SpringBoot製JavaアプリのReadinessエンドポイント</span>
 <span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/actuator/health/readiness</span>
 <span class="w">          </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP</span>
+<span class="w">        </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
 <span class="w">        </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 </code></pre></div>
 <p>コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例：Javaのウォームアップ完了まで。Nginxの最初の設定ファイル読み込み完了まで。MySQLの最初のコネクション受信準備完了まで。) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。</p>
