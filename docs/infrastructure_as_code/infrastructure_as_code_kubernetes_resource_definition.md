@@ -3121,6 +3121,7 @@ spec:
           # SpringBoot製Javaアプリのlivenessエンドポイント
           path: /actuator/health/liveness
           scheme: HTTP
+        failureThreshold: 5
         periodSeconds: 10
 ```
 
@@ -3268,7 +3269,7 @@ spec:
       image: app:1.0.0
       livenessProbe:
         # 初回以降のLivenessProbeヘルスチェックを実行するまでに5秒間待機する。
-        initialDelaySeconds: 5
+        initialDelaySeconds: 10
 ```
 
 #### ▼ tcpSocket
@@ -3308,7 +3309,7 @@ spec:
       image: app:1.0.0
       livenessProbe:
         # LivenessProbeヘルスチェックのタイムアウト時間を30秒とする。
-        timeoutSeconds: 30
+        timeoutSeconds: 10
 ```
 
 #### ▼ periodSeconds
@@ -3355,7 +3356,7 @@ spec:
           port: 8080
           # SpringBoot製Javaアプリののstartupエンドポイント
           path: /actuator/startup
-        failureThreshold: 30
+        failureThreshold: 5
         periodSeconds: 10
 ```
 
@@ -3386,6 +3387,7 @@ spec:
           # SpringBoot製JavaアプリのReadinessエンドポイント
           path: /actuator/health/readiness
           scheme: HTTP
+        failureThreshold: 5
         periodSeconds: 10
 ```
 
