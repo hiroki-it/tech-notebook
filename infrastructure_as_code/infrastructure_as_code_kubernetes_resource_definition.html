@@ -37027,6 +37027,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">        </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 <span class="w">        </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">        </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">        </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -37143,7 +37144,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </blockquote>
 <h4 id="initialdelayseconds">▼ initialDelaySeconds<a class="headerlink" href="#initialdelayseconds" title="Permanent link">&para;</a></h4>
 <p>初回のLivenessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
-<p>注意として、<code>2</code>回目以降のLivenessProbeによる再起動は、<code>.spec.containers[*].livenessProbe.terminationGracePeriodSeconds</code>キーで設定する。</p>
+<p>注意として、2回目以降のLivenessProbeによる再起動は、<code>.spec.containers[*].livenessProbe.terminationGracePeriodSeconds</code>キーで設定する。</p>
 <p>この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
 <p>設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。</p>
 <p>一方で、設定した時間が長すぎると、Podの作成開始から完了まで時間がかかりすぎてしまう。</p>
@@ -37217,10 +37218,8 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
 </code></pre></div>
 <h4 id="terminationgraceperiodseconds">▼ terminationGracePeriodSeconds<a class="headerlink" href="#terminationgraceperiodseconds" title="Permanent link">&para;</a></h4>
-<p><code>2</code>回目以降のLivenessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
-<p>注意として、初回のLivenessProbeヘルスチェックは、<code>.spec.containers[*].livenessProbe.initialDelaySeconds</code>キーで設定する。</p>
-<p>この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
-<p>設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。</p>
+<p>コンテナのプロセスが安全に終了できるまでの待機時間を設定する。</p>
+<p>設定した時間が長すぎると、Podの終了プロセスに時間がかかり、Podの削除までに時間がかかりすぎてしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37230,8 +37229,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
 <span class="w">      </span><span class="nt">livenessProbe</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># 2回目以降のLivenessProbeヘルスチェックを実行するまでに5秒間待機する。</span>
-<span class="w">        </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">        </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -37282,6 +37280,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">        </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 <span class="w">        </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">        </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">        </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -37313,6 +37312,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">        </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 <span class="w">        </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">        </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">        </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 </code></pre></div>
 <p>コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例：Javaのウォームアップ完了まで。Nginxの最初の設定ファイル読み込み完了まで。MySQLの最初のコネクション受信準備完了まで。) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。</p>
 <p>注意点として、ReadinessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。</p>
@@ -37410,7 +37410,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </blockquote>
 <h4 id="initialdelayseconds_1">▼ initialDelaySeconds<a class="headerlink" href="#initialdelayseconds_1" title="Permanent link">&para;</a></h4>
 <p>初回のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
-<p>注意として、<code>2</code>回目以降のReadinessProbeヘルスチェックによる再起動は、<code>.spec.containers[*].readinessProbe.gracePeriodSeconds</code>キーで設定する。</p>
+<p>注意として、2回目以降のReadinessProbeヘルスチェックによる再起動は、<code>.spec.containers[*].readinessProbe.gracePeriodSeconds</code>キーで設定する。</p>
 <p>この時間を過ぎてもコンテナのReadinessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
 <p>設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。</p>
 <p>一方で、設定した時間が長すぎると、Podの作成開始から完了まで時間がかかりすぎてしまう。</p>
@@ -37487,10 +37487,8 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </ul>
 </blockquote>
 <h4 id="terminationgraceperiodseconds_1">▼ terminationGracePeriodSeconds<a class="headerlink" href="#terminationgraceperiodseconds_1" title="Permanent link">&para;</a></h4>
-<p><code>2</code>回目以降のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
-<p>注意として、初回のReadinessProbeヘルスチェックは、<code>.spec.containers[*].readinessProbe.initialDelaySeconds</code>キーで設定する。</p>
-<p>この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
-<p>設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。</p>
+<p>コンテナのプロセスが安全に終了できるまでの待機時間を設定する。</p>
+<p>設定した時間が長すぎると、Podの終了プロセスに時間がかかり、Podの削除までに時間がかかりすぎてしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37500,8 +37498,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
 <span class="w">      </span><span class="nt">readinessProbe</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># 2回目以降のReadinessProbeヘルスチェックを実行するまでに5秒間待機する。</span>
-<span class="w">        </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">        </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 </code></pre></div>
 <blockquote>
 <ul>
