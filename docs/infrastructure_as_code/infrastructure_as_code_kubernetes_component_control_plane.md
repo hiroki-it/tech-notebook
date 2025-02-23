@@ -359,10 +359,10 @@ $ kubectl get --raw /apis/autoscaling | jq .
 
 kube-apiserverは、ヘルスチェック (Healthy、LivenessProbe、ReadinessProbe) ごとにエンドポイントを持つ。
 
-`kubectl get`コマンドでヘルスチェックを実行できる。
+`kubectl get`コマンドでヘルスチェックを実施できる。
 
 ```bash
-# kube-apiserverのreadinessエンドポイントにリクエストを送信する。
+# kube-apiserverのReadinessエンドポイントにヘルスチェックを実施する。
 $ kubectl get --raw=/readyz?verbose
 
 [+]ping ok

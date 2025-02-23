@@ -86,11 +86,11 @@ JVM言語 (例：Java、Scala、Kotlinなど) 製のアプリケーションは�
 
 #### ▼ ウォームアップの実装
 
-フレームワーク (例：SpringBoot) によっては、StartUpエンドポイント (例：`/actuator/startup`) を公開している。
+フレームワーク (例：SpringBoot) によっては、Readinessエンドポイント (例：`/actuator/health/readiness`) を公開している。
 
 ユーザーへの公開前に、このエンドポイントにリクエストを送信しておく。
 
-> - https://docs.spring.io/spring-boot/api/rest/actuator/startup.html
+> - https://spring.io/blog/2020/03/25/liveness-and-readiness-probes-with-spring-boot
 
 #### ▼ Kubernetes環境の場合
 
