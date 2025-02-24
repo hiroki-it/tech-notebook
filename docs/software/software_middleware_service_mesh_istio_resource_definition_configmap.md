@@ -339,6 +339,15 @@ data:
       discoveryAddress: istiod-<リビジョン番号>.istio-system.svc:15012
 ```
 
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ProxyConfig
+metadata:
+  name: foo-proxyconfig
+spec:
+  discoveryAddress: istiod-<リビジョン番号>.istio-system.svc:15012
+```
+
 #### ▼ enablePrometheusMerge
 
 ```yaml
@@ -351,6 +360,15 @@ data:
   mesh: |
     defaultConfig:
       enablePrometheusMerge: true
+```
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ProxyConfig
+metadata:
+  name: foo-proxyconfig
+spec:
+  enablePrometheusMerge: true
 ```
 
 #### ▼ holdApplicationUntilProxyStarts
@@ -367,6 +385,15 @@ data:
   mesh: |
     defaultConfig:
       holdApplicationUntilProxyStarts: true
+```
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ProxyConfig
+metadata:
+  name: foo-proxyconfig
+spec:
+  holdApplicationUntilProxyStarts: true
 ```
 
 > - https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB
@@ -465,6 +492,15 @@ data:
       rootNamespace: istio-system
 ```
 
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ProxyConfig
+metadata:
+  name: foo-proxyconfig
+spec:
+  rootNamespace: istio-system
+```
+
 #### ▼ tracing (非推奨)
 
 いずれのトレース仕様 (例：Zipkin、Datadog、LightStepなど) でトレースIDとスパンIDを作成するかを設定する。
@@ -523,6 +559,15 @@ data:
   mesh: |
     defaultConfig:
       trustDomain: cluster.local
+```
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ProxyConfig
+metadata:
+  name: foo-proxyconfig
+spec:
+  trustDomain: cluster.local
 ```
 
 > - https://istio.io/latest/docs/tasks/security/authorization/authz-td-migration/
