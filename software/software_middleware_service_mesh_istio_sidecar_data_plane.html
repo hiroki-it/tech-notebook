@@ -26836,6 +26836,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </blockquote>
 <p><br></p>
 <h3 id="istio-proxy_2"><code>istio-proxy</code>コンテナが終了するまでの仕組み<a class="headerlink" href="#istio-proxy_2" title="Permanent link">&para;</a></h3>
+<p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
 <p><code>istio-proxy</code>コンテナは、Envoyプロセスを安全に停止する。</p>
 <dl>
 <dt><code>(1)</code></dt>
@@ -26864,7 +26865,6 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <p><code>istio-proxy</code>コンテナにSIGKILLシグナルを送信する。</p>
 </dd>
 </dl>
-<p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://sreake.com/blog/istio-proxy-stop-behavior/">https://sreake.com/blog/istio-proxy-stop-behavior/</a></li>
