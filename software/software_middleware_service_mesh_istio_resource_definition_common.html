@@ -26247,6 +26247,7 @@
 <p>このコネクションのドレイン処理時間で、新しいコネクションを受け入れ続ける時間を設定する。</p>
 <p>Envoyの<code>--drain-time-s</code>オプションに相当する。</p>
 <p>設定した時間が短過ぎると、処理中のコネクションを終了することなく、強制的に切断してしまう。</p>
+<p>レースコンディションを解決するための<code>.mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION</code>キーでも、同じ値を設定するとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># もしくはPod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -26259,7 +26260,7 @@
 <span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">proxy.istio.io/config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">drainDuration: &quot;45s&quot;</span>
+<span class="w">          </span><span class="no">drainDuration: &quot;10s&quot;</span>
 </code></pre></div>
 <blockquote>
 <ul>

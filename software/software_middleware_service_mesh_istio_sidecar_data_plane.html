@@ -26860,15 +26860,11 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <p>Envoyは、コネクションのドレイン処理を実施する。</p>
 <p>Podの<code>.metadata.annotations.proxy.istio.io/config.drainDuration</code>値 (デフォルト<code>5</code>秒) の待機時間だけ、リクエストを受信しながら移行していく。</p>
 </dd>
-<dt><code>(5)</code></dt>
+<dt><code>(4)</code></dt>
 <dd>
 <p>Envoyは、プロセスのGraceful Drainモードを終了する。</p>
 </dd>
-<dt><code>(6)</code></dt>
-<dd>
-<p>Graceful Drainモードの終了後、Podの<code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>キーによるGraceful Drainモード待機時間が完了する。</p>
-</dd>
-<dt><code>(7)</code></dt>
+<dt><code>(5)</code></dt>
 <dd>
 <p><code>istio-proxy</code>コンテナにSIGKILLシグナルを送信する。</p>
 </dd>
