@@ -27805,7 +27805,7 @@
 <span class="w">      </span><span class="no">- name: envoy-log</span>
 <span class="w">        </span><span class="no">envoyFileAccessLog</span>
 </code></pre></div>
-<p>Datadogに送信するためには、<code>mesh.extensionProviders[*].datadog</code>キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
+<p>Datadogに送信するためには、<code>.mesh.extensionProviders[*].datadog</code>キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
 <p>分散トレースの設定は以下の通りである。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
@@ -27886,7 +27886,7 @@
 <span class="w">        </span><span class="no">envoyFileAccessLog:</span>
 <span class="w">          </span><span class="no">path: /dev/stdout</span>
 </code></pre></div>
-<p>OpenTelemetryに送信するためには、<code>mesh.extensionProviders[*].opentelemetry</code>キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
+<p>OpenTelemetryに送信するためには、<code>.mesh.extensionProviders[*].opentelemetry</code>キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
 <p>分散トレースの設定は以下の通りである。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
@@ -27968,7 +27968,7 @@
 <span class="w">        </span><span class="no">envoyFileAccessLog:</span>
 <span class="w">          </span><span class="no">path: /dev/stdout</span>
 </code></pre></div>
-<p>ZipkinやJaegerに送信するためには、<code>mesh.extensionProviders[*].zipkin</code>キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
+<p>ZipkinやJaegerに送信するためには、<code>.mesh.extensionProviders[*].zipkin</code>キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
 <p>分散トレースの設定は以下の通りである。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
@@ -28509,6 +28509,7 @@
 <p><br></p>
 <h3 id="defaultconfigproxymetadata">defaultConfig.proxyMetadata<a class="headerlink" href="#defaultconfigproxymetadata" title="Permanent link">&para;</a></h3>
 <h4 id="bootstrap_xds_agent">▼ <code>BOOTSTRAP_XDS_AGENT</code><a class="headerlink" href="#bootstrap_xds_agent" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28527,6 +28528,7 @@
 </blockquote>
 <h4 id="enable_deferred_cluster_creation_1">▼ <code>ENABLE_DEFERRED_CLUSTER_CREATION</code><a class="headerlink" href="#enable_deferred_cluster_creation_1" title="Permanent link">&para;</a></h4>
 <p><code>pilot-discovery</code>コマンドでも設定できるため、そちらを参照せよ。</p>
+<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28545,6 +28547,7 @@
 </blockquote>
 <h4 id="exclude_unsafe_503_from_default_retry_1">▼ <code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code><a class="headerlink" href="#exclude_unsafe_503_from_default_retry_1" title="Permanent link">&para;</a></h4>
 <p><code>pilot-discovery</code>コマンドでも設定できるため、そちらを参照せよ。</p>
+<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28564,6 +28567,7 @@
 </blockquote>
 <h4 id="enable_inbound_retry_policy_1">▼ <code>ENABLE_INBOUND_RETRY_POLICY</code><a class="headerlink" href="#enable_inbound_retry_policy_1" title="Permanent link">&para;</a></h4>
 <p><code>pilot-discovery</code>コマンドでも設定できるため、そちらを参照せよ。</p>
+<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28586,6 +28590,7 @@
 <p>デフォルト値は<code>false</code>である。</p>
 <p><code>istio-proxy</code>コンテナへのリクエストが無くなってから、Envoyのプロセスを終了する。</p>
 <p>具体的には、<code>downstream_cx_active</code>メトリクスの値 (アクティブなコネクション数) を監視し、<code>0</code>になり次第、Envoyのプロセスを終了する。</p>
+<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28605,6 +28610,7 @@
 </blockquote>
 <h4 id="istio_meta_cert_signer">▼ <code>ISTIO_META_CERT_SIGNER</code><a class="headerlink" href="#istio_meta_cert_signer" title="Permanent link">&para;</a></h4>
 <p>デフォルトで<code>""</code> (空文字) である。</p>
+<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28624,6 +28630,7 @@
 <h4 id="istio_meta_dns_auto_allocate">▼ <code>ISTIO_META_DNS_AUTO_ALLOCATE</code><a class="headerlink" href="#istio_meta_dns_auto_allocate" title="Permanent link">&para;</a></h4>
 <p>デフォルト値は<code>false</code>である。</p>
 <p>IPアドレスが設定されていないServiceEntryに対して、IPアドレスを自動的に設定する。</p>
+<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28644,6 +28651,7 @@
 <h4 id="istio_meta_dns_capture">▼ <code>ISTIO_META_DNS_CAPTURE</code><a class="headerlink" href="#istio_meta_dns_capture" title="Permanent link">&para;</a></h4>
 <p>デフォルト値は<code>false</code>である。</p>
 <p>istio-proxyでDNSのキャッシュを作成するか否かを設定する。</p>
+<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28663,12 +28671,14 @@
 </blockquote>
 <h4 id="minimum_drain_duration">▼ <code>MINIMUM_DRAIN_DURATION</code><a class="headerlink" href="#minimum_drain_duration" title="Permanent link">&para;</a></h4>
 <p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
-<p>デフォルト値は<code>5</code>である。</p>
+<p>デフォルト値は<code>5</code>である (対応する<code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>キーと同じ) 。</p>
 <p><code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code>変数が<code>true</code>な場合にのみ設定できる。</p>
 <p><code>false</code>の場合は、代わりに<code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>を設定する。</p>
 <p><code>istio-proxy</code>コンテナ内のEnvoyプロセスは、終了時にコネクションのドレイン処理を実施する。</p>
 <p>このコネクションのドレイン処理時間を設定する。</p>
 <p>Podの<code>.metadata.annotations.proxy.istio.io/config.drainDuration</code>キーと同じ役割のため、同じ時間を設定する必要がある。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>Envoyプロセスのドレイン処理<code>5</code>秒間に実施する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
