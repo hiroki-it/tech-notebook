@@ -37167,9 +37167,8 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <h4 id="initialdelaysecond">▼ initialDelaySecond<a class="headerlink" href="#initialdelaysecond" title="Permanent link">&para;</a></h4>
 <p>デフォルト値は<code>0</code>である。</p>
 <p>初回のLivenessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
-<p>注意として、2回目以降のLivenessProbeによる再起動は、<code>.spec.containers[*].livenessProbe.terminationGracePeriodSeconds</code>キーで設定する。</p>
 <p>この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
-<p>設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。</p>
+<p>設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう (デフォルト値の<code>0</code>は短すぎる) 。</p>
 <p>一方で、設定した時間が長すぎると、Podの作成開始から完了まで時間がかかりすぎてしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -37444,9 +37443,8 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <h4 id="initialdelayseconds">▼ initialDelaySeconds<a class="headerlink" href="#initialdelayseconds" title="Permanent link">&para;</a></h4>
 <p>デフォルト値は<code>0</code>である。</p>
 <p>初回のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
-<p>注意として、2回目以降のReadinessProbeヘルスチェックによる再起動は、<code>.spec.containers[*].readinessProbe.gracePeriodSeconds</code>キーで設定する。</p>
 <p>この時間を過ぎてもコンテナのReadinessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
-<p>設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。</p>
+<p>設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう (デフォルト値の<code>0</code>は短すぎる) 。</p>
 <p>一方で、設定した時間が長すぎると、Podの作成開始から完了まで時間がかかりすぎてしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
