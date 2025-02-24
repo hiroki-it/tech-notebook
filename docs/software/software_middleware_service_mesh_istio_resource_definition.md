@@ -538,11 +538,29 @@ spec:
   trafficPolicy:
     connectionPool:
       http:
-        http1MaxPendingRequests: 100
+        http1MaxPendingRequests: 4000
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings
 > - https://qiita.com/sonq/items/4cee6f85f91ea7dfcbbf#http1maxpendingrequests
+
+#### ▼ connectionPool.http.http2MaxRequests
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    connectionPool:
+      http:
+        http2MaxRequests: 4000
+```
+
+> - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=115
 
 #### ▼ connectionPool.tcp.maxConnections
 
@@ -3046,7 +3064,7 @@ HTTP/1.1、HTTP/2 (例：gRPCなど) のプロトコルによる通信をDestina
 
 **＊実装例＊**
 
-`503`ステータスのエラーを`100`%発生させる。
+`503`ステータスのエラーを`100`%の確率で発生させる。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3068,6 +3086,8 @@ spec:
 
 **＊実装例＊**
 
+`10`秒のレスポンスの遅延を`100`%の確率で発生させる。
+
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: VirtualService
@@ -3078,11 +3098,13 @@ spec:
     - fault:
         - delay:
             # レスポンスの遅延時間
-            fixedDelay: 22s
+            fixedDelay: 10s
             # 遅延レスポンスを発生させる割合
             percentage:
               value: 100
 ```
+
+> - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=124
 
 <br>
 
