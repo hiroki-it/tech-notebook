@@ -31157,6 +31157,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="07-proxyconfig">07. ProxyConfig<a class="headerlink" href="#07-proxyconfig" title="Permanent link">&para;</a></h2>
 <h3 id="concurrency">concurrency<a class="headerlink" href="#concurrency" title="Permanent link">&para;</a></h3>
 <p>サービスメッシュ全体、特定Namespace、特定ワークロードの<code>istio-proxy</code>コンテナにて、ワーカースレッド数を設定する。</p>
+<p><code>.meshConfig.defaultConfig</code>キーにデフォルト値を設定しておき、ProxyConfigでNamespaceごとに上書きするのがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProxyConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -31173,6 +31174,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="environmentvariables">environmentVariables<a class="headerlink" href="#environmentvariables" title="Permanent link">&para;</a></h3>
 <p>サービスメッシュ全体、特定Namespace、特定ワークロードの<code>istio-proxy</code>コンテナにて、環境変数を設定する。</p>
+<p><code>.meshConfig.defaultConfig</code>キーにデフォルト値を設定しておき、ProxyConfigでNamespaceごとに上書きするのがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProxyConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
