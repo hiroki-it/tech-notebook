@@ -5666,30 +5666,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#holdapplicationuntilproxystarts_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      holdApplicationUntilProxyStarts
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="holdApplicationUntilProxyStarts">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#holdapplicationuntilproxystarts_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ holdApplicationUntilProxyStartsとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#ingressselector" class="md-nav__link">
     <span class="md-ellipsis">
       ingressSelector
@@ -26812,30 +26788,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#holdapplicationuntilproxystarts_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      holdApplicationUntilProxyStarts
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="holdApplicationUntilProxyStarts">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#holdapplicationuntilproxystarts_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ holdApplicationUntilProxyStartsとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#ingressselector" class="md-nav__link">
     <span class="md-ellipsis">
       ingressSelector
@@ -27520,6 +27472,7 @@
 <span class="w">      </span><span class="no">enablePrometheusMerge: true</span>
 </code></pre></div>
 <h4 id="holdapplicationuntilproxystarts">▼ holdApplicationUntilProxyStarts<a class="headerlink" href="#holdapplicationuntilproxystarts" title="Permanent link">&para;</a></h4>
+<p><code>istio-proxy</code>コンテナが、必ずアプリコンテナよりも先に起動するか否かを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -27530,6 +27483,35 @@
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">holdApplicationUntilProxyStarts: true</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB">https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB</a></li>
+<li><a href="https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters">https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters</a></li>
+</ul>
+</blockquote>
+<p>オプションを有効化すると、<code>istio-proxy</code>コンテナの<code>.spec.containers[*].lifecycle.postStart.exec.command</code>キーに、<code>pilot-agent -wait</code>コマンドが挿入される。</p>
+<p><code>.spec.containers[*].lifecycle.preStop.exec.command</code>キーへの自動設定は、<code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code>変数で対応する。</p>
+<div class="highlight"><pre><span></span><code><span class="nn">...</span>
+
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-proxy</span>
+
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="w">      </span><span class="nt">lifecycle</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">postStart</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">exec</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">              </span><span class="no">pilot-agent wait</span>
+
+<span class="nn">...</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%85%8D%E7%BD%AE-sidecar-%E5%92%8C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F">https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%85%8D%E7%BD%AE-sidecar-%E5%92%8C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F</a></li>
+</ul>
+</blockquote>
 <h4 id="image">▼ image<a class="headerlink" href="#image" title="Permanent link">&para;</a></h4>
 <p><code>istio-proxy</code>コンテナのコンテナイメージのタイプを設定する。</p>
 <p>これは、ConfigMapではなくProxyConfigでも設定できる。</p>
@@ -28053,47 +28035,6 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="holdapplicationuntilproxystarts_1">holdApplicationUntilProxyStarts<a class="headerlink" href="#holdapplicationuntilproxystarts_1" title="Permanent link">&para;</a></h3>
-<h4 id="holdapplicationuntilproxystarts_2">▼ holdApplicationUntilProxyStartsとは<a class="headerlink" href="#holdapplicationuntilproxystarts_2" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナが、必ずアプリコンテナよりも先に起動するか否かを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-mesh-cm</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
-<span class="nt">data</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">holdApplicationUntilProxyStarts: true</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB">https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB</a></li>
-<li><a href="https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters">https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters</a></li>
-</ul>
-</blockquote>
-<p>オプションを有効化すると、<code>istio-proxy</code>コンテナの<code>.spec.containers[*].lifecycle.postStart.exec.command</code>キーに、<code>pilot-agent -wait</code>コマンドが挿入される。</p>
-<div class="highlight"><pre><span></span><code><span class="nn">...</span>
-
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-proxy</span>
-
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-
-<span class="w">      </span><span class="nt">lifecycle</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">postStart</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">exec</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">              </span><span class="no">pilot-agent wait</span>
-
-<span class="nn">...</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%85%8D%E7%BD%AE-sidecar-%E5%92%8C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F">https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%85%8D%E7%BD%AE-sidecar-%E5%92%8C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F</a></li>
-</ul>
-</blockquote>
-<p><br></p>
 <h3 id="ingressselector">ingressSelector<a class="headerlink" href="#ingressselector" title="Permanent link">&para;</a></h3>
 <h4 id="ingressselector_1">▼ ingressSelectorとは<a class="headerlink" href="#ingressselector_1" title="Permanent link">&para;</a></h4>
 <p>全ての<code>istio-proxy</code>コンテナに関して、使用するGatewayの<code>.metadata.labels.istio</code>キーの値を設定する。</p>
@@ -28590,6 +28531,8 @@
 <p>デフォルト値は<code>false</code>である。</p>
 <p><code>istio-proxy</code>コンテナへのリクエストが無くなってから、Envoyのプロセスを終了する。</p>
 <p>具体的には、<code>downstream_cx_active</code>メトリクスの値 (アクティブなコネクション数) を監視し、<code>0</code>になり次第、Envoyのプロセスを終了する。</p>
+<p>オプションを有効化すると、<code>istio-proxy</code>コンテナの<code>.spec.containers[*].lifecycle.preStop.exec.command</code>キーに、<code>sleep</code>コマンドが挿入される。</p>
+<p><code>.spec.containers[*].lifecycle.postStart.exec.command</code>キーへの自動設定は、<code>.mesh.defaultConfig.holdApplicationUntilProxyStarts</code>キーで対応する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>

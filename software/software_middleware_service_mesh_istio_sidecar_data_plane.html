@@ -26520,8 +26520,16 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </blockquote>
 <h4 id="_4">▼ 起動／終了の順番の制御<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>アプリコンテナと<code>istio-proxy</code>コンテナの間で、起動／終了の順番を制御する必要がある。</p>
-<p><code>.spec.containers[*].lifecycle.preStop</code>キーや<code>.spec.containers[*].lifecycle.postStart</code>キーに自前のコマンドを定義して<code>istio-proxy</code>コンテナの起動／終了の順番を制御する必要がある。</p>
-<p>ただし、<code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code>変数を有効化するか、またはInitContainerによる<code>istio-proxy</code>コンテナを使用すると、これが不要になる。</p>
+<p><code>.spec.containers[*].lifecycle.postStart.exec.command</code>キーや<code>.spec.containers[*].lifecycle.preStop.exec.command</code>キーに自前のコマンドを定義して<code>istio-proxy</code>コンテナの起動／終了の順番を制御する必要がある。</p>
+<p>ただし、以下のいずれかで不要になる。</p>
+<ul>
+<li>通常の<code>istio-proxy</code>コンテナの場合<ul>
+<li><code>holdApplicationUntilProxyStarts</code>キーを<code>true</code>にし (<code>.spec.containers[*].lifecycle.postStart.exec.command</code>キーに対応)</li>
+<li><code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code>変数を<code>true</code>に設定する (<code>.spec.containers[*].lifecycle.preStop.exec.command</code>キーに対応)</li>
+</ul>
+</li>
+<li>InitContainerによる<code>istio-proxy</code>コンテナを使用する場合 (両方に対応)</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -26538,6 +26546,14 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <span class="w">        </span><span class="c1"># istio-proxyコンテナの設定を変更する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-proxy</span>
 <span class="w">          </span><span class="nt">lifecycle</span><span class="p">:</span>
+<span class="w">            </span><span class="c1"># istio-proxyコンテナ開始直後の処理</span>
+<span class="w">            </span><span class="nt">postStart</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">exec</span><span class="p">:</span>
+<span class="w">                </span><span class="c1"># istio-proxyコンテナが、必ずアプリコンテナよりも先に起動する。</span>
+<span class="w">                </span><span class="c1"># pilot-agentの起動完了を待機する。</span>
+<span class="w">                </span><span class="nt">command</span><span class="p">:</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">                    </span><span class="no">pilot-agent wait</span>
 <span class="w">            </span><span class="c1"># istio-proxyコンテナ終了直前の処理</span>
 <span class="w">            </span><span class="nt">preStop</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">exec</span><span class="p">:</span>
@@ -26549,14 +26565,6 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">                    </span><span class="no">sleep 5</span>
 <span class="w">                    </span><span class="no">while [ $(netstat -plnt | grep tcp | egrep -v &#39;envoy|pilot-agent&#39; | wc -l) -ne 0 ]; do sleep 1; done&quot;</span>
-<span class="w">            </span><span class="c1"># istio-proxyコンテナ開始直後の処理</span>
-<span class="w">            </span><span class="nt">postStart</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">exec</span><span class="p">:</span>
-<span class="w">                </span><span class="c1"># istio-proxyコンテナが、必ずアプリコンテナよりも先に起動する。</span>
-<span class="w">                </span><span class="c1"># pilot-agentの起動完了を待機する。</span>
-<span class="w">                </span><span class="nt">command</span><span class="p">:</span>
-<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">                    </span><span class="no">pilot-agent wait</span>
 <span class="w">      </span><span class="c1"># アプリコンテナとistio-proxyコンテナの両方が終了するのを待つ</span>
 <span class="w">      </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45</span>
 </code></pre></div>
@@ -26572,7 +26580,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <p>Istioでもこれをサポートしている。</p>
 <p><code>istio-proxy</code>コンテナのインジェクションの仕組みはそのままで、PodのマニフェストのPatch処理の内容をInitContainerのインジェクションに変更している。</p>
 <p>これにより、Podの作成時にInitContainerをインジェクションできるようになる。</p>
-<p>今まで、<code>.spec.containers[*].lifecycle.preStop</code>キーや<code>.spec.containers[*].lifecycle.postStart</code>キーに自前のコマンドを定義して<code>istio-proxy</code>コンテナの起動／終了の順番を制御する必要があった。</p>
+<p>今まで、<code>.spec.containers[*].lifecycle.preStop.exec.command</code>キーや<code>.spec.containers[*].lifecycle.postStart.exec.command</code>キーに自前のコマンドを定義して<code>istio-proxy</code>コンテナの起動／終了の順番を制御する必要があった。</p>
 <p>しかし、InitContainerではKubernetesが起動／終了の順番を制御してくれるため、設定が不要になる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>

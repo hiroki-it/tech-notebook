@@ -30744,6 +30744,14 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="c1"># istio-proxyコンテナの設定を変更する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-proxy</span>
 <span class="w">          </span><span class="nt">lifecycle</span><span class="p">:</span>
+<span class="w">            </span><span class="c1"># istio-proxyコンテナ開始直後の処理</span>
+<span class="w">            </span><span class="nt">postStart</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">exec</span><span class="p">:</span>
+<span class="w">                </span><span class="c1"># istio-proxyコンテナが、必ずアプリコンテナよりも先に起動する。</span>
+<span class="w">                </span><span class="c1"># pilot-agentの起動完了を待機する。</span>
+<span class="w">                </span><span class="nt">command</span><span class="p">:</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">                    </span><span class="no">pilot-agent wait</span>
 <span class="w">            </span><span class="c1"># istio-proxyコンテナ終了直前の処理</span>
 <span class="w">            </span><span class="nt">preStop</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">exec</span><span class="p">:</span>
@@ -30755,14 +30763,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">                    </span><span class="no">sleep 5</span>
 <span class="w">                    </span><span class="no">while [ $(netstat -plnt | grep tcp | egrep -v &#39;envoy|pilot-agent&#39; | wc -l) -ne 0 ]; do sleep 1; done&quot;</span>
-<span class="w">            </span><span class="c1"># istio-proxyコンテナ開始直後の処理</span>
-<span class="w">            </span><span class="nt">postStart</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">exec</span><span class="p">:</span>
-<span class="w">                </span><span class="c1"># istio-proxyコンテナが、必ずアプリコンテナよりも先に起動する。</span>
-<span class="w">                </span><span class="c1"># pilot-agentの起動完了を待機する。</span>
-<span class="w">                </span><span class="nt">command</span><span class="p">:</span>
-<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">                    </span><span class="no">pilot-agent wait</span>
 <span class="w">      </span><span class="c1"># アプリコンテナとistio-proxyコンテナの両方が終了するのを待つ</span>
 <span class="w">      </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45</span>
 </code></pre></div>

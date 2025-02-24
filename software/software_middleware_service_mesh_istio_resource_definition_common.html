@@ -26217,6 +26217,7 @@
 <h3 id="proxyistioioconfig">proxy.istio.io/config<a class="headerlink" href="#proxyistioioconfig" title="Permanent link">&para;</a></h3>
 <h4 id="proxyistioioconfig_1">▼ proxy.istio.io/configとは<a class="headerlink" href="#proxyistioioconfig_1" title="Permanent link">&para;</a></h4>
 <p><code>istio-proxy</code>コンテナの<code>envoy</code>プロセスの設定値を上書きし、ユーザー定義の値を設定する。</p>
+<p>これを使用するよりは、Istiodコントロールプレーンの<code>.meshConfig.defaultConfig</code>キーやProxyConfigの<code>.spec.environmentVariables</code>キーを使用したほうがいいかもしれない。</p>
 <h4 id="configpath">▼ configPath<a class="headerlink" href="#configpath" title="Permanent link">&para;</a></h4>
 <p>デフォルトでは、<code>./etc/istio/proxy</code>ディレクトリ配下に最終的な設定値ファイルを作成する。</p>
 <p><strong>＊実装例＊</strong></p>
