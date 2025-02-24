@@ -1644,9 +1644,9 @@ data:
 
 `istio-proxy`コンテナ内のEnvoyプロセスは、終了時にコネクションのドレイン処理を実施する。
 
-このコネクションのドレイン処理時間を設定する。
+このコネクションのドレイン処理時間で、新しいコネクションを受け入れ続ける時間を設定する。
 
-Podの`.metadata.annotations.proxy.istio.io/config.drainDuration`キーと同じ役割のため、同じ時間を設定する必要がある。
+Podの`.metadata.annotations.proxy.istio.io/config.drainDuration`キーで起こるレースコンディションを解決するための設定で、同じ値を設定するとよい。
 
 **＊実装例＊**
 
@@ -1666,5 +1666,6 @@ data:
 ```
 
 > - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80
+> - https://github.com/istio/istio/pull/35059#discussion_r711500175
 
 <br>

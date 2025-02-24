@@ -330,13 +330,11 @@ spec:
 
 `istio-proxy`コンテナ内のEnvoyプロセスは、終了時にコネクションのドレイン処理を実施する。
 
-このコネクションのドレイン処理時間を設定する。
+このコネクションのドレイン処理時間で、新しいコネクションを受け入れ続ける時間を設定する。
 
 Envoyの`--drain-time-s`オプションに相当する。
 
 設定した時間が短過ぎると、処理中のコネクションを終了することなく、強制的に切断してしまう。
-
-Podの`.mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION`変数と同じ役割のため、同じ時間を設定する必要がある。
 
 ```yaml
 apiVersion: apps/v1
@@ -354,10 +352,8 @@ spec:
           drainDuration: "45s"
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-drain_duration
-> - https://sreake.com/blog/istio-proxy-stop-behavior/
-> - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
 > - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80
+> - https://github.com/istio/istio/pull/35059#discussion_r711500175
 
 #### ▼ parentShutdownDuration
 
