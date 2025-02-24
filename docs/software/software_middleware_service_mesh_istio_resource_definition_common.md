@@ -334,6 +334,8 @@ Envoyの`--drain-time-s`オプションに相当する。
 
 設定した時間が短過ぎると、処理中のコネクションを終了することなく、強制的に切断してしまう。
 
+Podの`mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION`変数と同じ役割のため、同じ時間を設定する必要がある。
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment # もしくはPod

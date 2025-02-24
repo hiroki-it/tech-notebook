@@ -1540,6 +1540,8 @@ data:
 
 #### ▼ `EXIT_ON_ZERO_ACTIVE_CONNECTIONS`
 
+![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
+
 デフォルト値は`false`である。
 
 `istio-proxy`コンテナへのリクエストが無くなってから、Envoyのプロセスを終了する。
@@ -1627,6 +1629,8 @@ data:
 
 #### ▼ `MINIMUM_DRAIN_DURATION`
 
+![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
+
 デフォルト値は`5`である。
 
 `EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数が`true`な場合にのみ設定できる
@@ -1635,7 +1639,7 @@ data:
 
 このコネクションのドレイン処理時間を設定する。
 
-Podの`.metadata.annotations.proxy.istio.io/config.drainDuration`キーよりも長い時間を設定する必要がある。
+Podの`.metadata.annotations.proxy.istio.io/config.drainDuration`キーと同じ役割のため、同じ時間を設定する必要がある。
 
 ```yaml
 apiVersion: v1

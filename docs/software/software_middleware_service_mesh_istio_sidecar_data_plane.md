@@ -588,13 +588,13 @@ kubeletは、対象のポート番号でプロセスがリクエストを待ち�
 
 `(3)`
 
-: Envoyがコネクションのドレイン処理を実施する。
+: Envoyは、コネクションのドレイン処理を実施する。
 
     Podの`.metadata.annotations.proxy.istio.io/config.drainDuration`値 (デフォルト`5`秒) の待機時間だけ、リクエストを受信しながら移行していく。
 
 `(5)`
 
-: 現在のEnvoyは、プロセスのGraceful Drainモードを終了する。
+: Envoyは、プロセスのGraceful Drainモードを終了する。
 
 `(6)`
 
