@@ -320,11 +320,41 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 
+#### ▼ drainDuration
+
+![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
+
+デフォルト値は`45`である。
+
+Envoyのホットリスタート中にコネクションをどれインする時間を設定する。
+
+Envoyの`--drain-time-s`オプションに相当する。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment # もしくはPod
+metadata:
+  name: foo-deployment
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: foo-pod
+  template:
+    metadata:
+      annotations:
+        proxy.istio.io/config: |
+          drainDuration: "45s"
+```
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-drain_duration
+
 #### ▼ parentShutdownDuration
+
+執筆時点 (2023/10/31) ですでに廃止されている。
 
 `istio-proxy`コンテナ上のEnvoyの親プロセスを終了するまでに待機する時間を設定する。
 
-`istio-proxy`コンテナ自体の終了タイミングを決める`.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`キーよりも、最低`5`秒以上長くすると良い。
+Podの`.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`キーよりも、最低`5`秒以上長くすると良い。
 
 **＊実装例＊**
 
@@ -344,6 +374,7 @@ spec:
           parentShutdownDuration: "80s"
 ```
 
+> - https://zenn.dev/yatoum/articles/d927c58d74ff05
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 > - https://www.envoyproxy.io/docs/envoy/latest/operations/cli#cmdoption-parent-shutdown-time-s
 > - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
