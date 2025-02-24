@@ -716,7 +716,7 @@ PromQLを定義する。
 
 templatingセクションを有効化する。
 
-デフォルトで`true`である。
+デフォルト値は`true`である。
 
 ```yaml
 {"templating": {"enable": "true"}}

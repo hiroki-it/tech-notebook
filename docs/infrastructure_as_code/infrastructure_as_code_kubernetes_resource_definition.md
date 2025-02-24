@@ -1824,7 +1824,7 @@ spec:
 
 許否ルールを適用する通信タイプを設定する。
 
-デフォルトで`Ingress`タイプが設定される。
+デフォルト値は`Ingress`タイプが設定される。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -5993,7 +5993,7 @@ status:
 
 ServiceAccountのPod内のコンテナへのマウントを有効化する。
 
-デフォルトで`true`である。
+デフォルト値は`true`である。
 
 ```yaml
 apiVersion: v1

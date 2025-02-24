@@ -105,9 +105,9 @@ $ k3d cluster create foo-cluster --volume "registries.yaml:/etc/rancher/k3s/regi
 
 #### ▼ --wait
 
-kube-apiserverからリクエストが返却された上で、処理を完了させる。
+デフォルト値は`true`である。
 
-デフォルトで`true`である。
+kube-apiserverからリクエストが返却された上で、処理を完了させる。
 
 ```bash
 $ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1 --wait

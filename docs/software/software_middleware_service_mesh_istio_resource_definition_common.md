@@ -326,7 +326,7 @@ spec:
 
 デフォルト値は`45`である。
 
-Envoyのホットリスタート中にコネクションをどれインする時間を設定する。
+Envoyのホットリスタート中にコネクションをドレインする時間を設定する。
 
 Envoyの`--drain-time-s`オプションに相当する。
 
@@ -347,6 +347,8 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-drain_duration
+> - https://sreake.com/blog/istio-proxy-stop-behavior/
+> - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
 
 #### ▼ parentShutdownDuration
 

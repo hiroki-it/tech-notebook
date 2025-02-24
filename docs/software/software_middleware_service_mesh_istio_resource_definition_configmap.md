@@ -245,7 +245,7 @@ data:
 
 #### ▼ ALLOW_ANY (デフォルト)
 
-サービスメッシュ外へのリクエストの宛先を、デフォルトで`PassthroughCluster`として扱う。
+サービスメッシュ外へのリクエストの宛先を`PassthroughCluster`として扱う。
 
 また、ServiceEntryとして登録した宛先には固有の名前がつく。
 
@@ -267,7 +267,7 @@ data:
 
 #### ▼ REGISTRY_ONLY
 
-サービスメッシュ外へのリクエストの宛先を、デフォルトで`BlackHoleCluster` (`502 Bad Gateway`で通信負荷) として扱う。
+サービスメッシュ外へのリクエストの宛先を`BlackHoleCluster` (`502 Bad Gateway`で通信負荷) として扱う。
 
 また、ServiceEntryとして登録した宛先には固有の名前がつく。
 
@@ -1260,11 +1260,11 @@ spec:
 
 #### ▼ `EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`
 
+デフォルト値は`true`である。
+
 `503`ステータスが返信された場合に再試行しないようにする。
 
 再試行の結果で`istio-proxy`コンテナが`503`ステータスを返信する場合とは区別する。
-
-デフォルトで`true`である。
 
 ```yaml
 apiVersion: apps/v1
@@ -1286,11 +1286,11 @@ spec:
 
 #### ▼ `ENABLE_DEFERRED_CLUSTER_CREATION`
 
+デフォルト値は`true`である。
+
 リクエストがある場合にのみ、Envoyのクラスターを作成する。
 
 実際に使用されていないEnvoyのクラスターを作成しないことにより、ハードウェアリソースを節約できる。
-
-デフォルトで`true`である。
 
 ```yaml
 apiVersion: apps/v1
@@ -1311,9 +1311,9 @@ spec:
 
 #### ▼ `ENABLE_ENHANCED_RESOURCE_SCOPING`
 
-`meshConfig.discoverySelectors`キーを使用できるようにする。
+デフォルト値は`true`である。
 
-デフォルトで`true`である。
+`meshConfig.discoverySelectors`キーを使用できるようにする。
 
 ```yaml
 apiVersion: apps/v1
@@ -1334,11 +1334,11 @@ spec:
 
 #### ▼ `ENABLE_ENHANCED_DESTINATIONRULE_MERGE`
 
+デフォルト値は`true`である。
+
 複数のDestinationRuleで`.spec.exportTo`キーの対象のNamespaceが同じ場合、これらの設定をマージして処理する。
 
 もし対象のNamespaceが異なる場合、独立した設定として処理する。
-
-デフォルトで`true`である。
 
 ```yaml
 apiVersion: apps/v1
@@ -1359,13 +1359,13 @@ spec:
 
 #### ▼ `ENABLE_INBOUND_RETRY_POLICY`
 
+デフォルト値は`true`である。
+
 `istio-proxy`コンテナがインバウンド通信をアプリコンテナに送信するときの再試行を設定する。
 
 今後は、宛先`istio-proxy`コンテナがアプリコンテナに対してリトライできるようになる。
 
 `istio-proxy`コンテナ間の問題の切り分けがしやすくなる。
-
-デフォルトで`true`である。
 
 `false`の場合、送信元`istio-proxy`コンテナから宛先`istio-proxy`コンテナへ通信時に、送信元`istio-proxy`コンテナしかリトライできない。
 
@@ -1540,9 +1540,9 @@ data:
 
 #### ▼ `EXIT_ON_ZERO_ACTIVE_CONNECTIONS`
 
-ServiceからPod内のistio-proxyへのリクエストがなくなったら、istio-proxyコンテナを終了させるか否かを設定する。
+デフォルト値は`false`である。
 
-デフォルトで`false`である。
+ServiceからPod内のistio-proxyへのリクエストがなくなったら、istio-proxyコンテナを終了させるか否かを設定する。
 
 ```yaml
 apiVersion: v1
@@ -1580,9 +1580,9 @@ data:
 
 #### ▼ `ISTIO_META_DNS_AUTO_ALLOCATE`
 
-IPアドレスが設定されていないServiceEntryに対して、IPアドレスを自動的に設定する。
+デフォルト値は`false`である。
 
-デフォルトで`false`である。
+IPアドレスが設定されていないServiceEntryに対して、IPアドレスを自動的に設定する。
 
 ```yaml
 apiVersion: v1
@@ -1602,9 +1602,9 @@ data:
 
 #### ▼ `ISTIO_META_DNS_CAPTURE`
 
-istio-proxyでDNSのキャッシュを作成するか否かを設定する。
+デフォルト値は`false`である。
 
-デフォルトで`false`である。
+istio-proxyでDNSのキャッシュを作成するか否かを設定する。
 
 ```yaml
 apiVersion: v1
@@ -1621,5 +1621,20 @@ data:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
+
+#### ▼ `MINIMUM_DRAIN_DURATION`
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        MINIMUM_DRAIN_DURATION: "5s"
+```
 
 <br>

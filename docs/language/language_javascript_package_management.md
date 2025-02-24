@@ -450,9 +450,9 @@ $ yarn install --check-files
 
 #### ▼ --production
 
-`package.json`ファイルの`devDependencies`キーのパッケージをインストールしない。
+デフォルト値は`false`である。
 
-デフォルトで`false`である。
+`package.json`ファイルの`devDependencies`キーのパッケージをインストールしない。
 
 `NODE_ENV`変数に`production`を設定しても有効化できる。
 

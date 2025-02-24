@@ -25,7 +25,7 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 `(1)`
 
-: `istioctl`コマンドでIstioOperatorを指定する。IstioOperatorは、デフォルトで`istio-system`にIstioリソースを作成するようになっている。
+: `istioctl`コマンドでIstioOperatorを指定する。IstioOperatorは、デフォルト値は`istio-system`にIstioリソースを作成するようになっている。
 
 > - https://istio.io/latest/docs/setup/install/operator/
 

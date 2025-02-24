@@ -251,7 +251,7 @@ releases:
 
 `helm install`コマンド時にNamespaceが存在しない場合、これの作成を有効化するか否かを設定する。
 
-デフォルトで`true`になっており、Helmリリース前にNamespaceを自動的に作成するようになっている。
+デフォルト値は`true`になっており、Helmリリース前にNamespaceを自動的に作成するようになっている。
 
 ただし、Namespaceので出どころがわからなくなるため、Helmfileの`createNamespace`オプションは無効化し、Namespaceのマニフェストを定義しておく方が良い。
 
