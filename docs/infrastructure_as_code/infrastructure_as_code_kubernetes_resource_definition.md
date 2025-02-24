@@ -3123,13 +3123,14 @@ spec:
           # SpringBoot製Javaアプリのlivenessエンドポイント
           path: /actuator/health/liveness
           scheme: HTTP
-        initialDelaySeconds: 10
+        # 各設定のデフォルト値を示す
+        initialDelaySeconds: 0
         periodSeconds: 10
-        timeoutSeconds: 10
+        timeoutSeconds: 1
         successThreshold: 1
-        failureThreshold: 5
-        terminationGracePeriodSeconds: 10
-  terminationGracePeriodSeconds: 45
+        failureThreshold: 3
+        terminationGracePeriodSeconds: 30
+  terminationGracePeriodSeconds: 30
 ```
 
 > - https://www.ianlewis.org/jp/kubernetes-health-check
@@ -3216,6 +3217,8 @@ spec:
 
 #### ▼ failureThreshold
 
+デフォルト値は`3`である。
+
 コンテナのLivenessProbeヘルスチェックが失敗したとみなす試行回数を設定する。
 
 ```yaml
@@ -3233,7 +3236,9 @@ spec:
 
 > - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
 
-#### ▼ initialDelaySeconds
+#### ▼ initialDelaySecond
+
+デフォルト値は`0`である。
 
 初回のLivenessProbeヘルスチェックを開始するまでの待機時間を設定する。
 
@@ -3263,6 +3268,8 @@ spec:
 
 #### ▼ periodSeconds
 
+デフォルト値は`10`である。
+
 コンテナのLivenessProbeヘルスチェックの試行当たりの間隔を設定する。
 
 ```yaml
@@ -3282,6 +3289,8 @@ spec:
 > - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
 
 #### ▼ successThreshold
+
+デフォルト値は`1`である。
 
 LivenessProbeヘルスチェックの失敗後の再試行で、成功と判定する最小試行回数を設定する。
 
@@ -3322,13 +3331,13 @@ spec:
 
 #### ▼ terminationGracePeriodSeconds
 
+デフォルト値はPod単位の`.spec.terminationGracePeriodSeconds`キーを継承し、`30`である。
+
 コンテナの終了プロセスを開始するまで待機時間を設定する。
 
 この時間を超えてもコンテナを終了できていない場合は、コンテナを強制的に停止する。
 
 設定した時間が長すぎると、Pod全体の終了プロセスに時間がかかり、Podの削除までに時間がかかりすぎてしまう。
-
-なお、`.spec.terminationGracePeriodSeconds`キーでPod単位での待機時間を設定することもできる。
 
 ```yaml
 apiVersion: v1
@@ -3347,6 +3356,8 @@ spec:
 > - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
 
 #### ▼ timeoutSeconds
+
+デフォルト値は`1`である。
 
 コンテナのLivenessProbeヘルスチェックのタイムアウト時間を設定する。
 
@@ -3431,13 +3442,14 @@ spec:
           # SpringBoot製JavaアプリのReadinessエンドポイント
           path: /actuator/health/readiness
           scheme: HTTP
-        initialDelaySeconds: 10
+        # 各設定のデフォルト値を示す
+        initialDelaySeconds: 0
         periodSeconds: 10
-        timeoutSeconds: 10
+        timeoutSeconds: 1
         successThreshold: 1
-        failureThreshold: 5
-        terminationGracePeriodSeconds: 10
-  terminationGracePeriodSeconds: 45
+        failureThreshold: 3
+        terminationGracePeriodSeconds: 30
+  terminationGracePeriodSeconds: 30
 ```
 
 コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例：Javaのウォームアップ完了まで。Nginxの最初の設定ファイル読み込み完了まで。MySQLの最初のコネクション受信準備完了まで。) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。
@@ -3533,6 +3545,8 @@ spec:
 
 #### ▼ failureThreshold
 
+デフォルト値は`3`である。
+
 ReadinessProbeヘルスチェックが失敗したとみなす試行回数を設定する。
 
 ```yaml
@@ -3551,6 +3565,8 @@ spec:
 > - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
 
 #### ▼ initialDelaySeconds
+
+デフォルト値は`0`である。
 
 初回のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。
 
@@ -3579,6 +3595,8 @@ spec:
 
 #### ▼ periodSeconds
 
+デフォルト値は`10`である。
+
 ReadinessProbeヘルスチェックの試行当たりの間隔を設定する。
 
 ```yaml
@@ -3597,6 +3615,8 @@ spec:
 > - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
 
 #### ▼ successThreshold
+
+デフォルト値は`1`である。
 
 ReadinessProbeヘルスチェックの失敗後の再試行で、成功と判定する最小試行回数を設定する。
 
@@ -3639,13 +3659,13 @@ spec:
 
 #### ▼ terminationGracePeriodSeconds
 
+デフォルト値はPod単位の`.spec.terminationGracePeriodSeconds`キーを継承し、`30`である。
+
 コンテナの終了プロセスを開始するまで待機時間を設定する。
 
 この時間を超えてもPodを終了できていない場合は、コンテナを強制的に停止する。
 
 設定した時間が長すぎると、Pod全体の終了プロセスに時間がかかり、Podの削除までに時間がかかりすぎてしまう。
-
-なお、`.spec.terminationGracePeriodSeconds`キーでPod単位での待機時間を設定することもできる。
 
 ```yaml
 apiVersion: v1
@@ -3664,6 +3684,8 @@ spec:
 > - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
 
 #### ▼ timeoutSeconds
+
+デフォルト値は`1`である。
 
 コンテナのReadinessProbeヘルスチェックのタイムアウト時間を設定する。
 
