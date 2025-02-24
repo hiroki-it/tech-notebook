@@ -300,6 +300,8 @@ spec:
 
 ProxyConfigが最優先であり、これらの設定はマージされる。
 
+`.meshConfig.defaultConfig`キーにデフォルト値を設定しておき、ProxyConfigでNamespaceごとに上書きするのがよい。
+
 #### ▼ configPath
 
 デフォルトでは、`./etc/istio/proxy`ディレクトリ配下に最終的な設定値ファイルを作成する。

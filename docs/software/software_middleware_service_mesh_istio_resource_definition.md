@@ -2054,6 +2054,8 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 サービスメッシュ全体、特定Namespace、特定ワークロードの`istio-proxy`コンテナにて、ワーカースレッド数を設定する。
 
+`.meshConfig.defaultConfig`キーにデフォルト値を設定しておき、ProxyConfigでNamespaceごとに上書きするのがよい。
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: ProxyConfig
@@ -2071,6 +2073,8 @@ spec:
 ### environmentVariables
 
 サービスメッシュ全体、特定Namespace、特定ワークロードの`istio-proxy`コンテナにて、環境変数を設定する。
+
+`.meshConfig.defaultConfig`キーにデフォルト値を設定しておき、ProxyConfigでNamespaceごとに上書きするのがよい。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
