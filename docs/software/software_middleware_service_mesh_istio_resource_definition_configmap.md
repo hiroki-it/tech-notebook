@@ -1662,7 +1662,7 @@ data:
   mesh: |
     defaultConfig:
       proxyMetadata:
-        MINIMUM_DRAIN_DURATION: "5s"
+        MINIMUM_DRAIN_DURATION: "10s"
 ```
 
 > - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80

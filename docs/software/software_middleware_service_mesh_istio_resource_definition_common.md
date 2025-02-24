@@ -336,6 +336,8 @@ Envoyの`--drain-time-s`オプションに相当する。
 
 設定した時間が短過ぎると、処理中のコネクションを終了することなく、強制的に切断してしまう。
 
+レースコンディションを解決するための`.mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION`キーでも、同じ値を設定するとよい。
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment # もしくはPod
@@ -349,7 +351,7 @@ spec:
     metadata:
       annotations:
         proxy.istio.io/config: |
-          drainDuration: "45s"
+          drainDuration: "10s"
 ```
 
 > - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80

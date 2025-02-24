@@ -599,15 +599,11 @@ kubeletは、対象のポート番号でプロセスがリクエストを待ち�
 
     Podの`.metadata.annotations.proxy.istio.io/config.drainDuration`値 (デフォルト`5`秒) の待機時間だけ、リクエストを受信しながら移行していく。
 
-`(5)`
+`(4)`
 
 : Envoyは、プロセスのGraceful Drainモードを終了する。
 
-`(6)`
-
-: Graceful Drainモードの終了後、Podの`.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`キーによるGraceful Drainモード待機時間が完了する。
-
-`(7)`
+`(5)`
 
 : `istio-proxy`コンテナにSIGKILLシグナルを送信する。
 
