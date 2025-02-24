@@ -26242,7 +26242,7 @@
 <h4 id="drainduration">▼ drainDuration<a class="headerlink" href="#drainduration" title="Permanent link">&para;</a></h4>
 <p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
 <p>デフォルト値は<code>45</code>である。</p>
-<p>Envoyのホットリスタート中にコネクションをどれインする時間を設定する。</p>
+<p>Envoyのホットリスタート中にコネクションをドレインする時間を設定する。</p>
 <p>Envoyの<code>--drain-time-s</code>オプションに相当する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># もしくはPod</span>
@@ -26261,6 +26261,8 @@
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-drain_duration">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-drain_duration</a></li>
+<li><a href="https://sreake.com/blog/istio-proxy-stop-behavior/">https://sreake.com/blog/istio-proxy-stop-behavior/</a></li>
+<li><a href="https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy">https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy</a></li>
 </ul>
 </blockquote>
 <h4 id="parentshutdownduration">▼ parentShutdownDuration<a class="headerlink" href="#parentshutdownduration" title="Permanent link">&para;</a></h4>
