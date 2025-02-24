@@ -4892,6 +4892,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 起動／終了の順番の制御
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#initcontainer" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ InitContainerとして
@@ -5029,7 +5038,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       ヘルスチェック
     </span>
@@ -5182,7 +5191,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       実行オプションの渡し方
     </span>
@@ -25967,6 +25976,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 起動／終了の順番の制御
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#initcontainer" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ InitContainerとして
@@ -26104,7 +26122,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       ヘルスチェック
     </span>
@@ -26257,7 +26275,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       実行オプションの渡し方
     </span>
@@ -26500,14 +26518,59 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <li><a href="https://jimmysong.io/en/blog/istio-sidecar-traffic-types/">https://jimmysong.io/en/blog/istio-sidecar-traffic-types/</a></li>
 </ul>
 </blockquote>
+<h4 id="_4">▼ 起動／終了の順番の制御<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p><code>.spec.containers[*].lifecycle.preStop</code>キーや<code>.spec.containers[*].lifecycle.postStart</code>キーに自前のコマンドを定義して<code>istio-proxy</code>コンテナの起動／終了の順番を制御する必要がある。</p>
+<p>ただし、<code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code>変数を有効化するか、またはInitContainerによる<code>istio-proxy</code>コンテナを使用すると、これが不要になる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-deployment</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">        </span><span class="c1"># istio-proxyコンテナの設定を変更する。</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-proxy</span>
+<span class="w">          </span><span class="nt">lifecycle</span><span class="p">:</span>
+<span class="w">            </span><span class="c1"># istio-proxyコンテナ終了直前の処理</span>
+<span class="w">            </span><span class="nt">preStop</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">exec</span><span class="p">:</span>
+<span class="w">                </span><span class="c1"># istio-proxyコンテナが、必ずアプリコンテナよりも後に終了する。</span>
+<span class="w">                </span><span class="c1"># envoyプロセスとpilot-agentプロセスの終了を待機する。</span>
+<span class="w">                </span><span class="nt">command</span><span class="p">:</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/bin/bash&quot;</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-c&quot;</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">                    </span><span class="no">sleep 5</span>
+<span class="w">                    </span><span class="no">while [ $(netstat -plnt | grep tcp | egrep -v &#39;envoy|pilot-agent&#39; | wc -l) -ne 0 ]; do sleep 1; done&quot;</span>
+<span class="w">            </span><span class="c1"># istio-proxyコンテナ開始直後の処理</span>
+<span class="w">            </span><span class="nt">postStart</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">exec</span><span class="p">:</span>
+<span class="w">                </span><span class="c1"># istio-proxyコンテナが、必ずアプリコンテナよりも先に起動する。</span>
+<span class="w">                </span><span class="c1"># pilot-agentの起動完了を待機する。</span>
+<span class="w">                </span><span class="nt">command</span><span class="p">:</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">                    </span><span class="no">pilot-agent wait</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://sreake.com/blog/istio-proxy-stop-behavior/">https://sreake.com/blog/istio-proxy-stop-behavior/</a></li>
+<li><a href="https://umi0410.github.io/en/blog/devops/istio-exit-on-zero-active-connections/">https://umi0410.github.io/en/blog/devops/istio-exit-on-zero-active-connections/</a></li>
+</ul>
+</blockquote>
 <h4 id="initcontainer">▼ InitContainerとして<a class="headerlink" href="#initcontainer" title="Permanent link">&para;</a></h4>
 <p>Kubernetesの<code>v1.28</code>では、InitContainerでサイドカーを作成できるようになった。</p>
 <p><code>pilot-agent</code>コマンドの実行時に<code>ENABLE_NATIVE_SIDECARS</code>変数を渡せば良い。</p>
 <p>Istioでもこれをサポートしている。</p>
 <p><code>istio-proxy</code>コンテナのインジェクションの仕組みはそのままで、PodのマニフェストのPatch処理の内容をInitContainerのインジェクションに変更している。</p>
 <p>これにより、Podの作成時にInitContainerをインジェクションできるようになる。</p>
-<p>今まで、<code>.spec.containers[*].lifecycle.preStop</code>キーや<code>.spec.containers[*].lifecycle.postStart</code>キーに自前のコマンドを定義して<code>istio-proxy</code>コンテナの起動/終了の順番を制御する必要があった。</p>
-<p>しかし、InitContainerではKubernetesが起動/終了の順番を制御してくれるため、設定が不要になる。</p>
+<p>今まで、<code>.spec.containers[*].lifecycle.preStop</code>キーや<code>.spec.containers[*].lifecycle.postStart</code>キーに自前のコマンドを定義して<code>istio-proxy</code>コンテナの起動／終了の順番を制御する必要があった。</p>
+<p>しかし、InitContainerではKubernetesが起動／終了の順番を制御してくれるため、設定が不要になる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -26736,7 +26799,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_4">ヘルスチェック<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_5">ヘルスチェック<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="startprobe">▼ 自身のstartProbe<a class="headerlink" href="#startprobe" title="Permanent link">&para;</a></h4>
 <p><code>istio-proxy</code>コンテナは、<code>10</code>分以上起動が完了しないと、Podが終了する。</p>
 <blockquote>
@@ -26903,7 +26966,7 @@ istio_request_messages_total<span class="o">{</span>...<span class="o">}</span>
 </blockquote>
 <p><br></p>
 <h2 id="03-pilot-agent">03. pilot-agentコマンド<a class="headerlink" href="#03-pilot-agent" title="Permanent link">&para;</a></h2>
-<h3 id="_5">実行オプションの渡し方<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_6">実行オプションの渡し方<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p><code>istio-proxy</code>コンテナの起動時に引数として渡す。</p>
 <p>Podであれば、<code>.spec.containers[*].args</code>オプションを使用する。</p>
 <p><br></p>
