@@ -576,6 +576,8 @@ kubeletは、対象のポート番号でプロセスがリクエストを待ち�
 
 ### `istio-proxy`コンテナが終了するまでの仕組み
 
+![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
+
 `istio-proxy`コンテナは、Envoyプロセスを安全に停止する。
 
 `(1)`
@@ -603,8 +605,6 @@ kubeletは、対象のポート番号でプロセスがリクエストを待ち�
 `(7)`
 
 : `istio-proxy`コンテナにSIGKILLシグナルを送信する。
-
-![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
 
 > - https://sreake.com/blog/istio-proxy-stop-behavior/
 > - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy

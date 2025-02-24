@@ -1633,7 +1633,9 @@ data:
 
 デフォルト値は`5`である。
 
-`EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数が`true`な場合にのみ設定できる
+`EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数が`true`な場合にのみ設定できる。
+
+`false`の場合は、代わりに`.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`を設定する。
 
 `istio-proxy`コンテナ内のEnvoyプロセスは、終了時にコネクションのドレイン処理を実施する。
 

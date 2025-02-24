@@ -390,17 +390,17 @@ spec:
 
 #### ▼ terminationDrainDuration
 
-SIGKILLシグナルを`istio-proxy`コンテナに送信するまでに待機する時間を設定する。
+`EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数が`false`な場合にのみ設定できる。
 
-この待機時間を経た後に、SIGKILLシグナルを`istio-proxy`コンテナに送信する。
+`true`の場合は、代わりにPodの`mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION`変数を設定する。
 
-時間が長すぎると、`istio-proxy`コンテナの終了に必要な時間が長くなり、Deploymentのローリングアップデートに必要以上に時間がかかってしまう。
+`istio-proxy`コンテナ内のEnvoyプロセスは、終了時にコネクションのドレイン処理を実施する。
 
-時間が短すぎると、Envoyが終了するのを待たずに`istio-proxy`コンテナが終了してしまうため、Envoyがエラーになってしまう。
+このコネクションのドレイン処理時間を設定する。
 
 **＊実装例＊**
 
-`istio-proxy`コンテナを`75`秒後に終了し始める。
+`istio-proxy`コンテナを`5`秒後に終了し始める。
 
 ```yaml
 apiVersion: apps/v1
@@ -415,7 +415,7 @@ spec:
     metadata:
       annotations:
         proxy.istio.io/config: |
-          terminationDrainDuration: "75s"
+          terminationDrainDuration: "5s"
 ```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
