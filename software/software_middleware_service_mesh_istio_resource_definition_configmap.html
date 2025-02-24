@@ -28659,6 +28659,9 @@
 </ul>
 </blockquote>
 <h4 id="minimum_drain_duration">▼ <code>MINIMUM_DRAIN_DURATION</code><a class="headerlink" href="#minimum_drain_duration" title="Permanent link">&para;</a></h4>
+<p><code>istio-proxy</code>コンテナ内のEnvoyプロセスのドレイン処理を待機する時間を設定する。</p>
+<p>待機時間を過ぎると、<code>istio-proxy</code>コンテナを終了する。</p>
+<p>Podの<code>.metadata.annotations.proxy.istio.io/config.drainDuration</code>キーよりも長い時間を設定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
