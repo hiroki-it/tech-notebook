@@ -1608,6 +1608,8 @@ spec:
                 command:
                   - |
                     pilot-agent wait
+      # アプリコンテナとistio-proxyコンテナの両方が終了するのを待つ
+      terminationGracePeriodSeconds: 45
 ```
 
 > - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection

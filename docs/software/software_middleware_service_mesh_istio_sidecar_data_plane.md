@@ -229,6 +229,8 @@ Istioのサービスメッシュ外のネットワークからのインバウン
 
 #### ▼ 起動／終了の順番の制御
 
+アプリコンテナと`istio-proxy`コンテナの間で、起動／終了の順番を制御する必要がある。
+
 `.spec.containers[*].lifecycle.preStop`キーや`.spec.containers[*].lifecycle.postStart`キーに自前のコマンドを定義して`istio-proxy`コンテナの起動／終了の順番を制御する必要がある。
 
 ただし、`EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数を有効化するか、またはInitContainerによる`istio-proxy`コンテナを使用すると、これが不要になる。
@@ -269,6 +271,8 @@ spec:
                 command:
                   - |
                     pilot-agent wait
+      # アプリコンテナとistio-proxyコンテナの両方が終了するのを待つ
+      terminationGracePeriodSeconds: 45
 ```
 
 > - https://sreake.com/blog/istio-proxy-stop-behavior/
@@ -580,7 +584,7 @@ kubeletは、対象のポート番号でプロセスがリクエストを待ち�
 
 `(2)`
 
-: `terminationDrainDuration`値 (デフォルト`5`秒) によるGraceful Drainモード待機時間が開始する。
+: `.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`キーの値 (デフォルト`5`秒) によるGraceful Drainモード待機時間が開始する。
 
 `(3)`
 
@@ -598,7 +602,7 @@ kubeletは、対象のポート番号でプロセスがリクエストを待ち�
 
 `(6)`
 
-: Graceful Drainモードの終了後、`terminationDrainDuration`によるGraceful Drainモード待機時間が完了する。
+: Graceful Drainモードの終了後、`.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`キーによるGraceful Drainモード待機時間が完了する。
 
 `(7)`
 

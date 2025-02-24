@@ -290,9 +290,9 @@ spec:
 
 <br>
 
-### proxy.istio.io
+### proxy.istio.io/config
 
-#### ▼ proxy.istio.ioとは
+#### ▼ proxy.istio.io/configとは
 
 `istio-proxy`コンテナの`envoy`プロセスの設定値を上書きし、ユーザー定義の値を設定する。
 
@@ -324,7 +324,7 @@ spec:
 
 `istio-proxy`コンテナ上のEnvoyの親プロセスを終了するまでに待機する時間を設定する。
 
-`istio-proxy`コンテナ自体の終了タイミングを決める`terminationDrainDuration`キーよりも、最低`5`秒以上長くすると良い。
+`istio-proxy`コンテナ自体の終了タイミングを決める`.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`キーよりも、最低`5`秒以上長くすると良い。
 
 **＊実装例＊**
 
