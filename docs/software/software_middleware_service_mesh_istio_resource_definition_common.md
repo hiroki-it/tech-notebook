@@ -298,6 +298,8 @@ spec:
 
 これを使用するよりは、Istiodコントロールプレーンの`.meshConfig.defaultConfig`キーやProxyConfigの`.spec.environmentVariables`キーを使用したほうがいいかもしれない。
 
+ProxyConfigが最優先であり、これらの設定はマージされる。
+
 #### ▼ configPath
 
 デフォルトでは、`./etc/istio/proxy`ディレクトリ配下に最終的な設定値ファイルを作成する。
