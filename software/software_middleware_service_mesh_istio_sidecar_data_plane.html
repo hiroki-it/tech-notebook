@@ -26844,7 +26844,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p><code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>キーの値 (デフォルト<code>5</code>秒) によるGraceful Drainモード待機時間が開始する。</p>
+<p>Podの<code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>キーの値 (デフォルト<code>5</code>秒) によるGraceful Drainモード待機時間が開始する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -26853,7 +26853,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <dt><code>(4)</code></dt>
 <dd>
 <p>現在のEnvoyプロセスへの接続を新しいEnvoyに段階的に移行する。</p>
-<p>この時、現在のEnvoyプロセスはすぐに通信を閉じず、<code>drainDuration</code>値 (デフォルト<code>5</code>秒) による待機時間だけ、リクエストを受信しながら移行していく。</p>
+<p>この時、現在のEnvoyプロセスはすぐに通信を閉じず、Podの<code>.metadata.annotations.proxy.istio.io/config.drainDuration</code>値 (デフォルト<code>5</code>秒) による待機時間だけ、リクエストを受信しながら移行していく。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
@@ -26861,7 +26861,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
-<p>Graceful Drainモードの終了後、<code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>キーによるGraceful Drainモード待機時間が完了する。</p>
+<p>Graceful Drainモードの終了後、Podの<code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>キーによるGraceful Drainモード待機時間が完了する。</p>
 </dd>
 <dt><code>(7)</code></dt>
 <dd>

@@ -5351,6 +5351,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#drainduration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ drainDuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#parentshutdownduration" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ parentShutdownDuration
@@ -25874,6 +25883,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#drainduration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ drainDuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#parentshutdownduration" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ parentShutdownDuration
@@ -26221,9 +26239,34 @@
 <li><a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig</a></li>
 </ul>
 </blockquote>
+<h4 id="drainduration">▼ drainDuration<a class="headerlink" href="#drainduration" title="Permanent link">&para;</a></h4>
+<p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
+<p>デフォルト値は<code>45</code>である。</p>
+<p>Envoyのホットリスタート中にコネクションをどれインする時間を設定する。</p>
+<p>Envoyの<code>--drain-time-s</code>オプションに相当する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># もしくはPod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-deployment</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">proxy.istio.io/config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">drainDuration: &quot;45s&quot;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-drain_duration">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-drain_duration</a></li>
+</ul>
+</blockquote>
 <h4 id="parentshutdownduration">▼ parentShutdownDuration<a class="headerlink" href="#parentshutdownduration" title="Permanent link">&para;</a></h4>
+<p>執筆時点 (2023/10/31) ですでに廃止されている。</p>
 <p><code>istio-proxy</code>コンテナ上のEnvoyの親プロセスを終了するまでに待機する時間を設定する。</p>
-<p><code>istio-proxy</code>コンテナ自体の終了タイミングを決める<code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>キーよりも、最低<code>5</code>秒以上長くすると良い。</p>
+<p>Podの<code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>キーよりも、最低<code>5</code>秒以上長くすると良い。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># もしくはPod</span>
@@ -26241,6 +26284,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://zenn.dev/yatoum/articles/d927c58d74ff05">https://zenn.dev/yatoum/articles/d927c58d74ff05</a></li>
 <li><a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig</a></li>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/operations/cli#cmdoption-parent-shutdown-time-s">https://www.envoyproxy.io/docs/envoy/latest/operations/cli#cmdoption-parent-shutdown-time-s</a></li>
 <li><a href="https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy">https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy</a></li>
