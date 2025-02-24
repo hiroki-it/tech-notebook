@@ -1589,6 +1589,14 @@ spec:
         # istio-proxyコンテナの設定を変更する。
         - name: istio-proxy
           lifecycle:
+            # istio-proxyコンテナ開始直後の処理
+            postStart:
+              exec:
+                # istio-proxyコンテナが、必ずアプリコンテナよりも先に起動する。
+                # pilot-agentの起動完了を待機する。
+                command:
+                  - |
+                    pilot-agent wait
             # istio-proxyコンテナ終了直前の処理
             preStop:
               exec:
@@ -1600,14 +1608,6 @@ spec:
                   - |
                     sleep 5
                     while [ $(netstat -plnt | grep tcp | egrep -v 'envoy|pilot-agent' | wc -l) -ne 0 ]; do sleep 1; done"
-            # istio-proxyコンテナ開始直後の処理
-            postStart:
-              exec:
-                # istio-proxyコンテナが、必ずアプリコンテナよりも先に起動する。
-                # pilot-agentの起動完了を待機する。
-                command:
-                  - |
-                    pilot-agent wait
       # アプリコンテナとistio-proxyコンテナの両方が終了するのを待つ
       terminationGracePeriodSeconds: 45
 ```

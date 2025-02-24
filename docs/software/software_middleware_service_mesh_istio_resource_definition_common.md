@@ -296,6 +296,8 @@ spec:
 
 `istio-proxy`コンテナの`envoy`プロセスの設定値を上書きし、ユーザー定義の値を設定する。
 
+これを使用するよりは、Istiodコントロールプレーンの`.meshConfig.defaultConfig`キーやProxyConfigの`.spec.environmentVariables`キーを使用したほうがいいかもしれない。
+
 #### ▼ configPath
 
 デフォルトでは、`./etc/istio/proxy`ディレクトリ配下に最終的な設定値ファイルを作成する。

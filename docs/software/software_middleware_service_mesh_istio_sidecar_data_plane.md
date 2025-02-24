@@ -231,9 +231,14 @@ Istioのサービスメッシュ外のネットワークからのインバウン
 
 アプリコンテナと`istio-proxy`コンテナの間で、起動／終了の順番を制御する必要がある。
 
-`.spec.containers[*].lifecycle.preStop`キーや`.spec.containers[*].lifecycle.postStart`キーに自前のコマンドを定義して`istio-proxy`コンテナの起動／終了の順番を制御する必要がある。
+`.spec.containers[*].lifecycle.postStart.exec.command`キーや`.spec.containers[*].lifecycle.preStop.exec.command`キーに自前のコマンドを定義して`istio-proxy`コンテナの起動／終了の順番を制御する必要がある。
 
-ただし、`EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数を有効化するか、またはInitContainerによる`istio-proxy`コンテナを使用すると、これが不要になる。
+ただし、以下のいずれかで不要になる。
+
+- 通常の`istio-proxy`コンテナの場合
+  - `holdApplicationUntilProxyStarts`キーを`true`にし (`.spec.containers[*].lifecycle.postStart.exec.command`キーに対応)
+  - `EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数を`true`に設定する (`.spec.containers[*].lifecycle.preStop.exec.command`キーに対応)
+- InitContainerによる`istio-proxy`コンテナを使用する場合 (両方に対応)
 
 ```yaml
 apiVersion: apps/v1
@@ -252,6 +257,14 @@ spec:
         # istio-proxyコンテナの設定を変更する。
         - name: istio-proxy
           lifecycle:
+            # istio-proxyコンテナ開始直後の処理
+            postStart:
+              exec:
+                # istio-proxyコンテナが、必ずアプリコンテナよりも先に起動する。
+                # pilot-agentの起動完了を待機する。
+                command:
+                  - |
+                    pilot-agent wait
             # istio-proxyコンテナ終了直前の処理
             preStop:
               exec:
@@ -263,14 +276,6 @@ spec:
                   - |
                     sleep 5
                     while [ $(netstat -plnt | grep tcp | egrep -v 'envoy|pilot-agent' | wc -l) -ne 0 ]; do sleep 1; done"
-            # istio-proxyコンテナ開始直後の処理
-            postStart:
-              exec:
-                # istio-proxyコンテナが、必ずアプリコンテナよりも先に起動する。
-                # pilot-agentの起動完了を待機する。
-                command:
-                  - |
-                    pilot-agent wait
       # アプリコンテナとistio-proxyコンテナの両方が終了するのを待つ
       terminationGracePeriodSeconds: 45
 ```
@@ -290,7 +295,7 @@ Istioでもこれをサポートしている。
 
 これにより、Podの作成時にInitContainerをインジェクションできるようになる。
 
-今まで、`.spec.containers[*].lifecycle.preStop`キーや`.spec.containers[*].lifecycle.postStart`キーに自前のコマンドを定義して`istio-proxy`コンテナの起動／終了の順番を制御する必要があった。
+今まで、`.spec.containers[*].lifecycle.preStop.exec.command`キーや`.spec.containers[*].lifecycle.postStart.exec.command`キーに自前のコマンドを定義して`istio-proxy`コンテナの起動／終了の順番を制御する必要があった。
 
 しかし、InitContainerではKubernetesが起動／終了の順番を制御してくれるため、設定が不要になる。
 

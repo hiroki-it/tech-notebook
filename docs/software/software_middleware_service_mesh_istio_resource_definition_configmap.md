@@ -342,6 +342,8 @@ data:
 
 #### ▼ holdApplicationUntilProxyStarts
 
+`istio-proxy`コンテナが、必ずアプリコンテナよりも先に起動するか否かを設定する。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -353,6 +355,33 @@ data:
     defaultConfig:
       holdApplicationUntilProxyStarts: true
 ```
+
+> - https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB
+> - https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters
+
+オプションを有効化すると、`istio-proxy`コンテナの`.spec.containers[*].lifecycle.postStart.exec.command`キーに、`pilot-agent -wait`コマンドが挿入される。
+
+`.spec.containers[*].lifecycle.preStop.exec.command`キーへの自動設定は、`EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数で対応する。
+
+```yaml
+...
+
+spec:
+  containers:
+    - name: istio-proxy
+
+      ...
+
+      lifecycle:
+        postStart:
+          exec:
+            command: |
+              pilot-agent wait
+
+...
+```
+
+> - https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%85%8D%E7%BD%AE-sidecar-%E5%92%8C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F
 
 #### ▼ image
 
@@ -964,50 +993,6 @@ data:
 
 <br>
 
-### holdApplicationUntilProxyStarts
-
-#### ▼ holdApplicationUntilProxyStartsとは
-
-`istio-proxy`コンテナが、必ずアプリコンテナよりも先に起動するか否かを設定する。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    holdApplicationUntilProxyStarts: true
-```
-
-> - https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB
-> - https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters
-
-オプションを有効化すると、`istio-proxy`コンテナの`.spec.containers[*].lifecycle.postStart.exec.command`キーに、`pilot-agent -wait`コマンドが挿入される。
-
-```yaml
-...
-
-spec:
-  containers:
-    - name: istio-proxy
-
-      ...
-
-      lifecycle:
-        postStart:
-          exec:
-            command: |
-              pilot-agent wait
-
-...
-```
-
-> - https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%85%8D%E7%BD%AE-sidecar-%E5%92%8C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F
-
-<br>
-
 ### ingressSelector
 
 #### ▼ ingressSelectorとは
@@ -1555,6 +1540,10 @@ data:
 `istio-proxy`コンテナへのリクエストが無くなってから、Envoyのプロセスを終了する。
 
 具体的には、`downstream_cx_active`メトリクスの値 (アクティブなコネクション数) を監視し、`0`になり次第、Envoyのプロセスを終了する。
+
+オプションを有効化すると、`istio-proxy`コンテナの`.spec.containers[*].lifecycle.preStop.exec.command`キーに、`sleep`コマンドが挿入される。
+
+`.spec.containers[*].lifecycle.postStart.exec.command`キーへの自動設定は、`.mesh.defaultConfig.holdApplicationUntilProxyStarts`キーで対応する。
 
 **＊実装例＊**
 
