@@ -28618,8 +28618,8 @@
 <p><code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code>変数が<code>true</code>な場合にのみ設定できる。</p>
 <p><code>false</code>の場合は、代わりに<code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>を設定する。</p>
 <p><code>istio-proxy</code>コンテナ内のEnvoyプロセスは、終了時にコネクションのドレイン処理を実施する。</p>
-<p>このコネクションのドレイン処理時間を設定する。</p>
-<p>Podの<code>.metadata.annotations.proxy.istio.io/config.drainDuration</code>キーと同じ役割のため、同じ時間を設定する必要がある。</p>
+<p>このコネクションのドレイン処理時間で、新しいコネクションを受け入れ続ける時間を設定する。</p>
+<p>Podの<code>.metadata.annotations.proxy.istio.io/config.drainDuration</code>キーで起こるレースコンディションを解決するための設定で、同じ値を設定するとよい。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>Envoyプロセスのドレイン処理<code>5</code>秒間に実施する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -28636,6 +28636,7 @@
 <blockquote>
 <ul>
 <li><a href="https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80">https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80</a></li>
+<li><a href="https://github.com/istio/istio/pull/35059#discussion_r711500175">https://github.com/istio/istio/pull/35059#discussion_r711500175</a></li>
 </ul>
 </blockquote>
 <p><br></p>
