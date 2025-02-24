@@ -5080,9 +5080,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#graceful-drain" class="md-nav__link">
+  <a href="#istio-proxy_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Graceful Drainモード
+      istio-proxyコンテナが終了するまでの仕組み
     </span>
   </a>
   
@@ -26164,9 +26164,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#graceful-drain" class="md-nav__link">
+  <a href="#istio-proxy_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Graceful Drainモード
+      istio-proxyコンテナが終了するまでの仕組み
     </span>
   </a>
   
@@ -26835,25 +26835,21 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="graceful-drain">Graceful Drainモード<a class="headerlink" href="#graceful-drain" title="Permanent link">&para;</a></h3>
-<p><code>istio-proxy</code>コンテナは、自分自身を安全に停止する。</p>
+<h3 id="istio-proxy_2"><code>istio-proxy</code>コンテナが終了するまでの仕組み<a class="headerlink" href="#istio-proxy_2" title="Permanent link">&para;</a></h3>
+<p><code>istio-proxy</code>コンテナは、Envoyプロセスを安全に停止する。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>現在のEnvoyプロセスがホットリロードを実行し、新しいEnvoyプロセスが起動する。</p>
+<p><code>istio-proxy</code>コンテナはGraceful Drainモード待機時間を開始する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>Podの<code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>キーの値 (デフォルト<code>5</code>秒) によるGraceful Drainモード待機時間が開始する。</p>
+<p>Podの<code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>キーの値 (デフォルト<code>5</code>秒) だけ待機する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>現在のEnvoyプロセスは、Graceful Drainモードを開始する。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
-<p>現在のEnvoyプロセスへの接続を新しいEnvoyに段階的に移行する。</p>
-<p>この時、現在のEnvoyプロセスはすぐに通信を閉じず、Podの<code>.metadata.annotations.proxy.istio.io/config.drainDuration</code>値 (デフォルト<code>5</code>秒) による待機時間だけ、リクエストを受信しながら移行していく。</p>
+<p>Envoyがコネクションのドレイン処理を実施する。</p>
+<p>Podの<code>.metadata.annotations.proxy.istio.io/config.drainDuration</code>値 (デフォルト<code>5</code>秒) の待機時間だけ、リクエストを受信しながら移行していく。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
@@ -26865,7 +26861,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </dd>
 <dt><code>(7)</code></dt>
 <dd>
-<p>現行EnvoyプロセスにSIGKILLを送信する。</p>
+<p><code>istio-proxy</code>コンテナにSIGKILLシグナルを送信する。</p>
 </dd>
 </dl>
 <p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
@@ -26873,6 +26869,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <ul>
 <li><a href="https://sreake.com/blog/istio-proxy-stop-behavior/">https://sreake.com/blog/istio-proxy-stop-behavior/</a></li>
 <li><a href="https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy">https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy</a></li>
+<li><a href="https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80">https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80</a></li>
 </ul>
 </blockquote>
 <p><br></p>

@@ -28583,7 +28583,8 @@
 </blockquote>
 <h4 id="exit_on_zero_active_connections">▼ <code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code><a class="headerlink" href="#exit_on_zero_active_connections" title="Permanent link">&para;</a></h4>
 <p>デフォルト値は<code>false</code>である。</p>
-<p>ServiceからPod内のistio-proxyへのリクエストがなくなったら、istio-proxyコンテナを終了させるか否かを設定する。</p>
+<p><code>istio-proxy</code>コンテナへのリクエストが無くなってから、Envoyのプロセスを終了する。</p>
+<p>具体的には、<code>downstream_cx_active</code>メトリクスの値 (アクティブなコネクション数) を監視し、<code>0</code>になり次第、Envoyのプロセスを終了する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28598,6 +28599,7 @@
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars">https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars</a></li>
+<li><a href="https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80">https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80</a></li>
 </ul>
 </blockquote>
 <h4 id="istio_meta_cert_signer">▼ <code>ISTIO_META_CERT_SIGNER</code><a class="headerlink" href="#istio_meta_cert_signer" title="Permanent link">&para;</a></h4>
@@ -28659,8 +28661,10 @@
 </ul>
 </blockquote>
 <h4 id="minimum_drain_duration">▼ <code>MINIMUM_DRAIN_DURATION</code><a class="headerlink" href="#minimum_drain_duration" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナ内のEnvoyプロセスのドレイン処理を待機する時間を設定する。</p>
-<p>待機時間を過ぎると、<code>istio-proxy</code>コンテナを終了する。</p>
+<p>デフォルト値は<code>5</code>である。</p>
+<p><code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code>変数が<code>true</code>な場合にのみ設定できる</p>
+<p><code>istio-proxy</code>コンテナ内のEnvoyプロセスは、終了時にコネクションのドレイン処理を実施する。</p>
+<p>このコネクションのドレイン処理時間を設定する。</p>
 <p>Podの<code>.metadata.annotations.proxy.istio.io/config.drainDuration</code>キーよりも長い時間を設定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -28673,6 +28677,11 @@
 <span class="w">      </span><span class="no">proxyMetadata:</span>
 <span class="w">        </span><span class="no">MINIMUM_DRAIN_DURATION: &quot;5s&quot;</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80">https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 

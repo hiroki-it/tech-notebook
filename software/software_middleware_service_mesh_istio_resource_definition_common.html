@@ -26242,8 +26242,8 @@
 <h4 id="drainduration">▼ drainDuration<a class="headerlink" href="#drainduration" title="Permanent link">&para;</a></h4>
 <p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
 <p>デフォルト値は<code>45</code>である。</p>
-<p><code>istio-proxy</code>コンテナ内のEnvoyプロセスはホットリスタート中にドレイン処理を実施する。</p>
-<p>このドレイン処理の時間を設定する。</p>
+<p><code>istio-proxy</code>コンテナ内のEnvoyプロセスは、終了時にコネクションのドレイン処理を実施する。</p>
+<p>このコネクションのドレイン処理時間を設定する。</p>
 <p>Envoyの<code>--drain-time-s</code>オプションに相当する。</p>
 <p>設定した時間が短過ぎると、処理中のコネクションを終了することなく、強制的に切断してしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
@@ -26265,6 +26265,7 @@
 <li><a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-drain_duration">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-drain_duration</a></li>
 <li><a href="https://sreake.com/blog/istio-proxy-stop-behavior/">https://sreake.com/blog/istio-proxy-stop-behavior/</a></li>
 <li><a href="https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy">https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy</a></li>
+<li><a href="https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80">https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80</a></li>
 </ul>
 </blockquote>
 <h4 id="parentshutdownduration">▼ parentShutdownDuration<a class="headerlink" href="#parentshutdownduration" title="Permanent link">&para;</a></h4>
