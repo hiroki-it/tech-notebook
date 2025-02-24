@@ -687,7 +687,7 @@ data:
         envoyFileAccessLog
 ```
 
-Datadogに送信するためには、`mesh.extensionProviders[*].datadog`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
+Datadogに送信するためには、`.mesh.extensionProviders[*].datadog`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
 
 分散トレースの設定は以下の通りである。
 
@@ -780,7 +780,7 @@ data:
           path: /dev/stdout
 ```
 
-OpenTelemetryに送信するためには、`mesh.extensionProviders[*].opentelemetry`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
+OpenTelemetryに送信するためには、`.mesh.extensionProviders[*].opentelemetry`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
 
 分散トレースの設定は以下の通りである。
 
@@ -873,7 +873,7 @@ data:
           path: /dev/stdout
 ```
 
-ZipkinやJaegerに送信するためには、`mesh.extensionProviders[*].zipkin`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
+ZipkinやJaegerに送信するためには、`.mesh.extensionProviders[*].zipkin`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
 
 分散トレースの設定は以下の通りである。
 
@@ -1464,6 +1464,8 @@ spec:
 
 #### ▼ `BOOTSTRAP_XDS_AGENT`
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -1482,6 +1484,8 @@ data:
 #### ▼ `ENABLE_DEFERRED_CLUSTER_CREATION`
 
 `pilot-discovery`コマンドでも設定できるため、そちらを参照せよ。
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -1502,6 +1506,8 @@ data:
 
 `pilot-discovery`コマンドでも設定できるため、そちらを参照せよ。
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -1521,6 +1527,8 @@ data:
 #### ▼ `ENABLE_INBOUND_RETRY_POLICY`
 
 `pilot-discovery`コマンドでも設定できるため、そちらを参照せよ。
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -1548,6 +1556,8 @@ data:
 
 具体的には、`downstream_cx_active`メトリクスの値 (アクティブなコネクション数) を監視し、`0`になり次第、Envoyのプロセスを終了する。
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -1567,6 +1577,8 @@ data:
 #### ▼ `ISTIO_META_CERT_SIGNER`
 
 デフォルトで`""` (空文字) である。
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -1588,6 +1600,8 @@ data:
 デフォルト値は`false`である。
 
 IPアドレスが設定されていないServiceEntryに対して、IPアドレスを自動的に設定する。
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -1611,6 +1625,8 @@ data:
 
 istio-proxyでDNSのキャッシュを作成するか否かを設定する。
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -1631,7 +1647,7 @@ data:
 
 ![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
 
-デフォルト値は`5`である。
+デフォルト値は`5`である (対応する`.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`キーと同じ) 。
 
 `EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数が`true`な場合にのみ設定できる。
 
@@ -1642,6 +1658,10 @@ data:
 このコネクションのドレイン処理時間を設定する。
 
 Podの`.metadata.annotations.proxy.istio.io/config.drainDuration`キーと同じ役割のため、同じ時間を設定する必要がある。
+
+**＊実装例＊**
+
+Envoyプロセスのドレイン処理`5`秒間に実施する。
 
 ```yaml
 apiVersion: v1

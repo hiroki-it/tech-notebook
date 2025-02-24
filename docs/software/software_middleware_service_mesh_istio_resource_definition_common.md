@@ -334,7 +334,7 @@ Envoyの`--drain-time-s`オプションに相当する。
 
 設定した時間が短過ぎると、処理中のコネクションを終了することなく、強制的に切断してしまう。
 
-Podの`mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION`変数と同じ役割のため、同じ時間を設定する必要がある。
+Podの`.mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION`変数と同じ役割のため、同じ時間を設定する必要がある。
 
 ```yaml
 apiVersion: apps/v1
@@ -390,9 +390,11 @@ spec:
 
 #### ▼ terminationDrainDuration
 
+デフォルト値は`5`である (対応する`.mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION`キーと同じ) 。
+
 `EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数が`false`な場合にのみ設定できる。
 
-`true`の場合は、代わりにPodの`mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION`変数を設定する。
+`true`の場合は、代わりにPodの`.mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION`変数を設定する。
 
 `istio-proxy`コンテナ内のEnvoyプロセスは、終了時にコネクションのドレイン処理を実施する。
 
@@ -400,7 +402,7 @@ spec:
 
 **＊実装例＊**
 
-`istio-proxy`コンテナを`5`秒後に終了し始める。
+Envoyプロセスのドレイン処理`5`秒間に実施する。
 
 ```yaml
 apiVersion: apps/v1
