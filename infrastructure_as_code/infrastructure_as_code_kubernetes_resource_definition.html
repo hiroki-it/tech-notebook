@@ -20524,9 +20524,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#initialdelayseconds" class="md-nav__link">
+  <a href="#initialdelaysecond" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ initialDelaySeconds
+      ▼ initialDelaySecond
     </span>
   </a>
   
@@ -20653,7 +20653,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#initialdelayseconds_1" class="md-nav__link">
+  <a href="#initialdelayseconds" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ initialDelaySeconds
     </span>
@@ -32459,9 +32459,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#initialdelayseconds" class="md-nav__link">
+  <a href="#initialdelaysecond" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ initialDelaySeconds
+      ▼ initialDelaySecond
     </span>
   </a>
   
@@ -32588,7 +32588,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#initialdelayseconds_1" class="md-nav__link">
+  <a href="#initialdelayseconds" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ initialDelaySeconds
     </span>
@@ -37041,13 +37041,14 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">          </span><span class="c1"># SpringBoot製Javaアプリのlivenessエンドポイント</span>
 <span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/actuator/health/liveness</span>
 <span class="w">          </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP</span>
-<span class="w">        </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">        </span><span class="c1"># 各設定のデフォルト値を示す</span>
+<span class="w">        </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
 <span class="w">        </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
-<span class="w">        </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">        </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">        </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">        </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-<span class="w">        </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
-<span class="w">  </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45</span>
+<span class="w">        </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">        </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+<span class="w">  </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -37145,6 +37146,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </tbody>
 </table>
 <h4 id="failurethreshold">▼ failureThreshold<a class="headerlink" href="#failurethreshold" title="Permanent link">&para;</a></h4>
+<p>デフォルト値は<code>3</code>である。</p>
 <p>コンテナのLivenessProbeヘルスチェックが失敗したとみなす試行回数を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -37162,7 +37164,8 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes">https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes</a></li>
 </ul>
 </blockquote>
-<h4 id="initialdelayseconds">▼ initialDelaySeconds<a class="headerlink" href="#initialdelayseconds" title="Permanent link">&para;</a></h4>
+<h4 id="initialdelaysecond">▼ initialDelaySecond<a class="headerlink" href="#initialdelaysecond" title="Permanent link">&para;</a></h4>
+<p>デフォルト値は<code>0</code>である。</p>
 <p>初回のLivenessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
 <p>注意として、2回目以降のLivenessProbeによる再起動は、<code>.spec.containers[*].livenessProbe.terminationGracePeriodSeconds</code>キーで設定する。</p>
 <p>この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
@@ -37186,6 +37189,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </ul>
 </blockquote>
 <h4 id="periodseconds">▼ periodSeconds<a class="headerlink" href="#periodseconds" title="Permanent link">&para;</a></h4>
+<p>デフォルト値は<code>10</code>である。</p>
 <p>コンテナのLivenessProbeヘルスチェックの試行当たりの間隔を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -37205,6 +37209,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </ul>
 </blockquote>
 <h4 id="successthreshold">▼ successThreshold<a class="headerlink" href="#successthreshold" title="Permanent link">&para;</a></h4>
+<p>デフォルト値は<code>1</code>である。</p>
 <p>LivenessProbeヘルスチェックの失敗後の再試行で、成功と判定する最小試行回数を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -37238,10 +37243,10 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
 </code></pre></div>
 <h4 id="terminationgraceperiodseconds">▼ terminationGracePeriodSeconds<a class="headerlink" href="#terminationgraceperiodseconds" title="Permanent link">&para;</a></h4>
+<p>デフォルト値はPod単位の<code>.spec.terminationGracePeriodSeconds</code>キーを継承し、<code>30</code>である。</p>
 <p>コンテナの終了プロセスを開始するまで待機時間を設定する。</p>
 <p>この時間を超えてもコンテナを終了できていない場合は、コンテナを強制的に停止する。</p>
 <p>設定した時間が長すぎると、Pod全体の終了プロセスに時間がかかり、Podの削除までに時間がかかりすぎてしまう。</p>
-<p>なお、<code>.spec.terminationGracePeriodSeconds</code>キーでPod単位での待機時間を設定することもできる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37260,6 +37265,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </ul>
 </blockquote>
 <h4 id="timeoutseconds">▼ timeoutSeconds<a class="headerlink" href="#timeoutseconds" title="Permanent link">&para;</a></h4>
+<p>デフォルト値は<code>1</code>である。</p>
 <p>コンテナのLivenessProbeヘルスチェックのタイムアウト時間を設定する。</p>
 <p>この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -37331,13 +37337,14 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">          </span><span class="c1"># SpringBoot製JavaアプリのReadinessエンドポイント</span>
 <span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/actuator/health/readiness</span>
 <span class="w">          </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP</span>
-<span class="w">        </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">        </span><span class="c1"># 各設定のデフォルト値を示す</span>
+<span class="w">        </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
 <span class="w">        </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
-<span class="w">        </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">        </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">        </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">        </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-<span class="w">        </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
-<span class="w">  </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45</span>
+<span class="w">        </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">        </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+<span class="w">  </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
 </code></pre></div>
 <p>コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例：Javaのウォームアップ完了まで。Nginxの最初の設定ファイル読み込み完了まで。MySQLの最初のコネクション受信準備完了まで。) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。</p>
 <p>注意点として、ReadinessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。</p>
@@ -37416,6 +37423,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <span class="w">          </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP</span>
 </code></pre></div>
 <h4 id="failurethreshold_1">▼ failureThreshold<a class="headerlink" href="#failurethreshold_1" title="Permanent link">&para;</a></h4>
+<p>デフォルト値は<code>3</code>である。</p>
 <p>ReadinessProbeヘルスチェックが失敗したとみなす試行回数を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -37433,7 +37441,8 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes">https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes</a></li>
 </ul>
 </blockquote>
-<h4 id="initialdelayseconds_1">▼ initialDelaySeconds<a class="headerlink" href="#initialdelayseconds_1" title="Permanent link">&para;</a></h4>
+<h4 id="initialdelayseconds">▼ initialDelaySeconds<a class="headerlink" href="#initialdelayseconds" title="Permanent link">&para;</a></h4>
+<p>デフォルト値は<code>0</code>である。</p>
 <p>初回のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
 <p>注意として、2回目以降のReadinessProbeヘルスチェックによる再起動は、<code>.spec.containers[*].readinessProbe.gracePeriodSeconds</code>キーで設定する。</p>
 <p>この時間を過ぎてもコンテナのReadinessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
@@ -37456,6 +37465,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </ul>
 </blockquote>
 <h4 id="periodseconds_1">▼ periodSeconds<a class="headerlink" href="#periodseconds_1" title="Permanent link">&para;</a></h4>
+<p>デフォルト値は<code>10</code>である。</p>
 <p>ReadinessProbeヘルスチェックの試行当たりの間隔を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -37474,6 +37484,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </ul>
 </blockquote>
 <h4 id="successthreshold_1">▼ successThreshold<a class="headerlink" href="#successthreshold_1" title="Permanent link">&para;</a></h4>
+<p>デフォルト値は<code>1</code>である。</p>
 <p>ReadinessProbeヘルスチェックの失敗後の再試行で、成功と判定する最小試行回数を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -37512,10 +37523,10 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </ul>
 </blockquote>
 <h4 id="terminationgraceperiodseconds_1">▼ terminationGracePeriodSeconds<a class="headerlink" href="#terminationgraceperiodseconds_1" title="Permanent link">&para;</a></h4>
+<p>デフォルト値はPod単位の<code>.spec.terminationGracePeriodSeconds</code>キーを継承し、<code>30</code>である。</p>
 <p>コンテナの終了プロセスを開始するまで待機時間を設定する。</p>
 <p>この時間を超えてもPodを終了できていない場合は、コンテナを強制的に停止する。</p>
 <p>設定した時間が長すぎると、Pod全体の終了プロセスに時間がかかり、Podの削除までに時間がかかりすぎてしまう。</p>
-<p>なお、<code>.spec.terminationGracePeriodSeconds</code>キーでPod単位での待機時間を設定することもできる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37534,6 +37545,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </ul>
 </blockquote>
 <h4 id="timeoutseconds_1">▼ timeoutSeconds<a class="headerlink" href="#timeoutseconds_1" title="Permanent link">&para;</a></h4>
+<p>デフォルト値は<code>1</code>である。</p>
 <p>コンテナのReadinessProbeヘルスチェックのタイムアウト時間を設定する。</p>
 <p>この時間を過ぎてもコンテナのReadinessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
