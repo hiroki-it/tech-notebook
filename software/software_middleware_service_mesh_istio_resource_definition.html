@@ -5518,6 +5518,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#connectionpoolhttphttp2maxrequests" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ connectionPool.http.http2MaxRequests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#connectionpooltcpmaxconnections" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ connectionPool.tcp.maxConnections
@@ -27770,6 +27779,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#connectionpoolhttphttp2maxrequests" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ connectionPool.http.http2MaxRequests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#connectionpooltcpmaxconnections" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ connectionPool.tcp.maxConnections
@@ -29808,12 +29826,29 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">connectionPool</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">http</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">http1MaxPendingRequests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">        </span><span class="nt">http1MaxPendingRequests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4000</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings">https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings</a></li>
 <li><a href="https://qiita.com/sonq/items/4cee6f85f91ea7dfcbbf#http1maxpendingrequests">https://qiita.com/sonq/items/4cee6f85f91ea7dfcbbf#http1maxpendingrequests</a></li>
+</ul>
+</blockquote>
+<h4 id="connectionpoolhttphttp2maxrequests">▼ connectionPool.http.http2MaxRequests<a class="headerlink" href="#connectionpoolhttphttp2maxrequests" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">connectionPool</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">http</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">http2MaxRequests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4000</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=115">https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=115</a></li>
 </ul>
 </blockquote>
 <h4 id="connectionpooltcpmaxconnections">▼ connectionPool.tcp.maxConnections<a class="headerlink" href="#connectionpooltcpmaxconnections" title="Permanent link">&para;</a></h4>
@@ -31969,7 +32004,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="fault">▼ faultとは<a class="headerlink" href="#fault" title="Permanent link">&para;</a></h4>
 <p>発生させるフォールトインジェクションを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p><code>503</code>ステータスのエラーを<code>100</code>%発生させる。</p>
+<p><code>503</code>ステータスのエラーを<code>100</code>%の確率で発生させる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -31990,6 +32025,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
+<p><code>10</code>秒のレスポンスの遅延を<code>100</code>%の確率で発生させる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -31999,11 +32035,16 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">fault</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">delay</span><span class="p">:</span>
 <span class="w">            </span><span class="c1"># レスポンスの遅延時間</span>
-<span class="w">            </span><span class="nt">fixedDelay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">22s</span>
+<span class="w">            </span><span class="nt">fixedDelay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
 <span class="w">            </span><span class="c1"># 遅延レスポンスを発生させる割合</span>
 <span class="w">            </span><span class="nt">percentage</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=124">https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=124</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="spechttpmatch">.spec.http.match<a class="headerlink" href="#spechttpmatch" title="Permanent link">&para;</a></h3>
 <h4 id="match_1">▼ matchとは<a class="headerlink" href="#match_1" title="Permanent link">&para;</a></h4>
