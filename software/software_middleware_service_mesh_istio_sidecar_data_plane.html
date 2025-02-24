@@ -26519,6 +26519,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </ul>
 </blockquote>
 <h4 id="_4">▼ 起動／終了の順番の制御<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>アプリコンテナと<code>istio-proxy</code>コンテナの間で、起動／終了の順番を制御する必要がある。</p>
 <p><code>.spec.containers[*].lifecycle.preStop</code>キーや<code>.spec.containers[*].lifecycle.postStart</code>キーに自前のコマンドを定義して<code>istio-proxy</code>コンテナの起動／終了の順番を制御する必要がある。</p>
 <p>ただし、<code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code>変数を有効化するか、またはInitContainerによる<code>istio-proxy</code>コンテナを使用すると、これが不要になる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
@@ -26556,6 +26557,8 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <span class="w">                </span><span class="nt">command</span><span class="p">:</span>
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">                    </span><span class="no">pilot-agent wait</span>
+<span class="w">      </span><span class="c1"># アプリコンテナとistio-proxyコンテナの両方が終了するのを待つ</span>
+<span class="w">      </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -26841,7 +26844,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p><code>terminationDrainDuration</code>値 (デフォルト<code>5</code>秒) によるGraceful Drainモード待機時間が開始する。</p>
+<p><code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>キーの値 (デフォルト<code>5</code>秒) によるGraceful Drainモード待機時間が開始する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -26858,7 +26861,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
-<p>Graceful Drainモードの終了後、<code>terminationDrainDuration</code>によるGraceful Drainモード待機時間が完了する。</p>
+<p>Graceful Drainモードの終了後、<code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>キーによるGraceful Drainモード待機時間が完了する。</p>
 </dd>
 <dt><code>(7)</code></dt>
 <dd>
@@ -27000,7 +27003,7 @@ istio_request_messages_total<span class="o">{</span>...<span class="o">}</span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-25</span>
   </span>
 
     
