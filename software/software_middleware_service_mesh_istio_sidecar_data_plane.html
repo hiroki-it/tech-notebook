@@ -26506,7 +26506,8 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <p>Istioでもこれをサポートしている。</p>
 <p><code>istio-proxy</code>コンテナのインジェクションの仕組みはそのままで、PodのマニフェストのPatch処理の内容をInitContainerのインジェクションに変更している。</p>
 <p>これにより、Podの作成時にInitContainerをインジェクションできるようになる。</p>
-<p>今まで、<code>.spec.containers[*].lifecycle.preStop</code>キーや<code>.spec.containers[*].lifecycle.postStart</code>キーに自前のコマンドを定義して<code>istio-proxy</code>コンテナの起動/終了タイミングを制御する必要があったが、InitContainerではそれが不要になる。</p>
+<p>今まで、<code>.spec.containers[*].lifecycle.preStop</code>キーや<code>.spec.containers[*].lifecycle.postStart</code>キーに自前のコマンドを定義して<code>istio-proxy</code>コンテナの起動/終了の順番を制御する必要があった。</p>
+<p>しかし、InitContainerではKubernetesが起動/終了の順番を制御してくれるため、設定が不要になる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
