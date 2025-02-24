@@ -28582,6 +28582,7 @@
 </ul>
 </blockquote>
 <h4 id="exit_on_zero_active_connections">▼ <code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code><a class="headerlink" href="#exit_on_zero_active_connections" title="Permanent link">&para;</a></h4>
+<p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
 <p>デフォルト値は<code>false</code>である。</p>
 <p><code>istio-proxy</code>コンテナへのリクエストが無くなってから、Envoyのプロセスを終了する。</p>
 <p>具体的には、<code>downstream_cx_active</code>メトリクスの値 (アクティブなコネクション数) を監視し、<code>0</code>になり次第、Envoyのプロセスを終了する。</p>
@@ -28661,11 +28662,12 @@
 </ul>
 </blockquote>
 <h4 id="minimum_drain_duration">▼ <code>MINIMUM_DRAIN_DURATION</code><a class="headerlink" href="#minimum_drain_duration" title="Permanent link">&para;</a></h4>
+<p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
 <p>デフォルト値は<code>5</code>である。</p>
 <p><code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code>変数が<code>true</code>な場合にのみ設定できる</p>
 <p><code>istio-proxy</code>コンテナ内のEnvoyプロセスは、終了時にコネクションのドレイン処理を実施する。</p>
 <p>このコネクションのドレイン処理時間を設定する。</p>
-<p>Podの<code>.metadata.annotations.proxy.istio.io/config.drainDuration</code>キーよりも長い時間を設定する必要がある。</p>
+<p>Podの<code>.metadata.annotations.proxy.istio.io/config.drainDuration</code>キーと同じ役割のため、同じ時間を設定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>

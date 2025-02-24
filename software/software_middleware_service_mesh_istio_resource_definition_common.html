@@ -26246,6 +26246,7 @@
 <p>このコネクションのドレイン処理時間を設定する。</p>
 <p>Envoyの<code>--drain-time-s</code>オプションに相当する。</p>
 <p>設定した時間が短過ぎると、処理中のコネクションを終了することなく、強制的に切断してしまう。</p>
+<p>Podの<code>mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION</code>変数と同じ役割のため、同じ時間を設定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># もしくはPod</span>
 <span class="nt">metadata</span><span class="p">:</span>
