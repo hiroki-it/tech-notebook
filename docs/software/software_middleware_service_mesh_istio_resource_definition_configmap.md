@@ -1542,7 +1542,9 @@ data:
 
 デフォルト値は`false`である。
 
-ServiceからPod内のistio-proxyへのリクエストがなくなったら、istio-proxyコンテナを終了させるか否かを設定する。
+`istio-proxy`コンテナへのリクエストが無くなってから、Envoyのプロセスを終了する。
+
+具体的には、`downstream_cx_active`メトリクスの値 (アクティブなコネクション数) を監視し、`0`になり次第、Envoyのプロセスを終了する。
 
 ```yaml
 apiVersion: v1
@@ -1558,6 +1560,7 @@ data:
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80
 
 #### ▼ `ISTIO_META_CERT_SIGNER`
 
@@ -1624,9 +1627,13 @@ data:
 
 #### ▼ `MINIMUM_DRAIN_DURATION`
 
-`istio-proxy`コンテナ内のEnvoyプロセスのドレイン処理を待機する時間を設定する。
+デフォルト値は`5`である。
 
-待機時間を過ぎると、`istio-proxy`コンテナを終了する。
+`EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数が`true`な場合にのみ設定できる
+
+`istio-proxy`コンテナ内のEnvoyプロセスは、終了時にコネクションのドレイン処理を実施する。
+
+このコネクションのドレイン処理時間を設定する。
 
 Podの`.metadata.annotations.proxy.istio.io/config.drainDuration`キーよりも長い時間を設定する必要がある。
 
@@ -1642,5 +1649,7 @@ data:
       proxyMetadata:
         MINIMUM_DRAIN_DURATION: "5s"
 ```
+
+> - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80
 
 <br>

@@ -574,27 +574,23 @@ kubeletは、対象のポート番号でプロセスがリクエストを待ち�
 
 <br>
 
-### Graceful Drainモード
+### `istio-proxy`コンテナが終了するまでの仕組み
 
-`istio-proxy`コンテナは、自分自身を安全に停止する。
+`istio-proxy`コンテナは、Envoyプロセスを安全に停止する。
 
 `(1)`
 
-: 現在のEnvoyプロセスがホットリロードを実行し、新しいEnvoyプロセスが起動する。
+: `istio-proxy`コンテナはGraceful Drainモード待機時間を開始する。
 
 `(2)`
 
-: Podの`.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`キーの値 (デフォルト`5`秒) によるGraceful Drainモード待機時間が開始する。
+: Podの`.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`キーの値 (デフォルト`5`秒) だけ待機する。
 
 `(3)`
 
-: 現在のEnvoyプロセスは、Graceful Drainモードを開始する。
+: Envoyがコネクションのドレイン処理を実施する。
 
-`(4)`
-
-: 現在のEnvoyプロセスへの接続を新しいEnvoyに段階的に移行する。
-
-     この時、現在のEnvoyプロセスはすぐに通信を閉じず、Podの`.metadata.annotations.proxy.istio.io/config.drainDuration`値 (デフォルト`5`秒) による待機時間だけ、リクエストを受信しながら移行していく。
+    Podの`.metadata.annotations.proxy.istio.io/config.drainDuration`値 (デフォルト`5`秒) の待機時間だけ、リクエストを受信しながら移行していく。
 
 `(5)`
 
@@ -606,12 +602,13 @@ kubeletは、対象のポート番号でプロセスがリクエストを待ち�
 
 `(7)`
 
-: 現行EnvoyプロセスにSIGKILLを送信する。
+: `istio-proxy`コンテナにSIGKILLシグナルを送信する。
 
 ![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
 
 > - https://sreake.com/blog/istio-proxy-stop-behavior/
 > - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
+> - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80
 
 <br>
 

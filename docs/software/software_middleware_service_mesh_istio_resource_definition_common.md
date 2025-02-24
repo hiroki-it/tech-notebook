@@ -326,9 +326,9 @@ spec:
 
 デフォルト値は`45`である。
 
-`istio-proxy`コンテナ内のEnvoyプロセスはホットリスタート中にドレイン処理を実施する。
+`istio-proxy`コンテナ内のEnvoyプロセスは、終了時にコネクションのドレイン処理を実施する。
 
-このドレイン処理の時間を設定する。
+このコネクションのドレイン処理時間を設定する。
 
 Envoyの`--drain-time-s`オプションに相当する。
 
@@ -353,6 +353,7 @@ spec:
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-drain_duration
 > - https://sreake.com/blog/istio-proxy-stop-behavior/
 > - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
+> - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80
 
 #### ▼ parentShutdownDuration
 
