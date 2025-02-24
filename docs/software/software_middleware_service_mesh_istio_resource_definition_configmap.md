@@ -1624,6 +1624,12 @@ data:
 
 #### ▼ `MINIMUM_DRAIN_DURATION`
 
+`istio-proxy`コンテナ内のEnvoyプロセスのドレイン処理を待機する時間を設定する。
+
+待機時間を過ぎると、`istio-proxy`コンテナを終了する。
+
+Podの`.metadata.annotations.proxy.istio.io/config.drainDuration`キーよりも長い時間を設定する必要がある。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
