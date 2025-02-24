@@ -227,6 +227,53 @@ Istioのサービスメッシュ外のネットワークからのインバウン
 > - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 > - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/
 
+#### ▼ 起動／終了の順番の制御
+
+`.spec.containers[*].lifecycle.preStop`キーや`.spec.containers[*].lifecycle.postStart`キーに自前のコマンドを定義して`istio-proxy`コンテナの起動／終了の順番を制御する必要がある。
+
+ただし、`EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数を有効化するか、またはInitContainerによる`istio-proxy`コンテナを使用すると、これが不要になる。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo-deployment
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: foo-pod
+  template:
+    spec:
+      containers:
+        - name: app
+          image: app
+        # istio-proxyコンテナの設定を変更する。
+        - name: istio-proxy
+          lifecycle:
+            # istio-proxyコンテナ終了直前の処理
+            preStop:
+              exec:
+                # istio-proxyコンテナが、必ずアプリコンテナよりも後に終了する。
+                # envoyプロセスとpilot-agentプロセスの終了を待機する。
+                command:
+                  - "/bin/bash"
+                  - "-c"
+                  - |
+                    sleep 5
+                    while [ $(netstat -plnt | grep tcp | egrep -v 'envoy|pilot-agent' | wc -l) -ne 0 ]; do sleep 1; done"
+            # istio-proxyコンテナ開始直後の処理
+            postStart:
+              exec:
+                # istio-proxyコンテナが、必ずアプリコンテナよりも先に起動する。
+                # pilot-agentの起動完了を待機する。
+                command:
+                  - |
+                    pilot-agent wait
+```
+
+> - https://sreake.com/blog/istio-proxy-stop-behavior/
+> - https://umi0410.github.io/en/blog/devops/istio-exit-on-zero-active-connections/
+
 #### ▼ InitContainerとして
 
 Kubernetesの`v1.28`では、InitContainerでサイドカーを作成できるようになった。
@@ -239,9 +286,9 @@ Istioでもこれをサポートしている。
 
 これにより、Podの作成時にInitContainerをインジェクションできるようになる。
 
-今まで、`.spec.containers[*].lifecycle.preStop`キーや`.spec.containers[*].lifecycle.postStart`キーに自前のコマンドを定義して`istio-proxy`コンテナの起動/終了の順番を制御する必要があった。
+今まで、`.spec.containers[*].lifecycle.preStop`キーや`.spec.containers[*].lifecycle.postStart`キーに自前のコマンドを定義して`istio-proxy`コンテナの起動／終了の順番を制御する必要があった。
 
-しかし、InitContainerではKubernetesが起動/終了の順番を制御してくれるため、設定が不要になる。
+しかし、InitContainerではKubernetesが起動／終了の順番を制御してくれるため、設定が不要になる。
 
 ```yaml
 apiVersion: v1
