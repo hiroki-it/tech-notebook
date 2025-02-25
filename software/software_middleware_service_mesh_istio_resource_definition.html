@@ -32225,7 +32225,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>再試行する失敗理由を設定する。</p>
 <p><code>istio-proxy</code>コンテナは、レスポンスの<code>x-envoy-retry-on</code>ヘッダーに割り当てるため、これの値を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>デフォルトでは、再試行の条件は<code>connect-failure,refused-stream,unavailable,503</code>である。</p>
+<p>デフォルトでは、再試行の条件は<code>connect-failure,refused-stream,unavailable</code>である。</p>
+<p><code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code>変数を<code>true</code>にすると、元はデフォルト値であった<code>503</code>を設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -32233,7 +32234,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">http</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">retries</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">retryOn</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;connect-failure,refused-stream,unavailable,503&quot;</span>
+<span class="w">        </span><span class="nt">retryOn</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;connect-failure,refused-stream,unavailable&quot;</span>
 </code></pre></div>
 <table>
 <thead>
@@ -32255,16 +32256,13 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <td><code>unavailable</code></td>
 <td>宛先<code>istio-proxy</code>コンテナまたはアプリコンテナgRPCの<code>Unavailable</code> (<code>14</code>) ステータスを返信した。</td>
 </tr>
-<tr>
-<td><code>503</code></td>
-<td>再試行に失敗した場合に、宛先<code>istio-proxy</code>コンテナが送信元に返却するステータスコードである。</td>
-</tr>
 </tbody>
 </table>
 <blockquote>
 <ul>
 <li><a href="https://sreake.com/blog/istio/">https://sreake.com/blog/istio/</a></li>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on</a></li>
+<li><a href="https://github.com/istio/istio/issues/50506#issuecomment-2230102675">https://github.com/istio/istio/issues/50506#issuecomment-2230102675</a></li>
 </ul>
 </blockquote>
 <p><br></p>

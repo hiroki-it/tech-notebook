@@ -28304,8 +28304,10 @@
 </blockquote>
 <h4 id="exclude_unsafe_503_from_default_retry">▼ <code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code><a class="headerlink" href="#exclude_unsafe_503_from_default_retry" title="Permanent link">&para;</a></h4>
 <p>デフォルト値は<code>true</code>である。</p>
-<p><code>503</code>ステータスが返信された場合に再試行しないようにする。</p>
-<p>再試行の結果で<code>istio-proxy</code>コンテナが<code>503</code>ステータスを返信する場合とは区別する。</p>
+<p>POSTリクエストの結果で、アプリコンテナから<code>503</code>ステータスが返信された場合に、処理失敗とは限らない。</p>
+<p>この場合に再試行すると結果的に二重で処理が実行されてしまう。</p>
+<p>そのため、アプリコンテナから<code>503</code>ステータスが返信された場合は再試行しないようにする。</p>
+<p>なお、再試行の結果で<code>istio-proxy</code>コンテナが<code>503</code>ステータスを返信する場合とは区別する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28323,6 +28325,7 @@
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
 <li><a href="https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries">https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries</a></li>
+<li><a href="https://github.com/istio/istio/issues/50506#issuecomment-2230102675">https://github.com/istio/istio/issues/50506#issuecomment-2230102675</a></li>
 </ul>
 </blockquote>
 <h4 id="enable_deferred_cluster_creation">▼ <code>ENABLE_DEFERRED_CLUSTER_CREATION</code><a class="headerlink" href="#enable_deferred_cluster_creation" title="Permanent link">&para;</a></h4>
