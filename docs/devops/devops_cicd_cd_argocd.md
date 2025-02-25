@@ -73,7 +73,15 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 <br>
 
-## 04. redis-server
+## 04. applicationset-controller
+
+ApplicationSetリソースのReconciliationを実行する。
+
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/
+
+<br>
+
+## 05. redis-server
 
 > - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
 > - https://weseek.co.jp/tech/95/
@@ -82,7 +90,7 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 <br>
 
-## 05. dex-server
+## 06. dex-server
 
 ### dex-serverとは
 
@@ -94,7 +102,7 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 <br>
 
-## 06. argocd-server (argocd-apiserver)
+## 07. argocd-server (argocd-apiserver)
 
 ### argocd-serverとは
 
@@ -139,7 +147,7 @@ Argo Rolloutsをダッシュボードで操作する場合、執筆時点 (2023/
 
 <br>
 
-## 07. image-updater
+## 08. image-updater
 
 ### image-updaterとは
 
@@ -194,7 +202,7 @@ $ kubectl -it exec foo-argocd-repo-server \
 
 <br>
 
-## 08. ユースケース
+## 09. ユースケース
 
 ### 共通
 

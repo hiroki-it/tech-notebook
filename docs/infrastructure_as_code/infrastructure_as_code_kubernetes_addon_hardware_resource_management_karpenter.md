@@ -583,9 +583,9 @@ module "eks_iam_karpenter_controller" {
 
 Podの特に`resources`キーで、上限 (`limits`) が設定されていないと、使用量がバーストする。
 
-その場合、Karpenterの作成したNodeのメモリ量を超え、OOMキーによって他のPodが終了する。
+その場合、Karpenterの作成したNodeのメモリ量を超え、NodeのSystemOOMイベントによって他のPodが終了してしまう。
 
-メモリをGuaranteed QoSとして、上限 (`limits`) = 下限 (`requests`) のようにメモリを設定すると、これを避けられる。
+Podのメモリで上限 (`limits`) = 下限 (`requests`) のように設定する (Guaranteed QoS) と、OOMキラーを避けられる。
 
 > - https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html
 

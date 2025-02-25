@@ -211,10 +211,25 @@ Kubernetesリソースを配置するサーバーのこと。
 
 #### ▼ ライフサイクルフェーズ
 
+kubeletは、Nodeのライフサイクルフェーズを設定する。
+
 | フェーズ名 | 説明                                                      |
 | ---------- | --------------------------------------------------------- |
 | Ready      | NodeがPodをスケジューリング可能な状態であることを表す。   |
 | NotReady   | NodeがPodをスケジューリング不可能な状態であることを表す。 |
+
+#### ▼ イベント
+
+| イベント名              | 説明                                                                                                                                                                                  |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| NodeHasSufficientMemory |                                                                                                                                                                                       |
+| NodeHasSufficientPID    |                                                                                                                                                                                       |
+| NodeNotReady            |                                                                                                                                                                                       |
+| NodeReady               |                                                                                                                                                                                       |
+| Starting                |                                                                                                                                                                                       |
+| SystemOOM               | Podの要求するメモリ量が多すぎて、Nodeのメモリ不足が起こったことを表す。Podのメモリで上限 (`limits`) = 下限 (`requests`) のように設定する (Guaranteed QoS) と、SystemOOMを避けられる。 |
+
+> - https://www.reddit.com/r/kubernetes/comments/xc5i9w/keep_running_into_system_oom_encountered_how_to/
 
 <br>
 
@@ -296,7 +311,7 @@ status:
 
 #### ▼ Podのコンディション
 
-Podのライフサイクルのフェーズは、`.status.conditions`キーにフェーズの詳細を持つ。
+Podのライフサイクルのフェーズは、`.status.conditions`キーにコンディション持つ。
 
 ```yaml
 status:
