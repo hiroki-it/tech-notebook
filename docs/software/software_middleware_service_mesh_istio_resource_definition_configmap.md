@@ -1314,9 +1314,13 @@ spec:
 
 デフォルト値は`true`である。
 
-`503`ステータスが返信された場合に再試行しないようにする。
+POSTリクエストの結果で、アプリコンテナから`503`ステータスが返信された場合に、処理失敗とは限らない。
 
-再試行の結果で`istio-proxy`コンテナが`503`ステータスを返信する場合とは区別する。
+この場合に再試行すると結果的に二重で処理が実行されてしまう。
+
+そのため、アプリコンテナから`503`ステータスが返信された場合は再試行しないようにする。
+
+なお、再試行の結果で`istio-proxy`コンテナが`503`ステータスを返信する場合とは区別する。
 
 ```yaml
 apiVersion: apps/v1
@@ -1335,6 +1339,7 @@ spec:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 > - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
+> - https://github.com/istio/istio/issues/50506#issuecomment-2230102675
 
 #### ▼ `ENABLE_DEFERRED_CLUSTER_CREATION`
 

@@ -3324,7 +3324,9 @@ spec:
 
 **＊実装例＊**
 
-デフォルトでは、再試行の条件は`connect-failure,refused-stream,unavailable,503`である。
+デフォルトでは、再試行の条件は`connect-failure,refused-stream,unavailable`である。
+
+`EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`変数を`true`にすると、元はデフォルト値であった`503`を設定できる。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3334,7 +3336,7 @@ metadata:
 spec:
   http:
     - retries:
-        retryOn: "connect-failure,refused-stream,unavailable,503"
+        retryOn: "connect-failure,refused-stream,unavailable"
 ```
 
 | 設定              | 起こる状況                                                                                        |
@@ -3342,10 +3344,10 @@ spec:
 | `connect-failure` | 宛先`istio-proxy`コンテナまたはアプリコンテナへの接続でタイムアウトが起こった。                   |
 | `refused-stream`  | 宛先`istio-proxy`コンテナまたはアプリコンテナが`REFUSED_STREAM`エラーコードで接続をリセットした。 |
 | `unavailable`     | 宛先`istio-proxy`コンテナまたはアプリコンテナgRPCの`Unavailable` (`14`) ステータスを返信した。    |
-| `503`             | 再試行に失敗した場合に、宛先`istio-proxy`コンテナが送信元に返却するステータスコードである。       |
 
 > - https://sreake.com/blog/istio/
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
+> - https://github.com/istio/istio/issues/50506#issuecomment-2230102675
 
 <br>
 
