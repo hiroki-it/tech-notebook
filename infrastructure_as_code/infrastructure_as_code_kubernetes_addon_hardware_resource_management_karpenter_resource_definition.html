@@ -20519,6 +20519,30 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#05-podmetadataannotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. Podの.metadata.annotationsキー
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05. Podの.metadata.annotationsキー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#karpentershdo-not-disrupt" class="md-nav__link">
+    <span class="md-ellipsis">
+      karpenter.sh/do-not-disrupt
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -26357,6 +26381,30 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#05-podmetadataannotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. Podの.metadata.annotationsキー
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05. Podの.metadata.annotationsキー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#karpentershdo-not-disrupt" class="md-nav__link">
+    <span class="md-ellipsis">
+      karpenter.sh/do-not-disrupt
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -26735,7 +26783,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="limits">limits<a class="headerlink" href="#limits" title="Permanent link">&para;</a></h3>
-<p>Karpenterがプロビジョニング可能なEC2 Nodeをハードウェアリソース合計量で設定する。</p>
+<p>プロビジョニングするEC2 Nodeが持つハードウェアリソース (CPU、メモリ) の上限を設定する。</p>
 <p>Karpenter配下のEC2 Nodeのハードウェアリソースがこれを超過した場合に、既存のNodeを削除しないと、新しいものをプロビジョニングできない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
@@ -27158,6 +27206,25 @@
 <span class="w">  </span><span class="nt">loglevel.webhook</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">error</span>
 </code></pre></div>
 <p><br></p>
+<h2 id="05-podmetadataannotations">05. Podの<code>.metadata.annotations</code>キー<a class="headerlink" href="#05-podmetadataannotations" title="Permanent link">&para;</a></h2>
+<h3 id="karpentershdo-not-disrupt">karpenter.sh/do-not-disrupt<a class="headerlink" href="#karpentershdo-not-disrupt" title="Permanent link">&para;</a></h3>
+<p>長時間実行するPodの場合、完了前にKarpenterがNodeを終了しないようにする必要がある。</p>
+<p><code>karpenter.sh/do-not-disrupt</code>キーを設定すると、Podの終了を待機できる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">karpenter.sh/do-not-disrupt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/docs/concepts/disruption/#pod-level-controls">https://karpenter.sh/docs/concepts/disruption/#pod-level-controls</a></li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html">https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 
 
 
@@ -27178,7 +27245,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-25</span>
   </span>
 
     

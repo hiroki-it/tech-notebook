@@ -20389,6 +20389,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. トラブルシューティング
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. トラブルシューティング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#guaranteed-qos" class="md-nav__link">
+    <span class="md-ellipsis">
+      メモリをGuaranteed QoSにする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      スポットインスタンスの場合はインスタンスタイプを幅広く設定する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -26141,6 +26174,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. トラブルシューティング
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. トラブルシューティング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#guaranteed-qos" class="md-nav__link">
+    <span class="md-ellipsis">
+      メモリをGuaranteed QoSにする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      スポットインスタンスの場合はインスタンスタイプを幅広く設定する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -26700,6 +26766,26 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="04">04. トラブルシューティング<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="guaranteed-qos">メモリをGuaranteed QoSにする<a class="headerlink" href="#guaranteed-qos" title="Permanent link">&para;</a></h3>
+<p>Podの特に<code>resources</code>キーで、上限 (<code>limits</code>) が設定されていないと、使用量がバーストする。</p>
+<p>その場合、Karpenterの作成したNodeのメモリ量を超え、OOMキーによって他のPodが終了する。</p>
+<p>メモリをGuaranteed QoSとして、上限 (<code>limits</code>) = 下限 (<code>requests</code>) のようにメモリを設定すると、これを避けられる。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html">https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html</a></li>
+</ul>
+</blockquote>
+<h3 id="_12">スポットインスタンスの場合はインスタンスタイプを幅広く設定する<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>スポットインスタンスの仕組みで選ばれたインスタンスタイプが補充されていない場合、KarpenterはNodeをプロビジョニングできない。</p>
+<p>インスタンスタイプが補充されるまでNodeのプロビジョニングは待機となり、PodはPending状態のままになる可能性がある。</p>
+<p>これを回避するために、インスタンスタイプを幅広く設定するとよい。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html">https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 
 
 
@@ -26720,7 +26806,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-25</span>
   </span>
 
     
