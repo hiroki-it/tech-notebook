@@ -26769,8 +26769,8 @@
 <h2 id="04">04. トラブルシューティング<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="guaranteed-qos">メモリをGuaranteed QoSにする<a class="headerlink" href="#guaranteed-qos" title="Permanent link">&para;</a></h3>
 <p>Podの特に<code>resources</code>キーで、上限 (<code>limits</code>) が設定されていないと、使用量がバーストする。</p>
-<p>その場合、Karpenterの作成したNodeのメモリ量を超え、OOMキーによって他のPodが終了する。</p>
-<p>メモリをGuaranteed QoSとして、上限 (<code>limits</code>) = 下限 (<code>requests</code>) のようにメモリを設定すると、これを避けられる。</p>
+<p>その場合、Karpenterの作成したNodeのメモリ量を超え、NodeのSystemOOMイベントによって他のPodが終了してしまう。</p>
+<p>Podのメモリで上限 (<code>limits</code>) = 下限 (<code>requests</code>) のように設定する (Guaranteed QoS) と、OOMキラーを避けられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html">https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html</a></li>
