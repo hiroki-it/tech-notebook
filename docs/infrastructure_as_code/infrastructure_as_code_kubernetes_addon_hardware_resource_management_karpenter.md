@@ -576,3 +576,27 @@ module "eks_iam_karpenter_controller" {
 > - https://github.com/aws/karpenter/issues/1919#issue-1267832624
 
 <br>
+
+## 04. トラブルシューティング
+
+### メモリをGuaranteed QoSにする
+
+Podの特に`resources`キーで、上限 (`limits`) が設定されていないと、使用量がバーストする。
+
+その場合、Karpenterの作成したNodeのメモリ量を超え、OOMキーによって他のPodが終了する。
+
+メモリをGuaranteed QoSとして、上限 (`limits`) = 下限 (`requests`) のようにメモリを設定すると、これを避けられる。
+
+> - https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html
+
+### スポットインスタンスの場合はインスタンスタイプを幅広く設定する
+
+スポットインスタンスの仕組みで選ばれたインスタンスタイプが補充されていない場合、KarpenterはNodeをプロビジョニングできない。
+
+インスタンスタイプが補充されるまでNodeのプロビジョニングは待機となり、PodはPending状態のままになる可能性がある。
+
+これを回避するために、インスタンスタイプを幅広く設定するとよい。
+
+> - https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html
+
+<br>

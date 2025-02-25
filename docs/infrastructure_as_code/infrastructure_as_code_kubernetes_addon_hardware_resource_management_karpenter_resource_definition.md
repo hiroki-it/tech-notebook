@@ -414,7 +414,7 @@ spec:
 
 ### limits
 
-Karpenterがプロビジョニング可能なEC2 Nodeをハードウェアリソース合計量で設定する。
+プロビジョニングするEC2 Nodeが持つハードウェアリソース (CPU、メモリ) の上限を設定する。
 
 Karpenter配下のEC2 Nodeのハードウェアリソースがこれを超過した場合に、既存のNodeを削除しないと、新しいものをプロビジョニングできない。
 
@@ -881,5 +881,28 @@ metadata:
 data:
   loglevel.webhook: error
 ```
+
+<br>
+
+## 05. Podの`.metadata.annotations`キー
+
+### karpenter.sh/do-not-disrupt
+
+長時間実行するPodの場合、完了前にKarpenterがNodeを終了しないようにする必要がある。
+
+`karpenter.sh/do-not-disrupt`キーを設定すると、Podの終了を待機できる。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+spec:
+  template:
+    metadata:
+      annotations:
+        karpenter.sh/do-not-disrupt: true
+```
+
+> - https://karpenter.sh/docs/concepts/disruption/#pod-level-controls
+> - https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html
 
 <br>
