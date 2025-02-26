@@ -3356,7 +3356,7 @@ metadata:
 spec:
   http:
     - retries:
-        retryOn: "connect-failure,refused-stream,unavailable"
+        retryOn: connect-failure,refused-stream,unavailable
 ```
 
 > - https://sreake.com/blog/istio/

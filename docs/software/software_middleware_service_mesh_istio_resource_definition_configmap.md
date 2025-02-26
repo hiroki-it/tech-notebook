@@ -480,7 +480,9 @@ spec:
 
 #### ▼ defaultHttpRetryPolicy
 
-`.spec.http[*].retries.perTryTimeout`キーは個別のVirtualServiceで設定する必要がある。
+再試行ポリシーのデフォルト値を設定する。
+
+ただし、`.spec.http[*].retries.perTryTimeout`キーは個別のVirtualServiceで設定する必要がある。
 
 ```yaml
 apiVersion: v1
@@ -493,7 +495,7 @@ data:
     defaultConfig:
       defaultHttpRetryPolicy: 
         attempts: 3
-        retryOn: connect-failure,refused-stream,unavailable,cancelled,reset-before-request
+        retryOn: connect-failure,refused-stream,unavailable,cancelled
 ```
 
 > - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
