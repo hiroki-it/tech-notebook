@@ -35,18 +35,22 @@ description: TCP＠L4の知見を記録しています。
 
 この場合に、宛先がTCPリクエストを拒否し、送信元に返信するエラーである。
 
+<!-- prettier-ignore-start -->
+
 ```yaml
-client(192.168.122.181)                   server(192.168.122.216)
-|                                          |
-|                                          |
-|                                          |
-nc server 11111 |--------------- UDP datagram ------------>|
-|                                          |
-|                                          |
-ECONNREFUSED |<-------------- ICMP port unreachable ----|
-|                                          |
-|                                          |
+             client(192.168.122.181)                   server(192.168.122.216)
+                  |                                          |
+                  |                                          |
+                  |                                          |
+  nc server 11111 |--------------- UDP datagram ------------>|
+                  |                                          |
+                  |                                          |
+     ECONNREFUSED |<-------------- ICMP port unreachable ----|
+                  |                                          |
+                  |                                          |
 ```
+
+<!-- prettier-ignore-end -->
 
 > - https://hana-shin.hatenablog.com/entry/2022/04/06/205912#31-ECONNREFUSEDTCP%E3%81%AE%E5%A0%B4%E5%90%88
 
@@ -62,23 +66,27 @@ TCPコネクション中に宛先のプロセスが終了し、コネクショ�
 
 宛先はRSTパケットを返信し、通信をリセットする。
 
+<!-- prettier-ignore-start -->
+
 ```yaml
-client(192.168.122.181)                   server(192.168.122.216)
-|                                          |
-|                                          | nc -kl 11111
-|                                          |
-|                                          |
-nc server 11111 |--------------- SYN --------------------->|
-|<-------------- SYN+ACK ------------------|
-|--------------- ACK --------------------->| -*-
-|                                          |  |
-|                                          |  |
-|                                          |  | TCPコネクション確立状態
-|                                          |  |    (ESTABLISHED状態)
-|                                          |  |
-ECONNRESET |<-------------- RST ----------------------| -*-
-|                                          |
+             client(192.168.122.181)                   server(192.168.122.216)
+             |                                          |
+             |                                          | nc -kl 11111
+             |                                          |
+             |                                          |
+             nc server 11111 |--------------- SYN --------------------->|
+             |<-------------- SYN+ACK ------------------|
+             |--------------- ACK --------------------->| -*-
+             |                                          |  |
+             |                                          |  |
+             |                                          |  | TCPコネクション確立状態
+             |                                          |  |    (ESTABLISHED状態)
+             |                                          |  |
+             ECONNRESET |<-------------- RST ----------------------| -*-
+             |                                          |
 ```
+
+<!-- prettier-ignore-end -->
 
 > - https://hana-shin.hatenablog.com/entry/2022/04/06/205912#33-ECONNRESET
 > - https://zenn.dev/rescuenow/articles/a01f0effdf3391#%E3%80%8Cconnection-reset-by-peer%E3%80%8D%E3%81%A8%E3%81%AF%EF%BC%9F

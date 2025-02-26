@@ -64,7 +64,7 @@ func Close(db *gorm.DB) error {
 		return err
 	}
 
-    // DBとの接続を切断します。
+    // DBとのコネクションを切断します。
 	err = sqlDb.Close()
 
 	if err != nil {

@@ -398,7 +398,7 @@ import (
 func (a *ADSC) Run() error {
 	var err error
 
-	// 双方向ストリーミングRPCの接続を確立する。
+	// 双方向ストリーミングRPCのコネクションを確立する。
 	a.client = discovery.NewAggregatedDiscoveryServiceClient(a.conn)
 
 	// Envoyのgo-control-planeパッケージから提供されている。
