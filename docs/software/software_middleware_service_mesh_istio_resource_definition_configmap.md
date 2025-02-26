@@ -1310,37 +1310,6 @@ spec:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 
-#### ▼ `EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`
-
-デフォルト値は`true`である。
-
-POSTリクエストの結果で、アプリコンテナから`503`ステータスが返信された場合に、処理失敗とは限らない。
-
-この場合に再試行すると結果的に二重で処理が実行されてしまう。
-
-そのため、アプリコンテナから`503`ステータスが返信された場合は再試行しないようにする。
-
-なお、再試行の結果で`istio-proxy`コンテナが`503`ステータスを返信する場合とは区別する。
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: istiod
-  namespace: istio-system
-spec:
-  template:
-    containers:
-      - name: discovery
-        env:
-          - name: EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY
-            value: true
-```
-
-> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
-> - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
-> - https://github.com/istio/istio/issues/50506#issuecomment-2230102675
-
 #### ▼ `ENABLE_DEFERRED_CLUSTER_CREATION`
 
 デフォルト値は`true`である。
@@ -1365,6 +1334,32 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+
+#### ▼ `ENABLE_DEFERRED_STATS_CREATION`
+
+デフォルト値は`true`である。
+
+Envoyの統計情報を遅延初期化する。
+
+ハードウェアリソースを節約できる。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istiod
+  namespace: istio-system
+spec:
+  template:
+    containers:
+      - name: discovery
+        env:
+          - name: ENABLE_DEFERRED_STATS_CREATION
+            value: true
+```
+
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/bootstrap/v3/bootstrap.proto#config-bootstrap-v3-bootstrap-deferredstatoptions
+> - https://martinfowler.com/bliki/LazyInitialization.html
 
 #### ▼ `ENABLE_ENHANCED_RESOURCE_SCOPING`
 
@@ -1443,6 +1438,37 @@ spec:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 > - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
+
+#### ▼ `EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`
+
+デフォルト値は`true`である。
+
+POSTリクエストの結果で、アプリコンテナから`503`ステータスが返信された場合に、未処理とは限らない。
+
+この場合に再試行すると結果的に二重で処理が実行されてしまう。
+
+そのため、アプリコンテナから`503`ステータスが返信された場合は、再試行しないようにする。
+
+なお、再試行の結果で`istio-proxy`コンテナが`503`ステータスを返信する場合とは区別する。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istiod
+  namespace: istio-system
+spec:
+  template:
+    containers:
+      - name: discovery
+        env:
+          - name: EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY
+            value: true
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+> - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
+> - https://github.com/istio/istio/issues/51704#issuecomment-2188555136
 
 #### ▼ `PILOT_TRACE_SAMPLING`
 

@@ -1242,8 +1242,6 @@ data:
 | `ENABLE_NATIVE_SIDECARS`                           | istio-sidecar-injector (ConfigMap) で、`istio-proxy`コンテナの代わりにKubernetesのInit Container |
 | `ENABLE_RESOLUTION_NONE_TARGET_PORT`               |                                                                                                  |
 | `ENABLE_DELIMITED_STATS_TAG_REGEX`                 |                                                                                                  |
-| `ENABLE_INBOUND_RETRY_POLICY`                      |                                                                                                  |
-| `EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`            |                                                                                                  |
 | `PREFER_DESTINATIONRULE_TLS_FOR_EXTERNAL_SERVICES` |                                                                                                  |
 | `ENABLE_ENHANCED_DESTINATIONRULE_MERGE`            |                                                                                                  |
 | `PILOT_UNIFIED_SIDECAR_SCOPE`                      |                                                                                                  |
