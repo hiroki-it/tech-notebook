@@ -1740,7 +1740,7 @@ data:
 
 `istio-proxy`コンテナへのリクエストが無くなってから、Envoyのプロセスを終了する。
 
-具体的には、`downstream_cx_active`メトリクスの値 (アクティブなコネクション数) を監視し、`0`になり次第、Envoyのプロセスを終了する。
+具体的には、`downstream_cx_active`メトリクスの値 (アクティブな接続数) を監視し、`0`になり次第、Envoyのプロセスを終了する。
 
 オプションを有効化すると、`istio-proxy`コンテナの`.spec.containers[*].lifecycle.preStop.exec.command`キーに、`sleep`コマンドが挿入される。
 
@@ -1843,9 +1843,9 @@ data:
 
 `false`の場合は、代わりに`.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`を設定する。
 
-`istio-proxy`コンテナ内のEnvoyプロセスは、終了時にコネクションのドレイン処理を実施する。
+`istio-proxy`コンテナ内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。
 
-このコネクションのドレイン処理時間で、新しいコネクションを受け入れ続ける時間を設定する。
+この接続のドレイン処理時間で、新しい接続を受け入れ続ける時間を設定する。
 
 Podの`.metadata.annotations.proxy.istio.io/config.drainDuration`キーで起こるレースコンディションを解決するための設定で、同じ値を設定するとよい。
 

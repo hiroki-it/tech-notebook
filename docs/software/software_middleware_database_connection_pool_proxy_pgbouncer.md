@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】PgBouncer＠コネクションプールプロキシ系ミドルウェア
-description: PgBouncer＠コネクションプールプロキシ系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】PgBouncer＠接続プールプロキシ系ミドルウェア
+description: PgBouncer＠接続プールプロキシ系ミドルウェアの知見を記録しています。
 ---
 
-# PgBouncer＠コネクションプールプロキシ系ミドルウェア
+# PgBouncer＠接続プールプロキシ系ミドルウェア
 
 ## はじめに
 
@@ -17,7 +17,7 @@ description: PgBouncer＠コネクションプールプロキシ系ミドルウ�
 
 ### アーキテクチャ
 
-PgBouncerは、クライアントからのコネクションをプールし、DBにルーティングする。
+PgBouncerは、クライアントからの接続をプールし、DBにルーティングする。
 
 ![pgbouncer_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pgbouncer_architecture.png)
 
@@ -28,9 +28,9 @@ PgBouncerは、クライアントからのコネクションをプールし、DB
 
 ## 02. ユースケース
 
-### コネクションプール
+### 接続プール
 
-DBへのコネクションをプールし、アプリケーションがコネクションを再利用できるようにする。
+DBへの接続をプールし、アプリケーションが接続を再利用できるようにする。
 
 <br>
 

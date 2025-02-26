@@ -226,7 +226,7 @@ func main() {
 
 	...
 
-	// gRPCサーバーとのコネクションを作成する
+	// gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
 		ctx,
         ":7777",
@@ -251,7 +251,7 @@ func main() {
 
 	...
 
-    // gRPCサーバーとのコネクションを作成する
+    // gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
 		ctx,
         ":7777",
@@ -290,7 +290,7 @@ type UnaryClientInterceptor func(
 
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L107
 
-これをgRPCサーバーとのコネクション作成時に、`WithChainUnaryInterceptor`関数に渡す。
+これをgRPCサーバーとの接続作成時に、`WithChainUnaryInterceptor`関数に渡す。
 
 ```go
 package main
@@ -307,7 +307,7 @@ func main() {
 
 	...
 
-    // gRPCサーバーとのコネクションを作成する
+    // gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
 		ctx,
         ":7777",
@@ -423,7 +423,7 @@ type StreamClientInterceptor func(
 
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L257
 
-これをgRPCサーバーとのコネクション作成時に、`WithChainStreamInterceptor`関数に渡す。
+これをgRPCサーバーとの接続作成時に、`WithChainStreamInterceptor`関数に渡す。
 
 ```go
 package main
@@ -440,7 +440,7 @@ func main() {
 
 	...
 
-    // gRPCサーバーとのコネクションを作成する
+    // gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
 		ctx,
         ":7777",
@@ -999,7 +999,7 @@ func main() {
 
 ### gRPCクライアント
 
-gRPCクライアント側では、gRPCサーバーとのコネクションを作成する必要がある。
+gRPCクライアント側では、gRPCサーバーとの接続を作成する必要がある。
 
 ```go
 package main
@@ -1016,7 +1016,7 @@ import (
 
 func main() {
 
-	// gRPCサーバーとのコネクションを作成する
+	// gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
         ctx,
         ":7777",
@@ -1072,7 +1072,7 @@ func main() {
 
 	...
 
-	// gRPCサーバーとのコネクションを作成する
+	// gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
 		ctx,
         ":7777",

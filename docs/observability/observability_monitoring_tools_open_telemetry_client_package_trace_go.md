@@ -1455,7 +1455,7 @@ func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 
 #### ▼ 親スパン作成 (クライアント側のみ)
 
-gRPCクライアント側では、gRPCサーバーとのコネクションを作成する必要がある。
+gRPCクライアント側では、gRPCサーバーとの接続を作成する必要がある。
 
 クライアント側では、ClientInterceptorを使用し、スパンの開始/終了を自動化する。
 
@@ -1474,7 +1474,7 @@ func main() {
 
     ...
 
-    // gRPCサーバーとのコネクションを作成する
+    // gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
 		ctx,
         ":7777",
@@ -1521,7 +1521,7 @@ func main() {
 
 	...
 
-	// gRPCサーバーとのコネクションを作成する
+	// gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
         ctx,
 		":7777",

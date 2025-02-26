@@ -460,7 +460,7 @@ func main() {
 
 #### ▼ gRPCクライアント側
 
-gRPCクライアント側では、gRPCサーバーとのコネクションを作成する必要がある。
+gRPCクライアント側では、gRPCサーバーとの接続を作成する必要がある。
 
 ```go
 package main
@@ -477,7 +477,7 @@ func main() {
 
     ...
 
-	// gRPCサーバーとのコネクションを作成する
+	// gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
         ctx,
 		":9000",

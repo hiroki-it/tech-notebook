@@ -17,13 +17,13 @@ description: Prisma＠SQLパッケージの知見を記録しています。
 
 PrismaClient (JavaScriptパッケージ) は、クエリエンジン (バイナリ) に接続リクエストを送信する。
 
-クエリエンジンはコネクションプールを作成し、プール内のコネクションを使用してDBに接続する。
+クエリエンジンは接続プールを作成し、プール内の接続を使用してDBに接続する。
 
-コネクションが維持されている間、これを再利用して複数のクエリを実行する。
+接続が維持されている間、これを再利用して複数のクエリを実行する。
 
 PrismaClientは、クエリエンジンに切断リクエストを送信する。
 
-クエリエンジンは、データベースとのコネクションを破棄する。
+クエリエンジンは、データベースとの接続を破棄する。
 
 ![architecture_prisma](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/architecture_prisma.png)
 
@@ -163,8 +163,8 @@ q+werty%3D%2F%3B
 
 URLのパラメーターとして、以下などを設定できる。
 
-- コネションプールのコネクション上限数 (`connection_limit`)
-- コネクションプール内のコネクションが空くまでの待機時間 (`pool_timeout`)
+- コネションプールの接続上限数 (`connection_limit`)
+- 接続プール内の接続が空くまでの待機時間 (`pool_timeout`)
 
 > - https://zenn.dev/cloudbase/articles/65b9f6e4f9ae05#prismaclient%E3%81%AB%E6%B8%A1%E3%81%99datasource-url%E3%81%AE%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF
 > - https://dev.classmethod.jp/articles/prisma-engines-connection-pooling-parameters/#pool_timeout

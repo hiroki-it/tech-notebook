@@ -1082,7 +1082,7 @@ func NewGrpcExporter(ctx context.Context) (*otlptrace.Exporter, error) {
 		"foo-opentelemetry-collector.foo-namespace.svc.cluster.local:4317",
 		// 通信は非TLSとする
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
-		// コネクションを確立できるまで待機する
+		// 接続を確立できるまで待機する
 		grpc.WithBlock(),
 	)
 

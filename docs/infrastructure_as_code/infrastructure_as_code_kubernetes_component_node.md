@@ -232,7 +232,7 @@ kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxy
 | 項目                   | 仕組み                                                                                                                                         |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | サービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するipvsにハッシュ値を追加/削除する。 |
-| `L4`ロードバランサー   | ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値など。                                                               |
+| `L4`ロードバランサー   | ラウンドロビン方式、接続の最低数、宛先ハッシュ値、送信元ハッシュ値など。                                                                       |
 
 ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_ipvs.png)
 

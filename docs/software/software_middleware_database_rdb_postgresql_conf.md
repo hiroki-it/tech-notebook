@@ -37,7 +37,7 @@ PostgreSQLのプロセスが稼働していることを確認する。
 $ systemctl status postgresql-13.service
 ```
 
-#### ▼ コネクション確認
+#### ▼ 接続確認
 
 DBに接続する。
 

@@ -397,7 +397,7 @@ GoでgRPCを扱えるようにする。
 
 #### ▼ Dial
 
-`DialContext`関数のラッパーであり、新しいコンテキストでgRPCサーバーとのコネクションを作成する。
+`DialContext`関数のラッパーであり、新しいコンテキストでgRPCサーバーとの接続を作成する。
 
 執筆時点 (2024/04/06) で`Dial`関数は非推奨であり、`NewClient`関数が推奨である。
 
@@ -411,7 +411,7 @@ func Dial(target string, opts ...DialOption) (*ClientConn, error) {
 
 #### ▼ DialContext
 
-既存コンテキストを使用して、gRPCサーバーとのコネクションを作成する。
+既存コンテキストを使用して、gRPCサーバーとの接続を作成する。
 
 執筆時点 (2024/04/06) で`DialContext`関数は非推奨であり、`NewClient`関数が推奨である。
 
@@ -428,7 +428,7 @@ func main() {
 
 	...
 
-	// gRPCサーバーとのコネクションを作成する
+	// gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
 		ctx,
 		":7777",
@@ -446,7 +446,7 @@ func main() {
 
 #### ▼ WithBlock
 
-コネクションを確立できるまで待機する。
+接続を確立できるまで待機する。
 
 ```go
 package main
@@ -461,7 +461,7 @@ func main() {
 
 	...
 
-	// gRPCサーバーとのコネクションを作成する
+	// gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
 		ctx,
 		":7777",
@@ -490,7 +490,7 @@ func main() {
 
 	...
 
-	// gRPCサーバーとのコネクションを作成する
+	// gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
 		ctx,
 		":7777",
@@ -507,7 +507,7 @@ func main() {
 
 #### ▼ NewServer
 
-既存コンテキストを使用して、gRPCサーバーとのコネクションを作成する。
+既存コンテキストを使用して、gRPCサーバーとの接続を作成する。
 
 ```go
 package main
@@ -1367,7 +1367,7 @@ func main() {
 
 	...
 
-	// gRPCサーバーとのコネクションを作成する
+	// gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
 		ctx,
 		":7777",
@@ -1426,7 +1426,7 @@ func main() {
 
 	...
 
-	// gRPCサーバーとのコネクションを作成する
+	// gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
         ctx,
 		":7777",
@@ -1652,7 +1652,7 @@ func main() {
 
 	...
 
-	// HTTPサーバーとのコネクションを作成する
+	// HTTPサーバーとの接続を作成する
 	client := http.Client{
 	    Transport: otelhttp.NewTransport(http.DefaultTransport)
 	}

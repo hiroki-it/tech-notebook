@@ -398,7 +398,7 @@ import (
 func (a *ADSC) Run() error {
 	var err error
 
-	// 双方向ストリーミングRPCのコネクションを確立する。
+	// 双方向ストリーミングRPCの接続を確立する。
 	a.client = discovery.NewAggregatedDiscoveryServiceClient(a.conn)
 
 	// Envoyのgo-control-planeパッケージから提供されている。
@@ -595,7 +595,7 @@ kubeletは、対象のポート番号でプロセスがリクエストを待ち�
 
 `(3)`
 
-: Envoyは、コネクションのドレイン処理を実施する。
+: Envoyは、接続のドレイン処理を実施する。
 
     Podの`.metadata.annotations.proxy.istio.io/config.drainDuration`値 (デフォルト`5`秒) の待機時間だけ、リクエストを受信しながら移行していく。
 

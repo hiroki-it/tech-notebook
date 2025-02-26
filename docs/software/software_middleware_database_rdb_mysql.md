@@ -41,7 +41,7 @@ description: MySQL＠RDBの知見を記録しています。
 
 ### プロトコル
 
-MySQLは、TCPスリーウェイハンドシェイクでTCPコネクションを確立し、MySQLプロトコルのクエリを受信する。
+MySQLは、TCPスリーウェイハンドシェイクでTCP接続を確立し、MySQLプロトコルのクエリを受信する。
 
 つまり、アプリケーションはDBへの接続時にTCPスリーウェイハンドシェイクを実行し、MySQLにクエリを送信する時はMySQLプロコトルを使用することになる。
 
@@ -276,7 +276,7 @@ SELECT LAST_INSERT_ID();
 
 #### ▼ Aborted connection
 
-MySQLクライアントがコネクションを切断した場合、MySQL側では`Aborted connection`エラーとなる。
+MySQLクライアントが接続を切断した場合、MySQL側では`Aborted connection`エラーとなる。
 
 ```bash
 [Note] Aborted connection 251 to db: 'db_name' user: 'user_name' host: 'host_name' (Got an error reading communication packets)

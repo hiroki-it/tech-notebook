@@ -214,7 +214,7 @@ pid logs/nginx.pid;
 
 #### ▼ worker_connections
 
-workerプロセスが同時に処理できるコネクションの最大数を設定する。
+workerプロセスが同時に処理できる接続の最大数を設定する。
 
 ```nginx
 worker_connections 1024;

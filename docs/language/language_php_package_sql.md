@@ -164,7 +164,7 @@ $data[] = $staff_pass;
 $stmt->execute($data);
 
 
-// DBとのコネクションを切断
+// DBとの接続を切断
 $dbh = null;
 ```
 
