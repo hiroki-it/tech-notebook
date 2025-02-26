@@ -27804,7 +27804,7 @@
 </ul>
 </blockquote>
 <h4 id="_2">▼ アウトバウンド時の再試行条件<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナのアウトバウンド時に、宛先アプリコンテナに接続できた場合の再試行条件は以下である。</p>
+<p><code>istio-proxy</code>コンテナのアウトバウンド時の再試行条件は以下である。</p>
 <table>
 <thead>
 <tr>
@@ -27835,7 +27835,7 @@
 </tr>
 <tr>
 <td><code>reset</code></td>
-<td>レスポンスで通信の切断／リセット／タイムアウト (特に) が起こった。</td>
+<td>レスポンスで通信の切断／リセット／タイムアウトが起こった。</td>
 </tr>
 <tr>
 <td><code>resource-exhausted</code></td>
@@ -27852,7 +27852,7 @@
 </tbody>
 </table>
 <h4 id="_3">▼ インバウンド時の再試行条件<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナのインバウンド時に、アプリコンテナに接続できなかった場合の再試行条件は以下である。</p>
+<p><code>istio-proxy</code>コンテナのインバウンド時の再試行条件は以下である。</p>
 <p>執筆時点 (2025/02/26) では、<code>ENABLE_INBOUND_RETRY_POLICY</code>変数を<code>true</code> (デフォルト値) にすると使用できる。</p>
 <table>
 <thead>
