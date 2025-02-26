@@ -32168,7 +32168,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>なお、TCPリクエストには<code>spec.tcp[*].retries</code>キーのような同様の設定は存在しない。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>500系ステータスの場合に、<code>attempts</code>の数だけ再試行する。</p>
-<p>各再試行で処理の結果が返却されるまでのタイムアウト値を<code>perTryTimeout</code>で設定する。</p>
+<p>各再試行で処理の結果が返却されるまでのタイムアウト時間を<code>perTryTimeout</code>で設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">spec</span><span class="p">:</span>
@@ -32185,7 +32185,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">retryOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5xx</span>
 </code></pre></div>
 <p>gateway-error (<code>502</code>、<code>503</code>、<code>504</code>ステータス) の場合に、<code>attempts</code>の数だけ再試行する。</p>
-<p>各再試行で処理の結果が返却されるまでのタイムアウト値を<code>perTryTimeout</code>で設定する。</p>
+<p>各再試行で処理の結果が返却されるまでのタイムアウト時間を<code>perTryTimeout</code>で設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">spec</span><span class="p">:</span>
@@ -32251,7 +32251,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </tr>
 <tr>
 <td><code>reset</code></td>
-<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できたが、通信の切断／リセット／タイムアウトが起こった。</td>
+<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できたが、通信の切断／リセット／タイムアウト (特に) が起こった。</td>
 </tr>
 <tr>
 <td><code>resource-exhausted</code></td>
@@ -32278,7 +32278,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <tbody>
 <tr>
 <td><code>reset-before-request</code></td>
-<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できず、通信のリセット／接続タイムアウトが起こった。</td>
+<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できず、通信のリセット／タイムアウト (特にコネクションタイムアウト) が起こった。</td>
 </tr>
 </tbody>
 </table>
