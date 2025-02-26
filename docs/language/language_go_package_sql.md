@@ -550,7 +550,7 @@ type Statement struct {
 	ConnPool             ConnPool
 	Schema               *schema.Schema
 	// SQLステートメントごとのコンテキスト
-	// SQLにタイムアウト値やキャンセル関数を設定できる
+	// SQLにタイムアウト時間やキャンセル関数を設定できる
 	Context              context.Context
 	RaiseErrorOnNotFound bool
 	SkipHooks            bool

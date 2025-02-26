@@ -250,11 +250,11 @@ import {PrismaClient} from '@prisma/client'
 
 // トランザクションのオプションはトランザクション全体で統一する
 let prismaClientOption = {
-  // データを取得するまでのタイムアウト値 (デフォルトは2000ms)
+  // データを取得するまでのタイムアウト時間 (デフォルトは2000ms)
   transactionOptions: {
-    // データを取得するまでのタイムアウト値 (デフォルトは2000ms)
+    // データを取得するまでのタイムアウト時間 (デフォルトは2000ms)
     maxWait: 5000,
-    // ロールバックを含めて全体が完了するまでのタイムアウト値 (デフォルトは5000ms)
+    // ロールバックを含めて全体が完了するまでのタイムアウト時間 (デフォルトは5000ms)
     timeout: 10000,
     // トランザクションの分離レベル
     isolationLevel: Prisma.TransactionIsolationLevel.Serializable,
@@ -290,11 +290,11 @@ import {PrismaClient} from '@prisma/client'
 const prisma = new PrismaClient()
 
 let prismaClientOption = {
-  // データを取得するまでのタイムアウト値 (デフォルトは2000ms)
+  // データを取得するまでのタイムアウト時間 (デフォルトは2000ms)
   transactionOptions: {
-    // データを取得するまでのタイムアウト値 (デフォルトは2000ms)
+    // データを取得するまでのタイムアウト時間 (デフォルトは2000ms)
     maxWait: 5000,
-    // ロールバックを含めて全体が完了するまでのタイムアウト値 (デフォルトは5000ms)
+    // ロールバックを含めて全体が完了するまでのタイムアウト時間 (デフォルトは5000ms)
     timeout: 10000,
     // トランザクションの分離レベル
     isolationLevel: Prisma.TransactionIsolationLevel.Serializable,

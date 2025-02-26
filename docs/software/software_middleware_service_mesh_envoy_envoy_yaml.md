@@ -540,11 +540,11 @@ static_resources:
 > - https://github.com/envoyproxy/envoy/issues/12578
 > - https://github.com/envoyproxy/envoy/pull/13018
 
-Envoyは、gRPCのストリーミングのタイムアウトを適切に処理できておらず、`max_grpc_timeout`は非推奨となった。
+Envoyは、gRPCのストリーミングのタイムアウト時間を適切に処理できておらず、`max_grpc_timeout`は非推奨となった。
 
 gRPCは、TCPコネクションの確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を`grpc-timeout`ヘッダーに設定する。
 
-一方でEnvoyは、gRPCクライアントからのリクエストの終了後にタイムアウトを開始し、`grpc-timeout`ヘッダーとは別にタイムアウトを管理する。
+一方でEnvoyは、gRPCクライアントからのリクエストの終了後にタイムアウト時間を開始し、`grpc-timeout`ヘッダーとは別にタイムアウト時間を管理する。
 
 これにより、クライアント側が想定しているタイムアウト時間よりも短い時間でEnvoyがタイムアウト時間を迎える可能性がある。
 

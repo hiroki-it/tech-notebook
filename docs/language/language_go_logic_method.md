@@ -717,7 +717,7 @@ func NewServer(addr string, options ...Option) (*Server, error) {
 
 	for _, option := range options {
 		// Server構造体を渡す
-		// タイムアウト値を設定する
+		// タイムアウト時間を設定する
 		option(&srv)
 	}
 
