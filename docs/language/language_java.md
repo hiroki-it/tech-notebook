@@ -43,7 +43,7 @@ Javaでは、コードの実行前と実行中の二段階で機械語を翻訳�
 
     クラスローダーの処理はCPUを大量に消費するため、ユーザーへの公開前にウォームアップを実施すると良い。
 
-![java_class-loader.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/java_class-loader.png)
+![java_class-loader](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/java_class-loader.png)
 
 `(4)`
 

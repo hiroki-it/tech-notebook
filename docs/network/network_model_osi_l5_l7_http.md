@@ -631,6 +631,10 @@ Gateway Timeout (`504`ステータス) である。とやや似ている。
 
 しかし、`502`ステータスとは異なり、その先のシステムからレスポンスが全く返信されないことを表す。
 
+![status-code_504](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/status-code_504.png)
+
+> - https://dotnetblog.asphostportal.com/steps-to-fix-504-bad-gateway-timeout-error/
+
 <br>
 
 ### 似たレスポンスの違い

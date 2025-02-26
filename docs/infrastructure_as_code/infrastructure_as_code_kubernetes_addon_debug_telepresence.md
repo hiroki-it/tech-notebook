@@ -17,7 +17,7 @@ description: Telepresence＠デバッグ系の知見を記録しています。
 
 Kubernetes Cluster内のPodで送受信するリクエストをローカルPCで確認できるようにする。
 
-![telescope_usecase.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/telescope_usecase.png)
+![telescope_usecase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/telescope_usecase.png)
 
 > - https://qiita.com/sheepland/items/68d3484f1dd02a306798#%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%81%A8kubernetes%E4%B8%8A%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B
 > - https://qiita.com/yuzumikan15/items/5e5949f3058535f5e5ec#telepresence-%E3%82%92%E4%BD%BF%E3%81%86

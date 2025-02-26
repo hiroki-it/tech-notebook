@@ -342,7 +342,7 @@ AWS Lambdaの拡張機能である。
 
 アプリケーションのプロセスの前段でリクエストを変換し、アプリケーションがリクエストを処理できるようにする。
 
-![lambda-web-adapter.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-web-adapter.png)
+![lambda-web-adapter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-web-adapter.png)
 
 > - https://aws.amazon.com/jp/builders-flash/202301/lambda-web-adapter/
 > - https://github.com/awslabs/aws-lambda-web-adapter
