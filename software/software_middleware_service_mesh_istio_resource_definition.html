@@ -32224,7 +32224,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="retryon">▼ retryOn<a class="headerlink" href="#retryon" title="Permanent link">&para;</a></h4>
 <p>再試行失敗の理由を設定する。</p>
 <p><code>istio-proxy</code>コンテナは、レスポンスの<code>x-envoy-retry-on</code>ヘッダーに割り当てるため、これの値を設定する。</p>
-<p>リクエスト時に、<code>istio-proxy</code>コンテナが宛先アプリコンテナに接続できた場合は以下である。</p>
+<p><code>istio-proxy</code>コンテナのアウトバウンド時に、宛先アプリコンテナに接続できた場合の再試行条件は以下である。</p>
 <table>
 <thead>
 <tr>
@@ -32235,15 +32235,15 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <tbody>
 <tr>
 <td><code>cancelled</code></td>
-<td>リクエスト時に、<code>istio-proxy</code>コンテナが宛先アプリコンテナに接続できた。しかし、レスポンスでgRPCステータスコードが<code>Cancelled</code>であった。</td>
+<td>レスポンスでgRPCステータスコードが<code>Cancelled</code>であった。</td>
 </tr>
 <tr>
 <td><code>connect-failure</code></td>
-<td>リクエスト時に、<code>istio-proxy</code>コンテナが宛先アプリコンテナに接続できた。しかし、レスポンスで読み取りタイムアウトが起こった。</td>
+<td>レスポンスで読み取りタイムアウトが起こった。</td>
 </tr>
 <tr>
 <td><code>deadline-exceeded</code></td>
-<td>リクエスト時に、<code>istio-proxy</code>コンテナが宛先アプリコンテナに接続できた。しかし、レスポンスでgRPCステータスコードが<code>DeadlineExceeded</code>であった。</td>
+<td>レスポンスでgRPCステータスコードが<code>DeadlineExceeded</code>であった。</td>
 </tr>
 <tr>
 <td><code>gateway-error</code></td>
@@ -32251,27 +32251,28 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </tr>
 <tr>
 <td><code>refused-stream</code></td>
-<td>リクエスト時に、<code>istio-proxy</code>コンテナが宛先アプリコンテナに接続できた。しかし、レスポンスでgRPCステータスコードが<code>Unavailable</code>であった。</td>
+<td>レスポンスでgRPCステータスコードが<code>Unavailable</code>であった。</td>
 </tr>
 <tr>
 <td><code>reset</code></td>
-<td>リクエスト時に、<code>istio-proxy</code>コンテナが宛先アプリコンテナに接続できた。しかし、レスポンスで通信の切断／リセット／タイムアウト (特に) が起こった。</td>
+<td>レスポンスで通信の切断／リセット／タイムアウト (特に) が起こった。</td>
 </tr>
 <tr>
 <td><code>resource-exhausted</code></td>
-<td>リクエスト時に、<code>istio-proxy</code>コンテナが宛先アプリコンテナに接続できた。しかし、レスポンスでgRPCステータスコードが<code>ResourceExhausted</code>であった。</td>
+<td>レスポンスでgRPCステータスコードが<code>ResourceExhausted</code>であった。</td>
 </tr>
 <tr>
 <td><code>retriable-status-codes</code></td>
-<td>リクエスト時に、<code>istio-proxy</code>コンテナが宛先アプリコンテナに接続できた。しかし、レスポンスでHTTPステータスコードが<code>503</code>ステータスであった。</td>
+<td>レスポンスでHTTPステータスコードが<code>503</code>ステータスであった。</td>
 </tr>
 <tr>
 <td><code>unavailable</code></td>
-<td>リクエスト時に、<code>istio-proxy</code>コンテナが宛先アプリコンテナに接続できた。しかし、レスポンスでgRPCステータスコードが<code>Unavailable</code>であった。</td>
+<td>レスポンスでgRPCステータスコードが<code>Unavailable</code>であった。</td>
 </tr>
 </tbody>
 </table>
-<p>レスポンス時に、<code>istio-proxy</code>コンテナが宛先アプリコンテナに接続できなかった場合は以下である。</p>
+<p><code>istio-proxy</code>コンテナのインバウンド時に、アプリコンテナに接続できなかった場合の再試行条件は以下である。</p>
+<p>執筆時点 (2025/02/26) では、<code>ENABLE_INBOUND_RETRY_POLICY</code>変数を<code>true</code> (デフォルト値) にすると使用できる。</p>
 <table>
 <thead>
 <tr>
@@ -32282,7 +32283,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <tbody>
 <tr>
 <td><code>reset-before-request</code></td>
-<td>リクエスト時に、<code>istio-proxy</code>コンテナが宛先アプリコンテナに接続できた。しかし、宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できず、通信のリセットが起こった。</td>
+<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できず、通信のリセットが起こった。</td>
 </tr>
 </tbody>
 </table>
