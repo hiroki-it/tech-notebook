@@ -296,11 +296,11 @@ data:
 
 Istioの全てのコンポーネントに適用する変数のデフォルト値を設定する。
 
-Istiodコントロールプレーンの`.meshConfig.defaultConfig`キー、ProxyConfigの`.spec.environmentVariables`キー、Podの`.metadata.annotations.proxy.istio.io/config`キーでも設定できる。
+他にProxyConfigの`.spec.environmentVariables`キー、Podの`.metadata.annotations.proxy.istio.io/config`キーでも設定できる。
 
 ProxyConfigが最優先であり、これらの設定はマージされる。
 
-`.meshConfig.defaultConfig`キーにデフォルト値を設定しておき、ProxyConfigでNamespaceごとに上書きするのがよい。
+`.meshConfig.defaultConfig`キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。
 
 ```yaml
 meshConfig:
@@ -466,7 +466,7 @@ data:
   mesh: |
     defaultConfig:
       proxyMetadata:
-        ...
+        # ここに環境変数を設定する
 ```
 
 ```yaml
@@ -477,6 +477,28 @@ metadata:
 spec:
   proxyMetadata: ...
 ```
+
+#### ▼ defaultHttpRetryPolicy
+
+`.spec.http[*].retries.perTryTimeout`キーは個別のVirtualServiceで設定する必要がある。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      defaultHttpRetryPolicy: 
+        attempts: 3
+        retryOn: connect-failure,refused-stream,unavailable,cancelled,reset-before-request
+```
+
+> - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
+> - https://github.com/istio/istio/issues/51704#issuecomment-2188555136
+> - https://karlstoney.com/retry-policies-in-istio/
 
 #### ▼ rootNamespace
 
@@ -1469,6 +1491,7 @@ spec:
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 > - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
 > - https://github.com/istio/istio/issues/51704#issuecomment-2188555136
+> - https://karlstoney.com/retry-policies-in-istio/
 
 #### ▼ `PILOT_TRACE_SAMPLING`
 

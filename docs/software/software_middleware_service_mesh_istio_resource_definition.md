@@ -2054,7 +2054,7 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 サービスメッシュ全体、特定Namespace、特定ワークロードの`istio-proxy`コンテナにて、ワーカースレッド数を設定する。
 
-`.meshConfig.defaultConfig`キーにデフォルト値を設定しておき、ProxyConfigでNamespaceごとに上書きするのがよい。
+`.meshConfig.defaultConfig`キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -2074,7 +2074,7 @@ spec:
 
 サービスメッシュ全体、特定Namespace、特定ワークロードの`istio-proxy`コンテナにて、環境変数を設定する。
 
-`.meshConfig.defaultConfig`キーにデフォルト値を設定しておき、ProxyConfigでNamespaceごとに上書きするのがよい。
+`.meshConfig.defaultConfig`キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -3318,9 +3318,28 @@ spec:
 
 #### ▼ retryOn
 
-再試行する失敗理由を設定する。
+再試行失敗の理由を設定する。
 
 `istio-proxy`コンテナは、レスポンスの`x-envoy-retry-on`ヘッダーに割り当てるため、これの値を設定する。
+
+宛先アプリコンテナが`istio-proxy`コンテナに返信できた場合は以下である。
+
+| 設定                     | 理由                                                                                                           |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| `cancelled`              | 宛先アプリコンテナから`istio-proxy`コンテナに返信できたが、gRPCステータスコードが`Cancelled`であった。         |
+| `connect-failure`        | 宛先アプリコンテナから`istio-proxy`コンテナに返信できたが、読み取りタイムアウトが起こった。                    |
+| `deadline-exceeded`      | 宛先アプリコンテナから`istio-proxy`コンテナに返信できたが、gRPCステータスコードが`DeadlineExceeded`であった。  |
+| `refused-stream`         | 宛先アプリコンテナから`istio-proxy`コンテナに返信できたが、gRPCステータスコードが`Unavailable`であった。       |
+| `reset`                  | 宛先アプリコンテナから`istio-proxy`コンテナに返信できたが、通信の切断／リセット／タイムアウトが起こった。      |
+| `resource-exhausted`     | 宛先アプリコンテナから`istio-proxy`コンテナに返信できたが、gRPCステータスコードが`ResourceExhausted`であった。 |
+| `retriable-status-codes` | 宛先アプリコンテナから`istio-proxy`コンテナに返信できたが、HTTPステータスコードが`503`ステータスであった。     |
+| `unavailable`            | 宛先アプリコンテナから`istio-proxy`コンテナに返信できたが、gRPCステータスコードが`Unavailable`であった。       |
+
+宛先アプリコンテナが`istio-proxy`コンテナに返信できなかった場合は以下である。
+
+| 設定                   | 理由                                                                                                  |
+| ---------------------- | ----------------------------------------------------------------------------------------------------- |
+| `reset-before-request` | 宛先アプリコンテナから`istio-proxy`コンテナに返信できず、通信のリセット／接続タイムアウトが起こった。 |
 
 **＊実装例＊**
 
@@ -3338,12 +3357,6 @@ spec:
     - retries:
         retryOn: "connect-failure,refused-stream,unavailable"
 ```
-
-| 設定              | 起こる状況                                                                                        |
-| ----------------- | ------------------------------------------------------------------------------------------------- |
-| `connect-failure` | 宛先`istio-proxy`コンテナまたはアプリコンテナへの接続でタイムアウトが起こった。                   |
-| `refused-stream`  | 宛先`istio-proxy`コンテナまたはアプリコンテナが`REFUSED_STREAM`エラーコードで接続をリセットした。 |
-| `unavailable`     | 宛先`istio-proxy`コンテナまたはアプリコンテナgRPCの`Unavailable` (`14`) ステータスを返信した。    |
 
 > - https://sreake.com/blog/istio/
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on

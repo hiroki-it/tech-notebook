@@ -300,7 +300,7 @@ spec:
 
 ProxyConfigが最優先であり、これらの設定はマージされる。
 
-`.meshConfig.defaultConfig`キーにデフォルト値を設定しておき、ProxyConfigでNamespaceごとに上書きするのがよい。
+`.meshConfig.defaultConfig`キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。
 
 #### ▼ configPath
 
