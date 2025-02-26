@@ -237,7 +237,7 @@ nav:
       - ■ NoSQL DB系:
           - NoSQL DB: software/software_middleware_database_nosqldb.md
           - Redis: software/software_middleware_database_nosqldb_redis.md
-      - ■ コネクションプールプロキシ系:
+      - ■ 接続プールプロキシ系:
           - ■ PgBouncer:
               - PgBouncer: software/software_middleware_database_connection_pool_proxy_pgbouncer.md
               - 設定ファイル: software/software_middleware_database_connection_pool_proxy_pgbouncer_conf.md
