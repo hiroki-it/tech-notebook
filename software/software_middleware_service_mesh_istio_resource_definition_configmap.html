@@ -27623,7 +27623,8 @@
 <span class="w">  </span><span class="nt">proxyMetadata</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <h4 id="defaulthttpretrypolicy">▼ defaultHttpRetryPolicy<a class="headerlink" href="#defaulthttpretrypolicy" title="Permanent link">&para;</a></h4>
-<p><code>.spec.http[*].retries.perTryTimeout</code>キーは個別のVirtualServiceで設定する必要がある。</p>
+<p>再試行ポリシーのデフォルト値を設定する。</p>
+<p>ただし、<code>.spec.http[*].retries.perTryTimeout</code>キーは個別のVirtualServiceで設定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -27634,7 +27635,7 @@
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">defaultHttpRetryPolicy: </span>
 <span class="w">        </span><span class="no">attempts: 3</span>
-<span class="w">        </span><span class="no">retryOn: connect-failure,refused-stream,unavailable,cancelled,reset-before-request</span>
+<span class="w">        </span><span class="no">retryOn: connect-failure,refused-stream,unavailable,cancelled</span>
 </code></pre></div>
 <blockquote>
 <ul>
