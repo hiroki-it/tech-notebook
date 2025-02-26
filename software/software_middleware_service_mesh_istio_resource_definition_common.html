@@ -26304,7 +26304,7 @@
 <p><code>istio-proxy</code>コンテナ内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。</p>
 <p>この接続のドレイン処理時間を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Envoyプロセスのドレイン処理<code>5</code>秒間に実施する。</p>
+<p>Envoyプロセスの接続のドレイン処理<code>5</code>秒間に実施する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># もしくはPod</span>
 <span class="nt">metadata</span><span class="p">:</span>
