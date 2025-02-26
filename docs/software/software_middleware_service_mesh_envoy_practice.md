@@ -38,7 +38,7 @@ EnvoyがCoreDNSとの通信に失敗している可能性がある。
 
 ### `upstream request timeout`とは
 
-`504`ステータスである。
+Gateway Timeout (`504`ステータス) である。
 
 Envoyからアップストリーム (アップストリーム) への送信処理エラーである。
 
@@ -108,7 +108,7 @@ Envoy
 
 ### `upstream response timeout`とは
 
-`504`ステータスである。
+Gateway Timeout (`504`ステータス) である。
 
 Envoyからアップストリームへの送信処理エラーである。
 
@@ -172,7 +172,7 @@ Envoy
 
 ### `downstream_remote_disconnect`とは
 
-`504`ステータスである。
+Gateway Timeout (`504`ステータス) である。
 
 Envoyのダウンストリームの返信処理エラーである。
 
