@@ -3926,7 +3926,7 @@
             
   
   <span class="md-ellipsis">
-    ■ コネクションプールプロキシ系
+    ■ 接続プールプロキシ系
     
   </span>
   
@@ -3937,7 +3937,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_6">
             <span class="md-nav__icon md-icon"></span>
-            ■ コネクションプールプロキシ系
+            ■ 接続プールプロキシ系
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -28877,7 +28877,7 @@
 <p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
 <p>デフォルト値は<code>false</code>である。</p>
 <p><code>istio-proxy</code>コンテナへのリクエストが無くなってから、Envoyのプロセスを終了する。</p>
-<p>具体的には、<code>downstream_cx_active</code>メトリクスの値 (アクティブなコネクション数) を監視し、<code>0</code>になり次第、Envoyのプロセスを終了する。</p>
+<p>具体的には、<code>downstream_cx_active</code>メトリクスの値 (アクティブな接続数) を監視し、<code>0</code>になり次第、Envoyのプロセスを終了する。</p>
 <p>オプションを有効化すると、<code>istio-proxy</code>コンテナの<code>.spec.containers[*].lifecycle.preStop.exec.command</code>キーに、<code>sleep</code>コマンドが挿入される。</p>
 <p><code>.spec.containers[*].lifecycle.postStart.exec.command</code>キーへの自動設定は、<code>.mesh.defaultConfig.holdApplicationUntilProxyStarts</code>キーで対応する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -28964,8 +28964,8 @@
 <p>デフォルト値は<code>5</code>である (対応する<code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>キーと同じ) 。</p>
 <p><code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code>変数が<code>true</code>な場合にのみ設定できる。</p>
 <p><code>false</code>の場合は、代わりに<code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>を設定する。</p>
-<p><code>istio-proxy</code>コンテナ内のEnvoyプロセスは、終了時にコネクションのドレイン処理を実施する。</p>
-<p>このコネクションのドレイン処理時間で、新しいコネクションを受け入れ続ける時間を設定する。</p>
+<p><code>istio-proxy</code>コンテナ内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。</p>
+<p>この接続のドレイン処理時間で、新しい接続を受け入れ続ける時間を設定する。</p>
 <p>Podの<code>.metadata.annotations.proxy.istio.io/config.drainDuration</code>キーで起こるレースコンディションを解決するための設定で、同じ値を設定するとよい。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>Envoyプロセスのドレイン処理<code>5</code>秒間に実施する。</p>

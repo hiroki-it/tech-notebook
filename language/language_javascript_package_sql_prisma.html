@@ -3923,7 +3923,7 @@
             
   
   <span class="md-ellipsis">
-    ■ コネクションプールプロキシ系
+    ■ 接続プールプロキシ系
     
   </span>
   
@@ -3934,7 +3934,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_6">
             <span class="md-nav__icon md-icon"></span>
-            ■ コネクションプールプロキシ系
+            ■ 接続プールプロキシ系
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -25895,10 +25895,10 @@
 <p><br></p>
 <h2 id="01-prisma">01. Prismaの仕組み<a class="headerlink" href="#01-prisma" title="Permanent link">&para;</a></h2>
 <p>PrismaClient (JavaScriptパッケージ) は、クエリエンジン (バイナリ) に接続リクエストを送信する。</p>
-<p>クエリエンジンはコネクションプールを作成し、プール内のコネクションを使用してDBに接続する。</p>
-<p>コネクションが維持されている間、これを再利用して複数のクエリを実行する。</p>
+<p>クエリエンジンは接続プールを作成し、プール内の接続を使用してDBに接続する。</p>
+<p>接続が維持されている間、これを再利用して複数のクエリを実行する。</p>
 <p>PrismaClientは、クエリエンジンに切断リクエストを送信する。</p>
-<p>クエリエンジンは、データベースとのコネクションを破棄する。</p>
+<p>クエリエンジンは、データベースとの接続を破棄する。</p>
 <p><img alt="architecture_prisma" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/architecture_prisma.png" /></p>
 <blockquote>
 <ul>
@@ -26004,8 +26004,8 @@ q+werty%3D%2F%3B
 <h4 id="url_1">▼ urlパラメーター<a class="headerlink" href="#url_1" title="Permanent link">&para;</a></h4>
 <p>URLのパラメーターとして、以下などを設定できる。</p>
 <ul>
-<li>コネションプールのコネクション上限数 (<code>connection_limit</code>)</li>
-<li>コネクションプール内のコネクションが空くまでの待機時間 (<code>pool_timeout</code>)</li>
+<li>コネションプールの接続上限数 (<code>connection_limit</code>)</li>
+<li>接続プール内の接続が空くまでの待機時間 (<code>pool_timeout</code>)</li>
 </ul>
 <blockquote>
 <ul>

@@ -3923,7 +3923,7 @@
             
   
   <span class="md-ellipsis">
-    ■ コネクションプールプロキシ系
+    ■ 接続プールプロキシ系
     
   </span>
   
@@ -3934,7 +3934,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_6">
             <span class="md-nav__icon md-icon"></span>
-            ■ コネクションプールプロキシ系
+            ■ 接続プールプロキシ系
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -25556,7 +25556,7 @@
 <p>トランスポート層で作成されるデータをTCPメッセージという。</p>
 <p><br></p>
 <h3 id="tcp_1">TCPスリーウェイハンドシェイク<a class="headerlink" href="#tcp_1" title="Permanent link">&para;</a></h3>
-<p>リクエストとレスポンスの送受信の前後に行われるTCPコネクションの確立のこと。</p>
+<p>リクエストとレスポンスの送受信の前後に行われるTCP接続の確立のこと。</p>
 <p><br></p>
 <h2 id="02">02. エラー<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="econnrefused">ECONNREFUSED<a class="headerlink" href="#econnrefused" title="Permanent link">&para;</a></h3>
@@ -25585,8 +25585,8 @@
 <p><br></p>
 <h3 id="econnreset-connection-reset-by-peer">ECONNRESET (Connection reset by peer)<a class="headerlink" href="#econnreset-connection-reset-by-peer" title="Permanent link">&para;</a></h3>
 <p><code>Connection reset by peer</code>ともいう。</p>
-<p>TCPコネクション中に宛先のプロセスが終了し、コネクションを強制的に切断したとする。</p>
-<p>この場合に、宛先がコネクションの予期せぬ切断として送信元に返信するエラーである。</p>
+<p>TCP接続中に宛先のプロセスが終了し、接続を強制的に切断したとする。</p>
+<p>この場合に、宛先が接続の予期せぬ切断として送信元に返信するエラーである。</p>
 <p>宛先はRSTパケットを返信し、通信をリセットする。</p>
 <!-- prettier-ignore-start -->
 
@@ -25600,7 +25600,7 @@
 <span class="w">             </span><span class="l l-Scalar l-Scalar-Plain">|--------------- ACK ---------------------&gt;| -*-</span>
 <span class="w">             </span><span class="l l-Scalar l-Scalar-Plain">|                                          |  |</span>
 <span class="w">             </span><span class="l l-Scalar l-Scalar-Plain">|                                          |  |</span>
-<span class="w">             </span><span class="l l-Scalar l-Scalar-Plain">|                                          |  | TCPコネクション確立状態</span>
+<span class="w">             </span><span class="l l-Scalar l-Scalar-Plain">|                                          |  | TCP接続確立状態</span>
 <span class="w">             </span><span class="l l-Scalar l-Scalar-Plain">|                                          |  |    (ESTABLISHED状態)</span>
 <span class="w">             </span><span class="l l-Scalar l-Scalar-Plain">|                                          |  |</span>
 <span class="w">             </span><span class="l l-Scalar l-Scalar-Plain">ECONNRESET |&lt;-------------- RST ----------------------| -*-</span>

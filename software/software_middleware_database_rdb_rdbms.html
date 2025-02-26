@@ -3746,17 +3746,17 @@
           <li class="md-nav__item">
   <a href="#db_11" class="md-nav__link">
     <span class="md-ellipsis">
-      DBコネクション
+      DB接続
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="DBコネクション">
+    <nav class="md-nav" aria-label="DB接続">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#db_12" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ DBコネクションとは
+      ▼ DB接続とは
     </span>
   </a>
   
@@ -3774,7 +3774,7 @@
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ コネクションプロキシ
+      ▼ 接続プロキシ
     </span>
   </a>
   
@@ -3783,7 +3783,7 @@
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ コネクションプール
+      ▼ 接続プール
     </span>
   </a>
   
@@ -4344,7 +4344,7 @@
             
   
   <span class="md-ellipsis">
-    ■ コネクションプールプロキシ系
+    ■ 接続プールプロキシ系
     
   </span>
   
@@ -4355,7 +4355,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_6">
             <span class="md-nav__icon md-icon"></span>
-            ■ コネクションプールプロキシ系
+            ■ 接続プールプロキシ系
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -26046,17 +26046,17 @@
           <li class="md-nav__item">
   <a href="#db_11" class="md-nav__link">
     <span class="md-ellipsis">
-      DBコネクション
+      DB接続
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="DBコネクション">
+    <nav class="md-nav" aria-label="DB接続">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#db_12" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ DBコネクションとは
+      ▼ DB接続とは
     </span>
   </a>
   
@@ -26074,7 +26074,7 @@
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ コネクションプロキシ
+      ▼ 接続プロキシ
     </span>
   </a>
   
@@ -26083,7 +26083,7 @@
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ コネクションプール
+      ▼ 接続プール
     </span>
   </a>
   
@@ -26421,8 +26421,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="db_11">DBコネクション<a class="headerlink" href="#db_11" title="Permanent link">&para;</a></h3>
-<h4 id="db_12">▼ DBコネクションとは<a class="headerlink" href="#db_12" title="Permanent link">&para;</a></h4>
+<h3 id="db_11">DB接続<a class="headerlink" href="#db_11" title="Permanent link">&para;</a></h3>
+<h4 id="db_12">▼ DB接続とは<a class="headerlink" href="#db_12" title="Permanent link">&para;</a></h4>
 <p>アプリからRDBMSへのクエリ送信時の通信のこと。</p>
 <p>TCP/IPプロトコルを使用する。</p>
 <blockquote>
@@ -26431,7 +26431,7 @@
 </ul>
 </blockquote>
 <h4 id="db_13">▼ DBセッション<a class="headerlink" href="#db_13" title="Permanent link">&para;</a></h4>
-<p>ログインに成功したDBコネクションのこと。</p>
+<p>ログインに成功したDB接続のこと。</p>
 <p>セッションを確立できると、クエリを送信できるようになる。</p>
 <p>一つのセッション中に一つのトランザクション (複数のクエリからなる)　を実行することになる。</p>
 <blockquote>
@@ -26440,14 +26440,14 @@
 <li><a href="https://dba.stackexchange.com/a/318063">https://dba.stackexchange.com/a/318063</a></li>
 </ul>
 </blockquote>
-<h4 id="_12">▼ コネクションプロキシ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>アプリケーションとDBの間に、コネクションプールプロキシ (例：ProxySQL、PgBouncerなど) を配置する。</p>
-<p>これにより、アプリケーションサーバーのコネクションプールの処理をコネクションプロキシに委譲する。</p>
-<p>注意点として、プリペアードステートメントでは既存のコネクションを再利用する必要があるが、コネクションプロキシでは別のコネクションを使用してしまうことがある。</p>
-<p>そのため、コネクションプロキシの採用時には、プリペアードステートメントを使用できない。</p>
-<h4 id="_13">▼ コネクションプール<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>アプリからDBへのクエリ送信時に新しく作成したコネクションを、非アクティブ状態として保持しておき、以降のクエリ送信時に再利用する。</p>
-<p>一定回数再利用されたり、一定期間使用されていないコネクションは削除される。</p>
+<h4 id="_12">▼ 接続プロキシ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>アプリケーションとDBの間に、接続プールプロキシ (例：ProxySQL、PgBouncerなど) を配置する。</p>
+<p>これにより、アプリケーションサーバーの接続プールの処理を接続プロキシに委譲する。</p>
+<p>注意点として、プリペアードステートメントでは既存の接続を再利用する必要があるが、接続プロキシでは別の接続を使用してしまうことがある。</p>
+<p>そのため、接続プロキシの採用時には、プリペアードステートメントを使用できない。</p>
+<h4 id="_13">▼ 接続プール<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>アプリからDBへのクエリ送信時に新しく作成した接続を、非アクティブ状態として保持しておき、以降のクエリ送信時に再利用する。</p>
+<p>一定回数再利用されたり、一定期間使用されていない接続は削除される。</p>
 <p><img alt="db_connection-pool" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/db_connection-pool.png" /></p>
 <blockquote>
 <ul>
@@ -26484,7 +26484,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-26</span>
   </span>
 
     

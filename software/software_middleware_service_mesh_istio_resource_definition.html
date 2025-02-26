@@ -3926,7 +3926,7 @@
             
   
   <span class="md-ellipsis">
-    ■ コネクションプールプロキシ系
+    ■ 接続プールプロキシ系
     
   </span>
   
@@ -3937,7 +3937,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_6">
             <span class="md-nav__icon md-icon"></span>
-            ■ コネクションプールプロキシ系
+            ■ 接続プールプロキシ系
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -30178,7 +30178,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="warmupaggression">▼ warmup.aggression<a class="headerlink" href="#warmupaggression" title="Permanent link">&para;</a></h4>
 <p>スロースタート方式 (通過させるリクエストの数を少しずつ増加させる) で、増加率を設定する。</p>
 <p><code>1</code>の場合は、直線的に増加する。</p>
-<p>リクエスト数の非常に多い高トラフィックなシステムで、起動直後のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、コネクションプールの作成が必要、ウォームアップが必要なJVM言語製アプリケーション) にいきなり高負荷をかけないようにできる。</p>
+<p>リクエスト数の非常に多い高トラフィックなシステムで、起動直後のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、接続プールの作成が必要、ウォームアップが必要なJVM言語製アプリケーション) にいきなり高負荷をかけないようにできる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -30200,7 +30200,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="warmupduration">▼ warmup.duration<a class="headerlink" href="#warmupduration" title="Permanent link">&para;</a></h4>
 <p>スロースタート方式 (通過させるリクエストの数を少しずつ増加させる) で、スロースタートの期間を設定する。</p>
-<p>リクエスト数の非常に多い高トラフィックなシステムで、起動直後のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、コネクションプールの作成が必要、ウォームアップが必要なJVM言語製アプリケーション) にいきなり高負荷をかけないようにできる。</p>
+<p>リクエスト数の非常に多い高トラフィックなシステムで、起動直後のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、接続プールの作成が必要、ウォームアップが必要なJVM言語製アプリケーション) にいきなり高負荷をかけないようにできる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>

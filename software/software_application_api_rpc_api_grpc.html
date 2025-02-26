@@ -4353,7 +4353,7 @@
             
   
   <span class="md-ellipsis">
-    ■ コネクションプールプロキシ系
+    ■ 接続プールプロキシ系
     
   </span>
   
@@ -4364,7 +4364,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_6">
             <span class="md-nav__icon md-icon"></span>
-            ■ コネクションプールプロキシ系
+            ■ 接続プールプロキシ系
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -26210,7 +26210,7 @@
 <h3 id="unary-rpc-rpc">Unary RPC (単項RPC)<a class="headerlink" href="#unary-rpc-rpc" title="Permanent link">&para;</a></h3>
 <h4 id="rpc">▼ 単項RPCとは<a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h4>
 <p><img alt="grpc_unary-rpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_unary-rpc.png" /></p>
-<p>まず、<code>1</code>個のTCPコネクションを確立し、その中に<code>1</code>個のストリームを作成する。</p>
+<p>まず、<code>1</code>個のTCP接続を確立し、その中に<code>1</code>個のストリームを作成する。</p>
 <p>次に、gRPCクライアントが<code>1</code>個のリクエストを送信し、これが終えると受信後に<code>1</code>個のレスポンスを返信する。</p>
 <p>一番よく使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Request</span><span class="w"> </span><span class="p">{</span>
@@ -26233,7 +26233,7 @@
 <h3 id="server-streaming-rpc-rpc">Server Streaming RPC (サーバーストリーミングRPC)<a class="headerlink" href="#server-streaming-rpc-rpc" title="Permanent link">&para;</a></h3>
 <h4 id="rpc_1">▼ サーバーストリーミングRPCとは<a class="headerlink" href="#rpc_1" title="Permanent link">&para;</a></h4>
 <p><img alt="grpc_server-streaming" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_server-streaming.png" /></p>
-<p>まず、<code>1</code>個のTCPコネクションを確立し、その中に複数のストリームを作成する。</p>
+<p>まず、<code>1</code>個のTCP接続を確立し、その中に複数のストリームを作成する。</p>
 <p>次に、gRPCクライアントが<code>1</code>個のリクエストを送信し、これが終えるとサーバーは複数個のレスポンスを並行的に返信する。</p>
 <p>任意のタイミングで、サーバーからまとめてレスポンスさせたい場合に使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Notification</span><span class="w"> </span><span class="p">{</span>
@@ -26255,7 +26255,7 @@
 <h3 id="client-streaming-rpc-rpc">Client Streaming RPC (クライアントストリーミングRPC)<a class="headerlink" href="#client-streaming-rpc-rpc" title="Permanent link">&para;</a></h3>
 <h4 id="rpc_2">▼ クライアントストリーミングRPC とは<a class="headerlink" href="#rpc_2" title="Permanent link">&para;</a></h4>
 <p><img alt="grpc_client-streaming-rpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_client-streaming-rpc.png" /></p>
-<p>まず、<code>1</code>個のTCPコネクションを確立し、その中に複数のストリームを作成する。</p>
+<p>まず、<code>1</code>個のTCP接続を確立し、その中に複数のストリームを作成する。</p>
 <p>次に、gRPCクライアントが複数個のリクエストを並行的に送信し、これが終えるとサーバーは<code>1</code>個のレスポンスを返信する。</p>
 <p>gRPCクライアントからのリクエストのデータサイズが大きくなる場合 (例：アップロードサービス) に使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Upload</span><span class="w"> </span><span class="p">{</span>
@@ -26277,7 +26277,7 @@
 <h3 id="bidirectional-streaming-rpc-rpc">Bidirectional Streaming RPC (双方向ストリーミングRPC)<a class="headerlink" href="#bidirectional-streaming-rpc-rpc" title="Permanent link">&para;</a></h3>
 <h4 id="rpc_3">▼ 双方向ストリーミングRPCとは<a class="headerlink" href="#rpc_3" title="Permanent link">&para;</a></h4>
 <p><img alt="grpc_bidrectional-streaming-rpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_bidrectional-streaming-rpc.png" /></p>
-<p>まず、<code>1</code>個のTCPコネクションを確立し、その中に複数のストリームを作成する。</p>
+<p>まず、<code>1</code>個のTCP接続を確立し、その中に複数のストリームを作成する。</p>
 <p>次に、gRPCクライアントが複数個のリクエストを並行的に送信し、これが終えるとサーバーも複数個のレスポンスを並行的に返信する (逆にサーバーからもリクエストを送信できる)。</p>
 <p>gRPCクライアントとgRPCサーバーが互いにリクエストを送信する場合 (例：チャット、オンラインゲーム) に使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Chat</span><span class="w"> </span><span class="p">{</span>
@@ -26563,20 +26563,20 @@
 <p><br></p>
 <h3 id="_9">タイムアウト<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="http11_1">▼ HTTP/1.1の場合<a class="headerlink" href="#http11_1" title="Permanent link">&para;</a></h4>
-<p>TCPコネクションをリクエスト/レスポンスにタイムアウト時間を適用する。</p>
+<p>TCP接続をリクエスト/レスポンスにタイムアウト時間を適用する。</p>
 <h4 id="rpc_4">▼ 単項RPCの場合<a class="headerlink" href="#rpc_4" title="Permanent link">&para;</a></h4>
-<p>TCPコネクション上に単一のストリーミングしかない。</p>
+<p>TCP接続上に単一のストリーミングしかない。</p>
 <p>そのため、ストリーミングを通過するリクエスト/レスポンスにタイムアウト時間を適用する。</p>
-<p>gRPCは、TCPコネクションの確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を<code>grpc-timeout</code>ヘッダーに設定する。</p>
+<p>gRPCは、TCP接続の確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を<code>grpc-timeout</code>ヘッダーに設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/envoyproxy/envoy/issues/12578#issue-676405512">https://github.com/envoyproxy/envoy/issues/12578#issue-676405512</a></li>
 </ul>
 </blockquote>
 <h4 id="rpc_5">▼ ストリーミングRPCの場合<a class="headerlink" href="#rpc_5" title="Permanent link">&para;</a></h4>
-<p>TCPコネクション上に複数のストリーミングがある。</p>
+<p>TCP接続上に複数のストリーミングがある。</p>
 <p>そのため、ストリーミングを通過するリクエスト/レスポンスごとに同じタイムアウト時間を別々に適用する。</p>
-<p>gRPCは、TCPコネクションの確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を<code>grpc-timeout</code>ヘッダーに設定する。</p>
+<p>gRPCは、TCP接続の確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を<code>grpc-timeout</code>ヘッダーに設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/envoyproxy/envoy/issues/12578#issue-676405512">https://github.com/envoyproxy/envoy/issues/12578#issue-676405512</a></li>

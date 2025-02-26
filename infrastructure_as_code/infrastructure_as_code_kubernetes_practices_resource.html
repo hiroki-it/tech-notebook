@@ -3923,7 +3923,7 @@
             
   
   <span class="md-ellipsis">
-    ■ コネクションプールプロキシ系
+    ■ 接続プールプロキシ系
     
   </span>
   
@@ -3934,7 +3934,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_6">
             <span class="md-nav__icon md-icon"></span>
-            ■ コネクションプールプロキシ系
+            ■ 接続プールプロキシ系
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -26265,7 +26265,7 @@
 <td>・SpringBoot製のJavaアプリなら<code>/actuator/startup</code>を使用する。<br>・NginxならReadiness用のエンドポイントで代用する。</td>
 <td style="text-align: center;">➡️</td>
 <td>・SpringBoot製のJavaアプリなら<code>/actuator/health/liveness</code>を使用する。<br>・Nginxなら<code>200</code>ステータスを返却するだけの<code>/healthcheck</code>を定義する。</td>
-<td>・SpringBoot製のJavaアプリなら<code>/actuator/health/readiness</code> (ウォームアップ実施エンドポイント) を使用する。<br>・Nginxなら<code>/nginx-ready</code> (設定ファイル読み込み状態エンドポイント) を使用する。<br>・MySQLならコネクション受信準備完了エンドポイントを使用する。</td>
+<td>・SpringBoot製のJavaアプリなら<code>/actuator/health/readiness</code> (ウォームアップ実施エンドポイント) を使用する。<br>・Nginxなら<code>/nginx-ready</code> (設定ファイル読み込み状態エンドポイント) を使用する。<br>・MySQLなら接続受信準備完了エンドポイントを使用する。</td>
 </tr>
 <tr>
 <td>正常時</td>
@@ -26301,7 +26301,7 @@
 <li>コンテナを停止する。</li>
 </ol>
 <p>これらのプロセスはそれぞれ独立して実施され、ユーザーは制御できない。</p>
-<p>例えば、Serviceとkube-proxyがPodの宛先情報を削除する前にPodが終了してしまうと、ServiceからPodへのコネクションを途中で切断することになってしまう。</p>
+<p>例えば、Serviceとkube-proxyがPodの宛先情報を削除する前にPodが終了してしまうと、ServiceからPodへの接続を途中で切断することになってしまう。</p>
 <p>また、コンテナを停止する前にPodを終了してしまうと、コンテナを強制的に終了することになり、ログにエラーが出力されてしまう。</p>
 <ul>
 <li>Serviceとkube-proxyの処理後にPodを終了できるように、ユーザーがPodの<code>.spec.terminationGracePeriodSeconds</code>キーに任意の秒数を設定し、Podの削除に伴うServiceとkube-proxyの処理の完了を待機する必要がある。</li>
@@ -27249,7 +27249,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-26</span>
   </span>
 
     

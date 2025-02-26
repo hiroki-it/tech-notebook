@@ -3923,7 +3923,7 @@
             
   
   <span class="md-ellipsis">
-    ■ コネクションプールプロキシ系
+    ■ 接続プールプロキシ系
     
   </span>
   
@@ -3934,7 +3934,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_6">
             <span class="md-nav__icon md-icon"></span>
-            ■ コネクションプールプロキシ系
+            ■ 接続プールプロキシ系
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -27686,7 +27686,7 @@
 <h4 id="499">▼ <code>499</code> (接続切断エラー)<a class="headerlink" href="#499" title="Permanent link">&para;</a></h4>
 <p>誤ったリクエストである。</p>
 <p>リバースプロキシサーバー (例：Nginx) が持つ非標準のステータスコードであり、一般的には使用されない。</p>
-<p>プロキシの宛先のシステムからのレスポンスの返信が遅く (またはレスポンスがなく) 、途中でプロキシがコネクションを切断してしまったことを表す。</p>
+<p>プロキシの宛先のシステムからのレスポンスの返信が遅く (またはレスポンスがなく) 、途中でプロキシが接続を切断してしまったことを表す。</p>
 <p>Gateway Timeout (<code>504</code>ステータス) である。とやや似ている。</p>
 <blockquote>
 <ul>
@@ -28106,8 +28106,8 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
 <h4 id="_21">▼ 動的<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
 <p>宛先の負荷をリアルタイムに考慮して、ロードバランシングする。</p>
 <ul>
-<li>最小コネクション数 (最小未処理コネクション数、Least Connection)</li>
-<li>重み付きコネクション数</li>
+<li>最小接続数 (最小未処理接続数、Least Connection)</li>
+<li>重み付き接続数</li>
 <li>最小レスポンス時間</li>
 </ul>
 <blockquote>

@@ -10,7 +10,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="PgBouncer＠コネクションプールプロキシ系ミドルウェアの知見を記録しています。">
+        <meta name="description" content="PgBouncer＠接続プールプロキシ系ミドルウェアの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -30,7 +30,7 @@
     
     
       
-        <title>【IT技術の知見】PgBouncer＠コネクションプールプロキシ系ミドルウェア - 俺の技術ノート</title>
+        <title>【IT技術の知見】PgBouncer＠接続プールプロキシ系ミドルウェア - 俺の技術ノート</title>
       
     
     
@@ -154,7 +154,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】PgBouncer＠コネクションプールプロキシ系ミドルウェア
+              【IT技術の知見】PgBouncer＠接続プールプロキシ系ミドルウェア
             
           </span>
         </div>
@@ -3926,7 +3926,7 @@
             
   
   <span class="md-ellipsis">
-    ■ コネクションプールプロキシ系
+    ■ 接続プールプロキシ系
     
   </span>
   
@@ -3937,7 +3937,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_6">
             <span class="md-nav__icon md-icon"></span>
-            ■ コネクションプールプロキシ系
+            ■ 接続プールプロキシ系
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -4090,7 +4090,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      コネクションプール
+      接続プール
     </span>
   </a>
   
@@ -25485,7 +25485,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      コネクションプール
+      接続プール
     </span>
   </a>
   
@@ -25524,7 +25524,7 @@
   
 
 
-<h1 id="pgbouncer">PgBouncer＠コネクションプールプロキシ系ミドルウェア<a class="headerlink" href="#pgbouncer" title="Permanent link">&para;</a></h1>
+<h1 id="pgbouncer">PgBouncer＠接続プールプロキシ系ミドルウェア<a class="headerlink" href="#pgbouncer" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -25535,7 +25535,7 @@
 <p><br></p>
 <h2 id="pgbouncer_1">PgBouncerの仕組み<a class="headerlink" href="#pgbouncer_1" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>PgBouncerは、クライアントからのコネクションをプールし、DBにルーティングする。</p>
+<p>PgBouncerは、クライアントからの接続をプールし、DBにルーティングする。</p>
 <p><img alt="pgbouncer_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pgbouncer_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -25545,8 +25545,8 @@
 </blockquote>
 <p><br></p>
 <h2 id="02">02. ユースケース<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_3">コネクションプール<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>DBへのコネクションをプールし、アプリケーションがコネクションを再利用できるようにする。</p>
+<h3 id="_3">接続プール<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>DBへの接続をプールし、アプリケーションが接続を再利用できるようにする。</p>
 <p><br></p>
 <h3 id="_4">ロードバランサーとしては使用できない<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>PgBouncerは、クエリのロードバランサーとしては使用できない。</p>

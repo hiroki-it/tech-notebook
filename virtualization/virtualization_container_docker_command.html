@@ -3923,7 +3923,7 @@
             
   
   <span class="md-ellipsis">
-    ■ コネクションプールプロキシ系
+    ■ 接続プールプロキシ系
     
   </span>
   
@@ -3934,7 +3934,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_6">
             <span class="md-nav__icon md-icon"></span>
-            ■ コネクションプールプロキシ系
+            ■ 接続プールプロキシ系
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -27030,7 +27030,7 @@ $<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</sp
 </code></pre></div>
 <h4 id="attachexec">▼ attach、execの違い<a class="headerlink" href="#attachexec" title="Permanent link">&para;</a></h4>
 <p>まず<code>docker attach</code>コマンドでは、起動中コンテナに接続する。</p>
-<p><code>exit</code>コマンドを使用して、コンテナとのコネクションを切断した後、コンテナが停止してしまう。</p>
+<p><code>exit</code>コマンドを使用して、コンテナとの接続を切断した後、コンテナが停止してしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># デタッチドモードによる起動</span>
 $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-it<span class="w"> </span>--name<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>/bin/bash
 
@@ -27043,7 +27043,7 @@ USER<span class="w">       </span>PID<span class="w"> </span>%CPU<span class="w"
 root<span class="w">         </span><span class="m">1</span><span class="w">  </span><span class="m">0</span>.0<span class="w">  </span><span class="m">0</span>.1<span class="w">  </span><span class="m">16152</span><span class="w">  </span><span class="m">3872</span><span class="w"> </span>pts/0<span class="w">    </span>Ss+<span class="w">  </span><span class="m">18</span>:06<span class="w">   </span><span class="m">0</span>:00<span class="w"> </span>/bin/bash
 root<span class="w">        </span><span class="m">33</span><span class="w">  </span><span class="m">0</span>.0<span class="w">  </span><span class="m">0</span>.1<span class="w">  </span><span class="m">45696</span><span class="w">  </span><span class="m">3732</span><span class="w"> </span>pts/1<span class="w">    </span>R+<span class="w">   </span><span class="m">18</span>:22<span class="w">   </span><span class="m">0</span>:00<span class="w"> </span>ps<span class="w"> </span>aux
 
-<span class="c1"># コンテナとのコネクションを切断</span>
+<span class="c1"># コンテナとの接続を切断</span>
 <span class="o">[</span>root@&lt;コンテナID&gt;:~<span class="o">]</span><span class="w"> </span>$<span class="w"> </span><span class="nb">exit</span>
 
 <span class="c1"># コンテナの状態を確認</span>
@@ -27051,7 +27051,7 @@ $<span class="w"> </span>docker<span class="w"> </span>container<span class="w">
 </code></pre></div>
 <p>一方で<code>docker exec</code>コマンドでは、起動中コンテナでコマンドを実行する。</p>
 <p>実行するコマンドが<code>bash</code>や<code>shell</code>の場合、コンテナに通信できる。</p>
-<p><code>exit</code>コマンドを使用して、コンテナとのコネクションを切断した後でも、コンテナが起動し続ける。</p>
+<p><code>exit</code>コマンドを使用して、コンテナとの接続を切断した後でも、コンテナが起動し続ける。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># デタッチドモードによる起動</span>
 $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-it<span class="w"> </span>--name<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>/bin/bash
 
@@ -27065,7 +27065,7 @@ root<span class="w">         </span><span class="m">1</span><span class="w">  </
 root<span class="w">        </span><span class="m">17</span><span class="w">  </span><span class="m">0</span>.0<span class="w">  </span><span class="m">0</span>.1<span class="w">  </span><span class="m">16152</span><span class="w">  </span><span class="m">4032</span><span class="w"> </span>pts/1<span class="w">    </span>Ss<span class="w">   </span><span class="m">18</span>:21<span class="w">   </span><span class="m">0</span>:00<span class="w"> </span>/bin/bash
 root<span class="w">        </span><span class="m">34</span><span class="w">  </span><span class="m">0</span>.0<span class="w">  </span><span class="m">0</span>.1<span class="w">  </span><span class="m">45696</span><span class="w">  </span><span class="m">3732</span><span class="w"> </span>pts/1<span class="w">    </span>R+<span class="w">   </span><span class="m">18</span>:22<span class="w">   </span><span class="m">0</span>:00<span class="w"> </span>ps<span class="w"> </span>aux
 
-<span class="c1"># コンテナとのコネクションを切断</span>
+<span class="c1"># コンテナとの接続を切断</span>
 <span class="o">[</span>root@&lt;コンテナID&gt;:~<span class="o">]</span><span class="w"> </span>$<span class="w"> </span><span class="nb">exit</span>
 
 <span class="c1"># コンテナの状態を確認</span>

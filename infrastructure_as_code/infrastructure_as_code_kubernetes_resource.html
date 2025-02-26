@@ -3923,7 +3923,7 @@
             
   
   <span class="md-ellipsis">
-    ■ コネクションプールプロキシ系
+    ■ 接続プールプロキシ系
     
   </span>
   
@@ -3934,7 +3934,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_6">
             <span class="md-nav__icon md-icon"></span>
-            ■ コネクションプールプロキシ系
+            ■ 接続プールプロキシ系
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -28912,7 +28912,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <li>コンテナを停止する。</li>
 </ul>
 <p>これらのプロセスはそれぞれ独立して実施され、ユーザーは制御できない。</p>
-<p>例えば、Serviceとkube-proxyがPodの宛先情報を削除する前にPodが削除してしまうと、ServiceからPodへのコネクションを途中で切断することになってしまう。</p>
+<p>例えば、Serviceとkube-proxyがPodの宛先情報を削除する前にPodが削除してしまうと、ServiceからPodへの接続を途中で切断することになってしまう。</p>
 <p>また、コンテナを停止する前にPodを終了してしまうと、コンテナを強制的に終了することになり、ログにエラーが出力されてしまう。</p>
 <p>そのため、Serviceとkube-proxyの処理後にPodを終了できるように、ユーザーがPodの<code>.spec.containers[*].lifecycle.preStop</code>キーに任意の秒数を設定し、コンテナに待機処理 (例：<code>sleep</code>コマンド) を実行させる必要がある。</p>
 <p>また、コンテナの正常な終了後にPodを終了できるように、<code>.spec.terminationGracePeriodSeconds</code>キーに任意の秒数を設定し、Podの終了に伴う一連のプロセスの完了を待機する必要がある。</p>
@@ -28956,7 +28956,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </dd>
 <dt><code>(9)</code></dt>
 <dd>
-<p>Podが削除される。この段階でDeploymentや、Serviceとkube-proxyの処理が完了していない場合は、コネクションを途中で強制的に切断することになる。</p>
+<p>Podが削除される。この段階でDeploymentや、Serviceとkube-proxyの処理が完了していない場合は、接続を途中で強制的に切断することになる。</p>
 </dd>
 </dl>
 <blockquote>

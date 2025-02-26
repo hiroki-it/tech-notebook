@@ -3926,7 +3926,7 @@
             
   
   <span class="md-ellipsis">
-    ■ コネクションプールプロキシ系
+    ■ 接続プールプロキシ系
     
   </span>
   
@@ -3937,7 +3937,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_6">
             <span class="md-nav__icon md-icon"></span>
-            ■ コネクションプールプロキシ系
+            ■ 接続プールプロキシ系
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -27799,7 +27799,7 @@
 </ul>
 </blockquote>
 <p>Envoyは、gRPCのストリーミングのタイムアウト時間を適切に処理できておらず、<code>max_grpc_timeout</code>は非推奨となった。</p>
-<p>gRPCは、TCPコネクションの確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を<code>grpc-timeout</code>ヘッダーに設定する。</p>
+<p>gRPCは、TCP接続の確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を<code>grpc-timeout</code>ヘッダーに設定する。</p>
 <p>一方でEnvoyは、gRPCクライアントからのリクエストの終了後にタイムアウト時間を開始し、<code>grpc-timeout</code>ヘッダーとは別にタイムアウト時間を管理する。</p>
 <p>これにより、クライアント側が想定しているタイムアウト時間よりも短い時間でEnvoyがタイムアウト時間を迎える可能性がある。</p>
 <p>例えば、以下の図ではクライアント側で<code>25</code>秒のタイムアウト時間を設定したと仮定している。</p>
