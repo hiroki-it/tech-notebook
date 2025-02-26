@@ -3344,6 +3344,8 @@ spec:
 | ---------------------- | ----------------------------------------------------------------------------------- |
 | `reset-before-request` | 宛先アプリコンテナから`istio-proxy`コンテナに返信できず、通信のリセットが起こった。 |
 
+![istio_inbound-retry_reset-before-request](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_inbound-retry_reset-before-request.png)
+
 **＊実装例＊**
 
 デフォルトでは、再試行の条件は`connect-failure,refused-stream,unavailable`である。
