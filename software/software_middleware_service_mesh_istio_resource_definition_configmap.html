@@ -27842,8 +27842,8 @@
 <td>レスポンスでgRPCステータスコードが<code>ResourceExhausted</code>であった。</td>
 </tr>
 <tr>
-<td><code>retriable-status-codes</code></td>
-<td>レスポンスでHTTPステータスコードが<code>503</code>ステータスであった。</td>
+<td><code>retriable-status-codes</code> (任意のステータスコードを設定する)</td>
+<td>レスポンスで指定したHTTPステータスであった。<code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code>変数を<code>true</code>にすると、元はデフォルト値であった<code>503</code>を設定できる。</td>
 </tr>
 <tr>
 <td><code>unavailable</code></td>
