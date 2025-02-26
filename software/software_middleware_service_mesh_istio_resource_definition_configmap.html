@@ -5372,21 +5372,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#defaulthttpretrypolicy" class="md-nav__link">
-    <span class="md-ellipsis">
-      defaultHttpRetryPolicy
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="defaultHttpRetryPolicy">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#discoveryaddress" class="md-nav__link">
     <span class="md-ellipsis">
@@ -5397,9 +5382,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#enableprometheusmerge" class="md-nav__link">
+  <a href="#drainduration" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ enablePrometheusMerge
+      ▼ drainDuration
     </span>
   </a>
   
@@ -5465,6 +5450,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#defaulthttpretrypolicy" class="md-nav__link">
+    <span class="md-ellipsis">
+      defaultHttpRetryPolicy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#defaultproviders" class="md-nav__link">
     <span class="md-ellipsis">
       defaultProviders
@@ -5489,7 +5483,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#enableprometheusmerge_1" class="md-nav__link">
+  <a href="#enableprometheusmerge" class="md-nav__link">
     <span class="md-ellipsis">
       enablePrometheusMerge
     </span>
@@ -5499,7 +5493,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#enableprometheusmerge_2" class="md-nav__link">
+  <a href="#enableprometheusmerge_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ enablePrometheusMergeとは
     </span>
@@ -26536,21 +26530,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#defaulthttpretrypolicy" class="md-nav__link">
-    <span class="md-ellipsis">
-      defaultHttpRetryPolicy
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="defaultHttpRetryPolicy">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#discoveryaddress" class="md-nav__link">
     <span class="md-ellipsis">
@@ -26561,9 +26540,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#enableprometheusmerge" class="md-nav__link">
+  <a href="#drainduration" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ enablePrometheusMerge
+      ▼ drainDuration
     </span>
   </a>
   
@@ -26629,6 +26608,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#defaulthttpretrypolicy" class="md-nav__link">
+    <span class="md-ellipsis">
+      defaultHttpRetryPolicy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#defaultproviders" class="md-nav__link">
     <span class="md-ellipsis">
       defaultProviders
@@ -26653,7 +26641,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#enableprometheusmerge_1" class="md-nav__link">
+  <a href="#enableprometheusmerge" class="md-nav__link">
     <span class="md-ellipsis">
       enablePrometheusMerge
     </span>
@@ -26663,7 +26651,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#enableprometheusmerge_2" class="md-nav__link">
+  <a href="#enableprometheusmerge_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ enablePrometheusMergeとは
     </span>
@@ -27519,27 +27507,6 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="defaulthttpretrypolicy">defaultHttpRetryPolicy<a class="headerlink" href="#defaulthttpretrypolicy" title="Permanent link">&para;</a></h3>
-<p>再試行ポリシーのデフォルト値を設定する。</p>
-<p>ただし、<code>.spec.http[*].retries.perTryTimeout</code>キーは個別のVirtualServiceで設定する必要がある。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-mesh-cm</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
-<span class="nt">data</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">defaultHttpRetryPolicy: </span>
-<span class="w">      </span><span class="no">attempts: 3</span>
-<span class="w">      </span><span class="no">retryOn: connect-failure,refused-stream,unavailable,cancelled</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries">https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries</a></li>
-<li><a href="https://github.com/istio/istio/issues/51704#issuecomment-2188555136">https://github.com/istio/istio/issues/51704#issuecomment-2188555136</a></li>
-<li><a href="https://karlstoney.com/retry-policies-in-istio/">https://karlstoney.com/retry-policies-in-istio/</a></li>
-</ul>
-</blockquote>
 <h4 id="discoveryaddress">▼ discoveryAddress<a class="headerlink" href="#discoveryaddress" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -27558,7 +27525,7 @@
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">discoveryAddress</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod-&lt;リビジョン番号&gt;.istio-system.svc:15012</span>
 </code></pre></div>
-<h4 id="enableprometheusmerge">▼ enablePrometheusMerge<a class="headerlink" href="#enableprometheusmerge" title="Permanent link">&para;</a></h4>
+<h4 id="drainduration">▼ drainDuration<a class="headerlink" href="#drainduration" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -27567,14 +27534,14 @@
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">defaultConfig:</span>
-<span class="w">      </span><span class="no">enablePrometheusMerge: true</span>
+<span class="w">      </span><span class="no">drainDuration: 45s</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProxyConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-proxyconfig</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">enablePrometheusMerge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">drainDuration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45s</span>
 </code></pre></div>
 <h4 id="holdapplicationuntilproxystarts">▼ holdApplicationUntilProxyStarts<a class="headerlink" href="#holdapplicationuntilproxystarts" title="Permanent link">&para;</a></h4>
 <p><code>istio-proxy</code>コンテナが、必ずアプリコンテナよりも先に起動するか否かを設定する。</p>
@@ -27748,6 +27715,28 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="defaulthttpretrypolicy">defaultHttpRetryPolicy<a class="headerlink" href="#defaulthttpretrypolicy" title="Permanent link">&para;</a></h3>
+<p>再試行ポリシーのデフォルト値を設定する。</p>
+<p>ただし、<code>.spec.http[*].retries.perTryTimeout</code>キーは個別のVirtualServiceで設定する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-mesh-cm</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">defaultHttpRetryPolicy: </span>
+<span class="w">      </span><span class="no">attempts: 3</span>
+<span class="w">      </span><span class="no">retryOn: connect-failure,refused-stream,unavailable,cancelled</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries">https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries</a></li>
+<li><a href="https://github.com/istio/istio/issues/51704#issuecomment-2188555136">https://github.com/istio/istio/issues/51704#issuecomment-2188555136</a></li>
+<li><a href="https://karlstoney.com/retry-policies-in-istio/">https://karlstoney.com/retry-policies-in-istio/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="defaultproviders">defaultProviders<a class="headerlink" href="#defaultproviders" title="Permanent link">&para;</a></h3>
 <h4 id="defaultproviders_1">▼ defaultProvidersとは<a class="headerlink" href="#defaultproviders_1" title="Permanent link">&para;</a></h4>
 <p><code>extensionProviders</code>キーで定義したもののうち、デフォルトで使用するプロバイダーを設定する。</p>
@@ -27808,9 +27797,18 @@
 <span class="w">          </span><span class="no">port: 4317</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="enableprometheusmerge_1">enablePrometheusMerge<a class="headerlink" href="#enableprometheusmerge_1" title="Permanent link">&para;</a></h3>
-<h4 id="enableprometheusmerge_2">▼ enablePrometheusMergeとは<a class="headerlink" href="#enableprometheusmerge_2" title="Permanent link">&para;</a></h4>
+<h3 id="enableprometheusmerge">enablePrometheusMerge<a class="headerlink" href="#enableprometheusmerge" title="Permanent link">&para;</a></h3>
+<h4 id="enableprometheusmerge_1">▼ enablePrometheusMergeとは<a class="headerlink" href="#enableprometheusmerge_1" title="Permanent link">&para;</a></h4>
 <p>アプリケーションのメトリクスを<code>istio-proxy</code>コンテナを介して取得できるようにする (マージする) かどうかを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-mesh-cm</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">enablePrometheusMerge: true</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/</a></li>
