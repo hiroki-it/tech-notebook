@@ -297,29 +297,6 @@ spec:
 
 <br>
 
-### defaultHttpRetryPolicy
-
-再試行ポリシーのデフォルト値を設定する。
-
-ただし、`.spec.http[*].retries.perTryTimeout`キーは個別のVirtualServiceで設定する必要がある。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultHttpRetryPolicy: 
-      attempts: 3
-      retryOn: connect-failure,refused-stream,unavailable,cancelled
-```
-
-> - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
-> - https://github.com/istio/istio/issues/51704#issuecomment-2188555136
-> - https://karlstoney.com/retry-policies-in-istio/
-
 #### ▼ discoveryAddress
 
 ```yaml
@@ -566,6 +543,31 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/tasks/security/authorization/authz-td-migration/
+
+<br>
+
+### defaultHttpRetryPolicy
+
+再試行ポリシーのデフォルト値を設定する。
+
+ただし、`.spec.http[*].retries.perTryTimeout`キーは個別のVirtualServiceで設定する必要がある。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultHttpRetryPolicy: 
+      attempts: 3
+      retryOn: connect-failure,refused-stream,unavailable,cancelled
+```
+
+> - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
+> - https://github.com/istio/istio/issues/51704#issuecomment-2188555136
+> - https://karlstoney.com/retry-policies-in-istio/
 
 <br>
 
