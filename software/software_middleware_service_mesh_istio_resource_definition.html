@@ -32184,7 +32184,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="c1"># Envoyのx-envoy-retry-onの値</span>
 <span class="w">        </span><span class="nt">retryOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5xx</span>
 </code></pre></div>
-<p>gateway-error (<code>502</code>、<code>503</code>、<code>504</code>ステータス) の場合に、<code>attempts</code>の数だけ再試行する。</p>
+<p>Gateway系ステータス (<code>502</code>、<code>503</code>、<code>504</code>) の場合に、<code>attempts</code>の数だけ再試行する。</p>
 <p>各再試行で処理の結果が返却されるまでのタイムアウト時間を<code>perTryTimeout</code>で設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -32278,7 +32278,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <tbody>
 <tr>
 <td><code>reset-before-request</code></td>
-<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できず、通信のリセット／タイムアウト (特にコネクションタイムアウト) が起こった。</td>
+<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できず、通信のリセットが起こった。</td>
+</tr>
+<tr>
+<td><code>gateway-error</code></td>
+<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できず、通信のタイムアウト (特に読み取りタイムアウト)　が起こった。</td>
 </tr>
 </tbody>
 </table>
