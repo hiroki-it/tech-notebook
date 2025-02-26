@@ -5880,18 +5880,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#exclude_unsafe_503_from_default_retry" class="md-nav__link">
+  <a href="#enable_deferred_cluster_creation" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY
+      ▼ ENABLE_DEFERRED_CLUSTER_CREATION
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#enable_deferred_cluster_creation" class="md-nav__link">
+  <a href="#enable_deferred_stats_creation" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ENABLE_DEFERRED_CLUSTER_CREATION
+      ▼ ENABLE_DEFERRED_STATS_CREATION
     </span>
   </a>
   
@@ -5919,6 +5919,15 @@
   <a href="#enable_inbound_retry_policy" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ENABLE_INBOUND_RETRY_POLICY
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exclude_unsafe_503_from_default_retry" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY
     </span>
   </a>
   
@@ -27002,18 +27011,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#exclude_unsafe_503_from_default_retry" class="md-nav__link">
+  <a href="#enable_deferred_cluster_creation" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY
+      ▼ ENABLE_DEFERRED_CLUSTER_CREATION
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#enable_deferred_cluster_creation" class="md-nav__link">
+  <a href="#enable_deferred_stats_creation" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ENABLE_DEFERRED_CLUSTER_CREATION
+      ▼ ENABLE_DEFERRED_STATS_CREATION
     </span>
   </a>
   
@@ -27041,6 +27050,15 @@
   <a href="#enable_inbound_retry_policy" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ENABLE_INBOUND_RETRY_POLICY
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exclude_unsafe_503_from_default_retry" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY
     </span>
   </a>
   
@@ -28302,32 +28320,6 @@
 <li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
 </ul>
 </blockquote>
-<h4 id="exclude_unsafe_503_from_default_retry">▼ <code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code><a class="headerlink" href="#exclude_unsafe_503_from_default_retry" title="Permanent link">&para;</a></h4>
-<p>デフォルト値は<code>true</code>である。</p>
-<p>POSTリクエストの結果で、アプリコンテナから<code>503</code>ステータスが返信された場合に、処理失敗とは限らない。</p>
-<p>この場合に再試行すると結果的に二重で処理が実行されてしまう。</p>
-<p>そのため、アプリコンテナから<code>503</code>ステータスが返信された場合は再試行しないようにする。</p>
-<p>なお、再試行の結果で<code>istio-proxy</code>コンテナが<code>503</code>ステータスを返信する場合とは区別する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
-<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</span>
-<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
-<li><a href="https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries">https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries</a></li>
-<li><a href="https://github.com/istio/istio/issues/50506#issuecomment-2230102675">https://github.com/istio/istio/issues/50506#issuecomment-2230102675</a></li>
-</ul>
-</blockquote>
 <h4 id="enable_deferred_cluster_creation">▼ <code>ENABLE_DEFERRED_CLUSTER_CREATION</code><a class="headerlink" href="#enable_deferred_cluster_creation" title="Permanent link">&para;</a></h4>
 <p>デフォルト値は<code>true</code>である。</p>
 <p>リクエストがある場合にのみ、Envoyのクラスターを作成する。</p>
@@ -28348,6 +28340,29 @@
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
+</ul>
+</blockquote>
+<h4 id="enable_deferred_stats_creation">▼ <code>ENABLE_DEFERRED_STATS_CREATION</code><a class="headerlink" href="#enable_deferred_stats_creation" title="Permanent link">&para;</a></h4>
+<p>デフォルト値は<code>true</code>である。</p>
+<p>Envoyの統計情報を遅延初期化する。</p>
+<p>ハードウェアリソースを節約できる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_DEFERRED_STATS_CREATION</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/bootstrap/v3/bootstrap.proto#config-bootstrap-v3-bootstrap-deferredstatoptions">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/bootstrap/v3/bootstrap.proto#config-bootstrap-v3-bootstrap-deferredstatoptions</a></li>
+<li><a href="https://martinfowler.com/bliki/LazyInitialization.html">https://martinfowler.com/bliki/LazyInitialization.html</a></li>
 </ul>
 </blockquote>
 <h4 id="enable_enhanced_resource_scoping">▼ <code>ENABLE_ENHANCED_RESOURCE_SCOPING</code><a class="headerlink" href="#enable_enhanced_resource_scoping" title="Permanent link">&para;</a></h4>
@@ -28416,6 +28431,32 @@
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
 <li><a href="https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries">https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries</a></li>
+</ul>
+</blockquote>
+<h4 id="exclude_unsafe_503_from_default_retry">▼ <code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code><a class="headerlink" href="#exclude_unsafe_503_from_default_retry" title="Permanent link">&para;</a></h4>
+<p>デフォルト値は<code>true</code>である。</p>
+<p>POSTリクエストの結果で、アプリコンテナから<code>503</code>ステータスが返信された場合に、未処理とは限らない。</p>
+<p>この場合に再試行すると結果的に二重で処理が実行されてしまう。</p>
+<p>そのため、アプリコンテナから<code>503</code>ステータスが返信された場合は、再試行しないようにする。</p>
+<p>なお、再試行の結果で<code>istio-proxy</code>コンテナが<code>503</code>ステータスを返信する場合とは区別する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
+<li><a href="https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries">https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries</a></li>
+<li><a href="https://github.com/istio/istio/issues/51704#issuecomment-2188555136">https://github.com/istio/istio/issues/51704#issuecomment-2188555136</a></li>
 </ul>
 </blockquote>
 <h4 id="pilot_trace_sampling">▼ <code>PILOT_TRACE_SAMPLING</code><a class="headerlink" href="#pilot_trace_sampling" title="Permanent link">&para;</a></h4>
@@ -28714,7 +28755,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-26</span>
   </span>
 
     
