@@ -32224,7 +32224,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="retryon">▼ retryOn<a class="headerlink" href="#retryon" title="Permanent link">&para;</a></h4>
 <p>再試行失敗の理由を設定する。</p>
 <p><code>istio-proxy</code>コンテナは、レスポンスの<code>x-envoy-retry-on</code>ヘッダーに割り当てるため、これの値を設定する。</p>
-<p>宛先アプリコンテナが<code>istio-proxy</code>コンテナに返信できた場合は以下である。</p>
+<p>レスポンス時に、宛先アプリコンテナが<code>istio-proxy</code>コンテナに返信できた場合は以下である。</p>
 <table>
 <thead>
 <tr>
@@ -32235,39 +32235,43 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <tbody>
 <tr>
 <td><code>cancelled</code></td>
-<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できたが、gRPCステータスコードが<code>Cancelled</code>であった。</td>
+<td>レスポンス時に、宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できた。しかし、gRPCステータスコードが<code>Cancelled</code>であった。</td>
 </tr>
 <tr>
 <td><code>connect-failure</code></td>
-<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できたが、読み取りタイムアウトが起こった。</td>
+<td>レスポンス時に、宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できた。しかし、読み取りタイムアウトが起こった。</td>
 </tr>
 <tr>
 <td><code>deadline-exceeded</code></td>
-<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できたが、gRPCステータスコードが<code>DeadlineExceeded</code>であった。</td>
+<td>レスポンス時に、宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できた。しかし、gRPCステータスコードが<code>DeadlineExceeded</code>であった。</td>
+</tr>
+<tr>
+<td><code>gateway-error</code></td>
+<td>レスポンス時に、 宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できた。しかし、Gateway系ステータスコード (<code>502</code>、<code>503</code>、<code>504</code>) が返信された。</td>
 </tr>
 <tr>
 <td><code>refused-stream</code></td>
-<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できたが、gRPCステータスコードが<code>Unavailable</code>であった。</td>
+<td>レスポンス時に、宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できた。しかし、gRPCステータスコードが<code>Unavailable</code>であった。</td>
 </tr>
 <tr>
 <td><code>reset</code></td>
-<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できたが、通信の切断／リセット／タイムアウト (特に) が起こった。</td>
+<td>レスポンス時に、宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できた。しかし、通信の切断／リセット／タイムアウト (特に) が起こった。</td>
 </tr>
 <tr>
 <td><code>resource-exhausted</code></td>
-<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できたが、gRPCステータスコードが<code>ResourceExhausted</code>であった。</td>
+<td>レスポンス時に、宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できた。しかし、gRPCステータスコードが<code>ResourceExhausted</code>であった。</td>
 </tr>
 <tr>
 <td><code>retriable-status-codes</code></td>
-<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できたが、HTTPステータスコードが<code>503</code>ステータスであった。</td>
+<td>レスポンス時に、宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できた。しかし、HTTPステータスコードが<code>503</code>ステータスであった。</td>
 </tr>
 <tr>
 <td><code>unavailable</code></td>
-<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できたが、gRPCステータスコードが<code>Unavailable</code>であった。</td>
+<td>レスポンス時に、宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できた。しかし、gRPCステータスコードが<code>Unavailable</code>であった。</td>
 </tr>
 </tbody>
 </table>
-<p>宛先アプリコンテナが<code>istio-proxy</code>コンテナに返信できなかった場合は以下である。</p>
+<p>レスポンス時に、宛先アプリコンテナが<code>istio-proxy</code>コンテナに返信できなかった場合は以下である。</p>
 <table>
 <thead>
 <tr>
@@ -32279,10 +32283,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <tr>
 <td><code>reset-before-request</code></td>
 <td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できず、通信のリセットが起こった。</td>
-</tr>
-<tr>
-<td><code>gateway-error</code></td>
-<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できず、通信のタイムアウト (特に読み取りタイムアウト)　が起こった。</td>
 </tr>
 </tbody>
 </table>
