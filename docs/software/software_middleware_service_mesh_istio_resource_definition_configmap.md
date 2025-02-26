@@ -235,36 +235,6 @@ data:
 > - https://istio.io/latest/news/releases/1.22.x/announcing-1.22/upgrade-notes/#default-value-of-the-feature-flag-enhanced_resource_scoping-to-true
 > - https://github.com/istio/api/blob/v1.22.1/mesh/v1alpha1/config.proto#L1252-L1274
 
-<br>
-
-### outboundTrafficPolicy
-
-#### ▼ outboundTrafficPolicyとは
-
-サービスメッシュ外へのリクエストの宛先の種類 (`PassthroughCluster`、`BlackHoleCluster`) を設定する。
-
-#### ▼ ALLOW_ANY (デフォルト)
-
-サービスメッシュ外へのリクエストの宛先を`PassthroughCluster`として扱う。
-
-また、ServiceEntryとして登録した宛先には固有の名前がつく。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    outboundTrafficPolicy:
-      mode: ALLOW_ANY
-```
-
-> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services
-> - https://istiobyexample.dev/monitoring-egress-traffic/
-> - https://discuss.istio.io/t/setting-outboundtrafficpolicy-mode-in-configmap/7041/3
-
 #### ▼ REGISTRY_ONLY
 
 サービスメッシュ外へのリクエストの宛先を`BlackHoleCluster` (`502 Bad Gateway`で通信負荷) として扱う。
@@ -324,6 +294,31 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
+
+<br>
+
+### defaultHttpRetryPolicy
+
+再試行ポリシーのデフォルト値を設定する。
+
+ただし、`.spec.http[*].retries.perTryTimeout`キーは個別のVirtualServiceで設定する必要がある。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultHttpRetryPolicy: 
+      attempts: 3
+      retryOn: connect-failure,refused-stream,unavailable,cancelled
+```
+
+> - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
+> - https://github.com/istio/istio/issues/51704#issuecomment-2188555136
+> - https://karlstoney.com/retry-policies-in-istio/
 
 #### ▼ discoveryAddress
 
@@ -477,30 +472,6 @@ metadata:
 spec:
   proxyMetadata: ...
 ```
-
-#### ▼ defaultHttpRetryPolicy
-
-再試行ポリシーのデフォルト値を設定する。
-
-ただし、`.spec.http[*].retries.perTryTimeout`キーは個別のVirtualServiceで設定する必要がある。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      defaultHttpRetryPolicy: 
-        attempts: 3
-        retryOn: connect-failure,refused-stream,unavailable,cancelled
-```
-
-> - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
-> - https://github.com/istio/istio/issues/51704#issuecomment-2188555136
-> - https://karlstoney.com/retry-policies-in-istio/
 
 #### ▼ rootNamespace
 
@@ -1084,6 +1055,23 @@ data:
 
 <br>
 
+### inboundClusterStatName
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    inboundClusterStatName: inbound|%SERVICE_PORT%|%SERVICE_PORT_NAME%|%SERVICE_FQDN%
+```
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-inbound_cluster_stat_name
+
+<br>
+
 ### ingressSelector
 
 #### ▼ ingressSelectorとは
@@ -1146,6 +1134,53 @@ data:
 ```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+
+<br>
+
+### outboundClusterStatName
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    outboundClusterStatName: outbound|%SERVICE_PORT%|%%SUBSET_NAME%%|%SERVICE_FQDN%
+```
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-outbound_cluster_stat_name
+
+<br>
+
+### outboundTrafficPolicy
+
+#### ▼ outboundTrafficPolicyとは
+
+サービスメッシュ外へのリクエストの宛先の種類 (`PassthroughCluster`、`BlackHoleCluster`) を設定する。
+
+#### ▼ ALLOW_ANY (デフォルト)
+
+サービスメッシュ外へのリクエストの宛先を`PassthroughCluster`として扱う。
+
+また、ServiceEntryとして登録した宛先には固有の名前がつく。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    outboundTrafficPolicy:
+      mode: ALLOW_ANY
+```
+
+> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services
+> - https://istiobyexample.dev/monitoring-egress-traffic/
+> - https://discuss.istio.io/t/setting-outboundtrafficpolicy-mode-in-configmap/7041/3
 
 <br>
 
