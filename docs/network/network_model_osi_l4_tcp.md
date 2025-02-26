@@ -29,14 +29,6 @@ description: TCP＠L4の知見を記録しています。
 
 ## 02. エラー
 
-### Connection reset by peer
-
-宛先にTCPリクエストを送信できたが、宛先がTCPレスポンスの返信することなくRSTパケットを返信した (通信のリセット) ことを表す。
-
-> - https://zenn.dev/rescuenow/articles/a01f0effdf3391#%E3%80%8Cconnection-reset-by-peer%E3%80%8D%E3%81%A8%E3%81%AF%EF%BC%9F
-
-<br>
-
 ### ECONNREFUSED
 
 送信元が、TCPリクエストを待ち受けていない宛先のポート番号に対して、リクエストを送信したとする。
@@ -60,11 +52,15 @@ ECONNREFUSED |<-------------- ICMP port unreachable ----|
 
 <br>
 
-### ECONNRESET
+### ECONNRESET (Connection reset by peer)
+
+`Connection reset by peer`ともいう。
 
 TCPコネクション中に宛先のプロセスが終了し、コネクションを強制的に切断したとする。
 
 この場合に、宛先がコネクションの予期せぬ切断として送信元に返信するエラーである。
+
+宛先はRSTパケットを返信し、通信をリセットする。
 
 ```yaml
 client(192.168.122.181)                   server(192.168.122.216)
@@ -85,5 +81,6 @@ ECONNRESET |<-------------- RST ----------------------| -*-
 ```
 
 > - https://hana-shin.hatenablog.com/entry/2022/04/06/205912#33-ECONNRESET
+> - https://zenn.dev/rescuenow/articles/a01f0effdf3391#%E3%80%8Cconnection-reset-by-peer%E3%80%8D%E3%81%A8%E3%81%AF%EF%BC%9F
 
 <br>
