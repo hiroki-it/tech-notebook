@@ -576,7 +576,7 @@ proc-sys-fs-binfmt_misc.mount static
 
 #### ▼ reload
 
-デーモン化されたプロセスを安全に再起動する。
+デーモン化されたプロセスをGraceful Restartする。
 
 ```bash
 $ systemctl reload <ユニット名>

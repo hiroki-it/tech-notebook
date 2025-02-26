@@ -35,6 +35,8 @@ $ yum install -y nginx
 
 <br>
 
+<br>
+
 ## 02. 設定ファイルの種類
 
 ### `/etc/nginx/conf.d/*.conf`ファイル

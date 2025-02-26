@@ -843,7 +843,7 @@ LivenessProbeヘルスチェックとReadinessProbeヘルスチェックの間�
 
 <br>
 
-## preStopとterminationGracePeriodSecondsを組み合わせてPodを安全に終了する
+## preStopとterminationGracePeriodSecondsを組み合わせてPodをGraceful Shutdownする
 
 kubeletにより、Podの終了プロセスが始まると、以下の一連のプロセスも開始する。
 

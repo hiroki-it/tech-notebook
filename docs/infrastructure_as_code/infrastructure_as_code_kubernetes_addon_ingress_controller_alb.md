@@ -36,7 +36,7 @@ aws-load-balancer-controllerは、etcd上のIngressのマニフェストを検�
 
 ### Nodeをターゲットグループに登録/ドレイン
 
-#### ▼ 登録するする流れ
+#### ▼ 登録の流れ
 
 AWS Load Balancer Controllerは、以下の仕組みでターゲットグループに新しいNodeを登録する。
 
@@ -44,7 +44,7 @@ AWS Load Balancer Controllerは、以下の仕組みでターゲットグルー�
 2. 検知したEC2 Nodeをターゲットグループに追加する。
 3. EC2 Nodeが正常になれば、Nodeにルーティングできるようになる。
 
-#### ▼ ドレインするする流れ
+#### ▼ ドレイン処理の流れ
 
 AWS Load Balancer Controllerは、以下の仕組みでターゲットグループからEC2 Nodeをドレインする。
 

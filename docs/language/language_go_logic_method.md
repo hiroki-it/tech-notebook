@@ -1164,7 +1164,7 @@ func AddShutdownHook(hook func()) {
 	hooks = append(hooks, hook)
 }
 
-// プロセスを安全に終了する
+// プロセスをGraceful Shutdownする
 func GracefulShutdown() {
 
 	hooks := hooks

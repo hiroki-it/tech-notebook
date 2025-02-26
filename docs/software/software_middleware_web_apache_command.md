@@ -31,7 +31,7 @@ $ apachectl configtest
 
 Apacheを段階的に再起動する。
 
-安全に再起動できる。
+Graceful Restartできる。
 
 ```bash
 $ apachectl graceful
