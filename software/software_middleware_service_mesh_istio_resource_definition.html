@@ -31157,7 +31157,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="07-proxyconfig">07. ProxyConfig<a class="headerlink" href="#07-proxyconfig" title="Permanent link">&para;</a></h2>
 <h3 id="concurrency">concurrency<a class="headerlink" href="#concurrency" title="Permanent link">&para;</a></h3>
 <p>サービスメッシュ全体、特定Namespace、特定ワークロードの<code>istio-proxy</code>コンテナにて、ワーカースレッド数を設定する。</p>
-<p><code>.meshConfig.defaultConfig</code>キーにデフォルト値を設定しておき、ProxyConfigでNamespaceごとに上書きするのがよい。</p>
+<p><code>.meshConfig.defaultConfig</code>キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProxyConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -31174,7 +31174,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="environmentvariables">environmentVariables<a class="headerlink" href="#environmentvariables" title="Permanent link">&para;</a></h3>
 <p>サービスメッシュ全体、特定Namespace、特定ワークロードの<code>istio-proxy</code>コンテナにて、環境変数を設定する。</p>
-<p><code>.meshConfig.defaultConfig</code>キーにデフォルト値を設定しておき、ProxyConfigでNamespaceごとに上書きするのがよい。</p>
+<p><code>.meshConfig.defaultConfig</code>キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProxyConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -32222,8 +32222,66 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">attempts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 </code></pre></div>
 <h4 id="retryon">▼ retryOn<a class="headerlink" href="#retryon" title="Permanent link">&para;</a></h4>
-<p>再試行する失敗理由を設定する。</p>
+<p>再試行失敗の理由を設定する。</p>
 <p><code>istio-proxy</code>コンテナは、レスポンスの<code>x-envoy-retry-on</code>ヘッダーに割り当てるため、これの値を設定する。</p>
+<p>宛先アプリコンテナが<code>istio-proxy</code>コンテナに返信できた場合は以下である。</p>
+<table>
+<thead>
+<tr>
+<th>設定</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cancelled</code></td>
+<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できたが、gRPCステータスコードが<code>Cancelled</code>であった。</td>
+</tr>
+<tr>
+<td><code>connect-failure</code></td>
+<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できたが、読み取りタイムアウトが起こった。</td>
+</tr>
+<tr>
+<td><code>deadline-exceeded</code></td>
+<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できたが、gRPCステータスコードが<code>DeadlineExceeded</code>であった。</td>
+</tr>
+<tr>
+<td><code>refused-stream</code></td>
+<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できたが、gRPCステータスコードが<code>Unavailable</code>であった。</td>
+</tr>
+<tr>
+<td><code>reset</code></td>
+<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できたが、通信の切断／リセット／タイムアウトが起こった。</td>
+</tr>
+<tr>
+<td><code>resource-exhausted</code></td>
+<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できたが、gRPCステータスコードが<code>ResourceExhausted</code>であった。</td>
+</tr>
+<tr>
+<td><code>retriable-status-codes</code></td>
+<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できたが、HTTPステータスコードが<code>503</code>ステータスであった。</td>
+</tr>
+<tr>
+<td><code>unavailable</code></td>
+<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できたが、gRPCステータスコードが<code>Unavailable</code>であった。</td>
+</tr>
+</tbody>
+</table>
+<p>宛先アプリコンテナが<code>istio-proxy</code>コンテナに返信できなかった場合は以下である。</p>
+<table>
+<thead>
+<tr>
+<th>設定</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>reset-before-request</code></td>
+<td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できず、通信のリセット／接続タイムアウトが起こった。</td>
+</tr>
+</tbody>
+</table>
 <p><strong>＊実装例＊</strong></p>
 <p>デフォルトでは、再試行の条件は<code>connect-failure,refused-stream,unavailable</code>である。</p>
 <p><code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code>変数を<code>true</code>にすると、元はデフォルト値であった<code>503</code>を設定できる。</p>
@@ -32236,28 +32294,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">retries</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">retryOn</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;connect-failure,refused-stream,unavailable&quot;</span>
 </code></pre></div>
-<table>
-<thead>
-<tr>
-<th>設定</th>
-<th>起こる状況</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>connect-failure</code></td>
-<td>宛先<code>istio-proxy</code>コンテナまたはアプリコンテナへの接続でタイムアウトが起こった。</td>
-</tr>
-<tr>
-<td><code>refused-stream</code></td>
-<td>宛先<code>istio-proxy</code>コンテナまたはアプリコンテナが<code>REFUSED_STREAM</code>エラーコードで接続をリセットした。</td>
-</tr>
-<tr>
-<td><code>unavailable</code></td>
-<td>宛先<code>istio-proxy</code>コンテナまたはアプリコンテナgRPCの<code>Unavailable</code> (<code>14</code>) ステータスを返信した。</td>
-</tr>
-</tbody>
-</table>
 <blockquote>
 <ul>
 <li><a href="https://sreake.com/blog/istio/">https://sreake.com/blog/istio/</a></li>
@@ -32587,7 +32623,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-26</span>
   </span>
 
     
