@@ -320,7 +320,7 @@ spec:
   discoveryAddress: istiod-<リビジョン番号>.istio-system.svc:15012
 ```
 
-#### ▼ enablePrometheusMerge
+#### ▼ drainDuration
 
 ```yaml
 apiVersion: v1
@@ -331,7 +331,7 @@ metadata:
 data:
   mesh: |
     defaultConfig:
-      enablePrometheusMerge: true
+      drainDuration: 45s
 ```
 
 ```yaml
@@ -340,7 +340,7 @@ kind: ProxyConfig
 metadata:
   name: foo-proxyconfig
 spec:
-  enablePrometheusMerge: true
+  drainDuration: 45s
 ```
 
 #### ▼ holdApplicationUntilProxyStarts
@@ -647,6 +647,17 @@ data:
 #### ▼ enablePrometheusMergeとは
 
 アプリケーションのメトリクスを`istio-proxy`コンテナを介して取得できるようにする (マージする) かどうかを設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    enablePrometheusMerge: true
+```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/
 
