@@ -3322,30 +3322,6 @@ spec:
 
 `istio-proxy`コンテナは、レスポンスの`x-envoy-retry-on`ヘッダーに割り当てるため、これの値を設定する。
 
-`istio-proxy`コンテナのアウトバウンド時に、宛先アプリコンテナに接続できた場合の再試行条件は以下である。
-
-| 設定                     | 理由                                                                                                                                                       |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cancelled`              | レスポンスでgRPCステータスコードが`Cancelled`であった。                                                                                                    |
-| `connect-failure`        | レスポンスで読み取りタイムアウトが起こった。                                                                                                               |
-| `deadline-exceeded`      | レスポンスでgRPCステータスコードが`DeadlineExceeded`であった。                                                                                             |
-| `gateway-error`          | リクエスト時に、 `istio-proxy`コンテナが宛先アプリコンテナに接続できた。しかし、レスポンスでGateway系ステータスコード (`502`、`503`、`504`) が返信された。 |
-| `refused-stream`         | レスポンスでgRPCステータスコードが`Unavailable`であった。                                                                                                  |
-| `reset`                  | レスポンスで通信の切断／リセット／タイムアウト (特に) が起こった。                                                                                         |
-| `resource-exhausted`     | レスポンスでgRPCステータスコードが`ResourceExhausted`であった。                                                                                            |
-| `retriable-status-codes` | レスポンスでHTTPステータスコードが`503`ステータスであった。                                                                                                |
-| `unavailable`            | レスポンスでgRPCステータスコードが`Unavailable`であった。                                                                                                  |
-
-`istio-proxy`コンテナのインバウンド時に、アプリコンテナに接続できなかった場合の再試行条件は以下である。
-
-執筆時点 (2025/02/26) では、`ENABLE_INBOUND_RETRY_POLICY`変数を`true` (デフォルト値) にすると使用できる。
-
-| 設定                   | 理由                                                                                |
-| ---------------------- | ----------------------------------------------------------------------------------- |
-| `reset-before-request` | 宛先アプリコンテナから`istio-proxy`コンテナに返信できず、通信のリセットが起こった。 |
-
-![istio_inbound-retry_reset-before-request](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_inbound-retry_reset-before-request.png)
-
 **＊実装例＊**
 
 デフォルトでは、再試行の条件は`connect-failure,refused-stream,unavailable`である。
