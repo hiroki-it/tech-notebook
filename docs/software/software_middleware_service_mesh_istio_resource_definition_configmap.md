@@ -355,11 +355,17 @@ metadata:
   namespace: istio-system
 data:
   mesh: |
+    enableEnvoyAccessLogService: true
     defaultConfig:
       envoyAccessLogService: 
         address: <Envoyのアクセスログの宛先Service名>:15000
         # Istioコントロールプレーンをルート認証局とする
         tlsSettings: ISTIO_MUTUAL
+        # TCP KeepAliveを実施する
+        tcpKeepalive:
+          probes: 9
+          time: 2
+          interval: 75
 ```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#RemoteService
@@ -377,11 +383,17 @@ metadata:
   namespace: istio-system
 data:
   mesh: |
+    # enableEnvoyMetricsService: true という設定がありそうだが、ドキュメントに記載がない
     defaultConfig:
       envoyMetricsService: 
         address: <Envoyのメトリクスの宛先Service名>:15000
         # Istioコントロールプレーンをルート認証局とする
         tlsSettings: ISTIO_MUTUAL
+        # TCP KeepAliveを実施する
+        tcpKeepalive:
+          probes: 9
+          time: 2
+          interval: 75
 ```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#RemoteService

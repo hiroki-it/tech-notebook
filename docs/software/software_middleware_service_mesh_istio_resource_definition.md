@@ -562,11 +562,30 @@ spec:
 
 > - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=115
 
+#### ▼ connectionPool.tcp.tcpKeepalive
+
+TCP KeepAliveを実施する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        tcpKeepalive:
+          probes: 9
+          time: 2
+          interval: 75
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-TCPSettings-tcp_keepalive
+
 #### ▼ connectionPool.tcp.maxConnections
-
-キューに入れられるTCPリクエストのレートリミットを設定する。
-
-キューを超えるTCPリクエストに対しては、レスポンスを返信できるまで待機する。
 
 **＊実装例＊**
 
