@@ -354,20 +354,28 @@ $ tcpdump
 
 **＊例＊**
 
-スリーウェイハンドシェイクのパケットの例。
+スリーウェイハンドシェイクのパケットの例である。
 
-> - https://please-sleep.cou929.nu/tcpdump-study-pt1.html
+(1) 送信元から宛先にSYNCパケットを送信する。
 
 ```bash
-# クライアントからサーバーへのSYNCリクエスト
 09:36:20.760358 IP 10.0.1.23.65428 > 93.184.216.119.http: Flags [S], seq 2250708012, win 65535, options [mss 1460,nop,wscale 4,nop,nop,TS val 938288017 ecr 0,sackOK,eol], length 0
+```
 
-# サーバーからクライアントへのACKリクエストとSYNリクエスト
+(2) 宛先から送信元にACKパケットとSYNパケットを返信する。
+
+```bash
 09:36:20.885412 IP 93.184.216.119.http > 10.0.1.23.65428: Flags [S.], seq 1676582138, ack 2250708013, win 14600, options [mss 1400,nop,nop,sackOK,nop,wscale 6], length 0
+```
 
-# クライアントからサーバーへのACKリクエスト
+(3) 送信元から宛先にACKパケットを返信する。
+
+```bash
 09:36:20.885482 IP 10.0.1.23.65428 > 93.184.216.119.http: Flags [.], ack 1, win 16384, length 0
 ```
+
+> - https://please-sleep.cou929.nu/tcpdump-study-pt1.html
+> - https://e-words.jp/w/SYN-ACK%E3%83%91%E3%82%B1%E3%83%83%E3%83%88.html
 
 <br>
 

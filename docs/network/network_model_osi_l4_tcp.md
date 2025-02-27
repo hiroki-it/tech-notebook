@@ -31,7 +31,7 @@ description: TCP＠L4の知見を記録しています。
 
 TCPリクエストのたびに、送信元と宛先間でTCPスリーウェイハンドシェイクを実施し直すのは非効率である。
 
-そこで、宛先がTCP KeepAliveを定期的に送信し、送信元がTCP KeepAliveをACKを返信することにより、TCPスリーウェイハンドシェイクが切断されないようにする。
+そこで、宛先がTCP KeepAliveを定期的に送信し、送信元がACKパケットを返信することにより、TCPスリーウェイハンドシェイクが切断されないようにする。
 
 ![tcp-keepalive](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/tcp-keepalive.png)
 
