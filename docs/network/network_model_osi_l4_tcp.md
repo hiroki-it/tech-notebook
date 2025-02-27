@@ -27,6 +27,19 @@ description: TCP＠L4の知見を記録しています。
 
 <br>
 
+### TCP KeepAlive
+
+TCPリクエストのたびに、送信元と宛先間でTCPスリーウェイハンドシェイクを実施し直すのは非効率である。
+
+そこで、宛先がTCP KeepAliveを定期的に送信し、送信元がTCP KeepAliveをACKを返信することにより、TCPスリーウェイハンドシェイクが切断されないようにする。
+
+![tcp-keepalive](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/tcp-keepalive.png)
+
+> - https://milestone-of-se.nesuke.com/nw-basic/as-nw-engineer/keepalive-tcp-http/#toc2
+> - https://www.ibm.com/docs/ja/zos/2.4.0?topic=functions-tcp-keepalive
+
+<br>
+
 ## 02. エラー
 
 ### ECONNREFUSED

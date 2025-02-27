@@ -212,9 +212,9 @@ Group apache
 
 ### KeepAlive、MaxKeepAliveRequests、KeepAliveTimeout
 
-#### ▼ KeepAliveとは
+#### ▼ KeepAlive
 
-HTTPリクエストの受信時に、クライアントの状態に応じて、その接続をタイムアウトにするか否かを制御する。
+KeepAlive処理を有効化する。
 
 **＊実装例＊**
 
