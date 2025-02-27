@@ -27672,11 +27672,17 @@
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">enableEnvoyAccessLogService: true</span>
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">envoyAccessLogService: </span>
 <span class="w">        </span><span class="no">address: &lt;Envoyのアクセスログの宛先Service名&gt;:15000</span>
 <span class="w">        </span><span class="no"># Istioコントロールプレーンをルート認証局とする</span>
 <span class="w">        </span><span class="no">tlsSettings: ISTIO_MUTUAL</span>
+<span class="w">        </span><span class="no"># TCP KeepAliveを実施する</span>
+<span class="w">        </span><span class="no">tcpKeepalive:</span>
+<span class="w">          </span><span class="no">probes: 9</span>
+<span class="w">          </span><span class="no">time: 2</span>
+<span class="w">          </span><span class="no">interval: 75</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -27693,11 +27699,17 @@
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no"># enableEnvoyMetricsService: true という設定がありそうだが、ドキュメントに記載がない</span>
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">envoyMetricsService: </span>
 <span class="w">        </span><span class="no">address: &lt;Envoyのメトリクスの宛先Service名&gt;:15000</span>
 <span class="w">        </span><span class="no"># Istioコントロールプレーンをルート認証局とする</span>
 <span class="w">        </span><span class="no">tlsSettings: ISTIO_MUTUAL</span>
+<span class="w">        </span><span class="no"># TCP KeepAliveを実施する</span>
+<span class="w">        </span><span class="no">tcpKeepalive:</span>
+<span class="w">          </span><span class="no">probes: 9</span>
+<span class="w">          </span><span class="no">time: 2</span>
+<span class="w">          </span><span class="no">interval: 75</span>
 </code></pre></div>
 <blockquote>
 <ul>
