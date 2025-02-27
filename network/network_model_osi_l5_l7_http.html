@@ -27305,7 +27305,7 @@
 <p><br></p>
 <h3 id="http-keepalive">HTTP KeepAlive<a class="headerlink" href="#http-keepalive" title="Permanent link">&para;</a></h3>
 <p>HTTPリクエストのたびに、送信元と宛先間でTCPスリーウェイハンドシェイクとHTTPを実施し直すのは非効率である。</p>
-<p>そこで、宛先が<code>Connection</code>ヘッダーで<code>keep-alive</code>を送信元に返信し、一つのTCP接続中に複数のHTTPリクエストを送受信できるようにする。</p>
+<p>そこで、宛先がレスポンスの<code>Connection</code>ヘッダーで<code>keep-alive</code>を送信元に返信し、一つのTCP接続中に複数のHTTPリクエストを送受信できるようにする。</p>
 <p><img alt="http-keepalive" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/http-keepalive.png" /></p>
 <blockquote>
 <ul>
@@ -27638,13 +27638,17 @@
 <span class="nt">X-Powered-By</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PHP/7.3.22</span>
 <span class="nn">---</span>
 <span class="c1"># ボディ</span>
-<span class="l l-Scalar l-Scalar-Plain">ここにサイトのHTMLのコード</span>
+<span class="l l-Scalar l-Scalar-Plain">返信されるWebサイトのHTMLコード</span>
 </code></pre></div>
 <h4 id="connection">▼ Connection<a class="headerlink" href="#connection" title="Permanent link">&para;</a></h4>
 <p>HTTP KeepAliveを実施するかどうか</p>
+<p>(リクエストにも<code>Connection</code>ヘッダーがある？)</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
 <span class="nn">---</span>
 <span class="nt">Connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keep-alive</span>
+<span class="nn">---</span>
+<span class="c1"># ボディ</span>
+<span class="l l-Scalar l-Scalar-Plain">返信されるWebサイトのHTMLコード</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_4">ステータスコード<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
