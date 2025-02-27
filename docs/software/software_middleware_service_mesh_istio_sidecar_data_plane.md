@@ -585,25 +585,23 @@ kubeletは、対象のポート番号でプロセスがリクエストを待ち�
 
 `istio-proxy`コンテナは、Envoyプロセスを安全に停止する。
 
+ここでは、`EXIT_ON_ZERO_ACTIVE_CONNECTIONS`を`true`にしている場合の仕組みを説明する。
+
 `(1)`
 
 : `istio-proxy`コンテナはGraceful Drainモード待機時間を開始する。
 
 `(2)`
 
-: Podの`.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`キーの値 (デフォルト`5`秒) だけ待機する。
-
-`(3)`
-
 : Envoyは、接続のドレイン処理を実施する。
 
     Podの`.metadata.annotations.proxy.istio.io/config.drainDuration`値 (デフォルト`5`秒) の待機時間だけ、リクエストを受信しながら移行していく。
 
-`(4)`
+`(3)`
 
 : Envoyは、プロセスのGraceful Drainモードを終了する。
 
-`(5)`
+`(4)`
 
 : `istio-proxy`コンテナにSIGKILLシグナルを送信する。
 
