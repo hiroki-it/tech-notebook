@@ -482,11 +482,11 @@ spec:
 
 #### ▼ connectionPool.http.maxRequestsPerConnection
 
-EnvoyがHTTPプロトコルを処理する場合に、接続当たりのリクエストの上限値を設定する。
+HTTPプロトコルを処理する場合に、TCPスリーウェイハンドシェイク当たりのリクエストの上限値を設定する。
 
 デフォルトでは上限がない。
 
-`1`とする場合、HTTP KeepAliveを無効にする。
+`2`以上であればHTTP KeepAliveを実施し、`1`とする場合はHTTP KeepAliveは無効になる。
 
 また、サーキットブレイカーを開始するための外れ値の閾値になる。
 
