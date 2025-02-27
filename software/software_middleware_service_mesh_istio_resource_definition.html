@@ -29802,7 +29802,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="connectionpoolhttpmaxrequestsperconnection">▼ connectionPool.http.maxRequestsPerConnection<a class="headerlink" href="#connectionpoolhttpmaxrequestsperconnection" title="Permanent link">&para;</a></h4>
 <p>EnvoyがHTTPプロトコルを処理する場合に、接続当たりのリクエストの上限値を設定する。</p>
 <p>デフォルトでは上限がない。</p>
-<p><code>1</code>とする場合、Envoyによるkeep-aliveを無効化する。</p>
+<p><code>1</code>とする場合、HTTP KeepAliveを無効化する。</p>
 <p>また、サーキットブレイカーを開始するための外れ値の閾値になる。</p>
 <p>上限を超過した場合、Podへのルーティングが停止し、何らかの意図したエラーを返信する (サーキットブレイカー) 。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -29814,7 +29814,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">connectionPool</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">http</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># keep-aliveを無効にする</span>
+<span class="w">        </span><span class="c1"># HTTP KeepAliveを無効にする</span>
 <span class="w">        </span><span class="nt">maxRequestsPerConnection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -29870,7 +29870,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="connectionpooltcptcpkeepalive">▼ connectionPool.tcp.tcpKeepalive<a class="headerlink" href="#connectionpooltcptcpkeepalive" title="Permanent link">&para;</a></h4>
-<p>TCP KeepAliveを実施する。</p>
+<p>宛先との間でTCP KeepAliveを実施する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
