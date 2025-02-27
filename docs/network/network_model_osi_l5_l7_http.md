@@ -65,7 +65,7 @@ JavaScriptのフレームワーク。
 
 HTTPリクエストのたびに、送信元と宛先間でTCPスリーウェイハンドシェイクとHTTPを実施し直すのは非効率である。
 
-そこで、宛先がレスポンスヘッダーで`Connection: keep-alive`を送信元に返信し、一つのTCP接続中に複数のHTTPリクエストを送受信できるようにする。
+そこで、宛先が`Connection`ヘッダーで`keep-alive`を送信元に返信し、一つのTCP接続中に複数のHTTPリクエストを送受信できるようにする。
 
 ![http-keepalive](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/http-keepalive.png)
 
@@ -102,15 +102,6 @@ GET https://example.com/bar-form.php?text1=a&text2=b
 ---
 # 送信元IPアドレス
 RemoteAddr: *.*.*.*
-```
-
-#### ▼ Connection
-
-```yaml
-# リクエストライン
-GET https://example.com/bar-form.php?text1=a&text2=b
----
-Connection: keep-alive
 ```
 
 #### ▼ Upgrade-Insecure-Requests
@@ -242,18 +233,6 @@ POST https://example.com/bar-form.php
 ---
 # 送信元IPアドレス
 RemoteAddr: *.*.*.*
----
-# ボディ (SSLによって暗号化される)
-text=a&text2=b
-```
-
-#### ▼ Connection
-
-```yaml
-# リクエストライン
-POST https://example.com/bar-form.php
----
-Connection: keep-alive
 ---
 # ボディ (SSLによって暗号化される)
 text=a&text2=b
@@ -512,6 +491,16 @@ X-Powered-By: PHP/7.3.22
 ---
 # ボディ
 ここにサイトのHTMLのコード
+```
+
+#### ▼ Connection
+
+HTTP KeepAliveを実施するかどうか
+
+```yaml
+200 OK
+---
+Connection: keep-alive
 ```
 
 <br>

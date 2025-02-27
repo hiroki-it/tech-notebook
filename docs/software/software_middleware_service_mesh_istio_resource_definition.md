@@ -486,7 +486,7 @@ EnvoyがHTTPプロトコルを処理する場合に、接続当たりのリク�
 
 デフォルトでは上限がない。
 
-`1`とする場合、Envoyによるkeep-aliveを無効化する。
+`1`とする場合、HTTP KeepAliveを無効化する。
 
 また、サーキットブレイカーを開始するための外れ値の閾値になる。
 
@@ -503,7 +503,7 @@ spec:
   trafficPolicy:
     connectionPool:
       http:
-        # keep-aliveを無効にする
+        # HTTP KeepAliveを無効にする
         maxRequestsPerConnection: 1
 ```
 
@@ -564,7 +564,7 @@ spec:
 
 #### ▼ connectionPool.tcp.tcpKeepalive
 
-TCP KeepAliveを実施する。
+宛先との間でTCP KeepAliveを実施する。
 
 **＊実装例＊**
 
