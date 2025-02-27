@@ -343,6 +343,50 @@ spec:
   drainDuration: 45s
 ```
 
+#### ▼ envoyAccessLogService
+
+Envoyのアクセスログを、標準出力に出力するのではなく宛先 (例：レシーバー) に送信する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      envoyAccessLogService: 
+        address: <Envoyのアクセスログの宛先Service名>:15000
+        # Istioコントロールプレーンをルート認証局とする
+        tlsSettings: ISTIO_MUTUAL
+```
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#RemoteService
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-envoy_access_log_service
+
+#### ▼ envoyMetricsService
+
+Envoyのメトリクスを、Prometheusにスクレイピングしてもらうのではなく宛先 (例：レシーバー) に送信する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      envoyMetricsService: 
+        address: <Envoyのメトリクスの宛先Service名>:15000
+        # Istioコントロールプレーンをルート認証局とする
+        tlsSettings: ISTIO_MUTUAL
+```
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#RemoteService
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-envoy_metrics_service
+
 #### ▼ holdApplicationUntilProxyStarts
 
 `istio-proxy`コンテナが、必ずアプリコンテナよりも先に起動するか否かを設定する。
@@ -423,6 +467,20 @@ data:
 > - https://istio.io/latest/docs/reference/config/networking/proxy-config/#ProxyImage
 > - https://cloud.google.com/service-mesh/docs/enable-optional-features-in-cluster?hl=ja#distroless_proxy_image
 > - https://istio.io/latest/docs/ops/configuration/security/harden-docker-images/
+
+#### ▼ privateKeyProvider
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      privateKeyProvider:
+```
 
 #### ▼ proxyMetadata
 
