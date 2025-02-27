@@ -65,7 +65,7 @@ JavaScriptのフレームワーク。
 
 HTTPリクエストのたびに、送信元と宛先間でTCPスリーウェイハンドシェイクとHTTPを実施し直すのは非効率である。
 
-そこで、宛先が`Connection`ヘッダーで`keep-alive`を送信元に返信し、一つのTCP接続中に複数のHTTPリクエストを送受信できるようにする。
+そこで、宛先がレスポンスの`Connection`ヘッダーで`keep-alive`を送信元に返信し、一つのTCP接続中に複数のHTTPリクエストを送受信できるようにする。
 
 ![http-keepalive](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/http-keepalive.png)
 
@@ -490,17 +490,22 @@ X-Amz-Cf-Id: *****==
 X-Powered-By: PHP/7.3.22
 ---
 # ボディ
-ここにサイトのHTMLのコード
+返信されるWebサイトのHTMLコード
 ```
 
 #### ▼ Connection
 
 HTTP KeepAliveを実施するかどうか
 
+(リクエストにも`Connection`ヘッダーがある？)
+
 ```yaml
 200 OK
 ---
 Connection: keep-alive
+---
+# ボディ
+返信されるWebサイトのHTMLコード
 ```
 
 <br>
