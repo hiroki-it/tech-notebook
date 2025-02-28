@@ -27913,13 +27913,14 @@
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">defaultHttpRetryPolicy: </span>
 <span class="w">      </span><span class="no">attempts: 3</span>
-<span class="w">      </span><span class="no">retryOn: connect-failure,refused-stream,unavailable,cancelled</span>
+<span class="w">      </span><span class="no">retryOn: connect-failure,deadline-exceeded,refused-stream,unavailable</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries">https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries</a></li>
-<li><a href="https://github.com/istio/istio/issues/51704#issuecomment-2188555136">https://github.com/istio/istio/issues/51704#issuecomment-2188555136</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-default_http_retry_policy">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-default_http_retry_policy</a></li>
 <li><a href="https://karlstoney.com/retry-policies-in-istio/">https://karlstoney.com/retry-policies-in-istio/</a></li>
+<li><a href="https://github.com/istio/istio/issues/51704#issuecomment-2188555136">https://github.com/istio/istio/issues/51704#issuecomment-2188555136</a></li>
+<li><a href="https://github.com/istio/istio/issues/35774#issuecomment-953877524">https://github.com/istio/istio/issues/35774#issuecomment-953877524</a></li>
 </ul>
 </blockquote>
 <h4 id="_2">▼ アウトバウンド時の再試行条件<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
@@ -27937,22 +27938,22 @@
 <tr>
 <td><code>connect-failure</code></td>
 <td style="text-align: center;">✅</td>
-<td>レスポンスで読み取りタイムアウトが起こった。</td>
+<td><code>istio-proxy</code>からのアウトバウンド通信のレスポンスで、読み取りタイムアウトが起こった。</td>
 </tr>
 <tr>
 <td><code>gateway-error</code></td>
-<td style="text-align: center;"></td>
-<td>リクエスト時に、 <code>istio-proxy</code>コンテナが宛先アプリコンテナに接続できた。しかし、レスポンスでGateway系ステータスコード (<code>502</code>、<code>503</code>、<code>504</code>) が返信された。</td>
+<td style="text-align: center;">再試行してもエラーが変わらない可能性がある。</td>
+<td><code>istio-proxy</code>からのアウトバウンド通信のレスポンスで、Gateway系ステータスコード (<code>502</code>、<code>503</code>、<code>504</code>) が返信された。</td>
 </tr>
 <tr>
 <td><code>retriable-status-codes</code> (任意のステータスコードを設定する)</td>
-<td style="text-align: center;"></td>
-<td>レスポンスで指定したHTTPステータスであった。<code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code>変数を<code>true</code>にすると、元はデフォルト値であった<code>503</code>を設定できる。</td>
+<td style="text-align: center;">再試行によって、冪等性のない二重処理が起こる可能性がある。</td>
+<td><code>istio-proxy</code>からのアウトバウンド通信のレスポンスで、指定したHTTPステータスであった。<code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code>変数を<code>true</code>にすると、元はデフォルト値であった<code>503</code>を設定できる。</td>
 </tr>
 <tr>
 <td><code>reset</code></td>
-<td style="text-align: center;"></td>
-<td>レスポンスで通信の切断／リセット／タイムアウトが起こった。</td>
+<td style="text-align: center;">再試行によって、冪等性のない二重処理が起こる可能性がある。</td>
+<td><code>istio-proxy</code>からのアウトバウンド通信で切断／リセット／タイムアウトが起こった。</td>
 </tr>
 </tbody>
 </table>
@@ -27967,28 +27968,28 @@
 <tbody>
 <tr>
 <td><code>cancelled</code></td>
-<td style="text-align: center;"></td>
-<td>レスポンスでgRPCステータスコードが<code>Cancelled</code>であった。</td>
+<td style="text-align: center;">送信元がリクエストを切断しているため、再試行が不要の可能性がある。</td>
+<td><code>istio-proxy</code>からのアウトバウンド通信のレスポンスで、gRPCステータスコードが<code>Cancelled</code>であった。</td>
 </tr>
 <tr>
 <td><code>deadline-exceeded</code></td>
 <td style="text-align: center;">✅</td>
-<td>レスポンスでgRPCステータスコードが<code>DeadlineExceeded</code>であった。</td>
+<td><code>istio-proxy</code>からのアウトバウンド通信のレスポンスで、gRPCステータスコードが<code>DeadlineExceeded</code>であった。</td>
 </tr>
 <tr>
 <td><code>refused-stream</code></td>
 <td style="text-align: center;">✅</td>
-<td>同時接続可能なgRPCストリームを超過するストリームをgRPCクライアントが作成しようとした。</td>
+<td>同時接続上限数を超過するストリームをアプリコンテナが作成しようとした。</td>
 </tr>
 <tr>
 <td><code>resource-exhausted</code></td>
 <td style="text-align: center;">✅</td>
-<td>レスポンスでgRPCステータスコードが<code>ResourceExhausted</code>であった。</td>
+<td><code>istio-proxy</code>からのアウトバウンド通信のレスポンスで、gRPCステータスコードが<code>ResourceExhausted</code>であった。</td>
 </tr>
 <tr>
 <td><code>unavailable</code></td>
 <td style="text-align: center;">✅</td>
-<td>レスポンスでgRPCステータスコードが<code>Unavailable</code>であった。</td>
+<td><code>istio-proxy</code>からのアウトバウンド通信のレスポンスで、gRPCステータスコードが<code>Unavailable</code>であった。</td>
 </tr>
 </tbody>
 </table>
