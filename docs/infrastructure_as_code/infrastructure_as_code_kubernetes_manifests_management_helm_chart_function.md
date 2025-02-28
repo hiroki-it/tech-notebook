@@ -1143,23 +1143,22 @@ foo:
 
 ファイルから内容を取得する。
 
-`.Files.Glob`関数で複数のファイルをmap型で取得できる。
+`.Files.Get`関数でファイルで取得できる。
 
 ```yaml
 # マニフェスト全体をrange関数で囲う場合は、区切り記号 (---) を入れる
-{{- range $filePath, $_ := .Files.Glob "dashboards/*.json" }}
+{{- range $file, $_ := .Files.Glob "dashboards/*.json" }}
 ---
-{{- $dashboardName := regexReplaceAll "(^.*/)(.*)\\.json$" $path "${2}" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: grafana-dashboard-{{ $dashboardName }}
+  name: grafana-dashboard-{{- base $file | replace ".json" "" }}
   namespace: prometheus
   labels:
     grafana_dashboard: "1"
 data:
-  {{ $dashboardName }}.json: {{ $.Files.Get $filePath }}
----
+  {{ base $file }}:
+{{ tpl ($.Files.Get $file) $ | toYaml | indent 4 }}
 {{- end }}
 ```
 
