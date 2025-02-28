@@ -28297,21 +28297,20 @@
 <h2 id="13">13. ファイル系<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
 <h3 id="files">Files<a class="headerlink" href="#files" title="Permanent link">&para;</a></h3>
 <p>ファイルから内容を取得する。</p>
-<p><code>.Files.Glob</code>関数で複数のファイルをmap型で取得できる。</p>
+<p><code>.Files.Get</code>関数でファイルで取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># マニフェスト全体をrange関数で囲う場合は、区切り記号 (---) を入れる</span>
-<span class="p p-Indicator">{{</span><span class="nv">- range $filePath</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">$_</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= .Files.Glob &quot;dashboards/*.json&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- range $file</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">$_</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= .Files.Glob &quot;dashboards/*.json&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="nn">---</span>
-<span class="p p-Indicator">{{</span><span class="nv">- $dashboardName</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= regexReplaceAll &quot;(^.*/)(.*)\\.json$&quot; $path &quot;$</span><span class="p p-Indicator">{</span><span class="nv">2</span><span class="p p-Indicator">}</span><span class="s">&quot;</span><span class="nv"> </span><span class="s">}}</span>
-<span class="s">apiVersion:</span><span class="nv"> </span><span class="s">v1</span>
-<span class="s">kind:</span><span class="nv"> </span><span class="s">ConfigMap</span>
-<span class="s">metadata:</span>
-<span class="w">  </span><span class="s">name:</span><span class="nv"> </span><span class="s">grafana-dashboard-{{</span><span class="nv"> </span><span class="s">$dashboardName</span><span class="nv"> </span><span class="s">}}</span>
-<span class="w">  </span><span class="s">namespace:</span><span class="nv"> </span><span class="s">prometheus</span>
-<span class="w">  </span><span class="s">labels:</span>
-<span class="w">    </span><span class="s">grafana_dashboard:</span><span class="nv"> </span><span class="s">&quot;</span><span class="nv">1&quot;</span>
-<span class="nv">data</span><span class="p p-Indicator">:</span>
-<span class="w">  </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">$dashboardName</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="nt">.json</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">$.Files.Get $filePath</span><span class="w"> </span><span class="p p-Indicator">}}</span>
-<span class="nv">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana-dashboard-{{- base $file | replace &quot;.json&quot; &quot;&quot; }}</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">grafana_dashboard</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">base $file</span><span class="w"> </span><span class="p p-Indicator">}}:</span>
+<span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">tpl ($.Files.Get $file) $ | toYaml | indent 4</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <blockquote>
@@ -28359,7 +28358,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-28</span>
   </span>
 
     
