@@ -27930,7 +27930,7 @@
 <tr>
 <th>HTTP/1.1のステータスコード</th>
 <th style="text-align: center;">おすすめ</th>
-<th>理由</th>
+<th>再試行条件</th>
 </tr>
 </thead>
 <tbody>
@@ -27961,7 +27961,7 @@
 <tr>
 <th>HTTP/2のステータスコード</th>
 <th style="text-align: center;">おすすめ</th>
-<th>理由</th>
+<th>再試行条件</th>
 </tr>
 </thead>
 <tbody>
@@ -27977,8 +27977,8 @@
 </tr>
 <tr>
 <td><code>refused-stream</code></td>
-<td style="text-align: center;"></td>
-<td>レスポンスでgRPCステータスコードが<code>Unavailable</code>であった。</td>
+<td style="text-align: center;">✅</td>
+<td>同時接続可能なgRPCストリームを超過するストリームをgRPCクライアントが作成しようとした。</td>
 </tr>
 <tr>
 <td><code>resource-exhausted</code></td>
@@ -28005,12 +28005,14 @@
 <thead>
 <tr>
 <th>HTTP/1.1のステータスコード</th>
+<th style="text-align: center;">おすすめ</th>
 <th>理由</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>reset-before-request</code></td>
+<td style="text-align: center;">✅</td>
 <td>宛先アプリコンテナから<code>istio-proxy</code>コンテナに返信できず、通信のリセットが起こった。</td>
 </tr>
 </tbody>
