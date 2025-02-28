@@ -647,20 +647,20 @@ data:
 
 一時的な問題で発生していて、再試行すると問題が解決する可能性があるステータスコードは『おすすめ』としている。
 
-| HTTP/1.1のステータスコード                                  | おすすめ | 理由                                                                                                                                                       |
+| HTTP/1.1のステータスコード                                  | おすすめ | 再試行条件                                                                                                                                                 |
 | ----------------------------------------------------------- | :------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `connect-failure`                                           |    ✅    | レスポンスで読み取りタイムアウトが起こった。                                                                                                               |
 | `gateway-error`                                             |          | リクエスト時に、 `istio-proxy`コンテナが宛先アプリコンテナに接続できた。しかし、レスポンスでGateway系ステータスコード (`502`、`503`、`504`) が返信された。 |
 | `retriable-status-codes` (任意のステータスコードを設定する) |          | レスポンスで指定したHTTPステータスであった。`EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`変数を`true`にすると、元はデフォルト値であった`503`を設定できる。       |
 | `reset`                                                     |          | レスポンスで通信の切断／リセット／タイムアウトが起こった。                                                                                                 |
 
-| HTTP/2のステータスコード | おすすめ | 理由                                                            |
-| ------------------------ | :------: | --------------------------------------------------------------- |
-| `cancelled`              |          | レスポンスでgRPCステータスコードが`Cancelled`であった。         |
-| `deadline-exceeded`      |    ✅    | レスポンスでgRPCステータスコードが`DeadlineExceeded`であった。  |
-| `refused-stream`         |          | レスポンスでgRPCステータスコードが`Unavailable`であった。       |
-| `resource-exhausted`     |    ✅    | レスポンスでgRPCステータスコードが`ResourceExhausted`であった。 |
-| `unavailable`            |    ✅    | レスポンスでgRPCステータスコードが`Unavailable`であった。       |
+| HTTP/2のステータスコード | おすすめ | 再試行条件                                                                             |
+| ------------------------ | :------: | -------------------------------------------------------------------------------------- |
+| `cancelled`              |          | レスポンスでgRPCステータスコードが`Cancelled`であった。                                |
+| `deadline-exceeded`      |    ✅    | レスポンスでgRPCステータスコードが`DeadlineExceeded`であった。                         |
+| `refused-stream`         |    ✅    | 同時接続可能なgRPCストリームを超過するストリームをgRPCクライアントが作成しようとした。 |
+| `resource-exhausted`     |    ✅    | レスポンスでgRPCステータスコードが`ResourceExhausted`であった。                        |
+| `unavailable`            |    ✅    | レスポンスでgRPCステータスコードが`Unavailable`であった。                              |
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-grpc-on
@@ -671,9 +671,9 @@ data:
 
 執筆時点 (2025/02/26) では、`ENABLE_INBOUND_RETRY_POLICY`変数を`true` (デフォルト値) にすると使用できる。
 
-| HTTP/1.1のステータスコード | 理由                                                                                |
-| -------------------------- | ----------------------------------------------------------------------------------- |
-| `reset-before-request`     | 宛先アプリコンテナから`istio-proxy`コンテナに返信できず、通信のリセットが起こった。 |
+| HTTP/1.1のステータスコード | おすすめ | 理由                                                                                |
+| -------------------------- | :------: | ----------------------------------------------------------------------------------- |
+| `reset-before-request`     |    ✅    | 宛先アプリコンテナから`istio-proxy`コンテナに返信できず、通信のリセットが起こった。 |
 
 ![istio_inbound-retry_reset-before-request](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_inbound-retry_reset-before-request.png)
 
