@@ -115,7 +115,7 @@ OpenStackのIaCである。
 
 ### Sahara (Big Data Processing Framework Provisioning)
 
-データ量が多い非構造化デーや非定型的データを管理する機能である。
+データサイズが多い非構造化デーや非定型的データを管理する機能である。
 
 > - https://www.openupitengineer.co.jp/column/it-technology/4579
 

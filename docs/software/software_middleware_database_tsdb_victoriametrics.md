@@ -146,7 +146,7 @@ HTTPSプロトコルの`8224`番ポートでインバウンド通信を待ち受
 
 VictoriaMetricsは、クエリの実行前に、ディスクに永続化したデータポイントを一度メモリに移動する。
 
-そのため、ストレージのデータ量が多くなるのに伴って、メモリ上のデータポイントが常時/突発的に多くなり、OOMキラーになることがある。
+そのため、ストレージのデータサイズが多くなるのに伴って、メモリ上のデータポイントが常時/突発的に多くなり、OOMキラーになることがある。
 
 > - https://docs.victoriametrics.com/FAQ.html#how-to-set-a-memory-limit-for-victoriametrics-components
 > - https://docs.victoriametrics.com/#storage
