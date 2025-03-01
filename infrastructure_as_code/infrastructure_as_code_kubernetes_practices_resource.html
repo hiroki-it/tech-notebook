@@ -25421,8 +25421,8 @@
 <p><br></p>
 <h1 id="cluster">Cluster<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h1>
 <h2 id="_2">バックアップ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>例えば永続ボリュームを使用しているなど、クラスターのetcdの現在の状態の復旧が必要な場合、障害でクラスター上のデータが損失することに備え、バックアップツール (例：<a href="https://velero.io/">velero</a>) を使用してクラスターバックアップを定期的に実行する。</p>
-<p>もし単純に新しいKubernetes Clusterにビルド可能なmanifestsを再インストール(kubectl apply)するだけで問題無く復旧できるようなケースでは必ずしもクラスターバックアップは必要ない。</p>
+<p>例えば永続ボリュームを使用しているなど、クラスターのetcdの現在の状態の回復が必要な場合、障害でクラスター上のデータが損失することに備え、バックアップツール (例：<a href="https://velero.io/">velero</a>) を使用してクラスターバックアップを定期的に実行する。</p>
+<p>もし単純に新しいKubernetes Clusterにビルド可能なmanifestsを再インストール(kubectl apply)するだけで問題無く回復できるようなケースでは必ずしもクラスターバックアップは必要ない。</p>
 <p><br></p>
 <h2 id="dr">クラスターのDR構成<a class="headerlink" href="#dr" title="Permanent link">&para;</a></h2>
 <p>特定のリージョンのみにシステムを配置してしまうと、大規模な障害 (例：災害によるデータセンター大爆発！) があった場合に、システムのダウンタイムとなる。</p>
@@ -26901,7 +26901,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tr>
 <tr>
 <td>WorkloadがPodのレプリカ数を維持できることを確認する。</td>
-<td>Workload (例：Deployment、DaemonSet、StatefulSet、Jobなど) に属するPodが削除され、replica数を下回った際に時間経過で設定したレプリカ数になるように復旧されることを確認する。</td>
+<td>Workload (例：Deployment、DaemonSet、StatefulSet、Jobなど) に属するPodが削除され、replica数を下回った際に時間経過で設定したレプリカ数になるように回復されることを確認する。</td>
 </tr>
 <tr>
 <td>Podのスケーリングが正しく動作することを確認する。</td>
@@ -27249,7 +27249,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-03-01</span>
   </span>
 
     
