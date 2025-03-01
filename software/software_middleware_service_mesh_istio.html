@@ -27100,10 +27100,11 @@
 <p>サービスメッシュ有無によって、ハードウェアリソース消費量に違いがある。</p>
 <p><strong>例</strong></p>
 <p>Istioのドキュメントでは、以下のハードウェアリソースを消費することが記載されている。</p>
+<p>1000 rps/sの場合である。</p>
 <table>
 <thead>
 <tr>
-<th>Pod</th>
+<th></th>
 <th style="text-align: center;">CPU (導入後)</th>
 <th style="text-align: center;">メモリ (導入後)</th>
 </tr>
@@ -27141,6 +27142,7 @@
 <thead>
 <tr>
 <th>Pod</th>
+<th></th>
 <th style="text-align: center;">CPU (導入前)</th>
 <th style="text-align: center;">CPU (導入後)</th>
 <th style="text-align: center;">メモリ (導入前)</th>
@@ -27150,6 +27152,7 @@
 <tbody>
 <tr>
 <td>Nginx</td>
+<td></td>
 <td style="text-align: center;">0 vCPU</td>
 <td style="text-align: center;">0.0003 vCPU</td>
 <td style="text-align: center;">2 Mi</td>
@@ -27157,6 +27160,7 @@
 </tr>
 <tr>
 <td>Database</td>
+<td></td>
 <td style="text-align: center;">0.0001 vCPU</td>
 <td style="text-align: center;">0.0003 vCPU</td>
 <td style="text-align: center;">29 Mi</td>
@@ -27164,6 +27168,7 @@
 </tr>
 <tr>
 <td>サービスA</td>
+<td></td>
 <td style="text-align: center;">0.0001 vCPU</td>
 <td style="text-align: center;">0.0004 vCPU</td>
 <td style="text-align: center;">237 Mi</td>
@@ -27171,6 +27176,7 @@
 </tr>
 <tr>
 <td>サービスB</td>
+<td></td>
 <td style="text-align: center;">0.0002 vCPU</td>
 <td style="text-align: center;">0.0004 vCPU</td>
 <td style="text-align: center;">219 Mi</td>
@@ -27178,6 +27184,7 @@
 </tr>
 <tr>
 <td>サービスC</td>
+<td></td>
 <td style="text-align: center;">0.0002 vCPU</td>
 <td style="text-align: center;">0.0004 vCPU</td>
 <td style="text-align: center;">253 Mi</td>
@@ -27185,6 +27192,7 @@
 </tr>
 <tr>
 <td>サービスD</td>
+<td></td>
 <td style="text-align: center;">0.0002 vCPU</td>
 <td style="text-align: center;">0.0004 vCPU</td>
 <td style="text-align: center;">28 Mi</td>
@@ -27192,6 +27200,7 @@
 </tr>
 <tr>
 <td>サービスE</td>
+<td></td>
 <td style="text-align: center;">0.0004 vCPU</td>
 <td style="text-align: center;">0.0007 vCPU</td>
 <td style="text-align: center;">35 Mi</td>
@@ -27199,6 +27208,7 @@
 </tr>
 <tr>
 <td>サービスF</td>
+<td></td>
 <td style="text-align: center;">0.0002 vCPU</td>
 <td style="text-align: center;">0.0004 vCPU</td>
 <td style="text-align: center;">230 Mi</td>
@@ -27206,6 +27216,7 @@
 </tr>
 <tr>
 <td>サービスG</td>
+<td></td>
 <td style="text-align: center;">0.0003 vCPU</td>
 <td style="text-align: center;">0.0006 vCPU</td>
 <td style="text-align: center;">30 Mi</td>
@@ -27213,6 +27224,7 @@
 </tr>
 <tr>
 <td>サービスH</td>
+<td></td>
 <td style="text-align: center;">0.0002 vCPU</td>
 <td style="text-align: center;">0.0004 vCPU</td>
 <td style="text-align: center;">393 Mi</td>
@@ -27220,6 +27232,7 @@
 </tr>
 <tr>
 <td>サービスI</td>
+<td></td>
 <td style="text-align: center;">0.0001 vCPU</td>
 <td style="text-align: center;">0.0004 vCPU</td>
 <td style="text-align: center;">322 Mi</td>
@@ -27227,6 +27240,7 @@
 </tr>
 <tr>
 <td>合計</td>
+<td></td>
 <td style="text-align: center;">0.0020 vCPU</td>
 <td style="text-align: center;">0.0047 vCPU</td>
 <td style="text-align: center;">1778 Mi</td>
@@ -27255,7 +27269,7 @@
 </ul>
 </blockquote>
 <h4 id="_8">▼ サービスメッシュ有無による違い<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p><code>p99</code>、1000Rps、240秒の場合</p>
+<p>p99、1000 rps/s、240 秒間の負荷の場合である。</p>
 <table>
 <thead>
 <tr>
