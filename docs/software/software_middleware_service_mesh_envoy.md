@@ -1055,7 +1055,7 @@ service EndpointDiscoveryService {
 
 Envoyはマルチスレッドでパケットを処理する。
 
-メモリ上の特定のプロセスで、メインスレッドとワーカースレッドを実行する。
+メモリ上の特定のプロセスで、メインスレッド、ワーカースレッド、ファイルフラッシュスレッドを実行する。
 
 これらのスレッドは、そのプロセスに割り当てられているアドレスを共有する。
 
@@ -1073,7 +1073,7 @@ Envoyはマルチスレッドでパケットを処理する。
 - サーバー/コンテナの起動/停止
 - XDS-APIに関する処理
 - ランタイム
-- メモリバッファ上の統計情報のフラッシュ
+- 統計情報のフラッシュ
 - Envoyのプロセスのさまざまな処理 (ホットリロードなど)
 
 > - https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310
@@ -1097,6 +1097,14 @@ Envoyはマルチスレッドでパケットを処理する。
 
 > - https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310
 > - https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy
+
+<br>
+
+### ファイルフラッシュスレッド
+
+ファイル (例：アクセスログ) は一度メモリバッファー上に移動され、その後フラッシュされる。
+
+> - https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310
 
 <br>
 

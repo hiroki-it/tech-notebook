@@ -26,6 +26,56 @@ description: Istio＠サービスメッシュ系ミドルウェアの知見を�
 
 <br>
 
+## 01-02. 拡張性設計
+
+### コントロールプレーンのパフォーマンス設計
+
+#### ▼ CPU
+
+- デプロイ頻度
+- 設定変更頻度
+- `istio-proxy`コンテナ数
+- サービスメッシュのスコープ
+- コントロールプレーンの冗長化数
+
+> - https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#control-plane-performance
+> - https://istio.io/latest/docs/ops/configuration/mesh/configuration-scoping/
+
+<br>
+
+### データプレーンのパフォーマンス設計
+
+#### ▼ CPU
+
+メモリと同じように、以下の情報によって、データプレーンで必要なCPUが変わる
+
+- `istio-proxy`コンテナ内のEnvoyプロセスのスレッド数
+- `istio-proxy`コンテナ内のEnvoyプロセスが作成するテレメトリー (ログ、メトリクス、分散トレース) 量
+- リクエストやレスポンスのデータサイズ
+- 送信元の接続数
+- など...
+
+> - https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#data-plane-performance
+
+#### ▼ メモリ
+
+CPUと同じように、以下の情報によって、データプレーンで必要なメモリが変わる
+
+- `istio-proxy`コンテナ内のEnvoyプロセスのスレッド数
+- `istio-proxy`コンテナ内のEnvoyプロセスが作成するテレメトリー (ログ、メトリクス、分散トレース) 量
+- リクエストやレスポンスのデータサイズ
+- 送信元の接続数
+- など...
+
+特に以下でメモリが必要になる。
+
+- `istio-proxy`コンテナ内のEnvoyプロセスが持つ宛先情報量
+
+> - https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#sidecar-and-ztunnel-resource-usage
+> - https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#data-plane-performance
+
+<br>
+
 ## 02. サイドカーモード
 
 ### Istioのサイドカーモードとは
@@ -37,16 +87,6 @@ description: Istio＠サービスメッシュ系ミドルウェアの知見を�
 > - https://jimmysong.io/blog/beyond-istio-oss/#sidecar-management
 > - https://speakerdeck.com/16yuki0702/distributed-tracing-at-openshift-meetup-tokyo20191018?slide=35
 > - https://zenn.dev/riita10069/articles/service-mesh
-
-<br>
-
-## 02-02. サイドカーモードの可用性設計
-
-### パフォーマンス
-
-#### ▼ CPU
-
-#### ▼ メモリ
 
 <br>
 
