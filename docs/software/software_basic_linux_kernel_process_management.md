@@ -168,9 +168,6 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 
 これらのスレッドは、そのプロセスに割り当てられているアドレスを共有する。
 
-
-
-
 ![multi-thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/multi-thread.png)
 
 > - https://webpia.jp/thread_process/
