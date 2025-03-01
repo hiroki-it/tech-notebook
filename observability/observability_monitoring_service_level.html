@@ -26310,8 +26310,8 @@
 <p>また、分位ボックス (<code>q(n)</code>) により全データの何パーセントの集合かを表しており、例えば、<code>q(0.99)</code>は、<code>99%</code>以上が5<code>ms</code>未満であることを示す。</p>
 <p>LT (ロングテール) の先にある見えない最大値は<code>120</code>msである。</p>
 <p>単なる最小値/最大値/中央値/平均値であると表面的な結果しか得られない。</p>
-<p>しかし、このようなヒストグラムを使用すれば、各リクエストがどの程度のレイテンシー (レスポンスタイム) に、どのくらい分布しているか、を正確に知られる。</p>
-<p>例えば、SLOを『<code>5</code>ms未満のレイテンシー』に設定としたとして、ヒストグラムから<code>99.4597</code>%がこれを満たしていると結論付けられる。</p>
+<p>しかし、このようなヒストグラムを使用すれば、各リクエストがどの程度のレイテンシー (≒レスポンスタイム) に、どのくらい分布しているか、を正確に知られる。</p>
+<p>例えば、SLOを『<code>5</code>ms未満のレイテンシー (≒レスポンスタイム) 』に設定としたとして、ヒストグラムから<code>99.4597</code>%がこれを満たしていると結論付けられる。</p>
 <p><img alt="slo_histogram" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/slo_histogram.png" /></p>
 <p><br></p>
 <h2 id="03-slaservice-level-agreement">03. SLA：Service Level Agreement (サービスレベル合意)<a class="headerlink" href="#03-slaservice-level-agreement" title="Permanent link">&para;</a></h2>
