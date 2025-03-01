@@ -145,7 +145,7 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 
 メモリ上ではプログラムがプロセスとして割り当てられており、プログラムはCPUのコア上で実行される。
 
-プログラムのプロセス中には、CPUのコアと紐づく処理実行単位が複数個ある。
+プロセス中には、CPUのコアと紐づく処理実行が複数個ある。
 
 この処理実行単位を『スレッド』という。
 
@@ -160,11 +160,11 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 
 #### ▼ シングルスレッディング
 
-メモリ上のプログラムのプロセス中で、単一のスレッドを持つ仕組みのこと。
+メモリ上のプロセス中で、単一のスレッドを持つ仕組みのこと。
 
 #### ▼ マルチスレッディング
 
-メモリ上のプログラムのプロセス中で、複数のスレッドを持つ仕組みのこと。
+メモリ上のプロセス中で、複数のスレッドを持つ仕組みのこと。
 
 これらのスレッドは、そのプロセスに割り当てられているアドレスを共有する。
 
@@ -178,7 +178,7 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 
 #### ▼ 通常のマルチスレッド
 
-CPUのコアが単一のスレッドが紐付くようなマルチスレッドのこと。
+CPUのコアは、メモリ上のプロセス中にある単一のスレッドが紐付く。
 
 ![multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/multithreading.png)
 
@@ -186,7 +186,7 @@ CPUのコアが単一のスレッドが紐付くようなマルチスレッド�
 
 #### ▼ 同時マルチスレッド
 
-CPUのコアが複数のスレッドが紐付くようなマルチスレッドのこと。
+CPUのコアは、メモリ上のプロセス中にある複数のスレッドと紐付く。
 
 ![simultaneous-multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/simultaneous-multithreading.png)
 
