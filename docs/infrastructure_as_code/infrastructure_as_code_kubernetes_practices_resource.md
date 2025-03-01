@@ -1023,6 +1023,14 @@ Guaranteed QoSでは、上限 (`limits`) > 下限 (`requests`) のように、CP
 
 > - [https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-burstable](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-burstable)
 
+### ■ CPUの上限を設定しないBurstableなQoSにする
+
+CPUの上限 (`limits`) だけは設定しないようにし、BurstableなQoSにする方法もある。
+
+> - https://home.robusta.dev/blog/stop-using-cpu-limits
+> - https://medium.com/directeam/kubernetes-resources-under-the-hood-part-3-6ee7d6015965
+> - https://www.amazon.co.jp/dp/4814400888
+
 <br>
 
 ## コンテナイメージのタグにlatestを設定しない

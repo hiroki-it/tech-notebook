@@ -83,11 +83,11 @@ Istioのドキュメントでは、以下のハードウェアリソースを消
 
 1000 rps/sの場合である。
 
-|                          | CPU (導入後) | メモリ (導入後) |
-| ------------------------ | :----------: | :-------------: |
-| `istio-proxy`コンテナ    |   0.2 vCPU   |      60 Mi      |
-| waypoint-proxyのコンテナ |  0.25 vCPU   |      60 Mi      |
-| ztunnelのコンテナ        |  0.06 vCPU   |      12 Mi      |
+|                          |    CPU    | メモリ |
+| ------------------------ | :-------: | :----: |
+| `istio-proxy`コンテナ    | 0.2 vCPU  | 60 Mi  |
+| waypoint-proxyのコンテナ | 0.25 vCPU | 60 Mi  |
+| ztunnelのコンテナ        | 0.06 vCPU | 12 Mi  |
 
 > - https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#sidecar-and-ztunnel-resource-usage
 
@@ -143,6 +143,8 @@ p99、1000 rps/s、240 秒間の負荷の場合である。
 ![istio_sidecar-mode_latency](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_sidecar-mode_latency.png)
 
 > - https://istio.io/latest/blog/2019/performance-best-practices/
+
+#### ▼ モードによる違い
 
 <br>
 
