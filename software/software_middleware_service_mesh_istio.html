@@ -27027,15 +27027,15 @@
 </ul>
 <blockquote>
 <ul>
-<li><a href="https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#sidecar-and-ztunnel-resource-usage">https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#sidecar-and-ztunnel-resource-usage</a></li>
 <li><a href="https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#data-plane-performance">https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#data-plane-performance</a></li>
 </ul>
 </blockquote>
 <h4 id="_5">▼ サイドカーモードのハードウェアリソース消費<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナをインジェクションすることにより、 Podあたりで以下の分だけハードウェアリソースが増える調査結果が出ている。</p>
+<p><strong>例</strong></p>
+<p><code>istio-proxy</code>コンテナをインジェクションすることにより、 Podあたりで以下のハードウェアリソースが増える調査結果が出ている。</p>
 <ul>
-<li>CPU 2〜3m</li>
-<li>メモリ 40〜50Mi</li>
+<li>CPU：0.0002 vCPU 〜0.0003 vCPU</li>
+<li>メモリ：40 Mi 〜 50 Mi</li>
 </ul>
 <table>
 <thead>
@@ -27050,93 +27050,126 @@
 <tbody>
 <tr>
 <td>Nginx</td>
-<td style="text-align: center;">0m</td>
-<td style="text-align: center;">3m</td>
-<td style="text-align: center;">2Mi</td>
-<td style="text-align: center;">47Mi</td>
+<td style="text-align: center;">0 vCPU</td>
+<td style="text-align: center;">0.0003 vCPU</td>
+<td style="text-align: center;">2 Mi</td>
+<td style="text-align: center;">47 Mi</td>
 </tr>
 <tr>
 <td>Database</td>
-<td style="text-align: center;">1m</td>
-<td style="text-align: center;">3m</td>
-<td style="text-align: center;">29Mi</td>
-<td style="text-align: center;">76Mi</td>
+<td style="text-align: center;">0.0001 vCPU</td>
+<td style="text-align: center;">0.0003 vCPU</td>
+<td style="text-align: center;">29 Mi</td>
+<td style="text-align: center;">76 Mi</td>
 </tr>
 <tr>
 <td>サービスA</td>
-<td style="text-align: center;">1m</td>
-<td style="text-align: center;">4m</td>
-<td style="text-align: center;">237Mi</td>
-<td style="text-align: center;">220Mi</td>
+<td style="text-align: center;">0.0001 vCPU</td>
+<td style="text-align: center;">0.0004 vCPU</td>
+<td style="text-align: center;">237 Mi</td>
+<td style="text-align: center;">220 Mi</td>
 </tr>
 <tr>
 <td>サービスB</td>
-<td style="text-align: center;">2m</td>
-<td style="text-align: center;">4m</td>
-<td style="text-align: center;">219Mi</td>
-<td style="text-align: center;">288Mi</td>
+<td style="text-align: center;">0.0002 vCPU</td>
+<td style="text-align: center;">0.0004 vCPU</td>
+<td style="text-align: center;">219 Mi</td>
+<td style="text-align: center;">288 Mi</td>
 </tr>
 <tr>
 <td>サービスC</td>
-<td style="text-align: center;">2m</td>
-<td style="text-align: center;">4m</td>
-<td style="text-align: center;">253Mi</td>
-<td style="text-align: center;">270Mi</td>
+<td style="text-align: center;">0.0002 vCPU</td>
+<td style="text-align: center;">0.0004 vCPU</td>
+<td style="text-align: center;">253 Mi</td>
+<td style="text-align: center;">270 Mi</td>
 </tr>
 <tr>
 <td>サービスD</td>
-<td style="text-align: center;">2m</td>
-<td style="text-align: center;">4m</td>
-<td style="text-align: center;">28Mi</td>
-<td style="text-align: center;">73Mi</td>
+<td style="text-align: center;">0.0002 vCPU</td>
+<td style="text-align: center;">0.0004 vCPU</td>
+<td style="text-align: center;">28 Mi</td>
+<td style="text-align: center;">73 Mi</td>
 </tr>
 <tr>
 <td>サービスE</td>
-<td style="text-align: center;">4m</td>
-<td style="text-align: center;">7m</td>
-<td style="text-align: center;">35Mi</td>
-<td style="text-align: center;">78Mi</td>
+<td style="text-align: center;">0.0004 vCPU</td>
+<td style="text-align: center;">0.0007 vCPU</td>
+<td style="text-align: center;">35 Mi</td>
+<td style="text-align: center;">78 Mi</td>
 </tr>
 <tr>
 <td>サービスF</td>
-<td style="text-align: center;">2m</td>
-<td style="text-align: center;">4m</td>
-<td style="text-align: center;">230Mi</td>
-<td style="text-align: center;">270Mi</td>
+<td style="text-align: center;">0.0002 vCPU</td>
+<td style="text-align: center;">0.0004 vCPU</td>
+<td style="text-align: center;">230 Mi</td>
+<td style="text-align: center;">270 Mi</td>
 </tr>
 <tr>
 <td>サービスG</td>
-<td style="text-align: center;">3m</td>
-<td style="text-align: center;">6m</td>
-<td style="text-align: center;">30Mi</td>
-<td style="text-align: center;">75Mi</td>
+<td style="text-align: center;">0.0003 vCPU</td>
+<td style="text-align: center;">0.0006 vCPU</td>
+<td style="text-align: center;">30 Mi</td>
+<td style="text-align: center;">75 Mi</td>
 </tr>
 <tr>
 <td>サービスH</td>
-<td style="text-align: center;">2m</td>
-<td style="text-align: center;">4m</td>
-<td style="text-align: center;">393Mi</td>
-<td style="text-align: center;">311Mi</td>
+<td style="text-align: center;">0.0002 vCPU</td>
+<td style="text-align: center;">0.0004 vCPU</td>
+<td style="text-align: center;">393 Mi</td>
+<td style="text-align: center;">311 Mi</td>
 </tr>
 <tr>
 <td>サービスI</td>
-<td style="text-align: center;">1m</td>
-<td style="text-align: center;">4m</td>
-<td style="text-align: center;">322Mi</td>
-<td style="text-align: center;">411Mi</td>
+<td style="text-align: center;">0.0001 vCPU</td>
+<td style="text-align: center;">0.0004 vCPU</td>
+<td style="text-align: center;">322 Mi</td>
+<td style="text-align: center;">411 Mi</td>
 </tr>
 <tr>
 <td>合計</td>
-<td style="text-align: center;">20m</td>
-<td style="text-align: center;">47m</td>
-<td style="text-align: center;">1778Mi</td>
-<td style="text-align: center;">2119Mi</td>
+<td style="text-align: center;">0.0020 vCPU</td>
+<td style="text-align: center;">0.0047 vCPU</td>
+<td style="text-align: center;">1778 Mi</td>
+<td style="text-align: center;">2119 Mi</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
 <ul>
 <li><a href="https://www.alpha.co.jp/blog/202205_01/#%E4%BD%BF%E7%94%A8%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E4%B8%8A%E6%98%87">https://www.alpha.co.jp/blog/202205_01/#%E4%BD%BF%E7%94%A8%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E4%B8%8A%E6%98%87</a></li>
+</ul>
+</blockquote>
+<p><strong>例</strong></p>
+<p>Istioのドキュメントでは、以下のハードウェアリソースを消費することが記載されている。</p>
+<table>
+<thead>
+<tr>
+<th>Pod</th>
+<th style="text-align: center;">CPU (導入後)</th>
+<th style="text-align: center;">メモリ (導入後)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>istio-proxy</code>コンテナ</td>
+<td style="text-align: center;">0.2 vCPU</td>
+<td style="text-align: center;">60 Mi</td>
+</tr>
+<tr>
+<td>waypoint-proxyのコンテナ</td>
+<td style="text-align: center;">0.25 vCPU</td>
+<td style="text-align: center;">60 Mi</td>
+</tr>
+<tr>
+<td>ztunnelのコンテナ</td>
+<td style="text-align: center;">0.06 vCPU</td>
+<td style="text-align: center;">12 Mi</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#sidecar-and-ztunnel-resource-usage">https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#sidecar-and-ztunnel-resource-usage</a></li>
 </ul>
 </blockquote>
 <p><br></p>
