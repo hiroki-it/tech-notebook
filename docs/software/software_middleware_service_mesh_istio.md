@@ -77,6 +77,18 @@ CPUと同じように、以下の情報によって、データプレーンで�
 
 **例**
 
+Istioのドキュメントでは、以下のハードウェアリソースを消費することが記載されている。
+
+| Pod                      | CPU (導入後) | メモリ (導入後) |
+| ------------------------ | :----------: | :-------------: |
+| `istio-proxy`コンテナ    |   0.2 vCPU   |      60 Mi      |
+| waypoint-proxyのコンテナ |  0.25 vCPU   |      60 Mi      |
+| ztunnelのコンテナ        |  0.06 vCPU   |      12 Mi      |
+
+> - https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#sidecar-and-ztunnel-resource-usage
+
+**例**
+
 `istio-proxy`コンテナをインジェクションすることにより、 Podあたりで以下のハードウェアリソースが増える調査結果が出ている。
 
 - CPU：0.0002 vCPU 〜0.0003 vCPU
@@ -99,17 +111,18 @@ CPUと同じように、以下の情報によって、データプレーンで�
 
 > - https://www.alpha.co.jp/blog/202205_01/#%E4%BD%BF%E7%94%A8%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E4%B8%8A%E6%98%87
 
-**例**
+<br>
 
-Istioのドキュメントでは、以下のハードウェアリソースを消費することが記載されている。
+### レイテンシー (≒レスポンスタイム) の大きさ
 
-| Pod                      | CPU (導入後) | メモリ (導入後) |
-| ------------------------ | :----------: | :-------------: |
-| `istio-proxy`コンテナ    |   0.2 vCPU   |      60 Mi      |
-| waypoint-proxyのコンテナ |  0.25 vCPU   |      60 Mi      |
-| ztunnelのコンテナ        |  0.06 vCPU   |      12 Mi      |
+以下により、レイテンシーは大きくなる。
 
-> - https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#sidecar-and-ztunnel-resource-usage
+- `istio-proxy`コンテナ、waypoint-proxyのコンテナ、ztunnelのコンテナの経由
+- AuthorizationPolicy
+- PeerAuthentication
+
+> - https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#latency-for-istio-124
+> - https://istio.io/latest/blog/2020/large-scale-security-policy-performance-tests/#conclusion
 
 <br>
 
