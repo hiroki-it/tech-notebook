@@ -6457,17 +6457,17 @@
           <li class="md-nav__item">
   <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
-      スレッディングの種類
+      スレッドの種類
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="スレッディングの種類">
+    <nav class="md-nav" aria-label="スレッドの種類">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ シングルスレッディング
+      ▼ シングルスレッド
     </span>
   </a>
   
@@ -6476,7 +6476,7 @@
           <li class="md-nav__item">
   <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ マルチスレッディング
+      ▼ マルチスレッド
     </span>
   </a>
   
@@ -6490,11 +6490,11 @@
           <li class="md-nav__item">
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
-      マルチスレッディングについて
+      マルチスレッドについて
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="マルチスレッディングについて">
+    <nav class="md-nav" aria-label="マルチスレッドについて">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25875,17 +25875,17 @@
           <li class="md-nav__item">
   <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
-      スレッディングの種類
+      スレッドの種類
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="スレッディングの種類">
+    <nav class="md-nav" aria-label="スレッドの種類">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ シングルスレッディング
+      ▼ シングルスレッド
     </span>
   </a>
   
@@ -25894,7 +25894,7 @@
           <li class="md-nav__item">
   <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ マルチスレッディング
+      ▼ マルチスレッド
     </span>
   </a>
   
@@ -25908,11 +25908,11 @@
           <li class="md-nav__item">
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
-      マルチスレッディングについて
+      マルチスレッドについて
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="マルチスレッディングについて">
+    <nav class="md-nav" aria-label="マルチスレッドについて">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26149,7 +26149,7 @@ Jan<span class="w">  </span><span class="m">1</span><span class="w"> </span><spa
 <h2 id="02">02. スレッド<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_15">スレッド (プロセスの処理実行単位) とは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <p>メモリ上ではプログラムがプロセスとして割り当てられており、プログラムはCPUのコア上で実行される。</p>
-<p>プロセス中には、CPUのコアと紐づく処理実行が複数個ある。</p>
+<p>プロセス内には、CPUのコアと紐づく処理実行が複数個ある。</p>
 <p>この処理実行単位を『スレッド』という。</p>
 <p><img alt="thread" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/thread.png" /></p>
 <blockquote>
@@ -26159,11 +26159,11 @@ Jan<span class="w">  </span><span class="m">1</span><span class="w"> </span><spa
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_16">スレッディングの種類<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<h4 id="_17">▼ シングルスレッディング<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>メモリ上のプロセス中で、単一のスレッドを持つ仕組みのこと。</p>
-<h4 id="_18">▼ マルチスレッディング<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p>メモリ上のプロセス中で、複数のスレッドを持つ仕組みのこと。</p>
+<h3 id="_16">スレッドの種類<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<h4 id="_17">▼ シングルスレッド<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p>メモリ上のプロセス内で、単一のスレッドを持つ仕組みのこと。</p>
+<h4 id="_18">▼ マルチスレッド<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>メモリ上のプロセス内で、複数のスレッドを持つ仕組みのこと。</p>
 <p>これらのスレッドは、そのプロセスに割り当てられているアドレスを共有する。</p>
 <p><img alt="multi-thread" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/multi-thread.png" /></p>
 <blockquote>
@@ -26172,9 +26172,9 @@ Jan<span class="w">  </span><span class="m">1</span><span class="w"> </span><spa
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_19">マルチスレッディングについて<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<h3 id="_19">マルチスレッドについて<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <h4 id="_20">▼ 通常のマルチスレッド<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p>CPUのコアは、メモリ上のプロセス中にある単一のスレッドが紐付く。</p>
+<p>CPUのコアは、メモリ上のプロセス内にある単一のスレッドが紐付く。</p>
 <p><img alt="multithreading" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/multithreading.png" /></p>
 <blockquote>
 <ul>
@@ -26182,7 +26182,7 @@ Jan<span class="w">  </span><span class="m">1</span><span class="w"> </span><spa
 </ul>
 </blockquote>
 <h4 id="_21">▼ 同時マルチスレッド<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>CPUのコアは、メモリ上のプロセス中にある複数のスレッドと紐付く。</p>
+<p>CPUのコアは、メモリ上のプロセス内にある複数のスレッドと紐付く。</p>
 <p><img alt="simultaneous-multithreading" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/simultaneous-multithreading.png" /></p>
 <blockquote>
 <ul>

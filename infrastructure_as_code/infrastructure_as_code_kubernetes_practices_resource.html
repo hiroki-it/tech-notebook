@@ -25854,7 +25854,7 @@
 </table>
 <h3 id="_19">■ ストレージをサイジングする<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <p>Nodeグループにあったストレージを割り当てる。</p>
-<p>例えば、ArgoCDがストレージに永続化するデータ量は少ないため、ArgoCDのNodeグループにはストレージはあまり必要ない。</p>
+<p>例えば、ArgoCDがストレージに永続化するデータサイズは少ないため、ArgoCDのNodeグループにはストレージはあまり必要ない。</p>
 <p>一方で、PrometheusはメトリクスをNodeのストレージに保管する (外部TSDBを使用するにしても数日分は保管することになる)。</p>
 <p><br></p>
 <h1 id="nodenode">コントロールプレーンNodeとワーカーNodeで共通のプラクティス<a class="headerlink" href="#nodenode" title="Permanent link">&para;</a></h1>
@@ -26089,7 +26089,7 @@
 <p>大量の一時データを保管したい場合 (例：画像処理中間データ、音声処理中間データなど) に役立つ。</p>
 <p>一時的なストレージのため、Podの作成時にストレージを払い出し、Podが停止するとストレージは削除される。</p>
 <p>EmptyDir Volumeとは異なり、NodeのストレージがPodの容量を制限しない。</p>
-<p>そのため、Node外ストレージの容量次第では、一時的に保管できるデータ量がEmptyDirよりも多い。</p>
+<p>そのため、Node外ストレージの容量次第では、一時的に保管できるデータサイズがEmptyDirよりも多い。</p>
 <p>一方で、Node外ストレージを追加で使用することになるため、金銭的コストがEmptyDirよりも大きい。</p>
 <blockquote>
 <ul>
@@ -26101,7 +26101,7 @@
 <p>EmptyDir Volumeを使用して、PodのデータをNodeのストレージに一時的に保管できる。</p>
 <p>少量の一時データを保管したい場合 (例：キャッシュの保管、バッファリングなど) に役立つ。</p>
 <p>Generic Ephemeral Volumeとは異なり、NodeのストレージがPodの容量を制限する。</p>
-<p>そのため、Nodeのストレージ次第では、一時的に保管できるデータ量がEphemeral Volumesよりも少ない。</p>
+<p>そのため、Nodeのストレージ次第では、一時的に保管できるデータサイズがEphemeral Volumesよりも少ない。</p>
 <p>一方で、Nodeのストレージをそのまま使用することになるため、金銭的コストがEphemeral Volumesよりも小さい。</p>
 <blockquote>
 <ul>
@@ -26122,11 +26122,11 @@
 <p>使用できるストレージ製品はクラスターのインストールされたボリュームプラグイン (≒ CSI Driver) と実行環境に依存しており、そのプラグインを使用するStorageClass</p>
 <p>して、PodのデータをNodeのストレージに永続的に保管できる。</p>
 <p>StorageClassによるNode外ストレージとは異なり、NodeのストレージがPodの容量を制限する。</p>
-<p>そのため、Nodeのストレージ次第では、永続的に保管できるデータ量がPersistentVolumeよりも少ない。</p>
+<p>そのため、Nodeのストレージ次第では、永続的に保管できるデータサイズがPersistentVolumeよりも少ない。</p>
 <h3 id="storageclassnode">■ 大規模な永続的ストレージを必要とする場合はStorageClassによるNode外ストレージを使用する<a class="headerlink" href="#storageclassnode" title="Permanent link">&para;</a></h3>
 <p>StorageClassによるK8s外部のストレージ (例：AWS EBS) を使用して、PodのデータをNode外ストレージに永続的に保管できる。</p>
 <p>StorageClassでは、NodeのストレージがPodの容量を制限しない。</p>
-<p>そのため、Node外ストレージの容量次第では、一時的に保管できるデータ量がPersistentVolumeよりも多い。</p>
+<p>そのため、Node外ストレージの容量次第では、一時的に保管できるデータサイズがPersistentVolumeよりも多い。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/">https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/</a></li>

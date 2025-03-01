@@ -27754,7 +27754,7 @@
 <p><br></p>
 <h3 id="_34">メインスレッド (プライマリスレッド)<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
 <h4 id="_35">▼ メインスレッドとは<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
-<p>以下の処理を担う。</p>
+<p>メモリ上のプロセス内で以下の処理を担う。</p>
 <ul>
 <li>サーバー/コンテナの起動/停止</li>
 <li>XDS-APIに関する処理</li>
@@ -27772,7 +27772,7 @@
 <h3 id="_36">ワーカースレッド<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
 <h4 id="_37">▼ ワーカースレッドとは<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
 <p>プロキシ処理を担う。</p>
-<p>各ワーカースレッドが独立してリクエストを待ち受ける。</p>
+<p>メモリ上のプロセス内の各ワーカースレッドが独立してリクエストを待ち受ける。</p>
 <p>通信をリスナー/フィルター/ルート/クラスター/エンドポイントで処理し、宛先にロードバランシングする。</p>
 <p><code>--concurrency</code>オプションで並列実行数を設定できる。</p>
 <p><img alt="envoy_thread" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_thread.png" /></p>
