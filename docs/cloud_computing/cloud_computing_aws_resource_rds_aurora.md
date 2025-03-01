@@ -813,7 +813,7 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 `(4)`
 
-: メインリージョンの障害が復旧する。
+: メインリージョンの障害が回復する。
 
 `(5)`
 

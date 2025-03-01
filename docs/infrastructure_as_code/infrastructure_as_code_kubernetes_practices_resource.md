@@ -17,9 +17,9 @@ description: プラクティス集＠Kubernetesリソースの知見を記録し
 
 ## バックアップ
 
-例えば永続ボリュームを使用しているなど、クラスターのetcdの現在の状態の復旧が必要な場合、障害でクラスター上のデータが損失することに備え、バックアップツール (例：[velero](https://velero.io/)) を使用してクラスターバックアップを定期的に実行する。
+例えば永続ボリュームを使用しているなど、クラスターのetcdの現在の状態の回復が必要な場合、障害でクラスター上のデータが損失することに備え、バックアップツール (例：[velero](https://velero.io/)) を使用してクラスターバックアップを定期的に実行する。
 
-もし単純に新しいKubernetes Clusterにビルド可能なmanifestsを再インストール(kubectl apply)するだけで問題無く復旧できるようなケースでは必ずしもクラスターバックアップは必要ない。
+もし単純に新しいKubernetes Clusterにビルド可能なmanifestsを再インストール(kubectl apply)するだけで問題無く回復できるようなケースでは必ずしもクラスターバックアップは必要ない。
 
 <br>
 
@@ -1344,7 +1344,7 @@ Helmチャート専用の静的解析ツールが存在するため、必要に�
 | Podが全滅していないことを確認する。                        | PodDisruptionBugdetの設定によってWorkload (例：Deployment、DaemonSet、StatefulSet、Jobなど) で起動しているアプリケーションのPodが全滅しないかを確認する。 PodDisruptionBugdetを適切に設定できていないと、例えばWebアプリケーションのコンテナが全てダウンしてしまいリクエストを受け付けられなくなるといったケースがあるため、PodDisruptionBugdetの設定した内容に沿ってPodが保護されるかを確認する。 |
 | Podが正しくNodeに分散されていることを確認する。            | NodeAffinityの設定に基づいて適切にPodがNodeに分散配置されるかや、NodeLabelやTaintの設定に基づいたNodeが選定されているかなどを確認する。                                                                                                                                                                                                                                                            |
 | Workloadのデプロイ戦略が正しく動作していることを確認する。 | Workload (例：Deployment、DaemonSet、StatefulSet、Jobなど) のデプロイ戦略 (例：RollingUpdate) が設定に応じた割合で行われ、Podの入れ替えが行われていることを確認する。                                                                                                                                                                                                                              |
-| WorkloadがPodのレプリカ数を維持できることを確認する。      | Workload (例：Deployment、DaemonSet、StatefulSet、Jobなど) に属するPodが削除され、replica数を下回った際に時間経過で設定したレプリカ数になるように復旧されることを確認する。                                                                                                                                                                                                                        |
+| WorkloadがPodのレプリカ数を維持できることを確認する。      | Workload (例：Deployment、DaemonSet、StatefulSet、Jobなど) に属するPodが削除され、replica数を下回った際に時間経過で設定したレプリカ数になるように回復されることを確認する。                                                                                                                                                                                                                        |
 | Podのスケーリングが正しく動作することを確認する。          | HorizontalPodAutorocalerやVerticalPodAutoscalerを使用している場合、HorizontalPodAutorocalerやVerticalPodAutoscalerの設定と使用しているメトリクスに応じたスケーリングが行われることを確認する。                                                                                                                                                                                                     |
 | Nodeのスケーリングが正しく動作することを確認する。         | Cluster AutoscalerやKarpenterを使用している場合、Cluster AutoscalerやKarpenterの設定とNodeのリソース状況応じたスケーリングが行われることを確認する。                                                                                                                                                                                                                                               |
 

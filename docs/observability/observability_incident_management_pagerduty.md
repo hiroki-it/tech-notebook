@@ -29,7 +29,7 @@ AWS CloudWatchアラームに通知されたエラーイベントの内から、
 
 `(2)`
 
-: Runbook Automationが、インシデントの自動復旧を試みる。
+: Runbook Automationが、インシデントの自動回復を試みる。
 
 `(3)`
 

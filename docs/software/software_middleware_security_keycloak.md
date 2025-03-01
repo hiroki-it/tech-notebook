@@ -54,7 +54,7 @@ Keycloakからセッションデータを取得し、DBに永続化する。
 
 <br>
 
-## 01-03. 可用性
+## 01-03. Keycloakの可用性設計
 
 ### クラスタリング
 
@@ -71,7 +71,14 @@ Keycloakクラスターでは、JGroupsはInfinispanインスタンス間でレ�
 
 <br>
 
-### パフォーマンス
+### パフォーマンス設計
+
+#### ▼ パフォーマンス設計
+
+KeycloakはCPUとメモリを使用する。
+
+> - https://docs.redhat.com/en/documentation/red_hat_build_of_keycloak/24.0/html/high_availability_guide/concepts-memory-and-cpu-sizing-#concepts-memory-and-cpu-sizing-calculation-example
+> - https://qiita.com/takashyan/items/16b9277daeba5fcdca33#%E3%82%B5%E3%82%A4%E3%82%B8%E3%83%B3%E3%82%B0%E5%9F%BA%E7%A4%8E%E5%80%A4%E3%81%AE%E9%A0%85%E7%9B%AE
 
 #### ▼ CPU
 
@@ -82,6 +89,9 @@ Keycloakクラスターでは、JGroupsはInfinispanインスタンス間でレ�
 - 1秒あたり24回のログインリクエスト ➡️ 3 vCPU
 - 1秒あたり450回のクライアント認証情報の付与処理 ➡️ 1 vCPU
 - 350回のリクエストのリフレッシュトークン ➡️ 1 vCPU
+
+> - https://docs.redhat.com/en/documentation/red_hat_build_of_keycloak/24.0/html/high_availability_guide/concepts-memory-and-cpu-sizing-#concepts-memory-and-cpu-sizing-calculation-example
+> - https://qiita.com/takashyan/items/16b9277daeba5fcdca33#%E3%82%B5%E3%82%A4%E3%82%B8%E3%83%B3%E3%82%B0%E5%9F%BA%E7%A4%8E%E5%80%A4%E3%81%AE%E9%A0%85%E7%9B%AE
 
 #### ▼ メモリ
 

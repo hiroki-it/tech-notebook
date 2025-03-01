@@ -47,13 +47,13 @@ $ kubectl get events -n foo
 
 Nodeのハードウェアリソースの消費量が動的に高まった場合に、kube-schedulerは不適切なNodeからPodを退避し、別のNodeにこれを再スケジューリングさせられない。
 
-他にNodeが障害が起こり、他のNodeにPodが退避した場合に、その後Nodeが復旧したとしても、Podが元のNodeに戻ることはない。
+他にNodeが障害が起こり、他のNodeにPodが退避した場合に、その後Nodeが回復したとしても、Podが元のNodeに戻ることはない。
 
 `kubectl rollout restart`コマンドを実行しても良いが、deschedulerを使用すればこれを自動化できる。
 
 deschedulerをCronJobとして定期的に起動させ、Podを自動的に退避させる。
 
-このことからもわかるように、障害復旧後すぐにdeschedulerが起動するわけではなく、CronJobの実行を待つ必要がある。
+このことからもわかるように、障害回復後すぐにdeschedulerが起動するわけではなく、CronJobの実行を待つ必要がある。
 
 ![descheduler_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/descheduler_architecture.png)
 

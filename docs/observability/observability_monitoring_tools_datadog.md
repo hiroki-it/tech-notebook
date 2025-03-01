@@ -134,7 +134,7 @@ description: Datadog＠監視ツールの知見を記録しています。
 
 {{ #is_alert }}
 
-<!-- 復旧通知を転送しない場合、is_alert構文の中で定義する必要がある -->
+<!-- 回復通知を転送しない場合、is_alert構文の中で定義する必要がある -->
 
 @<本番環境のアラートチャンネル> 実行環境名：{{ log.attributes.env }}
 アプリケーション名：{{ log.attributes.service }} ログステータス：{{

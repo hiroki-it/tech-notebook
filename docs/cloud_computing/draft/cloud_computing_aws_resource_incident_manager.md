@@ -31,7 +31,7 @@ AWS CloudWatchアラームのアラートを、Incident Managerにインシデ�
 
 : Incident Managerは、エラーイベントからインシデントを作成する。
 
-     Automationが、インシデントの自動復旧を試みる。
+     Automationが、インシデントの自動回復を試みる。
 
 `(3)`
 
