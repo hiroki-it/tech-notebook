@@ -27743,7 +27743,7 @@
 <h2 id="01-04">01-04. スレッド<a class="headerlink" href="#01-04" title="Permanent link">&para;</a></h2>
 <h3 id="_33">マルチスレッドモデル<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
 <p>Envoyはマルチスレッドでパケットを処理する。</p>
-<p>メモリ上の特定のプロセスで、メインスレッド、ワーカースレッド、ファイルフラッシュスレッドを実行する。</p>
+<p>メモリ上のプログラムのプロセスで、メインスレッド、ワーカースレッド、ファイルフラッシュスレッドを持つ。</p>
 <p>これらのスレッドは、そのプロセスに割り当てられているアドレスを共有する。</p>
 <blockquote>
 <ul>
@@ -27771,7 +27771,7 @@
 <p><br></p>
 <h3 id="_36">ワーカースレッド<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
 <h4 id="_37">▼ ワーカースレッドとは<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
-<p>プロキシ処理をに担う。</p>
+<p>プロキシ処理を担う。</p>
 <p>各ワーカースレッドが独立してリクエストを待ち受ける。</p>
 <p>通信をリスナー/フィルター/ルート/クラスター/エンドポイントで処理し、宛先にロードバランシングする。</p>
 <p><code>--concurrency</code>オプションで並列実行数を設定できる。</p>
