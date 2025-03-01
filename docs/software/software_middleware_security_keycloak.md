@@ -24,7 +24,7 @@ description: Keycloak＠セキュリティ系ミドルウェアの知見を記�
 
 <br>
 
-## 01-02. 仕組み
+## 01-02. Keycloakの仕組み
 
 ### アーキテクチャ
 
@@ -48,6 +48,14 @@ Keycloakからセッションデータを取得し、DBに永続化する。
 
 <br>
 
+### RDBMS
+
+セッションデータを保管する。
+
+<br>
+
+## 01-03. 可用性
+
 ### クラスタリング
 
 Keycloakでは、クラスタリング構成を使用できる。
@@ -63,9 +71,30 @@ Keycloakクラスターでは、JGroupsはInfinispanインスタンス間でレ�
 
 <br>
 
-### RDBMS
+### パフォーマンス
 
-セッションデータを保管する。
+#### ▼ CPU
+
+最大リクエスト数 (1秒間にどのくらいのリクエストを処理できるのか) に影響する。
+
+**設定例**
+
+- 1秒あたり24回のログインリクエスト ➡️ 3 vCPU
+- 1秒あたり450回のクライアント認証情報の付与処理 ➡️ 1 vCPU
+- 350回のリクエストのリフレッシュトークン ➡️ 1 vCPU
+
+#### ▼ メモリ
+
+最大セッション数 (最大何人が同時にログイン状態になれるのか) に影響する。
+
+**設定例**
+
+1000 MBを設定し、余剰分を増設する。
+
+- 50000のアクティブセッション用 ➡️ 余剰 250 MB
+
+> - https://docs.redhat.com/en/documentation/red_hat_build_of_keycloak/24.0/html/high_availability_guide/concepts-memory-and-cpu-sizing-#concepts-memory-and-cpu-sizing-calculation-example
+> - https://qiita.com/takashyan/items/16b9277daeba5fcdca33#%E3%82%B5%E3%82%A4%E3%82%B8%E3%83%B3%E3%82%B0%E5%9F%BA%E7%A4%8E%E5%80%A4%E3%81%AE%E9%A0%85%E7%9B%AE
 
 <br>
 
