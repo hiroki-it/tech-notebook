@@ -291,6 +291,7 @@ data:
 ```
 
 > - https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/keycloak/#configure-keycloak-oauth2-authentication
+> - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
 
 <br>
 
@@ -322,6 +323,7 @@ data:
 ```
 
 > - https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/github/#example-of-github-configuration-in-grafana
+> - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
 
 <br>
 
@@ -342,6 +344,7 @@ data:
 ```
 
 > - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#paths
+> - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
 
 <br>
 
@@ -362,6 +365,7 @@ data:
 ```
 
 > - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#server
+> - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
 
 <br>
 
@@ -387,6 +391,7 @@ data:
 ```
 
 > - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#min_refresh_interval
+> - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
 
 <br>
 
@@ -407,6 +412,7 @@ data:
 ```
 
 > - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#database
+> - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
 
 <br>
 
@@ -427,6 +433,7 @@ data:
 ```
 
 > - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#remote_cache
+> - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
 
 <br>
 
@@ -451,6 +458,9 @@ data:
     [date_formats]
     default_timezone = Asia/Tokyo
 ```
+
+> - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#date_formats
+> - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
 
 <br>
 

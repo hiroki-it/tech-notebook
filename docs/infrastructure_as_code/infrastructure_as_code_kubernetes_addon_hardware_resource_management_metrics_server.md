@@ -111,6 +111,9 @@ spec:
         # メトリクスの収集間隔を最小にする。
         # https://github.com/kubernetes-sigs/metrics-server/blob/master/FAQ.md#how-often-metrics-are-scraped
         - --metric-resolution=15s
+        # Minikubeでは、kubelet-insecure-tlsオプションを有効化する
+        # @see https://speakerdeck.com/y_sera15/metrics-serverwosekiyuanatlsdedepuroisitemita?slide=5
+        - --kubelet-insecure-tls
       resources:
         requests:
           cpu: 100m

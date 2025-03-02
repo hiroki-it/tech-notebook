@@ -190,6 +190,16 @@ default_home_dashboard_path = /var/lib/grafana/dashboards/local/home.json
 
 ConfigMapで作成したダッシュボードは、デフォルトでGrafanaのGUIから変更できないようになっている。
 
+> - https://grafana.com/grafana/dashboards/
+
+<br>
+
+### 遊ぶ
+
+Grafana Playから、ダッシュボードのいくつかを試せる。
+
+> - https://play.grafana.org/dashboards
+
 <br>
 
 ### 管理方法
