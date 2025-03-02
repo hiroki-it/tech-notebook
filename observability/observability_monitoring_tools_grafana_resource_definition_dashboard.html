@@ -23680,7 +23680,7 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      管理方法
+      遊ぶ
     </span>
   </a>
   
@@ -23689,7 +23689,7 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      エスケープ
+      管理方法
     </span>
   </a>
   
@@ -23697,6 +23697,15 @@
         
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      エスケープ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       コミュニティダッシュボードの採用
     </span>
@@ -23747,7 +23756,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       コミュニティダッシュボードの共通仕様
     </span>
@@ -23900,7 +23909,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       セクション一覧
     </span>
@@ -26025,7 +26034,7 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      管理方法
+      遊ぶ
     </span>
   </a>
   
@@ -26034,7 +26043,7 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      エスケープ
+      管理方法
     </span>
   </a>
   
@@ -26042,6 +26051,15 @@
         
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      エスケープ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       コミュニティダッシュボードの採用
     </span>
@@ -26092,7 +26110,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       コミュニティダッシュボードの共通仕様
     </span>
@@ -26245,7 +26263,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       セクション一覧
     </span>
@@ -26676,8 +26694,21 @@
 <p>ユーザー定義のダッシュボードを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたダッシュボード (例：kubernetes-mixins、Grafanaダッシュボードコミュニティ) を使用した方が良い。</p>
 <p>その場合、GitHubなどで公開されているJSONを、ConfigMapの<code>.data</code>キーに貼り付ける。</p>
 <p>ConfigMapで作成したダッシュボードは、デフォルトでGrafanaのGUIから変更できないようになっている。</p>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/grafana/dashboards/">https://grafana.com/grafana/dashboards/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h3 id="_7">管理方法<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="_7">遊ぶ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>Grafana Playから、ダッシュボードのいくつかを試せる。</p>
+<blockquote>
+<ul>
+<li><a href="https://play.grafana.org/dashboards">https://play.grafana.org/dashboards</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_8">管理方法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>コミュニティダッシュボードを専用のディレクトリで管理する。</p>
 <p>ツールのいずれのバージョンに対応するダッシュボードなのかを、ケバブケースでファイル名に記載すると管理しやすい。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -26701,10 +26732,10 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_8">エスケープ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h3 id="_9">エスケープ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>注意点として、ユーザー定義のダッシュボードと同様にして、記号をエスケープする必要がある。</p>
 <p><br></p>
-<h3 id="_9">コミュニティダッシュボードの採用<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h3 id="_10">コミュニティダッシュボードの採用<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="1"><code>(1)</code> ダッシュボードの検索<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
 <p>コミュニティダッシュボードのJSONは、<a href="https://grafana.com/grafana/dashboards/">Grafana Labs</a> からダウンロードできる。</p>
 <p>コミュニティダッシュボードのIDはJSONの<code>gnetId</code>セクションから確認でき、ダッシュボードをアップグレードする場合は、IDから該当のものを探すようにする。</p>
@@ -26763,7 +26794,7 @@
 <span class="w">    </span><span class="no">` }}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_10">コミュニティダッシュボードの共通仕様<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h3 id="_11">コミュニティダッシュボードの共通仕様<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="use">▼ USEメトリクス<a class="headerlink" href="#use" title="Permanent link">&para;</a></h4>
 <p>『<code>USE</code>』という名前を含むコミュニティダッシュボードがある。</p>
 <p>ダッシュボードは、USEメトリクス (例：CPU使用率、CPUサチュレーションなど) を表示できる。</p>
@@ -27178,7 +27209,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="03">03. セクション<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_11">セクション一覧<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h3 id="_12">セクション一覧<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <blockquote>
 <ul>
 <li><a href="https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model">https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model</a></li>
@@ -27768,7 +27799,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-03-03</span>
   </span>
 
     
