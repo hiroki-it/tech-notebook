@@ -81,18 +81,18 @@ metadata:
   namespace: kube-system
 data:
   CURRENT_AGENT_VERSION: 1.24.2
-  AMBIENT_ENABLED: true
-  AMBIENT_DNS_CAPTURE: false
-  AMBIENT_IPV6: true
-  CHAINED_CNI_PLUGIN: true
+  AMBIENT_ENABLED: "true"
+  AMBIENT_DNS_CAPTURE: "false"
+  AMBIENT_IPV6: "true"
+  CHAINED_CNI_PLUGIN: "true"
   EXCLUDED_NAMESPACES: kube-system
-  REPAIR_ENABLED: true
-  REPAIR_LABEL_PODS: false
-  REPAIR_DELETE_PODS: false
-  REPAIR_REPAIR_PODS: true
+  REPAIR_ENABLED: "true"
+  REPAIR_LABEL_PODS: "false"
+  REPAIR_DELETE_PODS: "false"
+  REPAIR_REPAIR_PODS: "true"
   REPAIR_INIT_CONTAINER_NAME: istio-validation
   REPAIR_BROKEN_POD_LABEL_KEY: cni.istio.io/uninitialized
-  REPAIR_BROKEN_POD_LABEL_VALUE: true
+  REPAIR_BROKEN_POD_LABEL_VALUE: "true"
 ```
 
 <br>
@@ -1511,7 +1511,7 @@ spec:
       - name: discovery
         env:
           - name: ENABLE_DEFERRED_CLUSTER_CREATION
-            value: true
+            value: "true"
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
@@ -1536,7 +1536,7 @@ spec:
       - name: discovery
         env:
           - name: ENABLE_DEFERRED_STATS_CREATION
-            value: true
+            value: "true"
 ```
 
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/bootstrap/v3/bootstrap.proto#config-bootstrap-v3-bootstrap-deferredstatoptions
@@ -1560,7 +1560,7 @@ spec:
       - name: discovery
         env:
           - name: ENABLE_ENHANCED_RESOURCE_SCOPING
-            value: true
+            value: "true"
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
@@ -1585,7 +1585,7 @@ spec:
       - name: discovery
         env:
           - name: ENABLE_ENHANCED_DESTINATIONRULE_MERGE
-            value: true
+            value: "true"
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
@@ -1614,7 +1614,7 @@ spec:
       - name: discovery
         env:
           - name: ENABLE_INBOUND_RETRY_POLICY
-            value: true
+            value: "true"
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
@@ -1640,11 +1640,12 @@ metadata:
   namespace: istio-system
 spec:
   template:
-    containers:
-      - name: discovery
-        env:
-          - name: EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY
-            value: true
+    spec:
+      containers:
+        - name: discovery
+          env:
+            - name: EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY
+              value: "true"
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
@@ -1741,7 +1742,7 @@ data:
   mesh: |
     defaultConfig:
       proxyMetadata:
-        BOOTSTRAP_XDS_AGENT: true
+        BOOTSTRAP_XDS_AGENT: "true"
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
@@ -1762,7 +1763,7 @@ data:
   mesh: |
     defaultConfig:
       proxyMetadata:
-        ENABLE_DEFERRED_CLUSTER_CREATION: true
+        ENABLE_DEFERRED_CLUSTER_CREATION: "true"
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
@@ -1783,7 +1784,7 @@ data:
   mesh: |
     defaultConfig:
       proxyMetadata:
-        EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY: true
+        EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY: "true"
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
@@ -1805,7 +1806,7 @@ data:
   mesh: |
     defaultConfig:
       proxyMetadata:
-        ENABLE_INBOUND_RETRY_POLICY: true
+        ENABLE_INBOUND_RETRY_POLICY: "true"
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
@@ -1837,7 +1838,7 @@ data:
   mesh: |
     defaultConfig:
       proxyMetadata:
-        EXIT_ON_ZERO_ACTIVE_CONNECTIONS: false
+        EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "false"
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
@@ -1882,7 +1883,7 @@ data:
   mesh: |
     defaultConfig:
       proxyMetadata:
-        ISTIO_META_DNS_AUTO_ALLOCATE: false
+        ISTIO_META_DNS_AUTO_ALLOCATE: "false"
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
@@ -1906,7 +1907,7 @@ data:
   mesh: |
     defaultConfig:
       proxyMetadata:
-        ISTIO_META_DNS_CAPTURE: false
+        ISTIO_META_DNS_CAPTURE: "false"
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars

@@ -323,7 +323,7 @@ releases:
       - name: foo
         value: FOO
       - name: bar\.enabled
-        value: true
+        value: "true"
 ```
 
 #### ▼ name
