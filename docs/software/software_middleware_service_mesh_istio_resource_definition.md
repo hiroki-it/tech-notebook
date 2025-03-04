@@ -2863,9 +2863,13 @@ spec:
 
 #### ▼ `<Namespace名>/<Gateway名>`
 
+いずれのGatewayの条件に合致したリクエストを処理するかを設定する。
+
 Gateway名とこれのNamespaceを設定する。
 
-VirtualServiceとGatewayが同じNamespaceに所属する場合は、Namespaceを省略できる。
+VirtualServiceとGatewayが同じNamespaceに所属する場合は、Namespaceを省略できる (`.spec.export`キーとは関係ない) 。
+
+ただ、Namespaceは省略しない方がわかりやすい。
 
 **＊実装例＊**
 
@@ -2885,9 +2889,13 @@ spec:
 
 #### ▼ `<Gateway名>`
 
+いずれのGatewayの条件に合致したリクエストを処理するかを設定する。
+
 VirtualServiceを、Istio IngressGateway/EgressGatewayに紐づける場合 (サービスメッシュ内外の通信) は`<Gateway名>`とする。
 
-VirtualServiceとGatewayが同じNamespaceに所属する場合は、Namespaceを省略できる。
+VirtualServiceとGatewayが同じNamespaceに所属する場合は、Namespaceを省略できる (`.spec.export`キーとは関係ない) 。
+
+ただ、Namespaceは省略しない方がわかりやすい。
 
 **＊実装例＊**
 
@@ -2919,7 +2927,7 @@ spec:
     # gateway名と両方設定する場合は、デフォルト値としての省略はできない
     - mesh
     # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
-    - foo-egressgateway
+    - foo/foo-egressgateway
   http:
     # external.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
     - match:
@@ -2936,7 +2944,7 @@ spec:
     - match:
         - gateways:
             # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
-            - foo-egressgateway
+            - foo/foo-egressgateway
           port: 80
       route:
         - destination:
@@ -2962,7 +2970,7 @@ spec:
     # PodからIstio EgressGatewayのPodへの通信で使用する
     - mesh
     # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
-    - foo-egressgateway
+    - foo/foo-egressgateway
   tls:
     # external.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
     - match:
@@ -2982,7 +2990,7 @@ spec:
     - match:
         - gateways:
             # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
-            - foo-egressgateway
+            - foo/foo-egressgateway
           port: 443
       route:
         - destination:
@@ -3007,7 +3015,7 @@ spec:
     - <DBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com
   gateways:
     - mesh
-    - foo-egressgateway
+    - foo/foo-egressgateway
   tcp:
     - match:
         - gateways:
