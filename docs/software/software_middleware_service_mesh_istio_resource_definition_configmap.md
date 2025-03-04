@@ -1893,7 +1893,11 @@ data:
 
 デフォルト値は`false`である。
 
-istio-proxyでDNSのキャッシュを作成するか否かを設定する。
+アプリコンテナからのアウトバウンド通信時に、Pod内の`istio-proxy`コンテナやztunnelプロキシをDNSプロキシとして使用できるようになる。
+
+もし`istio-proxy`コンテナやztunnelプロキシがドメインに紐づくIPアドレスのキャッシュを持つ場合、アプリコンテナにレスポンスを返信する。
+
+一方でキャッシュを持たない場合、`istio-proxy`コンテナやztunnelプロキシは宛先Podにリクエストを送信する。
 
 **＊実装例＊**
 
@@ -1911,6 +1915,7 @@ data:
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
 
 #### ▼ `MINIMUM_DRAIN_DURATION`
