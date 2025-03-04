@@ -514,6 +514,26 @@ releases:
     atomic: true
 ```
 
+#### ▼ 事前に必要なチャートをデプロイ
+
+Istioのリソースをアプリのチャートより前にデプロイする。
+
+```yaml
+releases:
+  # Istioリソースを含む
+  - name: foo-istio
+    chart: istio
+    version: 1.0.0
+    namespace: foo
+    atomic: true
+  # アプリを含む
+  - name: foo
+    chart: chart
+    version: 1.0.0
+    namespace: foo
+    atomic: true
+```
+
 #### ▼ Istio PeerAuthentication
 
 Istio PeerAuthenticationのように、Namespace単位で作成する必要があるリソースで役立つ。
