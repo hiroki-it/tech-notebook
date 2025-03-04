@@ -835,6 +835,8 @@ CIでは、コンテナイメージのプルの頻度が高まるため、イメ
 
 イメージレジストリのパスのプレフィクスとして`CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX` (依存プロキシ) をつけると、コンテナイメージがGitLabのDependency Proxyを経由するようになる。
 
+キャッシュは、リポジトリの親グループの『`https://<URL>/<親グループ>/-/dependency_proxy`』という設定ページで確認できる。
+
 Dependency Proxyはコンテナイメージをキャッシュするため、毎回DockerHubにコンテナをプルしなくなり、プル数の制限にひっかかりにくくなる。
 
 ```yaml
