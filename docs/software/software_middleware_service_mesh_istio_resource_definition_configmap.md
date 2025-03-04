@@ -260,362 +260,6 @@ data:
 
 <br>
 
-### defaultConfig
-
-#### ▼ defaultConfigとは
-
-Istioの全てのコンポーネントに適用する変数のデフォルト値を設定する。
-
-他にProxyConfigの`.spec.environmentVariables`キー、Podの`.metadata.annotations.proxy.istio.io/config`キーでも設定できる。
-
-ProxyConfigが最優先であり、これらの設定はマージされる。
-
-`.meshConfig.defaultConfig`キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。
-
-```yaml
-meshConfig:
-  defaultConfig:
-    discoveryAddress: istiod:15012
-```
-
-```yaml
-annotations:
-  proxy.istio.io/config: |
-    discoveryAddress: istiod:15012
-```
-
-```yaml
-apiVersion: networking.istio.io/v1beta1
-kind: ProxyConfig
-metadata:
-  name: foo-proxyconfig
-spec:
-  discoveryAddress: istiod:15012
-```
-
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
-
-<br>
-
-#### ▼ discoveryAddress
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      discoveryAddress: istiod-<リビジョン番号>.istio-system.svc:15012
-```
-
-```yaml
-apiVersion: networking.istio.io/v1beta1
-kind: ProxyConfig
-metadata:
-  name: foo-proxyconfig
-spec:
-  discoveryAddress: istiod-<リビジョン番号>.istio-system.svc:15012
-```
-
-#### ▼ drainDuration
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      drainDuration: 45s
-```
-
-```yaml
-apiVersion: networking.istio.io/v1beta1
-kind: ProxyConfig
-metadata:
-  name: foo-proxyconfig
-spec:
-  drainDuration: 45s
-```
-
-#### ▼ envoyAccessLogService
-
-Envoyのアクセスログを、標準出力に出力するのではなく宛先 (例：レシーバー) に送信する。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    enableEnvoyAccessLogService: true
-    defaultConfig:
-      envoyAccessLogService: 
-        address: <Envoyのアクセスログの宛先Service名>:15000
-        # Istioコントロールプレーンをルート認証局とする
-        tlsSettings: ISTIO_MUTUAL
-        # TCP KeepAliveを実施する
-        tcpKeepalive:
-          probes: 9
-          time: 2
-          interval: 75
-```
-
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#RemoteService
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-envoy_access_log_service
-
-#### ▼ envoyMetricsService
-
-Envoyのメトリクスを、Prometheusにスクレイピングしてもらうのではなく宛先 (例：レシーバー) に送信する。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    # enableEnvoyMetricsService: true という設定がありそうだが、ドキュメントに記載がない
-    defaultConfig:
-      envoyMetricsService: 
-        address: <Envoyのメトリクスの宛先Service名>:15000
-        # Istioコントロールプレーンをルート認証局とする
-        tlsSettings: ISTIO_MUTUAL
-        # TCP KeepAliveを実施する
-        tcpKeepalive:
-          probes: 9
-          time: 2
-          interval: 75
-```
-
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#RemoteService
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-envoy_metrics_service
-
-#### ▼ holdApplicationUntilProxyStarts
-
-`istio-proxy`コンテナが、必ずアプリコンテナよりも先に起動するか否かを設定する。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      holdApplicationUntilProxyStarts: true
-```
-
-```yaml
-apiVersion: networking.istio.io/v1beta1
-kind: ProxyConfig
-metadata:
-  name: foo-proxyconfig
-spec:
-  holdApplicationUntilProxyStarts: true
-```
-
-> - https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB
-> - https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters
-
-オプションを有効化すると、`istio-proxy`コンテナの`.spec.containers[*].lifecycle.postStart.exec.command`キーに、`pilot-agent -wait`コマンドが挿入される。
-
-`.spec.containers[*].lifecycle.preStop.exec.command`キーへの自動設定は、`EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数で対応する。
-
-```yaml
-...
-
-spec:
-  containers:
-    - name: istio-proxy
-
-      ...
-
-      lifecycle:
-        postStart:
-          exec:
-            command: |
-              pilot-agent wait
-
-...
-```
-
-> - https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%85%8D%E7%BD%AE-sidecar-%E5%92%8C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F
-
-#### ▼ image
-
-`istio-proxy`コンテナのコンテナイメージのタイプを設定する。
-
-これは、ConfigMapではなくProxyConfigでも設定できる。
-
-`distroless`型を選ぶと、`istio-proxy`コンテナにログインできなくなり、より安全なイメージになる。
-
-一方で、デバッグしにくくなる。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      image:
-        imageType: distroless
-```
-
-`istio-cni`でも、Helmチャートで別に設定すれば、`distroless`型を選べる。
-
-> - https://istio.io/latest/docs/reference/config/networking/proxy-config/#ProxyImage
-> - https://cloud.google.com/service-mesh/docs/enable-optional-features-in-cluster?hl=ja#distroless_proxy_image
-> - https://istio.io/latest/docs/ops/configuration/security/harden-docker-images/
-
-#### ▼ privateKeyProvider
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      privateKeyProvider:
-```
-
-#### ▼ proxyMetadata
-
-`istio-proxy`コンテナに環境変数を設定する。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      proxyMetadata:
-        # ここに環境変数を設定する
-```
-
-```yaml
-apiVersion: networking.istio.io/v1beta1
-kind: ProxyConfig
-metadata:
-  name: foo-proxyconfig
-spec:
-  proxyMetadata: ...
-```
-
-#### ▼ rootNamespace
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      rootNamespace: istio-system
-```
-
-```yaml
-apiVersion: networking.istio.io/v1beta1
-kind: ProxyConfig
-metadata:
-  name: foo-proxyconfig
-spec:
-  rootNamespace: istio-system
-```
-
-#### ▼ tracing (非推奨)
-
-いずれのトレース仕様 (例：Zipkin、Datadog、LightStepなど) でトレースIDとスパンIDを作成するかを設定する。
-
-ZipkinとJaegerはトレースコンテキスト仕様が同じであるため、zipkinパッケージをJaegerのクライアントとしても使用できる。
-
-`.mesh.defaultConfig.enableTracing`キーも有効化する必要がある。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      enableTracing: true
-      tracing:
-        sampling: 100
-        zipkin:
-          address: "jaeger-collector.observability:9411"
-```
-
-ただし、非推奨であるため`extensionProviders`キーを使用した方が良い
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      tracing: {}
-    extensionProviders:
-      ...
-```
-
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#Tracing
-
-#### ▼ trustDomain
-
-相互TLSを採用している場合に、送信元として許可する信頼ドメインを設定する。
-
-例えば、信頼ドメインはServiceAccountごとに異なる。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      trustDomain: cluster.local
-```
-
-```yaml
-apiVersion: networking.istio.io/v1beta1
-kind: ProxyConfig
-metadata:
-  name: foo-proxyconfig
-spec:
-  trustDomain: cluster.local
-```
-
-> - https://istio.io/latest/docs/tasks/security/authorization/authz-td-migration/
-
-<br>
-
 ### defaultHttpRetryPolicy
 
 #### ▼ defaultHttpRetryPolicyとは
@@ -1327,6 +971,731 @@ data:
 
 <br>
 
+## 04-02. defaultConfig
+
+### defaultConfigとは
+
+Istioの全てのコンポーネントに適用する変数のデフォルト値を設定する。
+
+他にProxyConfigの`.spec.environmentVariables`キー、Podの`.metadata.annotations.proxy.istio.io/config`キーでも設定できる。
+
+ProxyConfigが最優先であり、これらの設定はマージされる。
+
+`.meshConfig.defaultConfig`キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。
+
+3つの箇所で設定できる。
+
+```yaml
+meshConfig:
+  defaultConfig:
+    discoveryAddress: istiod:15012
+```
+
+```yaml
+annotations:
+  proxy.istio.io/config: |
+    discoveryAddress: istiod:15012
+```
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ProxyConfig
+metadata:
+  name: foo-proxyconfig
+spec:
+  discoveryAddress: istiod:15012
+```
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
+
+<br>
+
+### discoveryAddress
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      discoveryAddress: istiod-<リビジョン番号>.istio-system.svc:15012
+```
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ProxyConfig
+metadata:
+  name: foo-proxyconfig
+spec:
+  discoveryAddress: istiod-<リビジョン番号>.istio-system.svc:15012
+```
+
+<br>
+
+### drainDuration
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      drainDuration: 45s
+```
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ProxyConfig
+metadata:
+  name: foo-proxyconfig
+spec:
+  drainDuration: 45s
+```
+
+<br>
+
+### envoyAccessLogService
+
+Envoyのアクセスログを、標準出力に出力するのではなく宛先 (例：レシーバー) に送信する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    enableEnvoyAccessLogService: true
+    defaultConfig:
+      envoyAccessLogService: 
+        address: <Envoyのアクセスログの宛先Service名>:15000
+        # Istioコントロールプレーンをルート認証局とする
+        tlsSettings: ISTIO_MUTUAL
+        # TCP KeepAliveを実施する
+        tcpKeepalive:
+          probes: 9
+          time: 2
+          interval: 75
+```
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#RemoteService
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-envoy_access_log_service
+
+<br>
+
+### envoyMetricsService
+
+Envoyのメトリクスを、Prometheusにスクレイピングしてもらうのではなく宛先 (例：レシーバー) に送信する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    # enableEnvoyMetricsService: true という設定がありそうだが、ドキュメントに記載がない
+    defaultConfig:
+      envoyMetricsService: 
+        address: <Envoyのメトリクスの宛先Service名>:15000
+        # Istioコントロールプレーンをルート認証局とする
+        tlsSettings: ISTIO_MUTUAL
+        # TCP KeepAliveを実施する
+        tcpKeepalive:
+          probes: 9
+          time: 2
+          interval: 75
+```
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#RemoteService
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-envoy_metrics_service
+
+<br>
+
+### holdApplicationUntilProxyStarts
+
+`istio-proxy`コンテナが、必ずアプリコンテナよりも先に起動するか否かを設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      holdApplicationUntilProxyStarts: true
+```
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ProxyConfig
+metadata:
+  name: foo-proxyconfig
+spec:
+  holdApplicationUntilProxyStarts: true
+```
+
+> - https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB
+> - https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters
+
+オプションを有効化すると、`istio-proxy`コンテナの`.spec.containers[*].lifecycle.postStart.exec.command`キーに、`pilot-agent -wait`コマンドが挿入される。
+
+`.spec.containers[*].lifecycle.preStop.exec.command`キーへの自動設定は、`EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数で対応する。
+
+```yaml
+...
+
+spec:
+  containers:
+    - name: istio-proxy
+
+      ...
+
+      lifecycle:
+        postStart:
+          exec:
+            command: |
+              pilot-agent wait
+
+...
+```
+
+> - https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%85%8D%E7%BD%AE-sidecar-%E5%92%8C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F
+
+<br>
+
+### image
+
+`istio-proxy`コンテナのコンテナイメージのタイプを設定する。
+
+これは、ConfigMapではなくProxyConfigでも設定できる。
+
+`distroless`型を選ぶと、`istio-proxy`コンテナにログインできなくなり、より安全なイメージになる。
+
+一方で、デバッグしにくくなる。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      image:
+        imageType: distroless
+```
+
+`istio-cni`でも、Helmチャートで別に設定すれば、`distroless`型を選べる。
+
+> - https://istio.io/latest/docs/reference/config/networking/proxy-config/#ProxyImage
+> - https://cloud.google.com/service-mesh/docs/enable-optional-features-in-cluster?hl=ja#distroless_proxy_image
+> - https://istio.io/latest/docs/ops/configuration/security/harden-docker-images/
+
+<br>
+
+### privateKeyProvider
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      privateKeyProvider:
+```
+
+<br>
+
+### proxyMetadata
+
+`istio-proxy`コンテナに環境変数を設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        # ここに環境変数を設定する
+```
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ProxyConfig
+metadata:
+  name: foo-proxyconfig
+spec:
+  proxyMetadata: ...
+```
+
+<br>
+
+### rootNamespace
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      rootNamespace: istio-system
+```
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ProxyConfig
+metadata:
+  name: foo-proxyconfig
+spec:
+  rootNamespace: istio-system
+```
+
+<br>
+
+### tracing (非推奨)
+
+いずれのトレース仕様 (例：Zipkin、Datadog、LightStepなど) でトレースIDとスパンIDを作成するかを設定する。
+
+ZipkinとJaegerはトレースコンテキスト仕様が同じであるため、zipkinパッケージをJaegerのクライアントとしても使用できる。
+
+`.mesh.defaultConfig.enableTracing`キーも有効化する必要がある。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      enableTracing: true
+      tracing:
+        sampling: 100
+        zipkin:
+          address: "jaeger-collector.observability:9411"
+```
+
+ただし、非推奨であるため`extensionProviders`キーを使用した方が良い
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      tracing: {}
+    extensionProviders:
+      ...
+```
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#Tracing
+
+<br>
+
+### trustDomain
+
+相互TLSを採用している場合に、送信元として許可する信頼ドメインを設定する。
+
+例えば、信頼ドメインはServiceAccountごとに異なる。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      trustDomain: cluster.local
+```
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ProxyConfig
+metadata:
+  name: foo-proxyconfig
+spec:
+  trustDomain: cluster.local
+```
+
+> - https://istio.io/latest/docs/tasks/security/authorization/authz-td-migration/
+
+<br>
+
+## 04-03. defaultConfig.proxyMetadata
+
+### `BOOTSTRAP_XDS_AGENT`
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        BOOTSTRAP_XDS_AGENT: "true"
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+
+<br>
+
+### `ENABLE_DEFERRED_CLUSTER_CREATION`
+
+`pilot-discovery`コマンドでも設定できるため、そちらを参照せよ。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        ENABLE_DEFERRED_CLUSTER_CREATION: "true"
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+
+<br>
+
+### `EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`
+
+`pilot-discovery`コマンドでも設定できるため、そちらを参照せよ。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY: "true"
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
+
+<br>
+
+### `ENABLE_INBOUND_RETRY_POLICY`
+
+`pilot-discovery`コマンドでも設定できるため、そちらを参照せよ。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        ENABLE_INBOUND_RETRY_POLICY: "true"
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
+
+<br>
+
+### `EXIT_ON_ZERO_ACTIVE_CONNECTIONS`
+
+![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
+
+デフォルト値は`false`である。
+
+`istio-proxy`コンテナへのリクエストが無くなってから、Envoyのプロセスを終了する。
+
+具体的には、`downstream_cx_active`メトリクスの値 (アクティブな接続数) を監視し、`0`になり次第、Envoyのプロセスを終了する。
+
+オプションを有効化すると、`istio-proxy`コンテナの`.spec.containers[*].lifecycle.preStop.exec.command`キーに、`sleep`コマンドが挿入される。
+
+`.spec.containers[*].lifecycle.postStart.exec.command`キーへの自動設定は、`.mesh.defaultConfig.holdApplicationUntilProxyStarts`キーで対応する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "false"
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80
+
+<br>
+
+### `ISTIO_META_CERT_SIGNER`
+
+デフォルトで`""` (空文字) である。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        ISTIO_META_CERT_SIGNER: ""
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+
+<br>
+
+### `ISTIO_META_DNS_AUTO_ALLOCATE`
+
+デフォルト値は`false`である。
+
+IPアドレスが設定されていないServiceEntryに対して、IPアドレスを自動的に設定する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        ISTIO_META_DNS_AUTO_ALLOCATE: "false"
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
+
+<br>
+
+### `ISTIO_META_DNS_CAPTURE`
+
+デフォルト値は`false`である。
+
+アプリコンテナからのアウトバウンド通信時に、Pod内の`istio-proxy`コンテナやztunnelプロキシをDNSプロキシとして使用できるようになる。
+
+もし`istio-proxy`コンテナやztunnelプロキシがドメインに紐づくIPアドレスのキャッシュを持つ場合、アプリコンテナにレスポンスを返信する。
+
+一方でキャッシュを持たない場合、`istio-proxy`コンテナやztunnelプロキシは宛先Podにリクエストを送信する。
+
+なお、DNSキャッシュのドメインとIPアドレスを固定で紐付けることもできる。
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy
+
+#### ▼ 固定 (HTTPリクエスト)
+
+HTTPリクエストで、DNSキャッシュのドメインとIPアドレスを固定で紐づける場合、以下である。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        ISTIO_META_DNS_CAPTURE: "true"
+```
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: external-address
+spec:
+  hosts:
+    - address.internal
+  ports:
+    - name: http
+      number: 80
+      protocol: HTTP
+```
+
+> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#dns-capture-in-action
+
+#### ▼ 動的 (HTTPリクエスト)
+
+HTTPリクエストで、DNSキャッシュのドメインとIPアドレスを動的に紐づける場合、以下である。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        ISTIO_META_DNS_CAPTURE: "true"
+```
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: external-address
+spec:
+  hosts:
+    - address.internal
+  addresses:
+    - 198.51.100.1
+  ports:
+    - name: http
+      number: 80
+      protocol: HTTP
+```
+
+> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#address-auto-allocation
+
+#### ▼ 動的 (TCPリクエスト)
+
+TCPリクエストで、DNSキャッシュのドメインとIPアドレスを動的に紐づける場合、以下である。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        ISTIO_META_DNS_CAPTURE: "true"
+```
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: aws-aurora-endpoint
+spec:
+  hosts:
+    - <AWS AuroraのDBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com
+  ports:
+    - name: cluster-endpoint
+      number: 3306
+      protocol: TCP
+  resolution: DNS
+---
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: aws-aurora-endpoint
+spec:
+  hosts:
+    - <AWS AuroraのDBクラスター名>.cluster-ro-<id>.ap-northeast-1.rds.amazonaws.com
+  ports:
+    - name: reader-endpoint
+      number: 3306
+      protocol: TCP
+  resolution: DNS
+```
+
+> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#external-tcp-services-without-vips
+
+<br>
+
+### `MINIMUM_DRAIN_DURATION`
+
+![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
+
+デフォルト値は`5`である (対応する`.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`キーと同じ) 。
+
+`EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数が`true`な場合にのみ設定できる。
+
+`false`の場合は、代わりに`.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`を設定する。
+
+`istio-proxy`コンテナ内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。
+
+この接続のドレイン処理時間で、新しい接続を受け入れ続ける時間を設定する。
+
+Podの`.metadata.annotations.proxy.istio.io/config.drainDuration`キーで起こるレースコンディションを解決するための設定で、同じ値を設定するとよい。
+
+**＊実装例＊**
+
+Envoyプロセスのドレイン処理`5`秒間に実施する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyMetadata:
+        MINIMUM_DRAIN_DURATION: "10s"
+```
+
+> - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80
+> - https://github.com/istio/istio/pull/35059#discussion_r711500175
+
+<br>
+
 ## 05. istio-sidecar-injector
 
 ### config
@@ -1403,9 +1772,7 @@ data:
 
 <br>
 
-
 ## 06. pilot-discoveryコマンド
-
 
 ### `CITADEL_SELF_SIGNED_CA_CERT_TTL`
 
@@ -1747,290 +2114,5 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
-
-<br>
-
-## 04-03. defaultConfig.proxyMetadata
-
-
-
-### `BOOTSTRAP_XDS_AGENT`
-
-**＊実装例＊**
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      proxyMetadata:
-        BOOTSTRAP_XDS_AGENT: "true"
-```
-
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
-
-<br>
-
-### `ENABLE_DEFERRED_CLUSTER_CREATION`
-
-`pilot-discovery`コマンドでも設定できるため、そちらを参照せよ。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      proxyMetadata:
-        ENABLE_DEFERRED_CLUSTER_CREATION: "true"
-```
-
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
-
-<br>
-
-### `EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`
-
-`pilot-discovery`コマンドでも設定できるため、そちらを参照せよ。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      proxyMetadata:
-        EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY: "true"
-```
-
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
-> - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
-
-<br>
-
-### `ENABLE_INBOUND_RETRY_POLICY`
-
-`pilot-discovery`コマンドでも設定できるため、そちらを参照せよ。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      proxyMetadata:
-        ENABLE_INBOUND_RETRY_POLICY: "true"
-```
-
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
-> - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
-
-<br>
-
-### `EXIT_ON_ZERO_ACTIVE_CONNECTIONS`
-
-![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
-
-デフォルト値は`false`である。
-
-`istio-proxy`コンテナへのリクエストが無くなってから、Envoyのプロセスを終了する。
-
-具体的には、`downstream_cx_active`メトリクスの値 (アクティブな接続数) を監視し、`0`になり次第、Envoyのプロセスを終了する。
-
-オプションを有効化すると、`istio-proxy`コンテナの`.spec.containers[*].lifecycle.preStop.exec.command`キーに、`sleep`コマンドが挿入される。
-
-`.spec.containers[*].lifecycle.postStart.exec.command`キーへの自動設定は、`.mesh.defaultConfig.holdApplicationUntilProxyStarts`キーで対応する。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      proxyMetadata:
-        EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "false"
-```
-
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
-> - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80
-
-<br>
-
-### `ISTIO_META_CERT_SIGNER`
-
-デフォルトで`""` (空文字) である。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      proxyMetadata:
-        ISTIO_META_CERT_SIGNER: ""
-```
-
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
-
-<br>
-
-### `ISTIO_META_DNS_AUTO_ALLOCATE`
-
-デフォルト値は`false`である。
-
-IPアドレスが設定されていないServiceEntryに対して、IPアドレスを自動的に設定する。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      proxyMetadata:
-        ISTIO_META_DNS_AUTO_ALLOCATE: "false"
-```
-
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
-> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
-
-<br>
-
-### `ISTIO_META_DNS_CAPTURE`
-
-デフォルト値は`false`である。
-
-アプリコンテナからのアウトバウンド通信時に、Pod内の`istio-proxy`コンテナやztunnelプロキシをDNSプロキシとして使用できるようになる。
-
-もし`istio-proxy`コンテナやztunnelプロキシがドメインに紐づくIPアドレスのキャッシュを持つ場合、アプリコンテナにレスポンスを返信する。
-
-一方でキャッシュを持たない場合、`istio-proxy`コンテナやztunnelプロキシは宛先Podにリクエストを送信する。
-
-なお、DNSキャッシュのドメインとIPアドレスを固定で紐付けることもできる。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      proxyMetadata:
-        ISTIO_META_DNS_CAPTURE: "false"
-```
-
-DNSキャッシュのドメインとIPアドレスを固定で紐づける場合、以下である。
-
-```yaml
-apiVersion: networking.istio.io/v1
-kind: ServiceEntry
-metadata:
-  name: external-address
-spec:
-  hosts:
-    - address.internal
-  ports:
-    - name: http
-      number: 80
-      protocol: HTTP
-```
-
-DNSキャッシュのドメインとIPアドレスを動的に紐づける場合、以下である。
-
-```yaml
-apiVersion: networking.istio.io/v1
-kind: ServiceEntry
-metadata:
-  name: external-address
-spec:
-  hosts:
-    - address.internal
-  addresses:
-    - 198.51.100.1
-  ports:
-    - name: http
-      number: 80
-      protocol: HTTP
-```
-
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
-> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy
-
-<br>
-
-<br>
-
-### `MINIMUM_DRAIN_DURATION`
-
-![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
-
-デフォルト値は`5`である (対応する`.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`キーと同じ) 。
-
-`EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数が`true`な場合にのみ設定できる。
-
-`false`の場合は、代わりに`.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`を設定する。
-
-`istio-proxy`コンテナ内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。
-
-この接続のドレイン処理時間で、新しい接続を受け入れ続ける時間を設定する。
-
-Podの`.metadata.annotations.proxy.istio.io/config.drainDuration`キーで起こるレースコンディションを解決するための設定で、同じ値を設定するとよい。
-
-**＊実装例＊**
-
-Envoyプロセスのドレイン処理`5`秒間に実施する。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    defaultConfig:
-      proxyMetadata:
-        MINIMUM_DRAIN_DURATION: "10s"
-```
-
-> - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80
-> - https://github.com/istio/istio/pull/35059#discussion_r711500175
 
 <br>
