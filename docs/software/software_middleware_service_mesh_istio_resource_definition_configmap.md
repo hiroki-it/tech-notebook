@@ -1403,11 +1403,11 @@ data:
 
 <br>
 
-## 06. 環境変数
 
-### pilot-discoveryコマンド
+## 06. pilot-discoveryコマンド
 
-#### ▼ `CITADEL_SELF_SIGNED_CA_CERT_TTL`
+
+### `CITADEL_SELF_SIGNED_CA_CERT_TTL`
 
 Istioコントロールプレーンが自身を署名するオレオレ証明書の有効期限を設定する。
 
@@ -1428,7 +1428,9 @@ spec:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 
-#### ▼ `CITADEL_SELF_SIGNED_ROOT_CERT_CHECK_INTERVAL`
+<br>
+
+### `CITADEL_SELF_SIGNED_ROOT_CERT_CHECK_INTERVAL`
 
 Istioコントロールプレーンのオレオレ証明書の検証間隔を設定する。
 
@@ -1449,7 +1451,9 @@ spec:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 
-#### ▼ `CLUSTER_ID`
+<br>
+
+### `CLUSTER_ID`
 
 Istiodのサービスレジストリを設定する。
 
@@ -1470,7 +1474,9 @@ spec:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 
-#### ▼ `DEFAULT_WORKLOAD_CERT_TTL`
+<br>
+
+### `DEFAULT_WORKLOAD_CERT_TTL`
 
 `istio-proxy`コンテナの証明書の有効期限を設定する。
 
@@ -1491,7 +1497,9 @@ spec:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 
-#### ▼ `ENABLE_DEFERRED_CLUSTER_CREATION`
+<br>
+
+### `ENABLE_DEFERRED_CLUSTER_CREATION`
 
 デフォルト値は`true`である。
 
@@ -1516,7 +1524,9 @@ spec:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 
-#### ▼ `ENABLE_DEFERRED_STATS_CREATION`
+<br>
+
+### `ENABLE_DEFERRED_STATS_CREATION`
 
 デフォルト値は`true`である。
 
@@ -1542,7 +1552,9 @@ spec:
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/bootstrap/v3/bootstrap.proto#config-bootstrap-v3-bootstrap-deferredstatoptions
 > - https://martinfowler.com/bliki/LazyInitialization.html
 
-#### ▼ `ENABLE_ENHANCED_RESOURCE_SCOPING`
+<br>
+
+### `ENABLE_ENHANCED_RESOURCE_SCOPING`
 
 デフォルト値は`true`である。
 
@@ -1565,7 +1577,9 @@ spec:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 
-#### ▼ `ENABLE_ENHANCED_DESTINATIONRULE_MERGE`
+<br>
+
+### `ENABLE_ENHANCED_DESTINATIONRULE_MERGE`
 
 デフォルト値は`true`である。
 
@@ -1590,7 +1604,9 @@ spec:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 
-#### ▼ `ENABLE_INBOUND_RETRY_POLICY`
+<br>
+
+### `ENABLE_INBOUND_RETRY_POLICY`
 
 デフォルト値は`true`である。
 
@@ -1620,7 +1636,9 @@ spec:
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 > - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
 
-#### ▼ `EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`
+<br>
+
+### `EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`
 
 デフォルト値は`true`である。
 
@@ -1653,7 +1671,9 @@ spec:
 > - https://github.com/istio/istio/issues/51704#issuecomment-2188555136
 > - https://karlstoney.com/retry-policies-in-istio/
 
-#### ▼ `PILOT_TRACE_SAMPLING`
+<br>
+
+### `PILOT_TRACE_SAMPLING`
 
 分散トレースの収集率を設定する。
 
@@ -1676,7 +1696,9 @@ spec:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 
-#### ▼ `PILOT_CERT_PROVIDER`
+<br>
+
+### `PILOT_CERT_PROVIDER`
 
 `istio-proxy`コンテナに設定するSSL証明書のプロバイダーを設定する。
 
@@ -1703,7 +1725,9 @@ spec:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 
-#### ▼ `PILOT_JWT_PUB_KEY_REFRESH_INTERVAL`
+<br>
+
+### `PILOT_JWT_PUB_KEY_REFRESH_INTERVAL`
 
 アクセストークンの検証の間隔を設定する。
 
@@ -1726,9 +1750,11 @@ spec:
 
 <br>
 
-### defaultConfig.proxyMetadata
+## 04-03. defaultConfig.proxyMetadata
 
-#### ▼ `BOOTSTRAP_XDS_AGENT`
+
+
+### `BOOTSTRAP_XDS_AGENT`
 
 **＊実装例＊**
 
@@ -1747,7 +1773,9 @@ data:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
 
-#### ▼ `ENABLE_DEFERRED_CLUSTER_CREATION`
+<br>
+
+### `ENABLE_DEFERRED_CLUSTER_CREATION`
 
 `pilot-discovery`コマンドでも設定できるため、そちらを参照せよ。
 
@@ -1768,7 +1796,9 @@ data:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
 
-#### ▼ `EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`
+<br>
+
+### `EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`
 
 `pilot-discovery`コマンドでも設定できるため、そちらを参照せよ。
 
@@ -1790,7 +1820,9 @@ data:
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
 > - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
 
-#### ▼ `ENABLE_INBOUND_RETRY_POLICY`
+<br>
+
+### `ENABLE_INBOUND_RETRY_POLICY`
 
 `pilot-discovery`コマンドでも設定できるため、そちらを参照せよ。
 
@@ -1812,7 +1844,9 @@ data:
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
 > - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
 
-#### ▼ `EXIT_ON_ZERO_ACTIVE_CONNECTIONS`
+<br>
+
+### `EXIT_ON_ZERO_ACTIVE_CONNECTIONS`
 
 ![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
 
@@ -1844,7 +1878,9 @@ data:
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
 > - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80
 
-#### ▼ `ISTIO_META_CERT_SIGNER`
+<br>
+
+### `ISTIO_META_CERT_SIGNER`
 
 デフォルトで`""` (空文字) である。
 
@@ -1865,7 +1901,9 @@ data:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
 
-#### ▼ `ISTIO_META_DNS_AUTO_ALLOCATE`
+<br>
+
+### `ISTIO_META_DNS_AUTO_ALLOCATE`
 
 デフォルト値は`false`である。
 
@@ -1889,7 +1927,9 @@ data:
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
 
-#### ▼ `ISTIO_META_DNS_CAPTURE`
+<br>
+
+### `ISTIO_META_DNS_CAPTURE`
 
 デフォルト値は`false`である。
 
@@ -1898,6 +1938,8 @@ data:
 もし`istio-proxy`コンテナやztunnelプロキシがドメインに紐づくIPアドレスのキャッシュを持つ場合、アプリコンテナにレスポンスを返信する。
 
 一方でキャッシュを持たない場合、`istio-proxy`コンテナやztunnelプロキシは宛先Podにリクエストを送信する。
+
+なお、DNSキャッシュのドメインとIPアドレスを固定で紐付けることもできる。
 
 **＊実装例＊**
 
@@ -1914,11 +1956,48 @@ data:
         ISTIO_META_DNS_CAPTURE: "false"
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
-> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
-> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
+DNSキャッシュのドメインとIPアドレスを固定で紐づける場合、以下である。
 
-#### ▼ `MINIMUM_DRAIN_DURATION`
+```yaml
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: external-address
+spec:
+  hosts:
+    - address.internal
+  ports:
+    - name: http
+      number: 80
+      protocol: HTTP
+```
+
+DNSキャッシュのドメインとIPアドレスを動的に紐づける場合、以下である。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: external-address
+spec:
+  hosts:
+    - address.internal
+  addresses:
+    - 198.51.100.1
+  ports:
+    - name: http
+      number: 80
+      protocol: HTTP
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy
+
+<br>
+
+<br>
+
+### `MINIMUM_DRAIN_DURATION`
 
 ![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
 
