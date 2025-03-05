@@ -303,6 +303,16 @@ $ ls -la /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-
 
 Silenceされている期間、無効化されたアラートはAlertmanagerのUI上から削除され、通知されなくなる。
 
+例えば、リモートストレージのアップグレード中にアラートが通知されないように、以下をmatchersに設定したサイレンスを作成する。
+
+```bash
+alertname="PrometheusRemoteStorageFailures"
+
+alertname="PrometheusRemoteWriteBehind"
+
+alertname="PrometheusRemoteWriteDesiredShards"
+```
+
 > - https://amateur-engineer-blog.com/alertmanager-silence/
 
 <br>
