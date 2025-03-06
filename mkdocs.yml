@@ -267,7 +267,6 @@ nav:
               - Istioを採用しない場合との比較: software/software_middleware_service_mesh_istio_non.md
               - コマンド: software/software_middleware_service_mesh_istio_command.md
               - プラクティス集: software/software_middleware_service_mesh_istio_practices.md
-              - IstioOperator: software/software_middleware_service_mesh_istio_operator_resource_definition.md
               - 設計パターン: software/software_middleware_service_mesh_istio_patterns.md
               - ■ リソース:
                   - リソース: software/software_middleware_service_mesh_istio_resource.md
@@ -276,6 +275,9 @@ nav:
                       - メタデータ: software/software_middleware_service_mesh_istio_resource_definition_common.md
                       - ConfigMap系: software/software_middleware_service_mesh_istio_resource_definition_configmap.md
                       - Secret系: software/software_middleware_service_mesh_istio_resource_definition_secret.md
+              - ■ IstioOperator:
+                  - IstioOperator: software/software_middleware_service_mesh_istio_operator.md
+                  - リソース定義: software/software_middleware_service_mesh_istio_operator_resource_definition.md
       - ■ DNS系:
           - ■ CoreDNS:
               - CoreDNS: software/software_middleware_dns_coredns.md

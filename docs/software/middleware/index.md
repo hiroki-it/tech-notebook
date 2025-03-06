@@ -126,7 +126,6 @@ hide:
   > - ##### [Istioを採用しない場合との比較](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_non.html)
   > - ##### [︎コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_command.html)
   > - ##### [︎プラクティス集](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_practices.html)
-  > - ##### [︎IstioOperator](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_operator_resource_definition.html)
   > - ##### [︎リソース](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource.html)
   > - ##### [設計パターン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_patterns.html)
   > - ##### <u>リソース定義</u>
@@ -134,6 +133,10 @@ hide:
   >   > - ##### [共通項目](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_common.html)
   >   > - ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_configmap.html)
   >   > - ##### [Secret系](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_secret.html)
+  > - ##### <u>︎IstioOperator</u>
+  >   > - ##### [︎IstioOperator](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_operator.html)
+  >   > - ##### [リソース定義](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_operator_resource_definition.html)
+
 
 <br>
 
