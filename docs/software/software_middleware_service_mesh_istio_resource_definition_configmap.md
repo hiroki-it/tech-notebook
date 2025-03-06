@@ -1506,6 +1506,10 @@ data:
 
 IPアドレスが設定されていないServiceEntryに対して、IPアドレスを自動的に設定する。
 
+`ISTIO_META_DNS_CAPTURE`を有効にしないと、`ISTIO_META_DNS_AUTO_ALLOCATE`は機能しない。
+
+`PILOT_ENABLE_IP_AUTOALLOCATE`と同じであり、Istio 1.25以降で、`PILOT_ENABLE_IP_AUTOALLOCATE`の方が推奨になった。
+
 **＊実装例＊**
 
 ```yaml
@@ -1523,6 +1527,7 @@ data:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
+> - https://istio.io/latest/news/releases/1.25.x/announcing-1.25/change-notes/#deprecation-notices
 
 <br>
 
@@ -1693,6 +1698,19 @@ data:
 
 > - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80
 > - https://github.com/istio/istio/pull/35059#discussion_r711500175
+
+<br>
+
+### `PILOT_ENABLE_IP_AUTOALLOCATE`
+
+デフォルト値は`true`である。
+
+`ISTIO_META_DNS_AUTO_ALLOCATE`と同じであり、Istio 1.25以降で、`PILOT_ENABLE_IP_AUTOALLOCATE`の方が推奨になった。
+
+`ISTIO_META_DNS_CAPTURE`を有効にしないと、`PILOT_ENABLE_IP_AUTOALLOCATE`は機能しない。
+
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+> - https://istio.io/latest/news/releases/1.25.x/announcing-1.25/change-notes/#deprecation-notices
 
 <br>
 

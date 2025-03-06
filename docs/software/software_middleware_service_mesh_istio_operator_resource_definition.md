@@ -202,6 +202,29 @@ spec:
         enabled: "true"
 ```
 
+`.spec.egressGateways.k8s`キーでServiceの定義を設定できるが、これは非推奨である。
+
+```yaml
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
+spec:
+  components:
+    ingressGateways:
+      - name: istio-egressgateway
+        enabled: "true"
+        k8s:
+          service:
+            type: ClusterIP
+            ports:
+              - name: http
+                port: 80
+                protocol: TCP
+                targetPort: 80
+```
+
 #### ▼ ingressGateways
 
 ingressGatewaysコンポーネントのオプションを設定する。
@@ -221,9 +244,7 @@ spec:
         enabled: "true"
 ```
 
-`.spec.ingressGateways.k8s`キーでIstio IngressGatewayを設定できるが、これは非推奨である。
-
-> - https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022
+`.spec.ingressGateways.k8s`キーでServiceの定義を設定できるが、これは非推奨である。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -238,12 +259,15 @@ spec:
         enabled: "true"
         k8s:
           service:
+            type: NodePort
             ports:
               - name: http
                 port: 80
                 protocol: TCP
                 targetPort: 80
 ```
+
+> - https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022
 
 最終的な設定値は、`kubectl get`コマンドで確認できる。
 
