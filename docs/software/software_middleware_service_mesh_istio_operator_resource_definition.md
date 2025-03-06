@@ -185,7 +185,7 @@ spec:
 
 #### ▼ egressGateways
 
-egressGatewaysコンポーネントのオプションを設定する。
+IstioOperatorで管理するIstio EgressGatewayのオプションを設定する。
 
 Istio EgressGatewayを直接的に作成するのではなく、IstioOperatorに作成させる。
 
@@ -227,7 +227,7 @@ spec:
 
 #### ▼ ingressGateways
 
-ingressGatewaysコンポーネントのオプションを設定する。
+IstioOperatorで管理するIstio IngressGatewayのオプションを設定する。
 
 Istio IngressGatewayを直接的に作成するのではなく、IstioOperatorに作成させる。
 
