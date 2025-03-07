@@ -28861,6 +28861,18 @@
 <span class="w">      </span><span class="no">proxyMetadata:</span>
 <span class="w">        </span><span class="no">ISTIO_META_DNS_AUTO_ALLOCATE: &quot;false&quot;</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external-address</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">address.internal</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="w">      </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars">https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars</a></li>
@@ -28945,6 +28957,9 @@
 </blockquote>
 <h4 id="tcp">▼ 動的 (TCPリクエスト)<a class="headerlink" href="#tcp" title="Permanent link">&para;</a></h4>
 <p>TCPリクエストで、DNSキャッシュのドメインとIPアドレスを動的に紐づける場合、以下である。</p>
+<p>注意点として、Istio EgressGatewayを経由してServiceEntryに至る場合には、動的なTCPリクエストを使用できない。</p>
+<p>Istio EgressGateway (厳密に言うとGateway) で<code>L7</code>のホストヘッダーを処理できず、受信したリクエストのポート番号だけで宛先のServiceEntryを決めてしまう。</p>
+<p>同じポート番号で待ち受ける複数のServiceEntryがあると、<code>.spec.hosts</code>キーを設定していたとしても、誤った方のServiceEntryを選ぶ可能性がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28985,6 +29000,8 @@
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#external-tcp-services-without-vips">https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#external-tcp-services-without-vips</a></li>
+<li><a href="https://github.com/istio/istio/discussions/51942#discussioncomment-9989752">https://github.com/istio/istio/discussions/51942#discussioncomment-9989752</a></li>
+<li><a href="https://github.com/istio/istio/issues/42520#issuecomment-1360461382">https://github.com/istio/istio/issues/42520#issuecomment-1360461382</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -29430,7 +29447,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月6日 17:51:07">2025-03-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月7日 20:09:37">2025-03-07</span>
   </span>
 
     
