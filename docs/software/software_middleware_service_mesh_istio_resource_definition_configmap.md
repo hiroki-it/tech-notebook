@@ -1525,6 +1525,20 @@ data:
         ISTIO_META_DNS_AUTO_ALLOCATE: "false"
 ```
 
+```yaml
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: external-address
+spec:
+  hosts:
+    - address.internal
+  ports:
+    - name: http
+      number: 80
+      protocol: HTTP
+```
+
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
 > - https://istio.io/latest/news/releases/1.25.x/announcing-1.25/change-notes/#deprecation-notices
@@ -1618,6 +1632,12 @@ spec:
 
 TCPリクエストで、DNSキャッシュのドメインとIPアドレスを動的に紐づける場合、以下である。
 
+注意点として、Istio EgressGatewayを経由してServiceEntryに至る場合には、動的なTCPリクエストを使用できない。
+
+Istio EgressGateway (厳密に言うとGateway) で`L7`のホストヘッダーを処理できず、受信したリクエストのポート番号だけで宛先のServiceEntryを決めてしまう。
+
+同じポート番号で待ち受ける複数のServiceEntryがあると、`.spec.hosts`キーを設定していたとしても、誤った方のServiceEntryを選ぶ可能性がある。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -1660,6 +1680,8 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#external-tcp-services-without-vips
+> - https://github.com/istio/istio/discussions/51942#discussioncomment-9989752
+> - https://github.com/istio/istio/issues/42520#issuecomment-1360461382
 
 <br>
 
