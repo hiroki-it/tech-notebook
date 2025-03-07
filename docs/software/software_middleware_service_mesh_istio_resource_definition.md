@@ -2101,7 +2101,9 @@ kind: ProxyConfig
 metadata:
   name: foo-proxyconfig
 spec:
-  environmentVariables: ISTIO_META_DNS_CAPTURE:"false"
+  environmentVariables:
+    # 値をダブルクオートで囲う
+    ISTIO_META_DNS_CAPTURE: "false"
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/proxy-config/#ProxyConfig

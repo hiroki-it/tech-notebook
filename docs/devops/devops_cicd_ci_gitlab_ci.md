@@ -839,6 +839,8 @@ CIでは、コンテナイメージのプルの頻度が高まるため、イメ
 
 Dependency Proxyはコンテナイメージをキャッシュするため、毎回DockerHubにコンテナをプルしなくなり、プル数の制限にひっかかりにくくなる。
 
+なお、執筆時点 (2025/03/05) ではDockerHubへのプルの経由のみに対応している。
+
 ```yaml
 foo_job:
   stage: build
@@ -850,6 +852,7 @@ foo_job:
 ```
 
 > - https://docs.gitlab.com/ee/user/packages/dependency_proxy/#store-a-docker-image-in-dependency-proxy-cache
+> - https://docs.gitlab.com/user/packages/dependency_proxy/#use-the-dependency-proxy-for-docker-images
 > - https://brettops.io/blog/gitlab-docker-proxy/
 
 <br>
