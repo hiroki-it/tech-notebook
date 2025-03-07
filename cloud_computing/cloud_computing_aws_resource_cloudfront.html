@@ -14375,7 +14375,7 @@
           <li class="md-nav__item">
   <a href="#cookie" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Cookieに基づくキャッシュ作成
+      ▼ Cookieヘッダーに基づくキャッシュ作成
     </span>
   </a>
   
@@ -14393,7 +14393,7 @@
           <li class="md-nav__item">
   <a href="#cookie_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Cookieやクエリストリングをオリジンにルーティングしつつ、キャッシュを作成しない場合
+      ▼ Cookieヘッダーやクエリストリングをオリジンにルーティングしつつ、キャッシュを作成しない場合
     </span>
   </a>
   
@@ -14431,11 +14431,11 @@
           <li class="md-nav__item">
   <a href="#cookie_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Cookieキャッシュのヒット率向上
+      Cookieヘッダーキャッシュのヒット率向上
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Cookieキャッシュのヒット率向上">
+    <nav class="md-nav" aria-label="Cookieヘッダーキャッシュのヒット率向上">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26127,7 +26127,7 @@
           <li class="md-nav__item">
   <a href="#cookie" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Cookieに基づくキャッシュ作成
+      ▼ Cookieヘッダーに基づくキャッシュ作成
     </span>
   </a>
   
@@ -26145,7 +26145,7 @@
           <li class="md-nav__item">
   <a href="#cookie_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Cookieやクエリストリングをオリジンにルーティングしつつ、キャッシュを作成しない場合
+      ▼ Cookieヘッダーやクエリストリングをオリジンにルーティングしつつ、キャッシュを作成しない場合
     </span>
   </a>
   
@@ -26183,11 +26183,11 @@
           <li class="md-nav__item">
   <a href="#cookie_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Cookieキャッシュのヒット率向上
+      Cookieヘッダーキャッシュのヒット率向上
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Cookieキャッシュのヒット率向上">
+    <nav class="md-nav" aria-label="Cookieヘッダーキャッシュのヒット率向上">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26549,7 +26549,7 @@
 <span class="nt">Authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer &lt;Bearerトークン&gt;</span>
 <span class="nt">X-Amz-Cf-Id</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
 <span class="nt">Via</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0 &lt;発行されたランダム文字列&gt;.cloudfront.net (AWS CloudFront)</span>
-<span class="c1"># 各Cookieの値 (二回目のリクエスト時に設定される)</span>
+<span class="c1"># 各Cookieヘッダーの値 (二回目のリクエスト時に設定される)</span>
 <span class="nt">Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sessionid=&lt;セッションID&gt;; __ulfpc=&lt;GoogleAnalytics値&gt;; _ga=&lt;GoogleAnalytics値&gt;; _gid=&lt;GoogleAnalytics値&gt;</span>
 <span class="c1"># 送信元IPアドレス</span>
 <span class="c1"># ※プロキシ (AWS ALBやAWS CloudFrontなども含む) を経由している場合、それら全てのIPアドレスが順に設定される</span>
@@ -26649,7 +26649,7 @@
 </blockquote>
 <h4 id="_7">▼ ヘッダー値に基づくキャッシュ作成<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>リクエストヘッダーのうち、オリジンへのルーティングを許可し、加えてキャッシュキーと見なすオプションを設定する。</p>
-<p>Cookieとクエリストリングと比べて、同じ設定でもキャッシュ作成の有無が異なることに注意する。</p>
+<p><code>Cookie</code>ヘッダーとクエリストリングと比べて、同じ設定でもキャッシュ作成の有無が異なることに注意する。</p>
 <table>
 <thead>
 <tr>
@@ -26667,7 +26667,7 @@
 <tr>
 <td>一部ルーティング</td>
 <td>一部のヘッダーのルーティングを拒否し、ヘッダーの無いリクエストをルーティングする。</td>
-<td>指定したヘッダーのみをキャッシュキーとみなす。日付に関するヘッダー (例：Accept-Datetime) などの動的な値をキャッシュキーとしてしまうと。同一と見なすリクエストがほとんどなくなり、ヒットしなくなる。そのため、ヘッダーをオリジンにルーティングしつつ、動的になりやすい値を持つヘッダーをキャッシュキーにしないようにする必要がある。ヒット率の向上のため、クエリストリングやCookieの静的な値をキャッシュキーに設定すると良い。</td>
+<td>指定したヘッダーのみをキャッシュキーとみなす。日付に関するヘッダー (例：Accept-Datetime) などの動的な値をキャッシュキーとしてしまうと。同一と見なすリクエストがほとんどなくなり、ヒットしなくなる。そのため、ヘッダーをオリジンにルーティングしつつ、動的になりやすい値を持つヘッダーをキャッシュキーにしないようにする必要がある。ヒット率の向上のため、クエリストリングや<code>Cookie</code>ヘッダーの静的な値をキャッシュキーに設定すると良い。</td>
 </tr>
 <tr>
 <td>全拒否</td>
@@ -26681,9 +26681,9 @@
 <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html#header-caching-web">https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html#header-caching-web</a></li>
 </ul>
 </blockquote>
-<h4 id="cookie">▼ Cookieに基づくキャッシュ作成<a class="headerlink" href="#cookie" title="Permanent link">&para;</a></h4>
-<p>Cookie情報のキー名のうち、オリジンへのルーティングを許可し、加えてキャッシュキーと見なすオプションを設定する。</p>
-<p>リクエストのヘッダーに含まれるCookie情報 (キー名/値) が変動していると、AWS CloudFrontに保管されたキャッシュがヒットしない。</p>
+<h4 id="cookie">▼ <code>Cookie</code>ヘッダーに基づくキャッシュ作成<a class="headerlink" href="#cookie" title="Permanent link">&para;</a></h4>
+<p><code>Cookie</code>ヘッダー情報のキー名のうち、オリジンへのルーティングを許可し、加えてキャッシュキーと見なすオプションを設定する。</p>
+<p>リクエストのヘッダーに含まれる<code>Cookie</code>ヘッダー情報 (キー名/値) が変動していると、AWS CloudFrontに保管されたキャッシュがヒットしない。</p>
 <p>AWS CloudFrontはキー名/値を保持するため、変化しやすいキー名/値は、オリジンにルーティングしないように設定する。</p>
 <p>例えば、GoogleAnalyticsのキー名 (<code>_ga</code>) の値は、ブラウザによって異なるため、1ユーザーがブラウザを変えるたびに、異なるキャッシュが作成されることになる。</p>
 <p>そのため、ユーザーを一意に判定することが難しくなってしまう。</p>
@@ -26700,17 +26700,17 @@
 <tbody>
 <tr>
 <td>全許可</td>
-<td>全てのCookieのルーティングを許可する。</td>
-<td>全てのCookieをキャッシュキーとみなす。</td>
+<td>全ての<code>Cookie</code>ヘッダーのルーティングを許可する。</td>
+<td>全ての<code>Cookie</code>ヘッダーをキャッシュキーとみなす。</td>
 </tr>
 <tr>
 <td>一部ルーティング</td>
-<td>一部のCookieのルーティングを拒否し、Cookieの無いリクエストをルーティングする。</td>
-<td>指定したCookieのみキャッシュキーとみなす。Cookieはユーザーごとに一意になることが多く、動的であるが、それ以外のヘッダーやクエリ文字でキャッシュを判定するようになるため、同一と見なすリクエストが増え、ヒット率の向上につながる。</td>
+<td>一部の<code>Cookie</code>ヘッダーのルーティングを拒否し、<code>Cookie</code>ヘッダーの無いリクエストをルーティングする。</td>
+<td>指定した<code>Cookie</code>ヘッダーのみキャッシュキーとみなす。<code>Cookie</code>ヘッダーはユーザーごとに一意になることが多く、動的であるが、それ以外のヘッダーやクエリ文字でキャッシュを判定するようになるため、同一と見なすリクエストが増え、ヒット率の向上につながる。</td>
 </tr>
 <tr>
 <td>全拒否</td>
-<td>全てのCookieのルーティングを拒否し、Cookieの無いリクエストをルーティングする。</td>
+<td>全ての<code>Cookie</code>ヘッダーのルーティングを拒否し、<code>Cookie</code>ヘッダーの無いリクエストをルーティングする。</td>
 <td>キャッシュを作成しない。</td>
 </tr>
 </tbody>
@@ -26754,8 +26754,8 @@
 <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html">https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html</a></li>
 </ul>
 </blockquote>
-<h4 id="cookie_1">▼ Cookieやクエリストリングをオリジンにルーティングしつつ、キャッシュを作成しない場合<a class="headerlink" href="#cookie_1" title="Permanent link">&para;</a></h4>
-<p>上記の設定では、Cookieやクエリストリングをオリジンにルーティングしつつ、キャッシュを作成しないようにできない。</p>
+<h4 id="cookie_1">▼ <code>Cookie</code>ヘッダーやクエリストリングをオリジンにルーティングしつつ、キャッシュを作成しない場合<a class="headerlink" href="#cookie_1" title="Permanent link">&para;</a></h4>
+<p>上記の設定では、<code>Cookie</code>ヘッダーやクエリストリングをオリジンにルーティングしつつ、キャッシュを作成しないようにできない。</p>
 <p>そこで、キャッシュの最大最小デフォルトの有効期間を<code>0</code>秒とすることにより、結果的にキャッシュを動作しないようにさせ、キャッシュが作成されていないかのように見せかけられる。</p>
 <p><br></p>
 <h3 id="_9">ヘッダーキャッシュのヒット率向上<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
@@ -26766,7 +26766,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="cookie_2">Cookieキャッシュのヒット率向上<a class="headerlink" href="#cookie_2" title="Permanent link">&para;</a></h3>
+<h3 id="cookie_2"><code>Cookie</code>ヘッダーキャッシュのヒット率向上<a class="headerlink" href="#cookie_2" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ ヒット率の向上について<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <blockquote>
 <ul>
@@ -26854,7 +26854,7 @@ The document tree is shown below.
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年2月11日 22:29:25">2025-02-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月7日 18:13:34">2025-03-07</span>
   </span>
 
     
