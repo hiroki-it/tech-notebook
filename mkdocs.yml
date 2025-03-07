@@ -219,7 +219,7 @@ nav:
               - uWSGI: software/software_middleware_application_gi_wsgi_uwsgi.md
               - 設定ファイル: software/software_middleware_application_gi_wsgi_uwsgi_conf.md
           - Uvicorn: software/software_middleware_application_gi_asgi_uvicorn.md
-      - ■ リレーショナルデータベース系:
+      - ■ リレーショナルDB系:
           - ■ RDBMS:
               - RDBMS: software/software_middleware_database_rdb_rdbms.md
               - プラクティス集: software/software_middleware_database_rdb_rdbms_practices.md
@@ -241,7 +241,7 @@ nav:
           - ■ PgBouncer:
               - PgBouncer: software/software_middleware_database_connection_pool_proxy_pgbouncer.md
               - 設定ファイル: software/software_middleware_database_connection_pool_proxy_pgbouncer_conf.md
-      - ■ 時系列データベース系:
+      - ■ 時系列DB系:
           - TSDB: software/software_middleware_database_tsdb.md
           - ■ VictoriaMetrics:
               - VictoriaMetrics: software/software_middleware_database_tsdb_victoriametrics.md
