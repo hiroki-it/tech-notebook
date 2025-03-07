@@ -80,7 +80,7 @@ VPCの外側 (パブリックネットワーク) に配置されている。
 | Origin and Origin Group        | Behaviorを実行するオリジンを設定する。                                         |                                                                                                                                                                                                                                                                                                                       |
 | Viewer Protocol Policy         | HTTP/HTTPSのどちらを受信するか、またどのように変換してルーティングするかを設定 | ・`HTTP and HTTPS`：両方受信し、そのままルーティング<br>・`Redirect HTTP to HTTPS`：両方受信し、HTTPSプロトコルでルーティング<br>・`HTTPS Only`：HTTPSのみ受信し、HTTPSプロトコルでルーティング                                                                                                                       |
 | Allowed HTTP Methods           | リクエストのHTTPメソッドのうち、オリジンへのルーティングを許可するものを設定   | ・パスパターンが静的ファイルに対するリクエストの場合、GETリクエストのみ許可。<br>・パスパターンが動的ファイルに対するリクエストの場合、全てのメソッドを許可。                                                                                                                                                         |
-| Object Caching                 | AWS CloudFrontにコンテンツのキャッシュを保管しておく秒数を設定する。           | ・Origin Cacheヘッダーを選択した場合、アプリケーションからのレスポンスヘッダーのCache-Controlの値が適用される。<br>・カスタマイズを選択した場合、ブラウザのTTLとは別に設定できる。                                                                                                                                    |
+| Object Caching                 | AWS CloudFrontにコンテンツのキャッシュを保管しておく秒数を設定する。           | ・Origin Cacheヘッダーを選択した場合、アプリケーションからのレスポンスヘッダーの`Cache-Control`ヘッダーの値が適用される。<br>・カスタマイズを選択した場合、ブラウザのTTLとは別に設定できる。                                                                                                                          |
 | TTL                            | AWS CloudFrontにキャッシュを保管しておく秒数を詳細に設定する。                 | ・Min、Max、Defaultの全てを`0`秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロである必要がある。<br>・キャッシュの最終的な有効期間は、AWS CloudFrontのTTL秒の設定、`Cache-Control`ヘッダー、`Expires`ヘッダー値の組み合わせによって決まる。 |
 | Whitelist Header               | Headers を参考にせよ。                                                         | ・`Accept-*****`：アプリケーションにレスポンスして欲しいデータの種類 (データ型など) を指定。<br>・ `AWS CloudFront-Is-*****-Viewer`：デバイスタイプのboolean値が格納されている。<br>- https://docs.aws.amazon.com/Amazon CloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist                      |
 | Restrict Viewer Access         | クライアント側を制限するか否かを設定できる。                                   | セキュリティグループで制御できるため、ここでは設定しなくて良い。                                                                                                                                                                                                                                                      |
@@ -210,9 +210,7 @@ $ nslookup <発行されたランダム文字列>.cloudfront.net
 
 ## 04. キャッシュ
 
-### オリジンリクエストの可否、キャッシュ作成の有無
-
-#### ▼ オリジンリクエストの可否、キャッシュ作成の有無の決まり方
+### オリジンリクエストの可否、キャッシュ作成の有無の決まり方
 
 オリジンにルーティングする必要があるリクエストを、各種パラメーターのAll (全許可) /一部許可/None (全拒否) で設定できる。
 
@@ -226,6 +224,10 @@ AWS CloudFrontではリクエストがJSONとして扱われており、JSONの�
 
 > - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html
 > - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html
+
+<br>
+
+### キャッシュを作成する
 
 #### ▼ ヘッダー値に基づくキャッシュ作成
 
@@ -259,7 +261,7 @@ GoogleAnalyticsのキーはブラウザからAjaxでGoogleに送信されるも�
 
 | 機能名           | オリジンリクエストの可否                                                                           | キャッシュ作成の有無                                                                                                                                                                                                                                 |
 | ---------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 全許可           | 全ての`Cookie`ヘッダーのルーティングを許可する。                                                   | 全ての`Cookie`ヘッダーをキャッシュキーとみなす。                                                                                                                                                                                                     |
+| 全許可           | 全ての`Cookie`ヘッダーのルーティングを許可する。                                                   | 全ての`Cookie`ヘッダーをキャッシュキーとみなす。有効期限                                                                                                                                                                                             |
 | 一部ルーティング | 一部の`Cookie`ヘッダーのルーティングを拒否し、`Cookie`ヘッダーの無いリクエストをルーティングする。 | 指定した`Cookie`ヘッダーのみキャッシュキーとみなす。`Cookie`ヘッダーはユーザーごとに一意になることが多く、動的であるが、それ以外のヘッダーやクエリ文字でキャッシュを判定するようになるため、同一と見なすリクエストが増え、ヒット率の向上につながる。 |
 | 全拒否           | 全ての`Cookie`ヘッダーのルーティングを拒否し、`Cookie`ヘッダーの無いリクエストをルーティングする。 | キャッシュを作成しない。                                                                                                                                                                                                                             |
 
@@ -279,6 +281,10 @@ GoogleAnalyticsのキーはブラウザからAjaxでGoogleに送信されるも�
 
 > - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html
 
+<br>
+
+### キャッシュを作成しない
+
 #### ▼ `Cookie`ヘッダーやクエリストリングをオリジンにルーティングしつつ、キャッシュを作成しない場合
 
 上記の設定では、`Cookie`ヘッダーやクエリストリングをオリジンにルーティングしつつ、キャッシュを作成しないようにできない。
@@ -287,7 +293,29 @@ GoogleAnalyticsのキーはブラウザからAjaxでGoogleに送信されるも�
 
 <br>
 
-### ヘッダーキャッシュのヒット率向上
+### 有効期限
+
+#### ▼ CloudFront
+
+以下の設定で、レスポンスに付与するHTTPヘッダーを設定できる。
+
+- `Cache-Control`ヘッダー
+- `Expires`ヘッダー
+- TTLの設定
+
+> - https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorS3Origin.html#RequestS3Caching
+
+#### ▼ オリジン
+
+AWS S3の場合、メタデータからレスポンスに付与するHTTPヘッダーを設定できる。
+
+> - https://techblog.insightedge.jp/entry/aws-cf-s3-cache
+
+<br>
+
+## 04-02. ヒット率の向上
+
+### ヘッダーキャッシュによるヒット率向上
 
 #### ▼ ヒット率の向上について
 
@@ -295,19 +323,27 @@ GoogleAnalyticsのキーはブラウザからAjaxでGoogleに送信されるも�
 
 <br>
 
-### `Cookie`ヘッダーキャッシュのヒット率向上
+### `Cookie`ヘッダーキャッシュによるヒット率向上
 
 #### ▼ ヒット率の向上について
+
+AWS CloudFrontは、最初の転送時に、`Cookie`ヘッダーを使用してリジンからレスポンスされるファイルのキャッシュを作成する。
+
+次回、同じクエリストリングであった場合、キャッシュをレスポンスとして返信する。
+
+キャッシュ作成のルールを理解すれば、キャッシュのヒット率を向上させられる。
 
 > - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html
 
 <br>
 
-### クエリストリングキャッシュのヒット率向上
+### クエリストリングによるキャッシュのヒット率向上
 
 #### ▼ ヒット率の向上について
 
-AWS CloudFrontは、クエリストリングによってオリジンからレスポンスされるファイルのキャッシュを作成し、次回、同じクエリストリングであった場合、キャッシュをレスポンスとして返信する。
+AWS CloudFrontは、最初の転送時に、クエリストリングを使用してリジンからレスポンスされるファイルのキャッシュを作成する。
+
+次回、同じクエリストリングであった場合、キャッシュをレスポンスとして返信する。
 
 キャッシュ作成のルールを理解すれば、キャッシュのヒット率を向上させられる。
 
