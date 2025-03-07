@@ -34,9 +34,9 @@ IstioOperatorは執筆時点 (2025/03/06) で非推奨であり、代わりにis
 IstioOperator + Istiod + Istio IngressGatewayから、Istiod + Istio IngressGatewayにB/Gデプロイメントのように移行する。
 
 1. 既存のIstioOperatorを残したまま上記のチャート (istio-base、istiod、gateway) デプロイする。新旧でリソース名が同じだと衝突するかもないので、もし衝突したら名前を調整する。
-2. 新しいLoadBalancer Service由来のNLBやチャート由来のIstio IngressGatewayを経由して、データプレーンのマイクロサービスにリクエストを送信できることを確認する
-3. 古いLoadBalancer Service由来のNLBとIstoOperator由来のIstio IngressGatewayへの経路は遮断されていることを確認する。
-4. IstoOperatorを削除すると、IstioOperatorの管理するリソース (旧Istiod、旧Istio IngressGateway) は削除される。チャートで同等のリソース (名前は異なる) を作成しており、IstioOperatorの管理下のリソースは使用していないので問題ない
+2. 新しいLoadBalancer Service由来のNLBやチャート由来のistio-ingressgatewayを経由して、データプレーンのマイクロサービスにリクエストを送信できることを確認する
+3. 古いLoadBalancer Service由来のNLBとIstoOperator由来のistio-ingressgatewayへの経路は遮断されていることを確認する。
+4. IstoOperatorを削除すると、IstioOperatorの管理するリソース (旧Istiod、旧istio-ingressgateway、LoadBalancer Service) は削除される。ただ、チャートで同等のリソース (名前は異なる) を作成しており、IstioOperatorの管理下のリソースはすでに使用していないので問題ない
 
 #### ▼ ラベル置き換え
 
