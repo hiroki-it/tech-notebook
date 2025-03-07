@@ -103,7 +103,7 @@ def callback():
 > - https://docs.authlib.org/en/latest/client/flask.html#routes-for-authorization
 > - https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py
 
-#### ▼ アクセストークンをCookieヘッダーで運搬する場合
+#### ▼ アクセストークンを`Cookie`ヘッダーで運搬する場合
 
 フロントエンドアプリケーションがCSRまたはSSRの場合に採用できる。
 
@@ -145,7 +145,7 @@ def callback():
 
 ### ログアウト
 
-#### ▼ アクセストークンをCookieヘッダーで運搬する場合
+#### ▼ アクセストークンを`Cookie`ヘッダーで運搬する場合
 
 ```python
 from flask import url_for, redirect

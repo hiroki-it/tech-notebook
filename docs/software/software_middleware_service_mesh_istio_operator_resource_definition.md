@@ -27,8 +27,6 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 : `istioctl`コマンドでIstioOperatorを指定する。IstioOperatorは、デフォルト値は`istio-system`にIstioリソースを作成するようになっている。
 
-> - https://istio.io/latest/docs/setup/install/operator/
-
 ```bash
 $ istioctl operator init
 
@@ -37,6 +35,8 @@ Operator controller will watch namespaces: istio-system
 ✅ Istio operator installed
 ✅ Installation complete
 ```
+
+> - https://istio.io/latest/docs/setup/install/operator/
 
 `(2)`
 
