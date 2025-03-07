@@ -1630,7 +1630,7 @@ spec:
 
 #### ▼ 動的 (TCPリクエスト)
 
-ServiceEntryで、TCPリクエストとして扱われるホストヘッダー持ち独自プロトコル (例：MySQLなど) を受信した場合に、DNSキャッシュのドメインとIPアドレスを動的に紐づける。
+ServiceEntryで、TCPリクエストとして扱われるホストヘッダー持ち独自プロトコル (例：MySQLやRedis以外の非対応プロトコルなど) を受信した場合に、DNSキャッシュのドメインとIPアドレスを動的に紐づける。
 
 注意点として、Istio EgressGatewayを経由してServiceEntryに至る場合には、この設定が機能しない。
 
@@ -1638,11 +1638,11 @@ ServiceEntryで、TCPリクエストとして扱われるホストヘッダー�
 Pod ➡️ Istio EgressGateway ➡️ ServiceEntry
 ```
 
-Istio IngressGateway (厳密に言うとGateway) は、MySQLプロトコルをTCPプロコトルとして扱う。
+Istio IngressGateway (厳密に言うとGateway) は、独自プロトコルをTCPプロコトルとして扱う。
 
-そのため、受信したMySQLリクエストにホストヘッダーがあったとしてもこれを処理できない。
+そのため、受信した独自プロトコルリクエストにホストヘッダーがあったとしても、これを宛先に転送できない。
 
-結果的に、MySQLリクエストのポート番号だけで宛先 (例：ServiceEntry、外部サーバーなど) を決めてしまう。
+宛先が独自プロトコルリクエストのポート番号だけで宛先 (例：ServiceEntry、外部サーバーなど) を決めてしまう。
 
 同じポート番号で待ち受ける複数のServiceEntryがあると、`.spec.hosts`キーを設定していたとしても、誤った方のServiceEntryを選ぶ可能性がある。
 

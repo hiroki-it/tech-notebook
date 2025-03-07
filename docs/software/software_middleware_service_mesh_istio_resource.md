@@ -312,11 +312,11 @@ Istioサイドカーモードとアンビエントモードの間で、Istio Egr
 
 #### ▼ MySQL
 
-Istio EgressGateway (厳密に言うとGateway) は、MySQLプロトコルをTCPプロコトルとして扱う。
+Istio IngressGateway (厳密に言うとGateway) は、独自プロトコル (例：MySQLやRedis以外の非対応プロトコルなど) をTCPプロコトルとして扱う。
 
-そのため、受信したMySQLリクエストにホストヘッダーがあったとしてもこれを処理できない。
+そのため、受信した独自プロトコルリクエストにホストヘッダーがあったとしても、これを宛先に転送できない。
 
-結果的に、MySQLリクエストのポート番号だけで宛先 (例：ServiceEntry、外部サーバーなど) を決めてしまう。
+宛先が独自プロトコルリクエストのポート番号だけで宛先 (例：ServiceEntry、外部サーバーなど) を決めてしまう。
 
 > - https://github.com/istio/istio/discussions/51942#discussioncomment-9989752
 
