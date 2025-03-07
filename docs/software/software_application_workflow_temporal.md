@@ -17,7 +17,7 @@ description: Temporal＠ワークフローの知見を記録しています。
 
 ### アーキテクチャ
 
-Temporalは、Temporalクライアント、Temporalサーバー、ステート用データベース、Temporalワーカー、からなる。
+Temporalは、Temporalクライアント、Temporalサーバー、ステート用DB、Temporalワーカー、からなる。
 
 ![temporal_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_architecture.png)
 
@@ -39,30 +39,30 @@ Temporalクライアントは、Temporalサーバーをコールし、Temporal�
 
 ### Temporalサーバー
 
-Temporalサーバーは、内臓するメッセージ仲介システムを操作してワークフローの現在のステートを管理し、またステートの履歴をデータベースに永続化する。
+Temporalサーバーは、内臓するメッセージ仲介システムを操作してワークフローの現在のステートを管理し、またステートの履歴をDBに永続化する。
 
 > - https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d
 > - https://temporal.io/blog/sergey-inversion-of-execution
 
 <br>
 
-### ステート用データベース
+### ステート用DB
 
-#### ▼ ステート用データベース
+#### ▼ ステート用DB
 
-ステート用データベースは、Sagaのステートの履歴を保管する。
+ステート用DBは、Sagaのステートの履歴を保管する。
 
 Temporalサーバーで処理中に障害が起こった場合でも、ワークフローの途中から処理を実行できるようにする。
 
 #### ▼ PostgreSQLの場合
 
-主に、`temporal`データベースと`temporal_visibility`を使用する。
+主に、`temporal`DBと`temporal_visibility`を使用する。
 
 ```bash
 $ psql -U temporal -h temporal-postgresql -p 5432 -d temporal
 
-# 現在はtemporalデータベース
-# データベースの一覧
+# 現在はtemporal DB
+# DBの一覧
 temporal=# \l
 
                                       List of databases
@@ -77,7 +77,7 @@ temporal=# \l
  temporal_visibility | temporal | UTF8     | en_US.utf8 | en_US.utf8 |
 ```
 
-`temporal`データベースには、例えば以下のテーブルがある。(SQLスキーマを参照)
+`temporal`DBには、例えば以下のテーブルがある。(SQLスキーマを参照)
 
 - namespaces
 - namespace_metadata
@@ -91,7 +91,7 @@ temporal=# \l
 ```bash
 $ psql -U temporal -h temporal-postgresql -p 5432 -d temporal
 
-# 現在のデータベースのテーブル一覧
+# 現在のDBのテーブル一覧
 temporal=# \dt
                    List of relations
  Schema |           Name            | Type  |  Owner
@@ -106,7 +106,7 @@ temporal=# \dt
 
 #### ▼ MySQLの場合
 
-主に、`temporal`データベースと`temporal_visibility`を使用する。
+主に、`temporal`DBと`temporal_visibility`を使用する。
 
 > - https://github.com/temporalio/temporal/blob/main/schema/mysql/v8/temporal/schema.sql
 > - https://github.com/temporalio/temporal/blob/main/schema/postgresql/v12/visibility/schema.sql
@@ -268,7 +268,7 @@ func startWorkflowHandler(w http.ResponseWriter, r *http.Request, temporalClient
 > - https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/gateway/main.go
 > - https://docs.temporal.io/develop/go/temporal-clients
 
-#### ▼ Temporalサーバーとステート用データベース
+#### ▼ Temporalサーバーとステート用DB
 
 制御が反転しているため、Temporalサーバーはユーザーが何かを実装する必要はない。
 

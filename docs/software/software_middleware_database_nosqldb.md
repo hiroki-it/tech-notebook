@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】NoSQL＠データベース系ミドルウェア
-description: NoSQL＠データベース系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】NoSQL＠DB系ミドルウェア
+description: NoSQL＠DB系ミドルウェアの知見を記録しています。
 ---
 
-# NoSQL＠データベース系ミドルウェア
+# NoSQL＠DB系ミドルウェア
 
 ## はじめに
 

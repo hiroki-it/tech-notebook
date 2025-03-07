@@ -108,9 +108,9 @@ type User struct {
 
 > - https://gorm.io/docs/models.html#embedded_struct
 
-#### ▼ データベースへのマッピング
+#### ▼ DBへのマッピング
 
-Gormは、構造体をデータベースに自動的にマッピングする。
+Gormは、構造体をDBに自動的にマッピングする。
 
 明示的に設定しない限り、スネークケースに変換して自動的にマッピングする。
 

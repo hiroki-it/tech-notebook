@@ -17,14 +17,14 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 ### CVEとは
 
-報告された脆弱性レポートについて、一意な番号をつけて管理したデータベースのこと。
+報告された脆弱性レポートについて、一意な番号をつけて管理したDBのこと。
 
 > - https://www.nic.ad.jp/ja/basics/terms/cve.html
 > - https://www.toyo.co.jp/onetech_blog/articles/detail/id=36064
 
 <br>
 
-### CVEのデータベースの種類
+### CVEのDBの種類
 
 #### ▼ GitHub
 
@@ -48,13 +48,13 @@ GitLab上のOSSのCVEは、GitLab Advisory Databaseで検索できる。
 
 #### ▼ RedHat
 
-RedHat上のOSSのCVEは、RedHat CVEデータベースで検索できる。
+RedHat上のOSSのCVEは、RedHat CVEDBで検索できる。
 
 > - https://access.redhat.com/security/security-updates/cve
 
 <br>
 
-### その他のデータベース
+### その他のDB
 
 - NVD
 - ICAT

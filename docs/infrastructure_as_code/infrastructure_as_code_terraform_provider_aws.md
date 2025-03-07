@@ -1475,7 +1475,7 @@ resource "aws_rds_global_cluster" "foo" {
 
   lifecycle {
     ignore_changes = [
-      // グローバルクラスターは、既存クラスターからデータベース名の設定を継承するため、変更を無視する
+      // グローバルクラスターは、既存クラスターからDB名の設定を継承するため、変更を無視する
       database_name,
     ]
   }

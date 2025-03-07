@@ -19,7 +19,7 @@ description: Redshift＠AWSリソースの知見を記録しています。
 
 データウェアハウスとして働く。
 
-データベースよりも柔軟性の高い保管形式で、データレイク (例：AWS S3など) のデータを処理した上で管理できる。
+DBよりも柔軟性の高い保管形式で、データレイク (例：AWS S3など) のデータを処理した上で管理できる。
 
 > - https://aws.amazon.com/jp/big-data/datalakes-and-analytics/datalakes/?nc=sn&loc=4
 > - https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-a-data-lake#:~:text=risks%20more%20efficiently.-,What's%20the%20difference%20between%20a%20data%20lake%20and%20a%20data,as%20specific%20BI%20use%20cases.

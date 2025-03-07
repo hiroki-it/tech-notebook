@@ -322,7 +322,7 @@ drwxr-xr-x 1 root  root      4096 Dec  2 11:24 ..
 -rw-r--r-- 1 mysql mysql     1112 Dec 17 09:54 ca.pem
 -rw-r--r-- 1 mysql mysql     1112 Dec 17 09:54 client-cert.pem
 -rw------- 1 mysql mysql     1680 Dec 17 09:54 client-key.pem
-drwxr-x--- 2 mysql mysql     4096 Dec 17 10:23 foo_db # fooDBのデータベースファイルが管理されている
+drwxr-x--- 2 mysql mysql     4096 Dec 17 10:23 foo_db # foo DBのDBファイルが管理されている
 -rw-r----- 1 mysql mysql     1352 Dec 17 09:54 ib_buffer_pool
 -rw-r----- 1 mysql mysql 50331648 Dec 17 10:23 ib_logfile0
 -rw-r----- 1 mysql mysql 50331648 Dec 17 09:54 ib_logfile1

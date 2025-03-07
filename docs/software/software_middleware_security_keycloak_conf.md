@@ -57,9 +57,9 @@ db=postgres
 
 #### ▼ Databaseとは
 
-認証情報のデータベース (例：MySQL、PostgreSQLなど) を使用できる。
+認証情報のDB (例：MySQL、PostgreSQLなど) を使用できる。
 
-Keycloakと各データベースのバージョンの相性を確認しておく必要がある。
+Keycloakと各DBのバージョンの相性を確認しておく必要がある。
 
 > - https://access.redhat.com/articles/7033107
 
@@ -68,7 +68,7 @@ Keycloakと各データベースのバージョンの相性を確認しておく
 | 変数                 | 値の例                                          | 説明                                                                                                    |
 | -------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | `KC_DB`              | `mysql`                                         | Keycloakで使用するDBベンダーを設定する。 開発環境では、`dev-file`とするとファイルシステムを使用できる。 |
-| `KC_DB_URL`          | `jdbc:mysql://<ホスト名>:3306/<データベース名>` |                                                                                                         |
+| `KC_DB_URL`          | `jdbc:mysql://<ホスト名>:3306/<DB名>` |                                                                                                         |
 | `KC_DB_URL_DATABASE` | `keycloak`                                      |                                                                                                         |
 | `KC_DB_USERNAME`     | `keycloak`                                      |                                                                                                         |
 | `KC_DB_PASSWORD`     | `password`                                      |                                                                                                         |

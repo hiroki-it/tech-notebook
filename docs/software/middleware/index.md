@@ -48,7 +48,7 @@ hide:
 
 <br>
 
-### リレーショナルデータベース系
+### リレーショナルDB系
 
 - #### <u>︎RDBMS</u>
 
@@ -89,7 +89,7 @@ hide:
 
 <br>
 
-### 時系列データベース系
+### 時系列DB系
 
 - #### [TSDB](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb.html)
 

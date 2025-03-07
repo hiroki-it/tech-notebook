@@ -88,7 +88,7 @@ VictoriaMetricsをメトリクス監視バックエンドとして使用する�
 # インデックスDBを読みこむ
 2024-11-25T11:47:58.543Z   info   VictoriaMetrics/lib/mergeset/table.go:260                            opening table "/var/lib/victoria-metrics/data/indexdb/180958B880A8F14D"...
 2024-11-25T11:47:58.549Z   info   VictoriaMetrics/lib/mergeset/table.go:295                            table "/var/lib/victoria-metrics/data/indexdb/180958B880A8F14D" has been opened in 0.006 seconds; partsCount: 0; blocksCount: 0, itemsCount: 0; sizeBytes: 0
-# データベースを読み込む
+# DBを読み込む
 2024-11-25T11:47:58.550Z   info   VictoriaMetrics/app/vmstorage/main.go:101                            successfully opened storage "/var/lib/victoria-metrics/data" in 0.030 seconds; partsCount: 0; blocksCount: 0; rowsCount: 0; sizeBytes: 0
 # ロールアップを実行する
 2024-11-25T11:47:58.553Z   info   VictoriaMetrics/app/vmselect/promql/rollup_result_cache.go:99        loading rollupResult cache from "/var/lib/victoria-metrics/data/cache/rollupResult"...

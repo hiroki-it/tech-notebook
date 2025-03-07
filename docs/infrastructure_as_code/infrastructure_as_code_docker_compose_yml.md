@@ -276,7 +276,7 @@ ff02::2 ip6-allrouters
 
 トラフィックが処理可能になったらコンテナのビルドを終了し、次のコンテナのビルドを始める。
 
-データベースのような、コンテナの起動後にトラフィックが処理可能になるまで時間がかかるツールで役立つ。
+DBのような、コンテナの起動後にトラフィックが処理可能になるまで時間がかかるツールで役立つ。
 
 `wait`コマンドを実行することに相当する。
 
@@ -913,7 +913,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
       # docker-entrypoint-initdb.dディレクトリにバインドマウントを実行する。
-      - ./infra/docker/mysql/init:/docker-entrypoint-initdb.d
+      - ./infra/docker/mysql/initdb:/docker-entrypoint-initdb.d
     environment:
       MYSQL_ROOT_PASSWORD: foo
       MYSQL_DATABASE: foo
@@ -929,19 +929,18 @@ volumes:
   db_data:
 ```
 
-```bash
-$ docker volume ls
-                                                                                                                                                                                      (minikube/default)
-DRIVER    VOLUME NAME
-local     mysql_db_data
-```
-
 また、`docker-entrypoint-initdb.d`ディレクトリ配下に配置するファイルとして、以下の`sql`ファイルを作成する。
 
-このファイルでは、`test`というDBを作成するためのSQLを実装する。
+```yaml
+# initdbに複数のsqlファイルを置く
+initdb
+├── foo.sql
+└── bar.sql
+```
+
+このSQLでは、`test`というDBを作成し、ユーザーが`test`DBに接続できるようにする。
 
 ```sql
--- /infra/docker/mysql/initにSQLファイルを配置する。
 CREATE DATABASE IF NOT EXISTS `test` COLLATE 'utf8mb4_general_ci' CHARACTER SET 'utf8mb4';
 GRANT ALL ON *.* TO 'foo'@'%' ;
 ```

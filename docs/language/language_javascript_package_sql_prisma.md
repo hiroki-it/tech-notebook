@@ -23,7 +23,7 @@ PrismaClient (JavaScriptパッケージ) は、クエリエンジン (バイナ�
 
 PrismaClientは、クエリエンジンに切断リクエストを送信する。
 
-クエリエンジンは、データベースとの接続を破棄する。
+クエリエンジンは、DBとの接続を破棄する。
 
 ![architecture_prisma](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/architecture_prisma.png)
 
@@ -54,7 +54,7 @@ $ yarn upgrade prisma<バージョン>
 
 Prismaスキーマからクライアントを作成する。
 
-クライアントを使用して、データベースに接続できる。
+クライアントを使用して、DBに接続できる。
 
 マイグレーションや初期データを挿入前に必要である。
 
@@ -124,7 +124,7 @@ $ yarn prisma db seed
 
 #### ▼ datasourceとは
 
-データベース情報を設定する。
+DB情報を設定する。
 
 #### ▼ url
 
