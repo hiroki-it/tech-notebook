@@ -308,6 +308,20 @@ Istioサイドカーモードとアンビエントモードの間で、Istio Egr
 
 <br>
 
+### 独自プロトコルの扱い
+
+#### ▼ MySQL
+
+Istio EgressGateway (厳密に言うとGateway) は、MySQLプロトコルをTCPプロコトルとして扱う。
+
+そのため、受信したMySQLリクエストにホストヘッダーがあったとしてもこれを処理できない。
+
+結果的に、MySQLリクエストのポート番号だけで宛先 (例：ServiceEntry、外部サーバーなど) を決めてしまう。
+
+> - https://github.com/istio/istio/discussions/51942#discussioncomment-9989752
+
+<br>
+
 ## 03. VirtualService
 
 ### VirtualServiceとは

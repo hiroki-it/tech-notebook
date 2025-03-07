@@ -1562,7 +1562,7 @@ spec:
 
 #### ▼ 固定 (HTTPリクエスト)
 
-HTTPリクエストで、DNSキャッシュのドメインとIPアドレスを固定で紐づける場合、以下である。
+ServiceEntryでHTTPリクエストを受信した場合に、DNSキャッシュのドメインとIPアドレスを固定で紐づける。
 
 ```yaml
 apiVersion: v1
@@ -1595,7 +1595,7 @@ spec:
 
 #### ▼ 動的 (HTTPリクエスト)
 
-HTTPリクエストで、DNSキャッシュのドメインとIPアドレスを動的に紐づける場合、以下である。
+ServiceEntryでHTTPリクエストを受信した場合に、DNSキャッシュのドメインとIPアドレスを動的に紐づける。
 
 ```yaml
 apiVersion: v1
@@ -1630,11 +1630,19 @@ spec:
 
 #### ▼ 動的 (TCPリクエスト)
 
-TCPリクエストで、DNSキャッシュのドメインとIPアドレスを動的に紐づける場合、以下である。
+ServiceEntryで、TCPリクエストとして扱われるホストヘッダー持ち独自プロトコル (例：MySQLなど) を受信した場合に、DNSキャッシュのドメインとIPアドレスを動的に紐づける。
 
-注意点として、Istio EgressGatewayを経由してServiceEntryに至る場合には、動的なTCPリクエストを使用できない。
+注意点として、Istio EgressGatewayを経由してServiceEntryに至る場合には、この設定が機能しない。
 
-Istio EgressGateway (厳密に言うとGateway) で`L7`のホストヘッダーを処理できず、受信したリクエストのポート番号だけで宛先のServiceEntryを決めてしまう。
+```
+Pod ➡️ Istio EgressGateway ➡️ ServiceEntry
+```
+
+Istio IngressGateway (厳密に言うとGateway) は、MySQLプロトコルをTCPプロコトルとして扱う。
+
+そのため、受信したMySQLリクエストにホストヘッダーがあったとしてもこれを処理できない。
+
+結果的に、MySQLリクエストのポート番号だけで宛先 (例：ServiceEntry、外部サーバーなど) を決めてしまう。
 
 同じポート番号で待ち受ける複数のServiceEntryがあると、`.spec.hosts`キーを設定していたとしても、誤った方のServiceEntryを選ぶ可能性がある。
 
@@ -1681,7 +1689,7 @@ spec:
 
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#external-tcp-services-without-vips
 > - https://github.com/istio/istio/discussions/51942#discussioncomment-9989752
-> - https://github.com/istio/istio/issues/42520#issuecomment-1360461382
+> - https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters
 
 <br>
 
