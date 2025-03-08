@@ -133,6 +133,8 @@ default_home_dashboard_path = /var/lib/grafana/dashboards/local/home.json
     [
       {
         "datasource": null,
+        # 全体の横幅は24
+        # パネルで分割する場合、w値を割る
         "gridPos": {"h": 36, "w": 24, "x": 0, "y": 0},
         "id": 3,
         "links": [],
