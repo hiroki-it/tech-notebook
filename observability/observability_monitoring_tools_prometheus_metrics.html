@@ -24930,6 +24930,30 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. プラクティス
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. プラクティス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#containerpod" class="md-nav__link">
+    <span class="md-ellipsis">
+      container!="POD"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -26014,6 +26038,30 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. プラクティス
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. プラクティス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#containerpod" class="md-nav__link">
+    <span class="md-ellipsis">
+      container!="POD"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -26147,21 +26195,21 @@ aggregator_unavailable_apiservice<span class="o">{</span><span class="nv">job</s
 <p><br></p>
 <h3 id="kubelet">kubeletから収集したデータポイント<a class="headerlink" href="#kubelet" title="Permanent link">&para;</a></h3>
 <h4 id="container_cpu_usage_seconds_total">▼ container_cpu_usage_seconds_total<a class="headerlink" href="#container_cpu_usage_seconds_total" title="Permanent link">&para;</a></h4>
-<p>CPUの使用時間を表す。</p>
-<p>インターネットではこれをCPU使用率と言っている記事が多くあるが、このメトリクスだけではCPU使用率の分子を表すだけである。</p>
+<p>コンテナのCPUの使用時間を表す。</p>
+<p>インターネットではこれをCPU使用率と言っている記事が多くあるが、このメトリクスだけではコンテナのCPU使用率の分子を表すだけである。</p>
 <div class="highlight"><pre><span></span><code>container_cpu_usage_seconds_total
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># PodのCPU使用率</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># コンテナのPod単位のCPU使用率</span>
 <span class="c1"># 実際値 / クラスター全体値</span>
-sum<span class="o">(</span>rate<span class="o">(</span>container_cpu_usage_seconds_total<span class="o">{</span>container!<span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">}[</span>1m<span class="o">]))</span><span class="w"> </span>/<span class="w"> </span>sum<span class="o">(</span>machine_cpu_cores<span class="o">)</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span>
+sum<span class="o">(</span>rate<span class="o">(</span>container_cpu_usage_seconds_total<span class="o">{</span>container!<span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">}[</span>1m<span class="o">]))</span><span class="w">  </span>by<span class="w"> </span><span class="o">(</span>pod<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>sum<span class="o">(</span>machine_cpu_cores<span class="o">)</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># PodのCPU使用率</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># コンテナのPod単位のCPU使用率</span>
 <span class="c1"># 実際値 / 下限値 (.spec.containers[*].resources.requestsキー)</span>
 sum<span class="o">(</span>rate<span class="o">(</span>container_cpu_usage_seconds_total<span class="o">{</span>container!<span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">}[</span>5m<span class="o">]))</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>pod<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>sum<span class="o">(</span>kube_pod_container_resource_requests<span class="o">{</span><span class="nv">resouce</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="o">})</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>pod<span class="o">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># Podのメモリ使用率</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># コンテナのPod単位のメモリ使用率</span>
 <span class="c1"># 実際値 / 上限値 (.spec.containers[*].resources.limitsキー)</span>
-sum<span class="o">(</span>container_memory_working_set_bytes<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>sum<span class="o">(</span>kube_pod_container_resource_limits<span class="o">{</span><span class="nv">resource</span><span class="o">=</span><span class="s2">&quot;memory&quot;</span><span class="o">})</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span>
+sum<span class="o">(</span>container_memory_working_set_bytes<span class="o">)</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>pod<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>sum<span class="o">(</span>kube_pod_container_resource_limits<span class="o">{</span><span class="nv">resource</span><span class="o">=</span><span class="s2">&quot;memory&quot;</span><span class="o">})</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>pod<span class="o">)</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -26170,12 +26218,20 @@ sum<span class="o">(</span>container_memory_working_set_bytes<span class="o">)</
 </ul>
 </blockquote>
 <h4 id="container_memory_working_set_bytes">▼ container_memory_working_set_bytes<a class="headerlink" href="#container_memory_working_set_bytes" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># Podのメモリ使用率 (実際値 / request値)</span>
-sum<span class="o">(</span>container_memory_working_set_bytes<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>sum<span class="o">(</span>kube_pod_container_resource_requests<span class="o">{</span><span class="nv">resource</span><span class="o">=</span><span class="s2">&quot;memory&quot;</span><span class="o">})</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># コンテナのPod単位のメモリ使用率</span>
+<span class="c1"># 実際値 / 下限値 (.spec.containers[*].resources.requestsキー)</span>
+sum<span class="o">(</span>container_memory_working_set_bytes<span class="o">)</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>pod<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>sum<span class="o">(</span>kube_pod_container_resource_requests<span class="o">{</span><span class="nv">resource</span><span class="o">=</span><span class="s2">&quot;memory&quot;</span><span class="o">})</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>pod<span class="o">)</span><span class="w">  </span>*<span class="w"> </span><span class="m">100</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># Podのメモリ使用率 (実際値 / limit値)</span>
-sum<span class="o">(</span>container_memory_working_set_bytes<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>sum<span class="o">(</span>kube_pod_container_resource_limits<span class="o">{</span><span class="nv">resource</span><span class="o">=</span><span class="s2">&quot;memory&quot;</span><span class="o">})</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># コンテナのPod単位のメモリ使用率</span>
+<span class="c1"># 実際値 / 上限値 (.spec.containers[*].resources.limitsキー)</span>
+sum<span class="o">(</span>container_memory_working_set_bytes<span class="o">)</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>pod<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>sum<span class="o">(</span>kube_pod_container_resource_limits<span class="o">{</span><span class="nv">resource</span><span class="o">=</span><span class="s2">&quot;memory&quot;</span><span class="o">})</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>pod<span class="o">)</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span><span class="w"> </span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html">https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html</a></li>
+<li><a href="https://aws.amazon.com/jp/blogs/news/monitoring-amazon-eks-on-aws-fargate-using-prometheus-and-grafana/">https://aws.amazon.com/jp/blogs/news/monitoring-amazon-eks-on-aws-fargate-using-prometheus-and-grafana/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="03">03. ディメンション<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_5">指定方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
@@ -26190,6 +26246,17 @@ sum<span class="o">(</span>container_memory_working_set_bytes<span class="o">)</
 <p>NodeのIPアドレスとポート番号を表す。</p>
 <h4 id="job">▼ job<a class="headerlink" href="#job" title="Permanent link">&para;</a></h4>
 <p><code>scrape_configs</code>キー配下の<code>job_name</code>キー名を表す。</p>
+<p><br></p>
+<h2 id="04">04. プラクティス<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="containerpod">container!="POD"<a class="headerlink" href="#containerpod" title="Permanent link">&para;</a></h3>
+<p>一時的に停止しているコンテナを除ける。</p>
+<div class="highlight"><pre><span></span><code>sum<span class="w"> </span><span class="o">(</span>rate<span class="w"> </span><span class="o">(</span>container_cpu_usage_seconds_total<span class="o">{</span>image!<span class="o">=</span><span class="s2">&quot;&quot;</span>,container!<span class="o">=</span><span class="s2">&quot;POD&quot;</span>,pod<span class="o">=</span>~<span class="s2">&quot;^</span><span class="nv">$Deployment</span><span class="s2">.*</span>$<span class="s2">&quot;</span><span class="o">}[</span>1m<span class="o">]))</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>container,<span class="w"> </span>pod<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>sum<span class="o">(</span>kube_pod_container_resource_limits<span class="o">{</span><span class="nv">resource</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span>,container!<span class="o">=</span><span class="s2">&quot;POD&quot;</span>,pod<span class="o">=</span>~<span class="s2">&quot;^</span><span class="nv">$Deployment</span><span class="s2">.*</span>$<span class="s2">&quot;</span><span class="o">})</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>container,<span class="w"> </span>pod<span class="o">)</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/68744740/12771072">https://stackoverflow.com/a/68744740/12771072</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 
@@ -26211,7 +26278,7 @@ sum<span class="o">(</span>container_memory_working_set_bytes<span class="o">)</
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月8日 20:44:55">2025-03-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月9日 00:37:13">2025-03-09</span>
   </span>
 
     
