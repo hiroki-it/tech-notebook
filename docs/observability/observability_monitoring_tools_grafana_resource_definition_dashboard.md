@@ -129,8 +129,7 @@ default_home_dashboard_path = /var/lib/grafana/dashboards/local/home.json
   "graphTooltip": 0,
   "id": null,
   "links": [],
-  "panels":
-    [
+  "panels": [
       {
         "datasource": null,
         # 全体の横幅は24

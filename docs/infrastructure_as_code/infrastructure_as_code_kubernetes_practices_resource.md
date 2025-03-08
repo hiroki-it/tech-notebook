@@ -1007,7 +1007,7 @@ Guaranteed QoSでは、上限 (`.spec.containers[*].resources.limits`) = 下限 
 
 ### ■ ハードウェアリソースを瞬間的に要求する場合はBurstableなQoSにする
 
-ハードウェアリソースを瞬間的に要求するコンテナ (例：バッチ) では、BurstableなQoSにする。
+ハードウェアリソースを瞬間的に要求するコンテナ (例：バッチ、起動時に特にハードウェアを要求するJVM) では、BurstableなQoSにする。
 
 Guaranteed QoSでは、上限 (`.spec.containers[*].resources.limits`) > 下限 (`.spec.containers[*].resources.requests`) のように、CPUとメモリを設定する。
 
@@ -1027,9 +1027,12 @@ Guaranteed QoSでは、上限 (`.spec.containers[*].resources.limits`) > 下限 
 
 CPUの上限 (`.spec.containers[*].resources.limits`) だけは設定しないようにし、BurstableなQoSにする方法もある。
 
+ただ、上限を設定した方が監視しやすく、エラーの原因もわかりやすいため、CPUの上限も設定がおすすめである。
+
 > - https://home.robusta.dev/blog/stop-using-cpu-limits
 > - https://medium.com/directeam/kubernetes-resources-under-the-hood-part-3-6ee7d6015965
 > - https://www.amazon.co.jp/dp/4814400888
+> - https://www.perfectscale.io/blog/kubernetes-cpu-limits
 
 <br>
 

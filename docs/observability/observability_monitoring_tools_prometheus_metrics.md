@@ -142,44 +142,36 @@ container_cpu_usage_seconds_total
 ```
 
 ```bash
-# コンテナのPod単位のCPU使用率
-# 実際値 / クラスター全体値
-sum(rate(container_cpu_usage_seconds_total{container!=""}[1m]))  by (pod) / sum(machine_cpu_cores) * 100
+# Pod単位のCPU使用率
+# メモリ実際値 / 下限値 (.spec.containers[*].resources.requestsキー)
+sum(rate(container_cpu_usage_seconds_total{container!=""}[5m])) by (pod) / sum(kube_pod_container_resource_requests{resouce="cpu"}) by (pod) * 100
 ```
 
 ```bash
-# コンテナのPod単位のCPU使用率
-# 実際値 / 下限値 (.spec.containers[*].resources.requestsキー)
-sum(rate(container_cpu_usage_seconds_total{container!=""}[5m])) by (pod) / sum(kube_pod_container_resource_requests{resouce="cpu"}) by (pod)
+# Pod単位のCPU使用率
+# メモリ実際値 / 下限値 (.spec.containers[*].resources.limitsキー)
+sum(rate(container_cpu_usage_seconds_total{container!=""}[5m])) by (pod) / sum(kube_pod_container_resource_limits{resouce="cpu"}) by (pod) * 100
 ```
 
-```bash
-# コンテナのPod単位のメモリ使用率
-# 実際値 / 上限値 (.spec.containers[*].resources.limitsキー)
-sum(container_memory_working_set_bytes) by (pod) / sum(kube_pod_container_resource_limits{resource="memory"}) by (pod) * 100
-```
-
-> - https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
 > - https://aws.amazon.com/jp/blogs/news/monitoring-amazon-eks-on-aws-fargate-using-prometheus-and-grafana/
+> - https://signoz.io/guides/prometheus-queries-to-get-cpu-and-memory-usage-in-kubernetes-pods/#how-to-query-cpu-usage-in-kubernetes-pods-with-prometheus
 
 #### ▼ container_memory_working_set_bytes
 
 ```bash
-# コンテナのPod単位のメモリ使用率
-# 実際値 / 下限値 (.spec.containers[*].resources.requestsキー)
+# Pod単位のメモリ使用率
+# メモリ実際値 / メモリ下限値 (.spec.containers[*].resources.requestsキー)
 sum(container_memory_working_set_bytes) by (pod) / sum(kube_pod_container_resource_requests{resource="memory"}) by (pod)  * 100
 ```
 
 ```bash
-# コンテナのPod単位のメモリ使用率
-# 実際値 / 上限値 (.spec.containers[*].resources.limitsキー)
-sum(container_memory_working_set_bytes) by (pod) / sum(kube_pod_container_resource_limits{resource="memory"}) by (pod) * 100 
+# Pod単位のメモリ使用率
+# メモリ実際値 / メモリ上限値 (.spec.containers[*].resources.limitsキー)
+sum(container_memory_working_set_bytes) by (pod) / sum(kube_pod_container_resource_limits{resource="memory"}) by (pod) * 100
 ```
 
-
-> - https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
 > - https://aws.amazon.com/jp/blogs/news/monitoring-amazon-eks-on-aws-fargate-using-prometheus-and-grafana/
-
+> - https://signoz.io/guides/prometheus-queries-to-get-cpu-and-memory-usage-in-kubernetes-pods/#how-to-query-cpu-usage-in-kubernetes-pods-with-prometheus
 
 <br>
 
@@ -222,8 +214,5 @@ sum (rate (container_cpu_usage_seconds_total{image!="",container!="POD",pod=~"^$
 ```
 
 > - https://stackoverflow.com/a/68744740/12771072
-
-
-
 
 <br>
