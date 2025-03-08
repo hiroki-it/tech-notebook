@@ -983,7 +983,7 @@ Pod内のコンテナが要求する合計CPU/メモリに見合ったCPU/メモ
 
 ## ハードウェアリソース要求量の上限下限値は設定する
 
-ハードウェアリソース要求量の上限 (`limits`) / 下限 (`requests`) 値を設定しないと、コンテナはハードウェアリソースを自由に要求してしまい、Nodeのハードウェアリソース不足になりかねない。
+ハードウェアリソース要求量の上限 (`.spec.containers[*].resources.limits`) / 下限 (`.spec.containers[*].resources.requests`) 値を設定しないと、コンテナはハードウェアリソースを自由に要求してしまい、Nodeのハードウェアリソース不足になりかねない。
 
 `.spec.containers[*].resources`キーを使用すれば、コンテナのハードウェアリソース要求量の上限下限値を設定できる。
 
@@ -993,9 +993,9 @@ Pod内のコンテナが要求する合計CPU/メモリに見合ったCPU/メモ
 
 ハードウェアリソースを恒常的に要求するコンテナ (例：アプリ) では、Guaranteed QoSにする。
 
-Guaranteed QoSでは、上限 (`limits`) = 下限 (`requests`) のように、CPUとメモリを設定する。
+Guaranteed QoSでは、上限 (`.spec.containers[*].resources.limits`) = 下限 (`.spec.containers[*].resources.requests`) のように、CPUとメモリを設定する。
 
-上限 (`limits`) と下限 (`requests`) の設定の両方または一方を省略すると、自動的にGuaranteedになる。
+上限 (`.spec.containers[*].resources.limits`) と下限 (`.spec.containers[*].resources.requests`) の設定の両方または一方を省略すると、自動的にGuaranteedになる。
 
 コンテナが一定量のハードウェアリソースを要求し続けたとしても、無制限 (Nodeの空きリソース分) にハードウェアリソースを提供し、要求に耐えられるようにする。
 
@@ -1009,15 +1009,15 @@ Guaranteed QoSでは、上限 (`limits`) = 下限 (`requests`) のように、CP
 
 ハードウェアリソースを瞬間的に要求するコンテナ (例：バッチ) では、BurstableなQoSにする。
 
-Guaranteed QoSでは、上限 (`limits`) > 下限 (`requests`) のように、CPUとメモリを設定する。
+Guaranteed QoSでは、上限 (`.spec.containers[*].resources.limits`) > 下限 (`.spec.containers[*].resources.requests`) のように、CPUとメモリを設定する。
 
-上限 (`limits`) を設定しないと上限が無制限になるため、下限 (`requests`) のみを設定した場合もBurstableである。
+上限 (`.spec.containers[*].resources.limits`) を設定しないと上限が無制限になるため、下限 (`.spec.containers[*].resources.requests`) のみを設定した場合もBurstableである。
 
 コンテナがハードウェアリソース要求量が瞬間的に上昇させても、これに耐えられるようにする。
 
 全てのコンテナをGuaranteed QoSにするとハードウェアのコストが高くなるため、部分的にBurstableなQoSにするとよい。
 
-ただし、上限 (`limits`) を高くしすぎると、割り当て可能な全体量を超えてしまう (オーバーコミットする) ため、上限は慎重に設定する。
+ただし、上限 (`.spec.containers[*].resources.limits`) を高くしすぎると、割り当て可能な全体量を超えてしまう (オーバーコミットする) ため、上限は慎重に設定する。
 
 補足として、BurstableなQoSのPodはスケジューリングの優先度がGuaranteedの次に高く、Node-pressure Evictionが発生した場合には、Guaranteedの次に退避する。
 
@@ -1025,7 +1025,7 @@ Guaranteed QoSでは、上限 (`limits`) > 下限 (`requests`) のように、CP
 
 ### ■ CPUの上限を設定しないBurstableなQoSにする
 
-CPUの上限 (`limits`) だけは設定しないようにし、BurstableなQoSにする方法もある。
+CPUの上限 (`.spec.containers[*].resources.limits`) だけは設定しないようにし、BurstableなQoSにする方法もある。
 
 > - https://home.robusta.dev/blog/stop-using-cpu-limits
 > - https://medium.com/directeam/kubernetes-resources-under-the-hood-part-3-6ee7d6015965

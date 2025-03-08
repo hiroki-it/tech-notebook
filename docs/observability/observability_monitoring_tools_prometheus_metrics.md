@@ -135,11 +135,44 @@ aggregator_unavailable_apiservice{job="apiserver", name="v1.metrics.eks.amazonaw
 
 CPUの使用時間を表す。
 
+インターネットではこれをCPU使用率と言っている記事が多くあるが、このメトリクスだけではCPU使用率の分子を表すだけである。
+
 ```bash
 container_cpu_usage_seconds_total
 ```
 
+```bash
+# PodのCPU使用率
+# 実際値 / クラスター全体値
+sum(rate(container_cpu_usage_seconds_total{container!=""}[1m])) / sum(machine_cpu_cores) * 100
+```
+
+```bash
+# PodのCPU使用率
+# 実際値 / 下限値 (.spec.containers[*].resources.requestsキー)
+sum(rate(container_cpu_usage_seconds_total{container!=""}[5m])) by (pod) / sum(kube_pod_container_resource_requests{resouce="cpu"}) by (pod)
+```
+
+```bash
+# Podのメモリ使用率
+# 実際値 / 上限値 (.spec.containers[*].resources.limitsキー)
+sum(container_memory_working_set_bytes) / sum(kube_pod_container_resource_limits{resource="memory"}) * 100
+```
+
 > - https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
+> - https://aws.amazon.com/jp/blogs/news/monitoring-amazon-eks-on-aws-fargate-using-prometheus-and-grafana/
+
+#### ▼ container_memory_working_set_bytes
+
+```bash
+# Podのメモリ使用率 (実際値 / request値)
+sum(container_memory_working_set_bytes) / sum(kube_pod_container_resource_requests{resource="memory"}) * 100
+```
+
+```bash
+# Podのメモリ使用率 (実際値 / limit値)
+sum(container_memory_working_set_bytes) / sum(kube_pod_container_resource_limits{resource="memory"}) * 100
+```
 
 <br>
 

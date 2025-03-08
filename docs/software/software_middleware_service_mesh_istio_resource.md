@@ -261,6 +261,23 @@ spec:
 
 <br>
 
+### エラー
+
+#### ▼ アップストリームのPodに接続できない
+
+`upstream connect error or disconnect/reset before headers. reset reason: connection termination`というエラーになる。
+
+以下の場合がある。
+
+- IstioIngressGatewayに関するService、VirtualService、DestinationRuleの設定の不備で接続できない
+- タイムアウト値が短すぎる
+
+> - https://github.com/istio/istio/issues/27513#issuecomment-1095620598
+> - https://github.com/istio/istio/issues/27513#issuecomment-1186410179
+> - https://zenn.dev/toshikish/articles/d0dd54ae067bed
+
+<br>
+
 ## 02-03. Istio EgressGateway
 
 ### Istio EgressGatewayとは
