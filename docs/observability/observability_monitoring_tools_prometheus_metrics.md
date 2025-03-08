@@ -141,6 +141,8 @@ aggregator_unavailable_apiservice{job="apiserver", name="v1.metrics.eks.amazonaw
 container_cpu_usage_seconds_total
 ```
 
+`kube_pod_container_resource_requests`メトリクスや`kube_pod_container_resource_limits`を使用して、CPU使用率を算出できる。
+
 ```bash
 # Pod単位のCPU使用率
 # メモリ実際値 / 下限値 (.spec.containers[*].resources.requestsキー)
@@ -157,6 +159,8 @@ sum(rate(container_cpu_usage_seconds_total{container!=""}[5m])) by (pod) / sum(k
 > - https://signoz.io/guides/prometheus-queries-to-get-cpu-and-memory-usage-in-kubernetes-pods/#how-to-query-cpu-usage-in-kubernetes-pods-with-prometheus
 
 #### ▼ container_memory_working_set_bytes
+
+`kube_pod_container_resource_requests`メトリクスや`kube_pod_container_resource_limits`を使用して、CPU使用率を算出できる。
 
 ```bash
 # Pod単位のメモリ使用率
