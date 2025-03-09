@@ -46,54 +46,6 @@ description: 認証＠認証/認可の知見を記録しています。
 
 <br>
 
-### APIキー認証
-
-#### ▼ APIキー認証とは
-
-事前にAPIキーとなる文字列を配布し、認証フェーズは行わずに認可フェーズのみでユーザーを照合する認証スキームのこと。
-
-信頼されたクライアントに発行することが前提のため、トークンよりも有効期限が長い。
-
-> - https://architecting.hateblo.jp/entry/2020/03/27/033758
-> - https://www.gomomento.com/blog/api-keys-vs-tokens-whats-the-difference
-
-#### ▼ 照合情報の送信方法
-
-自前ヘッダーとして、`x-api-key`ヘッダーを定義する。これにAPIキーを割り当て、リクエストを送信する。
-
-```yaml
-POST https://example.com/foo
----
-x-api-key: <APIキー>
-```
-
-<br>
-
-### PAT：パーソナルアクセストークンによる認証
-
-#### ▼ PATによる認証
-
-クライアントがパーソナルアクセストークン (個人用アクセストークン) の付与をリクエストし、認証フェーズは行わずに認可フェーズのみでユーザーを照合する。
-
-`Authorization`ヘッダーにPATを割りあてて、リクエストを送信する。
-
-作成時以降、パーソナルアクセストークンを確認できなくなるため、クライアントがパーソナルアクセストークンを管理する必要がある。
-
-```yaml
-POST https://example.com/foo
----
-Authorization: <パーソナルアクセストークン>
-```
-
-| サービス例 | トークン名                 | 説明                                                                                                                                                                                                                                                                                                  |
-| ---------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| GitHub     | パーソナルアクセストークン | HTTPSプロトコルを使用して、プライベートリポジトリにリクエストを送信するために必要。HTTPSプロトコルを使用する場面として、アプリケーションの拡張機能のGitHub連携、リポジトリのパッケージ化などがある。<br>- https://docs.github.com/ja/github/authenticating-to-github/creating-a-personal-access-token |
-
-> - https://www.contentful.com/help/personal-access-tokens/
-> - https://architecting.hateblo.jp/entry/2020/03/27/033758
-
-<br>
-
 ## 03. 認証属性
 
 ### realm
@@ -129,7 +81,7 @@ IDプロバイダーのクライアントのIDを表す。
 
 <br>
 
-## 04. 認証情報の伝播方法の種類
+## 04. 認証情報の種類
 
 ### セッションベースの認証情報
 
@@ -177,10 +129,55 @@ Opaqueトークンでは、トークンはランダム値で、署名と有効�
 | JWT仕様アクセストークン       | JWT仕様なためSelf-containedトークン       |
 | IDトークン                    | 必ずJWT仕様であり、Self-containedトークン |
 | リフレッシュトークン          | Self-containedトークン、Opaqueトークン    |
+| パーソナルアクセストークン    | 記入中...                                 |
 
 > - https://qiita.com/TakahikoKawasaki/items/1c1bcf24b46ebd2030f5#%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3jwtid%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E5%8C%85%E5%90%AB%E9%96%A2%E4%BF%82
 > - https://zenn.dev/mikakane/articles/tutorial_for_openid#oidc-%E5%88%A9%E7%94%A8%E3%81%95%E3%82%8C%E3%82%8B-id-token-%E3%81%AE%E8%A6%8F%E7%B4%84
 > - https://medium.com/@iamprovidence/token-gang-bearer-token-reference-token-opaque-token-self-contained-token-jwt-access-token-6e0191093cd0
+
+#### ▼ パーソナルアクセストークン
+
+クライアントがパーソナルアクセストークン (個人用アクセストークン) の付与をリクエストし、認証フェーズは行わずに認可フェーズのみでユーザーを照合する。
+
+`Authorization`ヘッダーにPATを割りあてて、リクエストを送信する。
+
+作成時以降、パーソナルアクセストークンを確認できなくなるため、クライアントがパーソナルアクセストークンを管理する必要がある。
+
+```yaml
+POST https://example.com/foo
+---
+Authorization: <パーソナルアクセストークン>
+```
+
+| サービス例 | トークン名                 | 説明                                                                                                                                                                                                                                                                                                  |
+| ---------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GitHub     | パーソナルアクセストークン | HTTPSプロトコルを使用して、プライベートリポジトリにリクエストを送信するために必要。HTTPSプロトコルを使用する場面として、アプリケーションの拡張機能のGitHub連携、リポジトリのパッケージ化などがある。<br>- https://docs.github.com/ja/github/authenticating-to-github/creating-a-personal-access-token |
+
+> - https://www.contentful.com/help/personal-access-tokens/
+> - https://architecting.hateblo.jp/entry/2020/03/27/033758
+
+<br>
+
+### その他
+
+#### ▼ APIキー認証
+
+事前にAPIキーとなる文字列を配布し、認証フェーズは行わずに認可フェーズのみでユーザーを照合する認証スキームのこと。
+
+信頼されたクライアントに発行することが前提のため、トークンよりも有効期限が長い。
+
+自前ヘッダーとして、`x-api-key`ヘッダーを定義する。これにAPIキーを割り当て、リクエストを送信する。
+
+```yaml
+POST https://example.com/foo
+---
+x-api-key: <APIキー>
+```
+
+> - https://architecting.hateblo.jp/entry/2020/03/27/033758
+> - https://www.gomomento.com/blog/api-keys-vs-tokens-whats-the-difference
+
+<br>
 
 <br>
 
