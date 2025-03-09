@@ -131,7 +131,7 @@ Keycloakと各DBのバージョンの相性を確認しておく必要がある�
 
 ### AUTH_SESSION_ID
 
-Keycloakのログイン後、`Cookie`ヘッダーによって運搬されるセッションデータである。
+Keycloakのログイン後、`Cookie`ヘッダーによって伝播されるセッションデータである。
 
 `<セッションID>.keycloak-0-27504`の形式になる。
 
