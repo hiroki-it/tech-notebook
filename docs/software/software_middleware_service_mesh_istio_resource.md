@@ -1111,9 +1111,9 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    # JWTの発行元認証局エンドポイントを設定する
+    # JWT仕様トークンの発行元認証局エンドポイントを設定する
     - issuer: https://<Auth0のドメイン>/
-      # JWTの署名を検証するための公開鍵のURLを設定する
+      # JWT仕様トークンの署名を検証するための公開鍵のURLを設定する
       jwksUri: https://<Auth0のドメイン>/.well-known/jwks.json
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true
@@ -1131,7 +1131,7 @@ spec:
   action: ALLOW
   rules:
     - when:
-        # JWTの発行元認証局を指定する
+        # JWT仕様トークンの発行元認証局を指定する
         - key: request.auth.claims[iss]
           # 発行元認証局の期待値を設定する
           values: ["https://<Auth0のドメイン>/"]
@@ -1158,9 +1158,9 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    # JWTの発行元認証局エンドポイントを設定する
+    # JWT仕様トークンの発行元認証局エンドポイントを設定する
     - issuer: http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>
-      # JWTの署名を検証するための公開鍵のURLを設定する
+      # JWT仕様トークンの署名を検証するための公開鍵のURLを設定する
       jwksUri: http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true
@@ -1178,7 +1178,7 @@ spec:
   action: ALLOW
   rules:
     - when:
-        # JWTの発行元認証局を指定する
+        # JWT仕様トークンの発行元認証局を指定する
         - key: request.auth.claims[iss]
           # 発行元認証局の期待値を設定する
           values:
@@ -1209,7 +1209,7 @@ spec:
   jwtRules:
     # OAuth2 Proxyに送信する
     - issuer: http://oauth2-proxy.foo-namespace.svc.cluster.local/realms/<realm名>
-      # JWTの署名を検証するための公開鍵のURLを設定する
+      # JWT仕様トークンの署名を検証するための公開鍵のURLを設定する
       jwksUri: http://oauth2-proxy.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true

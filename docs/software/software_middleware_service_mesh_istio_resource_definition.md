@@ -195,7 +195,7 @@ data:
 
 #### ▼ rulesとは
 
-認可スコープで、実施条件 (例：いずれのKubernetesリソース、HTTPリクエストのメソッド、JWTの発行元認証局の識別子) を設定する。
+認可スコープで、実施条件 (例：いずれのKubernetesリソース、HTTPリクエストのメソッド、JWT仕様トークンの発行元認証局の識別子) を設定する。
 
 その条件に合致した場合に、認証済みの送信元を許可するか否かを実施する。
 
@@ -243,7 +243,7 @@ spec:
 
 #### ▼ 正しいJWTを許可する
 
-リクエストヘッダーにあるJWTの発行元認証局が適切な場合に、認可を実施するように設定する。
+リクエストヘッダーにあるJWT仕様トークンの発行元認証局が適切な場合に、認可を実施するように設定する。
 
 **＊実装例＊**
 
@@ -255,10 +255,10 @@ metadata:
 spec:
   rules:
     - when:
-        # JWTの発行元認証局を指定する
+        # JWT仕様トークンの発行元認証局を指定する
         - key: request.auth.claims[iss]
           # 発行元認証局の期待値を設定する
-          values: ["<JWTの発行元認証局の識別子 (issuer)>"]
+          values: ["<JWT仕様トークンの発行元認証局の識別子 (issuer)>"]
 ```
 
 > - https://istio.io/latest/docs/reference/config/security/authorization-policy/
@@ -2133,7 +2133,7 @@ $ kubectl logs <IstiodコントロールプレーンのPod> -n istio-system
 
 #### ▼ jwtRulesとは
 
-Bearer認証で使用するJWTの発行元認証局を設定する。
+Bearer認証で使用するJWT仕様トークンの発行元認証局を設定する。
 
 JWTが失効していたり、不正であったりする場合に、認証処理を失敗として`401`ステータスを返信する。
 
@@ -2148,9 +2148,9 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    # JWTの発行元認証局を設定する
+    # JWT仕様トークンの発行元認証局を設定する
     - issuer: https://foo-issuer.com
-      # JWTの署名を検証するための公開鍵のURLを設定する
+      # JWT仕様トークンの署名を検証するための公開鍵のURLを設定する
       jwksUri: https://example.com/.well-known/jwks.json
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true
@@ -2168,7 +2168,7 @@ spec:
   action: ALLOW
   rules:
     - when:
-        # JWTの発行元認証局を指定する
+        # JWT仕様トークンの発行元認証局を指定する
         - key: request.auth.claims[iss]
           # 発行元認証局の期待値を設定する
           values: ["foo-issuer.com"]
@@ -2181,7 +2181,7 @@ spec:
 
 #### ▼ issuer
 
-JWTの発行元認証局を設定する。
+JWT仕様トークンの発行元認証局を設定する。
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -2197,7 +2197,7 @@ spec:
 
 #### ▼ jwksUri
 
-JWTの署名を検証するための公開鍵のURLを設定する。
+JWT仕様トークンの署名を検証するための公開鍵のURLを設定する。
 
 ```yaml
 apiVersion: security.istio.io/v1

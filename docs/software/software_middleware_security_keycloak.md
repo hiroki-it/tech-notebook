@@ -219,7 +219,7 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
 
 #### ▼ / (issuerエンドポイント)
 
-JWTの発行元認証局を取得できる。
+JWT仕様トークンの発行元認証局を取得できる。
 
 クライアント側では`authority`値として指定する。
 
@@ -271,7 +271,7 @@ POST https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-conn
 
 また、Token Exchangeを使用すると新しいトークンに交換したり、別のIDプロバイダーのトークンに変換できる。
 
-なお、KeycloakはJWT仕様のアクセストークンを採用している。
+なお、KeycloakはJWT仕様アクセストークンを採用している。
 
 ```bash
 GET https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/token
@@ -359,7 +359,7 @@ Content-Length: 759
 logout_token=eyJhbGciOiJSUzI1NiIs...zspo4weMQfU-1jL0DxSg
 ```
 
-POSTリクエストには、JWT仕様のトークン (たぶんIDトークン) が含まれている。
+POSTリクエストには、JWT仕様トークン (たぶんIDトークン) が含まれている。
 
 IDトークンには、アプリケーション間で共有しているクライアントのセッションIDが含まれてする。
 
