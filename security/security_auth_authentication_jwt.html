@@ -13346,7 +13346,7 @@
           <li class="md-nav__item">
   <a href="#jwt_3" class="md-nav__link">
     <span class="md-ellipsis">
-      JWT仕様トークンの検証とは
+      JWT仕様トークンの署名検証とは
     </span>
   </a>
   
@@ -25787,7 +25787,7 @@
           <li class="md-nav__item">
   <a href="#jwt_3" class="md-nav__link">
     <span class="md-ellipsis">
-      JWT仕様トークンの検証とは
+      JWT仕様トークンの署名検証とは
     </span>
   </a>
   
@@ -26083,9 +26083,13 @@
 </blockquote>
 <p><br></p>
 <h2 id="02-jwt">02. JWT仕様トークンの仕組み<a class="headerlink" href="#02-jwt" title="Permanent link">&para;</a></h2>
-<h3 id="jwt_3">JWT仕様トークンの検証とは<a class="headerlink" href="#jwt_3" title="Permanent link">&para;</a></h3>
-<p>JWT仕様トークン (例：IDトークン) の有効期限や発行元認証局が正しいかどうかを検証する。</p>
-<p>署名の仕組みを使用して、発行元認証局を検証する。</p>
+<h3 id="jwt_3">JWT仕様トークンの署名検証とは<a class="headerlink" href="#jwt_3" title="Permanent link">&para;</a></h3>
+<p>JWT仕様トークン (例：IDトークン) の署名 (有効期限、ユーザー識別子など) を検証する。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE">https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_2">署名が共通鍵方式の場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ 共通鍵方式の特徴<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
@@ -26111,7 +26115,7 @@
 <p>認証の成功状態を維持するため、初回認証時にブラウザの保管したJWTを再利用する。</p>
 <ol>
 <li>ユーザーは、ブラウザの保管したJWTをリクエストヘッダーに含め、アプリケーションに送信する。</li>
-<li>アプリケーションは、秘密鍵を使用して、JWTが有効か否かを検証する。</li>
+<li>アプリケーションは、秘密鍵を使用してJWTの署名を検証する。</li>
 <li>JWTが有効であれば、認証成功とし、ユーザーにレスポンスを返信する。</li>
 </ol>
 <p><img alt="jwt_common_verify_token" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_common_verify_token.png" /></p>
@@ -26152,13 +26156,14 @@
 <li>ユーザーは、ブラウザの保管したJWTをリクエストヘッダーに含め、アプリケーションに送信する。</li>
 <li>アプリケーションは、IDプロバイダーに公開鍵をリクエストする。</li>
 <li>IDプロバイダーは、アプリケーションに公開鍵をレスポンスする。</li>
-<li>アプリケーションは、IDプロバイダーから取得した公開鍵を使用して、JWTが有効か否かを検証する。</li>
+<li>アプリケーションは、IDプロバイダーから取得した公開鍵を使用してJWTの署名 (有効期限、ユーザー識別子) を検証する。</li>
 <li>JWTが有効であれば、アプリケーションの認証処理は成功とし、ユーザーにレスポンスを返信する</li>
 </ol>
 <p><img alt="jwt_public_verify_token" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_public_verify_token.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88">https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88</a></li>
+<li><a href="https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE">https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -26386,7 +26391,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月10日 20:32:26">2025-03-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月10日 21:08:21">2025-03-10</span>
   </span>
 
     
