@@ -25,3 +25,10 @@ description: Grafana Mimir＠Grafanaの知見を記録しています。
 > - https://news.ycombinator.com/item?id=32779662
 
 <br>
+
+### オブジェクトストレージ
+
+- AWS S3
+- MinIO
+
+<br>

@@ -415,9 +415,9 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 レイヤードアーキテクチャのインフラ層に対して、依存性逆転を組み込むかどうはには言及していない。
 
-- UI (コントローラー、認証認可）
+- ユーザーインターフェース層またはインターフェース層 (コントローラー、認証）
 - アプリケーション層 (ユースケース)
-- ドメイン層 (ドメインモデル)
+- ドメイン層 (ドメインモデル、認可)
 - インフラ層 (永続化)
 
 ![layered-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/layered-architecture.png)
