@@ -54,9 +54,7 @@ providers:
 
 #### ▼ issuerURL
 
-issuerエンドポイントを設定する。
-
-JWT仕様トークンの発行元認証局の識別子である。
+JWT仕様トークンの発行元認証局の識別子を設定する
 
 ```yaml
 # 認証方法がOIDCで、IDプロバイダーがKeycloakの場合

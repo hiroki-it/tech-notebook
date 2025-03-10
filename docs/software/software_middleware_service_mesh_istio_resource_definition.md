@@ -2175,7 +2175,7 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    # IDプロバイダーのissuerエンドポイント (JWT仕様トークンの発行元認証局の識別子) のURLを設定する
+    # JWT仕様トークンの発行元認証局の識別子を設定する
     # ブラウザから接続する
     - issuer: https://foo-issuer.com
       # IDプロバイダーのJWKsエンドポイントを設定する
@@ -2210,7 +2210,7 @@ spec:
 
 #### ▼ issuer
 
-IDプロバイダーのissuerエンドポイントのURLを設定する。
+JWT仕様トークンの発行元認証局の識別子を設定する。
 
 JWT仕様トークンの発行元認証局の情報を取得できる。
 
