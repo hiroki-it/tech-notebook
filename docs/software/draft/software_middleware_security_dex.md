@@ -60,7 +60,7 @@ connectors:
     id: keycloak
     name: keycloak
     config:
-      # 認可エンドポイント
+      # issuerエンドポイント
       issuer: http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>
       clientID: <Keycloakに認可リクエストを送信するクライアント名>
       clientSecret: *****
@@ -89,7 +89,7 @@ grpc:
 
 ## 04. issuer
 
-発行元認証局の認可エンドポイントを設定する。
+issuerエンドポイントを設定する。
 
 ```yaml
 issuer: http://127.0.0.1:5556/dex

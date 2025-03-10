@@ -2148,9 +2148,9 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    # JWT仕様トークンの発行元認証局を設定する
+    # issuerエンドポイントを設定する
     - issuer: https://foo-issuer.com
-      # JWT仕様トークンの署名を検証するための公開鍵のURLを設定する
+      # JWKsエンドポイントを設定する
       jwksUri: https://example.com/.well-known/jwks.json
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true
@@ -2181,7 +2181,7 @@ spec:
 
 #### ▼ issuer
 
-JWT仕様トークンの発行元認証局を設定する。
+issuerエンドポイント (JWT仕様トークンの発行元認証局のURL) を設定する。
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -2197,7 +2197,7 @@ spec:
 
 #### ▼ jwksUri
 
-JWT仕様トークンの署名を検証するための公開鍵のURLを設定する。
+JWKsエンドポイント (JWT仕様トークンを署名検証する公開鍵のURL) を設定する。
 
 ```yaml
 apiVersion: security.istio.io/v1

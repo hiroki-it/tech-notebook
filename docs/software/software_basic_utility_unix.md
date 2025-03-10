@@ -1499,6 +1499,20 @@ Google    93754 hasegawa  140u  IPv4 *****      0t0  TCP localhost:56772 (LISTEN
 minikube  97246 hasegawa   19u  IPv4 *****      0t0  TCP 192.168.64.1:50252 (LISTEN)
 ```
 
+特定のポート番号を確認する場合は、さらに`grep`コマンドを実行する。
+
+```bash
+$ lsof -i -P | grep LISTEN | grep :8500
+
+com.docke 46089 hasegawa   78u  IPv6 *****      0t0  TCP *:8500 (LISTEN)
+```
+
+`kill`コマンドでプロセスIDを指定して、プロセスを削除できる。
+
+```bash
+$ kill -9 46089
+```
+
 <br>
 
 ## lvdisplay

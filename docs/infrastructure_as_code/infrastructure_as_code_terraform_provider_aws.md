@@ -140,10 +140,12 @@ AWS EC2の設定値を変更しても、AWS AMIでは初回時しかAWS EC2を�
 
 新しいAMIを作成する場合、AMI名を変更し、AMIを再作成する。
 
+AWS EC2の名前に、`<バックアップするAWS EC2のID>`をつけることでわかりやすくなる。
+
 ```terraform
 resource "aws_ami_from_instance" "foo" {
-  name               = "foo-instance"
-  source_instance_id = "<AWS EC2のID>"
+  name               = "foo-instance-<バックアップするAWS EC2のID>"
+  source_instance_id = "<バックアップするAWS EC2のID>"
 
   # インスタンスを再起動せずにAMIを作成するとデータが欠損することがあるため、再起動する
   snapshot_without_reboot = false
