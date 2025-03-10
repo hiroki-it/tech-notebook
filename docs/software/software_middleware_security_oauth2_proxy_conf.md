@@ -56,6 +56,8 @@ providers:
 
 issuerエンドポイントを設定する。
 
+JWT仕様トークンの発行元認証局の識別子である。
+
 ```yaml
 # 認証方法がOIDCで、IDプロバイダーがKeycloakの場合
 providers:

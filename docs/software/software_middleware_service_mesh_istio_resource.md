@@ -1111,7 +1111,7 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    # IDプロバイダーのissuerエンドポイントのURLを設定する
+    # IDプロバイダーのissuerエンドポイント (JWT仕様トークンの発行元認証局の識別子) のURLを設定する
     # ブラウザから接続する
     - issuer: https://<Auth0のドメイン>/
       # IDプロバイダーのJWKsエンドポイントを設定する
@@ -1159,7 +1159,7 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    # IDプロバイダーのissuerエンドポイントのURLを設定する
+    # IDプロバイダーのissuerエンドポイント (JWT仕様トークンの発行元認証局の識別子) のURLを設定する
     # ブラウザから接続する
     - issuer: http://keycloak.com/realms/<realm名>
       # IDプロバイダーのJWKsエンドポイントを設定する
@@ -1210,7 +1210,7 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    # IDプロバイダーのissuerエンドポイントのURLを設定する
+    # IDプロバイダーのissuerエンドポイント (JWT仕様トークンの発行元認証局の識別子) のURLを設定する
     # ブラウザから接続する
     - issuer: http://oauth2-proxy.com/realms/<realm名>
       # IDプロバイダーのJWKsエンドポイントを設定する

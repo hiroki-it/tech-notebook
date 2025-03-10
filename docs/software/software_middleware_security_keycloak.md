@@ -219,7 +219,7 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
 
 #### ▼ / (issuerエンドポイント)
 
-JWT仕様トークンの発行元認証局を取得できる。
+JWT仕様トークンの発行元認証局の識別子である。
 
 クライアント側では`authority`値として指定する。
 
@@ -227,7 +227,7 @@ JWT仕様トークンの発行元認証局を取得できる。
 GET https://<Keycloakのドメイン名>/realms/<realm名>
 ```
 
-> - https://dev.classmethod.jp/articles/openidconnect-devio2023/#P.24%2520React%25E5%2581%25B4%25E3%2581%25AE%25E8%25A8%25AD%25E5%25AE%259A%25E5%2586%2585%25E5%25AE%25B9%25E7%25A2%25BA%25E8%25AA%258D
+> - https://datatracker.ietf.org/doc/html/rfc8414#section-2
 
 #### ▼ /auth (認可エンドポイント)
 
