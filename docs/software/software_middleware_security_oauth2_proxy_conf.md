@@ -54,7 +54,7 @@ providers:
 
 #### ▼ issuerURL
 
-OIDCのアクセストークンの発行元認証局の認可エンドポイントを設定する。
+issuerエンドポイントを設定する。
 
 ```yaml
 # 認証方法がOIDCで、IDプロバイダーがKeycloakの場合

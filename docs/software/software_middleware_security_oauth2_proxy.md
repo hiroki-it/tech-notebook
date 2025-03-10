@@ -61,7 +61,7 @@ metadata:
   annotations:
     # OAuth2 Proxyへのトークン検証リクエスト送信処理を発火させるURLを設定する
     nginx.ingress.kubernetes.io/auth-signin: http://<OAuth2 Proxyのドメイン名>/oauth2/sign_in
-    # トークン検証リクエストの宛先とするOAuth2 Proxyの認可エンドポイントを設定する
+    # OAuth2 Proxyの認可エンドポイントを設定する
     nginx.ingress.kubernetes.io/auth-url: http://<OAuth2 Proxyのドメイン名>/oauth2/auth
     nginx.ingress.kubernetes.io/proxy-buffer-size: 512k
   name: nginx-ingress

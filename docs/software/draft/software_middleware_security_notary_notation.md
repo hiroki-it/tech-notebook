@@ -19,7 +19,7 @@ description: Notation＠セキュリティ系ミドルウェアの知見を記�
 
 1. `notation sign`コマンドでコンテナイメージを署名する。
 2. `notation policy import`コマンドで信頼ポリシーを読み込む。
-3. `notation verify`コマンドでコンテナイメージを署名検証する。
+3. `notation verify`コマンドでコンテナイメージの署名を検証する。
 
 <br>
 
@@ -86,7 +86,7 @@ $ notation sign <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-
 
 ### verify
 
-コンテナイメージを署名検証する。
+コンテナイメージの署名を検証する。
 
 ```bash
 $ notation verify <イメージ名>
@@ -94,7 +94,7 @@ $ notation verify <イメージ名>
 
 **＊実行例＊**
 
-AWS Signerにある署名プロファイルを使用し、AWS ECR上でのコンテナイメージを署名検証する。
+AWS Signerにある署名プロファイルを使用し、AWS ECR上でのコンテナイメージの署名を検証する。
 
 ```bash
 $ notation verify <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest

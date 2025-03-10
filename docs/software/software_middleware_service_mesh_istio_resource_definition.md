@@ -2175,7 +2175,7 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    # IDプロバイダーのissuerエンドポイントを設定する
+    # IDプロバイダーのissuerエンドポイントのURLを設定する
     # ブラウザから接続する
     - issuer: https://foo-issuer.com
       # IDプロバイダーのJWKsエンドポイントを設定する
@@ -2210,7 +2210,9 @@ spec:
 
 #### ▼ issuer
 
-IDプロバイダーのissuerエンドポイント (JWT仕様トークンの発行元認証局のURL) を設定する。
+IDプロバイダーのissuerエンドポイントのURLを設定する。
+
+JWT仕様トークンの発行元認証局の情報を取得できる。
 
 ブラウザから接続する必要がある。
 
@@ -2228,7 +2230,9 @@ spec:
 
 #### ▼ jwksUri
 
-IDプロバイダーのJWKsエンドポイント (JWT仕様トークンを署名検証する公開鍵のURL) を設定する。
+IDプロバイダーのJWKsエンドポイントを設定する。
+
+JWT仕様トークンの署名を検証するための公開鍵を取得できる。
 
 ```yaml
 apiVersion: security.istio.io/v1
