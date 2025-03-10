@@ -61,7 +61,8 @@ connectors:
     name: keycloak
     config:
       # issuerエンドポイント
-      issuer: http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>
+      # ブラウザから接続する
+      issuer: http://keycloak.com/realms/<realm名>
       clientID: <Keycloakに認可リクエストを送信するクライアント名>
       clientSecret: *****
       redirectURI: <コールバックURL>
@@ -91,8 +92,10 @@ grpc:
 
 issuerエンドポイントを設定する。
 
+ブラウザから接続する必要がある。
+
 ```yaml
-issuer: http://127.0.0.1:5556/dex
+issuer: http://dex.com:5556/dex
 ```
 
 <br>

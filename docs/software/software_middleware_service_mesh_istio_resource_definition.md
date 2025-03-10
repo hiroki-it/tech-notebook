@@ -2176,8 +2176,10 @@ metadata:
 spec:
   jwtRules:
     # IDプロバイダーのissuerエンドポイントを設定する
+    # ブラウザから接続する
     - issuer: https://foo-issuer.com
       # IDプロバイダーのJWKsエンドポイントを設定する
+      # APIから接続する
       jwksUri: https://example.com/.well-known/jwks.json
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true
@@ -2209,6 +2211,8 @@ spec:
 #### ▼ issuer
 
 IDプロバイダーのissuerエンドポイント (JWT仕様トークンの発行元認証局のURL) を設定する。
+
+ブラウザから接続する必要がある。
 
 ```yaml
 apiVersion: security.istio.io/v1

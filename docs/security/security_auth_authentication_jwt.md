@@ -34,10 +34,10 @@ Bear認証やOAuthのトークンとして使用できる。
 
 JWT仕様トークンには以下の種類がある。
 
-| トークンの種類          | トークンの情報タイプ                      |
-| ----------------------- | ----------------------------------------- |
-| JWT仕様アクセストークン | JWT仕様なためSelf-containedトークン       |
-| IDトークン              | 必ずJWT仕様であり、Self-containedトークン |
+| トークンの種類   | トークンの情報タイプ                                                |
+| ---------------- | ------------------------------------------------------------------- |
+| アクセストークン | ツールによってはJWT仕様 (例：Keycloak) なためSelf-containedトークン |
+| IDトークン       | 必ずJWT仕様であり、Self-containedトークン                           |
 
 > - https://qiita.com/TakahikoKawasaki/items/1c1bcf24b46ebd2030f5#%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3jwtid%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E5%8C%85%E5%90%AB%E9%96%A2%E4%BF%82
 > - https://zenn.dev/mikakane/articles/tutorial_for_openid#oidc-%E5%88%A9%E7%94%A8%E3%81%95%E3%82%8C%E3%82%8B-id-token-%E3%81%AE%E8%A6%8F%E7%B4%84

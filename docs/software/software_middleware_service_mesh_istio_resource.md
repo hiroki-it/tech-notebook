@@ -1112,6 +1112,7 @@ metadata:
 spec:
   jwtRules:
     # IDプロバイダーのissuerエンドポイントを設定する
+    # ブラウザから接続する
     - issuer: https://<Auth0のドメイン>/
       # IDプロバイダーのJWKsエンドポイントを設定する
       jwksUri: https://<Auth0のドメイン>/.well-known/jwks.json
@@ -1159,8 +1160,10 @@ metadata:
 spec:
   jwtRules:
     # IDプロバイダーのissuerエンドポイントを設定する
-    - issuer: http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>
+    # ブラウザから接続する
+    - issuer: http://keycloak.com/realms/<realm名>
       # IDプロバイダーのJWKsエンドポイントを設定する
+      # APIから接続する
       jwksUri: http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true
@@ -1208,8 +1211,10 @@ metadata:
 spec:
   jwtRules:
     # IDプロバイダーのissuerエンドポイントを設定する
-    - issuer: http://oauth2-proxy.foo-namespace.svc.cluster.local/realms/<realm名>
+    # ブラウザから接続する
+    - issuer: http://oauth2-proxy.com/realms/<realm名>
       # IDプロバイダーのJWKsエンドポイントを設定する
+      # APIから接続する
       jwksUri: http://oauth2-proxy.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true

@@ -271,7 +271,7 @@ POST https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-conn
 
 また、Token Exchangeを使用すると新しいトークンに交換したり、別のIDプロバイダーのトークンに変換できる。
 
-なお、KeycloakはJWT仕様アクセストークンを採用している。
+なお、KeycloakはJWT仕様のアクセストークンを採用している。
 
 ```bash
 GET https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/token
