@@ -133,9 +133,9 @@ SSOパターンと似ているが、こちらは非SSOでJWT仕様トークン�
 
 <br>
 
-### Opaqueトークンパターン (ゲートウェイ集中パターン)
+### JWT + APIゲートウェイパターン (ゲートウェイ集中パターン)
 
-#### ▼ Opaqueトークンパターンとは
+#### ▼ JWT + APIゲートウェイパターンとは
 
 『ゲートウェイ集中パターン』ともいう。
 
@@ -147,8 +147,10 @@ APIゲートウェイは、認証を集中的に管理し、認証とアクセ�
 
 > - https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#jwt%2Bapi-gateway-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%AE%A1%E7%90%86
 > - https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=8
+> - https://engineer.retty.me/entry/2019/12/21/171549
+> - https://please-sleep.cou929.nu/microservices-auth-design.html
 
-#### ▼ Opaqueトークンパターンの仕組み
+#### ▼ JWT + APIゲートウェイパターンの仕組み
 
 各マイクロサービスは、JWTとOpaqueトークンに基づいてユーザーを認証する。
 
@@ -162,10 +164,11 @@ APIゲートウェイは、認証を集中的に管理し、認証とアクセ�
 
 ![microservices_authentication_type_opaque-token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_opaque-token.png)
 
-> - https://please-sleep.cou929.nu/microservices-auth-design.html
+> - https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#jwt%2Bapi-gateway-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%AE%A1%E7%90%86
+> - https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=8
 > - https://engineer.retty.me/entry/2019/12/21/171549
-
-<br>
+> - https://please-sleep.cou929.nu/microservices-auth-design.html
+>   <br>
 
 ## 02. 認可
 

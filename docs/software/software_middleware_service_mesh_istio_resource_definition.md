@@ -2230,7 +2230,6 @@ spec:
 
 IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する
 
-
 ```yaml
 apiVersion: security.istio.io/v1
 kind: RequestAuthentication
