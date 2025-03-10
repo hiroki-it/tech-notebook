@@ -1163,7 +1163,7 @@ spec:
     # ブラウザから接続する
     - issuer: http://keycloak.com/realms/<realm名>
       # IDプロバイダーのJWKsエンドポイントを設定する
-      # APIから接続する
+      # ブラウザから、またはAPIに直接接続する
       jwksUri: http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true
@@ -1214,7 +1214,7 @@ spec:
     # ブラウザから接続する
     - issuer: http://oauth2-proxy.com/realms/<realm名>
       # IDプロバイダーのJWKsエンドポイントを設定する
-      # APIから接続する
+      # ブラウザから、またはAPIに直接接続する
       jwksUri: http://oauth2-proxy.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true

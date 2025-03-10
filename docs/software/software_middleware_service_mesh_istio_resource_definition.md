@@ -2179,7 +2179,7 @@ spec:
     # ブラウザから接続する
     - issuer: https://foo-issuer.com
       # IDプロバイダーのJWKsエンドポイントを設定する
-      # APIから接続する
+      # ブラウザから、またはAPIに直接接続する
       jwksUri: https://example.com/.well-known/jwks.json
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true
