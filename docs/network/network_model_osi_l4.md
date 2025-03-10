@@ -79,12 +79,15 @@ GET http://127.0.0.1:8080
 
 <br>
 
-### 独自のプロコトル
+### 独自プロコトル
 
-#### ▼ DB系プロトコル
+#### ▼ DBコネクション系
 
-- MySQL
-- PostgreSQL
+`L7`のプロトコルに属する独自プロトコルもある (例：MySQLなど) 。
+
+- Redis
+
+> - https://designvault.medium.com/understanding-database-protocols-how-databases-communicate-c1ab61e21a40
 
 <br>
 

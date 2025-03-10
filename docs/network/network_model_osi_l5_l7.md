@@ -235,3 +235,18 @@ THREAD=ORDEREDSUBJECT MULTIAPPEND
 メール受信の際に、チャレンジレスポンス方式の認証を実行することにより、平文の認証情報がネットワークに流れるのを防止するプロトコル
 
 <br>
+
+## 05. 独自プロコトル
+
+### DBコネクション系
+
+`L4`のプロトコルに属する独自プロトコルもある (例：Redisなど) 。
+
+- MySQL
+- PostgreSQL
+- MongoDB
+
+> - https://designvault.medium.com/understanding-database-protocols-how-databases-communicate-c1ab61e21a40
+> - https://zenn.dev/haru141/articles/71d0decda29e31#mysql%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB
+
+<br>

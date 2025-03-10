@@ -1082,9 +1082,9 @@ Pod間通信時に、相互TLS認証を実施する。
 
 Pod間通信時に、JWTによるBearer認証を実施する。
 
-JWTが失効していたり、不正であったりする場合に、認証処理を失敗として`401`ステータスを返信する。
+JWT仕様トークンが失効していたり、不正な場合に、認証処理を失敗として`401`ステータスを返信する。
 
-JWTがない場合は、AuthorizationPolicyで`403`ステータスを返信する必要がある。
+JWT仕様トークンがない場合は、AuthorizationPolicyで`403`ステータスを返信する必要がある。
 
 なお、RequestAuthenticationを使用せずにアプリケーションで同様の実装をしても良い。
 
@@ -1098,9 +1098,9 @@ JWTがない場合は、AuthorizationPolicyで`403`ステータスを返信す�
 
 ### Auth0に送信する場合
 
-注意点として、そもそもリクエストにJWTが含まれていない場合には認証処理をスキップできてしまう。
+注意点として、そもそもリクエストにJWT仕様トークンが含まれていない場合には認証処理をスキップできてしまう。
 
-代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403`ステータス) として扱う必要がある。
+代わりに、JWT仕様トークンが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403`ステータス) として扱う必要がある。
 
 Auth0 (クラウドのためサービスメッシュ外にある) の宛先情報をIstioに登録する必要があるため、Istio EgressGatewayやServiceEntry経由で接続できるようにする。
 
@@ -1111,9 +1111,9 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    # issuerエンドポイントを設定する
+    # IDプロバイダーのissuerエンドポイントを設定する
     - issuer: https://<Auth0のドメイン>/
-      # JWKsエンドポイントを設定する
+      # IDプロバイダーのJWKsエンドポイントを設定する
       jwksUri: https://<Auth0のドメイン>/.well-known/jwks.json
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true
@@ -1158,9 +1158,9 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    # issuerエンドポイントを設定する
+    # IDプロバイダーのissuerエンドポイントを設定する
     - issuer: http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>
-      # JWKsエンドポイントを設定する
+      # IDプロバイダーのJWKsエンドポイントを設定する
       jwksUri: http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true
@@ -1207,9 +1207,9 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    # issuerエンドポイントを設定する
+    # IDプロバイダーのissuerエンドポイントを設定する
     - issuer: http://oauth2-proxy.foo-namespace.svc.cluster.local/realms/<realm名>
-      # JWKsエンドポイントを設定する
+      # IDプロバイダーのJWKsエンドポイントを設定する
       jwksUri: http://oauth2-proxy.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true

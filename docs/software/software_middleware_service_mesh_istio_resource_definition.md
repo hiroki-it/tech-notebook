@@ -1740,6 +1740,21 @@ spec:
 
 Istio IngressGateway/EgressGatewayのPodで受信するプロトコルを設定する。
 
+ドキュメントは更新されていないが、執筆時点 (2025/03/10) で以下のプロトコルに対応している。
+
+- TCP
+- UDP
+- gRPC
+- gRPC-Web
+- HTTP
+- HTTP_PROXY
+- HTTP2
+- HTTPS
+- TLS
+- Mongo
+- Redis
+- MySQL
+
 **＊実装例＊**
 
 ```yaml
@@ -1753,7 +1768,19 @@ spec:
         protocol: HTTP
 ```
 
+```yaml
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: foo-egress
+spec:
+  servers:
+    - port:
+        protocol: MySQL
+```
+
 > - https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+> - https://github.com/istio/istio/blob/master/pkg/config/protocol/instance.go#L68-L94
 
 #### ▼ targetPort
 
@@ -2135,7 +2162,7 @@ $ kubectl logs <IstiodコントロールプレーンのPod> -n istio-system
 
 Bearer認証で使用するJWT仕様トークンの発行元認証局を設定する。
 
-JWTが失効していたり、不正であったりする場合に、認証処理を失敗として`401`ステータスを返信する。
+JWT仕様トークンが失効していたり、不正な場合に、認証処理を失敗として`401`ステータスを返信する。
 
 注意点として、そもそもリクエストにJWTが含まれていない場合には認証処理をスキップできてしまう。
 
@@ -2148,9 +2175,9 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    # issuerエンドポイントを設定する
+    # IDプロバイダーのissuerエンドポイントを設定する
     - issuer: https://foo-issuer.com
-      # JWKsエンドポイントを設定する
+      # IDプロバイダーのJWKsエンドポイントを設定する
       jwksUri: https://example.com/.well-known/jwks.json
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true
@@ -2181,7 +2208,7 @@ spec:
 
 #### ▼ issuer
 
-issuerエンドポイント (JWT仕様トークンの発行元認証局のURL) を設定する。
+IDプロバイダーのissuerエンドポイント (JWT仕様トークンの発行元認証局のURL) を設定する。
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -2197,7 +2224,7 @@ spec:
 
 #### ▼ jwksUri
 
-JWKsエンドポイント (JWT仕様トークンを署名検証する公開鍵のURL) を設定する。
+IDプロバイダーのJWKsエンドポイント (JWT仕様トークンを署名検証する公開鍵のURL) を設定する。
 
 ```yaml
 apiVersion: security.istio.io/v1
