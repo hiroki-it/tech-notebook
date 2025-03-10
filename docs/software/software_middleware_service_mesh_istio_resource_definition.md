@@ -255,9 +255,8 @@ metadata:
 spec:
   rules:
     - when:
-        # JWT仕様トークンの発行元認証局を指定する
         - key: request.auth.claims[iss]
-          # 発行元認証局の期待値を設定する
+          # 発行元認証局の識別子を設定する
           values: ["<JWT仕様トークンの発行元認証局の識別子 (issuer)>"]
 ```
 
@@ -2178,7 +2177,7 @@ spec:
     # JWT仕様トークンの発行元認証局の識別子を設定する
     # ブラウザから接続する
     - issuer: https://foo-issuer.com
-      # IDプロバイダーのJWKsエンドポイントを設定する
+      # IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する
       # ブラウザから、またはAPIに直接接続する
       jwksUri: https://example.com/.well-known/jwks.json
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
@@ -2197,9 +2196,8 @@ spec:
   action: ALLOW
   rules:
     - when:
-        # JWT仕様トークンの発行元認証局を指定する
         - key: request.auth.claims[iss]
-          # 発行元認証局の期待値を設定する
+          # 発行元認証局の識別子を設定する
           values: ["foo-issuer.com"]
 ```
 
@@ -2230,9 +2228,8 @@ spec:
 
 #### ▼ jwksUri
 
-IDプロバイダーのJWKsエンドポイントを設定する。
+IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する
 
-JWT仕様トークンの署名を検証するための公開鍵を取得できる。
 
 ```yaml
 apiVersion: security.istio.io/v1

@@ -1114,7 +1114,7 @@ spec:
     # JWT仕様トークンの発行元認証局の識別子を設定する
     # ブラウザから接続する
     - issuer: https://<Auth0のドメイン>/
-      # IDプロバイダーのJWKsエンドポイントを設定する
+      # IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する
       jwksUri: https://<Auth0のドメイン>/.well-known/jwks.json
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
       forwardOriginalToken: true
@@ -1132,9 +1132,8 @@ spec:
   action: ALLOW
   rules:
     - when:
-        # JWT仕様トークンの発行元認証局を指定する
         - key: request.auth.claims[iss]
-          # 発行元認証局の期待値を設定する
+          # 発行元認証局の識別子を設定する
           values: ["https://<Auth0のドメイン>/"]
 ```
 
@@ -1162,7 +1161,7 @@ spec:
     # JWT仕様トークンの発行元認証局の識別子を設定する
     # ブラウザから接続する
     - issuer: http://keycloak.com/realms/<realm名>
-      # IDプロバイダーのJWKsエンドポイントを設定する
+      # IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する
       # ブラウザから、またはAPIに直接接続する
       jwksUri: http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
@@ -1181,11 +1180,9 @@ spec:
   action: ALLOW
   rules:
     - when:
-        # JWT仕様トークンの発行元認証局を指定する
         - key: request.auth.claims[iss]
-          # 発行元認証局の期待値を設定する
-          values:
-            ["http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>"]
+          # 発行元認証局の識別子を設定する
+          values: ["http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>"]
 ```
 
 > - https://thinkit.co.jp/article/18023
@@ -1213,7 +1210,7 @@ spec:
     # JWT仕様トークンの発行元認証局の識別子を設定する
     # ブラウザから接続する
     - issuer: http://oauth2-proxy.com/realms/<realm名>
-      # IDプロバイダーのJWKsエンドポイントを設定する
+      # IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する
       # ブラウザから、またはAPIに直接接続する
       jwksUri: http://oauth2-proxy.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
       # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
