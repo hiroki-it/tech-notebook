@@ -2144,7 +2144,7 @@ spec:
 
 ### `PILOT_JWT_PUB_KEY_REFRESH_INTERVAL`
 
-アクセストークンの検証の間隔を設定する。
+アクセストークンの署名検証の間隔を設定する。
 
 ```yaml
 apiVersion: apps/v1

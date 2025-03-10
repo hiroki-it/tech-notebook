@@ -124,7 +124,7 @@ Istioのドキュメントでは、以下のハードウェアリソースを消
 以下により、レイテンシーは大きくなる。
 
 - `istio-proxy`コンテナ、waypoint-proxyのコンテナ、ztunnelのコンテナの経由
-- AuthorizationPolicyによるアクセストークンの検証
+- AuthorizationPolicyによるアクセストークンの署名検証
 - PeerAuthenticationによる相互TLS
 
 > - https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#latency-for-istio-124
