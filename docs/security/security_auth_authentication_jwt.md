@@ -136,8 +136,66 @@ JWT仕様トークンには以下の種類がある。
 
 ### 署名検証とは
 
-JWT仕様トークン (例：IDトークン) の情報 (署名部分、有効期限、発行元認証局など) を検証する。
+JWT仕様トークン (例：IDトークン) の情報 (署名部分、有効期限、発行元認証局など) から、JWT仕様トークンの有効性を検証できる。
 
+> - https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE
+
+<br>
+
+### 検証方法の種類
+
+JWTの署名の検証方法には以下があり、公開鍵による検証が一般的である。
+
+以下のいずれかの方法で検証できる。
+
+- 認可サーバーから取得した公開鍵 (一般的)
+- 認可サーバーから取得した共通鍵
+- 認可サーバーのイントロスペクションエンドポイント
+
+> - https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E3%81%A1%E3%81%AA%E3%81%BF%E3%81%ABrs256%E3%81%AE%E5%A0%B4%E5%90%88
+> - https://zenn.dev/ringo_to/articles/5cf471e5e48b9a#%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E6%A4%9C%E8%A8%BC%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%AF%E4%BA%8C%E3%81%A4%E3%81%AE%E6%96%B9%E6%B3%95%E3%81%8C%E3%81%82%E3%82%8B
+
+<br>
+
+### 署名が公開鍵方式の場合
+
+#### ▼ 公開鍵方式の特徴
+
+共通鍵方式では、秘密鍵を使用してJWT作成 (初回認証時) 、公開鍵を使用してJWT検証 (次回認証時) を実施する。
+
+例えば、SSOでは、JWT仕様トークンの署名が公開鍵方式である。
+
+クライアント側に秘密鍵、IDプロバイダー側に公開鍵を配置する。
+
+> - https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88
+
+#### ▼ 初回認証時
+
+初回認証時は、JWTを作成する。
+
+1. ユーザーは、IDプロバイダーのログインフォームにユーザーIDとパスワードを入力する。
+2. IDプロバイダーは、フォームの入力情報を含むリクエストを受信し、認証処理を実行する。また、DBのユーザー情報と照合して認証処理を実行する。
+3. 認証が成功すれば、IDプロバイダーは秘密鍵を使用してJWTを作成する。
+4. IDプロバイダーは、JWTをレスポンスに含め、ユーザーに返信する。
+5. ブラウザは、JWTをLocalStorageやCookieに保管する。
+
+![jwt_public_generate_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_public_generate_token.png)
+
+> - https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88
+
+#### ▼ 次回認証時
+
+認証の成功状態を維持するため、初回認証時にブラウザの保管したJWTを再利用する。
+
+1. ユーザーは、ブラウザの保管したJWTをリクエストヘッダーに含め、アプリケーションに送信する。
+2. アプリケーションは、IDプロバイダーに公開鍵をリクエストする。
+3. IDプロバイダーは、アプリケーションに公開鍵をレスポンスする。
+4. アプリケーションは、IDプロバイダーから取得した公開鍵を使用してJWTの情報 (署名部分、有効期限、発行元認証局など) から、JWT仕様トークンの有効性を検証する。
+5. JWTが有効であれば、アプリケーションの認証処理は成功とし、ユーザーにレスポンスを返信する
+
+![jwt_public_verify_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_public_verify_token.png)
+
+> - https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88
 > - https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE
 
 <br>
@@ -177,49 +235,6 @@ JWT仕様トークン (例：IDトークン) の情報 (署名部分、有効期
 ![jwt_common_verify_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_common_verify_token.png)
 
 > - https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%B1%E9%80%9A%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88
-
-<br>
-
-### 署名が公開鍵方式の場合
-
-#### ▼ 公開鍵方式の特徴
-
-共通鍵方式では、秘密鍵を使用してJWT作成 (初回認証時) 、公開鍵を使用してJWT検証 (次回認証時) を実施する。
-
-例えば、SSOでは、JWT仕様トークンの署名が公開鍵方式である。
-
-クライアント側に秘密鍵、IDプロバイダー側に公開鍵を配置する。
-
-> - https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88
-
-#### ▼ 初回認証時
-
-初回認証時は、JWTを作成する。
-
-1. ユーザーは、IDプロバイダーのログインフォームにユーザーIDとパスワードを入力する。
-2. IDプロバイダーは、フォームの入力情報を含むリクエストを受信し、認証処理を実行する。また、DBのユーザー情報と照合して認証処理を実行する。
-3. 認証が成功すれば、IDプロバイダーは秘密鍵を使用してJWTを作成する。
-4. IDプロバイダーは、JWTをレスポンスに含め、ユーザーに返信する。
-5. ブラウザは、JWTをLocalStorageやCookieに保管する。
-
-![jwt_public_generate_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_public_generate_token.png)
-
-> - https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88
-
-#### ▼ 次回認証時
-
-認証の成功状態を維持するため、初回認証時にブラウザの保管したJWTを再利用する。
-
-1. ユーザーは、ブラウザの保管したJWTをリクエストヘッダーに含め、アプリケーションに送信する。
-2. アプリケーションは、IDプロバイダーに公開鍵をリクエストする。
-3. IDプロバイダーは、アプリケーションに公開鍵をレスポンスする。
-4. アプリケーションは、IDプロバイダーから取得した公開鍵を使用してJWTの情報 (署名部分、有効期限、発行元認証局など) を検証する。
-5. JWTが有効であれば、アプリケーションの認証処理は成功とし、ユーザーにレスポンスを返信する
-
-![jwt_public_verify_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_public_verify_token.png)
-
-> - https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88
-> - https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE
 
 <br>
 
