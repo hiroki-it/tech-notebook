@@ -31351,7 +31351,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-request-authentication-jwt</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">jwtRules</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># IDプロバイダーのissuerエンドポイントを設定する</span>
+<span class="w">    </span><span class="c1"># IDプロバイダーのissuerエンドポイントのURLを設定する</span>
 <span class="w">    </span><span class="c1"># ブラウザから接続する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">issuer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://foo-issuer.com</span>
 <span class="w">      </span><span class="c1"># IDプロバイダーのJWKsエンドポイントを設定する</span>
@@ -31387,7 +31387,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="issuer">▼ issuer<a class="headerlink" href="#issuer" title="Permanent link">&para;</a></h4>
-<p>IDプロバイダーのissuerエンドポイント (JWT仕様トークンの発行元認証局のURL) を設定する。</p>
+<p>IDプロバイダーのissuerエンドポイントのURLを設定する。</p>
+<p>JWT仕様トークンの発行元認証局の情報を取得できる。</p>
 <p>ブラウザから接続する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RequestAuthentication</span>
@@ -31403,7 +31404,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="jwksuri">▼ jwksUri<a class="headerlink" href="#jwksuri" title="Permanent link">&para;</a></h4>
-<p>IDプロバイダーのJWKsエンドポイント (JWT仕様トークンを署名検証する公開鍵のURL) を設定する。</p>
+<p>IDプロバイダーのJWKsエンドポイントを設定する。</p>
+<p>JWT仕様トークンの署名を検証するための公開鍵を取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RequestAuthentication</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -32712,7 +32714,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月10日 20:32:26">2025-03-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月10日 20:47:32">2025-03-10</span>
   </span>
 
     
