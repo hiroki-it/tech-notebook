@@ -167,8 +167,7 @@ APIゲートウェイは、認証を集中的に管理し、認証とアクセ�
 > - https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#jwt%2Bapi-gateway-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%AE%A1%E7%90%86
 > - https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=8
 > - https://engineer.retty.me/entry/2019/12/21/171549
-> - https://please-sleep.cou929.nu/microservices-auth-design.html
->   <br>
+> - https://please-sleep.cou929.nu/microservices-auth-design.html > <br>
 
 ## 02. 認可
 

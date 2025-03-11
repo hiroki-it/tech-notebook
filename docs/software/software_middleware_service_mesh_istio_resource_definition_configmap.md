@@ -444,13 +444,13 @@ data:
 
 #### ▼ 認証/認可系
 
-SSOの認証フェーズの委譲先となるIDプロバイダーの宛先情報を設定する。
+AuthorizationPolicyによる認可処理を外部の認可プロバイダーに委譲する。
+
+> - https://istio.io/latest/docs/tasks/security/authorization/authz-custom/
 
 #### ▼ envoyExtAuthzHttp
 
-認可エンドポイントにHTTPで認可リクエストを送信する場合に、SSOのIDプロバイダーの情報を設定する。
-
-AuthorizationPolicyによる認可の実施に、認可フェーズを外部のIDプロバイダーに委譲できるようにする。
+認可プロバイダーへの通信にHTTP/1.1プロトコルを使用する。
 
 **＊実装例＊**
 
@@ -474,9 +474,7 @@ data:
           - authorization
 ```
 
-AuthorizationPolicyで、認可フェーズの委譲先のIDプロバイダーを設定できるようになる。
-
-ここでは、OAuth2 ProxyをIDプロバイダーとして使用する。
+AuthorizationPolicyで、認可処理をOAuth2 Proxyに委譲できるようになる。
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -501,7 +499,7 @@ spec:
 
 #### ▼ envoyExtAuthzGrpc
 
-認可エンドポイントにHTTPで認可リクエストを送信する場合に、SSOのIDプロバイダーの情報を設定する。
+認可プロバイダーへの通信にHTTP/2プロトコルを使用する。
 
 <br>
 
