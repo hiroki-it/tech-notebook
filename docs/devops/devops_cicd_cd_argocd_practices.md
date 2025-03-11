@@ -578,7 +578,7 @@ ArgoCDのデフォルトの認証方法は、Bearer認証である。
 
 利便性のためSSOを採用しつつ、二要素認証を組み合わせて強度を高める。
 
-そのために、認証フェーズを信頼性の高いIDプロバイダー (Auth0、GitHub、GitLabなど) に委譲し、SSO (OAuth、SAML、OIDC) を採用する。
+そのために、認証フェーズを信頼性の高いIDプロバイダー (例：Auth0、AWS Cognito、GitHub、Google Cloud Auth、Keycloak、Zitadel) に委譲し、SSO (OAuth、SAML、OIDC) を採用する。
 
 さらに、SSOと二要素認証を組み合わせ、上記の認証フェーズ時にPCやスマホのワンタイムパスワードを要求する。
 

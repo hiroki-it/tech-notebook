@@ -328,7 +328,7 @@ OIDCを使用して、ArgoCDにログインできるようにする。
 
 ArgoCDから認証フェーズの委譲先のIDプロバイダーに情報を直接的に接続する。
 
-OIDCのIDプロバイダー (例：Auth0、GitHub、Keycloak、Zitadel、AWS Cognito、Google Cloud Auth) が発行したクライアントIDやクライアントシークレットを設定する。
+OIDCのIDプロバイダー (例：Auth0、AWS Cognito、GitHub、Google Cloud Auth、Keycloak、Zitadel) が発行したクライアントIDやクライアントシークレットを設定する。
 
 ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
