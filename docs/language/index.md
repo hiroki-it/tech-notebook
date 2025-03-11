@@ -134,7 +134,7 @@ hide:
   >   > - ##### [︎コンポーネント](https://hiroki-it.github.io/tech-notebook/language/language_php_framework_laravel_component.html)
   >   > - ##### [︎Eloquent ORM](https://hiroki-it.github.io/tech-notebook/language/language_php_framework_laravel_eloquent_orm.html)
   >   > - ##### [︎専用パッケージ](https://hiroki-it.github.io/tech-notebook/language/language_php_framework_laravel_package.html)
-  >   > - ##### [︎認証/認可系パッケージ](https://hiroki-it.github.io/tech-notebook/language/language_php_framework_laravel_package_auth.html)
+  >   > - ##### [︎認証／認可系パッケージ](https://hiroki-it.github.io/tech-notebook/language/language_php_framework_laravel_package_auth.html)
   >   > - ##### [︎コマンド](https://hiroki-it.github.io/tech-notebook/language/language_php_framework_laravel_command.html)
   > - ##### <u>Symfony</u>
   >   > - ##### [︎コンポーネント](https://hiroki-it.github.io/tech-notebook/language/language_php_framework_symfony_component.html)

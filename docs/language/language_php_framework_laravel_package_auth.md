@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】認証/認可系パッケージ＠Laravel
-description: 認証/認可系パッケージ＠Laravelの知見を記録しています。
+title: 【IT技術の知見】認証／認可系パッケージ＠Laravel
+description: 認証／認可系パッケージ＠Laravelの知見を記録しています。
 ---
 
-# 認証/認可系パッケージ＠Laravel
+# 認証／認可系パッケージ＠Laravel
 
 ## はじめに
 
@@ -981,7 +981,7 @@ $ php artisan passport:client --personal
 
 ```php
 /**
- * 全認証/認可の登録
+ * 全認証／認可の登録
  *
  * @return void
  */

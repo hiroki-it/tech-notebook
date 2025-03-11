@@ -277,7 +277,7 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
     },
     # kube-apiserverの操作の種類を表す。
     "operation": "CREATE",
-    # 認証/認可されたユーザーを表す。
+    # 認証／認可されたユーザーを表す。
     "userInfo": {
       "username": "admin",
       "uid": "014fbff9a07c",
@@ -292,7 +292,7 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
         ]
       }
     },
-    # 認証/認可された操作の種類を表す。
+    # 認証／認可された操作の種類を表す。
     "options": {
       "apiVersion": "meta.k8s.io/v1",
       "kind": "CreateOptions"

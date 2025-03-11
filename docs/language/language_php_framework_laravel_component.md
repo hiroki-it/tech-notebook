@@ -1,6 +1,6 @@
 ---
 title: 【IT技術の知見】コンポーネント＠Laravel
-description: 認証/認可＠Laravelの知見を記録しています。
+description: 認証／認可＠Laravelの知見を記録しています。
 ---
 
 # コンポーネント＠Laravel

@@ -35,9 +35,9 @@ description: Traefik＠サービスメッシュ系ミドルウェアの知見を
 
 ## 03. セキュリティ
 
-### 認証認可
+### 認証／認可
 
-IDプロバイダーと通信し、認証認可を実施する。
+IDプロバイダーと通信し、認証／認可を実施する。
 
 > - https://doc.traefik.io/traefik/middlewares/http/forwardauth/
 

@@ -15,9 +15,9 @@ description: Keycloak＠セキュリティ系ミドルウェアの知見を記�
 
 ## 01. Keycloakとは
 
-アプリケーションに代わって、認証認可処理を実行する。
+アプリケーションに代わって、認証／認可処理を実行する。
 
-認証認可に関するAPIを公開し、認証時のアカウントのCRUDや、認可時のアカウントに対する権限スコープ付与、を実行できる。
+認証／認可に関するAPIを公開し、認証時のアカウントのCRUDや、認可時のアカウントに対する権限スコープ付与、を実行できる。
 
 > - https://www.keycloak.org/docs-api/22.0.1/rest-api/index.html
 > - https://blog.linkode.co.jp/entry/2023/08/23/000000
@@ -108,7 +108,20 @@ KeycloakはCPUとメモリを使用する。
 
 <br>
 
-## 02. 認証認可
+## 02. SSO
+
+### SSOの種類
+
+#### ▼ OIDCの場合
+
+- 認可コードフロー (標準フロー)
+- 暗黙的フロー
+
+> - https://www.keycloak.org/docs/latest/securing_apps/index.html#supported-grant-types
+
+<br>
+
+## 02-02. 認証
 
 ### Realm
 
@@ -117,17 +130,6 @@ Keycloakでは、Adminユーザーの認証はmaster realmで、それ以外は�
 master realmでログイン後、ユーザー定義のrealmを作成すると良い。
 
 > - https://keycloak-documentation.openstandia.jp/21.0/ja_JP/server_admin/index.html#the-master-realm
-
-<br>
-
-### 認証認可の種類
-
-#### ▼ OIDCの場合
-
-- 認可コードフロー (標準フロー)
-- 暗黙的フロー
-
-> - https://www.keycloak.org/docs/latest/securing_apps/index.html#supported-grant-types
 
 <br>
 
@@ -165,6 +167,41 @@ Keycloakクライアントは、『ヘッダー』『ペイロード』『署名
 #### ▼ 認証マイクロサービスとして
 
 記入中...
+
+<br>
+
+## 02-03. 認可
+
+### リソース
+
+認可スコープの対象とするエンドポイントを設定する。
+
+![keycloak_authorization.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_authorization.png)
+
+> - https://atmarkit.itmedia.co.jp/ait/articles/1904/03/news003.html
+> - https://qiita.com/m-masataka/items/e99cb38fc995d40b680b#%E8%AA%8D%E5%8F%AF%E8%A8%AD%E5%AE%9A
+
+<br>
+
+### ポリシー
+
+認可スコープを設定する。
+
+![keycloak_authorization.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_authorization.png)
+
+> - https://atmarkit.itmedia.co.jp/ait/articles/1904/03/news003.html
+> - https://qiita.com/m-masataka/items/e99cb38fc995d40b680b#%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E5%AE%9A%E7%BE%A9
+
+<br>
+
+### パーミッション
+
+リソースとポリシーの紐付けを設定する。
+
+![keycloak_authorization.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_authorization.png)
+
+> - https://atmarkit.itmedia.co.jp/ait/articles/1904/03/news003.html
+> - https://qiita.com/m-masataka/items/e99cb38fc995d40b680b#%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%AE%9A%E7%BE%A9
 
 <br>
 

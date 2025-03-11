@@ -1363,9 +1363,9 @@ data:
 
 <br>
 
-## 04-04. extensionProviders (認証/認可系)
+## 04-04. extensionProviders (認証／認可系)
 
-### extensionProviders (認証/認可系) とは
+### extensionProviders (認証／認可系) とは
 
 AuthorizationPolicyによる認可処理を外部の認可プロバイダーに委譲する。
 
@@ -1384,7 +1384,7 @@ AuthorizationPolicyによる認可処理を外部の認可プロバイダーに�
 
 #### ▼ OAuth2 Proxyの場合
 
-OAuth2 Proxyを外部の認可プロバイダーとして設定する。
+OAuth2 Proxyを任意の認可プロバイダーの前段に置き、OAuth2 Proxyで認可プロバイダーを宛先に設定する。
 
 **＊実装例＊**
 
@@ -1435,6 +1435,15 @@ OpenAgent Policyを外部の認可プロバイダーとして設定する。
 **実装例**
 
 > - https://www.openpolicyagent.org/docs/latest/envoy-tutorial-istio/#2-configure-the-mesh-to-define-the-external-authorizer
+
+#### ▼ Keycloakの場合
+
+Keycloakは、IDプロバイダーとしてだけでなく認可プロバイダーとしても使用できる。
+
+ただし、前段にOAuth2 Proxyを置くことが一般的である。
+
+> - https://zenn.dev/takitake/articles/a91ea116cabe3c#istio%E3%81%AB%E5%A4%96%E9%83%A8%E8%AA%8D%E5%8F%AF%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2
+> - https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1
 
 <br>
 

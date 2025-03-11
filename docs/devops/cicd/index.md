@@ -54,7 +54,7 @@ hide:
   >   > - ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition.html)
   >   > - ##### [共通項目](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_common.html)
   >   > - ##### [プラグイン](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_plugin.html)
-  >   > - ##### [認証/認可系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_auth.html)
+  >   > - ##### [認証／認可系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_auth.html)
   >   > - ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_configmap.html)
   >   > - ##### [Secret系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_secret.html)
   >   > - ##### [Job系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_job.html)
