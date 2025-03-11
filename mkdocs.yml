@@ -171,7 +171,7 @@ nav:
               - マイクロサービス設計: software/software_application_architecture_microservices_services_design.md
               - マイクロサービス間通信: software/software_application_architecture_microservices_services_connection.md
               - トランザクション管理: software/software_application_architecture_microservices_services_transaction.md
-              - 認証/認可: software/software_application_architecture_microservices_services_auth.md
+              - 認証／認可: software/software_application_architecture_microservices_services_auth.md
           - ストレージ領域: software/software_application_architecture_microservices_storage.md
           - ■ 横断領域:
               - ホワイトボックステスト: software/software_application_architecture_microservices_cross_test_blackbox.md
@@ -407,7 +407,7 @@ nav:
                         - コンポーネント: language/language_php_framework_laravel_component.md
                         - ︎Eloquent ORM: language/language_php_framework_laravel_eloquent_orm.md
                         - 専用パッケージ: language/language_php_framework_laravel_package.md
-                        - 認証/認可系パッケージ: language/language_php_framework_laravel_package_auth.md
+                        - 認証／認可系パッケージ: language/language_php_framework_laravel_package_auth.md
                         - コマンド: language/language_php_framework_laravel_command.md
                   - ■ Symfony:
                         - コンポーネント: language/language_php_framework_symfony_component.md
@@ -518,7 +518,7 @@ nav:
               - 暗号化プロトコル: security/security_network_encryption_technology_packet_payload_protocol.md
           - ■ 保管データの暗号化技術:
               - 保管データの暗号化技術: security/security_network_encryption_technology_storage.md
-      - ■ 認証/認可:
+      - ■ 認証／認可:
           - ■ 認証:
               - 認証: security/security_auth_authentication.md
               - HTTP認証: security/security_auth_authentication_http.md
@@ -810,7 +810,7 @@ nav:
                   - リソース定義: devops/devops_cicd_cd_argocd_resource_definition.md
                   - 共通項目: devops/devops_cicd_cd_argocd_resource_definition_common.md
                   - プラグイン: devops/devops_cicd_cd_argocd_resource_definition_plugin.md
-                  - 認証/認可系: devops/devops_cicd_cd_argocd_resource_definition_auth.md
+                  - 認証／認可系: devops/devops_cicd_cd_argocd_resource_definition_auth.md
                   - ConfigMap系: devops/devops_cicd_cd_argocd_resource_definition_configmap.md
                   - Secret系: devops/devops_cicd_cd_argocd_resource_definition_secret.md
                   - Job系: devops/devops_cicd_cd_argocd_resource_definition_job.md
