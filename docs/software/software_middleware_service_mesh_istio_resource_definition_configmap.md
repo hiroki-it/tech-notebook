@@ -440,385 +440,6 @@ data:
 
 <br>
 
-### extensionProviders (認証/認可系)
-
-#### ▼ 認証/認可系
-
-AuthorizationPolicyによる認可処理を外部の認可プロバイダーに委譲する。
-
-> - https://istio.io/latest/docs/tasks/security/authorization/authz-custom/
-
-#### ▼ envoyExtAuthzHttp
-
-認可プロバイダーへの通信にHTTP/1.1プロトコルを使用する。
-
-**＊実装例＊**
-
-OAuth2 ProxyのPodに紐づくServiceを識別できるようにする。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    extensionProviders:
-      - name: OAuth2 Proxy
-        envoyExtAuthzHttp:
-          service: oauth2-proxy.foo-namespace.svc.cluster.local
-          port: 80
-        includeHeadersInCheck:
-          - cookie
-          - authorization
-```
-
-AuthorizationPolicyで、認可処理をOAuth2 Proxyに委譲できるようになる。
-
-```yaml
-apiVersion: security.istio.io/v1
-kind: AuthorizationPolicy
-metadata:
-  name: oauth2-proxy-authorization-policy
-  namespace: istio-system
-spec:
-  action: CUSTOM
-  provider:
-    name: oauth2-proxy
-  rules:
-    - to:
-        - operation:
-            paths: ["/login"]
-```
-
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider
-> - https://zenn.dev/takitake/articles/a91ea116cabe3c#istio%E3%81%AB%E5%A4%96%E9%83%A8%E8%AA%8D%E5%8F%AF%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2
-> - https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1
-> - https://istio.io/latest/docs/tasks/security/authorization/authz-custom/#define-the-external-authorizer
-
-#### ▼ envoyExtAuthzGrpc
-
-認可プロバイダーへの通信にHTTP/2プロトコルを使用する。
-
-<br>
-
-### extensionProviders (可観測系)
-
-#### ▼ 可観測性系とは
-
-監視バックエンドの宛先情報を設定する。
-
-プロバイダーによって、いずれのテレメトリーを送信するのかが異なる。
-
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider
-
-#### ▼ datadog
-
-datadogのトレースコンテキスト仕様 (datadogの独自仕様) でトレースIDとスパンIDを作成する。
-
-datadogエージェントの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。
-
-ただ、datadogエージェントをサービスメッシュ内に配置すると、Telemetryリソースがdatadogエージェント自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。
-
-`.mesh.enableTracing`キーも有効化する必要がある。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    enableTracing: true
-    extensionProviders:
-      - name: datadog-http
-        datadog:
-          # datadogエージェントを宛先として設定する
-          service: datadog-agent.foo-namespace.svc.cluster.local
-          port: 8126
-      - name: envoy-log
-        envoyFileAccessLog
-```
-
-Datadogに送信するためには、`.mesh.extensionProviders[*].datadog`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
-
-分散トレースの設定は以下の通りである。
-
-```yaml
-apiVersion: telemetry.istio.io/v1
-kind: Telemetry
-metadata:
-  name: tracing-provider
-  # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
-  namespace: foo
-spec:
-  # Datadogにスパンを送信させるPodを設定する
-  selector:
-    matchLabels:
-      name: app
-  tracing:
-    - providers:
-        # mesh.extensionProviders[*].nameキーで設定した名前
-        - name: datadog-http
-      randomSamplingPercentage: 100
-```
-
-アクセスログの設定は以下の通りである。
-
-```yaml
-apiVersion: telemetry.istio.io/v1
-kind: Telemetry
-metadata:
-  name: access-log-provider
-  # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
-  namespace: foo
-spec:
-  # Datadogにアクセスログを送信させるPodを設定する
-  selector:
-    matchLabels:
-      name: app
-  # Envoyをアクセスログプロバイダーとして設定する
-  accessLogging:
-    - providers:
-        # mesh.extensionProviders[*].nameキーで設定した名前
-        - name: envoy-log
-```
-
-> - https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L26-L27
-> - https://docs.datadoghq.com/containers/docker/apm/?tab=linux#tracing-from-the-host
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-DatadogTracingProvider
-> - https://istio.io/latest/docs/reference/config/telemetry/
-
-#### ▼ opentelemetry
-
-OpenTelemetryのトレースコンテキスト仕様 (W3C Trace Context) でトレースIDとスパンIDを作成する。
-
-OTLP形式のエンドポイントであればよいため、OpenTelemetry Collectorも指定できる。
-
-OpenTelemetry Collectorの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。
-
-ただ、OpenTelemetry Collectorをサービスメッシュ内に配置すると、TelemetryリソースがOpenTelemetry Collector自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。
-
-`.mesh.enableTracing`キーも有効化する必要がある。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    enableTracing: true
-    extensionProviders:
-      - name: opentelemetry-grpc
-        opentelemetry:
-          # OpenTelemetry Collectorを宛先として設定する
-          service: opentelemetry-collector.foo-namespace.svc.cluster.local
-          # gRPC用のエンドポイントを設定する
-          port: 4317
-      - name: opentelemetry-http
-        opentelemetry:
-          # OpenTelemetry Collectorを宛先として設定する
-          service: opentelemetry-collector.foo-namespace.svc.cluster.local
-          # HTTP用のエンドポイントを設定する
-          port: 4318
-            http:
-            # HTTPの場合はパスが必要である
-            path: /v1/traces
-      - name: envoy-log
-        envoyFileAccessLog:
-          path: /dev/stdout
-```
-
-OpenTelemetryに送信するためには、`.mesh.extensionProviders[*].opentelemetry`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
-
-分散トレースの設定は以下の通りである。
-
-```yaml
-apiVersion: telemetry.istio.io/v1
-kind: Telemetry
-metadata:
-  name: tracing-provider
-  # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
-  namespace: foo
-spec:
-  # Opentelemetryにスパンを送信させるPodを設定する
-  selector:
-    matchLabels:
-      name: app
-  tracing:
-    - providers:
-        # mesh.extensionProviders[*].nameキーで設定した名前
-        - name: opentelemetry-grpc
-      randomSamplingPercentage: 100
-```
-
-アクセスログの設定は以下の通りである。
-
-```yaml
-apiVersion: telemetry.istio.io/v1
-kind: Telemetry
-metadata:
-  name: access-log-provider
-  # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
-  namespace: foo
-spec:
-  # OpenTelemetryにアクセスログを送信させるPodを設定する
-  selector:
-    matchLabels:
-      name: app
-  # Envoyをアクセスログプロバイダーとして設定する
-  accessLogging:
-    - providers:
-        # mesh.extensionProviders[*].nameキーで設定した名前
-        - name: envoy-log
-```
-
-> - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/#enable-envoys-access-logging
-> - https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L36-L37
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-OpenTelemetryTracingProvider
-> - https://istio.io/latest/docs/tasks/observability/telemetry/#provider-selection
-> - https://github.com/istio/istio/blob/master/samples/open-telemetry/tracing/telemetry.yaml
-> - https://itnext.io/debugging-microservices-on-k8s-with-istio-opentelemetry-and-tempo-4c36c97d6099.
-> - https://istio.io/latest/docs/reference/config/telemetry/
-
-#### ▼ prometheus
-
-メトリクスの監視バックエンドとするPrometheusの宛先情報を設定する。
-
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-PrometheusMetricsProvider
-> - https://istio.io/latest/docs/reference/config/telemetry/
-
-#### ▼ zipkin (jaeger)
-
-Zipkinのトレースコンテキスト仕様 (B3コンテキスト) でトレースIDとスパンIDを作成する。
-
-JaegerはB3をサポートしているため、Jaegerのクライアントとしても使用できる。
-
-jaegerエージェントの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。
-
-ただ、jaegerエージェントをサービスメッシュ内に配置すると、Telemetryリソースがjaegerエージェント自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。
-
-`.mesh.enableTracing`キーも有効化する必要がある。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    enableTracing: true
-    extensionProviders:
-      - name: jaeger-http
-        jaeger:
-          # jaegerエージェントを宛先として設定する
-          service: jaeger-agent.foo-namespace.svc.cluster.local
-          port: 8126
-      - name: envoy-log
-        envoyFileAccessLog:
-          path: /dev/stdout
-```
-
-ZipkinやJaegerに送信するためには、`.mesh.extensionProviders[*].zipkin`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
-
-分散トレースの設定は以下の通りである。
-
-```yaml
-apiVersion: telemetry.istio.io/v1
-kind: Telemetry
-metadata:
-  name: tracing-provider
-  # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
-  namespace: foo
-spec:
-  # Datadogにスパンを送信させるPodを設定する
-  selector:
-    matchLabels:
-      name: app
-  tracing:
-    - providers:
-        # mesh.extensionProviders[*].nameキーで設定した名前
-        - name: jaeger-http
-      randomSamplingPercentage: 100
-```
-
-アクセスログの設定は以下の通りである。
-
-```yaml
-apiVersion: telemetry.istio.io/v1
-kind: Telemetry
-metadata:
-  name: access-log-provider
-  # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
-  namespace: foo
-spec:
-  # ZipkinやJaegerにアクセスログを送信させるPodを設定する
-  selector:
-    matchLabels:
-      name: app
-  # Envoyをアクセスログプロバイダーとして設定する
-  accessLogging:
-    - providers:
-        # mesh.extensionProviders[*].nameキーで設定した名前
-        - name: envoy-log
-```
-
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider
-> - https://discuss.istio.io/t/integrating-jaeger-tracing-using-telemetry-api/14759
-
-#### ▼ envoyFileAccessLog
-
-Envoyのアクセスログを設定する。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: istio-mesh-cm
-  namespace: istio-system
-data:
-  mesh: |
-    extensionProviders:
-      - name: envoy-grpc
-        envoyFileAccessLog:
-          logFormat:
-            labels:
-              access_log_type: '%ACCESS_LOG_TYPE%'
-              bytes_received: '%BYTES_RECEIVED%'
-              bytes_sent: '%BYTES_SENT%'
-              downstream_transport_failure_reason: '%DOWNSTREAM_TRANSPORT_FAILURE_REASON%'
-              downstream_remote_port: '%DOWNSTREAM_REMOTE_PORT%'
-              duration: '%DURATION%'
-              grpc_status: '%GRPC_STATUS(CAMEL_STRING)%'
-              method: '%REQ(:METHOD)%'
-              path: '%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%'
-              protocol: '%PROTOCOL%'
-              response_code: '%RESPONSE_CODE%'
-              response_flags: '%RESPONSE_FLAGS%'
-              start_time: '%START_TIME%'
-              trace_id: '%TRACE_ID%'
-              traceparent: '%REQ(TRACEPARENT)%'
-              upstream_remote_port: '%UPSTREAM_REMOTE_PORT%'
-              upstream_transport_failure_reason: '%UPSTREAM_TRANSPORT_FAILURE_REASON%'
-              user_agent: '%REQ(USER-AGENT)%'
-              x_forwarded_for: '%REQ(X-FORWARDED-FOR)%'
-```
-
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules
-
-<br>
-
 ### inboundClusterStatName
 
 ```yaml
@@ -1739,6 +1360,427 @@ data:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 > - https://istio.io/latest/news/releases/1.25.x/announcing-1.25/change-notes/#deprecation-notices
+
+<br>
+
+## 04-04. extensionProviders (認証/認可系)
+
+### extensionProviders (認証/認可系) とは
+
+AuthorizationPolicyによる認可処理を外部の認可プロバイダーに委譲する。
+
+> - https://istio.io/latest/docs/tasks/security/authorization/authz-custom/
+
+<br>
+
+### envoyExtAuthzHttp
+
+#### ▼ envoyExtAuthzHttpとは
+
+外部の認可プロバイダーへの通信にHTTP/1.1プロトコルを使用する。
+
+> - https://istio.io/latest/docs/tasks/security/authorization/authz-custom/#define-the-external-authorizer
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-EnvoyExternalAuthorizationHttpProvider
+
+#### ▼ OAuth2 Proxyの場合
+
+OAuth2 Proxyを外部の認可プロバイダーとして設定する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    extensionProviders:
+      - name: OAuth2 Proxy
+        envoyExtAuthzHttp:
+          service: oauth2-proxy.foo-namespace.svc.cluster.local
+          port: 80
+        includeHeadersInCheck:
+          - cookie
+          - authorization
+```
+
+AuthorizationPolicyで、認可処理をOAuth2 Proxyに委譲できるようになる。
+
+```yaml
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: oauth2-proxy-authorization-policy
+  namespace: istio-system
+spec:
+  action: CUSTOM
+  provider:
+    name: oauth2-proxy
+  rules:
+    # ルールは外部の認可プロバイダーに定義されている
+    - to:
+        - operation:
+            paths: ["/login"]
+```
+
+> - https://zenn.dev/takitake/articles/a91ea116cabe3c#istio%E3%81%AB%E5%A4%96%E9%83%A8%E8%AA%8D%E5%8F%AF%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2
+> - https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1
+
+#### ▼ OpenAgent Policyの場合
+
+OpenAgent Policyを外部の認可プロバイダーとして設定する。
+
+**実装例**
+
+> - https://www.openpolicyagent.org/docs/latest/envoy-tutorial-istio/#2-configure-the-mesh-to-define-the-external-authorizer
+
+<br>
+
+### envoyExtAuthzGrpc
+
+認可プロバイダーへの通信にHTTP/2プロトコルを使用する。
+
+<br>
+
+## 04-05. extensionProviders (可観測系)
+
+### extensionProviders (可観測系) とは
+
+監視バックエンドの宛先情報を設定する。
+
+プロバイダーによって、いずれのテレメトリーを送信するのかが異なる。
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider
+
+<br>
+
+### datadog
+
+#### ▼ datadogとは
+
+datadogのトレースコンテキスト仕様 (datadogの独自仕様) でトレースIDとスパンIDを作成する。
+
+datadogエージェントの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。
+
+ただ、datadogエージェントをサービスメッシュ内に配置すると、Telemetryリソースがdatadogエージェント自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。
+
+`.mesh.enableTracing`キーも有効化する必要がある。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    enableTracing: true
+    extensionProviders:
+      - name: datadog-http
+        datadog:
+          # datadogエージェントを宛先として設定する
+          service: datadog-agent.foo-namespace.svc.cluster.local
+          port: 8126
+      - name: envoy-log
+        envoyFileAccessLog
+```
+
+#### ▼ Telemetryの定義
+
+Datadogに送信するためには、`.mesh.extensionProviders[*].datadog`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
+
+分散トレースの設定は以下の通りである。
+
+```yaml
+apiVersion: telemetry.istio.io/v1
+kind: Telemetry
+metadata:
+  name: tracing-provider
+  # サイドカーをインジェクションしている各Namespaceで作成する
+  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
+  namespace: foo
+spec:
+  # Datadogにスパンを送信させるPodを設定する
+  selector:
+    matchLabels:
+      name: app
+  tracing:
+    - providers:
+        # mesh.extensionProviders[*].nameキーで設定した名前
+        - name: datadog-http
+      randomSamplingPercentage: 100
+```
+
+アクセスログの設定は以下の通りである。
+
+```yaml
+apiVersion: telemetry.istio.io/v1
+kind: Telemetry
+metadata:
+  name: access-log-provider
+  # サイドカーをインジェクションしている各Namespaceで作成する
+  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
+  namespace: foo
+spec:
+  # Datadogにアクセスログを送信させるPodを設定する
+  selector:
+    matchLabels:
+      name: app
+  # Envoyをアクセスログプロバイダーとして設定する
+  accessLogging:
+    - providers:
+        # mesh.extensionProviders[*].nameキーで設定した名前
+        - name: envoy-log
+```
+
+> - https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L26-L27
+> - https://docs.datadoghq.com/containers/docker/apm/?tab=linux#tracing-from-the-host
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-DatadogTracingProvider
+> - https://istio.io/latest/docs/reference/config/telemetry/
+
+<br>
+
+### opentelemetry
+
+#### ▼ opentelemetryとは
+
+OpenTelemetryのトレースコンテキスト仕様 (W3C Trace Context) でトレースIDとスパンIDを作成する。
+
+OTLP形式のエンドポイントであればよいため、OpenTelemetry Collectorも指定できる。
+
+OpenTelemetry Collectorの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。
+
+ただ、OpenTelemetry Collectorをサービスメッシュ内に配置すると、TelemetryリソースがOpenTelemetry Collector自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。
+
+`.mesh.enableTracing`キーも有効化する必要がある。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    enableTracing: true
+    extensionProviders:
+      - name: opentelemetry-grpc
+        opentelemetry:
+          # OpenTelemetry Collectorを宛先として設定する
+          service: opentelemetry-collector.foo-namespace.svc.cluster.local
+          # gRPC用のエンドポイントを設定する
+          port: 4317
+      - name: opentelemetry-http
+        opentelemetry:
+          # OpenTelemetry Collectorを宛先として設定する
+          service: opentelemetry-collector.foo-namespace.svc.cluster.local
+          # HTTP用のエンドポイントを設定する
+          port: 4318
+            http:
+            # HTTPの場合はパスが必要である
+            path: /v1/traces
+      - name: envoy-log
+        envoyFileAccessLog:
+          path: /dev/stdout
+```
+
+#### ▼ Telemetryの定義
+
+OpenTelemetryに送信するためには、`.mesh.extensionProviders[*].opentelemetry`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
+
+分散トレースの設定は以下の通りである。
+
+```yaml
+apiVersion: telemetry.istio.io/v1
+kind: Telemetry
+metadata:
+  name: tracing-provider
+  # サイドカーをインジェクションしている各Namespaceで作成する
+  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
+  namespace: foo
+spec:
+  # Opentelemetryにスパンを送信させるPodを設定する
+  selector:
+    matchLabels:
+      name: app
+  tracing:
+    - providers:
+        # mesh.extensionProviders[*].nameキーで設定した名前
+        - name: opentelemetry-grpc
+      randomSamplingPercentage: 100
+```
+
+アクセスログの設定は以下の通りである。
+
+```yaml
+apiVersion: telemetry.istio.io/v1
+kind: Telemetry
+metadata:
+  name: access-log-provider
+  # サイドカーをインジェクションしている各Namespaceで作成する
+  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
+  namespace: foo
+spec:
+  # OpenTelemetryにアクセスログを送信させるPodを設定する
+  selector:
+    matchLabels:
+      name: app
+  # Envoyをアクセスログプロバイダーとして設定する
+  accessLogging:
+    - providers:
+        # mesh.extensionProviders[*].nameキーで設定した名前
+        - name: envoy-log
+```
+
+> - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/#enable-envoys-access-logging
+> - https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L36-L37
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-OpenTelemetryTracingProvider
+> - https://istio.io/latest/docs/tasks/observability/telemetry/#provider-selection
+> - https://github.com/istio/istio/blob/master/samples/open-telemetry/tracing/telemetry.yaml
+> - https://itnext.io/debugging-microservices-on-k8s-with-istio-opentelemetry-and-tempo-4c36c97d6099.
+> - https://istio.io/latest/docs/reference/config/telemetry/
+
+<br>
+
+### prometheus
+
+#### ▼ prometheusとは
+
+メトリクスの監視バックエンドとするPrometheusの宛先情報を設定する。
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-PrometheusMetricsProvider
+> - https://istio.io/latest/docs/reference/config/telemetry/
+
+<br>
+
+### zipkin (jaeger)
+
+#### ▼ zipkin (jaeger) とは
+
+Zipkinのトレースコンテキスト仕様 (B3コンテキスト) でトレースIDとスパンIDを作成する。
+
+JaegerはB3をサポートしているため、Jaegerのクライアントとしても使用できる。
+
+jaegerエージェントの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。
+
+ただ、jaegerエージェントをサービスメッシュ内に配置すると、Telemetryリソースがjaegerエージェント自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。
+
+`.mesh.enableTracing`キーも有効化する必要がある。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    enableTracing: true
+    extensionProviders:
+      - name: jaeger-http
+        jaeger:
+          # jaegerエージェントを宛先として設定する
+          service: jaeger-agent.foo-namespace.svc.cluster.local
+          port: 8126
+      - name: envoy-log
+        envoyFileAccessLog:
+          path: /dev/stdout
+```
+
+ZipkinやJaegerに送信するためには、`.mesh.extensionProviders[*].zipkin`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
+
+分散トレースの設定は以下の通りである。
+
+```yaml
+apiVersion: telemetry.istio.io/v1
+kind: Telemetry
+metadata:
+  name: tracing-provider
+  # サイドカーをインジェクションしている各Namespaceで作成する
+  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
+  namespace: foo
+spec:
+  # Datadogにスパンを送信させるPodを設定する
+  selector:
+    matchLabels:
+      name: app
+  tracing:
+    - providers:
+        # mesh.extensionProviders[*].nameキーで設定した名前
+        - name: jaeger-http
+      randomSamplingPercentage: 100
+```
+
+アクセスログの設定は以下の通りである。
+
+```yaml
+apiVersion: telemetry.istio.io/v1
+kind: Telemetry
+metadata:
+  name: access-log-provider
+  # サイドカーをインジェクションしている各Namespaceで作成する
+  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
+  namespace: foo
+spec:
+  # ZipkinやJaegerにアクセスログを送信させるPodを設定する
+  selector:
+    matchLabels:
+      name: app
+  # Envoyをアクセスログプロバイダーとして設定する
+  accessLogging:
+    - providers:
+        # mesh.extensionProviders[*].nameキーで設定した名前
+        - name: envoy-log
+```
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider
+> - https://discuss.istio.io/t/integrating-jaeger-tracing-using-telemetry-api/14759
+
+<br>
+
+### envoyFileAccessLog
+
+#### ▼ envoyFileAccessLogとは
+
+Envoyのアクセスログを設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    extensionProviders:
+      - name: envoy-grpc
+        envoyFileAccessLog:
+          logFormat:
+            labels:
+              access_log_type: '%ACCESS_LOG_TYPE%'
+              bytes_received: '%BYTES_RECEIVED%'
+              bytes_sent: '%BYTES_SENT%'
+              downstream_transport_failure_reason: '%DOWNSTREAM_TRANSPORT_FAILURE_REASON%'
+              downstream_remote_port: '%DOWNSTREAM_REMOTE_PORT%'
+              duration: '%DURATION%'
+              grpc_status: '%GRPC_STATUS(CAMEL_STRING)%'
+              method: '%REQ(:METHOD)%'
+              path: '%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%'
+              protocol: '%PROTOCOL%'
+              response_code: '%RESPONSE_CODE%'
+              response_flags: '%RESPONSE_FLAGS%'
+              start_time: '%START_TIME%'
+              trace_id: '%TRACE_ID%'
+              traceparent: '%REQ(TRACEPARENT)%'
+              upstream_remote_port: '%UPSTREAM_REMOTE_PORT%'
+              upstream_transport_failure_reason: '%UPSTREAM_TRANSPORT_FAILURE_REASON%'
+              user_agent: '%REQ(USER-AGENT)%'
+              x_forwarded_for: '%REQ(X-FORWARDED-FOR)%'
+```
+
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules
 
 <br>
 
