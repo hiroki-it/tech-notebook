@@ -68,7 +68,7 @@ print(oauth.<IDプロバイダー名>.api_base_url)
 
 ### ログイン
 
-#### ▼ アクセストークンをAuthorizationヘッダーで伝播する場合
+#### ▼ アクセストークンをAuthorizationヘッダーで運搬する場合
 
 フロントエンドアプリケーションがCSRまたはSSRの場合に採用できる。
 
@@ -84,15 +84,15 @@ def login():
 
 @app.route("/callback")
 def callback():
-    # 認可レスポンスを取得する
-    authorization_response = oauth.keycloak.authorize_access_token()
+    # 各種トークンを取得する
+    token = oauth.keycloak.authorize_access_token()
 
     # アクセストークンやIDトークンをセッションデータとして保存する
-    session['access_token'] = authorization_response['access_token']
-    session['id_token'] = authorization_response['id_token']
+    session['access_token'] = token['access_token']
+    session['id_token'] = token['id_token']
 
-    # デコードしたIDトークンを認可レスポンスから取得する
-    id_token = oauth.keycloak.parse_id_token(authorization_response, None)
+    # デコードしたIDトークンを取得する
+    id_token = oauth.keycloak.parse_id_token(token, None)
     session['user'] = id_token['given_name']
 
     # ホームにリダイレクトする
@@ -103,7 +103,7 @@ def callback():
 > - https://docs.authlib.org/en/latest/client/flask.html#routes-for-authorization
 > - https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py
 
-#### ▼ アクセストークンを`Cookie`ヘッダーで伝播する場合
+#### ▼ アクセストークンを`Cookie`ヘッダーで運搬する場合
 
 フロントエンドアプリケーションがCSRまたはSSRの場合に採用できる。
 
@@ -145,7 +145,7 @@ def callback():
 
 ### ログアウト
 
-#### ▼ アクセストークンを`Cookie`ヘッダーで伝播する場合
+#### ▼ アクセストークンを`Cookie`ヘッダーで運搬する場合
 
 ```python
 from flask import url_for, redirect
