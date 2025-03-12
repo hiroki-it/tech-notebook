@@ -15,10 +15,13 @@ description: 認可＠認証／認可の知見を記録しています。
 
 ## 01. 認可とは
 
-認証済みのユーザーのリクエストできる権限範囲 (認可スコープ) を決定する。
+認証済みのユーザーのリクエストに応じてリソースの操作を試み、権限範囲 (認可スコープ) に基づいてこれを許否します。
 
 基本的に、認可の実装は認証に依存する。
 
+![authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/authorization.png)
+
+> - https://www.osohq.com/academy/what-is-authorization
 > - https://dev.classmethod.jp/articles/authentication-and-authorization/#toc-2
 
 <br>

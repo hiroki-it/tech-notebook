@@ -79,6 +79,8 @@ description: 認証／認可＠マイクロサービス領域の知見を記録�
 
 セッションデータを再利用するために、ブラウザのCookieやセッションストレージ (例：Redis) に保存する。
 
+(認証サービスだけでなく各マイクロサービスもセッションストレージに接続できるようにする必要があるらしいが、Keycloakではそんなことない)
+
 > - https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#%E5%88%86%E6%95%A3%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AB%E3%82%88%E3%82%8B%E7%AE%A1%E7%90%86
 > - https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=6
 
@@ -171,7 +173,9 @@ APIゲートウェイは、認証を集中的に管理し、認証とアクセ�
 > - https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#jwt%2Bapi-gateway-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%AE%A1%E7%90%86
 > - https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=8
 > - https://engineer.retty.me/entry/2019/12/21/171549
-> - https://please-sleep.cou929.nu/microservices-auth-design.html > <br>
+> - https://please-sleep.cou929.nu/microservices-auth-design.html
+
+<br>
 
 ## 02. 認可
 
@@ -183,6 +187,7 @@ APIゲートウェイは、認証を集中的に管理し、認証とアクセ�
 
 ![microservices_authorization_centralized-authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_centralized-authorization.png)
 
+> - https://www.osohq.com/academy/what-is-authorization
 > - https://zenn.dev/she_techblog/articles/6eff1f28d107be#decision%EF%BC%88%E8%AA%8D%E5%8F%AF%E3%81%AE%E5%88%A4%E6%96%AD%EF%BC%89%E3%81%AE%E5%AE%9F%E8%A3%85%E6%96%B9%E6%B3%95%EF%BC%88options-for-implementing-authorization-decisions%EF%BC%89
 
 <br>
@@ -197,6 +202,7 @@ APIゲートウェイは、認証を集中的に管理し、認証とアクセ�
 
 ![microservices_authorization_decentralized-authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_decentralized-authorization.png)
 
+> - https://www.osohq.com/academy/what-is-authorization
 > - https://zenn.dev/she_techblog/articles/6eff1f28d107be#decision%EF%BC%88%E8%AA%8D%E5%8F%AF%E3%81%AE%E5%88%A4%E6%96%AD%EF%BC%89%E3%81%AE%E5%AE%9F%E8%A3%85%E6%96%B9%E6%B3%95%EF%BC%88options-for-implementing-authorization-decisions%EF%BC%89
 
 <br>
@@ -207,6 +213,7 @@ APIゲートウェイは、認証を集中的に管理し、認証とアクセ�
 
 ![microservices_authorization_hybrid-authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_hybrid-authorization.png)
 
+> - https://www.osohq.com/academy/what-is-authorization
 > - https://zenn.dev/she_techblog/articles/6eff1f28d107be#decision%EF%BC%88%E8%AA%8D%E5%8F%AF%E3%81%AE%E5%88%A4%E6%96%AD%EF%BC%89%E3%81%AE%E5%AE%9F%E8%A3%85%E6%96%B9%E6%B3%95%EF%BC%88options-for-implementing-authorization-decisions%EF%BC%89
 
 <br>
