@@ -253,10 +253,12 @@ kind: AuthorizationPolicy
 metadata:
   name: allow-jwt
 spec:
+  # 許可する
+  action: ALLOW
   rules:
     - when:
         - key: request.auth.claims[iss]
-          # 発行元認証局の識別子を設定する
+          # JWT仕様トークンがある場合にのみ許可する
           values: ["<JWT仕様トークンの発行元認証局の識別子 (issuer)>"]
 ```
 
@@ -2193,11 +2195,12 @@ kind: AuthorizationPolicy
 metadata:
   name: foo-authorization-policy
 spec:
+  # 許可する
   action: ALLOW
   rules:
     - when:
         - key: request.auth.claims[iss]
-          # 発行元認証局の識別子を設定する
+          # JWT仕様トークンがある場合にのみ許可する
           values: ["foo-issuer.com"]
 ```
 
