@@ -84,6 +84,12 @@ DDDが適する機能的アプリケーションのみでなく、あらゆる�
 | 出力          | ユースケース層のインターラクターから出力されるレスポンスモデルを、JSON型データとしてフロントエンドにに返信する。                 | バックエンドをAPIとして使用する場合、プレゼンターは不要である。                                                                                                                |
 |               | ユースケース層のインターラクターから出力されるプレゼンターをビューモデルに変換し、バックエンドのテンプレートエンジンに出力する。 | バックエンドでテンプレートエンジンを使用してHTMLを作成する場合、プレゼンターが必要である。                                                                                     |
 
+#### ▼ 認証
+
+通常のネイティブ認証の場合、メールアドレスやパスワードをDBに保存する。
+
+SSOの場合、IDプロバイダーから取得したユーザーの最低限の情報 (メールアドレス) だけをDBに保存する。
+
 <br>
 
 ### プレゼンター
@@ -878,10 +884,6 @@ class YmdType extends Type
 
 ドメインサービスではなく、アプリケーションサービスとして定義しても良い。
 
-> - https://stackoverflow.com/questions/45007667/cqrs-ddd-how-to-validate-products-existence-before-adding-them-to-order
-> - https://www.amazon.co.jp/dp/B082WXZVPC
-> - https://github.com/little-hands/ddd-q-and-a/issues/573
-
 **＊実装例＊**
 
 ```php
@@ -922,6 +924,10 @@ class CheckDuplicateFooService
 }
 ```
 
+> - https://stackoverflow.com/questions/45007667/cqrs-ddd-how-to-validate-products-existence-before-adding-them-to-order
+> - https://www.amazon.co.jp/dp/B082WXZVPC
+> - https://github.com/little-hands/ddd-q-and-a/issues/573
+
 #### ▼ 認可
 
 ドメイン層のリポジトリを使用して、該当のIDのエンティティに対してアクセスできるかを検証する。
@@ -930,10 +936,11 @@ class CheckDuplicateFooService
 
 あるいはドメインサービスではなく、アプリケーションサービスとして定義しても良い。
 
-> - https://lessthan12ms.com/authorization-and-authentication-in-clean-architecture.html
-> - https://medium.com/@martinezdelariva/authentication-and-authorization-in-ddd-671f7a5596ac
-> - https://github.com/lezhnev74/ema/blob/master/src/Domain/Note/Commands/ModifyNote/ModifyNoteAuthorizer.php
-> - https://github.com/little-hands/ddd-q-and-a/issues/121
+| DBテーブル                      | 説明                                       | テーブル例                                                          |
+| ------------------------------- | ------------------------------------------ | ------------------------------------------------------------------- |
+| ロール                          | ユーザーの権限を表す。                     | ロール名 (`Administorator`、`Operator`、`Reporterなど) を定義する。 |
+| パーミッション (ロールポリシー) | ロールをポリシーに紐づける。               | テーブル上でロール名とポリシー名を紐づける。                        |
+| ポリシー                        | 各パーミッションの認可スコープを定義する。 | `StandardAccess`、`FullAccess`、`ReadOnly`を定義する。              |
 
 **＊実装例＊**
 
@@ -973,6 +980,11 @@ class AuthorizeFooService
     }
 }
 ```
+
+> - https://lessthan12ms.com/authorization-and-authentication-in-clean-architecture.html
+> - https://medium.com/@martinezdelariva/authentication-and-authorization-in-ddd-671f7a5596ac
+> - https://github.com/lezhnev74/ema/blob/master/src/Domain/Note/Commands/ModifyNote/ModifyNoteAuthorizer.php
+> - https://github.com/little-hands/ddd-q-and-a/issues/121
 
 #### ▼ ドメイン例外
 
@@ -1156,7 +1168,6 @@ final class User
         return $this->userName;
     }
 }
-
 ```
 
 <br>
@@ -2150,8 +2161,6 @@ ECサイトであれは、業務フローに沿って、以下のルートエン
 - 在庫管理部門の在庫ルートエンティティ
 - 調達管理部門の調達ルートエンティティ
 
-> - https://it-trend.jp/sales_management/article/11-0031
-
 **＊実装例＊**
 
 ```php
@@ -2223,6 +2232,8 @@ class DogOrder
     }
 }
 ```
+
+> - https://it-trend.jp/sales_management/article/11-0031
 
 #### ▼ 集約とは
 
@@ -2391,9 +2402,6 @@ DBに対する書き込み操作を実行する。
 
 : ルートエンティティをレコードとしてDBに挿入する。
 
-> - https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
-> - https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
-
 **＊実装例＊**
 
 `CREATE`処理のため、DoctrineのQueryBuilderクラスの`insert`メソッドを実行する。
@@ -2505,6 +2513,9 @@ class DogToyRepository
 }
 ```
 
+> - https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
+> - https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
+
 #### ▼ DBに対する読み出し責務 (Read)
 
 ![ドメイン駆動設計_リポジトリ_データ取得](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_リポジトリ_データ取得.jpg)
@@ -2526,9 +2537,6 @@ DBに対する書き込み操作を実行する。
 `(4)`
 
 : リポジトリからルートエンティティを返却し、ユースケース層に渡す。
-
-> - https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
-> - https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
 
 **＊実装例＊**
 
@@ -2598,6 +2606,9 @@ class DogToyRepository
     }
 }
 ```
+
+> - https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
+> - https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
 
 <br>
 
