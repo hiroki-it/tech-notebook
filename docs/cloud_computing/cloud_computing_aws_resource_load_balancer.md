@@ -211,7 +211,7 @@ https 2018-07-02T22:23:00.186641Z app/my-loadbalancer/50dc6c495c0c9188 192.168.1
 ```yaml
 https # リクエストタイプ
 2018-07-02T22:23:00.186641Z
-app/my-loadbalancer/50dc6c495c0c9188
+app/my-loadbalancer/50dc6c495c0c9188 # ロードバランサー名
 192.168.131.39:2817 # クライアント側の情報
 10.0.0.1:80  # ターゲット側の情報 (AWS EC2、AWS ECS、AWS EC2 NodeのIPアドレスとポート番号)
 0.086
@@ -230,7 +230,7 @@ arn:aws:elasticloadbalancing:us-east-2:123456789012:targetgroup/my-targets/73e2d
 "arn:aws:acm:us-east-2:123456789012:certificate/12345678-1234-1234-1234-123456789012"
 1
 2018-07-02T22:22:48.364000Z
-"authenticate,forward"
+"waf,authenticate,forward" # AWS WAFを通過している場合はここに記録される
 "-"
 "-"
 "10.0.0.1:80"
