@@ -199,9 +199,11 @@ data:
 
 その条件に合致した場合に、認証済みの送信元を許可するか否かを実施する。
 
-#### ▼ 特定のServiceAccountを持つPodを許可する
+#### ▼ 特定のServiceAccountを持つPodを送信元として許可する
 
-送信元Podに紐づくServiceAccountが適切な場合に、認可を実施するように設定する。
+送信元Podに紐づくServiceAccountが送信元の場合に、認可を実施する。
+
+Kubernetesでは送信元Podの名前を知る方法がない (IPアドレスは可能) なので、制御しやすくなる。
 
 **＊実装例＊**
 
@@ -222,7 +224,9 @@ spec:
 
 > - https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview?hl=ja#identified_workload
 
-#### ▼ 特定のNamespaceを許可する
+#### ▼ 特定のNamespaceを送信元として許可する
+
+特定のNamespaceが送信元の場合に、認可を実施する。
 
 ```yaml
 apiVersion: security.istio.io/v1

@@ -647,6 +647,7 @@ Istio上のEnvoyは、アプリコンテナへのアクセスログ (インバ�
   "bytes_received": 158,
   "bytes_sent": 224,
   "connection_termination_details": null,
+  # istio-proxyコンテナにとってのダウンストリーム
   "downstream_local_address": "*.*.*.*:50010",
   "downstream_remote_address": "*.*.*.*:50011",
   # ダウンストリームからアップストリームへリクエストをプロキシし、レスポンスを処理し終えるまでにかかった時間
@@ -664,6 +665,7 @@ Istio上のEnvoyは、アプリコンテナへのアクセスログ (インバ�
   "response_flags": "-",
   "route_name": null,
   "start_time": "2023-04-12T06:11:46.996Z",
+  # istio-proxyコンテナにとってのアップストリーム
   "upstream_cluster": "outbound|50000||foo-pod.foo-namespace.svc.cluster.local",
   "upstream_host": "*.*.*.*:50000",
   "upstream_local_address": "*.*.*.*:50001",

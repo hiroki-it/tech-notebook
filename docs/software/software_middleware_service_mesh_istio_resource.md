@@ -1078,13 +1078,13 @@ Pod間通信時に、相互TLS認証を実施する。
 
 ## 08. RequestAuthenticationとAuthorizationPolicy
 
-### RequestAuthenticationとは
+### RequestAuthenticationとAuthorizationPolicyとは
 
-Pod間通信時に、JWTによるBearer認証を実施する。
+Pod間通信時に、JWTによる認証と認可を実施する。
 
-JWT仕様トークンが失効していたり、不正な場合に、認証処理を失敗として`401`ステータスを返信する。
+JWT仕様トークンが失効／不正な場合に、RequestAuthenticationは`401`ステータスを返信する。
 
-JWT仕様トークンがない場合は、AuthorizationPolicyで`403`ステータスを返信する必要がある。
+JWT仕様トークンがない場合に、AuthorizationPolicyは`403`ステータスを返信する必要がある。
 
 なお、RequestAuthenticationを使用せずにアプリケーションで同様の実装をしても良い。
 
