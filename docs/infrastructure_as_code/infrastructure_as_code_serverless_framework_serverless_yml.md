@@ -161,7 +161,7 @@ functions:
 
 ### maximumRetryAttempts
 
-Lambda関数の再試行回数を設定する。
+Lambda関数のリトライ回数を設定する。
 
 > - https://www.serverless.com/framework/docs/providers/aws/guide/functions#maximum-event-age-and-maximum-retry-attempts
 

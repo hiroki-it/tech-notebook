@@ -45,7 +45,12 @@ AWSサービスを組み合わせて、ワークフローエンジンを作成�
               "FunctionName": "arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:foo-function:1",
             },
           "Retry":
-            [{"ErrorEquals": ["<再試行の対象とするエラー>"], "MaxAttempts": 0}],
+            [
+              {
+                "ErrorEquals": ["<リトライの対象とするエラー>"],
+                "MaxAttempts": 0,
+              },
+            ],
           "End": "true",
           "Comment": "The state that call AWS Lambda",
         },

@@ -270,7 +270,7 @@ axios.get("/user/12345").then(function (response) {
 
 ### axios-retryとは
 
-axiosパッケージによる非同期処理を再試行する。
+axiosパッケージによる非同期処理をリトライする。
 
 ```javascript
 import axios from "axios";

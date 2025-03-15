@@ -3311,15 +3311,15 @@ spec:
 
 #### ▼ retriesとは
 
-再試行条件を設定する。
+リトライ条件を設定する。
 
 なお、TCPリクエストには`spec.tcp[*].retries`キーのような同様の設定は存在しない。
 
 **＊実装例＊**
 
-500系ステータスの場合に、`attempts`の数だけ再試行する。
+500系ステータスの場合に、`attempts`の数だけリトライする。
 
-各再試行で処理の結果が返却されるまでのタイムアウト時間を`perTryTimeout`で設定する。
+各リトライで処理の結果が返却されるまでのタイムアウト時間を`perTryTimeout`で設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3338,9 +3338,9 @@ spec:
         retryOn: 5xx
 ```
 
-Gateway系ステータス (`502`、`503`、`504`) の場合に、`attempts`の数だけ再試行する。
+Gateway系ステータス (`502`、`503`、`504`) の場合に、`attempts`の数だけリトライする。
 
-各再試行で処理の結果が返却されるまでのタイムアウト時間を`perTryTimeout`で設定する。
+各リトライで処理の結果が返却されるまでのタイムアウト時間を`perTryTimeout`で設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3365,7 +3365,7 @@ spec:
 
 #### ▼ attempt
 
-`istio-proxy`コンテナのリバースプロキシに失敗した場合の再試行回数を設定する。
+`istio-proxy`コンテナのリバースプロキシに失敗した場合のリトライ回数を設定する。
 
 Serviceへのルーティングの失敗ではないことに注意する。
 
@@ -3384,13 +3384,13 @@ spec:
 
 #### ▼ retryOn
 
-再試行失敗の理由を設定する。
+リトライ失敗の理由を設定する。
 
 `istio-proxy`コンテナは、レスポンスの`x-envoy-retry-on`ヘッダーに割り当てるため、これの値を設定する。
 
 **＊実装例＊**
 
-デフォルトでは、再試行の条件は`connect-failure,refused-stream,unavailable`である。
+デフォルトでは、リトライの条件は`connect-failure,refused-stream,unavailable`である。
 
 `EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`変数を`true`にすると、元はデフォルト値であった`503`を設定できる。
 

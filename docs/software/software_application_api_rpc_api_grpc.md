@@ -289,11 +289,11 @@ HTTP/1.1の場合、`1`個のリクエストとレスポンスを送受信する
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84
 
-#### ▼ 再試行すべきステータスコード
+#### ▼ リトライすべきステータスコード
 
 以下のステータスコードは、一時的な問題で発生している可能性がある。
 
-そのため、再試行すると問題が解決する可能性がある。
+そのため、リトライすると問題が解決する可能性がある。
 
 - `DeadlineExceeded` (`4`)
 - `ResourceExhausted` (`8`)
