@@ -160,6 +160,45 @@ increase(<メトリクス名>[5m])
 
 > - https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates
 
+#### ▼ sum
+
+**例**
+
+Envoyに登録された全ての宛先のうち、正常なクラスターの割合を集計する。
+
+```bash
+sum(envoy_cluster_membership_healthy) / sum(envoy_cluster_membership_total)
+```
+
+> - https://developer.hashicorp.com/consul/docs/connect/observability/grafanadashboards/consuldataplanedashboard#unhealthy-clusters
+
+#### ▼ rate
+
+平均増加率 (%/秒) を算出する。
+
+常に同じ割合で増加していく場合、横一直線のグラフになる。
+
+**例**
+
+直近1時間に関して、メトリクスの平均増加率 (%/秒) を集計する。
+
+```bash
+rate(<メトリクス名>[1h])
+```
+
+> - https://www.opsramp.com/prometheus-monitoring/promql/
+
+**例**
+
+`istio-proxy`コンテナから宛先に対する平均レスポンスタイムを集計する。
+
+```bash
+rate(istio_request_duration_milliseconds_sum[5m])/ rate(istio_request_duration_milliseconds_count[5m])
+```
+
+> - https://grafana.com/docs/grafana-cloud/monitor-applications/asserts/enable-prom-metrics-collection/infrastructure/istio/#request-error-and-latency-metrics
+> - https://stackoverflow.com/q/62137292/12771072
+
 #### ▼ rate
 
 平均増加率 (%/秒) を算出する。

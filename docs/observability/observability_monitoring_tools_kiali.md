@@ -38,6 +38,18 @@ Kialiは、バックエンドコンポーネントとフロントエンドコン
 > - https://kiali.io/docs/architecture/architecture/#kiali-back-end
 > - https://kiali.io/docs/faq/general/#requiredmetrics
 
+#### ▼ Kilaiが使用するIstioメトリクス
+
+Kialiは、以下のメトリクスを使用してメッシュトポロジーやそのほかのグラフを作成する。
+
+- istio_requests_total
+- istio_request_bytes_sum
+- istio_request_duration_milliseconds_bucket
+- istio_request_duration_milliseconds_sum
+- istio_response_bytes_sum
+- istio_tcp_received_bytes_total
+- istio_tcp_sent_bytes_total
+
 <br>
 
 ### フロントエンドコンポーネント
