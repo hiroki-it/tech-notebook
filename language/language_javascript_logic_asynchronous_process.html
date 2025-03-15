@@ -26582,7 +26582,7 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 <p><br></p>
 <h3 id="async-retry">async-retry<a class="headerlink" href="#async-retry" title="Permanent link">&para;</a></h3>
 <h4 id="async-retry_1">▼ async-retryとは<a class="headerlink" href="#async-retry_1" title="Permanent link">&para;</a></h4>
-<p><code>async</code>による非同期処理を再試行する。</p>
+<p><code>async</code>による非同期処理をリトライする。</p>
 <p><code>await</code>宣言した関数を<code>retry</code>関数に渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">retry</span><span class="p">(</span>
 <span class="w">  </span><span class="c1">// 非同期処理</span>
@@ -26600,7 +26600,7 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;https://google.com&quot;</span><span class="p">);</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mf">403</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="c1">// 403のときは再試行しない</span>
+<span class="w">      </span><span class="c1">// 403のときはリトライしない</span>
 <span class="w">      </span><span class="nx">bail</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;Unauthorized&quot;</span><span class="p">));</span>
 <span class="w">      </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
@@ -26609,7 +26609,7 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="c1">// オプション</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 最大再試行回数</span>
+<span class="w">    </span><span class="c1">// 最大リトライ回数</span>
 <span class="w">    </span><span class="nx">retries</span><span class="o">:</span><span class="w"> </span><span class="kt">10</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// 指数関数的バックオフのfactor</span>
 <span class="w">    </span><span class="nx">factor</span><span class="o">:</span><span class="w"> </span><span class="kt">2</span><span class="p">,</span>
@@ -26619,7 +26619,7 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 <span class="w">    </span><span class="nx">maxTimeout</span><span class="o">:</span><span class="w"> </span><span class="kt">Infinity</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// ランダム化時の係数(1~2)</span>
 <span class="w">    </span><span class="nx">randomize</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
-<span class="w">    </span><span class="c1">// 再試行時に呼ばれる関数</span>
+<span class="w">    </span><span class="c1">// リトライ時に呼ばれる関数</span>
 <span class="w">    </span><span class="nx">onRetry</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">num</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">num</span><span class="p">),</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="p">);</span>
@@ -26751,7 +26751,7 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年2月20日 17:08:11">2025-02-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月15日 21:42:24">2025-03-15</span>
   </span>
 
     
