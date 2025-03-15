@@ -629,6 +629,38 @@ spec:
 
 <br>
 
+### tracingServiceName
+
+マイクロサービス名を設定する。
+
+マイクロサービスがバージョニングされている場合に、マイクロサービスの正式名 (canonical-name) でグループ化できる。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      tracingServiceName: foo
+```
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ProxyConfig
+metadata:
+  name: foo-proxyconfig
+spec:
+  tracingServiceName: foo
+```
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-TracingServiceName
+> - https://istio.io/latest/docs/reference/config/labels/#ServiceCanonicalName
+
+<br>
+
 ### discoveryAddress
 
 ```yaml
