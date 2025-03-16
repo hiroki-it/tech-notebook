@@ -569,11 +569,11 @@ spec:
 
 #### ▼ connectionPool.http.idleTimeout
 
-確立中のTCP接続で無通信状態 (パケットの送受信がない) を許可する時間を設定する。
+確立中のTCP接続でアイドルタイムアウト (パケットの送受信がない状態) を許可する時間を設定する。
 
 不要な接続を早期に切断できる。
 
-VirtualServiceの`.spec.http.timeout`キーとは異なり、DestinationRuleのタイムアウトはTCP接続中に無通信状態を許可する時間である。
+VirtualServiceの`.spec.http.timeout`キーとは異なり、DestinationRuleのアイドルタイムアウトはTCP接続中に無通信状態を許可する時間である。
 
 **＊実装例＊**
 
@@ -3576,7 +3576,7 @@ spec:
 
 #### ▼ timeoutとは
 
-`istio-proxy`コンテナの宛先にリクエストを送信する時のタイムアウト時間を設定する。
+`istio-proxy`コンテナの宛先にリクエストを送信してから返信があるまでのタイムアウト (接続タイムアウト、読み取りタイムアウト) 時間を設定する。
 
 `0`秒の場合、タイムアウトは無制限になる。
 
@@ -3584,7 +3584,7 @@ spec:
 
 指定した時間以内に、`istio-proxy`コンテナの宛先からレスポンスがなければ、`istio-proxy`コンテナはタイムアウトとして処理する。
 
-DestinationRuleの`connectionPool.http.idleTimeout`キーとは異なり、VirtualServiceのタイムアウトはTCP接続の完了のための待機時間である。
+DestinationRuleの`connectionPool.http.idleTimeout`キーとは異なり、VirtualServiceのタイムアウト (接続タイムアウト、読み取りタイムアウト) はTCP接続の完了のための待機時間である。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3593,7 +3593,6 @@ metadata:
   name: foo-virtual-service
 spec:
   http:
-    # destinationにリクエストを送信する時のタイムアウト時間
     - timeout: 40s
       route:
         - destination:
