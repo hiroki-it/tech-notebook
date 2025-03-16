@@ -569,7 +569,25 @@ spec:
 
 #### ▼ connectionPool.http.idleTimeout
 
+確立中のTCP接続で無通信状態 (パケットの送受信がない) を許可する時間を設定する。
+
+不要な接続を早期に切断できる。
+
 VirtualServiceの`.spec.http.timeout`キーとは異なり、DestinationRuleのタイムアウトはTCP接続中に無通信状態を許可する時間である。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    connectionPool:
+      http:
+        idleTimeout: 1000
+```
 
 > - https://qiita.com/Takagi_/items/129acd03e76fce5c295b#%E5%AE%9F%E9%9A%9B%E3%81%ABhttp%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88%E8%A8%AD%E5%AE%9A%E3%82%84%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%81%A8%E3%81%AA%E3%81%A3%E3%81%9F%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E5%88%87%E6%96%AD%E3%81%95%E3%81%9B%E3%82%8B%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B
 
