@@ -29968,9 +29968,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="connectionpoolhttpidletimeout">▼ connectionPool.http.idleTimeout<a class="headerlink" href="#connectionpoolhttpidletimeout" title="Permanent link">&para;</a></h4>
-<p>確立中のTCP接続で無通信状態 (パケットの送受信がない) を許可する時間を設定する。</p>
+<p>確立中のTCP接続でアイドルタイムアウト (パケットの送受信がない状態) を許可する時間を設定する。</p>
 <p>不要な接続を早期に切断できる。</p>
-<p>VirtualServiceの<code>.spec.http.timeout</code>キーとは異なり、DestinationRuleのタイムアウトはTCP接続中に無通信状態を許可する時間である。</p>
+<p>VirtualServiceの<code>.spec.http.timeout</code>キーとは異なり、DestinationRuleのアイドルタイムアウトはTCP接続中に無通信状態を許可する時間である。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -32557,18 +32557,17 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="spechttptimeout">.spec.http.timeout<a class="headerlink" href="#spechttptimeout" title="Permanent link">&para;</a></h3>
 <h4 id="timeout">▼ timeoutとは<a class="headerlink" href="#timeout" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナの宛先にリクエストを送信する時のタイムアウト時間を設定する。</p>
+<p><code>istio-proxy</code>コンテナの宛先にリクエストを送信してから返信があるまでのタイムアウト (接続タイムアウト、読み取りタイムアウト) 時間を設定する。</p>
 <p><code>0</code>秒の場合、タイムアウトは無制限になる。</p>
 <p>これは、Envoyのルートの<code>grpc_timeout_header_max</code>と<code>timeout</code>の両方に適用される。</p>
 <p>指定した時間以内に、<code>istio-proxy</code>コンテナの宛先からレスポンスがなければ、<code>istio-proxy</code>コンテナはタイムアウトとして処理する。</p>
-<p>DestinationRuleの<code>connectionPool.http.idleTimeout</code>キーとは異なり、VirtualServiceのタイムアウトはTCP接続の完了のための待機時間である。</p>
+<p>DestinationRuleの<code>connectionPool.http.idleTimeout</code>キーとは異なり、VirtualServiceのタイムアウト (接続タイムアウト、読み取りタイムアウト) はTCP接続の完了のための待機時間である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-virtual-service</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">http</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># destinationにリクエストを送信する時のタイムアウト時間</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">40s</span>
 <span class="w">      </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
@@ -32756,7 +32755,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月17日 03:22:26">2025-03-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月17日 03:28:15">2025-03-17</span>
   </span>
 
     
