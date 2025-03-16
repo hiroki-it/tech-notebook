@@ -5505,6 +5505,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#connectionpoolhttpidletimeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ connectionPool.http.idleTimeout
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#connectionpooltcptcpkeepalive" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ connectionPool.tcp.tcpKeepalive
@@ -27874,6 +27883,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#connectionpoolhttpidletimeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ connectionPool.http.idleTimeout
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#connectionpooltcptcpkeepalive" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ connectionPool.tcp.tcpKeepalive
@@ -29947,6 +29965,13 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <blockquote>
 <ul>
 <li><a href="https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=115">https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=115</a></li>
+</ul>
+</blockquote>
+<h4 id="connectionpoolhttpidletimeout">▼ connectionPool.http.idleTimeout<a class="headerlink" href="#connectionpoolhttpidletimeout" title="Permanent link">&para;</a></h4>
+<p>VirtualServiceの<code>.spec.http.timeout</code>キーとは異なり、DestinationRuleのタイムアウトはTCP接続中に無通信状態を許可する時間である。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/Takagi_/items/129acd03e76fce5c295b#%E5%AE%9F%E9%9A%9B%E3%81%ABhttp%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88%E8%A8%AD%E5%AE%9A%E3%82%84%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%81%A8%E3%81%AA%E3%81%A3%E3%81%9F%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E5%88%87%E6%96%AD%E3%81%95%E3%81%9B%E3%82%8B%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B">https://qiita.com/Takagi_/items/129acd03e76fce5c295b#%E5%AE%9F%E9%9A%9B%E3%81%ABhttp%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88%E8%A8%AD%E5%AE%9A%E3%82%84%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%81%A8%E3%81%AA%E3%81%A3%E3%81%9F%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E5%88%87%E6%96%AD%E3%81%95%E3%81%9B%E3%82%8B%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B</a></li>
 </ul>
 </blockquote>
 <h4 id="connectionpooltcptcpkeepalive">▼ connectionPool.tcp.tcpKeepalive<a class="headerlink" href="#connectionpooltcptcpkeepalive" title="Permanent link">&para;</a></h4>
@@ -32523,6 +32548,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><code>0</code>秒の場合、タイムアウトは無制限になる。</p>
 <p>これは、Envoyのルートの<code>grpc_timeout_header_max</code>と<code>timeout</code>の両方に適用される。</p>
 <p>指定した時間以内に、<code>istio-proxy</code>コンテナの宛先からレスポンスがなければ、<code>istio-proxy</code>コンテナはタイムアウトとして処理する。</p>
+<p>DestinationRuleの<code>connectionPool.http.idleTimeout</code>キーとは異なり、VirtualServiceのタイムアウトはTCP接続の完了のための待機時間である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -32551,6 +32577,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <ul>
 <li><a href="https://istio.io/latest/docs/tasks/traffic-management/request-timeouts/">https://istio.io/latest/docs/tasks/traffic-management/request-timeouts/</a></li>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto</a></li>
+<li><a href="https://qiita.com/Takagi_/items/129acd03e76fce5c295b#%E5%AE%9F%E9%9A%9B%E3%81%ABhttp%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88%E8%A8%AD%E5%AE%9A%E3%82%84%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%81%A8%E3%81%AA%E3%81%A3%E3%81%9F%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E5%88%87%E6%96%AD%E3%81%95%E3%81%9B%E3%82%8B%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B">https://qiita.com/Takagi_/items/129acd03e76fce5c295b#%E5%AE%9F%E9%9A%9B%E3%81%ABhttp%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88%E8%A8%AD%E5%AE%9A%E3%82%84%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%81%A8%E3%81%AA%E3%81%A3%E3%81%9F%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E5%88%87%E6%96%AD%E3%81%95%E3%81%9B%E3%82%8B%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -32716,7 +32743,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月15日 21:42:24">2025-03-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月17日 02:56:17">2025-03-17</span>
   </span>
 
     
