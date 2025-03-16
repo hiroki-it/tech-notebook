@@ -51,7 +51,7 @@ description: PromQL＠メトリクス
 
 #### ▼ ワイルドカード
 
-`=~`演算子を使用して正規表現マッチングを有効化し、`.*`演算子や`$`演算子でワイルドカードを適用する。
+`=~`演算子を使用して正規表現マッチングを有効化し、`.*`演算子や `$`演算子でワイルドカードを適用する。
 
 ```bash
 # 前方一致
@@ -84,7 +84,7 @@ sum(<メトリクス名>) by (<ラベル>)
 
 **例**
 
-直近1時間に関して、Istioの`istio-proxy`コンテナの受信リクエストのテータポイント数を、コンテナの種類ごとに集約する。
+直近1時間に関して、Istioの `istio-proxy`コンテナの受信リクエストのテータポイント数を、コンテナの種類ごとに集約する。
 
 ```bash
 sum(idelta(istio_requests_total[1h])) by (destination_app)
@@ -95,7 +95,7 @@ sum(idelta(istio_requests_total[1h])) by (destination_app)
 
 **例**
 
-任意の期間内に関して、Istioの`istio-proxy`コンテナの受信リクエストのテータポイント数の増加量を算出する。
+任意の期間内に関して、Istioの `istio-proxy`コンテナの受信リクエストのテータポイント数の増加量を算出する。
 
 ```bash
 sum(increase(istio_requests_total{destination_workload_namespace="default"}[$__range:])) by (destination_service)
@@ -103,7 +103,7 @@ sum(increase(istio_requests_total{destination_workload_namespace="default"}[$__r
 
 **例**
 
-任意の期間内に関して、Istioの`istio-proxy`コンテナの処理時間の一番高い値を算出する。
+任意の期間内に関して、Istioの `istio-proxy`コンテナの処理時間の一番高い値を算出する。
 
 ```bash
 max(max_over_time(rate(istio_request_duration_milliseconds_sum{destination_service_namespace="default"}[$__rate_interval])[$__range:])) by (destination_service)
@@ -111,7 +111,7 @@ max(max_over_time(rate(istio_request_duration_milliseconds_sum{destination_servi
 
 **例**
 
-任意の期間内に関して、Istioの`istio-proxy`コンテナの処理時間の平均を算出する。
+任意の期間内に関して、Istioの `istio-proxy`コンテナの処理時間の平均を算出する。
 
 ```bash
 avg(avg_over_time(rate(istio_request_duration_milliseconds_sum{destination_service_namespace="default"}[$__rate_interval])[$__range:])) by (destination_service)
@@ -121,7 +121,7 @@ avg(avg_over_time(rate(istio_request_duration_milliseconds_sum{destination_servi
 
 複数の種類で集約することもできる。
 
-直近1時間に関して、Istioの`istio-proxy`コンテナで収集したレスポンスの補足メッセージ (`%RESPONSE_FLAGS%`変数) を、Pod名、変数値の種類ごとに集約する。
+直近1時間に関して、Istioの `istio-proxy`コンテナで収集したレスポンスの補足メッセージ (`%RESPONSE_FLAGS%`変数) を、Pod名、変数値の種類ごとに集約する。
 
 ```bash
 sum(idelta(istio_requests_total{response_flags!="-"}[1h])) by (pod_name, response_flags)
@@ -190,14 +190,37 @@ rate(<メトリクス名>[1h])
 
 **例**
 
-`istio-proxy`コンテナから宛先に対する平均レスポンスタイムを集計する。
+![istio_distributed_tracing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_distributed_tracing.png)
+
+`reporter="source"`の場合、送信元 `istio-proxy`コンテナに対して、宛先 `istio-proxy`コンテナの先にあるアプリがレスポンスを返信する平均レスポンスタイムを集計する。
 
 ```bash
-rate(istio_request_duration_milliseconds_sum[5m])/ rate(istio_request_duration_milliseconds_count[5m])
+rate(istio_request_duration_milliseconds_sum{reporter="source"}[5m])/ rate(istio_request_duration_milliseconds_count{reporter="source"}[5m])
+```
+
+`reporter="destination"`の場合、宛先 `istio-proxy`コンテナに対して、アプリがレスポンスを返信する平均レスポンスタイムを集計する。
+
+```bash
+rate(istio_request_duration_milliseconds_sum{reporter="destination"}[5m])/ rate(istio_request_duration_milliseconds_count{reporter="destination"}[5m])
 ```
 
 > - https://grafana.com/docs/grafana-cloud/monitor-applications/asserts/enable-prom-metrics-collection/infrastructure/istio/#request-error-and-latency-metrics
 > - https://stackoverflow.com/q/62137292/12771072
+
+**例**
+
+400ステータスのレスポンスを集計する。
+
+`istio-proxy `コンテナがアプリから返信されたステータスコードであるため、宛先の ` istio-proxy`コンテナを表す  `reporter="destination""`ラベルでフィルタリングすることが前提である。クライアントが切断し、`istio-proxy `コンテナレスポンスを返信できなかった場合には `0`になる。
+
+宛先の `istio-proxy `コンテナからアプリコンテナにレスポンスを返信できなかった場合には `0`になる。
+
+```bash
+sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m]))
+```
+
+> - https://cloud.google.com/stackdriver/docs/managed-prometheus/exporters/istio?hl=ja#rules-alerts
+> - https://github.com/istio/istio/discussions/47571
 
 #### ▼ rate
 
