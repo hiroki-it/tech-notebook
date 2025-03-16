@@ -567,6 +567,12 @@ spec:
 
 > - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=115
 
+#### ▼ connectionPool.http.idleTimeout
+
+VirtualServiceの`.spec.http.timeout`キーとは異なり、DestinationRuleのタイムアウトはTCP接続中に無通信状態を許可する時間である。
+
+> - https://qiita.com/Takagi_/items/129acd03e76fce5c295b#%E5%AE%9F%E9%9A%9B%E3%81%ABhttp%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88%E8%A8%AD%E5%AE%9A%E3%82%84%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%81%A8%E3%81%AA%E3%81%A3%E3%81%9F%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E5%88%87%E6%96%AD%E3%81%95%E3%81%9B%E3%82%8B%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B
+
 #### ▼ connectionPool.tcp.tcpKeepalive
 
 宛先との間でTCP KeepAliveを実施する。
@@ -3560,6 +3566,8 @@ spec:
 
 指定した時間以内に、`istio-proxy`コンテナの宛先からレスポンスがなければ、`istio-proxy`コンテナはタイムアウトとして処理する。
 
+DestinationRuleの`connectionPool.http.idleTimeout`キーとは異なり、VirtualServiceのタイムアウトはTCP接続の完了のための待機時間である。
+
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: VirtualService
@@ -3588,6 +3596,7 @@ spec:
 
 > - https://istio.io/latest/docs/tasks/traffic-management/request-timeouts/
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto
+> - https://qiita.com/Takagi_/items/129acd03e76fce5c295b#%E5%AE%9F%E9%9A%9B%E3%81%ABhttp%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88%E8%A8%AD%E5%AE%9A%E3%82%84%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%81%A8%E3%81%AA%E3%81%A3%E3%81%9F%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E5%88%87%E6%96%AD%E3%81%95%E3%81%9B%E3%82%8B%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B
 
 <br>
 
