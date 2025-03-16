@@ -190,7 +190,7 @@ rate(<メトリクス名>[1h])
 
 **例**
 
-![istio_distributed_tracing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_distributed_tracing.png)
+![istio_request_duration_milliseconds_sum](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_request_duration_milliseconds_sum.png)
 
 `reporter="source"`の場合、送信元 `istio-proxy`コンテナに対して、宛先 `istio-proxy`コンテナの先にあるアプリがレスポンスを返信する平均レスポンスタイムを集計する。
 
@@ -211,9 +211,9 @@ rate(istio_request_duration_milliseconds_sum{reporter="destination"}[5m])/ rate(
 
 400ステータスのレスポンスを集計する。
 
-`istio-proxy `コンテナがアプリから返信されたステータスコードであるため、宛先の ` istio-proxy`コンテナを表す  `reporter="destination""`ラベルでフィルタリングすることが前提である。クライアントが切断し、`istio-proxy `コンテナレスポンスを返信できなかった場合には `0`になる。
+`response_code`ラベルは`istio-proxy`コンテナがアプリから返信されたステータスコードであるため、`reporter="destination"`ラベルで宛先の`istio-proxy`コンテナを指定し、このコンテナからのメトリクスを集計する必要がある。
 
-宛先の `istio-proxy `コンテナからアプリコンテナにレスポンスを返信できなかった場合には `0`になる。
+ただしクライアントが切断し、`istio-proxy `コンテナレスポンスを返信できなかった場合には、`reporter="source"`ラベルを指定し、`response_code=0`を集計する。
 
 ```bash
 sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m]))
