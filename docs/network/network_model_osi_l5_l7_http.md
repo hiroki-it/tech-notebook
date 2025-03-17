@@ -985,7 +985,7 @@ session.gc_divisor = 1
 
 ### 負荷分散方式
 
-#### ▼ 静的
+#### ▼ 静的方式
 
 宛先の負荷を考慮せずに、ロードバランシングする。
 
@@ -996,7 +996,7 @@ session.gc_divisor = 1
 > - https://www.cloudflare.com/ja-jp/learning/performance/types-of-load-balancing-algorithms/
 > - https://aws.amazon.com/jp/what-is/load-balancing/
 
-#### ▼ 動的
+#### ▼ 動的方式
 
 宛先の負荷をリアルタイムに考慮して、ロードバランシングする。
 

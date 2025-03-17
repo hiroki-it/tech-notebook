@@ -103,7 +103,7 @@ ztunnel Pod (L4) # DaemonSet配下なので、Nodeごとにいる
 
 実体は、DaemonSetとして稼働する。
 
-`kube-system`のNamespaceにおき、PriorityClassを` system-node-critical`とすることが推奨である。
+`kube-system`のNamespaceにおき、PriorityClassを`system-node-critical`とすることが推奨である。
 
 istio-cniは、`/var/run/ztunnel/ztunnel.sock`ファイル経由でztunnelから接続される。
 

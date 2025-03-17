@@ -346,6 +346,8 @@ fields @timestamp, @message, @logStream
 
 JSONがネストになっている場合、`filter`では`.` (ドット) でつなぐ。
 
+ここでは`foo-app`コンテナを集計している。
+
 ```sql
 fields @timestamp, @message, @logStream
 | filter kubernetes.container_name like /(foo-app)/

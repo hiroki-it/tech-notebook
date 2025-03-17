@@ -486,15 +486,15 @@ W3C Trace Context仕様のスパンのIDに相当する。
 
 #### ▼ 一覧
 
-| OpenTelemetry                                                                                                                                                              | X-Ray                          | 値の例 |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------ |
-| `http.method`                                                                                                                                                              | `http.request.method`          |        |
-| `http.client_ip`                                                                                                                                                           | `http.request.client_ip`       |        |
-| `http.client_ip`                                                                                                                                                           | `http.request.x_forwarded_for` |        |
-| `http.user_agent`                                                                                                                                                          | `http.request.user_agent`      |        |
-| `http.status_code`                                                                                                                                                         | `http.response.status`         | `200`  |
-| `http.url`、`http.scheme`、`http.host`、`http.target`、`http.server_name`、`net.host.port`、` host.name`、`net.host.name`、`net.peer.name`、`net.peer.port`、`net.peer.ip` | `http.request.url`             |        |
-| `message.type`                                                                                                                                                             | `http.response.content_length` |        |
+| OpenTelemetry                                                                                                                                                             | X-Ray                          | 値の例 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------ |
+| `http.method`                                                                                                                                                             | `http.request.method`          |        |
+| `http.client_ip`                                                                                                                                                          | `http.request.client_ip`       |        |
+| `http.client_ip`                                                                                                                                                          | `http.request.x_forwarded_for` |        |
+| `http.user_agent`                                                                                                                                                         | `http.request.user_agent`      |        |
+| `http.status_code`                                                                                                                                                        | `http.response.status`         | `200`  |
+| `http.url`、`http.scheme`、`http.host`、`http.target`、`http.server_name`、`net.host.port`、`host.name`、`net.host.name`、`net.peer.name`、`net.peer.port`、`net.peer.ip` | `http.request.url`             |        |
+| `message.type`                                                                                                                                                            | `http.response.content_length` |        |
 
 <br>
 

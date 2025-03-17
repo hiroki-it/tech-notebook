@@ -718,6 +718,22 @@ Swap:          1023           0        1023
 $ minikube start --docker-env
 ```
 
+#### ▼ --ha
+
+コントロールプレーンNodeを`3`個に冗長化する。
+
+```bash
+$ minikube start --ha
+```
+
+個別にコントロールプレーンNodeを追加しても良い。
+
+```bash
+$ minikube node add --control-plane
+```
+
+> - https://minikube.sigs.k8s.io/docs/tutorials/multi_control_plane_ha_clusters/
+
 #### ▼ --driver
 
 ゲスト仮想環境のドライバーを指定し、`start`コマンドを実行する。
