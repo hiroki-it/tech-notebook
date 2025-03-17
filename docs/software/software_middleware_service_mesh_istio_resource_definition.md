@@ -643,7 +643,9 @@ Podをルーティング先から切り離す秒数を設定する。
 
 **＊実装例＊**
 
-10秒以内にエラーが10回以上発生したらサーキットブレイカーを開始し、30秒間Podを切り離す。
+Gateway系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。
+
+サーキットブレイカー中に、異常なPodを30秒間切り離す
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -672,6 +674,10 @@ spec:
 
 **＊実装例＊**
 
+Gateway系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。
+
+サーキットブレイカー中に、異常なPodを30秒間切り離す
+
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
@@ -699,7 +705,9 @@ spec:
 
 **＊実装例＊**
 
-`500`系ステータスが10回以上発生したらサーキットブレイカーを開始する。
+`500`系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。
+
+サーキットブレイカー中に、異常なPodを30秒間切り離す
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -725,6 +733,10 @@ spec:
 
 **＊実装例＊**
 
+`500`系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。
+
+サーキットブレイカー中に、異常なPodを30秒間切り離す
+
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
@@ -733,7 +745,9 @@ metadata:
 spec:
   trafficPolicy:
     outlierDetection:
+      consecutive5xxErrors: 10
       interval: 10s
+      baseEjectionTime: 30s
 ```
 
 > - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
