@@ -70,6 +70,20 @@ resource.labels.pod_name=~".*pod.*"
 
 > - https://cocoinit23.com/prometheus-query-regular-expression-wildcard/
 
+#### ▼ エスケープ
+
+正規表現で記号をエスケープする場合、Grafanaでは２つのバックスラッシュ (`\\`) を使用する。
+
+**＊実行例＊**
+
+`|`という記号をエスケープするために、`\\`を使用している。
+
+```bash
+sum(envoy_cluster_outlier_detection_ejections_active{pod=~"^foo.*$",namespace=~"bookinfo", cluster_name=~".*\\|v2\\|bar.*"}) by (pod,cluster_name)
+```
+
+> - https://github.com/grafana/grafana/issues/4234#issuecomment-191683898
+
 <br>
 
 ### 関数
