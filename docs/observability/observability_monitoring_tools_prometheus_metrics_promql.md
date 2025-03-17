@@ -180,7 +180,19 @@ sum(envoy_cluster_membership_healthy) / sum(envoy_cluster_membership_total)
 
 **例**
 
-直近1時間に関して、メトリクスの平均増加率 (%/秒) を集計する。
+直近`n`分や`n`時間に関して、メトリクスの平均増加率 (%/秒) を集計する。
+
+算出の時間が短い場合 (例：1m、5m) 、急激な変化の影響を受けるため、短期間の傾向を反映した値になる。
+
+リアルタイム性が重要な場合 (CPUやメモリの使用率の急激な変化) は、短くする。
+
+```bash
+rate(<メトリクス名>[1m])
+```
+
+算出の時間が長い場合 (例：1h) 、急激な変化の影響を受けないため、長期間の傾向を反映した値になる。
+
+長期的な傾向を知りたい場合 (リクエスト数の変化の傾向) は重要な場合は、短くする。
 
 ```bash
 rate(<メトリクス名>[1h])
@@ -227,22 +239,6 @@ sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])
 
 > - https://cloud.google.com/stackdriver/docs/managed-prometheus/exporters/istio?hl=ja#rules-alerts
 > - https://github.com/istio/istio/discussions/47571
-
-#### ▼ rate
-
-平均増加率 (%/秒) を算出する。
-
-常に同じ割合で増加していく場合、横一直線のグラフになる。
-
-**例**
-
-直近1時間に関して、メトリクスの平均増加率 (%/秒) を集計する。
-
-```bash
-rate(<メトリクス名>[1h])
-```
-
-> - https://www.opsramp.com/prometheus-monitoring/promql/
 
 #### ▼ `[]` (ウィンドウ)
 
