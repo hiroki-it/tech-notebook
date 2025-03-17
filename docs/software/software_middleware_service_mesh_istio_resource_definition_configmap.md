@@ -292,13 +292,14 @@ data:
 | HTTP/1.1のステータスコード                                  |                           おすすめ                           | リトライ条件                                                                                                                                                                                  |
 | ----------------------------------------------------------- | :----------------------------------------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `connect-failure`                                           |                              ✅                              | `istio-proxy`からのアウトバウンド通信のレスポンスで、接続タイムアウト (Connection timeout) が起こった。                                                                                       |
-| `gateway-error`                                             |        リトライしてもエラーが変わらない可能性がある。        | `istio-proxy`からのアウトバウンド通信のレスポンスで、Gateway系ステータスコード (`502`、`503`、`504`) が返信された。                                                                           |
+| `gateway-error`                                             |                              ✅                              | `istio-proxy`からのアウトバウンド通信のレスポンスで、Gateway系ステータスコード (`502`、`503`、`504`) が返信された。                                                                           |
 | `retriable-status-codes` (任意のステータスコードを設定する) | リトライによって、冪等性のない二重処理が起こる可能性がある。 | `istio-proxy`からのアウトバウンド通信のレスポンスで、指定したHTTPステータスであった。`EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`変数を`true`にすると、元はデフォルト値であった`503`を設定できる。 |
 | `reset`                                                     | リトライによって、冪等性のない二重処理が起こる可能性がある。 | `istio-proxy`からのアウトバウンド通信で切断／リセット／読み取りタイムアウト (Read timeout) が起こった。                                                                                       |
 
-> - https://karlstoney.com/retry-policies-in-istio/
+> - https://cloud.google.com/storage/docs/retry-strategy?hl=ja#retryable
 > - https://github.com/istio/istio/issues/51704#issuecomment-2188555136
 > - https://github.com/istio/istio/issues/35774#issuecomment-953877524
+> - https://cloud.google.com/storage/docs/retry-strategy?hl=ja
 
 | HTTP/2のステータスコード |                               おすすめ                               | リトライ条件                                                                                             |
 | ------------------------ | :------------------------------------------------------------------: | -------------------------------------------------------------------------------------------------------- |
@@ -2165,7 +2166,6 @@ spec:
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 > - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
-> - https://github.com/istio/istio/issues/51704#issuecomment-2188555136
 > - https://karlstoney.com/retry-policies-in-istio/
 
 <br>
