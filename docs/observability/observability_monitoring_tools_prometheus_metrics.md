@@ -21,13 +21,19 @@ description: メトリクス＠Prometheus
 
 数を単位とするメトリクス (例：`go_gc_duration_seconds_count`) が所属する。
 
+メトリクス型がCounterの場合は`rate`関数で秒あたりの変化を集計し、これを`sum`関数で合計できる。
+
 > - https://prometheus.io/docs/tutorials/understanding_metric_types/#counter
+> - https://chronosphere.io/learn/an-introduction-to-the-four-primary-types-of-prometheus-metrics/
 
 #### ▼ Gauge
 
 動的に増減するメトリクス (例：`go_memstats_heap_alloc_bytes`) が所属する。
 
+メトリクス型がGaugeであると`rate`関数は使用できない。
+
 > - https://prometheus.io/docs/tutorials/understanding_metric_types/#gauge
+> - https://chronosphere.io/learn/an-introduction-to-the-four-primary-types-of-prometheus-metrics/
 
 #### ▼ Histogram
 
