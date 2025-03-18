@@ -528,7 +528,31 @@ CSRまたはSSRのアプリケーションは、`Cookie`ヘッダーを介して
 
 <br>
 
-## 07. 複数の認証の組み合わせ
+## 07. ログアウト
+
+### `Cookie`ヘッダーによる運搬
+
+#### ▼ ブラウザを閉じた時
+
+ブラウザを閉じた時に、ブラウザはCookieを削除する。
+
+そのため、ログアウトが起こる。
+
+> - https://qiita.com/kandalog/items/80d7574e6bd00afd5150
+
+#### ▼ レスポンスの`Expires`ヘッダーを返信している場合
+
+レスポンスの`Expires`ヘッダーにはCookieの有効期限を設定できる。
+
+ブラウザは有効期限に応じてCookieを削除する。
+
+そのため、ログアウトが起こる。
+
+> - https://qiita.com/kandalog/items/80d7574e6bd00afd5150
+
+<br>
+
+## 08. 複数の認証の組み合わせ
 
 ### TSV：Two Step Verification (二段階認証)
 
