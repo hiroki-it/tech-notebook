@@ -780,6 +780,30 @@ spec:
 > - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection
 
+#### ▼ loadBalancer.consistentHash
+
+負荷分散方式としてスティッキーセッションを設定する。
+
+認証時にセッションベースの認証情報を使用する場合に役立つ。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    loadBalancer:
+      consistentHash:
+        httpCookie:
+          name: session_id
+          ttl: 0s
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-ConsistentHashLB
+
 #### ▼ loadBalancer.simple
 
 負荷分散方式としてラウンドロビンを設定する。
