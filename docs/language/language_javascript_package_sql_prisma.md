@@ -25,6 +25,10 @@ PrismaClientは、クエリエンジンに切断リクエストを送信する�
 
 クエリエンジンは、DBとの接続を破棄する。
 
+もし接続プール上の接続が全て使用されてしまった場合、いずれかの接続が解放されるまで待機する必要がある。
+
+この時に、送信されたリクエストは待機キューで解放を待つ。
+
 ![architecture_prisma](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/architecture_prisma.png)
 
 > - https://www.prisma.io/docs/orm/more/under-the-hood/engines
@@ -164,7 +168,7 @@ q+werty%3D%2F%3B
 URLのパラメーターとして、以下などを設定できる。
 
 - コネションプールの接続上限数 (`connection_limit`)
-- 接続プール内の接続が空くまでの待機時間 (`pool_timeout`)
+- 接続プール内の接続が解放されるまでキューで待機する時間 (`pool_timeout`)
 
 > - https://zenn.dev/cloudbase/articles/65b9f6e4f9ae05#prismaclient%E3%81%AB%E6%B8%A1%E3%81%99datasource-url%E3%81%AE%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF
 > - https://dev.classmethod.jp/articles/prisma-engines-connection-pooling-parameters/#pool_timeout

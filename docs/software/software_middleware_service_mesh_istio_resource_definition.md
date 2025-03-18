@@ -528,11 +528,11 @@ spec:
 
 #### ▼ connectionPool.http.http1MaxPendingRequests
 
-キューで待機できるリクエスト (HTTP/1.1) の上限数を設定する。
+もし接続プール上の接続が全て使用されてしまった場合、いずれかの接続が解放されるまで待機する必要がある。
 
-HTTP/1.1では、TCP接続あたりに一つのリクエストしか送信できないため、一つのリクエストの処理が完了するまでキューの待機数は減らない。
+この時に、接続の待機キューで待機させるリクエスト (HTTP/1.1) の上限数を設定する。
 
-`http1MaxPendingRequests`キーを超えてリクエストを受信すると、キューに格納できない分は`503`ステータスになる。
+キューに`http1MaxPendingRequests`キーを超えてHTTPリクエスト (HTTP/1.1) を送信すると、キューに格納できないリクエストは`503`ステータスになる。
 
 **＊実装例＊**
 
@@ -550,14 +550,13 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings
 > - https://qiita.com/sonq/items/4cee6f85f91ea7dfcbbf#http1maxpendingrequests
+> - https://itpfdoc.hitachi.co.jp/manuals/3020/30203m0360/EM030358.HTM
 
 #### ▼ connectionPool.http.http2MaxRequests
 
-TCP接続当たりに送信できるHTTPリクエスト (HTTP/2.0) の上限数を設定する。
+TCP接続当たりに並行的に送信できるHTTPリクエスト (HTTP/2.0) の上限数を設定する。
 
-HTTP/2.0では、TCP接続あたりに複数のリクエストしか送信できる。
-
-`http2MaxRequests`キーを超えて同時にリクエスト (HTTP/2.0) を受信すると、`503`ステータスになる。
+`http2MaxRequests`キーを超えてTCP接続あたりに同時にHTTPリクエスト (HTTP/2.0) を送信すると、`503`ステータスになる。
 
 **＊実装例＊**
 
