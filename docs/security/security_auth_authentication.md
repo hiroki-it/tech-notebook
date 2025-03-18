@@ -548,11 +548,7 @@ CSRまたはSSRのアプリケーションは、`Cookie`ヘッダーを介して
 
 そのため、ログアウトが起こる。
 
-> - https://qiita.com/kandalog/items/80d7574e6bd00afd5150
-
-#### ▼ 有効期限がない
-
-有効期限がなくブラウザで永続的に保管されるCookieを、特に『セッションCookie』という。
+有効期限がない場合、`Expires`ヘッダーの値は`Session`となり、このCookieを特に『Session Cookie』という。
 
 > - https://qiita.com/kandalog/items/80d7574e6bd00afd5150
 
