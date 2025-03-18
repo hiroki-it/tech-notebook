@@ -807,9 +807,13 @@ spec:
 
 #### ▼ loadBalancer.simple
 
-負荷分散方式としてラウンドロビンを設定する。
+負荷分散方式を設定する。
 
 **＊実装例＊**
+
+負荷分散方式としてラウンドロビンを設定する。
+
+宛先の負荷を考慮しない静的方式のため、非推奨である。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -827,33 +831,9 @@ spec:
 
 **＊実装例＊**
 
-負荷分散方式として重み付けを設定する。
-
-リージョン名やゾーン名は、Podの`topologyKey`キー（`topology.kubernetes.io/region`キー、`topology.kubernetes.io/zone`キーなど) の値を設定する。
-
-```yaml
-apiVersion: networking.istio.io/v1
-kind: DestinationRule
-metadata:
-  name: foo-destination-rule
-spec:
-  trafficPolicy:
-    loadBalancer:
-      localityLbSetting:
-        enabled: "true"
-        distribute:
-          - from: <リージョン名>/<ゾーン名>/*
-            to:
-              "<リージョン名1>/<ゾーン名1>/*": 70
-              "<リージョン名2>/<ゾーン名2>/*": 30
-```
-
-> - https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/distribute/
-> - https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/
-
-**＊実装例＊**
-
 負荷分散方式として最小リクエスト数を設定する。
+
+宛先の負荷を考慮する動的方式のため、推奨である。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -933,8 +913,34 @@ spec:
   trafficPolicy:
     portLevelSettings:
       - loadBalancer:
-          simple: ROUND_ROBIN
+          simple: LEAST_REQUEST
 ```
+
+**＊実装例＊**
+
+ゾーンを横断した負荷分散を設定する。
+
+リージョン名やゾーン名は、Podの`topologyKey`キー（`topology.kubernetes.io/region`キー、`topology.kubernetes.io/zone`キーなど) の値を設定する。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    loadBalancer:
+      localityLbSetting:
+        enabled: "true"
+        distribute:
+          - from: <リージョン名>/<ゾーン名>/*
+            to:
+              "<リージョン名1>/<ゾーン名1>/*": 70
+              "<リージョン名2>/<ゾーン名2>/*": 30
+```
+
+> - https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/distribute/
+> - https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
 
