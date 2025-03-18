@@ -487,7 +487,7 @@ spec:
 
 #### ▼ connectionPool.http.maxRequestsPerConnection
 
-HTTPプロトコルを処理する場合に、TCPスリーウェイハンドシェイク当たりのリクエストの上限値を設定する。
+TCP接続当たりに送信できるHTTPリクエストの上限値を設定する。
 
 デフォルトでは上限がない。
 
@@ -528,9 +528,11 @@ spec:
 
 #### ▼ connectionPool.http.http1MaxPendingRequests
 
-キューに入れられるHTTPリクエストのレートリミットを設定する。
+キューで待機できるリクエスト (HTTP/1.1) の上限数を設定する。
 
-キューを超えるHTTPリクエストに対しては、`503`ステータスを返信する。
+HTTP/1.1では、TCP接続あたりに一つのリクエストしか送信できないため、一つのリクエストの処理が完了するまでキューの待機数は減らない。
+
+`http1MaxPendingRequests`キーを超えてリクエストを受信すると、キューに格納できない分は`503`ステータスになる。
 
 **＊実装例＊**
 
@@ -550,6 +552,12 @@ spec:
 > - https://qiita.com/sonq/items/4cee6f85f91ea7dfcbbf#http1maxpendingrequests
 
 #### ▼ connectionPool.http.http2MaxRequests
+
+TCP接続当たりに送信できるHTTPリクエスト (HTTP/2.0) の上限数を設定する。
+
+HTTP/2.0では、TCP接続あたりに複数のリクエストしか送信できる。
+
+`http2MaxRequests`キーを超えて同時にリクエスト (HTTP/2.0) を受信すると、`503`ステータスになる。
 
 **＊実装例＊**
 
