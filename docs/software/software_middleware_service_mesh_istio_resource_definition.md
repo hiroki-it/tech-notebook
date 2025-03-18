@@ -780,13 +780,11 @@ spec:
 > - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection
 
-#### ▼ loadBalancer
+#### ▼ loadBalancer.simple
 
-Podへのルーティング時に使用する負荷分散方式を設定する。
+負荷分散方式としてラウンドロビンを設定する。
 
 **＊実装例＊**
-
-複数のゾーンのPodに対して、ラウンドロビンでルーティングする。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -804,7 +802,7 @@ spec:
 
 **＊実装例＊**
 
-指定したゾーンのPodに対して、指定した重みづけでルーティングする。
+負荷分散方式として重み付けを設定する。
 
 リージョン名やゾーン名は、Podの`topologyKey`キー（`topology.kubernetes.io/region`キー、`topology.kubernetes.io/zone`キーなど) の値を設定する。
 
@@ -830,7 +828,7 @@ spec:
 
 **＊実装例＊**
 
-複数のゾーンのPodに対して、最小リクエスト数でルーティングする。
+負荷分散方式として最小リクエスト数を設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -843,6 +841,57 @@ spec:
       # 最小リクエスト数
       simple: LEAST_CONN
 ```
+
+#### ▼ loadBalancer.warmup.aggression
+
+負荷分散方式としてスロースタート方式 (通過させるリクエストの数を少しずつ増加させる) を指定し、増加率を設定する。
+
+`1`の場合は、直線的に増加する。
+
+リクエスト数の非常に多い高トラフィックなシステムで、起動直後のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、接続プールの作成が必要、ウォームアップが必要なJVM言語製アプリケーション) にいきなり高負荷をかけないようにできる。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    loadBalancer:
+      warmup:
+        duration: 30
+        aggression: 1
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration
+> - https://stackoverflow.com/a/75942527/12771072
+> - https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start
+
+#### ▼ loadBalancer.warmup.duration
+
+負荷分散方式としてスロースタート方式 (通過させるリクエストの数を少しずつ増加させる) を指定し、スロースタートの期間を設定する。
+
+リクエスト数の非常に多い高トラフィックなシステムで、起動直後のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、接続プールの作成が必要、ウォームアップが必要なJVM言語製アプリケーション) にいきなり高負荷をかけないようにできる。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    loadBalancer:
+      warmup:
+        duration: 30
+        aggression: 1
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration
+> - https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start
 
 #### ▼ portLevelSettings.loadBalancer
 
@@ -1003,55 +1052,6 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings
-
-#### ▼ warmup.aggression
-
-スロースタート方式 (通過させるリクエストの数を少しずつ増加させる) で、増加率を設定する。
-
-`1`の場合は、直線的に増加する。
-
-リクエスト数の非常に多い高トラフィックなシステムで、起動直後のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、接続プールの作成が必要、ウォームアップが必要なJVM言語製アプリケーション) にいきなり高負荷をかけないようにできる。
-
-```yaml
-apiVersion: networking.istio.io/v1
-kind: DestinationRule
-metadata:
-  name: foo-destination-rule
-spec:
-  trafficPolicy:
-    warmup:
-      duration: 30
-      aggression: 1
-```
-
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration
-> - https://stackoverflow.com/a/75942527/12771072
-> - https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start
-
-#### ▼ warmup.duration
-
-スロースタート方式 (通過させるリクエストの数を少しずつ増加させる) で、スロースタートの期間を設定する。
-
-リクエスト数の非常に多い高トラフィックなシステムで、起動直後のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、接続プールの作成が必要、ウォームアップが必要なJVM言語製アプリケーション) にいきなり高負荷をかけないようにできる。
-
-```yaml
-apiVersion: networking.istio.io/v1
-kind: DestinationRule
-metadata:
-  name: foo-destination-rule
-spec:
-  trafficPolicy:
-    warmup:
-      duration: 30
-      aggression: 1
-```
-
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration
-> - https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start
 
 <br>
 
