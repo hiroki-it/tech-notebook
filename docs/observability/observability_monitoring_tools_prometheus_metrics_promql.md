@@ -167,9 +167,9 @@ rate関数のラッパーであり、rate関数の結果 (平均増加率) に�
 rate関数に期間 (今回は5m) を自動的に掛けた数値を集計する。
 
 ```bash
-increase(<メトリクス名>[5m])
+increase(<Counter型メトリクス名>[5m])
 # メトリクスの平均増加率 (%/秒) を集計する。
-= rate(<メトリクス名>[1h]) * 5 * 60
+= rate(<Counter型メトリクス名>[1h]) * 5 * 60
 ```
 
 > - https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates
@@ -192,18 +192,18 @@ sum(envoy_cluster_membership_healthy) / sum(envoy_cluster_membership_total)
 
 常に同じ割合で増加していく場合、横一直線のグラフになる。
 
-メトリクス型がCounterの場合は`rate`関数で秒あたりの変化を集計し、これを`sum`関数で合計できる。
+メトリクス型がCounterの場合は`rate`関数で秒当たりの変化を集計し、これを`sum`関数で合計できる。
 
 一方で、Gaugeであると`rate`関数は使用できない。
 
 ```bash
-# 秒あたりの平均増加率を１分間で集計する
-rate(<メトリクス名>[1m])
+# 秒当たりの平均増加率を１分間で集計する
+rate(<Counter型メトリクス名>[1m])
 ```
 
 ```bash
 # 分あたりの平均増加率を１分間で集計する
-rate(<メトリクス名>[1m]) * 60
+rate(<Counter型メトリクス名>[1m]) * 60
 ```
 
 > - https://chronosphere.io/learn/an-introduction-to-the-four-primary-types-of-prometheus-metrics/
@@ -217,8 +217,8 @@ rate(<メトリクス名>[1m]) * 60
 リアルタイム性が重要な場合 (CPUやメモリの使用率、ステータスコード、リクエスト数の急激な変化) は、短くする。
 
 ```bash
-# 秒あたりの平均増加率を１分間で集計する
-rate(<メトリクス名>[1m])
+# 秒当たりの平均増加率を１分間で集計する
+rate(<Counter型メトリクス名>[1m])
 ```
 
 集計の時間が長い場合 (例：1h) 、急激な変化の影響を受けないため、長期間の傾向を反映した値になる。
@@ -226,8 +226,8 @@ rate(<メトリクス名>[1m])
 長期的な傾向を知りたい場合 (リクエスト数の長期的な傾向) は重要な場合は、短くする。
 
 ```bash
-# 秒あたりの平均増加率を１時間で集計する
-rate(<メトリクス名>[1h])
+# 秒当たりの平均増加率を１時間で集計する
+rate(<Counter型メトリクス名>[1h])
 ```
 
 > - https://www.opsramp.com/prometheus-monitoring/promql/
@@ -239,12 +239,14 @@ rate(<メトリクス名>[1h])
 `reporter="source"`の場合、送信元`istio-proxy`コンテナに対して、宛先 `istio-proxy`コンテナの先にあるアプリがレスポンスを返信する平均レスポンスタイムを集計する。
 
 ```bash
+# 秒当たりの平均増加率を５分間で集計する
 rate(istio_request_duration_milliseconds_sum{reporter="source"}[5m])/ rate(istio_request_duration_milliseconds_count{reporter="source"}[5m])
 ```
 
 `reporter="destination"`の場合、宛先`istio-proxy`コンテナに対して、アプリがレスポンスを返信する平均レスポンスタイムを集計する。
 
 ```bash
+# 秒当たりの平均増加率を５分間で集計する
 rate(istio_request_duration_milliseconds_sum{reporter="destination"}[5m])/ rate(istio_request_duration_milliseconds_count{reporter="destination"}[5m])
 ```
 
@@ -258,6 +260,7 @@ rate(istio_request_duration_milliseconds_sum{reporter="destination"}[5m])/ rate(
 `reporter="source"`の場合、送信元`istio-proxy`コンテナに対して、宛先 `istio-proxy`コンテナがアプリから受信したステータスコードを集計する。
 
 ```bash
+# 秒当たりの平均増加率を５分間で集計する
 sum(rate(istio_requests_total{reporter="source", response_code=~"4.*"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m]))
 ```
 
@@ -266,6 +269,7 @@ sum(rate(istio_requests_total{reporter="source", response_code=~"4.*"}[5m])) / s
 特に、クライアントが接続を切断し、宛先`istio-proxy`コンテナレスポンスを返信できなかった場合には、`reporter="source"`ラベルを指定しないと`response_code=0`を集計できない。
 
 ```bash
+# 秒当たりの平均増加率を５分間で集計する
 sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m]))
 ```
 
@@ -281,7 +285,7 @@ sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])
 直近5分に関して、メトリクスの平均増加率 (%/秒) を集計する。
 
 ```bash
-rate(<メトリクス名>[5m])
+rate(<Counter型メトリクス名>[5m])
 ```
 
 > - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/promql_1.html
@@ -312,6 +316,7 @@ absent(container_tasks_state{name="<コンテナ名>",state="running"}) == 1
 Prometheusで収集されたデータポイントの平均サイズ (KB/秒) の増加率を表す。
 
 ```bash
+# 秒当たりの平均増加率を１時間で集計する
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
 rate(prometheus_tsdb_compaction_chunk_samples_sum[1h])
 
@@ -326,6 +331,7 @@ rate(prometheus_tsdb_compaction_chunk_samples_sum[1h])
 Prometheusで収集されたデータポイントの合計数 (個/秒) の増加率を表す。
 
 ```bash
+# 秒当たりの平均増加率を１時間で集計する
 rate(prometheus_tsdb_head_samples_appended_total[1h])
 
 # 結果
@@ -341,6 +347,7 @@ Prometheusで収集されたデータポイントの合計サイズ (KB/秒) の
 計算式からもわかるように、データポイントの収集の間隔を長くすることにより、データポイント数が減るため、合計のサイズを小さくできる。
 
 ```bash
+# 秒当たりの平均増加率を１時間で集計する
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
 rate(prometheus_tsdb_compaction_chunk_samples_sum[1h]) *
 rate(prometheus_tsdb_head_samples_appended_total[1h])
@@ -358,6 +365,7 @@ rate(prometheus_tsdb_head_samples_appended_total[1h])
 Prometheusで収集されたデータポイントの合計サイズ (KB/日) の推移を表す。
 
 ```bash
+# 秒当たりの平均増加率を１時間で集計する
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
 rate(prometheus_tsdb_compaction_chunk_samples_sum[1h]) *
 rate(prometheus_tsdb_head_samples_appended_total[1h]) *
