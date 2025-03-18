@@ -485,37 +485,11 @@ spec:
 
 ### .spec.trafficPolicy
 
-#### ▼ connectionPool.http.maxConcurrentStreams
-
-HTTP/2.0の設定である。
-
-共有したTCP接続上でストリームを送信でき、ストリーム内でHTTPリクエストを並行的に送信する。
-
-この時、同時送信できるストリームを設定する。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: networking.istio.io/v1
-kind: DestinationRule
-metadata:
-  name: foo-destination-rule
-spec:
-  trafficPolicy:
-    connectionPool:
-      http:
-        maxConcurrentStreams: 1００
-```
-
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/connection_pooling#http-2
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings-max_concurrent_streams
-
 #### ▼ connectionPool.http.maxRequestsPerConnection
 
-HTTP/1.1とHTTP/2.0の場合で、意味合いが異なる。
+HTTPプロトコルを処理する場合に、TCPスリーウェイハンドシェイク当たりのリクエストの上限値を設定する。
 
-- HTTP/1.1の場合、占有したTCP接続上で送信できるHTTPリクエストの上限合計数である。
-- HTTP/2.0の場合、共有したTCP接続上で送信できるストリーム内のHTTPリクエストの上限合計数である ("並行的に送信できるリクエストの上限数 `http2MaxRequests` で設定") 。ストリーム内のHTTPリクエストの並行的な送信を正確に算出できないため、おおよその上限である。
+デフォルトでは上限がない。
 
 `2`以上であればHTTP KeepAliveを実施し、`1`とする場合はHTTP KeepAliveは無効になる。
 
@@ -551,17 +525,12 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#envoy-v3-api-field-config-core-v3-httpprotocoloptions-max-requests-per-connection
 
 #### ▼ connectionPool.http.http1MaxPendingRequests
 
-HTTP/1.1とHTTP/2.0の場合で、意味合いは同じである。
+キューに入れられるHTTPリクエストのレートリミットを設定する。
 
-もし接続プール上の接続が全て使用されてしまった場合、いずれかの接続が解放されるまで待機する必要がある。
-
-この時に、接続の待機キューで待機させるリクエスト (HTTP/1.1、HTTP2.0の両方) の上限数を設定する。
-
-キューに`http1MaxPendingRequests`キーを超えてHTTPリクエストを送信すると、キューに格納できないリクエストは`503`ステータスになる。
+キューを超えるHTTPリクエストに対しては、`503`ステータスを返信する。
 
 **＊実装例＊**
 
@@ -579,16 +548,8 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings
 > - https://qiita.com/sonq/items/4cee6f85f91ea7dfcbbf#http1maxpendingrequests
-> - https://itpfdoc.hitachi.co.jp/manuals/3020/30203m0360/EM030358.HTM
 
 #### ▼ connectionPool.http.http2MaxRequests
-
-HTTP/1.1とHTTP/2.0の場合で、意味合いが異なる。
-
-- HTTP/1.1の場合、占有したTCP接続上にて、並行的に送信できるHTTPリクエストの上限合計数 (HTTP HoLブロッキングのため、実質１つである) である。
-- HTTP/2.0の場合、共有したTCP接続上のストリーム内にて、並行的に送信できるHTTPリクエストの上限数である (リクエストの上限上限数は`maxRequestsPerConnection`で設定) 。
-
-`http2MaxRequests`キーを超えてTCP接続あたりに同時にHTTPリクエスト (HTTP/2.0) を送信すると、`503`ステータスになる。
 
 **＊実装例＊**
 
@@ -801,8 +762,6 @@ spec:
 
 **＊実装例＊**
 
-トラフィックの90%を正常なPodにルーティングし、10%を切り離し中の異常なPodにルーティングする。
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
@@ -819,40 +778,13 @@ spec:
 > - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection
 
-#### ▼ loadBalancer.consistentHash
+#### ▼ loadBalancer
 
-負荷分散方式としてスティッキーセッションを設定する。
-
-なお、スティッキーセッションの代わりに、セッションストレージツール (例：Redis) を使用しても良い。
+Podへのルーティング時に使用する負荷分散方式を設定する。
 
 **＊実装例＊**
 
-```yaml
-apiVersion: networking.istio.io/v1
-kind: DestinationRule
-metadata:
-  name: foo-destination-rule
-spec:
-  trafficPolicy:
-    loadBalancer:
-      consistentHash:
-        httpCookie:
-          name: session_id
-          ttl: 0s
-```
-
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-ConsistentHashLB
-> - https://dev.classmethod.jp/articles/stateless_ec2/#toc-4
-
-#### ▼ loadBalancer.simple
-
-負荷分散方式を設定する。
-
-**＊実装例＊**
-
-負荷分散方式としてラウンドロビンを設定する。
-
-宛先の負荷を考慮しない静的方式のため、非推奨である。
+複数のゾーンのPodに対して、ラウンドロビンでルーティングする。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -870,94 +802,7 @@ spec:
 
 **＊実装例＊**
 
-負荷分散方式として最小リクエスト数を設定する。
-
-宛先の負荷を考慮する動的方式のため、推奨である。
-
-```yaml
-apiVersion: networking.istio.io/v1
-kind: DestinationRule
-metadata:
-  name: foo-destination-rule
-spec:
-  trafficPolicy:
-    loadBalancer:
-      # 最小リクエスト数
-      simple: LEAST_CONN
-```
-
-#### ▼ loadBalancer.warmup.aggression
-
-負荷分散方式としてスロースタート方式 (通過させるリクエストの数を少しずつ増加させる) を指定し、増加率を設定する。
-
-`1`の場合は、直線的に増加する。
-
-リクエスト数の非常に多い高トラフィックなシステムで、起動直後のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、接続プールの作成が必要、ウォームアップが必要なJVM言語製アプリケーション) にいきなり高負荷をかけないようにできる。
-
-```yaml
-apiVersion: networking.istio.io/v1
-kind: DestinationRule
-metadata:
-  name: foo-destination-rule
-spec:
-  trafficPolicy:
-    loadBalancer:
-      warmup:
-        duration: 30
-        aggression: 1
-```
-
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration
-> - https://stackoverflow.com/a/75942527/12771072
-> - https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start
-
-#### ▼ loadBalancer.warmup.duration
-
-負荷分散方式としてスロースタート方式 (通過させるリクエストの数を少しずつ増加させる) を指定し、スロースタートの期間を設定する。
-
-リクエスト数の非常に多い高トラフィックなシステムで、起動直後のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、接続プールの作成が必要、ウォームアップが必要なJVM言語製アプリケーション) にいきなり高負荷をかけないようにできる。
-
-```yaml
-apiVersion: networking.istio.io/v1
-kind: DestinationRule
-metadata:
-  name: foo-destination-rule
-spec:
-  trafficPolicy:
-    loadBalancer:
-      warmup:
-        duration: 30
-        aggression: 1
-```
-
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration
-> - https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start
-
-#### ▼ portLevelSettings.loadBalancer
-
-Podのポート番号別のルーティングの負荷分散方式を設定する。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: networking.istio.io/v1
-kind: DestinationRule
-metadata:
-  name: foo-destination-rule
-spec:
-  trafficPolicy:
-    portLevelSettings:
-      - loadBalancer:
-          simple: LEAST_REQUEST
-```
-
-**＊実装例＊**
-
-ゾーンを横断した負荷分散を設定する。
+指定したゾーンのPodに対して、指定した重みづけでルーティングする。
 
 リージョン名やゾーン名は、Podの`topologyKey`キー（`topology.kubernetes.io/region`キー、`topology.kubernetes.io/zone`キーなど) の値を設定する。
 
@@ -980,6 +825,40 @@ spec:
 
 > - https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/distribute/
 > - https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/
+
+**＊実装例＊**
+
+複数のゾーンのPodに対して、最小リクエスト数でルーティングする。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    loadBalancer:
+      # 最小リクエスト数
+      simple: LEAST_CONN
+```
+
+#### ▼ portLevelSettings.loadBalancer
+
+Podのポート番号別のルーティングの負荷分散方式を設定する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    portLevelSettings:
+      - loadBalancer:
+          simple: ROUND_ROBIN
+```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
 
@@ -1122,6 +1001,55 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings
+
+#### ▼ warmup.aggression
+
+スロースタート方式 (通過させるリクエストの数を少しずつ増加させる) で、増加率を設定する。
+
+`1`の場合は、直線的に増加する。
+
+リクエスト数の非常に多い高トラフィックなシステムで、起動直後のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、接続プールの作成が必要、ウォームアップが必要なJVM言語製アプリケーション) にいきなり高負荷をかけないようにできる。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    warmup:
+      duration: 30
+      aggression: 1
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration
+> - https://stackoverflow.com/a/75942527/12771072
+> - https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start
+
+#### ▼ warmup.duration
+
+スロースタート方式 (通過させるリクエストの数を少しずつ増加させる) で、スロースタートの期間を設定する。
+
+リクエスト数の非常に多い高トラフィックなシステムで、起動直後のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、接続プールの作成が必要、ウォームアップが必要なJVM言語製アプリケーション) にいきなり高負荷をかけないようにできる。
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    warmup:
+      duration: 30
+      aggression: 1
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration
+> - https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start
 
 <br>
 

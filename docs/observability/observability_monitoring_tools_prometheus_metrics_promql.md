@@ -196,6 +196,8 @@ sum(envoy_cluster_membership_healthy) / sum(envoy_cluster_membership_total)
 
 一方で、Gaugeであると`rate`関数は使用できない。
 
+`rate`関数を使用しない場合、メトリクスの単位は『累計〇〇』になる。
+
 ```bash
 # 秒当たりの平均増加率を１分間で集計する
 rate(<Counter型メトリクス名>[1m])
