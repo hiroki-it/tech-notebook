@@ -762,6 +762,8 @@ spec:
 
 **＊実装例＊**
 
+トラフィックの90%を正常なPodにルーティングし、10%を切り離し中の異常なPodにルーティングする。
+
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
