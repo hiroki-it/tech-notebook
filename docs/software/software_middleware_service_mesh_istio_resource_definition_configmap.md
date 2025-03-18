@@ -636,11 +636,11 @@ spec:
 
 <br>
 
-### tracingServiceName
+### controlPlaneAuthPolicy
 
-マイクロサービス名を設定する。
+`istio-proxy`コンテナからコントロールプレーンへのJWT仕様アクセストークン検証時に相互TLSを実施する。
 
-マイクロサービスがバージョニングされている場合に、マイクロサービスの正式名 (canonical-name) でグループ化できる。
+RequestAuthenticationでJWT仕様アクセストークンの検証を設定できる。
 
 ```yaml
 apiVersion: v1
@@ -651,7 +651,7 @@ metadata:
 data:
   mesh: |
     defaultConfig:
-      tracingServiceName: foo
+      controlPlaneAuthPolicy: MUTUAL_TLS
 ```
 
 ```yaml
@@ -660,13 +660,8 @@ kind: ProxyConfig
 metadata:
   name: foo-proxyconfig
 spec:
-  tracingServiceName: foo
+  controlPlaneAuthPolicy: MUTUAL_TLS
 ```
-
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-TracingServiceName
-> - https://istio.io/latest/docs/reference/config/labels/#ServiceCanonicalName
-
-<br>
 
 ### discoveryAddress
 
@@ -973,6 +968,38 @@ data:
 ```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#Tracing
+
+<br>
+
+### tracingServiceName
+
+マイクロサービス名を設定する。
+
+マイクロサービスがバージョニングされている場合に、マイクロサービスの正式名 (canonical-name) でグループ化できる。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      tracingServiceName: foo
+```
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ProxyConfig
+metadata:
+  name: foo-proxyconfig
+spec:
+  tracingServiceName: foo
+```
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-TracingServiceName
+> - https://istio.io/latest/docs/reference/config/labels/#ServiceCanonicalName
 
 <br>
 
