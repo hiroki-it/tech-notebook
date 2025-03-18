@@ -485,12 +485,37 @@ spec:
 
 ### .spec.trafficPolicy
 
+#### ▼ connectionPool.http.maxConcurrentStreams
+
+HTTP/2.0の設定である。
+
+共有したTCP接続上でストリームを送信でき、ストリーム内でHTTPリクエストを並行的に送信する。
+
+この時、同時送信できるストリームを設定する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    connectionPool:
+      http:
+        maxConcurrentStreams: 1００
+```
+
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/connection_pooling#http-2
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings-max_concurrent_streams
+
 #### ▼ connectionPool.http.maxRequestsPerConnection
 
 HTTP/1.1とHTTP/2.0の場合で、意味合いが異なる。
 
-- HTTP/1.1の場合、占有したTCP接続で送信できるHTTPリクエストの上限数である。
-- HTTP/2.0の場合、共有したTCP接続で並行的に送信できるストリーム内のHTTPリクエストの上限である。並行的な送信を正確に算出できないため、おおよその上限である。
+- HTTP/1.1の場合、占有したTCP接続上で送信できるHTTPリクエストの上限合計数である。
+- HTTP/2.0の場合、共有したTCP接続上で送信できるストリーム内のHTTPリクエストの上限合計数である ("並行的に送信できるリクエストの上限数 `http2MaxRequests` で設定") 。ストリーム内のHTTPリクエストの並行的な送信を正確に算出できないため、おおよその上限である。
 
 `2`以上であればHTTP KeepAliveを実施し、`1`とする場合はHTTP KeepAliveは無効になる。
 
@@ -560,7 +585,7 @@ spec:
 
 HTTP/2.0の設定である。
 
-TCP接続当たりに並行的に送信できるHTTPリクエスト (HTTP/2.0) の上限数を設定する。
+共有したTCP接続上のストリーム内にて、並行的に送信できるHTTPリクエストの上限数である (リクエストの上限上限数は`maxRequestsPerConnection`で設定) 。
 
 `http2MaxRequests`キーを超えてTCP接続あたりに同時にHTTPリクエスト (HTTP/2.0) を送信すると、`503`ステータスになる。
 
