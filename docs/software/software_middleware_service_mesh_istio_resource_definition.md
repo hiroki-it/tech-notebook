@@ -3359,6 +3359,8 @@ spec:
 
 各リトライで処理の結果が返却されるまでのタイムアウト時間を`perTryTimeout`で設定する。
 
+初回リクエストのリトライを`timeout`で、失敗時のリトライのタイムアウト時間を`retries.perTryTimeout`で設定する。
+
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: VirtualService
@@ -3369,16 +3371,19 @@ spec:
     - route:
         - destination:
             host: foo-service.foo-namespace.svc.cluster.local
+      # 初回リクエスト
+      timeout: 10s
+      # 初回リクエストの失敗時のリトライ
       retries:
         attempts: 3
-        perTryTimeout: 5s
+        perTryTimeout: 10s
         # Envoyのx-envoy-retry-onの値
         retryOn: 5xx
 ```
 
 Gateway系ステータス (`502`、`503`、`504`) の場合に、`attempts`の数だけリトライする。
 
-各リトライで処理の結果が返却されるまでのタイムアウト時間を`perTryTimeout`で設定する。
+初回リクエストのリトライを`timeout`で、失敗時のリトライのタイムアウト時間を`retries.perTryTimeout`で設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3390,9 +3395,12 @@ spec:
     - route:
         - destination:
             host: foo-service.foo-namespace.svc.cluster.local
+      # 初回リクエスト
+      timeout: 10s
+      # 初回リクエストの失敗時のリトライ
       retries:
         attempts: 3
-        perTryTimeout: 5s
+        perTryTimeout: 10s
         # Envoyのx-envoy-retry-onの値
         retryOn: gateway-error
 ```

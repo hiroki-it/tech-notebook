@@ -31,6 +31,8 @@ Prometheusのダッシュボードでメトリクスをクエリすると、検�
 
 Counterは`rate`関数で秒当たりの増減で集計することが多いため、Grafanaダッシュボード上では、Counterのメトリクスの単位を『〇〇/秒』とする。
 
+`rate`関数を使用しない場合、メトリクスの単位は『累計〇〇』になる。
+
 > - https://prometheus.io/docs/tutorials/understanding_metric_types/#counter
 > - https://chronosphere.io/learn/an-introduction-to-the-four-primary-types-of-prometheus-metrics/
 
