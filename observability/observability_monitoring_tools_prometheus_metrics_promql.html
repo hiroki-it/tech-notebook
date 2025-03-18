@@ -24874,11 +24874,11 @@
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      03. データポイントの各種数値の算出
+      03. データポイントの各種数値の集計
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. データポイントの各種数値の算出">
+    <nav class="md-nav" aria-label="03. データポイントの各種数値の集計">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24925,11 +24925,11 @@
         <li class="md-nav__item">
   <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      04. ストレージの各種数値の算出
+      04. ストレージの各種数値の集計
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. ストレージの各種数値の算出">
+    <nav class="md-nav" aria-label="04. ストレージの各種数値の集計">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25996,11 +25996,11 @@
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      03. データポイントの各種数値の算出
+      03. データポイントの各種数値の集計
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. データポイントの各種数値の算出">
+    <nav class="md-nav" aria-label="03. データポイントの各種数値の集計">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26047,11 +26047,11 @@
         <li class="md-nav__item">
   <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      04. ストレージの各種数値の算出
+      04. ストレージの各種数値の集計
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. ストレージの各種数値の算出">
+    <nav class="md-nav" aria-label="04. ストレージの各種数値の集計">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26236,18 +26236,18 @@ resource.labels.pod_name<span class="o">=</span>~<span class="s2">&quot;.*pod.*&
 <div class="highlight"><pre><span></span><code>sum<span class="o">(</span>idelta<span class="o">(</span>istio_requests_total<span class="o">[</span>1h<span class="o">]))</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>destination_app<span class="o">)</span>
 
 <span class="c1"># 結果</span>
-<span class="o">{</span><span class="nv">destination_app</span><span class="o">=</span><span class="s2">&quot;foo-container&quot;</span><span class="o">}</span><span class="w"> </span>&lt;算出値&gt;
+<span class="o">{</span><span class="nv">destination_app</span><span class="o">=</span><span class="s2">&quot;foo-container&quot;</span><span class="o">}</span><span class="w"> </span>&lt;集計値&gt;
 </code></pre></div>
 <p><strong>例</strong></p>
-<p>任意の期間内に関して、Istioの <code>istio-proxy</code>コンテナの受信リクエストのテータポイント数の増加量を算出する。</p>
+<p>任意の期間内に関して、Istioの <code>istio-proxy</code>コンテナの受信リクエストのテータポイント数の増加量を集計する。</p>
 <div class="highlight"><pre><span></span><code>sum<span class="o">(</span>increase<span class="o">(</span>istio_requests_total<span class="o">{</span><span class="nv">destination_workload_namespace</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="o">}[</span><span class="nv">$__range</span>:<span class="o">]))</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>destination_service<span class="o">)</span>
 </code></pre></div>
 <p><strong>例</strong></p>
-<p>任意の期間内に関して、Istioの <code>istio-proxy</code>コンテナの処理時間の一番高い値を算出する。</p>
+<p>任意の期間内に関して、Istioの <code>istio-proxy</code>コンテナの処理時間の一番高い値を集計する。</p>
 <div class="highlight"><pre><span></span><code>max<span class="o">(</span>max_over_time<span class="o">(</span>rate<span class="o">(</span>istio_request_duration_milliseconds_sum<span class="o">{</span><span class="nv">destination_service_namespace</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="o">}[</span><span class="nv">$__rate_interval</span><span class="o">])[</span><span class="nv">$__range</span>:<span class="o">]))</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>destination_service<span class="o">)</span>
 </code></pre></div>
 <p><strong>例</strong></p>
-<p>任意の期間内に関して、Istioの <code>istio-proxy</code>コンテナの処理時間の平均を算出する。</p>
+<p>任意の期間内に関して、Istioの <code>istio-proxy</code>コンテナの処理時間の平均を集計する。</p>
 <div class="highlight"><pre><span></span><code>avg<span class="o">(</span>avg_over_time<span class="o">(</span>rate<span class="o">(</span>istio_request_duration_milliseconds_sum<span class="o">{</span><span class="nv">destination_service_namespace</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="o">}[</span><span class="nv">$__rate_interval</span><span class="o">])[</span><span class="nv">$__range</span>:<span class="o">]))</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>destination_service<span class="o">)</span>
 </code></pre></div>
 <p><strong>例</strong></p>
@@ -26256,12 +26256,12 @@ resource.labels.pod_name<span class="o">=</span>~<span class="s2">&quot;.*pod.*&
 <div class="highlight"><pre><span></span><code>sum<span class="o">(</span>idelta<span class="o">(</span>istio_requests_total<span class="o">{</span>response_flags!<span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="o">}[</span>1h<span class="o">]))</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>pod_name,<span class="w"> </span>response_flags<span class="o">)</span>
 
 <span class="c1"># 結果</span>
-<span class="o">{</span><span class="nv">pod_name</span><span class="o">=</span><span class="s2">&quot;ingressgateway-pod&quot;</span>,<span class="w"> </span><span class="nv">response_flags</span><span class="o">=</span><span class="s2">&quot;DC&quot;</span><span class="o">}</span><span class="w"> </span>&lt;算出値&gt;
-<span class="o">{</span><span class="nv">pod_name</span><span class="o">=</span><span class="s2">&quot;ingressgateway-pod&quot;</span>,<span class="w"> </span><span class="nv">response_flags</span><span class="o">=</span><span class="s2">&quot;DPE&quot;</span><span class="o">}</span><span class="w"> </span>&lt;算出値&gt;
-<span class="o">{</span><span class="nv">pod_name</span><span class="o">=</span><span class="s2">&quot;ingressgateway-pod&quot;</span>,<span class="w"> </span><span class="nv">response_flags</span><span class="o">=</span><span class="s2">&quot;URX&quot;</span><span class="o">}</span><span class="w"> </span>&lt;算出値&gt;
-<span class="o">{</span><span class="nv">pod_name</span><span class="o">=</span><span class="s2">&quot;foo-pod&quot;</span>,<span class="w"> </span><span class="nv">response_flags</span><span class="o">=</span><span class="s2">&quot;DC&quot;</span><span class="o">}</span><span class="w"> </span>&lt;算出値&gt;
-<span class="o">{</span><span class="nv">pod_name</span><span class="o">=</span><span class="s2">&quot;foo-pod&quot;</span>,<span class="w"> </span><span class="nv">response_flags</span><span class="o">=</span><span class="s2">&quot;DPE&quot;</span><span class="o">}</span><span class="w"> </span>&lt;算出値&gt;
-<span class="o">{</span><span class="nv">pod_name</span><span class="o">=</span><span class="s2">&quot;foo-pod&quot;</span>,<span class="w"> </span><span class="nv">response_flags</span><span class="o">=</span><span class="s2">&quot;URX&quot;</span><span class="o">}</span><span class="w"> </span>&lt;算出値&gt;
+<span class="o">{</span><span class="nv">pod_name</span><span class="o">=</span><span class="s2">&quot;ingressgateway-pod&quot;</span>,<span class="w"> </span><span class="nv">response_flags</span><span class="o">=</span><span class="s2">&quot;DC&quot;</span><span class="o">}</span><span class="w"> </span>&lt;集計値&gt;
+<span class="o">{</span><span class="nv">pod_name</span><span class="o">=</span><span class="s2">&quot;ingressgateway-pod&quot;</span>,<span class="w"> </span><span class="nv">response_flags</span><span class="o">=</span><span class="s2">&quot;DPE&quot;</span><span class="o">}</span><span class="w"> </span>&lt;集計値&gt;
+<span class="o">{</span><span class="nv">pod_name</span><span class="o">=</span><span class="s2">&quot;ingressgateway-pod&quot;</span>,<span class="w"> </span><span class="nv">response_flags</span><span class="o">=</span><span class="s2">&quot;URX&quot;</span><span class="o">}</span><span class="w"> </span>&lt;集計値&gt;
+<span class="o">{</span><span class="nv">pod_name</span><span class="o">=</span><span class="s2">&quot;foo-pod&quot;</span>,<span class="w"> </span><span class="nv">response_flags</span><span class="o">=</span><span class="s2">&quot;DC&quot;</span><span class="o">}</span><span class="w"> </span>&lt;集計値&gt;
+<span class="o">{</span><span class="nv">pod_name</span><span class="o">=</span><span class="s2">&quot;foo-pod&quot;</span>,<span class="w"> </span><span class="nv">response_flags</span><span class="o">=</span><span class="s2">&quot;DPE&quot;</span><span class="o">}</span><span class="w"> </span>&lt;集計値&gt;
+<span class="o">{</span><span class="nv">pod_name</span><span class="o">=</span><span class="s2">&quot;foo-pod&quot;</span>,<span class="w"> </span><span class="nv">response_flags</span><span class="o">=</span><span class="s2">&quot;URX&quot;</span><span class="o">}</span><span class="w"> </span>&lt;集計値&gt;
 ...
 </code></pre></div>
 <blockquote>
@@ -26270,16 +26270,16 @@ resource.labels.pod_name<span class="o">=</span>~<span class="s2">&quot;.*pod.*&
 </ul>
 </blockquote>
 <h4 id="count">▼ count<a class="headerlink" href="#count" title="Permanent link">&para;</a></h4>
-<p>期間内の合計数を算出する。</p>
+<p>期間内の合計数を集計する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.opsramp.com/prometheus-monitoring/promql/">https://www.opsramp.com/prometheus-monitoring/promql/</a></li>
 </ul>
 </blockquote>
 <h4 id="increase">▼ increase<a class="headerlink" href="#increase" title="Permanent link">&para;</a></h4>
-<p>rate関数のラッパーであり、rate関数の結果 (平均増加率) に、期間を自動的に掛けた数値 (期間当たりの増加数) を算出する。</p>
+<p>rate関数のラッパーであり、rate関数の結果 (平均増加率) に、期間を自動的に掛けた数値 (期間当たりの増加数) を集計する。</p>
 <p><strong>＊例＊</strong></p>
-<p>rate関数に期間 (今回は5m) を自動的に掛けた数値を算出する。</p>
+<p>rate関数に期間 (今回は5m) を自動的に掛けた数値を集計する。</p>
 <div class="highlight"><pre><span></span><code>increase<span class="o">(</span>&lt;メトリクス名&gt;<span class="o">[</span>5m<span class="o">])</span>
 <span class="c1"># メトリクスの平均増加率 (%/秒) を集計する。</span>
 <span class="o">=</span><span class="w"> </span>rate<span class="o">(</span>&lt;メトリクス名&gt;<span class="o">[</span>1h<span class="o">])</span><span class="w"> </span>*<span class="w"> </span><span class="m">5</span><span class="w"> </span>*<span class="w"> </span><span class="m">60</span>
@@ -26300,10 +26300,16 @@ resource.labels.pod_name<span class="o">=</span>~<span class="s2">&quot;.*pod.*&
 </ul>
 </blockquote>
 <h4 id="rate">▼ rate<a class="headerlink" href="#rate" title="Permanent link">&para;</a></h4>
-<p>平均増加率 (%/秒) を算出する。</p>
+<p>平均増加率 (%/秒) を集計する。</p>
 <p>常に同じ割合で増加していく場合、横一直線のグラフになる。</p>
 <p>メトリクス型がCounterの場合は<code>rate</code>関数で秒あたりの変化を集計し、これを<code>sum</code>関数で合計できる。</p>
 <p>一方で、Gaugeであると<code>rate</code>関数は使用できない。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 秒あたりの平均増加率を１分間で集計する</span>
+rate<span class="o">(</span>&lt;メトリクス名&gt;<span class="o">[</span>1m<span class="o">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 分あたりの平均増加率を１分間で集計する</span>
+rate<span class="o">(</span>&lt;メトリクス名&gt;<span class="o">[</span>1m<span class="o">])</span><span class="w"> </span>*<span class="w"> </span><span class="m">60</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://chronosphere.io/learn/an-introduction-to-the-four-primary-types-of-prometheus-metrics/">https://chronosphere.io/learn/an-introduction-to-the-four-primary-types-of-prometheus-metrics/</a></li>
@@ -26311,13 +26317,15 @@ resource.labels.pod_name<span class="o">=</span>~<span class="s2">&quot;.*pod.*&
 </blockquote>
 <p><strong>例</strong></p>
 <p>直近<code>n</code>分や<code>n</code>時間に関して、メトリクスの平均増加率 (%/秒) を集計する。</p>
-<p>算出の時間が短い場合 (例：1m、5m) 、急激な変化の影響を受けるため、短期間の傾向を反映した値になる。</p>
+<p>集計の時間が短い場合 (例：1m、5m) 、急激な変化の影響を受けるため、短期間の傾向を反映した値になる。</p>
 <p>リアルタイム性が重要な場合 (CPUやメモリの使用率、ステータスコード、リクエスト数の急激な変化) は、短くする。</p>
-<div class="highlight"><pre><span></span><code>rate<span class="o">(</span>&lt;メトリクス名&gt;<span class="o">[</span>1m<span class="o">])</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># 秒あたりの平均増加率を１分間で集計する</span>
+rate<span class="o">(</span>&lt;メトリクス名&gt;<span class="o">[</span>1m<span class="o">])</span>
 </code></pre></div>
-<p>算出の時間が長い場合 (例：1h) 、急激な変化の影響を受けないため、長期間の傾向を反映した値になる。</p>
+<p>集計の時間が長い場合 (例：1h) 、急激な変化の影響を受けないため、長期間の傾向を反映した値になる。</p>
 <p>長期的な傾向を知りたい場合 (リクエスト数の長期的な傾向) は重要な場合は、短くする。</p>
-<div class="highlight"><pre><span></span><code>rate<span class="o">(</span>&lt;メトリクス名&gt;<span class="o">[</span>1h<span class="o">])</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># 秒あたりの平均増加率を１時間で集計する</span>
+rate<span class="o">(</span>&lt;メトリクス名&gt;<span class="o">[</span>1h<span class="o">])</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -26379,14 +26387,14 @@ resource.labels.pod_name<span class="o">=</span>~<span class="s2">&quot;.*pod.*&
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03">03. データポイントの各種数値の算出<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h2 id="03">03. データポイントの各種数値の集計<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="kb">データポイントの平均サイズ (KB/秒) の増加率<a class="headerlink" href="#kb" title="Permanent link">&para;</a></h3>
 <p>Prometheusで収集されたデータポイントの平均サイズ (KB/秒) の増加率を表す。</p>
 <div class="highlight"><pre><span></span><code>rate<span class="o">(</span>prometheus_tsdb_compaction_chunk_size_bytes_sum<span class="o">[</span>1h<span class="o">])</span><span class="w"> </span>/
 rate<span class="o">(</span>prometheus_tsdb_compaction_chunk_samples_sum<span class="o">[</span>1h<span class="o">])</span>
 
 <span class="c1"># 結果</span>
-<span class="o">{</span><span class="nv">container</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">endpoint</span><span class="o">=</span><span class="s2">&quot;web&quot;</span>,<span class="w"> </span><span class="nv">instance</span><span class="o">=</span><span class="s2">&quot;*.*.*.*:9090&quot;</span>,<span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;foo-prometheus&quot;</span>,<span class="w"> </span><span class="nv">namespace</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">pod</span><span class="o">=</span><span class="s2">&quot;foo-prometheus-pod&quot;</span>,<span class="w"> </span><span class="nv">service</span><span class="o">=</span><span class="s2">&quot;oo-prometheus-service&quot;</span><span class="o">}</span><span class="w"> </span>&lt;算出値&gt;
+<span class="o">{</span><span class="nv">container</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">endpoint</span><span class="o">=</span><span class="s2">&quot;web&quot;</span>,<span class="w"> </span><span class="nv">instance</span><span class="o">=</span><span class="s2">&quot;*.*.*.*:9090&quot;</span>,<span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;foo-prometheus&quot;</span>,<span class="w"> </span><span class="nv">namespace</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">pod</span><span class="o">=</span><span class="s2">&quot;foo-prometheus-pod&quot;</span>,<span class="w"> </span><span class="nv">service</span><span class="o">=</span><span class="s2">&quot;oo-prometheus-service&quot;</span><span class="o">}</span><span class="w"> </span>&lt;集計値&gt;
 </code></pre></div>
 <p><br></p>
 <h3 id="_9">データポイントの合計数 (個/秒) の増加率<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
@@ -26394,7 +26402,7 @@ rate<span class="o">(</span>prometheus_tsdb_compaction_chunk_samples_sum<span cl
 <div class="highlight"><pre><span></span><code>rate<span class="o">(</span>prometheus_tsdb_head_samples_appended_total<span class="o">[</span>1h<span class="o">])</span>
 
 <span class="c1"># 結果</span>
-<span class="o">{</span><span class="nv">container</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">endpoint</span><span class="o">=</span><span class="s2">&quot;web&quot;</span>,<span class="w"> </span><span class="nv">instance</span><span class="o">=</span><span class="s2">&quot;*.*.*.*:9090&quot;</span>,<span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;foo-prometheus&quot;</span>,<span class="w"> </span><span class="nv">namespace</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">pod</span><span class="o">=</span><span class="s2">&quot;foo-prometheus-pod&quot;</span>,<span class="w"> </span><span class="nv">service</span><span class="o">=</span><span class="s2">&quot;oo-prometheus-service&quot;</span><span class="o">}</span><span class="w"> </span>&lt;算出値&gt;
+<span class="o">{</span><span class="nv">container</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">endpoint</span><span class="o">=</span><span class="s2">&quot;web&quot;</span>,<span class="w"> </span><span class="nv">instance</span><span class="o">=</span><span class="s2">&quot;*.*.*.*:9090&quot;</span>,<span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;foo-prometheus&quot;</span>,<span class="w"> </span><span class="nv">namespace</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">pod</span><span class="o">=</span><span class="s2">&quot;foo-prometheus-pod&quot;</span>,<span class="w"> </span><span class="nv">service</span><span class="o">=</span><span class="s2">&quot;oo-prometheus-service&quot;</span><span class="o">}</span><span class="w"> </span>&lt;集計値&gt;
 </code></pre></div>
 <p><br></p>
 <h3 id="kb_1">データポイントの合計サイズ (KB/秒) の増加率<a class="headerlink" href="#kb_1" title="Permanent link">&para;</a></h3>
@@ -26405,7 +26413,7 @@ rate<span class="o">(</span>prometheus_tsdb_compaction_chunk_samples_sum<span cl
 rate<span class="o">(</span>prometheus_tsdb_head_samples_appended_total<span class="o">[</span>1h<span class="o">])</span>
 
 <span class="c1"># 結果</span>
-<span class="o">{</span><span class="nv">container</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">endpoint</span><span class="o">=</span><span class="s2">&quot;web&quot;</span>,<span class="w"> </span><span class="nv">instance</span><span class="o">=</span><span class="s2">&quot;*.*.*.*:9090&quot;</span>,<span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;foo-prometheus&quot;</span>,<span class="w"> </span><span class="nv">namespace</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">pod</span><span class="o">=</span><span class="s2">&quot;foo-prometheus-pod&quot;</span>,<span class="w"> </span><span class="nv">service</span><span class="o">=</span><span class="s2">&quot;oo-prometheus-service&quot;</span><span class="o">}</span><span class="w"> </span>&lt;算出値&gt;
+<span class="o">{</span><span class="nv">container</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">endpoint</span><span class="o">=</span><span class="s2">&quot;web&quot;</span>,<span class="w"> </span><span class="nv">instance</span><span class="o">=</span><span class="s2">&quot;*.*.*.*:9090&quot;</span>,<span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;foo-prometheus&quot;</span>,<span class="w"> </span><span class="nv">namespace</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">pod</span><span class="o">=</span><span class="s2">&quot;foo-prometheus-pod&quot;</span>,<span class="w"> </span><span class="nv">service</span><span class="o">=</span><span class="s2">&quot;oo-prometheus-service&quot;</span><span class="o">}</span><span class="w"> </span>&lt;集計値&gt;
 </code></pre></div>
 <blockquote>
 <ul>
@@ -26421,10 +26429,10 @@ rate<span class="o">(</span>prometheus_tsdb_head_samples_appended_total<span cla
 <span class="m">60</span><span class="w"> </span>*<span class="w"> </span><span class="m">60</span><span class="w"> </span>*<span class="w"> </span><span class="m">24</span>
 
 <span class="c1"># 結果</span>
-<span class="o">{</span><span class="nv">container</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">endpoint</span><span class="o">=</span><span class="s2">&quot;web&quot;</span>,<span class="w"> </span><span class="nv">instance</span><span class="o">=</span><span class="s2">&quot;*.*.*.*:9090&quot;</span>,<span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;foo-prometheus&quot;</span>,<span class="w"> </span><span class="nv">namespace</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">pod</span><span class="o">=</span><span class="s2">&quot;foo-prometheus-pod&quot;</span>,<span class="w"> </span><span class="nv">service</span><span class="o">=</span><span class="s2">&quot;oo-prometheus-service&quot;</span><span class="o">}</span><span class="w"> </span>&lt;算出値&gt;
+<span class="o">{</span><span class="nv">container</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">endpoint</span><span class="o">=</span><span class="s2">&quot;web&quot;</span>,<span class="w"> </span><span class="nv">instance</span><span class="o">=</span><span class="s2">&quot;*.*.*.*:9090&quot;</span>,<span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;foo-prometheus&quot;</span>,<span class="w"> </span><span class="nv">namespace</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">pod</span><span class="o">=</span><span class="s2">&quot;foo-prometheus-pod&quot;</span>,<span class="w"> </span><span class="nv">service</span><span class="o">=</span><span class="s2">&quot;oo-prometheus-service&quot;</span><span class="o">}</span><span class="w"> </span>&lt;集計値&gt;
 </code></pre></div>
 <p><br></p>
-<h2 id="04">04. ストレージの各種数値の算出<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h2 id="04">04. ストレージの各種数値の集計<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_10">ローカルストレージ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="kb_3">▼ 必要データサイズ (KB/日)<a class="headerlink" href="#kb_3" title="Permanent link">&para;</a></h4>
 <p>データポイントの合計サイズ (KB/日) とローカルストレージの部品ファイルの合計を表す。</p>
@@ -26437,7 +26445,7 @@ rate<span class="o">(</span>prometheus_tsdb_head_samples_appended_total<span cla
 <span class="m">1</span>.2
 
 <span class="c1"># 結果</span>
-<span class="o">{</span><span class="nv">container</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">endpoint</span><span class="o">=</span><span class="s2">&quot;web&quot;</span>,<span class="w"> </span><span class="nv">instance</span><span class="o">=</span><span class="s2">&quot;*.*.*.*:9090&quot;</span>,<span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;foo-prometheus&quot;</span>,<span class="w"> </span><span class="nv">namespace</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">pod</span><span class="o">=</span><span class="s2">&quot;foo-prometheus-pod&quot;</span>,<span class="w"> </span><span class="nv">service</span><span class="o">=</span><span class="s2">&quot;foo-prometheus-service&quot;</span><span class="o">}</span><span class="w"> </span>&lt;算出値&gt;
+<span class="o">{</span><span class="nv">container</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">endpoint</span><span class="o">=</span><span class="s2">&quot;web&quot;</span>,<span class="w"> </span><span class="nv">instance</span><span class="o">=</span><span class="s2">&quot;*.*.*.*:9090&quot;</span>,<span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;foo-prometheus&quot;</span>,<span class="w"> </span><span class="nv">namespace</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">pod</span><span class="o">=</span><span class="s2">&quot;foo-prometheus-pod&quot;</span>,<span class="w"> </span><span class="nv">service</span><span class="o">=</span><span class="s2">&quot;foo-prometheus-service&quot;</span><span class="o">}</span><span class="w"> </span>&lt;集計値&gt;
 </code></pre></div>
 <blockquote>
 <ul>
@@ -26458,7 +26466,7 @@ rate<span class="o">(</span>prometheus_tsdb_head_samples_appended_total<span cla
 <span class="m">60</span><span class="w"> </span>*<span class="w"> </span><span class="m">60</span><span class="w"> </span>*<span class="w"> </span><span class="m">24</span>
 
 <span class="c1"># 結果</span>
-<span class="o">{</span><span class="nv">container</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">endpoint</span><span class="o">=</span><span class="s2">&quot;web&quot;</span>,<span class="w"> </span><span class="nv">instance</span><span class="o">=</span><span class="s2">&quot;*.*.*.*:9090&quot;</span>,<span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;foo-prometheus&quot;</span>,<span class="w"> </span><span class="nv">namespace</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">pod</span><span class="o">=</span><span class="s2">&quot;foo-prometheus-pod&quot;</span>,<span class="w"> </span><span class="nv">remote_name</span><span class="o">=</span><span class="s2">&quot;victoria-metrics&quot;</span>,<span class="w"> </span><span class="nv">service</span><span class="o">=</span><span class="s2">&quot;oo-prometheus-service&quot;</span>,<span class="w"> </span><span class="nv">url</span><span class="o">=</span><span class="s2">&quot;https://*.*.*.*:8248/api/v1/write&quot;</span><span class="o">}</span><span class="w"> </span>&lt;算出値&gt;
+<span class="o">{</span><span class="nv">container</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">endpoint</span><span class="o">=</span><span class="s2">&quot;web&quot;</span>,<span class="w"> </span><span class="nv">instance</span><span class="o">=</span><span class="s2">&quot;*.*.*.*:9090&quot;</span>,<span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;foo-prometheus&quot;</span>,<span class="w"> </span><span class="nv">namespace</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">pod</span><span class="o">=</span><span class="s2">&quot;foo-prometheus-pod&quot;</span>,<span class="w"> </span><span class="nv">remote_name</span><span class="o">=</span><span class="s2">&quot;victoria-metrics&quot;</span>,<span class="w"> </span><span class="nv">service</span><span class="o">=</span><span class="s2">&quot;oo-prometheus-service&quot;</span>,<span class="w"> </span><span class="nv">url</span><span class="o">=</span><span class="s2">&quot;https://*.*.*.*:8248/api/v1/write&quot;</span><span class="o">}</span><span class="w"> </span>&lt;集計値&gt;
 </code></pre></div>
 <blockquote>
 <ul>
@@ -26512,7 +26520,7 @@ rate<span class="o">(</span>prometheus_tsdb_head_samples_appended_total<span cla
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月18日 05:53:06">2025-03-18</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月18日 15:01:21">2025-03-18</span>
   </span>
 
     
