@@ -487,9 +487,10 @@ spec:
 
 #### ▼ connectionPool.http.maxRequestsPerConnection
 
-TCP接続当たりに送信できるHTTPリクエストの上限値を設定する。
+HTTP/1.1とHTTP/2.0の場合で、意味合いが異なる。
 
-デフォルトでは上限がない。
+- HTTP/1.1の場合、占有したTCP接続で送信できるHTTPリクエストの上限数である。
+- HTTP/2.0の場合、共有したTCP接続で並行的に送信できるストリーム内のHTTPリクエストの上限である。並行的な送信を正確に算出できないため、おおよその上限である。
 
 `2`以上であればHTTP KeepAliveを実施し、`1`とする場合はHTTP KeepAliveは無効になる。
 
@@ -525,8 +526,11 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#envoy-v3-api-field-config-core-v3-httpprotocoloptions-max-requests-per-connection
 
 #### ▼ connectionPool.http.http1MaxPendingRequests
+
+HTTP/1.1の設定である。
 
 もし接続プール上の接続が全て使用されてしまった場合、いずれかの接続が解放されるまで待機する必要がある。
 
@@ -553,6 +557,8 @@ spec:
 > - https://itpfdoc.hitachi.co.jp/manuals/3020/30203m0360/EM030358.HTM
 
 #### ▼ connectionPool.http.http2MaxRequests
+
+HTTP/2.0の設定である。
 
 TCP接続当たりに並行的に送信できるHTTPリクエスト (HTTP/2.0) の上限数を設定する。
 
