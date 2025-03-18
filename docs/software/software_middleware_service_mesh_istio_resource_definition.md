@@ -784,7 +784,7 @@ spec:
 
 負荷分散方式としてスティッキーセッションを設定する。
 
-認証時にセッションベースの認証情報を使用する場合に役立つ。
+なお、スティッキーセッションの代わりに、セッションストレージツール (例：Redis) を使用しても良い。
 
 **＊実装例＊**
 
@@ -803,6 +803,7 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-ConsistentHashLB
+> - https://dev.classmethod.jp/articles/stateless_ec2/#toc-4
 
 #### ▼ loadBalancer.simple
 

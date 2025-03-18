@@ -1078,9 +1078,9 @@ StatefulSetを使用してコンテナにセッションデータを持たせた
 
 セッションデータがなくなると、セッションを途中で維持できなくなってしまう。
 
-そこで、コンテナにセッションデータを持たせずに、外部のセッション管理サーバー (例：AWS ElastiCache、Redis) を使用する。
+そこで、コンテナにセッションデータを持たせずに、外部のセッションストレージツール (例：AWS ElastiCache、Redis) を使用する。
 
-コンテナが入れ替わっても、セッション管理サーバーからセッションデータを取得できるようにする。
+コンテナが入れ替わっても、セッションストレージツールからセッションデータを取得できるようにする。
 
 > - [https://qiita.com/tomoyk/items/67722472a55b8dc7d01d](https://qiita.com/tomoyk/items/67722472a55b8dc7d01d
 > - [https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05](https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05)
