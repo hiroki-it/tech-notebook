@@ -530,9 +530,9 @@ CSRまたはSSRのアプリケーションは、`Cookie`ヘッダーを介して
 
 ## 07. ログアウト
 
-### `Cookie`ヘッダーによる運搬
+### `Cookie`ヘッダーによる運搬の場合
 
-#### ▼ ブラウザを閉じた時
+#### ▼ ブラウザを閉じたタイミング
 
 ブラウザを閉じた時に、ブラウザはCookieを削除する。
 
@@ -540,13 +540,19 @@ CSRまたはSSRのアプリケーションは、`Cookie`ヘッダーを介して
 
 > - https://qiita.com/kandalog/items/80d7574e6bd00afd5150
 
-#### ▼ レスポンスの`Expires`ヘッダーを返信している場合
+#### ▼ レスポンスの`Expires`ヘッダーで設定されたタイミング
 
 レスポンスの`Expires`ヘッダーにはCookieの有効期限を設定できる。
 
 ブラウザは有効期限に応じてCookieを削除する。
 
 そのため、ログアウトが起こる。
+
+> - https://qiita.com/kandalog/items/80d7574e6bd00afd5150
+
+#### ▼ 有効期限がない
+
+有効期限がなくブラウザで永続的に保管されるCookieを、特に『セッションCookie』という。
 
 > - https://qiita.com/kandalog/items/80d7574e6bd00afd5150
 
