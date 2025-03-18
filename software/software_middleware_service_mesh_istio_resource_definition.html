@@ -30166,7 +30166,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="loadbalancerconsistenthash">▼ loadBalancer.consistentHash<a class="headerlink" href="#loadbalancerconsistenthash" title="Permanent link">&para;</a></h4>
 <p>負荷分散方式としてスティッキーセッションを設定する。</p>
-<p>認証時にセッションベースの認証情報を使用する場合に役立つ。</p>
+<p>なお、スティッキーセッションの代わりに、セッションストレージツール (例：Redis) を使用しても良い。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -30183,6 +30183,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-ConsistentHashLB">https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-ConsistentHashLB</a></li>
+<li><a href="https://dev.classmethod.jp/articles/stateless_ec2/#toc-4">https://dev.classmethod.jp/articles/stateless_ec2/#toc-4</a></li>
 </ul>
 </blockquote>
 <h4 id="loadbalancersimple">▼ loadBalancer.simple<a class="headerlink" href="#loadbalancersimple" title="Permanent link">&para;</a></h4>
@@ -32811,7 +32812,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月18日 23:40:11">2025-03-18</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月19日 00:15:10">2025-03-19</span>
   </span>
 
     
