@@ -77,7 +77,7 @@ JVM言語 (例：Java、Scala、Kotlinなど) 製のアプリケーションは�
 
 これにより、パフォーマンスが高い状態でユーザーにアプリケーションを公開できる。
 
-ただし、ウォームアップ後もパフォーマンスは徐々に高まっていくため、ウォームアップに加えてスロースタートな負荷分散も採用すると良い。
+ウォームアップが完了したつもりでも足りていない場合があるため、ウォームアップに加えてスロースタートな負荷分散も採用すると良い。
 
 ![java_compile](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/java_compile.png)
 
@@ -85,6 +85,7 @@ JVM言語 (例：Java、Scala、Kotlinなど) 製のアプリケーションは�
 > - https://www.baeldung.com/java-jvm-warmup
 > - https://eng-entrance.com/java-jlt
 > - https://levelup.gitconnected.com/a-deep-dive-into-classloader-reflection-dynamic-typing-and-runtime-modifiable-classes-in-java-c83d6d689b2
+> - https://speakerdeck.com/kazu_kichi_67/java-x-spring-bootzhi-apurikesiyonnokorudosutatonili-tixiang-kau?slide=14
 
 #### ▼ ウォームアップの実装
 
