@@ -104,12 +104,12 @@ sum(<メトリクス名>) by (<ラベル>)
 sum(idelta(istio_requests_total[1h])) by (destination_app)
 
 # 結果
-{destination_app="foo-container"} <算出値>
+{destination_app="foo-container"} <集計値>
 ```
 
 **例**
 
-任意の期間内に関して、Istioの `istio-proxy`コンテナの受信リクエストのテータポイント数の増加量を算出する。
+任意の期間内に関して、Istioの `istio-proxy`コンテナの受信リクエストのテータポイント数の増加量を集計する。
 
 ```bash
 sum(increase(istio_requests_total{destination_workload_namespace="default"}[$__range:])) by (destination_service)
@@ -117,7 +117,7 @@ sum(increase(istio_requests_total{destination_workload_namespace="default"}[$__r
 
 **例**
 
-任意の期間内に関して、Istioの `istio-proxy`コンテナの処理時間の一番高い値を算出する。
+任意の期間内に関して、Istioの `istio-proxy`コンテナの処理時間の一番高い値を集計する。
 
 ```bash
 max(max_over_time(rate(istio_request_duration_milliseconds_sum{destination_service_namespace="default"}[$__rate_interval])[$__range:])) by (destination_service)
@@ -125,7 +125,7 @@ max(max_over_time(rate(istio_request_duration_milliseconds_sum{destination_servi
 
 **例**
 
-任意の期間内に関して、Istioの `istio-proxy`コンテナの処理時間の平均を算出する。
+任意の期間内に関して、Istioの `istio-proxy`コンテナの処理時間の平均を集計する。
 
 ```bash
 avg(avg_over_time(rate(istio_request_duration_milliseconds_sum{destination_service_namespace="default"}[$__rate_interval])[$__range:])) by (destination_service)
@@ -141,12 +141,12 @@ avg(avg_over_time(rate(istio_request_duration_milliseconds_sum{destination_servi
 sum(idelta(istio_requests_total{response_flags!="-"}[1h])) by (pod_name, response_flags)
 
 # 結果
-{pod_name="ingressgateway-pod", response_flags="DC"} <算出値>
-{pod_name="ingressgateway-pod", response_flags="DPE"} <算出値>
-{pod_name="ingressgateway-pod", response_flags="URX"} <算出値>
-{pod_name="foo-pod", response_flags="DC"} <算出値>
-{pod_name="foo-pod", response_flags="DPE"} <算出値>
-{pod_name="foo-pod", response_flags="URX"} <算出値>
+{pod_name="ingressgateway-pod", response_flags="DC"} <集計値>
+{pod_name="ingressgateway-pod", response_flags="DPE"} <集計値>
+{pod_name="ingressgateway-pod", response_flags="URX"} <集計値>
+{pod_name="foo-pod", response_flags="DC"} <集計値>
+{pod_name="foo-pod", response_flags="DPE"} <集計値>
+{pod_name="foo-pod", response_flags="URX"} <集計値>
 ...
 ```
 
@@ -154,17 +154,17 @@ sum(idelta(istio_requests_total{response_flags!="-"}[1h])) by (pod_name, respons
 
 #### ▼ count
 
-期間内の合計数を算出する。
+期間内の合計数を集計する。
 
 > - https://www.opsramp.com/prometheus-monitoring/promql/
 
 #### ▼ increase
 
-rate関数のラッパーであり、rate関数の結果 (平均増加率) に、期間を自動的に掛けた数値 (期間当たりの増加数) を算出する。
+rate関数のラッパーであり、rate関数の結果 (平均増加率) に、期間を自動的に掛けた数値 (期間当たりの増加数) を集計する。
 
 **＊例＊**
 
-rate関数に期間 (今回は5m) を自動的に掛けた数値を算出する。
+rate関数に期間 (今回は5m) を自動的に掛けた数値を集計する。
 
 ```bash
 increase(<メトリクス名>[5m])
@@ -188,7 +188,7 @@ sum(envoy_cluster_membership_healthy) / sum(envoy_cluster_membership_total)
 
 #### ▼ rate
 
-平均増加率 (%/秒) を算出する。
+平均増加率 (%/秒) を集計する。
 
 常に同じ割合で増加していく場合、横一直線のグラフになる。
 
@@ -196,25 +196,37 @@ sum(envoy_cluster_membership_healthy) / sum(envoy_cluster_membership_total)
 
 一方で、Gaugeであると`rate`関数は使用できない。
 
+```bash
+# 秒あたりの平均増加率を１分間で集計する
+rate(<メトリクス名>[1m])
+```
+
+```bash
+# 分あたりの平均増加率を１分間で集計する
+rate(<メトリクス名>[1m]) * 60
+```
+
 > - https://chronosphere.io/learn/an-introduction-to-the-four-primary-types-of-prometheus-metrics/
 
 **例**
 
 直近`n`分や`n`時間に関して、メトリクスの平均増加率 (%/秒) を集計する。
 
-算出の時間が短い場合 (例：1m、5m) 、急激な変化の影響を受けるため、短期間の傾向を反映した値になる。
+集計の時間が短い場合 (例：1m、5m) 、急激な変化の影響を受けるため、短期間の傾向を反映した値になる。
 
 リアルタイム性が重要な場合 (CPUやメモリの使用率、ステータスコード、リクエスト数の急激な変化) は、短くする。
 
 ```bash
+# 秒あたりの平均増加率を１分間で集計する
 rate(<メトリクス名>[1m])
 ```
 
-算出の時間が長い場合 (例：1h) 、急激な変化の影響を受けないため、長期間の傾向を反映した値になる。
+集計の時間が長い場合 (例：1h) 、急激な変化の影響を受けないため、長期間の傾向を反映した値になる。
 
 長期的な傾向を知りたい場合 (リクエスト数の長期的な傾向) は重要な場合は、短くする。
 
 ```bash
+# 秒あたりの平均増加率を１時間で集計する
 rate(<メトリクス名>[1h])
 ```
 
@@ -293,7 +305,7 @@ absent(container_tasks_state{name="<コンテナ名>",state="running"}) == 1
 
 <br>
 
-## 03. データポイントの各種数値の算出
+## 03. データポイントの各種数値の集計
 
 ### データポイントの平均サイズ (KB/秒) の増加率
 
@@ -304,7 +316,7 @@ rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
 rate(prometheus_tsdb_compaction_chunk_samples_sum[1h])
 
 # 結果
-{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="oo-prometheus-service"} <算出値>
+{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="oo-prometheus-service"} <集計値>
 ```
 
 <br>
@@ -317,7 +329,7 @@ Prometheusで収集されたデータポイントの合計数 (個/秒) の増�
 rate(prometheus_tsdb_head_samples_appended_total[1h])
 
 # 結果
-{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="oo-prometheus-service"} <算出値>
+{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="oo-prometheus-service"} <集計値>
 ```
 
 <br>
@@ -334,7 +346,7 @@ rate(prometheus_tsdb_compaction_chunk_samples_sum[1h]) *
 rate(prometheus_tsdb_head_samples_appended_total[1h])
 
 # 結果
-{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="oo-prometheus-service"} <算出値>
+{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="oo-prometheus-service"} <集計値>
 ```
 
 > - https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
@@ -352,12 +364,12 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 60 * 60 * 24
 
 # 結果
-{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="oo-prometheus-service"} <算出値>
+{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="oo-prometheus-service"} <集計値>
 ```
 
 <br>
 
-## 04. ストレージの各種数値の算出
+## 04. ストレージの各種数値の集計
 
 ### ローカルストレージ
 
@@ -377,7 +389,7 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 1.2
 
 # 結果
-{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="foo-prometheus-service"} <算出値>
+{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="foo-prometheus-service"} <集計値>
 ```
 
 > - https://www.robustperception.io/how-much-disk-space-do-prometheus-blocks-use/
@@ -404,7 +416,7 @@ rate(prometheus_remote_storage_bytes_total[1h]) *
 60 * 60 * 24
 
 # 結果
-{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", remote_name="victoria-metrics", service="oo-prometheus-service", url="https://*.*.*.*:8248/api/v1/write"} <算出値>
+{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", remote_name="victoria-metrics", service="oo-prometheus-service", url="https://*.*.*.*:8248/api/v1/write"} <集計値>
 ```
 
 > - https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics

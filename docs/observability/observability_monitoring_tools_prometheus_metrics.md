@@ -23,16 +23,18 @@ Prometheusのダッシュボードでメトリクスをクエリすると、検�
 
 #### ▼ Counter
 
-数を単位とするメトリクス (例：`go_gc_duration_seconds_count`) が所属する。
+累計で常に増加するメトリクス (例：リクエスト数) が所属する。
 
-メトリクス型がCounterの場合は`rate`関数で秒あたりの変化を集計し、これを`sum`関数で合計できる。
+メトリクス型がCounterの場合は`rate`関数を使用できる。
+
+`rate`関数で秒あたりの差分し、これを`sum`関数で合計すると累計だったメトリクスを現在の増減で表現できる。
 
 > - https://prometheus.io/docs/tutorials/understanding_metric_types/#counter
 > - https://chronosphere.io/learn/an-introduction-to-the-four-primary-types-of-prometheus-metrics/
 
 #### ▼ Gauge
 
-動的に増減するメトリクス (例：`go_memstats_heap_alloc_bytes`) が所属する。
+動的に増減するメトリクス (例：CPU使用率、Pod数) が所属する。
 
 メトリクス型がGaugeであると`rate`関数は使用できない。
 
@@ -41,7 +43,7 @@ Prometheusのダッシュボードでメトリクスをクエリすると、検�
 
 #### ▼ Histogram
 
-時間の範囲を単位とするメトリクス (例：`prometheus_http_request_duration_seconds_bucket`) が所属する。
+時間の範囲を単位とするメトリクス (例：レスポンスタイム) が所属する。
 
 > - https://prometheus.io/docs/tutorials/understanding_metric_types/#histogram
 > - https://prometheus.io/docs/practices/histograms/
@@ -151,7 +153,7 @@ aggregator_unavailable_apiservice{job="apiserver", name="v1.metrics.eks.amazonaw
 container_cpu_usage_seconds_total
 ```
 
-`kube_pod_container_resource_requests`メトリクスや`kube_pod_container_resource_limits`を使用して、CPU使用率を算出できる。
+`kube_pod_container_resource_requests`メトリクスや`kube_pod_container_resource_limits`を使用して、CPU使用率を集計できる。
 
 ```bash
 # Pod単位のCPU使用率
@@ -170,7 +172,7 @@ sum(rate(container_cpu_usage_seconds_total{container!=""}[5m])) by (pod) / sum(k
 
 #### ▼ container_memory_working_set_bytes
 
-`kube_pod_container_resource_requests`メトリクスや`kube_pod_container_resource_limits`を使用して、CPU使用率を算出できる。
+`kube_pod_container_resource_requests`メトリクスや`kube_pod_container_resource_limits`を使用して、CPU使用率を集計できる。
 
 ```bash
 # Pod単位のメモリ使用率
