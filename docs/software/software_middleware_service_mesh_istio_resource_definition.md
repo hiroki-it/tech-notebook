@@ -555,13 +555,13 @@ spec:
 
 #### ▼ connectionPool.http.http1MaxPendingRequests
 
-HTTP/1.1の設定である。
+HTTP/1.1とHTTP/2.0の場合で、意味合いは同じである。
 
 もし接続プール上の接続が全て使用されてしまった場合、いずれかの接続が解放されるまで待機する必要がある。
 
-この時に、接続の待機キューで待機させるリクエスト (HTTP/1.1) の上限数を設定する。
+この時に、接続の待機キューで待機させるリクエスト (HTTP/1.1、HTTP2.0の両方) の上限数を設定する。
 
-キューに`http1MaxPendingRequests`キーを超えてHTTPリクエスト (HTTP/1.1) を送信すると、キューに格納できないリクエストは`503`ステータスになる。
+キューに`http1MaxPendingRequests`キーを超えてHTTPリクエストを送信すると、キューに格納できないリクエストは`503`ステータスになる。
 
 **＊実装例＊**
 
@@ -583,9 +583,10 @@ spec:
 
 #### ▼ connectionPool.http.http2MaxRequests
 
-HTTP/2.0の設定である。
+HTTP/1.1とHTTP/2.0の場合で、意味合いが異なる。
 
-共有したTCP接続上のストリーム内にて、並行的に送信できるHTTPリクエストの上限数である (リクエストの上限上限数は`maxRequestsPerConnection`で設定) 。
+- HTTP/1.1の場合、占有したTCP接続上にて、並行的に送信できるHTTPリクエストの上限合計数 (HTTP HoLブロッキングのため、実質１つである) である。
+- HTTP/2.0の場合、共有したTCP接続上のストリーム内にて、並行的に送信できるHTTPリクエストの上限数である (リクエストの上限上限数は`maxRequestsPerConnection`で設定) 。
 
 `http2MaxRequests`キーを超えてTCP接続あたりに同時にHTTPリクエスト (HTTP/2.0) を送信すると、`503`ステータスになる。
 
