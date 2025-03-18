@@ -5478,15 +5478,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#connectionpoolhttpmaxconcurrentstreams" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ connectionPool.http.maxConcurrentStreams
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#connectionpoolhttpmaxrequestsperconnection" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ connectionPool.http.maxRequestsPerConnection
@@ -5586,36 +5577,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#loadbalancerconsistenthash" class="md-nav__link">
+  <a href="#loadbalancer" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ loadBalancer.consistentHash
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#loadbalancersimple" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ loadBalancer.simple
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#loadbalancerwarmupaggression" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ loadBalancer.warmup.aggression
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#loadbalancerwarmupduration" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ loadBalancer.warmup.duration
+      ▼ loadBalancer
     </span>
   </a>
   
@@ -5670,6 +5634,24 @@
   <a href="#tlsclientcertificate_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ tls.clientCertificate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warmupaggression" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ warmup.aggression
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warmupduration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ warmup.duration
     </span>
   </a>
   
@@ -27874,15 +27856,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#connectionpoolhttpmaxconcurrentstreams" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ connectionPool.http.maxConcurrentStreams
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#connectionpoolhttpmaxrequestsperconnection" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ connectionPool.http.maxRequestsPerConnection
@@ -27982,36 +27955,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#loadbalancerconsistenthash" class="md-nav__link">
+  <a href="#loadbalancer" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ loadBalancer.consistentHash
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#loadbalancersimple" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ loadBalancer.simple
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#loadbalancerwarmupaggression" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ loadBalancer.warmup.aggression
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#loadbalancerwarmupduration" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ loadBalancer.warmup.duration
+      ▼ loadBalancer
     </span>
   </a>
   
@@ -28066,6 +28012,24 @@
   <a href="#tlsclientcertificate_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ tls.clientCertificate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warmupaggression" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ warmup.aggression
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warmupduration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ warmup.duration
     </span>
   </a>
   
@@ -29933,33 +29897,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <p><br></p>
 <h3 id="spectrafficpolicy">.spec.trafficPolicy<a class="headerlink" href="#spectrafficpolicy" title="Permanent link">&para;</a></h3>
-<h4 id="connectionpoolhttpmaxconcurrentstreams">▼ connectionPool.http.maxConcurrentStreams<a class="headerlink" href="#connectionpoolhttpmaxconcurrentstreams" title="Permanent link">&para;</a></h4>
-<p>HTTP/2.0の設定である。</p>
-<p>共有したTCP接続上でストリームを送信でき、ストリーム内でHTTPリクエストを並行的に送信する。</p>
-<p>この時、同時送信できるストリームを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">connectionPool</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">http</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">maxConcurrentStreams</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1００</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/connection_pooling#http-2">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/connection_pooling#http-2</a></li>
-<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings-max_concurrent_streams">https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings-max_concurrent_streams</a></li>
-</ul>
-</blockquote>
 <h4 id="connectionpoolhttpmaxrequestsperconnection">▼ connectionPool.http.maxRequestsPerConnection<a class="headerlink" href="#connectionpoolhttpmaxrequestsperconnection" title="Permanent link">&para;</a></h4>
-<p>HTTP/1.1とHTTP/2.0の場合で、意味合いが異なる。</p>
-<ul>
-<li>HTTP/1.1の場合、占有したTCP接続上で送信できるHTTPリクエストの上限合計数である。</li>
-<li>HTTP/2.0の場合、共有したTCP接続上で送信できるストリーム内のHTTPリクエストの上限合計数である ("並行的に送信できるリクエストの上限数 <code>http2MaxRequests</code> で設定") 。ストリーム内のHTTPリクエストの並行的な送信を正確に算出できないため、おおよその上限である。</li>
-</ul>
+<p>HTTPプロトコルを処理する場合に、TCPスリーウェイハンドシェイク当たりのリクエストの上限値を設定する。</p>
+<p>デフォルトでは上限がない。</p>
 <p><code>2</code>以上であればHTTP KeepAliveを実施し、<code>1</code>とする場合はHTTP KeepAliveは無効になる。</p>
 <p>また、サーキットブレイカーを開始するための外れ値の閾値になる。</p>
 <p>上限を超過した場合、Podへのルーティングが停止し、何らかの意図したエラーを返信する (サーキットブレイカー) 。</p>
@@ -29988,14 +29928,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings">https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings</a></li>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#envoy-v3-api-field-config-core-v3-httpprotocoloptions-max-requests-per-connection">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#envoy-v3-api-field-config-core-v3-httpprotocoloptions-max-requests-per-connection</a></li>
 </ul>
 </blockquote>
 <h4 id="connectionpoolhttphttp1maxpendingrequests">▼ connectionPool.http.http1MaxPendingRequests<a class="headerlink" href="#connectionpoolhttphttp1maxpendingrequests" title="Permanent link">&para;</a></h4>
-<p>HTTP/1.1とHTTP/2.0の場合で、意味合いは同じである。</p>
-<p>もし接続プール上の接続が全て使用されてしまった場合、いずれかの接続が解放されるまで待機する必要がある。</p>
-<p>この時に、接続の待機キューで待機させるリクエスト (HTTP/1.1、HTTP2.0の両方) の上限数を設定する。</p>
-<p>キューに<code>http1MaxPendingRequests</code>キーを超えてHTTPリクエストを送信すると、キューに格納できないリクエストは<code>503</code>ステータスになる。</p>
+<p>キューに入れられるHTTPリクエストのレートリミットを設定する。</p>
+<p>キューを超えるHTTPリクエストに対しては、<code>503</code>ステータスを返信する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -30011,16 +29948,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings">https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings</a></li>
 <li><a href="https://qiita.com/sonq/items/4cee6f85f91ea7dfcbbf#http1maxpendingrequests">https://qiita.com/sonq/items/4cee6f85f91ea7dfcbbf#http1maxpendingrequests</a></li>
-<li><a href="https://itpfdoc.hitachi.co.jp/manuals/3020/30203m0360/EM030358.HTM">https://itpfdoc.hitachi.co.jp/manuals/3020/30203m0360/EM030358.HTM</a></li>
 </ul>
 </blockquote>
 <h4 id="connectionpoolhttphttp2maxrequests">▼ connectionPool.http.http2MaxRequests<a class="headerlink" href="#connectionpoolhttphttp2maxrequests" title="Permanent link">&para;</a></h4>
-<p>HTTP/1.1とHTTP/2.0の場合で、意味合いが異なる。</p>
-<ul>
-<li>HTTP/1.1の場合、占有したTCP接続上にて、並行的に送信できるHTTPリクエストの上限合計数 (HTTP HoLブロッキングのため、実質１つである) である。</li>
-<li>HTTP/2.0の場合、共有したTCP接続上のストリーム内にて、並行的に送信できるHTTPリクエストの上限数である (リクエストの上限上限数は<code>maxRequestsPerConnection</code>で設定) 。</li>
-</ul>
-<p><code>http2MaxRequests</code>キーを超えてTCP接続あたりに同時にHTTPリクエスト (HTTP/2.0) を送信すると、<code>503</code>ステータスになる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -30198,7 +30128,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>指定された割合で正常になるように、ルーティング先を決める。</p>
 <p>異常なルーティング先がある場合は正常な方にルーティングし、異常なルーティング先が回復することを待つ。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>トラフィックの90%を正常なPodにルーティングし、10%を切り離し中の異常なPodにルーティングする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -30216,33 +30145,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection">https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection</a></li>
 </ul>
 </blockquote>
-<h4 id="loadbalancerconsistenthash">▼ loadBalancer.consistentHash<a class="headerlink" href="#loadbalancerconsistenthash" title="Permanent link">&para;</a></h4>
-<p>負荷分散方式としてスティッキーセッションを設定する。</p>
-<p>なお、スティッキーセッションの代わりに、セッションストレージツール (例：Redis) を使用しても良い。</p>
+<h4 id="loadbalancer">▼ loadBalancer<a class="headerlink" href="#loadbalancer" title="Permanent link">&para;</a></h4>
+<p>Podへのルーティング時に使用する負荷分散方式を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">loadBalancer</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">consistentHash</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">httpCookie</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">session_id</span>
-<span class="w">          </span><span class="nt">ttl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0s</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-ConsistentHashLB">https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-ConsistentHashLB</a></li>
-<li><a href="https://dev.classmethod.jp/articles/stateless_ec2/#toc-4">https://dev.classmethod.jp/articles/stateless_ec2/#toc-4</a></li>
-</ul>
-</blockquote>
-<h4 id="loadbalancersimple">▼ loadBalancer.simple<a class="headerlink" href="#loadbalancersimple" title="Permanent link">&para;</a></h4>
-<p>負荷分散方式を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
-<p>負荷分散方式としてラウンドロビンを設定する。</p>
-<p>宛先の負荷を考慮しない静的方式のため、非推奨である。</p>
+<p>複数のゾーンのPodに対して、ラウンドロビンでルーティングする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -30259,79 +30165,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>負荷分散方式として最小リクエスト数を設定する。</p>
-<p>宛先の負荷を考慮する動的方式のため、推奨である。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">loadBalancer</span><span class="p">:</span>
-<span class="w">      </span><span class="c1"># 最小リクエスト数</span>
-<span class="w">      </span><span class="nt">simple</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LEAST_CONN</span>
-</code></pre></div>
-<h4 id="loadbalancerwarmupaggression">▼ loadBalancer.warmup.aggression<a class="headerlink" href="#loadbalancerwarmupaggression" title="Permanent link">&para;</a></h4>
-<p>負荷分散方式としてスロースタート方式 (通過させるリクエストの数を少しずつ増加させる) を指定し、増加率を設定する。</p>
-<p><code>1</code>の場合は、直線的に増加する。</p>
-<p>リクエスト数の非常に多い高トラフィックなシステムで、起動直後のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、接続プールの作成が必要、ウォームアップが必要なJVM言語製アプリケーション) にいきなり高負荷をかけないようにできる。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">loadBalancer</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">warmup</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
-<span class="w">        </span><span class="nt">aggression</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup">https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup</a></li>
-<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration">https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration</a></li>
-<li><a href="https://stackoverflow.com/a/75942527/12771072">https://stackoverflow.com/a/75942527/12771072</a></li>
-<li><a href="https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692">https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692</a></li>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start</a></li>
-</ul>
-</blockquote>
-<h4 id="loadbalancerwarmupduration">▼ loadBalancer.warmup.duration<a class="headerlink" href="#loadbalancerwarmupduration" title="Permanent link">&para;</a></h4>
-<p>負荷分散方式としてスロースタート方式 (通過させるリクエストの数を少しずつ増加させる) を指定し、スロースタートの期間を設定する。</p>
-<p>リクエスト数の非常に多い高トラフィックなシステムで、起動直後のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、接続プールの作成が必要、ウォームアップが必要なJVM言語製アプリケーション) にいきなり高負荷をかけないようにできる。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">loadBalancer</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">warmup</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
-<span class="w">        </span><span class="nt">aggression</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup">https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup</a></li>
-<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration">https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration</a></li>
-<li><a href="https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692">https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692</a></li>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start</a></li>
-</ul>
-</blockquote>
-<h4 id="portlevelsettingsloadbalancer">▼ portLevelSettings.loadBalancer<a class="headerlink" href="#portlevelsettingsloadbalancer" title="Permanent link">&para;</a></h4>
-<p>Podのポート番号別のルーティングの負荷分散方式を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">portLevelSettings</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">loadBalancer</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">simple</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LEAST_REQUEST</span>
-</code></pre></div>
-<p><strong>＊実装例＊</strong></p>
-<p>ゾーンを横断した負荷分散を設定する。</p>
+<p>指定したゾーンのPodに対して、指定した重みづけでルーティングする。</p>
 <p>リージョン名やゾーン名は、Podの<code>topologyKey</code>キー（<code>topology.kubernetes.io/region</code>キー、<code>topology.kubernetes.io/zone</code>キーなど) の値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -30353,6 +30187,33 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/distribute/">https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/distribute/</a></li>
 <li><a href="https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/">https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/</a></li>
 </ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<p>複数のゾーンのPodに対して、最小リクエスト数でルーティングする。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">loadBalancer</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># 最小リクエスト数</span>
+<span class="w">      </span><span class="nt">simple</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LEAST_CONN</span>
+</code></pre></div>
+<h4 id="portlevelsettingsloadbalancer">▼ portLevelSettings.loadBalancer<a class="headerlink" href="#portlevelsettingsloadbalancer" title="Permanent link">&para;</a></h4>
+<p>Podのポート番号別のルーティングの負荷分散方式を設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">portLevelSettings</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">loadBalancer</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">simple</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ROUND_ROBIN</span>
+</code></pre></div>
+<blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy">https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy</a></li>
 </ul>
@@ -30475,6 +30336,50 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings">https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings</a></li>
+</ul>
+</blockquote>
+<h4 id="warmupaggression">▼ warmup.aggression<a class="headerlink" href="#warmupaggression" title="Permanent link">&para;</a></h4>
+<p>スロースタート方式 (通過させるリクエストの数を少しずつ増加させる) で、増加率を設定する。</p>
+<p><code>1</code>の場合は、直線的に増加する。</p>
+<p>リクエスト数の非常に多い高トラフィックなシステムで、起動直後のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、接続プールの作成が必要、ウォームアップが必要なJVM言語製アプリケーション) にいきなり高負荷をかけないようにできる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">warmup</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+<span class="w">      </span><span class="nt">aggression</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup">https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration">https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration</a></li>
+<li><a href="https://stackoverflow.com/a/75942527/12771072">https://stackoverflow.com/a/75942527/12771072</a></li>
+<li><a href="https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692">https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start</a></li>
+</ul>
+</blockquote>
+<h4 id="warmupduration">▼ warmup.duration<a class="headerlink" href="#warmupduration" title="Permanent link">&para;</a></h4>
+<p>スロースタート方式 (通過させるリクエストの数を少しずつ増加させる) で、スロースタートの期間を設定する。</p>
+<p>リクエスト数の非常に多い高トラフィックなシステムで、起動直後のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、接続プールの作成が必要、ウォームアップが必要なJVM言語製アプリケーション) にいきなり高負荷をかけないようにできる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">warmup</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+<span class="w">      </span><span class="nt">aggression</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup">https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration">https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration</a></li>
+<li><a href="https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692">https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -32865,7 +32770,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月19日 02:20:44">2025-03-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月19日 03:21:50">2025-03-19</span>
   </span>
 
     
