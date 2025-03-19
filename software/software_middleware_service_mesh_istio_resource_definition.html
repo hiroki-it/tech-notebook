@@ -5568,6 +5568,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#outlierdetectionmaxejectionpercent" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ outlierDetection.maxEjectionPercent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#outlierdetectionminhealthpercent" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ outlierDetection.minHealthPercent
@@ -27946,6 +27955,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#outlierdetectionmaxejectionpercent" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ outlierDetection.maxEjectionPercent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#outlierdetectionminhealthpercent" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ outlierDetection.minHealthPercent
@@ -30027,12 +30045,12 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="outlierdetectionbaseejectiontime">▼ outlierDetection.baseEjectionTime<a class="headerlink" href="#outlierdetectionbaseejectiontime" title="Permanent link">&para;</a></h4>
-<p>Podをルーティング先から切り離す秒数を設定する。</p>
+<p>Podをルーティング先から排出する秒数を設定する。</p>
 <p><code>baseEjectionTime</code>後、宛先の正常性を確認し、もしエラーが発生していなければサーキットブレイカーを停止する。</p>
 <p>どのくらいの期間で10回以上を判定するかは、<code>interval</code>キーで設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>Gateway系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。</p>
-<p>サーキットブレイカー中に、異常なPodを30秒間切り離す</p>
+<p>サーキットブレイカー中に、異常なPodを30秒間排出する</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -30057,7 +30075,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>どのくらいの期間で10回以上を判定するかは、<code>interval</code>キーで設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>Gateway系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。</p>
-<p>サーキットブレイカー中に、異常なPodを30秒間切り離す</p>
+<p>サーキットブレイカー中に、異常なPodを30秒間排出する</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -30082,7 +30100,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>どのくらいの期間で10回以上を判定するかは、<code>interval</code>キーで設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p><code>500</code>系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。</p>
-<p>サーキットブレイカー中に、異常なPodを30秒間切り離す</p>
+<p>サーキットブレイカー中に、異常なPodを30秒間排出する</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -30105,7 +30123,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>間隔内で閾値以上のエラーが発生した場合に、サーキトブレイカーが起こる。</p>
 <p><strong>＊実装例＊</strong></p>
 <p><code>500</code>系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。</p>
-<p>サーキットブレイカー中に、異常なPodを30秒間切り離す</p>
+<p>サーキットブレイカー中に、異常なPodを30秒間排出する</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -30124,6 +30142,21 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection">https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection</a></li>
 </ul>
 </blockquote>
+<h4 id="outlierdetectionmaxejectionpercent">▼ outlierDetection.maxEjectionPercent<a class="headerlink" href="#outlierdetectionmaxejectionpercent" title="Permanent link">&para;</a></h4>
+<p>Pod全体のうちで排出できる最大Pod数を設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">outlierDetection</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">minHealthPercent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">90</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
+<span class="w">      </span><span class="nt">baseEjectionTime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
+<span class="w">      </span><span class="nt">maxEjectionPercent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
+</code></pre></div>
 <h4 id="outlierdetectionminhealthpercent">▼ outlierDetection.minHealthPercent<a class="headerlink" href="#outlierdetectionminhealthpercent" title="Permanent link">&para;</a></h4>
 <p>指定された割合で正常になるように、ルーティング先を決める。</p>
 <p>異常なルーティング先がある場合は正常な方にルーティングし、異常なルーティング先が回復することを待つ。</p>
@@ -32380,7 +32413,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
 <span class="w">      </span><span class="c1"># 初回リクエストの失敗時のリトライ</span>
 <span class="w">      </span><span class="nt">retries</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># 最大のリトライ回数</span>
+<span class="w">        </span><span class="c1"># リトライ間隔は、初回リクエストやリトライのタイムアウト値によって、自動的に決まる</span>
 <span class="w">        </span><span class="nt">attempts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">        </span><span class="c1"># リトライのタイムアウト</span>
 <span class="w">        </span><span class="nt">perTryTimeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
 <span class="w">        </span><span class="c1"># Envoyのx-envoy-retry-onの値</span>
 <span class="w">        </span><span class="nt">retryOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5xx</span>
@@ -32400,7 +32436,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
 <span class="w">      </span><span class="c1"># 初回リクエストの失敗時のリトライ</span>
 <span class="w">      </span><span class="nt">retries</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># 最大のリトライ回数</span>
+<span class="w">        </span><span class="c1"># リトライ間隔は、初回リクエストやリトライのタイムアウト値によって、自動的に決まる</span>
 <span class="w">        </span><span class="nt">attempts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">        </span><span class="c1"># リトライのタイムアウト</span>
 <span class="w">        </span><span class="nt">perTryTimeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
 <span class="w">        </span><span class="c1"># Envoyのx-envoy-retry-onの値</span>
 <span class="w">        </span><span class="nt">retryOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway-error</span>
@@ -32413,7 +32452,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="attempt">▼ attempt<a class="headerlink" href="#attempt" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナのリバースプロキシに失敗した場合のリトライ回数を設定する。</p>
+<p><code>istio-proxy</code>コンテナのリバースプロキシに失敗した場合の最大リトライ回数を設定する。</p>
 <p>Serviceへのルーティングの失敗ではないことに注意する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -32770,7 +32809,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月19日 03:21:50">2025-03-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月20日 05:49:38">2025-03-20</span>
   </span>
 
     
