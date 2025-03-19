@@ -505,3 +505,20 @@ SLA (顧客との合意) に基づいたSLOとは区別したい。
 ![ペネトレーションテスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ペネトレーションテスト.png)
 
 <br>
+
+## 08. ポートミラーリング (ミラーリング、トラフィクミラーリング、トラフィックシャドーイング)
+
+『ミラーリング』『トラフィックミラーリング』『トラフィックシャドーイング』ともいう。
+
+特定のポートで送受信されるパケットをコピーし、別のポートに送信する。
+
+本番環境に対するリクエストのコピーをテスト環境にミラーリングし、テスト環境を検証できる。
+
+テスト環境からのレスポンスは破棄されるので、ユーザーに影響がない。
+
+![test_traffic-mirroring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/test_traffic-mirroring.png)
+
+> - https://aws.amazon.com/blogs/networking-and-content-delivery/mirror-production-traffic-to-test-environment-with-vpc-traffic-mirroring/
+> - https://e-words.jp/w/%E3%83%9D%E3%83%BC%E3%83%88%E3%83%9F%E3%83%A9%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0.html
+
+<br>
