@@ -30046,7 +30046,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="outlierdetectionbaseejectiontime">▼ outlierDetection.baseEjectionTime<a class="headerlink" href="#outlierdetectionbaseejectiontime" title="Permanent link">&para;</a></h4>
 <p>Podをルーティング先から排出する秒数を設定する。</p>
-<p><code>baseEjectionTime</code>後、宛先の正常性を確認し、もしエラーが発生していなければサーキットブレイカーを停止する。</p>
+<p>baseEjectionTime`後、宛先の正常性を確認し、もしエラー条件が発生していなければサーキットブレイカーを停止する。</p>
+<p>もしエラー条件がまだ解決していなければ、もう一度<code>baseEjectionTime</code>を実行する。</p>
 <p>どのくらいの期間で10回以上を判定するかは、<code>interval</code>キーで設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>Gateway系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。</p>
@@ -30066,6 +30067,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <ul>
 <li><a href="https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9">https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9</a></li>
 <li><a href="https://speakerdeck.com/nutslove/istioru-men?slide=25">https://speakerdeck.com/nutslove/istioru-men?slide=25</a></li>
+<li><a href="https://ryo-koike.com/ja/blog/istio-advantages/#%E3%82%B5%E3%83%BC%E3%82%AD%E3%83%83%E3%83%88%E3%83%96%E3%83%AC%E3%83%BC%E3%82%AB%E3%83%BC">https://ryo-koike.com/ja/blog/istio-advantages/#%E3%82%B5%E3%83%BC%E3%82%AD%E3%83%83%E3%83%88%E3%83%96%E3%83%AC%E3%83%BC%E3%82%AB%E3%83%BC</a></li>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection">https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection</a></li>
 </ul>
 </blockquote>
@@ -30145,6 +30147,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="outlierdetectionmaxejectionpercent">▼ outlierDetection.maxEjectionPercent<a class="headerlink" href="#outlierdetectionmaxejectionpercent" title="Permanent link">&para;</a></h4>
 <p>Pod全体のうちで排出できる最大Pod数を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
+<p>全てのPodを排出する。</p>
+<p><code>istio-proxy</code>コンテナから返却されたレスポンスに応じて、マイクロサービスでフォールバックを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -30155,7 +30159,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="nt">minHealthPercent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">90</span>
 <span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
 <span class="w">      </span><span class="nt">baseEjectionTime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
-<span class="w">      </span><span class="nt">maxEjectionPercent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
+<span class="w">      </span><span class="nt">maxEjectionPercent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
 </code></pre></div>
 <h4 id="outlierdetectionminhealthpercent">▼ outlierDetection.minHealthPercent<a class="headerlink" href="#outlierdetectionminhealthpercent" title="Permanent link">&para;</a></h4>
 <p>指定された割合で正常になるように、ルーティング先を決める。</p>
@@ -32809,7 +32813,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月20日 05:49:38">2025-03-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月20日 06:44:00">2025-03-20</span>
   </span>
 
     
