@@ -637,7 +637,9 @@ spec:
 
 Podをルーティング先から排出する秒数を設定する。
 
-`baseEjectionTime`後、宛先の正常性を確認し、もしエラーが発生していなければサーキットブレイカーを停止する。
+baseEjectionTime`後、宛先の正常性を確認し、もしエラー条件が発生していなければサーキットブレイカーを停止する。
+
+もしエラー条件がまだ解決していなければ、もう一度`baseEjectionTime`を実行する。
 
 どのくらいの期間で10回以上を判定するかは、`interval`キーで設定する。
 
@@ -662,6 +664,7 @@ spec:
 
 > - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
 > - https://speakerdeck.com/nutslove/istioru-men?slide=25
+> - https://ryo-koike.com/ja/blog/istio-advantages/#%E3%82%B5%E3%83%BC%E3%82%AD%E3%83%83%E3%83%88%E3%83%96%E3%83%AC%E3%83%BC%E3%82%AB%E3%83%BC
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection
 
 #### ▼ outlierDetection.consecutiveGatewayErrors
@@ -760,6 +763,10 @@ Pod全体のうちで排出できる最大Pod数を設定する。
 
 **＊実装例＊**
 
+全てのPodを排出する。
+
+`istio-proxy`コンテナから返却されたレスポンスに応じて、マイクロサービスでフォールバックを実行する。
+
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
@@ -771,7 +778,7 @@ spec:
       minHealthPercent: 90
       interval: 10s
       baseEjectionTime: 30s
-      maxEjectionPercent: 50
+      maxEjectionPercent: 100
 ```
 
 #### ▼ outlierDetection.minHealthPercent
