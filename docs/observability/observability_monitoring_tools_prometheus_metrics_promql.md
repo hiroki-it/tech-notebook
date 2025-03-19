@@ -258,8 +258,11 @@ rate(istio_request_duration_milliseconds_sum{reporter="destination"}[5m])/ rate(
 
 > - https://grafana.com/docs/grafana-cloud/monitor-applications/asserts/enable-prom-metrics-collection/infrastructure/istio/#request-error-and-latency-metrics
 > - https://stackoverflow.com/q/62137292/12771072
+> - https://github.com/istio/istio/discussions/47571
 
 **例**
+
+![istio_request_duration_milliseconds_sum](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_request_duration_milliseconds_sum.png)
 
 400ステータスのレスポンスを集計する。
 
@@ -286,6 +289,8 @@ sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])
 
 **例**
 
+![istio_request_duration_milliseconds_sum](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_request_duration_milliseconds_sum.png)
+
 レスポンスのなかったリクエスト数 (`0`ステータス) を集計する。
 
 `reporter="source"`の場合、送信元`istio-proxy`コンテナからメトリクスを取得することになり、宛先 `istio-proxy`コンテナがアプリから受信しなかったことを集計する。
@@ -305,6 +310,8 @@ sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])
 # 秒当たりの平均増加率を５分間で集計する
 sum(rate(istio_requests_total{reporter="destination", response_code=~"0"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m]))
 ```
+
+> - https://github.com/istio/istio/discussions/47571
 
 #### ▼ `[]` (ウィンドウ)
 
