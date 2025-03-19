@@ -635,7 +635,7 @@ spec:
 
 #### ▼ outlierDetection.baseEjectionTime
 
-Podをルーティング先から切り離す秒数を設定する。
+Podをルーティング先から排出する秒数を設定する。
 
 `baseEjectionTime`後、宛先の正常性を確認し、もしエラーが発生していなければサーキットブレイカーを停止する。
 
@@ -645,7 +645,7 @@ Podをルーティング先から切り離す秒数を設定する。
 
 Gateway系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。
 
-サーキットブレイカー中に、異常なPodを30秒間切り離す
+サーキットブレイカー中に、異常なPodを30秒間排出する
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -676,7 +676,7 @@ spec:
 
 Gateway系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。
 
-サーキットブレイカー中に、異常なPodを30秒間切り離す
+サーキットブレイカー中に、異常なPodを30秒間排出する
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -707,7 +707,7 @@ spec:
 
 `500`系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。
 
-サーキットブレイカー中に、異常なPodを30秒間切り離す
+サーキットブレイカー中に、異常なPodを30秒間排出する
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -735,7 +735,7 @@ spec:
 
 `500`系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。
 
-サーキットブレイカー中に、異常なPodを30秒間切り離す
+サーキットブレイカー中に、異常なPodを30秒間排出する
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -753,6 +753,26 @@ spec:
 > - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
 > - https://speakerdeck.com/nutslove/istioru-men?slide=25
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection
+
+#### ▼ outlierDetection.maxEjectionPercent
+
+Pod全体のうちで排出できる最大Pod数を設定する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    outlierDetection:
+      minHealthPercent: 90
+      interval: 10s
+      baseEjectionTime: 30s
+      maxEjectionPercent: 50
+```
 
 #### ▼ outlierDetection.minHealthPercent
 
@@ -3375,7 +3395,10 @@ spec:
       timeout: 10s
       # 初回リクエストの失敗時のリトライ
       retries:
+        # 最大のリトライ回数
+        # リトライ間隔は、初回リクエストやリトライのタイムアウト値によって、自動的に決まる
         attempts: 3
+        # リトライのタイムアウト
         perTryTimeout: 10s
         # Envoyのx-envoy-retry-onの値
         retryOn: 5xx
@@ -3399,7 +3422,10 @@ spec:
       timeout: 10s
       # 初回リクエストの失敗時のリトライ
       retries:
+        # 最大のリトライ回数
+        # リトライ間隔は、初回リクエストやリトライのタイムアウト値によって、自動的に決まる
         attempts: 3
+        # リトライのタイムアウト
         perTryTimeout: 10s
         # Envoyのx-envoy-retry-onの値
         retryOn: gateway-error
@@ -3411,7 +3437,7 @@ spec:
 
 #### ▼ attempt
 
-`istio-proxy`コンテナのリバースプロキシに失敗した場合のリトライ回数を設定する。
+`istio-proxy`コンテナのリバースプロキシに失敗した場合の最大リトライ回数を設定する。
 
 Serviceへのルーティングの失敗ではないことに注意する。
 
