@@ -238,14 +238,18 @@ rate(<Counter型メトリクス名>[1h])
 
 ![istio_request_duration_milliseconds_sum](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_request_duration_milliseconds_sum.png)
 
-`reporter="source"`の場合、送信元`istio-proxy`コンテナに対して、宛先 `istio-proxy`コンテナの先にあるアプリがレスポンスを返信する平均レスポンスタイムを集計する。
+`reporter="source"`の場合、送信元`istio-proxy`コンテナからメトリクスを取得することになり、宛先 `istio-proxy`コンテナの先にあるアプリがレスポンスを返信する平均レスポンスタイムを集計する。
+
+`pod`ラベルから取得できるのは、送信元のPod名である。
 
 ```bash
 # 秒当たりの平均増加率を５分間で集計する
 rate(istio_request_duration_milliseconds_sum{reporter="source"}[5m])/ rate(istio_request_duration_milliseconds_count{reporter="source"}[5m])
 ```
 
-`reporter="destination"`の場合、宛先`istio-proxy`コンテナに対して、アプリがレスポンスを返信する平均レスポンスタイムを集計する。
+`reporter="destination"`の場合、宛先`istio-proxy`コンテナからメトリクスを取得することになり、アプリがレスポンスを返信する平均レスポンスタイムを集計する。
+
+`pod`ラベルから取得できるのは、宛先のPod名である。
 
 ```bash
 # 秒当たりの平均増加率を５分間で集計する
@@ -259,16 +263,18 @@ rate(istio_request_duration_milliseconds_sum{reporter="destination"}[5m])/ rate(
 
 400ステータスのレスポンスを集計する。
 
-`reporter="source"`の場合、送信元`istio-proxy`コンテナに対して、宛先 `istio-proxy`コンテナがアプリから受信したステータスコードを集計する。
+`reporter="source"`の場合、送信元`istio-proxy`コンテナからメトリクスを取得することになり、宛先 `istio-proxy`コンテナがアプリから受信したステータスコードを集計する。
+
+`pod`ラベルから取得できるのは、送信元のPod名である。
 
 ```bash
 # 秒当たりの平均増加率を５分間で集計する
 sum(rate(istio_requests_total{reporter="source", response_code=~"4.*"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m]))
 ```
 
-`reporter="destination"`の場合、送信元`istio-proxy`コンテナに対して、宛先 `istio-proxy`コンテナがアプリから受信したステータスコードを集計する。
+`reporter="destination"`の場合、送信元`istio-proxy`コンテナからメトリクスを取得することになり、宛先 `istio-proxy`コンテナがアプリから受信したステータスコードを集計する。
 
-特に、クライアントが接続を切断し、宛先`istio-proxy`コンテナレスポンスを返信できなかった場合には、`reporter="source"`ラベルを指定しないと`response_code=0`を集計できない。
+`pod`ラベルから取得できるのは、宛先のPod名である。
 
 ```bash
 # 秒当たりの平均増加率を５分間で集計する
@@ -277,6 +283,28 @@ sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])
 
 > - https://cloud.google.com/stackdriver/docs/managed-prometheus/exporters/istio?hl=ja#rules-alerts
 > - https://github.com/istio/istio/discussions/47571
+
+**例**
+
+レスポンスのなかったリクエスト数 (`0`ステータス) を集計する。
+
+`reporter="source"`の場合、送信元`istio-proxy`コンテナからメトリクスを取得することになり、宛先 `istio-proxy`コンテナがアプリから受信しなかったことを集計する。
+
+`pod`ラベルから取得できるのは、送信元のPod名である。
+
+```bash
+# 秒当たりの平均増加率を５分間で集計する
+sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m]))
+```
+
+`pod`ラベルから取得できるのは、宛先のPod名である。
+
+`reporter="destination"`の場合、送信元`istio-proxy`コンテナからメトリクスを取得することになり、宛先 `istio-proxy`コンテナがアプリから受信しなかったことを集計する。
+
+```bash
+# 秒当たりの平均増加率を５分間で集計する
+sum(rate(istio_requests_total{reporter="destination", response_code=~"0"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m]))
+```
 
 #### ▼ `[]` (ウィンドウ)
 
