@@ -23,7 +23,7 @@ description: ネットワークの知見を記録しています。
 
 <br>
 
-## 03. インターネット
+## 02. インターネット
 
 ### インターネットとは
 
@@ -35,7 +35,7 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 <br>
 
-## 05. 通信の方向/位置
+## 03. 通信の方向/位置
 
 ### インバウンド/アウトバウンド
 
@@ -153,11 +153,13 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 <br>
 
+## 05. ネットワークの回復
+
 ### タイムアウト
 
 #### ▼ タイムアウトとは
 
-何らかの処理を実行した後に結果の返却を待機する最大時間である。
+何らかの処理 (例：通信など) を実行した後に結果の返却を待機する最大時間である。
 
 #### ▼ 接続タイムアウト (Connection timeout)
 
@@ -167,7 +169,9 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 これの場合、サーバーにリクエストを送信できていない。
 
-#### ▼ 読み取りタイムアウト (Read timedout)
+> - https://zenn.dev/yktakaha4/articles/learn_about_web_application_timeouts#%E6%8E%A5%E7%B6%9A%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88
+
+#### ▼ 読み取りタイムアウト (Read timeout)
 
 処理の中でも、リクエストが到達した後に特にレスポンスの返信を待機する最大時間である。
 
@@ -175,12 +179,30 @@ WANと比較して、通信の利用者が限定されていないため、サ�
 
 HTTPのステータスコードでは、Gateway Timeout (`504`) が相当する。
 
+> - https://zenn.dev/yktakaha4/articles/learn_about_web_application_timeouts#%E3%83%AA%E3%83%BC%E3%83%89%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88
+
 #### ▼ セッションタイムアウト (Session timeout)
 
 記入中...
 
+> - https://zenn.dev/yktakaha4/articles/learn_about_web_application_timeouts#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88
+
 #### ▼ アイドルタイムアウト (Idle timeout)
 
 TCP接続中の無通信状態 (パケットの送受信がない状態) を許可する時間である。
+
+#### ▼ 処理タイムアウト
+
+記入中...
+
+> - https://zenn.dev/yktakaha4/articles/learn_about_web_application_timeouts#%E5%87%A6%E7%90%86%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88
+
+<br>
+
+### リトライ
+
+#### ▼ リトライとは
+
+記入中...
 
 <br>

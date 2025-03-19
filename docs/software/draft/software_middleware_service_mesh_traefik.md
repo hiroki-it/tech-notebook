@@ -27,7 +27,7 @@ description: Traefik＠サービスメッシュ系ミドルウェアの知見を
 
 <br>
 
-## 02. 回復性管理
+## 02. 回復性の管理
 
 > - https://doc.traefik.io/traefik/middlewares/http/circuitbreaker/
 

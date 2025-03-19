@@ -26,7 +26,17 @@ JavaScriptをクライアント側で実行する場合、ブラウザを実行�
 
 <br>
 
-## 02. セットアップ
+## 02. 仕組み
+
+### ハードウェアリソース
+
+cgroup v2を使用した、コンテナのハードウェアリソースの割り当てを決定している。
+
+> - https://www.reddit.com/r/node/comments/1c29sge/comment/kzh8zw4/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+
+<br>
+
+## 03. セットアップ
 
 ### Dockerfile
 
@@ -45,7 +55,7 @@ CMD ["yarn", "dev"]
 
 <br>
 
-## 03. エラー
+## 04. エラー
 
 ### MODULE_NOT_FOUND
 
