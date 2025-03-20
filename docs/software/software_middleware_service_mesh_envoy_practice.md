@@ -224,3 +224,45 @@ Envoy
 これらを解決する。
 
 <br>
+
+## 05 ヘッダー
+
+### 1. 送信元Envoyから宛先Envoyへのリクエストヘッダー
+
+記入中...
+
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#http-request-headers-set-on-upstream-calls
+
+<br>
+
+### 2. 宛先Envoyから送信元Envoyへのレスポンスヘッダー
+
+#### ▼ 宛先Envoyから送信元Envoyへのレスポンスヘッダーとは
+
+送信元Envoyのアウトバウンド通信時に、宛先Envoyから送信元ENvoyへのレスポンスに設定されたヘッダーである。
+
+
+#### ▼ x-envoy-immediate-health-check-fail
+
+
+宛先でヘルスチェックに失敗していることを表す。
+
+送信元Envoyは、このEnvoyをロードバランシングの宛先から外す。
+
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-immediate-health-check-fail
+
+<br>
+
+### 3. 送信元Envoyからアプリへのレスポンスヘッダー
+
+#### ▼ 送信元Envoyからアプリへのレスポンスヘッダーとは
+
+送信元Envoyのアウトバウンド通信時に、送信元Envoyからアプリへのレスポンスに設定されたヘッダーである。
+
+#### ▼ x-envoy-overloaded
+
+サーキットブレイカーまたはメンテナンスモードによって、リクエストが遮断されたことを表す。
+
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-overloaded
+
+<br>
