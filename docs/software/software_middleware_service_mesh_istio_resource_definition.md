@@ -765,7 +765,7 @@ Pod全体のうちで排出できる最大Pod数を設定する。
 
 全てのPodを排出する。
 
-`istio-proxy`コンテナから返却されたレスポンスに応じて、マイクロサービスでフォールバックを実行する。
+代わりに`istio-proxy`コンテナから返却された`503`ステータス (response_flagは`UH`) のレスポンスに応じて、送信元のマイクロサービスでフォールバックを実行する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -780,6 +780,8 @@ spec:
       baseEjectionTime: 30s
       maxEjectionPercent: 100
 ```
+
+> - https://opstree.com/blog/2024/04/16/istio-circuit-breaker-when-failure-is-a-better-option/
 
 #### ▼ outlierDetection.minHealthPercent
 
@@ -831,7 +833,7 @@ spec:
 
 指定したゾーンのPodに対して、指定した重みづけでルーティングする。
 
-リージョン名やゾーン名は、Podの`topologyKey`キー（`topology.kubernetes.io/region`キー、`topology.kubernetes.io/zone`キーなど) の値を設定する。
+リージョン名やゾーン名は、Podの`topology.kubernetes.io/region`キーや`topology.kubernetes.io/zone`キーの値を設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1

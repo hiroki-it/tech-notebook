@@ -108,7 +108,7 @@ SHOW variables LIKE '%version%';
 
 <br>
 
-## 02-02. 接続方法
+## 02-02. 踏み台サーバーをパブリックサブネットに置く場合の接続方法
 
 ### SSH公開鍵認証を使用する場合
 
@@ -128,7 +128,9 @@ $ ssh -o serveraliveinterval=60 -f -N -L 3306:<AWS Auroraのリーダーエン�
 
 <br>
 
-### AWS SSM Session ManagerのSSHセッションを使用する場合
+## 02-03. 踏み台サーバーをプライベートサブネットに置く場合の接続方法
+
+### AWS SSM Session Managerを使用したSSHセッション
 
 #### ▼ この方法について
 
@@ -138,13 +140,15 @@ $ ssh -o serveraliveinterval=60 -f -N -L 3306:<AWS Auroraのリーダーエン�
 
 <br>
 
-### AWS SSM Session ManagerのStartPortForwardingSessionToRemoteHostを使用する場合
+### AWS SSM Session Managerを使用したリモートホストへのポート転送 (StartPortForwardingSessionToRemoteHost)
 
 #### ▼ この方法について
 
 AWS SSM Session Managerの認証を使用する場合、AWS IAMでDB接続者を管理する。
 
 この場合、AWS SSM Session Managerを使用するため、踏み台サーバー (AWS EC2) をプライベートサブネットに置ける。
+
+> - https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-remote-port-forwarding
 
 #### ▼ 前提条件
 
@@ -190,9 +194,9 @@ mysql> SHOW TABLES;
 
 <br>
 
-### 踏み台Podを使用する場合
+## 02-04. 踏み台PodをAWS EKSクラスター内に置く場合の接続方法
 
-#### ▼ 踏み台Podとは
+### 踏み台Podとは
 
 これは、AWS EKSを使用している場合に使用できる。
 
@@ -202,7 +206,9 @@ Helmチャートを作成しておくと、簡単にセットアップできる�
 
 > - https://zenn.dev/toshikish/articles/6a06017747cbba#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AB%E5%A4%A7%E9%87%8F%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%8C%BF%E5%85%A5%E3%81%97%E3%81%9F%E3%81%84
 
-#### ▼ troubleshootingリポジトリ
+<br>
+
+### troubleshootingリポジトリ
 
 ```yaml
 troubleshooting/
@@ -225,7 +231,9 @@ troubleshooting/
 **/**/values.yaml
 ```
 
-#### ▼ values.example.yaml
+<br>
+
+### values.example.yaml
 
 `.env`ファイルのように、バージョン管理しない`values.example.yaml`ファイルを用意しておく。
 
@@ -311,6 +319,14 @@ mysql> SHOW TABLES;
 ```
 
 > - https://zenn.dev/toshikish/articles/6a06017747cbba#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AB%E5%A4%A7%E9%87%8F%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%8C%BF%E5%85%A5%E3%81%97%E3%81%9F%E3%81%84
+
+<br>
+
+## 02-05. AWS ECS Fargateをプライベートサブネットに置く場合の接続方法
+
+記入中...
+
+> - https://zenn.dev/quiver/articles/1458e453118254
 
 <br>
 
