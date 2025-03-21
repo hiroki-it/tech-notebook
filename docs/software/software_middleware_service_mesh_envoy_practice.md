@@ -259,6 +259,12 @@ Envoy
 
 送信元Envoyのアウトバウンド通信時に、送信元Envoyからアプリへのレスポンスに設定されたヘッダーである。
 
+#### ▼ x-envoy-upstream-service-time
+
+宛先マイクロサービスの処理時間と宛先Envoyからのレスポンスタイムの合計時間を表す。
+
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-upstream-service-time
+
 #### ▼ x-envoy-overloaded
 
 サーキットブレイカーまたはメンテナンスモードによって、リクエストが遮断されたことを表す。
