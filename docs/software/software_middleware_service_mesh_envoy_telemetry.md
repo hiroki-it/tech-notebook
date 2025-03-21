@@ -155,10 +155,10 @@ Cluster外からのリクエスト/Pod間通信時のレスポンスの補足メ
 | `NC`  | `NO_CLUSTER_FOUND`                |       なし       | クラスターの設定が見つからず、Envoyはアップストリームに接続できなかった。                         |
 | `UC`  | `UPSTREAM_CONNECTION_TERMINATION` |      `503`       | 遭遇率が一番高い。Envoyは何らかの理由でアップストリームに接続できなかった。                       |
 | `UF`  | `UPSTREAM_CONNECTION_FAILURE`     |      `503`       | Envoyは通信障害でアップストリームに接続できなかった。                                             |
+| `UH`  | `NO_HEALTHY_UPSTREAM`             |      `503`       | Envoyはアップストリームの異常で接続できなかった。                                                 |
 | `UT`  | `UPSTREAM_REQUEST_TIMEOUT`        |      `503`       | Envoyはタイムアウトでアップストリームに接続できなかった。                                         |
 | `UO`  | `UPSTREAM_OVERFLOW`               |      `503`       | サーキットブレイカーで、Envoyはアップストリームに接続できなかった。                               |
 | `URX` | `UPSTREAM_RETRY_LIMIT_EXCEEDED`   |       なし       | アップストリームの通信試行回数制限の上限超過で、Envoyはアップストリームに接続拒否されてしまった。 |
-| `UH`  | `NO_HEALTHY_UPSTREAM`             |      `503`       | Envoyはアップストリームの異常で接続できなかった。                                                 |
 
 ダウンストリームが原因のメッセージは以下の通りである。
 

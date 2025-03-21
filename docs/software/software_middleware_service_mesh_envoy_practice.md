@@ -241,9 +241,7 @@ Envoy
 
 送信元Envoyのアウトバウンド通信時に、宛先Envoyから送信元ENvoyへのレスポンスに設定されたヘッダーである。
 
-
 #### ▼ x-envoy-immediate-health-check-fail
-
 
 宛先でヘルスチェックに失敗していることを表す。
 
@@ -267,8 +265,16 @@ Envoy
 
 #### ▼ x-envoy-overloaded
 
-サーキットブレイカーまたはメンテナンスモードによって、リクエストが遮断されたことを表す。
+送信元Envoyのアウトバウンド通信時に、サーキットブレイカーまたはメンテナンスモードによってリクエストが遮断されたことを表す。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-overloaded
+> - https://aws.amazon.com/cn/blogs/china/how-to-use-metrics-and-logs-to-troubleshoot-app-mesh-related-network-problems/
+
+#### ▼ x-envoy-loadl-overloaded
+
+送信元Envoyのインバウンド通信時に、サーキットブレイカーによってリクエストが遮断されたことを表す。
+
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#x-envoy-local-overloaded
+> - https://github.com/envoyproxy/envoy/issues/1573#issue-254090540
 
 <br>
