@@ -667,10 +667,19 @@ $ minikube start --container-runtime=cri-o
 
 #### ▼ --cpus、--memory
 
-MinikubeのNodeのスペックを設定する。
+Minikubeの各Nodeのスペックを設定する (これはMinikubeクラスターの上限ではない) 。
+
+ため、DockerDesktopの上限を高く設定しておかないと、ホストOSがMinikubeクラスターに割り当てられるハードウェアリソースが足りなくなり、MinikubeのNodeが`NotReady`になる。
 
 ```bash
 $ minikube start --cpus=4 --memory=16384
+```
+
+CPU4コアとメモリ7168GBを持ったNodeが3台作られる。
+
+
+```bash
+$ minikube start --cpus=4 --memory=7168 --nodes 3
 ```
 
 実際に設定されたハードウェアリソースは、Minikube内から確認できる。
@@ -708,6 +717,8 @@ Mem:           7951        1853        3080         333        3017        5594
 Swap:          1023           0        1023
 ```
 
+
+
 #### ▼ --docker-env
 
 別に`docker-env`コマンドを実行しつつ、`start`コマンドを実行する。
@@ -721,6 +732,12 @@ $ minikube start --docker-env
 #### ▼ --ha
 
 コントロールプレーンNodeを`3`個に冗長化する。
+
+kube-apiserverは負荷が高まりクラッシュしやすいため、対策になる。
+
+ただ、ワーカーNode以外のNode数が増える。
+
+ため、DockerDesktopの上限を高く設定しておかないと、ホストOSがMinikubeクラスターに割り当てられるハードウェアリソースが足りなくなり、MinikubeのNodeが`NotReady`になる。
 
 ```bash
 $ minikube start --ha
@@ -791,6 +808,17 @@ $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/fo
 作成するNode数を指定し、`start`コマンドを実行する。
 
 マルチNodeのKubernetes Clusterを作成できる。
+
+Minikubeは、同じCPUとメモリを持つNodeを冗長化するため、`--nodes`オプションでNodeを増やすだけ、Podのリソースに余裕がでる。
+
+
+**＊例＊**
+
+CPU4コアとメモリ7168GBを持ったNodeが3台作られる。
+
+```bash
+$ minikube start --nodes 3 --cpu 4 --memory 7168
+```
 
 **＊例＊**
 
