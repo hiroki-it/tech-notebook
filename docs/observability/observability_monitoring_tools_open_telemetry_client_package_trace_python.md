@@ -56,7 +56,7 @@ from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter
 from opentelemetry.propagators.cloud_trace_propagator import (CloudTraceFormatPropagator,)
 
-# ダウンストリーム側マイクロサービスのリクエストからトレースコンテキストを抽出する。
+# 送信元マイクロサービスのリクエストからトレースコンテキストを抽出する。
 set_global_textmap(CloudTraceFormatPropagator())
 
 # 任意のトレースコンテキストを設定する

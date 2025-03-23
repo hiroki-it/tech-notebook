@@ -279,9 +279,9 @@ APMのマイクロサービスのタグ名に反映される。
 
 ### HTTPを使用する場合
 
-#### ▼ 最ダウンストリーム側マイクロサービス
+#### ▼ 送信元マイクロサービス
 
-最ダウンストリーム側マイクロサービスでは、親スパンを作成する。
+送信元マイクロサービスでは、親スパンを作成する。
 
 ```go
 package main
@@ -335,9 +335,9 @@ func InitTracerProvider(w http.ResponseWriter, req *http.Request) {
 
 > - https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/go/#distributed-tracing
 
-#### ▼ アップストリーム側マイクロサービス
+#### ▼ 宛先マイクロサービス
 
-アップストリーム側マイクロサービスでは、受信した通信からトレースコンテキストを取得する。
+宛先マイクロサービスでは、受信した通信からトレースコンテキストを取得する。
 
 また、子スパンを作成する。
 

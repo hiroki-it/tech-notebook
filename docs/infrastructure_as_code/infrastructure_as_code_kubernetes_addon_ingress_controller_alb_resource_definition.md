@@ -235,7 +235,7 @@ metadata:
 
 instanceターゲットタイプを設定する。
 
-インスタンスターゲットタイプの場合、宛先PodのダウンストリームのServiceはNodePort Serviceとする。
+インスタンスターゲットタイプの場合、宛先Podの送信元のServiceはNodePort Serviceとする。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -253,7 +253,7 @@ metadata:
 
 IPターゲットタイプを設定する。
 
-IPターゲットタイプの場合、宛先PodのダウンストリームのServiceはClusterIP Serviceとする。
+IPターゲットタイプの場合、宛先Podの送信元のServiceはClusterIP Serviceとする。
 
 AWS Fargateの場合は、`ip`を設定する必要がある。
 

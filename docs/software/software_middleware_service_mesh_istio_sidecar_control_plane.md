@@ -237,7 +237,7 @@ webhooks:
         operations: ["CREATE", "UPDATE"]
         resources: ["pods"]
         scope: "*"
-    # WebhookのダウンストリームにあるServiceの情報を登録する。
+    # Webhookの送信元にあるServiceの情報を登録する。
     clientConfig:
       service:
         name: istiod-<リビジョン番号>

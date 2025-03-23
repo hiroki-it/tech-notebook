@@ -249,11 +249,11 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 > - https://s3.us.cloud-object-storage.appdomain.cloud/developer/series/os-academy-istio-2020/nl/zh/static/4-WASM.pdf#page=10
 > - https://s3.us.cloud-object-storage.appdomain.cloud/developer/series/os-academy-istio-2020/nl/zh/static/4-WASM.pdf#page=12
 
-#### ▼ アップストリーム/ダウンストリーム
+#### ▼ 宛先/送信元
 
-アップストリームは、Envoyのレスポンスの送信元を表す。
+アップストリームは、Envoyのレスポンスの宛先を表す。
 
-ダウンストリームは、Envoyのレスポンスの宛先を表す。
+ダウンストリームは、Envoyのレスポンスの送信元を表す。
 
 > - https://hinawatts.medium.com/timeout-settings-in-envoy-proxy-a368f3006933
 > - https://stackoverflow.com/a/32365658

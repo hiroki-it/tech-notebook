@@ -15,7 +15,7 @@ description: OAuth2 Proxy＠セキュリティ系ミドルウェアの知見を�
 
 ## 01. OAuth2 Proxyとは
 
-OAuth2 Proxyは、ダウンストリームからのトークン署名検証リクエストをIDプロバイダーにプロキシする。
+OAuth2 Proxyは、送信元からのトークン署名検証リクエストをIDプロバイダーにプロキシする。
 
 OAuth 2.0をベースとしたSSO (例：OAuth、OIDCなど) のトークン署名検証リクエストをプロキシできる。
 
@@ -90,7 +90,7 @@ spec:
 
 #### ▼ Prometheus、Alertmanager
 
-Prometheus、AlertmanagerのダウンストリームにあるIngressは、OAuth2 Proxyに認可リクエストを送信する。
+Prometheus、Alertmanagerの送信元にあるIngressは、OAuth2 Proxyに認可リクエストを送信する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -118,7 +118,7 @@ spec:
 
 #### ▼ Grafana
 
-GrafanaのダウンストリームにあるIngressは、OAuth2 Proxyに認可リクエストを送信する。
+Grafanaの送信元にあるIngressは、OAuth2 Proxyに認可リクエストを送信する。
 
 一方で、GrafanaはIDプロバイダーに認可リクエストを直背的に送信できるため、OAuth2 Proxyがなくてもよい。
 
@@ -149,7 +149,7 @@ spec:
 
 #### ▼ Kiali
 
-KialiのダウンストリームにあるIngressは、OAuth2 Proxyに認可リクエストを送信する。
+Kialiの送信元にあるIngressは、OAuth2 Proxyに認可リクエストを送信する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1

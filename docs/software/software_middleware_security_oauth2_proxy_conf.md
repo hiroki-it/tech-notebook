@@ -177,7 +177,7 @@ redirect_url: "https://<アプリケーションのドメイン>/oauth2/callback
 
 ### reverse_proxyとは
 
-OAuth2 Proxyのダウンストリームに任意のリバースプロキシ (例：Nginx) があるかどうかを設定する。
+OAuth2 Proxyの送信元に任意のリバースプロキシ (例：Nginx) があるかどうかを設定する。
 
 ```yaml
 reverse_proxy: true

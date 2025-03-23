@@ -97,7 +97,7 @@ spec:
 
 Istio IngressGatewayでは、内部的に作成されるServiceのタイプ (NodePort Service、ClusterIP Service、LoadBalancer Service) を選べる。
 
-NodePort Serviceを選ぶ場合、Nodeのダウンストリームに開発者がロードバランサーを作成し、NodePort Serviceにインバウンド通信をルーティングできるようにする。
+NodePort Serviceを選ぶ場合、Nodeの送信元に開発者がロードバランサーを作成し、NodePort Serviceにインバウンド通信をルーティングできるようにする。
 
 ```yaml
 パブリックネットワーク

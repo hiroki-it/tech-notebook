@@ -1183,7 +1183,7 @@ dynamic_resources:
 
 #### ▼ global_downstream_max_connections
 
-ダウンストリーム接続の上限数を設定する
+送信元の接続の上限数を設定する
 
 ```yaml
 resource_monitors:

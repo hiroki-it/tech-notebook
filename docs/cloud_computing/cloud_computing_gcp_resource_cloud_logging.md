@@ -264,11 +264,11 @@ jsonPayload.Level = "WARN"
 
 マイクロサービスアーキテクチャで、アウトバウンド時に送信元`istio-proxy`コンテナで発生したエラーをクエリする。
 
-ここでは、アップストリーム側Clusterとして`PassthroughCluster`を指定した。
+ここでは、宛先Clusterとして`PassthroughCluster`を指定した。
 
 ```bash
 # Kubernetes上のPod内のistio-proxyコンテナ
-# ダウンストリーム側Clusterとして、PassthroughClusterを設定する
+# 送信元Clusterとして、PassthroughClusterを設定する
 resource.labels.container_name="istio-proxy"
 resource.labels.pod_name="foo-pod"
 jsonPayload.upstream_cluster="PassthroughCluster"

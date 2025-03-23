@@ -73,9 +73,9 @@ $ git config --local user.email "hasegawafeedshop@gmail.com"
 $ git config --local --list
 ```
 
-#### 4. 公式リポジトリをアップストリームリポジトリとして登録する
+#### 4. 公式リポジトリを宛先リポジトリとして登録する
 
-リモートリポジトリとしてのフォークリポジトリとは別に、公式リポジトリをアップストリームに登録する。
+リモートリポジトリとしてのフォークリポジトリとは別に、公式リポジトリを宛先に登録する。
 
 ```bash
 $ git remote add upstream https://github.com/kubernetes/kubernetes.git

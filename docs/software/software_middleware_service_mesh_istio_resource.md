@@ -1252,7 +1252,7 @@ data:
           # 認可リクエストに追加する必要のあるヘッダーを設定する
           includeRequestHeadersInCheck:
             - cookie
-          # 認証の完了後に、元のアップストリームへのリクエストを変更するかどうかを設定する
+          # 認証の完了後に、元の宛先へのリクエストを変更するかどうかを設定する
           # リフレッシュしたアクセストークンを元のAuthorizarionヘッダーに設定したい場合、これを設定する必要がある (たぶん)
           headersToUpstreamOnAllow:
             - authorization

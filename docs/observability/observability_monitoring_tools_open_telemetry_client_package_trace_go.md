@@ -305,7 +305,7 @@ func InitTracerProvider(shutdownTimeout time.Duration) (func(), error) {
 	// ログにpropagator名を出力しておく
 	log.Printf("Propagator %v initialize successfully", propagatorList)
 
-	// アップストリーム側マイクロサービスへのリクエストがタイムアウトだった場合に、処理をする。
+	// 宛先マイクロサービスへのリクエストがタイムアウトだった場合に、処理をする。
 	cleanUp := func() {
 
 		// タイムアウト時間設定済みのトレースコンテキストを作成する

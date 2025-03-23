@@ -151,7 +151,7 @@ AWS CloudFrontは謎...
 
 ## 05-02. SSL証明書の配置場所パターン
 
-### AWS EC2/AWS ECS/AWS EKSのダウンストリーム
+### AWS EC2/AWS ECS/AWS EKSの送信元
 
 #### ▼ SSL/TLS終端
 
