@@ -190,3 +190,15 @@ blast-radiusを最小限にできる。
 > - https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns
 
 <br>
+
+## 10. エラーハンドリング
+
+宛先のマイクロサービスから受信したステータスコードは、送信元にそのまま返信するように設計する。
+
+最終的に、フロントエンドアプリでステータスコードをユーザーにわかるメッセージに変換する。
+
+![microservices_status-code_propagation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_status-code_propagation.png)
+
+> - https://medium.com/@jameszheng66/microservices-error-propagation-2a847feeb3f
+
+<br>
