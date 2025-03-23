@@ -45,9 +45,9 @@ description: インフラ領域＠マイクロサービスアーキテクチャ�
 
 サイドカーはリクエストからJWTを取得し、通信の認証/認可を実施する。
 
-送信元のマイクロサービスを認証し、認証されていないマイクロサービスであればリクエストを拒否する。
+送信元マイクロサービスを認証し、認証されていないマイクロサービスであればリクエストを拒否する。
 
-また、送信元のマイクロサービスの認可スコープを検証し、もしマイクロサービスの認可スコープが不十分であれば、リクエストを拒否する。
+また、送信元マイクロサービスの認可スコープを検証し、もしマイクロサービスの認可スコープが不十分であれば、リクエストを拒否する。
 
 ![micro-authentication_type_jwt_service-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_jwt_service-mesh.png)
 

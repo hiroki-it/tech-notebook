@@ -55,7 +55,7 @@ description: 認証／認可＠マイクロサービス領域の知見を記録�
 
 次回、APIゲートウェイがフロントエンドからのリクエストをKeycloakに転送し、JWT仕様トークンの署名を検証する。
 
-結果に応じて、後続のマイクロサービスにルーティングするかどうかを決める。
+結果に応じて、宛先マイクロサービスにルーティングするかどうかを決める。
 
 ![microservices_authentication_type_sso_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_sso_gateway.png)
 

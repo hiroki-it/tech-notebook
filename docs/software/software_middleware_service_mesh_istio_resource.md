@@ -263,7 +263,7 @@ spec:
 
 ### エラー
 
-#### ▼ アップストリームのPodに接続できない
+#### ▼ 宛先Podに接続できない
 
 `upstream connect error or disconnect/reset before headers. reset reason: connection termination`というエラーになる。
 
@@ -1116,7 +1116,7 @@ spec:
     - issuer: https://<Auth0のドメイン>/
       # IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する
       jwksUri: https://<Auth0のドメイン>/.well-known/jwks.json
-      # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
+      # 既存のJWTを再利用し、宛先マイクロサービスにそのまま転送する
       forwardOriginalToken: true
       # Authorizationヘッダーを指定する
       fromHeaders:
@@ -1165,7 +1165,7 @@ spec:
       # IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する
       # ブラウザから、またはAPIに直接接続する
       jwksUri: http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
-      # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
+      # 既存のJWTを再利用し、宛先マイクロサービスにそのまま転送する
       forwardOriginalToken: true
       # Authorizationヘッダーを指定する
       fromHeaders:
@@ -1216,7 +1216,7 @@ spec:
       # IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する
       # ブラウザから、またはAPIに直接接続する
       jwksUri: http://oauth2-proxy.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
-      # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
+      # 既存のJWTを再利用し、宛先マイクロサービスにそのまま転送する
       forwardOriginalToken: true
       # Authorizationヘッダーを指定する
       fromHeaders:

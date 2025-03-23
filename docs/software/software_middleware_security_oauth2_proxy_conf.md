@@ -236,7 +236,7 @@ http {
 
 #### ▼ uri
 
-OAuth2 ProxyのアップストリームのWebサーバーのURLを設定する。
+OAuth2 Proxyの宛先WebサーバーのURLを設定する。
 
 注意点として、IDプロバイダーのURLではない。
 

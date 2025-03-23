@@ -804,15 +804,15 @@ Sagaオーケストレーターのドメインモデリングにイベントソ�
 
 <br>
 
-### 後続マイクロサービスとの通信方式
+### 宛先マイクロサービスとの通信方式
 
 各マイクロサービスにパブリッシュとサブスクライブを処理する責務を持たせる。
 
 ![choreography_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography_message-queue.png)
 
-> - https://www.12-technology.com/2021/08/dbsaga.html
-
 ![saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern.png)
+
+> - https://www.12-technology.com/2021/08/dbsaga.html
 
 <br>
 

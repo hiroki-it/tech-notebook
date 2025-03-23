@@ -765,7 +765,7 @@ Pod全体のうちで排出できる最大Pod数を設定する。
 
 全てのPodを排出する。
 
-代わりに`istio-proxy`コンテナから返却された`503`ステータス (response_flagは`UH`) のレスポンスに応じて、送信元のマイクロサービスでフォールバックを実行する。
+代わりに`istio-proxy`コンテナから返却された`503`ステータス (response_flagは`UH`) のレスポンスに応じて、送信元マイクロサービスでフォールバックを実行する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -2253,7 +2253,7 @@ spec:
       # IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する
       # ブラウザから、またはAPIに直接接続する
       jwksUri: https://example.com/.well-known/jwks.json
-      # 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する
+      # 既存のJWTを再利用し、宛先マイクロサービスにそのまま転送する
       forwardOriginalToken: true
       # Authorizationヘッダーを指定する
       fromHeaders:
@@ -2318,7 +2318,7 @@ spec:
 
 #### ▼ forwardOriginalToken
 
-既存のJWTを再利用し、後続のマイクロサービスにそのまま伝播するかどうかを設定する。
+既存のJWTを再利用し、宛先マイクロサービスにそのまま伝播するかどうかを設定する。
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -2394,7 +2394,7 @@ spec:
 
 JWTを伝播するための新しいヘッダー名を設定する。
 
-検証後のJWTを新しいヘッダーに割り当て、後続のマイクロサービスに伝播する。
+検証後のJWTを新しいヘッダーに割り当て、宛先マイクロサービスに伝播する。
 
 ```yaml
 apiVersion: security.istio.io/v1
