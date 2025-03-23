@@ -1021,6 +1021,15 @@ Guaranteed QoSでは、上限 (`.spec.containers[*].resources.limits`) > 下限 
 
 補足として、BurstableなQoSのPodはスケジューリングの優先度がGuaranteedの次に高く、Node-pressure Evictionが発生した場合には、Guaranteedの次に退避する。
 
+**設計例**
+
+Grafanaダッシュボードから、このシステムではCPUとメモリの使用量に平常とピークがあることがわかった。
+
+|          | CPU                                                                                                    | メモリ                                                                                                  |
+| -------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
+| requests | 平常時くらいのコア数にする。                                                                           | 平常時くらいのメモリ量にする。                                                                          |
+| limits   | ここ一週間の負荷ピーク時は多めに見積もって`0.9`コアである。ピーク時にも`70`%くらいになるコア数にする。 | ここ一週間の負荷ピーク時は多めに見積もって`1.2`GiBである。ピーク時にも`70`%くらいになるメモリ量にする。 |
+
 > - [https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-burstable](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-burstable)
 
 ### ■ CPUの上限を設定しないBurstableなQoSにする

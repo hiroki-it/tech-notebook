@@ -677,7 +677,6 @@ $ minikube start --cpus=4 --memory=16384
 
 CPU4コアとメモリ7168GBを持ったNodeが3台作られる。
 
-
 ```bash
 $ minikube start --cpus=4 --memory=7168 --nodes 3
 ```
@@ -716,8 +715,6 @@ $ free -m
 Mem:           7951        1853        3080         333        3017        5594
 Swap:          1023           0        1023
 ```
-
-
 
 #### ▼ --docker-env
 
@@ -810,7 +807,6 @@ $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/fo
 マルチNodeのKubernetes Clusterを作成できる。
 
 Minikubeは、同じCPUとメモリを持つNodeを冗長化するため、`--nodes`オプションでNodeを増やすだけ、Podのリソースに余裕がでる。
-
 
 **＊例＊**
 
