@@ -67,7 +67,7 @@ Envoyは、ドレイン処理によって通信を切断することなく、コ
 
 <br>
 
-## 01-02. コントロールプレーン
+## 02. コントロールプレーン
 
 ### コントロールプレーンとは
 
@@ -224,7 +224,7 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 
 <br>
 
-## 01-03. データプレーン
+## 03. データプレーン
 
 ### データプレーンとは
 
@@ -326,15 +326,23 @@ message DiscoveryResponse {
 
 <br>
 
-### リスナー
+## 03-02. リスナー
 
-#### ▼ リスナーとは
+### リスナーとは
 
 リスナーでは、Envoyに対する通信をIPアドレスとポートで待ち受ける。
 
-#### ▼ 仮想リスナー
+<br>
 
-#### ▼ リスナーの静的な登録
+### 仮想リスナー
+
+記入中...
+
+<br>
+
+### リスナー登録
+
+#### ▼ 静的なリスナー登録
 
 `envoy.yaml`ファイルにて、`listeners`キーを設定することにより、Envoyに静的にリスナーを静的に設定できる。
 
@@ -431,7 +439,7 @@ static_resources:
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/examples#static
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
 
-#### ▼ リスナーの動的な登録
+#### ▼ 動的なリスナー登録
 
 Envoyは、起動時にコントロールプレーンのLDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のリスナーを取得する。
 
@@ -589,9 +597,9 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 <br>
 
-### フィルター
+## 03-03. フィルター
 
-#### ▼ フィルターの機能別種類
+### フィルターの機能別種類
 
 各フィルターは、ReadFilterとWriteFilterに分類できる。
 
@@ -600,13 +608,17 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 > - https://zhuanlan.zhihu.com/p/464828801
 > - https://istio-insider.mygraphql.com/zh-cn/latest/ch2-envoy/arch/network-filter/network-filter.html
 
-#### ▼ リスナーフィルター
+<br>
+
+### リスナーフィルター
 
 各種プロトコルの受信処理を実施する。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/listener/listener
 
-#### ▼ ネットワークフィルター
+<br>
+
+### ネットワークフィルター
 
 TCPプロトコルの処理や後続のHTTPフィルターの管理を実施する。
 
@@ -615,7 +627,9 @@ TCPプロトコルの処理や後続のHTTPフィルターの管理を実施す�
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/listeners/listener_filters#network-l3-l4-filters
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network
 
-#### ▼ HTTPフィルター
+<br>
+
+### HTTPフィルター
 
 HTTPプロトコルの処理を実施する。
 
@@ -626,11 +640,15 @@ HTTPプロトコルの処理を実施する。
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_routing
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter
 
-#### ▼ UDPリスナーフィルター
+<br>
+
+### UDPリスナーフィルター
 
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/udp/udp
 
-#### ▼ RBACフィルター
+<br>
+
+### RBACフィルター
 
 認証／認可を実施する。
 
@@ -639,7 +657,9 @@ HTTPプロトコルの処理を実施する。
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/rbac_filter
 > - https://qiita.com/ryysud/items/17a4f86819b96eb73f64#authorization-policy-%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF
 
-#### ▼ MySQLフィルター (`mysql_proxy`)
+<br>
+
+### MySQLフィルター (`mysql_proxy`)
 
 MySQLプロトコル内のSQLを解析、メトリクスとして収集する。
 
@@ -648,9 +668,9 @@ MySQLプロトコル内のSQLを解析、メトリクスとして収集する。
 
 <br>
 
-### ルート
+## 03-04. ルート
 
-#### ▼ ルートとは
+### ルートとは
 
 リスナーのサブセットである。
 
@@ -658,14 +678,18 @@ MySQLプロトコル内のSQLを解析、メトリクスとして収集する。
 
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
-#### ▼ ルートの静的な登録
+<br>
+
+### ルート登録
+
+#### ▼ 静的なルート登録
 
 `static_resources.listeners`キー配下で、リスナーと合わせて設定する。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/examples#static
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
 
-#### ▼ ルートの動的な登録
+#### ▼ 動的なルート登録
 
 Envoyは、起動時にコントロールプレーンのRDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のルートを取得する。
 
@@ -802,11 +826,15 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 <br>
 
-### クラスター
+## 03-05. クラスター
 
-#### ▼ クラスターとは
+### クラスターとは
 
 クラスターでは、ルートからルーティングされた通信を受け取り、いずれかのエンドポイントのIPアドレスとポートにロードバランシングする。
+
+<br>
+
+### クラスター登録
 
 #### ▼ クラスターの静的な登録
 
@@ -994,9 +1022,23 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 <br>
 
-### エンドポイント
+### ヘルスチェック
 
-#### ▼ エンドポイントとは
+#### ▼ アクティブヘルスチェック
+
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/health_checking
+
+#### ▼ パッシブヘルスチェック
+
+サーキットブレイカー
+
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/circuit_breaking
+
+<br>
+
+## 03-06. エンドポイント
+
+### エンドポイントとは
 
 クラスターのサブセットである。
 
@@ -1004,14 +1046,18 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
-#### ▼ エンドポイントの静的な登録
+<br>
+
+### エンドポイントの静的な登録
 
 `static_resources.clusters`キー配下で、リスナーと合わせて設定する。
 
 > - https://skyao.io/learning-envoy/architecture/concept/cluster.html
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
 
-#### ▼ エンドポイントの動的な登録
+<br>
+
+### エンドポイントの動的な登録
 
 Envoyは、起動時にコントロールプレーンのEDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のエンドポイントを取得する。
 
@@ -1049,7 +1095,7 @@ service EndpointDiscoveryService {
 
 <br>
 
-## 01-04. スレッド
+## 04. スレッド
 
 ### マルチスレッドモデル
 
@@ -1108,7 +1154,7 @@ Envoyはマルチスレッドでパケットを処理する。
 
 <br>
 
-## 02. ユースケース
+## 05. ユースケース
 
 ### リバースプロキシのミドルウェアとして
 

@@ -53,6 +53,7 @@ hide:
   > - ##### [マイクロサービス間通信](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_connection.html)
   > - ##### [トランザクション管理](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_transaction.html)
   > - ##### [認証／認可](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_auth.html)
+  > - ##### [回復性管理](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_resiliency.html)
 
 - #### [ストレージ領域](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_storage.html)
 

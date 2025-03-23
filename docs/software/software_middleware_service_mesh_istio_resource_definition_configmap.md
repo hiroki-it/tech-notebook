@@ -874,6 +874,44 @@ data:
 
 <br>
 
+### proxyHeaders
+
+デフォルト値は`true`である。
+
+`x-envoy`ヘッダーを有効化するか否かを設定する。
+
+例えば、接続プール上限超過によるサーキットブレイカーが起こったことを示す`x-envoy-overloaded`ヘッダーがある。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyHeaders:
+        envoyDebugHeaders: 
+          forwardedClientCert: SANITIZE
+        server:
+          disabled: true
+        requestId:
+          disabled: true
+        attemptCount:
+          disabled: true
+        envoyDebugHeaders:
+          disabled: true
+        metadataExchangeHeaders:
+          mode: IN_MESH
+```
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-proxy_headers
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#http-headers-consumed-from-downstreams
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
+
+<br>
+
 ### proxyMetadata
 
 `istio-proxy`コンテナに環境変数を設定する。
@@ -1429,7 +1467,7 @@ data:
 
 <br>
 
-## 04-04. extensionProviders (認証／認可系)
+## 04-05. extensionProviders (認証／認可系)
 
 ### extensionProviders (認証／認可系) とは
 
@@ -1519,7 +1557,7 @@ Keycloakは、IDプロバイダーとしてだけでなく認可プロバイダ�
 
 <br>
 
-## 04-05. extensionProviders (可観測系)
+## 04-06. extensionProviders (可観測系)
 
 ### extensionProviders (可観測系) とは
 
