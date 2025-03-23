@@ -30148,7 +30148,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>Pod全体のうちで排出できる最大Pod数を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>全てのPodを排出する。</p>
-<p>代わりに<code>istio-proxy</code>コンテナから返却された<code>503</code>ステータス (response_flagは<code>UH</code>) のレスポンスに応じて、送信元のマイクロサービスでフォールバックを実行する。</p>
+<p>代わりに<code>istio-proxy</code>コンテナから返却された<code>503</code>ステータス (response_flagは<code>UH</code>) のレスポンスに応じて、送信元マイクロサービスでフォールバックを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -31448,7 +31448,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="c1"># IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する</span>
 <span class="w">      </span><span class="c1"># ブラウザから、またはAPIに直接接続する</span>
 <span class="w">      </span><span class="nt">jwksUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.com/.well-known/jwks.json</span>
-<span class="w">      </span><span class="c1"># 既存のJWTを再利用し、後続のマイクロサービスにそのまま転送する</span>
+<span class="w">      </span><span class="c1"># 既存のJWTを再利用し、宛先マイクロサービスにそのまま転送する</span>
 <span class="w">      </span><span class="nt">forwardOriginalToken</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">      </span><span class="c1"># Authorizationヘッダーを指定する</span>
 <span class="w">      </span><span class="nt">fromHeaders</span><span class="p">:</span>
@@ -31510,7 +31510,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="forwardoriginaltoken">▼ forwardOriginalToken<a class="headerlink" href="#forwardoriginaltoken" title="Permanent link">&para;</a></h4>
-<p>既存のJWTを再利用し、後続のマイクロサービスにそのまま伝播するかどうかを設定する。</p>
+<p>既存のJWTを再利用し、宛先マイクロサービスにそのまま伝播するかどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RequestAuthentication</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -31575,7 +31575,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="outputpayloadtoheader">▼ outputPayloadToHeader<a class="headerlink" href="#outputpayloadtoheader" title="Permanent link">&para;</a></h4>
 <p>JWTを伝播するための新しいヘッダー名を設定する。</p>
-<p>検証後のJWTを新しいヘッダーに割り当て、後続のマイクロサービスに伝播する。</p>
+<p>検証後のJWTを新しいヘッダーに割り当て、宛先マイクロサービスに伝播する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RequestAuthentication</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -32818,7 +32818,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月21日 19:13:11">2025-03-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月24日 00:55:44">2025-03-24</span>
   </span>
 
     

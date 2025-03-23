@@ -25552,10 +25552,34 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    <span class="md-ellipsis">
+      06. フォールバック
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06. フォールバック">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ フォールバック
+      ▼ フォールバックとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 実装
     </span>
   </a>
   
@@ -25567,18 +25591,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#06" class="md-nav__link">
-    <span class="md-ellipsis">
-      06. バルクヘッド
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#07" class="md-nav__link">
     <span class="md-ellipsis">
-      07. レートリミット
+      07. バルクヘッド
     </span>
   </a>
   
@@ -25587,7 +25602,16 @@
         <li class="md-nav__item">
   <a href="#08" class="md-nav__link">
     <span class="md-ellipsis">
-      08 .キャッシュ
+      08. レートリミット
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#09" class="md-nav__link">
+    <span class="md-ellipsis">
+      09 .キャッシュ
     </span>
   </a>
   
@@ -25679,7 +25703,11 @@
 <li><a href="https://www.geeksforgeeks.org/retry-pattern-in-microservices/">https://www.geeksforgeeks.org/retry-pattern-in-microservices/</a></li>
 </ul>
 </blockquote>
-<h4 id="_8">▼ フォールバック<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h2 id="06">06. フォールバック<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<h4 id="_8">▼ フォールバックとは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>リトライの失敗やサーキットブレイカーで宛先マイクロサービスからデータを取得できなかった場合に、代わりにデータを返信する。</p>
+<h4 id="_9">▼ 実装<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <ul>
 <li>静的ファイルの返信</li>
 <li>キャッシュを使用した前回の処理結果の返信</li>
@@ -25692,21 +25720,21 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="06">06. バルクヘッド<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<h2 id="07">07. バルクヘッド<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <blockquote>
 <ul>
 <li><a href="https://www.geeksforgeeks.org/bulkhead-pattern/">https://www.geeksforgeeks.org/bulkhead-pattern/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="07">07. レートリミット<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
+<h2 id="08">08. レートリミット<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
 <blockquote>
 <ul>
 <li><a href="https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns">https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="08">08 .キャッシュ<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
+<h2 id="09">09 .キャッシュ<a class="headerlink" href="#09" title="Permanent link">&para;</a></h2>
 <blockquote>
 <ul>
 <li><a href="https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns">https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns</a></li>
@@ -25733,7 +25761,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月24日 00:49:22">2025-03-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月24日 00:55:44">2025-03-24</span>
   </span>
 
     
