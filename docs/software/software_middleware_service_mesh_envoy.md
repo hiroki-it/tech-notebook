@@ -1024,13 +1024,16 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 ### ヘルスチェック
 
-#### ▼ アクティブヘルスチェック
+#### ▼ アクティブヘルスチェックの種類
+
+- HTTP
+- HTTPS
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/health_checking
 
 #### ▼ パッシブヘルスチェック
 
-サーキットブレイカー
+- サーキットブレイカー
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/circuit_breaking
 

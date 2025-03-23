@@ -31,6 +31,54 @@ description: 回復性管理＠マイクロサービス領域の知見を記録�
 
 <br>
 
+### タイムアウト時間
+
+#### ▼ マイクロサービスだけに着目する場合
+
+送信元マイクロサービスよりも宛先マイクロサービスのタイムアウト時間を短くする。
+
+```yaml
+マイクロサービス # 45秒
+⬇⬆️︎
+⬇⬆️︎︎︎
+マイクロサービス # 30秒
+⬇⬆️︎
+⬇⬆️︎
+マイクロサービス # 15秒
+```
+
+#### ▼ サイドカープロキシにも着目する場合
+
+送信元マイクロサービスよりもサイドカーのタイムアウト時間を短くする。
+
+また、サイドカーよりも宛先マイクロサービスのサイドカーのタイムアウト時間を短くする。
+
+```yaml
+アプリ # 45秒
+⬇⬆️︎
+⬇⬆️︎
+サイドカー # 44秒
+⬇⬆️︎
+-------------- # マイクロサービス間の境界
+⬇⬆️︎
+サイドカー # 31秒
+⬇⬆️︎
+⬇⬆️︎
+アプリ # 30秒
+⬇⬆️︎
+⬇⬆️︎
+サイドカー # 29秒
+⬇⬆️︎
+-------------- # マイクロサービス間の境界
+⬇⬆️︎
+サイドカー # 16秒
+⬇⬆️︎
+⬇⬆️︎
+アプリ # 15秒
+```
+
+<br>
+
 ### 接続タイムアウト (Connection timeout)
 
 『オープンタイムアウト (Open timeout) 』ともいう
@@ -77,21 +125,32 @@ TCP接続中の無通信状態 (パケットの送受信がない状態) を許�
 
 ### アクティブ
 
-記入中...
+- HTTP
+- DNS
+- 独自プロトコル
 
 ### パッシブ
 
-- 外れ値検出
+#### ▼ サーキットブレイカー
 
-<br>
+マイクロサービス間の通信方式がリクエストロプライパターンの場合の障害対策である。
 
-## 05. サーキットブレイカー
+宛先マイクロサービスからのレスポンスに外れ値 (`500`系ステータス、Gateway系ステータスなど) の閾値を設定しておく。
 
-#### ▼ サーキットブレイカーとは
+運用中にこれを超過すると、送信元マイクロサービスはタイムアウトになるまで処理を待機する。
 
-記入中...
+その間、送信元マイクロサービスは他の処理を実行できなくなってしまうため、これを防ぐ。
+
+1. 宛先マイクロサービスに障害 (あるいは設定した閾値の超過) が発生する
+2. 宛先マイクロサービスへのルーティングを停止し、エラーステータス (`503`など) のレスポンスを送信元マイクロサービスに返信する。
+3. 障害が回復次第、ルーティングを再開する。
+
+blast-radiusを最小限にできる。
+
+![circuit-breaker](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circuit-breaker.png)
 
 > - https://www.geeksforgeeks.org/retry-pattern-in-microservices/
+> - https://digitalvarys.com/what-is-circuit-breaker-design-pattern/
 
 <br>
 
@@ -109,6 +168,7 @@ TCP接続中の無通信状態 (パケットの送受信がない状態) を許�
 
 > - https://engineering.mercari.com/blog/entry/2018-12-23-150000/
 > - https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns
+> - https://learn.microsoft.com/ja-jp/dotnet/architecture/microservices/implement-resilient-applications/implement-circuit-breaker-pattern
 
 <br>
 
