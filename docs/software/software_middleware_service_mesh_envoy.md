@@ -1026,8 +1026,10 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 #### ▼ アクティブヘルスチェックの種類
 
-- HTTP
-- HTTPS
+- HTTP (HTTPS)
+- DNS
+- TCP (UDP)
+- 独自プロトコル
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/health_checking
 
