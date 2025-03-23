@@ -27897,7 +27897,7 @@
 <tr>
 <td><code>reporter</code></td>
 <td>メトリクスの収集者を表す。<code>istio-proxy</code>コンテナかIngressGatewayのいずれかである。</td>
-<td>・<code>destination</code> (宛先側の <code>istio-proxy</code>コンテナ)<code>&lt;br&gt;</code>・<code>source</code> (送信元のIngressGatewayまたは <code>istio-proxy</code>コンテナ)</td>
+<td>・<code>destination</code> (宛先の <code>istio-proxy</code>コンテナ)<code>&lt;br&gt;</code>・<code>source</code> (送信元のIngressGatewayまたは <code>istio-proxy</code>コンテナ)</td>
 <td></td>
 </tr>
 <tr>
@@ -27952,25 +27952,25 @@
 <span class="w">  </span><span class="s">&quot;bytes_received&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">158</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;bytes_sent&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">224</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;connection_termination_details&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="c1"># istio-proxyコンテナにとってのダウンストリーム</span>
+<span class="w">  </span><span class="c1"># istio-proxyコンテナにとっての送信元</span>
 <span class="w">  </span><span class="s">&quot;downstream_local_address&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*.*.*.*:50010&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;downstream_remote_address&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*.*.*.*:50011&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="c1"># ダウンストリームからアップストリームへリクエストをプロキシし、レスポンスを処理し終えるまでにかかった時間</span>
-<span class="w">  </span><span class="c1"># ダウンストリーム側で設定したタイムアウトになった場合は、Envoyはその時間の直前にプロキシをやめるため、Durationはタイムアウトとおおよそ同じになる</span>
+<span class="w">  </span><span class="c1"># 送信元から宛先へリクエストをプロキシし、レスポンスを処理し終えるまでにかかった時間</span>
+<span class="w">  </span><span class="c1"># 送信元で設定したタイムアウトになった場合は、Envoyはその時間の直前にプロキシをやめるため、Durationはタイムアウトとおおよそ同じになる</span>
 <span class="w">  </span><span class="s">&quot;duration&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">12</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;method&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;path&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;protocol&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;request_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;requested_server_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="c1"># アップストリームからのレスポンスのステータスコード</span>
+<span class="w">  </span><span class="c1"># 宛先からのレスポンスのステータスコード</span>
 <span class="w">  </span><span class="s">&quot;response_code&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;response_code_details&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="c1"># ステータスコードの補足情報</span>
 <span class="w">  </span><span class="s">&quot;response_flags&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;-&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;route_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;start_time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2023-04-12T06:11:46.996Z&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="c1"># istio-proxyコンテナにとってのアップストリーム</span>
+<span class="w">  </span><span class="c1"># istio-proxyコンテナにとっての宛先</span>
 <span class="w">  </span><span class="s">&quot;upstream_cluster&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;outbound|50000||foo-pod.foo-namespace.svc.cluster.local&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;upstream_host&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*.*.*.*:50000&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;upstream_local_address&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*.*.*.*:50001&quot;</span><span class="p p-Indicator">,</span>
@@ -28055,7 +28055,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月17日 05:03:42">2025-03-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月24日 01:09:35">2025-03-24</span>
   </span>
 
     

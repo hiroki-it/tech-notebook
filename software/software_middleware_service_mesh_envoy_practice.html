@@ -4633,11 +4633,11 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      アップストリームに当たる箇所
+      宛先に当たる箇所
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="アップストリームに当たる箇所">
+    <nav class="md-nav" aria-label="宛先に当たる箇所">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4699,11 +4699,11 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      アップストリームに当たる箇所
+      宛先に当たる箇所
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="アップストリームに当たる箇所">
+    <nav class="md-nav" aria-label="宛先に当たる箇所">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4765,11 +4765,11 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ダウンストリームに当たる箇所
+      送信元に当たる箇所
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="ダウンストリームに当たる箇所">
+    <nav class="md-nav" aria-label="送信元に当たる箇所">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25862,11 +25862,11 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      アップストリームに当たる箇所
+      宛先に当たる箇所
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="アップストリームに当たる箇所">
+    <nav class="md-nav" aria-label="宛先に当たる箇所">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25928,11 +25928,11 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      アップストリームに当たる箇所
+      宛先に当たる箇所
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="アップストリームに当たる箇所">
+    <nav class="md-nav" aria-label="宛先に当たる箇所">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25994,11 +25994,11 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ダウンストリームに当たる箇所
+      送信元に当たる箇所
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="ダウンストリームに当たる箇所">
+    <nav class="md-nav" aria-label="送信元に当たる箇所">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26194,19 +26194,19 @@
 <h2 id="02-upstream-request-timeout">02. <code>upstream request timeout</code>を解決する<a class="headerlink" href="#02-upstream-request-timeout" title="Permanent link">&para;</a></h2>
 <h3 id="upstream-request-timeout"><code>upstream request timeout</code>とは<a class="headerlink" href="#upstream-request-timeout" title="Permanent link">&para;</a></h3>
 <p>Gateway Timeout (<code>504</code>ステータス) である。</p>
-<p>Envoyからアップストリーム (アップストリーム) への送信処理エラーである。</p>
-<p>Envoyからのリクエスト処理が、リスナーからルートへのタイムアウト時間を超過し、アップストリームにリクエストを送信できなかったことを表している。</p>
-<p>アウトバウンド通信またはインバウンド通信の違いで、アップストリームに当たる箇所が異なる。</p>
+<p>Envoyからアップストリーム (宛先) への送信処理エラーである。</p>
+<p>Envoyからのリクエスト処理が、リスナーからルートへのタイムアウト時間を超過し、宛先にリクエストを送信できなかったことを表している。</p>
+<p>アウトバウンド通信またはインバウンド通信の違いで、宛先に当たる箇所が異なる。</p>
 <p><br></p>
-<h3 id="_3">アップストリームに当たる箇所<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_3">宛先に当たる箇所<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="envoy_1">▼ Envoyからのアウトバウンド通信の場合<a class="headerlink" href="#envoy_1" title="Permanent link">&para;</a></h4>
-<p>Envoyからのアウトバウンド通信の場合、Envoyのアップストリームは他のEnvoyや外部システムである。</p>
+<p>Envoyからのアウトバウンド通信の場合、Envoyの宛先は他のEnvoyや外部システムである。</p>
 <p>Envoyから他のEnvoyや外部システムへのリクエストでタイムアウトになっている。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># ダウンストリーム</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># 送信元</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇</span>
 <span class="l l-Scalar l-Scalar-Plain">Envoy</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇</span>
-<span class="nn">...</span><span class="w"> </span><span class="c1"># アップストリーム</span>
+<span class="nn">...</span><span class="w"> </span><span class="c1"># 宛先</span>
 </code></pre></div>
 <p><img alt="envoy_upstream-request-timeout_outbound" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_outbound.png" /></p>
 <blockquote>
@@ -26216,13 +26216,13 @@
 </ul>
 </blockquote>
 <h4 id="envoy_2">▼ Envoyへのインバウンド通信の場合<a class="headerlink" href="#envoy_2" title="Permanent link">&para;</a></h4>
-<p>Envoyへのインバウンド通信の場合、Envoyのアップストリームはマイクロサービスである。</p>
+<p>Envoyへのインバウンド通信の場合、Envoyの宛先はマイクロサービスである。</p>
 <p>Envoyからマイクロサービスへのリクエストがタイムアウトになっている。</p>
-<div class="highlight"><pre><span></span><code><span class="nn">...</span><span class="w"> </span><span class="c1"># ダウンストリーム</span>
+<div class="highlight"><pre><span></span><code><span class="nn">...</span><span class="w"> </span><span class="c1"># 送信元</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇</span>
 <span class="l l-Scalar l-Scalar-Plain">Envoy</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇️</span>
-<span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># アップストリーム</span>
+<span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># 宛先</span>
 </code></pre></div>
 <p><img alt="envoy_upstream-request-timeout_inbound" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_inbound.png" /></p>
 <blockquote>
@@ -26235,7 +26235,7 @@
 <h3 id="_4">解決方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>以下が原因である可能性がある。</p>
 <ul>
-<li>アップストリーム (アウトバウンド通信の場合はEnvoy、インバウンド通信の場合はマイクロサービス) がハードウェアリソース不足や高負荷状態にあり、処理し切れなかった</li>
+<li>宛先 (アウトバウンド通信の場合はEnvoy、インバウンド通信の場合はマイクロサービス) がハードウェアリソース不足や高負荷状態にあり、処理し切れなかった</li>
 <li>タイムアウト時間が短すぎる</li>
 <li>ネットワークに問題がある。</li>
 <li>処理に時間がかかりすぎている。</li>
@@ -26245,19 +26245,19 @@
 <h2 id="03-upstream-response-timeout">03. <code>upstream response timeout</code>を解決する<a class="headerlink" href="#03-upstream-response-timeout" title="Permanent link">&para;</a></h2>
 <h3 id="upstream-response-timeout"><code>upstream response timeout</code>とは<a class="headerlink" href="#upstream-response-timeout" title="Permanent link">&para;</a></h3>
 <p>Gateway Timeout (<code>504</code>ステータス) である。</p>
-<p>Envoyからアップストリームへの送信処理エラーである。</p>
-<p>しかし、アップストリームからのレスポンス処理がタイムアウト時間を超過し、Envoyがアップストリームからレスポンスを受信できなかったことを表している。</p>
+<p>Envoyからアップストリーム (宛先) への送信処理エラーである。</p>
+<p>しかし、宛先からのレスポンス処理がタイムアウト時間を超過し、Envoyが宛先からレスポンスを受信できなかったことを表している。</p>
 <p>アウトバウンド通信またはインバウンド通信の違いで、いずれが原因かが異なる。</p>
 <p><br></p>
-<h3 id="_5">アップストリームに当たる箇所<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_5">宛先に当たる箇所<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="envoy_3">▼ Envoyからのアウトバウンド通信の場合<a class="headerlink" href="#envoy_3" title="Permanent link">&para;</a></h4>
-<p>アウトバウンド通信の場合、Envoyのアップストリームは他のEnvoyや外部システムがである。</p>
+<p>アウトバウンド通信の場合、Envoyの宛先は他のEnvoyや外部システムがである。</p>
 <p>他のEnvoyや外部システムからのレスポンス処理がタイムアウトになっている。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># ダウンストリーム</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># 送信元</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇</span>
 <span class="l l-Scalar l-Scalar-Plain">Envoy</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇</span>
-<span class="nn">...</span><span class="w"> </span><span class="c1"># アップストリーム</span>
+<span class="nn">...</span><span class="w"> </span><span class="c1"># 宛先</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -26265,13 +26265,13 @@
 </ul>
 </blockquote>
 <h4 id="envoy_4">▼ Envoyへのインバウンド通信の場合<a class="headerlink" href="#envoy_4" title="Permanent link">&para;</a></h4>
-<p>インバウンド通信の場合、Envoyのアップストリームはマイクロサービスである。</p>
+<p>インバウンド通信の場合、Envoyの宛先はマイクロサービスである。</p>
 <p>マイクロサービスからのレスポンス処理がタイムアウトになっている。</p>
-<div class="highlight"><pre><span></span><code><span class="nn">...</span><span class="w"> </span><span class="c1"># ダウンストリーム</span>
+<div class="highlight"><pre><span></span><code><span class="nn">...</span><span class="w"> </span><span class="c1"># 送信元</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇️</span>
 <span class="l l-Scalar l-Scalar-Plain">Envoy</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇️</span>
-<span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># アップストリーム</span>
+<span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># 宛先</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -26282,7 +26282,7 @@
 <h3 id="_6">解決方法<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>以下が原因である可能性がある。</p>
 <ul>
-<li>アップストリーム (アウトバウンド通信の場合はEnvoy、インバウンド通信の場合はマイクロサービス) がハードウェアリソース不足や高負荷状態にあり、処理し切れなかった</li>
+<li>宛先 (アウトバウンド通信の場合はEnvoy、インバウンド通信の場合はマイクロサービス) がハードウェアリソース不足や高負荷状態にあり、処理し切れなかった</li>
 <li>タイムアウト時間が短すぎる</li>
 <li>ネットワークに問題がある。</li>
 <li>処理に時間がかかりすぎている。</li>
@@ -26292,33 +26292,33 @@
 <h2 id="04-downstream_remote_disconnect">04. <code>downstream_remote_disconnect</code>を解決する<a class="headerlink" href="#04-downstream_remote_disconnect" title="Permanent link">&para;</a></h2>
 <h3 id="downstream_remote_disconnect"><code>downstream_remote_disconnect</code>とは<a class="headerlink" href="#downstream_remote_disconnect" title="Permanent link">&para;</a></h3>
 <p>Gateway Timeout (<code>504</code>ステータス) である。</p>
-<p>Envoyのダウンストリームの返信処理エラーである。</p>
+<p>Envoyのダウンストリーム (送信元) の返信処理エラーである。</p>
 <p><br></p>
-<h3 id="_7">ダウンストリームに当たる箇所<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="_7">送信元に当たる箇所<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="envoy_5">▼ Envoyからのアウトバウンド通信の場合<a class="headerlink" href="#envoy_5" title="Permanent link">&para;</a></h4>
-<p>Envoyからのアウトバウンド通信の場合、Envoyのダウンストリームはマイクロサービスである。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># ダウンストリーム</span>
+<p>Envoyからのアウトバウンド通信の場合、Envoyの送信元はマイクロサービスである。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># 送信元</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇</span>
 <span class="l l-Scalar l-Scalar-Plain">Envoy</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇</span>
-<span class="nn">...</span><span class="w"> </span><span class="c1"># アップストリーム</span>
+<span class="nn">...</span><span class="w"> </span><span class="c1"># 宛先</span>
 </code></pre></div>
 <p>マイクロサービスからのリクエストがタイムアウトになっている。</p>
 <p>マイクロサービスからDBへのトランザクションで問題が起こると、Envoyで<code>downstream_remote_disconnect</code>が出ることがある。</p>
 <h4 id="envoy_6">▼ Envoyへのインバウンド通信の場合<a class="headerlink" href="#envoy_6" title="Permanent link">&para;</a></h4>
-<p>Envoyへのインバウンド通信の場合、EnvoyのダウンストリームはブラウザやEnvoyである。</p>
-<div class="highlight"><pre><span></span><code><span class="nn">...</span><span class="w"> </span><span class="c1"># ダウンストリーム</span>
+<p>Envoyへのインバウンド通信の場合、Envoyの送信元はブラウザやEnvoyである。</p>
+<div class="highlight"><pre><span></span><code><span class="nn">...</span><span class="w"> </span><span class="c1"># 送信元</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇</span>
 <span class="l l-Scalar l-Scalar-Plain">Envoy</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇️</span>
-<span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># アップストリーム</span>
+<span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># 宛先</span>
 </code></pre></div>
 <p>ブラウザやEnvoyからのリクエストがタイムアウトになっている。</p>
 <p><br></p>
 <h3 id="_8">解決方法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>以下が原因である可能性がある。</p>
 <ul>
-<li>ダウンストリーム (アウトバウンド通信の場合はマイクロサービス、インバウンド通信の場合はブラウザやEnvoy) が通信を切断した。</li>
+<li>送信元 (アウトバウンド通信の場合はマイクロサービス、インバウンド通信の場合はブラウザやEnvoy) が通信を切断した。</li>
 <li>タイムアウト時間が短すぎる</li>
 <li>ネットワークに問題がある。</li>
 </ul>
@@ -26392,7 +26392,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月22日 03:24:20">2025-03-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月24日 01:09:35">2025-03-24</span>
   </span>
 
     

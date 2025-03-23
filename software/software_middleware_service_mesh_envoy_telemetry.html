@@ -26291,7 +26291,7 @@
 <h4 id="response_flags">▼ <code>%RESPONSE_FLAGS%</code><a class="headerlink" href="#response_flags" title="Permanent link">&para;</a></h4>
 <p>Cluster外からのリクエスト/Pod間通信時のレスポンスの補足メッセージを表す。</p>
 <p>ステータスコードと合わせて、レスポンスのエラーや警告の理由を読み取ることに役立つ。</p>
-<p>アップストリームが原因のメッセージは以下の通りである。</p>
+<p>宛先が原因のメッセージは以下の通りである。</p>
 <table>
 <thead>
 <tr>
@@ -26306,19 +26306,19 @@
 <td><code>NC</code></td>
 <td><code>NO_CLUSTER_FOUND</code></td>
 <td style="text-align: center;">なし</td>
-<td>クラスターの設定が見つからず、Envoyはアップストリームに接続できなかった。</td>
+<td>クラスターの設定が見つからず、Envoyは宛先に接続できなかった。</td>
 </tr>
 <tr>
 <td><code>UC</code></td>
 <td><code>UPSTREAM_CONNECTION_TERMINATION</code></td>
 <td style="text-align: center;"><code>503</code></td>
-<td>遭遇率が一番高い。Envoyは何らかの理由でアップストリームに接続できなかった。</td>
+<td>遭遇率が一番高い。Envoyは何らかの理由で宛先に接続できなかった。</td>
 </tr>
 <tr>
 <td><code>UF</code></td>
 <td><code>UPSTREAM_CONNECTION_FAILURE</code></td>
 <td style="text-align: center;"><code>503</code></td>
-<td>Envoyは通信障害でアップストリームに接続できなかった。</td>
+<td>Envoyは通信障害で宛先に接続できなかった。</td>
 </tr>
 <tr>
 <td><code>UH</code></td>
@@ -26330,23 +26330,23 @@
 <td><code>UT</code></td>
 <td><code>UPSTREAM_REQUEST_TIMEOUT</code></td>
 <td style="text-align: center;"><code>503</code></td>
-<td>Envoyはタイムアウトでアップストリームに接続できなかった。</td>
+<td>Envoyはタイムアウトで宛先に接続できなかった。</td>
 </tr>
 <tr>
 <td><code>UO</code></td>
 <td><code>UPSTREAM_OVERFLOW</code></td>
 <td style="text-align: center;"><code>503</code></td>
-<td>サーキットブレイカーで、Envoyはアップストリームに接続できなかった。</td>
+<td>サーキットブレイカーで、Envoyは宛先に接続できなかった。</td>
 </tr>
 <tr>
 <td><code>URX</code></td>
 <td><code>UPSTREAM_RETRY_LIMIT_EXCEEDED</code></td>
 <td style="text-align: center;">なし</td>
-<td>アップストリームに対するリトライの上限数の超過で、Envoyはアップストリームに接続拒否されてしまった。</td>
+<td>宛先に対するリトライの上限数の超過で、Envoyは宛先に接続拒否されてしまった。</td>
 </tr>
 </tbody>
 </table>
-<p>ダウンストリームが原因のメッセージは以下の通りである。</p>
+<p>送信元が原因のメッセージは以下の通りである。</p>
 <table>
 <thead>
 <tr>
@@ -26361,19 +26361,19 @@
 <td><code>DC</code></td>
 <td><code>DOWNSTREAM_CONNECTION_TERMINATION</code></td>
 <td style="text-align: center;">なし</td>
-<td>Envoyのアップストリームへのリクエストが中断され、Envoyはレスポンスを受信できなかった。</td>
+<td>Envoyの宛先へのリクエストが中断され、Envoyはレスポンスを受信できなかった。</td>
 </tr>
 <tr>
 <td><code>DPE</code></td>
 <td><code>DOWNSTREAM_PROTOCOL_ERROR</code></td>
 <td style="text-align: center;">なし</td>
-<td>EnvoyはHTTPプロトコルのエラーでダウンストリームに接続できなかった。</td>
+<td>EnvoyはHTTPプロトコルのエラーで送信元に接続できなかった。</td>
 </tr>
 <tr>
 <td><code>NR</code></td>
 <td><code>NO_ROUTE_FOUND</code></td>
 <td style="text-align: center;"><code>404</code></td>
-<td>ルートやフィルターチェーンの設定が見つからず、Envoyはダウンストリームに接続できなかった。</td>
+<td>ルートやフィルターチェーンの設定が見つからず、Envoyは送信元に接続できなかった。</td>
 </tr>
 </tbody>
 </table>
@@ -26537,7 +26537,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月24日 00:55:44">2025-03-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月24日 01:09:35">2025-03-24</span>
   </span>
 
     
