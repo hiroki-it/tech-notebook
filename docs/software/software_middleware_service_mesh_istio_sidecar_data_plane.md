@@ -158,9 +158,9 @@ Istio`v1.9`までは`127.0.0.1`で、`v1.10`から`127.0.0.6`になった。
 
 #### ▼ Pod外からのインバウンド通信の場合
 
-Pod外からアプリコンテナへのインバウンド通信は、istio-iptablesにより、`istio-proxy`コンテナの`15006`番ポートにリダイレクトされる。
+Pod外からマイクロサービスへのインバウンド通信は、istio-iptablesにより、`istio-proxy`コンテナの`15006`番ポートにリダイレクトされる。
 
-`istio-proxy`コンテナはこれを受信し、ローカルホスト (`http://127.0.0.6:<アプリコンテナのポート番号>`) のアプリコンテナにルーティングする。
+`istio-proxy`コンテナはこれを受信し、ローカルホスト (`http://127.0.0.6:<マイクロサービスのポート番号>`) のマイクロサービスにルーティングする。
 
 ![istio_iptables_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_inbound.png)
 
@@ -169,7 +169,7 @@ Pod外からアプリコンテナへのインバウンド通信は、istio-iptab
 
 #### ▼ Pod外へのアウトバウンド通信の場合
 
-アプリコンテナからPod外へのアウトバウンド通信は、istio-iptablesにより、`istio-proxy`コンテナの`15001`番ポートにリダイレクトされる。
+マイクロサービスからPod外へのアウトバウンド通信は、istio-iptablesにより、`istio-proxy`コンテナの`15001`番ポートにリダイレクトされる。
 
 サービスディスカバリーによってPod等の宛先情報が、`istio-proxy`コンテナ内のEnvoyに登録されており、`istio-proxy`コンテナはアウトバウンド通信をPodに向けてルーティングする。
 
@@ -180,7 +180,7 @@ Pod外からアプリコンテナへのインバウンド通信は、istio-iptab
 
 #### ▼ ローカスホスト通信の場合
 
-アプリコンテナからローカルホスト (`http://127.0.0.6:<ポート番号>`) へのアウトバウンド通信は、istio-iptablesにより、`istio-proxy`コンテナの`15001`番ポートにリダイレクトされる。
+マイクロサービスからローカルホスト (`http://127.0.0.6:<ポート番号>`) へのアウトバウンド通信は、istio-iptablesにより、`istio-proxy`コンテナの`15001`番ポートにリダイレクトされる。
 
 ![istio_iptables_outbound_self](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_outbound_self.png)
 
@@ -214,11 +214,11 @@ COPY ${TARGETARCH:-amd64}/${SIDECAR} /usr/local/bin/${SIDECAR}
 ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 ```
 
-`istio-proxy`コンテナは、アプリコンテナのあるPodのみでなく、Istio IngressGatewayのPod内にも存在している。
+`istio-proxy`コンテナは、マイクロサービスのあるPodのみでなく、Istio IngressGatewayのPod内にも存在している。
 
 Istioのサービスメッシュ外のネットワークからのインバウンド通信では、Istio IngressGateway内の`istio-proxy`コンテナにて、Pod等の宛先情報に基づいて、ルーティングを実行している。
 
-一方で、アプリコンテナを持つPod間通信では、Pod内の`istio-proxy`コンテナに登録されたものに基づいて、Pod間で直接的に通信している。
+一方で、マイクロサービスを持つPod間通信では、Pod内の`istio-proxy`コンテナに登録されたものに基づいて、Pod間で直接的に通信している。
 
 仕様上、NginxやApacheを必須とする言語 (例：PHP) では、Pod内にリバースプロキシが`2`個ある構成になってしまうことに注意する。
 
@@ -229,7 +229,7 @@ Istioのサービスメッシュ外のネットワークからのインバウン
 
 #### ▼ 起動／終了の順番の制御
 
-アプリコンテナと`istio-proxy`コンテナの間で、起動／終了の順番を制御する必要がある。
+マイクロサービスと`istio-proxy`コンテナの間で、起動／終了の順番を制御する必要がある。
 
 `.spec.containers[*].lifecycle.postStart.exec.command`キーや`.spec.containers[*].lifecycle.preStop.exec.command`キーに自前のコマンドを定義して`istio-proxy`コンテナの起動／終了の順番を制御する必要がある。
 
@@ -260,7 +260,7 @@ spec:
             # istio-proxyコンテナ開始直後の処理
             postStart:
               exec:
-                # istio-proxyコンテナが、必ずアプリコンテナよりも先に起動する。
+                # istio-proxyコンテナが、必ずマイクロサービスよりも先に起動する。
                 # pilot-agentの起動完了を待機する。
                 command:
                   - |
@@ -268,7 +268,7 @@ spec:
             # istio-proxyコンテナ終了直前の処理
             preStop:
               exec:
-                # istio-proxyコンテナが、必ずアプリコンテナよりも後に終了する。
+                # istio-proxyコンテナが、必ずマイクロサービスよりも後に終了する。
                 # envoyプロセスとpilot-agentプロセスの終了を待機する。
                 command:
                   - "/bin/bash"
@@ -276,7 +276,7 @@ spec:
                   - |
                     sleep 5
                     while [ $(netstat -plnt | grep tcp | egrep -v 'envoy|pilot-agent' | wc -l) -ne 0 ]; do sleep 1; done"
-      # アプリコンテナとistio-proxyコンテナの両方が終了するのを待つ
+      # マイクロサービスとistio-proxyコンテナの両方が終了するのを待つ
       terminationGracePeriodSeconds: 45
 ```
 
@@ -547,32 +547,32 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 
 > - https://istio.io/latest/news/releases/1.20.x/announcing-1.20/upgrade-notes/#startupprobe-added-to-sidecar-by-default
 
-#### ▼ アプリコンテナのHTTPヘルスチェック
+#### ▼ マイクロサービスのHTTPヘルスチェック
 
 kubeletはIstioの発行した証明書を持っていない。
 
 そのため、Istioで相互TLSを有効化していると、kubeletがHTTPヘルスチェックをも`istio-proxy`コンテナに実施した場合に、証明書のないエラーでHTTPヘルスチェックは失敗してしまう。
 
-これの対策として、`istio-proxy`コンテナは、kubeletから受信したHTTPヘルスチェックをpilot-agentのパス (`/app-health/<アプリコンテナ名>/livez`、`/app-health/<アプリコンテナ名>/readyz`、`/app-health/<アプリコンテナ名>/startupz`) にリダイレクトする。
+これの対策として、`istio-proxy`コンテナは、kubeletから受信したHTTPヘルスチェックをpilot-agentのパス (`/app-health/<マイクロサービス名>/livez`、`/app-health/<マイクロサービス名>/readyz`、`/app-health/<マイクロサービス名>/startupz`) にリダイレクトする。
 
-事前にアプリコンテナのヘルスチェックパスの定義をpilot-agentのパスに書き換えることにより、リダイレクトを実現する。
+事前にマイクロサービスのヘルスチェックパスの定義をpilot-agentのパスに書き換えることにより、リダイレクトを実現する。
 
-アプリコンテナ自体には証明書がないため、HTTPヘルスチェックを実施できるようになる。
+マイクロサービス自体には証明書がないため、HTTPヘルスチェックを実施できるようになる。
 
 なお、Podの`.metadata.annotations`に`sidecar.istio.io/rewriteAppHTTPProbers: "false"`を設定しておくと、これを無効化できる。
 
 > - https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/
 > - https://ieevee.com/tech/2022/06/27/10-health-check.html#%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B
 
-#### ▼ アプリコンテナのTCPヘルスチェック
+#### ▼ マイクロサービスのTCPヘルスチェック
 
 kubeletは、対象のポート番号でプロセスがリクエストを待ち受けているかのみを検証する。
 
-そのため、アプリコンテナが異常であっても`istio-proxy`コンテナが正常である限り、kubeletのTCPヘルスチェックが成功してしまう。
+そのため、マイクロサービスが異常であっても`istio-proxy`コンテナが正常である限り、kubeletのTCPヘルスチェックが成功してしまう。
 
 これの対策として、`istio-proxy`コンテナは、kubeletから受信したTCPヘルスチェックをpilot-agentのポートにリダイレクトする。
 
-これにより、kuebletがアプリコンテナにTCPヘルスチェックを実施できるようになる。
+これにより、kuebletがマイクロサービスにTCPヘルスチェックを実施できるようになる。
 
 > - https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/
 > - https://ieevee.com/tech/2022/06/27/10-health-check.html#%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B
@@ -630,9 +630,9 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 ### `15001`番
 
-`istio-proxy`コンテナの`15001`番ポートでは、アプリコンテナからのアウトバウンド通信を待ち受ける。
+`istio-proxy`コンテナの`15001`番ポートでは、マイクロサービスからのアウトバウンド通信を待ち受ける。
 
-アプリコンテナからのアウトバウンド通信は、一度、`istio-proxy`コンテナの`15001`番ポートにリダイレクトされる。
+マイクロサービスからのアウトバウンド通信は、一度、`istio-proxy`コンテナの`15001`番ポートにリダイレクトされる。
 
 > - https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 
@@ -650,9 +650,9 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 ### `15006`番
 
-`istio-proxy`コンテナの`15006`番ポートでは、アプリコンテナへのインバウンド通信を待ち受ける。
+`istio-proxy`コンテナの`15006`番ポートでは、マイクロサービスへのインバウンド通信を待ち受ける。
 
-アプリコンテナへのインバウンド通信は、一度、`istio-proxy`コンテナの`15006`番ポートにリダイレクトされる。
+マイクロサービスへのインバウンド通信は、一度、`istio-proxy`コンテナの`15006`番ポートにリダイレクトされる。
 
 > - https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 

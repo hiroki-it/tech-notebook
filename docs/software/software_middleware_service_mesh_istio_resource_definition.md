@@ -1559,7 +1559,7 @@ spec:
             "@type": type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimit
             domain: ratelimit
             # true：istio-proxyコンテナが失敗のレスポンスを返信する
-            # false：アプリコンテナが失敗のレスポンスを返信する
+            # false：マイクロサービスが失敗のレスポンスを返信する
             failure_mode_deny: true
             timeout: 10s
             rate_limit_service:
@@ -1701,7 +1701,7 @@ spec:
             # istio-proxyコンテナ開始直後の処理
             postStart:
               exec:
-                # istio-proxyコンテナが、必ずアプリコンテナよりも先に起動する。
+                # istio-proxyコンテナが、必ずマイクロサービスよりも先に起動する。
                 # pilot-agentの起動完了を待機する。
                 command:
                   - |
@@ -1709,7 +1709,7 @@ spec:
             # istio-proxyコンテナ終了直前の処理
             preStop:
               exec:
-                # istio-proxyコンテナが、必ずアプリコンテナよりも後に終了する。
+                # istio-proxyコンテナが、必ずマイクロサービスよりも後に終了する。
                 # envoyプロセスとpilot-agentプロセスの終了を待機する。
                 command:
                   - "/bin/bash"
@@ -1717,7 +1717,7 @@ spec:
                   - |
                     sleep 5
                     while [ $(netstat -plnt | grep tcp | egrep -v 'envoy|pilot-agent' | wc -l) -ne 0 ]; do sleep 1; done"
-      # アプリコンテナとistio-proxyコンテナの両方が終了するのを待つ
+      # マイクロサービスとistio-proxyコンテナの両方が終了するのを待つ
       terminationGracePeriodSeconds: 45
 ```
 
