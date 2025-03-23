@@ -28112,7 +28112,7 @@
 <thead>
 <tr>
 <th>HTTP/1.1のステータスコード</th>
-<th style="text-align: center;">アプリコンテナに通信が届いている</th>
+<th style="text-align: center;">マイクロサービスに通信が届いている</th>
 <th style="text-align: center;">リトライしてもよい</th>
 <th>リトライ条件</th>
 </tr>
@@ -28156,7 +28156,7 @@
 <thead>
 <tr>
 <th>HTTP/2のステータスコード</th>
-<th style="text-align: center;">アプリコンテナに通信が届いている</th>
+<th style="text-align: center;">マイクロサービスに通信が届いている</th>
 <th style="text-align: center;">リトライしてもよい</th>
 <th>リトライ条件</th>
 </tr>
@@ -28178,7 +28178,7 @@
 <td><code>refused-stream</code></td>
 <td style="text-align: center;">⭕️</td>
 <td style="text-align: center;">✅</td>
-<td>同時接続上限数を超過するストリームをアプリコンテナが作成しようとした。</td>
+<td>同時接続上限数を超過するストリームをマイクロサービスが作成しようとした。</td>
 </tr>
 <tr>
 <td><code>resource-exhausted</code></td>
@@ -28207,7 +28207,7 @@
 <thead>
 <tr>
 <th>HTTP/1.1のステータスコード</th>
-<th style="text-align: center;">アプリコンテナに通信が届いている</th>
+<th style="text-align: center;">マイクロサービスに通信が届いている</th>
 <th style="text-align: center;">リトライしてもよい</th>
 <th>理由</th>
 </tr>
@@ -28217,7 +28217,7 @@
 <td><code>reset-before-request</code></td>
 <td style="text-align: center;">×</td>
 <td style="text-align: center;">✅</td>
-<td><code>istio-proxy</code>コンテナへのインバウンド通信で、アプリコンテナにリクエストを転送できなかった。</td>
+<td><code>istio-proxy</code>コンテナへのインバウンド通信で、マイクロサービスにリクエストを転送できなかった。</td>
 </tr>
 </tbody>
 </table>
@@ -28430,7 +28430,7 @@
 <p><br></p>
 <h3 id="proxylistenport">proxyListenPort<a class="headerlink" href="#proxylistenport" title="Permanent link">&para;</a></h3>
 <h4 id="proxylistenport_1">▼ proxyListenPortとは<a class="headerlink" href="#proxylistenport_1" title="Permanent link">&para;</a></h4>
-<p>全ての<code>istio-proxy</code>コンテナに関して、他アプリコンテナからのインバウンド通信を待ち受けるポート番号を設定する。</p>
+<p>全ての<code>istio-proxy</code>コンテナに関して、他マイクロサービスからのインバウンド通信を待ち受けるポート番号を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28589,7 +28589,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="holdapplicationuntilproxystarts">holdApplicationUntilProxyStarts<a class="headerlink" href="#holdapplicationuntilproxystarts" title="Permanent link">&para;</a></h3>
-<p><code>istio-proxy</code>コンテナが、必ずアプリコンテナよりも先に起動するか否かを設定する。</p>
+<p><code>istio-proxy</code>コンテナが、必ずマイクロサービスよりも先に起動するか否かを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -29005,8 +29005,8 @@
 <p><br></p>
 <h3 id="istio_meta_dns_capture"><code>ISTIO_META_DNS_CAPTURE</code><a class="headerlink" href="#istio_meta_dns_capture" title="Permanent link">&para;</a></h3>
 <p>デフォルト値は<code>false</code>である。</p>
-<p>アプリコンテナからのアウトバウンド通信時に、Pod内の<code>istio-proxy</code>コンテナやztunnelプロキシをDNSプロキシとして使用できるようになる。</p>
-<p>もし<code>istio-proxy</code>コンテナやztunnelプロキシがドメインに紐づくIPアドレスのキャッシュを持つ場合、アプリコンテナにレスポンスを返信する。</p>
+<p>マイクロサービスからのアウトバウンド通信時に、Pod内の<code>istio-proxy</code>コンテナやztunnelプロキシをDNSプロキシとして使用できるようになる。</p>
+<p>もし<code>istio-proxy</code>コンテナやztunnelプロキシがドメインに紐づくIPアドレスのキャッシュを持つ場合、マイクロサービスにレスポンスを返信する。</p>
 <p>一方でキャッシュを持たない場合、<code>istio-proxy</code>コンテナやztunnelプロキシは宛先Podにリクエストを送信する。</p>
 <p>なお、DNSキャッシュのドメインとIPアドレスを固定で紐付けることもできる。</p>
 <blockquote>
@@ -29785,8 +29785,8 @@
 <p><br></p>
 <h3 id="enable_inbound_retry_policy_1"><code>ENABLE_INBOUND_RETRY_POLICY</code><a class="headerlink" href="#enable_inbound_retry_policy_1" title="Permanent link">&para;</a></h3>
 <p>デフォルト値は<code>true</code>である。</p>
-<p><code>istio-proxy</code>コンテナがインバウンド通信をアプリコンテナに送信するときのリトライ (執筆時点2025/02/26では<code>reset-before-request</code>のみ) を設定する。</p>
-<p>今後は、宛先<code>istio-proxy</code>コンテナがアプリコンテナに対してリトライできるようになる。</p>
+<p><code>istio-proxy</code>コンテナがインバウンド通信をマイクロサービスに送信するときのリトライ (執筆時点2025/02/26では<code>reset-before-request</code>のみ) を設定する。</p>
+<p>今後は、宛先<code>istio-proxy</code>コンテナがマイクロサービスに対してリトライできるようになる。</p>
 <p><code>istio-proxy</code>コンテナ間の問題の切り分けがしやすくなる。</p>
 <p><code>false</code>の場合、送信元<code>istio-proxy</code>コンテナから宛先<code>istio-proxy</code>コンテナへ通信時に、送信元<code>istio-proxy</code>コンテナしかリトライできない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
@@ -29811,9 +29811,9 @@
 <p><br></p>
 <h3 id="exclude_unsafe_503_from_default_retry_1"><code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code><a class="headerlink" href="#exclude_unsafe_503_from_default_retry_1" title="Permanent link">&para;</a></h3>
 <p>デフォルト値は<code>true</code>である。</p>
-<p>POSTリクエストの結果で、アプリコンテナから<code>503</code>ステータスが返信された場合に、未処理とは限らない。</p>
+<p>POSTリクエストの結果で、マイクロサービスから<code>503</code>ステータスが返信された場合に、未処理とは限らない。</p>
 <p>この場合にリトライすると結果的に二重で処理が実行されてしまう。</p>
-<p>そのため、アプリコンテナから<code>503</code>ステータスが返信された場合は、リトライしないようにする。</p>
+<p>そのため、マイクロサービスから<code>503</code>ステータスが返信された場合は、リトライしないようにする。</p>
 <p>なおこの問題は、<code>reset</code>によるリトライでも起こりうるため、<code>reset</code>もデフォルトから外れている。</p>
 <p>リトライの結果で<code>istio-proxy</code>コンテナが<code>503</code>ステータスを返信する場合とは区別する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
@@ -29944,7 +29944,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月24日 02:17:06">2025-03-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月24日 03:14:16">2025-03-24</span>
   </span>
 
     

@@ -30875,7 +30875,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimit</span>
 <span class="w">            </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ratelimit</span>
 <span class="w">            </span><span class="c1"># true：istio-proxyコンテナが失敗のレスポンスを返信する</span>
-<span class="w">            </span><span class="c1"># false：アプリコンテナが失敗のレスポンスを返信する</span>
+<span class="w">            </span><span class="c1"># false：マイクロサービスが失敗のレスポンスを返信する</span>
 <span class="w">            </span><span class="nt">failure_mode_deny</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">            </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
 <span class="w">            </span><span class="nt">rate_limit_service</span><span class="p">:</span>
@@ -31011,7 +31011,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="c1"># istio-proxyコンテナ開始直後の処理</span>
 <span class="w">            </span><span class="nt">postStart</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">exec</span><span class="p">:</span>
-<span class="w">                </span><span class="c1"># istio-proxyコンテナが、必ずアプリコンテナよりも先に起動する。</span>
+<span class="w">                </span><span class="c1"># istio-proxyコンテナが、必ずマイクロサービスよりも先に起動する。</span>
 <span class="w">                </span><span class="c1"># pilot-agentの起動完了を待機する。</span>
 <span class="w">                </span><span class="nt">command</span><span class="p">:</span>
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -31019,7 +31019,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="c1"># istio-proxyコンテナ終了直前の処理</span>
 <span class="w">            </span><span class="nt">preStop</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">exec</span><span class="p">:</span>
-<span class="w">                </span><span class="c1"># istio-proxyコンテナが、必ずアプリコンテナよりも後に終了する。</span>
+<span class="w">                </span><span class="c1"># istio-proxyコンテナが、必ずマイクロサービスよりも後に終了する。</span>
 <span class="w">                </span><span class="c1"># envoyプロセスとpilot-agentプロセスの終了を待機する。</span>
 <span class="w">                </span><span class="nt">command</span><span class="p">:</span>
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/bin/bash&quot;</span>
@@ -31027,7 +31027,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">                    </span><span class="no">sleep 5</span>
 <span class="w">                    </span><span class="no">while [ $(netstat -plnt | grep tcp | egrep -v &#39;envoy|pilot-agent&#39; | wc -l) -ne 0 ]; do sleep 1; done&quot;</span>
-<span class="w">      </span><span class="c1"># アプリコンテナとistio-proxyコンテナの両方が終了するのを待つ</span>
+<span class="w">      </span><span class="c1"># マイクロサービスとistio-proxyコンテナの両方が終了するのを待つ</span>
 <span class="w">      </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45</span>
 </code></pre></div>
 <blockquote>
@@ -32842,7 +32842,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月24日 00:55:44">2025-03-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月24日 03:14:16">2025-03-24</span>
   </span>
 
     
