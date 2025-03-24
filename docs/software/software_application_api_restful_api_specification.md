@@ -96,11 +96,11 @@ Swagger UI / Swagger Codegenを使用して、OpenAPI仕様から静的ファイ
 
 > - https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc
 
-#### ▼ OpenAPI Generator
+#### ▼ OpenAPI Generatorの場合
 
-openapi-generatorを使用して、OpenAPI仕様から静的ファイルを作成する。
+OpenAPI Generatorを使用して、OpenAPI仕様から静的ファイルを作成する。
 
-なお、openapi-generatorはOpenAPI仕様からコードを作成することもできる。
+なお、OpenAPI GeneratorはOpenAPI仕様からコードを作成することもできる。
 
 ```bash
 $ openapi-generator generate -i docs/openapi.yaml -o docs/html -g html
@@ -108,11 +108,19 @@ $ openapi-generator generate -i docs/openapi.yaml -o docs/html -g html
 
 > - https://ky-yk-d.hatenablog.com/entry/2019/01/13/234108#OpenAPI-Generator%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E8%87%AA%E5%8B%95%E7%94%9F%E6%88%90%E3%82%92%E8%A9%A6%E3%81%99
 
+#### ▼ oapi-codegenの場合
+
+記入中...
+
 <br>
 
 ### スキーマ駆動開発
 
 #### ▼ スキーマ駆動開発とは
+
+API仕様書に基づいて、APIを実装する。
+
+#### ▼ OpenAPI Generatorの場合
 
 以下の流れに基づいて、APIを実装していく。
 
@@ -205,7 +213,7 @@ func main() {
 
 `(3)`
 
-: 自動的に作成されたコードに実際のAPIを追加実装していく。
+: 自動的に作成されたファイル (`api_product.go`) に実際のAPIを追加実装していく。
 
 ```go
 /*
@@ -243,6 +251,12 @@ func GetProducts(c *gin.Context) {
 
 > - https://zenn.dev/team_soda/articles/b749228a360454#openapi-generator%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9Fschema%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E3%81%AE%E6%B5%81%E3%82%8C
 > - https://openapi-generator.tech/docs/generators/
+
+#### ▼ oapi-codegenの場合
+
+```bash
+oapi-codegen -package=openapi -generate=types,client,spec openapi.yaml > api.go
+```
 
 <br>
 
