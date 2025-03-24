@@ -973,7 +973,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 ## 02. 実インフラの全ての設定値を`tfstate`ファイルに取り込む
 
-### なぜ`import`コマンドが必要なのか
+### `import`について
 
 実インフラの全ての設定値を`tfstate`ファイルに取り込む場合、これの設定値を`resource`ブロックの設定値として`tfstate`ファイルに書き込み、Terraformの管理下におく必要がある (`tfstate`ファイル上では、`resource`ブロックは`managed`モードという表記になる) 。
 
@@ -981,11 +981,11 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 執筆時点 (2022/07/19) で、複数のインフラリソースを網羅的に確認する方法は公式になく、インフラリソースを`1`個ずつ指定して、`tfstate`ファイルに書き込んでいく必要がある。
 
+似た目的で使用する`terraform apply -refresh-only`コマンドは実インフラの一部の設定値が対象であるが、`import`は実インフラの全ての設定値が対象である。
+
 > - https://dtan4.hatenablog.com/entry/2016/08/18/010652
 
 <br>
-
-## 02-02. 手順
 
 ### はじめに
 
@@ -1095,7 +1095,7 @@ resource "aws_instance" "foo" {
 
 <br>
 
-### 実インフラの設定値を`tfstate`ファイルに取り込む
+### `import`を実施する
 
 #### ▼ `terraform import`コマンドの場合
 
@@ -1267,7 +1267,11 @@ Error: error creating ECR repository: RepositoryAlreadyExistsException: The repo
 
 ## 03. 実インフラの一部の設定値を`tfstate`ファイルに取り込む
 
+### `terraform apply -refresh-only`コマンドについて
+
 実インフラから実インフラの一部の設定値を`tfstate`ファイルに取り込む場合、以下の方法が便利である。
+
+似た目的で使用する`import`は実インフラの全ての設定値が対象であるが、`terraform apply -refresh-only`コマンドは実インフラの一部の設定値が対象である。
 
 `(1)`
 

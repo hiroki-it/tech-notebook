@@ -441,6 +441,7 @@ function NewEvent() {
 
 > - https://remix.run/docs/en/main/components/form
 > - https://www.chadtaylor.dev/blog/submitting-a-form-to-an-index-route-in-remix/
+> - https://remix.run/docs/en/main/components/form#index
 
 <br>
 
