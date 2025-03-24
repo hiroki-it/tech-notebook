@@ -376,6 +376,8 @@ $ asdf uninstall <プラグイン名> --all
 
 ### 設定ファイル
 
+#### ▼ tools
+
 決められた名前の`.toml`ファイルを用意しておく。
 
 - `mise.toml`
@@ -389,6 +391,42 @@ baz = '1.0.0'
 ```
 
 > - https://mise.jdx.dev/configuration.html
+
+#### ▼ settings
+
+`mise`コマンドのオプションを宣言的に定義する。
+
+```toml
+[settings]
+experimental = true
+idiomatic_version_file = true
+idiomatic_version_file_disable_tools = ['python']
+always_keep_download = false
+always_keep_install = false
+plugin_autoupdate_last_check_duration = '1 week'
+trusted_config_paths = [
+    '~/work/my-trusted-projects',
+]
+verbose = false
+http_timeout = "30s"
+jobs = 4
+raw = false
+yes = false
+not_found_auto_install = true
+task_output = "prefix"
+paranoid = false
+shorthands_file = '~/.config/mise/shorthands.toml'
+disable_default_shorthands = false
+disable_tools = ['node']
+env_file = '.env'
+experimental = true
+status = { missing_tools = "if_other_versions_installed", show_env = false, show_tools = false }
+
+[_]
+foo = "bar"
+```
+
+> - https://mise.jdx.dev/configuration.html#global-config-config-mise-config-toml
 
 <br>
 
