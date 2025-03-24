@@ -308,7 +308,7 @@ $ go vet ./...
 
 <br>
 
-## 02. モジュール管理系
+## 02. モジュール管理系コマンド
 
 ### 大前提
 
@@ -488,6 +488,8 @@ go: finding module for package go.module.io/foo-dependency
 > - https://github.com/golang/go/issues/35832#issuecomment-571799739
 
 <br>
+
+## 02-02. モジュール管理系ファイル
 
 ### `go.mod`ファイル
 
