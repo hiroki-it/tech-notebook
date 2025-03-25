@@ -2888,11 +2888,11 @@ spec:
 
 > - https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy
 
-#### ▼ resources
+#### ▼ resources.requests、resources.limits
 
 Node全体のハードウェアリソースを分母として、Pod内のコンテナが要求するリソースの下限/上限必要サイズを設定する。
 
-各Podは、Node内のハードウェアリソースを奪い合っており、Nodeが複数ある場合、kube-schedulerはリソースの空いているNode上のPodのスケーリングを実行する。
+各PodはNode内のハードウェアリソース (`cpu`、`memory`、`ephemeral-storage`) を奪い合っており、Nodeが複数ある場合、kube-schedulerは`requests`値以上の余剰があるNode上にPodのスケジューリングを実行する。
 
 この時kube-schedulerは、コンテナの`resource`キーの値に基づいて、どのNodeにPodを作成するかを決めている。
 
@@ -2902,8 +2902,6 @@ Node全体のハードウェアリソースを分母として、Pod内のコン�
 | ---------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `requests` | ハードウェアリソースの下限必要サイズを設定する。 | ・高くしすぎると、そのPod内のコンテナがハードウェアリソースを常に要求するため、他のPodがスケーリングしにくくなる。<br>・もし、設定値がNodeのハードウェアリソース以上の場合、コンテナは永遠に起動しない。<br>・https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの下限がなくなる。そのため、Kubernetesが重要なPodにリソースを必要最低限しか割かず、性能が低くなる可能性がある。                                                                                                                                                                                                                                                                                                                                                                     |
 | `limits`   | ハードウェアリソースの上限必要サイズを設定する。 | ・低くしすぎると、コンテナにハードウェアリソースを割り当てられないため、性能が常時悪くなる。<br>・もし、コンテナが上限値以上のハードウェアリソースを要求すると、CPUの場合はPodは削除されずに、コンテナのスロットリング (起動と停止を繰り返す) が起こる。一方でメモリの場合は、OOMキラーによってPodのプロセスが削除され、Podは再作成される。<br>・https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/ <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの上限がなくなる。そのため、Kubernetesが重要でないPodにリソースを割いてしまう可能性がある。<br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit |
-
-> - https://newrelic.com/jp/blog/best-practices/set-requests-and-limits-for-your-clustercapacity-management
 
 補足として、Node全体のハードウェアリソースは、`kubectl describe`コマンドから確認できる。
 
@@ -2932,13 +2930,17 @@ Allocatable:
 ...
 ```
 
+> - https://newrelic.com/jp/blog/best-practices/set-requests-and-limits-for-your-clustercapacity-management
 > - https://kubernetes.io/docs/concepts/architecture/nodes/#capacity
 > - https://smallit.co.jp/blog/667/
 
-| ハードウェアリソース名 | 単位                                              |
-| ---------------------- | ------------------------------------------------- |
-| `cpu`                  | m：millicores (`1`m = `1` ユニット = `0.001`コア) |
-| `memory`               | Mi：mebibyte (`1`Mi = `1.04858`MB)                |
+#### ▼ resources.requests/limits.<ハードウェアリソース>
+
+| ハードウェアリソース名 |                                                     | 単位                                              |
+| ---------------------- | --------------------------------------------------- | ------------------------------------------------- |
+| `cpu`                  | コンテナのCPU                                       | m：millicores (`1`m = `1` ユニット = `0.001`コア) |
+| `memory`               | コンテナのメモリ                                    | Mi：mebibyte (`1`Mi = `1.04858`MB)                |
+| `ephemeral-storage`    | EmptyDir Volume、ログ、ローカルディスクへの書き込み | Mi：mebibyte                                      |
 
 **＊実装例＊**
 
@@ -2955,11 +2957,13 @@ spec:
         # 下限必要サイズ
         requests:
           cpu: 250m
+          ephemeral-storage: 500Mi
           memory: 64Mi
         # 上限サイズ
         limits:
           cpu: 500m
-          memory: 128Mi
+          ephemeral-storage: 2Gi
+          memory: 512Mi
     - name: istio-proxy
       ...
 ```
@@ -2975,6 +2979,8 @@ POD       NAME          CPU(cores)   MEMORY(bytes)
 foo-pod   app           1m           19Mi          # 19Mi ÷ 128Mi × 100 = 14%
 foo-pod   istio-proxy   5m           85Mi
 ```
+
+> - https://docs.redhat.com/en/documentation/red_hat_openshift_service_on_aws/4/html/storage/understanding-ephemeral-storage#storage-ephemeral-storage-scheduling-eviction_understanding-ephemeral-storage
 
 #### ▼ volumeMounts
 
