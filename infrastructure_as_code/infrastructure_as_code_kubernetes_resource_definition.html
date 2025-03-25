@@ -20547,9 +20547,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#resources_1" class="md-nav__link">
+  <a href="#resourcesrequestsresourceslimits" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ resources
+      ▼ resources.requests、resources.limits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resourcesrequestslimits" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ resources.requests/limits.&lt;ハードウェアリソース&gt;
     </span>
   </a>
   
@@ -21654,7 +21663,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#resources_2" class="md-nav__link">
+  <a href="#resources_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ resourcesとは
     </span>
@@ -32482,9 +32491,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#resources_1" class="md-nav__link">
+  <a href="#resourcesrequestsresourceslimits" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ resources
+      ▼ resources.requests、resources.limits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resourcesrequestslimits" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ resources.requests/limits.&lt;ハードウェアリソース&gt;
     </span>
   </a>
   
@@ -33589,7 +33607,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#resources_2" class="md-nav__link">
+  <a href="#resources_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ resourcesとは
     </span>
@@ -36909,9 +36927,9 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <li><a href="https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy">https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy</a></li>
 </ul>
 </blockquote>
-<h4 id="resources_1">▼ resources<a class="headerlink" href="#resources_1" title="Permanent link">&para;</a></h4>
+<h4 id="resourcesrequestsresourceslimits">▼ resources.requests、resources.limits<a class="headerlink" href="#resourcesrequestsresourceslimits" title="Permanent link">&para;</a></h4>
 <p>Node全体のハードウェアリソースを分母として、Pod内のコンテナが要求するリソースの下限/上限必要サイズを設定する。</p>
-<p>各Podは、Node内のハードウェアリソースを奪い合っており、Nodeが複数ある場合、kube-schedulerはリソースの空いているNode上のPodのスケーリングを実行する。</p>
+<p>各PodはNode内のハードウェアリソース (<code>cpu</code>、<code>memory</code>、<code>ephemeral-storage</code>) を奪い合っており、Nodeが複数ある場合、kube-schedulerは<code>requests</code>値以上の余剰があるNode上にPodのスケジューリングを実行する。</p>
 <p>この時kube-schedulerは、コンテナの<code>resource</code>キーの値に基づいて、どのNodeにPodを作成するかを決めている。</p>
 <p>同じPod内に<code>resources</code>キーが設定されたコンテナが複数ある場合、下限/上限必要サイズを満たしているか否かの判定は、同じPod内のコンテナの要求サイズの合計値に基づくことになる。</p>
 <table>
@@ -36935,11 +36953,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </tr>
 </tbody>
 </table>
-<blockquote>
-<ul>
-<li><a href="https://newrelic.com/jp/blog/best-practices/set-requests-and-limits-for-your-clustercapacity-management">https://newrelic.com/jp/blog/best-practices/set-requests-and-limits-for-your-clustercapacity-management</a></li>
-</ul>
-</blockquote>
 <p>補足として、Node全体のハードウェアリソースは、<code>kubectl describe</code>コマンドから確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>describe<span class="w"> </span>node<span class="w"> </span>&lt;Node名&gt;
 
@@ -36966,25 +36979,35 @@ Allocatable:
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://newrelic.com/jp/blog/best-practices/set-requests-and-limits-for-your-clustercapacity-management">https://newrelic.com/jp/blog/best-practices/set-requests-and-limits-for-your-clustercapacity-management</a></li>
 <li><a href="https://kubernetes.io/docs/concepts/architecture/nodes/#capacity">https://kubernetes.io/docs/concepts/architecture/nodes/#capacity</a></li>
 <li><a href="https://smallit.co.jp/blog/667/">https://smallit.co.jp/blog/667/</a></li>
 </ul>
 </blockquote>
+<h4 id="resourcesrequestslimits">▼ resources.requests/limits.&lt;ハードウェアリソース&gt;<a class="headerlink" href="#resourcesrequestslimits" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
 <th>ハードウェアリソース名</th>
+<th></th>
 <th>単位</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>cpu</code></td>
+<td>コンテナのCPU</td>
 <td>m：millicores (<code>1</code>m = <code>1</code> ユニット = <code>0.001</code>コア)</td>
 </tr>
 <tr>
 <td><code>memory</code></td>
+<td>コンテナのメモリ</td>
 <td>Mi：mebibyte (<code>1</code>Mi = <code>1.04858</code>MB)</td>
+</tr>
+<tr>
+<td><code>ephemeral-storage</code></td>
+<td>EmptyDir Volume、ログ、ローカルディスクへの書き込み</td>
+<td>Mi：mebibyte</td>
 </tr>
 </tbody>
 </table>
@@ -37001,11 +37024,13 @@ Allocatable:
 <span class="w">        </span><span class="c1"># 下限必要サイズ</span>
 <span class="w">        </span><span class="nt">requests</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">250m</span>
+<span class="w">          </span><span class="nt">ephemeral-storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500Mi</span>
 <span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">64Mi</span>
 <span class="w">        </span><span class="c1"># 上限サイズ</span>
 <span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500m</span>
-<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">128Mi</span>
+<span class="w">          </span><span class="nt">ephemeral-storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2Gi</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512Mi</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-proxy</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
@@ -37017,6 +37042,11 @@ POD<span class="w">       </span>NAME<span class="w">          </span>CPU<span c
 foo-pod<span class="w">   </span>app<span class="w">           </span>1m<span class="w">           </span>19Mi<span class="w">          </span><span class="c1"># 19Mi ÷ 128Mi × 100 = 14%</span>
 foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span class="w">           </span>85Mi
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.redhat.com/en/documentation/red_hat_openshift_service_on_aws/4/html/storage/understanding-ephemeral-storage#storage-ephemeral-storage-scheduling-eviction_understanding-ephemeral-storage">https://docs.redhat.com/en/documentation/red_hat_openshift_service_on_aws/4/html/storage/understanding-ephemeral-storage#storage-ephemeral-storage-scheduling-eviction_understanding-ephemeral-storage</a></li>
+</ul>
+</blockquote>
 <h4 id="volumemounts">▼ volumeMounts<a class="headerlink" href="#volumemounts" title="Permanent link">&para;</a></h4>
 <p>Pod内のコンテナのマウントポイントを設定する。</p>
 <p>パスは相対パスではなく絶対パスで指定する。</p>
@@ -38893,7 +38923,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </blockquote>
 <p><br></p>
 <h3 id="rulesresources">rules.resources<a class="headerlink" href="#rulesresources" title="Permanent link">&para;</a></h3>
-<h4 id="resources_2">▼ resourcesとは<a class="headerlink" href="#resources_2" title="Permanent link">&para;</a></h4>
+<h4 id="resources_1">▼ resourcesとは<a class="headerlink" href="#resources_1" title="Permanent link">&para;</a></h4>
 <p>アクション可能なKubernetesリソースの範囲 (認可スコープ) を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Role</span>
@@ -39959,7 +39989,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月15日 21:42:24">2025-03-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月25日 17:58:02">2025-03-25</span>
   </span>
 
     
