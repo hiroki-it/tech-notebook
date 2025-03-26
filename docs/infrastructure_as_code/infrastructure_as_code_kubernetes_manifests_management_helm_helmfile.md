@@ -125,10 +125,10 @@ $ helmfile -e prd -f helmfile.yaml apply
 
 #### ▼ `.Values`
 
-`helmfile`コマンドの`--state-values-set`オプションに渡した値は、`helmfile.yaml`ファイル内の`.Values`に出力できる。
+`helmfile`コマンドの`--set`オプションに渡した値は、`helmfile.yaml`ファイル内の`.Values`に出力できる。
 
 ```bash
-$ helmfile -e prd -f helmfile.yaml apply --state-values-set region=tokyo
+$ helmfile -e prd -f helmfile.yaml apply --set region=tokyo
 ```
 
 ```yaml

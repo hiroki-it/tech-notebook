@@ -73,6 +73,16 @@ Do you really want to delete?
  [y/n]:
 ```
 
+#### ▼ --set
+
+```bash
+$ helmfile -e prd -f helmfile.yaml apply --set region=tokyo
+```
+
+```yaml
+{{.Values.region}}
+```
+
 <br>
 
 ### apply
