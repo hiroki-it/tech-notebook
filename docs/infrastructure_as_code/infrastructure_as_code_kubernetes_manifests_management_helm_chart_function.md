@@ -65,20 +65,24 @@ description: アクション＠チャートの知見を記録しています。
 
 <br>
 
-### 条件内スコープの変数
+### 変数のスコープ
 
-条件分岐で定義した変数は、`{{- if }}`から`{{- end }}`までしか使用できない。
+条件分岐の前に`:=`で値を代入し、条件分岐内で`=`でこれを代入する。
+
+これにより、条件分岐の外に変数のスコープを広げられる。
 
 ```yaml
+{{- $prefix := "prd" }}
+
 {{- if .Values.isProduction }}
 
-  {{- $prefix := "prd" }}
+  {{- $prefix = "prd" }}
 
   ... # 変数を使用する。
 
 {{- else }}
 
-  {{- $prefix := "nonprd" }}
+  {{- $prefix = "nonprd" }}
 
   ... # 変数を使用する。
 
@@ -96,7 +100,7 @@ description: アクション＠チャートの知見を記録しています。
 url: https://{{ $subDomain }}{{.Values.serviceName }}.com
 ```
 
-> - https://stackoverflow.com/a/57600807
+> - https://stackoverflow.com/a/69425151/12771072
 > - https://stackoverflow.com/a/67886552
 
 <br>

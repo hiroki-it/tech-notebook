@@ -13,7 +13,15 @@ description: 設定ファイル＠Promtailの知見を記録しています。
 
 <br>
 
-## 01. promtail.yaml
+## 01. Promtailは非推奨
+
+Promtailは非推奨で、Grafana Alloyへの移行が推奨になった。
+
+> - https://grafana.com/docs/alloy/latest/set-up/migrate/from-promtail/
+
+<br>
+
+## 02. promtail.yaml
 
 ### clients
 
