@@ -19236,7 +19236,7 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      条件内スコープの変数
+      変数のスコープ
     </span>
   </a>
   
@@ -26462,7 +26462,7 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      条件内スコープの変数
+      変数のスコープ
     </span>
   </a>
   
@@ -27555,17 +27555,20 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_5">条件内スコープの変数<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>条件分岐で定義した変数は、<code>{{- if }}</code>から<code>{{- end }}</code>までしか使用できない。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- if .Values.isProduction</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<h3 id="_5">変数のスコープ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>条件分岐の前に<code>:=</code>で値を代入し、条件分岐内で<code>=</code>でこれを代入する。</p>
+<p>これにより、条件分岐の外に変数のスコープを広げられる。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- $prefix</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= &quot;prd&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 
-<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- $prefix</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= &quot;prd&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- if .Values.isProduction</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- $prefix = &quot;prd&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># 変数を使用する。</span>
 
 <span class="p p-Indicator">{{</span><span class="nv">- else</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 
-<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- $prefix</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= &quot;nonprd&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- $prefix = &quot;nonprd&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># 変数を使用する。</span>
 
@@ -27580,7 +27583,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://stackoverflow.com/a/57600807">https://stackoverflow.com/a/57600807</a></li>
+<li><a href="https://stackoverflow.com/a/69425151/12771072">https://stackoverflow.com/a/69425151/12771072</a></li>
 <li><a href="https://stackoverflow.com/a/67886552">https://stackoverflow.com/a/67886552</a></li>
 </ul>
 </blockquote>
@@ -28459,7 +28462,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年2月28日 20:02:56">2025-02-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月27日 15:24:01">2025-03-27</span>
   </span>
 
     
