@@ -72,17 +72,27 @@ description: アクション＠チャートの知見を記録しています。
 これにより、条件分岐の外に変数のスコープを広げられる。
 
 ```yaml
-{{- $prefix := "prd" }}
+# 変数を定義する
+{{- $prefix := "" }}
 
 {{- if .Values.isProduction }}
 
+  # 再代入する
   {{- $prefix = "prd" }}
+
+  ... # 変数を使用する。
+
+{{- else if }}
+
+  # 再代入する
+  {{- $prefix = "stg" }}
 
   ... # 変数を使用する。
 
 {{- else }}
 
-  {{- $prefix = "nonprd" }}
+  # 再代入する
+  {{- $prefix = "dev" }}
 
   ... # 変数を使用する。
 
@@ -268,6 +278,8 @@ bar:
 {{- if eq .Values.foo.isFoo true }}
   ...
 {{- end }}
+{{- else if }}
+...
 {{- else }}
   ...
 {{- end }}
