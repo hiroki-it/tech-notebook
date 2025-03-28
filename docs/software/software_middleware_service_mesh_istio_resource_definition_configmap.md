@@ -638,9 +638,7 @@ spec:
 
 ### controlPlaneAuthPolicy
 
-`istio-proxy`コンテナからコントロールプレーンへのJWT仕様アクセストークン検証時に相互TLSを実施する。
-
-RequestAuthenticationでJWT仕様アクセストークンの検証を設定できる。
+データプレーン (`istio-proxy`コンテナ) とコントロールプレーン間の通信に相互TLSを実施する。
 
 ```yaml
 apiVersion: v1
