@@ -28600,8 +28600,13 @@
 <p><br></p>
 <h2 id="cluster">Cluster<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h2>
 <h3 id="_2">バックアップ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>例えば永続ボリュームを使用しているなど、クラスターのetcdの現在の状態の回復が必要な場合、障害でクラスター上のデータが損失することに備え、バックアップツール (例：<a href="https://velero.io/">velero</a>) を使用してクラスターバックアップを定期的に実行する。</p>
+<p>例えば永続ボリュームを使用しているなど、クラスターのetcdの現在の状態の回復が必要な場合、障害でクラスター上のデータが損失することに備え、バックアップツール (例：Velero) を使用してクラスターバックアップを定期的に実行する。</p>
 <p>もし単純に新しいKubernetes Clusterにビルド可能なmanifestsを再インストール(kubectl apply)するだけで問題無く回復できるようなケースでは必ずしもクラスターバックアップは必要ない。</p>
+<blockquote>
+<ul>
+<li><a href="https://velero.io/">https://velero.io/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="dr">クラスターのDR構成<a class="headerlink" href="#dr" title="Permanent link">&para;</a></h3>
 <p>特定のリージョンのみにシステムを配置してしまうと、大規模な障害 (例：災害によるデータセンター大爆発！) があった場合に、システムのダウンタイムとなる。</p>
@@ -28737,7 +28742,7 @@
 <ul>
 <li>[Control Plane - EKS Best Practices Guides](<a href="https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades">https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades</a></li>
 <li>[マネージド型ノードの更新動作 - Amazon EKS](<a href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html">https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html</a></li>
-<li><a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#choose-blue-green-upgrades">ノードプールのアップグレード戦略 | Google Kubernetes Engine（GKE） | Google Cloud</a></li>
+<li><a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#choose-blue-green-upgrades">https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#choose-blue-green-upgrades</a></li>
 </ul>
 </blockquote>
 <h4 id="_7">▼ クラスターアップグレードのルールを決める<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
@@ -28747,7 +28752,7 @@
 <p>例えば下記のようなルールを盛り込んだアップグレードルールを作成する。</p>
 <ul>
 <li>クラスターアップグレードにあたっての準備<ul>
-<li>クラスターアップグレード前に<a href="https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG">KubernetesのCHANGELOG</a>を確認し、(おおまかにでも)変更内容について確認する</li>
+<li>クラスターアップグレード前に <a href="https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG">https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG</a> を確認し、(おおまかにでも)変更内容について確認する</li>
 <li>クラスターアップグレード前に廃止されるAPIグループのバージョンを確認することで、変更が必要な既存のmanifestsを確認する</li>
 <li>予め検証環境で本番環境と(限りなく)同じ設定のクラスターのアップグレード~動作確認を行い、問題無くアップグレード可能かを検証する</li>
 <li>監視ツールなどで廃止されるメトリクスを使用したクエリロジックが無いかを確認する</li>
@@ -28755,7 +28760,7 @@
 </ul>
 </li>
 <li>クラスターバージョンのアップグレード戦略<ul>
-<li>Kubernetesの「<strong><a href="https://kubernetes.io/releases/version-skew-policy/#supported-component-upgrade-order">Version Skew Policy</a></strong>」と「Kubernetes Release Versioning』に沿ったバージョンアップを実行する</li>
+<li>Kubernetesの「<a href="https://kubernetes.io/releases/version-skew-policy/#supported-component-upgrade-order">https://kubernetes.io/releases/version-skew-policy/#supported-component-upgrade-order</a>」と「Kubernetes Release Versioning』に沿ったバージョンアップを実行する</li>
 <li>パッチバージョンのアップグレードについてはCHANGELOGに基づいて修正されたバグの影響度に応じて実施する</li>
 <li>マイナーバージョンのアップグレードについては1バージョンずつアップグレードを実施する</li>
 <li>約4ヶ月毎のマイナーバージョンのリリース毎にマイナーバージョンのアップグレードを実施する or xヶ月毎(12ヶ月以内)にそのタイミングの最新バージョンまでアップグレードを実施する</li>
@@ -28850,7 +28855,7 @@
 <blockquote>
 <ul>
 <li>[第2章 システムおよび環境要件 OpenShift Container Platform 3.11 | Red Hat Customer Portal](<a href="https://access.redhat.com/documentation/ja-jp/openshift_container_platform/3.11/html/installing_clusters/install-config-install-prerequisites">https://access.redhat.com/documentation/ja-jp/openshift_container_platform/3.11/html/installing_clusters/install-config-install-prerequisites</a></li>
-<li><a href="https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/cpu-ram-storage?hl=ja">CPU、RAM、ストレージの要件  |  Anthos clusters on VMware  |  Google Cloud</a></li>
+<li><a href="https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/cpu-ram-storage?hl=ja">https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/cpu-ram-storage?hl=ja</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -28868,8 +28873,8 @@
 <p>etcd Nodeは3台に冗長化する。</p>
 <blockquote>
 <ul>
-<li>[<a href="https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members](https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members">https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members](https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members</a></li>
-<li>[<a href="https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size](https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size">https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size](https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size</a></li>
+<li><a href="https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members">https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members</a></li>
+<li><a href="https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size">https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size</a></li>
 <li><a href="https://etcd.io/docs/v3.5/faq/#what-is-failure-tolerance">https://etcd.io/docs/v3.5/faq/#what-is-failure-tolerance</a></li>
 </ul>
 </blockquote>
@@ -29061,7 +29066,7 @@
 <p>管理しやすいように、Ingressから切り離して設定すると良い。</p>
 <blockquote>
 <ul>
-<li>[<a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/">https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/</a></li>
+<li><a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/">https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/</a></li>
 <li><a href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.6/guide/ingress/annotations/">https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.6/guide/ingress/annotations/</a></li>
 </ul>
 </blockquote>
@@ -29215,7 +29220,7 @@
 <p>NodeやNodeグループをNodeSelectorよりも複雑な条件 (例：Nodeのラベル自体の有無、Nodeのラベル値の有無) で指定できる。</p>
 <blockquote>
 <ul>
-<li>[<a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement">https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement">https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement</a></li>
 <li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/">https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/</a></li>
 </ul>
 </blockquote>
@@ -29272,8 +29277,8 @@
 <p>一方で、Node外ストレージを追加で使用することになるため、金銭的コストがEmptyDirよりも大きい。</p>
 <blockquote>
 <ul>
-<li>[<a href="https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes](https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes">https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes](https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes</a></li>
-<li><a href="https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF">https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes">https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes</a></li>
+<li><a href="https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF">https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF</a></li>
 </ul>
 </blockquote>
 <h4 id="emptydir-volume">▼ 小規模な一時的ストレージを必要とする場合はEmptyDir Volumeを使用する<a class="headerlink" href="#emptydir-volume" title="Permanent link">&para;</a></h4>
@@ -29353,7 +29358,7 @@
 <p>そこでストレージクラスやPersistentVolumeのラベルに<code>.metadata.label.storage-type=ssd</code>のようにストレージの種類などを設定し、<strong><code>spec.selector.matchLabels: storage-type: ssd</code></strong>のように指定することで利用用途に合ったストレージを選択することが出来る。</p>
 <blockquote>
 <ul>
-<li>[<a href="https://thinkit.co.jp/article/14195#h1-4-2-1](https://thinkit.co.jp/article/14195#h1-4-2-1">https://thinkit.co.jp/article/14195#h1-4-2-1](https://thinkit.co.jp/article/14195#h1-4-2-1</a></li>
+<li><a href="https://thinkit.co.jp/article/14195#h1-4-2-1">https://thinkit.co.jp/article/14195#h1-4-2-1</a></li>
 <li><a href="https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html">https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html</a></li>
 </ul>
 </blockquote>
@@ -29372,7 +29377,7 @@
 <p>そのため重要なデータを保管するPersistentVolumeClaimはReclaim PolicyにRetainを指定し、PVが完全に削除されないよう保護することが出来る。</p>
 <blockquote>
 <ul>
-<li>[<a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain</a></li>
 <li><a href="https://access.crunchydata.com/documentation/postgres-operator/latest/guides/storage-retention">https://access.crunchydata.com/documentation/postgres-operator/latest/guides/storage-retention</a></li>
 </ul>
 </blockquote>
@@ -29395,7 +29400,7 @@
 <p>そのためStorageClassやPersistentVolumeの<code>metadata.label</code>に<code>storage-type=ssd</code>や<code>iops=3000</code>、<code>environment=prd</code>などストレージパフォーマンスや環境などボリューム選択に利用できるラベルを設定する。</p>
 <blockquote>
 <ul>
-<li>[<a href="https://thinkit.co.jp/article/14195#h1-4-2-1](https://thinkit.co.jp/article/14195#h1-4-2-1">https://thinkit.co.jp/article/14195#h1-4-2-1](https://thinkit.co.jp/article/14195#h1-4-2-1</a></li>
+<li><a href="https://thinkit.co.jp/article/14195#h1-4-2-1">https://thinkit.co.jp/article/14195#h1-4-2-1</a></li>
 <li><a href="https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html#selector-label-volume-define">https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html#selector-label-volume-define</a></li>
 </ul>
 </blockquote>
@@ -29408,7 +29413,7 @@
 <p>そのため、無効化しておく。</p>
 <blockquote>
 <ul>
-<li>[<a href="https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured](https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured">https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured](https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured</a></li>
+<li><a href="https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured">https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured</a></li>
 <li><a href="https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway">https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway</a></li>
 </ul>
 </blockquote>
@@ -29419,15 +29424,15 @@
 <p>そのため、無効化しておく。</p>
 <blockquote>
 <ul>
-<li>[<a href="https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured](https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured">https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured](https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured</a></li>
-<li>[<a href="https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896](https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896">https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896](https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896</a></li>
+<li><a href="https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured">https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured</a></li>
+<li><a href="https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896">https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896</a></li>
 <li><a href="https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5">https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h2 id="_27">コンテナ<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h2>
 <h3 id="_28">ヘルスチェックを設定する<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
-<p><img alt="kubernetes_probe" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_probe.png" /></p>
+<p>!<a href="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_probe.png">https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_probe.png</a></p>
 <p>kubeletは、コンテナをヘルスチェック (例：StartupProbe ➡️ LivenessProbe／ReadinessProbe) し、障害を防ぐ。</p>
 <p>LivenessProbeヘルスチェックとReadinessProbeヘルスチェックの間に順番はなく、独立して実行される。</p>
 <p>言語やフレームワークによってはStartupProbe用のエンドポイントが提供されていない場合があり、ReadinessProbeヘルスチェック用のエンドポイントをStartupProbeヘルスチェックの対象として代用する。</p>
@@ -29498,7 +29503,7 @@
 </ul>
 <p>なお、<code>.spec.terminationGracePeriodSeconds</code>の秒数が長すぎるとPodの終了に時間がかかりすぎるようになり、Podの更新やClusterのアップグレードに時間に影響が出る。</p>
 <p>長くとも<code>120</code>秒以内にするとよい。</p>
-<p><img alt="pod_terminating_process" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png" /></p>
+<p>!<a href="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png">https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png</a></p>
 <blockquote>
 <ul>
 <li><a href="https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown">https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown</a></li>
@@ -29506,7 +29511,12 @@
 </blockquote>
 <p><br></p>
 <h3 id="cluster-dns">Cluster DNS に対する無駄な名前解決のリクエストを減らす<a class="headerlink" href="#cluster-dns" title="Permanent link">&para;</a></h3>
-<p>Cluster DNSとして<a href="https://coredns.io/">CoreDNS</a>などを利用している場合、無駄な名前解決のリクエストを減らすことで名前解決の安定性の向上やパフォーマンスを改善できる。</p>
+<p>Cluster DNSとしてCoreDNSなどを利用している場合、無駄な名前解決のリクエストを減らすことで名前解決の安定性の向上やパフォーマンスを改善できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://coredns.io/">https://coredns.io/</a></li>
+</ul>
+</blockquote>
 <p>Cluster外へのリクエストでは、ドメインの末尾にドットをつける。</p>
 <p>○: <code>www.google.com.</code></p>
 <p>×: <code>www.google.com</code></p>
@@ -29706,7 +29716,7 @@ options<span class="w"> </span>ndots:5
 <p>コンテナが入れ替わっても、セッションストレージツールからセッションデータを取得できるようにする。</p>
 <blockquote>
 <ul>
-<li>[<a href="https://qiita.com/tomoyk/items/67722472a55b8dc7d01d](https://qiita.com/tomoyk/items/67722472a55b8dc7d01d">https://qiita.com/tomoyk/items/67722472a55b8dc7d01d](https://qiita.com/tomoyk/items/67722472a55b8dc7d01d</a></li>
+<li><a href="https://qiita.com/tomoyk/items/67722472a55b8dc7d01d">https://qiita.com/tomoyk/items/67722472a55b8dc7d01d</a></li>
 <li><a href="https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05">https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05</a></li>
 </ul>
 </blockquote>
@@ -29756,7 +29766,7 @@ options<span class="w"> </span>ndots:5
 </table>
 <blockquote>
 <ul>
-<li>[<a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/](https://kubernetes.io/docs/concepts/security/pod-security-standards/">https://kubernetes.io/docs/concepts/security/pod-security-standards/](https://kubernetes.io/docs/concepts/security/pod-security-standards/</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/">https://kubernetes.io/docs/concepts/security/pod-security-standards/</a></li>
 <li><a href="https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/">https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/</a></li>
 </ul>
 </blockquote>
@@ -29766,16 +29776,21 @@ options<span class="w"> </span>ndots:5
 <p>そのため、NodeとコンテナのUser IDやGroup IDのマッピングは同じになっている。</p>
 <blockquote>
 <ul>
-<li>[<a href="https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces">https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces</a></li>
+<li><a href="https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces">https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces</a></li>
 <li><a href="https://docs.docker.com/engine/security/userns-remap/#user-namespace-known-limitations">https://docs.docker.com/engine/security/userns-remap/#user-namespace-known-limitations</a></li>
 </ul>
 </blockquote>
 <p>コンテナをrootユーザーで実行すると、コンテナブレイクアウトのサイバー攻撃を受ける可能性が高くなる。</p>
-<p>例えば、コンテナをrootユーザーで実行している状況で、コンテナのrunC (OCIランタイムの一種) の脆弱性を突かれると、コンテナがNodeのrootユーザーを操作できてしまう (<a href="https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/">CVE-2019-5736</a>)</p>
+<p>例えば、コンテナをrootユーザーで実行している状況で、コンテナのrunC (OCIランタイムの一種) の脆弱性を突かれると、コンテナがNodeのrootユーザーを操作できてしまう</p>
+<blockquote>
+<ul>
+<li><a href="https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/">https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/</a></li>
+</ul>
+</blockquote>
 <p>よって、コンテナブレイクアウトの攻撃の可能性を小さくするために、できるだけコンテナをrootユーザーで実行しない方が良い。</p>
 <blockquote>
 <ul>
-<li>[<a href="https://jpn.nec.com/cybersecurity/blog/210730/index.html](https://jpn.nec.com/cybersecurity/blog/210730/index.html">https://jpn.nec.com/cybersecurity/blog/210730/index.html](https://jpn.nec.com/cybersecurity/blog/210730/index.html</a></li>
+<li><a href="https://jpn.nec.com/cybersecurity/blog/210730/index.html">https://jpn.nec.com/cybersecurity/blog/210730/index.html</a></li>
 <li><a href="https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/">https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/</a></li>
 </ul>
 </blockquote>
@@ -29797,8 +29812,8 @@ options<span class="w"> </span>ndots:5
 <p><code>.spec.containers[*].securityContext.privileged</code>キーで、コンテナに特権を付与するかどうかを設定できる。</p>
 <blockquote>
 <ul>
-<li>[<a href="https://jpn.nec.com/cybersecurity/blog/210730/index.html](https://jpn.nec.com/cybersecurity/blog/210730/index.html">https://jpn.nec.com/cybersecurity/blog/210730/index.html](https://jpn.nec.com/cybersecurity/blog/210730/index.html</a></li>
-<li>[<a href="https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896](https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896">https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896](https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896</a></li>
+<li><a href="https://jpn.nec.com/cybersecurity/blog/210730/index.html">https://jpn.nec.com/cybersecurity/blog/210730/index.html</a></li>
+<li><a href="https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896">https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896</a></li>
 <li><a href="https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/">https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/</a></li>
 </ul>
 </blockquote>
@@ -29809,7 +29824,7 @@ options<span class="w"> </span>ndots:5
 <p>つまり、悪意のある人がこれを使用すると、Node上の他のコンテナやNode自体にリクエストできてしまう。</p>
 <blockquote>
 <ul>
-<li>[<a href="https://en.wikipedia.org/wiki/Setuid](https://en.wikipedia.org/wiki/Setuid">https://en.wikipedia.org/wiki/Setuid](https://en.wikipedia.org/wiki/Setuid</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Setuid">https://en.wikipedia.org/wiki/Setuid</a></li>
 <li><a href="https://docs.docker.com/engine/security/userns-remap/">https://docs.docker.com/engine/security/userns-remap/</a></li>
 </ul>
 </blockquote>
@@ -29827,7 +29842,7 @@ options<span class="w"> </span>ndots:5
 <p>アプリでログの出力先をログファイルにしているとエラーになってしまうため、標準出力/標準エラー出力にログを出力する必要がある。</p>
 <blockquote>
 <ul>
-<li>[<a href="https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/](https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/">https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/](https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/</a></li>
+<li><a href="https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/">https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Root_directory">https://en.wikipedia.org/wiki/Root_directory</a></li>
 </ul>
 </blockquote>
@@ -30472,7 +30487,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月29日 20:52:19">2025-03-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月29日 21:36:28">2025-03-29</span>
   </span>
 
     
