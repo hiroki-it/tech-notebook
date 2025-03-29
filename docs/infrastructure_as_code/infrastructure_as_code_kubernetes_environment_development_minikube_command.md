@@ -667,18 +667,16 @@ $ minikube start --container-runtime=cri-o
 
 #### ▼ --cpus、--memory
 
-Minikubeの各Nodeのスペックを設定する (これはMinikubeクラスターの上限ではない) 。
+Minikubeの各Nodeのハードウェアリソースを設定する (これはMinikubeクラスターの上限ではない) 。
 
-ため、DockerDesktopの上限を高く設定しておかないと、ホストOSがMinikubeクラスターに割り当てられるハードウェアリソースが足りなくなり、MinikubeのNodeが`NotReady`になる。
+そのため、DockerDesktopの上限を高く設定しておかないと、ホストOSがMinikubeクラスターに割り当てられるハードウェアリソースが足りなくなり、MinikubeのNodeが`NotReady`になる。
 
-```bash
-$ minikube start --cpus=4 --memory=16384
-```
+つまり最適解は、適度に少ないハードウェアリソースを割り当てたNodeをたくさん冗長化することである。
 
-CPU4コアとメモリ7168GBを持ったNodeが3台作られる。
+CPU4コアとメモリ7168MiBを持ったNodeが3台作られる。
 
 ```bash
-$ minikube start --cpus=4 --memory=7168 --nodes 3
+$ minikube start --cpus=4 --memory=16384 --nodes 3
 ```
 
 実際に設定されたハードウェアリソースは、Minikube内から確認できる。
