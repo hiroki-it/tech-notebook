@@ -210,8 +210,8 @@ kube-apiserverに対して、誰でもアクセスできてしまうことは危
 
 etcd Nodeは3台に冗長化する。
 
-> - [https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members](https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members
-> - [https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size](https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size
+> - https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members
+> - https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size
 > - https://etcd.io/docs/v3.5/faq/#what-is-failure-tolerance
 
 <br>
@@ -347,7 +347,7 @@ Ingress Controller (例：Nginx Ingress Controller、AWS Load Balancer Controlle
 
 管理しやすいように、Ingressから切り離して設定すると良い。
 
-> - [https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/
+> - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.6/guide/ingress/annotations/
 
 <br>
@@ -571,7 +571,7 @@ NodeAffinityを使用すると、Workload配下のPodを指定したNodeやNode�
 
 NodeやNodeグループをNodeSelectorよりも複雑な条件 (例：Nodeのラベル自体の有無、Nodeのラベル値の有無) で指定できる。
 
-> - [https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement
+> - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement
 > - https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/
 
 #### ▼ TopologySpreadConstraintsを使用する
@@ -644,7 +644,7 @@ EmptyDir Volumeとは異なり、NodeのストレージがPodの容量を制限�
 
 一方で、Node外ストレージを追加で使用することになるため、金銭的コストがEmptyDirよりも大きい。
 
-> - [https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes](https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes
+> - https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes
 > - https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF
 
 #### ▼ 小規模な一時的ストレージを必要とする場合はEmptyDir Volumeを使用する
@@ -736,7 +736,7 @@ ConfigMapに保管するには大きすぎる設定ファイルや共通デー�
 
 そこでストレージクラスやPersistentVolumeのラベルに`.metadata.label.storage-type=ssd`のようにストレージの種類などを設定し、**`spec.selector.matchLabels: storage-type: ssd`**のように指定することで利用用途に合ったストレージを選択することが出来る。
 
-> - [https://thinkit.co.jp/article/14195#h1-4-2-1](https://thinkit.co.jp/article/14195#h1-4-2-1
+> - https://thinkit.co.jp/article/14195#h1-4-2-1
 > - https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html
 
 <br>
@@ -757,7 +757,7 @@ DBやファイルストレージ用途などでPersistentVolumeClaimを利用し
 
 そのため重要なデータを保管するPersistentVolumeClaimはReclaim PolicyにRetainを指定し、PVが完全に削除されないよう保護することが出来る。
 
-> - [https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain
+> - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain
 > - https://access.crunchydata.com/documentation/postgres-operator/latest/guides/storage-retention
 
 #### ▼ RecycleポリシーではなくDynamic Provisioningを利用する
@@ -786,7 +786,7 @@ PodからPersistentVolumeClaimを利用する場合ラベルなどがついて�
 
 そのためStorageClassやPersistentVolumeの`metadata.label`に`storage-type=ssd`や`iops=3000`、`environment=prd`などストレージパフォーマンスや環境などボリューム選択に利用できるラベルを設定する。
 
-> - [https://thinkit.co.jp/article/14195#h1-4-2-1](https://thinkit.co.jp/article/14195#h1-4-2-1
+> - https://thinkit.co.jp/article/14195#h1-4-2-1
 > - https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html#selector-label-volume-define
 
 <br>
@@ -803,7 +803,7 @@ Podの`.spec.hostIPC`キー有効化すると、Pod内のコンテナのホス�
 
 そのため、無効化しておく。
 
-> - [https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured](https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured
+> - https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured
 > - https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway
 
 #### ▼ hostPIDを無効化する
@@ -816,8 +816,8 @@ NodeとコンテナのプロセスIDが同じになるため、コンテナはNo
 
 そのため、無効化しておく。
 
-> - [https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured](https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured
-> - [https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896](https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896
+> - https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured
+> - https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896
 > - https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5
 
 <br>
@@ -826,7 +826,7 @@ NodeとコンテナのプロセスIDが同じになるため、コンテナはNo
 
 ### ヘルスチェックを設定する
 
-![kubernetes_probe](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_probe.png)
+!https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_probe.png
 
 kubeletは、コンテナをヘルスチェック (例：StartupProbe ➡️ LivenessProbe／ReadinessProbe) し、障害を防ぐ。
 
@@ -870,7 +870,7 @@ kubeletにより、Podの終了プロセスが始まると、以下の一連の�
 
 長くとも`120`秒以内にするとよい。
 
-![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png)
+!https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png
 
 > - https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown
 
@@ -1099,7 +1099,7 @@ StatefulSetを使用してコンテナにセッションデータを持たせた
 
 コンテナが入れ替わっても、セッションストレージツールからセッションデータを取得できるようにする。
 
-> - [https://qiita.com/tomoyk/items/67722472a55b8dc7d01d](https://qiita.com/tomoyk/items/67722472a55b8dc7d01d
+> - https://qiita.com/tomoyk/items/67722472a55b8dc7d01d
 > - https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05
 
 <br>
@@ -1142,7 +1142,7 @@ istio-initコンテナとかまさにその例
 | ---- | ----------------------------------------------------------------------- | -------------------------------- | ------------------------------------------------------------ |
 | キー | runAsUser、runAsGroup、runAsNonRoot、seLinuxOptions、seccompProfileなど | fsGroup、fsGroupChangePolicyなど | privileged、allowPrivilegeEscalation、readOnlyRootFilesystem |
 
-> - [https://kubernetes.io/docs/concepts/security/pod-security-standards/](https://kubernetes.io/docs/concepts/security/pod-security-standards/
+> - https://kubernetes.io/docs/concepts/security/pod-security-standards/
 > - https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/
 
 #### ▼ runAsNonRoot、runAsUser / runAsGroupを使用して、非rootユーザーでコンテナを実行する
@@ -1153,7 +1153,7 @@ istio-initコンテナとかまさにその例
 
 そのため、NodeとコンテナのUser IDやGroup IDのマッピングは同じになっている。
 
-> - [https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces
+> - https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces
 > - https://docs.docker.com/engine/security/userns-remap/#user-namespace-known-limitations
 
 コンテナをrootユーザーで実行すると、コンテナブレイクアウトのサイバー攻撃を受ける可能性が高くなる。
@@ -1164,7 +1164,7 @@ istio-initコンテナとかまさにその例
 
 よって、コンテナブレイクアウトの攻撃の可能性を小さくするために、できるだけコンテナをrootユーザーで実行しない方が良い。
 
-> - [https://jpn.nec.com/cybersecurity/blog/210730/index.html](https://jpn.nec.com/cybersecurity/blog/210730/index.html
+> - https://jpn.nec.com/cybersecurity/blog/210730/index.html
 > - https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/
 
 そこで、`.securityContext.runAsNonRoot`キーを有効化し、非rootユーザーでコンテナを実行するようにしておく。
@@ -1191,8 +1191,8 @@ istio-initコンテナとかまさにその例
 
 `.spec.containers[*].securityContext.privileged`キーで、コンテナに特権を付与するかどうかを設定できる。
 
-> - [https://jpn.nec.com/cybersecurity/blog/210730/index.html](https://jpn.nec.com/cybersecurity/blog/210730/index.html
-> - [https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896](https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896
+> - https://jpn.nec.com/cybersecurity/blog/210730/index.html
+> - https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896
 > - https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/
 
 #### ▼ allowPrivilegeEscalationを無効化する
@@ -1205,7 +1205,7 @@ istio-initコンテナとかまさにその例
 
 つまり、悪意のある人がこれを使用すると、Node上の他のコンテナやNode自体にリクエストできてしまう。
 
-> - [https://en.wikipedia.org/wiki/Setuid](https://en.wikipedia.org/wiki/Setuid
+> - https://en.wikipedia.org/wiki/Setuid
 > - https://docs.docker.com/engine/security/userns-remap/
 
 そこで、`.containers[*].securityContext.allowPrivilegeEscalation`キーを有効化し、権限フラグを使用できないようにしておく。
@@ -1224,7 +1224,7 @@ istio-initコンテナとかまさにその例
 
 アプリでログの出力先をログファイルにしているとエラーになってしまうため、標準出力/標準エラー出力にログを出力する必要がある。
 
-> - [https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/](https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/
+> - https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/
 > - https://en.wikipedia.org/wiki/Root_directory
 
 <br>
