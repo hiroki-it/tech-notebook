@@ -170,6 +170,19 @@ Keycloakクライアントは、『ヘッダー』『ペイロード』『署名
 
 <br>
 
+### セッション、Cookie、アクセストークンの有効期限
+
+#### ▼ OIDCの場合
+
+| 項目                           | 説明                                                               |
+| ------------------------------ | ------------------------------------------------------------------ |
+| SSOのセッションアイドル        | ブラウザを操作しなかった場合に、再認証が必要になる有効期限を表す、 |
+| アクセストークンのライフスパン | OIDCのアクセストークンの有効期限を表す。                           |
+
+> - https://docs.redhat.com/en/documentation/red_hat_build_of_keycloak/24.0/html/server_administration_guide/managing_user_sessions#timeouts
+
+<br>
+
 ## 02-03. 認可
 
 ### リソース
