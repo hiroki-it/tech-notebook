@@ -12,7 +12,7 @@ title: 【IT技術の知見】パッケージ＠JavaScript
 
 <br>
 
-## 01. Npmによる管理：Node Package Manager
+## 01. Npm：Node Package Manager
 
 ### セットアップ
 
@@ -330,7 +330,7 @@ $ export NODE_OPTIONS="--max-old-space-size=2048"
 
 <br>
 
-## 02. Yarnによる管理
+## 02. Yarn
 
 ### セットアップ
 

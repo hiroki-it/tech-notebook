@@ -66,7 +66,7 @@ Failed to render chart: exit status 1: Error: unable to build kubernetes objects
 
 ## 02.セットアップ
 
-### ユーザーによる管理
+### ユーザーによる自前管理
 
 #### ▼ 非チャートとして
 

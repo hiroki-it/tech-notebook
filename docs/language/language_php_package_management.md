@@ -20,7 +20,7 @@ description: パッケージ管理＠PHPの知見を記録しています。
 
 <br>
 
-## 02. Composerによる管理
+## 02. Composer
 
 ### セットアップ
 
