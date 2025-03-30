@@ -204,6 +204,75 @@ if __name__ == '__main__':
 
 ## 04. ビルトイン関数
 
+### requests
+
+HTTPリクエストを送信する。
+
+```python
+from flask import Flask
+
+app = Flask(__name__)
+
+def getProductReviews(product_id, headers):
+    for _ in range(2):
+        try:
+            url = reviews['name'] + "/" + reviews['endpoint'] + "/" + str(product_id)
+            res = requests.get(url, headers=headers, timeout=3.0)
+        except BaseException:
+            res = None
+    if res and res.status_code == 200:
+        request_result_counter.labels(destination_app='reviews', response_code=200).inc()
+        # 200ステータスの場合、そのままブラウザにレンダリングする
+        return 200, res.json()
+    elif res is not None and res.status_code == 403:
+        request_result_counter.labels(destination_app='reviews', response_code=403).inc()
+        # 403ステータスの場合、ユーザーにわかりやすいメッセージに変えて、ブラウザにレンダリングする
+        return 403, {'error': 'Please sign in to view product reviews.'}
+    elif res is not None and res.status_code == 503:
+        request_result_counter.labels(destination_app='reviews', response_code=503).inc()
+        # 503ステータスの場合、ユーザーにわかりやすいメッセージに変えて、ブラウザにレンダリングする
+        return 503, res.json()
+    else:
+        status = res.status_code if res is not None and res.status_code else 500
+        request_result_counter.labels(destination_app='reviews', response_code=status).inc()
+        # 500ステータスの場合、ユーザーにわかりやすいメッセージに変えて、ブラウザにレンダリングする
+        return status, {'error': 'Sorry, product reviews are currently unavailable.'}
+
+@app.route('/')
+def home():
+    product_id = 0
+    headers = getForwardHeaders(request)
+    user = session.get('user', '')
+    product = getProduct(product_id)
+
+    # detailsサービスにリクエストを送信する
+    detailsStatus, details = getProductDetails(product_id, headers)
+    logging.info("[" + str(detailsStatus) + "] details response is " + str(details))
+
+    # reviewsサービスにリクエストを送信する
+    reviewsStatus, reviews = getProductReviews(product_id, headers)
+    logging.info("[" + str(reviewsStatus) + "] reviews response is " + str(reviews))
+
+    # いずれかのマイクロサービスでアクセストークンの検証が失敗し、401ステータスが返信された場合、ログアウトする
+    if detailsStatus == 401 or reviewsStatus == 401:
+        logging.info("[" + str(401) + "] access token is invalid.")
+        redirect_uri = url_for('logout', _external=True)
+        return redirect(redirect_uri)
+
+    response = app.make_response(render_template(
+        'productpage.html',
+        detailsStatus=detailsStatus,
+        reviewsStatus=reviewsStatus,
+        product=product,
+        details=details,
+        reviews=reviews,
+        user=user))
+
+    return response
+```
+
+> - https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py
+
 ### session
 
 #### ▼ セッションデータの作成
@@ -211,6 +280,10 @@ if __name__ == '__main__':
 セッションデータを作成し、レスポンスの`Set-Cookie`ヘッダーに保管する。
 
 ```python
+from flask import Flask, session
+
+app = Flask(__name__)
+
 session['username'] = user
 ```
 
@@ -222,6 +295,10 @@ session['username'] = user
 レスポンスの`Set-Cookie`ヘッダーやリクエストの`Cookie`ヘッダーから、セッションデータを取得する。
 
 ```python
+from flask import Flask, session
+
+app = Flask(__name__)
+
 session['username'] = request.form['username']
 username = session['username']
 ```
@@ -229,6 +306,10 @@ username = session['username']
 `session.get`関数でも取得でき、デフォルト値を設定できる。
 
 ```python
+from flask import Flask, session
+
+app = Flask(__name__)
+
 session.get('username', 'None')
 ```
 
@@ -240,6 +321,8 @@ session.get('username', 'None')
 `app.permanent_session_lifetime`で、セッションデータの保持期間を設定できる。
 
 ```python
+from flask import Flask, session
+
 app = Flask(__name__)
 
 app.permanent_session_lifetime = timedelta(days=5)
@@ -250,6 +333,10 @@ app.permanent_session_lifetime = timedelta(days=5)
 この場合、保持期間は無視される。
 
 ```python
+from flask import Flask, session
+
+app = Flask(__name__)
+
 session.permanent = True
 session['username'] = user
 ```
@@ -266,6 +353,10 @@ session['username'] = user
 ホスト名とデフォルトのプロトコル名 (HTTP) のあるURLを作成する。
 
 ```python
+from flask import Flask, url_for
+
+app = Flask(__name__)
+
 with app.test_request_context():
     # http://localhost/
     print(url_for('index', _external=True))
@@ -278,6 +369,10 @@ with app.test_request_context():
 ホスト名と指定したプロトコル名のあるURLを作成する。
 
 ```python
+from flask import Flask, url_for
+
+app = Flask(__name__)
+
 ith app.test_request_context():
     # https://localhost/
     print(url_for('index', _external=True, _scheme='https'))

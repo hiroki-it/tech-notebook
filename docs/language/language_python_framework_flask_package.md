@@ -169,8 +169,6 @@ def home():
     detailsStatus, details = getProductDetails(product_id, headers)
     logging.info("[" + str(detailsStatus) + "] details response is " + str(details))
 
-    ...
-
     # reviewsサービスにリクエストを送信する
     reviewsStatus, reviews = getProductReviews(product_id, headers)
     logging.info("[" + str(reviewsStatus) + "] reviews response is " + str(reviews))
