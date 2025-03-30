@@ -63,12 +63,13 @@ print(oauth.<IDプロバイダー名>.api_base_url)
 > - https://docs.authlib.org/en/latest/client/flask.html
 > - https://docs.authlib.org/en/latest/client/flask.html#flask-openid-connect-client
 > - https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py
+> - https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py
 
 <br>
 
 ### ログイン
 
-#### ▼ アクセストークンをAuthorizationヘッダーで運搬する場合
+#### ▼ アクセストークンを`Authorization`ヘッダーで運搬する場合
 
 フロントエンドアプリケーションがCSRまたはSSRの場合に採用できる。
 
@@ -84,24 +85,24 @@ def login():
 
 @app.route("/callback")
 def callback():
+
     # 各種トークンを取得する
     token = oauth.keycloak.authorize_access_token()
-
-    # アクセストークンやIDトークンをセッションデータとして保存する
-    session['access_token'] = token['access_token']
     session['id_token'] = token['id_token']
 
     # デコードしたIDトークンを取得する
     id_token = oauth.keycloak.parse_id_token(token, None)
     session['user'] = id_token['given_name']
+    response = app.make_response(redirect(url_for('home', _external=True)))
 
-    # ホームにリダイレクトする
-    redirect_uri = url_for('front', _external=True)
-    return redirect(redirect_uri)
+    # Cookieにアクセストークンを設定する
+    response.set_cookie('access_token', token['access_token'])
+    return response
 ```
 
 > - https://docs.authlib.org/en/latest/client/flask.html#routes-for-authorization
 > - https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py
+> - https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py
 
 #### ▼ アクセストークンを`Cookie`ヘッダーで運搬する場合
 
@@ -140,6 +141,7 @@ def callback():
 ```
 
 > - https://flask.palletsprojects.com/en/stable/api/#flask.Response.set_cookie
+> - https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py
 
 <br>
 
@@ -157,10 +159,58 @@ def logout():
     session.pop('id_token', None)
     session.pop('user', None)
     response = app.make_response(redirect(redirect_uri))
-    # Cookieのアクセストークンを削除する
+    # Cookieヘッダーのアクセストークンを削除する
     response.delete_cookie('access_token')
     return response
 ```
+
+> - https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py
+
+<br>
+
+### 認証情報の失効
+
+#### ▼ アクセストークンを`Cookie`ヘッダーで運搬する場合
+
+```python
+from flask import url_for, redirect
+
+@app.route('/')
+def home():
+    product_id = 0
+    headers = getForwardHeaders(request)
+    user = session.get('user', '')
+    product = getProduct(product_id)
+
+    # detailsサービスにリクエストを送信する
+    detailsStatus, details = getProductDetails(product_id, headers)
+    logging.info("[" + str(detailsStatus) + "] details response is " + str(details))
+
+    ...
+
+    # reviewsサービスにリクエストを送信する
+    reviewsStatus, reviews = getProductReviews(product_id, headers)
+    logging.info("[" + str(reviewsStatus) + "] reviews response is " + str(reviews))
+
+    # いずれかのマイクロサービスでアクセストークンの検証が失敗し、401ステータスが返信された場合、ログアウトする
+    if detailsStatus == 401 or reviewsStatus == 401:
+        logging.info("[" + str(401) + "] session has expired.")
+        redirect_uri = url_for('logout', _external=True)
+        return redirect(redirect_uri)
+
+    response = app.make_response(render_template(
+        'productpage.html',
+        detailsStatus=detailsStatus,
+        reviewsStatus=reviewsStatus,
+        product=product,
+        details=details,
+        reviews=reviews,
+        user=user))
+
+    return response
+```
+
+> - https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py
 
 <br>
 

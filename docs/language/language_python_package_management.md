@@ -345,10 +345,14 @@ flask-json==0.4.0 \
 $ pip-compile --generate-hashes requirements.in
 ```
 
+> - https://pip-tools.readthedocs.io/en/latest/cli/pip-compile/
+
 #### ▼ --dry-run
 
 ```bash
 $ pip-compile --generate-hashes requirements.in --dry-run
 ```
+
+> - https://pip-tools.readthedocs.io/en/latest/cli/pip-compile/
 
 <br>
