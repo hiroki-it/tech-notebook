@@ -10204,6 +10204,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      requests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#session" class="md-nav__link">
     <span class="md-ellipsis">
       session
@@ -26013,6 +26022,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      requests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#session" class="md-nav__link">
     <span class="md-ellipsis">
       session
@@ -26325,10 +26343,82 @@
 </blockquote>
 <p><br></p>
 <h2 id="04">04. ビルトイン関数<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="requests">requests<a class="headerlink" href="#requests" title="Permanent link">&para;</a></h3>
+<p>HTTPリクエストを送信する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">getProductReviews</span><span class="p">(</span><span class="n">product_id</span><span class="p">,</span> <span class="n">headers</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">reviews</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">reviews</span><span class="p">[</span><span class="s1">&#39;endpoint&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">product_id</span><span class="p">)</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">res</span> <span class="ow">and</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">request_result_counter</span><span class="o">.</span><span class="n">labels</span><span class="p">(</span><span class="n">destination_app</span><span class="o">=</span><span class="s1">&#39;reviews&#39;</span><span class="p">,</span> <span class="n">response_code</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span><span class="o">.</span><span class="n">inc</span><span class="p">()</span>
+        <span class="c1"># 200ステータスの場合、そのままブラウザにレンダリングする</span>
+        <span class="k">return</span> <span class="mi">200</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">403</span><span class="p">:</span>
+        <span class="n">request_result_counter</span><span class="o">.</span><span class="n">labels</span><span class="p">(</span><span class="n">destination_app</span><span class="o">=</span><span class="s1">&#39;reviews&#39;</span><span class="p">,</span> <span class="n">response_code</span><span class="o">=</span><span class="mi">403</span><span class="p">)</span><span class="o">.</span><span class="n">inc</span><span class="p">()</span>
+        <span class="c1"># 403ステータスの場合、ユーザーにわかりやすいメッセージに変えて、ブラウザにレンダリングする</span>
+        <span class="k">return</span> <span class="mi">403</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="s1">&#39;Please sign in to view product reviews.&#39;</span><span class="p">}</span>
+    <span class="k">elif</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">503</span><span class="p">:</span>
+        <span class="n">request_result_counter</span><span class="o">.</span><span class="n">labels</span><span class="p">(</span><span class="n">destination_app</span><span class="o">=</span><span class="s1">&#39;reviews&#39;</span><span class="p">,</span> <span class="n">response_code</span><span class="o">=</span><span class="mi">503</span><span class="p">)</span><span class="o">.</span><span class="n">inc</span><span class="p">()</span>
+        <span class="c1"># 503ステータスの場合、ユーザーにわかりやすいメッセージに変えて、ブラウザにレンダリングする</span>
+        <span class="k">return</span> <span class="mi">503</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="k">else</span> <span class="mi">500</span>
+        <span class="n">request_result_counter</span><span class="o">.</span><span class="n">labels</span><span class="p">(</span><span class="n">destination_app</span><span class="o">=</span><span class="s1">&#39;reviews&#39;</span><span class="p">,</span> <span class="n">response_code</span><span class="o">=</span><span class="n">status</span><span class="p">)</span><span class="o">.</span><span class="n">inc</span><span class="p">()</span>
+        <span class="c1"># 500ステータスの場合、ユーザーにわかりやすいメッセージに変えて、ブラウザにレンダリングする</span>
+        <span class="k">return</span> <span class="n">status</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="s1">&#39;Sorry, product reviews are currently unavailable.&#39;</span><span class="p">}</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">home</span><span class="p">():</span>
+    <span class="n">product_id</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="n">getForwardHeaders</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="n">getProduct</span><span class="p">(</span><span class="n">product_id</span><span class="p">)</span>
+
+    <span class="c1"># detailsサービスにリクエストを送信する</span>
+    <span class="n">detailsStatus</span><span class="p">,</span> <span class="n">details</span> <span class="o">=</span> <span class="n">getProductDetails</span><span class="p">(</span><span class="n">product_id</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">detailsStatus</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;] details response is &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">details</span><span class="p">))</span>
+
+    <span class="c1"># reviewsサービスにリクエストを送信する</span>
+    <span class="n">reviewsStatus</span><span class="p">,</span> <span class="n">reviews</span> <span class="o">=</span> <span class="n">getProductReviews</span><span class="p">(</span><span class="n">product_id</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">reviewsStatus</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;] reviews response is &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">reviews</span><span class="p">))</span>
+
+    <span class="c1"># いずれかのマイクロサービスでアクセストークンの検証が失敗し、401ステータスが返信された場合、ログアウトする</span>
+    <span class="k">if</span> <span class="n">detailsStatus</span> <span class="o">==</span> <span class="mi">401</span> <span class="ow">or</span> <span class="n">reviewsStatus</span> <span class="o">==</span> <span class="mi">401</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">401</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;] access token is invalid.&quot;</span><span class="p">)</span>
+        <span class="n">redirect_uri</span> <span class="o">=</span> <span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;logout&#39;</span><span class="p">,</span> <span class="n">_external</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">redirect_uri</span><span class="p">)</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">make_response</span><span class="p">(</span><span class="n">render_template</span><span class="p">(</span>
+        <span class="s1">&#39;productpage.html&#39;</span><span class="p">,</span>
+        <span class="n">detailsStatus</span><span class="o">=</span><span class="n">detailsStatus</span><span class="p">,</span>
+        <span class="n">reviewsStatus</span><span class="o">=</span><span class="n">reviewsStatus</span><span class="p">,</span>
+        <span class="n">product</span><span class="o">=</span><span class="n">product</span><span class="p">,</span>
+        <span class="n">details</span><span class="o">=</span><span class="n">details</span><span class="p">,</span>
+        <span class="n">reviews</span><span class="o">=</span><span class="n">reviews</span><span class="p">,</span>
+        <span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py">https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py</a></li>
+</ul>
+</blockquote>
 <h3 id="session">session<a class="headerlink" href="#session" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ セッションデータの作成<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>セッションデータを作成し、レスポンスの<code>Set-Cookie</code>ヘッダーに保管する。</p>
-<div class="highlight"><pre><span></span><code><span class="n">session</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">session</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">session</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -26338,11 +26428,19 @@
 </blockquote>
 <h4 id="_8">▼ セッションデータの取得<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>レスポンスの<code>Set-Cookie</code>ヘッダーやリクエストの<code>Cookie</code>ヘッダーから、セッションデータを取得する。</p>
-<div class="highlight"><pre><span></span><code><span class="n">session</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">session</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">session</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
 <span class="n">username</span> <span class="o">=</span> <span class="n">session</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
 </code></pre></div>
 <p><code>session.get</code>関数でも取得でき、デフォルト値を設定できる。</p>
-<div class="highlight"><pre><span></span><code><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;None&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">session</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;None&#39;</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -26352,13 +26450,19 @@
 </blockquote>
 <h4 id="_9">▼ セッションデータの保持期間<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p><code>app.permanent_session_lifetime</code>で、セッションデータの保持期間を設定できる。</p>
-<div class="highlight"><pre><span></span><code><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">session</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="n">app</span><span class="o">.</span><span class="n">permanent_session_lifetime</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div>
 <p>セッションデータを作成する前に<code>session.permanent</code>を有効化しておくと、セッションデータの保持期間を無期限にできる。</p>
 <p>この場合、保持期間は無視される。</p>
-<div class="highlight"><pre><span></span><code><span class="n">session</span><span class="o">.</span><span class="n">permanent</span> <span class="o">=</span> <span class="kc">True</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">session</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">session</span><span class="o">.</span><span class="n">permanent</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">session</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span>
 </code></pre></div>
 <blockquote>
@@ -26371,7 +26475,11 @@
 <h3 id="url_for">url_for<a class="headerlink" href="#url_for" title="Permanent link">&para;</a></h3>
 <h4 id="external">▼ external<a class="headerlink" href="#external" title="Permanent link">&para;</a></h4>
 <p>ホスト名とデフォルトのプロトコル名 (HTTP) のあるURLを作成する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">test_request_context</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">url_for</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">test_request_context</span><span class="p">():</span>
     <span class="c1"># http://localhost/</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">_external</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </code></pre></div>
@@ -26382,7 +26490,11 @@
 </blockquote>
 <h4 id="scheme">▼ scheme<a class="headerlink" href="#scheme" title="Permanent link">&para;</a></h4>
 <p>ホスト名と指定したプロトコル名のあるURLを作成する。</p>
-<div class="highlight"><pre><span></span><code><span class="n">ith</span> <span class="n">app</span><span class="o">.</span><span class="n">test_request_context</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">url_for</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">ith</span> <span class="n">app</span><span class="o">.</span><span class="n">test_request_context</span><span class="p">():</span>
     <span class="c1"># https://localhost/</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">_external</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">_scheme</span><span class="o">=</span><span class="s1">&#39;https&#39;</span><span class="p">))</span>
 </code></pre></div>
@@ -26412,7 +26524,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年2月17日 02:17:17">2025-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月31日 03:37:58">2025-03-31</span>
   </span>
 
     
