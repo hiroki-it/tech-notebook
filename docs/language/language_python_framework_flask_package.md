@@ -71,38 +71,9 @@ print(oauth.<IDプロバイダー名>.api_base_url)
 
 #### ▼ アクセストークンを`Authorization`ヘッダーで運搬する場合
 
-フロントエンドアプリケーションがCSRまたはSSRの場合に採用できる。
+フロントエンドアプリケーションがCSRの場合に採用できる。
 
-CSRまたはSSRのアプリケーションは、`Cookie`ヘッダーを介してブラウザのCookieにトークンを保存できる。
-
-```python
-from flask import url_for, redirect
-
-@app.route('/login')
-def login():
-    redirect_uri = url_for("callback", _external=True)
-    return oauth.keycloak.authorize_redirect(redirect_uri)
-
-@app.route("/callback")
-def callback():
-
-    # 各種トークンを取得する
-    token = oauth.keycloak.authorize_access_token()
-    session['id_token'] = token['id_token']
-
-    # デコードしたIDトークンを取得する
-    id_token = oauth.keycloak.parse_id_token(token, None)
-    session['user'] = id_token['given_name']
-    response = app.make_response(redirect(url_for('home', _external=True)))
-
-    # Cookieにアクセストークンを設定する
-    response.set_cookie('access_token', token['access_token'])
-    return response
-```
-
-> - https://docs.authlib.org/en/latest/client/flask.html#routes-for-authorization
-> - https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py
-> - https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py
+PythonでCSRのアプリケーションを実現できないため、`Authorization`ヘッダーの運搬は実装できない。
 
 #### ▼ アクセストークンを`Cookie`ヘッダーで運搬する場合
 
@@ -120,32 +91,38 @@ def login():
 
 @app.route("/callback")
 def callback():
-    # 認可レスポンスを取得する
-    authorization_response = oauth.keycloak.authorize_access_token()
-
-    # IDトークンをセッションデータとして保存する
-    session['id_token'] = authorization_response['id_token']
-
-    # デコードしたIDトークンを認可レスポンスから取得する
-    id_token = oauth.keycloak.parse_id_token(authorization_response, None)
-
-    session['user'] = id_token['given_name']
-
     response = app.make_response(redirect(url_for('front', _external=True)))
 
-    # access_tokenというキー名でCookieにアクセストークンを設定する
-    # レスポンスにSet-Cookieヘッダーが追加される
-    response.set_cookie('access_token', authorization_response['access_token'])
+    try:
+        # 各種トークンを取得する
+        token = oauth.keycloak.authorize_access_token()
+        session['id_token'] = token['id_token']
+        # デコードしたIDトークンを取得する
+        id_token = oauth.keycloak.parse_id_token(token, None)
+        session['user'] = id_token['given_name']
+        # access_tokenというキー名でCookieにアクセストークンを設定する
+        # レスポンスにSet-Cookieヘッダーが追加される
+        response.set_cookie('access_token', token['access_token'])
+    except BaseException:
+        logging.info("failed to callback")
+        return response
 
     return response
 ```
 
-> - https://flask.palletsprojects.com/en/stable/api/#flask.Response.set_cookie
+> - https://docs.authlib.org/en/latest/client/flask.html#routes-for-authorization
+> - https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py
 > - https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py
 
 <br>
 
 ### ログアウト
+
+#### ▼ アクセストークンを`Authorization`ヘッダーで運搬する場合
+
+フロントエンドアプリケーションがCSRの場合に採用できる。
+
+PythonでCSRのアプリケーションを実現できないため、`Authorization`ヘッダーの運搬は実装できない。
 
 #### ▼ アクセストークンを`Cookie`ヘッダーで運搬する場合
 
@@ -169,6 +146,12 @@ def logout():
 <br>
 
 ### 認証情報の失効
+
+#### ▼ アクセストークンを`Authorization`ヘッダーで運搬する場合
+
+フロントエンドアプリケーションがCSRの場合に採用できる。
+
+PythonでCSRのアプリケーションを実現できないため、`Authorization`ヘッダーの運搬は実装できない。
 
 #### ▼ アクセストークンを`Cookie`ヘッダーで運搬する場合
 

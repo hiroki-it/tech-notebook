@@ -169,10 +169,16 @@ $ docker compose down --volumes
 
 #### ▼ --rmi --volumes --remove-orphans
 
-コンテナを削除し、全てのリソース (イメージ、コンテナ、ボリューム、ネットワーク) を削除する。
+コンテナ、ボリューム、ネットワークを削除する。
 
 ```bash
-$ docker compose down --rmi all --volumes --remove-orphans
+$ docker compose down --volumes --remove-orphans
+```
+
+コンテナ、ボリューム、ネットワーク、コンテナイメージを削除する。
+
+```bash
+$ docker compose down --volumes --remove-orphans --rmi all
 ```
 
 <br>
