@@ -10113,11 +10113,11 @@
         <li class="md-nav__item">
   <a href="#01-pippackage-installer-for-python" class="md-nav__link">
     <span class="md-ellipsis">
-      01. PIPによる管理：Package Installer for Python
+      01. PIP：Package Installer for Python
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. PIPによる管理：Package Installer for Python">
+    <nav class="md-nav" aria-label="01. PIP：Package Installer for Python">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -10356,6 +10356,72 @@
   <a href="#uninstall_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ uninstallとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-pip-compile" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. PIP Compile
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. PIP Compile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      セットアップ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirementsin" class="md-nav__link">
+    <span class="md-ellipsis">
+      requirements.inファイル
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-02-pip-compile" class="md-nav__link">
+    <span class="md-ellipsis">
+      02-02. pip-compileコマンド
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. pip-compileコマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-generate-hashes" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ --generate-hashes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-dry-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ --dry-run
     </span>
   </a>
   
@@ -25756,11 +25822,11 @@
         <li class="md-nav__item">
   <a href="#01-pippackage-installer-for-python" class="md-nav__link">
     <span class="md-ellipsis">
-      01. PIPによる管理：Package Installer for Python
+      01. PIP：Package Installer for Python
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. PIPによる管理：Package Installer for Python">
+    <nav class="md-nav" aria-label="01. PIP：Package Installer for Python">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26014,6 +26080,72 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#02-pip-compile" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. PIP Compile
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. PIP Compile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      セットアップ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirementsin" class="md-nav__link">
+    <span class="md-ellipsis">
+      requirements.inファイル
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-02-pip-compile" class="md-nav__link">
+    <span class="md-ellipsis">
+      02-02. pip-compileコマンド
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. pip-compileコマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-generate-hashes" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ --generate-hashes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-dry-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ --dry-run
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -26042,7 +26174,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-pippackage-installer-for-python">01. PIPによる管理：Package Installer for Python<a class="headerlink" href="#01-pippackage-installer-for-python" title="Permanent link">&para;</a></h2>
+<h2 id="01-pippackage-installer-for-python">01. PIP：Package Installer for Python<a class="headerlink" href="#01-pippackage-installer-for-python" title="Permanent link">&para;</a></h2>
 <h3 id="_2">セットアップ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <blockquote>
 <ul>
@@ -26052,7 +26184,11 @@
 <p><br></p>
 <h3 id="requirementstxt"><code>requirements.txt</code>ファイル<a class="headerlink" href="#requirementstxt" title="Permanent link">&para;</a></h3>
 <p>要件とするパッケージのバージョンを指定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nv">flask</span><span class="o">==</span><span class="m">2</span>.0.2
+<div class="highlight"><pre><span></span><code>flask==3.0.2
+flask-bootstrap==3.3.7.1
+flask-json==0.4.0
+
+...
 </code></pre></div>
 <p><br></p>
 <h3 id="pipconf"><code>pip.conf</code>ファイル<a class="headerlink" href="#pipconf" title="Permanent link">&para;</a></h3>
@@ -26245,6 +26381,56 @@ $<span class="w"> </span>pip3<span class="w"> </span>cache<span class="w"> </spa
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="02-pip-compile">02. PIP Compile<a class="headerlink" href="#02-pip-compile" title="Permanent link">&para;</a></h2>
+<h3 id="_3">セットアップ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://pip.pypa.io/en/stable/installation/">https://pip.pypa.io/en/stable/installation/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="requirementsin"><code>requirements.in</code>ファイル<a class="headerlink" href="#requirementsin" title="Permanent link">&para;</a></h3>
+<p><code>requirements.txt</code>ファイルの元になるファイル。</p>
+<p>記法は<code>requirements.txt</code>ファイルと同じである。</p>
+<div class="highlight"><pre><span></span><code>flask==3.0.2
+flask-bootstrap==3.3.7.1
+flask-json==0.4.0
+
+...
+</code></pre></div>
+<p><code>pip-compile</code>コマンドを実行すると、<code>requirements.txt</code>ファイルを作成できる。</p>
+<div class="highlight"><pre><span></span><code>#
+# This file is autogenerated by pip-compile with Python 3.13
+# by the following command:
+#
+#    pip-compile --generate-hashes requirements.in
+#
+flask==3.0.2 \
+    --hash=sha256:3232e0e9c850d781933cf0207523d1ece087eb8d87b23777ae38456e2fbe7c6e \
+    --hash=sha256:822c03f4b799204250a7ee84b1eddc40665395333973dfb9deebfe425fefcb7d
+    # via
+    #   -r requirements.in
+    #   flask-bootstrap
+    #   flask-json
+flask-bootstrap==3.3.7.1 \
+    --hash=sha256:cb08ed940183f6343a64e465e83b3a3f13c53e1baabb8d72b5da4545ef123ac8
+    # via -r requirements.in
+flask-json==0.4.0 \
+    --hash=sha256:07945d66024f3b77694ce1db5d1fe83940f2aa3bcad8a608535686be67e4bc48 \
+    --hash=sha256:1c1b87a657daa2179fc19f1ffc78204a716c7c5139673dc5038772db4d9f1988
+    # via -r requirements.in
+
+...
+</code></pre></div>
+<p><br></p>
+<h3 id="02-02-pip-compile">02-02. pip-compileコマンド<a class="headerlink" href="#02-02-pip-compile" title="Permanent link">&para;</a></h3>
+<h4 id="-generate-hashes">▼ --generate-hashes<a class="headerlink" href="#-generate-hashes" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip-compile<span class="w"> </span>--generate-hashes<span class="w"> </span>requirements.in
+</code></pre></div>
+<h4 id="-dry-run">▼ --dry-run<a class="headerlink" href="#-dry-run" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip-compile<span class="w"> </span>--generate-hashes<span class="w"> </span>requirements.in<span class="w"> </span>--dry-run
+</code></pre></div>
+<p><br></p>
 
 
 
@@ -26265,7 +26451,7 @@ $<span class="w"> </span>pip3<span class="w"> </span>cache<span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2024年12月6日 20:37:21">2024-12-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月30日 18:33:51">2025-03-30</span>
   </span>
 
     
