@@ -10127,6 +10127,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      認証情報の失効
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="認証情報の失効">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cookie_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アクセストークンをCookieヘッダーで運搬する場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -25730,6 +25754,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      認証情報の失効
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="認証情報の失効">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cookie_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アクセストークンをCookieヘッダーで運搬する場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -25839,11 +25887,12 @@
 <li><a href="https://docs.authlib.org/en/latest/client/flask.html">https://docs.authlib.org/en/latest/client/flask.html</a></li>
 <li><a href="https://docs.authlib.org/en/latest/client/flask.html#flask-openid-connect-client">https://docs.authlib.org/en/latest/client/flask.html#flask-openid-connect-client</a></li>
 <li><a href="https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py">https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py</a></li>
+<li><a href="https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py">https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h3 id="_4">ログイン<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="authorization">▼ アクセストークンをAuthorizationヘッダーで運搬する場合<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h4>
+<h4 id="authorization">▼ アクセストークンを<code>Authorization</code>ヘッダーで運搬する場合<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h4>
 <p>フロントエンドアプリケーションがCSRまたはSSRの場合に採用できる。</p>
 <p>CSRまたはSSRのアプリケーションは、<code>Cookie</code>ヘッダーを介してブラウザのCookieにトークンを保存できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">redirect</span>
@@ -25855,25 +25904,25 @@
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/callback&quot;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">callback</span><span class="p">():</span>
+
     <span class="c1"># 各種トークンを取得する</span>
     <span class="n">token</span> <span class="o">=</span> <span class="n">oauth</span><span class="o">.</span><span class="n">keycloak</span><span class="o">.</span><span class="n">authorize_access_token</span><span class="p">()</span>
-
-    <span class="c1"># アクセストークンやIDトークンをセッションデータとして保存する</span>
-    <span class="n">session</span><span class="p">[</span><span class="s1">&#39;access_token&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">token</span><span class="p">[</span><span class="s1">&#39;access_token&#39;</span><span class="p">]</span>
     <span class="n">session</span><span class="p">[</span><span class="s1">&#39;id_token&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">token</span><span class="p">[</span><span class="s1">&#39;id_token&#39;</span><span class="p">]</span>
 
     <span class="c1"># デコードしたIDトークンを取得する</span>
     <span class="n">id_token</span> <span class="o">=</span> <span class="n">oauth</span><span class="o">.</span><span class="n">keycloak</span><span class="o">.</span><span class="n">parse_id_token</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">session</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">id_token</span><span class="p">[</span><span class="s1">&#39;given_name&#39;</span><span class="p">]</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">make_response</span><span class="p">(</span><span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="n">_external</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
 
-    <span class="c1"># ホームにリダイレクトする</span>
-    <span class="n">redirect_uri</span> <span class="o">=</span> <span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;front&#39;</span><span class="p">,</span> <span class="n">_external</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">redirect_uri</span><span class="p">)</span>
+    <span class="c1"># Cookieにアクセストークンを設定する</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">set_cookie</span><span class="p">(</span><span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">[</span><span class="s1">&#39;access_token&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">response</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://docs.authlib.org/en/latest/client/flask.html#routes-for-authorization">https://docs.authlib.org/en/latest/client/flask.html#routes-for-authorization</a></li>
 <li><a href="https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py">https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py</a></li>
+<li><a href="https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py">https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py</a></li>
 </ul>
 </blockquote>
 <h4 id="cookie">▼ アクセストークンを<code>Cookie</code>ヘッダーで運搬する場合<a class="headerlink" href="#cookie" title="Permanent link">&para;</a></h4>
@@ -25910,6 +25959,7 @@
 <blockquote>
 <ul>
 <li><a href="https://flask.palletsprojects.com/en/stable/api/#flask.Response.set_cookie">https://flask.palletsprojects.com/en/stable/api/#flask.Response.set_cookie</a></li>
+<li><a href="https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py">https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -25924,10 +25974,59 @@
     <span class="n">session</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;id_token&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">session</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">make_response</span><span class="p">(</span><span class="n">redirect</span><span class="p">(</span><span class="n">redirect_uri</span><span class="p">))</span>
-    <span class="c1"># Cookieのアクセストークンを削除する</span>
+    <span class="c1"># Cookieヘッダーのアクセストークンを削除する</span>
     <span class="n">response</span><span class="o">.</span><span class="n">delete_cookie</span><span class="p">(</span><span class="s1">&#39;access_token&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py">https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_6">認証情報の失効<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="cookie_2">▼ アクセストークンを<code>Cookie</code>ヘッダーで運搬する場合<a class="headerlink" href="#cookie_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">redirect</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">home</span><span class="p">():</span>
+    <span class="n">product_id</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="n">getForwardHeaders</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="n">getProduct</span><span class="p">(</span><span class="n">product_id</span><span class="p">)</span>
+
+    <span class="c1"># detailsサービスにリクエストを送信する</span>
+    <span class="n">detailsStatus</span><span class="p">,</span> <span class="n">details</span> <span class="o">=</span> <span class="n">getProductDetails</span><span class="p">(</span><span class="n">product_id</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">detailsStatus</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;] details response is &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">details</span><span class="p">))</span>
+
+    <span class="o">...</span>
+
+    <span class="c1"># reviewsサービスにリクエストを送信する</span>
+    <span class="n">reviewsStatus</span><span class="p">,</span> <span class="n">reviews</span> <span class="o">=</span> <span class="n">getProductReviews</span><span class="p">(</span><span class="n">product_id</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">reviewsStatus</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;] reviews response is &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">reviews</span><span class="p">))</span>
+
+    <span class="c1"># いずれかのマイクロサービスでアクセストークンの検証が失敗し、401ステータスが返信された場合、ログアウトする</span>
+    <span class="k">if</span> <span class="n">detailsStatus</span> <span class="o">==</span> <span class="mi">401</span> <span class="ow">or</span> <span class="n">reviewsStatus</span> <span class="o">==</span> <span class="mi">401</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;[&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">401</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;] session has expired.&quot;</span><span class="p">)</span>
+        <span class="n">redirect_uri</span> <span class="o">=</span> <span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;logout&#39;</span><span class="p">,</span> <span class="n">_external</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">redirect_uri</span><span class="p">)</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">make_response</span><span class="p">(</span><span class="n">render_template</span><span class="p">(</span>
+        <span class="s1">&#39;productpage.html&#39;</span><span class="p">,</span>
+        <span class="n">detailsStatus</span><span class="o">=</span><span class="n">detailsStatus</span><span class="p">,</span>
+        <span class="n">reviewsStatus</span><span class="o">=</span><span class="n">reviewsStatus</span><span class="p">,</span>
+        <span class="n">product</span><span class="o">=</span><span class="n">product</span><span class="p">,</span>
+        <span class="n">details</span><span class="o">=</span><span class="n">details</span><span class="p">,</span>
+        <span class="n">reviews</span><span class="o">=</span><span class="n">reviews</span><span class="p">,</span>
+        <span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py">https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="02-flask_oidcopenidconnect">02. flask_oidc.OpenIDConnect<a class="headerlink" href="#02-flask_oidcopenidconnect" title="Permanent link">&para;</a></h2>
 <h3 id="flask_oidcopenidconnect">flask_oidc.OpenIDConnectとは<a class="headerlink" href="#flask_oidcopenidconnect" title="Permanent link">&para;</a></h3>
@@ -25992,7 +26091,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月12日 23:13:17">2025-03-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月30日 19:07:41">2025-03-30</span>
   </span>
 
     
