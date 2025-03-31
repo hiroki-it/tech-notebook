@@ -13,6 +13,18 @@ description: Grafana Alloy＠Grafanaの知見を記録しています。
 
 <br>
 
+## alloyコマンド
+
+### fmt
+
+設定ファイルを整形する。
+
+```bash
+$ alloy fmt config.alloy
+```
+
+<br>
+
 ## config.alloy
 
 ### discovery.kubernetes
