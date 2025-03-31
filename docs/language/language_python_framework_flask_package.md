@@ -105,7 +105,6 @@ def callback():
         response.set_cookie('access_token', token['access_token'])
     except BaseException:
         logging.info("failed to callback")
-        return response
 
     return response
 ```

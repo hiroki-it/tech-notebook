@@ -206,6 +206,8 @@ if __name__ == '__main__':
 
 ### requests
 
+#### ▼ get
+
 HTTPリクエストを送信する。
 
 ```python
