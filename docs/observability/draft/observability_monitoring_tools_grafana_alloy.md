@@ -13,102 +13,79 @@ description: Grafana Alloy＠Grafanaの知見を記録しています。
 
 <br>
 
-## alloyコマンド
-
-### fmt
-
-設定ファイルを整形する。
-
-```bash
-$ alloy fmt config.alloy
-```
-
-<br>
-
 ## config.alloy
 
 ### discovery.kubernetes
 
 ```bash
-discovery.kubernetes "kubernetes_pods" {
-	role = "pod"
+discovery.kubernetes "pod" {
+      role = "pod"
 }
 ```
+
+> - https://grafana.com/docs/agent/latest/flow/reference/components/discovery.kubernetes/
 
 <br>
 
 ### discovery.relabel
 
 ```bash
-discovery.relabel "kubernetes_pods" {
-	targets = discovery.kubernetes.kubernetes_pods.targets
+discovery.relabel "pod_logs" {
 
-	rule {
-		source_labels = ["__meta_kubernetes_pod_controller_name"]
-		regex         = "([0-9a-z-.]+?)(-[0-9a-f]{8,10})?"
-		target_label  = "__tmp_controller_name"
-	}
+  targets = discovery.kubernetes.pod.targets
 
-	rule {
-		source_labels = ["__meta_kubernetes_pod_label_app_kubernetes_io_name", "__meta_kubernetes_pod_label_app", "__tmp_controller_name", "__meta_kubernetes_pod_name"]
-		regex         = "^;*([^;]+)(;.*)?$"
-		target_label  = "app"
-	}
+  rule {
+    source_labels = ["__meta_kubernetes_namespace"]
+    action = "replace"
+    target_label = "namespace"
+  }
 
-	rule {
-		source_labels = ["__meta_kubernetes_pod_label_app_kubernetes_io_instance", "__meta_kubernetes_pod_label_instance"]
-		regex         = "^;*([^;]+)(;.*)?$"
-		target_label  = "instance"
-	}
+  rule {
+    source_labels = ["__meta_kubernetes_pod_name"]
+    action = "replace"
+    target_label = "pod"
+  }
 
-	rule {
-		source_labels = ["__meta_kubernetes_pod_label_app_kubernetes_io_component", "__meta_kubernetes_pod_label_component"]
-		regex         = "^;*([^;]+)(;.*)?$"
-		target_label  = "component"
-	}
+  rule {
+    source_labels = ["__meta_kubernetes_pod_container_name"]
+    action = "replace"
+    target_label = "container"
+  }
 
-	rule {
-		source_labels = ["__meta_kubernetes_pod_node_name"]
-		target_label  = "node_name"
-	}
+  rule {
+    source_labels = ["__meta_kubernetes_pod_label_app_kubernetes_io_name"]
+    action = "replace"
+    target_label = "app"
+  }
 
-	rule {
-		source_labels = ["__meta_kubernetes_namespace"]
-		target_label  = "namespace"
-	}
+  rule {
+    source_labels = ["__meta_kubernetes_namespace", "__meta_kubernetes_pod_container_name"]
+    action = "replace"
+    target_label = "job"
+    separator = "/"
+    replacement = "$1"
+  }
 
-	rule {
-		source_labels = ["namespace", "app"]
-		separator     = "/"
-		target_label  = "job"
-	}
+  rule {
+    source_labels = ["__meta_kubernetes_pod_uid", "__meta_kubernetes_pod_container_name"]
+    action = "replace"
+    target_label = "__path__"
+    separator = "/"
+    replacement = "/var/log/pods/*$1/*.log"
+  }
 
-	rule {
-		source_labels = ["__meta_kubernetes_pod_name"]
-		target_label  = "pod"
-	}
-
-	rule {
-		source_labels = ["__meta_kubernetes_pod_container_name"]
-		target_label  = "container"
-	}
-
-	rule {
-		source_labels = ["__meta_kubernetes_pod_uid", "__meta_kubernetes_pod_container_name"]
-		separator     = "/"
-		target_label  = "__path__"
-		replacement   = "/var/log/pods/*$1/*.log"
-	}
-
-	rule {
-		source_labels = ["__meta_kubernetes_pod_annotationpresent_kubernetes_io_config_hash", "__meta_kubernetes_pod_annotation_kubernetes_io_config_hash", "__meta_kubernetes_pod_container_name"]
-		separator     = "/"
-		regex         = "true/(.*)"
-		target_label  = "__path__"
-		replacement   = "/var/log/pods/*$1/*.log"
-	}
+  rule {
+    source_labels = ["__meta_kubernetes_pod_container_id"]
+    action = "replace"
+    target_label = "container_runtime"
+    regex = "^(\\S+):\\/\\/.+$"
+    replacement = "$1"
+  }
 }
 ```
+
+> - https://grafana.com/docs/agent/latest/flow/reference/components/discovery.relabel/
+> - https://grafana.com/docs/alloy/latest/collect/logs-in-kubernetes/#pods-logs
 
 <br>
 
@@ -120,17 +97,30 @@ local.file_match "kubernetes_pods" {
 }
 ```
 
+> - https://grafana.com/docs/agent/latest/flow/reference/components/local.file_match/
+
 <br>
 
 ### loki.process
 
 ```bash
-loki.process "kubernetes_pods" {
-	forward_to = [loki.write.default.receiver]
+loki.process "pod_logs" {
+  stage.static_labels {
+      values = {
+        cluster = "istio-demo",
+      }
+  }
 
-	stage.cri { }
+  forward_to = [loki.write.grafana_loki.receiver]
+}
+
+loki.source.kubernetes "pod_logs" {
+  targets    = discovery.relabel.pod_logs.output
+  forward_to = [loki.process.pod_logs.receiver]
 }
 ```
+
+> - https://grafana.com/docs/agent/latest/flow/reference/components/loki.process/
 
 <br>
 
@@ -142,20 +132,45 @@ loki.source.file "kubernetes_pods" {
 	forward_to            = [loki.process.kubernetes_pods.receiver]
 	legacy_positions_file = "/run/promtail/positions.yaml"
 }
-
 ```
+
+> - https://grafana.com/docs/agent/latest/flow/reference/components/loki.source.file/
+
+<br>
+
+### loki.source.kubernetes
+
+```bash
+loki.source.kubernetes "pod_logs" {
+  targets    = discovery.relabel.pod_logs.output
+  forward_to = [loki.process.pod_logs.receiver]
+}
+
+loki.process "pod_logs" {
+  stage.static_labels {
+      values = {
+        cluster = "istio-demo",
+      }
+  }
+
+  forward_to = [loki.write.grafana_loki.receiver]
+}
+```
+
+> - https://grafana.com/docs/agent/latest/flow/reference/components/loki.source.kubernetes/
 
 <br>
 
 ### loki.write
 
 ```bash
-loki.write "default" {
-	endpoint {
-		url = "http://grafana-loki.grafana-loki.svc.cluster.local:3100/loki/api/v1/push"
-	}
-	external_labels = {}
+loki.write "pod_logs" {
+  endpoint {
+    url = "http://grafana-loki.grafana-loki.svc.cluster.local:3100/loki/api/v1/push"
+  }
 }
 ```
+
+> - https://grafana.com/docs/agent/latest/flow/reference/components/loki.write/
 
 <br>
