@@ -53,7 +53,7 @@ discovery.relabel "pod_logs" {
   }
 
   rule {
-    source_labels = ["__meta_kubernetes_pod_label_app_kubernetes_io_name"]
+    source_labels = ["__meta_kubernetes_pod_label_app"]
     action = "replace"
     target_label = "app"
   }
@@ -107,7 +107,7 @@ local.file_match "kubernetes_pods" {
 loki.process "pod_logs" {
   stage.static_labels {
       values = {
-        cluster = "istio-demo",
+        cluster = "foo-cluster",
       }
   }
 
@@ -149,7 +149,7 @@ loki.source.kubernetes "pod_logs" {
 loki.process "pod_logs" {
   stage.static_labels {
       values = {
-        cluster = "istio-demo",
+        cluster = "foo-cluster",
       }
   }
 
@@ -166,7 +166,7 @@ loki.process "pod_logs" {
 ```bash
 loki.write "pod_logs" {
   endpoint {
-    url = "http://grafana-loki.grafana-loki.svc.cluster.local:3100/loki/api/v1/push"
+    url = "http://grafana-loki.foo-namespace.svc.cluster.local:3100/loki/api/v1/push"
   }
 }
 ```
