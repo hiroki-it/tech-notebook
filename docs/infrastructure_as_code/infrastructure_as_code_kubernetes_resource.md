@@ -956,6 +956,8 @@ Headless Service以外のServiceは、負荷分散方式により、配下のい
 
 その一方で、Headless Serviceは配下の全てのPodのIPアドレスを同時に返却する。
 
+DNSサーバーはHeadless ServiceからIPアドレスを取得し、
+
 ```bash
 $ dig <Serviceの完全修飾ドメイン名>
 
