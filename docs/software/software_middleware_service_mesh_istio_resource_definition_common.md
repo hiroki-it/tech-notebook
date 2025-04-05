@@ -430,6 +430,28 @@ spec:
 
 <br>
 
+### sidecar.istio.io/excludeInboundPorts、sidecar.istio.io/excludeOutboundPorts
+
+特定のポート番号に対するインバウンド通信／アウトバウンド通信に関して、istio-iptablesが`istio-proxy`コンテナにリダイレクトしないようにする。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment # もしくはPod
+metadata:
+  name: foo-deployment
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: foo-pod
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/excludeInboundPorts: "7800"
+        sidecar.istio.io/excludeOutboundPorts: "7800"
+```
+
+<br>
+
 ### sidecar.istio.io/inject
 
 特定のPod (例：DB) にサイドカーを注入するか否かを設定する。
