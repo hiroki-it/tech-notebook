@@ -60,9 +60,9 @@ Keycloakからセッションデータを取得し、DBに永続化する。
 
 Keycloakでは、クラスタリング構成を使用できる。
 
-Keycloakクラスターでは、JGroupsはInfinispanインスタンス間でレプリケーション通信 (例：PING、TCPPING、JDBC_PING、DNS_PING、KUBE_PINGなど) を実施する。
+Keycloakクラスターでは、JGroupsはInfinispanクラスターインスタンス間でレプリケーション通信 (例：PING、TCPPING、JDBC_PING、DNS_PING、KUBE_PINGなど) を実施する。
 
-レプリケーション通信によって、Keycloakクラスター内のInfinispanインスタンス間でセッションデータを同期する。
+レプリケーション通信によって、Keycloakクラスター内のInfinispanクラスターインスタンス間でセッションデータを同期する。
 
 ![keycloak_clustering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_clustering.png)
 
@@ -72,7 +72,7 @@ Keycloakクラスターでは、JGroupsはInfinispanインスタンス間でレ�
 
 <br>
 
-### レプリケーション通信
+### クラスターインスタンス検出方法
 
 #### ▼ TCPPING
 
@@ -87,18 +87,21 @@ Keycloakクラスターでは、JGroupsはInfinispanインスタンス間でレ�
 
 動的なIPアドレスとポート番号を宛先情報として使用する。
 
-インスタンスは自身の宛先情報をサービスレジストリに登録する (セルフ登録パターン) 。
+クラスターインスタンスは自身の宛先情報をサービスレジストリに登録する (セルフ登録パターン) 。
 
-`7800`番ポート (以前は`7600`番だった) を使用し、TCPプロトコルのレプリケーション通信を実施する。
+`7800`番 (以前は`7600`番だった) と`57800`番のポートを使用し、TCPプロトコルのレプリケーション通信を実施する。
 
 > - https://www.keycloak.org/2019/05/keycloak-cluster-setup
 > - https://qiita.com/t-mogi/items/ba38a614c1637a8aef93#jgroups-%E3%81%AE-discovery-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB
+> - https://www.keycloak.org/server/caching#_network_ports
 
 #### ▼ DNS_PING
 
 ドメインレジストラ (例：CoreDNS) 内のAレコードやSVCレコードを宛先情報として使用する。
 
-ドメインレジストラはインスタンスの宛先情報をサービスレジストリに登録する (サードパーティ登録パターン) 。
+ドメインレジストラはクラスターインスタンスの宛先情報をサービスレジストリに登録する (サードパーティ登録パターン) 。
+
+`7800`番ポート (以前は`7600`番だった) を使用し、TCPプロトコルのレプリケーション通信を実施する。
 
 - Kubernetes環境でHeadless Serviceを作成する
 - Keycloakの環境変数を設定する

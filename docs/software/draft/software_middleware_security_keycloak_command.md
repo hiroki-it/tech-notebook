@@ -41,6 +41,22 @@ $ kc.sh start
 
 > - https://www.keycloak.org/server/configuration#_starting_keycloak
 
+#### ▼ --cache-stack
+
+JGroupsのレプリケーション間通信で使用するクラスターインスタンス検出方法を設定する。
+
+```bash
+$ kc.sh start --cache-stack kubernetes
+```
+
+| 値           | 検出方法  | プロトコル | ポート番号      |
+| ------------ | --------- | ---------- | --------------- |
+| `jdbc-ping`  | JDBC_PING | TCP        | `7800`、`57800` |
+| `kubernetes` | DNS_PING  | TCP        |
+
+> - https://www.keycloak.org/server/caching#_transport_stacks
+> - https://www.keycloak.org/server/caching#_network_ports
+
 #### ▼ --import-realm
 
 起動時に`/opt/keycloak/data/import`ディレクトリ内にあるrealm定義ファイル (`<任意の名前>.json`ファイル) をインポートする。
