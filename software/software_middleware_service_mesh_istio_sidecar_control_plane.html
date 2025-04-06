@@ -26848,7 +26848,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:8080/ui/fl
 <p><img alt="istio_control-plane_service-discovery" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_service-discovery.png" /></p>
 <p><code>discovery</code>コンテナの<code>15010</code>番ポートでは、<code>istio-proxy</code>コンテナからのxDSサーバーに対するリモートプロシージャーコールを待ち受け、<code>discovery</code>コンテナ内のプロセスに渡す。</p>
 <p>コールの内容に応じて、他のサービス (Pod、Node)の宛先情報を含むレスポンスを返信する。</p>
-<p><code>istio-proxy</code>コンテナはこれを受信し、pilot-agentがEnvoyの宛先情報設定を動的に変更する (サービスディスカバリー) 。</p>
+<p><code>istio-proxy</code>コンテナはこれを受信し、pilot-agentがEnvoyの宛先情報設定を動的に変更する (サービス検出) 。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/">https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/</a></li>
@@ -26985,7 +26985,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15014/debu
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月24日 03:14:16">2025-03-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月6日 19:36:56">2025-04-06</span>
   </span>
 
     

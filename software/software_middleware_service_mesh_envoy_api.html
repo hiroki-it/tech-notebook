@@ -26028,7 +26028,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 <p><br></p>
 <h2 id="03-clusters">03. <code>/clusters</code>エンドポイント<a class="headerlink" href="#03-clusters" title="Permanent link">&para;</a></h2>
 <h3 id="clusters"><code>/clusters</code>エンドポイントとは<a class="headerlink" href="#clusters" title="Permanent link">&para;</a></h3>
-<p>静的な設定値 (特に、クラスター) 、サービスディスカバリーによって動的に登録された設定値 (特に、クラスター) を、見やすい形式でレスポンスとして返信する。</p>
+<p>静的な設定値 (特に、クラスター) 、サービス検出によって動的に登録された設定値 (特に、クラスター) を、見やすい形式でレスポンスとして返信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># envoyコンテナ内でローカルホストにリクエストを送信する。</span>
 envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15000/clusters
 </code></pre></div>
@@ -26105,7 +26105,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 <p><br></p>
 <h3 id="include_eds">include_edsパラメーター<a class="headerlink" href="#include_eds" title="Permanent link">&para;</a></h3>
 <h4 id="include_eds_1">▼ include_edsパラメーターとは<a class="headerlink" href="#include_eds_1" title="Permanent link">&para;</a></h4>
-<p>サービスディスカバリーによって動的に登録された設定値 (特に、エンドポイント) を、<code>json</code>形式でレスポンスとして返信する。</p>
+<p>サービス検出によって動的に登録された設定値 (特に、エンドポイント) を、<code>json</code>形式でレスポンスとして返信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># envoyコンテナ内でローカルホストにリクエストを送信する。</span>
 envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15000/config_dump?include_eds
 </code></pre></div>
@@ -26332,7 +26332,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15000/config_dump?resource<span class="o">={</span>dynamic_active_secrets<span class="o">}</span>
 </code></pre></div>
 <h4 id="dynamic_listeners">▼ dynamic_listeners<a class="headerlink" href="#dynamic_listeners" title="Permanent link">&para;</a></h4>
-<p>サービスディスカバリーによって動的に登録された設定値 (特に、リスナー) を、<code>json</code>形式でレスポンスとして返信する。</p>
+<p>サービス検出によって動的に登録された設定値 (特に、リスナー) を、<code>json</code>形式でレスポンスとして返信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># envoyコンテナ内でローカルホストにリクエストを送信する。</span>
 envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15000/config_dump?resource<span class="o">={</span>dynamic_listeners<span class="o">}</span>
 </code></pre></div>
@@ -26392,7 +26392,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <h4 id="dynamic_route_configs">▼ dynamic_route_configs<a class="headerlink" href="#dynamic_route_configs" title="Permanent link">&para;</a></h4>
-<p>サービスディスカバリーによって動的に登録された設定値 (特に、ルート) を、<code>json</code>形式でレスポンスとして返信する。</p>
+<p>サービス検出によって動的に登録された設定値 (特に、ルート) を、<code>json</code>形式でレスポンスとして返信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># envoyコンテナ内でローカルホストにリクエストを送信する。</span>
 envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15000/config_dump?resource<span class="o">={</span>dynamic_route_configs<span class="o">}</span>
 </code></pre></div>
@@ -26519,7 +26519,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2024年7月7日 17:52:58">2024-07-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月6日 19:36:56">2025-04-06</span>
   </span>
 
     
