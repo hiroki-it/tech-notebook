@@ -60,28 +60,53 @@ Keycloakからセッションデータを取得し、DBに永続化する。
 
 Keycloakでは、クラスタリング構成を使用できる。
 
-Keycloakクラスターでは、JGroupsはInfinispanインスタンス間でレプリケーション通信 (例：JDBC_PING、DNS_PING、KUBE_PINGなど) を実施する。
+Keycloakクラスターでは、JGroupsはInfinispanインスタンス間でレプリケーション通信 (例：PING、TCPPING、JDBC_PING、DNS_PING、KUBE_PINGなど) を実施する。
 
 レプリケーション通信によって、Keycloakクラスター内のInfinispanインスタンス間でセッションデータを同期する。
 
 ![keycloak_clustering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_clustering.png)
 
+> - https://www.keycloak.org/2019/05/keycloak-cluster-setup
 > - https://qiita.com/yoonis/items/4f4a9df0f6f8e858bd4a#keycloak%E5%86%97%E9%95%B7%E6%A7%8B%E6%88%90%E3%81%AE%E6%A6%82%E8%A6%81
-> - https://qiita.com/yo-tabata/items/6d29795fc3afa72d1b08#keycloakx%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E9%96%93%E9%80%9A%E4%BF%A1%E3%82%92tcp%E3%81%AB%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B
+> - https://qiita.com/t-mogi/items/ba38a614c1637a8aef93#jgroups-%E3%81%AE-discovery-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB
 
 <br>
 
 ### レプリケーション通信
 
+#### ▼ TCPPING
+
+`7800`番ポート (以前は`7600`番だった) を使用し、TCPプロトコルのレプリケーション通信を実施する。
+
+> - https://www.keycloak.org/2019/05/keycloak-cluster-setup
+> - https://qiita.com/t-mogi/items/ba38a614c1637a8aef93#jgroups-%E3%81%AE-discovery-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB
+
+#### ▼ JDBC_PING
+
+クライアントサイド
+
+`7800`番ポート (以前は`7600`番だった) を使用し、TCPプロトコルのレプリケーション通信を実施する。
+
+> - https://www.keycloak.org/2019/05/keycloak-cluster-setup
+> - https://qiita.com/t-mogi/items/ba38a614c1637a8aef93#jgroups-%E3%81%AE-discovery-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB
+
 #### ▼ DNS_PING
 
-以下で実現できる。
+AレコードやSVCレコードからインスタンスを検出する。
 
 - Kubernetes環境でHeadless Serviceを作成する
-- KC_CACHE_STACK=kubernetes
-- JAVA_OPTS_APPEND=-Djgroups.dns.query=<Headless ServiceのDNS名>
+- Keycloakの環境変数を設定する
+  - KC_CACHE_STACK=kubernetes
+  - JAVA_OPTS_APPEND=-Djgroups.dns.query=<Headless ServiceのDNS名>
 
 > - https://openstandia.jp/tech/column/ac_keycloak20231216/
+> - https://qiita.com/t-mogi/items/ba38a614c1637a8aef93#jgroups-%E3%81%AE-discovery-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB
+
+#### ▼ KUBE_PING
+
+Kubernetesのkube-apiserverからインスタンスを検出する。
+
+> - https://qiita.com/t-mogi/items/ba38a614c1637a8aef93#jgroups-%E3%81%AE-discovery-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB
 
 <br>
 

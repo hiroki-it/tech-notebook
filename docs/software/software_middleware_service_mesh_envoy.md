@@ -71,7 +71,7 @@ Envoyは、ドレイン処理によって通信を切断することなく、コ
 
 ### コントロールプレーンとは
 
-コントロールプレーンは、データプレーンのEnvoyを管理する。サービスディスカバリーのためのAPI (XDS-API) を持つ。
+コントロールプレーンは、データプレーンのEnvoyを管理する。サービス検出のためのAPI (XDS-API) を持つ。
 
 <br>
 
@@ -154,7 +154,7 @@ Envoyの実行時に、リスナーの暗号化の設定を動的に検出可能
 
 #### ▼ 実装
 
-Envoyを使用するサービスディスカバリーツールのいくつか (例：Istio、Linkerd) では、コントロールプレーンに`go-control-plane`パッケージが使用されている。
+Envoyを使用するサービス検出ツールのいくつか (例：Istio、Linkerd) では、コントロールプレーンに`go-control-plane`パッケージが使用されている。
 
 > - https://github.com/envoyproxy/go-control-plane/blob/v0.11.0/pkg/resource/v3/resource.go#L34-L43
 > - https://github.com/envoyproxy/go-control-plane/blob/v0.11.0/pkg/server/v3/gateway.go#L38-L98

@@ -158,7 +158,7 @@ Kubernetes Cluster上でこれを稼働させることが推奨である。
 
 > - https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/
 
-#### ▼ ECSサービスディスカバリー
+#### ▼ ECSサービス検出
 
 AWS Route53にECSタスクの宛先情報を動的に追加削除することにより、ECSタスクが他のECSタスクと通信可能にする。
 

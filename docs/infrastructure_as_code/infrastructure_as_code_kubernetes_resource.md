@@ -672,7 +672,7 @@ Cluster内のネットワークを制御する。
 
 各Service配下に存在する。Serviceでルーティング先のPodの宛先情報を分割して管理し、Podの増減に合わせて、Podの宛先情報を追加/削除する。
 
-kube-proxyによるサービスディスカバリーのために、Podの宛先情報を提供する。
+kube-proxyによるサービス検出のために、Podの宛先情報を提供する。
 
 Kubernetesのv1.6より前はEndpointsが使用されていた。
 

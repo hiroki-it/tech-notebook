@@ -221,7 +221,7 @@ IPアドレスやポート番号が動的に変化する対象を監視する。
 
 ```yaml
 scrape_configs:
-  # AWS EC2をサービスディスカバリーで監視する
+  # AWS EC2をサービス検出で監視する
   - job_name: aws-ec2
     ec2_sd_configs:
       - port: 9100

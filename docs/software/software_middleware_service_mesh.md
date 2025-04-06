@@ -35,7 +35,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 サービスメッシュを導入しない場合と比較して、サービスメッシュを導入すると固有の課題を一括で制御しやすい。
 
-マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービスディスカバリーの必要性、マイクロサービス間通信の暗号化、テレメトリー作成、認証など) を解決するためのロジックを切り分け、各マイクロサービスに共通的に提供できる。
+マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービス検出の必要性、マイクロサービス間通信の暗号化、テレメトリー作成、認証など) を解決するためのロジックを切り分け、各マイクロサービスに共通的に提供できる。
 
 ![mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mesh.png)
 
@@ -173,31 +173,31 @@ Node上にエージェントを配置し、これを経由してマイクロサ�
 
 <br>
 
-## 04. サービスディスカバリー
+## 04. サービス検出
 
-### サービスディスカバリーとは
+### サービス検出とは
 
 マイクロサービスアーキテクチャにて、送信元マイクロサービスが宛先マイクロサービスの場所 (IPアドレス、ポート番号、完全修飾ドメイン名など) を動的に検出し、通信できるようにする仕組みのこと。
 
 <br>
 
-### サービスディスカバリーの要素
+### サービス検出の要素
 
 <img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/drawio/blog/istio/service-discovery-pattern.png" alt="service-discovery-pattern.png" style="zoom:60%;">
 
-サービスディスカバリーの仕組みは、次の要素からなる。
+サービス検出の仕組みは、次の要素からなる。
 
 - 送信元マイクロサービス
 - 宛先マイクロサービス
 - サービスレジストリ
 - ロードバランサー
-- 名前解決 (DNSベースのサービスディスカバリーの場合のみ)
+- 名前解決 (DNSベースのサービス検出の場合のみ)
 
 > - https://www.baeldung.com/cs/service-discovery-microservices
 
 <br>
 
-## 05. デザインパターン
+## 05-02. 宛先検出
 
 ### クライアントサイドパターン
 
@@ -242,7 +242,7 @@ Node上にエージェントを配置し、これを経由してマイクロサ�
 
 `(2)`
 
-: ロードバランサーは、宛先マイクロサービスの場所をサービスディスカバリーに問い合わせ、宛先情報を取得する。
+: ロードバランサーは、宛先マイクロサービスの場所をサービス検出に問い合わせ、宛先情報を取得する。
 
 `(3)`
 
@@ -256,23 +256,33 @@ Node上にエージェントを配置し、これを経由してマイクロサ�
 
 #### ▼ 実装方法
 
-- KubernetesのServiceとkube-proxy + CoreDNS (DNSベースのサービスディスカバリー)
+- KubernetesのServiceとkube-proxy + CoreDNS (DNSベースのサービス検出)
 - サービスメッシュツール (例：Istio、Linkerdなど) のサイドカー
-- サービスディスカバリー機能を持つリバースプロキシ (例：素のEnvoy、Traefikなど)
+- サービス検出機能を持つリバースプロキシ (例：素のEnvoy、Traefikなど)
 - クラウド (例：AWS ALB)
 
 > - https://traefik.io/glossary/service-discovery/
 
 <br>
 
-### Self registration
+## 05-03. 宛先登録
 
-#### ▼ Self registrationとは
+### セルフ登録
+
+#### ▼ セルフ登録とは
 
 サービスレジストリ (例：etcd) に自身を登録し、宛先を問い合わせ、宛先にルーティングする責務は、クライアント側マイクロサービスにある。
 
 > - https://softwarepatternslexicon.com/microservices/service-discovery/self-registration/
 > - https://www.codeprimers.com/service-discovery-in-microservice-architecture/
+
+<br>
+
+### サードパーティ登録
+
+#### ▼ サードパーティ登録とは
+
+記入中...
 
 <br>
 

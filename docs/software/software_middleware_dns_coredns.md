@@ -328,9 +328,9 @@ Kubernetesでは、PodのIPアドレスを固定できない。
 
 <br>
 
-## 04. サービスディスカバリー
+## 04. サービス検出
 
-CoreDNSの名前解決と、Serviceとkube-proxyによるIPアドレスとポート番号の動的な検出を組み合わせることにより、サービスディスカバリーを実装できる。
+CoreDNSの名前解決と、Serviceとkube-proxyによるIPアドレスとポート番号の動的な検出を組み合わせることにより、サービス検出を実装できる。
 
 > - https://coredns.io/2017/03/01/coredns-for-kubernetes-service-discovery-take-2/
 > - https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction

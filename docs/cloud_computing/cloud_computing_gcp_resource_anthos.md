@@ -64,7 +64,7 @@ Traffic Director、Mesh CA、Managed backends、といったコンポーネン�
 
 #### ▼ Traffic Director
 
-サービスディスカバリーとして、`istio-proxy`コンテナに他の宛先の情報を提供する。
+サービス検出として、`istio-proxy`コンテナに他の宛先の情報を提供する。
 
 > - https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=23
 

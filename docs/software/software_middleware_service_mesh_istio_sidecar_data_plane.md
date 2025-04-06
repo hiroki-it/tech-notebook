@@ -49,7 +49,7 @@ description: データプレーン＠Istioサイドカーの知見を記録し�
 
 istio-iptablesは、`istio-proxy`コンテナを持つPod内のネットワークの経路を制御する。
 
-サービスディスカバリーとしてPodのIPアドレスを持つのは`istio-proxy`コンテナであり、istio-iptablesではないことに注意する。
+サービス検出としてPodのIPアドレスを持つのは`istio-proxy`コンテナであり、istio-iptablesではないことに注意する。
 
 ```bash
 # istio-initコンテナの起動時に実行する。
@@ -171,7 +171,7 @@ Pod外からマイクロサービスへのインバウンド通信は、istio-ip
 
 マイクロサービスからPod外へのアウトバウンド通信は、istio-iptablesにより、`istio-proxy`コンテナの`15001`番ポートにリダイレクトされる。
 
-サービスディスカバリーによってPod等の宛先情報が、`istio-proxy`コンテナ内のEnvoyに登録されており、`istio-proxy`コンテナはアウトバウンド通信をPodに向けてルーティングする。
+サービス検出によってPod等の宛先情報が、`istio-proxy`コンテナ内のEnvoyに登録されており、`istio-proxy`コンテナはアウトバウンド通信をPodに向けてルーティングする。
 
 ![istio_iptables_outbound_other](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_outbound_other.png)
 

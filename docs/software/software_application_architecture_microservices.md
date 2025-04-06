@@ -93,7 +93,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 | マイクロサービスの関連パターン | クラウドネイティブ技術                  |
 | ------------------------------ | --------------------------------------- |
 | Externalized configuration     | Kubernetes ConfigMap、Kubernetes Secret |
-| サービスディスカバリー         | Kubernetes Service                      |
+| サービス検出                   | Kubernetes Service                      |
 | 負荷分散                       | Kubernetes Service                      |
 | APIゲートウェイ                | Kubernetes Ingress                      |
 | 集中ロギング                   | Fluentd                                 |

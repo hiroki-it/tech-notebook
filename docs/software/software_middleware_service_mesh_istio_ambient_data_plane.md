@@ -19,7 +19,7 @@ description: データプレーン＠Istioアンビエントの知見を記録�
 
 アンビエントモードは、データプレーン、コントロールプレーンNode、といったコンポーネントから構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。
 
-マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービスディスカバリーの必要性、マイクロサービス間通信の暗号化、テレメトリー作成など) を解決する責務を持つ。
+マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービス検出の必要性、マイクロサービス間通信の暗号化、テレメトリー作成など) を解決する責務を持つ。
 
 Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnel Podを経由して、一度waypoint-proxy Podにリダイレクトされる。
 
@@ -442,7 +442,7 @@ spec:
 
 Namespace外からの`L7`インバウンド通信をHBORNを経由して受信し、Namespace内の宛先Podに送信する。
 
-waypoint-proxyは、サービスディスカバリーにより宛先情報を取得し、また証明書を管理する。
+waypoint-proxyは、サービス検出により宛先情報を取得し、また証明書を管理する。
 
 ![istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7_overview.png)
 

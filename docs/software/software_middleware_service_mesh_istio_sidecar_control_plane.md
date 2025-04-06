@@ -469,7 +469,7 @@ ControlZダッシュボードでは、istiodコントロールプレーンの設
 
 コールの内容に応じて、他のサービス (Pod、Node)の宛先情報を含むレスポンスを返信する。
 
-`istio-proxy`コンテナはこれを受信し、pilot-agentがEnvoyの宛先情報設定を動的に変更する (サービスディスカバリー) 。
+`istio-proxy`コンテナはこれを受信し、pilot-agentがEnvoyの宛先情報設定を動的に変更する (サービス検出) 。
 
 > - https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/
 
