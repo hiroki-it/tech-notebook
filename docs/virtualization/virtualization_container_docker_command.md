@@ -96,7 +96,7 @@ $ docker buildx bake --push
 $ docker buildx build --push
 ```
 
-`--platform`オプションで、任意のCPUアーキテクチャーに対応するコンテナイメージをビルドできる。
+`--platform`オプションで、任意のCPUアーキテクチャに対応するコンテナイメージをビルドできる。
 
 ```bash
 $ docker buildx build --platform linux/amd64
