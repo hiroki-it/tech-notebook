@@ -116,6 +116,7 @@ Keycloakクラスターでは、JGroupsはInfinispanクラスターインスタ�
 サービスレジストリ (例：Etcd) 内の宛先情報として使用する。
 
 > - https://qiita.com/t-mogi/items/ba38a614c1637a8aef93#jgroups-%E3%81%AE-discovery-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB
+> - https://github.com/jgroups-extras/jgroups-kubernetes
 
 <br>
 

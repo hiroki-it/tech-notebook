@@ -434,6 +434,8 @@ spec:
 
 特定のポート番号に対するインバウンド通信／アウトバウンド通信に関して、istio-iptablesが`istio-proxy`コンテナにリダイレクトしないようにする。
 
+例えば、Pod間でレプリケーション通信をする場合 (例：Keycloakクラスター、Redisクラスターなど) 、`istio-proxy`コンテナを経由する必要はない。
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment # もしくはPod
