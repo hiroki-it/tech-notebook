@@ -29605,8 +29605,8 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 <p>アプリケーションはライターPodとリーダーPodの両方のIPアドレスを認識し、いずれに永続化するべきかを判断する必要がある。</p>
 <p>この場合、全てのPodのIPアドレスを返却するHeadless Serviceが適している。</p>
 <h4 id="pod_9">▼ Pod間でデータ同期が必要な場合<a class="headerlink" href="#pod_9" title="Permanent link">&para;</a></h4>
-<p>StatefulSetでKeycloakをクラスタリングした場合、JGroupsはInfinispanインスタンス間でセッションデータを同期する。</p>
-<p>JGroupsが全てのInfinispanインスタンス間でセッションデータを同期できるように、Infinispanを内蔵した全てのKeycloak Podを認識できるようにする必要がある。</p>
+<p>StatefulSetでKeycloakをクラスタリングした場合、JGroupsはInfinispanクラスターインスタンス間でセッションデータを同期する。</p>
+<p>JGroupsが全てのInfinispanクラスターインスタンス間でセッションデータを同期できるように、Infinispanを内蔵した全てのKeycloak Podを認識できるようにする必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/cloud_ace/articles/gke-keycloak#headless-service-%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%AA%E7%90%86%E7%94%B1">https://zenn.dev/cloud_ace/articles/gke-keycloak#headless-service-%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%AA%E7%90%86%E7%94%B1</a></li>
@@ -30342,7 +30342,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月6日 19:36:56">2025-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月7日 01:42:46">2025-04-07</span>
   </span>
 
     
