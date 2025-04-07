@@ -681,13 +681,13 @@ CPU4コアとメモリ7168MiBを持ったNodeが3台作られる。
 $ minikube start --cpus=4 --memory=16384 --nodes 3
 ```
 
-実際に設定されたハードウェアリソースは、Minikube内から確認できる。
+実際に設定されたハードウェアリソースは、Minikubeクラスター内から確認できる。
 
 ```bash
 $ minikube ssh
 
 # CPUを確認する。
-$ cat /proc/cpuinfo
+$ cat /proc/cpuinfo # topコマンドでもよい
 
 processor       : 0
 BogoMIPS        : 48.00
@@ -708,6 +708,10 @@ CPU architecture: 8
 CPU variant     : 0x0
 CPU part        : 0x000
 CPU revision    : 0
+```
+
+```bash
+$ minikube ssh
 
 # メモリの確認する。
 $ free -m
@@ -715,6 +719,8 @@ $ free -m
 Mem:           7951        1853        3080         333        3017        5594
 Swap:          1023           0        1023
 ```
+
+metrics-serverを入れて、`kubectl top node`コマンドを実行してもよいが、Minikubeクラスター全体であれば`minikube ssh`コマンドでMinikubeクラスターに入って確認した方が良い。
 
 #### ▼ --docker-env
 

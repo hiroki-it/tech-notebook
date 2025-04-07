@@ -13,9 +13,7 @@ description: AWS Lambda＠AWSリソース
 
 <br>
 
-## 01. AWS Lambda
-
-### AWS Lambdaとは
+## 01. AWS Lambdaとは
 
 他のAWSリソースのイベントによって駆動する関数を管理できる。
 
@@ -238,6 +236,15 @@ AWS Lambdaを実行するためには、デプロイされた関数を使用す�
     ],
 }
 ```
+
+<br>
+
+### データベース
+
+- AWS DynamoDB
+- AWS RDS ProxyとAWS RDS
+
+> - https://zenn.dev/medicalforce/articles/e26b9cbe16305f#%E8%83%8C%E6%99%AF
 
 <br>
 
