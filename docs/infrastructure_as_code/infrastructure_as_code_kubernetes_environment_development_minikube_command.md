@@ -686,34 +686,25 @@ $ minikube start --cpus=4 --memory=16384 --nodes 3
 ```bash
 $ minikube ssh
 
-# CPUを確認する。
-$ cat /proc/cpuinfo # topコマンドでもよい
+# CPUとメモリを確認する。
+$ top
 
-processor       : 0
-BogoMIPS        : 48.00
-Features        : fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint
-CPU implementer : 0x00
-CPU architecture: 8
-CPU variant     : 0x0
-CPU part        : 0x000
-CPU revision    : 0
+top - 09:28:27 up 43 min,  0 users,  load average: 19.16, 13.99, 13.93
+Tasks:  31 total,   1 running,  30 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 61.8 us, 22.7 sy,  0.0 ni,  4.7 id,  2.6 wa,  0.0 hi,  8.2 si,  0.0 st # CPU
+MiB Mem :   8931.8 total,    163.0 free,   7356.1 used,   1412.7 buff/cache # メモリ
+MiB Swap:   1024.0 total,    844.3 free,    179.7 used.   1298.8 avail Mem 
 
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND                                                                                                                                 
+    991 root      20   0 1856264 581988  28852 S  27.8   6.4   6:35.21 kube-apiserver                                                                                                                          
+    579 root      20   0 2486572  78828  18660 S  10.6   0.9   2:36.03 kubelet                                                                                                                                 
 ...
-
-processor       : 3
-BogoMIPS        : 48.00
-Features        : fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint
-CPU implementer : 0x00
-CPU architecture: 8
-CPU variant     : 0x0
-CPU part        : 0x000
-CPU revision    : 0
 ```
 
 ```bash
 $ minikube ssh
 
-# メモリの確認する。
+# メモリを確認する。
 $ free -m
               total        used        free      shared  buff/cache   available
 Mem:           7951        1853        3080         333        3017        5594
