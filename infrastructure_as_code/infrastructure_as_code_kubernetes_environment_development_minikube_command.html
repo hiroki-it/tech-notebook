@@ -27167,11 +27167,11 @@ minikube<span class="w">   </span>Ready<span class="w">    </span>control-plane,
 <p>CPU4コアとメモリ7168MiBを持ったNodeが3台作られる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> </span>--cpus<span class="o">=</span><span class="m">4</span><span class="w"> </span>--memory<span class="o">=</span><span class="m">16384</span><span class="w"> </span>--nodes<span class="w"> </span><span class="m">3</span>
 </code></pre></div>
-<p>実際に設定されたハードウェアリソースは、Minikube内から確認できる。</p>
+<p>実際に設定されたハードウェアリソースは、Minikubeクラスター内から確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>ssh
 
 <span class="c1"># CPUを確認する。</span>
-$<span class="w"> </span>cat<span class="w"> </span>/proc/cpuinfo
+$<span class="w"> </span>cat<span class="w"> </span>/proc/cpuinfo<span class="w"> </span><span class="c1"># topコマンドでもよい</span>
 
 processor<span class="w">       </span>:<span class="w"> </span><span class="m">0</span>
 BogoMIPS<span class="w">        </span>:<span class="w"> </span><span class="m">48</span>.00
@@ -27192,6 +27192,8 @@ CPU<span class="w"> </span>architecture:<span class="w"> </span><span class="m">
 CPU<span class="w"> </span>variant<span class="w">     </span>:<span class="w"> </span>0x0
 CPU<span class="w"> </span>part<span class="w">        </span>:<span class="w"> </span>0x000
 CPU<span class="w"> </span>revision<span class="w">    </span>:<span class="w"> </span><span class="m">0</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>ssh
 
 <span class="c1"># メモリの確認する。</span>
 $<span class="w"> </span>free<span class="w"> </span>-m
@@ -27199,6 +27201,7 @@ $<span class="w"> </span>free<span class="w"> </span>-m
 Mem:<span class="w">           </span><span class="m">7951</span><span class="w">        </span><span class="m">1853</span><span class="w">        </span><span class="m">3080</span><span class="w">         </span><span class="m">333</span><span class="w">        </span><span class="m">3017</span><span class="w">        </span><span class="m">5594</span>
 Swap:<span class="w">          </span><span class="m">1023</span><span class="w">           </span><span class="m">0</span><span class="w">        </span><span class="m">1023</span>
 </code></pre></div>
+<p>metrics-serverを入れて、<code>kubectl top node</code>コマンドを実行してもよいが、Minikubeクラスター全体であれば<code>minikube ssh</code>コマンドでMinikubeクラスターに入って確認した方が良い。</p>
 <h4 id="-docker-env">▼ --docker-env<a class="headerlink" href="#-docker-env" title="Permanent link">&para;</a></h4>
 <p>別に<code>docker-env</code>コマンドを実行しつつ、<code>start</code>コマンドを実行する。</p>
 <p><strong>＊例＊</strong></p>
@@ -27403,7 +27406,7 @@ foo-m06<span class="w">   </span>Ready<span class="w">    </span>worker<span cla
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月3日 13:14:38">2025-04-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月7日 18:37:14">2025-04-07</span>
   </span>
 
     
