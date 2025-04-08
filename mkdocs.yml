@@ -179,7 +179,7 @@ nav:
               - ブラックボックステスト: software/software_application_architecture_microservices_cross_test_whitebox.md
               - 開発手法: software/software_application_architecture_microservices_cross_development.md
       - ■ 通信方式:
-          - リクエスト/レスポンス方式: software/software_application_communication_style_request_response.md
+          - リクエスト／レスポンス方式: software/software_application_communication_style_request_response.md
       - ■ API:
           - ■ RESTful-API:
               - RESTful-API: software/software_application_api_restful.md
