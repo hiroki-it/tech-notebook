@@ -15,7 +15,23 @@ description: AWS Cognito＠AWSリソースの知見を記録しています。
 
 ## 01. AWS Cognitoとは
 
+### ユーザープール
+
 クラウド認証プロキシまたはクラウドIDプロバイダーとして機能する。
+
+![aws_cognito_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_cognito_lambda.png)
+
+> - https://dev.classmethod.jp/articles/tried-using-cognito-as-api-gateway-authorizer/#toc-cognito-api-gateway
+
+<br>
+
+### オーソライザー
+
+クラウド認可サービスとして機能する。
+
+![aws_cognito_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_cognito_lambda.png)
+
+> - https://dev.classmethod.jp/articles/tried-using-cognito-as-api-gateway-authorizer/#toc-cognito-api-gateway
 
 <br>
 

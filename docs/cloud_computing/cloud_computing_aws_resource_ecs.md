@@ -142,34 +142,6 @@ ECSタスクは、必須コンテナ異常停止時、デプロイ、オート�
 
 <br>
 
-### ECSによるマイクロサービスアーキテクチャ
-
-#### ▼ マルチECSサービス
-
-ECSクラスターに複数のECSサービスを作成する。
-
-ECSサービスをマイクロサービス単位で稼働させる。
-
-ただ、ECSによるマイクロサービスアーキテクチャはアプリとインフラの責務を分離できないため、非推奨である。
-
-Kubernetes Cluster上でこれを稼働させることが推奨である。
-
-![ecs-fargate_microservices](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs-fargate_microservices.png)
-
-> - https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/
-
-#### ▼ ECSサービス検出
-
-AWS Route53にECSタスクの宛先情報を動的に追加削除することにより、ECSタスクが他のECSタスクと通信可能にする。
-
-![ecs_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_service-discovery.png)
-
-> - https://practical-aws.dev/p/ecs-service-discovery/
-> - https://medium.com/@toddrosner/ecs-service-discovery-1366b8a75ad6
-> - https://dev.classmethod.jp/articles/ecs-service-discovery/
-
-<br>
-
 ## 03-02. ネットワーク
 
 ### ネットワークモードとコンテナ間通信

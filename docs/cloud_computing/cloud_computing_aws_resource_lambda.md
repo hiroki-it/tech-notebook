@@ -355,35 +355,3 @@ AWS Lambdaの拡張機能である。
 > - https://github.com/awslabs/aws-lambda-web-adapter
 
 <br>
-
-## 04. AWS Lambdaによるマイクロサービスアーキテクチャ
-
-### 概要
-
-AWS Lambdaをマイクロサービス単位で稼働させる。
-
-ただ、AWS Lambdaによるマイクロサービスアーキテクチャはアプリとインフラの責務を分離できないため、非推奨である。
-
-Kubernetes Cluster上でこれを稼働させることが推奨である。
-
-> - https://aws.amazon.com/jp/blogs/news/comparing-design-approaches-for-building-serverless-microservices/
-
-<br>
-
-### マイクロサービスの分割
-
-#### ▼ サービスコンポーネント
-
-マイクロサービスのドメインロジックを持つ。
-
-> - https://qiita.com/__DASHi__/items/268062f0dba0e93170f2
-
-#### ▼ レイヤーコンポーネント
-
-マイクロサービスの横断的な共有ロジックを持つ。
-
-Lambda Layerを使用し、サービスコンポーネントがレイヤーコンポーネントを読み込めるようにする。
-
-> - https://qiita.com/__DASHi__/items/268062f0dba0e93170f2
-
-<br>

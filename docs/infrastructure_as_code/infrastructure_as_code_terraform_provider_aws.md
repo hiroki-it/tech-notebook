@@ -238,7 +238,7 @@ AWS BackupでEC2のAMIを作成している場合に、フィルターの条件�
 
 ```terraform
 # ---------------------------------------------
-# RESTful API
+# RESTful-API
 # ---------------------------------------------
 resource "aws_api_gateway_rest_api" "foo" {
   name        = "prd-foo-api-for-foo"

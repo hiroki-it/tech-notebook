@@ -77,6 +77,8 @@ hide:
   > - ##### [パケットペイロード︎安全性](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_security_packet_payload.html)
   > - ##### [ストレージ安全性](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_security_storage.html)
   > - ##### [︎コスト最適化](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_cost_optimization.html)
+  > - ##### <u>アーキテクチャ</u>
+  >   > - ##### [マイクロサービスアーキテクチャ](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_microservices_architecture.html)
 
 - #### [︎ツール](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_tools.html)
 
