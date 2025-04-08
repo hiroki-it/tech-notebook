@@ -203,9 +203,38 @@ $ kubectl get pod
 
 <br>
 
-### kube-apiserver
+### パブリックアクセス/プライベートアクセス
 
-#### ▼ aws-auth (ConfigMap) を経由したKubernetes RBACとの連携
+kube-apiserverのインターネットへの公開範囲を設定できる。
+
+プライベートアクセスの場合、AWS VPC内部からのみリクエストできるように制限でき、送信元IPアドレスを指定してアクセスを許可できる。
+
+> - https://dev.classmethod.jp/articles/eks-public-endpoint-access-restriction/
+
+<br>
+
+### 監視
+
+#### ▼ AWS EKS Upgrade insights
+
+非推奨apiVersion検出ツール (例：pluto) のようなクライアント側からの検証ではなく、kube-apiserver側で非推奨apiVersionを検出する。
+
+kube-apiserverの監査ログから非推奨apiVersionを検出する。
+
+> - https://aws.amazon.com/blogs/containers/accelerate-the-testing-and-verification-of-amazon-eks-upgrades-with-upgrade-insights/
+> - https://qiita.com/kyohei_tsuno/items/27eafb4cff4c14c9c9bd
+
+<br>
+
+### NLB
+
+記入中...
+
+<br>
+
+## 02-02. kube-apiserver
+
+### aws-auth (ConfigMap) を経由したKubernetes RBACとの連携
 
 ![eks_auth_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_auth_architecture.png)
 
@@ -276,10 +305,13 @@ data:
 > - https://www.karakaram.com/eks-system-masters-group/
 > - https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#1.-%E5%A4%96%E9%83%A8%E3%81%8B%E3%82%89eks%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88
 
-#### ▼ プリンシパルIAMロールとアクセスエントリーを経由したKubernetes Clusterの操作
+<br>
+
+### プリンシパルIAMロールとアクセスエントリーを経由したKubernetes Clusterの操作
+
+#### ▼ 概要
 
 プリンシパルIAMロールとアクセスエントリーを使用することにより、`kubectl`クライアント (例：開発者、ArgoCDなど) の認可スコープを制御する。
-
 
 プリンシパルIAMロールとアクセスエントリーを使用する場合、従来のaws-auth (ConfigMap) と比較して、AWS EKSの認証をKubernetesリソースで管理する必要がない。
 
@@ -287,9 +319,11 @@ data:
 
 Kubernetesリソースの認可スコープをIRSAで制御し、この仕組みの中で、アクセスエントリーはアクセスエントリーポリシーをIAMロールに動的にを設定する。
 
-
+#### ▼ 送信元
 
 ```terraform
+# 送信元のArgoCDのいるAWS EKS Clusterの設定
+
 # ArgoCDのPodにスイッチロールの権限を持たせるためのIAMロール
 # 対象のAWS EKS Clusterに接続するためのIAMロールにスイッチロールできる
 module "iam_assumable_role_with_oidc_argocd_access_entry_service" {
@@ -338,7 +372,35 @@ module "iam_assumable_role_argocd_access_entry_cluster" {
 }
 ```
 
+送信元のAWS EKS ClusterのSSL証明書をbase64方式エンコードした値 (`-----BEGIN CERTIFICATE-----`から`-----END CERTIFICATE-----`まで) を`caData`として設定する。
+
+`aws eks describe-cluster`コマンドやコンソール画面から確認できる。
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: <クラスター名>
+  labels:
+    argocd.argoproj.io/secret-type: cluster
+type: Opaque
+data:
+  config: |
+    awsAuthConfig:
+      clusterName": "<クラスター名>",
+      roleARN: "<対象のAWS EKS ClusterにアクセスするためのIAMロールARN>"
+    tlsClientConfig:
+      insecure: false,
+      caData: "<AWS EKS ClusterのSSL証明書をbase64方式エンコードした値>"
+  name: "<クラスター名>"
+  server: "https://*****.gr7.ap-northeast-1.eks.amazonaws.com"
+```
+
+#### ▼ 宛先
+
 ```terraform
+# 宛先のAWS EKS Clusterの設定
+
 # 対象のAWS EKS Clusterでアクセスエントリーを設定する
 resource "aws_eks_access_entry" "argocd" {
 
@@ -366,56 +428,9 @@ resource "aws_eks_access_policy_association" "argocd" {
 }
 ```
 
-AWS EKS ClusterのSSL証明書をbase64方式エンコードした値 (`-----BEGIN CERTIFICATE-----`から`-----END CERTIFICATE-----`まで) を`caData`として設定する。
-
-`aws eks describe-cluster`コマンドやコンソール画面から確認できる。
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: <クラスター名>
-  labels:
-    argocd.argoproj.io/secret-type: cluster
-type: Opaque
-data:
-  config: |
-    awsAuthConfig:
-      clusterName": "<クラスター名>",
-      roleARN: "<対象のAWS EKS ClusterにアクセスするためのIAMロールARN>"
-    tlsClientConfig:
-      insecure: false,
-      caData: "<AWS EKS ClusterのSSL証明書をbase64方式エンコードした値>"
-  name: "<クラスター名>"
-  server: "https://*****.gr7.ap-northeast-1.eks.amazonaws.com"
-```
-
 > - https://aws.amazon.com/blogs/containers/a-deep-dive-into-simplified-amazon-eks-access-management-controls/
 > - https://dev.classmethod.jp/articles/eks-access-management-with-iam-access-entry/
 > - https://github.com/argoproj/argo-cd/issues/2347#issuecomment-1963555799
-
-#### ▼ パブリックアクセス/プライベートアクセス
-
-kube-apiserverのインターネットへの公開範囲を設定できる。
-
-プライベートアクセスの場合、AWS VPC内部からのみリクエストできるように制限でき、送信元IPアドレスを指定してアクセスを許可できる。
-
-> - https://dev.classmethod.jp/articles/eks-public-endpoint-access-restriction/
-
-#### ▼ AWS EKS Upgrade insights
-
-非推奨apiVersion検出ツール (例：pluto) のようなクライアント側からの検証ではなく、kube-apiserver側で非推奨apiVersionを検出する。
-
-kube-apiserverの監査ログから非推奨apiVersionを検出する。
-
-> - https://aws.amazon.com/blogs/containers/accelerate-the-testing-and-verification-of-amazon-eks-upgrades-with-upgrade-insights/
-> - https://qiita.com/kyohei_tsuno/items/27eafb4cff4c14c9c9bd
-
-<br>
-
-### NLB
-
-記入中...
 
 <br>
 
