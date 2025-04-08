@@ -263,8 +263,8 @@ nav:
                   - コントロールプレーン: software/software_middleware_service_mesh_istio_sidecar_control_plane.md
                   - データプレーン: software/software_middleware_service_mesh_istio_sidecar_data_plane.md
               - ■ アンビエントモード:
-                    - コントロールプレーン: software/software_middleware_service_mesh_istio_ambient_control_plane.md
-                    - データプレーン: software/software_middleware_service_mesh_istio_ambient_data_plane.md
+                  - コントロールプレーン: software/software_middleware_service_mesh_istio_ambient_control_plane.md
+                  - データプレーン: software/software_middleware_service_mesh_istio_ambient_data_plane.md
               - Istioを採用しない場合との比較: software/software_middleware_service_mesh_istio_non.md
               - コマンド: software/software_middleware_service_mesh_istio_command.md
               - プラクティス集: software/software_middleware_service_mesh_istio_practices.md
@@ -349,19 +349,19 @@ nav:
               - ■ Protocol Bufferコンパイラー:
                   - Goプラグイン: language/language_data_description_language_protocol_buffer_compiler_go.md
       - ■ Go:
-            - Go: language/language_go.md
-            - 設定: language/language_go_conf.md
-            - コマンド: language/language_go_command.md
-            - ■ ロジック:
-                  - データ: language/language_go_logic_data.md
-                  - メソッド: language/language_go_logic_method.md
-                  - 検証ロジック: language/language_go_logic_validation.md
-            - ■ フレームワーク:
-                  - Gin: language/language_go_framework_gin.md
-            - ■ パッケージ:
-                  - ビルトインパッケージ: language/language_go_package_builtin.md
-                  - SQLパッケージ: language/language_go_package_sql.md
-                  - ユーティリティパッケージ: language/language_go_package_utility.md
+          - Go: language/language_go.md
+          - 設定: language/language_go_conf.md
+          - コマンド: language/language_go_command.md
+          - ■ ロジック:
+              - データ: language/language_go_logic_data.md
+              - メソッド: language/language_go_logic_method.md
+              - 検証ロジック: language/language_go_logic_validation.md
+          - ■ フレームワーク:
+              - Gin: language/language_go_framework_gin.md
+          - ■ パッケージ:
+              - ビルトインパッケージ: language/language_go_package_builtin.md
+              - SQLパッケージ: language/language_go_package_sql.md
+              - ユーティリティパッケージ: language/language_go_package_utility.md
       - Java: language/language_java.md
       - ■ JavaScript:
           - ■ プロトタイプベース:
@@ -390,33 +390,33 @@ nav:
           - ■ ブラウザ:
               - ブラウザレンダリング: language/language_javascript_browser_rendering.md
       - ■ PHP:
-            - PHP: language/language_php.md
-            - 設定: language/language_php_conf.md
-            - コマンド: language/language_php_command.md
-            - ■ クラスベース:
-                  - クラス: language/language_php_class_based.md
-                  - メソッド/データ: language/language_php_class_based_method_data.md
-                  - データ構造: language/language_php_class_based_data_structure.md
-            - ■ ロジック:
-                  - 検証ロジック: language/language_php_logic_validation.md
-                  - エラーとエラーハンドリング: language/language_php_logic_error_and_error_handling.md
-                  - 反復ロジック: language/language_php_logic_iteration.md
-                  - アルゴリズム: language/language_php_logic_algorithm.md
-                  - デバッグ: language/language_php_logic_debug.md
-            - ■ フレームワーク:
-                  - ■ Laravel:
-                        - コンポーネント: language/language_php_framework_laravel_component.md
-                        - ︎Eloquent ORM: language/language_php_framework_laravel_eloquent_orm.md
-                        - 専用パッケージ: language/language_php_framework_laravel_package.md
-                        - 認証／認可系パッケージ: language/language_php_framework_laravel_package_auth.md
-                        - コマンド: language/language_php_framework_laravel_command.md
-                  - ■ Symfony:
-                        - コンポーネント: language/language_php_framework_symfony_component.md
-                        - Doctrine ORM: language/language_php_framework_symfony_doctrine_orm.md
-            - ■ パッケージ:
-                  - パッケージ管理: language/language_php_package_management.md
-                  - SQLパッケージ: language/language_php_package_sql.md
-                  - ユーティリティパッケージ: language/language_php_package_utility.md
+          - PHP: language/language_php.md
+          - 設定: language/language_php_conf.md
+          - コマンド: language/language_php_command.md
+          - ■ クラスベース:
+              - クラス: language/language_php_class_based.md
+              - メソッド/データ: language/language_php_class_based_method_data.md
+              - データ構造: language/language_php_class_based_data_structure.md
+          - ■ ロジック:
+              - 検証ロジック: language/language_php_logic_validation.md
+              - エラーとエラーハンドリング: language/language_php_logic_error_and_error_handling.md
+              - 反復ロジック: language/language_php_logic_iteration.md
+              - アルゴリズム: language/language_php_logic_algorithm.md
+              - デバッグ: language/language_php_logic_debug.md
+          - ■ フレームワーク:
+              - ■ Laravel:
+                  - コンポーネント: language/language_php_framework_laravel_component.md
+                  - ︎Eloquent ORM: language/language_php_framework_laravel_eloquent_orm.md
+                  - 専用パッケージ: language/language_php_framework_laravel_package.md
+                  - 認証／認可系パッケージ: language/language_php_framework_laravel_package_auth.md
+                  - コマンド: language/language_php_framework_laravel_command.md
+              - ■ Symfony:
+                  - コンポーネント: language/language_php_framework_symfony_component.md
+                  - Doctrine ORM: language/language_php_framework_symfony_doctrine_orm.md
+          - ■ パッケージ:
+              - パッケージ管理: language/language_php_package_management.md
+              - SQLパッケージ: language/language_php_package_sql.md
+              - ユーティリティパッケージ: language/language_php_package_utility.md
       - ■ Python:
           - Python: language/language_python.md
           - ■ フレームワーク:
@@ -428,8 +428,8 @@ nav:
               - パッケージ管理: language/language_python_package_management.md
       - R: language/language_r.md
       - ■ TypeScript:
-            - TypeScript: language/language_typescript.md
-            - 設定: language/language_typescript_conf.md
+          - TypeScript: language/language_typescript.md
+          - 設定: language/language_typescript_conf.md
 
   - 🧪 テスト:
       - testing/index.md
@@ -596,6 +596,8 @@ nav:
               - アプリケーションデータ安全性: cloud_computing/cloud_computing_aws_practices_security_packet_payload.md
               - ストレージ安全性: cloud_computing/cloud_computing_aws_practices_security_storage.md
               - コスト最適化: cloud_computing/cloud_computing_aws_practices_cost_optimization.md
+              - ■ アーキテクチャ:
+                  - マイクロサービスアーキテクチャ: cloud_computing/cloud_computing_aws_practices_microservices_architecture.md
           - ツール: cloud_computing/cloud_computing_aws_tools.md
       - ■ Google Cloud:
           - Google Cloud CLI: cloud_computing/cloud_computing_gcp_cli.md
