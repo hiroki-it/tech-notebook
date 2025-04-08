@@ -658,7 +658,7 @@ resource "aws_eip" "nat_gateway" {
 
 ```terraform
 # ---------------------------------------------
-# AWS AWS NAT Gateway
+# AWS NAT Gateway
 # ---------------------------------------------
 resource "aws_nat_gateway" "this" {
   for_each = var.vpc_availability_zones
@@ -1492,7 +1492,7 @@ resource "aws_security_group" "ec2" {
 
 ```terraform
 # ---------------------------------------------
-# AWS AWS S3 bucket policy
+# AWS S3 bucket policy
 # ---------------------------------------------
 resource "aws_s3_bucket_policy" "alb" {
   bucket = aws_s3_bucket.alb_logs.id

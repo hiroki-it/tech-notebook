@@ -19,7 +19,7 @@ description: Cert Manager＠セキュリティ系ミドルウェアの知見を�
 
 Cert Managerはを作成し、Secretに保管する。
 
-このSecret上で、クライアント / SSL証明書と、これのペアとなる秘密鍵を管理する。
+このSecret上で、クライアント／SSL証明書と、これのペアとなる秘密鍵を管理する。
 
 Pod内のコンテナにSecretをマウントし、Pod間の通信をTLS化する。
 

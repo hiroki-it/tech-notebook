@@ -240,15 +240,15 @@ kube-apiserverの監査ログから非推奨apiVersionを検出する。
 
 ConfigMapを経由してKubernetesのRBACと連携することにより、`kubectl`クライアント (例：開発者、ArgoCDなど) の認可スコープを制御する。
 
-Kubernetesリソースの認可スコープは、IRSAで制御する。
+新しいアクセスエントリーよりもセットアップが難しい。
 
 `(1)`
 
-: あらかじめ、クライアント (`kubectl`クライアント、Kubernetesリソース) に紐づくIAMユーザーを作成しておく。
+: あらかじめ、クライアント (`kubectl`クライアント、Kubernetesリソース) に紐づくAWS IAMユーザーを作成しておく。
 
 `(2)`
 
-: IAMユーザーがkube-apiserverのURLにリクエストを送信する。
+: AWS IAMユーザーがkube-apiserverのURLにリクエストを送信する。
 
      kube-apiserverは、aws-iam-authenticator-serverにWebhookを送信する。
 
@@ -256,13 +256,13 @@ Kubernetesリソースの認可スコープは、IRSAで制御する。
 
 `(3)`
 
-: コントロールプレーンNode上のaws-iam-authenticator-serverは、IAM APIを使用してIAMユーザーを認証する。
+: コントロールプレーンNode上のaws-iam-authenticator-serverは、IAM APIを使用してAWS IAMユーザーを認証する。
 
 `(4)`
 
 : もし認証に成功していた場合に、aws-iam-authenticator-serverは、ConfigMap (aws-auth) を確認する。
 
-     このConfigMapには、そのIAMユーザーに紐づくUserAccount / ServiceAccount / Group、RoleBinding / ClusterRoleBindingが定義されている。
+     このConfigMapには、そのAWS IAMユーザーに紐づくUserAccount／ServiceAccount／Group／RoleBinding／ClusterRoleBindingが定義されている。
 
      この時、`kubectl`クライアント (例：開発者、ArgoCDなど) の場合はUserAccount、Kubernetesリソースの場合はServiceAccount、を取得する。
 
@@ -276,8 +276,8 @@ data:
   mapAccounts: []
   mapUsers: []
   mapRoles: |
-    - rolearn: arn:aws:iam::<AWSアカウントID>:role/foo-role # IAMロール名
-      username: hiroki-it # IAMユーザー名
+    - rolearn: arn:aws:iam::<AWSアカウントID>:role/foo-role # AWS IAMロール名
+      username: hiroki-it # AWS IAMユーザー名
       groups:
         - system:masters # ClusterRoleBindingに定義されたGroup名
     - rolearn: arn:aws:iam::<AWSアカウントID>:role/bar-role # ワーカーNodeに紐付けたロール名
@@ -289,15 +289,15 @@ data:
 
 `(5)`
 
-: aws-iam-authenticator-serverは、UserAccount / ServiceAccount / Group、RoleBindingやClusterRoleBindingの情報を含むレスポンスをkube-apiserverに返信する。
+: aws-iam-authenticator-serverは、UserAccount／ServiceAccount／Group、RoleBindingやClusterRoleBindingの情報を含むレスポンスをkube-apiserverに返信する。
 
 `(6)`
 
 : あとは、Kubernetesの標準の認可の仕組みである。
 
-     kube-apiserverは、UserAccount / ServiceAccount / Groupに紐づくRoleやClusterRoleを、RoleBindingやClusterRoleBindingを経由して取得する。
+     kube-apiserverは、UserAccount／ServiceAccount／Groupに紐づくRoleやClusterRoleを、RoleBindingやClusterRoleBindingを経由して取得する。
 
-     IAMユーザーは、Kubernetesリソースを操作できる。
+     AWS IAMユーザーは、Kubernetesリソースを操作できる。
 
 > - https://aws.amazon.com/blogs/containers/kubernetes-rbac-and-iam-integration-in-amazon-eks-using-a-java-based-kubernetes-operator/
 > - https://dzone.com/articles/amazon-eks-authentication-amp-authorization-proces
@@ -307,32 +307,32 @@ data:
 
 <br>
 
-### プリンシパルIAMロールとアクセスエントリーを経由したKubernetes Clusterの操作
+### プリンシパルAWS IAMロールとアクセスエントリーを経由したKubernetes Clusterの操作
 
 #### ▼ 概要
 
-プリンシパルIAMロールとアクセスエントリーを使用することにより、`kubectl`クライアント (例：開発者、ArgoCDなど) の認可スコープを制御する。
+プリンシパルAWS IAMロールとアクセスエントリーを使用することにより、`kubectl`クライアント (例：開発者、ArgoCDなど) の認可スコープを制御する。
 
-プリンシパルIAMロールとアクセスエントリーを使用する場合、従来のaws-auth (ConfigMap) と比較して、AWS EKSの認証をKubernetesリソースで管理する必要がない。
+プリンシパルAWS IAMロールとアクセスエントリーを使用する場合、従来のaws-auth (ConfigMap) と比較して、より簡単にセットアップできる。
 
-プリンシパルIAMロールに紐づくPodがAWS EKSに接続する時に、アクセスエントリーがこれを仲介する。
+プリンシパルAWS IAMロールに紐づくPodがAWS EKSに接続する時に、アクセスエントリーがこれを仲介する。
 
-Kubernetesリソースの認可スコープをIRSAで制御し、この仕組みの中で、アクセスエントリーはアクセスエントリーポリシーをIAMロールに動的にを設定する。
+Kubernetesリソースの認可スコープをIRSAで制御し、この仕組みの中で、アクセスエントリーはアクセスエントリーポリシーをAWS IAMロールに動的に紐づける。
 
-#### ▼ 送信元
+#### ▼ `kubectl`クライアント (例：開発者、ArgoCDなど)
 
 ```terraform
-# 送信元のArgoCDのいるAWS EKS Clusterの設定
+# AWS EKS Clusterのkubectlクライアントとなる別のAWS EKS Cluster
 
-# ArgoCDのPodにスイッチロールの権限を持たせるためのIAMロール
-# 対象のAWS EKS Clusterに接続するためのIAMロールにスイッチロールできる
+# ArgoCDのPodにスイッチロールの権限を持たせるためのAWS IAMロール
+# 対象のAWS EKS Clusterに接続するためのAWS IAMロールにスイッチロールできる
 module "iam_assumable_role_with_oidc_argocd_access_entry_service" {
 
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
 
   version                       = "<バージョン>"
 
-  # ArgoCDのPodに紐付けるIAMロール
+  # ArgoCDのPodに紐付けるAWS IAMロール
   create_role                   = true
   role_name                     = "foo-argocd-access-entry-service"
 
@@ -351,7 +351,7 @@ module "iam_assumable_role_with_oidc_argocd_access_entry_service" {
   ]
 }
 
-# 対象のAWS EKS Clusterに接続するためのIAMロール
+# 対象のAWS EKS Clusterに接続するためのAWS IAMロール
 # 対象のAWS EKS Clusterでアクセスエントリーを設定する必要がある
 module "iam_assumable_role_argocd_access_entry_cluster" {
 
@@ -372,7 +372,7 @@ module "iam_assumable_role_argocd_access_entry_cluster" {
 }
 ```
 
-送信元のAWS EKS ClusterのSSL証明書をbase64方式エンコードした値 (`-----BEGIN CERTIFICATE-----`から`-----END CERTIFICATE-----`まで) を`caData`として設定する。
+`kubectl`クライアント (例：開発者、ArgoCDなど) のAWS EKS ClusterのSSL証明書をbase64方式エンコードした値 (`-----BEGIN CERTIFICATE-----`から`-----END CERTIFICATE-----`まで) を`caData`として設定する。
 
 `aws eks describe-cluster`コマンドやコンソール画面から確認できる。
 
@@ -388,13 +388,17 @@ data:
   config: |
     awsAuthConfig:
       clusterName": "<クラスター名>",
-      roleARN: "<対象のAWS EKS ClusterにアクセスするためのIAMロールARN>"
+      roleARN: "<対象のAWS EKS ClusterにアクセスするためのAWS IAMロールARN>"
     tlsClientConfig:
       insecure: false,
       caData: "<AWS EKS ClusterのSSL証明書をbase64方式エンコードした値>"
   name: "<クラスター名>"
   server: "https://*****.gr7.ap-northeast-1.eks.amazonaws.com"
 ```
+
+> - https://aws.amazon.com/blogs/containers/a-deep-dive-into-simplified-amazon-eks-access-management-controls/
+> - https://dev.classmethod.jp/articles/eks-access-management-with-iam-access-entry/
+> - https://github.com/argoproj/argo-cd/issues/2347#issuecomment-1963555799
 
 #### ▼ 宛先
 
@@ -406,31 +410,50 @@ resource "aws_eks_access_entry" "argocd" {
 
   cluster_name      = aws_eks_cluster.foo_argocd.name
 
-  principal_arn     = module.iam_assumable_role_with_oidc_argocd_principal.arn
+  principal_arn     = aws_iam_role.argocd.arn
 
-  kubernetes_groups = ["argocd-group"]
+  type = "STANDARD"
 }
 
-# アクセスエントリーポリシー
 resource "aws_eks_access_policy_association" "argocd" {
 
-  cluster_name  = aws_eks_cluster.foo_argocd.name
+  cluster_name = "foo-cluster"
 
-  // 送信元にどのようなIAMポリシーを付与するかを設定する
-  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy"
 
-  principal_arn = module.iam_assumable_role_with_oidc_argocd_principal.arn
+  principal_arn = aws_iam_role.argocd.arn
 
   access_scope {
-    type = "cluster"
+    namespaces = "foo-namespace"
+    type       = "namespace"
   }
 
+  depends_on = [
+    aws_eks_access_entry.argocd,
+  ]
 }
+
+resource "aws_iam_role" "access_entry_argocd" {
+
+  name = "access-entry-argocd"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Principal = {
+          AWS = "arn:aws:iam::*****:role/aws-reserved/sso.amazonaws.com/ap-northeast-1/AWSReservedSSO_*****"
+        }
+        Action = "sts:AssumeRole"
+      }
+    ]
+  })
+}
+
 ```
 
-> - https://aws.amazon.com/blogs/containers/a-deep-dive-into-simplified-amazon-eks-access-management-controls/
-> - https://dev.classmethod.jp/articles/eks-access-management-with-iam-access-entry/
-> - https://github.com/argoproj/argo-cd/issues/2347#issuecomment-1963555799
+> - https://mohibulalam75.medium.com/aws-eks-authentication-a-guide-for-iam-principals-with-terraform-example-71c234e847ab
 
 <br>
 
@@ -449,8 +472,8 @@ resource "aws_eks_access_policy_association" "argocd" {
 | AWS API Gateway + NLB                    |                             | ・https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/                                                                                                                                                                                                      |
 | EBS、AWS EFS                             | PersistentVolume            | ・https://docs.aws.amazon.com/eks/latest/userguide/storage.html                                                                                                                                                                                                                           |
 | Secrets Manager                          | Secret                      | ・https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html                                                                                                                                                                                                                    |
-| IAMユーザー                              | ServiceAccount、UserAccount | ・https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                                                     |
-| IAMロール                                | Role、ClusterRole           | ・https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                                                     |
+| AWS IAMユーザー                          | ServiceAccount、UserAccount | ・https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                                                     |
+| AWS IAMロール                            | Role、ClusterRole           | ・https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                                                     |
 
 > - https://zenn.dev/yoshinori_satoh/articles/2021-02-13-eks-ecs-compare
 
@@ -581,7 +604,7 @@ spec:
 
 `(2)`
 
-: IRSAで使用するIAMロールの信頼されたエンティティに、AWS EKS ClusterのOIDCプロバイダーURLやユーザー名 (`system:serviceaccount:<Namespac名>:<ServiceAccount名>`) を設定する。
+: IRSAで使用するAWS IAMロールの信頼されたエンティティに、AWS EKS ClusterのOIDCプロバイダーURLやユーザー名 (`system:serviceaccount:<Namespac名>:<ServiceAccount名>`) を設定する。
 
 ```yaml
 {"Version": "2012-10-17", "Statement": [
@@ -608,9 +631,9 @@ spec:
 
 `(3)`
 
-: ServiceAccountの`.metadata.annotations.eks.amazonaws.com/role-arn`キーでIAMロールのARNを設定する。
+: ServiceAccountの`.metadata.annotations.eks.amazonaws.com/role-arn`キーでAWS IAMロールのARNを設定する。
 
-     これにより、AWS EKSで認証済みのServiceAccountにIAMロールを紐付けることができるようになる。
+     これにより、AWS EKSで認証済みのServiceAccountにAWS IAMロールを紐付けることができるようになる。
 
      `automountServiceAccountToken`キーが有効化されていることを確認する。
 
@@ -619,7 +642,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   annotations:
-    eks.amazonaws.com/role-arn: <IAMロールのARN>
+    eks.amazonaws.com/role-arn: <AWS IAMロールのARN>
   name: <信頼されたエンティティで指定したユーザー名にあるServiceAccount名>
   namespace: <信頼されたエンティティで指定したユーザー名にあるNamespace名>
 automountServiceAccountToken: "true"
@@ -640,9 +663,9 @@ spec:
   containers: ...
 ```
 
-もし`.metadata.annotations.eks.amazonaws.com/role-arn`キーを使用しない場合、KubernetesリソースからAWSリソースへのアクセスがあった時は、AWS EC2ワーカーNodeやFargateワーカーNodeのIAMロールが使用される。
+もし`.metadata.annotations.eks.amazonaws.com/role-arn`キーを使用しない場合、KubernetesリソースからAWSリソースへのアクセスがあった時は、AWS EC2ワーカーNodeやFargateワーカーNodeのAWS IAMロールが使用される。
 
-IRSAが登場するまでは、AWS EKS上でのワーカーNode (例：AWS EC2、Fargate) にしかIAMロールを紐付けることができず、KubernetesリソースにIAMロールを直接的に紐付けることはできなかった。
+IRSAが登場するまでは、AWS EKS上でのワーカーNode (例：AWS EC2、Fargate) にしかAWS IAMロールを紐付けることができず、KubernetesリソースにAWS IAMロールを直接的に紐付けることはできなかった。
 
 ServiceAccountのトークンは、コンテナにファイルとしてマウントされている。
 
@@ -1668,7 +1691,7 @@ data:
 
      一方で、Pod内のコンテナには認可スコープが付与されない。
 
-     そのため、Podが作成された後に必要な認可スコープ (例：コンテナがRDSにリクエストを送信する認可スコープなど) に関しては、ServiceAccountとIAMロールの紐付けが必要である。
+     そのため、Podが作成された後に必要な認可スコープ (例：コンテナがRDSにリクエストを送信する認可スコープなど) に関しては、ServiceAccountとAWS IAMロールの紐付けが必要である。
 
 > - https://nishipy.com/archives/1122
 > - https://toris.io/2021/01/how-kubernetes-pulls-private-container-images-on-aws/

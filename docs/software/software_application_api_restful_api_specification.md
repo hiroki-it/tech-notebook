@@ -90,9 +90,9 @@ $ redoc-cli bundle openapi.yaml redoc.html
 > - https://qiita.com/icck/items/97d00495ec324e1902d6
 > - https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc
 
-#### ▼ Swagger UI / Swagger Codegenの場合
+#### ▼ Swagger UI／Swagger Codegenの場合
 
-Swagger UI / Swagger Codegenを使用して、OpenAPI仕様から静的ファイルを作成する。
+Swagger UI／Swagger Codegenを使用して、OpenAPI仕様から静的ファイルを作成する。
 
 > - https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc
 

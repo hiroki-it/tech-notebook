@@ -150,7 +150,7 @@ SSHとFTPを組み合わせたプロトコルではなく、SSHの能力をよ�
 
 ## 03. 【トランスポート層】ヘッダー情報の暗号化技術
 
-### SSL/TLS：Secure Sockets Layer / Transport Layer Security
+### SSL/TLS：Secure Sockets Layer／Transport Layer Security
 
 #### ▼ SSL/TLSとは
 
