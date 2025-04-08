@@ -28386,7 +28386,7 @@
 <h3 id="kube-apiserver">kube-apiserver<a class="headerlink" href="#kube-apiserver" title="Permanent link">&para;</a></h3>
 <h4 id="aws-auth-configmap-kubernetes-rbac">▼ aws-auth (ConfigMap) を経由したKubernetes RBACとの連携<a class="headerlink" href="#aws-auth-configmap-kubernetes-rbac" title="Permanent link">&para;</a></h4>
 <p><img alt="eks_auth_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_auth_architecture.png" /></p>
-<p>ConfigMapを経由して、KubernetesのRBACと連携することにより、<code>kubectl</code>クライアントの認可スコープを制御する。</p>
+<p>ConfigMapを経由してKubernetesのRBACと連携することにより、<code>kubectl</code>クライアント (例：開発者、ArgoCDなど) の認可スコープを制御する。</p>
 <p>Kubernetesリソースの認可スコープは、IRSAで制御する。</p>
 <dl>
 <dt><code>(1)</code></dt>
@@ -28407,7 +28407,7 @@
 <dd>
 <p>もし認証に成功していた場合に、aws-iam-authenticator-serverは、ConfigMap (aws-auth) を確認する。</p>
 <p>このConfigMapには、そのIAMユーザーに紐づくUserAccount / ServiceAccount / Group、RoleBinding / ClusterRoleBindingが定義されている。</p>
-<p>この時、<code>kubectl</code>クライアントの場合はUserAccount、Kubernetesリソースの場合はServiceAccount、を取得する。</p>
+<p>この時、<code>kubectl</code>クライアント (例：開発者、ArgoCDなど) の場合はUserAccount、Kubernetesリソースの場合はServiceAccount、を取得する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -28451,12 +28451,12 @@
 </ul>
 </blockquote>
 <h4 id="iamkubernetes-cluster">▼ プリンシパルIAMロールとアクセスエントリーを経由したKubernetes Clusterの操作<a class="headerlink" href="#iamkubernetes-cluster" title="Permanent link">&para;</a></h4>
-<p>プリンシパルIAMロールとアクセスエントリーを使用する場合、従来のaws-auth (ConfigMap) と比較して、AWS EKSへのアクセス制御をKubernetesリソースで管理する必要がない。</p>
+<p>プリンシパルIAMロールとアクセスエントリーを使用することにより、<code>kubectl</code>クライアント (例：開発者、ArgoCDなど) の認可スコープを制御する。</p>
+<p>プリンシパルIAMロールとアクセスエントリーを使用する場合、従来のaws-auth (ConfigMap) と比較して、AWS EKSの認証をKubernetesリソースで管理する必要がない。</p>
 <p>プリンシパルIAMロールに紐づくPodがAWS EKSに接続する時に、アクセスエントリーがこれを仲介する。</p>
-<p>アクセスエントリーは、アクセスエントリーポリシーをIAMロールに動的にを設定する。</p>
-<p>プリンシパルIAMロールとアクセスエントリーを経由して、<code>kubectl</code>クライアントの認可スコープを制御する。</p>
+<p>Kubernetesリソースの認可スコープをIRSAで制御し、この仕組みの中で、アクセスエントリーはアクセスエントリーポリシーをIAMロールに動的にを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ArgoCDのPodにスイッチロールの権限を持たせるためのIAMロール</span>
-<span class="c1"># 対象のAWS EKS ClusterにアクセスするためのIAMロールにスイッチロールできる</span>
+<span class="c1"># 対象のAWS EKS Clusterに接続するためのIAMロールにスイッチロールできる</span>
 <span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_argocd_access_entry_service&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
@@ -28482,7 +28482,7 @@
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="c1"># 対象のAWS EKS ClusterにアクセスするためのIAMロール</span>
+<span class="c1"># 対象のAWS EKS Clusterに接続するためのIAMロール</span>
 <span class="c1"># 対象のAWS EKS Clusterでアクセスエントリーを設定する必要がある</span>
 <span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_argocd_access_entry_cluster&quot;</span><span class="w"> </span><span class="p">{</span>
 
@@ -28517,7 +28517,7 @@
 
 <span class="w">  </span><span class="na">cluster_name</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_cluster.foo_argocd.name</span>
 
-<span class="c1">  // アクセス元にどのようなIAMポリシーを付与するかを設定する</span>
+<span class="c1">  // 送信元にどのようなIAMポリシーを付与するかを設定する</span>
 <span class="w">  </span><span class="na">policy_arn</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy&quot;</span>
 
 <span class="w">  </span><span class="na">principal_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.iam_assumable_role_with_oidc_argocd_principal.arn</span>
@@ -28674,7 +28674,7 @@
 <h4 id="irsa">▼ IRSAとは<a class="headerlink" href="#irsa" title="Permanent link">&para;</a></h4>
 <p><img alt="eks_oidc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png" /></p>
 <p>特にKubernetesリソースの認可スコープを制御する仕組みのこと。</p>
-<p><code>kubectl</code>クライアントの認可スコープは、RBACで制御する。</p>
+<p><code>kubectl</code>クライアント (例：開発者、ArgoCDなど) の認可スコープは、RBACで制御する。</p>
 <p>AWS EKSをSSOのIDプロバイダーとして使用することにより、IAMの認証フェーズをAWS EKSに委譲する。</p>
 <h4 id="_12">▼ セットアップ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>ここでは、SSOの種類でOIDCを選ぶとする。</p>
@@ -30055,7 +30055,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年2月22日 18:43:37">2025-02-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月8日 20:29:24">2025-04-08</span>
   </span>
 
     
