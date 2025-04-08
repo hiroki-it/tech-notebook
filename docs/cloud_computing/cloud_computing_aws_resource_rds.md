@@ -284,3 +284,19 @@ AWS RDSプロキシは、AWS RDSの同時接続の上限数を考慮しつつ、
 > - https://blog.sgnet.co.jp/2020/10/java-db.html
 
 <br>
+
+### ユースケース
+
+#### ▼ AWS LambdaのデータベースにAWS RDSを使用する場合
+
+リクエスト駆動型アプリケーションの場合、複数のリクエストに対して単一のDB接続を再利用できる。
+
+一方で、イベント駆動型アプリケーションの場合、単一リクエストに対して単一のDB接続を使用する。
+
+AWS RDSにはDB接続の上限数があり、前段にAWS RDSプロキシーがないとすぐに上限数に達してしまう。
+
+![aws_rds-proxy_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_rds-proxy_lambda.png)
+
+> - https://qiita.com/teradonburi/items/86400ea82a65699672ad
+
+<br>

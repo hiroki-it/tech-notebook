@@ -337,6 +337,8 @@ data:
 
 `extensionProviders`キーで定義したもののうち、デフォルトで使用するプロバイダーを設定する。
 
+Telemetryで自動的に選択される、
+
 Envoyを使用してアクセスログを収集する場合、`.mesh.defaultProviders.accessLogging`キーには何も設定しなくてよい。
 
 また、Istioがデフォルトで用意している分散トレースツールを使用する場合も同様に不要である。

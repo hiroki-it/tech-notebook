@@ -690,14 +690,20 @@ $ minikube ssh
 $ top
 
 top - 09:28:27 up 43 min,  0 users,  load average: 19.16, 13.99, 13.93
-Tasks:  31 total,   1 running,  30 sleeping,   0 stopped,   0 zombie
-%Cpu(s): 61.8 us, 22.7 sy,  0.0 ni,  4.7 id,  2.6 wa,  0.0 hi,  8.2 si,  0.0 st # CPU
-MiB Mem :   8931.8 total,    163.0 free,   7356.1 used,   1412.7 buff/cache # メモリ
-MiB Swap:   1024.0 total,    844.3 free,    179.7 used.   1298.8 avail Mem 
 
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND                                                                                                                                 
-    991 root      20   0 1856264 581988  28852 S  27.8   6.4   6:35.21 kube-apiserver                                                                                                                          
-    579 root      20   0 2486572  78828  18660 S  10.6   0.9   2:36.03 kubelet                                                                                                                                 
+Tasks:  31 total,   1 running,  30 sleeping,   0 stopped,   0 zombie
+
+# CPU
+%Cpu(s): 61.8 us, 22.7 sy,  0.0 ni,  4.7 id,  2.6 wa,  0.0 hi,  8.2 si,  0.0 st
+
+# メモリ
+# Dockerドライバーの場合、total値はDockerプロセスの全体量である。ここから、cpuとmemoryの上限値しか使えない
+MiB Mem :   8931.8 total,    163.0 free,   7356.1 used,   1412.7 buff/cache # メモリ
+MiB Swap:   1024.0 total,    844.3 free,    179.7 used.   1298.8 avail Mem
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+    991 root      20   0 1856264 581988  28852 S  27.8   6.4   6:35.21 kube-apiserver
+    579 root      20   0 2486572  78828  18660 S  10.6   0.9   2:36.03 kubelet
 ...
 ```
 

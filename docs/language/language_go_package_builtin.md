@@ -174,7 +174,7 @@ should not use built-in type string as key for value; define your own type to av
 
 コンテキストにタイムアウト時間を設定する。
 
-リクエスト/レスポンスを宛先に送信できず、タイムアウトになった場合、`context deadline exceeded`のエラーを返却する。
+リクエスト／レスポンスを宛先に送信できず、タイムアウトになった場合、`context deadline exceeded`のエラーを返却する。
 
 タイムアウト時間を設定しない場合、タイムアウトはせず、無限に待機する。
 

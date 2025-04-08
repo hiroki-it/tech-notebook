@@ -817,7 +817,7 @@ baz-service.baz-namespace.svc.cluster.local   50003                        v1   
 
 ### ServiceEntryとは
 
-ServiceEntryは、コンフィグストレージにサービスメッシュ外部のドメイン名などを登録する。
+ServiceEntryは、クラスター外のドメイン名などを登録する。
 
 Istio`v1.3`より前は、ConfigMapでデフォルトで`REGISTRY_ONLY`になっていたため、ServiceEntryでマイクロサービスを登録しない限り、サービスメッシュ外部とは通信できなかった。
 
@@ -832,6 +832,16 @@ Istio`v1.3`より前は、ConfigMapでデフォルトで`REGISTRY_ONLY`になっ
 > - https://tech.uzabase.com/entry/2018/11/26/110407
 > - https://jimmysong.io/blog/externalname-and-serviceentry/
 > - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services
+
+<br>
+
+### メッシュ外とクラスター内Podとの通信
+
+ServiceEntryは、クラスター外の宛先をサービスメッシュに登録する。
+
+クラスター内の宛先の場合、クラスター内のPodでサービスメッシュ外のKubernetes Serviceを指定する。
+
+> - https://stackoverflow.com/questions/61853610/serviceentry-vs-service-and-endpoints
 
 <br>
 
