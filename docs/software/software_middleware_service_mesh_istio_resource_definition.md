@@ -3793,6 +3793,14 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#TLSRoute
 
+#### ▼ Istio EgressGatewayへの通信
+
+`.spec.tls`キーで送信する場合、Istio EgressGatewayはパケットペイロードを復号できないため、プロトコルをTCPとして扱う。
+
+![istio-egressgateway_tls_passthrough](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_tls_passthrough.png)
+
+> - https://istio.io/v1.16/blog/2018/egress-monitoring-access-control/#comparison-with-https-egress-traffic-control
+
 <br>
 
 ## 13. WorkloadEntry

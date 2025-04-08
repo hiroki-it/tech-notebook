@@ -308,12 +308,23 @@ Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのク
 
 ### 送信元PodとIstio EgressGateway間の通信
 
-- HTTP
-- HTTPS
-- HTTPS (相互TLS)
+#### ▼ 相互TLS
+
+送信元マイクロサービスはHTTPを指定し、送信元マイクロサービスのクライアント証明書とIstio EgressGatewayのSSL証明書で相互TLSを実施する。
+
+![istio-egressgateway_mtls](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_mtls.png)
 
 > - https://istio.io/v1.16/blog/2018/egress-monitoring-access-control/#comparison-with-https-egress-traffic-control
-> - https://cloud.google.com/service-mesh/docs/security/egress-gateway-gke-tutorial?hl=ja
+> - https://cloud.google.com/service-mesh/docs/security/egress-gateway-gke-tutorial?hl=ja#tls_origination_at_the_egress_gateway
+
+#### ▼ 通常TLS (Passthrough)
+
+送信元マイクロサービスはHTTPSを指定し、サービスメッシュ外の宛先が持つSSL証明書で通常TLSを実施する。
+
+![istio-egressgateway_tls_passthrough](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_tls_passthrough.png)
+
+> - https://istio.io/v1.16/blog/2018/egress-monitoring-access-control/#comparison-with-https-egress-traffic-control
+> - https://cloud.google.com/service-mesh/docs/security/egress-gateway-gke-tutorial?hl=ja#pass-through_of_httpstls_connections
 
 <br>
 
