@@ -327,7 +327,7 @@ Istio EgressGatewayはパケットペイロードを復号化できるため、�
 
 Istio EgressGatewayはパケットペイロードを復号化できないため、プロトコルをTCPとして扱う。
 
-そのため、IstioのメトリクスではTCPとして処理され、またIstio EgressGatewayではスパンを作成できない。
+そのため、Istio EgressGateway上を通過するTLSはIstioのメトリクスではTCPとして処理され、またIstio EgressGatewayではスパンを作成できない。
 
 ![istio-egressgateway_tls_passthrough](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_tls_passthrough.png)
 
