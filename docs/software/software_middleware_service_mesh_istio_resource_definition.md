@@ -3797,6 +3797,8 @@ spec:
 
 `.spec.tls`キーで送信する場合、Istio EgressGatewayはパケットペイロードを復号化できないため、プロトコルをTCPとして扱う。
 
+そのため、IstioのメトリクスではTCPとして処理され、またIstio EgressGatewayではスパンを作成できない。
+
 ![istio-egressgateway_tls_passthrough](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_tls_passthrough.png)
 
 > - https://istio.io/v1.16/blog/2018/egress-monitoring-access-control/#comparison-with-https-egress-traffic-control

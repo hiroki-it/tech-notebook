@@ -314,6 +314,8 @@ Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのク
 
 Istio EgressGatewayはパケットペイロードを復号化できるため、プロトコルをHTTPとして扱う。
 
+そのため、IstioのメトリクスではHTTPとして処理され、またIstio EgressGatewayではスパンを作成できる。
+
 ![istio-egressgateway_mtls](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_mtls.png)
 
 > - https://istio.io/v1.16/blog/2018/egress-monitoring-access-control/#comparison-with-https-egress-traffic-control
@@ -324,6 +326,8 @@ Istio EgressGatewayはパケットペイロードを復号化できるため、�
 送信元マイクロサービスはHTTPSを指定し、サービスメッシュ外の宛先が持つSSL証明書で通常TLSを実施する。
 
 Istio EgressGatewayはパケットペイロードを復号化できないため、プロトコルをTCPとして扱う。
+
+そのため、IstioのメトリクスではTCPとして処理され、またIstio EgressGatewayではスパンを作成できない。
 
 ![istio-egressgateway_tls_passthrough](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_tls_passthrough.png)
 
