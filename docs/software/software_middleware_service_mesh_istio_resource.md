@@ -312,6 +312,8 @@ Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのク
 
 送信元マイクロサービスはHTTPを指定し、送信元マイクロサービスのクライアント証明書とIstio EgressGatewayのSSL証明書で相互TLSを実施する。
 
+Istio EgressGatewayはパケットペイロードを復号化できるため、プロトコルをHTTPとして扱う。
+
 ![istio-egressgateway_mtls](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_mtls.png)
 
 > - https://istio.io/v1.16/blog/2018/egress-monitoring-access-control/#comparison-with-https-egress-traffic-control
@@ -320,6 +322,8 @@ Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのク
 #### ▼ 通常TLS (Passthrough)
 
 送信元マイクロサービスはHTTPSを指定し、サービスメッシュ外の宛先が持つSSL証明書で通常TLSを実施する。
+
+Istio EgressGatewayはパケットペイロードを復号化できないため、プロトコルをTCPとして扱う。
 
 ![istio-egressgateway_tls_passthrough](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_tls_passthrough.png)
 

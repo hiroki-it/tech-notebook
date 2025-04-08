@@ -3795,7 +3795,7 @@ spec:
 
 #### ▼ Istio EgressGatewayへの通信
 
-`.spec.tls`キーで送信する場合、Istio EgressGatewayはパケットペイロードを復号できないため、プロトコルをTCPとして扱う。
+`.spec.tls`キーで送信する場合、Istio EgressGatewayはパケットペイロードを復号化できないため、プロトコルをTCPとして扱う。
 
 ![istio-egressgateway_tls_passthrough](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_tls_passthrough.png)
 
