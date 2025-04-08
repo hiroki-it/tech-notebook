@@ -209,7 +209,7 @@ $ kubectl get pod
 
 ![eks_auth_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_auth_architecture.png)
 
-ConfigMapを経由して、KubernetesのRBACと連携することにより、`kubectl`クライアントの認可スコープを制御する。
+ConfigMapを経由してKubernetesのRBACと連携することにより、`kubectl`クライアント (例：開発者、ArgoCDなど) の認可スコープを制御する。
 
 Kubernetesリソースの認可スコープは、IRSAで制御する。
 
@@ -235,7 +235,7 @@ Kubernetesリソースの認可スコープは、IRSAで制御する。
 
      このConfigMapには、そのIAMユーザーに紐づくUserAccount / ServiceAccount / Group、RoleBinding / ClusterRoleBindingが定義されている。
 
-     この時、`kubectl`クライアントの場合はUserAccount、Kubernetesリソースの場合はServiceAccount、を取得する。
+     この時、`kubectl`クライアント (例：開発者、ArgoCDなど) の場合はUserAccount、Kubernetesリソースの場合はServiceAccount、を取得する。
 
 ```yaml
 apiVersion: v1
@@ -278,17 +278,20 @@ data:
 
 #### ▼ プリンシパルIAMロールとアクセスエントリーを経由したKubernetes Clusterの操作
 
-プリンシパルIAMロールとアクセスエントリーを使用する場合、従来のaws-auth (ConfigMap) と比較して、AWS EKSへのアクセス制御をKubernetesリソースで管理する必要がない。
+プリンシパルIAMロールとアクセスエントリーを使用することにより、`kubectl`クライアント (例：開発者、ArgoCDなど) の認可スコープを制御する。
+
+
+プリンシパルIAMロールとアクセスエントリーを使用する場合、従来のaws-auth (ConfigMap) と比較して、AWS EKSの認証をKubernetesリソースで管理する必要がない。
 
 プリンシパルIAMロールに紐づくPodがAWS EKSに接続する時に、アクセスエントリーがこれを仲介する。
 
-アクセスエントリーは、アクセスエントリーポリシーをIAMロールに動的にを設定する。
+Kubernetesリソースの認可スコープをIRSAで制御し、この仕組みの中で、アクセスエントリーはアクセスエントリーポリシーをIAMロールに動的にを設定する。
 
-プリンシパルIAMロールとアクセスエントリーを経由して、`kubectl`クライアントの認可スコープを制御する。
+
 
 ```terraform
 # ArgoCDのPodにスイッチロールの権限を持たせるためのIAMロール
-# 対象のAWS EKS ClusterにアクセスするためのIAMロールにスイッチロールできる
+# 対象のAWS EKS Clusterに接続するためのIAMロールにスイッチロールできる
 module "iam_assumable_role_with_oidc_argocd_access_entry_service" {
 
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
@@ -314,7 +317,7 @@ module "iam_assumable_role_with_oidc_argocd_access_entry_service" {
   ]
 }
 
-# 対象のAWS EKS ClusterにアクセスするためのIAMロール
+# 対象のAWS EKS Clusterに接続するためのIAMロール
 # 対象のAWS EKS Clusterでアクセスエントリーを設定する必要がある
 module "iam_assumable_role_argocd_access_entry_cluster" {
 
@@ -351,7 +354,7 @@ resource "aws_eks_access_policy_association" "argocd" {
 
   cluster_name  = aws_eks_cluster.foo_argocd.name
 
-  // アクセス元にどのようなIAMポリシーを付与するかを設定する
+  // 送信元にどのようなIAMポリシーを付与するかを設定する
   policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
 
   principal_arn = module.iam_assumable_role_with_oidc_argocd_principal.arn
@@ -480,7 +483,7 @@ PodのファイルはワーカーNodeにマウントされるため、異なる�
 
 特にKubernetesリソースの認可スコープを制御する仕組みのこと。
 
-`kubectl`クライアントの認可スコープは、RBACで制御する。
+`kubectl`クライアント (例：開発者、ArgoCDなど) の認可スコープは、RBACで制御する。
 
 AWS EKSをSSOのIDプロバイダーとして使用することにより、IAMの認証フェーズをAWS EKSに委譲する。
 

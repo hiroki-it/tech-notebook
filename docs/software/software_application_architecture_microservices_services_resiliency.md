@@ -187,7 +187,7 @@ blast-radiusを最小限にできる。
 
 ## 09 .DBデータのキャッシュ
 
-頻繁にアクセスするデータをマイクロサービスのメモリに保存し、他のマイクロサービスやDBへの接続を最小限に抑える。
+頻繁に使用するデータをマイクロサービスのメモリに保存し、他のマイクロサービスやDBへの接続を最小限に抑える。
 
 > - https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns
 

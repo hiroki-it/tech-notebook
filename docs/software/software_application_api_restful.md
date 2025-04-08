@@ -118,7 +118,7 @@ POSTリクエストとPUT送信の重要な違いについてまとめる。
 
 すでにHTTPメソッド自体に動詞の意味合いが含まれるため、エンドポイントに動詞を含めないようにする。
 
-この時、アクセスするリソース名がわかりやすいような名詞を使用する。
+この時、操作するリソース名がわかりやすいような名詞を使用する。
 
 > - https://cloud.google.com/blog/products/api-management/restful-api-design-nouns-are-good-verbs-are-bad
 > - https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/#h-use-nouns-instead-of-verbs-in-endpoint-paths
