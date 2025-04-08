@@ -13,7 +13,7 @@ description: マイクロサービスアーキテクチャ＠AWSの知見を記�
 
 <br>
 
-## 03. リクエスト駆動型マイクロサービスアーキテクチャ
+## 03. AWS ECSによるリクエスト駆動型マイクロサービスアーキテクチャ
 
 ### AWS ECSによるマイクロサービスアーキテクチャ
 
@@ -25,11 +25,11 @@ description: マイクロサービスアーキテクチャ＠AWSの知見を記�
 
 #### ▼ マルチECSサービス
 
-ECSクラスターに複数のECSサービスを作成する。
+AWS ECSクラスターに複数のAWS ECSサービスを作成する。
 
-ECSサービスをマイクロサービス単位で稼働させる。
+AWS ECSサービスをマイクロサービス単位で稼働させる。
 
-ただ、ECSによるマイクロサービスアーキテクチャはアプリとインフラの責務を分離できないため、非推奨である。
+ただ、AWS ECSによるマイクロサービスアーキテクチャはアプリとインフラの責務を分離できないため、非推奨である。
 
 Kubernetes Cluster上でこれを稼働させることが推奨である。
 
@@ -37,19 +37,28 @@ Kubernetes Cluster上でこれを稼働させることが推奨である。
 
 > - https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/
 
-#### ▼ ECSサービス検出
+#### ▼ AWS Route53とAWS Cloud Mapによるサービス検出
 
-AWS Route53にECSタスクの宛先情報を動的に追加削除することにより、ECSタスクが他のECSタスクと通信可能にする。
+AWS CloudMapを使用して、AWS ECSタスクの宛先情報を動的にAWS Route53に追加削除する。
 
-![ecs_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_service-discovery.png)
+これにより、AWS ECSタスクが他のECSタスクと通信可能にする。
+
+![aws_ecs_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_ecs_service-discovery.png)
 
 > - https://practical-aws.dev/p/ecs-service-discovery/
 > - https://medium.com/@toddrosner/ecs-service-discovery-1366b8a75ad6
 > - https://dev.classmethod.jp/articles/ecs-service-discovery/
+> - https://aws.amazon.com/jp/builders-flash/202409/web-app-architecture-design-pattern/
+
+#### ▼ AWS ECS Service Connectによるサービス検出
+
+![aws_ecs_service-connect](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_ecs_service-connect.png)
+
+> - https://aws.amazon.com/jp/builders-flash/202409/web-app-architecture-design-pattern/
 
 <br>
 
-## 04. イベント駆動型マイクロサービスアーキテクチャ
+## 04. AWS Lambdaによるイベント駆動型マイクロサービスアーキテクチャ
 
 ### AWS Lambdaによるイベント駆動型マイクロサービスアーキテクチャ
 
