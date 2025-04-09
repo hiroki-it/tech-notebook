@@ -626,8 +626,8 @@ spec:
         - key: karpenter.sh/capacity-type
           operator: In
           values:
+            # スポットインスタンス
             - spot
-            - on-demand
 ```
 
 **＊実装例＊**
@@ -657,7 +657,7 @@ spec:
             - medium
             - large
             - xlarge
-          # オンデマンドなインスタンスを指定する
+          # オンデマンドインスタンスを指定する
         - key: kubernetes.io/os
           operator: In
           values:
@@ -665,6 +665,7 @@ spec:
         - key: karpenter.sh/capacity-type
           operator: In
           values:
+            # オンデマンドインスタンス
             - on-demand
 ```
 

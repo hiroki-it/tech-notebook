@@ -310,7 +310,7 @@ Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのク
 
 #### ▼ 相互TLS
 
-送信元マイクロサービスはHTTPを指定し、送信元マイクロサービスのクライアント証明書とIstio EgressGatewayのSSL証明書で相互TLSを実施する。
+送信元マイクロサービスはHTTPを指定し、`istio-proxy`コンテナのクライアント証明書とIstio EgressGatewayのSSL証明書で相互TLSを実施する。
 
 Istio EgressGatewayはパケットペイロードを復号化できるため、プロトコルをHTTPとして扱う。
 
