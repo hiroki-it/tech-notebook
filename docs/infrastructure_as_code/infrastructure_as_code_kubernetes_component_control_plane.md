@@ -36,7 +36,7 @@ description: コントロールプレーンコンポーネント＠Kubernetesの
 
 kubernetesマスターともいう。コントロールプレーンコンポーネントが稼働する。
 
-クライアント (`kubectl`クライアント、Kubernetesリソース) がKubernetesリソースを操作しようとリクエストを送信すると、まず最初に、コントロールプレーンNode上のkube-apiserverがリクエストを受信する。
+kube-apiserverクライアント (`kubectl`クライアント、Kubernetesリソース) がKubernetesリソースを操作しようとリクエストを送信すると、まず最初に、コントロールプレーンNode上のkube-apiserverがリクエストを受信する。
 
 > - https://kubernetes.io/docs/concepts/#kubernetes%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC
 > - https://medium.com/easyread/step-by-step-introduction-to-basic-concept-of-kubernetes-e20383bdd118
@@ -44,7 +44,7 @@ kubernetesマスターともいう。コントロールプレーンコンポー�
 
 ### クライアント
 
-クライアント (`kubectl`クライアント、Kubernetesリソース) は、kube-apiserverにリクエストを送信し、Kubernetesリソースを操作する。
+kube-apiserverクライアント (`kubectl`クライアント、Kubernetesリソース) は、kube-apiserverにリクエストを送信し、Kubernetesリソースを操作する。
 
 > - https://github.com/kubernetes/design-proposals-archive/blob/main/architecture/resource-management.md
 

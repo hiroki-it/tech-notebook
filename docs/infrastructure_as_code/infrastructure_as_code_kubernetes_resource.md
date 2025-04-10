@@ -1131,12 +1131,12 @@ Namespaceが異なれば、`.metadata.labels`キーに同じ値 (例：同じ名
 
 #### ▼ 初期Namespace
 
-| 名前              | 説明                                                                                                          |
-| ----------------- | ------------------------------------------------------------------------------------------------------------- |
-| `default`         | 任意のKubernetesリソースを配置する。                                                                          |
-| `kube-node-lease` | Kubernetesリソースのうちで、特にLeaseを配置する。                                                             |
-| `kube-public`     | 全てのクライアント (`kubectl`クライアント、Kubernetesリソース) に公開しても良いKubernetesリソースを配置する。 |
-| `kube-system`     | Kubernetesが自動的に作成したKubernetesリソースを配置する。ユーザーが設定する必要はない。                      |
+| 名前              | 説明                                                                                                                        |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `default`         | 任意のKubernetesリソースを配置する。                                                                                        |
+| `kube-node-lease` | Kubernetesリソースのうちで、特にLeaseを配置する。                                                                           |
+| `kube-public`     | 全てのkube-apiserverクライアント (`kubectl`クライアント、Kubernetesリソース) に公開しても良いKubernetesリソースを配置する。 |
+| `kube-system`     | Kubernetesが自動的に作成したKubernetesリソースを配置する。ユーザーが設定する必要はない。                                    |
 
 > - https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#initial-namespaces
 

@@ -35,7 +35,7 @@ mutating-admissionステップは、リクエストの内容を変更する。
 
 またvalidating-admissionステップは、リクエストを許可するか否かを決める。
 
-クライアント (`kubectl`クライアント、Kubernetesリソース) からのリクエスト (例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送) 時に、各ステップでadmissionプラグインによる処理 (例：アドオンビルトイン処理、ユーザー定義の処理) を発火させられる。
+kube-apiserverクライアント (`kubectl`クライアント、Kubernetesリソース) からのリクエスト (例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送) 時に、各ステップでadmissionプラグインによる処理 (例：アドオンビルトイン処理、ユーザー定義の処理) を発火させられる。
 
 ![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_architecture.png)
 

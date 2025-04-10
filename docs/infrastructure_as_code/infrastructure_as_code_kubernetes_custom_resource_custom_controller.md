@@ -129,7 +129,7 @@ kube-controller-managerは、NodeにあるCustom Controllerを反復的に実行
 
 これにより、カスタムリソースはCRDの宣言通りに定期的に修復される (reconciliationループ) 。
 
-ただし、Custom Controller自体は`kubectl`クライアントが作成する必要がある。
+ただし、Custom Controller自体はkube-apiserverクライアント (例：`kubectl`クライアント、Kubernetesリソースなど) が作成する必要がある。
 
 <br>
 

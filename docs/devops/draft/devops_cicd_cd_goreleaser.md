@@ -13,6 +13,22 @@ description: goreleaser＠CDツールの知見を記録しています。
 
 <br>
 
+## arhives
+
+### format
+
+作成するパッケージの圧縮形式を設定する。
+
+```yaml
+archives:
+  - format: zip
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+```
+
+<br>
+
+## builds
+
 ### id
 
 ```yaml
@@ -126,10 +142,13 @@ builds:
 
 ### goos
 
+作成するパッケージの対応OSを設定する。
+
 ```yaml
 builds:
   - goos:
-      - freebsd
+      - linux
+      - darwin
       - windows
 ```
 

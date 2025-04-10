@@ -238,13 +238,13 @@ kube-apiserverの監査ログから非推奨apiVersionを検出する。
 
 ![eks_auth_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_auth_architecture.png)
 
-ConfigMapを経由してKubernetesのRBACと連携することにより、`kubectl`クライアント (例：開発者、ArgoCDなど) の認可スコープを制御する。
+ConfigMapを経由してKubernetesのRBACと連携することにより、Kubernetes Cluster外部のkube-apiserverクライアント (例：開発者、GitOps CDツール、監視ツールなど) の認可スコープを制御する。
 
 新しいアクセスエントリーよりもセットアップが難しい。
 
 `(1)`
 
-: あらかじめ、クライアント (`kubectl`クライアント、Kubernetesリソース) に紐づくAWS IAMユーザーを作成しておく。
+: あらかじめ、kube-apiserverクライアント (`kubectl`クライアント、Kubernetesリソース) に紐づくAWS IAMユーザーを作成しておく。
 
 `(2)`
 
@@ -264,7 +264,7 @@ ConfigMapを経由してKubernetesのRBACと連携することにより、`kubec
 
      このConfigMapには、そのAWS IAMユーザーに紐づくUserAccount／ServiceAccount／Group／RoleBinding／ClusterRoleBindingが定義されている。
 
-     この時、`kubectl`クライアント (例：開発者、ArgoCDなど) の場合はUserAccount、Kubernetesリソースの場合はServiceAccount、を取得する。
+     この時、Kubernetes Cluster外部のkube-apiserverクライアント (例：開発者、GitOps CDツール、監視ツールなど) の場合はUserAccount、Kubernetesリソースの場合はServiceAccount、を取得する。
 
 ```yaml
 apiVersion: v1
@@ -311,7 +311,7 @@ data:
 
 #### ▼ 概要
 
-プリンシパルAWS IAMロールとアクセスエントリーを使用することにより、`kubectl`クライアント (例：開発者、ArgoCDなど) の認可スコープを制御する。
+プリンシパルAWS IAMロールとアクセスエントリーを使用することにより、Kubernetes Cluster外部のkube-apiserverクライアント (例：開発者、GitOps CDツール、監視ツールなど) の認可スコープを制御する。
 
 プリンシパルAWS IAMロールとアクセスエントリーを使用する場合、従来のaws-auth (ConfigMap) と比較して、より簡単にセットアップできる。
 
@@ -372,7 +372,7 @@ module "iam_assumable_role_argocd_access_entry_cluster" {
 }
 ```
 
-`kubectl`クライアント (例：開発者、ArgoCDなど) のAWS EKS ClusterのSSL証明書をbase64方式エンコードした値 (`-----BEGIN CERTIFICATE-----`から`-----END CERTIFICATE-----`まで) を`caData`として設定する。
+Kubernetes Cluster外部のkube-apiserverクライアント (例：開発者、GitOps CDツール、監視ツールなど) のAWS EKS ClusterのSSL証明書をbase64方式エンコードした値 (`-----BEGIN CERTIFICATE-----`から`-----END CERTIFICATE-----`まで) を`caData`として設定する。
 
 `aws eks describe-cluster`コマンドやコンソール画面から確認できる。
 
@@ -521,7 +521,7 @@ PodのファイルはワーカーNodeにマウントされるため、異なる�
 
 特にKubernetesリソースの認可スコープを制御する仕組みのこと。
 
-`kubectl`クライアント (例：開発者、ArgoCDなど) の認可スコープは、RBACで制御する。
+Kubernetes Cluster外部のkube-apiserverクライアント (例：開発者、GitOps CDツール、監視ツールなど) の認可スコープは、RBACで制御する。
 
 AWS EKSをSSOのIDプロバイダーとして使用することにより、IAMの認証フェーズをAWS EKSに委譲する。
 
