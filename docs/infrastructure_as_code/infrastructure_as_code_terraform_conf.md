@@ -89,15 +89,26 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 
 #### ▼ `state.lock`ファイル
 
-`tfstate`ファイルの競合を防ぐために、`terraform apply`コマンドの処理中に`tfstate`ファイルはロックされる。
+`tfstate`ファイルを複数人が同時に変更するような競合を防ぐために、`terraform apply`コマンドの処理中に`tfstate`ファイルはロックされる。
 
-ロックの状態は、`state.lock`ファイルやクラウドプロバイダーのDB (例：DynamoDB) に記載する。
+ロックの状態は、`state.lock`ファイルやクラウドプロバイダーのストレージ (例：AWS DynamoDB、AWS S3) に記載する。
 
 `terraform apply`コマンドが完了すれば、ロックは解除される。
 
 ロックされている間、他のユーザーは一連の`terraform`コマンドを実行できなくなる。
 
+```terraform
+# AWS S3による状態ロックを使用する場合
+terraform {
+
+  backend "s3" {
+    use_lockfile = true
+  }
+}
+```
+
 > - https://blog-benri-life.com/terraform-state-lock-s3/
+> - https://developer.hashicorp.com/terraform/language/backend/s3#state-locking
 
 #### ▼ 残骸ロックの解除方法
 
