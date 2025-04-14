@@ -28,7 +28,23 @@ require 'semantic_logger'
 SemanticLogger.add_appender(io: $stdout, formatter: :json)
 logger = SemanticLogger['Foo']
 
-logger.info("Do something successfully")
+server = WEBrick::HTTPServer.new(
+  :BindAddress => '*',
+  :Port => port,
+  :AcceptCallback => -> (s) { s.setsockopt(Socket::IPPROTO_TCP, Socket::TCP_NODELAY, 1) },
+  # アクセスログを無効化する
+  :AccessLog => []
+)
+
+server.mount_proc '/details' do |req, res|
+
+  ...
+
+  logger.info("Do something successfully")
+
+  ...
+
+end
 ```
 
 > - https://logger.rocketjob.io/
@@ -36,24 +52,40 @@ logger.info("Do something successfully")
 #### ▼ フィールドの追加
 
 ```ruby
+require 'webrick'
+require 'json'
+require 'net/http'
 require 'semantic_logger'
 
 # Semantic Loggerの設定
 SemanticLogger.add_appender(io: $stdout, formatter: :json)
 logger = SemanticLogger['Foo']
 
+
+server = WEBrick::HTTPServer.new(
+  :BindAddress => '*',
+  :Port => port,
+  :AcceptCallback => -> (s) { s.setsockopt(Socket::IPPROTO_TCP, Socket::TCP_NODELAY, 1) },
+  # アクセスログを無効化する
+  :AccessLog => []
+)
+
 server.mount_proc '/details' do |req, res|
 
   begin
 
-    ...
-
+    request = Net::HTTP::Get.new(uri.request_uri)
+    response = http.request(request)
+    json = JSON.parse(response.body)
+      
+    # フィールドを追加する 
     logger.info("Do something successfully", trace_id: get_trace_id(req.headers))
+  
   rescue => error
 
-    ...
-
+    # フィールドを追加する
     logger.error("#{error.message}", trace_id: get_trace_id(headers))
+  
   end
 end
 
@@ -75,5 +107,8 @@ def get_trace_id(headers)
   return 'unknown'
 end
 ```
+
+> - https://logger.rocketjob.io/
+
 
 <br>
