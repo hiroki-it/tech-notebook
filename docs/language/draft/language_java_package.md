@@ -17,6 +17,25 @@ description: パッケージ＠Javaの知見を記録しています。
 
 ### logback
 
+#### ▼ セットアップ
+
+必要なパッケージをインストールする。
+
+```java
+dependencies {
+
+    ...
+
+    implementation 'org.slf4j:slf4j-api:2.0.17'
+    implementation 'ch.qos.logback:logback-classic:1.5.18'
+    implementation 'net.logstash.logback:logstash-logback-encoder:8.1'
+
+            ...
+}
+```
+
+> - https://github.com/logfellow/logstash-logback-encoder?tab=readme-ov-file#loggingevent-fields
+
 #### ▼ logback.xml
 
 logbackを設定する。
@@ -34,6 +53,9 @@ logbackを設定する。
     </root>
 </configuration>
 ```
+
+> - https://kazuhira-r.hatenablog.com/entry/2019/03/24/223923
+> - https://github.com/logfellow/logstash-logback-encoder?tab=readme-ov-file#loggingevent-fields
 
 #### ▼ info、error
 
@@ -76,6 +98,9 @@ public class Foo extends Application{
 }
 ```
 
+> - https://kazuhira-r.hatenablog.com/entry/2019/03/24/223923
+> - https://github.com/logfellow/logstash-logback-encoder?tab=readme-ov-file#loggingevent-fields
+
 #### ▼ MDC
 
 ログに独自フィールドを追加する。
@@ -117,6 +142,7 @@ public class Foo extends Application{
             logger.error(e.getMessage());
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).type(MediaType.APPLICATION_JSON).entity("{\"error\": \"Failed to do something.\"}").build();
         } finally {
+            // 処理後にMDCのクリーン処理を必ず実施する
             MDC.clear();
         }
 
@@ -125,7 +151,7 @@ public class Foo extends Application{
 
     private String getTraceId(HttpHeaders headers) {
 
-        // Envoyの作成したtraceparent値を取得する
+        // 受信したリクエストのtraceparent値を取得する
         String traceparent = headers.getHeaderString("traceparent");
         if (traceparent != null) {
             // W3C Trace Context
@@ -139,5 +165,8 @@ public class Foo extends Application{
     }
 }
 ```
+
+> - https://kazuhira-r.hatenablog.com/entry/2019/03/24/223923
+> - https://github.com/logfellow/logstash-logback-encoder?tab=readme-ov-file#loggingevent-fields
 
 <br>
