@@ -87,7 +87,8 @@ from flask import url_for, redirect
 @app.route('/login')
 def login():
     redirect_uri = url_for("callback", _external=True)
-    return oauth.keycloak.authorize_redirect(redirect_uri)
+    response = oauth.keycloak.authorize_redirect(redirect_uri)
+    return redirectResponse
 
 @app.route("/callback")
 def callback():

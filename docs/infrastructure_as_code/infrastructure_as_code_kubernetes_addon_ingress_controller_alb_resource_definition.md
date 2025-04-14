@@ -53,7 +53,7 @@ metadata:
 
 ACMのSSL証明書のARNを指定せずとも、オートディスカバリーを使用して、ACMのSSL証明書を紐づけられる。
 
-aws-load-balancer-controllerは、Ingressの`.spec.tls`キーや`.spec.rules[*].host`キーに基づいて、適切なACMのSSL証明書をALBに自動的に紐づける。
+aws-load-balancer-controllerは、Ingressの`.spec.tls`キーや`.spec.rules[*].host`キーに基づいて、適切なACMのSSL証明書をAWS ALBに自動的に紐づける。
 
 例えばIngressで`.spec.rules[*].hosts`キーに`foo.example.com`を設定していた場合、aws-load-balancer-controllerは`*.example.com`で認証されたSSL証明書をACMから探す。
 
