@@ -17962,13 +17962,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#aws-acm" class="md-nav__link">
+  <a href="#aws-certificate-manager" class="md-nav__link">
     <span class="md-ellipsis">
-      AWS ACM
+      AWS Certificate Manager
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="AWS ACM">
+    <nav class="md-nav" aria-label="AWS Certificate Manager">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -27898,13 +27898,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#aws-acm" class="md-nav__link">
+  <a href="#aws-certificate-manager" class="md-nav__link">
     <span class="md-ellipsis">
-      AWS ACM
+      AWS Certificate Manager
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="AWS ACM">
+    <nav class="md-nav" aria-label="AWS Certificate Manager">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -29242,7 +29242,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="aws-acm">AWS ACM<a class="headerlink" href="#aws-acm" title="Permanent link">&para;</a></h2>
+<h2 id="aws-certificate-manager">AWS Certificate Manager<a class="headerlink" href="#aws-certificate-manager" title="Permanent link">&para;</a></h2>
 <h3 id="resource">resource<a class="headerlink" href="#resource" title="Permanent link">&para;</a></h3>
 <h4 id="ssl">▼ SSL証明書のリクエスト<a class="headerlink" href="#ssl" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
@@ -31257,57 +31257,57 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 </thead>
 <tbody>
 <tr>
-<td>ACM</td>
+<td>AWS Certificate Manager</td>
 <td>全て</td>
 <td><code>terraform apply</code>コマンド中に承認作業が発生し、プロビジョニングが止まってしまうため。ただし、承認を自動で実行できるオプションを使用する場合には、Terraformで管理しても良い。</td>
 </tr>
 <tr>
-<td>API Gateway、紐付くVPCリンク</td>
+<td>AWS API Gateway、紐付くVPCリンク</td>
 <td>全て</td>
 <td>ビジネスロジックを持ち、変更の要望頻度が高い。バックエンドチームがスムーズにAPIを作成できるようになる。</td>
 </tr>
 <tr>
-<td>Chatbot</td>
+<td>AWS Chatbot</td>
 <td>全て</td>
 <td>AWSがAPIを公開していないため、Terraformで作成できない。</td>
 </tr>
 <tr>
-<td>DynamoDB</td>
+<td>AWS DynamoDB</td>
 <td>全て</td>
 <td><code>state.lock</code>ファイルをテーブルとして管理する。</td>
 </tr>
 <tr>
-<td>EC2</td>
+<td>AWS EC2</td>
 <td>秘密鍵</td>
 <td>Terraformで作成する時にGitHubで秘密鍵を管理する必要があるため、セキュリティ上の理由で却下する。</td>
 </tr>
 <tr>
-<td>ENI</td>
+<td>AWS ENI</td>
 <td>全て</td>
 <td>特定のAWSリソース (ALB、セキュリティグループなど) の作成に伴って、自動的に作成されるため、Terraformで管理できない。</td>
 </tr>
 <tr>
-<td>EventBridge</td>
+<td>AWS EventBridge</td>
 <td>StepFunctionsGetEventsForECSTaskRule</td>
 <td>Step FunctionsでECS RunTaskの『ECSタスクが完了するまで待機』オプションを選択すると自動的に作成されるため、Terraformで管理できない。このルールは、ECSのECSタスクの状態がSTOPPEDになったことを検知し、StepFunctionsに通知してくれる。STOPPED は、ECSタスクが正常に停止 (完了？) した状態を表す。</td>
 </tr>
 <tr>
-<td>Global Accelerator</td>
+<td>AWS Global Accelerator</td>
 <td>セキュリティグループ</td>
 <td>リソースを作成するとセキュリティグループが自動作成されるため、セキュリティグループのみTerraformで管理できない。</td>
 </tr>
 <tr>
-<td>IAMユーザー</td>
+<td>AWS IAMユーザー</td>
 <td>全て</td>
 <td>ビジネスロジックを持ち、変更の要望頻度が高い。</td>
 </tr>
 <tr>
-<td>IAMユーザーグループ</td>
+<td>AWS IAMユーザーグループ</td>
 <td>全て</td>
 <td>ビジネスロジックを持ち、変更の要望頻度が高い。</td>
 </tr>
 <tr>
-<td>IAMロール</td>
+<td>AWS IAMロール</td>
 <td>ユーザーに紐付くロール</td>
 <td>ビジネスロジックを持ち、変更の要望頻度が高い。</td>
 </tr>
@@ -31317,17 +31317,17 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <td>サービスリンクロールは自動的に作成されるが、これが行われる前に事前にTerraformで作成でき、以下のリンクにて各AWSリソースにサービスリンクロールが存在しているのか否かを確認できる。しかし、数が多く、また初回作成時のみしかエラーは起こらないため、サービスリンクロールはTerraformで作成しないようにする。<br>- <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html">https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html</a></td>
 </tr>
 <tr>
-<td>IAMポリシー</td>
+<td>AWS IAMポリシー</td>
 <td></td>
 <td>ビジネスロジックを持ち、変更の要望頻度が高い。ただし、IPアドレス制限ポリシーなど、自動化した方が便利になる場合はこの限りではない。</td>
 </tr>
 <tr>
-<td>RDS</td>
+<td>AWS RDS</td>
 <td>admin以外のユーザー</td>
 <td>個別のユーザー作成のために、mysql providerを使用する必要がある。ただし、moduleディレクトリ配下に<code>provider.tf</code>ファイルを配置する必要があるため、ディレクトリ構成規約に難がある。</td>
 </tr>
 <tr>
-<td>Route53</td>
+<td>AWS Route53</td>
 <td>NSレコード</td>
 <td>ホストゾーンを作成すると、レコードとして、NSレコード値が自動的に設定される。これは、Terraformの管理外である。</td>
 </tr>
@@ -31337,7 +31337,7 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <td>・リモートバックエンドとして<code>tfstate</code>ファイルを格納するため、Terraformのデプロイより先に存在している必要がある。<br>・Terraformで誤って削除してしまわないようにする。<br>・<code>terraform apply -destroy</code>コマンドの実行時に、他のAWSリソースを削除する前に<code>tfstate</code>ファイルのAWS S3バケットを先に削除してしまう。</td>
 </tr>
 <tr>
-<td>SES</td>
+<td>AWS SES</td>
 <td>全て</td>
 <td><code>terraform apply</code>コマンド中に承認作業が発生し、プロビジョニングが止まってしまうため。ただし、承認を自動で実行できる場合には、Terraformで管理しても良い。</td>
 </tr>
@@ -31567,7 +31567,7 @@ aws<span class="w"> </span>dynamodb<span class="w"> </span>create-table<span cla
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月8日 19:50:29">2025-04-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月14日 20:29:58">2025-04-14</span>
   </span>
 
     
