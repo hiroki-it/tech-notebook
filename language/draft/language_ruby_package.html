@@ -10,13 +10,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="パッケージ＠Node.jsの知見を記録しています。">
+        <meta name="description" content="パッケージ＠Rubyの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/draft/language_javascript_runtime_nodejs_package.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/draft/language_ruby_package.html">
       
       
       
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】パッケージ＠Node.js - 俺の技術ノート</title>
+        <title>【IT技術の知見】パッケージ＠Ruby - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#nodejs" class="md-skip">
+        <a href="#ruby" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -150,7 +150,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】パッケージ＠Node.js
+              【IT技術の知見】パッケージ＠Ruby
             
           </span>
         </div>
@@ -26520,19 +26520,19 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pino" class="md-nav__link">
+  <a href="#semantic_logger" class="md-nav__link">
     <span class="md-ellipsis">
-      pino
+      semantic_logger
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="pino">
+    <nav class="md-nav" aria-label="semantic_logger">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#infoerror" class="md-nav__link">
+  <a href="#add_appender" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ info、error
+      ▼ add_appender
     </span>
   </a>
   
@@ -26576,7 +26576,7 @@
   
 
 
-<h1 id="nodejs">パッケージ＠Node.js<a class="headerlink" href="#nodejs" title="Permanent link">&para;</a></h1>
+<h1 id="ruby">パッケージ＠Ruby<a class="headerlink" href="#ruby" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -26586,82 +26586,62 @@
 </blockquote>
 <p><br></p>
 <h2 id="01">01. 構造化ログ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="pino">pino<a class="headerlink" href="#pino" title="Permanent link">&para;</a></h3>
-<h4 id="infoerror">▼ info、error<a class="headerlink" href="#infoerror" title="Permanent link">&para;</a></h4>
-<p>指定のログレベルのメッセージを出力する。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">pino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;pino&quot;</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">https</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;https&quot;</span><span class="p">);</span>
+<h3 id="semantic_logger">semantic_logger<a class="headerlink" href="#semantic_logger" title="Permanent link">&para;</a></h3>
+<h4 id="add_appender">▼ add_appender<a class="headerlink" href="#add_appender" title="Permanent link">&para;</a></h4>
+<p><code>formatter</code>を<code>json</code>とし、ログを構造化する。</p>
+<div class="highlight"><pre><span></span><code><span class="nb">require</span><span class="w"> </span><span class="s1">&#39;semantic_logger&#39;</span>
 
-<span class="kd">let</span><span class="w"> </span><span class="nx">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pino</span><span class="p">();</span>
+<span class="c1"># Semantic Loggerの設定</span>
+<span class="no">SemanticLogger</span><span class="o">.</span><span class="n">add_appender</span><span class="p">(</span><span class="ss">io</span><span class="p">:</span><span class="w"> </span><span class="vg">$stdout</span><span class="p">,</span><span class="w"> </span><span class="ss">formatter</span><span class="p">:</span><span class="w"> </span><span class="ss">:json</span><span class="p">)</span>
+<span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">SemanticLogger</span><span class="o">[</span><span class="s1">&#39;Foo&#39;</span><span class="o">]</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// リクエストヘッダーの取得</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">;</span>
-
-<span class="w">  </span><span class="c1">// クエリパラメータの取得</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">queryParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">).</span><span class="nx">query</span><span class="p">;</span>
-
-<span class="w">  </span><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">&quot;Do something successfully.&quot;</span><span class="p">);</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="nx">headers</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">queryParam</span><span class="o">:</span><span class="w"> </span><span class="nx">queryParam</span><span class="p">,</span>
-<span class="w">  </span><span class="p">};</span>
-
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
-<span class="p">});</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Do something successfully&quot;</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://wiblok.com/ja/nodejs/index/nodejs-request-info-processing-method/">https://wiblok.com/ja/nodejs/index/nodejs-request-info-processing-method/</a></li>
+<li><a href="https://logger.rocketjob.io/">https://logger.rocketjob.io/</a></li>
 </ul>
 </blockquote>
-<p><br></p>
 <h4 id="_2">▼ フィールドの追加<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">pino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;pino&quot;</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">https</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;https&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="nb">require</span><span class="w"> </span><span class="s1">&#39;semantic_logger&#39;</span>
 
-<span class="kd">let</span><span class="w"> </span><span class="nx">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pino</span><span class="p">();</span>
+<span class="c1"># Semantic Loggerの設定</span>
+<span class="no">SemanticLogger</span><span class="o">.</span><span class="n">add_appender</span><span class="p">(</span><span class="ss">io</span><span class="p">:</span><span class="w"> </span><span class="vg">$stdout</span><span class="p">,</span><span class="w"> </span><span class="ss">formatter</span><span class="p">:</span><span class="w"> </span><span class="ss">:json</span><span class="p">)</span>
+<span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">SemanticLogger</span><span class="o">[</span><span class="s1">&#39;Foo&#39;</span><span class="o">]</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// リクエストヘッダーの取得</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">;</span>
+<span class="n">server</span><span class="o">.</span><span class="n">mount_proc</span><span class="w"> </span><span class="s1">&#39;/details&#39;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">req</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="o">|</span>
 
-<span class="w">  </span><span class="c1">// クエリパラメータの取得</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">queryParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">).</span><span class="nx">query</span><span class="p">;</span>
+<span class="w">  </span><span class="k">begin</span>
 
-<span class="w">  </span><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">({</span><span class="nx">trace_id</span><span class="o">:</span><span class="w"> </span><span class="nx">getTraceId</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">header</span><span class="p">)},</span><span class="w"> </span><span class="s2">&quot;Do something successfully.&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="o">...</span>
 
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="nx">headers</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">queryParam</span><span class="o">:</span><span class="w"> </span><span class="nx">queryParam</span><span class="p">,</span>
-<span class="w">  </span><span class="p">};</span>
+<span class="w">    </span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Do something successfully&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">trace_id</span><span class="p">:</span><span class="w"> </span><span class="n">get_trace_id</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="p">))</span>
+<span class="w">  </span><span class="k">rescue</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">error</span>
 
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
-<span class="p">});</span>
+<span class="w">    </span><span class="o">...</span>
 
-<span class="kd">function</span><span class="w"> </span><span class="nx">getTraceId</span><span class="p">(</span><span class="nx">headers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 受信したリクエストのtraceparent値を取得する</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">traceparent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">headers</span><span class="o">?</span><span class="p">.[</span><span class="s2">&quot;traceparent&quot;</span><span class="p">];</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">traceparent</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// W3C Trace Context</span>
-<span class="w">    </span><span class="c1">// traceparent: 00-&lt;trace_id&gt;-&lt;span_id&gt;-01</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">parts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">traceparent</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">parts</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">parts</span><span class="p">[</span><span class="mf">1</span><span class="p">];</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;unknown&quot;</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">error</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">trace_id</span><span class="p">:</span><span class="w"> </span><span class="n">get_trace_id</span><span class="p">(</span><span class="n">headers</span><span class="p">))</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_trace_id</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="w">  </span><span class="c1"># Envoyの作成したtraceparent値を取得する</span>
+<span class="w">  </span><span class="n">traceparent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">headers</span><span class="o">[</span><span class="s1">&#39;traceparent&#39;</span><span class="o">]</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">traceparent</span>
+<span class="w">    </span><span class="c1"># W3C Trace Context</span>
+<span class="w">    </span><span class="c1"># traceparent: 00-&lt;trace_id&gt;-&lt;span_id&gt;-01</span>
+<span class="w">    </span><span class="n">parts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">traceparent</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">parts</span><span class="o">.</span><span class="n">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">parts</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s1">&#39;unknown&#39;</span>
+<span class="k">end</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://zenn.dev/itte/articles/ce93b081048691#%E7%8B%AC%E8%87%AA%E3%81%AE%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E3%82%92%E5%87%BA%E5%8A%9B%E3%81%99%E3%82%8B">https://zenn.dev/itte/articles/ce93b081048691#%E7%8B%AC%E8%87%AA%E3%81%AE%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E3%82%92%E5%87%BA%E5%8A%9B%E3%81%99%E3%82%8B</a></li>
-<li><a href="https://wiblok.com/ja/nodejs/index/nodejs-request-info-processing-method/">https://wiblok.com/ja/nodejs/index/nodejs-request-info-processing-method/</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 
 
