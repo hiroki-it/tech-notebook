@@ -50,7 +50,7 @@ const server = http.createServer((req, res) => {
 
 <br>
 
-#### ▼ 属性の追加
+#### ▼ フィールドの追加
 
 ```javascript
 const pino = require("pino");
@@ -91,6 +91,7 @@ function getTraceId(headers) {
 }
 ```
 
+> - https://zenn.dev/itte/articles/ce93b081048691#%E7%8B%AC%E8%87%AA%E3%81%AE%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E3%82%92%E5%87%BA%E5%8A%9B%E3%81%99%E3%82%8B
 > - https://wiblok.com/ja/nodejs/index/nodejs-request-info-processing-method/
 
 <br>
