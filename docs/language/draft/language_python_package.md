@@ -98,15 +98,91 @@ log.info("<メッセージ>")
 
 ### loguru
 
+#### ▼ add
+
+loguruを設定する。
+
 ```python
 from loguru import logger
 
-# serializeを有効化する
-logger.add(custom_sink_function, serialize=True)
-
-context_logger.info("Contextualize your logger easily")
+# 構造化ログを有効化する
+logger.add(serialize=True)
 ```
 
 > - https://github.com/Delgan/loguru?tab=readme-ov-file#structured-logging-as-needed
+
+#### ▼ info、error
+
+指定のログレベルのメッセージを出力する。
+
+```python
+import requests
+from loguru import logger
+
+# loguruの設定
+logger.remove()
+logger.add(
+    sys.stdout,
+    format="{time} {level} {message}",
+    # 構造化ログ
+    serialize=True
+)
+
+def getFoo():
+    try:
+        res = requests.get("example.com")
+        logger.info("Do something successfully.")
+
+        ...
+
+        return res
+
+    except BaseException as e:
+        logger.error(f"{repr(e)}")
+```
+
+#### ▼ bind
+
+`logger.add`関数で`format="{extra[<フィールド名>]}"`を設定した上で、構造ログに独自フィールドを設定できる。
+
+```python
+import requests
+from loguru import logger
+
+# loguruの設定
+logger.remove()
+logger.add(
+    sys.stdout,
+    format="{time} {level} {extra[trace_id]} {message}",
+    # 構造化ログ
+    serialize=True
+)
+
+def getFoo():
+    try:
+        res = requests.get("example.com")
+        logger.bind(trace_id=get_trace_id()).info("Do something successfully.")
+
+        ...
+
+        return res
+
+    except BaseException as e:
+        logger.bind(trace_id=get_trace_id()).error(f"{repr(e)}")
+
+
+def get_trace_id():
+    # Envoyの作成したtraceparent値を取得する
+    traceparent = request.headers.get("traceparent")
+    if traceparent:
+        # W3C Trace Context
+        # traceparent: 00-<trace_id>-<span_id>-01
+        parts = traceparent.split("-")
+        if len(parts) >= 2:
+            return parts[1]
+    return "unknown"
+```
+
+<br>
 
 <br>

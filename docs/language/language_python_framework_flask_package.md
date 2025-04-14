@@ -92,7 +92,7 @@ def login():
 
 @app.route("/callback")
 def callback():
-    response = app.make_response(redirect(url_for('front', _external=True)))
+    response = app.make_response(redirect(url_for('home', _external=True)))
 
     try:
         # 各種トークンを取得する
