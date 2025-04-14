@@ -26553,6 +26553,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="loguru">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ add
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infoerror" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ info、error
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bind" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ bind
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -26665,18 +26698,83 @@
 </blockquote>
 <p><br></p>
 <h3 id="loguru">loguru<a class="headerlink" href="#loguru" title="Permanent link">&para;</a></h3>
+<h4 id="add">▼ add<a class="headerlink" href="#add" title="Permanent link">&para;</a></h4>
+<p>loguruを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
 
-<span class="c1"># serializeを有効化する</span>
-<span class="n">logger</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">custom_sink_function</span><span class="p">,</span> <span class="n">serialize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">context_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Contextualize your logger easily&quot;</span><span class="p">)</span>
+<span class="c1"># 構造化ログを有効化する</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">serialize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://github.com/Delgan/loguru?tab=readme-ov-file#structured-logging-as-needed">https://github.com/Delgan/loguru?tab=readme-ov-file#structured-logging-as-needed</a></li>
 </ul>
 </blockquote>
+<h4 id="infoerror">▼ info、error<a class="headerlink" href="#infoerror" title="Permanent link">&para;</a></h4>
+<p>指定のログレベルのメッセージを出力する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+
+<span class="c1"># loguruの設定</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{time}</span><span class="s2"> </span><span class="si">{level}</span><span class="s2"> </span><span class="si">{message}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="c1"># 構造化ログ</span>
+    <span class="n">serialize</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">getFoo</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;example.com&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Do something successfully.&quot;</span><span class="p">)</span>
+
+        <span class="o">...</span>
+
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="bind">▼ bind<a class="headerlink" href="#bind" title="Permanent link">&para;</a></h4>
+<p><code>logger.add</code>関数で<code>format="{extra[&lt;フィールド名&gt;]}"</code>を設定した上で、構造ログに独自フィールドを設定できる。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+
+<span class="c1"># loguruの設定</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{time}</span><span class="s2"> </span><span class="si">{level}</span><span class="s2"> </span><span class="si">{extra[trace_id]}</span><span class="s2"> </span><span class="si">{message}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="c1"># 構造化ログ</span>
+    <span class="n">serialize</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">getFoo</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;example.com&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">trace_id</span><span class="o">=</span><span class="n">get_trace_id</span><span class="p">())</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Do something successfully.&quot;</span><span class="p">)</span>
+
+        <span class="o">...</span>
+
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">trace_id</span><span class="o">=</span><span class="n">get_trace_id</span><span class="p">())</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_trace_id</span><span class="p">():</span>
+    <span class="c1"># Envoyの作成したtraceparent値を取得する</span>
+    <span class="n">traceparent</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;traceparent&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">traceparent</span><span class="p">:</span>
+        <span class="c1"># W3C Trace Context</span>
+        <span class="c1"># traceparent: 00-&lt;trace_id&gt;-&lt;span_id&gt;-01</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="n">traceparent</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="s2">&quot;unknown&quot;</span>
+</code></pre></div>
+<p><br></p>
 <p><br></p>
 
 
@@ -26698,7 +26796,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年2月6日 21:22:45">2025-02-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月14日 22:14:08">2025-04-14</span>
   </span>
 
     
