@@ -375,7 +375,7 @@ AWS DynamoDBなど
 
 #### ▼ --include
 
-AWS ACMなど
+AWS Certificate Managerなど
 
 <br>
 

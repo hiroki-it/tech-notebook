@@ -145,7 +145,7 @@ aws-remote-repository/
 ```yaml
 aws-repository/
 └── modules/ # ローカルモジュール
-    ├── acm/ # ACM
+    ├── acm/ # AWS Certificate Manager
     ├── alb/ # ALB
     ├── lambda/ # Lambda
     │   ├── foo_function_src/ # とある関数のソースコード
@@ -158,7 +158,7 @@ aws-repository/
 
 ```yaml
 aws-remote-repository/
-├── acm/ # ACM
+├── acm/ # AWS Certificate Manager
 ├── alb/ # ALB
 ├── lambda/ # Lambda
 │   ├── foo_function_src/ # とある関数のソースコード
@@ -171,7 +171,7 @@ aws-remote-repository/
 
 AWSリソースのプロビジョニング先のリージョン別にローカルモジュールを分割する。
 
-例えば、ACMは同じリージョンのAWSリソースにしかアタッチできない制約があるため、AWSリソースによっては複数リージョン必要になる。
+例えば、AWS Certificate Managerは同じリージョンのAWSリソースにしかアタッチできない制約があるため、AWSリソースによっては複数リージョン必要になる。
 
 **＊例＊**
 
@@ -182,7 +182,7 @@ AWSリソースのプロビジョニング先のリージョン別にローカ�
 ```yaml
 aws-repository/
 └── modules/ # ローカルモジュール
-    └── acm/ # ACM
+    └── acm/ # AWS Certificate Manager
         ├── ap-northeast-1/ # 東京リージョン
         └── us-east-1/      # バージニアリージョン
 
@@ -194,7 +194,7 @@ aws-repository/
 
 ```yaml
 aws-remote-repository/
-└── acm/ # ACM
+└── acm/ # AWS Certificate Manager
     ├── ap-northeast-1/ # 東京リージョン
     └── us-east-1/      # バージニアリージョン
 ```

@@ -1265,9 +1265,9 @@ resource "aws_wafv2_regex_pattern_set" "cloudfront" {
 
 **＊実装例＊**
 
-例として、ACMのSSL証明書を示す。
+例として、AWS Certificate ManagerのSSL証明書を示す。
 
-ACMのSSL証明書は、ALBやCloudFrontに紐付いており、新しい証明書に紐付け直した後に、既存のものを削除する必要がある。
+AWS Certificate ManagerのSSL証明書は、ALBやCloudFrontに紐付いており、新しい証明書に紐付け直した後に、既存のものを削除する必要がある。
 
 ```terraform
 # ---------------------------------------------

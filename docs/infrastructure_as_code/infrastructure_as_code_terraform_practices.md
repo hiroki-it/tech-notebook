@@ -170,7 +170,7 @@ repository/
 ```yaml
 repository/
 └── modules/ # ローカルモジュール
-    └── acm/ # ACM
+    └── acm/ # AWS Certificate Manager
         ├── ap-northeast-1/ # 東京リージョン
         └── us-east-1/      # バージニアリージョン
 ```
