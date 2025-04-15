@@ -501,6 +501,9 @@ $ docker buildx inspect --bootstrap
 # docker buildxコマンドの実行
 # ----------------------------
 
+# ログインする
+$ docker login --username <ユーザー名> --password <パスワード>
+
 # docker buildxコマンドを実行する
 $ docker buildx build --platform linux/amd64,linux/arm64 -t :latest . --push
 ```

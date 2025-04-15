@@ -33,7 +33,10 @@ gem "semantic_logger", "~> 4.16.1"
 ```ruby
 require 'semantic_logger'
 
-# Semantic Loggerの設定
+# ログを溜めずにフラッシュする
+$stdout.sync = true
+
+# Semantic Loggerを設定する
 SemanticLogger.add_appender(io: $stdout, formatter: :json)
 logger = SemanticLogger['Foo']
 
@@ -41,6 +44,8 @@ server = WEBrick::HTTPServer.new(
   :BindAddress => '*',
   :Port => port,
   :AcceptCallback => -> (s) { s.setsockopt(Socket::IPPROTO_TCP, Socket::TCP_NODELAY, 1) },
+  # SemanticLoggerをWEBrickで使用する
+  :Logger => logger,
   # アクセスログを無効化する
   :AccessLog => []
 )
@@ -66,7 +71,10 @@ require 'json'
 require 'net/http'
 require 'semantic_logger'
 
-# Semantic Loggerの設定
+# ログを溜めずにフラッシュする
+$stdout.sync = true
+
+# Semantic Loggerを設定する
 SemanticLogger.add_appender(io: $stdout, formatter: :json)
 logger = SemanticLogger['Foo']
 
@@ -75,6 +83,8 @@ server = WEBrick::HTTPServer.new(
   :BindAddress => '*',
   :Port => port,
   :AcceptCallback => -> (s) { s.setsockopt(Socket::IPPROTO_TCP, Socket::TCP_NODELAY, 1) },
+  # SemanticLoggerをWEBrickで使用する
+  :Logger => logger,
   # アクセスログを無効化する
   :AccessLog => []
 )
