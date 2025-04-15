@@ -17,6 +17,15 @@ description: パッケージ＠Rubyの知見を記録しています。
 
 ### semantic_logger
 
+#### ▼ セットアップ
+
+```ruby
+source 'https://rubygems.org'
+
+gem "webrick", "~> 1.7"
+gem "semantic_logger", "~> 4.16.1"
+```
+
 #### ▼ add_appender
 
 `formatter`を`json`とし、ログを構造化する。
@@ -77,22 +86,22 @@ server.mount_proc '/details' do |req, res|
     request = Net::HTTP::Get.new(uri.request_uri)
     response = http.request(request)
     json = JSON.parse(response.body)
-      
-    # フィールドを追加する 
+
+    # フィールドを追加する
     logger.info("Do something successfully", trace_id: get_trace_id(req.headers))
-  
+
   rescue => error
 
     # フィールドを追加する
     logger.error("#{error.message}", trace_id: get_trace_id(headers))
-  
+
   end
 end
 
 
 def get_trace_id(headers)
 
-  # Envoyの作成したtraceparent値を取得する
+  # 受信したリクエストのtraceparent値を取得する
   traceparent = headers['traceparent']
 
   if traceparent
@@ -109,6 +118,5 @@ end
 ```
 
 > - https://logger.rocketjob.io/
-
 
 <br>

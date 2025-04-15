@@ -445,6 +445,8 @@ $ crane copy nginx:<バージョン> *****.dkr.ecr.ap-northeast-1.amazonaws.com/
 
 #### ▼ CPUアーキテクチャの指定
 
+`docker buildx`コマンドを実行し、複数のCPUアーキテクチャに対応したコンテナイメージを作成する。
+
 イメージの対応するCPUアーキテクチャ (例：Intel、AMD、ARM) を設定する。
 
 ただし、DockerがホストのOSを認識して、自動的に選んでくれるため、ユーザーが設定する必要はない。
@@ -455,33 +457,51 @@ FROM --platform=linux/amd64 python:latest-slim
 
 > - https://stackoverflow.com/questions/60251383/dockerfile-from-platform-option
 
-#### ▼ マルチCPUアーキテクチャへの対応
+#### ▼ `docker buildx`コマンドのセットアップ
 
 `docker buildx`コマンド時に、`Multi-platform build is not supported for the docker driver.`というエラーになることがある。
 
 これのために、マルチCPUアーキテクチャをビルドする実行環境を構築する必要がある。
 
-1. ビルダーインスタンスを起動する。
-
 ```bash
+# ----------------------------
+# docker buildxコマンドの準備
+# ----------------------------
+
+# 最新のDocker buildxリリースをGitHubから取得
+latest_release=$(curl -s https://api.github.com/repos/docker/buildx/releases/latest | grep tag_name | cut -d '"' -f 4)
+download_url="https://github.com/docker/buildx/releases/download/${latest_release}/buildx-${latest_release}.linux-amd64"
+
+# ダウンロードディレクトリを作成
+$ mkdir -p ~/.docker/cli-plugins/
+
+# バイナリをダウンロードし、適切な場所に配置
+$ curl -L "$download_url" -o ~/.docker/cli-plugins/docker-buildx
+
+# 実行権限を付与
+$ chmod +x ~/.docker/cli-plugins/docker-buildx
+
+# インストール確認
+$ docker buildx version
+
+# ----------------------------
+# ビルダーインスタンスの準備
+# ----------------------------
+
+# ビルダーインスタンスを起動する
 $ docker buildx create --name foo-instance
-```
 
-2. ビルダーインスタンスの使用を宣言する。
-
-```bash
+# ビルダーインスタンスの使用を宣言する
 $ docker buildx use foo-instance
-```
 
-3. ビルダーインスタンスを起動する。
-
-```bash
+# ビルダーインスタンスを起動する
 $ docker buildx inspect --bootstrap
-```
 
-4. `docker buildx`コマンドを実行する。
+# ----------------------------
+# docker buildxコマンドの実行
+# ----------------------------
 
-```bash
+# docker buildxコマンドを実行する
 $ docker buildx build --platform linux/amd64,linux/arm64 -t :latest . --push
 ```
 
