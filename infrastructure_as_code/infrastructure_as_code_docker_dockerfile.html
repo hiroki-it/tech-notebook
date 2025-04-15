@@ -17537,9 +17537,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cpu_2" class="md-nav__link">
+  <a href="#docker-buildx" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ マルチCPUアーキテクチャへの対応
+      ▼ docker buildxコマンドのセットアップ
     </span>
   </a>
   
@@ -27549,9 +27549,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cpu_2" class="md-nav__link">
+  <a href="#docker-buildx" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ マルチCPUアーキテクチャへの対応
+      ▼ docker buildxコマンドのセットアップ
     </span>
   </a>
   
@@ -27985,6 +27985,7 @@ $<span class="w"> </span>crane<span class="w"> </span>copy<span class="w"> </spa
 <p><br></p>
 <h3 id="cpu">CPUアーキテクチャの指定<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h3>
 <h4 id="cpu_1">▼ CPUアーキテクチャの指定<a class="headerlink" href="#cpu_1" title="Permanent link">&para;</a></h4>
+<p><code>docker buildx</code>コマンドを実行し、複数のCPUアーキテクチャに対応したコンテナイメージを作成する。</p>
 <p>イメージの対応するCPUアーキテクチャ (例：Intel、AMD、ARM) を設定する。</p>
 <p>ただし、DockerがホストのOSを認識して、自動的に選んでくれるため、ユーザーが設定する必要はない。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">--platform=linux/amd64</span><span class="w"> </span>python:latest-slim
@@ -27994,28 +27995,48 @@ $<span class="w"> </span>crane<span class="w"> </span>copy<span class="w"> </spa
 <li><a href="https://stackoverflow.com/questions/60251383/dockerfile-from-platform-option">https://stackoverflow.com/questions/60251383/dockerfile-from-platform-option</a></li>
 </ul>
 </blockquote>
-<h4 id="cpu_2">▼ マルチCPUアーキテクチャへの対応<a class="headerlink" href="#cpu_2" title="Permanent link">&para;</a></h4>
+<h4 id="docker-buildx">▼ <code>docker buildx</code>コマンドのセットアップ<a class="headerlink" href="#docker-buildx" title="Permanent link">&para;</a></h4>
 <p><code>docker buildx</code>コマンド時に、<code>Multi-platform build is not supported for the docker driver.</code>というエラーになることがある。</p>
 <p>これのために、マルチCPUアーキテクチャをビルドする実行環境を構築する必要がある。</p>
-<ol>
-<li>ビルダーインスタンスを起動する。</li>
-</ol>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>foo-instance
-</code></pre></div>
-<ol>
-<li>ビルダーインスタンスの使用を宣言する。</li>
-</ol>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>use<span class="w"> </span>foo-instance
-</code></pre></div>
-<ol>
-<li>ビルダーインスタンスを起動する。</li>
-</ol>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>inspect<span class="w"> </span>--bootstrap
-</code></pre></div>
-<ol>
-<li><code>docker buildx</code>コマンドを実行する。</li>
-</ol>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>build<span class="w"> </span>--platform<span class="w"> </span>linux/amd64,linux/arm64<span class="w"> </span>-t<span class="w"> </span>:latest<span class="w"> </span>.<span class="w"> </span>--push
+<div class="highlight"><pre><span></span><code><span class="c1"># ----------------------------</span>
+<span class="c1"># docker buildxコマンドの準備</span>
+<span class="c1"># ----------------------------</span>
+
+<span class="c1"># 最新のDocker buildxリリースをGitHubから取得</span>
+<span class="nv">latest_release</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>https://api.github.com/repos/docker/buildx/releases/latest<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>tag_name<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;&quot;&#39;</span><span class="w"> </span>-f<span class="w"> </span><span class="m">4</span><span class="k">)</span>
+<span class="nv">download_url</span><span class="o">=</span><span class="s2">&quot;https://github.com/docker/buildx/releases/download/</span><span class="si">${</span><span class="nv">latest_release</span><span class="si">}</span><span class="s2">/buildx-</span><span class="si">${</span><span class="nv">latest_release</span><span class="si">}</span><span class="s2">.linux-amd64&quot;</span>
+
+<span class="c1"># ダウンロードディレクトリを作成</span>
+$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.docker/cli-plugins/
+
+<span class="c1"># バイナリをダウンロードし、適切な場所に配置</span>
+$<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$download_url</span><span class="s2">&quot;</span><span class="w"> </span>-o<span class="w"> </span>~/.docker/cli-plugins/docker-buildx
+
+<span class="c1"># 実行権限を付与</span>
+$<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>~/.docker/cli-plugins/docker-buildx
+
+<span class="c1"># インストール確認</span>
+$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>version
+
+<span class="c1"># ----------------------------</span>
+<span class="c1"># ビルダーインスタンスの準備</span>
+<span class="c1"># ----------------------------</span>
+
+<span class="c1"># ビルダーインスタンスを起動する</span>
+$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>foo-instance
+
+<span class="c1"># ビルダーインスタンスの使用を宣言する</span>
+$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>use<span class="w"> </span>foo-instance
+
+<span class="c1"># ビルダーインスタンスを起動する</span>
+$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>inspect<span class="w"> </span>--bootstrap
+
+<span class="c1"># ----------------------------</span>
+<span class="c1"># docker buildxコマンドの実行</span>
+<span class="c1"># ----------------------------</span>
+
+<span class="c1"># docker buildxコマンドを実行する</span>
+$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>build<span class="w"> </span>--platform<span class="w"> </span>linux/amd64,linux/arm64<span class="w"> </span>-t<span class="w"> </span>:latest<span class="w"> </span>.<span class="w"> </span>--push
 </code></pre></div>
 <blockquote>
 <ul>
@@ -28072,7 +28093,7 @@ $<span class="w"> </span>crane<span class="w"> </span>copy<span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年1月27日 02:15:18">2025-01-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月15日 14:23:06">2025-04-15</span>
   </span>
 
     
