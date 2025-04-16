@@ -17,6 +17,19 @@ description: パッケージ＠Node.jsの知見を記録しています。
 
 ### pino
 
+#### ▼ ログ構造
+
+```yaml
+{
+  "level": 30,
+  "time": 1744725534278,
+  "pid": 1,
+  "hostname": "foo-65d4ffdcfc-6sf99",
+  "trace_id": "514bc006c3350c34be840a0dfe289492",
+  "msg": "Do something successfully",
+}
+```
+
 #### ▼ info、error
 
 指定のログレベルのメッセージを出力する。
@@ -34,7 +47,7 @@ const server = http.createServer((req, res) => {
   // クエリパラメータの取得
   const queryParam = url.parse(req.url, true).query;
 
-  logger.info("Do something successfully.");
+  logger.info("Do something successfully");
 
   const response = {
     headers: headers,
@@ -65,7 +78,7 @@ const server = http.createServer((req, res) => {
   // クエリパラメータの取得
   const queryParam = url.parse(req.url, true).query;
 
-  logger.info({trace_id: getTraceId(req.header)}, "Do something successfully.");
+  logger.info({trace_id: getTraceId(req.header)}, "Do something successfully");
 
   const response = {
     headers: headers,

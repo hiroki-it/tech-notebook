@@ -26,6 +26,23 @@ gem "webrick", "~> 1.7"
 gem "semantic_logger", "~> 4.16.1"
 ```
 
+#### ▼ ログ構造
+
+```yaml
+{
+  "host": "foo-fb5d575bc-65k2b",
+  "application": "Foo Logger",
+  "timestamp": "2025-04-15T13:49:54.101890Z",
+  "level": "info",
+  "level_index": 2,
+  "pid": 1,
+  "thread": "3440",
+  "name": "Details",
+  "message": "Do something successfully",
+  "payload": {"trace_id": "340f39b78a31c1f999195198c436f158"},
+}
+```
+
 #### ▼ add_appender
 
 `formatter`を`json`とし、ログを構造化する。

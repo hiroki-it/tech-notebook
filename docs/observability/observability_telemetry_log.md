@@ -107,6 +107,14 @@ jsonPayload.traceId="<トレースID>"
 
 <br>
 
+### ログメッセージ
+
+ログメッセージは文章ではないため、ピリオドや句点はつけない。
+
+> - https://github.com/olsh/resharper-structured-logging/discussions/28#discussioncomment-676481
+
+<br>
+
 ### ログレベル
 
 #### ▼ FATAL

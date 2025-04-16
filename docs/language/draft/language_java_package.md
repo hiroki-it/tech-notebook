@@ -36,6 +36,21 @@ dependencies {
 
 > - https://github.com/logfellow/logstash-logback-encoder?tab=readme-ov-file#loggingevent-fields
 
+#### ▼ ログ構造
+
+```yaml
+{
+  "@timestamp": "2025-04-15T13:37:54.062939378Z",
+  "@version": "1",
+  "message": {"Do something successfully"}
+  "logger_name": "foo Logger",
+  "thread_name": "Default Executor-thread-13",
+  "level": "INFO",
+  "level_value": 20000,
+  "trace_id": "17563cbbe98ef98590f22aae96c92fc2"
+}
+```
+
 #### ▼ logback.xml
 
 logbackを設定する。

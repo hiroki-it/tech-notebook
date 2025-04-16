@@ -98,6 +98,34 @@ log.info("<メッセージ>")
 
 ### loguru
 
+#### ▼ ログ構造
+
+```yaml
+{
+  "text": "2025-04-15T13:59:39.014135+0000 INFO 6e42ca5d6b7fa1dad79cec9ef860102a [200] details response is {'id': 0, 'author': 'William Shakespeare', 'year': '2002-09-19', 'type': 'paperback', 'pages': 65, 'publisher': 'Courier Corporation', 'language': 'English', 'ISBN-10': '0486424618', 'ISBN-13': '9780486424613'}\n",
+  "record":
+    {
+      "elapsed": {"repr": "2:59:13.507632", "seconds": 10753.507632},
+      "exception": null,
+      "extra": {"trace_id": "6e42ca5d6b7fa1dad79cec9ef860102a"},
+      "file": {"name": "foo.py", "path": "foo.py"},
+      "function": "home",
+      "level": {"icon": "ℹ️", "name": "INFO", "no": 20},
+      "line": 308,
+      "message": "Do something successfully",
+      "module": "foo",
+      "name": "foo",
+      "process": {"id": 9, "name": "MainProcess"},
+      "thread": {"id": 281473384371584, "name": "Dummy-53"},
+      "time":
+        {
+          "repr": "2025-04-15 13:59:39.014135+00:00",
+          "timestamp": 1744725579.014135,
+        },
+    },
+}
+```
+
 #### ▼ add
 
 loguruを設定する。
@@ -131,7 +159,7 @@ logger.add(
 def getFoo():
     try:
         res = requests.get("example.com")
-        logger.info("Do something successfully.")
+        logger.info("Do something successfully")
 
         ...
 
@@ -161,7 +189,7 @@ logger.add(
 def getFoo():
     try:
         res = requests.get("example.com")
-        logger.bind(trace_id=get_trace_id()).info("Do something successfully.")
+        logger.bind(trace_id=get_trace_id()).info("Do something successfully")
 
         ...
 
