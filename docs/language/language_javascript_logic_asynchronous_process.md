@@ -89,17 +89,23 @@ const asyncFunc = () => {
 
 ## 02-02. `resolve`メソッド、`reject`メソッド
 
-### Promiseオブジェクトのコンストラクタを使用する場合
+### `resolve`メソッド、`reject`メソッドとは
 
-Promiseオブジェクトのコンストラクタ内では、暗黙的にtry-catchが実行されている。
+`resolve`メソッド、`reject`メソッドをコールすると、暗黙的にtry-catchが実行される。
 
 そのため、try-catchで囲うことは不要である。
 
-処理が成功であれば`resolve`メソッドを実行し (`try`ブロック内の処理に相当) 、反対に失敗であれば`reject`メソッドを実行する (`catch`ブロック内の処理に相当) 。
+関数内の処理が成功であれば`resolve`メソッドを実行し (`try`ブロック内の処理に相当) 、反対に失敗であれば`reject`メソッドを実行する (`catch`ブロック内の処理に相当) 。
 
 `resolve`メソッドと`resolve`メソッドの後に`return`を使用しないと、後続する処理も実行される。
 
-1つ目の書き方として、Promiseインスタンスのコールバック関数に渡す方法がある。
+また、`return`を使用しないと、`resolve`メソッドと`resolve`メソッドの結果は返却されない。
+
+<br>
+
+### Promiseオブジェクトのコンストラクタを使用する場合
+
+Promiseインスタンスのコールバック関数に渡す。
 
 ```javascript
 const asyncFunc = () => {
@@ -153,11 +159,7 @@ console.log(asyncFunc());
 
 ### Promiseオブジェクトのコンストラクタを使用しない場合
 
-別の書き方として、Promiseオブジェクトから直接的に`resolve`メソッドや`reject`メソッドをコールしても良い。
-
-この場合、必ず`return`で返却する必要がある。
-
-`return`を使用しないと、何も返却されない。
+Promiseオブジェクトから直接的に`resolve`メソッドや`reject`メソッドをコールする。
 
 ```javascript
 const asyncFunc = () => {
