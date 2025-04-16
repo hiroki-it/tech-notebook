@@ -89,26 +89,34 @@ const asyncFunc = () => {
 
 ## 02-02. `resolve`メソッド、`reject`メソッド
 
+### `resolve`メソッド、`reject`メソッドとは
+
+<br>
+
 ### Promiseオブジェクトのコンストラクタを使用する場合
 
 Promiseオブジェクトのコンストラクタ内では、暗黙的にtry-catchが実行されている。
 
-そのため、try-catchは不要である。
+そのため、try-catchで囲うことは不要である。
 
-結果のステータスが成功であれば`resolve`メソッドを実行し (`try`ブロックに相当) 、反対に失敗であれば`reject`メソッドを実行する (`catch`ブロックに相当) 。
+処理が成功であれば`resolve`メソッドを実行し (`try`ブロック内の処理に相当) 、反対に失敗であれば`reject`メソッドを実行する (`catch`ブロック内の処理に相当) 。
 
-`resolve`メソッドと`resolve`メソッドのコール時に`return`を使用しないと、後続する処理も実行される。
+`resolve`メソッドと`resolve`メソッドの後に`return`を使用しないと、後続する処理も実行される。
 
 1つ目の書き方として、Promiseインスタンスのコールバック関数に渡す方法がある。
 
 ```javascript
 const asyncFunc = () => {
   return new Promise((resolve, reject) => {
-    // ステータスが成功の場合に選択される。
+    //処理が成功の場合に実行する。
     resolve("SUCCESS"); // Promise { "SUCCESS" }
 
-    // ステータスが失敗の場合に選択される。
+    // resolveで終える場合は、ここでreturn
+
+    //処理が失敗の場合に実行する。
     reject("FAILED"); // Promise { "FAILED" }
+
+    // rejectで終える場合は、ここでreturn
 
     console.log("test");
   });
@@ -128,6 +136,8 @@ const asyncFunc = () => {
     return resolve("SUCCESS");
 
     reject("FAILED");
+
+    // rejectで終える場合は、ここでreturn
 
     console.log("test");
   });
@@ -150,13 +160,17 @@ console.log(asyncFunc());
 
 ```javascript
 const asyncFunc = () => {
-  // ステータスが成功の場合に選択される。
-  return Promise.resolve("SUCCESS"); // Promise { "SUCCESS" }
+  //処理が成功の場合に実行する。
+  Promise.resolve("SUCCESS"); // Promise { "SUCCESS" }
+
+  // resolveで終える場合は、ここでreturn
 };
 
 const asyncFunc = () => {
-  // ステータスが失敗の場合に選択される。
-  return Promise.reject("FAILED"); // Promise { "FAILED" }
+  //処理が失敗の場合に実行する。
+  Promise.reject("FAILED"); // Promise { "FAILED" }
+
+  // rejectで終える場合は、ここでreturn
 };
 
 console.log(asyncFunc()); // Promise { 'SUCCESS' }
