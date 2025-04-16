@@ -87,19 +87,19 @@ const asyncFunc = () => {
 
 <br>
 
-## 02-02. `resolve`メソッド、`reject`メソッド
+## 02-02. `resolve`関数、`reject`関数
 
-### `resolve`メソッド、`reject`メソッドとは
+### `resolve`関数、`reject`関数とは
 
-`resolve`メソッド、`reject`メソッドをコールすると、暗黙的にtry-catchが実行される。
+`resolve`関数、`reject`関数をコールすると、暗黙的にtry-catchが実行される。
 
 そのため、try-catchで囲うことは不要である。
 
-関数内の処理が成功であれば`resolve`メソッドを実行し (`try`ブロック内の処理に相当) 、反対に失敗であれば`reject`メソッドを実行する (`catch`ブロック内の処理に相当) 。
+関数内の処理が成功であれば`resolve`関数を実行し (`try`ブロック内の処理に相当) 、反対に失敗であれば`reject`関数を実行する (`catch`ブロック内の処理に相当) 。
 
-`resolve`メソッドと`resolve`メソッドの後に`return`を使用しないと、後続する処理も実行される。
+`resolve`関数と`resolve`関数の後に`return`を使用しないと、後続する処理も実行される。
 
-また、`return`を使用しないと、`resolve`メソッドと`resolve`メソッドの結果は返却されない。
+また、`return`を使用しないと、`resolve`関数と`resolve`関数の結果は返却されない。
 
 <br>
 
@@ -132,7 +132,7 @@ console.log(asyncFunc());
 // Promise { 'SUCCESS' }
 ```
 
-`resolve`メソッドと`resolve`メソッドのコール時に`return`を使用すると、後続する処理は実行されない。
+`resolve`関数と`resolve`関数のコール時に`return`を使用すると、後続する処理は実行されない。
 
 ```javascript
 const asyncFunc = () => {
@@ -160,7 +160,7 @@ console.log(asyncFunc());
 
 ### Promiseオブジェクトのコンストラクタを使用しない場合
 
-Promiseオブジェクトから直接的に`resolve`メソッドや`reject`メソッドをコールする。
+Promiseオブジェクトから直接的に`resolve`関数や`reject`関数をコールする。
 
 ```javascript
 const asyncFunc = () => {
@@ -231,13 +231,13 @@ UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error origin
 
 try-catch-finally句に相当する。
 
-Promiseオブジェクトの`then`メソッド、`catch`メソッド、`finally`メソッドを使用してエラーハンドリングを実装できる。
+Promiseオブジェクトの`then`関数、`catch`関数、`finally`関数を使用してエラーハンドリングを実装できる。
 
 <br>
 
-### `then`メソッド
+### `then`関数
 
-#### ▼ `then`メソッドとは
+#### ▼ `then`関数とは
 
 Promiseオブジェクトの`resolve`関数の結果を引数に受け取り、コールバック関数を実行する。
 
@@ -245,9 +245,9 @@ Promiseオブジェクトの`resolve`関数の結果を引数に受け取り、�
 
 <br>
 
-### `catch`メソッド
+### `catch`関数
 
-#### ▼ `catch`メソッドとは
+#### ▼ `catch`関数とは
 
 Promiseオブジェクトの`reject`関数の結果を引数に受け取り、コールバック関数を実行する。
 
@@ -271,9 +271,9 @@ rejectFunc.catch((err) => {
 
 <br>
 
-### `finally`メソッド
+### `finally`関数
 
-#### ▼ `finally`メソッドとは
+#### ▼ `finally`関数とは
 
 記入中...
 
@@ -421,9 +421,9 @@ console.log(asyncFunc()); // Promise { "SUCCESS" }
 
 #### ▼ await宣言とは
 
-非同期処理の結果を`then`メソッドに渡す。
+非同期処理の結果を`then`関数に渡す。
 
-Promiseオブジェクトの`then`メソッドに相当するが、`then`メソッドのようにメソッドチェーンする必要はなくなるため、可読性が高い。
+Promiseオブジェクトの`then`関数に相当するが、`then`関数のようにメソッドチェーンする必要はなくなるため、可読性が高い。
 
 時間のかかる非同期処理でこれを宣言すると、予期せず処理が流れてしまうことを防げる。
 
@@ -605,15 +605,15 @@ JQueryパッケージの提供する独自のPromiseオブジェクトである�
 
 <br>
 
-### `done`メソッド、`fail`メソッド、`always`メソッド
+### `done`関数、`fail`関数、`always`関数
 
 JQuery Promiseオブジェクトが持つメソッド。
 
-`ajax`メソッドによってレスポンスを受信した後、その結果を`done`、`fail`、`always`の`3`個に分類し、これに応じたコールバック処理を実行する。
+`ajax`関数によってレスポンスを受信した後、その結果を`done`、`fail`、`always`の`3`個に分類し、これに応じたコールバック処理を実行する。
 
 **＊実装例＊**
 
-JQueryパッケージの`get`メソッドや`post`メソッドを使用した場合。
+JQueryパッケージの`get`関数や`post`関数を使用した場合。
 
 ```javascript
 const url = "https://www.google.co.jp/";
@@ -643,7 +643,7 @@ $.post(url, params)
   });
 ```
 
-JQueryパッケージの`ajax`メソッドを使用した場合。
+JQueryパッケージの`ajax`関数を使用した場合。
 
 ```javascript
 const id = 1;
@@ -676,17 +676,17 @@ $.ajax({
 
 <br>
 
-### `then`メソッド
+### `then`関数
 
 JQuery Promiseオブジェクトが持つメソッド。
 
-`ajax`メソッドによってレスポンスを受信した後、その結果を`then`メソッドの引数の順番で分類し、これに応じたコールバック処理を実行する。
+`ajax`関数によってレスポンスを受信した後、その結果を`then`関数の引数の順番で分類し、これに応じたコールバック処理を実行する。
 
 非同期処理の後に同期処理を行いたい場合に使用する。
 
 **＊実装例＊**
 
-JQueryパッケージの`ajax`メソッドを使用した場合。
+JQueryパッケージの`ajax`関数を使用した場合。
 
 ```javascript
 const id = 1;

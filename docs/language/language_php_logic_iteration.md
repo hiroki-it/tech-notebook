@@ -210,7 +210,7 @@ function iteration($M, $A) {
 
 コールバック関数の使用が必要になる。
 
-`call_user_func_array`メソッドの第一引数に、コールバック関数の`array_merge`メソッドの文字列を渡し、第二引数に二次元配列を渡す。
+`call_user_func_array`関数の第一引数に、コールバック関数の`array_merge`関数の文字列を渡し、第二引数に二次元配列を渡す。
 
 その結果、平坦になって一次元配列になる。
 

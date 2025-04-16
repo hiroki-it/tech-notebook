@@ -232,7 +232,7 @@ class Foo
 
 #### ▼ シリアライズ：JS型からJSON
 
-JS型オブジェクトからJSONへの変換には、`JSON.stringfy`メソッドを使用する。
+JS型オブジェクトからJSONへの変換には、`JSON.stringfy`関数を使用する。
 
 **＊実装例＊**
 
@@ -251,7 +251,7 @@ console.log(json);
 
 #### ▼ デシリアライズ：JSONからJS型
 
-JSONからJS型オブジェクトへの変換には、`JSON.parse`メソッドを使用する。
+JSONからJS型オブジェクトへの変換には、`JSON.parse`関数を使用する。
 
 レスポンスされたJSONはエスケープされていることに注意する。
 
@@ -322,7 +322,7 @@ class StaffParser {
 
 JSONからPHP型オブジェクトの変換には。
 
-`json_decode`メソッドを使用する。
+`json_decode`関数を使用する。
 
 第二引数が`false`の場合、object形式オブジェクトに変換する。
 

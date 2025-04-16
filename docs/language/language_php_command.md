@@ -90,7 +90,7 @@ zlib
 [Zend Modules]
 ```
 
-注意点として、実際に読み込まれているか否かは、`get_loaded_extensions`メソッドで確認できる。
+注意点として、実際に読み込まれているか否かは、`get_loaded_extensions`関数で確認できる。
 
 ```bash
 $ php -r 'print_r(get_loaded_extensions());'

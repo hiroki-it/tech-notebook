@@ -43,7 +43,7 @@ const obj = new Object();
 
 ### Array
 
-#### ▼ `Array.prototype.entries`メソッド
+#### ▼ `Array.prototype.entries`関数
 
 配列からkeyとvalueを取得する。
 
@@ -65,7 +65,7 @@ for (const value of iterator) {
 // [ 2, 'baz' ]
 ```
 
-#### ▼ `Array.prototype.map`メソッド
+#### ▼ `Array.prototype.map`関数
 
 **＊実装例＊**
 
@@ -73,7 +73,7 @@ for (const value of iterator) {
 // ここに実装例
 ```
 
-#### ▼ `Array.prototype.filter`メソッド
+#### ▼ `Array.prototype.filter`関数
 
 **＊実装例＊**
 
@@ -99,7 +99,7 @@ console.log(param.length);
 
 ### JSON
 
-#### ▼ `JSON.parse`メソッド
+#### ▼ `JSON.parse`関数
 
 JavaScriptからJSONにシリアライズする。
 
@@ -118,7 +118,7 @@ console.log(
 // "{"x":5, "y":5 "z":"test"}"
 ```
 
-#### ▼ `stringify`メソッド
+#### ▼ `stringify`関数
 
 JSONからJavaScriptにデシリアライズする。
 
@@ -324,7 +324,7 @@ ES6から、糖衣構文の`class`によって、オブジェクトを宣言で�
 
 クラス宣言あるいはクラス式で記述する。
 
-オブジェクトの作成時、`constructor`メソッドでオブジェクトの初期化を行う。
+オブジェクトの作成時、`constructor`関数でオブジェクトの初期化を行う。
 
 パスカルケース (大文字から始める記法) を使用する。
 
@@ -402,7 +402,7 @@ foo.getValue();
 
 クラスベースのオブジェクト指向で使用されるクラスチェーンについては、別ノートを参照せよ。
 
-#### ▼ `new Obejct`メソッドを使用した継承
+#### ▼ `new Obejct`関数を使用した継承
 
 **＊実装例＊**
 
@@ -452,7 +452,7 @@ const result = SubFoo.getValue();
 console.log(result);
 ```
 
-#### ▼ `Object.create`メソッドを使用した継承とメンバ追加
+#### ▼ `Object.create`関数を使用した継承とメンバ追加
 
 **＊実装例＊**
 
@@ -481,7 +481,7 @@ const result = SubFoo.getValue();
 console.log(result);
 ```
 
-また、`Object.create`メソッドを使用する場合、継承のみでなく、メンバを新しく追加もできる。
+また、`Object.create`関数を使用する場合、継承のみでなく、メンバを新しく追加もできる。
 
 **＊実装例＊**
 
