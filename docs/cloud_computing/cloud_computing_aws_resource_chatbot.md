@@ -37,7 +37,7 @@ SNSを経由して、AWS CloudWatchからの通知をチャットアプリケー
 
 #### ▼ サポート対象のイベント
 
-AWSリソースのイベントを、EventBridge (AWS CloudWatchイベント) を使用して、AWS Chatbotに転送できるが、全てのAWSリソースをサポートしているわけではない。
+AWSリソースのイベントを、AWS EventBridge (AWS CloudWatchイベント) を使用して、AWS Chatbotに転送できるが、全てのAWSリソースをサポートしているわけではない。
 
 サポート対象のAWSリソースは以下のリンクを参考にせよ。
 

@@ -366,7 +366,7 @@ AWS CloudWatch Logsにてこれを確認する。
 
 ## 02-02. 関数例
 
-### AWS Amplify ➡️ EventBridge ➡️ AWS Lambda ➡️ Slack-API
+### AWS Amplify ➡️ AWS EventBridge ➡️ AWS Lambda ➡️ Slack-API
 
 > - https://github.com/hiroki-it/notify-slack-of-amplify-events
 
@@ -433,11 +433,11 @@ exports.handler = async (event) => {
 
 ## 03-02. 関数例
 
-### AWS Amplify ➡️ EventBridge ➡️ AWS Lambda ➡️ Slack-API
+### AWS Amplify ➡️ AWS EventBridge ➡️ AWS Lambda ➡️ Slack-API
 
 **＊実装例＊**
 
-AWS AmplifyのイベントをEventBridgeでキャッチし、これをAWS Lambdaに転送する。AWS Lambdaでは、メッセージを構成し、Slack-APIに送信する。
+AWS AmplifyのイベントをAWS EventBridgeでキャッチし、これをAWS Lambdaに転送する。AWS Lambdaでは、メッセージを構成し、Slack-APIに送信する。
 
 ```javascript
 "use strict";

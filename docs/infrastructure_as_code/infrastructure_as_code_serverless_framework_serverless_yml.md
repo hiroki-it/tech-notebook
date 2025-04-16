@@ -107,7 +107,7 @@ functions:
 
 #### ▼ eventBridge
 
-Lambda関数に紐付けて作成するEventBridgeを設定する。
+Lambda関数に紐付けて作成するAWS EventBridgeを設定する。
 
 **＊実装例＊**
 
@@ -299,7 +299,7 @@ provider:
 
 #### ▼ useCloudFormation
 
-EventBridgeをCloudFormationで作成するか否かを設定する。
+AWS EventBridgeをCloudFormationで作成するか否かを設定する。
 
 ```yaml
 provider:

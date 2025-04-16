@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】EventBridge＠AWSリソース
-description: EventBridge＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】AWS EventBridge＠AWSリソース
+description: AWS EventBridge＠AWSリソースの知見を記録しています。
 ---
 
-# EventBridge＠AWSリソース
+# AWS EventBridge＠AWSリソース
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: EventBridge＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. EventBridgeとは
+## 01. AWS EventBridgeとは
 
 クラウドパブリッシュ/サブスクライブシステムとして働く。
 
@@ -96,9 +96,9 @@ AWSリソースで発生したイベントを受信し、他のAWSリソース�
 
 #### ▼ デバッグ
 
-EventBridgeでは、どのようなJSONのイベントをターゲットに送信したかを確認できない。
+AWS EventBridgeでは、どのようなJSONのイベントをターゲットに送信したかを確認できない。
 
-そこで、デバッグ時はEventBridgeのターゲットにAWS Lambdaを設定し、イベント構造をログから確認する。
+そこで、デバッグ時はAWS EventBridgeのターゲットにAWS Lambdaを設定し、イベント構造をログから確認する。
 
 **＊実装例＊**
 
@@ -111,7 +111,7 @@ exports.handler = async (event) => {
 };
 ```
 
-対象のAWSリソースで任意のイベントが発生した時に、EventBridgeからAWS Lambdaに送信するように設定する。
+対象のAWSリソースで任意のイベントが発生した時に、AWS EventBridgeからAWS Lambdaに送信するように設定する。
 
 ```yaml
 {"source": "aws.amplify"}
