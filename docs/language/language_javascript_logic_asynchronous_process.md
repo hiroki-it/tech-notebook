@@ -89,10 +89,6 @@ const asyncFunc = () => {
 
 ## 02-02. `resolve`メソッド、`reject`メソッド
 
-### `resolve`メソッド、`reject`メソッドとは
-
-<br>
-
 ### Promiseオブジェクトのコンストラクタを使用する場合
 
 Promiseオブジェクトのコンストラクタ内では、暗黙的にtry-catchが実行されている。
@@ -112,11 +108,13 @@ const asyncFunc = () => {
     resolve("SUCCESS"); // Promise { "SUCCESS" }
 
     // resolveで終える場合は、ここでreturn
+    // return;
 
     //処理が失敗の場合に実行する。
     reject("FAILED"); // Promise { "FAILED" }
 
     // rejectで終える場合は、ここでreturn
+    // return;
 
     console.log("test");
   });
@@ -138,6 +136,7 @@ const asyncFunc = () => {
     reject("FAILED");
 
     // rejectで終える場合は、ここでreturn
+    // return;
 
     console.log("test");
   });
@@ -147,6 +146,8 @@ console.log(asyncFunc());
 // 後続する処理も実行されない。
 // Promise { 'SUCCESS' }
 ```
+
+> - https://qiita.com/okashoi/items/b786f94f534372efc705#resolve-%E3%82%84-reject-%E3%81%8C%E5%91%BC%E3%81%B0%E3%82%8C%E3%81%9F%E3%81%A0%E3%81%91%E3%81%A7%E3%81%AF%E5%87%A6%E7%90%86%E3%81%AF%E4%B8%AD%E6%96%AD%E3%81%97%E3%81%AA%E3%81%84
 
 <br>
 
@@ -164,6 +165,7 @@ const asyncFunc = () => {
   Promise.resolve("SUCCESS"); // Promise { "SUCCESS" }
 
   // resolveで終える場合は、ここでreturn
+  // return;
 };
 
 const asyncFunc = () => {
@@ -171,6 +173,7 @@ const asyncFunc = () => {
   Promise.reject("FAILED"); // Promise { "FAILED" }
 
   // rejectで終える場合は、ここでreturn
+  // return;
 };
 
 console.log(asyncFunc()); // Promise { 'SUCCESS' }
