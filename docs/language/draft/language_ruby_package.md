@@ -50,7 +50,7 @@ gem "semantic_logger", "~> 4.16.1"
 ```ruby
 require 'semantic_logger'
 
-# ログを溜めずにフラッシュする
+# ログをメモリ上に保管せずにフラッシュする
 $stdout.sync = true
 
 # Semantic Loggerを設定する
@@ -88,7 +88,7 @@ require 'json'
 require 'net/http'
 require 'semantic_logger'
 
-# ログを溜めずにフラッシュする
+# ログをメモリ上に保管せずにフラッシュする
 $stdout.sync = true
 
 # Semantic Loggerを設定する

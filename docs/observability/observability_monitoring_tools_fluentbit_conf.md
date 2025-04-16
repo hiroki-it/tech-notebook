@@ -21,13 +21,7 @@ description: 設定ファイル＠FluentBitの知見を記録しています。
 
 各設定の頭文字は大文字とする。
 
-> - https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file#config_section
-
 **＊実装例＊**
-
-フラッシュについては、以下のリンクを参考にせよ。
-
-> - https://stackoverflow.com/questions/47735850/what-exactly-is-flushing
 
 ```bash
 [SERVICE]
@@ -44,6 +38,9 @@ description: 設定ファイル＠FluentBitの知見を記録しています。
     # 監視ツール (Prometheys) で監視する場合は、有効化する
     Http_Server On
 ```
+
+> - https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file#config_section
+> - https://stackoverflow.com/questions/47735850/what-exactly-is-flushing
 
 <br>
 

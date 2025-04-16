@@ -102,7 +102,7 @@ log.info("<メッセージ>")
 
 ```yaml
 {
-  "text": "2025-04-15T13:59:39.014135+0000 INFO 6e42ca5d6b7fa1dad79cec9ef860102a [200] details response is {'id': 0, 'author': 'William Shakespeare', 'year': '2002-09-19', 'type': 'paperback', 'pages': 65, 'publisher': 'Courier Corporation', 'language': 'English', 'ISBN-10': '0486424618', 'ISBN-13': '9780486424613'}\n",
+  "text": "Do something successfully",
   "record":
     {
       "elapsed": {"repr": "2:59:13.507632", "seconds": 10753.507632},

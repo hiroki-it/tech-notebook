@@ -857,3 +857,84 @@ const getBacketBasedOnDeviceType = (headers) => {
 ```
 
 <br>
+
+## 04. Pythonによる実装
+
+<br>
+
+## 04-02. 関数例
+
+### 自動起動
+
+```python
+import boto3
+import json
+
+def lambda_handler(event, context):
+
+    client = boto3.client('rds')
+
+    try:
+        instances = client.describe_db_instances()
+
+        instances = client.describe_db_instances()
+        for instance in instances['DBInstances']:
+            if instance['DBInstanceStatus'] == "stopped":
+                tags = client.list_tags_for_resource(ResourceName=instance['DBInstanceArn'])
+                for tag in tags['TagList']:
+                    # 起動タグがある場合
+                    if tag['Key'] == 'enabled_start_scheduling' and tag['Value'] == 'true':
+                        client.start_db_instance(DBInstanceIdentifier=instance['DBInstanceIdentifier'])
+
+        return {
+            'statusCode': 200,
+            'body': json.dumps("AWS RDS instance start operation successfully")
+        }
+
+    except Exception as e:
+        print(f"Error: {repr(e)}")
+        return {
+            'statusCode': 500,
+            'body': json.dumps(f"Error: {repr(e)}")
+        }
+```
+
+<br>
+
+### 自動停止
+
+```python
+import boto3
+import json
+
+def lambda_handler(event, context):
+
+    client = boto3.client('rds')
+
+    try:
+        instances = client.describe_db_instances()
+
+        instances = client.describe_db_instances()
+        for instance in instances['DBInstances']:
+            if instance['DBInstanceStatus'] == "available":
+                tags = client.list_tags_for_resource(ResourceName=instance['DBInstanceArn'])
+                for tag in tags['TagList']:
+                    # 停止タグがある場合
+                    if tag['Key'] == 'enabled_stop_scheduling' and tag['Value'] == 'true':
+                        client.stop_db_instance(DBInstanceIdentifier=instance['DBInstanceIdentifier'])
+
+        return {
+            'statusCode': 200,
+            'body': json.dumps("AWS RDS instance stop operation successfully")
+        }
+
+    except Exception as e:
+        print(f"Error: {repr(e)}")
+        return {
+            'statusCode': 500,
+            'body': json.dumps(f"Error: {repr(e)}")
+        }
+
+```
+
+<br>

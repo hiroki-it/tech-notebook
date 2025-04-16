@@ -43,3 +43,51 @@ Secretを作成せずにPod内コンテナにマウントするSecretsストアC
 一方で、同様にSecretのデータとして注入するhelm-secrets/vault-helmと比較して、関係するコンポーネントが増えるため脆弱性が高まる。
 
 <br>
+
+## 02. リソース定義
+
+### ExternalSecret
+
+```yaml
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: wordpress-admin-secret
+  namespace: default
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: aws-secret-store
+    kind: ClusterSecretStore
+  target:
+    name: app-secret
+    creationPolicy: Owner
+  data:
+    - secretKey: database-secret
+      remoteRef:
+        key: aws-secret-manager/database
+        property: password
+```
+
+<br>
+
+### ClusterSecretStore
+
+```yaml
+apiVersion: external-secrets.io/v1beta1
+kind: ClusterSecretStore
+metadata:
+  name: aws-secret-store
+spec:
+  provider:
+    aws:
+      service: SecretsManager
+      region: ap-northeast-1
+      auth:
+        jwt:
+          serviceAccountRef:
+            name: external-secrets
+            namespace: external-secrets
+```
+
+<br>
