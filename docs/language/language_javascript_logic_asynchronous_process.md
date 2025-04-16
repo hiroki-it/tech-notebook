@@ -132,12 +132,13 @@ console.log(asyncFunc());
 // Promise { 'SUCCESS' }
 ```
 
-一方で、`resolve`メソッドと`resolve`メソッドのコール時に`return`を使用すると、後続する処理は実行されない。
+`resolve`メソッドと`resolve`メソッドのコール時に`return`を使用すると、後続する処理は実行されない。
 
 ```javascript
 const asyncFunc = () => {
   return new Promise((resolve, reject) => {
-    return resolve("SUCCESS");
+    resolve("SUCCESS");
+    return;
 
     reject("FAILED");
 
@@ -309,7 +310,49 @@ resolveFunc.then((value) => {
 
 <br>
 
-## setTimeout
+## 02-04. プロセスの操作
+
+### 子プロセスの操作
+
+```javascript
+await new Promise((resolve, reject) => {
+
+  child.unref()
+
+  let stdout = ''
+  let stderr = ''
+
+  // 子プロセスの標準出力からデータを取得する
+  child.stdout.on('data', (data) => {
+    stdout += data.toString()
+    resolve("SUCCESS");
+    reject("FAILED");
+  })
+
+  // 子プロセスの標準エラー出力からデータを取得する
+  child.stderr.on('data', (data) => {
+    stderr += data.toString()
+    resolve("SUCCESS");
+    reject("FAILED");
+  })
+
+  // 子プロセスが終了した時の処理
+  child.on('exit', (code, signal) => {
+    resolve("SUCCESS");
+    reject("FAILED");
+  })
+
+  // 子プロセスの作成中や実行中にエラーが発生した時の処理
+  child.on('error', (err) => {
+    resolve("SUCCESS");
+    reject("FAILED");
+  })
+}
+```
+
+> - https://nodejs.org/api/child_process.html
+
+#### ▼ setTimeout
 
 指定した秒数だけ処理を待機する。
 
