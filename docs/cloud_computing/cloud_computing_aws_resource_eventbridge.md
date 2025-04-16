@@ -64,12 +64,12 @@ AWSのクラウドメッセージブローカー (例：AWS MQ) よりも機能�
 
 **＊実装例＊**
 
-Amplifyの指定したIDのアプリケーションが、`Amplify Deployment Status Change`のイベントを送信し、これの`jobStatus`が`SUCCEED`/`FAILED`だった場合、これを送信する。
+AWS Amplifyの指定したIDのアプリケーションが、`AWS Amplify Deployment Status Change`のイベントを送信し、これの`jobStatus`が`SUCCEED`/`FAILED`だった場合、これを送信する。
 
 ```yaml
 {
   "detail": {"appId": ["foo", "bar"], "jobStatus": ["SUCCEED", "FAILED"]},
-  "detail-type": ["Amplify Deployment Status Change"],
+  "detail-type": ["AWS Amplify Deployment Status Change"],
   "source": "aws.amplify",
 }
 ```
@@ -127,12 +127,12 @@ AWSリソースで意図的にイベントを起こし、AWS Lambdaのロググ�
     {
       "version": "0",
       "id": "b4a07570-eda1-9fe1-da5e-b672a1705c39",
-      "detail-type": "Amplify Deployment Status Change",
+      "detail-type": "AWS Amplify Deployment Status Change",
       "source": "aws.amplify",
       "account": "<AWSアカウントID>",
       "time": "<イベントの発生時間>",
       "region": "ap-northeast-1",
-      "resources": ["<AmplifyのアプリケーションのARN>"],
+      "resources": ["<AWS AmplifyのアプリケーションのARN>"],
       "detail":
         {
           "appId": "<アプリケーションID>",
@@ -160,9 +160,9 @@ AWSリソースで意図的にイベントを起こし、AWS Lambdaのロググ�
 
 入力パスにて、使用する値を抽出する。
 
-Amplifyで発生したイベントのJSONを変数として取り出す。
+AWS Amplifyで発生したイベントのJSONを変数として取り出す。
 
-ここでは、以下のAmplifyのイベントを受信したとする。
+ここでは、以下のAWS Amplifyのイベントを受信したとする。
 
 ```yaml
 {
@@ -170,12 +170,12 @@ Amplifyで発生したイベントのJSONを変数として取り出す。
     {
       "version": "0",
       "id": "b4a07570-eda1-9fe1-da5e-b672a1705c39",
-      "detail-type": "Amplify Deployment Status Change",
+      "detail-type": "AWS Amplify Deployment Status Change",
       "source": "aws.amplify",
       "account": "<AWSアカウントID>",
       "time": "<イベントの発生時間>",
       "region": "ap-northeast-1",
-      "resources": ["<AmplifyのアプリケーションのARN>"],
+      "resources": ["<AWS AmplifyのアプリケーションのARN>"],
       "detail":
         {
           "appId": "<アプリケーションID>",
@@ -212,7 +212,7 @@ Slackに送信するメッセージの作成ツールは、以下のリンクを
 ```yaml
 {
   "channel": "foo",
-  "text": "Amplifyデプロイ完了通知",
+  "text": "AWS Amplifyデプロイ完了通知",
   "blocks": [
     {
       "type": "section",
@@ -253,7 +253,7 @@ Slackに送信するメッセージの作成ツールは、以下のリンクを
       "elements": [
         {
           "type": "mrkdwn",
-          "text": ":amplify: <https://<region>.console.aws.amazon.com/amplify/home?region=<region>#/<appId>/<branchName>/<jobId>|*Amplifyコンソール*"
+          "text": ":amplify: <https://<region>.console.aws.amazon.com/amplify/home?region=<region>#/<appId>/<branchName>/<jobId>|*AWS Amplifyコンソール*"
 
 ```
 

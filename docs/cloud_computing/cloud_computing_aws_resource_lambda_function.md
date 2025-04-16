@@ -366,7 +366,7 @@ AWS CloudWatch Logsにてこれを確認する。
 
 ## 02-02. 関数例
 
-### Amplify ➡️ EventBridge ➡️ AWS Lambda ➡️ Slack-API
+### AWS Amplify ➡️ EventBridge ➡️ AWS Lambda ➡️ Slack-API
 
 > - https://github.com/hiroki-it/notify-slack-of-amplify-events
 
@@ -433,11 +433,11 @@ exports.handler = async (event) => {
 
 ## 03-02. 関数例
 
-### Amplify ➡️ EventBridge ➡️ AWS Lambda ➡️ Slack-API
+### AWS Amplify ➡️ EventBridge ➡️ AWS Lambda ➡️ Slack-API
 
 **＊実装例＊**
 
-AmplifyのイベントをEventBridgeでキャッチし、これをAWS Lambdaに転送する。AWS Lambdaでは、メッセージを構成し、Slack-APIに送信する。
+AWS AmplifyのイベントをEventBridgeでキャッチし、これをAWS Lambdaに転送する。AWS Lambdaでは、メッセージを構成し、Slack-APIに送信する。
 
 ```javascript
 "use strict";
@@ -453,7 +453,7 @@ const {format} = require("util");
 exports.handler = async (event) => {
   console.log(JSON.stringify({event}, null, 2));
 
-  const amplify = new aws.Amplify({apiVersion: "2017-07-25"});
+  const amplify = new aws.AWS Amplify({apiVersion: "2017-07-25"});
 
   const option = {
     appId: event.detail.appId,
@@ -463,7 +463,7 @@ exports.handler = async (event) => {
   let result;
 
   try {
-    // Amplifyのブランチ情報を取得します。
+    // AWS Amplifyのブランチ情報を取得します。
     const app = await amplify.getBranch(option).promise();
 
     console.log(JSON.stringify({app}, null, 2));
@@ -563,7 +563,7 @@ const buildMessage = (event, app) => {
               {
                 type: "mrkdwn",
                 text: format(
-                  ":amplify: <https://%s.console.aws.amazon.com/amplify/home?region=%s#/%s/%s/%s|*Amplifyコンソール画面はこちら*>",
+                  ":amplify: <https://%s.console.aws.amazon.com/amplify/home?region=%s#/%s/%s/%s|*AWS Amplifyコンソール画面はこちら*>",
                   event.region,
                   event.region,
                   event.detail.appId,
@@ -714,7 +714,7 @@ exports.handler = (event, context, callback) => {
 
 <br>
 
-### CloudFront ➡️ AWS Lambda@Edge ➡️ AWS S3
+### AWS CloudFront ➡️ AWS Lambda@Edge ➡️ AWS S3
 
 ![lambda-edge_dynamic-origin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-edge_dynamic-origin.png)
 
@@ -864,7 +864,9 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 ## 04-02. 関数例
 
-### 自動起動
+### AWS Lambda ➡️ AWS RDS
+
+#### ▼ 自動起動
 
 ```python
 import boto3
@@ -899,9 +901,7 @@ def lambda_handler(event, context):
         }
 ```
 
-<br>
-
-### 自動停止
+#### ▼ 自動停止
 
 ```python
 import boto3
