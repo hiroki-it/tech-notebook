@@ -26530,6 +26530,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ログ構造
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#infoerror" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ info、error
@@ -26539,7 +26548,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ フィールドの追加
     </span>
@@ -26587,6 +26596,16 @@
 <p><br></p>
 <h2 id="01">01. 構造化ログ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="pino">pino<a class="headerlink" href="#pino" title="Permanent link">&para;</a></h3>
+<h4 id="_2">▼ ログ構造<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;level&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">30</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1744725534278</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;pid&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;hostname&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo-65d4ffdcfc-6sf99&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;trace_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;514bc006c3350c34be840a0dfe289492&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;msg&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Do</span><span class="nv"> </span><span class="s">something</span><span class="nv"> </span><span class="s">successfully&quot;</span><span class="p p-Indicator">,</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
 <h4 id="infoerror">▼ info、error<a class="headerlink" href="#infoerror" title="Permanent link">&para;</a></h4>
 <p>指定のログレベルのメッセージを出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">pino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;pino&quot;</span><span class="p">);</span>
@@ -26601,7 +26620,7 @@
 <span class="w">  </span><span class="c1">// クエリパラメータの取得</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">queryParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">).</span><span class="nx">query</span><span class="p">;</span>
 
-<span class="w">  </span><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">&quot;Do something successfully.&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">&quot;Do something successfully&quot;</span><span class="p">);</span>
 
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="nx">headers</span><span class="p">,</span>
@@ -26618,7 +26637,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h4 id="_2">▼ フィールドの追加<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<h4 id="_3">▼ フィールドの追加<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">pino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;pino&quot;</span><span class="p">);</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">https</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;https&quot;</span><span class="p">);</span>
 
@@ -26631,7 +26650,7 @@
 <span class="w">  </span><span class="c1">// クエリパラメータの取得</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">queryParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">).</span><span class="nx">query</span><span class="p">;</span>
 
-<span class="w">  </span><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">({</span><span class="nx">trace_id</span><span class="o">:</span><span class="w"> </span><span class="nx">getTraceId</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">header</span><span class="p">)},</span><span class="w"> </span><span class="s2">&quot;Do something successfully.&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">({</span><span class="nx">trace_id</span><span class="o">:</span><span class="w"> </span><span class="nx">getTraceId</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">header</span><span class="p">)},</span><span class="w"> </span><span class="s2">&quot;Do something successfully&quot;</span><span class="p">);</span>
 
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="nx">headers</span><span class="p">,</span>
@@ -26683,7 +26702,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月14日 22:57:16">2025-04-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月16日 15:57:13">2025-04-16</span>
   </span>
 
     

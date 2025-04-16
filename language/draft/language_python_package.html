@@ -26557,6 +26557,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ログ構造
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#add" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ add
@@ -26698,6 +26707,31 @@
 </blockquote>
 <p><br></p>
 <h3 id="loguru">loguru<a class="headerlink" href="#loguru" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ ログ構造<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;text&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2025-04-15T13:59:39.014135+0000</span><span class="nv"> </span><span class="s">INFO</span><span class="nv"> </span><span class="s">6e42ca5d6b7fa1dad79cec9ef860102a</span><span class="nv"> </span><span class="s">[200]</span><span class="nv"> </span><span class="s">details</span><span class="nv"> </span><span class="s">response</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">{&#39;id&#39;:</span><span class="nv"> </span><span class="s">0,</span><span class="nv"> </span><span class="s">&#39;author&#39;:</span><span class="nv"> </span><span class="s">&#39;William</span><span class="nv"> </span><span class="s">Shakespeare&#39;,</span><span class="nv"> </span><span class="s">&#39;year&#39;:</span><span class="nv"> </span><span class="s">&#39;2002-09-19&#39;,</span><span class="nv"> </span><span class="s">&#39;type&#39;:</span><span class="nv"> </span><span class="s">&#39;paperback&#39;,</span><span class="nv"> </span><span class="s">&#39;pages&#39;:</span><span class="nv"> </span><span class="s">65,</span><span class="nv"> </span><span class="s">&#39;publisher&#39;:</span><span class="nv"> </span><span class="s">&#39;Courier</span><span class="nv"> </span><span class="s">Corporation&#39;,</span><span class="nv"> </span><span class="s">&#39;language&#39;:</span><span class="nv"> </span><span class="s">&#39;English&#39;,</span><span class="nv"> </span><span class="s">&#39;ISBN-10&#39;:</span><span class="nv"> </span><span class="s">&#39;0486424618&#39;,</span><span class="nv"> </span><span class="s">&#39;ISBN-13&#39;:</span><span class="nv"> </span><span class="s">&#39;9780486424613&#39;}\n&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;record&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">&quot;elapsed&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;repr&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2:59:13.507632&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;seconds&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">10753.507632</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">&quot;exception&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;extra&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;trace_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;6e42ca5d6b7fa1dad79cec9ef860102a&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">&quot;file&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo.py&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;path&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo.py&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">&quot;function&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;home&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;level&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;icon&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ℹ️&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;INFO&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;no&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">20</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">&quot;line&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">308</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;message&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Do</span><span class="nv"> </span><span class="s">something</span><span class="nv"> </span><span class="s">successfully&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;module&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;process&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">9</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;MainProcess&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">&quot;thread&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">281473384371584</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Dummy-53&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">&quot;time&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="p p-Indicator">{</span>
+<span class="w">          </span><span class="s">&quot;repr&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2025-04-15</span><span class="nv"> </span><span class="s">13:59:39.014135+00:00&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;timestamp&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1744725579.014135</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="p p-Indicator">},</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
 <h4 id="add">▼ add<a class="headerlink" href="#add" title="Permanent link">&para;</a></h4>
 <p>loguruを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
@@ -26727,7 +26761,7 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">getFoo</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;example.com&quot;</span><span class="p">)</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Do something successfully.&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Do something successfully&quot;</span><span class="p">)</span>
 
         <span class="o">...</span>
 
@@ -26753,7 +26787,7 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">getFoo</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;example.com&quot;</span><span class="p">)</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">trace_id</span><span class="o">=</span><span class="n">get_trace_id</span><span class="p">())</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Do something successfully.&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">trace_id</span><span class="o">=</span><span class="n">get_trace_id</span><span class="p">())</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Do something successfully&quot;</span><span class="p">)</span>
 
         <span class="o">...</span>
 
@@ -26796,7 +26830,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月14日 22:46:15">2025-04-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月16日 15:57:13">2025-04-16</span>
   </span>
 
     
