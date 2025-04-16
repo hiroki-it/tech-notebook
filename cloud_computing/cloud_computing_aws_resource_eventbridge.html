@@ -10,7 +10,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="EventBridge＠AWSリソースの知見を記録しています。">
+        <meta name="description" content="AWS EventBridge＠AWSリソースの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -30,7 +30,7 @@
     
     
       
-        <title>【IT技術の知見】EventBridge＠AWSリソース - 俺の技術ノート</title>
+        <title>【IT技術の知見】AWS EventBridge＠AWSリソース - 俺の技術ノート</title>
       
     
     
@@ -94,7 +94,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#eventbridgeaws" class="md-skip">
+        <a href="#aws-eventbridgeaws" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -154,7 +154,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】EventBridge＠AWSリソース
+              【IT技術の知見】AWS EventBridge＠AWSリソース
             
           </span>
         </div>
@@ -14995,9 +14995,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-eventbridge" class="md-nav__link">
+  <a href="#01-aws-eventbridge" class="md-nav__link">
     <span class="md-ellipsis">
-      01. EventBridgeとは
+      01. AWS EventBridgeとは
     </span>
   </a>
   
@@ -26695,9 +26695,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-eventbridge" class="md-nav__link">
+  <a href="#01-aws-eventbridge" class="md-nav__link">
     <span class="md-ellipsis">
-      01. EventBridgeとは
+      01. AWS EventBridgeとは
     </span>
   </a>
   
@@ -26836,7 +26836,7 @@
   
 
 
-<h1 id="eventbridgeaws">EventBridge＠AWSリソース<a class="headerlink" href="#eventbridgeaws" title="Permanent link">&para;</a></h1>
+<h1 id="aws-eventbridgeaws">AWS EventBridge＠AWSリソース<a class="headerlink" href="#aws-eventbridgeaws" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -26845,7 +26845,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-eventbridge">01. EventBridgeとは<a class="headerlink" href="#01-eventbridge" title="Permanent link">&para;</a></h2>
+<h2 id="01-aws-eventbridge">01. AWS EventBridgeとは<a class="headerlink" href="#01-aws-eventbridge" title="Permanent link">&para;</a></h2>
 <p>クラウドパブリッシュ/サブスクライブシステムとして働く。</p>
 <p>送受信の関係が多対多のパブリッシュ/サブスクライブパターンであり、プッシュベースの通信方式である。</p>
 <p>AWSのクラウドメッセージブローカー (例：AWS MQ) よりも機能が少なくシンプルである。</p>
@@ -26885,10 +26885,10 @@
 <span class="c1"># SNSのデータ</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>Amplifyの指定したIDのアプリケーションが、<code>Amplify Deployment Status Change</code>のイベントを送信し、これの<code>jobStatus</code>が<code>SUCCEED</code>/<code>FAILED</code>だった場合、これを送信する。</p>
+<p>AWS Amplifyの指定したIDのアプリケーションが、<code>AWS Amplify Deployment Status Change</code>のイベントを送信し、これの<code>jobStatus</code>が<code>SUCCEED</code>/<code>FAILED</code>だった場合、これを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;detail&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;appId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">&quot;jobStatus&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;SUCCEED&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;FAILED&quot;</span><span class="p p-Indicator">]},</span>
-<span class="w">  </span><span class="s">&quot;detail-type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;Amplify</span><span class="nv"> </span><span class="s">Deployment</span><span class="nv"> </span><span class="s">Status</span><span class="nv"> </span><span class="s">Change&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">  </span><span class="s">&quot;detail-type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;AWS</span><span class="nv"> </span><span class="s">Amplify</span><span class="nv"> </span><span class="s">Deployment</span><span class="nv"> </span><span class="s">Status</span><span class="nv"> </span><span class="s">Change&quot;</span><span class="p p-Indicator">],</span>
 <span class="w">  </span><span class="s">&quot;source&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;aws.amplify&quot;</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
@@ -26915,8 +26915,8 @@
 </ul>
 </blockquote>
 <h4 id="_7">▼ デバッグ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>EventBridgeでは、どのようなJSONのイベントをターゲットに送信したかを確認できない。</p>
-<p>そこで、デバッグ時はEventBridgeのターゲットにAWS Lambdaを設定し、イベント構造をログから確認する。</p>
+<p>AWS EventBridgeでは、どのようなJSONのイベントをターゲットに送信したかを確認できない。</p>
+<p>そこで、デバッグ時はAWS EventBridgeのターゲットにAWS Lambdaを設定し、イベント構造をログから確認する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>あらかじめ、イベントの内容を出力する関数をAWS Lambdaに作成しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// AWS Lambdaにデバッグ用の関数を用意する</span>
@@ -26924,7 +26924,7 @@
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">event</span><span class="p">},</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">));</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>対象のAWSリソースで任意のイベントが発生した時に、EventBridgeからAWS Lambdaに送信するように設定する。</p>
+<p>対象のAWSリソースで任意のイベントが発生した時に、AWS EventBridgeからAWS Lambdaに送信するように設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;source&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;aws.amplify&quot;</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <p>AWSリソースで意図的にイベントを起こし、AWS Lambdaのロググループから内容を確認する。</p>
@@ -26934,12 +26934,12 @@
 <span class="w">    </span><span class="p p-Indicator">{</span>
 <span class="w">      </span><span class="s">&quot;version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;b4a07570-eda1-9fe1-da5e-b672a1705c39&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;detail-type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Amplify</span><span class="nv"> </span><span class="s">Deployment</span><span class="nv"> </span><span class="s">Status</span><span class="nv"> </span><span class="s">Change&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;detail-type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;AWS</span><span class="nv"> </span><span class="s">Amplify</span><span class="nv"> </span><span class="s">Deployment</span><span class="nv"> </span><span class="s">Status</span><span class="nv"> </span><span class="s">Change&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="s">&quot;source&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;aws.amplify&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="s">&quot;account&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;AWSアカウントID&gt;&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="s">&quot;time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;イベントの発生時間&gt;&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="s">&quot;region&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ap-northeast-1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;resources&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;AmplifyのアプリケーションのARN&gt;&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">      </span><span class="s">&quot;resources&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;AWS</span><span class="nv"> </span><span class="s">AmplifyのアプリケーションのARN&gt;&quot;</span><span class="p p-Indicator">],</span>
 <span class="w">      </span><span class="s">&quot;detail&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">        </span><span class="p p-Indicator">{</span>
 <span class="w">          </span><span class="s">&quot;appId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;アプリケーションID&gt;&quot;</span><span class="p p-Indicator">,</span>
@@ -26958,19 +26958,19 @@
 <p><code>event</code>キーをドルマークとして、ドットで繋いでアクセスする。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>入力パスにて、使用する値を抽出する。</p>
-<p>Amplifyで発生したイベントのJSONを変数として取り出す。</p>
-<p>ここでは、以下のAmplifyのイベントを受信したとする。</p>
+<p>AWS Amplifyで発生したイベントのJSONを変数として取り出す。</p>
+<p>ここでは、以下のAWS Amplifyのイベントを受信したとする。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;event&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
 <span class="w">      </span><span class="s">&quot;version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;b4a07570-eda1-9fe1-da5e-b672a1705c39&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;detail-type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Amplify</span><span class="nv"> </span><span class="s">Deployment</span><span class="nv"> </span><span class="s">Status</span><span class="nv"> </span><span class="s">Change&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;detail-type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;AWS</span><span class="nv"> </span><span class="s">Amplify</span><span class="nv"> </span><span class="s">Deployment</span><span class="nv"> </span><span class="s">Status</span><span class="nv"> </span><span class="s">Change&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="s">&quot;source&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;aws.amplify&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="s">&quot;account&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;AWSアカウントID&gt;&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="s">&quot;time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;イベントの発生時間&gt;&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="s">&quot;region&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ap-northeast-1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;resources&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;AmplifyのアプリケーションのARN&gt;&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">      </span><span class="s">&quot;resources&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;AWS</span><span class="nv"> </span><span class="s">AmplifyのアプリケーションのARN&gt;&quot;</span><span class="p p-Indicator">],</span>
 <span class="w">      </span><span class="s">&quot;detail&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">        </span><span class="p p-Indicator">{</span>
 <span class="w">          </span><span class="s">&quot;appId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;アプリケーションID&gt;&quot;</span><span class="p p-Indicator">,</span>
@@ -26997,7 +26997,7 @@
 <p>Slackに送信するメッセージの作成ツールは、以下のリンクを参考にせよ。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;channel&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;text&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Amplifyデプロイ完了通知&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;text&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;AWS</span><span class="nv"> </span><span class="s">Amplifyデプロイ完了通知&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;blocks&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
 <span class="w">      </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;section&quot;</span><span class="p p-Indicator">,</span>
@@ -27038,7 +27038,7 @@
 <span class="w">      </span><span class="s">&quot;elements&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">        </span><span class="p p-Indicator">{</span>
 <span class="w">          </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;mrkdwn&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;text&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;:amplify:</span><span class="nv"> </span><span class="s">&lt;https://&lt;region&gt;.console.aws.amazon.com/amplify/home?region=&lt;region&gt;#/&lt;appId&gt;/&lt;branchName&gt;/&lt;jobId&gt;|*Amplifyコンソール*&quot;</span>
+<span class="w">          </span><span class="s">&quot;text&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;:amplify:</span><span class="nv"> </span><span class="s">&lt;https://&lt;region&gt;.console.aws.amazon.com/amplify/home?region=&lt;region&gt;#/&lt;appId&gt;/&lt;branchName&gt;/&lt;jobId&gt;|*AWS</span><span class="nv"> </span><span class="s">Amplifyコンソール*&quot;</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -27066,7 +27066,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2024年11月21日 18:24:46">2024-11-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月16日 16:46:02">2025-04-16</span>
   </span>
 
     
