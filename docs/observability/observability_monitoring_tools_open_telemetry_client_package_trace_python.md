@@ -93,7 +93,7 @@ RequestsInstrumentor().instrument()
 
 response = requests.get("http://flask-app:6000")
 
-print(response.text)
+print(response.text, flush=True)
 ```
 
 > - https://opentelemetry.io/docs/instrumentation/python/manual/

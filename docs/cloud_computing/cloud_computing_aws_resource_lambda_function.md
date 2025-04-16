@@ -385,7 +385,7 @@ AWS CloudWatch Logsにてこれを確認する。
 | パッケージ名               | 説明                                                                               | 補足                                                                |
 | -------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | JavaScriptの標準パッケージ | JavaScriptにビルトイン関数を使用できる                                             | ・https://nodejs.org/api/index.html                                 |
-| aws-sdk.js                 | JavaScriptを使用して、AWS-APIに対してリクエストを送信し、AWSリソースを操作できる。 | ・https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
+| `aws-sdk.js`               | JavaScriptを使用して、AWS-APIに対してリクエストを送信し、AWSリソースを操作できる。 | ・https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html
 
@@ -894,7 +894,7 @@ def lambda_handler(event, context):
         }
 
     except Exception as e:
-        print(f"Error: {repr(e)}")
+        print(f"Error: {repr(e)}", flush=True)
         return {
             'statusCode': 500,
             'body': json.dumps(f"Error: {repr(e)}")
@@ -929,12 +929,11 @@ def lambda_handler(event, context):
         }
 
     except Exception as e:
-        print(f"Error: {repr(e)}")
+        print(f"Error: {repr(e)}", flush=True)
         return {
             'statusCode': 500,
             'body': json.dumps(f"Error: {repr(e)}")
         }
-
 ```
 
 <br>

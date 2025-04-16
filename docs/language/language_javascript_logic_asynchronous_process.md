@@ -87,15 +87,15 @@ const asyncFunc = () => {
 
 <br>
 
-### `resolve`メソッド、`reject`メソッド
+## 02-02. `resolve`メソッド、`reject`メソッド
 
-#### ▼ コンストラクタを使用する場合
+### Promiseオブジェクトのコンストラクタを使用する場合
 
 Promiseオブジェクトのコンストラクタ内では、暗黙的にtry-catchが実行されている。
 
-そのため、結果のステータスが成功であれば`resolve`メソッドの結果を返却し、反対に失敗であれば`reject`メソッドを返却する。
+そのため、try-catchは不要である。
 
-両方を実装すると良しなに実行してくれる。
+結果のステータスが成功であれば`resolve`メソッドを実行し (`try`ブロックに相当) 、反対に失敗であれば`reject`メソッドを実行する (`catch`ブロックに相当) 。
 
 `resolve`メソッドと`resolve`メソッドのコール時に`return`を使用しないと、後続する処理も実行される。
 
@@ -138,7 +138,9 @@ console.log(asyncFunc());
 // Promise { 'SUCCESS' }
 ```
 
-#### ▼ コンストラクタを使用しない場合
+<br>
+
+### Promiseオブジェクトのコンストラクタを使用しない場合
 
 別の書き方として、Promiseオブジェクトから直接的に`resolve`メソッドや`reject`メソッドをコールしても良い。
 
@@ -203,6 +205,16 @@ UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error origin
 
 <br>
 
+## 02-03. then-catch-finally
+
+### then-catch-finallyとは
+
+try-catch-finally句に相当する。
+
+Promiseオブジェクトの`then`メソッド、`catch`メソッド、`finally`メソッドを使用してエラーハンドリングを実装できる。
+
+<br>
+
 ### `then`メソッド
 
 #### ▼ `then`メソッドとは
@@ -210,35 +222,6 @@ UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error origin
 Promiseオブジェクトの`resolve`関数の結果を引数に受け取り、コールバック関数を実行する。
 
 > - https://qiita.com/saka212/items/9b6cfe06b464580c2ee6#promise%E3%81%AE%E5%9F%BA%E6%9C%AC
-
-#### ▼ コンストラクタを使用する場合
-
-**＊実装例＊**
-
-```javascript
-const resolveFunc = new Promise((resolve, reject) => {
-  return resolve("resolve!!");
-});
-
-resolveFunc.then((value) => {
-  // resolveFuncがPromiseを返し、resolve!!がresolveされるため
-  // thenメソッドが実行されコンソールにresolve!!が表示される
-  console.log(value); // resolve!!
-});
-```
-
-```javascript
-const resolveFunc = () => {
-  // resolveFuncはasync functionではないため、Promiseを返さない
-  return "resolve!!";
-};
-
-resolveFunc.then((value) => {
-  // resolveFuncはPromiseを返さないため、エラーが発生して動かない
-  // Uncaught TypeError: resolveError(...).then is not a function
-  console.log(value);
-});
-```
 
 <br>
 
@@ -276,7 +259,38 @@ rejectFunc.catch((err) => {
 
 <br>
 
-### setTimeout
+### コンストラクタを使用する場合
+
+**＊実装例＊**
+
+```javascript
+const resolveFunc = new Promise((resolve, reject) => {
+  return resolve("resolve!!");
+});
+
+resolveFunc.then((value) => {
+  // resolveFuncがPromiseを返し、resolve!!がresolveされるため
+  // thenメソッドが実行されコンソールにresolve!!が表示される
+  console.log(value); // resolve!!
+});
+```
+
+```javascript
+const resolveFunc = () => {
+  // resolveFuncはasync functionではないため、Promiseを返さない
+  return "resolve!!";
+};
+
+resolveFunc.then((value) => {
+  // resolveFuncはPromiseを返さないため、エラーが発生して動かない
+  // Uncaught TypeError: resolveError(...).then is not a function
+  console.log(value);
+});
+```
+
+<br>
+
+## setTimeout
 
 指定した秒数だけ処理を待機する。
 
@@ -416,7 +430,13 @@ const asyncFunc = async () => {
 
 #### ▼ try-catchとは
 
-Promiseオブジェクトの`then`メソッド、`catch`メソッド、`finally`メソッドを使用してエラーハンドリングを実装できるが、try-catch文とawait宣言を組み合わせて、より可読性高く実装できる。
+try-catchでは、特定の処理の中で起こる想定できない例外を捉えられる。
+
+想定できない例外が起こる場合として、以下の状況がある。
+
+- 外部APIへのリクエスト
+- パッケージ内の関数のコール
+- 想定外のデータ型の入力
 
 **＊実装例＊**
 
