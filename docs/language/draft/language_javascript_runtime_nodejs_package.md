@@ -114,7 +114,25 @@ function getTraceId(headers) {
 ### child_process
 
 ```javascript
-import { spawn } from 'child_process'
+const { spawn } = require("child_process");
+
+const script = `
+  process.stdin.on('data', (data) => {
+    process.stdout.write(data.toString().toUpperCase());
+  });
+`;
+
+// 実行する子プロセスを設定する
+const child = spawn(
+    // Nodeコマンドを実行する
+    "node",
+    // eオプションでスクリプトを実行する
+    ["-e", script],
+    {
+      stdio: ["pipe", "pipe", "inherit"],
+      detached: true,
+    }
+);
 
 await new Promise((resolve, reject) => {
 
@@ -154,6 +172,6 @@ await new Promise((resolve, reject) => {
 ```
 
 > - https://nodejs.org/api/child_process.html
-> - https://qiita.com/k96mz/items/43444cedbfc2a11a01ea
+> - https://qiita.com/k96mz/items/43444cedbfc2a11a01ea#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B3%E3%83%BC%E3%83%89
 
 <br>

@@ -17,6 +17,8 @@ description: ブラウザレンダリングロジック＠JavaScriptを記録し
 
 ### Windowとは
 
+ブラウザのウィンドウ (ブラウザタブ) を表すオブジェクトである。
+
 > - https://developer.mozilla.org/ja/docs/Web/API/Window
 
 <br>

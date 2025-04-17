@@ -376,7 +376,7 @@ data:
     kind: ConfigManagementPlugin
     metadata:
       namespace: argocd
-      name: foo-plugin
+      name: foo-plugin # プラグイン名
     spec:
       # マニフェストの作成前に必要なファイル (例：Chart.yamlなど) がリポジトリにあるかの確認処理を定義する
       discover:
@@ -647,7 +647,7 @@ data:
     kind: ConfigManagementPlugin
     metadata:
       namespace: argocd
-      name: helmfile
+      name: helmfile # プラグイン名
     spec:
       init:
         command: 
@@ -833,30 +833,7 @@ spec:
 
 <br>
 
-### プラグインの使用
-
-Applicationでプラグイン名を指定する。
-
-また、必要な環境変数を設定する。
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: foo-application
-  namespace: argocd
-spec:
-  source:
-    repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
-    targetRevision: main
-    path: .
-    plugin:
-      name: helmfile
-```
-
-<br>
-
-## 05-02. `.spec.plugin`キー配下で使用する場合
+## 04-02. `.spec.plugin`キー配下で使用する場合
 
 ### セットアップ
 
@@ -880,7 +857,7 @@ data:
     kind: ConfigManagementPlugin
     metadata:
       namespace: argocd
-      name: helm-secrets
+      name: helm-secrets # プラグイン名
     spec:
       init:
         command: 
@@ -920,7 +897,7 @@ data:
     kind: ConfigManagementPlugin
     metadata:
       namespace: argocd
-      name: helm-secrets
+      name: helm-secrets # プラグイン名
     spec:
       init:
         command: 
@@ -969,7 +946,7 @@ spec:
     targetRevision: main
     path: .
     plugin:
-      name: helm-secrets
+      name: helm-secrets # プラグイン名
       env:
         - name: HELM_RELEASE_NAME
           value: foo
@@ -981,7 +958,7 @@ spec:
 
 <br>
 
-## 05-03. `.spec.source.helm`キー配下で使用する場合
+## 04-03. `.spec.source.helm`キー配下で使用する場合
 
 ### クラウドプロバイダー上の暗号化キーを使用する場合
 
@@ -1039,7 +1016,7 @@ spec:
 
 <br>
 
-## 06. Kustomize
+## 05. Kustomize
 
 ### Kustomizeの実行方法
 
@@ -1146,7 +1123,7 @@ spec:
 
 <br>
 
-## 07. KSOPS
+## 06. KSOPS
 
 ### KSOPSの実行方法
 
@@ -1295,7 +1272,7 @@ spec:
 
 <br>
 
-## 08. Vaultとの連携
+## 07. Vaultとの連携
 
 ### Vaultの実行方法
 
@@ -1328,7 +1305,7 @@ data:
     kind: ConfigManagementPlugin
     metadata:
       namespace: argocd
-      name: vault
+      name: vault # プラグイン名
     spec:
       init:
         command: 
@@ -1381,7 +1358,7 @@ spec:
 
 <br>
 
-## 09. 証明書
+## 08. SSL証明書
 
 マニフェストを復号化するツールとクラウド暗号化キーを使用している場合、暗号化キーがHTTPSを要求することがある。
 
@@ -1422,7 +1399,7 @@ spec:
 
 <br>
 
-## 10. 環境変数
+## 09. 環境変数
 
 ArgoCDと連携したツールでは、コマンドで以下の環境変数を使用できる。
 
