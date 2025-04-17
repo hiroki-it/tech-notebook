@@ -2754,10 +2754,6 @@ gRPCの `proto`ファイルはインフラ層に配置すると良い。
 
 最終的には、ユーザーインターフェース層まで持ち上げ、画面上のポップアップで警告文としてこれを表示する。
 
-例外スローの意義については、以下のリンクを参考にせよ。
-
-> - https://hiroki-it.github.io/tech-notebook/language/language_php_logic_error_and_error_handling.html
-
 <br>
 
 ### インターフェース層
