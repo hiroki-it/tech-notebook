@@ -55,7 +55,8 @@ exports.handler = async (event) => {
 ```
 
 ```javascript
-const aws = require("aws-sdk");
+import aws from "aws-sdk";
+
 const s3 = new aws.S3();
 
 exports.handler = async function (event) {
@@ -404,7 +405,7 @@ AWS CloudWatch Logsにてこれを確認する。
 ```javascript
 "use strict";
 
-const aws = require("aws-sdk");
+import aws from "aws-sdk";
 
 /**
  * @param event
@@ -442,9 +443,9 @@ AWS AmplifyのイベントをAWS EventBridgeでキャッチし、これをAWS La
 ```javascript
 "use strict";
 
-const aws = require("aws-sdk");
-const https = require("https");
-const {format} = require("util");
+import aws from "aws-sdk"
+import https from "https"
+import format from "util"
 
 /**
  * @param event
@@ -666,7 +667,7 @@ AWS LambdaがAWS S3に対してアクションを実行できるように、事�
 ```javascript
 "use strict";
 
-const aws = require("aws-sdk");
+import aws from "aws-sdk";
 
 const s3 = new aws.S3();
 

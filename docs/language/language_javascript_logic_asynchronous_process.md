@@ -498,9 +498,8 @@ const response = await retry(
 **＊実装例＊**
 
 ```typescript
-// Packages
-const retry = require("async-retry");
-const fetch = require("node-fetch");
+import retry from "async-retry";
+import fetch from "node-fetch";
 
 const response = await retry(
   // 対象の関数

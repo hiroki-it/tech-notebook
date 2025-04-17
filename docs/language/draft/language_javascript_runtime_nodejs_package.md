@@ -35,8 +35,8 @@ description: パッケージ＠Node.jsの知見を記録しています。
 指定のログレベルのメッセージを出力する。
 
 ```javascript
-const pino = require("pino");
-const https = require("https");
+import pino from "pino";
+import https from "https";
 
 let logger = pino();
 
@@ -66,8 +66,8 @@ const server = http.createServer((req, res) => {
 #### ▼ フィールドの追加
 
 ```javascript
-const pino = require("pino");
-const https = require("https");
+import pino from "pino";
+import https from "https";
 
 let logger = pino();
 
@@ -114,7 +114,7 @@ function getTraceId(headers) {
 ### child_process
 
 ```javascript
-const { spawn } = require("child_process");
+import spawn from "child_process";
 
 const script = `
   process.stdin.on('data', (data) => {
