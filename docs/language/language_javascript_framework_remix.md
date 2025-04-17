@@ -494,7 +494,7 @@ export default function SomeParent() {
 
 ### LocalStorageやSessionStorageではなくCookie
 
-RemixはSSRのフロントエンドアプリケーションを作成する。
+RemixはSSRアプリケーションを作成する。
 
 SSRでは、ブラウザのLocalStorageやSessionStorageを操作できない。
 

@@ -133,9 +133,9 @@ Kubernetes内で管理できるメリットがある。
 
 GraphQLでAPIゲートウェイを実装する場合は、特に注意が必要である。
 
-フロントエンドとAPIゲートウェイの両方でGraphQL特有の実装が必要になるので、フロントエンドとAPIゲートウェイの開発が分業にしくくなってしまう。
+フロントエンド領域とAPIゲートウェイ領域の両方でGraphQL特有の実装が必要になるので、フロントエンド領域とAPIゲートウェイ領域の開発が分業にしくくなってしまう。
 
-ただ、フロントエンドとAPIゲートウェイの開発チームの両方がGraphQLの知識を持ってれば、これは起こらない。
+ただ、フロントエンド領域とAPIゲートウェイ領域の開発チームの両方がGraphQLの知識を持ってれば、これは起こらない。
 
 > - https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy
 > - https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9

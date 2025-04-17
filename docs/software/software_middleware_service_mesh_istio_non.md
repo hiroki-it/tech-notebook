@@ -71,7 +71,7 @@ KubernetesとIstio上のPodは、Serviceの完全修飾ドメイン名のURL (`h
 
 指定するURLはKubernetesのみの場合と同じであるが、実際はServiceを経由しておらず、Pod間で直接的に通信している。
 
-Pod間 (フロントエンドとマイクロサービス間、マイクロサービス間) をHTTPSで通信したい場合、Istioの相互TLSを有効化する必要がある。
+Pod間 (フロントエンド領域とマイクロサービス領域間、マイクロサービス間) をHTTPSで通信したい場合、Istioの相互TLSを有効化する必要がある。
 
 > - https://github.com/istio/istio/issues/10864#issue-397801391
 > - https://discuss.istio.io/t/pod-to-pod-communication/8939/5
@@ -83,6 +83,6 @@ Pod間 (フロントエンドとマイクロサービス間、マイクロサー
 
 Kubernetes上のPodは、Serviceの完全修飾ドメイン名のURL (`http://foo-service.default.svc.cluster.local`) を指定すると、そのServiceの配下にあるPodとHTTPで通信できる。
 
-Pod間 (フロントエンドとマイクロサービス間、マイクロサービス間) をHTTPSで通信したい場合、Cert Managerなどを使用して、PodにSSL証明書やクライアント証明書をマウントする必要がある。
+Pod間 (フロントエンド領域とマイクロサービス領域間、マイクロサービス間) をHTTPSで通信したい場合、Cert Managerなどを使用して、PodにSSL証明書やクライアント証明書をマウントする必要がある。
 
 <br>
