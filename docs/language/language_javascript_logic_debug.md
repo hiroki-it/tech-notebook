@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】デバッグの豆知識＠JavaScript
-description: デバッグの豆知識＠JavaScriptを記録しています。
+title: 【IT技術の知見】デバッグロジック＠JavaScript
+description: デバッグロジック＠JavaScriptを記録しています。
 ---
 
-# デバッグの豆知識＠JavaScript
+# デバッグロジック＠JavaScript
 
 ## はじめに
 

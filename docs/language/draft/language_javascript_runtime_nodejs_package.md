@@ -108,3 +108,52 @@ function getTraceId(headers) {
 > - https://wiblok.com/ja/nodejs/index/nodejs-request-info-processing-method/
 
 <br>
+
+## 02. プロセスの操作
+
+### child_process
+
+```javascript
+import { spawn } from 'child_process'
+
+await new Promise((resolve, reject) => {
+
+  const child = spawn()
+
+  child.unref()
+
+  let stdout = ''
+  let stderr = ''
+
+  // 子プロセスの標準出力からデータを取得する
+  child.stdout.on('data', (data) => {
+    stdout += data.toString()
+    resolve("SUCCESS");
+    reject("FAILED");
+  })
+
+  // 子プロセスの標準エラー出力からデータを取得する
+  child.stderr.on('data', (data) => {
+    stderr += data.toString()
+    resolve("SUCCESS");
+    reject("FAILED");
+  })
+
+  // 子プロセスが終了した時の処理
+  child.on('exit', (code, signal) => {
+    resolve("SUCCESS");
+    reject("FAILED");
+  })
+
+  // 子プロセスの作成中や実行中にエラーが発生した時の処理
+  child.on('error', (err) => {
+    resolve("SUCCESS");
+    reject("FAILED");
+  })
+}
+```
+
+> - https://nodejs.org/api/child_process.html
+> - https://qiita.com/k96mz/items/43444cedbfc2a11a01ea
+
+<br>
