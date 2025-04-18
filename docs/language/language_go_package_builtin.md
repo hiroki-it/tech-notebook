@@ -1333,7 +1333,7 @@ func main() {
 
 #### ▼ リカバー系
 
-HTTPの処理で起こったパニックを、`Internal Server Error`として処理する。
+HTTPプロトコルの処理で起こったパニックを、`Internal Server Error`として処理する。
 
 ```go
 package main

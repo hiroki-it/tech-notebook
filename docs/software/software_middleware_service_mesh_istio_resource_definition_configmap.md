@@ -1703,7 +1703,7 @@ data:
           # HTTP用のエンドポイントを設定する
           port: 4318
             http:
-            # HTTPの場合はパスが必要である
+            # HTTPプロトコルの場合はパスが必要である
             path: /v1/traces
       - name: envoy-log
         envoyFileAccessLog:

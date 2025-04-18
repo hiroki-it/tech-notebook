@@ -86,7 +86,7 @@ process_cpu_seconds_total
 ```
 
 ```bash
-# HTTPのリクエスト
+# HTTPリクエスト
 http_request_duration_seconds
 ```
 

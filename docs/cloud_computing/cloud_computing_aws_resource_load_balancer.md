@@ -145,7 +145,7 @@ SetEnvIf X-Forwarded-Proto https HTTPS=on
 
 #### ▼ アプリケーションにおける対処方法
 
-![ALBからEC2に対するリクエストのプロトコルをHTTPSと見なす](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ALBからEC2に対するリクエストのプロトコルをHTTPSと見なす.png)
+![ALBからEC2に対するリクエストのプロトコルをHTTPSプロトコルと見なす](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ALBからEC2に対するリクエストのプロトコルをHTTPSと見なす.png)
 
 ALBを経由したリクエストには、リクエストヘッダーに`HTTP_X_FORWARDED_PROTO`ヘッダーが付与される。
 
@@ -200,9 +200,9 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 ### アクセスログ
 
-#### ▼ HTTPSの場合
+#### ▼ HTTPSプロトコルの場合
 
-HTTPSのアクセスログのフォーマットは以下の通りである。
+HTTPSプロトコルのアクセスログのフォーマットは以下の通りである。
 
 ```yaml
 https 2018-07-02T22:23:00.186641Z app/my-loadbalancer/50dc6c495c0c9188 192.168.131.39:2817 10.0.0.1:80 0.086 0.048 0.037 200 200 0 57 "GET https://www.example.com:443/ HTTP/1.1" "curl/7.46.0" ECDHE-RSA-AES128-GCM-SHA256 TLSv1.2 arn:aws:elasticloadbalancing:us-east-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067 "Root=1-58337281-1d84f3d73c47ec4e58577259" "www.example.com" "arn:aws:acm:us-east-2:123456789012:certificate/12345678-1234-1234-1234-123456789012" 1 2018-07-02T22:22:48.364000Z "authenticate,forward" "-" "-" "10.0.0.1:80" "200" "-" "-" TID_123456

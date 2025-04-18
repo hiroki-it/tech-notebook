@@ -81,7 +81,7 @@ AWS Lambdaに送信する。
 
 #### ▼ HTTP/HTTPS
 
-Webhook用のエンドポイントに送信する。
+Webhookリクエスト用のエンドポイントに送信する。
 
 - AWS Chatbotのドメイン名 (`https://global.sns-api.chatbot.amazonaws.com`)
 - incident.io (`https://api.incident.io/v2/alert_events/cloudwatch/*****`)

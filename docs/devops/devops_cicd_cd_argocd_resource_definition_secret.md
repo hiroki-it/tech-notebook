@@ -442,7 +442,7 @@ ArgoCDは、argocd-repo-credsの`.url`キーを使用して、argocd-repoの`.ur
 
 - クライアントが、任意の認証/認可方法でArgoCDにログインするためのユーザー名とパスワード
 - ArgoCDがapiserverにリクエストを送信するためのSSL証明書と秘密鍵
-- Webhookを送信するためのSSL証明書
+- Webhookリクエストを送信するためのSSL証明書
 
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-secret.yaml
 

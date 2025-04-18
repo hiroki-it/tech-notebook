@@ -1764,7 +1764,7 @@ func SetSpanOptions() otelhttp.Option {
 
 スパン名を生成する関数を設定する。
 
-HTTPの場合、スパン名はURLにするとよい。
+HTTPプロトコルの場合、スパン名はURLにするとよい。
 
 ```go
 package http

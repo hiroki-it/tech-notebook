@@ -603,7 +603,7 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 各フィルターは、ReadFilterとWriteFilterに分類できる。
 
-執筆時点 (2024/01/21) では、HTTPの処理に関するフィルターは全てReadFilterである。
+執筆時点 (2024/01/21) では、HTTPプロトコルの処理に関するフィルターは全てReadFilterである。
 
 > - https://zhuanlan.zhihu.com/p/464828801
 > - https://istio-insider.mygraphql.com/zh-cn/latest/ch2-envoy/arch/network-filter/network-filter.html

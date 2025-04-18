@@ -598,7 +598,7 @@ metadata:
   name: foo-service
 spec:
   ports:
-    # HTTPのみ
+    # HTTPプロトコルのみ
     - name: http-foo
       port: 80
 ```
@@ -610,7 +610,7 @@ metadata:
   name: foo-service
 spec:
   ports:
-    # TCPのみ
+    # TCPプロトコルのみ
     - name: tcp-foo
       port: 9000
 ```
@@ -626,7 +626,7 @@ metadata:
   name: foo-service
 spec:
   ports:
-    # HTTPのみをVirtualServiceから送信できる
+    # HTTPプロトコルのみをVirtualServiceから送信できる
     - appProtocol: http
       port: 80
 ```
@@ -638,7 +638,7 @@ metadata:
   name: foo-service
 spec:
   ports:
-    # TCPのみをVirtualServiceから送信できる
+    # TCPプロトコルのみをVirtualServiceから送信できる
     - appProtocol: tcp
       port: 9000
 ```

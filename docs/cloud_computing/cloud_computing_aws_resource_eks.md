@@ -250,7 +250,7 @@ ConfigMapを経由してKubernetesのRBACと連携することにより、Kubern
 
 : AWS IAMユーザーがkube-apiserverのURLにリクエストを送信する。
 
-     kube-apiserverは、aws-iam-authenticator-serverにWebhookを送信する。
+     kube-apiserverは、aws-iam-authenticator-serverにWebhookリクエストを送信する。
 
      admission-controllersアドオンのWebhookではないことに注意する。
 

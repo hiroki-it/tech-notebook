@@ -425,7 +425,7 @@ spec:
 
 Webhookの宛先のServiceを決定する。
 
-Serviceを経由して、aws-load-balancer-controllerに内蔵されているwebhookサーバーにWebhookを送信する。
+Serviceを経由して、aws-load-balancer-controllerに内蔵されているwebhookサーバーにWebhookリクエストを送信する。
 
 このwebhookサーバーがAdmissionResponseを作成し、これをkube-apiserverに返信する。
 
@@ -508,7 +508,7 @@ webhooks:
 
 ### Service
 
-AWS Load Balancer Controllerが作成された場合に、WebhookサーバーにWebhookを送信する。
+AWS Load Balancer Controllerが作成された場合に、webhookサーバーにWebhookリクエストを送信する。
 
 ここでは、ClusterIP Serviceを使用する。
 

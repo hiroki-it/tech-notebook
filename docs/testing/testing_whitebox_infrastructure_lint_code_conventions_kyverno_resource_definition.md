@@ -81,7 +81,7 @@ spec:
 
 #### ▼ rulesとは
 
-Webhook時に実行するKyvernoのルールを設定する。
+Webhookリクエスト時に実行するKyvernoのルールを設定する。
 
 #### ▼ Mutateルールの場合
 
