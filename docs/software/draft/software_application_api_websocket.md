@@ -135,6 +135,8 @@ func main() {
 
 これにより、ブラウザからMQTTプロトコルでリクエストを送信できるようになる。
 
+![mqtt-over-websocket.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mqtt-over-websocket.png)
+
 > - https://www.hivemq.com/blog/understanding-the-differences-between-mqtt-and-websockets-for-iot/
 > - https://qiita.com/theFirstPenguin/items/55dd1daa9313f6b90e2f#websocket
 
@@ -167,7 +169,7 @@ const client = mqtt.connect("ws://localhost:8083/mqtt", connectOptions);
 client.on("connect", () => {
   console.log("Connected to EMQX via WebSocket");
 
-  // トピックを購読する例
+  // トピックをサブスクライブする例
   const subscribeTopic = "my/topic";
   client.subscribe(subscribeTopic, {qos: 0}, (err) => {
     if (!err) {
@@ -177,7 +179,7 @@ client.on("connect", () => {
     }
   });
 
-  // メッセージをPublishする例
+  // メッセージをパブリッシュする例
   const publishTopic = "another/topic";
   const message = "Hello from MQTT over WebSocket client!";
   client.publish(publishTopic, message, {qos: 0, retain: false}, (err) => {
