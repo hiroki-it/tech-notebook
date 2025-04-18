@@ -111,7 +111,9 @@ function getTraceId(headers) {
 
 ## 02. プロセスの操作
 
-### child_process
+### プロセスの実行
+
+#### ▼ child_process
 
 ```javascript
 import spawn from "child_process";
@@ -173,5 +175,57 @@ await new Promise((resolve, reject) => {
 
 > - https://nodejs.org/api/child_process.html
 > - https://qiita.com/k96mz/items/43444cedbfc2a11a01ea#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B3%E3%83%BC%E3%83%89
+
+<br>
+
+## 03. ファイルの操作
+
+### ファイル書き込み
+
+#### ▼ writeFileSync
+
+ファイルにテキストを書き込む。
+
+同期処理のため、完了を待って後続の処理を実行する。
+
+```javascript
+import fs from "fs";
+
+// ファイルを書き込む
+fs.writeFileSync("output.txt", "書き込む内容");
+
+// 後続の処理
+```
+
+> - https://nodejs.org/api/fs.html#fswritefilesyncfile-data-options
+> - https://photo-tea.com/p/17/fs-write-nodejs/
+
+#### ▼ writeFile
+
+ファイルにテキストを書き込む。
+
+非同期処理のため、完了を待たずに後続の処理を実行する。
+
+```javascript
+import fs from "fs";
+
+// ファイルを書き込む
+fs.writeFile("output.txt", "書き込む内容", (err) => {
+  // 書き出しに失敗した場合
+  if (err) {
+    console.log("エラーが発生しました。" + err);
+    throw err;
+  }
+  // 書き出しに成功した場合
+  else {
+    console.log("ファイルが正常に書き出しされました");
+  }
+});
+
+// 後続の処理
+```
+
+> - https://nodejs.org/api/fs.html#fswritefilefile-data-options-callback
+> - https://photo-tea.com/p/17/fs-write-nodejs/
 
 <br>

@@ -576,6 +576,17 @@ data:
 > - https://istiobyexample.dev/monitoring-egress-traffic/
 > - https://discuss.istio.io/t/setting-outboundtrafficpolicy-mode-in-configmap/7041/3
 
+#### ▼ ALLOW_ANYの注意点
+
+サービスメッシュ外の "クラスター外" の宛先であれば、`ALLOW_ANY`のため接続可能である (Kiali上は PassthroughClusterという表記) 。
+
+一方で、サービスメッシュ外の "クラスター内" であると、Istioリソースで宛先を登録する必要がある。
+
+方法として、以下がある。
+
+- OpenTelemetry Collectorをサービスメッシュ内に置いて、VirtualServiceを作成する
+- 〃 をサービスメッシュ外に置いて、ServiceEntryを作成する
+
 <br>
 
 ### proxyListenPort

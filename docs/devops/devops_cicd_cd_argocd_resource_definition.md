@@ -1469,6 +1469,7 @@ metadata:
   namespace: argocd
 spec:
   sources:
+    # 公式チャート
     - repoURL: https://github.com/hiroki-hasegawa/foo-repository.git
       targetRevision: main
       chart: <チャート名>
@@ -1478,6 +1479,8 @@ spec:
           foo: foo
           bar: bar
           baz: baz
+    # 自前チャート
+    # helm-secretsプラグインを使用して、Secretを復号化する。
     - repoURL: https://github.com/hiroki-hasegawa/bar-repository.git
       targetRevision: main
       path: foo-extra
