@@ -135,6 +135,79 @@ func main() {
 
 これにより、ブラウザからMQTTプロトコルでリクエストを送信できるようになる。
 
+> - https://www.hivemq.com/blog/understanding-the-differences-between-mqtt-and-websockets-for-iot/
 > - https://qiita.com/theFirstPenguin/items/55dd1daa9313f6b90e2f#websocket
+
+#### ▼ クライアント
+
+```typescript
+import mqtt from "mqtt";
+
+// MQTTクライアントのオプション (必要に応じて設定)
+const connectOptions: mqtt.IClientOptions = {
+  clientId: `mqttjs_${Math.random().toString(16).slice(2, 10)}`, // ランダムなクライアントIDを生成
+  username: "<ユーザー名>", // EMQXで認証が必要な場合は設定
+  password: "<パスワード>", // EMQXで認証が必要な場合は設定
+  keepalive: 60, // キープアライブ間隔 (秒)
+  reconnectPeriod: 1000, // 再接続試行間隔 (ミリ秒)
+  connectTimeout: 30000, // 接続タイムアウト (ミリ秒)
+  will: {
+    // LWT (Last Will and Testament) メッセージ (必要に応じて設定)
+    topic: "client/offline",
+    payload: "Client disconnected unexpectedly",
+    qos: 0,
+    retain: false,
+  },
+};
+
+// MQTTクライアントの作成
+const client = mqtt.connect("ws://localhost:8083/mqtt", connectOptions);
+
+// 接続成功時の処理
+client.on("connect", () => {
+  console.log("Connected to EMQX via WebSocket");
+
+  // トピックを購読する例
+  const subscribeTopic = "my/topic";
+  client.subscribe(subscribeTopic, {qos: 0}, (err) => {
+    if (!err) {
+      console.log(`Subscribed to topic: ${subscribeTopic}`);
+    } else {
+      console.error(`Error subscribing to topic ${subscribeTopic}:`, err);
+    }
+  });
+
+  // メッセージをPublishする例
+  const publishTopic = "another/topic";
+  const message = "Hello from MQTT over WebSocket client!";
+  client.publish(publishTopic, message, {qos: 0, retain: false}, (err) => {
+    if (!err) {
+      console.log(`Published message "${message}" to topic: ${publishTopic}`);
+    } else {
+      console.error(`Error publishing message to topic ${publishTopic}:`, err);
+    }
+  });
+});
+
+// メッセージ受信時の処理
+client.on("message", (topic, message) => {
+  console.log(`Received message on topic "${topic}": ${message.toString()}`);
+});
+
+// 切断時の処理
+client.on("disconnect", () => {
+  console.log("Disconnected from EMQX");
+});
+
+// 再接続時の処理
+client.on("reconnect", () => {
+  console.log("Attempting to reconnect to EMQX...");
+});
+
+// エラー発生時の処理
+client.on("error", (err) => {
+  console.error("MQTT client error:", err);
+});
+```
 
 <br>
