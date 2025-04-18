@@ -107,6 +107,9 @@ spec:
         - --policy=sync
         - --provider=aws
         - --txt-owner-id=external-dns
+        # ExternalDNSで作成するレコードタイプを設定する (AAAAは不要なので設定していない)
+        - --managed-record-types=A
+        - --managed-record-types=CNAME
       env:
         - name: AWS_DEFAULT_REGION
           value: ap-northeast-1

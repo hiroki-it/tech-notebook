@@ -147,14 +147,19 @@ import mqtt from "mqtt";
 
 // MQTTクライアントのオプション (必要に応じて設定)
 const connectOptions: mqtt.IClientOptions = {
-  clientId: `mqttjs_${Math.random().toString(16).slice(2, 10)}`, // ランダムなクライアントIDを生成
-  username: "<ユーザー名>", // EMQXで認証が必要な場合は設定
-  password: "<パスワード>", // EMQXで認証が必要な場合は設定
-  keepalive: 60, // キープアライブ間隔 (秒)
-  reconnectPeriod: 1000, // 再接続試行間隔 (ミリ秒)
-  connectTimeout: 30000, // 接続タイムアウト (ミリ秒)
+  // ランダムなクライアントIDを生成
+  clientId: `mqttjs_${Math.random().toString(16).slice(2, 10)}`,
+  // EMQXで認証が必要な場合は設定
+  username: "<ユーザー名>",
+  // EMQXで認証が必要な場合は設定
+  password: "<パスワード>",
+  // キープアライブ間隔 (秒)
+  keepalive: 60,
+  // 再接続試行間隔 (ミリ秒)
+  reconnectPeriod: 1000,
+  // 接続タイムアウト (ミリ秒)
+  connectTimeout: 30000,
   will: {
-    // LWT (Last Will and Testament) メッセージ (必要に応じて設定)
     topic: "client/offline",
     payload: "Client disconnected unexpectedly",
     qos: 0,
@@ -169,7 +174,7 @@ const client = mqtt.connect("ws://localhost:8083/mqtt", connectOptions);
 client.on("connect", () => {
   console.log("Connected to EMQX via WebSocket");
 
-  // トピックをサブスクライブする例
+  // トピックをサブスクライブする
   const subscribeTopic = "my/topic";
   client.subscribe(subscribeTopic, {qos: 0}, (err) => {
     if (!err) {
@@ -179,7 +184,7 @@ client.on("connect", () => {
     }
   });
 
-  // メッセージをパブリッシュする例
+  // メッセージをパブリッシュする
   const publishTopic = "another/topic";
   const message = "Hello from MQTT over WebSocket client!";
   client.publish(publishTopic, message, {qos: 0, retain: false}, (err) => {
