@@ -31,6 +31,8 @@ description: EMQX＠メッセージング系ミドルウェアの知見を記録
 
 ## 03. サブスクライプ
 
+宛先はEmqxにポーリングを実行し、メッセージをサブスクリプションする。
+
 > - https://www.emqx.com/en/blog/mqtt-5-introduction-to-publish-subscribe-model
 
 <br>
