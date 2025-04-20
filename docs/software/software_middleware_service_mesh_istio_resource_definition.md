@@ -2866,6 +2866,36 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/telemetry/#Tracing
 
+#### ▼ customTags
+
+スパン属性を設定する。
+
+```yaml
+apiVersion: telemetry.istio.io/v1
+kind: Telemetry
+metadata:
+  name: trace-provider
+  namespace: foo
+spec:
+  tracing:
+    - providers:
+        - name: opentelemetry
+      customTags:
+        # HTTPヘッダーから設定する
+        http.url.path:
+          header:
+            name: :path
+            defaultValue: unknown
+        # 独自の属性を設定する
+        system.name:
+          literal:
+            value: istio-demo
+        # 独自の属性を設定する
+        system.environment:
+          literal:
+            value: dev
+```
+
 <br>
 
 ## 12. VirtualService
