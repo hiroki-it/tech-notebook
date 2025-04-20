@@ -1022,11 +1022,13 @@ data:
 
 ### tracingServiceName
 
-マイクロサービス名を設定する。
+スパンの`service.name`属性の値を設定する。
 
 マイクロサービスがバージョニングされている場合に、マイクロサービスの正式名 (canonical-name) でグループ化できる。
 
 デフォルトでは`APP_LABEL_AND_NAMESPACE`であり、`<Namespace>.<appラベル値>`になる。
+
+appラベルがないマイクロサービスのために、canonical名に基づく`CANONICAL_NAME_AND_NAMESPACE`を使用した方が良い。
 
 ```yaml
 apiVersion: v1
