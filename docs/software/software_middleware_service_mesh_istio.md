@@ -750,4 +750,25 @@ Envoyでは宛先としてサポートしていても、Istio上のEnvoyでは�
 > - https://github.com/istio/istio/blob/1.14.3/samples/bookinfo/src/details/details.rb#L130-L187
 > - https://github.com/istio/istio/issues/36599
 
+#### ▼ スパン
+
+Istioでは、EnvoyFilterを使用しないとデフォルトのスパン名を変更できない。
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: bookinfo-gateway-sampling
+  namespace: istio-system
+spec:
+  configPatches:
+  - patch:
+      operation: MERGE
+      value:
+        decorator:
+          operation: <スパン名>
+```
+
+> - https://github.com/istio/istio/issues/21100
+
 <br>

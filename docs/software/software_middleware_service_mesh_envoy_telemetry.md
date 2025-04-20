@@ -328,3 +328,31 @@ Envoyは、Exporterとしてスパンを監視バックエンドに送信する�
 > - https://www.appmeshworkshop.com/x-ray/
 
 <br>
+
+### スパン
+
+#### ▼ operation
+
+ スパン名が決まる。
+
+`x-envoy-decorator-operation`ヘッダーの値を変更することで上書きできる。
+
+```yaml
+{
+  "route_config": {
+    "routes": [
+      {
+        "decorator": {
+          "operation": "<foo>.<foo-namespace>.svc.cluster.local:<ポート番号>/*"
+        }
+      }
+    ]
+  }
+}
+```
+
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#config-route-v3-decorator
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#config-http-filters-router-x-envoy-decorator-operation
+
+
+<br>

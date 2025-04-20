@@ -1026,6 +1026,8 @@ data:
 
 マイクロサービスがバージョニングされている場合に、マイクロサービスの正式名 (canonical-name) でグループ化できる。
 
+デフォルトでは`APP_LABEL_AND_NAMESPACE`であり、`<Namespace>.<appラベル値>`になる。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -1035,7 +1037,7 @@ metadata:
 data:
   mesh: |
     defaultConfig:
-      tracingServiceName: foo
+      tracingServiceName: APP_LABEL_AND_NAMESPACE	
 ```
 
 ```yaml
@@ -1044,7 +1046,7 @@ kind: ProxyConfig
 metadata:
   name: foo-proxyconfig
 spec:
-  tracingServiceName: foo
+  tracingServiceName: APP_LABEL_AND_NAMESPACE	
 ```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-TracingServiceName

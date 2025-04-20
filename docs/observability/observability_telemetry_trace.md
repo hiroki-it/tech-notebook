@@ -319,7 +319,7 @@ SaaSツールによってJSON型の構造が異なる。
 | `get`                   | `<HTTPメソッド名>`                                  |    ×     |                                              |
 | `get_account.42`        | `<アプリケーションのメソッド名>.<ID>`               |    ×     |                                              |
 | `get_account`           | `<アプリケーションのメソッド名>`                    |    ⭕️    | スパンの属性にアカウントIDを設定するとよい。 |
-| `get_account.accountId` | `<アプリケーションのメソッド名>.<エンドポイント名>` |    ⭕️    |                                              |
+| `get_account.accountId` | `<アプリケーションのメソッド名>.<受信エンドポイント名>` |    ⭕️    |                                              |
 
 > - https://github.com/open-telemetry/opentelemetry-specification//blob/main/specification/trace/api.md#span
 > - https://opentelemetry.io/docs/specs/semconv/http/http-spans/#name
