@@ -5744,6 +5744,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      属性
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -28282,6 +28291,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      属性
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -29336,6 +29354,207 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="_45">属性<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h3>
+<p>istio-proxyコンテナは、デフォルトで以下のようなスパンを作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">    </span><span class="s">&quot;batches&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">        </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="s">&quot;resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                </span><span class="s">&quot;attributes&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">                    </span><span class="p p-Indicator">{</span>
+<span class="w">                        </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;telemetry.sdk.language&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                        </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                            </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cpp&quot;</span>
+<span class="w">                        </span><span class="p p-Indicator">}</span>
+<span class="w">                    </span><span class="p p-Indicator">},</span>
+<span class="w">                    </span><span class="p p-Indicator">{</span>
+<span class="w">                        </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;telemetry.sdk.name&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                        </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                            </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;envoy&quot;</span>
+<span class="w">                        </span><span class="p p-Indicator">}</span>
+<span class="w">                    </span><span class="p p-Indicator">},</span>
+<span class="w">                    </span><span class="p p-Indicator">{</span>
+<span class="w">                        </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;telemetry.sdk.version&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                        </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                            </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;4382ac5fc1d362094bbba33283dbe60a3e1cef88/1.33.1-dev/Clean/RELEASE/BoringSSL&quot;</span>
+<span class="w">                        </span><span class="p p-Indicator">}</span>
+<span class="w">                    </span><span class="p p-Indicator">},</span>
+<span class="w">                    </span><span class="p p-Indicator">{</span>
+<span class="w">                        </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;k8s.pod.ip&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                        </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                            </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;127.0.0.6&quot;</span>
+<span class="w">                        </span><span class="p p-Indicator">}</span>
+<span class="w">                    </span><span class="p p-Indicator">},</span>
+<span class="w">                    </span><span class="p p-Indicator">{</span>
+<span class="w">                        </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;service.name&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                        </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                            </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;reviews.bookinfo&quot;</span>
+<span class="w">                        </span><span class="p p-Indicator">}</span>
+<span class="w">                    </span><span class="p p-Indicator">}</span>
+<span class="w">                </span><span class="p p-Indicator">],</span>
+<span class="w">                </span><span class="s">&quot;droppedAttributesCount&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span>
+<span class="w">            </span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="s">&quot;instrumentationLibrarySpans&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">                </span><span class="p p-Indicator">{</span>
+<span class="w">                    </span><span class="s">&quot;spans&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">                        </span><span class="p p-Indicator">{</span>
+<span class="w">                            </span><span class="s">&quot;traceId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;422a513f9dd13cdca4b291187d65ec69&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                            </span><span class="s">&quot;spanId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;0241f770ee902e2d&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                            </span><span class="s">&quot;parentSpanId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;61d22fad2b80d1dd&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                            </span><span class="s">&quot;traceState&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                            </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;proxy./ratings/0&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                            </span><span class="c1"># 送信元istio-proxyコンテナまたは宛先istio-proxyコンテナ</span>
+<span class="w">                            </span><span class="s">&quot;kind&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;SPAN_KIND_CLIENT&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                            </span><span class="s">&quot;startTimeUnixNano&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1745220839492363000</span><span class="p p-Indicator">,</span>
+<span class="w">                            </span><span class="s">&quot;endTimeUnixNano&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1745220839934638800</span><span class="p p-Indicator">,</span>
+<span class="w">                            </span><span class="s">&quot;attributes&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;node_id&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;sidecar~10.244.1.6~reviews-v4-7586d5d46d-tgqhb.bookinfo~bookinfo.svc.cluster.local&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">},</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;zone&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">},</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;guid:x-request-id&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;5457526c-0e6c-92eb-b0bd-508c75ad85c2&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">},</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;downstream_cluster&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;-&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">},</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;user_agent&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Mozilla/5.0</span><span class="nv"> </span><span class="s">(Macintosh;</span><span class="nv"> </span><span class="s">Intel</span><span class="nv"> </span><span class="s">Mac</span><span class="nv"> </span><span class="s">OS</span><span class="nv"> </span><span class="s">X</span><span class="nv"> </span><span class="s">10_15_7)</span><span class="nv"> </span><span class="s">AppleWebKit/537.36</span><span class="nv"> </span><span class="s">(KHTML,</span><span class="nv"> </span><span class="s">like</span><span class="nv"> </span><span class="s">Gecko)</span><span class="nv"> </span><span class="s">Chrome/135.0.0.0</span><span class="nv"> </span><span class="s">Safari/537.36&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">},</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;http.protocol&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;HTTP/1.1&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">},</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;peer.address&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;10.244.1.6&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">},</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;request_size&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;0&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">},</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;response_size&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;48&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">},</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;component&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;proxy&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">},</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;upstream_cluster&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;outbound|9080|v3|ratings.bookinfo.svc.cluster.local&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">},</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;upstream_cluster.name&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;outbound|9080|v3|ratings.bookinfo.svc.cluster.local;&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">},</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;http.status_code&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;200&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">},</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;response_flags&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;-&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">},</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;istio.cluster_id&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Kubernetes&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">},</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;istio.mesh_id&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cluster.local&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">},</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;istio.namespace&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;bookinfo&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">},</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;istio.canonical_revision&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;v4&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">},</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;istio.canonical_service&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;reviews&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">},</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;http.method&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;GET&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">},</span>
+<span class="w">                                </span><span class="p p-Indicator">{</span>
+<span class="w">                                    </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;http.url&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                                    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                        </span><span class="s">&quot;stringValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;http://ratings:9080/ratings/0&quot;</span>
+<span class="w">                                    </span><span class="p p-Indicator">}</span>
+<span class="w">                                </span><span class="p p-Indicator">}</span>
+<span class="w">                            </span><span class="p p-Indicator">],</span>
+<span class="w">                            </span><span class="s">&quot;droppedAttributesCount&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">                            </span><span class="s">&quot;droppedEventsCount&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">                            </span><span class="s">&quot;droppedLinksCount&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">                            </span><span class="s">&quot;status&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                                </span><span class="s">&quot;code&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">                                </span><span class="s">&quot;message&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">                            </span><span class="p p-Indicator">}</span>
+<span class="w">                        </span><span class="p p-Indicator">},</span>
+<span class="w">                    </span><span class="p p-Indicator">],</span>
+<span class="w">                    </span><span class="s">&quot;instrumentationLibrary&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                        </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;envoy&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                        </span><span class="s">&quot;version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;4382ac5fc1d362094bbba33283dbe60a3e1cef88/1.33.1-dev/Clean/RELEASE/BoringSSL&quot;</span>
+<span class="w">                    </span><span class="p p-Indicator">}</span>
+<span class="w">                </span><span class="p p-Indicator">}</span>
+<span class="w">            </span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="p p-Indicator">}</span>
+<span class="w">    </span><span class="p p-Indicator">]</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><br></p>
 
 
 
@@ -29356,7 +29575,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月21日 13:40:12">2025-04-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月21日 17:33:51">2025-04-21</span>
   </span>
 
     

@@ -24123,12 +24123,13 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="スパン名">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
-      スパンの属性
+      ▼ スパン名について
     </span>
   </a>
   
@@ -24137,7 +24138,7 @@
           <li class="md-nav__item">
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
-      スパンの粒度
+      ▼ サーバー側の場合
     </span>
   </a>
   
@@ -24145,6 +24146,38 @@
         
           <li class="md-nav__item">
   <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ クライアント側の場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      スパンの属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      スパンの粒度
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       データポイント化
     </span>
@@ -24168,7 +24201,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
+  <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
       プロファイルとは
     </span>
@@ -27167,12 +27200,13 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="スパン名">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
-      スパンの属性
+      ▼ スパン名について
     </span>
   </a>
   
@@ -27181,7 +27215,7 @@
           <li class="md-nav__item">
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
-      スパンの粒度
+      ▼ サーバー側の場合
     </span>
   </a>
   
@@ -27189,6 +27223,38 @@
         
           <li class="md-nav__item">
   <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ クライアント側の場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      スパンの属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      スパンの粒度
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       データポイント化
     </span>
@@ -27212,7 +27278,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
+  <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
       プロファイルとは
     </span>
@@ -27627,13 +27693,15 @@
 </blockquote>
 <p><br></p>
 <h3 id="_17">スパン名<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h4 id="_18">▼ スパン名について<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>スパンが作成されたクラス (構造体) やメソッド (関数) が判別しやすいようにする。</p>
-<p>例えば、ユーザー情報を取得するマイクロサービスのスパン名として、以下の候補がある。</p>
 <p>区切り記号は、ドット (<code>.</code>) や スラッシュ(<code>/</code>) が良い。</p>
+<h4 id="_19">▼ サーバー側の場合<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p>サーバー側では、例えば以下のスパン名をとする。</p>
 <table>
 <thead>
 <tr>
-<th>スパン名</th>
+<th>サーバー側のスパン名</th>
 <th>構成</th>
 <th style="text-align: center;">良し悪し</th>
 <th>補足</th>
@@ -27647,8 +27715,8 @@
 <td></td>
 </tr>
 <tr>
-<td><code>get_account.42</code></td>
-<td><code>&lt;アプリケーションの関数名&gt;.&lt;ID&gt;</code></td>
+<td><code>get_account/42</code></td>
+<td><code>&lt;アプリケーションの関数名&gt;/&lt;ID&gt;</code></td>
 <td style="text-align: center;">×</td>
 <td></td>
 </tr>
@@ -27659,8 +27727,8 @@
 <td>スパンの属性にアカウントIDを設定するとよい。</td>
 </tr>
 <tr>
-<td><code>get_account.accountId</code></td>
-<td><code>&lt;アプリケーションの関数名&gt;.&lt;受信エンドポイント名&gt;</code></td>
+<td><code>get_account/{accountId}</code></td>
+<td><code>&lt;アプリケーションの関数名&gt;/&lt;パラメーター名 (具体的なIDではなく)&gt;</code></td>
 <td style="text-align: center;">⭕️</td>
 <td></td>
 </tr>
@@ -27673,8 +27741,42 @@
 <li><a href="https://opentelemetry.io/docs/specs/semconv/http/http-spans/#http-server-semantic-conventions">https://opentelemetry.io/docs/specs/semconv/http/http-spans/#http-server-semantic-conventions</a></li>
 </ul>
 </blockquote>
+<h4 id="_20">▼ クライアント側の場合<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p>クライアント側では、例えば以下のスパン名をとする。</p>
+<table>
+<thead>
+<tr>
+<th>スパン名</th>
+<th>構成</th>
+<th style="text-align: center;">良し悪し</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>foo-server get_account/{accountId}</code></td>
+<td><code>&lt;サーバー名&gt; &lt;アプリケーションの関数名&gt;/&lt;パラメーター名 (具体的なIDではなく)&gt;</code></td>
+<td style="text-align: center;">⭕️</td>
+</tr>
+<tr>
+<td><code>foo-server GET get_account/{accountId}</code></td>
+<td><code>&lt;サーバー名&gt; &lt;HTTPメソッド名&gt; &lt;アプリケーションの関数名&gt;/&lt;パラメーター名 (具体的なIDではなく)&gt;</code></td>
+<td style="text-align: center;">⭕️</td>
+</tr>
+<tr>
+<td><code>foo-db foo-table</code></td>
+<td><code>&lt;DB名&gt; &lt;テーブル名&gt;</code></td>
+<td style="text-align: center;">⭕️</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://medium.com/@emmanuel.courreges/jaeger-tracing-and-opentelemetry-usage-guidelines-cdc1fcf48415">https://medium.com/@emmanuel.courreges/jaeger-tracing-and-opentelemetry-usage-guidelines-cdc1fcf48415</a></li>
+<li><a href="https://www.oreilly.com/library/view/distributed-tracing-in/9781492056621/ch04.html">https://www.oreilly.com/library/view/distributed-tracing-in/9781492056621/ch04.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h3 id="_18">スパンの属性<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<h3 id="_21">スパンの属性<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -27702,7 +27804,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_19">スパンの粒度<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<h3 id="_22">スパンの粒度<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <p>スパンの適切な粒度は、マイクロサービスの粒度による。</p>
 <table>
 <thead>
@@ -27723,11 +27825,11 @@
 </tbody>
 </table>
 <p><br></p>
-<h3 id="_20">データポイント化<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<h3 id="_23">データポイント化<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <p>スパンが持つデータをデータポイントとして集計することにより、メトリクスのデータポイントを収集できる。</p>
 <p><br></p>
 <h2 id="04">04. プロファイル<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="_21">プロファイルとは<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<h3 id="_24">プロファイルとは<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <p>分散トレースのスパンにハードウェアリソース消費量の情報を加えたもの。</p>
 <blockquote>
 <ul>
@@ -27756,7 +27858,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月21日 13:40:12">2025-04-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月21日 17:33:51">2025-04-21</span>
   </span>
 
     
