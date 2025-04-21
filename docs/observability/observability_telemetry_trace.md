@@ -308,22 +308,43 @@ SaaSツールによってJSON型の構造が異なる。
 
 ### スパン名
 
-スパンが作成されたクラス (構造体) やメソッド (関数) が判別しやすいようにする。
+#### ▼ スパン名について
 
-例えば、ユーザー情報を取得するマイクロサービスのスパン名として、以下の候補がある。
+スパンが作成されたクラス (構造体) やメソッド (関数) が判別しやすいようにする。
 
 区切り記号は、ドット (`.`) や スラッシュ(`/`) が良い。
 
-| スパン名                | 構成                                                | 良し悪し | 補足                                         |
+
+#### ▼ サーバー側の場合
+
+サーバー側では、例えば以下のスパン名をとする。
+
+| サーバー側のスパン名                | 構成                                                | 良し悪し | 補足                                         |
 | ----------------------- | --------------------------------------------------- | :------: | -------------------------------------------- |
 | `get`                   | `<HTTPメソッド名>`                                  |    ×     |                                              |
-| `get_account.42`        | `<アプリケーションの関数名>.<ID>`                   |    ×     |                                              |
+| `get_account/42`        | `<アプリケーションの関数名>/<ID>`                   |    ×     |                                              |
 | `get_account`           | `<アプリケーションの関数名>`                        |    ⭕️    | スパンの属性にアカウントIDを設定するとよい。 |
-| `get_account.accountId` | `<アプリケーションの関数名>.<受信エンドポイント名>` |    ⭕️    |                                              |
+| `get_account/{accountId}` | `<アプリケーションの関数名>/<パラメーター名 (具体的なIDではなく)>` |    ⭕️    |                                              |
+
 
 > - https://github.com/open-telemetry/opentelemetry-specification//blob/main/specification/trace/api.md#span
 > - https://opentelemetry.io/docs/specs/semconv/http/http-spans/#name
 > - https://opentelemetry.io/docs/specs/semconv/http/http-spans/#http-server-semantic-conventions
+
+#### ▼ クライアント側の場合
+
+クライアント側では、例えば以下のスパン名をとする。
+
+| スパン名                | 構成                                                | 良し悪し |
+| ----------------------- | --------------------------------------------------- | :------: |
+| `foo-server get_account/{accountId}`                   | `<サーバー名> <アプリケーションの関数名>/<パラメーター名 (具体的なIDではなく)>`                                  |   ⭕️     |
+| `foo-server GET get_account/{accountId}`                   | `<サーバー名> <HTTPメソッド名> <アプリケーションの関数名>/<パラメーター名 (具体的なIDではなく)>`                                  |   ⭕️     |
+| `foo-db foo-table`                   | `<DB名> <テーブル名>`                                  |   ⭕️     |
+
+
+
+> - https://medium.com/@emmanuel.courreges/jaeger-tracing-and-opentelemetry-usage-guidelines-cdc1fcf48415
+> - https://www.oreilly.com/library/view/distributed-tracing-in/9781492056621/ch04.html
 
 <br>
 
