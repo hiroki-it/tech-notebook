@@ -321,15 +321,16 @@ SaaSツールによってJSON型の構造が異なる。
 
 | サーバー側のスパン名                | 構成                                                | 良し悪し | 補足                                         |
 | ----------------------- | --------------------------------------------------- | :------: | -------------------------------------------- |
-| `get`                   | `<HTTPメソッド名>`                                  |    ×     |                                              |
-| `get_account/42`        | `<アプリケーションの関数名>/<ID>`                   |    ×     |                                              |
-| `get_account`           | `<アプリケーションの関数名>`                        |    ⭕️    | スパンの属性にアカウントIDを設定するとよい。 |
-| `get_account/{accountId}` | `<アプリケーションの関数名>/<パラメーター名 (具体的なIDではなく)>` |    ⭕️    |                                              |
+| `get`                   | `<HTTPメソッド名>`                                  |    ×     |   具体的すぎると、データを集計しにくくなる。                                           |
+| `get_account/42`        | `<アプリケーションの関数名>/<ID>`                   |    ×     |  具体的すぎると、データを集計しにくくなる。                                            |
+| `get_account`           | `<アプリケーションの関数名>`                        |    ⭕️    | スパン名にIDを命名しない代わりに、スパンの属性に設定するとよい。 |
+| `get_account/{accountId}` | `<アプリケーションの関数名>/<パラメーター名 (具体的なIDではなく)>` |    ⭕️    | スパン名にIDを命名しない代わりに、スパンの属性に設定するとよい。い。                                             |
 
 
 > - https://github.com/open-telemetry/opentelemetry-specification//blob/main/specification/trace/api.md#span
 > - https://opentelemetry.io/docs/specs/semconv/http/http-spans/#name
 > - https://opentelemetry.io/docs/specs/semconv/http/http-spans/#http-server-semantic-conventions
+> - https://www.oreilly.com/library/view/distributed-tracing-in/9781492056621/ch04.html
 
 #### ▼ クライアント側の場合
 
