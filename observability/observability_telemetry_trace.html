@@ -27712,25 +27712,25 @@
 <td><code>get</code></td>
 <td><code>&lt;HTTPメソッド名&gt;</code></td>
 <td style="text-align: center;">×</td>
-<td></td>
+<td>具体的すぎると、データを集計しにくくなる。</td>
 </tr>
 <tr>
 <td><code>get_account/42</code></td>
 <td><code>&lt;アプリケーションの関数名&gt;/&lt;ID&gt;</code></td>
 <td style="text-align: center;">×</td>
-<td></td>
+<td>具体的すぎると、データを集計しにくくなる。</td>
 </tr>
 <tr>
 <td><code>get_account</code></td>
 <td><code>&lt;アプリケーションの関数名&gt;</code></td>
 <td style="text-align: center;">⭕️</td>
-<td>スパンの属性にアカウントIDを設定するとよい。</td>
+<td>スパン名にIDを命名しない代わりに、スパンの属性に設定するとよい。</td>
 </tr>
 <tr>
 <td><code>get_account/{accountId}</code></td>
 <td><code>&lt;アプリケーションの関数名&gt;/&lt;パラメーター名 (具体的なIDではなく)&gt;</code></td>
 <td style="text-align: center;">⭕️</td>
-<td></td>
+<td>スパン名にIDを命名しない代わりに、スパンの属性に設定するとよい。い。</td>
 </tr>
 </tbody>
 </table>
@@ -27739,6 +27739,7 @@
 <li><a href="https://github.com/open-telemetry/opentelemetry-specification//blob/main/specification/trace/api.md#span">https://github.com/open-telemetry/opentelemetry-specification//blob/main/specification/trace/api.md#span</a></li>
 <li><a href="https://opentelemetry.io/docs/specs/semconv/http/http-spans/#name">https://opentelemetry.io/docs/specs/semconv/http/http-spans/#name</a></li>
 <li><a href="https://opentelemetry.io/docs/specs/semconv/http/http-spans/#http-server-semantic-conventions">https://opentelemetry.io/docs/specs/semconv/http/http-spans/#http-server-semantic-conventions</a></li>
+<li><a href="https://www.oreilly.com/library/view/distributed-tracing-in/9781492056621/ch04.html">https://www.oreilly.com/library/view/distributed-tracing-in/9781492056621/ch04.html</a></li>
 </ul>
 </blockquote>
 <h4 id="_20">▼ クライアント側の場合<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
@@ -27858,7 +27859,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月21日 17:33:51">2025-04-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月21日 17:43:00">2025-04-21</span>
   </span>
 
     
