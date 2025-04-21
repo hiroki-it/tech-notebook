@@ -5395,6 +5395,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#log_as_json" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ log_as_json
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#monitoringaddr" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ monitoringAddr
@@ -27462,6 +27471,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#log_as_json" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ log_as_json
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#monitoringaddr" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ monitoringAddr
@@ -27575,6 +27593,7 @@
 <span class="w">            </span><span class="c1"># 15014番ポートの開放</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--monitoringAddr=:15014</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--log_output_level=default:info</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--log_as_json</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--domain</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster.local</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--keepaliveMaxServerConnectionAge</span>
@@ -27992,6 +28011,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15014/debu
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--monitoringAddr=:15014</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--log_output_level=default:info</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--log_as_json</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--domain</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster.local</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--keepaliveMaxServerConnectionAge</span>
@@ -28025,6 +28045,19 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15014/debu
 <li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery">https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery</a></li>
 </ul>
 </blockquote>
+<h4 id="log_as_json">▼ log_as_json<a class="headerlink" href="#log_as_json" title="Permanent link">&para;</a></h4>
+<p>Istioの各コンポーネントの実行ログを構造化する。</p>
+<p>istio-proxyコンテナのアクセスログではない。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pilot-discovery<span class="w"> </span>discovery<span class="w"> </span>--log_as_json
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;level&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;info&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2025-04-21T07:07:32.114867Z&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;scope&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;xdsproxy&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;msg&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;connected</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">delta</span><span class="nv"> </span><span class="s">upstream</span><span class="nv"> </span><span class="s">XDS</span><span class="nv"> </span><span class="s">server:</span><span class="nv"> </span><span class="s">istiod-1-25-0.istio-system.svc:15012&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
 <h4 id="monitoringaddr">▼ monitoringAddr<a class="headerlink" href="#monitoringaddr" title="Permanent link">&para;</a></h4>
 <p>Prometheusによるメトリクス収集のポート番号を設定する。</p>
 <p><code>:15014</code>を設定する。</p>
@@ -28064,7 +28097,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15014/debu
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月18日 20:56:32">2025-04-18</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月21日 16:27:02">2025-04-21</span>
   </span>
 
     
