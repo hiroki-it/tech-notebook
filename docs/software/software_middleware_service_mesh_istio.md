@@ -750,9 +750,13 @@ Envoyでは宛先としてサポートしていても、Istio上のEnvoyでは�
 > - https://github.com/istio/istio/blob/1.14.3/samples/bookinfo/src/details/details.rb#L130-L187
 > - https://github.com/istio/istio/issues/36599
 
-#### ▼ スパン
+<br>
 
-Istioでは、EnvoyFilterを使用しないとデフォルトのスパン名を変更できない。
+### スパン名
+
+#### ▼ EnvoyFilterの場合
+
+Istioの設定では、EnvoyFilterを使用しないとデフォルトのスパン名を変更できない。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -762,11 +766,58 @@ metadata:
   namespace: istio-system
 spec:
   configPatches:
-  - patch:
-      operation: MERGE
-      value:
-        decorator:
-          operation: <スパン名>
+    - patch:
+        operation: MERGE
+        value:
+          decorator:
+            operation: <スパン名>
+```
+
+#### ▼ OpenTelemetry Collectorの場合
+
+Istioの代わりに、OpenTelemetry Collectorでスパン名を変更することもできる。
+
+あらかじめ、Telemetryで`http.url.path`という属性を設定しておく。
+
+```yaml
+apiVersion: telemetry.istio.io/v1
+kind: Telemetry
+metadata:
+  name: trace-provider
+  namespace: foo
+spec:
+  tracing:
+    - providers:
+        - name: opentelemetry
+      customTags:
+        # HTTPヘッダーから設定する
+        http.url.path:
+          header:
+            name: :path
+            defaultValue: unknown
+```
+
+spanprocessorを使用して、スパン名を変更する。
+
+```yaml
+# OpenTelemetry Collectorの設定ファイル
+config:
+  processors:
+    span:
+      name:
+        from_attributes:
+          - http.url.path
+      include:
+        match_type: strict
+        # istio-proxyコンテナの作成したスパンのみを対象とする
+        attributes:
+          - key: component
+            value: proxy
+  service:
+    pipelines:
+      traces:
+        processors:
+          - span
 ```
 
 > - https://github.com/istio/istio/issues/21100

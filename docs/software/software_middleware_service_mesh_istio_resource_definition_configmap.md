@@ -1039,7 +1039,7 @@ metadata:
 data:
   mesh: |
     defaultConfig:
-      tracingServiceName: APP_LABEL_AND_NAMESPACE	
+      tracingServiceName: APP_LABEL_AND_NAMESPACE
 ```
 
 ```yaml
@@ -1048,7 +1048,7 @@ kind: ProxyConfig
 metadata:
   name: foo-proxyconfig
 spec:
-  tracingServiceName: APP_LABEL_AND_NAMESPACE	
+  tracingServiceName: APP_LABEL_AND_NAMESPACE
 ```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-TracingServiceName

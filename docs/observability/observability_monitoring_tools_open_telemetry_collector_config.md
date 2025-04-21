@@ -486,6 +486,25 @@ processors:
 
 <br>
 
+### span
+
+```yaml
+processors:
+  span:
+    name:
+      # http.urlという属性から値を抽出する
+      from_attributes:
+        - http.url
+    include:
+      match_type: strict
+      # istio-proxyコンテナの作成したスパンのみを対象とする
+      attributes:
+        - key: component
+          value: proxy
+```
+
+<br>
+
 ## 05. receivers
 
 ### receiversとは

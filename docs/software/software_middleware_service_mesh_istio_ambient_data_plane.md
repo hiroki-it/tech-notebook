@@ -363,7 +363,7 @@ spec:
           readOnly: true
   dnsPolicy: ClusterFirst
   enableServiceLinks: true
-  nodeName: istio-demo-m06
+  nodeName: foo-m06
   preemptionPolicy: PreemptLowerPriority
   priority: 0
   restartPolicy: Always

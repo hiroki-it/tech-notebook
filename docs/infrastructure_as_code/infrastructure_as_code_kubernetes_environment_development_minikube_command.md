@@ -742,10 +742,10 @@ kube-apiserverは負荷が高まりクラッシュしやすいため、対策に
 ```bash
 $ minikube start --ha
 
-NAME             STATUS   ROLES           AGE   VERSION
-istio-demo       Ready    control-plane   95s   v1.32.3
-istio-demo-m02   Ready    control-plane   85s   v1.32.3
-istio-demo-m03   Ready    control-plane   75s   v1.32.3
+NAME      STATUS   ROLES           AGE   VERSION
+foo       Ready    control-plane   95s   v1.32.3
+foo-m02   Ready    control-plane   85s   v1.32.3
+foo-m03   Ready    control-plane   75s   v1.32.3
 ```
 
 個別にコントロールプレーンNodeを追加しても良い。

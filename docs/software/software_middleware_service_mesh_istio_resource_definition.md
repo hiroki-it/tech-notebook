@@ -2889,7 +2889,7 @@ spec:
         # 独自の属性を設定する
         system.name:
           literal:
-            value: istio-demo
+            value: foo
         # 独自の属性を設定する
         system.environment:
           literal:
