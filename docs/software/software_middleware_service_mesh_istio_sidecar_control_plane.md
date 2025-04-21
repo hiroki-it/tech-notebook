@@ -87,6 +87,7 @@ spec:
             # 15014番ポートの開放
             - --monitoringAddr=:15014
             - --log_output_level=default:info
+            - --log_as_json
             - --domain
             - cluster.local
             - --keepaliveMaxServerConnectionAge
@@ -548,6 +549,7 @@ spec:
         - discovery
         - --monitoringAddr=:15014
         - --log_output_level=default:info
+        - --log_as_json
         - --domain
         - cluster.local
         - --keepaliveMaxServerConnectionAge
@@ -585,6 +587,26 @@ $ pilot-discovery discovery --log_output_level none
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-discovery-discovery
+
+#### ▼ log_as_json
+
+Istioの各コンポーネントの実行ログを構造化する。
+
+istio-proxyコンテナのアクセスログではない。
+
+```bash
+$ pilot-discovery discovery --log_as_json
+```
+
+```yaml
+{
+  "level": "info",
+  "time": "2025-04-21T07:07:32.114867Z",
+  "scope": "xdsproxy",
+  "msg": "connected to delta upstream XDS server: istiod-1-25-0.istio-system.svc:15012",
+  "id": 2
+}
+```
 
 #### ▼ monitoringAddr
 
