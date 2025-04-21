@@ -5706,10 +5706,34 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#_44" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ スパン
+      スパン名
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="スパン名">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#envoyfilter" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ EnvoyFilterの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opentelemetry-collector" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ OpenTelemetry Collectorの場合
     </span>
   </a>
   
@@ -28220,10 +28244,34 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#_44" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ スパン
+      スパン名
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="スパン名">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#envoyfilter" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ EnvoyFilterの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opentelemetry-collector" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ OpenTelemetry Collectorの場合
     </span>
   </a>
   
@@ -29226,8 +29274,10 @@
 <li><a href="https://github.com/istio/istio/issues/36599">https://github.com/istio/istio/issues/36599</a></li>
 </ul>
 </blockquote>
-<h4 id="_44">▼ スパン<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h4>
-<p>Istioでは、EnvoyFilterを使用しないとデフォルトのスパン名を変更できない。</p>
+<p><br></p>
+<h3 id="_44">スパン名<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h3>
+<h4 id="envoyfilter">▼ EnvoyFilterの場合<a class="headerlink" href="#envoyfilter" title="Permanent link">&para;</a></h4>
+<p>Istioの設定では、EnvoyFilterを使用しないとデフォルトのスパン名を変更できない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -29235,11 +29285,50 @@
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">configPatches</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">patch</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MERGE</span>
-<span class="w">      </span><span class="nt">value</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">decorator</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;スパン名&gt;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">patch</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MERGE</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">decorator</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;スパン名&gt;</span>
+</code></pre></div>
+<h4 id="opentelemetry-collector">▼ OpenTelemetry Collectorの場合<a class="headerlink" href="#opentelemetry-collector" title="Permanent link">&para;</a></h4>
+<p>Istioの代わりに、OpenTelemetry Collectorでスパン名を変更することもできる。</p>
+<p>あらかじめ、Telemetryで<code>http.url.path</code>という属性を設定しておく。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trace-provider</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">tracing</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry</span>
+<span class="w">      </span><span class="nt">customTags</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># HTTPヘッダーから設定する</span>
+<span class="w">        </span><span class="nt">http.url.path</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">header</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">:path</span>
+<span class="w">            </span><span class="nt">defaultValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unknown</span>
+</code></pre></div>
+<p>spanprocessorを使用して、スパン名を変更する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># OpenTelemetry Collectorの設定ファイル</span>
+<span class="nt">config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">processors</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">span</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">from_attributes</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http.url.path</span>
+<span class="w">      </span><span class="nt">include</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">match_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">strict</span>
+<span class="w">        </span><span class="c1"># istio-proxyコンテナの作成したスパンのみを対象とする</span>
+<span class="w">        </span><span class="nt">attributes</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">component</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">proxy</span>
+<span class="w">  </span><span class="nt">service</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">pipelines</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">traces</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">processors</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">span</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -29267,7 +29356,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月21日 03:44:10">2025-04-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月21日 13:40:12">2025-04-21</span>
   </span>
 
     
