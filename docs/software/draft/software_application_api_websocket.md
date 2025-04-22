@@ -23,15 +23,19 @@ description: Websocket-API＠APIの知見を記録しています。
 
 <br>
 
-### HTTPプロトコルの場合
+## 01-02. HTTPプロトコルの場合
 
-#### ▼ 仕組み
+### 仕組み
 
 通常のRESTful-APIでHTTPを使用する場合、双方向通信は実施できない。
 
 一方で、Websocket-APIではHTTPを拡張し、双方向通信は実施できるようにしている。
 
 > - https://qiita.com/theFirstPenguin/items/55dd1daa9313f6b90e2f#websocket
+
+<br>
+
+### 実装例
 
 #### ▼ クライアント
 
@@ -90,11 +94,14 @@ var upgrader = websocket.Upgrader{
 }
 
 func handleWebSocket(w http.ResponseWriter, r *http.Request) {
+
 	conn, err := upgrader.Upgrade(w, r, nil)
+
 	if err != nil {
 		log.Println("upgrade:", err)
 		return
 	}
+
 	defer conn.Close()
 
 	for {
@@ -114,9 +121,13 @@ func handleWebSocket(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	// ws://localhost:8080 で待ち受ける
 	http.HandleFunc("/ws", handleWebSocket)
+
 	log.Println("WebSocket server started on :8080")
+
 	err := http.ListenAndServe(":8080", nil)
+
 	if err != nil {
 		log.Fatal("ListenAndServe:", err)
 	}
@@ -125,13 +136,13 @@ func main() {
 
 <br>
 
-### MQTT over Websocketの場合
+## 01-03. MQTT over Websocketの場合
 
-#### ▼ 仕組み
+### 仕組み
 
 通常のMQTTの場合、ブラウザでは使用できず、IoTの文脈で使用できる。
 
-一方で、MQTT over WebsocketではWebsocketで接続を確立し、MQTTプロトコルを使用する。
+一方で、MQTT over WebsocketではWebsocketプロトコルで通信し、MQTTプロトコルを使用する。
 
 これにより、ブラウザからMQTTプロトコルでリクエストを送信できるようになる。
 
@@ -139,6 +150,10 @@ func main() {
 
 > - https://www.hivemq.com/blog/understanding-the-differences-between-mqtt-and-websockets-for-iot/
 > - https://qiita.com/theFirstPenguin/items/55dd1daa9313f6b90e2f#websocket
+
+<br>
+
+### 実装例
 
 #### ▼ クライアント
 
@@ -215,6 +230,36 @@ client.on("reconnect", () => {
 client.on("error", (err) => {
   console.error("MQTT client error:", err);
 });
+```
+
+#### ▼ リクエストヘッダー
+
+MQTTクライアントは、MQTTサーバーにHTTPプロトコルのリクエストを送信する。
+
+```yaml
+GET /mqtt HTTP/1.1
+
+Host: 0.0.0.0:8083
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: <ランダムキー>
+Sec-WebSocket-Version: 13
+```
+
+#### ▼ レスポンスヘッダー
+
+MQTTサーバーは、HTTPプロトコルのレスポンスに`Upgrade`ヘッダーを設定する。
+
+これにより、HTTPプロトコルがWebsocketプロトコルに変更される。
+
+このWebsocketプロトコル上で、MQTTプロトコルを使用できる。
+
+```yaml
+HTTP/1.1 101 Switching Protocols
+
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: <サーバーが生成したキー>
 ```
 
 <br>

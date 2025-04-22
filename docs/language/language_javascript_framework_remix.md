@@ -26,19 +26,21 @@ Reactパッケージを使用したフレームワークである。
 SSRのアプリケーションで以下の順に処理を実行し、データの取得からブラウザレンダリングまでを実施する。
 
 1. ローダー: レンダリング前、APIからデータを取得する。
-2. コンポーネント: (初回レンダリング) : レンダリング処理を実行する。
+2. コンポーネント: レンダリング処理を実行する。
 3. アクション: レンダリング後のブラウザ操作に応じて、デザインパターンのコントローラーのようにクエリストリングやリクエストのコンテキストを受信し、DBのデータを変更する。
-4. ローダー: ブラウザ操作に応じて、`action`からデータを取得する。
+4. ローダー: ブラウザ操作に応じて、アクションからデータを取得する。
 
 > - https://www.ey-office.com/blog_archive/2022/07/06/is-remix-ruby-on-rails-in-react/
 
 <br>
 
-### loader
+### ローダー
 
-#### ▼ loaderとは
+#### ▼ ローダーとは
 
-`loader` (ユーザーが`loader`と命名した関数) は、レンダリング前にAPIからデータを取得する。
+ローダーは、`loader`関数として定義できる。
+
+レンダリング前にAPIからデータを取得し、またブラウザ操作に応じてアクションからデータを取得する。
 
 各エンドポイントごとに定義できる。
 
@@ -52,7 +54,7 @@ DBにクエリを送信し、データを取得できる。
 import {json} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
 
-// loaderでレンダリング前にデータを取得する
+// ローダーでレンダリング前にデータを取得する
 export const loader = async () => {
   return json({
     posts: [
@@ -83,7 +85,7 @@ export const loader = async () => {
 import {json} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
 
-// loaderでレンダリング前にデータを取得する
+// ローダーでレンダリング前にデータを取得する
 export const loader = async () => {
   return json({
     posts: [
@@ -99,7 +101,7 @@ export const loader = async () => {
   });
 };
 
-// componentで、レンダリング処理を実行する
+// コンポーネントで、レンダリング処理を実行する
 export default function Posts() {
   const {posts} = useLoaderData<typeof loader>();
   return (
@@ -115,15 +117,20 @@ export default function Posts() {
 
 <br>
 
-### component
+### コンポーネント
+
+#### ▼ コンポーネントとは
 
 コンポーネントは、レンダリング処理を実行する。
 
+内部的にはReactのコンポーネントが使用されている。
+
 ```jsx
 import {json} from "@remix-run/node";
+// 内部的にはReactのコンポーネントである。
 import {useLoaderData} from "@remix-run/react";
 
-// loaderでレンダリング前にデータを取得する
+// ローダーでレンダリング前にデータを取得する
 export const loader = async () => {
   return json({
     posts: [
@@ -139,7 +146,7 @@ export const loader = async () => {
   });
 };
 
-// componentで、レンダリング処理を実行する
+// コンポーネントで、レンダリング処理を実行する
 export default function Posts() {
   const {posts} = useLoaderData<typeof loader>();
   return (
@@ -150,13 +157,19 @@ export default function Posts() {
 }
 ```
 
+> - https://www.ey-office.com/blog_archive/2022/07/06/is-remix-ruby-on-rails-in-react/
+
+#### ▼ アクションではなくコンポーネントに実装するべき処理
+
+バックエンドのデータを変更する必要がないような外部API通信処理は、アクションではなくコンポーネントに実装するべきである。
+
 <br>
 
-### action
+### アクション
 
-アクションは、APIリクエストやブラウザ操作に応じて、データを変更する。
+#### ▼ アクションとは
 
-バックエンドのコントローラーと同様にクエリストリングやリクエストのコンテキストを受信する。
+レンダリング後のブラウザ操作に応じて、デザインパターンのコントローラーのようにクエリストリングやリクエストのコンテキストを受信し、DBのデータを変更する。
 
 componentを同じファイルに実装する以外に、`.server`ディレクトリに切り分ける方法もある。
 
@@ -168,13 +181,13 @@ import { Form } from "@remix-run/react";
 import { TodoList } from "~/components/TodoList";
 import { fakeCreateTodo, fakeGetTodos } from "~/utils/db";
 
-// loaderでレンダリング前にデータを取得する
+// ローダーでレンダリング前にデータを取得する
 // レンダリング後のブラウザ操作でactionが実行され、actionの結果を取得する
 export async function loader() {
   return json(await fakeGetTodos());
 }
 
-// componentで、レンダリング処理を実行する
+// コンポーネントで、レンダリング処理を実行する
 export default function Todos() {
 
   // useLoaderDataでloaderによる取得データを出力する
@@ -196,7 +209,7 @@ export default function Todos() {
   );
 }
 
-// actionで、受信したリクエストに応じた処理を実行する
+// アクションで、受信したリクエストに応じた処理を実行する
 export async function action({request}: ActionFunctionArgs) {
   const body = await request.formData();
   const todo = await fakeCreateTodo({
@@ -446,7 +459,7 @@ export default function AuthCommon() {
 
 ### ユーザー定義
 
-Remixがcomponentであることを認識するために、名前の先頭を大文字する。
+Remixがコンポーネントであることを認識するために、名前の先頭を大文字する。
 
 > - https://dev.classmethod.jp/articles/make-user-defined-component-name-capitalized-in-react/
 
