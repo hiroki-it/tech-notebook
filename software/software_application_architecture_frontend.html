@@ -27597,6 +27597,7 @@
 <p>最初に取得するhtmlファイルはほぼ空で、ブラウザ上でjavascriptファイルを実行し、htmlファイルを全てを作成する。</p>
 <p>その後、クライアントの操作で部分的にデータをリクエストし、htmlファイルを部分的に変更する。</p>
 <p>大きなjavascriptファイルを最初に読み込むため、初回の読み込み時間が長くなる。</p>
+<p>バックエンドアプリケーションが存在する場合、SSRとは異なり、ブラウザ上の静的ファイルはCSRアプリケーションを経由しバックエンドアプリケーションと通信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/bitarts/articles/37260ddb28ae5d">https://zenn.dev/bitarts/articles/37260ddb28ae5d</a></li>
@@ -27688,6 +27689,7 @@
 <h3 id="ssr">広義のSSRとは<a class="headerlink" href="#ssr" title="Permanent link">&para;</a></h3>
 <p>ブラウザ側ではなくサーバー側で静的ファイルを作成する。</p>
 <p>フレームワークのテンプレートエンジンやCGIを使用して、サーバー側で静的ファイルを作成すること、も含まれる。</p>
+<p>バックエンドアプリケーションが存在する場合、CSRとは異なり、ブラウザ上の静的ファイルはSSRアプリケーションを経由せずにバックエンドアプリケーションと通信する。</p>
 <table>
 <thead>
 <tr>
@@ -27725,6 +27727,7 @@
 <p>広義のSSRにCSRを取り入れた方法のこと。</p>
 <p>ブラウザ側ではなくサーバー側で静的ファイルを作成する。</p>
 <p>広義のSSRと異なる点は、ブラウザ側にレンダリングされた後、アイソモーフィックJavaScriptという仕組みでCSRとして動作する。</p>
+<p>バックエンドアプリケーションが存在する場合、CSRとは異なり、ブラウザ上の静的ファイルはSSRアプリケーションを経由せずにバックエンドアプリケーションと通信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/rita0222/items/66fec6e7be5987bace3c">https://qiita.com/rita0222/items/66fec6e7be5987bace3c</a></li>
@@ -27885,7 +27888,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年2月22日 18:43:37">2025-02-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月22日 23:06:56">2025-04-22</span>
   </span>
 
     
