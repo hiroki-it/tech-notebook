@@ -17,17 +17,28 @@ description: Remix＠フレームワークの知見を記録しています。
 
 Reactパッケージを使用したフレームワークである。
 
-`loader` ---> `component` ---> `action` の順に処理が実行される。
-
-1. `loader`は、レンダリング前にAPIからデータを取得する。
-2. `component`は、レンダリング処理を実行する。
-3. `action`は、APIリクエストやブラウザ操作に応じて、データを変更する。`action`は、バックエンドのコントローラーと同様にクエリストリングやリクエストのコンテキストを受信する。
-
-> - https://www.ey-office.com/blog_archive/2022/07/06/is-remix-ruby-on-rails-in-react/
 
 <br>
 
 ## 02. Remixの仕組み
+
+### アーキテクチャ
+
+SSRのアプリケーションで以下の順に処理を実行し、データの取得からブラウザレンダリングまでを実施する。
+
+1. `loader`
+2. `action`
+3. `component`
+
+
+1. `loader`: レンダリング前、レンダリング後のブラウザ操作に応じて、APIからデータを取得する。
+2. `component`: (初回レンダリング) : レンダリング処理を実行する。
+3. `action`: レンダリング後のブラウザ操作に応じて、デザインパターンのコントローラーのようにクエリストリングやリクエストのコンテキストを受信し、DBのデータを変更する。
+4. ``
+
+> - https://www.ey-office.com/blog_archive/2022/07/06/is-remix-ruby-on-rails-in-react/
+
+<br>
 
 ### loader
 
@@ -47,6 +58,7 @@ DBにクエリを送信し、データを取得できる。
 import {json} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
 
+// loaderでレンダリング前にデータを取得する
 export const loader = async () => {
   return json({
     posts: [
@@ -77,6 +89,7 @@ export const loader = async () => {
 import {json} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
 
+// loaderでレンダリング前にデータを取得する
 export const loader = async () => {
   return json({
     posts: [
@@ -92,6 +105,7 @@ export const loader = async () => {
   });
 };
 
+// componentで、レンダリング処理を実行する
 export default function Posts() {
   const {posts} = useLoaderData<typeof loader>();
   return (
@@ -110,6 +124,37 @@ export default function Posts() {
 ### component
 
 `component`は、レンダリング処理を実行する。
+
+```jsx
+import {json} from "@remix-run/node";
+import {useLoaderData} from "@remix-run/react";
+
+// loaderでレンダリング前にデータを取得する
+export const loader = async () => {
+  return json({
+    posts: [
+      {
+        slug: "my-first-post",
+        title: "My First Post",
+      },
+      {
+        slug: "90s-mixtape",
+        title: "A Mixtape I Made Just For You",
+      },
+    ],
+  });
+};
+
+// componentで、レンダリング処理を実行する
+export default function Posts() {
+  const {posts} = useLoaderData<typeof loader>();
+  return (
+    <main>
+      <h1>Posts</h1>
+    </main>
+  );
+}
+```
 
 <br>
 
