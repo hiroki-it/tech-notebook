@@ -8973,6 +8973,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      アーキテクチャ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#loader" class="md-nav__link">
     <span class="md-ellipsis">
       loader
@@ -9039,7 +9048,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       構成
     </span>
@@ -9099,7 +9108,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       ドッド分割
     </span>
@@ -9159,7 +9168,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       ディレクトリ分割
     </span>
@@ -9183,7 +9192,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ユーザー定義
     </span>
@@ -9262,7 +9271,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ サーバーのメモリに保存する場合
     </span>
@@ -9271,7 +9280,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ サーバー上のファイルに保存する場合
     </span>
@@ -26936,6 +26945,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      アーキテクチャ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#loader" class="md-nav__link">
     <span class="md-ellipsis">
       loader
@@ -27002,7 +27020,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       構成
     </span>
@@ -27062,7 +27080,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       ドッド分割
     </span>
@@ -27122,7 +27140,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       ディレクトリ分割
     </span>
@@ -27146,7 +27164,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ユーザー定義
     </span>
@@ -27225,7 +27243,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ サーバーのメモリに保存する場合
     </span>
@@ -27234,7 +27252,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ サーバー上のファイルに保存する場合
     </span>
@@ -27291,11 +27309,22 @@
 <p><br></p>
 <h2 id="01-remix">01. Remixとは<a class="headerlink" href="#01-remix" title="Permanent link">&para;</a></h2>
 <p>Reactパッケージを使用したフレームワークである。</p>
-<p><code>loader</code> ---&gt; <code>component</code> ---&gt; <code>action</code> の順に処理が実行される。</p>
+<p><br></p>
+<h2 id="02-remix">02. Remixの仕組み<a class="headerlink" href="#02-remix" title="Permanent link">&para;</a></h2>
+<h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>SSRのアプリケーションで以下の順に処理を実行し、データの取得からブラウザレンダリングまでを実施する。</p>
 <ol>
-<li><code>loader</code>は、レンダリング前にAPIからデータを取得する。</li>
-<li><code>component</code>は、レンダリング処理を実行する。</li>
-<li><code>action</code>は、APIリクエストやブラウザ操作に応じて、データを変更する。<code>action</code>は、バックエンドのコントローラーと同様にクエリストリングやリクエストのコンテキストを受信する。</li>
+<li><code>loader</code></li>
+<li><code>action</code></li>
+<li>
+<p><code>component</code></p>
+</li>
+<li>
+<p><code>loader</code>: レンダリング前、レンダリング後のブラウザ操作に応じて、APIからデータを取得する。</p>
+</li>
+<li><code>component</code>: (初回レンダリング) : レンダリング処理を実行する。</li>
+<li><code>action</code>: レンダリング後のブラウザ操作に応じて、デザインパターンのコントローラーのようにクエリストリングやリクエストのコンテキストを受信し、DBのデータを変更する。</li>
+<li>``</li>
 </ol>
 <blockquote>
 <ul>
@@ -27303,7 +27332,6 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-remix">02. Remixの仕組み<a class="headerlink" href="#02-remix" title="Permanent link">&para;</a></h2>
 <h3 id="loader">loader<a class="headerlink" href="#loader" title="Permanent link">&para;</a></h3>
 <h4 id="loader_1">▼ loaderとは<a class="headerlink" href="#loader_1" title="Permanent link">&para;</a></h4>
 <p><code>loader</code> (ユーザーが<code>loader</code>と命名した関数) は、レンダリング前にAPIからデータを取得する。</p>
@@ -27314,6 +27342,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">json</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/node&quot;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">useLoaderData</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/react&quot;</span><span class="p">;</span>
 
+<span class="c1">// loaderでレンダリング前にデータを取得する</span>
 <span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">loader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">json</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">posts</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
@@ -27342,6 +27371,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">json</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/node&quot;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">useLoaderData</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/react&quot;</span><span class="p">;</span>
 
+<span class="c1">// loaderでレンダリング前にデータを取得する</span>
 <span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">loader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">json</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">posts</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
@@ -27357,6 +27387,7 @@
 <span class="w">  </span><span class="p">});</span>
 <span class="p">};</span>
 
+<span class="c1">// componentで、レンダリング処理を実行する</span>
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Posts</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">posts</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useLoaderData</span><span class="p">&lt;</span><span class="nt">typeof</span><span class="w"> </span><span class="na">loader</span><span class="p">&gt;();</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
@@ -27375,6 +27406,35 @@
 <p><br></p>
 <h3 id="component">component<a class="headerlink" href="#component" title="Permanent link">&para;</a></h3>
 <p><code>component</code>は、レンダリング処理を実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">json</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/node&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">useLoaderData</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/react&quot;</span><span class="p">;</span>
+
+<span class="c1">// loaderでレンダリング前にデータを取得する</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">loader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">json</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">posts</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">slug</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;my-first-post&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;My First Post&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">slug</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;90s-mixtape&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;A Mixtape I Made Just For You&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">};</span>
+
+<span class="c1">// componentで、レンダリング処理を実行する</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Posts</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">posts</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useLoaderData</span><span class="p">&lt;</span><span class="nt">typeof</span><span class="w"> </span><span class="na">loader</span><span class="p">&gt;();</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">Posts</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><br></p>
 <h3 id="action">action<a class="headerlink" href="#action" title="Permanent link">&para;</a></h3>
 <p><code>action</code>は、APIリクエストやブラウザ操作に応じて、データを変更する。</p>
@@ -27431,7 +27491,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="03">03. ディレクトリ構成<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_2">構成<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h3 id="_3">構成<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">.</span>
 <span class="l l-Scalar l-Scalar-Plain">├── app/</span>
 <span class="l l-Scalar l-Scalar-Plain">│  ├── components/</span><span class="w"> </span><span class="c1"># ユーザー定義のRemix component</span>
@@ -27489,7 +27549,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_3">ドッド分割<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_4">ドッド分割<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_indextsx">▼ <code>_index.tsx</code><a class="headerlink" href="#_indextsx" title="Permanent link">&para;</a></h4>
 <p>ルートパスになる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">app/</span><span class="w">                        </span><span class="c1"># URLパス</span>
@@ -27624,11 +27684,11 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_4">ディレクトリ分割<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_5">ディレクトリ分割<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>ディレクトリ名がパスとして認識される。</p>
 <p><br></p>
 <h2 id="05-component">05. componentの種類<a class="headerlink" href="#05-component" title="Permanent link">&para;</a></h2>
-<h3 id="_5">ユーザー定義<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_6">ユーザー定義<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>Remixがcomponentであることを認識するために、名前の先頭を大文字する。</p>
 <blockquote>
 <ul>
@@ -27732,7 +27792,7 @@
 <li><a href="https://remix.run/docs/en/main/utils/sessions#createcookiesessionstorage">https://remix.run/docs/en/main/utils/sessions#createcookiesessionstorage</a></li>
 </ul>
 </blockquote>
-<h4 id="_6">▼ サーバーのメモリに保存する場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_7">▼ サーバーのメモリに保存する場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>サーバーのメモリに認証情報を保存する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">memorySessionStorage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createMemorySessionStorage</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">cookie</span><span class="o">:</span><span class="w"> </span><span class="nx">sessionCookie</span><span class="p">,</span>
@@ -27743,7 +27803,7 @@
 <li><a href="https://remix.run/docs/en/main/utils/sessions#creatememorysessionstorage">https://remix.run/docs/en/main/utils/sessions#creatememorysessionstorage</a></li>
 </ul>
 </blockquote>
-<h4 id="_7">▼ サーバー上のファイルに保存する場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h4 id="_8">▼ サーバー上のファイルに保存する場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>サーバー上のファイルに認証情報を保存する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">memorySessionStorage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createFileSessionStorage</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">dir</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/app/sessions&quot;</span><span class="p">,</span>
@@ -27809,7 +27869,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月17日 21:51:05">2025-04-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月22日 19:18:08">2025-04-22</span>
   </span>
 
     
