@@ -17,7 +17,6 @@ description: Remix＠フレームワークの知見を記録しています。
 
 Reactパッケージを使用したフレームワークである。
 
-
 <br>
 
 ## 02. Remixの仕組み
@@ -26,15 +25,15 @@ Reactパッケージを使用したフレームワークである。
 
 SSRのアプリケーションで以下の順に処理を実行し、データの取得からブラウザレンダリングまでを実施する。
 
-1. `loader`
-2. `action`
-3. `component`
+1. `loader`関数
+2. `action`関数
+3. `component`関数
+4. `loader`関数
 
-
-1. `loader`: レンダリング前、レンダリング後のブラウザ操作に応じて、APIからデータを取得する。
-2. `component`: (初回レンダリング) : レンダリング処理を実行する。
-3. `action`: レンダリング後のブラウザ操作に応じて、デザインパターンのコントローラーのようにクエリストリングやリクエストのコンテキストを受信し、DBのデータを変更する。
-4. ``
+5. `loader`関数: レンダリング前、APIからデータを取得する。
+6. `component`関数: (初回レンダリング) : レンダリング処理を実行する。
+7. `action`関数: レンダリング後のブラウザ操作に応じて、デザインパターンのコントローラーのようにクエリストリングやリクエストのコンテキストを受信し、DBのデータを変更する。
+8. `loader`関数: ブラウザ操作に応じて、`action`からデータを取得する。
 
 > - https://www.ey-office.com/blog_archive/2022/07/06/is-remix-ruby-on-rails-in-react/
 
@@ -123,7 +122,7 @@ export default function Posts() {
 
 ### component
 
-`component`は、レンダリング処理を実行する。
+`component`関数は、レンダリング処理を実行する。
 
 ```jsx
 import {json} from "@remix-run/node";
@@ -160,7 +159,7 @@ export default function Posts() {
 
 ### action
 
-`action`は、APIリクエストやブラウザ操作に応じて、データを変更する。
+`action`関数は、APIリクエストやブラウザ操作に応じて、データを変更する。
 
 バックエンドのコントローラーと同様にクエリストリングやリクエストのコンテキストを受信する。
 
@@ -175,6 +174,7 @@ import { TodoList } from "~/components/TodoList";
 import { fakeCreateTodo, fakeGetTodos } from "~/utils/db";
 
 // loaderでレンダリング前にデータを取得する
+// レンダリング後のブラウザ操作でactionが実行され、actionの結果を取得する
 export async function loader() {
   return json(await fakeGetTodos());
 }

@@ -830,201 +830,146 @@ istio-proxyコンテナは、デフォルトで以下のようなスパンを作
 
 ```yaml
 {
-    "batches": [
-        {
-            "resource": {
-                "attributes": [
-                    {
-                        "key": "telemetry.sdk.language",
-                        "value": {
-                            "stringValue": "cpp"
-                        }
-                    },
-                    {
-                        "key": "telemetry.sdk.name",
-                        "value": {
-                            "stringValue": "envoy"
-                        }
-                    },
-                    {
-                        "key": "telemetry.sdk.version",
-                        "value": {
-                            "stringValue": "4382ac5fc1d362094bbba33283dbe60a3e1cef88/1.33.1-dev/Clean/RELEASE/BoringSSL"
-                        }
-                    },
-                    {
-                        "key": "k8s.pod.ip",
-                        "value": {
-                            "stringValue": "127.0.0.6"
-                        }
-                    },
-                    {
-                        "key": "service.name",
-                        "value": {
-                            "stringValue": "reviews.bookinfo"
-                        }
-                    }
-                ],
-                "droppedAttributesCount": 0
-            },
-            "instrumentationLibrarySpans": [
+  "batches":
+    [
+      {
+        "resource":
+          {
+            "attributes":
+              [
                 {
-                    "spans": [
+                  "key": "telemetry.sdk.language",
+                  "value": {"stringValue": "cpp"},
+                },
+                {
+                  "key": "telemetry.sdk.name",
+                  "value": {"stringValue": "envoy"},
+                },
+                {
+                  "key": "telemetry.sdk.version",
+                  "value":
+                    {
+                      "stringValue": "4382ac5fc1d362094bbba33283dbe60a3e1cef88/1.33.1-dev/Clean/RELEASE/BoringSSL",
+                    },
+                },
+                {"key": "k8s.pod.ip", "value": {"stringValue": "127.0.0.6"}},
+                {
+                  "key": "service.name",
+                  "value": {"stringValue": "reviews.bookinfo"},
+                },
+              ],
+            "droppedAttributesCount": 0,
+          },
+        "instrumentationLibrarySpans": [{"spans": [
+                  {
+                    "traceId": "422a513f9dd13cdca4b291187d65ec69",
+                    "spanId": "0241f770ee902e2d",
+                    "parentSpanId": "61d22fad2b80d1dd",
+                    "traceState": "",
+                    "name": "proxy./ratings/0",
+                    # 送信元istio-proxyコンテナまたは宛先istio-proxyコンテナ
+                    "kind": "SPAN_KIND_CLIENT",
+                    "startTimeUnixNano": 1745220839492363000,
+                    "endTimeUnixNano": 1745220839934638800,
+                    "attributes":
+                      [
                         {
-                            "traceId": "422a513f9dd13cdca4b291187d65ec69",
-                            "spanId": "0241f770ee902e2d",
-                            "parentSpanId": "61d22fad2b80d1dd",
-                            "traceState": "",
-                            "name": "proxy./ratings/0",
-                            # 送信元istio-proxyコンテナまたは宛先istio-proxyコンテナ
-                            "kind": "SPAN_KIND_CLIENT",
-                            "startTimeUnixNano": 1745220839492363000,
-                            "endTimeUnixNano": 1745220839934638800,
-                            "attributes": [
-                                {
-                                    "key": "node_id",
-                                    "value": {
-                                        "stringValue": "sidecar~10.244.1.6~reviews-v4-7586d5d46d-tgqhb.bookinfo~bookinfo.svc.cluster.local"
-                                    }
-                                },
-                                {
-                                    "key": "zone",
-                                    "value": {
-                                        "stringValue": ""
-                                    }
-                                },
-                                {
-                                    "key": "guid:x-request-id",
-                                    "value": {
-                                        "stringValue": "5457526c-0e6c-92eb-b0bd-508c75ad85c2"
-                                    }
-                                },
-                                {
-                                    "key": "downstream_cluster",
-                                    "value": {
-                                        "stringValue": "-"
-                                    }
-                                },
-                                {
-                                    "key": "user_agent",
-                                    "value": {
-                                        "stringValue": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36"
-                                    }
-                                },
-                                {
-                                    "key": "http.protocol",
-                                    "value": {
-                                        "stringValue": "HTTP/1.1"
-                                    }
-                                },
-                                {
-                                    "key": "peer.address",
-                                    "value": {
-                                        "stringValue": "10.244.1.6"
-                                    }
-                                },
-                                {
-                                    "key": "request_size",
-                                    "value": {
-                                        "stringValue": "0"
-                                    }
-                                },
-                                {
-                                    "key": "response_size",
-                                    "value": {
-                                        "stringValue": "48"
-                                    }
-                                },
-                                {
-                                    "key": "component",
-                                    "value": {
-                                        "stringValue": "proxy"
-                                    }
-                                },
-                                {
-                                    "key": "upstream_cluster",
-                                    "value": {
-                                        "stringValue": "outbound|9080|v3|ratings.bookinfo.svc.cluster.local"
-                                    }
-                                },
-                                {
-                                    "key": "upstream_cluster.name",
-                                    "value": {
-                                        "stringValue": "outbound|9080|v3|ratings.bookinfo.svc.cluster.local;"
-                                    }
-                                },
-                                {
-                                    "key": "http.status_code",
-                                    "value": {
-                                        "stringValue": "200"
-                                    }
-                                },
-                                {
-                                    "key": "response_flags",
-                                    "value": {
-                                        "stringValue": "-"
-                                    }
-                                },
-                                {
-                                    "key": "istio.cluster_id",
-                                    "value": {
-                                        "stringValue": "Kubernetes"
-                                    }
-                                },
-                                {
-                                    "key": "istio.mesh_id",
-                                    "value": {
-                                        "stringValue": "cluster.local"
-                                    }
-                                },
-                                {
-                                    "key": "istio.namespace",
-                                    "value": {
-                                        "stringValue": "bookinfo"
-                                    }
-                                },
-                                {
-                                    "key": "istio.canonical_revision",
-                                    "value": {
-                                        "stringValue": "v4"
-                                    }
-                                },
-                                {
-                                    "key": "istio.canonical_service",
-                                    "value": {
-                                        "stringValue": "reviews"
-                                    }
-                                },
-                                {
-                                    "key": "http.method",
-                                    "value": {
-                                        "stringValue": "GET"
-                                    }
-                                },
-                                {
-                                    "key": "http.url",
-                                    "value": {
-                                        "stringValue": "http://ratings:9080/ratings/0"
-                                    }
-                                }
-                            ],
-                            "droppedAttributesCount": 0,
-                            "droppedEventsCount": 0,
-                            "droppedLinksCount": 0,
-                            "status": {
-                                "code": 0,
-                                "message": ""
-                            }
+                          "key": "node_id",
+                          "value":
+                            {
+                              "stringValue": "sidecar~10.244.1.6~reviews-v4-7586d5d46d-tgqhb.bookinfo~bookinfo.svc.cluster.local",
+                            },
                         },
-                    ],
-                    "instrumentationLibrary": {
-                        "name": "envoy",
-                        "version": "4382ac5fc1d362094bbba33283dbe60a3e1cef88/1.33.1-dev/Clean/RELEASE/BoringSSL"
-                    }
-                }
-            ]
-        }
-    ]
+                        {"key": "zone", "value": {"stringValue": ""}},
+                        {
+                          "key": "guid:x-request-id",
+                          "value":
+                            {
+                              "stringValue": "5457526c-0e6c-92eb-b0bd-508c75ad85c2",
+                            },
+                        },
+                        {
+                          "key": "downstream_cluster",
+                          "value": {"stringValue": "-"},
+                        },
+                        {
+                          "key": "user_agent",
+                          "value":
+                            {
+                              "stringValue": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+                            },
+                        },
+                        {
+                          "key": "http.protocol",
+                          "value": {"stringValue": "HTTP/1.1"},
+                        },
+                        {
+                          "key": "peer.address",
+                          "value": {"stringValue": "10.244.1.6"},
+                        },
+                        {"key": "request_size", "value": {"stringValue": "0"}},
+                        {
+                          "key": "response_size",
+                          "value": {"stringValue": "48"},
+                        },
+                        {"key": "component", "value": {"stringValue": "proxy"}},
+                        {
+                          "key": "upstream_cluster",
+                          "value":
+                            {
+                              "stringValue": "outbound|9080|v3|ratings.bookinfo.svc.cluster.local",
+                            },
+                        },
+                        {
+                          "key": "upstream_cluster.name",
+                          "value":
+                            {
+                              "stringValue": "outbound|9080|v3|ratings.bookinfo.svc.cluster.local;",
+                            },
+                        },
+                        {
+                          "key": "http.status_code",
+                          "value": {"stringValue": "200"},
+                        },
+                        {
+                          "key": "response_flags",
+                          "value": {"stringValue": "-"},
+                        },
+                        {
+                          "key": "istio.cluster_id",
+                          "value": {"stringValue": "Kubernetes"},
+                        },
+                        {
+                          "key": "istio.mesh_id",
+                          "value": {"stringValue": "cluster.local"},
+                        },
+                        {
+                          "key": "istio.namespace",
+                          "value": {"stringValue": "bookinfo"},
+                        },
+                        {
+                          "key": "istio.canonical_revision",
+                          "value": {"stringValue": "v4"},
+                        },
+                        {
+                          "key": "istio.canonical_service",
+                          "value": {"stringValue": "reviews"},
+                        },
+                        {"key": "http.method", "value": {"stringValue": "GET"}},
+                        {
+                          "key": "http.url",
+                          "value":
+                            {"stringValue": "http://ratings:9080/ratings/0"},
+                        },
+                      ],
+                    "droppedAttributesCount": 0,
+                    "droppedEventsCount": 0,
+                    "droppedLinksCount": 0,
+                    "status": {"code": 0, "message": ""},
+                  },
+                ], "instrumentationLibrary": {"name": "envoy", "version": "4382ac5fc1d362094bbba33283dbe60a3e1cef88/1.33.1-dev/Clean/RELEASE/BoringSSL"}}],
+      },
+    ],
 }
 ```
 

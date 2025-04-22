@@ -604,7 +604,7 @@ $ pilot-discovery discovery --log_as_json
   "time": "2025-04-21T07:07:32.114867Z",
   "scope": "xdsproxy",
   "msg": "connected to delta upstream XDS server: istiod-1-25-0.istio-system.svc:15012",
-  "id": 2
+  "id": 2,
 }
 ```
 

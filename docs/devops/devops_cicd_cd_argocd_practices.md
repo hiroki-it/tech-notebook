@@ -164,7 +164,6 @@ spec:
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/
 > - https://saikiranpikili.medium.com/make-your-argocd-super-fast-9c75fa94b840
 
-
 なお、執筆時点 (2023/08/02) 時点で、単一のKubernetes Clusterの処理をapplication-controllerの異なるレプリカに分散できない。
 
 > - https://github.com/argoproj/argo-cd/issues/6125#issuecomment-1660341387
