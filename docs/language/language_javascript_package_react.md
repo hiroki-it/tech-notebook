@@ -302,7 +302,7 @@ export const App = () => {
 
 `useEffect`関数はレンダリング後に実行される。
 
-そのため、`useEffect`関数の後の関数が`useEffect`関数よりも前に実行される。
+そのため、`useEffect`関数の後の関数が`useEffect`関数よりも先に実行される。
 
 ```jsx
 import React, { useState, useEffect } from 'react';

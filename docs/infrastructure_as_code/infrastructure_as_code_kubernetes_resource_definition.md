@@ -3391,7 +3391,7 @@ spec:
 
 kubeletがヘルスチェックを実行することで、アプリケーションの起動が完了したかを確認する。
 
-ReadinessProbeよりも前に実行される。
+ReadinessProbeよりも先に実行される。
 
 言語やフレームワークによってはStartupProbe用のエンドポイントが提供されていない場合があり、ReadinessProbe用のエンドポイントで代用する。
 
