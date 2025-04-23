@@ -190,7 +190,7 @@ function App() {
 
 MPAと比較して、データを非同期的に通信できるため、1つのWebページの中で必要なデータのみを通信すればよく、レンダリングが速い。
 
-![従来WebアプリとSPアプリケーションの処理速度の違い](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/従来WebアプリとSPアプリケーションの処理速度の違い.png)
+![従来WebアプリとSPAの処理速度の違い](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/従来ウェブアプリとSPAの処理速度の違い.png)
 
 > - https://www.switchitmaker2.com/seo/spa/
 
@@ -256,7 +256,7 @@ SSRでは、フロントエンドアプリケーションへのリクエスト�
 
 また、ブラウザ上で静的ファイルのハイドレーションを実施する。
 
-そのためCSRとは異なり、フロントエンドアプリケーション上での静的ファイルの生成時に、バックエンドアプリケーションと通信する。
+そのためCSRとは異なり、フロントエンドアプリケーション上での静的ファイルのレンダリング時またはブラウザ操作時 (例：クリック操作によるデータ送信など) に、バックエンドアプリケーションと通信する。
 
 ![ssr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssr.png)
 
@@ -293,7 +293,7 @@ SSRでは、フロントエンドアプリケーションへのリクエスト�
 
 SSGでは、フロントエンドアプリケーションのビルド時にバックエンドからデータを取得し、データの出力された静的ファイル (例：`html`ファイル、`css`ファイル、画像、動画、メールなど) をフロントエンドアプリケーション上でレンダリングする。
 
-そのためCSRとは異なり、フロントエンドアプリケーション上での静的ファイルの生成時に、バックエンドアプリケーションと通信する。
+そのためCSRとは異なり、フロントエンドアプリケーション上での静的ファイルのレンダリング時またはブラウザ操作時 (例：クリック操作によるデータ送信など) に、バックエンドアプリケーションと通信する。
 
 ![ssg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssg.png)
 

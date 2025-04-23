@@ -109,11 +109,13 @@ function getTraceId(headers) {
 
 <br>
 
-## 02. プロセスの操作
+## 02. node.jsのプロセスの操作
 
-### プロセスの実行
+### 新しいプロセスの実行
 
 #### ▼ child_process
+
+子のnode.jsプロセスを実行する。
 
 ```javascript
 import spawn from "child_process";
@@ -175,6 +177,28 @@ await new Promise((resolve, reject) => {
 
 > - https://nodejs.org/api/child_process.html
 > - https://qiita.com/k96mz/items/43444cedbfc2a11a01ea#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B3%E3%83%BC%E3%83%89
+
+<br>
+
+### プロセスのステータス
+
+#### ▼ process.on
+
+Node.jsのプロセスのステータスに応じて、処理を実行する。
+
+```javascript
+// プロセスの終了前にクリーンアップ処理を実行する
+process.on("beforeExit", (code) => {
+  console.log("Process beforeExit event with code: ", code);
+});
+
+// プロセス終了時のステータスコードを設定する
+process.on("exit", (code) => {
+  console.log("Process exit event with code: ", code);
+});
+
+console.log("This message is displayed first.");
+```
 
 <br>
 
