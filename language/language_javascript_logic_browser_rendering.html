@@ -26529,11 +26529,50 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#clearinterval" class="md-nav__link">
+    <span class="md-ellipsis">
+      clearInterval
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="clearInterval">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clearinterval_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ clearIntervalとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#settimeout" class="md-nav__link">
     <span class="md-ellipsis">
       setTimeout
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="setTimeout">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settimeout_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ setTimeoutとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -26543,6 +26582,21 @@
       setInterval
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="setInterval">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setinterval_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ setIntervalとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -26588,7 +26642,39 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="clearinterval">clearInterval<a class="headerlink" href="#clearinterval" title="Permanent link">&para;</a></h3>
+<h4 id="clearinterval_1">▼ clearIntervalとは<a class="headerlink" href="#clearinterval_1" title="Permanent link">&para;</a></h4>
+<p><code>setInterval</code>関数によって定期実行中の関数を停止する関数を返却する。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">setIntervalFunction</span><span class="p">(</span>
+<span class="w">  </span><span class="nx">func</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">void</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">interval</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">intervalId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setInterval</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span><span class="w"> </span><span class="nx">interval</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 停止するための関数を返す</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">clearInterval</span><span class="p">(</span><span class="nx">intervalId</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用例</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">stop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setIntervalFunction</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;定期実行中&quot;</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+
+<span class="c1">// 5秒後に停止</span>
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 返却された関数を実行すると、ループを停止できる</span>
+<span class="w">  </span><span class="nx">stop</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;停止しました&quot;</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">5000</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://developer.mozilla.org/ja/docs/Web/API/Window/clearInterval">https://developer.mozilla.org/ja/docs/Web/API/Window/clearInterval</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="settimeout">setTimeout<a class="headerlink" href="#settimeout" title="Permanent link">&para;</a></h3>
+<h4 id="settimeout_1">▼ setTimeoutとは<a class="headerlink" href="#settimeout_1" title="Permanent link">&para;</a></h4>
 <p>指定した秒数だけ処理を待機する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 5秒待機する。</span>
 <span class="k">await</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -26602,17 +26688,37 @@
 </blockquote>
 <p><br></p>
 <h3 id="setinterval">setInterval<a class="headerlink" href="#setinterval" title="Permanent link">&para;</a></h3>
+<h4 id="setinterval_1">▼ setIntervalとは<a class="headerlink" href="#setinterval_1" title="Permanent link">&para;</a></h4>
 <p>指定した秒数ごとに処理を実行する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 5秒ごとに実行する。</span>
-<span class="k">await</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">setInterval</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="mf">5000</span><span class="p">);</span>
-<span class="p">});</span>
+<p><code>clearInterval</code>関数の返却値の関数で処理を停止できる。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">setIntervalFunction</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">func</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">void</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">interval</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">intervalId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setInterval</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span><span class="w"> </span><span class="nx">interval</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 停止するための関数を返す</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">clearInterval</span><span class="p">(</span><span class="nx">intervalId</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用例</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">stop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setIntervalFunction</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;定期実行中&quot;</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+
+<span class="c1">// 5秒後に停止</span>
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 返却された関数を実行すると、ループを停止できる</span>
+<span class="w">  </span><span class="nx">stop</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;停止しました&quot;</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">5000</span><span class="p">);</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://developer.mozilla.org/ja/docs/Web/API/Window/setInterval">https://developer.mozilla.org/ja/docs/Web/API/Window/setInterval</a></li>
 </ul>
 </blockquote>
+<p><br></p>
 
 
 
@@ -26633,7 +26739,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月17日 14:33:37">2025-04-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月23日 18:56:35">2025-04-23</span>
   </span>
 
     
