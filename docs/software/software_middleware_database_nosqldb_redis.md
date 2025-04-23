@@ -49,6 +49,8 @@ description: Redis＠NoSQLの知見を記録しています。
 
 ### DB排他制御 (分散ロック)
 
+#### ▼ Python
+
 **＊実装例＊**
 
 ```python
@@ -70,6 +72,47 @@ client.delete('LOCK_NAME')
 ```
 
 > - https://qiita.com/hharu/items/c8c2954290f920f8a2f6#%E5%88%86%E6%95%A3%E3%83%AD%E3%83%83%E3%82%AF
+
+#### ▼ TypeScript
+
+```typescript
+import redisClient from "redis";
+
+const newLock = (client: ReturnType<typeof redisClient>, timeout = 50000) => {
+  return async (
+    lockName: string,
+    onLockSuccess: () => Promise<void>,
+    onLockFailed: () => Promise<void>,
+  ) => {
+    const keyName = `lock:${lockName}`;
+    try {
+      // キー名を指定し、Redisにキャッシュを保存する
+      const result = await client.set(keyName, "{}", {
+        // PXオプションで、ロックの有効期限を設定する
+        PX: timeout,
+        // NX（Redisのキーが存在しない場合のみ設定）オプションで、キーによる排他制御を実現する
+        NX: true,
+      });
+      // resultがnullでない場合、ロックを開始したことを意味する
+      if (result !== null) {
+        // ロックが成功した場合、onLockSuccessコールバックを実行する
+        await onLockSuccess();
+        // resultがnullの場合、ロックに失敗したことを意味する
+      } else {
+        await onLockFailed();
+      }
+    } catch (e) {
+      logger.error(`failed to connect redis ${e}`);
+      await onLockSuccess();
+    }
+  };
+};
+
+await redisClient.connect();
+newLock(redisClient, 10000);
+```
+
+#### ▼ Go
 
 **＊実装例＊**
 

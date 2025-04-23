@@ -24,7 +24,6 @@ Ingress Controller (例：aws-load-balancer-controller、glb-controller) と合�
 ![external-dns_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/external-dns_architecture.png)
 
 > - https://networkop.co.uk/post/2020-08-k8s-gateway/
-> - https://github.com/kubernetes-sigs/external-dns/blob/master/docs/faq.md#how-do-i-specify-a-dns-name-for-my-kubernetes-objects
 
 <br>
 
@@ -63,7 +62,33 @@ time="2023-02-28T10:09:30Z" level=info msg="Desired change: CREATE example.com A
 time="2023-02-28T10:09:30Z" level=info msg="Desired change: CREATE example.com TXT [Id: /hostedzone/*****]"
 ```
 
+なお、Ingressのアノテーションに`external-dns.alpha.kubernetes.io/hostname: <ホスト名>`を明示的に指定しても良い。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-alb-ingress
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    external-dns.alpha.kubernetes.io/hostname: example.com
+spec:
+  ingressClassName: alb
+  rules:
+    - host: example.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: foo-service
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
+```
+
 > - https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/alb-ingress/#ingress-examples
+> - https://kubernetes-sigs.github.io/external-dns/latest/docs/faq/#how-do-i-specify-a-dns-name-for-my-kubernetes-objects
 
 <br>
 
