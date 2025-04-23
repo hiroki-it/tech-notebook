@@ -23,7 +23,43 @@ description: ブラウザレンダリングロジック＠JavaScriptを記録し
 
 <br>
 
+### clearInterval
+
+#### ▼ clearIntervalとは
+
+`setInterval`関数によって定期実行中の関数を停止する関数を返却する。
+
+```javascript
+function setIntervalFunction(
+  func: () => void,
+  interval: number
+): () => void {
+  const intervalId = setInterval(func, interval);
+
+  // 停止するための関数を返す
+  return () => clearInterval(intervalId);
+}
+
+// 使用例
+const stop = setIntervalFunction(() => {
+  console.log("定期実行中");
+}, 1000);
+
+// 5秒後に停止
+setTimeout(() => {
+  // 返却された関数を実行すると、ループを停止できる
+  stop();
+  console.log("停止しました");
+}, 5000);
+```
+
+> - https://developer.mozilla.org/ja/docs/Web/API/Window/clearInterval
+
+<br>
+
 ### setTimeout
+
+#### ▼ setTimeoutとは
 
 指定した秒数だけ処理を待機する。
 
@@ -40,13 +76,36 @@ await new Promise((resolve) => {
 
 ### setInterval
 
+#### ▼ setIntervalとは
+
 指定した秒数ごとに処理を実行する。
 
+`clearInterval`関数の返却値の関数で処理を停止できる。
+
 ```javascript
-// 5秒ごとに実行する。
-await new Promise((resolve) => {
-  setInterval(resolve, 5000);
-});
+function setIntervalFunction(
+    func: () => void,
+    interval: number
+): () => void {
+  const intervalId = setInterval(func, interval);
+
+  // 停止するための関数を返す
+  return () => clearInterval(intervalId);
+}
+
+// 使用例
+const stop = setIntervalFunction(() => {
+  console.log("定期実行中");
+}, 1000);
+
+// 5秒後に停止
+setTimeout(() => {
+  // 返却された関数を実行すると、ループを停止できる
+  stop();
+  console.log("停止しました");
+}, 5000);
 ```
 
 > - https://developer.mozilla.org/ja/docs/Web/API/Window/setInterval
+
+<br>
