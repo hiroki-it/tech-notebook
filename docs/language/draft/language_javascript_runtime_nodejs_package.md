@@ -253,3 +253,52 @@ fs.writeFile("output.txt", "書き込む内容", (err) => {
 > - https://photo-tea.com/p/17/fs-write-nodejs/
 
 <br>
+
+## 04. メモリの操作
+
+### キャッシュの作成
+
+外部のインメモリDBではなく、コンテナやサーバーのメモリ上にオブジェクトのキャッシュを作成する。
+
+```javascript
+import NodeCache from "node-cache";
+
+// メモリ上にキャッシュを作成する (TTL 無制限、チェック間隔 600 秒)
+const fooNodeCache = new NodeCache();
+
+// キャッシュにデータを保存する
+const key = "myObject";
+const objToCache = {name: "太郎", age: 30};
+const ttlInSeconds = 3600; // 1時間
+
+fooNodeCache.set(key, objToCache, ttlInSeconds);
+console.log(`"${key}" をキャッシュに保存しました。`);
+
+// キャッシュからデータを取得する
+const cachedObj = fooNodeCache.get(key);
+if (cachedObj) {
+  console.log(`キャッシュから "${key}" を取得しました:`, cachedObj);
+} else {
+  console.log(`キャッシュに "${key}" は見つかりませんでした。`);
+}
+
+// キャッシュにキーが存在するか確認する
+const hasKey = fooNodeCache.has(key);
+console.log(`キャッシュに "${key}" は存在しますか？:`, hasKey);
+
+// キャッシュからデータを削除する
+fooNodeCache.del(key);
+console.log(`"${key}" をキャッシュから削除しました。`);
+
+// 再度キャッシュからデータを取得する
+const deletedObj = fooNodeCache.get(key);
+if (deletedObj) {
+  console.log(`キャッシュから "${key}" を取得しました:`, deletedObj);
+} else {
+  console.log(`キャッシュに "${key}" は見つかりませんでした。`);
+}
+```
+
+> - https://sunday-morning.app/posts/2020-03-18-node-cache
+
+<br>

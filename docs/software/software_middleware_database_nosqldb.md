@@ -56,3 +56,16 @@ RDBとは異なり、データをメインメモリに保管する。
 > - https://www.mydistributed.systems/2020/07/an-overview-of-storage-engines.html
 
 <br>
+
+## 02. リーダー選出 (分散排他制御、分散ロック)
+
+『分散排他制御』『分散ロック』ともいう。
+
+複数のレプリカのうち、いずれかのレプリカのみに処理を実行させたい場合、リーダーのレプリカを選出する必要がある。
+
+先にキー名を作成したレプリカをリーダーとして、処理を実行させる。
+
+> - https://kumagi.hatenablog.com/entry/distributed_lock
+> - https://scrapbox.io/mopp/%E5%88%86%E6%95%A3%E3%83%AD%E3%83%83%E3%82%AF
+
+<br>

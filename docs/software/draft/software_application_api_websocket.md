@@ -200,10 +200,22 @@ const wss = new WebSocket("wss://localhost:8080");
 
 これにより、ブラウザからMQTTプロトコルでリクエストを送信できるようになる。
 
-![mqtt-over-websocket.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mqtt-over-websocket.png)
+![mqtt-over-websocket](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mqtt-over-websocket.png)
 
 > - https://www.hivemq.com/blog/understanding-the-differences-between-mqtt-and-websockets-for-iot/
 > - https://qiita.com/theFirstPenguin/items/55dd1daa9313f6b90e2f#websocket
+
+<br>
+
+### AWS ALBがある場合
+
+ブラウザはまずAWS ALBに対してHTTPSプロトコルでリクエストを送信する。
+
+AWS ALBからブラウザへのレスポンス後に、ブラウザはWebsocketプロトコルでAWS ALBと通信する。
+
+ブラウザは、AWS ALBのHTTPSのリスナールールを介して、MQTTプロトコルでEmqxにイベントを送信する。
+
+![mqtt-over-websocket-on-aws](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mqtt-over-websocket-on-aws.png)
 
 <br>
 
