@@ -23,7 +23,7 @@ description: Websocket-API＠APIの知見を記録しています。
 
 <br>
 
-## 01-02. HTTPプロトコルの場合
+## 01-02. Websocket
 
 ### 仕組み
 
@@ -31,7 +31,11 @@ description: Websocket-API＠APIの知見を記録しています。
 
 一方で、Websocket-APIではHTTPを拡張し、双方向通信は実施できるようにしている。
 
+![websocket](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/websocket.png)
+
 > - https://qiita.com/theFirstPenguin/items/55dd1daa9313f6b90e2f#websocket
+> - https://zenn.dev/nameless_sn/articles/websocket_tutorial#websocket%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
+> - https://ja.javascript.info/websocket#ref-1752
 
 <br>
 
@@ -134,9 +138,59 @@ func main() {
 }
 ```
 
+#### ▼ リクエストヘッダー
+
+ブラウザはサーバーにHTTPプロトコルのリクエストを送信する。
+
+```yaml
+GET /chatService HTTP/1.1
+
+Host: server.example.com
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
+Sec-WebSocket-Origin: http://example.com
+Sec-WebSocket-Protocol: soap, wamp
+Sec-WebSocket-Version: 13
+```
+
+#### ▼ レスポンスヘッダー
+
+サーバーは、HTTPプロトコルのレスポンスに`Upgrade`ヘッダーを設定する。
+
+これにより、HTTPプロトコルがWebsocketプロトコルに変更される。
+
+```yaml
+HTTP/1.1 101 Switching Protocols
+
+Upgrade: WebSocket
+Connection: Upgrade
+Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
+Sec-WebSocket-Protocol: wamp
+```
+
 <br>
 
-## 01-03. MQTT over Websocketの場合
+<br>
+
+## 01-03. Websocket over SSL/TLS
+
+### 仕組み
+
+Websocket上の通信を暗号化する。
+
+```javascript
+import WebSocket from "ws";
+
+// WebSocket over SSL/TLSクライアントのインスタンスを作成
+const wss = new WebSocket("wss://localhost:8080");
+```
+
+> - https://ja.javascript.info/websocket
+
+<br>
+
+## 02. MQTT over Websocket
 
 ### 仕組み
 
