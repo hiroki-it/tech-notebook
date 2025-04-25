@@ -26534,13 +26534,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-02-http" class="md-nav__link">
+  <a href="#01-02-websocket" class="md-nav__link">
     <span class="md-ellipsis">
-      01-02. HTTPプロトコルの場合
+      01-02. Websocket
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01-02. HTTPプロトコルの場合">
+    <nav class="md-nav" aria-label="01-02. Websocket">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26580,6 +26580,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ リクエストヘッダー
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ レスポンスヘッダー
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -26591,17 +26609,41 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-03-mqtt-over-websocket" class="md-nav__link">
+  <a href="#01-03-websocket-over-ssltls" class="md-nav__link">
     <span class="md-ellipsis">
-      01-03. MQTT over Websocketの場合
+      01-03. Websocket over SSL/TLS
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01-03. MQTT over Websocketの場合">
+    <nav class="md-nav" aria-label="01-03. Websocket over SSL/TLS">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      仕組み
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-mqtt-over-websocket" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. MQTT over Websocket
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. MQTT over Websocket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       仕組み
     </span>
@@ -26610,7 +26652,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       実装例
     </span>
@@ -26620,7 +26662,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ クライアント
     </span>
@@ -26629,7 +26671,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ リクエストヘッダー
     </span>
@@ -26638,7 +26680,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ レスポンスヘッダー
     </span>
@@ -26693,13 +26735,16 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-02-http">01-02. HTTPプロトコルの場合<a class="headerlink" href="#01-02-http" title="Permanent link">&para;</a></h2>
+<h2 id="01-02-websocket">01-02. Websocket<a class="headerlink" href="#01-02-websocket" title="Permanent link">&para;</a></h2>
 <h3 id="_3">仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>通常のRESTful-APIでHTTPを使用する場合、双方向通信は実施できない。</p>
 <p>一方で、Websocket-APIではHTTPを拡張し、双方向通信は実施できるようにしている。</p>
+<p><img alt="websocket" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/websocket.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/theFirstPenguin/items/55dd1daa9313f6b90e2f#websocket">https://qiita.com/theFirstPenguin/items/55dd1daa9313f6b90e2f#websocket</a></li>
+<li><a href="https://zenn.dev/nameless_sn/articles/websocket_tutorial#websocket%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF">https://zenn.dev/nameless_sn/articles/websocket_tutorial#websocket%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF</a></li>
+<li><a href="https://ja.javascript.info/websocket#ref-1752">https://ja.javascript.info/websocket#ref-1752</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -26794,9 +26839,46 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<h4 id="_7">▼ リクエストヘッダー<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>ブラウザはサーバーにHTTPプロトコルのリクエストを送信する。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET /chatService HTTP/1.1</span>
+
+<span class="l l-Scalar l-Scalar-Plain">Host</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">server.example.com</span>
+<span class="nt">Upgrade</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">websocket</span>
+<span class="nt">Connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upgrade</span>
+<span class="nt">Sec-WebSocket-Key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dGhlIHNhbXBsZSBub25jZQ==</span>
+<span class="nt">Sec-WebSocket-Origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://example.com</span>
+<span class="nt">Sec-WebSocket-Protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">soap, wamp</span>
+<span class="nt">Sec-WebSocket-Version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13</span>
+</code></pre></div>
+<h4 id="_8">▼ レスポンスヘッダー<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>サーバーは、HTTPプロトコルのレスポンスに<code>Upgrade</code>ヘッダーを設定する。</p>
+<p>これにより、HTTPプロトコルがWebsocketプロトコルに変更される。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">HTTP/1.1 101 Switching Protocols</span>
+
+<span class="l l-Scalar l-Scalar-Plain">Upgrade</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WebSocket</span>
+<span class="nt">Connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upgrade</span>
+<span class="nt">Sec-WebSocket-Accept</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s3pPLMBiTxaQ9kYGzzhZRbK+xOo=</span>
+<span class="nt">Sec-WebSocket-Protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wamp</span>
+</code></pre></div>
 <p><br></p>
-<h2 id="01-03-mqtt-over-websocket">01-03. MQTT over Websocketの場合<a class="headerlink" href="#01-03-mqtt-over-websocket" title="Permanent link">&para;</a></h2>
-<h3 id="_7">仕組み<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><br></p>
+<h2 id="01-03-websocket-over-ssltls">01-03. Websocket over SSL/TLS<a class="headerlink" href="#01-03-websocket-over-ssltls" title="Permanent link">&para;</a></h2>
+<h3 id="_9">仕組み<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>Websocket上の通信を暗号化する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">WebSocket</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;ws&quot;</span><span class="p">;</span>
+
+<span class="c1">// WebSocket over SSL/TLSクライアントのインスタンスを作成</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">wss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebSocket</span><span class="p">(</span><span class="s2">&quot;wss://localhost:8080&quot;</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://ja.javascript.info/websocket">https://ja.javascript.info/websocket</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02-mqtt-over-websocket">02. MQTT over Websocket<a class="headerlink" href="#02-mqtt-over-websocket" title="Permanent link">&para;</a></h2>
+<h3 id="_10">仕組み<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>通常のMQTTの場合、ブラウザでは使用できず、IoTの文脈で使用できる。</p>
 <p>一方で、MQTT over WebsocketではWebsocketプロトコルで通信し、MQTTプロトコルを使用する。</p>
 <p>これにより、ブラウザからMQTTプロトコルでリクエストを送信できるようになる。</p>
@@ -26808,8 +26890,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_8">実装例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<h4 id="_9">▼ クライアント<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<h3 id="_11">実装例<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h4 id="_12">▼ クライアント<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">mqtt</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;mqtt&quot;</span><span class="p">;</span>
 
 <span class="c1">// MQTTクライアントのオプション (必要に応じて設定)</span>
@@ -26883,7 +26965,7 @@
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;MQTT client error:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
-<h4 id="_10">▼ リクエストヘッダー<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<h4 id="_13">▼ リクエストヘッダー<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>MQTTクライアントは、MQTTサーバーにHTTPプロトコルのリクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET /mqtt HTTP/1.1</span>
 
@@ -26893,7 +26975,7 @@
 <span class="nt">Sec-WebSocket-Key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ランダムキー&gt;</span>
 <span class="nt">Sec-WebSocket-Version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13</span>
 </code></pre></div>
-<h4 id="_11">▼ レスポンスヘッダー<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<h4 id="_14">▼ レスポンスヘッダー<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>MQTTサーバーは、HTTPプロトコルのレスポンスに<code>Upgrade</code>ヘッダーを設定する。</p>
 <p>これにより、HTTPプロトコルがWebsocketプロトコルに変更される。</p>
 <p>このWebsocketプロトコル上で、MQTTプロトコルを使用できる。</p>
@@ -26924,7 +27006,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月22日 23:06:56">2025-04-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月25日 21:49:40">2025-04-25</span>
   </span>
 
     
