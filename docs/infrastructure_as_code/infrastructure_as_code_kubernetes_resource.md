@@ -609,7 +609,7 @@ ReplicaSetを操作し、Podの個数を維持管理する。
 
 Podの負荷に合わせてPodを自動水平スケーリングを実行しない (HorizontalPodAutoscalerが必要である) 。
 
-Deploymentとは異なり、ストレートフルなコンテナ (例：dbコンテナ) を含むPodを扱える。
+Deploymentとは異なり、ストレートフルなコンテナ (例：DBコンテナ) を含むPodを扱える。
 
 Podが削除されてもPersistentVolumeClaimsは削除されないため、新しいPodにも同じPersistentVolumeを継続的にマウントできる。
 

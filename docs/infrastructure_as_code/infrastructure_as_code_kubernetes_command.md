@@ -1366,6 +1366,16 @@ $ kubectl logs -n kube-system <Pod名> -c kube-proxy | grep -i error
 $ kubectl logs -f <Pod名> | grep -i error
 ```
 
+#### ▼ -previous
+
+停止済みの前回のコンテナのログを取得する。
+
+```bash
+$ kubectl logs -f <Pod名> --previous
+```
+
+> - https://stackoverflow.com/a/34097447/12771072
+
 #### ▼ --timestamps
 
 タイムスタンプを取得する。

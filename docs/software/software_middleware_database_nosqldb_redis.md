@@ -35,15 +35,19 @@ description: Redis＠NoSQLの知見を記録しています。
 
 ## 02. ユースケース
 
-### セッション
+### セッション管理
 
 記入中...
 
 <br>
 
-### クエリキャッシュ
+### クエリキャッシュ管理
 
 記入中...
+
+<br>
+
+###
 
 <br>
 
@@ -87,6 +91,7 @@ const newLock = (client: ReturnType<typeof redisClient>, timeout = 50000) => {
     const keyName = `lock:${lockName}`;
     try {
       // キー名を指定し、Redisにキャッシュを保存する
+      // 成功時は"OK" 、失敗時はnullが返却される
       const result = await client.set(keyName, "{}", {
         // PXオプションで、ロックの有効期限を設定する
         PX: timeout,
@@ -95,10 +100,11 @@ const newLock = (client: ReturnType<typeof redisClient>, timeout = 50000) => {
       });
       // resultがnullでない場合、ロックを開始したことを意味する
       if (result !== null) {
-        // ロックが成功した場合、onLockSuccessコールバックを実行する
+        // onLockSuccessパラメーターの関数を実行する
         await onLockSuccess();
         // resultがnullの場合、ロックに失敗したことを意味する
       } else {
+        // onLockFailedパラメーターの関数を実行する
         await onLockFailed();
       }
     } catch (e) {
@@ -111,6 +117,8 @@ const newLock = (client: ReturnType<typeof redisClient>, timeout = 50000) => {
 await redisClient.connect();
 newLock(redisClient, 10000);
 ```
+
+> - https://redis.io/docs/latest/commands/set/
 
 #### ▼ Go
 

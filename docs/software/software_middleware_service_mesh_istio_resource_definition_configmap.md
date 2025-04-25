@@ -266,7 +266,7 @@ data:
 
 リトライポリシーのデフォルト値を設定する。
 
-ただし、`.spec.http[*].retries.perTryTimeout`キーは個別のVirtualServiceで設定する必要がある。
+ただし、`.spec.http[*].retries.perTryTimeout`キーは各VirtualServiceで設定する必要がある。
 
 ```yaml
 apiVersion: v1

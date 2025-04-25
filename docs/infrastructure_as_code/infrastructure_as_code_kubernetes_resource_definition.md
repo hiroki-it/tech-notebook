@@ -1063,7 +1063,7 @@ ports:
 
 紐づけるGatewayを設定する。
 
-Gatewayは共有のNamespaceに配置し、HTTPRouteはマイクロサービスのある個別のNamespaceに配置する。
+Gatewayは共有のNamespaceに配置し、HTTPRouteはマイクロサービスのある各Namespaceに配置する。
 
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1
@@ -1538,7 +1538,7 @@ spec:
 
 GatewayClassの`.metadata.name`キーの値を設定する。
 
-Gatewayは共有のNamespaceに配置し、HTTPRouteはマイクロサービスのある個別のNamespaceに配置する。
+Gatewayは共有のNamespaceに配置し、HTTPRouteはマイクロサービスのある各Namespaceに配置する。
 
 > - https://gateway-api.sigs.k8s.io/concepts/api-overview/?h=reencrypt#attaching-routes-to-gateways
 > - https://kubernetes.io/blog/2021/04/22/evolving-kubernetes-networking-with-the-gateway-api/#what-does-the-gateway-api-look-like
@@ -3897,13 +3897,13 @@ spec:
 
 `.spec.containers`キーで設定したコンテナよりも先に起動するコンテナ (InitContainer) を設定する。
 
-事前処理 (例：待機処理、ツールのインストール処理など) のために使用する。
+依存先コンテナ (例：DBコンテナ、インメモリDBコンテナ) の待機処理やツールのインストール処理などのために使用する。
 
-#### ▼ .spec.containers と同じ
+#### ▼ command
 
 **＊実行例＊**
 
-別のPodのdbコンテナが起動するために時間が必要であり、appコンテナではそれを待機可能にする。
+DBコンテナ (例：MySQL) が起動するために時間が必要であり、appコンテナではそれを待機可能にする。
 
 ```yaml
 apiVersion: v1
@@ -3928,9 +3928,10 @@ spec:
         - /bin/bash
         - -c
       args:
-        - >
+        - |
           until nc -z db 3306; do
-            sleep 1;
+            echo waiting for db;
+            sleep 2;
           done
 ```
 
@@ -3954,6 +3955,59 @@ spec:
 ```
 
 > - https://memo.koya-it.com/software_service/kubernetes.html#initcontainers-pod%E8%B5%B7%E5%8B%95%E5%89%8D%E3%81%AB%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F
+
+**＊実行例＊**
+
+インメモリDBコンテナ (例：Redis) が起動するために時間が必要であり、appコンテナではそれを待機可能にする。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      ports:
+        - containerPort: 8080
+      volumeMounts:
+        - name: app-volume
+          mountPath: /go/src
+  initContainers:
+    - name: readiness-check-redis
+      image: busybox:1.28
+      # StatefulSetのインメモリDBコンテナの6379番ポートに通信できるまで、本Podのappコンテナの起動を待機する。
+      # StatefulSetでreadinessProbeを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。
+      command:
+        - /bin/bash
+        - -c
+      args:
+        - |
+          until nc -z inmemory-db 6379; do
+            echo waiting for inmemory-db;
+            sleep 2;
+          done
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-db
+      image: redis:8.0
+      ports:
+        - containerPort: 6379
+      volumeMounts:
+        - name: foo-inmemory-db-volume
+          mountPath: /var/lib
+  volumes:
+    - name: foo-inmemory-db-volume
+      emptyDir: {}
+```
 
 **＊実行例＊**
 

@@ -2834,8 +2834,6 @@ class Kernel extends HttpKernel
 {
     /**
      * 全てのHTTPリクエストに適用するミドルウェアを定義します。
-
-
      *
      * @var array
      */
@@ -2849,8 +2847,6 @@ class Kernel extends HttpKernel
 
     /**
      * エイリアスとミドルウェアグループを定義します。
-
-
      *
      * @var array
      */
@@ -2865,9 +2861,7 @@ class Kernel extends HttpKernel
     ];
 
     /**
-     * エイリアスと個別のミドルウェアを定義します。
-
-
+     * エイリアスと各ミドルウェアを定義します。
      *
      * @var array
      */
