@@ -65,7 +65,7 @@ resource "aws_lb" "this" {
 
 **＊実装例＊**
 
-例として、ECSタスク定義名を指定して、AWSから
+例として、AWS ECSタスク定義名を指定して、AWSから
 
 ```terraform
 # ---------------------------------------------
@@ -1360,7 +1360,7 @@ resource "aws_elasticache_subnet_group" "redis" {
 
 例として、ECSを示す。
 
-ECSでは、AWS AutoScalingによってECSタスク数が増加する。
+ECSでは、AWS AutoScalingによってAWS ECSタスク数が増加する。
 
 そのため、これらを無視する必要がある。
 
@@ -1374,7 +1374,7 @@ resource "aws_ecs_service" "this" {
 
   lifecycle {
     ignore_changes = [
-      # AWS AutoScalingによるECSタスク数の増減を無視。
+      # AWS AutoScalingによるAWS ECSタスク数の増減を無視。
       desired_count,
     ]
   }
@@ -1546,7 +1546,7 @@ resource "aws_s3_bucket_policy" "alb" {
 
 #### ▼ containerDefinitionsとは
 
-ECSタスク定義のうち、コンテナを定義する部分のこと。
+AWS ECSタスク定義のうち、コンテナを定義する部分のこと。
 
 **＊実装例＊**
 

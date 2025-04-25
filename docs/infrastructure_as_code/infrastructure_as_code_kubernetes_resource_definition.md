@@ -3980,45 +3980,6 @@ spec:
 > - https://github.com/kubernetes/enhancements/issues/753
 > - https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers
 
-#### ▼ 複数のInitContainerの起動順番
-
-InitContainerが複数個ある場合、定義した順番に起動する。
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: app
-      image: app:1.0.0
-      ports:
-        - containerPort: 8080
-      volumeMounts:
-        - name: app-volume
-          mountPath: /go/src
-  initContainers:
-    - name: init-1
-    ...
-
-    - name: init-2
-    ...
-```
-
-```bash
-$ kubectl get pod -o "custom-columns=" \
-    "NAME:.metadata.name," \
-    "INIT:.spec.initContainers[*].name," \
-    "CONTAINERS:.spec.containers[*].name"
-
-# 定義した順番 (init-1、init-2) で起動する
-NAME        INIT            CONTAINERS
-app-*****   init-1,init-2   app
-```
-
-> - https://hyoublog.com/2020/06/07/kubernetes-initcontainers/
-
 <br>
 
 ### .spec.priorityClassName

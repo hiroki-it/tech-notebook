@@ -207,7 +207,7 @@ CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェ�
 
 `(4)`
 
-: CodeDeployによって、AWS ECSタスク定義を基に、現環境 (Prodブルー) のAWS ECSタスクとは別に、新環境 (Testグリーン) が作成される。
+: AWS CodeDeployによって、AWS ECSタスク定義を基に、現環境 (Prodブルー) のAWS ECSタスクとは別に、新環境 (Testグリーン) が作成される。
 
      ロードバランサーの接続先を、現環境 (Prodブルー) のターゲットグループ (Primaryターゲットグループ) に加えて、新環境 (Testグリーン) にも向ける。
 

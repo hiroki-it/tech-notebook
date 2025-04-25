@@ -1124,9 +1124,44 @@ CPUの上限 (`.spec.containers[*].resources.limits`) だけは設定しない�
 
 ### InitContainerを適切に使用する
 
-#### ▼
+#### ▼ InitContainerを適切な順番で起動させる
 
-依存ツールやSSL証明書のインストール処理などのために使用する。
+InitContainerが複数個ある場合、定義した順番に起動する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      ports:
+        - containerPort: 8080
+      volumeMounts:
+        - name: app-volume
+          mountPath: /go/src
+  initContainers:
+    - name: init-1
+    ...
+
+    - name: init-2
+    ...
+```
+
+```bash
+$ kubectl get pod -o "custom-columns=" \
+    "NAME:.metadata.name," \
+    "INIT:.spec.initContainers[*].name," \
+    "CONTAINERS:.spec.containers[*].name"
+
+# 定義した順番 (init-1、init-2) で起動する
+NAME        INIT            CONTAINERS
+app-*****   init-1,init-2   app
+```
+
+> - https://hyoublog.com/2020/06/07/kubernetes-initcontainers/
 
 #### ▼ InitContainerで依存先コンテナの起動開始を待機する
 
