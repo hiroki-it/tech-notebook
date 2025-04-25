@@ -4170,7 +4170,7 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      セッション
+      セッション管理
     </span>
   </a>
   
@@ -4179,7 +4179,16 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      クエリキャッシュ
+      クエリキャッシュ管理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
     </span>
   </a>
   
@@ -26725,7 +26734,7 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      セッション
+      セッション管理
     </span>
   </a>
   
@@ -26734,7 +26743,16 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      クエリキャッシュ
+      クエリキャッシュ管理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
     </span>
   </a>
   
@@ -26834,11 +26852,13 @@
 </blockquote>
 <p><br></p>
 <h2 id="02">02. ユースケース<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_4">セッション<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_4">セッション管理<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <p><br></p>
-<h3 id="_5">クエリキャッシュ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_5">クエリキャッシュ管理<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
+<p><br></p>
+<h3 id="_6"><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p><br></p>
 <h3 id="db">DB排他制御 (分散ロック)<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
 <h4 id="python">▼ Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h4>
@@ -26876,6 +26896,7 @@
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">keyName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`lock:</span><span class="si">${</span><span class="nx">lockName</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
 <span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="c1">// キー名を指定し、Redisにキャッシュを保存する</span>
+<span class="w">      </span><span class="c1">// 成功時は&quot;OK&quot; 、失敗時はnullが返却される</span>
 <span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">keyName</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;{}&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// PXオプションで、ロックの有効期限を設定する</span>
 <span class="w">        </span><span class="nx">PX</span><span class="o">:</span><span class="w"> </span><span class="kt">timeout</span><span class="p">,</span>
@@ -26884,10 +26905,11 @@
 <span class="w">      </span><span class="p">});</span>
 <span class="w">      </span><span class="c1">// resultがnullでない場合、ロックを開始したことを意味する</span>
 <span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// ロックが成功した場合、onLockSuccessコールバックを実行する</span>
+<span class="w">        </span><span class="c1">// onLockSuccessパラメーターの関数を実行する</span>
 <span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">onLockSuccess</span><span class="p">();</span>
 <span class="w">        </span><span class="c1">// resultがnullの場合、ロックに失敗したことを意味する</span>
 <span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// onLockFailedパラメーターの関数を実行する</span>
 <span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">onLockFailed</span><span class="p">();</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -26900,6 +26922,11 @@
 <span class="k">await</span><span class="w"> </span><span class="nx">redisClient</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
 <span class="nx">newLock</span><span class="p">(</span><span class="nx">redisClient</span><span class="p">,</span><span class="w"> </span><span class="mf">10000</span><span class="p">);</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://redis.io/docs/latest/commands/set/">https://redis.io/docs/latest/commands/set/</a></li>
+</ul>
+</blockquote>
 <h4 id="go">▼ Go<a class="headerlink" href="#go" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">Client</span><span class="p">)</span><span class="w"> </span><span class="nx">updateCache</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">contentID</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
@@ -26960,7 +26987,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月23日 23:13:31">2025-04-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月25日 13:47:32">2025-04-25</span>
   </span>
 
     

@@ -21788,9 +21788,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#speccontainers_1" class="md-nav__link">
+  <a href="#command" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ .spec.containers と同じ
+      ▼ command
     </span>
   </a>
   
@@ -34017,9 +34017,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#speccontainers_1" class="md-nav__link">
+  <a href="#command" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ .spec.containers と同じ
+      ▼ command
     </span>
   </a>
   
@@ -36380,7 +36380,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h2 id="httproute">HTTPRoute<a class="headerlink" href="#httproute" title="Permanent link">&para;</a></h2>
 <h3 id="parentrefs">parentRefs<a class="headerlink" href="#parentrefs" title="Permanent link">&para;</a></h3>
 <p>紐づけるGatewayを設定する。</p>
-<p>Gatewayは共有のNamespaceに配置し、HTTPRouteはマイクロサービスのある個別のNamespaceに配置する。</p>
+<p>Gatewayは共有のNamespaceに配置し、HTTPRouteはマイクロサービスのある各Namespaceに配置する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTPRoute</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36813,7 +36813,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="specgatewayclassname">spec.gatewayClassName<a class="headerlink" href="#specgatewayclassname" title="Permanent link">&para;</a></h3>
 <h4 id="gatewayclassname">▼ gatewayClassNameとは<a class="headerlink" href="#gatewayclassname" title="Permanent link">&para;</a></h4>
 <p>GatewayClassの<code>.metadata.name</code>キーの値を設定する。</p>
-<p>Gatewayは共有のNamespaceに配置し、HTTPRouteはマイクロサービスのある個別のNamespaceに配置する。</p>
+<p>Gatewayは共有のNamespaceに配置し、HTTPRouteはマイクロサービスのある各Namespaceに配置する。</p>
 <blockquote>
 <ul>
 <li><a href="https://gateway-api.sigs.k8s.io/concepts/api-overview/?h=reencrypt#attaching-routes-to-gateways">https://gateway-api.sigs.k8s.io/concepts/api-overview/?h=reencrypt#attaching-routes-to-gateways</a></li>
@@ -38934,10 +38934,10 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <h3 id="specinitcontainers">.spec.initContainers<a class="headerlink" href="#specinitcontainers" title="Permanent link">&para;</a></h3>
 <h4 id="initcontainers">▼ initContainersとは<a class="headerlink" href="#initcontainers" title="Permanent link">&para;</a></h4>
 <p><code>.spec.containers</code>キーで設定したコンテナよりも先に起動するコンテナ (InitContainer) を設定する。</p>
-<p>事前処理 (例：待機処理、ツールのインストール処理など) のために使用する。</p>
-<h4 id="speccontainers_1">▼ .spec.containers と同じ<a class="headerlink" href="#speccontainers_1" title="Permanent link">&para;</a></h4>
+<p>依存先コンテナ (例：DBコンテナ、インメモリDBコンテナ) の待機処理やツールのインストール処理などのために使用する。</p>
+<h4 id="command">▼ command<a class="headerlink" href="#command" title="Permanent link">&para;</a></h4>
 <p><strong>＊実行例＊</strong></p>
-<p>別のPodのdbコンテナが起動するために時間が必要であり、appコンテナではそれを待機可能にする。</p>
+<p>DBコンテナ (例：MySQL) が起動するために時間が必要であり、appコンテナではそれを待機可能にする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -38960,9 +38960,10 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/bash</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span>
 <span class="w">      </span><span class="nt">args</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">until nc -z db 3306; do</span>
-<span class="w">            </span><span class="no">sleep 1;</span>
+<span class="w">            </span><span class="no">echo waiting for db;</span>
+<span class="w">            </span><span class="no">sleep 2;</span>
 <span class="w">          </span><span class="no">done</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -38987,6 +38988,53 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <li><a href="https://memo.koya-it.com/software_service/kubernetes.html#initcontainers-pod%E8%B5%B7%E5%8B%95%E5%89%8D%E3%81%AB%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F">https://memo.koya-it.com/software_service/kubernetes.html#initcontainers-pod%E8%B5%B7%E5%8B%95%E5%89%8D%E3%81%AB%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F</a></li>
 </ul>
 </blockquote>
+<p><strong>＊実行例＊</strong></p>
+<p>インメモリDBコンテナ (例：Redis) が起動するために時間が必要であり、appコンテナではそれを待機可能にする。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app-volume</span>
+<span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/go/src</span>
+<span class="w">  </span><span class="nt">initContainers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">readiness-check-redis</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox:1.28</span>
+<span class="w">      </span><span class="c1"># StatefulSetのインメモリDBコンテナの6379番ポートに通信できるまで、本Podのappコンテナの起動を待機する。</span>
+<span class="w">      </span><span class="c1"># StatefulSetでreadinessProbeを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。</span>
+<span class="w">      </span><span class="nt">command</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/bash</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span>
+<span class="w">      </span><span class="nt">args</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">until nc -z inmemory-db 6379; do</span>
+<span class="w">            </span><span class="no">echo waiting for inmemory-db;</span>
+<span class="w">            </span><span class="no">sleep 2;</span>
+<span class="w">          </span><span class="no">done</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-db</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis:8.0</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6379</span>
+<span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-inmemory-db-volume</span>
+<span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/lib</span>
+<span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-inmemory-db-volume</span>
+<span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</code></pre></div>
 <p><strong>＊実行例＊</strong></p>
 <p>appコンテナからHTTPSリクエストを送信する場合に、SSL証明書が必要になる。</p>
 <p>これはすでに署名されている必要があり、例えばubuntuでは、CA証明書 (CA証明書) を含む<code>ca-certificates</code>パッケージをインストールする。</p>
@@ -41068,7 +41116,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月22日 19:28:05">2025-04-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月25日 13:47:32">2025-04-25</span>
   </span>
 
     
