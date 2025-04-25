@@ -21806,9 +21806,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#initcontainer" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 起動の順番
+      ▼ 複数のInitContainerの起動順番
     </span>
   </a>
   
@@ -22049,7 +22049,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ コンテナが複数個ある場合
     </span>
@@ -22592,7 +22592,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 変数の管理
     </span>
@@ -22601,7 +22601,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 機密なファイルの管理
     </span>
@@ -22634,7 +22634,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 機密な変数の管理
     </span>
@@ -22643,7 +22643,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 機密なファイルの管理
     </span>
@@ -34035,9 +34035,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#initcontainer" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 起動の順番
+      ▼ 複数のInitContainerの起動順番
     </span>
   </a>
   
@@ -34278,7 +34278,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ コンテナが複数個ある場合
     </span>
@@ -34821,7 +34821,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 変数の管理
     </span>
@@ -34830,7 +34830,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 機密なファイルの管理
     </span>
@@ -34863,7 +34863,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 機密な変数の管理
     </span>
@@ -34872,7 +34872,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 機密なファイルの管理
     </span>
@@ -38934,62 +38934,9 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <h3 id="specinitcontainers">.spec.initContainers<a class="headerlink" href="#specinitcontainers" title="Permanent link">&para;</a></h3>
 <h4 id="initcontainers">▼ initContainersとは<a class="headerlink" href="#initcontainers" title="Permanent link">&para;</a></h4>
 <p><code>.spec.containers</code>キーで設定したコンテナよりも先に起動するコンテナ (InitContainer) を設定する。</p>
-<p>依存先コンテナ (例：DBコンテナ、インメモリDBコンテナ) の待機処理やツールのインストール処理などのために使用する。</p>
+<p>依存先コンテナ (例：DBコンテナ、インメモリDBコンテナ) の待機処理、依存ツールやSSL証明書のインストール処理などのために使用する。</p>
 <h4 id="command">▼ command<a class="headerlink" href="#command" title="Permanent link">&para;</a></h4>
-<p><strong>＊実行例＊</strong></p>
-<p>DBコンテナ (例：MySQL) が起動するために時間が必要であり、appコンテナではそれを待機可能にする。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
-<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
-<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
-<span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app-volume</span>
-<span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/go/src</span>
-<span class="w">  </span><span class="nt">initContainers</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">readiness-check-db</span>
-<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox:1.28</span>
-<span class="w">      </span><span class="c1"># StatefulSetのDBコンテナの3306番ポートに通信できるまで、本Podのappコンテナの起動を待機する。</span>
-<span class="w">      </span><span class="c1"># StatefulSetでreadinessProbeを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。</span>
-<span class="w">      </span><span class="nt">command</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/bash</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span>
-<span class="w">      </span><span class="nt">args</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">until nc -z db 3306; do</span>
-<span class="w">            </span><span class="no">echo waiting for db;</span>
-<span class="w">            </span><span class="no">sleep 2;</span>
-<span class="w">          </span><span class="no">done</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-db</span>
-<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:8.0</span>
-<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span>
-<span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-db-volume</span>
-<span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/lib</span>
-<span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-db-volume</span>
-<span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://memo.koya-it.com/software_service/kubernetes.html#initcontainers-pod%E8%B5%B7%E5%8B%95%E5%89%8D%E3%81%AB%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F">https://memo.koya-it.com/software_service/kubernetes.html#initcontainers-pod%E8%B5%B7%E5%8B%95%E5%89%8D%E3%81%AB%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F</a></li>
-</ul>
-</blockquote>
-<p><strong>＊実行例＊</strong></p>
-<p>インメモリDBコンテナ (例：Redis) が起動するために時間が必要であり、appコンテナではそれを待機可能にする。</p>
+<p>実行するコマンドを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39006,7 +38953,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <span class="w">  </span><span class="nt">initContainers</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">readiness-check-redis</span>
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox:1.28</span>
-<span class="w">      </span><span class="c1"># StatefulSetのインメモリDBコンテナの6379番ポートに通信できるまで、本Podのappコンテナの起動を待機する。</span>
+<span class="w">      </span><span class="c1"># StatefulSetのインメモリDBコンテナの6379番ポートに通信できるまで、本Podのappコンテナの起動開始を待機する。</span>
 <span class="w">      </span><span class="c1"># StatefulSetでreadinessProbeを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。</span>
 <span class="w">      </span><span class="nt">command</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/bash</span>
@@ -39033,46 +38980,6 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/lib</span>
 <span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-inmemory-db-volume</span>
-<span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-</code></pre></div>
-<p><strong>＊実行例＊</strong></p>
-<p>appコンテナからHTTPSリクエストを送信する場合に、SSL証明書が必要になる。</p>
-<p>これはすでに署名されている必要があり、例えばubuntuでは、CA証明書 (CA証明書) を含む<code>ca-certificates</code>パッケージをインストールする。</p>
-<p>すると、<code>/etc/ssl</code>ディレクトリ配下にCA証明書に関する一連のファイルがインストールされる。</p>
-<p>これを、共有Volumeを介して、appコンテナにマウントする。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
-<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
-<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
-<span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app-volume</span>
-<span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/go/src</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">certificate-volume</span>
-<span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/ssl</span>
-<span class="w">  </span><span class="nt">initContainers</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">certificate-installer</span>
-<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu:22.04</span>
-<span class="w">      </span><span class="nt">command</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/sh</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span>
-<span class="w">      </span><span class="nt">args</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">apt-get update -y</span>
-<span class="w">          </span><span class="no"># CA証明書をインストールする</span>
-<span class="w">          </span><span class="no">apt-get install -y ca-certificates</span>
-<span class="w">          </span><span class="no"># 証明書を更新する</span>
-<span class="w">          </span><span class="no">update-ca-certificates</span>
-<span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/ssl</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">certificate</span>
-<span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">certificate</span>
 <span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
 <h4 id="restartpolicy">▼ restartPolicy<a class="headerlink" href="#restartpolicy" title="Permanent link">&para;</a></h4>
@@ -39102,7 +39009,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <li><a href="https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers">https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers</a></li>
 </ul>
 </blockquote>
-<h4 id="_7">▼ 起動の順番<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h4 id="initcontainer">▼ 複数のInitContainerの起動順番<a class="headerlink" href="#initcontainer" title="Permanent link">&para;</a></h4>
 <p>InitContainerが複数個ある場合、定義した順番に起動する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -39403,7 +39310,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <li><a href="https://speakerdeck.com/masayaaoyama/jkd1812-prd-manifests?slide=16">https://speakerdeck.com/masayaaoyama/jkd1812-prd-manifests?slide=16</a></li>
 </ul>
 </blockquote>
-<h4 id="_8">▼ コンテナが複数個ある場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h4 id="_7">▼ コンテナが複数個ある場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>Pod内にアプリコンテナ以外にコンテナ (<code>istio-proxy</code>コンテナなど) がある場合、全てのコンテナの終了プロセスの時間を考慮する必要がある。</p>
 <p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
 <blockquote>
@@ -40151,7 +40058,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h3 id="data_2">data<a class="headerlink" href="#data_2" title="Permanent link">&para;</a></h3>
 <h4 id="data_3">▼ dataとは<a class="headerlink" href="#data_3" title="Permanent link">&para;</a></h4>
 <p>Kubernetesリソースに渡す機密な変数を設定する。</p>
-<h4 id="_9">▼ 変数の管理<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<h4 id="_8">▼ 変数の管理<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>Secretで保持するstring型変数を設定する。</p>
 <p>使用時に<code>base64</code>方式で自動的にデコードされるため、あらかじめ<code>base64</code>方式でエンコードしておく必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -40184,7 +40091,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <li><a href="https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap">https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap</a></li>
 </ul>
 </blockquote>
-<h4 id="_10">▼ 機密なファイルの管理<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<h4 id="_9">▼ 機密なファイルの管理<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>パイプ (<code>|</code>) を使用すれば、ファイルを変数として設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
@@ -40208,7 +40115,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h3 id="stringdata">stringData<a class="headerlink" href="#stringdata" title="Permanent link">&para;</a></h3>
 <h4 id="stringdata_1">▼ stringDataとは<a class="headerlink" href="#stringdata_1" title="Permanent link">&para;</a></h4>
 <p>Kubernetesリソースに渡す機密な変数を設定する。</p>
-<h4 id="_11">▼ 機密な変数の管理<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<h4 id="_10">▼ 機密な変数の管理<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>Secretで保持するstring型の変数を設定する。</p>
 <p>平文で設定しておく必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -40239,7 +40146,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <li><a href="https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap">https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap</a></li>
 </ul>
 </blockquote>
-<h4 id="_12">▼ 機密なファイルの管理<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<h4 id="_11">▼ 機密なファイルの管理<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>パイプ (<code>|</code>) を使用すれば、ファイルを変数として設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
@@ -41116,7 +41023,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月25日 13:47:32">2025-04-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月25日 14:25:12">2025-04-25</span>
   </span>
 
     
