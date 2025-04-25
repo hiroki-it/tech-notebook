@@ -3897,68 +3897,11 @@ spec:
 
 `.spec.containers`キーで設定したコンテナよりも先に起動するコンテナ (InitContainer) を設定する。
 
-依存先コンテナ (例：DBコンテナ、インメモリDBコンテナ) の待機処理やツールのインストール処理などのために使用する。
+依存先コンテナ (例：DBコンテナ、インメモリDBコンテナ) の待機処理、依存ツールやSSL証明書のインストール処理などのために使用する。
 
 #### ▼ command
 
-**＊実行例＊**
-
-DBコンテナ (例：MySQL) が起動するために時間が必要であり、appコンテナではそれを待機可能にする。
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: app
-      image: app:1.0.0
-      ports:
-        - containerPort: 8080
-      volumeMounts:
-        - name: app-volume
-          mountPath: /go/src
-  initContainers:
-    - name: readiness-check-db
-      image: busybox:1.28
-      # StatefulSetのDBコンテナの3306番ポートに通信できるまで、本Podのappコンテナの起動を待機する。
-      # StatefulSetでreadinessProbeを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。
-      command:
-        - /bin/bash
-        - -c
-      args:
-        - |
-          until nc -z db 3306; do
-            echo waiting for db;
-            sleep 2;
-          done
-```
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: foo-db
-      image: mysql:8.0
-      ports:
-        - containerPort: 3306
-      volumeMounts:
-        - name: foo-db-volume
-          mountPath: /var/lib
-  volumes:
-    - name: foo-db-volume
-      emptyDir: {}
-```
-
-> - https://memo.koya-it.com/software_service/kubernetes.html#initcontainers-pod%E8%B5%B7%E5%8B%95%E5%89%8D%E3%81%AB%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F
-
-**＊実行例＊**
-
-インメモリDBコンテナ (例：Redis) が起動するために時間が必要であり、appコンテナではそれを待機可能にする。
+実行するコマンドを設定する。
 
 ```yaml
 apiVersion: v1
@@ -3977,7 +3920,7 @@ spec:
   initContainers:
     - name: readiness-check-redis
       image: busybox:1.28
-      # StatefulSetのインメモリDBコンテナの6379番ポートに通信できるまで、本Podのappコンテナの起動を待機する。
+      # StatefulSetのインメモリDBコンテナの6379番ポートに通信できるまで、本Podのappコンテナの起動開始を待機する。
       # StatefulSetでreadinessProbeを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。
       command:
         - /bin/bash
@@ -4009,53 +3952,6 @@ spec:
       emptyDir: {}
 ```
 
-**＊実行例＊**
-
-appコンテナからHTTPSリクエストを送信する場合に、SSL証明書が必要になる。
-
-これはすでに署名されている必要があり、例えばubuntuでは、CA証明書 (CA証明書) を含む`ca-certificates`パッケージをインストールする。
-
-すると、`/etc/ssl`ディレクトリ配下にCA証明書に関する一連のファイルがインストールされる。
-
-これを、共有Volumeを介して、appコンテナにマウントする。
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: app
-      image: app:1.0.0
-      ports:
-        - containerPort: 8080
-      volumeMounts:
-        - name: app-volume
-          mountPath: /go/src
-        - name: certificate-volume
-          mountPath: /etc/ssl
-  initContainers:
-    - name: certificate-installer
-      image: ubuntu:22.04
-      command:
-        - /bin/sh
-        - -c
-      args:
-        - |
-          apt-get update -y
-          # CA証明書をインストールする
-          apt-get install -y ca-certificates
-          # 証明書を更新する
-          update-ca-certificates
-      volumeMounts:
-        - mountPath: /etc/ssl
-          name: certificate
-  volumes:
-    - name: certificate
-      emptyDir: {}
-```
-
 #### ▼ restartPolicy
 
 `Always`値を設定することで、サイドカーコンテナを作成できる。
@@ -4084,7 +3980,7 @@ spec:
 > - https://github.com/kubernetes/enhancements/issues/753
 > - https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers
 
-#### ▼ 起動の順番
+#### ▼ 複数のInitContainerの起動順番
 
 InitContainerが複数個ある場合、定義した順番に起動する。
 
