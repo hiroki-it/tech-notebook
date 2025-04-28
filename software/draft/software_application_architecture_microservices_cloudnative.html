@@ -26947,12 +26947,12 @@
 <td>バックエンドのアーキテクチャーとしてモノリスアーキテクチャーが台頭していた *12 。</td>
 </tr>
 <tr>
-<td>1900年後半〜</td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>2000年前半</td>
+<td>1900年後半〜<br>2000年前半</td>
 <td>サービス指向アーキテクチャー</td>
 <td>Michael BellやThomas Erlらが、アプリケーションを機能の粒度で分割するアーキテクチャーを提唱した <em>13 。ただ『機能』という粒度に分割の指針がなかった </em>14 。さまざまな課題があったため、概念としては提唱されていても実装方法の確立にまでは至らなかった。</td>
 </tr>
@@ -27008,418 +27008,130 @@
 <td>・AWS（API Gateway）</td>
 </tr>
 <tr>
-<td>Application Definition &amp; Image Build</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>（アプリケーション定義とイメージ構築）</td>
+<td>Application Definition &amp; Image Build（アプリケーション定義とイメージ構築）</td>
 <td>コンテナイメージからマイクロサービスを構築し、またデプロイする。</td>
-<td>・Docker Compose</td>
+<td>・Docker Compose <br> ・Helm<br>・OpenAPI<br>・Packer</td>
 <td></td>
 </tr>
 <tr>
-<td>・Helm</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>・OpenAPI</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>・Packer</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Automation &amp; Configuration</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>（自動化と設定）</td>
+<td>Automation &amp; Configuration（自動化と設定）</td>
 <td>マイクロサービスのインフラストラクチャーのプロビジョニングを自動化する。</td>
-<td>・Ansible</td>
-<td></td>
-</tr>
-<tr>
-<td>・Temporal</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>・Terraform</td>
+<td>・Ansible<br>・Temporal<br>・Terraform</td>
 <td>・AWS（CloudFormation）</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
-<td>Chaos Engineering</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>（カオスエンジニアリング）</td>
+<td>Chaos Engineering（カオスエンジニアリング）</td>
 <td>システムの全体や一部に障害を注入し、システムの回復力をテストする。</td>
-<td>・ChaosMesh</td>
-<td></td>
-</tr>
-<tr>
-<td>・Istio</td>
+<td>・ChaosMesh<br>・Istio</td>
 <td>・AWS（Fault Injection Simulator）</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
-<td>Cloud Native Network</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>（クラウドネイティブネットワーク）</td>
+<td>Cloud Native Network（クラウドネイティブネットワーク）</td>
 <td>マイクロサービスがほかと通信するためのネットワークを作成する。</td>
 <td>・Cilium CNI</td>
 <td>・AWS（VPC CNI）</td>
 </tr>
 <tr>
-<td>Cloud Native Storage</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>（クラウドネイティブストレージ）</td>
+<td>Cloud Native Storage（クラウドネイティブストレージ）</td>
 <td>ファイルストレージ、オブジェクトストレージ、ブロックストレージなどとして各種データを保管する。</td>
-<td>・Ceph</td>
-<td></td>
-</tr>
-<tr>
-<td>・Longhorn</td>
+<td>・Ceph<br>・Longhorn</td>
 <td>・AWS（EBS、S3）</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
-<td>Coordination &amp; Service Discovery</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>（調整とサービス検出）</td>
+<td>Coordination &amp; Service Discovery（調整とサービス検出）</td>
 <td>各マイクロサービスがお互いに場所を特定できるようにする。</td>
-<td>・CoreDNS</td>
-<td></td>
-</tr>
-<tr>
-<td>・Etcd</td>
+<td>・CoreDNS<br>・Etcd</td>
 <td>・AWS（ECS Service Connect）</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
-<td>Container Registry</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>（コンテナレジストリー）</td>
+<td>Container Registry（コンテナレジストリー）</td>
 <td>コンテナイメージの保管や提供などを集中管理する。</td>
 <td>・Harbor</td>
-<td>・AWS（ECR）</td>
+<td>・AWS（ECR）<br>・Docker Hub</td>
 </tr>
 <tr>
-<td>・Docker Hub</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Container Runtime</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>（コンテナランタイム）</td>
+<td>Container Runtime（コンテナランタイム）</td>
 <td>コンテナ内のアプリケーションを実行し、またハードウェアリソース（例えばCPU、ストレージ、メモリなど）を提供する。</td>
 <td>・Containerd</td>
 <td></td>
 </tr>
 <tr>
-<td>Continuous Integration &amp; Delivery</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>（継続的インテグレーションとデリバリー）</td>
+<td>Continuous Integration &amp; Delivery（継続的インテグレーションとデリバリー）</td>
 <td>マイクロサービスの構築からデプロイまでに必要なタスクを自動化する。</td>
-<td>・ArgoCD</td>
-<td></td>
-</tr>
-<tr>
-<td>・Dagger</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>・Flux</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>・Tekton</td>
+<td>・ArgoCD<br>・Dagger<br>・Flux<br>・Tekton</td>
 <td>・GitHub Actions</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>Continuous Optimization（継続的最適化）</td>
 <td>CNCFに定義の記載なし。</td>
-<td>・Karpenter</td>
-<td></td>
-</tr>
-<tr>
-<td>・OpenCost</td>
+<td>・Karpenter<br>・OpenCost</td>
 <td>・AWS（Cost Explorer）</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>Database（データベース）</td>
 <td>RDBやNo SQL DBとしてマイクロサービスがデータを保管し、また取得できるようにする。</td>
-<td>・MySQL</td>
-<td></td>
-</tr>
-<tr>
-<td>・Redis</td>
+<td>・MySQL<bt>・Redis</td>
 <td>・AWS（Aurora MySQL、ElastiCache）</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
-<td>Feature Flagging</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>（機能フラグ）</td>
+<td>Feature Flagging（機能フラグ）</td>
 <td>CNCF Landscapeに定義の記載なし。</td>
 <td>・OpenFeature</td>
 <td>・AWS（AppConfig）</td>
 </tr>
 <tr>
-<td>Key Management</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>（キー管理）</td>
+<td>Key Management（キー管理）</td>
 <td>暗号化キーの作成、保管、そしてローテションを集中管理する。</td>
 <td>・Spire</td>
 <td>・AWS（KMS）</td>
 </tr>
 <tr>
-<td>Observability</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>（オブザーバビリティー）</td>
+<td>Observability（オブザーバビリティー）</td>
 <td>さまざまなテレメトリーデータの作成、収集、保管、分析、可視化を実施する。</td>
-<td>・Fluentd／FluentBit</td>
-<td></td>
-</tr>
-<tr>
-<td>・Grafana（Grafana、Loki、Mimir、Tempo）</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>・Kiali</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>・OpenTelemetry（クライアントSDK、OpenTelemetry Collector）</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>・Prometheus</td>
+<td>・Fluentd／FluentBit<br>・Grafana（Grafana、Loki、Mimir、Tempo）<br>・Kiali<br>・OpenTelemetry（クライアントSDK、OpenTelemetry Collector）<br>・Prometheus</td>
 <td>・AWS（CloudWatch Logs、CloudWatch Metrics、X-Ray）</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>Platform（プラットフォーム）</td>
 <td>クラウドネイティブの各分野のツールを一括で提供する。</td>
-<td>・KinD</td>
-<td></td>
-</tr>
-<tr>
-<td>・Minikube</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>・Rancher</td>
+<td>・KinD<bt>・Minikube<br>・Rancher</td>
 <td>・AWS（EKS、Lambda）</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
-<td>Remote Procedure Call</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>（リモートプロシージャコール）</td>
+<td>Remote Procedure Call（リモートプロシージャコール）</td>
 <td>マイクロサービスがほかのマイクロサービスにリクエストを送信できるようにする。</td>
 <td>・gRPC</td>
 <td></td>
 </tr>
 <tr>
-<td>Scheduling &amp; Orchestration</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>（スケジューリングとオーケストレーション）</td>
+<td>Scheduling &amp; Orchestration（スケジューリングとオーケストレーション）</td>
 <td>クラスター全体でコンテナを実行し、また管理する。</td>
-<td>・Knative</td>
-<td></td>
-</tr>
-<tr>
-<td>・Kubernetes</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
+<td>・Knative<br>・Kubernetes</td>
 <td>・AWS（ECS）</td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
-<td>Security &amp; Compliance</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>（セキュリティとコンプライアンス）</td>
+<td>Security &amp; Compliance（セキュリティとコンプライアンス）</td>
 <td>脆弱性を監視して脆弱性を検出する。また、マイクロサービスの認証認可を強化する。</td>
-<td>・Cert Manager</td>
-<td></td>
-</tr>
-<tr>
-<td>・Falco</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>・Keycloak</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>・OAuth2 Proxy</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>・SOPS</td>
+<td>・Cert Manager<br>・Falco<br>・Keycloak<br>・OAuth2 Proxy<br>・SOPS</td>
 <td>・AWS（Certificate Manager、Cognito、Secrets Manager）</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
-<td>Service Mesh</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>（サービスメッシュ）</td>
+<td>Service Mesh（サービスメッシュ）</td>
 <td>各マイクロサービスのロジックを変更することなく、マイクロサービス間の通信に信頼性、オブザーバビリティー、セキュリティ機能などを一律的に追加する。</td>
-<td>・Istio</td>
-<td></td>
-</tr>
-<tr>
-<td>・Linkerd</td>
+<td>・Istio<br>・Linkerd</td>
 <td>・AWS（VPC Lattice）</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
-<td>Service Proxy</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>（サービスプロキシ） *22</td>
+<td>Service Proxy（サービスプロキシ） *22</td>
 <td>マイクロサービスからの送信されたリクエストを仲介し、ほかのマイクロサービスに転送する。</td>
-<td>・Envoy</td>
-<td></td>
-</tr>
-<tr>
-<td>・Nginx</td>
+<td>・Envoy<br>・Nginx</td>
 <td>・AWS（ALB）</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
-<td>Streaming &amp; Messaging</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>（ストリーミングとメッセージング）</td>
+<td>Streaming &amp; Messaging（ストリーミングとメッセージング）</td>
 <td>パブリッシャーから送信されたメッセージを仲介し、他のサブスクライバーに転送する。</td>
-<td>・Apache Kafka</td>
-<td></td>
-</tr>
-<tr>
-<td>・CloudEvents</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>・RabbitMQ</td>
+<td>・Apache Kafka<br>・CloudEvents<br>・RabbitMQ</td>
 <td>・AWS（Kinesis、SQS）</td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -27445,48 +27157,48 @@
 <tbody>
 <tr>
 <td>領域の種類</td>
-<td>・フロントエンド</td>
-<td></td>
-<td></td>
+<td>・フロントエンド<br/>・バックエンド<br/>・各種ストレージ（データベースなど）</td>
+<td>・フロントエンド<br/>・バックエンド<br/>・各種ストレージ（データベースなど）</td>
+<td>・フロントエンド<br/>・APIゲートウェイ<br/>・マイクロサービス<br/>・各種ストレージ（データベースなど）</td>
 </tr>
 <tr>
-<td>・バックエンド</td>
 <td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>・各種ストレージ（データベースなど）</td>
-<td>・フロントエンド</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>・バックエンド</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>・各種ストレージ（データベースなど）</td>
-<td>・フロントエンド</td>
 <td></td>
-<td></td>
-</tr>
-<tr>
-<td>・APIゲートウェイ</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>・マイクロサービス</td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>・各種ストレージ（データベースなど）</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -28245,10 +27957,10 @@
 </tr>
 <tr>
 <td>技術例</td>
-<td>・Security &amp; Compliance（Keycloak）</td>
+<td>・Security &amp; Compliance（Keycloak）<br>・Service Mesh（Istio）</td>
 </tr>
 <tr>
-<td>・Service Mesh（Istio）</td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
@@ -28897,7 +28609,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月28日 14:10:18">2025-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月28日 14:40:56">2025-04-28</span>
   </span>
 
     
