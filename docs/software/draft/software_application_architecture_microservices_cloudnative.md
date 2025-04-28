@@ -62,7 +62,10 @@ CNCFの定義のとおり、クラウドネイティブ技術はパブリック�
 | 2014〜2015 | Kubernetes                       | GoogleはコンテナオーケストレーションツールとしてKubernetesを発表した。またKubernetes v1.0のリリースに合わせて、GoogleとLinux FoundationがCNCFを設立した \*9 。 |
 | 2014〜     | 約20分野のクラウドネイティブ技術 | CNCFでは約20分野に渡るクラウドネイティブ技術が登場した \*10 。                                                                                                 |
 
-## <br>
+---
+
+注釈
+
 
 \*2 CNCF Overview 2024（https://docs.google.com/presentation/d/1UGewu4MMYZobunfKr5sOGXsspcLOH_5XeCLyOHKh9LU/edit#slide=id.gc98d72cd14_1_2266）
 
@@ -110,7 +113,10 @@ CNCFの定義のとおり、クラウドネイティブ技術はパブリック�
 | 2014年                     | マイクロサービスアーキテクチャー   | Simon Brownは、モノリスアーキテクチャーは時間経過とともに無秩序でつぎはぎだらけになり得ることを指摘した *16 。Martin FowlerとJames Lewisは、サービス指向アーキテクチャーとDDDを統合し、アプリケーションを独立したマイクロサービスの集まりに分割するアーキテクチャーを提唱した *17 。サービス指向アーキテクチャーにDDDの高凝集／低結合の考え方を取り入れることで、サービス指向アーキテクチャーを実装可能な理論に昇華させた。一方で、マイクロサービスの大きさには十分に注意を払う必要がある ※18。 |
 | 2015年                     | モジュラーモノリスアーキテクチャー | Martin Flowlerはモジュラーモノリスアーキテクチャーを提唱した \*19 。モジュラモノリスでは、マイクロサービスアーキテクチャーとモノリスアーキテクチャーの間をとった粒度で、アプリケーションを細かいモジュールに分割する。最初にモジュラーモノリスアーキテクチャーとして設計し、マイクロサービスアーキテクチャーに移行していくという選択肢もある。                                                                                                                                                  |
 
-## <br>
+---
+
+注釈
+
 
 \*12 Richards, M., & Ford, N. (2020). Fundamentals of software Architecture: An Engineering Approach. O’Reilly Media.
 
@@ -175,7 +181,10 @@ CNCFでは、オープンソースやクラウドプロバイダーのクラウ�
 | Service Proxy（サービスプロキシ） \*22                                     | マイクロサービスからの送信されたリクエストを仲介し、ほかのマイクロサービスに転送する。                                                           | ・Envoy<br>・Nginx                                                                                                                                         | ・AWS（ALB）                                           |
 | Streaming & Messaging（ストリーミングとメッセージング）                    | パブリッシャーから送信されたメッセージを仲介し、他のサブスクライバーに転送する。                                                                 | ・Apache Kafka<br>・CloudEvents<br>・RabbitMQ                                                                                                              | ・AWS（Kinesis、SQS）                                  |
 
-## <br>
+---
+
+注釈
+
 
 \*20 CNCFはクラウドネイティブ技術の属する分類をしばしば変更します。最新の分類はCNCF Landscape（https://landscape.cncf.io/）を参照してください。
 
@@ -209,7 +218,10 @@ CNCFでは、オープンソースやクラウドプロバイダーのクラウ�
 | 領域の役割     | アプリケーションは、フロントエンド領域とバックエンド領域の領域からなる。アプリケーションが両方の領域の役割を担っている。 | アプリケーションは、フロントエンドアプリケーションとバックエンドアプリケーションからなる。両アプリケーションは各領域の役割を担っている。 | アプリケーションは、独立したAPIを持つ複数のフロントエンド領域とマイクロサービス領域アプリケーションからなる。両アプリケーションは各領域の役割を担っている。これらの領域の間に、APIゲートウェイ領域がある。 |
 | 領域間の結合度 | フロントエンド領域とバックエンド領域の領域は密結合になっている。各領域は同じプロセスで稼働する。                         | フロントエンド領域とバックエンド領域の領域は疎結合になっている。各領域は異なるプロセスで稼働する。                                       | フロントエンド、各マイクロサービス、APIゲートウェイの領域は疎結合になっている。各領域は異なるプロセスで稼働する。                                                                                          |
 
-## <br>
+---
+
+注釈
+
 
 \*23 Fowler, M. (n.d.). bliki: Presentation Domain Separation. http://martinfowler.com/. https://martinfowler.com/bliki/PresentationDomainSeparation.html
 
@@ -343,7 +355,7 @@ flowchart LR
 | テスト                 | ホワイトボックステスト               | ・ユニットテスト<br/>・サービステスト<br/>・コントラクトテスト<br/>・E2Eテスト                                                             |
 |                        | ブラックボックステスト               | ・ロードテスト（負荷テスト）<br/>・回帰テスト<br/>・フォールトインジェクションを含むカオスエンジニアリング                                 |
 
-## <br>
+---
 
 注釈
 
@@ -921,9 +933,10 @@ IstioなどのService Mesh分野のツールを使用しない場合、マイク
 | クラウドネイティブ技術との関連性 | 非機能的なロジックの実装方法として、Service MeshやStreaming & Messaging分野のツールを使用できる。                                                                                                   |
 | 技術例                           | ・Service Mesh（Istio）<br>・Streaming & Messaging（CloudEvents、RabbitMQ）                                                                                                                         |
 
-## <br>
+---
 
 注釈
+
 
 \*49 Brown, S. (2014, August 4). Distributed big balls of mud. http://dzone.com/. https://dzone.com/articles/distributed-big-balls-mud
 
@@ -1188,9 +1201,10 @@ Istioの場合、Istioリソースを定義することにより無効なアカ�
 | クラウドネイティブ技術との関連性 | 認可サービスとしてSecurity & Compliance分野のツールを使用できる。          | 該当なし                                 |
 | 技術例                           | ・Security & Compliance（Open Policy Agent）                               | 該当なし                                 |
 
-## <br>
+---
 
 注釈
+
 
 \*62 Introduction. (n.d.). Open Policy Agent. https://www.openpolicyagent.org/docs/latest/
 
@@ -1818,9 +1832,10 @@ flowchart LR
 | クラウドネイティブ技術との関連性 | 静的方式のロードバランサーとしてKubernetes標準機能とService Mesh分野のツールを使用できる。 | 動的方式のロードバランサーとしてService MeshとCoordination & Service Discovery分野のツールを使用できる。 |
 | 技術例                           | ・Kubernetes標準機能（Kubernetes Service、kube-proxy）<br/>・Service Mesh（Istio）         | ・Kubernetes標準機能（Kubernetes Service、kube-proxy）<br/>・Service Mesh（Istio）                       |
 
-## <br>
+---
 
 注釈
+
 
 \*73 Mesh, A. (2020, August 12). Debugging Your Debugging Tools: What to do When Your Service Mesh Goes Down [Slide show]. SlideShare. https://www.slideshare.net/slideshow/debugging-your-debugging-tools-what-to-do-when-your-service-mesh-goes-down/237797183
 
