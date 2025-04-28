@@ -79,6 +79,8 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 各マイクロサービスに共有ライブラリを配置する。
 
 > - https://speakerdeck.com/tgraf/cilium-service-mesh-servicemeshcon-europe-2022?slide=14
+> - https://isovalent.com/blog/post/2021-12-08-ebpf-servicemesh/
+> - https://www.oreilly.com/library/view/mastering-api-architecture/9781492090625/ch04.html
 
 <br>
 
