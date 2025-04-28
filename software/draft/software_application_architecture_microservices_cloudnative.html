@@ -26965,8 +26965,8 @@
 <p>*14 Wikipedia contributors. (2024a). Service-oriented architecture. Wikipedia. <a href="https://en.wikipedia.org/wiki/Service-oriented_architecture">https://en.wikipedia.org/wiki/Service-oriented_architecture</a></p>
 <p>*15 Newman, S. (2021). Building microservices. O’Reilly Media, Inc.</p>
 <p>*16 Evans, E. (2004). Domain-driven design: Tackling Complexity in the Heart of Software. Addison-Wesley Professional.</p>
-<p>*17 Lewis, J. (n.d.). Microservices. <a href="http://martinfowler.com/">martinfowler.com</a>. <a href="https://martinfowler.com/articles/microservices.html">https://martinfowler.com/articles/microservices.html</a></p>
-<p>*18 Fowler, M. (n.d.). bliki: Brown, S. (2014). Distributed big balls of mud. <a href="http://dzone.com/">dzone.com</a>. <a href="https://dzone.com/articles/distributed-big-balls-mud">https://dzone.com/articles/distributed-big-balls-mud</a></p>
+<p>*17 Lewis, J. (n.d.). Microservices. <a href="http://martinfowler.com/">http://martinfowler.com/</a>. <a href="https://martinfowler.com/articles/microservices.html">https://martinfowler.com/articles/microservices.html</a></p>
+<p>*18 Fowler, M. (n.d.). bliki: Brown, S. (2014). Distributed big balls of mud. <a href="http://dzone.com/">http://dzone.com/</a>. <a href="https://dzone.com/articles/distributed-big-balls-mud">https://dzone.com/articles/distributed-big-balls-mud</a></p>
 <p>19 Brown, S. (2014). Fowler, M. (n.d.). bliki: Monolith First. <a href="http://martinfowler.com/">http://martinfowler.com/</a>. <a href="https://martinfowler.com/bliki/">https://martinfowler.com/bliki/</a> MonolithFirst.html</p>
 <h2 id="3">3 マイクロサービスアーキテクチャーに関連のあるクラウドネイティブ技術<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p>CNCFでは、オープンソースやクラウドプロバイダーのクラウドネイティブ技術をさまざまな分野に分類しています <em>20 。各分野には、マイクロサービスアーキテクチャーに関連のあるクラウドネイティブ技術が多くあります。表3でそれらを一覧で示します </em>21 。表ではCNCF Landscapeにある定義を参考して、各分野のマイクロサービスとの関連性を説明します。1.1節では、クラウドプロバイダーの使用に言及しています。ここではクラウドプロバイダーのマネージドサービスを使用することにより、ビジネスアジリティの向上、低レイヤーの運用コストの軽減などの利点があると主張しています。補章では、2024年の執筆時点で特に人気の高いクラウドプロバイダーのAWSを主な例に挙げ、これのマネージドサービスを取り上げます。</p>
@@ -27485,7 +27485,7 @@
 </tbody>
 </table>
 <hr />
-<p>*23 Fowler, M. (n.d.). bliki: Presentation Domain Separation. <a href="http://martinfowler.com/">martinfowler.com</a>. <a href="https://martinfowler.com/bliki/PresentationDomainSeparation.html">https://martinfowler.com/bliki/PresentationDomainSeparation.html</a></p>
+<p>*23 Fowler, M. (n.d.). bliki: Presentation Domain Separation. <a href="http://martinfowler.com/">http://martinfowler.com/</a>. <a href="https://martinfowler.com/bliki/PresentationDomainSeparation.html">https://martinfowler.com/bliki/PresentationDomainSeparation.html</a></p>
 <h2 id="5">5 マイクロサービスアーキテクチャーのデザインパターン<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <h3 id="51">5.1 デザインパターンとクラウドネイティブ技術<a class="headerlink" href="#51" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスアーキテクチャーでは技術的で組織的な特有の問題が起こります。これを解決するために、マイクロサービスアーキテクチャーの各領域でさまざまなデザインパターンが提唱されています <em>23~</em>27 。各領域のデザインパターンは、そのすべてや一部をクラウドネイティブ技術で代替できます *28 。図2でマイクロサービスアーキテクチャーの領域とクラウドネイティブ技術の関連性を示します。色が濃いほど関連性が強く、クラウドネイティブ技術で代替できることを表しています。アプリケーションの領域では機能的なロジックは関連性が低い一方で、非機能的なものほど関連性が強いです。そしてインフラストラクチャーは全般的に関連性が強いです。</p>
@@ -27494,7 +27494,7 @@
 <p>補章では、各領域でのさまざまなデザインパターンと具体的にいずれのクラウドネイティブ技術がデザインパターンに関連しているのかを概説します。表3のオープンソースまたはマネージドサービス（主にAWS）を組み合わせ、マイクロサービスアーキテクチャーの設計例を図で示します。AWSの設計については、AWS Well-Architected Framework *29 を合わせて読んでいただくことをお奨めします。なお、マイクロサービスアーキテクチャーで安易にマネージドなクラウドネイティブ技術を使用するべきではないと私は考えています。なぜなら1つ目の理由として、マネージドサービスによってはオープンソースと比べてユーザーの設定できるオプションが少ないことを挙げます。機能または非機能によらず拡張性の求められる場合には、オプションの少なさが拡張性の足かせになります。2つ目の理由として、マネージドサービスによってはアプリケーション領域とインフラストラクチャー領域の境界が曖昧なことを挙げます。大きな開発組織になるほど、領域の境界の曖昧さによって開発組織で分業しにくくなっていきます。これは結果的にビジネスのアジリティを低下させる可能性があります。これらの理由からマイクロサービスアーキテクチャーでは、マネージドサービスをオープンソースの代わりにどこまで使用すれば恩恵をより良く受けられるのか、を見極める必要があります。例えば、前述の2つの理由で、マイクロサービスのデプロイ方法（表5を参照）はFaaSやPaaSといったサーバーレスではなく、コンテナ（もっと具体的に言うとKubernetes）がより適切であるという考えが私にはあります。</p>
 <hr />
 <p>注釈</p>
-<p>*24 A pattern language for microservices. (n.d.). <a href="http://microservices.io/">microservices.io</a>. <a href="https://microservices.io/patterns/index.html">https://microservices.io/patterns/index.html</a></p>
+<p>*24 A pattern language for microservices. (n.d.). <a href="http://microservices.io/">http://microservices.io/</a>. <a href="https://microservices.io/patterns/index.html">https://microservices.io/patterns/index.html</a></p>
 <p>*25 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.</p>
 <p>*26 Newman, S. (2021). Building microservices. O’Reilly Media, Inc.</p>
 <p>*27 Mezzalira, L. (2021). Building Micro-Frontends. O’Reilly Media, Inc.</p>
@@ -27678,7 +27678,7 @@
 </table>
 <hr />
 <p>注釈</p>
-<p>*31 A pattern language for microservices. (n.d.). <a href="http://microservices.io/">microservices.io</a>. <a href="https://microservices.io/patterns/index.html">https://microservices.io/patterns/index.html</a></p>
+<p>*31 A pattern language for microservices. (n.d.). <a href="http://microservices.io/">http://microservices.io/</a>. <a href="https://microservices.io/patterns/index.html">https://microservices.io/patterns/index.html</a></p>
 <p>*32 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.</p>
 <p>*33 Newman, S. (2021). Building microservices. O’Reilly Media, Inc.</p>
 <p>*34 Mezzalira, L. (2021). Building Micro-Frontends. O’Reilly Media, Inc.</p>
@@ -28000,7 +28000,7 @@
 </table>
 <hr />
 <p>注釈</p>
-<p>*49 Brown, S. (2014, August 4). Distributed big balls of mud. <a href="http://dzone.com/">dzone.com</a>. <a href="https://dzone.com/articles/distributed-big-balls-mud">https://dzone.com/articles/distributed-big-balls-mud</a></p>
+<p>*49 Brown, S. (2014, August 4). Distributed big balls of mud. <a href="http://dzone.com/">http://dzone.com/</a>. <a href="https://dzone.com/articles/distributed-big-balls-mud">https://dzone.com/articles/distributed-big-balls-mud</a></p>
 <p>*50 Evans, E. (2014). Domain-Driven Design reference: Definitions and Pattern Summaries. Dog Ear Publishing.</p>
 <p>*51 Martin, R. C. (2017). Clean architecture: A Craftsman’s Guide to Software Structure and Design. Prentice Hall.</p>
 <p>*52 Salatino, M. (2022, January 29). Event-Driven applications with CloudEvents on Kubernetes – Salaboy (Open Source Knowledge). Salaboy. <a href="https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/">https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/</a></p>
@@ -28624,7 +28624,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月18日 22:25:09">2025-04-18</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月28日 13:54:14">2025-04-28</span>
   </span>
 
     
