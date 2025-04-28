@@ -62,7 +62,7 @@ CNCFの定義のとおり、クラウドネイティブ技術はパブリック�
 | 2014〜2015 | Kubernetes                       | GoogleはコンテナオーケストレーションツールとしてKubernetesを発表した。またKubernetes v1.0のリリースに合わせて、GoogleとLinux FoundationがCNCFを設立した \*9 。 |
 | 2014〜     | 約20分野のクラウドネイティブ技術 | CNCFでは約20分野に渡るクラウドネイティブ技術が登場した \*10 。                                                                                                 |
 
----
+## <br>
 
 \*2 CNCF Overview 2024（https://docs.google.com/presentation/d/1UGewu4MMYZobunfKr5sOGXsspcLOH_5XeCLyOHKh9LU/edit#slide=id.gc98d72cd14_1_2266）
 
@@ -110,7 +110,7 @@ CNCFの定義のとおり、クラウドネイティブ技術はパブリック�
 | 2014年                     | マイクロサービスアーキテクチャー   | Simon Brownは、モノリスアーキテクチャーは時間経過とともに無秩序でつぎはぎだらけになり得ることを指摘した *16 。Martin FowlerとJames Lewisは、サービス指向アーキテクチャーとDDDを統合し、アプリケーションを独立したマイクロサービスの集まりに分割するアーキテクチャーを提唱した *17 。サービス指向アーキテクチャーにDDDの高凝集／低結合の考え方を取り入れることで、サービス指向アーキテクチャーを実装可能な理論に昇華させた。一方で、マイクロサービスの大きさには十分に注意を払う必要がある ※18。 |
 | 2015年                     | モジュラーモノリスアーキテクチャー | Martin Flowlerはモジュラーモノリスアーキテクチャーを提唱した \*19 。モジュラモノリスでは、マイクロサービスアーキテクチャーとモノリスアーキテクチャーの間をとった粒度で、アプリケーションを細かいモジュールに分割する。最初にモジュラーモノリスアーキテクチャーとして設計し、マイクロサービスアーキテクチャーに移行していくという選択肢もある。                                                                                                                                                  |
 
----
+## <br>
 
 \*12 Richards, M., & Ford, N. (2020). Fundamentals of software Architecture: An Engineering Approach. O’Reilly Media.
 
@@ -175,7 +175,7 @@ CNCFでは、オープンソースやクラウドプロバイダーのクラウ�
 | Service Proxy（サービスプロキシ） \*22                                     | マイクロサービスからの送信されたリクエストを仲介し、ほかのマイクロサービスに転送する。                                                           | ・Envoy<br>・Nginx                                                                                                                                         | ・AWS（ALB）                                           |
 | Streaming & Messaging（ストリーミングとメッセージング）                    | パブリッシャーから送信されたメッセージを仲介し、他のサブスクライバーに転送する。                                                                 | ・Apache Kafka<br>・CloudEvents<br>・RabbitMQ                                                                                                              | ・AWS（Kinesis、SQS）                                  |
 
----
+## <br>
 
 \*20 CNCFはクラウドネイティブ技術の属する分類をしばしば変更します。最新の分類はCNCF Landscape（https://landscape.cncf.io/）を参照してください。
 
@@ -209,7 +209,7 @@ CNCFでは、オープンソースやクラウドプロバイダーのクラウ�
 | 領域の役割     | アプリケーションは、フロントエンド領域とバックエンド領域の領域からなる。アプリケーションが両方の領域の役割を担っている。 | アプリケーションは、フロントエンドアプリケーションとバックエンドアプリケーションからなる。両アプリケーションは各領域の役割を担っている。 | アプリケーションは、独立したAPIを持つ複数のフロントエンド領域とマイクロサービス領域アプリケーションからなる。両アプリケーションは各領域の役割を担っている。これらの領域の間に、APIゲートウェイ領域がある。 |
 | 領域間の結合度 | フロントエンド領域とバックエンド領域の領域は密結合になっている。各領域は同じプロセスで稼働する。                         | フロントエンド領域とバックエンド領域の領域は疎結合になっている。各領域は異なるプロセスで稼働する。                                       | フロントエンド、各マイクロサービス、APIゲートウェイの領域は疎結合になっている。各領域は異なるプロセスで稼働する。                                                                                          |
 
----
+## <br>
 
 \*23 Fowler, M. (n.d.). bliki: Presentation Domain Separation. http://martinfowler.com/. https://martinfowler.com/bliki/PresentationDomainSeparation.html
 
@@ -343,7 +343,7 @@ flowchart LR
 | テスト                 | ホワイトボックステスト               | ・ユニットテスト<br/>・サービステスト<br/>・コントラクトテスト<br/>・E2Eテスト                                                             |
 |                        | ブラックボックステスト               | ・ロードテスト（負荷テスト）<br/>・回帰テスト<br/>・フォールトインジェクションを含むカオスエンジニアリング                                 |
 
----
+## <br>
 
 注釈
 
@@ -463,6 +463,7 @@ APIゲートウェイをクラウドネイティブ技術で代替できます�
 | クラウドネイティブ技術との関連性 | 中央集約ゲートウェイとしてService Proxy、Service Mesh、API Gateway分野のツールを使用できる。                                                       | BFFとしてService Proxy、Service Mesh、API Gateway分野のツールを使用できる。                                                                |
 | 技術例                           | ・Service Proxy（Nginx）<br>・Service Mesh（Istio）                                                                                                | ・Service Proxy（Nginx）<br/>・Service Mesh（Istio）                                                                                       |
 
+<br>
 図7でBFFの配置例を示します。
 
 BFFとしてService Proxy、Service Mesh、API Gateway分野のツールを使用できます。
@@ -607,6 +608,7 @@ flowchart LR
 | クラウドネイティブ技術との関連性 | RESTの実装方法として、HTTP/1.1でテキストを送受信するパッケージを使用できる。一方で、RPCの実装方法にはRemote Procedure Call分野のツールを使用できる。 | メッセージ仲介システムとして、Streaming & Messaging分野のツールを使用できる。また、パブリッシュとサブスクライブの実装方法として、Streaming & Messaging分野のツールのクライアントSDKを使用できる。サブスクライブにはプルベースとプッシュベースがあり、ツールによってはこれらを選べる。 | ストレージとして、Cloud Native StorageやDatabase分野のツールを使用できる。耐障害性の観点から、これらはオープンソースよりマネージドサービスの技術を使用することをお奨めする。                                                                                                     |
 | 技術例                           | ・REST（パッケージ）<br>・Remote Procedure Call（gRPC）                                                                                              | ・Streaming & Messaging（CloudEvents、RabbitMQ）                                                                                                                                                                                                                                      | ・Cloud Native Storage（AWS S3）<br>・Database（AWS Aurora MySQL）                                                                                                                                                                                                               |
 
+<br>
 図11で、マイクロサービス間のリクエスト／レスポンスによる通信の様子を示します。
 
 ここではKubernetes Podをマイクロサービスとして表します。
@@ -919,7 +921,7 @@ IstioなどのService Mesh分野のツールを使用しない場合、マイク
 | クラウドネイティブ技術との関連性 | 非機能的なロジックの実装方法として、Service MeshやStreaming & Messaging分野のツールを使用できる。                                                                                                   |
 | 技術例                           | ・Service Mesh（Istio）<br>・Streaming & Messaging（CloudEvents、RabbitMQ）                                                                                                                         |
 
----
+## <br>
 
 注釈
 
@@ -986,6 +988,7 @@ flowchart LR
 | クラウドネイティブ技術との関連性 | Sagaオーケストレーターとして、Automation & Configuration分野のツールを使用できる。このツールによっては、メッセージ仲介システムがツール内部に組み込まれている。                                                                                                                              | メッセージ仲介システムやこれのクライアントSDKとして、Streaming & Messaging分野のツールを使用できる。また、マイクロサービス間通信方法のパブリッシュ／サブスクライブの実装方法として、Streaming & Messaging分野のツールのクライアントSDKを使用できる。                                        |
 | 技術例                           | ・Automation & Configuration（Temporal）                                                                                                                                                                                                                                                    | ・Streaming & Messaging（CloudEvents、RabbitMQ）                                                                                                                                                                                                                                            |
 
+<br>
 図21で、AWS EKS上でのオーケストレーションベースSagaの設計例を示します。
 
 オーケストレーションベースSagaとして、Automation & Configuration分野のツールを使用できます。
@@ -1096,6 +1099,7 @@ SSOでは、IDプロバイダーやこれへのリクエストはクラウドネ
 | クラウドネイティブ技術との関連性 | IDプロバイダーとしてSecurity & Compliance分野のツールを使用できる。また、IDプロバイダーへのトークン送信方法として、Service Mesh分野のツールを使用できる。                                                                             |
 | 技術例                           | ・Security & Compliance（Keycloak）<br>・Service Mesh（Istio）                                                                                                                                                                        |
 
+<br>
 図23で、AWS EKS上でのOIDC認可コードフローの設計例を示します。
 
 IDプロバイダーとしてSecurity & Compliance分野のツールを使用できます。
@@ -1184,7 +1188,7 @@ Istioの場合、Istioリソースを定義することにより無効なアカ�
 | クラウドネイティブ技術との関連性 | 認可サービスとしてSecurity & Compliance分野のツールを使用できる。          | 該当なし                                 |
 | 技術例                           | ・Security & Compliance（Open Policy Agent）                               | 該当なし                                 |
 
----
+## <br>
 
 注釈
 
@@ -1286,6 +1290,7 @@ Shared DBは一般的に非推奨なパターンとされているため、こ�
 | クラウドネイティブ技術との関連性 | Database分野のツールを使用できる。耐障害性の観点から、データベースはオープンソースよりもマネージドサービスの技術を使用することをお奨めする。 | 同上                       |
 | 技術例                           | ・Database（AWS Aurora MySQL）                                                                                                               | 同上                       |
 
+<br>
 図28で、AWS EKS上でAWS EKS上でのDB per serviceの設計例を示します。
 
 データベースとしてはDatabase分野のツールを使用できます。
@@ -1410,6 +1415,7 @@ flowchart LR
 | クラウドネイティブ技術との関連性 | 設定管理先や暗号化キーとして、Security & ComplianceとKey Management分野のツールを使用できる。 | 設定管理先や暗号化キーとしてKubernetesの標準機能、Security & Compliance、Key Management分野のツールを使用できる。            |
 | 技術例                           | ・Security & Compliance（SOPS）<br>・Key Management（AWS KMS）                                | ・Kubernetes標準機能（ConfigMap、Secret）<br/>・Security & Compliance（AWS Secrets Manager）<br/>・Key Management（AWS KMS） |
 
+<br>
 図31で、AWS EKS上でのExternalized configurationの設計例を示します。
 
 設定管理先と暗号化キーはKubernetes標準機能、Security & Compliance、Key Management分野のツールを使用できます。
@@ -1493,6 +1499,7 @@ flowchart LR
 | クラウドネイティブ技術との関連性 | サービスメッシュゲートウェイとサイドカーコンテナの提供方法としてService Mesh分野のツールを使用できる。                                                                         | エージェントの提供方法としてService MeshやCloud Native Network分野のツールを使用できる。                                                           |
 | 技術例                           | ・Service Mesh（Istio）                                                                                                                                                        | ・Service Mesh（Istio）<br>・Cloud Native Network（Cilium）                                                                                        |
 
+<br>
 図33で、AWS EKS上でのサイドカーサービスメッシュの設計例を示します。
 
 サービスメッシュとしてService Mesh分野のツールを使用できます。
@@ -1683,6 +1690,7 @@ flowchart LR
 | クラウドネイティブ技術との関連性 | ロードバランサーとしてService Mesh、Coordination & Service Discovery分野のツールを使用できる。                                                                                                                                                                                           | 送信元マイクロサービスのロードバランシング処理の実装方法として、Kubernetes標準機能を使用できる。                                   |
 | 技術例                           | ・Service Mesh（Istio）                                                                                                                                                                                                                                                                  | ・Kubernetes標準機能（Kubernetes Service、kube-proxy）<br>・Coordination & Service Discovery（CoreDNS）                            |
 
+<br>
 図38で、AWS EKS上でのサービスメッシュ内のL4/L7トラフィック管理の設計例を示します。
 
 サービスメッシュ内ではL4/L7ロードバランサーとしてService Mesh分野のツールを使用できます。
@@ -1757,6 +1765,7 @@ AWS EKSを使用する場合、Etcdはマネージドなコントロールプレ
 | クラウドネイティブ技術との関連性 | サービスレジストリとしてCoordination & Service Discovery分野のツールを使用できる。                     | サービスレジストリとしてCoordination & Service Discovery分野のツールを使用できる。                                                                                                       |
 | 技術例                           | ・Coordination & Service Discovery（Etcd）                                                             | ・Coordination & Service Discovery（Etcd）                                                                                                                                               |
 
+<br>
 次に、ロードバランシングのデザインパターンです。
 
 マイクロサービスのインスタンスに適切に負荷を分散させることにより、マイクロサービスアーキテクチャーのシステム全体の可用性を高められます。
@@ -1809,7 +1818,7 @@ flowchart LR
 | クラウドネイティブ技術との関連性 | 静的方式のロードバランサーとしてKubernetes標準機能とService Mesh分野のツールを使用できる。 | 動的方式のロードバランサーとしてService MeshとCoordination & Service Discovery分野のツールを使用できる。 |
 | 技術例                           | ・Kubernetes標準機能（Kubernetes Service、kube-proxy）<br/>・Service Mesh（Istio）         | ・Kubernetes標準機能（Kubernetes Service、kube-proxy）<br/>・Service Mesh（Istio）                       |
 
----
+## <br>
 
 注釈
 
@@ -1879,6 +1888,7 @@ flowchart LR
 | クラウドネイティブ技術との関連性 | 組み込む証明書としてService Mesh分野のツールを使用できる。                                                                                                                                                                    | 組み込む証明書としてSecurity & Compliance分野のツールを使用できる。                                                                   | 組み込む証明書としてSecurity & Compliance分野のツールを使用できる。                   |
 | 技術例                           | ・Service Mesh（Istio）                                                                                                                                                                                                       | ・Security & Compliance（Cert Manager）                                                                                               | ・Security & Compliance（AWS Certificate Manager）                                    |
 
+<br>
 図43で、AWS EKS上での証明書管理の設計例を示します。
 
 マイクロサービスのサイドカーコンテナの証明書管理にはService Mesh分野のツールを使用できます。
