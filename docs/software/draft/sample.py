@@ -1,41 +1,87 @@
+import sys
 import re
 
-def insert_double_line_breaks(text):
+def is_inside_table(text, pos):
     """
-    表以外の箇所で、句点（。）の後に二回改行を挿入する。
-    ただし、URLや表の中は除外する。
+    指定された位置がMarkdownテーブル内かどうかを判定する関数。
 
     Args:
-        text (str): 入力テキスト
+      text: 対象のテキスト。
+      pos:  判定する位置のインデックス。
 
     Returns:
-        str: 句点後に二回改行が挿入されたテキスト
+      True: テーブル内, False: テーブル外
+    """
+    lines = text.splitlines()
+    line_start = text.rfind('\n', 0, pos) + 1
+    line = text[line_start:text.find('\n', pos)]
+    return '|' in line
+
+def is_footnote_line(text, pos):
+    """
+    指定された位置が行頭が脚注定義の行かどうかを判定する関数。
+
+    Args:
+      text: 対象のテキスト。
+      pos:  判定する位置のインデックス。
+
+    Returns:
+      True: 脚注定義の行, False: 脚注定義の行ではない
+    """
+    prev_newline_pos = text.rfind('\n', 0, pos)
+    if prev_newline_pos != -1:
+        line_start = prev_newline_pos + 1
+    else:
+        line_start = 0
+    line_to_pos = text[line_start:pos].lstrip()
+    return line_to_pos.startswith('*') and re.match(r'\*\d+ ', line_to_pos)
+
+def insert_newlines(filepath):
+    """
+    指定されたファイルの句点の後に二回の改行を挿入する関数。
+    ただし、Markdownテーブル内と行頭が脚注定義の行は除く。読点はそのまま。
+    文末に番号がある場合は句点改行を行う。
+
+    Args:
+      filepath: 編集する対象のファイルのパス。
     """
 
-    def replace_with_double_linebreak(match):
-        sentence = match.group(0)
-        # URLでないかチェック (簡単なURL判定)
-        if re.search(r'https?://[^\s]+', sentence):
-            return sentence
-        # 表の中の行でないかチェック（簡単な判定）
-        if sentence.strip().startswith('|') or '\|' in sentence:
-            return sentence
-        return sentence.strip() + '\n\n'  # 句点＋改行2つ
+    try:
+        with open(filepath, 'r', encoding='utf-8') as file:
+            text = file.read()
+    except FileNotFoundError:
+        print(f"エラー: ファイル '{filepath}' が見つかりません。")
+        return
+    except Exception as e:
+        print(f"エラー: ファイルの読み込み中にエラーが発生しました: {e}")
+        return
 
-    # 正規表現で句点（。）を探して二回改行を挿入
-    modified_text = re.sub(r'[^。]*。', replace_with_double_linebreak, text)
-    return modified_text
+    def replace_period_with_newlines(match):
+        pos = match.start(0)
+        if not is_inside_table(text, pos) and not is_footnote_line(text, pos):
+            return match.group(0) + '\n\n'
+        else:
+            return match.group(0)
 
-# ファイルを読み込む
-file_path = "software_application_architecture_microservices_cloudnative.md"  # 実際のファイルパスに置き換えてください
-with open(file_path, 'r', encoding='utf-8') as file:
-    markdown_content = file.read()
+    # まず、文末の脚注参照を一時的な文字列で置換
+    def replace_footnote_references(text):
+        return re.sub(r'。(\*\d+)', r'。\0TEMP_FOOTNOTE_MARKER\1', text)
 
-# 句点ごとに二回改行を挿入する
-modified_content = insert_double_line_breaks(markdown_content)
+    text = replace_footnote_references(text)
+    modified_text = re.sub(r'。', replace_period_with_newlines, text)
+    modified_text = modified_text.replace('\0TEMP_FOOTNOTE_MARKER', '') # 一時的な文字列を削除
 
-# 結果をファイルに書き出す (上書き)
-with open(file_path, 'w', encoding='utf-8') as file:
-    file.write(modified_content)
+    try:
+        with open(filepath, 'w', encoding='utf-8') as file:
+            file.write(modified_text)
+        print(f"ファイル '{filepath}' の編集が完了しました。")
 
-print("句点ごとの二重改行が完了しました。")
+    except Exception as e:
+        print(f"エラー: ファイルの書き込み中にエラーが発生しました: {e}")
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("使い方: python script.py <編集するファイルのパス>")
+    else:
+        filepath = sys.argv[1]
+        insert_newlines(filepath)
