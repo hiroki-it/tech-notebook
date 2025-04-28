@@ -26855,6 +26855,7 @@
 <p>私が現場で見てきた実際のマイクロサービスアーキテクチャーの設計、関連書籍、本書のウォーキングスケルトン（1〜2章）などに基づいて、クラウドネイティブ技術を使用したマイクロサービスアーキテクチャーの設計例を図で示します。</p>
 <hr />
 <p>*1 <a href="https://github.com/cncf/toc/blob/main/DEFINITION.md">https://github.com/cncf/toc/blob/main/DEFINITION.md</a></p>
+<p><br></p>
 <h2 id="2">2 歴史<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
 <h3 id="21">2.1 クラウドネイティブ技術<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
 <p>CNCFの定義のとおり、クラウドネイティブ技術はパブリッククラウド、プライベートクラウド、ハイブリッドクラウドなどでスケーラブルなアプリケーションを実現します。</p>
@@ -26923,8 +26924,8 @@
 <p>*8 <a href="https://en.wikipedia.org/wiki/Cloud_Foundry">https://en.wikipedia.org/wiki/Cloud_Foundry</a></p>
 <p>*9 <a href="https://en.wikipedia.org/wiki/Docker_(software)">https://en.wikipedia.org/wiki/Docker_(software）</a></p>
 <p>*10 <a href="https://en.wikipedia.org/wiki/Kubernetes">https://en.wikipedia.org/wiki/Kubernetes</a></p>
-<p>*11 分野の種類は補章3節の表3で取り上げています。</p>
-<p>最新の分野はCNCF Landscape（<a href="https://landscape.cncf.io/">https://landscape.cncf.io/</a>）を参照してください。</p>
+<p>*11 分野の種類は補章3節の表3で取り上げています。最新の分野はCNCF Landscape（<a href="https://landscape.cncf.io/">https://landscape.cncf.io/</a>）を参照してください。</p>
+<p><br></p>
 <h3 id="22">2.2 マイクロサービスアーキテクチャー<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスアーキテクチャーに関連するアーキテクチャースタイルがいくつかあります *11 。</p>
 <p>表2でマイクロサービスアーキテクチャーに関連するアーキテクチャースタイルの歴史を整理します。</p>
@@ -26945,11 +26946,6 @@
 <td>1999年</td>
 <td>モノリスアーキテクチャー</td>
 <td>バックエンドのアーキテクチャーとしてモノリスアーキテクチャーが台頭していた *12 。</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>1900年後半〜<br>2000年前半</td>
@@ -26982,6 +26978,7 @@
 <p>*17 Lewis, J. (n.d.). Microservices. <a href="http://martinfowler.com/">http://martinfowler.com/</a>. <a href="https://martinfowler.com/articles/microservices.html">https://martinfowler.com/articles/microservices.html</a></p>
 <p>*18 Fowler, M. (n.d.). bliki: Brown, S. (2014). Distributed big balls of mud. <a href="http://dzone.com/">http://dzone.com/</a>. <a href="https://dzone.com/articles/distributed-big-balls-mud">https://dzone.com/articles/distributed-big-balls-mud</a></p>
 <p>19 Brown, S. (2014). Fowler, M. (n.d.). bliki: Monolith First. <a href="http://martinfowler.com/">http://martinfowler.com/</a>. <a href="https://martinfowler.com/bliki/">https://martinfowler.com/bliki/</a> MonolithFirst.html</p>
+<p><br></p>
 <h2 id="3">3 マイクロサービスアーキテクチャーに関連のあるクラウドネイティブ技術<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p>CNCFでは、オープンソースやクラウドプロバイダーのクラウドネイティブ技術をさまざまな分野に分類しています *20 。</p>
 <p>各分野には、マイクロサービスアーキテクチャーに関連のあるクラウドネイティブ技術が多くあります。</p>
@@ -27139,6 +27136,7 @@
 <p>*20 CNCFはクラウドネイティブ技術の属する分類をしばしば変更します。最新の分類はCNCF Landscape（<a href="https://landscape.cncf.io/">https://landscape.cncf.io/</a>）を参照してください。</p>
 <p>*21 クラウドネイティブ技術には、人気があってもCNCF未登録または分野未分類なものがあります。今回、登録済や分類済の技術を、便宜上、競合技術と同じ分野に記載しています。</p>
 <p>*22 Service Proxy分野のツールは設定次第でAPI Gateway分野のツールと同等に使用できます。</p>
+<p><br></p>
 <h2 id="4">4 マイクロサービスアーキテクチャーの構成領域<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <p>まず、マイクロサービスアーキテクチャーはどのような領域からなるのでしょうか？　図1と表3でモノリスアーキテクチャー、プレゼンテーションドメイン分離（過渡的なアーキテクチャー） *23 、マイクロサービスアーキテクチャーの例を示しそれぞれの領域を簡単に比較します。</p>
 <p>モノリスアーキテクチャーからマイクロサービスアーキテクチャーに至るまでに、領域が細分化されていきます。</p>
@@ -27162,48 +27160,6 @@
 <td>・フロントエンド<br/>・APIゲートウェイ<br/>・マイクロサービス<br/>・各種ストレージ（データベースなど）</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
 <td>領域の役割</td>
 <td>アプリケーションは、フロントエンド領域とバックエンド領域の領域からなる。アプリケーションが両方の領域の役割を担っている。</td>
 <td>アプリケーションは、フロントエンドアプリケーションとバックエンドアプリケーションからなる。両アプリケーションは各領域の役割を担っている。</td>
@@ -27219,6 +27175,7 @@
 </table>
 <hr />
 <p>*23 Fowler, M. (n.d.). bliki: Presentation Domain Separation. <a href="http://martinfowler.com/">http://martinfowler.com/</a>. <a href="https://martinfowler.com/bliki/PresentationDomainSeparation.html">https://martinfowler.com/bliki/PresentationDomainSeparation.html</a></p>
+<p><br></p>
 <h2 id="5">5 マイクロサービスアーキテクチャーのデザインパターン<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <h3 id="51">5.1 デザインパターンとクラウドネイティブ技術<a class="headerlink" href="#51" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスアーキテクチャーでは技術的で組織的な特有の問題が起こります。</p>
@@ -27250,6 +27207,7 @@
 <p>*28 Siriwardena, P., &amp; Dias, N. (2020). Microservices Security in action. Manning Publications.</p>
 <p>*29 Ibryam, B., &amp; Huss, R. (2023). Kubernetes patterns. O’Reilly Media, Inc.</p>
 <p>*30 AWS Well-Architected Framework - AWS Well-Architected Framework. (n.d.). <a href="https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html">https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html</a></p>
+<p><br></p>
 <h3 id="52">5.2 補章で取り上げるデザインパターングループ<a class="headerlink" href="#52" title="Permanent link">&para;</a></h3>
 <p>補章では、さまざまな書籍 <em>31~</em>34 を参考にし、デザインパターンの分類を図式化しました。</p>
 <p>前提として、対照的なデザインパターンをまとめたグループを『デザインパターングループ』と呼ぶことにします。</p>
@@ -27362,6 +27320,7 @@
 <p>*32 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.</p>
 <p>*33 Newman, S. (2021). Building microservices. O’Reilly Media, Inc.</p>
 <p>*34 Mezzalira, L. (2021). Building Micro-Frontends. O’Reilly Media, Inc.</p>
+<p><br></p>
 <h3 id="53">5.3 凡例<a class="headerlink" href="#53" title="Permanent link">&para;</a></h3>
 <p>図4で5章以降のデザインパターンの図の凡例を示します。</p>
 <p>各図では丸ボックスをデザインパターングループ、四角ボックスをデザインパターンとして区別しています。</p>
@@ -27467,6 +27426,7 @@
 <p>注釈</p>
 <p>*35 DeJonghe, D. (2022). NGINX Cookbook. O’Reilly Media, Inc.</p>
 <p>*36 Gough, J., Bryant, D., &amp; Auburn, M. (2021). Mastering API architecture. O’Reilly Media, Inc.</p>
+<p><br></p>
 <h2 id="7">7 マイクロサービス領域<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
 <p>マイクロサービス領域には、適切に分割された複数のバックエンドアプリケーション（マイクロサービス）を配置します。</p>
 <p>図9で、マイクロサービス領域のデザインパターングループの種類を示します。</p>
@@ -27569,6 +27529,7 @@
 <p>*38 メッセージ仲介システムの種類として、メッセージブローカー、メッセージキュー、およびイベントバスがあります。</p>
 <p>*39 Vandeperre, M. (2023b, October 18). Implementing clean architecture solutions: A practical example | Red Hat Developer. Red Hat Developer. <a href="https://developers.redhat.com/articles/2023/08/08/implementing-clean-architecture-solutions-practical-example">https://developers.redhat.com/articles/2023/08/08/implementing-clean-architecture-solutions-practical-example</a></p>
 <p>*40 Module ngx_http_grpc_module. (n.d.). <a href="https://nginx.org/en/docs/http/ngx_http_grpc_module.html">https://nginx.org/en/docs/http/ngx_http_grpc_module.html</a></p>
+<p><br></p>
 <h3 id="72">7.2 マイクロサービス分割方法<a class="headerlink" href="#72" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスの分割はマイクロサービスアーキテクチャーの設計の中で最重要な課題であり、技術的な難易度も非常に高いです。</p>
 <p>分割のための境界を見つけるためには各マイクロサービスの凝集度、結合度、そして情報隠蔽度に着目するべきです *40 。</p>
@@ -27608,6 +27569,7 @@
 <p>*44 Evans, E. (2003) Domain-Driven design: Tackling Complexity in the Heart of Software. Addison-Wesley.</p>
 <p>*45 Vernon, V. (2013) Implementing Domain-Driven design. Addison-Wesley.</p>
 <p>*46 Evans, E. (2014) Domain-Driven Design reference: Definitions and Pattern Summaries. Dog Ear Publishing.</p>
+<p><br></p>
 <h3 id="73">7.3 ドメインモデリング<a class="headerlink" href="#73" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスのドメインモデリングは分割に次いで重要な課題です。</p>
 <p>図15で、マイクロサービスで採用しうるドメインモデリングのパターンの種類を示します。</p>
@@ -27638,6 +27600,7 @@
 <p>注釈</p>
 <p>*47 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.</p>
 <p>*48 Newman, S. (2021). Building microservices. O’Reilly Media, Inc.</p>
+<p><br></p>
 <h3 id="74">7.4 マイクロサービス設計方法<a class="headerlink" href="#74" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスを適切な結合度と凝集度で分割することにより、開発を分業しやすくして機能的なロジックの拡張性や生産性を高められます。</p>
 <p>粒度が大き過ぎればモノリスアーキテクチャーとなり、小さ過ぎれば分散した大きな泥団子になってしまいます *48 。</p>
@@ -27734,6 +27697,7 @@
 <p>*50 Evans, E. (2014). Domain-Driven Design reference: Definitions and Pattern Summaries. Dog Ear Publishing.</p>
 <p>*51 Martin, R. C. (2017). Clean architecture: A Craftsman’s Guide to Software Structure and Design. Prentice Hall.</p>
 <p>*52 Salatino, M. (2022, January 29). Event-Driven applications with CloudEvents on Kubernetes – Salaboy (Open Source Knowledge). Salaboy. <a href="https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/">https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/</a></p>
+<p><br></p>
 <h3 id="75">7.5 トランザクション管理方法<a class="headerlink" href="#75" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスアーキテクチャーでは、とくに永続データ管理方法にDB per serviceを使用している場合に課題があります。</p>
 <p>各マイクロサービスの永続化の間に依存関係がある場合（例えば、ECサイトで受注データの永続化が配送データや決済データに依存している）に各マイクロサービスの連続的な永続化を調整する必要があります。</p>
@@ -27810,6 +27774,7 @@
 <p>*56 Build a trip booking system with PHP | Learn Temporal. (2021, October 1). <a href="https://learn.temporal.io/tutorials/php/build_a_trip_booking_app/">https://learn.temporal.io/tutorials/php/build_a_trip_booking_app/</a></p>
 <p>*57 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.</p>
 <p>*58 Azure-Samples. (n.d.). saga-orchestration-serverless/docs/architecture/components.md at main · Azure-Samples/saga-orchestration-serverless. GitHub. <a href="https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/components.md">https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/components.md</a></p>
+<p><br></p>
 <h3 id="76">7.6 認証<a class="headerlink" href="#76" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスアーキテクチャーでは認証を適切に開始し、認証成功後にマイクロサービス間で認証情報を伝播する必要があります。</p>
 <p>また、認証情報が有効かどうかを各マイクロサービスの実行時に検証しなければ、不正なリクエストを処理しかねません。</p>
@@ -27874,6 +27839,7 @@
 <p>*59 He, X., &amp; Yang, X. (2017). Authentication and authorization of end user in microservice architecture. Journal of Physics Conference Series, 910, 012060. <a href="https://doi.org/10.1088/1742-6596/910/1/012060">https://doi.org/10.1088/1742-6596/910/1/012060</a></p>
 <p>*60 Thorgersen, S., &amp; Silva, P. I. (2023) KeyCloak - Identity and access management for modern applications: Harness the power of Keycloak, OpenID Connect, and OAuth 2.0 to secure applications. Packt Publishing Ltd.</p>
 <p>*61 田畑. (n.d). コンテナ上のマイクロサービスの認証強化 ～IstioとKeyCloak～. Think IT（シンクイット）. <a href="https://thinkit.co.jp/article/18023">https://thinkit.co.jp/article/18023</a></p>
+<p><br></p>
 <h3 id="77">7.7 認可<a class="headerlink" href="#77" title="Permanent link">&para;</a></h3>
 <p>伝播された認証情報を使用して各マイクロサービスは認可処理を実行する必要があります。</p>
 <p>図24で、認可のデザインパターンの種類を示します。</p>
@@ -27928,6 +27894,7 @@
 <hr />
 <p>注釈</p>
 <p>*62 Introduction. (n.d.). Open Policy Agent. <a href="https://www.openpolicyagent.org/docs/latest/">https://www.openpolicyagent.org/docs/latest/</a></p>
+<p><br></p>
 <h2 id="8">8 ストレージ領域<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
 <p>ストレージ領域には、データの特徴に応じたストレージを配置します。</p>
 <p>図25で、ストレージ領域のデザインパターンを整理します。</p>
@@ -27953,6 +27920,7 @@
 <p>Kubernetes NodeにアタッチされたAWS EBSやKubernetes Volumeは一時データを管理し、AWS EBS上のデータの暗号化にAWS KMSを使用できます。</p>
 <p>図26　AWS EKS上でのデータ管理の設計例</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャー設計の概説-データ管理.drawio" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/DDD%25E3%2581%25A8%25E3%2582%25AF%25E3%2583%25A9%25E3%2582%25A6%25E3%2583%2588%25E3%2582%2599%25E3%2583%258D%25E3%2582%25A4%25E3%2583%2586%25E3%2582%25A3%25E3%2583%2595%25E3%2582%2599%25E3%2581%25AB%25E3%2582%2588%25E3%2582%258B%25E3%2583%259E%25E3%2582%25A4%25E3%2582%25AF%25E3%2583%25AD%25E3%2582%25B5%25E3%2583%25BC%25E3%2583%2592%25E3%2582%2599%25E3%2582%25B9%25E3%2582%25A2%25E3%2583%25BC%25E3%2582%25AD%25E3%2583%2586%25E3%2582%25AF%25E3%2583%2581%25E3%2583%25A3%25E8%25A8%25AD%25E8%25A8%2588%25E3%2581%25AE%25E6%25A6%2582%25E8%25AA%25AC-%25E3%2583%2586%25E3%2582%2599%25E3%2583%25BC%25E3%2582%25BF%25E7%25AE%25A1%25E7%2590%2586.drawio.png" /></p>
+<p><br></p>
 <h3 id="81">8.1 永続データ管理方法<a class="headerlink" href="#81" title="Permanent link">&para;</a></h3>
 <p>図27で、マイクロサービスアーキテクチャーにおける永続データ管理方法のデザインパターンの種類を示します。</p>
 <p>代表的なものにはDB per serviceとShared DBがあります。</p>
@@ -28013,6 +27981,7 @@
 <p>注釈</p>
 <p>*63 What is Amazon Aurora? - Amazon Aurora. (n.d.). <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html</a></p>
 <p>*64 Newman, S. (2019) Monolith to microservices: Evolutionary Patterns to Transform Your Monolith. O’Reilly Media, Inc.</p>
+<p><br></p>
 <h2 id="9">9 横断領域<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
 <p>横断領域には、他の領域に汎用的なロジックを横断的に提供するツールを配置します。</p>
 <p>図29に、横断領域のデザインパターングループの種類を示します。</p>
@@ -28103,6 +28072,7 @@
 <p>注釈</p>
 <p>*65 Updating configuration via a ConfigMap. (2024, July 17). Kubernetes. <a href="https://kubernetes.io/docs/tutorials/configuration/updating-configuration-via-a-configmap/">https://kubernetes.io/docs/tutorials/configuration/updating-configuration-via-a-configmap/</a></p>
 <p>*66 Getsops. (n.d.). GitHub - getsops/sops: Simple and flexible tool for managing secrets. GitHub. <a href="https://github.com/getsops/sops">https://github.com/getsops/sops</a></p>
+<p><br></p>
 <h3 id="92">9.2 サービスメッシュ<a class="headerlink" href="#92" title="Permanent link">&para;</a></h3>
 <p>マイクロサービス間通信方法にリクエスト／レスポンスを使用する場合 *66 、各マイクロサービスに実装するべきロジックには重複があります。</p>
 <p>例えばトラフィック管理、証明書管理、テレメトリー作成、認証、回復管理などです。</p>
@@ -28171,6 +28141,7 @@
 <p>*68 Gough, J., Bryant, D., &amp; Auburn, M. (2021) Mastering API architecture. O’Reilly Media, Inc.</p>
 <p>*69 Sidecar or ambient? (n.d.). Istio. <a href="https://istio.io/latest/docs/overview/dataplane-modes/">https://istio.io/latest/docs/overview/dataplane-modes/</a></p>
 <p>*70 Posta, C., &amp; Maloku, R. (2022) Istio in action. Manning Publications.</p>
+<p><br></p>
 <h2 id="10">10 インフラストラクチャー領域<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
 <p>インフラストラクチャー領域にはネットワーク、セキュリティ、オブザーバビリティーに関するツールを配置します。</p>
 <p>図34で、インフラストラクチャー領域のデザインパターングループの種類を示します。</p>
@@ -28204,6 +28175,7 @@
 <p>*71 ほかに例えば、L2を作成するCNIがあり、CNIによって提供する層はさまざまです。</p>
 <p>いずれのプラットフォーム（補章であれば、AWS EKS）を選ぶかによって、適切なCNIが異なります。</p>
 <p>*72 Amazon VPC CNI - EKS Best Practices Guides. (n.d.). <a href="https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/">https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/</a></p>
+<p><br></p>
 <h3 id="102-l4l7">10.2 L4/L7トラフィック管理方法<a class="headerlink" href="#102-l4l7" title="Permanent link">&para;</a></h3>
 <p>L4/L7のプロトコル（TCP、HTTP、HTTPSなど）を使用してマイクロサービスのインスタンス間が通信する時、トラフィック管理の仕組みが必要です。</p>
 <p>図36で、デザインパターングループの種類を示します。</p>
@@ -28385,6 +28357,7 @@
 <p>*76 Service. (2024, June 25). Kubernetes. <a href="https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables">https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables</a></p>
 <p>*77 Control Plane - EKS Best Practices Guides. (n.d.). <a href="https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/">https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/</a></p>
 <p>*78 Traffic management. (n.d.). Istio. <a href="https://istio.io/latest/docs/concepts/traffic-management/">https://istio.io/latest/docs/concepts/traffic-management/</a></p>
+<p><br></p>
 <h3 id="103">10.3 証明書管理方法<a class="headerlink" href="#103" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスアーキテクチャーでは、システム内で非常に多くのパケット通信が起こります。</p>
 <p>パケットのアプリケーションデータを暗号化しなければ、これを第三者に攻撃されかねません。</p>
@@ -28456,6 +28429,7 @@
 <p>*79 Siriwardena, P., &amp; Dias, N. (2020) Microservices Security in action. Manning Publications.</p>
 <p>*80 Plug in CA certificates. (n.d.). Istio. <a href="https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/">https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/</a></p>
 <p>*81 Security. (n.d.). Istio. <a href="https://istio.io/latest/docs/concepts/security/">https://istio.io/latest/docs/concepts/security/</a></p>
+<p><br></p>
 <h2 id="11">11 おわりに<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
 <p>補章としてマイクロサービスアーキテクチャーのデザインパターンを取り上げ、どのようなクラウドネイティブ技術で代替できるのかを概説しました。</p>
 <p>クラウドネイティブ技術とマイクロサービスアーキテクチャーのつながりの理解を深めることはできたでしょうか？　既存のクラウドネイティブ技術の課題を解消した新しいクラウドネイティブ技術が次々と登場しています。</p>
@@ -28484,7 +28458,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月28日 15:19:24">2025-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月28日 15:26:31">2025-04-28</span>
   </span>
 
     
