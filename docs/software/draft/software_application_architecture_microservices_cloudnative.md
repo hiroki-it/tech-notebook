@@ -33,6 +33,8 @@ CNCFはクラウドネイティブ技術を次のように定義づけており�
 
 \*1 https://github.com/cncf/toc/blob/main/DEFINITION.md
 
+<br>
+
 ## 2 歴史
 
 ### 2.1 クラウドネイティブ技術
@@ -78,9 +80,9 @@ CNCFの定義のとおり、クラウドネイティブ技術はパブリック�
 
 \*10 https://en.wikipedia.org/wiki/Kubernetes
 
-\*11 分野の種類は補章3節の表3で取り上げています。
+\*11 分野の種類は補章3節の表3で取り上げています。最新の分野はCNCF Landscape（https://landscape.cncf.io/）を参照してください。
 
-最新の分野はCNCF Landscape（https://landscape.cncf.io/）を参照してください。
+<br>
 
 ### 2.2 マイクロサービスアーキテクチャー
 
@@ -99,7 +101,6 @@ CNCFの定義のとおり、クラウドネイティブ技術はパブリック�
 | 年代                       | アーキテクチャースタイル           | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | -------------------------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1999年                     | モノリスアーキテクチャー           | バックエンドのアーキテクチャーとしてモノリスアーキテクチャーが台頭していた \*12 。                                                                                                                                                                                                                                                                                                                                                                                                              |
-|                            |                                    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | 1900年後半〜<br>2000年前半 | サービス指向アーキテクチャー       | Michael BellやThomas Erlらが、アプリケーションを機能の粒度で分割するアーキテクチャーを提唱した *13 。ただ『機能』という粒度に分割の指針がなかった *14 。さまざまな課題があったため、概念としては提唱されていても実装方法の確立にまでは至らなかった。                                                                                                                                                                                                                                            |
 | 2003年                     | DDD（ドメイン駆動設計）            | Eric EvansはDDDを提唱した \*15 。DDDは、オブジェクト指向分析設計から派生した分析設計の方法の一種である。とくに機能要件を解決するアプリケーションに有効である。オブジェクト指向分析設計のベタープラクティスを集め、より強化することにつながった。                                                                                                                                                                                                                                                |
 | 2014年                     | マイクロサービスアーキテクチャー   | Simon Brownは、モノリスアーキテクチャーは時間経過とともに無秩序でつぎはぎだらけになり得ることを指摘した *16 。Martin FowlerとJames Lewisは、サービス指向アーキテクチャーとDDDを統合し、アプリケーションを独立したマイクロサービスの集まりに分割するアーキテクチャーを提唱した *17 。サービス指向アーキテクチャーにDDDの高凝集／低結合の考え方を取り入れることで、サービス指向アーキテクチャーを実装可能な理論に昇華させた。一方で、マイクロサービスの大きさには十分に注意を払う必要がある ※18。 |
@@ -122,6 +123,8 @@ CNCFの定義のとおり、クラウドネイティブ技術はパブリック�
 \*18 Fowler, M. (n.d.). bliki: Brown, S. (2014). Distributed big balls of mud. http://dzone.com/. https://dzone.com/articles/distributed-big-balls-mud
 
 19 Brown, S. (2014). Fowler, M. (n.d.). bliki: Monolith First. http://martinfowler.com/. https://martinfowler.com/bliki/ MonolithFirst.html
+
+<br>
 
 ## 3 マイクロサービスアーキテクチャーに関連のあるクラウドネイティブ技術
 
@@ -174,6 +177,8 @@ CNCFでは、オープンソースやクラウドプロバイダーのクラウ�
 
 \*22 Service Proxy分野のツールは設定次第でAPI Gateway分野のツールと同等に使用できます。
 
+<br>
+
 ## 4 マイクロサービスアーキテクチャーの構成領域
 
 まず、マイクロサービスアーキテクチャーはどのような領域からなるのでしょうか？　図1と表3でモノリスアーキテクチャー、プレゼンテーションドメイン分離（過渡的なアーキテクチャー） \*23 、マイクロサービスアーキテクチャーの例を示しそれぞれの領域を簡単に比較します。
@@ -189,19 +194,14 @@ CNCFでは、オープンソースやクラウドプロバイダーのクラウ�
 |                | モノリスアーキテクチャー                                                                                                 | プレゼンテーションドメイン分離                                                                                                           | マイクロサービスアーキテクチャー                                                                                                                                                                           |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 領域の種類     | ・フロントエンド<br/>・バックエンド<br/>・各種ストレージ（データベースなど）                                             | ・フロントエンド<br/>・バックエンド<br/>・各種ストレージ（データベースなど）                                                             | ・フロントエンド<br/>・APIゲートウェイ<br/>・マイクロサービス<br/>・各種ストレージ（データベースなど）                                                                                                     |
-|                |                                                                                                                          |                                                                                                                                          |                                                                                                                                                                                                            |
-|                |                                                                                                                          |                                                                                                                                          |                                                                                                                                                                                                            |
-|                |                                                                                                                          |                                                                                                                                          |                                                                                                                                                                                                            |
-|                |                                                                                                                          |                                                                                                                                          |                                                                                                                                                                                                            |
-|                |                                                                                                                          |                                                                                                                                          |                                                                                                                                                                                                            |
-|                |                                                                                                                          |                                                                                                                                          |                                                                                                                                                                                                            |
-|                |                                                                                                                          |                                                                                                                                          |                                                                                                                                                                                                            |
 | 領域の役割     | アプリケーションは、フロントエンド領域とバックエンド領域の領域からなる。アプリケーションが両方の領域の役割を担っている。 | アプリケーションは、フロントエンドアプリケーションとバックエンドアプリケーションからなる。両アプリケーションは各領域の役割を担っている。 | アプリケーションは、独立したAPIを持つ複数のフロントエンド領域とマイクロサービス領域アプリケーションからなる。両アプリケーションは各領域の役割を担っている。これらの領域の間に、APIゲートウェイ領域がある。 |
 | 領域間の結合度 | フロントエンド領域とバックエンド領域の領域は密結合になっている。各領域は同じプロセスで稼働する。                         | フロントエンド領域とバックエンド領域の領域は疎結合になっている。各領域は異なるプロセスで稼働する。                                       | フロントエンド、各マイクロサービス、APIゲートウェイの領域は疎結合になっている。各領域は異なるプロセスで稼働する。                                                                                          |
 
 ---
 
 \*23 Fowler, M. (n.d.). bliki: Presentation Domain Separation. http://martinfowler.com/. https://martinfowler.com/bliki/PresentationDomainSeparation.html
+
+<br>
 
 ## 5 マイクロサービスアーキテクチャーのデザインパターン
 
@@ -264,6 +264,8 @@ AWSの設計については、AWS Well-Architected Framework \*29 を合わせ�
 \*29 Ibryam, B., & Huss, R. (2023). Kubernetes patterns. O’Reilly Media, Inc.
 
 \*30 AWS Well-Architected Framework - AWS Well-Architected Framework. (n.d.). https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html
+
+<br>
 
 ### 5.2 補章で取り上げるデザインパターングループ
 
@@ -332,6 +334,8 @@ flowchart LR
 \*33 Newman, S. (2021). Building microservices. O’Reilly Media, Inc.
 
 \*34 Mezzalira, L. (2021). Building Micro-Frontends. O’Reilly Media, Inc.
+
+<br>
 
 ### 5.3 凡例
 
@@ -469,6 +473,8 @@ APIゲートウェイとして使用できるツールはNginx以外にも非常
 
 \*36 Gough, J., Bryant, D., & Auburn, M. (2021). Mastering API architecture. O’Reilly Media, Inc.
 
+<br>
+
 ## 7 マイクロサービス領域
 
 マイクロサービス領域には、適切に分割された複数のバックエンドアプリケーション（マイクロサービス）を配置します。
@@ -591,6 +597,8 @@ NgincはgRPCサーバーまたはRESTfulサーバーと通信し、もしgRPCサ
 
 \*40 Module ngx_http_grpc_module. (n.d.). https://nginx.org/en/docs/http/ngx_http_grpc_module.html
 
+<br>
+
 ### 7.2 マイクロサービス分割方法
 
 マイクロサービスの分割はマイクロサービスアーキテクチャーの設計の中で最重要な課題であり、技術的な難易度も非常に高いです。
@@ -659,6 +667,8 @@ Learning Domain-Driven design本 *42 は、DDDの代表的な書籍であるDoma
 
 \*46 Evans, E. (2014) Domain-Driven Design reference: Definitions and Pattern Summaries. Dog Ear Publishing.
 
+<br>
+
 ### 7.3 ドメインモデリング
 
 マイクロサービスのドメインモデリングは分割に次いで重要な課題です。
@@ -708,6 +718,8 @@ flowchart LR
 \*47 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.
 
 \*48 Newman, S. (2021). Building microservices. O’Reilly Media, Inc.
+
+<br>
 
 ### 7.4 マイクロサービス設計方法
 
@@ -831,6 +843,8 @@ IstioなどのService Mesh分野のツールを使用しない場合、マイク
 
 \*52 Salatino, M. (2022, January 29). Event-Driven applications with CloudEvents on Kubernetes – Salaboy (Open Source Knowledge). Salaboy. https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/
 
+<br>
+
 ### 7.5 トランザクション管理方法
 
 マイクロサービスアーキテクチャーでは、とくに永続データ管理方法にDB per serviceを使用している場合に課題があります。
@@ -924,6 +938,8 @@ Temporalはプログラミング言語でワークフローを定義できるた
 
 \*58 Azure-Samples. (n.d.). saga-orchestration-serverless/docs/architecture/components.md at main · Azure-Samples/saga-orchestration-serverless. GitHub. https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/components.md
 
+<br>
+
 ### 7.6 認証
 
 マイクロサービスアーキテクチャーでは認証を適切に開始し、認証成功後にマイクロサービス間で認証情報を伝播する必要があります。
@@ -1004,6 +1020,8 @@ Istioの場合、Istioリソースを定義することにより無効なアカ�
 
 \*61 田畑. (n.d). コンテナ上のマイクロサービスの認証強化 ～IstioとKeyCloak～. Think IT（シンクイット）. https://thinkit.co.jp/article/18023
 
+<br>
+
 ### 7.7 認可
 
 伝播された認証情報を使用して各マイクロサービスは認可処理を実行する必要があります。
@@ -1058,6 +1076,8 @@ Istioの場合、Istioリソースを定義することにより無効なアカ�
 
 \*62 Introduction. (n.d.). Open Policy Agent. https://www.openpolicyagent.org/docs/latest/
 
+<br>
+
 ## 8 ストレージ領域
 
 ストレージ領域には、データの特徴に応じたストレージを配置します。
@@ -1097,6 +1117,8 @@ Kubernetes NodeにアタッチされたAWS EBSやKubernetes Volumeは一時デ�
 図26　AWS EKS上でのデータ管理の設計例
 
 ![DDDとクラウドネイティブによるマイクロサービスアーキテクチャー設計の概説-データ管理.drawio](%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/DDD%25E3%2581%25A8%25E3%2582%25AF%25E3%2583%25A9%25E3%2582%25A6%25E3%2583%2588%25E3%2582%2599%25E3%2583%258D%25E3%2582%25A4%25E3%2583%2586%25E3%2582%25A3%25E3%2583%2595%25E3%2582%2599%25E3%2581%25AB%25E3%2582%2588%25E3%2582%258B%25E3%2583%259E%25E3%2582%25A4%25E3%2582%25AF%25E3%2583%25AD%25E3%2582%25B5%25E3%2583%25BC%25E3%2583%2592%25E3%2582%2599%25E3%2582%25B9%25E3%2582%25A2%25E3%2583%25BC%25E3%2582%25AD%25E3%2583%2586%25E3%2582%25AF%25E3%2583%2581%25E3%2583%25A3%25E8%25A8%25AD%25E8%25A8%2588%25E3%2581%25AE%25E6%25A6%2582%25E8%25AA%25AC-%25E3%2583%2586%25E3%2582%2599%25E3%2583%25BC%25E3%2582%25BF%25E7%25AE%25A1%25E7%2590%2586.drawio.png)
+
+<br>
 
 ### 8.1 永続データ管理方法
 
@@ -1163,6 +1185,8 @@ Shared DBは一般的に非推奨なパターンとされているため、こ�
 \*63 What is Amazon Aurora? - Amazon Aurora. (n.d.). https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
 
 \*64 Newman, S. (2019) Monolith to microservices: Evolutionary Patterns to Transform Your Monolith. O’Reilly Media, Inc.
+
+<br>
 
 ## 9 横断領域
 
@@ -1270,6 +1294,8 @@ Kubernetes ConfigMap、Secret、AWS Secrets Managerの暗号化キーは管理�
 
 \*66 Getsops. (n.d.). GitHub - getsops/sops: Simple and flexible tool for managing secrets. GitHub. https://github.com/getsops/sops
 
+<br>
+
 ### 9.2 サービスメッシュ
 
 マイクロサービス間通信方法にリクエスト／レスポンスを使用する場合 \*66 、各マイクロサービスに実装するべきロジックには重複があります。
@@ -1351,6 +1377,8 @@ Istioにより、マイクロサービスとしてのKubernetes Podは他のPod�
 
 \*70 Posta, C., & Maloku, R. (2022) Istio in action. Manning Publications.
 
+<br>
+
 ## 10 インフラストラクチャー領域
 
 インフラストラクチャー領域にはネットワーク、セキュリティ、オブザーバビリティーに関するツールを配置します。
@@ -1405,6 +1433,8 @@ flowchart LR
 いずれのプラットフォーム（補章であれば、AWS EKS）を選ぶかによって、適切なCNIが異なります。
 
 \*72 Amazon VPC CNI - EKS Best Practices Guides. (n.d.). https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
+
+<br>
 
 ### 10.2 L4/L7トラフィック管理方法
 
@@ -1601,6 +1631,8 @@ flowchart LR
 
 \*78 Traffic management. (n.d.). Istio. https://istio.io/latest/docs/concepts/traffic-management/
 
+<br>
+
 ### 10.3 証明書管理方法
 
 マイクロサービスアーキテクチャーでは、システム内で非常に多くのパケット通信が起こります。
@@ -1678,6 +1710,8 @@ Istioコントロールプレーンは自己を署名し、ルート認証局と
 \*80 Plug in CA certificates. (n.d.). Istio. https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/
 
 \*81 Security. (n.d.). Istio. https://istio.io/latest/docs/concepts/security/
+
+<br>
 
 ## 11 おわりに
 
