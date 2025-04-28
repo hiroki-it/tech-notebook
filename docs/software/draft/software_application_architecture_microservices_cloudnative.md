@@ -188,6 +188,7 @@ CNCFでは、オープンソースやクラウドプロバイダーのクラウ�
 モノリスアーキテクチャーからマイクロサービスアーキテクチャーに至るまでに、領域が細分化されていきます。
 
 <br>
+
 図1. マイクロサービスアーキテクチャーに至るまでのアーキテクチャーの変遷
 
 ![01](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/01.png)
@@ -227,6 +228,7 @@ CNCFでは、オープンソースやクラウドプロバイダーのクラウ�
 そしてインフラストラクチャーは全般的に関連性が強いです。
 
 <br>
+
 図2. マイクロサービスアーキテクチャーの領域とクラウドネイティブ技術の関連性
 
 ![02](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/02.png)
@@ -284,6 +286,7 @@ AWSの設計については、AWS Well-Architected Framework \*29 を合わせ�
 図3のように、マイクロサービスアーキテクチャーを便宜上５つの領域に分け、その中にあるデザインパターングループとデザインパターンを取り上げます。
 
 <br>
+
 図3. 補章で取り上げるアーキテクチャーの領域
 
 ![03](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/03.png)
@@ -355,6 +358,7 @@ flowchart LR
 各図では丸ボックスをデザインパターングループ、四角ボックスをデザインパターンとして区別しています。
 
 <br>
+
 図4. デザインパターンの図の凡例
 
 ![04](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/04.png)
@@ -389,6 +393,7 @@ APIゲートウェイを配置することにより、必要なマイクロサ�
 代表的なものにはAPIゲートウェイ分割方法があります。
 
 <br>
+
 図5. APIゲートウェイ領域のデザインパターングループの種類
 
 ![05](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/05.png)
@@ -415,6 +420,7 @@ APIゲートウェイを適切な結合度と凝集度で分割することに�
 代表的なものには中央集約ゲートウェイとBFFがあります。
 
 <br>
+
 図6. APIゲートウェイ分割方法のデザインパターンの種類
 
 ![06](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/06.png)
@@ -468,6 +474,7 @@ APIゲートウェイとして使用できるツールはNginx以外にも非常
 この場合、フロントエンドや外部APIはGraphQLクライアントとして設計する必要があります。
 
 <br>
+
 図7. BFFの配置例
 
 ![07](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/07.png)
@@ -485,6 +492,7 @@ APIゲートウェイとして使用できるツールはNginx以外にも非常
 ただ、APIゲートウェイとは異なる役割を持ちます \*35 。
 
 <br>
+
 図8. AWS EKS上でのBFFの設計例
 
 ![08](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/08.png)
@@ -510,6 +518,7 @@ APIゲートウェイとして使用できるツールはNginx以外にも非常
 代表的なものにはマイクロサービス間通信方法、マイクロサービス分割方法、マイクロサービス設計方法、ドメインモデリング方法、トランザクション管理方法、設定管理方法、認証認可があります。
 
 <br>
+
 図9. マイクロサービス領域のデザインパターングループの種類
 
 ![09](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/09.png)
@@ -543,6 +552,7 @@ flowchart LR
 代表的なものには、リクエスト／レスポンス、パブリッシュ／サブスクライブ、共有データ経由があります。
 
 <br>
+
 図10. マイクロサービス間通信方法のデザインパターンの種類
 
 ![10](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/10.png)
@@ -594,6 +604,7 @@ flowchart LR
 送信元マイクロサービスは宛先と同期的に双方向で通信します。
 
 <br>
+
 図11. マイクロサービス間のリクエスト／レスポンスによる通信の様子
 
 ![11](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/11.png)
@@ -617,6 +628,7 @@ flowchart LR
 NgincはgRPCサーバーまたはRESTfulサーバーと通信し、もしgRPCサーバーと通信する場合は専用のモジュールが必要です \*39 。
 
 <br>
+
 図12. AWS EKS上でのリクエスト／レスポンスの設計例
 
 ![12](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/12.png)
@@ -650,6 +662,7 @@ NgincはgRPCサーバーまたはRESTfulサーバーと通信し、もしgRPCサ
 また、DDDに基づく境界には境界づけられたコンテキストと1つ以上の集約 \*41 があります。
 
 <br>
+
 図13. マイクロサービス分割方法のデザインパターンの種類
 
 ![13](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/13.png)
@@ -689,6 +702,7 @@ Learning Domain-Driven design本 *42 は、DDDの代表的な書籍であるDoma
 補章で登場したDDDの用語やデザインパターンは、Domain-Driven Design reference本 \*45 で整理されています。
 
 <br>
+
 図14. DDDに基づくマイクロサービスの適切な大きさ
 
 ![14](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/14.png)
@@ -724,6 +738,7 @@ Learning Domain-Driven design本 *42 は、DDDの代表的な書籍であるDoma
 ドメインモデリング方法の選定はマイクロサービス間通信方法に影響します。
 
 <br>
+
 図15. メインモデリングのデザインパターンの種類
 
 ![15](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/15.png)
@@ -755,6 +770,7 @@ flowchart LR
 多くの読者にとって、より馴染みのあるドメインモデリングはおそらくステートソーシングでしょう。
 
 <br>
+
 図16. ドメインモデリングとマイクロサービス間通信方法の関係性
 
 ![16](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/16.png)
@@ -782,6 +798,7 @@ flowchart LR
 代表的なものには、DDDデザインパターン設計とアプリケーションアーキテクチャー設計があります。
 
 <br>
+
 図17. マイクロサービス設計方法のデザインパターンの種類
 
 ![17](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/17.png)
@@ -817,6 +834,7 @@ DDDのドメインモデリング手順では、ドメインエキスパート�
 ドメインロジックは機能的であり、クラウドネイティブ技術で代替できません。
 
 <br>
+
 図18. DDDデザインパターンの種類
 
 ![18](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/18.png)
@@ -847,6 +865,7 @@ flowchart LR
 これらはDDDデザインパターンを適切な層に実装するため、またドメインロジックを持つパターンを隔離するための方法です。
 
 <br>
+
 図19. アプリケーションアーキテクチャーのデザインパターンの種類
 
 ![19](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/19.png)
@@ -919,6 +938,7 @@ IstioなどのService Mesh分野のツールを使用しない場合、マイク
 Sagaにはオーケストレーションベースとコレオグラフィベースがあります。
 
 <br>
+
 図20. トランザクション管理方法のデザインパターンの種類
 
 ![20](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/20.png)
@@ -981,6 +1001,7 @@ Temporalはプログラミング言語でワークフローを定義できるた
 ステータスチェッカーはトランザクションIDを使用してワークフローの進捗度を取得し、これをクライアントに返却します *56 *57 。
 
 <br>
+
 図21. AWS EKS上でのオーケストレーションベースSagaの設計例
 
 ![21](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/21.png)
@@ -1020,6 +1041,7 @@ Temporalはプログラミング言語でワークフローを定義できるた
 代表的なものにはセッションベースとトークンベースがあります。
 
 <br>
+
 図22. 認証のデザインパターンの種類
 
 ![22](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/22.png)
@@ -1075,6 +1097,7 @@ Istioの場合、Istioリソースを定義することにより無効なアカ�
 このようにKeycloakとIstioを組み合わせることにより、マイクロサービスアーキテクチャーでOIDC認可コードフローを実現できます。
 
 <br>
+
 図23. AWS EKS上でのOIDC認可コードフローの設計例
 
 ![23](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/23.png)
@@ -1102,6 +1125,7 @@ Istioの場合、Istioリソースを定義することにより無効なアカ�
 代表的なものには中央集中と分散があります。
 
 <br>
+
 図24. 認可のデザインパターンの種類
 
 ![24](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/24.png)
@@ -1163,6 +1187,7 @@ Istioの場合、Istioリソースを定義することにより無効なアカ�
 この時、必要に応じてストレージを分割し、また暗号化します。
 
 <br>
+
 図25. ストレージ領域のデザインパターングループの種類
 
 ![25](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/25.png)
@@ -1192,6 +1217,7 @@ AWS S3は静的ファイルを管理し、暗号化にAWS S3マネージド暗�
 Kubernetes NodeにアタッチされたAWS EBSやKubernetes Volumeは一時データを管理し、AWS EBS上のデータの暗号化にAWS KMSを使用できます。
 
 <br>
+
 図26. AWS EKS上でのデータ管理の設計例
 
 ![26](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/26.png)
@@ -1207,6 +1233,7 @@ Kubernetes NodeにアタッチされたAWS EBSやKubernetes Volumeは一時デ�
 代表的なものにはDB per serviceとShared DBがあります。
 
 <br>
+
 図27. 永続データ管理方法のデザインパターンの種類
 
 ![27](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/27.png)
@@ -1258,6 +1285,7 @@ Shared DBは一般的に非推奨なパターンとされているため、こ�
 ほかの方法としてマイクロサービス単位でAWS Aurora MySQLクラスターを作成してもよいですが、クラウドの金銭的コスト面から私は好みではありません。
 
 <br>
+
 図28. AWS EKS上でのDB per serviceの設計例
 
 ![28](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/28.png)
@@ -1285,6 +1313,7 @@ Shared DBは一般的に非推奨なパターンとされているため、こ�
 補章では、これらのうちでExternalized configurationとサービスメッシュを概説します。
 
 <br>
+
 図29. 横断領域のデザインパターングループの種類
 
 ![29](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/29.png)
@@ -1329,6 +1358,7 @@ flowchart LR
 Externalized configurationにはプルベースとプッシュベースの方法があります。
 
 <br>
+
 図30. Externalized configurationのデザインパターンの種類
 
 ![30](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/30.png)
@@ -1375,6 +1405,7 @@ AWS Aurora MySQLを使用する場合、データベースに関する機密情�
 Kubernetes ConfigMap、Secret、AWS Secrets Managerの暗号化キーは管理の簡単さ観点から、オープンソースよりもマネージドサービスの技術を使用することをお奨めます。
 
 <br>
+
 図31. AWS EKS上でのExternalized configurationの設計例
 
 ![31](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/31.png)
@@ -1406,6 +1437,7 @@ Kubernetes ConfigMap、Secret、AWS Secrets Managerの暗号化キーは管理�
 代表的なものにはサイドカーとサイドカーレスがあります。
 
 <br>
+
 図32. サービスメッシュのデザインパターンの種類
 
 ![32](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/32.png)
@@ -1460,6 +1492,7 @@ Istioにより、マイクロサービスとしてのKubernetes Podは他のPod�
 一方で、Istioを使用しない場合、Kubernetes PodはKubernetes Serviceを介して他のPodと通信します。
 
 <br>
+
 図33. AWS EKS上でのサイドカーサービスメッシュの設計例
 
 ![33](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/33.png)
@@ -1489,6 +1522,7 @@ Istioにより、マイクロサービスとしてのKubernetes Podは他のPod�
 代表的なデザインパターングループにはL4/L7トラフィック管理方法、証明書管理方法、オブザーバビリティーがあります。
 
 <br>
+
 図34. インフラストラクチャー領域のデザインパターングループの種類
 
 ![34](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/34.png)
@@ -1525,6 +1559,7 @@ flowchart LR
 これはAWS EKSクラスター内のIPアドレスを制御し、マイクロサービスがAWS EKSのクラスターネットワークに参加できるようにします \*71 。
 
 <br>
+
 図35. AWS EKS上でのL3管理の設計例
 
 ![35](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/35.png)
@@ -1552,6 +1587,7 @@ L4/L7のプロトコル（TCP、HTTP、HTTPSなど）を使用してマイクロ
 代表的なものにはサービス検出とロードバランシングがあります。
 
 <br>
+
 図36. L4/L7トラフィック管理方法のデザインパターングループの種類
 
 ![36](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/36.png)
@@ -1582,6 +1618,7 @@ flowchart LR
 図37で、サービス検出のデザインパターンを示します。
 
 <br>
+
 図37. 宛先検出と宛先登録のデザインパターンの種類
 
 ![37](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/18.png)
@@ -1631,6 +1668,7 @@ flowchart LR
 IstioコントロールプレーンはAWS EKSコントロールプレーンからサービス検出に必要なリソースの情報を収集し、インメモリで保管します。
 
 <br>
+
 図38. AWS EKS上でのサービスメッシュ内のL4/L7トラフィック管
 
 ![38](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/38.png)
@@ -1648,6 +1686,7 @@ IstioコントロールプレーンはAWS EKSコントロールプレーンか�
 この時、AWS EKSを使用する場合、マネージドなAWS kube-proxyアドオンとAWS CoreDNSアドオンを使用できます。
 
 <br>
+
 図39. AWS EKS上でのサービスメッシュ外のL7トラフィック管理の設計例
 
 ![39](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/39.png)
@@ -1665,6 +1704,7 @@ kube-proxyは新しいPodのIPアドレスをiptablesに追加し、またKubern
 前述のとおり、AWSはマネージドなkube-proxyアドオンを提供します。
 
 <br>
+
 図40. AWS EKS上でのサービスメッシュ外のL4トラフィック管理の設計例
 
 ![40](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/40.png)
@@ -1700,6 +1740,7 @@ AWS EKSを使用する場合、Etcdはマネージドなコントロールプレ
 代表的なものには静的方式と動的方式があります。
 
 <br>
+
 図41. ロードバランシングのデザインパターンの種類
 
 ![41](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/41.png)
@@ -1773,6 +1814,7 @@ TLSプロトコルを使用してアプリケーションデータを暗号化�
 代表的なものにはサイドカー、アプリケーション、クラウドリソースの証明書管理があります。
 
 <br>
+
 図42. 証明書管理方法のデザインパターンの種類
 
 ![42](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/42.png)
@@ -1826,6 +1868,7 @@ Istioコントロールプレーンは自己を署名し、ルート認証局と
 例えば、AWS Certificate Managerは中間認証局のAmazon CAからSSL証明書を取得し、AWSリソースへの組み込みと定期更新を管理します。
 
 <br>
+
 図43. AWS EKS上での証明書管理の設計例
 
 ![43](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/43.png)
