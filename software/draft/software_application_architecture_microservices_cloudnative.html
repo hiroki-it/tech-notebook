@@ -26916,6 +26916,7 @@
 </tbody>
 </table>
 <hr />
+<p>注釈</p>
 <p>*2 CNCF Overview 2024（<a href="https://docs.google.com/presentation/d/1UGewu4MMYZobunfKr5sOGXsspcLOH_5XeCLyOHKh9LU/edit#slide=id.gc98d72cd14_1_2266">https://docs.google.com/presentation/d/1UGewu4MMYZobunfKr5sOGXsspcLOH_5XeCLyOHKh9LU/edit#slide=id.gc98d72cd14_1_2266</a>）</p>
 <p>*3 <a href="https://en.wikipedia.org/wiki/Amazon_Web_Services">https://en.wikipedia.org/wiki/Amazon_Web_Services</a></p>
 <p>*4 <a href="https://en.wikipedia.org/wiki/Google_Cloud_Platform">https://en.wikipedia.org/wiki/Google_Cloud_Platform</a></p>
@@ -26972,6 +26973,7 @@
 </tbody>
 </table>
 <hr />
+<p>注釈</p>
 <p>*12 Richards, M., &amp; Ford, N. (2020). Fundamentals of software Architecture: An Engineering Approach. O’Reilly Media.</p>
 <p>*13 Wikipedia contributors. (2024). Monolithic application. Wikipedia. <a href="https://en.wikipedia.org/wiki/Monolithic_application">https://en.wikipedia.org/wiki/Monolithic_application</a></p>
 <p>*14 Wikipedia contributors. (2024a). Service-oriented architecture. Wikipedia. <a href="https://en.wikipedia.org/wiki/Service-oriented_architecture">https://en.wikipedia.org/wiki/Service-oriented_architecture</a></p>
@@ -27136,6 +27138,7 @@
 </tbody>
 </table>
 <hr />
+<p>注釈</p>
 <p>*20 CNCFはクラウドネイティブ技術の属する分類をしばしば変更します。最新の分類はCNCF Landscape（<a href="https://landscape.cncf.io/">https://landscape.cncf.io/</a>）を参照してください。</p>
 <p>*21 クラウドネイティブ技術には、人気があってもCNCF未登録または分野未分類なものがあります。今回、登録済や分類済の技術を、便宜上、競合技術と同じ分野に記載しています。</p>
 <p>*22 Service Proxy分野のツールは設定次第でAPI Gateway分野のツールと同等に使用できます。</p>
@@ -27180,6 +27183,7 @@
 </tbody>
 </table>
 <hr />
+<p>注釈</p>
 <p>*23 Fowler, M. (n.d.). bliki: Presentation Domain Separation. <a href="http://martinfowler.com/">http://martinfowler.com/</a>. <a href="https://martinfowler.com/bliki/PresentationDomainSeparation.html">https://martinfowler.com/bliki/PresentationDomainSeparation.html</a></p>
 <p><br></p>
 <h2 id="5">5 マイクロサービスアーキテクチャーのデザインパターン<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
@@ -27421,7 +27425,8 @@
 </tr>
 </tbody>
 </table>
-<p>図7でBFFの配置例を示します。</p>
+<p><br>
+図7でBFFの配置例を示します。</p>
 <p>BFFとしてService Proxy、Service Mesh、API Gateway分野のツールを使用できます。</p>
 <p>例えば、NginxはAPIゲートウェイとして動作します *34 。</p>
 <p>クライアント別（PCブラウザSPA、スマホSPA、外部APIなど）にNginxを配置します。</p>
@@ -27534,7 +27539,8 @@
 </tr>
 </tbody>
 </table>
-<p>図11で、マイクロサービス間のリクエスト／レスポンスによる通信の様子を示します。</p>
+<p><br>
+図11で、マイクロサービス間のリクエスト／レスポンスによる通信の様子を示します。</p>
 <p>ここではKubernetes Podをマイクロサービスとして表します。</p>
 <p>送信元マイクロサービスは宛先と同期的に双方向で通信します。</p>
 <p><br></p>
@@ -27798,7 +27804,8 @@
 </tr>
 </tbody>
 </table>
-<p>図21で、AWS EKS上でのオーケストレーションベースSagaの設計例を示します。</p>
+<p><br>
+図21で、AWS EKS上でのオーケストレーションベースSagaの設計例を示します。</p>
 <p>オーケストレーションベースSagaとして、Automation &amp; Configuration分野のツールを使用できます。</p>
 <p>オーケストレーションベースSagaのデザインパターンには、Sagaオーケストレーターがメッセージ仲介システムを介して各マイクロサービスと通信するパターンと、これらの間でメッセージ仲介システムなしに通信するパターンがあります *52 。</p>
 <p>例えば、Temporalはメッセージ仲介システムのあるオーケストレーションベースSagaとして動作します <em>53 </em>54 。</p>
@@ -27877,7 +27884,8 @@
 </tr>
 </tbody>
 </table>
-<p>図23で、AWS EKS上でのOIDC認可コードフローの設計例を示します。</p>
+<p><br>
+図23で、AWS EKS上でのOIDC認可コードフローの設計例を示します。</p>
 <p>IDプロバイダーとしてSecurity &amp; Compliance分野のツールを使用できます。</p>
 <p>例えば、KeycloakはIDプロバイダーとして認証データを永続化し、アカウントを証明するアクセストークンを発行します。</p>
 <p>またKeycloakは検証エンドポイントを公開し、受信したリクエストのAuthorizationヘッダーにあるアクセストークンの有効性を検証します *59 。</p>
@@ -28031,7 +28039,8 @@
 </tr>
 </tbody>
 </table>
-<p>図28で、AWS EKS上でAWS EKS上でのDB per serviceの設計例を示します。</p>
+<p><br>
+図28で、AWS EKS上でAWS EKS上でのDB per serviceの設計例を示します。</p>
 <p>データベースとしてはDatabase分野のツールを使用できます。</p>
 <p>例えば、マネージドなAWS Aurora MySQLはMySQL互換であるため、アプリケーションはMySQLのSQLの実装を変更する必要がありません。</p>
 <p>また、AWS Aurora MySQLは高い耐障害性や性能を提供します *62 。</p>
@@ -28130,7 +28139,8 @@
 </tr>
 </tbody>
 </table>
-<p>図31で、AWS EKS上でのExternalized configurationの設計例を示します。</p>
+<p><br>
+図31で、AWS EKS上でのExternalized configurationの設計例を示します。</p>
 <p>設定管理先と暗号化キーはKubernetes標準機能、Security &amp; Compliance、Key Management分野のツールを使用できます。</p>
 <p>例えば、Kubernetes ConfigMapやSecretはマイクロサービスに外部から環境変数やファイルなどの設定を動的に組み込みます *64 。</p>
 <p>この時、SOPSを使用することによりHelmのマニフェスト展開前に、Secretの元データを暗号化して管理できます *65 。</p>
@@ -28199,7 +28209,8 @@
 </tr>
 </tbody>
 </table>
-<p>図33で、AWS EKS上でのサイドカーサービスメッシュの設計例を示します。</p>
+<p><br>
+図33で、AWS EKS上でのサイドカーサービスメッシュの設計例を示します。</p>
 <p>サービスメッシュとしてService Mesh分野のツールを使用できます。</p>
 <p>例えば、コントロールプレーンとデータプレーンからなるIstioは、Envoyの設定を抽象化することによりサービスメッシュを実現します *68 。</p>
 <p>IstioのサイドカーサービスメッシュではIstioはデータプレーンにサービスメッシュゲートウェイ（Istio IngressGatewayとIstio EgressGateway）を配置し、またマイクロサービス内にサイドカーコンテナ（istio-proxy）をインジェクションします。</p>
@@ -28333,7 +28344,8 @@
 </tr>
 </tbody>
 </table>
-<p>図38で、AWS EKS上でのサービスメッシュ内のL4/L7トラフィック管理の設計例を示します。</p>
+<p><br>
+図38で、AWS EKS上でのサービスメッシュ内のL4/L7トラフィック管理の設計例を示します。</p>
 <p>サービスメッシュ内ではL4/L7ロードバランサーとしてService Mesh分野のツールを使用できます。</p>
 <p>例えば、Istioによるサイドカーコンテナはサービスメッシュ内のKubernetesリソースやIstioリソースの情報に基づいて、サーバーサイドサービス検出を実施します *72 。</p>
 <p>IstioコントロールプレーンはAWS EKSコントロールプレーンからサービス検出に必要なリソースの情報を収集し、インメモリで保管します。</p>
@@ -28393,7 +28405,8 @@
 </tr>
 </tbody>
 </table>
-<p>次に、ロードバランシングのデザインパターンです。</p>
+<p><br>
+次に、ロードバランシングのデザインパターンです。</p>
 <p>マイクロサービスのインスタンスに適切に負荷を分散させることにより、マイクロサービスアーキテクチャーのシステム全体の可用性を高められます。</p>
 <p>図41で、ロードバランシングのデザインパターンの種類を示します。</p>
 <p>代表的なものには静的方式と動的方式があります。</p>
@@ -28513,7 +28526,8 @@
 </tr>
 </tbody>
 </table>
-<p>図43で、AWS EKS上での証明書管理の設計例を示します。</p>
+<p><br>
+図43で、AWS EKS上での証明書管理の設計例を示します。</p>
 <p>マイクロサービスのサイドカーコンテナの証明書管理にはService Mesh分野のツールを使用できます。</p>
 <p>例えば、Istioは署名された証明書をサイドカーコンテナに組み込み、定期的にこれを更新します *79 。</p>
 <p>Istioコントロールプレーンは自己を署名し、ルート認証局としてサイドカーコンテナのクライアント／SSL証明書を署名します。</p>
@@ -28561,7 +28575,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月28日 16:38:34">2025-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月28日 16:50:37">2025-04-28</span>
   </span>
 
     
