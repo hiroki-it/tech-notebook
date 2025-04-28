@@ -19,7 +19,7 @@
 
 ---
 
-\*1 [https://github.com/cncf/toc/blob/main/DEFINITION.md](https://github.com/cncf/toc/blob/main/DEFINITION.md)
+\*1 https://github.com/cncf/toc/blob/main/DEFINITION.md
 
 ## 2 歴史
 
@@ -42,25 +42,25 @@ CNCFの定義のとおり、クラウドネイティブ技術はパブリック�
 
 ---
 
-\*2 CNCF Overview 2024（[https://docs.google.com/presentation/d/1UGewu4MMYZobunfKr5sOGXsspcLOH_5XeCLyOHKh9LU/edit#slide=id.gc98d72cd14_1_2266](https://docs.google.com/presentation/d/1UGewu4MMYZobunfKr5sOGXsspcLOH_5XeCLyOHKh9LU/edit#slide=id.gc98d72cd14_1_2266)）
+\*2 CNCF Overview 2024（https://docs.google.com/presentation/d/1UGewu4MMYZobunfKr5sOGXsspcLOH_5XeCLyOHKh9LU/edit#slide=id.gc98d72cd14_1_2266）
 
-\*3 [https://en.wikipedia.org/wiki/Amazon_Web_Services](https://en.wikipedia.org/wiki/Amazon_Web_Services)
+\*3 https://en.wikipedia.org/wiki/Amazon_Web_Services
 
-\*4 [https://en.wikipedia.org/wiki/Google_Cloud_Platform](https://en.wikipedia.org/wiki/Google_Cloud_Platform)
+\*4 https://en.wikipedia.org/wiki/Google_Cloud_Platform
 
-\*5 [https://en.wikipedia.org/wiki/Heroku](https://en.wikipedia.org/wiki/Heroku)
+\*5 https://en.wikipedia.org/wiki/Heroku
 
-\*6 [https://en.wikipedia.org/wiki/Microsoft_Azure](https://en.wikipedia.org/wiki/Microsoft_Azure)
+\*6 https://en.wikipedia.org/wiki/Microsoft_Azure
 
-\*7 [https://en.wikipedia.org/wiki/OpenStack](https://en.wikipedia.org/wiki/OpenStack)
+\*7 https://en.wikipedia.org/wiki/OpenStack
 
-\*8 [https://en.wikipedia.org/wiki/Cloud_Foundry](https://en.wikipedia.org/wiki/Cloud_Foundry)
+\*8 https://en.wikipedia.org/wiki/Cloud_Foundry
 
 \*9 [https://en.wikipedia.org/wiki/Docker\_(software）](<https://en.wikipedia.org/wiki/Docker_(software)>)
 
-\*10 [https://en.wikipedia.org/wiki/Kubernetes](https://en.wikipedia.org/wiki/Kubernetes)
+\*10 https://en.wikipedia.org/wiki/Kubernetes
 
-\*11 分野の種類は補章3節の表3で取り上げています。最新の分野はCNCF Landscape（[https://landscape.cncf.io/](https://landscape.cncf.io/)）を参照してください。
+\*11 分野の種類は補章3節の表3で取り上げています。最新の分野はCNCF Landscape（https://landscape.cncf.io/）を参照してください。
 
 ### 2.2 マイクロサービスアーキテクチャー
 
@@ -81,19 +81,19 @@ CNCFの定義のとおり、クラウドネイティブ技術はパブリック�
 
 \*12 Richards, M., & Ford, N. (2020). Fundamentals of software Architecture: An Engineering Approach. O’Reilly Media.
 
-\*13 Wikipedia contributors. (2024). Monolithic application. Wikipedia. [https://en.wikipedia.org/wiki/Monolithic_application](https://en.wikipedia.org/wiki/Monolithic_application)
+\*13 Wikipedia contributors. (2024). Monolithic application. Wikipedia. https://en.wikipedia.org/wiki/Monolithic_application
 
-\*14 Wikipedia contributors. (2024a). Service-oriented architecture. Wikipedia. [https://en.wikipedia.org/wiki/Service-oriented_architecture](https://en.wikipedia.org/wiki/Service-oriented_architecture)
+\*14 Wikipedia contributors. (2024a). Service-oriented architecture. Wikipedia. https://en.wikipedia.org/wiki/Service-oriented_architecture
 
 \*15 Newman, S. (2021). Building microservices. O’Reilly Media, Inc.
 
 \*16 Evans, E. (2004). Domain-driven design: Tackling Complexity in the Heart of Software. Addison-Wesley Professional.
 
-\*17 Lewis, J. (n.d.). Microservices. [martinfowler.com](http://martinfowler.com/). [https://martinfowler.com/articles/microservices.html](https://martinfowler.com/articles/microservices.html)
+\*17 Lewis, J. (n.d.). Microservices. http://martinfowler.com/. https://martinfowler.com/articles/microservices.html
 
-\*18 Fowler, M. (n.d.). bliki: Brown, S. (2014). Distributed big balls of mud. [dzone.com](http://dzone.com/). [https://dzone.com/articles/distributed-big-balls-mud](https://dzone.com/articles/distributed-big-balls-mud)
+\*18 Fowler, M. (n.d.). bliki: Brown, S. (2014). Distributed big balls of mud. http://dzone.com/. https://dzone.com/articles/distributed-big-balls-mud
 
-19 Brown, S. (2014). Fowler, M. (n.d.). bliki: Monolith First. [http://martinfowler.com/](http://martinfowler.com/). [https://martinfowler.com/bliki/](https://martinfowler.com/bliki/) MonolithFirst.html
+19 Brown, S. (2014). Fowler, M. (n.d.). bliki: Monolith First. http://martinfowler.com/. https://martinfowler.com/bliki/ MonolithFirst.html
 
 ## 3 マイクロサービスアーキテクチャーに関連のあるクラウドネイティブ技術
 
@@ -176,7 +176,7 @@ CNCFでは、オープンソースやクラウドプロバイダーのクラウ�
 
 ---
 
-\*20 CNCFはクラウドネイティブ技術の属する分類をしばしば変更します。最新の分類はCNCF Landscape（[https://landscape.cncf.io/](https://landscape.cncf.io/)）を参照してください。
+\*20 CNCFはクラウドネイティブ技術の属する分類をしばしば変更します。最新の分類はCNCF Landscape（https://landscape.cncf.io/）を参照してください。
 
 \*21 クラウドネイティブ技術には、人気があってもCNCF未登録または分野未分類なものがあります。今回、登録済や分類済の技術を、便宜上、競合技術と同じ分野に記載しています。
 
@@ -207,7 +207,7 @@ CNCFでは、オープンソースやクラウドプロバイダーのクラウ�
 
 ---
 
-\*23 Fowler, M. (n.d.). bliki: Presentation Domain Separation. [martinfowler.com](http://martinfowler.com/). [https://martinfowler.com/bliki/PresentationDomainSeparation.html](https://martinfowler.com/bliki/PresentationDomainSeparation.html)
+\*23 Fowler, M. (n.d.). bliki: Presentation Domain Separation. http://martinfowler.com/. https://martinfowler.com/bliki/PresentationDomainSeparation.html
 
 ## 5 マイクロサービスアーキテクチャーのデザインパターン
 
@@ -225,7 +225,7 @@ CNCFでは、オープンソースやクラウドプロバイダーのクラウ�
 
 注釈
 
-\*24 A pattern language for microservices. (n.d.). [microservices.io](http://microservices.io/). [https://microservices.io/patterns/index.html](https://microservices.io/patterns/index.html)
+\*24 A pattern language for microservices. (n.d.). http://microservices.io/. https://microservices.io/patterns/index.html
 
 \*25 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.
 
@@ -237,7 +237,7 @@ CNCFでは、オープンソースやクラウドプロバイダーのクラウ�
 
 \*29 Ibryam, B., & Huss, R. (2023). Kubernetes patterns. O’Reilly Media, Inc.
 
-\*30 AWS Well-Architected Framework - AWS Well-Architected Framework. (n.d.). [https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html)
+\*30 AWS Well-Architected Framework - AWS Well-Architected Framework. (n.d.). https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html
 
 ### 5.2 補章で取り上げるデザインパターングループ
 
@@ -300,7 +300,7 @@ CNCFでは、オープンソースやクラウドプロバイダーのクラウ�
 
 注釈
 
-\*31 A pattern language for microservices. (n.d.). [microservices.io](http://microservices.io/). [https://microservices.io/patterns/index.html](https://microservices.io/patterns/index.html)
+\*31 A pattern language for microservices. (n.d.). http://microservices.io/. https://microservices.io/patterns/index.html
 
 \*32 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.
 
@@ -478,9 +478,9 @@ APIゲートウェイをクラウドネイティブ技術で代替できます�
 
 \*38 メッセージ仲介システムの種類として、メッセージブローカー、メッセージキュー、およびイベントバスがあります。
 
-\*39 Vandeperre, M. (2023b, October 18). Implementing clean architecture solutions: A practical example | Red Hat Developer. Red Hat Developer. [https://developers.redhat.com/articles/2023/08/08/implementing-clean-architecture-solutions-practical-example](https://developers.redhat.com/articles/2023/08/08/implementing-clean-architecture-solutions-practical-example)
+\*39 Vandeperre, M. (2023b, October 18). Implementing clean architecture solutions: A practical example | Red Hat Developer. Red Hat Developer. https://developers.redhat.com/articles/2023/08/08/implementing-clean-architecture-solutions-practical-example
 
-\*40 Module ngx_http_grpc_module. (n.d.). [https://nginx.org/en/docs/http/ngx_http_grpc_module.html](https://nginx.org/en/docs/http/ngx_http_grpc_module.html)
+\*40 Module ngx_http_grpc_module. (n.d.). https://nginx.org/en/docs/http/ngx_http_grpc_module.html
 
 ### 7.2 マイクロサービス分割方法
 
@@ -514,7 +514,7 @@ APIゲートウェイをクラウドネイティブ技術で代替できます�
 
 \*41 Newman, S. (2021). Building microservices. O’Reilly Media, Inc.
 
-\*42 マイクロサービスを1つの集約よりも小さく分割するべきではありません。小さすぎるマイクロサービスから構成されるマイクロサービスアーキテクチャーは分散した大きな泥団子と言われており、アンチパターンです。例えば、エンティティー単位で分割してしまうエンティティーサービスというアンチパターンがあります。The entity Service Antipattern - wide awake developers. (2017, December 5). [https://www.michaelnygard.com/blog/2017/12/the-entity-service-antipattern/](https://www.michaelnygard.com/blog/2017/12/the-entity-service-antipattern/)
+\*42 マイクロサービスを1つの集約よりも小さく分割するべきではありません。小さすぎるマイクロサービスから構成されるマイクロサービスアーキテクチャーは分散した大きな泥団子と言われており、アンチパターンです。例えば、エンティティー単位で分割してしまうエンティティーサービスというアンチパターンがあります。The entity Service Antipattern - wide awake developers. (2017, December 5). https://www.michaelnygard.com/blog/2017/12/the-entity-service-antipattern/
 
 \*43 Khononov, V. (2021) Learning Domain-Driven design: Aligning Software Architecture and Business Strategy. O’Reilly Media.
 
@@ -631,13 +631,13 @@ APIゲートウェイをクラウドネイティブ技術で代替できます�
 
 注釈
 
-\*49 Brown, S. (2014, August 4). Distributed big balls of mud. [dzone.com](http://dzone.com/). [https://dzone.com/articles/distributed-big-balls-mud](https://dzone.com/articles/distributed-big-balls-mud)
+\*49 Brown, S. (2014, August 4). Distributed big balls of mud. http://dzone.com/. https://dzone.com/articles/distributed-big-balls-mud
 
 \*50 Evans, E. (2014). Domain-Driven Design reference: Definitions and Pattern Summaries. Dog Ear Publishing.
 
 \*51 Martin, R. C. (2017). Clean architecture: A Craftsman’s Guide to Software Structure and Design. Prentice Hall.
 
-\*52 Salatino, M. (2022, January 29). Event-Driven applications with CloudEvents on Kubernetes – Salaboy (Open Source Knowledge). Salaboy. [https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/](https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/)
+\*52 Salatino, M. (2022, January 29). Event-Driven applications with CloudEvents on Kubernetes – Salaboy (Open Source Knowledge). Salaboy. https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/
 
 ### 7.5 トランザクション管理方法
 
@@ -684,15 +684,15 @@ APIゲートウェイをクラウドネイティブ技術で代替できます�
 
 \*53 Bellemare, A. (2020b). Building Event-Driven microservices. O’Reilly Media, Inc.
 
-\*54 Temporal. (2024, May 31). Saga Pattern Simplified: Building Sagas with Temporal [Video]. YouTube. [https://www.youtube.com/watch?v=uHDQMfOMFD4](https://www.youtube.com/watch?v=uHDQMfOMFD4)
+\*54 Temporal. (2024, May 31). Saga Pattern Simplified: Building Sagas with Temporal [Video]. YouTube. https://www.youtube.com/watch?v=uHDQMfOMFD4
 
-\*55 Saga Pattern Made Easy: Trip planning with sagas but without the baggage. (n.d.). Temporal Technologies. [https://temporal.io/blog/saga-pattern-made-easy](https://temporal.io/blog/saga-pattern-made-easy)
+\*55 Saga Pattern Made Easy: Trip planning with sagas but without the baggage. (n.d.). Temporal Technologies. https://temporal.io/blog/saga-pattern-made-easy
 
 \*56 Build a trip booking system with PHP | Learn Temporal. (2021, October 1). https://learn.temporal.io/tutorials/php/build_a_trip_booking_app/
 
 \*57 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.
 
-\*58 Azure-Samples. (n.d.). saga-orchestration-serverless/docs/architecture/components.md at main · Azure-Samples/saga-orchestration-serverless. GitHub. [https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/components.md](https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/components.md)
+\*58 Azure-Samples. (n.d.). saga-orchestration-serverless/docs/architecture/components.md at main · Azure-Samples/saga-orchestration-serverless. GitHub. https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/components.md
 
 ### 7.6 認証
 
@@ -735,11 +735,11 @@ APIゲートウェイをクラウドネイティブ技術で代替できます�
 
 注釈
 
-\*59 He, X., & Yang, X. (2017). Authentication and authorization of end user in microservice architecture. Journal of Physics Conference Series, 910, 012060. [https://doi.org/10.1088/1742-6596/910/1/012060](https://doi.org/10.1088/1742-6596/910/1/012060)
+\*59 He, X., & Yang, X. (2017). Authentication and authorization of end user in microservice architecture. Journal of Physics Conference Series, 910, 012060. https://doi.org/10.1088/1742-6596/910/1/012060
 
 \*60 Thorgersen, S., & Silva, P. I. (2023) KeyCloak - Identity and access management for modern applications: Harness the power of Keycloak, OpenID Connect, and OAuth 2.0 to secure applications. Packt Publishing Ltd.
 
-\*61 田畑. (n.d). コンテナ上のマイクロサービスの認証強化 ～IstioとKeyCloak～. Think IT（シンクイット）. [https://thinkit.co.jp/article/18023](https://thinkit.co.jp/article/18023)
+\*61 田畑. (n.d). コンテナ上のマイクロサービスの認証強化 ～IstioとKeyCloak～. Think IT（シンクイット）. https://thinkit.co.jp/article/18023
 
 ### 7.7 認可
 
@@ -773,7 +773,7 @@ APIゲートウェイをクラウドネイティブ技術で代替できます�
 
 注釈
 
-\*62 Introduction. (n.d.). Open Policy Agent. [https://www.openpolicyagent.org/docs/latest/](https://www.openpolicyagent.org/docs/latest/)
+\*62 Introduction. (n.d.). Open Policy Agent. https://www.openpolicyagent.org/docs/latest/
 
 ## 8 ストレージ領域
 
@@ -839,7 +839,7 @@ DB per serviceでは、各マイクロサービスが占有するデータベー
 
 注釈
 
-\*63 What is Amazon Aurora? - Amazon Aurora. (n.d.). [https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
+\*63 What is Amazon Aurora? - Amazon Aurora. (n.d.). https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
 
 \*64 Newman, S. (2019) Monolith to microservices: Evolutionary Patterns to Transform Your Monolith. O’Reilly Media, Inc.
 
@@ -914,9 +914,9 @@ DB per serviceでは、各マイクロサービスが占有するデータベー
 
 注釈
 
-\*65 Updating configuration via a ConfigMap. (2024, July 17). Kubernetes. [https://kubernetes.io/docs/tutorials/configuration/updating-configuration-via-a-configmap/](https://kubernetes.io/docs/tutorials/configuration/updating-configuration-via-a-configmap/)
+\*65 Updating configuration via a ConfigMap. (2024, July 17). Kubernetes. https://kubernetes.io/docs/tutorials/configuration/updating-configuration-via-a-configmap/
 
-\*66 Getsops. (n.d.). GitHub - getsops/sops: Simple and flexible tool for managing secrets. GitHub. [https://github.com/getsops/sops](https://github.com/getsops/sops)
+\*66 Getsops. (n.d.). GitHub - getsops/sops: Simple and flexible tool for managing secrets. GitHub. https://github.com/getsops/sops
 
 ### 9.2 サービスメッシュ
 
@@ -958,11 +958,11 @@ DB per serviceでは、各マイクロサービスが占有するデータベー
 
 注釈
 
-\*67 マイクロサービス間通信方法にパブリッシュ／サブスクライブを使用する場合、『イベントメッシュ』という仕組みが適切です。これは、イベント仲介システムなどを各マイクロサービスに横断的に提供できます。これは、Knativeで代替できます（[https://knative.dev/docs/eventing/event-mesh/](https://knative.dev/docs/eventing/event-mesh/)）。
+\*67 マイクロサービス間通信方法にパブリッシュ／サブスクライブを使用する場合、『イベントメッシュ』という仕組みが適切です。これは、イベント仲介システムなどを各マイクロサービスに横断的に提供できます。これは、Knativeで代替できます（https://knative.dev/docs/eventing/event-mesh/）。
 
 \*68 Gough, J., Bryant, D., & Auburn, M. (2021) Mastering API architecture. O’Reilly Media, Inc.
 
-\*69 Sidecar or ambient? (n.d.). Istio. [https://istio.io/latest/docs/overview/dataplane-modes/](https://istio.io/latest/docs/overview/dataplane-modes/)
+\*69 Sidecar or ambient? (n.d.). Istio. https://istio.io/latest/docs/overview/dataplane-modes/
 
 \*70 Posta, C., & Maloku, R. (2022) Istio in action. Manning Publications.
 
@@ -1001,7 +1001,7 @@ DB per serviceでは、各マイクロサービスが占有するデータベー
 
 \*71 ほかに例えば、L2を作成するCNIがあり、CNIによって提供する層はさまざまです。いずれのプラットフォーム（補章であれば、AWS EKS）を選ぶかによって、適切なCNIが異なります。
 
-\*72 Amazon VPC CNI - EKS Best Practices Guides. (n.d.). [https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/](https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/)
+\*72 Amazon VPC CNI - EKS Best Practices Guides. (n.d.). https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
 
 ### 10.2 L4/L7トラフィック管理方法
 
@@ -1117,17 +1117,17 @@ L4/L7のプロトコル（TCP、HTTP、HTTPSなど）を使用してマイクロ
 
 注釈
 
-\*73 Mesh, A. (2020, August 12). Debugging Your Debugging Tools: What to do When Your Service Mesh Goes Down [Slide show]. SlideShare. [https://www.slideshare.net/slideshow/debugging-your-debugging-tools-what-to-do-when-your-service-mesh-goes-down/237797183](https://www.slideshare.net/slideshow/debugging-your-debugging-tools-what-to-do-when-your-service-mesh-goes-down/237797183)
+\*73 Mesh, A. (2020, August 12). Debugging Your Debugging Tools: What to do When Your Service Mesh Goes Down [Slide show]. SlideShare. https://www.slideshare.net/slideshow/debugging-your-debugging-tools-what-to-do-when-your-service-mesh-goes-down/237797183
 
 \*74 Belamaric, J., & Liu, C. (2019) Learning CoreDNS: Configuring DNS for Cloud Native Environments. O’Reilly Media, Inc.
 
-\*75 Virtual IPs and service proxies. (2024, October 7). Kubernetes. [https://kubernetes.io/docs/reference/networking/virtual-ips/](https://kubernetes.io/docs/reference/networking/virtual-ips/)
+\*75 Virtual IPs and service proxies. (2024, October 7). Kubernetes. https://kubernetes.io/docs/reference/networking/virtual-ips/
 
-\*76 Service. (2024, June 25). Kubernetes. [https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables](https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables)
+\*76 Service. (2024, June 25). Kubernetes. https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables
 
-\*77 Control Plane - EKS Best Practices Guides. (n.d.). [https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/](https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/)
+\*77 Control Plane - EKS Best Practices Guides. (n.d.). https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/
 
-\*78 Traffic management. (n.d.). Istio. [https://istio.io/latest/docs/concepts/traffic-management/](https://istio.io/latest/docs/concepts/traffic-management/)
+\*78 Traffic management. (n.d.). Istio. https://istio.io/latest/docs/concepts/traffic-management/
 
 ### 10.3 証明書管理方法
 
@@ -1171,9 +1171,9 @@ L4/L7のプロトコル（TCP、HTTP、HTTPSなど）を使用してマイクロ
 
 \*79 Siriwardena, P., & Dias, N. (2020) Microservices Security in action. Manning Publications.
 
-\*80 Plug in CA certificates. (n.d.). Istio. [https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/](https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/)
+\*80 Plug in CA certificates. (n.d.). Istio. https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/
 
-\*81 Security. (n.d.). Istio. [https://istio.io/latest/docs/concepts/security/](https://istio.io/latest/docs/concepts/security/)
+\*81 Security. (n.d.). Istio. https://istio.io/latest/docs/concepts/security/
 
 ## 11 おわりに
 

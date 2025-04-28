@@ -160,7 +160,7 @@ Grafana Lokiの場合、`loki`タイプを指定する。
 
 トレースIDのUIにリダイレクトできるように、`derivedFields`キーを設定する。
 
-`matcherRegex`キーの正規表現 (例：`"trace_id":"([^"]*)"`、`trace_id=(\\w+)`など) で、トレースIDを抽出する。
+`matcherRegex`キーの正規表現 (例：`"trace_id":\s*"([^"]+)"` (trace_idがネストされた場所にあっても検知できるようにする) 、`trace_id=(\\w+)`など) でトレースIDを抽出する。
 
 `url`キーに`$${__value.raw}`を設定すると、抽出したトレースIDをURLに出力できる。
 
@@ -183,7 +183,8 @@ data:
         jsonData:
           derivedFields:
             - name: trace_id
-              matcherRegex: '"trace_id":"([^"]*)"'
+              # trace_idがネストされた場所にあっても検知できるようにする
+              matcherRegex: '"trace_id":\s*"([^"]+)"'
               url: $${__value.raw}
               urlDisplayLabel: View Grafana Tempo
               datasourceUid: Tempo

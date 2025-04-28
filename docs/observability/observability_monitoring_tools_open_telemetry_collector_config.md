@@ -494,7 +494,10 @@ processors:
     name:
       # http.urlという属性から値を抽出する
       from_attributes:
-        - http.url
+        - http.method
+        - http.url.path
+      # GET /foo のようなスパンになる
+      separator: " "
     include:
       match_type: strict
       # istio-proxyコンテナの作成したスパンのみを対象とする
