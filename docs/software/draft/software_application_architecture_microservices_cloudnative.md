@@ -31,6 +31,8 @@ CNCFはクラウドネイティブ技術を次のように定義づけており�
 
 ---
 
+注釈
+
 \*1 https://github.com/cncf/toc/blob/main/DEFINITION.md
 
 <br>
