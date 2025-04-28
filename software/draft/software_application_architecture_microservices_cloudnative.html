@@ -27138,10 +27138,11 @@
 <p>*22 Service Proxy分野のツールは設定次第でAPI Gateway分野のツールと同等に使用できます。</p>
 <p><br></p>
 <h2 id="4">4 マイクロサービスアーキテクチャーの構成領域<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
-<p>まず、マイクロサービスアーキテクチャーはどのような領域からなるのでしょうか？　図1と表3でモノリスアーキテクチャー、プレゼンテーションドメイン分離（過渡的なアーキテクチャー） *23 、マイクロサービスアーキテクチャーの例を示しそれぞれの領域を簡単に比較します。</p>
+<p>まず、マイクロサービスアーキテクチャーはどのような領域からなるのでしょうか？</p>
+<p>図1と表3でモノリスアーキテクチャー、プレゼンテーションドメイン分離（過渡的なアーキテクチャー） *23 、マイクロサービスアーキテクチャーの例を示しそれぞれの領域を簡単に比較します。</p>
 <p>モノリスアーキテクチャーからマイクロサービスアーキテクチャーに至るまでに、領域が細分化されていきます。</p>
 <p>図1. マイクロサービスアーキテクチャーに至るまでのアーキテクチャーの変遷</p>
-<p><img alt="Platform Engineering on K8s-API Gatewayなしの図.drawio" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/Platform_Engineering_on_K8s-API_Gateway%25E3%2581%25AA%25E3%2581%2597%25E3%2581%25AE%25E5%259B%25B3.drawio.png" /></p>
+<p><img alt="01" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/01.png" /></p>
 <p>表4. マイクロサービスアーキテクチャーに至るまでのアーキテクチャー間の比較</p>
 <table>
 <thead>
@@ -27186,7 +27187,7 @@
 <p>アプリケーションの領域では機能的なロジックは関連性が低い一方で、非機能的なものほど関連性が強いです。</p>
 <p>そしてインフラストラクチャーは全般的に関連性が強いです。</p>
 <p>図2. マイクロサービスアーキテクチャーの領域とクラウドネイティブ技術の関連性</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャー設計の概説-クラウドネイティブの代替領域.drawio" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/DDD%25E3%2581%25A8%25E3%2582%25AF%25E3%2583%25A9%25E3%2582%25A6%25E3%2583%2588%25E3%2582%2599%25E3%2583%258D%25E3%2582%25A4%25E3%2583%2586%25E3%2582%25A3%25E3%2583%2595%25E3%2582%2599%25E3%2581%25AB%25E3%2582%2588%25E3%2582%258B%25E3%2583%259E%25E3%2582%25A4%25E3%2582%25AF%25E3%2583%25AD%25E3%2582%25B5%25E3%2583%25BC%25E3%2583%2592%25E3%2582%2599%25E3%2582%25B9%25E3%2582%25A2%25E3%2583%25BC%25E3%2582%25AD%25E3%2583%2586%25E3%2582%25AF%25E3%2583%2581%25E3%2583%25A3%25E8%25A8%25AD%25E8%25A8%2588%25E3%2581%25AE%25E6%25A6%2582%25E8%25AA%25AC-%25E3%2582%25AF%25E3%2583%25A9%25E3%2582%25A6%25E3%2583%2588%25E3%2582%2599%25E3%2583%258D%25E3%2582%25A4%25E3%2583%2586%25E3%2582%25A3%25E3%2583%2595%25E3%2582%2599%25E3%2581%25AE%25E4%25BB%25A3%25E6%259B%25BF%25E9%25A0%2598%25E5%259F%259F.drawio.png" /></p>
+<p><img alt="02" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/02.png" /></p>
 <p>補章では、各領域でのさまざまなデザインパターンと具体的にいずれのクラウドネイティブ技術がデザインパターンに関連しているのかを概説します。</p>
 <p>表3のオープンソースまたはマネージドサービス（主にAWS）を組み合わせ、マイクロサービスアーキテクチャーの設計例を図で示します。</p>
 <p>AWSの設計については、AWS Well-Architected Framework *29 を合わせて読んでいただくことをお奨めします。</p>
@@ -27213,7 +27214,7 @@
 <p>前提として、対照的なデザインパターンをまとめたグループを『デザインパターングループ』と呼ぶことにします。</p>
 <p>図3のように、マイクロサービスアーキテクチャーを便宜上５つの領域に分け、その中にあるデザインパターングループとデザインパターンを取り上げます。</p>
 <p>図3. 補章で取り上げるアーキテクチャーの領域</p>
-<p><img alt="mermaid-diagram-2024-12-03-220309.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-12-03-220309.svg" /></p>
+<p><img alt="03" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/03.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -27325,7 +27326,7 @@
 <p>図4で5章以降のデザインパターンの図の凡例を示します。</p>
 <p>各図では丸ボックスをデザインパターングループ、四角ボックスをデザインパターンとして区別しています。</p>
 <p>図4. デザインパターンの図の凡例</p>
-<p><img alt="mermaid-diagram-2024-10-28-201420.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-10-28-201420.svg" /></p>
+<p><img alt="04" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/04.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -27345,8 +27346,8 @@
 <p>APIゲートウェイを配置することにより、必要なマイクロサービスのAPIのみを公開して受信したリクエストを適切なマイクロサービスのAPIにルーティングできます。</p>
 <p>図5で、APIゲートウェイ領域のデザインパターングループの種類を示します。</p>
 <p>代表的なものにはAPIゲートウェイ分割方法があります。</p>
-<p>図5　APIゲートウェイ領域のデザインパターングループの種類</p>
-<p><img alt="mermaid-diagram-2024-11-20-185659.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-11-20-185659.svg" /></p>
+<p>図5. APIゲートウェイ領域のデザインパターングループの種類</p>
+<p><img alt="05" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/05.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -27361,7 +27362,7 @@
 <p>図6で、APIゲートウェイ分割方法のデザインパターンの種類を示します。</p>
 <p>代表的なものには中央集約ゲートウェイとBFFがあります。</p>
 <p>図6. APIゲートウェイ分割方法のデザインパターンの種類</p>
-<p><img alt="mermaid-diagram-2024-11-20-185631.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-11-20-185631.svg" /></p>
+<p><img alt="06" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/06.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -27413,15 +27414,15 @@
 <p>ただ、その中でもNginxは環境構築や設定の方法が簡単で扱いやすく、またこれらの情報をインターネットや書籍から見つけやすいため、私の好みのツールです。</p>
 <p>なお、GraphQLサーバーをBFFとして使用するフルスクラッチな設計方法もあります。</p>
 <p>この場合、フロントエンドや外部APIはGraphQLクライアントとして設計する必要があります。</p>
-<p>図7　BFFの配置例</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャー設計の概説-APIゲートウェイパターン.drawio (1)" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/e73e41ec-6f9d-4f14-9246-fe11679153b2.png" /></p>
+<p>図7. BFFの配置例</p>
+<p><img alt="07" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/07.png" /></p>
 <p>図8でAWS EKS上でのBFFの設計例を示します。</p>
 <p>マイクロサービスアーキテクチャーのAPIゲートウェイ領域には、図7と同様にクライアント別のNginxを配置します。</p>
 <p>もしNginxでBFFとしての要件を満たせなくとも、Istioと組み合わせることにより足りない機能を補完できます。</p>
 <p>なお、Istioの提供するIstio IngressGatewayとIstio EgressGatewayはメッシュゲートウェイと呼ばれ、APIゲートウェイと似た名前をもちます。</p>
 <p>ただ、APIゲートウェイとは異なる役割を持ちます *35 。</p>
-<p>図8　AWS EKS上でのBFFの設計例</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-BFF.drawio" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/DDD%25E3%2581%25A8%25E3%2582%25AF%25E3%2583%25A9%25E3%2582%25A6%25E3%2583%2588%25E3%2582%2599%25E3%2583%258D%25E3%2582%25A4%25E3%2583%2586%25E3%2582%25A3%25E3%2583%2595%25E3%2582%2599%25E3%2581%25AB%25E3%2582%2588%25E3%2582%258B%25E3%2583%259E%25E3%2582%25A4%25E3%2582%25AF%25E3%2583%25AD%25E3%2582%25B5%25E3%2583%25BC%25E3%2583%2592%25E3%2582%2599%25E3%2582%25B9%25E3%2582%25A2%25E3%2583%25BC%25E3%2582%25AD%25E3%2583%2586%25E3%2582%25AF%25E3%2583%2581%25E3%2583%25A3%25E8%25A8%25AD%25E8%25A8%2588%25E3%2581%25AE%25E6%25A6%2582%25E8%25AA%25AC-BFF.drawio.png" /></p>
+<p>図8. AWS EKS上でのBFFの設計例</p>
+<p><img alt="08" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/08.png" /></p>
 <hr />
 <p>注釈</p>
 <p>*35 DeJonghe, D. (2022). NGINX Cookbook. O’Reilly Media, Inc.</p>
@@ -27431,8 +27432,8 @@
 <p>マイクロサービス領域には、適切に分割された複数のバックエンドアプリケーション（マイクロサービス）を配置します。</p>
 <p>図9で、マイクロサービス領域のデザインパターングループの種類を示します。</p>
 <p>代表的なものにはマイクロサービス間通信方法、マイクロサービス分割方法、マイクロサービス設計方法、ドメインモデリング方法、トランザクション管理方法、設定管理方法、認証認可があります。</p>
-<p>図9　マイクロサービス領域のデザインパターングループの種類</p>
-<p><img alt="mermaid-diagram-2024-10-27-172447.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-10-27-172447.svg" /></p>
+<p>図9. マイクロサービス領域のデザインパターングループの種類</p>
+<p><img alt="09" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/09.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -27453,8 +27454,8 @@
 <p>マイクロサービス間を適切な方法で通信することにより、効率的で障害を解決しやすいマイクロサービスアーキテクチャーを実現できます。</p>
 <p>図10で、マイクロサービス間通信方法のデザインパターンの種類を示します。</p>
 <p>代表的なものには、リクエスト／レスポンス、パブリッシュ／サブスクライブ、共有データ経由があります。</p>
-<p>図10　マイクロサービス間通信方法のデザインパターンの種類</p>
-<p><img alt="mermaid-diagram-2024-10-27-172615.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-10-27-172615.svg" /></p>
+<p>図10. マイクロサービス間通信方法のデザインパターンの種類</p>
+<p><img alt="10" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/10.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -27512,7 +27513,7 @@
 <p>ここではKubernetes Podをマイクロサービスとして表します。</p>
 <p>送信元マイクロサービスは宛先と同期的に双方向で通信します。</p>
 <p>図11　マイクロサービス間のリクエスト／レスポンスによる通信の様子</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス間の通信方式.drawio" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/64ba3fb1-6ec6-4ae9-b50e-d107a58a07b3.png" /></p>
+<p><img alt="11" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/11.png" /></p>
 <p>図12で、AWS EKS上でのリクエスト／レスポンスの設計例を示します。</p>
 <p>ここではKubernetes Podをマイクロサービスとして表しており、関連する他のKubernetesリソースを省略しています。</p>
 <p>リクエスト／レスポンスのクライアントとサーバーとして、HTTP/1.1でテキスト（JSONやXML）を送受信するパッケージやRemote Procedure Call分野のツールを使用できます。</p>
@@ -27522,7 +27523,7 @@
 <p>フロントエンドのRESTfulクライアントはBFFのNginxのRESTfulサーバーと通信します。</p>
 <p>NgincはgRPCサーバーまたはRESTfulサーバーと通信し、もしgRPCサーバーと通信する場合は専用のモジュールが必要です *39 。</p>
 <p>図12　AWS EKS上でのリクエスト／レスポンスの設計例</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャー設計の概説-リクエスト _ レスポンス.drawio (2)" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/DDD%25E3%2581%25A8%25E3%2582%25AF%25E3%2583%25A9%25E3%2582%25A6%25E3%2583%2588%25E3%2582%2599%25E3%2583%258D%25E3%2582%25A4%25E3%2583%2586%25E3%2582%25A3%25E3%2583%2595%25E3%2582%2599%25E3%2581%25AB%25E3%2582%2588%25E3%2582%258B%25E3%2583%259E%25E3%2582%25A4%25E3%2582%25AF%25E3%2583%25AD%25E3%2582%25B5%25E3%2583%25BC%25E3%2583%2592%25E3%2582%2599%25E3%2582%25B9%25E3%2582%25A2%25E3%2583%25BC%25E3%2582%25AD%25E3%2583%2586%25E3%2582%25AF%25E3%2583%2581%25E3%2583%25A3%25E8%25A8%25AD%25E8%25A8%2588%25E3%2581%25AE%25E6%25A6%2582%25E8%25AA%25AC-%25E3%2583%25AA%25E3%2582%25AF%25E3%2582%25A8%25E3%2582%25B9%25E3%2583%2588___%25E3%2583%25AC%25E3%2582%25B9%25E3%2583%259B%25E3%2582%259A%25E3%2583%25B3%25E3%2582%25B9.drawio_(2).png" /></p>
+<p><img alt="12" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/12.png" /></p>
 <hr />
 <p>注釈</p>
 <p>*37 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.</p>
@@ -27536,8 +27537,8 @@
 <p>図13で、マイクロサービス分割方法のデザインパターンの種類を示します。</p>
 <p>代表的なものには、DDDに基づく境界と永続データの機密性があります。</p>
 <p>また、DDDに基づく境界には境界づけられたコンテキストと1つ以上の集約 *41 があります。</p>
-<p>図13　マイクロサービス分割方法のデザインパターンの種類</p>
-<p><img alt="mermaid-diagram-2024-10-27-231120.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-10-27-231120.svg" /></p>
+<p>図13. マイクロサービス分割方法のデザインパターンの種類</p>
+<p><img alt="13" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/13.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -27559,8 +27560,8 @@
 <p>そこで、ここでは関連書籍を少しだけ紹介します。</p>
 <p>Learning Domain-Driven design本 <em>42 は、DDDの代表的な書籍であるDomain-Driven design本 </em>43 やImplementing Domain-Driven design本 *44 をわかりやすく解説しており、さらにマイクロサービス分割方法へのDDDの適用についても言及しています。</p>
 <p>補章で登場したDDDの用語やデザインパターンは、Domain-Driven Design reference本 *45 で整理されています。</p>
-<p>図14　DDDに基づくマイクロサービスの適切な大きさ</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャー設計の概説-マイクロサービス分割の関係性.drawio (4)" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/DDD%25E3%2581%25A8%25E3%2582%25AF%25E3%2583%25A9%25E3%2582%25A6%25E3%2583%2588%25E3%2582%2599%25E3%2583%258D%25E3%2582%25A4%25E3%2583%2586%25E3%2582%25A3%25E3%2583%2595%25E3%2582%2599%25E3%2581%25AB%25E3%2582%2588%25E3%2582%258B%25E3%2583%259E%25E3%2582%25A4%25E3%2582%25AF%25E3%2583%25AD%25E3%2582%25B5%25E3%2583%25BC%25E3%2583%2592%25E3%2582%2599%25E3%2582%25B9%25E3%2582%25A2%25E3%2583%25BC%25E3%2582%25AD%25E3%2583%2586%25E3%2582%25AF%25E3%2583%2581%25E3%2583%25A3%25E8%25A8%25AD%25E8%25A8%2588%25E3%2581%25AE%25E6%25A6%2582%25E8%25AA%25AC-%25E3%2583%259E%25E3%2582%25A4%25E3%2582%25AF%25E3%2583%25AD%25E3%2582%25B5%25E3%2583%25BC%25E3%2583%2592%25E3%2582%2599%25E3%2582%25B9%25E5%2588%2586%25E5%2589%25B2%25E3%2581%25AE%25E9%2596%25A2%25E4%25BF%2582%25E6%2580%25A7.drawio_(4).png" /></p>
+<p>図14. DDDに基づくマイクロサービスの適切な大きさ</p>
+<p><img alt="14" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/14.png" /></p>
 <hr />
 <p>注釈</p>
 <p>*41 Newman, S. (2021). Building microservices. O’Reilly Media, Inc.</p>
@@ -27575,8 +27576,8 @@
 <p>図15で、マイクロサービスで採用しうるドメインモデリングのパターンの種類を示します。</p>
 <p>代表的なものにはステートソーシングとイベントソーシングがあります。</p>
 <p>ドメインモデリング方法の選定はマイクロサービス間通信方法に影響します。</p>
-<p>図15　メインモデリングのデザインパターンの種類</p>
-<p><img alt="mermaid-diagram-2024-10-27-165833.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-10-27-165833.svg" /></p>
+<p>図15. メインモデリングのデザインパターンの種類</p>
+<p><img alt="15" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/15.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -27595,7 +27596,7 @@
 <p>ステートソーシングとイベントソーシングはモデリング時の着眼点が異なるため、ドメインモデルの適切な分析手法やデータベーステーブルの構造なども異なります。</p>
 <p>多くの読者にとって、より馴染みのあるドメインモデリングはおそらくステートソーシングでしょう。</p>
 <p>図16. ドメインモデリングとマイクロサービス間通信方法の関係性</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-ステートソーシング 、イベントソーシング.drawio (2)" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/DDD%25E3%2581%25A8%25E3%2582%25AF%25E3%2583%25A9%25E3%2582%25A6%25E3%2583%2588%25E3%2582%2599%25E3%2583%258D%25E3%2582%25A4%25E3%2583%2586%25E3%2582%25A3%25E3%2583%2595%25E3%2582%2599%25E3%2581%25AB%25E3%2582%2588%25E3%2582%258B%25E3%2583%259E%25E3%2582%25A4%25E3%2582%25AF%25E3%2583%25AD%25E3%2582%25B5%25E3%2583%25BC%25E3%2583%2592%25E3%2582%2599%25E3%2582%25B9%25E3%2582%25A2%25E3%2583%25BC%25E3%2582%25AD%25E3%2583%2586%25E3%2582%25AF%25E3%2583%2581%25E3%2583%25A3%25E8%25A8%25AD%25E8%25A8%2588%25E3%2581%25AE%25E6%25A6%2582%25E8%25AA%25AC-%25E3%2582%25B9%25E3%2583%2586%25E3%2583%25BC%25E3%2583%2588%25E3%2582%25BD%25E3%2583%25BC%25E3%2582%25B7%25E3%2583%25B3%25E3%2582%25AF%25E3%2582%2599_%25E3%2580%2581%25E3%2582%25A4%25E3%2583%2598%25E3%2582%2599%25E3%2583%25B3%25E3%2583%2588%25E3%2582%25BD%25E3%2583%25BC%25E3%2582%25B7%25E3%2583%25B3%25E3%2582%25AF%25E3%2582%2599.drawio_(2).png" /></p>
+<p><img alt="16" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/16.png" /></p>
 <hr />
 <p>注釈</p>
 <p>*47 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.</p>
@@ -27606,8 +27607,8 @@
 <p>粒度が大き過ぎればモノリスアーキテクチャーとなり、小さ過ぎれば分散した大きな泥団子になってしまいます *48 。</p>
 <p>図17で、マイクロサービス設計方法のデザインパターングループの種類を示します。</p>
 <p>代表的なものには、DDDデザインパターン設計とアプリケーションアーキテクチャー設計があります。</p>
-<p>図17　マイクロサービス設計方法のデザインパターンの種類</p>
-<p><img alt="mermaid-diagram-2024-10-27-165901.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-10-27-165901.svg" /></p>
+<p>図17. マイクロサービス設計方法のデザインパターンの種類</p>
+<p><img alt="17" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/17.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -27628,7 +27629,7 @@
 <p>代表的なものにはエンティティーや値オブジェクトがあり、ほかに取り上げしきれないほどパターンがあります *49 。</p>
 <p>ドメインロジックは機能的であり、クラウドネイティブ技術で代替できません。</p>
 <p>図18. DDDデザインパターンの種類</p>
-<p><img alt="mermaid-diagram-2024-11-20-185600.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-11-20-185600.svg" /></p>
+<p><img alt="18" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/18.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -27647,7 +27648,7 @@
 <p>代表的なものにはレイヤードアーキテクチャー、ヘキサゴナルアーキテクチャー、オニオンアーキテクチャー、クリーンアーキテクチャーがあります *50 。</p>
 <p>これらはDDDデザインパターンを適切な層に実装するため、またドメインロジックを持つパターンを隔離するための方法です。</p>
 <p>図19. アプリケーションアーキテクチャーのデザインパターンの種類</p>
-<p><img alt="mermaid-diagram-2024-11-20-192812.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-11-20-192812.svg" /></p>
+<p><img alt="19" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/19.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -27706,7 +27707,7 @@
 <p>図20で、トランザクション管理方法のデザインパターンの種類を示します。</p>
 <p>Sagaにはオーケストレーションベースとコレオグラフィベースがあります。</p>
 <p>図20. トランザクション管理方法のデザインパターンの種類</p>
-<p><img alt="mermaid-diagram-2024-10-27-170141.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-10-27-170141.svg" /></p>
+<p><img alt="20" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/20.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -27724,7 +27725,7 @@
 
 <p>オーケストレーションベースまたはコレオグラフィベースのSagaは、一部のロジックをクラウドネイティブ技術で代替できます。</p>
 <p>表9で、Sagaとクラウドネイティブ技術の関連性を整理します。</p>
-<p>表9　トランザクション管理方法とクラウドネイティブ技術の関連性</p>
+<p>表9. トランザクション管理方法とクラウドネイティブ技術の関連性</p>
 <table>
 <thead>
 <tr>
@@ -27765,7 +27766,7 @@
 <p>なお、より良いオーケストレーションベースSagaにはステータスチェッカーが必要になるでしょう。</p>
 <p>ステータスチェッカーはトランザクションIDを使用してワークフローの進捗度を取得し、これをクライアントに返却します <em>56 </em>57 。</p>
 <p>図21. AWS EKS上でのオーケストレーションベースSagaの設計例</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-オーケストレーションベースSaga (概要).drawio (6)" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/DDD%25E3%2581%25A8%25E3%2582%25AF%25E3%2583%25A9%25E3%2582%25A6%25E3%2583%2588%25E3%2582%2599%25E3%2583%258D%25E3%2582%25A4%25E3%2583%2586%25E3%2582%25A3%25E3%2583%2595%25E3%2582%2599%25E3%2581%25AB%25E3%2582%2588%25E3%2582%258B%25E3%2583%259E%25E3%2582%25A4%25E3%2582%25AF%25E3%2583%25AD%25E3%2582%25B5%25E3%2583%25BC%25E3%2583%2592%25E3%2582%2599%25E3%2582%25B9%25E3%2582%25A2%25E3%2583%25BC%25E3%2582%25AD%25E3%2583%2586%25E3%2582%25AF%25E3%2583%2581%25E3%2583%25A3%25E8%25A8%25AD%25E8%25A8%2588%25E3%2581%25AE%25E6%25A6%2582%25E8%25AA%25AC-%25E3%2582%25AA%25E3%2583%25BC%25E3%2582%25B1%25E3%2582%25B9%25E3%2583%2588%25E3%2583%25AC%25E3%2583%25BC%25E3%2582%25B7%25E3%2583%25A7%25E3%2583%25B3%25E3%2583%2598%25E3%2582%2599%25E3%2583%25BC%25E3%2582%25B9Saga_(%25E6%25A6%2582%25E8%25A6%2581).drawio_(6).png" /></p>
+<p><img alt="21" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/21.png" /></p>
 <hr />
 <p>注釈</p>
 <p>*53 Bellemare, A. (2020b). Building Event-Driven microservices. O’Reilly Media, Inc.</p>
@@ -27782,8 +27783,8 @@
 <p>まずは認証です。</p>
 <p>図22で、認証のデザインパターンの種類を示します。</p>
 <p>代表的なものにはセッションベースとトークンベースがあります。</p>
-<p>図22　認証のデザインパターンの種類</p>
-<p><img alt="mermaid-diagram-2024-10-27-170756.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-10-27-170756.svg" /></p>
+<p>図22. 認証のデザインパターンの種類</p>
+<p><img alt="22" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/22.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -27802,7 +27803,7 @@
 <p>ここではSSOを概説します。</p>
 <p>SSOでは、IDプロバイダーやこれへのリクエストはクラウドネイティブ技術で代替できます。</p>
 <p>表10で、認証とクラウドネイティブ技術の関連性を整理します。</p>
-<p>表10　認証とクラウドネイティブ技術の関連性</p>
+<p>表10. 認証とクラウドネイティブ技術の関連性</p>
 <table>
 <thead>
 <tr>
@@ -27832,8 +27833,8 @@
 <p>この時、任意の認証パッケージやIstioを使用してアクセストークン検証のリクエストをKeycloakに送信できます。</p>
 <p>Istioの場合、Istioリソースを定義することにより無効なアカウントからのリクエストをサイドカーコンテナで阻止（401や403レスポンスを返信）できます *60 。</p>
 <p>このようにKeycloakとIstioを組み合わせることにより、マイクロサービスアーキテクチャーでOIDC認可コードフローを実現できます。</p>
-<p>図23　AWS EKS上でのOIDC認可コードフローの設計例</p>
-<p><img alt="23" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/23.png" /></p>
+<p>図23. AWS EKS上でのOIDC認可コードフローの設計例</p>
+<p><img alt="23" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/23.png" /></p>
 <hr />
 <p>注釈</p>
 <p>*59 He, X., &amp; Yang, X. (2017). Authentication and authorization of end user in microservice architecture. Journal of Physics Conference Series, 910, 012060. <a href="https://doi.org/10.1088/1742-6596/910/1/012060">https://doi.org/10.1088/1742-6596/910/1/012060</a></p>
@@ -27845,7 +27846,7 @@
 <p>図24で、認可のデザインパターンの種類を示します。</p>
 <p>代表的なものには中央集中と分散があります。</p>
 <p>図24. 認可のデザインパターンの種類</p>
-<p><img alt="mermaid-diagram-2024-10-27-170856.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-10-27-170856.svg" /></p>
+<p><img alt="24" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/24.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>
@@ -27864,7 +27865,7 @@
 <p>認可サービスとして、Security &amp; Compliance分野のツールを使用できます。</p>
 <p>例えば、Open Policy Agentは<code>rego</code>ファイルのロジックで認可スコープを定義しており、各マイクロサービスはOpen Policy Agentから認可の真偽値を取得します *61 。</p>
 <p>この時、値が偽の場合に各マイクロサービスは403ステータスを返信します 。</p>
-<p>表11　認可とクラウドネイティブ技術の関連性</p>
+<p>表11. 認可とクラウドネイティブ技術の関連性</p>
 <table>
 <thead>
 <tr>
@@ -27901,7 +27902,7 @@
 <p>代表的なデザインパターングループには、永続データ方法、静的ファイル管理方法、そして一時データ管理方法があります。</p>
 <p>この時、必要に応じてストレージを分割し、また暗号化します。</p>
 <p>図25. ストレージ領域のデザインパターングループの種類</p>
-<p><img alt="mermaid-diagram-2024-10-27-170927.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-10-27-170927.svg" /></p>
+<p><img alt="25" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/25.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -27918,14 +27919,14 @@
 <p>例えば、AWS Aurora MySQLは永続データを管理し、AWS KMSでデータを暗号化できます。</p>
 <p>AWS S3は静的ファイルを管理し、暗号化にAWS S3マネージド暗号化キーなどを使用できます。</p>
 <p>Kubernetes NodeにアタッチされたAWS EBSやKubernetes Volumeは一時データを管理し、AWS EBS上のデータの暗号化にAWS KMSを使用できます。</p>
-<p>図26　AWS EKS上でのデータ管理の設計例</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャー設計の概説-データ管理.drawio" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/DDD%25E3%2581%25A8%25E3%2582%25AF%25E3%2583%25A9%25E3%2582%25A6%25E3%2583%2588%25E3%2582%2599%25E3%2583%258D%25E3%2582%25A4%25E3%2583%2586%25E3%2582%25A3%25E3%2583%2595%25E3%2582%2599%25E3%2581%25AB%25E3%2582%2588%25E3%2582%258B%25E3%2583%259E%25E3%2582%25A4%25E3%2582%25AF%25E3%2583%25AD%25E3%2582%25B5%25E3%2583%25BC%25E3%2583%2592%25E3%2582%2599%25E3%2582%25B9%25E3%2582%25A2%25E3%2583%25BC%25E3%2582%25AD%25E3%2583%2586%25E3%2582%25AF%25E3%2583%2581%25E3%2583%25A3%25E8%25A8%25AD%25E8%25A8%2588%25E3%2581%25AE%25E6%25A6%2582%25E8%25AA%25AC-%25E3%2583%2586%25E3%2582%2599%25E3%2583%25BC%25E3%2582%25BF%25E7%25AE%25A1%25E7%2590%2586.drawio.png" /></p>
+<p>図26. AWS EKS上でのデータ管理の設計例</p>
+<p><img alt="26" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/26.png" /></p>
 <p><br></p>
 <h3 id="81">8.1 永続データ管理方法<a class="headerlink" href="#81" title="Permanent link">&para;</a></h3>
 <p>図27で、マイクロサービスアーキテクチャーにおける永続データ管理方法のデザインパターンの種類を示します。</p>
 <p>代表的なものにはDB per serviceとShared DBがあります。</p>
-<p>図27　永続データ管理方法のデザインパターンの種類</p>
-<p><img alt="mermaid-diagram-2024-10-27-171016.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-10-27-171016.svg" /></p>
+<p>図27. 永続データ管理方法のデザインパターンの種類</p>
+<p><img alt="27" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/27.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -27940,7 +27941,7 @@
 <p>Shared DBでは、各マイクロサービス間で共有するデータベースを配置し、共有データベースのテーブルをマイクロサービス用に分割します。</p>
 <p>Shared DBは一般的に非推奨なパターンとされているため、ここでは省略します。</p>
 <p>表12で、永続データ管理方法とクラウドネイティブ技術の関連性を整理します。</p>
-<p>表12　永続データ管理方法とクラウドネイティブ技術の関連性</p>
+<p>表12. 永続データ管理方法とクラウドネイティブ技術の関連性</p>
 <table>
 <thead>
 <tr>
@@ -27976,7 +27977,7 @@
 <p>例えば、AWS Aurora MySQLであれば、マイクロサービス単位でデータベーススキーマを定義します。</p>
 <p>ほかの方法としてマイクロサービス単位でAWS Aurora MySQLクラスターを作成してもよいですが、クラウドの金銭的コスト面から私は好みではありません。</p>
 <p>図28. AWS EKS上でのDB per serviceの設計例</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-データベースの分割.drawio (1)" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/a9040024-c641-4e34-959b-4d53539ee9da.png" /></p>
+<p><img alt="28" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/28.png" /></p>
 <hr />
 <p>注釈</p>
 <p>*63 What is Amazon Aurora? - Amazon Aurora. (n.d.). <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html</a></p>
@@ -27988,7 +27989,7 @@
 <p>代表的なものにはExternalized configuration、CI/CDパイプライン、サービスメッシュ、そしてMicroservice chassisがあります。</p>
 <p>補章では、これらのうちでExternalized configurationとサービスメッシュを概説します。</p>
 <p>図29. 横断領域のデザインパターングループの種類</p>
-<p><img alt="29" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/29.png" /></p>
+<p><img alt="29" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/29.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -28018,7 +28019,7 @@
 <p>図30で、Externalized configurationのデザインパターンの種類を示します。</p>
 <p>Externalized configurationにはプルベースとプッシュベースの方法があります。</p>
 <p>図30. Externalized configurationのデザインパターンの種類</p>
-<p><img alt="mermaid-diagram-2024-10-27-171331.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-10-27-171331.svg" /></p>
+<p><img alt="30" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/30.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -28032,7 +28033,7 @@
 
 <p>プルベースとプッシュベースはクラウドネイティブ技術で代替できます。</p>
 <p>表13で、Externalized configurationとクラウドネイティブ技術の関連性を整理します。</p>
-<p>表13　Externalized configurationとクラウドネイティブ技術の関連性</p>
+<p>表13. Externalized configurationとクラウドネイティブ技術の関連性</p>
 <table>
 <thead>
 <tr>
@@ -28066,8 +28067,8 @@
 <p>AWS Secrets Managerはクラウドリソースなどに外部から設定を動的に組み込みます。</p>
 <p>AWS Aurora MySQLを使用する場合、データベースに関する機密情報はAWS Secrets Managerで管理することをお奨めます。</p>
 <p>Kubernetes ConfigMap、Secret、AWS Secrets Managerの暗号化キーは管理の簡単さ観点から、オープンソースよりもマネージドサービスの技術を使用することをお奨めます。</p>
-<p>図31　AWS EKS上でのExternalized configurationの設計例</p>
-<p><img alt="31" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/31.png" /></p>
+<p>図31. AWS EKS上でのExternalized configurationの設計例</p>
+<p><img alt="31" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/31.png" /></p>
 <hr />
 <p>注釈</p>
 <p>*65 Updating configuration via a ConfigMap. (2024, July 17). Kubernetes. <a href="https://kubernetes.io/docs/tutorials/configuration/updating-configuration-via-a-configmap/">https://kubernetes.io/docs/tutorials/configuration/updating-configuration-via-a-configmap/</a></p>
@@ -28081,7 +28082,7 @@
 <p>図32で、サービスメッシュのデザインパターンの種類を示します。</p>
 <p>代表的なものにはサイドカーとサイドカーレスがあります。</p>
 <p>図32. サービスメッシュのデザインパターンの種類</p>
-<p><img alt="32" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/32.png" /></p>
+<p><img alt="32" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/32.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -28096,7 +28097,7 @@
 <p>サービスメッシュはクラウドネイティブ技術で代替できます。</p>
 <p>表14で、サービスメッシュとクラウドネイティブ技術の関連性を整理します。</p>
 <p>ここでは、技術用語のサービスメッシュとCNCFのService Mesh分野を区別しています。</p>
-<p>表14　サービスメッシュの概説</p>
+<p>表14. サービスメッシュの概説</p>
 <table>
 <thead>
 <tr>
@@ -28134,7 +28135,7 @@
 <p>Istioにより、マイクロサービスとしてのKubernetes Podは他のPodと直接通信できるようになります。</p>
 <p>一方で、Istioを使用しない場合、Kubernetes PodはKubernetes Serviceを介して他のPodと通信します。</p>
 <p>図33. AWS EKS上でのサイドカーサービスメッシュの設計例</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャー設計の概説-サービスメッシュ.drawio" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/DDD%25E3%2581%25A8%25E3%2582%25AF%25E3%2583%25A9%25E3%2582%25A6%25E3%2583%2588%25E3%2582%2599%25E3%2583%258D%25E3%2582%25A4%25E3%2583%2586%25E3%2582%25A3%25E3%2583%2595%25E3%2582%2599%25E3%2581%25AB%25E3%2582%2588%25E3%2582%258B%25E3%2583%259E%25E3%2582%25A4%25E3%2582%25AF%25E3%2583%25AD%25E3%2582%25B5%25E3%2583%25BC%25E3%2583%2592%25E3%2582%2599%25E3%2582%25B9%25E3%2582%25A2%25E3%2583%25BC%25E3%2582%25AD%25E3%2583%2586%25E3%2582%25AF%25E3%2583%2581%25E3%2583%25A3%25E8%25A8%25AD%25E8%25A8%2588%25E3%2581%25AE%25E6%25A6%2582%25E8%25AA%25AC-%25E3%2582%25B5%25E3%2583%25BC%25E3%2583%2592%25E3%2582%2599%25E3%2582%25B9%25E3%2583%25A1%25E3%2583%2583%25E3%2582%25B7%25E3%2583%25A5.drawio.png" /></p>
+<p><img alt="33" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/33.png" /></p>
 <hr />
 <p>注釈</p>
 <p>*67 マイクロサービス間通信方法にパブリッシュ／サブスクライブを使用する場合、『イベントメッシュ』という仕組みが適切です。これは、イベント仲介システムなどを各マイクロサービスに横断的に提供できます。これは、Knativeで代替できます（<a href="https://knative.dev/docs/eventing/event-mesh/">https://knative.dev/docs/eventing/event-mesh/</a>）。</p>
@@ -28147,7 +28148,7 @@
 <p>図34で、インフラストラクチャー領域のデザインパターングループの種類を示します。</p>
 <p>代表的なデザインパターングループにはL4/L7トラフィック管理方法、証明書管理方法、オブザーバビリティーがあります。</p>
 <p>図34. インフラストラクチャー領域のデザインパターングループの種類</p>
-<p><img alt="mermaid-diagram-2024-11-20-191039.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-11-20-191039.svg" /></p>
+<p><img alt="34" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/34.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -28169,7 +28170,7 @@
 <p>また、マネージドなAWS VPC CNIアドオンはkubelet、ENI、AWS EKSコントロールプレーンと連携し、AWS VPC上にクラスターネットワークを作成します。</p>
 <p>これはAWS EKSクラスター内のIPアドレスを制御し、マイクロサービスがAWS EKSのクラスターネットワークに参加できるようにします *71 。</p>
 <p>図35. AWS EKS上でのL3管理の設計例</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L3管理.drawio" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/DDD%25E3%2581%25A8%25E3%2582%25AF%25E3%2583%25A9%25E3%2582%25A6%25E3%2583%2588%25E3%2582%2599%25E3%2583%258D%25E3%2582%25A4%25E3%2583%2586%25E3%2582%25A3%25E3%2583%2595%25E3%2582%2599%25E3%2581%25AB%25E3%2582%2588%25E3%2582%258B%25E3%2583%259E%25E3%2582%25A4%25E3%2582%25AF%25E3%2583%25AD%25E3%2582%25B5%25E3%2583%25BC%25E3%2583%2592%25E3%2582%2599%25E3%2582%25B9%25E3%2582%25A2%25E3%2583%25BC%25E3%2582%25AD%25E3%2583%2586%25E3%2582%25AF%25E3%2583%2581%25E3%2583%25A3%25E8%25A8%25AD%25E8%25A8%2588%25E3%2581%25AE%25E6%25A6%2582%25E8%25AA%25AC-L3%25E7%25AE%25A1%25E7%2590%2586.drawio.png" /></p>
+<p><img alt="35" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/35.png" /></p>
 <hr />
 <p>注釈</p>
 <p>*71 ほかに例えば、L2を作成するCNIがあり、CNIによって提供する層はさまざまです。</p>
@@ -28180,8 +28181,8 @@
 <p>L4/L7のプロトコル（TCP、HTTP、HTTPSなど）を使用してマイクロサービスのインスタンス間が通信する時、トラフィック管理の仕組みが必要です。</p>
 <p>図36で、デザインパターングループの種類を示します。</p>
 <p>代表的なものにはサービス検出とロードバランシングがあります。</p>
-<p>図36　L4/L7トラフィック管理方法のデザインパターングループの種類</p>
-<p><img alt="mermaid-diagram-2024-10-28-191314.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-10-28-191314.svg" /></p>
+<p>図36. L4/L7トラフィック管理方法のデザインパターングループの種類</p>
+<p><img alt="36" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/36.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -28198,8 +28199,8 @@
 <p>この時、宛先と継続的に通信できるような仕組みが必要です。</p>
 <p>サービス検出により、リクエストの送信元マイクロサービスが宛先の場所IPアドレス、ポート番号、完全修飾ドメイン名などを動的に検出し、通信できるようになります。</p>
 <p>図37で、サービス検出のデザインパターンを示します。</p>
-<p>図37　宛先検出と宛先登録のデザインパターンの種類</p>
-<p><img alt="mermaid-diagram-2024-11-20-190920.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-11-20-190920.svg" /></p>
+<p>図37. 宛先検出と宛先登録のデザインパターンの種類</p>
+<p><img alt="37" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/18.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -28219,7 +28220,7 @@
 <p>これらの仕組みはクラウドネイティブ技術で代替できます。</p>
 <p>表15で、宛先検出とクラウドネイティブ技術の関連性を整理します。</p>
 <p>静的ファイルストレージとして使用できる。</p>
-<p>表15　宛先検出とクラウドネイティブ技術の関連性</p>
+<p>表15. 宛先検出とクラウドネイティブ技術の関連性</p>
 <table>
 <thead>
 <tr>
@@ -28242,7 +28243,7 @@
 <tr>
 <td>技術例</td>
 <td>・Service Mesh（Istio）</td>
-<td>・Kubernetes標準機能　（Kubernetes Service、kube-proxy）<br>・Coordination &amp; Service Discovery（CoreDNS）</td>
+<td>・Kubernetes標準機能（Kubernetes Service、kube-proxy）<br>・Coordination &amp; Service Discovery（CoreDNS）</td>
 </tr>
 </tbody>
 </table>
@@ -28250,29 +28251,29 @@
 <p>サービスメッシュ内ではL4/L7ロードバランサーとしてService Mesh分野のツールを使用できます。</p>
 <p>例えば、Istioによるサイドカーコンテナはサービスメッシュ内のKubernetesリソースやIstioリソースの情報に基づいて、サーバーサイドサービス検出を実施します *72 。</p>
 <p>IstioコントロールプレーンはAWS EKSコントロールプレーンからサービス検出に必要なリソースの情報を収集し、インメモリで保管します。</p>
-<p>図38　AWS EKS上でのサービスメッシュ内のL4/L7トラフィック管理の設計例</p>
-<p><img alt="38" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/38.png" /></p>
+<p>図38. AWS EKS上でのサービスメッシュ内のL4/L7トラフィック管</p>
+<p><img alt="38" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/38.png" /></p>
 <p>図39で、AWS EKS上でのサービスメッシュ外のL7トラフィック管理の設計例を示します。</p>
 <p>サービスメッシュ外では、L7ロードバランサーとしてKubernetes標準機能とCoordination &amp; Service Discovery分野のツールを使用できます。</p>
 <p>例えば、CoreDNSはKubernetes Serviceとkube-proxyと連携し、サーバーサイドサービス検出を実施します <em>73 </em>74 。</p>
 <p>送信元Podは、宛先Podへのリクエスト前にCoreDNSから宛先Podのドメインを正引きします。</p>
 <p>この時、AWS EKSを使用する場合、マネージドなAWS kube-proxyアドオンとAWS CoreDNSアドオンを使用できます。</p>
-<p>図39　AWS EKS上でのサービスメッシュ外のL7トラフィック管理の設計例</p>
-<p><img alt="Platform Engineering on K8s-監視Podなし.drawio" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/Platform_Engineering_on_K8s-%25E7%259B%25A3%25E8%25A6%2596Pod%25E3%2581%25AA%25E3%2581%2597.drawio.png" /></p>
+<p>図39. AWS EKS上でのサービスメッシュ外のL7トラフィック管理の設計例</p>
+<p><img alt="39" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/39.png" /></p>
 <p>図40で、AWS EKS上でのサービスメッシュ外のL4トラフィック管理の設計例を示します。</p>
 <p>L4ロードバランサーとしてKubernetes標準機能を使用できます。</p>
 <p>例えば、Kubernetes Serviceとkube-proxyはデフォルトでiptablesと連携し、クライアントサイドサービス検出を実施します *75 。</p>
 <p>kube-proxyは新しいPodのIPアドレスをiptablesに追加し、またKubernetes Serviceはiptablesに基づいてリクエストをPodにロードバランシングします。</p>
 <p>前述のとおり、AWSはマネージドなkube-proxyアドオンを提供します。</p>
-<p>図40　AWS EKS上でのサービスメッシュ外のL4トラフィック管理の設計例</p>
-<p><img alt="40" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/40.png" /></p>
+<p>図40. AWS EKS上でのサービスメッシュ外のL4トラフィック管理の設計例</p>
+<p><img alt="40" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/40.png" /></p>
 <p>宛先登録にはセルフ登録とサードパーティー登録があります。</p>
 <p>これらの仕組みはクラウドネイティブ技術で代替できます。</p>
 <p>表16で、宛先登録パターンとクラウドネイティブ技術の関連性を整理します。</p>
 <p>サービスレジストリとして、Coordination &amp; Service Discovery分野のツールを使用できます。</p>
 <p>例えば、Kubernetes上のさまざまなサービスレジストラーは収集した宛先情報をEtcdに保管します。</p>
 <p>AWS EKSを使用する場合、Etcdはマネージドなコントロールプレーン上にあります *76 。</p>
-<p>表16　宛先登録とクラウドネイティブ技術の関連性</p>
+<p>表16. 宛先登録とクラウドネイティブ技術の関連性</p>
 <table>
 <thead>
 <tr>
@@ -28303,8 +28304,8 @@
 <p>マイクロサービスのインスタンスに適切に負荷を分散させることにより、マイクロサービスアーキテクチャーのシステム全体の可用性を高められます。</p>
 <p>図41で、ロードバランシングのデザインパターンの種類を示します。</p>
 <p>代表的なものには静的方式と動的方式があります。</p>
-<p>図41　ロードバランシングのデザインパターンの種類</p>
-<p><img alt="mermaid-diagram-2024-10-27-172111.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-10-27-172111.svg" /></p>
+<p>図41. ロードバランシングのデザインパターンの種類</p>
+<p><img alt="41" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/41.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -28365,8 +28366,8 @@
 <p>証明書を使用して通信を暗号化できます *78 。</p>
 <p>図42で、証明書管理方法のデザインパターンの種類を示します。</p>
 <p>代表的なものにはサイドカー、アプリケーション、クラウドリソースの証明書管理があります。</p>
-<p>図42　証明書管理方法のデザインパターンの種類</p>
-<p><img alt="mermaid-diagram-2024-11-28-143835.svg" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/mermaid-diagram-2024-11-28-143835.svg" /></p>
+<p>図42. 証明書管理方法のデザインパターンの種類</p>
+<p><img alt="42" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/42.png" /></p>
 <div hidden>
 
 <pre class="mermaid"><code>flowchart LR
@@ -28382,7 +28383,7 @@
 <p>証明書管理はクラウドネイティブ技術で代替できます。</p>
 <p>表18で、証明書管理とクラウドネイティブ技術の関連性を整理します。</p>
 <p>ここでは、技術用語のサービスメッシュとCNCFのService Mesh分野を区別しています。</p>
-<p>表18　証明書管理とクラウドネイティブ技術の関連性</p>
+<p>表18. 証明書管理とクラウドネイティブ技術の関連性</p>
 <table>
 <thead>
 <tr>
@@ -28422,8 +28423,8 @@
 <p>一方でIstioを使用しない場合、Security &amp; Compliance分野のツールを使用してアプリケーションコンテナに証明書を組み込み、これを管理する必要があります。</p>
 <p>クラウドリソースの証明書管理にはSecurity &amp; Compliance分野のツールを使用できます。</p>
 <p>例えば、AWS Certificate Managerは中間認証局のAmazon CAからSSL証明書を取得し、AWSリソースへの組み込みと定期更新を管理します。</p>
-<p>図43　AWS EKS上での証明書管理の設計例</p>
-<p><img alt="43" src="%E8%A3%9C%E7%AB%A0%20%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AE%E3%81%A4%E3%81%AA%E3%81%8B%E3%82%99%E3%82%8A%206b9608ce651748bf9377d5e949916ec4/43.png" /></p>
+<p>図43. AWS EKS上での証明書管理の設計例</p>
+<p><img alt="43" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/43.png" /></p>
 <hr />
 <p>注釈</p>
 <p>*79 Siriwardena, P., &amp; Dias, N. (2020) Microservices Security in action. Manning Publications.</p>
@@ -28432,7 +28433,8 @@
 <p><br></p>
 <h2 id="11">11 おわりに<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
 <p>補章としてマイクロサービスアーキテクチャーのデザインパターンを取り上げ、どのようなクラウドネイティブ技術で代替できるのかを概説しました。</p>
-<p>クラウドネイティブ技術とマイクロサービスアーキテクチャーのつながりの理解を深めることはできたでしょうか？　既存のクラウドネイティブ技術の課題を解消した新しいクラウドネイティブ技術が次々と登場しています。</p>
+<p>クラウドネイティブ技術とマイクロサービスアーキテクチャーのつながりの理解を深めることはできたでしょうか？</p>
+<p>既存のクラウドネイティブ技術の課題を解消した新しいクラウドネイティブ技術が次々と登場しています。</p>
 <p>この時、その技術はマイクロサービスアーキテクチャーのどのデザインパターンに結びつき、またすべてや一部のロジックを代替できるのだろうかという視点も重要です。</p>
 <p>クラウドネイティブ技術の役割を複数の観点から知ると、システム全体の中でその技術が担う役割をより理解できるようになります。</p>
 <p>そして、その知識をさまざまなシステムにパズルのように応用できるようになります。</p>
@@ -28458,7 +28460,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月28日 15:26:31">2025-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月28日 16:06:36">2025-04-28</span>
   </span>
 
     
