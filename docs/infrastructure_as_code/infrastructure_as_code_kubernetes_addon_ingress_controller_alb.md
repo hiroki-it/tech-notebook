@@ -54,7 +54,6 @@ AWS Load Balancer Controllerは、以下の仕組みでターゲットグルー�
 
 <br>
 
-
 ### Serviceタイプ
 
 NodePort Serviceを使用しなければならない。

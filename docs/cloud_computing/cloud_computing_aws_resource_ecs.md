@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ECS＠AWSリソース
-description: ECS＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】AWS ECS＠AWSリソース
+description: AWS ECS＠AWSリソースの知見を記録しています。
 ---
 
-# ECS＠AWSリソース
+# AWS ECS＠AWSリソース
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: ECS＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. ECS：Elastic Container Service
+## 01. AWS ECS：Elastic Container Service
 
 ### コントロールプレーン
 
@@ -25,7 +25,7 @@ description: ECS＠AWSリソースの知見を記録しています。
 
 #### ▼ コントロールプレーンの仕組み
 
-ECSのコントロールプレーンは、開発者や他のAWSリソースからのリクエストを待ち受けるAPI、データプレーンを管理するコンポーネント、からなる。
+AWS ECSのコントロールプレーンは、開発者や他のAWSリソースからのリクエストを待ち受けるAPI、データプレーンを管理するコンポーネント、からなる。
 
 ![ecs_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_control-plane.png)
 
@@ -35,9 +35,9 @@ ECSのコントロールプレーンは、開発者や他のAWSリソースか�
 
 ### データプレーン
 
-単一のホスト (EC2、Fargate) のOS上でコンテナオーケストレーションを実行する。
+単一のホスト (AWS EC2、AWS Fargate) のOS上でコンテナオーケストレーションを実行する。
 
-『`on EC2`』『`on Fargate`』という呼び方は、データプレーンがECSの実行環境 (`on environment`) の意味合いを持つからである。
+『`on EC2`』『`on Fargate`』という呼び方は、データプレーンがAWS ECSの実行環境 (`on environment`) の意味合いを持つからである。
 
 <br>
 
@@ -56,7 +56,7 @@ ECSのコントロールプレーンは、開発者や他のAWSリソースか�
 | Taskスケーリング                           | HorizontalPodAutoscaler、VerticalPodAutoscaler |
 | キャパシティプロバイダー + AWS AutoScaling | CusterAutoscaler、Karpenter                    |
 | PodDisruptionBudget                        | Minimum/Maximum Healthy Percent                |
-| AWS VPC Lattice、ECS Service Connect       | Istio                                          |
+| AWS VPC Lattice、AWS ECS Service Connect   | Istio                                          |
 
 <br>
 
@@ -68,7 +68,7 @@ ECSのコントロールプレーンは、開発者や他のAWSリソースか�
 
 ## 03. データプレーンのコンポーネント
 
-### ECSクラスター
+### AWS ECSクラスター
 
 AWS ECSサービスの管理グループ単位のこと。
 
@@ -100,7 +100,7 @@ AWS ECSタスク定義を基に作成される。
 
 ![ecs_task](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task.png)
 
-#### ▼ ECSコンテナエージェント
+#### ▼ AWS ECSコンテナエージェント
 
 AWS ECSタスク実行ロールを使用して、AWS ECSタスクのライフサイクルを管理する。
 
@@ -144,7 +144,7 @@ AWS ECSタスクは、必須コンテナ異常停止時、デプロイ、オー�
 
 ## 03-02. ネットワーク
 
-### ネットワークモードとコンテナ間通信
+### AWS ECSタスク内のコンテナ間通信
 
 #### ▼ noneモード
 
@@ -193,9 +193,17 @@ Fargateの場合、同じタスクに属するコンテナ間は、localhostイ�
 
 <br>
 
-### プライベートサブネット内から外の通信
+### AWS ECSタスク間の通信
 
-#### ▼ プライベートサブネット内へのデータプレーンの配置
+AWS ECS Service Connectを使用する。
+
+> - https://zenn.dev/cadp/articles/ecs-service-mesh-compare
+
+<br>
+
+### AWS ECSタスクからのアウトバウンド
+
+#### ▼ プライベートサブネット内のデータプレーンの配置
 
 プライベートサブネット内にデータプレーンを配置した場合、パブリックネットワークやVCP外のAWSリソースにリクエストを送信するために、AWS NAT GatewayやVPCエンドポイントが必要になる。
 

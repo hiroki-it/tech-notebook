@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】SNS＠AWSリソース
-description: SNS＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】AWS SNS＠AWSリソース
+description: AWS SNS＠AWSリソースの知見を記録しています。
 ---
 
-# SNS＠AWSリソース
+# AWS SNS＠AWSリソース
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: SNS＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. SNSとは：Simple Notification Service
+## 01. AWS SNSとは：Simple Notification Service
 
 クラウドパブリッシュ/サブスクライブシステムとして働く。
 

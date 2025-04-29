@@ -15,11 +15,13 @@ description: App Mesh＠AWSの知見を記録しています。
 
 ## 01. App Meshとは
 
-非推奨となり、AWS VPC Latticeへの移行が推奨である。
+非推奨となり、AWS VPC LatticeやAWS ECS Service Connectへの移行が推奨である。
 
 クラウドサービスメッシュとして機能する。
 
 VirtualRouter、VirtualService、VirtualNode、One-Way TLS/mTLS、から構成される。
+
+> - https://zenn.dev/cadp/articles/ecs-service-mesh-compare
 
 <br>
 

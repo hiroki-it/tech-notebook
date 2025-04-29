@@ -38,7 +38,8 @@ description: サービスメッシュの担う責務＠サービスメッシュ�
 - Istio
 - Linkerd
 - Consul
-- AWS VPC Lattice (AWS App Meshの移行先)
+- AWS VPC Lattice
+- AWS ECS Service Connect
 
 > - https://jimmysong.io/blog/migrating-from-aws-app-mesh-to-istio-a-comprehensive-guide/
 
