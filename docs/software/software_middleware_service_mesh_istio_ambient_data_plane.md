@@ -119,11 +119,12 @@ istio-cniは、`/var/run/ztunnel/ztunnel.sock`ファイル経由でztunnelから
 
 また、ztunnelが受信ポートを公開するように、通知する。
 
-なお、執筆時点 (2025/02/04) で実験段階ではあるが、iptablesとgeneve tunnelの代わりにeBPFを使用する方法もある。
+注意点として、Ciliumはiptableの代わりにeBPFを使用する。
 
 > - https://sreake.com/blog/istio-ambient-mesh-inpod-redirection/#inpod_redirection_%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3
 > - https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration
 > - https://www.rfc-editor.org/rfc/rfc8926.html
+> - https://www.reddit.com/r/kubernetes/comments/1cygujm/comment/l59qh64/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 
 <br>
 

@@ -366,7 +366,7 @@ AWS間の通信の場合、アプリケーションデータを自動的に暗�
 
 ### AWS VPC Lattice
 
-異なるAWS VPCのネットワークをAWS VPC Latticeサービスネットワークを経由して接続する。
+AWS EC2、AWS ECS、AWS EKS、AWS Lambda間を接続する。
 
 ![vpc-lattice](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc-lattice.png)
 
