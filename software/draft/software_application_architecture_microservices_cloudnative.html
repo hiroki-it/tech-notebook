@@ -26792,7 +26792,7 @@
           <li class="md-nav__item">
   <a href="#103" class="md-nav__link">
     <span class="md-ellipsis">
-      10.3 証明書管理方法
+      10.3 アプリケーションデータの暗号化
     </span>
   </a>
   
@@ -28469,7 +28469,7 @@
 <p>*77 Control Plane - EKS Best Practices Guides. (n.d.). <a href="https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/">https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/</a></p>
 <p>*78 Traffic management. (n.d.). Istio. <a href="https://istio.io/latest/docs/concepts/traffic-management/">https://istio.io/latest/docs/concepts/traffic-management/</a></p>
 <p><br></p>
-<h3 id="103">10.3 証明書管理方法<a class="headerlink" href="#103" title="Permanent link">&para;</a></h3>
+<h3 id="103">10.3 アプリケーションデータの暗号化<a class="headerlink" href="#103" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスアーキテクチャーでは、システム内で非常に多くのパケット通信が起こります。</p>
 <p>パケットのアプリケーションデータを暗号化しなければ、これを第三者に攻撃されかねません。</p>
 <p>TLSプロトコルを使用してアプリケーションデータを暗号化することにより、攻撃から防御できます。</p>
@@ -28485,9 +28485,10 @@
 <pre class="mermaid"><code>flowchart LR
 
   証書管理方法([証書&lt;br&gt;管理方法]) --- 証明書管理方法の基点(( ))
-  証明書管理方法の基点 --- サイドカーの証明書管理[サイドカーの&lt;br&gt;証明書管理]
-  証明書管理方法の基点 --- アプリケーションの証明書管理[アプリケーションの&lt;br&gt;証明書管理]
-  証明書管理方法の基点 --- クラウドリソースの証明書管理[クラウドリソースの&lt;br&gt;証明書管理]
+  証明書管理方法の基点 --- マイクロサービスの証明書管理[マイクロサービスの&lt;br&gt;証明書管理]
+  マイクロサービスの証明書管理 --- サービスメッシュを使用する場合
+  マイクロサービスの証明書管理 --- サービスメッシュを使用しない場合
+  証明書管理方法の基点 ---- クラウドリソースの証明書管理[クラウドリソースの&lt;br&gt;証明書管理]
 </code></pre>
 
 </div>
@@ -28501,16 +28502,16 @@
 <thead>
 <tr>
 <th>パターン名</th>
-<th>サイドカーの証明書管理</th>
-<th>アプリケーションの証明書管理</th>
+<th>マイクロサービスの証明書管理 (サービスメッシュを使用する場合)</th>
+<th>マイクロサービスの証明書管理 (サービスメッシュを使用しない場合)</th>
 <th>クラウドリソースの証明書管理</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>説明</td>
-<td>サービスメッシュを使用した場合にマイクロサービスのサイドカーコンテナに証明書を組み込み、管理する。送信元と宛先のサイドカーコンテナ間の通信でサーバー認証を実施できる。この場合、アプリケーションコンテナで証明書を管理する必要がなくなる。</td>
-<td>マイクロサービスのアプリケーションコンテナに証明書を組み込み、管理する。送信元と宛先のアプリケーションコンテナ間の通信でサーバー認証を実施できる。</td>
+<td>サービスメッシュを使用する場合、マイクロサービスのサイドカーコンテナに証明書を組み込み、管理する。送信元と宛先のサイドカーコンテナ間の通信でサーバー認証を実施できる。この場合、アプリケーションコンテナで証明書を管理する必要がなくなる。</td>
+<td>サービスメッシュを使用しない場合、マイクロサービスのアプリケーションコンテナに証明書を組み込み、管理する。送信元と宛先のアプリケーションコンテナ間の通信でサーバー認証を実施できる。</td>
 <td>クラウドリソースに証明書を組み込み、管理する。クラウドリソースへの通信でサーバー認証を実施できる。</td>
 </tr>
 <tr>
@@ -28576,7 +28577,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月30日 18:14:42">2025-04-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月30日 20:01:02">2025-04-30</span>
   </span>
 
     
