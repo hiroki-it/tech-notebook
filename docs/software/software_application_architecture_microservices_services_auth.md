@@ -23,9 +23,9 @@ description: 認証／認可＠マイクロサービス領域の知見を記録�
 
 <br>
 
-### SSOパターン (独立パターン)
+## 01-02. SSOパターン (独立パターン)
 
-#### ▼ SSOパターンとは
+### SSOパターンとは
 
 『独立パターン』ともいう。
 
@@ -38,7 +38,7 @@ description: 認証／認可＠マイクロサービス領域の知見を記録�
 > - https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#sso-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E7%AE%A1%E7%90%86
 > - https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=6
 
-#### ▼ SSOパターンの仕組み
+### SSOパターンの仕組み
 
 各マイクロサービスは、SSOのIDプロバイダーに認証を委譲する。
 
@@ -47,13 +47,17 @@ description: 認証／認可＠マイクロサービス領域の知見を記録�
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
 
-#### ▼ APIゲートウェイがある場合
+<br>
+
+### APIゲートウェイがある場合
+
+#### ▼ Kong Gateway
 
 初回のSSO時、フロントエンドからIDプロバイダーに直接的に認可リクエストを送信する。
 
 その後、CookieにJWTを保管する。
 
-次回、APIゲートウェイがフロントエンドからのリクエストをKeycloakに転送し、JWT仕様トークンの署名を検証する。
+次回、Kong Gateway (APIゲートウェイ) がフロントエンドからのリクエストをKeycloakに転送し、JWT仕様トークンの署名を検証する。
 
 結果に応じて、宛先マイクロサービスにルーティングするかどうかを決める。
 
@@ -67,9 +71,9 @@ description: 認証／認可＠マイクロサービス領域の知見を記録�
 
 <br>
 
-### セッションパターン (集中パターン)
+## 01-03. セッションパターン (集中パターン)
 
-#### ▼ セッションパターンとは
+### セッションパターンとは
 
 『集中パターン』ともいう。
 
@@ -84,7 +88,9 @@ description: 認証／認可＠マイクロサービス領域の知見を記録�
 > - https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#%E5%88%86%E6%95%A3%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AB%E3%82%88%E3%82%8B%E7%AE%A1%E7%90%86
 > - https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=6
 
-#### ▼ セッションパターンの仕組み
+<br>
+
+### セッションパターンの仕組み
 
 各マイクロサービスは、セッションデータに基づいてユーザーを認証する。
 
@@ -103,9 +109,9 @@ description: 認証／認可＠マイクロサービス領域の知見を記録�
 
 <br>
 
-### JWTパターン (分散パターン)
+## 01-04. JWTパターン (分散パターン)
 
-#### ▼ JWTパターンとは
+### JWTパターンとは
 
 『分散パターン』ともいう。
 
@@ -117,15 +123,17 @@ description: 認証／認可＠マイクロサービス領域の知見を記録�
 
 > - https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=7
 
-#### ▼ JWTパターンの仕組み
+<br>
+
+### JWTパターンの仕組み
 
 各マイクロサービスは、JWTに基づいてユーザーを認証する。
 
-`1`個のセッション中の認証情報をマイクロサービス間で共有するために、リクエスト−レスポンスのヘッダーにJWTを埋め込み、クライアント側にJWTを保管させる。
+`1`個のセッション中の認証情報をマイクロサービス間で共有するために、リクエスト−レスポンスのヘッダーにJWTを埋め込み、クライアントのフロントエンドアプリケーション側にJWTを保管させる。
 
 トークンベースの認証情報の場合に、コンテナの相性が良く、各マイクロサービスはJWTを持つ必要がない。
 
-クライアント側に保管されたJWT仕様トークンの失効が難しいというデメリットがある。
+クライアントのフロントエンドアプリケーション側に保管されたJWT仕様トークンの失効が難しいというデメリットがある。
 
 その解決策として、Opaqueトークンパターン (ゲートウェイ集中パターン) がある。
 
@@ -137,9 +145,9 @@ description: 認証／認可＠マイクロサービス領域の知見を記録�
 
 <br>
 
-### JWT + APIゲートウェイパターン (ゲートウェイ集中パターン)
+## 01-05. JWTとAPIゲートウェイの組み合わせパターン (ゲートウェイ集中パターン)
 
-#### ▼ JWT + APIゲートウェイパターンとは
+### JWTとAPIゲートウェイの組み合わせパターンとは
 
 『ゲートウェイ集中パターン』ともいう。
 
@@ -156,13 +164,15 @@ APIゲートウェイは、認証を集中的に管理し、認証とアクセ�
 > - https://engineer.retty.me/entry/2019/12/21/171549
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 
-#### ▼ JWT + APIゲートウェイパターンの仕組み
+<br>
+
+### JWTとAPIゲートウェイの組み合わせパターンの仕組み
 
 各マイクロサービスは、JWTとOpaqueトークンに基づいてユーザーを認証する。
 
 `1`個のセッション中の認証情報をマイクロサービス間で共有するために、リクエスト−レスポンスのヘッダーにJWTを埋め込む。
 
-クライアント側にはJWTとペアになるOpaqueトークンを保管する。
+クライアントのフロントエンドアプリケーション側にはJWTとペアになるOpaqueトークンを保管する。
 
 また、APIゲートウェイやロードバランサーで、OpaqueトークンとJWT仕様トークンの間の相互変換を通信のたびに実行する。
 
@@ -174,6 +184,29 @@ APIゲートウェイは、認証を集中的に管理し、認証とアクセ�
 > - https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=8
 > - https://engineer.retty.me/entry/2019/12/21/171549
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
+
+<br>
+
+### JWTプロキシーがある場合
+
+#### ▼ AWS JWT Authorizer
+
+ここでは、認証サービス（図では認可サーバー）から手動でJWT仕様トークンを発行し、クライアントに共有すると仮定する。
+
+1. クライアントのフロントエンドアプリケーションはAWS API GatewayにJWT仕様トークンを含むリクエストを送信する。
+2. AWS API Gatewayは、AWS JWT Authorizerにリクエストを送信する。
+3. AWS JWT Authorizerは認証サービス（図では認可サーバー）のJWKSエンドポイントにリクエストを送信する。
+4. AWS JWT Authorizerは認証サービス（図では認可サーバー）から署名検証に使用する公開鍵を取得する。
+5. AWS JWT AuthorizerはJWT仕様トークンの有効性を検証する。
+6. AWS API Gatewayは、バックエンドにリクエストを送信する。
+7. バックエンドは、AWS API Gatewayにレスポンスを返信する。
+8. AWS API Gatewayは、クライアントのフロントエンドアプリケーションにレスポンスを返信する。
+
+![aws_jwt-authorizer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_jwt-authorizer.png)
+
+> - https://qiita.com/KWS_0901/items/9b37712ed4bff75e1d4f
+> - https://auth0.com/blog/securing-aws-http-apis-with-jwt-authorizers/#Test-It-Out-
+> - https://dev.classmethod.jp/articles/amazon-api-gateway-http-api-authz-auth0/#%25E7%25A2%25BA%25E8%25AA%258D%25E3%2581%2597%25E3%2581%25A6%25E3%2581%25BF%25E3%2582%258B
 
 <br>
 
