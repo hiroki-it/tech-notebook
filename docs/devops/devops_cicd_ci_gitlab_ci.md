@@ -1077,7 +1077,7 @@ Jobでアプリコンテナを動かし、DBコンテナを別に起動してお
 
 > - https://qiita.com/kytiken/items/a95ef8c1fccfc4a9b089#example
 
-#### ▼ TLSの無効化
+#### ▼ TLSの無効化（非暗号化）
 
 GitLab CI上でDocker in Dockerを使用する場合、実行コンテナとサービスコンテナでセットアップが必要である。
 
@@ -1087,7 +1087,7 @@ variables:
   DOCKER_DRIVER: "overlay2"
   # ホストの設定
   DOCKER_HOST: "tcp://docker:2375"
-  # TLSの無効化
+  # TLSの無効化（非暗号化）
   DOCKER_TLS_CERTDIR: ""
 
 foo_job:
@@ -1096,7 +1096,7 @@ foo_job:
   # サービスコンテナ
   services:
     - name: docker:19.03.0-dind
-      # TLSの無効化
+      # TLSの無効化（非暗号化）
       command: ["--tls=false"]
 ```
 

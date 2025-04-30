@@ -101,7 +101,7 @@ $ /opt/prometheus/prometheus \
     --storage.tsdb.path=/var/lib/prometheus
 ```
 
-Alertmanagerをクラスター化する場合、インスタンス間で相互TLS認証を実施できるように、
+Alertmanagerをクラスター化する場合、インスタンス間で相互TLS認証を実施できるようにする。
 
 ```bash
 $ /opt/alertmanager/alertmanager \

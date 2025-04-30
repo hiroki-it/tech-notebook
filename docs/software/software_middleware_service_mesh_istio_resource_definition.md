@@ -3825,7 +3825,7 @@ spec:
 
 #### ▼ Istio Egress GatewayのVirtualServiceでの注意点
 
-`.spec.tls`キーで送信する場合、Istio Egress Gatewayはパケットペイロードを復号化できないため、プロトコルをTCPとして扱う。
+`.spec.tls`キーで送信する場合、Istio Egress Gatewayはアプリケーションデータを復号化できないため、プロトコルをTCPとして扱う。
 
 そのため、Istio Egress Gateway上を通過するTLSはIstioのメトリクスではTCPとして処理され、またIstio Egress Gatewayではスパンを作成できない。
 
