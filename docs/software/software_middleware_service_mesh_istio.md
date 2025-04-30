@@ -125,7 +125,7 @@ Istioのドキュメントでは、以下のハードウェアリソースを消
 
 - `istio-proxy`コンテナ、waypoint-proxyのコンテナ、ztunnelのコンテナの経由
 - AuthorizationPolicyによるアクセストークンの署名検証
-- PeerAuthenticationによる相互TLS
+- PeerAuthenticationによる相互TLS認証
 
 > - https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#latency-for-istio-124
 > - https://istio.io/latest/blog/2020/large-scale-security-policy-performance-tests/#conclusion
@@ -673,7 +673,7 @@ Istio上のEnvoyは、マイクロサービスへのアクセスログ (イン�
 ```yaml
 # istio-proxyコンテナのアクセスログ
 {
-  # 相互TLSの場合の宛先コンテナ名
+  # 相互TLS認証の場合の宛先コンテナ名
   "authority": "foo-downstream:<ポート番号>",
   "bytes_received": 158,
   "bytes_sent": 224,

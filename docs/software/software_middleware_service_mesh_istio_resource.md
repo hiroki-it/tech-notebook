@@ -308,9 +308,9 @@ Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのク
 
 ### 送信元PodとIstio Egress Gateway間の通信
 
-#### ▼ 相互TLS
+#### ▼ 相互TLS認証
 
-送信元マイクロサービスはHTTPを指定し、`istio-proxy`コンテナのクライアント証明書とIstio Egress GatewayのSSL証明書で相互TLSを実施する。
+送信元マイクロサービスはHTTPを指定し、`istio-proxy`コンテナのクライアント証明書とIstio Egress GatewayのSSL証明書で相互TLS認証を実施する。
 
 Istio Egress Gatewayはパケットペイロードを復号化できるため、プロトコルをHTTPとして扱う。
 
@@ -321,9 +321,9 @@ Istio Egress Gatewayはパケットペイロードを復号化できるため、
 > - https://istio.io/v1.16/blog/2018/egress-monitoring-access-control/#comparison-with-https-egress-traffic-control
 > - https://cloud.google.com/service-mesh/docs/security/egress-gateway-gke-tutorial?hl=ja#tls_origination_at_the_egress_gateway
 
-#### ▼ 通常TLS (Passthrough)
+#### ▼ サーバー認証 (Passthrough)
 
-送信元マイクロサービスはHTTPSを指定し、サービスメッシュ外の宛先が持つSSL証明書で通常TLSを実施する。
+送信元マイクロサービスはHTTPSを指定し、サービスメッシュ外の宛先が持つSSL証明書でサーバー認証を実施する。
 
 Istio Egress Gatewayはパケットペイロードを復号化できないため、プロトコルをTCPとして扱う。
 

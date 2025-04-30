@@ -651,7 +651,7 @@ spec:
 
 ### controlPlaneAuthPolicy
 
-データプレーン (`istio-proxy`コンテナ) とコントロールプレーン間の通信に相互TLSを実施する。
+データプレーン (`istio-proxy`コンテナ) とコントロールプレーン間の通信に相互TLS認証を実施する。
 
 ```yaml
 apiVersion: v1
@@ -1058,7 +1058,7 @@ spec:
 
 ### trustDomain
 
-相互TLSを採用している場合に、送信元として許可する信頼ドメインを設定する。
+相互TLS認証を採用している場合に、送信元として許可する信頼ドメインを設定する。
 
 例えば、信頼ドメインはServiceAccountごとに異なる。
 

@@ -967,9 +967,9 @@ spec:
 
 #### ▼ tls.clientCertificate
 
-自己管理下の相互TLS (`MUTUAL`) の場合に、使用するSSL証明書を設定する。
+自己管理下の相互TLS認証 (`MUTUAL`) の場合に、使用するSSL証明書を設定する。
 
-Istio管理下の相互TLS (`ISTIO_MUTUAL`) の場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てるので、設定不要である。
+Istio管理下の相互TLS認証 (`ISTIO_MUTUAL`) の場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てるので、設定不要である。
 
 Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使用する。
 
@@ -989,9 +989,9 @@ spec:
 
 #### ▼ tls.clientCertificate
 
-自己管理下の相互TLS (`MUTUAL`) の場合に、使用するSSL証明書を設定する。
+自己管理下の相互TLS認証 (`MUTUAL`) の場合に、使用するSSL証明書を設定する。
 
-Istio管理下の相互TLS (`ISTIO_MUTUAL`) の場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てるので、設定不要である。
+Istio管理下の相互TLS認証 (`ISTIO_MUTUAL`) の場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てるので、設定不要である。
 
 Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使用する。
 
@@ -1011,9 +1011,9 @@ spec:
 
 #### ▼ tls.clientCertificate
 
-自己管理下の相互TLS (`MUTUAL`) の場合に、使用するSSL証明書を設定する。
+自己管理下の相互TLS認証 (`MUTUAL`) の場合に、使用するSSL証明書を設定する。
 
-Istio管理下の相互TLS (`ISTIO_MUTUAL`) の場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てるので、設定不要である。
+Istio管理下の相互TLS認証 (`ISTIO_MUTUAL`) の場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てるので、設定不要である。
 
 Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使用する。
 
@@ -1911,7 +1911,7 @@ spec:
 
 ### .spec.servers.tls.caCertificates
 
-`.spec.servers.tls.mode`キーで相互TLSを設定している場合、クライアント証明書のペアになるCA証明書が必要である。
+`.spec.servers.tls.mode`キーで相互TLS認証を設定している場合、クライアント証明書のペアになるCA証明書が必要である。
 
 **＊実装例＊**
 
@@ -1984,7 +1984,7 @@ spec:
 
 #### ▼ MUTUAL
 
-送信元とGatewayの間で、Istioの作成していない証明書による相互TLSを実施する。
+送信元とGatewayの間で、Istioの作成していない証明書による相互TLS認証を実施する。
 
 **＊実装例＊**
 
@@ -2001,9 +2001,9 @@ spec:
 
 #### ▼ ISTIO_MUTUAL
 
-送信元とGatewayの間で、Istioの作成した証明書による相互TLSを実施する。
+送信元とGatewayの間で、Istioの作成した証明書による相互TLS認証を実施する。
 
-`istio-proxy`コンテナとIstio Egress Gatewayの間で相互TLSを実施する場合、これを使用する。
+`istio-proxy`コンテナとIstio Egress Gatewayの間で相互TLS認証を実施する場合、これを使用する。
 
 **＊実装例＊**
 
@@ -2074,7 +2074,7 @@ spec:
 
 SSL証明書のファイルを設定する。
 
-`.spec.servers.tls.mode`キーで相互TLSを設定している場合、クライアント証明書のペアになるSSL証明書が必要である。
+`.spec.servers.tls.mode`キーで相互TLS認証を設定している場合、クライアント証明書のペアになるSSL証明書が必要である。
 
 SSL証明書を保持するSecretを指定する場合は、`.spec.servers[*].tls.credentialName`キーを設定する。
 
@@ -2099,7 +2099,7 @@ spec:
 
 ### .spec.selector
 
-指定したNamespaceの特定のPodで相互TLSを有効化する
+指定したNamespaceの特定のPodで相互TLS認証を有効化する
 
 **＊実装例＊**
 
@@ -2126,7 +2126,7 @@ spec:
 
 特定のNamespace内のすべての`istio-proxy`コンテナ間通信で、相互TLS認証を有効化するか否かを設定する。
 
-特定のPod間でのみ相互TLSを使用したい場合、DestinationRuleでSSL証明書を設定する。
+特定のPod間でのみ相互TLS認証を使用したい場合、DestinationRuleでSSL証明書を設定する。
 
 > - https://www.mtioutput.com/entry/istio-mtls-onoff
 > - https://hemantkumar.net/kubernetes-mutual-auth-with-diffferent-cas.html
@@ -3205,7 +3205,7 @@ spec:
 
 HTTP/1.1、HTTP/2 (例：gRPCなど) のプロトコルによる通信をDestinationRuleに紐づくPodにルーティングする。
 
-`.spec.tcp`キーや`.spec.tls`キーとは異なり、マイクロサービスがHTTPプロトコルで通信を送受信し、`istio-proxy`コンテナ間で相互TLSを実施する場合、これを使用する。
+`.spec.tcp`キーや`.spec.tls`キーとは異なり、マイクロサービスがHTTPプロトコルで通信を送受信し、`istio-proxy`コンテナ間で相互TLS認証を実施する場合、これを使用する。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRoute
 
@@ -3817,7 +3817,7 @@ spec:
 
 `.spec.http`キーや`.spec.tcp`キーとは異なり、HTTPSプロトコルの通信をDestinationRuleに紐づくPodにルーティングする。
 
-マイクロサービスがHTTPSプロトコルで通信を送受信し、`istio-proxy`コンテナ間で相互TLSを実施する場合、これを使用する。
+マイクロサービスがHTTPSプロトコルで通信を送受信し、`istio-proxy`コンテナ間で相互TLS認証を実施する場合、これを使用する。
 
 他に、マイクロサービスがHTTPSリクエストを送信し、Istio Egress Gatewayでこれをそのまま通過させる (`PASSTHROUGH`) 場合も必要になる。
 

@@ -551,7 +551,7 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 
 kubeletはIstioの発行した証明書を持っていない。
 
-そのため、Istioで相互TLSを有効化していると、kubeletがHTTPヘルスチェックをも`istio-proxy`コンテナに実施した場合に、証明書のないエラーでHTTPヘルスチェックは失敗してしまう。
+そのため、Istioで相互TLS認証を有効化していると、kubeletがHTTPヘルスチェックをも`istio-proxy`コンテナに実施した場合に、証明書のないエラーでHTTPヘルスチェックは失敗してしまう。
 
 これの対策として、`istio-proxy`コンテナは、kubeletから受信したHTTPヘルスチェックをpilot-agentのパス (`/app-health/<マイクロサービス名>/livez`、`/app-health/<マイクロサービス名>/readyz`、`/app-health/<マイクロサービス名>/startupz`) にリダイレクトする。
 

@@ -71,7 +71,7 @@ KubernetesとIstio上のPodは、Serviceの完全修飾ドメイン名のURL (`h
 
 指定するURLはKubernetesのみの場合と同じであるが、実際はServiceを経由しておらず、Pod間で直接的に通信している。
 
-Pod間 (フロントエンド領域とマイクロサービス領域間、マイクロサービス間) をHTTPSで通信したい場合、Istioの相互TLSを有効化する必要がある。
+Pod間 (フロントエンド領域とマイクロサービス領域間、マイクロサービス間) をHTTPSで通信したい場合、Istioの相互TLS認証を有効化する必要がある。
 
 > - https://github.com/istio/istio/issues/10864#issue-397801391
 > - https://discuss.istio.io/t/pod-to-pod-communication/8939/5

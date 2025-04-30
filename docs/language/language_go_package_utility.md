@@ -474,7 +474,7 @@ func main() {
 
 #### ▼ WithTransportCredentials
 
-gRPCサーバーへの通信をTLS化するかどうかを設定する。
+gRPCサーバーへの通信でサーバー認証を実施するかどうかを設定する。
 
 ```go
 package main
