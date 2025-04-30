@@ -455,7 +455,7 @@ metrics-serverはデフォルトでClusterに存在していないため、別�
 
 #### L7のプロトコルの場合
 
-冗長化したワーカーNodeに負荷分散できるように、ワーカーNodeの送信元にIngress Controllerの管理するL7ロードバランサー (例：Nginx、Envoy、Istio IngressGateway、AWS ALB、Google CLBなど) やこれに相当するもの (例：Gateway-APIを使用しないIstio Ingress Gateway) を配置する。
+冗長化したワーカーNodeに負荷分散できるように、ワーカーNodeの送信元にIngress Controllerの管理するL7ロードバランサー (例：Nginx、Envoy、Istio Ingress Gateway、AWS ALB、Google CLBなど) やこれに相当するもの (例：Gateway-APIを使用しないIstio Ingress Gateway) を配置する。
 
 L7ロードバランサーが冗長化されたNodeに適切にインバウンドな通信を振り分ける。
 

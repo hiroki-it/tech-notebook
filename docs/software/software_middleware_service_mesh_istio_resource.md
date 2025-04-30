@@ -58,7 +58,7 @@ metadata:
 
 #### ▼ ロードバランサーで使用する場合
 
-Gatewayは、Istio IngressGatewayの一部として、Node外から受信した通信をフィルタリングする能力を担う。
+Gatewayは、Istio Ingress Gatewayの一部として、Node外から受信した通信をフィルタリングする能力を担う。
 
 ![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway.png)
 
@@ -133,9 +133,9 @@ configs:
 
 <br>
 
-## 02-02. Istio IngressGateway
+## 02-02. Istio Ingress Gateway
 
-### Istio IngressGatewayとは
+### Istio Ingress Gatewayとは
 
 サービスメッシュ内宛の通信をロードバランシングする`L4`/`L7`ロードバランサーを作成する。
 
@@ -150,11 +150,11 @@ KubernetesリソースのIngressの代わりとして使用できる。
 
 <br>
 
-### Istio IngressGatewayの仕組み
+### Istio Ingress Gatewayの仕組み
 
 ![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ingress-gateway.png)
 
-Istio IngressGatewayは、以下から構成される。
+Istio Ingress Gatewayは、以下から構成される。
 
 - `istio-ingressgateway`というService (NodePort ServiceまたはLoadBalancer Service)
 - Deployment配下の`istio-ingressgateway-*****`というPod (`istio-proxy`コンテナのみが稼働)
@@ -185,7 +185,7 @@ spec:
       # NodePort Serviceが待ち受けるポート番号
       port: 443
       protocol: TCP
-      # NodePort Serviceの宛先ポート番号 (Istio IngressGatewayのPodが待ち受けるポート番号)
+      # NodePort Serviceの宛先ポート番号 (Istio Ingress GatewayのPodが待ち受けるポート番号)
       targetPort: 443
     - name: http-bar
       nodePort: 30002
@@ -245,9 +245,9 @@ spec:
 
 <br>
 
-### 複数のIstio IngressGateway
+### 複数のIstio Ingress Gateway
 
-もし複数のIstio IngressGateway DeploymentをHelmでデプロイする場合は、Istio IngressGatewayごとに、gatewayチャートのリリースを分けることになる。
+もし複数のIstio Ingress Gateway DeploymentをHelmでデプロイする場合は、Istio Ingress Gatewayごとに、gatewayチャートのリリースを分けることになる。
 
 チャートのアップグレードの作業が増えるが、責務 (パブリック/プライベート、宛先) を切り分けるユースケースがあってもよい。
 
@@ -278,17 +278,17 @@ spec:
 
 <br>
 
-## 02-03. Istio EgressGateway
+## 02-03. Istio Egress Gateway
 
-### Istio EgressGatewayとは
+### Istio Egress Gatewayとは
 
-Istio EgressGatewayは、サービスメッシュ外宛ての通信をロードバランシングする`L4`/`L7`ロードバランサーを作成する。
+Istio Egress Gatewayは、サービスメッシュ外宛ての通信をロードバランシングする`L4`/`L7`ロードバランサーを作成する。
 
 Clusterネットワーク内から通信を受信し、フィルタリングした後、Cluster外 (例：外部マイクロサービス、外部サービスのAPI、データベース、メッセージキューなど) にルーティングする。
 
-Istio EgressGatewayを使用しない場合、サービスメッシュ外への通信を監視できるようになり、またサイドカーを通過せずにサービスメッシュ外へ通信できてしまう。
+Istio Egress Gatewayを使用しない場合、サービスメッシュ外への通信を監視できるようになり、またサイドカーを通過せずにサービスメッシュ外へ通信できてしまう。
 
-しかし、Istio EgressGatewayを使わないと、マイクロサービスからistio-proxyコンテナを経由せずに外部システムに直接HTTPSリクエストを送信できるようになってしまい、システムの安全性が低くなる。
+しかし、Istio Egress Gatewayを使わないと、マイクロサービスからistio-proxyコンテナを経由せずに外部システムに直接HTTPSリクエストを送信できるようになってしまい、システムの安全性が低くなる。
 
 他に、サービスメッシュ外への特定の通信を識別できるようになるメリットもある。
 
@@ -306,15 +306,15 @@ Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのク
 
 <br>
 
-### 送信元PodとIstio EgressGateway間の通信
+### 送信元PodとIstio Egress Gateway間の通信
 
 #### ▼ 相互TLS
 
-送信元マイクロサービスはHTTPを指定し、`istio-proxy`コンテナのクライアント証明書とIstio EgressGatewayのSSL証明書で相互TLSを実施する。
+送信元マイクロサービスはHTTPを指定し、`istio-proxy`コンテナのクライアント証明書とIstio Egress GatewayのSSL証明書で相互TLSを実施する。
 
-Istio EgressGatewayはパケットペイロードを復号化できるため、プロトコルをHTTPとして扱う。
+Istio Egress Gatewayはパケットペイロードを復号化できるため、プロトコルをHTTPとして扱う。
 
-そのため、IstioのメトリクスではHTTPとして処理され、またIstio EgressGatewayではスパンを作成できる。
+そのため、IstioのメトリクスではHTTPとして処理され、またIstio Egress Gatewayではスパンを作成できる。
 
 ![istio-egressgateway_mtls](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_mtls.png)
 
@@ -325,9 +325,9 @@ Istio EgressGatewayはパケットペイロードを復号化できるため、�
 
 送信元マイクロサービスはHTTPSを指定し、サービスメッシュ外の宛先が持つSSL証明書で通常TLSを実施する。
 
-Istio EgressGatewayはパケットペイロードを復号化できないため、プロトコルをTCPとして扱う。
+Istio Egress Gatewayはパケットペイロードを復号化できないため、プロトコルをTCPとして扱う。
 
-そのため、Istio EgressGateway上を通過するTLSはIstioのメトリクスではTCPとして処理され、またIstio EgressGatewayではスパンを作成できない。
+そのため、Istio Egress Gateway上を通過するTLSはIstioのメトリクスではTCPとして処理され、またIstio Egress Gatewayではスパンを作成できない。
 
 ![istio-egressgateway_tls_passthrough](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_tls_passthrough.png)
 
@@ -338,7 +338,7 @@ Istio EgressGatewayはパケットペイロードを復号化できないため�
 
 ### 関連するIstioリソース
 
-Istioサイドカーモードとアンビエントモードの間で、Istio EgressGatewayに必要なIstioリソースが異なる。
+Istioサイドカーモードとアンビエントモードの間で、Istio Egress Gatewayに必要なIstioリソースが異なる。
 
 > - https://www.solo.io/blog/egress-gateways-made-easy
 
@@ -348,7 +348,7 @@ Istioサイドカーモードとアンビエントモードの間で、Istio Egr
 
 #### ▼ MySQL
 
-Istio IngressGateway (厳密に言うとGateway) は、独自プロトコル (例：MySQLやRedis以外の非対応プロトコルなど) をTCPプロコトルとして扱う。
+Istio Ingress Gateway (厳密に言うとGateway) は、独自プロトコル (例：MySQLやRedis以外の非対応プロトコルなど) をTCPプロコトルとして扱う。
 
 そのため、受信した独自プロトコルリクエストにホストヘッダーがあったとしても、これを宛先に転送できない。
 
@@ -364,7 +364,7 @@ Istio IngressGateway (厳密に言うとGateway) は、独自プロトコル (�
 
 #### ▼ ロードバランサーで使用する場合
 
-VirtualServiceは、Istio IngressGatewayの一部として、受信した`L4`/`L7`通信をDestinationRuleに紐づくPodにルーティングする。
+VirtualServiceは、Istio Ingress Gatewayの一部として、受信した`L4`/`L7`通信をDestinationRuleに紐づくPodにルーティングする。
 
 ![istio_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service.png)
 
@@ -499,7 +499,7 @@ configs:
   ...
 ```
 
-つまり、VirtualServiceとDestinationRuleの情報を使用し、Istio IngressGatewayで受信した通信とPod間通信の両方を実施する。
+つまり、VirtualServiceとDestinationRuleの情報を使用し、Istio Ingress Gatewayで受信した通信とPod間通信の両方を実施する。
 
 ```yaml
 クライアント
@@ -535,7 +535,7 @@ NAME     DOMAINS                                      MATCH               VIRTUA
 以下の理由などでVirtualServiceの設定が誤っていると、`404`ステータスを返信する。
 
 - Gatewayで受信した通信の`Host`ヘッダーとVirtualServiceのそれが合致していない
-- VirtualServiceの`.spec.exportTo`キーで`.`を設定したことにより、Gatewayがルーティング先のVirtualServiceを見つけられない (Istio IngressGatewayからリクエストを受信するPodでは要注意)
+- VirtualServiceの`.spec.exportTo`キーで`.`を設定したことにより、Gatewayがルーティング先のVirtualServiceを見つけられない (Istio Ingress Gatewayからリクエストを受信するPodでは要注意)
 
 `istioctl proxy-config route`コマンドで、Gatewayに紐づくVirtualServiceがいるかを確認できる。
 
@@ -560,7 +560,7 @@ http.50004     blackhole:50004     *           /*                     404
 以下の理由などでVirtualServiceの設定が誤っていると、`503`ステータスを返信する。
 
 - VirtualServiceで受信した通信の`Host`ヘッダーとDestinationRuleのそれが合致していない
-- DestinationRuleの`.spec.exportTo`キーで`.`を設定したことにより、VirtualServiceがルーティング先のDestinationRuleが見つけられない。 (Istio IngressGatewayからリクエストを受信するPodでは要注意)
+- DestinationRuleの`.spec.exportTo`キーで`.`を設定したことにより、VirtualServiceがルーティング先のDestinationRuleが見つけられない。 (Istio Ingress Gatewayからリクエストを受信するPodでは要注意)
 
 `istioctl proxy-config cluster`コマンドで、VirtualServiceに紐づくDestinationRuleがいるかを確認できる。
 
@@ -656,9 +656,9 @@ spec:
 
 #### ▼ ロードバランサーで使用する場合
 
-DestinationRuleは、Istio IngressGateway (VirtualService + DestinationRule) で受信した`L4`/`L7`通信を、いずれのPodにルーティングするかを決める。
+DestinationRuleは、Istio Ingress Gateway (VirtualService + DestinationRule) で受信した`L4`/`L7`通信を、いずれのPodにルーティングするかを決める。
 
-Istio IngressGatewayの実体はPodのため、ロードバランサーというよりは実際はPod間通信で使用していると言える。
+Istio Ingress Gatewayの実体はPodのため、ロードバランサーというよりは実際はPod間通信で使用していると言える。
 
 Podの宛先情報は、KubernetesのServiceから取得する。
 
@@ -797,7 +797,7 @@ configs:
     ...
 ```
 
-つまり、VirtualServiceとDestinationRuleの情報を使用し、Istio IngressGatewayで受信した通信とPod間通信の両方を実施する。
+つまり、VirtualServiceとDestinationRuleの情報を使用し、Istio Ingress Gatewayで受信した通信とPod間通信の両方を実施する。
 
 Pod間通信時には、VirtualServiceとDestinationのみを使用する。
 
@@ -880,11 +880,11 @@ Sidecarを使用すると、指定した設定以外の通信を除去し、特�
 
 ### ServiceEntryと同時に必要なリソース
 
-#### ▼ Istio EgressGateway
+#### ▼ Istio Egress Gateway
 
-ServiceEntryには、Istio EgressGatewayが必須ではない。
+ServiceEntryには、Istio Egress Gatewayが必須ではない。
 
-ただし、Istio EgressGatewayを使用しないと、マイクロサービスからistio-proxyコンテナを経由せずに外部システムに直接HTTPSリクエストを送信できるようになってしまう。
+ただし、Istio Egress Gatewayを使用しないと、マイクロサービスからistio-proxyコンテナを経由せずに外部システムに直接HTTPSリクエストを送信できるようになってしまう。
 
 そのため、システムの安全性が低くなる。
 
@@ -1131,7 +1131,7 @@ JWT仕様トークンがない場合に、AuthorizationPolicyは`403`ステー�
 
 代わりに、JWT仕様トークンが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403`ステータス) として扱う必要がある。
 
-Auth0 (クラウドのためサービスメッシュ外にある) の宛先情報をIstioに登録する必要があるため、Istio EgressGatewayやServiceEntry経由で接続できるようにする。
+Auth0 (クラウドのためサービスメッシュ外にある) の宛先情報をIstioに登録する必要があるため、Istio Egress GatewayやServiceEntry経由で接続できるようにする。
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -1179,7 +1179,7 @@ spec:
 
 代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403`ステータス) として扱う必要がある。
 
-Keycloakの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。
+Keycloakの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio Egress GatewayやServiceEntry経由で接続できるようにする。
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -1230,7 +1230,7 @@ spec:
 
 代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403`ステータス) として扱う必要がある。
 
-OAuth2 Proxyの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。
+OAuth2 Proxyの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio Egress GatewayやServiceEntry経由で接続できるようにする。
 
 ```yaml
 apiVersion: security.istio.io/v1

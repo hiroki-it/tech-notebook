@@ -1370,13 +1370,13 @@ spec:
 
 ServiceEntryで、TCPリクエストとして扱われるホストヘッダー持ち独自プロトコル (例：MySQLやRedis以外の非対応プロトコルなど) を受信した場合に、DNSキャッシュのドメインとIPアドレスを動的に紐づける。
 
-注意点として、Istio EgressGatewayを経由してServiceEntryに至る場合には、この設定が機能しない。
+注意点として、Istio Egress Gatewayを経由してServiceEntryに至る場合には、この設定が機能しない。
 
 ```
-Pod ➡️ Istio EgressGateway ➡️ ServiceEntry
+Pod ➡️ Istio Egress Gateway ➡️ ServiceEntry
 ```
 
-Istio IngressGateway (厳密に言うとGateway) は、独自プロトコルをTCPプロコトルとして扱う。
+Istio Ingress Gateway (厳密に言うとGateway) は、独自プロトコルをTCPプロコトルとして扱う。
 
 そのため、受信した独自プロトコルリクエストにホストヘッダーがあったとしても、これを宛先に転送できない。
 
@@ -1590,7 +1590,7 @@ Keycloakは、IDプロバイダーとしてだけでなく認可プロバイダ�
 
 datadogのトレースコンテキスト仕様 (datadogの独自仕様) でトレースIDとスパンIDを作成する。
 
-datadogエージェントの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。
+datadogエージェントの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio Egress GatewayやServiceEntry経由で接続できるようにする。
 
 ただ、datadogエージェントをサービスメッシュ内に配置すると、Telemetryリソースがdatadogエージェント自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。
 
@@ -1678,7 +1678,7 @@ OpenTelemetryのトレースコンテキスト仕様 (W3C Trace Context) でト�
 
 OTLP形式のエンドポイントであればよいため、OpenTelemetry Collectorも指定できる。
 
-OpenTelemetry Collectorの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。
+OpenTelemetry Collectorの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio Egress GatewayやServiceEntry経由で接続できるようにする。
 
 ただ、OpenTelemetry Collectorをサービスメッシュ内に配置すると、TelemetryリソースがOpenTelemetry Collector自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。
 
@@ -1791,7 +1791,7 @@ Zipkinのトレースコンテキスト仕様 (B3コンテキスト) でトレ�
 
 JaegerはB3をサポートしているため、Jaegerのクライアントとしても使用できる。
 
-jaegerエージェントの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio EgressGatewayやServiceEntry経由で接続できるようにする。
+jaegerエージェントの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio Egress GatewayやServiceEntry経由で接続できるようにする。
 
 ただ、jaegerエージェントをサービスメッシュ内に配置すると、Telemetryリソースがjaegerエージェント自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。
 

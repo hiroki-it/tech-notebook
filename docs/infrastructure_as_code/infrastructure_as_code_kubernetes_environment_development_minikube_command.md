@@ -418,7 +418,7 @@ $ minikube service <NodePort Service名> -n foo-namespace
 Opening service <Service名> in default browser...
 ```
 
-これは、Istio IngressGatewayをNodePort Serviceで作成している場合も使える。
+これは、Istio Ingress GatewayをNodePort Serviceで作成している場合も使える。
 
 ```bash
 $ minikube service istio-ingressgateway -n istio-ingress
@@ -494,7 +494,7 @@ $ minikube service <NodePort Service名> --url -n foo-namespace
 http://127.0.0.1:<自動的に発行されたポート番号>
 ```
 
-これは、Istio IngressGatewayをNodePort Serviceで作成している場合も使える。
+これは、Istio Ingress GatewayをNodePort Serviceで作成している場合も使える。
 
 ```bash
 $ minikube service istio-ingressgateway --url -n istio-ingress

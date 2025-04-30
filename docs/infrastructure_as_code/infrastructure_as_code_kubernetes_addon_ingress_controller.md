@@ -39,15 +39,15 @@ Kubernetesの周辺ツール (例：Prometheus、AlertManager、Grafana、ArgoCD
 
 Ingress Controllerには種類があり、 Controllerごとに作成するリバースプロキシやロードバランサーが異なる。
 
-| 外部Ingress Controllerの種類                               | リバースプロキシ、ロードバランサー | 開発環境 | 本番環境 |
-| ---------------------------------------------------------- | ---------------------------------- | :------: | :------: |
-| Nginx Ingress Controller                                   | Nginx                              |    ✅    |    ✅    |
-| minikubeのingressアドオン (実体はNginx Ingress Controller) | Nginx                              |    ✅    |          |
-| AWS Load Balancer Controller                               | AWS ALB                            |          |    ✅    |
-| Google Cloud CLB Controller                                | Google Cloud CLB                   |          |    ✅    |
-| Istio Ingress Controller                                   | Istio IngressGateway (実体はEnvoy) |    ✅    |    ✅    |
-| Contour Controller                                         | Envoy                              |    ✅    |    ✅    |
-| ...                                                        | ...                                |   ...    |   ...    |
+| 外部Ingress Controllerの種類                               | リバースプロキシ、ロードバランサー  | 開発環境 | 本番環境 |
+| ---------------------------------------------------------- | ----------------------------------- | :------: | :------: |
+| Nginx Ingress Controller                                   | Nginx                               |    ✅    |    ✅    |
+| minikubeのingressアドオン (実体はNginx Ingress Controller) | Nginx                               |    ✅    |          |
+| AWS Load Balancer Controller                               | AWS ALB                             |          |    ✅    |
+| Google Cloud CLB Controller                                | Google Cloud CLB                    |          |    ✅    |
+| Istio Ingress Controller                                   | Istio Ingress Gateway (実体はEnvoy) |    ✅    |    ✅    |
+| Contour Controller                                         | Envoy                               |    ✅    |    ✅    |
+| ...                                                        | ...                                 |   ...    |   ...    |
 
 > - https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
 > - https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
@@ -86,7 +86,7 @@ AWS Route53
 AWS ALB
 ⬇⬆️︎
   # L4ロードバランサー
-NodePort Service (Istio IngressGateway)
+NodePort Service (Istio Ingress Gateway)
 ⬇⬆️︎
 Gateway
 ⬇⬆️︎

@@ -1562,7 +1562,7 @@ spec:
 
 #### ▼ istioの場合
 
-Istio IngressGatewayを作成する。
+Istio Ingress Gatewayを作成する。
 
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1
@@ -1604,7 +1604,7 @@ metadata:
   name: gateway
   namespace: istio-ingress
 spec:
-  # Istio IngressGatewayを作成する
+  # Istio Ingress Gatewayを作成する
   gatewayClassName: istio
   listeners:
     - name: default

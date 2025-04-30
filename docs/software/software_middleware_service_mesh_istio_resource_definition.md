@@ -360,7 +360,7 @@ spec:
 
 もし、同じNamespace内のVirtualServiceと紐づける場合、`.`とする。
 
-つまり、Istio IngressGatewayやIstio EgressGatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは`*`とし、それ以外のこれらの場合は`.`とする。
+つまり、Istio Ingress GatewayやIstio Egress Gatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは`*`とし、それ以外のこれらの場合は`.`とする。
 
 **＊実装例＊**
 
@@ -392,7 +392,7 @@ spec:
 
 もし、他のNamespaceのVirtualServiceに紐づける場合、`*`とする必要がある。
 
-つまり、Istio IngressGatewayやIstio EgressGatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは`*`とし、それ以外のこれらの場合は`.`とする。
+つまり、Istio Ingress GatewayやIstio Egress Gatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは`*`とし、それ以外のこれらの場合は`.`とする。
 
 **＊実装例＊**
 
@@ -1536,7 +1536,7 @@ metadata:
 spec:
   workloadSelector:
     labels:
-      # Istio IngressGatewayに合致させる
+      # Istio Ingress Gatewayに合致させる
       istio: ingressgateway
   configPatches:
     - applyTo: HTTP_FILTER
@@ -1731,11 +1731,11 @@ spec:
 
 #### ▼ selectorとは
 
-Istio IngressGateway/EgressGatewayに付与された`.metadata.labels`キーを設定する。
+Istio Ingress Gateway/EgressGatewayに付与された`.metadata.labels`キーを設定する。
 
-デフォルトでは、Istio IngressGatewayには`istio`ラベルがあり、値は`ingressgateway`である。
+デフォルトでは、Istio Ingress Gatewayには`istio`ラベルがあり、値は`ingressgateway`である。
 
-また、Istio EgressGatewayには`istio`ラベルがあり、値は`egressgateway`である。
+また、Istio Egress Gatewayには`istio`ラベルがあり、値は`egressgateway`である。
 
 **＊実装例＊**
 
@@ -1766,7 +1766,7 @@ metadata:
 
 #### ▼ name
 
-Istio IngressGateway/EgressGatewayのPodで待ち受けるポート名を設定する。
+Istio Ingress Gateway/EgressGatewayのPodで待ち受けるポート名を設定する。
 
 **＊実装例＊**
 
@@ -1785,7 +1785,7 @@ spec:
 
 #### ▼ number
 
-Istio IngressGateway/EgressGatewayのPodで待ち受けるポート番号を設定する。
+Istio Ingress Gateway/EgressGatewayのPodで待ち受けるポート番号を設定する。
 
 Ingress Nginx Controllerであれば、Nginx Controller Podで待ち受けるコンテナポート番号に相当する。
 
@@ -1810,7 +1810,7 @@ spec:
 
 #### ▼ protocol
 
-Istio IngressGateway/EgressGatewayのPodで受信するプロトコルを設定する。
+Istio Ingress Gateway/EgressGatewayのPodで受信するプロトコルを設定する。
 
 ドキュメントは更新されていないが、執筆時点 (2025/03/10) で以下のプロトコルに対応している。
 
@@ -1856,7 +1856,7 @@ spec:
 
 #### ▼ targetPort
 
-Istio IngressGateway/EgressGatewayのPodの宛先ポート番号を設定する。
+Istio Ingress Gateway/EgressGatewayのPodの宛先ポート番号を設定する。
 
 **＊実装例＊**
 
@@ -1879,9 +1879,9 @@ spec:
 
 Gatewayでフィルタリングするインバウンド通信の`Host`ヘッダー名を設定する。
 
-Istio IngressGatewayでは、複数のマイクロサービスでAPIを公開している場合、ワイルドカード (`*`) を使用して全てのドメインを許可することになる。
+Istio Ingress Gatewayでは、複数のマイクロサービスでAPIを公開している場合、ワイルドカード (`*`) を使用して全てのドメインを許可することになる。
 
-また、Istio EgressGatewayでも任意のAPIへの接続を許可するために、同様にワイルドカード (`*`) を使用することになる。
+また、Istio Egress Gatewayでも任意のAPIへの接続を許可するために、同様にワイルドカード (`*`) を使用することになる。
 
 **＊実装例＊**
 
@@ -2003,7 +2003,7 @@ spec:
 
 送信元とGatewayの間で、Istioの作成した証明書による相互TLSを実施する。
 
-`istio-proxy`コンテナとIstio EgressGatewayの間で相互TLSを実施する場合、これを使用する。
+`istio-proxy`コンテナとIstio Egress Gatewayの間で相互TLSを実施する場合、これを使用する。
 
 **＊実装例＊**
 
@@ -2502,7 +2502,7 @@ spec:
 
 そのServiceEntryにリクエストできるNamespaceを設定する。
 
-ServiceEntryはIstio EgressGatewayからリクエストを受信するため、基本的には`*`となるはずである。
+ServiceEntryはIstio Egress Gatewayからリクエストを受信するため、基本的には`*`となるはずである。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -2652,11 +2652,11 @@ spec:
 
 #### ▼ NONE
 
-Istio EgressGatewayは値に注意が必要である。
+Istio Egress Gatewayは値に注意が必要である。
 
-ServiceEntryに対するリクエストの宛先IPアドレスはIstio EgressGatewayに書き換えられている。
+ServiceEntryに対するリクエストの宛先IPアドレスはIstio Egress Gatewayに書き換えられている。
 
-そのため、DNS解決を`NONE`にすると、Istio EgressGatewayはServiceEntryを見つけられず、自分自身でループしてしまう。
+そのため、DNS解決を`NONE`にすると、Istio Egress GatewayはServiceEntryを見つけられず、自分自身でループしてしまう。
 
 **＊実装例＊**
 
@@ -2916,7 +2916,7 @@ spec:
 
 もし、同じNamespace内のGatewayやDestinationRuleと紐づける場合、`.`とする。
 
-つまり、Istio IngressGatewayやIstio EgressGatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは`*`とし、それ以外のこれらの場合は`.`とする。
+つまり、Istio Ingress GatewayやIstio Egress Gatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは`*`とし、それ以外のこれらの場合は`.`とする。
 
 **＊実装例＊**
 
@@ -2930,7 +2930,7 @@ spec:
     - "*"
   gateways:
     - foo-igress
-  # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
+  # Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する
   # そのため、後続のVirtualServiceでは、複数の種類のHostヘッダー値を受信するため、ワイルドカードとする
   hosts:
     - "*"
@@ -2942,7 +2942,7 @@ spec:
 
 もし、他のNamespaceのGatewayやDestinationRuleに紐づける場合、`*`とする必要がある。
 
-つまり、Istio IngressGatewayやIstio EgressGatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは`*`とし、それ以外のこれらの場合は`.`とする。
+つまり、Istio Ingress GatewayやIstio Egress Gatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは`*`とし、それ以外のこれらの場合は`.`とする。
 
 **＊実装例＊**
 
@@ -3017,7 +3017,7 @@ metadata:
 spec:
   gateways:
     - foo-namespace/foo-gateway
-  # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
+  # Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する
   # そのため、後続のVirtualServiceでは、複数の種類のHostヘッダー値を受信するため、ワイルドカードとする
   hosts:
     - "*"
@@ -3027,7 +3027,7 @@ spec:
 
 いずれのGatewayの条件に合致したリクエストを処理するかを設定する。
 
-VirtualServiceを、Istio IngressGateway/EgressGatewayに紐づける場合 (サービスメッシュ内外の通信) は`<Gateway名>`とする。
+VirtualServiceを、Istio Ingress Gateway/EgressGatewayに紐づける場合 (サービスメッシュ内外の通信) は`<Gateway名>`とする。
 
 VirtualServiceとGatewayが同じNamespaceに所属する場合は、Namespaceを省略できる (`.spec.export`キーとは関係ない) 。
 
@@ -3043,7 +3043,7 @@ metadata:
 spec:
   gateways:
     - foo-ingressgateway
-  # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
+  # Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する
   # そのため、後続のVirtualServiceでは、複数の種類のHostヘッダー値を受信するため、ワイルドカードとする
   hosts:
     - "*"
@@ -3059,16 +3059,16 @@ spec:
     #  Hostヘッダー値がexternal.comの時にVirtualServiceを適用する。
     - external.com
   gateways:
-    # PodからIstio EgressGatewayのPodへの通信で使用する
+    # PodからIstio Egress GatewayのPodへの通信で使用する
     # gateway名と両方設定する場合は、デフォルト値としての省略はできない
     - mesh
-    # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
+    # Istio Egress Gatewayからエントリ済みシステムへの通信で使用する
     - foo/foo-egressgateway
   http:
-    # external.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
+    # external.comに対するリクエストは、Istio Egress Gatewayにルーティング (リダイレクト) する
     - match:
         - gateways:
-            # PodからIstio EgressGatewayのPodへの通信で使用する
+            # PodからIstio Egress GatewayのPodへの通信で使用する
             - mesh
           port: 80
       route:
@@ -3076,10 +3076,10 @@ spec:
             host: istio-egressgateway.istio-egress.svc.cluster.local
             port:
               number: 80
-    # Istio EgressGatewayに対するリクエストは、エントリ済システムにルーティングする
+    # Istio Egress Gatewayに対するリクエストは、エントリ済システムにルーティングする
     - match:
         - gateways:
-            # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
+            # Istio Egress Gatewayからエントリ済みシステムへの通信で使用する
             - foo/foo-egressgateway
           port: 80
       route:
@@ -3103,15 +3103,15 @@ spec:
     #  Hostヘッダー値がexternal.comの時にVirtualServiceを適用する。
     - external.com
   gateways:
-    # PodからIstio EgressGatewayのPodへの通信で使用する
+    # PodからIstio Egress GatewayのPodへの通信で使用する
     - mesh
-    # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
+    # Istio Egress Gatewayからエントリ済みシステムへの通信で使用する
     - foo/foo-egressgateway
   tls:
-    # external.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
+    # external.comに対するリクエストは、Istio Egress Gatewayにルーティング (リダイレクト) する
     - match:
         - gateways:
-            # PodからIstio EgressGatewayのPodへの通信で使用する
+            # PodからIstio Egress GatewayのPodへの通信で使用する
             - mesh
           port: 443
           sniHosts:
@@ -3122,10 +3122,10 @@ spec:
             port:
               number: 443
   http:
-    # Istio EgressGatewayに対するリクエストは、エントリ済システムにルーティングする
+    # Istio Egress Gatewayに対するリクエストは、エントリ済システムにルーティングする
     - match:
         - gateways:
-            # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
+            # Istio Egress Gatewayからエントリ済みシステムへの通信で使用する
             - foo/foo-egressgateway
           port: 443
       route:
@@ -3312,7 +3312,7 @@ kind: VirtualService
 metadata:
   name: foo-virtual-service
 spec:
-  # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
+  # Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する
   # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
   hosts:
     - foo
@@ -3355,7 +3355,7 @@ spec:
   http:
     - match:
         - gateways:
-            # PodからIstio EgressGatewayのPodへの通信で使用する
+            # PodからIstio Egress GatewayのPodへの通信で使用する
             - mesh
           port: 443
       route:
@@ -3365,7 +3365,7 @@ spec:
               number: 443
     - match:
         - gateways:
-            # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
+            # Istio Egress Gatewayからエントリ済みシステムへの通信で使用する
             - foo-ingressgateway
           port: 443
       route:
@@ -3534,7 +3534,7 @@ spec:
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 spec:
-  # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
+  # Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する
   # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
   hosts:
     - foo-service.foo-namespace.svc.cluster.local
@@ -3559,7 +3559,7 @@ kind: VirtualService
 metadata:
   name: foo-virtual-service
 spec:
-  # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
+  # Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する
   # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
   hosts:
     - foo-service.foo-namespace.svc.cluster.local
@@ -3591,7 +3591,7 @@ kind: VirtualService
 metadata:
   name: foo-virtual-service
 spec:
-  # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
+  # Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する
   # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
   hosts:
     - foo-service.foo-namespace.svc.cluster.local
@@ -3632,7 +3632,7 @@ kind: VirtualService
 metadata:
   name: foo-virtual-service
 spec:
-  # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
+  # Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する
   # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
   hosts:
     - foo-service.foo-namespace.svc.cluster.local
@@ -3739,7 +3739,7 @@ kind: VirtualService
 metadata:
   name: foo-virtual-service
 spec:
-  # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
+  # Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する
   # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
   hosts:
     - foo-service.foo-namespace.svc.cluster.local
@@ -3763,7 +3763,7 @@ kind: VirtualService
 metadata:
   name: foo-virtual-service
 spec:
-  # Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する
+  # Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する
   # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
   hosts:
     - foo-service.foo-namespace.svc.cluster.local
@@ -3819,15 +3819,15 @@ spec:
 
 マイクロサービスがHTTPSプロトコルで通信を送受信し、`istio-proxy`コンテナ間で相互TLSを実施する場合、これを使用する。
 
-他に、マイクロサービスがHTTPSリクエストを送信し、Istio EgressGatewayでこれをそのまま通過させる (`PASSTHROUGH`) 場合も必要になる。
+他に、マイクロサービスがHTTPSリクエストを送信し、Istio Egress Gatewayでこれをそのまま通過させる (`PASSTHROUGH`) 場合も必要になる。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#TLSRoute
 
-#### ▼ Istio EgressGatewayのVirtualServiceでの注意点
+#### ▼ Istio Egress GatewayのVirtualServiceでの注意点
 
-`.spec.tls`キーで送信する場合、Istio EgressGatewayはパケットペイロードを復号化できないため、プロトコルをTCPとして扱う。
+`.spec.tls`キーで送信する場合、Istio Egress Gatewayはパケットペイロードを復号化できないため、プロトコルをTCPとして扱う。
 
-そのため、Istio EgressGateway上を通過するTLSはIstioのメトリクスではTCPとして処理され、またIstio EgressGatewayではスパンを作成できない。
+そのため、Istio Egress Gateway上を通過するTLSはIstioのメトリクスではTCPとして処理され、またIstio Egress Gatewayではスパンを作成できない。
 
 ![istio-egressgateway_tls_passthrough](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_tls_passthrough.png)
 

@@ -366,14 +366,14 @@ metadata:
 
 : Istioの`istio.io/rev`キーを使用して、特定のNamespaceの`istio-injection`キーを上書きする。
 
-     多くの場合、`istio-proxy`コンテナはIstio IngressGatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。
+     多くの場合、`istio-proxy`コンテナはIstio Ingress GatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。
 
      これらのキーはコンフリクトを発生させるため、どちらか一方しか使用できず、Anthosでは`istio.io/rev`キーを推奨している。
 
      もしGitOpsツール (例：ArgoCD、Flux) でNamespaceを管理している場合は、`kubectl label`コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
 
 ```bash
-# Istio IngressGatewayの特定のNamespace
+# Istio Ingress Gatewayの特定のNamespace
 $ kubectl label ns ingress istio.io/rev=asm-1140-0 istio-injection- --overwrite
 
 # アプリケーションの特定のNamespace
@@ -391,11 +391,11 @@ $ kubectl get namespace -L istio.io/rev
 > - https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_gateways
 > - https://cloud.google.com/service-mesh/docs/gateways#in-cluster_control_plane
 
-#### ▼ Istio IngressGatewayの`istio-proxy`コンテナをアップグレード
+#### ▼ Istio Ingress Gatewayの`istio-proxy`コンテナをアップグレード
 
 `(11)`
 
-: Istio IngressGatewayのPodを再作成し、新バージョンの`istio-proxy`コンテナを自動的にインジェクションする。
+: Istio Ingress GatewayのPodを再作成し、新バージョンの`istio-proxy`コンテナを自動的にインジェクションする。
 
      カナリア方式のため、webhook-serviceがそのままで新しい`istio-proxy`コンテナをインジェクションできる。
 

@@ -15,7 +15,7 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 ## 01. IstioOperatorとは
 
-Istioのコンポーネント (Istiodコントロールプレーン、Istio IngressGateway、Istio EgressGatewayなど) を管理する。
+Istioのコンポーネント (Istiodコントロールプレーン、Istio Ingress Gateway、Istio Egress Gatewayなど) を管理する。
 
 IstioOperatorは執筆時点 (2025/03/06) で非推奨であり、代わりにistioctlやHelmでコンポーネントを管理することが推奨である。
 
@@ -31,7 +31,7 @@ IstioOperatorは執筆時点 (2025/03/06) で非推奨であり、代わりにis
 
 #### ▼ B/Gデプロイメント
 
-IstioOperator + Istiod + Istio IngressGatewayから、Istiod + Istio IngressGatewayにB/Gデプロイメントのように移行する。
+IstioOperator + Istiod + Istio Ingress Gatewayから、Istiod + Istio Ingress GatewayにB/Gデプロイメントのように移行する。
 
 1. 既存のIstioOperatorを残したまま上記のチャート (istio-base、istiod、gateway) デプロイする。新旧でリソース名が同じだと衝突するかもないので、もし衝突したら名前を調整する。
 2. 新しいLoadBalancer Service由来のNLBやチャート由来のistio-ingressgatewayを経由して、データプレーンのマイクロサービスにリクエストを送信できることを確認する

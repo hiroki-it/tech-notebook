@@ -408,7 +408,7 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -N docker@127.0.
 -L <トンネルポート番号3>:<ClusterIP ServiceのIPアドレス>:<NodePort Serviceの宛先ポート番号3>
 ```
 
-これは、Istio IngressGatewayをNodePort Serviceで作成している場合も使える。
+これは、Istio Ingress GatewayをNodePort Serviceで作成している場合も使える。
 
 ```bash
 $ minikube service istio-ingressgateway --url -n istio-ingress

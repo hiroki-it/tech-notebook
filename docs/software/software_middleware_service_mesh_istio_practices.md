@@ -85,17 +85,17 @@ spec:
 
 ## 02. トラフィック管理
 
-### Istio IngressGatewayに関して
+### Istio Ingress Gatewayに関して
 
 #### ▼ Istiodコントロールプレーンとは異なるNamespaceにおく
 
-セキュリティ上の理由から、Istio IngressGatewayとIstiodコントロールプレーンは異なるNamespaceにおく方が良い。
+セキュリティ上の理由から、Istio Ingress GatewayとIstiodコントロールプレーンは異なるNamespaceにおく方が良い。
 
 > - https://istio.io/latest/docs/setup/additional-setup/gateway/#deploying-a-gateway
 
 #### ▼ NodePort Serviceを選ぶ
 
-Istio IngressGatewayでは、内部的に作成されるServiceのタイプ (NodePort Service、ClusterIP Service、LoadBalancer Service) を選べる。
+Istio Ingress Gatewayでは、内部的に作成されるServiceのタイプ (NodePort Service、ClusterIP Service、LoadBalancer Service) を選べる。
 
 NodePort Serviceを選ぶ場合、Nodeの送信元に開発者がロードバランサーを作成し、NodePort Serviceにインバウンド通信をルーティングできるようにする。
 
@@ -108,7 +108,7 @@ AWS Route53
 AWS ALB
 ⬇⬆️︎
 # L4ロードバランサー
-NodePort Service (Istio IngressGateway)
+NodePort Service (Istio Ingress Gateway)
 ⬇⬆️︎
 Gateway
 ⬇⬆️︎
@@ -126,16 +126,16 @@ Pod
 
 LoadBalancer Serviceでは、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまうため、NodePort Serviceを選ぶようにする。
 
-補足として、デフォルトではIstio IngressGatewayの内部ではLoadBalancer Serviceを作成されてしまう。
+補足として、デフォルトではIstio Ingress Gatewayの内部ではLoadBalancer Serviceを作成されてしまう。
 
-NodePort Serviceを選ぶためには、Istio IngressGatewayではなく、IstioOperatorやistioチャート上でServiceのタイプを設定し、Istio IngressGatewayを作成する必要がある。
+NodePort Serviceを選ぶためには、Istio Ingress Gatewayではなく、IstioOperatorやistioチャート上でServiceのタイプを設定し、Istio Ingress Gatewayを作成する必要がある。
 
 > - https://github.com/istio/istio/issues/28310#issuecomment-733079966
 > - https://github.com/istio/istio/blob/1.14.3/manifests/charts/gateway/values.yaml#L39
 
 #### ▼ ClusterIP Serviceを選ぶ (AWS Load Balancer Controllerを使用する場合のみ)
 
-AWS Load Balancer Controllerを使用する場合、Istio IngressGatewayでClusterIP Serviceを使用できる。
+AWS Load Balancer Controllerを使用する場合、Istio Ingress GatewayでClusterIP Serviceを使用できる。
 
 Ingressにて、`alb.ingress.kubernetes.io/target-type`キー値を`ip`とすると、AWS Load Balancer ControllerはPodにリクエストを直接的にL7ロードバランシングする。
 
@@ -148,7 +148,7 @@ AWS Route53
 AWS Load Balancer ControllerによるAWS ALB
 ⬇⬆️︎
 # L4ロードバランサー
-ClusterIP Service (Istio IngressGateway)
+ClusterIP Service (Istio Ingress Gateway)
 ⬇⬆️︎
 Gateway
 ⬇⬆️︎
@@ -164,7 +164,7 @@ Pod
 
 #### ▼ マイクロサービスごとに作成する
 
-単一障害点になることを防ぐために、`1`個のIstio IngressGatewayで全てのマイクロサービスにルーティングするのではなく、マイクロサービスことに用意する。
+単一障害点になることを防ぐために、`1`個のIstio Ingress Gatewayで全てのマイクロサービスにルーティングするのではなく、マイクロサービスことに用意する。
 
 <br>
 
@@ -172,7 +172,7 @@ Pod
 
 Istioリソースで設定するサブセット名は`1`個だけにする。
 
-これにより、Istio IngressGatewayで受信した通信を、特定のバージョンのPodにルーティングできる。
+これにより、Istio Ingress Gatewayで受信した通信を、特定のバージョンのPodにルーティングできる。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -251,7 +251,7 @@ LoadBalancer Serviceを使用する場合、以下のようなネットワーク
 AWS Route53
 ⬇⬆️︎
 # L4ロードバランサー
-LoadBalancer Service (Istio IngressGateway) によるAWS NLB
+LoadBalancer Service (Istio Ingress Gateway) によるAWS NLB
 ⬇⬆️︎
 Gateway
 ⬇⬆️︎
@@ -277,7 +277,7 @@ NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定�
 パブリックネットワーク
 ⬇⬆️︎
 # L4ロードバランサー
-NodePort Service (Istio IngressGateway)
+NodePort Service (Istio Ingress Gateway)
 ⬇⬆️︎
 Gateway
 ⬇⬆️︎
@@ -306,7 +306,7 @@ AWS Route53
 AWS ALB
 ⬇⬆️︎
 # L4ロードバランサー
-NodePort Service (Istio IngressGateway)
+NodePort Service (Istio Ingress Gateway)
 ⬇⬆️︎
 Gateway
 ⬇⬆️︎
@@ -322,7 +322,7 @@ Pod
 
 ### ClusterIP Serviceの場合
 
-AWS Load Balancer Controllerを使用する場合、Istio IngressGatewayでClusterIP Serviceを使用できる。
+AWS Load Balancer Controllerを使用する場合、Istio Ingress GatewayでClusterIP Serviceを使用できる。
 
 Ingressにて、`alb.ingress.kubernetes.io/target-type`キー値を`ip`とすると、AWS Load Balancer ControllerはPodにリクエストを直接的にL7ロードバランシングする。
 
@@ -335,7 +335,7 @@ AWS Route53
 AWS Load Balancer ControllerによるAWS ALB
 ⬇⬆️︎
 # L4ロードバランサー
-ClusterIP Service (Istio IngressGateway)
+ClusterIP Service (Istio Ingress Gateway)
 ⬇⬆️︎
 Gateway
 ⬇⬆️︎
@@ -382,9 +382,9 @@ Istiodコントロールプレーンをカナリアアップグレードを採�
 
 > - https://thenewstack.io/upgrading-istio-without-downtime/
 
-#### ▼ Istio IngressGatewayでダウンタイムを発生させない
+#### ▼ Istio Ingress Gatewayでダウンタイムを発生させない
 
-Istio IngressGatewayでダウンタイムが発生すると、アプリへのインバウンド通信が遮断されてしまう。
+Istio Ingress Gatewayでダウンタイムが発生すると、アプリへのインバウンド通信が遮断されてしまう。
 
 > - https://thenewstack.io/upgrading-istio-without-downtime/
 
@@ -394,7 +394,7 @@ Istio IngressGatewayでダウンタイムが発生すると、アプリへのイ
 
 #### ▼ インプレース方式とは
 
-既存のIstiodコントロールプレーンとIstio IngressGatewayの両方をインプレース方式でアップグレードする。
+既存のIstiodコントロールプレーンとIstio Ingress Gatewayの両方をインプレース方式でアップグレードする。
 
 #### ▼ 手順
 
@@ -412,7 +412,7 @@ $ kubectl apply -f manifests/charts/base/crds
 
 `(2)`
 
-: IstiodコントロールプレーンとIstio IngressGatewayの両方をインプレース方式でアップグレードする。
+: IstiodコントロールプレーンとIstio Ingress Gatewayの両方をインプレース方式でアップグレードする。
 
 ```bash
 $ istioctl upgrade
@@ -498,7 +498,7 @@ $ helm upgrade <新しいバージョンのリリース名> <チャートリポ�
 
 `(8)`
 
-: gatewayチャートを使用して、Istio IngressGatewayに関するKubernetesリソースを変更する。
+: gatewayチャートを使用して、Istio Ingress Gatewayに関するKubernetesリソースを変更する。
 
      この時、リリースを新しく命名する。
 

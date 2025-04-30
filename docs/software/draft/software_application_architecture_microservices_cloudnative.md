@@ -508,7 +508,7 @@ APIゲートウェイとして使用できるツールはNginx以外にも非常
 
 もしNginxでBFFとしての要件を満たせなくとも、Istioと組み合わせることにより足りない機能を補完できます。
 
-なお、Istioの提供するIstio IngressGatewayとIstio EgressGatewayはメッシュゲートウェイと呼ばれ、APIゲートウェイと似た名前をもちます。
+なお、Istioの提供するIstio Ingress GatewayとIstio Egress Gatewayはメッシュゲートウェイと呼ばれ、APIゲートウェイと似た名前をもちます。
 
 ただ、APIゲートウェイとは異なる役割を持ちます \*35 。
 
@@ -1517,7 +1517,7 @@ flowchart LR
 
 例えば、コントロールプレーンとデータプレーンからなるIstioは、Envoyの設定を抽象化することによりサービスメッシュを実現します \*68 。
 
-IstioのサイドカーサービスメッシュではIstioはデータプレーンにサービスメッシュゲートウェイ（Istio IngressGatewayとIstio EgressGateway）を配置し、またマイクロサービス内にサイドカーコンテナ（istio-proxy）をインジェクションします。
+IstioのサイドカーサービスメッシュではIstioはデータプレーンにサービスメッシュゲートウェイ（Istio Ingress GatewayとIstio Egress Gateway）を配置し、またマイクロサービス内にサイドカーコンテナ（istio-proxy）をインジェクションします。
 
 サービスメッシュゲートウェイはサービスメッシュ内外を接続する役割を持ち、マイクロサービスを公開するためのAPIゲートウェイとはその役割が異なります \*65 。
 

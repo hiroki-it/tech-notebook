@@ -185,9 +185,9 @@ spec:
 
 #### ▼ egressGateways
 
-IstioOperatorで管理するIstio EgressGatewayのオプションを設定する。
+IstioOperatorで管理するIstio Egress Gatewayのオプションを設定する。
 
-Istio EgressGatewayを直接的に作成するのではなく、IstioOperatorに作成させる。
+Istio Egress Gatewayを直接的に作成するのではなく、IstioOperatorに作成させる。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -227,9 +227,9 @@ spec:
 
 #### ▼ ingressGateways
 
-IstioOperatorで管理するIstio IngressGatewayのオプションを設定する。
+IstioOperatorで管理するIstio Ingress Gatewayのオプションを設定する。
 
-Istio IngressGatewayを直接的に作成するのではなく、IstioOperatorに作成させる。
+Istio Ingress Gatewayを直接的に作成するのではなく、IstioOperatorに作成させる。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -330,7 +330,7 @@ status:
     - ip: *.*.*.*
 ```
 
-補足として、以下の方法でユーザー定義のIstio IngressGatewayを作成できる (かなり大変) 。
+補足として、以下の方法でユーザー定義のIstio Ingress Gatewayを作成できる (かなり大変) 。
 
 > - https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d
 > - https://github.com/istio/istio/issues/23303
@@ -531,7 +531,7 @@ metadata:
 spec:
   values:
     gateways:
-      # Istio EgressGateway
+      # Istio Egress Gateway
       istio-egressgateway:
         env: {}
         autoscaleEnabled: "true"
@@ -559,7 +559,7 @@ metadata:
 spec:
   values:
     gateways:
-      # Istio IngressGateway
+      # Istio Ingress Gateway
       istio-ingressgateway:
         env: {}
         # IstioOperatorをroot権限の実行ユーザーを使用する
