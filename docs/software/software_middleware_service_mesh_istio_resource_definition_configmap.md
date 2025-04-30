@@ -133,7 +133,7 @@ spec:
 
 <br>
 
-## 05. mesh
+## 04-01. mesh
 
 ### accessLogEncoding
 
@@ -615,7 +615,7 @@ data:
 
 <br>
 
-## 05-02. defaultConfig
+## 04-01-02. defaultConfig
 
 ### defaultConfigとは
 
@@ -1092,7 +1092,7 @@ spec:
 
 <br>
 
-## 05-03. defaultConfig.proxyMetadata
+## 04-01-03. defaultConfig.proxyMetadata
 
 ### `BOOTSTRAP_XDS_AGENT`
 
@@ -1487,7 +1487,7 @@ data:
 
 <br>
 
-## 05-05. extensionProviders (認証／認可系)
+## 04-01-04. extensionProviders (認証／認可系)
 
 ### extensionProviders (認証／認可系) とは
 
@@ -1577,7 +1577,7 @@ Keycloakは、IDプロバイダーとしてだけでなく認可プロバイダ�
 
 <br>
 
-## 05-06. extensionProviders (可観測系)
+## 04-01-05. extensionProviders (可観測系)
 
 ### extensionProviders (可観測系) とは
 
@@ -1917,7 +1917,7 @@ data:
 
 <br>
 
-## 06. meshNetworks
+## 04-02-03. meshNetworks
 
 ```yaml
 apiVersion: v1
@@ -1947,7 +1947,7 @@ data:
 
 <br>
 
-## 07. istio-sidecar-injector
+## 05. istio-sidecar-injector
 
 ### config
 
@@ -2023,7 +2023,7 @@ data:
 
 <br>
 
-## 08. pilot-discoveryコマンド
+## 06. pilot-discoveryコマンド
 
 ### `CITADEL_SELF_SIGNED_CA_CERT_TTL`
 
