@@ -26714,7 +26714,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-istiooperator">01. IstioOperatorとは<a class="headerlink" href="#01-istiooperator" title="Permanent link">&para;</a></h2>
-<p>Istioのコンポーネント (Istiodコントロールプレーン、Istio IngressGateway、Istio EgressGatewayなど) を管理する。</p>
+<p>Istioのコンポーネント (Istiodコントロールプレーン、Istio Ingress Gateway、Istio Egress Gatewayなど) を管理する。</p>
 <p>IstioOperatorは執筆時点 (2025/03/06) で非推奨であり、代わりにistioctlやHelmでコンポーネントを管理することが推奨である。</p>
 <p><img alt="istio_istio-operator" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-operator.png" /></p>
 <blockquote>
@@ -26726,7 +26726,7 @@
 <h2 id="02">02. 他の管理方法への移行<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="helm">Helm管理への移行<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h3>
 <h4 id="bg">▼ B/Gデプロイメント<a class="headerlink" href="#bg" title="Permanent link">&para;</a></h4>
-<p>IstioOperator + Istiod + Istio IngressGatewayから、Istiod + Istio IngressGatewayにB/Gデプロイメントのように移行する。</p>
+<p>IstioOperator + Istiod + Istio Ingress Gatewayから、Istiod + Istio Ingress GatewayにB/Gデプロイメントのように移行する。</p>
 <ol>
 <li>既存のIstioOperatorを残したまま上記のチャート (istio-base、istiod、gateway) デプロイする。新旧でリソース名が同じだと衝突するかもないので、もし衝突したら名前を調整する。</li>
 <li>新しいLoadBalancer Service由来のNLBやチャート由来のistio-ingressgatewayを経由して、データプレーンのマイクロサービスにリクエストを送信できることを確認する</li>
@@ -26761,7 +26761,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月7日 19:08:48">2025-03-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月30日 16:13:36">2025-04-30</span>
   </span>
 
     

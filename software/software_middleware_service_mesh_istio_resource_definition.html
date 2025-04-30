@@ -7335,9 +7335,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#istio-egressgatewayvirtualservice" class="md-nav__link">
+  <a href="#istio-egress-gatewayvirtualservice" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Istio EgressGatewayのVirtualServiceでの注意点
+      ▼ Istio Egress GatewayのVirtualServiceでの注意点
     </span>
   </a>
   
@@ -30603,9 +30603,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#istio-egressgatewayvirtualservice" class="md-nav__link">
+  <a href="#istio-egress-gatewayvirtualservice" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Istio EgressGatewayのVirtualServiceでの注意点
+      ▼ Istio Egress GatewayのVirtualServiceでの注意点
     </span>
   </a>
   
@@ -30957,7 +30957,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>デフォルト値である。</p>
 <p>他のNamespaceのVirtualServiceに紐づける場合、<code>*</code>とする必要がある。</p>
 <p>もし、同じNamespace内のVirtualServiceと紐づける場合、<code>.</code>とする。</p>
-<p>つまり、Istio IngressGatewayやIstio EgressGatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは<code>*</code>とし、それ以外のこれらの場合は<code>.</code>とする。</p>
+<p>つまり、Istio Ingress GatewayやIstio Egress Gatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは<code>*</code>とし、それ以外のこれらの場合は<code>.</code>とする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -30980,7 +30980,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="_9">▼ <code>.</code> (ドット)<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>同じNamespace内のVirtualServiceと紐づける場合、<code>.</code>とする。</p>
 <p>もし、他のNamespaceのVirtualServiceに紐づける場合、<code>*</code>とする必要がある。</p>
-<p>つまり、Istio IngressGatewayやIstio EgressGatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは<code>*</code>とし、それ以外のこれらの場合は<code>.</code>とする。</p>
+<p>つまり、Istio Ingress GatewayやIstio Egress Gatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは<code>*</code>とし、それ以外のこれらの場合は<code>.</code>とする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -31967,7 +31967,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">workloadSelector</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">      </span><span class="c1"># Istio IngressGatewayに合致させる</span>
+<span class="w">      </span><span class="c1"># Istio Ingress Gatewayに合致させる</span>
 <span class="w">      </span><span class="nt">istio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingressgateway</span>
 <span class="w">  </span><span class="nt">configPatches</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">applyTo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP_FILTER</span>
@@ -32154,9 +32154,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="05-gateway">05. Gateway<a class="headerlink" href="#05-gateway" title="Permanent link">&para;</a></h2>
 <h3 id="specselector_1">.spec.selector<a class="headerlink" href="#specselector_1" title="Permanent link">&para;</a></h3>
 <h4 id="selector_1">▼ selectorとは<a class="headerlink" href="#selector_1" title="Permanent link">&para;</a></h4>
-<p>Istio IngressGateway/EgressGatewayに付与された<code>.metadata.labels</code>キーを設定する。</p>
-<p>デフォルトでは、Istio IngressGatewayには<code>istio</code>ラベルがあり、値は<code>ingressgateway</code>である。</p>
-<p>また、Istio EgressGatewayには<code>istio</code>ラベルがあり、値は<code>egressgateway</code>である。</p>
+<p>Istio Ingress Gateway/EgressGatewayに付与された<code>.metadata.labels</code>キーを設定する。</p>
+<p>デフォルトでは、Istio Ingress Gatewayには<code>istio</code>ラベルがあり、値は<code>ingressgateway</code>である。</p>
+<p>また、Istio Egress Gatewayには<code>istio</code>ラベルがあり、値は<code>egressgateway</code>である。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
@@ -32181,7 +32181,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="specserversport">.spec.servers.port<a class="headerlink" href="#specserversport" title="Permanent link">&para;</a></h3>
 <h4 id="name">▼ name<a class="headerlink" href="#name" title="Permanent link">&para;</a></h4>
-<p>Istio IngressGateway/EgressGatewayのPodで待ち受けるポート名を設定する。</p>
+<p>Istio Ingress Gateway/EgressGatewayのPodで待ち受けるポート名を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
@@ -32198,7 +32198,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="number">▼ number<a class="headerlink" href="#number" title="Permanent link">&para;</a></h4>
-<p>Istio IngressGateway/EgressGatewayのPodで待ち受けるポート番号を設定する。</p>
+<p>Istio Ingress Gateway/EgressGatewayのPodで待ち受けるポート番号を設定する。</p>
 <p>Ingress Nginx Controllerであれば、Nginx Controller Podで待ち受けるコンテナポート番号に相当する。</p>
 <p>IngressGatewayの内部的なServiceのタイプに関して、NodePort Serviceを選んだ場合、Nodeの宛先ポート番号に合わせる。</p>
 <p>一方で、LoadBalancer Serviceを選んだ場合、LoadBalancerがルーティングできる宛先ポート番号とする。</p>
@@ -32218,7 +32218,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="protocol">▼ protocol<a class="headerlink" href="#protocol" title="Permanent link">&para;</a></h4>
-<p>Istio IngressGateway/EgressGatewayのPodで受信するプロトコルを設定する。</p>
+<p>Istio Ingress Gateway/EgressGatewayのPodで受信するプロトコルを設定する。</p>
 <p>ドキュメントは更新されていないが、執筆時点 (2025/03/10) で以下のプロトコルに対応している。</p>
 <ul>
 <li>TCP</li>
@@ -32260,7 +32260,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="targetport">▼ targetPort<a class="headerlink" href="#targetport" title="Permanent link">&para;</a></h4>
-<p>Istio IngressGateway/EgressGatewayのPodの宛先ポート番号を設定する。</p>
+<p>Istio Ingress Gateway/EgressGatewayのPodの宛先ポート番号を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
@@ -32279,8 +32279,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="specservershosts">.spec.servers.hosts<a class="headerlink" href="#specservershosts" title="Permanent link">&para;</a></h3>
 <p>Gatewayでフィルタリングするインバウンド通信の<code>Host</code>ヘッダー名を設定する。</p>
-<p>Istio IngressGatewayでは、複数のマイクロサービスでAPIを公開している場合、ワイルドカード (<code>*</code>) を使用して全てのドメインを許可することになる。</p>
-<p>また、Istio EgressGatewayでも任意のAPIへの接続を許可するために、同様にワイルドカード (<code>*</code>) を使用することになる。</p>
+<p>Istio Ingress Gatewayでは、複数のマイクロサービスでAPIを公開している場合、ワイルドカード (<code>*</code>) を使用して全てのドメインを許可することになる。</p>
+<p>また、Istio Egress Gatewayでも任意のAPIへの接続を許可するために、同様にワイルドカード (<code>*</code>) を使用することになる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
@@ -32374,7 +32374,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <h4 id="istio_mutual">▼ ISTIO_MUTUAL<a class="headerlink" href="#istio_mutual" title="Permanent link">&para;</a></h4>
 <p>送信元とGatewayの間で、Istioの作成した証明書による相互TLSを実施する。</p>
-<p><code>istio-proxy</code>コンテナとIstio EgressGatewayの間で相互TLSを実施する場合、これを使用する。</p>
+<p><code>istio-proxy</code>コンテナとIstio Egress Gatewayの間で相互TLSを実施する場合、これを使用する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
@@ -32804,7 +32804,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="specexportto_1">.spec.exportTo<a class="headerlink" href="#specexportto_1" title="Permanent link">&para;</a></h3>
 <h4 id="exportto_1">▼ exportToとは<a class="headerlink" href="#exportto_1" title="Permanent link">&para;</a></h4>
 <p>そのServiceEntryにリクエストできるNamespaceを設定する。</p>
-<p>ServiceEntryはIstio EgressGatewayからリクエストを受信するため、基本的には<code>*</code>となるはずである。</p>
+<p>ServiceEntryはIstio Egress Gatewayからリクエストを受信するため、基本的には<code>*</code>となるはずである。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -32921,9 +32921,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="none">▼ NONE<a class="headerlink" href="#none" title="Permanent link">&para;</a></h4>
-<p>Istio EgressGatewayは値に注意が必要である。</p>
-<p>ServiceEntryに対するリクエストの宛先IPアドレスはIstio EgressGatewayに書き換えられている。</p>
-<p>そのため、DNS解決を<code>NONE</code>にすると、Istio EgressGatewayはServiceEntryを見つけられず、自分自身でループしてしまう。</p>
+<p>Istio Egress Gatewayは値に注意が必要である。</p>
+<p>ServiceEntryに対するリクエストの宛先IPアドレスはIstio Egress Gatewayに書き換えられている。</p>
+<p>そのため、DNS解決を<code>NONE</code>にすると、Istio Egress GatewayはServiceEntryを見つけられず、自分自身でループしてしまう。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
@@ -33147,7 +33147,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>デフォルト値である。</p>
 <p>他のNamespaceのGatewayやDestinationRuleに紐づける場合、<code>*</code>とする必要がある。</p>
 <p>もし、同じNamespace内のGatewayやDestinationRuleと紐づける場合、<code>.</code>とする。</p>
-<p>つまり、Istio IngressGatewayやIstio EgressGatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは<code>*</code>とし、それ以外のこれらの場合は<code>.</code>とする。</p>
+<p>つまり、Istio Ingress GatewayやIstio Egress Gatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは<code>*</code>とし、それ以外のこれらの場合は<code>.</code>とする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -33158,7 +33158,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
 <span class="w">  </span><span class="nt">gateways</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-igress</span>
-<span class="w">  </span><span class="c1"># Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する</span>
+<span class="w">  </span><span class="c1"># Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する</span>
 <span class="w">  </span><span class="c1"># そのため、後続のVirtualServiceでは、複数の種類のHostヘッダー値を受信するため、ワイルドカードとする</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
@@ -33166,7 +33166,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="_14">▼ <code>.</code> (ドット)<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>同じNamespace内のGatewayやDestinationRuleと紐づける場合、<code>.</code>とする。</p>
 <p>もし、他のNamespaceのGatewayやDestinationRuleに紐づける場合、<code>*</code>とする必要がある。</p>
-<p>つまり、Istio IngressGatewayやIstio EgressGatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは<code>*</code>とし、それ以外のこれらの場合は<code>.</code>とする。</p>
+<p>つまり、Istio Ingress GatewayやIstio Egress Gatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは<code>*</code>とし、それ以外のこれらの場合は<code>.</code>とする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -33219,14 +33219,14 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">gateways</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-namespace/foo-gateway</span>
-<span class="w">  </span><span class="c1"># Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する</span>
+<span class="w">  </span><span class="c1"># Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する</span>
 <span class="w">  </span><span class="c1"># そのため、後続のVirtualServiceでは、複数の種類のHostヘッダー値を受信するため、ワイルドカードとする</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
 </code></pre></div>
 <h4 id="gateway">▼ <code>&lt;Gateway名&gt;</code><a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h4>
 <p>いずれのGatewayの条件に合致したリクエストを処理するかを設定する。</p>
-<p>VirtualServiceを、Istio IngressGateway/EgressGatewayに紐づける場合 (サービスメッシュ内外の通信) は<code>&lt;Gateway名&gt;</code>とする。</p>
+<p>VirtualServiceを、Istio Ingress Gateway/EgressGatewayに紐づける場合 (サービスメッシュ内外の通信) は<code>&lt;Gateway名&gt;</code>とする。</p>
 <p>VirtualServiceとGatewayが同じNamespaceに所属する場合は、Namespaceを省略できる (<code>.spec.export</code>キーとは関係ない) 。</p>
 <p>ただ、Namespaceは省略しない方がわかりやすい。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -33237,7 +33237,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">gateways</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-ingressgateway</span>
-<span class="w">  </span><span class="c1"># Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する</span>
+<span class="w">  </span><span class="c1"># Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する</span>
 <span class="w">  </span><span class="c1"># そのため、後続のVirtualServiceでは、複数の種類のHostヘッダー値を受信するため、ワイルドカードとする</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
@@ -33251,16 +33251,16 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="c1">#  Hostヘッダー値がexternal.comの時にVirtualServiceを適用する。</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external.com</span>
 <span class="w">  </span><span class="nt">gateways</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># PodからIstio EgressGatewayのPodへの通信で使用する</span>
+<span class="w">    </span><span class="c1"># PodからIstio Egress GatewayのPodへの通信で使用する</span>
 <span class="w">    </span><span class="c1"># gateway名と両方設定する場合は、デフォルト値としての省略はできない</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
-<span class="w">    </span><span class="c1"># Istio EgressGatewayからエントリ済みシステムへの通信で使用する</span>
+<span class="w">    </span><span class="c1"># Istio Egress Gatewayからエントリ済みシステムへの通信で使用する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo/foo-egressgateway</span>
 <span class="w">  </span><span class="nt">http</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># external.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する</span>
+<span class="w">    </span><span class="c1"># external.comに対するリクエストは、Istio Egress Gatewayにルーティング (リダイレクト) する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gateways</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># PodからIstio EgressGatewayのPodへの通信で使用する</span>
+<span class="w">            </span><span class="c1"># PodからIstio Egress GatewayのPodへの通信で使用する</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 <span class="w">      </span><span class="nt">route</span><span class="p">:</span>
@@ -33268,10 +33268,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-egressgateway.istio-egress.svc.cluster.local</span>
 <span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
-<span class="w">    </span><span class="c1"># Istio EgressGatewayに対するリクエストは、エントリ済システムにルーティングする</span>
+<span class="w">    </span><span class="c1"># Istio Egress Gatewayに対するリクエストは、エントリ済システムにルーティングする</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gateways</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># Istio EgressGatewayからエントリ済みシステムへの通信で使用する</span>
+<span class="w">            </span><span class="c1"># Istio Egress Gatewayからエントリ済みシステムへの通信で使用する</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo/foo-egressgateway</span>
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 <span class="w">      </span><span class="nt">route</span><span class="p">:</span>
@@ -33296,15 +33296,15 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="c1">#  Hostヘッダー値がexternal.comの時にVirtualServiceを適用する。</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external.com</span>
 <span class="w">  </span><span class="nt">gateways</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># PodからIstio EgressGatewayのPodへの通信で使用する</span>
+<span class="w">    </span><span class="c1"># PodからIstio Egress GatewayのPodへの通信で使用する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
-<span class="w">    </span><span class="c1"># Istio EgressGatewayからエントリ済みシステムへの通信で使用する</span>
+<span class="w">    </span><span class="c1"># Istio Egress Gatewayからエントリ済みシステムへの通信で使用する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo/foo-egressgateway</span>
 <span class="w">  </span><span class="nt">tls</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># external.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する</span>
+<span class="w">    </span><span class="c1"># external.comに対するリクエストは、Istio Egress Gatewayにルーティング (リダイレクト) する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gateways</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># PodからIstio EgressGatewayのPodへの通信で使用する</span>
+<span class="w">            </span><span class="c1"># PodからIstio Egress GatewayのPodへの通信で使用する</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 <span class="w">          </span><span class="nt">sniHosts</span><span class="p">:</span>
@@ -33315,10 +33315,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 <span class="w">  </span><span class="nt">http</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># Istio EgressGatewayに対するリクエストは、エントリ済システムにルーティングする</span>
+<span class="w">    </span><span class="c1"># Istio Egress Gatewayに対するリクエストは、エントリ済システムにルーティングする</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gateways</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># Istio EgressGatewayからエントリ済みシステムへの通信で使用する</span>
+<span class="w">            </span><span class="c1"># Istio Egress Gatewayからエントリ済みシステムへの通信で使用する</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo/foo-egressgateway</span>
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 <span class="w">      </span><span class="nt">route</span><span class="p">:</span>
@@ -33477,7 +33477,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-virtual-service</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する</span>
+<span class="w">  </span><span class="c1"># Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する</span>
 <span class="w">  </span><span class="c1"># ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
@@ -33519,7 +33519,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">http</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gateways</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># PodからIstio EgressGatewayのPodへの通信で使用する</span>
+<span class="w">            </span><span class="c1"># PodからIstio Egress GatewayのPodへの通信で使用する</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 <span class="w">      </span><span class="nt">route</span><span class="p">:</span>
@@ -33529,7 +33529,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gateways</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># Istio EgressGatewayからエントリ済みシステムへの通信で使用する</span>
+<span class="w">            </span><span class="c1"># Istio Egress Gatewayからエントリ済みシステムへの通信で使用する</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-ingressgateway</span>
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 <span class="w">      </span><span class="nt">route</span><span class="p">:</span>
@@ -33668,7 +33668,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する</span>
+<span class="w">  </span><span class="c1"># Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する</span>
 <span class="w">  </span><span class="c1"># ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span>
@@ -33691,7 +33691,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-virtual-service</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する</span>
+<span class="w">  </span><span class="c1"># Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する</span>
 <span class="w">  </span><span class="c1"># ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span>
@@ -33718,7 +33718,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-virtual-service</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する</span>
+<span class="w">  </span><span class="c1"># Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する</span>
 <span class="w">  </span><span class="c1"># ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span>
@@ -33755,7 +33755,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-virtual-service</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する</span>
+<span class="w">  </span><span class="c1"># Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する</span>
 <span class="w">  </span><span class="c1"># ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span>
@@ -33848,7 +33848,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-virtual-service</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する</span>
+<span class="w">  </span><span class="c1"># Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する</span>
 <span class="w">  </span><span class="c1"># ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span>
@@ -33867,7 +33867,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-virtual-service</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Istio IngressGatewayは複数の種類のAPIへのリクエストを受信する</span>
+<span class="w">  </span><span class="c1"># Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する</span>
 <span class="w">  </span><span class="c1"># ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span>
@@ -33912,15 +33912,15 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="tls_1">▼ tlsとは<a class="headerlink" href="#tls_1" title="Permanent link">&para;</a></h4>
 <p><code>.spec.http</code>キーや<code>.spec.tcp</code>キーとは異なり、HTTPSプロトコルの通信をDestinationRuleに紐づくPodにルーティングする。</p>
 <p>マイクロサービスがHTTPSプロトコルで通信を送受信し、<code>istio-proxy</code>コンテナ間で相互TLSを実施する場合、これを使用する。</p>
-<p>他に、マイクロサービスがHTTPSリクエストを送信し、Istio EgressGatewayでこれをそのまま通過させる (<code>PASSTHROUGH</code>) 場合も必要になる。</p>
+<p>他に、マイクロサービスがHTTPSリクエストを送信し、Istio Egress Gatewayでこれをそのまま通過させる (<code>PASSTHROUGH</code>) 場合も必要になる。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#TLSRoute">https://istio.io/latest/docs/reference/config/networking/virtual-service/#TLSRoute</a></li>
 </ul>
 </blockquote>
-<h4 id="istio-egressgatewayvirtualservice">▼ Istio EgressGatewayのVirtualServiceでの注意点<a class="headerlink" href="#istio-egressgatewayvirtualservice" title="Permanent link">&para;</a></h4>
-<p><code>.spec.tls</code>キーで送信する場合、Istio EgressGatewayはパケットペイロードを復号化できないため、プロトコルをTCPとして扱う。</p>
-<p>そのため、Istio EgressGateway上を通過するTLSはIstioのメトリクスではTCPとして処理され、またIstio EgressGatewayではスパンを作成できない。</p>
+<h4 id="istio-egress-gatewayvirtualservice">▼ Istio Egress GatewayのVirtualServiceでの注意点<a class="headerlink" href="#istio-egress-gatewayvirtualservice" title="Permanent link">&para;</a></h4>
+<p><code>.spec.tls</code>キーで送信する場合、Istio Egress Gatewayはパケットペイロードを復号化できないため、プロトコルをTCPとして扱う。</p>
+<p>そのため、Istio Egress Gateway上を通過するTLSはIstioのメトリクスではTCPとして処理され、またIstio Egress Gatewayではスパンを作成できない。</p>
 <p><img alt="istio-egressgateway_tls_passthrough" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_tls_passthrough.png" /></p>
 <blockquote>
 <ul>
@@ -33992,7 +33992,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月21日 13:40:12">2025-04-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月30日 16:13:36">2025-04-30</span>
   </span>
 
     
