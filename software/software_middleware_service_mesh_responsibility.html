@@ -4640,11 +4640,20 @@
         <li class="md-nav__item">
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      02. トラフィック管理
+      02. 概要
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. トラフィック管理">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. トラフィック管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. トラフィック管理">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4671,18 +4680,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. 回復性の管理
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      04. 通信の認証／認可
+      04. 回復性の管理
     </span>
   </a>
   
@@ -4691,7 +4691,7 @@
         <li class="md-nav__item">
   <a href="#05" class="md-nav__link">
     <span class="md-ellipsis">
-      05. アプリケーションデータの暗号化
+      05. 通信の認証／認可
     </span>
   </a>
   
@@ -4700,11 +4700,20 @@
         <li class="md-nav__item">
   <a href="#06" class="md-nav__link">
     <span class="md-ellipsis">
-      06. テレメトリー管理
+      06. アプリケーションデータの暗号化
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="06. テレメトリー管理">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08" class="md-nav__link">
+    <span class="md-ellipsis">
+      08. テレメトリー管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="08. テレメトリー管理">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26763,11 +26772,20 @@
         <li class="md-nav__item">
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      02. トラフィック管理
+      02. 概要
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. トラフィック管理">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. トラフィック管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. トラフィック管理">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26794,18 +26812,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. 回復性の管理
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      04. 通信の認証／認可
+      04. 回復性の管理
     </span>
   </a>
   
@@ -26814,7 +26823,7 @@
         <li class="md-nav__item">
   <a href="#05" class="md-nav__link">
     <span class="md-ellipsis">
-      05. アプリケーションデータの暗号化
+      05. 通信の認証／認可
     </span>
   </a>
   
@@ -26823,11 +26832,20 @@
         <li class="md-nav__item">
   <a href="#06" class="md-nav__link">
     <span class="md-ellipsis">
-      06. テレメトリー管理
+      06. アプリケーションデータの暗号化
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="06. テレメトリー管理">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08" class="md-nav__link">
+    <span class="md-ellipsis">
+      08. テレメトリー管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="08. テレメトリー管理">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26973,7 +26991,70 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02">02. トラフィック管理<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h2 id="02">02. 概要<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">クラウドネイティブ技術（アルファベット順）</th>
+<th style="text-align: left;">Cilium Service Mesh</th>
+<th style="text-align: left;">Consul</th>
+<th style="text-align: left;">Istio</th>
+<th style="text-align: left;">Kong Mesh</th>
+<th style="text-align: left;">Kuma</th>
+<th style="text-align: left;">Linkerd</th>
+<th style="text-align: left;">NGINX Service Mesh</th>
+<th>Traefik Mesh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">アーキテクチャモード</td>
+<td style="text-align: left;">サイドカーレス</td>
+<td style="text-align: left;">サイドカー</td>
+<td style="text-align: left;">サイドカー／サイドカーレス</td>
+<td style="text-align: left;">サイドカー／サイドカーレス</td>
+<td style="text-align: left;">サイドカー</td>
+<td style="text-align: left;">サイドカー</td>
+<td style="text-align: left;">サイドカー</td>
+<td>サイドカー</td>
+</tr>
+<tr>
+<td style="text-align: left;">データプレーン</td>
+<td style="text-align: left;">eBPF、Envoy</td>
+<td style="text-align: left;">Envoy</td>
+<td style="text-align: left;">Envoy</td>
+<td style="text-align: left;">Envoy</td>
+<td style="text-align: left;">Envoy</td>
+<td style="text-align: left;">Linkerd Proxy</td>
+<td style="text-align: left;">Nginx</td>
+<td>Traefik</td>
+</tr>
+<tr>
+<td style="text-align: left;">CNCFステータス</td>
+<td style="text-align: left;">Graduated</td>
+<td style="text-align: left;">なし</td>
+<td style="text-align: left;">Graduated</td>
+<td style="text-align: left;">なし</td>
+<td style="text-align: left;">Sandbox</td>
+<td style="text-align: left;">Graduated</td>
+<td style="text-align: left;">なし</td>
+<td>なし</td>
+</tr>
+<tr>
+<td style="text-align: left;">開発元</td>
+<td style="text-align: left;">Isovalent</td>
+<td style="text-align: left;">HashiCorp</td>
+<td style="text-align: left;">Googleなど</td>
+<td style="text-align: left;">Kong</td>
+<td style="text-align: left;">Kong</td>
+<td style="text-align: left;">Buoyant</td>
+<td style="text-align: left;">Nginx</td>
+<td>Traefik Labs</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="03">03. トラフィック管理<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_3">プロトコル<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>サービスメッシュは、任意のプロトコルを扱える。</p>
 <table>
@@ -27082,7 +27163,7 @@
 </tbody>
 </table>
 <p><br></p>
-<h2 id="03">03. 回復性の管理<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h2 id="04">04. 回復性の管理<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <p>サービスメッシュは、マイクロサービスの回復性を管理する。</p>
 <table>
 <thead>
@@ -27139,7 +27220,7 @@
 </tbody>
 </table>
 <p><br></p>
-<h2 id="04">04. 通信の認証／認可<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h2 id="05">05. 通信の認証／認可<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <p>サービスメッシュは、ゼロトラストネットワークに基づいて、通信にも認証／認可を実施する。</p>
 <p>マイクロサービス側の認証／認可はサービスメッシュの管理外であるため、別に実装する必要がある。</p>
 <table>
@@ -27178,7 +27259,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="05">05. アプリケーションデータの暗号化<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h2 id="06">06. アプリケーションデータの暗号化<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <p>サービスメッシュは、アプリケーションデータをSSL証明書で暗号化する。</p>
 <p>Kubernetesでは、Podの作成に応じて証明書のKubernetesリソース (Certificate、CertificateSigningRequestなど) を作成する必要がある。</p>
 <table>
@@ -27217,7 +27298,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="06">06. テレメトリー管理<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<h2 id="08">08. テレメトリー管理<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
 <h3 id="_5">ログの場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>サービスメッシュツールを使用する場合、マイクロサービスの代わりにサイドカープロキシがアクセスログを作成し、ログ監視バックエンドに送信する。</p>
 <p>ただし、マイクロサービスでもアクセスログを作成しても良い。</p>
@@ -27494,7 +27575,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月29日 21:04:14">2025-04-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月30日 14:57:36">2025-04-30</span>
   </span>
 
     
