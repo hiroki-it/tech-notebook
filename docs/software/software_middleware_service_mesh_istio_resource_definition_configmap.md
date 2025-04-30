@@ -111,6 +111,9 @@ metadata:
   namespace: istio-system
 data:
   mesh: |
+    ...
+  meshNetworks: |
+    ...
 ```
 
 代わりに、IstioOperatorの`.spec.meshConfig`キーで定義することもできるが、これは非推奨である。
@@ -129,6 +132,8 @@ spec:
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
 
 <br>
+
+## 05. mesh
 
 ### accessLogEncoding
 
@@ -610,7 +615,7 @@ data:
 
 <br>
 
-## 04-02. defaultConfig
+## 05-02. defaultConfig
 
 ### defaultConfigとは
 
@@ -1087,7 +1092,7 @@ spec:
 
 <br>
 
-## 04-03. defaultConfig.proxyMetadata
+## 05-03. defaultConfig.proxyMetadata
 
 ### `BOOTSTRAP_XDS_AGENT`
 
@@ -1482,7 +1487,7 @@ data:
 
 <br>
 
-## 04-05. extensionProviders (認証／認可系)
+## 05-05. extensionProviders (認証／認可系)
 
 ### extensionProviders (認証／認可系) とは
 
@@ -1572,7 +1577,7 @@ Keycloakは、IDプロバイダーとしてだけでなく認可プロバイダ�
 
 <br>
 
-## 04-06. extensionProviders (可観測系)
+## 05-06. extensionProviders (可観測系)
 
 ### extensionProviders (可観測系) とは
 
@@ -1912,7 +1917,37 @@ data:
 
 <br>
 
-## 05. istio-sidecar-injector
+## 06. meshNetworks
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  meshNetworks: |
+    networks:
+      mesh-network:
+        foo-cluster:
+          endpoints:
+            - fromCidr: "192.168.0.1/24"
+          gateways:
+            - address: 1.1.1.1
+              port: 80
+        bar-cluster:
+          endpoints:
+            - fromRegistry: reg1
+          gateways:
+            - registryServiceName: istio-ingressgateway.istio-system.svc.cluster.local
+              port: 443
+```
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshNetworks
+
+<br>
+
+## 07. istio-sidecar-injector
 
 ### config
 
@@ -1988,7 +2023,7 @@ data:
 
 <br>
 
-## 06. pilot-discoveryコマンド
+## 08. pilot-discoveryコマンド
 
 ### `CITADEL_SELF_SIGNED_CA_CERT_TTL`
 
