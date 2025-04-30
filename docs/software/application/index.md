@@ -45,6 +45,8 @@ hide:
 
 - #### [︎マイクロサービスアーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices.html)
 
+- #### [クラウドネイティブ技術とマイクロサービスアーキテクチャーのつながり](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_cloudnative.html)
+
 - #### [APIゲートウェイ領域](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_api_gateway.html)
 
 - #### <u>マイクロサービス領域</u>
