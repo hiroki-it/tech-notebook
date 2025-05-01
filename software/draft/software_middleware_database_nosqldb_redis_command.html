@@ -10,13 +10,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="コマンド＠Keycloakの知見を記録しています。">
+        <meta name="description" content="コマンド＠Redisの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_security_keycloak_command.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_database_nosqldb_redis_command.html">
       
       
       
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】コマンド＠Keycloak - 俺の技術ノート</title>
+        <title>【IT技術の知見】コマンド＠Redis - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#keycloak" class="md-skip">
+        <a href="#redis" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -150,7 +150,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】コマンド＠Keycloak
+              【IT技術の知見】コマンド＠Redis
             
           </span>
         </div>
@@ -26560,86 +26560,38 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-kcsh" class="md-nav__link">
+  <a href="#01-redis-cli" class="md-nav__link">
     <span class="md-ellipsis">
-      01. kc.sh
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01. kc.sh">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#build" class="md-nav__link">
-    <span class="md-ellipsis">
-      build
+      01. redis-cli
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#start" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#02-keys" class="md-nav__link">
     <span class="md-ellipsis">
-      start
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="start">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#start_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ startとは
+      02. keys
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#-cache-stack" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#03-type" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ --cache-stack
+      03. type
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#-import-realm" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#04-monitor" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ --import-realm
+      04. monitor
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-optimized" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ --optimized
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#start-dev" class="md-nav__link">
-    <span class="md-ellipsis">
-      start-dev
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -26662,7 +26614,7 @@
   
 
 
-<h1 id="keycloak">コマンド＠Keycloak<a class="headerlink" href="#keycloak" title="Permanent link">&para;</a></h1>
+<h1 id="redis">コマンド＠Redis<a class="headerlink" href="#redis" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -26671,98 +26623,25 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-kcsh">01. kc.sh<a class="headerlink" href="#01-kcsh" title="Permanent link">&para;</a></h2>
-<h3 id="build">build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kc.sh<span class="w"> </span>build
+<h2 id="01-redis-cli">01. redis-cli<a class="headerlink" href="#01-redis-cli" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Redis接続コマンド</span>
+$<span class="w"> </span>redis-cli<span class="w"> </span>-c<span class="w"> </span>-h<span class="w"> </span>&lt;Redisのホスト名&gt;<span class="w"> </span>-p<span class="w"> </span><span class="m">6379</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="start">start<a class="headerlink" href="#start" title="Permanent link">&para;</a></h3>
-<h4 id="start_1">▼ startとは<a class="headerlink" href="#start_1" title="Permanent link">&para;</a></h4>
-<p>本番環境モードで起動する。</p>
-<p>以下がデフォルトで設定されている。</p>
-<ul>
-<li>HTTPが無効</li>
-<li>ホスト名が必須</li>
-<li>HTTPSが推奨</li>
-</ul>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kc.sh<span class="w"> </span>start
+<h2 id="02-keys">02. keys<a class="headerlink" href="#02-keys" title="Permanent link">&para;</a></h2>
+<p>全てのキーを表示する。</p>
+<div class="highlight"><pre><span></span><code>redis<span class="w"> </span>*****:6379&gt;<span class="w"> </span>keys<span class="w"> </span>*
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://www.keycloak.org/server/configuration#_starting_keycloak">https://www.keycloak.org/server/configuration#_starting_keycloak</a></li>
-</ul>
-</blockquote>
-<h4 id="-cache-stack">▼ --cache-stack<a class="headerlink" href="#-cache-stack" title="Permanent link">&para;</a></h4>
-<p>JGroupsのレプリケーション間通信で使用するクラスターインスタンス検出方法を設定する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kc.sh<span class="w"> </span>start<span class="w"> </span>--cache-stack<span class="w"> </span>kubernetes
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>値</th>
-<th>検出方法</th>
-<th>プロトコル</th>
-<th>ポート番号</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>jdbc-ping</code></td>
-<td>JDBC_PING</td>
-<td>TCP</td>
-<td><code>7800</code>、<code>57800</code></td>
-</tr>
-<tr>
-<td><code>kubernetes</code></td>
-<td>DNS_PING</td>
-<td>TCP</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://www.keycloak.org/server/caching#_transport_stacks">https://www.keycloak.org/server/caching#_transport_stacks</a></li>
-<li><a href="https://www.keycloak.org/server/caching#_network_ports">https://www.keycloak.org/server/caching#_network_ports</a></li>
-</ul>
-</blockquote>
-<h4 id="-import-realm">▼ --import-realm<a class="headerlink" href="#-import-realm" title="Permanent link">&para;</a></h4>
-<p>起動時に<code>/opt/keycloak/data/import</code>ディレクトリ内にあるrealm定義ファイル (<code>&lt;任意の名前&gt;.json</code>ファイル) をインポートする。</p>
-<p>コンテナであれば、<code>/opt/keycloak/data/import</code>ディレクトリ内にrealm定義ファイルをマウントしておく。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kc.sh<span class="w"> </span>start<span class="w"> </span>--import-realm
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://www.keycloak.org/server/importExport#_importing_a_realm_during_startup">https://www.keycloak.org/server/importExport#_importing_a_realm_during_startup</a></li>
-</ul>
-</blockquote>
-<h4 id="-optimized">▼ --optimized<a class="headerlink" href="#-optimized" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># 事前に kc.sh build コマンドを実行する</span>
-
-$<span class="w"> </span>kc.sh<span class="w"> </span>start<span class="w"> </span>--optimized
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://www.keycloak.org/server/configuration#_creating_an_optimized_keycloak_build">https://www.keycloak.org/server/configuration#_creating_an_optimized_keycloak_build</a></li>
-</ul>
-</blockquote>
 <p><br></p>
-<h3 id="start-dev">start-dev<a class="headerlink" href="#start-dev" title="Permanent link">&para;</a></h3>
-<p>開発環境モードで起動する。</p>
-<p>以下がデフォルトで設定されている。</p>
-<ul>
-<li>HTTPが有効</li>
-<li>ホスト名が任意</li>
-<li>キャッシュ設定がローカル</li>
-<li>テーマキャッシュとテンプレートキャッシュが無効</li>
-</ul>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kc.sh<span class="w"> </span>start-dev
+<h2 id="03-type">03. type<a class="headerlink" href="#03-type" title="Permanent link">&para;</a></h2>
+<p>キーを指定して、対応する値を表示する。</p>
+<div class="highlight"><pre><span></span><code>redis<span class="w"> </span>*****:6379&gt;<span class="w"> </span><span class="nb">type</span><span class="w"> </span>&lt;キー名&gt;
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://www.keycloak.org/server/configuration#_starting_keycloak">https://www.keycloak.org/server/configuration#_starting_keycloak</a></li>
-</ul>
-</blockquote>
+<p><br></p>
+<h2 id="04-monitor">04. monitor<a class="headerlink" href="#04-monitor" title="Permanent link">&para;</a></h2>
+<p>Redisが受け取ったコマンドをフォアグラウンドで表示する。</p>
+<div class="highlight"><pre><span></span><code>redis<span class="w"> </span>*****:6379&gt;<span class="w"> </span>monitor
+</code></pre></div>
 <p><br></p>
 
 
