@@ -874,6 +874,76 @@ Applicationは、元はArgocCDのapplication-controllerと同じNamespaceのみ�
 
 <br>
 
+### .metadata.annotations.argocd-image-updater.argoproj.io
+
+#### ▼ .metadata.annotations.argocd-image-updater.argoproj.ioとは
+
+ArgoCD Image Updaterを設定する。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: foo-application
+  namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: foo-image=<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>
+    # 変更対象のファイルの相対パスを設定する
+    # .spec.source.pathキーを基準とする
+    argocd-image-updater.argoproj.io/write-back-target: "helmvalues:values.yaml"
+    # コンテナイメージのタグ名をフィルタリングする
+    argocd-image-updater.argoproj.io/foo-image.allow-tags: regexp:^v[0-9]+\.[0-9]+\.[0-9]+$
+    # YAMLファイルのコンテナイメージ名のパスを設定する
+    argocd-image-updater.argoproj.io/foo-image.helm.image-name: image.repository
+    # YAMLファイルのタグ名のパスを設定する
+    argocd-image-updater.argoproj.io/foo-image.helm.image-tag: image.tag
+    argocd-image-updater.argoproj.io/write-back-method: git
+    argocd-image-updater.argoproj.io/git.branch: main
+    argocd-image-updater.argoproj.io/git.commit-message: "イメージのタグを {{ .tag }} に更新しました"
+spec: ...
+```
+
+> - https://argocd-image-updater.readthedocs.io/en/stable/configuration/images/
+> - https://www.cncf.io/blog/2024/11/05/mastering-argo-cd-image-updater-with-helm-a-complete-configuration-guide/
+
+#### ▼ 関連設定
+
+argocd-cm (ConfigMap) で、ArgoCDのAPIユーザーを作成する必要がある。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  accounts.image-updater: apiKey
+```
+
+また、argocd-rbac-cm (ConfigMap) で、APIユーザーに認可スコープを設定する必要がある。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+data:
+  policy.default: role:readonly
+  policy.csv: |
+    # ロールと認可スコープを定義する
+    p, role:image-updater, applications, get, */*, allow
+    p, role:image-updater, applications, update, */*, allow
+    g, image-updater, role:image-updater
+```
+
+> - https://argocd-image-updater.readthedocs.io/en/v0.1.0/install/start/#create-a-local-user-within-argocd
+> - https://argocd-image-updater.readthedocs.io/en/v0.1.0/install/start/#granting-rbac-permissions-in-argocd
+
+<br>
+
 ### .spec.ignoreDifferences
 
 #### ▼ ignoreDifferencesとは
