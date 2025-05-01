@@ -818,6 +818,7 @@ nav:
                   - ConfigMap系: devops/devops_cicd_cd_argocd_resource_definition_configmap.md
                   - Secret系: devops/devops_cicd_cd_argocd_resource_definition_secret.md
                   - Job系: devops/devops_cicd_cd_argocd_resource_definition_job.md
+              - Image Updater: devops/devops_cicd_cd_argocd_image_updater_resource_definition.md
           - ■ Argo Rollouts:
               - Argo Rollouts: devops/devops_cicd_cd_argorollouts.md
               - リソース定義: devops/devops_cicd_cd_argorollouts_resource_definition.md
