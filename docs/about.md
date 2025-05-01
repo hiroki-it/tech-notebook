@@ -65,10 +65,10 @@ Webアプリケーションのインフラ領域に軸足を置きつつ、バ�
 
 ■ <ins>マイクロサービスアーキテクチャ</ins>
 
-| 使用技術                   | リポジトリ                                                                |
-|------------------------|-----------------------------------------------------------------------------------------------|
-| Microservices-Arch、... | ↪️ **[microservices-backend](https://github.com/hiroki-it/microservices-backend)**                  |
-| K8s、Istio、ArgoCD、...   | ↪️ **[microservices-manifests](https://github.com/hiroki-it/microservices-manifests)**               |
+| 使用技術                | リポジトリ                                                                             |
+| ----------------------- | -------------------------------------------------------------------------------------- |
+| Microservices-Arch、... | ↪️ **[microservices-backend](https://github.com/hiroki-it/microservices-backend)**     |
+| K8s、Istio、ArgoCD、... | ↪️ **[microservices-manifests](https://github.com/hiroki-it/microservices-manifests)** |
 
 <br>
 
