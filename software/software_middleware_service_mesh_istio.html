@@ -28951,7 +28951,7 @@
 <p><br></p>
 <h2 id="07">07. テレメトリーの作成<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <h3 id="oss">他のOSSとの連携<a class="headerlink" href="#oss" title="Permanent link">&para;</a></h3>
-<p>Istio上のEnvoyは、テレメトリーを作成する。</p>
+<p><code>istio-proxy</code>コンテナは、テレメトリーを作成する。</p>
 <p>各監視ツールは、プル型 (ツールがIstiodから収集) やプッシュ型 (Istiodがツールに送信) でこのテレメトリーを収集する。</p>
 <blockquote>
 <ul>
@@ -28961,7 +28961,7 @@
 <p><br></p>
 <h2 id="07-02">07-02. メトリクス<a class="headerlink" href="#07-02" title="Permanent link">&para;</a></h2>
 <h3 id="_34">メトリクスの作成と送信<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
-<p>Istio上のEnvoyはメトリクスを作成し、Istiodコントロールプレーン (<code>discovery</code>コンテナ) に送信する。</p>
+<p><code>istio-proxy</code>コンテナはメトリクスを作成し、Istiodコントロールプレーン (<code>discovery</code>コンテナ) に送信する。</p>
 <p>Prometheusは、<code>discovery</code>コンテナの <code>/stats/prometheus</code>エンドポイント (<code>15090</code>番ポート) からメトリクスのデータポイントを収集する。</p>
 <p>なお、<code>istio-proxy</code>コンテナにも <code>/stats/prometheus</code>エンドポイントはある。</p>
 <blockquote>
@@ -29251,7 +29251,7 @@
 <h2 id="07-03">07-03. ログ (アクセスログのみ)<a class="headerlink" href="#07-03" title="Permanent link">&para;</a></h2>
 <h3 id="_39">ログの監視<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
 <h4 id="_40">▼ ログの出力<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
-<p>Istio上のEnvoyは、マイクロサービスへのアクセスログ (インバウンド通信とアウトバウンド通信の両方) を作成し、標準出力に出力する。</p>
+<p><code>istio-proxy</code>コンテナは、マイクロサービスへのアクセスログ (インバウンド通信とアウトバウンド通信の両方) を作成し、標準出力に出力する。</p>
 <p>アクセスログにデフォルトで役立つ値が出力される。</p>
 <p>ログ収集ツール (例：FluentBit、Fluentdなど) をDaemonSetパターンやサイドカーモードで配置し、NodeやPod内コンテナの標準出力に出力されたログを監視バックエンドに送信できるようにする必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># istio-proxyコンテナのアクセスログ</span>
@@ -29295,7 +29295,7 @@
 </ul>
 </blockquote>
 <h4 id="_41">▼ ログの送信<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
-<p>Istio上のEnvoyは、アクセスログをログ収集ツール (例：OpenTelemetry Collector) に送信する。</p>
+<p><code>istio-proxy</code>コンテナは、アクセスログをログ収集ツール (例：OpenTelemetry Collector) に送信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/tasks/observability/logs/otel-provider/">https://istio.io/latest/docs/tasks/observability/logs/otel-provider/</a></li>
@@ -29306,26 +29306,30 @@
 <h3 id="_42">分散トレースの監視<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h3>
 <h4 id="_43">▼ スパンの作成<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h4>
 <p><img alt="istio_distributed_tracing" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_distributed_tracing.png" /></p>
-<p>Istio上のEnvoyは、スパンを作成する。</p>
+<p><code>istio-proxy</code>コンテナは、スパンを作成する。</p>
 <p>スパンの作成場所としては、いくつか種類がある。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: center;"><code>istio-proxy</code></th>
-<th style="text-align: center;">アプリ</th>
+<th>スパン作成パターン</th>
+<th style="text-align: center;"><code>istio-proxy</code>コンテナ</th>
+<th style="text-align: center;">アプリコンテナ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td><code>istio-proxy</code>コンテナのみ</td>
 <td style="text-align: center;">✅</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td style="text-align: center;">✅</td>
+<td>アプリコンテナのみ</td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;">✅</td>
 </tr>
 <tr>
-<td style="text-align: center;"></td>
+<td>両方</td>
+<td style="text-align: center;">✅</td>
 <td style="text-align: center;">✅</td>
 </tr>
 </tbody>
@@ -29333,8 +29337,10 @@
 <p>スパンの作成場所が多いほど、各コンテナの処理時間が細分化された分散トレースを収集できる。</p>
 <p>マイクロサービス間でスパンが持つコンテキストを伝播しないため、コンテキストを伝播させる実装が必要になる。</p>
 <h4 id="_44">▼ スパンの送信<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h4>
-<p>Istio上のEnvoyは、スパンを分散トレース収集ツール (例：Jaeger Collector、OpenTelemetry Collectorなど) に送信する。</p>
-<p>Envoyでは宛先としてサポートしていても、Istio上のEnvoyでは使用できない場合がある。(例：X-Rayデーモン)</p>
+<p><code>istio-proxy</code>コンテナは、スパンを分散トレース収集ツール (例：Jaeger Collector、OpenTelemetry Collectorなど) に送信する。</p>
+<p>アプリからスパンを送信する場合であっても、<code>istio-proxy</code>コンテナを経由し、分散トレース収集ツールに送信することになる。</p>
+<p>分散トレース収集ツールをサービスメッシュに登録 (VirtualServiceやServiceEntryを作成) しないと、アプリコンテナや<code>istio-proxy</code>コンテナは分散トレース収集ツールを名前解決できない。</p>
+<p>Envoyでは宛先としてサポートしていても、<code>istio-proxy</code>コンテナでは使用できない場合がある。(例：X-Rayデーモン)</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/tasks/observability/distributed-tracing/overview/">https://istio.io/latest/docs/tasks/observability/distributed-tracing/overview/</a></li>
@@ -29574,7 +29580,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月30日 23:05:30">2025-04-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月1日 17:18:55">2025-05-01</span>
   </span>
 
     
