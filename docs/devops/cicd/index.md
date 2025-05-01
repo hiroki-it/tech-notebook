@@ -58,6 +58,7 @@ hide:
   >   > - ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_configmap.html)
   >   > - ##### [Secret系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_secret.html)
   >   > - ##### [Job系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_job.html)
+  > - ##### [Image Updater](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_image_updater_resource_definition.html)
 
 - #### ︎<u>Argo Rollouts</u>
 
