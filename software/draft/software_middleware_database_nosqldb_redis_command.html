@@ -26569,27 +26569,45 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-keys" class="md-nav__link">
+  <a href="#02-get" class="md-nav__link">
     <span class="md-ellipsis">
-      02. keys
+      02. get
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-type" class="md-nav__link">
+  <a href="#03-keys" class="md-nav__link">
     <span class="md-ellipsis">
-      03. type
+      03. keys
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-monitor" class="md-nav__link">
+  <a href="#04-select" class="md-nav__link">
     <span class="md-ellipsis">
-      04. monitor
+      04. select
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. type
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      06. monitor
     </span>
   </a>
   
@@ -26628,17 +26646,33 @@
 $<span class="w"> </span>redis-cli<span class="w"> </span>-c<span class="w"> </span>-h<span class="w"> </span>&lt;Redisのホスト名&gt;<span class="w"> </span>-p<span class="w"> </span><span class="m">6379</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="02-keys">02. keys<a class="headerlink" href="#02-keys" title="Permanent link">&para;</a></h2>
-<p>全てのキーを表示する。</p>
+<h2 id="02-get">02. get<a class="headerlink" href="#02-get" title="Permanent link">&para;</a></h2>
+<p>特定のキーの値を取得する。</p>
+<div class="highlight"><pre><span></span><code>redis<span class="w"> </span>*****:6379&gt;<span class="w"> </span>get<span class="w"> </span><span class="m">1</span>
+
+<span class="o">(</span>nil<span class="o">)</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03-keys">03. keys<a class="headerlink" href="#03-keys" title="Permanent link">&para;</a></h2>
+<p>全てのキーを取得する。</p>
 <div class="highlight"><pre><span></span><code>redis<span class="w"> </span>*****:6379&gt;<span class="w"> </span>keys<span class="w"> </span>*
 </code></pre></div>
 <p><br></p>
-<h2 id="03-type">03. type<a class="headerlink" href="#03-type" title="Permanent link">&para;</a></h2>
+<h2 id="04-select">04. select<a class="headerlink" href="#04-select" title="Permanent link">&para;</a></h2>
+<p>データベースを選択する。</p>
+<p>デフォルトでは<code>0</code>番のデータベースが選択されている。</p>
+<div class="highlight"><pre><span></span><code>*****:6379&gt;<span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="m">15</span>
+OK
+
+*****:6379<span class="o">[</span><span class="m">15</span><span class="o">]</span>&gt;<span class="w"> </span>key<span class="w"> </span>*
+</code></pre></div>
+<p><br></p>
+<h2 id="05-type">05. type<a class="headerlink" href="#05-type" title="Permanent link">&para;</a></h2>
 <p>キーを指定して、対応する値を表示する。</p>
 <div class="highlight"><pre><span></span><code>redis<span class="w"> </span>*****:6379&gt;<span class="w"> </span><span class="nb">type</span><span class="w"> </span>&lt;キー名&gt;
 </code></pre></div>
 <p><br></p>
-<h2 id="04-monitor">04. monitor<a class="headerlink" href="#04-monitor" title="Permanent link">&para;</a></h2>
+<h2 id="06-monitor">06. monitor<a class="headerlink" href="#06-monitor" title="Permanent link">&para;</a></h2>
 <p>Redisが受け取ったコマンドをフォアグラウンドで表示する。</p>
 <div class="highlight"><pre><span></span><code>redis<span class="w"> </span>*****:6379&gt;<span class="w"> </span>monitor
 </code></pre></div>
@@ -26663,7 +26697,7 @@ $<span class="w"> </span>redis-cli<span class="w"> </span>-c<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月1日 22:44:29">2025-05-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月1日 23:09:43">2025-05-01</span>
   </span>
 
     
