@@ -85,7 +85,10 @@ hide:
 
 - #### [NoSQL DB](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_nosqldb.html)
 
-- #### [Redis](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_nosqldb_redis.html)
+- #### <u>Redis</u>
+
+  > - ##### [Redis](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_nosqldb_redis.html)
+  > - ##### [コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_nosqldb_redis_command.html)
 
 <br>
 
