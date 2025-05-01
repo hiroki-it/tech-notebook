@@ -15,9 +15,9 @@ description: Image Updater＠ArgoCDの知見を記録しています。
 
 ## 01. Application
 
-### .metadata.annotations.argocd-image-updater.argoproj.io
+### .metadata.annotations
 
-#### ▼ .metadata.annotations.argocd-image-updater.argoproj.ioとは
+#### ▼ argocd-image-updater.argoproj.io
 
 ArgoCD Image Updaterを設定する。
 
@@ -135,5 +135,27 @@ data:
 
 > - https://argocd-image-updater.readthedocs.io/en/v0.1.0/install/start/#create-a-local-user-within-argocd
 > - https://argocd-image-updater.readthedocs.io/en/v0.1.0/install/start/#granting-rbac-permissions-in-argocd
+
+<br>
+
+## 03. Secret
+
+### argocd-image-updater-token
+
+#### ▼ argocd.token
+
+image-updaterユーザーのAPIキーを設定する。
+
+暗号化ツール (例：SOPS) を使用して管理するとよい。
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: argocd-image-updater-token
+type: Opaque
+data:
+  argocd.token: *****
+```
 
 <br>
