@@ -83,12 +83,12 @@ data:
   argocd.grpcWeb: "true"
   registries.conf: |
     registries:  
-    - name: foo-image
-      api_url: https://<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
-      prefix: <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
-      credentials: ext:/scripts/ecr-login.sh
-      ping: yes
-      credsexpire: 10h
+      - name: foo-image
+        api_url: https://<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
+        prefix: <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
+        credentials: ext:/scripts/ecr-login.sh
+        ping: yes
+        credsexpire: 10h
 ```
 
 <br>

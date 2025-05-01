@@ -707,9 +707,7 @@ go_mod:
   image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golang:${GO_VERSION}
   extends:
     - .setup_git
-  script:
-    # 本モジュールはgo buildする必要はないため、go modのみを実行する
-    - go mod tidy
+  script: ...
 ```
 
 > - https://stackoverflow.com/a/74831820/12771072

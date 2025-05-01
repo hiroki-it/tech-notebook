@@ -205,34 +205,6 @@ SELECT * FROM users;
 {"id"=>"10", "name"=>"jonny"}
 ```
 
-#### ▼ クエリキャッシュの操作
-
-```bash
-# Redis接続コマンド
-$ /usr/local/sbin/redis-stable/src/redis-cli \
-    -c \
-    -h <Redisのホスト名> \
-    -p 6379
-```
-
-```bash
-# Redis接続中の状態
-# 全てのキーを表示
-redis *****:6379> keys *
-```
-
-```bash
-# Redis接続中の状態
-# キーを指定して、対応する値を表示
-redis *****:6379> type <キー名>
-```
-
-```bash
-# Redis接続中の状態
-# Redisが受け取ったコマンドをフォアグラウンドで表示
-redis *****:6379> monitor
-```
-
 <br>
 
 ### 障害対策
