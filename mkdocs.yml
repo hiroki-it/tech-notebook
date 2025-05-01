@@ -238,7 +238,9 @@ nav:
               - Repmgr: software/software_middleware_database_rdb_postgresql_repmgr.md
       - ■ NoSQL DB系:
           - NoSQL DB: software/software_middleware_database_nosqldb.md
-          - Redis: software/software_middleware_database_nosqldb_redis.md
+          - ■ Redis:
+              - Redis: software/software_middleware_database_nosqldb_redis.md
+              - コマンド: software/software_middleware_database_nosqldb_redis_command.md
       - ■ 接続プールプロキシ系:
           - ■ PgBouncer:
               - PgBouncer: software/software_middleware_database_connection_pool_proxy_pgbouncer.md
