@@ -10,13 +10,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Grafana Alloy＠Grafanaの知見を記録しています。">
+        <meta name="description" content="設定ファイル＠Grafana Alloyの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/observability/draft/observability_monitoring_tools_grafana_alloy.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/observability/draft/observability_monitoring_tools_grafana_alloy_conf.html">
       
       
       
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】Grafana Alloy＠Grafana - 俺の技術ノート</title>
+        <title>【IT技術の知見】設定ファイル＠Grafana Alloy - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#grafana-alloygrafana" class="md-skip">
+        <a href="#grafana-alloy" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -150,7 +150,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】Grafana Alloy＠Grafana
+              【IT技術の知見】設定ファイル＠Grafana Alloy
             
           </span>
         </div>
@@ -26640,11 +26640,80 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-grafana-alloy" class="md-nav__link">
+  <a href="#configalloy" class="md-nav__link">
     <span class="md-ellipsis">
-      01. Grafana Alloyとは
+      config.alloy
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="config.alloy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discoverykubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      discovery.kubernetes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discoveryrelabel" class="md-nav__link">
+    <span class="md-ellipsis">
+      discovery.relabel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#localfile_match" class="md-nav__link">
+    <span class="md-ellipsis">
+      local.file_match
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lokiprocess" class="md-nav__link">
+    <span class="md-ellipsis">
+      loki.process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lokisourcefile" class="md-nav__link">
+    <span class="md-ellipsis">
+      loki.source.file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lokisourcekubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      loki.source.kubernetes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lokiwrite" class="md-nav__link">
+    <span class="md-ellipsis">
+      loki.write
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -26667,7 +26736,7 @@
   
 
 
-<h1 id="grafana-alloygrafana">Grafana Alloy＠Grafana<a class="headerlink" href="#grafana-alloygrafana" title="Permanent link">&para;</a></h1>
+<h1 id="grafana-alloy">設定ファイル＠Grafana Alloy<a class="headerlink" href="#grafana-alloy" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -26676,12 +26745,157 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-grafana-alloy">01. Grafana Alloyとは<a class="headerlink" href="#01-grafana-alloy" title="Permanent link">&para;</a></h2>
-<p>テレメトリーを収集、監視バックエンドに送信する。</p>
-<p>Grafana Alloyを使用するとOpenTelemetry Collectorが不要になるが、機能面ではOpenTelemetry Collectorの方が充実しているため、完全には代替できない。</p>
+<h2 id="configalloy">config.alloy<a class="headerlink" href="#configalloy" title="Permanent link">&para;</a></h2>
+<h3 id="discoverykubernetes">discovery.kubernetes<a class="headerlink" href="#discoverykubernetes" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>discovery.kubernetes<span class="w"> </span><span class="s2">&quot;pod&quot;</span><span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="nv">role</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pod&quot;</span>
+<span class="o">}</span>
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.reddit.com/r/devops/comments/1j84p18/opentelemetry_collector_vs_grafana_alloy/">https://www.reddit.com/r/devops/comments/1j84p18/opentelemetry_collector_vs_grafana_alloy/</a></li>
+<li><a href="https://grafana.com/docs/agent/latest/flow/reference/components/discovery.kubernetes/">https://grafana.com/docs/agent/latest/flow/reference/components/discovery.kubernetes/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="discoveryrelabel">discovery.relabel<a class="headerlink" href="#discoveryrelabel" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>discovery.relabel<span class="w"> </span><span class="s2">&quot;pod_logs&quot;</span><span class="w"> </span><span class="o">{</span>
+
+<span class="w">  </span><span class="nv">targets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>discovery.kubernetes.pod.targets
+
+<span class="w">  </span>rule<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;__meta_kubernetes_namespace&quot;</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;replace&quot;</span>
+<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;namespace&quot;</span>
+<span class="w">  </span><span class="o">}</span>
+
+<span class="w">  </span>rule<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;__meta_kubernetes_pod_name&quot;</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;replace&quot;</span>
+<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pod&quot;</span>
+<span class="w">  </span><span class="o">}</span>
+
+<span class="w">  </span>rule<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;__meta_kubernetes_pod_container_name&quot;</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;replace&quot;</span>
+<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;container&quot;</span>
+<span class="w">  </span><span class="o">}</span>
+
+<span class="w">  </span>rule<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;__meta_kubernetes_pod_label_app&quot;</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;replace&quot;</span>
+<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;app&quot;</span>
+<span class="w">  </span><span class="o">}</span>
+
+<span class="w">  </span>rule<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;__meta_kubernetes_namespace&quot;</span>,<span class="w"> </span><span class="s2">&quot;__meta_kubernetes_pod_container_name&quot;</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;replace&quot;</span>
+<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;job&quot;</span>
+<span class="w">    </span><span class="nv">separator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/&quot;</span>
+<span class="w">    </span><span class="nv">replacement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="o">}</span>
+
+<span class="w">  </span>rule<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;__meta_kubernetes_pod_uid&quot;</span>,<span class="w"> </span><span class="s2">&quot;__meta_kubernetes_pod_container_name&quot;</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;replace&quot;</span>
+<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;__path__&quot;</span>
+<span class="w">    </span><span class="nv">separator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/&quot;</span>
+<span class="w">    </span><span class="nv">replacement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/var/log/pods/*</span><span class="nv">$1</span><span class="s2">/*.log&quot;</span>
+<span class="w">  </span><span class="o">}</span>
+
+<span class="w">  </span>rule<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;__meta_kubernetes_pod_container_id&quot;</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;replace&quot;</span>
+<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;container_runtime&quot;</span>
+<span class="w">    </span><span class="nv">regex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;^(\\S+):\\/\\/.+</span>$<span class="s2">&quot;</span>
+<span class="w">    </span><span class="nv">replacement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/agent/latest/flow/reference/components/discovery.relabel/">https://grafana.com/docs/agent/latest/flow/reference/components/discovery.relabel/</a></li>
+<li><a href="https://grafana.com/docs/alloy/latest/collect/logs-in-kubernetes/#pods-logs">https://grafana.com/docs/alloy/latest/collect/logs-in-kubernetes/#pods-logs</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="localfile_match">local.file_match<a class="headerlink" href="#localfile_match" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>local.file_match<span class="w"> </span><span class="s2">&quot;kubernetes_pods&quot;</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">path_targets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>discovery.relabel.kubernetes_pods.output
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/agent/latest/flow/reference/components/local.file_match/">https://grafana.com/docs/agent/latest/flow/reference/components/local.file_match/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="lokiprocess">loki.process<a class="headerlink" href="#lokiprocess" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>loki.process<span class="w"> </span><span class="s2">&quot;pod_logs&quot;</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>stage.static_labels<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="nv">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="nv">cluster</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-cluster&quot;</span>,
+<span class="w">      </span><span class="o">}</span>
+<span class="w">  </span><span class="o">}</span>
+
+<span class="w">  </span><span class="nv">forward_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>loki.write.grafana_loki.receiver<span class="o">]</span>
+<span class="o">}</span>
+
+loki.source.kubernetes<span class="w"> </span><span class="s2">&quot;pod_logs&quot;</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="nv">targets</span><span class="w">    </span><span class="o">=</span><span class="w"> </span>discovery.relabel.pod_logs.output
+<span class="w">  </span><span class="nv">forward_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>loki.process.pod_logs.receiver<span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/agent/latest/flow/reference/components/loki.process/">https://grafana.com/docs/agent/latest/flow/reference/components/loki.process/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="lokisourcefile">loki.source.file<a class="headerlink" href="#lokisourcefile" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>loki.source.file<span class="w"> </span><span class="s2">&quot;kubernetes_pods&quot;</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">targets</span><span class="w">               </span><span class="o">=</span><span class="w"> </span>local.file_match.kubernetes_pods.targets
+<span class="w">    </span><span class="nv">forward_to</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>loki.process.kubernetes_pods.receiver<span class="o">]</span>
+<span class="w">    </span><span class="nv">legacy_positions_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/run/promtail/positions.yaml&quot;</span>
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/agent/latest/flow/reference/components/loki.source.file/">https://grafana.com/docs/agent/latest/flow/reference/components/loki.source.file/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="lokisourcekubernetes">loki.source.kubernetes<a class="headerlink" href="#lokisourcekubernetes" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>loki.source.kubernetes<span class="w"> </span><span class="s2">&quot;pod_logs&quot;</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="nv">targets</span><span class="w">    </span><span class="o">=</span><span class="w"> </span>discovery.relabel.pod_logs.output
+<span class="w">  </span><span class="nv">forward_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>loki.process.pod_logs.receiver<span class="o">]</span>
+<span class="o">}</span>
+
+loki.process<span class="w"> </span><span class="s2">&quot;pod_logs&quot;</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>stage.static_labels<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="nv">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="nv">cluster</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-cluster&quot;</span>,
+<span class="w">      </span><span class="o">}</span>
+<span class="w">  </span><span class="o">}</span>
+
+<span class="w">  </span><span class="nv">forward_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>loki.write.grafana_loki.receiver<span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/agent/latest/flow/reference/components/loki.source.kubernetes/">https://grafana.com/docs/agent/latest/flow/reference/components/loki.source.kubernetes/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="lokiwrite">loki.write<a class="headerlink" href="#lokiwrite" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>loki.write<span class="w"> </span><span class="s2">&quot;pod_logs&quot;</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>endpoint<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;http://grafana-loki.foo-namespace.svc.cluster.local:3100/loki/api/v1/push&quot;</span>
+<span class="w">  </span><span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/agent/latest/flow/reference/components/loki.write/">https://grafana.com/docs/agent/latest/flow/reference/components/loki.write/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
