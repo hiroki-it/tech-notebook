@@ -19,9 +19,12 @@ Istioのコンポーネント (Istiodコントロールプレーン、Istio Ingr
 
 IstioOperatorは執筆時点 (2025/03/06) で非推奨であり、代わりにistioctlやHelmでコンポーネントを管理することが推奨である。
 
+もし、IstioOperatorと同じようなツールを使用したい場合、SailOperatorを使用すると良い。
+
 ![istio_istio-operator](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-operator.png)
 
 > - https://tetrate.io/blog/what-is-istio-operator/
+> - https://github.com/istio-ecosystem/sail-operator/blob/main/docs/README.md#migrating-from-istio-in-cluster-operator
 
 <br>
 
