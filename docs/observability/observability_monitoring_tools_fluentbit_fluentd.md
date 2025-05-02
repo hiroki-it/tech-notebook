@@ -143,6 +143,6 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 FluentBit/Fluentd以外で言うと、Nginxで実装されたGrafana Loki Gatewayは`L7`ロードバランサーである。
 
-Grafana Loki Gatewayは、Cluster内のPromtailからログを受信し、Grafana Lokiに送信する。
+Grafana Loki Gatewayは、Cluster内のGrafana Alloyからログを受信し、Grafana Lokiに送信する。
 
 <br>
