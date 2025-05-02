@@ -50,7 +50,7 @@ GitLab CIの`gitlab-ci.yml`ファイルで定義されたパイプラインを�
 ![pipeline](https://gitlab.com/foo-project/foo-repository/badges/main/pipeline.svg)
 ```
 
-> - https://docs.gitlab.com/ee/user/project/badges.html#pipeline-status-badges
+> - https://docs.gitlab.com/user/project/badges.html#pipeline-status-badges
 
 #### ▼ 最新バージョンタグバッジ
 
@@ -58,7 +58,7 @@ GitLab CIの`gitlab-ci.yml`ファイルで定義されたパイプラインを�
 ![release](https://gitlab.com/foo-project/foo-repository/-/badges/release.svg)
 ```
 
-> - https://docs.gitlab.com/ee/user/project/badges.html#latest-release-badges
+> - https://docs.gitlab.com/user/project/badges.html#latest-release-badges
 
 <br>
 
@@ -167,8 +167,8 @@ foo_job:
 | `web`                 | 画面からの手動実行時を表す。     |
 
 > - https://gitlab-docs.creationline.com/ee/ci/yaml/#rulesif
-> - https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
-> - https://docs.gitlab.com/ee/ci/jobs/job_control.html#common-if-clauses-for-rules
+> - https://docs.gitlab.com/ci/variables/predefined_variables.html
+> - https://docs.gitlab.com/ci/jobs/job_control.html#common-if-clauses-for-rules
 
 #### ▼ `CI_PROJECT_DIR`
 
@@ -186,7 +186,7 @@ foo_job:
     GIT_SUBMODULE_STRATEGY: "recursive"
 ```
 
-> - https://docs.gitlab.com/ee/ci/git_submodules.html#use-git-submodules-in-cicd-jobs
+> - https://docs.gitlab.com/ci/git_submodules.html#use-git-submodules-in-cicd-jobs
 
 <br>
 
@@ -251,7 +251,7 @@ variables:
     - cat "${PATH}"/baz.txt
 ```
 
-> - https://docs.gitlab.com/ee/ci/jobs/index.html#hide-jobs
+> - https://docs.gitlab.com/ci/jobs/index.html#hide-jobs
 
 #### ▼ 子リポジトリ側のリモートコール
 
@@ -307,7 +307,7 @@ baz_job:
     - cat "${PATH}"/baz.txt
 ```
 
-> - https://docs.gitlab.com/ee/ci/yaml/index.html#includeproject
+> - https://docs.gitlab.com/ci/yaml/index.html#includeproject
 
 #### ▼ ヒアドキュメントを使用したファイルの配布
 
@@ -415,7 +415,7 @@ variables:
   QUX: "qux"
 ```
 
-> - https://docs.gitlab.com/ee/ci/yaml/index.html#variables
+> - https://docs.gitlab.com/ci/yaml/index.html#variables
 
 #### ▼ ファイルの切り分け
 
@@ -485,7 +485,7 @@ foo_job:
         done
 ```
 
-> - https://docs.gitlab.com/ee/ci/variables/#store-multiple-values-in-one-variable
+> - https://docs.gitlab.com/ci/variables/#store-multiple-values-in-one-variable
 > - https://stackoverflow.com/a/74059668
 
 <br>
@@ -655,7 +655,7 @@ qux_job:
     - echo qux
 ```
 
-> - https://docs.gitlab.com/ee/ci/yaml/index.html#needsartifacts
+> - https://docs.gitlab.com/ci/yaml/index.html#needsartifacts
 
 #### ▼ artifactsが不要な場合
 
@@ -678,9 +678,9 @@ bar_job:
     ...
 ```
 
-> - https://docs.gitlab.com/ee/ci/jobs/job_artifacts.html
-> - https://docs.gitlab.com/ee/ci/jobs/job_artifacts_troubleshooting.html
-> - https://docs.gitlab.com/ee/ci/caching/#artifacts
+> - https://docs.gitlab.com/ci/jobs/job_artifacts.html
+> - https://docs.gitlab.com/ci/jobs/job_artifacts_troubleshooting.html
+> - https://docs.gitlab.com/ci/caching/#artifacts
 
 <br>
 
@@ -689,28 +689,6 @@ bar_job:
 #### ▼ before_scriptとは
 
 記入中...
-
-#### ▼ 共通化
-
-`before_script`キーを隠しJobとして定義することで、共通のスクリプトとして使用できる。
-
-```yaml
-# GitLabの他のリポジトリからモジュールをプルするために、認証情報をセットアップする
-.setup_git:
-  before_script:
-    - echo "machine foo.gitlab.com" > ~/.netrc
-    - echo "login ${GIT_USER}" >> ~/.netrc
-    - echo "password ${GIT_TOKEN}" >> ~/.netrc
-
-go_mod:
-  stage: build
-  image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golang:${GO_VERSION}
-  extends:
-    - .setup_git
-  script: ...
-```
-
-> - https://stackoverflow.com/a/74831820/12771072
 
 <br>
 
@@ -736,7 +714,7 @@ bar_job:
 ```
 
 > - https://www.serversus.work/topics/927zjvmew2491o2n1oob/
-> - https://docs.gitlab.com/ee/ci/caching/#use-a-fallback-cache-key
+> - https://docs.gitlab.com/ci/caching/#use-a-fallback-cache-key
 
 #### ▼ policy
 
@@ -804,7 +782,7 @@ baz_job:
     - foo_job
 ```
 
-> - https://docs.gitlab.com/ee/ci/yaml/index.html#dependencies
+> - https://docs.gitlab.com/ci/yaml/index.html#dependencies
 > - https://stackoverflow.com/a/45422614
 
 <br>
@@ -825,7 +803,7 @@ foo_job:
     - echo foo
 ```
 
-> - https://docs.gitlab.com/ee/ci/yaml/index.html#image
+> - https://docs.gitlab.com/ci/yaml/index.html#image
 
 #### ▼ `CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX` (依存プロキシ)
 
@@ -849,7 +827,7 @@ foo_job:
     - echo foo
 ```
 
-> - https://docs.gitlab.com/ee/user/packages/dependency_proxy/#store-a-docker-image-in-dependency-proxy-cache
+> - https://docs.gitlab.com/user/packages/dependency_proxy/#store-a-docker-image-in-dependency-proxy-cache
 > - https://docs.gitlab.com/user/packages/dependency_proxy/#use-the-dependency-proxy-for-docker-images
 > - https://brettops.io/blog/gitlab-docker-proxy/
 
@@ -911,8 +889,8 @@ foo_job:
     - echo ${ENV}
 ```
 
-> - https://docs.gitlab.com/ee/ci/yaml/#parallelmatrix
-> - https://docs.gitlab.com/ee/ci/jobs/job_control.html#parallelize-large-jobs
+> - https://docs.gitlab.com/ci/yaml/#parallelmatrix
+> - https://docs.gitlab.com/ci/jobs/job_control.html#parallelize-large-jobs
 
 #### ▼ アーティファクト依存関係
 
@@ -944,7 +922,7 @@ baz_job:
     - "foo_job: [foo1]"
 ```
 
-> - https://docs.gitlab.com/ee/ci/jobs/job_control.html#fetch-artifacts-from-a-parallelmatrix-job
+> - https://docs.gitlab.com/ci/jobs/job_control.html#fetch-artifacts-from-a-parallelmatrix-job
 
 #### ▼ Jobの依存関係
 
@@ -980,7 +958,7 @@ baz_job:
 ```
 
 > - https://stackoverflow.com/a/76956828
-> - https://docs.gitlab.com/ee/ci/yaml/#needsparallelmatrix
+> - https://docs.gitlab.com/ci/yaml/#needsparallelmatrix
 
 <br>
 
@@ -1147,7 +1125,7 @@ qux_job:
   stage: deploy
 ```
 
-> - https://docs.gitlab.com/ee/ci/yaml/index.html#stage
+> - https://docs.gitlab.com/ci/yaml/index.html#stage
 
 <br>
 
@@ -1164,7 +1142,7 @@ foo_job:
     - echo "Hello World"
 ```
 
-> - https://docs.gitlab.com/ee/ci/yaml/index.html#script
+> - https://docs.gitlab.com/ci/yaml/index.html#script
 
 <br>
 
@@ -1216,7 +1194,7 @@ bar:
 
 Jobを実行する条件を設定する。
 
-> - https://docs.gitlab.com/ee/ci/yaml/index.html#when
+> - https://docs.gitlab.com/ci/yaml/index.html#when
 
 #### ▼ always
 
@@ -1230,7 +1208,7 @@ bar_job:
   when: always
 ```
 
-> - https://docs.gitlab.com/ee/ci/yaml/index.html#when
+> - https://docs.gitlab.com/ci/yaml/index.html#when
 
 #### ▼ manual
 
@@ -1244,7 +1222,7 @@ foo_job:
   when: manual
 ```
 
-> - https://docs.gitlab.com/ee/ci/yaml/index.html#when
+> - https://docs.gitlab.com/ci/yaml/index.html#when
 
 #### ▼ never
 
@@ -1265,5 +1243,66 @@ baz_job:
 
 > - https://blogs.networld.co.jp/entry/2022/11/01/090000
 > - https://stackoverflow.com/a/74885985
+
+<br>
+
+## 06. 処理の共通化
+
+### 別ファイル
+
+`include`キーを使用する。
+
+<br>
+
+### 同じファイル
+
+#### ▼ anchorの隠しJob化
+
+anchorとして定義した処理を隠しJob化する。
+
+```yaml
+# GitLabの他のリポジトリからモジュールをプルするために、認証情報をセットアップする
+.setup_git: &setup_git
+  - echo "machine foo.gitlab.com" > ~/.netrc
+  - echo "login ${GIT_USER}" >> ~/.netrc
+  - echo "password ${GIT_TOKEN}" >> ~/.netrc
+
+go_mod:
+  stage: build
+  image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golang:${GO_VERSION}
+  extends:
+    - *setup_git
+  script:
+    # 他のプライベートリポジトリのモジュールをインポートする
+    - go mod tidy
+```
+
+> - https://docs.gitlab.com/ci/yaml/yaml_optimization/#anchors
+
+#### ▼ `before_script`キーの隠しJob化
+
+`before_script`キーを隠しJob化することで、共通のスクリプトとして使用できる。
+
+ただし、呼び出す側で別の`before_script`キーがあると、上書きしてしまう。
+
+```yaml
+# GitLabの他のリポジトリからモジュールをプルするために、認証情報をセットアップする
+.setup_git:
+  before_script:
+    - echo "machine foo.gitlab.com" > ~/.netrc
+    - echo "login ${GIT_USER}" >> ~/.netrc
+    - echo "password ${GIT_TOKEN}" >> ~/.netrc
+
+go_mod:
+  stage: build
+  image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golang:${GO_VERSION}
+  extends:
+    - .setup_git
+  script:
+    # 他のプライベートリポジトリのモジュールをインポートする
+    - go mod tidy
+```
+
+> - https://stackoverflow.com/a/74831820/12771072
 
 <br>
