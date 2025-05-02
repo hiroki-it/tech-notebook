@@ -27393,24 +27393,24 @@
 <table>
 <thead>
 <tr>
-<th style="text-align: center;">アクション</th>
-<th style="text-align: center;">AWS CloudWatch</th>
-<th style="text-align: center;">Datadog</th>
-<th style="text-align: center;">Istio<br>(連携しない状態)</th>
-<th style="text-align: center;">Istio<br>(ビルトインPrometheusと連携した状態)</th>
-<th style="text-align: center;">OpenTelemetry</th>
-<th style="text-align: center;">Prometheus</th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;">AWS CloudWatchベース</th>
+<th style="text-align: center;">Datadogベース</th>
+<th style="text-align: center;">Istioベース<br>(連携しない状態)</th>
+<th style="text-align: center;">Istioベース<br>(ビルトインPrometheusと連携した状態)</th>
+<th style="text-align: center;">OpenTelemetryベース</th>
+<th style="text-align: center;">Prometheusベース</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: center;">メトリクスのデータポイントの作成</td>
-<td style="text-align: center;">✅<br>(cloudwatchエージェント)</td>
-<td style="text-align: center;">✅<br>(datadogエージェント)</td>
-<td style="text-align: center;">✅<br>(Envoyによるリクエスト系メトリクスの作成)</td>
-<td style="text-align: center;">✅<br>(Envoyによるリクエスト系メトリクスの作成)</td>
-<td style="text-align: center;">✅<br>(クライアントパッケージ)</td>
-<td style="text-align: center;">✅<br>(Exporter)</td>
+<td style="text-align: center;">(cloudwatchエージェント)</td>
+<td style="text-align: center;">(datadogエージェント)</td>
+<td style="text-align: center;">(Envoyによるリクエスト系メトリクスの作成)</td>
+<td style="text-align: center;">(Envoyによるリクエスト系メトリクスの作成)</td>
+<td style="text-align: center;">(クライアントパッケージ)</td>
+<td style="text-align: center;">(Exporter)</td>
 </tr>
 <tr>
 <td style="text-align: center;">⬇️</td>
@@ -27423,12 +27423,12 @@
 </tr>
 <tr>
 <td style="text-align: center;">メトリクスのデータポイントを収集<br>(プル型またはプッシュ型)</td>
-<td style="text-align: center;">✅<br>(cloudwatchエージェント)</td>
-<td style="text-align: center;">✅<br>(datadogエージェント)</td>
-<td style="text-align: center;">✅<br>(Istiodコントロールプレーンによる収集)</td>
-<td style="text-align: center;">✅<br>(Istiodコントロールプレーンによる収集)</td>
-<td style="text-align: center;">✅<br>(OpenTelemetry Collector)</td>
-<td style="text-align: center;">✅<br>(Exporter)</td>
+<td style="text-align: center;">(cloudwatchエージェント)</td>
+<td style="text-align: center;">(datadogエージェント)</td>
+<td style="text-align: center;">(Istiodコントロールプレーンによる収集)</td>
+<td style="text-align: center;">(Istiodコントロールプレーンによる収集)</td>
+<td style="text-align: center;">(OpenTelemetry Collector)</td>
+<td style="text-align: center;">(Exporter)</td>
 </tr>
 <tr>
 <td style="text-align: center;">⬇️</td>
@@ -27441,12 +27441,12 @@
 </tr>
 <tr>
 <td style="text-align: center;">監視バックエンドによるビルトインローカルストレージへの保管</td>
-<td style="text-align: center;">✅<br>(AWS CloudWatch Metrics)</td>
-<td style="text-align: center;">✅</td>
+<td style="text-align: center;">(AWS CloudWatch Metrics)</td>
+<td style="text-align: center;">Datadogダッシュボード</td>
 <td style="text-align: center;">-</td>
+<td style="text-align: center;">(Istiodコントロールプレーンを経由したprometheusサーバーによる収集)</td>
 <td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
+<td style="text-align: center;">(prometheusサーバー)</td>
 </tr>
 <tr>
 <td style="text-align: center;">⬇️</td>
@@ -27459,26 +27459,26 @@
 </tr>
 <tr>
 <td style="text-align: center;">監視フロントエンドによる可視化</td>
-<td style="text-align: center;">✅<br>(AWS CloudWatch Metrics)</td>
-<td style="text-align: center;">✅</td>
+<td style="text-align: center;">(AWS CloudWatch Metrics)</td>
+<td style="text-align: center;">Datadogダッシュボード</td>
 <td style="text-align: center;">-</td>
-<td style="text-align: center;">✅<br>(Istiodコントロールプレーンを経由したprometheusサーバーによる収集)</td>
+<td style="text-align: center;">(Grafanaダッシュボード)</td>
 <td style="text-align: center;">-</td>
-<td style="text-align: center;">✅<br>(prometheusサーバー)</td>
+<td style="text-align: center;">(Grafanaダッシュボード)</td>
 </tr>
 <tr>
 <td style="text-align: center;">⬇️</td>
 <td style="text-align: center;">⬇️</td>
 <td style="text-align: center;">⬇️</td>
 <td style="text-align: center;">⬇️</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">⬇️</td>
+<td style="text-align: center;">⬇️</td>
+<td style="text-align: center;">⬇️</td>
 </tr>
 <tr>
 <td style="text-align: center;">分析とレポートの作成</td>
-<td style="text-align: center;">✅<br>(AWS CloudWatch Contributor Insights)</td>
-<td style="text-align: center;">✅</td>
+<td style="text-align: center;">(AWS CloudWatch Contributor Insights)</td>
+<td style="text-align: center;">Datadogダッシュボード</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
@@ -27495,12 +27495,12 @@
 </tr>
 <tr>
 <td style="text-align: center;">アラートの作成</td>
-<td style="text-align: center;">✅<br>(AWS CloudWatchアラーム)</td>
-<td style="text-align: center;">✅</td>
+<td style="text-align: center;">(AWS CloudWatchアラーム)</td>
+<td style="text-align: center;">Datadogダッシュボード</td>
 <td style="text-align: center;">-</td>
-<td style="text-align: center;">✅<br>(prometheusサーバー)</td>
+<td style="text-align: center;">(prometheusサーバー)</td>
 <td style="text-align: center;">-</td>
-<td style="text-align: center;">✅<br>(prometheusサーバー)</td>
+<td style="text-align: center;">(prometheusサーバー)</td>
 </tr>
 </tbody>
 </table>
@@ -27515,7 +27515,7 @@
 <table>
 <thead>
 <tr>
-<th>アクション</th>
+<th></th>
 <th style="text-align: center;">AWS CloudWatchベース</th>
 <th style="text-align: center;">Datadogベース</th>
 <th style="text-align: center;">Istioベース</th>
@@ -27554,9 +27554,9 @@
 <tr>
 <td>監視バックエンドによるビルトインローカルストレージへの保管</td>
 <td style="text-align: center;">AWS CloudWatch Metrics</td>
-<td style="text-align: center;">Datadog</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
+<td style="text-align: center;">Datadogダッシュボード</td>
+<td style="text-align: center;">prometheusサーバー</td>
+<td style="text-align: center;">prometheusサーバー</td>
 </tr>
 <tr>
 <td>⬇️</td>
@@ -27568,21 +27568,21 @@
 <tr>
 <td>監視フロントエンドによる可視化</td>
 <td style="text-align: center;">AWS CloudWatch Metrics</td>
-<td style="text-align: center;">Datadog</td>
-<td style="text-align: center;">prometheusサーバー</td>
-<td style="text-align: center;">prometheusサーバー</td>
+<td style="text-align: center;">Datadogダッシュボード</td>
+<td style="text-align: center;">Grafanaダッシュボード</td>
+<td style="text-align: center;">Grafanaダッシュボード</td>
 </tr>
 <tr>
 <td>⬇️</td>
 <td style="text-align: center;">⬇️</td>
 <td style="text-align: center;">⬇️</td>
 <td style="text-align: center;">⬇️</td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">⬇️</td>
 </tr>
 <tr>
 <td>分析とレポートの作成</td>
 <td style="text-align: center;">AWS CloudWatch Metrics</td>
-<td style="text-align: center;">Datadog</td>
+<td style="text-align: center;">Datadogダッシュボード</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
 </tr>
@@ -27596,7 +27596,7 @@
 <tr>
 <td>アラートの作成</td>
 <td style="text-align: center;">AWS CloudWatchアラーム</td>
-<td style="text-align: center;">Datadog</td>
+<td style="text-align: center;">Datadogダッシュボード</td>
 <td style="text-align: center;">prometheusサーバー</td>
 <td style="text-align: center;">prometheusサーバー</td>
 </tr>
@@ -27611,14 +27611,14 @@
 <table>
 <thead>
 <tr>
-<th>アクション</th>
-<th style="text-align: center;">AWS CloudWatch</th>
-<th style="text-align: center;">Elasticsearch</th>
-<th style="text-align: center;">Fluentd<br>Fluentbit</th>
-<th style="text-align: center;">Grafana Loki</th>
-<th style="text-align: center;">Istio<br>(連携しない状態)</th>
-<th style="text-align: center;">Istio<br>(ビルトインOpenTelemetryと連携した状態)</th>
-<th style="text-align: center;">OpenTelemetry</th>
+<th></th>
+<th style="text-align: center;">AWS CloudWatchベース</th>
+<th style="text-align: center;">Elasticsearchベース</th>
+<th style="text-align: center;">Fluentd／Fluentbit<br>ベース</th>
+<th style="text-align: center;">Grafana Lokiベース</th>
+<th style="text-align: center;">Istioベース<br>(連携しない状態)</th>
+<th style="text-align: center;">Istioベース<br>(ビルトインOpenTelemetryと連携した状態)</th>
+<th style="text-align: center;">OpenTelemetryベース</th>
 </tr>
 </thead>
 <tbody>
@@ -27638,8 +27638,8 @@
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
-<td style="text-align: center;">✅<br>(Envoyによるアクセスログ作成)</td>
-<td style="text-align: center;">✅<br>(Envoyによるアクセスログ作成)</td>
+<td style="text-align: center;">(Envoyによるアクセスログ作成)</td>
+<td style="text-align: center;">(Envoyによるアクセスログ作成)</td>
 <td style="text-align: center;">-</td>
 </tr>
 <tr>
@@ -27654,13 +27654,13 @@
 </tr>
 <tr>
 <td>ログの収集<br>(いずれもプッシュ型による送信方式)</td>
-<td style="text-align: center;">✅<br>(cloudwatchエージェント)</td>
-<td style="text-align: center;">✅<br>(Logstach)</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅<br>(Promtail)</td>
+<td style="text-align: center;">(cloudwatchエージェント)</td>
+<td style="text-align: center;">(Logstach)</td>
+<td style="text-align: center;">Fluentd／Fluentbit</td>
+<td style="text-align: center;">(Grafana Alloy)</td>
 <td style="text-align: center;">-</td>
-<td style="text-align: center;">✅<br>(EnvoyからOpenTelemetry Collectorへの送信)</td>
-<td style="text-align: center;">✅<br>(OpenTelemetry Collector)</td>
+<td style="text-align: center;">(EnvoyからOpenTelemetry Collectorへの送信)</td>
+<td style="text-align: center;">(OpenTelemetry Collector)</td>
 </tr>
 <tr>
 <td>⬇️</td>
@@ -27674,10 +27674,10 @@
 </tr>
 <tr>
 <td>監視バックエンドによるビルトインローカルストレージへの保管</td>
-<td style="text-align: center;">✅<br>(AWS CloudWatch Logs)</td>
+<td style="text-align: center;">(AWS CloudWatch Logs)</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
-<td style="text-align: center;">✅<br>(BoltDB)</td>
+<td style="text-align: center;">(BoltDB)</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
@@ -27694,8 +27694,8 @@
 </tr>
 <tr>
 <td>監視フロントエンドによる可視化</td>
-<td style="text-align: center;">✅<br>(AWS CloudWatch Logs)</td>
-<td style="text-align: center;">✅</td>
+<td style="text-align: center;">(AWS CloudWatch Logsダッシュボード)</td>
+<td style="text-align: center;">Elasticsearchダッシュボード</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
@@ -27714,7 +27714,7 @@
 </tr>
 <tr>
 <td>分析とレポートの作成</td>
-<td style="text-align: center;">✅<br>(AWS CloudWatch Contributor Insights)</td>
+<td style="text-align: center;">(AWS CloudWatch Contributor Insights)</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
@@ -27734,7 +27734,7 @@
 </tr>
 <tr>
 <td>アラートの作成</td>
-<td style="text-align: center;">✅<br>(AWS CloudWatchアラーム)</td>
+<td style="text-align: center;">(AWS CloudWatchアラーム)</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
@@ -27756,7 +27756,7 @@
 <table>
 <thead>
 <tr>
-<th>アクション</th>
+<th></th>
 <th style="text-align: center;">AWS CloudWatchベース</th>
 <th style="text-align: center;">Datadogベース</th>
 <th style="text-align: center;">Istioベース</th>
@@ -27790,7 +27790,7 @@
 <td style="text-align: center;">Fluentd<br>Fluentbit</td>
 <td style="text-align: center;">Fluentd<br>Fluentbit</td>
 <td style="text-align: center;">Fluentd<br>Fluentbit<br>(OpenTelemetry Collectorでも可)</td>
-<td style="text-align: center;">Promtail</td>
+<td style="text-align: center;">Grafana Alloy</td>
 </tr>
 <tr>
 <td>⬇️</td>
@@ -27802,7 +27802,7 @@
 <tr>
 <td>監視バックエンドによるビルトインローカルストレージへの保管</td>
 <td style="text-align: center;">AWS CloudWatch Logs</td>
-<td style="text-align: center;">Datadog</td>
+<td style="text-align: center;">Datadogダッシュボード</td>
 <td style="text-align: center;">Grafana Loki</td>
 <td style="text-align: center;">Grafana Loki</td>
 </tr>
@@ -27815,10 +27815,10 @@
 </tr>
 <tr>
 <td>監視フロントエンドによる可視化</td>
-<td style="text-align: center;">AWS CloudWatch Logs</td>
-<td style="text-align: center;">Datadog</td>
-<td style="text-align: center;">Grafana</td>
-<td style="text-align: center;">Grafana</td>
+<td style="text-align: center;">AWS CloudWatch Logsダッシュボード</td>
+<td style="text-align: center;">Datadogダッシュボード</td>
+<td style="text-align: center;">Grafanaダッシュボード</td>
+<td style="text-align: center;">Grafanaダッシュボード</td>
 </tr>
 <tr>
 <td>⬇️</td>
@@ -27830,9 +27830,9 @@
 <tr>
 <td>分析とレポートの作成</td>
 <td style="text-align: center;">AWS CloudWatch Logsインサイト</td>
-<td style="text-align: center;">Datadog</td>
-<td style="text-align: center;">Grafana</td>
-<td style="text-align: center;">Grafana</td>
+<td style="text-align: center;">Datadogダッシュボード</td>
+<td style="text-align: center;">Grafanaダッシュボード</td>
+<td style="text-align: center;">Grafanaダッシュボード</td>
 </tr>
 <tr>
 <td>⬇️</td>
@@ -27844,7 +27844,7 @@
 <tr>
 <td>アラートの作成</td>
 <td style="text-align: center;">AWS CloudWatchアラーム</td>
-<td style="text-align: center;">Datadog</td>
+<td style="text-align: center;">Datadogダッシュボード</td>
 <td style="text-align: center;">prometheusサーバー</td>
 <td style="text-align: center;">prometheusサーバー</td>
 </tr>
@@ -27859,10 +27859,9 @@
 <table>
 <thead>
 <tr>
-<th>アクション</th>
+<th></th>
 <th style="text-align: center;">AWS X-Ray</th>
 <th style="text-align: center;">Datadog</th>
-<th style="text-align: center;">Grafana Tempo</th>
 <th style="text-align: center;">Istio<br>(連携しない状態)</th>
 <th style="text-align: center;">Istio<br>(ビルトインJaegerと連携した状態)</th>
 <th style="text-align: center;">Jaeger</th>
@@ -27873,13 +27872,12 @@
 <tbody>
 <tr>
 <td>トレースIDとスパンIDの作成</td>
-<td style="text-align: center;">✅<br>(x-rayクライアントパッケージ)</td>
-<td style="text-align: center;">✅<br>(datadogクライアントパッケージ)</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">✅<br>(Envoyによる各種IDの作成)</td>
-<td style="text-align: center;">✅<br>(Envoyによる各種IDの作成)</td>
-<td style="text-align: center;">✅<br>(jaegerエージェント)</td>
-<td style="text-align: center;">✅<br>(otelクライアントパッケージ)</td>
+<td style="text-align: center;">(x-rayクライアントパッケージ)</td>
+<td style="text-align: center;">(datadogクライアントパッケージ)</td>
+<td style="text-align: center;">(Envoyによる各種IDの作成)</td>
+<td style="text-align: center;">(Envoyによる各種IDの作成)</td>
+<td style="text-align: center;">(jaegerエージェント)</td>
+<td style="text-align: center;">(otelクライアントパッケージ)</td>
 <td style="text-align: center;">-</td>
 </tr>
 <tr>
@@ -27891,11 +27889,9 @@
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
 </tr>
 <tr>
 <td>⬇️</td>
-<td style="text-align: center;">⬇️</td>
 <td style="text-align: center;">⬇️</td>
 <td style="text-align: center;">⬇️</td>
 <td style="text-align: center;">⬇️</td>
@@ -27906,18 +27902,16 @@
 </tr>
 <tr>
 <td>分散トレースの収集<br>(いずれもプッシュ型による送信方式)</td>
-<td style="text-align: center;">✅<br>(x-rayエージェント)</td>
-<td style="text-align: center;">✅<br>(datadogエージェント)</td>
+<td style="text-align: center;">(x-rayエージェント)</td>
+<td style="text-align: center;">(datadogエージェント)</td>
 <td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">✅<br>(EnvoyからJaeger Collectorへの送信)</td>
-<td style="text-align: center;">✅<br>(Jaeger Collector)</td>
-<td style="text-align: center;">✅<br>(OpenTelemetry Collector)</td>
-<td style="text-align: center;">✅<br>(zipkin Collector)</td>
+<td style="text-align: center;">(EnvoyからJaeger Collectorへの送信)</td>
+<td style="text-align: center;">(Jaeger Collector)</td>
+<td style="text-align: center;">(OpenTelemetry Collector)</td>
+<td style="text-align: center;">(zipkin Collector)</td>
 </tr>
 <tr>
 <td>⬇️</td>
-<td style="text-align: center;">⬇️</td>
 <td style="text-align: center;">⬇️</td>
 <td style="text-align: center;">⬇️</td>
 <td style="text-align: center;">⬇️</td>
@@ -27928,18 +27922,16 @@
 </tr>
 <tr>
 <td>監視バックエンドによるビルトインローカルストレージへの保管</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
+<td style="text-align: center;">AWS X-Rayダッシュボード</td>
+<td style="text-align: center;">Datadogダッシュボード</td>
 <td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">✅<br>(JaegerのビルトインのApache Cassandra、Elasticsearch)</td>
-<td style="text-align: center;">✅<br>(Cassandra、Elasticsearch)</td>
+<td style="text-align: center;">(JaegerのビルトインのApache Cassandra、Elasticsearch)</td>
+<td style="text-align: center;">(Cassandra、Elasticsearch)</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
 </tr>
 <tr>
 <td>⬇️</td>
-<td style="text-align: center;">⬇️</td>
 <td style="text-align: center;">⬇️</td>
 <td style="text-align: center;">⬇️</td>
 <td style="text-align: center;">⬇️</td>
@@ -27950,10 +27942,9 @@
 </tr>
 <tr>
 <td>監視フロントエンドによる可視化</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">-</td>
+<td style="text-align: center;">AWS X-Rayダッシュボード</td>
+<td style="text-align: center;">Datadogダッシュボード</td>
+<td style="text-align: center;">Grafanaダッシュボード</td>
 <td style="text-align: center;">✅</td>
 <td style="text-align: center;">✅</td>
 <td style="text-align: center;">-</td>
@@ -27961,7 +27952,6 @@
 </tr>
 <tr>
 <td>⬇️</td>
-<td style="text-align: center;">⬇️</td>
 <td style="text-align: center;">⬇️</td>
 <td style="text-align: center;">⬇️</td>
 <td style="text-align: center;"></td>
@@ -27979,7 +27969,6 @@
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
 </tr>
 <tr>
 <td>⬇️</td>
@@ -27990,11 +27979,9 @@
 <td style="text-align: center;">⬇️</td>
 <td style="text-align: center;">⬇️</td>
 <td style="text-align: center;">⬇️</td>
-<td style="text-align: center;">⬇️</td>
 </tr>
 <tr>
 <td>アラートの作成</td>
-<td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
@@ -28017,7 +28004,7 @@
 <table>
 <thead>
 <tr>
-<th>アクション</th>
+<th></th>
 <th style="text-align: center;">Datadogベース</th>
 <th style="text-align: center;">Istioベース</th>
 <th style="text-align: center;">OpenTelemetryベース</th>
@@ -28056,7 +28043,7 @@
 </tr>
 <tr>
 <td>監視バックエンドによるビルトインローカルストレージへの保管</td>
-<td style="text-align: center;">Datadog</td>
+<td style="text-align: center;">Datadogダッシュボード</td>
 <td style="text-align: center;">JaegerのビルトインのApache Cassandra、Elasticsearch</td>
 <td style="text-align: center;">-</td>
 </tr>
@@ -28068,7 +28055,7 @@
 </tr>
 <tr>
 <td>監視フロントエンドによる可視化</td>
-<td style="text-align: center;">Datadog</td>
+<td style="text-align: center;">Datadogダッシュボード</td>
 <td style="text-align: center;">Jaeger</td>
 <td style="text-align: center;">Grafana Tempo</td>
 </tr>
@@ -28080,7 +28067,7 @@
 </tr>
 <tr>
 <td>分析とレポートの作成</td>
-<td style="text-align: center;">Datadog</td>
+<td style="text-align: center;">Datadogダッシュボード</td>
 <td style="text-align: center;">Jaeger</td>
 <td style="text-align: center;">Grafana Tempo</td>
 </tr>
@@ -28115,15 +28102,15 @@
 <tbody>
 <tr>
 <td>ログと分散トレース間の紐付け</td>
-<td style="text-align: center;">✅<br>(ログはAWS CloudWatch Logsに要保管)</td>
-<td style="text-align: center;">✅<br>(ログはDatadogに要保管)</td>
-<td style="text-align: center;">✅<br>(ログの保管ツールの種類に制限あり)</td>
+<td style="text-align: center;">(ログはAWS CloudWatch Logsに要保管)</td>
+<td style="text-align: center;">(ログはDatadogに要保管)</td>
+<td style="text-align: center;">(ログの保管ツールの種類に制限あり)</td>
 </tr>
 <tr>
 <td>メトリクスと分散トレース間の紐付け</td>
-<td style="text-align: center;">✅<br>(一部の言語のx-rayクライアントパッケージのみ対応)</td>
-<td style="text-align: center;">✅<br>(ログはDatadogに要保管)</td>
-<td style="text-align: center;">✅<br>(ログの保管ツールの種類に制限あり)</td>
+<td style="text-align: center;">(一部の言語のx-rayクライアントパッケージのみ対応)</td>
+<td style="text-align: center;">(ログはDatadogに要保管)</td>
+<td style="text-align: center;">(ログの保管ツールの種類に制限あり)</td>
 </tr>
 </tbody>
 </table>
@@ -28267,7 +28254,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月2日 19:01:30">2025-05-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月2日 19:33:03">2025-05-02</span>
   </span>
 
     
