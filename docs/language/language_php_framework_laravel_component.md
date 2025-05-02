@@ -3662,7 +3662,7 @@ Schema::create("foos", function (Blueprint $table) {
 
 複数の値を設定した場合は、それぞれに通信が送信される。
 
-`toMail`メソッド、`toSms`メソッド、`toSlack`メソッド、`toArray`メソッド、を使用して、Laravelの標準のチャンネルに渡す通知内容を定義できる。
+`toMail`メソッド、`toSms`メソッド、`toSlack`メソッド、`toArray`メソッドを使用して、Laravelの標準のチャンネルに渡す通知内容を定義できる。
 
 **＊実装例＊**
 

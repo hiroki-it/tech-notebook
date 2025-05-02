@@ -189,7 +189,7 @@ $employees = $department->employees()
 
 Eloquentは、`primaryKey`プロパティの値を主キーのカラム名と見なす。
 
-`keyType`プロパティで主キーのデータ型、また`incrementing`プロパティで主キーの自動増分を有効化するか否か、を設定できる。
+`keyType`プロパティで主キーのデータ型、また`incrementing`プロパティで主キーの自動増分を有効化するか否かを設定できる。
 
 **＊実装例＊**
 

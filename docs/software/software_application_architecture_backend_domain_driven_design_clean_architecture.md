@@ -1581,7 +1581,7 @@ namespace App\Domain\Foo\ValueObjects;
 class RequiredTime extends ValueObject
 {
     /**
-     * 判定値、歩行速度の目安、車速度の目安、を定数で定義する。
+     * 判定値、歩行速度の目安、車速度の目安を定数で定義する。
      */
     const JUDGMENT_MINUTE = 21;
     const WALKING_SPEED_PER_MINUTE = 80;

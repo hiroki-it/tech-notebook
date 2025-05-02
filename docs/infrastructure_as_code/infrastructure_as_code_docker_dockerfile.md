@@ -266,7 +266,7 @@ COPY ./src src/
 
 ### --from
 
-他のステージ名、ローカルのコンテナイメージ名、リモート (DockerHubのみ) のコンテナイメージ名、を指定して、そのコンテナイメージが持つファイルをコピーする。
+他のステージ名、ローカルのコンテナイメージ名、リモート (DockerHubのみ) のコンテナイメージ名を指定して、そのコンテナイメージが持つファイルをコピーする。
 
 ```dockerfile
 COPY --from=composer:<バージョン> /usr/bin/composer /usr/bin/composer

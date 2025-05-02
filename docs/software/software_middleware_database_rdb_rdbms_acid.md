@@ -459,7 +459,7 @@ PHPのORMであるDoctrineのロック機能については、以下のリンク
 
 ![db_point-in-time-recovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/db_point-in-time-recovery.png)
 
-特定の時点のベースバックアップ (例：SQLによって異なり、MySQLの場合は`mysqldump`コマンドの出力) 、ベースバックアップの時点以降の変更点を含む差分バックアップ (例：SQLによって異なり、MySQLの場合はバイナリーログ) 、を使用し、DBを任意の時点の状態に戻す。
+特定の時点のベースバックアップ (例：SQLによって異なり、MySQLの場合は`mysqldump`コマンドの出力) 、ベースバックアップの時点以降の変更点を含む差分バックアップ (例：SQLによって異なり、MySQLの場合はバイナリーログ) を使用し、DBを任意の時点の状態に戻す。
 
 トランザクションの前後の状態に戻すロールバック/ロールフォワードとは異なり、DBを任意の時点の状態に戻せる。
 

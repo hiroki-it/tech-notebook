@@ -23,7 +23,7 @@ description: PHPUnit＠PHPユニットテストの知見を記録しています
 
 ### オプション無し
 
-全てのテストファイルを対象として、定義されたメソッドを実行する。
+全てのテストファイルを対象として、定義したメソッドを実行する。
 
 ```bash
 $ vendor/bin/phpunit
@@ -40,7 +40,7 @@ OK (3 tests, 3 assertions)
 
 ### --filter
 
-特定のテストファイルを対象として、定義されたメソッドを実行する。
+特定のテストファイルを対象として、定義したメソッドを実行する。
 
 ```bash
 $ vendor/bin/phpunit --filter Foo

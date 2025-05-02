@@ -484,7 +484,7 @@ config:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  # foo-map、baz-map、を作成できる。
+  # foo-map、baz-mapを作成できる。
   # bar-mapは作成されない。
   name: {{ $key }}-map
 data:

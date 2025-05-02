@@ -90,7 +90,7 @@ description: リクエスト−レスポンスパターン＠通信方式の知�
 
 JavaScriptで非同期通信を実装する手法のこと。
 
-JavaScript、HTML、XHTML、CSS、DOM、XML、XSLT、を組み合わせる。
+JavaScript、HTML、XHTML、CSS、DOM、XML、XSLTを組み合わせる。
 
 <br>
 

@@ -197,7 +197,7 @@ autorestart=true
 
 #### ▼ autostart
 
-supervisordの起動時に、デーモン化されたプロセスを自動的に起動させるか否か、を設定する。
+supervisordの起動時に、デーモン化されたプロセスを自動的に起動させるか否かを設定する。
 
 ```ini
 [program:foo]

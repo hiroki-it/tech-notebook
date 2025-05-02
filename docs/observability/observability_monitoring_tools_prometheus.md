@@ -341,7 +341,7 @@ Pull型収集の宛先のIPアドレスが動的に変化する (例：スケー
 
 Prometheusのコンポーネントを部分的にマネージドにしたサービス。
 
-執筆時点 (2023/05/16時点) では、リモートストレージ、Alertmanager、をマネージドにしてくれる。
+執筆時点 (2023/05/16時点) では、リモートストレージ、Alertmanagerをマネージドにしてくれる。
 
 > - https://www.infoq.com/jp/news/2021/01/aws-grafana-prometheus/
 

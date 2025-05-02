@@ -104,11 +104,11 @@ Pod
 
 ### Ingressの検知
 
-Ingressに定義されたルーティングのルールを検知する。
+Ingressに定義したルーティングのルールを検知する。
 
 Kubernetes Clusterに単一のIngress Controllerを作成するとよい。
 
-また、各Namespace用に定義されたIngressを使用して、各NamespaceのServiceにルーティングするとよい。
+また、各Namespace用に定義したIngressを使用して、各NamespaceのServiceにルーティングするとよい。
 
 <br>
 

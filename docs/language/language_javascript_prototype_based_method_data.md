@@ -372,7 +372,7 @@ let foo = "foo";
 ```javascript
 const array = [1, 2, 3];
 
-// fooに1、barに2、bazに3、を代入
+// fooに1、barに2、bazに3を代入
 const [foo, bar, baz] = array;
 
 console.log(foo); // 1

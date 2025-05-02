@@ -872,7 +872,7 @@ data:
           - /bin/bash
           - -c
         # jkroepke製のhelm-secretsの場合
-        # 暗号化されたvaluesファイル (SOPSのsecretsファイル) 、平文のvaluesファイル、を使用してhelmコマンドを実行する。
+        # 暗号化されたvaluesファイル (SOPSのsecretsファイル) 、平文のvaluesファイルを使用してhelmコマンドを実行する。
         args:
           - >
             set -euo pipefail;
@@ -912,7 +912,7 @@ data:
           - /bin/bash
           - -c
         # zendesk製のhelm-secretsの場合
-        # 暗号化されたvaluesファイル (SOPSのsecretsファイル) 、平文のvaluesファイル、を使用してhelmコマンドを実行する。
+        # 暗号化されたvaluesファイル (SOPSのsecretsファイル) 、平文のvaluesファイルを使用してhelmコマンドを実行する。
         args:
           - >
             set -euo pipefail;
