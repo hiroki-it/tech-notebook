@@ -73,7 +73,7 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
 
 ### セットアップ
 
-いくつかの方法で、収集されたメトリクスを送信できる。
+いくつかの方法で、収集したメトリクスを送信できる。
 
 > - https://docs.datadoghq.com/metrics/#submitting-metrics-to-datadog
 

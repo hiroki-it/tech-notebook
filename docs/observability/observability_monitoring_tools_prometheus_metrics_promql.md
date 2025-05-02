@@ -354,7 +354,7 @@ absent(container_tasks_state{name="<コンテナ名>",state="running"}) == 1
 
 ### データポイントの平均サイズ (KB/秒) の増加率
 
-Prometheusで収集されたデータポイントの平均サイズ (KB/秒) の増加率を表す。
+Prometheusで収集したデータポイントの平均サイズ (KB/秒) の増加率を表す。
 
 ```bash
 # 秒当たりの平均増加率を１時間で集計する
@@ -369,7 +369,7 @@ rate(prometheus_tsdb_compaction_chunk_samples_sum[1h])
 
 ### データポイントの合計数 (個/秒) の増加率
 
-Prometheusで収集されたデータポイントの合計数 (個/秒) の増加率を表す。
+Prometheusで収集したデータポイントの合計数 (個/秒) の増加率を表す。
 
 ```bash
 # 秒当たりの平均増加率を１時間で集計する
@@ -383,7 +383,7 @@ rate(prometheus_tsdb_head_samples_appended_total[1h])
 
 ### データポイントの合計サイズ (KB/秒) の増加率
 
-Prometheusで収集されたデータポイントの合計サイズ (KB/秒) の増加率を表す。
+Prometheusで収集したデータポイントの合計サイズ (KB/秒) の増加率を表す。
 
 計算式からもわかるように、データポイントの収集の間隔を長くすることにより、データポイント数が減るため、合計のサイズを小さくできる。
 
@@ -403,7 +403,7 @@ rate(prometheus_tsdb_head_samples_appended_total[1h])
 
 ### データポイントの合計サイズ (KB/日) の推移
 
-Prometheusで収集されたデータポイントの合計サイズ (KB/日) の推移を表す。
+Prometheusで収集したデータポイントの合計サイズ (KB/日) の推移を表す。
 
 ```bash
 # 秒当たりの平均増加率を１時間で集計する
@@ -452,7 +452,7 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 
 #### ▼ 必要データサイズ (KB/日)
 
-Prometheusで収集されたデータポイントの全サイズうち、リモートストレージに実際に送信しているサイズ (KB/日) を表す。
+Prometheusで収集したデータポイントの全サイズうち、リモートストレージに実際に送信しているサイズ (KB/日) を表す。
 
 リモート書き込みサイズではなく、送信サイズであるため、書き込みに成功していない可能性があることに注意する。
 

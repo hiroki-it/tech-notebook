@@ -263,7 +263,7 @@ helm <バージョンタグ>
 
 asdfパッケージを使用して、`helm`コマンドをインストールする。
 
-`.tool-versions`ファイルに定義されたバージョンがインストールされる。
+`.tool-versions`ファイルに定義したバージョンがインストールされる。
 
 ```bash
 $ asdf plugin list all | grep helm

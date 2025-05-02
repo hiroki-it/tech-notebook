@@ -311,7 +311,9 @@ export default browserLogsForSsgPlugin;
 
 > - https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_telemetry_association.html
 
-## 06. 収集されたログの送信
+<br>
+
+## 06. 収集したログの送信
 
 ### EC2におけるログの送信
 

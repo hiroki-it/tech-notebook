@@ -33,12 +33,12 @@ version: 2.1
 
 #### ▼ parametersとは
 
-| パラメーター名      | 参照範囲                                                               | 値を設定する場所 |
-| ------------------- | ---------------------------------------------------------------------- | ---------------- |
-| command parameters  | `command`キー内で定義する。定義された`command`キー内のみで定義できる。 | `workflows`      |
-| job parameters      | `jobs`キー内で定義する。定義された`jobs`キー内のみで参照できる。       | `workflows`      |
-| executors parameter | `executors`内で定義する。定義された`executos`内のみで参照できる。      | `job`            |
-| pipeline parameters | トップレベルで定義する。リポジトリ内のみで参照できる。                 | `workflows`      |
+| パラメーター名      | 参照範囲                                                             | 値を設定する場所 |
+| ------------------- | -------------------------------------------------------------------- | ---------------- |
+| command parameters  | `command`キー内で定義する。定義した`command`キー内のみで定義できる。 | `workflows`      |
+| job parameters      | `jobs`キー内で定義する。定義した`jobs`キー内のみで参照できる。       | `workflows`      |
+| executors parameter | `executors`内で定義する。定義した`executos`内のみで参照できる。      | `job`            |
+| pipeline parameters | トップレベルで定義する。リポジトリ内のみで参照できる。               | `workflows`      |
 
 <br>
 
@@ -56,7 +56,7 @@ version: 2.1
 
 定義できるデータ型は、job parameterと同じ。
 
-定義された`command`キー内のみで定義できる。
+定義した`command`キー内のみで定義できる。
 
 ```yaml
 version: 2.1

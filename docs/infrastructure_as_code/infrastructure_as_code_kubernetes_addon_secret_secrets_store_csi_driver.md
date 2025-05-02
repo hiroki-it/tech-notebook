@@ -15,7 +15,7 @@ description: SecretsストアCSIドライバー＠Secret系の知見を記録し
 
 ## 01. SecretsストアCSIドライバーとは
 
-SecretsストアCSIドライバーは、SecretProviderClassで定義されたプロバイダー (例：AWS、Google Cloud、Vault) のAPIと通信し、プロバイダーのSecretストア (例：AWS Secrets Manager、Google Cloud SecretManager、Vault SecretsEngine) から変数を取得する。
+SecretsストアCSIドライバーは、SecretProviderClassで定義したプロバイダー (例：AWS、Google Cloud、Vault) のAPIと通信し、プロバイダーのSecretストア (例：AWS Secrets Manager、Google Cloud SecretManager、Vault SecretsEngine) から変数を取得する。
 
 その後、Secretは使用せずにPod内コンテナのファイルとしてマウントする。
 

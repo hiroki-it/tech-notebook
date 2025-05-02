@@ -19,7 +19,7 @@ description: Grafana＠監視ツールの知見を記録しています。
 
 Grafanaは、ダッシュボードとストレージから構成されている。
 
-PromQLに基づいて、収集されたメトリクスを可視化する。
+監視フロントエンドとして、監視バックエンドで保管されたメトリクスを可視化する。
 
 ![grafana_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images//grafana_architecture.png)
 

@@ -19,7 +19,7 @@ description: 可観測性の知見を記録しています。
 
 ![observality_and_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observality_and_monitoring.png)
 
-『収集されたデータから、システムの想定内 (既知) と想定外 (未知) の両方の不具合を、どれだけ正確に推測できるか』を表す程度のこと。
+『収集したデータから、システムの想定内 (既知) と想定外 (未知) の両方の不具合を、どれだけ正確に推測できるか』を表す程度のこと。
 
 システムの想定内の不具合は『監視』や『テスト (ホワイトボックステスト、ブラックボックステスト) 』によって検知できるが、想定外のものを検知できない。
 

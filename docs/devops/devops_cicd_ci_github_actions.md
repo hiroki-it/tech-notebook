@@ -17,7 +17,7 @@ description: GitHub Actions＠CIツールの知見を記録しています。
 
 ### アーキテクチャ
 
-GitHub Actions Runnerは、GitHubリポジトリの設定ファイルをHTTPSで参照し、定義されたパイプラインを実行する。
+GitHub Actions Runnerは、GitHubリポジトリの設定ファイルをHTTPSで参照し、定義したパイプラインを実行する。
 
 > - https://blog.devops.dev/a-deep-dive-into-devops-6-85f199efc3f8
 
@@ -27,7 +27,7 @@ GitHub Actions Runnerは、GitHubリポジトリの設定ファイルをHTTPSで
 
 #### ▼ GitHub Actions Runnerとは
 
-GitHub Actionsの設定ファイルで定義されたパイプラインを実行する。
+GitHub Actionsの設定ファイルで定義したパイプラインを実行する。
 
 > - https://github.com/actions/runner
 
@@ -428,7 +428,7 @@ runs:
 
 #### ▼ Workflowレベルとは
 
-定義された`workflow` (`yaml`ファイル) 内のみで参照できる。
+定義した`workflow` (`yaml`ファイル) 内のみで参照できる。
 
 #### ▼ env
 
@@ -458,7 +458,7 @@ jobs:
 
 #### ▼ Jobsレベルとは
 
-定義された`jobs`キー内のみで参照できる。
+定義した`jobs`キー内のみで参照できる。
 
 #### ▼ env
 
@@ -505,7 +505,7 @@ jobs:
 
 #### ▼ Stepレベルとは
 
-定義された`step`キー内のみで参照できる。
+定義した`step`キー内のみで参照できる。
 
 #### ▼ env
 
