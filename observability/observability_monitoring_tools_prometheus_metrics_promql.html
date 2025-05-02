@@ -27652,7 +27652,7 @@ sum<span class="o">(</span>rate<span class="o">(</span>istio_requests_total<span
 <p><br></p>
 <h2 id="03">03. データポイントの各種数値の集計<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="kb">データポイントの平均サイズ (KB/秒) の増加率<a class="headerlink" href="#kb" title="Permanent link">&para;</a></h3>
-<p>Prometheusで収集されたデータポイントの平均サイズ (KB/秒) の増加率を表す。</p>
+<p>Prometheusで収集したデータポイントの平均サイズ (KB/秒) の増加率を表す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 秒当たりの平均増加率を１時間で集計する</span>
 rate<span class="o">(</span>prometheus_tsdb_compaction_chunk_size_bytes_sum<span class="o">[</span>1h<span class="o">])</span><span class="w"> </span>/
 rate<span class="o">(</span>prometheus_tsdb_compaction_chunk_samples_sum<span class="o">[</span>1h<span class="o">])</span>
@@ -27662,7 +27662,7 @@ rate<span class="o">(</span>prometheus_tsdb_compaction_chunk_samples_sum<span cl
 </code></pre></div>
 <p><br></p>
 <h3 id="_9">データポイントの合計数 (個/秒) の増加率<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>Prometheusで収集されたデータポイントの合計数 (個/秒) の増加率を表す。</p>
+<p>Prometheusで収集したデータポイントの合計数 (個/秒) の増加率を表す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 秒当たりの平均増加率を１時間で集計する</span>
 rate<span class="o">(</span>prometheus_tsdb_head_samples_appended_total<span class="o">[</span>1h<span class="o">])</span>
 
@@ -27671,7 +27671,7 @@ rate<span class="o">(</span>prometheus_tsdb_head_samples_appended_total<span cla
 </code></pre></div>
 <p><br></p>
 <h3 id="kb_1">データポイントの合計サイズ (KB/秒) の増加率<a class="headerlink" href="#kb_1" title="Permanent link">&para;</a></h3>
-<p>Prometheusで収集されたデータポイントの合計サイズ (KB/秒) の増加率を表す。</p>
+<p>Prometheusで収集したデータポイントの合計サイズ (KB/秒) の増加率を表す。</p>
 <p>計算式からもわかるように、データポイントの収集の間隔を長くすることにより、データポイント数が減るため、合計のサイズを小さくできる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 秒当たりの平均増加率を１時間で集計する</span>
 rate<span class="o">(</span>prometheus_tsdb_compaction_chunk_size_bytes_sum<span class="o">[</span>1h<span class="o">])</span><span class="w"> </span>/
@@ -27688,7 +27688,7 @@ rate<span class="o">(</span>prometheus_tsdb_head_samples_appended_total<span cla
 </blockquote>
 <p><br></p>
 <h3 id="kb_2">データポイントの合計サイズ (KB/日) の推移<a class="headerlink" href="#kb_2" title="Permanent link">&para;</a></h3>
-<p>Prometheusで収集されたデータポイントの合計サイズ (KB/日) の推移を表す。</p>
+<p>Prometheusで収集したデータポイントの合計サイズ (KB/日) の推移を表す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 秒当たりの平均増加率を１時間で集計する</span>
 rate<span class="o">(</span>prometheus_tsdb_compaction_chunk_size_bytes_sum<span class="o">[</span>1h<span class="o">])</span><span class="w"> </span>/
 rate<span class="o">(</span>prometheus_tsdb_compaction_chunk_samples_sum<span class="o">[</span>1h<span class="o">])</span><span class="w"> </span>*
@@ -27725,7 +27725,7 @@ rate<span class="o">(</span>prometheus_tsdb_head_samples_appended_total<span cla
 <p><br></p>
 <h3 id="_11">リモートストレージ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="kb_4">▼ 必要データサイズ (KB/日)<a class="headerlink" href="#kb_4" title="Permanent link">&para;</a></h4>
-<p>Prometheusで収集されたデータポイントの全サイズうち、リモートストレージに実際に送信しているサイズ (KB/日) を表す。</p>
+<p>Prometheusで収集したデータポイントの全サイズうち、リモートストレージに実際に送信しているサイズ (KB/日) を表す。</p>
 <p>リモート書き込みサイズではなく、送信サイズであるため、書き込みに成功していない可能性があることに注意する。</p>
 <p>この結果から、リモートストレージの必要データサイズを推測できる。</p>
 <p>補足として、リモートストレージが送信された全てのデータを保管できるとは限らないため、リモートストレージ側で必要データサイズを確認する方がより正確である。</p>
@@ -27787,7 +27787,7 @@ rate<span class="o">(</span>prometheus_tsdb_head_samples_appended_total<span cla
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月22日 06:42:13">2025-03-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月2日 16:16:39">2025-05-02</span>
   </span>
 
     
