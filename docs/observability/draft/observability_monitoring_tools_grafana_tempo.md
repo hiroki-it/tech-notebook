@@ -12,3 +12,11 @@ description: Grafana Tempo＠Grafanaの知見を記録しています。
 > - https://hiroki-it.github.io/tech-notebook/
 
 <br>
+
+## 01. アラート
+
+Grafana Tempoを条件としたアラートを作成できない。
+
+> - https://github.com/grafana/tempo/discussions/2082#discussioncomment-4898549
+
+<br>
