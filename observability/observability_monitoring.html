@@ -27947,7 +27947,6 @@
 <p>ここでは、ログ (アプリケーションログ、ブラウザのコンソールログ、ユーザーエンゲージメント、検索クローラーのサイト評価など) とメトリクス (メトリクスのデータポイント、、ユーザートラフィックなど) のみを取り上げる。</p>
 <p>ただし、可観測性を実現するためには、スパンの作成も必要である。</p>
 <h4 id="_6">▼ データの収集<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>監視バックエンドが、対象からデータを収集する。</p>
 <p>プル型の場合、監視バックエンド自体がデータを収集する。</p>
 <p>一方でプル型の場合、監視バックエンドがエージェントを提供しており、これがデータを監視バックエンドに送信する。</p>
 <p>メトリクスはプル型またはプッシュ型の収集ツールからなり、ログと分散トレースはプッシュ型の収集ツールのみからなる。</p>
@@ -27958,7 +27957,7 @@
 </ul>
 </blockquote>
 <h4 id="_7">▼ データの保管<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>収集したデータ (ログ、メトリクス) をストレージに保管する。</p>
+<p>収集したデータ (ログ、メトリクス) を監視バックエンドのストレージに保管する。</p>
 <p>保管期間は、<code>90</code>日が個人的には推奨である。</p>
 <table>
 <thead>
@@ -28000,7 +27999,7 @@
 <p>保管したデータ (ログ、メトリクス) を再集計し、新しいデータ (例：意味付けされた新しいメトリクス、ビジネス指標) として扱う。</p>
 <p>注意点として、アラートのための再集計は、これに含まれない。</p>
 <h4 id="_9">▼ データの可視化<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>分析したデータを監視バックエンドとして収集し、目視できるように可視化する。</p>
+<p>監視バックエンドで収集したデータを監視フロントエンドで可視化する。</p>
 <h4 id="_10">▼ レポートの作成<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>算出値をグラフ化として、レポートを作成する。</p>
 <h4 id="_11">▼ アラートの発火と通知<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
@@ -28411,7 +28410,7 @@
 <h2 id="07">07. ビジネス成果の監視<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <h3 id="_44">ビジネス成果の監視とは<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h3>
 <p>ビジネス成果の指標を対象として、監視を実施する。</p>
-<p>ビジネス成果の指標 (例：KPI、業務プロセスに関する現在のステータス) の監視に特化したメトリクス監視バックエンドを、特に『BIツール (例：Redash、Metabase、Google Cloud Lookerなど) 』ともいう。</p>
+<p>ビジネス成果の指標 (例：KPI、業務プロセスに関する現在のステータス) の監視に特化した監視バックエンドを、特に『BIツール (例：Redash、Metabase、Google Cloud Lookerなど) 』ともいう。</p>
 <p>なお、BIツールはDBからビジネスに関するデータを収集し、監視できるようにする。</p>
 <blockquote>
 <ul>
@@ -28440,7 +28439,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月24日 02:54:14">2025-03-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月2日 15:00:00">2025-05-02</span>
   </span>
 
     
