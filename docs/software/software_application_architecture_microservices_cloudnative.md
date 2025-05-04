@@ -364,7 +364,7 @@ flowchart LR
 |                  | アプリケーションデータの暗号化 | ・非TLS（平文）<br>・サーバー認証<br>・クライアント認証<br>・相互TLS認証                                                                                       |
 | テスト           | ホワイトボックステスト         | ・ユニットテスト<br>・サービステスト<br>・コントラクトテスト<br>・E2Eテスト                                                                                    |
 |                  | ブラックボックステスト         | ・ロードテスト（負荷テスト）<br>・回帰テスト<br>・フォールトインジェクションを含むカオスエンジニアリング                                                       |
-| 信頼性           | 各種インスタンスの回復         | ・ヘルスチェック<br>・リトライ<br>・タイムアウト<br>・バルクヘッド<br>・サーキットブレイカー<br>・レートリミット                                               |
+| 信頼性管理       | 各種インスタンスの回復         | ・ヘルスチェック<br>・リトライ<br>・タイムアウト<br>・バルクヘッド<br>・サーキットブレイカー<br>・レートリミット                                               |
 |                  | 各種インスタンスのスケーリング | ・垂直スケーリング<br>・水平スケーリング<br>・インスタンスの希望数維持                                                                                         |
 | デプロイメント   | マイクロサービス実行環境       | Serverless platforms／Multiple services instance per host／Service instance per VM／Service instance per container                                             |
 |                  | リリース                       | ・インプレースデプロイメント<br>・ローリングデプロイメント<br>・カナリアリリース<br>・ブルーグリーンデプロイメント                                             |
@@ -372,7 +372,7 @@ flowchart LR
 |                  | 汎用的なロジックの配布         | ・Externalized configuration<br>・Microservice chassis<br>・サービステンプレート<br>・サービスメッシュ                                                         |
 | 監視             | テレメトリーの監視             | 中央集中管理／分散管理                                                                                                                                         |
 |                  | インシデントの対処             | 中央集中管理／分散管理                                                                                                                                         |
-| 開発体制         | 組織の編成                     | Collective ownership／Strong ownership                                                                                                                         |
+| 開発体制         | 開発組織の編成                 | Collective ownership／Strong ownership                                                                                                                         |
 |                  | リポジトリの編成               | モノレポ／ポリレポ                                                                                                                                             |
 
 ---
