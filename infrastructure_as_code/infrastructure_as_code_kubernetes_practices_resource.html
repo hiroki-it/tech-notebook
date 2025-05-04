@@ -30581,7 +30581,7 @@
 <h3 id="_24">適切なストレージの種類を選ぶ<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <h4 id="generic-ephemeral-volumes">▼ 大規模な一時的ストレージを必要とする場合はGeneric Ephemeral Volumesを使用する<a class="headerlink" href="#generic-ephemeral-volumes" title="Permanent link">&para;</a></h4>
 <p>Generic Ephemeral Volumesを使用して、PodのデータをK8s外部のストレージ (例：AWS EBS) に一時的に保管できる。</p>
-<p>大量の一時データを保管したい場合 (例：画像処理中間データ、音声処理中間データなど) に役立つ。</p>
+<p>大量の一時的な中間データを保管したい場合 (例：画像処理中間データ、音声処理中間データなど) に役立つ。</p>
 <p>一時的なストレージのため、Podの作成時にストレージを払い出し、Podが停止するとストレージは削除される。</p>
 <p>EmptyDir Volumeとは異なり、NodeのストレージがPodの容量を制限しない。</p>
 <p>そのため、Node外ストレージの容量次第では、一時的に保管できるデータサイズがEmptyDirよりも多い。</p>
@@ -30594,7 +30594,7 @@
 </blockquote>
 <h4 id="emptydir-volume">▼ 小規模な一時的ストレージを必要とする場合はEmptyDir Volumeを使用する<a class="headerlink" href="#emptydir-volume" title="Permanent link">&para;</a></h4>
 <p>EmptyDir Volumeを使用して、PodのデータをNodeのストレージに一時的に保管できる。</p>
-<p>少量の一時データを保管したい場合 (例：キャッシュの保管、バッファリングなど) に役立つ。</p>
+<p>少量の一時的な中間データを保管したい場合 (例：キャッシュの保管、バッファリングなど) に役立つ。</p>
 <p>Generic Ephemeral Volumeとは異なり、NodeのストレージがPodの容量を制限する。</p>
 <p>そのため、Nodeのストレージ次第では、一時的に保管できるデータサイズがEphemeral Volumesよりも少ない。</p>
 <p>一方で、Nodeのストレージをそのまま使用することになるため、金銭的コストがEphemeral Volumesよりも小さい。</p>
@@ -31999,7 +31999,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月30日 18:14:42">2025-04-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月4日 18:57:59">2025-05-04</span>
   </span>
 
     
