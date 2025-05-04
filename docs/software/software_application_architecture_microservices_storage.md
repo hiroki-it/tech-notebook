@@ -15,9 +15,9 @@ description: ストレージ領域＠マイクロサービスアーキテクチ�
 
 ## 01. DBのデザインパターン
 
-### 共有DBパターン (Shared database)
+### Shared DBパターン
 
-#### ▼ 共有DBパターンとは
+#### ▼ Shared DBパターンとは
 
 各マイクロサービスで共有するDBを`1`個だけ用意する。
 
@@ -28,7 +28,7 @@ description: ストレージ領域＠マイクロサービスアーキテクチ�
 
 #### ▼ マイクロサービス別のスキーマ
 
-共有DBの場合に、マイクロサービス別にスキーマを作成する。
+Shared DBの場合に、マイクロサービス別にスキーマを作成する。
 
 ![microservices_share-db_diff-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_share-db_diff-table.png)
 
@@ -36,7 +36,7 @@ description: ストレージ領域＠マイクロサービスアーキテクチ�
 
 #### ▼ マイクロサービス別のテーブル
 
-共有DBの場合に、マイクロサービス別にテーブルを作成する。
+Shared DBの場合に、マイクロサービス別にテーブルを作成する。
 
 ![microservices_share-db_diff-scheme](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_share-db_diff-scheme.png)
 
@@ -44,9 +44,9 @@ description: ストレージ領域＠マイクロサービスアーキテクチ�
 
 <br>
 
-### マイクロサービス別DBパターン (Database per service)
+### DB per serviceパターン (Database per service)
 
-#### ▼ マイクロサービス別DBパターンとは
+#### ▼ DB per serviceパターンとは
 
 各マイクロサービスで個別にDBを用意する。
 
@@ -67,7 +67,7 @@ description: ストレージ領域＠マイクロサービスアーキテクチ�
 
 <br>
 
-## 02. マイクロサービス別DBパターンの場合
+## 02. DB per serviceパターンの場合
 
 ### ローカルトランザクション
 

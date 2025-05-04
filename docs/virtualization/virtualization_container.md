@@ -65,7 +65,7 @@ description: コンテナ＠仮想化の知見を記録しています。
 
 #### ▼ コンテナの起動
 
-OCIランタイム (例：runC) とCNIプラグイン (例：flannel) のバイナリを実行し、コンテナを起動する。
+OCIランタイム (例：runC) と単一／複数のCNIプラグイン (例：flannel) のバイナリを実行し、コンテナを起動する。
 
 ![container-runtime_run-container](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container-runtime_run-container.png)
 
