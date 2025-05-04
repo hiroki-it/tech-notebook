@@ -167,8 +167,8 @@ nav:
       - ■ マイクロサービスアーキテクチャ:
           - マイクロサービスアーキテクチャ: software/software_application_architecture_microservices.md
           - クラウドネイティブ技術とマイクロサービスアーキテクチャーのつながり: software/software_application_architecture_microservices_cloudnative.md
-          - API Gateway領域: software/software_application_architecture_microservices_api_gateway.md
-          - ■ マイクロサービス領域:
+          - API Gateway: software/software_application_architecture_microservices_api_gateway.md
+          - ■ マイクロサービス:
               - マイクロサービス設計: software/software_application_architecture_microservices_services_design.md
               - マイクロサービス間通信: software/software_application_architecture_microservices_services_connection.md
               - トランザクション管理: software/software_application_architecture_microservices_services_transaction.md
