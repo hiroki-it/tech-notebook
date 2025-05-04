@@ -10,19 +10,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="ブラックボックステスト＠マイクロサービスアーキテクチャの知見を記録しています。">
+        <meta name="description" content="回復方法＠信頼性の知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_cross_test_blackbox.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_resiliency_recovery.html">
       
       
-        <link rel="prev" href="software_application_architecture_microservices_storage.html">
+        <link rel="prev" href="software_application_architecture_microservices_test_whitebox.html">
       
       
-        <link rel="next" href="software_application_architecture_microservices_cross_test_whitebox.html">
+        <link rel="next" href="software_application_architecture_microservices_development_repository.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -30,7 +30,7 @@
     
     
       
-        <title>【IT技術の知見】ブラックボックステスト＠マイクロサービスアーキテクチャ - 俺の技術ノート</title>
+        <title>【IT技術の知見】回復方法＠信頼性 - 俺の技術ノート</title>
       
     
     
@@ -154,7 +154,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】ブラックボックステスト＠マイクロサービスアーキテクチャ
+              【IT技術の知見】回復方法＠信頼性
             
           </span>
         </div>
@@ -1490,6 +1490,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1582,7 +1586,7 @@
   
   
   <span class="md-ellipsis">
-    API Gateway領域
+    API Gateway
     
   </span>
   
@@ -1601,8 +1605,6 @@
   
     
     
-      
-        
       
         
       
@@ -1633,7 +1635,7 @@
   
   
   <span class="md-ellipsis">
-    ■ マイクロサービス領域
+    ■ マイクロサービス
     
   </span>
   
@@ -1644,7 +1646,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_5_4">
             <span class="md-nav__icon md-icon"></span>
-            ■ マイクロサービス領域
+            ■ マイクロサービス
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1740,6 +1742,14 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
               
                 
   
@@ -1747,12 +1757,107 @@
   
   
     <li class="md-nav__item">
-      <a href="software_application_architecture_microservices_services_resiliency.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_storage.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    回復性管理
+    ストレージ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_6" id="__nav_5_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ■ テスト
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            ■ テスト
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_microservices_test_blackbox.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ホワイトボックステスト
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_microservices_test_whitebox.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ブラックボックステスト
     
   </span>
   
@@ -1775,39 +1880,12 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="software_application_architecture_microservices_storage.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ストレージ領域
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
   
     
     
-      
-        
-      
-        
       
         
       
@@ -1822,15 +1900,15 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5_7" checked>
         
           
-          <label class="md-nav__link" for="__nav_5_5_6" id="__nav_5_5_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_5_7" id="__nav_5_5_7_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
-    ■ 横断領域
+    ■ 信頼性
     
   </span>
   
@@ -1838,10 +1916,10 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5_5_6">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_5_7">
             <span class="md-nav__icon md-icon"></span>
-            ■ 横断領域
+            ■ 信頼性
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1866,7 +1944,7 @@
   
   
   <span class="md-ellipsis">
-    ホワイトボックステスト
+    回復方法
     
   </span>
   
@@ -1874,12 +1952,12 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="software_application_architecture_microservices_cross_test_blackbox.html" class="md-nav__link md-nav__link--active">
+      <a href="software_application_architecture_microservices_services_resiliency_recovery.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    ホワイトボックステスト
+    回復方法
     
   </span>
   
@@ -1915,17 +1993,26 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. 回帰テストとロードテスト
+      01 回復性管理の設計
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. 回帰テストとロードテスト">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. タイムアウト
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. タイムアウト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      回帰テストとロードテストとは
+      タイムアウトとは
     </span>
   </a>
   
@@ -1934,17 +2021,326 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      回帰テスト、ロードテストツール例
+      タイムアウト時間
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="回帰テスト、ロードテストツール例">
+    <nav class="md-nav" aria-label="タイムアウト時間">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ツール
+      ▼ マイクロサービスだけに着目する場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ サイドカープロキシにも着目する場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      タイムアウトの種類
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="タイムアウトの種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 接続タイムアウト (Connection timeout)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 読み取りタイムアウト (Read timeout)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ セッションタイムアウト (Session timeout)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idle-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アイドルタイムアウト (Idle timeout)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. リトライ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. リトライ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      リトライとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. ヘルスチェック
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. ヘルスチェック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      アクティブ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      パッシブ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="パッシブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ サーキットブレイカー
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    <span class="md-ellipsis">
+      06. フォールバック
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06. フォールバック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ フォールバックとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 実装
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    <span class="md-ellipsis">
+      07. バルクヘッド
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08" class="md-nav__link">
+    <span class="md-ellipsis">
+      08. レートリミット
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#09-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      09. DBデータのキャッシュ
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. エラーとエラーハンドリング
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. エラーとエラーハンドリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラーとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラーハンドリングの意義
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="エラーハンドリングの意義">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ DBにとって
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ソフトウェア開発者にとって
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ユーザーにとって
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラーハンドリングのステップ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラーのエスカレーション
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="エラーのエスカレーション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ マイクロサービス内
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ マイクロサービス間
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ フロントエンド領域とマイクロサービス領域間
     </span>
   </a>
   
@@ -1969,24 +2365,9 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="software_application_architecture_microservices_cross_test_whitebox.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ブラックボックステスト
-    
-  </span>
-  
-
-      </a>
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1998,13 +2379,60 @@
   
   
   
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_8" id="__nav_5_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ■ 開発体制
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 開発体制
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="software_application_architecture_microservices_cross_development.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_development_repository.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    開発手法
+    リポジトリ構成方法
     
   </span>
   
@@ -26752,17 +27180,26 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. 回帰テストとロードテスト
+      01 回復性管理の設計
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. 回帰テストとロードテスト">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. タイムアウト
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. タイムアウト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      回帰テストとロードテストとは
+      タイムアウトとは
     </span>
   </a>
   
@@ -26771,17 +27208,326 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      回帰テスト、ロードテストツール例
+      タイムアウト時間
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="回帰テスト、ロードテストツール例">
+    <nav class="md-nav" aria-label="タイムアウト時間">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ツール
+      ▼ マイクロサービスだけに着目する場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ サイドカープロキシにも着目する場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      タイムアウトの種類
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="タイムアウトの種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 接続タイムアウト (Connection timeout)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 読み取りタイムアウト (Read timeout)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ セッションタイムアウト (Session timeout)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idle-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アイドルタイムアウト (Idle timeout)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. リトライ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. リトライ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      リトライとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. ヘルスチェック
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. ヘルスチェック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      アクティブ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      パッシブ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="パッシブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ サーキットブレイカー
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    <span class="md-ellipsis">
+      06. フォールバック
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06. フォールバック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ フォールバックとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 実装
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    <span class="md-ellipsis">
+      07. バルクヘッド
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08" class="md-nav__link">
+    <span class="md-ellipsis">
+      08. レートリミット
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#09-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      09. DBデータのキャッシュ
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. エラーとエラーハンドリング
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. エラーとエラーハンドリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラーとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラーハンドリングの意義
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="エラーハンドリングの意義">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ DBにとって
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ソフトウェア開発者にとって
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ユーザーにとって
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラーハンドリングのステップ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラーのエスカレーション
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="エラーのエスカレーション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ マイクロサービス内
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ マイクロサービス間
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ フロントエンド領域とマイクロサービス領域間
     </span>
   </a>
   
@@ -26816,7 +27562,7 @@
   
 
 
-<h1 id="_1">ブラックボックステスト＠マイクロサービスアーキテクチャ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h1 id="_1">回復方法＠信頼性<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -26825,20 +27571,210 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. 回帰テストとロードテスト<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_3">回帰テストとロードテストとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>回帰テストとロードテストは、マイクロサービスアーキテクチャの文脈であってもなくても同じである。</p>
-<p>もしマイクロサービスの回帰テストとロードテストを自動化する場合、マイクロサービスのCIパイプライン上ではなく、これらテスト専用のパイプライン上で実施する。</p>
-<p>またパイプライン実行環境がマイクロサービスのエンドポイントにリクエストを送信できるよう、パイプライン実行環境からマイクロサービスまでの通信経路を用意する必要がある。</p>
-<p><br></p>
-<h3 id="_4">回帰テスト、ロードテストツール例<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ ツール<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h2 id="01">01 回復性管理の設計<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<p>複数の回復性管理のパターンを組み合わせる。</p>
+<blockquote>
 <ul>
-<li>Jenkins</li>
-<li>Grafana k6 (JavaScriptでシナリオ定義できる)</li>
-<li>Gatling (Scalaでシナリオ定義できる)</li>
-<li>Taurus (他のロードテストツールのラッパー)</li>
+<li><a href="https://medium.com/@AlexanderObregon/spring-microservices-resilience-with-retry-and-fallback-mechanisms-8500208fc463">https://medium.com/@AlexanderObregon/spring-microservices-resilience-with-retry-and-fallback-mechanisms-8500208fc463</a></li>
 </ul>
+</blockquote>
+<p><br></p>
+<h2 id="02">02. タイムアウト<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_3">タイムアウトとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>何らかの処理 (例：通信など) を実行した後に結果の返却を待機する最大時間である。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns">https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_4">タイムアウト時間<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ マイクロサービスだけに着目する場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>送信元マイクロサービスよりも宛先マイクロサービスのタイムアウト時間を短くする。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># 45秒</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># 30秒</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># 15秒</span>
+</code></pre></div>
+<h4 id="_6">▼ サイドカープロキシにも着目する場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>送信元マイクロサービスよりもサイドカーのタイムアウト時間を短くする。</p>
+<p>また、サイドカーよりも宛先マイクロサービスのサイドカーのタイムアウト時間を短くする。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">アプリ</span><span class="w"> </span><span class="c1"># 45秒</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">サイドカー</span><span class="w"> </span><span class="c1"># 44秒</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">--------------</span><span class="w"> </span><span class="c1"># マイクロサービス間の境界</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">サイドカー</span><span class="w"> </span><span class="c1"># 31秒</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">アプリ</span><span class="w"> </span><span class="c1"># 30秒</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">サイドカー</span><span class="w"> </span><span class="c1"># 29秒</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">--------------</span><span class="w"> </span><span class="c1"># マイクロサービス間の境界</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">サイドカー</span><span class="w"> </span><span class="c1"># 16秒</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">アプリ</span><span class="w"> </span><span class="c1"># 15秒</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_7">タイムアウトの種類<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="connection-timeout">▼ 接続タイムアウト (Connection timeout)<a class="headerlink" href="#connection-timeout" title="Permanent link">&para;</a></h4>
+<p>『オープンタイムアウト (Open timeout) 』ともいう</p>
+<p>処理の中でも、特にリクエストの到達を待機する最大時間である。</p>
+<p>これの場合、サーバーにリクエストを送信できていない。</p>
+<h4 id="read-timeout">▼ 読み取りタイムアウト (Read timeout)<a class="headerlink" href="#read-timeout" title="Permanent link">&para;</a></h4>
+<p>処理の中でも、リクエストが到達した後に特にレスポンスの返信を待機する最大時間である。</p>
+<p>これの場合、サーバーにリクエストを送信できており、サーバーがレスポンスを返信できない状態にある。</p>
+<p>HTTPプロトコルのステータスコードでは、Gateway Timeout (<code>504</code>) が相当する。</p>
+<h4 id="session-timeout">▼ セッションタイムアウト (Session timeout)<a class="headerlink" href="#session-timeout" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<h4 id="idle-timeout">▼ アイドルタイムアウト (Idle timeout)<a class="headerlink" href="#idle-timeout" title="Permanent link">&para;</a></h4>
+<p>TCP接続中の無通信状態 (パケットの送受信がない状態) を許可する時間である。</p>
+<p><br></p>
+<h2 id="03">03. リトライ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_8">リトライとは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<blockquote>
+<ul>
+<li><a href="https://www.geeksforgeeks.org/retry-pattern-in-microservices/">https://www.geeksforgeeks.org/retry-pattern-in-microservices/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="04">04. ヘルスチェック<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="_9">アクティブ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li>HTTP (HTTPS)</li>
+<li>DNS</li>
+<li>TCP (UDP)</li>
+<li>独自プロトコル</li>
+</ul>
+<p><br></p>
+<h3 id="_10">パッシブ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h4 id="_11">▼ サーキットブレイカー<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>マイクロサービス間の通信方式がリクエストロプライパターンの場合の障害対策である。</p>
+<p>宛先マイクロサービスからのレスポンスに外れ値 (<code>500</code>系ステータス、Gateway系ステータスなど) の閾値を設定しておく。</p>
+<p>運用中にこれを超過すると、送信元マイクロサービスはタイムアウトになるまで処理を待機する。</p>
+<p>その間、送信元マイクロサービスは他の処理を実行できなくなってしまうため、これを防ぐ。</p>
+<ol>
+<li>宛先マイクロサービスに障害 (あるいは設定した閾値の超過) が発生する</li>
+<li>宛先マイクロサービスへのルーティングを停止し、エラーステータス (<code>503</code>など) のレスポンスを送信元マイクロサービスに返信する。</li>
+<li>障害が回復次第、ルーティングを再開する。</li>
+</ol>
+<p>blast-radiusを最小限にできる。</p>
+<p><img alt="circuit-breaker" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circuit-breaker.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.geeksforgeeks.org/retry-pattern-in-microservices/">https://www.geeksforgeeks.org/retry-pattern-in-microservices/</a></li>
+<li><a href="https://digitalvarys.com/what-is-circuit-breaker-design-pattern/">https://digitalvarys.com/what-is-circuit-breaker-design-pattern/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="06">06. フォールバック<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<h4 id="_12">▼ フォールバックとは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>リトライの失敗やサーキットブレイカーで宛先マイクロサービスからデータを取得できなかった場合に、代わりにデータを返信する。</p>
+<h4 id="_13">▼ 実装<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<ul>
+<li>静的ファイルの返信</li>
+<li>キャッシュを使用した前回の処理結果の返信</li>
+<li>ユーザーによらないデータ (広告、ランキングなど) の返信</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://engineering.mercari.com/blog/entry/2018-12-23-150000/">https://engineering.mercari.com/blog/entry/2018-12-23-150000/</a></li>
+<li><a href="https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns">https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns</a></li>
+<li><a href="https://learn.microsoft.com/ja-jp/dotnet/architecture/microservices/implement-resilient-applications/implement-circuit-breaker-pattern">https://learn.microsoft.com/ja-jp/dotnet/architecture/microservices/implement-resilient-applications/implement-circuit-breaker-pattern</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="07">07. バルクヘッド<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
+<p>マイクロサービスごとにハードウェアリソースや接続プールの上限を設け、他のマイクロサービスへの影響を防ぐ。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.geeksforgeeks.org/bulkhead-pattern/">https://www.geeksforgeeks.org/bulkhead-pattern/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="08">08. レートリミット<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
+<blockquote>
+<ul>
+<li><a href="https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns">https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="09-db">09. DBデータのキャッシュ<a class="headerlink" href="#09-db" title="Permanent link">&para;</a></h2>
+<p>頻繁に使用するデータをマイクロサービスのメモリに保存し、他のマイクロサービスやDBへの接続を最小限に抑える。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns">https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="10">10. エラーとエラーハンドリング<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<h3 id="_14">エラーとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>プログラムの実行が強制的に停止されるランタイムエラー (実行時エラー) 、停止せずに続行される非ランタイムエラー、に分類される。</p>
+<p><br></p>
+<h3 id="_15">エラーハンドリングの意義<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h4 id="db">▼ DBにとって<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
+<p>DB更新系の処理の途中にエラーが発生すると、DBが中途半端な更新状態になってしまう。</p>
+<p>そのため、メソッドコールしたクラスでエラーを検出し、これをきっかけにロールバック処理を実行する必要がある。</p>
+<p>注意点として、下層クラスのエラーの内容自体は握りつぶさずに、スタックトレースとしてメソッドコールしたクラスでロギングしておく。</p>
+<h4 id="_16">▼ ソフトウェア開発者にとって<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>エラーが画面上に返却されたとしても、これはソフトウェア開発者にとってわかりにくい。</p>
+<p>そのため、エラーをメソッドコールしたクラスで検出し、ソフトウェア開発者にわかる言葉に変換した例外としてスローする必要がある。</p>
+<p>注意点として、下層クラスのエラー自体は握りつぶさずに、スタックトレースとしてメソッドコールしたクラスでロギングしておく。</p>
+<h4 id="_17">▼ ユーザーにとって<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p>エラーが画面上に返却されたとしても、ユーザーにとっては何が起きているのかわからない。</p>
+<p>また、エラーをメソッドコールしたクラスで検出し、例外としてスローしたとしても、ソフトウェア開発者にとっては理解できるが、ユーザーにとっては理解できない。</p>
+<p>そのため、例外スローを別の識別子 (例：boolean値) に変えてメソッドコールしたクラスに持ち上げ、最終的には、これをポップアップなどでわかりやすく通知する必要がある。</p>
+<p>これらは、サーバーサイドのtry-catch-finally文や、フロントエンドのポップアップ処理で実現する。</p>
+<p>注意点として、子クラスのエラー自体は握りつぶさずに、スタックトレースとしてメソッドコールしたクラスでロギングしておく。</p>
+<p><br></p>
+<h3 id="_18">エラーハンドリングのステップ<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>エラーハンドリングは以下の４ステップからなる。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>エラー検出</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>例外スロー</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>例外キャッチ</p>
+</dd>
+<dt><code>(4)</code></dt>
+<dd>
+<p>ロギング</p>
+</dd>
+</dl>
+<p><br></p>
+<h3 id="_19">エラーのエスカレーション<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<h4 id="_20">▼ マイクロサービス内<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p>マイクロサービス内では、例外でエラーをエスカレーションする。</p>
+<p>各レイヤーでは例外をスローするだけに留まり、スローされた例外を対処する責務は、より上位レイヤーに持たせる。</p>
+<p>より上位レイヤーでは、そのレイヤーに合った例外に詰め替えて、これをスローする。</p>
+<h4 id="_21">▼ マイクロサービス間<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>マイクロサービス間では、ステータスコードでエラーをエスカレーションする。</p>
+<p>宛先のマイクロサービスから受信したステータスコードは、送信元にそのまま返信するように設計する。</p>
+<p>最終的に、フロントエンドアプリでステータスコードをユーザーにわかるメッセージに変換する。</p>
+<p><img alt="microservices_status-code_propagation" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_status-code_propagation.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://medium.com/@jameszheng66/microservices-error-propagation-2a847feeb3f">https://medium.com/@jameszheng66/microservices-error-propagation-2a847feeb3f</a></li>
+</ul>
+</blockquote>
+<h4 id="_22">▼ フロントエンド領域とマイクロサービス領域間<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<p>フロントエンドは、マイクロサービスからエスカレーションされたステータスコードを取得し、画面上のポップアップで警告文として表示する。</p>
 <p><br></p>
 
 
@@ -26860,7 +27796,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2024年12月22日 18:37:48">2024-12-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月4日 20:37:31">2025-05-04</span>
   </span>
 
     

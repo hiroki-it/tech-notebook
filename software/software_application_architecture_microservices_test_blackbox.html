@@ -10,19 +10,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="ホワイトボックステスト＠横断領域の知見を記録しています。">
+        <meta name="description" content="ブラックボックステスト＠マイクロサービスアーキテクチャの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_cross_test_whitebox.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_test_blackbox.html">
       
       
-        <link rel="prev" href="software_application_architecture_microservices_cross_test_blackbox.html">
+        <link rel="prev" href="software_application_architecture_microservices_storage.html">
       
       
-        <link rel="next" href="software_application_architecture_microservices_cross_development.html">
+        <link rel="next" href="software_application_architecture_microservices_test_whitebox.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -30,7 +30,7 @@
     
     
       
-        <title>【IT技術の知見】ホワイトボックステスト＠横断領域 - 俺の技術ノート</title>
+        <title>【IT技術の知見】ブラックボックステスト＠マイクロサービスアーキテクチャ - 俺の技術ノート</title>
       
     
     
@@ -154,7 +154,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】ホワイトボックステスト＠横断領域
+              【IT技術の知見】ブラックボックステスト＠マイクロサービスアーキテクチャ
             
           </span>
         </div>
@@ -1490,6 +1490,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1582,7 +1586,7 @@
   
   
   <span class="md-ellipsis">
-    API Gateway領域
+    API Gateway
     
   </span>
   
@@ -1601,8 +1605,6 @@
   
     
     
-      
-        
       
         
       
@@ -1633,7 +1635,7 @@
   
   
   <span class="md-ellipsis">
-    ■ マイクロサービス領域
+    ■ マイクロサービス
     
   </span>
   
@@ -1644,7 +1646,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_5_4">
             <span class="md-nav__icon md-icon"></span>
-            ■ マイクロサービス領域
+            ■ マイクロサービス
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1740,29 +1742,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="software_application_architecture_microservices_services_resiliency.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    回復性管理
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1783,7 +1762,7 @@
   
   
   <span class="md-ellipsis">
-    ストレージ領域
+    ストレージ
     
   </span>
   
@@ -1804,8 +1783,6 @@
   
     
     
-      
-        
       
         
       
@@ -1830,7 +1807,7 @@
   
   
   <span class="md-ellipsis">
-    ■ 横断領域
+    ■ テスト
     
   </span>
   
@@ -1841,32 +1818,9 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_5_6">
             <span class="md-nav__icon md-icon"></span>
-            ■ 横断領域
+            ■ テスト
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="software_application_architecture_microservices_cross_test_blackbox.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ホワイトボックステスト
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -1889,7 +1843,7 @@
   
   
   <span class="md-ellipsis">
-    ブラックボックステスト
+    ホワイトボックステスト
     
   </span>
   
@@ -1897,12 +1851,12 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="software_application_architecture_microservices_cross_test_whitebox.html" class="md-nav__link md-nav__link--active">
+      <a href="software_application_architecture_microservices_test_blackbox.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    ブラックボックステスト
+    ホワイトボックステスト
     
   </span>
   
@@ -1938,17 +1892,17 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. ユニットテスト
+      01. 回帰テストとロードテスト
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. ユニットテスト">
+    <nav class="md-nav" aria-label="01. 回帰テストとロードテスト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ユニットテストとは
+      回帰テストとロードテストとは
     </span>
   </a>
   
@@ -1957,204 +1911,15 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ユニットテストツール例
+      回帰テスト、ロードテストツール例
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="ユニットテストツール例">
+    <nav class="md-nav" aria-label="回帰テスト、ロードテストツール例">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 自前
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ フロントエンド系ツール
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ バックエンド系ツール
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. サービステスト (コンポーネントテスト)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. サービステスト (コンポーネントテスト)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      サービステストとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      サービステストツール例
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="サービステストツール例">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 自前
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ツール
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-cdcconsumer-driven-contracts-testing" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. CDCテスト：Consumer-Driven Contracts Testing
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. CDCテスト：Consumer-Driven Contracts Testing">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cdc" class="md-nav__link">
-    <span class="md-ellipsis">
-      CDCテストとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#contract" class="md-nav__link">
-    <span class="md-ellipsis">
-      Contractサービス
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      結合テストツール例
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="結合テストツール例">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ツール
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-e2e" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. E2Eテスト (機能テストも兼ねる)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. E2Eテスト (機能テストも兼ねる)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#e2e" class="md-nav__link">
-    <span class="md-ellipsis">
-      E2Eテストとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      結合テストツール例
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="結合テストツール例">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 手動
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ツール
     </span>
@@ -2188,12 +1953,168 @@
   
   
     <li class="md-nav__item">
-      <a href="software_application_architecture_microservices_cross_development.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_test_whitebox.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    開発手法
+    ブラックボックステスト
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_7" id="__nav_5_5_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ■ 信頼性
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 信頼性
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_microservices_services_resiliency_recovery.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    回復方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_8" id="__nav_5_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ■ 開発体制
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 開発体制
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_microservices_development_repository.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    リポジトリ構成方法
     
   </span>
   
@@ -26941,17 +26862,17 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. ユニットテスト
+      01. 回帰テストとロードテスト
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. ユニットテスト">
+    <nav class="md-nav" aria-label="01. 回帰テストとロードテスト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ユニットテストとは
+      回帰テストとロードテストとは
     </span>
   </a>
   
@@ -26960,204 +26881,15 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ユニットテストツール例
+      回帰テスト、ロードテストツール例
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="ユニットテストツール例">
+    <nav class="md-nav" aria-label="回帰テスト、ロードテストツール例">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 自前
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ フロントエンド系ツール
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ バックエンド系ツール
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. サービステスト (コンポーネントテスト)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. サービステスト (コンポーネントテスト)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      サービステストとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      サービステストツール例
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="サービステストツール例">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 自前
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ツール
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-cdcconsumer-driven-contracts-testing" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. CDCテスト：Consumer-Driven Contracts Testing
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. CDCテスト：Consumer-Driven Contracts Testing">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cdc" class="md-nav__link">
-    <span class="md-ellipsis">
-      CDCテストとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#contract" class="md-nav__link">
-    <span class="md-ellipsis">
-      Contractサービス
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      結合テストツール例
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="結合テストツール例">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ツール
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-e2e" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. E2Eテスト (機能テストも兼ねる)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. E2Eテスト (機能テストも兼ねる)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#e2e" class="md-nav__link">
-    <span class="md-ellipsis">
-      E2Eテストとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      結合テストツール例
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="結合テストツール例">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 手動
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ツール
     </span>
@@ -27194,7 +26926,7 @@
   
 
 
-<h1 id="_1">ホワイトボックステスト＠横断領域<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h1 id="_1">ブラックボックステスト＠マイクロサービスアーキテクチャ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -27203,109 +26935,20 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. ユニットテスト<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_3">ユニットテストとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>ユニットテストは、マイクロサービスアーキテクチャの文脈であってもなくても同じである。</p>
-<p>マイクロサービスのクラスや構造体のメソッドが、それ単体で正しく動作するかを検証する。</p>
-<blockquote>
-<ul>
-<li><a href="https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/">https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/</a></li>
-<li><a href="https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/">https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/</a></li>
-<li><a href="https://semaphoreci.com/blog/test-microservices">https://semaphoreci.com/blog/test-microservices</a></li>
-</ul>
-</blockquote>
+<h2 id="01">01. 回帰テストとロードテスト<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_3">回帰テストとロードテストとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>回帰テストとロードテストは、マイクロサービスアーキテクチャの文脈であってもなくても同じである。</p>
+<p>もしマイクロサービスの回帰テストとロードテストを自動化する場合、マイクロサービスのCIパイプライン上ではなく、これらテスト専用のパイプライン上で実施する。</p>
+<p>またパイプライン実行環境がマイクロサービスのエンドポイントにリクエストを送信できるよう、パイプライン実行環境からマイクロサービスまでの通信経路を用意する必要がある。</p>
 <p><br></p>
-<h3 id="_4">ユニットテストツール例<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ 自前<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>言語によっては、ビルトインのコマンド (例：<code>go test</code>コマンド) でユニットテストを実装できる。</p>
-<h4 id="_6">▼ フロントエンド系ツール<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<h4 id="_7">▼ バックエンド系ツール<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<p><br></p>
-<h2 id="02">02. サービステスト (コンポーネントテスト)<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_8">サービステストとは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>『コンポーネントテスト』ともいう。</p>
-<p>マイクロサービスがそれ単体で正しく動作するかを検証する。</p>
-<p>宛先マイクロサービスは検証対象ではないため、モックサービスとする。</p>
-<blockquote>
+<h3 id="_4">回帰テスト、ロードテストツール例<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ ツール<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="https://martinfowler.com/articles/microservice-testing/#testing-component-introduction">https://martinfowler.com/articles/microservice-testing/#testing-component-introduction</a></li>
-<li><a href="https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/">https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/</a></li>
-<li><a href="https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/">https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/</a></li>
-<li><a href="https://semaphoreci.com/blog/test-microservices">https://semaphoreci.com/blog/test-microservices</a></li>
-<li><a href="https://www.cortex.io/post/an-overview-of-the-key-microservices-testing-strategies-types-of-tests-the-best-testing-tools">https://www.cortex.io/post/an-overview-of-the-key-microservices-testing-strategies-types-of-tests-the-best-testing-tools</a></li>
+<li>Jenkins</li>
+<li>Grafana k6 (JavaScriptでシナリオ定義できる)</li>
+<li>Gatling (Scalaでシナリオ定義できる)</li>
+<li>Taurus (他のロードテストツールのラッパー)</li>
 </ul>
-</blockquote>
-<p><br></p>
-<h3 id="_9">サービステストツール例<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<h4 id="_10">▼ 自前<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>言語によっては、ビルトインのコマンド (例：<code>go test</code>コマンド) でサービステストを実装できる。</p>
-<h4 id="_11">▼ ツール<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<p><br></p>
-<h2 id="03-cdcconsumer-driven-contracts-testing">03. CDCテスト：Consumer-Driven Contracts Testing<a class="headerlink" href="#03-cdcconsumer-driven-contracts-testing" title="Permanent link">&para;</a></h2>
-<h3 id="cdc">CDCテストとは<a class="headerlink" href="#cdc" title="Permanent link">&para;</a></h3>
-<p>送信元マイクロサービス (コンシューマー) と宛先マイクロサービス (プロデューサー) の連携のテストを実施する。</p>
-<p>この時、一方のマイクロサービスに他方のマイクロサービスのモックの定義するのではなく、モックの定義を『コントラクト (契約) サービス』として切り分ける。</p>
-<p>これを双方のマイクロサービス間で共有する。</p>
-<p>コントラクトサービス上で、双方のリクエスト−レスポンスの内容が期待値に合致するかを検証する。</p>
-<p><img alt="cdc-test" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cdc-test.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://riotz.works/slides/2020-serverless-meetup-japan-virtual-4/#13">https://riotz.works/slides/2020-serverless-meetup-japan-virtual-4/#13</a></li>
-<li><a href="https://zenn.dev/hedrall/articles/cdc-test-20220614">https://zenn.dev/hedrall/articles/cdc-test-20220614</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="contract">Contractサービス<a class="headerlink" href="#contract" title="Permanent link">&para;</a></h3>
-<p>送信元マイクロサービス (コンシューマー) と宛先マイクロサービス (プロデューサー) の双方のモックとして機能する。</p>
-<p>例えば、PactはコントラクトサービスをPact Brokerとして提供する。</p>
-<p><img alt="cdc-test_contract-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cdc-test_contract-service.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://docs.pact.io/pact_broker/webhooks#example-cicd-and-webhook-configuration">https://docs.pact.io/pact_broker/webhooks#example-cicd-and-webhook-configuration</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_12">結合テストツール例<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<h4 id="_13">▼ ツール<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Pact</li>
-</ul>
-<p><br></p>
-<h2 id="04-e2e">04. E2Eテスト (機能テストも兼ねる)<a class="headerlink" href="#04-e2e" title="Permanent link">&para;</a></h2>
-<h3 id="e2e">E2Eテストとは<a class="headerlink" href="#e2e" title="Permanent link">&para;</a></h3>
-<p>マイクロサービスアーキテクチャの文脈では、E2Eテストが機能テストも担う。</p>
-<p>実際のユーザーを模した一連の操作 (フロントエンドへのリクエスト) を実施し、特定の機能に関する全てのコンポーネント間 (フロントエンド、各マイクロサービス、外部APIなど) の連携のテストを実施する。</p>
-<p>フロントエンドに対してリクエストを送信し、一連のマイクロサービスの処理を検証する。</p>
-<blockquote>
-<ul>
-<li><a href="https://commerce-engineer.rakuten.careers/entry/tech/0031">https://commerce-engineer.rakuten.careers/entry/tech/0031</a></li>
-<li><a href="https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/">https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/</a></li>
-<li><a href="https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/">https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/</a></li>
-<li><a href="https://semaphoreci.com/blog/test-microservices">https://semaphoreci.com/blog/test-microservices</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_14">結合テストツール例<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<h4 id="_15">▼ 手動<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>手動でフロントエンドを操作し、E2Eテストを実施する。</p>
-<h4 id="_16">▼ ツール<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>実際のユーザーを模した一連の操作 (フロントエンドへのリクエスト) を実施する。</p>
-<ul>
-<li>Autify</li>
-<li>Cypress</li>
-<li>Mabl</li>
-<li>Selenium</li>
-<li>Puppeteer</li>
-<li>TestCafe</li>
-</ul>
-<blockquote>
-<ul>
-<li><a href="https://www.amazon.co.jp/dp/B0CH7XY3YT">https://www.amazon.co.jp/dp/B0CH7XY3YT</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 
 
@@ -27327,7 +26970,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月30日 16:10:21">2025-04-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月4日 20:37:31">2025-05-04</span>
   </span>
 
     

@@ -19,10 +19,10 @@
         <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_storage.html">
       
       
-        <link rel="prev" href="software_application_architecture_microservices_services_resiliency.html">
+        <link rel="prev" href="software_application_architecture_microservices_services_auth.html">
       
       
-        <link rel="next" href="software_application_architecture_microservices_cross_test_blackbox.html">
+        <link rel="next" href="software_application_architecture_microservices_test_blackbox.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -1490,6 +1490,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1582,7 +1586,7 @@
   
   
   <span class="md-ellipsis">
-    API Gateway領域
+    API Gateway
     
   </span>
   
@@ -1601,8 +1605,6 @@
   
     
     
-      
-        
       
         
       
@@ -1633,7 +1635,7 @@
   
   
   <span class="md-ellipsis">
-    ■ マイクロサービス領域
+    ■ マイクロサービス
     
   </span>
   
@@ -1644,7 +1646,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_5_4">
             <span class="md-nav__icon md-icon"></span>
-            ■ マイクロサービス領域
+            ■ マイクロサービス
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1740,29 +1742,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="software_application_architecture_microservices_services_resiliency.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    回復性管理
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1792,7 +1771,7 @@
   
   
   <span class="md-ellipsis">
-    ストレージ領域
+    ストレージ
     
   </span>
   
@@ -1805,7 +1784,7 @@
   
   
   <span class="md-ellipsis">
-    ストレージ領域
+    ストレージ
     
   </span>
   
@@ -1839,13 +1818,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-db" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. DBのデザインパターン
+      01. 保管データの種類
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. DBのデザインパターン">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. 永続データ管理分割方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 永続データ管理分割方法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1929,78 +1917,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-db-per-service" class="md-nav__link">
+  <a href="#02-02" class="md-nav__link">
     <span class="md-ellipsis">
-      02. DB per serviceパターンの場合
+      02-02. 永続データの種類に合わせたストレージ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. DB per serviceパターンの場合">
+    <nav class="md-nav" aria-label="02-02. 永続データの種類に合わせたストレージ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#polyglot-persistence" class="md-nav__link">
     <span class="md-ellipsis">
-      ローカルトランザクション
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ローカルトランザクション">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ローカルトランザクションとは
+      Polyglot Persistenceパターン
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#multi-model-db" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ローカルトランザクションの実行パターンの種類
+      Multi-model DBパターン
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      グローバルトランザクション (分散トランザクション)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="グローバルトランザクション (分散トランザクション)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ グローバルトランザクションとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ グローバルトランザクションの実行パターンの種類
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -2040,8 +1980,6 @@
       
         
       
-        
-      
     
     
     
@@ -2063,7 +2001,7 @@
   
   
   <span class="md-ellipsis">
-    ■ 横断領域
+    ■ テスト
     
   </span>
   
@@ -2074,7 +2012,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_5_6">
             <span class="md-nav__icon md-icon"></span>
-            ■ 横断領域
+            ■ テスト
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2085,7 +2023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software_application_architecture_microservices_cross_test_blackbox.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_test_blackbox.html" class="md-nav__link">
         
   
   
@@ -2108,7 +2046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software_application_architecture_microservices_cross_test_whitebox.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_test_whitebox.html" class="md-nav__link">
         
   
   
@@ -2124,6 +2062,61 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_7" id="__nav_5_5_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ■ 信頼性
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 信頼性
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
               
                 
   
@@ -2131,12 +2124,90 @@
   
   
     <li class="md-nav__item">
-      <a href="software_application_architecture_microservices_cross_development.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_services_resiliency_recovery.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    開発手法
+    回復方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_8" id="__nav_5_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ■ 開発体制
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 開発体制
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_microservices_development_repository.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    リポジトリ構成方法
     
   </span>
   
@@ -26882,13 +26953,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-db" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. DBのデザインパターン
+      01. 保管データの種類
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. DBのデザインパターン">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. 永続データ管理分割方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 永続データ管理分割方法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26972,78 +27052,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-db-per-service" class="md-nav__link">
+  <a href="#02-02" class="md-nav__link">
     <span class="md-ellipsis">
-      02. DB per serviceパターンの場合
+      02-02. 永続データの種類に合わせたストレージ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. DB per serviceパターンの場合">
+    <nav class="md-nav" aria-label="02-02. 永続データの種類に合わせたストレージ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#polyglot-persistence" class="md-nav__link">
     <span class="md-ellipsis">
-      ローカルトランザクション
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ローカルトランザクション">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ローカルトランザクションとは
+      Polyglot Persistenceパターン
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#multi-model-db" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ローカルトランザクションの実行パターンの種類
+      Multi-model DBパターン
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      グローバルトランザクション (分散トランザクション)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="グローバルトランザクション (分散トランザクション)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ グローバルトランザクションとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ グローバルトランザクションの実行パターンの種類
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -27089,7 +27121,14 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-db">01. DBのデザインパターン<a class="headerlink" href="#01-db" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. 保管データの種類<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<ul>
+<li>永続データ</li>
+<li>揮発性データ</li>
+<li>静的ファイル</li>
+</ul>
+<p><br></p>
+<h2 id="02">02. 永続データ管理分割方法<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="shared-db">Shared DBパターン<a class="headerlink" href="#shared-db" title="Permanent link">&para;</a></h3>
 <h4 id="shared-db_1">▼ Shared DBパターンとは<a class="headerlink" href="#shared-db_1" title="Permanent link">&para;</a></h4>
 <p>各マイクロサービスで共有するDBを<code>1</code>個だけ用意する。</p>
@@ -27137,44 +27176,20 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-db-per-service">02. DB per serviceパターンの場合<a class="headerlink" href="#02-db-per-service" title="Permanent link">&para;</a></h2>
-<h3 id="_6">ローカルトランザクション<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<h4 id="_7">▼ ローカルトランザクションとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p><code>1</code>個のトランザクション処理によって、<code>1</code>個のマイクロサービスのDBやスキーマ (MySQLの文脈ではスキーマがDBに相当) を操作する。</p>
-<p>推奨される。</p>
-<p>マイクロサービスアーキテクチャでローカルトランザクションを使用する場合、これを連続的に実行する仕組みが必要になる。</p>
-<p>また、これらの各DBに対する各トランザクションを紐付けられるように、トランザクションにID (例：UUID) を割り当てる必要がある。</p>
+<h2 id="02-02">02-02. 永続データの種類に合わせたストレージ<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
+<h3 id="polyglot-persistence">Polyglot Persistenceパターン<a class="headerlink" href="#polyglot-persistence" title="Permanent link">&para;</a></h3>
+<p>キーバリューDB、ドキュメントDB、RDB、グラフDBを異なるデータベースで管理する。</p>
 <blockquote>
 <ul>
-<li><a href="https://software.fujitsu.com/jp/manual/manualfiles/M090098/B1WS0321/03Z200/B0321-00-03-12-01.html">https://software.fujitsu.com/jp/manual/manualfiles/M090098/B1WS0321/03Z200/B0321-00-03-12-01.html</a></li>
-<li><a href="https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2">https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2</a></li>
-</ul>
-</blockquote>
-<h4 id="_8">▼ ローカルトランザクションの実行パターンの種類<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>ローカルトランザクションベースのトランザクションパターンとして、Sagaパターンがある。</p>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420#%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E7%A8%AE%E9%A1%9E">https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420#%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E7%A8%AE%E9%A1%9E</a></li>
+<li><a href="https://jp.drinet.co.jp/blog/datamanagement/polyglotpersistence">https://jp.drinet.co.jp/blog/datamanagement/polyglotpersistence</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_9">グローバルトランザクション (分散トランザクション)<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<h4 id="_10">▼ グローバルトランザクションとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>分散トランザクションとも言う。</p>
-<p>1個のトランザクションが含む各CRUD処理を異なるDBに対して実行する。</p>
-<p>トランザクション中の各CRUDで、宛先のDBを動的に切り替える必要がある。</p>
-<p>非推奨である。</p>
+<h3 id="multi-model-db">Multi-model DBパターン<a class="headerlink" href="#multi-model-db" title="Permanent link">&para;</a></h3>
+<p>キーバリューDB、ドキュメントDB、RDB、グラフDBを同じデータベースで管理する。</p>
 <blockquote>
 <ul>
-<li><a href="https://thinkit.co.jp/article/14639?page=0%2C1">https://thinkit.co.jp/article/14639?page=0%2C1</a></li>
-</ul>
-</blockquote>
-<h4 id="_11">▼ グローバルトランザクションの実行パターンの種類<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>グローバルトランザクションのトランザクションパターンとして、二相コミット (２フェーズコミット) がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.ogis-ri.co.jp/otc/hiroba/technical/DTP/step2/">https://www.ogis-ri.co.jp/otc/hiroba/technical/DTP/step2/</a></li>
-<li><a href="https://thinkit.co.jp/article/19251">https://thinkit.co.jp/article/19251</a></li>
+<li><a href="https://jp.drinet.co.jp/blog/datamanagement/polyglotpersistence">https://jp.drinet.co.jp/blog/datamanagement/polyglotpersistence</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -27201,7 +27216,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月4日 18:57:59">2025-05-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月4日 20:37:31">2025-05-04</span>
   </span>
 
     

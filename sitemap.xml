@@ -1789,15 +1789,7 @@
          <lastmod>2025-05-04</lastmod>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_cross_development.html</loc>
-         <lastmod>2025-05-04</lastmod>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_cross_test_blackbox.html</loc>
-         <lastmod>2025-05-04</lastmod>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_cross_test_whitebox.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_development_repository.html</loc>
          <lastmod>2025-05-04</lastmod>
     </url>
     <url>
@@ -1813,7 +1805,7 @@
          <lastmod>2025-05-04</lastmod>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_resiliency.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_resiliency_recovery.html</loc>
          <lastmod>2025-05-04</lastmod>
     </url>
     <url>
@@ -1822,6 +1814,14 @@
     </url>
     <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_storage.html</loc>
+         <lastmod>2025-05-04</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_test_blackbox.html</loc>
+         <lastmod>2025-05-04</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_test_whitebox.html</loc>
          <lastmod>2025-05-04</lastmod>
     </url>
     <url>
