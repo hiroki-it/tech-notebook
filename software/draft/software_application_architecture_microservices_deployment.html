@@ -10,13 +10,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="CI/CD＠マイクロサービスアーキテクチャの知見を記録しています。">
+        <meta name="description" content="デプロイメント＠マイクロサービスアーキテクチャの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_microservices_cross_cicd.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_microservices_deployment.html">
       
       
       
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】CI/CD＠マイクロサービスアーキテクチャ - 俺の技術ノート</title>
+        <title>【IT技術の知見】デプロイメント＠マイクロサービスアーキテクチャ - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cicd" class="md-skip">
+        <a href="#_1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -150,7 +150,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】CI/CD＠マイクロサービスアーキテクチャ
+              【IT技術の知見】デプロイメント＠マイクロサービスアーキテクチャ
             
           </span>
         </div>
@@ -26741,7 +26741,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       はじめに
     </span>
@@ -26752,26 +26752,104 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. デプロイ
+      01. マイクロサービス実行環境
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. デプロイ">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. リリース方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. リリース方法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      デプロイの順番
+      リリース方法
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      リリースの順番
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       キャッシュの削除
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-cicd" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. CI/CD
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. 汎用的ロジック配布方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. 汎用的ロジック配布方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#externalized-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Externalized configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microservice-chassis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microservice chassis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      サービステンプレート
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      サービスメッシュ
     </span>
   </a>
   
@@ -26801,8 +26879,8 @@
   
 
 
-<h1 id="cicd">CI/CD＠マイクロサービスアーキテクチャ<a class="headerlink" href="#cicd" title="Permanent link">&para;</a></h1>
-<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h1 id="_1">デプロイメント＠マイクロサービスアーキテクチャ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -26810,9 +26888,25 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. デプロイ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_2">デプロイの順番<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>任意のマイクロサービスをデプロイしてから、フロントエンドアプリケーションをデプロイする。</p>
+<h2 id="01">01. マイクロサービス実行環境<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Serverless platforms</li>
+<li>Multiple services instance per host</li>
+<li>Service instance per VM</li>
+<li>Service instance per container</li>
+</ul>
+<p><br></p>
+<h2 id="02">02. リリース方法<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_3">リリース方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>インプレースデプロイメント</li>
+<li>ローリングデプロイメント</li>
+<li>カナリアリリース</li>
+<li>ブルーグリーンデプロイメント</li>
+</ul>
+<p><br></p>
+<h3 id="_4">リリースの順番<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>任意のマイクロサービスをデプロイしてから、フロントエンドアプリケーションをリリースする。</p>
 <p>これにより、フロントエンドが存在しない新しいAPIにリクエストを送信してしまうようなミスを防げる。</p>
 <blockquote>
 <ul>
@@ -26820,8 +26914,35 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_3">キャッシュの削除<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>フロントエンドの送信元にCDNがある場合、フロントエンドのデプロイ後にCDNのキャッシュを削除する必要がある。</p>
+<h3 id="_5">キャッシュの削除<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>フロントエンドの送信元にCDNがある場合、フロントエンドのリリース後にCDNのキャッシュを削除する必要がある。</p>
+<p><br></p>
+<h2 id="03-cicd">03. CI/CD<a class="headerlink" href="#03-cicd" title="Permanent link">&para;</a></h2>
+<ul>
+<li>CIOps</li>
+<li>GitOps</li>
+</ul>
+<p><br></p>
+<h2 id="04">04. 汎用的ロジック配布方法<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="externalized-configuration">Externalized configuration<a class="headerlink" href="#externalized-configuration" title="Permanent link">&para;</a></h3>
+<p><br></p>
+<h3 id="microservice-chassis">Microservice chassis<a class="headerlink" href="#microservice-chassis" title="Permanent link">&para;</a></h3>
+<ul>
+<li>汎用的なロジック（例：アプリケーションのロガー）</li>
+<li>API仕様書</li>
+<li>開発環境ツール</li>
+<li>CI/CD設定</li>
+<li>IaC設定など</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://medium.com/starbugs/microservices-start-here-chassis-pattern-f1be783c522b">https://medium.com/starbugs/microservices-start-here-chassis-pattern-f1be783c522b</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_6">サービステンプレート<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><br></p>
+<h3 id="_7">サービスメッシュ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p><br></p>
 
 
@@ -26843,7 +26964,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月24日 01:09:35">2025-03-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月4日 21:46:04">2025-05-04</span>
   </span>
 
     
