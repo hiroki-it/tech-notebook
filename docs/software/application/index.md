@@ -47,23 +47,29 @@ hide:
 
 - #### [クラウドネイティブ技術とマイクロサービスアーキテクチャーのつながり](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_cloudnative.html)
 
-- #### [APIゲートウェイ領域](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_api_gateway.html)
+- #### [APIゲートウェイ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_api_gateway.html)
 
-- #### <u>マイクロサービス領域</u>
+- #### <u>マイクロサービス</u>
 
   > - ##### [マイクロサービス設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_design.html)
   > - ##### [マイクロサービス間通信](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_connection.html)
   > - ##### [トランザクション管理](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_transaction.html)
   > - ##### [認証／認可](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_auth.html)
-  > - ##### [回復性管理](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_resiliency.html)
 
-- #### [ストレージ領域](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_storage.html)
+- #### [ストレージ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_storage.html)
 
-- #### <u>横断領域</u>
+- #### <u>テスト</u>
 
   > - ##### [ホワイトボックステスト](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_test_whitebox.html)
   > - ##### [ブラックボックステスト](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_test_blackbox.html)
-  > - ##### [開発手法](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_development.html)
+
+- #### <u>信頼性</u>
+
+  > - ##### [回復性管理](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_resiliency.html)
+
+- #### <u>開発体制</u>
+
+  > - ##### [リポジトリ構成方法](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_development_repository.html)
 
 <br>
 

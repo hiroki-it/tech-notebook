@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】トランザクション管理＠マイクロサービス領域
-description: トランザクション管理＠マイクロサービス領域の知見を記録しています。
+title: 【IT技術の知見】トランザクション管理＠マイクロサービス
+description: トランザクション管理＠マイクロサービスの知見を記録しています。
 ---
 
-# トランザクション管理＠マイクロサービス領域
+# トランザクション管理＠マイクロサービス
 
 ## はじめに
 
@@ -13,21 +13,61 @@ description: トランザクション管理＠マイクロサービス領域の�
 
 <br>
 
-## 01. トランザクションパターン
-
-### Shared DBパターンの場合
+## 01. Shared DBパターンのトランザクションパターン
 
 - パターン不要 (各マイクロサービスの従来のトランザクション)
 
 > - https://microservices.io/patterns/data/shared-database.html
 > - https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared
 
-### DB per serviceパターンの場合
+<br>
 
-- 二相コミットパターン
-- Sagaパターン (オーケストレーションベース、コレグラフィベース、並列パイプラインベース)
+## 02. DB per serviceパターンのトランザクションパターン
+
+### ローカルトランザクション
+
+#### ▼ ローカルトランザクションとは
+
+`1`個のトランザクション処理によって、`1`個のマイクロサービスのDBやスキーマ (MySQLの文脈ではスキーマがDBに相当) を操作する。
+
+推奨される。
+
+マイクロサービスアーキテクチャでローカルトランザクションを使用する場合、これを連続的に実行する仕組みが必要になる。
+
+また、これらの各DBに対する各トランザクションを紐付けられるように、トランザクションにID (例：UUID) を割り当てる必要がある。
+
+> - https://software.fujitsu.com/jp/manual/manualfiles/M090098/B1WS0321/03Z200/B0321-00-03-12-01.html
+> - https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2
+
+#### ▼ ローカルトランザクションを実装できるパターン
+
+ローカルトランザクションベースのSagaパターン (オーケストレーションベース、コレグラフィベース、並列パイプラインベース) がある。
 
 > - https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared
+> - https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420#%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E7%A8%AE%E9%A1%9E
+
+<br>
+
+### グローバルトランザクション (分散トランザクション)
+
+#### ▼ グローバルトランザクションとは
+
+分散トランザクションとも言う。
+
+1個のトランザクションが含む各CRUD処理を異なるDBに対して実行する。
+
+トランザクション中の各CRUDで、宛先のDBを動的に切り替える必要がある。
+
+非推奨である。
+
+> - https://thinkit.co.jp/article/14639?page=0%2C1
+
+#### ▼ グローバルトランザクションを実装できるパターン
+
+グローバルトランザクションを実装できるパターンとして、二相コミット (２フェーズコミット) がある。
+
+> - https://www.ogis-ri.co.jp/otc/hiroba/technical/DTP/step2/
+> - https://thinkit.co.jp/article/19251
 
 <br>
 
@@ -39,6 +79,7 @@ description: トランザクション管理＠マイクロサービス領域の�
 
 非推奨である。
 
+> - https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared
 > - https://www.ogis-ri.co.jp/otc/hiroba/technical/DTP/step2/
 > - https://www.excellence-blog.com/2017/03/31/%EF%BC%92%E3%83%95%E3%82%A7%E3%83%BC%E3%82%BA%E3%82%B3%E3%83%9F%E3%83%83%E3%83%88/
 
