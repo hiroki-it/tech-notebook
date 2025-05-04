@@ -65,7 +65,7 @@ hide:
 
 - #### <u>信頼性</u>
 
-  > - ##### [回復性管理](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_resiliency.html)
+  > - ##### [回復方法](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_resiliency_recovery.html)
 
 - #### <u>開発体制</u>
 

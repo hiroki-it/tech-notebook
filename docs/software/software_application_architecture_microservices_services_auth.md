@@ -223,6 +223,17 @@ APIゲートウェイは、認証を集中的に管理し、認証とアクセ�
 > - https://www.osohq.com/academy/what-is-authorization
 > - https://zenn.dev/she_techblog/articles/6eff1f28d107be#decision%EF%BC%88%E8%AA%8D%E5%8F%AF%E3%81%AE%E5%88%A4%E6%96%AD%EF%BC%89%E3%81%AE%E5%AE%9F%E8%A3%85%E6%96%B9%E6%B3%95%EF%BC%88options-for-implementing-authorization-decisions%EF%BC%89
 
+#### ▼ 認可プロバイダーへの委譲
+
+認可サービスとして認可プロバイダーを配置する。
+
+認可スコープを検証し、もしマイクロサービスの認可スコープが不十分であれば、リクエストを拒否する。
+
+![microservices_authorization_centralized-authorization_external-provider](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_centralized-authorization_external-provider.png)
+
+> - https://thinkit.co.jp/article/22484
+> - https://developer.mamezou-tech.com/blogs/2022/07/01/openapi-generator-5/
+
 <br>
 
 ### 分散パターン

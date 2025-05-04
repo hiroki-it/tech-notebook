@@ -13,9 +13,9 @@ description: 回復方法＠信頼性の知見を記録しています。
 
 <br>
 
-## 01 回復性管理の設計
+## 01 回復方法の設計
 
-複数の回復性管理のパターンを組み合わせる。
+複数の回復方法のパターンを組み合わせる。
 
 > - https://medium.com/@AlexanderObregon/spring-microservices-resilience-with-retry-and-fallback-mechanisms-8500208fc463
 
