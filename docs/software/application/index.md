@@ -69,7 +69,9 @@ hide:
 
 - #### <u>開発体制</u>
 
-  > - ##### [リポジトリ構成方法](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_development_repository.html)
+  > - [開発組織の編成](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_development_organization.html)
+
+  > - ##### [リポジトリの編成方法](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_development_repository.html)
 
 <br>
 
