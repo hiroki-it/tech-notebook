@@ -166,7 +166,7 @@ nav:
           - フロントエンドアーキテクチャ: software/software_application_architecture_frontend.md
       - ■ マイクロサービスアーキテクチャ:
           - マイクロサービスアーキテクチャ: software/software_application_architecture_microservices.md
-          - クラウドネイティブ技術とマイクロサービスアーキテクチャーのつながり: software/software_application_architecture_microservices_cloudnative.md
+          - クラウドネイティブ技術を使用したマイクロサービスアーキテクチャの設計例: software/software_application_architecture_microservices_cloudnative.md
           - API Gateway: software/software_application_architecture_microservices_api_gateway.md
           - ■ マイクロサービス:
               - マイクロサービス設計: software/software_application_architecture_microservices_services_design.md
