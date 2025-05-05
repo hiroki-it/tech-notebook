@@ -702,7 +702,7 @@ spec:
 
 サーキットブレイカーを開始する外れ値 (`500`系ステータス) の閾値を設定する。
 
-似た設定として、Gateway系ステータスの閾値を設定する`consecutiveGatewayErrors`キーがあるが、併用できる。
+似た設定として、Gateway系ステータス率の閾値を設定する`consecutiveGatewayErrors`キーがあるが、併用できる。
 
 どのくらいの期間で10回以上を判定するかは、`interval`キーで設定する。
 
