@@ -828,7 +828,7 @@ setcookie(
 
 ## 05-02. セッション
 
-### セッション、セッションIDとは
+### セッションとは
 
 ![session-id_page-transition](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/session-id_page-transition.png)
 
@@ -860,7 +860,7 @@ GoogleConsoleにおけるセッションについては、以下のリンクを�
 
 <br>
 
-### セッションIDの発行、セッションデータの作成
+### セッションIDとは
 
 セッションは、`session_start`メソッドを使用することにより開始される。
 
