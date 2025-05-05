@@ -180,7 +180,8 @@ nav:
           - ■ 信頼性:
               - 回復方法: software/software_application_architecture_microservices_services_resiliency_recovery.md
           - ■ 開発体制:
-              - リポジトリ構成方法: software/software_application_architecture_microservices_development_repository.md
+              - 開発組織の編成: software/software_application_architecture_microservices_development_repository.md
+              - リポジトリの編成: software/software_application_architecture_microservices_development_repository.md
       - ■ 通信方式:
           - リクエスト−レスポンス方式: software/software_application_communication_style_request_response.md
       - ■ API:
