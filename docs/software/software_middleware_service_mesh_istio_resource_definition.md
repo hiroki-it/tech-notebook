@@ -497,6 +497,10 @@ HTTPプロトコルを処理する場合に、TCPスリーウェイハンドシ�
 
 上限を超過した場合、Podへのルーティングが停止し、何らかの意図したエラーを返信する (サーキットブレイカー) 。
 
+HTTP/2の場合は、TCPスリーウェイハンドシェイク上で複数のストリームを確立し、各ストリーム内でリクエスト−レスポンスを並行的に送受信する。
+
+そのため、リクエストの上限値を正確に検知することは難しく、おおよそになる。
+
 **＊実装例＊**
 
 ```yaml
@@ -525,6 +529,7 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#envoy-v3-api-field-config-core-v3-httpprotocoloptions-max-requests-per-connection
 
 #### ▼ connectionPool.http.http1MaxPendingRequests
 
@@ -551,6 +556,10 @@ spec:
 
 #### ▼ connectionPool.http.http2MaxRequests
 
+HTTP/2の最大リクエスト数である。
+
+ストリーム数に影響される。
+
 **＊実装例＊**
 
 ```yaml
@@ -566,6 +575,7 @@ spec:
 ```
 
 > - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=115
+
 
 #### ▼ connectionPool.http.idleTimeout
 
@@ -588,6 +598,27 @@ spec:
 ```
 
 > - https://qiita.com/Takagi_/items/129acd03e76fce5c295b#%E5%AE%9F%E9%9A%9B%E3%81%ABhttp%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88%E8%A8%AD%E5%AE%9A%E3%82%84%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%81%A8%E3%81%AA%E3%81%A3%E3%81%9F%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E5%88%87%E6%96%AD%E3%81%95%E3%81%9B%E3%82%8B%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B
+
+#### ▼ connectionPool.http.maxConcurrentStreams
+
+HTTP/2の最大ストリーム数である。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    connectionPool:
+      http:
+        maxConcurrentStreams: 1000
+```
+
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#envoy-v3-api-field-config-core-v3-http2protocoloptions-max-concurrent-streams
+
 
 #### ▼ connectionPool.tcp.connectTimeout
 
@@ -653,6 +684,7 @@ spec:
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-TCPSettings-tcp_keepalive
 
 #### ▼ connectionPool.tcp.maxConnections
+
 
 **＊実装例＊**
 
