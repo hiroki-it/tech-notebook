@@ -95,9 +95,9 @@ service Request {
 
 ![grpc_server-streaming](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_server-streaming.png)
 
-まず、`1`個のTCP接続を確立し、その中に複数のストリームを作成する。
+まず、`1`個のTCP接続を確立し、その中に単一またはのストリームを作成する。
 
-次に、gRPCクライアントが`1`個のリクエストを送信し、これが終えるとサーバーは複数個のレスポンスを並行的に返信する。
+次に、gRPCクライアントがストリーム上で`1`個のリクエストを送信し、これが終えるとサーバーは複数個のレスポンスを並行的に返信する。
 
 任意のタイミングで、サーバーからまとめてレスポンスさせたい場合に使用する。
 
@@ -123,9 +123,9 @@ service Notification {
 
 ![grpc_client-streaming-rpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_client-streaming-rpc.png)
 
-まず、`1`個のTCP接続を確立し、その中に複数のストリームを作成する。
+まず、`1`個のTCP接続を確立し、その中に単一のストリームを作成する。
 
-次に、gRPCクライアントが複数個のリクエストを並行的に送信し、これが終えるとサーバーは`1`個のレスポンスを返信する。
+次に、gRPCクライアントがストリーム上で複数個のリクエストを並行的に送信し、これが終えるとサーバーは`1`個のレスポンスを返信する。
 
 gRPCクライアントからのリクエストのデータサイズが大きくなる場合 (例：アップロードサービス) に使用する。
 
@@ -145,7 +145,7 @@ service Upload {
 
 <br>
 
-### Bidirectional Streaming RPC (双方向ストリーミングRPC)
+### Bidirectional Streaming RPC (双方向ストリーミングRPC、同時ストリーミングRPC)
 
 #### ▼ 双方向ストリーミングRPCとは
 
@@ -153,7 +153,9 @@ service Upload {
 
 まず、`1`個のTCP接続を確立し、その中に複数のストリームを作成する。
 
-次に、gRPCクライアントが複数個のリクエストを並行的に送信し、これが終えるとサーバーも複数個のレスポンスを並行的に返信する (逆にサーバーからもリクエストを送信できる)。
+次に、gRPCクライアントがストリーム上で複数個のリクエストを並行的に送信する。
+
+これが終えると、もう一方のストリーム上でサーバーも複数個のレスポンスを並行的に返信する (逆にサーバーからもリクエストを送信できる)。
 
 gRPCクライアントとgRPCサーバーが互いにリクエストを送信する場合 (例：チャット、オンラインゲーム) に使用する。
 
