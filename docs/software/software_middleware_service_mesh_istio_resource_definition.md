@@ -591,6 +591,24 @@ spec:
 
 > - https://qiita.com/Takagi_/items/129acd03e76fce5c295b#%E5%AE%9F%E9%9A%9B%E3%81%ABhttp%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88%E8%A8%AD%E5%AE%9A%E3%82%84%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%81%A8%E3%81%AA%E3%81%A3%E3%81%9F%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E5%88%87%E6%96%AD%E3%81%95%E3%81%9B%E3%82%8B%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B
 
+#### ▼ connectionPool.tcp.connectTimeout
+
+宛先との間で接続タイムアウト時間を設定する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        connectTimeout: 30ms
+```
+
 #### ▼ connectionPool.tcp.tcpKeepalive
 
 宛先との間でTCP KeepAliveを実施する。
@@ -3416,9 +3434,9 @@ spec:
 
 500系ステータスの場合に、`attempts`の数だけリトライする。
 
-各リトライで処理の結果が返却されるまでのタイムアウト時間を`perTryTimeout`で設定する。
+各リトライで処理の結果が返却されるまでの処理タイムアウト時間を`perTryTimeout`で設定する。
 
-初回リクエストのリトライを`timeout`で、失敗時のリトライのタイムアウト時間を`retries.perTryTimeout`で設定する。
+初回リクエストのリトライを`timeout`で、失敗時のリトライの処理タイムアウト時間を`retries.perTryTimeout`で設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3430,14 +3448,14 @@ spec:
     - route:
         - destination:
             host: foo-service.foo-namespace.svc.cluster.local
-      # 初回リクエスト
+      # 処理タイムアウト
       timeout: 10s
       # 初回リクエストの失敗時のリトライ
       retries:
         # 最大のリトライ回数
-        # リトライ間隔は、初回リクエストやリトライのタイムアウト値によって、自動的に決まる
+        # リトライ間隔は、初回リクエストやリトライの処理タイムアウト時間によって、自動的に決まる
         attempts: 3
-        # リトライのタイムアウト時間
+        # リトライの処理タイムアウト時間
         perTryTimeout: 10s
         # Envoyのx-envoy-retry-onの値
         retryOn: gateway-error
@@ -3445,7 +3463,7 @@ spec:
 
 Gateway系ステータス (`502`、`503`、`504`) の場合に、`attempts`の数だけリトライする。
 
-初回リクエストのリトライを`timeout`で、失敗時のリトライのタイムアウト時間を`retries.perTryTimeout`で設定する。
+初回リクエストのリトライを`timeout`で、失敗時のリトライの処理タイムアウト時間を`retries.perTryTimeout`で設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3457,14 +3475,14 @@ spec:
     - route:
         - destination:
             host: foo-service.foo-namespace.svc.cluster.local
-      # 初回リクエスト
+      # 処理リクエスト
       timeout: 10s
       # 初回リクエストの失敗時のリトライ
       retries:
         # 最大のリトライ回数
-        # リトライ間隔は、初回リクエストやリトライのタイムアウト時間値によって、自動的に決まる
+        # リトライ間隔は、初回リクエストやリトライの処理タイムアウト時間によって、自動的に決まる
         attempts: 3
-        # リトライのタイムアウト時間
+        # リトライの処理タイムアウト時間
         perTryTimeout: 10s
         # Envoyのx-envoy-retry-onの値
         retryOn: gateway-error
@@ -3663,15 +3681,13 @@ spec:
 
 #### ▼ timeoutとは
 
-`istio-proxy`コンテナの宛先にリクエストを送信してから返信があるまでのタイムアウト (接続タイムアウト、読み取りタイムアウト) 時間を設定する。
+`istio-proxy`コンテナの宛先にリクエストを送信してから返信があるまでの処理タイムアウト時間を設定する (DestinationRuleは接続タイムアウト) 。
 
-`0`秒の場合、タイムアウトは無制限になる。
+`0`秒の場合、処理タイムアウトは無制限になる。
 
 これは、Envoyのルートの`grpc_timeout_header_max`と`timeout`の両方に適用される。
 
-指定した時間以内に、`istio-proxy`コンテナの宛先からレスポンスがなければ、`istio-proxy`コンテナはタイムアウトとして処理する。
-
-DestinationRuleの`connectionPool.http.idleTimeout`キーとは異なり、VirtualServiceのタイムアウト (接続タイムアウト、読み取りタイムアウト) はTCP接続の完了のための待機時間である。
+指定した時間以内に、`istio-proxy`コンテナの宛先からレスポンスがなければ、`istio-proxy`コンテナは処理タイムアウト時間を超過したものとして処理する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3680,8 +3696,7 @@ metadata:
   name: foo-virtual-service
 spec:
   http:
-    - timeout: 40s
-      route:
+    - route:
         - destination:
             # Service名でも良い
             host: foo-service.foo-namespace.svc.cluster.local
@@ -3696,6 +3711,8 @@ spec:
               number: 80
             subset: v2 # 新Pod
           weight: 30
+      # 処理タイムアウト
+      timeout: 40s
 ```
 
 > - https://istio.io/latest/docs/tasks/traffic-management/request-timeouts/

@@ -416,7 +416,7 @@ AuthorizationPolicyで認可プロバイダー (例：Keycloak、OpenPolicy Agen
 
 アウトバウンド時、`istio-proxy`コンテナは宛先にHTTPSリクエストを送信する。
 
-この時、実際はタイムアウトであっても、`TLS handshake timeout`というエラーなってしまう。
+この時、実際はタイムアウト時間を超過していても、`TLS handshake timeout`というエラーなってしまう。
 
 <br>
 
@@ -690,7 +690,7 @@ Istio Ingress Gatewayを経由せずにサービスメッシュ外からイン�
   "downstream_local_address": "*.*.*.*:50010",
   "downstream_remote_address": "*.*.*.*:50011",
   # 送信元から宛先へリクエストをプロキシし、レスポンスを処理し終えるまでにかかった時間
-  # 送信元で設定したタイムアウトになった場合は、Envoyはその時間の直前にプロキシをやめるため、Durationはタイムアウトとおおよそ同じになる
+  # 送信元でタイムアウト時間が超過した場合は、Envoyはその時間の直前にプロキシをやめるため、Durationはタイムアウト時間とおおよそ同じになる
   "duration": 12,
   "method": null,
   "path": null,

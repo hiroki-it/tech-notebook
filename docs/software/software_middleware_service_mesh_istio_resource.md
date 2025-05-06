@@ -270,7 +270,7 @@ spec:
 以下の場合がある。
 
 - IstioIngressGatewayに関するService、VirtualService、DestinationRuleの設定の不備で接続できない
-- タイムアウト値が短すぎる
+- タイムアウト時間が短すぎる
 
 > - https://github.com/istio/istio/issues/27513#issuecomment-1095620598
 > - https://github.com/istio/istio/issues/27513#issuecomment-1186410179
