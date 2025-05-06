@@ -101,6 +101,9 @@ service Request {
 
 任意のタイミングで、サーバーからまとめてレスポンスさせたい場合に使用する。
 
+サーバーストリーミングRPCであっても、クライアントが独立してクライアントストリーミングRPCを実施すれば、同時ストリーミングRPCになる。
+
+
 ```protobuf
 service Notification {
 
@@ -119,7 +122,7 @@ service Notification {
 
 ### Client Streaming RPC (クライアントストリーミングRPC)
 
-#### ▼ クライアントストリーミングRPC とは
+#### ▼ クライアントストリーミングRPCとは
 
 ![grpc_client-streaming-rpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_client-streaming-rpc.png)
 
@@ -128,6 +131,8 @@ service Notification {
 次に、gRPCクライアントがストリーム上で複数個のリクエストを並行的に送信し、これが終えるとサーバーは`1`個のレスポンスを返信する。
 
 gRPCクライアントからのリクエストのデータサイズが大きくなる場合 (例：アップロードサービス) に使用する。
+
+クライアントストリーミングRPCであっても、クライアントが独立してクライアントストリーミングRPCを実施すれば、同時ストリーミングRPCになる。
 
 ```protobuf
 service Upload {
@@ -145,19 +150,22 @@ service Upload {
 
 <br>
 
-### Bidirectional Streaming RPC (双方向ストリーミングRPC、同時ストリーミングRPC)
+### Bidirectional Streaming RPC (双方向ストリーミングRPC)
 
 #### ▼ 双方向ストリーミングRPCとは
 
 ![grpc_bidrectional-streaming-rpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_bidrectional-streaming-rpc.png)
 
-まず、`1`個のTCP接続を確立し、その中に複数のストリームを作成する。
+まず、`1`個のTCP接続を確立し、その中に複数のストリームを同時に作成する。
 
 次に、gRPCクライアントがストリーム上で複数個のリクエストを並行的に送信する。
 
 これが終えると、もう一方のストリーム上でサーバーも複数個のレスポンスを並行的に返信する (逆にサーバーからもリクエストを送信できる)。
 
 gRPCクライアントとgRPCサーバーが互いにリクエストを送信する場合 (例：チャット、オンラインゲーム) に使用する。
+
+双方向ストリーミングRPCでは、双方向の独立したストリーミングを実行するため、結果的に同時ストリーミングRPCになる。
+
 
 ```protobuf
 service Chat {
