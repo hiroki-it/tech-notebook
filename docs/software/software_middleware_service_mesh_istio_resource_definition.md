@@ -569,11 +569,9 @@ spec:
 
 #### ▼ connectionPool.http.idleTimeout
 
-確立中のTCP接続でアイドルタイムアウト (パケットの送受信がない状態) を許可する時間を設定する。
+HTTP接続でアイドルタイムアウト (パケットの送受信がない状態) を許可する時間を設定する。
 
 不要な接続を早期に切断できる。
-
-VirtualServiceの`.spec.http.timeout`キーとは異なり、DestinationRuleのアイドルタイムアウトはTCP接続中に無通信状態を許可する時間である。
 
 **＊実装例＊**
 
@@ -607,6 +605,28 @@ spec:
     connectionPool:
       tcp:
         connectTimeout: 30ms
+```
+
+#### ▼ connectionPool.tcp.idleTimeout
+
+確立中のTCP接続でアイドルタイムアウト (パケットの送受信がない状態) を許可する時間を設定する。
+
+不要な接続を早期に切断できる。
+
+VirtualServiceの`.spec.http.timeout`キーとは異なり、DestinationRuleのアイドルタイムアウトはTCP接続中に無通信状態を許可する時間である。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        idleTimeout: 1000
 ```
 
 #### ▼ connectionPool.tcp.tcpKeepalive
@@ -653,7 +673,7 @@ spec:
 
 #### ▼ outlierDetection.baseEjectionTime
 
-Podをルーティング先から排出する秒数を設定する。
+Podをルーティング先から排除する秒数を設定する。
 
 `baseEjectionTime`キー後、宛先の正常性を確認し、もしエラー条件が発生していなければサーキットブレイカーを停止する。
 
@@ -665,7 +685,7 @@ Podをルーティング先から排出する秒数を設定する。
 
 Gateway系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。
 
-サーキットブレイカー中に、異常なPodを30秒間排出する
+サーキットブレイカー中に、異常なPodを30秒間排除する
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -697,7 +717,7 @@ spec:
 
 Gateway系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。
 
-サーキットブレイカー中に、異常なPodを30秒間排出する
+サーキットブレイカー中に、異常なPodを30秒間排除する
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -728,7 +748,7 @@ spec:
 
 `500`系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。
 
-サーキットブレイカー中に、異常なPodを30秒間排出する
+サーキットブレイカー中に、異常なPodを30秒間排除する
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -756,7 +776,7 @@ spec:
 
 `500`系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。
 
-サーキットブレイカー中に、異常なPodを30秒間排出する
+サーキットブレイカー中に、異常なPodを30秒間排除する
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -777,11 +797,11 @@ spec:
 
 #### ▼ outlierDetection.maxEjectionPercent
 
-Pod全体のうちで排出できる最大Pod数を設定する。
+Pod全体のうちで排除できる最大Pod数を設定する。
 
 **＊実装例＊**
 
-全てのPodを排出する。
+全てのPodを排除する。
 
 代わりに`istio-proxy`コンテナから返却された`503`ステータス (response_flagは`UH`) のレスポンスに応じて、送信元マイクロサービスでフォールバックを実行する。
 
