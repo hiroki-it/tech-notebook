@@ -3435,12 +3435,12 @@ spec:
       # 初回リクエストの失敗時のリトライ
       retries:
         # 最大のリトライ回数
-        # リトライ間隔は、初回リクエストやリトライのタイムアウト時間値によって、自動的に決まる
+        # リトライ間隔は、初回リクエストやリトライのタイムアウト値によって、自動的に決まる
         attempts: 3
         # リトライのタイムアウト時間
         perTryTimeout: 10s
         # Envoyのx-envoy-retry-onの値
-        retryOn: 5xx
+        retryOn: gateway-error
 ```
 
 Gateway系ステータス (`502`、`503`、`504`) の場合に、`attempts`の数だけリトライする。

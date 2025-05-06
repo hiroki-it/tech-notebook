@@ -180,4 +180,11 @@ $ tree -o tree.txt
 $ tree -P providers.tf
 ```
 
+```bash
+# fooまたはbarを含むファイルのみを取得する
+$ tree -P "*foo*|*bar*"                                                                                      
+```
+
+
+
 <br>
