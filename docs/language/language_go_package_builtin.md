@@ -162,7 +162,7 @@ should not use built-in type string as key for value; define your own type to av
 
 #### ▼ WithDeadlineとは
 
-コンテキストにタイムアウトの時刻を設定する。
+コンテキストにタイムアウト時間を設定する。
 
 > - https://zenn.dev/hsaki/books/golang-context/viewer/deadline#withdeadline%E9%96%A2%E6%95%B0
 

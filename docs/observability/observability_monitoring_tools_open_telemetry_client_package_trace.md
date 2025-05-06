@@ -68,7 +68,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
             5 * time.Second,
         )
 
-		// タイムアウトの場合に処理を中断する
+		// タイムアウト時間を超過した場合に処理を中断する
 		defer cancel()
 
 		// Span Processor内の処理中スパンをExporterに送信する
@@ -151,7 +151,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 			5 * time.Second
         )
 
-		// タイムアウトの場合に処理を中断する
+		// タイムアウト時間を超過した場合に処理を中断する
 		defer cancel()
 
 		// Span Processor内の処理中スパンをExporterに送信する
@@ -830,7 +830,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 			5 * time.Second
         )
 
-		// タイムアウトの場合に処理を中断する
+		// タイムアウト時間を超過した場合に処理を中断する
 		defer cancel()
 
 		// Span Processor内の処理中スパンをExporterに送信する
@@ -916,7 +916,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 			5 * time.Second
         )
 
-		// タイムアウトの場合に処理を中断する
+		// タイムアウト時間を超過した場合に処理を中断する
 		defer cancel()
 
 		// TracerProviderを安全にシャットダウンする
@@ -1056,7 +1056,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 			5 * time.Second
         )
 
-		// タイムアウトの場合に処理を中断する
+		// タイムアウト時間を超過した場合に処理を中断する
 		defer cancel()
 
 		// TracerProviderを安全にシャットダウンする

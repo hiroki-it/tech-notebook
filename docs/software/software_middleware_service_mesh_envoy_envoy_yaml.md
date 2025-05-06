@@ -578,7 +578,7 @@ sequenceDiagram
 
 <!-- prettier-ignore-end -->
 
-上記図の状況で、gRPCサーバーでタイムアウトが起こった時、適切にエラーを処理できないことがある。
+上記図の状況で、gRPCサーバーでタイムアウト時間を超過した場合、適切にエラーを処理できないことがある。
 
 例えば、以下のようにgRPCサーバーからのレスポンスよりも先に、gRPCクライアント側のEnvoyは通信を切断してしまうことがある。
 
@@ -635,7 +635,7 @@ gRPCサーバー # タイムアウト (DeadlineExceededを投げる)
 
 > - https://github.com/istio/istio/pull/45234#discussion_r1213965308
 
-しかし、移行先の`max_stream_duration`にもgRPCによるHTTPレスポンスの返信とタイムアウトの切断のタイミングに問題がある。
+しかし、移行先の`max_stream_duration`にもgRPCによるHTTPレスポンスの返信とタイムアウト時間超過による通信切断のタイミングに問題がある。
 
 > - https://github.com/envoyproxy/envoy/issues/16129
 > - https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029

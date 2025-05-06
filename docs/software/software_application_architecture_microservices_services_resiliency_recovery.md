@@ -215,7 +215,7 @@ blast-radiusを最小限にできる。
 
 ## 07. バルクヘッドパターン
 
-バルクヘッドパターンは、遮断壁（バルクヘッド）をもつ区画を設け、ハードウェアリソースや接続プールの制限を区画間で分離する。これにより、他の区画への影響を防ぐ。
+バルクヘッドパターンは、遮断壁（バルクヘッド）をもつ区画を設け、ハードウェアリソースや接続プールの制限を区画間で分離するデザインパターンである。これにより、他の区画への影響を防ぐ。
 
 区画はマイクロサービスの分割単位 (例：境界づけられたコンテキスト) に合わせるとよい。
 
@@ -226,13 +226,23 @@ blast-radiusを最小限にできる。
 
 ## 08. レートリミットパターン
 
+特定のユーザーが期間内に閾値以上の数のリクエストを送信した場合、そのユーザーからのリクエストを遮断したり、リクエストの処理速度を低下させるデザインパターンである。
+
 > - https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns
 
 <br>
 
-## 09. DBデータのキャッシュ
+## 09. ロードシェディングパターン (Load Shedding)
 
-頻繁に使用するデータをマイクロサービスのメモリに保存し、他のマイクロサービスやDBへの接続を最小限に抑える。
+マイクロサービスが過負荷になった場合に、優先度の低い機能に対するリクエストを拒否し、優先度の高い機能のみを実施するようにするデザインパターンである。
+
+> - https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns
+
+<br>
+
+## 10. キャッシュパターン
+
+頻繁に使用するデータや処理結果をマイクロサービスのメモリに保存し、他のマイクロサービスやDBへの接続を最小限に抑える。
 
 > - https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns
 
