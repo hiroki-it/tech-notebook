@@ -2267,9 +2267,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#09-db" class="md-nav__link">
+  <a href="#09-load-shedding" class="md-nav__link">
     <span class="md-ellipsis">
-      09. DBデータのキャッシュ
+      09. ロードシェディングパターン (Load Shedding)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. キャッシュパターン
     </span>
   </a>
   
@@ -27515,9 +27524,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#09-db" class="md-nav__link">
+  <a href="#09-load-shedding" class="md-nav__link">
     <span class="md-ellipsis">
-      09. DBデータのキャッシュ
+      09. ロードシェディングパターン (Load Shedding)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. キャッシュパターン
     </span>
   </a>
   
@@ -27832,7 +27850,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="07">07. バルクヘッドパターン<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
-<p>バルクヘッドパターンは、遮断壁（バルクヘッド）をもつ区画を設け、ハードウェアリソースや接続プールの制限を区画間で分離する。これにより、他の区画への影響を防ぐ。</p>
+<p>バルクヘッドパターンは、遮断壁（バルクヘッド）をもつ区画を設け、ハードウェアリソースや接続プールの制限を区画間で分離するデザインパターンである。これにより、他の区画への影響を防ぐ。</p>
 <p>区画はマイクロサービスの分割単位 (例：境界づけられたコンテキスト) に合わせるとよい。</p>
 <blockquote>
 <ul>
@@ -27842,14 +27860,23 @@
 </blockquote>
 <p><br></p>
 <h2 id="08">08. レートリミットパターン<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
+<p>特定のユーザーが期間内に閾値以上の数のリクエストを送信した場合、そのユーザーからのリクエストを遮断したり、リクエストの処理速度を低下させるデザインパターンである。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns">https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="09-db">09. DBデータのキャッシュ<a class="headerlink" href="#09-db" title="Permanent link">&para;</a></h2>
-<p>頻繁に使用するデータをマイクロサービスのメモリに保存し、他のマイクロサービスやDBへの接続を最小限に抑える。</p>
+<h2 id="09-load-shedding">09. ロードシェディングパターン (Load Shedding)<a class="headerlink" href="#09-load-shedding" title="Permanent link">&para;</a></h2>
+<p>マイクロサービスが過負荷になった場合に、優先度の低い機能に対するリクエストを拒否し、優先度の高い機能のみを実施するようにするデザインパターンである。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns">https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="10">10. キャッシュパターン<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<p>頻繁に使用するデータや処理結果をマイクロサービスのメモリに保存し、他のマイクロサービスやDBへの接続を最小限に抑える。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns">https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns</a></li>
@@ -27935,7 +27962,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月6日 21:11:15">2025-05-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月6日 22:37:19">2025-05-06</span>
   </span>
 
     
