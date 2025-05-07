@@ -1301,16 +1301,16 @@ data:
 
 これらの環境変数は、いずれistio-sidecar-injector (ConfigMap) やistio-mesh-cm (ConfigMap) などに移行される可能性がある。
 
-| 環境変数                                         | 対応する設定 (実験段階)                                      |
-| ------------------------------------------------ | ------------------------------------------------------------ |
-| `ENHANCED_RESOURCE_SCOPING`                      | istio-mesh-cm (ConfigMap) で、`discoverySelectors`を有効化してもよい。 |
+| 環境変数                                         | 対応する設定 (実験段階)                                                                          |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `ENHANCED_RESOURCE_SCOPING`                      | istio-mesh-cm (ConfigMap) で、`discoverySelectors`を有効化してもよい。                           |
 | `ENABLE_NATIVE_SIDECARS`                         | istio-sidecar-injector (ConfigMap) で、`istio-proxy`コンテナの代わりにKubernetesのInit Container |
-| `ENABLE_RESOLUTION_NONE_TARGET_PORT`             |                                                              |
-| `ENABLE_DELIMITED_STATS_TAG_REGEX`               |                                                              |
-| `PREFER_JWTトークンLE_TLS_FOR_EXTERNAL_SERVICES` |                                                              |
-| `ENABLE_ENHANCED_JWTトークンLE_MERGE`            |                                                              |
-| `PILOT_UNIFIED_SIDECAR_SCOPE`                    |                                                              |
-| `VERIFY_CERT_AT_CLIENT`                          | どこにこの変数あるんやろか...                                |
+| `ENABLE_RESOLUTION_NONE_TARGET_PORT`             |                                                                                                  |
+| `ENABLE_DELIMITED_STATS_TAG_REGEX`               |                                                                                                  |
+| `PREFER_JWTトークンLE_TLS_FOR_EXTERNAL_SERVICES` |                                                                                                  |
+| `ENABLE_ENHANCED_JWTトークンLE_MERGE`            |                                                                                                  |
+| `PILOT_UNIFIED_SIDECAR_SCOPE`                    |                                                                                                  |
+| `VERIFY_CERT_AT_CLIENT`                          | どこにこの変数あるんやろか...                                                                    |
 
 > - https://github.com/istio/istio/blob/release-1.23/pilot/pkg/features/experimental.go
 
