@@ -5913,23 +5913,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-destinationrule" class="md-nav__link">
+  <a href="#04-jwtle" class="md-nav__link">
     <span class="md-ellipsis">
-      04. DestinationRule
+      04. JWTトークンle
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. DestinationRule">
+    <nav class="md-nav" aria-label="04. JWTトークンle">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#destinationrule" class="md-nav__link">
+  <a href="#jwtle" class="md-nav__link">
     <span class="md-ellipsis">
-      DestinationRuleとは
+      JWTトークンleとは
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="DestinationRuleとは">
+    <nav class="md-nav" aria-label="JWTトークンleとは">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6056,9 +6056,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#serviceentrydestinationrule" class="md-nav__link">
+  <a href="#serviceentryjwtle" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ServiceEntryの前段のDestinationRule
+      ▼ ServiceEntryの前段のJWTトークンle
     </span>
   </a>
   
@@ -27938,23 +27938,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-destinationrule" class="md-nav__link">
+  <a href="#04-jwtle" class="md-nav__link">
     <span class="md-ellipsis">
-      04. DestinationRule
+      04. JWTトークンle
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. DestinationRule">
+    <nav class="md-nav" aria-label="04. JWTトークンle">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#destinationrule" class="md-nav__link">
+  <a href="#jwtle" class="md-nav__link">
     <span class="md-ellipsis">
-      DestinationRuleとは
+      JWTトークンleとは
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="DestinationRuleとは">
+    <nav class="md-nav" aria-label="JWTトークンleとは">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -28081,9 +28081,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#serviceentrydestinationrule" class="md-nav__link">
+  <a href="#serviceentryjwtle" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ServiceEntryの前段のDestinationRule
+      ▼ ServiceEntryの前段のJWTトークンle
     </span>
   </a>
   
@@ -28470,7 +28470,7 @@
 <p><code>upstream connect error or disconnect/reset before headers. reset reason: connection termination</code>というエラーになる。</p>
 <p>以下の場合がある。</p>
 <ul>
-<li>IstioIngressGatewayに関するService、VirtualService、DestinationRuleの設定の不備で接続できない</li>
+<li>IstioIngressGatewayに関するService、VirtualService、JWTトークンleの設定の不備で接続できない</li>
 <li>タイムアウト時間が短すぎる</li>
 </ul>
 <blockquote>
@@ -28547,7 +28547,7 @@
 <h2 id="03-virtualservice">03. VirtualService<a class="headerlink" href="#03-virtualservice" title="Permanent link">&para;</a></h2>
 <h3 id="virtualservice">VirtualServiceとは<a class="headerlink" href="#virtualservice" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ ロードバランサーで使用する場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>VirtualServiceは、Istio Ingress Gatewayの一部として、受信した<code>L4</code>/<code>L7</code>通信をDestinationRuleに紐づくPodにルーティングする。</p>
+<p>VirtualServiceは、Istio Ingress Gatewayの一部として、受信した<code>L4</code>/<code>L7</code>通信をJWTトークンleに紐づくPodにルーティングする。</p>
 <p><img alt="istio_virtual-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service.png" /></p>
 <blockquote>
 <ul>
@@ -28675,7 +28675,7 @@
 
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
-<p>つまり、VirtualServiceとDestinationRuleの情報を使用し、Istio Ingress Gatewayで受信した通信とPod間通信の両方を実施する。</p>
+<p>つまり、VirtualServiceとJWTトークンleの情報を使用し、Istio Ingress Gatewayで受信した通信とPod間通信の両方を実施する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">クライアント</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">envoy</span>
@@ -28728,10 +28728,10 @@ http.50004<span class="w">     </span>blackhole:50004<span class="w">     </span
 <h4 id="503">▼ <code>503</code>ステータス<a class="headerlink" href="#503" title="Permanent link">&para;</a></h4>
 <p>以下の理由などでVirtualServiceの設定が誤っていると、<code>503</code>ステータスを返信する。</p>
 <ul>
-<li>VirtualServiceで受信した通信の<code>Host</code>ヘッダーとDestinationRuleのそれが合致していない</li>
-<li>DestinationRuleの<code>.spec.exportTo</code>キーで<code>.</code>を設定したことにより、VirtualServiceがルーティング先のDestinationRuleが見つけられない。 (Istio Ingress Gatewayからリクエストを受信するPodでは要注意)</li>
+<li>VirtualServiceで受信した通信の<code>Host</code>ヘッダーとJWTトークンleのそれが合致していない</li>
+<li>JWTトークンleの<code>.spec.exportTo</code>キーで<code>.</code>を設定したことにより、VirtualServiceがルーティング先のJWTトークンleが見つけられない。 (Istio Ingress Gatewayからリクエストを受信するPodでは要注意)</li>
 </ul>
-<p><code>istioctl proxy-config cluster</code>コマンドで、VirtualServiceに紐づくDestinationRuleがいるかを確認できる。</p>
+<p><code>istioctl proxy-config cluster</code>コマンドで、VirtualServiceに紐づくJWTトークンleがいるかを確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># helloworldでは、紐づくDestinationが見つからない</span>
 $<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>cluster<span class="w"> </span>&lt;Pod名&gt;
 
@@ -28816,10 +28816,10 @@ httpbin-app-service.services.svc.cluster.local<span class="w">                  
 </blockquote>
 <p><br></p>
 <p><br></p>
-<h2 id="04-destinationrule">04. DestinationRule<a class="headerlink" href="#04-destinationrule" title="Permanent link">&para;</a></h2>
-<h3 id="destinationrule">DestinationRuleとは<a class="headerlink" href="#destinationrule" title="Permanent link">&para;</a></h3>
+<h2 id="04-jwtle">04. JWTトークンle<a class="headerlink" href="#04-jwtle" title="Permanent link">&para;</a></h2>
+<h3 id="jwtle">JWTトークンleとは<a class="headerlink" href="#jwtle" title="Permanent link">&para;</a></h3>
 <h4 id="_13">▼ ロードバランサーで使用する場合<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>DestinationRuleは、Istio Ingress Gateway (VirtualService + DestinationRule) で受信した<code>L4</code>/<code>L7</code>通信を、いずれのPodにルーティングするかを決める。</p>
+<p>JWTトークンleは、Istio Ingress Gateway (VirtualService + JWTトークンle) で受信した<code>L4</code>/<code>L7</code>通信を、いずれのPodにルーティングするかを決める。</p>
 <p>Istio Ingress Gatewayの実体はPodのため、ロードバランサーというよりは実際はPod間通信で使用していると言える。</p>
 <p>Podの宛先情報は、KubernetesのServiceから取得する。</p>
 <p><img alt="istio_destination-rule_subset" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_destination-rule_subset.png" /></p>
@@ -28829,7 +28829,7 @@ httpbin-app-service.services.svc.cluster.local<span class="w">                  
 </ul>
 </blockquote>
 <h4 id="pod_3">▼ Pod間通信のみで使用する場合<a class="headerlink" href="#pod_3" title="Permanent link">&para;</a></h4>
-<p>DestinationRuleは、VirtualServiceで受信した<code>L4</code>/<code>L7</code>通信を、いずれのPodにルーティングするかを決める。</p>
+<p>JWTトークンleは、VirtualServiceで受信した<code>L4</code>/<code>L7</code>通信を、いずれのPodにルーティングするかを決める。</p>
 <p>Podの宛先情報は、KubernetesのServiceから取得する。</p>
 <blockquote>
 <ul>
@@ -28840,7 +28840,7 @@ httpbin-app-service.services.svc.cluster.local<span class="w">                  
 <p><br></p>
 <h3 id="envoy_3">Envoyの設定値として<a class="headerlink" href="#envoy_3" title="Permanent link">&para;</a></h3>
 <h4 id="_14">▼ クラスターとして<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>Istiodコントロールプレーンは、DestinationRuleの設定値をEnvoyのクラスターに変換する。</p>
+<p>Istiodコントロールプレーンは、JWTトークンleの設定値をEnvoyのクラスターに変換する。</p>
 <p>なお、クラスター配下のエンドポイントは、KubernetesのServiceから動的に取得する。</p>
 <p>そのため、Envoyのエンドポイントに相当するIstioリソースはない。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl exec \</span>
@@ -28949,7 +28949,7 @@ httpbin-app-service.services.svc.cluster.local<span class="w">                  
 
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
-<p>つまり、VirtualServiceとDestinationRuleの情報を使用し、Istio Ingress Gatewayで受信した通信とPod間通信の両方を実施する。</p>
+<p>つまり、VirtualServiceとJWTトークンleの情報を使用し、Istio Ingress Gatewayで受信した通信とPod間通信の両方を実施する。</p>
 <p>Pod間通信時には、VirtualServiceとDestinationのみを使用する。</p>
 <div class="highlight"><pre><span></span><code>クライアント
 ⬇⬆️︎
@@ -28968,11 +28968,11 @@ envoy<span class="w"> </span><span class="c1"># 送信元Envoyからのリクエ
 <li><a href="https://sreake.com/blog/istio/">https://sreake.com/blog/istio/</a></li>
 </ul>
 </blockquote>
-<p>Envoyのクラスターとエンドポイントを確認すれば、DestinationRuleの設定が正しく適用できているかを確認できる。</p>
+<p>Envoyのクラスターとエンドポイントを確認すれば、JWTトークンleの設定が正しく適用できているかを確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>cluster<span class="w"> </span>foo-pod<span class="w"> </span>-n<span class="w"> </span>foo-namespace
 
 SERVICE<span class="w"> </span>FQDN<span class="w">                                  </span>PORT<span class="w">                         </span>SUBSET<span class="w">        </span>DIRECTION<span class="w">   </span>TYPE<span class="w">                </span>DESTINATION<span class="w"> </span>RULE
-&lt;Serviceの完全修飾ドメイン名&gt;<span class="w">                     </span>&lt;Serviceが待ち受けるポート番号&gt;<span class="w">  </span>&lt;サブセット名&gt;<span class="w">  </span>&lt;通信の方向&gt;<span class="w">  </span>&lt;ディスカバリータイプ&gt;<span class="w">  </span>&lt;DestinationRule名&gt;.&lt;Namespace名&gt;
+&lt;Serviceの完全修飾ドメイン名&gt;<span class="w">                     </span>&lt;Serviceが待ち受けるポート番号&gt;<span class="w">  </span>&lt;サブセット名&gt;<span class="w">  </span>&lt;通信の方向&gt;<span class="w">  </span>&lt;ディスカバリータイプ&gt;<span class="w">  </span>&lt;JWTトークンle名&gt;.&lt;Namespace名&gt;
 
 foo-service.foo-namespace.svc.cluster.local<span class="w">   </span><span class="m">50001</span><span class="w">                        </span>v1<span class="w">            </span>outbound<span class="w">     </span>EDS<span class="w">                 </span>foo-destination-rule.foo-namespace
 bar-service.bar-namespace.svc.cluster.local<span class="w">   </span><span class="m">50002</span><span class="w">                        </span>v1<span class="w">            </span>outbound<span class="w">     </span>EDS<span class="w">                 </span>bar-destination-rule.bar-namespace
@@ -29026,9 +29026,9 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <li><a href="https://discuss.istio.io/t/ingress-egress-serviceentry-data-flow-issues-for-istio-api-gateway/14202">https://discuss.istio.io/t/ingress-egress-serviceentry-data-flow-issues-for-istio-api-gateway/14202</a></li>
 </ul>
 </blockquote>
-<h4 id="serviceentrydestinationrule">▼ ServiceEntryの前段のDestinationRule<a class="headerlink" href="#serviceentrydestinationrule" title="Permanent link">&para;</a></h4>
-<p>ServiceEntryから外部にHTTPリクエストを送信する場合、DestinationRuleは不要である。</p>
-<p>しかし、ServiceEntryから宛先にHTTPリクエストを送信する場合、DestinationRuleは不要である。</p>
+<h4 id="serviceentryjwtle">▼ ServiceEntryの前段のJWTトークンle<a class="headerlink" href="#serviceentryjwtle" title="Permanent link">&para;</a></h4>
+<p>ServiceEntryから外部にHTTPリクエストを送信する場合、JWTトークンleは不要である。</p>
+<p>しかし、ServiceEntryから宛先にHTTPリクエストを送信する場合、JWTトークンleは不要である。</p>
 <blockquote>
 <ul>
 <li><a href="https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic">https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic</a></li>
@@ -29433,11 +29433,11 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <td></td>
 </tr>
 <tr>
-<td><code>PREFER_DESTINATIONRULE_TLS_FOR_EXTERNAL_SERVICES</code></td>
+<td><code>PREFER_JWTトークンLE_TLS_FOR_EXTERNAL_SERVICES</code></td>
 <td></td>
 </tr>
 <tr>
-<td><code>ENABLE_ENHANCED_DESTINATIONRULE_MERGE</code></td>
+<td><code>ENABLE_ENHANCED_JWTトークンLE_MERGE</code></td>
 <td></td>
 </tr>
 <tr>
@@ -29476,7 +29476,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月7日 03:18:18">2025-05-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月7日 10:28:26">2025-05-07</span>
   </span>
 
     
