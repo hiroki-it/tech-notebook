@@ -60,7 +60,7 @@ connectors:
     id: keycloak
     name: keycloak
     config:
-      # JWT仕様トークンの発行元認証局の識別子を設定する
+      # JWTトークンの発行元認証局の識別子を設定する
       # ブラウザから接続する
       issuer: http://keycloak.com/realms/<realm名>
       clientID: <Keycloakに認可リクエストを送信するクライアント名>
@@ -90,7 +90,7 @@ grpc:
 
 ## 04. issuer
 
-JWT仕様トークンの発行元認証局の識別子を設定する
+JWTトークンの発行元認証局の識別子を設定する
 
 ブラウザから接続する必要がある。
 

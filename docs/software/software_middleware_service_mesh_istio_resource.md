@@ -269,7 +269,7 @@ spec:
 
 以下の場合がある。
 
-- IstioIngressGatewayに関するService、VirtualService、DestinationRuleの設定の不備で接続できない
+- IstioIngressGatewayに関するService、VirtualService、JWTトークンleの設定の不備で接続できない
 - タイムアウト時間が短すぎる
 
 > - https://github.com/istio/istio/issues/27513#issuecomment-1095620598
@@ -364,7 +364,7 @@ Istio Ingress Gateway (厳密に言うとGateway) は、独自プロトコル (�
 
 #### ▼ ロードバランサーで使用する場合
 
-VirtualServiceは、Istio Ingress Gatewayの一部として、受信した`L4`/`L7`通信をDestinationRuleに紐づくPodにルーティングする。
+VirtualServiceは、Istio Ingress Gatewayの一部として、受信した`L4`/`L7`通信をJWTトークンleに紐づくPodにルーティングする。
 
 ![istio_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service.png)
 
@@ -499,7 +499,7 @@ configs:
   ...
 ```
 
-つまり、VirtualServiceとDestinationRuleの情報を使用し、Istio Ingress Gatewayで受信した通信とPod間通信の両方を実施する。
+つまり、VirtualServiceとJWTトークンleの情報を使用し、Istio Ingress Gatewayで受信した通信とPod間通信の両方を実施する。
 
 ```yaml
 クライアント
@@ -559,10 +559,10 @@ http.50004     blackhole:50004     *           /*                     404
 
 以下の理由などでVirtualServiceの設定が誤っていると、`503`ステータスを返信する。
 
-- VirtualServiceで受信した通信の`Host`ヘッダーとDestinationRuleのそれが合致していない
-- DestinationRuleの`.spec.exportTo`キーで`.`を設定したことにより、VirtualServiceがルーティング先のDestinationRuleが見つけられない。 (Istio Ingress Gatewayからリクエストを受信するPodでは要注意)
+- VirtualServiceで受信した通信の`Host`ヘッダーとJWTトークンleのそれが合致していない
+- JWTトークンleの`.spec.exportTo`キーで`.`を設定したことにより、VirtualServiceがルーティング先のJWTトークンleが見つけられない。 (Istio Ingress Gatewayからリクエストを受信するPodでは要注意)
 
-`istioctl proxy-config cluster`コマンドで、VirtualServiceに紐づくDestinationRuleがいるかを確認できる。
+`istioctl proxy-config cluster`コマンドで、VirtualServiceに紐づくJWTトークンleがいるかを確認できる。
 
 ```bash
 # helloworldでは、紐づくDestinationが見つからない
@@ -650,13 +650,13 @@ spec:
 
 <br>
 
-## 04. DestinationRule
+## 04. JWTトークンle
 
-### DestinationRuleとは
+### JWTトークンleとは
 
 #### ▼ ロードバランサーで使用する場合
 
-DestinationRuleは、Istio Ingress Gateway (VirtualService + DestinationRule) で受信した`L4`/`L7`通信を、いずれのPodにルーティングするかを決める。
+JWTトークンleは、Istio Ingress Gateway (VirtualService + JWTトークンle) で受信した`L4`/`L7`通信を、いずれのPodにルーティングするかを決める。
 
 Istio Ingress Gatewayの実体はPodのため、ロードバランサーというよりは実際はPod間通信で使用していると言える。
 
@@ -668,7 +668,7 @@ Podの宛先情報は、KubernetesのServiceから取得する。
 
 #### ▼ Pod間通信のみで使用する場合
 
-DestinationRuleは、VirtualServiceで受信した`L4`/`L7`通信を、いずれのPodにルーティングするかを決める。
+JWTトークンleは、VirtualServiceで受信した`L4`/`L7`通信を、いずれのPodにルーティングするかを決める。
 
 Podの宛先情報は、KubernetesのServiceから取得する。
 
@@ -681,7 +681,7 @@ Podの宛先情報は、KubernetesのServiceから取得する。
 
 #### ▼ クラスターとして
 
-Istiodコントロールプレーンは、DestinationRuleの設定値をEnvoyのクラスターに変換する。
+Istiodコントロールプレーンは、JWTトークンleの設定値をEnvoyのクラスターに変換する。
 
 なお、クラスター配下のエンドポイントは、KubernetesのServiceから動的に取得する。
 
@@ -797,7 +797,7 @@ configs:
     ...
 ```
 
-つまり、VirtualServiceとDestinationRuleの情報を使用し、Istio Ingress Gatewayで受信した通信とPod間通信の両方を実施する。
+つまり、VirtualServiceとJWTトークンleの情報を使用し、Istio Ingress Gatewayで受信した通信とPod間通信の両方を実施する。
 
 Pod間通信時には、VirtualServiceとDestinationのみを使用する。
 
@@ -817,13 +817,13 @@ envoy # 送信元Envoyからのリクエストをアプリケーションが受�
 > - https://taisho6339.hatenablog.com/entry/2020/05/11/235435
 > - https://sreake.com/blog/istio/
 
-Envoyのクラスターとエンドポイントを確認すれば、DestinationRuleの設定が正しく適用できているかを確認できる。
+Envoyのクラスターとエンドポイントを確認すれば、JWTトークンleの設定が正しく適用できているかを確認できる。
 
 ```bash
 $ istioctl proxy-config cluster foo-pod -n foo-namespace
 
 SERVICE FQDN                                  PORT                         SUBSET        DIRECTION   TYPE                DESTINATION RULE
-<Serviceの完全修飾ドメイン名>                     <Serviceが待ち受けるポート番号>  <サブセット名>  <通信の方向>  <ディスカバリータイプ>  <DestinationRule名>.<Namespace名>
+<Serviceの完全修飾ドメイン名>                     <Serviceが待ち受けるポート番号>  <サブセット名>  <通信の方向>  <ディスカバリータイプ>  <JWTトークンle名>.<Namespace名>
 
 foo-service.foo-namespace.svc.cluster.local   50001                        v1            outbound     EDS                 foo-destination-rule.foo-namespace
 bar-service.bar-namespace.svc.cluster.local   50002                        v1            outbound     EDS                 bar-destination-rule.bar-namespace
@@ -891,11 +891,11 @@ ServiceEntryには、Istio Egress Gatewayが必須ではない。
 > - https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic
 > - https://discuss.istio.io/t/ingress-egress-serviceentry-data-flow-issues-for-istio-api-gateway/14202
 
-#### ▼ ServiceEntryの前段のDestinationRule
+#### ▼ ServiceEntryの前段のJWTトークンle
 
-ServiceEntryから外部にHTTPリクエストを送信する場合、DestinationRuleは不要である。
+ServiceEntryから外部にHTTPリクエストを送信する場合、JWTトークンleは不要である。
 
-しかし、ServiceEntryから宛先にHTTPリクエストを送信する場合、DestinationRuleは不要である。
+しかし、ServiceEntryから宛先にHTTPリクエストを送信する場合、JWTトークンleは不要である。
 
 > - https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic
 > - https://discuss.istio.io/t/ingress-egress-serviceentry-data-flow-issues-for-istio-api-gateway/14202
@@ -1301,16 +1301,16 @@ data:
 
 これらの環境変数は、いずれistio-sidecar-injector (ConfigMap) やistio-mesh-cm (ConfigMap) などに移行される可能性がある。
 
-| 環境変数                                           | 対応する設定 (実験段階)                                                                          |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `ENHANCED_RESOURCE_SCOPING`                        | istio-mesh-cm (ConfigMap) で、`discoverySelectors`を有効化してもよい。                           |
-| `ENABLE_NATIVE_SIDECARS`                           | istio-sidecar-injector (ConfigMap) で、`istio-proxy`コンテナの代わりにKubernetesのInit Container |
-| `ENABLE_RESOLUTION_NONE_TARGET_PORT`               |                                                                                                  |
-| `ENABLE_DELIMITED_STATS_TAG_REGEX`                 |                                                                                                  |
-| `PREFER_DESTINATIONRULE_TLS_FOR_EXTERNAL_SERVICES` |                                                                                                  |
-| `ENABLE_ENHANCED_DESTINATIONRULE_MERGE`            |                                                                                                  |
-| `PILOT_UNIFIED_SIDECAR_SCOPE`                      |                                                                                                  |
-| `VERIFY_CERT_AT_CLIENT`                            | どこにこの変数あるんやろか...                                                                    |
+| 環境変数                                         | 対応する設定 (実験段階)                                      |
+| ------------------------------------------------ | ------------------------------------------------------------ |
+| `ENHANCED_RESOURCE_SCOPING`                      | istio-mesh-cm (ConfigMap) で、`discoverySelectors`を有効化してもよい。 |
+| `ENABLE_NATIVE_SIDECARS`                         | istio-sidecar-injector (ConfigMap) で、`istio-proxy`コンテナの代わりにKubernetesのInit Container |
+| `ENABLE_RESOLUTION_NONE_TARGET_PORT`             |                                                              |
+| `ENABLE_DELIMITED_STATS_TAG_REGEX`               |                                                              |
+| `PREFER_JWTトークンLE_TLS_FOR_EXTERNAL_SERVICES` |                                                              |
+| `ENABLE_ENHANCED_JWTトークンLE_MERGE`            |                                                              |
+| `PILOT_UNIFIED_SIDECAR_SCOPE`                    |                                                              |
+| `VERIFY_CERT_AT_CLIENT`                          | どこにこの変数あるんやろか...                                |
 
 > - https://github.com/istio/istio/blob/release-1.23/pilot/pkg/features/experimental.go
 

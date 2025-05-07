@@ -354,7 +354,7 @@ JWTによるBearer認証を実施し、送信元Podの通信を認証する。
 
 この場合、認証フェーズをIDプロバイダー (例：Auth0、AWS Cognito、GitHub、Google Cloud Auth、Keycloak、Zitadel) に委譲することになる。
 
-JWT仕様トークンの取得方法として、例えば以下の方法がある。
+JWTトークンの取得方法として、例えば以下の方法がある。
 
 - 送信元PodがIDプロバイダーからJWTを直接取得する。
 - 送信元/宛先の間に認証プロキシ (例：OAuth2 Proxy、Dexなど) を配置し、認証プロキシでIDプロバイダーからJWTを取得する。

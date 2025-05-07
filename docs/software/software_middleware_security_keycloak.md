@@ -318,7 +318,7 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
 
 #### ▼ / (issuerエンドポイント)
 
-JWT仕様トークンの発行元認証局の識別子である。
+JWTトークンの発行元認証局の識別子である。
 
 クライアント側では`authority`値として指定する。
 
@@ -458,7 +458,7 @@ Content-Length: 759
 logout_token=eyJhbGciOiJSUzI1NiIs...zspo4weMQfU-1jL0DxSg
 ```
 
-POSTリクエストには、JWT仕様トークン (たぶんIDトークン) が含まれている。
+POSTリクエストには、JWTトークン (たぶんIDトークン) が含まれている。
 
 IDトークンには、アプリケーション間で共有しているクライアントのセッションIDが含まれてする。
 
