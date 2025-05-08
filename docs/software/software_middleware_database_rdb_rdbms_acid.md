@@ -323,31 +323,11 @@ RDBMSまたはアプリケーションによる`UPDATE`処理競合問題を回�
 
 <br>
 
-### ロックの範囲
-
-#### ▼ ロックの範囲の比較
-
-![ロックの粒度](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ロックの粒度-1.png)
-
-DB ＞ テーブル ＞ レコード ＞ カラム の順に、粒度は大きい。
-
-ロックの粒度が細かければ、トランザクションの並列実行性が高くなって効率は向上する (複数の人がDBに対して作業できる) 。
-
-しかし、ロックの粒度を細かくすればするほど、それだけベース管理システムのCPU負荷は大きくなる。
-
-![ロックの粒度-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ロックの粒度-2.jpg)
-
-#### ▼ テーブルロック
-
-あるトランザクションの実行によって、RDBMSはクエリで操作したレコード (外部キーのあるレコードを含む) をロックする。
-
-あるトランザクションがテーブルをロックすると、そのテーブルに対する他のすべてのトランザクションのクエリがブロックする。
-
-ロックが解除されるまでトランザクションは待機状態になり、ロック待機時間を超過するとエラーになる。
+### テーブル内のロックの範囲
 
 #### ▼ レコードロック
 
-あるトランザクションの実行によって、RDBMSはクエリで操作したテーブル (外部キーのあるテーブルを含む) をロックする。
+あるトランザクションの実行によって、RDBMSはクエリで操作したレコード (外部キーのある他テーブルのレコードを含む) をロックする。
 
 あるトランザクションがテーブルのレコードをロックすると、そのレコードに対する他のすべてのトランザクションのクエリがブロックする。
 
@@ -356,6 +336,29 @@ DB ＞ テーブル ＞ レコード ＞ カラム の順に、粒度は大き�
 ロックが解除されるまでトランザクションは待機状態になり、ロック待機時間を超過するとエラーになる。
 
 > - https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks
+> - https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E
+
+<br>
+
+#### ▼ ギャップロック
+
+> - https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks
+> - https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E
+
+#### ▼ ネクストキーロック
+
+> - https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks
+> - https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E
+
+#### ▼ 空振りロック
+
+> - https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks
+> - https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E
+
+#### ▼ ギャップロック
+
+> - https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks
+> - https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E
 
 <br>
 
@@ -365,11 +368,19 @@ DB ＞ テーブル ＞ レコード ＞ カラム の順に、粒度は大き�
 
 <br>
 
-## 03-02. DBMSによる排他制御
+## 03-02. DBMSの機能による排他制御
+
+### DBMSの機能による排他制御
+
+DBMSの機能で、排他制御を実施する方法である。
+
+> - https://qiita.com/daiching/items/835fa37de22b397eece0#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AB%E3%81%AF%EF%BC%92%E7%A8%AE%E9%A1%9E%E3%81%AE%E6%A6%82%E5%BF%B5%E3%81%8C%E3%81%82%E3%82%8B
+
+<br>
 
 ### 共有ロック
 
-DBの機能を使用して、テーブルやレコードをロックする。
+DBの機能を使用して、テーブルの指定範囲をロックする。
 
 DBで、CRUDの`READ`処理以外の処理を実行不可能にする。
 
@@ -388,7 +399,7 @@ MySQLでは、『`SELECT ... LOCK IN SHARE MODE`』を使用する。
 
 ### 占有ロック
 
-DBの機能を使用して、テーブルやレコードをロックする。
+DBの機能を使用して、テーブルの指定範囲をロックする。
 
 DBで、CRUDの全ての処理を実行不可能にする。
 
@@ -422,11 +433,19 @@ MySQLでは、『`SELECT ... FOR UPDATE`』を使用する。
 
 ## 03-03. アプリケーションによる排他制御
 
+### アプリケーションによる排他制御
+
+アプリケーションによる実装で、排他制御を実施する方法である。
+
+> - https://qiita.com/daiching/items/835fa37de22b397eece0#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AB%E3%81%AF%EF%BC%92%E7%A8%AE%E9%A1%9E%E3%81%AE%E6%A6%82%E5%BF%B5%E3%81%8C%E3%81%82%E3%82%8B
+
+<br>
+
 ### 楽観的ロック
 
 #### ▼ 楽観的ロックとは
 
-アプリケーションの機能を使用して、テーブルやレコードをロックする。
+アプリケーションの実装で、テーブルの指定範囲をロックする。
 
 DBのレコードにはバージョン値 (例：最終更新日時など) が存在しているとする。
 
@@ -456,7 +475,7 @@ PHPのORMであるDoctrineのロック機能については、以下のリンク
 
 #### ▼ 悲観的ロックとは
 
-アプリケーションの機能を使用して、テーブルやレコードをロックする。
+アプリケーションの実装で、テーブルの指定範囲をロックする。
 
 ユーザAがDBのレコードを取得した時点でロックを起動し、ユーザBはレコードの取得すら不可能にする。
 
