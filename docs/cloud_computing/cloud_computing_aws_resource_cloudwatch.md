@@ -307,6 +307,7 @@ $ service awslogs start
 ```sql
 fields @timestamp, @message, @logStream
 | filter @message like /(?i)(Error)/
+| filter stream like /(stderr)/
 | sort @timestamp desc
 | limit 100
 ```
@@ -316,6 +317,7 @@ fields @timestamp, @message, @logStream
 ```sql
 fields @timestamp, @message, @logStream
 | filter log like /(?i)(Error)/
+| filter stream like /(stderr)/
 | sort @timestamp desc
 | limit 100
 ```
@@ -352,6 +354,7 @@ JSONがネストになっている場合、`filter`では`.` (ドット) でつ�
 fields @timestamp, @message, @logStream
 | filter kubernetes.container_name like /(foo-app)/
 | filter @message like /(?i)(Error)/
+| filter stream like /(stderr)/
 | sort @timestamp desc
 | limit 100
 ```
