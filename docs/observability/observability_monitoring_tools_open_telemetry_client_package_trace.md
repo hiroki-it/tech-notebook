@@ -1404,7 +1404,7 @@ func NewTracerProvider() {
 
 > - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/semconv/v1.20.0/resource.go
 
-#### ▼ DBクエリの場合
+#### ▼ DB操作の場合
 
 デフォルトで、さまざまな属性を持っている。
 

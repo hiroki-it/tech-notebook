@@ -256,7 +256,7 @@ import {PrismaClient} from '@prisma/client'
 let prismaClientOption = {
   // データを取得するまでのタイムアウト時間 (デフォルトは2000ms)
   transactionOptions: {
-    // データを取得するまでのタイムアウト時間 (デフォルトは2000ms)
+    // 他のトランザクションによる排他制御ロックが解除されるまでの待機時間 (デフォルトは2000ms)
     maxWait: 5000,
     // ロールバックを含めて全体が完了するまでのタイムアウト時間 (デフォルトは5000ms)
     timeout: 10000,
@@ -296,7 +296,7 @@ const prisma = new PrismaClient()
 let prismaClientOption = {
   // データを取得するまでのタイムアウト時間 (デフォルトは2000ms)
   transactionOptions: {
-    // データを取得するまでのタイムアウト時間 (デフォルトは2000ms)
+    // 他のトランザクションによる排他制御ロックが解除されるまでの待機時間 (デフォルトは2000ms)
     maxWait: 5000,
     // ロールバックを含めて全体が完了するまでのタイムアウト時間 (デフォルトは5000ms)
     timeout: 10000,

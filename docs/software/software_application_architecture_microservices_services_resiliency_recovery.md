@@ -46,7 +46,7 @@ description: 回復方法＠信頼性の知見を記録しています。
 
 ### リトライとは
 
-処理（例：通信、DBクエリ、ファイル操作）が失敗した場合に、一時的な問題に起因している可能性を考慮して、再実行によって処理の成功を試みるデザインパターンである。
+処理が失敗した場合に、一時的な問題に起因している可能性を考慮して、再実行によって処理の成功を試みるデザインパターンである。
 
 > - https://www.geeksforgeeks.org/retry-pattern-in-microservices/
 
@@ -56,7 +56,9 @@ description: 回復方法＠信頼性の知見を記録しています。
 
 ### タイムアウトパターンとは
 
-タイムアウトは、時間のかかる処理（例：通信、計算、ファイル操作など）に制限時間を設けるデザインパターンである。これにより、時間のかかる処理がハードウェアリソースを使用し続けることを防ぎ、他の処理にハードウェアリソースを譲る。
+タイムアウトは、時間のかかる処理（例：通信、DB操作、ファイル操作、計算など）に制限時間を設けるデザインパターンである。
+
+これにより、時間のかかる処理がハードウェアリソースを使用し続けることを防ぎ、他の処理にハードウェアリソースを譲る。
 
 > - https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns
 > - https://medium.com/@kumar.atul.2122/timeout-pattern-resilience-microservice-design-pattern-aa7f084bcc66

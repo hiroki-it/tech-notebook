@@ -293,13 +293,11 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 
 <br>
 
-## 03. 排他制御
+## 03. DBMSによる排他制御
 
 ### 排他制御とは
 
-RDBMSによる`UPDATE`処理競合問題を回避する仕組みのことである。
-
-排他制御にいくつかの手法 (テーブルロック、レコードロック、セマフォ、ミューテックスなど) がある。
+RDBMSまたはアプリケーションによる`UPDATE`処理競合問題を回避する仕組みのことである。
 
 > - https://qiita.com/momotaro98/items/5e37eefc62d726a30aee
 
@@ -325,19 +323,53 @@ RDBMSによる`UPDATE`処理競合問題を回避する仕組みのことであ�
 
 <br>
 
+### ロックの範囲
+
+#### ▼ ロックの範囲の比較
+
+![ロックの粒度](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ロックの粒度-1.png)
+
+DB ＞ テーブル ＞ レコード ＞ カラム の順に、粒度は大きい。
+
+ロックの粒度が細かければ、トランザクションの並列実行性が高くなって効率は向上する (複数の人がDBに対して作業できる) 。
+
+しかし、ロックの粒度を細かくすればするほど、それだけベース管理システムのCPU負荷は大きくなる。
+
+![ロックの粒度-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ロックの粒度-2.jpg)
+
+#### ▼ テーブルロック
+
+あるトランザクションの実行によって、RDBMSはクエリで操作したレコード (外部キーのあるレコードを含む) をロックする。
+
+あるトランザクションがテーブルをロックすると、そのテーブルに対する他のすべてのトランザクションのクエリがブロックする。
+
+ロックが解除されるまでトランザクションは待機状態になり、ロック待機時間を超過するとエラーになる。
+
+#### ▼ レコードロック
+
+あるトランザクションの実行によって、RDBMSはクエリで操作したテーブル (外部キーのあるテーブルを含む) をロックする。
+
+あるトランザクションがテーブルのレコードをロックすると、そのレコードに対する他のすべてのトランザクションのクエリがブロックする。
+
+同じテーブルであっても、他のレコードに対するクエリであればブロックしない。
+
+ロックが解除されるまでトランザクションは待機状態になり、ロック待機時間を超過するとエラーになる。
+
+> - https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks
+
+<br>
+
 ### 排他制御を採用しなくてもよい場合
 
 `UPDATE`処理競合問題を許容し、排他制御を使用しない選択肢もある。
 
 <br>
 
-## 03-02. 排他制御
+## 03-02. DBMSによる排他制御
 
 ### 共有ロック
 
-#### ▼ 共有ロックとは
-
-DBの機能を使用して、テーブルをロックする。
+DBの機能を使用して、テーブルやレコードをロックする。
 
 DBで、CRUDの`READ`処理以外の処理を実行不可能にする。
 
@@ -350,14 +382,13 @@ MySQLでは、『`SELECT ... LOCK IN SHARE MODE`』を使用する。
 ![排他制御-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-3.gif)
 
 > - https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
+> - https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks
 
 <br>
 
 ### 占有ロック
 
-#### ▼ 占有ロックとは
-
-DBの機能を使用して、テーブルをロックする。
+DBの機能を使用して、テーブルやレコードをロックする。
 
 DBで、CRUDの全ての処理を実行不可能にする。
 
@@ -368,24 +399,7 @@ MySQLでは、『`SELECT ... FOR UPDATE`』を使用する。
 ![排他制御-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-3.gif)
 
 > - https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
-
-<br>
-
-### ロックの範囲
-
-#### ▼ レコードロック
-
-あるトランザクションの実行によって、RDBMSはクエリで操作したテーブル (外部キーのあるテーブルを含む) をロックする。
-
-あるトランザクションがテーブルのレコードをロックすると、そのレコードに対する他のすべてのトランザクションのクエリがブロックする。
-
-同じテーブルであっても、他のレコードに対するクエリであればブロックしない。
-
-#### ▼ テーブルロック
-
-あるトランザクションの実行によって、RDBMSはクエリで操作したレコード (外部キーのあるレコードを含む) をロックする。
-
-あるトランザクションがテーブルをロックすると、そのテーブルに対する他のすべてのトランザクションのクエリがブロックする。
+> - https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks
 
 <br>
 
@@ -408,25 +422,11 @@ MySQLでは、『`SELECT ... FOR UPDATE`』を使用する。
 
 ## 03-03. アプリケーションによる排他制御
 
-### ロックの粒度
-
-![ロックの粒度](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ロックの粒度-1.png)
-
-DB ＞ テーブル ＞ レコード ＞ カラム の順に、粒度は大きい。
-
-ロックの粒度が細かければ、トランザクションの並列実行性が高くなって効率は向上する (複数の人がDBに対して作業できる) 。
-
-しかし、ロックの粒度を細かくすればするほど、それだけベース管理システムのCPU負荷は大きくなる。
-
-![ロックの粒度-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ロックの粒度-2.jpg)
-
-<br>
-
 ### 楽観的ロック
 
 #### ▼ 楽観的ロックとは
 
-アプリケーションまたはDBの機能を使用して、テーブルをロックする。
+アプリケーションの機能を使用して、テーブルやレコードをロックする。
 
 DBのレコードにはバージョン値 (例：最終更新日時など) が存在しているとする。
 
@@ -456,7 +456,7 @@ PHPのORMであるDoctrineのロック機能については、以下のリンク
 
 #### ▼ 悲観的ロックとは
 
-アプリケーションまたはDBの機能を使用して、テーブルをロックする。
+アプリケーションの機能を使用して、テーブルやレコードをロックする。
 
 ユーザAがDBのレコードを取得した時点でロックを起動し、ユーザBはレコードの取得すら不可能にする。
 
