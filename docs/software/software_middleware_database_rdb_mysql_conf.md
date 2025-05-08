@@ -339,6 +339,22 @@ drwxr-x--- 2 mysql mysql    12288 Dec 17 09:54 sys
 
 <br>
 
+### innodb_lock_wait_timeout
+
+#### ▼ innodb_lock_wait_timeoutとは
+
+トランザクションによるレコードロック中に、他のトランザクションがロックの解除を待機する最大時間を設定する。
+
+```ini
+[mysqld]
+innodb_lock_wait_timeout = 50
+```
+
+> - https://dev.mysql.com/doc/refman/8.4/en/innodb-parameters.html#sysvar_innodb_lock_wait_timeout
+> - https://qiita.com/picapica/items/09322fa98254a3b4a099#%E5%85%88%E3%81%AB%E8%A6%81%E7%B4%84
+
+<br>
+
 ### log-error
 
 #### ▼ log-errorとは

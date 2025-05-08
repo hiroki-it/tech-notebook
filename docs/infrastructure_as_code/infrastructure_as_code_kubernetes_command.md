@@ -1380,8 +1380,10 @@ $ kubectl logs -f <Pod名> --previous
 
 タイムスタンプを取得する。
 
+コンテナがタイムスアンプを出力していない場合に役立つ。
+
 ```bash
-$ kubectl logs -n <Namespace名>  --timestamps=true <Pod名> -c <コンテナ名> | grep -i error
+$ kubectl logs -n <Namespace名> --timestamps <Pod名> -c <コンテナ名> | grep -i error
 
 2021/11/27 08:34:01 [ERROR] *****
 ```

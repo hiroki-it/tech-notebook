@@ -331,3 +331,16 @@ main()
 > - https://www.prisma.io/docs/orm/prisma-client/queries/transactions#transaction-options
 
 <br>
+
+## 05. 例外
+
+いずれの例外も以下のすべて／一部のフィールドをもつ。
+
+- code
+- meta
+- message
+- clientVersion
+
+> - https://www.prisma.io/docs/orm/reference/error-reference
+
+<br>
