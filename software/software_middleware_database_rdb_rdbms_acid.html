@@ -4193,6 +4193,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">
+      UPDATE処理競合問題
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       ロックの範囲
@@ -4226,35 +4235,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#update" class="md-nav__link">
-    <span class="md-ellipsis">
-      UPDATE処理競合問題
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="UPDATE処理競合問題">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#update_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ UPDATE処理競合問題とは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#_22" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 排他制御を採用しなくてもよい
+      排他制御を採用しなくてもよい場合
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -27834,6 +27819,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">
+      UPDATE処理競合問題
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       ロックの範囲
@@ -27867,35 +27861,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#update" class="md-nav__link">
-    <span class="md-ellipsis">
-      UPDATE処理競合問題
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="UPDATE処理競合問題">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#update_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ UPDATE処理競合問題とは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#_22" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 排他制御を採用しなくてもよい
+      排他制御を採用しなくてもよい場合
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -28437,7 +28407,7 @@
 <p><br></p>
 <h2 id="03">03. 排他制御<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_18">排他制御とは<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
-<p><code>UPDATE</code>処理競合問題を回避する仕組みのことである。</p>
+<p>RDBMSによる<code>UPDATE</code>処理競合問題を回避する仕組みのことである。</p>
 <p>排他制御にいくつかの手法 (テーブルロック、レコードロック、セマフォ、ミューテックスなど) がある。</p>
 <blockquote>
 <ul>
@@ -28445,17 +28415,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_19">ロックの範囲<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
-<h4 id="_20">▼ レコードロック<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p>あるトランザクションの実行によって、RDBMSはクエリで操作したテーブル (外部キーのあるテーブルを含む) をロックする。</p>
-<p>あるトランザクションがテーブルのレコードをロックすると、そのレコードに対する他のすべてのトランザクションのクエリがブロックする。</p>
-<p>同じテーブルであっても、他のレコードに対するクエリであればブロックしない。</p>
-<h4 id="_21">▼ テーブルロック<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>あるトランザクションの実行によって、RDBMSはクエリで操作したレコード (外部キーのあるレコードを含む) をロックする。</p>
-<p>あるトランザクションがテーブルをロックすると、そのテーブルに対する他のすべてのトランザクションのクエリがブロックする。</p>
-<p><br></p>
 <h3 id="update"><code>UPDATE</code>処理競合問題<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
-<h4 id="update_1">▼ <code>UPDATE</code>処理競合問題とは<a class="headerlink" href="#update_1" title="Permanent link">&para;</a></h4>
 <p>アプリケーションのレコードの<code>UPDATE</code>処理が、レコードの取得と更新からなるとする。</p>
 <p>ソフトウェアのユーザAとBがおり、ユーザBが<code>UPDATE</code>処理時に取得しなければならないレコードの状態は、ユーザAが<code>UPDATE</code>処理を終えた後のものである。</p>
 <p>しかし、ユーザAがレコードを取得してから更新を終えるまでの間に、ユーザBが同じくレコードを取得してしまうことがある。</p>
@@ -28468,7 +28428,16 @@
 <li><a href="https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc">https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc</a></li>
 </ul>
 </blockquote>
-<h4 id="_22">▼ 排他制御を採用しなくてもよい<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<h3 id="_19">ロックの範囲<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<h4 id="_20">▼ レコードロック<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p>あるトランザクションの実行によって、RDBMSはクエリで操作したテーブル (外部キーのあるテーブルを含む) をロックする。</p>
+<p>あるトランザクションがテーブルのレコードをロックすると、そのレコードに対する他のすべてのトランザクションのクエリがブロックする。</p>
+<p>同じテーブルであっても、他のレコードに対するクエリであればブロックしない。</p>
+<h4 id="_21">▼ テーブルロック<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>あるトランザクションの実行によって、RDBMSはクエリで操作したレコード (外部キーのあるレコードを含む) をロックする。</p>
+<p>あるトランザクションがテーブルをロックすると、そのテーブルに対する他のすべてのトランザクションのクエリがブロックする。</p>
+<p><br></p>
+<h3 id="_22">排他制御を採用しなくてもよい場合<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <p><code>UPDATE</code>処理競合問題を許容し、排他制御を使用しない選択肢もある。</p>
 <p><br></p>
 <h2 id="03-02">03-02. 排他制御<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
@@ -28648,7 +28617,7 @@ $<span class="w"> </span>barman<span class="w"> </span>list-backup<span class="w
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月8日 12:53:25">2025-05-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月8日 13:03:53">2025-05-08</span>
   </span>
 
     
