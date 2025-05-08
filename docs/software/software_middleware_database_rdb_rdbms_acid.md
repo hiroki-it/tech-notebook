@@ -297,13 +297,37 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 
 ### 排他制御とは
 
-`UPDATE`処理競合問題を回避する仕組みのことである。
+RDBMSによる`UPDATE`処理競合問題を回避する仕組みのことである。
+
+
 
 排他制御にいくつかの手法 (テーブルロック、レコードロック、セマフォ、ミューテックスなど) がある。
 
 > - https://qiita.com/momotaro98/items/5e37eefc62d726a30aee
 
 <br>
+
+
+
+### `UPDATE`処理競合問題
+
+アプリケーションのレコードの`UPDATE`処理が、レコードの取得と更新からなるとする。
+
+ソフトウェアのユーザAとBがおり、ユーザBが`UPDATE`処理時に取得しなければならないレコードの状態は、ユーザAが`UPDATE`処理を終えた後のものである。
+
+しかし、ユーザAがレコードを取得してから更新を終えるまでの間に、ユーザBが同じくレコードを取得してしまうことがある。
+
+結果として、ユーザBの`UPDATE`処理によって、ユーザAの処理が上書きされ、無かったことになってしまう。
+
+![排他制御-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-1.png)
+
+ユーザAとユーザBの`UPDATE`処理が並行したとしても、ユーザAの処理が無かったことにならないよう保証する方法として、『排他制御』がある。
+
+![排他制御-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-2.png)
+
+> - https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc
+
+
 
 ### ロックの範囲
 
@@ -323,27 +347,7 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 
 <br>
 
-### `UPDATE`処理競合問題
-
-#### ▼ `UPDATE`処理競合問題とは
-
-アプリケーションのレコードの`UPDATE`処理が、レコードの取得と更新からなるとする。
-
-ソフトウェアのユーザAとBがおり、ユーザBが`UPDATE`処理時に取得しなければならないレコードの状態は、ユーザAが`UPDATE`処理を終えた後のものである。
-
-しかし、ユーザAがレコードを取得してから更新を終えるまでの間に、ユーザBが同じくレコードを取得してしまうことがある。
-
-結果として、ユーザBの`UPDATE`処理によって、ユーザAの処理が上書きされ、無かったことになってしまう。
-
-![排他制御-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-1.png)
-
-ユーザAとユーザBの`UPDATE`処理が並行したとしても、ユーザAの処理が無かったことにならないよう保証する方法として、『排他制御』がある。
-
-![排他制御-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-2.png)
-
-> - https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc
-
-#### ▼ 排他制御を採用しなくてもよい
+### 排他制御を採用しなくてもよい場合
 
 `UPDATE`処理競合問題を許容し、排他制御を使用しない選択肢もある。
 
