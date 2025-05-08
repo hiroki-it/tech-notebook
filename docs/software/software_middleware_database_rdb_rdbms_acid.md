@@ -333,7 +333,9 @@ RDBMSまたはアプリケーションによる`UPDATE`処理競合問題を回�
 
 同じテーブルであっても、他のレコードに対するクエリであればブロックしない。
 
-ロックが解除されるまでトランザクションは待機状態になり、ロック待機時間を超過するとエラーになる。
+ロックが解除されるまでトランザクションは待機状態になる。
+
+アプリケーションやRDBMSでは、トランザクションにロック待機時間を設定しておき (例：prismaの`maxWait`値、MySQLの`innodb_lock_wait_timeout`値) 、これを超過した場合にエラーになるようにする。
 
 > - https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks
 > - https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E
@@ -342,20 +344,21 @@ RDBMSまたはアプリケーションによる`UPDATE`処理競合問題を回�
 
 #### ▼ ギャップロック
 
+記入中...
+
 > - https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks
 > - https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E
 
 #### ▼ ネクストキーロック
+
+記入中...
 
 > - https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks
 > - https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E
 
 #### ▼ 空振りロック
 
-> - https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks
-> - https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E
-
-#### ▼ ギャップロック
+記入中...
 
 > - https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks
 > - https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E
