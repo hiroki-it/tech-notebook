@@ -334,6 +334,14 @@ main()
 
 ## 05. エラー
 
+### Prisma
+
+Prismaは、トランザクションが何らかの理由で失敗した場合に、固有のエラーを返却する。
+
+エラーをキャッチし、開発者向けの例外としてスローする必要がある。
+
+また、より上のレイヤーに伝播し、ユーザーインターフェースのレイヤーでは、ユーザー向けのエラーメッセージとして吸収する。
+
 ### エラーのフィールド
 
 いずれのエラーも以下のすべて／一部のフィールドをもつ。
@@ -349,17 +357,19 @@ main()
 
 ### PrismaClientKnownRequestError
 
-Prisma Client がDBに対してクエリを実行してエラーが発生した場合に、それが想定内の何らかのエラーの場合は、PrismaClientKnownRequestErrorに含まれる。
+#### ▼ PrismaClientKnownRequestErrorとは
+
+Prisma Client がDBに対してトランザクションを実行しエラーが発生したとする。
+
+それが想定内の何らかのエラーの場合は、PrismaClientKnownRequestErrorに含まれる。
 
 ```typescript
-// PrismaClient と Prisma 名前空間をインポートする
 import {PrismaClient, Prisma} from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-// ユニーク制約違反 (P2002) を発生・ハンドリングする非同期関数
+// ユーザーを作成する
 async function createUser(name: string, email: string) {
-  console.log(`\n--- ユーザー作成を試行中 (メール: ${email}) ---`);
   try {
     // Prisma 操作を実行する
     const newUser = await prisma.user.create({
@@ -368,38 +378,34 @@ async function createUser(name: string, email: string) {
         email: email,
       },
     });
-    logger.info(`ユーザー作成成功: ${newUser.id}`);
     return newUser;
-  } catch (error) {
-    // PrismaClientKnownRequestError であるかチェックする
-    if (error instanceof Prisma.PrismaClientKnownRequestError) {
-      console.error("Prisma Known Error が発生した:", error.code);
-      console.error("エラー詳細:", error.meta);
-      // 特定のコード(P2002, P2025など)に基づいて具体的な処理を行う...
-      throw new Error(
-        `データベース関連の既知のエラーが発生した (${error.code})`,
+  } catch (e) {
+    // 例外が PrismaClientKnownRequestError であるかチェックする
+    // さまざまなエラーコード (P2002, P2025など) になる可能性がある
+    if (e instanceof Prisma.PrismaClientKnownRequestError) {
+      console.error(
+        `[Prisma Error] Code: ${e.code}, Message: ${e.message}, Meta: ${JSON.stringify(e.meta)}`,
       );
+      throw new Error("データベース処理中に不明なエラーが発生しました");
 
-      // エラーコードのないエラーの場合、PrismaClientUnknownRequestErrorになる
-    } else if (error instanceof Prisma.PrismaClientUnknownRequestError) {
-      console.error("Prisma Unknown Request Error が発生した:", error.message);
-      // 未知のエラーなので、詳細をログに記録し、一般的なエラーメッセージを返すことが多い
-      throw new Error("データベース処理中に不明なエラーが発生した");
+      // エラーコードのない例外の場合、PrismaClientUnknownRequestErrorになる
+    } else if (e instanceof Prisma.PrismaClientUnknownRequestError) {
+      console.error(
+        `[Prisma Error] Message: ${e.message}, Meta: ${JSON.stringify(e.meta)}`,
+      );
+      throw new Error("データベース処理中に不明なエラーが発生しました");
     } else {
       // それ以外の場合、予期せぬエラーとして例外をスローする
-      console.error("予期しないエラーが発生した:", error);
-      throw new Error("システムエラーが発生した");
+      console.error(
+        `[Prisma Error] Message: ${e.message}, Meta: ${JSON.stringify(e.meta)}`,
+      );
+      throw new Error("システムエラーが発生しました");
     }
   } finally {
     // 接続を閉じる
     await prisma.$disconnect();
   }
 }
-
-// 例の実行 (同じメールアドレスを複数回実行すると P2002 が発生する)
-// prisma migrate reset などでデータベースをリセットしない限り、2回目以降の実行でエラーになる
-// createUser('Alice', 'alice@example.com');
-// createUser('Bob', 'alice@example.com'); // P2002 エラーが発生する
 ```
 
 > - https://www.prisma.io/docs/orm/reference/error-reference#prismaclientknownrequesterror
