@@ -9664,9 +9664,33 @@
         <li class="md-nav__item">
   <a href="#05" class="md-nav__link">
     <span class="md-ellipsis">
-      05. 例外
+      05. エラー
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="05. エラー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラーのフィールド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prismaclientknownrequesterror" class="md-nav__link">
+    <span class="md-ellipsis">
+      PrismaClientKnownRequestError
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -27322,9 +27346,33 @@
         <li class="md-nav__item">
   <a href="#05" class="md-nav__link">
     <span class="md-ellipsis">
-      05. 例外
+      05. エラー
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="05. エラー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラーのフィールド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prismaclientknownrequesterror" class="md-nav__link">
+    <span class="md-ellipsis">
+      PrismaClientKnownRequestError
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -27626,8 +27674,9 @@ q+werty%3D%2F%3B
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="05">05. 例外<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
-<p>いずれの例外も以下のすべて／一部のフィールドをもつ。</p>
+<h2 id="05">05. エラー<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="_4">エラーのフィールド<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>いずれのエラーも以下のすべて／一部のフィールドをもつ。</p>
 <ul>
 <li>code</li>
 <li>meta</li>
@@ -27637,6 +27686,77 @@ q+werty%3D%2F%3B
 <blockquote>
 <ul>
 <li><a href="https://www.prisma.io/docs/orm/reference/error-reference">https://www.prisma.io/docs/orm/reference/error-reference</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="prismaclientknownrequesterror">PrismaClientKnownRequestError<a class="headerlink" href="#prismaclientknownrequesterror" title="Permanent link">&para;</a></h3>
+<p>Prisma Client がDBに対してクエリを実行してエラーが発生した場合に、それが想定内の何らかのエラーの場合は、PrismaClientKnownRequestErrorに含まれる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// PrismaClient と Prisma 名前空間をインポートする</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">,</span><span class="w"> </span><span class="nx">Prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">prisma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PrismaClient</span><span class="p">();</span>
+
+<span class="c1">// ユニーク制約違反 (P2002) を発生・ハンドリングする非同期関数</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">createUser</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`\n--- ユーザー作成を試行中 (メール: </span><span class="si">${</span><span class="nx">email</span><span class="si">}</span><span class="sb">) ---`</span><span class="p">);</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Prisma 操作を実行する（既に存在するメールアドレスで作成を試みることを想定）</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">newUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">name</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">email</span><span class="p">,</span><span class="w"> </span><span class="c1">// このメールアドレスが既に存在する場合、P2002 エラーが発生する</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;ユーザー作成成功:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">newUser</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">newUser</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// キャッチしたエラーが PrismaClientKnownRequestError であるかチェックする</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="nx">Prisma</span><span class="p">.</span><span class="nx">PrismaClientKnownRequestError</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Prisma Known Error が発生した:&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;エラーコード:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">code</span><span class="p">);</span>
+<span class="w">      </span><span class="c1">// エラーメタ情報には、違反したフィールドなどの詳細が含まれる場合がある</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;エラーメタ情報:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">meta</span><span class="p">);</span>
+
+<span class="w">      </span><span class="c1">// エラーコードが P2002 (ユニーク制約違反) であるかチェックする</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">code</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;P2002&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 違反したフィールド名を取得する（meta に含まれる場合）</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">meta</span><span class="o">?</span><span class="p">.</span><span class="nx">target</span><span class="p">)</span>
+<span class="w">          </span><span class="o">?</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+<span class="w">          </span><span class="o">:</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">meta</span><span class="o">?</span><span class="p">.</span><span class="nx">target</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span>
+<span class="w">          </span><span class="sb">`ユニーク制約違反が発生した: フィールド &quot;</span><span class="si">${</span><span class="nx">target</span><span class="si">}</span><span class="sb">&quot; は既に使用されている`</span><span class="p">,</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// ユーザーに対するエラーを例外としてスローする</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span>
+<span class="w">          </span><span class="sb">`入力された</span><span class="si">${</span><span class="nx">target</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">target</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="si">}</span><span class="sb">は既に使用されている`</span><span class="p">,</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Prismaの他のエラーの場合はそのままスローする</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span>
+<span class="w">          </span><span class="sb">`未ハンドリングの Prisma Known Error (</span><span class="si">${</span><span class="nx">error</span><span class="p">.</span><span class="nx">code</span><span class="si">}</span><span class="sb">):`</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">,</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;データベース操作中に予期しないエラーが発生した&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// Prismaのエラーではない場合、予期せぬエラーとして例外をスローする</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;予期しないエラーが発生した:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;システムエラーが発生した&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 接続を閉じる</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">$disconnect</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 例の実行 (同じメールアドレスを複数回実行すると P2002 が発生する)</span>
+<span class="c1">// prisma migrate reset などでデータベースをリセットしない限り、2回目以降の実行でエラーになる</span>
+<span class="c1">// createUser(&#39;Alice&#39;, &#39;alice@example.com&#39;);</span>
+<span class="c1">// createUser(&#39;Bob&#39;, &#39;alice@example.com&#39;); // P2002 エラーが発生する</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.prisma.io/docs/orm/reference/error-reference#prismaclientknownrequesterror">https://www.prisma.io/docs/orm/reference/error-reference#prismaclientknownrequesterror</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -27660,7 +27780,7 @@ q+werty%3D%2F%3B
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月8日 22:51:53">2025-05-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月9日 12:08:27">2025-05-09</span>
   </span>
 
     
