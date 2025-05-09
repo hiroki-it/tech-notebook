@@ -236,8 +236,8 @@ default_authentication_plugin=mysql_native_password
 # mysql_native_password=ON
 ```
 
-```bash
-mysql> SELECT user, host, plugin FROM mysql.user;
+```mysql
+SELECT user, host, plugin FROM mysql.user;
 
 +------------------+-----------+-----------------------+
 | user             | host      | plugin                |
@@ -257,8 +257,8 @@ MySQL`v8.0`以降では、SHA-256プラガブル認証がデフォルトにな�
 default_authentication_plugin=caching_sha2_password
 ```
 
-```bash
-mysql> select user, host, plugin from mysql.user;
+```mysql
+select user, host, plugin from mysql.user;
 
 +------------------+-----------+-----------------------+
 | user             | host      | plugin                |

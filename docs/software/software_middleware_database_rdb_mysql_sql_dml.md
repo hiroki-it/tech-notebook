@@ -549,16 +549,30 @@ INSERT INTO <テーブル名> VALUES ('<カラム名>','<レコード値>'), ('<
 
 ## 06. SHOW
 
+### TABLES
+
 DBを閲覧する。
 
 主に動作確認使用できる。
 
-```bash
-mysql> SHOW TABLES;
+```mysql
+SHOW TABLES;
 
 +-------------------------------+
 | Tables_in_<DB名>              |
 +-------------------------------+
+```
+
+<br>
+
+### ENGINES
+
+MySQL の InnoDB ストレージエンジンを確認する。
+
+`\G`をつけると、読みやすく整形してくれる。
+
+```mysql
+SHOW ENGINE INNODB STATUS\G
 ```
 
 <br>
