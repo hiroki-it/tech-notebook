@@ -365,51 +365,124 @@ Prisma Client がDBに対してトランザクションを実行しエラーが�
 
 それが想定内の何らかのエラーの場合は、PrismaClientKnownRequestErrorに含まれる。
 
+> - https://www.prisma.io/docs/orm/reference/error-reference#prismaclientknownrequesterror
+
+#### ▼ インフラストラクチャレイヤーでtry-catchする
+
 ```typescript
+// ユースケースレイヤー
 import {PrismaClient, Prisma} from "@prisma/client";
 
-const prisma = new PrismaClient();
+class UserUseCase {
+  constructor(repository: UserRepository) {
+    this.repository = repository;
+  }
 
-// ユーザーを作成する
-async function createUser(email: string, name: string) {
-  try {
-    // Prisma 操作を実行する
-    const newUser = await prisma.user.create({
+  // ユーザーを作成する
+  public async createUser(email: string, name: string) {
+    try {
+      const newUser = await prisma.user.create({
+        data: {
+          email: email,
+          name: name,
+        },
+      });
+      return newUser;
+    } catch (e) {
+      // 例外が PrismaClientKnownRequestError であるかチェックする
+      // さまざまなエラーコード (P2002, P2025など) になる可能性がある
+      if (e instanceof Prisma.PrismaClientKnownRequestError) {
+        console.error(
+          `[Prisma Error] Code: ${e.code}, Message: ${e.message}, Meta: ${JSON.stringify(e.meta)}`,
+        );
+        throw new Error("データベース処理中に不明なエラーが発生しました");
+
+        // エラーコードのない例外の場合、PrismaClientUnknownRequestErrorになる
+      } else if (e instanceof Prisma.PrismaClientUnknownRequestError) {
+        console.error(
+          `[Prisma Error] Message: ${e.message}, Meta: ${JSON.stringify(e.meta)}`,
+        );
+        throw new Error("データベース処理中に不明なエラーが発生しました");
+      } else {
+        // それ以外の場合、予期せぬエラーとして例外をスローする
+        console.error(
+          `[Prisma Error] Message: ${e.message}, Meta: ${JSON.stringify(e.meta)}`,
+        );
+        throw new Error("システムエラーが発生しました");
+      }
+    } finally {
+      // 接続を閉じる
+      await prisma.$disconnect();
+    }
+  }
+}
+```
+
+#### ▼ インフラストラクチャレイヤーより上位のレイヤーでtry-catchする
+
+```typescript
+// インフラストラクチャレイヤー
+import {PrismaClient, Prisma} from "@prisma/client";
+
+class UserUseCase {
+  constructor(repository: UserRepository) {
+    this.repository = repository;
+  }
+
+  public async createUser(email: string, name: string) {
+    try {
+      user = this.repository.createUser(email, name);
+      return user;
+    } catch (e) {
+      // 例外が PrismaClientKnownRequestError であるかチェックする
+      // さまざまなエラーコード (P2002, P2025など) になる可能性がある
+      if (e instanceof Prisma.PrismaClientKnownRequestError) {
+        console.error(
+          `[Prisma Error] Code: ${e.code}, Message: ${e.message}, Meta: ${JSON.stringify(e.meta)}`,
+        );
+        throw new Error("データベース処理中に不明なエラーが発生しました");
+
+        // エラーコードのない例外の場合、PrismaClientUnknownRequestErrorになる
+      } else if (e instanceof Prisma.PrismaClientUnknownRequestError) {
+        console.error(
+          `[Prisma Error] Message: ${e.message}, Meta: ${JSON.stringify(e.meta)}`,
+        );
+        throw new Error("データベース処理中に不明なエラーが発生しました");
+      } else {
+        // それ以外の場合、予期せぬエラーとして例外をスローする
+        console.error(
+          `[Prisma Error] Message: ${e.message}, Meta: ${JSON.stringify(e.meta)}`,
+        );
+        throw new Error("システムエラーが発生しました");
+      }
+    }
+  }
+}
+```
+
+```typescript
+// リポジトリ
+import {PrismaClient, Prisma} from "@prisma/client";
+
+class UserRepository {
+
+  constructor(prismaClient: PrismaClient) {
+    this.prisma = prismaClient;
+  }
+
+  // ユーザーを作成する
+  async function createUser(email: string, name: string) {
+
+    const user = await this.prisma.user.create({
       data: {
         email: email,
         name: name,
       },
     });
-    return newUser;
-  } catch (e) {
-    // 例外が PrismaClientKnownRequestError であるかチェックする
-    // さまざまなエラーコード (P2002, P2025など) になる可能性がある
-    if (e instanceof Prisma.PrismaClientKnownRequestError) {
-      console.error(
-        `[Prisma Error] Code: ${e.code}, Message: ${e.message}, Meta: ${JSON.stringify(e.meta)}`,
-      );
-      throw new Error("データベース処理中に不明なエラーが発生しました");
 
-      // エラーコードのない例外の場合、PrismaClientUnknownRequestErrorになる
-    } else if (e instanceof Prisma.PrismaClientUnknownRequestError) {
-      console.error(
-        `[Prisma Error] Message: ${e.message}, Meta: ${JSON.stringify(e.meta)}`,
-      );
-      throw new Error("データベース処理中に不明なエラーが発生しました");
-    } else {
-      // それ以外の場合、予期せぬエラーとして例外をスローする
-      console.error(
-        `[Prisma Error] Message: ${e.message}, Meta: ${JSON.stringify(e.meta)}`,
-      );
-      throw new Error("システムエラーが発生しました");
-    }
-  } finally {
-    // 接続を閉じる
-    await prisma.$disconnect();
+    return user;
   }
 }
 ```
-
-> - https://www.prisma.io/docs/orm/reference/error-reference#prismaclientknownrequesterror
 
 <br>

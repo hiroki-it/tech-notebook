@@ -148,9 +148,10 @@ try{
 
 ### トランザクションID
 
-一部のRDBMS (例：PostgreSQL) は、トランザクションを識別するために、トランザクションIDを付与する。
+一部のRDBMS (例：PostgreSQL) は、トランザクションを識別するためにトランザクションIDを付与する。
 
 ```postgresql
+-- PostgreSQLでトランザクションIDを取得する
 SELECT txid_current();
 ```
 
