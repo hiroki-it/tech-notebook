@@ -29,11 +29,11 @@ description: DCL＠SQLの知見を記録しています。
 
 `START TRANSACTION`としてもよい。
 
-```sql
+```mysql
 BEGIN;
 ```
 
-```sql
+```mysql
 START TRANSACTION;
 ```
 
@@ -45,7 +45,7 @@ START TRANSACTION;
 
 コミットを実行しつつ、トランザクションを終了する。
 
-```sql
+```mysql
 -- トランザクションを終了する
 BEGIN;
 
@@ -69,7 +69,7 @@ COMMIT;
 
 アプリケーションに対して、使用するDBに対する全権限を付与する。
 
-```sql
+```mysql
 -- DB名をクオーテーションで囲う必要はない
 GRANT ALL PRIVILEGES ON <DB名>.* TO '<ユーザー名>'
 ```
@@ -78,7 +78,7 @@ GRANT ALL PRIVILEGES ON <DB名>.* TO '<ユーザー名>'
 
 読み出し/書き込みユーザーに対して、使用するDBに対する全権限を付与する。
 
-```sql
+```mysql
 -- DB名をクオーテーションで囲う必要はない
 GRANT ALL PRIVILEGES ON <DB名>.* TO '<ユーザー名>'
 ```
@@ -87,7 +87,7 @@ GRANT ALL PRIVILEGES ON <DB名>.* TO '<ユーザー名>'
 
 使用するDBに対するSELECT権限を付与する。
 
-```sql
+```mysql
 -- DB名をクオーテーションで囲う必要はない
 GRANT SELECT ON <DB名>.* TO '<ユーザー名>';
 ```
@@ -100,7 +100,7 @@ DB名は、シングルクオーテーションで囲う必要が無い。
 
 全権限を付与する場合、`PRIVILEGES`は省略できるが、厳密には省略しないようほうが良い。
 
-```sql
+```mysql
 -- 全てのDBに関する権限を付与
 GRANT ALL PRIVILEGES ON *.* TO "<ユーザー名>";
 
@@ -108,7 +108,7 @@ GRANT ALL PRIVILEGES ON *.* TO "<ユーザー名>";
 GRANT ALL PRIVILEGES ON `%`.* TO "<ユーザー名>";
 ```
 
-```sql
+```mysql
 -- AWS Auroraも同じく
 -- 特定のDBに関する全権限を付与
 GRANT ALL PRIVILEGES ON <DB名>.* TO "<ユーザー名>";
@@ -120,7 +120,7 @@ GRANT ALL PRIVILEGES ON <DB名>.* TO "<ユーザー名>";
 
 特定のDBに関する読み出し権限のみ付与する。
 
-```sql
+```mysql
 GRANT SELECT ON <DB名>.* TO "<ユーザー名>";
 ```
 
@@ -130,13 +130,13 @@ GRANT SELECT ON <DB名>.* TO "<ユーザー名>";
 
 ユーザーに付与されている権限を取得する。
 
-```sql
+```mysql
 SHOW GRANTS FOR "<ユーザー名>";
 ```
 
 作成したのみで権限を何も付与してないユーザーの場合、『DBサーバー内の全DBに関して、全権限なし』を表す`USAGE`として表示される。
 
-```sql
+```mysql
 GRANT USAGE ON *.* TO "<ユーザー名>";
 ```
 
@@ -150,7 +150,7 @@ GRANT USAGE ON *.* TO "<ユーザー名>";
 
 全権限を削除し、GRANT権限をUSAGEに戻す。
 
-```sql
+```mysql
 -- AWS AuroraまたはAWS RDSの場合
 REVOKE ALL PRIVILEGES ON `%`.*
 FROM
@@ -165,7 +165,7 @@ FROM
 
 ### ユーザー名変更
 
-```sql
+```mysql
 RENAME USER "<古いユーザー名>" TO "<新しいユーザー名>";
 ```
 
@@ -179,7 +179,7 @@ RENAME USER "<古いユーザー名>" TO "<新しいユーザー名>";
 
 RDBMSでいう『ロールバック』の概念を実装する。
 
-```sql
+```mysql
 -- トランザクションを開始する
 BEGIN;
 
@@ -201,7 +201,7 @@ COMMIT;
 
 トランザクション後にもう一度クエリを送信すると、データが復元されている。
 
-```sql
+```mysql
 -- データが復元される
 SELECT *
 FROM score;

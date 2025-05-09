@@ -150,7 +150,7 @@ DBインデックスを使用しない場合、SQLの実行時に全てカラム
 
 プライマリーキーあるいはユニークキーのカラムを基準にして、テーブルのカラムを並び替えたDBインデックスのこと。
 
-```sql
+```mysql
 CREATE INDEX foo_index
     ON foo_table (id)
 ```
@@ -159,7 +159,7 @@ CREATE INDEX foo_index
 
 プライマリーキーあるいはユニークキーではないカラムを基準にして、テーブルのカラムを並び替えたDBインデックスのこと。
 
-```sql
+```mysql
 CREATE INDEX foo_index
     ON foo_table (foo_column)
 ```
@@ -174,7 +174,7 @@ CREATE INDEX foo_index
 
 > - https://qiita.com/towtow/items/4089dad004b7c25985e3
 
-```sql
+```mysql
 CREATE INDEX foo_index
     ON foo_table (foo_column, bar_column, ...)
 ```
@@ -183,7 +183,7 @@ CREATE INDEX foo_index
 
 以下のような`foo`テーブルがあり、`name`カラムと`address`カラムを基準に並び替えた`foo_index`という複合DBインデックス名を作成する。
 
-```sql
+```mysql
 CREATE INDEX foo_index
     ON foo_table (name, address)
 ```

@@ -135,7 +135,7 @@ MySQLでは、`\r\n`を使用して、レコード内の値を改行する。
 
 > - https://www.sukerou.com/2020/09/mysql.html
 
-```sql
+```mysql
 INSERT INTO foo_table (id,description) VALUES (1,'前の行\r\n後の行');
 ```
 
@@ -233,7 +233,7 @@ DBで、アプリケーションのCRUD処理に対するバリデーション�
 
 あらかじめ、最初のレコードのみ手動で挿入しておく。
 
-```sql
+```mysql
 -- 採番テーブルの作成する。
 CREATE TABLE id_sequence (id BIGINT NOT NULL);
 
@@ -245,7 +245,7 @@ INSERT INTO id_sequence VALUES (0);
 
 INSERT文のプライマリーキーに『`0`』や『`null`』を割り当てるのではなく、採番テーブルから取得したIDを割り当てるようにする。
 
-```sql
+```mysql
 -- 新しくプライマリーキーを作成する。
 UPDATE id_sequence SET id = LAST_INSERT_ID(id + 1);
 

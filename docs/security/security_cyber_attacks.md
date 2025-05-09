@@ -153,7 +153,7 @@ DBのクエリのパラメーターとなる入力に、不正な文字列を入
 
 例えば、アプリケーションの認証ロジックに以下のようなSQLがあるとする。
 
-```sql
+```mysql
 SELECT * from USER where USER_NAME = '{user_name}' and PASSWORD = '{password}'
 ```
 
@@ -164,7 +164,7 @@ SELECT * from USER where USER_NAME = '{user_name}' and PASSWORD = '{password}'
 
 これにより、以下のSQLを実行することになる。
 
-```sql
+```mysql
 SELECT * from USER where USER_NAME = 'foo' and PASSWORD = 'aaa' or '1' ='1'
 ```
 

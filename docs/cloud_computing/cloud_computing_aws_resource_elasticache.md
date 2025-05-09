@@ -139,7 +139,7 @@ DB側でのクエリキャッシュはパフォーマンス上の問題から廃
 
 : アプリケーションは、AWS RDSの前に、Redisに対してSQLを実行する。
 
-```sql
+```mysql
 SELECT * FROM users;
 ```
 
@@ -181,7 +181,7 @@ SELECT * FROM users;
 
 : 次回、アプリケーションは、AWS RDSの前に、Redisに対してSQLを実行する。
 
-```sql
+```mysql
 SELECT * FROM users;
 ```
 

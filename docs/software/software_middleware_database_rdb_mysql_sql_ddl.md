@@ -31,7 +31,7 @@ description: DDL＠SQLの知見を記録しています。
 
 **＊実装例＊**
 
-```sql
+```mysql
 -- 注文テーブル作成
 CREATE TABLE order_data (
 
@@ -62,7 +62,7 @@ CREATE TABLE order_data (
 
 **＊実装例＊**
 
-```sql
+```mysql
 CREATE VIEW <テーブル名> AS
 SELECT * FROM <テーブル名>;
 ```
@@ -77,7 +77,7 @@ CREATEで以下の４種類を作成する。
 
 パスワードは、例えば`8`文字のパスワードを割り当てる。
 
-```sql
+```mysql
 CREATE USER "<ユーザー名>" IDENTIFIED BY "<パスワード>";
 ```
 
@@ -94,7 +94,7 @@ CREATE USER "<ユーザー名>" IDENTIFIED BY "<パスワード>";
 
 ALL特権は異なる。
 
-```sql
+```mysql
 SELECT * FROM mysql.user;
 ```
 
@@ -106,7 +106,7 @@ SELECT * FROM mysql.user;
 
 #### ▼ ユーザー削除
 
-```sql
+```mysql
 -- ユーザー別のホスト名の確認
 SELECT * FROM mysql.user;
 

@@ -146,6 +146,16 @@ try{
 
 <br>
 
+### トランザクションID
+
+一部のRDBMS (例：PostgreSQL) は、トランザクションを識別するために、トランザクションIDを付与する。
+
+```postgresql
+SELECT txid_current();
+```
+
+<br>
+
 ### コミット
 
 #### ▼ コミット、二相コミットとは
@@ -250,7 +260,7 @@ try{
 
 バックアップファイルの実際のコード
 
-```sql
+```mysql
 -- --------------------------------------------------------
 -- Host:                         example.com
 -- Server version:               10.1.38-MariaDB - mariadb.org binary distribution

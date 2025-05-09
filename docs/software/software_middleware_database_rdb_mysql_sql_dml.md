@@ -43,7 +43,7 @@ MySQLでは、取得結果の並び順が毎回異なるため、プライマリ
 
 > - https://www.quora.com/What-is-the-default-order-of-records-for-a-SELECT-statement-in-MySQL
 
-```sql
+```mysql
 SELECT * FROM <テーブル名>;
 ```
 
@@ -51,7 +51,7 @@ SELECT * FROM <テーブル名>;
 
 指定したカラムで、『フィールド』の合計を取得する。
 
-```sql
+```mysql
 SELECT SUM(<カラム名>) FROM <テーブル名>;
 ```
 
@@ -59,7 +59,7 @@ SELECT SUM(<カラム名>) FROM <テーブル名>;
 
 指定したカラムで、『フィールド』の平均値を取得する。
 
-```sql
+```mysql
 SELECT AVG(<カラム名>) FROM <テーブル名>;
 ```
 
@@ -67,7 +67,7 @@ SELECT AVG(<カラム名>) FROM <テーブル名>;
 
 指定したカラムで、『フィールド』の最小値を取得する。
 
-```sql
+```mysql
 SELECT MIN(<カラム名>) FROM <テーブル名>;
 ```
 
@@ -75,7 +75,7 @@ SELECT MIN(<カラム名>) FROM <テーブル名>;
 
 指定したカラムで、『フィールド』の最大値を取得する。
 
-```sql
+```mysql
 SELECT MAX(<カラム名>) FROM <テーブル名>;
 ```
 
@@ -83,7 +83,7 @@ SELECT MAX(<カラム名>) FROM <テーブル名>;
 
 指定したカラムで、『フィールド』の個数を取得する。
 
-```sql
+```mysql
 SELECT <カラム名> COUNT(*) FROM <テーブル名>;
 ```
 
@@ -93,19 +93,19 @@ SELECT <カラム名> COUNT(*) FROM <テーブル名>;
 
 集合関数を集合関数の中に入れ子状にできない。
 
-```sql
+```mysql
 SELECT AVG(SUM(<カラム名>)) FROM <テーブル名>;
 ```
 
 指定したカラムで、値無しも含む『フィールド』を取得する。
 
-```sql
+```mysql
 SELECT COUNT(<カラム名>) FROM <テーブル名>;
 ```
 
 指定したカラムで、値無しを除いた『フィールド』を取得する。
 
-```sql
+```mysql
 SELECT COUNT(<カラム名>);
 ```
 
@@ -115,7 +115,7 @@ SELECT COUNT(<カラム名>);
 
 テーブル名を指定する必要はない。
 
-```sql
+```mysql
 SELECT LAST_INSERT_ID();
 ```
 
@@ -123,7 +123,7 @@ SELECT LAST_INSERT_ID();
 
 文字列をハッシュ化
 
-```sql
+```mysql
 SELECT MD5("foo");
 ```
 
@@ -135,7 +135,7 @@ SELECT MD5("foo");
 
 `false`であったら、カラム3を取得する。
 
-```sql
+```mysql
 SELECT
     CASE
         WHEN <エイリアス>.<カラム名1> = 1 THEN <エイリアス>.<カラム名2>
@@ -169,7 +169,7 @@ FROM
 
 **＊実装例＊**
 
-```sql
+```mysql
 -- 『カラム』のみでなく、どの『表』なの物なのかも指定
 SELECT
     <テーブル名1>.<カラム名1>,
@@ -188,7 +188,7 @@ WHERE
 
 **＊実装例＊**
 
-```sql
+```mysql
 -- 『カラム』のみでなく、どの『表』なの物なのかも指定
 SELECT
     <テーブル名1>.<カラム名1>,
@@ -251,31 +251,31 @@ $sql = <<<SQL
 
 指定したカラムで、指定した値の『フィールド』を取得する。
 
-```sql
+```mysql
 SELECT * FROM <テーブル名> WHERE <カラム名> in (foo, bar,...);
 ```
 
 指定したカラムで、指定した値以外の『フィールド』を取得する。
 
-```sql
+```mysql
 SELECT * FROM <テーブル名> WHERE <カラム名> not in (<レコード名1>, <レコード名2>,...);
 ```
 
 指定したカラムで、`SELECT`で読み出した値以外の『フィールド』を取得する。
 
-```sql
+```mysql
 SELECT * FROM <テーブル名> WHERE <カラム名> not in (SELECT <カラム名> FROM <テーブル名> WHERE <レコード名> >= 160);
 ```
 
 **【IN句を使用しなかった場合】**
 
-```sql
+```mysql
 SELECT * FROM fruit WHERE name = "みかん" OR name = "りんご";
 ```
 
 **【IN句を使用した場合】**
 
-```sql
+```mysql
 SELECT * FROM fruit WHERE name IN("みかん", "りんご");
 ```
 
@@ -283,7 +283,7 @@ SELECT * FROM fruit WHERE name IN("みかん", "りんご");
 
 書き方が異なるのみで、`in`と同じ出力
 
-```sql
+```mysql
 SELECT
     *
 FROM
@@ -304,7 +304,7 @@ WHERE
 
 指定したカラムをグループ化し、フィールドの値の平均値を算出する。
 
-```sql
+```mysql
 SELECT <カラム名1> AVG(<カラム名2>) FROM <テーブル名> GROUP BY <カラム名1>;
 ```
 
@@ -320,7 +320,7 @@ SELECT <カラム名1> AVG(<カラム名2>) FROM <テーブル名> GROUP BY <カ
 
 **＊実装例＊**
 
-```sql
+```mysql
 -- HAVINGによる集計結果を指定して出力。
 SELECT
     <カラム名1>,
@@ -336,11 +336,11 @@ HAVING
 
 以下の場合、`GROUP BY + HAVING`や`WHERE`を使用しても、同じ出力結果になる。
 
-```sql
+```mysql
 SELECT <カラム名> FROM <テーブル名> GROUP BY <カラム名> HAVING <レコード名>;
 ```
 
-```sql
+```mysql
 SELECT <カラム名> FROM <テーブル名> WHERE <レコード名> GROUP BY <カラム名>;
 ```
 
@@ -352,11 +352,11 @@ SELECT <カラム名> FROM <テーブル名> WHERE <レコード名> GROUP BY <�
 
 **＊実装例＊**
 
-```sql
+```mysql
 SELECT * FROM <テーブル名> WHERE <カラム名> LIKE "%営業";
 ```
 
-```sql
+```mysql
 SELECT * FROM <テーブル名> WHERE <カラム名> LIKE "_営業";
 ```
 
@@ -370,7 +370,7 @@ SELECT * FROM <テーブル名> WHERE <カラム名> LIKE "_営業";
 
 指定したカラムで、1以上10以下の『フィールド』を取得する。
 
-```sql
+```mysql
 SELECT
     *
 FROM
@@ -387,7 +387,7 @@ FROM
 
 **＊実装例＊**
 
-```sql
+```mysql
 SET
     @A = <パラメーター値>;
 
@@ -412,7 +412,7 @@ WHERE
 
 **＊実装例＊**
 
-```sql
+```mysql
 -- Main-query
 SELECT
     *
@@ -434,7 +434,7 @@ WHERE
 
 #### ▼ 各DBサイズの確認
 
-```sql
+```mysql
 SELECT
     table_schema,
     sum(data_length) / 1024 / 1024 AS mb
@@ -448,7 +448,7 @@ ORDER BY
 
 #### ▼ カラムの検索
 
-```sql
+```mysql
 SELECT table_name, column_name FROM information_schema.columns WHERE column_name = <検索したいカラム名> AND table_schema = <検索対象のDB名>
 ```
 
@@ -462,7 +462,7 @@ SELECT table_name, column_name FROM information_schema.columns WHERE column_name
 
 また、想定実行時間も検出できるため、スロークエリの検出に役立つ。
 
-```sql
+```mysql
 EXPLAIN SELECT
     *
 FROM
@@ -541,7 +541,7 @@ DBインデックスとして設定されたカラムのうちで、実際に利
 
 一度のINSERT文で複数の値を挿入する。
 
-```sql
+```mysql
 INSERT INTO <テーブル名> VALUES ('<カラム名>','<レコード値>'), ('<カラム名>','<レコード値>'), ('<カラム名>','<レコード値>');
 ```
 
@@ -581,12 +581,12 @@ mysql> SHOW TABLES;
 
 `SELECT`文のstored procedureを作成する例を考える。
 
-```sql
+```mysql
 -- PROCEDUREを作成し、DBへ格納しておく。
 CREATE PROCEDURE SelectContact AS SELECT <カラム名> FROM <テーブル名>
 ```
 
-```sql
+```mysql
 -- PROCEDUREを実行
 EXEC SelectContact
 ```

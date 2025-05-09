@@ -102,7 +102,7 @@ mysql> SELECT user, host FROM mysql.user;
 
 パラメーターは、全てのセッションに共通する『グローバルパラメーター』と各セッションのみの『セッションパラメーター』がある。
 
-```sql
+```mysql
 -- グローバルパラメーターの場合
 SET GLOBAL time_zone = "Asia/Tokyo";
 
@@ -114,7 +114,7 @@ SET time_zone = "Asia/Tokyo";
 
 DBに登録されているグローバルパラメーターとセッションパラメーターを取得する。
 
-```sql
+```mysql
 -- セッション/グローバルパラメーターを表示
 SHOW SESSION VARIABLES;
 SHOW GLOBAL VARIABLES;

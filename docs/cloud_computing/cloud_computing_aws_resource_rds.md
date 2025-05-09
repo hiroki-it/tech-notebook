@@ -60,7 +60,7 @@ Linux x86_64 (AMD64) が使用されているところまでは確認できる�
 
 AWS Auroraでも確認方法は同じである。
 
-```sql
+```mysql
 -- AWS RDSの場合
 SHOW variables LIKE '%version%';
 

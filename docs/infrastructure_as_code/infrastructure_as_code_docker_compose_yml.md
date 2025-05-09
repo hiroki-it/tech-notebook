@@ -940,7 +940,7 @@ initdb
 
 このSQLでは、`test`というDBを作成し、ユーザーが`test`DBに接続できるようにする。
 
-```sql
+```mysql
 CREATE DATABASE IF NOT EXISTS `test` COLLATE 'utf8mb4_general_ci' CHARACTER SET 'utf8mb4';
 GRANT ALL ON *.* TO 'foo'@'%' ;
 ```

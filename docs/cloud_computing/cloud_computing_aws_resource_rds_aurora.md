@@ -87,7 +87,7 @@ Linux x86_64 (AMD64) が使用されているところまでは確認できる�
 
 AWS RDSでも確認方法は同じである。
 
-```sql
+```mysql
 -- AWS Auroraの場合
 SHOW variables LIKE '%version%';
 
@@ -754,7 +754,7 @@ fields @timestamp, @message
 
 コンソール画面からはおおよその値しかわからないため、SQLで確認した方が良い。
 
-```sql
+```mysql
 SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 +-----------------+-------+
