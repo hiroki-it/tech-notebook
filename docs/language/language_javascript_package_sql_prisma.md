@@ -361,46 +361,32 @@ const prisma = new PrismaClient();
 async function createUser(name: string, email: string) {
   console.log(`\n--- ユーザー作成を試行中 (メール: ${email}) ---`);
   try {
-    // Prisma 操作を実行する（既に存在するメールアドレスで作成を試みることを想定）
+    // Prisma 操作を実行する
     const newUser = await prisma.user.create({
       data: {
         name: name,
-        email: email, // このメールアドレスが既に存在する場合、P2002 エラーが発生する
+        email: email,
       },
     });
-    console.log("ユーザー作成成功:", newUser);
+    logger.info(`ユーザー作成成功: ${newUser.id}`);
     return newUser;
   } catch (error) {
-    // キャッチしたエラーが PrismaClientKnownRequestError であるかチェックする
+    // PrismaClientKnownRequestError であるかチェックする
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
-      console.error("Prisma Known Error が発生した:");
-      console.error("エラーコード:", error.code);
-      // エラーメタ情報には、違反したフィールドなどの詳細が含まれる場合がある
-      console.error("エラーメタ情報:", error.meta);
+      console.error("Prisma Known Error が発生した:", error.code);
+      console.error("エラー詳細:", error.meta);
+      // 特定のコード(P2002, P2025など)に基づいて具体的な処理を行う...
+      throw new Error(
+        `データベース関連の既知のエラーが発生した (${error.code})`,
+      );
 
-      // エラーコードが P2002 (ユニーク制約違反) であるかチェックする
-      if (error.code === "P2002") {
-        // 違反したフィールド名を取得する（meta に含まれる場合）
-        const target = Array.isArray(error.meta?.target)
-          ? error.meta.target.join(", ")
-          : error.meta?.target;
-        console.error(
-          `ユニーク制約違反が発生した: フィールド "${target}" は既に使用されている`,
-        );
-        // ユーザーに対するエラーを例外としてスローする
-        throw new Error(
-          `入力された${target ? target + " " : ""}は既に使用されている`,
-        );
-      } else {
-        // Prismaの他のエラーの場合はそのままスローする
-        console.error(
-          `未ハンドリングの Prisma Known Error (${error.code}):`,
-          error.message,
-        );
-        throw new Error("データベース操作中に予期しないエラーが発生した");
-      }
+      // エラーコードのないエラーの場合、PrismaClientUnknownRequestErrorになる
+    } else if (error instanceof Prisma.PrismaClientUnknownRequestError) {
+      console.error("Prisma Unknown Request Error が発生した:", error.message);
+      // 未知のエラーなので、詳細をログに記録し、一般的なエラーメッセージを返すことが多い
+      throw new Error("データベース処理中に不明なエラーが発生した");
     } else {
-      // Prismaのエラーではない場合、予期せぬエラーとして例外をスローする
+      // それ以外の場合、予期せぬエラーとして例外をスローする
       console.error("予期しないエラーが発生した:", error);
       throw new Error("システムエラーが発生した");
     }
