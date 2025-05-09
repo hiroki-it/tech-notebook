@@ -342,6 +342,8 @@ Prismaは、トランザクションが何らかの理由で失敗した場合�
 
 また、より上のレイヤーに伝播し、ユーザーインターフェースのレイヤーでは、ユーザー向けのエラーメッセージとして吸収する。
 
+<br>
+
 ### エラーのフィールド
 
 いずれのエラーも以下のすべて／一部のフィールドをもつ。
@@ -369,13 +371,13 @@ import {PrismaClient, Prisma} from "@prisma/client";
 const prisma = new PrismaClient();
 
 // ユーザーを作成する
-async function createUser(name: string, email: string) {
+async function createUser(email: string, name: string) {
   try {
     // Prisma 操作を実行する
     const newUser = await prisma.user.create({
       data: {
-        name: name,
         email: email,
+        name: name,
       },
     });
     return newUser;
