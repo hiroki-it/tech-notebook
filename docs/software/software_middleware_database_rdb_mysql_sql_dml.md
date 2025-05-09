@@ -567,7 +567,7 @@ SHOW TABLES;
 
 ### ENGINES
 
-MySQL の InnoDB ストレージエンジンを確認する。
+MySQLのInnoDBストレージエンジンを確認する。
 
 `\G`をつけると、読みやすく整形してくれる。
 

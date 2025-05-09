@@ -89,7 +89,7 @@ AWS RDSでも確認方法は同じである。
 
 ```mysql
 -- AWS Auroraの場合
-SHOW variables LIKE '%version%';
+SHOW VARIABLES LIKE '%version%';
 
 +-------------------------+------------------------------+
 | Variable_name           | Value                        |
