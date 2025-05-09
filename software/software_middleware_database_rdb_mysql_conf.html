@@ -28359,20 +28359,20 @@ mysql&gt;<span class="w"> </span>SELECT<span class="w"> </span>user,<span class=
 <h4 id="_8">▼ パラメーターの設定<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>パラメーターは、全てのセッションに共通する『グローバルパラメーター』と各セッションのみの『セッションパラメーター』がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- グローバルパラメーターの場合</span>
-<span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">time_zone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Asia/Tokyo&quot;</span><span class="p">;</span>
+<span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">time_zone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Asia/Tokyo&quot;</span><span class="p">;</span>
 
 <span class="c1">-- セッションパラメーターの場合</span>
-<span class="k">SET</span><span class="w"> </span><span class="n">time_zone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Asia/Tokyo&quot;</span><span class="p">;</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">time_zone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Asia/Tokyo&quot;</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="_9">▼ パラメーターの表示<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>DBに登録されているグローバルパラメーターとセッションパラメーターを取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- セッション/グローバルパラメーターを表示</span>
-<span class="k">SHOW</span><span class="w"> </span><span class="k">SESSION</span><span class="w"> </span><span class="n">VARIABLES</span><span class="p">;</span>
-<span class="k">SHOW</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">VARIABLES</span><span class="p">;</span>
+<span class="k">SHOW</span><span class="w"> </span><span class="k">SESSION</span><span class="w"> </span><span class="k">VARIABLES</span><span class="p">;</span>
+<span class="k">SHOW</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="k">VARIABLES</span><span class="p">;</span>
 
 <span class="c1">-- OSとDBのタイムゾーンに関するパラメーターを表示</span>
-<span class="k">SHOW</span><span class="w"> </span><span class="k">SESSION</span><span class="w"> </span><span class="n">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="ss">&quot;%time_zone&quot;</span><span class="p">;</span>
-<span class="k">SHOW</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="ss">&quot;%time_zone&quot;</span><span class="p">;</span>
+<span class="k">SHOW</span><span class="w"> </span><span class="k">SESSION</span><span class="w"> </span><span class="k">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s2">&quot;%time_zone&quot;</span><span class="p">;</span>
+<span class="k">SHOW</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="k">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s2">&quot;%time_zone&quot;</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02-docker">02. 設定ファイルの種類 (※ Dockerの場合)<a class="headerlink" href="#02-docker" title="Permanent link">&para;</a></h2>
@@ -28657,7 +28657,7 @@ drwxr-x---<span class="w"> </span><span class="m">2</span><span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月8日 22:51:53">2025-05-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月9日 14:24:35">2025-05-09</span>
   </span>
 
     
