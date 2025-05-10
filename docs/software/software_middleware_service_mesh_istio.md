@@ -414,7 +414,7 @@ AuthorizationPolicyで認可プロバイダー (例：Keycloak、OpenPolicy Agen
 
 #### ▼ TLSタイムアウト
 
-アウトバウンド時、`istio-proxy`コンテナは宛先にHTTPSリクエストを送信する。
+アウトバウンド通信、`istio-proxy`コンテナは宛先にHTTPSリクエストを送信する。
 
 この時、実際はタイムアウト時間を超過していても、`TLS handshake timeout`というエラーなってしまう。
 

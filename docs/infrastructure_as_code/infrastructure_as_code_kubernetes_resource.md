@@ -1825,7 +1825,7 @@ RoleやClusterRoleを、UserAccount / ServiceAccount / Groupに紐付ける。
 
 #### ▼ NetworkPolicyとは
 
-Pod間通信でのインバウンド/アウトバウンド通信の送受信ルールを設定する。
+Pod間通信でのインバウンド通信とアウトバウンド通信の送受信ルールを設定する。
 
 > - https://www.amazon.co.jp/dp/B08FZX8PYW
 > - https://qiita.com/dingtianhongjie/items/983417de88db2553f0c2

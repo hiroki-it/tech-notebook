@@ -159,7 +159,7 @@ data "http" "aws_load_balancer_controller_policy" {
 # レスポンスからJSONファイルの内容を取得する
 resource "aws_iam_policy" "aws_load_balancer_controller" {
   name   = "foo-aws-load-balancer-controller"
-  # GitHubリポジトリからのレスポンスで取得したIAMポリシーのjsonを設定する
+  # GitHubリポジトリが返信したIAMポリシーのjsonを設定する
   policy = data.http.aws_load_balancer_controller_policy.response_body
 }
 ```

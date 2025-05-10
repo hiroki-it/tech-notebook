@@ -721,7 +721,7 @@ GETリクエストには不要である。
 | application        | octet-stream          | 任意のMIME type (指定なし) を示す。 |
 |                    | javascript            | jsファイル                          |
 |                    | json                  | jsonファイル                        |
-|                    | x-www-form-urlencoded | POSTリクエストのデータ              |
+|                    | x-www-form-urlencoded | POSTリクエストの送信データ          |
 |                    | zip                   | `.zip`ファイル                      |
 | text               | html                  | `html`ファイル                      |
 |                    | css                   | `.css`ファイル                      |

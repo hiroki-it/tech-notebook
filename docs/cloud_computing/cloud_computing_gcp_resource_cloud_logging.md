@@ -262,7 +262,7 @@ jsonPayload.Level = "WARN"
 
 #### ▼ 組み合わせ
 
-マイクロサービスアーキテクチャで、アウトバウンド時に送信元`istio-proxy`コンテナで発生したエラーをクエリする。
+マイクロサービスアーキテクチャで、`istio-proxy`コンテナのアウトバウンド通信で発生したエラーをクエリする。
 
 ここでは、宛先Clusterとして`PassthroughCluster`を指定した。
 

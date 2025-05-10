@@ -15,7 +15,7 @@ description: tfnotify＠自動レビューツールの知見を記録してい�
 
 ## 01. tfnotifyとは
 
-`terraform`コマンドの処理結果を、レビューコメントとしてGitHubにPOSTで送信する。
+`terraform`コマンドの処理結果を、レビューコメントとしてGitHubにPOSTリクエストを送信する。
 
 URLや送信内容を設定ファイルで定義する。
 

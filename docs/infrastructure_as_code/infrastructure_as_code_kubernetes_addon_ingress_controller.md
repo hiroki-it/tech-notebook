@@ -112,9 +112,9 @@ Kubernetes Clusterに単一のIngress Controllerを作成するとよい。
 
 <br>
 
-### インバウンド/アウトバウンド
+### インバウンド通信とアウトバウンド通信
 
-Ingress Controllerは、名前ではIngressとなっているがEgress (アウトバウンド) の通信も扱う。
+Ingress Controllerは、名前ではIngressとなっているがEgress (アウトバウンド通信) も扱う。
 
 > - https://www.f5.com/ja_jp/company/blog/nginx/guide-to-choosing-ingress-controller-part-1-identify-requirements
 

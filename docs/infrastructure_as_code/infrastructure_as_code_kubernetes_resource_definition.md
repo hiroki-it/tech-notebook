@@ -5892,7 +5892,7 @@ spec:
 # Kubernetesが自動的に追加するキー
 status:
   loadBalancer:
-    # インバウンドの意味のingressである
+    # インバウンド通信の意味のingressである
     ingress:
       # External-IP
       - ip: 192.0.2.127

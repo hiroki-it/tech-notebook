@@ -1465,7 +1465,7 @@ spec:
   configPatches:
     - applyTo: HTTP_FILTER
       match:
-        # istio-proxyコンテナのインバウンドの処理に適用する
+        # istio-proxyコンテナのインバウンド通信の処理に適用する
         context: SIDECAR_INBOUND
         # Listenerにレートリミットを設定する
         listener:
@@ -1513,7 +1513,7 @@ spec:
   configPatches:
     - applyTo: HTTP_FILTER
       match:
-        # istio-proxyコンテナのインバウンドの処理に適用する
+        # istio-proxyコンテナのインバウンド通信の処理に適用する
         context: SIDECAR_INBOUND
         listener:
           filterChain:
@@ -1530,7 +1530,7 @@ spec:
               stat_prefix: http_local_rate_limiter
     - applyTo: HTTP_ROUTE
       match:
-        # istio-proxyコンテナのインバウンドの処理に適用する
+        # istio-proxyコンテナのインバウンド通信の処理に適用する
         context: SIDECAR_INBOUND
         routeConfiguration:
           vhost:

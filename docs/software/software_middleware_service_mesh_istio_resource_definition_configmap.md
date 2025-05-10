@@ -288,9 +288,9 @@ data:
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-default_http_retry_policy
 
-#### ▼ アウトバウンド時のリトライ条件
+#### ▼ レスポンスのリトライ条件
 
-`istio-proxy`コンテナのアウトバウンド時のリトライ条件は以下である。
+`istio-proxy`コンテナのレスポンスのリトライ条件は以下である。
 
 宛先に通信が届いておらず、リトライすると問題が解決する可能性があるステータスコードは、リトライしてもよい。
 
@@ -301,25 +301,25 @@ data:
 
 ![istio_inbound-retry_reset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_inbound-retry_reset.png)
 
-| HTTP/1.1のステータスコード                                    | マイクロサービスに通信が届いている | リトライしてもよい | リトライ条件                                                                                                                                                    |
-| ---------------------------------------------------- | :---------------: | :-------: | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `connect-failure`                                    |        ⭕️         |     ✅     | `istio-proxy`コンテナからのアウトバウンド通信のレスポンスで、接続タイムアウト (Connection timeout) が起こった。                                                                                 |
-| `gateway-error`                                      |        ⭕️         |           | `istio-proxy`コンテナからのアウトバウンド通信のレスポンスで、Gateway系ステータスコード (`502`、`503`、`504`) が返信された。冪等性のない二重処理が起こる可能性がある。                                                    |
-| `retriable-status-codes` (`5xx`のように任意のステータスコードを設定する) |        ⭕️         |           | `istio-proxy`コンテナからのアウトバウンド通信のレスポンスで、指定したHTTPステータスであった。`EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`変数を`true`にすると、元はデフォルト値であった`503`を設定できる。冪等性のない二重処理が起こる可能性がある。 |
-| `reset`                                              |        ⭕️         |           | `istio-proxy`コンテナからのアウトバウンド通信で接続切断／接続リセット／読み取りタイムアウト (Read timeout) が起こった。冪等性のない二重処理が起こる可能性がある。                                                           |
+| HTTP/1.1のステータスコード                                               | マイクロサービスに通信が届いている | リトライしてもよい | リトライ条件                                                                                                                                                                                                                  |
+| ------------------------------------------------------------------------ | :--------------------------------: | :----------------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `connect-failure`                                                        |                 ⭕️                 |         ✅         | `istio-proxy`コンテナからのレスポンス時に、接続タイムアウト (Connection timeout) が起こった。                                                                                                                                 |
+| `gateway-error`                                                          |                 ⭕️                 |                    | `istio-proxy`コンテナからのレスポンス時に、Gateway系ステータスコード (`502`、`503`、`504`) が返信された。冪等性のない二重処理が起こる可能性がある。                                                                           |
+| `retriable-status-codes` (`5xx`のように任意のステータスコードを設定する) |                 ⭕️                 |                    | `istio-proxy`コンテナからのレスポンス時に、指定したHTTPステータスであった。`EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`変数を`true`にすると、元はデフォルト値であった`503`を設定できる。冪等性のない二重処理が起こる可能性がある。 |
+| `reset`                                                                  |                 ⭕️                 |                    | `istio-proxy`コンテナからのレスポンス時に接続切断／接続リセット／読み取りタイムアウト (Read timeout) が起こった。冪等性のない二重処理が起こる可能性がある。                                                                   |
 
 > - https://cloud.google.com/storage/docs/retry-strategy?hl=ja#retryable
 > - https://github.com/istio/istio/issues/51704#issuecomment-2188555136
 > - https://github.com/istio/istio/issues/35774#issuecomment-953877524
 > - https://cloud.google.com/storage/docs/retry-strategy?hl=ja
 
-| HTTP/2のステータスコード      | マイクロサービスに通信が届いている | リトライしてもよい | リトライ条件                                                                                               |
-| -------------------- | :---------------: | :-------: | ---------------------------------------------------------------------------------------------------- |
-| `cancelled`          |        ⭕️         |           | `istio-proxy`コンテナからのアウトバウンド通信のレスポンスで、gRPCステータスコードが`Cancelled`であった。送信元がリクエストを切断しているため、リトライが不要の可能性がある。 |
-| `deadline-exceeded`  |        ⭕️         |     ✅     | `istio-proxy`コンテナからのアウトバウンド通信のレスポンスで、gRPCステータスコードが`DeadlineExceeded`であった。                            |
-| `refused-stream`     |        ⭕️         |     ✅     | 同時接続上限数を超過するストリームをマイクロサービスが作成しようとした。                                                                 |
-| `resource-exhausted` |        ⭕️         |     ✅     | `istio-proxy`コンテナからのアウトバウンド通信のレスポンスで、gRPCステータスコードが`ResourceExhausted`であった。                           |
-| `unavailable`        |        ⭕️         |     ✅     | `istio-proxy`コンテナからのアウトバウンド通信のレスポンスで、gRPCステータスコードが`Unavailable`であった。                                 |
+| HTTP/2のステータスコード | マイクロサービスに通信が届いている | リトライしてもよい | リトライ条件                                                                                                                                               |
+| ------------------------ | :--------------------------------: | :----------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cancelled`              |                 ⭕️                 |                    | `istio-proxy`コンテナからのレスポンス時に、gRPCステータスコードが`Cancelled`であった。送信元がリクエストを切断しているため、リトライが不要の可能性がある。 |
+| `deadline-exceeded`      |                 ⭕️                 |         ✅         | `istio-proxy`コンテナからのレスポンス時に、gRPCステータスコードが`DeadlineExceeded`であった。                                                              |
+| `refused-stream`         |                 ⭕️                 |         ✅         | 同時接続上限数を超過するストリームをマイクロサービスが作成しようとした。                                                                                   |
+| `resource-exhausted`     |                 ⭕️                 |         ✅         | `istio-proxy`コンテナからのレスポンス時に、gRPCステータスコードが`ResourceExhausted`であった。                                                             |
+| `unavailable`            |                 ⭕️                 |         ✅         | `istio-proxy`コンテナからのレスポンス時に、gRPCステータスコードが`Unavailable`であった。                                                                   |
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-grpc-on
@@ -1292,7 +1292,7 @@ spec:
 
 デフォルト値は`false`である。
 
-マイクロサービスからのアウトバウンド通信時に、Pod内の`istio-proxy`コンテナやztunnelプロキシをDNSプロキシとして使用できるようになる。
+マイクロサービスからのリクエストに、Pod内の`istio-proxy`コンテナやztunnelプロキシをDNSプロキシとして使用できるようになる。
 
 もし`istio-proxy`コンテナやztunnelプロキシがドメインに紐づくIPアドレスのキャッシュを持つ場合、マイクロサービスにレスポンスを返信する。
 

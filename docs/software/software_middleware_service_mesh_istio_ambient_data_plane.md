@@ -111,7 +111,7 @@ istio-cniは、`/var/run/ztunnel/ztunnel.sock`ファイル経由でztunnelから
 
 #### ▼ 仕組み
 
-以下を設定し、`L4`インバウンド/アウトバウンド通信をztunnel Podへリダイレクトできるようにする。
+以下を設定し、`L4`インバウンド通信とアウトバウンド通信をztunnel Podへリダイレクトできるようにする。
 
 - Nodeのiptables
 - ztunnel Podのiptables
@@ -150,13 +150,13 @@ ztunnelへのリダイレクトの仕組みは一度リプレイスされてい�
 
 ![istio_ambient-mesh_ztunnel_inpod-redirection_l4_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_l4_overview.png)
 
-アウトバウンドの仕組みは以下の通りである。
+アウトバウンド通信の仕組みは以下の通りである。
 
 1. Pod内マイクロサービスが`L4`アウトバウンド通信を送信する。
 2. Pod内iptablesが通信をztunnel Podにリダイレクトする。
 3. ztunnel Podは通信を宛先に送信する。
 
-一方で、インバウンドの仕組みは以下の通りである。
+一方で、インバウンド通信の仕組みは以下の通りである。
 
 1. Podが`L4`インバウンド通信を受信する。
 2. Pod内iptablesが通信をztunnel Podにリダイレクトする。
