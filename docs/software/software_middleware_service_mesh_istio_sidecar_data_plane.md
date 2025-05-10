@@ -35,7 +35,7 @@ description: データプレーン＠Istioサイドカーの知見を記録し�
 
 #### ▼ `istio-init`コンテナとは
 
-コンテナの起動時に、`istio-iptables`コマンドを実行することにより、istio-iptablesをPodに適用する。
+コンテナの起動時、`istio-iptables`コマンドを実行することにより、istio-iptablesをPodに適用する。
 
 ![istio_istio-init](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-init.png)
 
@@ -105,7 +105,7 @@ Chain POSTROUTING (policy ACCEPT)
 ...
 
 
-# istio-proxyコンテナへのインバウンド通信時に、NAPT処理を実行する。
+# istio-proxyコンテナへのインバウンド通信時、NAPT処理を実行する。
 Chain ISTIO_INBOUND (1 references)
 num  target             prot  opt  source     destination
 1    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15008
@@ -120,7 +120,7 @@ num  target    prot  opt  source     destination
 1    REDIRECT  tcp   --   0.0.0.0/0  0.0.0.0/0    redir ports 15006 #
 
 
-# istio-proxyコンテナからのアウトバウンド通信時に、NAPT処理を実行する。
+# istio-proxyコンテナからのアウトバウンド通信時、NAPT処理を実行する。
 Chain ISTIO_OUTPUT (1 references)
 num  target             prot  opt  source     destination
 1    RETURN             all   --   127.0.0.6  0.0.0.0/0
@@ -419,7 +419,7 @@ func (a *ADSC) Run() error {
 		if r.TypeUrl == v3.ClusterType {
 			a.watchTime = time.Now()
 		}
-		// istio-proxyコンテナの起動時に、Istiodコントロールプレーンにリクエストを送信する。
+		// istio-proxyコンテナの起動時、Istiodコントロールプレーンにリクエストを送信する。
 		_ = a.Send(r)
 	}
 
@@ -553,11 +553,11 @@ Istioのパケット暗号化で相互TLSを導入している場合、istio-pro
 
 しかし、Istioはkubeletにクライアント証明書を組み込めないため、このままだとistio-proxyはkubeletからのヘルスチェックを拒否してしまう。
 
-そのため、Istioで相互TLS認証を有効化していると、kubeletがHTTPヘルスチェックを`istio-proxy`コンテナに実施した場合に、証明書のないエラーでHTTPヘルスチェックは失敗してしまう。
+そのため、Istioで相互TLS認証を有効化していると、kubeletがHTTPヘルスチェックを`istio-proxy`コンテナに実施した場合、証明書のないエラーでHTTPヘルスチェックは失敗してしまう。
 
 これの対策として、以下の仕組みでHTTPヘルスチェックを成功させる。
 
-1. Istioは、サイドカーインジェクション時に、マイクロサービスのLivenessProbeヘルスチェックとReadinessProbeヘルスチェックのパスを`/app-health/<コンテナ名>/livez`と`/app-health/<コンテナ名>/readyz`に書き換え、元のパスを`ISTIO_KUBE_APP_PROBERS`に保存する。
+1. Istioは、サイドカーインジェクション時、マイクロサービスのLivenessProbeヘルスチェックとReadinessProbeヘルスチェックのパスを`/app-health/<コンテナ名>/livez`と`/app-health/<コンテナ名>/readyz`に書き換え、元のパスを`ISTIO_KUBE_APP_PROBERS`に保存する。
 2. kubeletはPodにHTTPヘルスチェックを送信する。
 3. `istio-proxy`コンテナはkubeletのHTTPヘルスチェックを受信する。`ISTIO_KUBE_APP_PROBERS`から元のパスを取得し、マイクロサービスにHTTPヘルスチェックをリダイレクトする。 `istio-proxy`コンテナはマイクロサービスからレスポンスを受信し、kubeletにHTTPヘルスチェックを返信する。
 

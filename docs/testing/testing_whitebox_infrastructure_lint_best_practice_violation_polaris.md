@@ -153,7 +153,7 @@ checks:
 
 DaemonSet配下のPodでは、`.spec.priorityClassName`キーや`.spec.affinity`キーを設定しておく方が良いが、これを設定し忘れてしまう可能性がある。
 
-こういった場合に、カスタムルールが役立つ。
+こういった場合、カスタムルールが役立つ。
 
 ```yaml
 checks:
@@ -289,7 +289,7 @@ customChecks:
 
 HorizontalPodAutoscalerは、Deploymentと合わせて作る必要があるが、作成し忘れてしまう可能性がある。
 
-こういった場合に、カスタムルールが役立つ。
+こういった場合、カスタムルールが役立つ。
 
 ```yaml
 checks:
@@ -297,7 +297,7 @@ checks:
   missingHorizontalPodAutoscalerWithDeployment: danger
 
 customChecks:
-  # Deploymentを作成している場合に、HorizontalPodAutoscalerも作成していることを検証する
+  # Deploymentを作成している場合、HorizontalPodAutoscalerも作成していることを検証する
   missingHorizontalPodAutoscalerWithDeployment:
     successMessage: HorizontalPodAutoscaler exists
     failureMessage: HorizontalPodAutoscaler should exist
@@ -397,7 +397,7 @@ $ polaris audit --audit-path manifest.yaml --format pretty
 $ polaris audit --audit-path manifest.yaml --only-show-failed-tests
 ```
 
-カスタムルールに違反があった場合に、`--only-show-failed-tests`オプションを有効化していると、ルール違反が無視されて結果に表示されない不具合がある可能性がある。
+カスタムルールに違反があった場合、`--only-show-failed-tests`オプションを有効化していると、ルール違反が無視されて結果に表示されない不具合がある可能性がある。
 
 ```bash
 $ polaris audit --audit-path manifest.yaml
@@ -447,7 +447,7 @@ $ polaris audit --helm-chart ./chart --helm-values ./chart/values.yaml
 
 #### ▼ --set-exit-code-on-danger
 
-dangerレベルのルール違反が検出された場合に、終了コード`3`を出力する。
+dangerレベルのルール違反が検出された場合、終了コード`3`を出力する。
 
 ```bash
 $ polaris audit --audit-path manifest.yaml --severity danger --set-exit-code-on-danger

@@ -23,7 +23,7 @@ Istioの各コンポーネントの機密でない変数やファイルを管理
 
 ### istio-ca-root-certとは
 
-Istiodコントロールプレーン (`discovery`コンテナ) による中間認証局を使用する場合に、`istio-ca-root-cert`を自動的に作成する。
+Istiodコントロールプレーン (`discovery`コンテナ) による中間認証局を使用する場合、`istio-ca-root-cert`を自動的に作成する。
 
 ルート認証局から発行されたCA証明書 (ルート証明書) をもち、各マイクロサービスのPodにマウントされる。
 
@@ -315,11 +315,11 @@ data:
 
 | HTTP/2のステータスコード      | マイクロサービスに通信が届いている | おすすめ | リトライ条件                                                                                      |
 | -------------------- | :---------------: | :--: | ------------------------------------------------------------------------------------------- |
-| `cancelled`          |        ⭕️         |      | `istio-proxy`コンテナからのレスポンス時に、gRPCステータスコードが`Cancelled`であった。送信元がリクエストを切断しているため、リトライが不要の可能性がある。 |
-| `deadline-exceeded`  |        ⭕️         |  ✅   | `istio-proxy`コンテナからのレスポンス時に、gRPCステータスコードが`DeadlineExceeded`であった。                            |
+| `cancelled`          |        ⭕️         |      | `istio-proxy`コンテナからのレスポンス時、gRPCステータスコードが`Cancelled`であった。送信元がリクエストを切断しているため、リトライが不要の可能性がある。 |
+| `deadline-exceeded`  |        ⭕️         |  ✅   | `istio-proxy`コンテナからのレスポンス時、gRPCステータスコードが`DeadlineExceeded`であった。                            |
 | `refused-stream`     |        ⭕️         |  ✅   | 同時接続上限数を超過するストリームをマイクロサービスが作成しようとした。                                                        |
-| `resource-exhausted` |        ⭕️         |  ✅   | `istio-proxy`コンテナからのレスポンス時に、gRPCステータスコードが`ResourceExhausted`であった。                           |
-| `unavailable`        |        ⭕️         |  ✅   | `istio-proxy`コンテナからのレスポンス時に、gRPCステータスコードが`Unavailable`であった。                                 |
+| `resource-exhausted` |        ⭕️         |  ✅   | `istio-proxy`コンテナからのレスポンス時、gRPCステータスコードが`ResourceExhausted`であった。                           |
+| `unavailable`        |        ⭕️         |  ✅   | `istio-proxy`コンテナからのレスポンス時、gRPCステータスコードが`Unavailable`であった。                                 |
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-grpc-on
@@ -332,7 +332,7 @@ data:
 
 | HTTP/1.1のステータスコード      | マイクロサービスに通信が届いている | リトライしてもよい | 理由                                                          |
 | ---------------------- | :---------------: | :-------: | ----------------------------------------------------------- |
-| `reset-before-request` |         ×         |     ✅     | `istio-proxy`コンテナへのインバウンド通信で、マイクロサービスにリクエストをフォワーディングできなかった。 |
+| `reset-before-request` |         ×         |     ✅     | `istio-proxy`コンテナへのインバウンド通信時、マイクロサービスにリクエストをフォワーディングできなかった。 |
 
 <br>
 
@@ -1029,7 +1029,7 @@ data:
 
 スパンの`service.name`属性の値を設定する。
 
-マイクロサービスがバージョニングされている場合に、マイクロサービスの正式名 (canonical-name) でグループ化できる。
+マイクロサービスがバージョニングされている場合、マイクロサービスの正式名 (canonical-name) でグループ化できる。
 
 デフォルトでは`APP_LABEL_AND_NAMESPACE`であり、`<Namespace>.<appラベル値>`になる。
 
@@ -1063,7 +1063,7 @@ spec:
 
 ### trustDomain
 
-相互TLS認証を採用している場合に、送信元として許可する信頼ドメインを設定する。
+相互TLS認証を採用している場合、送信元として許可する信頼ドメインを設定する。
 
 例えば、信頼ドメインはServiceAccountごとに異なる。
 
@@ -1305,7 +1305,7 @@ spec:
 
 #### ▼ 固定 (HTTPリクエスト)
 
-ServiceEntryでHTTPリクエストを受信した場合に、DNSキャッシュのドメインとIPアドレスを固定で紐づける。
+ServiceEntryでHTTPリクエストを受信した場合、DNSキャッシュのドメインとIPアドレスを固定で紐づける。
 
 ```yaml
 apiVersion: v1
@@ -1338,7 +1338,7 @@ spec:
 
 #### ▼ 動的 (HTTPリクエスト)
 
-ServiceEntryでHTTPリクエストを受信した場合に、DNSキャッシュのドメインとIPアドレスを動的に紐づける。
+ServiceEntryでHTTPリクエストを受信した場合、DNSキャッシュのドメインとIPアドレスを動的に紐づける。
 
 ```yaml
 apiVersion: v1
@@ -1373,7 +1373,7 @@ spec:
 
 #### ▼ 動的 (TCPリクエスト)
 
-ServiceEntryで、TCPリクエストとして扱われるホストヘッダー持ち独自プロトコル (例：MySQLやRedis以外の非対応プロトコルなど) を受信した場合に、DNSキャッシュのドメインとIPアドレスを動的に紐づける。
+ServiceEntryで、TCPリクエストとして扱われるホストヘッダー持ち独自プロトコル (例：MySQLやRedis以外の非対応プロトコルなど) を受信した場合、DNSキャッシュのドメインとIPアドレスを動的に紐づける。
 
 注意点として、Istio Egress Gatewayを経由してServiceEntryに至る場合には、この設定が機能しない。
 
@@ -2234,7 +2234,7 @@ spec:
 
 `istio-proxy`コンテナ間の問題の切り分けがしやすくなる。
 
-`false`の場合、送信元`istio-proxy`コンテナから宛先`istio-proxy`コンテナへ通信時に、送信元`istio-proxy`コンテナしかリトライできない。
+`false`の場合、送信元`istio-proxy`コンテナから宛先`istio-proxy`コンテナへ通信時、送信元`istio-proxy`コンテナしかリトライできない。
 
 ```yaml
 apiVersion: apps/v1
@@ -2260,7 +2260,7 @@ spec:
 
 デフォルト値は`true`である。
 
-POSTリクエストの結果で、マイクロサービスから`503`ステータスが返信された場合に、未処理とは限らない。
+POSTリクエストの結果で、マイクロサービスから`503`ステータスが返信された場合、未処理とは限らない。
 
 この場合にリトライすると結果的に二重で処理が実行されてしまう。
 

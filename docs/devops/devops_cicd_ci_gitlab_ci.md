@@ -568,7 +568,7 @@ fmt:
   script:
     - terraform fmt -check -recursive
   # 0以外の全ての終了コードの場合のみ終了する
-  # インデントを揃えるべき場所がある場合に、Jobを失敗させる
+  # インデントを揃えるべき場所がある場合、Jobを失敗させる
   allow_failure: "true"
   rules:
     # MRを作成/更新したタイミングで発火する
@@ -748,7 +748,7 @@ bar_job:
 
 #### ▼ dependencies
 
-通常、`dependencies`を指定せずに`artifacts`を使用した場合に、全てのJobとファイルを継承する。
+通常、`dependencies`を指定せずに`artifacts`を使用した場合、全てのJobとファイルを継承する。
 
 `dependencies`を設定すれば、`artifacts`が設定された特定のJobを指定し、そのJobのみをファイルを継承する。
 
@@ -1148,11 +1148,11 @@ foo_job:
 
 ### trigger
 
-Jobが発火した場合に、特定のアクションを実施する。
+Jobが発火した場合、特定のアクションを実施する。
 
 **＊例＊**
 
-モノレポでGitLabCIを採用している場合に、 親の`.gitlab-ci.yml`ファイルでディレクトリ配下の変更を検知し、子の`.gitlab-ci.yml`ファイルを読み込む (`include`) ようにする。
+モノレポでGitLabCIを採用している場合、 親の`.gitlab-ci.yml`ファイルでディレクトリ配下の変更を検知し、子の`.gitlab-ci.yml`ファイルを読み込む (`include`) ようにする。
 
 ```yaml
 # 親の.gitlab-ci.yml
@@ -1226,7 +1226,7 @@ foo_job:
 
 #### ▼ never
 
-特定の条件の場合に、Jobを実行しない。
+特定の条件の場合、Jobを実行しない。
 
 なお、`when: never`のみの定義は意味がない。
 

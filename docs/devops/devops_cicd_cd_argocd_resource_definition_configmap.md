@@ -263,7 +263,7 @@ data:
 
 #### ▼ kustomize.path.<バージョン>とは
 
-デフォルトのKustomizeのバージョン以外のものも使用したい場合に、そののバージョンと、バイナリファイルの置き場所を設定する。
+デフォルトのKustomizeのバージョン以外のものも使用したい場合、そののバージョンと、バイナリファイルの置き場所を設定する。
 
 ArgoCDで一つのバージョンのKustomizeしか使用しない場合、`kustomize.path.<バージョン>`で`/usr/local/bin/kustomize`を指定する。
 
@@ -545,7 +545,7 @@ data:
   server.dex.server.strict.tls: "false"
   server.disable.auth: "false"
   server.enable.gzip: "false"
-  # ロードバランサーで、リクエストをHTTPでフォワーディングするように設定している場合に、argocd-serverでHTTPプロトコルの受信を許可する
+  # ロードバランサーで、リクエストをHTTPでフォワーディングするように設定している場合、argocd-serverでHTTPプロトコルの受信を許可する
   server.insecure: "true"
   server.log.format: text
   server.log.level: warn
@@ -844,7 +844,7 @@ ArgoCDでは、コンテナイメージの`/etc/ssl`ディレクトリにデフ�
 
 ## 06. argocd-ssh-known-hosts-cm
 
-SSH公開鍵認証でリポジトリに接続してポーリングする場合に、argocd-serverで必要な`known_hosts`ファイルを設定する。
+SSH公開鍵認証でリポジトリに接続してポーリングする場合、argocd-serverで必要な`known_hosts`ファイルを設定する。
 
 `known_hosts`ファイルには、SSHプロコトルに必要なホスト名や秘密鍵を設定する。
 

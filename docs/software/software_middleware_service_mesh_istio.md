@@ -337,7 +337,7 @@ Istioでは、外れ値の排除率を`100`%とすることで、ステータス
 
 #### ▼ 仕組み
 
-Pod間通信時に、正しい送信元Envoyの通信であることを認証する。
+Pod間通信時、正しい送信元Envoyの通信であることを認証する。
 
 > - https://istio.io/latest/docs/concepts/security/#authentication-architecture
 > - https://news.mynavi.jp/techplus/article/kubernetes-30/
@@ -371,7 +371,7 @@ JWTトークンの取得方法として、例えば以下の方法がある。
 
 #### ▼ 仕組み
 
-Pod間通信時に、AuthorizationPolicyを使用して、スコープに含まれる認証済みEnvoyの通信のみを認可する。
+Pod間通信時、AuthorizationPolicyを使用して、スコープに含まれる認証済みEnvoyの通信のみを認可する。
 
 ![istio_authorization-policy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_authorization-policy.png)
 

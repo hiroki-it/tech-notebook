@@ -1099,7 +1099,7 @@ spec:
 
 ## 07. PeerAuthentication
 
-Pod間通信時に、相互TLS認証を実施する。
+Pod間通信時、相互TLS認証を実施する。
 
 > - https://news.mynavi.jp/techplus/article/kubernetes-30/
 
@@ -1109,11 +1109,11 @@ Pod間通信時に、相互TLS認証を実施する。
 
 ### RequestAuthenticationとAuthorizationPolicyとは
 
-Pod間通信時に、JWTによる認証と認可を実施する。
+Pod間通信時、JWTによる認証と認可を実施する。
 
-JWT仕様トークンが失効／不正な場合に、RequestAuthenticationは`401`ステータスを返信する。
+JWT仕様トークンが失効／不正な場合、RequestAuthenticationは`401`ステータスを返信する。
 
-JWT仕様トークンがない場合に、AuthorizationPolicyは`403`ステータスを返信する必要がある。
+JWT仕様トークンがない場合、AuthorizationPolicyは`403`ステータスを返信する必要がある。
 
 なお、RequestAuthenticationを使用せずにマイクロサービスで同様の実装をしても良い。
 

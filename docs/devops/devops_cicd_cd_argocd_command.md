@@ -170,7 +170,7 @@ $ argocd cluster add <デプロイ先のClusterのARN> --name <ダッシュボ�
 
 #### ▼ --upsert
 
-すでにClusterを登録済みの場合に、これを上書きする。
+すでにClusterを登録済みの場合、これを上書きする。
 
 ```bash
 $ argocd cluster add <デプロイ先のClusterのARN> --name <ダッシュボード上でのClusterの表示名> --upsert
@@ -184,11 +184,11 @@ $ argocd cluster add <デプロイ先のClusterのARN> --name <ダッシュボ�
 
 #### ▼ repoとは
 
-ArgoCDがプライベートリポジトリをポーリングする場合に、リポジトリを操作する。
+ArgoCDがプライベートリポジトリをポーリングする場合、リポジトリを操作する。
 
 #### ▼ add
 
-プライベートリポジトリをポーリングする場合に、ポーリング対象として追加する。
+プライベートリポジトリをポーリングする場合、ポーリング対象として追加する。
 
 ```bash
 $ argocd repo add oci://<OCIレジストリ名> \
@@ -263,7 +263,7 @@ $ argocd-application-controller --namespace foo-namespace ...
 
 #### ▼ --application-namespaces
 
-ArgoCDがClusterスコープモードの場合に、Applicationを作成できるNamespaceを設定する。
+ArgoCDがClusterスコープモードの場合、Applicationを作成できるNamespaceを設定する。
 
 ```bash
 $ argocd-application-controller --application-namespaces "*"
@@ -297,7 +297,7 @@ $ argocd-server --namespace foo-namespace ...
 
 #### ▼ --application-namespaces
 
-ArgoCDがClusterスコープモードの場合に、Applicationを操作できるNamespaceを設定する。
+ArgoCDがClusterスコープモードの場合、Applicationを操作できるNamespaceを設定する。
 
 ```bash
 $ argocd-server --application-namespaces "*"

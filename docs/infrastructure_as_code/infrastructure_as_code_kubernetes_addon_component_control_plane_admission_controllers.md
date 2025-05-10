@@ -35,7 +35,7 @@ mutating-admissionステップは、リクエストの内容を変更する。
 
 またvalidating-admissionステップは、リクエストを許可するか否かを決める。
 
-kube-apiserverクライアント (`kubectl`クライアント、Kubernetesリソース) からのリクエスト (例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへのフォワーディング) 時に、各ステップでadmissionプラグインによる処理 (例：アドオンビルトイン処理、ユーザー定義の処理) を発火させられる。
+kube-apiserverクライアント (`kubectl`クライアント、Kubernetesリソース) からのリクエスト (例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへのフォワーディング) 時、各ステップでadmissionプラグインによる処理 (例：アドオンビルトイン処理、ユーザー定義の処理) を発火させられる。
 
 ![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_architecture.png)
 
@@ -82,7 +82,7 @@ ValidatingAdmissionWebhook,
 
 #### ▼ Webhook系プラグインのSSL証明書
 
-Webhook系プラグイン (例：MutatingAdmissionWebhook、ValidatingAdmissionWebhookなど) では、kube-apiserverからwebhookサーバーにHTTPSリクエストを送信する時に、webhookサーバーのためにSL証明書が必要である。
+Webhook系プラグイン (例：MutatingAdmissionWebhook、ValidatingAdmissionWebhookなど) では、kube-apiserverからwebhookサーバーにHTTPSリクエストを送信する時、webhookサーバーのためにSL証明書が必要である。
 
 このSSL証明書は、SecretとConfiguration (例：MutatingAdmissionConfiguration、ValidatingAdmissionConfigurationなど) で管理している。
 
@@ -98,7 +98,7 @@ SSL証明書を含むSecretの作成は`kube-webhook-certgen`イメージで`cre
 
 #### ▼ MutatingAdmissionWebhookプラグイン
 
-MutatingAdmissionWebhookプラグインを使用すると、mutating-admissionステップ時に、webhookサーバーにAdmissionReviewのリクエストが送信され、ユーザー定義の処理を発火させられる。
+MutatingAdmissionWebhookプラグインを使用すると、mutating-admissionステップ時、webhookサーバーにAdmissionReviewのリクエストが送信され、ユーザー定義の処理を発火させられる。
 
 ユーザー定義の処理が定義されたwebhookサーバーを別途用意しておく必要がある。
 
@@ -172,7 +172,7 @@ webhooks:
 
 #### ▼ ValidatingAdmissionWebhookプラグイン
 
-ValidatingAdmissionWebhookプラグインを使用すると、validating-admissionステップ時に、webhookサーバーにAdmissionReviewのリクエストが送信され、ユーザー定義の処理を発火させられる。
+ValidatingAdmissionWebhookプラグインを使用すると、validating-admissionステップ時、webhookサーバーにAdmissionReviewのリクエストが送信され、ユーザー定義の処理を発火させられる。
 
 ユーザー定義の処理が定義されたwebhookサーバーを別途用意しておく必要がある。
 

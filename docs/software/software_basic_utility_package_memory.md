@@ -197,7 +197,7 @@ autorestart=true
 
 #### ▼ autostart
 
-supervisordの起動時に、デーモン化されたプロセスを自動的に起動させるか否かを設定する。
+supervisordの起動時、デーモン化されたプロセスを自動的に起動させるか否かを設定する。
 
 ```ini
 [program:foo]
@@ -468,7 +468,7 @@ $ systemctl daemon-reload
 
 #### ▼ disable
 
-OSの起動時に、デーモン化されたプロセスが自動起動しないように設定する。
+OSの起動時、デーモン化されたプロセスが自動起動しないように設定する。
 
 ```bash
 $ systemctl disable <ユニット名>
@@ -480,7 +480,7 @@ $ systemctl disable httpd.service
 
 #### ▼ enable
 
-OSの起動時に、デーモン化されたプロセスが自動起動するように設定する。
+OSの起動時、デーモン化されたプロセスが自動起動するように設定する。
 
 ```bash
 $ systemctl enable <ユニット名>
@@ -694,7 +694,7 @@ $ journalctl -f -u foo.service | grep -i error
 
 #### ▼ アラートを直接的に通知する場合
 
-デーモンが失敗状態になった時に、メールアドレスやチャット宛にアラートを直接的に送信するためには、`OnFailure`オプションを使用する。
+デーモンが失敗状態になった時、メールアドレスやチャット宛にアラートを直接的に送信するためには、`OnFailure`オプションを使用する。
 
 この時に指定するユニットファイル名には、「`@%i`』が必要である (実際のファイル名に`%i`は不要である) 。
 
@@ -729,7 +729,7 @@ WantedBy=multi-user.target
 
 #### ▼ アラートを間接的に通知する場合
 
-デーモンが失敗状態になった時に、出力したログを使用してアラートを送信するためには、`StandardOutput`オプションや`StandardError`オプションを使用する。
+デーモンが失敗状態になった時、出力したログを使用してアラートを送信するためには、`StandardOutput`オプションや`StandardError`オプションを使用する。
 
 一度、ログとして出力し、このログをAWS CloudWatch Logsなどに送信する。
 

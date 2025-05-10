@@ -155,10 +155,10 @@ $ pluto list-versions -f additional-versions.yaml
 ```yaml
 # version: APIグループのバージョン
 # kind: カスタムリソース名
-# deprecated-in: APIグループの特定のバージョンが非推奨になる場合に、警告が出るようになるKubernetesバージョン
-# removed-in: APIグループの特定のバージョンが機能廃止になる場合に、使用できなくなるKubernetesバージョン
-# replacement-api: APIグループの特定のバージョンが機能廃止になる場合に、変更後のAPIグループのバージョン
-# replacement-available-in: APIグループのバージョンが新規追加される場合に、使用できるようになるKubernetesバージョン
+# deprecated-in: APIグループの特定のバージョンが非推奨になる場合、警告が出るようになるKubernetesバージョン
+# removed-in: APIグループの特定のバージョンが機能廃止になる場合、使用できなくなるKubernetesバージョン
+# replacement-api: APIグループの特定のバージョンが機能廃止になる場合、変更後のAPIグループのバージョン
+# replacement-available-in: APIグループのバージョンが新規追加される場合、使用できるようになるKubernetesバージョン
 # component: APIグループを使用しているツール名
 
 deprecated-versions:

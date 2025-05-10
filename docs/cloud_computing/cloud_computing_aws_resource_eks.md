@@ -260,7 +260,7 @@ ConfigMapを経由してKubernetesのRBACと連携することにより、Kubern
 
 `(4)`
 
-: もし認証に成功していた場合に、aws-iam-authenticator-serverは、ConfigMap (aws-auth) を確認する。
+: もし認証に成功していた場合、aws-iam-authenticator-serverは、ConfigMap (aws-auth) を確認する。
 
      このConfigMapには、そのAWS IAMユーザーに紐づくUserAccount／ServiceAccount／Group／RoleBinding／ClusterRoleBindingが定義されている。
 
@@ -812,7 +812,7 @@ AWS EKSデータプレーンはプライベートサブネットで稼働させ�
 
 ### パブリックサブネット内のデータプレーンからのリクエスト
 
-Podをパブリックサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、AWS S3、AWS Systems Manager、AWS CloudWatch Logs、DynamoDBなど) に対してリクエストを送信するために特に必要なものは無い。
+Podをパブリックサブネットに配置した場合、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、AWS S3、AWS Systems Manager、AWS CloudWatch Logs、DynamoDBなど) に対してリクエストを送信するために特に必要なものは無い。
 
 この時、`POD_SECURITY_GROUP_ENFORCING_MODE=standard`に設定されたAWS VPC CNIはSNAT処理を実行し、クライアント側Podの送信元IPアドレスをAWS EC2ワーカーNodeのプライマリーENI (`eth0`) のIPアドレスに変換する。
 
@@ -825,7 +825,7 @@ Podをパブリックサブネットに配置した場合に、パブリック�
 
 #### ▼ Pod外から内へのリクエスト
 
-Podをプライベートサブネットに配置した場合に、プライベートサブネット外から内のデータプレーンへのリクエストをAWS Load Balancer Controllerで受信し、AWS ALBを使用してPodにルーティングする。
+Podをプライベートサブネットに配置した場合、プライベートサブネット外から内のデータプレーンへのリクエストをAWS Load Balancer Controllerで受信し、AWS ALBを使用してPodにルーティングする。
 
 ![eks_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_architecture.png)
 
@@ -853,7 +853,7 @@ data:
 
 #### ▼ AWS VPC外の他のAWSリソースへのリクエスト
 
-Podをプライベートサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、AWS S3、AWS Systems Manager、AWS CloudWatch Logs、AWS DynamoDBなど) に対してリクエストを送信するためには、AWS NAT GatewayまたはAWS VPCエンドポイントを配置する必要がある。
+Podをプライベートサブネットに配置した場合、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、AWS S3、AWS Systems Manager、AWS CloudWatch Logs、AWS DynamoDBなど) に対してリクエストを送信するためには、AWS NAT GatewayまたはAWS VPCエンドポイントを配置する必要がある。
 
 この時、クライアント側Podの送信元IPアドレスは、AWS NAT GatewayまたはAWS VPCエンドポイントに紐づくIPアドレスになる。
 
@@ -1293,7 +1293,7 @@ set -o xtrace
 | パラメーター            | 例                                          | 説明                                                                                                                                                                                             |
 | ----------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `--apiserver-endpoint ` |                                             | AWS EKS Clusterのkube-apiserverのエンドポイントを設定する。                                                                                                                                      |
-| `--b64-cluster-ca`      |                                             | kube-apiserverのエンドポイントを設定した場合に、HTTPSでリクエストするために、SSL証明書を設定する。                                                                                               |
+| `--b64-cluster-ca`      |                                             | kube-apiserverのエンドポイントを設定した場合、HTTPSでリクエストするために、SSL証明書を設定する。                                                                                               |
 | `--container-runtime`   | `containerd`                                | コンテナランタイムの種類を設定する。                                                                                                                                                             |
 | `--kubelet-extra-args`  | `--node-labels=nodetype=foo --max-pods=110` | KubeletConfigurationのデフォルト値を上書きする。                                                                                                                                                 |
 | `--use-max-pods`        | `false`                                     | kubeletの`--max-pods`オプションを有効化するかどうかを設定する。Kubeletが実行可能なPod数を設定する。Kubeletではこのオプションは非推奨になっており、代わりにKubeletConfigurationに渡すようにする。 |
@@ -1343,7 +1343,7 @@ KubeletConfigurationの`--image-gc-high-threshold`オプションで、キャッ
 
 **＊実装例＊**
 
-ディスク使用率が`70`%を超過した場合に、ディスク使用率`50`%分を解放する。
+ディスク使用率が`70`%を超過した場合、ディスク使用率`50`%分を解放する。
 
 ```bash
 #!/bin/bash
