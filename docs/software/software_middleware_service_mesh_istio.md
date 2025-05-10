@@ -298,14 +298,6 @@ IPアドレスを指定して送信できない宛先のこと。
 | Delayインジェクション | マイクロサービスに対するインバウンド通信にて、意図的に通信の遅延を発生させる。`<br>`・https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
 | Abortインジェクション | マイクロサービスに対するインバウンド通信にて、意図的に通信の中止を発生させる。`<br>`・https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
 
-<br>
-
-### ヘルスチェック
-
-#### ▼ アクティブヘルスチェック
-
-`istio-proxy`コンテナは、マイクロサービスに対するkubeletのヘルスチェックを受信し、マイクロサービスに転送する。
-
 #### ▼ サーキットブレイカー
 
 `istio-proxy`コンテナでサーキットブレイカーを実現する。
@@ -328,6 +320,14 @@ Istioでは、外れ値の排除率を`100`%とすることで、ステータス
 > - https://github.com/istio/istio/issues/20778#issuecomment-1099766930
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/circuit_breaking
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/outlier
+
+<br>
+
+### ヘルスチェック
+
+#### ▼ アクティブヘルスチェック
+
+`istio-proxy`コンテナは、マイクロサービスに対するkubeletのヘルスチェックを受信し、マイクロサービスに転送する。
 
 <br>
 
@@ -391,7 +391,7 @@ AuthorizationPolicyで認可プロバイダー (例：Keycloak、OpenPolicy Agen
 
 <br>
 
-## 06. アプリケーションデータの暗号化
+## 06. パケットのアプリケーションデータの暗号化
 
 ### 相互TLS認証
 
