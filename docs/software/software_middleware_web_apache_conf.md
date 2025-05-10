@@ -214,7 +214,7 @@ Group apache
 
 #### ▼ KeepAlive
 
-KeepAlive処理を有効化する。
+TCP KeepAliveを有効化する。
 
 **＊実装例＊**
 
