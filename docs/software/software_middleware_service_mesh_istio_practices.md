@@ -35,7 +35,7 @@ description: プラクティス集＠Istioの知見を記録しています。
 
 #### ▼ 監視系のPod
 
-サイドカーモードに登録するPodが増えると、その分`istio-proxy`コンテナが増える。
+サイドカーモードに登録するPodが増えると、その分istio-proxyが増える。
 
 そのため、Pod当たりのハードウェアリソースの消費量が増えてしまう。
 
@@ -43,11 +43,11 @@ description: プラクティス集＠Istioの知見を記録しています。
 
 #### ▼ Job配下のPod
 
-Job配下のPodに`istio-proxy`コンテナを挿入した場合、Pod内のコンテナが終了しても`istio-proxy`コンテナが終了せず、Pod自体が削除されない問題がある。
+Job配下のPodにistio-proxyを挿入した場合、Pod内のコンテナが終了してもistio-proxyが終了せず、Pod自体が削除されない問題がある。
 
 Job配下のPodは、サイドカーモードに登録しないようにする。
 
-どうしてもサービスメッシュに登録したい場合は、Pod内のコンテナで、`istio-proxy`コンテナの『`localhost:15020/quitquitquit`』をコールするようなシェルスクリプトを実行する。
+どうしてもサービスメッシュに登録したい場合は、Pod内のコンテナで、istio-proxyの『`localhost:15020/quitquitquit`』をコールするようなシェルスクリプトを実行する。
 
 ```yaml
 apiVersion: batch/v1
@@ -374,7 +374,7 @@ Istioの開発プロジェクトでは、マイナーバージョンを`1`個ず
 
 #### ▼ Istiodコントロールプレーンでダウンタイムを発生させない
 
-Istiodコントロールプレーンでダウンタイムが発生すると、`istio-proxy`コンテナ内のpilot-agentが最新の宛先情報を取得できなくなる。
+Istiodコントロールプレーンでダウンタイムが発生すると、istio-proxy内のpilot-agentが最新の宛先情報を取得できなくなる。
 
 そのため、古いバージョンのマイクロサービスの宛先情報を使用してしまう。
 
@@ -420,7 +420,7 @@ $ istioctl upgrade
 
 `(3)`
 
-: データプレーンの`istio-proxy`コンテナを再インジェクションする。
+: データプレーンのistio-proxyを再インジェクションする。
 
 ```bash
 $ kubectl rollout restart deployment app-deployment -n app

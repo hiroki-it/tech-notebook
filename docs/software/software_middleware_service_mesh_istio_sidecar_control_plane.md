@@ -17,7 +17,7 @@ description: コントロールプレーン＠Istioサイドカーの知見を�
 
 ### 仕組み
 
-サイドカーモードのIstiodコントロールプレーンは、istiod-serviceを介して、各種ポート番号で`istio-proxy`コンテナからのリモートプロシージャーコールを待ち受ける。
+サイドカーモードのIstiodコントロールプレーンは、istiod-serviceを介して、各種ポート番号でistio-proxyからのリモートプロシージャーコールを待ち受ける。
 
 語尾の『`d`』は、デーモンの意味であるが、Istiodコントロールプレーンの実体は、Deploymentである。
 
@@ -167,7 +167,7 @@ spec:
 
 #### ▼ istiod
 
-`istio-proxy`コンテナからのリクエストを、Istiodコントロールプレーン (Deployment配下のPod) にポートフォワーディングする。
+istio-proxyからのリクエストを、Istiodコントロールプレーン (Deployment配下のPod) にポートフォワーディングする。
 
 ```yaml
 apiVersion: v1
@@ -331,7 +331,7 @@ IstioリソースをEnvoyのエンドポイントに変換する。
 
 #### ▼ Config servingレイヤーとは
 
-Envoyの設定値に基づいて、`istio-proxy`コンテナをPodに提供する。
+Envoyの設定値に基づいて、istio-proxyをPodに提供する。
 
 > - https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1
 > - https://zhonghua.io/2019/05/12/istio-analysis-4/
@@ -466,11 +466,11 @@ ControlZダッシュボードでは、istiodコントロールプレーンの設
 
 ![istio_control-plane_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_service-discovery.png)
 
-`discovery`コンテナの`15010`番ポートでは、`istio-proxy`コンテナからのxDSサーバーに対するリモートプロシージャーコールを待ち受け、`discovery`コンテナ内のプロセスに渡す。
+`discovery`コンテナの`15010`番ポートでは、istio-proxyからのxDSサーバーに対するリモートプロシージャーコールを待ち受け、`discovery`コンテナ内のプロセスに渡す。
 
 コールの内容に応じて、他のサービス (Pod、Node)の宛先情報を含むレスポンスを返信する。
 
-`istio-proxy`コンテナはこれを受信し、pilot-agentがEnvoyの宛先情報設定を動的に変更する (サービス検出) 。
+istio-proxyはこれを受信し、pilot-agentがEnvoyの宛先情報設定を動的に変更する (サービス検出) 。
 
 > - https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/
 
@@ -490,13 +490,13 @@ Istiodコントロールプレーンは、サービスレジストリ (例：etc
 
 ### `15012`番
 
-`discovery`コンテナの`15012`番ポートでは、マイクロサービス間で相互TLS認証によるHTTPSプロトコルを使用する場合、`istio-proxy`コンテナからのSSL証明書に関するリクエストを待ち受け、`discovery`コンテナ内のプロセスに渡す。
+`discovery`コンテナの`15012`番ポートでは、マイクロサービス間で相互TLS認証によるHTTPSプロトコルを使用する場合、istio-proxyからのSSL証明書に関するリクエストを待ち受け、`discovery`コンテナ内のプロセスに渡す。
 
 リクエストの内容に応じて、SSL証明書と秘密鍵を含むレスポンスを返信する。
 
-`istio-proxy`コンテナはこれを受信し、pilot-agentはEnvoyにこれらを紐付ける。
+istio-proxyはこれを受信し、pilot-agentはEnvoyにこれらを紐付ける。
 
-また、SSL証明書の有効期限が切れれば、`istio-proxy`コンテナからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。
+また、SSL証明書の有効期限が切れれば、istio-proxyからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。
 
 ![istio_control-plane_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_certificate.png)
 
@@ -572,7 +572,7 @@ $ pilot-discovery discovery --clusterRegistriesNamespace istio-system
 
 #### ▼ keepaliveMaxServerConnectionAge
 
-`istio-proxy`コンテナからのgRPCリクエスト受信時のKeepalive (クライアントの状態に応じて、その接続をタイムアウトにするか否か) を設定する。
+istio-proxyからのgRPCリクエスト受信時のKeepalive (クライアントの状態に応じて、その接続をタイムアウトにするか否か) を設定する。
 
 ```bash
 $ pilot-discovery discovery --keepaliveMaxServerConnectionAge 30m

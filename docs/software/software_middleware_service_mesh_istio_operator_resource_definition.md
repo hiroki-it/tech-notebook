@@ -630,7 +630,7 @@ spec:
 
 #### ▼ sidecarInjectorWebhook
 
-`istio-proxy`コンテナごとのオプション値を設定する。
+istio-proxyごとのオプション値を設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1

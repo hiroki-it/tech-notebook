@@ -146,7 +146,7 @@ ztunnel Podは、`/var/run/ztunnel/ztunnel.sock`ファイル経由でistio-cni�
 
 ztunnelへのリダイレクトの仕組みは一度リプレイスされている。
 
-新しい仕組みでは、サイドカーパターンでマイクロサービスからの通信が`istio-proxy`コンテナにリダイレクトされるのと同じような仕組みになっている。
+新しい仕組みでは、サイドカーパターンでマイクロサービスからの通信がistio-proxyにリダイレクトされるのと同じような仕組みになっている。
 
 ![istio_ambient-mesh_ztunnel_inpod-redirection_l4_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_l4_overview.png)
 
@@ -186,7 +186,7 @@ ztunnelへのリダイレクトの仕組みは一度リプレイスされてい�
 
 サービスメッシュ内の`L7`トラフィックを管理する。
 
-実体は、Gateway-APIで作成された`istio-proxy`コンテナを含むPodである。
+実体は、Gateway-APIで作成されたistio-proxyを含むPodである。
 
 ```yaml
 $ istioctl experimental waypoint generate

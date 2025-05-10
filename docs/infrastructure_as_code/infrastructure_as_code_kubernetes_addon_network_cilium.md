@@ -50,7 +50,7 @@ KubernetesのデフォルトのCNIと衝突するため、これを無効化す�
 
 #### ▼ Istioとの連携
 
-Cilium CNIと`istio-proxy`コンテナを組み合わせて、トラフィックを制御する。
+Cilium CNIとistio-proxyを組み合わせて、トラフィックを制御する。
 
 Ciliumのサービスメッシュ機能は、あくまでCiliumの中で一機能としてでしかない。
 

@@ -163,7 +163,7 @@ $ kubectl get deployment -A
 
 Anthos Service Meshのドキュメントを確認すると、Istioをカナリア方式でアップグレードしている。
 
-Istioのカナリア方式のアップグレードでは、新しい`istio-proxy`コンテナをインジェクションする方法として、`istio.io/rev`キーのリビジョン番号を書き換える方法と、MutatingWebhookConfigurationのエイリアスの紐付けを変更する方法がある。
+Istioのカナリア方式のアップグレードでは、新しいistio-proxyをインジェクションする方法として、`istio.io/rev`キーのリビジョン番号を書き換える方法と、MutatingWebhookConfigurationのエイリアスの紐付けを変更する方法がある。
 
 Anthos Service Meshのアップグレードでは、何らかの事情でこれらの両方の手順が混じっており、Istioとは方法が若干異なっている。
 
@@ -366,7 +366,7 @@ metadata:
 
 : Istioの`istio.io/rev`キーを使用して、特定のNamespaceの`istio-injection`キーを上書きする。
 
-     多くの場合、`istio-proxy`コンテナはIstio Ingress GatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。
+     多くの場合、istio-proxyはIstio Ingress GatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。
 
      これらのキーはコンフリクトを発生させるため、どちらか一方しか使用できず、Anthosでは`istio.io/rev`キーを推奨している。
 
@@ -391,13 +391,13 @@ $ kubectl get namespace -L istio.io/rev
 > - https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_gateways
 > - https://cloud.google.com/service-mesh/docs/gateways#in-cluster_control_plane
 
-#### ▼ Istio Ingress Gatewayの`istio-proxy`コンテナをアップグレード
+#### ▼ Istio Ingress Gatewayのistio-proxyをアップグレード
 
 `(11)`
 
-: Istio Ingress GatewayのPodを再作成し、新バージョンの`istio-proxy`コンテナを自動的にインジェクションする。
+: Istio Ingress GatewayのPodを再作成し、新バージョンのistio-proxyを自動的にインジェクションする。
 
-     カナリア方式のため、webhook-serviceがそのままで新しい`istio-proxy`コンテナをインジェクションできる。
+     カナリア方式のため、webhook-serviceがそのままで新しいistio-proxyをインジェクションできる。
 
 ```bash
 $ kubectl rollout restart deployment istio-ingressgateway -n istio-ingress
@@ -405,7 +405,7 @@ $ kubectl rollout restart deployment istio-ingressgateway -n istio-ingress
 
 `(12)`
 
-: 新バージョンの`istio-proxy`コンテナがインジェクションされたことを、イメージタグから確認する。
+: 新バージョンのistio-proxyがインジェクションされたことを、イメージタグから確認する。
 
      代わりに、`istioctl proxy-status`コマンドでも良い。
 
@@ -423,13 +423,13 @@ gcr.io/gke-release/asm/proxyv2:1.14.0-asm.1
 $ istioctl proxy-status
 ```
 
-#### ▼ アプリケーションの`istio-proxy`コンテナをアップグレード
+#### ▼ アプリケーションのistio-proxyをアップグレード
 
 `(13)`
 
-: アプリケーションのPodを再作成し、新バージョンの`istio-proxy`コンテナを自動的にインジェクションする。
+: アプリケーションのPodを再作成し、新バージョンのistio-proxyを自動的にインジェクションする。
 
-     カナリア方式のため、webhook-serviceがそのままで新しい`istio-proxy`コンテナをインジェクションできる。
+     カナリア方式のため、webhook-serviceがそのままで新しいistio-proxyをインジェクションできる。
 
 ```bash
 $ kubectl rollout restart deployment app-deployment -n app
@@ -437,7 +437,7 @@ $ kubectl rollout restart deployment app-deployment -n app
 
 `(14)`
 
-: 新バージョンの`istio-proxy`コンテナがインジェクションされたことを、イメージタグから確認する。
+: 新バージョンのistio-proxyがインジェクションされたことを、イメージタグから確認する。
 
      代わりに、`istioctl proxy-status`コマンドでも良い。
 

@@ -836,7 +836,7 @@ Pod全体のうちで排除できる最大Pod数を設定する。
 
 全てのPodを排除する。
 
-代わりに`istio-proxy`コンテナから返却された`503`ステータス (response_flagは`UH`) のレスポンスに応じて、送信元マイクロサービスでフォールバックを実行する。
+代わりにistio-proxyから返却された`503`ステータス (response_flagは`UH`) のレスポンスに応じて、送信元マイクロサービスでフォールバックを実行する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -1259,7 +1259,7 @@ spec:
 
 #### ▼ context
 
-指定したワークロードタイプ (例：istio-ingressgateway内の`istio-proxy`コンテナ、istio-proxyコンテナの`istio-proxy`コンテナ) の場合、フィルターの設定値を変更する。
+指定したワークロードタイプ (例：istio-ingressgateway内のistio-proxy、istio-proxyコンテナのistio-proxy) の場合、フィルターの設定値を変更する。
 
 **＊実装例＊**
 
@@ -1448,7 +1448,7 @@ spec:
 
 これはEnvoyFilterで設定する必要がある。
 
-複数の`istio-proxy`コンテナにレートリミットを設定するグローバルレートリミットと、特定のものに設定するローカルレートリミットがある。
+複数のistio-proxyにレートリミットを設定するグローバルレートリミットと、特定のものに設定するローカルレートリミットがある。
 
 #### ▼ ローカルリミット
 
@@ -1678,7 +1678,7 @@ spec:
 
 ### KeepAliveの設定
 
-istio-ingressgateway内の`istio-proxy`コンテナで、KeepAliveを実行できるようにする。
+istio-ingressgateway内のistio-proxyで、KeepAliveを実行できるようにする。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -1730,7 +1730,7 @@ spec:
 
 ### VirtualService、DestinationRuleの定義
 
-VirtualServiceとDestinationRuleの設定値は、`istio-proxy`コンテナに適用される。
+VirtualServiceとDestinationRuleの設定値は、istio-proxyに適用される。
 
 > - https://sreake.com/blog/istio/
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/
@@ -1740,15 +1740,15 @@ VirtualServiceとDestinationRuleの設定値は、`istio-proxy`コンテナに�
 
 ### annotationsの定義
 
-DeploymentやPodの`.metadata.anontations`キーにて、`istio-proxy`コンテナごとのオプション値を設定する。
+DeploymentやPodの`.metadata.anontations`キーにて、istio-proxyごとのオプション値を設定する。
 
 > - https://istio.io/latest/docs/reference/config/annotations/
 
 <br>
 
-### `istio-proxy`コンテナの定義
+### istio-proxyの定義
 
-DeploymentやPodで`istio-proxy`コンテナを定義することにより設定を変更できる。
+DeploymentやPodでistio-proxyを定義することにより設定を変更できる。
 
 **＊実装例＊**
 
@@ -2074,7 +2074,7 @@ spec:
 
 送信元とGatewayの間で、Istioの作成した証明書による相互TLS認証を実施する。
 
-`istio-proxy`コンテナとIstio Egress Gatewayの間で相互TLS認証を実施する場合、これを使用する。
+istio-proxyとIstio Egress Gatewayの間で相互TLS認証を実施する場合、これを使用する。
 
 **＊実装例＊**
 
@@ -2195,7 +2195,7 @@ spec:
 
 #### ▼ mtls
 
-特定のNamespace内のすべての`istio-proxy`コンテナ間通信時、相互TLS認証を有効化するか否かを設定する。
+特定のNamespace内のすべてのistio-proxy間通信時、相互TLS認証を有効化するか否かを設定する。
 
 特定のPod間でのみ相互TLS認証を使用したい場合、DestinationRuleでSSL証明書を設定する。
 
@@ -2210,8 +2210,8 @@ spec:
 | ------------ | ------------------------------------------------------------------------------------------------------------- |
 | `UNSET`      | 記入中...                                                                                                     |
 | `DISABLE`    | 相互TLS認証を使用しない。                                                                                     |
-| `PERMISSIVE` | 相互TLS認証の時、`istio-proxy`コンテナは受信するプロトコルでHTTPSプロトコルとHTTPプロトコルの両方を許可する。 |
-| `STRICT`     | 相互TLS認証の時、`istio-proxy`コンテナは受信するプロトコルでHTTPSプロトコルのみを許可し、HTTPを許可しない。   |
+| `PERMISSIVE` | 相互TLS認証の時、istio-proxyは受信するプロトコルでHTTPSプロトコルとHTTPプロトコルの両方を許可する。 |
+| `STRICT`     | 相互TLS認証の時、istio-proxyは受信するプロトコルでHTTPSプロトコルのみを許可し、HTTPを許可しない。   |
 
 **＊実装例＊**
 
@@ -2241,7 +2241,7 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 ### concurrency
 
-サービスメッシュ全体、特定Namespace、特定ワークロードの`istio-proxy`コンテナにて、ワーカースレッド数を設定する。
+サービスメッシュ全体、特定Namespace、特定ワークロードのistio-proxyにて、ワーカースレッド数を設定する。
 
 `.meshConfig.defaultConfig`キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。
 
@@ -2261,7 +2261,7 @@ spec:
 
 ### environmentVariables
 
-サービスメッシュ全体、特定Namespace、特定ワークロードの`istio-proxy`コンテナにて、環境変数を設定する。
+サービスメッシュ全体、特定Namespace、特定ワークロードのistio-proxyにて、環境変数を設定する。
 
 `.meshConfig.defaultConfig`キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。
 
@@ -2843,7 +2843,7 @@ metadata:
 
 #### ▼ accessLoggingとは
 
-同じNamespace内の`istio-proxy`コンテナを対象として、アクセスログの作成方法を設定する。
+同じNamespace内のistio-proxyを対象として、アクセスログの作成方法を設定する。
 
 ```yaml
 apiVersion: telemetry.istio.io/v1
@@ -2888,7 +2888,7 @@ data:
 
 #### ▼ metricsとは
 
-同じNamespace内の`istio-proxy`コンテナを対象として、メトリクスの作成方法を設定する。
+同じNamespace内のistio-proxyを対象として、メトリクスの作成方法を設定する。
 
 ```yaml
 apiVersion: telemetry.istio.io/v1
@@ -2915,7 +2915,7 @@ spec:
 
 #### ▼ tracingとは
 
-同じNamespace内の`istio-proxy`コンテナを対象として、スパンの作成方法を設定する。
+同じNamespace内のistio-proxyを対象として、スパンの作成方法を設定する。
 
 ```yaml
 apiVersion: telemetry.istio.io/v1
@@ -3276,7 +3276,7 @@ spec:
 
 HTTP/1.1、HTTP/2 (例：gRPCなど) のプロトコルによる通信をDestinationRuleに紐づくPodにルーティングする。
 
-`.spec.tcp`キーや`.spec.tls`キーとは異なり、マイクロサービスがHTTPプロトコルで通信を送受信し、`istio-proxy`コンテナ間で相互TLS認証を実施する場合、これを使用する。
+`.spec.tcp`キーや`.spec.tls`キーとは異なり、マイクロサービスがHTTPプロトコルで通信を送受信し、istio-proxy間で相互TLS認証を実施する場合、これを使用する。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRoute
 
@@ -3288,7 +3288,7 @@ HTTP/1.1、HTTP/2 (例：gRPCなど) のプロトコルによる通信をDestina
 
 ブラウザではデフォルトでCORSが有効になっており、正しいリクエストがCORSを突破できるように対処する必要がある。
 
-多くの場合、バックエンドアプリケーションにCORSに対処することが多いが、`istio-proxy`コンテナで対処することもできる。
+多くの場合、バックエンドアプリケーションにCORSに対処することが多いが、istio-proxyで対処することもできる。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#CorsPolicy
 
@@ -3547,7 +3547,7 @@ spec:
 
 #### ▼ attempt
 
-`istio-proxy`コンテナのリバースプロキシに失敗した場合の最大リトライ回数を設定する。
+istio-proxyのリバースプロキシに失敗した場合の最大リトライ回数を設定する。
 
 Serviceへのルーティングの失敗ではないことに注意する。
 
@@ -3568,7 +3568,7 @@ spec:
 
 リトライ失敗の理由を設定する。
 
-`istio-proxy`コンテナは、レスポンスの`x-envoy-retry-on`ヘッダーに割り当てるため、これの値を設定する。
+istio-proxyは、レスポンスの`x-envoy-retry-on`ヘッダーに割り当てるため、これの値を設定する。
 
 **＊実装例＊**
 
@@ -3734,13 +3734,13 @@ spec:
 
 #### ▼ timeoutとは
 
-`istio-proxy`コンテナの宛先にリクエストを送信してから返信があるまでの処理タイムアウト時間を設定する (DestinationRuleは接続タイムアウト) 。
+istio-proxyの宛先にリクエストを送信してから返信があるまでの処理タイムアウト時間を設定する (DestinationRuleは接続タイムアウト) 。
 
 `0`秒の場合、処理タイムアウトは無制限になる。
 
 これは、Envoyのルートの`grpc_timeout_header_max`と`timeout`の両方に適用される。
 
-指定した時間以内に、`istio-proxy`コンテナの宛先からレスポンスがなければ、`istio-proxy`コンテナは処理タイムアウト時間を超過したものとして処理する。
+指定した時間以内に、istio-proxyの宛先からレスポンスがなければ、istio-proxyは処理タイムアウト時間を超過したものとして処理する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3887,7 +3887,7 @@ spec:
 
 `.spec.http`キーや`.spec.tcp`キーとは異なり、HTTPSプロトコルの通信をDestinationRuleに紐づくPodにルーティングする。
 
-マイクロサービスがHTTPSプロトコルで通信を送受信し、`istio-proxy`コンテナ間で相互TLS認証を実施する場合、これを使用する。
+マイクロサービスがHTTPSプロトコルで通信を送受信し、istio-proxy間で相互TLS認証を実施する場合、これを使用する。
 
 他に、マイクロサービスがHTTPSリクエストを送信し、Istio Egress Gatewayでこれをそのまま通過させる (`PASSTHROUGH`) 場合も必要になる。
 

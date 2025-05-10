@@ -4275,7 +4275,7 @@ spec:
 
 #### ▼ コンテナが複数個ある場合
 
-Pod内にアプリコンテナ以外にコンテナ (`istio-proxy`コンテナなど) がある場合、全てのコンテナの終了プロセスの時間を考慮する必要がある。
+Pod内にアプリ以外にコンテナ (istio-proxyなど) がある場合、全てのコンテナの終了プロセスの時間を考慮する必要がある。
 
 ![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
 

@@ -34,7 +34,7 @@ description: Istio＠サービスメッシュ系ミドルウェアの知見を�
 
 - デプロイ頻度
 - 設定変更頻度
-- `istio-proxy`コンテナ数
+- istio-proxy数
 - サービスメッシュのスコープ
 - コントロールプレーンの冗長化数
 
@@ -49,8 +49,8 @@ description: Istio＠サービスメッシュ系ミドルウェアの知見を�
 
 メモリと同じように、以下の情報によって、データプレーンで必要なCPUが変わる。
 
-- `istio-proxy`コンテナ内のEnvoyプロセスのスレッド数。スレッドが多くなるほど、これに紐づくCPUが必要になる。
-- `istio-proxy`コンテナ内のEnvoyプロセスが作成するテレメトリー (ログ、メトリクス、分散トレース) のデータサイズ
+- istio-proxy内のEnvoyプロセスのスレッド数。スレッドが多くなるほど、これに紐づくCPUが必要になる。
+- istio-proxy内のEnvoyプロセスが作成するテレメトリー (ログ、メトリクス、分散トレース) のデータサイズ
 - リクエストやレスポンスのデータサイズ
 - 送信元の接続数
 - など...
@@ -61,15 +61,15 @@ description: Istio＠サービスメッシュ系ミドルウェアの知見を�
 
 CPUと同じように、以下の情報によって、データプレーンで必要なメモリが変わる。
 
-- `istio-proxy`コンテナ内のEnvoyプロセスのスレッド数。スレッドが多くなるほど、これに紐づくCPUが必要になる。
-- `istio-proxy`コンテナ内のEnvoyプロセスが作成するテレメトリー (ログ、メトリクス、分散トレース) のデータサイズ
+- istio-proxy内のEnvoyプロセスのスレッド数。スレッドが多くなるほど、これに紐づくCPUが必要になる。
+- istio-proxy内のEnvoyプロセスが作成するテレメトリー (ログ、メトリクス、分散トレース) のデータサイズ
 - リクエストやレスポンスのデータサイズ
 - 送信元の接続数
 - など...
 
 特に以下でメモリが必要になる。
 
-- `istio-proxy`コンテナ内のEnvoyプロセスが持つ宛先情報量
+- istio-proxy内のEnvoyプロセスが持つ宛先情報量
 
 > - https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#data-plane-performance
 
@@ -85,7 +85,7 @@ Istioのドキュメントでは、以下のハードウェアリソースを消
 
 |                          |    CPU    | メモリ |
 | ------------------------ | :-------: | :----: |
-| `istio-proxy`コンテナ    | 0.2 vCPU  | 60 Mi  |
+| istio-proxy    | 0.2 vCPU  | 60 Mi  |
 | waypoint-proxyのコンテナ | 0.25 vCPU | 60 Mi  |
 | ztunnelのコンテナ        | 0.06 vCPU | 12 Mi  |
 
@@ -93,7 +93,7 @@ Istioのドキュメントでは、以下のハードウェアリソースを消
 
 **例**
 
-`istio-proxy`コンテナをインジェクションすることにより、 Podあたりで以下のハードウェアリソースが増える調査結果が出ている。
+istio-proxyをインジェクションすることにより、 Podあたりで以下のハードウェアリソースが増える調査結果が出ている。
 
 - CPU：0.0002 vCPU 〜0.0003 vCPU
 - メモリ：40 Mi 〜 50 Mi
@@ -123,7 +123,7 @@ Istioのドキュメントでは、以下のハードウェアリソースを消
 
 以下により、レイテンシーは大きくなる。
 
-- `istio-proxy`コンテナ、waypoint-proxyのコンテナ、ztunnelのコンテナの経由
+- istio-proxy、waypoint-proxyのコンテナ、ztunnelのコンテナの経由
 - AuthorizationPolicyによるアクセストークンの署名検証
 - PeerAuthenticationによる相互TLS認証
 
@@ -136,9 +136,9 @@ p99、1000 rps/s、240 秒間の負荷の場合である。
 
 | 条件                                            | レイテンシー |
 | ----------------------------------------------- | :----------: |
-| both (送信元／宛先 `istio-proxy`コンテナの両方) |   約 28 ms   |
-| serveronly (宛先 `istio-proxy`コンテナのみ)     |   約 13 ms   |
-| baseline (`istio-proxy`コンテナなし)            |   約 3 ms    |
+| both (送信元／宛先 istio-proxyの両方) |   約 28 ms   |
+| serveronly (宛先 istio-proxyのみ)     |   約 13 ms   |
+| baseline (istio-proxyなし)            |   約 3 ms    |
 
 ![istio_sidecar-mode_latency](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_sidecar-mode_latency.png)
 
@@ -187,7 +187,7 @@ L3/L4/L7に対応している。
 
 ### パケット処理の仕組み
 
-1. `istio-proxy`コンテナにて、リスナーでリクエストを受信する。
+1. istio-proxyにて、リスナーでリクエストを受信する。
 2. EnvoyFilterがあれば、これをリスナーフィルターとしてEnvoyに適用する。
 3. ルートでリクエストを受け取る。
 4. クラスターでリクエストを受け取る。
@@ -216,7 +216,7 @@ L3/L4/L7に対応している。
 
 #### ▼ 任意の外部システムに送信できるようにする
 
-サービスメッシュ内のマイクロサービスから、`istio-proxy`コンテナ (マイクロサービスのサイドカーとIstio Egress Gatewayの両方) を経由して、任意の外部システムにリクエストを送信できるようにする。
+サービスメッシュ内のマイクロサービスから、istio-proxy (マイクロサービスのサイドカーとIstio Egress Gatewayの両方) を経由して、任意の外部システムにリクエストを送信できるようにする。
 
 外部システムは識別できない。
 
@@ -225,7 +225,7 @@ L3/L4/L7に対応している。
 
 #### ▼ 登録した外部システムに送信できるようにする
 
-サービスメッシュ内のマイクロサービスから、`istio-proxy`コンテナ (マイクロサービスのサイドカーとIstio Egress Gatewayの両方) を経由して、ServiceEntryで登録した外部システムにリクエストを送信できるようにする。
+サービスメッシュ内のマイクロサービスから、istio-proxy (マイクロサービスのサイドカーとIstio Egress Gatewayの両方) を経由して、ServiceEntryで登録した外部システムにリクエストを送信できるようにする。
 
 外部システムを識別できる。
 
@@ -238,16 +238,16 @@ L3/L4/L7に対応している。
 
 #### ▼ 登録した外部システムに送信できるようにする
 
-サービスメッシュ内のマイクロサービスから、`istio-proxy`コンテナ (マイクロサービスのサイドカーのみ) を経由して、任意の外部システムにリクエストを送信できるようにする。
+サービスメッシュ内のマイクロサービスから、istio-proxy (マイクロサービスのサイドカーのみ) を経由して、任意の外部システムにリクエストを送信できるようにする。
 
 外部システムは識別できない。
 
 > - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#understanding-what-happened
 > - https://istio.io/v1.14/blog/2019/egress-performance/
 
-#### ▼ `istio-proxy`コンテナを経由せずに送信できるようにする
+#### ▼ istio-proxyを経由せずに送信できるようにする
 
-サービスメッシュ内のマイクロサービスから、`istio-proxy`コンテナを経由せずに、外部システムにリクエストを送信できるようにする。
+サービスメッシュ内のマイクロサービスから、istio-proxyを経由せずに、外部システムにリクエストを送信できるようにする。
 
 > - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#understanding-what-happened
 > - https://istio.io/v1.14/blog/2019/egress-performance/
@@ -300,11 +300,11 @@ IPアドレスを指定して送信できない宛先のこと。
 
 #### ▼ サーキットブレイカー
 
-`istio-proxy`コンテナでサーキットブレイカーを実現する。
+istio-proxyでサーキットブレイカーを実現する。
 
 ただし、サーキットブレイカー後のフォールバックは`istoi-proxy`コンテナでは実装できず、マイクロサービスで実装する必要がある。
 
-`istio-proxy`コンテナは、送信可能な宛先がなくなると`503`ステータスを返信する。
+istio-proxyは、送信可能な宛先がなくなると`503`ステータスを返信する。
 
 Envoyは以下の機能を持っている。
 
@@ -327,7 +327,7 @@ Istioでは、外れ値の排除率を`100`%とすることで、ステータス
 
 #### ▼ アクティブヘルスチェック
 
-`istio-proxy`コンテナは、マイクロサービスに対するkubeletのヘルスチェックを受信し、マイクロサービスに転送する。
+istio-proxyは、マイクロサービスに対するkubeletのヘルスチェックを受信し、マイクロサービスに転送する。
 
 <br>
 
@@ -414,7 +414,7 @@ AuthorizationPolicyで認可プロバイダー (例：Keycloak、OpenPolicy Agen
 
 #### ▼ TLSタイムアウト
 
-アウトバウンド通信、`istio-proxy`コンテナは宛先にHTTPSリクエストを送信する。
+アウトバウンド通信、istio-proxyは宛先にHTTPSリクエストを送信する。
 
 この時、実際はタイムアウト時間を超過していても、`TLS handshake timeout`というエラーなってしまう。
 
@@ -429,11 +429,11 @@ AuthorizationPolicyで認可プロバイダー (例：Keycloak、OpenPolicy Agen
 クライアント証明書／SSL証明書を提供しつつ、これを定期的に自動更新する。
 
 1. Istiodコントロールプレーンは、`istio-ca-secret` (Secret) を自己署名する。
-2. Istiodコントロールプレーンは、`istio-proxy`コンテナから送信された秘密鍵と証明書署名要求で署名されたクライアント証明書／SSL証明書を作成する。特に設定しなければ、`istio-proxy`コンテナのpilot-agentプロセスが、秘密鍵と証明書署名要求を自動で作成してくれる。
-3. `istio-proxy`コンテナからのリクエストに応じて、IstiodのSDS-APIがクライアント証明書／SSL証明書を `istio-proxy`コンテナに配布する。
-4. Istiodコントロールプレーンは、CA証明書を持つ `istio-ca-root-cert` (ConfigMap) を自動的に作成する。これは、`istio-proxy`コンテナにマウントされ、証明書を検証するために使用する。
-5. `istio-proxy`コンテナ間で相互TLS認証できるようになる。
-6. 証明書が失効すると、`istio-proxy`コンテナの証明書が自動的に差し代わる。Podの再起動は不要である。
+2. Istiodコントロールプレーンは、istio-proxyから送信された秘密鍵と証明書署名要求で署名されたクライアント証明書／SSL証明書を作成する。特に設定しなければ、istio-proxyのpilot-agentプロセスが、秘密鍵と証明書署名要求を自動で作成してくれる。
+3. istio-proxyからのリクエストに応じて、IstiodのSDS-APIがクライアント証明書／SSL証明書を istio-proxyに配布する。
+4. Istiodコントロールプレーンは、CA証明書を持つ `istio-ca-root-cert` (ConfigMap) を自動的に作成する。これは、istio-proxyにマウントされ、証明書を検証するために使用する。
+5. istio-proxy間で相互TLS認証できるようになる。
+6. 証明書が失効すると、istio-proxyの証明書が自動的に差し代わる。Podの再起動は不要である。
 
 ![istio_istio-ca-root-cert](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-ca-root-cert.png)
 
@@ -447,7 +447,7 @@ AuthorizationPolicyで認可プロバイダー (例：Keycloak、OpenPolicy Agen
 
 Istiodコントロールプレーン (`discovery`コンテナ) を中間認証局として使用し、ルート認証局をIstio以外 (例：HashiCorp Vaultなど) に委譲できる。
 
-外部のルート認証局は、`istio-proxy`コンテナから送信された秘密鍵と証明書署名要求で署名されたSSL証明書を作成する。
+外部のルート認証局は、istio-proxyから送信された秘密鍵と証明書署名要求で署名されたSSL証明書を作成する。
 
 > - https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/
 > - https://istio.io/latest/docs/ops/integrations/certmanager/
@@ -459,7 +459,7 @@ Istiodコントロールプレーン (`discovery`コンテナ) を中間認証�
 
 ### 他のOSSとの連携
 
-`istio-proxy`コンテナは、テレメトリーを作成する。
+istio-proxyは、テレメトリーを作成する。
 
 各監視ツールは、プル型 (ツールがIstiodから収集) やプッシュ型 (Istiodがツールに送信) でこのテレメトリーを収集する。
 
@@ -471,11 +471,11 @@ Istiodコントロールプレーン (`discovery`コンテナ) を中間認証�
 
 ### メトリクスの作成と送信
 
-`istio-proxy`コンテナはメトリクスを作成し、Istiodコントロールプレーン (`discovery`コンテナ) に送信する。
+istio-proxyはメトリクスを作成し、Istiodコントロールプレーン (`discovery`コンテナ) に送信する。
 
 Prometheusは、`discovery`コンテナの `/stats/prometheus`エンドポイント (`15090`番ポート) からメトリクスのデータポイントを収集する。
 
-なお、`istio-proxy`コンテナにも `/stats/prometheus`エンドポイントはある。
+なお、istio-proxyにも `/stats/prometheus`エンドポイントはある。
 
 > - https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/
 > - https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=22
@@ -545,7 +545,7 @@ spec:
       interval: 15s
 ```
 
-また、`istio-proxy`コンテナの監視には、PodMonitorが必要である。
+また、istio-proxyの監視には、PodMonitorが必要である。
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -614,20 +614,20 @@ spec:
 | ------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `istio_build` | カウント | Istioの各コンポーネントの情報を表す。`istio_build{component="pilot"}`とすることで、Istiodコントロールプレーンの情報を取得できる。 |
 
-#### ▼ `istio-proxy`コンテナに関するメトリクス
+#### ▼ istio-proxyに関するメトリクス
 
 Prometheus上でメトリクスをクエリすると、Istiodコントロールプレーン (`discovery`コンテナ) から収集したデータポイントを取得できる。
 
 | メトリクス名                          | 単位     | 説明                                                                                                                                                                                             |
 | ------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `istio_requests_total`                | カウント | `istio-proxy`コンテナが受信した総リクエスト数を表す。メトリクスの名前空間に対してさまざまなディメンションを設定できる。`<br>`・https://blog.christianposta.com/understanding-istio-telemetry-v2/ |
-| `istio_request_duration_milliseconds` | カウント | `istio-proxy`コンテナが受信したリクエストに関して、処理の所要時間を表す。                                                                                                                        |
-| `istio_request_messages_total`        | カウント | `istio-proxy`コンテナが受信したgRPCによる総HTTPリクエスト数を表す。                                                                                                                              |
-| `istio_request_messages_total`        | カウント | `istio-proxy`コンテナが受信したgRPCによる総HTTPリクエスト数を表す。                                                                                                                              |
+| `istio_requests_total`                | カウント | istio-proxyが受信した総リクエスト数を表す。メトリクスの名前空間に対してさまざまなディメンションを設定できる。`<br>`・https://blog.christianposta.com/understanding-istio-telemetry-v2/ |
+| `istio_request_duration_milliseconds` | カウント | istio-proxyが受信したリクエストに関して、処理の所要時間を表す。                                                                                                                        |
+| `istio_request_messages_total`        | カウント | istio-proxyが受信したgRPCによる総HTTPリクエスト数を表す。                                                                                                                              |
+| `istio_request_messages_total`        | カウント | istio-proxyが受信したgRPCによる総HTTPリクエスト数を表す。                                                                                                                              |
 
-| `istio_request_duration_milliseconds_sum	` | カウント | `istio-proxy`コンテナが起動以降の全てのリクエスト期間の合計 |
-| `envoy_cluster_upstream_rq_retry` | カウント | `istio-proxy`コンテナの他のPodへのリクエストに関するリトライ数を表す。 |
-| `envoy_cluster_upstream_rq_retry_success` | カウント | `istio-proxy`コンテナが他のPodへのリクエストに関するリトライ成功数を表す。 |
+| `istio_request_duration_milliseconds_sum	` | カウント | istio-proxyが起動以降の全てのリクエスト期間の合計 |
+| `envoy_cluster_upstream_rq_retry` | カウント | istio-proxyの他のPodへのリクエストに関するリトライ数を表す。 |
+| `envoy_cluster_upstream_rq_retry_success` | カウント | istio-proxyが他のPodへのリクエストに関するリトライ成功数を表す。 |
 | `envoy_cluster_upstream_rq_retry_backoff_expotential` | カウント | 記入中... |
 | `envoy_cluster_upstream_rq_retry_limit_exceeded` | カウント | 記入中... |
 
@@ -653,9 +653,9 @@ Istio Ingress Gatewayを経由せずにサービスメッシュ外からイン�
 | `destination_service`            | リクエストの宛先のService名を表す。                                               | `foo-service`                                                                                                       |                                                                                                                                                                                                                                                                                                               |
 | `destination_workload`           | リクエストの宛先のDeployment名を表す。                                            | `foo-deployment                                                                                                     |                                                                                                                                                                                                                                                                                                               |
 | `destination_workload_namespace` | 送信元のNamespace名を表す。                                                       |                                                                                                                     |                                                                                                                                                                                                                                                                                                               |
-| `reporter`                       | メトリクスの収集者を表す。`istio-proxy`コンテナかIngressGatewayのいずれかである。 | ・`destination` (宛先の `istio-proxy`コンテナ)`<br>`・`source` (送信元のIngressGatewayまたは `istio-proxy`コンテナ) |                                                                                                                                                                                                                                                                                                               |
+| `reporter`                       | メトリクスの収集者を表す。istio-proxyかIngressGatewayのいずれかである。 | ・`destination` (宛先の istio-proxy)`<br>`・`source` (送信元のIngressGatewayまたは istio-proxy) |                                                                                                                                                                                                                                                                                                               |
 | `response_flags`                 | Envoyの `%RESPONSE_FLAGS%`変数を表す。                                            | `-` (値なし)                                                                                                        |                                                                                                                                                                                                                                                                                                               |
-| `response_code`                  | `istio-proxy`コンテナが返信したレスポンスコードの値を表す。                       | `200`、`404`、`0`                                                                                                   | `reporter="source"`の場合、送信元`istio-proxy`コンテナに対して、宛先 `istio-proxy`コンテナがマイクロサービスから受信したステータスコードを集計する。`reporter="destination"`の場合、送信元`istio-proxy`コンテナに対して、宛先 `istio-proxy`コンテナがマイクロサービスから受信したステータスコードを集計する。 |
+| `response_code`                  | istio-proxyが返信したレスポンスコードの値を表す。                       | `200`、`404`、`0`                                                                                                   | `reporter="source"`の場合、送信元istio-proxyに対して、宛先 istio-proxyがマイクロサービスから受信したステータスコードを集計する。`reporter="destination"`の場合、送信元istio-proxyに対して、宛先 istio-proxyがマイクロサービスから受信したステータスコードを集計する。 |
 | `source_app`                     | 送信元のコンテナ名を表す。                                                        | `foo-container`                                                                                                     |                                                                                                                                                                                                                                                                                                               |
 | `source_cluster`                 | 送信元のKubernetes Cluster名を表す。                                              | `Kubernetes`                                                                                                        |                                                                                                                                                                                                                                                                                                               |
 | `source_workload`                | 送信元のDeployment名を表す。                                                      | `foo-deployment`                                                                                                    |                                                                                                                                                                                                                                                                                                               |
@@ -672,7 +672,7 @@ Istio Ingress Gatewayを経由せずにサービスメッシュ外からイン�
 
 #### ▼ ログの出力
 
-`istio-proxy`コンテナは、マイクロサービスへのアクセスログ (インバウンド通信とアウトバウンド通信の両方) を作成し、標準出力に出力する。
+istio-proxyは、マイクロサービスへのアクセスログ (インバウンド通信とアウトバウンド通信の両方) を作成し、標準出力に出力する。
 
 アクセスログにデフォルトで役立つ値が出力される。
 
@@ -719,7 +719,7 @@ Istio Ingress Gatewayを経由せずにサービスメッシュ外からイン�
 
 #### ▼ ログの送信
 
-`istio-proxy`コンテナは、アクセスログをログ収集ツール (例：OpenTelemetry Collector) に送信する。
+istio-proxyは、アクセスログをログ収集ツール (例：OpenTelemetry Collector) に送信する。
 
 > - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/
 
@@ -733,13 +733,13 @@ Istio Ingress Gatewayを経由せずにサービスメッシュ外からイン�
 
 ![istio_distributed_tracing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_distributed_tracing.png)
 
-`istio-proxy`コンテナは、スパンを作成する。
+istio-proxyは、スパンを作成する。
 
 スパンの作成場所としては、いくつか種類がある。
 
-| スパン作成パターン        | `istio-proxy`コンテナ | マイクロサービス |
+| スパン作成パターン        | istio-proxy | マイクロサービス |
 | ------------------------- | :-------------------: | :--------------: |
-| `istio-proxy`コンテナのみ |          ✅           |                  |
+| istio-proxyのみ |          ✅           |                  |
 | マイクロサービスのみ      |                       |        ✅        |
 | 両方                      |          ✅           |        ✅        |
 
@@ -749,13 +749,13 @@ Istio Ingress Gatewayを経由せずにサービスメッシュ外からイン�
 
 #### ▼ スパンの送信
 
-`istio-proxy`コンテナは、スパンを分散トレース収集ツール (例：Jaeger Collector、OpenTelemetry Collectorなど) に送信する。
+istio-proxyは、スパンを分散トレース収集ツール (例：Jaeger Collector、OpenTelemetry Collectorなど) に送信する。
 
-マイクロサービスからスパンを送信する場合であっても、`istio-proxy`コンテナを経由し、分散トレース収集ツールに送信することになる。
+マイクロサービスからスパンを送信する場合であっても、istio-proxyを経由し、分散トレース収集ツールに送信することになる。
 
-分散トレース収集ツールをサービスメッシュに登録 (VirtualServiceやServiceEntryを作成) しないと、マイクロサービスや`istio-proxy`コンテナは分散トレース収集ツールを名前解決できない。
+分散トレース収集ツールをサービスメッシュに登録 (VirtualServiceやServiceEntryを作成) しないと、マイクロサービスやistio-proxyは分散トレース収集ツールを名前解決できない。
 
-Envoyでは宛先としてサポートしていても、`istio-proxy`コンテナでは使用できない場合がある。(例：X-Rayデーモン)
+Envoyでは宛先としてサポートしていても、istio-proxyでは使用できない場合がある。(例：X-Rayデーモン)
 
 > - https://istio.io/latest/docs/tasks/observability/distributed-tracing/overview/
 > - https://github.com/istio/istio/blob/1.14.3/samples/bookinfo/src/productpage/productpage.py#L180-L237

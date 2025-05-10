@@ -17,7 +17,7 @@ description: メタデータ＠Istioの知見を記録しています。
 
 ### istio-injection
 
-指定したNamespaceに所属するPod内に`istio-proxy`コンテナを自動的にインジェクションするか否かを設定する。
+指定したNamespaceに所属するPod内にistio-proxyを自動的にインジェクションするか否かを設定する。
 
 `.metadata.labels.istio.io/rev`キーとはコンフリクトを発生させるため、どちらかしか使えない (`.metadata.labels.istio-injection`キーの値が`disabled`の場合は共存できる) 。
 
@@ -60,7 +60,7 @@ metadata:
 
 #### ▼ サイドカーモードの場合
 
-指定したNamespaceに所属するPod内に`istio-proxy`コンテナを自動的にインジェクションするか否かを設定する。
+指定したNamespaceに所属するPod内にistio-proxyを自動的にインジェクションするか否かを設定する。
 
 また、サイドカーモードのカナリアアップグレードにも使用できる。
 
@@ -99,7 +99,7 @@ metadata:
 
 #### ▼ アンビエントモードの場合
 
-`istio-proxy`コンテナからwaypoint-proxyを作成する。
+istio-proxyからwaypoint-proxyを作成する。
 
 また、アンビエントモードのカナリアアップグレードにも使用できる。
 
@@ -259,7 +259,7 @@ spec:
 
 ### annotationsとは
 
-Deploymentの`.spec.template`キーや、Podの`.metadata.`キーにて、`istio-proxy`コンテナごとのオプション値を設定する。Deploymentの`.metadata.`キーで定義しないように注意する。
+Deploymentの`.spec.template`キーや、Podの`.metadata.`キーにて、istio-proxyごとのオプション値を設定する。Deploymentの`.metadata.`キーで定義しないように注意する。
 
 > - https://istio.io/latest/docs/reference/config/annotations/
 
@@ -294,7 +294,7 @@ spec:
 
 #### ▼ proxy.istio.io/configとは
 
-`istio-proxy`コンテナの`envoy`プロセスの設定値を上書きし、ユーザー定義の値を設定する。
+istio-proxyの`envoy`プロセスの設定値を上書きし、ユーザー定義の値を設定する。
 
 これを使用するよりは、Istiodコントロールプレーンの`.meshConfig.defaultConfig`キーやProxyConfigの`.spec.environmentVariables`キーを使用したほうがいいかもしれない。
 
@@ -332,7 +332,7 @@ spec:
 
 デフォルト値は`45`である。
 
-`istio-proxy`コンテナ内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。
+istio-proxy内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。
 
 この接続のドレイン処理時間で、新しい接続を受け入れ続ける時間を設定する。
 
@@ -365,7 +365,7 @@ spec:
 
 執筆時点 (2023/10/31) ですでに廃止されている。
 
-`istio-proxy`コンテナ上のEnvoyの親プロセスを終了するまでに待機する時間を設定する。
+istio-proxy上のEnvoyの親プロセスを終了するまでに待機する時間を設定する。
 
 Podの`.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`キーよりも、最低`5`秒以上長くすると良い。
 
@@ -400,7 +400,7 @@ spec:
 
 `true`の場合は、代わりにPodの`.mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION`変数を設定する。
 
-`istio-proxy`コンテナ内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。
+istio-proxy内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。
 
 この接続のドレイン処理時間を設定する。
 
@@ -432,9 +432,9 @@ spec:
 
 ### sidecar.istio.io/excludeInboundPorts、sidecar.istio.io/excludeOutboundPorts
 
-特定のポート番号に対するインバウンド通信／アウトバウンド通信に関して、istio-iptablesが`istio-proxy`コンテナにリダイレクトしないようにする。
+特定のポート番号に対するインバウンド通信／アウトバウンド通信に関して、istio-iptablesがistio-proxyにリダイレクトしないようにする。
 
-例えば、Pod間でレプリケーション通信をする場合 (例：Keycloakクラスター、Redisクラスターなど) 、`istio-proxy`コンテナを経由する必要はない。
+例えば、Pod間でレプリケーション通信をする場合 (例：Keycloakクラスター、Redisクラスターなど) 、istio-proxyを経由する必要はない。
 
 ```yaml
 apiVersion: apps/v1
@@ -481,7 +481,7 @@ spec:
 
 ### sidecar.istio.io/proxyCPU
 
-`istio-proxy`コンテナで使用するCPUサイズを設定する。
+istio-proxyで使用するCPUサイズを設定する。
 
 **＊実装例＊**
 
@@ -506,7 +506,7 @@ spec:
 
 ### sidecar.istio.io/proxyImage
 
-`istio-proxy`コンテナの作成に使用するコンテナイメージを設定する。
+istio-proxyの作成に使用するコンテナイメージを設定する。
 
 **＊実装例＊**
 
@@ -531,7 +531,7 @@ spec:
 
 ### sidecar.istio.io/proxyMemory
 
-`istio-proxy`コンテナで使用するメモリサイズを設定する。
+istio-proxyで使用するメモリサイズを設定する。
 
 **＊実装例＊**
 

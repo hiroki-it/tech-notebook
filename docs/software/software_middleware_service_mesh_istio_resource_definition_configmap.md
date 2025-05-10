@@ -101,7 +101,7 @@ data:
 
 ### istio-mesh-cmとは
 
-Istiodコントロールプレーン (`discovery`コンテナ) のため、全ての`istio-proxy`コンテナにグローバルに設定する変数を管理する。
+Istiodコントロールプレーン (`discovery`コンテナ) のため、全てのistio-proxyにグローバルに設定する変数を管理する。
 
 ```yaml
 apiVersion: v1
@@ -139,7 +139,7 @@ spec:
 
 #### ▼ accessLogEncodingとは
 
-`istio-proxy`コンテナで作成するアクセスログのファイル形式を設定する。
+istio-proxyで作成するアクセスログのファイル形式を設定する。
 
 ```yaml
 apiVersion: v1
@@ -160,7 +160,7 @@ data:
 
 #### ▼ accessLogFileとは
 
-`istio-proxy`コンテナで作成するアクセスログの出力先を設定する。
+istio-proxyで作成するアクセスログの出力先を設定する。
 
 設定しないと、Envoyはアクセスログを出力しない。
 
@@ -290,7 +290,7 @@ data:
 
 #### ▼ アウトバウンド通信時のリトライ条件
 
-`istio-proxy`コンテナのアウトバウンド通信時リトライ条件は以下である。
+istio-proxyのアウトバウンド通信時リトライ条件は以下である。
 
 宛先に通信が届いておらず、リトライすると問題が解決する可能性があるステータスコードは、リトライしてもよい。
 
@@ -303,10 +303,10 @@ data:
 
 | HTTP/1.1、HTTP/2のステータスコード                             | マイクロサービスに通信が届いている | リトライが有効 | リトライ条件                                                                                                |
 | ---------------------------------------------------- | :---------------: | :-----: | ----------------------------------------------------------------------------------------------------- |
-| `connect-failure`                                    |        ⭕️         |    ✅    | `istio-proxy`コンテナからのアウトバウンド通信時、接続タイムアウト (Connection timeout) が起こった場合に、リトライを実行する。                      |
-| `gateway-error`                                      |        ⭕️         |         | `istio-proxy`コンテナからのアウトバウンド通信時、Gateway系ステータスコード (`502`、`503`、`504`) が返信された場合に、リトライを実行する。冪性がない可能性がある。  |
-| `retriable-status-codes` (`5xx`のように任意のステータスコードを設定する) |        ⭕️         |         | `istio-proxy`コンテナからのアウトバウンド通信時、指定したHTTPステータスであった場合に、リトライを実行する。冪等性がない可能性がある。                           |
-| `reset`                                              |        ⭕️         |         | `istio-proxy`コンテナからのアウトバウンド通信時、接続切断／接続リセット／読み取りタイムアウト (Read timeout) が起こった場合に、リトライを実行する。冪等性がない可能性がある。 |
+| `connect-failure`                                    |        ⭕️         |    ✅    | istio-proxyからのアウトバウンド通信時、接続タイムアウト (Connection timeout) が起こった場合に、リトライを実行する。                      |
+| `gateway-error`                                      |        ⭕️         |         | istio-proxyからのアウトバウンド通信時、Gateway系ステータスコード (`502`、`503`、`504`) が返信された場合に、リトライを実行する。冪性がない可能性がある。  |
+| `retriable-status-codes` (`5xx`のように任意のステータスコードを設定する) |        ⭕️         |         | istio-proxyからのアウトバウンド通信時、指定したHTTPステータスであった場合に、リトライを実行する。冪等性がない可能性がある。                           |
+| `reset`                                              |        ⭕️         |         | istio-proxyからのアウトバウンド通信時、接続切断／接続リセット／読み取りタイムアウト (Read timeout) が起こった場合に、リトライを実行する。冪等性がない可能性がある。 |
 
 > - https://cloud.google.com/storage/docs/retry-strategy?hl=ja#retryable
 > - https://github.com/istio/istio/issues/51704#issuecomment-2188555136
@@ -315,24 +315,24 @@ data:
 
 | HTTP/2のステータスコード      | マイクロサービスに通信が届いている | リトライが有効 | リトライ条件                                                                                                          |
 | -------------------- | :---------------: | :-----: | --------------------------------------------------------------------------------------------------------------- |
-| `cancelled`          |        ⭕️         |         | `istio-proxy`コンテナからのアウトバウンド通信時、gRPCステータスコードが`Cancelled`であった場合に、リトライを実行する。送信元がリクエストを切断しているため、リトライするべきではない可能性がある。 |
-| `deadline-exceeded`  |        ⭕️         |    ✅    | `istio-proxy`コンテナからのアウトバウンド通信時、gRPCステータスコードが`DeadlineExceeded`であった場合に、リトライを実行する。                                |
+| `cancelled`          |        ⭕️         |         | istio-proxyからのアウトバウンド通信時、gRPCステータスコードが`Cancelled`であった場合に、リトライを実行する。送信元がリクエストを切断しているため、リトライするべきではない可能性がある。 |
+| `deadline-exceeded`  |        ⭕️         |    ✅    | istio-proxyからのアウトバウンド通信時、gRPCステータスコードが`DeadlineExceeded`であった場合に、リトライを実行する。                                |
 | `refused-stream`     |        ⭕️         |    ✅    | 同時接続上限数を超過するストリームをマイクロサービスが作成しようとした場合に、リトライを実行する。                                                               |
-| `resource-exhausted` |        ⭕️         |    ✅    | `istio-proxy`コンテナからのアウトバウンド通信時、gRPCステータスコードが`ResourceExhausted`であった場合に、リトライを実行する。                               |
-| `unavailable`        |        ⭕️         |    ✅    | `istio-proxy`コンテナへのインバウンド通信時、マイクロサービスにリクエストをフォワーディングできなかった場合に、リトライを実行する。                                        |
+| `resource-exhausted` |        ⭕️         |    ✅    | istio-proxyからのアウトバウンド通信時、gRPCステータスコードが`ResourceExhausted`であった場合に、リトライを実行する。                               |
+| `unavailable`        |        ⭕️         |    ✅    | istio-proxyへのインバウンド通信時、マイクロサービスにリクエストをフォワーディングできなかった場合に、リトライを実行する。                                        |
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-grpc-on
 
 #### ▼ インバウンド通信時のリトライ条件
 
-`istio-proxy`コンテナのインバウンド通信時のリトライ条件は以下である。
+istio-proxyのインバウンド通信時のリトライ条件は以下である。
 
 執筆時点 (2025/02/26) では、`ENABLE_INBOUND_RETRY_POLICY`変数を`true` (デフォルト値) にすると使用できる。
 
 | HTTP/1.1のステータスコード      | マイクロサービスに通信が届いている | 冪等性がある | 理由                                                          |
 | ---------------------- | :---------------: | :----: | ----------------------------------------------------------- |
-| `reset-before-request` |         ×         |   ✅    | `istio-proxy`コンテナへのインバウンド通信時、マイクロサービスにリクエストをフォワーディングできなかった。 |
+| `reset-before-request` |         ×         |   ✅    | istio-proxyへのインバウンド通信時、マイクロサービスにリクエストをフォワーディングできなかった。 |
 
 <br>
 
@@ -413,7 +413,7 @@ data:
 
 #### ▼ enablePrometheusMergeとは
 
-マイクロサービスのメトリクスを`istio-proxy`コンテナを介して取得できるようにする (マージする) かどうかを設定する。
+マイクロサービスのメトリクスをistio-proxyを介して取得できるようにする (マージする) かどうかを設定する。
 
 ```yaml
 apiVersion: v1
@@ -434,7 +434,7 @@ data:
 
 #### ▼ enableTracingとは
 
-`istio-proxy`コンテナでトレースIDとスパンIDを作成するか否かを設定する。
+istio-proxyでトレースIDとスパンIDを作成するか否かを設定する。
 
 ```yaml
 apiVersion: v1
@@ -475,7 +475,7 @@ data:
 
 #### ▼ ingressSelectorとは
 
-全ての`istio-proxy`コンテナに関して、使用するGatewayの`.metadata.labels.istio`キーの値を設定する。
+全てのistio-proxyに関して、使用するGatewayの`.metadata.labels.istio`キーの値を設定する。
 
 デフォルトでは、Ingressとして`ingressgateway`が設定される。
 
@@ -496,7 +496,7 @@ data:
 
 #### ▼ ingressServiceとは
 
-全ての`istio-proxy`コンテナに関して、使用するIngress Controllerの`.metadata.labels.istio`キーの値を設定する。
+全てのistio-proxyに関して、使用するIngress Controllerの`.metadata.labels.istio`キーの値を設定する。
 
 デフォルトでは、Ingressとして`ingressgateway`が設定される。
 
@@ -519,7 +519,7 @@ data:
 
 #### ▼ proxyHttpPortとは
 
-全ての`istio-proxy`コンテナに関して、Cluster外からのインバウンド通信 (特にHTTPプロトコル) を待ち受けるポート番号を設定する。
+全てのistio-proxyに関して、Cluster外からのインバウンド通信 (特にHTTPプロトコル) を待ち受けるポート番号を設定する。
 
 ```yaml
 apiVersion: v1
@@ -598,7 +598,7 @@ data:
 
 #### ▼ proxyListenPortとは
 
-全ての`istio-proxy`コンテナに関して、他マイクロサービスからのインバウンド通信を待ち受けるポート番号を設定する。
+全てのistio-proxyに関して、他マイクロサービスからのインバウンド通信を待ち受けるポート番号を設定する。
 
 ```yaml
 apiVersion: v1
@@ -656,7 +656,7 @@ spec:
 
 ### controlPlaneAuthPolicy
 
-データプレーン (`istio-proxy`コンテナ) とコントロールプレーン間の通信に相互TLS認証を実施する。
+データプレーン (istio-proxy) とコントロールプレーン間の通信に相互TLS認証を実施する。
 
 ```yaml
 apiVersion: v1
@@ -791,7 +791,7 @@ data:
 
 ### holdApplicationUntilProxyStarts
 
-`istio-proxy`コンテナが、必ずマイクロサービスよりも先に起動するか否かを設定する。
+istio-proxyが、必ずマイクロサービスよりも先に起動するか否かを設定する。
 
 ```yaml
 apiVersion: v1
@@ -817,7 +817,7 @@ spec:
 > - https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB
 > - https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters
 
-オプションを有効化すると、`istio-proxy`コンテナの`.spec.containers[*].lifecycle.postStart.exec.command`キーに、`pilot-agent -wait`コマンドが挿入される。
+オプションを有効化すると、istio-proxyの`.spec.containers[*].lifecycle.postStart.exec.command`キーに、`pilot-agent -wait`コマンドが挿入される。
 
 `.spec.containers[*].lifecycle.preStop.exec.command`キーへの自動設定は、`EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数で対応する。
 
@@ -845,11 +845,11 @@ spec:
 
 ### image
 
-`istio-proxy`コンテナのコンテナイメージのタイプを設定する。
+istio-proxyのコンテナイメージのタイプを設定する。
 
 これは、ConfigMapではなくProxyConfigでも設定できる。
 
-`distroless`型を選ぶと、`istio-proxy`コンテナにログインできなくなり、より安全なイメージになる。
+`distroless`型を選ぶと、istio-proxyにログインできなくなり、より安全なイメージになる。
 
 一方で、デバッグしにくくなる。
 
@@ -930,7 +930,7 @@ data:
 
 ### proxyMetadata
 
-`istio-proxy`コンテナに環境変数を設定する。
+istio-proxyに環境変数を設定する。
 
 ```yaml
 apiVersion: v1
@@ -1192,11 +1192,11 @@ data:
 
 デフォルト値は`false`である。
 
-`istio-proxy`コンテナへのリクエストが無くなってから、Envoyのプロセスを終了する。
+istio-proxyへのリクエストが無くなってから、Envoyのプロセスを終了する。
 
 具体的には、`downstream_cx_active`メトリクスの値 (アクティブな接続数) を監視し、`0`になり次第、Envoyのプロセスを終了する。
 
-オプションを有効化すると、`istio-proxy`コンテナの`.spec.containers[*].lifecycle.preStop.exec.command`キーに、`sleep`コマンドが挿入される。
+オプションを有効化すると、istio-proxyの`.spec.containers[*].lifecycle.preStop.exec.command`キーに、`sleep`コマンドが挿入される。
 
 `.spec.containers[*].lifecycle.postStart.exec.command`キーへの自動設定は、`.mesh.defaultConfig.holdApplicationUntilProxyStarts`キーで対応する。
 
@@ -1292,11 +1292,11 @@ spec:
 
 デフォルト値は`false`である。
 
-マイクロサービスからのリクエストに、Pod内の`istio-proxy`コンテナやztunnelプロキシをDNSプロキシとして使用できるようになる。
+マイクロサービスからのリクエストに、Pod内のistio-proxyやztunnelプロキシをDNSプロキシとして使用できるようになる。
 
-もし`istio-proxy`コンテナやztunnelプロキシがドメインに紐づくIPアドレスのキャッシュを持つ場合、マイクロサービスにレスポンスを返信する。
+もしistio-proxyやztunnelプロキシがドメインに紐づくIPアドレスのキャッシュを持つ場合、マイクロサービスにレスポンスを返信する。
 
-一方でキャッシュを持たない場合、`istio-proxy`コンテナやztunnelプロキシは宛先Podにリクエストを送信する。
+一方でキャッシュを持たない場合、istio-proxyやztunnelプロキシは宛先Podにリクエストを送信する。
 
 なお、DNSキャッシュのドメインとIPアドレスを固定で紐付けることもできる。
 
@@ -1446,7 +1446,7 @@ spec:
 
 `false`の場合は、代わりに`.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`を設定する。
 
-`istio-proxy`コンテナ内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。
+istio-proxy内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。
 
 この接続のドレイン処理時間で、新しい接続を受け入れ続ける時間を設定する。
 
@@ -2096,7 +2096,7 @@ spec:
 
 ### `DEFAULT_WORKLOAD_CERT_TTL`
 
-`istio-proxy`コンテナの証明書の有効期限を設定する。
+istio-proxyの証明書の有効期限を設定する。
 
 ```yaml
 apiVersion: apps/v1
@@ -2228,13 +2228,13 @@ spec:
 
 デフォルト値は`true`である。
 
-`istio-proxy`コンテナがインバウンド通信をマイクロサービスに送信するときのリトライ (執筆時点2025/02/26では`reset-before-request`のみ) を設定する。
+istio-proxyがインバウンド通信をマイクロサービスに送信するときのリトライ (執筆時点2025/02/26では`reset-before-request`のみ) を設定する。
 
-今後は、宛先`istio-proxy`コンテナがマイクロサービスに対してリトライできるようになる。
+今後は、宛先istio-proxyがマイクロサービスに対してリトライできるようになる。
 
-`istio-proxy`コンテナ間の問題の切り分けがしやすくなる。
+istio-proxy間の問題の切り分けがしやすくなる。
 
-`false`の場合、送信元`istio-proxy`コンテナから宛先`istio-proxy`コンテナへ通信時、送信元`istio-proxy`コンテナしかリトライできない。
+`false`の場合、送信元istio-proxyから宛先istio-proxyへ通信時、送信元istio-proxyしかリトライできない。
 
 ```yaml
 apiVersion: apps/v1
@@ -2268,7 +2268,7 @@ POSTリクエストの結果で、マイクロサービスから`503`ステー�
 
 なおこの問題は、`reset`によるリトライでも起こりうるため、`reset`もデフォルトから外れている。
 
-リトライの結果で`istio-proxy`コンテナが`503`ステータスを返信する場合とは区別する。
+リトライの結果でistio-proxyが`503`ステータスを返信する場合とは区別する。
 
 ```yaml
 apiVersion: apps/v1
@@ -2319,7 +2319,7 @@ spec:
 
 ### `PILOT_CERT_PROVIDER`
 
-`istio-proxy`コンテナに設定するSSL証明書のプロバイダーを設定する。
+istio-proxyに設定するSSL証明書のプロバイダーを設定する。
 
 ```yaml
 apiVersion: apps/v1

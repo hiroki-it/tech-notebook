@@ -64,13 +64,13 @@ Traffic Director、Mesh CA、Managed backends、といったコンポーネン�
 
 #### ▼ Traffic Director
 
-サービス検出として、`istio-proxy`コンテナに他の宛先の情報を提供する。
+サービス検出として、istio-proxyに他の宛先の情報を提供する。
 
 > - https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=23
 
 #### ▼ Mesh CA
 
-中間認証局として、相互TLS認証のためのSSL証明書を`istio-proxy`コンテナに提供する。
+中間認証局として、相互TLS認証のためのSSL証明書をistio-proxyに提供する。
 
 また、SSL証明書が失効すれば更新する。
 

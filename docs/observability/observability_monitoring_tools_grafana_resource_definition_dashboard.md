@@ -480,7 +480,7 @@ IstioのPodからデータポイントを収集する。
 | `Istio Wasm Extension Dashboard` |                                              |                                                                                  |
 | `Istio Mesh Dashboard`           |                                              | HTTPプロトコルとTCPプロトコルのメトリクスを確認したい場合に役立つ。              |
 | `Istio Control Plane Dashboard`  | IstiodのPod                                  |                                                                                  |
-| `Istio Performance Dashboard`    | Istio Ingress Gateway、`istio-proxy`コンテナ |                                                                                  |
+| `Istio Performance Dashboard`    | Istio Ingress Gateway、istio-proxy |                                                                                  |
 | `Istio Workload Dashboard`       | Istioのカスタムリソース                      |                                                                                  |
 | `Istio Service Dashboard`        | Istio VirtualService                         | Istio Ingress Gatewayの宛先のServiceに関するメトリクスを確認したい場合に役立つ。 |
 

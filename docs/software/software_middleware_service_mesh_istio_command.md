@@ -259,7 +259,7 @@ horizontalpodautoscaler.autoscaling/istiod-1-10-0          Deployment/istiod-1-1
 
 ### kube-injectとは
 
-`istio-proxy`コンテナを手動でインジェクションする。
+istio-proxyを手動でインジェクションする。
 
 代わりに、`enabled`値が割り当てられた`.metadata.labels,istio-injection`キーをNamespaceに付与しても良い。
 
@@ -270,7 +270,7 @@ horizontalpodautoscaler.autoscaling/istiod-1-10-0          Deployment/istiod-1-1
 
 ### -f
 
-指定したマニフェストのPodに`istio-proxy`コンテナをインジェクションする。
+指定したマニフェストのPodにistio-proxyをインジェクションする。
 
 ```bash
 $ istioctl kube-inject -f pod.yaml
@@ -1039,7 +1039,7 @@ istio.io/tag: default
 
 ### proxy-statusとは
 
-Istio Ingress Gateway/EgressGateway、`istio-proxy`コンテナのステータスを取得する。
+Istio Ingress Gateway/EgressGateway、istio-proxyのステータスを取得する。
 
 ```bash
 $ istioctl proxy-status

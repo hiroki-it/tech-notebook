@@ -95,7 +95,7 @@ ReplicaSetを操作し、Clusterネットワーク内のPodのレプリカ数を
 
 Podの負荷に合わせてPodの自動水平スケーリングを実行しない (HorizontalPodAutoscalerが必要である) 。
 
-ただしStatefulSetとは異なり、ストレートレス (例：アプリコンテナ) なコンテナを含むPodを冗長化することに適する。
+ただしStatefulSetとは異なり、ストレートレス (例：アプリ) なコンテナを含むPodを冗長化することに適する。
 
 > - https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 > - https://sorarinu.dev/2021/08/kubernetes_01/

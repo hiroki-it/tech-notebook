@@ -157,7 +157,7 @@ KubernetesリソースのIngressの代わりとして使用できる。
 Istio Ingress Gatewayは、以下から構成される。
 
 - `istio-ingressgateway`というService (NodePort ServiceまたはLoadBalancer Service)
-- Deployment配下の`istio-ingressgateway-*****`というPod (`istio-proxy`コンテナのみが稼働)
+- Deployment配下の`istio-ingressgateway-*****`というPod (istio-proxyのみが稼働)
 
 Serviceは、おおよそGatewayの設定で決まる。
 
@@ -310,7 +310,7 @@ Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのク
 
 #### ▼ 相互TLS認証
 
-送信元マイクロサービスはHTTPを指定し、`istio-proxy`コンテナのクライアント証明書とIstio Egress GatewayのSSL証明書で相互TLS認証を実施する。
+送信元マイクロサービスはHTTPを指定し、istio-proxyのクライアント証明書とIstio Egress GatewayのSSL証明書で相互TLS認証を実施する。
 
 Istio Egress Gatewayはアプリケーションデータを復号化できるため、プロトコルをHTTPとして扱う。
 
@@ -868,7 +868,7 @@ ServiceEntryは、クラスター外の宛先をサービスメッシュに登�
 
 ### Sidecarとは
 
-`istio-proxy`コンテナに最初限のネットワーク設定を適用する。
+istio-proxyに最初限のネットワーク設定を適用する。
 
 デフォルトでは、サービスメッシュに登録した全てのPod間が通信できる。
 
@@ -911,7 +911,7 @@ ServiceEntryから外部にHTTPリクエストを送信する場合、JWTトー�
 
 `network.http_connection_manager`をマッチ対象として、フィルターを変更する。
 
-例えば、Istioの`v1.17.5`の`istio-proxy`コンテナのフィルターの設定値を変更する。
+例えば、Istioの`v1.17.5`のistio-proxyのフィルターの設定値を変更する。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -1009,7 +1009,7 @@ spec:
 
 `network.tcp_proxy`をマッチ対象として、フィルターを変更する。
 
-例えば、Istioの`v1.17.5`の`istio-proxy`コンテナのフィルターの設定値を変更する。
+例えば、Istioの`v1.17.5`のistio-proxyのフィルターの設定値を変更する。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -1304,7 +1304,7 @@ data:
 | 環境変数                                         | 対応する設定 (実験段階)                                                                          |
 | ------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
 | `ENHANCED_RESOURCE_SCOPING`                      | istio-mesh-cm (ConfigMap) で、`discoverySelectors`を有効化してもよい。                           |
-| `ENABLE_NATIVE_SIDECARS`                         | istio-sidecar-injector (ConfigMap) で、`istio-proxy`コンテナの代わりにKubernetesのInit Container |
+| `ENABLE_NATIVE_SIDECARS`                         | istio-sidecar-injector (ConfigMap) で、istio-proxyの代わりにKubernetesのInit Container |
 | `ENABLE_RESOLUTION_NONE_TARGET_PORT`             |                                                                                                  |
 | `ENABLE_DELIMITED_STATS_TAG_REGEX`               |                                                                                                  |
 | `PREFER_JWTトークンLE_TLS_FOR_EXTERNAL_SERVICES` |                                                                                                  |

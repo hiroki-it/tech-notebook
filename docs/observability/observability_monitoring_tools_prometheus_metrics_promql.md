@@ -98,7 +98,7 @@ sum(<メトリクス名>) by (<ラベル>)
 
 **例**
 
-直近1時間に関して、Istioの `istio-proxy`コンテナの受信リクエストのテータポイント数を、コンテナの種類ごとに集約する。
+直近1時間に関して、Istioの istio-proxyの受信リクエストのテータポイント数を、コンテナの種類ごとに集約する。
 
 ```bash
 sum(idelta(istio_requests_total[1h])) by (destination_app)
@@ -109,7 +109,7 @@ sum(idelta(istio_requests_total[1h])) by (destination_app)
 
 **例**
 
-任意の期間内に関して、Istioの `istio-proxy`コンテナの受信リクエストのテータポイント数の増加量を集計する。
+任意の期間内に関して、Istioの istio-proxyの受信リクエストのテータポイント数の増加量を集計する。
 
 ```bash
 sum(increase(istio_requests_total{destination_workload_namespace="default"}[$__range:])) by (destination_service)
@@ -117,7 +117,7 @@ sum(increase(istio_requests_total{destination_workload_namespace="default"}[$__r
 
 **例**
 
-任意の期間内に関して、Istioの `istio-proxy`コンテナの処理時間の一番高い値を集計する。
+任意の期間内に関して、Istioの istio-proxyの処理時間の一番高い値を集計する。
 
 ```bash
 max(max_over_time(rate(istio_request_duration_milliseconds_sum{destination_service_namespace="default"}[$__rate_interval])[$__range:])) by (destination_service)
@@ -125,7 +125,7 @@ max(max_over_time(rate(istio_request_duration_milliseconds_sum{destination_servi
 
 **例**
 
-任意の期間内に関して、Istioの `istio-proxy`コンテナの処理時間の平均を集計する。
+任意の期間内に関して、Istioの istio-proxyの処理時間の平均を集計する。
 
 ```bash
 avg(avg_over_time(rate(istio_request_duration_milliseconds_sum{destination_service_namespace="default"}[$__rate_interval])[$__range:])) by (destination_service)
@@ -135,7 +135,7 @@ avg(avg_over_time(rate(istio_request_duration_milliseconds_sum{destination_servi
 
 複数の種類で集約することもできる。
 
-直近1時間に関して、Istioの `istio-proxy`コンテナで収集したレスポンスの補足メッセージ (`%RESPONSE_FLAGS%`変数) を、Pod名、変数値の種類ごとに集約する。
+直近1時間に関して、Istioの istio-proxyで収集したレスポンスの補足メッセージ (`%RESPONSE_FLAGS%`変数) を、Pod名、変数値の種類ごとに集約する。
 
 ```bash
 sum(idelta(istio_requests_total{response_flags!="-"}[1h])) by (pod_name, response_flags)
@@ -242,7 +242,7 @@ rate(<Counter型メトリクス名>[1h])
 
 ![istio_request_duration_milliseconds_sum](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_request_duration_milliseconds_sum.png)
 
-`reporter="source"`の場合、送信元`istio-proxy`コンテナからメトリクスを取得することになり、宛先 `istio-proxy`コンテナの先にあるアプリがレスポンスを返信する平均レスポンスタイムを集計する。
+`reporter="source"`の場合、送信元istio-proxyからメトリクスを取得することになり、宛先 istio-proxyの先にあるアプリがレスポンスを返信する平均レスポンスタイムを集計する。
 
 `pod`ラベルから取得できるのは、送信元のPod名である。
 
@@ -251,7 +251,7 @@ rate(<Counter型メトリクス名>[1h])
 rate(istio_request_duration_milliseconds_sum{reporter="source"}[5m])/ rate(istio_request_duration_milliseconds_count{reporter="source"}[5m])
 ```
 
-`reporter="destination"`の場合、宛先`istio-proxy`コンテナからメトリクスを取得することになり、アプリがレスポンスを返信する平均レスポンスタイムを集計する。
+`reporter="destination"`の場合、宛先istio-proxyからメトリクスを取得することになり、アプリがレスポンスを返信する平均レスポンスタイムを集計する。
 
 `pod`ラベルから取得できるのは、宛先のPod名である。
 
@@ -270,7 +270,7 @@ rate(istio_request_duration_milliseconds_sum{reporter="destination"}[5m])/ rate(
 
 400ステータスのレスポンスを集計する。
 
-`reporter="source"`の場合、送信元`istio-proxy`コンテナからメトリクスを取得することになり、宛先 `istio-proxy`コンテナがアプリから受信したステータスコードを集計する。
+`reporter="source"`の場合、送信元istio-proxyからメトリクスを取得することになり、宛先 istio-proxyがアプリから受信したステータスコードを集計する。
 
 `pod`ラベルから取得できるのは、送信元のPod名である。
 
@@ -279,7 +279,7 @@ rate(istio_request_duration_milliseconds_sum{reporter="destination"}[5m])/ rate(
 sum(rate(istio_requests_total{reporter="source", response_code=~"4.*"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m]))
 ```
 
-`reporter="destination"`の場合、送信元`istio-proxy`コンテナからメトリクスを取得することになり、宛先 `istio-proxy`コンテナがアプリから受信したステータスコードを集計する。
+`reporter="destination"`の場合、送信元istio-proxyからメトリクスを取得することになり、宛先 istio-proxyがアプリから受信したステータスコードを集計する。
 
 `pod`ラベルから取得できるのは、宛先のPod名である。
 
@@ -297,7 +297,7 @@ sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])
 
 レスポンスのなかったリクエスト数 (`0`ステータス) を集計する。
 
-`reporter="source"`の場合、送信元`istio-proxy`コンテナからメトリクスを取得することになり、宛先 `istio-proxy`コンテナがアプリから受信しなかったことを集計する。
+`reporter="source"`の場合、送信元istio-proxyからメトリクスを取得することになり、宛先 istio-proxyがアプリから受信しなかったことを集計する。
 
 `pod`ラベルから取得できるのは、送信元のPod名である。
 
@@ -308,7 +308,7 @@ sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])
 
 `pod`ラベルから取得できるのは、宛先のPod名である。
 
-`reporter="destination"`の場合、送信元`istio-proxy`コンテナからメトリクスを取得することになり、宛先 `istio-proxy`コンテナがアプリから受信しなかったことを集計する。
+`reporter="destination"`の場合、送信元istio-proxyからメトリクスを取得することになり、宛先 istio-proxyがアプリから受信しなかったことを集計する。
 
 ```bash
 # 秒当たりの平均増加率を５分間で集計する

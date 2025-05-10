@@ -17,7 +17,7 @@ description: データプレーン＠Istioサイドカーの知見を記録し�
 
 ![istio_sidecar-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_sidecar-mesh_architecture.png)
 
-サイドカーモードのデータプレーンは、istio-iptables、 `istio-init`コンテナ、`istio-proxy`コンテナ、といったコンポーネントから構成される。
+サイドカーモードのデータプレーンは、istio-iptables、 `istio-init`コンテナ、istio-proxy、といったコンポーネントから構成される。
 
 サイドカープロキシを使用して、サービスメッシュを実装する。
 
@@ -47,9 +47,9 @@ description: データプレーン＠Istioサイドカーの知見を記録し�
 
 #### ▼ istio-iptablesとは
 
-istio-iptablesは、`istio-proxy`コンテナを持つPod内のネットワークの経路を制御する。
+istio-iptablesは、istio-proxyを持つPod内のネットワークの経路を制御する。
 
-サービス検出としてPodのIPアドレスを持つのは`istio-proxy`コンテナであり、istio-iptablesではないことに注意する。
+サービス検出としてPodのIPアドレスを持つのはistio-proxyであり、istio-iptablesではないことに注意する。
 
 ```bash
 # istio-initコンテナの起動時に実行する。
@@ -70,7 +70,7 @@ $ istio-iptables \
 
 `(1)`
 
-: `ps`コマンドを使用して、`istio-proxy`コンテナの`envoy`プロセスのID (PID) を取得する。
+: `ps`コマンドを使用して、istio-proxyの`envoy`プロセスのID (PID) を取得する。
 
 ```bash
 # PIDが出力結果の2行目である。そのため、awkコマンドを使用して、2行目のみを取得している。
@@ -145,7 +145,7 @@ num  target     prot  opt  source     destination
 
 #### ▼ ローカルホストは`127.0.0.1`ではない
 
-`istio-proxy`コンテナがインバウンドをマイクロサービスにプロキシする時、`127.0.0.6`にリクエストを送信する。
+istio-proxyがインバウンドをマイクロサービスにプロキシする時、`127.0.0.6`にリクエストを送信する。
 
 `127.0.0.1`にするとiptables上で処理がループしてしまう。
 
@@ -158,9 +158,9 @@ Istio`v1.9`までは`127.0.0.1`で、`v1.10`から`127.0.0.6`になった。
 
 #### ▼ Pod外からのインバウンド通信の場合
 
-Pod外からマイクロサービスへのインバウンド通信は、istio-iptablesにより、`istio-proxy`コンテナの`15006`番ポートにリダイレクトされる。
+Pod外からマイクロサービスへのインバウンド通信は、istio-iptablesにより、istio-proxyの`15006`番ポートにリダイレクトされる。
 
-`istio-proxy`コンテナはこれを受信し、ローカルホスト (`http://127.0.0.6:<マイクロサービスのポート番号>`) のマイクロサービスにルーティングする。
+istio-proxyはこれを受信し、ローカルホスト (`http://127.0.0.6:<マイクロサービスのポート番号>`) のマイクロサービスにルーティングする。
 
 ![istio_iptables_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_inbound.png)
 
@@ -169,9 +169,9 @@ Pod外からマイクロサービスへのインバウンド通信は、istio-ip
 
 #### ▼ Pod外へのアウトバウンド通信の場合
 
-マイクロサービスからPod外へのアウトバウンド通信は、istio-iptablesにより、`istio-proxy`コンテナの`15001`番ポートにリダイレクトされる。
+マイクロサービスからPod外へのアウトバウンド通信は、istio-iptablesにより、istio-proxyの`15001`番ポートにリダイレクトされる。
 
-サービス検出によってPod等の宛先情報が、`istio-proxy`コンテナ内のEnvoyに登録されており、`istio-proxy`コンテナはアウトバウンド通信をPodに向けてルーティングする。
+サービス検出によってPod等の宛先情報が、istio-proxy内のEnvoyに登録されており、istio-proxyはアウトバウンド通信をPodに向けてルーティングする。
 
 ![istio_iptables_outbound_other](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_outbound_other.png)
 
@@ -180,7 +180,7 @@ Pod外からマイクロサービスへのインバウンド通信は、istio-ip
 
 #### ▼ ローカスホスト通信の場合
 
-マイクロサービスからローカルホスト (`http://127.0.0.6:<ポート番号>`) へのアウトバウンド通信は、istio-iptablesにより、`istio-proxy`コンテナの`15001`番ポートにリダイレクトされる。
+マイクロサービスからローカルホスト (`http://127.0.0.6:<ポート番号>`) へのアウトバウンド通信は、istio-iptablesにより、istio-proxyの`15001`番ポートにリダイレクトされる。
 
 ![istio_iptables_outbound_self](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_outbound_self.png)
 
@@ -188,9 +188,9 @@ Pod外からマイクロサービスへのインバウンド通信は、istio-ip
 
 <br>
 
-### `istio-proxy`コンテナ
+### istio-proxy
 
-#### ▼ `istio-proxy`コンテナとは
+#### ▼ istio-proxyとは
 
 ![istio_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-proxy.png)
 
@@ -214,11 +214,11 @@ COPY ${TARGETARCH:-amd64}/${SIDECAR} /usr/local/bin/${SIDECAR}
 ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 ```
 
-`istio-proxy`コンテナは、マイクロサービスのあるPodのみでなく、Istio Ingress GatewayのPod内にも存在している。
+istio-proxyは、マイクロサービスのあるPodのみでなく、Istio Ingress GatewayのPod内にも存在している。
 
-Istioのサービスメッシュ外のネットワークからのインバウンド通信では、Istio Ingress Gateway内の`istio-proxy`コンテナにて、Pod等の宛先情報に基づいて、ルーティングを実行している。
+Istioのサービスメッシュ外のネットワークからのインバウンド通信では、Istio Ingress Gateway内のistio-proxyにて、Pod等の宛先情報に基づいて、ルーティングを実行している。
 
-一方で、マイクロサービスを持つPod間通信では、Pod内の`istio-proxy`コンテナに登録されたものに基づいて、Pod間で直接的に通信している。
+一方で、マイクロサービスを持つPod間通信では、Pod内のistio-proxyに登録されたものに基づいて、Pod間で直接的に通信している。
 
 仕様上、NginxやApacheを必須とする言語 (例：PHP) では、Pod内にリバースプロキシが`2`個ある構成になってしまうことに注意する。
 
@@ -229,16 +229,16 @@ Istioのサービスメッシュ外のネットワークからのインバウン
 
 #### ▼ 起動／終了の順番の制御
 
-マイクロサービスと`istio-proxy`コンテナの間で、起動／終了の順番を制御する必要がある。
+マイクロサービスとistio-proxyの間で、起動／終了の順番を制御する必要がある。
 
-`.spec.containers[*].lifecycle.postStart.exec.command`キーや`.spec.containers[*].lifecycle.preStop.exec.command`キーに自前のコマンドを定義して`istio-proxy`コンテナの起動／終了の順番を制御する必要がある。
+`.spec.containers[*].lifecycle.postStart.exec.command`キーや`.spec.containers[*].lifecycle.preStop.exec.command`キーに自前のコマンドを定義してistio-proxyの起動／終了の順番を制御する必要がある。
 
 ただし、以下のいずれかで不要になる。
 
-- 通常の`istio-proxy`コンテナの場合
+- 通常のistio-proxyの場合
   - `holdApplicationUntilProxyStarts`キーを`true`にし (`.spec.containers[*].lifecycle.postStart.exec.command`キーに対応)
   - `EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数を`true`に設定する (`.spec.containers[*].lifecycle.preStop.exec.command`キーに対応)
-- InitContainerによる`istio-proxy`コンテナを使用する場合 (両方に対応)
+- InitContainerによるistio-proxyを使用する場合 (両方に対応)
 
 ```yaml
 apiVersion: apps/v1
@@ -291,11 +291,11 @@ Kubernetesの`v1.28`では、InitContainerでサイドカーを作成できる�
 
 Istioでもこれをサポートしている。
 
-`istio-proxy`コンテナのインジェクションの仕組みはそのままで、PodのマニフェストのPatch処理の内容をInitContainerのインジェクションに変更している。
+istio-proxyのインジェクションの仕組みはそのままで、PodのマニフェストのPatch処理の内容をInitContainerのインジェクションに変更している。
 
 これにより、Podの作成時にInitContainerをインジェクションできるようになる。
 
-今まで、`.spec.containers[*].lifecycle.preStop.exec.command`キーや`.spec.containers[*].lifecycle.postStart.exec.command`キーに自前のコマンドを定義して`istio-proxy`コンテナの起動／終了の順番を制御する必要があった。
+今まで、`.spec.containers[*].lifecycle.preStop.exec.command`キーや`.spec.containers[*].lifecycle.postStart.exec.command`キーに自前のコマンドを定義してistio-proxyの起動／終了の順番を制御する必要があった。
 
 しかし、InitContainerではKubernetesが起動／終了の順番を制御してくれるため、設定が不要になる。
 
@@ -362,7 +362,7 @@ istio-cniのDaemonSetがistio-iptablesを適用し終了することを待機す
 
 <br>
 
-## 02-02. `istio-proxy`コンテナ
+## 02-02. istio-proxy
 
 ### pilot-agent (新istio-agent)
 
@@ -531,7 +531,7 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 
 #### ▼ Envoyとは
 
-`istio-proxy`コンテナにて、リバースプロキシとして動作する。Envoyは、pilot-agentを介して、ADS-APIにリモートプロシージャーコールを実行する。また反対に、XDS-APIからのリモートプロシージャーコールをpilot-agentを介して受信する。
+istio-proxyにて、リバースプロキシとして動作する。Envoyは、pilot-agentを介して、ADS-APIにリモートプロシージャーコールを実行する。また反対に、XDS-APIからのリモートプロシージャーコールをpilot-agentを介して受信する。
 
 > - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
 > - https://www.programmersought.com/article/5797698845/
@@ -543,7 +543,7 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 
 #### ▼ 自身のstartProbe
 
-`istio-proxy`コンテナは、`10`分以上起動が完了しないと、Podが終了する。
+istio-proxyは、`10`分以上起動が完了しないと、Podが終了する。
 
 > - https://istio.io/latest/news/releases/1.20.x/announcing-1.20/upgrade-notes/#startupprobe-added-to-sidecar-by-default
 
@@ -553,13 +553,13 @@ Istioのパケット暗号化で相互TLSを導入している場合、istio-pro
 
 しかし、Istioはkubeletにクライアント証明書を組み込めないため、このままだとistio-proxyはkubeletからのヘルスチェックを拒否してしまう。
 
-そのため、Istioで相互TLS認証を有効化していると、kubeletがHTTPヘルスチェックを`istio-proxy`コンテナに実施した場合、証明書のないエラーでHTTPヘルスチェックは失敗してしまう。
+そのため、Istioで相互TLS認証を有効化していると、kubeletがHTTPヘルスチェックをistio-proxyに実施した場合、証明書のないエラーでHTTPヘルスチェックは失敗してしまう。
 
 これの対策として、以下の仕組みでHTTPヘルスチェックを成功させる。
 
 1. Istioは、サイドカーインジェクション時、マイクロサービスのLivenessProbeヘルスチェックとReadinessProbeヘルスチェックのパスを`/app-health/<コンテナ名>/livez`と`/app-health/<コンテナ名>/readyz`に書き換え、元のパスを`ISTIO_KUBE_APP_PROBERS`に保存する。
 2. kubeletはPodにHTTPヘルスチェックを送信する。
-3. `istio-proxy`コンテナはkubeletのHTTPヘルスチェックを受信する。`ISTIO_KUBE_APP_PROBERS`から元のパスを取得し、マイクロサービスにHTTPヘルスチェックをリダイレクトする。 `istio-proxy`コンテナはマイクロサービスからレスポンスを受信し、kubeletにHTTPヘルスチェックを返信する。
+3. istio-proxyはkubeletのHTTPヘルスチェックを受信する。`ISTIO_KUBE_APP_PROBERS`から元のパスを取得し、マイクロサービスにHTTPヘルスチェックをリダイレクトする。 istio-proxyはマイクロサービスからレスポンスを受信し、kubeletにHTTPヘルスチェックを返信する。
 
 なお、Podの`.metadata.annotations`に`sidecar.istio.io/rewriteAppHTTPProbers: "false"`を設定しておくと、これを無効化できる。
 
@@ -570,9 +570,9 @@ Istioのパケット暗号化で相互TLSを導入している場合、istio-pro
 
 kubeletは、対象のポート番号でプロセスがリクエストを待ち受けているかのみを検証する。
 
-そのため、マイクロサービスが異常であっても`istio-proxy`コンテナが正常である限り、kubeletのTCPヘルスチェックが成功してしまう。
+そのため、マイクロサービスが異常であってもistio-proxyが正常である限り、kubeletのTCPヘルスチェックが成功してしまう。
 
-これの対策として、`istio-proxy`コンテナは、kubeletから受信したTCPヘルスチェックをマイクロサービスにフォワードする。
+これの対策として、istio-proxyは、kubeletから受信したTCPヘルスチェックをマイクロサービスにフォワードする。
 
 これにより、kuebletがマイクロサービスにTCPヘルスチェックを実施できるようになる。
 
@@ -581,17 +581,17 @@ kubeletは、対象のポート番号でプロセスがリクエストを待ち�
 
 <br>
 
-### `istio-proxy`コンテナが終了するまでの仕組み
+### istio-proxyが終了するまでの仕組み
 
 ![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
 
-`istio-proxy`コンテナは、Envoyプロセスを安全に停止する。
+istio-proxyは、Envoyプロセスを安全に停止する。
 
 ここでは、`EXIT_ON_ZERO_ACTIVE_CONNECTIONS`を`true`にしている場合の仕組みを説明する。
 
 `(1)`
 
-: `istio-proxy`コンテナはGraceful Drainモード待機時間を開始する。
+: istio-proxyはGraceful Drainモード待機時間を開始する。
 
 `(2)`
 
@@ -605,7 +605,7 @@ kubeletは、対象のポート番号でプロセスがリクエストを待ち�
 
 `(4)`
 
-: `istio-proxy`コンテナにSIGKILLシグナルを送信する。
+: istio-proxyにSIGKILLシグナルを送信する。
 
 > - https://sreake.com/blog/istio-proxy-stop-behavior/
 > - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
@@ -617,7 +617,7 @@ kubeletは、対象のポート番号でプロセスがリクエストを待ち�
 
 ### `15000`番
 
-`istio-proxy`コンテナの`15000`番ポートでは、Envoyのダッシュボードに対するリクエストを待ち受ける。
+istio-proxyの`15000`番ポートでは、Envoyのダッシュボードに対するリクエストを待ち受ける。
 
 ```bash
 # istio-proxyコンテナ内でローカルホストにリクエストを送信する。
@@ -632,9 +632,9 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 ### `15001`番
 
-`istio-proxy`コンテナの`15001`番ポートでは、マイクロサービスからのアウトバウンド通信を待ち受ける。
+istio-proxyの`15001`番ポートでは、マイクロサービスからのアウトバウンド通信を待ち受ける。
 
-マイクロサービスからのアウトバウンド通信は、一度、`istio-proxy`コンテナの`15001`番ポートにリダイレクトされる。
+マイクロサービスからのアウトバウンド通信は、一度、istio-proxyの`15001`番ポートにリダイレクトされる。
 
 > - https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 
@@ -642,7 +642,7 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 ### `15004`番
 
-`istio-proxy`コンテナの`15004`番ポートでは、コントロールプレーンのコンテナの`8080`番ポートと一緒に使用される。
+istio-proxyの`15004`番ポートでは、コントロールプレーンのコンテナの`8080`番ポートと一緒に使用される。
 
 用途がわからず記入中...
 
@@ -652,9 +652,9 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 ### `15006`番
 
-`istio-proxy`コンテナの`15006`番ポートでは、マイクロサービスへのインバウンド通信を待ち受ける。
+istio-proxyの`15006`番ポートでは、マイクロサービスへのインバウンド通信を待ち受ける。
 
-マイクロサービスへのインバウンド通信は、一度、`istio-proxy`コンテナの`15006`番ポートにリダイレクトされる。
+マイクロサービスへのインバウンド通信は、一度、istio-proxyの`15006`番ポートにリダイレクトされる。
 
 > - https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 
@@ -662,7 +662,7 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 ### `15020`番
 
-`istio-proxy`コンテナの`15020`番ポートでは、データプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。
+istio-proxyの`15020`番ポートでは、データプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。
 
 > - https://jimmysong.io/en/blog/istio-components-and-ports/#15020
 
@@ -670,9 +670,9 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 ### `15021`番
 
-`istio-proxy`コンテナの`15021`番ポートでは、kubeletからのReadinessProbeヘルスチェックを待ち受ける。
+istio-proxyの`15021`番ポートでは、kubeletからのReadinessProbeヘルスチェックを待ち受ける。
 
-`istio-proxy`コンテナ内のEnvoyが、`/healthz/ready`エンドポイントでReadinessProbeヘルスチェックを待ち受けており、もしEnvoyが停止してれば`503`ステータスのレスポンスを返却する。
+istio-proxy内のEnvoyが、`/healthz/ready`エンドポイントでReadinessProbeヘルスチェックを待ち受けており、もしEnvoyが停止してれば`503`ステータスのレスポンスを返却する。
 
 > - https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 > - https://sreake.com/blog/istio-proxy-stop-behavior/
@@ -689,9 +689,9 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 ### `15090`番
 
-`istio-proxy`コンテナの`15090`番ポートでは、`istio-proxy`コンテナのメトリクス収集ツール (例：Prometheus) からのリクエストを待ち受ける。
+istio-proxyの`15090`番ポートでは、istio-proxyのメトリクス収集ツール (例：Prometheus) からのリクエストを待ち受ける。
 
-`istio-proxy`コンテナ内のEnvoyが、`/stats/prometheus`エンドポイントでリクエストを待ち受けており、データポイントを含むレスポンスを返信する。
+istio-proxy内のEnvoyが、`/stats/prometheus`エンドポイントでリクエストを待ち受けており、データポイントを含むレスポンスを返信する。
 
 ただ、`discovery`コンテナにも`/stats/prometheus`エンドポイントがあり、メトリクス収集ツールはこれを指定することが多い。
 
@@ -720,7 +720,7 @@ istio_request_messages_total{...}
 
 ### 実行オプションの渡し方
 
-`istio-proxy`コンテナの起動時に引数として渡す。
+istio-proxyの起動時に引数として渡す。
 
 Podであれば、`.spec.containers[*].args`オプションを使用する。
 
@@ -728,7 +728,7 @@ Podであれば、`.spec.containers[*].args`オプションを使用する。
 
 ### wait
 
-`istio-proxy`コンテナのプロセスが起動完了するまで待機する。
+istio-proxyのプロセスが起動完了するまで待機する。
 
 ```bash
 $ pilot-agent wait

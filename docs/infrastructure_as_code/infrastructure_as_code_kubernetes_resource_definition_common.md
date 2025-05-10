@@ -264,7 +264,7 @@ Kubernetes上で稼働するコンテナの情報を設定する。
 | `app.kubernetes.io/component`  | `app`、`database`           | K8sリソースをシステムの要素と捉えた時に、その役割名を設定する。            |
 | `app.kubernetes.io/created-by` | `kube-controller-manager`   | このKubernetesリソースを作成したリソースやユーザーを設定する。             |
 | `app.kubernetes.io/env`        | `prd`、`stg`、`tes`、`dev`  | アプリケーションの実行環境名を設定する。                                   |
-| `app.kubernetes.io/instance`   | `mysql-12345`               | アプリコンテナのインスタンス名を設定する。                                 |
+| `app.kubernetes.io/instance`   | `mysql-12345`               | アプリのインスタンス名を設定する。                                 |
 | `app.kubernetes.io/managed-by` | `helm`、`foo-operator`      | K8sリソースの管理ツール名を設定する。                                      |
 | `app.kubernetes.io/name`       | `foo-service`、`prometheus` | アプリ側であればマイクロサービス名、インフラ側であればツール名を設定する。 |
 | `app.kubernetes.io/part-of`    | `bar`                       | K8sリソースをシステムの要素と捉えた時に、その親のシステム名を設定する。    |
