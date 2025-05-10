@@ -553,9 +553,12 @@ kubeletはIstioの発行した証明書を持っていない。
 
 そのため、Istioで相互TLS認証を有効化していると、kubeletがHTTPヘルスチェックを`istio-proxy`コンテナに実施した場合に、証明書のないエラーでHTTPヘルスチェックは失敗してしまう。
 
-これの対策として、マイクロサービスのHTTPヘルスチェックを (`/app-health/<マイクロサービス名>/livez`、`/app-health/<マイクロサービス名>/readyz`、`/app-health/<マイクロサービス名>/startupz`) に書き換え、`istio-proxy`コンテナはヘルスチェックをマイクロサービスにリダイレクトする。
+これの対策として、以下の仕組みでHTTPヘルスチェックを成功させる。
 
-マイクロサービス自体には証明書がないため、kubeletからのHTTPヘルスチェックは成功するようになる。
+1. マイクロサービスのHTTPヘルスチェックを (`/app-health/<マイクロサービス名>/livez`、`/app-health/<マイクロサービス名>/readyz`、`/app-health/<マイクロサービス名>/startupz`) に書き換え、元のパスは`ISTIO_KUBE_APP_PROBERS`に保存する。
+2. `istio-proxy`コンテナはHTTPヘルスチェックを受信する
+3. `istio-proxy`コンテナは`ISTIO_KUBE_APP_PROBERS`から元のパスを取得し、マイクロサービスにHTTPヘルスチェックをリダイレクトする。 
+4. kubeletからのHTTPヘルスチェックは成功する。
 
 なお、Podの`.metadata.annotations`に`sidecar.istio.io/rewriteAppHTTPProbers: "false"`を設定しておくと、これを無効化できる。
 
