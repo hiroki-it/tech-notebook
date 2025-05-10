@@ -288,7 +288,7 @@ data:
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-default_http_retry_policy
 
-#### ▼ レスポンスのリトライ条件
+#### ▼ レスポンス時のリトライ条件
 
 `istio-proxy`コンテナのレスポンスのリトライ条件は以下である。
 
@@ -324,9 +324,9 @@ data:
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-grpc-on
 
-#### ▼ インバウンド時のリトライ条件
+#### ▼ リクエスト時のリトライ条件
 
-`istio-proxy`コンテナのインバウンド時のリトライ条件は以下である。
+`istio-proxy`コンテナのリクエスト時のリトライ条件は以下である。
 
 執筆時点 (2025/02/26) では、`ENABLE_INBOUND_RETRY_POLICY`変数を`true` (デフォルト値) にすると使用できる。
 
