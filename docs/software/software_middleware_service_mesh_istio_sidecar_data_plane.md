@@ -553,7 +553,7 @@ kubeletはIstioの発行した証明書を持っていない。
 
 そのため、Istioで相互TLS認証を有効化していると、kubeletがHTTPヘルスチェックをも`istio-proxy`コンテナに実施した場合に、証明書のないエラーでHTTPヘルスチェックは失敗してしまう。
 
-これの対策として、`istio-proxy`コンテナは、kubeletから受信したHTTPヘルスチェックをpilot-agentのパス (`/app-health/<マイクロサービス名>/livez`、`/app-health/<マイクロサービス名>/readyz`、`/app-health/<マイクロサービス名>/startupz`) にリダイレクトする。
+これの対策として、`istio-proxy`コンテナは、kubeletから受信したHTTPヘルスチェックを (`/app-health/<マイクロサービス名>/livez`、`/app-health/<マイクロサービス名>/readyz`、`/app-health/<マイクロサービス名>/startupz`) にリダイレクトする。
 
 事前にマイクロサービスのヘルスチェックパスの定義をpilot-agentのパスに書き換えることにより、リダイレクトを実現する。
 
@@ -570,7 +570,7 @@ kubeletは、対象のポート番号でプロセスがリクエストを待ち�
 
 そのため、マイクロサービスが異常であっても`istio-proxy`コンテナが正常である限り、kubeletのTCPヘルスチェックが成功してしまう。
 
-これの対策として、`istio-proxy`コンテナは、kubeletから受信したTCPヘルスチェックをpilot-agentのポートにリダイレクトする。
+これの対策として、`istio-proxy`コンテナは、kubeletから受信したTCPヘルスチェックをマイクロサービスにフォワードする。
 
 これにより、kuebletがマイクロサービスにTCPヘルスチェックを実施できるようになる。
 

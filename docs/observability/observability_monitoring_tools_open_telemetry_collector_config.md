@@ -278,7 +278,7 @@ exporters:
 ```
 
 ```bash
-2024-03-26T04:41:52.163Z	info	TracesExporter	{"kind": "exporter", "data_type": "traces", "name": "debug", "resource spans": 1, "spans": <転送したスパン数>}
+2024-03-26T04:41:52.163Z	info	TracesExporter	{"kind": "exporter", "data_type": "traces", "name": "debug", "resource spans": 1, "spans": <フォワーディングしたスパン数>}
 ```
 
 スパンを標準出力により詳細に出力したい場合、`detailed`とする。

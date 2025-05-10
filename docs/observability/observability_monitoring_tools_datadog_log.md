@@ -59,7 +59,7 @@ description: ログ＠Datadogの知見を記録しています。
 
 デーモンであるdatadogエージェントに含まれている。
 
-アプリケーションからログを収集し、Datadogに転送する。
+アプリケーションからログを収集し、Datadogにフォワーディングする。
 
 ![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on-server.png)
 
@@ -106,7 +106,7 @@ Datadogの代わりにログを収集する。
 
 #### ▼ Kubernetesの場合
 
-ClusterやワーカーNodeからメトリクスを受信し、コントロールプレーンNodeのkube-apiserverに転送する。
+ClusterやワーカーNodeからメトリクスを受信し、コントロールプレーンNodeのkube-apiserverにフォワーディングする。
 
 ![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes.png)
 

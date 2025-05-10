@@ -387,9 +387,9 @@ services:
 
 #### ▼ `fluentd`
 
-コンテナで作成されたログをFluentdコンテナに転送する。
+コンテナで作成されたログをFluentdコンテナにフォワーディングする。
 
-ログの転送元よりも先に起動するようにしておく必要がある。
+ログのフォワーディング元よりも先に起動するようにしておく必要がある。
 
 > - https://docs.fluentd.org/container-deployment/docker-compose#step-0-create-docker-compose.yml
 

@@ -19,7 +19,7 @@ description: 分散トレース＠Datadogの知見を記録しています。
 
 デーモンであるdatadogエージェントに含まれている。
 
-アプリケーションから分散トレースを収集し、Datadogに転送する。
+アプリケーションから分散トレースを収集し、Datadogにフォワーディングする。
 
 ![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on-server.png)
 
@@ -39,13 +39,13 @@ description: 分散トレース＠Datadogの知見を記録しています。
 
 ### トレースエージェントとは
 
-サーバーの場合と同様にして、アプリケーションから分散トレースを受信し、Datadogに転送する。
+サーバーの場合と同様にして、アプリケーションから分散トレースを受信し、Datadogにフォワーディングする。
 
 サーバーの場合とは異なり、自身が収集しにいくことはできない。
 
 仕組みとして、アプリコンテナの分散トレースのクライアントパッケージはスパンを作成し、datadogコンテナの『`http://localhost:8126`』にこれを送信する。
 
-datadogコンテナ内のdatadogエージェントはこれをHTTPSプロトコルでDatadogに転送する。
+datadogコンテナ内のdatadogエージェントはこれをHTTPSプロトコルでDatadogにフォワーディングする。
 
 ![datadog-tracer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-tracer.png)
 

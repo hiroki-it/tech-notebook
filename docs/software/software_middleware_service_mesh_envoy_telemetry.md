@@ -182,7 +182,7 @@ Cluster外からのリクエスト/Pod間通信時のレスポンスの補足メ
 
 直接的にAWS CloudWatch Logsに送信できない。
 
-そのため、Envoyのログを一度標準出力に出力し、これをログ収集ツール (例：FluentBit) でAWS CloudWatch Logsに転送する。
+そのため、Envoyのログを一度標準出力に出力し、これをログ収集ツール (例：FluentBit) でAWS CloudWatch Logsにフォワーディングする。
 
 <br>
 

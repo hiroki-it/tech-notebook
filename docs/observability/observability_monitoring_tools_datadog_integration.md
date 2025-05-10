@@ -60,7 +60,7 @@ Datedogエージェントが稼働する言語/フレームワーク/ツール�
 
 #### ▼ 共通の手順
 
-AWSリソースで作成されたメトリクス/ログ/分散トレースをDatadogに転送できるようにする。
+AWSリソースで作成されたメトリクス/ログ/分散トレースをDatadogにフォワーディングできるようにする。
 
 > - https://docs.datadoghq.com/integrations/amazon_web_services/?tab=roledelegation#setup
 
@@ -76,7 +76,7 @@ AWSリソースで作成されたメトリクス/ログ/分散トレースをDat
 
 `(2)`
 
-: CloudFormationを実行し、メトリクス/ログ/分散トレースを転送するLambdaやIAMロールを作成する。
+: CloudFormationを実行し、メトリクス/ログ/分散トレースをフォワーディングするLambdaやIAMロールを作成する。
 
      このIAMロール (`DatadogIntegrationRole`) には、DatadogのIAMユーザー (`464622532012`) に委譲できるように、AWS STSの設定がなされている。
 

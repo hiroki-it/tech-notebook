@@ -3239,7 +3239,7 @@ spec:
           port: 3306
       route:
         - destination:
-            # ServiceEntryにそのままのHostヘッダーで転送する
+            # ServiceEntryにそのままのHostヘッダーでフォワーディングする
             host: <DBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com
             port:
               number: 3306

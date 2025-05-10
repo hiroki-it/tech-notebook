@@ -50,9 +50,9 @@ OAuth 2.0をベースとしたSSO (例：OAuth、OIDCなど) のトークン署�
 
 リバースプロキシ (例：Nginxなど) は、リクエストヘッダーの持つ情報 (例：認証系ヘッダー、Cookieなど) から、ユーザーが認証済みであるかどうかを判定する。
 
-ユーザーが未認証の場合、リバースプロキシはトークン署名検証リクエストをOAuth2 Proxyに転送する。
+ユーザーが未認証の場合、リバースプロキシはトークン署名検証リクエストをOAuth2 Proxyにフォワーディングする。
 
-OAuth2 Proxyは、指定されたIDプロバイダー (例：Auth0、AWS Cognito、GitHub、Google Cloud Auth、Keycloak、Zitadel) の認可エンドポイントにトークン署名検証リクエストを転送し、一連の処理の後に認可レスポンスを受信する。
+OAuth2 Proxyは、指定されたIDプロバイダー (例：Auth0、AWS Cognito、GitHub、Google Cloud Auth、Keycloak、Zitadel) の認可エンドポイントにトークン署名検証リクエストをフォワーディングし、一連の処理の後に認可レスポンスを受信する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1

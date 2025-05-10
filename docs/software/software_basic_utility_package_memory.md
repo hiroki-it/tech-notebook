@@ -149,7 +149,7 @@ pidfile=/var/tmp/supervisor/supervisord.pid
 
 #### ▼ redirect_stderr
 
-標準出力への出力を標準エラー出力に転送する可動化を設定する。
+標準出力への出力を標準エラー出力にフォワーディングする可動化を設定する。
 
 ```ini
 [supervisord]
@@ -215,7 +215,7 @@ command=/usr/sbin/crond -n
 
 #### ▼ redirect_stderr
 
-デーモン化されたプロセスの標準出力への出力を標準エラー出力に転送するか否かを設定する。
+デーモン化されたプロセスの標準出力への出力を標準エラー出力にフォワーディングするか否かを設定する。
 
 ```ini
 [program:foo]

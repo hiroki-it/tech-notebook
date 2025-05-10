@@ -923,7 +923,7 @@ spec:
 ```
 
 ```yaml
-# kube-apiserverに転送するService
+# kube-apiserverにフォワーディングするService
 # デフォルトで作成されている
 apiVersion: v1
 kind: Service

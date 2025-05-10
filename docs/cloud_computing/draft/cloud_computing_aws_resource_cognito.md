@@ -37,7 +37,7 @@ description: AWS Cognito＠AWSリソースの知見を記録しています。
 
 ## 02. クラウド認証プロキシとして
 
-認可リクエストを作成し、外部のIDプロバイダーにこれを転送する。
+認可リクエストを作成し、外部のIDプロバイダーにこれをフォワーディングする。
 
 > - https://dev.classmethod.jp/articles/add-keycloak-to-cognito-with-oidc/
 > - https://docs.aws.amazon.com/cognito/latest/developerguide/external-identity-providers.html

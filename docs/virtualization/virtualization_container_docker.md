@@ -235,7 +235,7 @@ SysV IPCオブジェクト、POSIXメッセージキューを分離する。
 
 #### ▼ ロギングドライバーとは
 
-コンテナ内の標準出力 (`/dev/stdout`) と標準エラー出力 (`/dev/stderr`) に出力されたログを、ファイルやAPIに対して転送する。
+コンテナ内の標準出力 (`/dev/stdout`) と標準エラー出力 (`/dev/stderr`) に出力されたログを、ファイルやAPIに対してフォワーディングする。
 
 ```bash
 $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コンテナ名> <コンテナイメージ名>:<バージョンタグ> /bin/bash
@@ -243,7 +243,7 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 
 #### ▼ json-file
 
-標準出力/標準エラー出力に出力されたログを、`/var/lib/docker/containers/＜コンテナID＞/＜コンテナID＞-json.log`ファイルに転送する。
+標準出力/標準エラー出力に出力されたログを、`/var/lib/docker/containers/＜コンテナID＞/＜コンテナID＞-json.log`ファイルにフォワーディングする。
 
 デフォルトの設定値である。
 
@@ -285,7 +285,7 @@ AWS ECSコンテナのawsfirelensドライバーは、fluentdドライバーを�
 
 #### ▼ none
 
-標準出力/標準エラー出力に出力されたログを、ファイルやAPIに転送しない。
+標準出力/標準エラー出力に出力されたログを、ファイルやAPIにフォワーディングしない。
 
 ファイルに出力しないことにより、開発環境のアプリケーションサイズの肥大化を防ぐ。
 
@@ -305,7 +305,7 @@ AWS ECSコンテナのawsfirelensドライバーは、fluentdドライバーを�
 
 #### ▼ gcplogs
 
-標準出力/標準エラー出力に出力されたログを、Google Cloud LoggingのAPIに転送する。
+標準出力/標準エラー出力に出力されたログを、Google Cloud LoggingのAPIにフォワーディングする。
 
 ```yaml
 {
@@ -356,7 +356,7 @@ crw-rw-rw- 1 root root 1, 5 Oct 14 11:36 zero
 
 また、`/dev/stderr`というシンボリックリンクを、`/var/log/nginx/error.log`ファイルに作成している。
 
-これにより、これらのファイルに対するログの出力は、`/dev/stdout`と`/dev/stderr`に転送される。
+これにより、これらのファイルに対するログの出力は、`/dev/stdout`と`/dev/stderr`にフォワーディングされる。
 
 > - https://docs.docker.com/config/containers/logging/
 

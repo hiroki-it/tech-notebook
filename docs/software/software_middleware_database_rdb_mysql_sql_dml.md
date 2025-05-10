@@ -561,6 +561,7 @@ SHOW TABLES;
 +-------------------------------+
 | Tables_in_<DB名>              |
 +-------------------------------+
+...
 ```
 
 <br>
@@ -572,7 +573,7 @@ MySQLのInnoDBストレージエンジンを確認する。
 `\G`をつけると、読みやすく整形してくれる。
 
 ```mysql
-SHOW ENGINE INNODB STATUS\G
+SHOW ENGINE INNODB STATUS\G;
 ```
 
 <br>

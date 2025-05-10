@@ -37,7 +37,7 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 
 `(3)`
 
-: kube-apiserverは、metrics-serverのプロキシ (APIService) にリクストを転送する。
+: kube-apiserverは、metrics-serverのプロキシ (APIService) にリクストをフォワーディングする。
 
 `(4)`
 

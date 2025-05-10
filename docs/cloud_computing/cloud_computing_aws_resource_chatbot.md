@@ -15,7 +15,7 @@ description: AWS Chatbot＠AWSリソースの知見を記録しています。
 
 ## 01. AWS Chatbotとは
 
-SNSを経由して、AWS CloudWatchからの通知をチャットアプリケーションに転送するAWSリソース。
+SNSを経由して、AWS CloudWatchからの通知をチャットアプリケーションにフォワーディングするAWSリソース。
 
 ![AWS ChatbotとSNSの連携](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ChatbotとSNSの連携.png)
 
@@ -31,13 +31,13 @@ SNSを経由して、AWS CloudWatchからの通知をチャットアプリケー
 
 | 設定項目        | 説明                                                                        |
 | --------------- | --------------------------------------------------------------------------- |
-| Slackチャンネル | 通知の転送先のSlackチャンネルを設定する。                                   |
+| Slackチャンネル | 通知のフォワーディング先のSlackチャンネルを設定する。                       |
 | アクセス許可    | SNSを経由して、AWS CloudWatchにリクエストを送信するためのロールを設定する。 |
 | SNSトピック     | AWS CloudWatchへのアクセス時経由する、SNSトピックを設定する。               |
 
 #### ▼ サポート対象のイベント
 
-AWSリソースのイベントを、AWS EventBridge (AWS CloudWatchイベント) を使用して、AWS Chatbotに転送できるが、全てのAWSリソースをサポートしているわけではない。
+AWSリソースのイベントを、AWS EventBridge (AWS CloudWatchイベント) を使用して、AWS Chatbotにフォワーディングできるが、全てのAWSリソースをサポートしているわけではない。
 
 サポート対象のAWSリソースは以下のリンクを参考にせよ。
 

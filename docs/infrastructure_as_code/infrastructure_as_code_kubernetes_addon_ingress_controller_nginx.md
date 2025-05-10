@@ -33,9 +33,9 @@ description: Nginx Ingress Controller＠Ingress Controllerの知見を記録し�
 
 #### ▼ FastCGIプロトコル
 
-Nginx Ingress Controllerは、受信したリクエストをFastCGIプロトコルで転送できる。
+Nginx Ingress Controllerは、受信したリクエストをFastCGIプロトコルでフォワーディングできる。
 
-ServiceはFastCGIプロトコルで転送できないが、代わりにNginx Ingress ControllerがFastCGIプロトコルで転送してくれる。
+ServiceはFastCGIプロトコルでフォワーディングできないが、代わりにNginx Ingress ControllerがFastCGIプロトコルでフォワーディングしてくれる。
 
 ```yaml
 apiVersion: v1

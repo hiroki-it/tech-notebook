@@ -645,7 +645,7 @@ ClusterIP Serviceを作成する。
 $ kubectl expose <Service名> \
     --type=ClusterIP \
     --port=<受信ポート番号> \
-    --target-port=<転送先ポート番号>
+    --target-port=<フォワーディング先ポート番号>
 ```
 
 NodePort Serviceを作成する。
@@ -654,7 +654,7 @@ NodePort Serviceを作成する。
 $ kubectl expose <Service名> \
     --type=NodePort \
     --port=<受信ポート番号> \
-    --target-port=<転送先ポート番号>
+    --target-port=<フォワーディング先ポート番号>
 ```
 
 LoadBalancer Serviceを作成する。
@@ -663,7 +663,7 @@ LoadBalancer Serviceを作成する。
 $ kubectl expose <Service名> \
     --type=LoadBalancer \
     --port=<受信ポート番号> \
-    --target-port=<転送先ポート番号>
+    --target-port=<フォワーディング先ポート番号>
 ```
 
 <br>

@@ -438,7 +438,7 @@ exports.handler = async (event) => {
 
 **＊実装例＊**
 
-AWS AmplifyのイベントをAWS EventBridgeでキャッチし、これをAWS Lambdaに転送する。AWS Lambdaでは、メッセージを構成し、Slack-APIに送信する。
+AWS AmplifyのイベントをAWS EventBridgeでキャッチし、これをAWS Lambdaにフォワーディングする。AWS Lambdaでは、メッセージを構成し、Slack-APIに送信する。
 
 ```javascript
 "use strict";
@@ -721,7 +721,7 @@ exports.handler = (event, context, callback) => {
 
 **＊実装例＊**
 
-eventオブジェクトの`domainName`と`host.value`に代入されたバケットのドメイン名によって、転送先のバケットが決まる。
+eventオブジェクトの`domainName`と`host.value`に代入されたバケットのドメイン名によって、フォワーディング先のバケットが決まる。
 
 そのため、この値を切り替えれば動的オリジンを実現できる。
 

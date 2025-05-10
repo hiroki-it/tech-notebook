@@ -28,7 +28,7 @@ Kubernetes Cluster内のPodで送受信するリクエストをローカルPCで
 
 ### アーキテクチャ
 
-Pod内にtraffic-agentを挿入し、そのPodに対する通信をローカルに転送する。
+Pod内にtraffic-agentを挿入し、そのPodに対する通信をローカルにフォワーディングする。
 
 ![telepresence_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/telepresence_architecture.png)
 

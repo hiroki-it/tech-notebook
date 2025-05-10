@@ -54,10 +54,10 @@ paths:
       # 統合
       #===========================
       x-amazon-apigateway-integration:
-        httpMethod: "GET" # 転送するHTTPメソッド
-        uri: "http://<NLBのDNS名>/api/v1/users/" # 転送先のバックエンドURL
+        httpMethod: "GET" # フォワーディングするHTTPメソッド
+        uri: "http://<NLBのDNS名>/api/v1/users/" # フォワーディング先のバックエンドURL
         requestParameters:
-          integration.request.header.X-API-Key: "'*****'" # 転送するカスタムヘッダーとAPIキー
+          integration.request.header.X-API-Key: "'*****'" # フォワーディングするカスタムヘッダーとAPIキー
           integration.request.querystring.userId: method.request.querystring.userId # マッピングするクエリパラメーター
           # パスパラメーター間のマッピングであれば、integration.request.path.userId: method.request.path.userId
           # 他パラメーターからボディへのマッピングであれば、integration.request.header.userId: method.request.body.userId
@@ -213,8 +213,8 @@ Swagger EditorでAPIの仕様書の`html`ファイルを確認できる。
 - OpenAPI仕様のバージョン2.0と3.0をサポートしている。
 - `x-amazon-apigateway-integration`キーを各HTTPメソッドに定義する。
 - AWS API Gatewayが`security`キーのルート定義に非対応のため、冗長ではあるが、各HTTPメソッドに個別に定義する。
-- リクエストメソッドで受信するAPIキーのヘッダー名は、小文字で『`x-api-key`』以外は設定できない。ただし、統合リクエストで転送する時に付与するヘッダー名は『`X-API-Key`』と設定できる。
-- 統合リクエストでバックエンドに転送するAPIキーは、シングルクオートで囲う必要がある。
+- リクエストメソッドで受信するAPIキーのヘッダー名は、小文字で『`x-api-key`』以外は設定できない。ただし、統合リクエストでフォワーディングする時に付与するヘッダー名は『`X-API-Key`』と設定できる。
+- 統合リクエストでバックエンドにフォワーディングするAPIキーは、シングルクオートで囲う必要がある。
 - APIキーの作成は手動で行う必要がある。
 - ステージの作成は手動で行う必要がある。
 - `servers`キーの実装はインポートしても反映できない。

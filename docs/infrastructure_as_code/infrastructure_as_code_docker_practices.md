@@ -105,7 +105,7 @@ COPY . .
 # @see https://github.com/krallin/tini?tab=readme-ov-file#alpine-linux-package
 ENTRYPOINT ["/sbin/tini", "--"]
 
-# npmコマンドやyarnコマンドは、すべてのシグナルをJavaScriptに転送できないため、Graceful Shutdownを実行できない
+# npmコマンドやyarnコマンドは、すべてのシグナルをJavaScriptにフォワーディングできないため、Graceful Shutdownを実行できない
 # そのため、npm runコマンドやyarn startコマンドではなく、nodeコマンドを直接実行する
 CMD ["node", "index.js"]
 ```

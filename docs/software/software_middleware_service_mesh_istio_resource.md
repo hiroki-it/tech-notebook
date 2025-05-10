@@ -350,7 +350,7 @@ Istioサイドカーモードとアンビエントモードの間で、Istio Egr
 
 Istio Ingress Gateway (厳密に言うとGateway) は、独自プロトコル (例：MySQLやRedis以外の非対応プロトコルなど) をTCPプロコトルとして扱う。
 
-そのため、受信した独自プロトコルリクエストにホストヘッダーがあったとしても、これを宛先に転送できない。
+そのため、受信した独自プロトコルリクエストにホストヘッダーがあったとしても、これを宛先にフォワーディングできない。
 
 宛先が独自プロトコルリクエストのポート番号だけで宛先 (例：ServiceEntry、外部サーバーなど) を決めてしまう。
 
@@ -1145,7 +1145,7 @@ spec:
     - issuer: https://<Auth0のドメイン>/
       # IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する
       jwksUri: https://<Auth0のドメイン>/.well-known/jwks.json
-      # 既存のJWTを再利用し、宛先マイクロサービスにそのまま転送する
+      # 既存のJWTを再利用し、宛先マイクロサービスにそのままフォワーディングする
       forwardOriginalToken: true
       # Authorizationヘッダーを指定する
       fromHeaders:
@@ -1194,7 +1194,7 @@ spec:
       # IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する
       # ブラウザから、またはAPIに直接接続する
       jwksUri: http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
-      # 既存のJWTを再利用し、宛先マイクロサービスにそのまま転送する
+      # 既存のJWTを再利用し、宛先マイクロサービスにそのままフォワーディングする
       forwardOriginalToken: true
       # Authorizationヘッダーを指定する
       fromHeaders:
@@ -1245,7 +1245,7 @@ spec:
       # IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する
       # ブラウザから、またはAPIに直接接続する
       jwksUri: http://oauth2-proxy.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
-      # 既存のJWTを再利用し、宛先マイクロサービスにそのまま転送する
+      # 既存のJWTを再利用し、宛先マイクロサービスにそのままフォワーディングする
       forwardOriginalToken: true
       # Authorizationヘッダーを指定する
       fromHeaders:

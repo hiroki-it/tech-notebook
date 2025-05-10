@@ -1631,7 +1631,7 @@ FargateワーカーNode内のメトリクスのデータポイントを収集す
 
 #### ▼ ログ収集
 
-FargateワーカーNode内のログを転送する上で、FargateはDaemonSetに非対応のため、ログ転送コンテナをサイドカーコンテナとして配置する必要がある。
+FargateワーカーNode内のログをフォワーディングする上で、FargateはDaemonSetに非対応のため、ログフォワーディングコンテナをサイドカーコンテナとして配置する必要がある。
 
 ロググーティングツールとして、FluentBitをサポートしている。
 
@@ -1639,7 +1639,7 @@ FargateワーカーNode内のログを転送する上で、FargateはDaemonSet�
 
 `(1)`
 
-: ログ転送コンテナのためのNamespaceを作成する。
+: ログフォワーディングコンテナのためのNamespaceを作成する。
 
      名前は、必ず`aws-observability`とする。
 
@@ -1658,7 +1658,7 @@ metadata:
 
 : `aws-observability`内で`aws-logging`という名前のConfigMapを作成する。
 
-     これより、ログ転送コンテナとしてFluentBitコンテナが作成され、PodからAWS CloudWatch Logsにログを送信できるようになる。
+     これより、ログフォワーディングコンテナとしてFluentBitコンテナが作成され、PodからAWS CloudWatch Logsにログを送信できるようになる。
 
      名前は、必ず`aws-logging`とする。
 

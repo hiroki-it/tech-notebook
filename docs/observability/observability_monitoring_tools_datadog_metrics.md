@@ -19,7 +19,7 @@ description: メトリクス＠Datadogの知見を記録しています。
 
 デーモンであるdatadogエージェントに含まれている。
 
-アプリケーションからメトリクスのデータポイントを収集し、Datadogに転送する。
+アプリケーションからメトリクスのデータポイントを収集し、Datadogにフォワーディングする。
 
 ![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on-server.png)
 
@@ -39,7 +39,7 @@ description: メトリクス＠Datadogの知見を記録しています。
 
 ### Processエージェントとは
 
-サーバーの場合と同様にして、アプリケーションからメトリクスを受信し、Datadogに転送する。
+サーバーの場合と同様にして、アプリケーションからメトリクスを受信し、Datadogにフォワーディングする。
 
 > - https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97
 
@@ -51,7 +51,7 @@ description: メトリクス＠Datadogの知見を記録しています。
 
 #### ▼ Kubernetesの場合
 
-ClusterやワーカーNodeからメトリクスを受信し、コントロールプレーンNodeのkube-apiserverに転送する。
+ClusterやワーカーNodeからメトリクスを受信し、コントロールプレーンNodeのkube-apiserverにフォワーディングする。
 
 ![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes.png)
 

@@ -206,7 +206,7 @@ FROM data/agent:latest
 
 Datadogが提供するdatadogイメージによって作成されるコンテナであり、コンテナのサイドカーコンテナとして配置される。
 
-コンテナ内で稼働するDatadog dockerエージェントが、コンテナからメトリクスのデータポイントを収集し、Datadogにこれを転送する。
+コンテナ内で稼働するDatadog dockerエージェントが、コンテナからメトリクスのデータポイントを収集し、Datadogにこれをフォワーディングする。
 
 > - https://docs.datadoghq.com/integrations/ecs_fargate/?tab=logdriver#create-an-ecs-fargate-task
 
