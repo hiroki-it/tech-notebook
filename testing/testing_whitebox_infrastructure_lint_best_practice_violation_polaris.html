@@ -27507,7 +27507,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="_5">▼ 設定し忘れの検証<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>DaemonSet配下のPodでは、<code>.spec.priorityClassName</code>キーや<code>.spec.affinity</code>キーを設定しておく方が良いが、これを設定し忘れてしまう可能性がある。</p>
-<p>こういった場合に、カスタムルールが役立つ。</p>
+<p>こういった場合、カスタムルールが役立つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">checks</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># 重要度を設定する</span>
 <span class="w">  </span><span class="nt">daemonSetPriorityClassMissing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">danger</span>
@@ -27637,13 +27637,13 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="_6">▼ 作成し忘れ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>HorizontalPodAutoscalerは、Deploymentと合わせて作る必要があるが、作成し忘れてしまう可能性がある。</p>
-<p>こういった場合に、カスタムルールが役立つ。</p>
+<p>こういった場合、カスタムルールが役立つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">checks</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># 重要度を設定する</span>
 <span class="w">  </span><span class="nt">missingHorizontalPodAutoscalerWithDeployment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">danger</span>
 
 <span class="nt">customChecks</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Deploymentを作成している場合に、HorizontalPodAutoscalerも作成していることを検証する</span>
+<span class="w">  </span><span class="c1"># Deploymentを作成している場合、HorizontalPodAutoscalerも作成していることを検証する</span>
 <span class="w">  </span><span class="nt">missingHorizontalPodAutoscalerWithDeployment</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">successMessage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HorizontalPodAutoscaler exists</span>
 <span class="w">    </span><span class="nt">failureMessage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HorizontalPodAutoscaler should exist</span>
@@ -27728,7 +27728,7 @@ $<span class="w"> </span>polaris<span class="w"> </span>audit<span class="w"> </
 <p>失敗した結果のみを出力する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>polaris<span class="w"> </span>audit<span class="w"> </span>--audit-path<span class="w"> </span>manifest.yaml<span class="w"> </span>--only-show-failed-tests
 </code></pre></div>
-<p>カスタムルールに違反があった場合に、<code>--only-show-failed-tests</code>オプションを有効化していると、ルール違反が無視されて結果に表示されない不具合がある可能性がある。</p>
+<p>カスタムルールに違反があった場合、<code>--only-show-failed-tests</code>オプションを有効化していると、ルール違反が無視されて結果に表示されない不具合がある可能性がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>polaris<span class="w"> </span>audit<span class="w"> </span>--audit-path<span class="w"> </span>manifest.yaml
 
 Polaris<span class="w"> </span>audited<span class="w"> </span>Path<span class="w"> </span>manifest.yaml<span class="w"> </span>at<span class="w"> </span><span class="m">2023</span>-09-13T03:27:57+09:00
@@ -27774,7 +27774,7 @@ Polaris<span class="w"> </span>audited<span class="w"> </span>Path<span class="w
 </ul>
 </blockquote>
 <h4 id="-set-exit-code-on-danger">▼ --set-exit-code-on-danger<a class="headerlink" href="#-set-exit-code-on-danger" title="Permanent link">&para;</a></h4>
-<p>dangerレベルのルール違反が検出された場合に、終了コード<code>3</code>を出力する。</p>
+<p>dangerレベルのルール違反が検出された場合、終了コード<code>3</code>を出力する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>polaris<span class="w"> </span>audit<span class="w"> </span>--audit-path<span class="w"> </span>manifest.yaml<span class="w"> </span>--severity<span class="w"> </span>danger<span class="w"> </span>--set-exit-code-on-danger
 </code></pre></div>
 <h4 id="-severity">▼ --severity<a class="headerlink" href="#-severity" title="Permanent link">&para;</a></h4>
@@ -27802,7 +27802,7 @@ Polaris<span class="w"> </span>audited<span class="w"> </span>Path<span class="w
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 21:27:48">2025-05-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 22:44:49">2025-05-10</span>
   </span>
 
     

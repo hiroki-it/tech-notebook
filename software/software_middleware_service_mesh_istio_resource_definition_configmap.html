@@ -29293,7 +29293,7 @@
 <p><br></p>
 <h2 id="02-istio-ca-root-cert">02 istio-ca-root-cert<a class="headerlink" href="#02-istio-ca-root-cert" title="Permanent link">&para;</a></h2>
 <h3 id="istio-ca-root-cert">istio-ca-root-certとは<a class="headerlink" href="#istio-ca-root-cert" title="Permanent link">&para;</a></h3>
-<p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) による中間認証局を使用する場合に、<code>istio-ca-root-cert</code>を自動的に作成する。</p>
+<p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) による中間認証局を使用する場合、<code>istio-ca-root-cert</code>を自動的に作成する。</p>
 <p>ルート認証局から発行されたCA証明書 (ルート証明書) をもち、各マイクロサービスのPodにマウントされる。</p>
 <p>各マイクロサービスに配布された証明書を検証するために使用される。</p>
 <p>Istioコントロールプレーンのログから、CA証明書の作成を確認できる。</p>
@@ -29525,7 +29525,7 @@
 <table>
 <thead>
 <tr>
-<th>HTTP/1.1のステータスコード</th>
+<th>HTTP/1.1、HTTP/2のステータスコード</th>
 <th style="text-align: center;">マイクロサービスに通信が届いている</th>
 <th style="text-align: center;">おすすめ</th>
 <th>リトライ条件</th>
@@ -29548,7 +29548,7 @@
 <td><code>retriable-status-codes</code> (<code>5xx</code>のように任意のステータスコードを設定する)</td>
 <td style="text-align: center;">⭕️</td>
 <td style="text-align: center;"></td>
-<td><code>istio-proxy</code>コンテナからのアウトバウンド通信時、指定したHTTPステータスであった。<code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code>変数を<code>true</code>にすると、元はデフォルト値であった<code>503</code>を設定できる。冪等性のない二重処理が起こる可能性がある。</td>
+<td><code>istio-proxy</code>コンテナからのアウトバウンド通信時、指定したHTTPステータスであった。<code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code>変数を<code>true</code>にすると、<code>503</code>でリトライを実行するようになる。冪等性のない二重処理が起こる可能性がある。</td>
 </tr>
 <tr>
 <td><code>reset</code></td>
@@ -29580,13 +29580,13 @@
 <td><code>cancelled</code></td>
 <td style="text-align: center;">⭕️</td>
 <td style="text-align: center;"></td>
-<td><code>istio-proxy</code>コンテナからのレスポンス時に、gRPCステータスコードが<code>Cancelled</code>であった。送信元がリクエストを切断しているため、リトライが不要の可能性がある。</td>
+<td><code>istio-proxy</code>コンテナからのアウトバウンド通信時、gRPCステータスコードが<code>Cancelled</code>であった。送信元がリクエストを切断しているため、リトライが不要の可能性がある。</td>
 </tr>
 <tr>
 <td><code>deadline-exceeded</code></td>
 <td style="text-align: center;">⭕️</td>
 <td style="text-align: center;">✅</td>
-<td><code>istio-proxy</code>コンテナからのレスポンス時に、gRPCステータスコードが<code>DeadlineExceeded</code>であった。</td>
+<td><code>istio-proxy</code>コンテナからのアウトバウンド通信時、gRPCステータスコードが<code>DeadlineExceeded</code>であった。</td>
 </tr>
 <tr>
 <td><code>refused-stream</code></td>
@@ -29598,13 +29598,13 @@
 <td><code>resource-exhausted</code></td>
 <td style="text-align: center;">⭕️</td>
 <td style="text-align: center;">✅</td>
-<td><code>istio-proxy</code>コンテナからのレスポンス時に、gRPCステータスコードが<code>ResourceExhausted</code>であった。</td>
+<td><code>istio-proxy</code>コンテナからのアウトバウンド通信時、gRPCステータスコードが<code>ResourceExhausted</code>であった。</td>
 </tr>
 <tr>
 <td><code>unavailable</code></td>
 <td style="text-align: center;">⭕️</td>
 <td style="text-align: center;">✅</td>
-<td><code>istio-proxy</code>コンテナからのレスポンス時に、gRPCステータスコードが<code>Unavailable</code>であった。</td>
+<td><code>istio-proxy</code>コンテナからのアウトバウンド通信時、gRPCステータスコードが<code>Unavailable</code>であった。</td>
 </tr>
 </tbody>
 </table>
@@ -29631,7 +29631,7 @@
 <td><code>reset-before-request</code></td>
 <td style="text-align: center;">×</td>
 <td style="text-align: center;">✅</td>
-<td><code>istio-proxy</code>コンテナへのインバウンド通信で、マイクロサービスにリクエストをフォワーディングできなかった。</td>
+<td><code>istio-proxy</code>コンテナへのインバウンド通信時、マイクロサービスにリクエストをフォワーディングできなかった。</td>
 </tr>
 </tbody>
 </table>
@@ -30209,7 +30209,7 @@
 <p><br></p>
 <h3 id="tracingservicename">tracingServiceName<a class="headerlink" href="#tracingservicename" title="Permanent link">&para;</a></h3>
 <p>スパンの<code>service.name</code>属性の値を設定する。</p>
-<p>マイクロサービスがバージョニングされている場合に、マイクロサービスの正式名 (canonical-name) でグループ化できる。</p>
+<p>マイクロサービスがバージョニングされている場合、マイクロサービスの正式名 (canonical-name) でグループ化できる。</p>
 <p>デフォルトでは<code>APP_LABEL_AND_NAMESPACE</code>であり、<code>&lt;Namespace&gt;.&lt;appラベル値&gt;</code>になる。</p>
 <p>appラベルがないマイクロサービスのために、canonical名に基づく<code>CANONICAL_NAME_AND_NAMESPACE</code>を使用した方が良い。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -30237,7 +30237,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="trustdomain">trustDomain<a class="headerlink" href="#trustdomain" title="Permanent link">&para;</a></h3>
-<p>相互TLS認証を採用している場合に、送信元として許可する信頼ドメインを設定する。</p>
+<p>相互TLS認証を採用している場合、送信元として許可する信頼ドメインを設定する。</p>
 <p>例えば、信頼ドメインはServiceAccountごとに異なる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -30440,7 +30440,7 @@
 </ul>
 </blockquote>
 <h4 id="http">▼ 固定 (HTTPリクエスト)<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
-<p>ServiceEntryでHTTPリクエストを受信した場合に、DNSキャッシュのドメインとIPアドレスを固定で紐づける。</p>
+<p>ServiceEntryでHTTPリクエストを受信した場合、DNSキャッシュのドメインとIPアドレスを固定で紐づける。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -30470,7 +30470,7 @@
 </ul>
 </blockquote>
 <h4 id="http_1">▼ 動的 (HTTPリクエスト)<a class="headerlink" href="#http_1" title="Permanent link">&para;</a></h4>
-<p>ServiceEntryでHTTPリクエストを受信した場合に、DNSキャッシュのドメインとIPアドレスを動的に紐づける。</p>
+<p>ServiceEntryでHTTPリクエストを受信した場合、DNSキャッシュのドメインとIPアドレスを動的に紐づける。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -30502,7 +30502,7 @@
 </ul>
 </blockquote>
 <h4 id="tcp">▼ 動的 (TCPリクエスト)<a class="headerlink" href="#tcp" title="Permanent link">&para;</a></h4>
-<p>ServiceEntryで、TCPリクエストとして扱われるホストヘッダー持ち独自プロトコル (例：MySQLやRedis以外の非対応プロトコルなど) を受信した場合に、DNSキャッシュのドメインとIPアドレスを動的に紐づける。</p>
+<p>ServiceEntryで、TCPリクエストとして扱われるホストヘッダー持ち独自プロトコル (例：MySQLやRedis以外の非対応プロトコルなど) を受信した場合、DNSキャッシュのドメインとIPアドレスを動的に紐づける。</p>
 <p>注意点として、Istio Egress Gatewayを経由してServiceEntryに至る場合には、この設定が機能しない。</p>
 <div class="highlight"><pre><span></span><code>Pod ➡️ Istio Egress Gateway ➡️ ServiceEntry
 </code></pre></div>
@@ -31241,7 +31241,7 @@
 <p><code>istio-proxy</code>コンテナがインバウンド通信をマイクロサービスに送信するときのリトライ (執筆時点2025/02/26では<code>reset-before-request</code>のみ) を設定する。</p>
 <p>今後は、宛先<code>istio-proxy</code>コンテナがマイクロサービスに対してリトライできるようになる。</p>
 <p><code>istio-proxy</code>コンテナ間の問題の切り分けがしやすくなる。</p>
-<p><code>false</code>の場合、送信元<code>istio-proxy</code>コンテナから宛先<code>istio-proxy</code>コンテナへ通信時に、送信元<code>istio-proxy</code>コンテナしかリトライできない。</p>
+<p><code>false</code>の場合、送信元<code>istio-proxy</code>コンテナから宛先<code>istio-proxy</code>コンテナへ通信時、送信元<code>istio-proxy</code>コンテナしかリトライできない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -31264,7 +31264,7 @@
 <p><br></p>
 <h3 id="exclude_unsafe_503_from_default_retry_1"><code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code><a class="headerlink" href="#exclude_unsafe_503_from_default_retry_1" title="Permanent link">&para;</a></h3>
 <p>デフォルト値は<code>true</code>である。</p>
-<p>POSTリクエストの結果で、マイクロサービスから<code>503</code>ステータスが返信された場合に、未処理とは限らない。</p>
+<p>POSTリクエストの結果で、マイクロサービスから<code>503</code>ステータスが返信された場合、未処理とは限らない。</p>
 <p>この場合にリトライすると結果的に二重で処理が実行されてしまう。</p>
 <p>そのため、マイクロサービスから<code>503</code>ステータスが返信された場合は、リトライしないようにする。</p>
 <p>なおこの問題は、<code>reset</code>によるリトライでも起こりうるため、<code>reset</code>もデフォルトから外れている。</p>
@@ -31397,7 +31397,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 22:41:09">2025-05-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 22:53:29">2025-05-10</span>
   </span>
 
     

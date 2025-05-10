@@ -28590,7 +28590,7 @@ $<span class="w"> </span>pstree
 <span class="na">autorestart</span><span class="o">=</span><span class="s">true</span>
 </code></pre></div>
 <h4 id="autostart">▼ autostart<a class="headerlink" href="#autostart" title="Permanent link">&para;</a></h4>
-<p>supervisordの起動時に、デーモン化されたプロセスを自動的に起動させるか否かを設定する。</p>
+<p>supervisordの起動時、デーモン化されたプロセスを自動的に起動させるか否かを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[program:foo]</span>
 <span class="na">autostart</span><span class="o">=</span><span class="s">true</span>
 </code></pre></div>
@@ -28804,7 +28804,7 @@ $<span class="w"> </span>pstree
 </ul>
 </blockquote>
 <h4 id="disable">▼ disable<a class="headerlink" href="#disable" title="Permanent link">&para;</a></h4>
-<p>OSの起動時に、デーモン化されたプロセスが自動起動しないように設定する。</p>
+<p>OSの起動時、デーモン化されたプロセスが自動起動しないように設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>&lt;ユニット名&gt;
 
 <span class="c1"># 例：Cron、Apache</span>
@@ -28812,7 +28812,7 @@ $<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"
 $<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>httpd.service
 </code></pre></div>
 <h4 id="enable">▼ enable<a class="headerlink" href="#enable" title="Permanent link">&para;</a></h4>
-<p>OSの起動時に、デーモン化されたプロセスが自動起動するように設定する。</p>
+<p>OSの起動時、デーモン化されたプロセスが自動起動するように設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>&lt;ユニット名&gt;
 
 <span class="c1"># 例：Cron、Apache</span>
@@ -28955,7 +28955,7 @@ mq959<span class="w"> </span>/usr/sbin/rsyslogd<span class="w"> </span>-n
 <p><br></p>
 <h3 id="systemd">systemdのアラート<a class="headerlink" href="#systemd" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ アラートを直接的に通知する場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>デーモンが失敗状態になった時に、メールアドレスやチャット宛にアラートを直接的に送信するためには、<code>OnFailure</code>オプションを使用する。</p>
+<p>デーモンが失敗状態になった時、メールアドレスやチャット宛にアラートを直接的に送信するためには、<code>OnFailure</code>オプションを使用する。</p>
 <p>この時に指定するユニットファイル名には、「<code>@%i</code>』が必要である (実際のファイル名に<code>%i</code>は不要である) 。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[Unit]</span>
 
@@ -28985,7 +28985,7 @@ mq959<span class="w"> </span>/usr/sbin/rsyslogd<span class="w"> </span>-n
 </ul>
 </blockquote>
 <h4 id="_9">▼ アラートを間接的に通知する場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>デーモンが失敗状態になった時に、出力したログを使用してアラートを送信するためには、<code>StandardOutput</code>オプションや<code>StandardError</code>オプションを使用する。</p>
+<p>デーモンが失敗状態になった時、出力したログを使用してアラートを送信するためには、<code>StandardOutput</code>オプションや<code>StandardError</code>オプションを使用する。</p>
 <p>一度、ログとして出力し、このログをAWS CloudWatch Logsなどに送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[Service]</span>
 
@@ -29067,7 +29067,7 @@ mq959<span class="w"> </span>/usr/sbin/rsyslogd<span class="w"> </span>-n
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 19:49:44">2025-05-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 22:44:49">2025-05-10</span>
   </span>
 
     

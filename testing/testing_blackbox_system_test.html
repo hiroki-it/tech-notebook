@@ -28260,8 +28260,8 @@
 <h2 id="03">03. 性能テスト<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_11">性能テストとは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p><img alt="performance-test" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/performance-test.png" /></p>
-<p>一定時間内に、ユーザーが一連のリクエスト (例：ログイン、参照、登録、ログアウト) を行った時に、あらかじめ定めた指標にどのような変化があるかを検証する。</p>
-<p>具体的にはテスト時に、アクセス数を段階的に増加させて、テストレポートとしてグラフ化する。</p>
+<p>一定時間内に、ユーザーが一連のリクエスト (例：ログイン、参照、登録、ログアウト) を行った時、あらかじめ定めた指標にどのような変化があるかを検証する。</p>
+<p>具体的にはテスト時、アクセス数を段階的に増加させて、テストレポートとしてグラフ化する。</p>
 <p>テストレポートを元に、想定されるリクエスト数が現在の性能にどの程度の負荷をかけるのかを確認し、加えて最大負荷の場合でも性能目標を満たしているかを確認する。</p>
 <p>これらを運用時の監視の参考値にする。</p>
 <blockquote>
@@ -28354,7 +28354,7 @@
 <p><br></p>
 <h2 id="03-02">03-02. ロードテスト (負荷テスト)<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
 <h3 id="_16">ロードテストとは<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<p>実地を再現した (許容の限界値を含む) 負荷をシステムに与えた時に、どのように動作するかを確認する。</p>
+<p>実地を再現した (許容の限界値を含む) 負荷をシステムに与えた時、どのように動作するかを確認する。</p>
 <p>許容以上の負荷を与えるストレステストとは区別すること。</p>
 <blockquote>
 <ul>
@@ -28373,8 +28373,8 @@
 </ul>
 </blockquote>
 <h4 id="_19">▼ 例<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<p>性能の限界値に達するほどのリクエスト数が送信された時に、障害回避処理 (例：アクセスが込み合っている旨のページを表示) が実行されるかを検証する。</p>
-<p>具体的にはテスト時に、障害回避処理以外の動作 (エラー、間違った処理、障害回復後にも回復できない、システムダウン) が起こらないか否かを確認する。</p>
+<p>性能の限界値に達するほどのリクエスト数が送信された時、障害回避処理 (例：アクセスが込み合っている旨のページを表示) が実行されるかを検証する。</p>
+<p>具体的にはテスト時、障害回避処理以外の動作 (エラー、間違った処理、障害回復後にも回復できない、システムダウン) が起こらないか否かを確認する。</p>
 <blockquote>
 <ul>
 <li><a href="https://engineering.dena.com/blog/2021/10/healthcare-load-testing/">https://engineering.dena.com/blog/2021/10/healthcare-load-testing/</a></li>
@@ -28499,7 +28499,7 @@
 <p><br></p>
 <h2 id="03-03">03-03. ストレステスト (限界テスト)<a class="headerlink" href="#03-03" title="Permanent link">&para;</a></h2>
 <h3 id="_28">ストレステスト<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
-<p>許容以上の負荷をシステムに与えた時に、どのように動作するかを確認する。</p>
+<p>許容以上の負荷をシステムに与えた時、どのように動作するかを確認する。</p>
 <p>また、テストレポートから、運用時の監視で参考にするための、安全範囲 (青信号) 、危険範囲 (黄色信号) 、限界値 (赤信号) を導く必要がある。</p>
 <p>実地を再現した (許容の限界値を含む) 負荷を与えるロードテストとは区別すること。</p>
 <blockquote>
@@ -28541,8 +28541,8 @@
 <p><br></p>
 <h2 id="03-03_1">03-03. 耐久テスト<a class="headerlink" href="#03-03_1" title="Permanent link">&para;</a></h2>
 <h3 id="_34">耐久テストとは<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
-<p>長時間の大量リクエストが送信された時に、短時間では検出できないどのような問題が存在するかを検証する。</p>
-<p>具体的にはテスト時に、長時間の大量リクエストを処理させ、問題 (例：メモリリークによってメモリを圧迫、セッションデータが蓄積してメモリやストレージを圧迫、ログが蓄積してストレージを圧迫、ヒープやトランザクションログがCPUやI/O処理を圧迫) を発生させる。</p>
+<p>長時間の大量リクエストが送信された時、短時間では検出できないどのような問題が存在するかを検証する。</p>
+<p>具体的にはテスト時、長時間の大量リクエストを処理させ、問題 (例：メモリリークによってメモリを圧迫、セッションデータが蓄積してメモリやストレージを圧迫、ログが蓄積してストレージを圧迫、ヒープやトランザクションログがCPUやI/O処理を圧迫) を発生させる。</p>
 <p>これにより、どんな問題が起こるか否かを確認する。</p>
 <blockquote>
 <ul>
@@ -28557,7 +28557,7 @@
 <p><br></p>
 <h3 id="_36">目標値の指標<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
 <h4 id="rpo">▼ RPO (目標回復時点)<a class="headerlink" href="#rpo" title="Permanent link">&para;</a></h4>
-<p>障害が発生した時に、どの時点まで遡ってデータを回復させるかの目標値のこと。</p>
+<p>障害が発生した時、どの時点まで遡ってデータを回復させるかの目標値のこと。</p>
 <p>もしRPOが<code>5</code>分間だとすると、<code>5</code>分間のデータ欠損は回復できず、これを許容することになる。</p>
 <blockquote>
 <ul>
@@ -28565,7 +28565,7 @@
 </ul>
 </blockquote>
 <h4 id="rto">▼ RTO (目標回復時間)<a class="headerlink" href="#rto" title="Permanent link">&para;</a></h4>
-<p>障害が発生した時に、障害後どの時間以内にデータを回復させるかの目標値のこと。</p>
+<p>障害が発生した時、障害後どの時間以内にデータを回復させるかの目標値のこと。</p>
 <p>言い換えると、ダウンタイムの最大許容時間である。</p>
 <p>もしRTOが<code>1</code>時間だとすると、<code>1</code>時間は障害が起こったまま (ダウンタイム) になり、これを許容することになる。</p>
 <blockquote>
@@ -28873,7 +28873,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月2日 16:23:09">2025-05-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 22:44:49">2025-05-10</span>
   </span>
 
     

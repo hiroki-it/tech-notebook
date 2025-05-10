@@ -27899,16 +27899,16 @@ https://kubernetes.default.svc<span class="w">  </span><span class="m">0</span><
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>cluster<span class="w"> </span>add<span class="w"> </span>&lt;デプロイ先のClusterのARN&gt;<span class="w"> </span>--name<span class="w"> </span>&lt;ダッシュボード上でのClusterの表示名&gt;
 </code></pre></div>
 <h4 id="-upsert">▼ --upsert<a class="headerlink" href="#-upsert" title="Permanent link">&para;</a></h4>
-<p>すでにClusterを登録済みの場合に、これを上書きする。</p>
+<p>すでにClusterを登録済みの場合、これを上書きする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>cluster<span class="w"> </span>add<span class="w"> </span>&lt;デプロイ先のClusterのARN&gt;<span class="w"> </span>--name<span class="w"> </span>&lt;ダッシュボード上でのClusterの表示名&gt;<span class="w"> </span>--upsert
 </code></pre></div>
 <p><br></p>
 <h2 id="04-argocd-repo">04. argocd repoコマンド<a class="headerlink" href="#04-argocd-repo" title="Permanent link">&para;</a></h2>
 <h3 id="repo">repo<a class="headerlink" href="#repo" title="Permanent link">&para;</a></h3>
 <h4 id="repo_1">▼ repoとは<a class="headerlink" href="#repo_1" title="Permanent link">&para;</a></h4>
-<p>ArgoCDがプライベートリポジトリをポーリングする場合に、リポジトリを操作する。</p>
+<p>ArgoCDがプライベートリポジトリをポーリングする場合、リポジトリを操作する。</p>
 <h4 id="add_2">▼ add<a class="headerlink" href="#add_2" title="Permanent link">&para;</a></h4>
-<p>プライベートリポジトリをポーリングする場合に、ポーリング対象として追加する。</p>
+<p>プライベートリポジトリをポーリングする場合、ポーリング対象として追加する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>oci://&lt;OCIレジストリ名&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--type<span class="w"> </span>helm<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--name<span class="w"> </span>&lt;OCIリポジトリ名&gt;<span class="w"> </span><span class="se">\</span>
@@ -27963,7 +27963,7 @@ https://kubernetes.default.svc<span class="w">  </span><span class="m">0</span><
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd-application-controller<span class="w"> </span>--namespace<span class="w"> </span>foo-namespace<span class="w"> </span>...
 </code></pre></div>
 <h4 id="-application-namespaces">▼ --application-namespaces<a class="headerlink" href="#-application-namespaces" title="Permanent link">&para;</a></h4>
-<p>ArgoCDがClusterスコープモードの場合に、Applicationを作成できるNamespaceを設定する。</p>
+<p>ArgoCDがClusterスコープモードの場合、Applicationを作成できるNamespaceを設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd-application-controller<span class="w"> </span>--application-namespaces<span class="w"> </span><span class="s2">&quot;*&quot;</span>
 </code></pre></div>
 <p><br></p>
@@ -27984,7 +27984,7 @@ https://kubernetes.default.svc<span class="w">  </span><span class="m">0</span><
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd-server<span class="w"> </span>--namespace<span class="w"> </span>foo-namespace<span class="w"> </span>...
 </code></pre></div>
 <h4 id="-application-namespaces_1">▼ --application-namespaces<a class="headerlink" href="#-application-namespaces_1" title="Permanent link">&para;</a></h4>
-<p>ArgoCDがClusterスコープモードの場合に、Applicationを操作できるNamespaceを設定する。</p>
+<p>ArgoCDがClusterスコープモードの場合、Applicationを操作できるNamespaceを設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd-server<span class="w"> </span>--application-namespaces<span class="w"> </span><span class="s2">&quot;*&quot;</span>
 </code></pre></div>
 <p><br></p>
@@ -28027,7 +28027,7 @@ https://kubernetes.default.svc<span class="w">  </span><span class="m">0</span><
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月2日 16:23:09">2025-05-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 22:44:49">2025-05-10</span>
   </span>
 
     
