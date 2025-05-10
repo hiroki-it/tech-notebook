@@ -557,7 +557,7 @@ Istioのパケット暗号化で相互TLSを導入している場合、istio-pro
 
 これの対策として、以下の仕組みでHTTPヘルスチェックを成功させる。
 
-1. Istioは、サイドカーインジェクション時に、マイクロサービスのLivenessProbeヘルスチェックとRedinessProbeヘルスチェックのパスを`/app-health/<コンテナ名>/livez`と`/app-health/<コンテナ名>/readyz`に書き換え、元のパスを`ISTIO_KUBE_APP_PROBERS`に保存する。
+1. Istioは、サイドカーインジェクション時に、マイクロサービスのLivenessProbeヘルスチェックとReadinessProbeヘルスチェックのパスを`/app-health/<コンテナ名>/livez`と`/app-health/<コンテナ名>/readyz`に書き換え、元のパスを`ISTIO_KUBE_APP_PROBERS`に保存する。
 2. kubeletはPodにHTTPヘルスチェックを送信する。
 3. `istio-proxy`コンテナはkubeletのHTTPヘルスチェックを受信する。`ISTIO_KUBE_APP_PROBERS`から元のパスを取得し、マイクロサービスにHTTPヘルスチェックをリダイレクトする。 `istio-proxy`コンテナはマイクロサービスからレスポンスを受信し、kubeletにHTTPヘルスチェックを返信する。
 
