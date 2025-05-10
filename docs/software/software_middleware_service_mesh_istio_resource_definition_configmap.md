@@ -413,7 +413,7 @@ data:
 
 #### ▼ enablePrometheusMergeとは
 
-アプリケーションのメトリクスを`istio-proxy`コンテナを介して取得できるようにする (マージする) かどうかを設定する。
+マイクロサービスのメトリクスを`istio-proxy`コンテナを介して取得できるようにする (マージする) かどうかを設定する。
 
 ```yaml
 apiVersion: v1

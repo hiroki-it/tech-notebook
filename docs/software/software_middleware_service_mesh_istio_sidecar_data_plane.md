@@ -551,13 +551,11 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 
 kubeletはIstioの発行した証明書を持っていない。
 
-そのため、Istioで相互TLS認証を有効化していると、kubeletがHTTPヘルスチェックをも`istio-proxy`コンテナに実施した場合に、証明書のないエラーでHTTPヘルスチェックは失敗してしまう。
+そのため、Istioで相互TLS認証を有効化していると、kubeletがHTTPヘルスチェックを`istio-proxy`コンテナに実施した場合に、証明書のないエラーでHTTPヘルスチェックは失敗してしまう。
 
-これの対策として、`istio-proxy`コンテナは、kubeletから受信したHTTPヘルスチェックを (`/app-health/<マイクロサービス名>/livez`、`/app-health/<マイクロサービス名>/readyz`、`/app-health/<マイクロサービス名>/startupz`) にリダイレクトする。
+これの対策として、マイクロサービスのHTTPヘルスチェックを (`/app-health/<マイクロサービス名>/livez`、`/app-health/<マイクロサービス名>/readyz`、`/app-health/<マイクロサービス名>/startupz`) に書き換え、`istio-proxy`コンテナはヘルスチェックをマイクロサービスにリダイレクトする。
 
-事前にマイクロサービスのヘルスチェックパスの定義をpilot-agentのパスに書き換えることにより、リダイレクトを実現する。
-
-マイクロサービス自体には証明書がないため、HTTPヘルスチェックを実施できるようになる。
+マイクロサービス自体には証明書がないため、kubeletからのHTTPヘルスチェックは成功するようになる。
 
 なお、Podの`.metadata.annotations`に`sidecar.istio.io/rewriteAppHTTPProbers: "false"`を設定しておくと、これを無効化できる。
 

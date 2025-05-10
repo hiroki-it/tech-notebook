@@ -508,9 +508,9 @@ envoy
 ⬇⬆️︎
 ------------
 ⬇⬆️︎
-envoy # 送信元Envoyからのリクエストをアプリケーションが受信できるように、リスナーとルートになる
+envoy # 送信元Envoyからのリクエストをマイクロサービスが受信できるように、リスナーとルートになる
 ⬇⬆️︎
-アプリ
+マイクロサービス
 ```
 
 > - https://luckywinds.github.io/docs/system/service-mesh/istio-traffic-management/#%E9%80%9A%E7%94%A8%E8%A7%84%E5%88%99
@@ -808,9 +808,9 @@ envoy
 ⬇⬆️︎
 ------------
 ⬇⬆️︎
-envoy # 送信元Envoyからのリクエストをアプリケーションが受信できるように、クラスターとエンドポイントになる
+envoy # 送信元Envoyからのリクエストをマイクロサービスが受信できるように、クラスターとエンドポイントになる
 ⬇⬆️︎
-アプリ
+マイクロサービス
 ```
 
 > - https://luckywinds.github.io/docs/system/service-mesh/istio-traffic-management/#%E9%80%9A%E7%94%A8%E8%A7%84%E5%88%99
@@ -1115,7 +1115,7 @@ JWT仕様トークンが失効／不正な場合に、RequestAuthenticationは`4
 
 JWT仕様トークンがない場合に、AuthorizationPolicyは`403`ステータスを返信する必要がある。
 
-なお、RequestAuthenticationを使用せずにアプリケーションで同様の実装をしても良い。
+なお、RequestAuthenticationを使用せずにマイクロサービスで同様の実装をしても良い。
 
 また、Nginx製のBFFなど、認証処理を実装しにくい場所にのみ採用しても良い。
 

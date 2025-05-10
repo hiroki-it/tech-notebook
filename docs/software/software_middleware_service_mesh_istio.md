@@ -20,7 +20,7 @@ description: Istio＠サービスメッシュ系ミドルウェアの知見を�
 | Nodeのハードウェアリソース消費量    |                         ×                          |                ⭕️                 |
 | Nodeのストレージ使用量              |                         ⭕️                         |                 △                 |
 | Envoyの冗長性                       |                        ⭕️️                         |                 △                 |
-| アプリごとのEnvoyの設定カスタマイズ |                         ⭕️                         |                 △                 |
+| マイクロサービスごとのEnvoyの設定カスタマイズ |                         ⭕️                         |                 △                 |
 | 単純性                              |                         ×                          |                ⭕️                 |
 | Istioのアップグレード               | インプレースアップグレード、カナリアアップグレード | DaemonSetのローリングアップデート |
 
@@ -302,7 +302,7 @@ IPアドレスを指定して送信できない宛先のこと。
 
 `istio-proxy`コンテナでサーキットブレイカーを実現する。
 
-ただし、サーキットブレイカー後のフォールバックは`istoi-proxy`コンテナでは実装できず、アプリケーションで実装する必要がある。
+ただし、サーキットブレイカー後のフォールバックは`istoi-proxy`コンテナでは実装できず、マイクロサービスで実装する必要がある。
 
 `istio-proxy`コンテナは、送信可能な宛先がなくなると`503`ステータスを返信する。
 
@@ -361,9 +361,9 @@ JWTトークンの取得方法として、例えば以下の方法がある。
 
 > - https://istio.io/latest/docs/concepts/security/#authentication-architecture
 
-#### ▼ アプリケーションの認証について
+#### ▼ マイクロサービスの認証について
 
-アプリ側の認証については、Istioの管理外である。
+マイクロサービス側の認証については、Istioの管理外である。
 
 <br>
 
@@ -385,9 +385,9 @@ AuthorizationPolicyで認可プロバイダー (例：Keycloak、OpenPolicy Agen
 
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E5%9B%B3
 
-#### ▼ アプリケーションの認可について
+#### ▼ マイクロサービスの認可について
 
-アプリ側の認可については、Istioの管理外である。
+マイクロサービス側の認可については、Istioの管理外である。
 
 <br>
 
@@ -655,7 +655,7 @@ Istio Ingress Gatewayを経由せずにサービスメッシュ外からイン�
 | `destination_workload_namespace` | 送信元のNamespace名を表す。                                                       |                                                                                                                     |                                                                                                                                                                                                                                                                                           |
 | `reporter`                       | メトリクスの収集者を表す。`istio-proxy`コンテナかIngressGatewayのいずれかである。 | ・`destination` (宛先の `istio-proxy`コンテナ)`<br>`・`source` (送信元のIngressGatewayまたは `istio-proxy`コンテナ) |                                                                                                                                                                                                                                                                                           |
 | `response_flags`                 | Envoyの `%RESPONSE_FLAGS%`変数を表す。                                            | `-` (値なし)                                                                                                        |                                                                                                                                                                                                                                                                                           |
-| `response_code`                  | `istio-proxy`コンテナが返信したレスポンスコードの値を表す。                       | `200`、`404`、`0`                                                                                                   | `reporter="source"`の場合、送信元`istio-proxy`コンテナに対して、宛先 `istio-proxy`コンテナがアプリから受信したステータスコードを集計する。`reporter="destination"`の場合、送信元`istio-proxy`コンテナに対して、宛先 `istio-proxy`コンテナがアプリから受信したステータスコードを集計する。 |
+| `response_code`                  | `istio-proxy`コンテナが返信したレスポンスコードの値を表す。                       | `200`、`404`、`0`                                                                                                   | `reporter="source"`の場合、送信元`istio-proxy`コンテナに対して、宛先 `istio-proxy`コンテナがマイクロサービスから受信したステータスコードを集計する。`reporter="destination"`の場合、送信元`istio-proxy`コンテナに対して、宛先 `istio-proxy`コンテナがマイクロサービスから受信したステータスコードを集計する。 |
 | `source_app`                     | 送信元のコンテナ名を表す。                                                        | `foo-container`                                                                                                     |                                                                                                                                                                                                                                                                                           |
 | `source_cluster`                 | 送信元のKubernetes Cluster名を表す。                                              | `Kubernetes`                                                                                                        |                                                                                                                                                                                                                                                                                           |
 | `source_workload`                | 送信元のDeployment名を表す。                                                      | `foo-deployment`                                                                                                    |                                                                                                                                                                                                                                                                                           |
@@ -737,10 +737,10 @@ Istio Ingress Gatewayを経由せずにサービスメッシュ外からイン�
 
 スパンの作成場所としては、いくつか種類がある。
 
-| スパン作成パターン        | `istio-proxy`コンテナ | アプリコンテナ |
+| スパン作成パターン        | `istio-proxy`コンテナ | マイクロサービス |
 | ------------------------- | :-------------------: | :------------: |
 | `istio-proxy`コンテナのみ |          ✅           |                |
-| アプリコンテナのみ        |                       |       ✅       |
+| マイクロサービスのみ        |                       |       ✅       |
 | 両方                      |          ✅           |       ✅       |
 
 スパンの作成場所が多いほど、各コンテナの処理時間が細分化された分散トレースを収集できる。
@@ -751,9 +751,9 @@ Istio Ingress Gatewayを経由せずにサービスメッシュ外からイン�
 
 `istio-proxy`コンテナは、スパンを分散トレース収集ツール (例：Jaeger Collector、OpenTelemetry Collectorなど) に送信する。
 
-アプリからスパンを送信する場合であっても、`istio-proxy`コンテナを経由し、分散トレース収集ツールに送信することになる。
+マイクロサービスからスパンを送信する場合であっても、`istio-proxy`コンテナを経由し、分散トレース収集ツールに送信することになる。
 
-分散トレース収集ツールをサービスメッシュに登録 (VirtualServiceやServiceEntryを作成) しないと、アプリコンテナや`istio-proxy`コンテナは分散トレース収集ツールを名前解決できない。
+分散トレース収集ツールをサービスメッシュに登録 (VirtualServiceやServiceEntryを作成) しないと、マイクロサービスや`istio-proxy`コンテナは分散トレース収集ツールを名前解決できない。
 
 Envoyでは宛先としてサポートしていても、`istio-proxy`コンテナでは使用できない場合がある。(例：X-Rayデーモン)
 
