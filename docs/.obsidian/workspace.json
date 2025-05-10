@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "gateway-error",
+                "query": "二重処理が起こる可能性",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,7 +61,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "Search"
+              "title": "検索"
             }
           },
           {
@@ -95,7 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
+                "file": "network/network_model_osi_l5_l7_http.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +105,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for software_middleware_service_mesh_istio_resource_definition_configmap"
+              "title": "Backlinks for network_model_osi_l5_l7_http"
             }
           },
           {
@@ -114,12 +114,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
+                "file": "network/network_model_osi_l5_l7_http.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from software_middleware_service_mesh_istio_resource_definition_configmap"
+              "title": "Outgoing links from network_model_osi_l5_l7_http"
             }
           },
           {
@@ -149,7 +149,7 @@
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of software_middleware_service_mesh_istio_resource_definition_configmap"
+              "title": "software_middleware_service_mesh_istio_resource_definition_configmapのアウトライン"
             }
           }
         ],
@@ -161,16 +161,18 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "switcher:クイックスイッチャーを開く": false,
+      "graph:グラフビューを開く": false,
+      "canvas:新規キャンバスを作成": false,
+      "daily-notes:今日のデイリーノートを開く": false,
+      "templates:テンプレートを挿入": false,
+      "command-palette:コマンドパレットを開く": false
     }
   },
   "active": "437c4966a3d95fcb",
   "lastOpenFiles": [
+    "network/network_model_osi_l5_l7_http.md",
+    "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
     "software/software_middleware_service_mesh_istio_sidecar_data_plane.md",
     "infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_metrics_server.md",
     "infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md",
