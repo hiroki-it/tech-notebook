@@ -809,7 +809,7 @@ setcookie(
     <有効日時>,
     <パス>,
     <ドメイン>,
-    <HTTPS接続のみ>,
+    <HTTPSリクエストのみ>,
     <JavaScript無効>
     )
 ```

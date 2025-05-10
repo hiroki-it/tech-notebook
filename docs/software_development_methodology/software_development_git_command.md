@@ -45,7 +45,7 @@ $ git branch -M main
 
 ### 認証
 
-#### ▼ HTTPS接続
+#### ▼ HTTPSリクエスト
 
 Basic認証でGitHubにログインし、クローンする。
 

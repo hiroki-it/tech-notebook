@@ -73,8 +73,8 @@ kind: Ingress
 metadata:
   name: foo-alb-http-ingress
   annotations:
-    # HTTPプロトコルのヘルスチェックパス
-    # HTTPプロトコルのヘルスチェックパスはPodの種類によって異なる
+    # HTTPヘルスチェックのパス
+    # HTTPヘルスチェックのパスはPodの種類によって異なる
     alb.ingress.kubernetes.io/healthcheck-path: /healthz/ready
 ```
 

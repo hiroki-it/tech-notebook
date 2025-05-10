@@ -140,7 +140,7 @@ func main() {
 
 #### ▼ リクエストヘッダー
 
-ブラウザはサーバーにHTTPプロトコルのリクエストを送信する。
+ブラウザはサーバーにHTTPリクエストを送信する。
 
 ```yaml
 GET /chatService HTTP/1.1
@@ -156,7 +156,7 @@ Sec-WebSocket-Version: 13
 
 #### ▼ レスポンスヘッダー
 
-サーバーは、HTTPプロトコルのレスポンスに`Upgrade`ヘッダーを設定する。
+サーバーは、HTTPレスポンスに`Upgrade`ヘッダーを設定する。
 
 これにより、HTTPプロトコルがWebsocketプロトコルに変更される。
 
@@ -300,7 +300,7 @@ client.on("error", (err) => {
 
 #### ▼ リクエストヘッダー
 
-MQTTクライアントは、MQTTサーバーにHTTPプロトコルのリクエストを送信する。
+MQTTクライアントは、MQTTサーバーにHTTPリクエストを送信する。
 
 ```yaml
 GET /mqtt HTTP/1.1
@@ -314,7 +314,7 @@ Sec-WebSocket-Version: 13
 
 #### ▼ レスポンスヘッダー
 
-MQTTサーバーは、HTTPプロトコルのレスポンスに`Upgrade`ヘッダーを設定する。
+MQTTサーバーは、HTTPレスポンスに`Upgrade`ヘッダーを設定する。
 
 これにより、HTTPプロトコルがWebsocketプロトコルに変更される。
 
