@@ -549,16 +549,17 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 
 #### ▼ マイクロサービスのHTTPヘルスチェック
 
-kubeletはIstioの発行した証明書を持っていない。
+Istioのパケット暗号化で相互TLSを導入している場合、istio-proxyがリクエストを受信するために、クライアント証明書が必要である。
+
+しかし、Istioはkubeletにクライアント証明書を組み込めないため、このままだとistio-proxyはkubeletからのヘルスチェックを拒否してしまう。
 
 そのため、Istioで相互TLS認証を有効化していると、kubeletがHTTPヘルスチェックを`istio-proxy`コンテナに実施した場合に、証明書のないエラーでHTTPヘルスチェックは失敗してしまう。
 
 これの対策として、以下の仕組みでHTTPヘルスチェックを成功させる。
 
-1. マイクロサービスのHTTPヘルスチェックを (`/app-health/<マイクロサービス名>/livez`、`/app-health/<マイクロサービス名>/readyz`、`/app-health/<マイクロサービス名>/startupz`) に書き換え、元のパスは`ISTIO_KUBE_APP_PROBERS`に保存する。
-2. `istio-proxy`コンテナはHTTPヘルスチェックを受信する
-3. `istio-proxy`コンテナは`ISTIO_KUBE_APP_PROBERS`から元のパスを取得し、マイクロサービスにHTTPヘルスチェックをリダイレクトする。 
-4. kubeletからのHTTPヘルスチェックは成功する。
+1. Istioは、サイドカーインジェクション時に、マイクロサービスのLivenessProbeヘルスチェックとRedinessProbeヘルスチェックのパスを`/app-health/<コンテナ名>/livez`と`/app-health/<コンテナ名>/readyz`に書き換え、元のパスを`ISTIO_KUBE_APP_PROBERS`に保存する。
+2. kubeletはPodにHTTPヘルスチェックを送信する。
+3. `istio-proxy`コンテナはkubeletのHTTPヘルスチェックを受信する。`ISTIO_KUBE_APP_PROBERS`から元のパスを取得し、マイクロサービスにHTTPヘルスチェックをリダイレクトする。 `istio-proxy`コンテナはマイクロサービスからレスポンスを受信し、kubeletにHTTPヘルスチェックを返信する。
 
 なお、Podの`.metadata.annotations`に`sidecar.istio.io/rewriteAppHTTPProbers: "false"`を設定しておくと、これを無効化できる。
 
