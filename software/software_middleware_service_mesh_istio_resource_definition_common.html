@@ -27448,7 +27448,7 @@
 <p><br></p>
 <h2 id="01-namespacemetadatalabels">01. Namespaceの<code>.metadata.labels</code>キー<a class="headerlink" href="#01-namespacemetadatalabels" title="Permanent link">&para;</a></h2>
 <h3 id="istio-injection">istio-injection<a class="headerlink" href="#istio-injection" title="Permanent link">&para;</a></h3>
-<p>指定したNamespaceに所属するPod内に<code>istio-proxy</code>コンテナを自動的にインジェクションするか否かを設定する。</p>
+<p>指定したNamespaceに所属するPod内にistio-proxyを自動的にインジェクションするか否かを設定する。</p>
 <p><code>.metadata.labels.istio.io/rev</code>キーとはコンフリクトを発生させるため、どちらかしか使えない (<code>.metadata.labels.istio-injection</code>キーの値が<code>disabled</code>の場合は共存できる) 。</p>
 <p><code>.metadata.labels.istio-injection</code>キーを使用する場合、Istioのアップグレードがインプレース方式になる。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -27482,7 +27482,7 @@
 <p><br></p>
 <h3 id="istioiorev">istio.io/rev<a class="headerlink" href="#istioiorev" title="Permanent link">&para;</a></h3>
 <h4 id="_2">▼ サイドカーモードの場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>指定したNamespaceに所属するPod内に<code>istio-proxy</code>コンテナを自動的にインジェクションするか否かを設定する。</p>
+<p>指定したNamespaceに所属するPod内にistio-proxyを自動的にインジェクションするか否かを設定する。</p>
 <p>また、サイドカーモードのカナリアアップグレードにも使用できる。</p>
 <p>IstoOperatorの<code>.spec.revision</code>キーと同じである。</p>
 <p><code>.metadata.labels.istio-injection</code>キーとはコンフリクトを発生させるため、どちらかしか使えない (<code>.metadata.labels.istio-injection</code>キーの値が<code>disabled</code>の場合は共存できる) 。</p>
@@ -27515,7 +27515,7 @@
 </ul>
 </blockquote>
 <h4 id="_3">▼ アンビエントモードの場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナからwaypoint-proxyを作成する。</p>
+<p>istio-proxyからwaypoint-proxyを作成する。</p>
 <p>また、アンビエントモードのカナリアアップグレードにも使用できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
@@ -27652,7 +27652,7 @@
 <p><br></p>
 <h2 id="02-podmetadataannotations">02. Podの<code>.metadata.annotations</code>キー<a class="headerlink" href="#02-podmetadataannotations" title="Permanent link">&para;</a></h2>
 <h3 id="annotations">annotationsとは<a class="headerlink" href="#annotations" title="Permanent link">&para;</a></h3>
-<p>Deploymentの<code>.spec.template</code>キーや、Podの<code>.metadata.</code>キーにて、<code>istio-proxy</code>コンテナごとのオプション値を設定する。Deploymentの<code>.metadata.</code>キーで定義しないように注意する。</p>
+<p>Deploymentの<code>.spec.template</code>キーや、Podの<code>.metadata.</code>キーにて、istio-proxyごとのオプション値を設定する。Deploymentの<code>.metadata.</code>キーで定義しないように注意する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/annotations/">https://istio.io/latest/docs/reference/config/annotations/</a></li>
@@ -27679,7 +27679,7 @@
 <p><br></p>
 <h3 id="proxyistioioconfig">proxy.istio.io/config<a class="headerlink" href="#proxyistioioconfig" title="Permanent link">&para;</a></h3>
 <h4 id="proxyistioioconfig_1">▼ proxy.istio.io/configとは<a class="headerlink" href="#proxyistioioconfig_1" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナの<code>envoy</code>プロセスの設定値を上書きし、ユーザー定義の値を設定する。</p>
+<p>istio-proxyの<code>envoy</code>プロセスの設定値を上書きし、ユーザー定義の値を設定する。</p>
 <p>これを使用するよりは、Istiodコントロールプレーンの<code>.meshConfig.defaultConfig</code>キーやProxyConfigの<code>.spec.environmentVariables</code>キーを使用したほうがいいかもしれない。</p>
 <p>ProxyConfigが最優先であり、これらの設定はマージされる。</p>
 <p><code>.meshConfig.defaultConfig</code>キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。</p>
@@ -27708,7 +27708,7 @@
 <h4 id="drainduration">▼ drainDuration<a class="headerlink" href="#drainduration" title="Permanent link">&para;</a></h4>
 <p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
 <p>デフォルト値は<code>45</code>である。</p>
-<p><code>istio-proxy</code>コンテナ内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。</p>
+<p>istio-proxy内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。</p>
 <p>この接続のドレイン処理時間で、新しい接続を受け入れ続ける時間を設定する。</p>
 <p>Envoyの<code>--drain-time-s</code>オプションに相当する。</p>
 <p>設定した時間が短過ぎると、処理中の接続を終了することなく、強制的に切断してしまう。</p>
@@ -27735,7 +27735,7 @@
 </blockquote>
 <h4 id="parentshutdownduration">▼ parentShutdownDuration<a class="headerlink" href="#parentshutdownduration" title="Permanent link">&para;</a></h4>
 <p>執筆時点 (2023/10/31) ですでに廃止されている。</p>
-<p><code>istio-proxy</code>コンテナ上のEnvoyの親プロセスを終了するまでに待機する時間を設定する。</p>
+<p>istio-proxy上のEnvoyの親プロセスを終了するまでに待機する時間を設定する。</p>
 <p>Podの<code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>キーよりも、最低<code>5</code>秒以上長くすると良い。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
@@ -27764,7 +27764,7 @@
 <p>デフォルト値は<code>5</code>である (対応する<code>.mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION</code>キーと同じ) 。</p>
 <p><code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code>変数が<code>false</code>な場合にのみ設定できる。</p>
 <p><code>true</code>の場合は、代わりにPodの<code>.mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION</code>変数を設定する。</p>
-<p><code>istio-proxy</code>コンテナ内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。</p>
+<p>istio-proxy内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。</p>
 <p>この接続のドレイン処理時間を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>Envoyプロセスの接続のドレイン処理<code>5</code>秒間に実施する。</p>
@@ -27791,8 +27791,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="sidecaristioioexcludeinboundportssidecaristioioexcludeoutboundports">sidecar.istio.io/excludeInboundPorts、sidecar.istio.io/excludeOutboundPorts<a class="headerlink" href="#sidecaristioioexcludeinboundportssidecaristioioexcludeoutboundports" title="Permanent link">&para;</a></h3>
-<p>特定のポート番号に対するインバウンド通信／アウトバウンド通信に関して、istio-iptablesが<code>istio-proxy</code>コンテナにリダイレクトしないようにする。</p>
-<p>例えば、Pod間でレプリケーション通信をする場合 (例：Keycloakクラスター、Redisクラスターなど) 、<code>istio-proxy</code>コンテナを経由する必要はない。</p>
+<p>特定のポート番号に対するインバウンド通信／アウトバウンド通信に関して、istio-iptablesがistio-proxyにリダイレクトしないようにする。</p>
+<p>例えば、Pod間でレプリケーション通信をする場合 (例：Keycloakクラスター、Redisクラスターなど) 、istio-proxyを経由する必要はない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># もしくはPod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -27831,7 +27831,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="sidecaristioioproxycpu">sidecar.istio.io/proxyCPU<a class="headerlink" href="#sidecaristioioproxycpu" title="Permanent link">&para;</a></h3>
-<p><code>istio-proxy</code>コンテナで使用するCPUサイズを設定する。</p>
+<p>istio-proxyで使用するCPUサイズを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># もしくはPod</span>
@@ -27853,7 +27853,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="sidecaristioioproxyimage">sidecar.istio.io/proxyImage<a class="headerlink" href="#sidecaristioioproxyimage" title="Permanent link">&para;</a></h3>
-<p><code>istio-proxy</code>コンテナの作成に使用するコンテナイメージを設定する。</p>
+<p>istio-proxyの作成に使用するコンテナイメージを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># もしくはPod</span>
@@ -27875,7 +27875,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="sidecaristioioproxymemory">sidecar.istio.io/proxyMemory<a class="headerlink" href="#sidecaristioioproxymemory" title="Permanent link">&para;</a></h3>
-<p><code>istio-proxy</code>コンテナで使用するメモリサイズを設定する。</p>
+<p>istio-proxyで使用するメモリサイズを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># もしくはPod</span>
@@ -27916,7 +27916,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 22:44:49">2025-05-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月11日 00:16:23">2025-05-11</span>
   </span>
 
     

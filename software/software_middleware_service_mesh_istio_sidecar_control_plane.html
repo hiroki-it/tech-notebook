@@ -27802,7 +27802,7 @@
 <p><br></p>
 <h2 id="01">01. サイドカーモードのコントロールプレーン<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">仕組み<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>サイドカーモードのIstiodコントロールプレーンは、istiod-serviceを介して、各種ポート番号で<code>istio-proxy</code>コンテナからのリモートプロシージャーコールを待ち受ける。</p>
+<p>サイドカーモードのIstiodコントロールプレーンは、istiod-serviceを介して、各種ポート番号でistio-proxyからのリモートプロシージャーコールを待ち受ける。</p>
 <p>語尾の『<code>d</code>』は、デーモンの意味であるが、Istiodコントロールプレーンの実体は、Deploymentである。</p>
 <p><img alt="istio_control-plane_ports" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_ports.png" /></p>
 <blockquote>
@@ -27933,7 +27933,7 @@
 <p><br></p>
 <h3 id="service">Service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
 <h4 id="istiod_1">▼ istiod<a class="headerlink" href="#istiod_1" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナからのリクエストを、Istiodコントロールプレーン (Deployment配下のPod) にポートフォワーディングする。</p>
+<p>istio-proxyからのリクエストを、Istiodコントロールプレーン (Deployment配下のPod) にポートフォワーディングする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28083,7 +28083,7 @@
 <p><br></p>
 <h3 id="config-serving">Config servingレイヤー<a class="headerlink" href="#config-serving" title="Permanent link">&para;</a></h3>
 <h4 id="config-serving_1">▼ Config servingレイヤーとは<a class="headerlink" href="#config-serving_1" title="Permanent link">&para;</a></h4>
-<p>Envoyの設定値に基づいて、<code>istio-proxy</code>コンテナをPodに提供する。</p>
+<p>Envoyの設定値に基づいて、istio-proxyをPodに提供する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1">https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1</a></li>
@@ -28209,9 +28209,9 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:8080/ui/fl
 <p><br></p>
 <h3 id="15010"><code>15010</code>番<a class="headerlink" href="#15010" title="Permanent link">&para;</a></h3>
 <p><img alt="istio_control-plane_service-discovery" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_service-discovery.png" /></p>
-<p><code>discovery</code>コンテナの<code>15010</code>番ポートでは、<code>istio-proxy</code>コンテナからのxDSサーバーに対するリモートプロシージャーコールを待ち受け、<code>discovery</code>コンテナ内のプロセスに渡す。</p>
+<p><code>discovery</code>コンテナの<code>15010</code>番ポートでは、istio-proxyからのxDSサーバーに対するリモートプロシージャーコールを待ち受け、<code>discovery</code>コンテナ内のプロセスに渡す。</p>
 <p>コールの内容に応じて、他のサービス (Pod、Node)の宛先情報を含むレスポンスを返信する。</p>
-<p><code>istio-proxy</code>コンテナはこれを受信し、pilot-agentがEnvoyの宛先情報設定を動的に変更する (サービス検出) 。</p>
+<p>istio-proxyはこれを受信し、pilot-agentがEnvoyの宛先情報設定を動的に変更する (サービス検出) 。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/">https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/</a></li>
@@ -28231,10 +28231,10 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:8080/ui/fl
 </blockquote>
 <p><br></p>
 <h3 id="15012"><code>15012</code>番<a class="headerlink" href="#15012" title="Permanent link">&para;</a></h3>
-<p><code>discovery</code>コンテナの<code>15012</code>番ポートでは、マイクロサービス間で相互TLS認証によるHTTPSプロトコルを使用する場合、<code>istio-proxy</code>コンテナからのSSL証明書に関するリクエストを待ち受け、<code>discovery</code>コンテナ内のプロセスに渡す。</p>
+<p><code>discovery</code>コンテナの<code>15012</code>番ポートでは、マイクロサービス間で相互TLS認証によるHTTPSプロトコルを使用する場合、istio-proxyからのSSL証明書に関するリクエストを待ち受け、<code>discovery</code>コンテナ内のプロセスに渡す。</p>
 <p>リクエストの内容に応じて、SSL証明書と秘密鍵を含むレスポンスを返信する。</p>
-<p><code>istio-proxy</code>コンテナはこれを受信し、pilot-agentはEnvoyにこれらを紐付ける。</p>
-<p>また、SSL証明書の有効期限が切れれば、<code>istio-proxy</code>コンテナからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。</p>
+<p>istio-proxyはこれを受信し、pilot-agentはEnvoyにこれらを紐付ける。</p>
+<p>また、SSL証明書の有効期限が切れれば、istio-proxyからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。</p>
 <p><img alt="istio_control-plane_certificate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_certificate.png" /></p>
 <blockquote>
 <ul>
@@ -28294,7 +28294,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15014/debu
 </ul>
 </blockquote>
 <h4 id="keepalivemaxserverconnectionage">▼ keepaliveMaxServerConnectionAge<a class="headerlink" href="#keepalivemaxserverconnectionage" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナからのgRPCリクエスト受信時のKeepalive (クライアントの状態に応じて、その接続をタイムアウトにするか否か) を設定する。</p>
+<p>istio-proxyからのgRPCリクエスト受信時のKeepalive (クライアントの状態に応じて、その接続をタイムアウトにするか否か) を設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pilot-discovery<span class="w"> </span>discovery<span class="w"> </span>--keepaliveMaxServerConnectionAge<span class="w"> </span>30m
 </code></pre></div>
 <blockquote>
@@ -28362,7 +28362,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15014/debu
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 22:44:49">2025-05-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月11日 00:16:23">2025-05-11</span>
   </span>
 
     
