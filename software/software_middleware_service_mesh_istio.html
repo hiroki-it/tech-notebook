@@ -5505,13 +5505,22 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ サーキットブレイカー
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       ヘルスチェック
     </span>
@@ -5521,18 +5530,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ アクティブヘルスチェック
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ サーキットブレイカー
+      ▼ アクティブヘルスチェック
     </span>
   </a>
   
@@ -5659,11 +5659,11 @@
         <li class="md-nav__item">
   <a href="#06" class="md-nav__link">
     <span class="md-ellipsis">
-      06. アプリケーションデータの暗号化
+      06. パケットのアプリケーションデータの暗号化
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="06. アプリケーションデータの暗号化">
+    <nav class="md-nav" aria-label="06. パケットのアプリケーションデータの暗号化">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -28086,13 +28086,22 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ サーキットブレイカー
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       ヘルスチェック
     </span>
@@ -28102,18 +28111,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ アクティブヘルスチェック
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ サーキットブレイカー
+      ▼ アクティブヘルスチェック
     </span>
   </a>
   
@@ -28240,11 +28240,11 @@
         <li class="md-nav__item">
   <a href="#06" class="md-nav__link">
     <span class="md-ellipsis">
-      06. アプリケーションデータの暗号化
+      06. パケットのアプリケーションデータの暗号化
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="06. アプリケーションデータの暗号化">
+    <nav class="md-nav" aria-label="06. パケットのアプリケーションデータの暗号化">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -29048,11 +29048,7 @@
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<h3 id="_22">ヘルスチェック<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
-<h4 id="_23">▼ アクティブヘルスチェック<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナは、マイクロサービスに対するkubeletのヘルスチェックを受信し、マイクロサービスに転送する。</p>
-<h4 id="_24">▼ サーキットブレイカー<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<h4 id="_22">▼ サーキットブレイカー<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <p><code>istio-proxy</code>コンテナでサーキットブレイカーを実現する。</p>
 <p>ただし、サーキットブレイカー後のフォールバックは<code>istoi-proxy</code>コンテナでは実装できず、アプリケーションで実装する必要がある。</p>
 <p><code>istio-proxy</code>コンテナは、送信可能な宛先がなくなると<code>503</code>ステータスを返信する。</p>
@@ -29074,6 +29070,10 @@
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/outlier">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/outlier</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="_23">ヘルスチェック<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<h4 id="_24">▼ アクティブヘルスチェック<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p><code>istio-proxy</code>コンテナは、マイクロサービスに対するkubeletのヘルスチェックを受信し、マイクロサービスに転送する。</p>
 <p><br></p>
 <h2 id="05">05. 通信の認証/認可<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_25">通信の認証<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
@@ -29129,7 +29129,7 @@
 <h4 id="_31">▼ アプリケーションの認可について<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
 <p>アプリ側の認可については、Istioの管理外である。</p>
 <p><br></p>
-<h2 id="06">06. アプリケーションデータの暗号化<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<h2 id="06">06. パケットのアプリケーションデータの暗号化<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="tls_1">相互TLS認証<a class="headerlink" href="#tls_1" title="Permanent link">&para;</a></h3>
 <h4 id="tls_2">▼ 相互TLS認証とは<a class="headerlink" href="#tls_2" title="Permanent link">&para;</a></h4>
 <p>相互TLS認証を実施し、<code>L7</code>のアプリケーションデータを暗号化/復号化する。</p>
@@ -29820,7 +29820,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月7日 10:28:26">2025-05-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 19:21:09">2025-05-10</span>
   </span>
 
     
