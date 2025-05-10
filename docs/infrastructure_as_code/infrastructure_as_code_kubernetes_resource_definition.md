@@ -3921,7 +3921,7 @@ spec:
     - name: readiness-check-redis
       image: busybox:1.28
       # StatefulSetのインメモリDBコンテナの6379番ポートに通信できるまで、本Podのappコンテナの起動開始を待機する。
-      # StatefulSetでreadinessProbeを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。
+      # StatefulSetでReadinessProbeヘルスチェックを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。
       command:
         - /bin/bash
         - -c

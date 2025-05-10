@@ -119,7 +119,7 @@ checks:
   # Deploymentのreplicasが1個である
   deploymentMissingReplicas: danger
 
-  # PodのlivenessProbeの設定し忘れ
+  # PodのLivenessProbeヘルスチェックの設定し忘れ
   livenessProbeMissing: danger
 
   # Podのメモリの設定し忘れ
