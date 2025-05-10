@@ -31376,7 +31376,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="connectionpoolhttpmaxrequestsperconnection">▼ connectionPool.http.maxRequestsPerConnection<a class="headerlink" href="#connectionpoolhttpmaxrequestsperconnection" title="Permanent link">&para;</a></h4>
 <p>1つのTCP接続で許可されるHTTP1.1とHTTP/2プロトコルのリクエストの最大数を設定する。</p>
 <p>デフォルトでは上限がない。</p>
-<p><code>2</code>以上であればHTTP KeepAliveを実施し、<code>1</code>とする場合はHTTP KeepAliveは無効になる。</p>
+<p><code>2</code>以上であればTCP KeepAliveを実施し、<code>1</code>とする場合はTCP KeepAliveは無効になる。</p>
 <p>また、サーキットブレイカーを開始するための外れ値の閾値になる。</p>
 <p>上限を超過した場合、Podへのルーティングが停止し、何らかの意図したエラーを返信する (サーキットブレイカー) 。</p>
 <p>HTTP/2の場合は、TCP上で単一または複数のストリームを確立し、ストリーム内で単一または複数のリクエスト−レスポンスを並行的に送受信する。</p>
@@ -31410,7 +31410,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="connectionpoolhttphttp1maxpendingrequests">▼ connectionPool.http.http1MaxPendingRequests<a class="headerlink" href="#connectionpoolhttphttp1maxpendingrequests" title="Permanent link">&para;</a></h4>
-<p>キューに入れられるHTTPリクエストのレートリミットを設定する。</p>
+<p>キューに入れられるHTTPリクエストの最大数を設定する。</p>
 <p>キューを超えるHTTPリクエストに対しては、<code>503</code>ステータスを返信する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -31536,7 +31536,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="connectionpooltcpmaxconnections">▼ connectionPool.tcp.maxConnections<a class="headerlink" href="#connectionpooltcpmaxconnections" title="Permanent link">&para;</a></h4>
-<p>確立するTCP接続の最大数を設定する。</p>
+<p>キューに入れられるTCPリクエストの最大数を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -31555,7 +31555,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="outlierdetectionbaseejectiontime">▼ outlierDetection.baseEjectionTime<a class="headerlink" href="#outlierdetectionbaseejectiontime" title="Permanent link">&para;</a></h4>
-<p>Podをルーティング先から排除する秒数を設定する。</p>
+<p>オープン状態の期間を設定する。</p>
 <p><code>baseEjectionTime</code>キー後、宛先の正常性を確認し、もしエラー条件が発生していなければサーキットブレイカーを停止する。</p>
 <p>もしエラー条件がまだ解決していなければ、もう一度<code>baseEjectionTime</code>を実行する。</p>
 <p>どのくらいの期間で10回以上を判定するかは、<code>interval</code>キーで設定する。</p>
@@ -34363,7 +34363,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月11日 01:02:15">2025-05-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月11日 01:25:02">2025-05-11</span>
   </span>
 
     
