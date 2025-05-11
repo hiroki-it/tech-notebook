@@ -393,20 +393,26 @@ class UserUseCase {
       // さまざまなエラーコード (P2002, P2025など) になる可能性がある
       if (e instanceof Prisma.PrismaClientKnownRequestError) {
         console.error(
-          `[Prisma Error] Code: ${e.code}, Message: ${e.message}, Meta: ${JSON.stringify(e.meta)}`,
+          `[Prisma Error] Code: ${e.code}, Message: ${
+            e.message
+          }, Meta: ${JSON.stringify(e.meta)}`,
         );
         throw new Error("データベース処理中に不明なエラーが発生しました");
 
         // エラーコードのない例外の場合、PrismaClientUnknownRequestErrorになる
       } else if (e instanceof Prisma.PrismaClientUnknownRequestError) {
         console.error(
-          `[Prisma Error] Message: ${e.message}, Meta: ${JSON.stringify(e.meta)}`,
+          `[Prisma Error] Message: ${e.message}, Meta: ${JSON.stringify(
+            e.meta,
+          )}`,
         );
         throw new Error("データベース処理中に不明なエラーが発生しました");
       } else {
         // それ以外の場合、予期せぬエラーとして例外をスローする
         console.error(
-          `[Prisma Error] Message: ${e.message}, Meta: ${JSON.stringify(e.meta)}`,
+          `[Prisma Error] Message: ${e.message}, Meta: ${JSON.stringify(
+            e.meta,
+          )}`,
         );
         throw new Error("システムエラーが発生しました");
       }
@@ -438,20 +444,26 @@ class UserUseCase {
       // さまざまなエラーコード (P2002, P2025など) になる可能性がある
       if (e instanceof Prisma.PrismaClientKnownRequestError) {
         console.error(
-          `[Prisma Error] Code: ${e.code}, Message: ${e.message}, Meta: ${JSON.stringify(e.meta)}`,
+          `[Prisma Error] Code: ${e.code}, Message: ${
+            e.message
+          }, Meta: ${JSON.stringify(e.meta)}`,
         );
         throw new Error("データベース処理中に不明なエラーが発生しました");
 
         // エラーコードのない例外の場合、PrismaClientUnknownRequestErrorになる
       } else if (e instanceof Prisma.PrismaClientUnknownRequestError) {
         console.error(
-          `[Prisma Error] Message: ${e.message}, Meta: ${JSON.stringify(e.meta)}`,
+          `[Prisma Error] Message: ${e.message}, Meta: ${JSON.stringify(
+            e.meta,
+          )}`,
         );
         throw new Error("データベース処理中に不明なエラーが発生しました");
       } else {
         // それ以外の場合、予期せぬエラーとして例外をスローする
         console.error(
-          `[Prisma Error] Message: ${e.message}, Meta: ${JSON.stringify(e.meta)}`,
+          `[Prisma Error] Message: ${e.message}, Meta: ${JSON.stringify(
+            e.meta,
+          )}`,
         );
         throw new Error("システムエラーが発生しました");
       }

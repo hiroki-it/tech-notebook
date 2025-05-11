@@ -1058,50 +1058,6 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings
 
-#### ▼ tls.clientCertificate
-
-自己管理下の相互TLS認証 (`MUTUAL`) の場合、使用するSSL証明書を設定する。
-
-Istio管理下の相互TLS認証 (`ISTIO_MUTUAL`) の場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てるので、設定不要である。
-
-Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使用する。
-
-```yaml
-apiVersion: networking.istio.io/v1
-kind: DestinationRule
-metadata:
-  name: foo-destination-rule
-spec:
-  trafficPolicy:
-    tls:
-      mode: MUTUAL
-      clientCertificate: /etc/certs/myclientcert.pem
-```
-
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings
-
-#### ▼ tls.clientCertificate
-
-自己管理下の相互TLS認証 (`MUTUAL`) の場合、使用するSSL証明書を設定する。
-
-Istio管理下の相互TLS認証 (`ISTIO_MUTUAL`) の場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てるので、設定不要である。
-
-Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使用する。
-
-```yaml
-apiVersion: networking.istio.io/v1
-kind: DestinationRule
-metadata:
-  name: foo-destination-rule
-spec:
-  trafficPolicy:
-    tls:
-      mode: MUTUAL
-      caCertificates: /etc/certs/rootcacerts.pem
-```
-
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings
-
 #### ▼ warmup.aggression
 
 スロースタート方式 (通過させるリクエストの数を少しずつ増加させる) で、増加率を設定する。
@@ -2118,9 +2074,7 @@ spec:
 
 <br>
 
-### .spec.servers.tls
-
-#### ▼ privateKey
+### .spec.servers.tls.privateKey
 
 **＊実装例＊**
 
@@ -2139,9 +2093,7 @@ spec:
 
 <br>
 
-### .spec.servers.tls
-
-#### ▼ serverCertificate
+### .spec.servers.tls.serverCertificate
 
 SSL証明書のファイルを設定する。
 
@@ -2206,10 +2158,10 @@ spec:
 
 相互TLS認証のタイプを設定する。
 
-| 項目         | 説明                                                                                                          |
-| ------------ | ------------------------------------------------------------------------------------------------------------- |
-| `UNSET`      | 記入中...                                                                                                     |
-| `DISABLE`    | 相互TLS認証を使用しない。                                                                                     |
+| 項目         | 説明                                                                                                |
+| ------------ | --------------------------------------------------------------------------------------------------- |
+| `UNSET`      | 記入中...                                                                                           |
+| `DISABLE`    | 相互TLS認証を使用しない。                                                                           |
 | `PERMISSIVE` | 相互TLS認証の時、istio-proxyは受信するプロトコルでHTTPSプロトコルとHTTPプロトコルの両方を許可する。 |
 | `STRICT`     | 相互TLS認証の時、istio-proxyは受信するプロトコルでHTTPSプロトコルのみを許可し、HTTPを許可しない。   |
 
@@ -2417,7 +2369,7 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-forward_original_token
 
-#### ▼ from_cookies
+#### ▼ fromCookies
 
 `Cookie`ヘッダーの指定したキー名からアクセストークンを取得する。
 
@@ -2432,7 +2384,7 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    from_cookies:
+    fromCookies:
       # Cookieヘッダーの中でアクセストークンが設定されたキーを指定する
       - <アクセストークンキー>
 ```

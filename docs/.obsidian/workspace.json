@@ -44,7 +44,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "ファイルエクスプローラ"
             }
           },
           {
@@ -53,8 +53,8 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "KeepAlive",
-                "matchingCase": true,
+                "query": "peerau",
+                "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": false,
                 "extraContext": false,
@@ -74,12 +74,11 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 228.5
   },
   "right": {
     "id": "488105a2fc65fb1f",
@@ -145,8 +144,8 @@
               "state": {
                 "file": "software/software_middleware_service_mesh_istio_resource_definition.md",
                 "followCursor": true,
-                "showSearch": false,
-                "searchQuery": ""
+                "showSearch": true,
+                "searchQuery": "authe"
               },
               "icon": "lucide-list",
               "title": "software_middleware_service_mesh_istio_resource_definitionのアウトライン"
@@ -169,16 +168,18 @@
       "command-palette:コマンドパレットを開く": false
     }
   },
-  "active": "437c4966a3d95fcb",
+  "active": "a85a35cc6df77bd4",
   "lastOpenFiles": [
-    "network/network_model_osi_l4_tcp.md",
-    "infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.md",
-    "software/software_middleware_service_mesh_istio_resource_definition.md",
-    "software/software_middleware_web_apache_conf.md",
-    "network/network_model_osi_l5_l7_http.md",
-    "software/software_middleware_database_rdb_rdbms.md",
-    "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
+    "software/software_middleware_service_mesh_istio_resource.md",
     "software/software_middleware_service_mesh_istio.md",
+    "observability/observability_monitoring_tools_kiali.md",
+    "software/software_middleware_service_mesh_istio_resource_definition.md",
+    "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
+    "network/network_model_osi_l4_tcp.md",
+    "network/network_model_osi_l5_l7_http.md",
+    "infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.md",
+    "software/software_middleware_web_apache_conf.md",
+    "software/software_middleware_database_rdb_rdbms.md",
     "software/software_middleware_service_mesh_istio_sidecar_data_plane.md",
     "infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_metrics_server.md",
     "infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md",
