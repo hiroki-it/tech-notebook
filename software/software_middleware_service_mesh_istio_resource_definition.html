@@ -6138,24 +6138,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tlsclientcertificate_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ tls.clientCertificate
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tlsclientcertificate_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ tls.clientCertificate
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#warmupaggression" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ warmup.aggression
@@ -6590,50 +6572,20 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#specserverstls" class="md-nav__link">
+  <a href="#specserverstlsprivatekey" class="md-nav__link">
     <span class="md-ellipsis">
-      .spec.servers.tls
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label=".spec.servers.tls">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#privatekey" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ privateKey
+      .spec.servers.tls.privateKey
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#specserverstls_1" class="md-nav__link">
+  <a href="#specserverstlsservercertificate" class="md-nav__link">
     <span class="md-ellipsis">
-      .spec.servers.tls
+      .spec.servers.tls.serverCertificate
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label=".spec.servers.tls">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#servercertificate" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ serverCertificate
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -6798,9 +6750,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#from_cookies" class="md-nav__link">
+  <a href="#fromcookies" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ from_cookies
+      ▼ fromCookies
     </span>
   </a>
   
@@ -29458,24 +29410,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tlsclientcertificate_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ tls.clientCertificate
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tlsclientcertificate_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ tls.clientCertificate
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#warmupaggression" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ warmup.aggression
@@ -29910,50 +29844,20 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#specserverstls" class="md-nav__link">
+  <a href="#specserverstlsprivatekey" class="md-nav__link">
     <span class="md-ellipsis">
-      .spec.servers.tls
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label=".spec.servers.tls">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#privatekey" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ privateKey
+      .spec.servers.tls.privateKey
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#specserverstls_1" class="md-nav__link">
+  <a href="#specserverstlsservercertificate" class="md-nav__link">
     <span class="md-ellipsis">
-      .spec.servers.tls
+      .spec.servers.tls.serverCertificate
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label=".spec.servers.tls">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#servercertificate" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ serverCertificate
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -30118,9 +30022,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#from_cookies" class="md-nav__link">
+  <a href="#fromcookies" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ from_cookies
+      ▼ fromCookies
     </span>
   </a>
   
@@ -31852,44 +31756,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings">https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings</a></li>
 </ul>
 </blockquote>
-<h4 id="tlsclientcertificate_1">▼ tls.clientCertificate<a class="headerlink" href="#tlsclientcertificate_1" title="Permanent link">&para;</a></h4>
-<p>自己管理下の相互TLS認証 (<code>MUTUAL</code>) の場合、使用するSSL証明書を設定する。</p>
-<p>Istio管理下の相互TLS認証 (<code>ISTIO_MUTUAL</code>) の場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てるので、設定不要である。</p>
-<p>Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使用する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">tls</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MUTUAL</span>
-<span class="w">      </span><span class="nt">clientCertificate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/certs/myclientcert.pem</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings">https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings</a></li>
-</ul>
-</blockquote>
-<h4 id="tlsclientcertificate_2">▼ tls.clientCertificate<a class="headerlink" href="#tlsclientcertificate_2" title="Permanent link">&para;</a></h4>
-<p>自己管理下の相互TLS認証 (<code>MUTUAL</code>) の場合、使用するSSL証明書を設定する。</p>
-<p>Istio管理下の相互TLS認証 (<code>ISTIO_MUTUAL</code>) の場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てるので、設定不要である。</p>
-<p>Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使用する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">tls</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MUTUAL</span>
-<span class="w">      </span><span class="nt">caCertificates</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/certs/rootcacerts.pem</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings">https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings</a></li>
-</ul>
-</blockquote>
 <h4 id="warmupaggression">▼ warmup.aggression<a class="headerlink" href="#warmupaggression" title="Permanent link">&para;</a></h4>
 <p>スロースタート方式 (通過させるリクエストの数を少しずつ増加させる) で、増加率を設定する。</p>
 <p><code>1</code>の場合は、直線的に増加する。</p>
@@ -32779,8 +32645,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="specserverstls">.spec.servers.tls<a class="headerlink" href="#specserverstls" title="Permanent link">&para;</a></h3>
-<h4 id="privatekey">▼ privateKey<a class="headerlink" href="#privatekey" title="Permanent link">&para;</a></h4>
+<h3 id="specserverstlsprivatekey">.spec.servers.tls.privateKey<a class="headerlink" href="#specserverstlsprivatekey" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
@@ -32797,8 +32662,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="specserverstls_1">.spec.servers.tls<a class="headerlink" href="#specserverstls_1" title="Permanent link">&para;</a></h3>
-<h4 id="servercertificate">▼ serverCertificate<a class="headerlink" href="#servercertificate" title="Permanent link">&para;</a></h4>
+<h3 id="specserverstlsservercertificate">.spec.servers.tls.serverCertificate<a class="headerlink" href="#specserverstlsservercertificate" title="Permanent link">&para;</a></h3>
 <p>SSL証明書のファイルを設定する。</p>
 <p><code>.spec.servers.tls.mode</code>キーで相互TLS認証を設定している場合、クライアント証明書のペアになるSSL証明書が必要である。</p>
 <p>SSL証明書を保持するSecretを指定する場合は、<code>.spec.servers[*].tls.credentialName</code>キーを設定する。</p>
@@ -33044,7 +32908,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-forward_original_token">https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-forward_original_token</a></li>
 </ul>
 </blockquote>
-<h4 id="from_cookies">▼ from_cookies<a class="headerlink" href="#from_cookies" title="Permanent link">&para;</a></h4>
+<h4 id="fromcookies">▼ fromCookies<a class="headerlink" href="#fromcookies" title="Permanent link">&para;</a></h4>
 <p><code>Cookie</code>ヘッダーの指定したキー名からアクセストークンを取得する。</p>
 <p><code>Cookie</code>ヘッダーを使用して認証情報を運ぶ場合 (例：フロントエンドアプリケーションがCSRやSSR) に役立つ。</p>
 <p>大文字 (<code>.spec.jwtRules.fromCookies</code>キー) ではないことに注意する。</p>
@@ -33054,7 +32918,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-request-authentication-jwt</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">jwtRules</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">from_cookies</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">fromCookies</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># Cookieヘッダーの中でアクセストークンが設定されたキーを指定する</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;アクセストークンキー&gt;</span>
 </code></pre></div>
@@ -34363,7 +34227,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月11日 01:25:02">2025-05-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月11日 19:59:05">2025-05-11</span>
   </span>
 
     
