@@ -30316,6 +30316,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </blockquote>
 <p><br></p>
 <h3 id="exclude_unsafe_503_from_default_retry"><code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code><a class="headerlink" href="#exclude_unsafe_503_from_default_retry" title="Permanent link">&para;</a></h3>
+<p>デフォルトで<code>true</code>である。</p>
 <p><code>pilot-discovery</code>コマンドでも設定できるため、そちらを参照せよ。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -30337,6 +30338,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </blockquote>
 <p><br></p>
 <h3 id="enable_inbound_retry_policy"><code>ENABLE_INBOUND_RETRY_POLICY</code><a class="headerlink" href="#enable_inbound_retry_policy" title="Permanent link">&para;</a></h3>
+<p>デフォルトで<code>true</code>である。</p>
 <p><code>pilot-discovery</code>コマンドでも設定できるため、そちらを参照せよ。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -30361,7 +30363,8 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
 <p>デフォルト値は<code>false</code>である。</p>
 <p>istio-proxyへのリクエストが無くなってから、Envoyのプロセスを終了する。</p>
-<p>具体的には、<code>downstream_cx_active</code>メトリクスの値 (アクティブな接続数) を監視し、<code>0</code>になり次第、Envoyのプロセスを終了する。</p>
+<p>具体的には、<code>downstream_cx_active</code>メトリクスの値 (アクティブな接続数) を監視し、<code>0</code>になるまでドレイン処理を実行し続ける。</p>
+<p>ドレイン処理前の待機時間は、<code>MINIMUM_DRAIN_DURATION</code>で設定する。</p>
 <p>オプションを有効化すると、istio-proxyの<code>.spec.containers[*].lifecycle.preStop.exec.command</code>キーに、<code>sleep</code>コマンドが自動で挿入される。</p>
 <p><code>.spec.containers[*].lifecycle.postStart.exec.command</code>キーへの自動設定は、<code>.mesh.defaultConfig.holdApplicationUntilProxyStarts</code>キーで対応する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -30405,7 +30408,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <p><br></p>
 <h3 id="istio_meta_dns_auto_allocate"><code>ISTIO_META_DNS_AUTO_ALLOCATE</code><a class="headerlink" href="#istio_meta_dns_auto_allocate" title="Permanent link">&para;</a></h3>
 <p>デフォルト値は<code>false</code>である。</p>
-<p>IPアドレスが設定されていないServiceEntryに対して、IPアドレスを自動的に設定する。</p>
+<p>固定IPアドレスが設定されていないServiceEntryに対して、IPアドレスを動的に設定する。</p>
 <p><code>ISTIO_META_DNS_CAPTURE</code>を有効にしないと、<code>ISTIO_META_DNS_AUTO_ALLOCATE</code>は機能しない。</p>
 <p><code>PILOT_ENABLE_IP_AUTOALLOCATE</code>と同じであり、Istio 1.25以降で、<code>PILOT_ENABLE_IP_AUTOALLOCATE</code>の方が推奨になった。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -30574,10 +30577,11 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <p><code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code>変数が<code>true</code>な場合にのみ設定できる。</p>
 <p><code>false</code>の場合は、代わりに<code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>を設定する。</p>
 <p>istio-proxy内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。</p>
-<p>この接続のドレイン処理時間で、新しい接続を受け入れ続ける時間を設定する。</p>
+<p>この接続のドレイン処理前の待機時間を設定する。</p>
+<p><code>terminationDrainDuration</code>との違いとして、<code>MINIMUM_DRAIN_DURATION</code>の時間だけ待機した後、ドレイン処理を開始し、<code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code>によって<code>downstream_cx_active</code>メトリクスが0になるまでドレイン処理をし続ける点である。</p>
 <p>Podの<code>.metadata.annotations.proxy.istio.io/config.drainDuration</code>キーで起こるレースコンディションを解決するための設定で、同じ値を設定するとよい。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Envoyプロセスのドレイン処理<code>5</code>秒間に実施する。</p>
+<p>Envoyプロセスの接続のドレイン処理前に<code>5</code>秒間に待機し、<code>downstream_cx_active</code>メトリクスが0になるまでドレイン処理を続ける。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -30587,7 +30591,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">proxyMetadata:</span>
-<span class="w">        </span><span class="no">MINIMUM_DRAIN_DURATION: &quot;10s&quot;</span>
+<span class="w">        </span><span class="no">MINIMUM_DRAIN_DURATION: &quot;5s&quot;</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -31409,7 +31413,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月12日 22:18:24">2025-05-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月13日 00:04:47">2025-05-13</span>
   </span>
 
     
