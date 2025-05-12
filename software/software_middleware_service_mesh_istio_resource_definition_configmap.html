@@ -29452,7 +29452,8 @@
 <p><br></p>
 <h3 id="discoveryselectors">discoverySelectors<a class="headerlink" href="#discoveryselectors" title="Permanent link">&para;</a></h3>
 <h4 id="discoveryselectors_1">▼ discoverySelectorsとは<a class="headerlink" href="#discoveryselectors_1" title="Permanent link">&para;</a></h4>
-<p><code>ENHANCED_RESOURCE_SCOPING</code>を有効化し、IstiodコントロールプレーンがwatchするNamespaceを限定する。</p>
+<p><code>ENHANCED_RESOURCE_SCOPING</code>を有効化し、IstiodコントロールプレーンがwatchするNamespaceを限定する。
+Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatchするようにできる。</p>
 <p>これは、サイドカーをインジェクションする<code>istio.io/rev</code>キーよりも強い影響力がある。</p>
 <p>例えば、サイドカーをインジェクションしているNamespaceのみをwatchすることにより、Istiodコントロールプレーンの負荷を下げられる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -29872,7 +29873,7 @@
 <h2 id="04-01-02-defaultconfig">04-01-02. defaultConfig<a class="headerlink" href="#04-01-02-defaultconfig" title="Permanent link">&para;</a></h2>
 <h3 id="defaultconfig">defaultConfigとは<a class="headerlink" href="#defaultconfig" title="Permanent link">&para;</a></h3>
 <p>Istioの全てのコンポーネントに適用する変数のデフォルト値を設定する。</p>
-<p>他にProxyConfigの<code>.spec.environmentVariables</code>キー、Podの<code>.metadata.annotations.proxy.istio.io/config</code>キーでも設定できる。</p>
+<p>他にProxyConfigの<code>.spec.environmentVariables</code>キー、Podの<code>.metadata.annotations.proxy.istio.io/config</code>キーでも設定できる (と思ったが、ProxyConfigのドキュメントに載っていない設定は無理みたい) 。</p>
 <p>ProxyConfigが最優先であり、これらの設定はマージされる。</p>
 <p><code>.meshConfig.defaultConfig</code>キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。</p>
 <p>3つの箇所で設定できる。</p>
@@ -29894,6 +29895,7 @@
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig</a></li>
+<li><a href="https://github.com/istio/api/blob/master/networking/v1beta1/proxy_config.proto">https://github.com/istio/api/blob/master/networking/v1beta1/proxy_config.proto</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -31397,7 +31399,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月11日 19:59:05">2025-05-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月12日 17:53:40">2025-05-12</span>
   </span>
 
     
