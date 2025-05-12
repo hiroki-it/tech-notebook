@@ -400,7 +400,7 @@ spec:
 
 `EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数が`false`な場合にのみ設定できる。
 
-`true`の場合は、代わりにPodの`.mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION`変数を設定する。
+`true`の場合は、代わりにPodの`.mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION`変数と`## EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数を設定する。
 
 istio-proxy内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。
 

@@ -1153,6 +1153,8 @@ data:
 
 ### `EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`
 
+デフォルトで`true`である。
+
 `pilot-discovery`コマンドでも設定できるため、そちらを参照せよ。
 
 **＊実装例＊**
@@ -1176,6 +1178,8 @@ data:
 <br>
 
 ### `ENABLE_INBOUND_RETRY_POLICY`
+
+デフォルトで`true`である。
 
 `pilot-discovery`コマンドでも設定できるため、そちらを参照せよ。
 
@@ -1207,7 +1211,9 @@ data:
 
 istio-proxyへのリクエストが無くなってから、Envoyのプロセスを終了する。
 
-具体的には、`downstream_cx_active`メトリクスの値 (アクティブな接続数) を監視し、`0`になり次第、Envoyのプロセスを終了する。
+具体的には、`downstream_cx_active`メトリクスの値 (アクティブな接続数) を監視し、`0`になるまでドレイン処理を実行し続ける。
+
+ドレイン処理前の待機時間は、`MINIMUM_DRAIN_DURATION`で設定する。
 
 オプションを有効化すると、istio-proxyの`.spec.containers[*].lifecycle.preStop.exec.command`キーに、`sleep`コマンドが自動で挿入される。
 
@@ -1260,7 +1266,7 @@ data:
 
 デフォルト値は`false`である。
 
-IPアドレスが設定されていないServiceEntryに対して、IPアドレスを自動的に設定する。
+固定IPアドレスが設定されていないServiceEntryに対して、IPアドレスを動的に設定する。
 
 `ISTIO_META_DNS_CAPTURE`を有効にしないと、`ISTIO_META_DNS_AUTO_ALLOCATE`は機能しない。
 
@@ -1461,13 +1467,15 @@ spec:
 
 istio-proxy内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。
 
-この接続のドレイン処理時間で、新しい接続を受け入れ続ける時間を設定する。
+この接続のドレイン処理前の待機時間を設定する。
+
+`terminationDrainDuration`との違いとして、`MINIMUM_DRAIN_DURATION`の時間だけ待機した後、ドレイン処理を開始し、`EXIT_ON_ZERO_ACTIVE_CONNECTIONS`によって`downstream_cx_active`メトリクスが0になるまでドレイン処理をし続ける点である。
 
 Podの`.metadata.annotations.proxy.istio.io/config.drainDuration`キーで起こるレースコンディションを解決するための設定で、同じ値を設定するとよい。
 
 **＊実装例＊**
 
-Envoyプロセスのドレイン処理`5`秒間に実施する。
+Envoyプロセスの接続のドレイン処理前に`5`秒間に待機し、`downstream_cx_active`メトリクスが0になるまでドレイン処理を続ける。
 
 ```yaml
 apiVersion: v1
@@ -1479,7 +1487,7 @@ data:
   mesh: |
     defaultConfig:
       proxyMetadata:
-        MINIMUM_DRAIN_DURATION: "10s"
+        MINIMUM_DRAIN_DURATION: "5s"
 ```
 
 > - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80
