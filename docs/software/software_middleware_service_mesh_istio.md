@@ -264,7 +264,7 @@ Istio `v1.3`以降で、デフォルトで全てのサービスメッシュ外�
 
 ServiceEntryを使用すれば、名前をつけられる。
 
-注意点として、`REGISTRY_ONLY`モードを有効化すると、ServiceEntryで登録された宛先以外へのサービスメッシュ外への全通信が `BlackHoleCluster`になってしまう
+注意点として、`REGISTRY_ONLY`モードを有効化すると、ServiceEntryで登録された宛先以外へのサービスメッシュ外への全通信が `BlackHoleCluster`扱いになってしまう
 
 > - https://istiobyexample.dev/monitoring-egress-traffic/
 > - https://dev.to/hsatac/howto-find-egress-traffic-destination-in-istio-service-mesh-4l61

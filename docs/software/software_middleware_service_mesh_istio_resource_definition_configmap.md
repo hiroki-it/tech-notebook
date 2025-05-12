@@ -622,7 +622,7 @@ data:
 
 Istioの全てのコンポーネントに適用する変数のデフォルト値を設定する。
 
-他にProxyConfigの`.spec.environmentVariables`キー、Podの`.metadata.annotations.proxy.istio.io/config`キーでも設定できる (と思ったが、ProxyConfigのドキュメントに載っていない設定は無理みたい) 。
+他にProxyConfig (と思ったが、ProxyConfigのドキュメントに載っていない設定は無理みたい) 、Podの`.metadata.annotations.proxy.istio.io/config`キーでも設定できる。
 
 ProxyConfigが最優先であり、これらの設定はマージされる。
 
@@ -637,12 +637,23 @@ meshConfig:
 ```
 
 ```yaml
-annotations:
-  proxy.istio.io/config: |
-    discoveryAddress: istiod:15012
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo
+spec:
+  selector:
+    ...
+  template:
+    metadata:
+      ...
+      annotations:
+        proxy.istio.io/config: |
+          # 表にある設定
 ```
 
 ```yaml
+# APIがまだ用意されておらず、現状は設定できない
 apiVersion: networking.istio.io/v1beta1
 kind: ProxyConfig
 metadata:
@@ -1198,7 +1209,7 @@ istio-proxyへのリクエストが無くなってから、Envoyのプロセス�
 
 具体的には、`downstream_cx_active`メトリクスの値 (アクティブな接続数) を監視し、`0`になり次第、Envoyのプロセスを終了する。
 
-オプションを有効化すると、istio-proxyの`.spec.containers[*].lifecycle.preStop.exec.command`キーに、`sleep`コマンドが挿入される。
+オプションを有効化すると、istio-proxyの`.spec.containers[*].lifecycle.preStop.exec.command`キーに、`sleep`コマンドが自動で挿入される。
 
 `.spec.containers[*].lifecycle.postStart.exec.command`キーへの自動設定は、`.mesh.defaultConfig.holdApplicationUntilProxyStarts`キーで対応する。
 
