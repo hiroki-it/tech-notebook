@@ -393,32 +393,11 @@ AuthorizationPolicyで認可プロバイダー (例：Keycloak、OpenPolicy Agen
 
 ## 06. パケットのアプリケーションデータの暗号化
 
-### 相互TLS認証
-
-#### ▼ 相互TLS認証とは
-
-相互TLS認証を実施し、`L7`のアプリケーションデータを暗号化/復号化する。
-
-> - https://istio.io/latest/docs/concepts/security/#authentication-architecture
-
-#### 暗号スイート
-
-- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-- TLS_AES_256_GCM_SHA384
-- TLS_AES_128_GCM_SHA256
-
-> - https://istio.io/latest/docs/concepts/security/#mutual-tls-authentication
-
-#### ▼ TLSタイムアウト
-
-アウトバウンド通信、istio-proxyは宛先にHTTPSリクエストを送信する。
-
-この時、実際はタイムアウト時間を超過していても、`TLS handshake timeout`というエラーなってしまう。
+記入中...
 
 <br>
+
+## 06-02. 証明書の発行
 
 ### クライアント証明書／SSL証明書発行
 
@@ -452,6 +431,35 @@ Istiodコントロールプレーン (`discovery`コンテナ) を中間認証�
 > - https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/
 > - https://istio.io/latest/docs/ops/integrations/certmanager/
 > - https://jimmysong.io/en/blog/cert-manager-spire-istio/
+
+<br>
+
+## 06-03. 証明書の認証方式
+
+### 相互TLS認証
+
+#### ▼ 相互TLS認証とは
+
+相互TLS認証を実施し、`L7`のアプリケーションデータを暗号化/復号化する。
+
+> - https://istio.io/latest/docs/concepts/security/#authentication-architecture
+
+#### 暗号スイート
+
+- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_AES_256_GCM_SHA384
+- TLS_AES_128_GCM_SHA256
+
+> - https://istio.io/latest/docs/concepts/security/#mutual-tls-authentication
+
+#### ▼ TLSタイムアウト
+
+アウトバウンド通信、istio-proxyは宛先にHTTPSリクエストを送信する。
+
+この時、実際はタイムアウト時間を超過していても、`TLS handshake timeout`というエラーなってしまう。
 
 <br>
 
