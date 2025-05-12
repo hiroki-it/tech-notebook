@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
+                "file": "software/software_middleware_service_mesh_istio_resource_definition_common.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "software_middleware_service_mesh_istio_resource_definition_configmap"
+              "title": "software_middleware_service_mesh_istio_resource_definition_common"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "ProxyConfig",
+                "query": "drainDura",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": false,
@@ -74,8 +74,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -143,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
+                "file": "software/software_middleware_service_mesh_istio_resource_definition_common.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "software_middleware_service_mesh_istio_resource_definition_configmapのアウトライン"
+              "title": "software_middleware_service_mesh_istio_resource_definition_commonのアウトライン"
             }
           }
         ],
@@ -171,10 +170,14 @@
   },
   "active": "437c4966a3d95fcb",
   "lastOpenFiles": [
+    "2025-05-10.md",
+    "software/software_middleware_service_mesh_istio_resource_definition_common.md",
+    "Untitled.canvas",
+    "software/software_middleware_service_mesh_istio_sidecar_data_plane.md",
+    "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
     "software/software_middleware_service_mesh_istio_resource_definition.md",
     "software/software_application_architecture_microservices_cloudnative.md",
     "software/software_middleware_service_mesh_responsibility.md",
-    "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
     "無題のファイル.md",
     "無題のファイル 1.md",
     "devops/devops_cicd_cd_argocd_resource_definition.md",
@@ -187,11 +190,8 @@
     "infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.md",
     "software/software_middleware_web_apache_conf.md",
     "software/software_middleware_database_rdb_rdbms.md",
-    "software/software_middleware_service_mesh_istio_sidecar_data_plane.md",
     "infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_metrics_server.md",
     "infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md",
-    "2025-05-10.md",
-    "Untitled.canvas",
     "infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_kind_conf.md",
     "Untitled.md",
     "observability/observability_monitoring.md",

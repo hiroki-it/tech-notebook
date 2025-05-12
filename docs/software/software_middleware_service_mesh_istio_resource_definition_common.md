@@ -332,7 +332,7 @@ spec:
 
 デフォルト値は`45`である。
 
-istio-proxy内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。
+istio-proxy内のEnvoyプロセスは、ホットリスタート時に接続のドレイン処理を実施する。
 
 この接続のドレイン処理時間で、新しい接続を受け入れ続ける時間を設定する。
 
@@ -341,6 +341,8 @@ Envoyの`--drain-time-s`オプションに相当する。
 設定した時間が短過ぎると、処理中の接続を終了することなく、強制的に切断してしまう。
 
 レースコンディションを解決するための`.mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION`キーでも、同じ値を設定するとよい。
+
+似た設定の`terminationDrainDuration`は、istio-proxyの終了時のドレイン処理時間である。
 
 ```yaml
 apiVersion: apps/v1
@@ -403,6 +405,8 @@ spec:
 istio-proxy内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。
 
 この接続のドレイン処理時間を設定する。
+
+似た設定の`drainDuration`は、istio-proxy内のEnvoyのホットリスタート時のドレイン処理時間である。
 
 **＊実装例＊**
 
