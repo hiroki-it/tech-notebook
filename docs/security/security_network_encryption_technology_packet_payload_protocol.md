@@ -194,15 +194,15 @@ Dockerであればプロキシ設定を実施するか、Dockerfileにルート�
 
 #### ▼ SSL/TLSとは
 
-![encryption_protocol_ssh-tls](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol_ssh-tls.png)
-
 ハイブリッド暗号方式に基づく暗号化プロトコル。
 
-SSL/TLSを使用した通信では、通信の宛先にSSL証明書を設定する必要がある。
+SSL/TLSを使用した通信では、通信にSSLライブラリ（例：OpenSSL、BoringSSL、LibreSSLなど）で証明書を作成し、認証方式に応じた場所に証明書を設定する必要がある。
 
 トランスポート層で、パケットペイロード内のアプリケーションデータの暗号化を担う。
 
 パケットペイロード全体を暗号化したい場合は、IPSecを使用する必要がある。
+
+![encryption_protocol_ssh-tls](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol_ssh-tls.png)
 
 > - https://xtech.nikkei.com/it/article/COLUMN/20080609/307119/
 
@@ -249,7 +249,7 @@ Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある
 
 ネットワーク層で、パケットペイロード全体の暗号化を担う。
 
-SSL/TLSはアプリケーションデータしか暗号化できないため、より安全である。
+SSL/TLSプロトコルはアプリケーションデータしか暗号化できないため、より安全である。
 
 例えば、リモートワーク時に、自宅PCと会社のネットワークをVPN接続するために使用される。
 

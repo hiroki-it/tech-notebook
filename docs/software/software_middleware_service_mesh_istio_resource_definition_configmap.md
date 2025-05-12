@@ -1930,7 +1930,6 @@ metadata:
 data:
   meshNetworks: |
     networks:
-      mesh-network:
         foo-cluster:
           endpoints:
             - fromCidr: "192.168.0.1/24"
@@ -2350,7 +2349,7 @@ spec:
 
 ### `PILOT_JWT_PUB_KEY_REFRESH_INTERVAL`
 
-アクセストークンの署名検証の間隔を設定する。
+アクセストークンの検証の間隔を設定する。
 
 ```yaml
 apiVersion: apps/v1
