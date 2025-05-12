@@ -29873,7 +29873,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <h2 id="04-01-02-defaultconfig">04-01-02. defaultConfig<a class="headerlink" href="#04-01-02-defaultconfig" title="Permanent link">&para;</a></h2>
 <h3 id="defaultconfig">defaultConfigとは<a class="headerlink" href="#defaultconfig" title="Permanent link">&para;</a></h3>
 <p>Istioの全てのコンポーネントに適用する変数のデフォルト値を設定する。</p>
-<p>他にProxyConfigの<code>.spec.environmentVariables</code>キー、Podの<code>.metadata.annotations.proxy.istio.io/config</code>キーでも設定できる (と思ったが、ProxyConfigのドキュメントに載っていない設定は無理みたい) 。</p>
+<p>他にProxyConfig (と思ったが、ProxyConfigのドキュメントに載っていない設定は無理みたい) 、Podの<code>.metadata.annotations.proxy.istio.io/config</code>キーでも設定できる。</p>
 <p>ProxyConfigが最優先であり、これらの設定はマージされる。</p>
 <p><code>.meshConfig.defaultConfig</code>キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。</p>
 <p>3つの箇所で設定できる。</p>
@@ -29881,11 +29881,22 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <span class="w">  </span><span class="nt">defaultConfig</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">discoveryAddress</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod:15012</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">proxy.istio.io/config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">discoveryAddress: istiod:15012</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">annotations</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="nt">proxy.istio.io/config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no"># 表にある設定</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># APIがまだ用意されておらず、現状は設定できない</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProxyConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-proxyconfig</span>
@@ -30351,7 +30362,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <p>デフォルト値は<code>false</code>である。</p>
 <p>istio-proxyへのリクエストが無くなってから、Envoyのプロセスを終了する。</p>
 <p>具体的には、<code>downstream_cx_active</code>メトリクスの値 (アクティブな接続数) を監視し、<code>0</code>になり次第、Envoyのプロセスを終了する。</p>
-<p>オプションを有効化すると、istio-proxyの<code>.spec.containers[*].lifecycle.preStop.exec.command</code>キーに、<code>sleep</code>コマンドが挿入される。</p>
+<p>オプションを有効化すると、istio-proxyの<code>.spec.containers[*].lifecycle.preStop.exec.command</code>キーに、<code>sleep</code>コマンドが自動で挿入される。</p>
 <p><code>.spec.containers[*].lifecycle.postStart.exec.command</code>キーへの自動設定は、<code>.mesh.defaultConfig.holdApplicationUntilProxyStarts</code>キーで対応する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -31398,7 +31409,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月12日 20:29:25">2025-05-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月12日 22:18:24">2025-05-12</span>
   </span>
 
     
