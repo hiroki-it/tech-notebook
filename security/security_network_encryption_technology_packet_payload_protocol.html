@@ -27819,11 +27819,11 @@
 <h2 id="03">03. 【トランスポート層】ヘッダー情報の暗号化技術<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="ssltlssecure-sockets-layertransport-layer-security">SSL/TLS：Secure Sockets Layer／Transport Layer Security<a class="headerlink" href="#ssltlssecure-sockets-layertransport-layer-security" title="Permanent link">&para;</a></h3>
 <h4 id="ssltls">▼ SSL/TLSとは<a class="headerlink" href="#ssltls" title="Permanent link">&para;</a></h4>
-<p><img alt="encryption_protocol_ssh-tls" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol_ssh-tls.png" /></p>
 <p>ハイブリッド暗号方式に基づく暗号化プロトコル。</p>
-<p>SSL/TLSを使用した通信では、通信の宛先にSSL証明書を設定する必要がある。</p>
+<p>SSL/TLSを使用した通信では、通信にSSLライブラリ（例：OpenSSL、BoringSSL、LibreSSLなど）で証明書を作成し、認証方式に応じた場所に証明書を設定する必要がある。</p>
 <p>トランスポート層で、パケットペイロード内のアプリケーションデータの暗号化を担う。</p>
 <p>パケットペイロード全体を暗号化したい場合は、IPSecを使用する必要がある。</p>
+<p><img alt="encryption_protocol_ssh-tls" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol_ssh-tls.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://xtech.nikkei.com/it/article/COLUMN/20080609/307119/">https://xtech.nikkei.com/it/article/COLUMN/20080609/307119/</a></li>
@@ -27859,7 +27859,7 @@
 <h4 id="ipsec">▼ IPSecとは<a class="headerlink" href="#ipsec" title="Permanent link">&para;</a></h4>
 <p>共通鍵暗号方式に基づく暗号化プロトコル。</p>
 <p>ネットワーク層で、パケットペイロード全体の暗号化を担う。</p>
-<p>SSL/TLSはアプリケーションデータしか暗号化できないため、より安全である。</p>
+<p>SSL/TLSプロトコルはアプリケーションデータしか暗号化できないため、より安全である。</p>
 <p>例えば、リモートワーク時に、自宅PCと会社のネットワークをVPN接続するために使用される。</p>
 <p>VPN接続されると、自宅PCからのTCPスリーウェイハンドシェイクが会社のルーターを通過するため、送信元IPアドレスが会社のものにかわる。</p>
 <p>盗聴を防げる。</p>
@@ -27946,7 +27946,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月12日 19:32:01">2025-05-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月12日 20:29:25">2025-05-12</span>
   </span>
 
     

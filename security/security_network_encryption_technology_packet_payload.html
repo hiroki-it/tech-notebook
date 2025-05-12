@@ -27943,15 +27943,14 @@
 <p><img alt="デジタル署名と暗号化" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/デジタル署名と暗号化.png" /></p>
 <p><br></p>
 <h2 id="03">03. ドメイン認証<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<p>『公開鍵基盤』の仕組みを使用して、証明書を作成し、検証する。</p>
 <p>認証局は、『署名』された『証明書』を作成する。</p>
-<p>CA証明書や署名された証明書を通信の送受信者に配置し、通信のたびに署名の有効性を『検証』する。</p>
+<p>CA証明書や署名済みの証明書を通信の送受信者に配置し、通信のたびに署名の有効性を『検証』する。</p>
 <p><br></p>
 <h2 id="03-02">03-02. 公開鍵基盤<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
 <h3 id="_11">公開鍵基盤とは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>公開鍵検証を使用して、秘密鍵とデジタル証明書はドメインの正当性 (偽のサイトではないこと) を担保する仕組みのこと。</p>
 <p>デジタル署名に使用した秘密鍵とペアになる公開鍵は、成りすました人物による偽の公開鍵の可能性がある。</p>
-<p>第三者機関の認証局によって、公開鍵を検証するインフラのことを、公開鍵基盤という。</p>
+<p>第三者機関の認証局によって、署名済みデジタル証明書を発行し、通信のたびにこれの有効性を検証する仕組みを、公開鍵基盤という。</p>
 <p><img alt="ssl-certificate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssl-certificate.png" /></p>
 <p><br></p>
 <h3 id="_12">公開鍵基盤の仕組み<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
@@ -28536,7 +28535,7 @@ Email<span class="w"> </span>Address<span class="w"> </span><span class="o">[]</
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年2月20日 19:29:06">2025-02-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月12日 20:29:25">2025-05-12</span>
   </span>
 
     
