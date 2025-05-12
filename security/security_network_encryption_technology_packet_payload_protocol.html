@@ -14005,6 +14005,48 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      証明書の認証方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="証明書の認証方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ サーバー認証
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ クライアント認証
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tls-mtls" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 相互TLS認証 (mTLS)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -14034,15 +14076,6 @@
   <a href="#ssltls" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ SSL/TLSとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tls-mtls" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 相互TLS認証 (mTLS)
     </span>
   </a>
   
@@ -14139,18 +14172,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ アプリケーションデータの暗号化/復号化
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ クライアント証明書
     </span>
   </a>
   
@@ -27395,6 +27419,48 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      証明書の認証方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="証明書の認証方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ サーバー認証
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ クライアント認証
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tls-mtls" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 相互TLS認証 (mTLS)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -27424,15 +27490,6 @@
   <a href="#ssltls" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ SSL/TLSとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tls-mtls" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 相互TLS認証 (mTLS)
     </span>
   </a>
   
@@ -27529,18 +27586,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ アプリケーションデータの暗号化/復号化
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ クライアント証明書
     </span>
   </a>
   
@@ -27739,6 +27787,35 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="_7">証明書の認証方式<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="_8">▼ サーバー認証<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<h4 id="_9">▼ クライアント認証<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>SSL/TLSプロトコルで暗号化するために、VPNツール (例：Zscaler) が中間認証局として機能し、署名したクライアント証明書 (おそらくリーフ証明書と呼ぶ) を発行する。</p>
+<p>このクライアント証明書をVPNのクライアント側 (例：開発PC) に設定する必要がある。</p>
+<p>また、もしクライアント側で仮想環境を作成したい場合、仮想環境がクライアント証明書が信頼できるように、設定する必要がある。</p>
+<p><strong>＊設定例＊</strong></p>
+<p>Dockerであればプロキシ設定を実施するか、Dockerfileにルート証明書を組み込む必要がある。</p>
+<p><img alt="vpn_certificate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpn_certificate.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.nrapki.jp/client-certificate/telework/">https://www.nrapki.jp/client-certificate/telework/</a></li>
+<li><a href="https://help.zscaler.com/zia/about-ssl-inspection">https://help.zscaler.com/zia/about-ssl-inspection</a></li>
+<li><a href="https://docs.docker.com/guides/zscaler/#the-role-of-certificates-in-docker">https://docs.docker.com/guides/zscaler/#the-role-of-certificates-in-docker</a></li>
+</ul>
+</blockquote>
+<h4 id="tls-mtls">▼ 相互TLS認証 (mTLS)<a class="headerlink" href="#tls-mtls" title="Permanent link">&para;</a></h4>
+<p>アプリケーション層で、双方向のピア認証を実施する。</p>
+<p>サーバー認証では、HTTPSリクエストの宛先のみSSL証明書を設定すればよい。</p>
+<p>また、クライアント認証では送信元のみにクライアント証明書を設定すればよい。</p>
+<p>一方で、相互TLS認証ではHTTPSリクエストの送信元にクライアント証明書が必要になる。</p>
+<p><img alt="mtls" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mtls.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://apidog.com/jp/blog/how-to-proceed-mtls-api/#mtls%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF">https://apidog.com/jp/blog/how-to-proceed-mtls-api/#mtls%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="03">03. 【トランスポート層】ヘッダー情報の暗号化技術<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="ssltlssecure-sockets-layertransport-layer-security">SSL/TLS：Secure Sockets Layer／Transport Layer Security<a class="headerlink" href="#ssltlssecure-sockets-layertransport-layer-security" title="Permanent link">&para;</a></h3>
 <h4 id="ssltls">▼ SSL/TLSとは<a class="headerlink" href="#ssltls" title="Permanent link">&para;</a></h4>
@@ -27750,17 +27827,6 @@
 <blockquote>
 <ul>
 <li><a href="https://xtech.nikkei.com/it/article/COLUMN/20080609/307119/">https://xtech.nikkei.com/it/article/COLUMN/20080609/307119/</a></li>
-</ul>
-</blockquote>
-<h4 id="tls-mtls">▼ 相互TLS認証 (mTLS)<a class="headerlink" href="#tls-mtls" title="Permanent link">&para;</a></h4>
-<p>トランスポート層で、双方向のピア認証を実施する。</p>
-<p>サーバー認証では、HTTPSリクエストの宛先のみSSL証明書を設定すればよい。</p>
-<p>また、クライアント認証では送信元のみにクライアント証明書を設定すればよい。</p>
-<p>一方で、相互TLS認証ではHTTPSリクエストの送信元にクライアント証明書が必要になる。</p>
-<p><img alt="mtls" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mtls.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://apidog.com/jp/blog/how-to-proceed-mtls-api/#mtls%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF">https://apidog.com/jp/blog/how-to-proceed-mtls-api/#mtls%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF</a></li>
 </ul>
 </blockquote>
 <h4 id="sni-ssltls">▼ SNI (SSL/TLSの拡張)<a class="headerlink" href="#sni-ssltls" title="Permanent link">&para;</a></h4>
@@ -27849,7 +27915,7 @@
 <li><a href="https://www.iim.co.jp/products/zscaler/zpa/">https://www.iim.co.jp/products/zscaler/zpa/</a></li>
 </ul>
 </blockquote>
-<h4 id="_7">▼ アプリケーションデータの暗号化/復号化<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h4 id="_10">▼ アプリケーションデータの暗号化/復号化<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>リクエスト時、SSL/TLSプロトコルによって通信は暗号化され、接続先のネットワーク内にあるVPNゲートウェイというプロキシサーバーで復号化される。</p>
 <p>反対にレスポンス時、VPNゲートウェイで再び暗号化され、クライアントに返信される。</p>
 <p>接続先のネットワーク内のサーバがリクエストを受信する時、リクエストのIPアドレスはVPNゲートウェイのものになっている。</p>
@@ -27857,20 +27923,6 @@
 <blockquote>
 <ul>
 <li><a href="https://www.n-study.com/internet-vpn/ssl-vpn-overview/">https://www.n-study.com/internet-vpn/ssl-vpn-overview/</a></li>
-</ul>
-</blockquote>
-<h4 id="_8">▼ クライアント証明書<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>SSL/TLSプロトコルで暗号化するために、VPNツール (例：Zscaler) が中間認証局として機能し、署名したクライアント証明書 (おそらくリーフ証明書と呼ぶ) を発行する。</p>
-<p>このクライアント証明書をVPNのクライアント側 (例：開発PC) に設定する必要がある。</p>
-<p>また、もしクライアント側で仮想環境を作成したい場合、仮想環境がクライアント証明書が信頼できるように、設定する必要がある。</p>
-<p><strong>＊設定例＊</strong></p>
-<p>Dockerであればプロキシ設定を実施するか、Dockerfileにルート証明書を組み込む必要がある。</p>
-<p><img alt="vpn_certificate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpn_certificate.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://www.nrapki.jp/client-certificate/telework/">https://www.nrapki.jp/client-certificate/telework/</a></li>
-<li><a href="https://help.zscaler.com/zia/about-ssl-inspection">https://help.zscaler.com/zia/about-ssl-inspection</a></li>
-<li><a href="https://docs.docker.com/guides/zscaler/#the-role-of-certificates-in-docker">https://docs.docker.com/guides/zscaler/#the-role-of-certificates-in-docker</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -27894,7 +27946,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 19:49:44">2025-05-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月12日 19:32:01">2025-05-12</span>
   </span>
 
     
