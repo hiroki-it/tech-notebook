@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "software/software_middleware_service_mesh_istio_resource_definition.md",
+                "file": "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "software_middleware_service_mesh_istio_resource_definition"
+              "title": "software_middleware_service_mesh_istio_resource_definition_configmap"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "enableIstioTags",
+                "query": "ProxyConfig",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": false,
@@ -79,7 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 228.5
+    "width": 384.5
   },
   "right": {
     "id": "488105a2fc65fb1f",
@@ -143,13 +143,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "software/software_middleware_service_mesh_istio_resource_definition.md",
+                "file": "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "software_middleware_service_mesh_istio_resource_definitionのアウトライン"
+              "title": "software_middleware_service_mesh_istio_resource_definition_configmapのアウトライン"
             }
           }
         ],
@@ -169,13 +169,19 @@
       "command-palette:コマンドパレットを開く": false
     }
   },
-  "active": "13b82501632b7954",
+  "active": "437c4966a3d95fcb",
   "lastOpenFiles": [
+    "software/software_middleware_service_mesh_istio_resource_definition.md",
+    "software/software_application_architecture_microservices_cloudnative.md",
+    "software/software_middleware_service_mesh_responsibility.md",
+    "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
+    "無題のファイル.md",
+    "無題のファイル 1.md",
+    "devops/devops_cicd_cd_argocd_resource_definition.md",
+    "security/security_network_encryption_technology_packet_payload_protocol.md",
     "software/software_middleware_service_mesh_istio_resource.md",
     "software/software_middleware_service_mesh_istio.md",
     "observability/observability_monitoring_tools_kiali.md",
-    "software/software_middleware_service_mesh_istio_resource_definition.md",
-    "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
     "network/network_model_osi_l4_tcp.md",
     "network/network_model_osi_l5_l7_http.md",
     "infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.md",

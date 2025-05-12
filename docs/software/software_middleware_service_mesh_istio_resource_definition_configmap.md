@@ -219,6 +219,7 @@ data:
 #### ▼ discoverySelectorsとは
 
 `ENHANCED_RESOURCE_SCOPING`を有効化し、IstiodコントロールプレーンがwatchするNamespaceを限定する。
+Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatchするようにできる。
 
 これは、サイドカーをインジェクションする`istio.io/rev`キーよりも強い影響力がある。
 
@@ -621,7 +622,7 @@ data:
 
 Istioの全てのコンポーネントに適用する変数のデフォルト値を設定する。
 
-他にProxyConfigの`.spec.environmentVariables`キー、Podの`.metadata.annotations.proxy.istio.io/config`キーでも設定できる。
+他にProxyConfigの`.spec.environmentVariables`キー、Podの`.metadata.annotations.proxy.istio.io/config`キーでも設定できる (と思ったが、ProxyConfigのドキュメントに載っていない設定は無理みたい) 。
 
 ProxyConfigが最優先であり、これらの設定はマージされる。
 
@@ -651,6 +652,7 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
+> - https://github.com/istio/api/blob/master/networking/v1beta1/proxy_config.proto
 
 <br>
 
