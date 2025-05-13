@@ -333,6 +333,19 @@ log_router:
 
 > - https://docs.fluentbit.io/manual/pipeline/inputs/tail
 
+**＊実装例＊**
+
+```bash
+[INPUT]
+    Name tail
+    # Nodeのコンテナのログ
+    Path /var/log/containers/*.log
+    multiline.parser docker, cri
+    Tag kube.*
+    Mem_Buf_Limit 5MB
+    Skip_Long_Lines On
+```
+
 #### ▼ コマンド
 
 **＊例＊**
@@ -483,6 +496,20 @@ criプラグインは、`<timeキー> <streamキー> <logtagキー> <messageキ�
     name   grep
     match  *
     regex  log foo
+```
+
+<br>
+
+### kubernetes
+
+```bash
+[FILTER]
+    Name kubernetes
+    Match kube.*
+    Merge_Log On
+    Keep_Log Off
+    K8S-Logging.Parser On
+    K8S-Logging.Exclude On
 ```
 
 <br>
@@ -899,7 +926,15 @@ drwxr-xr-x. 11 root root     150  9月 13 20:42 ..
 
 ### OUTPUTから
 
-記入中...
+#### ▼ loki
+
+```bash
+[OUTPUT]
+  Name loki
+  Match kube.*
+  Host grafana-loki.grafana-loki.svc.cluster.local
+  Port 3100
+```
 
 <br>
 

@@ -388,7 +388,7 @@ globalセクション配下でSlackのURLを設定する必要がある。
 
 ```yaml
 global:
-  slack_api_url: https://hooks.slack.com/services/*****
+  slack_api_url: https://hooks.slack.com/services/*****/*****
   resolve_timeout: 5m
 
 receivers:
@@ -396,6 +396,8 @@ receivers:
   - name: slack-foo-channel
     slack_configs:
       - channel: prd-foo-channel
+        # 復旧時に通知する
+        send_resolved: true
 ```
 
 > - https://prometheus.io/docs/alerting/latest/configuration/#receiver

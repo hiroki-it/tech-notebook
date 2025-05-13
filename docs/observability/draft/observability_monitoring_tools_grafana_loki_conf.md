@@ -96,17 +96,36 @@ common:
 
 ログの保管ストレージを設定する。
 
+**実装例**
+
 ```yaml
 common:
   storage:
     s3:
       access_key_id: root
-      bucketnames: grafana-loki-chunks
+      bucketnames:
+        chunks: grafana-loki-chunks
+        ruler: grafana-loki-ruler
+        admin: grafana-loki-admin
       # MinIOを使用する場合
       endpoint: minio.istio-system.svc.cluster.local:9000
       insecure: true
       s3forcepathstyle: true
       secret_access_key: password
+```
+
+**実装例**
+
+```yaml
+common:
+  storage:
+    s3:
+      bucketnames:
+        chunks: grafana-loki-chunks
+        ruler: grafana-loki-ruler
+        admin: grafana-loki-admin
+      # AWS S3を使用する場合
+      region: ap-northeast-1
 ```
 
 <br>
@@ -126,6 +145,43 @@ frontend:
 ```yaml
 frontend_worker:
   scheduler_address:
+```
+
+<br>
+
+### groups
+
+#### ▼ expr
+
+**＊実装例＊**
+
+構造化の場合、フィールドの条件 (例：`{app="foo", namespace="foo"}`) を設定する。
+
+また、構造化ログ全体を検索し、`ERROR`という文字があった場合、アラートを作成する。
+
+```yaml
+groups:
+  - name: should_fire
+    rules:
+      - alert: HighPercentageError
+        # 5分あたりに5つ以上のエラーログが出る。
+        expr: |
+          count_over_time({app="foo", namespace="foo"} |= "ERROR" [5m]) > 5
+        for: 1m
+        labels:
+          severity: error
+        annotations:
+          summary: High error rate
+```
+
+```yaml
+{
+  "timestamp": "2025-05-13T09:00:00Z",
+  "level": "error",
+  "message": "ERROR: Failed to connect to database",
+  "app": "foo",
+  "env": "production",
+}
 ```
 
 <br>
@@ -223,6 +279,19 @@ query_range:
 
 ### ruler
 
+#### ▼ alertmanager_url
+
+アラート送信先のAlertmanagerのURLを設定する。
+
+```yaml
+ruler:
+  alertmanager_url: http://altertmanager.altertmanager.svc.cluster.local:9093
+```
+
+> - https://grafana.com/docs/loki/latest/alert/#alerting-and-recording-rules
+
+#### ▼ storage
+
 ```yaml
 ruler:
   storage:
@@ -234,9 +303,19 @@ ruler:
       s3forcepathstyle: true
       secret_access_key: password
     type: s3
+```
+
+> - https://grafana.com/docs/loki/latest/alert/#alerting-and-recording-rules
+
+#### ▼ wal
+
+```yaml
+ruler:
   wal:
     dir: /var/loki/ruler-wal
 ```
+
+> - https://grafana.com/docs/loki/latest/alert/#alerting-and-recording-rules
 
 <br>
 
