@@ -545,7 +545,7 @@ data:
   server.dex.server.strict.tls: "false"
   server.disable.auth: "false"
   server.enable.gzip: "false"
-  # ロードバランサーで、リクエストをHTTPでフォワーディングするように設定している場合、argocd-serverでHTTPプロトコルの受信を許可する
+  # ロードバランサーで、リクエストをHTTPでフォワーディングするように設定している場合、argocd-serverでHTTPリクエストの受信を許可する
   server.insecure: "true"
   server.log.format: text
   server.log.level: warn

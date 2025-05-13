@@ -685,7 +685,7 @@ spec:
 
 #### ▼ connectionPool.tcp.maxConnections
 
-キューに入れられるTCPリクエストの最大数を設定する。
+キューに入れられるTCP接続の最大数を設定する。
 
 **＊実装例＊**
 

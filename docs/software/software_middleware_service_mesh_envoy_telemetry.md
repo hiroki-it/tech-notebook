@@ -165,7 +165,7 @@ Cluster外からのリクエスト/Pod間通信時のレスポンスの補足メ
 | 名前  | 正式名称                            | ステータスコード | 説明                                                                            |
 | ----- | ----------------------------------- | :--------------: | ------------------------------------------------------------------------------- |
 | `DC`  | `DOWNSTREAM_CONNECTION_TERMINATION` |       なし       | Envoyの宛先へのリクエストが中断され、Envoyはレスポンスを受信できなかった。      |
-| `DPE` | `DOWNSTREAM_PROTOCOL_ERROR`         |       なし       | EnvoyはHTTPプロトコルのエラーで送信元に接続できなかった。                       |
+| `DPE` | `DOWNSTREAM_PROTOCOL_ERROR`         |       なし       | EnvoyはHTTPリクエストのエラーで送信元に接続できなかった。                       |
 | `NR`  | `NO_ROUTE_FOUND`                    |      `404`       | ルートやフィルターチェーンの設定が見つからず、Envoyは送信元に接続できなかった。 |
 
 > - https://github.com/istio/proxy/blob/1.14.3/extensions/common/util.cc#L29-L56

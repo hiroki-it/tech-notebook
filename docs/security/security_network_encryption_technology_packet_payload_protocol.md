@@ -231,7 +231,7 @@ SSL/TLSを使用した通信では、通信にSSLライブラリ（例：OpenSSL
 
 **＊例＊**
 
-Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある (例：自己署名SSL証明書を使用している) と、以下のような警告が表示される。
+Chromeでは、HTTPSリクエストの使用時にSSL証明書に不備がある (例：自己署名SSL証明書を使用している) と、以下のような警告が表示される。
 
 ![SSL接続に不備がある場合の警告](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSL接続に不備がある場合の警告.jpg)
 

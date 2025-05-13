@@ -223,7 +223,7 @@ registries:
           username: AWS
           # aws ecr get-login-password --region ap-northeast-1コマンドから取得したパスワード
           password: <パスワード>
-        # イメージレジストリとの通信がHTTPSプロトコルの場合は、SSL証明書が必要になる
+        # イメージレジストリとの通信がHTTPSリクエストの場合は、SSL証明書が必要になる
         tls:
           ca_file: <証明書>
           cert_file: <証明書>

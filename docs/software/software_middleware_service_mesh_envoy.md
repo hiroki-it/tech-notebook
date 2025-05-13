@@ -603,7 +603,7 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 各フィルターは、ReadFilterとWriteFilterに分類できる。
 
-執筆時点 (2024/01/21) では、HTTPプロトコルの処理に関するフィルターは全てReadFilterである。
+執筆時点 (2024/01/21) では、HTTPリクエストの処理に関するフィルターは全てReadFilterである。
 
 > - https://zhuanlan.zhihu.com/p/464828801
 > - https://istio-insider.mygraphql.com/zh-cn/latest/ch2-envoy/arch/network-filter/network-filter.html
@@ -631,7 +631,7 @@ TCPプロトコルの処理や後続のHTTPフィルターの管理を実施す�
 
 ### HTTPフィルター
 
-HTTPプロトコルの処理を実施する。
+HTTPリクエストの処理を実施する。
 
 主要なHTTPフィルターとして、`http.router`や`http.grpc_web`がある。
 
