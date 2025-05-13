@@ -25090,6 +25090,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      kubernetes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#modify" class="md-nav__link">
     <span class="md-ellipsis">
       modify
@@ -25410,6 +25419,21 @@
       OUTPUTから
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="OUTPUTから">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loki" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ loki
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -28203,6 +28227,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      kubernetes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#modify" class="md-nav__link">
     <span class="md-ellipsis">
       modify
@@ -28523,6 +28556,21 @@
       OUTPUTから
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="OUTPUTから">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loki" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ loki
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -29124,6 +29172,16 @@
 <li><a href="https://docs.fluentbit.io/manual/pipeline/inputs/tail">https://docs.fluentbit.io/manual/pipeline/inputs/tail</a></li>
 </ul>
 </blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>INPUT<span class="o">]</span>
+<span class="w">    </span>Name<span class="w"> </span>tail
+<span class="w">    </span><span class="c1"># Nodeのコンテナのログ</span>
+<span class="w">    </span>Path<span class="w"> </span>/var/log/containers/*.log
+<span class="w">    </span>multiline.parser<span class="w"> </span>docker,<span class="w"> </span>cri
+<span class="w">    </span>Tag<span class="w"> </span>kube.*
+<span class="w">    </span>Mem_Buf_Limit<span class="w"> </span>5MB
+<span class="w">    </span>Skip_Long_Lines<span class="w"> </span>On
+</code></pre></div>
 <h4 id="_10">▼ コマンド<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>fluent-bit<span class="w"> </span><span class="se">\</span>
@@ -29244,6 +29302,16 @@
 <span class="w">    </span>name<span class="w">   </span>grep
 <span class="w">    </span>match<span class="w">  </span>*
 <span class="w">    </span>regex<span class="w">  </span>log<span class="w"> </span>foo
+</code></pre></div>
+<p><br></p>
+<h3 id="kubernetes">kubernetes<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>FILTER<span class="o">]</span>
+<span class="w">    </span>Name<span class="w"> </span>kubernetes
+<span class="w">    </span>Match<span class="w"> </span>kube.*
+<span class="w">    </span>Merge_Log<span class="w"> </span>On
+<span class="w">    </span>Keep_Log<span class="w"> </span>Off
+<span class="w">    </span>K8S-Logging.Parser<span class="w"> </span>On
+<span class="w">    </span>K8S-Logging.Exclude<span class="w"> </span>On
 </code></pre></div>
 <p><br></p>
 <h3 id="modify">modify<a class="headerlink" href="#modify" title="Permanent link">&para;</a></h3>
@@ -29597,7 +29665,13 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
 </blockquote>
 <p><br></p>
 <h3 id="output">OUTPUTから<a class="headerlink" href="#output" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<h4 id="loki">▼ loki<a class="headerlink" href="#loki" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>OUTPUT<span class="o">]</span>
+<span class="w">  </span>Name<span class="w"> </span>loki
+<span class="w">  </span>Match<span class="w"> </span>kube.*
+<span class="w">  </span>Host<span class="w"> </span>grafana-loki.grafana-loki.svc.cluster.local
+<span class="w">  </span>Port<span class="w"> </span><span class="m">3100</span>
+</code></pre></div>
 <p><br></p>
 <h2 id="07-routingoutput">07. ROUTING、OUTPUT<a class="headerlink" href="#07-routingoutput" title="Permanent link">&para;</a></h2>
 <h3 id="routingoutput">ROUTING、OUTPUTとは<a class="headerlink" href="#routingoutput" title="Permanent link">&para;</a></h3>
@@ -29882,7 +29956,7 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月16日 16:37:24">2025-04-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月13日 20:15:07">2025-05-13</span>
   </span>
 
     
