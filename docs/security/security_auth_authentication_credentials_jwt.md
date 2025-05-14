@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】JWT＠認証
-description: JWT＠認証の知見を記録しています。
+title: 【IT技術の知見】JWT＠認証情報による分類
+description: JWT＠認証情報による分類の知見を記録しています。
 ---
 
-# JWT＠認証
+# JWT＠認証情報による分類
 
 ## はじめに
 

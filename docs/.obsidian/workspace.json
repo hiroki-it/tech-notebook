@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
+                "file": "security/index.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "software_middleware_service_mesh_istio_resource_definition_configmap"
+              "title": "index"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "MINIMUM_DRAIN_DURATION",
+                "query": "トークンベースの",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": false,
@@ -74,12 +74,11 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 344.5
   },
   "right": {
     "id": "488105a2fc65fb1f",
@@ -143,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
+                "file": "security/index.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "software_middleware_service_mesh_istio_resource_definition_configmapのアウトライン"
+              "title": "indexのアウトライン"
             }
           }
         ],
@@ -157,7 +156,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -171,8 +170,23 @@
   },
   "active": "0023a13b051e254a",
   "lastOpenFiles": [
-    "software/software_middleware_service_mesh_istio_resource_definition_common.md",
+    "security/security_auth_authentication.md",
+    "security/security_auth_authentication_credentials_carrirer.md",
+    "security/security_auth_authentication_credentials_jwt.md",
+    "security/security_auth_authentication_credentials_store.md",
+    "security/security_auth_authentication_credentials.md",
+    "observability/observability_monitoring_tools_kiali.md",
+    "security/security_auth_authentication_http.md",
+    "security/security_auth_authentication_factor.md",
+    "security/security_auth_authentication_form.md",
+    "software/software_application_architecture_microservices_services_auth.md",
     "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
+    "0-2_まえがき.pdf",
+    "software/software_middleware_security_oauth2_proxy.md",
+    "software/software_middleware_security_oauth2_proxy_conf.md",
+    "software/software_middleware_service_mesh_envoy_telemetry.md",
+    "observability/observability_monitoring_tools_open_telemetry_client_package_trace.md",
+    "software/software_middleware_service_mesh_istio_resource_definition_common.md",
     "software/software_middleware_service_mesh_istio_sidecar_data_plane.md",
     "infrastructure_as_code/infrastructure_as_code_docker_practices.md",
     "infrastructure_as_code/infrastructure_as_code_kubernetes_command.md",
@@ -183,20 +197,6 @@
     "software/software_middleware_security_keycloak.md",
     "software/software_application_architecture_microservices_cloudnative.md",
     "virtualization/virtualization_container_docker_command.md",
-    "software/software_middleware_security_cert_manager_resource_definition.md",
-    "security/security_network_encryption_technology_packet_payload.md",
-    "software/software_application_architecture_microservices_services_auth.md",
-    "software/software_middleware_web_nginx.md",
-    "software/software_middleware_security_oauth2_proxy_conf.md",
-    "software/software_middleware_security_oauth2_proxy.md",
-    "security/security_auth_authentication_jwt.md",
-    "security/security_auth_sso_saml.md",
-    "security/security_auth_sso_oidc.md",
-    "security/security_auth_sso_oauth.md",
-    "cloud_computing/cloud_computing_aws_resource_certificate_manager.md",
-    "infrastructure_as_code/infrastructure_as_code_terraform_tf_module.md",
-    "security/security_network_encryption_technology_packet_payload_protocol.md",
-    "2025-05-10.md",
     "Untitled.canvas"
   ]
 }
