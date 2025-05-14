@@ -296,6 +296,23 @@ kubernetes-event-exporterの代わりに使用できる。
 
 <br>
 
+### systemd
+
+#### ▼ systemdプラグインとは
+
+systemdのログを収集する。
+
+```bash
+[INPUT]
+    Name systemd
+    Tag host.*
+    # kubeletのログを指定する
+    Systemd_Filter _SYSTEMD_UNIT=kubelet.service
+    Read_From_Tail On
+```
+
+<br>
+
 ### tailプラグイン
 
 #### ▼ tailプラグインとは
@@ -926,15 +943,7 @@ drwxr-xr-x. 11 root root     150  9月 13 20:42 ..
 
 ### OUTPUTから
 
-#### ▼ loki
-
-```bash
-[OUTPUT]
-  Name loki
-  Match kube.*
-  Host grafana-loki.grafana-loki.svc.cluster.local
-  Port 3100
-```
+記入中...
 
 <br>
 
@@ -1165,6 +1174,21 @@ kinesis_streamsプラグインがプリインストールされているベー�
 
 <br>
 
+### lokiプラグイン
+
+Grafana Lokiにログを送信する。
+
+```bash
+[OUTPUT]
+  Name loki
+  Match kube.*
+  # Grafana LokiのURLを指定する
+  Host grafana-loki.grafana-loki.svc.cluster.local
+  Port 3100
+```
+
+<br>
+
 ### newRelicプラグイン
 
 #### ▼ newRelicプラグインとは
@@ -1176,6 +1200,36 @@ kinesis_streamsプラグインがプリインストールされているベー�
 newRelicプラグインがプリインストールされているベースイメージを使用する。
 
 > - https://github.com/newrelic/newrelic-fluent-bit-output
+
+<br>
+
+### nullプラグイン
+
+#### ▼ nullプラグインとは
+
+アウトプットを破棄する。
+
+**＊実装例＊**
+
+```bash
+[OUTPUT]
+    Name   null
+    match  *
+```
+
+#### ▼ コマンド
+
+**＊例＊**
+
+```bash
+$ /fluent-bit/bin/fluent-bit \
+    -i <インプット名> \
+    -F stdout \
+    -m "*" \
+    -o null
+```
+
+> - https://docs.fluentbit.io/manual/pipeline/outputs/null
 
 <br>
 
@@ -1213,35 +1267,5 @@ stackdriverプラグインはビルトインプラグインである。
     Name   stdout
     match  *
 ```
-
-<br>
-
-### nullプラグイン
-
-#### ▼ nullプラグインとは
-
-アウトプットを破棄する。
-
-**＊実装例＊**
-
-```bash
-[OUTPUT]
-    Name   null
-    match  *
-```
-
-#### ▼ コマンド
-
-**＊例＊**
-
-```bash
-$ /fluent-bit/bin/fluent-bit \
-    -i <インプット名> \
-    -F stdout \
-    -m "*" \
-    -o null
-```
-
-> - https://docs.fluentbit.io/manual/pipeline/outputs/null
 
 <br>
