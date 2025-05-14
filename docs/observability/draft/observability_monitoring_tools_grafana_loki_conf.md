@@ -155,7 +155,7 @@ frontend_worker:
 
 **＊実装例＊**
 
-構造化の場合、フィールドの条件 (例：`{app="foo", namespace="foo"}`) を設定する。
+構造化の場合、メトリッククエリのフィールドの条件 (例：`{app="foo", namespace="foo"}`) を設定する。
 
 また、構造化ログ全体を検索し、`ERROR`という文字があった場合、アラートを作成する。
 
@@ -164,7 +164,7 @@ groups:
   - name: should_fire
     rules:
       - alert: HighPercentageError
-        # 5分あたりに5つ以上のエラーログが出る。
+        # 5分あたりに5つ以上のエラーログが出る
         expr: |
           count_over_time({app="foo", namespace="foo"} |= "ERROR" [5m]) > 5
         for: 1m

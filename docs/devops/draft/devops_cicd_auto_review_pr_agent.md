@@ -56,11 +56,11 @@ log_level="INFO"
 # ここにカスタムプロンプトを追加する
 # """
 
-# MRスコア算出を有効化する
+# PRスコア算出を有効化する
 require_score_review=true
 
-# 単一のMRで複数回実行した時のコメントの挙動を変更する
-# trueの場合は1つのMRコメントにまとめ、falseの場合は個別のMRコメントを投稿する
+# 単一のPRで複数回実行した時のコメントの挙動を変更する
+# trueの場合は1つのPRコメントにまとめ、falseの場合は個別のPRコメントを投稿する
 persistent_comment=true
 ```
 
@@ -76,8 +76,8 @@ persistent_comment=true
 # ここにカスタムプロンプトを追加する
 # """
 
-# 単一のMRで複数回実行した時のコメントの挙動を変更する
-# trueの場合は1つのMRコメントにまとめ、falseの場合は個別のMRコメントを投稿する。
+# 単一のPRで複数回実行した時のコメントの挙動を変更する
+# trueの場合は1つのPRコメントにまとめ、falseの場合は個別のPRコメントを投稿する。
 persistent_comment=true
 ```
 
