@@ -36,8 +36,12 @@ hide:
 
   > - ##### [︎認証](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication.html)
   > - ##### [︎HTTP認証](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_http.html)
-  > - ##### [︎Form認証](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_form.html)
-  > - ##### [JWT](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_jwt.html)
+  > - ##### <u>認証情報による分類</u>
+  >   > - ##### [認証情報による分類](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_credentials.html)
+  >   > - ##### [認証情報の運搬](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_credentials_carrier.html)
+  >   > - ##### [認証情報の保管](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_credentials_store.html)
+  >   > - ##### [JWT](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_credentials_jwt.html)
+  > - ##### [認証要素による分類](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_factor.html)
 
 - #### <u>認可</u>
 
