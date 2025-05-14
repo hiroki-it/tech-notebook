@@ -14366,7 +14366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication_form.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication_form.md" class="md-nav__link">
         
   
   
@@ -14389,7 +14389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication_jwt.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication_jwt.md" class="md-nav__link">
         
   
   
@@ -27472,7 +27472,7 @@
 <h2 id="01-02-sso">01-02. SSOパターン (独立パターン)<a class="headerlink" href="#01-02-sso" title="Permanent link">&para;</a></h2>
 <h3 id="sso">SSOパターンとは<a class="headerlink" href="#sso" title="Permanent link">&para;</a></h3>
 <p>『独立パターン』ともいう。</p>
-<p>認証サービスはトークンベースの認証情報を使用し、トークンを<code>Cookie</code>ヘッダーや<code>Authorization</code>ヘッダーで運搬する。</p>
+<p>認証サービスはトークンベース認証を使用し、トークンを<code>Cookie</code>ヘッダーや<code>Authorization</code>ヘッダーで運搬する。</p>
 <p>この認証サービスは、認証情報を永続化するためのDBを持ち、有効期限が切れればアクセストークンを無効化する。</p>
 <p>認証サービスが単一障害点になるというデメリットがある。</p>
 <blockquote>
@@ -27512,7 +27512,7 @@
 <h3 id="_4">セッションパターンとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>『集中パターン』ともいう。</p>
 <p>サーバー側に、セッションデータを作成する認証サービス (例：自前、Keycloakなど) を<code>1</code>個だけ配置し、認証処理 (ユーザーの識別、ユーザーの有効性の検証) を実行する。</p>
-<p>この認証サービスは、セッションベースの認証情報を使用し、セッションを<code>Cookie</code>ヘッダーで運搬する。</p>
+<p>この認証サービスは、セッションベース認証を使用し、セッションを<code>Cookie</code>ヘッダーで運搬する。</p>
 <p>セッションデータを再利用するために、ブラウザのCookieやセッションストレージツール (例：Redis) に保存する。</p>
 <p>(認証サービスだけでなく各マイクロサービスもセッションストレージツールに接続できるようにする必要があるらしいが、Keycloakではそんなことない)</p>
 <blockquote>
@@ -27525,7 +27525,7 @@
 <h3 id="_5">セッションパターンの仕組み<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>各マイクロサービスは、セッションデータに基づいてユーザーを認証する。</p>
 <p><code>1</code>個のセッション中の認証情報をマイクロサービス間で共有するために、セッションデータを保管できるストレージ (例：Infinispan、Redisなど) を<code>1</code>個だけ配置する。</p>
-<p>セッションベースの認証情報は、コンテナの相性が悪く、各マイクロサービスがセッションデータを持つ必要がある。</p>
+<p>セッションベース認証は、コンテナの相性が悪く、各マイクロサービスがセッションデータを持つ必要がある。</p>
 <p>そのため、SessionStorageが必要になるというデメリットがある。</p>
 <p><img alt="microservices_authentication_type_session" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_session.png" /></p>
 <blockquote>
@@ -27541,7 +27541,7 @@
 <h3 id="jwt">JWTパターンとは<a class="headerlink" href="#jwt" title="Permanent link">&para;</a></h3>
 <p>『分散パターン』ともいう。</p>
 <p>サーバー側に、JWTを作成する認証サービス (例：自前、Keycloakなど) を<code>1</code>個だけ配置し、認証処理 (ユーザーの識別、ユーザーの有効性の検証) を実行する。</p>
-<p>認証サービスはトークンベースの認証情報を使用し、トークンを<code>Cookie</code>ヘッダーや<code>Authorization</code>ヘッダーで運搬する。</p>
+<p>認証サービスはトークンベース認証を使用し、トークンを<code>Cookie</code>ヘッダーや<code>Authorization</code>ヘッダーで運搬する。</p>
 <p>トークンを再利用するために、ブラウザのCookie、SessionStorage、またはLocalStorageに保存する。</p>
 <blockquote>
 <ul>
@@ -27552,7 +27552,7 @@
 <h3 id="jwt_1">JWTパターンの仕組み<a class="headerlink" href="#jwt_1" title="Permanent link">&para;</a></h3>
 <p>各マイクロサービスは、JWTに基づいてユーザーを認証する。</p>
 <p><code>1</code>個のセッション中の認証情報をマイクロサービス間で共有するために、リクエスト−レスポンスのヘッダーにJWTを埋め込み、クライアントのフロントエンドアプリケーション側にJWTを保管させる。</p>
-<p>トークンベースの認証情報の場合に、コンテナの相性が良く、各マイクロサービスはJWTを持つ必要がない。</p>
+<p>トークンベース認証の場合に、コンテナの相性が良く、各マイクロサービスはJWTを持つ必要がない。</p>
 <p>クライアントのフロントエンドアプリケーション側に保管したJWTトークンの失効が難しいというデメリットがある。</p>
 <p>その解決策として、Opaqueトークンパターン (ゲートウェイ集中パターン) がある。</p>
 <p><img alt="microservices_authentication_type_jwt" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_jwt.png" /></p>
@@ -27570,7 +27570,7 @@
 <p>JWTパターンにAPIゲートウェイを組み合わせたパターンであり、JWTパターンでJWTトークンの失効が難しいというデメリットを解決する。</p>
 <p>サーバー側に、JWTを作成する認証サービス (例：自前、Keycloakなど) を<code>1</code>個だけ配置する。</p>
 <p>APIゲートウェイは、認証を集中的に管理し、認証とアクセストークン検証を担う。</p>
-<p>認証サービスはトークンベースの認証情報を使用し、API Gatewayを介して、非SSOで認証を実施する。</p>
+<p>認証サービスはトークンベース認証を使用し、API Gatewayを介して、非SSOで認証を実施する。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#jwt%2Bapi-gateway-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%AE%A1%E7%90%86">https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#jwt%2Bapi-gateway-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%AE%A1%E7%90%86</a></li>
@@ -27585,7 +27585,7 @@
 <p><code>1</code>個のセッション中の認証情報をマイクロサービス間で共有するために、リクエスト−レスポンスのヘッダーにJWTを埋め込む。</p>
 <p>クライアントのフロントエンドアプリケーション側にはJWTとペアになるOpaqueトークンを保管する。</p>
 <p>また、APIゲートウェイやロードバランサーで、OpaqueトークンとJWTトークンの間の相互変換を通信のたびに実行する。</p>
-<p>トークンベースの認証情報の場合に、コンテナの相性が良く、各マイクロサービスはOpaqueトークンを持つ必要がない。</p>
+<p>トークンベース認証の場合に、コンテナの相性が良く、各マイクロサービスはOpaqueトークンを持つ必要がない。</p>
 <p><img alt="microservices_authentication_type_opaque-token" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_opaque-token.png" /></p>
 <blockquote>
 <ul>
@@ -27682,7 +27682,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月12日 20:29:25">2025-05-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月14日 23:41:36">2025-05-14</span>
   </span>
 
     
