@@ -530,11 +530,11 @@ nav:
               - 認証: security/security_auth_authentication.md
               - HTTP認証: security/security_auth_authentication_http.md
               - ■ 認証情報による分類:
-                  - Form認証認証情報による分類: security/security_auth_authentication_credentials.md
+                  - 認証情報による分類: security/security_auth_authentication_credentials.md
                   - 認証情報の運搬: security/security_auth_authentication_credentials_carrier.md
                   - 認証情報の保管: security/security_auth_authentication_credentials_store.md
                   - JWT: security/security_auth_authentication_credentials_jwt.md
-              - HTTP認証認証要素による分類: security/security_auth_authentication_factor.md
+              - 認証要素による分類: security/security_auth_authentication_factor.md
           - ■ 認可:
               - 認可: security/security_auth_authorization.md
               - OpenPolicyAgent: security/security_auth_authorization_open_policy_agent.md
