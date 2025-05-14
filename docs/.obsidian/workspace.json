@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "security/index.md",
+                "file": "security/security_auth_authentication_credentials_store.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "security_auth_authentication_credentials_store"
             }
           }
         ]
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "security/index.md",
+                "file": "security/security_auth_authentication_credentials_store.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "indexのアウトライン"
+              "title": "security_auth_authentication_credentials_storeのアウトライン"
             }
           }
         ],
@@ -170,14 +170,18 @@
   },
   "active": "0023a13b051e254a",
   "lastOpenFiles": [
-    "security/security_auth_authentication.md",
-    "security/security_auth_authentication_credentials_carrirer.md",
     "security/security_auth_authentication_credentials_jwt.md",
-    "security/security_auth_authentication_credentials_store.md",
+    "security/security_auth_authentication_credentials_carrirer.md",
     "security/security_auth_authentication_credentials.md",
-    "observability/observability_monitoring_tools_kiali.md",
-    "security/security_auth_authentication_http.md",
+    "security/security_auth_authorization.md",
+    "security/security_auth_authentication.md",
     "security/security_auth_authentication_factor.md",
+    "security/security_auth_authentication_http.md",
+    "security/security_auth_authentication_credentials_store.md",
+    "security/index.md",
+    "observability/draft/observability_monitoring_tools_grafana_loki_logql.md",
+    "devops/draft/devops_cicd_auto_review_pr_agent.md",
+    "observability/observability_monitoring_tools_kiali.md",
     "security/security_auth_authentication_form.md",
     "software/software_application_architecture_microservices_services_auth.md",
     "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
@@ -193,10 +197,6 @@
     "software/software_middleware_service_mesh_istio.md",
     "software/software_middleware_service_mesh_istio_command.md",
     "software/software_middleware_service_mesh_istio_resource_definition.md",
-    "infrastructure_as_code/infrastructure_as_code_kubernetes_practices_resource.md",
-    "software/software_middleware_security_keycloak.md",
-    "software/software_application_architecture_microservices_cloudnative.md",
-    "virtualization/virtualization_container_docker_command.md",
     "Untitled.canvas"
   ]
 }
