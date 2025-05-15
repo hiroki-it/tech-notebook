@@ -10,19 +10,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="認可＠認証／認可の知見を記録しています。">
+        <meta name="description" content="OAuth＠SSOの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/security/security_auth_sso.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/security/security_auth_authorization_oauth.html">
       
       
-        <link rel="prev" href="security_auth_authorization_open_policy_agent.html">
+        <link rel="prev" href="security_auth_authorization.html">
       
       
-        <link rel="next" href="security_auth_sso_oauth.html">
+        <link rel="next" href="security_auth_authorization_provider_open_policy_agent.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -30,7 +30,7 @@
     
     
       
-        <title>【IT技術の知見】認可＠認証／認可 - 俺の技術ノート</title>
+        <title>【IT技術の知見】OAuth＠SSO - 俺の技術ノート</title>
       
     
     
@@ -94,7 +94,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#oauthsso" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -154,7 +154,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】認可＠認証／認可
+              【IT技術の知見】OAuth＠SSO
             
           </span>
         </div>
@@ -13871,8 +13871,6 @@
       
         
       
-        
-      
     
     
     
@@ -14023,6 +14021,8 @@
       
         
       
+        
+      
     
     
     
@@ -14151,6 +14151,134 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_12_4_1_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_12_4_1_3_5" id="__nav_12_4_1_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ■ SSO
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_12_4_1_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12_4_1_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            ■ SSO
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security_auth_authentication_credentials_sso.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSO
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security_auth_authentication_credentials_sso_saml.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SAML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security_auth_authentication_credentials_sso_oidc.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OIDC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -14194,8 +14322,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -14203,6 +14333,8 @@
       
         
       
+        
+      
     
     
     
@@ -14210,13 +14342,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_12_4_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_4_2" checked>
         
           
           <label class="md-nav__link" for="__nav_12_4_2" id="__nav_12_4_2_label" tabindex="0">
@@ -14232,7 +14362,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_12_4_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_12_4_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_12_4_2">
             <span class="md-nav__icon md-icon"></span>
             ■ 認可
@@ -14266,90 +14396,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="security_auth_authorization_open_policy_agent.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    OpenPolicyAgent
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_4_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_12_4_3" id="__nav_12_4_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    ■ SSO
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_12_4_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_12_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            ■ SSO
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
     
   
   
@@ -14367,7 +14413,7 @@
   
   
   <span class="md-ellipsis">
-    SSO
+    OAuth
     
   </span>
   
@@ -14375,12 +14421,12 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="security_auth_sso.html" class="md-nav__link md-nav__link--active">
+      <a href="security_auth_authorization_oauth.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    SSO
+    OAuth
     
   </span>
   
@@ -14405,7 +14451,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       はじめに
     </span>
@@ -14414,56 +14460,91 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-ssosingle-sign-on" class="md-nav__link">
+  <a href="#01-oauth" class="md-nav__link">
     <span class="md-ellipsis">
-      01. SSO：Single Sign On
+      01. OAuth
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. SSO：Single Sign On">
+    <nav class="md-nav" aria-label="01. OAuth">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sso" class="md-nav__link">
+  <a href="#oauth" class="md-nav__link">
     <span class="md-ellipsis">
-      SSOとは
+      OAuthとは
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#sso_1" class="md-nav__link">
+  <a href="#oauth_1" class="md-nav__link">
     <span class="md-ellipsis">
-      SSOの仕組み
+      OAuthの種類
     </span>
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      APIクライアント
+      02. トークンの検証
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="APIクライアント">
+    <nav class="md-nav" aria-label="02. トークンの検証">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#id" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ IDプロバイダーとの通信
+      アクセストークンの検証
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="アクセストークンの検証">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼JWT仕様の場合
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-oidc" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. OIDCとの違い
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. OIDCとの違い">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ステータスコードの選定
+      トークンの違い
     </span>
   </a>
   
@@ -14473,21 +14554,30 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#id_1" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      IDプロバイダー
+      04. 使用される認証スキーム
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="IDプロバイダー">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. 付与タイプ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05. 付与タイプ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#id_2" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ IDプロバイダーの種類
+      付与タイプの種類
     </span>
   </a>
   
@@ -14495,6 +14585,124 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    <span class="md-ellipsis">
+      06. 認可コードフロー
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06. 認可コードフロー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      認可コードフローとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 全体像
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssoweb" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ブラウザ ⇄ SSOでログインしたいWebサイト
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ブラウザ ⇄ 認証フェーズの委譲先のWebサイト
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssoweb-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ブラウザ ⇄ SSOでログインしたいWebサイト ⇄ 認証フェーズの委譲先のWebサイト
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    <span class="md-ellipsis">
+      07. 暗黙的フロー (インプリシットフロー)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="07. 暗黙的フロー (インプリシットフロー)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      暗黙的フローとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08" class="md-nav__link">
+    <span class="md-ellipsis">
+      08. リフレッシュトークンフロー
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="08. リフレッシュトークンフロー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      リフレッシュトークンフローとは
+    </span>
+  </a>
   
 </li>
         
@@ -14518,13 +14726,60 @@
   
   
   
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_12_4_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_12_4_2_3" id="__nav_12_4_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ■ プロバイダー
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_12_4_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12_4_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ プロバイダー
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="security_auth_sso_oauth.html" class="md-nav__link">
+      <a href="security_auth_authorization_provider_open_policy_agent.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    OAuth
+    OpenPolicyAgent
     
   </span>
   
@@ -14535,47 +14790,9 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="security_auth_sso_saml.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    SAML
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="security_auth_sso_oidc.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    OIDC
-    
-  </span>
-  
-
-      </a>
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -27048,7 +27265,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       はじめに
     </span>
@@ -27057,56 +27274,91 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-ssosingle-sign-on" class="md-nav__link">
+  <a href="#01-oauth" class="md-nav__link">
     <span class="md-ellipsis">
-      01. SSO：Single Sign On
+      01. OAuth
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. SSO：Single Sign On">
+    <nav class="md-nav" aria-label="01. OAuth">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sso" class="md-nav__link">
+  <a href="#oauth" class="md-nav__link">
     <span class="md-ellipsis">
-      SSOとは
+      OAuthとは
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#sso_1" class="md-nav__link">
+  <a href="#oauth_1" class="md-nav__link">
     <span class="md-ellipsis">
-      SSOの仕組み
+      OAuthの種類
     </span>
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      APIクライアント
+      02. トークンの検証
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="APIクライアント">
+    <nav class="md-nav" aria-label="02. トークンの検証">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#id" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ IDプロバイダーとの通信
+      アクセストークンの検証
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="アクセストークンの検証">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼JWT仕様の場合
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-oidc" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. OIDCとの違い
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. OIDCとの違い">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ステータスコードの選定
+      トークンの違い
     </span>
   </a>
   
@@ -27116,21 +27368,30 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#id_1" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      IDプロバイダー
+      04. 使用される認証スキーム
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="IDプロバイダー">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. 付与タイプ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05. 付与タイプ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#id_2" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ IDプロバイダーの種類
+      付与タイプの種類
     </span>
   </a>
   
@@ -27138,6 +27399,124 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    <span class="md-ellipsis">
+      06. 認可コードフロー
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06. 認可コードフロー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      認可コードフローとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 全体像
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssoweb" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ブラウザ ⇄ SSOでログインしたいWebサイト
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ブラウザ ⇄ 認証フェーズの委譲先のWebサイト
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssoweb-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ブラウザ ⇄ SSOでログインしたいWebサイト ⇄ 認証フェーズの委譲先のWebサイト
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    <span class="md-ellipsis">
+      07. 暗黙的フロー (インプリシットフロー)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="07. 暗黙的フロー (インプリシットフロー)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      暗黙的フローとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08" class="md-nav__link">
+    <span class="md-ellipsis">
+      08. リフレッシュトークンフロー
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="08. リフレッシュトークンフロー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      リフレッシュトークンフローとは
+    </span>
+  </a>
   
 </li>
         
@@ -27165,8 +27544,8 @@
   
 
 
-<h1 id="_1">認可＠認証／認可<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h1 id="oauthsso">OAuth＠SSO<a class="headerlink" href="#oauthsso" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -27174,94 +27553,417 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-ssosingle-sign-on">01. SSO：Single Sign On<a class="headerlink" href="#01-ssosingle-sign-on" title="Permanent link">&para;</a></h2>
-<h3 id="sso">SSOとは<a class="headerlink" href="#sso" title="Permanent link">&para;</a></h3>
-<p>Webサイトごとに認証フェーズと認可フェーズを行うのではなく、認証フェーズは他のWebサイトに統一的に委譲し、認可フェーズだけはWebサイトごとに実施する。</p>
-<p>セキュリティ強度の向上というよりは、利便性の向上のために使用することが多い。</p>
-<p>そのため別途、SSOと二要素認証などを組み合わせて、セキュリティ強度を向上させた方が良い。</p>
-<p>二要素認証とSSOを組み合わせる場合、認証フェーズの委譲先で二要素認証を追加することになる (例：GitHubアカウントを用いたSSO時に、ワンタイムパスワードの入力も要求される) 。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.idnetworks.co.jp/wP/2014/04/04/sso-with-2fa/">https://www.idnetworks.co.jp/wP/2014/04/04/sso-with-2fa/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="sso_1">SSOの仕組み<a class="headerlink" href="#sso_1" title="Permanent link">&para;</a></h3>
-<p><img alt="sso" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sso.jpg" /></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>APIクライアント (あるいは認証プロキシ) が、HTTPリクエストにIDとパスワードを設定し、IPプロバイダーにリクエストを送信する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
-<p>IDプロバイダーが、クライアントを『認証』し、クライアント側にトークン (例：アクセストークン、IDトークンなど) を発行する。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
-<p>クライアントが、HTTPリクエストのヘッダーにトークンを設定してリクエストする。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
-<p>トークンが『認可』されれば、API側がデータをレスポンスする。</p>
-</dd>
-</dl>
-<p>SSOには、認証フェーズと認可フェーズがあり、<code>3</code>個の役割が定義されている。</p>
+<h2 id="01-oauth">01. OAuth<a class="headerlink" href="#01-oauth" title="Permanent link">&para;</a></h2>
+<h3 id="oauth">OAuthとは<a class="headerlink" href="#oauth" title="Permanent link">&para;</a></h3>
+<p><img alt="oauth_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth_architecture.png" /></p>
+<p>SSOの一種であり、バージョンによって『OAuth 1.0』と『OAuth 2.0』がある。</p>
+<p>認証/認可フェーズ全体の中で、認可フェーズにOAuthプロトコルを使用したクライアントの照合方法を『OAuth』と呼ぶ。</p>
+<p>クライアントアプリで認証フェーズのみでログインし、連携先のアプリには認可フェーズのみでログインする。</p>
+<p>OAuthは認可フェーズのみで構成されているため、間違っても『OAuth認証』とは言わない。</p>
+<p>認証フェーズと認可フェーズでは、<code>3</code>個の役割が定義されていることを説明したが、OAuthでは、より具体的に<code>4</code>個の役割が定義されている。</p>
 <table>
 <thead>
 <tr>
-<th>役割</th>
+<th>要素</th>
+<th>フェーズ</th>
 <th>説明</th>
-<th>例</th>
+<th>補足</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>APIクライアント</td>
-<td>APIに対して、リクエストを送信したいサーバーのこと。</td>
-<td>Ouath認証の仕組みにおけるクライアント。</td>
+<td>クライアントアプリ</td>
+<td>認証</td>
+<td>連携元アカウントを提供するアプリケーションのこと。</td>
+<td>OAuthの文脈では、ブラウザがクライアントと呼ばれないことに注意する。また、クライアントアプリとリソース間のデータ通信は、ブラウザを経由したリダイレクトによって実装することに注意する。</td>
 </tr>
 <tr>
-<td>IDプロバイダー</td>
-<td>トークン (例：アクセストークン、IDトークンなど) を作成するサーバーのこと。</td>
-<td>Ouath認証の仕組みにおける認可サーバー。</td>
+<td>リソースオーナー</td>
+<td>認証</td>
+<td>クライアントアプリケーションを使用しているユーザーである。</td>
+<td></td>
 </tr>
 <tr>
-<td>APIサーバー</td>
-<td>クライアントに対して、リソースのレスポンスを返信するサーバーのこと。</td>
-<td>Ouath認証の仕組みにおけるリソースサーバー。</td>
+<td>認可サーバー</td>
+<td>認可</td>
+<td>リフレッシュトークンを含むアクセストークンを発行するサーバーのこと。</td>
+<td>認可サーバーがリダイレクト先のクライアントアプリケーションのURLをレスポンスに割り当てられるように、クライアントアプリケーションの開発者がURLを事前登録しておく必要がある。認可サーバーを利用する開発者用に、コンソール画面が用意されていることが多い。<br><a href="https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844">https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844</a></td>
+</tr>
+<tr>
+<td>リソースサーバー</td>
+<td>認可</td>
+<td>連携先アカウントを提供するサーバーのこと。</td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <blockquote>
 <ul>
-<li><a href="https://japan.zdnet.com/article/35126144/">https://japan.zdnet.com/article/35126144/</a></li>
+<li><a href="https://ssaits.jp/promapedia/technology/oauth.html">https://ssaits.jp/promapedia/technology/oauth.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="api">APIクライアント<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
-<h4 id="id">▼ IDプロバイダーとの通信<a class="headerlink" href="#id" title="Permanent link">&para;</a></h4>
-<p>APIクライアントは、IDプロバイダーに認証情報 (例：クライアントID、クライアントシークレットなど) を送信する必要がある。</p>
-<p>これらの認証情報はIDプロバイダーで事前に発行しておく。</p>
-<p>ただし、APIクライアントからIDプロバイダーにこれらを直接するする代わりに、認証プロキシ (例：OAuth2 Proxy、Dexなど) に送信しても良い。</p>
-<p>その場合、APIクライアントが認証プロキシにリクエストを送信した後、認証プロキシはIDプロバイダーからトークン (例：アクセストークン、IDトークンなど) を取得し、APIクライアントを認証する。</p>
-<h4 id="_3">▼ ステータスコードの選定<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>認証フェーズにて、誤ったトークン (例：アクセストークン、IDトークンなど) が発行されたことを表現したい場合、<code>401</code>ステータスを使用する。</p>
-<p>認可フェーズにて、正しいトークンが発行されたが、トークンの所有者に参照権限がないことを表現したい場合、<code>403</code>ステータスを使用する。</p>
+<h3 id="oauth_1">OAuthの種類<a class="headerlink" href="#oauth_1" title="Permanent link">&para;</a></h3>
+<p>OAuthには、仕組み別に『認可コードフロー』『暗黙的フロー』『リソースオーナー・パスワード・クレデンシャルズフロー (ダイレクト・アクセス・グラント) 』などがある。</p>
 <p><br></p>
-<h3 id="id_1">IDプロバイダー<a class="headerlink" href="#id_1" title="Permanent link">&para;</a></h3>
-<h4 id="id_2">▼ IDプロバイダーの種類<a class="headerlink" href="#id_2" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Auth0</li>
-<li>Facebook</li>
-<li>Keycloak</li>
-<li>AWS Cognito (代わりに認証プロキシとしても使用できる)</li>
-<li>Google Cloud Auth</li>
-</ul>
-<p><img alt="auth0_sso" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/auth0_sso.png" /></p>
+<h2 id="02">02. トークンの検証<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_2">アクセストークンの検証<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="jwt">▼JWT仕様の場合<a class="headerlink" href="#jwt" title="Permanent link">&para;</a></h4>
+<p>アクセストークンの情報 (署名部分、有効期限、発行元認証局など) から、アクセストークンの有効性を検証できる。</p>
 <blockquote>
 <ul>
-<li><a href="https://speakerdeck.com/lmi/ginzarails-vol35-presentation?slide=25">https://speakerdeck.com/lmi/ginzarails-vol35-presentation?slide=25</a></li>
+<li><a href="https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE">https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-oidc">03. OIDCとの違い<a class="headerlink" href="#03-oidc" title="Permanent link">&para;</a></h2>
+<h3 id="_3">トークンの違い<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>OIDCはOAuthの拡張であるため、仕組みは非常に似ている。</p>
+<p>OAuthでは、OIDCとは異なり、アクセストークン (JWT仕様かどうかはツール次第) のみを使用する。</p>
+<p>OAuthには脆弱性があるが、OIDCであればこれに対処できる。</p>
+<p><img alt="oidc_vs_oauth" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_vs_oauth.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe">https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe</a></li>
+<li><a href="https://dev.classmethod.jp/articles/auth0-access-token-id-token-difference/#toc-2">https://dev.classmethod.jp/articles/auth0-access-token-id-token-difference/#toc-2</a></li>
+<li><a href="https://zenn.dev/uma002/articles/152fcef798730b#%E3%81%AA%E3%81%9C%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%8C%E7%94%9F%E3%81%BE%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B">https://zenn.dev/uma002/articles/152fcef798730b#%E3%81%AA%E3%81%9C%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%8C%E7%94%9F%E3%81%BE%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="04">04. 使用される認証スキーム<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<p>OAuthでは、認証スキーマとしてBearer認証が選択されることが多く、AWSやGitHubは、独自の認証スキームを使用している。</p>
+<p>注意点として、認可サーバーによって発行されたBearerトークンは、<code>Authorization</code>ヘッダー、リクエストボディ、クエリパラメーターのいずれかに割り当てて送信できる。</p>
+<p><br></p>
+<h2 id="05">05. 付与タイプ<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="_4">付与タイプの種類<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>認可サーバーによるOAuthのアクセストークンの付与方法には種類がある。</p>
+<table>
+<thead>
+<tr>
+<th>付与タイプ名</th>
+<th>説明</th>
+<th>使用例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authorization Code Grant</td>
+<td>アプリケーションが他のAPIに接続する場合に使用する。推奨である。<br><a href="https://oauth.net/2/grant-types/authorization-code/">https://oauth.net/2/grant-types/authorization-code/</a></td>
+<td>他のSNSアプリとのアカウント連携</td>
+</tr>
+<tr>
+<td>Client Credentials Grant</td>
+<td>推奨である。<br><a href="https://oauth.net/2/grant-types/client-credentials/">https://oauth.net/2/grant-types/client-credentials/</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Device Code</td>
+<td>推奨である。<br><a href="https://oauth.net/2/grant-types/device-code/">https://oauth.net/2/grant-types/device-code/</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Implicit Grant</td>
+<td>非推奨である。<br><a href="https://oauth.net/2/grant-types/implicit/">https://oauth.net/2/grant-types/implicit/</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Password Grant</td>
+<td>ユーザー名とパスワードを照合し、アクセストークンを付与する。非推奨である。<br>・<a href="https://oauth.net/2/grant-types/password/">https://oauth.net/2/grant-types/password/</a><br>・<a href="https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant">https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant</a></td>
+<td>LaravelのPassword Grant Token機能は、Password Grantタイプを使用している。<br><a href="https://readouble.com/laravel/8.x/ja/passport.html#password-grant-tokens">https://readouble.com/laravel/8.x/ja/passport.html#password-grant-tokens</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://oauth.net/2/grant-types/">https://oauth.net/2/grant-types/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="06">06. 認可コードフロー<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<h3 id="_5">認可コードフローとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>リフレッシュトークンを含むアクセストークンを発行するために、短命な認可コードを発行する。</p>
+<p><img alt="oauth_authorization-code" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth_authorization-code.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://cloudentity.com/developers/basics/oauth-grant-types/authorization-code-flow/">https://cloudentity.com/developers/basics/oauth-grant-types/authorization-code-flow/</a></li>
+<li><a href="https://kb.authlete.com/ja/s/oauth-and-openid-connect/a/how-to-choose-the-appropriate-oauth-2-flow">https://kb.authlete.com/ja/s/oauth-and-openid-connect/a/how-to-choose-the-appropriate-oauth-2-flow</a></li>
+<li><a href="https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f">https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_6">例<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ 全体像<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>Facebookで認証フェーズのみでログインし、連携先の免許証作成サイトには認可フェーズのみでログインする。</p>
+<p>OIDCではなくOAuthのため、IDトークンではなく、リフレッシュトークンを含むアクセストークンであることに注意する。</p>
+<p><img alt="oauth_authorization-code_facebook" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth_authorization-code_facebook.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://contents.saitolab.org/oauth/">https://contents.saitolab.org/oauth/</a></li>
+</ul>
+</blockquote>
+<h4 id="ssoweb">▼ ブラウザ ⇄ SSOでログインしたいWebサイト<a class="headerlink" href="#ssoweb" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>ブラウザは、免許証作成サイトにログインしようとする。</p>
+<p>免許証作成サイトは、Facebookアカウントを使用するかどうかをレスポンスする。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>ブラウザは、Facebookアカウントを使用することをリクエストする。</p>
+<p>免許証作成サイトは、Facebookの認可サーバーの認可エンドポイントに、認可リクエストを送信する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="c1"># 認可エンドポイントに認可リクエストを送信する</span>
+<span class="l l-Scalar l-Scalar-Plain">GET https://www.facebook.com/auth?&lt;下表で説明&gt;</span>
+<span class="nn">---</span>
+<span class="nt">HOST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">authorization-server.com</span><span class="w"> </span><span class="c1"># 認可サーバーのホスト</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>クエリストリングの種類</th>
+<th>値</th>
+<th>例</th>
+<th>認可リクエスト時に必須/任意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>response_type</code></td>
+<td>認可レスポンスの種類</td>
+<td><code>code</code> (認可コードフローの場合)</td>
+<td>必須</td>
+</tr>
+<tr>
+<td><code>client_id</code></td>
+<td>クライアントID</td>
+<td><code>foo-client</code></td>
+<td>必須</td>
+</tr>
+<tr>
+<td><code>redirect_uri</code></td>
+<td>リダイレクトURL</td>
+<td><code>https://example.com/callback</code></td>
+<td>条件により必須</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>任意の文字列</td>
+<td></td>
+<td>推奨</td>
+</tr>
+<tr>
+<td><code>scope</code></td>
+<td>クレームグループ</td>
+<td><code>openid profile email</code></td>
+<td>任意</td>
+</tr>
+<tr>
+<td><code>code_challenge</code></td>
+<td>チャレンジ</td>
+<td></td>
+<td>任意</td>
+</tr>
+<tr>
+<td><code>code_challege_method</code></td>
+<td>メソッド</td>
+<td></td>
+<td>任意</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#11-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88">https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#11-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88</a></li>
+</ul>
+</blockquote>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p>ブラウザにアカウント連携画面 (認可画面) をレスポンスする。</p>
+</dd>
+</dl>
+<h4 id="web">▼ ブラウザ ⇄ 認証フェーズの委譲先のWebサイト<a class="headerlink" href="#web" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(4)</code></dt>
+<dd>
+<p>ブラウザで、アカウント連携画面 (認可画面) に情報を入力し、Facebookに送信する。</p>
+</dd>
+<dt><code>(5)</code></dt>
+<dd>
+<p>Facebookの認可サーバーは、短命な認可コードを発行する。</p>
+<p><code>Location</code>ヘッダーにリダイレクト先のURL (免許証作成サイトURL) とパラメーターを割り当て、認可レスポンスをブラウザに送信する。</p>
+<p>認可レスポンスにより、リダイレクトが起こる。</p>
+<p>リダイレクト先として指定するURLは、『コールバックURL』ともいう。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">302 Found</span>
+<span class="nn">---</span>
+<span class="nt">Location</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.免許証作成サイト.com/callback?code=&lt;認可コード&gt;&amp;state=&lt;任意の文字列&gt;</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>クエリストリングのキーの種類</th>
+<th>値</th>
+<th>例</th>
+<th>必須/任意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td>認可コード</td>
+<td></td>
+<td>必須</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>任意の文字列</td>
+<td></td>
+<td>認可リクエストのクエリストリングで、<code>state</code>キーが使用されていれば必須</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#12-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9">https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#12-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9</a></li>
+</ul>
+</blockquote>
+<h4 id="ssoweb-web">▼ ブラウザ ⇄ SSOでログインしたいWebサイト ⇄ 認証フェーズの委譲先のWebサイト<a class="headerlink" href="#ssoweb-web" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(6)</code></dt>
+<dd>
+<p>ブラウザでリダイレクトが発生し、免許証作成サイトに短命な認可コードを送信する。</p>
+</dd>
+<dt><code>(7)</code></dt>
+<dd>
+<p>免許証作成サイトは、Facebookの認可サーバーのトークンエンドポイントにトークンリクエストを送信する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="c1"># トークンエンドポイントにトークンリクエストを送信する</span>
+<span class="l l-Scalar l-Scalar-Plain">POST https://www.facebook.com/auth?</span>
+<span class="nn">---</span>
+<span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">authorization-server.com</span><span class="w"> </span><span class="c1"># 認可サーバーのホスト</span>
+<span class="nt">Content-Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/x-www-form-urlencoded</span>
+<span class="nn">---</span>
+<span class="c1"># ボディ</span>
+<span class="c1"># 下表で説明</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>ボディのキーの種類</th>
+<th>値</th>
+<th>例</th>
+<th>トークンリクエスト時に必須/任意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>grant_type</code></td>
+<td>認証方法の種類</td>
+<td><code>authorization_code</code></td>
+<td>必須</td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td>認可コード</td>
+<td><code>*****</code></td>
+<td>必須</td>
+</tr>
+<tr>
+<td><code>redirect_uri</code></td>
+<td>リダイレクトURL</td>
+<td><code>https://example.com/callback</code></td>
+<td>認可リクエストのクエリストリングで、<code>redirect_uri</code>キーが使用されていれば、必須である。</td>
+</tr>
+<tr>
+<td><code>code_verifier</code></td>
+<td>ベリファイア</td>
+<td></td>
+<td>認可リクエストのクエリストリングで、<code>code_verifier</code>キーが使用されていれば、必須である。</td>
+</tr>
+<tr>
+<td><code>client_id</code></td>
+<td>クライアントID</td>
+<td><code>foo-client</code></td>
+<td>条件により必須</td>
+</tr>
+<tr>
+<td><code>client_secret</code></td>
+<td>クライアントシークレット</td>
+<td><code>*****</code></td>
+<td>条件により必須</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#13-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88">https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#13-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88</a></li>
+</ul>
+</blockquote>
+<dl>
+<dt><code>(8)</code></dt>
+<dd>
+<p>Facebookの認可サーバーは、アクセストークンを含むトークンレスポンスを免許証作成サイトに返信する。</p>
+</dd>
+<dt><code>(9)</code></dt>
+<dd>
+<p>免許証作成サイトはアクセストークンを受信し、Facebookの認可サーバーにアクセストークンを再度送信する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">HTTP/1.1 200 OK</span>
+<span class="nn">---</span>
+<span class="c1"># ヘッダー</span>
+<span class="nt">Content-Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/json;charset=UTF-8</span>
+<span class="nt">Cache-Control</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no-store</span>
+<span class="nt">Pragma</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no-cache</span>
+<span class="nn">---</span>
+<span class="c1"># ボディ</span>
+<span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;access_token&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;アクセストークン&gt;&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># 必須</span>
+<span class="w">  </span><span class="s">&quot;token_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv"> </span><span class="s">&lt;トークンタイプ&gt;&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># 必須</span>
+<span class="w">  </span><span class="s">&quot;expires_in&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">&lt;失効秒数&gt;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># 任意</span>
+<span class="w">  </span><span class="s">&quot;refresh_token&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;リフレッシュトークン&gt;&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># 任意</span>
+<span class="w">  </span><span class="s">&quot;scope&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;認可スコープ&gt;&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># 要求したスコープ群と差異があれば必須</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#14-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9">https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#14-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9</a></li>
+</ul>
+</blockquote>
+<dl>
+<dt><code>(10)</code></dt>
+<dd>
+<p>Facebookは認証を完了させ、Facebookの認証情報を送信する。</p>
+</dd>
+<dt><code>(11)</code></dt>
+<dd>
+<p>免許証作成サイトは認可を実施し、Facebookの認証情報の権限に応じた処理をクライアントに提供する。</p>
+</dd>
+</dl>
+<p><br></p>
+<h2 id="07">07. 暗黙的フロー (インプリシットフロー)<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
+<h3 id="_8">暗黙的フローとは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>アクセストークンを直接的に発行する。</p>
+<p>また、リフレッシュトークンを発行しない。</p>
+<blockquote>
+<ul>
+<li><a href="https://cloudentity.com/developers/basics/oauth-grant-types/implicit-flow/">https://cloudentity.com/developers/basics/oauth-grant-types/implicit-flow/</a></li>
+<li><a href="https://www.authlete.com/ja/kb/oauth-and-openid-connect/grant-type/how-to-choose-the-appropriate-oauth-2-flow/">https://www.authlete.com/ja/kb/oauth-and-openid-connect/grant-type/how-to-choose-the-appropriate-oauth-2-flow/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="08">08. リフレッシュトークンフロー<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
+<h3 id="_9">リフレッシュトークンフローとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>アクセストークンの失効期限をリフレッシュトークンで管理する方法である。</p>
+<blockquote>
+<ul>
+<li><a href="https://cloudentity.com/developers/basics/oauth-grant-types/refresh-token-flow/">https://cloudentity.com/developers/basics/oauth-grant-types/refresh-token-flow/</a></li>
+<li><a href="https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#1-oauth-20-rfc-6749">https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#1-oauth-20-rfc-6749</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -27285,7 +27987,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月11日 21:18:39">2025-03-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月15日 13:53:36">2025-05-15</span>
   </span>
 
     
