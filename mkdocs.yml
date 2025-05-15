@@ -542,7 +542,7 @@ nav:
           - ■ 認可:
               - 認可: security/security_auth_authorization.md
               - OAuth: security/security_auth_authorization_oauth.md
-              - ■ プロバイダー:
+              - ■ 認可プロバイダー:
                   - OpenPolicyAgent: security/security_auth_authorization_provider_open_policy_agent.md
 
   - ⛅️ 3大クラウド:
