@@ -520,7 +520,6 @@ nav:
       - ■ ネットワークセキュリティ:
           - ネットワークセキュリティ: security/security_network.md
           - ■ アプリケーションデータの暗号化技術:
-              - アプリケーションデータの暗号化技術: security/security_network_encryption_technology_packet_payload.md
               - 暗号方式: security/security_network_encryption_technology_packet_payload_method.md
               - 暗号化プロトコル: security/security_network_encryption_technology_packet_payload_protocol.md
           - ■ 保管データの暗号化技術:
@@ -538,6 +537,7 @@ nav:
                       - SSO: security/security_auth_authentication_credentials_sso.md
                       - SAML: security/security_auth_authentication_credentials_sso_saml.md
                       - OIDC: security/security_auth_authentication_credentials_sso_oidc.md
+                  - 証明書ベース認証: security/security_auth_authentication_credentials_certificate.md
               - 認証要素による分類: security/security_auth_authentication_factor.md
           - ■ 認可:
               - 認可: security/security_auth_authorization.md
