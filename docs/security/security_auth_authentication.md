@@ -56,28 +56,4 @@ IDプロバイダーのクライアントのIDを表す。
 
 <br>
 
-## 03. ログアウト
-
-### `Cookie`ヘッダーによる運搬の場合
-
-#### ▼ ブラウザを閉じたタイミング
-
-ブラウザを閉じた時に、ブラウザはCookieを削除する。
-
-そのため、ログアウトが起こる。
-
-> - https://qiita.com/kandalog/items/80d7574e6bd00afd5150
-
-#### ▼ レスポンスの`Expires`ヘッダーで設定されたタイミング
-
-レスポンスの`Expires`ヘッダーにはCookieの有効期限を設定できる。
-
-ブラウザは有効期限に応じてCookieを削除する。
-
-そのため、ログアウトが起こる。
-
-有効期限がない場合、`Expires`ヘッダーの値は`Session`となり、このCookieを特に『Session Cookie』という。
-
-> - https://qiita.com/kandalog/items/80d7574e6bd00afd5150
-
 <br>
