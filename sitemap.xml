@@ -1661,6 +1661,10 @@
          <lastmod>2025-05-15</lastmod>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_credentials_certificate.html</loc>
+         <lastmod>2025-05-15</lastmod>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_credentials_jwt.html</loc>
          <lastmod>2025-05-15</lastmod>
     </url>
@@ -1710,10 +1714,6 @@
     </url>
     <url>
          <loc>https://hiroki-it.github.io/tech-notebook/security/security_network.html</loc>
-         <lastmod>2025-05-15</lastmod>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/security/security_network_encryption_technology_packet_payload.html</loc>
          <lastmod>2025-05-15</lastmod>
     </url>
     <url>
