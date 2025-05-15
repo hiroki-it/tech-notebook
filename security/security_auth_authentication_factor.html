@@ -14355,22 +14355,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-form" class="md-nav__link">
+  <a href="#01-tsvtwo-step-verification" class="md-nav__link">
     <span class="md-ellipsis">
-      01. Form認証
+      01. TSV：Two Step Verification (二段階認証)
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-tsvtwo-step-verification" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. TSV：Two Step Verification (二段階認証)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. TSV：Two Step Verification (二段階認証)">
+    <nav class="md-nav" aria-label="01. TSV：Two Step Verification (二段階認証)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -14388,13 +14379,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-tfatwo-factor-authorization" class="md-nav__link">
+  <a href="#02-tfatwo-factor-authorization" class="md-nav__link">
     <span class="md-ellipsis">
-      03. TFA：Two Factor Authorization (二要素認証)
+      02. TFA：Two Factor Authorization (二要素認証)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. TFA：Two Factor Authorization (二要素認証)">
+    <nav class="md-nav" aria-label="02. TFA：Two Factor Authorization (二要素認証)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -14412,13 +14403,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-mfamultiple-factor-authorization" class="md-nav__link">
+  <a href="#03-mfamultiple-factor-authorization" class="md-nav__link">
     <span class="md-ellipsis">
-      04. MFA：Multiple Factor Authorization (多要素認証)
+      03. MFA：Multiple Factor Authorization (多要素認証)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. MFA：Multiple Factor Authorization (多要素認証)">
+    <nav class="md-nav" aria-label="03. MFA：Multiple Factor Authorization (多要素認証)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -27103,22 +27094,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-form" class="md-nav__link">
+  <a href="#01-tsvtwo-step-verification" class="md-nav__link">
     <span class="md-ellipsis">
-      01. Form認証
+      01. TSV：Two Step Verification (二段階認証)
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-tsvtwo-step-verification" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. TSV：Two Step Verification (二段階認証)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. TSV：Two Step Verification (二段階認証)">
+    <nav class="md-nav" aria-label="01. TSV：Two Step Verification (二段階認証)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -27136,13 +27118,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-tfatwo-factor-authorization" class="md-nav__link">
+  <a href="#02-tfatwo-factor-authorization" class="md-nav__link">
     <span class="md-ellipsis">
-      03. TFA：Two Factor Authorization (二要素認証)
+      02. TFA：Two Factor Authorization (二要素認証)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. TFA：Two Factor Authorization (二要素認証)">
+    <nav class="md-nav" aria-label="02. TFA：Two Factor Authorization (二要素認証)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -27160,13 +27142,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-mfamultiple-factor-authorization" class="md-nav__link">
+  <a href="#03-mfamultiple-factor-authorization" class="md-nav__link">
     <span class="md-ellipsis">
-      04. MFA：Multiple Factor Authorization (多要素認証)
+      03. MFA：Multiple Factor Authorization (多要素認証)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. MFA：Multiple Factor Authorization (多要素認証)">
+    <nav class="md-nav" aria-label="03. MFA：Multiple Factor Authorization (多要素認証)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -27210,21 +27192,8 @@
 <li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
 </ul>
 </blockquote>
-<h2 id="01-form">01. Form認証<a class="headerlink" href="#01-form" title="Permanent link">&para;</a></h2>
-<p>セッションベース認証、かつ<code>Cookie</code>ヘッダーによる運搬の認証スキームのこと。</p>
-<p>トークン (IDトークン、アクセストークン) を使用する場合、<code>Cookie</code>ヘッダーによる運搬であっても、Form認証とは言わない。</p>
-<p>ステートフル化を行うため、HTTP認証には所属していない。</p>
-<p>認証情報の一時的な保管は、サーバーのセッションデータで行うため、認証解除 (ログアウト) をサーバー側で制御できる。</p>
-<p><code>Cookie</code>ヘッダーによる送受信では、CSRFの危険性がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf">https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf</a></li>
-<li><a href="https://auth0.com/docs/sessions/cookies#cookie-based-authentication">https://auth0.com/docs/sessions/cookies#cookie-based-authentication</a></li>
-<li><a href="https://qiita.com/toshiya/items/e7dcc7610b15884b167e#%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%81%AB%E3%82%88%E3%82%8B%E8%AA%8D%E8%A8%BC">https://qiita.com/toshiya/items/e7dcc7610b15884b167e#%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%81%AB%E3%82%88%E3%82%8B%E8%AA%8D%E8%A8%BC</a></li>
-</ul>
-</blockquote>
 <p><br></p>
-<h2 id="02-tsvtwo-step-verification">02. TSV：Two Step Verification (二段階認証)<a class="headerlink" href="#02-tsvtwo-step-verification" title="Permanent link">&para;</a></h2>
+<h2 id="01-tsvtwo-step-verification">01. TSV：Two Step Verification (二段階認証)<a class="headerlink" href="#01-tsvtwo-step-verification" title="Permanent link">&para;</a></h2>
 <h3 id="_3">二段階認証とは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p><code>2</code>個の認証方法を設定し、クライアントを照合する。</p>
 <table>
@@ -27264,7 +27233,7 @@
 </tbody>
 </table>
 <p><br></p>
-<h2 id="03-tfatwo-factor-authorization">03. TFA：Two Factor Authorization (二要素認証)<a class="headerlink" href="#03-tfatwo-factor-authorization" title="Permanent link">&para;</a></h2>
+<h2 id="02-tfatwo-factor-authorization">02. TFA：Two Factor Authorization (二要素認証)<a class="headerlink" href="#02-tfatwo-factor-authorization" title="Permanent link">&para;</a></h2>
 <h3 id="_4">二要素認証とは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>二段階認証のうちで特に、認証時に異なる要素の方法を使用して、段階的にクライアントを照合すること方法のこと。</p>
 <table>
@@ -27311,7 +27280,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04-mfamultiple-factor-authorization">04. MFA：Multiple Factor Authorization (多要素認証)<a class="headerlink" href="#04-mfamultiple-factor-authorization" title="Permanent link">&para;</a></h2>
+<h2 id="03-mfamultiple-factor-authorization">03. MFA：Multiple Factor Authorization (多要素認証)<a class="headerlink" href="#03-mfamultiple-factor-authorization" title="Permanent link">&para;</a></h2>
 <h3 id="_5">多要素認証とは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <p><br></p>
@@ -27335,7 +27304,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月14日 23:55:15">2025-05-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月15日 14:18:03">2025-05-15</span>
   </span>
 
     
