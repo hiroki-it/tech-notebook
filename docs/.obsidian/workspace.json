@@ -15,7 +15,7 @@
               "state": {
                 "file": "security/security_auth_authentication_credentials_certificate.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
               "title": "security_auth_authentication_credentials_certificate"
@@ -168,7 +168,7 @@
       "command-palette:コマンドパレットを開く": false
     }
   },
-  "active": "a85a35cc6df77bd4",
+  "active": "0023a13b051e254a",
   "lastOpenFiles": [
     "security/security_auth_authentication_credentials_jwt.md",
     "security/security_auth_authentication_credentials_certificate.md",
