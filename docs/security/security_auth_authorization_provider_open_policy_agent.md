@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】OpenPolicyAgent＠認可
-description: OpenPolicyAgent＠認可の知見を記録しています。
+title: 【IT技術の知見】OpenPolicyAgent＠認可プロバイダー
+description: OpenPolicyAgent＠認可プロバイダーの知見を記録しています。
 ---
 
-# OpenPolicyAgent＠認可
+# OpenPolicyAgent＠認可プロバイダー
 
 ## はじめに
 

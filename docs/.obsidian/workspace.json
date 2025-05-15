@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "security/security_auth_authentication_credentials_store.md",
+                "file": "security/security_auth_authorization_provider_open_policy_agent.md",
                 "mode": "source",
-                "source": true
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "security_auth_authentication_credentials_store"
+              "title": "security_auth_authorization_provider_open_policy_agent"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 344.5
+    "width": 350.5
   },
   "right": {
     "id": "488105a2fc65fb1f",
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "security/security_auth_authentication_credentials_store.md",
+                "file": "security/security_auth_authorization_provider_open_policy_agent.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "security_auth_authentication_credentials_storeのアウトライン"
+              "title": "security_auth_authorization_provider_open_policy_agentのアウトライン"
             }
           }
         ],
@@ -170,14 +170,22 @@
   },
   "active": "0023a13b051e254a",
   "lastOpenFiles": [
-    "security/security_auth_authentication_credentials_jwt.md",
-    "security/security_auth_authentication_credentials_carrirer.md",
-    "security/security_auth_authentication_credentials.md",
-    "security/security_auth_authorization.md",
-    "security/security_auth_authentication.md",
-    "security/security_auth_authentication_factor.md",
-    "security/security_auth_authentication_http.md",
+    "security/security_auth_authorization_oauth.md",
     "security/security_auth_authentication_credentials_store.md",
+    "security/security_auth_authentication_credentials_sso.md",
+    "security/security_auth_authentication_credentials_sso_saml.md",
+    "security/security_auth_authentication_credentials_sso_oidc.md",
+    "security/security_auth_sso.md",
+    "security/security_auth_authorization_provider_open_policy_agent.md",
+    "security/security_auth_sso_oauth.md",
+    "security/security_auth_authorization.md",
+    "security/security_auth_authentication_credentials_carrier.md",
+    "security/security_auth_authentication_credentials_carrirer.md",
+    "security/security_auth_authentication_factor.md",
+    "security/security_auth_authentication_credentials_jwt.md",
+    "security/security_auth_authentication_credentials.md",
+    "security/security_auth_authentication.md",
+    "security/security_auth_authentication_http.md",
     "security/index.md",
     "observability/draft/observability_monitoring_tools_grafana_loki_logql.md",
     "devops/draft/devops_cicd_auto_review_pr_agent.md",
@@ -189,14 +197,6 @@
     "software/software_middleware_security_oauth2_proxy.md",
     "software/software_middleware_security_oauth2_proxy_conf.md",
     "software/software_middleware_service_mesh_envoy_telemetry.md",
-    "observability/observability_monitoring_tools_open_telemetry_client_package_trace.md",
-    "software/software_middleware_service_mesh_istio_resource_definition_common.md",
-    "software/software_middleware_service_mesh_istio_sidecar_data_plane.md",
-    "infrastructure_as_code/infrastructure_as_code_docker_practices.md",
-    "infrastructure_as_code/infrastructure_as_code_kubernetes_command.md",
-    "software/software_middleware_service_mesh_istio.md",
-    "software/software_middleware_service_mesh_istio_command.md",
-    "software/software_middleware_service_mesh_istio_resource_definition.md",
     "Untitled.canvas"
   ]
 }

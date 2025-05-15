@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】OAuth＠SSO
-description: OAuth＠SSOの知見を記録しています。
+title: 【IT技術の知見】OAuth＠認可
+description: OAuth＠認可の知見を記録しています。
 ---
 
-# OAuth＠SSO
+# OAuth＠認可
 
 ## はじめに
 
