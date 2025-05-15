@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 216.5
   },
   "right": {
     "id": "488105a2fc65fb1f",
@@ -168,7 +168,7 @@
       "command-palette:コマンドパレットを開く": false
     }
   },
-  "active": "0023a13b051e254a",
+  "active": "a85a35cc6df77bd4",
   "lastOpenFiles": [
     "security/security_auth_authentication.md",
     "security/security_auth_authentication_credentials.md",

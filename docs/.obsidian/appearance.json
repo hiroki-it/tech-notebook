@@ -1,4 +1,5 @@
 {
-  "baseFontSize": 13,
-  "accentColor": "#ff2e2e"
+  "baseFontSize": 15,
+  "accentColor": "#ff2e2e",
+  "cssTheme": ""
 }
