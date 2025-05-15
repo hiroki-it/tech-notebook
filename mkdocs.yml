@@ -534,15 +534,16 @@ nav:
                   - 認証情報の運搬: security/security_auth_authentication_credentials_carrier.md
                   - 認証情報の保管: security/security_auth_authentication_credentials_store.md
                   - JWT: security/security_auth_authentication_credentials_jwt.md
+                  - ■ SSO:
+                      - SSO: security/security_auth_authentication_credentials_sso.md
+                      - SAML: security/security_auth_authentication_credentials_sso_saml.md
+                      - OIDC: security/security_auth_authentication_credentials_sso_oidc.md
               - 認証要素による分類: security/security_auth_authentication_factor.md
           - ■ 認可:
               - 認可: security/security_auth_authorization.md
-              - OpenPolicyAgent: security/security_auth_authorization_open_policy_agent.md
-          - ■ SSO:
-              - SSO: security/security_auth_sso.md
-              - OAuth: security/security_auth_sso_oauth.md
-              - SAML: security/security_auth_sso_saml.md
-              - OIDC: security/security_auth_sso_oidc.md
+              - OAuth: security/security_auth_authorization_oauth.md
+              - ■ プロバイダー:
+                  - OpenPolicyAgent: security/security_auth_authorization_provider_open_policy_agent.md
 
   - ⛅️ 3大クラウド:
       - cloud_computing/index.md
