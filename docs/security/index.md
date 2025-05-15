@@ -21,7 +21,6 @@ hide:
 
 - #### <u>︎アプリケーションデータの暗号化技術</u>
 
-  > - ##### [︎アプリケーションデータの暗号化技術](https://hiroki-it.github.io/tech-notebook/security/security_network_encryption_technology_packet_payload.html)
   > - ##### [︎暗号方式](https://hiroki-it.github.io/tech-notebook/security/security_network_encryption_technology_packet_payload_method.html)
   > - ##### [︎暗号化プロトコル](https://hiroki-it.github.io/tech-notebook/security/security_network_encryption_technology_packet_payload_protocol.html)
 
@@ -46,6 +45,7 @@ hide:
   >   >   > - ##### [OAuth](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_credentials_sso_oauth.html)
   >   >   > - ##### [SAML](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_credentials_sso_saml.html)
   >   >   > - ##### [OIDC](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_credentials_sso_oidc.html)
+  >   > - ##### [証明書ベース認証](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_credentials_certificate.html)
   > - ##### [認証要素による分類](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_factor.html)
 
 - #### <u>認可</u>

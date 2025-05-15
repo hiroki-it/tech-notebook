@@ -424,8 +424,6 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 
 <br>
 
-<br>
-
 ## 04. 証明書ベース認証
 
 クライアント認証、サーバー認証、相互TLS認証の仕組みの中で使用する。

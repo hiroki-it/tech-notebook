@@ -48,6 +48,16 @@ description: 認証要素による分類＠認証の知見を記録していま�
 
 <br>
 
+### 生体認証
+
+記入中...
+
+![生体認証-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/生体認証-1.png)
+
+![生体認証-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/生体認証-2.png)
+
+<br>
+
 ## 03. MFA：Multiple Factor Authorization (多要素認証)
 
 ### 多要素認証とは
