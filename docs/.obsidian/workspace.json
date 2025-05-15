@@ -170,13 +170,14 @@
   },
   "active": "0023a13b051e254a",
   "lastOpenFiles": [
+    "security/security_network_encryption_technology_packet_payload.md",
+    "security/security_network_encryption_technology_packet_payload_method.md",
+    "security/security_auth_authentication_credentials.md",
     "security/security_auth_authentication_credentials_carrier.md",
     "security/security_auth_authentication_credentials_jwt.md",
     "security/security_auth_authentication_credentials_sso.md",
     "security/security_auth_authentication_factor.md",
     "security/security_auth_authorization_oauth.md",
-    "security/security_network_encryption_technology_packet_payload.md",
-    "security/security_auth_authentication_credentials.md",
     "security/security_auth_authentication_credentials_sso_oidc.md",
     "security/security_auth_authentication_credentials_sso_saml.md",
     "security/security_auth_authentication_credentials_store.md",
@@ -196,7 +197,6 @@
     "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
     "0-2_まえがき.pdf",
     "software/software_middleware_security_oauth2_proxy.md",
-    "software/software_middleware_security_oauth2_proxy_conf.md",
     "Untitled.canvas"
   ]
 }
