@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "トークンベースの",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": false,
@@ -74,7 +74,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -168,7 +169,7 @@
       "command-palette:コマンドパレットを開く": false
     }
   },
-  "active": "0023a13b051e254a",
+  "active": "13b82501632b7954",
   "lastOpenFiles": [
     "security/security_auth_authentication_credentials_jwt.md",
     "security/security_auth_authentication_credentials_certificate.md",
