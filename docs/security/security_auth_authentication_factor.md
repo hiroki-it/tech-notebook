@@ -11,25 +11,9 @@ description: 認証要素による分類＠認証の知見を記録していま�
 
 > - https://hiroki-it.github.io/tech-notebook/
 
-## 01. Form認証
-
-セッションベース認証、かつ`Cookie`ヘッダーによる運搬の認証スキームのこと。
-
-トークン (IDトークン、アクセストークン) を使用する場合、`Cookie`ヘッダーによる運搬であっても、Form認証とは言わない。
-
-ステートフル化を行うため、HTTP認証には所属していない。
-
-認証情報の一時的な保管は、サーバーのセッションデータで行うため、認証解除 (ログアウト) をサーバー側で制御できる。
-
-`Cookie`ヘッダーによる送受信では、CSRFの危険性がある。
-
-> - https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf
-> - https://auth0.com/docs/sessions/cookies#cookie-based-authentication
-> - https://qiita.com/toshiya/items/e7dcc7610b15884b167e#%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%81%AB%E3%82%88%E3%82%8B%E8%AA%8D%E8%A8%BC
-
 <br>
 
-## 02. TSV：Two Step Verification (二段階認証)
+## 01. TSV：Two Step Verification (二段階認証)
 
 ### 二段階認証とは
 
@@ -44,7 +28,7 @@ description: 認証要素による分類＠認証の知見を記録していま�
 
 <br>
 
-## 03. TFA：Two Factor Authorization (二要素認証)
+## 02. TFA：Two Factor Authorization (二要素認証)
 
 ### 二要素認証とは
 
@@ -64,7 +48,7 @@ description: 認証要素による分類＠認証の知見を記録していま�
 
 <br>
 
-## 04. MFA：Multiple Factor Authorization (多要素認証)
+## 03. MFA：Multiple Factor Authorization (多要素認証)
 
 ### 多要素認証とは
 
