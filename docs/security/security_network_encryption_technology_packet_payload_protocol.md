@@ -59,13 +59,13 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 #### ▼ S/MINEとは
 
-暗号化ダイジェスト (デジタル署名) を含むデジタル証明書をメールに添付することによって、公開鍵の成りすましを防ぐセキュリティ技術。
+暗号化ダイジェスト (デジタル署名) を含む証明書をメールに添付することによって、公開鍵の成りすましを防ぐセキュリティ技術。
 
 ![S_MIME](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/S_MIME.png)
 
-#### ▼ S/MIMEにおけるデジタル証明書
+#### ▼ S/MIMEにおける証明書
 
-デジタル証明書をS/MIMEに使用する場合、特にS/MIME証明書という。
+証明書をS/MIMEに使用する場合、特にS/MIME証明書という。
 
 <br>
 
