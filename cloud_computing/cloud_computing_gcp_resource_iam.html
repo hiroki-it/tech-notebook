@@ -14018,7 +14018,7 @@
   
   
   <span class="md-ellipsis">
-    ■ 認証情報による分類
+    ■ 資格情報による分類
     
   </span>
   
@@ -14029,7 +14029,7 @@
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_12_4_1_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_12_4_1_3">
             <span class="md-nav__icon md-icon"></span>
-            ■ 認証情報による分類
+            ■ 資格情報による分類
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -14045,7 +14045,7 @@
   
   
   <span class="md-ellipsis">
-    認証情報による分類
+    資格情報による分類
     
   </span>
   
@@ -14068,7 +14068,7 @@
   
   
   <span class="md-ellipsis">
-    認証情報の運搬
+    資格情報の運搬
     
   </span>
   
@@ -14091,7 +14091,7 @@
   
   
   <span class="md-ellipsis">
-    認証情報の保管
+    資格情報の保管
     
   </span>
   
@@ -16742,7 +16742,7 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 認証情報
+      ▼ 資格情報
     </span>
   </a>
   
@@ -27401,7 +27401,7 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 認証情報
+      ▼ 資格情報
     </span>
   </a>
   
@@ -27703,7 +27703,7 @@
 <p>記入中...</p>
 <p><br></p>
 <h3 id="_5">認証<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<h4 id="_6">▼ 認証情報<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_6">▼ 資格情報<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <h4 id="_7">▼ 手動認証<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>auth<span class="w"> </span>login
@@ -27712,10 +27712,10 @@
 <h2 id="01-03">01-03. サービスアカウント<a class="headerlink" href="#01-03" title="Permanent link">&para;</a></h2>
 <h3 id="_8">サービスアカウントとは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>GoogleCloudリソース自体のアカウントである。</p>
-<p>サービスアカウントを実際のGoogle Cloudリソースや外部リソース (例：AWSリソース、ログ収集ツールなど) に紐づけるためには、サービスアカウントの認証情報ファイルをこれに持たせる必要がある。</p>
+<p>サービスアカウントを実際のGoogle Cloudリソースや外部リソース (例：AWSリソース、ログ収集ツールなど) に紐づけるためには、サービスアカウントの資格情報ファイルをこれに持たせる必要がある。</p>
 <p><br></p>
 <h3 id="_9">サービスアカウントキー<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>サービスアカウントの認証情報である。</p>
+<p>サービスアカウントの資格情報である。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;service_account&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;project_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;プロジェクトID&gt;&quot;</span><span class="p p-Indicator">,</span>
@@ -27737,10 +27737,10 @@
 </blockquote>
 <p><br></p>
 <h3 id="_10">開発者が使用する場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<p>認証情報ファイルのパスを設定する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>auth<span class="w"> </span>login<span class="w"> </span>--cred-file<span class="o">=</span><span class="s2">&quot;&lt;認証情報ファイルのパス&gt;&quot;</span>
+<p>資格情報ファイルのパスを設定する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>auth<span class="w"> </span>login<span class="w"> </span>--cred-file<span class="o">=</span><span class="s2">&quot;&lt;資格情報ファイルのパス&gt;&quot;</span>
 </code></pre></div>
-<p>認証情報ファイルの現在のパスは、<code>gcloud info</code>コマンドで確認する。</p>
+<p>資格情報ファイルの現在のパスは、<code>gcloud info</code>コマンドで確認する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>info
 </code></pre></div>
 <blockquote>
@@ -27759,7 +27759,7 @@
 </ul>
 </blockquote>
 <h4 id="_13">▼ ファイルパスの指定する場合<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>認証情報ファイルのパスを<code>GOOGLE_APPLICATION_CREDENTIALS</code>変数に設定する。</p>
+<p>資格情報ファイルのパスを<code>GOOGLE_APPLICATION_CREDENTIALS</code>変数に設定する。</p>
 <p>サービスアカウントとしてのリソースは、これを自動的に読み込み、サービスアカウントに紐づく。</p>
 <blockquote>
 <ul>
@@ -27835,8 +27835,8 @@
 <ol>
 <li>GoogleCloud以外で認証を実行する。</li>
 <li>認証が成功する。</li>
-<li>認証情報をGoogleCloud STSに送信する。</li>
-<li>Workload Identityプールにて、認証情報を検証する。</li>
+<li>資格情報をGoogleCloud STSに送信する。</li>
+<li>Workload Identityプールにて、資格情報を検証する。</li>
 <li>検証が成功し、一時的なトークンを発行する。</li>
 <li>GoogleCloud以外リソースにトークンを送信する。</li>
 <li>GoogleCloud以外リソースは、トークンを使用してGoogleCloudリソースのサービスアカウントに紐づく。</li>
@@ -27897,7 +27897,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月25日 13:47:32">2025-04-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月16日 14:34:37">2025-05-16</span>
   </span>
 
     

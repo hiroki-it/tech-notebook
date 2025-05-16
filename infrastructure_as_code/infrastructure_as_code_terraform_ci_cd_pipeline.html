@@ -14018,7 +14018,7 @@
   
   
   <span class="md-ellipsis">
-    ■ 認証情報による分類
+    ■ 資格情報による分類
     
   </span>
   
@@ -14029,7 +14029,7 @@
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_12_4_1_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_12_4_1_3">
             <span class="md-nav__icon md-icon"></span>
-            ■ 認証情報による分類
+            ■ 資格情報による分類
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -14045,7 +14045,7 @@
   
   
   <span class="md-ellipsis">
-    認証情報による分類
+    資格情報による分類
     
   </span>
   
@@ -14068,7 +14068,7 @@
   
   
   <span class="md-ellipsis">
-    認証情報の運搬
+    資格情報の運搬
     
   </span>
   
@@ -14091,7 +14091,7 @@
   
   
   <span class="md-ellipsis">
-    認証情報の保管
+    資格情報の保管
     
   </span>
   
@@ -27682,7 +27682,7 @@
 <span class="w">    </span><span class="p">;;</span>
 <span class="k">esac</span>
 
-<span class="c1"># 信頼されたエンティティの認証情報を設定する。</span>
+<span class="c1"># 信頼されたエンティティの資格情報を設定する。</span>
 aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$aws_account_id</span><span class="s2">&quot;</span>
 aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$aws_secret_access_key</span><span class="s2">&quot;</span>
 aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_default_region<span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
@@ -27696,7 +27696,7 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
 <span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;Credentials&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--output<span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
 
-<span class="c1"># 認証情報を環境変数に出力するためのスクリプトを作成する。</span>
+<span class="c1"># 資格情報を環境変数に出力するためのスクリプトを作成する。</span>
 cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; &quot;export_aws_envs.sh&quot;</span>
 <span class="s">export AWS_ACCESS_KEY_ID=&quot;$(echo &quot;$aws_sts_credentials&quot; | jq -r &#39;.AccessKeyId&#39;)&quot;</span>
 <span class="s">export AWS_SECRET_ACCESS_KEY=&quot;$(echo &quot;$aws_sts_credentials&quot; | jq -r &#39;.SecretAccessKey&#39;)&quot;</span>
@@ -27793,7 +27793,7 @@ terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年2月17日 02:17:17">2025-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月16日 14:34:37">2025-05-16</span>
   </span>
 
     

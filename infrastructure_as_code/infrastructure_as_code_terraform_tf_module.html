@@ -14018,7 +14018,7 @@
   
   
   <span class="md-ellipsis">
-    ■ 認証情報による分類
+    ■ 資格情報による分類
     
   </span>
   
@@ -14029,7 +14029,7 @@
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_12_4_1_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_12_4_1_3">
             <span class="md-nav__icon md-icon"></span>
-            ■ 認証情報による分類
+            ■ 資格情報による分類
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -14045,7 +14045,7 @@
   
   
   <span class="md-ellipsis">
-    認証情報による分類
+    資格情報による分類
     
   </span>
   
@@ -14068,7 +14068,7 @@
   
   
   <span class="md-ellipsis">
-    認証情報の運搬
+    資格情報の運搬
     
   </span>
   
@@ -14091,7 +14091,7 @@
   
   
   <span class="md-ellipsis">
-    認証情報の保管
+    資格情報の保管
     
   </span>
   
@@ -27704,7 +27704,7 @@
 </code></pre></div>
 <h4 id="backend">▼ <code>backend</code>ブロック<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h4>
 <p>インフラの状態ファイル (<code>tfstate</code>ファイル) を管理する場所を設定する。</p>
-<p>S3などの実インフラで管理する場合、認証情報を設定する必要がある。</p>
+<p>S3などの実インフラで管理する場合、資格情報を設定する必要がある。</p>
 <p>代わりに、<code>terraform init</code>コマンド実行時に指定しても良い。</p>
 <p>デフォルト値は<code>local</code>である。</p>
 <p>通常変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、ローカルマシンでは<code>providers.tf</code>ファイルの<code>backend</code>オプションを参照し、CDの中で<code>terraform init</code>コマンドのオプションを使用して値を渡すようにする。</p>
@@ -27735,9 +27735,9 @@
 <span class="c1">    # tfstateファイル名</span>
 <span class="w">    </span><span class="na">key</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform.tfstate&quot;</span>
 <span class="w">    </span><span class="na">region</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
-<span class="c1">    # 認証情報ファイルへのパス</span>
+<span class="c1">    # 資格情報ファイルへのパス</span>
 <span class="w">    </span><span class="na">shared_credentials_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;$HOME/.aws/credentials&quot;</span>
-<span class="c1">    # 認証情報ファイルのプロファイル名</span>
+<span class="c1">    # 資格情報ファイルのプロファイル名</span>
 <span class="w">    </span><span class="na">profile</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bar-profile&quot;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -27761,7 +27761,7 @@
 <h3 id="provider"><code>provider</code>ブロック<a class="headerlink" href="#provider" title="Permanent link">&para;</a></h3>
 <h4 id="provider_1">▼ <code>provider</code>ブロックとは<a class="headerlink" href="#provider_1" title="Permanent link">&para;</a></h4>
 <p>ルートモジュールで、Terraformで操作するクラウドインフラベンダーを設定する。</p>
-<p>ベンダーでのアカウント認証のため、認証情報を渡す必要がある。</p>
+<p>ベンダーでのアカウント認証のため、資格情報を渡す必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
 
@@ -28286,7 +28286,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>plan
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2024年12月25日 14:01:45">2024-12-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月16日 14:34:37">2025-05-16</span>
   </span>
 
     

@@ -14377,7 +14377,7 @@
   
   
   <span class="md-ellipsis">
-    ■ 認証情報による分類
+    ■ 資格情報による分類
     
   </span>
   
@@ -14388,7 +14388,7 @@
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_12_4_1_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_12_4_1_3">
             <span class="md-nav__icon md-icon"></span>
-            ■ 認証情報による分類
+            ■ 資格情報による分類
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -14404,7 +14404,7 @@
   
   
   <span class="md-ellipsis">
-    認証情報による分類
+    資格情報による分類
     
   </span>
   
@@ -14427,7 +14427,7 @@
   
   
   <span class="md-ellipsis">
-    認証情報の運搬
+    資格情報の運搬
     
   </span>
   
@@ -14450,7 +14450,7 @@
   
   
   <span class="md-ellipsis">
-    認証情報の保管
+    資格情報の保管
     
   </span>
   
@@ -28718,9 +28718,9 @@
 <p>*58 Azure-Samples. (n.d.). saga-orchestration-serverless/docs/architecture/components.md at main · Azure-Samples/saga-orchestration-serverless. GitHub. <a href="https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/components.md">https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/components.md</a></p>
 <p><br></p>
 <h3 id="76">7.6 認証<a class="headerlink" href="#76" title="Permanent link">&para;</a></h3>
-<p>マイクロサービスアーキテクチャでは認証を適切に開始し、認証成功後にマイクロサービス間で認証情報を伝播する必要があります。</p>
-<p>また、認証情報が有効かどうかを各マイクロサービスの実行時に検証しなければ、不正なリクエストを処理しかねません。</p>
-<p>適切な認証認可や認証情報の伝播により、問題を単純に解決できます。</p>
+<p>マイクロサービスアーキテクチャでは認証を適切に開始し、認証成功後にマイクロサービス間で資格情報を伝播する必要があります。</p>
+<p>また、資格情報が有効かどうかを各マイクロサービスの実行時に検証しなければ、不正なリクエストを処理しかねません。</p>
+<p>適切な認証認可や資格情報の伝播により、問題を単純に解決できます。</p>
 <p>まずは認証です。</p>
 <p>図22で、認証のデザインパターンの種類を示します。</p>
 <p>代表的なものにはセッションベースとトークンベースがあります。</p>
@@ -28740,8 +28740,8 @@
 
 </div>
 
-<p>セッションベースは、セッションを使用してマイクロサービス間で認証情報を伝播します。</p>
-<p>トークンベースにはSSOやJWTとAPIゲートウェイの組み合わせがあり、トークンを使用してマイクロサービス間で認証情報を伝播します。</p>
+<p>セッションベースは、セッションを使用してマイクロサービス間で資格情報を伝播します。</p>
+<p>トークンベースにはSSOやJWTとAPIゲートウェイの組み合わせがあり、トークンを使用してマイクロサービス間で資格情報を伝播します。</p>
 <p>いずれの方法にもメリットデメリットがあり、要件に応じて選ばなければなりません *58 。</p>
 <p>ここではSSOを概説します。</p>
 <p>SSOでは、IDプロバイダーやこれへのリクエストはクラウドネイティブ技術で代替できます。</p>
@@ -28758,7 +28758,7 @@
 <tbody>
 <tr>
 <td>説明</td>
-<td>SSOで認証する。認証サービスをIDプロバイダーとして使用し、これは認証データ永続化やアクセストークン発行などを実施する。この認証サービスは認証情報を永続化するためのデータベースを持ち、有効期限が切れればアクセストークンを無効化する。</td>
+<td>SSOで認証する。認証サービスをIDプロバイダーとして使用し、これはアカウントデータ永続化やアクセストークン発行などを実施する。この認証サービスは資格情報を永続化するためのデータベースを持ち、有効期限が切れればアクセストークンを無効化する。</td>
 </tr>
 <tr>
 <td>クラウドネイティブ技術との関連性</td>
@@ -28773,7 +28773,7 @@
 <p><br>
 図23で、AWS EKS上でのOIDC認可コードフローの設計例を示します。</p>
 <p>IDプロバイダーとしてSecurity &amp; Compliance分野のツールを使用できます。</p>
-<p>例えば、KeycloakはIDプロバイダーとして認証データを永続化し、アカウントを証明するアクセストークンを発行します。</p>
+<p>例えば、KeycloakはIDプロバイダーとしてアカウントデータを永続化し、アカウントを証明するアクセストークンを発行します。</p>
 <p>またKeycloakは検証エンドポイントを公開し、受信したリクエストのAuthorizationヘッダーにあるアクセストークンの有効性を検証します *59 。</p>
 <p>この時、任意の認証パッケージやIstioを使用してアクセストークン検証のリクエストをKeycloakに送信できます。</p>
 <p>Istioの場合、Istioリソースを定義することにより無効なアカウントからのリクエストをサイドカーコンテナで阻止（401や403レスポンスを返信）できます *60 。</p>
@@ -28789,7 +28789,7 @@
 <p>*61 田畑. (n.d). コンテナ上のマイクロサービスの認証強化 ～IstioとKeyCloak～. Think IT（シンクイット）. <a href="https://thinkit.co.jp/article/18023">https://thinkit.co.jp/article/18023</a></p>
 <p><br></p>
 <h3 id="77">7.7 認可<a class="headerlink" href="#77" title="Permanent link">&para;</a></h3>
-<p>伝播された認証情報を使用して各マイクロサービスは認可処理を実行する必要があります。</p>
+<p>伝播された資格情報を使用して各マイクロサービスは認可処理を実行する必要があります。</p>
 <p>図24で、認可のデザインパターンの種類を示します。</p>
 <p>代表的なものには中央集中と分散があります。</p>
 <p><br></p>
@@ -29463,7 +29463,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月12日 20:29:25">2025-05-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月16日 14:41:10">2025-05-16</span>
   </span>
 
     

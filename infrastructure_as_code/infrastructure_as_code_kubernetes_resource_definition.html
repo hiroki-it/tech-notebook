@@ -14018,7 +14018,7 @@
   
   
   <span class="md-ellipsis">
-    ■ 認証情報による分類
+    ■ 資格情報による分類
     
   </span>
   
@@ -14029,7 +14029,7 @@
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_12_4_1_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_12_4_1_3">
             <span class="md-nav__icon md-icon"></span>
-            ■ 認証情報による分類
+            ■ 資格情報による分類
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -14045,7 +14045,7 @@
   
   
   <span class="md-ellipsis">
-    認証情報による分類
+    資格情報による分類
     
   </span>
   
@@ -14068,7 +14068,7 @@
   
   
   <span class="md-ellipsis">
-    認証情報の運搬
+    資格情報の運搬
     
   </span>
   
@@ -14091,7 +14091,7 @@
   
   
   <span class="md-ellipsis">
-    認証情報の保管
+    資格情報の保管
     
   </span>
   
@@ -36248,8 +36248,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">minikube</span>
 </code></pre></div>
 <h4 id="user">▼ user<a class="headerlink" href="#user" title="Permanent link">&para;</a></h4>
-<p>ユーザーの認証情報を設定する。</p>
-<p>AWS EKSのように、認証情報を動的に取得するようにしても良い。</p>
+<p>ユーザーの資格情報を設定する。</p>
+<p>AWS EKSのように、資格情報を動的に取得するようにしても良い。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Config</span>
 <span class="nt">users</span><span class="p">:</span>
@@ -38626,13 +38626,13 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
 <span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
-<span class="w">      </span><span class="c1"># 認証情報ファイルをマウントする</span>
+<span class="w">      </span><span class="c1"># 資格情報ファイルをマウントする</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">credentials-volume</span>
 <span class="w">          </span><span class="c1"># 絶対パスにする</span>
 <span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/credentials</span>
 <span class="w">      </span><span class="nt">env</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Google Cloudの認証情報のパスを設定する</span>
+<span class="w">        </span><span class="c1"># Google Cloudの資格情報のパスを設定する</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GOOGLE_APPLICATION_CREDENTIALS</span>
 <span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/credentials/google_cloud_credentials.json</span>
 <span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
@@ -39341,9 +39341,9 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <p><br></p>
 <h3 id="specimagepullsecrets">.spec.imagePullSecrets<a class="headerlink" href="#specimagepullsecrets" title="Permanent link">&para;</a></h3>
 <h4 id="imagepullsecrets">▼ imagePullSecretsとは<a class="headerlink" href="#imagepullsecrets" title="Permanent link">&para;</a></h4>
-<p>プライベートイメージリポジトリからコンテナイメージをプルするため、プライベートイメージリポジトリの認証情報を持つSecretを設定する。</p>
+<p>プライベートイメージリポジトリからコンテナイメージをプルするため、プライベートイメージリポジトリの資格情報を持つSecretを設定する。</p>
 <p>別途、ServiceAccountの<code>.imagePullSecrets</code>キーでも同じSecretを指定しておき、このServiceAccountをPodに紐付ける。</p>
-<p>これにより、PodはSecretにあるプライベートリポジトリの認証情報を使用できるようになる。</p>
+<p>これにより、PodはSecretにあるプライベートリポジトリの資格情報を使用できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39353,7 +39353,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">private-app:1.0.0</span><span class="w"> </span><span class="c1"># プライベートプライベートイメージリポジトリ</span>
 <span class="w">  </span><span class="nt">imagePullSecrets</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app-repository-credentials-secret</span><span class="w"> </span><span class="c1"># プライベートイメージリポジトリの認証情報を持つSecret</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app-repository-credentials-secret</span><span class="w"> </span><span class="c1"># プライベートイメージリポジトリの資格情報を持つSecret</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -40162,8 +40162,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <p><code>.spec.containers[*].envFrom</code>キー (環境変数をコンテナに出力する) とは異なり、Secretからファイルを設定する。</p>
 <p>ConfigMapをマウントする場合は、<code>.spec.volumes.configMap</code>キーで設定することに注意する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Secretが持つ認証情報ファイル (ここでは<code>credentials.json</code>キー) をコンテナにファイルとしてマウントする</p>
-<p>そのため、コンテナには認証情報ファイルが配置されることになる。</p>
+<p>Secretが持つ資格情報ファイル (ここでは<code>credentials.json</code>キー) をコンテナにファイルとしてマウントする</p>
+<p>そのため、コンテナには資格情報ファイルが配置されることになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40586,7 +40586,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </ul>
 </blockquote>
 <h4 id="kubernetesiodockerconfigjson">▼ kubernetes.io/dockerconfigjson<a class="headerlink" href="#kubernetesiodockerconfigjson" title="Permanent link">&para;</a></h4>
-<p>イメージレジストリの認証情報を設定する。</p>
+<p>イメージレジストリの資格情報を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -41155,8 +41155,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <p><br></p>
 <h3 id="imagepullsecrets_1">imagePullSecrets<a class="headerlink" href="#imagepullsecrets_1" title="Permanent link">&para;</a></h3>
 <h4 id="imagepullsecrets_2">▼ imagePullSecretsとは<a class="headerlink" href="#imagepullsecrets_2" title="Permanent link">&para;</a></h4>
-<p>プライベートイメージリポジトリの認証情報を持つSecretを設定する。</p>
-<p>これにより、ServiceAccountが紐付けられたPodは、プライベートイメージリポジトリの認証情報を使用できるようになる。</p>
+<p>プライベートイメージリポジトリの資格情報を持つSecretを設定する。</p>
+<p>これにより、ServiceAccountが紐付けられたPodは、プライベートイメージリポジトリの資格情報を使用できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -41419,7 +41419,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月11日 00:16:23">2025-05-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月16日 14:34:37">2025-05-16</span>
   </span>
 
     

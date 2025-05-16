@@ -14018,7 +14018,7 @@
   
   
   <span class="md-ellipsis">
-    ■ 認証情報による分類
+    ■ 資格情報による分類
     
   </span>
   
@@ -14029,7 +14029,7 @@
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_12_4_1_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_12_4_1_3">
             <span class="md-nav__icon md-icon"></span>
-            ■ 認証情報による分類
+            ■ 資格情報による分類
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -14045,7 +14045,7 @@
   
   
   <span class="md-ellipsis">
-    認証情報による分類
+    資格情報による分類
     
   </span>
   
@@ -14068,7 +14068,7 @@
   
   
   <span class="md-ellipsis">
-    認証情報の運搬
+    資格情報の運搬
     
   </span>
   
@@ -14091,7 +14091,7 @@
   
   
   <span class="md-ellipsis">
-    認証情報の保管
+    資格情報の保管
     
   </span>
   
@@ -16033,7 +16033,7 @@
           <li class="md-nav__item">
   <a href="#2-aws-iam" class="md-nav__link">
     <span class="md-ellipsis">
-      2. AWS IAMロールを引き受けた認証情報をリクエスト
+      2. AWS IAMロールを引き受けた資格情報をリクエスト
     </span>
   </a>
   
@@ -16042,7 +16042,7 @@
           <li class="md-nav__item">
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
-      3. 返信されたレスポンスから認証情報を取得
+      3. 返信されたレスポンスから資格情報を取得
     </span>
   </a>
   
@@ -16051,7 +16051,7 @@
           <li class="md-nav__item">
   <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
-      4. 認証情報を取得
+      4. 資格情報を取得
     </span>
   </a>
   
@@ -27373,7 +27373,7 @@
           <li class="md-nav__item">
   <a href="#2-aws-iam" class="md-nav__link">
     <span class="md-ellipsis">
-      2. AWS IAMロールを引き受けた認証情報をリクエスト
+      2. AWS IAMロールを引き受けた資格情報をリクエスト
     </span>
   </a>
   
@@ -27382,7 +27382,7 @@
           <li class="md-nav__item">
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
-      3. 返信されたレスポンスから認証情報を取得
+      3. 返信されたレスポンスから資格情報を取得
     </span>
   </a>
   
@@ -27391,7 +27391,7 @@
           <li class="md-nav__item">
   <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
-      4. 認証情報を取得
+      4. 資格情報を取得
     </span>
   </a>
   
@@ -27674,7 +27674,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-stssecurity-token-service">01. STSとは：Security Token Service<a class="headerlink" href="#01-stssecurity-token-service" title="Permanent link">&para;</a></h2>
-<p>認証済みのAWS IAMユーザーに対して、特定のAWSアカウントのAWSリソースに認可スコープを持つ一時的な認証情報 (アクセスキーID、シークレットアクセスキー、セッショントークン) を持つAWS IAMユーザーを発行する。</p>
+<p>認証済みのAWS IAMユーザーに対して、特定のAWSアカウントのAWSリソースに認可スコープを持つ一時的な資格情報 (アクセスキーID、シークレットアクセスキー、セッショントークン) を持つAWS IAMユーザーを発行する。</p>
 <p><img alt="STS" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/STS.jpg" /></p>
 <p><br></p>
 <h2 id="02">02. スイッチロールの仕組み<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
@@ -27708,7 +27708,7 @@
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="2-aws-iam">2. AWS IAMロールを引き受けた認証情報をリクエスト<a class="headerlink" href="#2-aws-iam" title="Permanent link">&para;</a></h3>
+<h3 id="2-aws-iam">2. AWS IAMロールを引き受けた資格情報をリクエスト<a class="headerlink" href="#2-aws-iam" title="Permanent link">&para;</a></h3>
 <p>信頼されたエンティティから、STSのエンドポイント (<code>https://sts.amazonaws.com</code>) に対して、ロールの紐付けをリクエストする。</p>
 <p>OIDCによるフェデレーションユーザーの場合は、<code>--external-id</code>オプションの代わりに、<code>--web-identity-token</code>オプションを使用する。</p>
 <p>このオプションに、発行されたJWTを設定する必要がある。</p>
@@ -27742,7 +27742,7 @@
 <span class="w">    </span><span class="p">;;</span>
 <span class="k">esac</span>
 
-<span class="c1"># 信頼されたエンティティの認証情報を設定する。</span>
+<span class="c1"># 信頼されたエンティティの資格情報を設定する。</span>
 aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$aws_account_id</span><span class="s2">&quot;</span>
 aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$aws_secret_access_key</span><span class="s2">&quot;</span>
 aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_default_region<span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
@@ -27757,10 +27757,10 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
 <span class="w">  </span>--output<span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="3">3. 返信されたレスポンスから認証情報を取得<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
-<p>STSのエンドポイントから一時的な認証情報が発行される。</p>
-<p>また同時に、この認証情報は、ローカルマシンの<code>~/.aws/cli/cache</code>ディレクトリ配下にも<code>json</code>ファイルで保管される。</p>
-<p>認証情報の失効時間に合わせて、STSはこの<code>json</code>ファイルを定期的に更新する。</p>
+<h3 id="3">3. 返信されたレスポンスから資格情報を取得<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>STSのエンドポイントから一時的な資格情報が発行される。</p>
+<p>また同時に、この資格情報は、ローカルマシンの<code>~/.aws/cli/cache</code>ディレクトリ配下にも<code>json</code>ファイルで保管される。</p>
+<p>資格情報の失効時間に合わせて、STSはこの<code>json</code>ファイルを定期的に更新する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Credentials&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
@@ -27795,11 +27795,11 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="4">4. 認証情報を取得<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
-<p>レスポンスされたデータから認証情報を抽出する。</p>
+<h3 id="4">4. 資格情報を取得<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>レスポンスされたデータから資格情報を抽出する。</p>
 <p>この時、アクセスキーID、シークレットアクセスキー、セッショントークンが必要になる。</p>
 <p>代わりに、<code>~/.aws/cli/cache</code>ディレクトリ配下の<code>json</code>ファイルから取得しても良い。</p>
-<p>認証情報を環境変数として出力し、使用できるようにする。</p>
+<p>資格情報を環境変数として出力し、使用できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; assumed_user.sh</span>
@@ -27810,7 +27810,7 @@ cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; assumed_user.sh</spa
 <span class="s">export AWS_DEFAULT_REGION=&quot;ap-northeast-1&quot;</span>
 <span class="s">EOF</span>
 </code></pre></div>
-<p>環境変数に登録する代わりに、AWSの認証情報ファイルを作成しても良い。</p>
+<p>環境変数に登録する代わりに、AWSの資格情報ファイルを作成しても良い。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 aws<span class="w"> </span>configure<span class="w"> </span>--profile<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span>-repository<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
@@ -27830,10 +27830,10 @@ aws<span class="w"> </span>configure<span class="w"> </span>--profile<span class
 <p><br></p>
 <h3 id="5">5. 認証／認可の動作確認<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
 <p>ロールを引き受けた新しいアカウントを使用して、AWSリソースに認証／認可できるか否かを確認する。</p>
-<p>認証情報の取得方法として認証情報ファイルの作成を<code>tfstate</code>ファイル択した場合、<code>profile</code>オプションが必要である。</p>
+<p>資格情報の取得方法として資格情報ファイルの作成を<code>tfstate</code>ファイル択した場合、<code>profile</code>オプションが必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-<span class="c1"># 認証情報ファイルを参照するオプションが必要がある。</span>
+<span class="c1"># 資格情報ファイルを参照するオプションが必要がある。</span>
 aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>--profile<span class="w"> </span>&lt;プロファイル名&gt;<span class="w"> </span>&lt;tfstateファイルが管理されるバケット名&gt;
 </code></pre></div>
 <p><br></p>
@@ -28093,7 +28093,7 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月11日 21:18:39">2025-03-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月16日 14:34:37">2025-05-16</span>
   </span>
 
     
