@@ -31,7 +31,7 @@ description: 認証＠認証／認可の知見を記録しています。
 
 realmごとに認証を管理する。
 
-例えばKeycloakであれば、Adminユーザーの認証はmaster realmで、それ以外はユーザー定義のrealm、で管理する。
+例えばKeycloakであれば、Adminアカウントの認証はmaster realmで、それ以外はユーザー定義のrealm、で管理する。
 
 > - https://www.seil.jp/doc/index.html#fn/pppac/cmd/authentication_realm.html
 > - https://keycloak-documentation.openstandia.jp/21.0/ja_JP/server_admin/index.html#the-master-realm

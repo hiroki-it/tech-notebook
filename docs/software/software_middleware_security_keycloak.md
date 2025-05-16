@@ -174,7 +174,7 @@ KeycloakはCPUとメモリを使用する。
 
 ### Realm
 
-Keycloakでは、Adminユーザーの認証はmaster realmで、それ以外はユーザー定義のrealm、で管理する。
+Keycloakでは、Adminアカウントの認証はmaster realmで、それ以外はユーザー定義のrealm、で管理する。
 
 master realmでログイン後、ユーザー定義のrealmを作成すると良い。
 

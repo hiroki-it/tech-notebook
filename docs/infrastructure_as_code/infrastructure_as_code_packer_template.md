@@ -56,7 +56,7 @@ build_ami:
       aud: <GitLabのURL>
   before_script:
     - apt-get update && apt-get install -y git jq awscli
-    # クレデンシャルを取得する
+    # 資格情報を取得する
     - |
       echo "sleeping random seconds (<15s)"
       sleep $(( $RANDOM % 15 ))
