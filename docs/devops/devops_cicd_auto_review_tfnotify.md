@@ -58,7 +58,7 @@ terraform -chdir=./"${ENV}" plan \
 
 set -xeuo pipefail
 
-# 認証情報を出力する
+# 資格情報を出力する
 source ./aws_envs.sh
 
 terraform -chdir=./"${ENV}" apply \
@@ -84,7 +84,7 @@ ci: circleci
 
 ### notifier
 
-リポジトリに通知をPOSTリクエストできるように、認証情報を設定する。
+リポジトリに通知をPOSTリクエストできるように、資格情報を設定する。
 
 ```yaml
 # https://github.com/mercari/tfnotify

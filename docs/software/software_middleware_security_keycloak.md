@@ -136,7 +136,7 @@ KeycloakはCPUとメモリを使用する。
 **設定例**
 
 - 1秒あたり24回のログインリクエスト ➡️ 3 vCPU
-- 1秒あたり450回のクライアント認証情報の付与処理 ➡️ 1 vCPU
+- 1秒あたり450回のクライアント資格情報の付与処理 ➡️ 1 vCPU
 - 350回のリクエストのリフレッシュトークン ➡️ 1 vCPU
 
 > - https://docs.redhat.com/en/documentation/red_hat_build_of_keycloak/24.0/html/high_availability_guide/concepts-memory-and-cpu-sizing-#concepts-memory-and-cpu-sizing-calculation-example
@@ -182,7 +182,7 @@ master realmでログイン後、ユーザー定義のrealmを作成すると良
 
 <br>
 
-### 認証情報の伝播方法
+### 資格情報の伝播方法
 
 #### ▼ クライアントシークレットの場合
 

@@ -1677,7 +1677,7 @@ func NewTracerProvider() {
 		return
 	}
 
-	// 認証情報を読み込む
+	// 資格情報を読み込む
 	sess := session.Must(session.NewSessionWithOptions(session.Options{
 		SharedConfigState: session.SharedConfigEnable,
 	}))
@@ -1765,7 +1765,7 @@ func main() {
 		*timeout = 12 * 60 * 60
 	}
 
-	// 認証情報を読み込む
+	// 資格情報を読み込む
 	sess := session.Must(session.NewSessionWithOptions(session.Options{
 		SharedConfigState: session.SharedConfigEnable,
 	}))

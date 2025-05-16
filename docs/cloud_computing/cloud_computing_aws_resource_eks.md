@@ -144,13 +144,13 @@ module "eks" {
 
 <br>
 
-### AWS EKS Clusterの認証情報の追加
+### AWS EKS Clusterの資格情報の追加
 
-`kubectl`コマンドでAWS EKS Clusterを操作するためには、`kubeconfig`ファイルへClusterの認証情報を登録する必要がある。
+`kubectl`コマンドでAWS EKS Clusterを操作するためには、`kubeconfig`ファイルへClusterの資格情報を登録する必要がある。
 
 `(1)`
 
-: AWS CLIに認証情報を設定する。
+: AWS CLIに資格情報を設定する。
 
 ```bash
 $ aws configure
@@ -158,7 +158,7 @@ $ aws configure
 
 `(2)`
 
-: AWS EKS Clusterの名前を指定して、`kubeconfig`ファイルにClusterの認証情報を登録する。
+: AWS EKS Clusterの名前を指定して、`kubeconfig`ファイルにClusterの資格情報を登録する。
 
 ```bash
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
@@ -696,7 +696,7 @@ AWS_WEB_IDENTITY_TOKEN_FILE=/var/run/secrets/eks.amazonaws.com/serviceaccount/to
 
 `(1)`
 
-: AWS EKS Clusterの名前を指定して、`kubeconfig`ファイルにClusterの認証情報を登録する。
+: AWS EKS Clusterの名前を指定して、`kubeconfig`ファイルにClusterの資格情報を登録する。
 
 ```bash
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
@@ -989,7 +989,7 @@ AWS EC2ワーカーNodeが、自身の所属するClusterにリクエストを�
 
 AWS EC2ワーカーNode内のPodがAWS ECRからコンテナイメージをプルできるように、AWS EC2ワーカーNodeに`AmazonEC2ContainerRegistryReadOnly`を付与する必要がある。
 
-これにより、PodのコンテナごとにAWSの認証情報をマウントする必要がなくなる。
+これにより、PodのコンテナごとにAWSの資格情報をマウントする必要がなくなる。
 
 `aws-node`のPodがAWSのネットワーク系のAPIにリクエストを送信できるように、IRSA用のServiceAccountに`AmazonAWS EKS_CNI_Policy` (IPv4の場合) または `AmazonEKS_CNI_IPv6_Policy` (IPv6の場合) を付与する必要がある。
 

@@ -551,7 +551,7 @@ RemixはSSRアプリケーションを作成する。
 
 SSRでは、ブラウザのLocalStorageやSessionStorageを操作できない。
 
-代わりに、ブラウザのCookie、サーバーのメモリ、サーバー上のファイルなどに認証情報を保存することになる。
+代わりに、ブラウザのCookie、サーバーのメモリ、サーバー上のファイルなどに資格情報を保存することになる。
 
 > - https://github.com/vercel/next.js/discussions/39915#discussioncomment-3467720
 
@@ -561,7 +561,7 @@ SSRでは、ブラウザのLocalStorageやSessionStorageを操作できない。
 
 #### ▼ ブラウザのCookieに保存する場合
 
-ブラウザのCookieに認証情報を保存する。
+ブラウザのCookieに資格情報を保存する。
 
 ```jsx
 export const cookieSessionStorage = createCookieSessionStorage({
@@ -579,7 +579,7 @@ export const cookieSessionStorage = createCookieSessionStorage({
 
 #### ▼ サーバーのメモリに保存する場合
 
-サーバーのメモリに認証情報を保存する。
+サーバーのメモリに資格情報を保存する。
 
 ```jsx
 export const memorySessionStorage = createMemorySessionStorage({
@@ -591,7 +591,7 @@ export const memorySessionStorage = createMemorySessionStorage({
 
 #### ▼ サーバー上のファイルに保存する場合
 
-サーバー上のファイルに認証情報を保存する。
+サーバー上のファイルに資格情報を保存する。
 
 ```jsx
 export const memorySessionStorage = createFileSessionStorage({

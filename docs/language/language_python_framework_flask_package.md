@@ -145,7 +145,7 @@ def logout():
 
 <br>
 
-### 認証情報の失効
+### 資格情報の失効
 
 #### ▼ アクセストークンを`Authorization`ヘッダーで運搬する場合
 
@@ -220,7 +220,7 @@ oidc = OpenIDConnect(app)
 
 ### client_secrets.json
 
-認証情報をJSONファイルで定義する。
+資格情報をJSONファイルで定義する。
 
 ```yaml
 {

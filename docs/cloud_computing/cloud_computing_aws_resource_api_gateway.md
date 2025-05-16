@@ -145,7 +145,7 @@ AWS API GatewayとAWS Lambdaの間で、リクエスト−レスポンスのJSON
 | AWS Lambdaリージョン               | 実行したAWS Lambda関数のリージョンを設定する。                                                                                                         |
 | AWS Lambda関数                     | 実行したAWS Lambda関数の名前を設定する。                                                                                                               |
 | 実行ロール                         | 実行したいAWS Lambda関数への認可スコープが紐付けられたロールのARNを設定する。ただし、AWS Lambda側にAWS API Gatewayへの認可スコープを紐付けしても良い。 |
-| 認証情報のキャッシュ               |                                                                                                                                                        |
+| 資格情報のキャッシュ               |                                                                                                                                                        |
 | デフォルトのタイムアウト時間の使用 |                                                                                                                                                        |
 
 > - https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-integrations.html

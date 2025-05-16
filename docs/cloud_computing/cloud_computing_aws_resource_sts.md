@@ -15,7 +15,7 @@ description: STS＠AWSリソースの知見を記録しています。
 
 ## 01. STSとは：Security Token Service
 
-認証済みのAWS IAMユーザーに対して、特定のAWSアカウントのAWSリソースに認可スコープを持つ一時的な認証情報 (アクセスキーID、シークレットアクセスキー、セッショントークン) を持つAWS IAMユーザーを発行する。
+認証済みのAWS IAMユーザーに対して、特定のAWSアカウントのAWSリソースに認可スコープを持つ一時的な資格情報 (アクセスキーID、シークレットアクセスキー、セッショントークン) を持つAWS IAMユーザーを発行する。
 
 ![STS](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/STS.jpg)
 
@@ -60,7 +60,7 @@ AssumeRole (権限委譲) によって、ユーザーのAWS IAMロールを動�
 
 <br>
 
-### 2. AWS IAMロールを引き受けた認証情報をリクエスト
+### 2. AWS IAMロールを引き受けた資格情報をリクエスト
 
 信頼されたエンティティから、STSのエンドポイント (`https://sts.amazonaws.com`) に対して、ロールの紐付けをリクエストする。
 
@@ -99,7 +99,7 @@ case "${ENV}" in
     ;;
 esac
 
-# 信頼されたエンティティの認証情報を設定する。
+# 信頼されたエンティティの資格情報を設定する。
 aws configure set aws_access_key_id "$aws_account_id"
 aws configure set aws_secret_access_key "$aws_secret_access_key"
 aws configure set aws_default_region "ap-northeast-1"
@@ -116,13 +116,13 @@ aws_sts_credentials="$(aws sts assume-role \
 
 <br>
 
-### 3. 返信されたレスポンスから認証情報を取得
+### 3. 返信されたレスポンスから資格情報を取得
 
-STSのエンドポイントから一時的な認証情報が発行される。
+STSのエンドポイントから一時的な資格情報が発行される。
 
-また同時に、この認証情報は、ローカルマシンの`~/.aws/cli/cache`ディレクトリ配下にも`json`ファイルで保管される。
+また同時に、この資格情報は、ローカルマシンの`~/.aws/cli/cache`ディレクトリ配下にも`json`ファイルで保管される。
 
-認証情報の失効時間に合わせて、STSはこの`json`ファイルを定期的に更新する。
+資格情報の失効時間に合わせて、STSはこの`json`ファイルを定期的に更新する。
 
 ```yaml
 {
@@ -158,15 +158,15 @@ STSのエンドポイントから一時的な認証情報が発行される。
 
 <br>
 
-### 4. 認証情報を取得
+### 4. 資格情報を取得
 
-レスポンスされたデータから認証情報を抽出する。
+レスポンスされたデータから資格情報を抽出する。
 
 この時、アクセスキーID、シークレットアクセスキー、セッショントークンが必要になる。
 
 代わりに、`~/.aws/cli/cache`ディレクトリ配下の`json`ファイルから取得しても良い。
 
-認証情報を環境変数として出力し、使用できるようにする。
+資格情報を環境変数として出力し、使用できるようにする。
 
 ```bash
 #!/bin/bash
@@ -180,7 +180,7 @@ export AWS_DEFAULT_REGION="ap-northeast-1"
 EOF
 ```
 
-環境変数に登録する代わりに、AWSの認証情報ファイルを作成しても良い。
+環境変数に登録する代わりに、AWSの資格情報ファイルを作成しても良い。
 
 ```bash
 #!/bin/bash
@@ -203,12 +203,12 @@ echo aws_session_token = $(echo "$aws_sts_credentials" | jq -r ".SessionToken") 
 
 ロールを引き受けた新しいアカウントを使用して、AWSリソースに認証／認可できるか否かを確認する。
 
-認証情報の取得方法として認証情報ファイルの作成を`tfstate`ファイル択した場合、`profile`オプションが必要である。
+資格情報の取得方法として資格情報ファイルの作成を`tfstate`ファイル択した場合、`profile`オプションが必要である。
 
 ```bash
 #!/bin/bash
 
-# 認証情報ファイルを参照するオプションが必要がある。
+# 資格情報ファイルを参照するオプションが必要がある。
 aws s3 ls --profile <プロファイル名> <tfstateファイルが管理されるバケット名>
 ```
 

@@ -31,9 +31,9 @@ description: BigQuery＠Google Cloudリソースの知見を記録していま�
 
 #### ▼ サービスアカウント
 
-サービスアカウントの認証情報を認証に使用する。
+サービスアカウントの資格情報を認証に使用する。
 
-発行した認証情報をBIツールに登録する。
+発行した資格情報をBIツールに登録する。
 
 > - https://knowledge.insight-lab.co.jp/bi/lookerandbigquery
 > - https://cloud.google.com/looker/docs/db-config-google-bigquery?hl=ja#authentication_with_bigquery_service_accounts
@@ -42,7 +42,7 @@ description: BigQuery＠Google Cloudリソースの知見を記録していま�
 
 Google Cloud OAuthの情報を認証に使用する。
 
-発行した認証情報をBIツールに登録する。
+発行した資格情報をBIツールに登録する。
 
 > - https://knowledge.insight-lab.co.jp/bi/lookerandbigquery
 > - https://cloud.google.com/looker/docs/db-config-google-bigquery?hl=ja#authentication_with_oauth

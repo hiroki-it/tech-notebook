@@ -75,14 +75,14 @@ repository/
 
 ### 他のプライベートリポジトリへのアクセス
 
-他のプライベートリポジトリに接続するためには、GitLab CIで、Gitの認証情報をセットアップする必要がある。
+他のプライベートリポジトリに接続するためには、GitLab CIで、Gitの資格情報をセットアップする必要がある。
 
 ```yaml
 go_mod:
   stage: build
   image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golang:${GO_VERSION}
   before_script:
-    # 他のプライベートリポジトリからモジュールをプルするために、認証情報をセットアップする
+    # 他のプライベートリポジトリからモジュールをプルするために、資格情報をセットアップする
     - echo "machine foo.gitlab.com" > ~/.netrc
     - echo "login ${GIT_USER}" >> ~/.netrc
     - echo "password ${GIT_TOKEN}" >> ~/.netrc
@@ -1261,7 +1261,7 @@ baz_job:
 anchorとして定義した処理を隠しJob化する。
 
 ```yaml
-# GitLabの他のリポジトリからモジュールをプルするために、認証情報をセットアップする
+# GitLabの他のリポジトリからモジュールをプルするために、資格情報をセットアップする
 .setup_git: &setup_git
   - echo "machine foo.gitlab.com" > ~/.netrc
   - echo "login ${GIT_USER}" >> ~/.netrc
@@ -1286,7 +1286,7 @@ go_mod:
 ただし、呼び出す側で別の`before_script`キーがあると、上書きしてしまう。
 
 ```yaml
-# GitLabの他のリポジトリからモジュールをプルするために、認証情報をセットアップする
+# GitLabの他のリポジトリからモジュールをプルするために、資格情報をセットアップする
 .setup_git:
   before_script:
     - echo "machine foo.gitlab.com" > ~/.netrc

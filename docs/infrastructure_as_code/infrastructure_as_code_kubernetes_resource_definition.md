@@ -363,9 +363,9 @@ users:
 
 #### ▼ user
 
-ユーザーの認証情報を設定する。
+ユーザーの資格情報を設定する。
 
-AWS EKSのように、認証情報を動的に取得するようにしても良い。
+AWS EKSのように、資格情報を動的に取得するようにしても良い。
 
 ```yaml
 
@@ -3059,13 +3059,13 @@ spec:
       image: app:1.0.0
       ports:
         - containerPort: 8080
-      # 認証情報ファイルをマウントする
+      # 資格情報ファイルをマウントする
       volumeMounts:
         - name: credentials-volume
           # 絶対パスにする
           mountPath: /credentials
       env:
-        # Google Cloudの認証情報のパスを設定する
+        # Google Cloudの資格情報のパスを設定する
         - name: GOOGLE_APPLICATION_CREDENTIALS
           value: /credentials/google_cloud_credentials.json
   volumes:
@@ -3866,11 +3866,11 @@ spec:
 
 #### ▼ imagePullSecretsとは
 
-プライベートイメージリポジトリからコンテナイメージをプルするため、プライベートイメージリポジトリの認証情報を持つSecretを設定する。
+プライベートイメージリポジトリからコンテナイメージをプルするため、プライベートイメージリポジトリの資格情報を持つSecretを設定する。
 
 別途、ServiceAccountの`.imagePullSecrets`キーでも同じSecretを指定しておき、このServiceAccountをPodに紐付ける。
 
-これにより、PodはSecretにあるプライベートリポジトリの認証情報を使用できるようになる。
+これにより、PodはSecretにあるプライベートリポジトリの資格情報を使用できるようになる。
 
 ```yaml
 apiVersion: v1
@@ -3882,7 +3882,7 @@ spec:
     - name: app
       image: private-app:1.0.0 # プライベートプライベートイメージリポジトリ
   imagePullSecrets:
-    - name: app-repository-credentials-secret # プライベートイメージリポジトリの認証情報を持つSecret
+    - name: app-repository-credentials-secret # プライベートイメージリポジトリの資格情報を持つSecret
 ```
 
 > - https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
@@ -4808,9 +4808,9 @@ ConfigMapをマウントする場合は、`.spec.volumes.configMap`キーで設�
 
 **＊実装例＊**
 
-Secretが持つ認証情報ファイル (ここでは`credentials.json`キー) をコンテナにファイルとしてマウントする
+Secretが持つ資格情報ファイル (ここでは`credentials.json`キー) をコンテナにファイルとしてマウントする
 
-そのため、コンテナには認証情報ファイルが配置されることになる。
+そのため、コンテナには資格情報ファイルが配置されることになる。
 
 ```yaml
 apiVersion: v1
@@ -5319,7 +5319,7 @@ data:
 
 #### ▼ kubernetes.io/dockerconfigjson
 
-イメージレジストリの認証情報を設定する。
+イメージレジストリの資格情報を設定する。
 
 ```yaml
 apiVersion: v1
@@ -6008,9 +6008,9 @@ spec:
 
 #### ▼ imagePullSecretsとは
 
-プライベートイメージリポジトリの認証情報を持つSecretを設定する。
+プライベートイメージリポジトリの資格情報を持つSecretを設定する。
 
-これにより、ServiceAccountが紐付けられたPodは、プライベートイメージリポジトリの認証情報を使用できるようになる。
+これにより、ServiceAccountが紐付けられたPodは、プライベートイメージリポジトリの資格情報を使用できるようになる。
 
 ```yaml
 apiVersion: v1

@@ -34,7 +34,7 @@ KeycloakクライアントになりうるJavaScriptパッケージにはいく�
 
 初回認証時の場合は、Keycloakに認可リクエストを送信する。
 
-次回認証時は、任意の場所 (例：SessionStorage、LocalStorage、Cookie) に保管している認証情報をリクエストに設定する。
+次回認証時は、任意の場所 (例：SessionStorage、LocalStorage、Cookie) に保管している資格情報をリクエストに設定する。
 
 例えば、トークンを`Authorization`ヘッダーで運搬する場合はSessionStorageやLocalStorageから取得し、`Cookie`ヘッダーの場合はCookieから取得する。
 

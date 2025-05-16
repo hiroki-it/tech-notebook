@@ -66,7 +66,7 @@ spec:
 
 ### DockerHub
 
-DockerHubの認証情報は、エンコードした上で、あらかじめGitLab CIの変数 (`DOCKERHUB_TOKEN`) に設定しておく。
+DockerHubの資格情報は、エンコードした上で、あらかじめGitLab CIの変数 (`DOCKERHUB_TOKEN`) に設定しておく。
 
 ```bash
 $ echo -n USER:PASSWORD | base64
@@ -94,7 +94,7 @@ build:
 
 ### AWS ECR
 
-AWSの認証情報は、あらかじめGitLab CIの変数 (`AWS_ACCESS_KEY_ID`、`AWS_SECRET_ACCESS_KEY`) に設定しておく。
+AWSの資格情報は、あらかじめGitLab CIの変数 (`AWS_ACCESS_KEY_ID`、`AWS_SECRET_ACCESS_KEY`) に設定しておく。
 
 ```yaml
 build:
@@ -115,7 +115,7 @@ build:
 
 ### Google Container Registry
 
-Google Cloudの認証情報ファイルは、あらかじめGitLab CIの変数 (`GOOGLE_APPLICATION_CREDENTIALS`) に設定しておく。
+Google Cloudの資格情報ファイルは、あらかじめGitLab CIの変数 (`GOOGLE_APPLICATION_CREDENTIALS`) に設定しておく。
 
 ```yaml
 build:

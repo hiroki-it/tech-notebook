@@ -252,7 +252,7 @@ plugin_cache_dir = "$HOME/.terraform.d/plugin-cache"
 
 <br>
 
-## 03. 認証情報
+## 03. 資格情報
 
 ### 必要な情報
 
@@ -303,9 +303,9 @@ provider "aws" {
 }
 ```
 
-#### ▼ 認証情報ファイルによる設定
+#### ▼ 資格情報ファイルによる設定
 
-認証情報は、`~/.aws/credentials`ファイルに記載されている。
+資格情報は、`~/.aws/credentials`ファイルに記載されている。
 
 ```ini
 # 標準プロファイル
@@ -319,7 +319,7 @@ aws_access_key_id=*****
 aws_secret_access_key=*****
 ```
 
-認証情報ファイルを読み出し、プロファイル名を設定することにより、認証情報を参照できる。
+資格情報ファイルを読み出し、プロファイル名を設定することにより、資格情報を参照できる。
 
 **＊実装例＊**
 
@@ -337,31 +337,31 @@ terraform {
     }
   }
 
-  # 認証情報ファイルから、アクセスキーID、シークレットアクセスキーを読み込む
+  # 資格情報ファイルから、アクセスキーID、シークレットアクセスキーを読み込む
   backend "s3" {
     # バケット名
     bucket                  = "prd-foo-tfstate-bucket"
     # tfstateファイル名とバケット内ディレクトリ構造
     key                     = "terraform.tfstate"
     region                  = "ap-northeast-1"
-    # 認証情報ファイルへのパス
+    # 資格情報ファイルへのパス
     shared_credentials_file = "$HOME/.aws/credentials"
-    # 認証情報ファイルのプロファイル名
+    # 資格情報ファイルのプロファイル名
     profile                 = "bar-profile"
   }
 }
 
-# 認証情報ファイルから、アクセスキーID、シークレットアクセスキーを読み込む
+# 資格情報ファイルから、アクセスキーID、シークレットアクセスキーを読み込む
 provider "aws" {
   region                  = "ap-northeast-1"
   profile                 = "foo"
-  shared_credentials_file = "$HOME/.aws/<認証情報ファイル名>"
+  shared_credentials_file = "$HOME/.aws/<資格情報ファイル名>"
 }
 ```
 
 #### ▼ 環境変数による設定
 
-認証情報ファイルではなく、`export`コマンドを使用して、必要な情報も設定できる。
+資格情報ファイルではなく、`export`コマンドを使用して、必要な情報も設定できる。
 
 参照できる環境変数名は決まっている。
 

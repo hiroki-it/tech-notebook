@@ -19,9 +19,9 @@ description: コマンド＠Kubernetesの知見を記録しています。
 
 #### ▼ `kubeconfig`ファイル
 
-`~/.kube/config`配下にあり、Clusterの認証情報が定義されている。
+`~/.kube/config`配下にあり、Clusterの資格情報が定義されている。
 
-`kubectl`コマンドは、`kubeconfig`ファイル上のClusterの認証情報を基に、kube-apiserverにリクエストを送信する。
+`kubectl`コマンドは、`kubeconfig`ファイル上のClusterの資格情報を基に、kube-apiserverにリクエストを送信する。
 
 #### ▼ configシンボリックリンク、--kubeconfig
 
@@ -218,7 +218,7 @@ $ kubectl config view
 apiVersion: v1
 clusters:
 # ---------------------------------------------
-# Docker for Desktopの認証情報
+# Docker for Desktopの資格情報
 # ---------------------------------------------
 - cluster:
     certificate-authority-data: DATA+OMITTED
@@ -230,7 +230,7 @@ contexts:
     user: docker-desktop
   name: docker-desktop
 # ---------------------------------------------
-# Minikubeの認証情報
+# Minikubeの資格情報
 # ---------------------------------------------
 - cluster:
     certificate-authority: /Users/h.hasegawa/.minikube/ca.crt
@@ -352,7 +352,7 @@ $ kubectl create deployment -f ./kubernetes/foo-deployment.yaml
 
 #### ▼ secret docker-registry
 
-イメージレジストリの認証情報を持つSecretを作成する。
+イメージレジストリの資格情報を持つSecretを作成する。
 
 Podと同じNamespaceに所属するする必要があるため、作成時にNamespaceの指定を忘れないようにする。
 

@@ -46,9 +46,9 @@ data:
 
 ### argocd-repoとは
 
-ArgoCDがプライベートリポジトリをポーリングする時に必要な認証情報を設定する。
+ArgoCDがプライベートリポジトリをポーリングする時に必要な資格情報を設定する。
 
-argocd-repo-credsとは異なり、`1`個の認証情報で`1`個のリポジトリにリクエストを送信できるようにする。
+argocd-repo-credsとは異なり、`1`個の資格情報で`1`個のリポジトリにリクエストを送信できるようにする。
 
 なお、パブリックリポジトリの場合は、argocd-repo自体が不要である。
 
@@ -63,7 +63,7 @@ argocd-repo-credsとは異なり、`1`個の認証情報で`1`個のリポジト
 
 Secretタイプは`repository`とする。
 
-ポーリング対象のプライベートなマニフェストリポジトリ、チャートレジストリ、OCIレジストリの認証情報を設定する。
+ポーリング対象のプライベートなマニフェストリポジトリ、チャートレジストリ、OCIレジストリの資格情報を設定する。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories
 
@@ -73,9 +73,9 @@ Secretタイプは`repository`とする。
 
 #### ▼ 注意点
 
-プライベートなマニフェストリポジトリの認証情報を設定する。
+プライベートなマニフェストリポジトリの資格情報を設定する。
 
-プライベートなマニフェストレジストリごとに、異なるSecretで認証情報を設定する必要がある。
+プライベートなマニフェストレジストリごとに、異なるSecretで資格情報を設定する必要がある。
 
 #### ▼ アクセストークンの場合
 
@@ -221,7 +221,7 @@ data:
 
 #### ▼ 注意点
 
-プライベートなチャートリポジトリごとに、異なるSecretで認証情報を設定する必要がある。
+プライベートなチャートリポジトリごとに、異なるSecretで資格情報を設定する必要がある。
 
 ただし、ポーリングする複数のプライベートなチャートリポジトリが、全て`1`個のチャートレジストリ内にある場合は、Secretは`1`個でよい。
 
@@ -282,7 +282,7 @@ data:
 
 OCIプロトコルの有効化 (`.enableOCI`キー) が必要であるが、内部的にOCIプロトコルが`.repoURL`キーの最初に追記されるため、プロトコルの設定は不要である。
 
-プライベートなチャートリポジトリの場合と同様にして、OCIリポジトリごとに異なるSecretで認証情報を設定する必要がある。
+プライベートなチャートリポジトリの場合と同様にして、OCIリポジトリごとに異なるSecretで資格情報を設定する必要がある。
 
 ただし、ポーリングする複数のリポジトリが、全て`1`個のOCIレジストリ内にある場合は、Secretは`1`個でよい。
 
@@ -337,7 +337,7 @@ data:
   enableOCI: "true"
 ```
 
-AWS ECRのように認証情報に有効期限がある場合は、認証情報を定期的に書き換えられるようにする。例えば、aws-ecr-credentialチャートを使用する。
+AWS ECRのように資格情報に有効期限がある場合は、資格情報を定期的に書き換えられるようにする。例えば、aws-ecr-credentialチャートを使用する。
 
 > - https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
 > - https://qiita.com/moriryota62/items/7d94027881d6fe9a478d
@@ -350,11 +350,11 @@ AWS ECRのように認証情報に有効期限がある場合は、認証情報�
 
 ### argocd-repo-credsとは
 
-ArgoCDがプライベートリポジトリをポーリングする時に必要な認証情報を設定する。
+ArgoCDがプライベートリポジトリをポーリングする時に必要な資格情報を設定する。
 
-argocd-repoとは異なり、`1`個の認証情報で複数にリポジトリにリクエストを送信できるようにする。
+argocd-repoとは異なり、`1`個の資格情報で複数にリポジトリにリクエストを送信できるようにする。
 
-ポーリングする複数のリポジトリが全て`1`個のマニフェストレジストリ内にある場合に、`1`個の認証情報で全てのマニフェストリポジトリをポーリングできる。
+ポーリングする複数のリポジトリが全て`1`個のマニフェストレジストリ内にある場合に、`1`個の資格情報で全てのマニフェストリポジトリをポーリングできる。
 
 なお、パブリックリポジトリの場合は、argocd-repo-creds自体が不要である。
 
@@ -390,7 +390,7 @@ data:
   password: pass
 ```
 
-また、argocd-repoには認証情報 (`.username`キー、`.password`キー) を設定しないようにする。
+また、argocd-repoには資格情報 (`.username`キー、`.password`キー) を設定しないようにする。
 
 ```yaml
 # foo-repositoryをポーリングするためのargocd-repo
@@ -403,7 +403,7 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 type: Opaque
 data:
-  # 認証情報は設定しない。
+  # 資格情報は設定しない。
   # マニフェストリポジトリ名
   name: foo-repository
   # https://github.com/hiroki-hasegawa に前方一致する。
@@ -419,7 +419,7 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 type: Opaque
 data:
-  # 認証情報は設定しない。
+  # 資格情報は設定しない。
   # マニフェストリポジトリ名
   name: bar-repository
   # https://github.com/hiroki-hasegawa に前方一致する。
@@ -428,7 +428,7 @@ data:
 
 ArgoCDは、argocd-repo-credsの`.url`キーを使用して、argocd-repoの`.url`キーに対する前方一致を実施する。
 
-前方一致したURLを持つ全てのargocd-repoで、argocd-repo-credsの認証情報 (`.username`キー、`.password`キー) が適用される。
+前方一致したURLを持つ全てのargocd-repoで、argocd-repo-credsの資格情報 (`.username`キー、`.password`キー) が適用される。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
 
@@ -438,7 +438,7 @@ ArgoCDは、argocd-repo-credsの`.url`キーを使用して、argocd-repoの`.ur
 
 ### argocd-secretとは
 
-以下の認証情報やSSL証明書を設定する。
+以下の資格情報やSSL証明書を設定する。
 
 - クライアントが、任意の認証/認可方法でArgoCDにログインするためのユーザー名とパスワード
 - ArgoCDがapiserverにリクエストを送信するためのSSL証明書と秘密鍵
@@ -656,9 +656,9 @@ data:
 
 #### ▼ 手順
 
-ArgoCDがClusterをポーリングするためには、ArgoCDにClusterの認証情報を登録する必要がある。
+ArgoCDがClusterをポーリングするためには、ArgoCDにClusterの資格情報を登録する必要がある。
 
-これは、ローカルマシンで`kubectl`コマンドを実行する時に、`kubeconfig`ファイルにClusterの認証情報を登録することと同じである。
+これは、ローカルマシンで`kubectl`コマンドを実行する時に、`kubeconfig`ファイルにClusterの資格情報を登録することと同じである。
 
 `(1)`
 

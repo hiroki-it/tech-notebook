@@ -57,7 +57,7 @@ db=postgres
 
 #### ▼ Databaseとは
 
-認証情報のDB (例：MySQL、PostgreSQLなど) を使用できる。
+資格情報のDB (例：MySQL、PostgreSQLなど) を使用できる。
 
 Keycloakと各DBのバージョンの相性を確認しておく必要がある。
 

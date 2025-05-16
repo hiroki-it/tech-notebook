@@ -771,7 +771,7 @@ data:
 
 **＊実装例＊**
 
-リポジトリの認証情報を管理するSecretを繰り返し作成する。
+リポジトリの資格情報を管理するSecretを繰り返し作成する。
 
 ```yaml
 {{- range .Values.github.repositories }}

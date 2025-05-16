@@ -13,7 +13,7 @@ description: 認証ロジック＠JavaScriptを記録しています。
 
 <br>
 
-## 01. 認証情報の保管の種類
+## 01. 資格情報の保管の種類
 
 ### SessionStorage
 

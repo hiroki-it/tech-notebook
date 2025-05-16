@@ -17,7 +17,7 @@ description: Google Cloud CLI＠Google Cloudリソースの知見を記録して
 
 ### Configuration
 
-現在の認証情報を設定する。
+現在の資格情報を設定する。
 
 ```bash
 $ cat /root/.config/gcloud/configurations/config_<プロジェクト名>
@@ -62,9 +62,9 @@ Traceback (most recent call last):
 
 #### ▼ activate-service-account
 
-認証情報ファイルを使用して、ServiceAccountにログインする。
+資格情報ファイルを使用して、ServiceAccountにログインする。
 
-認証情報ファイルは使用後に削除した方が良いらしい。
+資格情報ファイルは使用後に削除した方が良いらしい。
 
 ```bash
 $ gcloud auth activate-service-account foo-service-account@foo-project.iam.gserviceaccount.com \
@@ -102,11 +102,11 @@ ACTIVE  ACCOUNT
 
 Google Cloud CLIによるGoogle Cloudリソースへのアクセスを認証するために使用する。
 
-`~/.config/gcloud/application_default_credentials.json`ファイルを作成し、認証情報を定義する。
+`~/.config/gcloud/application_default_credentials.json`ファイルを作成し、資格情報を定義する。
 
 また、これ使用してGoogle Cloudにログインする。
 
-`~/.config/gcloud/application_default_credentials.json`ファイルは`1`個のプリンシパルの認証情報しか持てないため、プリンシパルを切り替える場合はファイルを再作成する必要がある。
+`~/.config/gcloud/application_default_credentials.json`ファイルは`1`個のプリンシパルの資格情報しか持てないため、プリンシパルを切り替える場合はファイルを再作成する必要がある。
 
 ```bash
 $ gcloud auth application-default login
@@ -154,7 +154,7 @@ $ gcloud auth login
 
 `gcloud auth application-default login`コマンドと`gcloud auth login`コマンドを同時に実行する。
 
-これにより、Google Cloud CLIのための認証情報 (`~/.config/gcloud/application_default_credentials.json`ファイル) とGoogle Cloud SDKのための認証情報が更新される。
+これにより、Google Cloud CLIのための資格情報 (`~/.config/gcloud/application_default_credentials.json`ファイル) とGoogle Cloud SDKのための資格情報が更新される。
 
 ```bash
 $ gcloud auth login --update-adc
@@ -361,7 +361,7 @@ $ gcloud config configurations activate foo-foo
 
 #### ▼ list
 
-現在のログインしているプリンシパルの認証情報を取得する。
+現在のログインしているプリンシパルの資格情報を取得する。
 
 **＊実行例＊**
 
@@ -565,7 +565,7 @@ Please enter numeric choice or text value (must exactly match list item): 3 # �
 ```bash
 $ gcloud info
 
-# 認証情報ファイル
+# 資格情報ファイル
 User Config Directory: /root/.config/gcloud]
 
 ...

@@ -19,9 +19,9 @@ description: AWS CLI＠AWSの知見を記録しています。
 
 #### ▼ configure
 
-認証情報を設定する。
+資格情報を設定する。
 
-OSによって、認証情報ファイルが配置される場所が異なる。
+OSによって、資格情報ファイルが配置される場所が異なる。
 
 ```bash
 $ aws configure
@@ -48,7 +48,7 @@ Default output format [None]: <アウトプット形式>
 
 #### ▼ listとは
 
-現在設定されている認証情報を取得する。
+現在設定されている資格情報を取得する。
 
 ```bash
 $ aws configure list
@@ -60,10 +60,10 @@ $ aws configure list
 
 #### ▼ setとは
 
-認証情報の特定の項目を設定する。
+資格情報の特定の項目を設定する。
 
 ```bash
-$ aws configure set <認証情報の項目>
+$ aws configure set <資格情報の項目>
 ```
 
 アクセスキーIDを設定する。
@@ -94,11 +94,11 @@ $ aws configure set aws_default_region "<リージョン名>"
 
 #### ▼ `~/.aws/confidentials`ファイルとは
 
-認証情報を設定する。
+資格情報を設定する。
 
-LinuxやUnixの場合は、`$HOME/.aws/<認証情報ファイル名>`に配置される。
+LinuxやUnixの場合は、`$HOME/.aws/<資格情報ファイル名>`に配置される。
 
-また、Windowsの場合は、`%USERPROFILE%\.aws\<認証情報ファイル名>`に配置される。
+また、Windowsの場合は、`%USERPROFILE%\.aws\<資格情報ファイル名>`に配置される。
 
 #### ▼ aws_access_key_id
 
@@ -264,7 +264,7 @@ $ export AWS_SECRET_ACCESS_KEY=<シークレットアクセスキー>
 
 現在のターミナルで使用するセッショントークンを設定する。
 
-AWS STSで発行された一時的な認証情報に含まれ、この認証情報を使用する時に、アクセスキーIDとシークレットアクセスキーと合わせて必要になる。
+AWS STSで発行された一時的な資格情報に含まれ、この資格情報を使用する時に、アクセスキーIDとシークレットアクセスキーと合わせて必要になる。
 
 ```bash
 $ export AWS_SESSION_TOKEN=<セッショントークン>
@@ -423,7 +423,7 @@ $ aws ec2 describe-instances \
 
 リージョンを指定して、コマンドを実行する。
 
-認証情報ファイルや環境変数を変更する手間が省ける。
+資格情報ファイルや環境変数を変更する手間が省ける。
 
 <br>
 
@@ -761,9 +761,9 @@ $ aws sts decode-authorization-message --encoded-message zAc3k...
 
 #### ▼ get-caller-identity
 
-一時的な認証情報を取得する。
+一時的な資格情報を取得する。
 
-`~/.aws/cli/cache`ディレクトリ配下に認証情報のキャッシュが作成される。
+`~/.aws/cli/cache`ディレクトリ配下に資格情報のキャッシュが作成される。
 
 ```bash
 $ aws sts get-caller-identity --profile foo

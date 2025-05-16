@@ -21,7 +21,7 @@ HTTPリクエストの中で認証を行う認証スキームのこと。
 
 認証スキームの種類には、『Basic認証』、『Digest認証』、『Bearer認証』などがある。
 
-認証情報の一時的な保管は、ブラウザのWebStoregeで行うため、認証解除 (ログアウト) をサーバー側で完全に制御できない。
+資格情報の一時的な保管は、ブラウザのWebStoregeで行うため、認証解除 (ログアウト) をサーバー側で完全に制御できない。
 
 > - https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml
 > - https://architecting.hateblo.jp/entry/2020/03/27/130535

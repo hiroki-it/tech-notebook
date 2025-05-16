@@ -35,10 +35,10 @@ hide:
 
   > - ##### [︎認証](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication.html)
   > - ##### [︎HTTP認証](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_http.html)
-  > - ##### <u>認証情報による分類</u>
-  >   > - ##### [認証情報による分類](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_credentials.html)
-  >   > - ##### [認証情報の運搬](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_credentials_carrier.html)
-  >   > - ##### [認証情報の保管](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_credentials_store.html)
+  > - ##### <u>資格情報による分類</u>
+  >   > - ##### [資格情報による分類](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_credentials.html)
+  >   > - ##### [資格情報の運搬](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_credentials_carrier.html)
+  >   > - ##### [資格情報の保管](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_credentials_store.html)
   >   > - ##### [JWT](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_credentials_jwt.html)
   >   > - ##### <u>SSO</u>
   >   >   > - ##### [SSO](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_credentials_sso.html)

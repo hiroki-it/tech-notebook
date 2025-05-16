@@ -44,7 +44,7 @@ description: IAM＠Google Cloudリソースの知見を記録しています。
 
 ### 認証
 
-#### ▼ 認証情報
+#### ▼ 資格情報
 
 記入中...
 
@@ -62,13 +62,13 @@ $ gcloud auth login
 
 GoogleCloudリソース自体のアカウントである。
 
-サービスアカウントを実際のGoogle Cloudリソースや外部リソース (例：AWSリソース、ログ収集ツールなど) に紐づけるためには、サービスアカウントの認証情報ファイルをこれに持たせる必要がある。
+サービスアカウントを実際のGoogle Cloudリソースや外部リソース (例：AWSリソース、ログ収集ツールなど) に紐づけるためには、サービスアカウントの資格情報ファイルをこれに持たせる必要がある。
 
 <br>
 
 ### サービスアカウントキー
 
-サービスアカウントの認証情報である。
+サービスアカウントの資格情報である。
 
 ```yaml
 {
@@ -92,13 +92,13 @@ GoogleCloudリソース自体のアカウントである。
 
 ### 開発者が使用する場合
 
-認証情報ファイルのパスを設定する。
+資格情報ファイルのパスを設定する。
 
 ```bash
-$ gcloud auth login --cred-file="<認証情報ファイルのパス>"
+$ gcloud auth login --cred-file="<資格情報ファイルのパス>"
 ```
 
-認証情報ファイルの現在のパスは、`gcloud info`コマンドで確認する。
+資格情報ファイルの現在のパスは、`gcloud info`コマンドで確認する。
 
 ```bash
 $ gcloud info
@@ -119,7 +119,7 @@ $ gcloud info
 
 #### ▼ ファイルパスの指定する場合
 
-認証情報ファイルのパスを`GOOGLE_APPLICATION_CREDENTIALS`変数に設定する。
+資格情報ファイルのパスを`GOOGLE_APPLICATION_CREDENTIALS`変数に設定する。
 
 サービスアカウントとしてのリソースは、これを自動的に読み込み、サービスアカウントに紐づく。
 
@@ -190,8 +190,8 @@ GoogleCloud外リソース (例：AWS、Azure、Kubernetesなど) からGoogleCl
 
 1. GoogleCloud以外で認証を実行する。
 2. 認証が成功する。
-3. 認証情報をGoogleCloud STSに送信する。
-4. Workload Identityプールにて、認証情報を検証する。
+3. 資格情報をGoogleCloud STSに送信する。
+4. Workload Identityプールにて、資格情報を検証する。
 5. 検証が成功し、一時的なトークンを発行する。
 6. GoogleCloud以外リソースにトークンを送信する。
 7. GoogleCloud以外リソースは、トークンを使用してGoogleCloudリソースのサービスアカウントに紐づく。

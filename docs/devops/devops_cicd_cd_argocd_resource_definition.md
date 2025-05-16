@@ -1459,7 +1459,7 @@ spec:
 
 この時、プラグイン (`helm secrets`) を使用することもできる。
 
-例えば、公式チャートで認証情報を使用したSecretが必要な場合、`helm secrets`プラグインを使用した追加チャートを定義するとよい。
+例えば、公式チャートで資格情報を使用したSecretが必要な場合、`helm secrets`プラグインを使用した追加チャートを定義するとよい。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
