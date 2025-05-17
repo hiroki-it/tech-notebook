@@ -69,7 +69,7 @@ RedHat上のOSSのCVEは、RedHat CVEDBで検索できる。
 
 #### ▼ 中間者攻撃とは
 
-二者間の通信に割り込み、盗聴/改竄/成りすましによって通信を攻撃する。
+二者間の通信に割り込み、情報漏洩/改竄/なりすましによって通信を攻撃する。
 
 > - https://www.rapid7.com/ja/fundamentals/man-in-the-middle-mitm-attacks/
 
@@ -253,7 +253,7 @@ Brute-forceは力ずくの意味。IDを固定して、パスワードを総当�
 
 #### ▼ ソーシャルエンジニアリングとは
 
-技術的な手法ではなく、物理的な手法 (例：盗み見、盗み聞き、成りすまし、詐欺など) によってパスワードを取得し、アクセスする手法。
+技術的な手法ではなく、物理的な手法 (例：盗み見、盗み聞き、なりすまし、詐欺など) によってパスワードを取得し、アクセスする手法。
 
 ![ソーシャルエンジニアリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ソーシャルエンジニアリング.png)
 

@@ -25,13 +25,13 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 ## 02. 暗号化技術の目的
 
-### 盗聴 (アプリケーションデータの盗み取り) を防ぐため
+### 情報漏洩 (アプリケーションデータの盗み取り) を防ぐため
 
 『共通鍵暗号方式』や『公開鍵暗号方式』によって実現される。
 
-暗号アルゴリズムに基づく暗号方式を使用してアプリケーションデータを暗号化することによって、アプリケーションデータの盗聴を防ぐ。
+暗号アルゴリズムに基づく暗号方式を使用してアプリケーションデータを暗号化することによって、アプリケーションデータの情報漏洩を防ぐ。
 
-![盗聴_改竄_成りすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/盗聴_改竄_成りすまし_1.png)
+![情報漏洩_改竄_なりすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/情報漏洩_改竄_なりすまし_1.png)
 
 > - https://nrm.recruitment.jp/column/detail/id=631
 > - https://secure.stylemap.co.jp/enforce-security/security-measures-using-the-stride-model/
@@ -44,20 +44,20 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 署名とハッシュ関数を使用して、相手に送ったアプリケーションデータと相手が受け取ったアプリケーションデータが同じか否かを確認することによって、アプリケーションデータの改竄を防ぐ。
 
-![盗聴_改竄_成りすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/盗聴_改竄_成りすまし_2.png)
+![情報漏洩_改竄_なりすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/情報漏洩_改竄_なりすまし_2.png)
 
 > - https://nrm.recruitment.jp/column/detail/id=631
 > - https://secure.stylemap.co.jp/enforce-security/security-measures-using-the-stride-model/
 
 <br>
 
-### 成りすましを防ぐため
+### なりすましを防ぐため
 
 『署名』によって実現される。
 
-署名を使用して正しい相手であることを認証することによって、成りすましを防ぐ。
+署名を使用して正しい相手であることを認証することによって、なりすましを防ぐ。
 
-![盗聴_改竄_成りすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/盗聴_改竄_成りすまし_3.png)
+![情報漏洩_改竄_なりすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/情報漏洩_改竄_なりすまし_3.png)
 
 > - https://nrm.recruitment.jp/column/detail/id=631
 > - https://secure.stylemap.co.jp/enforce-security/security-measures-using-the-stride-model/
@@ -81,7 +81,7 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 #### ▼ S/MINEとは
 
-暗号化ダイジェスト (署名) を含む証明書をメールに添付することによって、公開鍵の成りすましを防ぐセキュリティ技術。
+暗号化ダイジェスト (署名) を含む証明書をメールに添付することによって、公開鍵のなりすましを防ぐセキュリティ技術。
 
 ![S_MIME](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/S_MIME.png)
 
@@ -337,7 +337,7 @@ SSL/TLSプロトコルはアプリケーションデータしか暗号化でき�
 
 VPN接続されると、自宅PCからのTCPスリーウェイハンドシェイクが会社のルーターを通過するため、送信元IPアドレスが会社のものにかわる。
 
-盗聴を防げる。
+情報漏洩を防げる。
 
 ![IPsecによるインターネットVPN](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IPsecによるインターネットVPN.jpg)
 
