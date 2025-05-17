@@ -143,12 +143,12 @@ $ sops -e ./values/foo-values.yaml -k $SOPS_KMS_ARN
 
 #### ▼ -d
 
-`yaml`ファイルや`json`ファイルの値の部分を復号化する。
+`yaml`ファイルや`json`ファイルの値の部分を復号する。
 
 標準出力に出力されるため、ファイルに書き出すようにすると良い。
 
 ```bash
-$ sops -d <暗号化された.yamlファイル/.jsonファイル> > <復号化された.yamlファイル/.jsonファイル>
+$ sops -d <暗号化された.yamlファイル/.jsonファイル> > <復号された.yamlファイル/.jsonファイル>
 ```
 
 **＊例＊**

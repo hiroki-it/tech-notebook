@@ -49,7 +49,7 @@ $ ansible-community --version
 
 ### --ask-vault-pass (ask-vault-password)
 
-ansible-vaultプラグインによって暗号化されたパスワードファイルを復号化し、プロビジョニングを実行する。
+ansible-vaultプラグインによって暗号化されたパスワードファイルを復号し、プロビジョニングを実行する。
 
 ```bash
 $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ> --ask-vault-pass
@@ -57,7 +57,7 @@ $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレク
 
 **＊例＊**
 
-全てのインベントリーを指定し、また暗号化済みファイルを復号化し、プロビジョニングを実行する。
+全てのインベントリーを指定し、また暗号化済みファイルを復号し、プロビジョニングを実行する。
 
 ```bash
 $ ansible-playbook foo-playbook.yml -i ./inventories --ask-vault-pass
@@ -129,7 +129,7 @@ $ ansible-playbook -u foo-user <playbookファイル> -i <inventoryファイル/
 
 ### decrypt
 
-指定した暗号化済みファイルを復号化する。
+指定した暗号化済みファイルを復号する。
 
 ```bash
 $ ansible-vault decrypt parameters.yml

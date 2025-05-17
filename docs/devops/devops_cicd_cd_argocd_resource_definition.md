@@ -1256,7 +1256,7 @@ data:
 sops: ...
 ```
 
-ArgoCDは暗号化された`values`ファイルを復号化し、チャートをインストールする。
+ArgoCDは暗号化された`values`ファイルを復号し、チャートをインストールする。
 
 補足としてArgoCD上では、Secretのdataキーは`base64`方式でエンコードされる。
 
@@ -1480,7 +1480,7 @@ spec:
           bar: bar
           baz: baz
     # 自前チャート
-    # helm-secretsプラグインを使用して、Secretを復号化する。
+    # helm-secretsプラグインを使用して、Secretを復号する。
     - repoURL: https://github.com/hiroki-hasegawa/bar-repository.git
       targetRevision: main
       path: foo-extra

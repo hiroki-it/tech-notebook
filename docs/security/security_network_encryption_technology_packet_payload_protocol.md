@@ -53,6 +53,18 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 ![盗聴_改竄_成りすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/盗聴_改竄_成りすまし_3.png)
 
+
+
+<br>
+
+### 否認を防ぐため
+
+
+証跡を残すことによって、否認を防ぐ。
+
+
+
+
 ## 02-02. 【アプリケーション層】メールデータの暗号化技術
 
 ### S/MIME：Secure MIME
@@ -336,9 +348,9 @@ VPN接続されると、自宅PCからのTCPスリーウェイハンドシェイ
 > - https://www.netmotionsoftware.com/ja/blog/connectivity/jpn-5-vpn-protocols
 > - https://www.iim.co.jp/products/zscaler/zpa/
 
-#### ▼ アプリケーションデータの暗号化/復号化
+#### ▼ アプリケーションデータの暗号化/復号
 
-リクエスト時、SSL/TLSプロトコルによって通信は暗号化され、接続先のネットワーク内にあるVPNゲートウェイというプロキシサーバーで復号化される。
+リクエスト時、SSL/TLSプロトコルによって通信は暗号化され、接続先のネットワーク内にあるVPNゲートウェイというプロキシサーバーで復号される。
 
 反対にレスポンス時、VPNゲートウェイで再び暗号化され、クライアントに返信される。
 

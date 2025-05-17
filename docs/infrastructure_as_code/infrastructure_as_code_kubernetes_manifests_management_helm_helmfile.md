@@ -476,7 +476,7 @@ releases:
 
 ### secrets
 
-Helmの実行時に復号化するSecretのファイルを設定する。
+Helmの実行時に復号するSecretのファイルを設定する。
 
 ```yaml
 secrets:

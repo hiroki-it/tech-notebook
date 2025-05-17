@@ -79,9 +79,9 @@ AWS S3をチャートリポジトリとして使用するために、チャー�
 
 ### helm-secretsとは
 
-暗号化ツールを使用して、`values`ファイルを復号化し、Secretのデータとして注入する。
+暗号化ツールを使用して、`values`ファイルを復号し、Secretのデータとして注入する。
 
-また反対に、Secretのデータを復号化する。
+また反対に、Secretのデータを復号する。
 
 > - https://scrapbox.io/mikutas/helm-secrets%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
 
@@ -142,7 +142,7 @@ $ helm template . -f secrets://foo-secrets.yaml
 
 暗号化された`values`ファイル (`secrets`ファイル) と、平文の`values`ファイルを使用して、`helm`コマンドを実行する。
 
-これにより、暗号化された値を`helm`コマンドの実行時のみ復号化し、マニフェストに出力できる。
+これにより、暗号化された値を`helm`コマンドの実行時のみ復号し、マニフェストに出力できる。
 
 補足としてこの時、`values`ファイル側には`secrets`ファイルの値を設定しておく必要はない。
 
@@ -183,7 +183,7 @@ data:
   foo: {{.Values.foo | b64enc}}
 ```
 
-この時、`helm secrets`コマンドで`secrets`ファイルを指定すると、復号化した上で`.Values`に出力してくれる。
+この時、`helm secrets`コマンドで`secrets`ファイルを指定すると、復号した上で`.Values`に出力してくれる。
 
 ArgoCDが使用するSOPSのバージョンは、暗号化時に使用したSOPSのバージョン (`sops`キーの値) に合わせた方が良い。
 
@@ -209,7 +209,7 @@ data:
 
 #### ▼ decrypt
 
-指定した`values`ファイルを復号化し、`.yaml.dec`ファイルに出力する。
+指定した`values`ファイルを復号し、`.yaml.dec`ファイルに出力する。
 
 ```bash
 $ helm secrets decrypt <暗号化されたvaluesファイル>

@@ -312,7 +312,7 @@ Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのク
 
 送信元マイクロサービスはHTTPを指定し、istio-proxyのクライアント証明書とIstio Egress GatewayのSSL証明書で相互TLS認証を実施する。
 
-Istio Egress Gatewayはアプリケーションデータを復号化できるため、プロトコルをHTTPとして扱う。
+Istio Egress Gatewayはアプリケーションデータを復号できるため、プロトコルをHTTPとして扱う。
 
 そのため、IstioのメトリクスではHTTPとして処理され、またIstio Egress Gatewayではスパンを作成できる。
 
@@ -325,7 +325,7 @@ Istio Egress Gatewayはアプリケーションデータを復号化できるた
 
 送信元マイクロサービスはHTTPSを指定し、サービスメッシュ外の宛先が持つSSL証明書でサーバー認証を実施する。
 
-Istio Egress Gatewayはアプリケーションデータを復号化できないため、プロトコルをTCPとして扱う。
+Istio Egress Gatewayはアプリケーションデータを復号できないため、プロトコルをTCPとして扱う。
 
 そのため、Istio Egress Gateway上を通過するTLSはIstioのメトリクスではTCPとして処理され、またIstio Egress Gatewayではスパンを作成できない。
 

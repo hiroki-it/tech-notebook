@@ -211,7 +211,7 @@ viaduct.ai/v1/ksops/ksops
 
 #### ▼ KSOPSとは
 
-SOPSを使用して、復号化したデータをSecretにデータを注入する。
+SOPSを使用して、復号したデータをSecretにデータを注入する。
 
 SOPSで使用できる暗号化キー (例：AWS KMS、Google Cloud CKM、GPG、PGPなど) をKSOPSでも使用できる。
 

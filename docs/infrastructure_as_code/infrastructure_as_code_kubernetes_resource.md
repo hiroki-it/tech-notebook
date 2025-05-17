@@ -1199,13 +1199,13 @@ Namespaceが異なれば、`.metadata.labels`キーに同じ値 (例：同じ名
 
 Podの起動時に、kubectlコマンドが実行され、コンテナイメージをプルする。
 
-Secretに永続化された値を復号化し、`kubectl`コマンドにパラメーターとして出力できる。
+Secretに永続化された値を復号し、`kubectl`コマンドにパラメーターとして出力できる。
 
 > - https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets
 
 #### ▼ コンテナの環境変数として
 
-永続化された値を復号化し、Pod内のコンテナに環境変数として出力できる。
+永続化された値を復号し、Pod内のコンテナに環境変数として出力できる。
 
 > - https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
 

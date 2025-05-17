@@ -126,7 +126,7 @@ AWS KMSのリクエスト制限を設定する。
 
 暗号化キーの用途タイプを設定する。
 
-- 暗号化と復号化 (`ENCRYPT_DECRYPT`)
+- 暗号化と復号 (`ENCRYPT_DECRYPT`)
 - 署名と検証 (`SIGN_VERIFY`)
 - MCの生成と検証 (`GENERATE_VERIFY_MAC`)
 
