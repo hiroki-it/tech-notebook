@@ -23,7 +23,7 @@ description: 証明書ベース認証＠資格情報による分類の知見を�
 
 『成りすまし』と『改竄』を防げる。
 
-![署名](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/署名.png)
+![署名](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/デジタル署名.png)
 
 **＊サーバーが実行すること＊**
 
