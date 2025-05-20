@@ -217,6 +217,35 @@ data:
         type: tempo
         url: http://grafana-tempo.istio-system.svc.cluster.local:3100
         basicAuth: false
+        jsonData:
+          # トレースIDからログに接続する
+          tracesToLogs:
+            datasourceUid: Loki
+            tags:
+              - container
+            mappedTags:
+              - key: k8s.container.name
+                value: container
+            mapTagNamesEnabled: true
+            # スパン開始時刻の検索ウィンドウの補正
+            spanStartTimeShift: -1m
+            # スパン終了時刻の検索ウィンドウの補正
+            spanEndTimeShift: 1m
+            # トレースIDでログをフィルタリングするかどうかのフラグ
+            filterByTraceID: true
+            # スパンIDでログをフィルタリングするかどうかのフラグ
+            filterBySpanID: false
+          # トレースIDからメトリクスに接続する
+          tracesToMetrics:
+            datasourceUid: Prometheus
+            tags:
+    　　　　　　- key: k8s.container.name
+                value: container
+            spanStartTimeShift: -10m
+            spanEndTimeShift: 10m
+            queries:
+              - name: Memory Usage
+                query: avg(container_memory_usage_bytes{__ignore_usage__="",$$__tags})
 ```
 
 <br>

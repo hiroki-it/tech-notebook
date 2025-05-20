@@ -13,7 +13,7 @@ description: 設定ファイル＠Grafana Alloyの知見を記録しています
 
 <br>
 
-## config.alloy
+## 01. discovery
 
 ### discovery.kubernetes
 
@@ -89,6 +89,8 @@ discovery.relabel "pod_logs" {
 
 <br>
 
+## 02. local
+
 ### local.file_match
 
 ```bash
@@ -100,6 +102,8 @@ local.file_match "kubernetes_pods" {
 > - https://grafana.com/docs/agent/latest/flow/reference/components/local.file_match/
 
 <br>
+
+## 03. loki
 
 ### loki.process
 
@@ -174,3 +178,52 @@ loki.write "pod_logs" {
 > - https://grafana.com/docs/agent/latest/flow/reference/components/loki.write/
 
 <br>
+
+## 04. otelcol
+
+### otelcol.exporter.otlp
+
+```bash
+otelcol.exporter.otlp "trace" {
+  client {
+    endpoint = "granafa-tempo.granafa-tempo.svc.cluster.local:4317"
+    tls {
+      insecure = true
+    }
+  }
+}
+```
+
+<br>
+
+### otelcol.receiver.otlp
+
+```bash
+otelcol.receiver.otlp "trace" {
+  output {
+    traces  = [otelcol.processor.k8sattributes.trace.input]
+  }
+}
+```
+
+<br>
+
+### otelcol.processor.k8sattributes
+
+```bash
+otelcol.processor.k8sattributes "trace" {
+  extract {
+    metadata = [
+      "k8s.namespace.name",
+      "k8s.pod.name",
+      "k8s.container.name",
+    ]
+  }
+
+  output {
+    traces = [otelcol.exporter.otlp.trace.input]
+  }
+}
+```
+
+<>br

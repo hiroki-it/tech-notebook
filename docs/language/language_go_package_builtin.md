@@ -1117,6 +1117,37 @@ if err != nil {
 
 ただ、この仕様がわかりにくいため、`os.Exit(1)`と`log.Printf`関数を別々に実行した方が良い。
 
+注意点として、 接尾辞`Fatal`関数はプロセスを中断させるため、先に宣言した`defer`関数を実行できなくなってしまう。
+
+```go
+func foo() (func(), error) {
+
+	// 何らかの処理
+
+    return func() {
+        err := // 何らかの処理
+		if err != nil {
+			log.Printf("error shutting down: %v", err)
+		}
+		log.Print("shutdown successfully")
+    }, nil
+}
+
+func main() {
+	shutdown, err :=  := foo()
+
+	// 本来であればmain関数の最後に実行できるが、後述のFatal関数を実行した場合は、そこでプロセスが終わってしまう
+	defer shutdown()
+
+    err = http.ListenAndServe(":8080", nil)
+
+	if err != nil {
+		// ここでFatal関数を実行すると、defer宣言したshutdown関数を実行できない
+		log.Fatalf("server error: %v", err)
+	}
+}
+```
+
 **＊実装例＊**
 
 渡された`error`インターフェースを標準出力に出力する。
