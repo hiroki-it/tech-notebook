@@ -1117,9 +1117,23 @@ if err != nil {
 
 ただ、この仕様がわかりにくいため、`os.Exit(1)`と`log.Printf`関数を別々に実行した方が良い。
 
-注意点として、 接尾辞`Fatal`関数はプロセスを中断させるため、先に宣言した`defer`関数を実行できなくなってしまう。
+**＊実装例＊**
+
+渡された`error`インターフェースを標準出力に出力する。
 
 ```go
+if err != nil {
+	// 内部でos.Exit(1)を実行する。
+	log.Fatalf("Failed to do something: %v", err)
+}
+```
+
+注意点として、 接尾辞`Fatal`関数はプロセスを中断させるため、先に宣言した`defer`関数を実行できなくなってしまう。
+
+そのため、接尾辞`Fatal`関数は必ず最後に実行する。
+
+```go
+// 接尾辞Fatal関数を最後に実行しておらず、ダメな実装例
 func foo() (func(), error) {
 
 	// 何らかの処理
@@ -1145,17 +1159,6 @@ func main() {
 		// ここでFatal関数を実行すると、defer宣言したshutdown関数を実行できない
 		log.Fatalf("server error: %v", err)
 	}
-}
-```
-
-**＊実装例＊**
-
-渡された`error`インターフェースを標準出力に出力する。
-
-```go
-if err != nil {
-	// 内部でos.Exit(1)を実行する。
-	log.Fatalf("Failed to do something: %v", err)
 }
 ```
 
