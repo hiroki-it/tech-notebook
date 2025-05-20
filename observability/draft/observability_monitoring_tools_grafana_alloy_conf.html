@@ -26960,13 +26960,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#configalloy" class="md-nav__link">
+  <a href="#01-discovery" class="md-nav__link">
     <span class="md-ellipsis">
-      config.alloy
+      01. discovery
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="config.alloy">
+    <nav class="md-nav" aria-label="01. discovery">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26987,6 +26987,21 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. local
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. local">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#localfile_match" class="md-nav__link">
     <span class="md-ellipsis">
@@ -26995,6 +27010,21 @@
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-loki" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. loki
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. loki">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#lokiprocess" class="md-nav__link">
@@ -27037,6 +27067,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#04-otelcol" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. otelcol
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. otelcol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#otelcolexporterotlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      otelcol.exporter.otlp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otelcolreceiverotlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      otelcol.receiver.otlp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otelcolprocessork8sattributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      otelcol.processor.k8sattributes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -27065,7 +27137,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="configalloy">config.alloy<a class="headerlink" href="#configalloy" title="Permanent link">&para;</a></h2>
+<h2 id="01-discovery">01. discovery<a class="headerlink" href="#01-discovery" title="Permanent link">&para;</a></h2>
 <h3 id="discoverykubernetes">discovery.kubernetes<a class="headerlink" href="#discoverykubernetes" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>discovery.kubernetes<span class="w"> </span><span class="s2">&quot;pod&quot;</span><span class="w"> </span><span class="o">{</span>
 <span class="w">      </span><span class="nv">role</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pod&quot;</span>
@@ -27138,6 +27210,7 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="02-local">02. local<a class="headerlink" href="#02-local" title="Permanent link">&para;</a></h2>
 <h3 id="localfile_match">local.file_match<a class="headerlink" href="#localfile_match" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>local.file_match<span class="w"> </span><span class="s2">&quot;kubernetes_pods&quot;</span><span class="w"> </span><span class="o">{</span>
 <span class="w">    </span><span class="nv">path_targets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>discovery.relabel.kubernetes_pods.output
@@ -27149,6 +27222,7 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="03-loki">03. loki<a class="headerlink" href="#03-loki" title="Permanent link">&para;</a></h2>
 <h3 id="lokiprocess">loki.process<a class="headerlink" href="#lokiprocess" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>loki.process<span class="w"> </span><span class="s2">&quot;pod_logs&quot;</span><span class="w"> </span><span class="o">{</span>
 <span class="w">  </span>stage.static_labels<span class="w"> </span><span class="o">{</span>
@@ -27219,6 +27293,42 @@ loki.process<span class="w"> </span><span class="s2">&quot;pod_logs&quot;</span>
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="04-otelcol">04. otelcol<a class="headerlink" href="#04-otelcol" title="Permanent link">&para;</a></h2>
+<h3 id="otelcolexporterotlp">otelcol.exporter.otlp<a class="headerlink" href="#otelcolexporterotlp" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>otelcol.exporter.otlp<span class="w"> </span><span class="s2">&quot;trace&quot;</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>client<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;granafa-tempo.granafa-tempo.svc.cluster.local:4317&quot;</span>
+<span class="w">    </span>tls<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="nv">insecure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="w">  </span><span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="otelcolreceiverotlp">otelcol.receiver.otlp<a class="headerlink" href="#otelcolreceiverotlp" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>otelcol.receiver.otlp<span class="w"> </span><span class="s2">&quot;trace&quot;</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>output<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">traces</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>otelcol.processor.k8sattributes.trace.input<span class="o">]</span>
+<span class="w">  </span><span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="otelcolprocessork8sattributes">otelcol.processor.k8sattributes<a class="headerlink" href="#otelcolprocessork8sattributes" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>otelcol.processor.k8sattributes<span class="w"> </span><span class="s2">&quot;trace&quot;</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>extract<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">metadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>
+<span class="w">      </span><span class="s2">&quot;k8s.namespace.name&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;k8s.pod.name&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;k8s.container.name&quot;</span>,
+<span class="w">    </span><span class="o">]</span>
+<span class="w">  </span><span class="o">}</span>
+
+<span class="w">  </span>output<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">traces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>otelcol.exporter.otlp.trace.input<span class="o">]</span>
+<span class="w">  </span><span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>&lt;&gt;br</p>
 
 
 
@@ -27239,7 +27349,7 @@ loki.process<span class="w"> </span><span class="s2">&quot;pod_logs&quot;</span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月2日 20:08:37">2025-05-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月21日 00:40:29">2025-05-21</span>
   </span>
 
     
