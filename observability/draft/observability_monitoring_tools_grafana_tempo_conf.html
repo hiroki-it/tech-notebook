@@ -26985,12 +26985,54 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="distributor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log_received_spans" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ log_received_spans
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log_discarded_spans" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ log_discarded_spans
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#receivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ receivers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
   <a href="#ingester" class="md-nav__link">
     <span class="md-ellipsis">
       ingester
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics_generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      metrics_generator
     </span>
   </a>
   
@@ -27051,13 +27093,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#storagetrace" class="md-nav__link">
+  <a href="#storage" class="md-nav__link">
     <span class="md-ellipsis">
-      storage.trace
+      storage
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="storage.trace">
+    <nav class="md-nav" aria-label="storage">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -27151,6 +27193,29 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="distributor">distributor<a class="headerlink" href="#distributor" title="Permanent link">&para;</a></h3>
+<h4 id="log_received_spans">▼ log_received_spans<a class="headerlink" href="#log_received_spans" title="Permanent link">&para;</a></h4>
+<p>スパンをログに出力する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">distributor</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">log_received_spans</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/tempo/latest/configuration/#distributor">https://grafana.com/docs/tempo/latest/configuration/#distributor</a></li>
+</ul>
+</blockquote>
+<h4 id="log_discarded_spans">▼ log_discarded_spans<a class="headerlink" href="#log_discarded_spans" title="Permanent link">&para;</a></h4>
+<p>無効または不要と判定されたスパンをログに出力する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">distributor</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">log_discarded_spans</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/tempo/latest/configuration/#distributor">https://grafana.com/docs/tempo/latest/configuration/#distributor</a></li>
+</ul>
+</blockquote>
+<h4 id="receivers">▼ receivers<a class="headerlink" href="#receivers" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">distributor</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">receivers</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">jaeger</span><span class="p">:</span>
@@ -27171,10 +27236,31 @@
 <span class="w">        </span><span class="nt">http</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0:4318</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/tempo/latest/configuration/#distributor">https://grafana.com/docs/tempo/latest/configuration/#distributor</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="ingester">ingester<a class="headerlink" href="#ingester" title="Permanent link">&para;</a></h3>
+<p>トレースデータを一時的に保管する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">ingester</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/tempo/latest/configuration/#ingester">https://grafana.com/docs/tempo/latest/configuration/#ingester</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="metrics_generator">metrics_generator<a class="headerlink" href="#metrics_generator" title="Permanent link">&para;</a></h3>
+<p>トレースからメトリクスを作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">metrics_generator</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/tempo/latest/configuration/#metrics-generator">https://grafana.com/docs/tempo/latest/configuration/#metrics-generator</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="memberlist">memberlist<a class="headerlink" href="#memberlist" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">memberlist</span><span class="p">:</span>
@@ -27203,13 +27289,18 @@
 <span class="w">  </span><span class="nt">http_listen_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3100</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="storagetrace">storage.trace<a class="headerlink" href="#storagetrace" title="Permanent link">&para;</a></h3>
+<h3 id="storage">storage<a class="headerlink" href="#storage" title="Permanent link">&para;</a></h3>
 <h4 id="backend">▼ backend<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h4>
 <p>分散トレースの保管ストレージを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">storage</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">trace</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s3</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/tempo/latest/configuration/#storage-block-configuration-example">https://grafana.com/docs/tempo/latest/configuration/#storage-block-configuration-example</a></li>
+</ul>
+</blockquote>
 <h4 id="local">▼ local<a class="headerlink" href="#local" title="Permanent link">&para;</a></h4>
 <p>保管ストレージのディレクトリを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">storage</span><span class="p">:</span>
@@ -27217,18 +27308,36 @@
 <span class="w">    </span><span class="nt">local</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/tempo/traces</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/tempo/latest/configuration/#storage-block-configuration-example">https://grafana.com/docs/tempo/latest/configuration/#storage-block-configuration-example</a></li>
+</ul>
+</blockquote>
 <h4 id="s3">▼ s3<a class="headerlink" href="#s3" title="Permanent link">&para;</a></h4>
 <p>保管ストレージに応じて、資格情報やエンドポイントを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">storage</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">trace</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># AWS S3代替のMinIOを使用している場合</span>
 <span class="w">    </span><span class="nt">s3</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">access_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
 <span class="w">      </span><span class="nt">bucket</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana-tempo</span>
-<span class="w">      </span><span class="c1"># AWS S3代替のMinIOを使用している場合</span>
 <span class="w">      </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">minio.istio-system.svc.cluster.local:9000</span>
 <span class="w">      </span><span class="nt">insecure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">      </span><span class="nt">secret_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">storage</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">trace</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># AWS S3使用している場合</span>
+<span class="w">    </span><span class="nt">s3</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">bucket</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana-tempo</span>
+<span class="w">      </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s3.ap-northeast-1.amazonaws.com</span>
+<span class="w">      </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/tempo/latest/configuration/#storage-block-configuration-example">https://grafana.com/docs/tempo/latest/configuration/#storage-block-configuration-example</a></li>
+</ul>
+</blockquote>
 <h4 id="wal">▼ wal<a class="headerlink" href="#wal" title="Permanent link">&para;</a></h4>
 <p>WALのディレクトリを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">storage</span><span class="p">:</span>
@@ -27236,6 +27345,11 @@
 <span class="w">    </span><span class="nt">wal</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/tempo/wal</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/tempo/latest/configuration/#storage-block-configuration-example">https://grafana.com/docs/tempo/latest/configuration/#storage-block-configuration-example</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="usage_report">usage_report<a class="headerlink" href="#usage_report" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">usage_report</span><span class="p">:</span>
@@ -27262,7 +27376,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月16日 14:34:37">2025-05-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月21日 14:35:12">2025-05-21</span>
   </span>
 
     
