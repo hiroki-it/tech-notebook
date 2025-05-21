@@ -30402,9 +30402,15 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <h2 id="01-03">01-03. エラー時の事後処理<a class="headerlink" href="#01-03" title="Permanent link">&para;</a></h2>
 <h3 id="graceful-shutdown">Graceful Shutdown処理<a class="headerlink" href="#graceful-shutdown" title="Permanent link">&para;</a></h3>
 <h4 id="graceful-shutdown_1">▼ Graceful Shutdown処理とは<a class="headerlink" href="#graceful-shutdown_1" title="Permanent link">&para;</a></h4>
-<p>プロセスの終了前に必ず実行したい関数をまとめてコールし、安全にプロセスを終了する仕組みである。</p>
-<p>例えば、トランザクション中にエラーが起こった場合に、トランザクションの完了を待ってからプロセスを終了する。</p>
+<p>正常や異常時に、プロセスの終了前に必ず実行したい関数をまとめてコールし、安全にプロセスを終了する仕組みである。</p>
+<p>例えば、トランザクション中にエラーが起こった場合に、トランザクションの完了を待ってからプロセスを終了ステータスコード<code>0</code>や<code>1</code>で終了する。</p>
 <p>関数の実行時とは逆順で、Graceful Shutdown処理を実行する。</p>
+<ol>
+<li>関数内でエラーが発生する</li>
+<li>関数内でエラーハンドリングし、関数の呼び出し元に返却する</li>
+<li>エラーを<code>main</code>関数のレイヤーまで上げる</li>
+<li>最後に、必要な処理を実行しつつ、終了ステータスコード<code>0</code>や<code>1</code> (<code>Print</code>系、<code>Fatal</code>系) でプロセスを終えるGraceful Shutdown処理を実行する。</li>
+</ol>
 <h4 id="_25">▼ 外部パッケージからコールする<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
 <p>多くのパッケージでは、パッケージの処理をGraceful Shutdownするように実装している。</p>
 <p>ここでは、<code>github.com/gorilla/mux</code>パッケージのサーバーを使用すると仮定する。</p>
@@ -31866,7 +31872,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月2日 16:16:39">2025-05-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月21日 20:42:55">2025-05-21</span>
   </span>
 
     
