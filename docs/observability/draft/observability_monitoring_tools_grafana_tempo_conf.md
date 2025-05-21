@@ -27,6 +27,32 @@ compactor:
 
 ### distributor
 
+#### ▼ log_received_spans
+
+スパンをログに出力する。
+
+```yaml
+distributor:
+  log_received_spans:
+    enabled: true
+```
+
+> - https://grafana.com/docs/tempo/latest/configuration/#distributor
+
+#### ▼ log_discarded_spans
+
+無効または不要と判定されたスパンをログに出力する。
+
+```yaml
+distributor:
+  log_discarded_spans:
+    enabled: true
+```
+
+> - https://grafana.com/docs/tempo/latest/configuration/#distributor
+
+#### ▼ receivers
+
 ```yaml
 distributor:
   receivers:
@@ -49,13 +75,31 @@ distributor:
           endpoint: 0.0.0.0:4318
 ```
 
+> - https://grafana.com/docs/tempo/latest/configuration/#distributor
+
 <br>
 
 ### ingester
 
+トレースデータを一時的に保管する。
+
 ```yaml
 ingester: {}
 ```
+
+> - https://grafana.com/docs/tempo/latest/configuration/#ingester
+
+<br>
+
+### metrics_generator
+
+トレースからメトリクスを作成する。
+
+```yaml
+metrics_generator: {}
+```
+
+> - https://grafana.com/docs/tempo/latest/configuration/#metrics-generator
 
 <br>
 
@@ -110,7 +154,7 @@ server:
 
 <br>
 
-### storage.trace
+### storage
 
 #### ▼ backend
 
@@ -121,6 +165,8 @@ storage:
   trace:
     backend: s3
 ```
+
+> - https://grafana.com/docs/tempo/latest/configuration/#storage-block-configuration-example
 
 #### ▼ local
 
@@ -133,6 +179,8 @@ storage:
       path: /var/tempo/traces
 ```
 
+> - https://grafana.com/docs/tempo/latest/configuration/#storage-block-configuration-example
+
 #### ▼ s3
 
 保管ストレージに応じて、資格情報やエンドポイントを設定する。
@@ -140,14 +188,26 @@ storage:
 ```yaml
 storage:
   trace:
+    # AWS S3代替のMinIOを使用している場合
     s3:
       access_key: root
       bucket: grafana-tempo
-      # AWS S3代替のMinIOを使用している場合
       endpoint: minio.istio-system.svc.cluster.local:9000
       insecure: true
       secret_key: password
 ```
+
+```yaml
+storage:
+  trace:
+    # AWS S3使用している場合
+    s3:
+      bucket: grafana-tempo
+      endpoint: s3.ap-northeast-1.amazonaws.com
+      region: ap-northeast-1
+```
+
+> - https://grafana.com/docs/tempo/latest/configuration/#storage-block-configuration-example
 
 #### ▼ wal
 
@@ -159,6 +219,8 @@ storage:
     wal:
       path: /var/tempo/wal
 ```
+
+> - https://grafana.com/docs/tempo/latest/configuration/#storage-block-configuration-example
 
 <br>
 

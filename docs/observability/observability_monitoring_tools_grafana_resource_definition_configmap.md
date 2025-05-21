@@ -219,14 +219,11 @@ data:
         basicAuth: false
         jsonData:
           # トレースIDからログに接続する
-          tracesToLogs:
+          tracesToLogsV2:
             datasourceUid: Loki
             tags:
-              - container
-            mappedTags:
               - key: k8s.container.name
                 value: container
-            mapTagNamesEnabled: true
             # スパン開始時刻の検索ウィンドウの補正
             spanStartTimeShift: -1m
             # スパン終了時刻の検索ウィンドウの補正
@@ -241,12 +238,17 @@ data:
             tags:
     　　　　　　- key: k8s.container.name
                 value: container
+            # スパン開始時刻の検索ウィンドウの補正
             spanStartTimeShift: -10m
+            # スパン終了時刻の検索ウィンドウの補正
             spanEndTimeShift: 10m
             queries:
               - name: Memory Usage
                 query: avg(container_memory_usage_bytes{__ignore_usage__="",$$__tags})
 ```
+
+> - https://grafana.com/docs/grafana/latest/datasources/zipkin/#provision-the-data-source
+> - https://grafana.com/docs/grafana/latest/datasources/jaeger/#provision-the-data-source
 
 <br>
 
