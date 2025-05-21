@@ -56,6 +56,7 @@ distributor:
 ```yaml
 distributor:
   receivers:
+    # Jaeger
     jaeger:
       protocols:
         grpc:
@@ -66,7 +67,9 @@ distributor:
           endpoint: 0.0.0.0:6831
         thrift_http:
           endpoint: 0.0.0.0:14268
+    # OpenCensus
     opencensus: null
+    # OpenTelemetry
     otlp:
       protocols:
         grpc:
@@ -183,7 +186,7 @@ storage:
 
 #### ▼ s3
 
-保管ストレージに応じて、資格情報やエンドポイントを設定する。
+AWS S3をオブジェクトストレージとして使用し、資格情報やエンドポイントを設定する。
 
 ```yaml
 storage:

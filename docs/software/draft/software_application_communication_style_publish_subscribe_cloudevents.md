@@ -49,8 +49,9 @@ import cloudevents "github.com/cloudevents/sdk-go/v2"
 
 func main() {
 	c, err := cloudevents.NewClientHTTP()
-	if err != nil {
-		log.Fatalf("failed to create client, %v", err)
+
+    if err != nil {
+		log.Printf("failed to create client, %v", err)
 	}
 
 	// Create an Event.
@@ -64,7 +65,7 @@ func main() {
 
 	// Send that Event.
 	if result := c.Send(ctx, event); cloudevents.IsUndelivered(result) {
-		log.Fatalf("failed to send, %v", result)
+		log.Printf("failed to send, %v", result)
 	} else {
 		log.Printf("sent: %v", event)
 		log.Printf("result: %v", result)
@@ -92,10 +93,10 @@ func main() {
 	// The default client is HTTP.
 	c, err := cloudevents.NewClientHTTP()
 	if err != nil {
-		log.Fatalf("failed to create client, %v", err)
+		log.Printf("failed to create client, %v", err)
 	}
 	if err = c.StartReceiver(context.Background(), receive); err != nil {
-		log.Fatalf("failed to start receiver: %v", err)
+		log.Printf("failed to start receiver: %v", err)
 	}
 }
 ```

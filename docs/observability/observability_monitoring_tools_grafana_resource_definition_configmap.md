@@ -247,6 +247,7 @@ data:
                 query: avg(container_memory_usage_bytes{__ignore_usage__="",$$__tags})
 ```
 
+> - https://grafana.com/docs/grafana/latest/datasources/tempo/configure-tempo-data-source/#example-file
 > - https://grafana.com/docs/grafana/latest/datasources/zipkin/#provision-the-data-source
 > - https://grafana.com/docs/grafana/latest/datasources/jaeger/#provision-the-data-source
 
