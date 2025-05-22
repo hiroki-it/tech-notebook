@@ -17,6 +17,19 @@ description: Remix＠フレームワークの知見を記録しています。
 
 Reactパッケージを使用したフレームワークである。
 
+ラッパーを減らし、ブラウザがデフォルトで提供する関数やオブジェクト、HTML要素をそのまま使用できるようになっている。
+
+```jsx
+export async function action({request}) {
+  // formData関数はブラウザからデフォルトで提供されている
+  const formData = await request.formData();
+}
+```
+
+```html
+<form method="post"></form>
+```
+
 <br>
 
 ## 02. Remixの仕組み
@@ -269,9 +282,36 @@ export async function action({request}: ActionFunctionArgs) {
 
 ### entry.server.tsx
 
+#### ▼ entry.server.tsxとは
+
 レスポンス作成処理のエントリーポイントである。
 
 `RemixServer`で設定を変更できる。
+
+#### ▼ `default`エクスポート
+
+`entry.server`ファイルの`default`エクスポート関数は、RemixのSSRモードのエントリーポイントになる。
+
+`handleRequest`という名前であることが多いが、どんな名前でもよい。
+
+`default`エクスポート関数を複数定義することはできない。
+
+> - https://remix.run/docs/en/main/file-conventions/entry.server#entryserver
+
+#### ▼ handleDataRequest
+
+Remixの内部で実行され、JSONデータを作成し、Remixのフロントエンド処理に渡す。
+
+`useLoaderData`関数や`useFetcher().data`関数で取得できる。
+
+```jsx
+export function handleDataRequest(response: Response, {request, params, context}: LoaderFunctionArgs | ActionFunctionArgs
+) {
+  response.headers.set("X-Custom-Header", "value");
+  return response;
+}
+
+```
 
 > - https://remix.run/docs/en/main/file-conventions/entry.server
 

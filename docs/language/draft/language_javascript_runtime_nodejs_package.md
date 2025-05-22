@@ -109,6 +109,58 @@ function getTraceId(headers) {
 
 <br>
 
+### winston
+
+```javascript
+import * as winston from "winston";
+
+/**
+ * ログの出力先（トランスポート）を設定する
+ */
+const transports = [
+  new winston.transports.Console({level: process.env.LOG_LEVEL}),
+];
+
+/**
+ * ログのフォーマットを設定する
+ */
+const format = winston.format.combine(
+  winston.format.timestamp({
+    format: "YYYY-MM-DDTHH:mm:ss.SSSZ",
+  }),
+  winston.format((info) => {
+    // タイムスタンプにtimeキーを使用するため、元のtimestampキーを削除する
+    if (info.timestamp) {
+      info.time = info.timestamp;
+      delete info.timestamp;
+    }
+    // スタックトレースにstacktraceキーを使用するため、元のstackキーを削除する
+    if (info.stack) {
+      info.stacktrace = info.stack;
+      delete info.stack;
+    }
+    return info;
+  })(),
+  winston.format.errors({stack: true}),
+  winston.format.splat(),
+  // 開発環境：prettyPrintで出力を整形する
+  // AWS環境：JSON形式で出力する
+  process.env.LOG_PRETTY_PRINT === "true"
+    ? winston.format.prettyPrint()
+    : winston.format.json(),
+);
+
+/**
+ * Winstonロガーを作成する
+ */
+export const logger = winston.createLogger({
+  transports,
+  format,
+});
+```
+
+<br>
+
 ## 02. node.jsのプロセスの操作
 
 ### 新しいプロセスの実行
