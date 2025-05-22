@@ -331,6 +331,9 @@ Remix v2を`@remix-run/node`パッケージからインポートする。
 import {redirect} from "@remix-run/node";
 ```
 
+> - https://reactrouter.com/upgrading/remix
+> - https://giginc.co.jp/blog/giglab/remix-react-router-v7
+
 <br>
 
 ### React Router v7以降
@@ -341,7 +344,9 @@ Remix自体がReact Routerに統合されたため、`react-router`パッケー�
 import {redirect} from "react-router";
 ```
 
+> - https://reactrouter.com/home
 > - https://reactrouter.com/upgrading/remix
+> - https://giginc.co.jp/blog/giglab/remix-react-router-v7
 
 <br>
 
