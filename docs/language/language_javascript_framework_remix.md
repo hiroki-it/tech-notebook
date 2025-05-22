@@ -15,7 +15,9 @@ description: Remix＠フレームワークの知見を記録しています。
 
 ## 01. Remixとは
 
-Reactパッケージを使用したフレームワークである。
+Reactのreact-routerを拡張したフレームワークである。
+
+Remixの90%はreact-routerとのこと。
 
 ラッパーを減らし、ブラウザがデフォルトで提供する関数やオブジェクト、HTML要素をそのまま使用できるようになっている。
 
@@ -29,6 +31,8 @@ export async function action({request}) {
 ```html
 <form method="post"></form>
 ```
+
+> - https://giginc.co.jp/blog/giglab/remix-react-router-v7
 
 <br>
 
@@ -317,7 +321,31 @@ export function handleDataRequest(response: Response, {request, params, context}
 
 <br>
 
-## 04. ルーティング
+## 04. セットアップ
+
+### React Router v6
+
+Remix v2を`@remix-run/node`パッケージからインポートする。
+
+```jsx
+import {redirect} from "@remix-run/node";
+```
+
+<br>
+
+### React Router v7以降
+
+Remix自体がReact Routerに統合されたため、`react-router`パッケージをインポートする。
+
+```jsx
+import {redirect} from "react-router";
+```
+
+> - https://reactrouter.com/upgrading/remix
+
+<br>
+
+## 05. ルーティング
 
 ### UIとAPI
 
@@ -495,7 +523,7 @@ export default function AuthCommon() {
 
 <br>
 
-## 05. componentの種類
+## 06. componentの種類
 
 ### ユーザー定義
 
@@ -583,7 +611,7 @@ export default function SomeParent() {
 
 <br>
 
-## 06. Cookieを使用した認証
+## 07. Cookieを使用した認証
 
 ### LocalStorageやSessionStorageではなくCookie
 
@@ -644,7 +672,7 @@ export const memorySessionStorage = createFileSessionStorage({
 
 <br>
 
-## 07. エラー
+## 08. エラー
 
 | データ名   | 説明                               | 例                   |
 | ---------- | ---------------------------------- | -------------------- |
