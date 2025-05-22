@@ -27011,6 +27011,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#winston" class="md-nav__link">
+    <span class="md-ellipsis">
+      winston
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -27267,6 +27276,54 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="winston">winston<a class="headerlink" href="#winston" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">winston</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;winston&quot;</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ログの出力先（トランスポート）を設定する</span>
+<span class="cm"> */</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">transports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="ow">new</span><span class="w"> </span><span class="nx">winston</span><span class="p">.</span><span class="nx">transports</span><span class="p">.</span><span class="nx">Console</span><span class="p">({</span><span class="nx">level</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">LOG_LEVEL</span><span class="p">}),</span>
+<span class="p">];</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ログのフォーマットを設定する</span>
+<span class="cm"> */</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">winston</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nx">combine</span><span class="p">(</span>
+<span class="w">  </span><span class="nx">winston</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nx">timestamp</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">format</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;YYYY-MM-DDTHH:mm:ss.SSSZ&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="w">  </span><span class="nx">winston</span><span class="p">.</span><span class="nx">format</span><span class="p">((</span><span class="nx">info</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// タイムスタンプにtimeキーを使用するため、元のtimestampキーを削除する</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">timestamp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">info</span><span class="p">.</span><span class="nx">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">info</span><span class="p">.</span><span class="nx">timestamp</span><span class="p">;</span>
+<span class="w">      </span><span class="ow">delete</span><span class="w"> </span><span class="nx">info</span><span class="p">.</span><span class="nx">timestamp</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// スタックトレースにstacktraceキーを使用するため、元のstackキーを削除する</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">stack</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">info</span><span class="p">.</span><span class="nx">stacktrace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">info</span><span class="p">.</span><span class="nx">stack</span><span class="p">;</span>
+<span class="w">      </span><span class="ow">delete</span><span class="w"> </span><span class="nx">info</span><span class="p">.</span><span class="nx">stack</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">info</span><span class="p">;</span>
+<span class="w">  </span><span class="p">})(),</span>
+<span class="w">  </span><span class="nx">winston</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nx">errors</span><span class="p">({</span><span class="nx">stack</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}),</span>
+<span class="w">  </span><span class="nx">winston</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nx">splat</span><span class="p">(),</span>
+<span class="w">  </span><span class="c1">// 開発環境：prettyPrintで出力を整形する</span>
+<span class="w">  </span><span class="c1">// AWS環境：JSON形式で出力する</span>
+<span class="w">  </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">LOG_PRETTY_PRINT</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
+<span class="w">    </span><span class="o">?</span><span class="w"> </span><span class="nx">winston</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nx">prettyPrint</span><span class="p">()</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="nx">winston</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nx">json</span><span class="p">(),</span>
+<span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Winstonロガーを作成する</span>
+<span class="cm"> */</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">winston</span><span class="p">.</span><span class="nx">createLogger</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">transports</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">format</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><br></p>
 <h2 id="02-nodejs">02. node.jsのプロセスの操作<a class="headerlink" href="#02-nodejs" title="Permanent link">&para;</a></h2>
 <h3 id="_4">新しいプロセスの実行<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="child_process">▼ child_process<a class="headerlink" href="#child_process" title="Permanent link">&para;</a></h4>
@@ -27461,7 +27518,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月25日 23:05:26">2025-04-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月22日 20:41:00">2025-05-22</span>
   </span>
 
     
