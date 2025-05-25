@@ -402,7 +402,7 @@ static_resources:
 
 `http.grpc_web`はデフォルトで有効になっているHTTPフィルターである。
 
-受信したHTTP/1.1をHTTP/2 (例：gRPCなど) やHTTP/3に変換し、gRPCサーバーにプロキシする。
+受信したHTTP/1.1をHTTP/2 (例：gRPCなど) やHTTP/3に変換し、gRPCサーバーに送信する。
 
 また、gRPCサーバーからのHTTP/2のレスポンスをHTTP/1.1に変換する。
 

@@ -21,7 +21,7 @@ description: パッケージ＠Node.jsの知見を記録しています。
 
 Node.jsのロガーである。
 
-Node.jsのロガーは通常バックエンドでしか使用できないが、Pino内の`pino/browser`パッケージはブラウザで使用できる。
+Node.jsのロガーは通常バックエンドでしか使用できないが、Pino内の`pino/browser`モジュールはブラウザで使用できる。
 
 #### ▼ ログ構造
 
@@ -113,7 +113,7 @@ function getTraceId(headers) {
 > - https://zenn.dev/itte/articles/ce93b081048691#%E7%8B%AC%E8%87%AA%E3%81%AE%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E3%82%92%E5%87%BA%E5%8A%9B%E3%81%99%E3%82%8B
 > - https://wiblok.com/ja/nodejs/index/nodejs-request-info-processing-method/
 
-#### ▼ browser
+#### ▼ browserモジュール
 
 ```javascript
 import pino from "pino/browser";

@@ -15,7 +15,7 @@ description: OAuth2 Proxy＠セキュリティ系ミドルウェアの知見を�
 
 ## 01. OAuth2 Proxyとは
 
-OAuth2 Proxyは、送信元からのトークン検証リクエストをIDプロバイダーにプロキシする。
+OAuth2 Proxyは、送信元からのトークン検証リクエストをIDプロバイダーに送信する。
 
 OAuth 2.0をベースとしたSSO (例：OAuth、OIDCなど) のトークン検証リクエストをプロキシできる。
 

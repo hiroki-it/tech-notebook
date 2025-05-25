@@ -1193,9 +1193,9 @@ Envoyは、リバースプロキシとして、ローカルホストにあるマ
 > - https://blog.51cto.com/wangguishe/5789228
 > - https://www.zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/
 
-#### ▼ ローカルホスト外にあるマイクロサービスにプロキシする
+#### ▼ ローカルホスト外にあるマイクロサービスに送信する
 
-Envoyは、リバースプロキシとして、ローカルホスト外にあるマイクロサービスに通信をプロキシする
+Envoyは、リバースプロキシとして、ローカルホスト外にあるマイクロサービスに通信を送信する。
 
 ```yaml
 Envoy

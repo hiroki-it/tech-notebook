@@ -329,7 +329,7 @@ SQLの発行時に、SQLを属性に持つスパンを自動的に作成する�
 
 ### grpc-gatewayとは
 
-HTTPで受信したリクエストをgRPCに変換してプロキシする。
+HTTPで受信したリクエストをgRPCに変換して送信する。
 
 > - https://github.com/grpc-ecosystem/grpc-gateway
 > - https://grpc-ecosystem.github.io/grpc-gateway/

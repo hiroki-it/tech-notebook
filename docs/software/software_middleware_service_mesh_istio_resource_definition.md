@@ -266,7 +266,34 @@ spec:
           values: ["<JWTトークンの発行元認証局の識別子 (issuer)>"]
 ```
 
+**＊実装例＊**
+
+```yaml
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-jwt
+spec:
+  # 許可する
+  action: ALLOW
+  rules:
+    - when:
+        - key: request.auth.claims[iss]
+          # JWTトークンがある場合にのみ許可する
+          values: ["<JWTトークンの発行元認証局の識別子 (issuer)>"]
+    # fromを設定しない場合、指定したパスではJWTトークンがなくても許可する
+    - to:
+        - operation:
+            paths:
+              - /
+              - /callback*
+              - /login
+              - /logout
+              - /static*
+```
+
 > - https://istio.io/latest/docs/reference/config/security/authorization-policy/
+> - https://istio.io/latest/docs/reference/config/security/authorization-policy/#Rule-From
 
 #### ▼ 全てを拒否する
 
