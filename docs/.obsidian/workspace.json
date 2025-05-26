@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "証明書署名要求",
+                "query": "istio-ca-r",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": false,
@@ -74,8 +74,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -169,18 +168,20 @@
       "command-palette:コマンドパレットを開く": false
     }
   },
-  "active": "13b82501632b7954",
+  "active": "0023a13b051e254a",
   "lastOpenFiles": [
-    "infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md",
-    "security/security_auth_authentication_credentials_certificate.md",
-    "security/security_auth_authentication_credentials_sso_oidc.md",
+    "security/security_auth_authentication_credentials_carrier.md",
     "security/security_auth_authentication_credentials_jwt.md",
-    "security/security_auth_authorization.md",
-    "security/security_auth_authentication_http.md",
     "security/security_auth_authentication_credentials_store.md",
+    "security/security_auth_authentication_factor.md",
+    "security/security_auth_authentication_http.md",
+    "software/software_middleware_service_mesh_istio.md",
+    "security/security_auth_authentication_credentials_certificate.md",
+    "infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md",
+    "security/security_auth_authentication_credentials_sso_oidc.md",
+    "security/security_auth_authorization.md",
     "security/security_auth_authentication_credentials_sso_saml.md",
     "security/security_auth_authentication_credentials_sso.md",
-    "security/security_auth_authentication_factor.md",
     "security/security_auth_authorization_oauth.md",
     "security/security_auth_authorization_provider_open_policy_agent.md",
     "security/security_cyber_attacks.md",
@@ -189,14 +190,12 @@
     "virtualization/draft/virtualization_container_runc.md",
     "software/software_middleware_service_mesh_istio_ambient_data_plane.md",
     "software/software_middleware_service_mesh_istio_ambient_control_plane.md",
-    "software/software_middleware_service_mesh_istio.md",
     "software/software_middleware_service_mesh_istio_resource_definition_common.md",
     "software/software_middleware_service_mesh_istio_resource.md",
     "software/software_middleware_service_mesh_responsibility.md",
     "software/software_middleware_service_mesh.md",
     "software/software_basic_linux_kernel_storage_management.md",
     "software/software_application_architecture_microservices_cloudnative.md",
-    "infrastructure_as_code/infrastructure_as_code.md",
     "無題のファイル.canvas",
     "0-2_まえがき.pdf",
     "Untitled.canvas"

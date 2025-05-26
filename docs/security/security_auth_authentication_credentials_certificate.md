@@ -139,6 +139,9 @@ CA証明書や署名済みの証明書を通信の送受信者に配置し、通
 
 : 認証局は証明書署名要求からハッシュ値を算出し、認証局のもつ秘密鍵を使用してハッシュ値を暗号化する。もとの証明書署名要求とハッシュ値を組み合わせたものを証明書とする。S/MIMEで使用する場合には、『S/MIME証明書』、SSL/TLSで使用する場合には、『SSL証明書』という。
 
+![certificate_sign](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/certificate_sign.png)
+
+> - https://dev.classmethod.jp/articles/ssl-certificate-system/
 #### ▼ 検証
 
 `(1)`
@@ -151,7 +154,9 @@ CA証明書や署名済みの証明書を通信の送受信者に配置し、通
 
 `(2)`
 
-: クライアントは、認証局からもらった公開鍵を使用して、署名済み証明書のハッシュ値を復号する。また、署名済み証明書のもとになった証明書署名要求からハッシュ値を算出する。これらのハッシュ値が同じなら、認証局そのものがなりすましでないと判断する。
+: クライアントは、認証局からもらった公開鍵（CA証明書）を使用して、署名済み証明書のハッシュ値を復号する。また、署名済み証明書のもとになった証明書署名要求からハッシュ値を算出する。これらのハッシュ値が同じなら、認証局そのものがなりすましでないと判断する。
+
+![certificate_validate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/certificate_validate.png)
 
 > - https://dev.classmethod.jp/articles/ssl-certificate-system/
 
@@ -183,7 +188,7 @@ CA証明書や署名済みの証明書を通信の送受信者に配置し、通
 
 注意点として、ルート認証局は専門機関から厳しい審査を受けているため、ルート認証局自体がなりすましの可能性は非常に低い。
 
-![認証局自体のなりすまし防止](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/認証局自体のなりすまし防止.png)
+![認証局自体のなりすまし防止](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/認証局自体の成りすまし防止.png)
 
 > - https://zeropasoakita.livedoor.blog/archives/20294837.html
 
