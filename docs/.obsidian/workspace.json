@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "security/security_network.md",
+                "file": "security/security_auth_authentication_credentials_certificate.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "security_network"
+              "title": "security_auth_authentication_credentials_certificate"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "情報漏洩",
+                "query": "証明書署名要求",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": false,
@@ -79,7 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 216.5
+    "width": 200
   },
   "right": {
     "id": "488105a2fc65fb1f",
@@ -143,13 +143,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "security/security_network.md",
+                "file": "security/security_auth_authentication_credentials_certificate.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "security_networkのアウトライン"
+              "title": "security_auth_authentication_credentials_certificateのアウトライン"
             }
           }
         ],
@@ -171,32 +171,32 @@
   },
   "active": "13b82501632b7954",
   "lastOpenFiles": [
-    "security/security_network_encryption_technology_packet_payload_protocol.md",
-    "security/security_auth_authentication_credentials_jwt.md",
-    "security/security_network_encryption_technology_packet_payload_method.md",
+    "infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md",
     "security/security_auth_authentication_credentials_certificate.md",
-    "network/network_model_osi_l4_port.md",
-    "network/network_model_osi.md",
-    "security/security_auth_authentication_credentials_sso.md",
     "security/security_auth_authentication_credentials_sso_oidc.md",
-    "security/security_auth_authentication_credentials_sso_saml.md",
-    "security/security_auth_authentication_credentials_store.md",
-    "security/security_auth_authentication_factor.md",
-    "security/security_auth_authentication_http.md",
+    "security/security_auth_authentication_credentials_jwt.md",
     "security/security_auth_authorization.md",
-    "security/security_auth_authorization_provider_open_policy_agent.md",
-    "security/security_network_encryption_technology_storage.md",
-    "security/security_network.md",
-    "security/security_auth_authentication_credentials.md",
+    "security/security_auth_authentication_http.md",
+    "security/security_auth_authentication_credentials_store.md",
+    "security/security_auth_authentication_credentials_sso_saml.md",
+    "security/security_auth_authentication_credentials_sso.md",
+    "security/security_auth_authentication_factor.md",
     "security/security_auth_authorization_oauth.md",
+    "security/security_auth_authorization_provider_open_policy_agent.md",
     "security/security_cyber_attacks.md",
-    "security/security_cyber_attacks_malware.md",
-    "cloud_computing/cloud_computing_aws_resource_rds_aurora.md",
-    "cloud_computing/cloud_computing_aws_resource_rds.md",
-    "cloud_computing/cloud_computing_aws_resource_ec2.md",
-    "cloud_computing/cloud_computing_aws_practices_security_packet_payload.md",
-    "security/security_auth_authentication.md",
-    "security/security_auth_authentication_credentials_carrier.md",
+    "virtualization/virtualization_container.md",
+    "virtualization/virtualization_container_docker_command.md",
+    "virtualization/draft/virtualization_container_runc.md",
+    "software/software_middleware_service_mesh_istio_ambient_data_plane.md",
+    "software/software_middleware_service_mesh_istio_ambient_control_plane.md",
+    "software/software_middleware_service_mesh_istio.md",
+    "software/software_middleware_service_mesh_istio_resource_definition_common.md",
+    "software/software_middleware_service_mesh_istio_resource.md",
+    "software/software_middleware_service_mesh_responsibility.md",
+    "software/software_middleware_service_mesh.md",
+    "software/software_basic_linux_kernel_storage_management.md",
+    "software/software_application_architecture_microservices_cloudnative.md",
+    "infrastructure_as_code/infrastructure_as_code.md",
     "無題のファイル.canvas",
     "0-2_まえがき.pdf",
     "Untitled.canvas"

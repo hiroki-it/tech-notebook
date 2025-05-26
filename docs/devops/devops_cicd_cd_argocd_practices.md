@@ -168,7 +168,7 @@ spec:
 
 > - https://github.com/argoproj/argo-cd/issues/6125#issuecomment-1660341387
 
-#### ▼ レプリカ当たりのReconciliation頻度の低減
+#### ▼ レプリカ当たりのReconciliationの頻度の低減
 
 application-controllerのReconciliationの頻度を設定する。
 
