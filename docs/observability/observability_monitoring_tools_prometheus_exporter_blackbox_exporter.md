@@ -277,7 +277,7 @@ modules:
       # IPV6が使えない場合に、IPv4に切り替える
       ip_protocol_fallback: "true"
       tls_config:
-        # SSL証明書を任意にする
+        # SSLサーバー証明書を任意にする
         insecure_skip_verify: "true"
 ```
 

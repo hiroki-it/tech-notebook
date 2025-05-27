@@ -425,7 +425,7 @@ curl_setopt_array(
         CURLOPT_URL            => URL,
         // HTTPメソッド
         CURLOPT_CUSTOMREQUEST  => "GET",
-        // SSL証明書の検証
+        // SSLサーバー証明書の検証
         CURLOPT_SSL_VERIFYPEER => false,
         // string型で受信
         CURLOPT_RETURNTRANSFER => true

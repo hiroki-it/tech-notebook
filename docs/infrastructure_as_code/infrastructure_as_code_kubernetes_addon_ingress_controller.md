@@ -128,9 +128,9 @@ Ingress Controllerは、『`***-controller-admission`』というServiceでwebho
 
 これにより、不正なIngressが稼働することを防止できる。
 
-このwebhookサーバーの登録時、まず『`***-create`』というJob配下のPodが、有効期限の長いSSL証明書を持つSecretを作成する。
+このwebhookサーバーの登録時、まず『`***-create`』というJob配下のPodが、有効期限の長いSSLサーバー証明書を持つSecretを作成する。
 
-その後、『`***-patch`』というJob配下のPodが、ValidatingWebhookConfigurationにこのSSL証明書を設定し、webhookサーバーにSSL証明書が割り当てられる。
+その後、『`***-patch`』というJob配下のPodが、ValidatingWebhookConfigurationにこのSSLサーバー証明書を設定し、webhookサーバーにSSLサーバー証明書が割り当てられる。
 
 > - https://kubernetes.github.io/ingress-nginx/how-it-works/#avoiding-outage-from-wrong-configuration
 > - https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx#ingress-admission-webhooks
@@ -138,9 +138,9 @@ Ingress Controllerは、『`***-controller-admission`』というServiceでwebho
 
 <br>
 
-### SSL証明書の割り当て
+### SSLサーバー証明書の割り当て
 
-Ingress Controllerは、Secretに設定されたSSL証明書を参照し、これを自身のロードバランサー (例：Nginx) に渡す。
+Ingress Controllerは、Secretに設定されたSSLサーバー証明書を参照し、これを自身のロードバランサー (例：Nginx) に渡す。
 
 ![kubernetes_ingress-controller_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller_certificate.png)
 

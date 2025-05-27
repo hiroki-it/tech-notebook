@@ -1265,9 +1265,9 @@ resource "aws_wafv2_regex_pattern_set" "cloudfront" {
 
 **＊実装例＊**
 
-例として、AWS Certificate ManagerのSSL証明書を示す。
+例として、AWS Certificate ManagerのSSLサーバー証明書を示す。
 
-AWS Certificate ManagerのSSL証明書は、ALBやCloudFrontに紐付いており、新しい証明書に紐付け直した後に、既存のものを削除する必要がある。
+AWS Certificate ManagerのSSLサーバー証明書は、ALBやCloudFrontに紐付いており、新しい証明書に紐付け直した後に、既存のものを削除する必要がある。
 
 ```terraform
 # ---------------------------------------------
@@ -1277,7 +1277,7 @@ resource "aws_acm_certificate" "foo" {
 
   ...
 
-  # 新しいSSL証明書を作成した後に削除する。
+  # 新しいSSLサーバー証明書を作成した後に削除する。
   lifecycle {
     create_before_destroy = true
   }

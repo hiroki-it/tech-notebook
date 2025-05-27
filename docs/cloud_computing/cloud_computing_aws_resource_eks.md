@@ -372,7 +372,7 @@ module "iam_assumable_role_argocd_access_entry_cluster" {
 }
 ```
 
-Kubernetes Cluster外部のkube-apiserverクライアント (例：開発者、GitOps CDツール、監視ツールなど) のAWS EKS ClusterのSSL証明書をbase64方式エンコードした値 (`-----BEGIN CERTIFICATE-----`から`-----END CERTIFICATE-----`まで) を`caData`として設定する。
+Kubernetes Cluster外部のkube-apiserverクライアント (例：開発者、GitOps CDツール、監視ツールなど) のAWS EKS ClusterのSSLサーバー証明書をbase64方式エンコードした値 (`-----BEGIN CERTIFICATE-----`から`-----END CERTIFICATE-----`まで) を`caData`として設定する。
 
 `aws eks describe-cluster`コマンドやコンソール画面から確認できる。
 
@@ -391,7 +391,7 @@ data:
       roleARN: "<対象のAWS EKS ClusterにアクセスするためのAWS IAMロールARN>"
     tlsClientConfig:
       insecure: false,
-      caData: "<AWS EKS ClusterのSSL証明書をbase64方式エンコードした値>"
+      caData: "<AWS EKS ClusterのSSLサーバー証明書をbase64方式エンコードした値>"
   name: "<クラスター名>"
   server: "https://*****.gr7.ap-northeast-1.eks.amazonaws.com"
 ```
@@ -533,7 +533,7 @@ AWS EKSをSSOのIDプロバイダーとして使用することにより、IAM�
 
 : SSOのIDプロバイダーのタイプは、OIDCとする。
 
-     『AWS EKS ClusterのOIDCプロバイダーURL』『OIDCプロバイダーのSSL証明書を署名する中間認証局 (例：CertificateManagerなど) のサムプリント』『IDプロバイダーによるトークンの発行対象 (`sts.amazonaws.com`) 』を使用して、OIDCプロバイダーを作成する。
+     『AWS EKS ClusterのOIDCプロバイダーURL』『OIDCプロバイダーのSSLサーバー証明書を署名する中間認証局 (例：CertificateManagerなど) のサムプリント』『IDプロバイダーによるトークンの発行対象 (`sts.amazonaws.com`) 』を使用して、OIDCプロバイダーを作成する。
 
 ```terraform
 data "tls_certificate" "this" {
@@ -1276,7 +1276,7 @@ set -o xtrace
 # 主要なパラメーターは以下の通り。
 # その他のパラメーター：https://github.com/awslabs/amazon-eks-ami/blob/584f9a56c76fc9e7e8632f6ea45e29d45f2eab63/files/bootstrap.sh#L14-L35
 #
-# --b64-cluster-ca：kube-apiserverのSSL証明書の値を設定する。
+# --b64-cluster-ca：kube-apiserverのSSLサーバー証明書の値を設定する。
 # --apiserver-endpoint：kube-apiserverのエンドポイントを設定する。
 # --container-runtime：コンテナランタイムとしてcontainerdを使用する。代わりに、dockerも使用できる。
 
@@ -1293,7 +1293,7 @@ set -o xtrace
 | パラメーター            | 例                                          | 説明                                                                                                                                                                                             |
 | ----------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `--apiserver-endpoint ` |                                             | AWS EKS Clusterのkube-apiserverのエンドポイントを設定する。                                                                                                                                      |
-| `--b64-cluster-ca`      |                                             | kube-apiserverのエンドポイントを設定した場合、HTTPSでリクエストするために、SSL証明書を設定する。                                                                                                 |
+| `--b64-cluster-ca`      |                                             | kube-apiserverのエンドポイントを設定した場合、HTTPSでリクエストするために、SSLサーバー証明書を設定する。                                                                                         |
 | `--container-runtime`   | `containerd`                                | コンテナランタイムの種類を設定する。                                                                                                                                                             |
 | `--kubelet-extra-args`  | `--node-labels=nodetype=foo --max-pods=110` | KubeletConfigurationのデフォルト値を上書きする。                                                                                                                                                 |
 | `--use-max-pods`        | `false`                                     | kubeletの`--max-pods`オプションを有効化するかどうかを設定する。Kubeletが実行可能なPod数を設定する。Kubeletではこのオプションは非推奨になっており、代わりにKubeletConfigurationに渡すようにする。 |
@@ -1314,7 +1314,7 @@ set -o xtrace
 
 PARAMETERS=$(aws ssm get-parameters-by-path --with-decryption --path "/eks/foo-eks-cluster")
 
-# ClusterのSSL証明書、kube-apiserverのエンドポイントの値をパラメーターストアから取得する。
+# ClusterのSSLサーバー証明書、kube-apiserverのエンドポイントの値をパラメーターストアから取得する。
 for parameter in $(echo ${PARAMETERS} | jq -r '.Parameters[] | .Name + "=" + .Value'); do
   echo "export ${parameter##*/}"
 done >> "${EXPORT_ENVS}"

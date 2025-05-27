@@ -234,7 +234,7 @@ $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 
 ### -tlsCertFile (-tlsKeyFileと一緒に使用する)
 
-SSL証明書のパスを設定する。
+SSLサーバー証明書のパスを設定する。
 
 ペアになる秘密鍵を`-tlsKeyFile`オプションで指定する必要がある。
 

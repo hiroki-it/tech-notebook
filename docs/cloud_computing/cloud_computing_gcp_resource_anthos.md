@@ -70,9 +70,9 @@ Traffic Director、Mesh CA、Managed backends、といったコンポーネン�
 
 #### ▼ Mesh CA
 
-中間認証局として、相互TLS認証のためのSSL証明書をistio-proxyに提供する。
+中間認証局として、相互TLS認証のためのSSLサーバー証明書をistio-proxyに提供する。
 
-また、SSL証明書が失効すれば更新する。
+また、SSLサーバー証明書が失効すれば更新する。
 
 > - https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=27
 

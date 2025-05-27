@@ -136,7 +136,7 @@ service:
 
 #### ▼ cert_file
 
-SSL証明書やクライアント証明書を設定する。
+SSLサーバー証明書やクライアント証明書を設定する。
 
 ```yaml
 receivers:
@@ -172,7 +172,7 @@ exporters:
 
 #### ▼ key_file
 
-SSL証明書やクライアント証明書に紐づく秘密鍵を設定する。
+SSLサーバー証明書やクライアント証明書に紐づく秘密鍵を設定する。
 
 ```yaml
 receivers:

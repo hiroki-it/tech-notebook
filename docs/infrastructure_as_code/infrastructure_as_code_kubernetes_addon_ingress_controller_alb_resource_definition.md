@@ -33,9 +33,9 @@ AWS Load Balancer Controllerは、Ingressの`.metadata.annotations`キーと`.sp
 
 #### ▼ `alb.ingress.kubernetes.io/certificate-arn`キーとは
 
-AWS ALBでHTTPSプロトコルを受け付ける場合、事前に作成したAWS Certificate ManagerのSSL証明書のARNを設定する。
+AWS ALBでHTTPSプロトコルを受け付ける場合、事前に作成したAWS Certificate ManagerのSSLサーバー証明書のARNを設定する。
 
-AWS Load Balancer Controllerは、プロビジョニングしたALBにAWS Certificate ManagerのSSL証明書を自動的に紐づける。
+AWS Load Balancer Controllerは、プロビジョニングしたALBにAWS Certificate ManagerのSSLサーバー証明書を自動的に紐づける。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -51,11 +51,11 @@ metadata:
 
 #### ▼ オートディスカバリー
 
-AWS Certificate ManagerのSSL証明書のARNを指定せずとも、オートディスカバリーを使用して、AWS Certificate ManagerのSSL証明書を紐づけられる。
+AWS Certificate ManagerのSSLサーバー証明書のARNを指定せずとも、オートディスカバリーを使用して、AWS Certificate ManagerのSSLサーバー証明書を紐づけられる。
 
-aws-load-balancer-controllerは、Ingressの`.spec.tls`キーや`.spec.rules[*].host`キーに基づいて、適切なAWS Certificate ManagerのSSL証明書をAWS ALBに自動的に紐づける。
+aws-load-balancer-controllerは、Ingressの`.spec.tls`キーや`.spec.rules[*].host`キーに基づいて、適切なAWS Certificate ManagerのSSLサーバー証明書をAWS ALBに自動的に紐づける。
 
-例えばIngressで`.spec.rules[*].hosts`キーに`foo.example.com`を設定していた場合、aws-load-balancer-controllerは`*.example.com`で認証されたSSL証明書をAWS Certificate Managerから探す。
+例えばIngressで`.spec.rules[*].hosts`キーに`foo.example.com`を設定していた場合、aws-load-balancer-controllerは`*.example.com`で認証されたSSLサーバー証明書をAWS Certificate Managerから探す。
 
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.11/guide/ingress/cert_discovery/#discover-via-ingress-rule-host
 

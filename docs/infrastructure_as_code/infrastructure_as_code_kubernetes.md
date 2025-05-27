@@ -48,11 +48,11 @@ data:
 
 <br>
 
-### デフォルトのSSL証明書
+### デフォルトのSSLサーバー証明書
 
 ![kubernetes_certificates](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_certificates.png)
 
-コンポーネント間でHTTPSプロトコルを使用するためにはクライアント証明書やSSL証明書が必須である。
+コンポーネント間でHTTPSプロトコルを使用するためにはクライアント証明書やSSLサーバー証明書が必須である。
 
 一方で必須ではないが、通信をさらに安全にするためにクライアント証明書が使用されているところがある。
 
@@ -65,20 +65,20 @@ data:
 | kube-apiserverクライアント (`kubectl`クライアント、Kubernetesリソース) のローカルマシン | kube-apiserver | クライアント証明書 | `/etc/kubernetes/admin.conf`ファイル                                                         | クライアントが、kube-apiserverにHTTPSリクエストを送信するための証明書。証明書の値は、`kubeconfig`ファイルの`client-certificate-data`キーに設定されている。証明書に不一致があると、クライアントからのリクエストで、『`x509: certificate has expired or is not yet valid`』や『`error: You must be logged in to the server (Unauthorized)`』というエラーになってしまう。 |
 | kube-controller-manager                                                                 | kube-apiserver | クライアント証明書 | `/etc/kubernetes/controller-manager.conf `ファイル                                           | kube-controller-managerがkube-apiserverにHTTPSリクエストを送信するための証明書。証明書とは別に、`kubeconfig`ファイルも必要になる。                                                                                                                                                                                                                                     |
 | kube-scheduler                                                                          | kube-apiserver | クライアント証明書 | `/etc/kubernetes/scheduler.conf `ファイル                                                    | kube-schedulerがkube-apiserverにHTTPSリクエストを送信するための証明書。証明書とは別に、`kubeconfig`ファイルも必要になる。                                                                                                                                                                                                                                              |
-| その他のコンポーネント                                                                  | kube-apiserver | SSL証明書          | 記入中...                                                                                    | kube-apiserverが各コンポーネントからHTTPSリクエストを受信するための証明書。                                                                                                                                                                                                                                                                                            |
-| kube-apiserver                                                                          | kubelet        | SSL証明書          | 記入中                                                                                       | kubeletが、kube-apiserverからのHTTPSリクエストを受信するための証明書。                                                                                                                                                                                                                                                                                                 |
-| kube-apiserver                                                                          | front-proxy    | SSL証明書          | 記入中...                                                                                    | front-proxyが、kube-apiserverからのHTTPSリクエストを受信するための証明書。                                                                                                                                                                                                                                                                                             |
+| その他のコンポーネント                                                                  | kube-apiserver | SSLサーバー証明書  | 記入中...                                                                                    | kube-apiserverが各コンポーネントからHTTPSリクエストを受信するための証明書。                                                                                                                                                                                                                                                                                            |
+| kube-apiserver                                                                          | kubelet        | SSLサーバー証明書  | 記入中                                                                                       | kubeletが、kube-apiserverからのHTTPSリクエストを受信するための証明書。                                                                                                                                                                                                                                                                                                 |
+| kube-apiserver                                                                          | front-proxy    | SSLサーバー証明書  | 記入中...                                                                                    | front-proxyが、kube-apiserverからのHTTPSリクエストを受信するための証明書。                                                                                                                                                                                                                                                                                             |
 
 > - https://kubernetes.io/docs/setup/best-practices/certificates/#how-certificates-are-used-by-your-cluster
 > - https://milestone-of-se.nesuke.com/sv-advanced/digicert/client-cert/
 
 <br>
 
-### SSL証明書の有効期限
+### SSLサーバー証明書の有効期限
 
 #### ▼ 期限の確認方法
 
-各SSL証明書の有効期限は`1`年間である。
+各SSLサーバー証明書の有効期限は`1`年間である。
 
 証明書は、KubernetesリソースのConfigの`client-certificate-data`キー配下に設定されている。
 

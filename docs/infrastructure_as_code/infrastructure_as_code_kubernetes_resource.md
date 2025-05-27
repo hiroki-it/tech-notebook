@@ -1666,7 +1666,7 @@ StorageClassを使用する場合は、PersistentVolumeClaimではなくStorageC
 
 #### ▼ CertificateSigningRequestとは
 
-認証局に対するSSL証明書の要求 (`openssl x509`コマンド) を宣言的に設定する。
+認証局に対するSSLサーバー証明書の要求 (`openssl x509`コマンド) を宣言的に設定する。
 
 別途、秘密鍵から証明書署名要求を作成し、これをパラメーターとして設定する必要がある。
 
