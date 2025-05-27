@@ -6150,9 +6150,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ssl" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ SSLサーバー証明書を使用する
+      ▼ サーバー証明書を使用する
     </span>
   </a>
   
@@ -27489,9 +27489,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ssl" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ SSLサーバー証明書を使用する
+      ▼ サーバー証明書を使用する
     </span>
   </a>
   
@@ -27877,7 +27877,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h2 id="02-certificate">02. Certificate<a class="headerlink" href="#02-certificate" title="Permanent link">&para;</a></h2>
 <h3 id="certificate">Certificateとは<a class="headerlink" href="#certificate" title="Permanent link">&para;</a></h3>
-<p>認証局を使用して、秘密鍵と証明書署名要求で署名済みの<code>X.509</code>のSSLサーバー証明書 (<code>.crt</code>ファイル) を作成する。</p>
+<p>認証局を使用して、秘密鍵と証明書署名要求で署名済みの<code>X.509</code>のサーバー証明書 (<code>.crt</code>ファイル) を作成する。</p>
 <p>証明書自体は、紐づくSecretに割り当てられる。</p>
 <blockquote>
 <ul>
@@ -27888,7 +27888,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="specsecretname">.spec.secretName<a class="headerlink" href="#specsecretname" title="Permanent link">&para;</a></h3>
 <h4 id="secretname">▼ secretNameとは<a class="headerlink" href="#secretname" title="Permanent link">&para;</a></h4>
-<p>SSLサーバー証明書、SSLサーバー証明書とペアになる秘密鍵を保持するSecretの名前を設定する。</p>
+<p>サーバー証明書、サーバー証明書とペアになる秘密鍵を保持するSecretの名前を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cert-manager.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Certificate</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -27902,9 +27902,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://zenn.dev/masaaania/articles/e54119948bbaa2#certificate-manifest%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB">https://zenn.dev/masaaania/articles/e54119948bbaa2#certificate-manifest%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB</a></li>
 </ul>
 </blockquote>
-<h4 id="ssl">▼ SSLサーバー証明書を使用する<a class="headerlink" href="#ssl" title="Permanent link">&para;</a></h4>
+<h4 id="_3">▼ サーバー証明書を使用する<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>Ingressの<code>.spec.tls[*].secretName</code>キーにて、Secretを設定する。</p>
-<p>これにより、IngressにSSLサーバー証明書を割り当てられる。</p>
+<p>これにより、Ingressにサーバー証明書を割り当てられる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -27926,7 +27926,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="specdnsnames">.spec.dnsNames<a class="headerlink" href="#specdnsnames" title="Permanent link">&para;</a></h3>
 <h4 id="dnsnames">▼ dnsNamesとは<a class="headerlink" href="#dnsnames" title="Permanent link">&para;</a></h4>
-<p>SSLサーバー証明書を取得したいドメインを設定する。</p>
+<p>サーバー証明書を取得したいドメインを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cert-manager.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Certificate</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -27945,7 +27945,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="specissuerref">.spec.issuerRef<a class="headerlink" href="#specissuerref" title="Permanent link">&para;</a></h3>
 <h4 id="issuerref">▼ issuerRefとは<a class="headerlink" href="#issuerref" title="Permanent link">&para;</a></h4>
-<p>SSLサーバー証明書を作成してもらう発行元認証局を設定する。</p>
+<p>サーバー証明書を作成してもらう発行元認証局を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cert-manager.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Certificate</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -27987,7 +27987,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="specisca">.spec.isCA<a class="headerlink" href="#specisca" title="Permanent link">&para;</a></h3>
 <h4 id="isca">▼ isCAとは<a class="headerlink" href="#isca" title="Permanent link">&para;</a></h4>
-<p>秘密鍵と証明書署名要求 (<code>.csr</code>ファイル) で署名済みのSSLサーバー証明書が、中間CA証明書であるか否かを設定する。</p>
+<p>秘密鍵と証明書署名要求 (<code>.csr</code>ファイル) で署名済みのサーバー証明書が、中間CA証明書であるか否かを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cert-manager.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CertificateRequest</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28019,7 +28019,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="specduration">.spec.duration<a class="headerlink" href="#specduration" title="Permanent link">&para;</a></h3>
 <h4 id="duration">▼ durationとは<a class="headerlink" href="#duration" title="Permanent link">&para;</a></h4>
-<p>SSLサーバー証明書の有効期限を設定する。</p>
+<p>サーバー証明書の有効期限を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cert-manager.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CertificateRequest</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28031,7 +28031,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="specissuerref_1">.spec.issuerRef<a class="headerlink" href="#specissuerref_1" title="Permanent link">&para;</a></h3>
 <h4 id="issuerref_1">▼ issuerRefとは<a class="headerlink" href="#issuerref_1" title="Permanent link">&para;</a></h4>
-<p>SSLサーバー証明書の作成に使用する認証局を設定する。</p>
+<p>サーバー証明書の作成に使用する認証局を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cert-manager.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CertificateRequest</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28055,7 +28055,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="specacme">.spec.acme<a class="headerlink" href="#specacme" title="Permanent link">&para;</a></h3>
 <h4 id="acme">▼ acmeとは<a class="headerlink" href="#acme" title="Permanent link">&para;</a></h4>
-<p>SSLサーバー証明書を自動的に更新するACMEプロトコルについて設定する。</p>
+<p>サーバー証明書を自動的に更新するACMEプロトコルについて設定する。</p>
 <h4 id="server">▼ server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h4>
 <p>ACMEサーバーのURLを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cert-manager.io/v1alpha2</span>
@@ -28079,7 +28079,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example@gmail.com</span>
 </code></pre></div>
 <h4 id="privatekeysecretref">▼ privateKeySecretRef<a class="headerlink" href="#privatekeysecretref" title="Permanent link">&para;</a></h4>
-<p>SSLサーバー証明書、SSLサーバー証明書とペアになる秘密鍵を保持するSecretの名前を設定する。</p>
+<p>サーバー証明書、サーバー証明書とペアになる秘密鍵を保持するSecretの名前を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cert-manager.io/v1alpha2</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIssuer</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28125,7 +28125,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="specca">.spec.ca<a class="headerlink" href="#specca" title="Permanent link">&para;</a></h3>
 <h4 id="secretname_1">▼ secretName<a class="headerlink" href="#secretname_1" title="Permanent link">&para;</a></h4>
-<p>SSLサーバー証明書、SSLサーバー証明書とペアになる秘密鍵を保持するSecretの名前を設定する。</p>
+<p>サーバー証明書、サーバー証明書とペアになる秘密鍵を保持するSecretの名前を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cert-manager.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Issuer</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -28156,7 +28156,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月27日 15:26:06">2025-05-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月27日 16:57:47">2025-05-27</span>
   </span>
 
     

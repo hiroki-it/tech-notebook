@@ -31947,7 +31947,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="tlsclientcertificate">▼ tls.clientCertificate<a class="headerlink" href="#tlsclientcertificate" title="Permanent link">&para;</a></h4>
-<p>自己管理下の相互TLS認証 (<code>MUTUAL</code>) の場合、使用するSSLサーバー証明書を設定する。</p>
+<p>自己管理下の相互TLS認証 (<code>MUTUAL</code>) の場合、使用するサーバー証明書を設定する。</p>
 <p>Istio管理下の相互TLS認証 (<code>ISTIO_MUTUAL</code>) の場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てるので、設定不要である。</p>
 <p>Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -32766,8 +32766,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <p><br></p>
 <h3 id="specserverstlscredentialname">.spec.servers.tls.credentialName<a class="headerlink" href="#specserverstlscredentialname" title="Permanent link">&para;</a></h3>
-<p>CAを含むSSLサーバー証明書を保持するSecretを設定する。</p>
-<p>SSLサーバー証明書のファイルを指定する場合は、<code>.spec.servers[*].tls.serverCertificate</code>キーを設定する。</p>
+<p>CAを含むサーバー証明書を保持するSecretを設定する。</p>
+<p>サーバー証明書のファイルを指定する場合は、<code>.spec.servers[*].tls.serverCertificate</code>キーを設定する。</p>
 <p>Secretを更新した場合、Podを再起動せずに、PodにSecretを再マウントできる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -32832,8 +32832,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ISTIO_MUTUAL</span>
 </code></pre></div>
 <h4 id="passthrough">▼ PASSTHROUGH<a class="headerlink" href="#passthrough" title="Permanent link">&para;</a></h4>
-<p>GatewayでHTTPSリクエストを受信した場合、SSLサーバー証明書を検証をせずに、HTTPSをそのまま通過させる。</p>
-<p>つまり、Gatewayの宛先にSSLサーバー証明書を設定する必要がある。</p>
+<p>GatewayでHTTPSリクエストを受信した場合、サーバー証明書を検証をせずに、HTTPSをそのまま通過させる。</p>
+<p>つまり、Gatewayの宛先にサーバー証明書を設定する必要がある。</p>
 <p><code>PASSTHROUGH</code>以外のモードでは、GatewayでSSLを検証し、場合にとってはSSL終端となる。</p>
 <p>注意点として、Gatewayは受信したHTTPSをTCPプロトコルとして処理するため、<code>L7</code>ヘッダーにあるHTTPヘッダーやパスを使用してトラフィックを制御できない。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -32872,9 +32872,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <p><br></p>
 <h3 id="specserverstlsservercertificate">.spec.servers.tls.serverCertificate<a class="headerlink" href="#specserverstlsservercertificate" title="Permanent link">&para;</a></h3>
-<p>SSLサーバー証明書のファイルを設定する。</p>
-<p><code>.spec.servers.tls.mode</code>キーで相互TLS認証を設定している場合、クライアント証明書のペアになるSSLサーバー証明書が必要である。</p>
-<p>SSLサーバー証明書を保持するSecretを指定する場合は、<code>.spec.servers[*].tls.credentialName</code>キーを設定する。</p>
+<p>サーバー証明書のファイルを設定する。</p>
+<p><code>.spec.servers.tls.mode</code>キーで相互TLS認証を設定している場合、クライアント証明書のペアになるサーバー証明書が必要である。</p>
+<p>サーバー証明書を保持するSecretを指定する場合は、<code>.spec.servers[*].tls.credentialName</code>キーを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-ingress</span>
@@ -32912,7 +32912,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="specmtls">.spec.mtls<a class="headerlink" href="#specmtls" title="Permanent link">&para;</a></h3>
 <h4 id="mtls">▼ mtls<a class="headerlink" href="#mtls" title="Permanent link">&para;</a></h4>
 <p>特定のNamespace内のすべてのistio-proxy間通信時、相互TLS認証を有効化するか否かを設定する。</p>
-<p>特定のPod間でのみ相互TLS認証を使用したい場合、DestinationRuleでSSLサーバー証明書を設定する。</p>
+<p>特定のPod間でのみ相互TLS認証を使用したい場合、DestinationRuleでサーバー証明書を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.mtioutput.com/entry/istio-mtls-onoff">https://www.mtioutput.com/entry/istio-mtls-onoff</a></li>
@@ -32958,7 +32958,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">mtls</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">STRICT</span><span class="w"> </span><span class="c1"># 相互TLS認証を使用する。</span>
 </code></pre></div>
-<p>相互TLS認証を使用する場合はSSLサーバー証明書が必要になり、SSLサーバー証明書が無いと以下のようなエラーになってしまう。</p>
+<p>相互TLS認証を使用する場合はサーバー証明書が必要になり、サーバー証明書が無いと以下のようなエラーになってしまう。</p>
 <div class="highlight"><pre><span></span><code>transport<span class="w"> </span>failure<span class="w"> </span>reason:<span class="w"> </span>TLS<span class="w"> </span>error:<span class="w"> </span>*****:SSL<span class="w"> </span>routines:OPENSSL_internal:SSLV3_ALERT_CERTIFICATE_EXPIRED
 </code></pre></div>
 <blockquote>
@@ -34436,7 +34436,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月27日 15:26:06">2025-05-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月27日 16:57:47">2025-05-27</span>
   </span>
 
     

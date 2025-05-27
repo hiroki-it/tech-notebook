@@ -29417,12 +29417,12 @@
 図43で、AWS EKS上での証明書管理の設計例を示します。</p>
 <p>マイクロサービスのサイドカーコンテナの証明書管理にはService Mesh分野のツールを使用できます。</p>
 <p>例えば、Istioは署名済みの証明書をサイドカーコンテナに組み込み、定期的にこれを更新します *79 。</p>
-<p>Istioコントロールプレーンは自己を署名し、ルート認証局としてサイドカーコンテナのクライアント／SSLサーバー証明書を署名します。</p>
+<p>Istioコントロールプレーンは自己を署名し、ルート認証局としてサイドカーコンテナのクライアント／サーバー証明書を署名します。</p>
 <p>さらにIstioコントロールプレーンはサイドカーコンテナに証明書を組み込み、証明書が失効すれば自動的に更新します。</p>
 <p>この仕組みにより、サイドカーコンテナ間で相互TLS認証を継続的に実施できるようになります *80 。</p>
 <p>一方でIstioを使用しない場合、Security &amp; Compliance分野のツールを使用してアプリケーションコンテナに証明書を組み込み、これを管理する必要があります。</p>
 <p>クラウドリソースの証明書管理にはSecurity &amp; Compliance分野のツールを使用できます。</p>
-<p>例えば、AWS Certificate Managerは中間認証局のAmazon CAからSSLサーバー証明書を取得し、AWSリソースへの組み込みと定期更新を管理します。</p>
+<p>例えば、AWS Certificate Managerは中間認証局のAmazon CAからサーバー証明書を取得し、AWSリソースへの組み込みと定期更新を管理します。</p>
 <p><br></p>
 <p>図43. AWS EKS上での証明書管理の設計例</p>
 <p><img alt="43" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/43.png" /></p>
@@ -29463,7 +29463,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月27日 15:26:06">2025-05-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月27日 16:57:47">2025-05-27</span>
   </span>
 
     
