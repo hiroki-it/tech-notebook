@@ -841,9 +841,9 @@ data:
 
 #### ▼ genCA
 
-SSLサーバー証明書とペアになる秘密鍵を作成する。
+サーバー証明書とペアになる秘密鍵を作成する。
 
-SSLサーバー証明書は`.Cert`、秘密鍵は`.Key`でリクエストできる。
+サーバー証明書は`.Cert`、秘密鍵は`.Key`でリクエストできる。
 
 ```yaml
 {{- $ca := genCA "foo-ca" 3650 }}
@@ -853,7 +853,7 @@ metadata:
   name: foo-webhook
 webhooks:
     clientConfig:
-      # SSLサーバー証明書を出力する
+      # サーバー証明書を出力する
       caBundle: {{ $ca.Cert | b64enc }}
 
 ...

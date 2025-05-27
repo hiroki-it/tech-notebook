@@ -398,7 +398,7 @@ module "route53" {
 # AWS Route53
 # ---------------------------------------------
 resource "aws_acm_certificate" "example" {
-  # CloudFrontの仕様のため、us-east-1リージョンでSSLサーバー証明書を作成します。
+  # CloudFrontの仕様のため、us-east-1リージョンでサーバー証明書を作成します。
   provider = aws
 
   domain_name               = "example.com"

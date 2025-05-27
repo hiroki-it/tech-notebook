@@ -438,11 +438,11 @@ ArgoCDは、argocd-repo-credsの`.url`キーを使用して、argocd-repoの`.ur
 
 ### argocd-secretとは
 
-以下の資格情報やSSLサーバー証明書を設定する。
+以下の資格情報やサーバー証明書を設定する。
 
 - クライアントが、任意の認証/認可方法でArgoCDにログインするためのユーザー名とパスワード
-- ArgoCDがapiserverにリクエストを送信するためのSSLサーバー証明書と秘密鍵
-- Webhookリクエストを送信するためのSSLサーバー証明書
+- ArgoCDがapiserverにリクエストを送信するためのサーバー証明書と秘密鍵
+- Webhookリクエストを送信するためのサーバー証明書
 
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-secret.yaml
 
@@ -616,7 +616,7 @@ data:
       roleARN: <IRSAでArgoCDのPodに紐づくIAMロールARN>
     tlsClientConfig:
       insecure: "false"
-      caData: <HTTPSに必要なSSLサーバー証明書>
+      caData: <HTTPSに必要なサーバー証明書>
   name: foo-cluster
   server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
 ```

@@ -17,7 +17,7 @@ description: Certificate Manager＠Google Cloudリソースの知見を記録し
 
 ### セットアップ
 
-#### ▼ SSLサーバー証明書
+#### ▼ サーバー証明書
 
 #### ▼ クライアント証明書
 
@@ -29,7 +29,7 @@ AWS Certificate Managerでクライアント証明書を作成する場合、AWS
 
 <br>
 
-### SSLサーバー証明書の設置場所
+### サーバー証明書の設置場所
 
 #### ▼ 認証局
 

@@ -125,7 +125,7 @@ data:
 
 複数Kubernetes Clusterメッシュを採用する場合に必要である。
 
-プライマリClusterがリモートClusterのkube-apiserverをコールできるように、SSLサーバー証明書を持つ。
+プライマリClusterがリモートClusterのkube-apiserverをコールできるように、サーバー証明書を持つ。
 
 > - https://istio.io/latest/docs/setup/install/multicluster/primary-remote_multi-network/
 

@@ -104,7 +104,7 @@ APIゲートウェイのAPI形式に応じて、分割パターンがある。
 
 #### ▼ Gateway Offloadingパターン
 
-APIゲートウェイは、マイクロサービス間で共通する問題 (認証、ロギング、SSLサーバー証明書など) を処理する責務を持ちます。
+APIゲートウェイは、マイクロサービス間で共通する問題 (認証、ロギング、サーバー証明書など) を処理する責務を持ちます。
 
 > - https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-offloading
 

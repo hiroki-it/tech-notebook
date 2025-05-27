@@ -158,13 +158,13 @@ spec:
 > - https://qiita.com/knqyf263/items/aefb0ff139cfb6519e27
 > - https://goodbyegangster.hatenablog.com/entry/2021/01/18/131452
 
-定義したCertificateSigningRequestを承認し、SSLサーバー証明書 (`.crt`) を作成するためには、`kubectl certificate approve`コマンドを使用する。
+定義したCertificateSigningRequestを承認し、サーバー証明書 (`.crt`) を作成するためには、`kubectl certificate approve`コマンドを使用する。
 
 ```bash
 # 承認
 $ kubectl certificate approve foo-csr
 
-# SSLサーバー証明書を取得する。
+# サーバー証明書を取得する。
 $ kubectl get csr foo-csr -o jsonpath='{.status.certificate}'| base64 -d > foo.crt
 ```
 
@@ -210,7 +210,7 @@ apiVersion: v1
 kind: Config
 clusters:
   - cluster:
-      # kube-apiserverのSSLサーバー証明書
+      # kube-apiserverのサーバー証明書
       certificate-authority-data: LS0tLS1 ...
       # kube-apiserverのURL
       server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
@@ -3897,7 +3897,7 @@ spec:
 
 `.spec.containers`キーで設定したコンテナよりも先に起動するコンテナ (InitContainer) を設定する。
 
-依存先コンテナ (例：DBコンテナ、インメモリDBコンテナ) の待機処理、依存ツールやSSLサーバー証明書のインストール処理などのために使用する。
+依存先コンテナ (例：DBコンテナ、インメモリDBコンテナ) の待機処理、依存ツールやサーバー証明書のインストール処理などのために使用する。
 
 #### ▼ command
 
@@ -5220,10 +5220,10 @@ metadata:
   name: foo-secret
 type: Opaque
 data:
-  # SSLサーバー証明書
+  # サーバー証明書
   foo.crt: |
     MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
-  # SSLサーバー証明書とペアになる秘密鍵
+  # サーバー証明書とペアになる秘密鍵
   foo.key: |
     MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
 ```
@@ -5379,7 +5379,7 @@ secrets:
 
 SSL/TLSを使用するための変数を設定する。
 
-SSLサーバー証明書、SSLサーバー証明書とペアになる秘密鍵の文字列が必要である。
+サーバー証明書、サーバー証明書とペアになる秘密鍵の文字列が必要である。
 
 ユースケースとしては、変数をIngressに割り当て、IngressとServiceの間をHTTPSプロトコルでパケットを送受信する例がある。
 
@@ -5390,7 +5390,7 @@ metadata:
   name: foo-basic-auth-secret
 type: kubernetes.io/tls
 data:
-  # SSLサーバー証明書
+  # サーバー証明書
   tls.crt: |
     MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
   # 秘密鍵
@@ -5951,7 +5951,7 @@ spec:
           - serviceAccountToken:
               expirationSeconds: 3607
               path: token
-          # kube-apiserverにリクエストを送信するためのSSLサーバー証明書
+          # kube-apiserverにリクエストを送信するためのサーバー証明書
           - configMap:
               items:
                 - key: ca.crt

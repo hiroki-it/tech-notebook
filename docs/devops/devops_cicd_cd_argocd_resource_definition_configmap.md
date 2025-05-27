@@ -783,17 +783,17 @@ data:
 
 <br>
 
-## 05. SSLサーバー証明書系ConfigMap
+## 05. サーバー証明書系ConfigMap
 
-### SSLサーバー証明書系ConfigMapとは
+### サーバー証明書系ConfigMapとは
 
 argocd-server、repo-server、dex-server、はHTTPSリクエストを受信できる。
 
-これらのコンポーネントにHTTPSリクエストを送信する場合、ConfigMap上のSSLサーバー証明書をクライアント側のコンテナにマウントする必要がある。
+これらのコンポーネントにHTTPSリクエストを送信する場合、ConfigMap上のサーバー証明書をクライアント側のコンテナにマウントする必要がある。
 
 反対にHTTPリクエストを送信する場合は、このConfigMapが不要である。
 
-ConfigMap上のSSLサーバー証明書の代わりに、ArgoCD外のSSLサーバー証明書 (例：Cert Manager) を使用しても良い。
+ConfigMap上のサーバー証明書の代わりに、ArgoCD外のサーバー証明書 (例：Cert Manager) を使用しても良い。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#tls-configuration
 
@@ -803,7 +803,7 @@ ConfigMap上のSSLサーバー証明書の代わりに、ArgoCD外のSSLサー�
 
 argocd-serverはdex-serverに対してHTTPSリクエストを送信する。
 
-このConfigMapは、そのためのSSLサーバー証明書を管理する。
+このConfigMapは、そのためのサーバー証明書を管理する。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-inbound-tls-for-argocd-dex-server
 
@@ -813,7 +813,7 @@ argocd-serverはdex-serverに対してHTTPSリクエストを送信する。
 
 application-controller、argocd-server、はrepo-serverに対してHTTPSリクエストを送信する。
 
-このConfigMapは、そのためのSSLサーバー証明書を管理する。
+このConfigMapは、そのためのサーバー証明書を管理する。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-between-argo-cd-components
 
@@ -823,7 +823,7 @@ application-controller、argocd-server、はrepo-serverに対してHTTPSリク�
 
 クライアントはargocd-serverに対してHTTPSリクエストを送信する。
 
-このConfigMapは、そのためのSSLサーバー証明書を管理する。
+このConfigMapは、そのためのサーバー証明書を管理する。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-for-argocd-server
 
@@ -833,9 +833,9 @@ application-controller、argocd-server、はrepo-serverに対してHTTPSリク�
 
 ArgoCDは、ArgoCDの外 (特にリポジトリ) にHTTPSリクエストを送信する。
 
-ArgoCDでは、コンテナイメージの`/etc/ssl`ディレクトリにデフォルトのSSLサーバー証明書が配置されているが、ユーザー定義のSSLサーバー証明書を使用したい場合がある。
+ArgoCDでは、コンテナイメージの`/etc/ssl`ディレクトリにデフォルトのサーバー証明書が配置されているが、ユーザー定義のサーバー証明書を使用したい場合がある。
 
-このConfigMapは、そのためのユーザー定義のSSLサーバー証明書を管理する。
+このConfigMapは、そのためのユーザー定義のサーバー証明書を管理する。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories-using-self-signed-tls-certificates-or-are-signed-by-custom-ca
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-tls-certs-cm.yaml

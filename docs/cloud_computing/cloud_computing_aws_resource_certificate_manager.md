@@ -15,7 +15,7 @@ description: Certificate Manager＠AWSリソースを記録しています。
 
 ## 01. Certificate Managerとは
 
-認証局から発行されたSSLサーバー証明書を管理する。
+認証局から発行されたサーバー証明書を管理する。
 
 <br>
 
@@ -37,7 +37,7 @@ DNS検証かEメール検証かを設定する。
 
 ### AWS認証局とは
 
-認証局であるATSによって認証済みのSSLサーバー証明書を管理できる。
+認証局であるATSによって認証済みのサーバー証明書を管理できる。
 
 | サーバー提供者 | 名前                          |
 | -------------- | ----------------------------- |
@@ -51,13 +51,13 @@ DNS検証かEメール検証かを設定する。
 
 <br>
 
-## 04. SSLサーバー証明書の検証方法
+## 04. サーバー証明書の検証方法
 
 ### ドメイン検証
 
 #### ▼ ドメイン検証とは
 
-ドメインのSSLサーバー証明書を作成するためには、そのドメインの所有者であることを証明する必要がある。
+ドメインのサーバー証明書を作成するためには、そのドメインの所有者であることを証明する必要がある。
 
 ドメインを購入できるサービス (例：AWS、GCP、GMO) に検証方法が用意されている。
 
@@ -66,7 +66,7 @@ DNS検証かEメール検証かを設定する。
 
 #### ▼ 検証方法の変更
 
-既存のSSLサーバー証明書の検証方法は変更できない。
+既存のサーバー証明書の検証方法は変更できない。
 
 そのため、検証方法を変更した証明書を新しく発行し、これを紐付ける必要がある。
 
@@ -97,7 +97,7 @@ CMによってAWS Route53に自動作成されるCNAMEレコード値を使用�
 
 <br>
 
-## 05. SSLサーバー証明書
+## 05. サーバー証明書
 
 ### セキュリティポリシー
 
@@ -113,11 +113,11 @@ SSL/TLSプロトコルを許可しており、対応できるバージョンが�
 
 <br>
 
-### SSLサーバー証明書の種類
+### サーバー証明書の種類
 
 DNS検証またはEメール検証によって、ドメインの所有者であることが証明されると、発行される。
 
-SSLサーバー証明書は、PKIによる公開鍵検証に使用される。
+サーバー証明書は、PKIによる公開鍵検証に使用される。
 
 | 証明書の種類         | 説明                                               |
 | -------------------- | -------------------------------------------------- |
@@ -125,23 +125,23 @@ SSLサーバー証明書は、PKIによる公開鍵検証に使用される。
 
 <br>
 
-### SSLサーバー証明書の変更
+### サーバー証明書の変更
 
-#### ▼ SSLサーバー証明書の確認
+#### ▼ サーバー証明書の確認
 
-Chromeを例に挙げると、SSLサーバー証明書はURLの鍵マークから確認できる。
+Chromeを例に挙げると、サーバー証明書はURLの鍵マークから確認できる。
 
 **＊例＊**
 
-CircleCIのサイトは、SSLサーバー証明書のためにAWS Certificate Managerを使用している。
+CircleCIのサイトは、サーバー証明書のためにAWS Certificate Managerを使用している。
 
 ![ssl_certificate_chrome](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssl_certificate_chrome.png)
 
 #### ▼ ダウンタイム
 
-AWS ALBではSSLサーバー証明書の変更でダウンタイムは発生しない。
+AWS ALBではサーバー証明書の変更でダウンタイムは発生しない。
 
-既存のセッションを維持（調査していないが、スティッキーセッションの仕組み？）しつつ、新しいSSLサーバー証明書が適用される。
+既存のセッションを維持（調査していないが、スティッキーセッションの仕組み？）しつつ、新しいサーバー証明書が適用される。
 
 AWS CloudFrontは謎...
 
@@ -149,7 +149,7 @@ AWS CloudFrontは謎...
 
 <br>
 
-## 05-02. SSLサーバー証明書の配置場所パターン
+## 05-02. サーバー証明書の配置場所パターン
 
 ### AWS EC2/AWS ECS/AWS EKSの送信元
 
@@ -157,9 +157,9 @@ AWS CloudFrontは謎...
 
 HTTPSによるSSLプロトコルを受け付けるネットワークの最終地点のことを、SSL/TLS終端という。
 
-SSLサーバー証明書の配置場所は、SSL/TLS終端をどこにするかで決める。
+サーバー証明書の配置場所は、SSL/TLS終端をどこにするかで決める。
 
-AWSの使用上、AWS Certificate ManagerのSSLサーバー証明書を配置できないAWSリソースに対しては、外部のSSLサーバー証明書を手に入れて配置する。
+AWSの使用上、AWS Certificate Managerのサーバー証明書を配置できないAWSリソースに対しては、外部のサーバー証明書を手に入れて配置する。
 
 トレードオフとして、アプリケーションデータの暗号化処理は通信速度が低下させる。
 
@@ -170,58 +170,58 @@ AWSの使用上、AWS Certificate ManagerのSSLサーバー証明書を配置で
 
 #### ▼ AWS Route53 ➡️ AWS ALB、NLB、の場合
 
-AWS ALBでSSL/TLS終端とする場合、AWS EC2/AWS ECS/AWS EKSにSSLサーバー証明書は不要である。
+AWS ALBでSSL/TLS終端とする場合、AWS EC2/AWS ECS/AWS EKSにサーバー証明書は不要である。
 
-AWS EC2/AWS ECS/AWS EKSでSSL/TLS終端とする場合、AWS EC2/AWS ECS/AWS EKSにAWS以外で作成したSSLサーバー証明書を配置する。
+AWS EC2/AWS ECS/AWS EKSでSSL/TLS終端とする場合、AWS EC2/AWS ECS/AWS EKSにAWS以外で作成したサーバー証明書を配置する。
 
-| パターン<br>(AWS Route53には必ず配置)                                                                                       | SSL/TLS終端<br>(HTTPSプロトコルの最終地点) |
-| --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| AWS Route53 ➡️ AWS ALB (AWS Certificate ManagerのSSLサーバー証明書) ➡️ AWS EC2/AWS ECS/AWS EKS                              | AWS ALB                                    |
-| AWS Route53 ➡️ AWS ALB (AWS Certificate ManagerのSSLサーバー証明書) ➡️ AWS EC2/AWS ECS/AWS EKS (AWS以外のSSLサーバー証明書) | AWS EC2/AWS ECS/AWS EKS                    |
-| AWS Route53 ➡️ AWS ALB (AWS Certificate ManagerのSSLサーバー証明書) ➡️ Lightsail (AWS以外のSSLサーバー証明書)               | Lightsail                                  |
-| AWS Route53 ➡️ NLB (AWS Certificate ManagerのSSLサーバー証明書) ➡️ AWS EC2/AWS ECS/AWS EKS (AWS以外のSSLサーバー証明書)     | AWS EC2/AWS ECS/AWS EKS                    |
+| パターン<br>(AWS Route53には必ず配置)                                                                                 | SSL/TLS終端<br>(HTTPSプロトコルの最終地点) |
+| --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| AWS Route53 ➡️ AWS ALB (AWS Certificate Managerのサーバー証明書) ➡️ AWS EC2/AWS ECS/AWS EKS                           | AWS ALB                                    |
+| AWS Route53 ➡️ AWS ALB (AWS Certificate Managerのサーバー証明書) ➡️ AWS EC2/AWS ECS/AWS EKS (AWS以外のサーバー証明書) | AWS EC2/AWS ECS/AWS EKS                    |
+| AWS Route53 ➡️ AWS ALB (AWS Certificate Managerのサーバー証明書) ➡️ Lightsail (AWS以外のサーバー証明書)               | Lightsail                                  |
+| AWS Route53 ➡️ NLB (AWS Certificate Managerのサーバー証明書) ➡️ AWS EC2/AWS ECS/AWS EKS (AWS以外のサーバー証明書)     | AWS EC2/AWS ECS/AWS EKS                    |
 
 > - https://dev.classmethod.jp/articles/alb-backend-https/#toc-1
 
 #### ▼ AWS Route53 ➡️ Load Balancer Controller由来) の場合
 
-AWSリソースにはAWS Certificate ManagerのSSLサーバー証明書を紐づけられるが、KubernetesリソースにはAWS以外のSSLサーバー証明書 (Let’s Encrypt、Cert Manager、Istio) しか紐づけられない。
+AWSリソースにはAWS Certificate Managerのサーバー証明書を紐づけられるが、KubernetesリソースにはAWS以外のサーバー証明書 (Let’s Encrypt、Cert Manager、Istio) しか紐づけられない。
 
-| パターン<br>(AWS Route53には必ず配置)                                                                                              | SSL/TLS終端<br>(HTTPSプロトコルの最終地点) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| AWS Route53 ➡️ Load Balancer Controller (AWS Certificate ManagerのSSLサーバー証明書) ➡️︎ Service / Pod                             | AWS ALB                                    |
-| AWS Route53 ➡️ Load Balancer Controller (AWS Certificate ManagerのSSLサーバー証明書) ➡️ Service / Pod                              | Ingress Controller                         |
-| AWS Route53 ➡️ Load Balancer Controller (AWS Certificate ManagerのSSLサーバー証明書) ➡️ Service / Pod (AWS以外のSSLサーバー証明書) | Pod                                        |
+| パターン<br>(AWS Route53には必ず配置)                                                                                        | SSL/TLS終端<br>(HTTPSプロトコルの最終地点) |
+| ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| AWS Route53 ➡️ Load Balancer Controller (AWS Certificate Managerのサーバー証明書) ➡️︎ Service / Pod                          | AWS ALB                                    |
+| AWS Route53 ➡️ Load Balancer Controller (AWS Certificate Managerのサーバー証明書) ➡️ Service / Pod                           | Ingress Controller                         |
+| AWS Route53 ➡️ Load Balancer Controller (AWS Certificate Managerのサーバー証明書) ➡️ Service / Pod (AWS以外のサーバー証明書) | Pod                                        |
 
 > - https://aws.amazon.com/blogs/security/tls-enabled-kubernetes-clusters-with-acm-private-ca-and-amazon-eks-2/
 > - https://aws.amazon.com/blogs/containers/setting-up-end-to-end-tls-encryption-on-amazon-eks-with-the-new-aws-load-balancer-controller/
 
 #### ▼ AWS Route53 ➡️ AWS CloudFrontの場合
 
-AWS CloudFrontからAWS ALBにHTTPSリクエストを送信する場合、それぞれにSSLサーバー証明書を配置する必要がある。
+AWS CloudFrontからAWS ALBにHTTPSリクエストを送信する場合、それぞれにサーバー証明書を配置する必要がある。
 
 ただ、AWS CloudFrontはバージニア北部で、またAWS ALBは東京リージョンで証明書を作成する必要がある。
 
 AWS CloudFrontに送信されたHTTPSリクエストをAWS ALBにルーティングするために、両方に紐付ける証明書で承認するドメインは、一致させる必要がある。
 
-| パターン<br>(AWS Route53には必ず配置)                                                                                                                         | SSL/TLS終端<br>(HTTPSプロトコルの最終地点) |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| AWS Route53 ➡️ AWS CloudFront (AWS Certificate ManagerのSSLサーバー証明書) ➡️ AWS ALB (AWS Certificate ManagerのSSLサーバー証明書) ➡️ AWS EC2/AWS ECS/AWS EKS | AWS ALB                                    |
-| AWS Route53 ➡️ AWS CloudFront (AWS Certificate ManagerのSSLサーバー証明書) ➡️ AWS EC2/AWS ECS/AWS EKS                                                         | AWS CloudFront                             |
-| AWS Route53 ➡️ AWS CloudFront (AWS Certificate ManagerのSSLサーバー証明書) ➡️ AWS S3                                                                          | AWS CloudFront                             |
+| パターン<br>(AWS Route53には必ず配置)                                                                                                                   | SSL/TLS終端<br>(HTTPSプロトコルの最終地点) |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| AWS Route53 ➡️ AWS CloudFront (AWS Certificate Managerのサーバー証明書) ➡️ AWS ALB (AWS Certificate Managerのサーバー証明書) ➡️ AWS EC2/AWS ECS/AWS EKS | AWS ALB                                    |
+| AWS Route53 ➡️ AWS CloudFront (AWS Certificate Managerのサーバー証明書) ➡️ AWS EC2/AWS ECS/AWS EKS                                                      | AWS CloudFront                             |
+| AWS Route53 ➡️ AWS CloudFront (AWS Certificate Managerのサーバー証明書) ➡️ AWS S3                                                                       | AWS CloudFront                             |
 
 #### ▼ AWS Route53 ➡️ AWS EC2/AWS ECS/AWS EKS、AWS Lightsail、の場合
 
-AWS Route53でSSL/TLS終端とする場合、AWS EC2/AWS ECS/AWS EKSにSSLサーバー証明書は不要である。
+AWS Route53でSSL/TLS終端とする場合、AWS EC2/AWS ECS/AWS EKSにサーバー証明書は不要である。
 
-AWS EC2/AWS ECS/AWS EKSでSSL/TLS終端とする場合、AWS EC2/AWS ECS/AWS EKSにAWS以外で作成したSSLサーバー証明書を配置する。
+AWS EC2/AWS ECS/AWS EKSでSSL/TLS終端とする場合、AWS EC2/AWS ECS/AWS EKSにAWS以外で作成したサーバー証明書を配置する。
 
-| パターン<br>(AWS Route53には必ず配置)                                 | SSL/TLS終端<br>(HTTPSプロトコルの最終地点) |
-| --------------------------------------------------------------------- | ------------------------------------------ |
-|                                                                       |
-| AWS Route53 ➡️ AWS EC2/AWS ECS/AWS EKS (AWS以外のSSLサーバー証明書)   | AWS EC2/AWS ECS/AWS EKS                    |
-| AWS Route53 ➡️ Lightsail (AWS Certificate ManagerのSSLサーバー証明書) | Lightsail                                  |
-| AWS Route53 ➡️ Lightsail (AWS Certificate ManagerのSSLサーバー証明書) | Lightsail                                  |
+| パターン<br>(AWS Route53には必ず配置)                              | SSL/TLS終端<br>(HTTPSプロトコルの最終地点) |
+| ------------------------------------------------------------------ | ------------------------------------------ |
+|                                                                    |
+| AWS Route53 ➡️ AWS EC2/AWS ECS/AWS EKS (AWS以外のサーバー証明書)   | AWS EC2/AWS ECS/AWS EKS                    |
+| AWS Route53 ➡️ Lightsail (AWS Certificate Managerのサーバー証明書) | Lightsail                                  |
+| AWS Route53 ➡️ Lightsail (AWS Certificate Managerのサーバー証明書) | Lightsail                                  |
 
 <br>
 
@@ -229,7 +229,7 @@ AWS EC2/AWS ECS/AWS EKSでSSL/TLS終端とする場合、AWS EC2/AWS ECS/AWS EKS
 
 #### ▼ AWS Aurora
 
-AWS Aurora RDSにSSLサーバー証明書を紐づける。
+AWS Aurora RDSにサーバー証明書を紐づける。
 
 AWS EC2/AWS ECS/AWS EKSからAWS Aurora RDSへのアプリケーションデータを暗号化できる。
 

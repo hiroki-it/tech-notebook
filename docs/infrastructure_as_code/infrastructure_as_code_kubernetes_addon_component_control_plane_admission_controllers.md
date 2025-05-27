@@ -80,13 +80,13 @@ ValidatingAdmissionWebhook,
 
 > - https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#which-plugins-are-enabled-by-default
 
-#### ▼ Webhook系プラグインのSSLサーバー証明書
+#### ▼ Webhook系プラグインのサーバー証明書
 
 Webhook系プラグイン (例：MutatingAdmissionWebhook、ValidatingAdmissionWebhookなど) では、kube-apiserverからwebhookサーバーにHTTPSリクエストを送信する時、webhookサーバーのためにSL証明書が必要である。
 
-このSSLサーバー証明書は、SecretとConfiguration (例：MutatingAdmissionConfiguration、ValidatingAdmissionConfigurationなど) で管理している。
+このサーバー証明書は、SecretとConfiguration (例：MutatingAdmissionConfiguration、ValidatingAdmissionConfigurationなど) で管理している。
 
-SSLサーバー証明書を含むSecretの作成は`kube-webhook-certgen`イメージで`create`コマンドを実行することにより、Configurationへの挿入は`patch`コマンドを実行することで実現している。
+サーバー証明書を含むSecretの作成は`kube-webhook-certgen`イメージで`create`コマンドを実行することにより、Configurationへの挿入は`patch`コマンドを実行することで実現している。
 
 > - https://blog.sakamo.dev/post/ingress-nginx/#ingress-nginx-admission-create
 > - https://blog.sakamo.dev/post/ingress-nginx/#ingress-nginx-admission-patch

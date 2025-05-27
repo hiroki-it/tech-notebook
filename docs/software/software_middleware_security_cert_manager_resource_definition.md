@@ -35,7 +35,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/cert-manag
 
 ### Certificateとは
 
-認証局を使用して、秘密鍵と証明書署名要求で署名済みの`X.509`のSSLサーバー証明書 (`.crt`ファイル) を作成する。
+認証局を使用して、秘密鍵と証明書署名要求で署名済みの`X.509`のサーバー証明書 (`.crt`ファイル) を作成する。
 
 証明書自体は、紐づくSecretに割り当てられる。
 
@@ -48,7 +48,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/cert-manag
 
 #### ▼ secretNameとは
 
-SSLサーバー証明書、SSLサーバー証明書とペアになる秘密鍵を保持するSecretの名前を設定する。
+サーバー証明書、サーバー証明書とペアになる秘密鍵を保持するSecretの名前を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -62,11 +62,11 @@ spec:
 
 > - https://zenn.dev/masaaania/articles/e54119948bbaa2#certificate-manifest%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB
 
-#### ▼ SSLサーバー証明書を使用する
+#### ▼ サーバー証明書を使用する
 
 Ingressの`.spec.tls[*].secretName`キーにて、Secretを設定する。
 
-これにより、IngressにSSLサーバー証明書を割り当てられる。
+これにより、Ingressにサーバー証明書を割り当てられる。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -91,7 +91,7 @@ spec:
 
 #### ▼ dnsNamesとは
 
-SSLサーバー証明書を取得したいドメインを設定する。
+サーバー証明書を取得したいドメインを設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -113,7 +113,7 @@ spec:
 
 #### ▼ issuerRefとは
 
-SSLサーバー証明書を作成してもらう発行元認証局を設定する。
+サーバー証明書を作成してもらう発行元認証局を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -165,7 +165,7 @@ spec:
 
 #### ▼ isCAとは
 
-秘密鍵と証明書署名要求 (`.csr`ファイル) で署名済みのSSLサーバー証明書が、中間CA証明書であるか否かを設定する。
+秘密鍵と証明書署名要求 (`.csr`ファイル) で署名済みのサーバー証明書が、中間CA証明書であるか否かを設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -206,7 +206,7 @@ spec:
 
 #### ▼ durationとは
 
-SSLサーバー証明書の有効期限を設定する。
+サーバー証明書の有効期限を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -224,7 +224,7 @@ spec:
 
 #### ▼ issuerRefとは
 
-SSLサーバー証明書の作成に使用する認証局を設定する。
+サーバー証明書の作成に使用する認証局を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -255,7 +255,7 @@ spec:
 
 #### ▼ acmeとは
 
-SSLサーバー証明書を自動的に更新するACMEプロトコルについて設定する。
+サーバー証明書を自動的に更新するACMEプロトコルについて設定する。
 
 #### ▼ server
 
@@ -289,7 +289,7 @@ spec:
 
 #### ▼ privateKeySecretRef
 
-SSLサーバー証明書、SSLサーバー証明書とペアになる秘密鍵を保持するSecretの名前を設定する。
+サーバー証明書、サーバー証明書とペアになる秘密鍵を保持するSecretの名前を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
@@ -348,7 +348,7 @@ spec:
 
 #### ▼ secretName
 
-SSLサーバー証明書、SSLサーバー証明書とペアになる秘密鍵を保持するSecretの名前を設定する。
+サーバー証明書、サーバー証明書とペアになる秘密鍵を保持するSecretの名前を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1

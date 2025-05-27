@@ -83,6 +83,6 @@ Pod間 (フロントエンド領域とマイクロサービス領域間、マイ
 
 Kubernetes上のPodは、Serviceの完全修飾ドメイン名のURL (`http://foo-service.default.svc.cluster.local`) を指定すると、そのServiceの配下にあるPodとHTTPで通信できる。
 
-Pod間 (フロントエンド領域とマイクロサービス領域間、マイクロサービス間) をHTTPSで通信したい場合、Cert Managerなどを使用して、PodにSSLサーバー証明書やクライアント証明書をマウントする必要がある。
+Pod間 (フロントエンド領域とマイクロサービス領域間、マイクロサービス間) をHTTPSで通信したい場合、Cert Managerなどを使用して、Podにサーバー証明書やクライアント証明書をマウントする必要がある。
 
 <br>

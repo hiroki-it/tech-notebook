@@ -354,7 +354,7 @@ Ingress Controller (例：Nginx Ingress Controller、AWS Load Balancer Controlle
 
 ### IngressをSSL/TLS終端にする
 
-PodをSSL/TLS終端にする場合、Cluster内でHTTPS通信を使用することになるため、さまざまな対処事項 (例：SSLサーバー証明書管理、相互TLS認証の有無) で実装難易度が上がる。
+PodをSSL/TLS終端にする場合、Cluster内でHTTPS通信を使用することになるため、さまざまな対処事項 (例：サーバー証明書管理、相互TLS認証の有無) で実装難易度が上がる。
 
 仮にサービスメッシュを採用すれば対処しやすくなるが、採用しないのであれば自前での対処は大変である。
 
@@ -1281,7 +1281,7 @@ spec:
 
 **＊実行例＊**
 
-appコンテナからHTTPSリクエストを送信する場合に、SSLサーバー証明書が必要になる。
+appコンテナからHTTPSリクエストを送信する場合に、サーバー証明書が必要になる。
 
 これはすでに署名されている必要があり、例えばubuntuでは、CA証明書 (CA証明書) を含む`ca-certificates`パッケージをインストールする。
 
@@ -1338,7 +1338,7 @@ istio-initコンテナとかまさにその例
 
 > - https://loft.sh/blog/kubernetes-init-containers/
 
-#### ▼ InitContainerでSSLサーバー証明書を準備する
+#### ▼ InitContainerでサーバー証明書を準備する
 
 記入中...
 

@@ -395,13 +395,13 @@ spec:
         # SSH公開鍵認証既知ホストファイルをコンテナにマウントする
         - name: ssh-known-hosts
           mountPath: /app/config/ssh
-        # ArgoCD外にHTTPSリクエストを送信するためのSSLサーバー証明書をコンテナにマウントする
+        # ArgoCD外にHTTPSリクエストを送信するためのサーバー証明書をコンテナにマウントする
         - name: tls-certs
           mountPath: /app/config/tls
-        # repo-serverに対してHTTPSリクエストするためのSSLサーバー証明書をコンテナにマウントする
+        # repo-serverに対してHTTPSリクエストするためのサーバー証明書をコンテナにマウントする
         - mountPath: /app/config/server/tls
           name: argocd-repo-server-tls
-        # dex-serverに対してHTTPSリクエストするためのSSLサーバー証明書をコンテナにマウントする
+        # dex-serverに対してHTTPSリクエストするためのサーバー証明書をコンテナにマウントする
         - name: argocd-dex-server-tls
           mountPath: /app/config/dex/tls
         - name: plugins-home
@@ -424,7 +424,7 @@ spec:
       configMap:
         defaultMode: 420
         name: argocd-ssh-known-hosts-cm
-    # ArgoCD外 (特にリポジトリ) にHTTPSリクエストを送信するために、SSLサーバー証明書を設定する。
+    # ArgoCD外 (特にリポジトリ) にHTTPSリクエストを送信するために、サーバー証明書を設定する。
     - name: tls-certs
       configMap:
         defaultMode: 420
@@ -434,7 +434,7 @@ spec:
         defaultMode: 420
         name: argocd-styles-cm
         optional: "true"
-    # repo-serverにHTTPSリクエストを送信するために、SSLサーバー証明書を設定する
+    # repo-serverにHTTPSリクエストを送信するために、サーバー証明書を設定する
     - name: argocd-repo-server-tls
       secret:
         defaultMode: 420
@@ -447,7 +447,7 @@ spec:
             path: ca.crt
         optional: "true"
         secretName: argocd-repo-server-tls
-    # dex-serverにHTTPSリクエストを送信するために、SSLサーバー証明書を設定する
+    # dex-serverにHTTPSリクエストを送信するために、サーバー証明書を設定する
     - name: argocd-dex-server-tls
       secret:
         defaultMode: 420
@@ -523,7 +523,7 @@ spec:
         # SSH公開鍵認証既知ホストファイルをコンテナにマウントする
         - name: ssh-known-hosts
           mountPath: /app/config/ssh
-        # ArgoCD外にHTTPSリクエストを送信するために、SSLサーバー証明書を設定する。
+        # ArgoCD外にHTTPSリクエストを送信するために、サーバー証明書を設定する。
         - name: tls-certs
           mountPath: /app/config/tls
         - name: gpg-keys
@@ -618,7 +618,7 @@ spec:
       configMap:
         defaultMode: 420
         name: argocd-ssh-known-hosts-cm
-    # ArgoCD外 (特にリポジトリ) にHTTPSリクエストを送信するためのSSLサーバー証明書をコンテナにマウントする
+    # ArgoCD外 (特にリポジトリ) にHTTPSリクエストを送信するためのサーバー証明書をコンテナにマウントする
     - name: tls-certs
       configMap:
         defaultMode: 420
@@ -627,7 +627,7 @@ spec:
       configMap:
         defaultMode: 420
         name: argocd-gpg-keys-cm
-    # 他のコンポーネントからHTTPSリクエストを受信するために、SSLサーバー証明書を設定する
+    # 他のコンポーネントからHTTPSリクエストを受信するために、サーバー証明書を設定する
     - name: argocd-repo-server-tls
       secret:
         defaultMode: 420
@@ -717,7 +717,7 @@ spec:
 
   # 各種Secretを読み込む
   volumes:
-    # 他のコンポーネントからHTTPSリクエストを受信するために、SSLサーバー証明書を設定する
+    # 他のコンポーネントからHTTPSリクエストを受信するために、サーバー証明書を設定する
     - name: argocd-dex-server-tls
       secret:
         defaultMode: 420
@@ -793,7 +793,7 @@ spec:
           name: argocd-home
   # 各種Secretを読み込む
   volumes:
-    # repo-serverとHTTPSリクエストを送信するために、SSLサーバー証明書を設定する
+    # repo-serverとHTTPSリクエストを送信するために、サーバー証明書を設定する
     - name: argocd-repo-server-tls
       secret:
         defaultMode: 420

@@ -192,7 +192,7 @@ spec:
       port: 15010
       protocol: TCP
       targetPort: 15010
-    # SSLサーバー証明書に関するリクエストを待ち受ける。
+    # サーバー証明書に関するリクエストを待ち受ける。
     - name: https-dns
       port: 15012
       protocol: TCP
@@ -490,13 +490,13 @@ Istiodコントロールプレーンは、サービスレジストリ (例：etc
 
 ### `15012`番
 
-`discovery`コンテナの`15012`番ポートでは、マイクロサービス間で相互TLS認証によるHTTPSプロトコルを使用する場合、istio-proxyからのSSLサーバー証明書に関するリクエストを待ち受け、`discovery`コンテナ内のプロセスに渡す。
+`discovery`コンテナの`15012`番ポートでは、マイクロサービス間で相互TLS認証によるHTTPSプロトコルを使用する場合、istio-proxyからのサーバー証明書に関するリクエストを待ち受け、`discovery`コンテナ内のプロセスに渡す。
 
-リクエストの内容に応じて、SSLサーバー証明書と秘密鍵を含むレスポンスを返信する。
+リクエストの内容に応じて、サーバー証明書と秘密鍵を含むレスポンスを返信する。
 
 istio-proxyはこれを受信し、pilot-agentはEnvoyにこれらを紐付ける。
 
-また、SSLサーバー証明書の有効期限が切れれば、istio-proxyからのリクエストに応じて、新しいSSLサーバー証明書と秘密鍵を作成する。
+また、サーバー証明書の有効期限が切れれば、istio-proxyからのリクエストに応じて、新しいサーバー証明書と秘密鍵を作成する。
 
 ![istio_control-plane_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_certificate.png)
 

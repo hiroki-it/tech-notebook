@@ -498,9 +498,9 @@ $ curl -sSL https://example.com/foo
 
 ### -k
 
-SSLサーバー証明書のエラーを無視する。
+サーバー証明書のエラーを無視する。
 
-自己署名SSLサーバー証明書を使用している場合に、以下のようなエラーでHTTPSリクエストを送信できないため、これを無視する。
+自己署名サーバー証明書を使用している場合に、以下のようなエラーでHTTPSリクエストを送信できないため、これを無視する。
 
 ```bash
 $ curl https://*.*.*.* -H 'Host:example.com'
@@ -944,7 +944,7 @@ $ find ./* -type f | xargs grep "<検索文字>" 2> /dev/null
 $ find ./* -type f | xargs grep ".conf" 2> /dev/null
 ```
 
-SSLサーバー証明書の場所を探す。
+サーバー証明書の場所を探す。
 
 ```bash
 $ find ./* -type f | xargs grep ".crt" 2> /dev/null

@@ -40,7 +40,7 @@ otelクライアントパッケージからのテレメトリーデータを、R
 
 OTLP形式のテレメトリーを受信する。
 
-HTTPSで受信する場合には、SSLサーバー証明書が必要である。
+HTTPSで受信する場合には、サーバー証明書が必要である。
 
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#server-configuration

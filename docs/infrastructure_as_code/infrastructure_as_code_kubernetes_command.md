@@ -404,7 +404,7 @@ secret/foo-secret created
 
 #### ▼ secret tls
 
-SSLサーバー証明書を持つSecretを作成する。
+サーバー証明書を持つSecretを作成する。
 
 ```bash
 $ kubectl create secret tls tls-secret --cert=/etc/ssl/certs/foo.crt --key=./foo.key

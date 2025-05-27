@@ -344,7 +344,7 @@ ssl on;
 
 #### ▼ ssl_certificate
 
-HTTPSプロトコルを受信する場合、SSLサーバー証明書のパスを設定する。
+HTTPSプロトコルを受信する場合、サーバー証明書のパスを設定する。
 
 **＊実装例＊**
 
@@ -354,7 +354,7 @@ ssl_certificate /etc/nginx/ssl/server.crt;
 
 #### ▼ ssl_certificate_key
 
-HTTPSプロトコルを受信する場合、SSLサーバー証明書と対になる秘密鍵へのパスを設定する。
+HTTPSプロトコルを受信する場合、サーバー証明書と対になる秘密鍵へのパスを設定する。
 
 **＊実装例＊**
 

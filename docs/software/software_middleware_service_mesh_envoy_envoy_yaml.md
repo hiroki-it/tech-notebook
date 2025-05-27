@@ -867,7 +867,7 @@ static_resources:
             # transport_sockets.tlsを指定する
             "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
             common_tls_context:
-              # static_resources.secretsキーで定義したSSLサーバー証明書を設定する。
+              # static_resources.secretsキーで定義したサーバー証明書を設定する。
               tls_certificate_sds_secret_configs:
                 - name: server-cert
               validation_context_sds_secret_config:
@@ -876,7 +876,7 @@ static_resources:
     ...
 
   secrets:
-    ## SSLサーバー証明書
+    ## サーバー証明書
     - name: server-cert
       tls_certificate:
         certificate_chain:

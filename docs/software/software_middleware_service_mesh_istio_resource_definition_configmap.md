@@ -2339,7 +2339,7 @@ spec:
 
 ### `PILOT_CERT_PROVIDER`
 
-istio-proxyに設定するSSLサーバー証明書のプロバイダーを設定する。
+istio-proxyに設定するサーバー証明書のプロバイダーを設定する。
 
 ```yaml
 apiVersion: apps/v1
@@ -2356,11 +2356,11 @@ spec:
             value: istiod
 ```
 
-| 設定値       | 説明                                                      |
-| ------------ | --------------------------------------------------------- |
-| `istiod`     | Istiodが提供するSSLサーバー証明書を使用する。             |
-| `kubernetes` | KubernetesのSecretで管理するSSLサーバー証明書を使用する。 |
-| `none`       | SSLサーバー証明書を使用しない。                           |
+| 設定値       | 説明                                                   |
+| ------------ | ------------------------------------------------------ |
+| `istiod`     | Istiodが提供するサーバー証明書を使用する。             |
+| `kubernetes` | KubernetesのSecretで管理するサーバー証明書を使用する。 |
+| `none`       | サーバー証明書を使用しない。                           |
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 

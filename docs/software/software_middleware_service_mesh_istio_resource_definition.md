@@ -1065,7 +1065,7 @@ spec:
 
 #### ▼ tls.clientCertificate
 
-自己管理下の相互TLS認証 (`MUTUAL`) の場合、使用するSSLサーバー証明書を設定する。
+自己管理下の相互TLS認証 (`MUTUAL`) の場合、使用するサーバー証明書を設定する。
 
 Istio管理下の相互TLS認証 (`ISTIO_MUTUAL`) の場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てるので、設定不要である。
 
@@ -1986,9 +1986,9 @@ spec:
 
 ### .spec.servers.tls.credentialName
 
-CAを含むSSLサーバー証明書を保持するSecretを設定する。
+CAを含むサーバー証明書を保持するSecretを設定する。
 
-SSLサーバー証明書のファイルを指定する場合は、`.spec.servers[*].tls.serverCertificate`キーを設定する。
+サーバー証明書のファイルを指定する場合は、`.spec.servers[*].tls.serverCertificate`キーを設定する。
 
 Secretを更新した場合、Podを再起動せずに、PodにSecretを再マウントできる。
 
@@ -2074,9 +2074,9 @@ spec:
 
 #### ▼ PASSTHROUGH
 
-GatewayでHTTPSリクエストを受信した場合、SSLサーバー証明書を検証をせずに、HTTPSをそのまま通過させる。
+GatewayでHTTPSリクエストを受信した場合、サーバー証明書を検証をせずに、HTTPSをそのまま通過させる。
 
-つまり、Gatewayの宛先にSSLサーバー証明書を設定する必要がある。
+つまり、Gatewayの宛先にサーバー証明書を設定する必要がある。
 
 `PASSTHROUGH`以外のモードでは、GatewayでSSLを検証し、場合にとってはSSL終端となる。
 
@@ -2122,11 +2122,11 @@ spec:
 
 ### .spec.servers.tls.serverCertificate
 
-SSLサーバー証明書のファイルを設定する。
+サーバー証明書のファイルを設定する。
 
-`.spec.servers.tls.mode`キーで相互TLS認証を設定している場合、クライアント証明書のペアになるSSLサーバー証明書が必要である。
+`.spec.servers.tls.mode`キーで相互TLS認証を設定している場合、クライアント証明書のペアになるサーバー証明書が必要である。
 
-SSLサーバー証明書を保持するSecretを指定する場合は、`.spec.servers[*].tls.credentialName`キーを設定する。
+サーバー証明書を保持するSecretを指定する場合は、`.spec.servers[*].tls.credentialName`キーを設定する。
 
 **＊実装例＊**
 
@@ -2176,7 +2176,7 @@ spec:
 
 特定のNamespace内のすべてのistio-proxy間通信時、相互TLS認証を有効化するか否かを設定する。
 
-特定のPod間でのみ相互TLS認証を使用したい場合、DestinationRuleでSSLサーバー証明書を設定する。
+特定のPod間でのみ相互TLS認証を使用したい場合、DestinationRuleでサーバー証明書を設定する。
 
 > - https://www.mtioutput.com/entry/istio-mtls-onoff
 > - https://hemantkumar.net/kubernetes-mutual-auth-with-diffferent-cas.html
@@ -2206,7 +2206,7 @@ spec:
     mode: STRICT # 相互TLS認証を使用する。
 ```
 
-相互TLS認証を使用する場合はSSLサーバー証明書が必要になり、SSLサーバー証明書が無いと以下のようなエラーになってしまう。
+相互TLS認証を使用する場合はサーバー証明書が必要になり、サーバー証明書が無いと以下のようなエラーになってしまう。
 
 ```bash
 transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_ALERT_CERTIFICATE_EXPIRED

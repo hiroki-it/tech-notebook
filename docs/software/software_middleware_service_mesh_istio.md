@@ -399,17 +399,17 @@ AuthorizationPolicyで認可プロバイダー (例：Keycloak、OpenPolicy Agen
 
 ## 06-02. 証明書の発行
 
-### クライアント証明書／SSLサーバー証明書発行
+### クライアント証明書／サーバー証明書発行
 
 #### ▼ Istiodコントロールプレーン (`discovery`コンテナ) をルート認証局として使用する場合
 
 デフォルトでは、Istiodコントロールプレーンがルート認証局として働く。
 
-クライアント証明書／SSLサーバー証明書を提供しつつ、これを定期的に自動更新する。
+クライアント証明書／サーバー証明書を提供しつつ、これを定期的に自動更新する。
 
 1. Istiodコントロールプレーンは、`istio-ca-secret` (Secret) を自己署名する。
-2. Istiodコントロールプレーンは、istio-proxyから送信された秘密鍵と証明書署名要求で署名済みのクライアント証明書／SSLサーバー証明書を作成する。特に設定しなければ、istio-proxyのpilot-agentプロセスが、秘密鍵と証明書署名要求を自動で作成してくれる。
-3. istio-proxyからのリクエストに応じて、IstiodのSDS-APIがクライアント証明書／SSLサーバー証明書をistio-proxyに配布する。
+2. Istiodコントロールプレーンは、istio-proxyから送信された秘密鍵と証明書署名要求で署名済みのクライアント証明書／サーバー証明書を作成する。特に設定しなければ、istio-proxyのpilot-agentプロセスが、秘密鍵と証明書署名要求を自動で作成してくれる。
+3. istio-proxyからのリクエストに応じて、IstiodのSDS-APIがクライアント証明書／サーバー証明書をistio-proxyに配布する。
 4. Istiodコントロールプレーンは、CA証明書を持つ `istio-ca-root-cert` (ConfigMap) を自動的に作成する。これは、istio-proxyにマウントされ、証明書を検証するために使用する。
 5. istio-proxy間で相互TLS認証できるようになる。
 6. 証明書が失効すると、istio-proxyの証明書が自動的に差し代わる。Podの再起動は不要である。
@@ -426,7 +426,7 @@ AuthorizationPolicyで認可プロバイダー (例：Keycloak、OpenPolicy Agen
 
 Istiodコントロールプレーン (`discovery`コンテナ) を中間認証局として使用し、ルート認証局をIstio以外 (例：HashiCorp Vaultなど) に委譲できる。
 
-外部のルート認証局は、istio-proxyから送信された秘密鍵と証明書署名要求で署名済みのSSLサーバー証明書を作成する。
+外部のルート認証局は、istio-proxyから送信された秘密鍵と証明書署名要求で署名済みのサーバー証明書を作成する。
 
 > - https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/
 > - https://istio.io/latest/docs/ops/integrations/certmanager/
