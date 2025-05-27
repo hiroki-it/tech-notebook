@@ -24074,17 +24074,17 @@
         <li class="md-nav__item">
   <a href="#05-sslconfigmap" class="md-nav__link">
     <span class="md-ellipsis">
-      05. SSL証明書系ConfigMap
+      05. SSLサーバー証明書系ConfigMap
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. SSL証明書系ConfigMap">
+    <nav class="md-nav" aria-label="05. SSLサーバー証明書系ConfigMap">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#sslconfigmap" class="md-nav__link">
     <span class="md-ellipsis">
-      SSL証明書系ConfigMapとは
+      SSLサーバー証明書系ConfigMapとは
     </span>
   </a>
   
@@ -28080,17 +28080,17 @@
         <li class="md-nav__item">
   <a href="#05-sslconfigmap" class="md-nav__link">
     <span class="md-ellipsis">
-      05. SSL証明書系ConfigMap
+      05. SSLサーバー証明書系ConfigMap
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. SSL証明書系ConfigMap">
+    <nav class="md-nav" aria-label="05. SSLサーバー証明書系ConfigMap">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#sslconfigmap" class="md-nav__link">
     <span class="md-ellipsis">
-      SSL証明書系ConfigMapとは
+      SSLサーバー証明書系ConfigMapとは
     </span>
   </a>
   
@@ -28917,12 +28917,12 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="05-sslconfigmap">05. SSL証明書系ConfigMap<a class="headerlink" href="#05-sslconfigmap" title="Permanent link">&para;</a></h2>
-<h3 id="sslconfigmap">SSL証明書系ConfigMapとは<a class="headerlink" href="#sslconfigmap" title="Permanent link">&para;</a></h3>
+<h2 id="05-sslconfigmap">05. SSLサーバー証明書系ConfigMap<a class="headerlink" href="#05-sslconfigmap" title="Permanent link">&para;</a></h2>
+<h3 id="sslconfigmap">SSLサーバー証明書系ConfigMapとは<a class="headerlink" href="#sslconfigmap" title="Permanent link">&para;</a></h3>
 <p>argocd-server、repo-server、dex-server、はHTTPSリクエストを受信できる。</p>
-<p>これらのコンポーネントにHTTPSリクエストを送信する場合、ConfigMap上のSSL証明書をクライアント側のコンテナにマウントする必要がある。</p>
+<p>これらのコンポーネントにHTTPSリクエストを送信する場合、ConfigMap上のSSLサーバー証明書をクライアント側のコンテナにマウントする必要がある。</p>
 <p>反対にHTTPリクエストを送信する場合は、このConfigMapが不要である。</p>
-<p>ConfigMap上のSSL証明書の代わりに、ArgoCD外のSSL証明書 (例：Cert Manager) を使用しても良い。</p>
+<p>ConfigMap上のSSLサーバー証明書の代わりに、ArgoCD外のSSLサーバー証明書 (例：Cert Manager) を使用しても良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#tls-configuration">https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#tls-configuration</a></li>
@@ -28931,7 +28931,7 @@
 <p><br></p>
 <h3 id="argocd-dex-server-tls">argocd-dex-server-tls<a class="headerlink" href="#argocd-dex-server-tls" title="Permanent link">&para;</a></h3>
 <p>argocd-serverはdex-serverに対してHTTPSリクエストを送信する。</p>
-<p>このConfigMapは、そのためのSSL証明書を管理する。</p>
+<p>このConfigMapは、そのためのSSLサーバー証明書を管理する。</p>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-inbound-tls-for-argocd-dex-server">https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-inbound-tls-for-argocd-dex-server</a></li>
@@ -28940,7 +28940,7 @@
 <p><br></p>
 <h3 id="argocd-repo-server-tls">argocd-repo-server-tls<a class="headerlink" href="#argocd-repo-server-tls" title="Permanent link">&para;</a></h3>
 <p>application-controller、argocd-server、はrepo-serverに対してHTTPSリクエストを送信する。</p>
-<p>このConfigMapは、そのためのSSL証明書を管理する。</p>
+<p>このConfigMapは、そのためのSSLサーバー証明書を管理する。</p>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-between-argo-cd-components">https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-between-argo-cd-components</a></li>
@@ -28949,7 +28949,7 @@
 <p><br></p>
 <h3 id="argocd-server-tls">argocd-server-tls<a class="headerlink" href="#argocd-server-tls" title="Permanent link">&para;</a></h3>
 <p>クライアントはargocd-serverに対してHTTPSリクエストを送信する。</p>
-<p>このConfigMapは、そのためのSSL証明書を管理する。</p>
+<p>このConfigMapは、そのためのSSLサーバー証明書を管理する。</p>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-for-argocd-server">https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-for-argocd-server</a></li>
@@ -28958,8 +28958,8 @@
 <p><br></p>
 <h3 id="argocd-tls-certs-cm">argocd-tls-certs-cm<a class="headerlink" href="#argocd-tls-certs-cm" title="Permanent link">&para;</a></h3>
 <p>ArgoCDは、ArgoCDの外 (特にリポジトリ) にHTTPSリクエストを送信する。</p>
-<p>ArgoCDでは、コンテナイメージの<code>/etc/ssl</code>ディレクトリにデフォルトのSSL証明書が配置されているが、ユーザー定義のSSL証明書を使用したい場合がある。</p>
-<p>このConfigMapは、そのためのユーザー定義のSSL証明書を管理する。</p>
+<p>ArgoCDでは、コンテナイメージの<code>/etc/ssl</code>ディレクトリにデフォルトのSSLサーバー証明書が配置されているが、ユーザー定義のSSLサーバー証明書を使用したい場合がある。</p>
+<p>このConfigMapは、そのためのユーザー定義のSSLサーバー証明書を管理する。</p>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories-using-self-signed-tls-certificates-or-are-signed-by-custom-ca">https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories-using-self-signed-tls-certificates-or-are-signed-by-custom-ca</a></li>
@@ -29054,7 +29054,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月13日 14:56:52">2025-05-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月27日 15:26:06">2025-05-27</span>
   </span>
 
     

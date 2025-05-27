@@ -30078,7 +30078,7 @@
 <span class="w">  </span><span class="na">role_requires_mfa</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Kubernetes Cluster外部のkube-apiserverクライアント (例：開発者、GitOps CDツール、監視ツールなど) のAWS EKS ClusterのSSL証明書をbase64方式エンコードした値 (<code>-----BEGIN CERTIFICATE-----</code>から<code>-----END CERTIFICATE-----</code>まで) を<code>caData</code>として設定する。</p>
+<p>Kubernetes Cluster外部のkube-apiserverクライアント (例：開発者、GitOps CDツール、監視ツールなど) のAWS EKS ClusterのSSLサーバー証明書をbase64方式エンコードした値 (<code>-----BEGIN CERTIFICATE-----</code>から<code>-----END CERTIFICATE-----</code>まで) を<code>caData</code>として設定する。</p>
 <p><code>aws eks describe-cluster</code>コマンドやコンソール画面から確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
@@ -30094,7 +30094,7 @@
 <span class="w">      </span><span class="no">roleARN: &quot;&lt;対象のAWS EKS ClusterにアクセスするためのAWS IAMロールARN&gt;&quot;</span>
 <span class="w">    </span><span class="no">tlsClientConfig:</span>
 <span class="w">      </span><span class="no">insecure: false,</span>
-<span class="w">      </span><span class="no">caData: &quot;&lt;AWS EKS ClusterのSSL証明書をbase64方式エンコードした値&gt;&quot;</span>
+<span class="w">      </span><span class="no">caData: &quot;&lt;AWS EKS ClusterのSSLサーバー証明書をbase64方式エンコードした値&gt;&quot;</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;クラスター名&gt;&quot;</span>
 <span class="w">  </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://*****.gr7.ap-northeast-1.eks.amazonaws.com&quot;</span>
 </code></pre></div>
@@ -30266,7 +30266,7 @@
 <dt><code>(1)</code></dt>
 <dd>
 <p>SSOのIDプロバイダーのタイプは、OIDCとする。</p>
-<p>『AWS EKS ClusterのOIDCプロバイダーURL』『OIDCプロバイダーのSSL証明書を署名する中間認証局 (例：CertificateManagerなど) のサムプリント』『IDプロバイダーによるトークンの発行対象 (<code>sts.amazonaws.com</code>) 』を使用して、OIDCプロバイダーを作成する。</p>
+<p>『AWS EKS ClusterのOIDCプロバイダーURL』『OIDCプロバイダーのSSLサーバー証明書を署名する中間認証局 (例：CertificateManagerなど) のサムプリント』『IDプロバイダーによるトークンの発行対象 (<code>sts.amazonaws.com</code>) 』を使用して、OIDCプロバイダーを作成する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="kr">data</span><span class="w"> </span><span class="nc">&quot;tls_certificate&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
@@ -31054,7 +31054,7 @@
 <span class="c1"># 主要なパラメーターは以下の通り。</span>
 <span class="c1"># その他のパラメーター：https://github.com/awslabs/amazon-eks-ami/blob/584f9a56c76fc9e7e8632f6ea45e29d45f2eab63/files/bootstrap.sh#L14-L35</span>
 <span class="c1">#</span>
-<span class="c1"># --b64-cluster-ca：kube-apiserverのSSL証明書の値を設定する。</span>
+<span class="c1"># --b64-cluster-ca：kube-apiserverのSSLサーバー証明書の値を設定する。</span>
 <span class="c1"># --apiserver-endpoint：kube-apiserverのエンドポイントを設定する。</span>
 <span class="c1"># --container-runtime：コンテナランタイムとしてcontainerdを使用する。代わりに、dockerも使用できる。</span>
 
@@ -31082,7 +31082,7 @@
 <tr>
 <td><code>--b64-cluster-ca</code></td>
 <td></td>
-<td>kube-apiserverのエンドポイントを設定した場合、HTTPSでリクエストするために、SSL証明書を設定する。</td>
+<td>kube-apiserverのエンドポイントを設定した場合、HTTPSでリクエストするために、SSLサーバー証明書を設定する。</td>
 </tr>
 <tr>
 <td><code>--container-runtime</code></td>
@@ -31117,7 +31117,7 @@
 
 <span class="nv">PARAMETERS</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ssm<span class="w"> </span>get-parameters-by-path<span class="w"> </span>--with-decryption<span class="w"> </span>--path<span class="w"> </span><span class="s2">&quot;/eks/foo-eks-cluster&quot;</span><span class="k">)</span>
 
-<span class="c1"># ClusterのSSL証明書、kube-apiserverのエンドポイントの値をパラメーターストアから取得する。</span>
+<span class="c1"># ClusterのSSLサーバー証明書、kube-apiserverのエンドポイントの値をパラメーターストアから取得する。</span>
 <span class="k">for</span><span class="w"> </span>parameter<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">PARAMETERS</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Parameters[] | .Name + &quot;=&quot; + .Value&#39;</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
 <span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export </span><span class="si">${</span><span class="nv">parameter</span><span class="p">##*/</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="k">done</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">EXPORT_ENVS</span><span class="si">}</span><span class="s2">&quot;</span>
@@ -31639,7 +31639,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月16日 14:34:37">2025-05-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月27日 15:26:06">2025-05-27</span>
   </span>
 
     
