@@ -134,6 +134,12 @@ logger.error({err: new Error("error!")}, "エラー発生");
 
 ### winston
 
+#### ▼ winstonとは
+
+Node.jsのロガーである。
+
+バックエンドのみで使用でき、Node.jsのレンダリングに関わる処理でコールしても何も起こらない。
+
 ```javascript
 import * as winston from "winston";
 
@@ -141,7 +147,11 @@ import * as winston from "winston";
  * ログの出力先（トランスポート）を設定する
  */
 const transports = [
-  new winston.transports.Console({level: process.env.LOG_LEVEL}),
+  new winston.transports.Console({
+    level: process.env.LOG_LEVEL,
+    // 環境変数をbool型に変換する
+    quiet: process.env.LOG_QUIET === "true",
+  }),
 ];
 
 /**
@@ -181,6 +191,11 @@ export const logger = winston.createLogger({
   format,
 });
 ```
+
+|             |                                                                      |
+| ----------- | -------------------------------------------------------------------- |
+| `LOG_LEVEL` | ログレベルを設定する。                                               |
+| `LOG_QUIET` | ログ出力の有無を設定する。場合によっては、CI環境でログを無効化する。 |
 
 <br>
 

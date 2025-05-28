@@ -92,6 +92,10 @@ export const loader = async () => {
 > - https://zenn.dev/link/comments/8945abe32ae53a
 > - https://qiita.com/taisei-13046/items/9a35c8d969954211f0ed#loader
 
+#### ▼ ロギング
+
+ローダー内で`console.log`関数を実行すると、ブラウザのコンソールに出力され、バックエンドの実行ログには出力されない。
+
 #### ▼ useLoaderData
 
 ローダーで取得したデータを出力できる。
@@ -176,6 +180,10 @@ export default function Posts() {
 
 > - https://www.ey-office.com/blog_archive/2022/07/06/is-remix-ruby-on-rails-in-react/
 
+#### ▼ ロギング
+
+コンポーネント内で`console.log`関数を実行すると、ブラウザのコンソールに出力され、バックエンドの実行ログには出力されない。
+
 #### ▼ アクションではなくコンポーネントに実装するべき処理
 
 バックエンドのデータを変更する必要がないような外部API通信処理は、アクションではなくコンポーネントに実装するべきである。
@@ -238,6 +246,10 @@ export async function action({request}: ActionFunctionArgs) {
 
 > - https://remix.run/docs/en/main/route/action
 > - https://blog.tomoya.dev/posts/my-best-remix-directory-structure/#%e3%81%84%e3%81%84%e6%84%9f%e3%81%98%e3%81%ae%e3%83%87%e3%82%a3%e3%83%ac%e3%82%af%e3%83%88%e3%83%aa%e6%a7%8b%e6%88%90
+
+#### ▼ ロギング
+
+アクション内で`console.log`関数を実行すると、バックエンドの実行ログとして出力され、ブラウザのコンソールには出力されない。
 
 <br>
 
