@@ -26960,36 +26960,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-config" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. configセクション
+      01. セットアップ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gitlab" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitLab
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. configセクション
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-pr_description" class="md-nav__link">
+  <a href="#03-pr_description" class="md-nav__link">
     <span class="md-ellipsis">
-      02. pr_descriptionセクション
+      03. pr_descriptionセクション
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-pr_reviewer" class="md-nav__link">
+  <a href="#04-pr_reviewer" class="md-nav__link">
     <span class="md-ellipsis">
-      03. pr_reviewerセクション
+      04. pr_reviewerセクション
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-pr_code_suggestions" class="md-nav__link">
+  <a href="#05-pr_code_suggestions" class="md-nav__link">
     <span class="md-ellipsis">
-      04. pr_code_suggestionsセクション
+      05. pr_code_suggestionsセクション
     </span>
   </a>
   
@@ -27023,7 +27047,42 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-config">01. configセクション<a class="headerlink" href="#01-config" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="gitlab">GitLab<a class="headerlink" href="#gitlab" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">stages</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="w">  </span><span class="c1"># すべてのステージの後にPR Agentを実行する</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pr_agent</span>
+
+<span class="nt">pr_agent</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pr_agent</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pr-agent:latest</span>
+<span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># Cross-region-inferenceに対応するためにusを指定する</span>
+<span class="w">    </span><span class="c1"># 対応不要の場合はap-northeast-1でもよい</span>
+<span class="w">    </span><span class="nt">AWS_REGION_NAME</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;us-east-1&quot;</span>
+<span class="w">  </span><span class="nt">before_script</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># もしAWS Bedlockを使用する場合は、資格情報を取得する</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd /app</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;Running PR Agent action step&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export MR_URL=&quot;$CI_MERGE_REQUEST_PROJECT_URL/merge_requests/$CI_MERGE_REQUEST_IID&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;MR_URL=$MR_URL&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export gitlab__url=$CI_SERVER_PROTOCOL://$CI_SERVER_FQDN</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export gitlab__PERSONAL_ACCESS_TOKEN=$GITLAB_PERSONAL_ACCESS_TOKEN</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export config__git_provider=&quot;gitlab&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m pr_agent.cli --pr_url=&quot;$MR_URL&quot; describe</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m pr_agent.cli --pr_url=&quot;$MR_URL&quot; review</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m pr_agent.cli --pr_url=&quot;$MR_URL&quot; improve</span>
+<span class="w">  </span><span class="nt">allow_failure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &quot;merge_request_event&quot;</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="02-config">02. configセクション<a class="headerlink" href="#02-config" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">[config]</span>
 <span class="c1"># メインで使用するmodel</span>
 <span class="n">model</span><span class="o">=</span><span class="s2">&quot;bedrock/us.anthropic.claude-3-7-sonnet-20250219-v1:0&quot;</span>
@@ -27044,7 +27103,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-pr_description">02. pr_descriptionセクション<a class="headerlink" href="#02-pr_description" title="Permanent link">&para;</a></h2>
+<h2 id="03-pr_description">03. pr_descriptionセクション<a class="headerlink" href="#03-pr_description" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">[pr_description]</span>
 <span class="c1"># extra_instructions=&quot;&quot;&quot;\</span>
 <span class="c1"># ここにカスタムプロンプトを追加する</span>
@@ -27056,7 +27115,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-pr_reviewer">03. pr_reviewerセクション<a class="headerlink" href="#03-pr_reviewer" title="Permanent link">&para;</a></h2>
+<h2 id="04-pr_reviewer">04. pr_reviewerセクション<a class="headerlink" href="#04-pr_reviewer" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">[pr_reviewer]</span>
 <span class="c1"># extra_instructions=&quot;&quot;&quot;\</span>
 <span class="c1"># ここにカスタムプロンプトを追加する</span>
@@ -27075,7 +27134,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04-pr_code_suggestions">04. pr_code_suggestionsセクション<a class="headerlink" href="#04-pr_code_suggestions" title="Permanent link">&para;</a></h2>
+<h2 id="05-pr_code_suggestions">05. pr_code_suggestionsセクション<a class="headerlink" href="#05-pr_code_suggestions" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">[pr_code_suggestions]</span>
 <span class="c1"># extra_instructions=&quot;&quot;&quot;\</span>
 <span class="c1"># ここにカスタムプロンプトを追加する</span>
@@ -27111,7 +27170,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月14日 14:57:23">2025-05-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月28日 17:50:55">2025-05-28</span>
   </span>
 
     
