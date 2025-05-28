@@ -27048,6 +27048,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ トランスポート
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 環境変数
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -27069,7 +27087,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       新しいプロセスの実行
     </span>
@@ -27093,7 +27111,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       プロセスのステータス
     </span>
@@ -27132,7 +27150,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ファイル書き込み
     </span>
@@ -27180,7 +27198,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       キャッシュの作成
     </span>
@@ -27380,6 +27398,14 @@
 <span class="w">  </span><span class="nx">format</span><span class="p">,</span>
 <span class="p">});</span>
 </code></pre></div>
+<h4 id="_4">▼ トランスポート<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>ログの出力先を設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/winstonjs/winston/blob/master/docs/transports.md">https://github.com/winstonjs/winston/blob/master/docs/transports.md</a></li>
+</ul>
+</blockquote>
+<h4 id="_5">▼ 環境変数<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -27398,9 +27424,15 @@
 </tr>
 </tbody>
 </table>
+<div class="highlight"><pre><span></span><code><span class="c1"># infoレベル</span>
+<span class="p p-Indicator">{</span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test&quot;</span><span class="p p-Indicator">,</span><span class="nt"> level</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;info&quot;</span><span class="p p-Indicator">,</span><span class="nt"> time</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-05-27T21:47:28.454+09:00&quot;</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># errorレベル</span>
+<span class="p p-Indicator">{</span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test&quot;</span><span class="p p-Indicator">,</span><span class="nt"> level</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p p-Indicator">,</span><span class="nt"> time</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-05-27T21:47:28.454+09:00&quot;</span><span class="p p-Indicator">}</span>
+</code></pre></div>
 <p><br></p>
 <h2 id="02-nodejs">02. node.jsのプロセスの操作<a class="headerlink" href="#02-nodejs" title="Permanent link">&para;</a></h2>
-<h3 id="_4">新しいプロセスの実行<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_6">新しいプロセスの実行<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="child_process">▼ child_process<a class="headerlink" href="#child_process" title="Permanent link">&para;</a></h4>
 <p>子のnode.jsプロセスを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">spawn</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;child_process&quot;</span><span class="p">;</span>
@@ -27466,7 +27498,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_5">プロセスのステータス<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_7">プロセスのステータス<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="processon">▼ process.on<a class="headerlink" href="#processon" title="Permanent link">&para;</a></h4>
 <p>Node.jsのプロセスのステータスに応じて、処理を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// プロセスの終了前にクリーンアップ処理を実行する</span>
@@ -27483,7 +27515,7 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="03">03. ファイルの操作<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_6">ファイル書き込み<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_8">ファイル書き込み<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="writefilesync">▼ writeFileSync<a class="headerlink" href="#writefilesync" title="Permanent link">&para;</a></h4>
 <p>ファイルにテキストを書き込む。</p>
 <p>同期処理のため、完了を待って後続の処理を実行する。</p>
@@ -27528,7 +27560,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="04">04. メモリの操作<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="_7">キャッシュの作成<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="_9">キャッシュの作成<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>外部のインメモリDBではなく、コンテナやサーバーのメモリ上にオブジェクトのキャッシュを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">NodeCache</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;node-cache&quot;</span><span class="p">;</span>
 
@@ -27593,7 +27625,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月28日 17:50:55">2025-05-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月28日 23:49:33">2025-05-28</span>
   </span>
 
     
