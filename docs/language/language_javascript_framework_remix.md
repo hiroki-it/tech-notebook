@@ -94,7 +94,7 @@ export const loader = async () => {
 
 #### ▼ ロギング
 
-ローダー内で`console.log`関数を実行すると、ブラウザのコンソールに出力され、バックエンドの実行ログには出力されない。
+ローダー内で`console.log`関数を実行すると、バックエンドの実行ログとして出力され、ブラウザのコンソールには出力されない。
 
 #### ▼ useLoaderData
 
@@ -234,13 +234,25 @@ export default function Todos() {
   );
 }
 
-// アクションで、受信したリクエストに応じた処理を実行する
+// アクションで、受信したリクエストに応じたレスポンス処理を実行する
 export async function action({request}: ActionFunctionArgs) {
+
   const body = await request.formData();
-  const todo = await fakeCreateTodo({
-    title: body.get("title"),
-  });
-  return redirect(`/todos/${todo.id}`);
+
+  try {
+
+    const todo = await fakeCreateTodo({
+      title: body.get("title"),
+    });
+
+    return redirect(`/todos/${todo.id}`);
+  } catch (error) {
+
+    // さまざまな型のerrorを処理できるように対処する
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    // error.statusが未定義の場合、一律で500ステータスとして扱う
+    return json({ error: errorMessage }, { status: error.status ?? 500});
+  }
 }
 ```
 

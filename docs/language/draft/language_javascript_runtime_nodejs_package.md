@@ -192,10 +192,28 @@ export const logger = winston.createLogger({
 });
 ```
 
+#### ▼ トランスポート
+
+ログの出力先を設定する。
+
+> - https://github.com/winstonjs/winston/blob/master/docs/transports.md
+
+#### ▼ 環境変数
+
 |             |                                                                      |
 | ----------- | -------------------------------------------------------------------- |
 | `LOG_LEVEL` | ログレベルを設定する。                                               |
 | `LOG_QUIET` | ログ出力の有無を設定する。場合によっては、CI環境でログを無効化する。 |
+
+```yaml
+# infoレベル
+{message: "test", level: "info", time: "2025-05-27T21:47:28.454+09:00"}
+```
+
+```yaml
+# errorレベル
+{message: "test", level: "error", time: "2025-05-27T21:47:28.454+09:00"}
+```
 
 <br>
 
