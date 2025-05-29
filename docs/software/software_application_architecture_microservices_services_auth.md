@@ -197,7 +197,7 @@ APIゲートウェイは、認証を集中的に管理し、認証とアクセ�
 2. AWS API Gatewayは、AWS JWT Authorizerにリクエストを送信する。
 3. AWS JWT Authorizerは認証サービス（図では認可サーバー）のJWKSエンドポイントにリクエストを送信する。
 4. AWS JWT Authorizerは認証サービス（図では認可サーバー）から検証に使用する公開鍵を取得する。
-5. AWS JWT AuthorizerはJWTトークンの有効性を検証する。
+5. AWS JWT AuthorizerはJWTトークンの署名を検証する。
 6. AWS API Gatewayは、バックエンドにリクエストを送信する。
 7. バックエンドは、AWS API Gatewayにレスポンスを返信する。
 8. AWS API Gatewayは、クライアントのフロントエンドアプリケーションにレスポンスを返信する。

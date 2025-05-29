@@ -109,7 +109,7 @@ CA証明書や署名済みの証明書を通信の送受信者に配置し、通
 
 署名に使用した秘密鍵とペアになる公開鍵は、なりすました人物による偽の公開鍵の可能性がある。
 
-第三者機関の認証局によって、署名済み証明書を発行し、通信のたびにこれの有効性を検証する仕組みを、公開鍵基盤という。
+第三者機関の認証局によって、署名済み証明書を発行し、通信のたびに署名を検証する仕組みを、公開鍵基盤という。
 
 ![ssl-certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssl-certificate.png)
 

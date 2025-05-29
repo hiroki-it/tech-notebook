@@ -342,7 +342,7 @@ GET https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-conne
 
 #### ▼ /certs (JWKsエンドポイント)
 
-アクセストークンの有効性を検証する。
+アクセストークンの署名を検証する。
 
 (イントロスペクションエンドポイントとの違いがややこしい)
 
