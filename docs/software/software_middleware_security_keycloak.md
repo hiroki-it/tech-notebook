@@ -318,7 +318,7 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
 
 #### ▼ / (issuerエンドポイント)
 
-JWTトークンの発行元認証局の識別子である。
+JWTトークンの発行元IDプロバイダーの識別子である。
 
 クライアント側では`authority`値として指定する。
 

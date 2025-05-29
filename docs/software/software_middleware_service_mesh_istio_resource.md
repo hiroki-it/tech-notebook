@@ -1111,9 +1111,9 @@ Pod間通信時、相互TLS認証を実施する。
 
 Pod間通信時、JWTによる認証と認可を実施する。
 
-JWT仕様トークンが失効／不正な場合、RequestAuthenticationは`401`ステータスを返信する。
+JWTトークンが失効／不正な場合、RequestAuthenticationは`401`ステータスを返信する。
 
-JWT仕様トークンがない場合、AuthorizationPolicyは`403`ステータスを返信する必要がある。
+JWTトークンがない場合、AuthorizationPolicyは`403`ステータスを返信する必要がある。
 
 なお、RequestAuthenticationを使用せずにマイクロサービスで同様の実装をしても良い。
 
@@ -1127,9 +1127,9 @@ JWT仕様トークンがない場合、AuthorizationPolicyは`403`ステータ�
 
 ### Auth0に送信する場合
 
-注意点として、そもそもリクエストにJWT仕様トークンが含まれていない場合には認証処理をスキップできてしまう。
+注意点として、そもそもリクエストにJWTトークンが含まれていない場合には認証処理をスキップできてしまう。
 
-代わりに、JWT仕様トークンが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403`ステータス) として扱う必要がある。
+代わりに、JWTトークンが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403`ステータス) として扱う必要がある。
 
 Auth0 (クラウドのためサービスメッシュ外にある) の宛先情報をIstioに登録する必要があるため、Istio Egress GatewayやServiceEntry経由で接続できるようにする。
 
@@ -1140,7 +1140,7 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    # JWT仕様トークンの発行元認証局の識別子を設定する
+    # JWTトークンの発行元IDプロバイダーの識別子を設定する
     # ブラウザから接続する
     - issuer: https://<Auth0のドメイン>/
       # IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する
@@ -1163,7 +1163,7 @@ spec:
   rules:
     - when:
         - key: request.auth.claims[iss]
-          # JWT仕様トークンがある場合にのみ許可する
+          # JWTトークンがある場合にのみ許可する
           values: ["https://<Auth0のドメイン>/"]
 ```
 
@@ -1188,7 +1188,7 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    # JWT仕様トークンの発行元認証局の識別子を設定する
+    # JWTトークンの発行元IDプロバイダーの識別子を設定する
     # ブラウザから接続する
     - issuer: http://keycloak.com/realms/<realm名>
       # IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する
@@ -1212,7 +1212,7 @@ spec:
   rules:
     - when:
         - key: request.auth.claims[iss]
-          # JWT仕様トークンがある場合にのみ許可する
+          # JWTトークンがある場合にのみ許可する
           values:
             ["http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>"]
 ```
@@ -1239,7 +1239,7 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    # JWT仕様トークンの発行元認証局の識別子を設定する
+    # JWTトークンの発行元IDプロバイダーの識別子を設定する
     # ブラウザから接続する
     - issuer: http://oauth2-proxy.com/realms/<realm名>
       # IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する

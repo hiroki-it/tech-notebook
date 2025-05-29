@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "security/security_auth_authentication_credentials_certificate.md",
+                "file": "software/software_middleware_service_mesh_istio_resource.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "security_auth_authentication_credentials_certificate"
+              "title": "software_middleware_service_mesh_istio_resource"
             }
           }
         ]
@@ -53,8 +53,8 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "有効性を検証",
-                "matchingCase": false,
+                "query": "JWT仕様トークン",
+                "matchingCase": true,
                 "explainSearch": true,
                 "collapseAll": false,
                 "extraContext": false,
@@ -143,13 +143,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "security/security_auth_authentication_credentials_certificate.md",
+                "file": "software/software_middleware_service_mesh_istio_resource.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "security_auth_authentication_credentials_certificateのアウトライン"
+              "title": "software_middleware_service_mesh_istio_resourceのアウトライン"
             }
           }
         ],
@@ -171,14 +171,22 @@
   },
   "active": "0023a13b051e254a",
   "lastOpenFiles": [
+    "software/software_middleware_service_mesh_istio_resource_definition.md",
+    "software/software_middleware_service_mesh_istio_resource.md",
     "software/software_middleware_security_keycloak.md",
+    "software/draft/software_middleware_security_dex.md",
+    "security/security_auth_authentication_credentials_jwt.md",
+    "software/draft/software_middleware_security_vault.md",
+    "security/security_auth_authentication_credentials_sso_oidc.md",
+    "security/security_auth_authorization_oauth.md",
+    "cloud_computing/cloud_computing_aws_resource_eks.md",
+    "cloud_computing/cloud_computing_aws_resource_certificate_manager.md",
+    "software/software_middleware_security_oauth2_proxy_conf.md",
+    "cloud_computing/draft/cloud_computing_gcp_resource_certificate_manager.md",
+    "software/software_middleware_security_cert_manager_resource_definition.md",
+    "security/security_auth_authentication_credentials_certificate.md",
     "software/software_application_architecture_microservices_services_auth.md",
     "software/software_application_architecture_microservices_cloudnative.md",
-    "security/security_auth_authorization_oauth.md",
-    "security/security_auth_authentication_credentials_sso_oidc.md",
-    "security/security_auth_authentication_credentials_jwt.md",
-    "software/software_middleware_service_mesh_istio_resource_definition.md",
-    "security/security_auth_authentication_credentials_certificate.md",
     "security/security_auth_authentication_credentials_sso.md",
     "security/security_auth_authentication_credentials_sso_saml.md",
     "security/security_auth_authentication_credentials_store.md",
@@ -189,14 +197,6 @@
     "security/security_cyber_attacks.md",
     "security/security_cyber_attacks_malware.md",
     "security/security_network.md",
-    "security/security_network_encryption_technology_packet_payload_method.md",
-    "security/security_network_encryption_technology_storage.md",
-    "security/security_network_encryption_technology_packet_payload_protocol.md",
-    "software/software_middleware_service_mesh_istio.md",
-    "software/software_middleware_service_mesh_istio_resource_definition_secret.md",
-    "infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.md",
-    "cloud_computing/cloud_computing_aws_resource_eks.md",
-    "security/security_auth_authentication_credentials.md",
     "無題のファイル.canvas",
     "0-2_まえがき.pdf",
     "Untitled.canvas"

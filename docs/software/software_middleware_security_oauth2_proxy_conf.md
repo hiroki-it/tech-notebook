@@ -54,7 +54,7 @@ providers:
 
 #### ▼ issuerURL
 
-JWTトークンの発行元認証局の識別子を設定する
+JWTトークンの発行元の識別子を設定する
 
 ```yaml
 # 認証方法がOIDCで、IDプロバイダーがKeycloakの場合
