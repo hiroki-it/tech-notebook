@@ -29420,8 +29420,8 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <h2 id="08-requestauthenticationauthorizationpolicy">08. RequestAuthenticationとAuthorizationPolicy<a class="headerlink" href="#08-requestauthenticationauthorizationpolicy" title="Permanent link">&para;</a></h2>
 <h3 id="requestauthenticationauthorizationpolicy">RequestAuthenticationとAuthorizationPolicyとは<a class="headerlink" href="#requestauthenticationauthorizationpolicy" title="Permanent link">&para;</a></h3>
 <p>Pod間通信時、JWTによる認証と認可を実施する。</p>
-<p>JWT仕様トークンが失効／不正な場合、RequestAuthenticationは<code>401</code>ステータスを返信する。</p>
-<p>JWT仕様トークンがない場合、AuthorizationPolicyは<code>403</code>ステータスを返信する必要がある。</p>
+<p>JWTトークンが失効／不正な場合、RequestAuthenticationは<code>401</code>ステータスを返信する。</p>
+<p>JWTトークンがない場合、AuthorizationPolicyは<code>403</code>ステータスを返信する必要がある。</p>
 <p>なお、RequestAuthenticationを使用せずにマイクロサービスで同様の実装をしても良い。</p>
 <p>また、Nginx製のBFFなど、認証処理を実装しにくい場所にのみ採用しても良い。</p>
 <blockquote>
@@ -29433,8 +29433,8 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 </blockquote>
 <p><br></p>
 <h3 id="auth0">Auth0に送信する場合<a class="headerlink" href="#auth0" title="Permanent link">&para;</a></h3>
-<p>注意点として、そもそもリクエストにJWT仕様トークンが含まれていない場合には認証処理をスキップできてしまう。</p>
-<p>代わりに、JWT仕様トークンが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (<code>403</code>ステータス) として扱う必要がある。</p>
+<p>注意点として、そもそもリクエストにJWTトークンが含まれていない場合には認証処理をスキップできてしまう。</p>
+<p>代わりに、JWTトークンが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (<code>403</code>ステータス) として扱う必要がある。</p>
 <p>Auth0 (クラウドのためサービスメッシュ外にある) の宛先情報をIstioに登録する必要があるため、Istio Egress GatewayやServiceEntry経由で接続できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RequestAuthentication</span>
@@ -29442,7 +29442,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-request-authentication-jwt</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">jwtRules</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># JWT仕様トークンの発行元認証局の識別子を設定する</span>
+<span class="w">    </span><span class="c1"># JWTトークンの発行元IDプロバイダーの識別子を設定する</span>
 <span class="w">    </span><span class="c1"># ブラウザから接続する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">issuer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://&lt;Auth0のドメイン&gt;/</span>
 <span class="w">      </span><span class="c1"># IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する</span>
@@ -29465,7 +29465,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">when</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">request.auth.claims[iss]</span>
-<span class="w">          </span><span class="c1"># JWT仕様トークンがある場合にのみ許可する</span>
+<span class="w">          </span><span class="c1"># JWTトークンがある場合にのみ許可する</span>
 <span class="w">          </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;https://&lt;Auth0のドメイン&gt;/&quot;</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <blockquote>
@@ -29486,7 +29486,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-request-authentication-jwt</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">jwtRules</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># JWT仕様トークンの発行元認証局の識別子を設定する</span>
+<span class="w">    </span><span class="c1"># JWTトークンの発行元IDプロバイダーの識別子を設定する</span>
 <span class="w">    </span><span class="c1"># ブラウザから接続する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">issuer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://keycloak.com/realms/&lt;realm名&gt;</span>
 <span class="w">      </span><span class="c1"># IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する</span>
@@ -29510,7 +29510,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">when</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">request.auth.claims[iss]</span>
-<span class="w">          </span><span class="c1"># JWT仕様トークンがある場合にのみ許可する</span>
+<span class="w">          </span><span class="c1"># JWTトークンがある場合にのみ許可する</span>
 <span class="w">          </span><span class="nt">values</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">[</span><span class="s">&quot;http://keycloak.foo-namespace.svc.cluster.local/realms/&lt;realm名&gt;&quot;</span><span class="p p-Indicator">]</span>
 </code></pre></div>
@@ -29533,7 +29533,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-request-authentication-jwt</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">jwtRules</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># JWT仕様トークンの発行元認証局の識別子を設定する</span>
+<span class="w">    </span><span class="c1"># JWTトークンの発行元IDプロバイダーの識別子を設定する</span>
 <span class="w">    </span><span class="c1"># ブラウザから接続する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">issuer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://oauth2-proxy.com/realms/&lt;realm名&gt;</span>
 <span class="w">      </span><span class="c1"># IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する</span>
@@ -29661,7 +29661,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月27日 16:57:47">2025-05-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月29日 18:28:23">2025-05-29</span>
   </span>
 
     

@@ -31218,7 +31218,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="specrules">.spec.rules<a class="headerlink" href="#specrules" title="Permanent link">&para;</a></h3>
 <h4 id="rules">▼ rulesとは<a class="headerlink" href="#rules" title="Permanent link">&para;</a></h4>
-<p>認可スコープで、実施条件 (例：いずれのKubernetesリソース、HTTPリクエストのメソッド、JWTトークンの発行元認証局の識別子) を設定する。</p>
+<p>認可スコープで、実施条件 (例：いずれのKubernetesリソース、HTTPリクエストのメソッド、JWTトークンの発行元IDプロバイダーの識別子) を設定する。</p>
 <p>その条件に合致した場合、認証済みの送信元を許可するか否かを実施する。</p>
 <h4 id="serviceaccountpod">▼ 特定のServiceAccountを持つPodを送信元として許可する<a class="headerlink" href="#serviceaccountpod" title="Permanent link">&para;</a></h4>
 <p>送信元Podに紐づくServiceAccountが送信元の場合、認可を実施する。</p>
@@ -31264,7 +31264,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="jwt">▼ 正しいJWTを許可する<a class="headerlink" href="#jwt" title="Permanent link">&para;</a></h4>
-<p>リクエストヘッダーにあるJWTトークンの発行元認証局が適切な場合、認可を実施するように設定する。</p>
+<p>リクエストヘッダーにあるJWTトークンの発行元IDプロバイダーが適切な場合、認可を実施するように設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AuthorizationPolicy</span>
@@ -31277,7 +31277,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">when</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">request.auth.claims[iss]</span>
 <span class="w">          </span><span class="c1"># JWTトークンがある場合にのみ許可する</span>
-<span class="w">          </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;JWTトークンの発行元認証局の識別子</span><span class="nv"> </span><span class="s">(issuer)&gt;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">          </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;JWTトークンの発行元IDプロバイダーの識別子</span><span class="nv"> </span><span class="s">(issuer)&gt;&quot;</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
@@ -31291,7 +31291,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">when</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">request.auth.claims[iss]</span>
 <span class="w">          </span><span class="c1"># JWTトークンがある場合にのみ許可する</span>
-<span class="w">          </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;JWTトークンの発行元認証局の識別子</span><span class="nv"> </span><span class="s">(issuer)&gt;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">          </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;JWTトークンの発行元IDプロバイダーの識別子</span><span class="nv"> </span><span class="s">(issuer)&gt;&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="c1"># fromを設定しない場合、指定したパスではJWTトークンがなくても許可する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">to</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">operation</span><span class="p">:</span>
@@ -33016,7 +33016,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="specjwtrules">.spec.jwtRules<a class="headerlink" href="#specjwtrules" title="Permanent link">&para;</a></h3>
 <h4 id="jwtrules">▼ jwtRulesとは<a class="headerlink" href="#jwtrules" title="Permanent link">&para;</a></h4>
-<p>Bearer認証で使用するJWTトークンの発行元認証局を設定する。</p>
+<p>Bearer認証で使用するJWTトークンの発行元IDプロバイダーを設定する。</p>
 <p>JWTトークンが失効していたり、不正な場合、認証処理を失敗として<code>401</code>ステータスを返信する。</p>
 <p>注意点として、そもそもリクエストにJWTが含まれていない場合には認証処理をスキップできてしまう。</p>
 <p>代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (<code>403</code>ステータス) として扱う必要がある。</p>
@@ -33026,7 +33026,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-request-authentication-jwt</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">jwtRules</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># JWTトークンの発行元認証局の識別子を設定する</span>
+<span class="w">    </span><span class="c1"># JWTトークンの発行元IDプロバイダーの識別子を設定する</span>
 <span class="w">    </span><span class="c1"># ブラウザから接続する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">issuer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://foo-issuer.com</span>
 <span class="w">      </span><span class="c1"># IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する</span>
@@ -33062,8 +33062,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="issuer">▼ issuer<a class="headerlink" href="#issuer" title="Permanent link">&para;</a></h4>
-<p>JWTトークンの発行元認証局の識別子を設定する。</p>
-<p>JWTトークンの発行元認証局の情報を取得できる。</p>
+<p>JWTトークンの発行元IDプロバイダーの識別子を設定する。</p>
+<p>JWTトークンの発行元IDプロバイダーの情報を取得できる。</p>
 <p>ブラウザから接続する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RequestAuthentication</span>
@@ -34437,7 +34437,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月29日 17:49:46">2025-05-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月29日 18:28:23">2025-05-29</span>
   </span>
 
     
