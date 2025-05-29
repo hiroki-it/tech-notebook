@@ -14396,7 +14396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication_credentials.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication_credentials.md" class="md-nav__link">
         
   
   
@@ -14419,7 +14419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication_credentials_carrier.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication_credentials_carrier.md" class="md-nav__link">
         
   
   
@@ -14442,7 +14442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication_credentials_store.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication_credentials_store.md" class="md-nav__link">
         
   
   
@@ -14465,7 +14465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication_credentials_jwt.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication_credentials_jwt.md" class="md-nav__link">
         
   
   
@@ -14539,7 +14539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication_credentials_sso.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication_credentials_sso.md" class="md-nav__link">
         
   
   
@@ -14562,7 +14562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication_credentials_sso_saml.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication_credentials_sso_saml.md" class="md-nav__link">
         
   
   
@@ -14585,7 +14585,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication_credentials_sso_oidc.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication_credentials_sso_oidc.md" class="md-nav__link">
         
   
   
@@ -14616,7 +14616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication_credentials_certificate.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication_credentials_certificate.md" class="md-nav__link">
         
   
   
@@ -27696,9 +27696,9 @@
 <h2 id="01-03">01-03. セッションパターン (集中パターン)<a class="headerlink" href="#01-03" title="Permanent link">&para;</a></h2>
 <h3 id="_4">セッションパターンとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>『集中パターン』ともいう。</p>
-<p>サーバー側に、セッションデータを作成する認証サービス (例：自前、Keycloakなど) を<code>1</code>個だけ配置し、認証処理 (ユーザーの識別、ユーザーの有効性の検証) を実行する。</p>
+<p>サーバー側に、セッションIDを作成する認証サービス (例：自前、Keycloakなど) を<code>1</code>個だけ配置し、認証処理 (ユーザーの識別、ユーザーの有効性の検証) を実行する。</p>
 <p>この認証サービスは、セッションベース認証を使用し、セッションを<code>Cookie</code>ヘッダーで運搬する。</p>
-<p>セッションデータを再利用するために、ブラウザのCookieやセッションストレージツール (例：Redis) に保存する。</p>
+<p>セッションIDを再利用するために、ブラウザのCookieやセッションストレージツール (例：Redis) に保存する。</p>
 <p>(認証サービスだけでなく各マイクロサービスもセッションストレージツールに接続できるようにする必要があるらしいが、Keycloakではそんなことない)</p>
 <blockquote>
 <ul>
@@ -27708,9 +27708,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="_5">セッションパターンの仕組み<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>各マイクロサービスは、セッションデータに基づいてアカウントをする。</p>
-<p><code>1</code>個のセッション中の資格情報をマイクロサービス間で共有するために、セッションデータを保管できるストレージ (例：Infinispan、Redisなど) を<code>1</code>個だけ配置する。</p>
-<p>セッションベース認証は、コンテナの相性が悪く、各マイクロサービスがセッションデータを持つ必要がある。</p>
+<p>各マイクロサービスは、セッションIDに基づいてアカウントをする。</p>
+<p><code>1</code>個のセッション中の認証アーティファクトをマイクロサービス間で共有するために、セッションIDを保管できるストレージ (例：Infinispan、Redisなど) を<code>1</code>個だけ配置する。</p>
+<p>セッションベース認証は、コンテナの相性が悪く、各マイクロサービスがセッションIDを持つ必要がある。</p>
 <p>そのため、SessionStorageが必要になるというデメリットがある。</p>
 <p><img alt="microservices_authentication_type_session" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_session.png" /></p>
 <blockquote>
@@ -27736,7 +27736,7 @@
 <p><br></p>
 <h3 id="jwt_1">JWTパターンの仕組み<a class="headerlink" href="#jwt_1" title="Permanent link">&para;</a></h3>
 <p>各マイクロサービスは、JWTに基づいてアカウントを認証するする。</p>
-<p><code>1</code>個のセッション中の資格情報をマイクロサービス間で共有するために、リクエスト−レスポンスのヘッダーにJWTを埋め込み、クライアントのフロントエンドアプリケーション側にJWTを保管させる。</p>
+<p><code>1</code>個のセッション中の認証アーティファクトをマイクロサービス間で共有するために、リクエスト−レスポンスのヘッダーにJWTを埋め込み、クライアントのフロントエンドアプリケーション側にJWTを保管させる。</p>
 <p>トークンベース認証の場合に、コンテナの相性が良く、各マイクロサービスはJWTを持つ必要がない。</p>
 <p>クライアントのフロントエンドアプリケーション側に保管したJWTトークンの失効が難しいというデメリットがある。</p>
 <p>その解決策として、Opaqueトークンパターン (ゲートウェイ集中パターン) がある。</p>
@@ -27767,7 +27767,7 @@
 <p><br></p>
 <h3 id="jwtapi_1">JWTとAPIゲートウェイの組み合わせパターンの仕組み<a class="headerlink" href="#jwtapi_1" title="Permanent link">&para;</a></h3>
 <p>各マイクロサービスは、JWTとOpaqueトークンに基づいてアカウントを認証するする。</p>
-<p><code>1</code>個のセッション中の資格情報をマイクロサービス間で共有するために、リクエスト−レスポンスのヘッダーにJWTを埋め込む。</p>
+<p><code>1</code>個のセッション中の認証アーティファクトをマイクロサービス間で共有するために、リクエスト−レスポンスのヘッダーにJWTを埋め込む。</p>
 <p>クライアントのフロントエンドアプリケーション側にはJWTとペアになるOpaqueトークンを保管する。</p>
 <p>また、APIゲートウェイやロードバランサーで、OpaqueトークンとJWTトークンの間の相互変換を通信のたびに実行する。</p>
 <p>トークンベース認証の場合に、コンテナの相性が良く、各マイクロサービスはOpaqueトークンを持つ必要がない。</p>
@@ -27867,7 +27867,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月29日 17:49:46">2025-05-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月29日 23:59:49">2025-05-29</span>
   </span>
 
     

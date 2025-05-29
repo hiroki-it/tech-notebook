@@ -14399,7 +14399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication_credentials.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication_credentials.md" class="md-nav__link">
         
   
   
@@ -14422,7 +14422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication_credentials_carrier.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication_credentials_carrier.md" class="md-nav__link">
         
   
   
@@ -14445,7 +14445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication_credentials_store.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication_credentials_store.md" class="md-nav__link">
         
   
   
@@ -14468,7 +14468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication_credentials_jwt.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication_credentials_jwt.md" class="md-nav__link">
         
   
   
@@ -14542,7 +14542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication_credentials_sso.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication_credentials_sso.md" class="md-nav__link">
         
   
   
@@ -14565,7 +14565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication_credentials_sso_saml.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication_credentials_sso_saml.md" class="md-nav__link">
         
   
   
@@ -14588,7 +14588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication_credentials_sso_oidc.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication_credentials_sso_oidc.md" class="md-nav__link">
         
   
   
@@ -14619,7 +14619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication_credentials_certificate.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication_credentials_certificate.md" class="md-nav__link">
         
   
   
@@ -28718,9 +28718,9 @@
 <p>*58 Azure-Samples. (n.d.). saga-orchestration-serverless/docs/architecture/components.md at main · Azure-Samples/saga-orchestration-serverless. GitHub. <a href="https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/components.md">https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/components.md</a></p>
 <p><br></p>
 <h3 id="76">7.6 認証<a class="headerlink" href="#76" title="Permanent link">&para;</a></h3>
-<p>マイクロサービスアーキテクチャでは認証を適切に開始し、認証成功後にマイクロサービス間で資格情報を伝播する必要があります。</p>
+<p>マイクロサービスアーキテクチャでは認証を適切に開始し、認証成功後にマイクロサービス間で認証アーティファクトを伝播する必要があります。</p>
 <p>また、資格情報が有効かどうかを各マイクロサービスの実行時に検証しなければ、不正なリクエストを処理しかねません。</p>
-<p>適切な認証認可や資格情報の伝播により、問題を単純に解決できます。</p>
+<p>適切な認証認可や認証アーティファクトの伝播により、問題を単純に解決できます。</p>
 <p>まずは認証です。</p>
 <p>図22で、認証のデザインパターンの種類を示します。</p>
 <p>代表的なものにはセッションベースとトークンベースがあります。</p>
@@ -28740,8 +28740,8 @@
 
 </div>
 
-<p>セッションベースは、セッションを使用してマイクロサービス間で資格情報を伝播します。</p>
-<p>トークンベースにはSSOやJWTとAPIゲートウェイの組み合わせがあり、トークンを使用してマイクロサービス間で資格情報を伝播します。</p>
+<p>セッションベースは、セッションを使用してマイクロサービス間で認証アーティファクトを伝播します。</p>
+<p>トークンベースにはSSOやJWTとAPIゲートウェイの組み合わせがあり、トークンを使用してマイクロサービス間で認証アーティファクトを伝播します。</p>
 <p>いずれの方法にもメリットデメリットがあり、要件に応じて選ばなければなりません *58 。</p>
 <p>ここではSSOを概説します。</p>
 <p>SSOでは、IDプロバイダーやこれへのリクエストはクラウドネイティブ技術で代替できます。</p>
@@ -28789,7 +28789,7 @@
 <p>*61 田畑. (n.d). コンテナ上のマイクロサービスの認証強化 ～IstioとKeyCloak～. Think IT（シンクイット）. <a href="https://thinkit.co.jp/article/18023">https://thinkit.co.jp/article/18023</a></p>
 <p><br></p>
 <h3 id="77">7.7 認可<a class="headerlink" href="#77" title="Permanent link">&para;</a></h3>
-<p>伝播された資格情報を使用して各マイクロサービスは認可処理を実行する必要があります。</p>
+<p>伝播した認証アーティファクトを使用して各マイクロサービスは認可処理を実行する必要があります。</p>
 <p>図24で、認可のデザインパターンの種類を示します。</p>
 <p>代表的なものには中央集中と分散があります。</p>
 <p><br></p>
@@ -29463,7 +29463,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月29日 17:49:46">2025-05-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月29日 23:59:49">2025-05-29</span>
   </span>
 
     
