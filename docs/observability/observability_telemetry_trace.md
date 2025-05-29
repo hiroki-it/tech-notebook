@@ -194,9 +194,9 @@ W3C Trace Context仕様のIDは以下の通りである。
 GET /foo-service HTTP/1.1
 ---
 Host: example.com
-# バージョン、トレースID、親スパンID、トレースフラグをリスト形式で運ぶ
+# バージョン、トレースID、親スパンID、トレースフラグをリスト形式で運搬する
 traceparent: 00–0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331–01
-# セッションID、特定のリクエストにのみ付与されたデータなどをリスト形式で運ぶ
+# セッションID、特定のリクエストにのみ付与されたデータなどをリスト形式で運搬する
 tracestate: abc=00f067aa0ba902b7,xyz=99f067aa0ba902b7
 ```
 
