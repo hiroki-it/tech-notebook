@@ -28044,7 +28044,7 @@
 <ol>
 <li>ローダー: レンダリング前、APIからデータを取得する。</li>
 <li>コンポーネント: レンダリング処理を実行する。</li>
-<li>アクション: レンダリング後のブラウザ操作に応じて、デザインパターンのコントローラーのようにクエリストリングやリクエストコンテキストを受信し、DBのデータを変更する。</li>
+<li>アクション: レンダリング後のブラウザ操作に応じて、デザインパターンのコントローラーのようにクエリストリングやリクエストコンテキストを受信し、DBのデータを変更する。また、レスポンスをコンポーネントに渡す。</li>
 <li>ローダー: ブラウザ操作に応じて、アクションからデータを取得する。</li>
 </ol>
 <blockquote>
@@ -28175,6 +28175,7 @@
 <h3 id="_10">アクション<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ アクションとは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>レンダリング後のブラウザ操作に応じて、デザインパターンのコントローラーのようにクエリストリングやリクエストのコンテキストを受信し、DBのデータを変更する。</p>
+<p>また、レスポンスのデータをコンポーネントに渡す。</p>
 <p>componentを同じファイルに実装する以外に、<code>.server</code>ディレクトリに切り分ける方法もある。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ActionFunctionArgs</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/node&quot;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">redirect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/node&quot;</span><span class="p">;</span>
@@ -28227,6 +28228,7 @@
 
 <span class="w">    </span><span class="c1">// さまざまな型のerrorを処理できるように対処する</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">errorMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">error</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">errorMessage</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">))</span>
 <span class="w">    </span><span class="c1">// error.statusが未定義の場合、一律で500ステータスとして扱う</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="nx">errorMessage</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="mf">500</span><span class="p">});</span>
 <span class="w">  </span><span class="p">}</span>
@@ -28663,7 +28665,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月28日 23:49:33">2025-05-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月30日 20:11:01">2025-05-30</span>
   </span>
 
     
