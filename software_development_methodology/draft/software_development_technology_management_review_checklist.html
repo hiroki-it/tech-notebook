@@ -26967,8 +26967,7 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="ハイコンテキストな観点とは">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
@@ -27055,11 +27054,6 @@
     </nav>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
@@ -27078,8 +27072,7 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="ロウコンテキストな観点とは">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
@@ -27139,11 +27132,6 @@
     </nav>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
     </ul>
   
@@ -27168,58 +27156,67 @@
 <h2 id="_1">ハイコンテキストな観点<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <h3 id="_2">ハイコンテキストな観点とは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>生成AIが苦手とする、プロジェクトや現場特有の判断が必要な観点は以下の通り。</p>
-<h4 id="_3">仕様・要件との整合性<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_3">仕様・要件との整合性<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>[ ] 明示された仕様や要件を正確に満たしているか？</li>
 <li>[ ] エッジケースや異常系への対応が考慮されているか？</li>
 <li>[ ] 引数・戻り値・処理の振る舞いは期待通りか？</li>
 </ul>
-<h4 id="_4">プロジェクト文脈との整合性<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_4">プロジェクト文脈との整合性<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <ul>
 <li>[ ] 命名規則やコード構造が既存実装と一貫しているか？</li>
 <li>[ ] 自作ロジックが既存の共通機能と重複していないか？</li>
-<li>[ ] ディレクトリ構成やファイル名がプロジェクト全体と調和しているか？</li>
+<li>[ ] ディレクトリ構成やファイル名がアーキテクチャに合っているか？</li>
 </ul>
-<h4 id="_5">セキュリティと堅牢性<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_5">セキュリティと堅牢性<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <ul>
 <li>[ ] 入力値の検証やサニタイズは行われているか？</li>
 <li>[ ] XSS / SQLインジェクション / CSRF などの基本的な対策が取られているか？</li>
 <li>[ ] 認証・認可・セッション管理は正しく実装されているか？</li>
 <li>[ ] ログに機密情報が出力されていないか？</li>
 </ul>
-<h4 id="_6">エラーハンドリングと障害時対応<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_6">エラーハンドリングと障害時対応<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <ul>
 <li>[ ] 例外処理・エラーハンドリングが網羅されているか？</li>
 <li>[ ] 失敗時のログ出力・通知・リトライ処理が設計されているか？</li>
 <li>[ ] 外部依存の障害時に安全にフェールできるようになっているか？</li>
 <li>[ ] 意図的に例外をスローするテストが実施されているか？</li>
 </ul>
-<h4 id="_7">コメントとドキュメント<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_7">コメントとドキュメント<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <ul>
 <li>[ ] コードをなぞっただけの冗長なコメントがないか？</li>
 <li>[ ] 非自明な仕様や意図について補足があるか？</li>
 <li>[ ] コメントとコードに乖離がないか？</li>
 </ul>
-<h4 id="ai_1">生成AIコード特有の違和感チェック<a class="headerlink" href="#ai_1" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="ai_1">生成AIコード特有の違和感チェック<a class="headerlink" href="#ai_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>[ ] 「もっともらしいが意味不明」な構造やコメントがないか？</li>
 <li>[ ] テンプレート的な表現が実際の要件に合っているか？</li>
 <li>[ ] 「なぜこうしたのか」が直感的に不明な箇所は見直しているか？</li>
 </ul>
-<h4 id="_8">ロギングと監視の配慮<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_8">ロギングと監視の配慮<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <ul>
 <li>[ ] 適切な箇所でログ出力がされているか？</li>
 <li>[ ] ログレベル（info, warn, error など）は適切か？</li>
 <li>[ ] 機密情報やPIIがログに含まれていないか？</li>
 <li>[ ] メトリクスやトレースなど監視基盤との連携を考慮しているか？</li>
 </ul>
-<h4 id="_9">国際化と環境差異への対応<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_9">国際化と環境差異への対応<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <ul>
 <li>[ ] UI表示文字列がハードコードされていないか？</li>
 <li>[ ] タイムゾーン・日付・通貨などにローカライズ対応があるか？</li>
 <li>[ ] 本番・開発など複数環境間で挙動差が発生しない設計か？</li>
 </ul>
-<h4 id="_10">ハードコーディングの回避<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_10">ハードコーディングの回避<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <ul>
 <li>[ ] URL・ポート番号・タイムアウトなどがコード内に直書きされていないか？</li>
 <li>[ ] <code>.env</code>や設定ファイルに適切に分離されているか？</li>
@@ -27229,38 +27226,44 @@
 <h2 id="_11">ロウコンテキストな観点<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <h3 id="_12">ロウコンテキストな観点とは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>生成AIでも比較的適切に判断・生成可能な汎用的な観点は以下の通り。</p>
-<h4 id="_13">冗長・不自然なコードの排除<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_13">冗長・不自然なコードの排除<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <ul>
 <li>[ ] 未使用の変数・関数・importが存在しないか？</li>
 <li>[ ] 無意味な抽象化や過度な汎用化（オーバーエンジニアリング）がないか？</li>
 <li>[ ] 処理が冗長、または読解しづらい構文になっていないか？</li>
 </ul>
-<h4 id="_14">処理の分割と構造化<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_14">処理の分割と構造化<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <ul>
 <li>[ ] 関数やクラスがファット（多責務）になっていないか？</li>
 <li>[ ] UI・ビジネスロジック・データアクセスが適切に分離されているか？</li>
 <li>[ ] 機能単位・責務単位でファイル分割されているか？</li>
 </ul>
-<h4 id="_15">パフォーマンスとスケーラビリティ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_15">パフォーマンスとスケーラビリティ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <ul>
 <li>[ ] 不要なループや再帰が存在しないか？</li>
 <li>[ ] データ構造やアルゴリズムは適切か？</li>
 <li>[ ] 処理のスループット・リソース消費に過剰な負荷を与えていないか？</li>
 </ul>
-<h4 id="_16">テスト容易性と検証性<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_16">テスト容易性と検証性<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <ul>
 <li>[ ] 単体・統合テストが整備されているか？</li>
 <li>[ ] テストしやすい設計（依存の分離・副作用の排除）になっているか？</li>
 <li>[ ] テストコードの可読性・網羅性は十分か？</li>
 </ul>
-<h4 id="_17">データ型と型安全性<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_17">データ型と型安全性<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <ul>
 <li>[ ] <code>any</code> や <code>Object</code> など曖昧な型が多用されていないか？</li>
 <li>[ ] 型ガードやバリデーションが必要な箇所に実装されているか？</li>
 <li>[ ] 型定義が再利用可能かつ整理されているか？</li>
 <li>[ ] 静的解析（TypeScript, mypy など）を通過しているか？</li>
 </ul>
-<h4 id="_18">ライセンスと依存管理<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_18">ライセンスと依存管理<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <ul>
 <li>[ ] ライセンス上問題のないライブラリを使用しているか？</li>
 <li>[ ] 不必要な外部ライブラリを導入していないか？</li>
@@ -27285,7 +27288,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月30日 20:17:33">2025-05-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月30日 20:44:22">2025-05-30</span>
   </span>
 
     
