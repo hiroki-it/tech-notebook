@@ -1143,7 +1143,7 @@ spec:
     # JWTトークンの発行元IDプロバイダーの識別子を設定する
     # ブラウザから接続する
     - issuer: https://<Auth0のドメイン>/
-      # IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する
+      # IDプロバイダーのJWKsエンドポイントを設定し、アクセストークン署名検証のための公開鍵を取得する
       jwksUri: https://<Auth0のドメイン>/.well-known/jwks.json
       # 既存のJWTを再利用し、宛先マイクロサービスにそのままフォワーディングする
       forwardOriginalToken: true
@@ -1191,7 +1191,7 @@ spec:
     # JWTトークンの発行元IDプロバイダーの識別子を設定する
     # ブラウザから接続する
     - issuer: http://keycloak.com/realms/<realm名>
-      # IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する
+      # IDプロバイダーのJWKsエンドポイントを設定し、アクセストークン署名検証のための公開鍵を取得する
       # ブラウザから、またはAPIに直接接続する
       jwksUri: http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
       # 既存のJWTを再利用し、宛先マイクロサービスにそのままフォワーディングする
@@ -1242,7 +1242,7 @@ spec:
     # JWTトークンの発行元IDプロバイダーの識別子を設定する
     # ブラウザから接続する
     - issuer: http://oauth2-proxy.com/realms/<realm名>
-      # IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する
+      # IDプロバイダーのJWKsエンドポイントを設定し、アクセストークン署名検証のための公開鍵を取得する
       # ブラウザから、またはAPIに直接接続する
       jwksUri: http://oauth2-proxy.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
       # 既存のJWTを再利用し、宛先マイクロサービスにそのままフォワーディングする

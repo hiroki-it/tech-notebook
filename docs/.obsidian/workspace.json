@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "security/security_auth_authentication_artifacts.md",
+                "file": "software/software_application_architecture_microservices_services_auth.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "security_auth_authentication_artifacts"
+              "title": "software_application_architecture_microservices_services_auth"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "トークンベース",
+                "query": "トークン検証",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": false,
@@ -143,13 +143,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "security/security_auth_authentication_artifacts.md",
+                "file": "software/software_application_architecture_microservices_services_auth.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "security_auth_authentication_artifactsのアウトライン"
+              "title": "software_application_architecture_microservices_services_authのアウトライン"
             }
           }
         ],
@@ -169,8 +169,17 @@
       "command-palette:コマンドパレットを開く": false
     }
   },
-  "active": "13b82501632b7954",
+  "active": "0023a13b051e254a",
   "lastOpenFiles": [
+    "software/software_application_architecture_microservices_cloudnative.md",
+    "security/security_auth_authentication_artifacts_sso_oidc.md",
+    "software/software_application_architecture_microservices_services_auth.md",
+    "software/software_middleware_service_mesh_istio_resource_definition.md",
+    "software/software_middleware_service_mesh_istio_resource.md",
+    "software/software_middleware_web_nginx.md",
+    "software/software_middleware_security_oauth2_proxy_conf.md",
+    "software/software_middleware_security_oauth2_proxy.md",
+    "security/security_auth_authentication_artifacts.md",
     "cloud_computing/cloud_computing_aws_practices_security_packet_payload.md",
     "cloud_computing/cloud_computing_gcp_cli.md",
     "language/language_php_framework_laravel_package_auth.md",
@@ -178,7 +187,6 @@
     "testing/testing_whitebox_application_php_unit_phpunit.md",
     "security/security_auth_authentication_artifacts_carrier.md",
     "software/software_middleware_security_keycloak_client_package_javascript.md",
-    "software/software_application_architecture_microservices_services_auth.md",
     "security/security_auth_authentication_artifacts_jwt.md",
     "cloud_computing/cloud_computing_gcp_resource_iam.md",
     "infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md",
@@ -187,16 +195,8 @@
     "cloud_computing/cloud_computing_aws_resource_eks.md",
     "language/language_python_framework_flask_package.md",
     "security/security_auth_authentication_artifacts_sso.md",
-    "security/security_auth_authentication_artifacts.md",
-    "software/software_application_architecture_microservices_cloudnative.md",
     "language/language_javascript_logic_authentication.md",
     "security/index.md",
-    "security/security_auth_authentication_credentials_carrier.md",
-    "security/security_auth_authentication_artifacts_sso_saml.md",
-    "security/security_auth_authentication_artifacts_sso_oidc.md",
-    "security/security_auth_authentication_artifacts_certificate.md",
-    "security/security_auth_authentication_credentials_sso.md",
-    "security/security_auth_authentication_credentials_store.md",
     "無題のファイル.canvas",
     "0-2_まえがき.pdf",
     "Untitled.canvas"

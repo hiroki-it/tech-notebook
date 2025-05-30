@@ -2302,7 +2302,7 @@ spec:
     # JWTトークンの発行元IDプロバイダーの識別子を設定する
     # ブラウザから接続する
     - issuer: https://foo-issuer.com
-      # IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する
+      # IDプロバイダーのJWKsエンドポイントを設定し、アクセストークン署名検証のための公開鍵を取得する
       # ブラウザから、またはAPIに直接接続する
       jwksUri: https://example.com/.well-known/jwks.json
       # 既存のJWTを再利用し、宛先マイクロサービスにそのまま転送する
@@ -2354,7 +2354,7 @@ spec:
 
 #### ▼ jwksUri
 
-IDプロバイダーのJWKsエンドポイントを設定し、トークン検証のための公開鍵を取得する
+IDプロバイダーのJWKsエンドポイントを設定し、アクセストークン署名検証のための公開鍵を取得する
 
 ```yaml
 apiVersion: security.istio.io/v1
