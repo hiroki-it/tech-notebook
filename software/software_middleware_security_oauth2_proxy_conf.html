@@ -27669,7 +27669,7 @@
 <h3 id="nginx">リバースプロキシがNginxの場合<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h3>
 <p>まずは、クライアントアプリケーションが、Nginxを介さずに認可リクエストを直接的にIDプロバイダーに送信する。</p>
 <p>IDプロバイダーがトークンの発行を終え、クライアントが再びリクエストを送信した時、これはNginxを通過する。</p>
-<p>NginxはOAuth2 Proxyにトークン検証リクエストを送信し、OAuth2 ProxyはIDプロバイダーのバリデーション結果をNginxに返信する。</p>
+<p>NginxはOAuth2 Proxyにアクセストークン署名検証リクエストを送信し、OAuth2 ProxyはIDプロバイダーのバリデーション結果をNginxに返信する。</p>
 <p>例えばNginxは、レスポンスのステータスコードが<code>200</code>であれば認証成功、ステータスが<code>401</code>または<code>403</code>であれば認証失敗とし、アプリケーションへのリクエストを許可/拒否する。</p>
 <p>認証が失敗した場合、クライアント側のアプリケーションは改めて認証処理を実施する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
@@ -27677,8 +27677,8 @@
 <span class="w">    </span><span class="c1"># 認証が必要なパス</span>
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">        </span><span class="c1"># トークン検証リクエストの宛先とするパスを設定する</span>
-<span class="w">        </span><span class="c1"># ここでは、トークン検証リクエストをOAuth2 Proxyに送信する</span>
+<span class="w">        </span><span class="c1"># アクセストークン署名検証リクエストの宛先とするパスを設定する</span>
+<span class="w">        </span><span class="c1"># ここでは、アクセストークン署名検証リクエストをOAuth2 Proxyに送信する</span>
 <span class="w">        </span><span class="kn">auth_request</span><span class="w"> </span><span class="s">/oauth2/auth</span><span class="p">;</span>
 
 <span class="w">        </span><span class="kn">...</span>
@@ -27738,7 +27738,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月29日 18:28:23">2025-05-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月30日 15:25:33">2025-05-30</span>
   </span>
 
     
