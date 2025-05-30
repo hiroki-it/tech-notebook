@@ -164,7 +164,7 @@ $ gcloud auth login --update-adc
 
 #### ▼ print-access-token
 
-認証のトークンを取得する。
+認証のアクセストークンを取得する。
 
 ```bash
 $ gcloud auth print-access-token

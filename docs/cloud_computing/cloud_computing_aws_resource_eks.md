@@ -561,7 +561,7 @@ spec:
         - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
           name: kube-api-access-*****
           readOnly: "true"
-        # OIDCのプロバイダーによるトークンをコンテナにマウントする
+        # OIDCのプロバイダーによるアクセストークンをコンテナにマウントする
         - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
           name: aws-iam-token
           readOnly: "true"

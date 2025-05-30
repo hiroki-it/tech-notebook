@@ -246,7 +246,7 @@ JWTの署名の検証方法には以下があり、公開鍵による検証が�
 
 #### ▼ Bearer認証
 
-トークンを`Authorization`ヘッダーに割り当て、リクエストを送信する。
+アクセストークンを`Authorization`ヘッダーに割り当て、リクエストを送信する。
 
 ```yaml
 POST https://example.com/foo
@@ -256,7 +256,7 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 `Authorization`ヘッダーは`Cookie`ヘッダーとは異なり、ローカルマシンに保管できない。
 
-なお、APIではリクエストの送受信時に`Cookie`ヘッダーよりも`Authorization`ヘッダーの方が扱いやすいため、`Authorization`ヘッダーでトークンを運搬することになる。
+なお、APIではリクエストの送受信時に`Cookie`ヘッダーよりも`Authorization`ヘッダーの方が扱いやすいため、`Authorization`ヘッダーでアクセストークンを運搬することになる。
 
 また、スマホアプリも`Cookie`ヘッダーより`Authorization`ヘッダーがいいらしい。
 
@@ -270,7 +270,7 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 ### Form認証の場合
 
-トークンを`Cookie`ヘッダーに割り当て、リクエストを送信する。
+アクセストークンを`Cookie`ヘッダーに割り当て、リクエストを送信する。
 
 ```yaml
 POST https://example.com/foo

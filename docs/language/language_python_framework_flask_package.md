@@ -79,7 +79,7 @@ PythonでCSRのアプリケーションを実現できないため、`Authorizat
 
 フロントエンドアプリケーションがCSRまたはSSRの場合に採用できる。
 
-CSRまたはSSRのアプリケーションは、`Cookie`ヘッダーを介してブラウザのCookieにトークンを保存できる。
+CSRまたはSSRのアプリケーションは、`Cookie`ヘッダーを介してブラウザのCookieにアクセストークンを保存できる。
 
 ```python
 from flask import url_for, redirect

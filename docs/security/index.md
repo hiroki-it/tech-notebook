@@ -38,7 +38,7 @@ hide:
   > - ##### <u>認証アーティファクトによる分類</u>
   >   > - ##### [認証アーティファクトによる分類](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_credentials.html)
   >   > - ##### [認証アーティファクトの運搬](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_artifacts_carrier.html)
-  >   > - ##### [資格情報の保管](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_artifacts_store.html)
+  >   > - ##### [認証アーティファクトの保管](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_artifacts_store.html)
   >   > - ##### [JWT](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_artifacts_jwt.html)
   >   > - ##### <u>SSO</u>
   >   >   > - ##### [SSO](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_artifacts_sso.html)

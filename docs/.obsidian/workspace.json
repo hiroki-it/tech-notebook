@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "security/index.md",
+                "file": "security/security_auth_authentication_artifacts.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "security_auth_authentication_artifacts"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "authentication_artifact",
+                "query": "トークンベース",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": false,
@@ -143,13 +143,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "security/index.md",
+                "file": "security/security_auth_authentication_artifacts.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "indexのアウトライン"
+              "title": "security_auth_authentication_artifactsのアウトライン"
             }
           }
         ],
@@ -171,32 +171,32 @@
   },
   "active": "13b82501632b7954",
   "lastOpenFiles": [
-    "security/security_auth_authentication_credentials_carrier.md",
-    "security/security_auth_authentication_artifacts.md",
+    "cloud_computing/cloud_computing_aws_practices_security_packet_payload.md",
+    "cloud_computing/cloud_computing_gcp_cli.md",
+    "language/language_php_framework_laravel_package_auth.md",
     "security/security_auth_authentication_artifacts_store.md",
+    "testing/testing_whitebox_application_php_unit_phpunit.md",
+    "security/security_auth_authentication_artifacts_carrier.md",
+    "software/software_middleware_security_keycloak_client_package_javascript.md",
+    "software/software_application_architecture_microservices_services_auth.md",
+    "security/security_auth_authentication_artifacts_jwt.md",
+    "cloud_computing/cloud_computing_gcp_resource_iam.md",
+    "infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md",
+    "security/security_network.md",
+    "devops/devops_cicd_cd_argocd_resource_definition_secret.md",
+    "cloud_computing/cloud_computing_aws_resource_eks.md",
+    "language/language_python_framework_flask_package.md",
     "security/security_auth_authentication_artifacts_sso.md",
+    "security/security_auth_authentication_artifacts.md",
+    "software/software_application_architecture_microservices_cloudnative.md",
+    "language/language_javascript_logic_authentication.md",
+    "security/index.md",
+    "security/security_auth_authentication_credentials_carrier.md",
     "security/security_auth_authentication_artifacts_sso_saml.md",
     "security/security_auth_authentication_artifacts_sso_oidc.md",
-    "security/security_auth_authentication_artifacts_jwt.md",
     "security/security_auth_authentication_artifacts_certificate.md",
-    "security/security_auth_authentication_artifacts_carrier.md",
-    "security/index.md",
     "security/security_auth_authentication_credentials_sso.md",
     "security/security_auth_authentication_credentials_store.md",
-    "security/security_auth_authentication_credentials_jwt.md",
-    "security/security_auth_authentication_credentials_certificate.md",
-    "infrastructure_as_code/infrastructure_as_code_kubernetes_practices_resource.md",
-    "infrastructure_as_code/infrastructure_as_code_kubernetes_practices_component.md",
-    "cloud_computing/cloud_computing_aws_resource_elasticache.md",
-    "testing/testing_blackbox_system_test.md",
-    "software/software_middleware_security_keycloak_conf.md",
-    "security/security_auth_authentication_credentials.md",
-    "software/software_application_architecture_microservices_services_auth.md",
-    "software/software_application_architecture_microservices_cloudnative.md",
-    "software/software_middleware_service_mesh_istio_resource_definition.md",
-    "software/software_middleware_security_keycloak.md",
-    "security/security_auth_authentication_credentials_sso_oidc.md",
-    "observability/observability_telemetry_trace.md",
     "無題のファイル.canvas",
     "0-2_まえがき.pdf",
     "Untitled.canvas"

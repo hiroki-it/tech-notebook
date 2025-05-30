@@ -1004,11 +1004,11 @@ public function boot()
 
 $user = User::find(1);
 
-// スコープ無しのトークンを作成する
-$token = $user->createToken("<任意のトークン文字列>")->accessToken;
+// スコープ無しのアクセストークンを作成する
+$token = $user->createToken("<任意のアクセストークン文字列>")->accessToken;
 
-// スコープ付きのトークンを作成する
-$token = $user->createToken("<任意のトークン文字列>", ["place-orders"])->accessToken;
+// スコープ付きのアクセストークンを作成する
+$token = $user->createToken("<任意のアクセストークン文字列>", ["place-orders"])->accessToken;
 ```
 
 > - https://readouble.com/laravel/8.x/ja/passport.html#personal-access-tokens
