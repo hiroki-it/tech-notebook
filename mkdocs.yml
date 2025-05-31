@@ -916,7 +916,9 @@ nav:
       - 開発手法論: software_development_methodology/software_development_methodology.md
       - 組織論: software_development_methodology/software_development_organization.md
       - OSSコントリビューション: software_development_methodology/software_development_oss_contribution.md
-      - テクノロジーマネジメント: software_development_methodology/software_development_technology_management.md
+      - ◼︎ テクノロジーマネジメント:
+          - テクノロジーマネージメント: software_development_methodology/software_development_technology_management.md
+          - 生成AI時代のアプリケーションのレビュー観点: software_development_methodology/software_development_technology_management_review_checklist.md
       - ■ プロダクトマネジメント:
           - プロダクトマネジメント: software_development_methodology/software_development_product_management.md
           - ■ プロジェクトマネジメント:
