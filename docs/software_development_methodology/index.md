@@ -40,6 +40,7 @@ hide:
 ### テクノロジーマネジメント
 
 - #### [テクノロジーマネジメント](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_techology_management.html)
+- #### [生成AI時代のアプリケーションのレビュー観点](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_technology_management_review_checklist.html)
 
 <br>
 
