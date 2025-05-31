@@ -272,20 +272,21 @@ export async function action({request}: ActionFunctionArgs) {
 
 ### 構成
 
+`app`ディレクトリ配下はユーザーで構成する必要があり、例えば以下のようにする。
+
 ```yaml
 .
 ├── app/
-│  ├── components/ # ユーザー定義のRemix component
-│  │
-│  ├── models/ # モデルのCRUD処理
-│  │
-│  ├── routes/ # ルーティングとレンダリングの処理
-│  │
-│  ├── utils/ # 汎用的な関数
-│  │
-│  ├── entry.client.tsx
-│  ├── entry.server.tsx
-│  └── root.tsx
+│   ├── components         # フロントエンドで使用する汎用的なreactコンポーネント
+│   ├── entry.client.tsx
+│   ├── entry.server.tsx
+│   ├── models             # DBモデル、型定義 (ドメインロジックのため、永続化処理以外には依存させない)
+│   ├── openapi            # OpenAPI仕様書の生成処理
+│   ├── root.tsx
+│   ├── routes             # フロントエンド（レンダリング、ルーティング）とバックエンド（APIエンドポイント）の関数
+│   ├── services           # フロントエンド／バックエンドで使用する汎用的なデザインパターン
+│   ├── styles             # フロントエンドで使用するCSS、Tailwind、
+│   └── utils              # フロントエンド／バックエンドで汎用的で小さな関数
 │
 ├── prisma/ # モデルの定義
 ...
