@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "software/software_application_architecture_microservices_services_auth.md",
+                "file": "security/security_auth_authorization_provider_open_policy_agent.md",
                 "mode": "source",
-                "source": true
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "software_application_architecture_microservices_services_auth"
+              "title": "security_auth_authorization_provider_open_policy_agent"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "トークン検証",
+                "query": "openpol",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": false,
@@ -143,13 +143,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "software/software_application_architecture_microservices_services_auth.md",
+                "file": "security/security_auth_authorization_provider_open_policy_agent.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "software_application_architecture_microservices_services_authのアウトライン"
+              "title": "security_auth_authorization_provider_open_policy_agentのアウトライン"
             }
           }
         ],
@@ -171,9 +171,15 @@
   },
   "active": "0023a13b051e254a",
   "lastOpenFiles": [
+    "network/network_model_osi_l5_l7_http.md",
+    "software/software_application_architecture_backend_cqrs.md",
+    "software/software_application_architecture_microservices.md",
+    "software/software_application_architecture_backend_domain_driven_design.md",
+    "software/software_application_architecture_backend_domain_driven_design_clean_architecture.md",
+    "observability/observability_monitoring_service_level.md",
+    "software/software_application_architecture_microservices_services_auth.md",
     "software/software_application_architecture_microservices_cloudnative.md",
     "security/security_auth_authentication_artifacts_sso_oidc.md",
-    "software/software_application_architecture_microservices_services_auth.md",
     "software/software_middleware_service_mesh_istio_resource_definition.md",
     "software/software_middleware_service_mesh_istio_resource.md",
     "software/software_middleware_web_nginx.md",
@@ -191,12 +197,6 @@
     "cloud_computing/cloud_computing_gcp_resource_iam.md",
     "infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md",
     "security/security_network.md",
-    "devops/devops_cicd_cd_argocd_resource_definition_secret.md",
-    "cloud_computing/cloud_computing_aws_resource_eks.md",
-    "language/language_python_framework_flask_package.md",
-    "security/security_auth_authentication_artifacts_sso.md",
-    "language/language_javascript_logic_authentication.md",
-    "security/index.md",
     "無題のファイル.canvas",
     "0-2_まえがき.pdf",
     "Untitled.canvas"
