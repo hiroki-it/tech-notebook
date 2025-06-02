@@ -283,10 +283,10 @@ export async function action({request}: ActionFunctionArgs) {
 │   ├── models             # DBモデル、型定義 (ドメインロジックのため、永続化処理以外には依存させない)
 │   ├── openapi            # OpenAPI仕様書の生成処理
 │   ├── root.tsx
-│   ├── routes             # フロントエンド（レンダリング、ルーティング）とバックエンド（APIエンドポイント）の関数
+│   ├── routes             # フロントエンド（例：レンダリング処理）とバックエンド（例：APIエンドポイント処理）の関数
 │   ├── services           # フロントエンド／バックエンドで使用する汎用的なデザインパターン
 │   ├── styles             # フロントエンドで使用するCSS、Tailwind、
-│   └── utils              # フロントエンド／バックエンドで汎用的で小さな関数
+│   └── utils              # フロントエンド／バックエンドで使用する汎用的で小さな関数
 │
 ├── prisma/ # モデルの定義
 ...

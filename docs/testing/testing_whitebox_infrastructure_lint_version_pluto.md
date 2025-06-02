@@ -123,6 +123,8 @@ foo-cj  foo-namespace   CronJob                   batch/v1beta1         batch/v1
 
 CI上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすれば良く、特にGitOpsでCI/CDを分離している場合は、必ずしもkube-apiserverと通信する必要はない。
 
+ここでは`foo-secrets.yaml`を渡しているが、これは復号せずに渡している。
+
 ```bash
 $ helm template . -f foo-values.yaml -f foo-secrets.yaml \
     | pluto detect -o wide -t k8s=<Kubernetesのバージョン> -

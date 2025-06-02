@@ -297,3 +297,87 @@ const myEnv: Env = {
 > - https://www.basedash.com/blog/environment-variables-in-typescript
 
 <br>
+
+### エラーハンドリング
+
+#### ▼ 独自エラーオブジェクトの定義
+
+ステータスコードに応じたエラーを継承すると、`try-catch`句で扱いやすくなる。
+
+```typescript
+export class NotFoundError extends Error {
+  status: number;
+
+  constructor(message = "The Requested URL was not found on this server") {
+    super(message);
+    this.name = "NotFoundError";
+    this.status = 404;
+  }
+}
+```
+
+#### ▼ エラーメッセージの取得
+
+TypeScriptでは、エラーの構造がさまざまある。
+
+型安全のために、これらを条件分岐で処置する必要がある。
+
+```typescript
+// Remixの場合
+import {Response} from "@remix-run/node";
+
+/**
+ * エラーの構造に応じてエラーメッセージを取得する
+ */
+export async function getErrorMessage(error: unknown): Promise<string> {
+  // RemixのResponseオブジェクトの場合
+  // 例：スローしたjson関数によるエラーを捕捉した場合
+  if (error instanceof Response) {
+    try {
+      const body = await error.json();
+      if (typeof body?.message === "string") {
+        return body.message;
+      }
+      if (typeof body?.error === "string") {
+        return body.error;
+      }
+      if (error.statusText) {
+        return error.statusText;
+      }
+      return "An unexpected error occurred.";
+    } catch {
+      if (error.statusText) {
+        return error.statusText;
+      }
+      return "An unexpected error occurred.";
+    }
+  }
+
+  // Typescript組み込みのErrorオブジェクトの場合
+  // 例：Remixの内部的なエラーを捕捉した場合
+  if (error instanceof Error) {
+    if (error.message) {
+      return error.message;
+    }
+    return "An unexpected error occurred.";
+  }
+
+  // その他の場合
+  // 例：null、string、number、objectなどの想定外のエラーを捕捉した場合
+  return String(error);
+}
+```
+
+```typescript
+// Remixの場合
+export const action = async ({request, params}: ActionArgs) => {
+  try {
+    // リクエストハンドリング
+  } catch (error) {
+    const errorMessage = await getErrorMessage(error);
+    console.error("An error occurred:", errorMessage);
+  }
+};
+```
+
+<br>
