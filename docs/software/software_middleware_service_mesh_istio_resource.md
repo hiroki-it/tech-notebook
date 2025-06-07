@@ -532,7 +532,7 @@ NAME     DOMAINS                                      MATCH               VIRTUA
 
 #### ▼ `404`ステータス
 
-以下の理由などでVirtualServiceの設定が誤っていると、`404`ステータスを返信する。
+以下の理由などでVirtualServiceの設定が誤っていると、`404`レスポンスを返信する。
 
 - Gatewayで受信した通信の`Host`ヘッダーとVirtualServiceのそれが合致していない
 - VirtualServiceの`.spec.exportTo`キーで`.`を設定したことにより、Gatewayがルーティング先のVirtualServiceを見つけられない (Istio Ingress Gatewayからリクエストを受信するPodでは要注意)
@@ -557,7 +557,7 @@ http.50004     blackhole:50004     *           /*                     404
 
 #### ▼ `503`ステータス
 
-以下の理由などでVirtualServiceの設定が誤っていると、`503`ステータスを返信する。
+以下の理由などでVirtualServiceの設定が誤っていると、`503`レスポンスを返信する。
 
 - VirtualServiceで受信した通信の`Host`ヘッダーとJWTトークンleのそれが合致していない
 - JWTトークンleの`.spec.exportTo`キーで`.`を設定したことにより、VirtualServiceがルーティング先のJWTトークンleが見つけられない。 (Istio Ingress Gatewayからリクエストを受信するPodでは要注意)
@@ -1111,9 +1111,9 @@ Pod間通信時、相互TLS認証を実施する。
 
 Pod間通信時、JWTによる認証と認可を実施する。
 
-JWTトークンが失効／不正な場合、RequestAuthenticationは`401`ステータスを返信する。
+JWTトークンが失効／不正な場合、RequestAuthenticationは`401`レスポンスを返信する。
 
-JWTトークンがない場合、AuthorizationPolicyは`403`ステータスを返信する必要がある。
+JWTトークンがない場合、AuthorizationPolicyは`403`レスポンスを返信する必要がある。
 
 なお、RequestAuthenticationを使用せずにマイクロサービスで同様の実装をしても良い。
 

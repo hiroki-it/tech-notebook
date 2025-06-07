@@ -670,7 +670,7 @@ istio-proxyの`15020`番ポートでは、データプレーンのデバッグ�
 
 istio-proxyの`15021`番ポートでは、kubeletからのReadinessProbeヘルスチェックを待ち受ける。
 
-istio-proxy内のEnvoyが、`/healthz/ready`エンドポイントでReadinessProbeヘルスチェックを待ち受けており、もしEnvoyが停止してれば`503`ステータスのレスポンスを返却する。
+istio-proxy内のEnvoyが、`/healthz/ready`エンドポイントでReadinessProbeヘルスチェックを待ち受けており、もしEnvoyが停止してれば`503`レスポンスを返却する。
 
 > - https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 > - https://sreake.com/blog/istio-proxy-stop-behavior/

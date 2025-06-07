@@ -229,7 +229,7 @@ spec:
 
 これにより、ダウンタイムなしでサブセットを追加できる。
 
-DestinationRuleを更新する前に新しいサブセットを持つVirtualServiceを更新してしまうと、VirtualServiceは新しいサブセットを持つDestinationRuleを見つけられず、`503`ステータスを返信してしまう。
+DestinationRuleを更新する前に新しいサブセットを持つVirtualServiceを更新してしまうと、VirtualServiceは新しいサブセットを持つDestinationRuleを見つけられず、`503`レスポンスを返信してしまう。
 
 DestinationRuleを最初に更新し、正常に完了することを待機した後に、VirtualServiceを更新する。
 
