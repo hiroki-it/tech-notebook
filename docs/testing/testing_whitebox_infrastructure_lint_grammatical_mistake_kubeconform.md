@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】 kubeconform＠文法の誤りテスト
-description: kubeconform＠文法の誤りテストの知見を記録しています。
+title: 【IT技術の知見】 kubeconform＠API仕様違反テスト
+description: kubeconform＠API仕様違反テストの知見を記録しています。
 ---
 
-# kubeconform＠文法の誤りテスト
+# kubeconform＠API仕様違反テスト
 
 ## はじめに
 
@@ -17,7 +17,7 @@ description: kubeconform＠文法の誤りテストの知見を記録してい�
 
 ### 検出項目
 
-Kubernetesリソースのスキーマ (カスタムリソースであればCRD) に基づいて、マニフェストの文法の誤りを検出する。
+Kubernetesリソースのスキーマ (カスタムリソースであればCRD) に基づいて、マニフェストのAPI仕様違反を検出する。
 
 <br>
 

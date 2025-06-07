@@ -19,7 +19,7 @@ description: Kyverno＠コード規約違反の知見を記録しています。
 
 Kyvernoは、admission-controllersアドオン、webhookサーバー、Controllerなどのコンポーネトから構成されている。
 
-文法の誤りテストを実施する静的解析ツール (例：kubeconform) とは異なり、kube-apiserverにマニフェストが送信された後に静的解析を実行する。
+API仕様違反テストを実施する静的解析ツール (例：kubeconform) とは異なり、kube-apiserverにマニフェストが送信された後に静的解析を実行する。
 
 kube-apiserverのmutating-admissionステップとvalidating-admissionステップでKyvernoのwebhookサーバーにWebhookが送信される。
 
