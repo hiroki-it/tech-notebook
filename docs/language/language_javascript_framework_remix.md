@@ -284,9 +284,9 @@ export async function action({request}: ActionFunctionArgs) {
 │   ├── openapi            # OpenAPI仕様書の生成処理
 │   ├── root.tsx
 │   ├── routes             # フロントエンド（例：レンダリング処理）とバックエンド（例：APIエンドポイント処理）の関数
-│   ├── services           # フロントエンド／バックエンドで使用する汎用的なデザインパターン
-│   ├── styles             # フロントエンドで使用するCSS、Tailwind、
-│   └── utils              # フロントエンド／バックエンドで使用する汎用的で小さな関数
+│   ├── services           # フロントエンド／バックエンドで使用する『デザインパターン』『外部APIとの通信』『その他、汎用的な機能ロジックの関数』など
+│   ├── styles             # フロントエンドで使用するCSS、Tailwind、など
+│   └── utils              # フロントエンド／バックエンドで使用する『薄い関数』『その他、汎用的な非機能ロジックの関数』など
 │
 ├── prisma/ # モデルの定義
 ...

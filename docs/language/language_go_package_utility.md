@@ -58,6 +58,165 @@ Goのソースコードに変更があれば、ホットリロードし、コン
 
 <br>
 
+## cobra
+
+### cobraとは
+
+Goのコマンドラインツールを作成するツールである。
+
+<br>
+
+### 作り方
+
+#### ▼ ディレクトリ構成
+
+```yaml
+repository/
+├── cmd
+│   ├── foo.go
+│   └── foo_do.go
+├── go.mod
+├── go.sum
+└── main.go
+```
+
+#### ▼ main.go
+
+コマンドのエントリーポイントを実装する。
+
+```go
+// main.goファイル
+package main
+
+import (
+	"context"
+	"os"
+	"os/signal"
+	"syscall"
+
+	"github.com/hiroki-hasegawa/foo-repository/cmd"
+)
+
+func main() {
+	ctx, cancel := context.WithCancel(context.Background())
+	sigCh := make(chan os.Signal, 1)
+	signal.Notify(sigCh, syscall.SIGINT, syscall.SIGTERM, os.Interrupt)
+	go func() {
+		<-sigCh
+		cancel()
+	}()
+
+	cmd := &cobra.Command{
+		Run: func(cmd *cobra.Command, args []string) {
+			_ = cmd.Help()
+		},
+	}
+
+	cmd.AddCommand(foo.NewFooCmd())
+
+	if err := cmd.ExecuteContext(ctx); err != nil {
+		logger.Fatalf("%v", err)
+	}
+}
+```
+
+#### ▼ foo.go
+
+fooコマンド自体を実装する。
+
+```go
+// foo.goファイル
+package foo
+
+import (
+	"context"
+	"time"
+	"log"
+
+	"github.com/spf13/cobra"
+)
+
+const (
+	DefaultPeriod int = 3
+	DefaultLimit  int = 1000
+)
+
+func NewFooCmd() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:           "foo",
+		Short:         "Foo command help",
+		SilenceUsage:  true,
+		SilenceErrors: true,
+		RunE: func(cmd *cobra.Command, args []string) error {
+			return cmd.Help()
+		},
+	}
+	cmd.AddCommand(NewDoCmd())
+	return cmd
+}
+```
+
+#### ▼ foo_do.go
+
+fooコマンドのサブコマンドを実装する。
+
+```go
+// foo_do.goファイル
+package foo
+
+import (
+	"context"
+	"time"
+	"log"
+
+	"github.com/spf13/cobra"
+)
+
+func NewDoCmd() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:           "do",
+		Short:         "Do command",
+		SilenceUsage:  true,
+		SilenceErrors: true,
+		RunE: func(cmd *cobra.Command, args []string) error {
+			// --period
+			// 指定した月数以前のログを削除する
+			period, err := cmd.Flags().GetInt("period")
+			if err != nil {
+				log.Printf("failed to get period flags %v", err)
+				period = DefaultPeriod
+			}
+			// --limit
+			// 指定したログ数をDBから取得し、削除する
+			limit, err := cmd.Flags().GetInt("limit")
+			if err != nil {
+				log.Printf("failed to get limit flags %v", err)
+				limit = DefaultLimit
+			}
+			startDate := time.Now().AddDate(0, -1*period, 0)
+			// オプションをコマンドに渡す
+			return RunDo(cmd.Context(), startDate, limit)
+		},
+	}
+	cmd.Flags().Int("period", DefaultPeriod, "Do older than the specified month")
+	cmd.Flags().Int("limit", DefaultLimit, "Do the specified number of something")
+	return cmd
+}
+
+func RunDo(ctx context.Context, startDate time.Time, limit int) error {
+	// コマンドの処理
+}
+```
+
+#### ▼ コマンドを実行
+
+```bash
+# 実行する
+$ foo do --period 30 --limit 500
+```
+
+<br>
+
 ## go-chi
 
 ### go-chiとは
@@ -1994,8 +2153,8 @@ import (
 	"github.com/go-playground/validator"
 )
 
-type FoobarbazValidator struct {
-	Foo string `json:"foo" validate:"required"`
+type DobarbazValidator struct {
+	Do string `json:"foo" validate:"required"`
 	Bar string `json:"bar" validate:"required"`
 	Baz string `json:"baz" validate:"required"`
 }
@@ -2007,7 +2166,7 @@ func NewValidator() *Validator {
 }
 
 // Validate バリデーションを実行する
-func (v *FoobarbazValidator) Validate() map[string]string {
+func (v *DobarbazValidator) Validate() map[string]string {
 
 	err := validator.New().Struct(v)
 
@@ -2033,12 +2192,12 @@ func (v *FoobarbazValidator) Validate() map[string]string {
 }
 
 // stringValidation string型指定のメッセージを返却する
-func (v *FoobarbazValidator) stringValidation(err validator.FieldError) string {
+func (v *DobarbazValidator) stringValidation(err validator.FieldError) string {
 	return fmt.Sprintf("%s は文字列のみ有効です", err.Field())
 }
 
 // requiredValidation 必須メッセージを返却する
-func (v *FoobarbazValidator) requiredValidation(err validator.FieldError) string {
+func (v *DobarbazValidator) requiredValidation(err validator.FieldError) string {
 	return fmt.Sprintf("%s は必須です", err.Field())
 }
 ```
@@ -2056,7 +2215,7 @@ import (
 
 func main() {
 
-	v := NewFoobarbazValidator()
+	v := NewDobarbazValidator()
 
 	// JSONを構造体にマッピングする
 	err := json.Unmarshal([]byte(`{"foo": "test", "bar": "test", "baz": "test"}`), v)
