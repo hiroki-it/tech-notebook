@@ -2153,8 +2153,8 @@ import (
 	"github.com/go-playground/validator"
 )
 
-type DobarbazValidator struct {
-	Do string `json:"foo" validate:"required"`
+type  foobarbazValidator struct {
+	Foo string `json:"foo" validate:"required"`
 	Bar string `json:"bar" validate:"required"`
 	Baz string `json:"baz" validate:"required"`
 }
@@ -2166,7 +2166,7 @@ func NewValidator() *Validator {
 }
 
 // Validate バリデーションを実行する
-func (v *DobarbazValidator) Validate() map[string]string {
+func (v * foobarbazValidator) Validate() map[string]string {
 
 	err := validator.New().Struct(v)
 
@@ -2192,12 +2192,12 @@ func (v *DobarbazValidator) Validate() map[string]string {
 }
 
 // stringValidation string型指定のメッセージを返却する
-func (v *DobarbazValidator) stringValidation(err validator.FieldError) string {
+func (v * foobarbazValidator) stringValidation(err validator.FieldError) string {
 	return fmt.Sprintf("%s は文字列のみ有効です", err.Field())
 }
 
 // requiredValidation 必須メッセージを返却する
-func (v *DobarbazValidator) requiredValidation(err validator.FieldError) string {
+func (v * foobarbazValidator) requiredValidation(err validator.FieldError) string {
 	return fmt.Sprintf("%s は必須です", err.Field())
 }
 ```
@@ -2215,7 +2215,7 @@ import (
 
 func main() {
 
-	v := NewDobarbazValidator()
+	v := New foobarbazValidator()
 
 	// JSONを構造体にマッピングする
 	err := json.Unmarshal([]byte(`{"foo": "test", "bar": "test", "baz": "test"}`), v)
