@@ -133,6 +133,27 @@ object.gender = "male";
 
 > - https://zenn.dev/akkie1030/articles/9f2304544245b2#object-%E5%9E%8B%E5%AE%9A%E7%BE%A9
 
+#### ▼ 参照記法
+
+```typescript
+const obj = {
+  foo: 123,
+  bar: 456,
+  "baz-qux": 789,
+};
+
+const key = "bar";
+
+// ドット記法
+// キー名が静的で変わらない場合に適している
+const value1 = obj.foo; // 123
+
+// ブラケット記法
+// キー名が動的な場合や記号を含む場合に適している
+const value2 = obj[key]; // 456
+const value3 = obj["baz-qux"]; // 789
+```
+
 <br>
 
 ### 配列
