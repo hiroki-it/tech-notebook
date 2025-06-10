@@ -9422,6 +9422,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      その他の任意ディレクトリ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="その他の任意ディレクトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indexts" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ index.ts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -9480,7 +9504,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       ドッド分割
     </span>
@@ -9540,7 +9564,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       ディレクトリ分割
     </span>
@@ -9564,7 +9588,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       ユーザー定義
     </span>
@@ -9643,7 +9667,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ サーバーのメモリに保存する場合
     </span>
@@ -9652,7 +9676,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ サーバー上のファイルに保存する場合
     </span>
@@ -27816,6 +27840,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      その他の任意ディレクトリ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="その他の任意ディレクトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indexts" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ index.ts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -27874,7 +27922,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       ドッド分割
     </span>
@@ -27934,7 +27982,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       ディレクトリ分割
     </span>
@@ -27958,7 +28006,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       ユーザー定義
     </span>
@@ -28037,7 +28085,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ サーバーのメモリに保存する場合
     </span>
@@ -28046,7 +28094,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ サーバー上のファイルに保存する場合
     </span>
@@ -28388,6 +28436,23 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="_14">その他の任意ディレクトリ<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h4 id="indexts">▼ index.ts<a class="headerlink" href="#indexts" title="Permanent link">&para;</a></h4>
+<p>各ディレクトリのエントリポイントとして使える。</p>
+<p><code>index.ts</code>ファイルで<code>export</code>しておくと、コールする側がディレクトリ単位でインポートできるようになる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// utils/index.ts</span>
+<span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="nx">logger</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./logger&quot;</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="nx">logger</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./errorHandler&quot;</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// ファイルを個別に指定する必要がなくなる</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">fooLogger</span><span class="p">,</span><span class="w"> </span><span class="nx">fooErrorHandler</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;~/utils&quot;</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/stin_dev/items/8bc6281dcebb289887be">https://qiita.com/stin_dev/items/8bc6281dcebb289887be</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="04">04. セットアップ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="react-router-v6">React Router v6<a class="headerlink" href="#react-router-v6" title="Permanent link">&para;</a></h3>
 <p>Remix v2を<code>@remix-run/node</code>パッケージからインポートする。</p>
@@ -28425,7 +28490,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_14">ドッド分割<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h3 id="_15">ドッド分割<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="_indextsx">▼ <code>_index.tsx</code><a class="headerlink" href="#_indextsx" title="Permanent link">&para;</a></h4>
 <p>ルートパスになる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">app/</span><span class="w">                        </span><span class="c1"># URLパス</span>
@@ -28560,11 +28625,11 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_15">ディレクトリ分割<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h3 id="_16">ディレクトリ分割<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <p>ディレクトリ名がパスとして認識される。</p>
 <p><br></p>
 <h2 id="06-component">06. componentの種類<a class="headerlink" href="#06-component" title="Permanent link">&para;</a></h2>
-<h3 id="_16">ユーザー定義<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<h3 id="_17">ユーザー定義<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <p>Remixがコンポーネントであることを認識するために、名前の先頭を大文字する。</p>
 <blockquote>
 <ul>
@@ -28668,7 +28733,7 @@
 <li><a href="https://remix.run/docs/en/main/utils/sessions#createcookiesessionstorage">https://remix.run/docs/en/main/utils/sessions#createcookiesessionstorage</a></li>
 </ul>
 </blockquote>
-<h4 id="_17">▼ サーバーのメモリに保存する場合<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<h4 id="_18">▼ サーバーのメモリに保存する場合<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>サーバーのメモリに資格情報を保存する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">memorySessionStorage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createMemorySessionStorage</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">cookie</span><span class="o">:</span><span class="w"> </span><span class="nx">sessionCookie</span><span class="p">,</span>
@@ -28679,7 +28744,7 @@
 <li><a href="https://remix.run/docs/en/main/utils/sessions#creatememorysessionstorage">https://remix.run/docs/en/main/utils/sessions#creatememorysessionstorage</a></li>
 </ul>
 </blockquote>
-<h4 id="_18">▼ サーバー上のファイルに保存する場合<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<h4 id="_19">▼ サーバー上のファイルに保存する場合<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>サーバー上のファイルに資格情報を保存する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">memorySessionStorage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createFileSessionStorage</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">dir</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/app/sessions&quot;</span><span class="p">,</span>
@@ -28745,7 +28810,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月9日 15:21:07">2025-06-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月10日 21:31:19">2025-06-10</span>
   </span>
 
     
