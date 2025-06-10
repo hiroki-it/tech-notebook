@@ -349,6 +349,29 @@ export function handleDataRequest(response: Response, {request, params, context}
 
 <br>
 
+### その他の任意ディレクトリ
+
+#### ▼ index.ts
+
+各ディレクトリのエントリポイントとして使える。
+
+`index.ts`ファイルで`export`しておくと、コールする側がディレクトリ単位でインポートできるようになる。
+
+```typescript
+// utils/index.ts
+export {logger} from "./logger";
+export {logger} from "./errorHandler";
+```
+
+```typescript
+// ファイルを個別に指定する必要がなくなる
+import {fooLogger, fooErrorHandler} from "~/utils";
+```
+
+> - https://qiita.com/stin_dev/items/8bc6281dcebb289887be
+
+<br>
+
 ## 04. セットアップ
 
 ### React Router v6

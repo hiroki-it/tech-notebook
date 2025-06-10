@@ -25,7 +25,44 @@ description: TypeScriptの知見を記録しています。
 
 <br>
 
-## 02. 型定義
+## 02. 変数の宣言
+
+### let
+
+記入中...
+
+<br>
+
+### const
+
+#### ▼ constアサーション
+
+constで宣言／代入された変数に関して、再代入できないようにする。
+
+型がより複雑な配列やオブジェクトリテラルで使用すると便利である。
+
+```typescript
+const obj = {
+  const obj: {
+    readonly name: "pikachu";
+    readonly no: 25;
+    readonly genre: "mouse pokémon";
+    readonly height: 0.4;
+    readonly weight: 6;
+  }
+  name: "pikachu",
+  no: 25,
+  genre: "mouse pokémon",
+  height: 0.4,
+  weight: 6.0,
+} as const;
+```
+
+> - https://typescriptbook.jp/reference/values-types-variables/const-assertion
+
+<br>
+
+## 02-02. 変数の代入
 
 ### プリミティブ
 
@@ -249,7 +286,63 @@ let isProgrammer: boolean = true;
 
 <br>
 
-## 04. 環境変数の定義
+### 型アサーション
+
+#### ▼ 型アサーション
+
+型を上書きする。
+
+キャストではないらしい。
+
+> - https://typescript-jp.gitbook.io/deep-dive/type-system/type-assertion
+
+#### ▼ as構文
+
+```typescript
+const value: string | number = "this is a string";
+const strLength: number = (value as string).length;
+```
+
+> - https://typescriptbook.jp/reference/values-types-variables/type-assertion-as#%E5%9E%8B%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9
+
+#### ▼ アングルブラケット構文
+
+```typescript
+const value: string | number = "this is a string";
+const strLength: number = (<string>value).length;
+```
+
+> - https://typescriptbook.jp/reference/values-types-variables/type-assertion-as#%E5%9E%8B%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9
+
+<br>
+
+## 04. 独自の型宣言
+
+### typeエイリアス宣言
+
+オブジェクト以外の型を宣言する場合、typeエイリアス宣言を使用する。
+
+ただ、オブジェクトでtypeエイリアス宣言を使用してもよい。
+
+```typescript
+type Foo = {
+  bar: number;
+  baz: Date;
+  qux: string;
+};
+```
+
+<br>
+
+### interface宣言
+
+オブジェクトの型を宣言する場合、interface宣言を使用する。
+
+ただ、オブジェクトでtypeエイリアス宣言を使用してもよい。
+
+<br>
+
+## 05. 環境変数の定義
 
 ### 出力
 
@@ -298,7 +391,7 @@ const myEnv: Env = {
 
 <br>
 
-## 05. エラーハンドリング
+## 06. エラーハンドリング
 
 ### 独自エラーオブジェクトの定義
 

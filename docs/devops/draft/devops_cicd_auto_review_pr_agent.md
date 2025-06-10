@@ -18,10 +18,16 @@ description: PR Agent＠自動レビューツールの知見を記録してい�
 ### GitLab
 
 ```yaml
+workflow:
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
+    # もしworkflowのルールを設定している場合、merge_request_eventをルールの条件としないと、ワークフローが起動しない
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
 stages:
   - build
   - test
-  # すべてのステージの後にPR Agentを実行する
   - pr_agent
 
 pr_agent:
@@ -48,8 +54,11 @@ pr_agent:
     - python -m pr_agent.cli --pr_url="$MR_URL" improve
   allow_failure: true
   rules:
+    # merge_request_eventの時にJobを発火させないと、PR AgentはMRの情報を取得できずにエラーになってしまう
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 ```
+
+> - https://github.com/qodo-ai/pr-agent/blob/main/docs/docs/installation/gitlab.md
 
 <br>
 

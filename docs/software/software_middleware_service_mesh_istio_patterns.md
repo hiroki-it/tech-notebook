@@ -98,8 +98,7 @@ Istioコントロールプレーンとデータプレーンを異なるクラス
 
 プライマリークラスターに親Istioコントロールプレーンを配置し、リモートクラスターには子Istioコントロールプレーンとデータプレーンを配置する。
 
-> - https://github.com/istio/istio/wiki/External-Istiod-single-cluster-steps
->   <br>
+> - https://github.com/istio/istio/wiki/External-Istiod-single-cluster-steps > <br>
 
 ### データプレーンが仮想サーバーの場合
 
