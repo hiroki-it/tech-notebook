@@ -88,9 +88,9 @@ log_level="INFO"
 
 ```toml
 [pr_description]
-# extra_instructions="""\
-# ここにカスタムプロンプトを追加する
-# """
+extra_instructions="""\
+- impactレベルは「high」または「medium」のみを使用すること。「low」のimpactレベルを提案することは禁止である。
+"""
 ```
 
 > - https://github.com/qodo-ai/pr-agent/blob/main/pr_agent/settings/configuration.toml

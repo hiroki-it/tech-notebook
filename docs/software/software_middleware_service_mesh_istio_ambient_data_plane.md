@@ -126,6 +126,14 @@ istio-cniは、`/var/run/ztunnel/ztunnel.sock`ファイル経由でztunnelから
 > - https://www.rfc-editor.org/rfc/rfc8926.html
 > - https://www.reddit.com/r/kubernetes/comments/1cygujm/comment/l59qh64/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 
+#### ▼ Google Cloud Meshに関して
+
+Google Cloud Meshでは、istio-cniのロジックがGKEに統合されており、istio-cniが存在しない。
+
+代わりに、NEGなどを使用する。
+
+> - https://cloud.google.com/blog/products/containers-kubernetes/container-native-load-balancing-on-gke-now-generally-available?hl=en
+
 <br>
 
 ### ztunnel
