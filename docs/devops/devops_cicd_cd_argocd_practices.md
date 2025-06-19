@@ -260,6 +260,12 @@ spec:
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-server
 
+#### ▼ サイドカーのメモリ
+
+argocd-serverのサイドカー上 (`***-cmp-server`) で`helm`コマンドのなどを実行する場合、マニフェストの展開にはスパイク的にメモリが必要になる。
+
+そのため、サイドカー (`***-cmp-server`) にはたくさんのメモリを割り当てるようにする。
+
 <br>
 
 ### 安全性

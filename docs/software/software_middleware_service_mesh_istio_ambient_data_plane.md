@@ -468,3 +468,45 @@ waypoint-proxyは、Namespaceのリバースプロキシである。
 > - https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint
 
 <br>
+
+## 03. 各機能の仕組み
+
+### 分散トレース
+
+アンビエントメッシュでは、waypoint-proxy Podがスパンを作成する。
+
+送信元からリクエストを受信したwaypoint-proxy Podは、宛先へのリクエスト送信からレスポンス受信までの処理時間を計測する。
+
+waypoint-proxy Pod上で記録したタイムスタンプを集計し、A-C（トレースに相当）、A-B（スパンに相当）、B-C（スパンに相当）の処理時間を計測する。
+
+```yaml
+マイクロサービスAのPod
+⬇⬆︎
+ztunnel (L4)
+⬇⬆︎
+⬇⬆︎ # HBONE
+⬇⬆︎
+waypoint-proxy Pod (L7) # タイムスタンプ
+⬇⬆︎
+⬇⬆︎ # HBONE
+⬇⬆︎
+ztunnel (L4)
+⬇⬆︎
+マイクロサービスBのPod
+⬇⬆︎
+ztunnel (L4)
+⬇⬆︎
+⬇⬆︎ # HBONE
+⬇⬆︎
+waypoint-proxy (L7) # タイムスタンプ
+⬇⬆︎
+⬇⬆︎ # HBONE
+⬇⬆︎
+ztunnel (L4)
+⬇⬆︎
+マイクロサービスCのPod
+```
+
+> - https://ambientmesh.io/docs/observability/tracing/
+
+<br>
