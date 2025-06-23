@@ -28854,7 +28854,7 @@
 <h2 id="clone">clone<a class="headerlink" href="#clone" title="Permanent link">&para;</a></h2>
 <h3 id="_2">認証<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="https">▼ HTTPSリクエスト<a class="headerlink" href="#https" title="Permanent link">&para;</a></h4>
-<p>Basic認証でGitHubにログインし、クローンする。</p>
+<p>ベーシック認証でGitHubにログインし、クローンする。</p>
 <p>GitHubのユーザー名とパスワードが必要になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/&lt;組織名&gt;/&lt;GitHubリポジトリ名&gt;.git
 </code></pre></div>
@@ -29099,10 +29099,10 @@ Hi<span class="w"> </span>hiroki.hasegawa!<span class="w"> </span>You<span class
 <h3 id="add-origin">add origin<a class="headerlink" href="#add-origin" title="Permanent link">&para;</a></h3>
 <p>プライベートリポジトリのURLを登録し、プッシュ/プル可能にする。</p>
 <p><strong>＊実行例＊</strong></p>
-<p>Basic認証の場合、以下の通りである。</p>
+<p>ベーシック認証の場合、以下の通りである。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>init
 
-<span class="c1"># Basic認証</span>
+<span class="c1"># ベーシック認証</span>
 $<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/hiroki-hasegawa/example.git
 
 <span class="c1"># 登録されたGitHubリポジトリ</span>
@@ -29127,8 +29127,8 @@ remote.origin.url<span class="o">=</span>git@github.com:&lt;組織名またはgi
 <p>使用頻度の高いアカウントで所有するリポジトリでは、SSH URLを変更することが手間なので接続名を『<code>github.com</code>』としておく。</p>
 <p>一方で、使用頻度の低いアカウントで所有するリポジトリでは、標準のSSH URLを異なる接続名で再設定する。</p>
 <p><strong>＊実行例＊</strong></p>
-<p>Basic認証の場合、以下の通りである。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Basic認証</span>
+<p>ベーシック認証の場合、以下の通りである。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ベーシック認証</span>
 $<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span>https://github.com/hiroki-hasegawa/example.git
 
 <span class="c1"># 登録されたGitHubリポジトリ</span>
@@ -29923,7 +29923,7 @@ $<span class="w"> </span>git<span class="w"> </span>gc<span class="w"> </span>--
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月11日 01:02:15">2025-05-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月23日 14:30:27">2025-06-23</span>
   </span>
 
     
