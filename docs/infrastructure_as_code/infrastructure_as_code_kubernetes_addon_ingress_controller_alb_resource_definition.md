@@ -118,7 +118,7 @@ metadata:
 
 インバウンド通信で許可するCIDRを設定する。
 
-`alb.ingress.kubernetes.io/wafv2-acl-arn`キーを使用して、同じルールを持ったWAFを紐づけても良い。
+`alb.ingress.kubernetes.io/wafv2-acl-arn`キーを使用して、同じルールを持ったAWS WAFを紐づけても良い。
 
 ```yaml
 apiVersion: networking.k8s.io/v1

@@ -269,7 +269,7 @@ spec:
 
 以下の場合がある。
 
-- IstioIngressGatewayに関するService、VirtualService、JWTトークンleの設定の不備で接続できない
+- Istio Ingress Gatewayに関するService、VirtualService、JWTトークンleの設定の不備で接続できない
 - タイムアウト時間が短すぎる
 
 > - https://github.com/istio/istio/issues/27513#issuecomment-1095620598

@@ -888,7 +888,7 @@ foo-m05   Ready    worker          13d   v1.32.0
 foo-m06   Ready    worker          13d   v1.32.0
 ```
 
-注意点として、執筆時点 (2025/02/03) では複数のKubernetes Cluster間を同一のネットワークに接続できない。
+注意点として、執筆時点 (2025/02/03) では複数のKubernetes Cluster間を同じネットワークに接続できない。
 
 異なるネットワークにおいて、ホストOSのドメイン (`host.minikube.internal`) を介して通信するしかない。
 

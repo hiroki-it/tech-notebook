@@ -457,11 +457,17 @@ waypoint-proxyは、サービス検出により宛先情報を取得し、また
 
 > - https://www.anyflow.net/sw-engineer/istio-ambient-mode
 
-#### ▼ Namespaceのリバースプロキシとして
+#### ▼ NamespaceかつNodeのリバースプロキシとして
 
-waypoint-proxyは、Namespaceのリバースプロキシである。
+waypoint-proxyは、NamespaceかつNodeのリバースプロキシである。
 
 アウトバウンド通信には関与せず、宛先リバースプロキシとしてのみ機能する。
+
+マイクロサービスPodがいるNamespace単位でwaypoint-proxyを作成すると良い。
+
+また、マイクロサービスPodが乗りうるNode（またはNodeグループ）に最低一個ずつスケジューリングするよう、waypoint-proxy Podを冗長化しつつAffinityを設定するとよい
+
+
 
 ![istio_ambient-mesh_waypoint-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy_reverse-proxy.png)
 
@@ -478,6 +484,10 @@ waypoint-proxyは、Namespaceのリバースプロキシである。
 送信元からリクエストを受信したwaypoint-proxy Podは、宛先へのリクエスト送信からレスポンス受信までの処理時間を計測する。
 
 waypoint-proxy Pod上で記録したタイムスタンプを集計し、A-C（トレースに相当）、A-B（スパンに相当）、B-C（スパンに相当）の処理時間を計測する。
+
+サイドカーモードとアンビエントモードでも、マイクロサービスから最初のプロキシまでの通信時間を計測できない問題はある。
+
+ただし、サイドカーモードの「送信元マイクロサービスコンテナ ⇄ 送信元istio-proxy」とアンビエントモードの「送信元マイクロサービスのPod ⇄ waypoint-proxy Pod」を比較して、サイドカーモードの方が通信時間の欠損が無視できるほど短く、より適していると言えそう。
 
 ```yaml
 マイクロサービスAのPod

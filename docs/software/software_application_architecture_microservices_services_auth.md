@@ -107,6 +107,28 @@ description: 認証／認可＠マイクロサービスの知見を記録して�
 > - https://dev.to/honatas/a-different-approach-to-user-sessions-in-microservices-5bpi
 > - https://blog.stackademic.com/backend-for-frontend-authentication-pattern-in-go-5fe5ec7ced53
 
+
+
+<br>
+
+
+### セッションIDをCookieヘッダーで運搬するパターン
+
+
+
+マイクロサービスアーキテクチャの文脈では、セッションIDを使用した認証は次のような仕組みになっている。このパターンは、さまざまなフロントエンドアプリケーション（例：SST、CSR、SSRなど）で採用できる。
+
+1. 未認証のアカウントはフロントエンドアプリケーションにリクエストを送信する。
+2. IDプロバイダーはレスポンスのSet-CookieヘッダーでセッションIDを返信する。
+3. フロントエンドアプリケーションはIDプロバイダーのレスポンスヘッダーからセッションIDを取得する。セッションIDを再利用するため、ブラウザはCookieにセッションIDを保存する。
+4. フロントエンドアプリケーションは、セッションIDをCookieヘッダーで運搬する。
+5. マイクロサービスは、セッションIDに対応するセッションデータがストレージにあるか、またセッションIDが失効していないかを検証する。セッションIDはCookieヘッダーで運搬し、後続のマイクロサービスに伝播させる。
+
+
+![microservices_authentication_type_session_cookie-header](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_session_cookie-header.png)
+
+
+
 <br>
 
 ## 01-04. JWTパターン (分散パターン)

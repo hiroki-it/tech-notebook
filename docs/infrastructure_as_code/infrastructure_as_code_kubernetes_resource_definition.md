@@ -5302,7 +5302,7 @@ Secretの種類を設定する。
 
 #### ▼ kubernetes.io/basic-auth
 
-Basic認証のための変数を設定する。
+ベーシック認証のための変数を設定する。
 
 ```yaml
 apiVersion: v1

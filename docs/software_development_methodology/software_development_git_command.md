@@ -47,7 +47,7 @@ $ git branch -M main
 
 #### ▼ HTTPSリクエスト
 
-Basic認証でGitHubにログインし、クローンする。
+ベーシック認証でGitHubにログインし、クローンする。
 
 GitHubのユーザー名とパスワードが必要になる。
 
@@ -325,12 +325,12 @@ Hi hiroki.hasegawa! You've successfully authenticated, but GitHub does not provi
 
 **＊実行例＊**
 
-Basic認証の場合、以下の通りである。
+ベーシック認証の場合、以下の通りである。
 
 ```bash
 $ git init
 
-# Basic認証
+# ベーシック認証
 $ git remote add origin https://github.com/hiroki-hasegawa/example.git
 
 # 登録されたGitHubリポジトリ
@@ -369,10 +369,10 @@ remote.origin.url=git@github.com:<組織名またはgitユーザー名>/<GitHub�
 
 **＊実行例＊**
 
-Basic認証の場合、以下の通りである。
+ベーシック認証の場合、以下の通りである。
 
 ```bash
-# Basic認証
+# ベーシック認証
 $ git remote set-url origin https://github.com/hiroki-hasegawa/example.git
 
 # 登録されたGitHubリポジトリ

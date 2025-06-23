@@ -175,6 +175,8 @@ description: 暗号方式＠アプリケーションデータの暗号化技術�
 
 ### 暗号スイートの種類
 
+TLS1.2の場合、以下の表記である。
+
 - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
 - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305

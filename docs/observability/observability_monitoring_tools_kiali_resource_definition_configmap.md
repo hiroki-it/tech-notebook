@@ -190,7 +190,7 @@ data:
   config.yaml: |
     grafana:
       auth:
-        # GrafanaでBasic認証を使用している場合
+        # Grafanaでベーシック認証を使用している場合
         type: basic
         username: admin
         password: prom-operator

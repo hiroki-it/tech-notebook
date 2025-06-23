@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "software/software_middleware_service_mesh_istio_sidecar_data_plane.md",
+                "file": "software/software_middleware_service_mesh_istio_ambient_data_plane.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "software_middleware_service_mesh_istio_sidecar_data_plane"
+              "title": "software_middleware_service_mesh_istio_ambient_data_plane"
             }
           }
         ]
@@ -53,8 +53,8 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "`ステータスのレスポンス",
-                "matchingCase": false,
+                "query": "アンビエント",
+                "matchingCase": true,
                 "explainSearch": true,
                 "collapseAll": false,
                 "extraContext": false,
@@ -74,12 +74,11 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 236.5
+    "width": 200
   },
   "right": {
     "id": "488105a2fc65fb1f",
@@ -143,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "software/software_middleware_service_mesh_istio_sidecar_data_plane.md",
+                "file": "software/software_middleware_service_mesh_istio_ambient_data_plane.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "software_middleware_service_mesh_istio_sidecar_data_planeのアウトライン"
+              "title": "software_middleware_service_mesh_istio_ambient_data_planeのアウトライン"
             }
           }
         ],
@@ -169,34 +168,34 @@
       "command-palette:コマンドパレットを開く": false
     }
   },
-  "active": "0023a13b051e254a",
+  "active": "a85a35cc6df77bd4",
   "lastOpenFiles": [
-    "language/language_php_framework_laravel_package_auth.md",
-    "software/software_middleware_service_mesh_istio.md",
-    "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
-    "network/network_model_osi_l5_l7_http.md",
+    "devops/draft/devops_cicd_auto_review_ai_pr_agent.md",
+    "devops/draft/devops_cicd_auto_review_ai_context.md",
+    "devops/draft/devops_cicd_auto_review_pr_agent.md",
+    "language/language_javascript_framework_remix.md",
+    "language/language_javascript_framework_vuejs.md",
+    "language/language_javascript_logic_browser_rendering.md",
+    "language/language_javascript_package_react.md",
+    "software/software_application_architecture_frontend.md",
+    "software/software_application_architecture_microservices_services_auth.md",
+    "security/security_auth_authentication_artifacts.md",
+    "security/security_network.md",
+    "infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb_resource_definition.md",
+    "devops/devops_cicd_cd_argocd_practices.md",
+    "cloud_computing/cloud_computing_aws_practices_security_packet_payload.md",
+    "cloud_computing/cloud_computing_aws_resource_waf.md",
     "software/software_middleware_service_mesh_istio_resource_definition.md",
+    "infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_minikube_command.md",
+    "devops/draft/devops_cicd_cd_pipecd.md",
     "software/software_middleware_service_mesh_istio_resource.md",
-    "software/software_middleware_service_mesh_istio_practices.md",
-    "cloud_computing/cloud_computing_aws_practices_operability.md",
-    "software/software_middleware_service_mesh_istio_patterns.md",
-    "software/software_middleware_service_mesh_istio_sidecar_control_plane.md",
     "software/software_middleware_service_mesh_istio_sidecar_data_plane.md",
-    "software/software_middleware_service_mesh_istio_operator_resource_definition.md",
-    "software/software_middleware_service_mesh_istio_resource_definition_secret.md",
-    "software/software_middleware_service_mesh_istio_resource_definition_common.md",
-    "software/software_middleware_service_mesh_istio_non.md",
-    "software/software_middleware_service_mesh_istio_command.md",
-    "infrastructure_as_code/infrastructure_as_code_kubernetes_practices_resource.md",
-    "testing/testing_whitebox_infrastructure_lint_code_conventions_kyverno.md",
-    "testing/testing_whitebox_infrastructure_lint_grammatical_mistake_kubeconform.md",
-    "infrastructure_as_code/infrastructure_as_code_kubernetes_practices.md",
-    "devops/devops_cicd_auto_review_github_comment.md",
-    "infrastructure_as_code/infrastructure_as_code_terraform_practices.md",
-    "testing/index.md",
-    "infrastructure_as_code/infrastructure_as_code_docker_practices.md",
-    "testing/testing_whitebox_infrastructure_lint.md",
-    "cloud_computing/cloud_computing_aws_resource_eks.md",
+    "software/software_application_architecture_microservices_cloudnative.md",
+    "observability/observability_monitoring_tools_prometheus_exporter.md",
+    "software/draft/software_middleware_database_nosqldb_redis_conf.md",
+    "software/software_middleware_database_nosqldb_redis_command.md",
+    "software/software_middleware_database_nosqldb.md",
+    "cloud_computing/cloud_computing_aws_resource_ec2.md",
     "無題のファイル.canvas",
     "0-2_まえがき.pdf",
     "Untitled.canvas"

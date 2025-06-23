@@ -1423,11 +1423,9 @@ spec:
 
 <br>
 
-## 04-02. EnvoyFilter例
+## 04-02. EnvoyFilterのレートリミット
 
-### レートリミット
-
-#### ▼ Istioのレートリミットとは
+### Istioのレートリミットとは
 
 執筆時点で、Istioのトラフィック管理系リソースにはレートリミットの設定がない。
 
@@ -1435,7 +1433,10 @@ spec:
 
 複数のistio-proxyにレートリミットを設定するグローバルレートリミットと、特定のものに設定するローカルレートリミットがある。
 
-#### ▼ ローカルリミット
+<br>
+### ローカルリミット
+
+#### ▼ 任意のリクエストに対して
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -1466,6 +1467,7 @@ spec:
             type_url: type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit
             value:
               stat_prefix: http_local_rate_limiter
+              # 4秒中に4リクエスト数までを指定する
               token_bucket:
                 max_tokens: 4
                 tokens_per_fill: 4
@@ -1531,6 +1533,7 @@ spec:
               type_url: type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit
               value:
                 stat_prefix: http_local_rate_limiter
+                # 4秒中に4リクエスト数までを指定する
                 token_bucket:
                   max_tokens: 4
                   tokens_per_fill: 4
@@ -1555,7 +1558,55 @@ spec:
 > - https://istio.io/latest/docs/tasks/policy-enforcement/rate-limit/#local-rate-limit
 > - https://learncloudnative.com/blog/2022-09-08-ratelimit-istio
 
-#### ▼ グローバルレートリミット
+
+#### ▼ JWTの同じ`sub`に対して
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: ratelimit-by-jwt-sub
+  namespace: default
+spec:
+  workloadSelector:
+    labels:
+      app: my-app
+  configPatches:
+    - applyTo: HTTP_FILTER
+      match:
+        context: SIDECAR_INBOUND
+        listener:
+          filterChain:
+            filter:
+              name: envoy.filters.network.http_connection_manager
+      patch:
+        operation: INSERT_BEFORE
+        value:
+          name: envoy.filters.http.ratelimit
+          typed_config:
+            "@type": type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimit
+            domain: mydomain
+            rate_limit_service:
+              grpc_service:
+                envoy_grpc:
+                  cluster_name: rate_limit_cluster
+                timeout: 0.25s
+            rate_limit_config:
+              rate_limit_descriptor_sets:
+                descriptors:
+                  - entries:
+                      - key: "identified_user_daily_limit"
+                        value: "%DYNAMIC_METADATA(envoy.filters.http.jwt_authn.jwt_payload.sub)%"
+
+```
+
+
+
+
+
+### グローバルレートリミット
+
+#### ▼ グローバルレートリミットとは
 
 ```yaml
 apiVersion: v1
@@ -1661,7 +1712,7 @@ spec:
 
 <br>
 
-### KeepAliveの設定
+## 04-03. EnvoyFilterのKeepAliveの設定
 
 istio-ingressgateway内のistio-proxyで、KeepAliveを実行できるようにする。
 
@@ -1711,7 +1762,7 @@ spec:
 
 <br>
 
-## 04-03. EnvoyFilter以外のカスタマイズ方法
+## 04-04. EnvoyFilter以外のカスタマイズ方法
 
 ### VirtualService、DestinationRuleの定義
 
@@ -2159,7 +2210,7 @@ spec:
 apiVersion: security.istio.io/v1
 kind: PeerAuthentication
 metadata:
-  # foo内の全てのサイドカーにPeerAuthenticationを適用する
+  # foo内の全てのistio-proxyにPeerAuthenticationを適用する
   namespace: foo
   name: peer-authentication
 spec:
@@ -2200,7 +2251,7 @@ spec:
 apiVersion: security.istio.io/v1
 kind: PeerAuthentication
 metadata:
-  # foo内の全てのサイドカーにPeerAuthenticationを適用する
+  # foo内の全てのistio-proxyにPeerAuthenticationを適用する
   namespace: foo
   name: peer-authentication
 spec:
@@ -2804,7 +2855,7 @@ spec:
 
 ### .metadata.namespace
 
-NamespaceでTelemetyの対象のサイドカーを絞れる。
+NamespaceでTelemetyの対象のistio-proxyを絞れる。
 
 もし`istio-system`を指定した場合、Root Namespaceという設定になり、istio-proxyコンテナのある全てのNamespaceが対象になる。
 
@@ -2831,7 +2882,7 @@ apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
   name: access-log-provider
-  # サイドカーをインジェクションしている各Namespaceで作成する
+  # istio-proxyをインジェクションしている各Namespaceで作成する
   # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
   namespace: foo
 spec:
@@ -2876,7 +2927,7 @@ apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
   name: metrics-provider
-  # サイドカーをインジェクションしている各Namespaceで作成する
+  # istio-proxyをインジェクションしている各Namespaceで作成する
   # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
   namespace: foo
 spec:
@@ -2903,7 +2954,7 @@ apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
   name: trace-provider
-  # サイドカーをインジェクションしている各Namespaceで作成する
+  # istio-proxyをインジェクションしている各Namespaceで作成する
   # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
   namespace: foo
 spec:

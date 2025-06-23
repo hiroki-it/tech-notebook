@@ -604,9 +604,9 @@ components:
   # securityフィールドの共通化
   #===========================
   securitySchemes:
-    # Basic認証
+    # ベーシック認証
     basicAuth:
-      description: Basic認証
+      description: ベーシック認証
       type: http
       scheme: basic
     # Bearer認証

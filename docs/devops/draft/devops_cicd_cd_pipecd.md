@@ -35,7 +35,7 @@ description: PipeCD＠CDツールの知見を記録しています。
 
 ### AWS ECSの場合
 
-#### ▼ 同一のAWS ECS Cluster
+#### ▼ 同じAWS ECS Cluster
 
 PipeCDをデプロイ先のAWS ECS Clusterで一緒に動かす。
 
