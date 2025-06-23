@@ -85,26 +85,21 @@ Kubernetes ClusterごとにIstiodコントロールプレーンを作成する�
 
 Istioコントロールプレーンとデータプレーンを異なるクラスターにデプロイする。
 
-
-
-
-
 <br>
 
-###  シングルIstiod
+### シングルIstiod
 
 プライマリークラスターにIstioコントロールプレーンとIstio Ingress GatewayやIstio Egress Gatewayを配置し、リモートクラスターにはデータプレーンを配置する。
 
 > - https://istio.io/latest/docs/setup/install/external-controlplane/
 > - https://istio.io/latest/blog/2020/new-deployment-model/
 
-
 ### マルチIstiod
 
 プライマリークラスターに親Istioコントロールプレーンを配置し、リモートクラスターには子Istioコントロールプレーンとデータプレーンを配置する。
 
 > - https://github.com/istio/istio/wiki/External-Istiod-single-cluster-steps
-<br>
+>   <br>
 
 ### データプレーンが仮想サーバーの場合
 

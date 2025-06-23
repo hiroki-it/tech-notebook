@@ -1077,7 +1077,7 @@ ArgoCD
 Cluster
 ```
 
-- ArgoCDの送信元のAWS ALBにWAFを紐づけ、特定のIPアドレス以外を `403`ステータス (認可エラー) にする。
+- ArgoCDの送信元のAWS ALBにAWS WAFを紐づけ、特定のIPアドレス以外を `403`ステータス (認可エラー) にする。
 - ArgoCDのログインにSSOを使用し、利用者以外を `401`ステータス (認証エラー) にする
 
 ### ArgoCD ➡️ (アクセス制御) ➡️ Cluster の部分
