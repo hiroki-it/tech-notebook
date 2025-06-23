@@ -40,7 +40,7 @@ export async function action({request}) {
 
 ### アーキテクチャ
 
-SSRのアプリケーションで以下の順に処理を実行し、データの取得からブラウザレンダリングまでを実施する。
+SSRのアプリケーションで以下の順に処理を実行し、データの取得からレンダリングまでを実施する。
 
 1. ローダー: レンダリング前、APIからデータを取得する。
 2. コンポーネント: レンダリング処理を実行する。
@@ -673,7 +673,7 @@ export default function SomeParent() {
 
 RemixはSSRアプリケーションを作成する。
 
-SSRでは、ブラウザのLocalStorageやSessionStorageを操作できない。
+SSRでは、Web Storage APIと通信できず、ブラウザのLocalStorageやSessionStorageを操作できない。
 
 代わりに、ブラウザのCookie、サーバーのメモリ、サーバー上のファイルなどに資格情報を保存することになる。
 
