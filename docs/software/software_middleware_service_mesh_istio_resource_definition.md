@@ -1558,7 +1558,6 @@ spec:
 > - https://istio.io/latest/docs/tasks/policy-enforcement/rate-limit/#local-rate-limit
 > - https://learncloudnative.com/blog/2022-09-08-ratelimit-istio
 
-
 #### ▼ JWTの同じ`sub`に対して
 
 ```yaml
@@ -1597,12 +1596,7 @@ spec:
                   - entries:
                       - key: "identified_user_daily_limit"
                         value: "%DYNAMIC_METADATA(envoy.filters.http.jwt_authn.jwt_payload.sub)%"
-
 ```
-
-
-
-
 
 ### グローバルレートリミット
 

@@ -467,8 +467,6 @@ waypoint-proxyは、NamespaceかつNodeのリバースプロキシである。
 
 また、マイクロサービスPodが乗りうるNode（またはNodeグループ）に最低一個ずつスケジューリングするよう、waypoint-proxy Podを冗長化しつつAffinityを設定するとよい
 
-
-
 ![istio_ambient-mesh_waypoint-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy_reverse-proxy.png)
 
 > - https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint
