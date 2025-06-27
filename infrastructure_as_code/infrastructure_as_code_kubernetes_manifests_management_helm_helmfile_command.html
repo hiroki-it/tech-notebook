@@ -27796,7 +27796,7 @@ Do<span class="w"> </span>you<span class="w"> </span>really<span class="w"> </sp
 <h3 id="apply">apply<a class="headerlink" href="#apply" title="Permanent link">&para;</a></h3>
 <h4 id="apply_1">▼ apply<a class="headerlink" href="#apply_1" title="Permanent link">&para;</a></h4>
 <p>まず<code>helmfile diff</code>コマンドを実行することにより、この時に差分があれば、<code>helmfile sync</code>コマンドを実行する。</p>
-<p><code>helmfile sync</code>コマンドとは異なり、Helmリリース間に差分がないと、リビジョン番号は更新されない。</p>
+<p><code>helmfile sync</code>コマンドとは異なり、Helmリリース間に差分がないと、リビジョンは更新されない。</p>
 <p>注意点として、Helmの使用と同様にして、CRDのマニフェストは作成はできるが変更はできない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>apply
 
@@ -27921,7 +27921,7 @@ Source:<span class="w"> </span>project/manifests/persistent-volume.yaml
 <h3 id="sync">sync<a class="headerlink" href="#sync" title="Permanent link">&para;</a></h3>
 <h4 id="sync_1">▼ syncとは<a class="headerlink" href="#sync_1" title="Permanent link">&para;</a></h4>
 <p>全てのHelmリリースに関して、<code>helm upgrade --install</code>コマンドを実行する。</p>
-<p><code>helmfile apply</code>コマンドとは異なり、Helmリリース間に差分がなくとも、リビジョン番号を更新する。</p>
+<p><code>helmfile apply</code>コマンドとは異なり、Helmリリース間に差分がなくとも、リビジョンを更新する。</p>
 <p>注意点として、Helmの使用と同様にして、CRDのマニフェストは作成はできるが変更はできない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>sync
 </code></pre></div>
@@ -27973,7 +27973,7 @@ Writing<span class="w"> </span>values<span class="w"> </span>file<span class="w"
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月26日 19:56:34">2025-03-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月27日 15:20:47">2025-06-27</span>
   </span>
 
     
