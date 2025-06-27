@@ -1223,7 +1223,7 @@ Istioの場合、Istioリソースを定義することにより無効なアカ�
 
 注釈
 
-\*62 Introduction. (n.d.). Open Policy Agent. https://www.Open Policy Agent.org/docs/latest/
+\*62 Introduction. (n.d.). Open Policy Agent. https://www.openpolicyagent.org/docs/latest/
 
 <br>
 

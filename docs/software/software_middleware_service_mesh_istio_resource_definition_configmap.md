@@ -1579,7 +1579,7 @@ OpenAgent Policyを外部の認可プロバイダーとして設定する。
 
 **実装例**
 
-> - https://www.Open Policy Agent.org/docs/latest/envoy-tutorial-istio/#2-configure-the-mesh-to-define-the-external-authorizer
+> - https://www.openpolicyagent.org/docs/envoy/tutorial-istio#2-configure-the-mesh-to-define-the-external-authorizer
 
 #### ▼ Keycloakの場合
 
