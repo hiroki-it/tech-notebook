@@ -700,7 +700,7 @@ $ kubectl exec \
     -c istio-proxy \
     -- bash -c "curl http://127.0.0.1:15090/stats/prometheus"
 
-istio_build{component="proxy",tag="<リビジョン番号>"} 1
+istio_build{component="proxy",tag="<リビジョン>"} 1
 
 ...
 

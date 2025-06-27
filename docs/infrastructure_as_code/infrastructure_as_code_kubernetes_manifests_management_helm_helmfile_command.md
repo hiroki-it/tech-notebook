@@ -91,7 +91,7 @@ $ helmfile -e prd -f helmfile.yaml apply --set region=tokyo
 
 まず`helmfile diff`コマンドを実行することにより、この時に差分があれば、`helmfile sync`コマンドを実行する。
 
-`helmfile sync`コマンドとは異なり、Helmリリース間に差分がないと、リビジョン番号は更新されない。
+`helmfile sync`コマンドとは異なり、Helmリリース間に差分がないと、リビジョンは更新されない。
 
 注意点として、Helmの使用と同様にして、CRDのマニフェストは作成はできるが変更はできない。
 
@@ -260,7 +260,7 @@ Source: project/manifests/persistent-volume.yaml
 
 全てのHelmリリースに関して、`helm upgrade --install`コマンドを実行する。
 
-`helmfile apply`コマンドとは異なり、Helmリリース間に差分がなくとも、リビジョン番号を更新する。
+`helmfile apply`コマンドとは異なり、Helmリリース間に差分がなくとも、リビジョンを更新する。
 
 注意点として、Helmの使用と同様にして、CRDのマニフェストは作成はできるが変更はできない。
 

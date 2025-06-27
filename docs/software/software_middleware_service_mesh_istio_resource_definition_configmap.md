@@ -97,9 +97,9 @@ data:
 
 <br>
 
-## 04. istio-mesh-cm (istio-<バージョン値>)
+## 04. istio-<リビジョン>
 
-### istio-mesh-cmとは
+### istio-<リビジョン>とは
 
 Istiodコントロールプレーン (`discovery`コンテナ) のため、全てのistio-proxyにグローバルに設定する変数を管理する。
 
@@ -107,7 +107,7 @@ Istiodコントロールプレーン (`discovery`コンテナ) のため、全�
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -145,7 +145,7 @@ istio-proxyで作成するアクセスログのファイル形式を設定する
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -168,7 +168,7 @@ istio-proxyで作成するアクセスログの出力先を設定する。
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -190,7 +190,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -229,7 +229,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -253,7 +253,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -278,7 +278,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -353,7 +353,7 @@ Envoyを使用してアクセスログを収集する場合、`.mesh.defaultProv
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -382,7 +382,7 @@ Envoyのアクセスログの場合、代わりに`.mesh.accessLogEncoding`キ�
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -396,7 +396,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -420,7 +420,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -441,7 +441,7 @@ istio-proxyでトレースIDとスパンIDを作成するか否かを設定す�
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -461,7 +461,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -484,7 +484,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -505,7 +505,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -526,7 +526,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -543,7 +543,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -570,7 +570,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -605,7 +605,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -675,7 +675,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -698,12 +698,12 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
     defaultConfig:
-      discoveryAddress: istiod-<リビジョン番号>.istio-system.svc:15012
+      discoveryAddress: istiod-<リビジョン>.istio-system.svc:15012
 ```
 
 ```yaml
@@ -712,7 +712,7 @@ kind: ProxyConfig
 metadata:
   name: foo-proxyconfig
 spec:
-  discoveryAddress: istiod-<リビジョン番号>.istio-system.svc:15012
+  discoveryAddress: istiod-<リビジョン>.istio-system.svc:15012
 ```
 
 <br>
@@ -723,7 +723,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -750,7 +750,7 @@ Envoyのアクセスログを、標準出力に出力するのではなく宛先
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -780,7 +780,7 @@ Envoyのメトリクスを、Prometheusにスクレイピングしてもらう�
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -810,7 +810,7 @@ istio-proxyが、必ずマイクロサービスよりも先に起動するか否
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -870,7 +870,7 @@ istio-proxyのコンテナイメージのタイプを設定する。
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -893,7 +893,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -915,7 +915,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -949,7 +949,7 @@ istio-proxyに環境変数を設定する。
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -975,7 +975,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -1006,7 +1006,7 @@ ZipkinとJaegerはトレースコンテキスト仕様が同じであるため�
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -1024,7 +1024,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -1052,7 +1052,7 @@ appラベルがないマイクロサービスのために、canonical名に基�
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -1084,7 +1084,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -1115,7 +1115,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -1138,7 +1138,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -1163,7 +1163,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -1189,7 +1189,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -1225,7 +1225,7 @@ istio-proxyへのリクエストが無くなってから、Envoyのプロセス�
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -1249,7 +1249,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -1278,7 +1278,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -1330,7 +1330,7 @@ ServiceEntryでHTTPリクエストを受信した場合、DNSキャッシュの�
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -1363,7 +1363,7 @@ ServiceEntryでHTTPリクエストを受信した場合、DNSキャッシュの�
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -1412,7 +1412,7 @@ Istio Ingress Gateway (厳密に言うとGateway) は、独自プロトコルを
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -1481,7 +1481,7 @@ Envoyプロセスの接続のドレイン処理前に`5`秒間に待機し、`do
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -1537,15 +1537,18 @@ OAuth2 Proxyを任意の認可プロバイダーの前段に置き、OAuth2 Prox
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
     extensionProviders:
+      # 認可プロバイダーのエイリアス名を設定する
       - name: oauth2-proxy
+        # 認可プロバイダーを設定する
         envoyExtAuthzHttp:
-          service: oauth2-proxy.foo-namespace.svc.cluster.local
-          port: 80
+          service: oauth2-proxy.foo.svc.cluster.local
+          port: 4180
+        # HTTPリクエストに含めるヘッダー
         includeHeadersInCheck:
           - cookie
           - authorization
@@ -1573,9 +1576,30 @@ spec:
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#istio%E3%81%AB%E5%A4%96%E9%83%A8%E8%AA%8D%E5%8F%AF%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1
 
-#### ▼ OpenAgent Policyの場合
+#### ▼ Open Agent Policyの場合
 
-OpenAgent Policyを外部の認可プロバイダーとして設定する。
+Open Agent Policyを外部の認可プロバイダーとして設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-<リビジョン>
+  namespace: istio-system
+data:
+  mesh: |
+    extensionProviders:
+      # 認可プロバイダーのエイリアス名を設定する
+      - name: open-policy-agent
+        # 認可プロバイダーを設定する
+        envoyExtAuthzHttp:
+          service: open-policy-agent.foo.svc.cluster.local
+          port: 9191
+        # HTTPリクエストに含めるヘッダー
+        includeHeadersInCheck:
+          - cookie
+          - authorization
+```
 
 **実装例**
 
@@ -1626,7 +1650,7 @@ datadogエージェントの宛先情報をIstioに登録する必要がある�
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -1714,7 +1738,7 @@ OpenTelemetry Collectorの宛先情報をIstioに登録する必要があるた�
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -1827,7 +1851,7 @@ jaegerエージェントの宛先情報をIstioに登録する必要があるた
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -1904,7 +1928,7 @@ Envoyのアクセスログを設定する。
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   mesh: |
@@ -1944,7 +1968,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-mesh-cm
+  name: istio-<リビジョン>
   namespace: istio-system
 data:
   meshNetworks: |
@@ -1979,7 +2003,7 @@ Istiodコントロールプレーン (`discovery`コンテナ) のため、Istio
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-sidecar-injector-<リビジョン番号>
+  name: istio-sidecar-injector-<リビジョン>
   namespace: istio-system
 data:
   config: |
@@ -2004,7 +2028,7 @@ Istioは、istio-sidecar-injectorの`.values`キーを使用してテンプレ�
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-sidecar-injector-<リビジョン番号>
+  name: istio-sidecar-injector-<リビジョン>
   namespace: istio-system
 data:
   config: |
@@ -2027,13 +2051,13 @@ istio-sidecar-injectorの`.templates.sidecar`キーに出力する値を`values`
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: istio-sidecar-injector-<リビジョン番号>
+  name: istio-sidecar-injector-<リビジョン>
   namespace: istio-system
 data:
   values: |
     { 
       global: { ... }
-      revision: <リビジョン番号>
+      revision: <リビジョン>
       sidecarInjectorWebhook: { ... }
     }
 ```

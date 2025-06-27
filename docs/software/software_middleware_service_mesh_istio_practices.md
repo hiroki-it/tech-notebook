@@ -644,7 +644,7 @@ test_istio:
     # Namespaceのラベルを確認する
     - kubectl get ns -L istio.io/rev
     # istiodチャートをApplyする
-    # ブルー/グリーンデプロイ時に新旧Istiodを並行稼働させるために、helmfile.yamlにリビジョン番号をつける
+    # ブルー/グリーンデプロイ時に新旧Istiodを並行稼働させるために、helmfile.yamlにリビジョンをつける
     - helmfile -e "${ENV}" -f helmfile_istiod_"${ISTIO_NEXT_VERSION//\./-}".yaml apply --skip-crds --skip-diff-on-install
     # istio-baseチャートをApplyする
     - helmfile -e "${ENV}" -f helmfile_istio-base.yaml apply --skip-diff-on-install

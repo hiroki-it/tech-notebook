@@ -831,7 +831,7 @@ $ helm template --atomic . -f foo-values.yaml >| release.yaml
 
 #### ▼ --install
 
-新しいリビジョン番号を作成し、インストール済のHelmリリースをアップグレードする。
+新しいリビジョンを作成し、インストール済のHelmリリースをアップグレードする。
 
 ```bash
 $ helm upgrade --install <Helmリリース名> <チャートへのパス> -f foo-values.yaml
@@ -841,7 +841,7 @@ NAME: <Helmリリース名>
 LAST DEPLOYED: Sat Jan 1 12:00:00 2022
 NAMESPACE: default
 STATUS: deployed
-REVISION: 3 # <---- リビジョン番号が増えていく
+REVISION: 3 # <---- リビジョンが増えていく
 TEST SUITE: None
 ```
 

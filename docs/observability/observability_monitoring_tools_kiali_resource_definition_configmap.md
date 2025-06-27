@@ -237,13 +237,13 @@ data:
         # https://kiali.io/docs/features/security/#masthead-indicator
         enabled: true
       # Istioが使用しているConfigMap名
-      config_map_name: istio-<リビジョン番号>
+      config_map_name: istio-<リビジョン>
       istio_identity_domain: svc.cluster.local
       istio_sidecar_annotation: sidecar.istio.io/status
       istio_status_enabled: true
       root_namespace: istio-system
       # サービスメッシュ全体のヘルスチェックのため、IstioのServiceの宛先情報を設定する。
-      url_service_version: http://istiod-<リビジョン番号>.istio-system.svc.cluster.local:15014/version
+      url_service_version: http://istiod-<リビジョン>.istio-system.svc.cluster.local:15014/version
 ```
 
 > - https://kiali.io/docs/configuration/istio/

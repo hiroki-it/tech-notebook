@@ -130,7 +130,7 @@ metadata:
   name: istio-revision-tag-default
   labels:
     app: sidecar-injector
-    istio.io/rev: <リビジョン番号>
+    istio.io/rev: <リビジョン>
     istio.io/tag: <エイリアス>
 webhooks:
   - name: rev.namespace.sidecar-injector.istio.io
@@ -145,7 +145,7 @@ webhooks:
     # IstiodのServiceの宛先情報を登録する。
     clientConfig:
       service:
-        name: istiod-<リビジョン番号>
+        name: istiod-<リビジョン>
         namespace: istio-system
         # エンドポイント
         path: "/inject"
@@ -194,7 +194,7 @@ kind: ValidatingWebhookConfiguration
 metadata:
   name: istiod-default-validator
   labels:
-    istio.io/rev: <リビジョン番号>
+    istio.io/rev: <リビジョン>
 webhooks:
   # webhook名は完全修飾ドメイン名にする。
   - name: validation.istio.io
@@ -213,7 +213,7 @@ webhooks:
       # webhookサーバーの送信元にあるServiceを登録する。
       service:
         namespace: istio-system
-        name: istiod-<リビジョン番号>
+        name: istiod-<リビジョン>
         port: 443
         path: /validate
       # webhookサーバーをCluster内部に自作する場合は、webhookサーバーに証明書バンドルを登録する。

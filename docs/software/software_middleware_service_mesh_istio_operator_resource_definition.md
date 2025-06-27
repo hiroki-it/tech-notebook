@@ -30,7 +30,7 @@ description: IstioOperator＠Istioの知見を記録しています。
 ```bash
 $ istioctl operator init
 
-Installing operator controller in namespace: istio-operator using image: docker.io/istio/operator:<リビジョン番号>
+Installing operator controller in namespace: istio-operator using image: docker.io/istio/operator:<リビジョン>
 Operator controller will watch namespaces: istio-system
 ✅ Istio operator installed
 ✅ Installation complete

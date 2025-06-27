@@ -163,7 +163,7 @@ $ kubectl get deployment -A
 
 Anthos Service Meshのドキュメントを確認すると、Istioをカナリア方式でアップグレードしている。
 
-Istioのカナリア方式のアップグレードでは、新しいistio-proxyをインジェクションする方法として、`istio.io/rev`キーのリビジョン番号を書き換える方法と、MutatingWebhookConfigurationのエイリアスの紐付けを変更する方法がある。
+Istioのカナリア方式のアップグレードでは、新しいistio-proxyをインジェクションする方法として、`istio.io/rev`キーのリビジョンを書き換える方法と、MutatingWebhookConfigurationのエイリアスの紐付けを変更する方法がある。
 
 Anthos Service Meshのアップグレードでは、何らかの事情でこれらの両方の手順が混じっており、Istioとは方法が若干異なっている。
 
@@ -221,7 +221,7 @@ $ mv asmcli asmcli_1140-0
 
 `(4)`
 
-: 今、現在のIstioのリビジョン番号が`1130-0`だとする。
+: 今、現在のIstioのリビジョンが`1130-0`だとする。
 
 ```bash
 # Deployment
@@ -243,7 +243,7 @@ $ kubectl get mutatingwebhookconfigurations
 
 NAME                                   WEBHOOKS   AGE
 istio-sidecar-injector-1130-0          1          7m56s # 1130-0
-istio-revision-tag-default             1          3m18s # 現在のリビジョン番号 (1130-0) を定義するdefaultタグを持つ
+istio-revision-tag-default             1          3m18s # 現在のリビジョン (1130-0) を定義するdefaultタグを持つ
 ```
 
 `(5)`
@@ -300,7 +300,7 @@ $ kubectl get mutatingwebhookconfigurations
 NAME                                   WEBHOOKS   AGE
 istio-sidecar-injector-1130-0          1          7m56s # 1130-0
 istio-sidecar-injector-1140-0          1          7m56s # 1140-0 (今回のアップグレード先)
-istio-revision-tag-default             1          3m18s # 現在のリビジョン番号 (1130-0) を定義するdefaultタグを持つ
+istio-revision-tag-default             1          3m18s # 現在のリビジョン (1130-0) を定義するdefaultタグを持つ
 ```
 
 > - https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_with_optional_features
@@ -370,7 +370,7 @@ metadata:
 
      これらのキーはコンフリクトを発生させるため、どちらか一方しか使用できず、Anthosでは`istio.io/rev`キーを推奨している。
 
-     もしGitOpsツール (例：ArgoCD、Flux) でNamespaceを管理している場合は、`kubectl label`コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。
+     もしGitOpsツール (例：ArgoCD、Flux) でNamespaceを管理している場合は、`kubectl label`コマンドの代わりに、GitHub上でリビジョンを変更することになる。
 
 ```bash
 # Istio Ingress Gatewayの特定のNamespace
@@ -410,7 +410,7 @@ $ kubectl rollout restart deployment istio-ingressgateway -n istio-ingress
      代わりに、`istioctl proxy-status`コマンドでも良い。
 
 ```bash
-# 新バージョンのリビジョン番号：asm-1140-0
+# 新バージョンのリビジョン：asm-1140-0
 $ kubectl get pod \
     -n istio-ingress \
     -o jsonpath={.items[*].spec.containers[*].image} | sed 's/ /\n/g' && echo
@@ -442,7 +442,7 @@ $ kubectl rollout restart deployment app-deployment -n app
      代わりに、`istioctl proxy-status`コマンドでも良い。
 
 ```bash
-# 新バージョンのリビジョン番号：asm-1140-0
+# 新バージョンのリビジョン：asm-1140-0
 $ kubectl get pod \
     -n app \
     -o jsonpath={.items[*].spec.containers[*].image} | sed 's/ /\n/g' && echo
@@ -478,7 +478,7 @@ metadata:
   labels:
     app: istiod
     istio: pilot
-    istio.io/rev: asm-1140-0 # リビジョン番号を更新する。
+    istio.io/rev: asm-1140-0 # リビジョンを更新する。
     release: istio
   name: istiod
   namespace: istio-system
@@ -502,12 +502,12 @@ spec:
       targetPort: 15014
   selector:
     app: istiod
-    istio.io/rev: asm-1140-0 # リビジョン番号を更新する。
+    istio.io/rev: asm-1140-0 # リビジョンを更新する。
 ```
 
 `(16)`
 
-: MutatingWebhookConfigurationの`.metadata.labels`キーにて、エイリアスに紐づく現在のリビジョン番号を確認する。
+: MutatingWebhookConfigurationの`.metadata.labels`キーにて、エイリアスに紐づく現在のリビジョンを確認する。
 
 ```bash
 # アップグレード前に、istiocltコマンドで確認
@@ -541,7 +541,7 @@ $ ./output/asm-1.14/istioctl tag set default --revision asm-1140-0 --overwrite
 
 `(18)`
 
-: MutatingWebhookConfigurationの`.metadata.labels`キーにて、エイリアスに紐づくリビジョン番号を変更できたことを確認する。
+: MutatingWebhookConfigurationの`.metadata.labels`キーにて、エイリアスに紐づくリビジョンを変更できたことを確認する。
 
 ```bash
 # アップグレード前に、istiocltコマンドで確認してみる。
@@ -570,7 +570,7 @@ istio.io/tag: default
 $ kubectl get all -n istio-system
 
 
-# 旧バージョンのリビジョン番号：asm-1130-0
+# 旧バージョンのリビジョン：asm-1130-0
 $ kubectl delete Service,Deployment,HorizontalPodAutoscaler,PodDisruptionBudget istiod-asm-1130-0 -n istio-system --ignore-not-found=true
 
 
@@ -603,7 +603,7 @@ $ kubectl get validatingwebhookconfiguration -n istio-system
 $ kubectl get IstioOperator -n istio-system
 
 
-# 旧バージョンのリビジョン番号：asm-1130-0
+# 旧バージョンのリビジョン：asm-1130-0
 $ kubectl delete IstioOperator installed-state-asm-1130-0 -n istio-system
 
 

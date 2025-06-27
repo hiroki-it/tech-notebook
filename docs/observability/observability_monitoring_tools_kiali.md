@@ -150,7 +150,7 @@ data:
 
 Kialiのバージョンは、Istioと対応関係にある。
 
-Kialiのバージョンに応じたリビジョン番号のIstioを指定する。
+Kialiのバージョンに応じたリビジョンのIstioを指定する。
 
 > - https://kiali.io/docs/installation/installation-guide/prerequisites/#version-compatibility
 

@@ -59,16 +59,16 @@ kind: Deployment
 metadata:
   labels:
     app: istiod
-    istio.io/rev: <リビジョン番号>
+    istio.io/rev: <リビジョン>
     release: istiod
-  name: istiod-<リビジョン番号>
+  name: istiod-<リビジョン>
   namespace: istio-system
 spec:
   replicas: 2
   selector:
     matchLabels:
       app: istiod
-      istio.io/rev: <リビジョン番号>
+      istio.io/rev: <リビジョン>
   strategy:
     rollingUpdate:
       maxSurge: 100%
@@ -78,7 +78,7 @@ spec:
     metadata:
       labels:
         app: istiod
-        istio.io/rev: <リビジョン番号>
+        istio.io/rev: <リビジョン>
     spec:
       containers:
         - args:
@@ -93,7 +93,7 @@ spec:
             - --keepaliveMaxServerConnectionAge
             - 30m
           # pilotイメージ
-          image: docker.io/istio/pilot:<リビジョン番号>
+          image: docker.io/istio/pilot:<リビジョン>
           imagePullPolicy: IfNotPresent
           # discoveryコンテナ
           name: discovery
@@ -111,7 +111,7 @@ spec:
           env:
             # 15012番ポートの開放
             - name: ISTIOD_ADDR
-              value: istiod-<リビジョン番号>.istio-system.svc:15012 # 15012番ポートの開放
+              value: istiod-<リビジョン>.istio-system.svc:15012 # 15012番ポートの開放
 
           ...
 
@@ -145,11 +145,11 @@ Deployment配下のPodには、HorizontalPodAutoscalerが設定されている�
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: istiod-<リビジョン番号>
+  name: istiod-<リビジョン>
   namespace: istio-system
   labels:
     app: istiod
-    istio.io/rev: <リビジョン番号>
+    istio.io/rev: <リビジョン>
     release: istiod
 spec:
   maxReplicas: 5
@@ -157,7 +157,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: istiod-<リビジョン番号>
+    name: istiod-<リビジョン>
   targetCPUUtilizationPercentage: 80
 ```
 
@@ -173,12 +173,12 @@ istio-proxyからのリクエストを、Istiodコントロールプレーン (D
 apiVersion: v1
 kind: Service
 metadata:
-  name: istiod-<リビジョン番号>
+  name: istiod-<リビジョン>
   namespace: istio-system
   labels:
     app: istiod
     istio: pilot
-    istio.io/rev: <リビジョン番号>
+    istio.io/rev: <リビジョン>
     release: istiod
 spec:
   ports:
@@ -205,7 +205,7 @@ spec:
   selector:
     # ルーティング先のistiodコントールプレーン (Deployment配下のPod)
     app: istiod
-    istio.io/rev: <リビジョン番号>
+    istio.io/rev: <リビジョン>
 ```
 
 <br>
@@ -227,7 +227,7 @@ metadata:
   name: istio-revision-tag-default
   labels:
     app: sidecar-injector
-    istio.io/rev: <リビジョン番号>
+    istio.io/rev: <リビジョン>
     istio.io/tag: <エイリアス>
 webhooks:
   - name: rev.namespace.sidecar-injector.istio.io
@@ -241,7 +241,7 @@ webhooks:
     # IstiodのServiceの宛先情報を登録する。
     clientConfig:
       service:
-        name: istiod-<リビジョン番号>
+        name: istiod-<リビジョン>
         namespace: istio-system
         # エンドポイント
         path: "/inject"
@@ -435,7 +435,7 @@ tcp6       0      0 :::15014                :::*                    LISTEN      
 
 ```bash
 # ポートフォワーディングを実行する。
-$ kubectl port-forward svc/istiod-<リビジョン番号> 15014 -n istio-system
+$ kubectl port-forward svc/istiod-<リビジョン> 15014 -n istio-system
 
 $ go tool pprof -http=:8080 127.0.0.1:15014/debug/pprof/heap
 
@@ -512,7 +512,7 @@ istio-proxyはこれを受信し、pilot-agentはEnvoyにこれらを紐付け�
 
 ```bash
 # ポートフォワーディングを実行する。
-$ kubectl port-forward svc/istiod-<リビジョン番号> 15014 -n istio-system
+$ kubectl port-forward svc/istiod-<リビジョン> 15014 -n istio-system
 
 # デバッグダッシュボードにリクエストを送信する。
 $ curl http://127.0.0.1:15014/debug
@@ -525,7 +525,7 @@ $ curl http://127.0.0.1:15014/debug
 
 ### `15017`番
 
-`discovery`コンテナの`15017`番ポートでは、Istioの`istiod-<リビジョン番号>`というServiceからのポートフォワーディングを待ち受け、`discovery`コンテナ内のプロセスに渡す。AdmissionReviewを含むレスポンスを返信する。
+`discovery`コンテナの`15017`番ポートでは、Istioの`istiod-<リビジョン>`というServiceからのポートフォワーディングを待ち受け、`discovery`コンテナ内のプロセスに渡す。AdmissionReviewを含むレスポンスを返信する。
 
 <br>
 
@@ -541,7 +541,7 @@ Podであれば、`.spec.containers[*].args`オプションを使用する。
 apiVersion: v1
 kind: Pod
 metadata:
-  name: istiod-<リビジョン番号>
+  name: istiod-<リビジョン>
   namespace: istio-system
 spec:
   containers:

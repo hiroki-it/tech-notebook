@@ -549,7 +549,7 @@ data:
 URLの指定の方法として、以下がある。
 
 - GitHubのRawファイルのURL (`https://raw.githubusercontent.com/example/foo.json`)
-- GrafanaのコミュニティーのAPI (`https://grafana.com/api/dashboards/<ID>/revisions/<リビジョン番号>/download`)
+- GrafanaのコミュニティーのAPI (`https://grafana.com/api/dashboards/<ID>/revisions/<リビジョン>/download`)
 
 ```yaml
 apiVersion: v1

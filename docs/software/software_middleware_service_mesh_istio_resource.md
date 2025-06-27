@@ -222,7 +222,7 @@ spec:
         - --proxyLogLevel=warning
         - --proxyComponentLogLevel=misc:error
         - --log_output_level=default:info
-      image: docker.io/istio/proxyv2:<リビジョン番号>
+      image: docker.io/istio/proxyv2:<リビジョン>
       name: istio-proxy
       # 待ち受けるポート番号の仕様
       # コンテナの公開ポートがspec.containers[*].portsキーに定義されていなくても問題ない。

@@ -178,7 +178,7 @@ $ istioctl install -y --set profile=demo
 
 #### ▼ `revision` (基本的に必須)
 
-インストールされるKubernetesリソース名や、`.metadata.labels.istio.io/rev`キーにリビジョン番号をつけて、Istioをインストールする。
+インストールされるKubernetesリソース名や、`.metadata.labels.istio.io/rev`キーにリビジョンをつけて、Istioをインストールする。
 
 バージョンは、ケバブケースで設定する必要がある。
 
@@ -186,13 +186,13 @@ $ istioctl install -y --set profile=demo
 $ istioctl install -y --set revision=1-10-0
 ```
 
-カナリアアップグレード時に使用するが、このオプションを使用しないとKubernetesリソース名にリビジョン番号がつかないため、インストール時にも使用した方が良い。
+カナリアアップグレード時に使用するが、このオプションを使用しないとKubernetesリソース名にリビジョンがつかないため、インストール時にも使用した方が良い。
 
 ```bash
 # revisionオプションを使用しない場合
 $ istioctl install -y
 
-# Kubernetesリソース名にリビジョン番号がつかない
+# Kubernetesリソース名にリビジョンがつかない
 $ kubectl get mutatingwebhookconfiguration
 
 NAME                              WEBHOOKS   AGE
@@ -200,7 +200,7 @@ istio-revision-tag-default        4          15s
 istio-sidecar-injector            4          23s
 ```
 
-インストールするIstioは`istioctl`コマンドのバージョンで決まるため、`revision`キーのリビジョン番号と実際にインストールするIstioのバージョンは無関係である。
+インストールするIstioは`istioctl`コマンドのバージョンで決まるため、`revision`キーのリビジョンと実際にインストールするIstioのバージョンは無関係である。
 
 執筆時点 (2023/02/23) で、`istioctl`コマンドを使用してエイリアスを設定する方法はなく、自動的に`default`になってしまう。
 
@@ -301,7 +301,7 @@ IstioOperatorを`istio-system`に作成する。
 ```bash
 $ istioctl operator init
 
-Installing operator controller in namespace: istio-operator using image: docker.io/istio/operator:<リビジョン番号>
+Installing operator controller in namespace: istio-operator using image: docker.io/istio/operator:<リビジョン>
 Operator controller will watch namespaces: istio-system
 ✅ Istio operator installed
 ✅ Installation complete
@@ -891,7 +891,7 @@ $ istioctl tag generate default --revision 1-0-1
 
 MutatingWebhookConfigurationの`.metadata.labels`キーにあるエイリアス (`istio.io/tag`キーの値) と、エイリアスの実体 (`.metadata.labels.istio.io/rev`キーの値) を取得する。
 
-カナリアアップグレード前に、現在のバージョンのエイリアスとリビジョン番号 (現在のIstioのバージョンタグ) を確認するために使用する。
+カナリアアップグレード前に、現在のバージョンのエイリアスとリビジョン (現在のIstioのバージョンタグ) を確認するために使用する。
 
 ```bash
 # アップグレード前に、istioctlコマンドで確認してみる。
@@ -951,7 +951,7 @@ $ kubectl get mutatingwebhookconfigurations
 
 NAME                               WEBHOOKS   AGE
 istio-sidecar-injector-1.10.0       1          7m56s # 1.10.0
-istio-revision-tag-default          1          7m56s # 現在のリビジョン番号 (1.10.0) 定義するdefaultタグを持つ
+istio-revision-tag-default          1          7m56s # 現在のリビジョン (1.10.0) 定義するdefaultタグを持つ
 ```
 
 `(3)`
@@ -989,12 +989,12 @@ $ kubectl get mutatingwebhookconfigurations
 NAME                                WEBHOOKS   AGE
 istio-sidecar-injector-1.10.0       1          7m56s # 1.10.0
 istio-sidecar-injector-1.11.0       1          7m56s # 1.11.0 (今回のアップグレード先)
-istio-revision-tag-default          1          7m56s # 現在のリビジョン番号 (1.10.0) 定義するdefaultタグを持つ
+istio-revision-tag-default          1          7m56s # 現在のリビジョン (1.10.0) 定義するdefaultタグを持つ
 ```
 
 `(3)`
 
-: エイリアス (`istio.io/tag`キーの値) を指定して、リビジョン番号を書き換える。
+: エイリアス (`istio.io/tag`キーの値) を指定して、リビジョンを書き換える。
 
      これにより、`istio-revision-tag-default`の`default`タグの値が変更される。
 
@@ -1009,12 +1009,12 @@ $ kubectl get mutatingwebhookconfigurations
 NAME                                WEBHOOKS   AGE
 istio-sidecar-injector-1.10.0       1          7m56s # 1.10.0
 istio-sidecar-injector-1.11.0       1          7m56s # 1.11.0 (今回のアップグレード先)
-istio-revision-tag-default          1          7m56s # 現在のリビジョン番号 (1.11.0) 定義するdefaultタグを持つ
+istio-revision-tag-default          1          7m56s # 現在のリビジョン (1.11.0) 定義するdefaultタグを持つ
 ```
 
 `(4)`
 
-: また、`istioctl tag list`コマンドでも、リビジョン番号が`v1.10.0`になったことを確認できる。
+: また、`istioctl tag list`コマンドでも、リビジョンが`v1.10.0`になったことを確認できる。
 
 ```bash
 $ istioctl tag list
