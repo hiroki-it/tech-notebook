@@ -53,7 +53,7 @@ istio-iptablesは、istio-proxyを持つPod内のネットワークの経路を�
 
 ```bash
 # istio-initコンテナの起動時に実行する。
-$ istio-iptables \
+$ pilot-agent istio-iptables \
     -p 15001 \
     -z 15006 \
     -u 1337 \
@@ -723,6 +723,24 @@ istio-proxyの起動時に引数として渡す。
 Podであれば、`.spec.containers[*].args`オプションを使用する。
 
 <br>
+
+### proxy
+
+#### ▼ router
+
+istio-proxyをメッシュゲートウェイ（Istio Ingress GAteway、Istio Egress Gateway）として実行する。
+
+```bash
+$ pilot-agent proxy router
+```
+
+#### ▼ sidecar
+
+istio-proxyをサイドカーとして実行する。
+
+```bash
+$ pilot-agent proxy sidecar
+```
 
 ### wait
 

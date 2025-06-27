@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "software/software_middleware_service_mesh_istio_ambient_data_plane.md",
+                "file": "security/security_auth_authorization_provider_open_policy_agent.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "software_middleware_service_mesh_istio_ambient_data_plane"
+              "title": "security_auth_authorization_provider_open_policy_agent"
             }
           }
         ]
@@ -53,8 +53,8 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "アンビエント",
-                "matchingCase": true,
+                "query": "openpo",
+                "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": false,
                 "extraContext": false,
@@ -74,11 +74,12 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 245.5
   },
   "right": {
     "id": "488105a2fc65fb1f",
@@ -142,13 +143,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "software/software_middleware_service_mesh_istio_ambient_data_plane.md",
+                "file": "security/security_auth_authorization_provider_open_policy_agent.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "software_middleware_service_mesh_istio_ambient_data_planeのアウトライン"
+              "title": "security_auth_authorization_provider_open_policy_agentのアウトライン"
             }
           }
         ],
@@ -168,8 +169,26 @@
       "command-palette:コマンドパレットを開く": false
     }
   },
-  "active": "a85a35cc6df77bd4",
+  "active": "0023a13b051e254a",
   "lastOpenFiles": [
+    "software_development_methodology/software_development_product_management_project_management_negotiation.md",
+    "software/software_middleware_service_mesh_istio.md",
+    "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
+    "software/software_application_architecture_microservices_services_auth.md",
+    "software/software_middleware_service_mesh_istio_resource_definition.md",
+    "cloud_computing/cloud_computing_aws_resource_lambda_function.md",
+    "devops/devops_cicd_cd_argocd_practices.md",
+    "security/security_auth_authentication_artifacts_jwt.md",
+    "security/security_auth_authentication_artifacts.md",
+    "security/index.md",
+    "software/software_middleware_security_keycloak.md",
+    "language/draft/language_javascript_package_react_auth.md",
+    "software/software_middleware_service_mesh_istio_resource.md",
+    "software/software_middleware_service_mesh_istio_sidecar_data_plane.md",
+    "software/software_middleware_service_mesh_istio_sidecar_control_plane.md",
+    "software/software_middleware_service_mesh_istio_command.md",
+    "無題のフォルダ",
+    "software/software_middleware_service_mesh_istio_ambient_data_plane.md",
     "devops/draft/devops_cicd_auto_review_ai_pr_agent.md",
     "devops/draft/devops_cicd_auto_review_ai_context.md",
     "devops/draft/devops_cicd_auto_review_pr_agent.md",
@@ -178,24 +197,7 @@
     "language/language_javascript_logic_browser_rendering.md",
     "language/language_javascript_package_react.md",
     "software/software_application_architecture_frontend.md",
-    "software/software_application_architecture_microservices_services_auth.md",
-    "security/security_auth_authentication_artifacts.md",
     "security/security_network.md",
-    "infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb_resource_definition.md",
-    "devops/devops_cicd_cd_argocd_practices.md",
-    "cloud_computing/cloud_computing_aws_practices_security_packet_payload.md",
-    "cloud_computing/cloud_computing_aws_resource_waf.md",
-    "software/software_middleware_service_mesh_istio_resource_definition.md",
-    "infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_minikube_command.md",
-    "devops/draft/devops_cicd_cd_pipecd.md",
-    "software/software_middleware_service_mesh_istio_resource.md",
-    "software/software_middleware_service_mesh_istio_sidecar_data_plane.md",
-    "software/software_application_architecture_microservices_cloudnative.md",
-    "observability/observability_monitoring_tools_prometheus_exporter.md",
-    "software/draft/software_middleware_database_nosqldb_redis_conf.md",
-    "software/software_middleware_database_nosqldb_redis_command.md",
-    "software/software_middleware_database_nosqldb.md",
-    "cloud_computing/cloud_computing_aws_resource_ec2.md",
     "無題のファイル.canvas",
     "0-2_まえがき.pdf",
     "Untitled.canvas"

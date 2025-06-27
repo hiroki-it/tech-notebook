@@ -1542,7 +1542,7 @@ metadata:
 data:
   mesh: |
     extensionProviders:
-      - name: OAuth2 Proxy
+      - name: oauth2-proxy
         envoyExtAuthzHttp:
           service: oauth2-proxy.foo-namespace.svc.cluster.local
           port: 80
@@ -1579,7 +1579,7 @@ OpenAgent Policyを外部の認可プロバイダーとして設定する。
 
 **実装例**
 
-> - https://www.openpolicyagent.org/docs/latest/envoy-tutorial-istio/#2-configure-the-mesh-to-define-the-external-authorizer
+> - https://www.Open Policy Agent.org/docs/latest/envoy-tutorial-istio/#2-configure-the-mesh-to-define-the-external-authorizer
 
 #### ▼ Keycloakの場合
 

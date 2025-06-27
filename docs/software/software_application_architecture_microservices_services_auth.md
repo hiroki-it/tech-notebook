@@ -230,7 +230,7 @@ APIゲートウェイは、認証を集中的に管理し、認証とアクセ�
 
 #### ▼ 集中パターンとは
 
-認可スコープを定義する認可サービス (例：自前、OpenPolicyAgentなど) を`1`個だけ配置し、認可処理を実行する。
+認可スコープを定義する認可サービス (例：自前、Open Policy Agentなど) を`1`個だけ配置し、認可処理を実行する。
 
 ![microservices_authorization_centralized-authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_centralized-authorization.png)
 

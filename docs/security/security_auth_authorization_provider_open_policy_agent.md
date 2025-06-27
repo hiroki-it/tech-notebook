@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】OpenPolicyAgent＠認可プロバイダー
-description: OpenPolicyAgent＠認可プロバイダーの知見を記録しています。
+title: 【IT技術の知見】Open Policy Agent＠認可プロバイダー
+description: Open Policy Agent＠認可プロバイダーの知見を記録しています。
 ---
 
-# OpenPolicyAgent＠認可プロバイダー
+# Open Policy Agent＠認可プロバイダー
 
 ## はじめに
 
@@ -13,11 +13,11 @@ description: OpenPolicyAgent＠認可プロバイダーの知見を記録して�
 
 <br>
 
-## 01. OpenPolicyAgentの仕組み
+## 01. Open Policy Agentの仕組み
 
 ### アーキテクチャ
 
-OpenPolicyAgentは、OpenPolicyエージェント、`rego`ファイル、DB、といったコンポーネントから構成される。
+Open Policy Agentは、Open Policy Agent、`rego`ファイル、DB、といったコンポーネントから構成される。
 
 ![open-policy-agent_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-policy-agent_architecture.png)
 
@@ -26,9 +26,9 @@ OpenPolicyAgentは、OpenPolicyエージェント、`rego`ファイル、DB、�
 
 <br>
 
-### OpenPolicyエージェント
+### Open Policy Agent
 
-OpenPolicyエージェントは、`rego`ファイルのロジックに基づいて、boolean値を返却する。
+Open Policy Agentは、`rego`ファイルのロジックに基づいて、boolean値を返却する。
 
 返却されたboolean値を使用して、クライアント側 (例：アプリケーション、kube-apiserver) で認可スコープ内の処理を実行する。
 
@@ -58,7 +58,7 @@ OpenPolicyエージェントは、`rego`ファイルのロジックに基づい�
 
 アプリケーションの認可スコープ定義の責務を認可サービスとして切り分ける。
 
-アプリケーションはOpenPolicyAgentにリクエストを送信し、OpenPolicyAgentは認可スコープに応じてboolean値を返却する。
+アプリケーションはOpen Policy Agentにリクエストを送信し、Open Policy Agentは認可スコープに応じてboolean値を返却する。
 
 返却されたboolean値を使用して、アプリケーションは認可スコープ内の処理を実行する。
 
@@ -79,7 +79,7 @@ OpenPolicyエージェントは、`rego`ファイルのロジックに基づい�
 
 `(2)`
 
-: アプリケーションは、OpenPolicyエージェントに資格情報を送信し、資格情報をDBに作成する。
+: アプリケーションは、Open Policy Agentに資格情報を送信し、資格情報をDBに作成する。
 
 ```bash
 $ curl \
@@ -124,7 +124,7 @@ allow {
 
 `(4)`
 
-: アプリケーションは、OpenPolicyエージェントに`rego`ファイルを送信し、認可スコープ定義をDBに作成する。
+: アプリケーションは、Open Policy Agentに`rego`ファイルを送信し、認可スコープ定義をDBに作成する。
 
 ```bash
 $ curl \
@@ -159,9 +159,9 @@ $ curl \
 
 `(6)`
 
-: アプリケーションは、aliceアカウントの参照権限の有無をOpenPolicyエージェントにリクエストを送信する。
+: アプリケーションは、aliceアカウントの参照権限の有無をOpen Policy Agentにリクエストを送信する。
 
-     OpenPolicyエージェントは、アプリケーションに`true`を返却する。
+     Open Policy Agentは、アプリケーションに`true`を返却する。
 
 ```bash
 $ curl \
@@ -183,9 +183,9 @@ $ curl \
 
 これは認可ツールではなく、マニフェストのコード規約違反を検知するPaCツールである。
 
-内部的にOpenPolicyAgentを使用して、Kubernetesのマニフェストを検証する。
+内部的にOpen Policy Agentを使用して、Kubernetesのマニフェストを検証する。
 
-kube-apiserverのvalidating-admissionステップ時に、open-policy-agent-gatekeeperのwebhookサーバーにAdmissionReviewのリクエストが送信され、open-policy-agent-gatekeeperの持つOpenPolicyAgentの処理を発火させる。
+kube-apiserverのvalidating-admissionステップ時に、open-policy-agent-gatekeeperのwebhookサーバーにAdmissionReviewのリクエストが送信され、open-policy-agent-gatekeeperの持つOpen Policy Agentの処理を発火させる。
 
 そのため、GitOpsのCDパイプライン上にバリデーションを実行できる。
 

@@ -53,6 +53,6 @@ hide:
   > - ##### [︎認可](https://hiroki-it.github.io/tech-notebook/security/security_auth_authorization.html)
   > - ##### [OAuth](https://hiroki-it.github.io/tech-notebook/security/security_auth_authorization_oauth.html)
   > - ##### <u>認可プロバイダー</u>
-  >   > - ##### [OpenPolicyAgent](https://hiroki-it.github.io/tech-notebook/security/security_auth_authorization_provider_open_policy_agent.html)
+  >   > - ##### [Open Policy Agent](https://hiroki-it.github.io/tech-notebook/security/security_auth_authorization_provider_open_policy_agent.html)
 
 <br>
