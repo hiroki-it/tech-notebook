@@ -68,7 +68,7 @@ module "foo_function" {
 
   service_account_email = "foo-cloudfunction@*****.iam.gserviceaccount.com"
 
-  // Cloud　Pub/SubがトリガーとなってCloud Run Functionsを実行する
+  // Google Cloud Pub/SubがトリガーとなってCloud Run Functionsを実行する
   event_trigger = {
     event_type = "providers/cloud.pubsub/eventTypes/topic.publish"
     resource   = google_pubsub_topic.foo_function.id

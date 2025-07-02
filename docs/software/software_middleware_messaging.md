@@ -27,6 +27,8 @@ description: メッセージング系ミドルウェアの知見を記録して�
 
 #### ▼ プッシュベース
 
+記入中...
+
 <br>
 
 ### パブリッシュ−サブスクライブパターン
@@ -107,20 +109,39 @@ description: メッセージング系ミドルウェアの知見を記録して�
 
 ### メッセージブローカー
 
-記入中...
+- Apache Kafka
+- AWS SNS
+- Google Cloud Pub/Sub
+- RabbitMQ
 
 <br>
 
 ### メッセージキュー
 
-記入中...
+- AWS SQS
+- EMQX
 
 <br>
 
 ### イベントバス
 
-記入中...
+- AWS EventBridge
+- CloudEvents
 
 > - https://www.akamai.com/glossary/what-is-an-event-bus
+
+<br>
+
+## 04. メッセージに使用するプロトコル
+
+| プロトコル          | 通信方式                     | 対応するメッセージ仲介システム例       | 一般的 |
+| ------------------- | ---------------------------- | -------------------------------------- | ------ |
+| AMQP                | バイナリ                     | RabbitMQ                               | ✅     |
+| MQTT                | バイナリ                     | EMQX                                   | ✅     |
+| Kafka独自プロトコル | バイナリ                     | Apache Kafka                           | ✅     |
+| STOMP               | テキスト                     | RabbitMQ                               |        |
+| HTTP/1.1、Webhook   | テキスト (例：JSON、XMLなど) | AWS SQS、AWS SNS、Google Cloud Pub/Sub |        |
+| HTTP/2 (例：gRPC)   | バイナリ (例：Protocolbuf)   | 調査中...                              |        |
+| WebSocket           | テキスト、バイナリ           | 調査中...                              |        |
 
 <br>
