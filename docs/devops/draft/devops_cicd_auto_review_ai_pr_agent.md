@@ -62,7 +62,35 @@ pr_agent:
 
 <br>
 
-## 02. configセクション
+## 02. コマンド
+
+### /describe
+
+変更内容から、自動的にMRの種別や変更内容などをdescriptionに記載する。
+
+### /review
+
+変更したコードの問題点やセキュリティ的な脆弱性などをレビューし、PRにコメントする。
+
+### /improve
+
+コードの改善点をMRにコメントする。
+
+### /ask <質問内容>
+
+PR全体や特定の行について質問する。
+
+### /config
+
+現在のpr-agentの設定を出力する。
+
+### /help
+
+pr-agentの使い方を出力する。
+
+<br>
+
+## 03. configセクション
 
 ```toml
 [config]
@@ -84,7 +112,7 @@ log_level="INFO"
 
 <br>
 
-## 03. pr_descriptionセクション
+## 04. pr_descriptionセクション
 
 ```toml
 [pr_description]
@@ -97,7 +125,7 @@ extra_instructions="""\
 
 <br>
 
-## 04. pr_reviewerセクション
+## 05. pr_reviewerセクション
 
 ```toml
 [pr_reviewer]
@@ -117,7 +145,7 @@ persistent_comment=true
 
 <br>
 
-## 05. pr_code_suggestionsセクション
+## 06. pr_code_suggestionsセクション
 
 ```toml
 [pr_code_suggestions]

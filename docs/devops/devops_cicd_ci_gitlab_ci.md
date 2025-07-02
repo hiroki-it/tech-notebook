@@ -118,6 +118,12 @@ trigger_upstream_pipeline:
 
 <br>
 
+### Webhook
+
+MRの作成や更新のタイミングで、外部サービスのAPIをコールできる。
+
+<br>
+
 ## 04. Global
 
 ### 予約変数

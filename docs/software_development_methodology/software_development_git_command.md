@@ -27,7 +27,21 @@ description: コマンド@Gitの知見を記録しています。
 
 作業中のローカルブランチとリモート追跡ブランチを取得する。
 
+```bash
+$ git branch --all
+```
+
 <br>
+
+### branch -d
+
+マージ済みのローカルブランチを削除する。
+
+```bash
+$ git branch | xargs git branch -d
+```
+
+> - https://qiita.com/mather314/items/a1536c52a2eb0426b2b5
 
 ### branch -M
 
