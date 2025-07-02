@@ -27064,36 +27064,105 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-config" class="md-nav__link">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      02. configセクション
+      02. コマンド
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. コマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#describe" class="md-nav__link">
+    <span class="md-ellipsis">
+      /describe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#review" class="md-nav__link">
+    <span class="md-ellipsis">
+      /review
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#improve" class="md-nav__link">
+    <span class="md-ellipsis">
+      /improve
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ask" class="md-nav__link">
+    <span class="md-ellipsis">
+      /ask &lt;質問内容&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    <span class="md-ellipsis">
+      /config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#help" class="md-nav__link">
+    <span class="md-ellipsis">
+      /help
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. configセクション
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-pr_description" class="md-nav__link">
+  <a href="#04-pr_description" class="md-nav__link">
     <span class="md-ellipsis">
-      03. pr_descriptionセクション
+      04. pr_descriptionセクション
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-pr_reviewer" class="md-nav__link">
+  <a href="#05-pr_reviewer" class="md-nav__link">
     <span class="md-ellipsis">
-      04. pr_reviewerセクション
+      05. pr_reviewerセクション
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#05-pr_code_suggestions" class="md-nav__link">
+  <a href="#06-pr_code_suggestions" class="md-nav__link">
     <span class="md-ellipsis">
-      05. pr_code_suggestionsセクション
+      06. pr_code_suggestionsセクション
     </span>
   </a>
   
@@ -27174,7 +27243,21 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-config">02. configセクション<a class="headerlink" href="#02-config" title="Permanent link">&para;</a></h2>
+<h2 id="02">02. コマンド<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="describe">/describe<a class="headerlink" href="#describe" title="Permanent link">&para;</a></h3>
+<p>変更内容から、自動的にMRの種別や変更内容などをdescriptionに記載する。</p>
+<h3 id="review">/review<a class="headerlink" href="#review" title="Permanent link">&para;</a></h3>
+<p>変更したコードの問題点やセキュリティ的な脆弱性などをレビューし、PRにコメントする。</p>
+<h3 id="improve">/improve<a class="headerlink" href="#improve" title="Permanent link">&para;</a></h3>
+<p>コードの改善点をMRにコメントする。</p>
+<h3 id="ask">/ask &lt;質問内容&gt;<a class="headerlink" href="#ask" title="Permanent link">&para;</a></h3>
+<p>PR全体や特定の行について質問する。</p>
+<h3 id="config">/config<a class="headerlink" href="#config" title="Permanent link">&para;</a></h3>
+<p>現在のpr-agentの設定を出力する。</p>
+<h3 id="help">/help<a class="headerlink" href="#help" title="Permanent link">&para;</a></h3>
+<p>pr-agentの使い方を出力する。</p>
+<p><br></p>
+<h2 id="03-config">03. configセクション<a class="headerlink" href="#03-config" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">[config]</span>
 <span class="c1"># メインで使用するmodel</span>
 <span class="n">model</span><span class="o">=</span><span class="s2">&quot;bedrock/us.anthropic.claude-3-7-sonnet-20250219-v1:0&quot;</span>
@@ -27195,7 +27278,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-pr_description">03. pr_descriptionセクション<a class="headerlink" href="#03-pr_description" title="Permanent link">&para;</a></h2>
+<h2 id="04-pr_description">04. pr_descriptionセクション<a class="headerlink" href="#04-pr_description" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">[pr_description]</span>
 <span class="n">extra_instructions</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
 <span class="s2">- impactレベルは「high」または「medium」のみを使用すること。「low」のimpactレベルを提案することは禁止である。</span>
@@ -27207,7 +27290,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04-pr_reviewer">04. pr_reviewerセクション<a class="headerlink" href="#04-pr_reviewer" title="Permanent link">&para;</a></h2>
+<h2 id="05-pr_reviewer">05. pr_reviewerセクション<a class="headerlink" href="#05-pr_reviewer" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">[pr_reviewer]</span>
 <span class="c1"># extra_instructions=&quot;&quot;&quot;\</span>
 <span class="c1"># ここにカスタムプロンプトを追加する</span>
@@ -27226,7 +27309,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="05-pr_code_suggestions">05. pr_code_suggestionsセクション<a class="headerlink" href="#05-pr_code_suggestions" title="Permanent link">&para;</a></h2>
+<h2 id="06-pr_code_suggestions">06. pr_code_suggestionsセクション<a class="headerlink" href="#06-pr_code_suggestions" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">[pr_code_suggestions]</span>
 <span class="c1"># extra_instructions=&quot;&quot;&quot;\</span>
 <span class="c1"># ここにカスタムプロンプトを追加する</span>
@@ -27262,7 +27345,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月13日 20:19:38">2025-06-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月2日 18:03:14">2025-07-02</span>
   </span>
 
     
