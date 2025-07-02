@@ -331,3 +331,24 @@ X-Rayを使用して、AWS API Gatewayを開始点とした分散トレースを
 > - https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-endpoint-types.html
 
 <br>
+
+## 03. AWS Lambdaオーソライザー
+
+AWS API Gatewayの認証プロキシと中央集権的な認可プロバイダーとして機能する。
+
+IDプロバイダーが別途必要である。
+
+似たものとしてAWS Cognitoオーソライザーがある。
+
+これを使用する場合はAWS Lambdaオーソライザーを使用できない。
+
+![aws_api-gateway_lambda_authorizer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_api-gateway_lambda_authorizer.png)
+
+|      | AWS Cognitoオーソライザー | AWS Lambdaオーソライザー |
+| ---- | :-----------------------: | :----------------------: |
+| 認証 |            ✅             |                          |
+| 認可 |            ✅             |            ✅            |
+
+> - https://dev.classmethod.jp/articles/aws-cdk-api-gateway-lambda-rest-auth0-lambda-authorizer/
+
+<br>

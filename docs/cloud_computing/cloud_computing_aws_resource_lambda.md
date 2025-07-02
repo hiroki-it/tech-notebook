@@ -355,22 +355,3 @@ AWS Lambdaの拡張機能である。
 > - https://github.com/awslabs/aws-lambda-web-adapter
 
 <br>
-
-## 04. AWS Lambdaオーソライザー
-
-認証と認可の両方を実施する。
-
-似たものとしてAWS Cognitoオーソライザーがある。
-
-これを使用する場合はAWS Lambdaオーソライザーを使用できない。
-
-![aws_lambda_authorizer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_lambda_authorizer.png)
-
-|      | AWS Cognitoオーソライザー | AWS Lambdaオーソライザー |
-| ---- | :-----------------------: | :----------------------: |
-| 認証 |            ✅             |                          |
-| 認可 |            ✅             |            ✅            |
-
-> - https://dev.classmethod.jp/articles/aws-cdk-api-gateway-lambda-rest-auth0-lambda-authorizer/
-
-<br>
