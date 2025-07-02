@@ -36,7 +36,7 @@ description: イベントメッシュ＠イベントメッシュ系ミドルウ�
 
 - Solance Event Mesh
 - SAP Event Mesh
-- Knative Event Mesh
+- Knative Eventing
 - Apache EventMesh
 
 > - https://www.slideshare.net/laclefyoshi/apache-eventmesh#13

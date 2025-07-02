@@ -39,7 +39,7 @@ Knativeは、Service、Route、Configuration、Revision、から構成される�
 
 ### イベントメッシュ
 
-Knativeのイベントメッシュは、イベントブローカー、イベントトリガー、からなる。
+Knativeのイベントメッシュ（Knative Eventing）は、イベントブローカー、イベントトリガー、からなる。
 
 イベントブローカーは、送信元マイクロサービスのメッセージ仲介システムのクライアントSDKとして機能する。
 
