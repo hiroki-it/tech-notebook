@@ -52,7 +52,7 @@ TransitGatewayが必要になるため、各AWS VPC上にそのためのルー�
 
 ### IPSec
 
-AWS Site-to-Site VPNを採用した場合、 IPSecを使用してアプリケーションデータだけでなくパケットペイロード全体を暗号化できる。
+AWS Site-to-Site VPNを採用する場合、 IPSecを使用してアプリケーションデータだけでなくパケットペイロード全体を暗号化できる。
 
 > - https://docs.aws.amazon.com/directconnect/latest/UserGuide/encryption-in-transit.html
 > - https://xtech.nikkei.com/it/article/COLUMN/20080609/307119/
