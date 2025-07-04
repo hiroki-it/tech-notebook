@@ -128,7 +128,7 @@ end
 
 def get_trace_id(headers)
 
-  # 受信したリクエストのtraceparent値を取得する
+  # 受信したリクエストのtraceparentヘッダーから値を取得する
   traceparent = headers['traceparent']
 
   if traceparent

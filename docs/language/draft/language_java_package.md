@@ -166,7 +166,7 @@ public class Foo extends Application{
 
     private String getTraceId(HttpHeaders headers) {
 
-        // 受信したリクエストのtraceparent値を取得する
+        // 受信したリクエストのtraceparentヘッダーから値を取得する
         String traceparent = headers.getHeaderString("traceparent");
         if (traceparent != null) {
             // W3C Trace Context

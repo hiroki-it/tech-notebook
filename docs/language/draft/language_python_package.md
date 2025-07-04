@@ -200,7 +200,7 @@ def getFoo():
 
 
 def get_trace_id():
-    # 受信したリクエストのtraceparent値を取得する
+    # 受信したリクエストのtraceparentヘッダーから値を取得する
     traceparent = request.headers.get("traceparent")
     if traceparent:
         # W3C Trace Context

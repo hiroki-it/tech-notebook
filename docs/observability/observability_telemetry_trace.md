@@ -286,6 +286,13 @@ AWS X-Rayが使用するヘッダーを追加する。
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html
 > - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
 
+#### ▼ OpenTelemetry系ヘッダー
+
+| ヘッダー名    | 説明                                                     | 値の例                                                    |
+| ------------- | -------------------------------------------------------- | --------------------------------------------------------- |
+| `traceparent` | トレースIDやスパンIDなどが割り当てられている。           | `00-d34ea2aa01d34d0fda79c6d09b097a83-fd0eae41e95a263c-01` |
+| `trancestate` | 監視バックエンドのベンダー固有の値が割り当てられている。 |                                                           |
+
 <br>
 
 ## 03. スパン

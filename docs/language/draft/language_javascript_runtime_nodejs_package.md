@@ -96,7 +96,7 @@ const server = http.createServer((req, res) => {
 });
 
 function getTraceId(headers) {
-  // 受信したリクエストのtraceparent値を取得する
+  // 受信したリクエストのtraceparentヘッダーから値を取得する
   const traceparent = headers?.["traceparent"];
   if (traceparent) {
     // W3C Trace Context
