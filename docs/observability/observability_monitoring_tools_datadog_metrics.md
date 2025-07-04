@@ -19,7 +19,7 @@ description: メトリクス＠Datadogの知見を記録しています。
 
 デーモンであるdatadogエージェントに含まれている。
 
-アプリケーションからメトリクスのデータポイントを収集し、Datadogにフォワーディングする。
+アプリケーションからメトリクスの元になるデータポイントを収集し、Datadogにフォワーディングする。
 
 ![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on-server.png)
 

@@ -188,7 +188,7 @@ $ /fluent-bit/bin/fluent-bit -i dummy -o stdout
 
 #### ▼ fluentbit_metricsプラグインとは
 
-自身のメトリクスを収集する。
+自身のメトリクスの元になるデータポイントを収集する。
 
 合わせて、OUTPUTセクションでprometheus_exporterプラグインを使用し、Prometheusがリクエストを送信するためのエンドポイントを公開できる。
 
@@ -200,7 +200,7 @@ $ /fluent-bit/bin/fluent-bit -i dummy -o stdout
 [INPUT]
     name            fluentbit_metrics
     tag             internal_metrics
-    # メトリクスを作成する間隔
+    # メトリクスの元になるデータポイントを作成する間隔
     # 間隔が短すぎると、メトリクスが重複してしまう (例：2秒)
     scrape_interval 5
 

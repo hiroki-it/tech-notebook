@@ -139,7 +139,7 @@ spec:
 
 ### Service
 
-Prometheusは、ServiceMonitorを介して、Blackbox ExporterのPodからメトリクスを収集する。
+Prometheusは、ServiceMonitorを介して、Blackbox ExporterのPodからメトリクスの元になるデータポイントを収集する。
 
 この時にPodの前段にServiceを配置する必要がある。
 
@@ -331,7 +331,7 @@ modules:
 
 #### ▼ 確認方法
 
-Blackbox Exporterの場合は、Nodeの『`127.0.0.1:9115/probe?target=google.com&module=http_2xx`』をコールすると、PromQLで使用できるメトリクスを取得できる。
+Blackbox Exporterの場合は、Nodeの『`127.0.0.1:9115/probe?target=google.com&module=http_2xx`』をコールすると、PromQLで使用できるメトリクスの元になるデータポイントを取得できる。
 
 ```bash
 $ curl http://127.0.0.1:9115/probe?target=google.com&module=http_2xx

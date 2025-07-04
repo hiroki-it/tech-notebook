@@ -479,9 +479,9 @@ istio-proxyは、テレメトリーを作成する。
 
 ### メトリクスの作成と送信
 
-istio-proxyはメトリクスを作成し、Istiodコントロールプレーン (`discovery`コンテナ) に送信する。
+istio-proxyはメトリクスの元になるデータポイントを作成し、Istiodコントロールプレーン (`discovery`コンテナ) に送信する。
 
-Prometheusは、`discovery`コンテナの `/stats/prometheus`エンドポイント (`15090`番ポート) からメトリクスのデータポイントを収集する。
+Prometheusは、`discovery`コンテナの `/stats/prometheus`エンドポイント (`15090`番ポート) からメトリクスの元になるデータポイントを収集する。
 
 なお、istio-proxyにも `/stats/prometheus`エンドポイントはある。
 

@@ -857,7 +857,7 @@ spec:
 
 ### ServiceMonitorとは
 
-指定したServiceに対してPull型収集を実施し、これに紐づくPodのメトリクスのデータポイントを収集する。
+指定したServiceに対してPull型収集を実施し、これに紐づくPodのメトリクスの元になるデータポイントを収集する。
 
 有効になっているServiceMonitorは、Prometheusダッシュボードの Status > ServiceDiscoveryタブや、Status > Targets タブで確認できる。
 
@@ -882,7 +882,7 @@ spec:
 
 Prometheusは、Podから直接的にデータポイントを収集できるが、この時PodのIPアドレスは動的に変化してしまう。
 
-そのため、Podからメトリクスを収集する場合は、基本的にはServiceMonitorでServiceを介してPodを動的に検出できるようにする。
+そのため、Podからメトリクスの元になるデータポイントを収集する場合は、基本的にはServiceMonitorでServiceを介してPodを動的に検出できるようにする。
 
 注意点として、アプリケーションのPodだけでなく、以下のPodも動的に検出する必要があるため、同様にServiceMonitorが必要である。
 
@@ -1161,7 +1161,7 @@ metadata:
 
 **＊例＊**
 
-Node ExporterのPodからメトリクスを収集する。
+Node ExporterのPodからメトリクスの元になるデータポイントを収集する。
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1

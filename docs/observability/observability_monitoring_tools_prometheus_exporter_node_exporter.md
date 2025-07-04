@@ -95,7 +95,7 @@ $ node_exporter --web.listen-address=':9100'
 
 ### 確認方法
 
-Node Exporterの場合は、Nodeの『`127.0.0.1:9100/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
+Node Exporterの場合は、Nodeの『`127.0.0.1:9100/metrics`』をコールすると、PromQLで使用できるメトリクスの元になるデータポイントを取得できる。
 
 ```bash
 # Node内でコールする。

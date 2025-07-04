@@ -19,11 +19,11 @@ description: metrics-server＠ハードウェアリソース管理系の知見�
 
 metrics-serverは、拡張APIサーバー、ローカルストレージ、スクレイパー、といったコンポーネントから構成される。
 
-PodとNodeのメトリクスのデータポイントを収集し、`kubectl top`コマンドでこれを取得できる。
+PodとNodeのメトリクスの元になるデータポイントを収集し、`kubectl top`コマンドでこれを取得できる。
 
 また必須ではないが、HorizontalPodAutoscalerとVerticalPodAutoscalerを作成すれば、Podの自動水平スケーリングや自動垂直スケーリングを実行できる。
 
-KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) のメトリクスのデータポイントを収集しつつ、収集したデータポイントを拡張APIサーバーで公開する。
+KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) のメトリクスの元になるデータポイントを収集しつつ、収集したデータポイントを拡張APIサーバーで公開する。
 
 似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。
 
@@ -55,7 +55,7 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 
 #### ▼ 拡張APIサーバーとは
 
-拡張APIサーバーは、ServiceとAPIServiceを介して、クライアント (`kubectl top`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) からのリクエストを受信し、メトリクスのデータポイントを含むレスポンスを返信する。
+拡張APIサーバーは、ServiceとAPIServiceを介して、クライアント (`kubectl top`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) からのリクエストを受信し、メトリクスの元になるデータポイントを含むレスポンスを返信する。
 
 データポイントはローカルストレージに保管している。
 
@@ -66,13 +66,13 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 
 ### ローカルストレージ
 
-ローカルストレージは、クライアント (`kubectl top`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) 宛先となっているPodやNodeのメトリクスのデータポイントを保管する。
+ローカルストレージは、クライアント (`kubectl top`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) 宛先となっているPodやNodeのメトリクスの元になるデータポイントを保管する。
 
 <br>
 
 ### スクレイパー
 
-スクレイパーは、kubeletのデーモンからPodやNodeからメトリクスのデータポイントを定期的に収集し、ローカルストレージに保管する。
+スクレイパーは、kubeletのデーモンからPodやNodeからメトリクスの元になるデータポイントを定期的に収集し、ローカルストレージに保管する。
 
 kubeletのデーモンはメトリクス収集用エンドポイント (例：`/metrics/resource`、`/stats`など) を持ち、これがスクレイパーの収集対象になる。
 

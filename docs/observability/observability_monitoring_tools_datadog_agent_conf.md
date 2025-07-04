@@ -206,7 +206,7 @@ FROM data/agent:latest
 
 Datadogが提供するdatadogイメージによって作成されるコンテナであり、コンテナのサイドカーコンテナとして配置される。
 
-コンテナ内で稼働するDatadog dockerエージェントが、コンテナからメトリクスのデータポイントを収集し、Datadogにこれをフォワーディングする。
+コンテナ内で稼働するDatadog dockerエージェントが、コンテナからメトリクスの元になるデータポイントを収集し、Datadogにこれをフォワーディングする。
 
 > - https://docs.datadoghq.com/integrations/ecs_fargate/?tab=logdriver#create-an-ecs-fargate-task
 
@@ -267,7 +267,7 @@ Datadogが提供するdatadogイメージによって作成されるコンテナ
 
 #### ▼ AWS ECSのIAMロール
 
-datadogコンテナがコンテナからメトリクスのデータポイントを収集できるように、AWS ECSタスク実行ロールにポリシーを追加する必要がある。
+datadogコンテナがコンテナからメトリクスの元になるデータポイントを収集できるように、AWS ECSタスク実行ロールにポリシーを追加する必要がある。
 
 ```yaml
 {

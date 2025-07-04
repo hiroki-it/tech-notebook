@@ -47,7 +47,7 @@ HTTPSで受信する場合には、サーバー証明書が必要である。
 
 #### ▼ Prometheus Receiver
 
-Prometheusにリクエストを送信し、Prometheusの持つメトリクスを収集する。
+Prometheusにリクエストを送信し、Prometheusの持つメトリクスの元になるデータポイントを収集する。
 
 > - https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver
 > - https://qiita.com/tmokmss/items/1ad885606100f4c210d8#prometheus%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8
@@ -88,7 +88,7 @@ HTTPSで送信する場合には、クライアント証明書が必要である
 
 OpenTelemetry Collectorの持つ任意のメトリクス (例：別に収集したPrometheusメトリクス) を埋め込みメトリクスフォーマットに変換し、またAWS CloudWatch Logsを宛先とする。
 
-AWS CloudWatch Metricsは、埋め込みメトリクスフォーマットに変換されたログに基づいて、カスタムメトリクスを作成する。
+AWS CloudWatch Metricsは、埋め込みメトリクスフォーマットに変換されたログに基づいて、カスタムメトリクスの元になるデータポイントを作成する。
 
 例えば、AWS CloudWatchがデフォルトで対応していないメトリクス (例：Prometheus) を一度ログに変換した上で、カスタムメトリクスとして表示し直すことができる。
 
@@ -454,12 +454,12 @@ spec:
 
 以下の仕組みで、PrometheusのメトリクスをAWS CloudWatch Container Insightsで監視できるようにする。
 
-1. Prometheusは、メトリクスを収集する。
+1. Prometheusは、メトリクスの元になるデータポイントを収集する。
 2. OpenTelemetry Collectorは、Prometheus ReceiverでPrometheusからリクエストを受信する。
 3. OpenTelemetry Collectorは、AWS CloudWatch EMF Exporterを使用して、Prometheusメトリクスを埋め込みメトリクスフォーマットを持つログに変換する。
 4. OpenTelemetry Collectorは、AWS CloudWatch Logsのロググループ (`/aws/containerinsights/<Cluster名>/performance`) にログを送信する。
 5. AWS CloudWatch Logsは、埋め込みメトリクスフォーマットを受信する。
-6. AWS CloudWatch Container Insightsは埋め込みメトリクスフォーマットを認識し、カスタムメトリクスを作成する。これは、Prometheusメトリクスにほぼ対応している。
+6. AWS CloudWatch Container Insightsは埋め込みメトリクスフォーマットを認識し、カスタムメトリクスの元になるデータポイントを作成する。これは、Prometheusメトリクスにほぼ対応している。
 
 > - https://aws.amazon.com/blogs/mt/adding-metrics-and-traces-to-your-application-on-ama[…]aws-distro-for-opentelemetry-aws-x-ray-and-amazon-cloudwatch/
 > - https://aws-otel.github.io/docs/getting-started/container-insights/eks-infra#default-configuration-to-support-c[…]tch-container-insights-for-eks-ec2

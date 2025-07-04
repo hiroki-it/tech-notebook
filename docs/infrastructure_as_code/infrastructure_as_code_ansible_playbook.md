@@ -560,7 +560,7 @@ root以外であれば、`become_user`キーを設定する。
     name: amazon-cloudwatch-agent
     state: present
 
-# カスタムメトリクスを収集するために、collectdをインストールする。
+# カスタムメトリクスの元になるデータポイントを収集するために、collectdをインストールする。
 - name: install collectd
   ansible.builtin.dnf:
     name: collectd

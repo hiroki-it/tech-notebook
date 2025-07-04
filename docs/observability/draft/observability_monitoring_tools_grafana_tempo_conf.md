@@ -96,7 +96,7 @@ ingester: {}
 
 ### metrics_generator
 
-トレースからメトリクスを作成する。
+トレースからメトリクスの元になるデータポイントを作成する。
 
 ```yaml
 metrics_generator: {}

@@ -75,7 +75,7 @@ node affinityやnode selectorを実施できるように、`.metadata.labels`キ
 | `deploy`                                     | 他のKubernetesリソースをデプロイするためのKubernetesリソース (例：ArgoCDのPod) のコンテナを配置する。Nodeグループ内に含めずに、異なるClusterに切り分けて管理しても良い。                                                                                                                                                      |
 | `ingress`、`gateway、`egress`                | ワーカーNodeへのインバウンド通信の入口になるリソース (例：Ingress、IngressGateway) のコンテナや、APIゲートウェイのアプリを配置する。これは単一障害点になりうるため、ワーカーNodeのCPUやメモリを潤沢にしようできるように、他のリソースのコンテナとは別のNodeグループにした方が良い。また、アップグレード時間の短縮にも繋がる。 |
 | `master`                                     | セルフマネージドなKubernetesコントロールプレーンNodeのコンテナを稼働させる。マネージドなコントロールプレーンNode (例：AWS EKS、Google Cloud GKE、Azure AKSなど) の場合、このNodeグループは不要になる。                                                                                                                        |
-| `system`                                     | ログやメトリクスのデータポイントを収集するリソース (例：Prometheus、Alertmanager、のPod) のコンテナを配置する。また、セルフマネージドなサービスメッシュコントロールプレーンNodeのコンテナを稼働させる。マネージドなコントロールプレーンNode (例：AWS VPC Latticeなど) の場合、このNodeグループは不要になる。                  |
+| `system`                                     | ログやメトリクスの元になるデータポイントを収集するリソース (例：Prometheus、Alertmanager、のPod) のコンテナを配置する。また、セルフマネージドなサービスメッシュコントロールプレーンNodeのコンテナを稼働させる。マネージドなコントロールプレーンNode (例：AWS VPC Latticeなど) の場合、このNodeグループは不要になる。          |
 
 ```yaml
 apiVersion: v1
@@ -248,7 +248,7 @@ kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxy
 
 各ワーカーNode上で直接デーモンとして常駐し、コンテナランタイムを操作することにより、Podを作成する。
 
-また、ワーカーNodeやPodを監視し、メトリクスのデータポイントをkube-apiserverに提供する。
+また、ワーカーNodeやPodを監視し、メトリクスの元になるデータポイントをkube-apiserverに提供する。
 
 ![kubernetes_kubelet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kubelet.png)
 

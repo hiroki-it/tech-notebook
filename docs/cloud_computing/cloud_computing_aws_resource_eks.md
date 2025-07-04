@@ -1621,7 +1621,7 @@ resource "aws_autoscaling_group" "foo" {
 
 #### ▼ メトリクス収集
 
-FargateワーカーNode内のメトリクスのデータポイントを収集する上で、FargateワーカーNodeはDaemonSetに非対応である。
+FargateワーカーNode内のメトリクスの元になるデータポイントを収集する上で、FargateワーカーNodeはDaemonSetに非対応である。
 
 そのため、メトリクス収集コンテナをサイドカーコンテナとして配置する必要がある。
 
