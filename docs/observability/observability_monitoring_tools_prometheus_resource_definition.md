@@ -878,7 +878,7 @@ spec:
       app.kubernetes.io/name: foo-servive
 ```
 
-公開しないPodであるとServiceがないため、メトリクス収集用のServiceを作成することになる。
+公開しないPodであるとServiceがないため、データポイント収集用のServiceを作成することになる。
 
 Prometheusは、Podから直接的にデータポイントを収集できるが、この時PodのIPアドレスは動的に変化してしまう。
 

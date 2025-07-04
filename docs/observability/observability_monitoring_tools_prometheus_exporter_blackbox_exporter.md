@@ -28,7 +28,7 @@ Blackbox Exporterは、外部システムに特定のプロトコル (例：HTTP
 
 <br>
 
-### Prometheusによるメトリクス収集
+### Prometheusによるデータポイント収集
 
 ![blackbox_exporter_prometheus_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/blackbox_exporter_prometheus_architecture.png)
 

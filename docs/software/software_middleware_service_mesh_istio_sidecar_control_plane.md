@@ -197,7 +197,7 @@ spec:
       port: 15012
       protocol: TCP
       targetPort: 15012
-    # メトリクス収集に関するリクエストを待ち受ける。
+    # データポイント収集に関するリクエストを待ち受ける。
     - name: http-monitoring
       port: 15014
       protocol: TCP
@@ -610,7 +610,7 @@ $ pilot-discovery discovery --log_as_json
 
 #### ▼ monitoringAddr
 
-Prometheusによるメトリクス収集のポート番号を設定する。
+Prometheusによるデータポイント収集のポート番号を設定する。
 
 `:15014`を設定する。
 

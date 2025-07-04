@@ -396,7 +396,7 @@ fields @timestamp, @message
 
 多くの場合、インスタンス系リソースは基本的なメトリクスの元になるデータポイントを収集するが、一部のメトリクス (例：EC2のメモリ使用率やディスク使用率) やログそのものを収集しない。
 
-cloudwatchエージェントを使用することにより、カスタムメトリクスやログを収集できるようにする。
+cloudwatchエージェントを使用することにより、カスタムメトリクスの元になるデータポイントやログを収集できるようにする。
 
 プロセスは、デーモン化しておくと良い。
 
@@ -430,7 +430,7 @@ Oct 13 19:04:57 *** start-amazon-cloudwatch-agent[2959]: I! Detecting run_as_use
 ```bash
 $ yum install amazon-cloudwatch-agent -y
 
-# カスタムメトリクスの収集のために、collectdパッケージを使用する場合
+# カスタムメトリクスの元になるデータポイントの収集のために、collectdパッケージを使用する場合
 $ yum install collectd -y
 ```
 

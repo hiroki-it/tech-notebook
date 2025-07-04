@@ -109,7 +109,7 @@ Chain POSTROUTING (policy ACCEPT)
 Chain ISTIO_INBOUND (1 references)
 num  target             prot  opt  source     destination
 1    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15008
-2    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15090 # メトリクス収集ツールからのリクエストを待ち受ける。
+2    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15090 # データポイント収集ツールからのリクエストを待ち受ける。
 3    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15021 # kubeletからのReadinessProbeヘルスチェックを待ち受ける。
 4    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15020 # データプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。
 5    ISTIO_IN_REDIRECT  tcp   --   0.0.0.0/0  0.0.0.0/0
@@ -687,11 +687,11 @@ istio-proxy内のEnvoyが、`/healthz/ready`エンドポイントでReadinessPro
 
 ### `15090`番
 
-istio-proxyの`15090`番ポートでは、istio-proxyのメトリクス収集ツール (例：Prometheus) からのリクエストを待ち受ける。
+istio-proxyの`15090`番ポートでは、istio-proxyのデータポイント収集ツール (例：Prometheus) からのリクエストを待ち受ける。
 
 istio-proxy内のEnvoyが、`/stats/prometheus`エンドポイントでリクエストを待ち受けており、データポイントを含むレスポンスを返信する。
 
-ただ、`discovery`コンテナにも`/stats/prometheus`エンドポイントがあり、メトリクス収集ツールはこれを指定することが多い。
+ただ、`discovery`コンテナにも`/stats/prometheus`エンドポイントがあり、データポイント収集ツールはこれを指定することが多い。
 
 ```bash
 $ kubectl exec \

@@ -74,9 +74,9 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 
 スクレイパーは、kubeletのデーモンからPodやNodeからメトリクスの元になるデータポイントを定期的に収集し、ローカルストレージに保管する。
 
-kubeletのデーモンはメトリクス収集用エンドポイント (例：`/metrics/resource`、`/stats`など) を持ち、これがスクレイパーの収集対象になる。
+kubeletのデーモンはデータポイント収集用エンドポイント (例：`/metrics/resource`、`/stats`など) を持ち、これがスクレイパーの収集対象になる。
 
-そのため、PodやNodeにメトリクス収集用エンドポイント (例：`/metrics`) を設ける必要はない。
+そのため、PodやNodeにデータポイント収集用エンドポイント (例：`/metrics`) を設ける必要はない。
 
 ![metrics-server_scraper](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics-server_scraper.png)
 
@@ -108,7 +108,7 @@ spec:
         - --secure-port=4443
         - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
         - --kubelet-use-node-status-port
-        # メトリクスの収集間隔を設定する。間隔が短すぎると、kube-apiserverに負荷がかかる
+        # データポイントの収集間隔を設定する。間隔が短すぎると、kube-apiserverに負荷がかかる
         # https://github.com/kubernetes-sigs/metrics-server/blob/master/FAQ.md#how-often-metrics-are-scraped
         - --metric-resolution=15s
         # Minikubeでは、kubelet-insecure-tlsオプションを有効化する

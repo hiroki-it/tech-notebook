@@ -31,7 +31,7 @@ Prometheusを設定する。
 
 #### ▼ globalセクションとは
 
-全てのメトリクス収集からアラートまでを共通で設定する。
+全てのデータポイント収集からアラートまでを共通で設定する。
 
 > - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file
 

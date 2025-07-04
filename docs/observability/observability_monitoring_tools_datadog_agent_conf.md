@@ -23,7 +23,7 @@ Datadogとパケットを送受信するためには、アプリケーション�
 
 <br>
 
-### メトリクス収集について
+### データポイント収集について
 
 > - https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_metrics.html
 
