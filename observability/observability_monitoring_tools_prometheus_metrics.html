@@ -27749,7 +27749,7 @@
 <p>累計で常に増加するメトリクス (例：リクエスト数) が所属する。</p>
 <p>メトリクス型がCounterの場合は<code>rate</code>関数を使用できる。</p>
 <p><code>rate</code>関数で秒当たりの差分し、これを<code>sum</code>関数で合計すると累計だったメトリクスを現在の増減で表現できる。</p>
-<p>Counterは<code>rate</code>関数で秒当たりの増減で集計することが多いため、Grafanaダッシュボード上では、Counterのメトリクスの単位を『〇〇/秒』とする。</p>
+<p>Counterは<code>rate</code>関数で秒当たりの増減で集約することが多いため、Grafanaダッシュボード上では、Counterのメトリクスの単位を『〇〇/秒』とする。</p>
 <p><code>rate</code>関数を使用しない場合、メトリクスの単位は『累計〇〇』になる。</p>
 <blockquote>
 <ul>
@@ -27860,7 +27860,7 @@ aggregator_unavailable_apiservice<span class="o">{</span><span class="nv">job</s
 <p>インターネットではこれをCPU使用率と言っている記事が多くあるが、このメトリクスだけではコンテナのCPU使用率の分子を表すだけである。</p>
 <div class="highlight"><pre><span></span><code>container_cpu_usage_seconds_total
 </code></pre></div>
-<p><code>kube_pod_container_resource_requests</code>メトリクスや<code>kube_pod_container_resource_limits</code>を使用して、CPU使用率を集計できる。</p>
+<p><code>kube_pod_container_resource_requests</code>メトリクスや<code>kube_pod_container_resource_limits</code>を使用して、CPU使用率を集約できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Pod単位のCPU使用率</span>
 <span class="c1"># メモリ実際値 / 下限値 (.spec.containers[*].resources.requestsキー)</span>
 sum<span class="o">(</span>rate<span class="o">(</span>container_cpu_usage_seconds_total<span class="o">{</span>container!<span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">}[</span>5m<span class="o">]))</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>pod<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>sum<span class="o">(</span>kube_pod_container_resource_requests<span class="o">{</span><span class="nv">resouce</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="o">})</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>pod<span class="o">)</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span>
@@ -27876,7 +27876,7 @@ sum<span class="o">(</span>rate<span class="o">(</span>container_cpu_usage_secon
 </ul>
 </blockquote>
 <h4 id="container_memory_working_set_bytes">▼ container_memory_working_set_bytes<a class="headerlink" href="#container_memory_working_set_bytes" title="Permanent link">&para;</a></h4>
-<p><code>kube_pod_container_resource_requests</code>メトリクスや<code>kube_pod_container_resource_limits</code>を使用して、CPU使用率を集計できる。</p>
+<p><code>kube_pod_container_resource_requests</code>メトリクスや<code>kube_pod_container_resource_limits</code>を使用して、CPU使用率を集約できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Pod単位のメモリ使用率</span>
 <span class="c1"># メモリ実際値 / メモリ下限値 (.spec.containers[*].resources.requestsキー)</span>
 sum<span class="o">(</span>container_memory_working_set_bytes<span class="o">)</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>pod<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>sum<span class="o">(</span>kube_pod_container_resource_requests<span class="o">{</span><span class="nv">resource</span><span class="o">=</span><span class="s2">&quot;memory&quot;</span><span class="o">})</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>pod<span class="o">)</span><span class="w">  </span>*<span class="w"> </span><span class="m">100</span>
@@ -27894,7 +27894,7 @@ sum<span class="o">(</span>container_memory_working_set_bytes<span class="o">)</
 <p><br></p>
 <h2 id="03">03. ディメンション<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_6">指定方法<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>メトリクス名の後に<code>{&lt;ディメンション名&gt;}</code>を設定することにより、ディメンションを単位としてデータポイントを集約する。</p>
+<p>メトリクス名の後に<code>{&lt;ディメンション名&gt;}</code>を設定することにより、ディメンションを単位としてデータポイントからメトリクスを集約する。</p>
 <p><br></p>
 <h3 id="_7">ディメンションの種類<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="container">▼ container<a class="headerlink" href="#container" title="Permanent link">&para;</a></h4>
@@ -27937,7 +27937,7 @@ sum<span class="o">(</span>container_memory_working_set_bytes<span class="o">)</
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月4日 16:05:22">2025-07-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月4日 16:13:21">2025-07-04</span>
   </span>
 
     

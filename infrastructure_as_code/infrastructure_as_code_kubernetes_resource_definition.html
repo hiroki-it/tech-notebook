@@ -37674,7 +37674,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="specttlsecondsafterfinished">.spec.ttlSecondsAfterFinished<a class="headerlink" href="#specttlsecondsafterfinished" title="Permanent link">&para;</a></h3>
 <h4 id="ttlsecondsafterfinished">▼ ttlSecondsAfterFinishedとは<a class="headerlink" href="#ttlsecondsafterfinished" title="Permanent link">&para;</a></h4>
 <p>Jobが成功/失敗した場合のJob自体の削除を有効化しつつ、その秒数を設定する。</p>
-<p>失敗したJobが残り続けると、メトリクス収集ツール (例：Prometheus) でメトリクスが記録され続け、アラートを送信し続けてしまう。</p>
+<p>失敗したJobが残り続けると、データポイント収集ツール (例：Prometheus) でメトリクスが記録され続け、アラートを送信し続けてしまう。</p>
 <p>そのため、できるだけJobは削除した方が良い。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
@@ -41499,7 +41499,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月4日 15:58:54">2025-07-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月4日 16:17:17">2025-07-04</span>
   </span>
 
     

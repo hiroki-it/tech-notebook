@@ -28408,7 +28408,7 @@
 <tbody>
 <tr>
 <td>ディメンション</td>
-<td>インスタンスの設定値をグループとした集約のこと (例：インスタンスID、スペック、AZなど) 。ディメンションが大きすぎると、異なる種類のデータポイントがごちゃまぜに集約される (例えば、AWS EC2のストレージで、<code>/var/lib/foo</code>パーティションのディスク使用率のデータポイントが <code>30</code>%だとする。AWS EC2のインスタンスIDをディメンションにした場合に、<code>/var/lib/foo</code>以外のパーティションが <code>30</code>%より低いため、インスタンスIDのディメンション全体としては <code>10%</code>ほどのディスク使用率になる) 。AWS CloudWatchアラームではディメンションしか指定できず、ディメンションを正確に集計する必要がある。</td>
+<td>インスタンスの設定値をグループとした集約のこと (例：インスタンスID、スペック、AZなど) 。ディメンションが大きすぎると、異なる種類のデータポイントがごちゃまぜに集約される (例えば、AWS EC2のストレージで、<code>/var/lib/foo</code>パーティションのディスク使用率のデータポイントが <code>30</code>%だとする。AWS EC2のインスタンスIDをディメンションにした場合に、<code>/var/lib/foo</code>以外のパーティションが <code>30</code>%より低いため、インスタンスIDのディメンション全体としては <code>10%</code>ほどのディスク使用率になる) 。AWS CloudWatchアラームではディメンションしか指定できず、ディメンションを正確に集約する必要がある。</td>
 </tr>
 <tr>
 <td>名前空間</td>
@@ -28455,7 +28455,7 @@
 <p>AWS Lambdaの性能に関するメトリクスの元になるデータポイントを収集する。</p>
 <p><br></p>
 <h3 id="_9">埋め込みメトリクスフォーマット<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>AWS CloudWatch Logs上で構造化ログのログイベントを自動的に集計し、AWS CloudWatch Metrics上でカスタムメトリクスを生成してくれる。</p>
+<p>AWS CloudWatch Logs上で構造化ログのログイベントを自動的に集約し、AWS CloudWatch Metrics上でカスタムメトリクスを生成してくれる。</p>
 <p>AWS CloudWatch Logsに送る構造化ログには、<code>metrics</code>オブジェクトを定義する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 構造化ログ</span>
 <span class="p p-Indicator">{</span>
@@ -28729,7 +28729,7 @@ $<span class="w"> </span>service<span class="w"> </span>awslogs<span class="w"> 
 <p>インスタンス系AWSリソース (EC2、AWS ECS、EKS、AWS Lambda) 内で稼働するデーモンのこと。</p>
 <p>インスタンス内のメトリクスの元になるデータポイントやログを収集し、AWS CloudWatchに送信する。</p>
 <p>多くの場合、インスタンス系リソースは基本的なメトリクスの元になるデータポイントを収集するが、一部のメトリクス (例：EC2のメモリ使用率やディスク使用率) やログそのものを収集しない。</p>
-<p>cloudwatchエージェントを使用することにより、カスタムメトリクスやログを収集できるようにする。</p>
+<p>cloudwatchエージェントを使用することにより、カスタムメトリクスの元になるデータポイントやログを収集できるようにする。</p>
 <p>プロセスは、デーモン化しておくと良い。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>list-unit-files<span class="w"> </span>--type<span class="o">=</span>service<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>amazon-cloudwatch-agent
 
@@ -28758,7 +28758,7 @@ Oct<span class="w"> </span><span class="m">13</span><span class="w"> </span><spa
 <h4 id="yum">▼ yumリポジトリから<a class="headerlink" href="#yum" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>amazon-cloudwatch-agent<span class="w"> </span>-y
 
-<span class="c1"># カスタムメトリクスの収集のために、collectdパッケージを使用する場合</span>
+<span class="c1"># カスタムメトリクスの元になるデータポイントの収集のために、collectdパッケージを使用する場合</span>
 $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>collectd<span class="w"> </span>-y
 </code></pre></div>
 <p><br></p>
@@ -29072,7 +29072,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月4日 16:05:22">2025-07-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月4日 16:17:17">2025-07-04</span>
   </span>
 
     
