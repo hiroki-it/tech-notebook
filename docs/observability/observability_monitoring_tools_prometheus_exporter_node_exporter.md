@@ -120,7 +120,7 @@ node_exporter_build_info{branch="HEAD",goversion="go1.15.8",revision="4e837d4da7
 NodeのCPU使用率を取得する。
 
 ```bash
-# 秒当たりの平均増加率を１分間で集計する
+# 秒当たりの平均増加率を１分間で集約する
 rate(node_cpu_seconds_total[1m])
 ```
 
@@ -171,7 +171,7 @@ Nodeのディスク使用率を取得する。
 `iostat`コマンドの`%util`指標と同じである。
 
 ```bash
-# 秒当たりの平均増加率を１分間で集計する
+# 秒当たりの平均増加率を１分間で集約する
 rate(node_disk_io_time_seconds_total[1m])
 ```
 
@@ -185,13 +185,13 @@ rate(node_disk_io_time_seconds_total[1m])
 
 ```bash
 # 読み出しレスポンスタイム
-# 秒当たりの平均増加率を１分間で集計する
+# 秒当たりの平均増加率を１分間で集約する
 rate(node_disk_read_time_seconds_total[1m]) / rate(node_disk_reads_completed_total[1m])
 ```
 
 ```bash
 # 書き込みレスポンスタイム
-# 秒当たりの平均増加率を１分間で集計する
+# 秒当たりの平均増加率を１分間で集約する
 rate(node_disk_write_time_seconds_total[1m]) / rate(node_disk_writes_completed_total[1m])
 ```
 
@@ -210,7 +210,7 @@ node_network_receive_packets_total
 これを使用して、DDOS攻撃のアラートを作成することもできる。
 
 ```bash
-# 秒当たりの平均増加率を５分間で集計する
+# 秒当たりの平均増加率を５分間で集約する
 (rate(node_network_receive_packets_total[5m]) / rate(node_network_receive_packets_total[5m] offset 5m)) > 10
 ```
 

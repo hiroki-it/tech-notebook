@@ -27,7 +27,7 @@ description: LogQL＠Grafana Lokiの知見を記録しています。
 
 ### メトリッククエリとは
 
-ログをクエリし、指定した期間で集計する。
+ログをクエリし、指定した期間で集約する。
 
 以下の関数を使用する。
 
@@ -45,7 +45,7 @@ description: LogQL＠Grafana Lokiの知見を記録しています。
 
 **＊実行例＊**
 
-5分間のログを集計する。
+5分間のログを集約する。
 
 ```bash
 count_over_time({app="foo", namespace="foo"} |= "ERROR" [5m])

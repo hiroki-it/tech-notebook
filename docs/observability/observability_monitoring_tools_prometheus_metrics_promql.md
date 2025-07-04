@@ -104,12 +104,12 @@ sum(<メトリクス名>) by (<ラベル>)
 sum(idelta(istio_requests_total[1h])) by (destination_app)
 
 # 結果
-{destination_app="foo-container"} <集計値>
+{destination_app="foo-container"} <集約値>
 ```
 
 **例**
 
-任意の期間内に関して、Istioの istio-proxyの受信リクエストのテータポイント数の増加量を集計する。
+任意の期間内に関して、Istioの istio-proxyの受信リクエストのテータポイント数の増加量を集約する。
 
 ```bash
 sum(increase(istio_requests_total{destination_workload_namespace="default"}[$__range:])) by (destination_service)
@@ -117,7 +117,7 @@ sum(increase(istio_requests_total{destination_workload_namespace="default"}[$__r
 
 **例**
 
-任意の期間内に関して、Istioの istio-proxyの処理時間の一番高い値を集計する。
+任意の期間内に関して、Istioの istio-proxyの処理時間の一番高い値を集約する。
 
 ```bash
 max(max_over_time(rate(istio_request_duration_milliseconds_sum{destination_service_namespace="default"}[$__rate_interval])[$__range:])) by (destination_service)
@@ -125,7 +125,7 @@ max(max_over_time(rate(istio_request_duration_milliseconds_sum{destination_servi
 
 **例**
 
-任意の期間内に関して、Istioの istio-proxyの処理時間の平均を集計する。
+任意の期間内に関して、Istioの istio-proxyの処理時間の平均を集約する。
 
 ```bash
 avg(avg_over_time(rate(istio_request_duration_milliseconds_sum{destination_service_namespace="default"}[$__rate_interval])[$__range:])) by (destination_service)
@@ -141,12 +141,12 @@ avg(avg_over_time(rate(istio_request_duration_milliseconds_sum{destination_servi
 sum(idelta(istio_requests_total{response_flags!="-"}[1h])) by (pod_name, response_flags)
 
 # 結果
-{pod_name="ingressgateway-pod", response_flags="DC"} <集計値>
-{pod_name="ingressgateway-pod", response_flags="DPE"} <集計値>
-{pod_name="ingressgateway-pod", response_flags="URX"} <集計値>
-{pod_name="foo-pod", response_flags="DC"} <集計値>
-{pod_name="foo-pod", response_flags="DPE"} <集計値>
-{pod_name="foo-pod", response_flags="URX"} <集計値>
+{pod_name="ingressgateway-pod", response_flags="DC"} <集約値>
+{pod_name="ingressgateway-pod", response_flags="DPE"} <集約値>
+{pod_name="ingressgateway-pod", response_flags="URX"} <集約値>
+{pod_name="foo-pod", response_flags="DC"} <集約値>
+{pod_name="foo-pod", response_flags="DPE"} <集約値>
+{pod_name="foo-pod", response_flags="URX"} <集約値>
 ...
 ```
 
@@ -154,21 +154,21 @@ sum(idelta(istio_requests_total{response_flags!="-"}[1h])) by (pod_name, respons
 
 #### ▼ count
 
-期間内の合計数を集計する。
+期間内の合計数を集約する。
 
 > - https://www.opsramp.com/prometheus-monitoring/promql/
 
 #### ▼ increase
 
-rate関数のラッパーであり、rate関数の結果 (平均増加率) に、期間を自動的に掛けた数値 (期間当たりの増加数) を集計する。
+rate関数のラッパーであり、rate関数の結果 (平均増加率) に、期間を自動的に掛けた数値 (期間当たりの増加数) を集約する。
 
 **＊例＊**
 
-rate関数に期間 (今回は5m) を自動的に掛けた数値を集計する。
+rate関数に期間 (今回は5m) を自動的に掛けた数値を集約する。
 
 ```bash
 increase(<Counter型メトリクス名>[5m])
-# メトリクスの平均増加率 (%/秒) を集計する。
+# メトリクスの平均増加率 (%/秒) を集約する。
 = rate(<Counter型メトリクス名>[1h]) * 5 * 60
 ```
 
@@ -178,7 +178,7 @@ increase(<Counter型メトリクス名>[5m])
 
 **例**
 
-Envoyに登録された全ての宛先のうち、正常なクラスターの割合を集計する。
+Envoyに登録された全ての宛先のうち、正常なクラスターの割合を集約する。
 
 ```bash
 sum(envoy_cluster_membership_healthy) / sum(envoy_cluster_membership_total)
@@ -188,7 +188,7 @@ sum(envoy_cluster_membership_healthy) / sum(envoy_cluster_membership_total)
 
 #### ▼ rate
 
-平均増加率 (%/秒) を集計する。
+平均増加率 (%/秒) を集約する。
 
 例えば、データポイントが『0、1、3、6、10、...』と増加していく場合、差分は『1、2、3、4...』
 
@@ -196,19 +196,19 @@ sum(envoy_cluster_membership_healthy) / sum(envoy_cluster_membership_total)
 
 注意点として、常に同じ割合で増加していく場合には各データポイント間に差分はないので、グラフは横一直線 (ずっと`0`) になってしまう。
 
-メトリクス型がCounterの場合は`rate`関数で秒当たりの変化を集計し、これを`sum`関数で合計できる。
+メトリクス型がCounterの場合は`rate`関数で秒当たりの変化を集約し、これを`sum`関数で合計できる。
 
 一方で、Gaugeであると`rate`関数は使用できない。
 
 `rate`関数を使用しない場合、メトリクスの単位は『累計〇〇』になる。
 
 ```bash
-# 秒当たりの平均増加率を１分間で集計する
+# 秒当たりの平均増加率を１分間で集約する
 rate(<Counter型メトリクス名>[1m])
 ```
 
 ```bash
-# 分あたりの平均増加率を１分間で集計する
+# 分あたりの平均増加率を１分間で集約する
 rate(<Counter型メトリクス名>[1m]) * 60
 ```
 
@@ -216,23 +216,23 @@ rate(<Counter型メトリクス名>[1m]) * 60
 
 **例**
 
-直近`n`分や`n`時間に関して、メトリクスの平均増加率 (%/秒) を集計する。
+直近`n`分や`n`時間に関して、メトリクスの平均増加率 (%/秒) を集約する。
 
-集計の時間が短い場合 (例：1m、5m) 、急激な変化の影響を受けるため、短期間の傾向を反映した値になる。
+集約の時間が短い場合 (例：1m、5m) 、急激な変化の影響を受けるため、短期間の傾向を反映した値になる。
 
 リアルタイム性が重要な場合 (CPUやメモリの使用率、ステータスコード、リクエスト数の急激な変化) は、短くする。
 
 ```bash
-# 秒当たりの平均増加率を１分間で集計する
+# 秒当たりの平均増加率を１分間で集約する
 rate(<Counter型メトリクス名>[1m])
 ```
 
-集計の時間が長い場合 (例：1h) 、急激な変化の影響を受けないため、長期間の傾向を反映した値になる。
+集約の時間が長い場合 (例：1h) 、急激な変化の影響を受けないため、長期間の傾向を反映した値になる。
 
 長期的な傾向を知りたい場合 (リクエスト数の長期的な傾向) は重要な場合は、短くする。
 
 ```bash
-# 秒当たりの平均増加率を１時間で集計する
+# 秒当たりの平均増加率を１時間で集約する
 rate(<Counter型メトリクス名>[1h])
 ```
 
@@ -242,21 +242,21 @@ rate(<Counter型メトリクス名>[1h])
 
 ![istio_request_duration_milliseconds_sum](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_request_duration_milliseconds_sum.png)
 
-`reporter="source"`の場合、送信元istio-proxyからメトリクスを取得することになり、宛先 istio-proxyの先にあるアプリがレスポンスを返信する平均レスポンスタイムを集計する。
+`reporter="source"`の場合、送信元istio-proxyからメトリクスを取得することになり、宛先 istio-proxyの先にあるアプリがレスポンスを返信する平均レスポンスタイムを集約する。
 
 `pod`ラベルから取得できるのは、送信元のPod名である。
 
 ```bash
-# 秒当たりの平均増加率を５分間で集計する
+# 秒当たりの平均増加率を５分間で集約する
 rate(istio_request_duration_milliseconds_sum{reporter="source"}[5m])/ rate(istio_request_duration_milliseconds_count{reporter="source"}[5m])
 ```
 
-`reporter="destination"`の場合、宛先istio-proxyからメトリクスを取得することになり、アプリがレスポンスを返信する平均レスポンスタイムを集計する。
+`reporter="destination"`の場合、宛先istio-proxyからメトリクスを取得することになり、アプリがレスポンスを返信する平均レスポンスタイムを集約する。
 
 `pod`ラベルから取得できるのは、宛先のPod名である。
 
 ```bash
-# 秒当たりの平均増加率を５分間で集計する
+# 秒当たりの平均増加率を５分間で集約する
 rate(istio_request_duration_milliseconds_sum{reporter="destination"}[5m])/ rate(istio_request_duration_milliseconds_count{reporter="destination"}[5m])
 ```
 
@@ -268,23 +268,23 @@ rate(istio_request_duration_milliseconds_sum{reporter="destination"}[5m])/ rate(
 
 ![istio_request_duration_milliseconds_sum](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_request_duration_milliseconds_sum.png)
 
-400ステータスのレスポンスを集計する。
+400ステータスのレスポンスを集約する。
 
-`reporter="source"`の場合、送信元istio-proxyからメトリクスを取得することになり、宛先 istio-proxyがアプリから受信したステータスコードを集計する。
+`reporter="source"`の場合、送信元istio-proxyからメトリクスを取得することになり、宛先 istio-proxyがアプリから受信したステータスコードを集約する。
 
 `pod`ラベルから取得できるのは、送信元のPod名である。
 
 ```bash
-# 秒当たりの平均増加率を５分間で集計する
+# 秒当たりの平均増加率を５分間で集約する
 sum(rate(istio_requests_total{reporter="source", response_code=~"4.*"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m]))
 ```
 
-`reporter="destination"`の場合、送信元istio-proxyからメトリクスを取得することになり、宛先 istio-proxyがアプリから受信したステータスコードを集計する。
+`reporter="destination"`の場合、送信元istio-proxyからメトリクスを取得することになり、宛先 istio-proxyがアプリから受信したステータスコードを集約する。
 
 `pod`ラベルから取得できるのは、宛先のPod名である。
 
 ```bash
-# 秒当たりの平均増加率を５分間で集計する
+# 秒当たりの平均増加率を５分間で集約する
 sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m]))
 ```
 
@@ -295,23 +295,23 @@ sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])
 
 ![istio_request_duration_milliseconds_sum](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_request_duration_milliseconds_sum.png)
 
-レスポンスのなかったリクエスト数 (`0`ステータス) を集計する。
+レスポンスのなかったリクエスト数 (`0`ステータス) を集約する。
 
-`reporter="source"`の場合、送信元istio-proxyからメトリクスを取得することになり、宛先 istio-proxyがアプリから受信しなかったことを集計する。
+`reporter="source"`の場合、送信元istio-proxyからメトリクスを取得することになり、宛先 istio-proxyがアプリから受信しなかったことを集約する。
 
 `pod`ラベルから取得できるのは、送信元のPod名である。
 
 ```bash
-# 秒当たりの平均増加率を５分間で集計する
+# 秒当たりの平均増加率を５分間で集約する
 sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m]))
 ```
 
 `pod`ラベルから取得できるのは、宛先のPod名である。
 
-`reporter="destination"`の場合、送信元istio-proxyからメトリクスを取得することになり、宛先 istio-proxyがアプリから受信しなかったことを集計する。
+`reporter="destination"`の場合、送信元istio-proxyからメトリクスを取得することになり、宛先 istio-proxyがアプリから受信しなかったことを集約する。
 
 ```bash
-# 秒当たりの平均増加率を５分間で集計する
+# 秒当たりの平均増加率を５分間で集約する
 sum(rate(istio_requests_total{reporter="destination", response_code=~"0"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m]))
 ```
 
@@ -319,11 +319,11 @@ sum(rate(istio_requests_total{reporter="destination", response_code=~"0"}[5m])) 
 
 #### ▼ `[]` (ウィンドウ)
 
-直近、何時間 (分、秒) のデータポイントを集約するかを設定する。数値を大きくするほど、なだらかになる。
+直近、何時間 (分、秒) のデータポイントからメトリクスを集約するかを設定する。数値を大きくするほど、なだらかになる。
 
 **例**
 
-直近5分に関して、メトリクスの平均増加率 (%/秒) を集計する。
+直近5分に関して、メトリクスの平均増加率 (%/秒) を集約する。
 
 ```bash
 rate(<Counter型メトリクス名>[5m])
@@ -350,19 +350,19 @@ absent(container_tasks_state{name="<コンテナ名>",state="running"}) == 1
 
 <br>
 
-## 03. データポイントの各種数値の集計
+## 03. データポイントの各種数値の集約
 
 ### データポイントの平均サイズ (KB/秒) の増加率
 
 Prometheusで収集したデータポイントの平均サイズ (KB/秒) の増加率を表す。
 
 ```bash
-# 秒当たりの平均増加率を１時間で集計する
+# 秒当たりの平均増加率を１時間で集約する
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
 rate(prometheus_tsdb_compaction_chunk_samples_sum[1h])
 
 # 結果
-{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="oo-prometheus-service"} <集計値>
+{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="oo-prometheus-service"} <集約値>
 ```
 
 <br>
@@ -372,11 +372,11 @@ rate(prometheus_tsdb_compaction_chunk_samples_sum[1h])
 Prometheusで収集したデータポイントの合計数 (個/秒) の増加率を表す。
 
 ```bash
-# 秒当たりの平均増加率を１時間で集計する
+# 秒当たりの平均増加率を１時間で集約する
 rate(prometheus_tsdb_head_samples_appended_total[1h])
 
 # 結果
-{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="oo-prometheus-service"} <集計値>
+{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="oo-prometheus-service"} <集約値>
 ```
 
 <br>
@@ -388,13 +388,13 @@ Prometheusで収集したデータポイントの合計サイズ (KB/秒) の増
 計算式からもわかるように、データポイントの収集の間隔を長くすることにより、データポイント数が減るため、合計のサイズを小さくできる。
 
 ```bash
-# 秒当たりの平均増加率を１時間で集計する
+# 秒当たりの平均増加率を１時間で集約する
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
 rate(prometheus_tsdb_compaction_chunk_samples_sum[1h]) *
 rate(prometheus_tsdb_head_samples_appended_total[1h])
 
 # 結果
-{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="oo-prometheus-service"} <集計値>
+{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="oo-prometheus-service"} <集約値>
 ```
 
 > - https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
@@ -406,19 +406,19 @@ rate(prometheus_tsdb_head_samples_appended_total[1h])
 Prometheusで収集したデータポイントの合計サイズ (KB/日) の推移を表す。
 
 ```bash
-# 秒当たりの平均増加率を１時間で集計する
+# 秒当たりの平均増加率を１時間で集約する
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
 rate(prometheus_tsdb_compaction_chunk_samples_sum[1h]) *
 rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 60 * 60 * 24
 
 # 結果
-{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="oo-prometheus-service"} <集計値>
+{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="oo-prometheus-service"} <集約値>
 ```
 
 <br>
 
-## 04. ストレージの各種数値の集計
+## 04. ストレージの各種数値の集約
 
 ### ローカルストレージ
 
@@ -438,7 +438,7 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 1.2
 
 # 結果
-{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="foo-prometheus-service"} <集計値>
+{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="foo-prometheus-service"} <集約値>
 ```
 
 > - https://www.robustperception.io/how-much-disk-space-do-prometheus-blocks-use/
@@ -465,7 +465,7 @@ rate(prometheus_remote_storage_bytes_total[1h]) *
 60 * 60 * 24
 
 # 結果
-{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", remote_name="victoria-metrics", service="oo-prometheus-service", url="https://*.*.*.*:8248/api/v1/write"} <集計値>
+{container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", remote_name="victoria-metrics", service="oo-prometheus-service", url="https://*.*.*.*:8248/api/v1/write"} <集約値>
 ```
 
 > - https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics

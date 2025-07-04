@@ -27,7 +27,7 @@ description: Cloud Monitoring＠Google Cloudリソースの知見を記録して
 
 | 項目     | 説明                                                                                   |
 | -------- | -------------------------------------------------------------------------------------- |
-| アラート | 任意のメトリクスをポリシーに基づいて再集計し、条件に合致した場合にアラートを作成する。 |
+| アラート | 任意のメトリクスをポリシーに基づいて再集約し、条件に合致した場合にアラートを作成する。 |
 
 <br>
 
@@ -35,7 +35,7 @@ description: Cloud Monitoring＠Google Cloudリソースの知見を記録して
 
 #### ▼ アラートとは
 
-ポリシー (例：閾値、メトリクス再集計など) 、通知チャンネルを作成できる。
+ポリシー (例：閾値、メトリクス再集約など) 、通知チャンネルを作成できる。
 
 > - https://cloud.google.com/monitoring/alerts/using-alerting-ui?hl=ja
 > - https://cloud.google.com/monitoring/support/notification-options?hl=ja
@@ -44,7 +44,7 @@ description: Cloud Monitoring＠Google Cloudリソースの知見を記録して
 
 フィルターパターンに合致した文字列を持つログをトリガーとして、データポイントを発生させる。
 
-このデータポイントを集約し、このアラートをトリガーするメトリクスとして使用できる。
+このデータポイントからメトリクスを集約し、このアラートをトリガーするメトリクスとして使用できる。
 
 ```bash
 # Google Cloud Run Functionsの正常性をデータポイント化する

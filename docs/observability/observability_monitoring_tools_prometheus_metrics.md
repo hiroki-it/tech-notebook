@@ -29,7 +29,7 @@ Prometheusのダッシュボードでメトリクスをクエリすると、検�
 
 `rate`関数で秒当たりの差分し、これを`sum`関数で合計すると累計だったメトリクスを現在の増減で表現できる。
 
-Counterは`rate`関数で秒当たりの増減で集計することが多いため、Grafanaダッシュボード上では、Counterのメトリクスの単位を『〇〇/秒』とする。
+Counterは`rate`関数で秒当たりの増減で集約することが多いため、Grafanaダッシュボード上では、Counterのメトリクスの単位を『〇〇/秒』とする。
 
 `rate`関数を使用しない場合、メトリクスの単位は『累計〇〇』になる。
 
@@ -159,7 +159,7 @@ aggregator_unavailable_apiservice{job="apiserver", name="v1.metrics.eks.amazonaw
 container_cpu_usage_seconds_total
 ```
 
-`kube_pod_container_resource_requests`メトリクスや`kube_pod_container_resource_limits`を使用して、CPU使用率を集計できる。
+`kube_pod_container_resource_requests`メトリクスや`kube_pod_container_resource_limits`を使用して、CPU使用率を集約できる。
 
 ```bash
 # Pod単位のCPU使用率
@@ -178,7 +178,7 @@ sum(rate(container_cpu_usage_seconds_total{container!=""}[5m])) by (pod) / sum(k
 
 #### ▼ container_memory_working_set_bytes
 
-`kube_pod_container_resource_requests`メトリクスや`kube_pod_container_resource_limits`を使用して、CPU使用率を集計できる。
+`kube_pod_container_resource_requests`メトリクスや`kube_pod_container_resource_limits`を使用して、CPU使用率を集約できる。
 
 ```bash
 # Pod単位のメモリ使用率
@@ -201,7 +201,7 @@ sum(container_memory_working_set_bytes) by (pod) / sum(kube_pod_container_resour
 
 ### 指定方法
 
-メトリクス名の後に`{<ディメンション名>}`を設定することにより、ディメンションを単位としてデータポイントを集約する。
+メトリクス名の後に`{<ディメンション名>}`を設定することにより、ディメンションを単位としてデータポイントからメトリクスを集約する。
 
 <br>
 
