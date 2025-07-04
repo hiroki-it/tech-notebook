@@ -28385,11 +28385,11 @@
 <p><br></p>
 <h2 id="01-aws-cloudwatch-metrics">01. AWS CloudWatch Metrics<a class="headerlink" href="#01-aws-cloudwatch-metrics" title="Permanent link">&para;</a></h2>
 <h3 id="aws-cloudwatch-metrics">AWS CloudWatch Metricsとは<a class="headerlink" href="#aws-cloudwatch-metrics" title="Permanent link">&para;</a></h3>
-<p>AWSリソースで発生したデータポイントを作成し、メトリクスとして集約する。</p>
+<p>AWSリソースで発生したメトリクスのデータポイントを収集する。</p>
 <p><br></p>
 <h3 id="_2">メトリクスの集約<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ メトリクスの集約とは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>AWS CloudWatchは、データポイントからデータポイントメトリクスとして集約しつつ、特定のグループ (例：ディメンション、名前空間) に集約できる。</p>
+<p>AWS CloudWatchは、データポイントからメトリクスを作成しつつ、特定のグループ (例：ディメンション、名前空間) に集約できる。</p>
 <p><img alt="metrics_namespace_dimension" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics_namespace_dimension.png" /></p>
 <blockquote>
 <ul>
@@ -28412,7 +28412,7 @@
 </tr>
 <tr>
 <td>名前空間</td>
-<td>AWSリソースをグループとした集約のこと (例：AWS EC2、AWS RDS、AWS ALBなど) 。AWSリソース名で表す。cloudwatchエージェントでカスタムデータポイントを作成し、メトリクスとして集約すると、名前空間はCWAgentになる。</td>
+<td>AWSリソースをグループとした集約のこと (例：AWS EC2、AWS RDS、AWS ALBなど) 。AWSリソース名で表す。cloudwatchエージェントでカスタムメトリクスのデータポイントを収集すると、名前空間はCWAgentになる。</td>
 </tr>
 </tbody>
 </table>
@@ -28433,9 +28433,9 @@
 <p><br></p>
 <h3 id="_6">インサイトメトリクス<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ インサイトメトリクスは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>異なるメトリクスを再集約し、性能に関するメトリクスとして提供する。</p>
+<p>異なるメトリクスを再集計し、性能に関するメトリクスとして提供する。</p>
 <h4 id="_8">▼ パフォーマンスインサイト<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>RDS (AWS Aurora、AWS RDS) の性能に関するデータポイントを作成し、メトリクスとして集約する。</p>
+<p>RDS (AWS Aurora、AWS RDS) の性能に関するメトリクスのデータポイントを収集する。</p>
 <p>特定の集約 (例：各クエリ) で監視できるようになる。</p>
 <p>パラメーターグループの <code>performance_schema</code>を有効化する必要がある。</p>
 <p>対応するエンジンバージョンとインスタンスタイプについては、以下のリンクを参考にせよ。</p>
@@ -28446,16 +28446,16 @@
 </ul>
 </blockquote>
 <h4 id="container">▼ Containerインサイト<a class="headerlink" href="#container" title="Permanent link">&para;</a></h4>
-<p>コンテナに関するAWSリソース (例：AWS ECSクラスター、AWS ECSサービス、AWS ECSタスク、AWS ECSコンテナ、EKS Cluster) の性能に関するデータポイントを作成し、メトリクスとして集約する。</p>
+<p>コンテナに関するAWSリソース (例：AWS ECSクラスター、AWS ECSサービス、AWS ECSタスク、AWS ECSコンテナ、EKS Cluster) の性能に関するメトリクスのデータポイントを収集する。</p>
 <p>作成したメトリクスを特定の集約 (例：各コンテナ) で扱えるになる。</p>
 <p>また、コンテナ間の繋がりをコンテナマップで視覚化できるようになる。</p>
 <p>AWS ECS、EKSのアカウント設定でContainerインサイトを有効化する必要がある。</p>
 <p>Containerインサイトのメトリクスは、『<code>ContainerInsights</code>』という名前空間で一括でクエリでき、『<code>ClusterName</code>』などのディメンションでデータポイントをフィルタリングできる。</p>
 <h4 id="aws-lambda">▼ AWS Lambdaインサイト<a class="headerlink" href="#aws-lambda" title="Permanent link">&para;</a></h4>
-<p>AWS Lambdaの性能に関するデータポイントを作成し、メトリクスとして集約する。</p>
+<p>AWS Lambdaの性能に関するメトリクスのデータポイントを収集する。</p>
 <p><br></p>
 <h3 id="_9">埋め込みメトリクスフォーマット<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>AWS CloudWatch Logs上で構造化ログのログイベントを自動的に集約し、AWS CloudWatch Metrics上でカスタムメトリクスを生成してくれる。</p>
+<p>AWS CloudWatch Logs上で構造化ログのログイベントを自動的に集計し、AWS CloudWatch Metrics上でカスタムメトリクスを生成してくれる。</p>
 <p>AWS CloudWatch Logsに送る構造化ログには、<code>metrics</code>オブジェクトを定義する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 構造化ログ</span>
 <span class="p p-Indicator">{</span>
@@ -28502,7 +28502,7 @@
 </tr>
 <tr>
 <td>メトリクスフィルター</td>
-<td>フィルターパターンに合致した文字列を持つログをトリガーとして、データポイントを発生させる。このデータポイントを集約し、メトリクスとして使用できる。</td>
+<td>フィルターパターンに合致した文字列を持つログをトリガーとして、データポイントを発生させる。このデータポイントを集計し、メトリクスとして使用できる。</td>
 <td></td>
 </tr>
 <tr>
@@ -28728,7 +28728,7 @@ $<span class="w"> </span>service<span class="w"> </span>awslogs<span class="w"> 
 <h3 id="cloudwatch">cloudwatchエージェントとは<a class="headerlink" href="#cloudwatch" title="Permanent link">&para;</a></h3>
 <p>インスタンス系AWSリソース (EC2、AWS ECS、EKS、AWS Lambda) 内で稼働するデーモンのこと。</p>
 <p>インスタンス内のメトリクスのデータポイントやログを収集し、AWS CloudWatchに送信する。</p>
-<p>多くの場合、インスタンス系リソースは基本的なデータポイントを作成し、メトリクスとして集約するが、一部のメトリクス (例：EC2のメモリ使用率やディスク使用率) やログそのものを収集しない。</p>
+<p>多くの場合、インスタンス系リソースは基本的なメトリクスのデータポイントを収集するが、一部のメトリクス (例：EC2のメモリ使用率やディスク使用率) やログそのものを収集しない。</p>
 <p>cloudwatchエージェントを使用することにより、カスタムメトリクスやログを収集できるようにする。</p>
 <p>プロセスは、デーモン化しておくと良い。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>list-unit-files<span class="w"> </span>--type<span class="o">=</span>service<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>amazon-cloudwatch-agent
@@ -29072,7 +29072,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月4日 15:22:55">2025-07-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月8日 12:53:25">2025-05-08</span>
   </span>
 
     

@@ -24424,7 +24424,7 @@
           <li class="md-nav__item">
   <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 集約との違い
+      ▼ 集計との違い
     </span>
   </a>
   
@@ -27496,7 +27496,7 @@
           <li class="md-nav__item">
   <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 集約との違い
+      ▼ 集計との違い
     </span>
   </a>
   
@@ -27635,9 +27635,9 @@
 <p><br></p>
 <h2 id="01">01. メトリクス<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_3">メトリクスとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>とある分析にて、一定期間に発生した同じ種類のデータポイントの集約値 (例：CPU使用率、メモリ使用率など) のこと。</p>
+<p>とある分析にて、一定期間に発生した同じ種類のデータポイントの集計値 (例：CPU使用率、メモリ使用率など) のこと。</p>
 <p>メトリクスは、データポイントの形式にあわせていくつかの形式 (例：パーセンテージ系、時分秒系、カウント系、バイト数系など) がある。</p>
-<p>またメトリクスは、特定の方式 (平均、最大最小、合計、再カウント数) で再集約できる。</p>
+<p>またメトリクスは、特定の方式 (平均、最大最小、合計、再カウント数) で再集計できる。</p>
 <p><img alt="metrics_namespace_dimension" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics_namespace_dimension.png" /></p>
 <blockquote>
 <ul>
@@ -27649,16 +27649,16 @@
 <h3 id="_4">メトリクスの種類<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ パーセンテージ系<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>値をパーセンテージで表す。</p>
-<p>パーセンテージ系データポイントの集約値である。</p>
+<p>パーセンテージ系データポイントの集計値である。</p>
 <h4 id="_6">▼ 時分秒系<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>値を時分秒で表す。</p>
-<p>時分秒系データポイントの集約値である。</p>
+<p>時分秒系データポイントの集計値である。</p>
 <h4 id="_7">▼ カウント系<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>値を<code>0</code>か<code>1</code>で表す。</p>
-<p>カウント系データポイントの集約値である。</p>
+<p>カウント系データポイントの集計値である。</p>
 <h4 id="_8">▼ バイト数系<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>値をバイト数で表す。</p>
-<p>バイト数系データポイントの集約値である。</p>
+<p>バイト数系データポイントの集計値である。</p>
 <p><br></p>
 <h3 id="_9">データポイント<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ データポイントとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
@@ -27708,8 +27708,8 @@
 <li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation</a></li>
 </ul>
 </blockquote>
-<h4 id="_16">▼ 集約との違い<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>集約は、特定の方式 (平均、最大最小、合計、再カウント数) で計算することを指す。</p>
+<h4 id="_16">▼ 集計との違い<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>集計は、特定の方式 (平均、最大最小、合計、再カウント数) で計算することを指す。</p>
 <p><br></p>
 <h2 id="02">02. 監視するべきメトリクスの種類<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="4">ゴールデンシグナル (４大シグナル)<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
@@ -27795,7 +27795,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月4日 15:22:55">2025-07-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月1日 21:54:12">2025-03-01</span>
   </span>
 
     
