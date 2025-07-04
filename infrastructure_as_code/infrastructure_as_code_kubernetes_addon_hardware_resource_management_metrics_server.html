@@ -27726,9 +27726,9 @@
 <h2 id="01-metrics-server">01. metrics-serverの仕組み<a class="headerlink" href="#01-metrics-server" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>metrics-serverは、拡張APIサーバー、ローカルストレージ、スクレイパー、といったコンポーネントから構成される。</p>
-<p>PodとNodeのメトリクスのデータポイントを収集し、<code>kubectl top</code>コマンドでこれを取得できる。</p>
+<p>PodとNodeのメトリクスの元になるデータポイントを収集し、<code>kubectl top</code>コマンドでこれを取得できる。</p>
 <p>また必須ではないが、HorizontalPodAutoscalerとVerticalPodAutoscalerを作成すれば、Podの自動水平スケーリングや自動垂直スケーリングを実行できる。</p>
-<p>KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) のメトリクスのデータポイントを収集しつつ、収集したデータポイントを拡張APIサーバーで公開する。</p>
+<p>KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) のメトリクスの元になるデータポイントを収集しつつ、収集したデータポイントを拡張APIサーバーで公開する。</p>
 <p>似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。</p>
 <dl>
 <dt><code>(1)</code></dt>
@@ -27759,7 +27759,7 @@
 <p><br></p>
 <h3 id="api">拡張APIサーバー<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
 <h4 id="api_1">▼ 拡張APIサーバーとは<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h4>
-<p>拡張APIサーバーは、ServiceとAPIServiceを介して、クライアント (<code>kubectl top</code>コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) からのリクエストを受信し、メトリクスのデータポイントを含むレスポンスを返信する。</p>
+<p>拡張APIサーバーは、ServiceとAPIServiceを介して、クライアント (<code>kubectl top</code>コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) からのリクエストを受信し、メトリクスの元になるデータポイントを含むレスポンスを返信する。</p>
 <p>データポイントはローカルストレージに保管している。</p>
 <blockquote>
 <ul>
@@ -27769,10 +27769,10 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">ローカルストレージ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>ローカルストレージは、クライアント (<code>kubectl top</code>コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) 宛先となっているPodやNodeのメトリクスのデータポイントを保管する。</p>
+<p>ローカルストレージは、クライアント (<code>kubectl top</code>コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) 宛先となっているPodやNodeのメトリクスの元になるデータポイントを保管する。</p>
 <p><br></p>
 <h3 id="_4">スクレイパー<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>スクレイパーは、kubeletのデーモンからPodやNodeからメトリクスのデータポイントを定期的に収集し、ローカルストレージに保管する。</p>
+<p>スクレイパーは、kubeletのデーモンからPodやNodeからメトリクスの元になるデータポイントを定期的に収集し、ローカルストレージに保管する。</p>
 <p>kubeletのデーモンはメトリクス収集用エンドポイント (例：<code>/metrics/resource</code>、<code>/stats</code>など) を持ち、これがスクレイパーの収集対象になる。</p>
 <p>そのため、PodやNodeにメトリクス収集用エンドポイント (例：<code>/metrics</code>) を設ける必要はない。</p>
 <p><img alt="metrics-server_scraper" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics-server_scraper.png" /></p>
@@ -28053,7 +28053,7 @@ baz<span class="w">        </span>baz-deployment<span class="w">   </span>Deploy
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 19:49:44">2025-05-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月4日 15:58:54">2025-07-04</span>
   </span>
 
     
