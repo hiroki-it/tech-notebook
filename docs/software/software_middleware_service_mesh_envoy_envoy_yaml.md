@@ -402,7 +402,7 @@ static_resources:
 
 `http.grpc_web`はデフォルトで有効になっているHTTPフィルターである。
 
-受信したHTTP/1.1をHTTP/2 (例：gRPCなど) やHTTP/3に変換し、gRPCサーバーに送信する。
+受信したHTTP/1.1をHTTP/2 (例：gRPC、GraphQLなど) やHTTP/3に変換し、gRPCサーバーに送信する。
 
 また、gRPCサーバーからのHTTP/2のレスポンスをHTTP/1.1に変換する。
 
@@ -955,7 +955,7 @@ static_resources:
 
 #### ▼ http2_protocol_options
 
-HTTP/2 (例：gRPCなど) について設定する。
+HTTP/2 (例：gRPC、GraphQLなど) について設定する。
 
 ```yaml
 static_resources:

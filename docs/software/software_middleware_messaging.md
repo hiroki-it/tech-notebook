@@ -141,7 +141,7 @@ description: メッセージング系ミドルウェアの知見を記録して�
 | Kafka Protocol (Kafka独自プロトコル) | バイナリ                     | Apache Kafka                           | ✅     |
 | STOMP                                | テキスト                     | RabbitMQ                               |        |
 | HTTP/1.1、Webhook                    | テキスト (例：JSON、XMLなど) | AWS SQS、AWS SNS、Google Cloud Pub/Sub |        |
-| HTTP/2 (例：gRPC)                    | バイナリ (例：Protocolbuf)   | 調査中...                              |        |
+| HTTP/2 (例：gRPC、GraphQLなど)       | バイナリ (例：Protocolbuf)   | 調査中...                              |        |
 | WebSocket                            | テキスト、バイナリ           | 調査中...                              |        |
 
 <br>

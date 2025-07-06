@@ -19,7 +19,7 @@ description: gRPC＠RPC-APIの知見を記録しています。
 
 RPCフレームワークの一つで、Protocol Bufferを使用してRPC (リモートプロシージャーコール) を実行する。
 
-従来のHTTP/1.1ではなく、HTTP/2 (例：gRPCなど) を使用する。
+従来のHTTP/1.1ではなく、HTTP/2 (例：gRPC、GraphQLなど) を使用する。
 
 RESTful-APIに対するリクエストではリクエストのヘッダーやボディを作成する必要がある。
 
