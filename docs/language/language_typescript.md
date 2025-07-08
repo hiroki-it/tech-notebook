@@ -335,6 +335,14 @@ const strLength: number = (<string>value).length;
 
 > - https://typescriptbook.jp/reference/values-types-variables/type-assertion-as#%E5%9E%8B%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9
 
+#### ▼ 非nullアサーション
+
+変数の値が`undefined`だった場合に、例外をスローする。
+
+```typescript
+const foo: string = process.env.FOO!;
+```
+
 <br>
 
 ## 04. 独自の型宣言
@@ -412,7 +420,36 @@ const myEnv: Env = {
 
 <br>
 
-## 06. エラーハンドリング
+## 06. 条件式
+
+### 二項演算子
+
+与えられた変数の値がfalsyだった場合に、値を設定する。
+
+デフォルト値を設定する場合に役立つ。
+
+```typescript
+// ""、0、null、undefined、falseなど
+const flag = enableFoo || "false";
+```
+
+```typescript
+// null、undefinedなど
+const flag = enableFoo ?? "false";
+```
+
+<br>
+
+### 三項演算子
+
+```typescript
+// fooの場合にfooを代入し、fooでない場合にbarを代入する
+const fooOrBar = foo == "foo" ? foo : "bar";
+```
+
+<br>
+
+## 07. エラーハンドリング
 
 ### 独自エラーオブジェクトの定義
 

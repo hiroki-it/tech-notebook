@@ -343,6 +343,8 @@ AWS Lambda@Edgeを実行するためには、最低限、以下の認可スコ�
 
 ## 03. AWS Lambda Web Adapter
 
+### AWS Lambda Web Adapterとは
+
 AWS Lambdaの拡張機能である。
 
 通常のAWS Lambdaでは動かせないフレームワーク (例：Express.js、Next.js、SprintBoot、ASP.NET、Laravelなど) のアプリを動かせるようにする。
@@ -353,5 +355,29 @@ AWS Lambdaの拡張機能である。
 
 > - https://aws.amazon.com/jp/builders-flash/202301/lambda-web-adapter/
 > - https://github.com/awslabs/aws-lambda-web-adapter
+
+<br>
+
+### Dockerfile
+
+#### ▼ Next.jsの場合
+
+```dockerfile
+FROM node:20.12.2-bullseye-slim AS builder
+WORKDIR /build
+COPY package.json yarn.lock ./
+RUN yarn install && yarn next telemetry disable
+COPY . .
+RUN yarn build
+
+FROM amazon/aws-lambda-nodejs:20.2024.04.24.10
+WORKDIR /usr/local/statuspage
+COPY --from=public.ecr.aws/awsguru/aws-lambda-adapter:0.8.3 /lambda-adapter /opt/extensions/lambda-adapter
+COPY --from=builder /build/next.config.mjs /build/public /build/.next/static /build/.next/standalone ./
+RUN ln -s /tmp/cache ./.next/cache
+EXPOSE 3000
+ENV PORT=3000
+ENTRYPOINT ["node", "server.js"]
+```
 
 <br>
