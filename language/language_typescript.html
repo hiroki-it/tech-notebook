@@ -11174,6 +11174,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#null" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 非nullアサーション
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -11277,15 +11286,48 @@
         <li class="md-nav__item">
   <a href="#06" class="md-nav__link">
     <span class="md-ellipsis">
-      06. エラーハンドリング
+      06. 条件式
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="06. エラーハンドリング">
+    <nav class="md-nav" aria-label="06. 条件式">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      二項演算子
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      三項演算子
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    <span class="md-ellipsis">
+      07. エラーハンドリング
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="07. エラーハンドリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
     <span class="md-ellipsis">
       独自エラーオブジェクトの定義
     </span>
@@ -11294,7 +11336,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
+  <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
       エラーメッセージの取得
     </span>
@@ -27838,6 +27880,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#null" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 非nullアサーション
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -27941,15 +27992,48 @@
         <li class="md-nav__item">
   <a href="#06" class="md-nav__link">
     <span class="md-ellipsis">
-      06. エラーハンドリング
+      06. 条件式
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="06. エラーハンドリング">
+    <nav class="md-nav" aria-label="06. 条件式">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      二項演算子
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      三項演算子
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    <span class="md-ellipsis">
+      07. エラーハンドリング
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="07. エラーハンドリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
     <span class="md-ellipsis">
       独自エラーオブジェクトの定義
     </span>
@@ -27958,7 +28042,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
+  <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
       エラーメッセージの取得
     </span>
@@ -28269,6 +28353,10 @@
 <li><a href="https://typescriptbook.jp/reference/values-types-variables/type-assertion-as#%E5%9E%8B%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9">https://typescriptbook.jp/reference/values-types-variables/type-assertion-as#%E5%9E%8B%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9</a></li>
 </ul>
 </blockquote>
+<h4 id="null">▼ 非nullアサーション<a class="headerlink" href="#null" title="Permanent link">&para;</a></h4>
+<p>変数の値が<code>undefined</code>だった場合に、例外をスローする。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">FOO</span><span class="o">!</span><span class="p">;</span>
+</code></pre></div>
 <p><br></p>
 <h2 id="04">04. 独自の型宣言<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="type">typeエイリアス宣言<a class="headerlink" href="#type" title="Permanent link">&para;</a></h3>
@@ -28328,8 +28416,24 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="06">06. エラーハンドリング<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
-<h3 id="_25">独自エラーオブジェクトの定義<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<h2 id="06">06. 条件式<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<h3 id="_25">二項演算子<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p>与えられた変数の値がfalsyだった場合に、値を設定する。</p>
+<p>デフォルト値を設定する場合に役立つ。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// &quot;&quot;、0、null、undefined、falseなど</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">enableFoo</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// null、undefinedなど</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">enableFoo</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_26">三項演算子<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// fooの場合にfooを代入し、fooでない場合にbarを代入する</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">fooOrBar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="07">07. エラーハンドリング<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
+<h3 id="_27">独自エラーオブジェクトの定義<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
 <p>ステータスコードに応じたエラーを継承すると、<code>try-catch</code>句で扱いやすくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">NotFoundError</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
@@ -28342,7 +28446,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_26">エラーメッセージの取得<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<h3 id="_28">エラーメッセージの取得<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
 <p>TypeScriptでは、エラーの構造がさまざまある。</p>
 <p>型安全のために、これらを条件分岐で処置する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Remixの場合</span>
@@ -28420,7 +28524,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月10日 22:40:09">2025-06-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月8日 22:22:20">2025-07-08</span>
   </span>
 
     

@@ -16023,6 +16023,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="03. AWS Lambda Web Adapter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-lambda-web-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Lambda Web Adapterとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dockerfile
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dockerfile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nextjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Next.jsの場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -27891,6 +27930,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="03. AWS Lambda Web Adapter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-lambda-web-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Lambda Web Adapterとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dockerfile
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dockerfile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nextjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Next.jsの場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -28265,6 +28343,7 @@ $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03-aws-lambda-web-adapter">03. AWS Lambda Web Adapter<a class="headerlink" href="#03-aws-lambda-web-adapter" title="Permanent link">&para;</a></h2>
+<h3 id="aws-lambda-web-adapter">AWS Lambda Web Adapterとは<a class="headerlink" href="#aws-lambda-web-adapter" title="Permanent link">&para;</a></h3>
 <p>AWS Lambdaの拡張機能である。</p>
 <p>通常のAWS Lambdaでは動かせないフレームワーク (例：Express.js、Next.js、SprintBoot、ASP.NET、Laravelなど) のアプリを動かせるようにする。</p>
 <p>アプリケーションのプロセスの前段でリクエストを変換し、アプリケーションがリクエストを処理できるようにする。</p>
@@ -28275,6 +28354,25 @@ $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <li><a href="https://github.com/awslabs/aws-lambda-web-adapter">https://github.com/awslabs/aws-lambda-web-adapter</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="dockerfile">Dockerfile<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h3>
+<h4 id="nextjs">▼ Next.jsの場合<a class="headerlink" href="#nextjs" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:20.12.2-bullseye-slim</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/build</span>
+<span class="k">COPY</span><span class="w"> </span>package.json<span class="w"> </span>yarn.lock<span class="w"> </span>./
+<span class="k">RUN</span><span class="w"> </span>yarn<span class="w"> </span>install<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>yarn<span class="w"> </span>next<span class="w"> </span>telemetry<span class="w"> </span>disable
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+<span class="k">RUN</span><span class="w"> </span>yarn<span class="w"> </span>build
+
+<span class="k">FROM</span><span class="w"> </span><span class="s">amazon/aws-lambda-nodejs:20.2024.04.24.10</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/usr/local/statuspage</span>
+<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>public.ecr.aws/awsguru/aws-lambda-adapter:0.8.3<span class="w"> </span>/lambda-adapter<span class="w"> </span>/opt/extensions/lambda-adapter
+<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>builder<span class="w"> </span>/build/next.config.mjs<span class="w"> </span>/build/public<span class="w"> </span>/build/.next/static<span class="w"> </span>/build/.next/standalone<span class="w"> </span>./
+<span class="k">RUN</span><span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/tmp/cache<span class="w"> </span>./.next/cache
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">3000</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="m">3000</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;node&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;server.js&quot;</span><span class="p">]</span>
+</code></pre></div>
 <p><br></p>
 
 
@@ -28296,7 +28394,7 @@ $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月4日 15:58:54">2025-07-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月8日 22:22:20">2025-07-08</span>
   </span>
 
     
