@@ -27338,9 +27338,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sansubject-alternative-name" class="md-nav__link">
+  <a href="#san-subject-alternative-name" class="md-nav__link">
     <span class="md-ellipsis">
-      SAN（Subject Alternative Name）
+      SAN (Subject Alternative Name)
     </span>
   </a>
   
@@ -27668,7 +27668,7 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>TLSハンドシェイク開始後、サーバーはクライアント（例：ブラウザ）に署名済み証明書とルート認証局のCA証明書をクライアントに返信する。</p>
+<p>TLSハンドシェイク開始後、サーバーはクライアント (例：ブラウザ) に署名済み証明書とルート認証局のCA証明書をクライアントに返信する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
@@ -27685,10 +27685,10 @@
 <h4 id="_13">▼ 識別子の照合<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <ol>
 <li>送信元マイクロサービスはサーバー証明書のFQDNが宛先ホスト名と一致しているかを照合する。</li>
-<li>宛先マイクロサービスはクライアント証明書のID（例：SPIFEE IDなど）と認可設定を照合する。</li>
+<li>宛先マイクロサービスはクライアント証明書のID (例：SPIFEE IDなど) と認可設定を照合する。</li>
 </ol>
 <h4 id="_14">▼ 共通鍵交換<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>暗号スイートで指定された鍵交換アルゴリズム（例：ECDHE）により、送信元マイクロサービスと宛先マイクロサービス間で鍵合意し、共通鍵を共有する。</p>
+<p>暗号スイートで指定された鍵交換アルゴリズム (例：ECDHE) により、送信元マイクロサービスと宛先マイクロサービス間で鍵合意し、共通鍵を共有する。</p>
 <h4 id="tls_1">▼ TLSハンドシェイク終了<a class="headerlink" href="#tls_1" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <p><br></p>
@@ -27838,7 +27838,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <tbody>
 <tr>
 <td>X.509</td>
-<td>ITU-T（国際電気通信連合）</td>
+<td>ITU-T (国際電気通信連合)</td>
 <td>デジタル証明書の基本構造と検証モデルを定義する国際規格である。</td>
 </tr>
 <tr>
@@ -27854,12 +27854,12 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <tr>
 <td>RFC 2818</td>
 <td>IETF</td>
-<td>HTTP over TLS（HTTPS）の仕様を定義する。</td>
+<td>HTTP over TLS (HTTPS) の仕様を定義する。</td>
 </tr>
 <tr>
 <td>RFC 5280 Appendix A</td>
 <td>IETF</td>
-<td>SAN の構文（ASN.1形式）や使用例を含む技術的詳細を定義する。</td>
+<td>SAN の構文 (ASN.1形式) や使用例を含む技術的詳細を定義する。</td>
 </tr>
 <tr>
 <td>RFC 2459</td>
@@ -27874,14 +27874,14 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="sansubject-alternative-name">SAN（Subject Alternative Name）<a class="headerlink" href="#sansubject-alternative-name" title="Permanent link">&para;</a></h3>
+<h3 id="san-subject-alternative-name">SAN (Subject Alternative Name)<a class="headerlink" href="#san-subject-alternative-name" title="Permanent link">&para;</a></h3>
 <p>証明書の識別子である。</p>
 <ul>
-<li>DNS Name（例：<code>www.example.com</code>）</li>
-<li>IPアドレス（例：<code>192.0.2.1</code>）</li>
-<li>URI（例：<code>spiffe://cluster.local/ns/default/sa/default</code>）</li>
+<li>DNS Name (例：<code>www.example.com</code>)</li>
+<li>IPアドレス (例：<code>192.0.2.1</code>)</li>
+<li>URI (例：<code>spiffe://cluster.local/ns/default/sa/default</code>)</li>
 <li>メールアドレス</li>
-<li>ディレクトリ名（LDAP識別子など）</li>
+<li>ディレクトリ名 (LDAP識別子など)</li>
 </ul>
 <h2 id="02-06-ca">02-06. CA証明書の配置<a class="headerlink" href="#02-06-ca" title="Permanent link">&para;</a></h2>
 <h3 id="ca-ca">自己署名CA証明書 (オレオレCA証明書) の作成<a class="headerlink" href="#ca-ca" title="Permanent link">&para;</a></h3>
@@ -28283,7 +28283,7 @@ Email<span class="w"> </span>Address<span class="w"> </span><span class="o">[]</
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月29日 23:59:49">2025-05-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月8日 15:16:16">2025-07-08</span>
   </span>
 
     
