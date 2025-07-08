@@ -189,16 +189,16 @@ const successfulUserData = {
 
 // バリデーションに失敗する可能性があるデータを用意する
 const failedUserData = {
-  // 負の数（positive()に違反する）
+  // 負の数 (positive()に違反する)
   id: -5,
-  // 空文字列（min(1)に違反する）
+  // 空文字列 (min(1)に違反する)
   name: "",
-  // 不正なメールアドレス形式（email()に違反する）
+  // 不正なメールアドレス形式 (email()に違反する)
   email: "bob@",
-  // ageがない（optionalなのでOKである）
-  // 配列内に数値がある（array(z.string())に違反する）
+  // ageがない (optionalなのでOKである)
+  // 配列内に数値がある (array(z.string())に違反する)
   roles: ["editor", 123],
-  // isActiveがない（default(true)が適用されるのでOKである）
+  // isActiveがない (default(true)が適用されるのでOKである)
 };
 
 // parseを使ったバリデーション (成功時は値を返し、失敗時はエラーをスローする)
@@ -214,7 +214,7 @@ try {
   // ZodErrorの場合は、詳細なエラー情報が含まれる
   if (error instanceof z.ZodError) {
     console.error("エラー詳細:", error.errors);
-    /* エラー詳細の例（一部）：
+    /* エラー詳細の例 (一部) ：
     [
       {
         "code": "too_small",

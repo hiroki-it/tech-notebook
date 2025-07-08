@@ -451,7 +451,7 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 
 - メールOTP
 - SMS OTP
-- TOTP（Google Authenticator等）
+- TOTP (Google Authenticator等)
 
 <br>
 

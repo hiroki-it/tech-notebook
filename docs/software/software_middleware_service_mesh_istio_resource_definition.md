@@ -203,7 +203,7 @@ data:
 
 送信元Podに紐づくServiceAccountが送信元の場合、認可を実施する。
 
-Istioはクライアント証明書にID（例：SPIFEE ID）を設定しており、このIDが`principals`値と一致するかを検証する。
+Istioはクライアント証明書にID (例：SPIFEE ID) を設定しており、このIDが`principals`値と一致するかを検証する。
 
 Kubernetesでは送信元Podの名前を知る方法がない (IPアドレスは可能) なので、制御しやすくなる。
 

@@ -52,10 +52,10 @@ description: Load Balancer＠Google Cloudリソースの知見を記録してい
 
 Load Balancerは、通過したリクエストにヘッダーを付与する。
 
-- `Via`: `1.1 google`（リクエストとレスポンス）
-- `X-Forwarded-Proto`: `<http、https>`（リクエストのみ）
-- `X-Cloud-Trace-Context`: `<trace-id>/<span-id>;<trace-options>`（リクエストのみ）
-- `X-Forwarded-For`: `[<supplied-value>,]<client-ip>,<load-balancer-ip>`（リクエストのみ）
+- `Via`: `1.1 google` (リクエストとレスポンス)
+- `X-Forwarded-Proto`: `<http、https>` (リクエストのみ)
+- `X-Cloud-Trace-Context`: `<trace-id>/<span-id>;<trace-options>` (リクエストのみ)
+- `X-Forwarded-For`: `[<supplied-value>,]<client-ip>,<load-balancer-ip>` (リクエストのみ)
 
 > - https://cloud.google.com/load-balancing/docs/https?hl=ja#target-proxies
 

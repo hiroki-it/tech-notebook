@@ -95,7 +95,7 @@ const newLock = (client: ReturnType<typeof redisClient>, timeout = 50000) => {
       const result = await client.set(keyName, "{}", {
         // PXオプションで、ロックの有効期限を設定する
         PX: timeout,
-        // NX（Redisのキーが存在しない場合のみ設定）オプションで、キーによる排他制御を実現する
+        // NX (Redisのキーが存在しない場合のみ設定) オプションで、キーによる排他制御を実現する
         NX: true,
       });
       // resultがnullでない場合、ロックを開始したことを意味する

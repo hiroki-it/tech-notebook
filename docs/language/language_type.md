@@ -95,7 +95,7 @@ description: 言語の種類＠言語を記録しています。
 
 #### ▼ 中間型言語
 
-JVM（Java Virtual Machine）によって、中間言語方式で翻訳される。
+JVM (Java Virtual Machine) によって、中間言語方式で翻訳される。
 
 **＊例＊**
 

@@ -69,7 +69,7 @@ aws-repository/
         │   ├── outputs.tf
         │   └── variables.tf
         │
-        ├── kubernetes/ # Kubernetesリソース（例：RoleBinding、StorageClassなど）
+        ├── kubernetes/ # Kubernetesリソース (例：RoleBinding、StorageClassなど)
         │   ├── main.tf
         │   ├── outputs.tf
         │   └── variables.tf
@@ -107,7 +107,7 @@ aws-remote-repository/
     │   ├── outputs.tf
     │   └── variables.tf
     │
-    ├── kubernetes/ # Kubernetesリソース（例：RoleBinding、StorageClassなど）
+    ├── kubernetes/ # Kubernetesリソース (例：RoleBinding、StorageClassなど)
     │   ├── main.tf
     │   ├── outputs.tf
     │   └── variables.tf
@@ -134,7 +134,7 @@ aws-remote-repository/
 
 最上層は、AWSリソースで分割する。
 
-またスクリプトを使用するAWSリソース（例：Lambda）では、そのソースコードをモジュール下で管理する。
+またスクリプトを使用するAWSリソース (例：Lambda) では、そのソースコードをモジュール下で管理する。
 
 **＊例＊**
 

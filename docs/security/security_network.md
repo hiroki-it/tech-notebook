@@ -19,7 +19,7 @@ description: ︎ネットワークセキュリティ＠セキュリティの知�
 - 改竄
 - 否認
 - 情報漏洩
-- DoS（サービス拒否）
+- DoS (サービス拒否)
 - 特権昇格
 
 > - https://www.crowdstrike.com/ja-jp/cybersecurity-101/threat-intelligence/threat-model/

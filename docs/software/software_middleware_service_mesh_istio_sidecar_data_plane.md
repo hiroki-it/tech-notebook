@@ -728,7 +728,7 @@ Podであれば、`.spec.containers[*].args`オプションを使用する。
 
 #### ▼ router
 
-istio-proxyをメッシュゲートウェイ（Istio Ingress GAteway、Istio Egress Gateway）として実行する。
+istio-proxyをメッシュゲートウェイ (Istio Ingress GAteway、Istio Egress Gateway) として実行する。
 
 ```bash
 $ pilot-agent proxy router

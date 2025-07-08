@@ -118,7 +118,7 @@ function getTraceId(headers) {
 ```javascript
 import pino from "pino/browser";
 
-// prettyPrint: true で見やすい出力（開発用）
+// prettyPrint: true で見やすい出力 (開発用)
 const logger = pino({
   browser: {
     asObject: true, // ログをオブジェクト形式で出力
@@ -144,7 +144,7 @@ Node.jsのロガーである。
 import * as winston from "winston";
 
 /**
- * ログの出力先（トランスポート）を設定する
+ * ログの出力先 (トランスポート) を設定する
  */
 const transports = [
   new winston.transports.Console({

@@ -47,12 +47,12 @@ description: サービスメッシュの担う責務＠サービスメッシュ�
 
 ## 02. 概要
 
-| クラウドネイティブ技術（アルファベット順） | Cilium Service Mesh | Consul     | Istio                      | Kong Mesh                  | Kuma       | Linkerd       | NGINX Service Mesh | Traefik Mesh |
-| :----------------------------------------- | :------------------ | :--------- | :------------------------- | :------------------------- | :--------- | :------------ | :----------------- | ------------ |
-| アーキテクチャモード                       | サイドカーレス      | サイドカー | サイドカー／サイドカーレス | サイドカー／サイドカーレス | サイドカー | サイドカー    | サイドカー         | サイドカー   |
-| データプレーン                             | eBPF、Envoy         | Envoy      | Envoy                      | Envoy                      | Envoy      | Linkerd Proxy | Nginx              | Traefik      |
-| CNCFステータス                             | Graduated           | なし       | Graduated                  | なし                       | Sandbox    | Graduated     | なし               | なし         |
-| 開発元                                     | Isovalent           | HashiCorp  | Googleなど                 | Kong                       | Kong       | Buoyant       | Nginx              | Traefik Labs |
+| クラウドネイティブ技術 (アルファベット順) | Cilium Service Mesh | Consul     | Istio                      | Kong Mesh                  | Kuma       | Linkerd       | NGINX Service Mesh | Traefik Mesh |
+| :---------------------------------------- | :------------------ | :--------- | :------------------------- | :------------------------- | :--------- | :------------ | :----------------- | ------------ |
+| アーキテクチャモード                      | サイドカーレス      | サイドカー | サイドカー／サイドカーレス | サイドカー／サイドカーレス | サイドカー | サイドカー    | サイドカー         | サイドカー   |
+| データプレーン                            | eBPF、Envoy         | Envoy      | Envoy                      | Envoy                      | Envoy      | Linkerd Proxy | Nginx              | Traefik      |
+| CNCFステータス                            | Graduated           | なし       | Graduated                  | なし                       | Sandbox    | Graduated     | なし               | なし         |
+| 開発元                                    | Isovalent           | HashiCorp  | Googleなど                 | Kong                       | Kong       | Buoyant       | Nginx              | Traefik Labs |
 
 <br>
 

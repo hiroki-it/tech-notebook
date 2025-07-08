@@ -465,7 +465,7 @@ waypoint-proxyは、NamespaceかつNodeのリバースプロキシである。
 
 マイクロサービスPodがいるNamespace単位でwaypoint-proxyを作成すると良い。
 
-また、マイクロサービスPodが乗りうるNode（またはNodeグループ）に最低一個ずつスケジューリングするよう、waypoint-proxy Podを冗長化しつつAffinityを設定するとよい
+また、マイクロサービスPodが乗りうるNode (またはNodeグループ) に最低一個ずつスケジューリングするよう、waypoint-proxy Podを冗長化しつつAffinityを設定するとよい
 
 ![istio_ambient-mesh_waypoint-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy_reverse-proxy.png)
 
@@ -481,7 +481,7 @@ waypoint-proxyは、NamespaceかつNodeのリバースプロキシである。
 
 送信元からリクエストを受信したwaypoint-proxy Podは、宛先へのリクエスト送信からレスポンス受信までの処理時間を計測する。
 
-waypoint-proxy Pod上で記録したタイムスタンプを集計し、A-C（トレースに相当）、A-B（スパンに相当）、B-C（スパンに相当）の処理時間を計測する。
+waypoint-proxy Pod上で記録したタイムスタンプを集計し、A-C (トレースに相当) 、A-B (スパンに相当) 、B-C (スパンに相当) の処理時間を計測する。
 
 サイドカーモードとアンビエントモードでも、マイクロサービスから最初のプロキシまでの通信時間を計測できない問題はある。
 
