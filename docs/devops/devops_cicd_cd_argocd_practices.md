@@ -38,7 +38,9 @@ repo-serverの冗長化は、可用性だけでなく性能設計の改善にも
 > - https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b
 > - https://saikiranpikili.medium.com/make-your-argocd-super-fast-9c75fa94b840
 
-#### ▼ レプリカ当たりの処理効率の向上
+#### ▼ 並列数 (`--parallelismlimit`)
+
+#### ▼ レプリカ当たりの処理効率の向上 (`.argocd-allow-concurrency`ファイル)
 
 repo-serverは、レプリカ当たり同時に1つの処理しかできない。
 
@@ -53,7 +55,7 @@ Applicationがポーリングするリポジトリのパス直下に`.argocd-all
 > - https://blog.manabusakai.com/2021/09/concurrent-processing-of-argo-cd/
 > - https://saikiranpikili.medium.com/make-your-argocd-super-fast-9c75fa94b840
 
-#### ▼ キャッシュ作成の頻度を下げる
+#### ▼ キャッシュ作成範囲を小さくする (`manifest-generate-paths`)
 
 repo-serverは、デプロイ対象のリポジトリにあるマニフェストのキャッシュを積極的に作成する
 
@@ -61,7 +63,7 @@ repo-serverは、デプロイ対象のリポジトリにあるマニフェスト
 
 例えば、Applicationが`500`個でリポジトリが`1`個のような場合である。
 
-すると、各Applicationでは、デプロイ対象のHelmチャートだけでなく、それ以外のHelmチャートの変更であっても、キャッシュを再作成することになる。
+すると、各Applicationでは、デプロイ対象のHelmチャートだけでなく、それ以外のHelmチャートの変更であっても、キャッシュを再作成してしまう。
 
 これが、パフォーマンスの問題になる。
 
@@ -75,6 +77,8 @@ Applicationの`metadata.annotations`キーに`argocd.argoproj.io/manifest-genera
 > - https://foxutech.com/upscale-your-continuous-deployment-at-enterprise-grade-with-argocd/
 > - https://medium.com/@michail.gebka/optimizing-argocd-for-monorepo-setup-7c5f548e5575
 > - https://faun.dev/c/stories/keskad/optimizing-argocd-repo-server-to-work-with-kustomize-in-monorepo/
+
+#### ▼ タイムアウト
 
 <br>
 
@@ -99,7 +103,7 @@ application-controllerは、デフォルトだとレプリカ当たり`400`個�
 - `--status-processors`は、application-controllerがデプロイ対象のClusterに対してヘルスチェックするためのプロセッサ数
 - `--operation-processors`は、application-controllerがデプロイ対象のClusterに対して、差分確認 (`kubectl diff`) と Sync (`kubectl apply`) するためのプロセッサ数
 
-#### ▼ レプリカ当たりの処理効率の向上
+#### ▼ レプリカ当たりの処理効率の向上 (`--status-processors`、`--operation-processors`)
 
 application-controllerは、Reconciliation時にApplicationを一つずつ処理していく。
 
@@ -135,7 +139,7 @@ Application数が多くなるほど、Reconciliationの処理キューを空に�
 > - https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/
 
-#### ▼ レプリカ当たりの負荷の低減
+#### ▼ レプリカ当たりの負荷の低減 (`ARGOCD_CONTROLLER_REPLICAS`)
 
 application-controllerは、デプロイ対象のClusterを処理する。
 
@@ -168,7 +172,7 @@ spec:
 
 > - https://github.com/argoproj/argo-cd/issues/6125#issuecomment-1660341387
 
-#### ▼ レプリカ当たりのReconciliationの頻度の低減
+#### ▼ レプリカ当たりのReconciliationの頻度の低減 (`timeout.reconciliation`)
 
 application-controllerのReconciliationの頻度を設定する。
 
@@ -187,7 +191,7 @@ data:
 > - https://foxutech.medium.com/how-to-modify-the-application-reconciliation-timeout-in-argo-cd-833fedf8ebbd
 > - https://saikiranpikili.medium.com/make-your-argocd-super-fast-9c75fa94b840
 
-#### ▼ 処理結果のキャッシュの更新頻度の低減
+#### ▼ 処理結果のキャッシュの更新頻度の低減 (`ARGOCD_CLUSTER_CACHE_RESYNC_DURATION`)
 
 application-controllerは、クラスターの処理結果のキャッシュを定期的に削除する (デフォルトでは`12`時間) 。
 
@@ -217,6 +221,14 @@ spec:
 > - https://github.com/argoproj/argo-cd/issues/15464#issuecomment-2340985236
 > - https://github.com/argoproj/argo-cd/blob/v2.12.6/controller/cache/cache.go#L48
 > - https://saikiranpikili.medium.com/make-your-argocd-super-fast-9c75fa94b840
+
+#### ▼ Jitterの変更 (`app-resync-jitter`)
+
+記入中...
+
+#### ▼ repo-serverに対するタイムアウト (`--repo-server-timeout-seconds`)
+
+記入中...
 
 <br>
 
