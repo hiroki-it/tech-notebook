@@ -40,6 +40,23 @@ repo-serverの冗長化は、可用性だけでなく性能設計の改善にも
 
 #### ▼ 並列数 (`--parallelismlimit`)
 
+マニフェスト作成処理を並列化する。
+
+```yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: argocd-repo-server
+spec:
+  template:
+    spec:
+      containers:
+        - name: argocd-repo-server
+          command:
+            - --parallelismlimit
+            - 5
+```
+
 #### ▼ レプリカ当たりの処理効率の向上 (`.argocd-allow-concurrency`ファイル)
 
 repo-serverは、レプリカ当たり同時に1つの処理しかできない。
@@ -73,12 +90,28 @@ Applicationの`metadata.annotations`キーに`argocd.argoproj.io/manifest-genera
 
 これにより、`argocd_app_reconcile_count`と`argocd_git_request_total`のメトリクスを改善できる。
 
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-a
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: services/foo
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/example/monorepo.git
+    targetRevision: HEAD
+    path: services/foo
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+```
+
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#manifest-paths-annotation
 > - https://foxutech.com/upscale-your-continuous-deployment-at-enterprise-grade-with-argocd/
 > - https://medium.com/@michail.gebka/optimizing-argocd-for-monorepo-setup-7c5f548e5575
 > - https://faun.dev/c/stories/keskad/optimizing-argocd-repo-server-to-work-with-kustomize-in-monorepo/
-
-#### ▼ タイムアウト
 
 <br>
 
@@ -112,6 +145,25 @@ CPUの並列処理数を増やすと、レプリカ当たりの処理効率を�
 Clusterのヘルスチェックの並列処理数は`--status-processors`オプションで、Diff/Sync処理のそれは`--operation-processors`オプションで変更できる。
 
 ```yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: argocd-application-controller
+spec:
+  template:
+    spec:
+      containers:
+        - name: argocd-application-controller
+          command:
+            - --status-processors
+            - 20
+            - --operation-processors
+            - 10
+```
+
+ConfigMapでも同様に設定できる。
+
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -139,7 +191,7 @@ Application数が多くなるほど、Reconciliationの処理キューを空に�
 > - https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/
 
-#### ▼ レプリカ当たりの負荷の低減 (`ARGOCD_CONTROLLER_REPLICAS`)
+#### ▼ レプリカ当たりの負荷を低減 (`ARGOCD_CONTROLLER_REPLICAS`)
 
 application-controllerは、デプロイ対象のClusterを処理する。
 
@@ -172,7 +224,7 @@ spec:
 
 > - https://github.com/argoproj/argo-cd/issues/6125#issuecomment-1660341387
 
-#### ▼ レプリカ当たりのReconciliationの頻度の低減 (`timeout.reconciliation`)
+#### ▼ レプリカ当たりのReconciliationの頻度を低減 (`timeout.reconciliation`)
 
 application-controllerのReconciliationの頻度を設定する。
 
@@ -191,7 +243,7 @@ data:
 > - https://foxutech.medium.com/how-to-modify-the-application-reconciliation-timeout-in-argo-cd-833fedf8ebbd
 > - https://saikiranpikili.medium.com/make-your-argocd-super-fast-9c75fa94b840
 
-#### ▼ 処理結果のキャッシュの更新頻度の低減 (`ARGOCD_CLUSTER_CACHE_RESYNC_DURATION`)
+#### ▼ 処理結果のキャッシュの更新頻度を低減 (`ARGOCD_CLUSTER_CACHE_RESYNC_DURATION`)
 
 application-controllerは、クラスターの処理結果のキャッシュを定期的に削除する (デフォルトでは`12`時間) 。
 
@@ -222,13 +274,45 @@ spec:
 > - https://github.com/argoproj/argo-cd/blob/v2.12.6/controller/cache/cache.go#L48
 > - https://saikiranpikili.medium.com/make-your-argocd-super-fast-9c75fa94b840
 
-#### ▼ Jitterの変更 (`app-resync-jitter`)
+#### ▼ Reconciliationのスパイクを軽減
 
-記入中...
+Reconciliationの頻度をランダムに遅延させる。
 
-#### ▼ repo-serverに対するタイムアウト (`--repo-server-timeout-seconds`)
+argocd-application-controllerのPodが一斉にReconciliationを実行しないようにし、スパイクを軽減する。
 
-記入中...
+```yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: argocd-application-controller
+spec:
+  template:
+    spec:
+      containers:
+        - name: argocd-application-controller
+          command:
+            - --app-resync-jitter
+            - 60s
+```
+
+#### ▼ タイムアウトを短くする
+
+argocd-application-controllerからrepo-serverへのリクエストのタイムアウトを設定する。
+
+```yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: argocd-application-controller
+spec:
+  template:
+    spec:
+      containers:
+        - name: argocd-application-controller
+          command:
+            - --repo-server-timeout-seconds
+            - 60s
+```
 
 <br>
 
@@ -250,7 +334,7 @@ argocd-serverは、ステートレスで高負荷になりにくい。
 
 念の為、他のコンポーネントの数に合わせて冗長化するとよい。
 
-#### ▼ レプリカ当たりの負荷の低減
+#### ▼ レプリカ当たりの負荷を低減
 
 `ARGOCD_API_SERVER_REPLICAS`変数で、argocd-serverの異なるレプリカへのリクエストを分散できる。
 
