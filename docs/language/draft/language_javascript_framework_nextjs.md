@@ -112,7 +112,30 @@ const SsrPage = async () => {
 export default SsrPage;
 ```
 
-> - https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB%B6-1
+または`'force-dynamic'`を宣言する。
+
+```jsx
+export const dynamic = "force-dynamic";
+```
+
+```bash
+$ yarn build
+
+Route (app)                              Size     First Load JS
+┌ ƒ /                                    28 kB           122 kB
+├ ƒ /api/foo             0 B                0 B
+├ ƒ /api/bar             0 B                0 B
+└ ƒ /api/baz             0 B                0 B
++ First Load JS shared by all            67.1 kB
+  ├ chunks/23-b9ff729a154323c6.js        21.5 kB
+  ├ chunks/fd9d1056-a2186e5cf4948962.js  43.6 kB
+  └ other shared chunks (total)          1.96 kB
+
+○  (Static)  prerendered as static content
+```
+
+> - https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB
+> - https://zenn.dev/shouta0715/articles/6823ea33cd3778#2.-force-dynamic
 
 #### ▼ SSGモード
 
@@ -151,7 +174,30 @@ const SsgPage = async () => {
 export default SsgPage;
 ```
 
+または`'auto'`を宣言する。
+
+```jsx
+export const dynamic = "auto";
+```
+
+```bash
+$ yarn build
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    28 kB           122 kB
+├ ○ /api/foo             0 B                0 B
+├ ○ /api/bar             0 B                0 B
+└ ○ /api/baz             0 B                0 B
++ First Load JS shared by all            67.1 kB
+  ├ chunks/23-b9ff729a154323c6.js        21.5 kB
+  ├ chunks/fd9d1056-a2186e5cf4948962.js  43.6 kB
+  └ other shared chunks (total)          1.96 kB
+
+○  (Static)  prerendered as static content
+```
+
 > - https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB%B6-2
+> - https://zenn.dev/shouta0715/articles/6823ea33cd3778#1.-auto
 
 #### ▼ ISRモード
 
@@ -195,6 +241,27 @@ export default IsrPage;
 ```
 
 > - https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB%B6-3
+
+#### ▼ ハイブリッド
+
+フロントエンド領域のロジックをCSRモード、バックエンド領域のロジックをSSRモードで実行する。
+
+```bash
+$ yarn build
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    28 kB           122 kB
+├ ƒ /api/foo             0 B                0 B
+├ ƒ /api/bar             0 B                0 B
+└ ƒ /api/baz             0 B                0 B
++ First Load JS shared by all            67.1 kB
+  ├ chunks/23-b9ff729a154323c6.js        21.5 kB
+  ├ chunks/fd9d1056-a2186e5cf4948962.js  43.6 kB
+  └ other shared chunks (total)          1.96 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+```
 
 <br>
 
