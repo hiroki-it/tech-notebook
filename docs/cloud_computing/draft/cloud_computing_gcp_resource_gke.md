@@ -33,3 +33,9 @@ GKEではコントロールプレーンのみが、またGKE Autopilotでは、�
 > - https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy
 
 <br>
+
+## 02. Cloud Service Mesh
+
+Google Cloudの提供するカスタムリソースを使用し、Kubernetes APIのGatewayとIstioを組み合わせたサービスメッシュを実現する。
+
+> - https://cloud.google.com/service-mesh/docs/understand-api-resources

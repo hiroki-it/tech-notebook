@@ -15,6 +15,8 @@ description: Istioを採用しない場合との比較＠Istioの知見を記録
 
 ## 01. 比較表
 
+### IstioとKubernetesのみの比較
+
 KubernetesとIstioには重複する能力がいくつか (例：サービス検出) ある。全てのPodのistio-proxyをインジェクションする場合、kube-proxyとServiceによるサービスメッシュは不要になる。
 
 ただし、実際の運用場面ではこれを実行することはなく、マイクロサービスの稼働するPodのみでこれを行えばよい。
@@ -36,6 +38,31 @@ KubernetesとIstioには重複する能力がいくつか (例：サービス検
 > - https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/
 > - https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/
 > - https://layer5.io/learn/learning-paths/mastering-service-meshes-for-developers/introduction-to-service-meshes/istio/expose-services/
+
+<br>
+
+### Istio APIからKubernetes Gateway APIへの置き換え
+
+Kubernetes Gateway APIは、VirtualServiceが対応するPod間通信に非対応である。
+
+そのほかのVirtualServiceの機能に相当する機能ももっていない。
+
+| Istio API             | Kubernetes Gateway APIへの置き換え                                   |
+| --------------------- | -------------------------------------------------------------------- |
+| AuthorizationPolicy   | そのまま使用                                                         |
+| DestinationRule       | そのまま使用                                                         |
+| EnvoyFilter           | そのまま使用                                                         |
+| Gateway               | Kubernetes Gateway                                                   |
+| PeerAuthentication    | そのまま使用                                                         |
+| ProxyConfig           | そのまま使用                                                         |
+| RequestAuthentication | そのまま使用                                                         |
+| ServiceEntry          | そのまま使用                                                         |
+| Sidecar               | そのまま使用                                                         |
+| Telemetry             | そのまま使用                                                         |
+| VirtualService        | ・GRPCRoute<br>・HTTPRoute<br>・TCPRoute<br>・TLSRoute<br>・UDPRoute |
+| WasmPlugin            | そのまま使用                                                         |
+| WorkloadEntry         | そのまま使用                                                         |
+| WorkloadGroup         | そのまま使用                                                         |
 
 <br>
 

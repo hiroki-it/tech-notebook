@@ -131,7 +131,7 @@ Route (app)                              Size     First Load JS
   ├ chunks/fd9d1056-a2186e5cf4948962.js  43.6 kB
   └ other shared chunks (total)          1.96 kB
 
-○  (Static)  prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
 ```
 
 > - https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB
@@ -246,6 +246,16 @@ export default IsrPage;
 
 フロントエンド領域のロジックをCSRモード、バックエンド領域のロジックをSSRモードで実行する。
 
+```jsx
+// フロントエンド領域のファイル
+"use client";
+```
+
+```jsx
+// 　バックエンド領域のファイル
+export const dynamic = "force-dynamic";
+```
+
 ```bash
 $ yarn build
 
@@ -262,6 +272,8 @@ Route (app)                              Size     First Load JS
 ○  (Static)   prerendered as static content
 ƒ  (Dynamic)  server-rendered on demand
 ```
+
+> - https://zenn.dev/sunnyheee/articles/df10b4ae614cfa#hybrid-web-app
 
 <br>
 
