@@ -27368,7 +27368,7 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
 <span class="w">  </span>├<span class="w"> </span>chunks/fd9d1056-a2186e5cf4948962.js<span class="w">  </span><span class="m">43</span>.6<span class="w"> </span>kB
 <span class="w">  </span>└<span class="w"> </span>other<span class="w"> </span>shared<span class="w"> </span>chunks<span class="w"> </span><span class="o">(</span>total<span class="o">)</span><span class="w">          </span><span class="m">1</span>.96<span class="w"> </span>kB
 
-○<span class="w">  </span><span class="o">(</span>Static<span class="o">)</span><span class="w">  </span>prerendered<span class="w"> </span>as<span class="w"> </span>static<span class="w"> </span>content
+ƒ<span class="w">  </span><span class="o">(</span>Dynamic<span class="o">)</span><span class="w">  </span>server-rendered<span class="w"> </span>on<span class="w"> </span>demand
 </code></pre></div>
 <blockquote>
 <ul>
@@ -27478,6 +27478,12 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
 </blockquote>
 <h4 id="_3">▼ ハイブリッド<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>フロントエンド領域のロジックをCSRモード、バックエンド領域のロジックをSSRモードで実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// フロントエンド領域のファイル</span>
+<span class="s2">&quot;use client&quot;</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 　バックエンド領域のファイル</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">dynamic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;force-dynamic&quot;</span><span class="p">;</span>
+</code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>build
 
 Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span><span class="w">                              </span>Size<span class="w">     </span>First<span class="w"> </span>Load<span class="w"> </span>JS
@@ -27493,6 +27499,11 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
 ○<span class="w">  </span><span class="o">(</span>Static<span class="o">)</span><span class="w">   </span>prerendered<span class="w"> </span>as<span class="w"> </span>static<span class="w"> </span>content
 ƒ<span class="w">  </span><span class="o">(</span>Dynamic<span class="o">)</span><span class="w">  </span>server-rendered<span class="w"> </span>on<span class="w"> </span>demand
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/sunnyheee/articles/df10b4ae614cfa#hybrid-web-app">https://zenn.dev/sunnyheee/articles/df10b4ae614cfa#hybrid-web-app</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="03">03. 環境変数<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_4">言語の実行環境<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
@@ -27601,7 +27612,7 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月15日 23:24:17">2025-07-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月16日 18:39:31">2025-07-16</span>
   </span>
 
     
