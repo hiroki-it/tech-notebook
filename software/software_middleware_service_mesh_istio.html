@@ -29469,8 +29469,12 @@
 </ul>
 </blockquote>
 <h4 id="_33">▼ 外部ツールをルート認証局として使用する場合<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
-<p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) を中間認証局として使用し、ルート認証局をIstio以外 (例：HashiCorp Vaultなど) に委譲できる。</p>
+<p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) を中間認証局として使用し、ルート認証局をIstio以外に委譲できる。</p>
 <p>外部のルート認証局は、istio-proxyから送信された秘密鍵と証明書署名要求で署名済みのサーバー証明書を作成する。</p>
+<ul>
+<li>CertManager (ルート認証局、署名済み証明書の発行、マウント用Secretへの証明書埋め込み、自動ローテーション)</li>
+<li>HashiCorp Vault (ルート認証局) + CertManager (署名済み証明書の発行、マウント用Secretへの証明書埋め込み、自動ローテーション)</li>
+</ul>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/">https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/</a></li>
@@ -30137,7 +30141,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月4日 16:17:17">2025-07-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月19日 16:18:03">2025-07-19</span>
   </span>
 
     
