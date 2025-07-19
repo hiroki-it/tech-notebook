@@ -43,9 +43,13 @@ KubernetesとIstioには重複する能力がいくつか (例：サービス検
 
 ### Istio APIからKubernetes Gateway APIへの置き換え
 
-Kubernetes Gateway APIは、VirtualServiceが対応するPod間通信に非対応である。
+IstioのGatewayやVirtualServiceは、Kubernetes Gateway APIのGatewayやHTTPRouteなどに置き換えられる。
 
-そのほかのVirtualServiceの機能に相当する機能ももっていない。
+しかし、IstioのGatewayやVirtualServiceがもつ機能の多くに必要であり、例えばHTTPRouteはVirtualServiceのようなPod間通信に非対応である。
+
+置き換えることなく、IstioのAPIをそのまま使用すればよい。
+
+Google Cloud Service Meshでは、HTTPRouteなどを補うカスタムリソースとして、Meshがある。
 
 | Istio API             | Kubernetes Gateway APIへの置き換え                                   |
 | --------------------- | -------------------------------------------------------------------- |

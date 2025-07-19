@@ -753,3 +753,13 @@ $ pilot-agent wait
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#pilot-agent-wait
 
 <br>
+
+## 04. pilot-agentコマンドの環境変数
+
+### `SECRET_TTL	`
+
+istio-proxyの証明書の有効期限を設定する。
+
+> - https://istio.io/latest/docs/reference/commands/pilot-agent/
+
+<br>

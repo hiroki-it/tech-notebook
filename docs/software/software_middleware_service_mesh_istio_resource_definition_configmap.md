@@ -2067,7 +2067,7 @@ data:
 
 <br>
 
-## 06. pilot-discoveryコマンド
+## 06. pilot-discoveryコマンドの環境変数
 
 ### `CITADEL_SELF_SIGNED_CA_CERT_TTL`
 
@@ -2127,11 +2127,12 @@ metadata:
   namespace: istio-system
 spec:
   template:
-    containers:
-      - name: discovery
-        env:
-          - name: CLUSTER_ID
-            value: Kubernetes
+    spec:
+      containers:
+        - name: discovery
+          env:
+            - name: CLUSTER_ID
+              value: Kubernetes
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
@@ -2142,6 +2143,8 @@ spec:
 
 istio-proxyの証明書の有効期限を設定する。
 
+最大値は `MAX_WORKLOAD_CERT_TTL` (90日) で決まっている。
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -2150,6 +2153,7 @@ metadata:
   namespace: istio-system
 spec:
   template:
+  　spec:
     containers:
       - name: discovery
         env:
@@ -2177,11 +2181,12 @@ metadata:
   namespace: istio-system
 spec:
   template:
-    containers:
-      - name: discovery
-        env:
-          - name: ENABLE_DEFERRED_CLUSTER_CREATION
-            value: "true"
+    spec:
+      containers:
+        - name: discovery
+          env:
+            - name: ENABLE_DEFERRED_CLUSTER_CREATION
+              value: "true"
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
@@ -2204,11 +2209,12 @@ metadata:
   namespace: istio-system
 spec:
   template:
-    containers:
-      - name: discovery
-        env:
-          - name: ENABLE_DEFERRED_STATS_CREATION
-            value: "true"
+    spec:
+      containers:
+        - name: discovery
+          env:
+            - name: ENABLE_DEFERRED_STATS_CREATION
+              value: "true"
 ```
 
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/bootstrap/v3/bootstrap.proto#config-bootstrap-v3-bootstrap-deferredstatoptions
@@ -2230,11 +2236,12 @@ metadata:
   namespace: istio-system
 spec:
   template:
-    containers:
-      - name: discovery
-        env:
-          - name: ENABLE_ENHANCED_RESOURCE_SCOPING
-            value: "true"
+    spec:
+      containers:
+        - name: discovery
+          env:
+            - name: ENABLE_ENHANCED_RESOURCE_SCOPING
+              value: "true"
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
@@ -2257,11 +2264,12 @@ metadata:
   namespace: istio-system
 spec:
   template:
-    containers:
-      - name: discovery
-        env:
-          - name: ENABLE_ENHANCED_DESTINATIONRULE_MERGE
-            value: "true"
+    spec:
+      containers:
+        - name: discovery
+          env:
+            - name: ENABLE_ENHANCED_DESTINATIONRULE_MERGE
+              value: "true"
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
@@ -2288,11 +2296,12 @@ metadata:
   namespace: istio-system
 spec:
   template:
-    containers:
-      - name: discovery
-        env:
-          - name: ENABLE_INBOUND_RETRY_POLICY
-            value: "true"
+    spec:
+      containers:
+        - name: discovery
+          env:
+            - name: ENABLE_INBOUND_RETRY_POLICY
+              value: "true"
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars

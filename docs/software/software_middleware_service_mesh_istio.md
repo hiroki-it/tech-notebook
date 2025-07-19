@@ -424,9 +424,12 @@ AuthorizationPolicyで認可プロバイダー (例：Keycloak、Open Policy Age
 
 #### ▼ 外部ツールをルート認証局として使用する場合
 
-Istiodコントロールプレーン (`discovery`コンテナ) を中間認証局として使用し、ルート認証局をIstio以外 (例：HashiCorp Vaultなど) に委譲できる。
+Istiodコントロールプレーン (`discovery`コンテナ) を中間認証局として使用し、ルート認証局をIstio以外に委譲できる。
 
 外部のルート認証局は、istio-proxyから送信された秘密鍵と証明書署名要求で署名済みのサーバー証明書を作成する。
+
+- CertManager (ルート認証局、署名済み証明書の発行、マウント用Secretへの証明書埋め込み、自動ローテーション)
+- HashiCorp Vault (ルート認証局) + CertManager (署名済み証明書の発行、マウント用Secretへの証明書埋め込み、自動ローテーション)
 
 > - https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/
 > - https://istio.io/latest/docs/ops/integrations/certmanager/
