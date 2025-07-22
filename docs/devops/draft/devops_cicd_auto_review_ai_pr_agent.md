@@ -120,7 +120,24 @@ log_level="INFO"
 
 <br>
 
-## 04. pr_descriptionセクション
+## 04 github_appセクション
+
+### handle_push_trigger
+
+プッシュでPR-Agentが起動するフラグを設定する。
+
+```toml
+[github_app]
+handle_push_trigger=false
+```
+
+<br>
+
+## 05. pr_descriptionセクション
+
+### extra_instructions
+
+PRの説明欄に関するプロンプトを設定する。
 
 ```toml
 [pr_description]
@@ -133,37 +150,56 @@ extra_instructions="""\
 
 <br>
 
-## 05. pr_reviewerセクション
+## 06. pr_reviewerセクション
+
+### extra_instructions
+
+PRレビューに関するプロンプトを設定する。
 
 ```toml
 [pr_reviewer]
-# extra_instructions="""\
-# ここにカスタムプロンプトを追加する
-# """
+extra_instructions="""\
+- impactレベルは「high」または「medium」のみを使用すること。「low」のimpactレベルを提案することは禁止である。
+"""
+```
 
-# PRスコア算出を有効化する
+<br>
+
+### require_score_review
+
+PRスコア算出のフラグを設定する。
+
+```toml
+[pr_reviewer]
 require_score_review=true
-
-# 単一のPRで複数回実行した時のコメントの挙動を変更する
-# trueの場合は1つのPRコメントにまとめ、falseの場合は個別のPRコメントを投稿する
-persistent_comment=true
 ```
 
 > - https://github.com/qodo-ai/pr-agent/blob/main/pr_agent/settings/configuration.toml
 
 <br>
 
-## 06. pr_code_suggestionsセクション
+## 07. pr_code_suggestionsセクション
+
+### extra_instructions
+
+コード提案に関するプロンプトを設定する。
 
 ```toml
 [pr_code_suggestions]
-# extra_instructions="""\
-# ここにカスタムプロンプトを追加する
-# """
+extra_instructions="""\
+- impactレベルは「high」または「medium」のみを使用すること。「low」のimpactレベルを提案することは禁止である。
+"""
+```
 
-# 単一のPRで複数回実行した時のコメントの挙動を変更する
-# trueの場合は1つのPRコメントにまとめ、falseの場合は個別のPRコメントを投稿する。
-persistent_comment=true
+<br>
+
+### persistent_comment
+
+レビューのたびに新しいコメントを追加するフラグを設定する
+
+```toml
+[pr_code_suggestions]
+persistent_comment=false
 ```
 
 > - https://github.com/qodo-ai/pr-agent/blob/main/pr_agent/settings/configuration.toml

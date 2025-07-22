@@ -89,8 +89,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -184,7 +183,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "13b82501632b7954",
+  "active": "a85a35cc6df77bd4",
   "lastOpenFiles": [
     "devops/draft/devops_cicd_auto_review_ai_pr_agent.md",
     "devops/draft/devops_cicd_auto_review_ai_oreore_context.md",

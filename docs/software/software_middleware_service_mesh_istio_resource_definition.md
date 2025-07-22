@@ -2415,7 +2415,7 @@ spec:
 
 #### ▼ forwardOriginalToken
 
-既存のJWTを再利用し、宛先マイクロサービスにそのまま伝播するかどうかを設定する。
+既存のJWTを再利用し、宛先マイクロサービスにそのまま伝播するフラグを設定する。
 
 ```yaml
 apiVersion: security.istio.io/v1

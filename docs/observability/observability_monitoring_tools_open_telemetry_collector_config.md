@@ -154,7 +154,7 @@ exporters:
 
 #### ▼ insecure
 
-TLSを有効化するかどうかを設定する。
+TLSを有効化するフラグを設定する。
 
 ```yaml
 receivers:
