@@ -120,9 +120,20 @@ READ処理を実行するオブジェクトのこと。
 
 ## 02. CQRSとイベントソーシング式モデリング
 
-イベントソーシングは、ステートソーシング (CRUD) とは異なり、データの参照/更新しかない。
+イベントソーシングは、ステートソーシング (CRUD) とは異なり、データの参照/追加しかない。
 
 イベントソーシング式モデリングではDBアクセスの処理を更新系と参照系に分離することになるため、CQRSの方法論と相性が良い。
+
+テーブル構造は以下のとおりになり、イベントデータが参照/追加されるだけである。
+
+| `id` | `event_name`  | `event_entity_name` | `event_entity_id` | `event_data`                                  |
+| ---- | ------------- | ------------------- | ----------------- | --------------------------------------------- |
+| 1    | OrderCreated  | Order               | 1                 | OrderCreatedオブジェクトをJSONに変換したもの  |
+| 2    | OrderUpdated  | Order               | 1                 | OrderUpdatedオブジェクトをJSONに変換したもの  |
+| 3    | OrderCreated  | Order               | 2                 | OrderCreatedオブジェクトをJSONに変換したもの  |
+| 4    | OrderCanceled | Order               | 1                 | OrderCanceledオブジェクトをJSONに変換したもの |
+| 5    | OrderCreated  | Order               | 3                 | OrderCreatedオブジェクトをJSONに変換したもの  |
+| ...  | ...           | ...                 | ...               | ...                                           |
 
 > - https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
 > - https://postd.cc/using-cqrs-with-event-sourcing/
