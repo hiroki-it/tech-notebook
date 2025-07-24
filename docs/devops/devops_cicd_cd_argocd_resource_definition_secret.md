@@ -750,6 +750,9 @@ AWS EKSアクセスエントリーを使用する場合、`argocd cluster add`�
 
 プリンシパルIAMロールに紐づくPodがAWS EKSに接続する時に、アクセスエントリーがこれを仲介して動的にIAMポリシーを設定する。
 
+![argocd_access-entry](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_access-entry.png)
+
 > - https://dev.classmethod.jp/articles/eks-access-management-with-iam-access-entry/
+> - https://medium.com/@dedicatted/secure-argocd-multi-cluster-deployment-in-aws-eks-with-irsa-0a6332a881bd
 
 <br>
