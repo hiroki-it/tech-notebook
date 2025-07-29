@@ -109,6 +109,10 @@ COPY ../software /var/www/foo/
 
 ### オブジェクト指向型
 
+オブジェクト相当のクラスは振る舞いと紐づく。
+
+状態と振る舞いが結合している。
+
 ```php
 <?php
 
@@ -136,6 +140,10 @@ echo $user->isAdult() ? "true" : "false"; // true
 
 ### 関数型
 
+振る舞いの引数がオブジェクト相当の配列である。
+
+状態と振る舞いが分離している。
+
 ```php
 <?php
 
@@ -152,3 +160,5 @@ function isAdult(array $user): bool {
 
 echo isAdult($user) ? "true" : "false"; // true
 ```
+
+<br>

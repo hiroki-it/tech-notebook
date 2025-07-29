@@ -70,43 +70,36 @@ const obj = {
 
 ```typescript
 let str: string = "hello";
-// Type 'number' is not assignable to type 'string'.
 str = 0;
 ```
 
 ```typescript
 let num: number = 0;
-// Type 'string' is not assignable to type 'number'.
 num = "0";
 ```
 
 ```typescript
 let big: bigint = 10n;
-// Type 'number' is not assignable to type 'bigint'.
 big = 0;
 ```
 
 ```typescript
 let bool: boolean = true;
-// Type 'number' is not assignable to type 'boolean'.
 bool = 1;
 ```
 
 ```typescript
 let n: null = null;
-// Type 'undefined' is not assignable to type 'null'.
 n = undefined;
 ```
 
 ```typescript
 let u: undefined = undefined;
-// Type 'null' is not assignable to type 'undefined'.
 u = null;
 ```
 
 ```typescript
 let sym: symbol = Symbol();
-// Type 'string' is not assignable to type 'symbol'.
 sym = "";
 ```
 
@@ -119,19 +112,14 @@ sym = "";
 #### ▼ 変数
 
 ```typescript
-const object: {name: string; age: number} = {name: "taro", age: 20};
-
-// Type 'number' is not assignable to type 'string'.
-object.name = 20;
-
-// Type 'string' is not assignable to type 'number'.
-object.age = "taro";
-
-// Property 'gender' does not exist on type '{ name: string; age: number; }'.
-object.gender = "male";
+const object: {
+  name: string;
+  age: number;
+} = {
+  name: "taro",
+  age: 20,
+};
 ```
-
-> - https://zenn.dev/akkie1030/articles/9f2304544245b2#object-%E5%9E%8B%E5%AE%9A%E7%BE%A9
 
 #### ▼ 参照記法
 
@@ -156,6 +144,21 @@ const value3 = obj["baz-qux"]; // 789
 
 <br>
 
+### レコード
+
+#### ▼ 変数
+
+```typescript
+type ProfileKeys = "name" | "age";
+
+const object: Record<ProfileKeys, string> = {
+  name: "taro",
+  age: "20",
+};
+```
+
+<br>
+
 ### 配列
 
 #### ▼ 変数
@@ -163,14 +166,12 @@ const value3 = obj["baz-qux"]; // 789
 ```typescript
 const strArray: string[] = ["a", "b", "c"];
 
-// Argument of type 'number' is not assignable to parameter of type 'string'.
 strArray.push(0);
 ```
 
 ```typescript
 const numArray: number[] = [1, 2, 3];
 
-// Argument of type 'string' is not assignable to parameter of type 'number'.
 numArray.push("a");
 ```
 
@@ -539,6 +540,8 @@ export const action = async ({request, params}: ActionArgs) => {
 
 #### オブジェクト指向型
 
+オブジェクト相当のクラスは振る舞いと紐づく。
+
 状態と振る舞いが結合している。
 
 ```typescript
@@ -562,6 +565,8 @@ console.log(user.isAdult()); // true
 <br>
 
 ### 関数型
+
+振る舞いの引数はオブジェクト相当のレコードである。
 
 状態と振る舞いが分離している。
 
