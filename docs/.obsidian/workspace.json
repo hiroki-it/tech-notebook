@@ -183,8 +183,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a85a35cc6df77bd4",
+  "active": "84699bc2a9ead613",
   "lastOpenFiles": [
+    "software/draft/software_application_architecture_functional.md",
+    "software/draft/software_application_architecture_backend_functional.md",
+    "software/draft/software_application_architecture_backend_functional_orientation.md",
     "devops/draft/devops_cicd_auto_review_ai_pr_agent.md",
     "devops/draft/devops_cicd_auto_review_ai_oreore_context.md",
     "devops/draft/devops_cicd_cd_pipecd.md",
@@ -208,9 +211,6 @@
     "software/software_middleware_service_mesh_istio_practices.md",
     "software/software_middleware_service_mesh_istio_command.md",
     "software/software_middleware_service_mesh_istio_operator_resource_definition.md",
-    "software/software_middleware_service_mesh_istio_resource_definition_configmap.md",
-    "infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.md",
-    "cloud_computing/cloud_computing_aws_resource_ecs.md",
     "無題のフォルダ",
     "無題のファイル.canvas",
     "0-2_まえがき.pdf",
