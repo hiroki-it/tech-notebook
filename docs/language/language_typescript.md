@@ -534,3 +534,50 @@ export const action = async ({request, params}: ActionArgs) => {
 ```
 
 <br>
+
+## 08. 実装スタイル
+
+#### オブジェクト指向型
+
+状態と振る舞いが結合している。
+
+```typescript
+class User {
+  // 状態
+  constructor(
+    public name: string,
+    public age: number,
+  ) {}
+
+  // 振る舞い
+  isAdult(): boolean {
+    return this.age >= 18;
+  }
+}
+
+const user = new User("Alice", 20);
+console.log(user.isAdult()); // true
+```
+
+<br>
+
+### 関数型
+
+状態と振る舞いが分離している。
+
+```typescript
+type User = {
+  name: string;
+  age: number;
+};
+
+// 振る舞い
+function isAdult(user: User): boolean {
+  return user.age >= 18;
+}
+
+// main
+// 状態
+const u: User = {name: "Alice", age: 20};
+console.log(isAdult(u)); // true
+```

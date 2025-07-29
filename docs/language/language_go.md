@@ -489,7 +489,56 @@ func main() {
 
 <br>
 
-## 06. その他のお作法
+## 06. 実装スタイル
+
+### オブジェクト指向型
+
+状態と振る舞いが結合している。
+
+```go
+type User struct {
+    Name string
+    Age  int
+}
+
+// 振る舞い
+func (u *User) IsAdult() bool {
+	// 状態
+    return u.Age >= 18
+}
+```
+
+<br>
+
+### 関数型
+
+状態と振る舞いが分離している。
+
+```go
+package main
+
+import "fmt"
+
+type User struct {
+    Name string
+    Age  int
+}
+
+// 振る舞い
+func IsAdult(user User) bool {
+    return user.Age >= 18
+}
+
+func main() {
+	// 状態
+    u := User{Name: "Alice", Age: 20}
+    fmt.Println(IsAdult(u)) // true
+}
+```
+
+<br>
+
+## 07. その他のお作法
 
 ### コメントの書式
 

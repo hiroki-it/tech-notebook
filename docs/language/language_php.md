@@ -104,3 +104,51 @@ COPY ../software /var/www/foo/
 > - https://weblabo.oscasierra.net/php-opcache/
 
 <br>
+
+## 04. 実装スタイル
+
+### オブジェクト指向型
+
+```php
+<?php
+
+class User {
+    // 状態
+    public string $name;
+    public int $age;
+
+    public function __construct(string $name, int $age) {
+        $this->name = $name;
+        $this->age = $age;
+    }
+
+    // 振る舞い
+    public function isAdult(): bool {
+        return $this->age >= 18;
+    }
+}
+
+$user = new User("Alice", 20);
+echo $user->isAdult() ? "true" : "false"; // true
+```
+
+<br>
+
+### 関数型
+
+```php
+<?php
+
+// 状態
+$user = [
+    "name" => "Alice",
+    "age" => 20,
+];
+
+// 振る舞い
+function isAdult(array $user): bool {
+    return $user["age"] >= 18;
+}
+
+echo isAdult($user) ? "true" : "false"; // true
+```
