@@ -8578,15 +8578,48 @@
         <li class="md-nav__item">
   <a href="#06" class="md-nav__link">
     <span class="md-ellipsis">
-      06. その他のお作法
+      06. 実装スタイル
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="06. その他のお作法">
+    <nav class="md-nav" aria-label="06. 実装スタイル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      オブジェクト指向型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      関数型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    <span class="md-ellipsis">
+      07. その他のお作法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="07. その他のお作法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       コメントの書式
     </span>
@@ -8604,7 +8637,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       イミュータブルにできない
     </span>
@@ -27902,15 +27935,48 @@
         <li class="md-nav__item">
   <a href="#06" class="md-nav__link">
     <span class="md-ellipsis">
-      06. その他のお作法
+      06. 実装スタイル
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="06. その他のお作法">
+    <nav class="md-nav" aria-label="06. 実装スタイル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      オブジェクト指向型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      関数型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    <span class="md-ellipsis">
+      07. その他のお作法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="07. その他のお作法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       コメントの書式
     </span>
@@ -27928,7 +27994,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       イミュータブルにできない
     </span>
@@ -28383,8 +28449,46 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="06">06. その他のお作法<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
-<h3 id="_16">コメントの書式<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<h2 id="06">06. 実装スタイル<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<h3 id="_16">オブジェクト指向型<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>状態と振る舞いが結合している。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">Age</span><span class="w">  </span><span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="c1">// 振る舞い</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">u</span><span class="w"> </span><span class="o">*</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="nx">IsAdult</span><span class="p">()</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 状態</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">u</span><span class="p">.</span><span class="nx">Age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">18</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_17">関数型<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>状態と振る舞いが分離している。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">Age</span><span class="w">  </span><span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="c1">// 振る舞い</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">IsAdult</span><span class="p">(</span><span class="nx">user</span><span class="w"> </span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">Age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">18</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 状態</span>
+<span class="w">    </span><span class="nx">u</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">IsAdult</span><span class="p">(</span><span class="nx">u</span><span class="p">))</span><span class="w"> </span><span class="c1">// true</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="07">07. その他のお作法<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
+<h3 id="_18">コメントの書式<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <blockquote>
 <ul>
@@ -28400,7 +28504,7 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_17">イミュータブルにできない<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h3 id="_19">イミュータブルにできない<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <p>Goには、標準でイミュータブルの機能がなく、これを無理に実現しようとすると逆に保守性が低くなることがある。</p>
 <p>そのため、イミュータブルにするか否かは慎重に判断する。</p>
 <blockquote>
@@ -28430,7 +28534,7 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年2月22日 18:43:37">2025-02-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月29日 21:32:53">2025-07-29</span>
   </span>
 
     
