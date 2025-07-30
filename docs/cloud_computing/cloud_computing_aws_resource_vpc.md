@@ -289,7 +289,7 @@ AWS NAT GatewayのSNAT処理では、プライベートサブネットからリ�
 
 ### NAT EC2インスタンスとは
 
-専用のAMIから作成したEC2で、NAT処理 (SNAT処理のみで、DNAT処理は持たない) をもつ。
+専用のAMIから作成したEC2で、NAT処理 (SNAT処理のみで、DNAT処理は持たない) を持つ。
 
 > - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-comparison.html
 > - https://zenn.dev/yoshinori_satoh/articles/aws-nat-pattern#nat%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9(ec2)
