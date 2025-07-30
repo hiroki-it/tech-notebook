@@ -29,7 +29,7 @@ Reactパッケージを使用したフレームワークである。
 
 - ファイルの先頭に`"use client"`を指定している。
 
-```jsx
+```typescript
 "use client";
 
 import React, {useEffect, useState} from "react";
@@ -52,7 +52,7 @@ const CsrPage = () => {
   useEffect(
       // 実行したい無名な非同期関数
       () => {
-    fetchData();
+        fetchData();
   }, []);
 
   return (
@@ -340,5 +340,28 @@ dotenvパッケージは不要である。
 `yarn start`コマンドと`next build`コマンドで自動的に読み込まれる。
 
 > - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
+
+<br>
+
+## 04. ルーティング
+
+### UIとAPI
+
+Next.jsでは、ブラウザルーティングとAPIエンドポイントを区別している。
+
+```yaml
+app/
+├── layout.tsx                  # 共通レイアウトであり、全ページに適用される
+├── page.tsx                    # example.com/ であり、そのパスのトップページとして機能する
+├── about/
+│   └── page.tsx                # example.com/about であり、そのパスのトップページとして機能する
+│
+├── api/                        # APIルート：example.com/api/
+│   ├── user/
+│   │   └── route.ts            # example.com/api/user （GET, POST など）
+│   └── posts/
+│       └── [id]/               # 動的ルート（例：/api/posts/123）
+│           └── route.ts        # example.com/api/posts/:id
+```
 
 <br>

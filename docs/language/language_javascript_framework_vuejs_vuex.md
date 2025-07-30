@@ -92,7 +92,7 @@ module.exports = new Vuex.Store({
   // 状態の変化を管理したいデータを持つ。
   // クラスベースオブジェクト指向のプロパティに相当。
   state: {
-    // stateには多くを設定せず、Vueインスタンスのdataオプションに設定しておく。
+    // state変数には多くを設定せず、Vueインスタンスのdataオプションに設定しておく。
     staffData: [],
   },
 

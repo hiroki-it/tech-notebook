@@ -222,16 +222,21 @@ Reactでは、関数コンポーネントで`async`宣言は使用できない�
 フロントエンドの文脈では、ブラウザレンダリング後のデータ変更処理を非同期処理とするとよく、ブラウザレンダリング後にこの処理を`useEffect`関数で実行する。
 
 ```jsx
-const [state, setState] = useState("<初期値>");
+// useEffect関数内でsetFooState関数を実行し、state変数を動的に変更する
+const [fooState setFooState] = useState("<初期値>");
 
 useEffect(
   // 実行したい無名な非同期関数
   () => {
-    return () => {
-      // 事後処理
+
+      // state変数に値を設定する
+      setFooState(response.data);
+
+      return () => {
+          // 事後処理
     };
   },
-  // useEffectを再度実行したい場合に、Stateを設定する
+  // useEffectを再度実行したい場合に、[state]を設定する
   // 省略すると、1回だけ実行する
   [state],
 );
@@ -245,15 +250,16 @@ useEffect(
 import {useEffect, useState} from "react";
 
 export const MyComponent = () => {
-  const [state, setState] = useState("");
+    // useEffect関数内でsetFooState関数を実行し、state変数を動的に変更する
+    const [fooState setFooState] = useState("");
 
-  useEffect(
+    useEffect(
     // 実行したい無名な非同期関数
     () => {
-      const fetchData = async () => {
+        const fetchData = async () => {
         const response = await axios.get("https://example.com");
-        // stateに設定する
-        setState(response.data);
+        // state変数に値を設定する
+        setFooState(response.data);
       };
       // 非同期処理を実行する
       fetchData();
@@ -323,8 +329,8 @@ export App = () => {
   useEffect(
       // 実行したい無名な非同期関数
       () => {
-    // 実行 (3)
-    console.log('useEffectが実行されました');
+          // 実行 (3)
+          console.log('useEffectが実行されました');
   });
 
   // 実行 (2)
@@ -348,10 +354,13 @@ export App = () => {
 
 コンポーネント内で状態を操作できるようにする。
 
+`state`変数と`setState`関数を返却するため、これを任意の名前の変数に格納する。
+
 ```jsx
 import {useEffect, useState} from "react";
 
-const [state, setState] = useState("<初期値>");
+// state変数をfooState変数とし、setState関数をsetFooState変数とする
+const [fooState setFooState] = useState("<初期値>");
 
 // state変数はJS型オブジェクトであり、ドットでアクセスできる
 console.log(state.fooKey);

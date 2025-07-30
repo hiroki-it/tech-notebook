@@ -156,13 +156,13 @@ const getTodoList = async () => {
 // カスタムフック
 const useTodoList = () => {
 
-    const [state, setState] = useState("");
+    const [fooState setFooState] = useState("");
 
     useEffect(
         // 実行したい無名な非同期関数
         () => {
-      const todoList = await getTodoList()
-      setState(todoList);
+            const todoList = await getTodoList()
+            setFooState(todoList);
     }, []);
 
     return state;
