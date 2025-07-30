@@ -119,7 +119,7 @@ COPY ../software /var/www/foo/
 <?php
 
 class User {
-    // 状態
+    // オブジェクトの状態を設定する
     public string $name;
     public int $age;
 
@@ -151,7 +151,7 @@ echo $user->isAdult() ? "true" : "false"; // true
 ```php
 <?php
 
-// 状態
+// オブジェクトの状態を設定する
 $user = [
     "name" => "Alice",
     "age" => 20,

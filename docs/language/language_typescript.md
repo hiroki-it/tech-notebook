@@ -548,7 +548,7 @@ export const action = async ({request, params}: ActionArgs) => {
 
 ```typescript
 class User {
-  // 状態
+  // オブジェクトの状態を設定する
   constructor(
     public name: string,
     public age: number,
@@ -585,8 +585,32 @@ function isAdult(user: User): boolean {
   return user.age >= 18;
 }
 
-// main
-// 状態
+// オブジェクトの状態を設定する
 const u: User = {name: "Alice", age: 20};
 console.log(isAdult(u)); // true
 ```
+
+<br>
+
+### 手続型
+
+振る舞いは存在せず、状態が変化していく。
+
+```typescript
+// オブジェクトの状態を設定する
+let name = "Alice";
+let age = 20;
+
+// 手続き的に途中で状態を変更する
+let isAdult = false;
+
+if (age >= 18) {
+  isAdult = true;
+} else {
+  isAdult = false;
+}
+
+console.log(isAdult); // true
+```
+
+<br>

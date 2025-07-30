@@ -538,7 +538,7 @@ func IsAdult(user User) bool {
 }
 
 func main() {
-	// 状態
+	// オブジェクトの状態を設定する
     u := User{Name: "Alice", Age: 20}
     fmt.Println(IsAdult(u)) // true
 }
