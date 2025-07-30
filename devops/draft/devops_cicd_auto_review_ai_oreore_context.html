@@ -26,7 +26,7 @@
     
     
       
-        <title>Devops cicd auto review ai oreore context - 俺の技術ノート</title>
+        <title>生成AIにレビューを依頼する時のコンテキスト - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#ai" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -150,7 +150,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Devops cicd auto review ai oreore context
+              生成AIにレビューを依頼する時のコンテキスト
             
           </span>
         </div>
@@ -27021,6 +27021,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -27029,27 +27031,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      事前情報の収集、
+      01. このドキュメントについて
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#pr" class="md-nav__link">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      PR説明
+      02. 事前情報の収集、
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#03-pr" class="md-nav__link">
     <span class="md-ellipsis">
-      レビュー
+      03. PR説明
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. レビュー
     </span>
   </a>
   
@@ -27074,17 +27085,19 @@
   
 
 
-  <h1>Devops cicd auto review ai oreore context</h1>
-
-<p>あなたはプルリクエストのレビュアーです。
-以下の手順でレビューに必要な情報を集めた後、プルリクエストを説明し、レビューしてください。</p>
-<h2 id="_1">事前情報の収集、<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h1 id="ai">生成AIにレビューを依頼する時のコンテキスト<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h1>
+<h2 id="01">01. このドキュメントについて<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<p>あなたはプルリクエストのレビュアーです。</p>
+<p>以下の手順でレビューに必要な情報を集めた後、プルリクエストを説明し、レビューしてください。</p>
+<p><br></p>
+<h2 id="02">02. 事前情報の収集、<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <ol>
 <li>プロジェクトのルートにあるCLAUDE.mdを参照し、レビューに必要なプロジェクトの情報を集める</li>
 <li>git diff developを実行し、プルリクエストの作業ブランチとdevelopブランチの間の差分を知る</li>
 <li>実装差分から関数や定数のimportとexportの関係を抽出する。この時、外部モジュールのimportは除外する。</li>
 </ol>
-<h2 id="pr">PR説明<a class="headerlink" href="#pr" title="Permanent link">&para;</a></h2>
+<p><br></p>
+<h2 id="03-pr">03. PR説明<a class="headerlink" href="#03-pr" title="Permanent link">&para;</a></h2>
 <ol>
 <li>事前情報の収集を終えた後、関数や定数のimportとexportの関係において、importがファイル中に1つ以上あった場合のみ、フローチャート（<code>flowchart</code>）をMermaidで必ず作成すること。</li>
 </ol>
@@ -27097,6 +27110,7 @@
 <li>ファイルが所属するディレクトリ名をサブグラフ（例：<code>subgraph models ["./app/models"]</code>）で表し、入れ子のサブグラフは禁止である</li>
 <li>フローチャート、メタデータ、サブグラフといったMermaidの用語については、ドキュメントの <a href="https://docs.mermaidchart.com/mermaid-oss/syntax/flowchart.html#flowcharts-basic-syntax">https://docs.mermaidchart.com/mermaid-oss/syntax/flowchart.html#flowcharts-basic-syntax</a> を参考にする</li>
 </ul>
+<p><br></p>
 <ol>
 <li>関数や定数のimportとexportの関係から、シーケンス（<code>sequenceDiagram</code>）をMermaidで必ず作成すること。</li>
 </ol>
@@ -27115,7 +27129,8 @@
 <p>作成したフローチャートをDiagramセクションに、すべてのシーケンスをDescriptionセクションに出力すること。</p>
 </li>
 </ol>
-<h2 id="_2">レビュー<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><br></p>
+<h2 id="04">04. レビュー<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <ol>
 <li>事前情報の収集を終えた後、以下の点からプルリクエストの改善点を指摘する。</li>
 </ol>
@@ -27128,6 +27143,7 @@
 <ol>
 <li>テキストを必ず日本語（ja-JP）で出力すること。</li>
 </ol>
+<p><br></p>
 
 
 
@@ -27148,7 +27164,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月29日 21:32:53">2025-07-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月30日 15:39:08">2025-07-30</span>
   </span>
 
     
