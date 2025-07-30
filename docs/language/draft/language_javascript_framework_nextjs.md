@@ -49,7 +49,9 @@ const CsrPage = () => {
     setProducts(data.products);
   };
 
-  useEffect(() => {
+  useEffect(
+      // 実行したい無名な非同期関数
+      () => {
     fetchData();
   }, []);
 

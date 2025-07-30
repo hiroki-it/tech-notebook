@@ -158,7 +158,9 @@ const useTodoList = () => {
 
     const [state, setState] = useState("");
 
-    useEffect(() => {
+    useEffect(
+        // 実行したい無名な非同期関数
+        () => {
       const todoList = await getTodoList()
       setState(todoList);
     }, []);

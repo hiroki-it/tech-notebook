@@ -225,10 +225,10 @@ Reactでは、関数コンポーネントで`async`宣言は使用できない�
 const [state, setState] = useState("<初期値>");
 
 useEffect(
-  // 実行したい非同期関数を定義する
+  // 実行したい無名な非同期関数
   () => {
     return () => {
-      // 事後処理を定義する
+      // 事後処理
     };
   },
   // useEffectを再度実行したい場合に、Stateを設定する
@@ -247,15 +247,19 @@ import {useEffect, useState} from "react";
 export const MyComponent = () => {
   const [state, setState] = useState("");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get("https://example.com");
-      // stateに設定する
-      setState(response.data);
-    };
-    // 非同期処理を実行する
-    fetchData();
-  }, []);
+  useEffect(
+    // 実行したい無名な非同期関数
+    () => {
+      const fetchData = async () => {
+        const response = await axios.get("https://example.com");
+        // stateに設定する
+        setState(response.data);
+      };
+      // 非同期処理を実行する
+      fetchData();
+    },
+    [],
+  );
 
   // stateを出力する
   // state変数はJS型オブジェクトであり、ドットでアクセスできる
@@ -316,7 +320,9 @@ export App = () => {
   // 実行 (1)
   console.log('useEffect実行前です');
 
-  useEffect(() => {
+  useEffect(
+      // 実行したい無名な非同期関数
+      () => {
     // 実行 (3)
     console.log('useEffectが実行されました');
   });
