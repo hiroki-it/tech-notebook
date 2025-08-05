@@ -132,13 +132,32 @@ DFD、ユースケース図、アクティビティ図などがある。
 
 <br>
 
-## 06. ステートマシン図
+## 06. ステートマシン図（状態遷移図）
 
 ### ステートマシン図とは
 
 ステート、遷移 (矢印) 、ステート遷移を起こす動作 (アクション) を記載する。
 
 ステートマシンをオブジェクト、各ステートをステートマシンの依存先オブジェクト、アクションをオブジェクトのメソッド、として実装する。
+
+以下では、直近のログに応じてステータスを変化させる遷移を表した。
+
+```mermaid
+---
+title: 直近のログに応じたステータスの遷移
+---
+stateDiagram-v2
+  [*] --> success
+
+  success --> error : 全ログがError
+  success --> alert : 最新ログが正常<br>かつ<br>2つ目がError
+
+  error --> success : 全ログがErrorではない
+  error --> alert : 最新ログが正常<br>かつ<br>2つ目がError
+
+  alert --> error : 最新ログと2つ目がともに正常
+  alert --> success : 全ログがError
+```
 
 > - https://cacoo.com/ja/blog/what-is-state-machine-diagram/
 > - https://github.com/yohang/Finite

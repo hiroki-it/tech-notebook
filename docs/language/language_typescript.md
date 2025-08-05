@@ -177,6 +177,23 @@ numArray.push("a");
 
 > - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E9%85%8D%E5%88%97%E5%9E%8B%E5%AE%9A%E7%BE%A9
 
+#### ▼ 配列の走査
+
+```typescript
+const numbers = [10, 20, 30];
+
+const total = numbers.reduce<number>(
+  (result, value) => {
+    // 現在の合計値（result）に、現在の要素（value）を加算する
+    return result + value;
+  },
+  // 合計の初期値を0に設定する
+  0,
+);
+
+console.log(total); // 60
+```
+
 <br>
 
 ### ジェネリクス

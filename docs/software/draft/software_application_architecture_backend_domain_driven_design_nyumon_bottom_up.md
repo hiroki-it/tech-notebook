@@ -68,6 +68,7 @@ export const createFullName = (
   first: string,
   last: string,
 ): FullName | Error => {
+  // 引数を強制する
   if (!first || !last) return new Error("氏名は必須です");
   return Object.freeze({firstName: first, lastName: last});
 };
@@ -130,6 +131,7 @@ export const createFullName = (
   first: string,
   last: string,
 ): FullName | Error => {
+  // 引数を強制する
   if (!first || !last) return new Error("氏名は必須です");
   return Object.freeze({firstName: first, lastName: last});
 };
@@ -167,6 +169,7 @@ export const createFullName = (
   first: string,
   last: string,
 ): FullName | Error => {
+  // 引数を強制する
   if (!first || !last) return new Error("氏名は必須です");
   return Object.freeze({firstName: first, lastName: last});
 };
@@ -217,6 +220,7 @@ export const createFullName = (
   first: string,
   last: string,
 ): FullName | Error => {
+  // 引数を強制する
   if (!first || !last) return new Error("氏名は必須です");
   return Object.freeze({firstName: first, lastName: last});
 };
