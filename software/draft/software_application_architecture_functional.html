@@ -27048,6 +27048,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. 関数の引数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 関数の引数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      プリミティブ型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      オブジェクト
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -27087,6 +27129,80 @@
 </ul>
 <p>関数型では、副作用のないロジックを持つ関数を定義する必要がある。</p>
 <p><br></p>
+<h2 id="02">02. 関数の引数<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_3">一覧<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>観点</th>
+<th style="text-align: center;">プリミティブ型を渡すべき場合</th>
+<th style="text-align: center;">オブジェクトを渡すべき場合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>純粋性を保ちたい</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>汎用性・再利用性を高めたい</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>関数の責務を絞りたい</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>ドメインロジックが値単体に基づく</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>複数プロパティ間の相互作用がある</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">✅</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="_4">プリミティブ型<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// データ</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// 振る舞い</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">isAdultAge</span><span class="p">(</span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">18</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// オブジェクトの状態を設定する</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">u</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">20</span><span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isAdultAge</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">age</span><span class="p">));</span><span class="w"> </span><span class="c1">// true</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_5">オブジェクト<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// データ</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// 振る舞い</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">isAdult</span><span class="p">(</span><span class="kt">number</span><span class="o">:</span><span class="w"> </span><span class="nx">User</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">18</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// オブジェクトの状態を設定する</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">u</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">20</span><span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isAdult</span><span class="p">(</span><span class="nx">u</span><span class="p">));</span><span class="w"> </span><span class="c1">// true</span>
+</code></pre></div>
+<p><br></p>
 
 
 
@@ -27107,7 +27223,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月30日 15:39:08">2025-07-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年8月6日 23:49:45">2025-08-06</span>
   </span>
 
     
