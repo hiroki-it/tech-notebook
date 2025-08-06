@@ -26,3 +26,60 @@ description: 関数型の知見を記録しています。
 関数型では、副作用のないロジックを持つ関数を定義する必要がある。
 
 <br>
+
+## 02. 関数の引数
+
+### 一覧
+
+| 観点                             | プリミティブ型を渡すべき場合 | オブジェクトを渡すべき場合 |
+| -------------------------------- | :--------------------------: | :------------------------: |
+| 純粋性を保ちたい                 |              ✅              |                            |
+| 汎用性・再利用性を高めたい       |              ✅              |                            |
+| 関数の責務を絞りたい             |              ✅              |                            |
+| ドメインロジックが値単体に基づく |              ✅              |                            |
+| 複数プロパティ間の相互作用がある |                              |             ✅             |
+
+<br>
+
+### プリミティブ型
+
+```typescript
+type User = {
+  // データ
+  name: string;
+  age: number;
+};
+
+// 振る舞い
+function isAdultAge(age: number): boolean {
+  return age >= 18;
+}
+
+// オブジェクトの状態を設定する
+const u: User = {name: "Alice", age: 20};
+
+console.log(isAdultAge(u.age)); // true
+```
+
+<br>
+
+### オブジェクト
+
+```typescript
+type User = {
+  // データ
+  name: string;
+  age: number;
+};
+
+// 振る舞い
+function isAdult(number: User): boolean {
+  return user.age >= 18;
+}
+
+// オブジェクトの状態を設定する
+const u: User = {name: "Alice", age: 20};
+console.log(isAdult(u)); // true
+```
+
+<br>

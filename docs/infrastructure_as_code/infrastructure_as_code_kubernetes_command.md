@@ -119,7 +119,15 @@ $ kubectl apply --server-side -f manifests.yaml
 
 ServerSideApplyではない通常のApplyは、ClientSideApplyという。
 
-ClientSideApplyでは、クライアント側がkube-apiserverからマニフェストの実体を取得し、これを変更してからkube-apiserverに送信する。
+ServerSideApplyとClientSideApplyの間で、マニフェストの最終的な状態を決める主体が異なる。
+
+ClientSideApplyでは、クライアント側（例：kubectl、ArgoCDのapplication-controllerなど）がkube-apiserverからマニフェストの実体を取得し、クライアントを変更してからkube-apiserverに送信する。
+
+|      | ServerSideApply | ClientSideApply                             |
+| ---- | --------------- | ------------------------------------------- |
+| 主体 | kube-apiserver  | kubectl、ArgoCDのapplication-controllerなど |
+
+特に、ServerSideApplyはkube-apiserverがよしなにマニフェストの最終状態を決めることがあり、マニフェストファイルと実体が異なる場合がある。
 
 一方でServerSideApplyでは、kube-apiserver側でマニフェストを変更する。
 

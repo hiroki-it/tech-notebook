@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "devops/draft/devops_cicd_auto_review_ai_oreore_context.md",
+                "file": "software/draft/software_application_architecture_backend_domain_driven_design_nyumon_bottom_up.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "devops_cicd_auto_review_ai_oreore_context"
+              "title": "software_application_architecture_backend_domain_driven_design_nyumon_bottom_up"
             }
           }
         ],
@@ -68,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "is",
+                "query": "時間範囲",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": false,
@@ -89,7 +89,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -157,13 +158,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "devops/draft/devops_cicd_auto_review_ai_oreore_context.md",
+                "file": "software/draft/software_application_architecture_backend_domain_driven_design_nyumon_bottom_up.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of devops_cicd_auto_review_ai_oreore_context"
+              "title": "Outline of software_application_architecture_backend_domain_driven_design_nyumon_bottom_up"
             }
           }
         ],
@@ -185,11 +186,11 @@
   },
   "active": "84699bc2a9ead613",
   "lastOpenFiles": [
+    "devops/draft/devops_cicd_auto_review_ai_oreore_context.md",
     "software/draft/software_application_architecture_functional.md",
     "software/draft/software_application_architecture_backend_functional.md",
     "software/draft/software_application_architecture_backend_functional_orientation.md",
     "devops/draft/devops_cicd_auto_review_ai_pr_agent.md",
-    "devops/draft/devops_cicd_auto_review_ai_oreore_context.md",
     "devops/draft/devops_cicd_cd_pipecd.md",
     "devops/draft/devops_cicd_auto_release_goreleaser.md",
     "software_development_methodology/software_development_git_command.md",

@@ -147,16 +147,16 @@ DFD、ユースケース図、アクティビティ図などがある。
 title: 直近のログに応じたステータスの遷移
 ---
 stateDiagram-v2
-  [*] --> success
+    [*] --> success
 
-  success --> error : 全ログがError
-  success --> alert : 最新ログが正常<br>かつ<br>2つ目がError
+    success --> alert : 最新ログが正常<br>かつ<br>2つ目がError
+    success --> error : 全ログがError
 
-  error --> success : 全ログがErrorではない
-  error --> alert : 最新ログが正常<br>かつ<br>2つ目がError
+    alert --> success : 全ログがError
+    alert --> error : 最新ログと2つ目がともに正常
 
-  alert --> error : 最新ログと2つ目がともに正常
-  alert --> success : 全ログがError
+    error --> alert : 最新ログが正常<br>かつ<br>2つ目がError
+    error --> success : 全ログがErrorではない
 ```
 
 > - https://cacoo.com/ja/blog/what-is-state-machine-diagram/
