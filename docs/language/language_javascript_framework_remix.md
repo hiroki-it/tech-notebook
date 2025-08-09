@@ -291,7 +291,7 @@ export async function action({request}: ActionFunctionArgs) {
 │   ├── openapi/            # OpenAPI仕様書の生成処理
 │   ├── root.tsx
 │   ├── routes/             # フロントエンド (例：レンダリング処理) とバックエンド (例：APIエンドポイント処理) の関数。関数はローダー、コンポーネント、アクションに分類できる。
-│   ├── services/           # フロントエンド／バックエンドで使用する『デザインパターン』『外部APIとの通信』『認証』など
+│   ├── services/           # フロントエンド／バックエンドで使用する『デザインパターン』『外部APIとの通信』『認証』『prisma.server.ts』など
 │   ├── styles/             # フロントエンドで使用するCSS、Tailwind、など
 │   └── utils/              # フロントエンド／バックエンドで使用する『薄い関数』『その他、汎用的な非機能ロジックの関数』など
 │

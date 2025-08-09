@@ -238,7 +238,7 @@ THREAD=ORDEREDSUBJECT MULTIAPPEND
 
 ## 05. 独自プロコトル
 
-### DBコネクション系
+### DB接続系
 
 `L4`のプロトコルに属する独自プロトコルもある (例：Redisなど) 。
 

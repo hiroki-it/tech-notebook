@@ -1227,67 +1227,6 @@ class CreateFooTable extends Migration
 
 <br>
 
-### N+1問題の解決
-
-#### ▼ N+1問題とは
-
-親テーブルを経由して子テーブルにアクセスする時に、親テーブルのレコード数分のSQLを発行してしまうアンチパターンのこと。
-
-#### ▼ 問題が起こる実装
-
-反復処理の中で子テーブルのレコードにアクセスしてしまう場合、N+1問題が起こる。
-
-内部的には、親テーブルへのSQLと、Where句を持つSQLが親テーブルのレコード数分だけ発行される。
-
-```php
-<?php
-
-$departments = Department::all(); // 親テーブルにSQLを発行 (1回)
-
-foreach($departments as $department) {
-    $department->employees; // 親テーブルのレコード数分のWhere句SQLが発行される (N回)
-}
-```
-
-```bash
-# 1回
-select * from `departments`
-
-# N回
-select * from `employees` where `department_id` = 1
-select * from `employees` where `department_id` = 2
-select * from `employees` where `department_id` = 3
-...
-```
-
-#### ▼ 解決方法
-
-反復処理の前に小テーブルにアクセスしておく。
-
-データアクセス時に`with`メソッドを使用すると、親テーブルへのアクセスに加えて、親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持するように処理する。
-
-そのため、反復処理ではプロパティからデータを取り出すだけになる。
-
-内部的には、親テーブルへのSQLと、In句を使用したSQLが発行される。
-
-```php
-<?php
-
-$departments = Department::with('employees')->get(); // SQL発行 (2回)
-
-foreach($departments as $department) {
-    $department->employees; // キャッシュを使用するのでSQLの発行はされない (0回)
-}
-```
-
-```bash
-# 2回
-select * from `departments`
-select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ... 100)
-```
-
-<br>
-
 ## 04. Laravelへのリポジトリパターン導入
 
 ### 背景
