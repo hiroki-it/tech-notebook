@@ -902,6 +902,10 @@ export async function deleteUser({
 
 ## 09. エラー
 
+### バックエンド
+
+#### ▼ エラーハンドリング
+
 | データ名   | 説明                               | 例                   |
 | ---------- | ---------------------------------- | -------------------- |
 | state      | ステータスコード                   | `405`                |
@@ -909,5 +913,87 @@ export async function deleteUser({
 | data       | 詳細なエラー                       | `Error: *****`       |
 
 > - https://remix.run/docs/zh/main/route/error-boundary
+
+<br>
+
+### フロントエンド
+
+#### ▼ ユーザー向けのメッセージ
+
+```tsx
+import {
+  ExclamationTriangleIcon,
+  LockClosedIcon,
+  MagnifyingGlassIcon
+} from "@heroicons/react/20/solid";
+import { isRouteErrorResponse, useRouteError } from "@remix-run/react";
+import React from "react";
+
+export function ErrorBoundary() {
+  // ローダーやアクションのエラーステータスを取得する
+  const error = useRouteError();
+  if (isRouteErrorResponse(error)) {
+    return (
+      <div>
+        <div
+          className="flex h-[80%] w-full items-center justify-center p-5"
+          data-cy="errorBoundary"
+        >
+          <div className="text-center">
+            <div className="inline-flex justify-center p-3">
+              {/* 403ステータスの場合に使用するアイコン */}
+              {error.status === 403 && (
+                {/* 南京錠アイコン */}
+                <LockClosedIcon className="h-[20%] w-[20%] text-yellow-500" />
+              )}
+              {/* 404ステータスの場合に使用するアイコン */}
+              {error.status === 404 && (
+                {/* 虫眼鏡アイコン */}
+                <MagnifyingGlassIcon
+                  className="h-[20%] w-[20%] text-sky-400"
+                  data-cy="notFoundError"
+                />
+              )}
+            </div>
+            <p className="mt-2 text-[24px] font-bold text-slate-800 lg:text-[38px]">
+              {/* ローダーやアクションのエラーステータスのタイトルを出力する */}
+              {error.data.title}
+            </p>
+            <p className="mt-5 text-slate-600 lg:text-lg">
+              {/* ローダーやアクションのエラーステータスのメッセージを出力する */}
+              {error.data.message}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <div className="flex h-[80%] w-full items-center justify-center p-5">
+        <div className="text-center">
+          <div className="inline-flex justify-center p-3">
+            {/* 異常アイコン */}
+            <ExclamationTriangleIcon className="h-[20%] w-[20%] text-red-600" />
+          </div>
+          <p className="mt-2 text-[24px] font-bold text-slate-800 lg:text-[38px]">
+            500 Internal Server Error
+          </p>
+          <p className="mt-5 text-slate-600 lg:text-lg">
+            予期せぬエラーが発生しました
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+```
+
+```tsx
+// Remixでは、ErrorBoundaryという名前でコールする必要がある
+export {ErrorBoundary} from "~/components/ErrorBoundary";
+```
 
 <br>
