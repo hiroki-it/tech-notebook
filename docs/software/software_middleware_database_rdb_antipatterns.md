@@ -111,10 +111,12 @@ select * from `employees` where `department_id` = 3
 ```php
 <?php
 
-$departments = Department::with('employees')->get(); // SQL発行 (2回)
+// SQL発行 (2回)
+$departments = Department::with('employees')->get();
 
 foreach($departments as $department) {
-    $department->employees; // キャッシュを使用するのでSQLの発行はされない (0回)
+    // キャッシュを使用するのでSQLの発行はされない (0回)
+    $department->employees;
 }
 ```
 

@@ -70,6 +70,8 @@ hide:
   > - ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_postgresql_conf.html)
   > - ##### [Repmgr](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_postgresql_repmgr.html)
 
+- #### [アンチパターン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_antipatterns.html)
+
 <br>
 
 ### <u>接続プールプロキシ系</u>
