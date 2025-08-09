@@ -277,19 +277,27 @@ export async function action({request}: ActionFunctionArgs) {
 ```yaml
 .
 ├── app/
-│   ├── components         # フロントエンドで使用する汎用的なコンポーネント
+│   ├── components/         # フロントエンドで使用する汎用的なコンポーネント
+│   │   ├── share/          # 各コンポーネントで使用するロジック
+│   │   ├── decorator/      # 認証などの補助的なコンポーネント
+│   │   ├── forms/          # 入力フォームコンポーネント
+│   │   ├── layouts/        # 画面レイアウトコンポーネント
+│   │   └── validators/     # 入力フォームの検証ロジック
+│   │
 │   ├── entry.client.tsx
 │   ├── entry.server.tsx
-│   ├── models             # DBモデル、型定義 (ドメインロジックのため、永続化処理以外には依存させない)
-│   ├── openapi            # OpenAPI仕様書の生成処理
+│   ├── hooks/              # componentsディレクトリで使用するフック処理 (setState系関数)
+│   ├── models/             # DBモデル、型定義 (ドメインロジックのため、永続化処理以外には依存させない)
+│   ├── openapi/            # OpenAPI仕様書の生成処理
 │   ├── root.tsx
-│   ├── routes             # フロントエンド (例：レンダリング処理) とバックエンド (例：APIエンドポイント処理) の関数。関数はローダー、コンポーネント、アクションに分類できる。
-│   ├── services           # フロントエンド／バックエンドで使用する『デザインパターン』『外部APIとの通信』『その他、汎用的な機能ロジックの関数』など
-│   ├── styles             # フロントエンドで使用するCSS、Tailwind、など
-│   └── utils              # フロントエンド／バックエンドで使用する『薄い関数』『その他、汎用的な非機能ロジックの関数』など
+│   ├── routes/             # フロントエンド (例：レンダリング処理) とバックエンド (例：APIエンドポイント処理) の関数。関数はローダー、コンポーネント、アクションに分類できる。
+│   ├── services/           # フロントエンド／バックエンドで使用する『デザインパターン』『外部APIとの通信』『認証』など
+│   ├── styles/             # フロントエンドで使用するCSS、Tailwind、など
+│   └── utils/              # フロントエンド／バックエンドで使用する『薄い関数』『その他、汎用的な非機能ロジックの関数』など
 │
 ├── prisma/ # モデルの定義
 ...
+
 ```
 
 <br>
@@ -728,7 +736,132 @@ export const memorySessionStorage = createFileSessionStorage({
 
 <br>
 
-## 08. エラー
+## 08. モデル
+
+### prismaによるスキーマ
+
+Prisma ORMを使用して、データベースのスキーマを定義する。
+
+```prisma
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  role      String   // "ADMIN" | "MEMBER"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+```
+
+<br>
+
+### CRUD処理
+
+#### ▼ CREATE
+
+```typescript
+import type {User} from "@prisma/client";
+import {prisma} from "~/services/prisma.server";
+
+// CREATE
+export async function createUser({
+  name,
+  email,
+  role,
+}: {
+  // prismaのスキーマを使用して、引数の型を指定する
+  name: User["name"];
+  email: User["email"];
+  role: User["role"];
+  // prismaのスキーマを使用して、返却値の型を指定する
+}): Promise<User> {
+  return prisma.user.create({
+    data: {name, email, role},
+  });
+}
+```
+
+#### ▼ READ
+
+```typescript
+import type {User} from "@prisma/client";
+import {prisma} from "~/services/prisma.server";
+
+// READ One
+export async function getUserById({
+  id,
+}: {
+  // prismaのスキーマを使用して、引数の型を指定する
+  id: User["id"];
+  // prismaのスキーマを使用して、返却値の型を指定する
+}): Promise<User | null> {
+  return prisma.user.findUnique({
+    where: {id},
+  });
+}
+
+// READ Many
+export async function listUsers(): Promise<User[]> {
+  return prisma.user.findMany({
+    orderBy: {createdAt: "desc"},
+  });
+}
+```
+
+#### ▼ UPDATE
+
+```typescript
+import type {User} from "@prisma/client";
+import {prisma} from "~/services/prisma.server";
+
+// UPDATE
+export async function updateUser({
+  id,
+  name,
+  email,
+  role,
+}: {
+  // prismaのスキーマを使用して、引数の型を指定する
+  id: User["id"];
+  name?: User["name"];
+  email?: User["email"];
+  role?: User["role"];
+  // prismaのスキーマを使用して、返却値の型を指定する
+}): Promise<User> {
+  return prisma.user.update({
+    where: {id},
+    data: {
+      ...(name !== undefined ? {name} : {}),
+      ...(email !== undefined ? {email} : {}),
+      ...(role !== undefined ? {role} : {}),
+    },
+  });
+}
+```
+
+#### ▼ DELETE
+
+```typescript
+import type {User} from "@prisma/client";
+import {prisma} from "~/services/prisma.server";
+
+// DELETE
+export async function deleteUser({
+  id,
+}: {
+  // prismaのスキーマを使用して、引数の型を指定する
+  id: User["id"];
+  // prismaのスキーマを使用して、返却値の型を指定する
+}): Promise<User> {
+  return prisma.user.delete({
+    where: {id},
+  });
+}
+```
+
+<br>
+
+## 09. エラー
 
 | データ名   | 説明                               | 例                   |
 | ---------- | ---------------------------------- | -------------------- |

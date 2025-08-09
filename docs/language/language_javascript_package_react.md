@@ -372,3 +372,31 @@ console.log(JSON.stringify(state));
 > - https://ja.react.dev/reference/react/useState
 
 <br>
+
+## 06 イベント
+
+### SyntheticEventを拡張したChangeEvent
+
+```typescript
+import React from "react";
+
+export const DateTimePicker = () => {
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // input属性で表示される画面で選択した値がevent変数に入る
+    console.log("event:", event);
+    console.log("event.target:", event.target);
+    console.log("event.target.value:", event.target.value);
+  };
+
+  return (
+    // クリックすると、handleChangeが発火する
+    <input
+      type="datetime-local"
+      onChange={handleChange}
+    />
+  );
+};
+```
+
+<br>

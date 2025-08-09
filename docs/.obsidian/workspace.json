@@ -35,8 +35,7 @@
               "title": "software_application_architecture_backend_domain_driven_design_nyumon_bottom_up"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -68,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "時間範囲",
+                "query": "conte",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": false,
@@ -158,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "software/draft/software_application_architecture_backend_domain_driven_design_nyumon_bottom_up.md",
+                "file": "devops/draft/devops_cicd_auto_review_ai_pr_agent.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of software_application_architecture_backend_domain_driven_design_nyumon_bottom_up"
+              "title": "Outline of devops_cicd_auto_review_ai_pr_agent"
             }
           }
         ],
@@ -184,8 +183,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "84699bc2a9ead613",
+  "active": "13b82501632b7954",
   "lastOpenFiles": [
+    "software/draft/software_application_architecture_backend_domain_driven_design_nyumon_bottom_up.md",
     "devops/draft/devops_cicd_auto_review_ai_oreore_context.md",
     "software/draft/software_application_architecture_functional.md",
     "software/draft/software_application_architecture_backend_functional.md",
@@ -211,7 +211,6 @@
     "software/software_middleware_service_mesh_istio_resource.md",
     "software/software_middleware_service_mesh_istio_practices.md",
     "software/software_middleware_service_mesh_istio_command.md",
-    "software/software_middleware_service_mesh_istio_operator_resource_definition.md",
     "無題のフォルダ",
     "無題のファイル.canvas",
     "0-2_まえがき.pdf",
