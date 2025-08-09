@@ -239,6 +239,7 @@ nav:
           - ■ PostgreSQL:
               - 設定ファイル: software/software_middleware_database_rdb_postgresql_conf.md
               - Repmgr: software/software_middleware_database_rdb_postgresql_repmgr.md
+          - アンチパターン: software/software_middleware_database_rdb_antipatterns.md
       - ■ NoSQL DB系:
           - NoSQL DB: software/software_middleware_database_nosqldb.md
           - ■ Redis:
