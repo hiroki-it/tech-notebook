@@ -380,6 +380,37 @@ import {fooLogger, fooErrorHandler} from "~/utils";
 
 <br>
 
+### レイヤードアーキテクチャにすると
+
+```yaml
+app
+├── application
+│   └── projects
+│       ├── ports.ts
+│       └── usecases.ts
+│
+├── domain
+│   └── projects
+│       ├── rules.ts
+│       └── types.ts
+│
+├── infrastructure # modelsディレクトリのファイルをinfrastructureディレクトリに配置する
+│   ├── prisma.server.ts
+│   └── projects
+│       ├── repo.server.ts # ドメインモデルをCRUDする
+│       └── DTO.ts # ドメインモデルのデータをDTOに詰め替える
+│
+├── presentation # routesディレクトリのファイルをpresentationディレクトリに配置する
+│   └── projects
+│       ├── route.server.ts
+│       ├── route.tsx
+│       └── schema.ts
+│
+└── utils
+```
+
+<br>
+
 ## 04. セットアップ
 
 ### React Router v6
@@ -759,6 +790,8 @@ model User {
 
 #### ▼ CREATE
 
+ドメインモデルを作成する。
+
 ```typescript
 import type {User} from "@prisma/client";
 import {prisma} from "~/services/prisma.server";
@@ -782,6 +815,8 @@ export async function createUser({
 ```
 
 #### ▼ READ
+
+DBレコードからドメインモデルを取得する。
 
 ```typescript
 import type {User} from "@prisma/client";
@@ -809,6 +844,8 @@ export async function listUsers(): Promise<User[]> {
 ```
 
 #### ▼ UPDATE
+
+ドメインモデルを変更する。
 
 ```typescript
 import type {User} from "@prisma/client";
@@ -840,6 +877,8 @@ export async function updateUser({
 ```
 
 #### ▼ DELETE
+
+ドメインモデルを削除する。
 
 ```typescript
 import type {User} from "@prisma/client";
