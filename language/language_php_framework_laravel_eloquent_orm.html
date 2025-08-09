@@ -10573,48 +10573,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#n1" class="md-nav__link">
-    <span class="md-ellipsis">
-      N+1問題の解決
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="N+1問題の解決">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#n1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ N+1問題とは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 問題が起こる実装
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 解決方法
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -10631,7 +10589,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       背景
     </span>
@@ -10640,7 +10598,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       工夫
     </span>
@@ -28236,48 +28194,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#n1" class="md-nav__link">
-    <span class="md-ellipsis">
-      N+1問題の解決
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="N+1問題の解決">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#n1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ N+1問題とは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 問題が起こる実装
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 解決方法
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -28294,7 +28210,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       背景
     </span>
@@ -28303,7 +28219,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       工夫
     </span>
@@ -29575,49 +29491,8 @@
 <p>物理削除ではなく、<code>deleled_at</code>カラムが更新されるようになる。</p>
 <p><code>find</code>メソッドは、<code>deleled_at</code>カラムが<code>NULL</code>でないレコードを読み出さないため、論理削除を実現できる。</p>
 <p><br></p>
-<h3 id="n1">N+1問題の解決<a class="headerlink" href="#n1" title="Permanent link">&para;</a></h3>
-<h4 id="n1_1">▼ N+1問題とは<a class="headerlink" href="#n1_1" title="Permanent link">&para;</a></h4>
-<p>親テーブルを経由して子テーブルにアクセスする時に、親テーブルのレコード数分のSQLを発行してしまうアンチパターンのこと。</p>
-<h4 id="_15">▼ 問題が起こる実装<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>反復処理の中で子テーブルのレコードにアクセスしてしまう場合、N+1問題が起こる。</p>
-<p>内部的には、親テーブルへのSQLと、Where句を持つSQLが親テーブルのレコード数分だけ発行される。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-
-<span class="nv">$departments</span> <span class="o">=</span> <span class="nx">Department</span><span class="o">::</span><span class="na">all</span><span class="p">();</span> <span class="c1">// 親テーブルにSQLを発行 (1回)</span>
-
-<span class="k">foreach</span><span class="p">(</span><span class="nv">$departments</span> <span class="k">as</span> <span class="nv">$department</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$department</span><span class="o">-&gt;</span><span class="na">employees</span><span class="p">;</span> <span class="c1">// 親テーブルのレコード数分のWhere句SQLが発行される (N回)</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># 1回</span>
-<span class="k">select</span><span class="w"> </span>*<span class="w"> </span>from<span class="w"> </span><span class="sb">`</span>departments<span class="sb">`</span>
-
-<span class="c1"># N回</span>
-<span class="k">select</span><span class="w"> </span>*<span class="w"> </span>from<span class="w"> </span><span class="sb">`</span>employees<span class="sb">`</span><span class="w"> </span>where<span class="w"> </span><span class="sb">`</span>department_id<span class="sb">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
-<span class="k">select</span><span class="w"> </span>*<span class="w"> </span>from<span class="w"> </span><span class="sb">`</span>employees<span class="sb">`</span><span class="w"> </span>where<span class="w"> </span><span class="sb">`</span>department_id<span class="sb">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
-<span class="k">select</span><span class="w"> </span>*<span class="w"> </span>from<span class="w"> </span><span class="sb">`</span>employees<span class="sb">`</span><span class="w"> </span>where<span class="w"> </span><span class="sb">`</span>department_id<span class="sb">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span>
-...
-</code></pre></div>
-<h4 id="_16">▼ 解決方法<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>反復処理の前に小テーブルにアクセスしておく。</p>
-<p>データアクセス時に<code>with</code>メソッドを使用すると、親テーブルへのアクセスに加えて、親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持するように処理する。</p>
-<p>そのため、反復処理ではプロパティからデータを取り出すだけになる。</p>
-<p>内部的には、親テーブルへのSQLと、In句を使用したSQLが発行される。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-
-<span class="nv">$departments</span> <span class="o">=</span> <span class="nx">Department</span><span class="o">::</span><span class="na">with</span><span class="p">(</span><span class="s1">&#39;employees&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span> <span class="c1">// SQL発行 (2回)</span>
-
-<span class="k">foreach</span><span class="p">(</span><span class="nv">$departments</span> <span class="k">as</span> <span class="nv">$department</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$department</span><span class="o">-&gt;</span><span class="na">employees</span><span class="p">;</span> <span class="c1">// キャッシュを使用するのでSQLの発行はされない (0回)</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># 2回</span>
-<span class="k">select</span><span class="w"> </span>*<span class="w"> </span>from<span class="w"> </span><span class="sb">`</span>departments<span class="sb">`</span>
-<span class="k">select</span><span class="w"> </span>*<span class="w"> </span>from<span class="w"> </span><span class="sb">`</span>employees<span class="sb">`</span><span class="w"> </span>where<span class="w"> </span><span class="sb">`</span>department_id<span class="sb">`</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">(</span><span class="m">1</span>,<span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">4</span>,<span class="w"> </span><span class="m">5</span>,<span class="w"> </span><span class="m">6</span>,<span class="w"> </span><span class="m">7</span>,<span class="w"> </span><span class="m">8</span>,<span class="w"> </span><span class="m">9</span>,<span class="w"> </span><span class="m">10</span>,<span class="w"> </span><span class="m">11</span><span class="w"> </span>...<span class="w"> </span><span class="m">100</span><span class="o">)</span>
-</code></pre></div>
-<p><br></p>
 <h2 id="04-laravel">04. Laravelへのリポジトリパターン導入<a class="headerlink" href="#04-laravel" title="Permanent link">&para;</a></h2>
-<h3 id="_17">背景<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h3 id="_15">背景<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <p>LaravelはActive Recordパターンを採用しており、これはビジネスロジックが複雑でないアプリに適している。</p>
 <p>ただし、ビジネスロジックが複雑なアプリに対しても、Laravelを使用したい場面がある。</p>
 <p>その場合、Laravelにリポジトリパターンを導入することが選択肢の1つになる。</p>
@@ -29628,7 +29503,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_18">工夫<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<h3 id="_16">工夫<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="dto">▼ DTOクラスの導入<a class="headerlink" href="#dto" title="Permanent link">&para;</a></h4>
 <p>ビジネスロジック用ドメインモデルと、Eloquentモデルを継承した詰め替えモデル (例：DTOクラス) を用意する。</p>
 <p>詰め替えモデルをドメインモデルに変換する処理をメソッドとして切り分けておくと便利である。</p>
@@ -29991,7 +29866,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月2日 16:19:44">2025-05-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年8月9日 20:49:25">2025-08-09</span>
   </span>
 
     
