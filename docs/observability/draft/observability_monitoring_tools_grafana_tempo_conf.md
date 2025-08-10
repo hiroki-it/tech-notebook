@@ -99,7 +99,8 @@ ingester: {}
 トレースからメトリクスの元になるデータポイントを作成する。
 
 ```yaml
-metrics_generator: {}
+metrics_generator:
+  remote_write_url: http://prometheus-server.prometheus.svc.cluster.local:9009/api/v1/write
 ```
 
 > - https://grafana.com/docs/tempo/latest/configuration/#metrics-generator

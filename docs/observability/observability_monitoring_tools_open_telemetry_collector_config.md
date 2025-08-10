@@ -366,15 +366,33 @@ exporters:
 
 #### ▼ otlpとは
 
-OTLP形式で指定したエンドポイントにエンドポイントにテレメトリーを送信する。。
+OTLP形式で指定したエンドポイントにgRPCでテレメトリーを送信する。
+
+HTTP/2のため、プロトコル名を指定しない。
 
 ```yaml
 exporters:
   otlp:
-    endpoint: grafana-tempo.istio-system.svc.cluster.local:4317
+    endpoint: grafana-tempo.grafana-tempo.svc.cluster.local:4317
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/otlpexporter/README.md
+
+<br>
+
+### otlphttp
+
+#### ▼ otlphttpとは
+
+OTLP形式で指定したエンドポイントにHTTPでテレメトリーを送信する。
+
+HTTP/1.1のため、プロトコル名を指定する。
+
+```yaml
+exporters:
+  otlphttp:
+    endpoint: http://grafana-tempo.grafana-tempo.svc.cluster.local:4318
+```
 
 <br>
 
