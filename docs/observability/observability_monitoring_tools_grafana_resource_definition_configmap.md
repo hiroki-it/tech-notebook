@@ -495,6 +495,22 @@ data:
 > - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#date_formats
 > - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
 
+#### ▼ default_week_start
+
+週の始まりを設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana
+  namespace: prometheus
+data:
+  grafana.ini: |
+    [date_formats]
+    default_week_start = monday
+```
+
 <br>
 
 ### usersセクション
@@ -502,6 +518,22 @@ data:
 #### ▼ usersセクション
 
 記入中...
+
+#### ▼ default_language
+
+デフォルトの言語を設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana
+  namespace: prometheus
+data:
+  grafana.ini: |
+    [users]
+    default_language = ja-JP
+```
 
 #### ▼ default_theme
 
