@@ -21,7 +21,7 @@ description: メトリクス＠Prometheus
 
 Prometheusのダッシュボードでメトリクスをクエリすると、検索結果に表示される。
 
-#### ▼ Counter
+#### ▼ Counter型
 
 累計で常に増加するメトリクス (例：リクエスト数) が所属する。
 
@@ -36,7 +36,7 @@ Counterは`rate`関数で秒当たりの増減で集約することが多いた�
 > - https://prometheus.io/docs/tutorials/understanding_metric_types/#counter
 > - https://chronosphere.io/learn/an-introduction-to-the-four-primary-types-of-prometheus-metrics/
 
-#### ▼ Gauge
+#### ▼ Gauge型
 
 動的に増減するメトリクス (例：CPU使用率、Pod数) が所属する。
 
@@ -47,14 +47,14 @@ Gaugeはそれ自体が増減であるため、Grafanaダッシュボード上�
 > - https://prometheus.io/docs/tutorials/understanding_metric_types/#gauge
 > - https://chronosphere.io/learn/an-introduction-to-the-four-primary-types-of-prometheus-metrics/
 
-#### ▼ Histogram
+#### ▼ Histogram型
 
 時間の範囲を単位とするメトリクス (例：レスポンスタイム) が所属する。
 
 > - https://prometheus.io/docs/tutorials/understanding_metric_types/#histogram
 > - https://prometheus.io/docs/practices/histograms/
 
-#### ▼ Summary
+#### ▼ Summary型
 
 統計的な分位数を単位とするメトリクス
 
