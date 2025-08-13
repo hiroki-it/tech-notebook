@@ -200,3 +200,9 @@ SLIによく使用されるメトリクスである。
 > - https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#common-observability-strategies
 
 <br>
+
+## 03. メトリクスとトレース間の相関
+
+Exemplarで相関できる。
+
+<br>

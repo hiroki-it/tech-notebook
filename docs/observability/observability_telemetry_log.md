@@ -183,3 +183,9 @@ jsonPayload.traceId="<トレースID>"
 > - https://sematext.com/blog/logging-levels/
 
 <br>
+
+## 04. ログとトレース間の相関
+
+記入中...
+
+<br>

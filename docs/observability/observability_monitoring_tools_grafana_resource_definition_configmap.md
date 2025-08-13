@@ -88,12 +88,15 @@ data:
   datasource.yaml: |
     apiVersion: 1
     datasources:
-      - name: prometheus
+      - name: Prometheus
         type: prometheus
         url: http://<PrometheusのService名>.<PrometheusのNamespace名>:9090
         isDefault: "true"
+        # メトリクスとトレース間を相関させる
         jsonData:
-          timeInterval: 30s
+          exemplarTraceIdDestination: 
+            - name: tracd_id
+              datasourceUid: Tempo
 ```
 
 > - https://grafana.com/grafana/plugins/prometheus/
@@ -180,6 +183,7 @@ data:
         type: loki
         url: http://grafana-loki.istio-system.svc.cluster.local:3100
         basicAuth: false
+        # ログとトレース間を相関させる
         jsonData:
           derivedFields:
             - name: trace_id
@@ -219,11 +223,18 @@ data:
         basicAuth: false
         jsonData:
           # トレースIDからログに接続する
+          # 通常のログとトレース間の相関と逆方向
           tracesToLogsV2:
             datasourceUid: Loki
             tags:
               - key: k8s.container.name
                 value: container
+              - key: k8s.namespace.name
+                value: namespace
+              - key: k8s.pod.name
+                value: pod
+              - key: service.name
+                value: app
             # スパン開始時刻の検索ウィンドウの補正
             spanStartTimeShift: -1m
             # スパン終了時刻の検索ウィンドウの補正
@@ -233,11 +244,20 @@ data:
             # スパンIDでログをフィルタリングするかどうかのフラグ
             filterBySpanID: false
           # トレースIDからメトリクスに接続する
+          # 通常のメトリクスとトレース間の相関 (Exemplar) と逆方向
           tracesToMetrics:
             datasourceUid: Prometheus
             tags:
-    　　　　　　- key: k8s.container.name
-                value: container
+              - key: k8s.namespace.name
+                value: destination_service_namespace
+              - key: k8s.workload.name         
+                value: destination_workload
+              - key: http.response.status_code
+                value: response_code
+              - key: network.protocol          
+                value: request_protocol
+              - key: service.name              
+                value: destination_canonical_service
             # スパン開始時刻の検索ウィンドウの補正
             spanStartTimeShift: -10m
             # スパン終了時刻の検索ウィンドウの補正
