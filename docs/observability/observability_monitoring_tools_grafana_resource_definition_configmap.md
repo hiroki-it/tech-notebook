@@ -93,9 +93,12 @@ data:
         url: http://<PrometheusのService名>.<PrometheusのNamespace名>:9090
         isDefault: "true"
         # メトリクスとトレース間を相関させる
+        # Prometheusで --enable-feature=exemplar-storage を有効にしておく必要がある
         jsonData:
-          exemplarTraceIdDestination: 
+          exemplarTraceIdDestinations: 
             - name: tracd_id
+              traceIdLabelName: trace_id
+              urlDisplayLabel: View Grafana Tempo
               datasourceUid: Tempo
 ```
 
@@ -222,8 +225,7 @@ data:
         url: http://grafana-tempo.istio-system.svc.cluster.local:3100
         basicAuth: false
         jsonData:
-          # トレースIDからログに接続する
-          # 通常のログとトレース間の相関と逆方向
+          # ログとトレース間を相関させる
           tracesToLogsV2:
             datasourceUid: Loki
             tags:
@@ -243,8 +245,7 @@ data:
             filterByTraceID: true
             # スパンIDでログをフィルタリングするかどうかのフラグ
             filterBySpanID: false
-          # トレースIDからメトリクスに接続する
-          # 通常のメトリクスとトレース間の相関 (Exemplar) と逆方向
+          # メトリクスとトレース間を相関させる
           tracesToMetrics:
             datasourceUid: Prometheus
             tags:
