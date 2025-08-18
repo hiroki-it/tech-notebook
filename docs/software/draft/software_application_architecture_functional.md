@@ -45,7 +45,7 @@ description: 関数型の知見を記録しています。
 
 ```typescript
 type User = {
-  // データ
+  // 状態
   name: string;
   age: number;
 };
@@ -67,7 +67,7 @@ console.log(isAdultAge(u.age)); // true
 
 ```typescript
 type User = {
-  // データ
+  // 状態
   name: string;
   age: number;
 };

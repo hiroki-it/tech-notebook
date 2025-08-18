@@ -37,11 +37,15 @@ description: ２章＠ドメイン駆動設計入門ボトムアップの知見�
 
 作成から削除までのライフサイクルがある。
 
-CRUD系メソッドの対象となる可能性がある。
-
 <br>
 
-## 実装例
+## エンティティの実装例
+
+### Userをエンティティにする場合
+
+エンティティを関数型プログラミングかつTypeScriptで紹介します。
+
+<br>
 
 ### 識別子 (ID) を持つ
 
@@ -65,6 +69,8 @@ const createUser = (id: UserId, name: string, email: string): User | Error => {
 <br>
 
 ### IDで等価性検証できる
+
+「〇〇は既に存在しています」のエラーで役立つ。
 
 ```typescript
 export type UserId = string;
@@ -133,5 +139,19 @@ export const deleteUser = (id: UserId): boolean => {
   return db.delete(id);
 };
 ```
+
+<br>
+
+## エンティティの見つけ方
+
+### CRUD系メソッドの対象
+
+CRUD系メソッド（`create`、`find`、`update`、`delete`）の対象となるオブジェクトはエンティティの可能性がある。
+
+<br>
+
+### 業務フローの中にある
+
+入庫 → 検査 → 販売 → 返品 というような業務フローの中で処理される。
 
 <br>

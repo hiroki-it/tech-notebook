@@ -64,22 +64,18 @@ description: ２章＠ドメイン駆動設計入門ボトムアップの知見�
 
 <br>
 
-## 実装方法の比較（※ 関数型プログラミングで実装）
+## 値オブジェクトの実装方法
 
 ### 氏名を値オブジェクトにする場合
 
-classを使用したオブジェクト指向型プログラミングではなく、関数型プログラミングを広く使用してます。
-
-また、TypeScriptを使用してます。
-
-そこで、値オブジェクトを関数型プログラミングかつTypeScriptで紹介します。
+値オブジェクトを関数型プログラミングかつTypeScriptで紹介します。
 
 氏名を値オブジェクトにする場合は次のとおりになります。
 
 ```tsx
 // 値オブジェクト
 export type FullName = Readonly<{
-  // データ
+  // 状態
   firstName: string;
   lastName: string;
 }>;
@@ -118,7 +114,7 @@ console.log(getDisplayName(fullName)); // 山田 太郎
 氏名をプリミティブにする場合は次のとおりになります。
 
 ```tsx
-// データ
+// 状態
 const firstName = "太郎";
 const lastName = "山田";
 
@@ -148,7 +144,7 @@ console.log(getDisplayName(firstName, lastName)); // 山田 太郎
 ```tsx
 // 値オブジェクト
 export type FullName = Readonly<{
-  // データ
+  // 状態
   firstName: string;
   lastName: string;
 }>;
@@ -196,7 +192,7 @@ export const getDisplayName = (fullName: FullName): string => {
 ```tsx
 // 値オブジェクト
 export type FullName = Readonly<{
-  // データ
+  // 状態
   firstName: string;
   lastName: string;
 }>;
@@ -251,7 +247,7 @@ console.log(display1 === display2); // true
 ```tsx
 // 値オブジェクト
 export type FullName = Readonly<{
-  // データ
+  // 状態
   firstName: string;
   lastName: string;
 }>;
@@ -306,7 +302,7 @@ console.log(equalsFullName(fullName1, fullName2)); // true
 
 <br>
 
-### 値オブジェクトにするべきかどうかの判断基準
+### 値オブジェクトの見つけ方
 
 #### ▼ 値オブジェクトの具体例として上がっている場合
 

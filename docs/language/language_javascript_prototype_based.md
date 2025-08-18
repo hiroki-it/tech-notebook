@@ -337,7 +337,7 @@ ES6から、糖衣構文の`class`によって、オブジェクトを宣言で�
 export class Foo {
   // classでしか使用できない。
   // Setterの代わりにコンストラクタでイミュータブルを実現。
-  // データの宣言と格納が同時に行われる。
+  // 状態の宣言と格納が同時に行われる。
   constructor(value) {
     this.property = value;
   }
@@ -366,7 +366,7 @@ foo.getValue();
 export const Foo = class {
   // classでしか使用できない。
   // Setterの代わりにコンストラクタでイミュータブルを実現。
-  // データの宣言と格納が同時に行われる。
+  // 状態の宣言と格納が同時に行われる。
   constructor(value) {
     this._property = value;
   }
@@ -488,7 +488,7 @@ console.log(result);
 ```javascript
 // Object.create()による継承。
 SubFoo.prototype = Object.create(Foo.prototype, {
-  // データを定義
+  // 状態を定義
   subProperty: "テスト",
 
   // メソッドを定義
