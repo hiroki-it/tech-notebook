@@ -53,7 +53,7 @@ Vue.jsでパッケージの1つで、状態管理を実施する。
 
 データの状態の変化をいくつか管理する。
 
-クラスベースオブジェクト指向でいうところの、データ (プロパティ) に相当する。
+クラスベースオブジェクト指向でいうところの、状態 (プロパティ) に相当する。
 
 #### ▼ `mutations:{}`
 
@@ -180,14 +180,14 @@ module.exports = new Vuex.Store({
   const mapMutaions = require("vuex").mapMutaions;
 
   module.exports = {
-    // イベントハンドラ関数を定義 (※データを状態の変更を保持したくないもの)
+    // イベントハンドラ関数を定義 (※状態の変更を保持したくないもの)
     computed: {
       // mapGettersヘルパー
       // StoreのGetterをローカルマシンのcomputed:{}にマッピングし、コールできるように。
       ...mapGetters(["x-Function"]),
     },
 
-    // イベントハンドラ関数を定義 (※データを状態の変更を保持したいもの)
+    // イベントハンドラ関数を定義 (※状態の変更を保持したいもの)
     methods: {
       // mapMutationsヘルパー
       ...mapMutations(["y-Function"]),

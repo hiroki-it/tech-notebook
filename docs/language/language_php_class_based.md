@@ -13,7 +13,7 @@ description: クラス＠PHPの知見を記録しています。
 
 <br>
 
-## 01. has-one、has-many (データとして保持する関係性)
+## 01. has-one、has-many (状態として保持する関係性)
 
 ### has-one、has-manyな関係性とは
 
@@ -27,13 +27,13 @@ description: クラス＠PHPの知見を記録しています。
 
 #### ▼ Associationとは
 
-クラスＡがクラスＢをデータとして保持する関係性のこと。
+クラスＡがクラスＢを状態として保持する関係性のこと。
 
 引数型/返却値型として使用する『依存』とは区別する。
 
 #### ▼ Associationの種類
 
-保持される側のクラスのインスタンスが、データとして保持する側のクラスによって作成されるか否かによって、『Aggregation』または『Composition』に分類できる。
+保持される側のクラスのインスタンスが、状態として保持する側のクラスによって作成されるか否かによって、『Aggregation』または『Composition』に分類できる。
 
 <br>
 
@@ -47,7 +47,7 @@ description: クラス＠PHPの知見を記録しています。
 
 ![aggregation_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aggregation_example.png)
 
-UserはUserNameをデータとして保持する。
+UserはUserNameを状態として保持する。
 
 ```php
 <?php
@@ -61,7 +61,7 @@ final class User
     /**
      * @var UserName
      */
-    private UserName $name; // データとして保持
+    private UserName $name; // 状態として保持
 
     /**
      * @param UserName $name
@@ -125,7 +125,7 @@ class Car
      */
     public function __construct(Tire1 $t1, Tire2 $t2, Tire3 $t3, Tire4 $t4)
     {
-        // Tireクラスのインスタンスをデータとして保持
+        // Tireクラスのインスタンスを状態として保持
         $this->tire1 = $t1;
         $this->tire2 = $t2;
         $this->tire3 = $t3;
@@ -165,7 +165,7 @@ $car = new Car($tire1, $tire2, $tire3, $tire4);
 
 ![composition_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/composition_example.png)
 
-UserクラスはUserNameクラスをデータとして保持する。
+UserクラスはUserNameクラスを状態として保持する。
 
 ```php
 <?php
@@ -179,7 +179,7 @@ final class User
     /**
      * @var UserName
      */
-    private UserName $name; // データとして保持
+    private UserName $name; // 状態として保持
 
     /**
      * @return string
@@ -206,7 +206,7 @@ $user = new User();
 
 **＊実装例＊**
 
-CarクラスはLockクラスをデータとして保持する。
+CarクラスはLockクラスを状態として保持する。
 
 ```php
 <?php
@@ -220,7 +220,7 @@ class Car
 
     public function __construct()
     {
-        // Lockクラスのインスタンスをデータとして保持。
+        // Lockクラスのインスタンスを状態として保持。
         $this->lock = new Lock();
     }
 }
@@ -474,7 +474,7 @@ class EnginnerShainManagement extends ShainManagement
 
 interface Animal
 {
-     // インターフェイスでは、実装を伴うメソッドやデータの宣言はできない
+     // インターフェイスでは、実装を伴うメソッドや状態の宣言はできない
      public function eat();
      public function sleep();
      public function mating();
@@ -625,7 +625,7 @@ class SubFoo extends Foo
 
 ![Trait](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Trait.png)
 
-再利用したいメソッドやデータを部品化し、利用したい時にクラスに取り込む。
+再利用したいメソッドや状態を部品化し、利用したい時にクラスに取り込む。
 
 Traitを使用する時は、クラス内でTraitをuse宣言する。
 
@@ -966,7 +966,7 @@ final class User
 
 メソッドの特に、`construct`メソッド の引数として、サプライヤー側のインスタンスを注入する。
 
-サプライヤー側をデータとして保持させ、Aggregationの関係性を作られる。
+サプライヤー側を状態として保持させ、Aggregationの関係性を作られる。
 
 コンストラクタインジェクションのみが、`construct`メソッド によって、インスタンス作成のために依存関係の要件を強制できる。
 
@@ -1026,7 +1026,7 @@ $user = new User($name); // インジェクション
 
 メソッドの特に、セッターの引数として、サプライヤー側のインスタンスを注入する。
 
-サプライヤー側をデータとして保持させ、Aggregationの関係性を作られる。
+サプライヤー側を状態として保持させ、Aggregationの関係性を作られる。
 
 **＊実装例＊**
 
@@ -1082,7 +1082,7 @@ $user->setUserName($name); // インジェクション
 
 上記2つ以外のメソッドの引数として、サプライヤー側のインスタンスを注入する。
 
-サプライヤー側をデータとして保持せず、読み込んでメソッドを使用する。
+サプライヤー側を状態として保持せず、読み込んでメソッドを使用する。
 
 **＊実装例＊**
 

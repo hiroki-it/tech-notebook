@@ -36,7 +36,7 @@ Node.jsのロガーは通常バックエンドでしか使用できないが、P
 }
 ```
 
-#### ▼ info、error
+#### ▼ info関数 (そのほか、error関数など)
 
 指定のログレベルのメッセージを出力する。
 
@@ -65,7 +65,26 @@ const server = http.createServer((req, res) => {
 });
 ```
 
+ログレベル（info、error）は数値になっており、`info`や`error`などをの文字列を出力する場合、次のように実装する。
+
+```javascript
+import pino from "pino";
+
+export const logger = pino({
+  formatters: {
+    level: (label) => {
+      return {
+        level: label,
+      };
+    },
+  },
+});
+```
+
 > - https://wiblok.com/ja/nodejs/index/nodejs-request-info-processing-method/
+> - https://qiita.com/P-man_Brown/items/6f124e32d9b3ceebe9e1
+
+<br>
 
 <br>
 
@@ -129,8 +148,6 @@ const logger = pino({
 logger.info("Hello from browser!");
 logger.error({err: new Error("error!")}, "エラー発生");
 ```
-
-<br>
 
 ### winston
 

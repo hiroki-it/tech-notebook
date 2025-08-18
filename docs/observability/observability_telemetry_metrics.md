@@ -138,6 +138,16 @@ description: メトリクス＠テレメトリーの知見を記録していま�
 
 <br>
 
+### Exemplar
+
+Histogram型やSummary型のメトリクスに付与できるメタ情報（`# {...}`）のこと。
+
+```bash
+http_requests_total{method="GET"} 1027 # {trace_id="4bf9...", span_id="00f0..."} 1
+```
+
+<br>
+
 ## 02. 監視するべきメトリクスの種類
 
 ### ゴールデンシグナル (４大シグナル)

@@ -279,10 +279,6 @@ spec:
   # 許可する
   action: ALLOW
   rules:
-    - when:
-        - key: request.auth.claims[iss]
-          # JWTトークンがある場合にのみ許可する
-          values: ["<JWTトークンの発行元IDプロバイダーの識別子 (issuer)>"]
     # fromを設定しない場合、指定したパスではJWTトークンがなくても許可する
     - to:
         - operation:

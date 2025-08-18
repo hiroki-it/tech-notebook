@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】メソッド/データ＠Python
-description: メソッド/データ＠Pythonの知見を記録しています。
+title: 【IT技術の知見】振る舞い／状態＠Python
+description: 振る舞い／状態＠Pythonの知見を記録しています。
 ---
 
-# メソッド/データ＠Python
+# 振る舞い／状態＠Python
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: メソッド/データ＠Pythonの知見を記録しています。
 
 <br>
 
-## 01. メソッドとデータのカプセル化
+## 01. 振る舞いと状態のカプセル化
 
 ### public
 

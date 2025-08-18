@@ -1,8 +1,8 @@
 ---
-title: 【IT技術の知見】メソッド/データ＠PHP
+title: 【IT技術の知見】振る舞い／状態＠PHP
 ---
 
-# メソッド/データ＠PHP
+# 振る舞い／状態＠PHP
 
 ## はじめに
 
@@ -12,17 +12,21 @@ title: 【IT技術の知見】メソッド/データ＠PHP
 
 <br>
 
-## 01. メソッド/データ (プロパティ)
+## 01. 振る舞いと状態 (プロパティ)
 
-本資料の以降では、大きく、操作 (メソッド) とデータ (プロパティ) に分けて、説明していく。
+### 注意
+
+本資料の以降では、振る舞い (メソッド) と状態 (プロパティ) に分けて、説明していく。
+
+<br>
 
 ### メソッド
 
 #### ▼ メソッドとは
 
-クラスは、データを操作する。
+クラスは、状態を使用して振る舞う。
 
-この操作するための処理をメソッドという。
+振る舞いの処理をメソッドという。
 
 **＊実装例＊**
 
@@ -32,26 +36,26 @@ title: 【IT技術の知見】メソッド/データ＠PHP
 class Foo
 {
     // オブジェクトはデータを保持する。
-    private $data;
+    private $state;
 
-    public function data()
+    public function state()
     {
-        return $this->data;
+        return $this->state;
     }
 }
 ```
 
 <br>
 
-### データ (プロパティ)
+### 状態 (プロパティ)
 
-#### ▼ データ (プロパティ) とは
+#### ▼ 状態 (プロパティ) とは
 
-クラスは、データを持つ。
+クラスは、状態を持つ。
 
-このデータはプロパティとも呼ばれる。
+この状態はプロパティとも呼ばれる。
 
-本ノートでは、データであることを意識するために、プロパティという言葉を使用しないものとする。
+本ノートでは、状態であることを意識するために、プロパティという言葉を使用しないものとする。
 
 **＊実装例＊**
 
@@ -60,19 +64,19 @@ class Foo
 
 class Foo
 {
-    private $data;
+    private $state;
 
-    // 自信が持つデータを操作する.
-    public function data()
+    // 自身が持つ状態を操作する.
+    public function state()
     {
-        return $this->data;
+        return $this->state;
     }
 }
 ```
 
 <br>
 
-## 02. メソッドとデータのカプセル化
+## 02. 振る舞いと状態のカプセル化
 
 ### public
 
@@ -89,16 +93,16 @@ class Foo
 
 class Foo
 {
-    public $data;
+    public $state;
 
-    public function __construct($data)
+    public function __construct($state)
     {
-        $this->data = $data;
+        $this->state = $state;
     }
 
-    public function data()
+    public function state()
     {
-        return $this->data;
+        return $this->state;
     }
 }
 ```
@@ -112,12 +116,12 @@ class Foo
 ```php
 <?php
 
-function foo($data){
-    return $data;
+function foo($state){
+    return $state;
 }
 
-$data = "データ";
-foo($data);
+$state = "状態";
+foo($state);
 ```
 
 <br>
@@ -132,7 +136,7 @@ foo($data);
 
 #### ▼ オブジェクト指向の場合
 
-親クラス次第ではあるが、処理で`$data`の中身を隠蔽できる。
+親クラス次第ではあるが、処理で`$state`の中身を隠蔽できる。
 
 **＊実装例＊**
 
@@ -141,34 +145,34 @@ foo($data);
 
 class Foo extends ParentFoo
 {
-    public function __construct($data)
+    public function __construct($state)
     {
-        $this->data = $data;
+        $this->state = $state;
     }
 
     public function foo()
     {
         // dataは親で定義されている
-        return $this->data;
+        return $this->state;
     }
 }
 ```
 
 #### ▼ 関数型の場合
 
-処理で、`$data`の中身を隠蔽できないため、危険である。
+処理で、`$state`の中身を隠蔽できないため、危険である。
 
 **＊実装例＊**
 
 ```php
 <?php
 
-function foo($data){
-    return $data;
+function foo($state){
+    return $state;
 }
 
-$data = "データ";
-foo($data);
+$state = "状態";
+foo($state);
 ```
 
 <br>
@@ -183,7 +187,7 @@ foo($data);
 
 #### ▼ オブジェクト指向の場合
 
-処理で、`$data`の中身を隠蔽できる。
+処理で、`$state`の中身を隠蔽できる。
 
 カプセル化を参照。
 
@@ -194,16 +198,16 @@ foo($data);
 
 class Foo
 {
-    private $data;
+    private $state;
 
-    public function __construct($data)
+    public function __construct($state)
     {
-        $this->data = $data;
+        $this->state = $state;
     }
 
     public function foo()
     {
-        return $this->data.$this->Desu();
+        return $this->state.$this->Desu();
     }
 
     // クラス内からしかアクセスできない
@@ -216,19 +220,19 @@ class Foo
 
 #### ▼ 関数型の場合
 
-処理で、`$data`の中身を隠蔽できないため、危険である。
+処理で、`$state`の中身を隠蔽できないため、危険である。
 
 **＊実装例＊**
 
 ```php
 <?php
 
-function foo($data){
-    return $data;
+function foo($state){
+    return $state;
 }
 
-$data = "データ";
-foo($data);
+$state = "状態";
+foo($state);
 ```
 
 #### ▼ Encapsulation (カプセル化)
@@ -249,7 +253,7 @@ foo($data);
 
 しかし、static修飾子をつけることにより、インスタンス化しなくともコールできる。
 
-データ値は使用せず (静的) 、引数の値のみを使用して処理を実行するメソッドに対して使用する。
+状態は使用せず (静的) 、引数の値のみを使用して処理を実行するメソッドに対して使用する。
 
 **＊実装例＊**
 
@@ -675,7 +679,7 @@ echo get_class(A::get_static()); // 継承元のクラスA
 
 以下のような、オブジェクトAを最外層とした関係が存在しているとする。
 
-【オブジェクトA (オブジェクトBをデータに持つ) 】
+【オブジェクトA (オブジェクトBを状態に持つ) 】
 
 ```php
 <?php
@@ -692,7 +696,7 @@ class Obj_A
 }
 ```
 
-【オブジェクトB (オブジェクトCをデータに持つ) 】
+【オブジェクトB (オブジェクトCを状態に持つ) 】
 
 ```php
 <?php
@@ -709,7 +713,7 @@ class Obj_B
 }
 ```
 
-【オブジェクトC (オブジェクトDをデータに持つ) 】
+【オブジェクトC (オブジェクトDを状態に持つ) 】
 
 ```php
 <?php
@@ -1429,7 +1433,7 @@ final class FlagConstant
 
 区分値をinteger型の定数として扱う。
 
-区分値をデータとして持つオブジェクトについては、ドメイン駆動設計の値オブジェクトを参考にせよ。
+区分値を状態として持つオブジェクトについては、ドメイン駆動設計の値オブジェクトを参考にせよ。
 
 > - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html
 
