@@ -9756,11 +9756,11 @@
         <li class="md-nav__item">
   <a href="#01-has-onehas-many" class="md-nav__link">
     <span class="md-ellipsis">
-      01. has-one、has-many (データとして保持する関係性)
+      01. has-one、has-many (状態として保持する関係性)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. has-one、has-many (データとして保持する関係性)">
+    <nav class="md-nav" aria-label="01. has-one、has-many (状態として保持する関係性)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -27993,11 +27993,11 @@
         <li class="md-nav__item">
   <a href="#01-has-onehas-many" class="md-nav__link">
     <span class="md-ellipsis">
-      01. has-one、has-many (データとして保持する関係性)
+      01. has-one、has-many (状態として保持する関係性)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. has-one、has-many (データとして保持する関係性)">
+    <nav class="md-nav" aria-label="01. has-one、has-many (状態として保持する関係性)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -28882,7 +28882,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-has-onehas-many">01. has-one、has-many (データとして保持する関係性)<a class="headerlink" href="#01-has-onehas-many" title="Permanent link">&para;</a></h2>
+<h2 id="01-has-onehas-many">01. has-one、has-many (状態として保持する関係性)<a class="headerlink" href="#01-has-onehas-many" title="Permanent link">&para;</a></h2>
 <h3 id="has-onehas-many">has-one、has-manyな関係性とは<a class="headerlink" href="#has-onehas-many" title="Permanent link">&para;</a></h3>
 <p><img alt="データとして保持する関係性" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データとして保持する関係性.png" /></p>
 <blockquote>
@@ -28893,17 +28893,17 @@
 <p><br></p>
 <h3 id="association">Association (関連)<a class="headerlink" href="#association" title="Permanent link">&para;</a></h3>
 <h4 id="association_1">▼ Associationとは<a class="headerlink" href="#association_1" title="Permanent link">&para;</a></h4>
-<p>クラスＡがクラスＢをデータとして保持する関係性のこと。</p>
+<p>クラスＡがクラスＢを状態として保持する関係性のこと。</p>
 <p>引数型/返却値型として使用する『依存』とは区別する。</p>
 <h4 id="association_2">▼ Associationの種類<a class="headerlink" href="#association_2" title="Permanent link">&para;</a></h4>
-<p>保持される側のクラスのインスタンスが、データとして保持する側のクラスによって作成されるか否かによって、『Aggregation』または『Composition』に分類できる。</p>
+<p>保持される側のクラスのインスタンスが、状態として保持する側のクラスによって作成されるか否かによって、『Aggregation』または『Composition』に分類できる。</p>
 <p><br></p>
 <h3 id="aggregation">Aggregation (集約)<a class="headerlink" href="#aggregation" title="Permanent link">&para;</a></h3>
 <h4 id="aggregation_1">▼ Aggregationとは<a class="headerlink" href="#aggregation_1" title="Permanent link">&para;</a></h4>
 <p>保持される側のクラスのインスタンスが、保持する側のクラスのインスタンスによって作成されずに外側から渡される時、クラス間が『Aggregation』の関係にある。</p>
 <h4 id="_2">▼ 例<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p><img alt="aggregation_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aggregation_example.png" /></p>
-<p>UserはUserNameをデータとして保持する。</p>
+<p>UserはUserNameを状態として保持する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
@@ -28915,7 +28915,7 @@
     <span class="sd">/**</span>
 <span class="sd">     * @var UserName</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">UserName</span> <span class="nv">$name</span><span class="p">;</span> <span class="c1">// データとして保持</span>
+    <span class="k">private</span> <span class="nx">UserName</span> <span class="nv">$name</span><span class="p">;</span> <span class="c1">// 状態として保持</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * @param UserName $name</span>
@@ -28971,7 +28971,7 @@
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">Tire1</span> <span class="nv">$t1</span><span class="p">,</span> <span class="nx">Tire2</span> <span class="nv">$t2</span><span class="p">,</span> <span class="nx">Tire3</span> <span class="nv">$t3</span><span class="p">,</span> <span class="nx">Tire4</span> <span class="nv">$t4</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="c1">// Tireクラスのインスタンスをデータとして保持</span>
+        <span class="c1">// Tireクラスのインスタンスを状態として保持</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tire1</span> <span class="o">=</span> <span class="nv">$t1</span><span class="p">;</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tire2</span> <span class="o">=</span> <span class="nv">$t2</span><span class="p">;</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tire3</span> <span class="o">=</span> <span class="nv">$t3</span><span class="p">;</span>
@@ -28999,7 +28999,7 @@
 <h4 id="_3">▼ 例<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <p><img alt="composition_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/composition_example.png" /></p>
-<p>UserクラスはUserNameクラスをデータとして保持する。</p>
+<p>UserクラスはUserNameクラスを状態として保持する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
@@ -29011,7 +29011,7 @@
     <span class="sd">/**</span>
 <span class="sd">     * @var UserName</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">UserName</span> <span class="nv">$name</span><span class="p">;</span> <span class="c1">// データとして保持</span>
+    <span class="k">private</span> <span class="nx">UserName</span> <span class="nv">$name</span><span class="p">;</span> <span class="c1">// 状態として保持</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * @return string</span>
@@ -29031,7 +29031,7 @@
 <span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>CarクラスはLockクラスをデータとして保持する。</p>
+<p>CarクラスはLockクラスを状態として保持する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">Car</span>
@@ -29043,7 +29043,7 @@
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
     <span class="p">{</span>
-        <span class="c1">// Lockクラスのインスタンスをデータとして保持。</span>
+        <span class="c1">// Lockクラスのインスタンスを状態として保持。</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Lock</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -29248,7 +29248,7 @@
 
 <span class="k">interface</span> <span class="nx">Animal</span>
 <span class="p">{</span>
-     <span class="c1">// インターフェイスでは、実装を伴うメソッドやデータの宣言はできない</span>
+     <span class="c1">// インターフェイスでは、実装を伴うメソッドや状態の宣言はできない</span>
      <span class="k">public</span> <span class="k">function</span> <span class="nf">eat</span><span class="p">();</span>
      <span class="k">public</span> <span class="k">function</span> <span class="nf">sleep</span><span class="p">();</span>
      <span class="k">public</span> <span class="k">function</span> <span class="nf">mating</span><span class="p">();</span>
@@ -29413,7 +29413,7 @@
 <h3 id="trait">Trait<a class="headerlink" href="#trait" title="Permanent link">&para;</a></h3>
 <h4 id="trait_1">▼ Traitとは<a class="headerlink" href="#trait_1" title="Permanent link">&para;</a></h4>
 <p><img alt="Trait" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Trait.png" /></p>
-<p>再利用したいメソッドやデータを部品化し、利用したい時にクラスに取り込む。</p>
+<p>再利用したいメソッドや状態を部品化し、利用したい時にクラスに取り込む。</p>
 <p>Traitを使用する時は、クラス内でTraitをuse宣言する。</p>
 <p>Trait自体は不完全なクラスであり、インスタンス化できない。</p>
 <p>また、親クラスでトレイトを読み込むと、子クラスでもトレイトを使用できる。</p>
@@ -29684,7 +29684,7 @@
 </blockquote>
 <h4 id="_18">▼ コンストラクタインジェクションとは<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>メソッドの特に、<code>construct</code>メソッド の引数として、サプライヤー側のインスタンスを注入する。</p>
-<p>サプライヤー側をデータとして保持させ、Aggregationの関係性を作られる。</p>
+<p>サプライヤー側を状態として保持させ、Aggregationの関係性を作られる。</p>
 <p>コンストラクタインジェクションのみが、<code>construct</code>メソッド によって、インスタンス作成のために依存関係の要件を強制できる。</p>
 <p>また、セッターを完全になくした場合、インスタンス作成後にオブジェクトの状態を変更できなくなる。</p>
 <p>そのため、ビジネス上ありえないオブジェクトを作成できなくなり、インジェクションの中で、ソフトウェアの安全性の観点で最も優れている。</p>
@@ -29728,7 +29728,7 @@
 </code></pre></div>
 <h4 id="_19">▼ セッターインジェクションとは<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>メソッドの特に、セッターの引数として、サプライヤー側のインスタンスを注入する。</p>
-<p>サプライヤー側をデータとして保持させ、Aggregationの関係性を作られる。</p>
+<p>サプライヤー側を状態として保持させ、Aggregationの関係性を作られる。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>依存先のSupplierクラスを、セッターの引数として、Clientクラスに注入する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -29771,7 +29771,7 @@
 </code></pre></div>
 <h4 id="_20">▼ メソッドインジェクションとは<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>上記2つ以外のメソッドの引数として、サプライヤー側のインスタンスを注入する。</p>
-<p>サプライヤー側をデータとして保持せず、読み込んでメソッドを使用する。</p>
+<p>サプライヤー側を状態として保持せず、読み込んでメソッドを使用する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>依存先のUserNameクラスを、メソッドの引数として、Userクラスに注入する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -30076,7 +30076,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月2日 16:19:44 JST">2025-05-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年8月18日 14:26:37 JST">2025-08-18</span>
   </span>
 
     
