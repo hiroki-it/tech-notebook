@@ -27118,12 +27118,21 @@
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      実装例
+      エンティティの実装例
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="実装例">
+    <nav class="md-nav" aria-label="エンティティの実装例">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Userをエンティティにする場合
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#id_2" class="md-nav__link">
@@ -27156,6 +27165,39 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ライフサイクル
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      エンティティの見つけ方
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="エンティティの見つけ方">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      CRUD系メソッドの対象
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      業務フローの中にある
     </span>
   </a>
   
@@ -27206,9 +27248,11 @@
 <p><br></p>
 <h3 id="_4">ライフサイクルがある<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>作成から削除までのライフサイクルがある。</p>
-<p>CRUD系メソッドの対象となる可能性がある。</p>
 <p><br></p>
-<h2 id="_5">実装例<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_5">エンティティの実装例<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="user">Userをエンティティにする場合<a class="headerlink" href="#user" title="Permanent link">&para;</a></h3>
+<p>エンティティを関数型プログラミングかつTypeScriptで紹介します。</p>
+<p><br></p>
 <h3 id="id_2">識別子 (ID) を持つ<a class="headerlink" href="#id_2" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 
@@ -27225,6 +27269,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="id_3">IDで等価性検証できる<a class="headerlink" href="#id_3" title="Permanent link">&para;</a></h3>
+<p>「〇〇は既に存在しています」のエラーで役立つ。</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 
 <span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">&lt;</span><span class="p">{</span>
@@ -27278,6 +27323,13 @@
 <span class="p">};</span>
 </code></pre></div>
 <p><br></p>
+<h2 id="_8">エンティティの見つけ方<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="crud">CRUD系メソッドの対象<a class="headerlink" href="#crud" title="Permanent link">&para;</a></h3>
+<p>CRUD系メソッド（<code>create</code>、<code>find</code>、<code>update</code>、<code>delete</code>）の対象となるオブジェクトはエンティティの可能性がある。</p>
+<p><br></p>
+<h3 id="_9">業務フローの中にある<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>入庫 → 検査 → 販売 → 返品 というような業務フローの中で処理される。</p>
+<p><br></p>
 
 
 
@@ -27298,7 +27350,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年8月18日 14:26:37 JST">2025-08-18</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年8月18日 15:05:28 JST">2025-08-18</span>
   </span>
 
     

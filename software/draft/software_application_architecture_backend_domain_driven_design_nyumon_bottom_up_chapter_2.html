@@ -27124,11 +27124,11 @@
         <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      実装方法の比較（※ 関数型プログラミングで実装）
+      値オブジェクトの実装方法
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="実装方法の比較（※ 関数型プログラミングで実装）">
+    <nav class="md-nav" aria-label="値オブジェクトの実装方法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -27251,11 +27251,11 @@
           <li class="md-nav__item">
   <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
-      値オブジェクトにするべきかどうかの判断基準
+      値オブジェクトの見つけ方
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="値オブジェクトにするべきかどうかの判断基準">
+    <nav class="md-nav" aria-label="値オブジェクトの見つけ方">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -27353,15 +27353,13 @@
 <li>PhoneNumber：電話番号と関連処理（例：構文検証、国番号抽出など）を状態・振る舞いとして表現</li>
 </ul>
 <p><br></p>
-<h2 id="_7">実装方法の比較（※ 関数型プログラミングで実装）<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_7">値オブジェクトの実装方法<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <h3 id="_8">氏名を値オブジェクトにする場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>classを使用したオブジェクト指向型プログラミングではなく、関数型プログラミングを広く使用してます。</p>
-<p>また、TypeScriptを使用してます。</p>
-<p>そこで、値オブジェクトを関数型プログラミングかつTypeScriptで紹介します。</p>
+<p>値オブジェクトを関数型プログラミングかつTypeScriptで紹介します。</p>
 <p>氏名を値オブジェクトにする場合は次のとおりになります。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 値オブジェクト</span>
 <span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">FullName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Readonly</span><span class="o">&lt;</span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// データ</span>
+<span class="w">  </span><span class="c1">// 状態</span>
 <span class="w">  </span><span class="nx">firstName</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">lastName</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
@@ -27393,7 +27391,7 @@
 <p><br></p>
 <h3 id="_9">氏名をプリミティブにする場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>氏名をプリミティブにする場合は次のとおりになります。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// データ</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// 状態</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">firstName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;太郎&quot;</span><span class="p">;</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">lastName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;山田&quot;</span><span class="p">;</span>
 
@@ -27415,7 +27413,7 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1">// 値オブジェクト</span>
 <span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">FullName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Readonly</span><span class="o">&lt;</span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// データ</span>
+<span class="w">  </span><span class="c1">// 状態</span>
 <span class="w">  </span><span class="nx">firstName</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">lastName</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
@@ -27454,7 +27452,7 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1">// 値オブジェクト</span>
 <span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">FullName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Readonly</span><span class="o">&lt;</span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// データ</span>
+<span class="w">  </span><span class="c1">// 状態</span>
 <span class="w">  </span><span class="nx">firstName</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">lastName</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
@@ -27498,7 +27496,7 @@
 <h3 id="_16">インスタンス間で等価性を検証できる<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// 値オブジェクト</span>
 <span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">FullName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Readonly</span><span class="o">&lt;</span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// データ</span>
+<span class="w">  </span><span class="c1">// 状態</span>
 <span class="w">  </span><span class="nx">firstName</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">lastName</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
@@ -27577,7 +27575,7 @@
 </tbody>
 </table>
 <p><br></p>
-<h3 id="_18">値オブジェクトにするべきかどうかの判断基準<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<h3 id="_18">値オブジェクトの見つけ方<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <h4 id="_19">▼ 値オブジェクトの具体例として上がっている場合<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>例えば以下は、プリミティブ型ではなく値オブジェクトとして扱った方が良いものとして、先人が判断してくれています。</p>
 <p>ドメインの種類に限らず、値オブジェクトとして扱いましょう。</p>
@@ -27616,7 +27614,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年8月18日 14:26:37 JST">2025-08-18</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年8月18日 15:05:28 JST">2025-08-18</span>
   </span>
 
     
