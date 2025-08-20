@@ -133,8 +133,21 @@ loguruを設定する。
 ```python
 from loguru import logger
 
-# 構造化ログを有効化する
-logger.add(serialize=True)
+logger.add(
+    # 無名関数で設定を作成する
+    lambda message: print(
+        json.dumps({
+            # タイムスタンプの形式を変更する
+            "timestamp": message.record["time"].isoformat(),
+            "level": message.record["level"].name,
+            "message": message.record["message"],
+            # extraフィールドを展開する
+            **message.record["extra"],
+        }),
+        file=sys.stdout,
+        flush=True
+    )
+)
 ```
 
 > - https://github.com/Delgan/loguru?tab=readme-ov-file#structured-logging-as-needed
@@ -150,10 +163,18 @@ from loguru import logger
 # loguruの設定
 logger.remove()
 logger.add(
-    sys.stdout,
-    format="{time} {level} {message}",
-    # 構造化ログ
-    serialize=True
+    lambda message: print(
+        json.dumps({
+            # タイムスタンプの形式を変更する
+            "timestamp": message.record["time"].isoformat(),
+            "level": message.record["level"].name,
+            "message": message.record["message"],
+            # extraフィールドを展開する
+            **message.record["extra"],
+        }),
+        file=sys.stdout,
+        flush=True
+    )
 )
 
 def getFoo():
@@ -180,10 +201,18 @@ from loguru import logger
 # loguruの設定
 logger.remove()
 logger.add(
-    sys.stdout,
-    format="{time} {level} {extra[trace_id]} {message}",
-    # 構造化ログ
-    serialize=True
+    lambda message: print(
+        json.dumps({
+            # タイムスタンプの形式を変更する
+            "timestamp": message.record["time"].isoformat(),
+            "level": message.record["level"].name,
+            "message": message.record["message"],
+            # extraフィールドを展開する
+            **message.record["extra"],
+        }),
+        file=sys.stdout,
+        flush=True
+    )
 )
 
 def getFoo():

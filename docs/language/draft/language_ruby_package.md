@@ -54,7 +54,25 @@ require 'semantic_logger'
 $stdout.sync = true
 
 # Semantic Loggerを設定する
-SemanticLogger.add_appender(io: $stdout, formatter: :json)
+SemanticLogger.add_appender(
+  io: $stdout,
+  formatter: -> log, logger {
+    # 必要なフィールドのみを設定する
+    record = {
+      # タイムスタンプの形式を変更する
+      "timestamp" => log.time.utc.iso8601(6),
+      "level"     => log.level,
+      "message"   => log.message,
+    }
+
+    # payloadフィールドを展開する
+    if log.payload.is_a?(Hash)
+      record.merge!(log.payload.transform_keys!(&:to_s))
+    end
+
+    JSON.generate(record)
+  }
+)
 logger = SemanticLogger['Foo']
 
 server = WEBrick::HTTPServer.new(
@@ -92,7 +110,25 @@ require 'semantic_logger'
 $stdout.sync = true
 
 # Semantic Loggerを設定する
-SemanticLogger.add_appender(io: $stdout, formatter: :json)
+SemanticLogger.add_appender(
+  io: $stdout,
+  formatter: -> log, logger {
+    # 必要なフィールドのみを設定する
+    record = {
+      # タイムスタンプの形式を変更する
+      "timestamp" => log.time.utc.iso8601(6),
+      "level"     => log.level,
+      "message"   => log.message,
+    }
+
+    # payloadフィールドを展開する
+    if log.payload.is_a?(Hash)
+      record.merge!(log.payload.transform_keys!(&:to_s))
+    end
+
+    JSON.generate(record)
+  }
+)
 logger = SemanticLogger['Foo']
 
 

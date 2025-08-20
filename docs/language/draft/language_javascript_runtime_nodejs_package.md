@@ -71,11 +71,17 @@ const server = http.createServer((req, res) => {
 import pino from "pino";
 
 export const logger = pino({
+  // 不要なフィールドを削除する
+  base: null,
+  // フィールド名を変更する
+  messageKey: "message",
+  timeKey: "timestamp",
+  // タイムスタンプの形式を変更する
+  timestamp: pino.stdTimeFunctions.isoTime,
   formatters: {
-    level: (label) => {
-      return {
-        level: label,
-      };
+    // ログのレベル番号を文字列に変換する
+    level(label) {
+      return {level: label};
     },
   },
 });

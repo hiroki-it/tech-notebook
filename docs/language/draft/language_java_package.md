@@ -60,11 +60,21 @@ logbackを設定する。
 ```xml
 <configuration>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <fieldNames>
+                <!-- 不要なフィールドを削除する -->
+                <loggerName>[ignore]</loggerName>
+                <thread>[ignore]</thread>
+                <levelValue>[ignore]</levelValue>
+                <version>[ignore]</version>
+                <!-- フィールド名を変更する -->
+                <timestamp>timestamp</timestamp>
+            </fieldNames>
+        </encoder>
     </appender>
 
     <root level="info">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
 ```
