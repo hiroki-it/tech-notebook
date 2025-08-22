@@ -10,13 +10,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="フロントエンドアーキテクチャ＠アーキテクチャの知見を記録しています。">
+        <meta name="description" content="レンダリングパターン＠フロントエンドアーキテクチャの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend_rendering_patterns.html">
       
       
         <link rel="prev" href="software_application_architecture_backend_cqrs.html">
@@ -30,7 +30,7 @@
     
     
       
-        <title>【IT技術の知見】フロントエンドアーキテクチャ＠アーキテクチャ - 俺の技術ノート</title>
+        <title>【IT技術の知見】レンダリングパターン＠フロントエンドアーキテクチャ - 俺の技術ノート</title>
       
     
     
@@ -154,7 +154,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】フロントエンドアーキテクチャ＠アーキテクチャ
+              【IT技術の知見】レンダリングパターン＠フロントエンドアーキテクチャ
             
           </span>
         </div>
@@ -1402,6 +1402,8 @@
       
         
       
+        
+      
     
     
     
@@ -1440,6 +1442,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_frontend.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    フロントエンドアーキテクチャ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1457,7 +1482,7 @@
   
   
   <span class="md-ellipsis">
-    フロントエンドアーキテクチャ
+    レンダリングパターン
     
   </span>
   
@@ -1465,12 +1490,12 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="software_application_architecture_frontend.html" class="md-nav__link md-nav__link--active">
+      <a href="software_application_architecture_frontend_rendering_patterns.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    フロントエンドアーキテクチャ
+    レンダリングパターン
     
   </span>
   
@@ -1506,11 +1531,11 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. アーキテクチャ
+      01. レンダリングパターン
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. アーキテクチャ">
+    <nav class="md-nav" aria-label="01. レンダリングパターン">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1606,15 +1631,6 @@
   
     <nav class="md-nav" aria-label="CSRの実装方法">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mvvm" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ MVVMアーキテクチャ
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
@@ -1795,195 +1811,6 @@
       ブラウザとバックエンド間の通信
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#08-atomic-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      08. Atomic Design
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="08. Atomic Design">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#atmic-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      Atmic Designとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nuxtjs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Nuxt.jsを参考に考える
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#09" class="md-nav__link">
-    <span class="md-ellipsis">
-      09. クリーンアーキテクチャ風
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10" class="md-nav__link">
-    <span class="md-ellipsis">
-      10. マイクロフロントエンド
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="10. マイクロフロントエンド">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      UI部品合成とは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      ビルド時合成パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ビルド時合成パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ビルド時合成パターンとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      クライアントサイド合成パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="クライアントサイド合成パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ クライアントサイド合成パターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iframe" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ iframeタグ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#script" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ scriptタグ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#web" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ webコンポーネント
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      エッジサイド合成パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="エッジサイド合成パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ エッジサイド合成パターンとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      サーバーサイド合成パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="サーバーサイド合成パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ サーバーサイド合成パターンとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -27618,11 +27445,11 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. アーキテクチャ
+      01. レンダリングパターン
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. アーキテクチャ">
+    <nav class="md-nav" aria-label="01. レンダリングパターン">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -27718,15 +27545,6 @@
   
     <nav class="md-nav" aria-label="CSRの実装方法">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mvvm" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ MVVMアーキテクチャ
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
@@ -27915,195 +27733,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#08-atomic-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      08. Atomic Design
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="08. Atomic Design">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#atmic-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      Atmic Designとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nuxtjs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Nuxt.jsを参考に考える
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#09" class="md-nav__link">
-    <span class="md-ellipsis">
-      09. クリーンアーキテクチャ風
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10" class="md-nav__link">
-    <span class="md-ellipsis">
-      10. マイクロフロントエンド
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="10. マイクロフロントエンド">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      UI部品合成とは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      ビルド時合成パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ビルド時合成パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ビルド時合成パターンとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      クライアントサイド合成パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="クライアントサイド合成パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ クライアントサイド合成パターンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iframe" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ iframeタグ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#script" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ scriptタグ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#web" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ webコンポーネント
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      エッジサイド合成パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="エッジサイド合成パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ エッジサイド合成パターンとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      サーバーサイド合成パターン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="サーバーサイド合成パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ サーバーサイド合成パターンとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -28123,7 +27752,7 @@
   
 
 
-<h1 id="_1">フロントエンドアーキテクチャ＠アーキテクチャ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h1 id="_1">レンダリングパターン＠フロントエンドアーキテクチャ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -28132,7 +27761,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. アーキテクチャ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. レンダリングパターン<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_3">歴史<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <ol>
 <li>SST</li>
@@ -28243,11 +27872,6 @@
 </blockquote>
 <p><br></p>
 <h3 id="csr_1">CSRの実装方法<a class="headerlink" href="#csr_1" title="Permanent link">&para;</a></h3>
-<h4 id="mvvm">▼ MVVMアーキテクチャ<a class="headerlink" href="#mvvm" title="Permanent link">&para;</a></h4>
-<p>View層とModel層の間にViewModel層を配置し、View層とViewModel層の間で双方向にデータをやり取り (双方向データバインディング) する。</p>
-<p>これによって、View層とModel層の間を疎結合にする。</p>
-<p>Vue.jsでは、意識せずにMVVMアーキテクチャで実装できるようになっている。</p>
-<p><img alt="一般的なMVVMアーキテクチャ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/一般的なMVVMアーキテクチャ.png" /></p>
 <h4 id="_7">▼ 状態管理<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>CSRでは、ブラウザ上の操作による現在のデータに応じて、同じページ内でレンダリングするHTMLが動的に変わり続ける。</p>
 <p>これは、同じページでは特定のHTMLしかレンダリングできない他の方法 (SSR、SSG、ISRなど) とは異なる。</p>
@@ -28444,107 +28068,6 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="08-atomic-design">08. Atomic Design<a class="headerlink" href="#08-atomic-design" title="Permanent link">&para;</a></h2>
-<h3 id="atmic-design">Atmic Designとは<a class="headerlink" href="#atmic-design" title="Permanent link">&para;</a></h3>
-<p>フロントエンドを構成する要素を、5つのレイヤー (Atoms、Molecules、Organisms、Templates、Pages) に分ける設計方法のこと。</p>
-<blockquote>
-<ul>
-<li><a href="https://atomicdesign.bradfrost.com/">https://atomicdesign.bradfrost.com/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="nuxtjs">Nuxt.jsを参考に考える<a class="headerlink" href="#nuxtjs" title="Permanent link">&para;</a></h3>
-<p>Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。</p>
-<blockquote>
-<ul>
-<li><a href="https://tec.tecotec.co.jp/entry/2020/03/27/090000">https://tec.tecotec.co.jp/entry/2020/03/27/090000</a></li>
-</ul>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>Nuxt.jsのディレクトリ</th>
-<th>Atomic Designのレイヤー</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>components</td>
-<td>Atoms、Molecules、Organisms</td>
-</tr>
-<tr>
-<td>pages</td>
-<td>Pages</td>
-</tr>
-<tr>
-<td>layouts</td>
-<td>Templates</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h2 id="09">09. クリーンアーキテクチャ風<a class="headerlink" href="#09" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Viewレイヤー</li>
-<li>State Managementレイヤー</li>
-<li>API Clientレイヤー</li>
-</ul>
-<blockquote>
-<ul>
-<li><a href="https://www.upp-technology.com/blogs/a-different-approach-to-frontend-architecture/">https://www.upp-technology.com/blogs/a-different-approach-to-frontend-architecture/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="10">10. マイクロフロントエンド<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
-<h3 id="ui">UI部品合成とは<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h3>
-<p>静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) のコンポーネントを、各マイクロサービスに対応するように分割する設計方法。</p>
-<p><img alt="composite-ui" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/composite-ui.png" /></p>
-<p><br></p>
-<h3 id="_15">ビルド時合成パターン<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<h4 id="_16">▼ ビルド時合成パターンとは<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>フロントエンドアプリケーションのビルド時に合成する。</p>
-<p><br></p>
-<h3 id="_17">クライアントサイド合成パターン<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<h4 id="_18">▼ クライアントサイド合成パターンとは<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p>クライアント側 (ブラウザ上) で、静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) を合成する。</p>
-<h4 id="iframe">▼ iframeタグ<a class="headerlink" href="#iframe" title="Permanent link">&para;</a></h4>
-<p>ページにコンポーネントに対応する<code>iframe</code>タグを組み込むする。</p>
-<p>各<code>iframe</code>タグが表示したいコンポーネントのURLを<code>src</code>タグで指定する</p>
-<blockquote>
-<ul>
-<li><a href="https://martinfowler.com/articles/micro-frontends.html#Run-timeIntegrationViaIframes">https://martinfowler.com/articles/micro-frontends.html#Run-timeIntegrationViaIframes</a></li>
-</ul>
-</blockquote>
-<h4 id="script">▼ <code>script</code>タグ<a class="headerlink" href="#script" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://martinfowler.com/articles/micro-frontends.html#Run-timeIntegrationViaJavascript">https://martinfowler.com/articles/micro-frontends.html#Run-timeIntegrationViaJavascript</a></li>
-</ul>
-</blockquote>
-<h4 id="web">▼ webコンポーネント<a class="headerlink" href="#web" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://martinfowler.com/articles/micro-frontends.html#Run-timeIntegrationViaWebComponents">https://martinfowler.com/articles/micro-frontends.html#Run-timeIntegrationViaWebComponents</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_19">エッジサイド合成パターン<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
-<h4 id="_20">▼ エッジサイド合成パターンとは<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://martinfowler.com/articles/micro-frontends.html#Build-timeIntegration">https://martinfowler.com/articles/micro-frontends.html#Build-timeIntegration</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_21">サーバーサイド合成パターン<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
-<h4 id="_22">▼ サーバーサイド合成パターンとは<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>サーバーサイド側 (ブラウザ上) で、静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) を合成する。</p>
-<blockquote>
-<ul>
-<li><a href="https://martinfowler.com/articles/micro-frontends.html#Server-sideTemplateComposition">https://martinfowler.com/articles/micro-frontends.html#Server-sideTemplateComposition</a></li>
-</ul>
-</blockquote>
-<p><br></p>
 
 
 
@@ -28565,7 +28088,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月30日 21:28:59 JST">2025-07-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年8月22日 17:53:42 JST">2025-08-22</span>
   </span>
 
     

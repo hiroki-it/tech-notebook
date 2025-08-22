@@ -5,10 +5,6 @@
          <lastmod>2025-08-22</lastmod>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/Untitled.html</loc>
-         <lastmod>2025-08-22</lastmod>
-    </url>
-    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/about.html</loc>
          <lastmod>2025-08-22</lastmod>
     </url>
@@ -1801,7 +1797,11 @@
          <lastmod>2025-08-22</lastmod>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend_architecture.html</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend_rendering_patterns.html</loc>
          <lastmod>2025-08-22</lastmod>
     </url>
     <url>
