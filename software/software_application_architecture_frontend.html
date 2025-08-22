@@ -1506,22 +1506,31 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-mvvm" class="md-nav__link">
+  <a href="#01-mvc" class="md-nav__link">
     <span class="md-ellipsis">
-      01. MVVMアーキテクチャ
+      01. MVCアーキテクチャ
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-atomic-design" class="md-nav__link">
+  <a href="#02-mvvm" class="md-nav__link">
     <span class="md-ellipsis">
-      02. Atomic Design
+      02. MVVMアーキテクチャ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. Atomic Design">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-atomic-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. Atomic Design
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Atomic Design">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1548,22 +1557,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
+  <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      03. クリーンアーキテクチャ風
+      04. クリーンアーキテクチャ
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
+  <a href="#05" class="md-nav__link">
     <span class="md-ellipsis">
-      04. マイクロフロントエンド
+      05. マイクロフロントエンド
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. マイクロフロントエンド">
+    <nav class="md-nav" aria-label="05. マイクロフロントエンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -27350,22 +27359,31 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-mvvm" class="md-nav__link">
+  <a href="#01-mvc" class="md-nav__link">
     <span class="md-ellipsis">
-      01. MVVMアーキテクチャ
+      01. MVCアーキテクチャ
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-atomic-design" class="md-nav__link">
+  <a href="#02-mvvm" class="md-nav__link">
     <span class="md-ellipsis">
-      02. Atomic Design
+      02. MVVMアーキテクチャ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. Atomic Design">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-atomic-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. Atomic Design
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Atomic Design">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -27392,22 +27410,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
+  <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      03. クリーンアーキテクチャ風
+      04. クリーンアーキテクチャ
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
+  <a href="#05" class="md-nav__link">
     <span class="md-ellipsis">
-      04. マイクロフロントエンド
+      05. マイクロフロントエンド
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. マイクロフロントエンド">
+    <nav class="md-nav" aria-label="05. マイクロフロントエンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -27575,12 +27593,21 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-mvvm">01. MVVMアーキテクチャ<a class="headerlink" href="#01-mvvm" title="Permanent link">&para;</a></h2>
+<h2 id="01-mvc">01. MVCアーキテクチャ<a class="headerlink" href="#01-mvc" title="Permanent link">&para;</a></h2>
+<p><br></p>
+<h2 id="02-mvvm">02. MVVMアーキテクチャ<a class="headerlink" href="#02-mvvm" title="Permanent link">&para;</a></h2>
+<p>以下の要素からなる。</p>
+<ul>
+<li>View：UIロジック（HTML）</li>
+<li>ViewModel：状態と振る舞いのロジック（JavaScript）</li>
+<li>Model：モデルそのもの（JavaScript）</li>
+</ul>
 <p>View層とModel層の間にViewModel層を配置し、View層とViewModel層の間で双方向にデータをやり取り (双方向データバインディング) する。</p>
 <p>これによって、View層とModel層の間を疎結合にする。</p>
 <p>Vue.jsでは、意識せずにMVVMアーキテクチャで実装できるようになっている。</p>
 <p><img alt="一般的なMVVMアーキテクチャ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/一般的なMVVMアーキテクチャ.png" /></p>
-<h2 id="02-atomic-design">02. Atomic Design<a class="headerlink" href="#02-atomic-design" title="Permanent link">&para;</a></h2>
+<p><br></p>
+<h2 id="03-atomic-design">03. Atomic Design<a class="headerlink" href="#03-atomic-design" title="Permanent link">&para;</a></h2>
 <h3 id="atmic-design">Atmic Designとは<a class="headerlink" href="#atmic-design" title="Permanent link">&para;</a></h3>
 <p>フロントエンドを構成する要素を、5つのレイヤー (Atoms、Molecules、Organisms、Templates、Pages) に分ける設計方法のこと。</p>
 <blockquote>
@@ -27619,19 +27646,16 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03">03. クリーンアーキテクチャ風<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Viewレイヤー</li>
-<li>State Managementレイヤー</li>
-<li>API Clientレイヤー</li>
-</ul>
+<h2 id="04">04. クリーンアーキテクチャ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<p>フロントエンドにはビジネスロジックがないため、クリーンアーキテクチャを採用する意義がない。</p>
+<p>やめましょう。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.upp-technology.com/blogs/a-different-approach-to-frontend-architecture/">https://www.upp-technology.com/blogs/a-different-approach-to-frontend-architecture/</a></li>
+<li><a href="https://panda-program.com/posts/clean-architecture-and-frontend">https://panda-program.com/posts/clean-architecture-and-frontend</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04">04. マイクロフロントエンド<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h2 id="05">05. マイクロフロントエンド<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="ui">UI部品合成とは<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h3>
 <p>静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) のコンポーネントを、各マイクロサービスに対応するように分割する設計方法。</p>
 <p><img alt="composite-ui" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/composite-ui.png" /></p>
@@ -27701,7 +27725,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年8月22日 18:11:59 JST">2025-08-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年8月22日 20:43:35 JST">2025-08-22</span>
   </span>
 
     
