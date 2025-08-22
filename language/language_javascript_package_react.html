@@ -9479,13 +9479,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
+  <a href="#04-react" class="md-nav__link">
     <span class="md-ellipsis">
-      04. コンポーネント
+      04. reactコンポーネント
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. コンポーネント">
+    <nav class="md-nav" aria-label="04. reactコンポーネント">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -27496,13 +27496,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
+  <a href="#04-react" class="md-nav__link">
     <span class="md-ellipsis">
-      04. コンポーネント
+      04. reactコンポーネント
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. コンポーネント">
+    <nav class="md-nav" aria-label="04. reactコンポーネント">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -27812,7 +27812,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04">04. コンポーネント<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h2 id="04-react">04. reactコンポーネント<a class="headerlink" href="#04-react" title="Permanent link">&para;</a></h2>
 <h3 id="_5">クラスコンポーネント<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ クラスコンポーネントとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>他ファイルで使用できる汎用的なクラスを定義する。</p>
@@ -27865,7 +27865,7 @@
 </blockquote>
 <h4 id="async">▼ <code>async</code>宣言不可<a class="headerlink" href="#async" title="Permanent link">&para;</a></h4>
 <p>Reactでは、関数コンポーネントで<code>async</code>宣言は使用できない仕様になっている。</p>
-<p>非同期関数を<code>useEffect</code>関数に渡したうえで、これをコンポーネントにする必要がある。</p>
+<p>非同期関数を<code>useEffect</code>関数に渡したうえで、これをreactコンポーネントにする必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/78877882/12771072">https://stackoverflow.com/a/78877882/12771072</a></li>
@@ -27876,7 +27876,7 @@
 <h2 id="05">05. フック<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="useeffect">useEffect<a class="headerlink" href="#useeffect" title="Permanent link">&para;</a></h3>
 <h4 id="useeffect_1">▼ useEffectとは<a class="headerlink" href="#useeffect_1" title="Permanent link">&para;</a></h4>
-<p>コンポーネント内で非同期処理を使用できるようにする。</p>
+<p>reactコンポーネント内で非同期処理を使用できるようにする。</p>
 <p>フロントエンドの文脈では、ブラウザレンダリング後のデータ変更処理を非同期処理とするとよく、ブラウザレンダリング後にこの処理を<code>useEffect</code>関数で実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// useEffect関数内でsetFooState関数を実行し、state変数を動的に変更する</span>
 <span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">fooState</span><span class="w"> </span><span class="nx">setFooState</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="s2">&quot;&lt;初期値&gt;&quot;</span><span class="p">);</span>
@@ -28001,7 +28001,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="usestate">useState<a class="headerlink" href="#usestate" title="Permanent link">&para;</a></h3>
-<p>コンポーネント内で状態を操作できるようにする。</p>
+<p>reactコンポーネント内で状態を操作できるようにする。</p>
 <p><code>state</code>変数と<code>setState</code>関数を返却するため、これを任意の名前の変数に格納する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">useEffect</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
 
@@ -28063,7 +28063,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年8月9日 19:27:22 JST">2025-08-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年8月22日 16:35:55 JST">2025-08-22</span>
   </span>
 
     
