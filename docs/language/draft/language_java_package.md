@@ -157,10 +157,14 @@ public class Foo extends Application{
 
         try {
             Client client = cb.build()
-            Invocation.Builder builder = client.target("example.com").request(MediaType.APPLICATION_JSON)
+            String url = "example.com"
+            Invocation.Builder builder = client.target(url).request(MediaType.APPLICATION_JSON)
             Response res = builder.get();
             int statusCode = res.getStatusInfo().getStatusCode();
             JsonObject response = Json.createReader(new StringReader(r.readEntity(String.class)).readObject();
+            MDC.put("status", String.valueOf(statusCode));
+            MDC.put("method", "GET");
+            MDC.put("path", url);
             logger.info(response.toString());
             return Response.status(statusCode).type(MediaType.APPLICATION_JSON).entity(json).build();
         } catch (ProcessingException e) {

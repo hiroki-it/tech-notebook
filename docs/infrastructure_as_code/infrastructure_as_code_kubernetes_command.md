@@ -978,6 +978,14 @@ cat merged.txt | awk '
 md2confl merged.md >| merged.wiki
 ```
 
+**＊例＊**
+
+`kubectl`コマンドの結果でアノテーションの一覧を出力する。
+
+```bash
+kubectl get pod -n foo -o custom-columns=NAME:.metadata.name,ANNOTATIONS:.metadata.annotations
+```
+
 #### ▼ -o custom-columns-file
 
 事前に定義したユーザー定義のカラムに基づいて、Kubernetesリソースを取得する。
