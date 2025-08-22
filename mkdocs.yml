@@ -163,7 +163,7 @@ nav:
           - クリーンアーキテクチャ: software/software_application_architecture_backend_domain_driven_design_clean_architecture.md
           - CQRS: software/software_application_architecture_backend_cqrs.md
       - ■ フロントエンドアーキテクチャ:
-          - フロントエンドアーキテクチャ: software/software_application_architecture_frontend.md
+          - フロントエンドアーキテクチャ: software/software_application_architecture.md
           - レンダリングパターン: software/software_application_architecture_frontend_rendering_patterns.md
       - ■ マイクロサービスアーキテクチャ:
           - マイクロサービスアーキテクチャ: software/software_application_architecture_microservices.md
@@ -531,15 +531,15 @@ nav:
               - 認証: security/security_auth_authentication.md
               - HTTP認証: security/security_auth_authentication_http.md
               - ■ 資格情報による分類:
-                  - 資格情報による分類: security/security_auth_authentication_credentials.md
-                  - 資格情報の運搬: security/security_auth_authentication_credentials_carrier.md
-                  - 資格情報の保管: security/security_auth_authentication_credentials_store.md
-                  - JWT: security/security_auth_authentication_credentials_jwt.md
+                  - 資格情報による分類: security/security_auth_authentication_artifacts.md
+                  - 資格情報の運搬: security/security_auth_authentication_artifacts_carrier.md
+                  - 資格情報の保管: security/security_auth_authentication_artifacts_store.md
+                  - JWT: security/security_auth_authentication_artifacts_jwt.md
                   - ■ SSO:
-                      - SSO: security/security_auth_authentication_credentials_sso.md
-                      - SAML: security/security_auth_authentication_credentials_sso_saml.md
-                      - OIDC: security/security_auth_authentication_credentials_sso_oidc.md
-                  - 証明書ベース認証: security/security_auth_authentication_credentials_certificate.md
+                      - SSO: security/security_auth_authentication_artifacts_sso.md
+                      - SAML: security/security_auth_authentication_artifacts_sso_saml.md
+                      - OIDC: security/security_auth_authentication_artifacts_sso_oidc.md
+                  - 証明書ベース認証: security/security_auth_authentication_artifacts_certificate.md
               - 認証要素による分類: security/security_auth_authentication_factor.md
           - ■ 認可:
               - 認可: security/security_auth_authorization.md
