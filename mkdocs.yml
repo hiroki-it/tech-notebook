@@ -164,6 +164,7 @@ nav:
           - CQRS: software/software_application_architecture_backend_cqrs.md
       - ■ フロントエンドアーキテクチャ:
           - フロントエンドアーキテクチャ: software/software_application_architecture_frontend.md
+          - レンダリングパターン: software/software_application_architecture_frontend_rendering_patterns.md
       - ■ マイクロサービスアーキテクチャ:
           - マイクロサービスアーキテクチャ: software/software_application_architecture_microservices.md
           - クラウドネイティブ技術を使用したマイクロサービスアーキテクチャの設計例: software/software_application_architecture_microservices_cloudnative.md
