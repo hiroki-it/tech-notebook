@@ -13,7 +13,17 @@ description: フロントエンドアーキテクチャ＠フロントエンド�
 
 <br>
 
-## 01. MVVMアーキテクチャ
+## 01. MVCアーキテクチャ
+
+<br>
+
+## 02. MVVMアーキテクチャ
+
+以下の要素からなる。
+
+- View：UIロジック（HTML）
+- ViewModel：状態と振る舞いのロジック（JavaScript）
+- Model：モデルそのもの（JavaScript）
 
 View層とModel層の間にViewModel層を配置し、View層とViewModel層の間で双方向にデータをやり取り (双方向データバインディング) する。
 
@@ -23,7 +33,9 @@ Vue.jsでは、意識せずにMVVMアーキテクチャで実装できるよう�
 
 ![一般的なMVVMアーキテクチャ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/一般的なMVVMアーキテクチャ.png)
 
-## 02. Atomic Design
+<br>
+
+## 03. Atomic Design
 
 ### Atmic Designとは
 
@@ -47,17 +59,17 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 <br>
 
-## 03. クリーンアーキテクチャ風
+## 04. クリーンアーキテクチャ
 
-- Viewレイヤー
-- State Managementレイヤー
-- API Clientレイヤー
+フロントエンドにはビジネスロジックがないため、クリーンアーキテクチャを採用する意義がない。
 
-> - https://www.upp-technology.com/blogs/a-different-approach-to-frontend-architecture/
+やめましょう。
+
+> - https://panda-program.com/posts/clean-architecture-and-frontend
 
 <br>
 
-## 04. マイクロフロントエンド
+## 05. マイクロフロントエンド
 
 ### UI部品合成とは
 
