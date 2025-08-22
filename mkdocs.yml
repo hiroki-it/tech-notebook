@@ -163,7 +163,7 @@ nav:
           - クリーンアーキテクチャ: software/software_application_architecture_backend_domain_driven_design_clean_architecture.md
           - CQRS: software/software_application_architecture_backend_cqrs.md
       - ■ フロントエンドアーキテクチャ:
-          - フロントエンドアーキテクチャ: software/software_application_architecture.md
+          - フロントエンドアーキテクチャ: software/software_application_architecture_frontend.md
           - レンダリングパターン: software/software_application_architecture_frontend_rendering_patterns.md
       - ■ マイクロサービスアーキテクチャ:
           - マイクロサービスアーキテクチャ: software/software_application_architecture_microservices.md
