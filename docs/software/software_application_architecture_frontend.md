@@ -15,9 +15,25 @@ description: フロントエンドアーキテクチャ＠フロントエンド�
 
 ## 01. MVCアーキテクチャ
 
+### MVCアーキテクチャとは
+
+記入中...
+
+<br>
+
+### レンダリングパターンとの関係性
+
+以下のレンダリングパターンを使用している場合、MVCアーキテクチャで構築することになる。
+
+- SSR
+
+> - http://fluorite2.sblo.jp/article/189587309.html
+
 <br>
 
 ## 02. MVVMアーキテクチャ
+
+### MVVMアーキテクチャとは
 
 以下の要素からなる。
 
@@ -32,6 +48,16 @@ View層とModel層の間にViewModel層を配置し、View層とViewModel層の�
 Vue.jsでは、意識せずにMVVMアーキテクチャで実装できるようになっている。
 
 ![一般的なMVVMアーキテクチャ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/一般的なMVVMアーキテクチャ.png)
+
+<br>
+
+### レンダリングパターンとの関係性
+
+以下のレンダリングパターンを使用している場合、MVVMアーキテクチャで構築することになる。
+
+- CSR
+
+> - http://fluorite2.sblo.jp/article/189587309.html
 
 <br>
 
