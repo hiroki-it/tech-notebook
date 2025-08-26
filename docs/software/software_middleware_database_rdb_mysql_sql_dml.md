@@ -578,7 +578,23 @@ SHOW ENGINE INNODB STATUS\G;
 
 <br>
 
-## 07. EXEC
+## 07. ANALYZE
+
+テーブルの統計情報を更新する。
+
+```mysql
+ANALYZE TABLE foos;
+
++------------+---------+----------+----------+
+| Table      | Op      | Msg_type | Msg_text |
++------------+---------+----------+----------+
+| foos       | analyze | status   | OK       |
++------------+---------+----------+----------+
+```
+
+<br>
+
+## 08. EXEC
 
 ### stored procedure
 

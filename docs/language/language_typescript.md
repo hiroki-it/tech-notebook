@@ -639,3 +639,112 @@ console.log(isAdult); // true
 ```
 
 <br>
+
+## 09. まとめ
+
+```typescript
+// エラーハンドリング: Result型で値を型として明示
+type Result<T, E> = {ok: true; value: T} | {ok: false; error: E};
+type UserFetchError = "UNAUTHORIZED" | "RATE_LIMITED" | "INTERNAL_ERROR";
+
+// 保守性: TypeScriptでAPIレスポンスの型安全性を確保
+type UserResponse = {
+  id: string;
+  name: string;
+};
+
+async function getUserNames(
+  // パフォーマンス: 複数ユーザーIDをまとめて取得することで、N+1問題を回避
+  userIds: string[],
+  // テストビリティ: 依存性注入により、モックに差し替え可能に
+  deps: Dependencies,
+): Promise<Result<Map<string, string>, UserFetchError>> {
+  // 信頼性: リトライ機構により、一時的な障害に対応
+  const maxRetries = 3;
+
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    // 信頼性: タイムアウトにより、ネットワーク遅延からアプリケーションを保護
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+    try {
+      const response = await deps.fetchClient(
+        // スケーラビリティ: バッチ処理でリクエスト回数を最小化
+        // 保守性: URLのベタ書きを排除
+        `${deps.apiBaseUrl}/users/batch`,
+        {
+          method: "POST",
+          headers: {
+            // 認証・認可: JWTでAPIを保護
+            Authorization: `Bearer ${await deps.jwtProvider()}`,
+            "Content-Type": "application/json",
+          },
+          // パフォーマンス: 複数ユーザーIDをまとめて取得することで、N+1問題を回避
+          // パフォーマンス: 必要なフィールドのみ取得してデータ転送量を最小化
+          body: JSON.stringify({ids: userIds, fields: ["id", "name"]}),
+          signal: controller.signal,
+        },
+      );
+
+      // エラーハンドリング: HTTPステータスを適切にハンドリング
+      if (!response.ok) {
+        if (response.status >= 400 && response.status < 500) {
+          switch (response.status) {
+            // 認証・認可: APIを保護
+            case 403:
+              throw new NonRetryableError("UNAUTHORIZED", response.status);
+            // スケーラビリティ: レート制限対応
+            case 429:
+              throw new NonRetryableError("RATE_LIMITED", response.status);
+            default:
+              throw new NonRetryableError("INTERNAL_ERROR", response.status);
+          }
+        }
+        throw response;
+      }
+
+      const users = await response.json();
+
+      // セキュリティ: レスポンスを厳密に検証
+      if (!isValidUsersResponse(users)) {
+        throw new NonRetryableError("INTERNAL_ERROR");
+      }
+
+      const results = new Map(users.map((user) => [user.id, user.name]));
+      return {ok: true, value: results};
+    } catch (error) {
+      // 可観測性: 構造化されたログ
+      deps.logger.error("Failed to fetch users", {
+        userIds,
+        attempt,
+        error,
+      });
+      // 可観測性: メトリクス
+      deps.metrics.increment("user_fetch_error", {
+        status:
+          error instanceof Response || error instanceof NonRetryableError
+            ? error.status
+            : undefined,
+      });
+
+      if (error instanceof NonRetryableError) {
+        return {ok: false, error: error.errorType};
+      }
+
+      if (attempt < maxRetries) {
+        // 信頼性: 指数バックオフ（1秒→2秒→4秒）によるリトライで過負荷を防止
+        const delay = 2 ** attempt * 1000;
+        await new Promise((resolve) => setTimeout(resolve, delay));
+      }
+    } finally {
+      clearTimeout(timeoutId);
+    }
+  }
+
+  return {ok: false, error: "INTERNAL_ERROR"};
+}
+```
+
+> - https://zenn.dev/coconala/articles/reasons-for-continuing-to-learn#%E3%82%82%E3%81%97%E3%80%81%E3%81%93%E3%81%93%E3%81%BE%E3%81%A7%E3%81%AE%E3%81%99%E3%81%B9%E3%81%A6%E3%82%92%E5%AD%A6%E3%82%93%E3%81%A0%E3%82%89
+
+<br>
