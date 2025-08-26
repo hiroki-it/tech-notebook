@@ -4027,7 +4027,7 @@
           <li class="md-nav__item">
   <a href="#db_8" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ クラスターDBインデックス
+      ▼ クラスターDBインデックス（自動作成）
     </span>
   </a>
   
@@ -4036,7 +4036,7 @@
           <li class="md-nav__item">
   <a href="#db_9" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ セカンダリーDBインデックス
+      ▼ セカンダリーDBインデックス（手動作成が必要）
     </span>
   </a>
   
@@ -27735,7 +27735,7 @@
           <li class="md-nav__item">
   <a href="#db_8" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ クラスターDBインデックス
+      ▼ クラスターDBインデックス（自動作成）
     </span>
   </a>
   
@@ -27744,7 +27744,7 @@
           <li class="md-nav__item">
   <a href="#db_9" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ セカンダリーDBインデックス
+      ▼ セカンダリーDBインデックス（手動作成が必要）
     </span>
   </a>
   
@@ -28043,7 +28043,7 @@
 <h3 id="db_6">DBインデックス<a class="headerlink" href="#db_6" title="Permanent link">&para;</a></h3>
 <h4 id="db_7">▼ DBインデックスとは<a class="headerlink" href="#db_7" title="Permanent link">&para;</a></h4>
 <p>テーブルから特定のカラムのみを抜き出し、検索しやすいように並び替え、名前を付けて保管しておいたもの。</p>
-<p>性能の向上のために、DBインデックを作成する。</p>
+<p>性能の向上のために、DBインデックを作成しておく。</p>
 <p>DBインデックスとして保管したカラムから特定のレコードを直接的に取得できる。</p>
 <p>そのため、SQLの実行時間がカラム数に依存しなくなる。</p>
 <p>DBインデックスを使用しない場合、SQLの実行時に全てカラムを取得するため、実行時間がテーブルのカラム数に依存してしまう。</p>
@@ -28052,12 +28052,13 @@
 <li><a href="https://qiita.com/towtow/items/4089dad004b7c25985e3">https://qiita.com/towtow/items/4089dad004b7c25985e3</a></li>
 </ul>
 </blockquote>
-<h4 id="db_8">▼ クラスターDBインデックス<a class="headerlink" href="#db_8" title="Permanent link">&para;</a></h4>
+<h4 id="db_8">▼ クラスターDBインデックス（自動作成）<a class="headerlink" href="#db_8" title="Permanent link">&para;</a></h4>
 <p>プライマリーキーあるいはユニークキーのカラムを基準にして、テーブルのカラムを並び替えたDBインデックスのこと。</p>
+<p>DBエンジンが自動で作成してくれる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">foo_index</span>
 <span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">foo_table</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
 </code></pre></div>
-<h4 id="db_9">▼ セカンダリーDBインデックス<a class="headerlink" href="#db_9" title="Permanent link">&para;</a></h4>
+<h4 id="db_9">▼ セカンダリーDBインデックス（手動作成が必要）<a class="headerlink" href="#db_9" title="Permanent link">&para;</a></h4>
 <p>プライマリーキーあるいはユニークキーではないカラムを基準にして、テーブルのカラムを並び替えたDBインデックスのこと。</p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">foo_index</span>
 <span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">foo_table</span><span class="w"> </span><span class="p">(</span><span class="n">foo_column</span><span class="p">)</span>
@@ -28270,7 +28271,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月9日 14:24:35 JST">2025-05-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年8月26日 22:00:42 JST">2025-08-26</span>
   </span>
 
     
