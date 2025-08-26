@@ -4614,13 +4614,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#07-exec" class="md-nav__link">
+  <a href="#07-analyze" class="md-nav__link">
     <span class="md-ellipsis">
-      07. EXEC
+      07. ANALYZE
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="07. EXEC">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-exec" class="md-nav__link">
+    <span class="md-ellipsis">
+      08. EXEC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="08. EXEC">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -28340,13 +28349,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#07-exec" class="md-nav__link">
+  <a href="#07-analyze" class="md-nav__link">
     <span class="md-ellipsis">
-      07. EXEC
+      07. ANALYZE
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="07. EXEC">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-exec" class="md-nav__link">
+    <span class="md-ellipsis">
+      08. EXEC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="08. EXEC">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -28821,7 +28839,18 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
 <div class="highlight"><pre><span></span><code><span class="k">SHOW</span><span class="w"> </span><span class="k">ENGINE</span><span class="w"> </span><span class="n">INNODB</span><span class="w"> </span><span class="k">STATUS</span><span class="err">\</span><span class="n">G</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="07-exec">07. EXEC<a class="headerlink" href="#07-exec" title="Permanent link">&para;</a></h2>
+<h2 id="07-analyze">07. ANALYZE<a class="headerlink" href="#07-analyze" title="Permanent link">&para;</a></h2>
+<p>テーブルの統計情報を更新する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">ANALYZE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">foos</span><span class="p">;</span>
+
+<span class="o">+------------+---------+----------+----------+</span>
+<span class="o">|</span><span class="w"> </span><span class="k">Table</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">Op</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">Msg_type</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Msg_text</span><span class="w"> </span><span class="o">|</span>
+<span class="o">+------------+---------+----------+----------+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">foos</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="k">analyze</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">status</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">OK</span><span class="w">       </span><span class="o">|</span>
+<span class="o">+------------+---------+----------+----------+</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="08-exec">08. EXEC<a class="headerlink" href="#08-exec" title="Permanent link">&para;</a></h2>
 <h3 id="stored-procedure">stored procedure<a class="headerlink" href="#stored-procedure" title="Permanent link">&para;</a></h3>
 <h4 id="stored-procedure_1">▼ stored procedureとは<a class="headerlink" href="#stored-procedure_1" title="Permanent link">&para;</a></h4>
 <p>あらかじめ一連のSQL文をDBに格納しておき、Call文でコールする方式。</p>
@@ -28861,7 +28890,7 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 19:49:44 JST">2025-05-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年8月26日 21:13:22 JST">2025-08-26</span>
   </span>
 
     
