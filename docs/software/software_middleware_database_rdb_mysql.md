@@ -308,6 +308,7 @@ SELECT * from mysql.innodb_table_stats;
 | database_name              | table_name               | last_update         | n_rows  | clustered_index_size | sum_of_other_index_sizes |
 +----------------------------+--------------------------+---------------------+---------+----------------------+--------------------------+
 | foo                        | BAR                      | 2024-03-06 07:11:55 |      50 |                    1 |                        2 |
+...
 ```
 
 オプティマイザーは以下の統計情報を参照し、SQLの実行計画を決定する。
