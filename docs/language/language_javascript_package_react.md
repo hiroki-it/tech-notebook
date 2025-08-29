@@ -242,6 +242,26 @@ useEffect(
 );
 ```
 
+`return`のみを使用すると、`useEffect`で早期リターンも実装できる。
+
+```jsx
+const [fooState setFooState] = useState("<初期値>");
+
+useEffect(
+    () => {
+        const data = response.data
+        if(data){
+            // state変数に値を設定する
+            setFooState(response.data);
+            return;
+        }
+        // state変数に値を設定する
+        setFooState(null);
+    },
+    [state],
+);
+```
+
 #### ▼ 第一引数
 
 **＊実装例＊**

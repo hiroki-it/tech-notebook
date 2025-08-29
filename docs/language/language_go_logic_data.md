@@ -677,6 +677,10 @@ func main() {
 
 ## 06. ポインタ
 
+### ポインタとは
+
+メモリアドレスのこと。
+
 ### ポインタ型とは
 
 メモリアドレスを代入できるデータ型のこと。
@@ -688,10 +692,6 @@ func main() {
 定義された変数に対して、& (アンパサンド) を宣言すると、メモリアドレスを参照できる。
 
 参照したメモリアドレス値は、ポインタ型の変数に代入する必要があるが、型推論で記述すればこれを意識しなくて良い。
-
-PHPにおけるポインタは、以下のリンクを参考にせよ。
-
-> - https://hiroki-it.github.io/tech-notebook/language/language_php_class_based_method_data.html
 
 **＊実装例＊**
 
@@ -722,6 +722,8 @@ func main() {
 ポインタ型の変数に対してアスタリスクを宣言すると、メモリアドレスに割り当てられているデータの実体を参照できる。
 
 ポインタを使用してデータの実体を参照することを『逆参照 (デリファレンス) 』という。
+
+**＊実装例＊**
 
 ```go
 package main
@@ -766,8 +768,6 @@ func main() {
 
 参照先の配列に対するポインタ、長さ、サイズを持つデータ型である。
 
-![reference-types_slice](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/reference-types_slice.png)
-
 ```go
 // Goのコードより
 type slice struct {
@@ -776,6 +776,8 @@ type slice struct {
 	cap   int
 }
 ```
+
+![reference-types_slice](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/reference-types_slice.png)
 
 > - https://github.com/golang/go/blob/go1.20.7/src/runtime/slice.go#L15-L19
 

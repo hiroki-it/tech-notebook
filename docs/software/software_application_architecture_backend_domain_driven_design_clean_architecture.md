@@ -2614,6 +2614,12 @@ class DogToyRepository
 > - https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
 > - https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
 
+#### ▼ テストリポジトリ
+
+ホワイトボックスのテスト時に、実装リポジトリを静的な値を返信するインメモリなリポジトリに差し替えると、DBを使用せずにホワイトボックステストを実施できる。
+
+ただ、ホワイトボックステスト時には、DBコンテナなどの一時的なDBを使用すれば、実装リポジトリをそのまま使用できる。
+
 <br>
 
 ### ファクトリ

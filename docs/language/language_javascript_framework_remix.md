@@ -287,6 +287,7 @@ export async function action({request}: ActionFunctionArgs) {
 │   │   ├── layouts/        # 画面レイアウトreactコンポーネント
 │   │   └── validators/     # 入力フォームの検証ロジック
 │   │
+│   ├── constants/          # アプリケーション全体で使用する定数（環境変数ではない）
 │   ├── entry.client.tsx
 │   ├── entry.server.tsx
 │   ├── hooks/              # componentsディレクトリで使用する汎用的なsetState処理

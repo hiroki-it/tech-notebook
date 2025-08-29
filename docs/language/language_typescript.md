@@ -467,7 +467,55 @@ const fooOrBar = foo == "foo" ? foo : "bar";
 
 <br>
 
-## 07. エラーハンドリング
+## 07. コピー
+
+### 参照コピー
+
+変数がオブジェクト型の場合に、メモリアドレスをコピーする。
+
+変数がプリミティブ型の場合、ポインタコピーは存在しない。
+
+```typescript
+const original = {id: 1, name: "foo"};
+const copy = original; // ポインタコピー
+copy.name = "bar";
+
+console.log(original.name); // "bar" となり、コピー前の状態が変わっている
+```
+
+<br>
+
+### シャローコピー
+
+変数がオブジェクト型の場合に、変数の階層の値のみをコピーする。
+
+ただし、第一階層だオブジェクト型であると参照コピーの挙動になる。
+
+```typescript
+const original = {id: 1, fullname: {lastname: "foo", firstname: "foo"}};
+const copy = {...original}; // シャローコピー
+copy.fullname.firstname = "bar";
+
+console.log(original.fullname.firstname); // "bar" となり、コピー前の状態が変わっている
+```
+
+<br>
+
+### ディープコピー
+
+変数がオブジェクト型の場合に、変数の階層の値のみをコピーする。
+
+```typescript
+const original = {id: 1, fullname: {lastname: "foo", firstname: "foo"}};
+const copy = structuredClone(original);
+copy.fullname.firstname = "bar";
+
+console.log(original.fullname.firstname); // "foo" となり、コピー前の状態には影響がない
+```
+
+<br>
+
+## 08. エラーハンドリング
 
 ### 独自エラーオブジェクトの定義
 
@@ -553,7 +601,7 @@ export const action = async ({request, params}: ActionArgs) => {
 
 <br>
 
-## 08. 実装スタイル
+## 09. 実装スタイル
 
 ### オブジェクト指向型
 
@@ -640,7 +688,7 @@ console.log(isAdult); // true
 
 <br>
 
-## 09. まとめ
+## 10. まとめ
 
 ```typescript
 // エラーハンドリング: Result型で値を型として明示
