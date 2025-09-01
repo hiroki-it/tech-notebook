@@ -15,9 +15,7 @@ description: ５章＠ドメイン駆動設計入門ボトムアップの知見�
 
 ## リポジトリとは
 
-リポジトリとは、ドメインオブジェクト（エンティティや値オブジェクト）を永続化するロジックをもつオブジェクトである。
-
-データベースや外部APIといった実際の外部へのアクセスを隠蔽し、ドメイン層からは「ドメインオブジェクトの集合を扱うように」見せる役割をもつ。
+リポジトリとは、ドメインオブジェクト（エンティティや値オブジェクト）を外部（DB、サードパティAPI）から取得し、またこれに永続化するロジックをもつオブジェクトである。
 
 <br>
 
@@ -39,16 +37,17 @@ type UserRepositoryInterface = {
 ```typescript
 import {Pool} from "mysql2/promise";
 
-export type UserRepositoryDeps = Readonly<{
+// 依存性注入
+export type UserRepositoryDI = Readonly<{
   pool: Pool;
 }>;
 
-export const findUserById = async (
-  userRepositoryDeps: UserRepositoryDeps,
+export const findById = async (
+  userRepositoryDI: UserRepositoryDI,
   id: UserId,
 ): Promise<User> => {
   const sql = `SELECT id, name, email FROM users WHERE id = $1 LIMIT 1`;
-  const {rows} = await userRepositoryDeps.pool.query(sql, [id]);
+  const {rows} = await userRepositoryDI.pool.query(sql, [id]);
   if (rows.length === 0) {
     throw new Error("User not found");
   }
@@ -59,8 +58,8 @@ export const findUserById = async (
   };
 };
 
-export const saveUser = async (
-  userRepositoryDeps: UserRepositoryDeps,
+export const save = async (
+  userRepositoryDI: UserRepositoryDI,
   user: User,
 ): Promise<void> => {
   const sql = `
@@ -69,7 +68,7 @@ export const saveUser = async (
     ON CONFLICT (id)
     DO UPDATE SET name = EXCLUDED.name, email = EXCLUDED.email
   `;
-  await userRepositoryDeps.pool.query(sql, [user.id, user.name, user.email]);
+  await userRepositoryDI.pool.query(sql, [user.id, user.name, user.email]);
 };
 ```
 
@@ -101,8 +100,6 @@ const createUserRepositoryInMemory = (): UserRepositoryInterface => {
 Userオブジェクトに実装するべき振る舞いのビジネスロジックを、永続化の役割をもつRepositoryに実装することになってしまう
 
 ```typescript
-type UserId = string;
-
 type UserRepositoryInterface = {
   findbyId: (id: UserId) => Promise<User>;
   updateName: (name: UserName) => Promise<void>;
@@ -133,5 +130,12 @@ const user = await userRepository.findById(userId);
 const updatedUser = changeName(user, newName); // ユーザーオブジェクトが自分でユーザー名の状態を変更する
 await userRepository.save(updatedUser); // リポジトリは、状態の変更されたユーザーオブジェクトを保存するだけ
 ```
+
+<br>
+
+## リポジトリで実装するべきロジックの見つけ方
+
+- DBに関するロジック（例：DB操作、ファイル操作）
+- 外部APIに関するロジック（例：HTTPハンドラー）
 
 <br>

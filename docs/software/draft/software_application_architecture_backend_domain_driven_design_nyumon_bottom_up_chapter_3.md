@@ -133,7 +133,7 @@ export const deleteUser = (id: UserId): boolean => {
 
 <br>
 
-## エンティティの見つけ方
+## エンティティで実装するべきロジックの見つけ方
 
 ### CRUD系メソッドの対象
 
