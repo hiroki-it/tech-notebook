@@ -457,7 +457,17 @@ func newSampler() sdktrace.Sampler {
 
 <br>
 
-### Spanステータス
+### SpanLink
+
+親子関係にないスパンを紐づける場合に使用する。
+
+ブラウザを経由する処理（例：ログインの認可リクエスト）では、トレースが途切れてしまうが、SpanLinkでこれを関連づけられる。
+
+> - https://tech.bm-sms.co.jp/entry/2024/05/21/110000
+
+<br>
+
+### Spanステータス（SpanStatus）
 
 #### ▼ Spanステータスとは
 
@@ -485,11 +495,13 @@ Spanに紐づく処理の成否を表す。
 
 <br>
 
-### Span種別
+### Span種別（SpanKind）
 
 #### ▼ Span種別とは
 
 スパンの作成場所の種類を表す。
+
+> - https://opentelemetry.io/docs/concepts/signals/traces/#span-kind
 
 #### ▼ Unspecified
 

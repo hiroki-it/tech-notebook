@@ -15,39 +15,13 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 ## エンティティとは
 
+<br>
+
+## エンティティの実装方法（関数型）
+
 ### 識別子 (ID) を持つ
 
 同じデータをもっていても、IDが異なれば別のエンティティである。
-
-<br>
-
-### IDで等価性検証できる
-
-値オブジェクトとは異なり、IDで等価性検証ができる。
-
-<br>
-
-### 処理の中で状態を変更できる
-
-処理の中で状態が更新されてもIDは変わらず、オブジェクトとしての等価性は保たれる。
-
-<br>
-
-### ライフサイクルがある
-
-作成から削除までのライフサイクルがある。
-
-<br>
-
-## エンティティの実装例
-
-### Userをエンティティにする場合
-
-エンティティを関数型プログラミングかつTypeScriptで紹介します。
-
-<br>
-
-### 識別子 (ID) を持つ
 
 ```typescript
 export type UserId = string;
@@ -69,6 +43,8 @@ const createUser = (id: UserId, name: string, email: string): User | Error => {
 <br>
 
 ### IDで等価性検証できる
+
+値オブジェクトとは異なり、IDで等価性検証ができる。
 
 「〇〇は既に存在しています」のエラーで役立つ。
 
@@ -92,6 +68,8 @@ export const equalsUser = (a: User, b: User): boolean => {
 
 ### 処理の中で状態が変化する
 
+処理の中で状態が更新されてもIDは変わらず、オブジェクトとしての等価性は保たれる。
+
 ```typescript
 export type UserId = string;
 
@@ -112,6 +90,8 @@ export const changeUserName = (user: User, newName: string): User => {
 <br>
 
 ### ライフサイクル
+
+作成から削除までのライフサイクルがある。
 
 ```typescript
 export type UserId = string;
