@@ -15,22 +15,81 @@ description: ５章＠ドメイン駆動設計入門ボトムアップの知見�
 
 ## リポジトリとは
 
+リポジトリとは、ドメインオブジェクト（エンティティや値オブジェクト）を永続化するロジックをもつオブジェクトである。
+
+データベースや外部APIといった実際の外部へのアクセスを隠蔽し、ドメイン層からは「ドメインオブジェクトの集合を扱うように」見せる役割をもつ。
+
 <br>
 
-## 実装方法
+## リポジトリの実装方法（関数型）
 
 ### インターフェースリポジトリ
 
 ```typescript
-// 記入中...
+type UserRepositoryInterface = {
+  findById: (id: UserId) => Promise<User>;
+  save: (user: User) => Promise<void>;
+};
 ```
 
 <br>
 
-### テストリポジトリ
+### 実装リポジトリ
 
 ```typescript
-// 記入中...
+import {Pool} from "mysql2/promise";
+
+export type UserRepositoryDeps = Readonly<{
+  pool: Pool;
+}>;
+
+export const findUserById = async (
+  userRepositoryDeps: UserRepositoryDeps,
+  id: UserId,
+): Promise<User> => {
+  const sql = `SELECT id, name, email FROM users WHERE id = $1 LIMIT 1`;
+  const {rows} = await userRepositoryDeps.pool.query(sql, [id]);
+  if (rows.length === 0) {
+    throw new Error("User not found");
+  }
+  return {
+    id: rows[0].id,
+    name: rows[0].name,
+    email: rows[0].email,
+  };
+};
+
+export const saveUser = async (
+  userRepositoryDeps: UserRepositoryDeps,
+  user: User,
+): Promise<void> => {
+  const sql = `
+    INSERT INTO users (id, name, email)
+    VALUES ($1, $2, $3)
+    ON CONFLICT (id)
+    DO UPDATE SET name = EXCLUDED.name, email = EXCLUDED.email
+  `;
+  await userRepositoryDeps.pool.query(sql, [user.id, user.name, user.email]);
+};
+```
+
+<br>
+
+### インメモリリポジトリ
+
+```typescript
+const createUserRepositoryInMemory = (): UserRepositoryInterface => {
+  const store = new Map<UserId, User>();
+
+  return {
+    async findById(id: UserId): Promise<User | null> {
+      return store.get(id) ?? null;
+    },
+    async save(user: User): Promise<void> {
+      store.set(user.id, user);
+    },
+  };
+};
 ```
 
 <br>
@@ -42,36 +101,17 @@ description: ５章＠ドメイン駆動設計入門ボトムアップの知見�
 Userオブジェクトに実装するべき振る舞いのビジネスロジックを、永続化の役割をもつRepositoryに実装することになってしまう
 
 ```typescript
-type UserName = string;
-type Email = string;
-
-type User = Readonly<{
-  name: UserName;
-  email: Email;
-}>;
-
-const createUser = (name: UserName, email: Email): User => ({
-  name,
-  email,
-});
-
-const getName = (user: User): UserName => user.name;
-
-// 中略
-```
-
-```typescript
 type UserId = string;
 
-type IUserRepository = {
-  find: (id: UserId) => Promise<User>;
+type UserRepositoryInterface = {
+  findbyId: (id: UserId) => Promise<User>;
   updateName: (name: UserName) => Promise<void>;
   updateEmail: (email: Email) => Promise<void>;
 };
 ```
 
 ```typescript
-const user = await userRepository.find(userId);
+const user = await userRepository.findById(userId);
 await userRepository.updateName(getName(user)); // リポジトリの UpdateName のなかで、ドメインロジックを書くことになってしまう
 ```
 
@@ -82,43 +122,14 @@ Userオブジェクトが振る舞いのビジネスロジックをもち、Repo
 責務さえ区別できていれば、名前はSaveやStore、それこそUpdateでもよい
 
 ```typescript
-type UserName = string;
-type Email = string;
-
-type User = Readonly<{
-  name: UserName;
-  email: Email;
-}>;
-
-const createUser = (name: UserName, email: Email): User => ({
-  name,
-  email,
-});
-
-const getName = (user: User): UserName => user.name;
-
-const changeName = (user: User, newName: UserName): User => ({
-  ...user,
-  name: newName,
-});
-
-const changeEmail = (user: User, newEmail: Email): User => ({
-  ...user,
-  email: newEmail,
-});
-```
-
-```typescript
-type UserId = string;
-
-type IUserRepository = {
-  find: (id: UserId) => Promise<User>;
+type UserRepositoryInterface = {
+  findById: (id: UserId) => Promise<User>;
   save: (user: User) => Promise<void>;
 };
 ```
 
 ```typescript
-const user = await userRepository.find(userId);
+const user = await userRepository.findById(userId);
 const updatedUser = changeName(user, newName); // ユーザーオブジェクトが自分でユーザー名の状態を変更する
 await userRepository.save(updatedUser); // リポジトリは、状態の変更されたユーザーオブジェクトを保存するだけ
 ```
