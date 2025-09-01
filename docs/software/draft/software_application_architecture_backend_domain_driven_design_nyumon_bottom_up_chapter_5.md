@@ -36,6 +36,9 @@ type UserRepositoryInterface = {
 
 ```typescript
 import {Pool} from "mysql2/promise";
+import {User} from "../domain/user";
+import {UserId} from "../domain/userId";
+import {UserName} from "../domain/userName";
 
 // 依存性注入
 export type UserRepositoryDI = Readonly<{
@@ -46,16 +49,17 @@ export const findById = async (
   userRepositoryDI: UserRepositoryDI,
   id: UserId,
 ): Promise<User> => {
-  const sql = `SELECT id, name, email FROM users WHERE id = $1 LIMIT 1`;
-  const {rows} = await userRepositoryDI.pool.query(sql, [id]);
-  if (rows.length === 0) {
+  const sql = `SELECT id, name FROM users WHERE id = ? LIMIT 1`;
+  const [rows] = await userRepositoryDI.pool.query(sql, [
+    id as unknown as string,
+  ]);
+  const row = (rows as any[])[0];
+
+  if (!row) {
     throw new Error("User not found");
   }
-  return {
-    id: rows[0].id,
-    name: rows[0].name,
-    email: rows[0].email,
-  };
+
+  return new User(UserId.from(row.id), new UserName(row.name));
 };
 
 export const save = async (
@@ -63,12 +67,15 @@ export const save = async (
   user: User,
 ): Promise<void> => {
   const sql = `
-    INSERT INTO users (id, name, email)
-    VALUES ($1, $2, $3)
-    ON CONFLICT (id)
-    DO UPDATE SET name = EXCLUDED.name, email = EXCLUDED.email
+    INSERT INTO users (id, name)
+    VALUES (?, ?)
+    ON DUPLICATE KEY UPDATE
+      name = VALUES(name)
   `;
-  await userRepositoryDI.pool.query(sql, [user.id, user.name, user.email]);
+  await userRepositoryDI.pool.query(sql, [
+    user.id as unknown as string,
+    user.name.toString(),
+  ]);
 };
 ```
 
@@ -91,6 +98,109 @@ const createUserRepositoryInMemory = (): UserRepositoryInterface => {
 };
 ```
 
+### DTO
+
+#### ▼ DTOとは
+
+ORMのDBモデルをエンティティそのままに使用する場合、ドメイン層がインフラストラクチャ層に依存してしまう。
+
+エンティティとORMのDBモデルを分離し、ORMのDBモデルをエンティティに詰め替える必要がある
+
+別の方法として、リポジトリでDTOに相当するロジックを実装してもよい。
+
+#### ▼ DTOを使用しない場合
+
+```typescript
+import {PrismaClient} from "@prisma/client";
+import {User} from "../domain/user";
+import {UserId} from "../domain/userId";
+import {UserName} from "../domain/userName";
+
+// 依存性注入
+export type UserRepositoryDI = Readonly<{
+  prisma: PrismaClient;
+}>;
+
+export const findById = async (
+  userRepositoryDI: UserRepositoryDI,
+  id: UserId,
+): Promise<User> => {
+  const record = await userRepositoryDI.prisma.user.findUnique({
+    where: {id: id as unknown as string},
+  });
+
+  if (!record) {
+    throw new Error("User not found");
+  }
+
+  // 取得時はORMのDBモデルをエンティティに変換する
+  return new User(UserId.from(record.id), new UserName(record.name));
+};
+
+export const save = async (
+  userRepositoryDI: UserRepositoryDI,
+  user: User,
+): Promise<void> => {
+  const record = {
+    id: user.id as unknown as string,
+    name: user.name.toString(),
+  };
+
+  // 保存時はエンティティをORMのDBモデルに変換する
+  await userRepositoryDI.prisma.user.upsert({
+    where: {id: record.id},
+    create: {id: record.id, name: record.name},
+    update: {name: record.name},
+  });
+};
+```
+
+#### ▼ DTOを使用する場合
+
+```typescript
+import {PrismaClient} from "@prisma/client";
+
+import {User} from "../domain/user";
+import {UserId} from "../domain/userId";
+import {UserName} from "../domain/userName";
+
+// 依存性注入
+export type UserRepositoryDI = Readonly<{
+  prisma: PrismaClient;
+}>;
+
+export const findById = async (
+  userRepositoryDI: UserRepositoryDI,
+  id: UserId,
+): Promise<User> => {
+  const record = await userRepositoryDI.prisma.user.findUnique({
+    where: {id: id as unknown as string},
+  });
+  if (!record) {
+    throw new Error("User not found");
+  }
+
+  // 取得時はORMのDBモデルをエンティティに変換する
+  return UserDTO.toDomain({
+    id: record.id,
+    name: record.name,
+  });
+};
+
+export const save = async (
+  userRepositoryDI: UserRepositoryDI,
+  user: User,
+): Promise<void> => {
+  // 保存時はエンティティをORMのDBモデルに変換する
+  const record = UserDTO.toRecord(user);
+  await userRepositoryDI.prisma.user.upsert({
+    where: {id: record.id},
+    create: {id: record.id, name: record.name},
+    update: {name: record.name},
+  });
+};
+```
+
 <br>
 
 ### 注意点
@@ -103,7 +213,6 @@ Userオブジェクトに実装するべき振る舞いのビジネスロジッ�
 type UserRepositoryInterface = {
   findbyId: (id: UserId) => Promise<User>;
   updateName: (name: UserName) => Promise<void>;
-  updateEmail: (email: Email) => Promise<void>;
 };
 ```
 
