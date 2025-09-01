@@ -705,7 +705,7 @@ async function getUserNames(
   // パフォーマンス: 複数ユーザーIDをまとめて取得することで、N+1問題を回避
   userIds: string[],
   // テストビリティ: 依存性注入により、モックに差し替え可能に
-  deps: Dependencies,
+  di: DI,
 ): Promise<Result<Map<string, string>, UserFetchError>> {
   // 信頼性: リトライ機構により、一時的な障害に対応
   const maxRetries = 3;
@@ -716,15 +716,15 @@ async function getUserNames(
     const timeoutId = setTimeout(() => controller.abort(), 5000);
 
     try {
-      const response = await deps.fetchClient(
+      const response = await di.fetchClient(
         // スケーラビリティ: バッチ処理でリクエスト回数を最小化
         // 保守性: URLのベタ書きを排除
-        `${deps.apiBaseUrl}/users/batch`,
+        `${di.apiBaseUrl}/users/batch`,
         {
           method: "POST",
           headers: {
             // 認証・認可: JWTでAPIを保護
-            Authorization: `Bearer ${await deps.jwtProvider()}`,
+            Authorization: `Bearer ${await di.jwtProvider()}`,
             "Content-Type": "application/json",
           },
           // パフォーマンス: 複数ユーザーIDをまとめて取得することで、N+1問題を回避
@@ -762,13 +762,13 @@ async function getUserNames(
       return {ok: true, value: results};
     } catch (error) {
       // 可観測性: 構造化されたログ
-      deps.logger.error("Failed to fetch users", {
+      di.logger.error("Failed to fetch users", {
         userIds,
         attempt,
         error,
       });
       // 可観測性: メトリクス
-      deps.metrics.increment("user_fetch_error", {
+      di.metrics.increment("user_fetch_error", {
         status:
           error instanceof Response || error instanceof NonRetryableError
             ? error.status

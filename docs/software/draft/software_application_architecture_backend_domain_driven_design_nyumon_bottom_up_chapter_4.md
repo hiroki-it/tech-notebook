@@ -13,7 +13,7 @@ description: ４章＠ドメイン駆動設計入門ボトムアップの知見�
 
 <br>
 
-## ドメインサービスとは
+## 01. ドメインサービスとは
 
 自身の状態を持たず、ドメインのふるまいを切り分けたオブジェクトである。
 
@@ -21,7 +21,7 @@ description: ４章＠ドメイン駆動設計入門ボトムアップの知見�
 
 <br>
 
-## ドメインサービスの実装方法（関数型）
+## 02. ドメインサービスの実装方法（関数型）
 
 ```typescript
 export type UserId = string;
@@ -42,20 +42,20 @@ export const createUser = (id: string, name: string): User => {
 ```typescript
 import type {User, UserName} from "./user";
 
-export type UserExistenceService = {
+export type UserExistenceServiceDI = {
   existsByName: (name: UserName) => Promise<boolean>;
 };
 
 export const exists =
-  (deps: UserExistenceService) =>
+  (userExistenceServiceDI: UserExistenceServiceDI) =>
   async (user: User): Promise<boolean> => {
-    return deps.existsByName(user.name);
+    return userExistenceServiceDI.existsByName(user.name);
   };
 ```
 
 <br>
 
-## ドメインサービスで実装するべきロジックの見つけ方
+## 03. ドメインサービスで実装するべきロジックの見つけ方
 
 - エンティティや値オブジェクトに自然に属さない処理
 - 1つのエンティティに責務を押し付けると不自然な汎用的な処理

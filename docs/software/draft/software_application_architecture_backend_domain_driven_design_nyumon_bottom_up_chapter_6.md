@@ -24,8 +24,8 @@ description: ６章＠ドメイン駆動設計入門ボトムアップの知見�
 ## アプリケーションサービスの実装方法（関数型）
 
 ```typescript
-export type Deps = Readonly<{
-  userRepo: UserRepo;
+export type userRepositoryDI = Readonly<{
+  userRepository: UserRepository;
 }>;
 
 export type RegisterUserInput = Readonly<{
@@ -34,7 +34,7 @@ export type RegisterUserInput = Readonly<{
 }>;
 
 export const registerUser = async (
-  deps: Deps,
+  userRepositoryDI: UserRepositoryDI,
   input: RegisterUserInput,
 ): Promise<Result<User>> => {
   const name = createUserName(input.name);
@@ -49,7 +49,7 @@ export const registerUser = async (
     return err(email);
   }
 
-  const exists = await deps.userRepo.findByEmail(email);
+  const exists = await userRepositoryDI.userRepository.findByEmail(email);
 
   if (exists) {
     return err(new Error("Email already registered"));
@@ -57,8 +57,16 @@ export const registerUser = async (
 
   const user = createUser(name, email);
 
-  await deps.userRepo.save(user);
+  await userRepositoryDI.userRepository.save(user);
 
   return ok(user);
 };
 ```
+
+<br>
+
+## アプリケーションサービスで実装するべきロジックの見つけ方
+
+ユーザーや外部クライアントから要求を受け、ユースケースを表現するロジックはアプリケーションサービスに適する。
+
+<br>
