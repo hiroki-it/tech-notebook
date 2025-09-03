@@ -9761,7 +9761,7 @@
           <li class="md-nav__item">
   <a href="#try-catch" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ インフラストラクチャレイヤーでtry-catchする
+      ▼ インフラストラクチャレイヤーでtry-catchを実行する
     </span>
   </a>
   
@@ -9770,7 +9770,7 @@
           <li class="md-nav__item">
   <a href="#try-catch_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ インフラストラクチャレイヤーより上位のレイヤーでtry-catchする
+      ▼ インフラストラクチャレイヤーより上位のレイヤーでtry-catchを実行する
     </span>
   </a>
   
@@ -27750,7 +27750,7 @@
           <li class="md-nav__item">
   <a href="#try-catch" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ インフラストラクチャレイヤーでtry-catchする
+      ▼ インフラストラクチャレイヤーでtry-catchを実行する
     </span>
   </a>
   
@@ -27759,7 +27759,7 @@
           <li class="md-nav__item">
   <a href="#try-catch_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ インフラストラクチャレイヤーより上位のレイヤーでtry-catchする
+      ▼ インフラストラクチャレイヤーより上位のレイヤーでtry-catchを実行する
     </span>
   </a>
   
@@ -27977,7 +27977,7 @@ q+werty%3D%2F%3B
 <span class="p">}</span>
 
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// $transaction関数の実行をtry-catchブロックで囲む</span>
+<span class="w">  </span><span class="c1">// $transaction関数の実行をtry-catchで囲む</span>
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">transfer</span><span class="p">(</span><span class="s2">&quot;alice@prisma.io&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bob@prisma.io&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
 <span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">transfer</span><span class="p">(</span><span class="s2">&quot;alice@prisma.io&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bob@prisma.io&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
@@ -28102,7 +28102,7 @@ q+werty%3D%2F%3B
 <li><a href="https://www.prisma.io/docs/orm/reference/error-reference#prismaclientknownrequesterror">https://www.prisma.io/docs/orm/reference/error-reference#prismaclientknownrequesterror</a></li>
 </ul>
 </blockquote>
-<h4 id="try-catch">▼ インフラストラクチャレイヤーでtry-catchする<a class="headerlink" href="#try-catch" title="Permanent link">&para;</a></h4>
+<h4 id="try-catch">▼ インフラストラクチャレイヤーで<code>try-catch</code>を実行する<a class="headerlink" href="#try-catch" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1">// ユースケースレイヤー</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">,</span><span class="w"> </span><span class="nx">Prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
 
@@ -28156,7 +28156,7 @@ q+werty%3D%2F%3B
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="try-catch_1">▼ インフラストラクチャレイヤーより上位のレイヤーでtry-catchする<a class="headerlink" href="#try-catch_1" title="Permanent link">&para;</a></h4>
+<h4 id="try-catch_1">▼ インフラストラクチャレイヤーより上位のレイヤーで<code>try-catch</code>を実行する<a class="headerlink" href="#try-catch_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1">// インフラストラクチャレイヤー</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">,</span><span class="w"> </span><span class="nx">Prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
 
@@ -28245,7 +28245,7 @@ q+werty%3D%2F%3B
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月30日 15:55:32 JST">2025-07-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年9月3日 18:08:44 JST">2025-09-03</span>
   </span>
 
     
