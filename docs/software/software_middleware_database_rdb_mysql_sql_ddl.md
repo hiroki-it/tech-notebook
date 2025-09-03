@@ -25,7 +25,7 @@ description: DDL＠SQLの知見を記録しています。
 
 ### テーブルの管理
 
-#### ▼ `CREATE TABLE`句
+#### ▼ `CREATE TABLE`
 
 テーブルを作成する。
 
@@ -52,7 +52,7 @@ CREATE TABLE order_data (
 )
 ```
 
-#### ▼ `CREATE VIEW`句
+#### ▼ `CREATE VIEW`
 
 ビューとはある表の特定のカラムや指定した条件に合致するレコードなどを取り出した仮想の表。
 

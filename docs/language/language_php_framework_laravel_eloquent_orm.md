@@ -794,7 +794,7 @@ class FooController extends Controller
 
 #### ▼ `limit`メソッド、`offset`メソッド
 
-開始地点から指定した件数のレコードを全て取得するSELECT句を発行する。
+指定した`offset`値以降のレコードを全て取得するSELECT句を発行する。
 
 これにより、ページネーションで、1ページ当たりのレコード数 (`limit`) と、次のページの開始レコード (`offset`) を定義できる。
 

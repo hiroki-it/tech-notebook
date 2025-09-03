@@ -235,7 +235,7 @@ function transfer(from: string, to: string, amount: number) {
 }
 
 async function main() {
-  // $transaction関数の実行をtry-catchブロックで囲む
+  // $transaction関数の実行をtry-catchで囲む
   try {
     await transfer("alice@prisma.io", "bob@prisma.io", 100);
     await transfer("alice@prisma.io", "bob@prisma.io", 100);
@@ -367,7 +367,7 @@ Prisma Client がDBに対してトランザクションを実行しエラーが�
 
 > - https://www.prisma.io/docs/orm/reference/error-reference#prismaclientknownrequesterror
 
-#### ▼ インフラストラクチャレイヤーでtry-catchする
+#### ▼ インフラストラクチャレイヤーで`try-catch`を実行する
 
 ```typescript
 // ユースケースレイヤー
@@ -424,7 +424,7 @@ class UserUseCase {
 }
 ```
 
-#### ▼ インフラストラクチャレイヤーより上位のレイヤーでtry-catchする
+#### ▼ インフラストラクチャレイヤーより上位のレイヤーで`try-catch`を実行する
 
 ```typescript
 // インフラストラクチャレイヤー
