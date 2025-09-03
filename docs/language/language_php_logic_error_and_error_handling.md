@@ -195,7 +195,6 @@ class Foo
         }
     }
 }
-
 ```
 
 finally句は、try句やcatch句の返却処理が行われる直前に実行されるため、finally句では、`return`や`continue`を使用しないようにする。

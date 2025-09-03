@@ -259,7 +259,6 @@ final class AuthenticationController
         return redirect(RouteServiceProvider::UNAUTHORIZED);
     }
 }
-
 ```
 
 <br>
@@ -320,7 +319,6 @@ class RedirectIfAuthenticated
         return $next($request);
     }
 }
-
 ```
 
 <br>
@@ -527,7 +525,6 @@ class FooController extends Controller
         // 続きの処理
     }
 }
-
 ```
 
 > - https://readouble.com/laravel/8.x/ja/authorization.html#via-controller-helpers

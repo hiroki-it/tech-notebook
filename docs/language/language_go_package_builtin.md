@@ -310,7 +310,6 @@ func main() {
 
 	fmt.Println("Response:", string(body))
 }
-
 ```
 
 > - https://qiita.com/atsutama/items/566c38b4a5f3f0d26e44#http%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E4%BE%8B
@@ -439,7 +438,6 @@ func main() {
 
 	...
 }
-
 ```
 
 > - https://golangbyexample.com/using-context-in-golang-complete-guide/

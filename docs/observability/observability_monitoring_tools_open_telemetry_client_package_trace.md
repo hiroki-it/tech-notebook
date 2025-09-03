@@ -334,7 +334,6 @@ func newSampler() sdktrace.Sampler {
 	// Tail-based方式のサンプリングを採用し、クライアント側のサンプリング率は推奨値の100%とする
 	return sdktrace.ParentBased(sdktrace.TraceIDRatioBased(1.0))
 }
-
 ```
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#NeverSample

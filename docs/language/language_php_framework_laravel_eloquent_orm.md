@@ -272,7 +272,6 @@ class User extends Model
         "deleted_at"
     ];
 }
-
 ```
 
 #### ▼ カラムデフォルト値の定義
@@ -649,7 +648,6 @@ class FooController extends Controller
         // 続きの処理
     }
 }
-
 ```
 
 Eloquentモデルには`fillable`プロパティを設定しておく。
@@ -792,7 +790,6 @@ class FooController extends Controller
         return $foo->where('foo_email', $emailAddress)->first();
     }
 }
-
 ```
 
 #### ▼ `limit`メソッド、`offset`メソッド
