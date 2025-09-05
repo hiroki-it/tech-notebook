@@ -54,6 +54,45 @@ SSRのアプリケーションで以下の順に処理を実行し、データ�
 
 <br>
 
+### Remix独自のMVCアーキテクチャ
+
+Remixは独自のMVCアーキテクチャを採用している。
+
+各routeファイルが独立した小さなMVCになっている。
+
+```yaml
+View層
+# routesのcomponentの処理などが相当
+↓
+↓
+Controller層
+# routesのloaderやactionの処理が相当
+↓
+↓
+Model層
+# modelsなどが相当
+# ドメイン層のモデルとインフラ層の永続化処理が結合している
+```
+
+```yaml
+UserInterface層
+# routesのcomponent、loader、actionの処理の中で、入力と出力の処理が相当
+↓
+↓
+Application層
+# routesのcomponent、loader、actionの処理の中で、modelsとの調整処理が相当
+↓
+↓
+Domain層
+# アプリケーション独自のモデルが相当
+↓
+↓
+Infrastructure層
+# データベース接続、ロギング、ファイルシステム操作、外部API通信などが相当
+```
+
+<br>
+
 ### ローダー
 
 #### ▼ ローダーとは

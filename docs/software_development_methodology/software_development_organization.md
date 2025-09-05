@@ -138,6 +138,15 @@ PL / PM / PdMが専業でその役割を果たす場合（Individual Contributor
 > 日本語でいう「管理職」はマネージャー と呼ばれます。
 > ただ、管理職ではない社員のタイトルにもマネージャーという単語が入っていることがあり（例としてプロダクトマネージャーがあります）、明確に区別したい場合は直接の部下を持つ人、という意味で「ピープルマネージャー（People manager）」と呼ぶこともあります。
 
+LegalOn Technologiesがメルカリを参考にしたキャリアパスを公開している。
+
+LegalOn Technologiesでは、エンジニアにIC・TL・Managerの３つのラダーがある。
+
+ラダーがかなり細分化されてて、ラダーに応じてどうあるべきかの役割わかりやすい。
+
+> - https://docs.google.com/spreadsheets/d/1jad5ybRc5XqIPMRyz9eHAwCL6rUlFJ5NCakqoO_Uu08/edit?pli=1&gid=1832796022#gid=1832796022
+> - https://tech.legalforce.co.jp/entry/2023/08/04/144207
+
 <br>
 
 ### 現場エンジニアの種類

@@ -32,9 +32,23 @@
               "icon": "lucide-book-up",
               "title": "Release Notes 1.9.10"
             }
+          },
+          {
+            "id": "f0f21a28ff488346",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "observability/observability_telemetry_metrics.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "observability_telemetry_metrics"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -66,7 +80,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "conte",
+                "query": "exem",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": false,
@@ -87,7 +101,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -155,16 +170,27 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "observability/observability_telemetry_metrics.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of observability_telemetry_metrics"
+            }
+          },
+          {
+            "id": "f536dd308796166b",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {},
+              "icon": "spreadsheet",
+              "title": "Advanced Tables"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -178,10 +204,11 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "84699bc2a9ead613",
+  "active": "f0f21a28ff488346",
   "lastOpenFiles": [
     "Untitled.md",
     "software/software_application_architecture_frontend_architecture.md",
