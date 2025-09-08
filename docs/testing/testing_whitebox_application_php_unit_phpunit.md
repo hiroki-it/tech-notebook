@@ -268,7 +268,7 @@ class FooTest extends TestCase
 
 **＊実装例＊**
 
-DIコンテナを事前に作成する。
+IoCコンテナを事前に作成する。
 
 ```php
 <?php
@@ -282,7 +282,7 @@ class FooTest extends TestCase
     // 全てのテスト関数の前に実行される。
     protected function setUp()
     {
-        // DIコンテナにデータを格納する。
+        // IoCコンテナにデータを格納する。
         $this->container["option"];
     }
 }
@@ -349,7 +349,7 @@ class FooTest extends TestCase
     // 全てのテスト関数の後に実行される。
     protected function tearDown()
     {
-        // DIコンテナにnullを格納する。
+        // IoCコンテナにnullを格納する。
         $this->container = null;
     }
 }

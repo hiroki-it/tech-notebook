@@ -26,7 +26,7 @@ description: ６章＠ドメイン駆動設計入門ボトムアップの知見�
 ### 全体像
 
 ```yaml
-UserController、UserRequestDTO # UI層
+UserController、UserRequestDTO # ユーザーインターフェース層
 ↓
 UserApplicationService # アプリケーション層
 ↓
@@ -37,7 +37,7 @@ UserRepository／InMemoryUserRepository # インフラ層
 
 <br>
 
-### UI層
+### ユーザーインターフェース層
 
 #### ▼ UserController
 
@@ -60,7 +60,6 @@ export class UserController {
 #### ▼ RequestDTO
 
 ```typescript
-// application/dto/UserRegisterDto.ts
 export class UserRegisterDto {
   constructor(
     public readonly name: string,
@@ -88,5 +87,23 @@ export class UserApplicationService implements IUserApplicationService {
   }
 }
 ```
+
+<br>
+
+### DI
+
+#### ▼ IoCコンテナパターン
+
+#### ▼ Service Locatorパターン
+
+依存関係がわかりにくくなるため、アンチパターンである。
+
+#### ▼ Singletonパターン
+
+依存関係がわかりにくくなるため、アンチパターンである。
+
+#### ▼ パターンを使用しない
+
+インターフェースの実装を動的に切り替える必要がなければ、パターンを使用しない方が良い。
 
 <br>

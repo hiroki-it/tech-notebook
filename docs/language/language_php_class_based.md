@@ -1158,21 +1158,23 @@ class Container
 ```php
 <?php
 
-// autoload.php で、DIコンテナ自体のインスタンスを事前に作成。
+// autoload.php で、IoCコンテナ自体のインスタンスを事前に作成。
 $container = new Container();
 ```
 
 ```php
 <?php
 
-// DIコンテナの読み出し
+// IoCコンテナの読み出し
 require_once __DIR__ . "/autoload.php";
 
 // クラス名を宣言してインスタンスを作成。
 $sample = $container["sample"];
 ```
 
-#### ▼ アンチパターンのService Locater Pattern
+#### ▼ Service Locatorパターン
+
+Service Locaterパターンはアンチパターンである。
 
 インスタンスへのコンテナ渡しのファイルを実装せず、コンテナ自体を注入していまう誤った実装方法。
 
@@ -1194,7 +1196,7 @@ class Sample
 ```php
 <?php
 
-// DIコンテナ自体をインジェクションしてしまうと、不要なインスタンスにも依存してしまう。
+// IoCコンテナ自体をインジェクションしてしまうと、不要なインスタンスにも依存してしまう。
 $sample = new Sample($container);
 ```
 

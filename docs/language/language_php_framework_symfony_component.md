@@ -439,7 +439,7 @@ $request->get('foo');
 
 ### Service Container
 
-Symfonyから提供されるDIコンテナのこと。
+Symfonyから提供されるIoCコンテナのこと。
 
 <br>
 

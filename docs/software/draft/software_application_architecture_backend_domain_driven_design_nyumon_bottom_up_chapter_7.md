@@ -402,18 +402,18 @@ export class UserApplicationService {
 }
 ```
 
-### 7.4.2 IoC Containerパターン
+### 7.4.2 IoCコンテナパターン
 
 ということで、Service Locatorパターンとは別の方法で、インメモリ実装リポジトリと実装リポジトリを差し替えてみる。
 
 それには、次のプラクティスを使用する。
 
 - コンストラクタインジェクション
-- IoC Containerパターン
+- IoCコンテナパターン
 
 <details><summary>🚨補足（クリックで開く）</summary><div>
 
-インメモリ実装リポジトリを使用せず、テスト時も実装リポジトリを使用してDBに接続する場合、IoC Containerパターンはなくても大丈夫
+インメモリ実装リポジトリを使用せず、テスト時も実装リポジトリを使用してDBに接続する場合、IoCコンテナパターンはなくても大丈夫
 
 </div></details>
 
@@ -456,28 +456,28 @@ export class UserApplicationService {
 - セッターインジェクション：set〇〇(…)
 - メソッドインジェクション：foo(…)
 
-次に、IoC Containerパターンを実装したIoC Containerオブジェクトを説明する。
+次に、IoCコンテナパターンを実装したIoCコンテナオブジェクトを説明する。
 
-IoC Containerオブジェクトは、オブジェクトを指定すると、依存関係をよしなに解決した上でインスタンスを返却してくれる。
+IoCコンテナオブジェクトは、オブジェクトを指定すると、依存関係をよしなに解決した上でインスタンスを返却してくれる。
 
-IoC Containerオブジェクトでインスタンスを作成し、これをコンストラクタに渡す。
+IoCコンテナオブジェクトでインスタンスを作成し、これをコンストラクタに渡す。
 
 ServiceLocatorオブジェクトでは、オブジェクトの呼び出しを動的に切り替えるため、ビルドの段階ではエラーにならない
 
-一方で、IoC ContainerオブジェクトではUserApplicationServiceのコンストラクタにIUserRepositoryを渡すように実装しないといけないため、ビルド時にエラーになってくれる。
+一方で、IoCコンテナオブジェクトではUserApplicationServiceのコンストラクタにIUserRepositoryを渡すように実装しないといけないため、ビルド時にエラーになってくれる。
 
-リスト7.17：IoC Containerを利用して依存関係を解決させる
+リスト7.17：IoCコンテナを利用して依存関係を解決させる
 
 ```typescript
-// IoC Containerオブジェクト
+// IoCコンテナオブジェクト
 const serviceCollection = new ServiceCollection();
 
-// IoC Containerオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する
+// IoCコンテナオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する
 serviceCollection.addTransient<IUserRepository, InMemoryUserRepository>();
 // UserApplicationServiceのコンストラクタにIUserRepositoryを渡すように実装しておかないと、ここでエラーになる
 serviceCollection.addTransient<UserApplicationService>();
 
-// IoC ContainerオブジェクトからuserApplicationServiceを取得する
+// IoCコンテナオブジェクトからuserApplicationServiceを取得する
 const provider = serviceCollection.buildServiceProvider();
 const userApplicationService = provider.getService<UserApplicationService>();
 ```
@@ -525,21 +525,21 @@ const repositoriesMap: RepositoriesMap[] = [
   // 中略
 ];
 
-// IoC Containerオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する
+// IoCコンテナオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する
 const iocContainer = new IocContainer();
 for (const {token, implementation} of repositoriesMap) {
   iocContainer.register(token, implementation);
 }
 ```
 
-書籍では言及していないが、IoC Containerオブジェクトは自前で実装したり、フレームワークに備わっていればそれを使用する。
+書籍では言及していないが、IoCコンテナオブジェクトは自前で実装したり、フレームワークに備わっていればそれを使用する。
 
-典型的なIoC ContainerオブジェクトはServiceLocatorとは違いstatic宣言を使用しない。
+典型的なIoCコンテナオブジェクトはServiceLocatorとは違いstatic宣言を使用しない。
 
 そのため、IoC Cotainerでは実行したタイミングでインスタンスを作る。
 
 ```typescript
-// IoC Container
+// IoCコンテナ
 type Constructor<T> = new (...args: any[]) => T;
 
 export class IocContainer {
@@ -563,7 +563,7 @@ export class IocContainer {
 }
 ```
 
-IoC Containerオブジェクトでインスタンスを作成し、これをコンストラクタに渡す。
+IoCコンテナオブジェクトでインスタンスを作成し、これをコンストラクタに渡す。
 
 ```typescript
 // IoC Cotainerとコンストラクタインジェクションの場合
@@ -573,7 +573,7 @@ import { tokens } from "./iocContainer";
 import type { IUserRepository } from "./domain/IUserRepository";
 import { UserApplicationService } from "./userApplicationService";
 
-// IoC ContainerからuserRepositoryインスタンスを取得する
+// IoCコンテナからuserRepositoryインスタンスを取得する
 const userRepository = container.resolve<IUserRepository>(tokens.IUserRepository);
 
 // コンストラクタに注入する
