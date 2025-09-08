@@ -4420,11 +4420,35 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#limitoffset" class="md-nav__link">
+  <a href="#offsetlimit" class="md-nav__link">
     <span class="md-ellipsis">
-      LIMIT、OFFSET
+      OFFSET、LIMIT
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="OFFSET、LIMIT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#offsetlimit_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ OFFSET、LIMIT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#offsetlimit_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ OFFSET、LIMITの問題点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -28164,11 +28188,35 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#limitoffset" class="md-nav__link">
+  <a href="#offsetlimit" class="md-nav__link">
     <span class="md-ellipsis">
-      LIMIT、OFFSET
+      OFFSET、LIMIT
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="OFFSET、LIMIT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#offsetlimit_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ OFFSET、LIMIT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#offsetlimit_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ OFFSET、LIMITの問題点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -28677,27 +28725,27 @@
 <span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="n">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="nv">@X</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="limitoffset"><code>LIMIT</code>、<code>OFFSET</code><a class="headerlink" href="#limitoffset" title="Permanent link">&para;</a></h3>
+<h3 id="offsetlimit"><code>OFFSET</code>、<code>LIMIT</code><a class="headerlink" href="#offsetlimit" title="Permanent link">&para;</a></h3>
+<h4 id="offsetlimit_1">▼ <code>OFFSET</code>、<code>LIMIT</code><a class="headerlink" href="#offsetlimit_1" title="Permanent link">&para;</a></h4>
+<p>ページングし、レコードを取得する。</p>
+<p>例えば、アプリケーションのUIから受け取ったページ指定を<code>OFFSET</code>（どこから）と<code>LIMIT</code>（どこまで）の値とし、どのレコードからどのレコードまでを取得するかを決める。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="n">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="o">&lt;</span><span class="n">数値</span><span class="o">&gt;</span><span class="w"> </span><span class="k">OFFSET</span><span class="w"> </span><span class="o">&lt;</span><span class="n">数値</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
+<h4 id="offsetlimit_2">▼ <code>OFFSET</code>、<code>LIMIT</code>の問題点<a class="headerlink" href="#offsetlimit_2" title="Permanent link">&para;</a></h4>
+<p>ページ数が増えると指定する<code>OFFSET</code>値が大きくなる。</p>
+<p>そのため、『どこから』のレコードまで読み込む処理に負荷がかかり、READ処理のパフォーマンスが落ちていく。</p>
+<p>代替案として、例えばカーソル方式であれば、前回のページングの位置をキャッシュするため、パフォーマンスがより良い。</p>
+<p>例えばカーソルによるページングであれば、前回のページングの位置をキャッシュするため、パフォーマンスがより良い。</p>
 <p><br></p>
 <h3 id="_11">サブクエリ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ 使い方<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>掛け算と同様に、括弧内から先に処理を実行する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Main-query</span>
-<span class="k">SELECT</span>
-<span class="w">    </span><span class="o">*</span>
-<span class="k">FROM</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="n">テーブル名</span><span class="o">&gt;</span>
-<span class="k">WHERE</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="n">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="p">(</span>
-<span class="w">        </span><span class="c1">-- Sub-query</span>
-<span class="w">        </span><span class="k">SELECT</span>
-<span class="w">            </span><span class="nf">max</span><span class="p">(</span><span class="o">&lt;</span><span class="n">カラム名</span><span class="o">&gt;</span><span class="p">)</span>
-<span class="w">        </span><span class="k">FROM</span>
-<span class="w">            </span><span class="o">&lt;</span><span class="n">テーブル名</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="p">);</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="n">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="c1">-- Sub-query</span>
+<span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="o">&lt;</span><span class="n">カラム名</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="n">テーブル名</span><span class="o">&gt;</span>
+<span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h3>
@@ -28893,7 +28941,7 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年9月3日 18:08:44 JST">2025-09-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年9月6日 00:28:18 JST">2025-09-06</span>
   </span>
 
     
