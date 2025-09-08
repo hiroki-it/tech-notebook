@@ -644,6 +644,8 @@ service:
       # 通常ログの出力
       output_paths:
         - stdout
+      # ログの形式
+      encoding: json
       # エラーログの出力先
       error_output_paths:
         - stderr
@@ -657,6 +659,7 @@ service:
 > - https://opentelemetry.io/docs/collector/configuration/#telemetry
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md
 > - https://github.com/open-telemetry/opentelemetry-operator/issues/873#issuecomment-1127612505
+> - https://opentelemetry.io/docs/collector/internal-telemetry/#configure-internal-logs
 
 ログレベルが`debug`の場合、例えば以下になる。
 

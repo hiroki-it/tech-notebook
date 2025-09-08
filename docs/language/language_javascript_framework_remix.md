@@ -74,6 +74,12 @@ Model層
 # ドメイン層のモデルとインフラ層の永続化処理が結合している
 ```
 
+<br>
+
+### レイヤードアーキテクチャ風
+
+レイヤードアーキテクチャにしたらどうだろうか。
+
 ```yaml
 UserInterface層
 # routesのcomponent、loader、actionの処理の中で、入力と出力の処理が相当
@@ -90,6 +96,12 @@ Domain層
 Infrastructure層
 # データベース接続、ロギング、ファイルシステム操作、外部API通信などが相当
 ```
+
+<br>
+
+### レイヤードアーキテクチャ風
+
+> - https://medium.com/better-programming/remix-with-clean-architecture-e561eb5fa3cd
 
 <br>
 
