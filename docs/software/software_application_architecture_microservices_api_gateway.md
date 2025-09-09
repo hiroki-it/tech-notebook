@@ -129,7 +129,11 @@ APIゲートウェイにAPI Compositionを適用した方法である。
 
 APIゲートウェイを自前 (例：フルスクラッチ、GraphQLを使用したフルスクラッチなど) で実装する。
 
-Kubernetes内で管理できるメリットがある。
+この場合、Kubernetesクラスターの内にAPIゲートウェイを配置することになる。
+
+```yaml
+AWS Route53 ---> AWS Load Balancer Controller ---> 自前APIゲートウェイ ---> マイクロサービスPod
+```
 
 GraphQLでAPIゲートウェイを実装する場合は、特に注意が必要である。
 
@@ -144,7 +148,11 @@ GraphQLでAPIゲートウェイを実装する場合は、特に注意が必要�
 
 APIゲートウェイのOSS (Kong、Tyk、Apigee、Kuma、Nginx、Envoy、Apache APISIXなど) を使用する。
 
-Kubernetes内で管理できるメリットがある。
+この場合、Kubernetesクラスターの内にAPIゲートウェイを配置することになる。
+
+```yaml
+AWS Route53 ---> AWS Load Balancer Controller ---> APIゲートウェイ (例：Nginx) ---> マイクロサービスPod
+```
 
 > - https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
 > - https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9
@@ -153,7 +161,11 @@ Kubernetes内で管理できるメリットがある。
 
 クラウドプロバイダー (例：AWS、Google Cloud) が提供するAPIゲートウェイ (例：AWS API Gateway、Google API Gateway) を使用する。
 
-クラウドプロバイダーの対応状況によっては、Kubernetes内で管理できない可能性がある。
+この場合、Kubernetesクラスターの外にAPIゲートウェイを配置することになる。
+
+```yaml
+AWS Route53 ---> AWS API Gateway ---> AWS Load Balancer Controller ---> マイクロサービスPod
+```
 
 その場合、フロントエンドアプリケーションがAPIゲートウェイに通信できるように、フロントエンドアプリケーションとバックエンドアプリケーションを異なるKubernetesで動かす必要がある。
 

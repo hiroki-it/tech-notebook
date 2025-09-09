@@ -90,7 +90,7 @@ export class UserApplicationService implements IUserApplicationService {
 
 <br>
 
-### DI
+### DIの方法
 
 #### ▼ IoCコンテナパターン
 
