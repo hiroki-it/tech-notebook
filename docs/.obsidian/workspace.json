@@ -46,9 +46,21 @@
               "icon": "lucide-file",
               "title": "observability_telemetry_metrics"
             }
+          },
+          {
+            "id": "a3fc610a777e8472",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.9.12"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.9.12"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -101,8 +113,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -208,7 +219,7 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "f0f21a28ff488346",
+  "active": "a85a35cc6df77bd4",
   "lastOpenFiles": [
     "Untitled.md",
     "software/software_application_architecture_frontend_architecture.md",

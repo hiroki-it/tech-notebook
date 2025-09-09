@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】CloudEvents＠パブリッシュ−サブスクライブパターン
-description: CloudEvents＠パブリッシュ−サブスクライブパターンの知見を記録しています。
+title: 【IT技術の知見】CloudEvents＠パブリッシュ/サブスクライブパターン
+description: CloudEvents＠パブリッシュ/サブスクライブパターンの知見を記録しています。
 ---
 
-# CloudEvents＠パブリッシュ−サブスクライブパターン
+# CloudEvents＠パブリッシュ/サブスクライブパターン
 
 ## はじめに
 
