@@ -318,6 +318,16 @@ Node.js上で、TypeScriptをJavaScriptにコンパイルせずにそのまま�
 
 <br>
 
+### tsconfig-paths/register
+
+`tsconfig`ファイルで定義しているパスのエイリアスを適用する。
+
+```bash
+$ yarn ts-node --require tsconfig-paths/register dbseed.ts"
+```
+
+<br>
+
 ## 04. typescript-call-graph
 
 TypeScriptのコールグラフを作成する。

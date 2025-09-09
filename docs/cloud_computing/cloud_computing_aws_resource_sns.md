@@ -21,6 +21,11 @@ description: AWS SNS＠AWSリソースの知見を記録しています。
 
 AWSのクラウドメッセージブローカー (例：AWS MQ) よりも機能が少なくシンプルである。
 
+|          | SNS                                         | SQS                       | EventBridge                 |
+| -------- | ------------------------------------------- | ------------------------- | --------------------------- |
+| 処理     | ルーティング                                | キューイング              | ルーティング                |
+| 通信方式 | プッシュベースのパブリッシュ/サブスクライブ | プロデュース/コンシューム | パブリッシュ/サブスクライブ |
+
 > - https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-difference-from-amazon-mq-sns.html
 > - https://tech.asoview.co.jp/entry/2022/04/06/102637
 

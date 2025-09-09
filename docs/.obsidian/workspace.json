@@ -221,6 +221,8 @@
   },
   "active": "a85a35cc6df77bd4",
   "lastOpenFiles": [
+    "testing/draft/testing_whitebox_application_e2e_js_cypress.md~",
+    "testing/draft/testing_whitebox_application_e2e_js_cypress.md",
     "Untitled.md",
     "software/software_application_architecture_frontend_architecture.md",
     "software/software_application_architecture_frontend_rendering_patterns.md",
@@ -245,8 +247,6 @@
     "infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart_function.md",
     "infrastructure_as_code/infrastructure_as_code_terraform_provider_aws.md",
     "infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_practices.md",
-    "devops/devops_cicd_ci_circleci_orbs.md",
-    "infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile_command.md",
     "無題のフォルダ",
     "無題のファイル.canvas",
     "0-2_まえがき.pdf",
