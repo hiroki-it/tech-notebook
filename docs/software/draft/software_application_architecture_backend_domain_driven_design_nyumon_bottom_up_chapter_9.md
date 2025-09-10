@@ -106,6 +106,12 @@ const createUserApplicationService = (
 
 ## 9.3 採番処理をどこに実装するか
 
+### ファクトリ
+
+今回の例に相当する。
+
+<br>
+
 ### リポジトリ
 
 採番処理を採番テーブルを使用して実装する場合、データベースに関する処理になるため、リポジトリに実装することもできる。
@@ -148,5 +154,11 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME,
 });
 ```
+
+<br>
+
+### エンティティのコンストラクタ
+
+記入中...
 
 <br>

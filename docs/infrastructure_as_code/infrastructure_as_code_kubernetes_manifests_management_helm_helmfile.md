@@ -441,7 +441,7 @@ OCIリポジトリをチャートリポジトリとして使用する場合に�
 ```yaml
 repositories:
   - name: karpenter
-    url: public.ecr.aws/karpenter
+    url: oci://public.ecr.aws/karpenter
     oci: true
 
 releases:

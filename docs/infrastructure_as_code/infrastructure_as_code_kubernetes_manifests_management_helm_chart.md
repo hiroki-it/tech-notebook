@@ -129,8 +129,6 @@ description: The chart of foo
 
 設定されたサブチャートは、`charts`ディレクトリにダウンロードされる。
 
-> - https://helm.sh/docs/topics/charts/#chart-dependencies
-
 ```yaml
 dependencies:
   - name: foo
@@ -140,6 +138,8 @@ dependencies:
     version: 1.0.0
     repository: https://bar.com/bar-chart
 ```
+
+> - https://helm.sh/docs/topics/charts/#chart-dependencies
 
 #### ▼ サブチャート
 

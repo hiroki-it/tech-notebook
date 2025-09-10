@@ -63,7 +63,9 @@ argocd-repo-credsとは異なり、`1`個の資格情報で`1`個のリポジト
 
 Secretタイプは`repository`とする。
 
-ポーリング対象のプライベートなマニフェストリポジトリ、チャートレジストリ、OCIレジストリの資格情報を設定する。
+ポーリング対象のプライベートなマニフェストリポジトリ、Helmチャートレジストリ、OCIレジストリの資格情報を設定する。
+
+Helmチャートを対象とする場合、`helm repo add`コマンドを実行することに相当する。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories
 
@@ -217,13 +219,13 @@ data:
 
 <br>
 
-### チャートリポジトリの場合
+### Helmチャートリポジトリの場合
 
 #### ▼ 注意点
 
-プライベートなチャートリポジトリごとに、異なるSecretで資格情報を設定する必要がある。
+プライベートなHelmチャートリポジトリごとに、異なるSecretで資格情報を設定する必要がある。
 
-ただし、ポーリングする複数のプライベートなチャートリポジトリが、全て`1`個のチャートレジストリ内にある場合は、Secretは`1`個でよい。
+ただし、ポーリングする複数のプライベートなHelmチャートリポジトリが、全て`1`個のHelmチャートレジストリ内にある場合は、Secretは`1`個でよい。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
 > - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
@@ -232,7 +234,7 @@ data:
 
 HTTPS認証に必要なユーザー名とパスワードを設定する。
 
-ここでは、プライベートなチャートリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
+ここでは、プライベートなHelmチャートリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 ```yaml
 # foo-repositoryをポーリングするためのargocd-repo
@@ -245,9 +247,9 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 type: Opaque
 data:
-  # チャートリポジトリ名
+  # Helmチャートリポジトリ名
   name: foo-repository
-  # チャートリポジトリのURL
+  # HelmチャートリポジトリのURL
   url: https://github.com/hiroki-hasegawa/foo-charts.git
   type: helm
   username: foo
@@ -263,9 +265,9 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 type: Opaque
 data:
-  # チャートリポジトリ名
+  # Helmチャートリポジトリ名
   name: bar-repository
-  # チャートリポジトリのURL
+  # HelmチャートリポジトリのURL
   url: https://github.com/hiroki-hasegawa/bar-charts.git
   type: helm
   username: baz
@@ -282,7 +284,7 @@ data:
 
 OCIプロトコルの有効化 (`.enableOCI`キー) が必要であるが、内部的にOCIプロトコルが`.repoURL`キーの最初に追記されるため、プロトコルの設定は不要である。
 
-プライベートなチャートリポジトリの場合と同様にして、OCIリポジトリごとに異なるSecretで資格情報を設定する必要がある。
+プライベートなHelmチャートリポジトリの場合と同様にして、OCIリポジトリごとに異なるSecretで資格情報を設定する必要がある。
 
 ただし、ポーリングする複数のリポジトリが、全て`1`個のOCIレジストリ内にある場合は、Secretは`1`個でよい。
 
