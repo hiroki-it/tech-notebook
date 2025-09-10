@@ -139,6 +139,14 @@ dependencies:
     repository: https://bar.com/bar-chart
 ```
 
+また、依存対象のサブチャートのリポジトリを`helm repo add`する必要がある。
+
+```bash
+$ helm repo add foo https://foo.com/foo-chart
+
+$ helm repo add bar https://bar.com/bar-chart
+```
+
 > - https://helm.sh/docs/topics/charts/#chart-dependencies
 
 #### ▼ サブチャート

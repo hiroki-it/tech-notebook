@@ -290,6 +290,23 @@ foo: ""
 bar: ""
 ```
 
+また、依存対象のサブチャートのリポジトリを`helm repo add`するために、`repositories`キーが必要がある。
+
+```yaml
+repositories:
+  - name: <チャートリポジトリ名>
+    url: <チャートリポジトリ名>/foo-chart
+
+releases:
+  - chart: <チャートリポジトリ名>/foo-chart
+    # 依存先の設定値は同じvaluesファイルで一括して管理する
+    values:
+      - foo-values.yaml
+    dependencies:
+      - chart: ../extra
+        version: 1.0.0
+```
+
 リリースを別にしてサブチャートをインストールすることもできるが、別のリリースを設定しなければならない。
 
 この場合、各リリースを並行的にリリースするため、マニフェストの少ないチャートほど早くリリースが終わる。
@@ -449,6 +466,22 @@ releases:
     namespace: karpenter
     chart: karpenter/karpenter
     version: v0.31.0
+    atomic: true
+    values:
+      - foo-values.yaml
+```
+
+```yaml
+repositories:
+  - name: bitnamicharts
+    url: oci://registry-1.docker.io/bitnamicharts
+    oci: true
+
+releases:
+  - name: redis
+    namespace: redis
+    chart: bitnamicharts/redis
+    version: 17.16.0
     atomic: true
     values:
       - foo-values.yaml
