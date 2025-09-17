@@ -11432,19 +11432,19 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#middleware_1" class="md-nav__link">
+  <a href="#middleware-mediator" class="md-nav__link">
     <span class="md-ellipsis">
-      Middleware
+      Middleware (Mediator)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Middleware">
+    <nav class="md-nav" aria-label="Middleware (Mediator)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_42" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ミドルウェア処理とは
+      ▼ ミドルウェアパターンとは
     </span>
   </a>
   
@@ -11474,7 +11474,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#middleware_2" class="md-nav__link">
+  <a href="#middleware_1" class="md-nav__link">
     <span class="md-ellipsis">
       標準のMiddleware
     </span>
@@ -12096,7 +12096,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#middleware_3" class="md-nav__link">
+  <a href="#middleware_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Middlewareの適用
     </span>
@@ -12120,7 +12120,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#middleware_4" class="md-nav__link">
+  <a href="#middleware_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Middlewareの適用
     </span>
@@ -31005,19 +31005,19 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#middleware_1" class="md-nav__link">
+  <a href="#middleware-mediator" class="md-nav__link">
     <span class="md-ellipsis">
-      Middleware
+      Middleware (Mediator)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Middleware">
+    <nav class="md-nav" aria-label="Middleware (Mediator)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_42" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ミドルウェア処理とは
+      ▼ ミドルウェアパターンとは
     </span>
   </a>
   
@@ -31047,7 +31047,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#middleware_2" class="md-nav__link">
+  <a href="#middleware_1" class="md-nav__link">
     <span class="md-ellipsis">
       標準のMiddleware
     </span>
@@ -31669,7 +31669,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#middleware_3" class="md-nav__link">
+  <a href="#middleware_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Middlewareの適用
     </span>
@@ -31693,7 +31693,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#middleware_4" class="md-nav__link">
+  <a href="#middleware_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Middlewareの適用
     </span>
@@ -34771,8 +34771,9 @@
 <p>ノート内の『Authファサード』の項目を参照せよ。</p>
 <p><br></p>
 <h2 id="10-03-httpmiddleware">10-03. HTTP｜Middleware<a class="headerlink" href="#10-03-httpmiddleware" title="Permanent link">&para;</a></h2>
-<h3 id="middleware_1">Middleware<a class="headerlink" href="#middleware_1" title="Permanent link">&para;</a></h3>
-<h4 id="_42">▼ ミドルウェア処理とは<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h4>
+<h3 id="middleware-mediator">Middleware (Mediator)<a class="headerlink" href="#middleware-mediator" title="Permanent link">&para;</a></h3>
+<h4 id="_42">▼ ミドルウェアパターンとは<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h4>
+<p>『メディエイターパターン』ともいう。</p>
 <p>コントローラーの処理前に実行するBeforeMiddleと、コントローラーとビューの処理後に実行するAfterMiddlewareがある。</p>
 <p><img alt="design-pattern_middleware" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LaravelのMiddlewareクラスの仕組み.png" /></p>
 <blockquote>
@@ -34836,7 +34837,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="middleware_2">標準のMiddleware<a class="headerlink" href="#middleware_2" title="Permanent link">&para;</a></h3>
+<h3 id="middleware_1">標準のMiddleware<a class="headerlink" href="#middleware_1" title="Permanent link">&para;</a></h3>
 <h4 id="encryptcookies">▼ EncryptCookies<a class="headerlink" href="#encryptcookies" title="Permanent link">&para;</a></h4>
 <p>レスポンス時に、<code>Cookie</code>ヘッダーの全ての値を暗号化する。</p>
 <p>暗号化したくない場合は、<code>Cookie</code>ヘッダーのキー名を<code>except</code>プロパティに設定する。</p>
@@ -35963,7 +35964,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <p><br></p>
 <h2 id="15-routing">15. Routing<a class="headerlink" href="#15-routing" title="Permanent link">&para;</a></h2>
 <h3 id="apiphp"><code>api.php</code>ファイル<a class="headerlink" href="#apiphp" title="Permanent link">&para;</a></h3>
-<h4 id="middleware_3">▼ Middlewareの適用<a class="headerlink" href="#middleware_3" title="Permanent link">&para;</a></h4>
+<h4 id="middleware_2">▼ Middlewareの適用<a class="headerlink" href="#middleware_2" title="Permanent link">&para;</a></h4>
 <p>APIのエンドポイントとして働くルーティング処理を実装する。</p>
 <p>実装したルーティング処理時には、Kernelクラスの<code>middlewareGroups</code>プロパティの<code>api</code>キーで設定したミドルウェアが実行される。</p>
 <p>APIのエンドポイントは外部公開する必要があるため、<code>web</code>キーと比較して、セキュリティのためのミドルウェアが設定されていない。</p>
@@ -35998,7 +35999,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 </code></pre></div>
 <p><br></p>
 <h3 id="webphp"><code>web.php</code>ファイル<a class="headerlink" href="#webphp" title="Permanent link">&para;</a></h3>
-<h4 id="middleware_4">▼ Middlewareの適用<a class="headerlink" href="#middleware_4" title="Permanent link">&para;</a></h4>
+<h4 id="middleware_3">▼ Middlewareの適用<a class="headerlink" href="#middleware_3" title="Permanent link">&para;</a></h4>
 <p>API以外のルーティング処理を実装する。</p>
 <p>実装したルーティング処理時には、Kernelクラスの<code>middlewareGroups</code>プロパティの<code>web</code>キーで設定したミドルウェアが実行される。</p>
 <p>API以外のルーティングは外部公開する必要がないため、<code>api</code>キーと比較して、セキュリティのためのミドルウェアが多く設定されている。</p>
@@ -37278,7 +37279,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月16日 14:34:37 JST">2025-05-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年9月17日 22:01:28 JST">2025-09-17</span>
   </span>
 
     
