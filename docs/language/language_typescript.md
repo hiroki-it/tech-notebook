@@ -722,7 +722,56 @@ console.log(isAdult); // true
 
 <br>
 
-## 10. まとめ
+## 10. パッケージ
+
+### import
+
+#### ▼ importとは
+
+```typescript
+import {logger} from "./logger";
+```
+
+<br>
+
+### export
+
+#### ▼ exportとは
+
+```typescript
+export {logger} from "./logger";
+```
+
+#### ▼ index.ts
+
+各ディレクトリのエントリポイントとして使える。
+
+`index.ts`ファイルで`export`しておくと、コールする側がディレクトリ単位でインポートできるようになる。
+
+```typescript
+// utils/index.ts
+export {logger} from "./logger";
+export {logger} from "./errorHandler";
+```
+
+アスタリスクで一括でエクスポートしてもよい。
+
+```typescript
+// utils/index.ts
+export * from "./logger";
+export * from "./errorHandler";
+```
+
+```typescript
+// ファイルを個別に指定する必要がなくなる
+import {fooLogger, fooErrorHandler} from "~/utils";
+```
+
+> - https://qiita.com/stin_dev/items/8bc6281dcebb289887be
+
+<br>
+
+## 11. まとめ
 
 ```typescript
 // エラーハンドリング: Result型で値を型として明示
