@@ -656,9 +656,7 @@ service:
         service: foo
 ```
 
-> - https://opentelemetry.io/docs/collector/configuration/#telemetry
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md
-> - https://github.com/open-telemetry/opentelemetry-operator/issues/873#issuecomment-1127612505
 > - https://opentelemetry.io/docs/collector/internal-telemetry/#configure-internal-logs
 
 ログレベルが`debug`の場合、例えば以下になる。

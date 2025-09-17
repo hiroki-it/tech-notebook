@@ -231,25 +231,43 @@ console.log(await asyncFn());
 
 > - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86%E3%81%AE-promise-%E3%81%AE%E6%88%BB%E3%82%8A%E5%80%A4
 
-#### ▼ 型変数
+#### ▼ 型変数（ジェネリクス）
 
 型変数では、定義した時点で型が決まっていない。
 
-コール時に型変数に任意の型を代入すると、それに合わせた引数と返却値の型の関数を定義できる。
+コール時に型変数に任意の型を推論で代入し、それに合わせた引数と返却値の型の関数を定義できる。
+
+```typescript
+// この時点では、型変数 (T) の型は決まっていない
+// 変数名はなんでもよく、単語でもいい
+const foo = <T>(value: T): T {
+  return value;
+}
+
+// 型変数に文字を代入すると、これを推論し、string型の引数を定義していたことになる
+foo("hi");
+
+// int型の引数を定義していたことになる
+foo(123);
+```
 
 ```typescript
 // この時点では、型変数 (T、U) の型は決まっていない
+// 変数名はなんでもよく、単語でもいい
 const addKeys = <T, U>(key1: T, key2: U): Array<T | U> => {
   return [key1, key2];
 };
 
-// 型変数に型を代入すると、それに合わせた処理になる
+// 型変数に文字を代入すると、これを推論し、string型の引数を定義していたことになる
 addKeys<string, string>("a", "b");
 
+// int型の引数を定義していたことになる
 addKeys<number, number>(1, 2);
 
+// boolean型の引数を定義していたことになる
 addKeys<boolean, boolean>(true, false);
 
+// 複数の型を組み合わせることもできる
 addKeys<string, number>("a", 1);
 ```
 
