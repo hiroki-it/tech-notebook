@@ -79,7 +79,7 @@ num = "0";
 ```
 
 ```typescript
-let big: bigint = 10n;
+let big: bigNumber = 10n;
 big = 0;
 ```
 
@@ -233,42 +233,58 @@ console.log(await asyncFn());
 
 #### ▼ 型変数（ジェネリクス）
 
+安全なany型ともいえる。
+
 型変数では、定義した時点で型が決まっていない。
 
-コール時に型変数に任意の型を推論で代入し、それに合わせた引数と返却値の型の関数を定義できる。
+コール時に型変数に任意の型を推論で代入し、それに合わせた引数型と返却型の関数を定義できる。
 
 ```typescript
-// この時点では、型変数 (T) の型は決まっていない
+// この時点では、引数型と返却値型は決まっていない
 // 変数名はなんでもよく、単語でもいい
 const foo = <T>(value: T): T {
   return value;
 }
 
-// 型変数に文字を代入すると、これを推論し、string型の引数を定義していたことになる
-foo("hi");
+// 型変数に文字を代入すると、これを推論し、string型の引数型と返却値型を定義していたことになる
+foo("a");
 
-// int型の引数を定義していたことになる
-foo(123);
+// number型の引数型と返却値型を定義していたことになる
+foo(1);
+```
+
+```typescript
+// この時点では、引数型と返却値型は決まっていない
+// 変数名はなんでもよく、単語でもいい
+const foo = <T>(value: T): Promise<T> => {
+  return value;
+};
+
+// 型変数に文字を代入すると、これを推論し、Promise<string>型の引数型と返却値型を定義していたことになる
+foo("a");
+
+// Promise<string>型の引数型と返却値型を定義していたことになる
+foo(1);
 ```
 
 ```typescript
 // この時点では、型変数 (T、U) の型は決まっていない
 // 変数名はなんでもよく、単語でもいい
-const addKeys = <T, U>(key1: T, key2: U): Array<T | U> => {
+const foo = <T, U>(key1: T, key2: U): Array<T | U> => {
   return [key1, key2];
 };
 
-// 型変数に文字を代入すると、これを推論し、string型の引数を定義していたことになる
-addKeys<string, string>("a", "b");
+// 型変数に文字を代入すると、これを推論し、string型の引数型と返却値型を定義していたことになる
+foo<string, string>("a", "b");
 
-// int型の引数を定義していたことになる
-addKeys<number, number>(1, 2);
+// number型の引数型と返却値型を定義していたことになる
+foo<number, number>(1, 2);
 
-// boolean型の引数を定義していたことになる
-addKeys<boolean, boolean>(true, false);
+// boolean型の引数型と返却値型を定義していたことになる
+foo<boolean, boolean>(true, false);
 
 // 複数の型を組み合わせることもできる
-addKeys<string, number>("a", 1);
+foo<string, number>("a", 1);
 ```
 
 > - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AA%E3%82%AF%E3%82%B9%E5%9E%8B%E5%AE%9A%E7%BE%A9
