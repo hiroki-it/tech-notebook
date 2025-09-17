@@ -205,7 +205,7 @@ GoのgRPCサーバーをリモートプロシージャーコールする。
 
 ### クライアント側のインターセプターとは
 
-gRPCでは、ミドルウェア処理として、インターセプターをリクエスト処理の前後に挿入する。
+gRPCでは、ミドルウェアパターンとして、インターセプターをリクエスト処理の前後に挿入する。
 
 <br>
 
@@ -270,7 +270,7 @@ func main() {
 
 #### ▼ 既製のインターセプター (`UnaryClientInterceptor`)
 
-gRPCでは、単項RPCを送信するクライアント側のミドルウェア処理は`UnaryClientInterceptor`という名前で定義されている。
+gRPCでは、単項RPCを送信するクライアント側のミドルウェアパターンは`UnaryClientInterceptor`という名前で定義されている。
 
 ```go
 type UnaryClientInterceptor func(
@@ -404,7 +404,7 @@ func UnaryClientInterceptor(opts ...fooOption) grpc.UnaryClientInterceptor {
 
 ##### ▼ 既製のインターセプター (`StreamClientInterceptor`)
 
-gRPCでは、ストリーミングRPCを送信するクライアント側のミドルウェア処理は、`StreamClientInterceptor`という名前にすることが定められている。
+gRPCでは、ストリーミングRPCを送信するクライアント側のミドルウェアパターンは、`StreamClientInterceptor`という名前にすることが定められている。
 
 ```go
 type StreamClientInterceptor func(
@@ -543,7 +543,7 @@ type wrapClientStream struct {
 
 ### サーバー側のインターセプターとは
 
-gRPCでは、ミドルウェア処理として、インターセプターをレスポンス処理の前後に挿入する。
+gRPCでは、ミドルウェアパターンとして、インターセプターをレスポンス処理の前後に挿入する。
 
 <br>
 
@@ -644,7 +644,7 @@ func main() {
 
 #### ▼ 既製のインターセプター (`UnaryServerInterceptor`)
 
-gRPCでは、単項RPCを受信するサーバー側のミドルウェア処理は、`UnaryServerInterceptor`という名前にすることが定められている。
+gRPCでは、単項RPCを受信するサーバー側のミドルウェアパターンは、`UnaryServerInterceptor`という名前にすることが定められている。
 
 ```go
 type UnaryServerInterceptor func(
@@ -728,7 +728,7 @@ func UnaryServerInterceptor(opts ...fooOption) grpc.UnaryServerInterceptor {
 
 #### ▼ 既製のインターセプター (`StreamServerInterceptor`)
 
-gRPCでは、ストリーミングRPCを受信するサーバー側のミドルウェア処理は`StreamServerInterceptor`という名前にすることが定められている。
+gRPCでは、ストリーミングRPCを受信するサーバー側のミドルウェアパターンは`StreamServerInterceptor`という名前にすることが定められている。
 
 ```go
 type StreamServerInterceptor func(
@@ -869,7 +869,7 @@ func main() {
 
 #### ▼ インターセプターを使用する場合について
 
-gRPCサーバーでは、リクエスト−レスポンスの送受信前のミドルウェア処理として、インターセプターを実行できる。
+gRPCサーバーでは、リクエスト−レスポンスの送受信前のミドルウェアパターンとして、インターセプターを実行できる。
 
 非`Chain`関数であれば単一のインターセプター、一方で`Chain`関数であれば複数のインターセプターを渡せる。
 

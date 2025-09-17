@@ -2700,9 +2700,11 @@ public function authorize()
 
 ## 10-03. HTTP｜Middleware
 
-### Middleware
+### Middleware (Mediator)
 
-#### ▼ ミドルウェア処理とは
+#### ▼ ミドルウェアパターンとは
+
+『メディエイターパターン』ともいう。
 
 コントローラーの処理前に実行するBeforeMiddleと、コントローラーとビューの処理後に実行するAfterMiddlewareがある。
 

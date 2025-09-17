@@ -2679,9 +2679,11 @@ class DogComboFactory
 
 <br>
 
-### ミドルウェア
+### Middleware (Mediator)
 
-#### ▼ ミドルウェア処理とは
+#### ▼ ミドルウェアパターンとは
+
+『メディエイターパターン』ともいう。
 
 コントローラーの処理前に実行するBeforeMiddlewareと、コントローラーとビューの処理後に実行するAfterMiddlewareがある。
 

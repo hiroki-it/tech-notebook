@@ -221,7 +221,7 @@ $ foo do --period 30 --limit 500
 
 ### go-chiとは
 
-ミドルウェア処理 (特にルーティング) のパッケージである。
+ミドルウェアパターン (特にルーティング) のパッケージである。
 
 ```go
 package main
@@ -463,9 +463,9 @@ $ go-callvis -group pkg,type ./
 
 ## go-grpc-middleware
 
-gRPCに関するミドルウェア処理 (例：認証、ロギング、メトリクス、分散トレーシングなど) を持つ。
+gRPCに関するミドルウェアパターン (例：認証、ロギング、メトリクス、分散トレーシングなど) を持つ。
 
-なお、gRPCはリモートプロシージャーコールであるため、ミドルウェア処理にルーティングは含まれない。
+なお、gRPCはリモートプロシージャーコールであるため、ミドルウェアパターンにルーティングは含まれない。
 
 `v1`系と`v2`系があり、関数の引数の設定方法が異なる。
 
@@ -1301,7 +1301,7 @@ func fooHandler(ginCtx *gin.Context) {
 
 受信したリクエストのCarrier (HTTPヘッダー) からGinコンテキスト (`gin.Context`) を自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (HTTPヘッダー) にGinコンテキスト (`gin.Context`) を自動的に注入 (Inject) する。
 
-また、事前のミドルウェア処理としてスパンを自動的に作成する (事後のミドルウェア処理には`otelhttp`パッケージを使用する) 。
+また、事前のミドルウェアパターンとしてスパンを自動的に作成する (事後のミドルウェアパターンには`otelhttp`パッケージを使用する) 。
 
 各関数で事前にスパンを作成する必要がなくなる。
 
@@ -1311,7 +1311,7 @@ func fooHandler(ginCtx *gin.Context) {
 
 ### Middleware
 
-リクエスト受信時のミドルウェア処理として`otelgin`パッケージを設定する。
+リクエスト受信時のミドルウェアパターンとして`otelgin`パッケージを設定する。
 
 ```go
 package main
@@ -1343,7 +1343,7 @@ func main() {
 
 ### otelgormとは
 
-クエリ実行前のミドルウェア処理としてスパンを自動的に作成し、事後にはこのスパンにSQLステートメント (`gorm.Create`、`gorm.Query`、`gorm.Delete`、`gorm.Update`、`gorm.Row`、`gorm.Raw`) を自動的に設定する。
+クエリ実行前のミドルウェアパターンとしてスパンを自動的に作成し、事後にはこのスパンにSQLステートメント (`gorm.Create`、`gorm.Query`、`gorm.Delete`、`gorm.Update`、`gorm.Row`、`gorm.Raw`) を自動的に設定する。
 
 各永続化関数でスパンを作成したり、SQLステートメントを設定する必要がなくなる。
 
@@ -1431,7 +1431,7 @@ func (p *otelPlugin) after() gormHookFunc {
 
 ### NewPlugin
 
-クエリ実行前のミドルウェア処理として`otelgin`パッケージを設定する。
+クエリ実行前のミドルウェアパターンとして`otelgin`パッケージを設定する。
 
 ```go
 package db
@@ -1468,7 +1468,7 @@ func NewDb()  {
 
 受信したリクエストのCarrier (メタデータ) からコンテキストを自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (メタデータ) にコンテキストを自動的に注入 (Inject) する。
 
-また、事前/事後のミドルウェア処理としてスパンを自動的に作成する。
+また、事前/事後のミドルウェアパターンとしてスパンを自動的に作成する。
 
 各関数で事前/事後にスパンを作成する必要がなくなる。
 
@@ -1530,7 +1530,7 @@ func main() {
 	conn, err := grpc.DialContext(
 		ctx,
 		":7777",
-		// クライアント側のミドルウェア処理としてUnaryClientInterceptorを挿入する
+		// クライアント側のミドルウェアパターンとしてUnaryClientInterceptorを挿入する
 		grpc.WithChainUnaryInterceptor(
 			otelgrpc.UnaryClientInterceptor(),
 		),
@@ -1540,7 +1540,7 @@ func main() {
 }
 ```
 
-内部的には、リクエストの送信直前のミドルウェア処理として、注入処理を実行している。
+内部的には、リクエストの送信直前のミドルウェアパターンとして、注入処理を実行している。
 
 ```go
 func inject(ctx context.Context, propagators propagation.TextMapPropagator) context.Context {
@@ -1755,7 +1755,7 @@ import (
 
 func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
 
-	// 共通のミドルウェア処理としてUnaryServerInterceptorを挿入する
+	// 共通のミドルウェアパターンとしてUnaryServerInterceptorを挿入する
 	return otelgrpc.UnaryServerInterceptor(
 		otelgrpc.WithSpanOptions(
 			// 属性を設定する
@@ -1779,7 +1779,7 @@ gRPCの場合、リモートプロシージャーコールなため、スパン�
 
 受信したリクエストのCarrier (HTTPヘッダー) からコンテキストを自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (HTTPヘッダー) にコンテキストを自動的に注入 (Inject) する。
 
-また、事前/事後のミドルウェア処理としてスパンを自動的に作成する。
+また、事前/事後のミドルウェアパターンとしてスパンを自動的に作成する。
 
 各関数で事前/事後にスパンを作成する必要がなくなる。
 
@@ -1796,7 +1796,7 @@ gRPCの場合、リモートプロシージャーコールなため、スパン�
 
 #### ▼ NewTransport
 
-リクエスト送信時のミドルウェア処理として`otelhttp`パッケージを設定する。
+リクエスト送信時のミドルウェアパターンとして`otelhttp`パッケージを設定する。
 
 ```go
 package main
@@ -1830,7 +1830,7 @@ func main() {
 
 #### ▼ NewHandler
 
-リクエスト受信時のミドルウェア処理として`otelhttp`パッケージを設定する。
+リクエスト受信時のミドルウェアパターンとして`otelhttp`パッケージを設定する。
 
 ```go
 package main
@@ -1848,7 +1848,7 @@ func main() {
 		...
 	}
 
-	// サーバー側のミドルウェア処理としてNewHandlerを挿入する
+	// サーバー側のミドルウェアパターンとしてNewHandlerを挿入する
 	otelMiddleware := otelhttp.NewHandler(
 		fn,
         // Operation名を設定する
@@ -1880,7 +1880,7 @@ func main() {
 		...
 	}
 
-	// サーバー側のミドルウェア処理としてNewHandlerを挿入する
+	// サーバー側のミドルウェアパターンとしてNewHandlerを挿入する
 	otelMiddleware := otelhttp.NewHandler(
 		fn,
 		// Operation名を設定する
