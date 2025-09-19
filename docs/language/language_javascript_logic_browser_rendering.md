@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ブラウザレンダリングロジック＠JavaScript
-description: ブラウザレンダリングロジック＠JavaScriptを記録しています。
+title: 【IT技術の知見】レンダリングロジック＠JavaScript
+description: レンダリングロジック＠JavaScriptを記録しています。
 ---
 
-# ブラウザレンダリングロジック＠JavaScript
+# レンダリングロジック＠JavaScript
 
 ## はじめに
 

@@ -1297,7 +1297,6 @@ flowchart LR
   永続データ管理方法([永続データ<br>管理方法]) --- 永続データ管理方法の基点(( ))
   永続データ管理方法の基点 --- DB-per-service[DB per service]
   永続データ管理方法の基点 --- Shared-DB["Shared DB<br>(非推奨)"]
-
 ```
 
 </div>
@@ -1446,6 +1445,7 @@ flowchart LR
 | 技術例                           | ・Security & Compliance (SOPS) <br>・Key Management (AWS KMS)                                 | ・Kubernetes標準機能 (ConfigMap、Secret) <br>・Security & Compliance (AWS Secrets Manager) <br>・Key Management (AWS KMS) |
 
 <br>
+
 図31で、AWS EKS上でのExternalized configurationの設計例を示します。
 
 設定管理先と暗号化キーはKubernetes標準機能、Security & Compliance、Key Management分野のツールを使用できます。

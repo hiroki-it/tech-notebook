@@ -102,7 +102,7 @@ hide:
 
 - #### <u>ブラウザ</u>
 
-  > - ##### [︎ブラウザレンダリング](https://hiroki-it.github.io/tech-notebook/language/language_javascript_browser_rendering.html)
+  > - ##### [︎レンダリング](https://hiroki-it.github.io/tech-notebook/language/language_javascript_browser_rendering.html)
 
 <br>
 

@@ -395,7 +395,7 @@ import (
 	"errors"
 )
 
-// ローカルトランザクションを表す関数型
+// ローカルトランザクションを表Cookieす関数型
 type LocalTransaction func() error
 
 // 補償トランザクションを表す関数型
