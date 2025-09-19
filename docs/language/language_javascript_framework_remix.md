@@ -359,7 +359,23 @@ Infrastructure層
 
 <br>
 
-## 04. ディレクトリ構成
+## 04. レンダリングパターン
+
+Remixでは、SSRモード、CSRモード、SSGモードがある。
+
+CSRモードとSSGモードは厳密ではなく、Remix独自の擬似的なモードである。
+
+それぞれのモードで、`entry.server.tsx`ファイルと`entry.client.tsx`ファイルが関与する。
+
+|           | `entry.server.tsx`ファイル     | `entry.client.tsx`ファイル |
+| --------- | ------------------------------ | -------------------------- |
+| SSR       | サーバーレンダリング           | ハイドレーション           |
+| 擬似的CSR | 最小限のサーバーレンダリング   | クライアントレンダリング   |
+| 擬似的SSG | ビルド時にサーバーレンダリング | ハイドレーション           |
+
+<br>
+
+## 05. ディレクトリ構成
 
 ### 構成
 
@@ -406,6 +422,8 @@ Infrastructure層
 
 ### entry.client.tsx
 
+全てのモードで使用する (CSRモードだけではない) 。
+
 マークアップファイルのハイドレーション処理のエントリーポイントである。
 
 > - https://remix.run/docs/en/main/file-conventions/entry.client
@@ -415,6 +433,8 @@ Infrastructure層
 ### entry.server.tsx
 
 #### ▼ entry.server.tsxとは
+
+全てのモードで使用する (SSRモードやSSGモードだけではない) 。
 
 レスポンス作成処理のエントリーポイントである。
 
@@ -449,9 +469,7 @@ export function handleDataRequest(response: Response, {request, params, context}
 
 <br>
 
-### その他の任意ディレクトリ
-
-### レイヤードアーキテクチャにすると
+### レイヤードアーキテクチャにすると...
 
 ```yaml
 app
@@ -482,7 +500,7 @@ app
 
 <br>
 
-## 05. セットアップ
+## 06. セットアップ
 
 ### React Router v6
 
@@ -511,7 +529,7 @@ import {redirect} from "react-router";
 
 <br>
 
-## 06. ルーティング
+## 07. ルーティング
 
 ### UIとAPI
 
@@ -689,7 +707,7 @@ export default function AuthCommon() {
 
 <br>
 
-## 07. componentの種類
+## 08. componentの種類
 
 ### ユーザー定義
 
@@ -777,7 +795,7 @@ export default function SomeParent() {
 
 <br>
 
-## 08. Cookieを使用した認証
+## 09. Cookieを使用した認証
 
 ### LocalStorageやSessionStorageではなくCookie
 
@@ -838,7 +856,7 @@ export const memorySessionStorage = createFileSessionStorage({
 
 <br>
 
-## 09. モデル
+## 10. モデル
 
 ### prismaによるスキーマ
 
@@ -971,7 +989,7 @@ export async function deleteUser({
 
 <br>
 
-## 10. エラー
+## 11. エラー
 
 ### バックエンド
 

@@ -326,6 +326,14 @@ SSGと同じで事前にビルドし、静的ファイル (例：`html`ファイ
 
 ## 08. UR：Universal Rendering
 
-SSRとCSRを組み合わせたレンダリングパターン。
+SSRとCSRを組み合わせたレンダリングパターンであり、SST（Server Side Templating）に似ている。
+
+> - https://nuxt.com/docs/4.x/guide/concepts/rendering
+
+<br>
+
+## 09. Streaming SSR
+
+記入中...
 
 <br>
