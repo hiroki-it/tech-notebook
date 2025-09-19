@@ -359,7 +359,7 @@ Infrastructure層
 
 <br>
 
-## 03. ディレクトリ構成
+## 04. ディレクトリ構成
 
 ### 構成
 
@@ -482,7 +482,7 @@ app
 
 <br>
 
-## 04. セットアップ
+## 05. セットアップ
 
 ### React Router v6
 
@@ -511,7 +511,7 @@ import {redirect} from "react-router";
 
 <br>
 
-## 05. ルーティング
+## 06. ルーティング
 
 ### UIとAPI
 
@@ -689,7 +689,7 @@ export default function AuthCommon() {
 
 <br>
 
-## 06. componentの種類
+## 07. componentの種類
 
 ### ユーザー定義
 
@@ -777,7 +777,7 @@ export default function SomeParent() {
 
 <br>
 
-## 07. Cookieを使用した認証
+## 08. Cookieを使用した認証
 
 ### LocalStorageやSessionStorageではなくCookie
 
@@ -838,7 +838,7 @@ export const memorySessionStorage = createFileSessionStorage({
 
 <br>
 
-## 08. モデル
+## 09. モデル
 
 ### prismaによるスキーマ
 
@@ -971,7 +971,7 @@ export async function deleteUser({
 
 <br>
 
-## 09. エラー
+## 10. エラー
 
 ### バックエンド
 

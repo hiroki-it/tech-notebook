@@ -305,23 +305,27 @@ SSGでは、フロントエンドアプリケーションのビルド時にバ�
 
 SSGの発展型。
 
-SSGとは異なり、事前にビルドせず、静的ファイル (例：`html`ファイル、`css`ファイル、画像、動画、メールなど) を作成しない。
+SSGと同じで事前にビルドし、静的ファイル (例：`html`ファイル、`css`ファイル、画像、動画、メールなど) をサーバーレンダリングする。
 
-その代わり、クライアントからリクエストがあって初めて、そのWebページのみビルドが実行され、サーバーレンダリングされる。
+また、静的ファイルのキャッシュを作成しておき、静的ファイルを再作成することで定期的にキャッシュを更新する。
 
-クライアントから一回でもリクエストがあったWebページでは、初回時にビルドされた静的ファイルがその都度サーバーレンダリングされる。
-
-![ssg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssg.png)
+![isr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/isr.png)
 
 > - https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration
-> - https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#3-%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E7%94%9F%E6%88%90-ssg
+> - https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#4-%E3%82%A4%E3%83%B3%E3%82%AF%E3%83%AA%E3%83%A1%E3%83%B3%E3%82%BF%E3%83%AB%E9%9D%99%E7%9A%84%E5%86%8D%E7%94%9F%E6%88%90-isr
 
 <br>
 
 ### ブラウザとバックエンド間の通信
 
-![ssg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssg.png)
+![isr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/isr.png)
 
 > - https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#3-%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E7%94%9F%E6%88%90-ssg
+
+<br>
+
+## 08. UR：Universal Rendering
+
+SSRとCSRを組み合わせたレンダリングパターン。
 
 <br>
