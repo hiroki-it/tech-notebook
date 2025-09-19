@@ -27794,7 +27794,7 @@
 <p><br></p>
 <h2 id="02-sstserver-side-templating">02. SST：Server Side Templating<a class="headerlink" href="#02-sstserver-side-templating" title="Permanent link">&para;</a></h2>
 <p>サーバーサイドのアプリケーションがテンプレートエンジンを使用してHTMLを生成する。</p>
-<p>このHTMLをブラウザにレンダリングする。</p>
+<p>このHTMLをブラウザにサーバーレンダリングする。</p>
 <p>サーバーサイドのフレームワークを使用して単純なアプリケーションを作る場合、まだまだ現役の技術である。</p>
 <blockquote>
 <ul>
@@ -27806,11 +27806,11 @@
 <p>1つのWebページの中で、サーバーとデータを非同期通信し、ブラウザ側で部分的に静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) を作成する。</p>
 <p>Ajaxの仕組みで作成したアプリはSPAである (CSRとはSPA内部の仕組みが異なる) 。</p>
 <p>Ajaxの仕組みで作成したアプリはSPAである。</p>
-<p>クライアント側でレンダリングを実行するため、SSRと比較してCSR：Client Server side Renderingともいう。</p>
+<p>クライアント側でサーバーレンダリングを実行するため、SSRと比較してCSR：Client Server side Renderingともいう。</p>
 <table>
 <thead>
 <tr>
-<th>レンダリングのステップ</th>
+<th>サーバーレンダリングのステップ</th>
 <th>実行者</th>
 </tr>
 </thead>
@@ -27862,7 +27862,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_6">ブラウザとバックエンド間の通信<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>CSRでは、ブラウザ上のJavaScriptがバックエンドからデータを取得し、データの出力された静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) をブラウザ上でレンダリングする。</p>
+<p>CSRでは、ブラウザ上のJavaScriptがバックエンドからデータを取得し、データの出力された静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) をブラウザ上でクライアントレンダリングする。</p>
 <p>そのためSSRやSSGとは異なり、ブラウザ上でバックエンドアプリケーションと通信する。</p>
 <p><img alt="csr" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/csr.png" /></p>
 <blockquote>
@@ -27873,8 +27873,8 @@
 <p><br></p>
 <h3 id="csr_1">CSRの実装方法<a class="headerlink" href="#csr_1" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 状態管理<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>CSRでは、ブラウザ上の操作による現在のデータに応じて、同じページ内でレンダリングするHTMLが動的に変わり続ける。</p>
-<p>これは、同じページでは特定のHTMLしかレンダリングできない他の方法 (SSR、SSG、ISRなど) とは異なる。</p>
+<p>CSRでは、ブラウザ上の操作による現在のデータに応じて、同じページ内でクライアントレンダリングするHTMLが動的に変わり続ける。</p>
+<p>これは、同じページでは特定のHTMLしかクライアントレンダリングできない他の方法 (SSR、SSG、ISRなど) とは異なる。</p>
 <p>CSRは、DOMの現在の状態をDOMから参照するのではなく、相当する状態を状態オブジェクトとして管理する。</p>
 <p>そして、状態オブジェクトをその都度変更した上で、実際のDOMにこれを動的に適用し続ける。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">useEffect</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
@@ -27905,7 +27905,7 @@
 
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useTodoList</span><span class="p">();</span>
 
-<span class="w">    </span><span class="c1">// データがまだ取得できていないならローディング、取得できているならHTMLをレンダリングする関数</span>
+<span class="w">    </span><span class="c1">// データがまだ取得できていないならローディング、取得できているならHTMLをクライアントレンダリングする関数</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
 <span class="w">        </span><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
 <span class="w">          </span><span class="p">{</span><span class="nx">state</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;{</span><span class="nx">e</span><span class="p">}&lt;/</span><span class="nt">li</span><span class="p">&gt;)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Loding&quot;</span><span class="p">}</span>
@@ -27922,7 +27922,7 @@
 <p><br></p>
 <h3 id="csrspampa">CSRによるSPAと従来MPAの比較<a class="headerlink" href="#csrspampa" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ 処理速度<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>MPAと比較して、データを非同期的に通信できるため、1つのWebページの中で必要なデータのみを通信すればよく、レンダリングが速い。</p>
+<p>MPAと比較して、データを非同期的に通信できるため、1つのWebページの中で必要なデータのみを通信すればよく、クライアントレンダリングが速い。</p>
 <p><img alt="従来WebアプリとSPAの処理速度の違い" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/従来ウェブアプリとSPAの処理速度の違い.png" /></p>
 <blockquote>
 <ul>
@@ -27950,13 +27950,13 @@
 <p><br></p>
 <h2 id="05-ssrserver-side-rendering">05. SSR：Server Side Rendering<a class="headerlink" href="#05-ssrserver-side-rendering" title="Permanent link">&para;</a></h2>
 <h3 id="ssr">広義のSSRとは<a class="headerlink" href="#ssr" title="Permanent link">&para;</a></h3>
-<p>SSRでは、フロントエンドアプリケーションへのリクエスト時にバックエンドからデータを取得し、データの出力された静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) をフロントエンドアプリケーション上でレンダリングする。</p>
+<p>SSRでは、フロントエンドアプリケーションへのリクエスト時にバックエンドからデータを取得し、データの出力された静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) をフロントエンドアプリケーション上でサーバーレンダリングする。</p>
 <p>また、ブラウザ上で静的ファイルのハイドレーションを実施する。</p>
 <p>フレームワークのテンプレートエンジンやCGIを使用して、サーバー側で静的ファイルを作成すること、も含まれる。</p>
 <table>
 <thead>
 <tr>
-<th>レンダリングのステップ</th>
+<th>サーバーレンダリングのステップ</th>
 <th>実行者</th>
 </tr>
 </thead>
@@ -27988,9 +27988,9 @@
 <p><br></p>
 <h3 id="ssr_1">狭義のSSRとは<a class="headerlink" href="#ssr_1" title="Permanent link">&para;</a></h3>
 <p>広義のSSRにCSRを取り入れた方法のこと。</p>
-<p>SSRでは、フロントエンドアプリケーションへのリクエスト時にバックエンドからデータを取得し、データの出力された静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) をフロントエンドアプリケーション上でレンダリングする。</p>
+<p>SSRでは、フロントエンドアプリケーションへのリクエスト時にバックエンドからデータを取得し、データの出力された静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) をフロントエンドアプリケーション上でサーバーレンダリングする。</p>
 <p>また、ブラウザ上で静的ファイルのハイドレーションを実施する。</p>
-<p>広義のSSRと異なる点は、ブラウザ側にレンダリングされた後、アイソモーフィックJavaScriptという仕組みでCSRとして動作する。</p>
+<p>広義のSSRと異なる点は、ブラウザ側にサーバーレンダリングされた後、アイソモーフィックJavaScriptという仕組みでCSRとして動作する。</p>
 <p><img alt="ssr" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssr.png" /></p>
 <blockquote>
 <ul>
@@ -28000,7 +28000,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_10">ブラウザとバックエンド間の通信<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<p>SSRでは、フロントエンドアプリケーションへのリクエスト時にバックエンドからデータを取得し、データの出力された静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) をフロントエンドアプリケーション上でレンダリングする。</p>
+<p>SSRでは、フロントエンドアプリケーションへのリクエスト時にバックエンドからデータを取得し、データの出力された静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) をフロントエンドアプリケーション上でサーバーレンダリングする。</p>
 <p>また、ブラウザ上で静的ファイルのハイドレーションを実施する。</p>
 <p>そのためCSRとは異なり、フロントエンドアプリケーション上での静的ファイルのレンダリング時またはブラウザ操作時 (例：クリック操作によるデータ送信など) に、バックエンドアプリケーションと通信する。</p>
 <p><img alt="ssr" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssr.png" /></p>
@@ -28024,7 +28024,7 @@
 <h2 id="06-ssgstatic-site-generation">06. SSG：Static Site Generation<a class="headerlink" href="#06-ssgstatic-site-generation" title="Permanent link">&para;</a></h2>
 <h3 id="ssg">SSGとは<a class="headerlink" href="#ssg" title="Permanent link">&para;</a></h3>
 <p>事前にビルドを行って静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) を作成しておく。</p>
-<p>そして、これをレンダリングし、静的サイトとして稼働させる。</p>
+<p>そして、これをサーバーレンダリングし、静的サイトとして稼働させる。</p>
 <p>動的な要素 (例：ランダム表示) を含む静的ファイルについては、該当の部分でAjaxを使用できるようにしておく。</p>
 <blockquote>
 <ul>
@@ -28034,8 +28034,8 @@
 <p><img alt="ssg" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssg.png" /></p>
 <p><br></p>
 <h3 id="_12">ブラウザとバックエンド間の通信<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p>SSGでは、フロントエンドアプリケーションのビルド時にバックエンドからデータを取得し、データの出力された静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) をフロントエンドアプリケーション上でレンダリングする。</p>
-<p>そのためCSRとは異なり、フロントエンドアプリケーション上での静的ファイルのレンダリング時またはブラウザ操作時 (例：クリック操作によるデータ送信など) に、バックエンドアプリケーションと通信する。</p>
+<p>SSGでは、フロントエンドアプリケーションのビルド時にバックエンドからデータを取得し、データの出力された静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) をフロントエンドアプリケーション上でサーバーレンダリングする。</p>
+<p>そのためCSRとは異なり、フロントエンドアプリケーション上での静的ファイルのサーバーレンダリング時またはブラウザ操作時 (例：クリック操作によるデータ送信など) に、バックエンドアプリケーションと通信する。</p>
 <p><img alt="ssg" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssg.png" /></p>
 <blockquote>
 <ul>
@@ -28050,8 +28050,8 @@
 <h3 id="isr">ISRとは<a class="headerlink" href="#isr" title="Permanent link">&para;</a></h3>
 <p>SSGの発展型。</p>
 <p>SSGとは異なり、事前にビルドせず、静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) を作成しない。</p>
-<p>その代わり、クライアントからリクエストがあって初めて、そのWebページのみビルドが実行され、レンダリングされる。</p>
-<p>クライアントから一回でもリクエストがあったWebページでは、初回時にビルドされた静的ファイルがその都度レンダリングされる。</p>
+<p>その代わり、クライアントからリクエストがあって初めて、そのWebページのみビルドが実行され、サーバーレンダリングされる。</p>
+<p>クライアントから一回でもリクエストがあったWebページでは、初回時にビルドされた静的ファイルがその都度サーバーレンダリングされる。</p>
 <p><img alt="ssg" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssg.png" /></p>
 <blockquote>
 <ul>
@@ -28088,7 +28088,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年9月19日 15:40:02 JST">2025-09-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年9月19日 16:13:56 JST">2025-09-19</span>
   </span>
 
     
