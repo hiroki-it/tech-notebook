@@ -396,7 +396,7 @@ nav:
               - ■ SQLパッケージ:
                   - Prisma: language/language_javascript_package_sql_prisma.md
           - ■ ブラウザ:
-              - ブラウザレンダリング: language/language_javascript_browser_rendering.md
+              - レンダリング: language/language_javascript_browser_rendering.md
       - ■ PHP:
           - PHP: language/language_php.md
           - 設定: language/language_php_conf.md
