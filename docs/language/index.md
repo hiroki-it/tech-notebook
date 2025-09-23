@@ -172,7 +172,7 @@ hide:
 
 ### TypeScript
 
-- #### [Typescript](https://hiroki-it.github.io/tech-notebook/language/language_typescript.html)
+- #### [TypeScript](https://hiroki-it.github.io/tech-notebook/language/language_typescript.html)
 
 - #### [設定](https://hiroki-it.github.io/tech-notebook/language/language_typescript_conf.html)
 

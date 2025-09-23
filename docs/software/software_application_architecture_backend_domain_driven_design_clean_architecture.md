@@ -41,30 +41,35 @@ DDDが適する機能的アプリケーションのみでなく、あらゆる�
 
 アーキテクチャのレイヤー別にこれを整理した。
 
-| レイヤー         | パターン   | クラス or 関数 |
-| ---------------- | ---------- | -------------- |
-| インフラ         | DB         | クラス、関数   |
-|                  | DTO        | クラス         |
-|                  | Logger     | クラス         |
-|                  | Middlware  | 関数           |
-|                  | Repository | クラス         |
-|                  | Routers    | 関数           |
-|                  | Seeder     | クラス         |
-| インターフェース | Controller | クラス         |
-| ユースケース     | Boundary   | クラス         |
-|                  | Interactor | クラス         |
-|                  | Request    | クラス         |
-|                  | Response   | クラス         |
-| ドメイン         | Entity     | クラス         |
-|                  |            |                |
-|                  |            |                |
-|                  | Id         | クラス         |
-|                  | Repository | クラス         |
-|                  | Value      | クラス         |
+| レイヤー         | パターン        | インターフェース／クラス／関数 | 責務                       |
+| ---------------- | --------------- | ------------------------------ | -------------------------- |
+| インフラ         | DB              | クラス、関数                   |                            |
+|                  | DTOs            | クラス                         | 型変換と詰め替え           |
+|                  | Logger          | クラス                         | ロギング                   |
+|                  | Middlware       | 関数                           |                            |
+|                  | Repositories    | クラス                         | 実装リポジトリ             |
+|                  | Routers         | 関数                           | ルーティング               |
+|                  | Seeder          | クラス                         | 初期データ投入             |
+| インターフェース | Controller      | クラス                         |                            |
+|                  | Requests        | クラス                         | バリデーション             |
+|                  | Authenticators  | クラス                         | 認証                       |
+|                  | DTOs            | クラス                         | 型変換と詰め替え           |
+| ユースケース     | Boundary        | クラス                         |                            |
+|                  | Interactor      | クラス                         |                            |
+|                  | InputBoundaries | インターフェース               |                            |
+|                  | Inputs          | クラス                         | 型変換と詰め替え           |
+|                  | Outputs         | クラス                         | 型変換と詰め替え           |
+| ドメイン         | Entities        | クラス                         |                            |
+|                  | Id              | クラス                         |                            |
+|                  | Repositories    | クラス                         | インターフェースリポジトリ |
+|                  | ValueObject     | クラス                         |                            |
+|                  | Criterion       | クラス                         |                            |
+|                  | Events          | クラス                         |                            |
+|                  | Service         | クラス                         | ドメインサービス           |
 
 <br>
 
-## 02. `<span style="color: lightgreen; ">`インターフェース層 (プレゼンテーション層、デリバリー層)
+## 02. インターフェース層 (プレゼンテーション層、デリバリー層)
 
 ### インターフェース層とは
 
@@ -155,7 +160,7 @@ class FormatValidator
 
 <br>
 
-## 03. `<span style="color: LightSalmon; ">`ユースケース層
+## 03. ユースケース層
 
 ### 処理フロー
 
@@ -601,7 +606,7 @@ class FooInteractor
 
 <br>
 
-## 04. `<span style="color: yellow; ">`ドメイン層
+## 04. ドメイン層
 
 ### エンティティ
 
@@ -2679,11 +2684,9 @@ class DogComboFactory
 
 <br>
 
-### Middleware (Mediator)
+### ミドルウェア
 
-#### ▼ ミドルウェアパターンとは
-
-『メディエイターパターン』ともいう。
+#### ▼ ミドルウェア処理とは
 
 コントローラーの処理前に実行するBeforeMiddlewareと、コントローラーとビューの処理後に実行するAfterMiddlewareがある。
 

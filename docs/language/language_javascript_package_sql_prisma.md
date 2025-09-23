@@ -478,6 +478,8 @@ import {PrismaClient, Prisma} from "@prisma/client";
 
 class UserRepository {
 
+  public prisma: PrismaClient;
+
   constructor(prismaClient: PrismaClient) {
     this.prisma = prismaClient;
   }
