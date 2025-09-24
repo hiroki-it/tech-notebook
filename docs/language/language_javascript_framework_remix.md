@@ -109,9 +109,11 @@ DBにクエリを送信し、データを取得できる。
 import {json} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
 
-// ローダーでレンダリング前にバックエンドでデータを処理する
+// ローダー
 export const loader = async () => {
-  return json({
+  // バックエンドでデータを処理する
+  // ローダーの段階でデータを用意しておき、フロントエンドでは表示だけに特化すると、パフォーマンスが上がる
+  const data = {
     posts: [
       {
         slug: "my-first-post",
@@ -122,7 +124,9 @@ export const loader = async () => {
         title: "A Mixtape I Made Just For You",
       },
     ],
-  });
+  };
+
+  return json(data);
 };
 ```
 
@@ -148,6 +152,7 @@ import {useLoaderData} from "@remix-run/react";
 export const loader = async () => {
 
   // バックエンドでデータを処理する
+  // ローダーの段階でデータを用意しておき、フロントエンドでは表示だけに特化すると、パフォーマンスが上がる
   const data = {
     posts: [
       {
@@ -193,10 +198,11 @@ import {json} from "@remix-run/node";
 // 内部的にはreactコンポーネントである。
 import {useLoaderData} from "@remix-run/react";
 
-// ローダーでレンダリング前にバックエンドでデータを処理する
+// ローダー
 export const loader = async () => {
 
   // バックエンドでデータを処理する
+  // ローダーの段階でデータを用意しておき、フロントエンドでは表示だけに特化すると、パフォーマンスが上がる
   const data = {
     posts: [
       {
