@@ -31,7 +31,7 @@ TypeScriptでOIDCを実施するためのパッケージ。
 import {OidcClient, UserManager} from "oidc-client-ts";
 
 const client = new OidcClient({
-  // 例：https://<IDプロバイダーのドメイン>/realms/<realm名>
+  // 例：https://<IDプロバイダーのドメイン>/realmsloader/<realm名>
   authority: "<IDプロバイダーのIssuer値>",
   // クライアントを表す名前を設定する
   // 例：frontend
