@@ -27166,6 +27166,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#object" class="md-nav__link">
+    <span class="md-ellipsis">
+      object
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#parsesafeparse" class="md-nav__link">
     <span class="md-ellipsis">
       parse、safeParse
@@ -27174,6 +27183,15 @@
   
     <nav class="md-nav" aria-label="parse、safeParse">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parsesafeparse_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ parse、safeParseとは
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
@@ -27290,13 +27308,37 @@
 <h3 id="zod">zodとは<a class="headerlink" href="#zod" title="Permanent link">&para;</a></h3>
 <p>データ型のバリデーションを実行する。</p>
 <p><br></p>
+<h3 id="object">object<a class="headerlink" href="#object" title="Permanent link">&para;</a></h3>
+<p>バリデーションのルールを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ユーザーオブジェクトのスキーマを定義する</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">userRequest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">z</span><span class="p">.</span><span class="nx">object</span><span class="p">({</span>
+<span class="w">  </span><span class="c1">// 数値型、整数、正の数を要求する</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">z.number</span><span class="p">().</span><span class="kr">int</span><span class="p">().</span><span class="nx">positive</span><span class="p">(),</span>
+<span class="w">  </span><span class="c1">// 文字列型、空文字列を許可しない</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">z.string</span><span class="p">().</span><span class="nx">min</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;名前は必須です&quot;</span><span class="p">),</span>
+<span class="w">  </span><span class="c1">// 文字列型、メールアドレス形式を要求する</span>
+<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">z.string</span><span class="p">().</span><span class="nx">email</span><span class="p">(</span><span class="s2">&quot;有効なメールアドレス形式ではありません&quot;</span><span class="p">),</span>
+<span class="w">  </span><span class="c1">// 数値型、整数、正の数、オプショナルとする</span>
+<span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">z.number</span><span class="p">().</span><span class="kr">int</span><span class="p">().</span><span class="nx">positive</span><span class="p">().</span><span class="nx">optional</span><span class="p">(),</span>
+<span class="w">  </span><span class="c1">// 文字列の配列とする</span>
+<span class="w">  </span><span class="nx">roles</span><span class="o">:</span><span class="w"> </span><span class="kt">z.array</span><span class="p">(</span><span class="nx">z</span><span class="p">.</span><span class="kt">string</span><span class="p">()),</span>
+<span class="w">  </span><span class="c1">// 真偽値型、デフォルト値はtrueとする</span>
+<span class="w">  </span><span class="nx">isActive</span><span class="o">:</span><span class="w"> </span><span class="kt">z.boolean</span><span class="p">().</span><span class="k">default</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span>
+<span class="w">  </span><span class="c1">// ISO8601形式の時刻</span>
+<span class="w">  </span><span class="nx">doingTime</span><span class="o">:</span><span class="w"> </span><span class="kt">z.string</span><span class="p">().</span><span class="nx">datetime</span><span class="p">(</span><span class="s2">&quot;実施時刻はISO8601形式の必要があります&quot;</span><span class="p">),</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><br></p>
 <h3 id="parsesafeparse">parse、safeParse<a class="headerlink" href="#parsesafeparse" title="Permanent link">&para;</a></h3>
+<h4 id="parsesafeparse_1">▼ parse、safeParseとは<a class="headerlink" href="#parsesafeparse_1" title="Permanent link">&para;</a></h4>
+<p><code>parse</code>関数は成功時は値を返し、失敗時はエラーをスローする。</p>
+<p>一方で、<code>safeParse</code>関数はエラーをスローせず、成功/失敗を示すオブジェクトを返す。</p>
 <h4 id="_5">▼ 成功する場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1">// Zodライブラリをインポートする</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">z</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;zod&quot;</span><span class="p">;</span>
 
 <span class="c1">// ユーザーオブジェクトのスキーマを定義する</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">userSchema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">z</span><span class="p">.</span><span class="nx">object</span><span class="p">({</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">userRequest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">z</span><span class="p">.</span><span class="nx">object</span><span class="p">({</span>
 <span class="w">  </span><span class="c1">// 数値型、整数、正の数を要求する</span>
 <span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">z.number</span><span class="p">().</span><span class="kr">int</span><span class="p">().</span><span class="nx">positive</span><span class="p">(),</span>
 <span class="w">  </span><span class="c1">// 文字列型、空文字列を許可しない</span>
@@ -27309,10 +27351,14 @@
 <span class="w">  </span><span class="nx">roles</span><span class="o">:</span><span class="w"> </span><span class="kt">z.array</span><span class="p">(</span><span class="nx">z</span><span class="p">.</span><span class="kt">string</span><span class="p">()),</span>
 <span class="w">  </span><span class="c1">// 真偽値型、デフォルト値はtrueとする</span>
 <span class="w">  </span><span class="nx">isActive</span><span class="o">:</span><span class="w"> </span><span class="kt">z.boolean</span><span class="p">().</span><span class="k">default</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span>
+<span class="w">  </span><span class="c1">// ISO 8601形式の時刻</span>
+<span class="w">  </span><span class="nx">doingTime</span><span class="o">:</span><span class="w"> </span><span class="kt">z</span>
+<span class="w">    </span><span class="p">.</span><span class="kt">string</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">datetime</span><span class="p">(</span><span class="s2">&quot;StartAtTimestamp must be a valid ISO 8601 datetime&quot;</span><span class="p">),</span>
 <span class="p">});</span>
 
 <span class="c1">// スキーマからTypeScriptの型を自動生成する</span>
-<span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">z</span><span class="p">.</span><span class="nx">infer</span><span class="o">&lt;</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">userSchema</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">z</span><span class="p">.</span><span class="nx">infer</span><span class="o">&lt;</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">userRequest</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="c1">// バリデーションに成功するデータを用意する</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">successfulUserData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -27326,9 +27372,9 @@
 
 <span class="c1">// parseを使ったバリデーション (成功時は値を返し、失敗時はエラーをスローする)</span>
 <span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// parseメソッドはバリデーションに成功した場合、バリデーション済みのデータを返す。</span>
+<span class="w">  </span><span class="c1">// parse関数はバリデーションに成功した場合、バリデーション済みのデータを返す。</span>
 <span class="w">  </span><span class="c1">// 失敗した場合はエラーをスローする。</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">parsedUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">userSchema</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">successfulUserData</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">parsedUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">userRequest</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">successfulUserData</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;parse バリデーション成功:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">parsedUser</span><span class="p">);</span>
 <span class="w">  </span><span class="c1">// parsedUserはUser型として扱える。</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">parsedUser</span><span class="p">;</span>
@@ -27339,8 +27385,8 @@
 <span class="p">}</span>
 
 <span class="c1">// safeParseを使ったバリデーション (成功/失敗を示すオブジェクトを返す)</span>
-<span class="c1">// safeParseメソッドはエラーをスローせず、成功/失敗を示すオブジェクトを返す。</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">safeParseResultSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">userSchema</span><span class="p">.</span><span class="nx">safeParse</span><span class="p">(</span><span class="nx">successfulUserData</span><span class="p">);</span>
+<span class="c1">// safeParse関数はエラーをスローせず、成功/失敗を示すオブジェクトを返す。</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">safeParseResultSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">userRequest</span><span class="p">.</span><span class="nx">safeParse</span><span class="p">(</span><span class="nx">successfulUserData</span><span class="p">);</span>
 
 <span class="c1">// successプロパティで成功・失敗を判定する</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">safeParseResultSuccess</span><span class="p">.</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -27361,7 +27407,7 @@
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">z</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;zod&quot;</span><span class="p">;</span>
 
 <span class="c1">// ユーザーオブジェクトのスキーマを定義する</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">userSchema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">z</span><span class="p">.</span><span class="nx">object</span><span class="p">({</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">userRequest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">z</span><span class="p">.</span><span class="nx">object</span><span class="p">({</span>
 <span class="w">  </span><span class="c1">// 数値型、整数、正の数を要求する</span>
 <span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">z.number</span><span class="p">().</span><span class="kr">int</span><span class="p">().</span><span class="nx">positive</span><span class="p">(),</span>
 <span class="w">  </span><span class="c1">// 文字列型、空文字列を許可しない</span>
@@ -27377,7 +27423,7 @@
 <span class="p">});</span>
 
 <span class="c1">// スキーマからTypeScriptの型を自動生成する</span>
-<span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">z</span><span class="p">.</span><span class="nx">infer</span><span class="o">&lt;</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">userSchema</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">z</span><span class="p">.</span><span class="nx">infer</span><span class="o">&lt;</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">userRequest</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="c1">// バリデーションに成功するデータを用意する</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">successfulUserData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -27405,10 +27451,10 @@
 
 <span class="c1">// parseを使ったバリデーション (成功時は値を返し、失敗時はエラーをスローする)</span>
 <span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// parseメソッドはバリデーションに成功した場合、バリデーション済みのデータを返す。</span>
+<span class="w">  </span><span class="c1">// parse関数はバリデーションに成功した場合、バリデーション済みのデータを返す。</span>
 <span class="w">  </span><span class="c1">// 失敗した場合はエラーをスローする。</span>
 <span class="w">  </span><span class="c1">// バリデーションに失敗するため、ここでZodErrorがスローされる。</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">parsedUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">userSchema</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">failedUserData</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">parsedUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">userRequest</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">failedUserData</span><span class="p">);</span>
 <span class="w">  </span><span class="c1">// エラーがスローされるため、この行は実行されない。</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;parse バリデーション成功 (予期しない):&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">parsedUser</span><span class="p">);</span>
 <span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -27437,8 +27483,8 @@
 <span class="p">}</span>
 
 <span class="c1">// safeParseを使ったバリデーション (成功/失敗を示すオブジェクトを返す)</span>
-<span class="c1">// safeParseメソッドはエラーをスローせず、成功/失敗を示すオブジェクトを返す。</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">safeParseResultFailure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">userSchema</span><span class="p">.</span><span class="nx">safeParse</span><span class="p">(</span><span class="nx">failedUserData</span><span class="p">);</span>
+<span class="c1">// safeParse関数はエラーをスローせず、成功/失敗を示すオブジェクトを返す。</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">safeParseResultFailure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">userRequest</span><span class="p">.</span><span class="nx">safeParse</span><span class="p">(</span><span class="nx">failedUserData</span><span class="p">);</span>
 
 <span class="c1">// successプロパティで成功・失敗を判定する</span>
 <span class="c1">// バリデーションに失敗するため、successはfalseとなる。</span>
@@ -27475,7 +27521,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月8日 15:16:16 JST">2025-07-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年9月24日 18:29:22 JST">2025-09-24</span>
   </span>
 
     
