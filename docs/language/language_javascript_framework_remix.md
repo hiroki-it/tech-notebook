@@ -315,15 +315,15 @@ Remixは独自のMVCアーキテクチャを採用している。
 各routeファイルが独立した小さなMVCになっている。
 
 ```yaml
-View層
+View
 # routesのcomponentの処理などが相当
 ↓
 ↓
-Controller層
+Controller
 # routesのloaderやactionの処理が相当
 ↓
 ↓
-Model層
+Model
 # modelsなどが相当
 # ドメイン層のモデルとインフラ層の永続化処理が結合している
 ```

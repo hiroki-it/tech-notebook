@@ -25,13 +25,13 @@ description: Vue.js＠フレームワークの知見を記録しています。
 
 `(1)`
 
-: View層 (`foo.html`、`/foo.twig`、`foo-component.vue`の`template`タグ部分)
+: View (`foo.html`、`/foo.twig`、`foo-component.vue`の`template`タグ部分)
 
-     ViewModel層から渡されたデータを出力するだけ。
+     ViewModelから渡されたデータを出力するだけ。
 
 `(2)`
 
-: ViewModel層 (`index.js`、`foo-component.vue`の`script`タグ部分)
+: ViewModel (`index.js`、`foo-component.vue`の`script`タグ部分)
 
      プレゼンテーションロジック (フォーマット整形、バリデーション、Webページのローディング、エラーハンドリング、イベント発火など) や、ビジネスロジック (※控えめに) を記述する。
 
@@ -39,7 +39,7 @@ description: Vue.js＠フレームワークの知見を記録しています。
 
 `(3)`
 
-: Model層 (`store.js`または`foo.js`)
+: Model (`store.js`または`foo.js`)
 
      ビジネスロジックや、ajaxメソッドによるデータ送受信を記述する。
 
@@ -49,19 +49,19 @@ Vueは、アプリケーションの設計にMVVMアーキテクチャを使用�
 
 `(1)`
 
-: View層では、`foo.html`、`/foo.twig`、`foo-component.vue`の`template`タグ部分)
+: Viewでは、`foo.html`、`/foo.twig`、`foo-component.vue`の`template`タグ部分)
 
 `(2)`
 
-: ViewModel層では、`index.js`、`foo-component.vue`の`script`タグ部分
+: ViewModelでは、`index.js`、`foo-component.vue`の`script`タグ部分
 
 `(3)`
 
-: Model層では、Vuex (`store.js`)やJavaScriptからなるモデル (`foo.js`) を配置する。
+: Modelでは、Vuex (`store.js`)やJavaScriptからなるモデル (`foo.js`) を配置する。
 
 `(4)`
 
-: これの元、双方向データバインディングが実現される仕組みとして、View層でイベントが起こると、ViewModel層でこれにバインディングされたイベントハンドラ関数がコールされる。
+: これの元、双方向データバインディングが実現される仕組みとして、Viewでイベントが起こると、ViewModelでこれにバインディングされたイベントハンドラ関数がコールされる。
 
 ![Vueコンポーネントツリーにおけるコンポーネント間の通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VueにおけるMVVMアーキテクチャ.png)
 
@@ -71,7 +71,7 @@ Vueは、アプリケーションの設計にMVVMアーキテクチャを使用�
 
 まず、双方向データバインディングとは異なる概念なため、混乱しないように注意する。
 
-コンポーネント (`foo-component.vue`) の`script`タグ部分 (ViewModel層) の親子間では、`props`と`$emit`関数を使用して、データを渡す。
+コンポーネント (`foo-component.vue`) の`script`タグ部分 (ViewModel) の親子間では、`props`と`$emit`関数を使用して、データを渡す。
 
 この仕組みを、Props Down, Events Upという。
 
@@ -83,7 +83,7 @@ Vueは、アプリケーションの設計にMVVMアーキテクチャを使用�
 
 ### MVVMアーキテクチャの実装例
 
-#### (1) 【View層】テンプレート (`foo.html`、`foo.twig`)
+#### (1) 【View】テンプレート (`foo.html`、`foo.twig`)
 
 データが、テンプレートから`js`ファイルに渡される仕組みは、フレークワークを使用しない場合と同じである。
 
@@ -125,7 +125,7 @@ Vueは、アプリケーションの設計にMVVMアーキテクチャを使用�
 </script>
 ```
 
-#### (1-2) 【ViewModel層】データの初期化を実行するVueコンストラクタ関数 (`index.js`)
+#### (1-2) 【ViewModel】データの初期化を実行するVueコンストラクタ関数 (`index.js`)
 
 ![vue-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vue-instance.png)
 
@@ -211,9 +211,9 @@ var vm = new Vue({
 });
 ```
 
-#### (2) 【View + ViewModel層】単一ファイルコンポーネントに相当するコンポーネント (`foo-component.vue`)
+#### (2) 【View + ViewModel】単一ファイルコンポーネントに相当するコンポーネント (`foo-component.vue`)
 
-コンポーネントは、View層に相当する`template`タグ、ViewModel層に相当する`script`タグと`style`タグを使用して、単一ファイルコンポーネントとする。
+コンポーネントは、Viewに相当する`template`タグ、ViewModelに相当する`script`タグと`style`タグを使用して、単一ファイルコンポーネントとする。
 
 **＊実装例＊**
 
@@ -222,7 +222,7 @@ var vm = new Vue({
 ```html
 <template>
   <!----------------------------------------
-  // View層
+  // View
   // ・親コンポーネント
   // ・ここに、出力したいHTMLやTWIGを記述する。 
   ------------------------------------------>
@@ -242,7 +242,7 @@ var vm = new Vue({
 
 <script>
   //=============
-  // ViewModel層
+  // ViewModel
   //=============
 
   // 親コンポーネント以降では、Vueインスタンスを作成しないようにする。
@@ -297,11 +297,11 @@ var vm = new Vue({
 </script>
 ```
 
-#### (3) 【Model層】オブジェクトに相当するVuex (`store.js`)
+#### (3) 【Model】オブジェクトに相当するVuex (`store.js`)
 
 ノート内の『Vuex』の項目を参照せよ。
 
-#### (3-2) 【Model層】オブジェクトに相当するJavaScript (`foo.js`)
+#### (3-2) 【Model】オブジェクトに相当するJavaScript (`foo.js`)
 
 クラス宣言で実装する。
 
@@ -331,7 +331,7 @@ class Foo {
 
 <br>
 
-## 02. View層とViewModel層の間での双方向データバインディングの方法
+## 02. ViewとViewModelの間での双方向データバインディングの方法
 
 ### イベントハンドリング
 
@@ -339,9 +339,9 @@ class Foo {
 
 ![Vueにおけるemitとv-onの連携](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Vueにおけるemitとv-onの連携.png)
 
-View層 (`template`タグ部分) のイベントを、ViewModel層 (`script`タグ部分) のイベントハンドラ関数 (`methods:`内にあるメソッド) やインラインJSステートメントにバインディングし、イベントが発火した時点でイベントハンドラ関数をコールする。
+View (`template`タグ部分) のイベントを、ViewModel (`script`タグ部分) のイベントハンドラ関数 (`methods:`内にあるメソッド) やインラインJSステートメントにバインディングし、イベントが発火した時点でイベントハンドラ関数をコールする。
 
-コンポーネントの`script`タグ部分 (ViewModel層) の親子間データ渡しである『Props Down, Events Up』とは異なる概念なので注意する。
+コンポーネントの`script`タグ部分 (ViewModel) の親子間データ渡しである『Props Down, Events Up』とは異なる概念なので注意する。
 
 ```html
 v-on:{イベント名}="{イベントハンドラ関数 (methods: 内にあるメソッド) }"
@@ -357,7 +357,7 @@ v-on:{イベント名}="{イベントハンドラ関数 (methods: 内にある�
 
 #### ▼ `v-on:submit="<イベントハンドラ関数>"`、`button`タグ
 
-View層のフォーム送信イベントが起きた時点で、ViewModel層にバインディングされたイベントハンドラ関数をコールする。
+Viewのフォーム送信イベントが起きた時点で、ViewModelにバインディングされたイベントハンドラ関数をコールする。
 
 例えば、親コンポーネントでは、子コンポーネントによって発火させられる`search`イベントに対して、`result`関数というイベントハンドラ関数を紐付けておく。
 
@@ -428,15 +428,15 @@ var vm = new Vue({
 
 #### ▼ `v-on:click="<イベントハンドラ関数>"`
 
-View層でクリックイベントが起きた時点で発火し、ViewModel層でバインディングされたイベントハンドラ関数をコールする。
+Viewでクリックイベントが起きた時点で発火し、ViewModelでバインディングされたイベントハンドラ関数をコールする。
 
 #### ▼ `v-on:change="<イベントハンドラ関数>"`
 
-View層で`input`タグや`select`タグで、値の入力後にマウスフォーカスがタグから外れた時点で発火し、ViewModel層でバインディングされたイベントハンドラ関数をコールする
+Viewで`input`タグや`select`タグで、値の入力後にマウスフォーカスがタグから外れた時点で発火し、ViewModelでバインディングされたイベントハンドラ関数をコールする
 
 #### ▼ `v-on:input="<イベントハンドラ関数>"`
 
-View層で`input`タグで、一文字でも値が入力された時点で発火し、ViewModel層バインディングされたイベントハンドラ関数をコールする。`v-on:change`とは、イベントが発火するタイミングが異なるため、共存できる。
+Viewで`input`タグで、一文字でも値が入力された時点で発火し、ViewModelバインディングされたイベントハンドラ関数をコールする。`v-on:change`とは、イベントが発火するタイミングが異なるため、共存できる。
 
 <br>
 

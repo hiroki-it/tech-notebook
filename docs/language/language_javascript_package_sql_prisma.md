@@ -80,15 +80,21 @@ const prisma = new PrismaClient()
 
 #### ▼ dev
 
-ローカル環境用のマイグレーションを実行する。
+ローカル環境用のマイグレーションを実行し、また差分を埋めるSQLファイルを発行する。
 
 ```bash
 $ prisma migrate dev
 ```
 
+マイグレーションを実行せず、差分を埋めるSQLファイルのみを発行する。
+
+```bash
+$ prisma migrate dev --create-only
+```
+
 #### ▼ deploy
 
-本番環境用のマイグレーションを実行する。
+本番環境用のマイグレーションを実行し、また差分を埋めるSQLファイルを発行する。
 
 ```bash
 $ prisma migrate deploy

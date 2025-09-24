@@ -41,9 +41,9 @@ description: フロントエンドアーキテクチャ＠フロントエンド�
 - ViewModel：状態と振る舞いのロジック（JavaScript）
 - Model：モデルそのもの（JavaScript）
 
-View層とModel層の間にViewModel層を配置し、View層とViewModel層の間で双方向にデータをやり取り (双方向データバインディング) する。
+ViewとModelの間にViewModelを配置し、ViewとViewModelの間で双方向にデータをやり取り (双方向データバインディング) する。
 
-これによって、View層とModel層の間を疎結合にする。
+これによって、ViewとModelの間を疎結合にする。
 
 Vue.jsでは、意識せずにMVVMアーキテクチャで実装できるようになっている。
 

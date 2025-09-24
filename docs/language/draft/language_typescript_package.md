@@ -82,7 +82,39 @@ userManager.signoutRedirect();
 
 <br>
 
+### object
+
+バリデーションのルールを設定する。
+
+```typescript
+// ユーザーオブジェクトのスキーマを定義する
+const userRequest = z.object({
+  // 数値型、整数、正の数を要求する
+  id: z.number().int().positive(),
+  // 文字列型、空文字列を許可しない
+  name: z.string().min(1, "名前は必須です"),
+  // 文字列型、メールアドレス形式を要求する
+  email: z.string().email("有効なメールアドレス形式ではありません"),
+  // 数値型、整数、正の数、オプショナルとする
+  age: z.number().int().positive().optional(),
+  // 文字列の配列とする
+  roles: z.array(z.string()),
+  // 真偽値型、デフォルト値はtrueとする
+  isActive: z.boolean().default(true),
+  // ISO8601形式の時刻
+  doingTime: z.string().datetime("実施時刻はISO8601形式の必要があります"),
+});
+```
+
+<br>
+
 ### parse、safeParse
+
+#### ▼ parse、safeParseとは
+
+`parse`関数は成功時は値を返し、失敗時はエラーをスローする。
+
+一方で、`safeParse`関数はエラーをスローせず、成功/失敗を示すオブジェクトを返す。
 
 #### ▼ 成功する場合
 
@@ -91,7 +123,7 @@ userManager.signoutRedirect();
 import {z} from "zod";
 
 // ユーザーオブジェクトのスキーマを定義する
-const userSchema = z.object({
+const userRequest = z.object({
   // 数値型、整数、正の数を要求する
   id: z.number().int().positive(),
   // 文字列型、空文字列を許可しない
@@ -104,10 +136,14 @@ const userSchema = z.object({
   roles: z.array(z.string()),
   // 真偽値型、デフォルト値はtrueとする
   isActive: z.boolean().default(true),
+  // ISO 8601形式の時刻
+  doingTime: z
+    .string()
+    .datetime("StartAtTimestamp must be a valid ISO 8601 datetime"),
 });
 
 // スキーマからTypeScriptの型を自動生成する
-type User = z.infer<typeof userSchema>;
+type User = z.infer<typeof userRequest>;
 
 // バリデーションに成功するデータを用意する
 const successfulUserData = {
@@ -121,9 +157,9 @@ const successfulUserData = {
 
 // parseを使ったバリデーション (成功時は値を返し、失敗時はエラーをスローする)
 try {
-  // parseメソッドはバリデーションに成功した場合、バリデーション済みのデータを返す。
+  // parse関数はバリデーションに成功した場合、バリデーション済みのデータを返す。
   // 失敗した場合はエラーをスローする。
-  const parsedUser = userSchema.parse(successfulUserData);
+  const parsedUser = userRequest.parse(successfulUserData);
   console.log("parse バリデーション成功:", parsedUser);
   // parsedUserはUser型として扱える。
   const user: User = parsedUser;
@@ -134,8 +170,8 @@ try {
 }
 
 // safeParseを使ったバリデーション (成功/失敗を示すオブジェクトを返す)
-// safeParseメソッドはエラーをスローせず、成功/失敗を示すオブジェクトを返す。
-const safeParseResultSuccess = userSchema.safeParse(successfulUserData);
+// safeParse関数はエラーをスローせず、成功/失敗を示すオブジェクトを返す。
+const safeParseResultSuccess = userRequest.safeParse(successfulUserData);
 
 // successプロパティで成功・失敗を判定する
 if (safeParseResultSuccess.success) {
@@ -159,7 +195,7 @@ if (safeParseResultSuccess.success) {
 import {z} from "zod";
 
 // ユーザーオブジェクトのスキーマを定義する
-const userSchema = z.object({
+const userRequest = z.object({
   // 数値型、整数、正の数を要求する
   id: z.number().int().positive(),
   // 文字列型、空文字列を許可しない
@@ -175,7 +211,7 @@ const userSchema = z.object({
 });
 
 // スキーマからTypeScriptの型を自動生成する
-type User = z.infer<typeof userSchema>;
+type User = z.infer<typeof userRequest>;
 
 // バリデーションに成功するデータを用意する
 const successfulUserData = {
@@ -203,10 +239,10 @@ const failedUserData = {
 
 // parseを使ったバリデーション (成功時は値を返し、失敗時はエラーをスローする)
 try {
-  // parseメソッドはバリデーションに成功した場合、バリデーション済みのデータを返す。
+  // parse関数はバリデーションに成功した場合、バリデーション済みのデータを返す。
   // 失敗した場合はエラーをスローする。
   // バリデーションに失敗するため、ここでZodErrorがスローされる。
-  const parsedUser = userSchema.parse(failedUserData);
+  const parsedUser = userRequest.parse(failedUserData);
   // エラーがスローされるため、この行は実行されない。
   console.log("parse バリデーション成功 (予期しない):", parsedUser);
 } catch (error: any) {
@@ -235,8 +271,8 @@ try {
 }
 
 // safeParseを使ったバリデーション (成功/失敗を示すオブジェクトを返す)
-// safeParseメソッドはエラーをスローせず、成功/失敗を示すオブジェクトを返す。
-const safeParseResultFailure = userSchema.safeParse(failedUserData);
+// safeParse関数はエラーをスローせず、成功/失敗を示すオブジェクトを返す。
+const safeParseResultFailure = userRequest.safeParse(failedUserData);
 
 // successプロパティで成功・失敗を判定する
 // バリデーションに失敗するため、successはfalseとなる。

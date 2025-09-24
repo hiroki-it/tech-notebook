@@ -243,6 +243,7 @@ kind: Ingress
 metadata:
   name: foo-alb-ingress
   annotations:
+    # Ingressに紐づけるServiceはNodePort Serviceとする
     alb.ingress.kubernetes.io/target-type: instance
 ```
 
@@ -263,6 +264,7 @@ kind: Ingress
 metadata:
   name: foo-alb-ingress
   annotations:
+    # Ingressに紐づけるServiceはClusterIP Serviceとする
     alb.ingress.kubernetes.io/target-type: ip
 ```
 
