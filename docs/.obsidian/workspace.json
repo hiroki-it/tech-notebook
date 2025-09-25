@@ -51,12 +51,14 @@
             "id": "a3fc610a777e8472",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.9.12"
+                "file": "Untitled.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.9.12"
+              "icon": "lucide-file",
+              "title": "Untitled"
             }
           }
         ],
@@ -221,10 +223,10 @@
   },
   "active": "a85a35cc6df77bd4",
   "lastOpenFiles": [
+    "Untitled.md",
     "software/draft/software_application_architecture_backend_domain_driven_design_nyumon_bottom_up_chapter_9.md",
     "testing/draft/testing_whitebox_application_e2e_js_cypress.md~",
     "testing/draft/testing_whitebox_application_e2e_js_cypress.md",
-    "Untitled.md",
     "software/software_application_architecture_frontend_architecture.md",
     "software/software_application_architecture_frontend_rendering_patterns.md",
     "software/software_application_architecture_frontend_rendering.md",
