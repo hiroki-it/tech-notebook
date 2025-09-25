@@ -161,6 +161,10 @@ const object: Record<ProfileKeys, string> = {
 
 ### 配列
 
+#### ▼ 配列とは
+
+可変的な要素数、順序は自由、型は全て同じデータ型である。
+
 #### ▼ 変数
 
 ```typescript
@@ -192,6 +196,26 @@ const total = numbers.reduce<number>(
 );
 
 console.log(total); // 60
+```
+
+<br>
+
+### タプル
+
+#### ▼ タプルとは
+
+配列の一種である。
+
+固定の要素数、順序は固定、型は自由なデータ型である。
+
+#### ▼ 返却値
+
+```typescript
+const foo = (a: number, b: string): [number, string] => {
+  return [a, b];
+};
+
+const result = foo(1, "Alice");
 ```
 
 <br>
@@ -238,6 +262,16 @@ console.log(await asyncFn());
 型変数では、定義した時点で型が決まっていない。
 
 コール時に型変数に任意の型を推論で代入し、それに合わせた引数型と返却型の関数を定義できる。
+
+```typescript
+// 最初の<T>    型変数を定義
+// (value: T)  引数型で型変数を使用
+// : T         返却値型で型変数を使用
+
+const foo = <T>(value: T): T {
+  // ...
+}
+```
 
 ```typescript
 // この時点では、引数型と返却値型は決まっていない

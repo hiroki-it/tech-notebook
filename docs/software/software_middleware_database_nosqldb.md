@@ -65,6 +65,46 @@ RDBとは異なり、データをメインメモリに保管する。
 
 先にキー名を作成したレプリカをリーダーとして、処理を実行させる。
 
+例えば、監視システムでは、特定のレプリカが監視処理を実行できればいいため、リーダー選出の仕組みが適切である。
+
+```mermaid
+sequenceDiagram
+      box lightyellow monitoring app instance
+          participant foo.ts
+          participant bar.ts
+      end
+      participant Redis
+      participant 監視対象
+
+      foo.ts->>Redis: ロック取得
+      Redis->>foo.ts: 返信
+
+      foo.ts->>bar.ts: MonitoringRequest関数コール
+
+      alt MonitoringRequest (監視リクエスト)
+
+          bar.ts->>bar.ts: 前処理
+
+          alt GETメソッドによる監視リクエスト
+              bar.ts->>監視対象: axios.get
+              監視対象-->>bar.ts: 返信
+          else POSTメソッドによる監視リクエスト
+              bar.ts->>監視対象: axios.post
+              監視対象-->>bar.ts: 返信
+          else PUTメソッドによる監視リクエスト
+              bar.ts->>監視対象: axios.put
+              監視対象-->>bar.ts: 返信
+          end
+
+          bar.ts->>bar.ts: 後処理
+
+          bar.ts-->>foo.ts: 返却
+
+      end
+
+      Redis->>foo.ts: ロック自動解放
+```
+
 > - https://kumagi.hatenablog.com/entry/distributed_lock
 > - https://scrapbox.io/mopp/%E5%88%86%E6%95%A3%E3%83%AD%E3%83%83%E3%82%AF
 
