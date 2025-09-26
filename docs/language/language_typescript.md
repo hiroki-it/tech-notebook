@@ -321,6 +321,36 @@ foo<boolean, boolean>(true, false);
 foo<string, number>("a", 1);
 ```
 
+```typescript
+// 処理時間を計測する関数
+// この時点では、型変数 (T) の型は決まっていない
+// 変数名はなんでもよく、単語でもいい
+const measureFunctionExecutionTime = async <T>(
+  fn: () => Promise<T>,
+): Promise<{result: T; executionTime: number}> => {
+  const startAt = performance.now();
+  try {
+    const result = await fn();
+    // Date.nowよりもperformance.now()の方がマイクロ秒まで計測できる
+    const executionTime = performance.now() - startAt;
+    // 関数の処理結果と実行時間を返却する
+    return {result: result, executionTime: executionTime};
+  } catch (error) {
+    const executionTime = performance.now() - startAt;
+    throw {result: error, executionTime: executionTime};
+  }
+};
+
+// この時点では、引数型と返却値型は決まっていない
+// 変数名はなんでもよく、単語でもいい
+const foo = <T>(value: T): Promise<T> => {
+  return value;
+};
+
+// 型変数に文字を代入すると、これを推論し、fn: () => Promise<T> のTが決まる
+measureFunctionExecutionTime(foo);
+```
+
 > - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AA%E3%82%AF%E3%82%B9%E5%9E%8B%E5%AE%9A%E7%BE%A9
 
 <br>
