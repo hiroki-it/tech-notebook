@@ -1056,7 +1056,11 @@ Active Recordのロジックを持たないため、Repositoryパターンのロ
 
 #### ▼ `transaction`メソッド
 
-一連のトランザクション処理を実行する。
+複数のクエリ処理を実行するトランザクションを定義する。
+
+トランザクション内に含まれる一連の処理（トランザクション開始、コミット、ロールバック）を管理してくれる。
+
+基本的には、`transaction`メソッドを使用してトランザクション処理を実行すれば良い。
 
 引数として渡した無名関数が例外を返却した場合、ロールバックを自動的に実行する。
 
@@ -1098,23 +1102,13 @@ class FooRepository extends Repository implements DomainFooRepository
      */
     public function save(Foo $foo): void
     {
-        // トランザクション処理を開始する。
-        DB::beginTransaction();
-
-        try {
+        DB::transaction(function () use ($user) {
 
             $this->fooDTO->fill([
                     "name"  => $foo->name(),
                     "age"   => $foo->age(),
                 ])
                 ->save();
-
-            // コミットを実行する。
-            DB::commit();
-        } catch (Exception $e) {
-
-            // ロールバックする。
-            DB::rollback();
         }
     }
 }
@@ -1125,9 +1119,7 @@ class FooRepository extends Repository implements DomainFooRepository
 
 #### ▼ `beginTransaction`メソッド、`commit`メソッド、`rollback`メソッド、
 
-トランザクション処理の各操作を分割して実行する。
-
-基本的には、`transaction`メソッドを使用してトランザクション処理を実行すれば良い。
+トランザクション内に含まれる一連の処理（トランザクション開始、コミット、ロールバック）を別々に実行する。
 
 **＊実装例＊**
 

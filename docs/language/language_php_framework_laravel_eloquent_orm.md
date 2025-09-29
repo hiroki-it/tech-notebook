@@ -1351,22 +1351,25 @@ class FooRepository extends Repository implements DomainFooRepository
      */
     public function create(Foo $foo): void
     {
-        $this->fooDTO
-            // INSERT文を実行する。
-            ->create([
-                // ドメインモデルのデータをDTOに詰め替える。
-                "name"  => $foo->name(),
-                "age"   => $foo->age(),
-            ]);
 
-//        以下の実装でも良い。
-//        $this->fooDTO
-//            ->fill([
-//                "name"  => $foo->name(),
-//                "age"   => $foo->age(),
-//            ])
-//            ->save();
-    }
+      DB::transaction(function () use ($foo) {
+          $this->fooDTO
+              // INSERT文を実行する。
+              ->create([
+                  // ドメインモデルのデータをDTOに詰め替える。
+                  "name"  => $foo->name(),
+                  "age"   => $foo->age(),
+              ]);
+
+//          以下の実装でも良い。
+//          $this->fooDTO
+//              ->fill([
+//                  "name"  => $foo->name(),
+//                  "age"   => $foo->age(),
+//              ])
+//              ->save();
+          }
+      }
 }
 ```
 
@@ -1522,14 +1525,17 @@ class FooRepository extends Repository implements DomainFooRepository
      */
     public function save(Foo $foo): void
     {
-        $this->fooDTO
-            // ドメインモデルのデータをDTOに詰め替える。
-            ->fill([
-                "name"  => $foo->name(),
-                "age"   => $foo->age(),
-            ])
-            // UPDATE文を実行する。
-            ->save();
+        DB::transaction(function () use ($foo) {
+
+            $this->fooDTO
+                // ドメインモデルのデータをDTOに詰め替える。
+                ->fill([
+                    "name"  => $foo->name(),
+                    "age"   => $foo->age(),
+                ])
+                // UPDATE文を実行する。
+                ->save();
+        }
     }
 }
 ```

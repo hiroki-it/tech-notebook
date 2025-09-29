@@ -200,6 +200,8 @@ generator client {
 
 複数のクエリ処理を実行するトランザクションを定義する。
 
+トランザクション内に含まれる一連の処理（トランザクション開始、コミット、ロールバック）を管理してくれる。
+
 ```typescript
 import {PrismaClient} from "@prisma/client";
 
@@ -208,7 +210,7 @@ const prisma = new PrismaClient();
 function transfer(from: string, to: string, amount: number) {
   // トランザクション
   return prisma.$transaction(async (tx) => {
-    // CRUD処理
+    // 1つ目のCRUD処理
     const sender = await tx.account.update({
       data: {
         balance: {
@@ -224,7 +226,7 @@ function transfer(from: string, to: string, amount: number) {
       throw new Error(`${from} doesn't have enough to send ${amount}`);
     }
 
-    // CRUD処理
+    // 2つ目のCRUD処理
     const recipient = await tx.account.update({
       data: {
         balance: {
