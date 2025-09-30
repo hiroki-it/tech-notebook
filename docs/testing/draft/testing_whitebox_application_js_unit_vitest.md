@@ -15,8 +15,6 @@ description: Vitest＠JavaScriptユニットテストの知見を記録してい
 
 ## 01. Vitestとは
 
-記入中...
-
 <br>
 
 ## 02. セットアップ
@@ -100,5 +98,21 @@ export default defineConfig({
   },
 });
 ```
+
+<br>
+
+## 03. 対応言語
+
+### TypeScript
+
+#### ▼ 注意点
+
+VitestはTypeScriptを直接トランスパイルするため、型検証を実施しない。
+
+例えば、TypeScriptのテストコードで、関数に渡す型がまちがってるのにエラーにならない。
+
+Vitestの思想では、テストコードの型検証はエディタやビルド時に実施するべきであり、テストコードの実行時には型検証は済んでいるものという考えがある。
+
+> - https://vite.dev/guide/features.html#transpile-only
 
 <br>
