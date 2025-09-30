@@ -25,6 +25,52 @@ description: TypeScriptの知見を記録しています。
 
 <br>
 
+## 02 仕組み
+
+### 型検証の有無
+
+|        | 実行前のコンパイル | 実行前のトランスパイル | 実行時 |
+| ------ | :----------------: | :--------------------: | :----: |
+| 型検証 |         ✅         |           ❌           |   ❌   |
+
+### トランスパイル
+
+#### ▼ コンパイル + トランスパイルの両方
+
+```typescript
+function greet(name: string) {
+  console.log(`Hello, ${name}!`);
+}
+
+// 引数を渡さない場合、関数にはundefinedを渡すことになる
+greet();
+```
+
+```javascript
+// トランスパイルされてJavaScriptになる
+// undefinedは型不一致のため、コンパイルの型検証によってエラーになる
+error TS2554: Expected 1 arguments, but got 0.
+```
+
+#### ▼ トランスパイルのみ
+
+```typescript
+function greet(name: string) {
+  console.log(`Hello, ${name}!`);
+}
+
+// 引数を渡さない場合、関数にはundefinedを渡すことになる
+greet();
+```
+
+```javascript
+// トランスパイルされてJavaScriptになる
+// undefinedは型不一致であるが、コンパイルの型検証がないため、エラーにならない
+Hello, undefined!
+```
+
+<br>
+
 ## 02. 変数の宣言
 
 ### let

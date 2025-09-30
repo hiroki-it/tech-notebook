@@ -1102,7 +1102,7 @@ class FooRepository extends Repository implements DomainFooRepository
      */
     public function save(Foo $foo): void
     {
-        DB::transaction(function () use ($user) {
+        DB::transaction(function () use ($foo) {
 
             $this->fooDTO->fill([
                     "name"  => $foo->name(),

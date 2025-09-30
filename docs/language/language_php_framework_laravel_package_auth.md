@@ -576,7 +576,9 @@ class FooController extends Controller
         // Eloquentモデルが不要な検証であれば名前空間
         // if (!auth()->user()->can('update', Foo::class) {}
 
-        $foo->fill($request->all())->save();
+        DB::transaction(function () use ($foo) {
+            $foo->fill($request->all())->save();
+        }
     }
 }
 ```

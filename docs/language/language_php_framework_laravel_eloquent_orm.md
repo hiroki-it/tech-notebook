@@ -636,11 +636,13 @@ class FooController extends Controller
     {
         $foo = new Foo();
 
-        // INSERT文を実行する。また同時にIDを取得する。
-        $foo->create($request->all());
+        DB::transaction(function () use ($foo) {
+            // INSERT文を実行する。また同時にIDを取得する。
+            $foo->create($request->all());
 
-        // 以下の実装でもよい
-        // $foo->fill($request->all())->save();
+            // 以下の実装でもよい
+            // $foo->fill($request->all())->save();
+        }
 
         // 処理後にはEloquentモデルにID値が保持されている。
         $foo->id();
@@ -1090,8 +1092,11 @@ class FooController extends Controller
     {
         $foo = new Foo();
 
-        // UPDATE文を実行する。
-        $foo->fill($request->all())->save();
+        DB::transaction(function () use ($foo) {
+
+            // UPDATE文を実行する。
+            $foo->fill($request->all())->save();
+        }
 
         // 続きの処理
     }
