@@ -10,13 +10,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="６章＠ドメイン駆動設計入門ボトムアップの知見を記録しています。">
+        <meta name="description" content="３章＠ドメイン駆動設計入門ボトムアップの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_backend_domain_driven_design_nyumon_bottom_up_chapter_6.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_backend_domain_driven_design_nyumon_bottom_up_chapter_03.html">
       
       
       
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】６章＠ドメイン駆動設計入門ボトムアップ - 俺の技術ノート</title>
+        <title>【IT技術の知見】３章＠ドメイン駆動設計入門ボトムアップ - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#6" class="md-skip">
+        <a href="#3" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -150,7 +150,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】６章＠ドメイン駆動設計入門ボトムアップ
+              【IT技術の知見】３章＠ドメイン駆動設計入門ボトムアップ
             
           </span>
         </div>
@@ -27090,29 +27090,95 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#61" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      6.1 アプリケーションサービスとは
+      01. エンティティとは
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#62" class="md-nav__link">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      6.2 アプリケーションサービスの実装方法（関数型）
+      02. エンティティの実装方法（関数型）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. エンティティの実装方法（関数型）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id" class="md-nav__link">
+    <span class="md-ellipsis">
+      識別子 (ID) を持つ
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#63" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#id_1" class="md-nav__link">
     <span class="md-ellipsis">
-      6.3 アプリケーションサービスで実装するべきロジックの見つけ方
+      IDで等価性検証できる
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      処理の中で状態が変化する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ライフサイクル
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. エンティティで実装するべきロジックの見つけ方
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. エンティティで実装するべきロジックの見つけ方">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      CRUD系メソッドの対象
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      業務フローの中にある
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -27135,7 +27201,7 @@
   
 
 
-<h1 id="6">６章＠ドメイン駆動設計入門ボトムアップ<a class="headerlink" href="#6" title="Permanent link">&para;</a></h1>
+<h1 id="3">３章＠ドメイン駆動設計入門ボトムアップ<a class="headerlink" href="#3" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -27144,52 +27210,99 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="61">6.1 アプリケーションサービスとは<a class="headerlink" href="#61" title="Permanent link">&para;</a></h2>
-<p>アプリケーションサービスとは、ドメインオブジェクト（エンティティや値オブジェクト）を使用してユースケースを実現するオブジェクトである。</p>
-<p>作成したドメインオブジェクトをユーザーインターフェース層に返却する。</p>
+<h2 id="01">01. エンティティとは<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<p>ドメイン上で意味をもち、同一性（識別子によって区別される性質）をもつオブジェクトがある。</p>
+<p>これをモデリングし、ドメインオブジェクトとして実装したものをエンティティという。</p>
+<ul>
+<li>User：ユーザーIDと関連処理（例：氏名変更、メールアドレス変更など）を状態・振る舞いとして表現</li>
+<li>Order：注文IDと関連処理（例：商品追加、合計金額計算など）を状態・振る舞いとして表現</li>
+<li>Product：商品IDと関連処理（例：在庫更新、価格変更など）を状態・振る舞いとして表現</li>
+<li>Project：プロジェクトIDと関連処理（例：進捗更新、メンバー追加など）を状態・振る舞いとして表現</li>
+<li>Payment：決済IDと関連処理（例：支払い完了、返金処理など）を状態・振る舞いとして表現</li>
+<li>MonitoringAlert：アラートIDと関連処理（例：通知送信、ステータス変更など）を状態・振る舞いとして表現</li>
+</ul>
 <p><br></p>
-<h2 id="62">6.2 アプリケーションサービスの実装方法（関数型）<a class="headerlink" href="#62" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Readonly</span><span class="o">&lt;</span><span class="p">{</span>
-<span class="w">  </span><span class="nx">userRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepository</span><span class="p">;</span>
-<span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
+<h2 id="02">02. エンティティの実装方法（関数型）<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="id">識別子 (ID) を持つ<a class="headerlink" href="#id" title="Permanent link">&para;</a></h3>
+<p>同じデータをもっていても、IDが異なれば別のエンティティである。</p>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 
-<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">RegisterUserInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Readonly</span><span class="o">&lt;</span><span class="p">{</span>
+<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">&lt;</span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">registerUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="nx">userRepositoryDI</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepositoryDI</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="kt">RegisterUserInput</span><span class="p">,</span>
-<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Result</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createUserName</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="ne">Error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createEmail</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">email</span><span class="p">);</span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">email</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="ne">Error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span><span class="p">(</span><span class="nx">email</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">exists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="p">.</span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">findByEmail</span><span class="p">(</span><span class="nx">email</span><span class="p">);</span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exists</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;Email already registered&quot;</span><span class="p">));</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createUser</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">);</span>
-
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="p">.</span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
-
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">ok</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">createUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">id</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">email</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;IDとメールは必須です&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">freeze</span><span class="p">({</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">});</span>
 <span class="p">};</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="63">6.3 アプリケーションサービスで実装するべきロジックの見つけ方<a class="headerlink" href="#63" title="Permanent link">&para;</a></h2>
-<p>ユーザーや外部クライアントから要求を受け、ユースケースを表現するロジックはアプリケーションサービスに適する。</p>
+<h3 id="id_1">IDで等価性検証できる<a class="headerlink" href="#id_1" title="Permanent link">&para;</a></h3>
+<p>値オブジェクトとは異なり、IDで等価性検証ができる。</p>
+<p>「〇〇は既に存在しています」のエラーで役立つ。</p>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">&lt;</span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">equalsUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_2">処理の中で状態が変化する<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>処理の中で状態が更新されてもIDは変わらず、オブジェクトとしての等価性は保たれる。</p>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">&lt;</span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 処理の途中で状態を変更できる</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">changeUserName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">,</span><span class="w"> </span><span class="nx">newName</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">freeze</span><span class="p">({...</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">newName</span><span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_3">ライフサイクル<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>作成から削除までのライフサイクルがある。</p>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">&lt;</span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 削除</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">createUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">id</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">name</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">email</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;全ての値は必須です&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">freeze</span><span class="p">({</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">});</span>
+<span class="p">};</span>
+
+<span class="c1">// 作成</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">deleteUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03">03. エンティティで実装するべきロジックの見つけ方<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="crud">CRUD系メソッドの対象<a class="headerlink" href="#crud" title="Permanent link">&para;</a></h3>
+<p>CRUD系メソッド（<code>create</code>、<code>find</code>、<code>update</code>、<code>delete</code>）の対象となるオブジェクトはエンティティの可能性がある。</p>
+<p><br></p>
+<h3 id="_4">業務フローの中にある<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>入庫 → 検査 → 販売 → 返品 というような業務フローの中で処理される。</p>
 <p><br></p>
 
 
@@ -27211,7 +27324,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年9月10日 15:30:18 JST">2025-09-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月1日 15:56:26 JST">2025-10-01</span>
   </span>
 
     

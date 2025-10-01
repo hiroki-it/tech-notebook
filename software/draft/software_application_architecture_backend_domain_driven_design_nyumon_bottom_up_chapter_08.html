@@ -10,13 +10,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="４章＠ドメイン駆動設計入門ボトムアップの知見を記録しています。">
+        <meta name="description" content="８章＠ドメイン駆動設計入門ボトムアップの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_backend_domain_driven_design_nyumon_bottom_up_chapter_4.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_backend_domain_driven_design_nyumon_bottom_up_chapter_08.html">
       
       
       
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】４章＠ドメイン駆動設計入門ボトムアップ - 俺の技術ノート</title>
+        <title>【IT技術の知見】８章＠ドメイン駆動設計入門ボトムアップ - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#4" class="md-skip">
+        <a href="#8" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -150,7 +150,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】４章＠ドメイン駆動設計入門ボトムアップ
+              【IT技術の知見】８章＠ドメイン駆動設計入門ボトムアップ
             
           </span>
         </div>
@@ -27090,29 +27090,143 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
+  <a href="#81" class="md-nav__link">
     <span class="md-ellipsis">
-      01. ドメインサービスとは
+      8.1 ユーザーインターフェース
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
+  <a href="#82" class="md-nav__link">
     <span class="md-ellipsis">
-      02. ドメインサービスの実装方法（関数型）
+      8.2 コマンドラインインターフェースに組み込んでみよう
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.2 コマンドラインインターフェースに組み込んでみよう">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      全体像
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      03. ドメインサービスで実装するべきロジックの見つけ方
+      ユーザーインターフェース層
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="ユーザーインターフェース層">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usercontroller" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ UserController
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requestdto" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ RequestDTO
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      アプリケーション層
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="アプリケーション層">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#applicationservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ApplicationService
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#di" class="md-nav__link">
+    <span class="md-ellipsis">
+      DIの方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DIの方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ioc" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ IoCコンテナパターン
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-locator" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Service Locatorパターン
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#singleton" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Singletonパターン
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ パターンを使用しない
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -27135,7 +27249,7 @@
   
 
 
-<h1 id="4">４章＠ドメイン駆動設計入門ボトムアップ<a class="headerlink" href="#4" title="Permanent link">&para;</a></h1>
+<h1 id="8">８章＠ドメイン駆動設計入門ボトムアップ<a class="headerlink" href="#8" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -27144,45 +27258,72 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. ドメインサービスとは<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<p>自身の状態を持たず、ドメインのふるまいを切り分けたオブジェクトである。</p>
-<p>エンティティや値オブジェクトに記述すると不自然なふるまいを扱う。</p>
-<p><br></p>
-<h2 id="02">02. ドメインサービスの実装方法（関数型）<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Readonly</span><span class="o">&lt;</span><span class="p">{</span>
-<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">;</span>
-<span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">createUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">id</span><span class="p">.</span><span class="nx">trim</span><span class="p">())</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;ユーザーIDは必須です。&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">name</span><span class="p">.</span><span class="nx">trim</span><span class="p">())</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;ユーザー名は必須です。&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">};</span>
-<span class="p">};</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="nx">UserName</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./user&quot;</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserExistenceServiceDI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">existsByName</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">boolean</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">exists</span><span class="w"> </span><span class="o">=</span>
-<span class="w">  </span><span class="p">(</span><span class="nx">userExistenceServiceDI</span><span class="o">:</span><span class="w"> </span><span class="kt">UserExistenceServiceDI</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span>
-<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">boolean</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">userExistenceServiceDI</span><span class="p">.</span><span class="nx">existsByName</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-<span class="w">  </span><span class="p">};</span>
-</code></pre></div>
-<p><br></p>
-<h2 id="03">03. ドメインサービスで実装するべきロジックの見つけ方<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h2 id="81">8.1 ユーザーインターフェース<a class="headerlink" href="#81" title="Permanent link">&para;</a></h2>
 <ul>
-<li>エンティティや値オブジェクトに自然に属さない処理</li>
-<li>1つのエンティティに責務を押し付けると不自然な汎用的な処理</li>
-<li>「〜を確認する」「〜を判断する」といった問いかけ的な振る舞い</li>
-<li>複数のエンティティや値オブジェクトの関係を調整する処理</li>
+<li>フロントエンド領域</li>
+<li>API</li>
+<li>CLIツールのエントリーポイント</li>
 </ul>
+<p><br></p>
+<h2 id="82">8.2 コマンドラインインターフェースに組み込んでみよう<a class="headerlink" href="#82" title="Permanent link">&para;</a></h2>
+<h3 id="_2">全体像<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">UserController、UserRequestDTO</span><span class="w"> </span><span class="c1"># ユーザーインターフェース層</span>
+<span class="l l-Scalar l-Scalar-Plain">↓</span>
+<span class="l l-Scalar l-Scalar-Plain">UserApplicationService</span><span class="w"> </span><span class="c1"># アプリケーション層</span>
+<span class="l l-Scalar l-Scalar-Plain">↓</span>
+<span class="l l-Scalar l-Scalar-Plain">IUserRepository</span><span class="w"> </span><span class="c1"># ドメイン層</span>
+<span class="l l-Scalar l-Scalar-Plain">↑</span>
+<span class="l l-Scalar l-Scalar-Plain">UserRepository／InMemoryUserRepository</span><span class="w"> </span><span class="c1"># インフラ層</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_3">ユーザーインターフェース層<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="usercontroller">▼ UserController<a class="headerlink" href="#usercontroller" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">Response</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;express&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserRegisterDto</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../../application/dto/UserRegisterDto&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">IUserApplicationService</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../../application/UserApplicationService&quot;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserController</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="kt">IUserApplicationService</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">register</span><span class="p">(</span><span class="nx">req</span><span class="o">:</span><span class="w"> </span><span class="kt">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="o">:</span><span class="w"> </span><span class="kt">Response</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">dto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserRegisterDto</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">email</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">service</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="nx">dto</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;User registered successfully&quot;</span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="requestdto">▼ RequestDTO<a class="headerlink" href="#requestdto" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserRegisterDto</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_4">アプリケーション層<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="applicationservice">▼ ApplicationService<a class="headerlink" href="#applicationservice" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserRegisterDto</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./dto/UserRegisterDto&quot;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">IUserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">register</span><span class="p">(</span><span class="nx">dto</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRegisterDto</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">IUserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">register</span><span class="p">(</span><span class="nx">dto</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRegisterDto</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ここでUserRepositoryを実行する</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="di">DIの方法<a class="headerlink" href="#di" title="Permanent link">&para;</a></h3>
+<h4 id="ioc">▼ IoCコンテナパターン<a class="headerlink" href="#ioc" title="Permanent link">&para;</a></h4>
+<h4 id="service-locator">▼ Service Locatorパターン<a class="headerlink" href="#service-locator" title="Permanent link">&para;</a></h4>
+<p>依存関係がわかりにくくなるため、アンチパターンである。</p>
+<h4 id="singleton">▼ Singletonパターン<a class="headerlink" href="#singleton" title="Permanent link">&para;</a></h4>
+<p>依存関係がわかりにくくなるため、アンチパターンである。</p>
+<h4 id="_5">▼ パターンを使用しない<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>インターフェースの実装を動的に切り替える必要がなければ、パターンを使用しない方が良い。</p>
 <p><br></p>
 
 
@@ -27204,7 +27345,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年9月1日 18:38:09 JST">2025-09-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月1日 15:56:26 JST">2025-10-01</span>
   </span>
 
     

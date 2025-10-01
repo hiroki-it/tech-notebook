@@ -10,13 +10,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="９章＠ドメイン駆動設計入門ボトムアップの知見を記録しています。">
+        <meta name="description" content="６章＠ドメイン駆動設計入門ボトムアップの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_backend_domain_driven_design_nyumon_bottom_up_chapter_9.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_backend_domain_driven_design_nyumon_bottom_up_chapter_06.html">
       
       
       
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】９章＠ドメイン駆動設計入門ボトムアップ - 俺の技術ノート</title>
+        <title>【IT技術の知見】６章＠ドメイン駆動設計入門ボトムアップ - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#9" class="md-skip">
+        <a href="#6" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -150,7 +150,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】９章＠ドメイン駆動設計入門ボトムアップ
+              【IT技術の知見】６章＠ドメイン駆動設計入門ボトムアップ
             
           </span>
         </div>
@@ -27090,134 +27090,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#91" class="md-nav__link">
+  <a href="#61" class="md-nav__link">
     <span class="md-ellipsis">
-      9.1 ファクトリーとは
+      6.1 アプリケーションサービスとは
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#92" class="md-nav__link">
+  <a href="#62" class="md-nav__link">
     <span class="md-ellipsis">
-      9.2 ファクトリーの実装方法（関数型）
+      6.2 アプリケーションサービスの実装方法（関数型）
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="9.2 ファクトリーの実装方法（関数型）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ドメイン層
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ドメイン層">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#username" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ UserName
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#userid" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ UserId
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ユーザーインターフェース層
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ユーザーインターフェース層">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#userfactory" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ UserFactory
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#userapplicationservice" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ UserApplicationService
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#93" class="md-nav__link">
+  <a href="#63" class="md-nav__link">
     <span class="md-ellipsis">
-      9.3 採番処理をどこに実装するか
+      6.3 アプリケーションサービスで実装するべきロジックの見つけ方
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="9.3 採番処理をどこに実装するか">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      ファクトリ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      リポジトリ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      エンティティのコンストラクタ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -27240,7 +27135,7 @@
   
 
 
-<h1 id="9">９章＠ドメイン駆動設計入門ボトムアップ<a class="headerlink" href="#9" title="Permanent link">&para;</a></h1>
+<h1 id="6">６章＠ドメイン駆動設計入門ボトムアップ<a class="headerlink" href="#6" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -27249,123 +27144,52 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="91">9.1 ファクトリーとは<a class="headerlink" href="#91" title="Permanent link">&para;</a></h2>
-<ul>
-<li>ドメインオブジェクトに渡す複雑な引数の作成処理をコンストラクタから切り分ける</li>
-</ul>
+<h2 id="61">6.1 アプリケーションサービスとは<a class="headerlink" href="#61" title="Permanent link">&para;</a></h2>
+<p>アプリケーションサービスとは、ドメインオブジェクト（エンティティや値オブジェクト）を使用してユースケースを実現するオブジェクトである。</p>
+<p>作成したドメインオブジェクトをユーザーインターフェース層に返却する。</p>
 <p><br></p>
-<h2 id="92">9.2 ファクトリーの実装方法（関数型）<a class="headerlink" href="#92" title="Permanent link">&para;</a></h2>
-<h3 id="_2">ドメイン層<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="username">▼ UserName<a class="headerlink" href="#username" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="p">};</span>
+<h2 id="62">6.2 アプリケーションサービスの実装方法（関数型）<a class="headerlink" href="#62" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Readonly</span><span class="o">&lt;</span><span class="p">{</span>
+<span class="w">  </span><span class="nx">userRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepository</span><span class="p">;</span>
+<span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">createUserName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">UserName</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">value</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">value</span><span class="p">.</span><span class="nx">trim</span><span class="p">().</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;UserName cannot be empty&quot;</span><span class="p">);</span>
+<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">RegisterUserInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Readonly</span><span class="o">&lt;</span><span class="p">{</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">registerUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="nx">userRepositoryDI</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepositoryDI</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="kt">RegisterUserInput</span><span class="p">,</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Result</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createUserName</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="ne">Error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="nx">value</span><span class="p">};</span>
-<span class="p">};</span>
-</code></pre></div>
-<h4 id="userid">▼ UserId<a class="headerlink" href="#userid" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 
-<span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">;</span>
-<span class="p">};</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createEmail</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">email</span><span class="p">);</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">createUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
-<span class="w">  </span><span class="nx">id</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">name</span><span class="p">,</span>
-<span class="p">});</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="_3">ユーザーインターフェース層<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="userfactory">▼ UserFactory<a class="headerlink" href="#userfactory" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">v4</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">uuidv4</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;uuid&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">email</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="ne">Error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span><span class="p">(</span><span class="nx">email</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 
-<span class="kr">type</span><span class="w"> </span><span class="nx">UserFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">createUserWithId</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="p">};</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">exists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="p">.</span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">findByEmail</span><span class="p">(</span><span class="nx">email</span><span class="p">);</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">createUserFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">UserFactory</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">createUserWithId</span><span class="o">:</span><span class="w"> </span><span class="kt">async</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">nextId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">generateId</span><span class="p">();</span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">createUser</span><span class="p">(</span><span class="nx">nextId</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">);</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">  </span><span class="p">};</span>
-<span class="p">};</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exists</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;Email already registered&quot;</span><span class="p">));</span>
+<span class="w">  </span><span class="p">}</span>
 
-<span class="c1">// 採番処理</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">generateId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">uuidv4</span><span class="p">();</span>
-<span class="p">};</span>
-</code></pre></div>
-<h4 id="userapplicationservice">▼ UserApplicationService<a class="headerlink" href="#userapplicationservice" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">registerUser</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">userName</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="p">};</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createUser</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">);</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">createUserApplicationService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="nx">factory</span><span class="o">:</span><span class="w"> </span><span class="kt">UserFactory</span><span class="p">,</span>
-<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">registerUser</span><span class="o">:</span><span class="w"> </span><span class="kt">async</span><span class="w"> </span><span class="p">(</span><span class="nx">userName</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createUserName</span><span class="p">(</span><span class="nx">userName</span><span class="p">);</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">factory</span><span class="p">.</span><span class="nx">createUserWithId</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">user</span><span class="p">;</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="p">.</span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">ok</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
 <span class="p">};</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="93">9.3 採番処理をどこに実装するか<a class="headerlink" href="#93" title="Permanent link">&para;</a></h2>
-<h3 id="_4">ファクトリ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>今回の例に相当する。</p>
-<p><br></p>
-<h3 id="_5">リポジトリ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>採番処理を採番テーブルを使用して実装する場合、データベースに関する処理になるため、リポジトリに実装することもできる。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">nextIdentity</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">UserId</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">save</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">userRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">  </span><span class="nx">nextIdentity</span><span class="o">:</span><span class="w"> </span><span class="kt">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 採番テーブルが生成したIDを取得する</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">pool</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s2">&quot;SELECT nextval(&#39;user_seq&#39;) AS id&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">rows</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">id</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
-<span class="w">  </span><span class="p">},</span>
-
-<span class="w">  </span><span class="nx">save</span><span class="o">:</span><span class="w"> </span><span class="kt">async</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">pool</span><span class="p">.</span><span class="nx">getConnection</span><span class="p">();</span>
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">conn</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span>
-<span class="w">        </span><span class="s2">&quot;INSERT INTO users(id, name) VALUES (?, ?)&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="p">[</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">value</span><span class="p">]</span>
-<span class="w">      </span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">conn</span><span class="p">.</span><span class="nx">release</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">mysql</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;mysql2/promise&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">v4</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">uuidv4</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;uuid&quot;</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">pool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mysql</span><span class="p">.</span><span class="nx">createPool</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.DB_HOST</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.DB_USER</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.DB_PASS</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">database</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.DB_NAME</span><span class="p">,</span>
-<span class="p">});</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="_6">エンティティのコンストラクタ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<h2 id="63">6.3 アプリケーションサービスで実装するべきロジックの見つけ方<a class="headerlink" href="#63" title="Permanent link">&para;</a></h2>
+<p>ユーザーや外部クライアントから要求を受け、ユースケースを表現するロジックはアプリケーションサービスに適する。</p>
 <p><br></p>
 
 
@@ -27387,7 +27211,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年9月10日 21:55:45 JST">2025-09-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月1日 15:56:26 JST">2025-10-01</span>
   </span>
 
     

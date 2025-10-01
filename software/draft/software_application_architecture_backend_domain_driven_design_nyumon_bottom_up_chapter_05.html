@@ -10,13 +10,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="８章＠ドメイン駆動設計入門ボトムアップの知見を記録しています。">
+        <meta name="description" content="５章＠ドメイン駆動設計入門ボトムアップの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_backend_domain_driven_design_nyumon_bottom_up_chapter_8.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_backend_domain_driven_design_nyumon_bottom_up_chapter_05.html">
       
       
       
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】８章＠ドメイン駆動設計入門ボトムアップ - 俺の技術ノート</title>
+        <title>【IT技術の知見】５章＠ドメイン駆動設計入門ボトムアップ - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#8" class="md-skip">
+        <a href="#5" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -150,7 +150,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】８章＠ドメイン駆動設計入門ボトムアップ
+              【IT技術の知見】５章＠ドメイン駆動設計入門ボトムアップ
             
           </span>
         </div>
@@ -27090,122 +27090,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#81" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      8.1 ユーザーインターフェース
+      リポジトリとは
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#82" class="md-nav__link">
-    <span class="md-ellipsis">
-      8.2 コマンドラインインターフェースに組み込んでみよう
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="8.2 コマンドラインインターフェースに組み込んでみよう">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      全体像
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ユーザーインターフェース層
+      リポジトリの実装方法（関数型）
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="ユーザーインターフェース層">
+    <nav class="md-nav" aria-label="リポジトリの実装方法（関数型）">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#usercontroller" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ UserController
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#requestdto" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ RequestDTO
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      アプリケーション層
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="アプリケーション層">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#applicationservice" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ApplicationService
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#di" class="md-nav__link">
-    <span class="md-ellipsis">
-      DIの方法
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="DIの方法">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ioc" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ IoCコンテナパターン
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#service-locator" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Service Locatorパターン
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#singleton" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Singletonパターン
+      インターフェースリポジトリ
     </span>
   </a>
   
@@ -27214,7 +27120,86 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ パターンを使用しない
+      実装リポジトリ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      インメモリリポジトリ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dto" class="md-nav__link">
+    <span class="md-ellipsis">
+      DTO
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DTO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dto_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ DTOとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dto_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ DTOを使用しない場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dto_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ DTOを使用する場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="注意点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ よろしくない実装（リポジトリにUpdate〇〇をいっぱいかく）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#save" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ より良い実装（リポジトリにSaveを書く）
     </span>
   </a>
   
@@ -27227,6 +27212,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      リポジトリで実装するべきロジックの見つけ方
+    </span>
+  </a>
   
 </li>
       
@@ -27249,7 +27243,7 @@
   
 
 
-<h1 id="8">８章＠ドメイン駆動設計入門ボトムアップ<a class="headerlink" href="#8" title="Permanent link">&para;</a></h1>
+<h1 id="5">５章＠ドメイン駆動設計入門ボトムアップ<a class="headerlink" href="#5" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -27258,72 +27252,198 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="81">8.1 ユーザーインターフェース<a class="headerlink" href="#81" title="Permanent link">&para;</a></h2>
+<h2 id="_2">リポジトリとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>リポジトリとは、ドメインオブジェクト（エンティティや値オブジェクト）を外部（DB、サードパティAPI）から取得し、またこれに永続化するロジックをもつオブジェクトである。</p>
+<p><br></p>
+<h2 id="_3">リポジトリの実装方法（関数型）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="_4">インターフェースリポジトリ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">findById</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">save</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_5">実装リポジトリ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Pool</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;mysql2/promise&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../domain/user&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserId</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../domain/userId&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserName</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../domain/userName&quot;</span><span class="p">;</span>
+
+<span class="c1">// 依存性注入</span>
+<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepositoryDI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Readonly</span><span class="o">&lt;</span><span class="p">{</span>
+<span class="w">  </span><span class="nx">pool</span><span class="o">:</span><span class="w"> </span><span class="kt">Pool</span><span class="p">;</span>
+<span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">findById</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="nx">userRepositoryDI</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepositoryDI</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">,</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`SELECT id, name FROM users WHERE id = ? LIMIT 1`</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">rows</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="p">.</span><span class="nx">pool</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nx">sql</span><span class="p">,</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nx">id</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">unknown</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">  </span><span class="p">]);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">rows</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">any</span><span class="p">[])[</span><span class="mf">0</span><span class="p">];</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">row</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;User not found&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">(</span><span class="nx">UserId</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nx">row</span><span class="p">.</span><span class="nx">id</span><span class="p">),</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserName</span><span class="p">(</span><span class="nx">row</span><span class="p">.</span><span class="nx">name</span><span class="p">));</span>
+<span class="p">};</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">save</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="nx">userRepositoryDI</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepositoryDI</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">,</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">    INSERT INTO users (id, name)</span>
+<span class="sb">    VALUES (?, ?)</span>
+<span class="sb">    ON DUPLICATE KEY UPDATE</span>
+<span class="sb">      name = VALUES(name)</span>
+<span class="sb">  `</span><span class="p">;</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="p">.</span><span class="nx">pool</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nx">sql</span><span class="p">,</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">unknown</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span>
+<span class="w">  </span><span class="p">]);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_6">インメモリリポジトリ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">createUserRepositoryInMemory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">store</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="o">&lt;</span><span class="nx">UserId</span><span class="p">,</span><span class="w"> </span><span class="nx">User</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">findById</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">store</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">save</span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">store</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div>
+<h3 id="dto">DTO<a class="headerlink" href="#dto" title="Permanent link">&para;</a></h3>
+<h4 id="dto_1">▼ DTOとは<a class="headerlink" href="#dto_1" title="Permanent link">&para;</a></h4>
+<p>ORMのDBモデルをエンティティそのままに使用する場合、ドメイン層がインフラ層に依存してしまう。</p>
+<p>エンティティとORMのDBモデルを分離し、ORMのDBモデルをエンティティに詰め替える必要がある</p>
+<p>別の方法として、リポジトリでDTOに相当するロジックを実装してもよい。</p>
+<h4 id="dto_2">▼ DTOを使用しない場合<a class="headerlink" href="#dto_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../domain/user&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserId</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../domain/userId&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserName</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../domain/userName&quot;</span><span class="p">;</span>
+
+<span class="c1">// 依存性注入</span>
+<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepositoryDI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Readonly</span><span class="o">&lt;</span><span class="p">{</span>
+<span class="w">  </span><span class="nx">prisma</span><span class="o">:</span><span class="w"> </span><span class="kt">PrismaClient</span><span class="p">;</span>
+<span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">findById</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="nx">userRepositoryDI</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepositoryDI</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">,</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">record</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">findUnique</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">id</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">unknown</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;User not found&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 取得時はORMのDBモデルをエンティティに変換する</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">(</span><span class="nx">UserId</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nx">record</span><span class="p">.</span><span class="nx">id</span><span class="p">),</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserName</span><span class="p">(</span><span class="nx">record</span><span class="p">.</span><span class="nx">name</span><span class="p">));</span>
+<span class="p">};</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">save</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="nx">userRepositoryDI</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepositoryDI</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">,</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">record</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">user.id</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">unknown</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">user.name.toString</span><span class="p">(),</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="c1">// 保存時はエンティティをORMのDBモデルに変換する</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">upsert</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">record.id</span><span class="p">},</span>
+<span class="w">    </span><span class="nx">create</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">record.id</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">record.name</span><span class="p">},</span>
+<span class="w">    </span><span class="nx">update</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">record.name</span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div>
+<h4 id="dto_3">▼ DTOを使用する場合<a class="headerlink" href="#dto_3" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
+
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../domain/user&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserId</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../domain/userId&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserName</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../domain/userName&quot;</span><span class="p">;</span>
+
+<span class="c1">// 依存性注入</span>
+<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepositoryDI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Readonly</span><span class="o">&lt;</span><span class="p">{</span>
+<span class="w">  </span><span class="nx">prisma</span><span class="o">:</span><span class="w"> </span><span class="kt">PrismaClient</span><span class="p">;</span>
+<span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">findById</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="nx">userRepositoryDI</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepositoryDI</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">,</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">record</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">findUnique</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">id</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">unknown</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;User not found&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 取得時はORMのDBモデルをエンティティに変換する</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">UserDTO</span><span class="p">.</span><span class="nx">toDomain</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">record.id</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">record.name</span><span class="p">,</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">};</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">save</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="nx">userRepositoryDI</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepositoryDI</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">,</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 保存時はエンティティをORMのDBモデルに変換する</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">record</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">UserDTO</span><span class="p">.</span><span class="nx">toRecord</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">upsert</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">record.id</span><span class="p">},</span>
+<span class="w">    </span><span class="nx">create</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">record.id</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">record.name</span><span class="p">},</span>
+<span class="w">    </span><span class="nx">update</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">record.name</span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_7">注意点<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="update">▼ よろしくない実装（リポジトリにUpdate〇〇をいっぱいかく）<a class="headerlink" href="#update" title="Permanent link">&para;</a></h4>
+<p>Userオブジェクトに実装するべき振る舞いのビジネスロジックを、永続化の役割をもつRepositoryに実装することになってしまう</p>
+<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">findbyId</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">updateName</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">userId</span><span class="p">);</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">updateName</span><span class="p">(</span><span class="nx">getName</span><span class="p">(</span><span class="nx">user</span><span class="p">));</span><span class="w"> </span><span class="c1">// リポジトリの UpdateName のなかで、ドメインロジックを書くことになってしまう</span>
+</code></pre></div>
+<h4 id="save">▼ より良い実装（リポジトリにSaveを書く）<a class="headerlink" href="#save" title="Permanent link">&para;</a></h4>
+<p>Userオブジェクトが振る舞いのビジネスロジックをもち、Repositoryは永続化ロジックをもつので、責務を区別できている</p>
+<p>責務さえ区別できていれば、名前はSaveやStore、それこそUpdateでもよい</p>
+<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">findById</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">save</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">userId</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">updatedUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">changeName</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="nx">newName</span><span class="p">);</span><span class="w"> </span><span class="c1">// ユーザーオブジェクトが自分でユーザー名の状態を変更する</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">updatedUser</span><span class="p">);</span><span class="w"> </span><span class="c1">// リポジトリは、状態の変更されたユーザーオブジェクトを保存するだけ</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="_8">リポジトリで実装するべきロジックの見つけ方<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <ul>
-<li>フロントエンド領域</li>
-<li>API</li>
-<li>CLIツールのエントリーポイント</li>
+<li>DBに関するロジック（例：DB操作、ファイル操作）</li>
+<li>外部APIに関するロジック（例：HTTPハンドラー）</li>
 </ul>
-<p><br></p>
-<h2 id="82">8.2 コマンドラインインターフェースに組み込んでみよう<a class="headerlink" href="#82" title="Permanent link">&para;</a></h2>
-<h3 id="_2">全体像<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">UserController、UserRequestDTO</span><span class="w"> </span><span class="c1"># ユーザーインターフェース層</span>
-<span class="l l-Scalar l-Scalar-Plain">↓</span>
-<span class="l l-Scalar l-Scalar-Plain">UserApplicationService</span><span class="w"> </span><span class="c1"># アプリケーション層</span>
-<span class="l l-Scalar l-Scalar-Plain">↓</span>
-<span class="l l-Scalar l-Scalar-Plain">IUserRepository</span><span class="w"> </span><span class="c1"># ドメイン層</span>
-<span class="l l-Scalar l-Scalar-Plain">↑</span>
-<span class="l l-Scalar l-Scalar-Plain">UserRepository／InMemoryUserRepository</span><span class="w"> </span><span class="c1"># インフラ層</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="_3">ユーザーインターフェース層<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="usercontroller">▼ UserController<a class="headerlink" href="#usercontroller" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">Response</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;express&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserRegisterDto</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../../application/dto/UserRegisterDto&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">IUserApplicationService</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../../application/UserApplicationService&quot;</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserController</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="kt">IUserApplicationService</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-
-<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">register</span><span class="p">(</span><span class="nx">req</span><span class="o">:</span><span class="w"> </span><span class="kt">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="o">:</span><span class="w"> </span><span class="kt">Response</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">dto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserRegisterDto</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">email</span><span class="p">);</span>
-<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">service</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="nx">dto</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;User registered successfully&quot;</span><span class="p">});</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="requestdto">▼ RequestDTO<a class="headerlink" href="#requestdto" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserRegisterDto</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
-<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="_4">アプリケーション層<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="applicationservice">▼ ApplicationService<a class="headerlink" href="#applicationservice" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserRegisterDto</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./dto/UserRegisterDto&quot;</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">IUserApplicationService</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">register</span><span class="p">(</span><span class="nx">dto</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRegisterDto</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">IUserApplicationService</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">register</span><span class="p">(</span><span class="nx">dto</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRegisterDto</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// ここでUserRepositoryを実行する</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="di">DIの方法<a class="headerlink" href="#di" title="Permanent link">&para;</a></h3>
-<h4 id="ioc">▼ IoCコンテナパターン<a class="headerlink" href="#ioc" title="Permanent link">&para;</a></h4>
-<h4 id="service-locator">▼ Service Locatorパターン<a class="headerlink" href="#service-locator" title="Permanent link">&para;</a></h4>
-<p>依存関係がわかりにくくなるため、アンチパターンである。</p>
-<h4 id="singleton">▼ Singletonパターン<a class="headerlink" href="#singleton" title="Permanent link">&para;</a></h4>
-<p>依存関係がわかりにくくなるため、アンチパターンである。</p>
-<h4 id="_5">▼ パターンを使用しない<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>インターフェースの実装を動的に切り替える必要がなければ、パターンを使用しない方が良い。</p>
 <p><br></p>
 
 
@@ -27345,7 +27465,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年9月10日 15:30:18 JST">2025-09-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月1日 15:56:26 JST">2025-10-01</span>
   </span>
 
     
