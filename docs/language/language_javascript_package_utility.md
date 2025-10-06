@@ -272,21 +272,48 @@ axios.get("/user/12345").then(function (response) {
 
 axiosパッケージによる非同期処理をリトライする。
 
+httpClientのインスタンスを渡す必要がある。
+
 ```javascript
 import axios from "axios";
 import axiosRetry from "axios-retry";
 
-// axiosオブジェクトをあらかじめ渡しておく
-axiosRetry(axios, {
+// httpClientのインスタンスを作成する
+const httpClient = axios.create({timeout: 10000});
+
+// httpClientのインスタンスを渡す
+axiosRetry(httpClient, {
   retries: 1,
-  retryCondition: () => true,
-  retryDelay: function (retryCount, error) {
-    return 2;
-  },
+  retryDelay: axiosRetry.exponentialDelay,
+  shouldResetTimeout: true,
 });
 
 // axiosでリクエストを非同期処理する
-const response = await axios.get("http://example.com");
+const response = await httpClient.get("http://example.com");
+
+console.log(response.data);
+```
+
+即時関数を使用すると、`axios`によるhttpクライアント作成と`axios-retry`によるリトライ設定を一括で行いつつ、httpクライアントのインスタンスを作成する処理を実装できる。
+
+```typescript
+// httpClientのインスタンスを作成する
+const httpClient = (() => {
+  // httpClientを作成する
+  const httpClient = axios.create({timeout: 10000});
+
+  // httpClientのインスタンスを渡す
+  axiosRetry(httpClient, {
+    retries: 1,
+    retryDelay: axiosRetry.exponentialDelay,
+    shouldResetTimeout: true,
+  });
+
+  return httpClient;
+})();
+
+// axiosでリクエストを非同期処理する
+const response = await httpClient.get("http://example.com");
 
 console.log(response.data);
 ```
@@ -294,6 +321,19 @@ console.log(response.data);
 > - https://blog.symdon.info/posts/1638831647/
 > - https://qiita.com/fyuneru0830/items/3410b37cd6a004223092
 > - https://github.com/softonic/axios-retry?tab=readme-ov-file#options
+
+<br>
+
+### メモリリーク対策
+
+メモリリークにつながるため、アプリケーションの実行中に一回だけグローバルに`axios-retry`を設定する必要がある。
+
+> - https://tech.andpad.co.jp/entry/2020/03/19/080036
+> - https://github.com/axios/axios/issues/4763
+
+<br>
+
+### 設定
 
 <br>
 

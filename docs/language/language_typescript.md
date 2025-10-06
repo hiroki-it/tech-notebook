@@ -446,6 +446,57 @@ const logger = (): void => {
 
 <br>
 
+## 03. 関数
+
+### 分割代入
+
+#### ▼ 分割代入とは
+
+関数の引数を定義するときに、オブジェクトから特定のプロパティを直接取り出する記法。
+
+可読性が高くなる。
+
+#### ▼ 分割代入しない場合
+
+```typescript
+function greet(
+  // パラメーターからnameプロパティとuserプロパティを直接取り出さない
+  user: {
+    name: string;
+    age: number;
+  },
+) {
+  console.log(`Hello, ${user.name}. You are ${user.age} years old.`);
+}
+
+const user = {name: "Hiroki", age: 1};
+
+// 引数を渡す
+greet(user);
+```
+
+#### ▼ 分割代入する場合
+
+```typescript
+function greet(
+  // パラメーターからnameプロパティとuserプロパティを直接取り出す
+  {
+    name,
+    age,
+  }: {
+    name: string;
+    age: number;
+  },
+) {
+  console.log(`Hello, ${name}. You are ${age} years old.`);
+}
+
+const user = {name: "Hiroki", age: 1};
+
+// 引数を渡す
+greet(user);
+```
+
 ## 03. 型推論
 
 ### 暗黙的
@@ -884,7 +935,7 @@ import {fooLogger, fooErrorHandler} from "~/utils";
 
 <br>
 
-## 11. まとめ
+## 11. さまざまなプラクティスのまとめ
 
 ```typescript
 // エラーハンドリング: Result型で値を型として明示
@@ -900,7 +951,7 @@ type UserResponse = {
 async function getUserNames(
   // パフォーマンス: 複数ユーザーIDをまとめて取得することで、N+1問題を回避
   userIds: string[],
-  // テストビリティ: 依存性注入により、モックに差し替え可能に
+  // テストビリティ: 依存性注入により、モックに差し替えできるようにする
   di: DI,
 ): Promise<Result<Map<string, string>, UserFetchError>> {
   // 信頼性: リトライ機構により、一時的な障害に対応
@@ -912,6 +963,8 @@ async function getUserNames(
     const timeoutId = setTimeout(() => controller.abort(), 5000);
 
     try {
+      // 依存性注入された親オブジェクトから子オブジェクトを取り出す
+      // 実環境では本物のfetchClientを使用し、テスト環境ではモック用のfakeFetchClientを使用する
       const response = await di.fetchClient(
         // スケーラビリティ: バッチ処理でリクエスト回数を最小化
         // 保守性: URLのベタ書きを排除
@@ -920,6 +973,7 @@ async function getUserNames(
           method: "POST",
           headers: {
             // 認証・認可: JWTでAPIを保護
+            // 依存性注入された親オブジェクトから子オブジェクトを取り出す
             Authorization: `Bearer ${await di.jwtProvider()}`,
             "Content-Type": "application/json",
           },
@@ -957,12 +1011,14 @@ async function getUserNames(
       const results = new Map(users.map((user) => [user.id, user.name]));
       return {ok: true, value: results};
     } catch (error) {
+      // 依存性注入された親オブジェクトから子オブジェクトを取り出す
       // 可観測性: 構造化されたログ
       di.logger.error("Failed to fetch users", {
         userIds,
         attempt,
         error,
       });
+      // 依存性注入された親オブジェクトから子オブジェクトを取り出す
       // 可観測性: メトリクス
       di.metrics.increment("user_fetch_error", {
         status:
