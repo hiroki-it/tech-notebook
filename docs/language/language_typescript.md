@@ -448,15 +448,28 @@ const logger = (): void => {
 
 ## 03. 関数
 
-### 分割代入
+### 即時関数
 
-#### ▼ 分割代入とは
+無名関数の宣言とその呼び出すを同時に行う。
+
+```typescript
+// 無名関数を即時実行し、message変数に代入する
+const message = (() => {
+  return `Hello, Hiroki`;
+})();
+
+console.log(message);
+```
+
+### 分割代入引数
+
+#### ▼ 分割代入引数とは
 
 関数の引数を定義するときに、オブジェクトから特定のプロパティを直接取り出する記法。
 
 可読性が高くなる。
 
-#### ▼ 分割代入しない場合
+#### ▼ 分割代入引数しない場合
 
 ```typescript
 function greet(
@@ -475,7 +488,7 @@ const user = {name: "Hiroki", age: 1};
 greet(user);
 ```
 
-#### ▼ 分割代入する場合
+#### ▼ 分割代入引数する場合
 
 ```typescript
 function greet(
