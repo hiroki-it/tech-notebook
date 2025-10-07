@@ -1142,7 +1142,7 @@ Envoyはマルチスレッドでパケットを処理する。
 
 通信をリスナー/フィルター/ルート/クラスター/エンドポイントで処理し、宛先にロードバランシングする。
 
-`--concurrency`オプションで並列実行数を設定できる。
+`--concurrency`オプションで並列処理数を設定できる。
 
 ![envoy_thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_thread.png)
 

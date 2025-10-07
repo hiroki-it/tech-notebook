@@ -879,7 +879,7 @@ baz_job:
 
 #### ▼ parallelとは
 
-同じJobを複数並列実行する。
+特定のJobを並列処理する。
 
 ```yaml
 foo_job:
@@ -890,7 +890,7 @@ foo_job:
           - foo1
           - foo2
           - foo3
-  # foo1、foo2、foo3を出力する異なるJobを並列実行する
+  # foo1、foo2、foo3を出力する異なるJobを並列処理する
   script:
     - echo ${ENV}
 ```
@@ -900,7 +900,7 @@ foo_job:
 
 #### ▼ アーティファクト依存関係
 
-並列実行した各Jobに対して、アーティファクトの依存関係を設定できる。
+並列処理した各Jobに対して、アーティファクトの依存関係を設定できる。
 
 ```yaml
 stages:
@@ -915,7 +915,7 @@ foo_job:
           - foo1
           - foo2
           - foo3
-  # foo1、foo2、foo3を出力する異なるJobを並列実行する
+  # foo1、foo2、foo3を出力する異なるJobを並列処理する
   script:
     - echo ${ENV}
 
@@ -932,7 +932,7 @@ baz_job:
 
 #### ▼ Jobの依存関係
 
-並列実行した各Jobに対して、Jobの依存関係を設定できる。
+並列処理した各Jobに対して、Jobの依存関係を設定できる。
 
 ```yaml
 stages:
@@ -942,7 +942,7 @@ stages:
 foo_job:
   stage: build
   parallel:
-    # foo1、foo2、foo3を出力する異なるJobを並列実行する
+    # foo1、foo2、foo3を出力する異なるJobを並列処理する
     matrix:
       - ENV:
           - foo1

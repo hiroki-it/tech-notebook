@@ -77,7 +77,7 @@ import (
 
 func TestTerraformAwsHelloWorldExample(t *testing.T) {
 
-    // テストを並列的に実行する。
+    // テストを並列処理する。
 	t.Parallel()
 
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{

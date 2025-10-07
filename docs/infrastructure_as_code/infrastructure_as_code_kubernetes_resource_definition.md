@@ -468,15 +468,15 @@ data:
 
 #### ▼ concurrencyPolicy
 
-CronJob配下のJobの並列実行ルールを設定できる。
+CronJob配下のJobの並列処理ルールを設定できる。
 
 #### ▼ Allow
 
-Jobの並列実行を許可する。
+Jobの並列処理を許可する。
 
 #### ▼ Forbid
 
-Jobの並列実行を拒否する。
+Jobの並列処理を拒否する。
 
 #### ▼ Allow
 
