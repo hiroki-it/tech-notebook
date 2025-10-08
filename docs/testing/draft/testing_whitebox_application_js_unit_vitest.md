@@ -156,11 +156,22 @@ describe('fetchUser', async () => {
     // axiosクライアントのモックが一度だけデータを返却するように設定
     vi.mocked(axios, true).get.mockResolvedValueOnce({ data: response })
 
-    // 実際のテスト
+    // 関数をテスト
     const user = await fetchUser(userId)
 
     // 実際値と期待値を比較検証
     expect(user).toStrictEqual({id: '1', name: 'Taro'})
+  })
+
+  // 異常系のテスト
+  test('failure', async () => {
+    // axiosクライアントのモックがエラーを一度だけ返すように設定
+    vi.mocked(axios, true).get.mockRejectedValueOnce(new Error('Network Error'))
+
+    // 関数をテスト
+    // 関数の結果をVitestに直接渡さないと、テストコードが例外で停止してしまう
+    // 実際値と期待値を比較検証
+    expect(fetchUser(userId)).rejects.toThrow('Network Error')
   })
 }
 ```
