@@ -27083,6 +27083,15 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
+      サンプルコード
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
       はじめに
     </span>
   </a>
@@ -27109,7 +27118,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       依存関係のある例
     </span>
@@ -27118,7 +27127,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       よくない依存関係
     </span>
@@ -27226,7 +27235,14 @@
 
 
 <h1 id="7">７章＠ドメイン駆動設計入門ボトムアップ<a class="headerlink" href="#7" title="Permanent link">&para;</a></h1>
-<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="_1">サンプルコード<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<blockquote>
+<ul>
+<li><a href="https://github.com/nrslib/itddd/tree/master/SampleCodes/Chapter7">https://github.com/nrslib/itddd/tree/master/SampleCodes/Chapter7</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -27241,7 +27257,7 @@
 <p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-01" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-01.png" /></p>
 <p><br></p>
 <h2 id="72">7.2 依存とは<a class="headerlink" href="#72" title="Permanent link">&para;</a></h2>
-<h3 id="_2">依存関係のある例<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h3 id="_3">依存関係のある例<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>次の例では、オブジェクトAはオブジェクトBを参照している。</p>
 <p>これは、オブジェクトAがBに依存している状況である。</p>
 <p>リスト7.1：ObjectAはObjectBに依存する。</p>
@@ -27264,7 +27280,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-03" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-03.png" /></p>
-<h3 id="_3">よくない依存関係<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_4">よくない依存関係<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>次の例では、UserApplicationServiceはUserRepository（実装リポジトリ）に依存している。</p>
 <p>この状態では、UserApplicationServiceの処理を実行する時に、DBが必要になってしまう。</p>
 <p>リスト7.3：UserApplicationServiceの依存関係に着目</p>
@@ -27729,7 +27745,7 @@ ServiceLocatorオブジェクトからインスタンスを取り出せないた
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月1日 15:56:26 JST">2025-10-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月8日 14:22:04 JST">2025-10-08</span>
   </span>
 
     
