@@ -1036,9 +1036,13 @@ class FooException extends Exception
 
 複数のエンティティをまたぐビジネスルールを横断的に使用できるようにする。
 
-boolean値メソッド (`isFoo`メソッド) のように、オブジェクトのデータを検証して、仕様を要求を満たしているか、何らかの目的のために用意できているかを調べる処理する。
+boolean値メソッド (`isFoo`メソッド) のように、仕様を満たしているかを調べる処理する。
 
-特定のエンティティのみに関するビジネスルールの場合は、そのエンティティにboolean値メソッド (`isFoo`メソッド) をもたせればよい。
+- 単一のエンティティを引数として、複数を要求を満たしているか
+- 複数のエンティティを引数として、仕様を満たしているか
+- 何らかの処理のために用意できているか
+
+ただし、単一のエンティティに関する単一のビジネスルールの場合は、Specificationパターンとして切り分けずに、そのエンティティにboolean値メソッド (`isFoo`メソッド) をもたせればよい。
 
 **＊実装例＊**
 
@@ -1056,6 +1060,7 @@ class FooSpecification
      */
     public function isSatisfiedBy(Entity $entity): bool
     {
+        // 複数の仕様を組み合わせる条件
         if (!$entity->isX) return false;
         if (!$entity->isY) return false;
         if (!$entity->isZ) return false;
@@ -1122,6 +1127,10 @@ class FooCriteria
     }
 }
 ```
+
+#### ▼ クエリ条件
+
+特
 
 <br>
 
