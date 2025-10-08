@@ -1950,7 +1950,7 @@
           <li class="md-nav__item">
   <a href="#_47" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ビジネスルールのバリデーション
+      ▼ ビジネスルール検証
     </span>
   </a>
   
@@ -1959,7 +1959,7 @@
           <li class="md-nav__item">
   <a href="#_48" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 検索条件
+      ▼ クエリ検索条件
     </span>
   </a>
   
@@ -29121,7 +29121,7 @@
           <li class="md-nav__item">
   <a href="#_47" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ビジネスルールのバリデーション
+      ▼ ビジネスルール検証
     </span>
   </a>
   
@@ -29130,7 +29130,7 @@
           <li class="md-nav__item">
   <a href="#_48" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 検索条件
+      ▼ クエリ検索条件
     </span>
   </a>
   
@@ -31180,18 +31180,19 @@
 <h3 id="specification">仕様パターン (Specificationパターン)<a class="headerlink" href="#specification" title="Permanent link">&para;</a></h3>
 <h4 id="_46">▼ 仕様パターンとは<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
 <p>デザインパターンの一種。</p>
-<p>責務として、バリデーション、検索条件を持つ。</p>
+<p>責務として、ビジネスルール検証、クエリ検索条件を持つ。</p>
 <p>これらをエンティティや値オブジェクトのメソッド内部に持たせた場合、肥大化の原因となり、また埋もれてしまうため、可読性と保守性が悪い。</p>
 <p>そこで、こういった処理をSpecificationオブジェクトとして切り分けておく。</p>
-<h4 id="_47">▼ ビジネスルールのバリデーション<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h4>
-<p>複数のエンティティをまたぐビジネスルールを横断的に使用できるようにする。</p>
+<h4 id="_47">▼ ビジネスルール検証<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h4>
+<p>エンティティから切り分けたドメインルール条件オブジェクトとして実装する。</p>
+<p>複数のエンティティをまたぐビジネスルールの検証はSpecificationパターンに切り分けるのがよい。</p>
 <p>boolean値メソッド (<code>isFoo</code>メソッド) のように、仕様を満たしているかを調べる処理する。</p>
 <ul>
 <li>単一のエンティティを引数として、複数を要求を満たしているか</li>
 <li>複数のエンティティを引数として、仕様を満たしているか</li>
 <li>何らかの処理のために用意できているか</li>
 </ul>
-<p>ただし、単一のエンティティに関する単一のビジネスルールの場合は、Specificationパターンとして切り分けずに、そのエンティティにboolean値メソッド (<code>isFoo</code>メソッド) をもたせればよい。</p>
+<p>単一のエンティティに関する単一のビジネスルールの場合は、Specificationパターンとして切り分けずに、そのエンティティにboolean値メソッド (<code>isFoo</code>メソッド) をもたせる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -31215,8 +31216,9 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="_48">▼ 検索条件<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h4>
-<p>リクエストのパスパラメーターとクエリパラメーターを引数として、検索条件のオブジェクトを作成する。</p>
+<h4 id="_48">▼ クエリ検索条件<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h4>
+<p>リポジトリに渡すクエリ検索条件オブジェクトとして実装する。</p>
+<p>Criteriaパターンと呼ぶこともある。</p>
 <p>ビジネスルールのバリデーションを実行するSpecificationクラスと区別するために、Criteriaオブジェクトという名前としても使用される。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -31241,7 +31243,7 @@
     <span class="k">private</span> <span class="nx">string</span> <span class="nv">$email</span><span class="p">;</span>
 
     <span class="sd">/**</span>
-<span class="sd">     * 検索条件のオブジェクトを作成する</span>
+<span class="sd">     * クエリ検索条件オブジェクトを作成する</span>
 <span class="sd">     *</span>
 <span class="sd">     * @param array $array</span>
 <span class="sd">     * @return $this</span>
@@ -32846,7 +32848,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月8日 14:22:04 JST">2025-10-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月8日 15:54:41 JST">2025-10-08</span>
   </span>
 
     
