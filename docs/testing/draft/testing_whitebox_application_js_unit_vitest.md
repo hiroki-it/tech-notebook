@@ -116,3 +116,53 @@ Vitestの思想では、テストコードの型検証はエディタやビル�
 > - https://vite.dev/guide/features.html#transpile-only
 
 <br>
+
+## 04. テストコード例
+
+#### ▼ axiosを使用したHTTPリクエスト
+
+```typescript
+// テスト対象の関数
+import axios from "axios";
+
+export async function fetchUser(id: string) {
+  const res = await axios.get(`/api/users/${id}`);
+  return res.data;
+}
+```
+
+```typescript
+// テストコード
+import { test, expect, vi } from 'vitest'
+import axios from 'axios'
+import { fetchUser } from './fetchUser'
+
+describe('fetchUser', async () => {
+
+  // リクエストのパラメーターに関するテストデータ
+  const userId = '1'
+
+  // レスポンスに関するテストデータ
+  const response = {
+    id: '1',
+    name: 'Taro',
+  }
+
+  // 正常系のテスト
+  test('success', async () => {
+
+    // axiosクライアントのモック
+    vi.mock('axios')
+    // axiosクライアントのモックが一度だけデータを返却するように設定
+    vi.mocked(axios, true).get.mockResolvedValueOnce({ data: response })
+
+    // 実際のテスト
+    const user = await fetchUser(userId)
+
+    // 実際値と期待値を比較検証
+    expect(user).toStrictEqual({id: '1', name: 'Taro'})
+  })
+}
+```
+
+<br>
