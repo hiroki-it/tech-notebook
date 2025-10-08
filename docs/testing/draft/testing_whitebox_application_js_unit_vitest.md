@@ -142,14 +142,14 @@ describe('fetchUser', async () => {
   // リクエストのパラメーターに関するテストデータ
   const userId = '1'
 
-  // レスポンスに関するテストデータ
-  const response = {
-    id: '1',
-    name: 'Taro',
-  }
-
   // 正常系のテスト
   test('success', async () => {
+
+    // レスポンスに関するテストデータ
+    const response = {
+      id: '1',
+      name: 'Taro',
+    }
 
     // axiosクライアントのモック
     vi.mock('axios')
@@ -165,13 +165,20 @@ describe('fetchUser', async () => {
 
   // 異常系のテスト
   test('failure', async () => {
-    // axiosクライアントのモックがエラーを一度だけ返すように設定
-    vi.mocked(axios, true).get.mockRejectedValueOnce(new Error('Network Error'))
 
-    // 関数をテスト
-    // 関数の結果をVitestに直接渡さないと、テストコードが例外で停止してしまう
+    // レスポンスに関するテストデータ
+    const response = new Error('Network Error')
+
+    // axiosクライアントのモックがエラーを一度だけ返すように設定
+    vi.mocked(axios, true).get.mockRejectedValueOnce(response)
+
+    // await宣言で完了を待つようにしないと、そのままテスト処理が終わってしまう
     // 実際値と期待値を比較検証
-    expect(fetchUser(userId)).rejects.toThrow('Network Error')
+    await expect(
+      // 関数をテスト
+      // 関数の結果をVitestに直接渡さないと、テストコードが例外で停止してしまう
+      fetchUser(userId)
+    ).rejects.toThrow('Network Error')
   })
 }
 ```
