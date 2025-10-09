@@ -41,6 +41,12 @@ $ mise install
 $ npm install -g yarn
 ```
 
+3. PIPでpythonのパッケージをインストールする
+
+```bash
+$  pip3 install -r requirements.txt   
+```
+
 <br>
 
 ## 整形
@@ -58,3 +64,11 @@ $ yarn prettier -w --no-bracket-spacing **/*.md
 ```
 
 <br>
+
+## Webサイト生成
+
+1. ローカル環境でWebサイトを生成する
+
+```bash
+$ mkdocs serve
+```
