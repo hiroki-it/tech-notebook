@@ -123,7 +123,9 @@ foo-cj  foo-namespace   CronJob                   batch/v1beta1         batch/v1
 
 CI上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすれば良く、特にGitOpsでCI/CDを分離している場合は、必ずしもkube-apiserverと通信する必要はない。
 
-ここでは`foo-secrets.yaml`を渡しているが、これは復号せずに渡している。
+ちなみに、ここでは`foo-secrets.yaml`を渡している。
+
+クラウドの暗号化キーを使用する場合、復号でクラウドとの通信が発生してしまうが、CI上でクラウドとの通信は不要であるため、暗号化されたまま`helm template`コマンドに渡している。。
 
 ```bash
 $ helm template . -f foo-values.yaml -f foo-secrets.yaml \
