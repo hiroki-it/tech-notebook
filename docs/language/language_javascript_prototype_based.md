@@ -207,7 +207,7 @@ const foo = {
 
 パスカルケース (大文字から始める記法) を使用する。
 
-補足として、オブジェクトのプロパティ値として作成された関数を、メソッドと呼ぶ。
+補足として、オブジェクトのプロパティ値として作成された関数を、関数と呼ぶ。
 
 **＊実装例＊**
 
@@ -248,7 +248,7 @@ function Foo() {
   // 慣習的にアンダースコアでprivateを表す。
   _property = 0;
 
-  // プロパティ値として宣言した関数を、メソッドという。
+  // プロパティ値として宣言した関数を、関数という。
   this.setValue = (value) => {
     this._property = value;
   };
@@ -355,7 +355,7 @@ import {Foo} from "./foo.js";
 // 作成、初期化
 const foo = new Foo(1);
 
-// メソッドのコール
+// 関数のコール
 foo.getValue();
 ```
 
@@ -384,7 +384,7 @@ import {Foo} from "./foo.js";
 // 作成、初期化
 const foo = new Foo(1);
 
-// メソッドのコール
+// 関数のコール
 foo.getValue();
 ```
 
@@ -398,7 +398,7 @@ foo.getValue();
 
 オブジェクトが暗示的に持つ`prototype`プロパティに、別のオブジェクトのメンバを追加することによって、そのオブジェクトのプロトタイプを継承できる。
 
-オブジェクトからプロパティやメソッドをコールした時、そのオブジェクトにこれらが存在しなければ、継承元まで辿る仕組みを『プロトタイプチェーン』という。
+オブジェクトからプロパティや関数をコールした時、そのオブジェクトにこれらが存在しなければ、継承元まで辿る仕組みを『プロトタイプチェーン』という。
 
 クラスベースのオブジェクト指向で使用されるクラスチェーンについては、別ノートを参照せよ。
 
@@ -447,7 +447,7 @@ const SubFoo = (subValue) => {
 SubFoo.prototype = new Foo();
 
 // SubFooクラスにはgetValue()は無い。
-// 継承元まで辿り、Examlpeクラスからメソッドがコールされる (プロトタイプチェーン) 。
+// 継承元まで辿り、Examlpeクラスから関数がコールされる (プロトタイプチェーン) 。
 const result = SubFoo.getValue();
 console.log(result);
 ```
@@ -476,7 +476,7 @@ const SubFoo = () => {
 SubFoo.prototype = Object.create(Foo.prototype);
 
 // SubFooクラスにはgetValue()は無い。
-// 継承元まで辿り、Examlpeクラスからメソッドがコールされる (プロトタイプチェーン) 。
+// 継承元まで辿り、Examlpeクラスから関数がコールされる (プロトタイプチェーン) 。
 const result = SubFoo.getValue();
 console.log(result);
 ```
@@ -491,7 +491,7 @@ SubFoo.prototype = Object.create(Foo.prototype, {
   // 状態を定義
   subProperty: "テスト",
 
-  // メソッドを定義
+  // 関数を定義
   printSubValue: () => {
     return "これは" + this.subProperty + "です。";
   },
@@ -506,9 +506,9 @@ console.log(result);
 
 ## 02-03. `this`の参照先
 
-### メソッドとしてコールする場合
+### 関数としてコールする場合
 
-メソッド内の`this`は、fooオブジェクトを指す。
+関数内の`this`は、fooオブジェクトを指す。
 
 **＊実装例＊**
 
@@ -528,7 +528,7 @@ const foo = {
 ```
 
 ```javascript
-// メソッド内のthisは、fooオブジェクトを指す。
+// 関数内のthisは、fooオブジェクトを指す。
 foo.setValue(1);
 foo.getValue(); // 1
 ```

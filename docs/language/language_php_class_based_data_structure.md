@@ -92,9 +92,9 @@ PHPで使用することは個人的にはないデータ格納様式。
 
 詳しくは、JavaにおけるLinkedList型を参考にせよ。
 
-#### ▼ PHPの`list`メソッドとは何なのか
+#### ▼ PHPの`list`関数とは何なのか
 
-PHPの`list`メソッドは、List型とは意味合いが異なる。
+PHPの`list`関数は、List型とは意味合いが異なる。
 
 配列の個々の要素を変数に格納したい場合、List型を使用しなければ、冗長ではあるが、以下の様に実装する必要がある。
 
@@ -111,7 +111,7 @@ $u = $array[2];
 echo $a.$i.$u; // あいう
 ```
 
-しかし、以下の様に、`list`メソッドを使用することによって、複数の変数への格納を１行で実装できる。
+しかし、以下の様に、`list`関数を使用することによって、複数の変数への格納を１行で実装できる。
 
 **＊実装例＊**
 
@@ -137,7 +137,7 @@ echo $a.$i.$u; // あいう
 
 ![Queue3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Queue3.gif)
 
-PHPでは、`array_push`メソッドと`array_shift`メソッドを組み合わせることにより、実装できる。
+PHPでは、`array_push`関数と`array_shift`関数を組み合わせることにより、実装できる。
 
 **＊実装例＊**
 
@@ -186,7 +186,7 @@ echo $theFirst; // Blue
 
 ### Stack型
 
-PHPでは、`array_push`メソッドと`array_pop`メソッドで実装可能。
+PHPでは、`array_push`関数と`array_pop`関数で実装可能。
 
 ![Stack1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Stack1.gif)
 

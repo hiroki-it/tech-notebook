@@ -128,7 +128,7 @@ JavaScript、HTML、XHTML、CSS、DOM、XML、XSLTを組み合わせる。
 
 `(8)`
 
-: 非同期通信メソッドがバックエンドからレスポンスを受信する。
+: 非同期通信関数がバックエンドからレスポンスを受信する。
 
 `(9)`
 
@@ -156,7 +156,7 @@ JavaScriptのビルトインオブジェクトである。
 
 > - https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
 
-#### ▼ `fetch`メソッド
+#### ▼ `fetch`関数
 
 JavaScriptのビルトイン関数である。
 

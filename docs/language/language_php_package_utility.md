@@ -38,9 +38,9 @@ description: ユーティリティパッケージ＠PHPの知見を記録して�
 
 <br>
 
-### メソッド
+### 関数
 
-#### ▼ `instance`メソッド
+#### ▼ `instance`関数
 
 DateTimeインスタンスを引数として、Carbonインスタンスを作成する。
 
@@ -53,7 +53,7 @@ $carbon = Carbon::instance($datetime);
 echo $carbon; // 2019-07-07 19:07:07
 ```
 
-#### ▼ `create`メソッド
+#### ▼ `create`関数
 
 日時の文字列からCarbonインスタンスを作成する。
 
@@ -67,7 +67,7 @@ $carbon = Carbon::create(2019, 07, 07, 19, 07, 07);
 echo $carbon; // 2019-07-07 19:07:07
 ```
 
-#### ▼ `createFromXXX`メソッド
+#### ▼ `createFromXXX`関数
 
 指定の文字列から、Carbonインスタンスを作成する。
 
@@ -120,11 +120,11 @@ $carbonFromTimestamp = Carbon::createFromTimestamp(1562494027);
 echo $carbonFromTimestamp; // 2019-07-07 19:07:07
 ```
 
-#### ▼ `parse`メソッド
+#### ▼ `parse`関数
 
 日付、時間、日時フォーマットから、Carbonインスタンスを作成する。
 
-`createFromFormat`メソッドとは異なり、フォーマットを指定する必要がない。
+`createFromFormat`関数とは異なり、フォーマットを指定する必要がない。
 
 **＊実装例＊**
 
@@ -148,7 +148,7 @@ $carbon = Carbon::parse("2019-07-07 19:07:07")
 
 <br>
 
-### `Traversable::from`メソッド
+### `Traversable::from`関数
 
 SQLの`SELECT`や`WHERE`といった単語を使用して、`foreach`のように、配列データやオブジェクトデータの各要素に対して、処理を行える。
 
@@ -302,9 +302,9 @@ $body = json_decode($response->getBody(), true);
 
 <br>
 
-### メソッド
+### 関数
 
-#### ▼ `generateFromHtml`メソッド
+#### ▼ `generateFromHtml`関数
 
 ローカルディレクトリ配下に、`html`ファイルを基にしたPDFファイルを作成する。
 

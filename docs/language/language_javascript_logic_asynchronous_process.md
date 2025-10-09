@@ -129,7 +129,7 @@ const asyncFunc = () => {
 };
 
 console.log(asyncFunc());
-// 後続する処理も実行され、resolveメソッドの結果が返却される。
+// 後続する処理も実行され、resolve関数の結果が返却される。
 // test
 // Promise { 'SUCCESS' }
 ```
@@ -192,11 +192,11 @@ const asyncFunc = () => {
 asyncFunc()
   // 失敗時に返却されたrejectをハンドリング
   .catch((reject) => {
-    // rejectメソッドを実行
+    // reject関数を実行
     reject;
   })
   .then((resolve) => {
-    // resolveメソッドを実行
+    // resolve関数を実行
     resolve;
   });
 
@@ -264,7 +264,7 @@ const rejectFunc = new Promise((resolve, reject) => {
 
 rejectFunc.catch((err) => {
   // rejectFuncがPromiseを返し、reject!!がrejectされるため
-  // catchメソッドが実行されコンソールにreject!!が表示される
+  // catch関数が実行されコンソールにreject!!が表示される
   console.error(err); // reject!!
 });
 ```
@@ -292,7 +292,7 @@ const resolveFunc = new Promise((resolve, reject) => {
 
 resolveFunc.then((value) => {
   // resolveFuncがPromiseを返し、resolve!!がresolveされるため
-  // thenメソッドが実行されコンソールにresolve!!が表示される
+  // then関数が実行されコンソールにresolve!!が表示される
   console.log(value); // resolve!!
 });
 ```
@@ -370,7 +370,7 @@ console.log(asyncFunc()); // Promise { "SUCCESS" }
 
 非同期処理を順次処理に、処理の完了を待つようにする。
 
-Promiseオブジェクトの`then`関数に相当するが、`then`関数のようにメソッドチェーンする必要はなくなるため、可読性が高い。
+Promiseオブジェクトの`then`関数に相当するが、`then`関数のように関数チェーンする必要はなくなるため、可読性が高い。
 
 時間のかかる非同期処理でこれを宣言すると、予期せず処理が流れてしまうことを防げる。
 
@@ -379,7 +379,7 @@ Promiseオブジェクトの`then`関数に相当するが、`then`関数のよ�
 **＊実装例＊**
 
 ```javascript
-// Promiseオブジェクトのthenメソッドを使用した場合
+// Promiseオブジェクトのthen関数を使用した場合
 const asyncFunc = async () => {
   axios.get("https://example.com").then((response) => {
     console.log(response.data);
@@ -388,7 +388,7 @@ const asyncFunc = async () => {
 
 // awaitを使用した場合
 const asyncFunc = async () => {
-  // 非同期処理の結果がthenメソッドに渡される。
+  // 非同期処理の結果がthen関数に渡される。
   const response = await axios.get("https://example.com");
 
   console.log(response.data);
@@ -398,7 +398,7 @@ const asyncFunc = async () => {
 **＊実装例＊**
 
 ```javascript
-// Promiseオブジェクトのthenメソッドを使用した場合
+// Promiseオブジェクトのthen関数を使用した場合
 const asyncFunc = async () => {
   // コールバック関数地獄になっている。
   axios.get("https://example1.com").then((response) => {
@@ -553,7 +553,7 @@ JQueryパッケージの提供する独自のPromiseオブジェクトである�
 
 ### `done`関数、`fail`関数、`always`関数
 
-JQuery Promiseオブジェクトが持つメソッド。
+JQuery Promiseオブジェクトが持つ関数。
 
 `ajax`関数によってレスポンスを受信した後、その結果を`done`、`fail`、`always`の`3`個に分類し、これに応じたコールバック処理を実行する。
 
@@ -624,7 +624,7 @@ $.ajax({
 
 ### `then`関数
 
-JQuery Promiseオブジェクトが持つメソッド。
+JQuery Promiseオブジェクトが持つ関数。
 
 `ajax`関数によってレスポンスを受信した後、その結果を`then`関数の引数の順番で分類し、これに応じたコールバック処理を実行する。
 

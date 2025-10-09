@@ -1,8 +1,8 @@
 ---
-title: 【IT技術の知見】メソッド/データ＠JavaScript
+title: 【IT技術の知見】関数/データ＠JavaScript
 ---
 
-# メソッド/データ＠JavaScript
+# 関数/データ＠JavaScript
 
 ## はじめに
 
@@ -100,19 +100,19 @@ $.get();
 ```javascript
 const asyncFunc = (param, callback) => {
   setTimeout(() => {
-    // getDataメソッドは、数値を渡すとdataを取得してくれると仮定する
+    // getData関数は、数値を渡すとdataを取得してくれると仮定する
     const data = getData(param);
     const err = data.getError();
 
-    // 第二引数のコールバック関数は、getDataメソッドとgetErrorメソッドの後に実行される。
+    // 第二引数のコールバック関数は、getData関数とgetError関数の後に実行される。
     callback(err, data);
   }, 0);
 };
 
 const testParam = 1;
 
-// asyFuncメソッドの第一引数が、第二引数で設定したコールバック関数に渡される。
-// 渡されたコールバック関数は、getDataメソッドとgetErrorメソッドの後に実行されるため、errやdataを受け取れる
+// asyFunc関数の第一引数が、第二引数で設定したコールバック関数に渡される。
+// 渡されたコールバック関数は、getData関数とgetError関数の後に実行されるため、errやdataを受け取れる
 asyncFunc(testParam, (err, data) => {
   if (err) {
     throw err;
@@ -293,7 +293,7 @@ console.log(foo); // foo
 
 巻き上げは、`var`を使用して変数を宣言した時や、関数で発生し得る。
 
-確認のため`console.log`メソッドを実行した場合、`foo`を宣言していないため、『x is not defined 』エラーになりそうである。
+確認のため`console.log`関数を実行した場合、`foo`を宣言していないため、『x is not defined 』エラーになりそうである。
 
 しかし実際は、宣言が既に済んでおり、`foo`に値が代入されていないことを示す『undefined』となる。
 
@@ -410,7 +410,7 @@ console.log(baz); // 3
 
 順序を保ったまま配列を走査し、値を取得する。
 
-オブジェクトに対して`entires`メソッドを使用して、一度配列に変換すれば、オブジェクトでも`for  of`を使用できる。
+オブジェクトに対して`entires`関数を使用して、一度配列に変換すれば、オブジェクトでも`for  of`を使用できる。
 
 `for  in`を使用するより、こちらを使用した方が良い。
 
@@ -428,7 +428,7 @@ for (const value of array) {
 // baz
 ```
 
-配列の`entires`メソッドを使用すれば、インデックス番号を取得もできる。
+配列の`entires`関数を使用すれば、インデックス番号を取得もできる。
 
 ```javascript
 const array = ["foo", "bar", "baz"];
@@ -444,7 +444,7 @@ for (const [key, value] of array.entries()) {
 
 #### ▼ オブジェクトの場合
 
-オブジェクトに対して`entires`メソッドを実行し、一度連想配列に変換すれば、オブジェクトでも`for ... of`を使用できる。
+オブジェクトに対して`entires`関数を実行し、一度連想配列に変換すれば、オブジェクトでも`for ... of`を使用できる。
 
 ```javascript
 const object = {

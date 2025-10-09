@@ -126,13 +126,13 @@ $ php -r '<何らかの処理>'
 # Hello Worldを出力
 $ php -r 'echo "Hello World";'
 
-# phpinfoメソッドを実行
+# phpinfo関数を実行
 $ php -r 'phpinfo();'
 
-# phpinfoメソッドの実行結果から、特定の設定のみを取り出す。
+# phpinfo関数の実行結果から、特定の設定のみを取り出す。
 $ php -r 'phpinfo();' | grep php.ini
 
-# phpinfoメソッドの実行結果をテキストファイルに保管
+# phpinfo関数の実行結果をテキストファイルに保管
 $ php -r 'phpinfo();' > phpinfo.txt
 
 # 複数行のコードを実行する場合

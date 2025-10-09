@@ -53,7 +53,7 @@ $ npm run watch
 
 #### ▼ enum型のクラスの定義
 
-BenSampoのenum型のクラスを継承し、区分値と判定メソッドを実装する。
+BenSampoのenum型のクラスを継承し、区分値と判定関数を実装する。
 
 **＊実装例＊**
 
@@ -181,7 +181,7 @@ return [
 
 #### ▼ Facade
 
-PHPStromで、メソッドが定義された場所にジャンプできるように、`_ide_helper.php`ファイルを作成する。
+PHPStromで、関数が定義された場所にジャンプできるように、`_ide_helper.php`ファイルを作成する。
 
 > - https://github.com/barryvdh/laravel-ide-helper#automatic-phpdoc-generation-for-laravel-facades
 
@@ -201,7 +201,7 @@ $ php artisan ide-helper:models
 
 #### ▼ 予測表示
 
-PHPStromで、Laravelのメソッドを予測表示できるように、`phpstorm.meta.php`ファイルを作成する。
+PHPStromで、Laravelの関数を予測表示できるように、`phpstorm.meta.php`ファイルを作成する。
 
 > - https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 

@@ -87,7 +87,7 @@ RUN curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRAC
 
 #### ▼ インストールの動作確認
 
-パッケージが正しく読み込まれているか否かは、`php --ri=ddtrace`コマンドまたは`phpinfo`メソッドの結果から確認できる。
+パッケージが正しく読み込まれているか否かは、`php --ri=ddtrace`コマンドまたは`phpinfo`関数の結果から確認できる。
 
 ```bash
 # 成功の場合
@@ -185,7 +185,7 @@ datadogコンテナが分散トレースを受信している場合は、受信�
 
 TypeScriptやモジュールバンドルを採用している場合、パッケージの読み出し処理が巻き上げられ、意図しない読み出しの順番になってしまうことがある。
 
-対策として、`dd-trace`パッケージの`init`メソッドの実行を別ファイルに分割し、これをエントリーポイント (`nuxt.config.js`ファイル) の先頭で読み込むようにする。
+対策として、`dd-trace`パッケージの`init`関数の実行を別ファイルに分割し、これをエントリーポイント (`nuxt.config.js`ファイル) の先頭で読み込むようにする。
 
 また、フレームワークよりも先に読み込むことになるため、`.env`ファイル参照を使用できない。
 
@@ -222,7 +222,7 @@ import { Configuration } from '@nuxt/types'
 
 #### ▼ 起動ログの確認
 
-パッケージの起動ログは、`init`メソッドの`startupLogs`オプションを有効化すると確認できる。
+パッケージの起動ログは、`init`関数の`startupLogs`オプションを有効化すると確認できる。
 
 ```bash
 DATADOG TRACER CONFIGURATION -

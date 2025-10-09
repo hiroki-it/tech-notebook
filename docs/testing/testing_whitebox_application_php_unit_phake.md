@@ -23,7 +23,7 @@ description: Phake＠PHPユニットテストの知見を記録しています�
 
 ## 02. テストダブル
 
-### `mock`メソッド
+### `mock`関数
 
 クラスの名前空間を元に、モックまたはスタブとして使用する擬似オブジェクトを作成する。
 
@@ -41,15 +41,15 @@ $stub = Phake::mock(Foo::class);
 
 <br>
 
-### `when`メソッド
+### `when`関数
 
-モックまたはスタブのメソッドに対して、処理の内容を定義する。
+モックまたはスタブの関数に対して、処理の内容を定義する。
 
 また、特定の変数が渡された時に、特定の値を返却させられる。
 
 **＊実装例＊**
 
-スタブの`find`メソッドは、`1`が渡された時に、空配列を返却する。
+スタブの`find`関数は、`1`が渡された時に、空配列を返却する。
 
 ```php
 <?php
@@ -57,7 +57,7 @@ $stub = Phake::mock(Foo::class);
 // スタブとして使用する擬似オブジェクトを作成する。
 $stub = Phake::mock(Foo::class);
 
-// スタブのメソッドに処理内容を定義する。
+// スタブの関数に処理内容を定義する。
 \Phake::when($stub)
     ->find(1)
     ->thenReturn([]);
@@ -65,9 +65,9 @@ $stub = Phake::mock(Foo::class);
 
 <br>
 
-### `verify`メソッド
+### `verify`関数
 
-上層オブジェクトが下層オブジェクトをコールできることを確認するために、モックのメソッドが`n`回実行できたことを検証する。
+上層オブジェクトが下層オブジェクトをコールできることを確認するために、モックの関数が`n`回実行できたことを検証する。
 
 **＊実装例＊**
 
@@ -87,7 +87,7 @@ class FooTest extends TestCase
         $mockFooRepository = Phake::mock(FooRepository::class);
         $fooId = Phake::mock(FooId::class);
 
-        // モックのメソッドに処理内容を定義する。
+        // モックの関数に処理内容を定義する。
         \Phake::when($mockFooRepository)
             ->find($fooId)
             ->thenReturn(new User(1));
@@ -95,10 +95,10 @@ class FooTest extends TestCase
         // 上層クラスに対して、下層クラスのモックのインジェクションを実行する
         $foo = new Foo($mockFooRepository);
 
-        // 上層クラスの内部にある下層モックのfindメソッドをコールする
+        // 上層クラスの内部にある下層モックのfind関数をコールする
         $foo->getUser($fooId)
 
-        // 上層のクラスが、下層モックにパラメーターを渡し、メソッドを実行したことを検証する。
+        // 上層のクラスが、下層モックにパラメーターを渡し、関数を実行したことを検証する。
         Phake::verify($mockFooRepository, Phake::times(1))->find($fooId);
     }
 }

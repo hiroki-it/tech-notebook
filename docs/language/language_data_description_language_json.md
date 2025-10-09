@@ -269,7 +269,7 @@ console.log(object);
 // { fruit: [ 'banana', 'apple' ], account: 200 }
 ```
 
-#### ▼ 相互パースメソッドを持つクラス
+#### ▼ 相互パース関数を持つクラス
 
 **＊実装例＊**
 

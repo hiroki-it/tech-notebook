@@ -1533,7 +1533,7 @@ func main() {
 
 	// リクエストを作成する。
 	request, err := http.NewRequest(
-		"POST",                    // HTTP関数
+		"POST",                    // HTTPメソッド
 		"https://example.api.com", // URL
 		bytes.NewBuffer(byteJson), // メッセージボディ
 	)

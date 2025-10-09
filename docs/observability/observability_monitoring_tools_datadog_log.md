@@ -130,7 +130,7 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
 
 #### ▼ ブラウザログSDKとは
 
-ブラウザ上のJavaScriptで実行され、`console.error`メソッドの実行結果、キャッチされていない例外、ネットワークエラーを含む構造化ログをDatadogに送信する。
+ブラウザ上のJavaScriptで実行され、`console.error`関数の実行結果、キャッチされていない例外、ネットワークエラーを含む構造化ログをDatadogに送信する。
 
 > - https://docs.datadoghq.com/logs/log_collection/javascript
 

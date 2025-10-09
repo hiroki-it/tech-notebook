@@ -27,7 +27,7 @@ Data Mapperパターンで実装されている。
 
 ### SQLの定義
 
-#### ▼ `createQueryBuilder`メソッド
+#### ▼ `createQueryBuilder`関数
 
 CRUD処理に必要なSQLを保持し、トランザクションによってSQLを実行する。
 
@@ -46,9 +46,9 @@ $queryBuilder = $this->createQueryBuilder();
 
 ### 読み出し
 
-#### ▼ `select`メソッド
+#### ▼ `select`関数
 
-QueryBuilderクラスにおける`select`メソッドに、値を設定する。
+QueryBuilderクラスにおける`select`関数に、値を設定する。
 
 **＊実装例＊**
 
@@ -64,9 +64,9 @@ $queryBuilder
 
 ### 書き込み
 
-#### ▼ `insert`メソッド
+#### ▼ `insert`関数
 
-QueryBuilderクラスにおける`insert`メソッドに、値を設定する。
+QueryBuilderクラスにおける`insert`関数に、値を設定する。
 
 **＊実装例＊**
 
@@ -77,9 +77,9 @@ $queryBuilder
     ->insert("mst_users")
 ```
 
-#### ▼ `update`メソッド
+#### ▼ `update`関数
 
-QueryBuilderクラスにおける`update`メソッドに、値を設定する。
+QueryBuilderクラスにおける`update`関数に、値を設定する。
 
 **＊実装例＊**
 
@@ -90,9 +90,9 @@ $queryBuilder
     ->update("mst_users");
 ```
 
-#### ▼ `delete`メソッド
+#### ▼ `delete`関数
 
-QueryBuilderクラスにおける`delete`メソッドに、値を設定する。
+QueryBuilderクラスにおける`delete`関数に、値を設定する。
 
 **＊実装例＊**
 
@@ -107,11 +107,11 @@ $queryBuilder
 
 ### 実行
 
-#### ▼ `getConnection`メソッド、`executeQuery`メソッド、`fetchAll`メソッド
+#### ▼ `getConnection`関数、`executeQuery`関数、`fetchAll`関数
 
 DBへの接続し、SQLの実行する。
 
-DB接続に関わる`getConnection`メソッドを開始点として、返り値から繰り返しメソッドを取得し、`fetchAll`メソッドで、テーブルのクエリ名をキーとした連想配列が返される。
+DB接続に関わる`getConnection`関数を開始点として、返り値から繰り返し関数を取得し、`fetchAll`関数で、テーブルのクエリ名をキーとした連想配列が返される。
 
 **＊実装例＊**
 
@@ -147,7 +147,7 @@ use Doctrine\DBAL\Connection;
 
 class DogToyQuery
 {
-    // READ処理のSQLを定義するメソッド。
+    // READ処理のSQLを定義する関数。
     public function read(Value $toyType): Array
     {
         // QueryBuilderインスタンスを作成。
@@ -227,7 +227,7 @@ class Foo
 
 ![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コミットメント制御.jpg)
 
-RDBの処理用語に相当する`beginTransaction`メソッド、`commit`メソッド、`rollBack`メソッドを使用して、RDBを操作する。
+RDBの処理用語に相当する`beginTransaction`関数、`commit`関数、`rollBack`関数を使用して、RDBを操作する。
 
 **＊実装例＊**
 

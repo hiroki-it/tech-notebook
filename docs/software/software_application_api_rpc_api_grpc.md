@@ -214,17 +214,17 @@ service Chat {
 
 gRPCのリクエストでは、メタデータをヘッダーに格納する。
 
-| メタデータのキー名     | 説明                           |
-| ---------------------- | ------------------------------ |
-| `accept-encoding`      |                                |
-| `content-type`         |                                |
-| `grpc-accept-encoding` |                                |
-| `grpc-timeout `        | gRPCのタイムアウト時間を表す。 |
-| `method`               | リクエストのメソッドを表す。   |
-| `path`                 | リクエストのパスを表す。       |
-| `scheme`               |                                |
-| `user-agent`           |                                |
-| ...                    |                                |
+| メタデータのキー名     | 説明                             |
+| ---------------------- | -------------------------------- |
+| `accept-encoding`      |                                  |
+| `content-type`         |                                  |
+| `grpc-accept-encoding` |                                  |
+| `grpc-timeout `        | gRPCのタイムアウト時間を表す。   |
+| `method`               | リクエストのHTTPメソッドを表す。 |
+| `path`                 | リクエストのパスを表す。         |
+| `scheme`               |                                  |
+| `user-agent`           |                                  |
+| ...                    |                                  |
 
 > - https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#requests
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata

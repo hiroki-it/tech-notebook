@@ -29,7 +29,7 @@ description: AWS Lambda関数＠AWS Lambdaの知見を記録しています。
 
 AWS Lambdaはハンドラ関数を非同期関数としてコールし、引数のオブジェクト (event) に値をわたす。
 
-ハンドラ関数の初期名は`handler`メソッドであるが別名でも良い。
+ハンドラ関数の初期名は`handler`関数であるが別名でも良い。
 
 `return`または`throw`を使用して、AWS Lambdaのコール元にレスポンスを返信する。
 
@@ -80,11 +80,11 @@ exports.handler = async (event) => {
 
 AWS Lambdaはハンドラ関数を同期関数としてコールし、引数 (eventオブジェクト、contextオブジェクト、callback関数) に値をわたす。
 
-このオブジェクトにはメソッドとプロパティを持つ。
+このオブジェクトには関数とプロパティを持つ。
 
 ハンドラ関数の初期名は`handler`であるが別名でも良い。
 
-`callback`メソッドを使用して、AWS Lambdaのコール元にPromiseオブジェクトのレスポンスを返信する。
+`callback`関数を使用して、AWS Lambdaのコール元にPromiseオブジェクトのレスポンスを返信する。
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync
 
@@ -94,7 +94,7 @@ AWS Lambdaはハンドラ関数を同期関数としてコールし、引数 (ev
 
 JavaScriptの場合を示す。
 
-レスポンスを返信するには、`done`メソッド、`succeed`メソッド、`callback`メソッドが必要である。
+レスポンスを返信するには、`done`関数、`succeed`関数、`callback`関数が必要である。
 
 また、処理を終える場合は`return`で返却する必要がある。
 
@@ -139,12 +139,12 @@ exports.handler = (event, context, callback) => {
 | 引数                | 説明                                                                                                                       | 補足                                                                                                                                                                     |
 | ------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | eventオブジェクト   | HTTPリクエストに関するデータが代入されている。                                                                             | AWS Lambdaにリクエストを送信するAWSリソースごとに、オブジェクトの構造が異なる。構造は以下の通り。<br>・https://docs.aws.amazon.com/lambda/latest/dg/lambda-services.html |
-| contextオブジェクト | AWS Lambdaに関するデータ (名前、バージョンなど) を取得できるメソッドとプロパティが代入されている。                         | オブジェクトの構造は以下の通り<br>・https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html                                                                     |
+| contextオブジェクト | AWS Lambdaに関するデータ (名前、バージョンなど) を取得できる関数とプロパティが代入されている。                             | オブジェクトの構造は以下の通り<br>・https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html                                                                     |
 | callback関数        | 代入されている関数の実体は不明である。全ての処理が終了するまで実行が待機され、AWS Lambdaのコール元にレスポンスを返信する。 | ・https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html                                                                                                       |
 
 #### ▼ テストとデバッグ
 
-AWS Lambdaで関数を作成すると、AWS CloudWatch Logsのロググループに、『`/aws/lambda/<関数名>`』というグループが自動的に作成される。AWS Lambdaの関数内で発生したエラーや`console.log`メソッドのログはここに出力されるため、都度確認すること。
+AWS Lambdaで関数を作成すると、AWS CloudWatch Logsのロググループに、『`/aws/lambda/<関数名>`』というグループが自動的に作成される。AWS Lambdaの関数内で発生したエラーや`console.log`関数のログはここに出力されるため、都度確認すること。
 
 #### ▼ ベストプラクティス
 
@@ -164,7 +164,7 @@ Goを使用して、AWS Lambda-APIに対してリクエストを送信し、AWS�
 
 #### ▼ `Start`関数
 
-Lamda関数を実行するための関数。
+Lamdaのエントリーポイント関数を実行するための関数。
 
 `Start`関数に渡すパラメーターには、必ず1つでも`error`インターフェースの実装が含まれている必要がある。
 
@@ -398,9 +398,9 @@ AWS CloudWatch Logsにてこれを確認する。
 
 #### ▼ aws-sdk.jsの場合
 
-各AWSオブジェクトのメソッドの後に、`promise`メソッドをチェーンできる。
+各AWSオブジェクトの関数の後に、`promise`関数をチェーンできる。
 
-これにより、各メソッドの非同期処理の成否をPromiseオブジェクトで管理できるようになる。
+これにより、各関数の非同期処理の成否をPromiseオブジェクトで管理できるようになる。
 
 ```javascript
 "use strict";

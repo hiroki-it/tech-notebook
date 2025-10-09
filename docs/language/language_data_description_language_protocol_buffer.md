@@ -95,7 +95,7 @@ package foo;
 
 #### ▼ serviceとは
 
-メソッド (`rpc`) とそのグループ (`service`) を設定する。
+関数 (`rpc`) とそのグループ (`service`) を設定する。
 
 gRPCにおけるAPI仕様である。
 

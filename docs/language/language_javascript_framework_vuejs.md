@@ -41,7 +41,7 @@ description: Vue.js＠フレームワークの知見を記録しています。
 
 : Model (`store.js`または`foo.js`)
 
-     ビジネスロジックや、ajaxメソッドによるデータ送受信を記述する。
+     ビジネスロジックや、ajax関数によるデータ送受信を記述する。
 
 #### ▼ Vueを使用したMVVMアーキテクチャ、双方向データバインディング
 
@@ -150,7 +150,7 @@ var vm = new Vue({
   // dataオプション
   // Vueインスタンスのデータを保持する
   // 異なる場所にある同じコンポーネントは異なるVueインスタンスからなる。
-  // 異なるVueインスタンスは異なる値を持つ必要があるため、メソッドとして定義。
+  // 異なるVueインスタンスは異なる値を持つ必要があるため、関数として定義。
   data: function () {
     return {
       isLoading: "false",
@@ -163,7 +163,7 @@ var vm = new Vue({
   },
 
   // methodオプション
-  // Vueインスタンスのアクセサメソッドや状態変化メソッド
+  // Vueインスタンスのアクセサ関数や状態変化関数
   // イベントハンドラ関数、dataオプションのセッターを定義
   method: {
     // イベントハンドラ関数
@@ -181,12 +181,12 @@ var vm = new Vue({
       // ここでのthisはdataオプションを指す。
       this.isLoading = true;
       this.staffData = [];
-      // ajaxメソッドをラッピングしたメソッドをコール
+      // ajax関数をラッピングした関数をコール
       return (
         Staff.find(query)
 
           // done()
-          // ajaxメソッドによって返却されたJSONが引数になる。
+          // ajax関数によって返却されたJSONが引数になる。
           .done((data) => {
             // サーバーサイドからのJSONをデシリアライズ。
             // dataオプションに設定
@@ -248,7 +248,7 @@ var vm = new Vue({
   // 親コンポーネント以降では、Vueインスタンスを作成しないようにする。
   module.exports = {
     // propsオプション
-    // 親コンポーネントまたはajaxメソッドからpropsオブジェクトのプロパティに値が格納される。
+    // 親コンポーネントまたはajax関数からpropsオブジェクトのプロパティに値が格納される。
     props: {
       criteria: {
         type: Object,
@@ -263,7 +263,7 @@ var vm = new Vue({
 
     // dataオプション
     // 異なる場所にある同じコンポーネントは異なるVueインスタンスからなる。
-    // 異なるVueインスタンスは異なる値を持つ必要があるため、メソッドとして定義する。
+    // 異なるVueインスタンスは異なる値を持つ必要があるため、関数として定義する。
     data: function () {
       return {
         a: "a",
@@ -283,7 +283,7 @@ var vm = new Vue({
         this.$emit("change", {criteria: localCriteria});
       },
 
-      // ajaxメソッドから受信したデータを使用して、propsを更新
+      // ajax関数から受信したデータを使用して、propsを更新
       updateProps(key, value) {},
 
       // 『HTMLでのコンポーネントのタグ名： JSでのコンポーネントのオブジェクト名』
@@ -339,12 +339,12 @@ class Foo {
 
 ![Vueにおけるemitとv-onの連携](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Vueにおけるemitとv-onの連携.png)
 
-View (`template`タグ部分) のイベントを、ViewModel (`script`タグ部分) のイベントハンドラ関数 (`methods:`内にあるメソッド) やインラインJSステートメントにバインディングし、イベントが発火した時点でイベントハンドラ関数をコールする。
+View (`template`タグ部分) のイベントを、ViewModel (`script`タグ部分) のイベントハンドラ関数 (`methods:`内にある関数) やインラインJSステートメントにバインディングし、イベントが発火した時点でイベントハンドラ関数をコールする。
 
 コンポーネントの`script`タグ部分 (ViewModel) の親子間データ渡しである『Props Down, Events Up』とは異なる概念なので注意する。
 
 ```html
-v-on:{イベント名}="{イベントハンドラ関数 (methods: 内にあるメソッド) }"
+v-on:{イベント名}="{イベントハンドラ関数 (methods: 内にある関数) }"
 ```
 
 または、省略して、
@@ -774,7 +774,7 @@ beforeMountフックの動作を検証する。
 
 **＊実装例＊**
 
-WindowオブジェクトやDocumentオブジェクトのメソッドによる要素の取得など
+WindowオブジェクトやDocumentオブジェクトの関数による要素の取得など
 
 **＊検証例＊**
 

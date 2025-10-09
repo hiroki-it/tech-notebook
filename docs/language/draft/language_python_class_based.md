@@ -37,7 +37,7 @@ class Bar(Foo):
 
 <br>
 
-### 継承元のメソッドを参照
+### 継承元の関数を参照
 
 ```python
 class Foo:
@@ -53,7 +53,7 @@ from src.models.model import Foo
 class Bar(Foo):
 
     def bar(self):
-        #  継承元のメソッドを参照する。
+        #  継承元の関数を参照する。
         foo = super().foo()
         return foo
 ```
@@ -66,7 +66,7 @@ class Bar(Foo):
 
 #### ▼ コンストラクタインジェクション
 
-依存先のUserNameクラスを、`__init__`メソッドの引数として、Userクラスに注入する。
+依存先のUserNameクラスを、`__init__`関数の引数として、Userクラスに注入する。
 
 ```python
 class User:

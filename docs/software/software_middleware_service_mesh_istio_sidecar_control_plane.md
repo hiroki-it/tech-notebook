@@ -397,7 +397,7 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 > - https://github.com/istio/istio/blob/1.14.3/pilot/pkg/xds/ads.go#L307-L348
 > - https://github.com/istio/istio/blob/1.14.3/pilot/pkg/xds/ads.go#L190-L233
 
-実装が移行途中のため、xds-proxyにも、Envoyからのリモートプロシージャーコールを処理する同名のメソッドがある。
+実装が移行途中のため、xds-proxyにも、Envoyからのリモートプロシージャーコールを処理する同名の関数がある。
 
 > - https://github.com/istio/istio/blob/1.14.3/pkg/istio-agent/xds_proxy.go#L299-L306
 

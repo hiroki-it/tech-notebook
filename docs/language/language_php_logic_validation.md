@@ -31,7 +31,7 @@ DBからの値を直接的に表示する場合と異なり、新しく作られ
 
 <br>
 
-### 検証パターンと検証メソッドの対応
+### 検証パターンと検証関数の対応
 
 ✅：`TRUE`になる。
 
@@ -165,7 +165,7 @@ class Example
         if (!empty($this->routeEntity->options)) {
             foreach ($this->routeEntity->options as $option) {
 
-                // if文を通過した場合、メソッドの返却値が格納される。
+                // if文を通過した場合、関数の返却値が格納される。
                 // 通過しない場合、定数が格納される。
                 if ($option->isOptionItemA()) {
                     $result["optionItemA"] = $option->optionItemA();
@@ -219,7 +219,7 @@ class Example
         if (!empty($this->routeEntity->options)) {
             foreach ($this->routeEntity->options as $option) {
 
-                // if文を通過した場合、メソッドの返却値が格納される。
+                // if文を通過した場合、関数の返却値が格納される。
                 // 通過しない場合、定数が格納される。
                 $result["optionItemA"] = ($option->isOptionItemA())
                   ? $option->optionItemA()
@@ -272,7 +272,7 @@ class Example
         if(!empty($this->routeEntity->options)) {
             foreach ($this->routeEntity->options as $option) {
 
-                // if文を通過した場合、メソッドの返却値によって初期値0が上書きされる。
+                // if文を通過した場合、関数の返却値によって初期値0が上書きされる。
                 // 通過しない場合、初期値0が使用される。
                 if ($option->isOptionItemA()) {
                     $result["optionItemA"] = $option->optionItemA();
@@ -406,7 +406,7 @@ function leapYear(int $year): string
 
 if文の代わりに、`switch-case-break`によって、実装に、『◯◯の場合に切り換える』という意味合いを持たせられる。
 
-ここでは、メソッドに実装することを想定して、`break`ではなく`return`を使用している。
+ここでは、関数に実装することを想定して、`break`ではなく`return`を使用している。
 
 **＊実装例＊**
 

@@ -46,7 +46,7 @@ hide:
 - #### <u>ロジック</u>
 
   > - ##### [データ](https://hiroki-it.github.io/tech-notebook/language/language_go_logic_data.html)
-  > - ##### [メソッド](https://hiroki-it.github.io/tech-notebook/language/language_go_logic_method.html)
+  > - ##### [関数](https://hiroki-it.github.io/tech-notebook/language/language_go_logic_function.html)
   > - ##### [︎検証ロジック](https://hiroki-it.github.io/tech-notebook/language/language_go_logic_validation.html)
 
 - #### <u>フレームワーク</u>
@@ -72,7 +72,7 @@ hide:
 - #### <u>プロトタイプベース</u>
 
   > - ##### [︎プロトタイプ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_prototype_based.html)
-  > - ##### [︎メソッド/データ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_prototype_based_method_data.html)
+  > - ##### [︎関数/データ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_prototype_based_function_data.html)
 
 - #### <u>ロジック</u>
 
@@ -117,7 +117,7 @@ hide:
 - #### <u>クラスベース</u>
 
   > - ##### [︎クラス](https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html)
-  > - ##### [︎メソッド/データ](https://hiroki-it.github.io/tech-notebook/language/language_php_class_based_method_data.html)
+  > - ##### [︎関数/データ](https://hiroki-it.github.io/tech-notebook/language/language_php_class_based_function_data.html)
   > - ##### [︎データ構造](https://hiroki-it.github.io/tech-notebook/language/language_php_class_based_data_structure.html)
 
 - #### <u>ロジック</u>

@@ -141,9 +141,9 @@ export const deleteUser = (id: UserId): boolean => {
 
 ## 03. エンティティで実装するべきロジックの見つけ方
 
-### CRUD系メソッドの対象
+### CRUD系関数の対象
 
-CRUD系メソッド（`create`、`find`、`update`、`delete`）の対象となるオブジェクトはエンティティの可能性がある。
+CRUD系関数（`create`、`find`、`update`、`delete`）の対象となるオブジェクトはエンティティの可能性がある。
 
 <br>
 

@@ -58,7 +58,7 @@ def get_db():
 
 ### モデルの定義
 
-基底モデルのインスタンスを`declarative_base`メソッドで作成し、この変数を各モデルで継承する。
+基底モデルのインスタンスを`declarative_base`関数で作成し、この変数を各モデルで継承する。
 
 **＊実装例＊**
 
@@ -122,7 +122,7 @@ class FooController():
 
 > - https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-data
 
-Dependsメソッドについて
+Depends関数について
 
 > - https://zenn.dev/sh0nk/books/537bb028709ab9/viewer/b92ab0#di
 

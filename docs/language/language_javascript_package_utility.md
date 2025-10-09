@@ -30,7 +30,7 @@ HTTPリクエストを送信する。
 非同期処理としてGETリクエストを送信する。
 
 ```javascript
-// axiosオブジェクトのメソッドはPromiseオブジェクトを返却する。
+// axiosオブジェクトの関数はPromiseオブジェクトを返却する。
 const asyncFunc = async () => {
   axios.get("https://example.com").then((response) => {
     console.log(response.data);

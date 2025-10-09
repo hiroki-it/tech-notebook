@@ -196,8 +196,8 @@ fs.readFile("/foo.txt", "utf8", function(err, data) {
 });
 
 
-// readFileメソッドの結果を使用する
-// readFileメソッドの完了を待たずに実行されてしまう。
+// readFile関数の結果を使用する
+// readFile関数の完了を待たずに実行されてしまう。
 console.log(input);
 ```
 
