@@ -181,7 +181,7 @@ nav:
           - ■ 信頼性:
               - 回復方法: software/software_application_architecture_microservices_services_resiliency_recovery.md
           - ■ 開発体制:
-              - 開発組織の編成: software/software_application_architecture_microservices_development_repository.md
+              - 開発組織の編成: software//software_application_architecture_microservices_development_organization.md
               - リポジトリの編成: software/software_application_architecture_microservices_development_repository.md
       - ■ 通信方式:
           - リクエスト−レスポンス方式: software/software_application_communication_style_request_response.md
@@ -396,7 +396,7 @@ nav:
               - ■ SQLパッケージ:
                   - Prisma: language/language_javascript_package_sql_prisma.md
           - ■ ブラウザ:
-              - レンダリング: language/language_javascript_browser_rendering.md
+              - レンダリング: language/language_javascript_logic_browser_rendering.md
       - ■ PHP:
           - PHP: language/language_php.md
           - 設定: language/language_php_conf.md
@@ -927,6 +927,7 @@ nav:
               - プロジェクトマネジメント: software_development_methodology/software_development_product_management_project_management.md
               - タスク管理: software_development_methodology/software_development_product_management_project_management_task_management.md
               - 見積もり: software_development_methodology/software_development_product_management_project_management_estimate.md
+              - 合意形成: software_development_methodology//software_development_product_management_project_management_negotiation.md
       - ■ バージョン管理:
           - ■ Git:
               - コマンド: software_development_methodology/software_development_git_command.md
