@@ -80,6 +80,7 @@ hide:
   > - ##### [︎非同期処理ロジック](https://hiroki-it.github.io/tech-notebook/language/language_javascript_logic_asynchronous_process.html)
   > - ##### [︎デバッグ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_logic_debug.html)
   > - ##### [認証](https://hiroki-it.github.io/tech-notebook/language/language_javascript_logic_authentication.html)
+  > - ##### [レンダリング](https://hiroki-it.github.io/tech-notebook/language/  > - ##### [認証](https://hiroki-it.github.io/tech-notebook/language/language_javascript_logic_browser_rendering.html)
 
 - #### <u>フレームワーク</u>
 

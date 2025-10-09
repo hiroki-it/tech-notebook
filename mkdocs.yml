@@ -380,6 +380,7 @@ nav:
               - 非同期処理ロジック: language/language_javascript_logic_asynchronous_process.md
               - デバッグ: language/language_javascript_logic_debug.md
               - 認証: language/language_javascript_logic_authentication.md
+              - レンダリング: language/language_javascript_logic_browser_rendering.md
           - ■ フレームワーク:
               - Nuxt.js: language/language_javascript_framework_nuxtjs.md
               - ■ Vue.js:
@@ -396,7 +397,7 @@ nav:
               - ■ SQLパッケージ:
                   - Prisma: language/language_javascript_package_sql_prisma.md
           - ■ ブラウザ:
-              - レンダリング: language/language_javascript_logic_browser_rendering.md
+              - レンダリング: language/language_javascript_browser_rendering.md
       - ■ PHP:
           - PHP: language/language_php.md
           - 設定: language/language_php_conf.md
