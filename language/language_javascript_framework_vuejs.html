@@ -8330,12 +8330,12 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_logic_method.html" class="md-nav__link">
+      <a href="language_go_logic_function.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    メソッド
+    関数
     
   </span>
   
@@ -8748,12 +8748,12 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_prototype_based_method_data.html" class="md-nav__link">
+      <a href="language_javascript_prototype_based_function_data.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    メソッド/データ
+    関数/データ
     
   </span>
   
@@ -10274,12 +10274,12 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_class_based_method_data.html" class="md-nav__link">
+      <a href="language_php_class_based_function_data.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    メソッド/データ
+    関数/データ
     
   </span>
   
@@ -28163,7 +28163,7 @@
 <dt><code>(3)</code></dt>
 <dd>
 <p>Model (<code>store.js</code>または<code>foo.js</code>)</p>
-<p>ビジネスロジックや、ajaxメソッドによるデータ送受信を記述する。</p>
+<p>ビジネスロジックや、ajax関数によるデータ送受信を記述する。</p>
 </dd>
 </dl>
 <h4 id="vuemvvm">▼ Vueを使用したMVVMアーキテクチャ、双方向データバインディング<a class="headerlink" href="#vuemvvm" title="Permanent link">&para;</a></h4>
@@ -28251,7 +28251,7 @@
 <span class="w">  </span><span class="c1">// dataオプション</span>
 <span class="w">  </span><span class="c1">// Vueインスタンスのデータを保持する</span>
 <span class="w">  </span><span class="c1">// 異なる場所にある同じコンポーネントは異なるVueインスタンスからなる。</span>
-<span class="w">  </span><span class="c1">// 異なるVueインスタンスは異なる値を持つ必要があるため、メソッドとして定義。</span>
+<span class="w">  </span><span class="c1">// 異なるVueインスタンスは異なる値を持つ必要があるため、関数として定義。</span>
 <span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">isLoading</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
@@ -28264,7 +28264,7 @@
 <span class="w">  </span><span class="p">},</span>
 
 <span class="w">  </span><span class="c1">// methodオプション</span>
-<span class="w">  </span><span class="c1">// Vueインスタンスのアクセサメソッドや状態変化メソッド</span>
+<span class="w">  </span><span class="c1">// Vueインスタンスのアクセサ関数や状態変化関数</span>
 <span class="w">  </span><span class="c1">// イベントハンドラ関数、dataオプションのセッターを定義</span>
 <span class="w">  </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// イベントハンドラ関数</span>
@@ -28282,12 +28282,12 @@
 <span class="w">      </span><span class="c1">// ここでのthisはdataオプションを指す。</span>
 <span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">isLoading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 <span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">staffData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
-<span class="w">      </span><span class="c1">// ajaxメソッドをラッピングしたメソッドをコール</span>
+<span class="w">      </span><span class="c1">// ajax関数をラッピングした関数をコール</span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
 <span class="w">        </span><span class="nx">Staff</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span>
 
 <span class="w">          </span><span class="c1">// done()</span>
-<span class="w">          </span><span class="c1">// ajaxメソッドによって返却されたJSONが引数になる。</span>
+<span class="w">          </span><span class="c1">// ajax関数によって返却されたJSONが引数になる。</span>
 <span class="w">          </span><span class="p">.</span><span class="nx">done</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="c1">// サーバーサイドからのJSONをデシリアライズ。</span>
 <span class="w">            </span><span class="c1">// dataオプションに設定</span>
@@ -28343,7 +28343,7 @@
 <span class="w">  </span><span class="c1">// 親コンポーネント以降では、Vueインスタンスを作成しないようにする。</span>
 <span class="w">  </span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// propsオプション</span>
-<span class="w">    </span><span class="c1">// 親コンポーネントまたはajaxメソッドからpropsオブジェクトのプロパティに値が格納される。</span>
+<span class="w">    </span><span class="c1">// 親コンポーネントまたはajax関数からpropsオブジェクトのプロパティに値が格納される。</span>
 <span class="w">    </span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">criteria</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">Object</span><span class="p">,</span>
@@ -28358,7 +28358,7 @@
 
 <span class="w">    </span><span class="c1">// dataオプション</span>
 <span class="w">    </span><span class="c1">// 異なる場所にある同じコンポーネントは異なるVueインスタンスからなる。</span>
-<span class="w">    </span><span class="c1">// 異なるVueインスタンスは異なる値を持つ必要があるため、メソッドとして定義する。</span>
+<span class="w">    </span><span class="c1">// 異なるVueインスタンスは異なる値を持つ必要があるため、関数として定義する。</span>
 <span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="p">,</span>
@@ -28378,7 +28378,7 @@
 <span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">criteria</span><span class="o">:</span><span class="w"> </span><span class="nx">localCriteria</span><span class="p">});</span>
 <span class="w">      </span><span class="p">},</span>
 
-<span class="w">      </span><span class="c1">// ajaxメソッドから受信したデータを使用して、propsを更新</span>
+<span class="w">      </span><span class="c1">// ajax関数から受信したデータを使用して、propsを更新</span>
 <span class="w">      </span><span class="nx">updateProps</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{},</span>
 
 <span class="w">      </span><span class="c1">// 『HTMLでのコンポーネントのタグ名： JSでのコンポーネントのオブジェクト名』</span>
@@ -28421,9 +28421,9 @@
 <h3 id="_3">イベントハンドリング<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="v-on">▼ <code>v-on:</code>とは<a class="headerlink" href="#v-on" title="Permanent link">&para;</a></h4>
 <p><img alt="Vueにおけるemitとv-onの連携" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Vueにおけるemitとv-onの連携.png" /></p>
-<p>View (<code>template</code>タグ部分) のイベントを、ViewModel (<code>script</code>タグ部分) のイベントハンドラ関数 (<code>methods:</code>内にあるメソッド) やインラインJSステートメントにバインディングし、イベントが発火した時点でイベントハンドラ関数をコールする。</p>
+<p>View (<code>template</code>タグ部分) のイベントを、ViewModel (<code>script</code>タグ部分) のイベントハンドラ関数 (<code>methods:</code>内にある関数) やインラインJSステートメントにバインディングし、イベントが発火した時点でイベントハンドラ関数をコールする。</p>
 <p>コンポーネントの<code>script</code>タグ部分 (ViewModel) の親子間データ渡しである『Props Down, Events Up』とは異なる概念なので注意する。</p>
-<div class="highlight"><pre><span></span><code>v-on:{イベント名}=&quot;{イベントハンドラ関数 (methods: 内にあるメソッド) }&quot;
+<div class="highlight"><pre><span></span><code>v-on:{イベント名}=&quot;{イベントハンドラ関数 (methods: 内にある関数) }&quot;
 </code></pre></div>
 <p>または、省略して、</p>
 <div class="highlight"><pre><span></span><code>@:{イベント名}=&quot;<span class="p">&lt;</span><span class="nt">イベントハンドラ関数</span><span class="p">&gt;</span>&quot;
@@ -28793,7 +28793,7 @@ undefined
 <p>データが更新される時の再レンダリング前に実行される。</p>
 <p>再レンダリング前に要素を操作する処理を実装する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>WindowオブジェクトやDocumentオブジェクトのメソッドによる要素の取得など</p>
+<p>WindowオブジェクトやDocumentオブジェクトの関数による要素の取得など</p>
 <p><strong>＊検証例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>{{ name }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -28881,7 +28881,7 @@ undefined
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年9月24日 18:29:22 JST">2025-09-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月9日 15:38:43 JST">2025-10-09</span>
   </span>
 
     

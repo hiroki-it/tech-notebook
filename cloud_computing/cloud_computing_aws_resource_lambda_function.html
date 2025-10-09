@@ -8327,12 +8327,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_go_logic_method.html" class="md-nav__link">
+      <a href="../language/language_go_logic_function.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    メソッド
+    関数
     
   </span>
   
@@ -8745,12 +8745,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_javascript_prototype_based_method_data.html" class="md-nav__link">
+      <a href="../language/language_javascript_prototype_based_function_data.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    メソッド/データ
+    関数/データ
     
   </span>
   
@@ -9738,12 +9738,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_php_class_based_method_data.html" class="md-nav__link">
+      <a href="../language/language_php_class_based_function_data.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    メソッド/データ
+    関数/データ
     
   </span>
   
@@ -28067,7 +28067,7 @@
 <h3 id="aws-lambda">AWS Lambdaハンドラ関数<a class="headerlink" href="#aws-lambda" title="Permanent link">&para;</a></h3>
 <h4 id="async-handlers">▼ 非同期ハンドラ関数 (Async handlers)<a class="headerlink" href="#async-handlers" title="Permanent link">&para;</a></h4>
 <p>AWS Lambdaはハンドラ関数を非同期関数としてコールし、引数のオブジェクト (event) に値をわたす。</p>
-<p>ハンドラ関数の初期名は<code>handler</code>メソッドであるが別名でも良い。</p>
+<p>ハンドラ関数の初期名は<code>handler</code>関数であるが別名でも良い。</p>
 <p><code>return</code>または<code>throw</code>を使用して、AWS Lambdaのコール元にレスポンスを返信する。</p>
 <p>レスポンスとして、Promiseオブジェクトを送信もできる。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -28108,9 +28108,9 @@
 </blockquote>
 <h4 id="non-async-handlers">▼ 同期ハンドラ関数 (Non-async handlers)<a class="headerlink" href="#non-async-handlers" title="Permanent link">&para;</a></h4>
 <p>AWS Lambdaはハンドラ関数を同期関数としてコールし、引数 (eventオブジェクト、contextオブジェクト、callback関数) に値をわたす。</p>
-<p>このオブジェクトにはメソッドとプロパティを持つ。</p>
+<p>このオブジェクトには関数とプロパティを持つ。</p>
 <p>ハンドラ関数の初期名は<code>handler</code>であるが別名でも良い。</p>
-<p><code>callback</code>メソッドを使用して、AWS Lambdaのコール元にPromiseオブジェクトのレスポンスを返信する。</p>
+<p><code>callback</code>関数を使用して、AWS Lambdaのコール元にPromiseオブジェクトのレスポンスを返信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync">https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync</a></li>
@@ -28119,7 +28119,7 @@
 <p>(※『Non』が翻訳をおかしくしているため、英語版を推奨)</p>
 <p><strong>＊実装例＊</strong></p>
 <p>JavaScriptの場合を示す。</p>
-<p>レスポンスを返信するには、<code>done</code>メソッド、<code>succeed</code>メソッド、<code>callback</code>メソッドが必要である。</p>
+<p>レスポンスを返信するには、<code>done</code>関数、<code>succeed</code>関数、<code>callback</code>関数が必要である。</p>
 <p>また、処理を終える場合は<code>return</code>で返却する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">callback</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// なんらかの処理</span>
@@ -28168,7 +28168,7 @@
 </tr>
 <tr>
 <td>contextオブジェクト</td>
-<td>AWS Lambdaに関するデータ (名前、バージョンなど) を取得できるメソッドとプロパティが代入されている。</td>
+<td>AWS Lambdaに関するデータ (名前、バージョンなど) を取得できる関数とプロパティが代入されている。</td>
 <td>オブジェクトの構造は以下の通り<br>・<a href="https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html">https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html</a></td>
 </tr>
 <tr>
@@ -28179,7 +28179,7 @@
 </tbody>
 </table>
 <h4 id="_4">▼ テストとデバッグ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>AWS Lambdaで関数を作成すると、AWS CloudWatch Logsのロググループに、『<code>/aws/lambda/&lt;関数名&gt;</code>』というグループが自動的に作成される。AWS Lambdaの関数内で発生したエラーや<code>console.log</code>メソッドのログはここに出力されるため、都度確認すること。</p>
+<p>AWS Lambdaで関数を作成すると、AWS CloudWatch Logsのロググループに、『<code>/aws/lambda/&lt;関数名&gt;</code>』というグループが自動的に作成される。AWS Lambdaの関数内で発生したエラーや<code>console.log</code>関数のログはここに出力されるため、都度確認すること。</p>
 <h4 id="_5">▼ ベストプラクティス<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <blockquote>
 <ul>
@@ -28197,7 +28197,7 @@
 </ul>
 </blockquote>
 <h4 id="start">▼ <code>Start</code>関数<a class="headerlink" href="#start" title="Permanent link">&para;</a></h4>
-<p>Lamda関数を実行するための関数。</p>
+<p>Lamdaのエントリーポイント関数を実行するための関数。</p>
 <p><code>Start</code>関数に渡すパラメーターには、必ず1つでも<code>error</code>インターフェースの実装が含まれている必要がある。</p>
 <p>もし含まれていない場合は、AWS Lambdaで内部エラーが起こる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -28447,8 +28447,8 @@
 <h3 id="_15">非同期処理の成否の管理<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="javascript">▼ JavaScriptの標準パッケージの場合<a class="headerlink" href="#javascript" title="Permanent link">&para;</a></h4>
 <h4 id="aws-sdkjs">▼ aws-sdk.jsの場合<a class="headerlink" href="#aws-sdkjs" title="Permanent link">&para;</a></h4>
-<p>各AWSオブジェクトのメソッドの後に、<code>promise</code>メソッドをチェーンできる。</p>
-<p>これにより、各メソッドの非同期処理の成否をPromiseオブジェクトで管理できるようになる。</p>
+<p>各AWSオブジェクトの関数の後に、<code>promise</code>関数をチェーンできる。</p>
+<p>これにより、各関数の非同期処理の成否をPromiseオブジェクトで管理できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
 
 <span class="k">import</span><span class="w"> </span><span class="nx">aws</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;aws-sdk&quot;</span><span class="p">;</span>
@@ -28971,7 +28971,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 19:49:44 JST">2025-05-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月9日 15:38:43 JST">2025-10-09</span>
   </span>
 
     

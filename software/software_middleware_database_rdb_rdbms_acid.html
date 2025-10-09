@@ -9025,12 +9025,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_go_logic_method.html" class="md-nav__link">
+      <a href="../language/language_go_logic_function.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    メソッド
+    関数
     
   </span>
   
@@ -9443,12 +9443,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_javascript_prototype_based_method_data.html" class="md-nav__link">
+      <a href="../language/language_javascript_prototype_based_function_data.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    メソッド/データ
+    関数/データ
     
   </span>
   
@@ -10436,12 +10436,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_php_class_based_method_data.html" class="md-nav__link">
+      <a href="../language/language_php_class_based_function_data.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    メソッド/データ
+    関数/データ
     
   </span>
   
@@ -28500,7 +28500,7 @@
 <thead>
 <tr>
 <th style="text-align: left;">RDBの書き込み系の操作</th>
-<th style="text-align: left;">よくあるメソッド名 (例：PDO)</th>
+<th style="text-align: left;">よくある関数名 (例：PDO)</th>
 <th>ラッピング</th>
 <th>障害からの回復</th>
 </tr>
@@ -28520,8 +28520,8 @@
 </tr>
 <tr>
 <td style="text-align: left;">トランザクション開始</td>
-<td style="text-align: left;"><code>beginTransaction</code>メソッド</td>
-<td><code>execute</code>メソッド開始</td>
+<td style="text-align: left;"><code>beginTransaction</code>関数</td>
+<td><code>execute</code>関数開始</td>
 <td></td>
 </tr>
 <tr>
@@ -28532,9 +28532,9 @@
 </tr>
 <tr>
 <td style="text-align: left;">・C/U/Dの実行<br>・トランザクション終了</td>
-<td style="text-align: left;">・<code>insert</code>メソッド<br>・<code>update</code>メソッド<br>・<code>delete</code>メソッド</td>
-<td><code>flush</code>メソッド</td>
-<td>⬆️ ロールバック：<code>rollBack</code>メソッド</td>
+<td style="text-align: left;">・<code>insert</code>関数<br>・<code>update</code>関数<br>・<code>delete</code>関数</td>
+<td><code>flush</code>関数</td>
+<td>⬆️ ロールバック：<code>rollBack</code>関数</td>
 </tr>
 <tr>
 <td style="text-align: left;">⬇️</td>
@@ -28544,7 +28544,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">コミットの実行。更新後ログをジャーナルファイルに書き込む。</td>
-<td style="text-align: left;"><code>commit</code>メソッド開始</td>
+<td style="text-align: left;"><code>commit</code>関数開始</td>
 <td>⬇️</td>
 <td></td>
 </tr>
@@ -28568,8 +28568,8 @@
 </tr>
 <tr>
 <td style="text-align: left;">チェックポイントによる更新後ログのDB反映</td>
-<td style="text-align: left;"><code>commit</code>メソッド終了</td>
-<td><code>execute</code>メソッド終了</td>
+<td style="text-align: left;"><code>commit</code>関数終了</td>
+<td><code>execute</code>関数終了</td>
 <td></td>
 </tr>
 </tbody>
@@ -28590,7 +28590,7 @@
 </ul>
 </blockquote>
 <h4 id="pdordb">▼ PDOによるRDBの書き込み系の操作<a class="headerlink" href="#pdordb" title="Permanent link">&para;</a></h4>
-<p>PDOでは書き込み処理に<code>exec</code>メソッド、読み出し処理に<code>query</code>メソッドを使用する。</p>
+<p>PDOでは書き込み処理に<code>exec</code>関数、読み出し処理に<code>query</code>関数を使用する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="k">try</span><span class="p">{</span>
@@ -29035,7 +29035,7 @@ $<span class="w"> </span>barman<span class="w"> </span>list-backup<span class="w
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月7日 19:01:54 JST">2025-10-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月9日 15:38:43 JST">2025-10-09</span>
   </span>
 
     

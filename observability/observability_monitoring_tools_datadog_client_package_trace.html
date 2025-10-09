@@ -8327,12 +8327,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_go_logic_method.html" class="md-nav__link">
+      <a href="../language/language_go_logic_function.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    メソッド
+    関数
     
   </span>
   
@@ -8745,12 +8745,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_javascript_prototype_based_method_data.html" class="md-nav__link">
+      <a href="../language/language_javascript_prototype_based_function_data.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    メソッド/データ
+    関数/データ
     
   </span>
   
@@ -9738,12 +9738,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_php_class_based_method_data.html" class="md-nav__link">
+      <a href="../language/language_php_class_based_function_data.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    メソッド/データ
+    関数/データ
     
   </span>
   
@@ -27701,7 +27701,7 @@ $<span class="w"> </span>rm<span class="w"> </span>datadog-php-tracer.deb
 </ul>
 </blockquote>
 <h4 id="_6">▼ インストールの動作確認<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>パッケージが正しく読み込まれているか否かは、<code>php --ri=ddtrace</code>コマンドまたは<code>phpinfo</code>メソッドの結果から確認できる。</p>
+<p>パッケージが正しく読み込まれているか否かは、<code>php --ri=ddtrace</code>コマンドまたは<code>phpinfo</code>関数の結果から確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 成功の場合</span>
 $<span class="w"> </span>php<span class="w"> </span>--ri<span class="o">=</span>ddtrace
 
@@ -27783,7 +27783,7 @@ DATADOG<span class="w"> </span>TRACER<span class="w"> </span><span class="nv">CO
 <h3 id="_9">セットアップ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ インストール<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>TypeScriptやモジュールバンドルを採用している場合、パッケージの読み出し処理が巻き上げられ、意図しない読み出しの順番になってしまうことがある。</p>
-<p>対策として、<code>dd-trace</code>パッケージの<code>init</code>メソッドの実行を別ファイルに分割し、これをエントリーポイント (<code>nuxt.config.js</code>ファイル) の先頭で読み込むようにする。</p>
+<p>対策として、<code>dd-trace</code>パッケージの<code>init</code>関数の実行を別ファイルに分割し、これをエントリーポイント (<code>nuxt.config.js</code>ファイル) の先頭で読み込むようにする。</p>
 <p>また、フレームワークよりも先に読み込むことになるため、<code>.env</code>ファイル参照を使用できない。</p>
 <p>そこで、環境変数はインフラ側で設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// datadogTracer.tsファイル</span>
@@ -27815,7 +27815,7 @@ DATADOG<span class="w"> </span>TRACER<span class="w"> </span><span class="nv">CO
 </ul>
 </blockquote>
 <h4 id="_11">▼ 起動ログの確認<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>パッケージの起動ログは、<code>init</code>メソッドの<code>startupLogs</code>オプションを有効化すると確認できる。</p>
+<p>パッケージの起動ログは、<code>init</code>関数の<code>startupLogs</code>オプションを有効化すると確認できる。</p>
 <div class="highlight"><pre><span></span><code>DATADOG<span class="w"> </span>TRACER<span class="w"> </span>CONFIGURATION<span class="w"> </span>-
 <span class="o">{</span>
 <span class="w">    </span><span class="s2">&quot;date&quot;</span>:<span class="w"> </span><span class="s2">&quot;2022-01-02T00:00:00.541Z&quot;</span>,
@@ -28098,7 +28098,7 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月24日 01:09:35 JST">2025-03-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月9日 15:38:43 JST">2025-10-09</span>
   </span>
 
     

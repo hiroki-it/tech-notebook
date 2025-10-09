@@ -16,7 +16,7 @@
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/language_javascript_prototype_based_method_data.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/language_javascript_prototype_based_function_data.html">
       
       
         <link rel="prev" href="language_javascript_prototype_based.html">
@@ -30,7 +30,7 @@
     
     
       
-        <title>【IT技術の知見】メソッド/データ＠JavaScript - 俺の技術ノート</title>
+        <title>【IT技術の知見】関数/データ＠JavaScript - 俺の技術ノート</title>
       
     
     
@@ -154,7 +154,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】メソッド/データ＠JavaScript
+              【IT技術の知見】関数/データ＠JavaScript
             
           </span>
         </div>
@@ -8330,12 +8330,12 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_logic_method.html" class="md-nav__link">
+      <a href="language_go_logic_function.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    メソッド
+    関数
     
   </span>
   
@@ -8762,7 +8762,7 @@
   
   
   <span class="md-ellipsis">
-    メソッド/データ
+    関数/データ
     
   </span>
   
@@ -8770,12 +8770,12 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="language_javascript_prototype_based_method_data.html" class="md-nav__link md-nav__link--active">
+      <a href="language_javascript_prototype_based_function_data.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    メソッド/データ
+    関数/データ
     
   </span>
   
@@ -10250,12 +10250,12 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_class_based_method_data.html" class="md-nav__link">
+      <a href="language_php_class_based_function_data.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    メソッド/データ
+    関数/データ
     
   </span>
   
@@ -28082,7 +28082,7 @@
   
 
 
-<h1 id="javascript">メソッド/データ＠JavaScript<a class="headerlink" href="#javascript" title="Permanent link">&para;</a></h1>
+<h1 id="javascript">関数/データ＠JavaScript<a class="headerlink" href="#javascript" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -28146,19 +28146,19 @@
 <h4 id="_7">▼ コールバック関数<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">param</span><span class="p">,</span><span class="w"> </span><span class="nx">callback</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// getDataメソッドは、数値を渡すとdataを取得してくれると仮定する</span>
+<span class="w">    </span><span class="c1">// getData関数は、数値を渡すとdataを取得してくれると仮定する</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getData</span><span class="p">(</span><span class="nx">param</span><span class="p">);</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">getError</span><span class="p">();</span>
 
-<span class="w">    </span><span class="c1">// 第二引数のコールバック関数は、getDataメソッドとgetErrorメソッドの後に実行される。</span>
+<span class="w">    </span><span class="c1">// 第二引数のコールバック関数は、getData関数とgetError関数の後に実行される。</span>
 <span class="w">    </span><span class="nx">callback</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
 <span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
 <span class="p">};</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">testParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
 
-<span class="c1">// asyFuncメソッドの第一引数が、第二引数で設定したコールバック関数に渡される。</span>
-<span class="c1">// 渡されたコールバック関数は、getDataメソッドとgetErrorメソッドの後に実行されるため、errやdataを受け取れる</span>
+<span class="c1">// asyFunc関数の第一引数が、第二引数で設定したコールバック関数に渡される。</span>
+<span class="c1">// 渡されたコールバック関数は、getData関数とgetError関数の後に実行されるため、errやdataを受け取れる</span>
 <span class="nx">asyncFunc</span><span class="p">(</span><span class="nx">testParam</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="nx">err</span><span class="p">;</span>
@@ -28318,7 +28318,7 @@
 <h3 id="_11">変数の巻き上げ (ホイスト)<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ 巻き上げとは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>巻き上げは、<code>var</code>を使用して変数を宣言した時や、関数で発生し得る。</p>
-<p>確認のため<code>console.log</code>メソッドを実行した場合、<code>foo</code>を宣言していないため、『x is not defined 』エラーになりそうである。</p>
+<p>確認のため<code>console.log</code>関数を実行した場合、<code>foo</code>を宣言していないため、『x is not defined 』エラーになりそうである。</p>
 <p>しかし実際は、宣言が既に済んでおり、<code>foo</code>に値が代入されていないことを示す『undefined』となる。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span><span class="w"> </span><span class="c1">// undefined</span>
 
@@ -28400,7 +28400,7 @@
 <h3 id="for-of"><code>for  of</code><a class="headerlink" href="#for-of" title="Permanent link">&para;</a></h3>
 <h4 id="for-of_1">▼ <code>for  of</code>とは<a class="headerlink" href="#for-of_1" title="Permanent link">&para;</a></h4>
 <p>順序を保ったまま配列を走査し、値を取得する。</p>
-<p>オブジェクトに対して<code>entires</code>メソッドを使用して、一度配列に変換すれば、オブジェクトでも<code>for  of</code>を使用できる。</p>
+<p>オブジェクトに対して<code>entires</code>関数を使用して、一度配列に変換すれば、オブジェクトでも<code>for  of</code>を使用できる。</p>
 <p><code>for  in</code>を使用するより、こちらを使用した方が良い。</p>
 <h4 id="_16">▼ 配列の場合<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">];</span>
@@ -28413,7 +28413,7 @@
 <span class="c1">// bar</span>
 <span class="c1">// baz</span>
 </code></pre></div>
-<p>配列の<code>entires</code>メソッドを使用すれば、インデックス番号を取得もできる。</p>
+<p>配列の<code>entires</code>関数を使用すれば、インデックス番号を取得もできる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">];</span>
 
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">]</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">array</span><span class="p">.</span><span class="nx">entries</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
@@ -28425,7 +28425,7 @@
 <span class="c1">// 2</span>
 </code></pre></div>
 <h4 id="_17">▼ オブジェクトの場合<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>オブジェクトに対して<code>entires</code>メソッドを実行し、一度連想配列に変換すれば、オブジェクトでも<code>for ... of</code>を使用できる。</p>
+<p>オブジェクトに対して<code>entires</code>関数を実行し、一度連想配列に変換すれば、オブジェクトでも<code>for ... of</code>を使用できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span>
@@ -28560,7 +28560,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年9月3日 18:08:44 JST">2025-09-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月9日 15:38:43 JST">2025-10-09</span>
   </span>
 
     

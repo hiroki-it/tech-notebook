@@ -8327,12 +8327,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_go_logic_method.html" class="md-nav__link">
+      <a href="../language/language_go_logic_function.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    メソッド
+    関数
     
   </span>
   
@@ -8745,12 +8745,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_javascript_prototype_based_method_data.html" class="md-nav__link">
+      <a href="../language/language_javascript_prototype_based_function_data.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    メソッド/データ
+    関数/データ
     
   </span>
   
@@ -9738,12 +9738,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_php_class_based_method_data.html" class="md-nav__link">
+      <a href="../language/language_php_class_based_function_data.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    メソッド/データ
+    関数/データ
     
   </span>
   
@@ -28318,7 +28318,7 @@
 <h2 id="03">03. ユニットテスト (単体テスト)<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_11">ユニットテストとは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>『単体テスト』ともいう。</p>
-<p>クラスや構造体のメソッドが、それ単体で正しく動作するかを検証する。</p>
+<p>クラスや構造体の関数が、それ単体で正しく動作するかを検証する。</p>
 <p>言語によって、ビルトインのコマンド (例：<code>go test</code>コマンド) で実現できる場合や、外部テストツールが必要な場合がある。</p>
 <p>検証対象以外の処理はスタブとして定義する。理想としては、アーキテクチャの層ごとにユニットテストを実施する必要がある。</p>
 <p>この時、データアクセスに関わる層のユニットテストのために、本来のDBとは別に、あらかじめテスト用DBを用意した方が良い。</p>
@@ -28335,7 +28335,7 @@
 <p>例えば、Goでは構造体をテストスイートとし、ユニットテストを定義する。</p>
 <p><img alt="test-plan_test-suite_test-case" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/test-plan_test-suite_test-case.jpg" /></p>
 <h4 id="_14">▼ テストケース名<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>Roy Osherove氏の命名規則に従って、『テスト対象のメソッド名』『入力値』『期待される返却値』の三要素でテスト関数を命名する。</p>
+<p>Roy Osherove氏の命名規則に従って、『テスト対象の関数名』『入力値』『期待される返却値』の三要素でテスト関数を命名する。</p>
 <p>期待される返却値の命名で『正常系テスト』か『異常系テスト』かと識別する。</p>
 <p>例えば、正常系であれば『<code>testFoo_Xxx_ReturnXxx</code>』、また異常系であれば『<code>testFoo_Xxx_ExceptionThrown</code>』や『<code>testFoo_Xxx_ErrorThrown</code>』とする。</p>
 <p>Roy Osherove氏の命名規則については、以下のリンクを参考にせよ。</p>
@@ -28345,7 +28345,7 @@
 </ul>
 </blockquote>
 <h4 id="_15">▼ アサーションの比較値<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>ユニットテストのアサーションメソッドで、期待値と実際値を比較する場合、期待値を定数として管理した方が良い。</p>
+<p>ユニットテストのアサーション関数で、期待値と実際値を比較する場合、期待値を定数として管理した方が良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html">https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html</a></li>
@@ -28374,19 +28374,19 @@
 <thead>
 <tr>
 <th>ツールの種類</th>
-<th>モックのメソッドの返却値</th>
+<th>モックの関数の返却値</th>
 <th>補足</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>PHPUnit</td>
-<td>メソッドは、<code>null</code>を返却する。</td>
-<td>注意点として、<code>final</code>、<code>private</code>なメソッドはモック化されず、実体をそのまま引き継ぐ。また、<code>static</code>なメソッドは<code>BadMethodCallException</code>をスローするモックに置き換わる。</td>
+<td>関数は、<code>null</code>を返却する。</td>
+<td>注意点として、<code>final</code>、<code>private</code>な関数はモック化されず、実体をそのまま引き継ぐ。また、<code>static</code>な関数は<code>BadMethodCallException</code>をスローするモックに置き換わる。</td>
 </tr>
 <tr>
 <td>JUnit</td>
-<td>メソッドは、元のオブジェクトのメソッドの返却値の型を基に、初期値を返却する<br>(例：boolean型なら<code>false</code>)</td>
+<td>関数は、元のオブジェクトの関数の返却値の型を基に、初期値を返却する<br>(例：boolean型なら<code>false</code>)</td>
 <td></td>
 </tr>
 </tbody>
@@ -28397,11 +28397,11 @@
 </ul>
 </blockquote>
 <h4 id="_19">▼ スタブ<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<p>クラスのメソッドの処理を検証したい時に、クラスが依存している下層クラスは、実体があるかのように見せかける。</p>
+<p>クラスの関数の処理を検証したい時に、クラスが依存している下層クラスは、実体があるかのように見せかける。</p>
 <p>この時、見せかけの下層クラスとして使用する擬似オブジェクトを『スタブ』という。</p>
 <p>モックと用途が異なるが、モックもスタブも擬似オブジェクトである。</p>
 <p>モックと同様にスタブでも、クラスの振る舞いと状態が全てダミー実装に置き換わる。</p>
-<p>スタブには、正しい処理を実行するように引数と返却値を持つメソッドを定義し、その他の実体のある処理が正しく実行されるかを検証する。</p>
+<p>スタブには、正しい処理を実行するように引数と返却値を持つ関数を定義し、その他の実体のある処理が正しく実行されるかを検証する。</p>
 <p>これらにより、検証対象の処理のみが実体であっても、一連の処理を実行できる。</p>
 <p>注意点として、用語の定義はテストフレームワークごとにやや異なることに注意する。</p>
 <p>PHPUnitにおけるスタブについては、以下のリンクを参考にせよ。</p>
@@ -28728,7 +28728,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://httpbin.local/get
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月9日 14:58:47 JST">2025-10-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月9日 15:38:43 JST">2025-10-09</span>
   </span>
 
     

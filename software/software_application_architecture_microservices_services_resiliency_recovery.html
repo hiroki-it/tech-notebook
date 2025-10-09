@@ -8803,12 +8803,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_go_logic_method.html" class="md-nav__link">
+      <a href="../language/language_go_logic_function.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    メソッド
+    関数
     
   </span>
   
@@ -9221,12 +9221,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_javascript_prototype_based_method_data.html" class="md-nav__link">
+      <a href="../language/language_javascript_prototype_based_function_data.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    メソッド/データ
+    関数/データ
     
   </span>
   
@@ -10214,12 +10214,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_php_class_based_method_data.html" class="md-nav__link">
+      <a href="../language/language_php_class_based_function_data.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    メソッド/データ
+    関数/データ
     
   </span>
   
@@ -28226,18 +28226,18 @@
 <h3 id="_18">エラーハンドリングの意義<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <h4 id="db">▼ DBにとって<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
 <p>DB更新系の処理の途中にエラーが発生すると、DBが中途半端な更新状態になってしまう。</p>
-<p>そのため、メソッドコールしたクラスでエラーを検出し、これをきっかけにロールバック処理を実行する必要がある。</p>
-<p>注意点として、下層クラスのエラーの内容自体は握りつぶさずに、スタックトレースとしてメソッドコールしたクラスでロギングしておく。</p>
+<p>そのため、関数コールしたクラスでエラーを検出し、これをきっかけにロールバック処理を実行する必要がある。</p>
+<p>注意点として、下層クラスのエラーの内容自体は握りつぶさずに、スタックトレースとして関数コールしたクラスでロギングしておく。</p>
 <h4 id="_19">▼ ソフトウェア開発者にとって<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>エラーが画面上に返却されたとしても、これはソフトウェア開発者にとってわかりにくい。</p>
-<p>そのため、エラーをメソッドコールしたクラスで検出し、ソフトウェア開発者にわかる言葉に変換した例外としてスローする必要がある。</p>
-<p>注意点として、下層クラスのエラー自体は握りつぶさずに、スタックトレースとしてメソッドコールしたクラスでロギングしておく。</p>
+<p>そのため、エラーを関数コールしたクラスで検出し、ソフトウェア開発者にわかる言葉に変換した例外としてスローする必要がある。</p>
+<p>注意点として、下層クラスのエラー自体は握りつぶさずに、スタックトレースとして関数コールしたクラスでロギングしておく。</p>
 <h4 id="_20">▼ ユーザーにとって<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>エラーが画面上に返却されたとしても、ユーザーにとっては何が起きているのかわからない。</p>
-<p>また、エラーをメソッドコールしたクラスで検出し、例外としてスローしたとしても、ソフトウェア開発者にとっては理解できるが、ユーザーにとっては理解できない。</p>
-<p>そのため、例外スローを別の識別子 (例：boolean値) に変えてメソッドコールしたクラスに持ち上げ、最終的には、これをポップアップなどでわかりやすく通知する必要がある。</p>
+<p>また、エラーを関数コールしたクラスで検出し、例外としてスローしたとしても、ソフトウェア開発者にとっては理解できるが、ユーザーにとっては理解できない。</p>
+<p>そのため、例外スローを別の識別子 (例：boolean値) に変えて関数コールしたクラスに持ち上げ、最終的には、これをポップアップなどでわかりやすく通知する必要がある。</p>
 <p>これらは、サーバーサイドのtry-catch-finally文や、フロントエンドのポップアップ処理で実現する。</p>
-<p>注意点として、子クラスのエラー自体は握りつぶさずに、スタックトレースとしてメソッドコールしたクラスでロギングしておく。</p>
+<p>注意点として、子クラスのエラー自体は握りつぶさずに、スタックトレースとして関数コールしたクラスでロギングしておく。</p>
 <p><br></p>
 <h3 id="_21">エラーハンドリングのステップ<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <p>エラーハンドリングは以下の４ステップからなる。</p>
@@ -28298,7 +28298,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月7日 20:24:44 JST">2025-10-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月9日 15:38:43 JST">2025-10-09</span>
   </span>
 
     
