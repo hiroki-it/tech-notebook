@@ -362,7 +362,7 @@ nav:
           - コマンド: language/language_go_command.md
           - ■ ロジック:
               - データ: language/language_go_logic_data.md
-              - メソッド: language/language_go_logic_method.md
+              - 関数: language/language_go_logic_function.md
               - 検証ロジック: language/language_go_logic_validation.md
           - ■ フレームワーク:
               - Gin: language/language_go_framework_gin.md
@@ -374,7 +374,7 @@ nav:
       - ■ JavaScript:
           - ■ プロトタイプベース:
               - プロトタイプ: language/language_javascript_prototype_based.md
-              - メソッド/データ: language/language_javascript_prototype_based_method_data.md
+              - 関数/データ: language/language_javascript_prototype_based_function_data.md
           - ■ ロジック:
               - 検証ロジック: language/language_javascript_logic_validation.md
               - 非同期処理ロジック: language/language_javascript_logic_asynchronous_process.md
@@ -403,7 +403,7 @@ nav:
           - コマンド: language/language_php_command.md
           - ■ クラスベース:
               - クラス: language/language_php_class_based.md
-              - メソッド/データ: language/language_php_class_based_method_data.md
+              - 関数/データ: language/language_php_class_based_function_data.md
               - データ構造: language/language_php_class_based_data_structure.md
           - ■ ロジック:
               - 検証ロジック: language/language_php_logic_validation.md
