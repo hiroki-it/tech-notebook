@@ -27611,16 +27611,15 @@
     <span class="c1"># 例：keycloak、googleなど</span>
     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;&lt;IDプロバイダー名&gt;&quot;</span><span class="p">,</span>
     <span class="n">client_id</span><span class="o">=</span><span class="s2">&quot;foo-client&quot;</span><span class="p">,</span>
+    <span class="c1"># IDプロバイダーで発行されたシークレットを確認する</span>
     <span class="n">client_secret</span><span class="o">=</span><span class="s2">&quot;*****&quot;</span><span class="p">,</span>
     <span class="n">client_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;openid profile email&quot;</span><span class="p">},</span>
     <span class="c1"># 外部から接続できるKeycloakのドメインを設定する。Kubernetes Serviceのドメインではダメ。</span>
-    <span class="n">api_base_url</span><span class="o">=</span><span class="s2">&quot;http://&lt;KeycloakのAPIのドメイン (Serviceの完全修飾ドメイン名) &gt;/&quot;</span><span class="p">,</span>
-    <span class="c1"># 外部から接続できるKeycloakのドメインを設定する。Kubernetes Serviceのドメインではダメ。</span>
-    <span class="n">authorize_url</span><span class="o">=</span><span class="s2">&quot;http://&lt;KeycloakのWebのドメイン&gt;/realms/&lt;realm名&gt;&gt;/protocol/openid-connect/auth&quot;</span><span class="p">,</span>
+    <span class="n">authorize_url</span><span class="o">=</span><span class="s2">&quot;https://keycloak.example.com/realms/&lt;realm名&gt;&gt;/protocol/openid-connect/auth&quot;</span><span class="p">,</span>
     <span class="c1"># Serviceの完全修飾ドメイン名</span>
-    <span class="n">access_token_url</span><span class="o">=</span><span class="s2">&quot;http://&lt;KeycloakのAPIのドメイン&gt;:8080/realms/dev/protocol/openid-connect/token&quot;</span><span class="p">,</span>
+    <span class="n">access_token_url</span><span class="o">=</span><span class="s2">&quot;http://keycloak-http.keycloak.svc.cluster.local:8080/realms/dev/protocol/openid-connect/token&quot;</span><span class="p">,</span>
     <span class="c1"># Serviceの完全修飾ドメイン名</span>
-    <span class="n">jwks_uri</span><span class="o">=</span><span class="s2">&quot;http://&lt;KeycloakのAPIのドメイン (Serviceの完全修飾ドメイン名) &gt;:8080/realms/dev/protocol/openid-connect/certs&quot;</span>
+    <span class="n">jwks_uri</span><span class="o">=</span><span class="s2">&quot;http://keycloak-http.keycloak.svc.cluster.local:8080/realms/dev/protocol/openid-connect/certs&quot;</span>
 <span class="p">)</span>
 </code></pre></div>
 <p>IDプロバイダー名を指定し、ここで設定した変数を取得できる。</p>
@@ -27810,7 +27809,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月30日 15:18:50 JST">2025-05-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月10日 17:10:53 JST">2025-10-10</span>
   </span>
 
     
