@@ -40,16 +40,15 @@ oauth.register(
     # 例：keycloak、googleなど
     name="<IDプロバイダー名>",
     client_id="foo-client",
+    # IDプロバイダーで発行されたシークレットを確認する
     client_secret="*****",
     client_kwargs={"scope": "openid profile email"},
     # 外部から接続できるKeycloakのドメインを設定する。Kubernetes Serviceのドメインではダメ。
-    api_base_url="http://<KeycloakのAPIのドメイン (Serviceの完全修飾ドメイン名) >/",
-    # 外部から接続できるKeycloakのドメインを設定する。Kubernetes Serviceのドメインではダメ。
-    authorize_url="http://<KeycloakのWebのドメイン>/realms/<realm名>>/protocol/openid-connect/auth",
+    authorize_url="https://keycloak.example.com/realms/<realm名>>/protocol/openid-connect/auth",
     # Serviceの完全修飾ドメイン名
-    access_token_url="http://<KeycloakのAPIのドメイン>:8080/realms/dev/protocol/openid-connect/token",
+    access_token_url="http://keycloak-http.keycloak.svc.cluster.local:8080/realms/dev/protocol/openid-connect/token",
     # Serviceの完全修飾ドメイン名
-    jwks_uri="http://<KeycloakのAPIのドメイン (Serviceの完全修飾ドメイン名) >:8080/realms/dev/protocol/openid-connect/certs"
+    jwks_uri="http://keycloak-http.keycloak.svc.cluster.local:8080/realms/dev/protocol/openid-connect/certs"
 )
 ```
 

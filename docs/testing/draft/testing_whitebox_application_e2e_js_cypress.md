@@ -52,16 +52,16 @@ setupNodeEvents: (on, config) => {
 
 <br>
 
-### fixtures/seed.json
+### fixtures/foo/data.json
 
-テストに使用する初期データを設定する。
+テストに使用する初期データ（例；DB値、リクエストパラメーターなど）を設定する。
 
 `fixtures/expected/foo.json`ファイル（期待値データ）の値と同じになる可能性がある。
 
 ```yaml
 # 初期データ
 {
-  "user":
+  "users":
     {
       "user1":
         {
@@ -86,11 +86,11 @@ setupNodeEvents: (on, config) => {
 
 テストに使用する期待値データを設定する。
 
-`fixtures/seed.json`ファイル（初期データ）の値と同じになる可能性がある。
+`fixtures/foo/data.json`ファイル（初期データ）の値と同じになる可能性がある。
 
 ```yaml
 {
-  "user":
+  "users":
     {
       "user1":
         {
@@ -115,8 +115,8 @@ setupNodeEvents: (on, config) => {
 
 ```typescript
 Cypress.Commands.add("login", () => {
-  // fixture/seed.jsonファイルを使用する
-  cy.fixture("seed").then((seed) => {
+  // fixture/users/data.jsonファイルを使用する
+  cy.fixture("users/data").then((seed) => {
     cy.visit("/");
     // 待機することで、Cypressがハイドレーション前に画面をロードし、エラーが発生することを避ける
     cy.wait(1000);
@@ -150,11 +150,14 @@ Cypress.Commands.add("login", () => {
 
 <br>
 
-## 02. シナリオ
+## 02. テストスイート
+
+テストスイートはテストケース (テスト関数) に分類できる。
 
 ```typescript
 // テストスイート
 describe("ユーザーの一覧を表示するテスト", () => {
+  // 各テストケースに共通する処理をテスト
   beforeEach(() => {
     // 基本的な初期データをデータベースに投入する
     cy.exec("yarn ts-node --require tsconfig-paths/register prisma/seed.ts");
@@ -179,8 +182,9 @@ describe("ユーザーの一覧を表示するテスト", () => {
 
   // テストケース
   it("ユーザーの一覧を表示できる", () => {
+    // テストケース固有のテストデータ
     // fixture/expected/users.jsonファイルを使用する
-    cy.fixture("users").then((expected) => {
+    cy.fixture("users/data").then((expected) => {
       // URLの実際値を取得し、期待値と一致するかを検証する
       cy.url().should("eq", Cypress.config().baseUrl + "/users");
 
@@ -197,9 +201,11 @@ describe("ユーザーの一覧を表示するテスト", () => {
 
   // テストケース
   it("ページネーションを実行できる", () => {
+    // 汎用的なテストデータ
     cy.fixture("dbSeed").then((expected) => {
+      // テストケース固有のテストデータ
       // fixture/expected/users.jsonファイルを使用する
-      cy.fixture("users").then((expected) => {
+      cy.fixture("users/data").then((expected) => {
         const {user2} = expected.user;
         cy.wait(1000);
 

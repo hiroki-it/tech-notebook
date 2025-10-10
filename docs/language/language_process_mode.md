@@ -191,10 +191,9 @@ Node.js上で実行するためのJavaScriptのビルトイン関数 (特にI/O�
 ```javascript
 const input;
 
-fs.readFile("/foo.txt", "utf8", function(err, data) {
+fs.readFile("/foo.txt", "utf8", function (err, data) {
   input = data;
 });
-
 
 // readFile関数の結果を使用する
 // readFile関数の完了を待たずに実行されてしまう。

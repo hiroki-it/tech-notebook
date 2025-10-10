@@ -162,7 +162,7 @@ export default foo;
 const b;
 
 // 変数bの出力
-console.log(b);  // undefied
+console.log(b); // undefied
 ```
 
 #### ▼ null

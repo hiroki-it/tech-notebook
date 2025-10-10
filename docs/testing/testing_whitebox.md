@@ -121,7 +121,7 @@ description: ホワイトボックステストの知見を記録しています�
 
 ユニットテストはテストスイート (テストの組) から構成され、テストスイートはテストケース (テスト関数) に分類できる。
 
-例えば、Goでは構造体をテストスイートとし、ユニットテストを定義する。
+例えば、Goでは構造体をテストスイートとして扱う。
 
 ![test-plan_test-suite_test-case](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/test-plan_test-suite_test-case.jpg)
 

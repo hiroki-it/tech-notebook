@@ -625,7 +625,7 @@ import (
 )
 
 /**
- * ユニットテストのテストスイートを構成する。
+ * ユニットテストを含むテストスイートを構成する。
  */
 type FooSuite struct {
 	suite.Suite
@@ -642,7 +642,7 @@ func (suite *FooSuite) BeforeTest(suiteName string, testName string) {
 }
 
 /**
- * ユニットテストのテストスイートを実行する。
+ * ユニットテストを含むテストスイートを実行する。
  */
 func TestFooSuite(t *testing.T) {
 	suite.Run(t, &FooSuite{})
