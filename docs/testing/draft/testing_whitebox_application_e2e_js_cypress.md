@@ -168,7 +168,7 @@ describe("ユーザーの一覧を表示するテスト", () => {
       'yarn ts-node --require tsconfig-paths/register "cypress/seed/users.ts"',
     );
 
-    // エラーハンドリングを実施する
+    // エラーハンドリングをイベントリスナーとして登録する
     cy.on("uncaught:exception", (error) => {
       console.log(`${error.message}`);
       return false;

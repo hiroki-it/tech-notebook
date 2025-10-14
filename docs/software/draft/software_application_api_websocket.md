@@ -49,14 +49,14 @@ import WebSocket from "ws";
 // WebSocketクライアントのインスタンスを作成
 const ws = new WebSocket("ws://localhost:8080");
 
-// WebSocket接続が開いた時の処理
+// WebSocket接続が開いた時の処理をイベントリスナーとして登録する
 ws.on("open", () => {
   console.log("WebSocket connection opened");
   // サーバーにメッセージを送信する例
   ws.send("Hello from the client!");
 });
 
-// サーバーからメッセージを受信した時の処理
+// サーバーからメッセージを受信した時の処理をイベントリスナーとして登録する
 ws.on("message", (message) => {
   if (typeof message === "string") {
     console.log(`Received message: ${message}`);
@@ -65,12 +65,12 @@ ws.on("message", (message) => {
   }
 });
 
-// WebSocket接続が閉じた時の処理
+// WebSocket接続が閉じた時の処理をイベントリスナーとして登録する
 ws.on("close", () => {
   console.log("WebSocket connection closed");
 });
 
-// エラーが発生した時の処理
+// エラーが発生した時の処理をイベントリスナーとして登録する
 ws.on("error", (error) => {
   console.error(`WebSocket error: ${error}`);
 });
@@ -251,7 +251,7 @@ const connectOptions: mqtt.IClientOptions = {
 // MQTTクライアントの作成
 const client = mqtt.connect("ws://localhost:8083/mqtt", connectOptions);
 
-// 接続成功時の処理
+// 接続成功時の処理をイベントリスナーとして登録する
 client.on("connect", () => {
   console.log("Connected to EMQX via WebSocket");
 
@@ -277,22 +277,22 @@ client.on("connect", () => {
   });
 });
 
-// メッセージ受信時の処理
+// メッセージ受信時の処理をイベントリスナーとして登録する
 client.on("message", (topic, message) => {
   console.log(`Received message on topic "${topic}": ${message.toString()}`);
 });
 
-// 切断時の処理
+// 切断時の処理をイベントリスナーとして登録する
 client.on("disconnect", () => {
   console.log("Disconnected from EMQX");
 });
 
-// 再接続時の処理
+// 再接続時の処理をイベントリスナーとして登録する
 client.on("reconnect", () => {
   console.log("Attempting to reconnect to EMQX...");
 });
 
-// エラー発生時の処理
+// エラー発生時の処理をイベントリスナーとして登録する
 client.on("error", (err) => {
   console.error("MQTT client error:", err);
 });

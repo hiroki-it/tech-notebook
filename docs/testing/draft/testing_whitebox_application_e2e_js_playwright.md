@@ -51,7 +51,7 @@ $ pip install pytest-playwright
 
 <br>
 
-## 03. シナリオ
+## 03. テストスイート
 
 ### JavaScriptの場合
 
