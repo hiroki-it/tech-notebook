@@ -91,6 +91,25 @@ spec:
       restartPolicy: Never
 ```
 
+もしArgoCDの`Sync`フェーズを使用しない場合、アプリケーションの起動直前にDBマイグレーションを実行してしまってもよい。
+
+```dockerfile
+FROM node:22.11.0-bullseye-slim as base
+
+...
+
+# Nodeアプリケーションの起動直前にDBマイグレーションを実行してしまう
+ENTRYPOINT ["npx prisma migrate deploy", "npm run start"]
+```
+
+もし手動でマイグレーションを実行する運用であれば、`kubectl exec`コマンドで接続した後に、マイグレーションコマンドを実行する。
+
+```bash
+$ kubectl exec -it <Pod名> -- bash
+
+/usr/local/src/foo/node_modules/.bin/prisma migrate deploy
+```
+
 > - https://qiita.com/butterv/items/65d8663dfa3a69f1bc55
 > - https://blog.manabusakai.com/2018/04/migration-job-on-kubernetes/
 
