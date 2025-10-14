@@ -15,6 +15,8 @@ description: Kyverno＠コード規約違反の知見を記録しています。
 
 ## 01. Kyvernoの仕組み
 
+### アーキテクチャ
+
 ![kyverno_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kyverno_architecture.png)
 
 Kyvernoは、admission-controllersアドオン、webhookサーバー、Controllerなどのコンポーネトから構成されている。
@@ -32,10 +34,23 @@ kube-apiserverのmutating-admissionステップとvalidating-admissionステッ�
 ↓
 kube-apiserver # Kyverno で検証
 ↓
-etcd # EKS Upgrade Insight で検証
+etcd # AWS EKSアップグレードインサイトで検証
 ```
 
 > - https://www.squadcast.com/blog/kyverno-policy-management-in-kubernetes
 > - https://www.kreyman.de/index.php/others/linux-kubernetes/244-erhoehung-der-container-security-mit-kyverno
+
+<br>
+
+### 検出項目
+
+Yamlによるユーザー定義のポリシーに基づいて、さまざまなツールの設定ファイルのコード規約違反を検証する。
+
+自由にコード規約を定義でき、ほかの静的解析ツールの項目を網羅できる。
+
+- ベストプラクティス
+- 非推奨apiVersion検出
+
+> - https://kyverno.io/policies/
 
 <br>

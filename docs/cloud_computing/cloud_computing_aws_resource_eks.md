@@ -215,11 +215,21 @@ kube-apiserverのインターネットへの公開範囲を設定できる。
 
 ### 監視
 
-#### ▼ AWS EKS Upgrade insights
+#### ▼ AWS EKS Upgrade insight
 
-非推奨apiVersion検出ツール (例：pluto) のようなクライアント側からの検証ではなく、kube-apiserver側で非推奨apiVersionを検出する。
+非推奨apiVersion検出ツール (例：pluto、kubepug) のようなクライアント側からの検証ではなく、kube-apiserver側で非推奨apiVersionを検出する。
 
 kube-apiserverの監査ログから非推奨apiVersionを検出する。
+
+```yaml
+クライアント # pluto で検証
+↓
+--- Cluster
+↓
+kube-apiserver
+↓
+etcd # AWS EKSアップグレードインサイトで検証
+```
 
 > - https://aws.amazon.com/blogs/containers/accelerate-the-testing-and-verification-of-amazon-eks-upgrades-with-upgrade-insights/
 > - https://qiita.com/kyohei_tsuno/items/27eafb4cff4c14c9c9bd

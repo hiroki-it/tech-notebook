@@ -177,15 +177,15 @@ $ curl \
 
 <br>
 
-### Kubernetesのopen-policy-agent-gatekeeperとして
+### KubernetesのGatekeeperとして
 
-#### ▼ open-policy-agent-gatekeeperとは
+#### ▼ Gatekeeperとは
 
 これは認可ツールではなく、マニフェストのコード規約違反を検知するPaCツールである。
 
 内部的にOpen Policy Agentを使用して、Kubernetesのマニフェストを検証する。
 
-kube-apiserverのvalidating-admissionステップ時に、open-policy-agent-gatekeeperのwebhookサーバーにAdmissionReviewのリクエストが送信され、open-policy-agent-gatekeeperの持つOpen Policy Agentの処理を発火させる。
+kube-apiserverのvalidating-admissionステップ時に、GatekeeperのwebhookサーバーにAdmissionReviewのリクエストが送信され、Gatekeeperの持つOpen Policy Agentの処理を発火させる。
 
 そのため、GitOpsのCDパイプライン上にバリデーションを実行できる。
 
@@ -200,7 +200,7 @@ Podの作成/更新時にwebhookサーバーにリクエストを送信できる
 
 `.webhooks.failurePolicy`キーで設定している通り、webhookサーバーのコールに失敗した場合は、無視してkube-apiserverの処理を続ける。
 
-そのため、open-policy-agent-gatekeeperが起動に失敗しても、Podが中止されることはない。
+そのため、Gatekeeperが起動に失敗しても、Podが中止されることはない。
 
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1

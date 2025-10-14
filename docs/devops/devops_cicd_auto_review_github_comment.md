@@ -134,7 +134,7 @@ K8S_CURRENT_VERSION=1.26
 K8S_NEXT_VERSION=1.26
 
 echo Test "Current K8s Version: ${K8S_CURRENT_VERSION}"
-./github-comment exec -var "TestName:kubeconform" -var "Description:指定したK8sバージョン (${K8S_CURRENT_VERSION}) のスキーマに基づいて、マニフェストの文法の誤りを検証する" \
+./github-comment exec -var "TestName:kubeconform" -var "Description:指定したK8sバージョン (${K8S_CURRENT_VERSION}) のスキーマに基づいて、マニフェストの文法違反を検証する" \
   -- /kubeconform -kubernetes-version ${K8S_CURRENT_VERSION} -strict -summary -output text -schema-location 'default' -schema-location 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{ .Group }}/{{ .ResourceKind }}_{{.ResourceAPIVersion}}.json' manifest.yaml \
   || true
 

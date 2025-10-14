@@ -31,7 +31,7 @@ hide:
 - #### <u>インフラ</u>
 
   > - ##### [静的解析ツール](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint.html)
-  > - ##### <u>文法の誤りテスト</u>
+  > - ##### <u>文法違反テスト</u>
   >   > - ##### [kubeconform](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_grammatical_mistake_kubeconform.html)
   > - ##### <u>コード規約違反テスト</u>
   >   > - ##### [confest](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_code_conventions_violation_confest.html)

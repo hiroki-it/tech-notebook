@@ -697,11 +697,11 @@ DockerHub以外のイメージレジストリを使って、レートリミッ�
 
 ### 静的解析を実施する
 
-#### ▼ Dockerfileの文法の誤りテスト
+#### ▼ Dockerfileの文法違反テスト
 
 Dockerのビルトインのコマンド (例：`docker build`コマンド) を使用する。
 
-Dockerfileの文法の誤りを検証する。
+Dockerfileの文法違反を検証する。
 
 #### ▼ Dockerfileのベストプラクティス違反テスト
 
