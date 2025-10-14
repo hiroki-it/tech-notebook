@@ -31965,6 +31965,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <thead>
 <tr>
 <th>観点</th>
+<th></th>
 <th>ツール名</th>
 <th>概要</th>
 <th>推奨ツール</th>
@@ -31974,15 +31975,17 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </thead>
 <tbody>
 <tr>
-<td>API仕様違反</td>
+<td>文法違反</td>
+<td>kubeconform</td>
 <td><a href="https://github.com/yannh/kubeconform">https://github.com/yannh/kubeconform</a></td>
-<td>Kubernetesリソースのスキーマ (カスタムリソースであればCRD) に基づいて、マニフェストの文法の誤りを検証する。</td>
+<td>Kubernetesリソースのスキーマ (カスタムリソースであればCRD) に基づいて、マニフェストの文法違反を検証する。</td>
 <td>★</td>
 <td>kubevalの後継ツールであり、他にめぼしい競合ツールがない。</td>
 <td></td>
 </tr>
 <tr>
 <td>コード規約違反テスト</td>
+<td>conftest</td>
 <td><a href="https://www.conftest.dev/">https://www.conftest.dev/</a></td>
 <td>Regoでコード規約を定義する。</td>
 <td></td>
@@ -31991,6 +31994,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tr>
 <tr>
 <td>コード規約違反テスト</td>
+<td>Gatekeeper</td>
 <td><a href="https://open-policy-agent.github.io/gatekeeper/website/docs/gator/">https://open-policy-agent.github.io/gatekeeper/website/docs/gator/</a></td>
 <td>Regoでコード規約を定義する。</td>
 <td></td>
@@ -31998,7 +32002,17 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <td></td>
 </tr>
 <tr>
+<td>コード規約違反テスト</td>
+<td>Kyverno</td>
+<td><a href="https://github.com/kyverno/kyverno">https://github.com/kyverno/kyverno</a></td>
+<td>Yamlでコード規約を定義する。</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>ベストプラクティス違反テスト</td>
+<td>kubelinter</td>
 <td><a href="https://docs.kubelinter.io/#/">https://docs.kubelinter.io/#/</a></td>
 <td>脆弱性、効率性、信頼性の観点で検証する。</td>
 <td></td>
@@ -32007,6 +32021,16 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tr>
 <tr>
 <td>ベストプラクティス違反テスト</td>
+<td>kubelinter</td>
+<td><a href="https://docs.kubelinter.io/#/">https://docs.kubelinter.io/#/</a></td>
+<td>脆弱性、効率性、信頼性の観点で検証する。</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ベストプラクティス違反テスト</td>
+<td>kube-score</td>
 <td><a href="https://kube-score.com/">https://kube-score.com/</a></td>
 <td>脆弱性、信頼性の観点で検証する。</td>
 <td></td>
@@ -32015,6 +32039,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tr>
 <tr>
 <td>ベストプラクティス違反テスト</td>
+<td>polaris</td>
 <td><a href="https://polaris.docs.fairwinds.com/checks/security/">https://polaris.docs.fairwinds.com/checks/security/</a></td>
 <td>脆弱性、効率性、信頼性の観点で検証する。</td>
 <td>★</td>
@@ -32023,6 +32048,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tr>
 <tr>
 <td>脆弱性診断</td>
+<td>trivy</td>
 <td><a href="https://aquasecurity.github.io/trivy/dev/docs/target/kubernetes/">https://aquasecurity.github.io/trivy/dev/docs/target/kubernetes/</a></td>
 <td>マニフェストの設定値に起因する脆弱性を検証する</td>
 <td>★</td>
@@ -32031,6 +32057,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tr>
 <tr>
 <td>サイジング最適値算出ツール</td>
+<td>goldilocks</td>
 <td><a href="https://goldilocks.docs.fairwinds.com/">https://goldilocks.docs.fairwinds.com/</a></td>
 <td>IaCのソースコード上のCPU/メモリの設定値と、Cluster上の実際のハードウェアリソース消費量を比較して、最適値を算出できる。</td>
 <td></td>
@@ -32039,6 +32066,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tr>
 <tr>
 <td>サイジング最適値算出ツール</td>
+<td>robusta</td>
 <td><a href="https://github.com/robusta-dev/krr">https://github.com/robusta-dev/krr</a></td>
 <td>Prometheusのメトリクスから各コンテナに最適なCPU/メモリの設定値を算出できる。 ただし、CPUのlimits値の設定はアンチパターンとして扱っており、未設定を推奨している。</td>
 <td></td>
@@ -32047,6 +32075,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tr>
 <tr>
 <td>非推奨apiVersion検出</td>
+<td>pluto</td>
 <td><a href="https://pluto.docs.fairwinds.com/">https://pluto.docs.fairwinds.com/</a></td>
 <td>指定したKubernetesのバージョンに基づいて、マニフェストの非推奨apiVersionを検証する。</td>
 <td>★</td>
@@ -32055,6 +32084,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tr>
 <tr>
 <td>非推奨apiVersion検出</td>
+<td>kubepug</td>
 <td><a href="https://kubepug.xyz/">https://kubepug.xyz/</a></td>
 <td>指定したKubernetesのバージョンに基づいて、マニフェストの非推奨apiVersionを検証する。</td>
 <td></td>
@@ -32063,7 +32093,17 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tr>
 <tr>
 <td>非推奨apiVersion検出</td>
+<td>kube-no-trouble</td>
 <td><a href="https://github.com/doitintl/kube-no-trouble">https://github.com/doitintl/kube-no-trouble</a></td>
+<td>指定したKubernetesのバージョンに基づいて、マニフェストの非推奨apiVersionを検証する。</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>非推奨apiVersion検出</td>
+<td>AWS EKSアップグレードインサイト</td>
+<td><a href="https://docs.aws.amazon.com/eks/latest/best-practices/cluster-upgrades.html">https://docs.aws.amazon.com/eks/latest/best-practices/cluster-upgrades.html</a></td>
 <td>指定したKubernetesのバージョンに基づいて、マニフェストの非推奨apiVersionを検証する。</td>
 <td></td>
 <td></td>
@@ -32071,6 +32111,15 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tr>
 </tbody>
 </table>
+<p>ツールを選ぶときは、検証タイミングの設計思想を比べると良い。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">クライアント</span><span class="w"> </span><span class="c1"># 文法違反（kubeconform）、非推奨apiVersion検出（pluto、kubepug）</span>
+<span class="l l-Scalar l-Scalar-Plain">↓</span>
+<span class="nn">---</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cluster</span>
+<span class="l l-Scalar l-Scalar-Plain">↓</span>
+<span class="l l-Scalar l-Scalar-Plain">kube-apiserver</span><span class="w"> </span><span class="c1"># コード規約違反テスト（Kyverno、Gatekeeper）</span>
+<span class="l l-Scalar l-Scalar-Plain">↓</span>
+<span class="l l-Scalar l-Scalar-Plain">etcd</span><span class="w"> </span><span class="c1"># 非推奨apiVersion検出（kube-no-trouble、AWS EKS Upgrade Insight）</span>
+</code></pre></div>
 <p><br></p>
 <h3 id="helm">Helmチャートの静的解析ツールを使用する<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h3>
 <h4 id="_41">▼ 検証したい項目を選ぶ<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
@@ -32499,7 +32548,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月14日 15:37:53 JST">2025-10-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月14日 16:59:11 JST">2025-10-14</span>
   </span>
 
     
