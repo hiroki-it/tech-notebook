@@ -27394,14 +27394,14 @@
 <span class="c1">// WebSocketクライアントのインスタンスを作成</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">ws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebSocket</span><span class="p">(</span><span class="s2">&quot;ws://localhost:8080&quot;</span><span class="p">);</span>
 
-<span class="c1">// WebSocket接続が開いた時の処理</span>
+<span class="c1">// WebSocket接続が開いた時の処理をイベントリスナーとして登録する</span>
 <span class="nx">ws</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;open&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;WebSocket connection opened&quot;</span><span class="p">);</span>
 <span class="w">  </span><span class="c1">// サーバーにメッセージを送信する例</span>
 <span class="w">  </span><span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;Hello from the client!&quot;</span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="c1">// サーバーからメッセージを受信した時の処理</span>
+<span class="c1">// サーバーからメッセージを受信した時の処理をイベントリスナーとして登録する</span>
 <span class="nx">ws</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">message</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Received message: </span><span class="si">${</span><span class="nx">message</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
@@ -27410,12 +27410,12 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">});</span>
 
-<span class="c1">// WebSocket接続が閉じた時の処理</span>
+<span class="c1">// WebSocket接続が閉じた時の処理をイベントリスナーとして登録する</span>
 <span class="nx">ws</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;close&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;WebSocket connection closed&quot;</span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="c1">// エラーが発生した時の処理</span>
+<span class="c1">// エラーが発生した時の処理をイベントリスナーとして登録する</span>
 <span class="nx">ws</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`WebSocket error: </span><span class="si">${</span><span class="nx">error</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 <span class="p">});</span>
@@ -27564,7 +27564,7 @@
 <span class="c1">// MQTTクライアントの作成</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mqtt</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="s2">&quot;ws://localhost:8083/mqtt&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">connectOptions</span><span class="p">);</span>
 
-<span class="c1">// 接続成功時の処理</span>
+<span class="c1">// 接続成功時の処理をイベントリスナーとして登録する</span>
 <span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;connect&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Connected to EMQX via WebSocket&quot;</span><span class="p">);</span>
 
@@ -27590,22 +27590,22 @@
 <span class="w">  </span><span class="p">});</span>
 <span class="p">});</span>
 
-<span class="c1">// メッセージ受信時の処理</span>
+<span class="c1">// メッセージ受信時の処理をイベントリスナーとして登録する</span>
 <span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">topic</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Received message on topic &quot;</span><span class="si">${</span><span class="nx">topic</span><span class="si">}</span><span class="sb">&quot;: </span><span class="si">${</span><span class="nx">message</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="c1">// 切断時の処理</span>
+<span class="c1">// 切断時の処理をイベントリスナーとして登録する</span>
 <span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;disconnect&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Disconnected from EMQX&quot;</span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="c1">// 再接続時の処理</span>
+<span class="c1">// 再接続時の処理をイベントリスナーとして登録する</span>
 <span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;reconnect&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Attempting to reconnect to EMQX...&quot;</span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="c1">// エラー発生時の処理</span>
+<span class="c1">// エラー発生時の処理をイベントリスナーとして登録する</span>
 <span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;MQTT client error:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
 <span class="p">});</span>
@@ -27651,7 +27651,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月11日 01:02:15 JST">2025-05-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月14日 15:31:26 JST">2025-10-14</span>
   </span>
 
     
