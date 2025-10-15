@@ -439,6 +439,7 @@ nav:
       - ■ TypeScript:
           - TypeScript: language/language_typescript.md
           - 設定: language/language_typescript_conf.md
+          - ロジック: language/language_typescript_logic.md
 
   - 🧪 テスト:
       - testing/index.md
