@@ -63,6 +63,8 @@ DBマイグレーションを実行するJobを定義しておき、これをArg
 
 フックのタイミングは、`argocd.argoproj.io/hook`キーで設定する。
 
+その場合、`DBマイグレーション ---> ArgoCD Sync開始 ---> アプリ起動 ---> ArgoCD Sync完了`という流れになる。
+
 ```yaml
 apiVersion: batch/v1
 kind: Job
@@ -92,6 +94,8 @@ spec:
 ```
 
 もしArgoCDの`Sync`フェーズを使用しない場合、アプリケーションの起動直前にDBマイグレーションを実行してしまってもよい。
+
+その場合、`ArgoCD Sync開始 ---> DBマイグレーション ---> アプリ起動 ---> ArgoCD Sync完了`という流れになる。
 
 ```dockerfile
 FROM node:22.11.0-bullseye-slim as base

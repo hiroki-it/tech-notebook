@@ -114,6 +114,28 @@ $ prisma migrate reset --force
 
 > - https://tech-blog.s-yoshiki.com/entry/315
 
+#### ▼ rollback
+
+prismaには、rollbackのコマンドがなく、ロールバック用のSQLを実行する必要がある。
+
+```bash
+$ prisma migrate diff \
+  --from-schema-datamodel prisma/schema.prisma \
+  --to-schema-datasource prisma/schema.prisma \
+  --script > rollback.sql
+```
+
+```sql
+-- rollback.sqlの例
+-- DropForeignKey
+ALTER TABLE `UserDetail` DROP FOREIGN KEY `UserDetail_userId_fkey`;
+
+-- DropTable
+DROP TABLE `UserDetail`;
+```
+
+> - https://qiita.com/ore88ore/items/d09b9035af75ff4e9456#%E9%81%A9%E7%94%A8%E3%81%97%E3%81%9F%E3%83%9E%E3%82%A4%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E3%83%AD%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B
+
 <br>
 
 ### db

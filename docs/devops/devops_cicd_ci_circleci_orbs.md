@@ -386,8 +386,11 @@ jobs:
     security-group-ids: $AWS_SECURITY_GROUPS
     # AWS ECSタスク定義名。最新リビジョンが自動補完される。
     task-definition: "${SERVICE}-ecs-task-definition"
+    # php artisan migrate --force || php artisan migrate:rollback --force
+    # DBマイグレーションが失敗したら、1つ前までの履歴までロールバックを実行する (マイグレーションファイル数に関係なく、1つ前の履歴に戻せばよい)
     # AWS ECSタスク起動時にDBマイグレーションのコマンドを実行するように、Laravelコンテナのcommandキーを上書き
-    overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\": \\\"laravel-container\\\",\\\"command\\\": [\\\"php\\\", \\\"artisan\\\", \\\"migrate\\\", \\\"--force\\\"]}]}"
+    # DBマイグレーションの確認画面を表示しないために、forceオプションをつける
+    overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\": \\\"laravel-container\\\",\\\"command\\\": [\\\"bash\\\", \\\"-c\\\", \\\"php artisan migrate --force || php artisan migrate:rollback --force\\\"]}]}"
 
 workflows:
   # ステージング環境にデプロイ
