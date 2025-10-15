@@ -174,7 +174,7 @@ hide:
 ### TypeScript
 
 - #### [TypeScript](https://hiroki-it.github.io/tech-notebook/language/language_typescript.html)
-
 - #### [設定](https://hiroki-it.github.io/tech-notebook/language/language_typescript_conf.html)
+- #### [ロジック](https://hiroki-it.github.io/tech-notebook/language/language_typescript_logic.html)
 
 <br>
