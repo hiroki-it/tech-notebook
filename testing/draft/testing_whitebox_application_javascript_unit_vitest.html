@@ -27437,17 +27437,17 @@
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">// テストコード</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="p">,</span><span class="w"> </span><span class="nx">vi</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;vitest&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="p">,</span><span class="w"> </span><span class="nx">vi</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;vitest&#39;</span>
 <span class="k">import</span><span class="w"> </span><span class="nx">axios</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;axios&#39;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fetchUser</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./fetchUser&#39;</span>
 
+<span class="c1">// テストスイート</span>
 <span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;fetchUser&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="c1">// リクエストのパラメーターに関するテストデータ</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;1&#39;</span>
 
-<span class="w">  </span><span class="c1">// 正常系のテスト</span>
+<span class="w">  </span><span class="c1">// 正常系テストケース</span>
 <span class="w">  </span><span class="nx">test</span><span class="p">(</span><span class="s1">&#39;success&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// レスポンスに関するテストデータ</span>
@@ -27465,11 +27465,12 @@
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetchUser</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 実際値と期待値を比較検証</span>
+<span class="w">    </span><span class="c1">// rejects.toStrictEqual関数で照合する</span>
 <span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">user</span><span class="p">).</span><span class="nx">toStrictEqual</span><span class="p">({</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Taro&#39;</span><span class="p">})</span>
 <span class="w">  </span><span class="p">})</span>
 
-<span class="w">  </span><span class="c1">// 異常系のテスト</span>
-<span class="w">  </span><span class="nx">test</span><span class="p">(</span><span class="s1">&#39;failure&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 異常系テストケース</span>
+<span class="w">  </span><span class="nx">test</span><span class="p">(</span><span class="s1">&#39;foo failure&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// レスポンスに関するテストデータ</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;Network Error&#39;</span><span class="p">)</span>
@@ -27482,8 +27483,29 @@
 <span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span>
 <span class="w">      </span><span class="c1">// 関数をテスト</span>
 <span class="w">      </span><span class="c1">// 関数の結果をVitestに直接渡さないと、テストコードが例外で停止してしまう</span>
+<span class="w">      </span><span class="c1">// rejects.toThrow関数で照合する</span>
 <span class="w">      </span><span class="nx">fetchUser</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span>
 <span class="w">    </span><span class="p">).</span><span class="nx">rejects</span><span class="p">.</span><span class="nx">toThrow</span><span class="p">(</span><span class="s1">&#39;Network Error&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">})</span>
+
+<span class="w">  </span><span class="c1">// 異常系テストケース</span>
+<span class="w">  </span><span class="nx">test</span><span class="p">(</span><span class="s1">&#39;bar failure&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// レスポンスに関するテストデータ</span>
+<span class="w">    </span><span class="c1">// オブジェクト構造になっている</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;Network Error&#39;</span><span class="p">),</span><span class="w"> </span><span class="nx">attribute</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// axiosクライアントのモックがエラーを一度だけ返すように設定</span>
+<span class="w">    </span><span class="nx">vi</span><span class="p">.</span><span class="nx">mocked</span><span class="p">(</span><span class="nx">axios</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">).</span><span class="nx">get</span><span class="p">.</span><span class="nx">mockRejectedValueOnce</span><span class="p">(</span><span class="nx">object</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// await宣言で完了を待つようにしないと、そのままテスト処理が終わってしまう</span>
+<span class="w">    </span><span class="c1">// 実際値と期待値を比較検証</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span>
+<span class="w">      </span><span class="c1">// 関数をテスト</span>
+<span class="w">      </span><span class="c1">// 関数の結果をVitestに直接渡さないと、テストコードが例外で停止してしまう</span>
+<span class="w">      </span><span class="nx">fetchUser</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span>
+<span class="w">      </span><span class="c1">// rejects.toMatchObject関数で照合する</span>
+<span class="w">    </span><span class="p">).</span><span class="nx">rejects</span><span class="p">.</span><span class="nx">toMatchObject</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Network Error&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">attribute</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="w"> </span><span class="p">})</span>
 <span class="w">  </span><span class="p">})</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -27508,7 +27530,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月15日 19:27:05 JST">2025-10-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月15日 19:42:41 JST">2025-10-15</span>
   </span>
 
     
