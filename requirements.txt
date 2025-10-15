@@ -1,8 +1,8 @@
 # Requirements for core
 jinja2==3.1.6
-markdown==3.8.2
+markdown==3.9
 mkdocs==1.6.1
-mkdocs-material==9.6.16
+mkdocs-material==9.6.22
 mkdocs-material-extensions==1.3.1
 pygments==2.19.2
 pymdown-extensions==10.16.1
