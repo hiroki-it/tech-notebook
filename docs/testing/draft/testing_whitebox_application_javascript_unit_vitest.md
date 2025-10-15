@@ -136,6 +136,9 @@ import { test, expect, vi } from 'vitest'
 import axios from 'axios'
 import { fetchUser } from './fetchUser'
 
+// axiosクライアントのモック
+vi.mock('axios')
+
 // テストスイート
 describe('fetchUser', async () => {
 
@@ -151,17 +154,16 @@ describe('fetchUser', async () => {
       name: 'Taro',
     }
 
-    // axiosクライアントのモック
-    vi.mock('axios')
     // axiosクライアントのモックが一度だけデータを返却するように設定
-    vi.mocked(axios, true).get.mockResolvedValueOnce({ data: response })
+    vi.mocked(axios).get.mockResolvedValueOnce({data: response})
 
     // 関数をテスト
     const user = await fetchUser(userId)
 
     // 実際値と期待値を比較検証
-    // rejects.toStrictEqual関数で照合する
-    expect(user).toStrictEqual({id: '1', name: 'Taro'})
+    // オブジェクトのパラメーターを１つずつ照合する (オブジェクトをひとまとめに照合しない)
+    expect(user.getId()).toBe('1')
+    expect(user.getName()).toBe('Taro')
   })
 
   // 異常系テストケース
@@ -171,7 +173,10 @@ describe('fetchUser', async () => {
     const response = new Error('Network Error')
 
     // axiosクライアントのモックがエラーを一度だけ返すように設定
-    vi.mocked(axios, true).get.mockRejectedValueOnce(response)
+    vi.mocked(axios).get.mockRejectedValueOnce(response)
+
+    // Error型を比較検証
+    await expect(fetchUser(userId)).rejects.toBeInstanceOf(Error)
 
     // await宣言で完了を待つようにしないと、そのままテスト処理が終わってしまう
     // 実際値と期待値を比較検証
@@ -181,26 +186,6 @@ describe('fetchUser', async () => {
       // rejects.toThrow関数で照合する
       fetchUser(userId)
     ).rejects.toThrow('Network Error')
-  })
-
-  // 異常系テストケース
-  test('bar failure', async () => {
-
-    // レスポンスに関するテストデータ
-    // オブジェクト構造になっている
-    const object = { error: new Error('Network Error'), attribute: 1 }
-
-    // axiosクライアントのモックがエラーを一度だけ返すように設定
-    vi.mocked(axios, true).get.mockRejectedValueOnce(object)
-
-    // await宣言で完了を待つようにしないと、そのままテスト処理が終わってしまう
-    // 実際値と期待値を比較検証
-    await expect(
-      // 関数をテスト
-      // 関数の結果をVitestに直接渡さないと、テストコードが例外で停止してしまう
-      fetchUser(userId)
-      // rejects.toMatchObject関数で照合する
-    ).rejects.toMatchObject({ error: { message: 'Network Error' }, attribute: 1 })
   })
 }
 ```

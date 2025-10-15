@@ -372,23 +372,25 @@ foo<string, number>("a", 1);
 ```
 
 ```typescript
-// 処理時間を計測する関数
-// この時点では、型変数 (T) の型は決まっていない
-// 変数名はなんでもよく、単語でもいい
 const measureFunctionExecutionTime = async <T>(
   fn: () => Promise<T>,
-): Promise<{result: T; executionTime: number}> => {
-  const startAt = performance.now();
-  try {
-    const result = await fn();
-    // Date.nowよりもperformance.now()の方がマイクロ秒まで計測できる
-    const executionTime = performance.now() - startAt;
-    // 関数の処理結果と実行時間を返却する
-    return {result: result, executionTime: executionTime};
-  } catch (error) {
-    const executionTime = performance.now() - startAt;
-    throw {result: error, executionTime: executionTime};
-  }
+): Promise<{result: T; executionTime: number; startAtTimestamp: string}> => {
+  // 計測開始
+  // 計測にはperformance.now()の方が適切であるが、ISO形式に変換してタイムスタンプを取得する必要があるため、これに対応するDate.now()を使用する
+  const startAt = Date.now();
+
+  const result = await fn();
+
+  // 計測終了
+  const executionTime = Date.now() - startAt;
+  const startAtTimestamp = new Date(startAt).toISOString();
+
+  // 関数の処理結果と実行時間を返却する
+  return {
+    result: result,
+    executionTime: executionTime,
+    startAtTimestamp: startAtTimestamp,
+  };
 };
 
 // この時点では、引数型と返却値型は決まっていない
