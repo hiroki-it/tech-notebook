@@ -1253,6 +1253,10 @@
          <lastmod>2025-10-15</lastmod>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/language/language_typescript_logic.html</loc>
+         <lastmod>2025-10-15</lastmod>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/language/draft/language_data_description_language_yaml_query.html</loc>
          <lastmod>2025-10-15</lastmod>
     </url>
@@ -2653,15 +2657,15 @@
          <lastmod>2025-10-15</lastmod>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_application_e2e_js_cypress.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_application_javascript_e2e_cypress.html</loc>
          <lastmod>2025-10-15</lastmod>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_application_e2e_js_playwright.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_application_javascript_e2e_playwright.html</loc>
          <lastmod>2025-10-15</lastmod>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_application_js_unit_vitest.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_application_javascript_unit_vitest.html</loc>
          <lastmod>2025-10-15</lastmod>
     </url>
     <url>
