@@ -44,7 +44,7 @@ $ npm install -g yarn
 3. PIPでpythonのパッケージをインストールする
 
 ```bash
-$  pip3 install -r requirements.txt   
+$  pip3 install -r requirements.txt
 ```
 
 <br>
