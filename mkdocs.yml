@@ -460,7 +460,7 @@ nav:
           - ■ インフラ:
               - ■ 静的解析:
                   - 静的解析ツール: testing/testing_whitebox_infrastructure_lint.md
-                  - ■ 文法の誤りテスト:
+                  - ■ 文法違反テスト:
                       - kubeconform: testing/testing_whitebox_infrastructure_lint_grammatical_mistake_kubeconform.md
                   - ■ コード規約違反テスト:
                       - confest: testing/testing_whitebox_infrastructure_lint_code_conventions_violation_confest.md
