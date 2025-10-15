@@ -152,11 +152,13 @@ func TestFoo(t *testing.T) {
 		data []byte
 	}{
 		{
+            // 正常系テストケース
 			name:     "TestFoo_SucceedStatus_ReturnOk",
 			expected: expected_foo_succeed_status,
 			data:     data_foo_succeed_status,
 		},
 		{
+			// 異常系テストケース
 			name:     "TestFoo_FailedStatus_ReturnOk",
 			expected: expected_foo_failed_status,
 			data:     data_foo_failed_status,

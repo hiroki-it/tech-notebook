@@ -132,17 +132,17 @@ export async function fetchUser(id: string) {
 ```
 
 ```typescript
-// テストコード
 import { test, expect, vi } from 'vitest'
 import axios from 'axios'
 import { fetchUser } from './fetchUser'
 
+// テストスイート
 describe('fetchUser', async () => {
 
   // リクエストのパラメーターに関するテストデータ
   const userId = '1'
 
-  // 正常系のテスト
+  // 正常系テストケース
   test('success', async () => {
 
     // レスポンスに関するテストデータ
@@ -160,11 +160,12 @@ describe('fetchUser', async () => {
     const user = await fetchUser(userId)
 
     // 実際値と期待値を比較検証
+    // rejects.toStrictEqual関数で照合する
     expect(user).toStrictEqual({id: '1', name: 'Taro'})
   })
 
-  // 異常系のテスト
-  test('failure', async () => {
+  // 異常系テストケース
+  test('foo failure', async () => {
 
     // レスポンスに関するテストデータ
     const response = new Error('Network Error')
@@ -177,8 +178,29 @@ describe('fetchUser', async () => {
     await expect(
       // 関数をテスト
       // 関数の結果をVitestに直接渡さないと、テストコードが例外で停止してしまう
+      // rejects.toThrow関数で照合する
       fetchUser(userId)
     ).rejects.toThrow('Network Error')
+  })
+
+  // 異常系テストケース
+  test('bar failure', async () => {
+
+    // レスポンスに関するテストデータ
+    // オブジェクト構造になっている
+    const object = { error: new Error('Network Error'), attribute: 1 }
+
+    // axiosクライアントのモックがエラーを一度だけ返すように設定
+    vi.mocked(axios, true).get.mockRejectedValueOnce(object)
+
+    // await宣言で完了を待つようにしないと、そのままテスト処理が終わってしまう
+    // 実際値と期待値を比較検証
+    await expect(
+      // 関数をテスト
+      // 関数の結果をVitestに直接渡さないと、テストコードが例外で停止してしまう
+      fetchUser(userId)
+      // rejects.toMatchObject関数で照合する
+    ).rejects.toMatchObject({ error: { message: 'Network Error' }, attribute: 1 })
   })
 }
 ```
