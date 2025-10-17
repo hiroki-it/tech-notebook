@@ -161,7 +161,7 @@ describe('fetchUser', async () => {
     const user = await fetchUser(userId)
 
     // 実際値と期待値を比較検証
-    // オブジェクトのパラメーターを１つずつ照合する (オブジェクトをひとまとめに照合しない)
+    // toBe関数などでオブジェクトのフィールドを１つずつ照合する (toStrictEqual関数などでオブジェクトをひとまとめに照合しない)
     expect(user.getId()).toBe('1')
     expect(user.getName()).toBe('Taro')
   })

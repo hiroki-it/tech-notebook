@@ -196,7 +196,7 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 | Rust                                    |                  |             ✅             |
 | Swift                                   |                  |             ✅             |
 
-#### ▼ シングルスレッド
+#### ▼ Node.js
 
 例えば、Node.jsは次のようにシングルスレッドでプログラムを実行する。
 
