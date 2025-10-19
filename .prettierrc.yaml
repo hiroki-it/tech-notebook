@@ -2,6 +2,7 @@
 # JSONが不自然な位置で改行される場合は、改行箇所にコメントアウトを追加する。
 # すると、prettierが改行をやめるようになる。
 trailingComma: all
+bracketSpacing: false
 overrides:
   - files:
       - "*.md"
