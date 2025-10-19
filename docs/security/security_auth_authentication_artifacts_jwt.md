@@ -103,7 +103,7 @@ const payload = {
 > - https://zenn.dev/mikakane/articles/tutorial_for_jwt#%E3%83%9A%E3%82%A4%E3%83%AD%E3%83%BC%E3%83%89
 > - https://qiita.com/TakahikoKawasaki/items/8f0e422c7edd2d220e06#64-jwt-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0
 
-#### ▼ 署名
+#### ▼ 署名（暗号ダイジェスト）
 
 ヘッダーとペイロードをbase64方式でエンコードし、公開鍵と秘密鍵のペアとエンコードした文字列である。
 
