@@ -131,12 +131,12 @@ description: ホワイトボックステストの知見を記録しています�
 
 #### ▼ 一般的な命名規則
 
-`<期待される動作>_when_<入力値>`で命名する。
+`<期待される動作> when <入力内容>`で命名する。
 
 例えば、次のとおりである。
 
-- 正常系であれば『`should_return_user_when_id_is_valid`』
-- 異常系であれば『`throws_error_when_timeout`』や『`returns_400_when_user_id_is_empty`』
+- 正常系であれば『`should return user when id is valid`』
+- 異常系であれば『`should throw error when timeout occurs`』や『`should return 400 when user id is empty`』
 
 #### ▼ Roy Osherove氏の命名規則
 

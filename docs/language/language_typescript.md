@@ -484,7 +484,7 @@ let isProgrammer: boolean = true;
 
 > - https://typescript-jp.gitbook.io/deep-dive/type-system/type-assertion
 
-#### ▼ as構文
+#### ▼ `as`構文
 
 ```typescript
 const value: string | number = "this is a string";
@@ -502,7 +502,7 @@ const strLength: number = (<string>value).length;
 
 > - https://typescriptbook.jp/reference/values-types-variables/type-assertion-as#%E5%9E%8B%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9
 
-#### ▼ 非nullアサーション
+#### ▼ 非`null`アサーション
 
 変数の値が`undefined`だった場合に、例外をスローする。
 
@@ -513,6 +513,23 @@ const foo: string = process.env.FOO!;
 <br>
 
 ## 04. 独自の型宣言
+
+### 比較
+
+typeエイリアス宣言の方が型としての強制力が高い。
+
+また、interface宣言はオブジェクト指向の文脈でメソッドの仕様を持たせることが多く、型の文脈では適さない（と個人的に思っている）
+
+| 項目           | typeエイリアス宣言 | interface宣言 |
+| -------------- | ------------------ | ------------- |
+| 継承           | できない           | できる        |
+| 同名の型       | できない           | できる        |
+| Mapped Types型 | できる             | できない      |
+
+> - https://typescriptbook.jp/reference/object-oriented/interface/interface-vs-type-alias#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%81%A8%E5%9E%8B%E3%82%A8%E3%82%A4%E3%83%AA%E3%82%A2%E3%82%B9%E3%81%AE%E9%81%95%E3%81%84
+> - https://typescriptbook.jp/reference/object-oriented/interface/interface-vs-type-alias#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%81%A8%E5%9E%8B%E3%82%A8%E3%82%A4%E3%83%AA%E3%82%A2%E3%82%B9%E3%81%AE%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91
+
+<br>
 
 ### typeエイリアス宣言
 
@@ -535,6 +552,14 @@ type Foo = {
 オブジェクトの型を宣言する場合、interface宣言を使用する。
 
 ただ、オブジェクトでtypeエイリアス宣言を使用してもよい。
+
+```typescript
+interface Foo {
+  bar: number;
+  baz: Date;
+  qux: string;
+}
+```
 
 <br>
 
