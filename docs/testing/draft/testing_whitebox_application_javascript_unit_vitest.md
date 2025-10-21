@@ -119,7 +119,7 @@ Vitestの思想では、テストコードの型検証はエディタやビル�
 
 ## 04. テストコード例
 
-#### ▼ axiosを使用したHTTPリクエスト
+#### ▼ 正常系
 
 ```typescript
 // テスト対象の関数
@@ -164,8 +164,38 @@ describe('fetchUser', async () => {
     // toBe関数などでオブジェクトのフィールドを１つずつ照合する (toStrictEqual関数などでオブジェクトをひとまとめに照合しない)
     expect(user.getId()).toBe('1')
     expect(user.getName()).toBe('Taro')
+    // 処理実行の開始時刻も返却できるとする
+    // 実際値をData形式に一度変換し、再び元のISO形式に戻しても、元の値と一致することを検証する
+    // 期待値は固定値じゃないのが不思議であるが、これが適切なテスト方法である
+    expect(new Date(user.executionStartAtTimestamp).toISOString()).toBe(user.executionStartAtTimestamp);
   })
+```
 
+#### ▼ 異常系
+
+```typescript
+// テスト対象の関数
+import axios from "axios";
+
+export async function fetchUser(id: string) {
+  const res = await axios.get(`/api/users/${id}`);
+  return res.data;
+}
+```
+
+```typescript
+import { test, expect, vi } from 'vitest'
+import axios from 'axios'
+import { fetchUser } from './fetchUser'
+
+// axiosクライアントのモック
+vi.mock('axios')
+
+// リクエストのパラメーターに関するテストデータ
+const userId = '1'
+
+// テストスイート
+describe('fetchUser', async () => {
   // 異常系テストケース
   test('foo failure', async () => {
 

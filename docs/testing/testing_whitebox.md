@@ -115,9 +115,9 @@ description: ホワイトボックステストの知見を記録しています�
 
 <br>
 
-### 設計規約
+## 03-02. 設計規約
 
-#### ▼ ユニットテストの構成
+### ユニットテストの構成
 
 ユニットテストはテストスイート (テストの組) から構成され、テストスイートはテストケース (テスト関数) に分類できる。
 
@@ -125,19 +125,35 @@ description: ホワイトボックステストの知見を記録しています�
 
 ![test-plan_test-suite_test-case](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/test-plan_test-suite_test-case.jpg)
 
-#### ▼ テストケース名
+<br>
 
-Roy Osherove氏の命名規則に従って、『テスト対象の関数名』『入力値』『期待される返却値』の三要素でテスト関数を命名する。
+### テストケース名
 
-期待される返却値の命名で『正常系テスト』か『異常系テスト』かと識別する。
+#### ▼ 一般的な命名規則
 
-例えば、正常系であれば『`testFoo_Xxx_ReturnXxx`』、また異常系であれば『`testFoo_Xxx_ExceptionThrown`』や『`testFoo_Xxx_ErrorThrown`』とする。
+`<期待される動作>_when_<入力値>`で命名する。
+
+例えば、次のとおりである。
+
+- 正常系であれば『`should_return_user_when_id_is_valid`』
+- 異常系であれば『`throws_error_when_timeout`』や『`returns_400_when_user_id_is_empty`』
+
+#### ▼ Roy Osherove氏の命名規則
+
+Roy Osherove氏の命名規則に従って、`<テスト対象の関数名>_<入力値>_<期待される返却値>`で命名する。
+
+例えば、次のとおりである。
+
+- 正常系であれば『`testFoo_Xxx_ReturnXxx`』
+- 異常系であれば『`testFoo_Xxx_ExceptionThrown`』や『`testFoo_Xxx_ErrorThrown`』
 
 Roy Osherove氏の命名規則については、以下のリンクを参考にせよ。
 
 > - https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
 
-#### ▼ アサーションの比較値
+<br>
+
+### アサーションの比較値
 
 ユニットテストのアサーション関数で、期待値と実際値を比較する場合、期待値を定数として管理した方が良い。
 
@@ -145,7 +161,7 @@ Roy Osherove氏の命名規則については、以下のリンクを参考に�
 
 <br>
 
-## 03-02. テストダブル
+## 03-03. テストダブル
 
 ### テストダブル
 
@@ -232,7 +248,7 @@ $ curl http://httpbin.local/get
 
 <br>
 
-## 03-03. 網羅率
+## 03-04. 網羅率
 
 ### 網羅率とは
 
@@ -330,7 +346,7 @@ AとBは、『1』または『0』になり得るとする。
 
 <br>
 
-## 03-04. 循環的複雑度
+## 03-05. 循環的複雑度
 
 ### 循環的複雑度とは
 
