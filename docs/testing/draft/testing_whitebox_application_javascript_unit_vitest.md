@@ -119,6 +119,8 @@ Vitestの思想では、テストコードの型検証はエディタやビル�
 
 ## 04. テストコード例
 
+### 外部とのリクエスト／レスポンス
+
 #### ▼ 正常系
 
 ```typescript
@@ -132,83 +134,56 @@ export async function fetchUser(id: string) {
 ```
 
 ```typescript
-import { test, expect, vi } from 'vitest'
-import axios from 'axios'
-import { fetchUser } from './fetchUser'
+import {test, expect, vi} from "vitest";
+import axios from "axios";
+import {fetchUser} from "./fetchUser";
 
 // axiosクライアントのモック
-vi.mock('axios')
+vi.mock("axios");
 
 // テストスイート
-describe('fetchUser', async () => {
-
+describe("fetchUser", async () => {
   // リクエストのパラメーターに関するテストデータ
-  const userId = '1'
+  const userId = "1";
 
   // 正常系テストケース
-  test('success', async () => {
-
+  test("success", async () => {
     // レスポンスに関するテストデータ
     const response = {
-      id: '1',
-      name: 'Taro',
-    }
+      id: "1",
+      name: "Taro",
+    };
 
     // axiosクライアントのモックが一度だけデータを返却するように設定
-    vi.mocked(axios).get.mockResolvedValueOnce({data: response})
+    vi.mocked(axios).get.mockResolvedValueOnce({data: response});
 
     // 関数をテスト
-    const user = await fetchUser(userId)
+    const user = await fetchUser(userId);
 
     // 実際値と期待値を比較検証
     // toBe関数などでオブジェクトのフィールドを１つずつ照合する (toStrictEqual関数などでオブジェクトをひとまとめに照合しない)
-    expect(user.getId()).toBe('1')
-    expect(user.getName()).toBe('Taro')
+    expect(user.getId()).toBe("1");
+    expect(user.getName()).toBe("Taro");
     // 実行時間は0秒より大きくなる
     expect(user.executionTime).toBeGreaterThan(0);
     // 処理実行の開始時刻も返却できるとする
-    // 実際値をData形式に一度変換し、再び元のISO形式に戻しても、元の値と一致することを検証する
+    // 実際値をData形式に一度変換し、再び元のISO形式に戻しても元の値と一致することを検証する
     // 期待値は固定値じゃないのが不思議であるが、これが適切なテスト方法である
-    expect(new Date(user.startAtTimestamp).toISOString()).toBe(user.startAtTimestamp);
-  })
-```
+    expect(new Date(user.startAtTimestamp).toISOString()).toBe(
+      user.startAtTimestamp,
+    );
+  });
 
-#### ▼ 異常系
-
-```typescript
-// テスト対象の関数
-import axios from "axios";
-
-export async function fetchUser(id: string) {
-  const res = await axios.get(`/api/users/${id}`);
-  return res.data;
-}
-```
-
-```typescript
-import { test, expect, vi } from 'vitest'
-import axios from 'axios'
-import { fetchUser } from './fetchUser'
-
-// axiosクライアントのモック
-vi.mock('axios')
-
-// リクエストのパラメーターに関するテストデータ
-const userId = '1'
-
-// テストスイート
-describe('fetchUser', async () => {
   // 異常系テストケース
-  test('foo failure', async () => {
-
+  test("foo failure", async () => {
     // レスポンスに関するテストデータ
-    const response = new Error('Network Error')
+    const response = new Error("Network Error");
 
     // axiosクライアントのモックがエラーを一度だけ返すように設定
-    vi.mocked(axios).get.mockRejectedValueOnce(response)
+    vi.mocked(axios).get.mockRejectedValueOnce(response);
 
     // Error型を比較検証
-    await expect(fetchUser(userId)).rejects.toBeInstanceOf(Error)
+    await expect(fetchUser(userId)).rejects.toBeInstanceOf(Error);
 
     // await宣言で完了を待つようにしないと、そのままテスト処理が終わってしまう
     // 実際値と期待値を比較検証
@@ -216,12 +191,150 @@ describe('fetchUser', async () => {
       // 関数をテスト
       // 関数の結果をVitestに直接渡さないと、テストコードが例外で停止してしまう
       // rejects.toThrow関数で照合する
-      fetchUser(userId)
-    ).rejects.toThrow('Network Error')
-  })
+      fetchUser(userId),
+    ).rejects.toThrow("Network Error");
+  });
+});
+```
+
+### 外部とのパブリッシュ／サブスクライブ
+
+```typescript
+// テスト対象の関数
+export async function publishMessage(url: string) {
+  try {
+    await publishMessageToEmqx(url, "$share/test-topic", "Hello EMQX");
+    return "success";
+  } catch (err) {
+    throw new Error("failed to publish message");
+  }
+}
+
+// テスト対象の関数
+export async function subscribeMessage(url: string) {
+  try {
+    await subscribeMessageToEmqx(url, "$share/test-topic", "Hello EMQX");
+    return "success";
+  } catch (err) {
+    throw new Error("failed to subscribe message");
+  }
+}
+
+async function publishMessageToEmqx(
+  url: string,
+  topic: string,
+  message: string,
+): Promise<void> {
+  // ...
+
+  // ここでEMQXとの通信を実行するとする
+
+  // ...
+
+  console.log(`topic=${topic}, message=${message}`);
+}
+
+async function subscribeMessageToEmqx(
+  url: string,
+  topic: string,
+  message: string,
+): Promise<void> {
+  // ...
+
+  // ここでEMQXとの通信を実行するとする
+
+  // ...
+
+  console.log(`topic=${topic}, message=${message}`);
 }
 ```
 
+```typescript
+import {describe, test, expect, vi} from "vitest";
+import {publishMessage, subscribeMessage} from "./emqx";
+import {publishMessageToEmqx, subscribeMessageToEmqx} from "../emqx";
+
+describe("publishMessage", () => {
+  // 実際にパブリッシュを行わないように、関数をモック化
+  vi.mock("../emqx", () => ({
+    publishMessageToEmqx: vi.fn(),
+  }));
+
+  const url = "mqtt://localhost:1883";
+
+  // 正常系テストケース
+  test("should return success when message is published", async () => {
+    vi.mocked(publishMessageToEmqx).mockResolvedValueOnce(undefined);
+    const result = await publishMessage(url);
+
+    // publishMessageによる送信処理が正常に完了したことを検証する
+    expect(result).toBe("success");
+    // 内部でpublishMessageToEmqxが実行されていることを検証する
+    expect(publishMessageToEmqx).toHaveBeenCalledWith(
+      url,
+      "$share/test-topic",
+      "Hello EMQX",
+    );
+  });
+
+  // 異常系テストケース
+  test("should throw error when publish is failed", async () => {
+    vi.mocked(publishMessageToEmqx).mockRejectedValueOnce(
+      new Error("network error"),
+    );
+
+    // publishMessageが例外をスローすることを検証する
+    await expect(publishMessage(url)).rejects.toThrow("failed to send message");
+    // 内部でpublishMessageToEmqxが実行されていることを検証する
+    expect(publishMessageToEmqx).toHaveBeenCalledWith(
+      url,
+      "$share/test-topic",
+      "Hello EMQX",
+    );
+  });
+});
+
+describe("subscribeMessage", () => {
+  // 実際にサブスクライブを行わないように、関数をモック化
+  vi.mock("../emqx", () => ({
+    subscribeMessageToEmqx: vi.fn(),
+  }));
+
+  const url = "mqtt://localhost:1883";
+
+  // 正常系テストケース
+  test("should return success when message is subscribed", async () => {
+    vi.mocked(subscribeMessageToEmqx).mockResolvedValueOnce(undefined);
+    const result = await subscribeMessage(url);
+
+    // subscribeMessageによる受信処理が正常に完了したことを検証する
+    expect(result).toBe("success");
+    // 内部でsubscribeMessageToEmqxが実行されていることを検証する
+    expect(subscribeMessageToEmqx).toHaveBeenCalledWith(
+      url,
+      "$share/test-topic",
+      "Hello EMQX",
+    );
+  });
+
+  // 異常系テストケース
+  test("should throw error when subscribe is failed", async () => {
+    vi.mocked(subscribeMessageToEmqx).mockRejectedValueOnce(
+      new Error("network error"),
+    );
+
+    // subscribeMessageが例外をスローすることを検証する
+    await expect(subscribeMessage(url)).rejects.toThrow(
+      "failed to subscribe message",
+    );
+    // 内部でsubscribeMessageToEmqxが実行されていることを検証する
+    expect(subscribeMessageToEmqx).toHaveBeenCalledWith(
+      url,
+      "$share/test-topic",
+      "Hello EMQX",
+    );
+  });
+});
+```
 
 <br>
-
