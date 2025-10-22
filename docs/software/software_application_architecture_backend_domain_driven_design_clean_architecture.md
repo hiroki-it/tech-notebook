@@ -2252,9 +2252,7 @@ class DogOrder
     }
 
     /**
-     * 犬えさを返却する
-
-
+     * 犬用えさを返却する
      *
      * @return DogFood
      */

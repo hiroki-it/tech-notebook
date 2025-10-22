@@ -164,10 +164,12 @@ describe('fetchUser', async () => {
     // toBe関数などでオブジェクトのフィールドを１つずつ照合する (toStrictEqual関数などでオブジェクトをひとまとめに照合しない)
     expect(user.getId()).toBe('1')
     expect(user.getName()).toBe('Taro')
+    // 実行時間は0秒より大きくなる
+    expect(user.executionTime).toBeGreaterThan(0);
     // 処理実行の開始時刻も返却できるとする
     // 実際値をData形式に一度変換し、再び元のISO形式に戻しても、元の値と一致することを検証する
     // 期待値は固定値じゃないのが不思議であるが、これが適切なテスト方法である
-    expect(new Date(user.executionStartAtTimestamp).toISOString()).toBe(user.executionStartAtTimestamp);
+    expect(new Date(user.startAtTimestamp).toISOString()).toBe(user.startAtTimestamp);
   })
 ```
 
@@ -220,4 +222,6 @@ describe('fetchUser', async () => {
 }
 ```
 
+
 <br>
+

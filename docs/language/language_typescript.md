@@ -520,11 +520,12 @@ typeエイリアス宣言の方が型としての強制力が高い。
 
 また、interface宣言はオブジェクト指向の文脈でメソッドの仕様を持たせることが多く、型の文脈では適さない（と個人的に思っている）
 
-| 項目           | typeエイリアス宣言 | interface宣言 |
-| -------------- | ------------------ | ------------- |
-| 継承           | できない           | できる        |
-| 同名の型       | できない           | できる        |
-| Mapped Types型 | できる             | できない      |
+| 項目            | typeエイリアス宣言        | interface宣言 |
+|---------------|--------------------| ------------- |
+| 継承            | 基本はできない (交差型のみできる) | できる        |
+| 継承時の上書き       | 基本はできない (交差型のみできる) | できる        |
+| 同名の型          | できない               | できる        |
+| Mapped Types型 | できる                | できない      |
 
 > - https://typescriptbook.jp/reference/object-oriented/interface/interface-vs-type-alias#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%81%A8%E5%9E%8B%E3%82%A8%E3%82%A4%E3%83%AA%E3%82%A2%E3%82%B9%E3%81%AE%E9%81%95%E3%81%84
 > - https://typescriptbook.jp/reference/object-oriented/interface/interface-vs-type-alias#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%81%A8%E5%9E%8B%E3%82%A8%E3%82%A4%E3%83%AA%E3%82%A2%E3%82%B9%E3%81%AE%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91
@@ -532,6 +533,8 @@ typeエイリアス宣言の方が型としての強制力が高い。
 <br>
 
 ### typeエイリアス宣言
+
+#### ▼ typeエイリアス宣言とは
 
 オブジェクト以外の型を宣言する場合、typeエイリアス宣言を使用する。
 
@@ -544,6 +547,57 @@ type Foo = {
   qux: string;
 };
 ```
+
+#### ▼ 交差型
+
+複数の型を同時に満たす型である。
+
+型を指定した処理では、両方の型を指定しないといけない。
+
+```typescript
+type A = { foo: string };
+type B = { bar: number };
+
+// 複数の型を同時に満たす
+type AB = A & B;
+
+// 両方の型を指定する
+function method(arg: AB): void {
+  console.log(`foo: ${arg.foo}, bar: ${arg.bar}`);
+}
+```
+
+> - https://tyotto-good.com/typescript/union-intersection-type
+
+#### ▼ 合併型
+
+複数の型のいずれかを満たす型である。
+
+型を指定した処理では、いずれかの型を指定しなければならない。
+
+
+```typescript
+type A = { foo: string };
+type B = { bar: number };
+
+// 複数の型のいずれかを満たす
+type AB = A | B;
+
+function method(arg: AB): void {
+  
+  // いずれかの型を指定しないといけない
+  if ("foo" in arg) {
+    console.log(`foo: ${arg.foo}`);
+    return;
+  } 
+  
+  console.log(`bar: ${arg.bar}`);
+  return;
+}
+```
+
+> - https://tyotto-good.com/typescript/union-intersection-type
+
 
 <br>
 
