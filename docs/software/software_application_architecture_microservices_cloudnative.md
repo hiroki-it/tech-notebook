@@ -115,18 +115,6 @@ CNCFの定義のとおり、クラウドネイティブ技術はパブリック�
 
 <br>
 
-表2. マイクロサービスアーキテクチャに関連する歴史
-
-| 年代                       | アーキテクチャスタイル           | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| -------------------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1999年                     | モノリスアーキテクチャ           | バックエンドのアーキテクチャとしてモノリスアーキテクチャが台頭していた \*12 。                                                                                                                                                                                                                                                                                                                                                                                                         |
-| 1900年後半〜<br>2000年前半 | サービス指向アーキテクチャ       | Michael BellやThomas Erlらが、アプリケーションを機能の粒度で分割するアーキテクチャを提唱した *13 。ただ『機能』という粒度に分割の指針がなかった *14 。さまざまな問題があったため、概念としては提唱されていても実装方法の確立にまでは至らなかった。                                                                                                                                                                                                                                     |
-| 2003年                     | DDD (ドメイン駆動設計)           | Eric EvansはDDDを提唱した \*15 。DDDは、オブジェクト指向分析設計から派生した分析設計の方法の一種である。とくに機能要件を解決するアプリケーションに有効である。オブジェクト指向分析設計のベタープラクティスを集め、より強化することにつながった。                                                                                                                                                                                                                                       |
-| 2014年                     | マイクロサービスアーキテクチャ   | Simon Brownは、モノリスアーキテクチャは時間経過とともに無秩序でつぎはぎだらけになり得ることを指摘した *16 。Martin FowlerとJames Lewisは、サービス指向アーキテクチャとDDDを統合し、アプリケーションを独立したマイクロサービスの集まりに分割するアーキテクチャを提唱した *17 。サービス指向アーキテクチャにDDDの高凝集／低結合の考え方を取り入れることで、サービス指向アーキテクチャを実装可能な理論に昇華させた。一方で、マイクロサービスの大きさには十分に注意を払う必要がある \*18。 |
-| 2015年                     | モジュラーモノリスアーキテクチャ | Martin Flowlerはモジュラーモノリスアーキテクチャを提唱した \*19 。モジュラモノリスでは、マイクロサービスアーキテクチャとモノリスアーキテクチャの間をとった粒度で、アプリケーションを細かいモジュールに分割する。最初にモジュラーモノリスアーキテクチャとして設計し、マイクロサービスアーキテクチャに移行していくという選択肢もある。                                                                                                                                                   |
-
-<br>
-
 ### 2.2 マイクロサービスアーキテクチャの歴史
 
 #### 関連アーキテクチャの歴史
@@ -139,49 +127,53 @@ CNCFの定義のとおり、クラウドネイティブ技術はパブリック�
 
 2014年にマイクロサービスアーキテクチャが登場するまでに、いくつかのアーキテクチャスタイルが登場しました。のちに解説するサービスメッシュはマイクロサービスアーキテクチャの課題を解決する概念として2016年に登場しました。
 
-表01-01. 関連アーキテクチャの歴史
+表2. マイクロサービスアーキテクチャに関連する歴史
 
-| 登場年                   | アーキテクチャスタイル      | 提唱者（アルファベット順）             | 概要                                                         |
-| --------------------- | ---------------- | ------------------------- | ---------------------------------------------------------- |
-| 1999                  | モノリスアーキテクチャ      | 自然発生的                     | アプリケーションのすべてのロジックを単一のプロセスで稼働させ、また全体をリリースする。                |
-| 1990年代後半〜<br>2000年代前半 | サービス指向アーキテクチャ    | Michael Bell、Thomas Erlなど | アプリケーションを『機能』の粒度で分割する。                                     |
-| 2003                  | ドメイン駆動設計         | Eric Evans                | オブジェクト指向分析設計のベタープラクティスを集め、機能ロジックのモデリングを強化する。               |
-| 2003                  | プレゼンテーションドメイン分離  | Martin Fowler             | フロントエンド領域をバックエンド領域の機能ロジックから切り離す。                           |
-| 2014                  | マイクロサービスアーキテクチャ  | James Lewis、Martin Fowler | アプリケーションをドメイン駆動設計の『集約』や『境界づけられたコンテキスト』の粒度で分割する。            |
-
+| 登場年                         | アーキテクチャスタイル         | 提唱者（アルファベット順）   | 概要                                                                                           |
+| ------------------------------ | ------------------------------ | ---------------------------- | ---------------------------------------------------------------------------------------------- |
+| 1999                           | モノリスアーキテクチャ         | 自然発生的                   | アプリケーションのすべてのロジックを単一のプロセスで稼働させ、また全体をリリースする。         |
+| 1990年代後半〜<br>2000年代前半 | サービス指向アーキテクチャ     | Michael Bell、Thomas Erlなど | アプリケーションを『機能』の粒度で分割する。                                                   |
+| 2003                           | ドメイン駆動設計               | Eric Evans                   | オブジェクト指向分析設計のベタープラクティスを集め、機能ロジックのモデリングを強化する。       |
+| 2003                           | プレゼンテーションドメイン分離 | Martin Fowler                | フロントエンド領域をバックエンド領域の機能ロジックから切り離す。                               |
+| 2014                           | マイクロサービスアーキテクチャ | James Lewis、Martin Fowler   | アプリケーションをドメイン駆動設計の『集約』や『境界づけられたコンテキスト』の粒度で分割する。 |
 
 #### ◼︎ 1999年：モノリスアーキテクチャ
 
-マイクロサービスアーキテクチャの登場前、1999年頃、アプリケーションはモノリスアーキテクチャで設計することが一般的でした \*1 。
+マイクロサービスアーキテクチャの登場前、1999年頃、アプリケーションはモノリスアーキテクチャで設計することが一般的でした \*20 。
 
 モノリスアーキテクチャでは、アプリケーションのすべてのロジックを単一のプロセスで稼働させ、また全体をリリースします。開発組織や対象ドメインが成長初期で小さい場合、機能ロジック追加やリリースは容易です。しかし、開発組織や対象ドメインが成長して大きくなると、機能ロジック追加やリリースによる影響範囲の大きさ、分業のしにくさ、技術スタックの部分最適化のしにくさなどの課題が生じ始めました。のちに提唱されるプレゼンテーションドメイン分離やマイクロサービスアーキテクチャでは、機能／非機能ロジックを細分化することを目指します。
 
-
-
 #### ◼︎ 1990年代後半〜2000年代前半：サービス指向アーキテクチャ
 
-1900年代後半から2000年代前半頃、Michael BellやThomas Erlらがサービス指向アーキテクチャを提唱しました \*2 。サービス指向アーキテクチャでは、アプリケーションを『機能』の粒度で分割することで、モノリスアーキテクチャの課題を解決することを試みました。ただ『機能』という粒度に明確な指針がありませんでした \*3 。そのため、概念としては提唱されていても一般化までには至りませんでした。
+1900年代後半から2000年代前半頃、Michael BellやThomas Erlらがサービス指向アーキテクチャを提唱しました \*21 。
+
+サービス指向アーキテクチャでは、アプリケーションを『機能』の粒度で分割することで、モノリスアーキテクチャの課題を解決することを試みました。
+
+ただ『機能』という粒度に明確な指針がありませんでした \*22 。
+
+そのため、概念としては提唱されていても一般化までには至りませんでした。
 
 #### ◼︎ 2003年：ドメイン駆動設計
 
-2003年頃、Eric Evansはドメイン駆動設計を提唱しました \*4 。ドメイン駆動設計はオブジェクト指向分析設計から派生した分析設計の方法の一種であり、オブジェクト指向分析設計のベタープラクティスを集めることで、機能ロジックのモデリングを強化しました。
+2003年頃、Eric Evansはドメイン駆動設計を提唱しました \*23 。ドメイン駆動設計はオブジェクト指向分析設計から派生した分析設計の方法の一種であり、オブジェクト指向分析設計のベタープラクティスを集めることで、機能ロジックのモデリングを強化しました。
 
 #### ◼︎ 2003年：プレゼンテーションドメイン分離
 
-サービス指向アーキテクチャと同じ頃、Martin Fowlerはプレゼンテーションドメイン分離を提唱しました \*5 。プレゼンテーションドメイン分離では、ビジネスへの影響を抑えるため、バックエンド領域の機能ロジックから、ロジックの変更頻度の高いフロントエンドアプリケーションを切り離します。
+サービス指向アーキテクチャと同じ頃、Martin Fowlerはプレゼンテーションドメイン分離を提唱しました \*24 。
+
+プレゼンテーションドメイン分離では、ビジネスへの影響を抑えるため、バックエンド領域の機能ロジックから、ロジックの変更頻度の高いフロントエンドアプリケーションを切り離します。
 
 #### ◼︎ 2014年：マイクロサービスアーキテクチャ
 
-2014年頃、Simon Brownは、モノリスアーキテクチャは時間経過とともに無秩序でつぎはぎだらけな『大きな泥団子』になり得ることを指摘しました \*6 。
+2014年頃、Simon Brownは、モノリスアーキテクチャは時間経過とともに無秩序でつぎはぎだらけな『大きな泥団子』になり得ることを指摘しました \*25 。
 
-それと同じ頃、Martin FowlerとJames Lewisはマイクロサービスアーキテクチャを提唱しました \*7 。
+それと同じ頃、Martin FowlerとJames Lewisはマイクロサービスアーキテクチャを提唱しました \*26 。
 
 マイクロサービスアーキテクチャでは、サービス指向アーキテクチャにドメイン駆動設計の考え方を取り入れます。
 
 ドメイン駆動設計には、集約や境界づけられたコンテキストといった高凝集と低結合の考え方があります。
 
 これらをマイクロサービスの粒度として捉えることで、サービス指向アーキテクチャをより実践的な理論に昇華させました。
-
 
 ---
 
@@ -203,30 +195,29 @@ CNCFの定義のとおり、クラウドネイティブ技術はパブリック�
 
 \*19 Brown, S. (2014). Fowler, M. (n.d.). bliki: Monolith First. http://martinfowler.com/. https://martinfowler.com/bliki/ MonolithFirst.html
 
+\*20 Richards, M., & Ford, N. (2020). 『Fundamentals of software Architecture: An Engineering Approach』 O'Reilly Media.
 
-\*1 Richards, M., & Ford, N. (2020). 『Fundamentals of software Architecture: An Engineering Approach』 O’Reilly Media.
+\*21 Wikipedia contributors. (2024). Monolithic application. Wikipedia. https://en.wikipedia.org/wiki/Monolithic_application
 
-\*2 Wikipedia contributors. (2024). Monolithic application. Wikipedia. https://en.wikipedia.org/wiki/Monolithic_application
+\*22 Wikipedia contributors. (2024a). Service-oriented architecture. Wikipedia. https://en.wikipedia.org/wiki/Service-oriented_architecture
 
-\*3 Wikipedia contributors. (2024a). Service-oriented architecture. Wikipedia. https://en.wikipedia.org/wiki/Service-oriented_architecture
+\*23 Newman, S. (2021). 『Building microservices』 O'Reilly Media, Inc.
 
-\*4 Newman, S. (2021). 『Building microservices』 O’Reilly Media, Inc.
+\*24 Evans, E. (2004). 『Domain-driven design: Tackling Complexity in the Heart of Software』 Addison-Wesley Professional.
 
-\*5 Evans, E. (2004). 『Domain-driven design: Tackling Complexity in the Heart of Software』 Addison-Wesley Professional.
+\*25 Fowler, M. (n.d.). _bliki: Presentation Domain Separation_. martinfowler.com. https://martinfowler.com/bliki/PresentationDomainSeparation.html
 
-\*6 Fowler, M. (n.d.). *bliki: Presentation Domain Separation*. martinfowler.com. https://martinfowler.com/bliki/PresentationDomainSeparation.html
-
-\*7 Lewis, J. (n.d.). Microservices. http://martinfowler.com/. https://martinfowler.com/articles/microservices.html
+\*26 Lewis, J. (n.d.). Microservices. http://martinfowler.com/. https://martinfowler.com/articles/microservices.html
 
 <br>
 
 ## 3 マイクロサービスアーキテクチャに関連のあるクラウドネイティブ技術
 
-CNCFでは、オープンソースやクラウドプロバイダーのクラウドネイティブ技術をさまざまな分野に分類しています \*20 。
+CNCFでは、オープンソースやクラウドプロバイダーのクラウドネイティブ技術をさまざまな分野に分類しています \*27 。
 
 各分野には、マイクロサービスアーキテクチャに関連のあるクラウドネイティブ技術が多くあります。
 
-表3でそれらを一覧で示します \*21 。
+表3でそれらを一覧で示します \*28 。
 
 表ではCNCF Landscapeにある定義を参考して、各分野のマイクロサービスとの関連性を説明します。
 
@@ -262,18 +253,18 @@ CNCFでは、オープンソースやクラウドプロバイダーのクラウ�
 | Scheduling & Orchestration (スケジューリングとオーケストレーション)       | クラスター全体でコンテナを実行し、また管理する。                                                                                                 | ・Knative<br>・Kubernetes                                                                                                                                  | ・AWS (ECS)                                           |
 | Security & Compliance (セキュリティとコンプライアンス)                    | 脆弱性を監視して脆弱性を検出する。また、マイクロサービスの認証認可を強化する。                                                                   | ・Cert Manager<br>・Falco<br>・Keycloak<br>・OAuth2 Proxy<br>・SOPS                                                                                        | ・AWS (Certificate Manager、Cognito、Secrets Manager) |
 | Service Mesh (サービスメッシュ)                                           | 各マイクロサービスのロジックを変更することなく、マイクロサービス間の通信に信頼性、オブザーバビリティー、セキュリティ機能などを一律的に追加する。 | ・Istio<br>・Linkerd                                                                                                                                       | ・AWS (VPC Lattice、ECS Service Connect)              |
-| Service Proxy (サービスプロキシ) \*22                                     | マイクロサービスからの送信されたリクエストを仲介し、ほかのマイクロサービスにフォワーディングする。                                               | ・Envoy<br>・Nginx                                                                                                                                         | ・AWS (ALB)                                           |
+| Service Proxy (サービスプロキシ) \*29                                     | マイクロサービスからの送信されたリクエストを仲介し、ほかのマイクロサービスにフォワーディングする。                                               | ・Envoy<br>・Nginx                                                                                                                                         | ・AWS (ALB)                                           |
 | Streaming & Messaging (ストリーミングとメッセージング)                    | パブリッシャーから送信されたメッセージを仲介し、他のサブスクライバーにフォワーディングする。                                                     | ・Apache Kafka<br>・CloudEvents<br>・RabbitMQ                                                                                                              | ・AWS (Kinesis、SQS)                                  |
 
 ---
 
 注釈
 
-\*20 CNCFはクラウドネイティブ技術の属する分類をしばしば変更します。最新の分類はCNCF Landscape (https://landscape.cncf.io/) を参照してください。
+\*27 CNCFはクラウドネイティブ技術の属する分類をしばしば変更します。最新の分類はCNCF Landscape (https://landscape.cncf.io/) を参照してください。
 
-\*21 クラウドネイティブ技術には、人気があってもCNCF未登録または分野未分類なものがあります。今回、登録済や分類済の技術を、便宜上、競合技術と同じ分野に記載しています。
+\*28 クラウドネイティブ技術には、人気があってもCNCF未登録または分野未分類なものがあります。今回、登録済や分類済の技術を、便宜上、競合技術と同じ分野に記載しています。
 
-\*22 Service Proxy分野のツールは設定次第でAPI Gateway分野のツールと同等に使用できます。
+\*29 Service Proxy分野のツールは設定次第でAPI Gateway分野のツールと同等に使用できます。
 
 <br>
 
@@ -283,7 +274,7 @@ CNCFでは、オープンソースやクラウドプロバイダーのクラウ�
 
 まず、マイクロサービスアーキテクチャはどのような領域からなるのでしょうか？
 
-図1と表3でモノリスアーキテクチャ、プレゼンテーションドメイン分離 (過渡的なアーキテクチャ) \*23 、マイクロサービスアーキテクチャの例を示しそれぞれの領域を簡単に比較します。
+図1と表3でモノリスアーキテクチャ、プレゼンテーションドメイン分離 (過渡的なアーキテクチャ) \*30 、マイクロサービスアーキテクチャの例を示しそれぞれの領域を簡単に比較します。
 
 モノリスアーキテクチャからマイクロサービスアーキテクチャに至るまでに、領域が細分化されていきます。
 
@@ -349,7 +340,7 @@ CNCFでは、オープンソースやクラウドプロバイダーのクラウ�
 
 注釈
 
-\*23 Fowler, M. (n.d.). bliki: Presentation Domain Separation. http://martinfowler.com/. https://martinfowler.com/bliki/PresentationDomainSeparation.html
+\*30 Fowler, M. (n.d.). bliki: Presentation Domain Separation. http://martinfowler.com/. https://martinfowler.com/bliki/PresentationDomainSeparation.html
 
 <br>
 
@@ -405,19 +396,19 @@ AWSの設計については、AWS Well-Architected Framework \*29 を合わせ�
 
 注釈
 
-\*24 A pattern language for microservices. (n.d.). http://microservices.io/. https://microservices.io/patterns/index.html
+\*31 A pattern language for microservices. (n.d.). http://microservices.io/. https://microservices.io/patterns/index.html
 
-\*25 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.
+\*32 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.
 
-\*26 Newman, S. (2021). Building microservices. O’Reilly Media, Inc.
+\*33 Newman, S. (2021). Building microservices. O’Reilly Media, Inc.
 
-\*27 Mezzalira, L. (2021). Building Micro-Frontends. O’Reilly Media, Inc.
+\*34 Mezzalira, L. (2021). Building Micro-Frontends. O’Reilly Media, Inc.
 
-\*28 Siriwardena, P., & Dias, N. (2020). Microservices Security in action. Manning Publications.
+\*35 Siriwardena, P., & Dias, N. (2020). Microservices Security in action. Manning Publications.
 
-\*29 Ibryam, B., & Huss, R. (2023). Kubernetes patterns. O’Reilly Media, Inc.
+\*36 Ibryam, B., & Huss, R. (2023). Kubernetes patterns. O’Reilly Media, Inc.
 
-\*30 AWS Well-Architected Framework - AWS Well-Architected Framework. (n.d.). https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html
+\*37 AWS Well-Architected Framework - AWS Well-Architected Framework. (n.d.). https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html
 
 <br>
 
@@ -496,13 +487,13 @@ flowchart LR
 
 注釈
 
-\*31 A pattern language for microservices. (n.d.). http://microservices.io/. https://microservices.io/patterns/index.html
+\*38 A pattern language for microservices. (n.d.). http://microservices.io/. https://microservices.io/patterns/index.html
 
-\*32 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.
+\*39 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.
 
-\*33 Newman, S. (2021). Building microservices. O’Reilly Media, Inc.
+\*40 Newman, S. (2021). Building microservices. O’Reilly Media, Inc.
 
-\*34 Mezzalira, L. (2021). Building Micro-Frontends. O’Reilly Media, Inc.
+\*41 Mezzalira, L. (2021). Building Micro-Frontends. O’Reilly Media, Inc.
 
 <br>
 
@@ -617,7 +608,7 @@ APIゲートウェイをクラウドネイティブ技術で代替できます�
 
 BFFとしてService Proxy、Service Mesh、API Gateway分野のツールを使用できます。
 
-例えば、NginxはAPIゲートウェイとして動作します \*34 。
+例えば、NginxはAPIゲートウェイとして動作します \*41 。
 
 クライアント別 (PCブラウザSPA、スマホSPA、外部APIなど) にNginxを配置します。
 
@@ -647,7 +638,7 @@ APIゲートウェイとして使用できるツールはNginx以外にも非常
 
 なお、Istioの提供するIstio Ingress GatewayとIstio Egress Gatewayはメッシュゲートウェイと呼ばれ、APIゲートウェイと似た名前をもちます。
 
-ただ、APIゲートウェイとは異なる役割を持ちます \*35 。
+ただ、APIゲートウェイとは異なる役割を持ちます \*42 。
 
 <br>
 
@@ -661,9 +652,9 @@ APIゲートウェイとして使用できるツールはNginx以外にも非常
 
 注釈
 
-\*35 DeJonghe, D. (2022). NGINX Cookbook. O’Reilly Media, Inc.
+\*42 DeJonghe, D. (2022). NGINX Cookbook. O’Reilly Media, Inc.
 
-\*36 Gough, J., Bryant, D., & Auburn, M. (2021). Mastering API architecture. O’Reilly Media, Inc.
+\*43 Gough, J., Bryant, D., & Auburn, M. (2021). Mastering API architecture. O’Reilly Media, Inc.
 
 <br>
 
@@ -736,7 +727,7 @@ flowchart LR
 
 リクエスト−レスポンスにはRESTful-APIとRPC-APIがあります。
 
-パブリッシュ/サブスクライブにはプルベースとプッシュベースがあります \*36 。
+パブリッシュ/サブスクライブにはプルベースとプッシュベースがあります \*43 。
 
 そして共有データ経由があります。
 
@@ -752,7 +743,7 @@ flowchart LR
 
 | パターン名                       | リクエスト−レスポンス                                                                                                                                | パブリッシュ/サブスクライブ                                                                                                                                                                                                                                                           | 共有データ経由                                                                                                                                                                                                                                                                   |
 | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 説明                             | 送信元マイクロサービスは宛先と同期的に通信する。通信は双方向に流れる。                                                                               | 送信元マイクロサービスはメッセージ仲介システム \*37 を介して、宛先マイクロサービスと非同期的に通信する。通信は一方向に流れる。                                                                                                                                                        | 送信元マイクロサービスは作成したデータをストレージに保管する。宛先マイクロサービスはストレージをポーリングして新しいデータが追加され次第、ストレージからこれを読み込む。通信は一方向に流れる。このパターンの例として、データレイクやデータウェアハウスを使用したシステムがある。 |
+| 説明                             | 送信元マイクロサービスは宛先と同期的に通信する。通信は双方向に流れる。                                                                               | 送信元マイクロサービスはメッセージ仲介システム \*44 を介して、宛先マイクロサービスと非同期的に通信する。通信は一方向に流れる。                                                                                                                                                        | 送信元マイクロサービスは作成したデータをストレージに保管する。宛先マイクロサービスはストレージをポーリングして新しいデータが追加され次第、ストレージからこれを読み込む。通信は一方向に流れる。このパターンの例として、データレイクやデータウェアハウスを使用したシステムがある。 |
 | クラウドネイティブ技術との関連性 | RESTの実装方法として、HTTP/1.1でテキストを送受信するパッケージを使用できる。一方で、RPCの実装方法にはRemote Procedure Call分野のツールを使用できる。 | メッセージ仲介システムとして、Streaming & Messaging分野のツールを使用できる。また、パブリッシュとサブスクライブの実装方法として、Streaming & Messaging分野のツールのクライアントSDKを使用できる。サブスクライブにはプルベースとプッシュベースがあり、ツールによってはこれらを選べる。 | ストレージとして、Cloud Native StorageやDatabase分野のツールを使用できる。耐障害性の観点から、これらはオープンソースよりマネージドサービスの技術を使用することをお奨めする。                                                                                                     |
 | 技術例                           | ・REST (パッケージ) <br>・Remote Procedure Call (gRPC)                                                                                               | ・Streaming & Messaging (CloudEvents、RabbitMQ)                                                                                                                                                                                                                                       | ・Cloud Native Storage (AWS S3) <br>・Database (AWS Aurora MySQL)                                                                                                                                                                                                                |
 
@@ -777,7 +768,7 @@ flowchart LR
 
 リクエスト−レスポンスのクライアントとサーバーとして、HTTP/1.1でテキスト (JSON、XML) を送受信するパッケージやRemote Procedure Call分野のツールを使用できます。
 
-例えば、マイクロサービスアーキテクチャでgRPCを使用する場合、マイクロサービスのインフラストラクチャーレイヤーにgRPC関連の処理を配置することをお奨めします \*38 。
+例えば、マイクロサービスアーキテクチャでgRPCを使用する場合、マイクロサービスのインフラストラクチャーレイヤーにgRPC関連の処理を配置することをお奨めします \*45 。
 
 マイクロサービスのgRPCクライアントは宛先マイクロサービスのgRPCサーバーと通信します。
 
@@ -785,7 +776,7 @@ flowchart LR
 
 フロントエンドのRESTfulクライアントはBFFのNginxのRESTfulサーバーと通信します。
 
-NgincはgRPCサーバーまたはRESTfulサーバーと通信し、もしgRPCサーバーと通信する場合は専用のモジュールが必要です \*39 。
+NgincはgRPCサーバーまたはRESTfulサーバーと通信し、もしgRPCサーバーと通信する場合は専用のモジュールが必要です \*46 。
 
 <br>
 
@@ -799,13 +790,13 @@ NgincはgRPCサーバーまたはRESTfulサーバーと通信し、もしgRPCサ
 
 注釈
 
-\*37 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.
+\*44 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.
 
-\*38 メッセージ仲介システムの種類として、メッセージブローカー、メッセージキュー、およびイベントバスがあります。
+\*45 メッセージ仲介システムの種類として、メッセージブローカー、メッセージキュー、およびイベントバスがあります。
 
-\*39 Vandeperre, M. (2023b, October 18). Implementing clean architecture solutions: A practical example | Red Hat Developer. Red Hat Developer. https://developers.redhat.com/articles/2023/08/08/implementing-clean-architecture-solutions-practical-example
+\*46 Vandeperre, M. (2023b, October 18). Implementing clean architecture solutions: A practical example | Red Hat Developer. Red Hat Developer. https://developers.redhat.com/articles/2023/08/08/implementing-clean-architecture-solutions-practical-example
 
-\*40 Module ngx_http_grpc_module. (n.d.). https://nginx.org/en/docs/http/ngx_http_grpc_module.html
+\*47 Module ngx_http_grpc_module. (n.d.). https://nginx.org/en/docs/http/ngx_http_grpc_module.html
 
 <br>
 
@@ -813,13 +804,13 @@ NgincはgRPCサーバーまたはRESTfulサーバーと通信し、もしgRPCサ
 
 マイクロサービスの分割はマイクロサービスアーキテクチャの設計の中で最重要な問題であり、技術的な難易度も非常に高いです。
 
-分割のための境界を見つけるためには各マイクロサービスの凝集度、結合度、そして情報隠蔽度に着目するべきです \*40 。
+分割のための境界を見つけるためには各マイクロサービスの凝集度、結合度、そして情報隠蔽度に着目するべきです \*47 。
 
 図13で、マイクロサービス分割方法のデザインパターンの種類を示します。
 
 代表的なものには、DDDに基づく境界、永続データの機密性の差異、永続データの所有組織の違いがあります。
 
-また、DDDに基づく境界には境界づけられたコンテキストと1つ以上の集約 \*41 があります。
+また、DDDに基づく境界には境界づけられたコンテキストと1つ以上の集約 \*48 があります。
 
 <br>
 
@@ -857,9 +848,9 @@ DDDはマイクロサービスアーキテクチャの文脈とは関係なく�
 
 そこで、ここでは関連書籍を少しだけ紹介します。
 
-Learning Domain-Driven design本 *42 は、DDDの代表的な書籍であるDomain-Driven design本 *43 やImplementing Domain-Driven design本 \*44 をわかりやすく解説しており、さらにマイクロサービス分割方法へのDDDの適用についても言及しています。
+Learning Domain-Driven design本 *42 は、DDDの代表的な書籍であるDomain-Driven design本 *43 やImplementing Domain-Driven design本 \*51 をわかりやすく解説しており、さらにマイクロサービス分割方法へのDDDの適用についても言及しています。
 
-補章で登場したDDDの用語やデザインパターンは、Domain-Driven Design reference本 \*45 で整理されています。
+補章で登場したDDDの用語やデザインパターンは、Domain-Driven Design reference本 \*52 で整理されています。
 
 <br>
 
@@ -873,17 +864,17 @@ Learning Domain-Driven design本 *42 は、DDDの代表的な書籍であるDoma
 
 注釈
 
-\*41 Newman, S. (2021). Building microservices. O’Reilly Media, Inc.
+\*48 Newman, S. (2021). Building microservices. O’Reilly Media, Inc.
 
-\*42 マイクロサービスを1つの集約よりも小さく分割するべきではありません。小さすぎるマイクロサービスから構成されるマイクロサービスアーキテクチャは分散した大きな泥団子と言われており、アンチパターンです。例えば、エンティティー単位で分割してしまうエンティティーサービスというアンチパターンがあります。The entity Service Antipattern - wide awake developers. (2017, December 5). https://www.michaelnygard.com/blog/2017/12/the-entity-service-antipattern/
+\*49 マイクロサービスを1つの集約よりも小さく分割するべきではありません。小さすぎるマイクロサービスから構成されるマイクロサービスアーキテクチャは分散した大きな泥団子と言われており、アンチパターンです。例えば、エンティティー単位で分割してしまうエンティティーサービスというアンチパターンがあります。The entity Service Antipattern - wide awake developers. (2017, December 5). https://www.michaelnygard.com/blog/2017/12/the-entity-service-antipattern/
 
-\*43 Khononov, V. (2021) Learning Domain-Driven design: Aligning Software Architecture and Business Strategy. O’Reilly Media.
+\*50 Khononov, V. (2021) Learning Domain-Driven design: Aligning Software Architecture and Business Strategy. O’Reilly Media.
 
-\*44 Evans, E. (2003) Domain-Driven design: Tackling Complexity in the Heart of Software. Addison-Wesley.
+\*51 Evans, E. (2003) Domain-Driven design: Tackling Complexity in the Heart of Software. Addison-Wesley.
 
-\*45 Vernon, V. (2013) Implementing Domain-Driven design. Addison-Wesley.
+\*52 Vernon, V. (2013) Implementing Domain-Driven design. Addison-Wesley.
 
-\*46 Evans, E. (2014) Domain-Driven Design reference: Definitions and Pattern Summaries. Dog Ear Publishing.
+\*53 Evans, E. (2014) Domain-Driven Design reference: Definitions and Pattern Summaries. Dog Ear Publishing.
 
 <br>
 
@@ -940,9 +931,9 @@ flowchart LR
 
 注釈
 
-\*47 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.
+\*54 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.
 
-\*48 Newman, S. (2021). Building microservices. O’Reilly Media, Inc.
+\*55 Newman, S. (2021). Building microservices. O’Reilly Media, Inc.
 
 <br>
 
@@ -950,7 +941,7 @@ flowchart LR
 
 マイクロサービスを適切な結合度と凝集度で分割することにより、開発を分業しやすくして機能的なロジックの拡張性や生産性を高められます。
 
-粒度が大き過ぎればモノリスアーキテクチャとなり、小さ過ぎれば分散した大きな泥団子になってしまいます \*48 。
+粒度が大き過ぎればモノリスアーキテクチャとなり、小さ過ぎれば分散した大きな泥団子になってしまいます \*55 。
 
 図17で、マイクロサービス設計方法のデザインパターングループの種類を示します。
 
@@ -988,7 +979,7 @@ DDDのドメインモデリング手順では、ドメインエキスパート�
 
 図18で、DDDデザインパターンの種類を示します。
 
-代表的なものにはエンティティーや値オブジェクトがあり、ほかに取り上げしきれないほどパターンがあります \*49 。
+代表的なものにはエンティティーや値オブジェクトがあり、ほかに取り上げしきれないほどパターンがあります \*56 。
 
 ドメインロジックは機能的であり、クラウドネイティブ技術で代替できません。
 
@@ -1019,7 +1010,7 @@ flowchart LR
 
 図19で、アプリケーションアーキテクチャ設計のデザインパターンを示します。
 
-代表的なものにはレイヤードアーキテクチャ、ヘキサゴナルアーキテクチャ、オニオンアーキテクチャ、クリーンアーキテクチャがあります \*50 。
+代表的なものにはレイヤードアーキテクチャ、ヘキサゴナルアーキテクチャ、オニオンアーキテクチャ、クリーンアーキテクチャがあります \*57 。
 
 これらはDDDデザインパターンを適切な層に実装するため、またドメインロジックを持つパターンを隔離するための方法です。
 
@@ -1058,7 +1049,7 @@ IstioなどのService Mesh分野のツールを使用しない場合、マイク
 
 一方で、マイクロサービス間通信方法にパブリッシュ/サブスクライブを使用している場合、ドメインロジックとメッセージ仲介システムのクライアントSDKの仲介として、Streaming & Messaging分野のツールを使用できます。
 
-例えば、CloudEventsとCloudEvents SDKはドメインロジックのイベントをメッセージ仲介システムに送信します \*52 。
+例えば、CloudEventsとCloudEvents SDKはドメインロジックのイベントをメッセージ仲介システムに送信します \*59 。
 
 表8. アプリケーションアーキテクチャとクラウドネイティブ技術の関連性
 
@@ -1072,13 +1063,13 @@ IstioなどのService Mesh分野のツールを使用しない場合、マイク
 
 注釈
 
-\*49 Brown, S. (2014, August 4). Distributed big balls of mud. http://dzone.com/. https://dzone.com/articles/distributed-big-balls-mud
+\*56 Brown, S. (2014, August 4). Distributed big balls of mud. http://dzone.com/. https://dzone.com/articles/distributed-big-balls-mud
 
-\*50 Evans, E. (2014). Domain-Driven Design reference: Definitions and Pattern Summaries. Dog Ear Publishing.
+\*57 Evans, E. (2014). Domain-Driven Design reference: Definitions and Pattern Summaries. Dog Ear Publishing.
 
-\*51 Martin, R. C. (2017). Clean architecture: A Craftsman’s Guide to Software Structure and Design. Prentice Hall.
+\*58 Martin, R. C. (2017). Clean architecture: A Craftsman’s Guide to Software Structure and Design. Prentice Hall.
 
-\*52 Salatino, M. (2022, January 29). Event-Driven applications with CloudEvents on Kubernetes – Salaboy (Open Source Knowledge). Salaboy. https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/
+\*59 Salatino, M. (2022, January 29). Event-Driven applications with CloudEvents on Kubernetes – Salaboy (Open Source Knowledge). Salaboy. https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/
 
 <br>
 
@@ -1140,7 +1131,7 @@ flowchart LR
 
 オーケストレーションベースSagaとして、Automation & Configuration分野のツールを使用できます。
 
-オーケストレーションベースSagaのデザインパターンには、Sagaオーケストレーターがメッセージ仲介システムを介して各マイクロサービスと通信するパターンと、これらの間でメッセージ仲介システムなしに通信するパターンがあります \*52 。
+オーケストレーションベースSagaのデザインパターンには、Sagaオーケストレーターがメッセージ仲介システムを介して各マイクロサービスと通信するパターンと、これらの間でメッセージ仲介システムなしに通信するパターンがあります \*59 。
 
 例えば、Temporalはメッセージ仲介システムのあるオーケストレーションベースSagaとして動作します *53 *54 。
 
@@ -1150,7 +1141,7 @@ Temporalサーバーはワークフローの進捗度 (Sagaログ) を占有デ�
 
 Temporalワーカー (ローカルトランザクション実行マイクロサービス) は自身が実行するべきタスクをTemporalサーバーから取得し、タスクの実行後にその成否を送信します。
 
-いずれかのローカルトランザクションが失敗した場合、Temporalは補償トランザクションのためのオーケストレーションも実施できます \*55 。
+いずれかのローカルトランザクションが失敗した場合、Temporalは補償トランザクションのためのオーケストレーションも実施できます \*62 。
 
 Temporalはプログラミング言語でワークフローを定義できるため、複雑なビジネスロジックに対応できます。
 
@@ -1174,17 +1165,17 @@ Temporalはプログラミング言語でワークフローを定義できるた
 
 注釈
 
-\*53 Bellemare, A. (2020b). Building Event-Driven microservices. O’Reilly Media, Inc.
+\*60 Bellemare, A. (2020b). Building Event-Driven microservices. O’Reilly Media, Inc.
 
-\*54 Temporal. (2024, May 31). Saga Pattern Simplified: Building Sagas with Temporal [Video]. YouTube. https://www.youtube.com/watch?v=uHDQMfOMFD4
+\*61 Temporal. (2024, May 31). Saga Pattern Simplified: Building Sagas with Temporal [Video]. YouTube. https://www.youtube.com/watch?v=uHDQMfOMFD4
 
-\*55 Saga Pattern Made Easy: Trip planning with sagas but without the baggage. (n.d.). Temporal Technologies. https://temporal.io/blog/saga-pattern-made-easy
+\*62 Saga Pattern Made Easy: Trip planning with sagas but without the baggage. (n.d.). Temporal Technologies. https://temporal.io/blog/saga-pattern-made-easy
 
-\*56 Build a trip booking system with PHP | Learn Temporal. (2021, October 1). https://learn.temporal.io/tutorials/php/build_a_trip_booking_app/
+\*63 Build a trip booking system with PHP | Learn Temporal. (2021, October 1). https://learn.temporal.io/tutorials/php/build_a_trip_booking_app/
 
-\*57 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.
+\*64 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.
 
-\*58 Azure-Samples. (n.d.). saga-orchestration-serverless/docs/architecture/components.md at main · Azure-Samples/saga-orchestration-serverless. GitHub. https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/components.md
+\*65 Azure-Samples. (n.d.). saga-orchestration-serverless/docs/architecture/components.md at main · Azure-Samples/saga-orchestration-serverless. GitHub. https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/components.md
 
 <br>
 
@@ -1228,7 +1219,7 @@ flowchart LR
 
 トークンベースにはSSOやJWTとAPIゲートウェイの組み合わせがあり、トークンを使用してマイクロサービス間で認証アーティファクトを伝播します。
 
-いずれの方法にもメリットデメリットがあり、要件に応じて選ばなければなりません \*58 。
+いずれの方法にもメリットデメリットがあり、要件に応じて選ばなければなりません \*65 。
 
 ここではSSOを概説します。
 
@@ -1253,11 +1244,11 @@ IDプロバイダーとしてSecurity & Compliance分野のツールを使用で
 
 例えば、KeycloakはIDプロバイダーとしてアカウントデータを永続化し、アカウントを証明するアクセストークンを発行します。
 
-またKeycloakは検証エンドポイントを公開し、受信したリクエストのAuthorizationヘッダーにあるアクセストークンの署名を検証します \*59 。
+またKeycloakは検証エンドポイントを公開し、受信したリクエストのAuthorizationヘッダーにあるアクセストークンの署名を検証します \*66 。
 
 この時、任意の認証パッケージやIstioを使用してアクセストークン署名検証のリクエストをKeycloakに送信できます。
 
-Istioの場合、Istioリソースを定義することにより無効なアカウントからのリクエストをサイドカーコンテナで阻止 (401や403レスポンスを返信) できます \*60 。
+Istioの場合、Istioリソースを定義することにより無効なアカウントからのリクエストをサイドカーコンテナで阻止 (401や403レスポンスを返信) できます \*67 。
 
 このようにKeycloakとIstioを組み合わせることにより、マイクロサービスアーキテクチャでOIDC認可コードフローを実現できます。
 
@@ -1273,11 +1264,11 @@ Istioの場合、Istioリソースを定義することにより無効なアカ�
 
 注釈
 
-\*59 He, X., & Yang, X. (2017). Authentication and authorization of end user in microservice architecture. Journal of Physics Conference Series, 910, 012060. https://doi.org/10.1088/1742-6596/910/1/012060
+\*66 He, X., & Yang, X. (2017). Authentication and authorization of end user in microservice architecture. Journal of Physics Conference Series, 910, 012060. https://doi.org/10.1088/1742-6596/910/1/012060
 
-\*60 Thorgersen, S., & Silva, P. I. (2023) KeyCloak - Identity and access management for modern applications: Harness the power of Keycloak, OpenID Connect, and OAuth 2.0 to secure applications. Packt Publishing Ltd.
+\*67 Thorgersen, S., & Silva, P. I. (2023) KeyCloak - Identity and access management for modern applications: Harness the power of Keycloak, OpenID Connect, and OAuth 2.0 to secure applications. Packt Publishing Ltd.
 
-\*61 田畑. (n.d). コンテナ上のマイクロサービスの認証強化 ～IstioとKeyCloak～. Think IT (シンクイット) . https://thinkit.co.jp/article/18023
+\*68 田畑. (n.d). コンテナ上のマイクロサービスの認証強化 ～IstioとKeyCloak～. Think IT (シンクイット) . https://thinkit.co.jp/article/18023
 
 <br>
 
@@ -1321,7 +1312,7 @@ Istioの場合、Istioリソースを定義することにより無効なアカ�
 
 認可サービスとして、Security & Compliance分野のツールを使用できます。
 
-例えば、Open Policy Agentは`rego`ファイルのロジックで認可スコープを定義しており、各マイクロサービスはOpen Policy Agentから認可の真偽値を取得します \*61 。
+例えば、Open Policy Agentは`rego`ファイルのロジックで認可スコープを定義しており、各マイクロサービスはOpen Policy Agentから認可の真偽値を取得します \*68 。
 
 この時、値が偽の場合に各マイクロサービスは403ステータスを返信します 。
 
@@ -1339,7 +1330,7 @@ Istioの場合、Istioリソースを定義することにより無効なアカ�
 
 注釈
 
-\*62 Introduction. (n.d.). Open Policy Agent. https://www.openpolicyagent.org/docs/latest/
+\*69 Introduction. (n.d.). Open Policy Agent. https://www.openpolicyagent.org/docs/latest/
 
 <br>
 
@@ -1443,11 +1434,11 @@ Shared DBは一般的に非推奨なパターンとされているため、こ�
 
 例えば、マネージドなAWS Aurora MySQLはMySQL互換であるため、アプリケーションはMySQLのSQLの実装を変更する必要がありません。
 
-また、AWS Aurora MySQLは高い耐障害性や性能を提供します \*62 。
+また、AWS Aurora MySQLは高い耐障害性や性能を提供します \*69 。
 
 データベースの文脈にはスキーマという概念があり、MySQLではこれがデータベースに相当します。
 
-つまり、データベーススキーマを分割することになります \*63 。
+つまり、データベーススキーマを分割することになります \*70 。
 
 例えば、AWS Aurora MySQLであれば、マイクロサービス単位でデータベーススキーマを定義します。
 
@@ -1465,9 +1456,9 @@ Shared DBは一般的に非推奨なパターンとされているため、こ�
 
 注釈
 
-\*63 What is Amazon Aurora? - Amazon Aurora. (n.d.). https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+\*70 What is Amazon Aurora? - Amazon Aurora. (n.d.). https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
 
-\*64 Newman, S. (2019) Monolith to microservices: Evolutionary Patterns to Transform Your Monolith. O’Reilly Media, Inc.
+\*71 Newman, S. (2019) Monolith to microservices: Evolutionary Patterns to Transform Your Monolith. O’Reilly Media, Inc.
 
 <br>
 
@@ -1567,9 +1558,9 @@ flowchart LR
 
 設定管理先と暗号化キーはKubernetes標準機能、Security & Compliance、Key Management分野のツールを使用できます。
 
-例えば、Kubernetes ConfigMapやSecretはマイクロサービスに外部から環境変数やファイルなどの設定を動的に組み込みます \*64 。
+例えば、Kubernetes ConfigMapやSecretはマイクロサービスに外部から環境変数やファイルなどの設定を動的に組み込みます \*71 。
 
-この時、SOPSを使用することによりHelmのマニフェスト展開前に、Secretの元データを暗号化して管理できます \*65 。
+この時、SOPSを使用することによりHelmのマニフェスト展開前に、Secretの元データを暗号化して管理できます \*72 。
 
 AWS Secrets Managerはクラウドリソースなどに外部から設定を動的に組み込みます。
 
@@ -1589,21 +1580,21 @@ Kubernetes ConfigMap、Secret、AWS Secrets Managerの暗号化キーは管理�
 
 注釈
 
-\*65 Updating configuration via a ConfigMap. (2024, July 17). Kubernetes. https://kubernetes.io/docs/tutorials/configuration/updating-configuration-via-a-configmap/
+\*72 Updating configuration via a ConfigMap. (2024, July 17). Kubernetes. https://kubernetes.io/docs/tutorials/configuration/updating-configuration-via-a-configmap/
 
-\*66 Getsops. (n.d.). GitHub - getsops/sops: Simple and flexible tool for managing secrets. GitHub. https://github.com/getsops/sops
+\*73 Getsops. (n.d.). GitHub - getsops/sops: Simple and flexible tool for managing secrets. GitHub. https://github.com/getsops/sops
 
 <br>
 
 ### 9.2 サービスメッシュ
 
-マイクロサービス間通信方法にリクエスト−レスポンスを使用する場合 \*66 、各マイクロサービスに実装するべきロジックには重複があります。
+マイクロサービス間通信方法にリクエスト−レスポンスを使用する場合 \*73 、各マイクロサービスに実装するべきロジックには重複があります。
 
 例えばトラフィック管理、証明書管理、テレメトリー作成、認証、回復管理などです。
 
 各マイクロサービスの開発チームが重複ロジックを実装することは、車輪の再発明と言えます。
 
-サービスメッシュの仕組みでは重複ロジックをサイドカーコンテナやホストマシン上のエージェントとして切り分け、各マイクロサービスに横断的に提供します \*67 。
+サービスメッシュの仕組みでは重複ロジックをサイドカーコンテナやホストマシン上のエージェントとして切り分け、各マイクロサービスに横断的に提供します \*74 。
 
 図32で、サービスメッシュのデザインパターンの種類を示します。
 
@@ -1651,17 +1642,17 @@ flowchart LR
 
 サービスメッシュとしてService Mesh分野のツールを使用できます。
 
-例えば、コントロールプレーンとデータプレーンからなるIstioは、Envoyの設定を抽象化することによりサービスメッシュを実現します \*68 。
+例えば、コントロールプレーンとデータプレーンからなるIstioは、Envoyの設定を抽象化することによりサービスメッシュを実現します \*75 。
 
 IstioのサイドカーサービスメッシュではIstioはデータプレーンにサービスメッシュゲートウェイ (Istio Ingress GatewayとIstio Egress Gateway) を配置し、またマイクロサービス内にサイドカーコンテナ (istio-proxy) をインジェクションします。
 
-サービスメッシュゲートウェイはサービスメッシュ内外を接続する役割を持ち、マイクロサービスを公開するためのAPIゲートウェイとはその役割が異なります \*65 。
+サービスメッシュゲートウェイはサービスメッシュ内外を接続する役割を持ち、マイクロサービスを公開するためのAPIゲートウェイとはその役割が異なります \*72 。
 
 Istioによるサイドカーコンテナは、さまざまな汎用ロジックをアプリケーションコンテナに提供します。
 
 サイドカーコンテナ内ではpilot-agentプロセスとenvoyプロセスが稼働しています。
 
-envoyプロセスはコントロールプレーンとpilot-agentを介して双方向ストリーミングRPCを実施し、コントロールプレーンのAPIからEnvoyの設定を動的に取得します \*69 。
+envoyプロセスはコントロールプレーンとpilot-agentを介して双方向ストリーミングRPCを実施し、コントロールプレーンのAPIからEnvoyの設定を動的に取得します \*76 。
 
 Istioにより、マイクロサービスとしてのKubernetes Podは他のPodと直接通信できるようになります。
 
@@ -1679,13 +1670,13 @@ Istioにより、マイクロサービスとしてのKubernetes Podは他のPod�
 
 注釈
 
-\*67 マイクロサービス間通信方法にパブリッシュ/サブスクライブを使用する場合、『イベントメッシュ』という仕組みが適切です。これは、イベント仲介システムなどを各マイクロサービスに横断的に提供できます。これは、Knativeで代替できます (https://knative.dev/docs/eventing/event-mesh/) 。
+\*74 マイクロサービス間通信方法にパブリッシュ/サブスクライブを使用する場合、『イベントメッシュ』という仕組みが適切です。これは、イベント仲介システムなどを各マイクロサービスに横断的に提供できます。これは、Knativeで代替できます (https://knative.dev/docs/eventing/event-mesh/) 。
 
-\*68 Gough, J., Bryant, D., & Auburn, M. (2021) Mastering API architecture. O’Reilly Media, Inc.
+\*75 Gough, J., Bryant, D., & Auburn, M. (2021) Mastering API architecture. O’Reilly Media, Inc.
 
-\*69 Sidecar or ambient? (n.d.). Istio. https://istio.io/latest/docs/overview/dataplane-modes/
+\*76 Sidecar or ambient? (n.d.). Istio. https://istio.io/latest/docs/overview/dataplane-modes/
 
-\*70 Posta, C., & Maloku, R. (2022) Istio in action. Manning Publications.
+\*77 Posta, C., & Maloku, R. (2022) Istio in action. Manning Publications.
 
 <br>
 
@@ -1728,11 +1719,11 @@ flowchart LR
 
 図35で、AWS EKS上でL3管理の設計例を示します。
 
-例えば、AWSであればAWS VPCがL3 (ネットワーク層) を提供します \*70 。
+例えば、AWSであればAWS VPCがL3 (ネットワーク層) を提供します \*77 。
 
 また、マネージドなAWS VPC CNIアドオンはkubelet、ENI、AWS EKSコントロールプレーンと連携し、AWS VPC上にクラスターネットワークを作成します。
 
-これはAWS EKSクラスター内のIPアドレスを制御し、マイクロサービスがAWS EKSのクラスターネットワークに参加できるようにします \*71 。
+これはAWS EKSクラスター内のIPアドレスを制御し、マイクロサービスがAWS EKSのクラスターネットワークに参加できるようにします \*78 。
 
 <br>
 
@@ -1746,11 +1737,11 @@ flowchart LR
 
 注釈
 
-\*71 ほかに例えば、L2を作成するCNIがあり、CNIによって提供する層はさまざまです。
+\*78 ほかに例えば、L2を作成するCNIがあり、CNIによって提供する層はさまざまです。
 
 いずれのプラットフォーム (補章であれば、AWS EKS) を選ぶかによって、適切なCNIが異なります。
 
-\*72 Amazon VPC CNI - EKS Best Practices Guides. (n.d.). https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
+\*79 Amazon VPC CNI - EKS Best Practices Guides. (n.d.). https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
 
 <br>
 
@@ -1842,7 +1833,7 @@ flowchart LR
 
 サービスメッシュ内ではL4/L7ロードバランサーとしてService Mesh分野のツールを使用できます。
 
-例えば、Istioによるサイドカーコンテナはサービスメッシュ内のKubernetesリソースやIstioリソースの情報に基づいて、サーバーサイドサービス検出を実施します \*72 。
+例えば、Istioによるサイドカーコンテナはサービスメッシュ内のKubernetesリソースやIstioリソースの情報に基づいて、サーバーサイドサービス検出を実施します \*79 。
 
 IstioコントロールプレーンはAWS EKSコントロールプレーンからサービス検出に必要なリソースの情報を収集し、インメモリで保管します。
 
@@ -1876,7 +1867,7 @@ IstioコントロールプレーンはAWS EKSコントロールプレーンか�
 
 L4ロードバランサーとしてKubernetes標準機能を使用できます。
 
-例えば、Kubernetes Serviceとkube-proxyはデフォルトでiptablesと連携し、クライアントサイドサービス検出を実施します \*75 。
+例えば、Kubernetes Serviceとkube-proxyはデフォルトでiptablesと連携し、クライアントサイドサービス検出を実施します \*82 。
 
 kube-proxyは新しいPodのIPアドレスをiptablesに追加し、またKubernetes Serviceはiptablesに基づいてリクエストをPodにロードバランシングします。
 
@@ -1900,7 +1891,7 @@ kube-proxyは新しいPodのIPアドレスをiptablesに追加し、またKubern
 
 例えば、Kubernetes上のさまざまなサービスレジストラーは収集した宛先情報をEtcdに保管します。
 
-AWS EKSを使用する場合、Etcdはマネージドなコントロールプレーン上にあります \*76 。
+AWS EKSを使用する場合、Etcdはマネージドなコントロールプレーン上にあります \*83 。
 
 <br>
 
@@ -1953,7 +1944,7 @@ flowchart LR
 
 表16で、ロードバランシングとクラウドネイティブ技術の関連性を整理します。
 
-例えば、Istioによるサイドカーコンテナはラウンドロビンや最小接続時間に基づいて、通信を宛先マイクロサービスにロードバランシングします \*77 。
+例えば、Istioによるサイドカーコンテナはラウンドロビンや最小接続時間に基づいて、通信を宛先マイクロサービスにロードバランシングします \*84 。
 
 <br>
 
@@ -1969,17 +1960,17 @@ flowchart LR
 
 注釈
 
-\*73 Mesh, A. (2020, August 12). Debugging Your Debugging Tools: What to do When Your Service Mesh Goes Down [Slide show]. SlideShare. https://www.slideshare.net/slideshow/debugging-your-debugging-tools-what-to-do-when-your-service-mesh-goes-down/237797183
+\*80 Mesh, A. (2020, August 12). Debugging Your Debugging Tools: What to do When Your Service Mesh Goes Down [Slide show]. SlideShare. https://www.slideshare.net/slideshow/debugging-your-debugging-tools-what-to-do-when-your-service-mesh-goes-down/237797183
 
-\*74 Belamaric, J., & Liu, C. (2019) Learning CoreDNS: Configuring DNS for Cloud Native Environments. O’Reilly Media, Inc.
+\*81 Belamaric, J., & Liu, C. (2019) Learning CoreDNS: Configuring DNS for Cloud Native Environments. O’Reilly Media, Inc.
 
-\*75 Virtual IPs and service proxies. (2024, October 7). Kubernetes. https://kubernetes.io/docs/reference/networking/virtual-ips/
+\*82 Virtual IPs and service proxies. (2024, October 7). Kubernetes. https://kubernetes.io/docs/reference/networking/virtual-ips/
 
-\*76 Service. (2024, June 25). Kubernetes. https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables
+\*83 Service. (2024, June 25). Kubernetes. https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables
 
-\*77 Control Plane - EKS Best Practices Guides. (n.d.). https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/
+\*84 Control Plane - EKS Best Practices Guides. (n.d.). https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/
 
-\*78 Traffic management. (n.d.). Istio. https://istio.io/latest/docs/concepts/traffic-management/
+\*85 Traffic management. (n.d.). Istio. https://istio.io/latest/docs/concepts/traffic-management/
 
 <br>
 
@@ -1991,7 +1982,7 @@ flowchart LR
 
 TLSプロトコルを使用してアプリケーションデータを暗号化することにより、攻撃から防御できます。
 
-証明書を使用して通信を暗号化できます \*78 。
+証明書を使用して通信を暗号化できます \*85 。
 
 図42で、証明書管理方法のデザインパターンの種類を示します。
 
@@ -2041,13 +2032,13 @@ flowchart LR
 
 マイクロサービスのサイドカーコンテナの証明書管理にはService Mesh分野のツールを使用できます。
 
-例えば、Istioは署名済みの証明書をサイドカーコンテナに組み込み、定期的にこれを更新します \*79 。
+例えば、Istioは署名済みの証明書をサイドカーコンテナに組み込み、定期的にこれを更新します \*86 。
 
 Istioコントロールプレーンは自己を署名し、ルート認証局としてサイドカーコンテナのクライアント／サーバー証明書を署名します。
 
 さらにIstioコントロールプレーンはサイドカーコンテナに証明書を組み込み、証明書が失効すれば自動的に更新します。
 
-この仕組みにより、サイドカーコンテナ間で相互TLS認証を継続的に実施できるようになります \*80 。
+この仕組みにより、サイドカーコンテナ間で相互TLS認証を継続的に実施できるようになります \*87 。
 
 一方でIstioを使用しない場合、Security & Compliance分野のツールを使用してアプリケーションコンテナに証明書を組み込み、これを管理する必要があります。
 
@@ -2067,11 +2058,11 @@ Istioコントロールプレーンは自己を署名し、ルート認証局と
 
 注釈
 
-\*79 Siriwardena, P., & Dias, N. (2020) Microservices Security in action. Manning Publications.
+\*86 Siriwardena, P., & Dias, N. (2020) Microservices Security in action. Manning Publications.
 
-\*80 Plug in CA certificates. (n.d.). Istio. https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/
+\*87 Plug in CA certificates. (n.d.). Istio. https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/
 
-\*81 Security. (n.d.). Istio. https://istio.io/latest/docs/concepts/security/
+\*88 Security. (n.d.). Istio. https://istio.io/latest/docs/concepts/security/
 
 <br>
 
