@@ -21,7 +21,7 @@ description: 運用性＠AWSの知見を記録しています。
 
 ビジネス成果に関するメトリクスを監視する。
 
-例えば、BIツール (例：Redash、Metabase、Google Cloud Lookerなど) を採用し、DBから取得したデータ (例：取引履歴) をメトリクスとする。
+例えば、BIツール (例：Redash、Metabase、Google Cloud Lookerなど) を採用し、DBから読み込んだデータ (例：取引履歴) をメトリクスとする。
 
 > - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/oe-operate.html
 

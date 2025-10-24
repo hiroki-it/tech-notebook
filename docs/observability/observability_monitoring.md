@@ -379,22 +379,22 @@ Cronの処理結果を監視する。
 これにより、ジョブの開始から最後のリクエストまでが、一定の時間内に完了するか否かを確認する。
 
 ```bash
-# Cronの実行結果をHealthchecks.ioに直接的に送信する場合
+# cronの定義
 
   8 6 * * * /foo-cron.sh && <ここで、Healthchecksにジョブの標準出力／標準エラー出力を送信する>
 ```
-
-> - https://healthchecks.io/docs/monitoring_cron_jobs/
 
 #### ▼ `curl`コマンドを使用して結果を送信する場合
 
 送信に`curl`コマンドを使用する。
 
 ```bash
-# Cronの実行結果をHealthchecks.ioに直接的に送信する場合
+# curlコマンドを使用して、Cronの実行結果をHealthchecks.ioに直接的に送信する場合
 
   8 6 * * * /foo-cron.sh && curl -fsS --retry 5 -o /dev/null https://hc-ping.com/ping/<healthchecksのID>
 ```
+
+> - https://healthchecks.io/docs/monitoring_cron_jobs/
 
 #### ▼ Runitorを使用して結果を送信する場合
 
@@ -403,7 +403,7 @@ Cronの処理結果を監視する。
 Runitorを使用しない場合、Cronの標準出力/標準エラー出力の内容をそのままhealthchecks.ioに送信することになる。
 
 ```bash
-# Runitorを介して、Cronの実行結果をHealthchecks.
+# Runitorを使用して、Cronの実行結果をHealthchecks.ioに直接的に送信する場合
 
 # -api-url：healthchecks.ioのエンドポイント
 # -uuid：healthchecks.ioのID

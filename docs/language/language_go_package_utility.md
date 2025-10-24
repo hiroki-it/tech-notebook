@@ -187,7 +187,7 @@ func NewDoCmd() *cobra.Command {
 				period = DefaultPeriod
 			}
 			// --limit
-			// 指定したログ数をDBから取得し、削除する
+			// 指定したログ数をDBから読み込み、削除する
 			limit, err := cmd.Flags().GetInt("limit")
 			if err != nil {
 				log.Printf("failed to get limit flags %v", err)

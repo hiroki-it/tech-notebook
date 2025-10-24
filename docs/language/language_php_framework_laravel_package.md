@@ -136,7 +136,7 @@ DBから区分値をSELECTした後、これを元にenum型のクラスを作�
 // Staff
 $staff = new Staff();
 
-// DBから取得した区分値 (開発職：2) からenum型のクラスを作成
+// DBから読み込んだ区分値 (開発職：2) からenum型のクラスを作成
 $staff->roleType = new RoleType($fetched["role_type"]);
 // 以下の方法でも良い。
 // $staff->roleType = RoleType::fromValue($fetched["role_type"]);

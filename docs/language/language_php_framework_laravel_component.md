@@ -33,7 +33,7 @@ description: 認証／認可＠Laravelの知見を記録しています。
 | 8   | ・Dispatch by Router<br>・Routes Match                  | `web.php`ファイル、`app.php`ファイルなどのルーティング定義を元に、Routerが実行する。                          |
 | 9   | FormRequest                                             | バリデーションを実行する。                                                                                    |
 | 10  | Controller                                              | Controllerを起点として、DBにまで処理が走る。                                                                  |
-| 11  | Resource                                                | DBから取得したコレクション型データを配列型データに変換する。                                                  |
+| 11  | Resource                                                | DBから読み込んだコレクション型データを配列型データに変換する。                                                |
 | 12  | Response                                                | Responseを実行する。配列型データをJSON型データに変換する。                                                    |
 | 13  | Terminate Middleware                                    | AfterMiddlewareが実行される。                                                                                 |
 | 14  | View                                                    | `blade.php`ファイルを基に静的ファイルを作成する。                                                             |
@@ -4098,7 +4098,7 @@ class FooController extends Controller
      */
     public function index(Request $request)
     {
-        // ここに、EloquentモデルをDBから取得する処理
+        // ここに、EloquentモデルをDBから読み込む処理
 
         // Eloquentモデルを渡す。
         return new FooResource($foo);

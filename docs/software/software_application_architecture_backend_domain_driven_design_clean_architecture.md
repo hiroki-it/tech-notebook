@@ -2318,7 +2318,7 @@ class DogOrder
 | findAllByCriteria | Criteria型                           | ドメインモデル型を持つ配列 | 条件に合致した全てのドメインモデルを取得する。                                                                                                                                                                                                                                                                |
 | create            | ルートエンティティのドメインモデル型 | void型                     | ルートエンティティのドメインモデルを作成する。                                                                                                                                                                                                                                                                |
 | update            | ルートエンティティのドメインモデル型 | void型                     | ルートエンティティのドメインモデルを更新する。                                                                                                                                                                                                                                                                |
-| save (upsert)     | ルートエンティティのドメインモデル型 | void型                     | ルートエンティティのドメインモデルを作成/更新する。SELECT文のIN句を使用して、同じ識別子のエンティティをDBから取得できるか否かを確認する。取得できない場合は、更新処理を実行する。`<br>`・https://github.com/little-hands/ddd-q-and-a/issues/241`<br>`・https://github.com/little-hands/ddd-q-and-a/issues/129 |
+| save (upsert)     | ルートエンティティのドメインモデル型 | void型                     | ルートエンティティのドメインモデルを作成/更新する。SELECT文のIN句を使用して、同じ識別子のエンティティをDBから読み込めるか否かを確認する。取得できない場合は、更新処理を実行する。`<br>`・https://github.com/little-hands/ddd-q-and-a/issues/241`<br>`・https://github.com/little-hands/ddd-q-and-a/issues/129 |
 | delete            | Id型                                 | void型                     | ルートエンティティのドメインモデルを削除する。                                                                                                                                                                                                                                                                |
 
 > - https://codewithshadman.com/repository-pattern-csharp/
@@ -2558,7 +2558,7 @@ DBに対する書き込み操作を実行する。
 
 `(2)`
 
-: DBからレコードを取得する。
+: DBからレコードを読み込む。
 
 `(3)`
 

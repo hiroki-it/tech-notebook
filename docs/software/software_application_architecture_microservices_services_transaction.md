@@ -242,7 +242,7 @@ AWS StepFunctionsのステートも設計例として、参考になる。
 
 ポーリングパターンの場合、Sagaステータスチェッカーを採用する。
 
-Sagaステータスチェッカーは、トランザクションIDを使用してワークフローの処理結果をDBから取得する。
+Sagaステータスチェッカーは、トランザクションIDを使用してワークフローの処理結果をDBから読み込む。
 
 ![saga-pattern_orchestrator_status-checker](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_status-checker.jpg)
 
