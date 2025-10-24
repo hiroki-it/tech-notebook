@@ -1692,6 +1692,57 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="4 マイクロサービスアーキテクチャの構成領域">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 マイクロサービスアーキテクチャとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 関連アーキテクチャの構成領域の比較
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 モノリスアーキテクチャ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 プレゼンテーションドメイン分離
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5 マイクロサービスアーキテクチャ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -27578,6 +27629,57 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="4 マイクロサービスアーキテクチャの構成領域">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 マイクロサービスアーキテクチャとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 関連アーキテクチャの構成領域の比較
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 モノリスアーキテクチャ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 プレゼンテーションドメイン分離
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5 マイクロサービスアーキテクチャ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -28172,13 +28274,18 @@
 <p>*22 Service Proxy分野のツールは設定次第でAPI Gateway分野のツールと同等に使用できます。</p>
 <p><br></p>
 <h2 id="4">4 マイクロサービスアーキテクチャの構成領域<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="41">4.1 マイクロサービスアーキテクチャとは<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
 <p>まず、マイクロサービスアーキテクチャはどのような領域からなるのでしょうか？</p>
 <p>図1と表3でモノリスアーキテクチャ、プレゼンテーションドメイン分離 (過渡的なアーキテクチャ) *23 、マイクロサービスアーキテクチャの例を示しそれぞれの領域を簡単に比較します。</p>
 <p>モノリスアーキテクチャからマイクロサービスアーキテクチャに至るまでに、領域が細分化されていきます。</p>
-<p><br></p>
 <p>図1. マイクロサービスアーキテクチャに至るまでのアーキテクチャの変遷</p>
 <p><img alt="01" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/01.png" /></p>
 <p><br></p>
+<h3 id="42">4.2 関連アーキテクチャの構成領域の比較<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<p>サンプルアプリケーションはマイクロサービスアーキテクチャのため、ここでマイクロサービスアーキテクチャの構成領域を解説します。</p>
+<p>モノリスアーキテクチャ、プレゼンテーションドメイン分離、マイクロサービスアーキテクチャを簡単に比較します。</p>
+<p>いずれのアーキテクチャも、アプリケーションと各種ストレージ（ブロックストレージ、キーバリューストレージ、オブジェクトストレージ、ファイルストレージ）で構成されています。</p>
+<p>データベースとしてのRDBはブロックストレージに属しています。モノリスアーキテクチャ、プレゼンテーションドメイン分離、マイクロサービスアーキテクチャの比較を次の表のとおりに整理しました。</p>
 <p>表4. マイクロサービスアーキテクチャに至るまでのアーキテクチャ間の比較</p>
 <table>
 <thead>
@@ -28191,25 +28298,42 @@
 </thead>
 <tbody>
 <tr>
-<td>領域の種類</td>
-<td>・フロントエンド<br>・バックエンド<br>・各種ストレージ (データベースなど)</td>
-<td>・フロントエンド<br>・バックエンド<br>・各種ストレージ (データベースなど)</td>
-<td>・フロントエンド<br>・APIゲートウェイ<br>・マイクロサービス<br>・各種ストレージ (データベースなど)</td>
+<td><strong>プロセスの単位</strong></td>
+<td>・アプリケーション全体<br>・各種ストレージ</td>
+<td>・フロントエンドアプリケーション<br>・バックエンドアプリケーション<br>・各種ストレージ</td>
+<td>・フロントエンドアプリケーション<br>・APIゲートウェイ（任意）<br>・マイクロサービス<br>・各種ストレージ</td>
 </tr>
 <tr>
-<td>領域の役割</td>
-<td>アプリケーションは、フロントエンド領域とバックエンド領域の領域からなる。アプリケーションが両方の領域の役割を担っている。</td>
-<td>アプリケーションは、フロントエンドアプリケーションとバックエンドアプリケーションからなる。両アプリケーションは各領域の役割を担っている。</td>
-<td>アプリケーションは、独立したAPIを持つ複数のフロントエンド領域とマイクロサービス領域アプリケーションからなる。両アプリケーションは各領域の役割を担っている。これらの領域の間に、APIゲートウェイ領域がある。</td>
+<td><strong>機能ロジックリリースの単位</strong></td>
+<td>アプリケーション全体</td>
+<td>バックエンドアプリケーション</td>
+<td>各マイクロサービス</td>
 </tr>
 <tr>
-<td>領域間の結合度</td>
-<td>フロントエンド領域とバックエンド領域の領域は密結合になっている。各領域は同じプロセスで稼働する。</td>
-<td>フロントエンド領域とバックエンド領域の領域は疎結合になっている。各領域は異なるプロセスで稼働する。</td>
-<td>フロントエンド、各マイクロサービス、APIゲートウェイの領域は疎結合になっている。各領域は異なるプロセスで稼働する。</td>
+<td><strong>各種ストレージの単位</strong></td>
+<td>アプリケーション全体に１つずつ</td>
+<td>アプリケーション全体に１つずつ</td>
+<td>各マイクロサービスに１つずつ、またはアプリケーション全体に１つずつ</td>
 </tr>
 </tbody>
 </table>
+<p><br></p>
+<h3 id="43">4.3 モノリスアーキテクチャ<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
+<p>モノリスアーキテクチャでは、アプリケーションはフロントエンド領域とバックエンド領域で構成されています。</p>
+<p>フロントエンド領域とバックエンド領域の領域は密結合になっており、両方は同じプロセスで稼働します。</p>
+<p>そのため、モノリスアーキテクチャのアプリケーションのバックエンド領域の一部に機能ロジックを変更する場合、アプリケーション全体をリリースする必要があります。</p>
+<p><br></p>
+<h3 id="44">4.4 プレゼンテーションドメイン分離<a class="headerlink" href="#44" title="Permanent link">&para;</a></h3>
+<p>次にプレゼンテーションドメイン分離では、アプリケーションはフロントエンドアプリケーションとバックエンドアプリケーションで構成されています。</p>
+<p>モノリスアーキテクチャと比較して、アプリケーションがフロントエンドアプリケーションとバックエンドアプリケーションに分割されており、両方は異なるプロセスで稼働します。</p>
+<p>担当者は、これらを独立してリリースできます。ただし、プレゼンテーションドメイン分離のアプリケーションに機能ロジックを変更する場合、担当者はバックエンドアプリケーション全体をリリースする必要があります。</p>
+<p><br></p>
+<h3 id="45">4.5 マイクロサービスアーキテクチャ<a class="headerlink" href="#45" title="Permanent link">&para;</a></h3>
+<p>最後にマイクロサービスアーキテクチャでは、アプリケーションはフロントエンドアプリケーション、APIゲートウェイ（任意）、マイクロサービスで構成されています。</p>
+<p>プレゼンテーションドメイン分離と比較して、　バックエンドがマイクロサービスに分割されており、バックエンドからAPIゲートウェイを切り離す場合があるかもしれません。</p>
+<p>そして、これらはすべては異なるプロセスで稼働します。</p>
+<p>マイクロサービスの粒度には、ドメイン駆動設計の高凝集と低結合な粒度（例：集約、境界づけられたコンテキスト）を取り入れることが適切です。</p>
+<p>機能ロジックを変更する場合、マイクロサービス担当者はその機能ロジックをもつマイクロサービスだけをリリースします。</p>
 <hr />
 <p>注釈</p>
 <p>*23 Fowler, M. (n.d.). bliki: Presentation Domain Separation. <a href="http://martinfowler.com/">http://martinfowler.com/</a>. <a href="https://martinfowler.com/bliki/PresentationDomainSeparation.html">https://martinfowler.com/bliki/PresentationDomainSeparation.html</a></p>
@@ -29666,7 +29790,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月9日 14:41:36 JST">2025-10-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月24日 20:35:58 JST">2025-10-24</span>
   </span>
 
     
