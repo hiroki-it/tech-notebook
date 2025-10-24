@@ -125,6 +125,64 @@ CNCFの定義のとおり、クラウドネイティブ技術はパブリック�
 | 2014年                     | マイクロサービスアーキテクチャ   | Simon Brownは、モノリスアーキテクチャは時間経過とともに無秩序でつぎはぎだらけになり得ることを指摘した *16 。Martin FowlerとJames Lewisは、サービス指向アーキテクチャとDDDを統合し、アプリケーションを独立したマイクロサービスの集まりに分割するアーキテクチャを提唱した *17 。サービス指向アーキテクチャにDDDの高凝集／低結合の考え方を取り入れることで、サービス指向アーキテクチャを実装可能な理論に昇華させた。一方で、マイクロサービスの大きさには十分に注意を払う必要がある \*18。 |
 | 2015年                     | モジュラーモノリスアーキテクチャ | Martin Flowlerはモジュラーモノリスアーキテクチャを提唱した \*19 。モジュラモノリスでは、マイクロサービスアーキテクチャとモノリスアーキテクチャの間をとった粒度で、アプリケーションを細かいモジュールに分割する。最初にモジュラーモノリスアーキテクチャとして設計し、マイクロサービスアーキテクチャに移行していくという選択肢もある。                                                                                                                                                   |
 
+<br>
+
+### 2.2 マイクロサービスアーキテクチャの歴史
+
+#### 関連アーキテクチャの歴史
+
+マイクロサービスアーキテクチャはどのような経緯で登場したのでしょうか。マイクロサービスアーキテクチャの歴史とサービスメッシュの登場時期を次のとおりに図解しました。
+
+図1. 関連アーキテクチャの歴史
+
+![01](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/01.png)
+
+2014年にマイクロサービスアーキテクチャが登場するまでに、いくつかのアーキテクチャスタイルが登場しました。のちに解説するサービスメッシュはマイクロサービスアーキテクチャの課題を解決する概念として2016年に登場しました。
+
+表01-01. 関連アーキテクチャの歴史
+
+| 登場年                   | アーキテクチャスタイル      | 提唱者（アルファベット順）             | 概要                                                         |
+| --------------------- | ---------------- | ------------------------- | ---------------------------------------------------------- |
+| 1999                  | モノリスアーキテクチャ      | 自然発生的                     | アプリケーションのすべてのロジックを単一のプロセスで稼働させ、また全体をリリースする。                |
+| 1990年代後半〜<br>2000年代前半 | サービス指向アーキテクチャ    | Michael Bell、Thomas Erlなど | アプリケーションを『機能』の粒度で分割する。                                     |
+| 2003                  | ドメイン駆動設計         | Eric Evans                | オブジェクト指向分析設計のベタープラクティスを集め、機能ロジックのモデリングを強化する。               |
+| 2003                  | プレゼンテーションドメイン分離  | Martin Fowler             | フロントエンド領域をバックエンド領域の機能ロジックから切り離す。                           |
+| 2014                  | マイクロサービスアーキテクチャ  | James Lewis、Martin Fowler | アプリケーションをドメイン駆動設計の『集約』や『境界づけられたコンテキスト』の粒度で分割する。            |
+
+
+#### ◼︎ 1999年：モノリスアーキテクチャ
+
+マイクロサービスアーキテクチャの登場前、1999年頃、アプリケーションはモノリスアーキテクチャで設計することが一般的でした \*1 。
+
+モノリスアーキテクチャでは、アプリケーションのすべてのロジックを単一のプロセスで稼働させ、また全体をリリースします。開発組織や対象ドメインが成長初期で小さい場合、機能ロジック追加やリリースは容易です。しかし、開発組織や対象ドメインが成長して大きくなると、機能ロジック追加やリリースによる影響範囲の大きさ、分業のしにくさ、技術スタックの部分最適化のしにくさなどの課題が生じ始めました。のちに提唱されるプレゼンテーションドメイン分離やマイクロサービスアーキテクチャでは、機能／非機能ロジックを細分化することを目指します。
+
+
+
+#### ◼︎ 1990年代後半〜2000年代前半：サービス指向アーキテクチャ
+
+1900年代後半から2000年代前半頃、Michael BellやThomas Erlらがサービス指向アーキテクチャを提唱しました \*2 。サービス指向アーキテクチャでは、アプリケーションを『機能』の粒度で分割することで、モノリスアーキテクチャの課題を解決することを試みました。ただ『機能』という粒度に明確な指針がありませんでした \*3 。そのため、概念としては提唱されていても一般化までには至りませんでした。
+
+#### ◼︎ 2003年：ドメイン駆動設計
+
+2003年頃、Eric Evansはドメイン駆動設計を提唱しました \*4 。ドメイン駆動設計はオブジェクト指向分析設計から派生した分析設計の方法の一種であり、オブジェクト指向分析設計のベタープラクティスを集めることで、機能ロジックのモデリングを強化しました。
+
+#### ◼︎ 2003年：プレゼンテーションドメイン分離
+
+サービス指向アーキテクチャと同じ頃、Martin Fowlerはプレゼンテーションドメイン分離を提唱しました \*5 。プレゼンテーションドメイン分離では、ビジネスへの影響を抑えるため、バックエンド領域の機能ロジックから、ロジックの変更頻度の高いフロントエンドアプリケーションを切り離します。
+
+#### ◼︎ 2014年：マイクロサービスアーキテクチャ
+
+2014年頃、Simon Brownは、モノリスアーキテクチャは時間経過とともに無秩序でつぎはぎだらけな『大きな泥団子』になり得ることを指摘しました \*6 。
+
+それと同じ頃、Martin FowlerとJames Lewisはマイクロサービスアーキテクチャを提唱しました \*7 。
+
+マイクロサービスアーキテクチャでは、サービス指向アーキテクチャにドメイン駆動設計の考え方を取り入れます。
+
+ドメイン駆動設計には、集約や境界づけられたコンテキストといった高凝集と低結合の考え方があります。
+
+これらをマイクロサービスの粒度として捉えることで、サービス指向アーキテクチャをより実践的な理論に昇華させました。
+
+
 ---
 
 注釈
@@ -143,7 +201,22 @@ CNCFの定義のとおり、クラウドネイティブ技術はパブリック�
 
 \*18 Fowler, M. (n.d.). bliki: Brown, S. (2014). Distributed big balls of mud. http://dzone.com/. https://dzone.com/articles/distributed-big-balls-mud
 
-19 Brown, S. (2014). Fowler, M. (n.d.). bliki: Monolith First. http://martinfowler.com/. https://martinfowler.com/bliki/ MonolithFirst.html
+\*19 Brown, S. (2014). Fowler, M. (n.d.). bliki: Monolith First. http://martinfowler.com/. https://martinfowler.com/bliki/ MonolithFirst.html
+
+
+\*1 Richards, M., & Ford, N. (2020). 『Fundamentals of software Architecture: An Engineering Approach』 O’Reilly Media.
+
+\*2 Wikipedia contributors. (2024). Monolithic application. Wikipedia. https://en.wikipedia.org/wiki/Monolithic_application
+
+\*3 Wikipedia contributors. (2024a). Service-oriented architecture. Wikipedia. https://en.wikipedia.org/wiki/Service-oriented_architecture
+
+\*4 Newman, S. (2021). 『Building microservices』 O’Reilly Media, Inc.
+
+\*5 Evans, E. (2004). 『Domain-driven design: Tackling Complexity in the Heart of Software』 Addison-Wesley Professional.
+
+\*6 Fowler, M. (n.d.). *bliki: Presentation Domain Separation*. martinfowler.com. https://martinfowler.com/bliki/PresentationDomainSeparation.html
+
+\*7 Lewis, J. (n.d.). Microservices. http://martinfowler.com/. https://martinfowler.com/articles/microservices.html
 
 <br>
 
@@ -214,9 +287,9 @@ CNCFでは、オープンソースやクラウドプロバイダーのクラウ�
 
 モノリスアーキテクチャからマイクロサービスアーキテクチャに至るまでに、領域が細分化されていきます。
 
-図1. マイクロサービスアーキテクチャに至るまでのアーキテクチャの変遷
+図2. マイクロサービスアーキテクチャに至るまでのアーキテクチャの変遷
 
-![01](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/01.png)
+![02](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/02.png)
 
 <br>
 
@@ -300,9 +373,9 @@ CNCFでは、オープンソースやクラウドプロバイダーのクラウ�
 
 <br>
 
-図2. マイクロサービスアーキテクチャの領域とクラウドネイティブ技術の関連性
+図3. マイクロサービスアーキテクチャの領域とクラウドネイティブ技術の関連性
 
-![02](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/02.png)
+![03](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/03.png)
 
 <br>
 
@@ -358,9 +431,9 @@ AWSの設計については、AWS Well-Architected Framework \*29 を合わせ�
 
 <br>
 
-図3. 補章で取り上げるアーキテクチャの問題領域
+図4. 補章で取り上げるアーキテクチャの問題領域
 
-![03](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/03.png)
+![04](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/04.png)
 
 <br>
 
@@ -441,9 +514,9 @@ flowchart LR
 
 <br>
 
-図4. デザインパターンの図の凡例
+図5. デザインパターンの図の凡例
 
-![04](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/04.png)
+![05](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/05.png)
 
 <br>
 
@@ -476,9 +549,9 @@ APIゲートウェイを配置することにより、必要なマイクロサ�
 
 <br>
 
-図5. APIゲートウェイ領域のデザインパターングループの種類
+図6. APIゲートウェイ領域のデザインパターングループの種類
 
-![05](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/05.png)
+![06](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/06.png)
 
 <br>
 
@@ -503,9 +576,9 @@ APIゲートウェイを適切な結合度と凝集度で分割することに�
 
 <br>
 
-図6. APIゲートウェイ分割方法のデザインパターンの種類
+図7. APIゲートウェイ分割方法のデザインパターンの種類
 
-![06](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/06.png)
+![07](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/07.png)
 
 <br>
 
@@ -560,9 +633,9 @@ APIゲートウェイとして使用できるツールはNginx以外にも非常
 
 <br>
 
-図7. BFFの配置例
+図8. BFFの配置例
 
-![07](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/07.png)
+![08](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/08.png)
 
 <br>
 
@@ -578,9 +651,9 @@ APIゲートウェイとして使用できるツールはNginx以外にも非常
 
 <br>
 
-図8. AWS EKS上でのBFFの設計例
+図9. AWS EKS上でのBFFの設計例
 
-![08](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/08.png)
+![09](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/09.png)
 
 <br>
 
@@ -604,9 +677,9 @@ APIゲートウェイとして使用できるツールはNginx以外にも非常
 
 <br>
 
-図9. マイクロサービス領域のデザインパターングループの種類
+図10. マイクロサービス領域のデザインパターングループの種類
 
-![09](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/09.png)
+![10](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/10.png)
 
 <br>
 
@@ -637,9 +710,9 @@ flowchart LR
 
 <br>
 
-図10. マイクロサービス間通信方法のデザインパターンの種類
+図11. マイクロサービス間通信方法のデザインパターンの種類
 
-![10](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/10.png)
+![11](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/11.png)
 
 <br>
 
@@ -692,9 +765,9 @@ flowchart LR
 
 <br>
 
-図11. マイクロサービス間のリクエスト−レスポンスによる通信の様子
+図12. マイクロサービス間のリクエスト−レスポンスによる通信の様子
 
-![11](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/11.png)
+![12](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/12.png)
 
 <br>
 
@@ -716,9 +789,9 @@ NgincはgRPCサーバーまたはRESTfulサーバーと通信し、もしgRPCサ
 
 <br>
 
-図12. AWS EKS上でのリクエスト−レスポンスの設計例
+図13. AWS EKS上でのリクエスト−レスポンスの設計例
 
-![12](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/12.png)
+![13](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/13.png)
 
 <br>
 
@@ -750,9 +823,9 @@ NgincはgRPCサーバーまたはRESTfulサーバーと通信し、もしgRPCサ
 
 <br>
 
-図13. マイクロサービス分割方法のデザインパターンの種類
+図14. マイクロサービス分割方法のデザインパターンの種類
 
-![13](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/13.png)
+![14](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/14.png)
 
 <br>
 
@@ -790,9 +863,9 @@ Learning Domain-Driven design本 *42 は、DDDの代表的な書籍であるDoma
 
 <br>
 
-図14. DDDに基づくマイクロサービスの適切な大きさ
+図15. DDDに基づくマイクロサービスの適切な大きさ
 
-![14](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/14.png)
+![15](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/15.png)
 
 <br>
 
@@ -826,9 +899,9 @@ Learning Domain-Driven design本 *42 は、DDDの代表的な書籍であるDoma
 
 <br>
 
-図15. メインモデリングのデザインパターンの種類
+図16. メインモデリングのデザインパターンの種類
 
-![15](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/15.png)
+![16](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/16.png)
 
 <br>
 
@@ -857,9 +930,9 @@ flowchart LR
 
 <br>
 
-図16. ドメインモデリングとマイクロサービス間通信方法の関係性
+図17. ドメインモデリングとマイクロサービス間通信方法の関係性
 
-![16](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/16.png)
+![17](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/17.png)
 
 <br>
 
@@ -885,9 +958,9 @@ flowchart LR
 
 <br>
 
-図17. マイクロサービス設計方法のデザインパターンの種類
+図18. マイクロサービス設計方法のデザインパターンの種類
 
-![17](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/17.png)
+![18](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/18.png)
 
 <br>
 
@@ -921,9 +994,9 @@ DDDのドメインモデリング手順では、ドメインエキスパート�
 
 <br>
 
-図18. DDDデザインパターンの種類
+図19. DDDデザインパターンの種類
 
-![18](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/18.png)
+![19](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/19.png)
 
 <br>
 
@@ -952,9 +1025,9 @@ flowchart LR
 
 <br>
 
-図19. アプリケーションアーキテクチャのデザインパターンの種類
+図20. アプリケーションアーキテクチャのデザインパターンの種類
 
-![19](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/19.png)
+![20](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/20.png)
 
 <br>
 
@@ -1025,9 +1098,9 @@ Sagaにはオーケストレーションベースとコレオグラフィベー�
 
 <br>
 
-図20. トランザクション管理方法のデザインパターンの種類
+図21. トランザクション管理方法のデザインパターンの種類
 
-![20](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/20.png)
+![21](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/21.png)
 
 <br>
 
@@ -1091,9 +1164,9 @@ Temporalはプログラミング言語でワークフローを定義できるた
 
 <br>
 
-図21. AWS EKS上でのオーケストレーションベースSagaの設計例
+図22. AWS EKS上でのオーケストレーションベースSagaの設計例
 
-![21](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/21.png)
+![22](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/22.png)
 
 <br>
 
@@ -1131,9 +1204,9 @@ Temporalはプログラミング言語でワークフローを定義できるた
 
 <br>
 
-図22. 認証のデザインパターンの種類
+図23. 認証のデザインパターンの種類
 
-![22](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/22.png)
+![23](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/23.png)
 
 <br>
 
@@ -1190,9 +1263,9 @@ Istioの場合、Istioリソースを定義することにより無効なアカ�
 
 <br>
 
-図23. AWS EKS上でのOIDC認可コードフローの設計例
+図24. AWS EKS上でのOIDC認可コードフローの設計例
 
-![23](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/23.png)
+![24](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/24.png)
 
 <br>
 
@@ -1218,9 +1291,9 @@ Istioの場合、Istioリソースを定義することにより無効なアカ�
 
 <br>
 
-図24. 認可のデザインパターンの種類
+図25. 認可のデザインパターンの種類
 
-![24](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/24.png)
+![25](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/25.png)
 
 <br>
 
@@ -1282,9 +1355,9 @@ Istioの場合、Istioリソースを定義することにより無効なアカ�
 
 <br>
 
-図25. ストレージ領域のデザインパターングループの種類
+図26. ストレージ領域のデザインパターングループの種類
 
-![25](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/25.png)
+![26](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/26.png)
 
 <br>
 
@@ -1312,9 +1385,9 @@ Kubernetes NodeにアタッチされたAWS EBSやKubernetes Volumeは揮発性�
 
 <br>
 
-図26. AWS EKS上でのデータ管理の設計例
+図27. AWS EKS上でのデータ管理の設計例
 
-![26](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/26.png)
+![27](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/27.png)
 
 <br>
 
@@ -1328,9 +1401,9 @@ Kubernetes NodeにアタッチされたAWS EBSやKubernetes Volumeは揮発性�
 
 <br>
 
-図27. 永続データ管理方法のデザインパターンの種類
+図28. 永続データ管理方法のデザインパターンの種類
 
-![27](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/27.png)
+![28](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/28.png)
 
 <br>
 
@@ -1382,9 +1455,9 @@ Shared DBは一般的に非推奨なパターンとされているため、こ�
 
 <br>
 
-図28. AWS EKS上でのDB per serviceの設計例
+図29. AWS EKS上でのDB per serviceの設計例
 
-![28](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/28.png)
+![29](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/29.png)
 
 <br>
 
@@ -1410,9 +1483,9 @@ Shared DBは一般的に非推奨なパターンとされているため、こ�
 
 <br>
 
-図29. 横断領域のデザインパターングループの種類
+図30. 横断領域のデザインパターングループの種類
 
-![29](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/29.png)
+![30](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/30.png)
 
 <br>
 
@@ -1455,9 +1528,9 @@ Externalized configurationにはプルベースとプッシュベースの方法
 
 <br>
 
-図30. Externalized configurationのデザインパターンの種類
+図31. Externalized configurationのデザインパターンの種類
 
-![30](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/30.png)
+![31](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/31.png)
 
 <br>
 
@@ -1506,9 +1579,9 @@ Kubernetes ConfigMap、Secret、AWS Secrets Managerの暗号化キーは管理�
 
 <br>
 
-図31. AWS EKS上でのExternalized configurationの設計例
+図32. AWS EKS上でのExternalized configurationの設計例
 
-![31](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/31.png)
+![32](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/32.png)
 
 <br>
 
@@ -1538,9 +1611,9 @@ Kubernetes ConfigMap、Secret、AWS Secrets Managerの暗号化キーは管理�
 
 <br>
 
-図32. サービスメッシュのデザインパターンの種類
+図33. サービスメッシュのデザインパターンの種類
 
-![32](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/32.png)
+![33](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/33.png)
 
 <br>
 
@@ -1596,9 +1669,9 @@ Istioにより、マイクロサービスとしてのKubernetes Podは他のPod�
 
 <br>
 
-図33. AWS EKS上でのサイドカーサービスメッシュの設計例
+図34. AWS EKS上でのサイドカーサービスメッシュの設計例
 
-![33](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/33.png)
+![34](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/34.png)
 
 <br>
 
@@ -1626,9 +1699,9 @@ Istioにより、マイクロサービスとしてのKubernetes Podは他のPod�
 
 <br>
 
-図34. インフラストラクチャー領域のデザインパターングループの種類
+図35. インフラストラクチャー領域のデザインパターングループの種類
 
-![34](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/34.png)
+![35](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/35.png)
 
 <br>
 
@@ -1663,9 +1736,9 @@ flowchart LR
 
 <br>
 
-図35. AWS EKS上でのL3管理の設計例
+図36. AWS EKS上でのL3管理の設計例
 
-![35](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/35.png)
+![36](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/36.png)
 
 <br>
 
@@ -1691,9 +1764,9 @@ L4/L7のプロトコル (TCP、HTTP、HTTPSなど) を使用してマイクロ�
 
 <br>
 
-図36. L4/L7トラフィック管理方法のデザインパターングループの種類
+図37. L4/L7トラフィック管理方法のデザインパターングループの種類
 
-![36](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/36.png)
+![37](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/37.png)
 
 <br>
 
@@ -1722,9 +1795,9 @@ flowchart LR
 
 <br>
 
-図37. 宛先検出と宛先登録のデザインパターンの種類
+図38. 宛先検出と宛先登録のデザインパターンの種類
 
-![37](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/18.png)
+![38](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/19.png)
 
 <br>
 
@@ -1775,9 +1848,9 @@ IstioコントロールプレーンはAWS EKSコントロールプレーンか�
 
 <br>
 
-図38. AWS EKS上でのサービスメッシュ内のL4/L7トラフィック管
+図39. AWS EKS上でのサービスメッシュ内のL4/L7トラフィック管
 
-![38](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/38.png)
+![39](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/39.png)
 
 <br>
 
@@ -1793,9 +1866,9 @@ IstioコントロールプレーンはAWS EKSコントロールプレーンか�
 
 <br>
 
-図39. AWS EKS上でのサービスメッシュ外のL7トラフィック管理の設計例
+図40. AWS EKS上でのサービスメッシュ外のL7トラフィック管理の設計例
 
-![39](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/39.png)
+![40](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/40.png)
 
 <br>
 
@@ -1811,9 +1884,9 @@ kube-proxyは新しいPodのIPアドレスをiptablesに追加し、またKubern
 
 <br>
 
-図40. AWS EKS上でのサービスメッシュ外のL4トラフィック管理の設計例
+図41. AWS EKS上でのサービスメッシュ外のL4トラフィック管理の設計例
 
-![40](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/40.png)
+![41](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/41.png)
 
 <br>
 
@@ -1850,9 +1923,9 @@ AWS EKSを使用する場合、Etcdはマネージドなコントロールプレ
 
 <br>
 
-図41. ロードバランシングのデザインパターンの種類
+図42. ロードバランシングのデザインパターンの種類
 
-![41](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/41.png)
+![42](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/42.png)
 
 <br>
 
@@ -1926,9 +1999,9 @@ TLSプロトコルを使用してアプリケーションデータを暗号化�
 
 <br>
 
-図42. 証明書管理方法のデザインパターンの種類
+図43. 証明書管理方法のデザインパターンの種類
 
-![42](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/42.png)
+![43](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/43.png)
 
 <br>
 
@@ -1984,9 +2057,9 @@ Istioコントロールプレーンは自己を署名し、ルート認証局と
 
 <br>
 
-図43. AWS EKS上での証明書管理の設計例
+図44. AWS EKS上での証明書管理の設計例
 
-![43](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/43.png)
+![44](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/44.png)
 
 <br>
 
