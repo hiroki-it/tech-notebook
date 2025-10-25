@@ -125,6 +125,8 @@ plugins:
   - git-revision-date-localized:
       type: iso_date
       timezone: Asia/Tokyo
+  - git-authors:
+      show_email_address: false
   - search:
       lang:
         - ja
