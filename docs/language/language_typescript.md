@@ -112,7 +112,7 @@ const obj = {
 
 <br>
 
-## 02-02. 変数の代入
+## 02-02. 型
 
 ### プリミティブ
 
@@ -445,6 +445,56 @@ const logger = (): void => {
 ```
 
 > - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E6%88%BB%E3%82%8A%E5%80%A4%E3%81%8C%E3%81%AA%E3%81%84%E5%A0%B4%E5%90%88%E3%81%AE-void
+
+<br>
+
+### 不明／任意
+
+#### ▼ unknown
+
+`unknown`を使用した場合、それ以降の処理では型を無視して処理する。
+
+```typescript
+function foo(): string | unknown {
+  try {
+    // 何らかの処理
+
+    return "success";
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      // unknownを使用したため、Error型として暗黙的に処理される
+      console.error(error.message);
+    } else {
+      // unknownを使用したため、Error型以外の型として暗黙的に処理される
+      console.error("Unknown error:", error);
+    }
+    return error;
+  }
+}
+```
+
+#### ▼ any
+
+`any`を使用した場合、それ以降の処理では型を無視して処理する。
+
+```typescript
+function foo(): string | any {
+  try {
+    // 何らかの処理
+
+    return "success";
+  } catch (error: any) {
+    if (error instanceof Error) {
+      // anyを使用したため、Error型ではなく型無しとして暗黙的に処理される
+      console.error(error.message);
+    } else {
+      // anyを使用したため、型無しとして暗黙的に処理される
+      console.error("Unknown error:", error);
+    }
+    return error;
+  }
+}
+```
 
 <br>
 

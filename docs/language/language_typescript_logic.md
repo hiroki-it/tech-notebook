@@ -172,6 +172,56 @@ greet(user);
 
 ## 04. エラーハンドリング
 
+### エラーの型
+
+#### ▼ unknown
+
+`unknown`を使用した場合、それ以降の処理では型を無視して処理する。
+
+```typescript
+function foo(): string | unknown {
+  try {
+    // 何らかの処理
+
+    return "success";
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      // unknownを使用したため、Error型として暗黙的に処理される
+      console.error(error.message);
+    } else {
+      // unknownを使用したため、Error型以外の型として暗黙的に処理される
+      console.error("Unknown error:", error);
+    }
+    return error;
+  }
+}
+```
+
+#### ▼ any
+
+`any`を使用した場合、それ以降の処理では型を無視して処理する。
+
+```typescript
+function foo(): string | any {
+  try {
+    // 何らかの処理
+
+    return "success";
+  } catch (error: any) {
+    if (error instanceof Error) {
+      // anyを使用したため、Error型ではなく型無しとして暗黙的に処理される
+      console.error(error.message);
+    } else {
+      // anyを使用したため、型無しとして暗黙的に処理される
+      console.error("Unknown error:", error);
+    }
+    return error;
+  }
+}
+```
+
+<br>
+
 ### 独自エラーオブジェクトの定義
 
 ステータスコードに応じたエラーを継承すると、`try-catch`で扱いやすくなる。
