@@ -473,6 +473,8 @@ function foo(): string | unknown {
 }
 ```
 
+> - https://qiita.com/frozenbonito/items/e708dfb3ab7c1fd3824d
+
 #### ▼ any
 
 `any`を使用した場合、それ以降の処理では型を無視して処理する。
@@ -495,6 +497,8 @@ function foo(): string | any {
   }
 }
 ```
+
+> - https://qiita.com/frozenbonito/items/e708dfb3ab7c1fd3824d
 
 <br>
 
