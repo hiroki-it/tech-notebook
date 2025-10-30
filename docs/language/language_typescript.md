@@ -116,48 +116,72 @@ const obj = {
 
 ### プリミティブ
 
-#### ▼ 変数
+#### ▼ 文字列 (String)
 
 ```typescript
 let str: string = "hello";
-str = 0;
+str = 0; // これはエラーになる
 ```
+
+> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9
+
+#### ▼ 数値 (Number)
 
 ```typescript
 let num: number = 0;
-num = "0";
+num = "0"; // これはエラーになる
 ```
 
+> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9
+
+#### ▼ 巨大な数値 (bigint)
+
 ```typescript
-let big: bigNumber = 10n;
-big = 0;
+let big: bigint = 10n;
+big = 0; // これはエラーになる
 ```
+
+> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9
+
+#### ▼ 真偽値 (Boolean)
 
 ```typescript
 let bool: boolean = true;
-bool = 1;
+bool = 1; // これはエラーになる
 ```
+
+> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9
+
+#### ▼ Null
 
 ```typescript
 let n: null = null;
-n = undefined;
+n = undefined; // これはエラーになる
 ```
+
+> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9
+
+#### ▼ Undefined
 
 ```typescript
 let u: undefined = undefined;
-u = null;
+u = null; // これはエラーになる
 ```
+
+> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9
+
+#### ▼ シンボル (Symbol)
 
 ```typescript
 let sym: symbol = Symbol();
-sym = "";
+sym = ""; // これはエラーになる
 ```
 
 > - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9
 
 <br>
 
-### オブジェクト
+### オブジェクト (Object)
 
 #### ▼ 変数
 
@@ -194,7 +218,7 @@ const value3 = obj["baz-qux"]; // 789
 
 <br>
 
-### レコード
+### レコード (Record)
 
 #### ▼ 変数
 
@@ -566,6 +590,25 @@ const foo: string = process.env.FOO!;
 
 <br>
 
+### 型ガード
+
+複数の型を許容している場合に、`if`文を使用して型を絞り込むこと。
+
+```typescript
+// string型またはnumber型を許容する
+function foo(value: string | number) {
+  if (typeof value === "string") {
+    // string型として扱われる
+    console.log(value.toUpperCase());
+  } else {
+    // 残りのnumber型として扱われる
+    console.log(value.toFixed(2));
+  }
+}
+```
+
+<br>
+
 ## 04. 独自の型宣言
 
 ### 比較
@@ -602,7 +645,7 @@ type Foo = {
 };
 ```
 
-#### ▼ 交差型
+#### ▼ 交差型（Intersection）
 
 複数の型を同時に満たす型である。
 
@@ -623,7 +666,7 @@ function method(arg: AB): void {
 
 > - https://tyotto-good.com/typescript/union-intersection-type
 
-#### ▼ 合併型
+#### ▼ 合併型 (Union)
 
 複数の型のいずれかを満たす型である。
 
