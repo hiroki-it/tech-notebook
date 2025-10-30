@@ -117,6 +117,75 @@ console.log(message);
 
 <br>
 
+### メソッド
+
+#### ▼ setter
+
+プロパティを直接操作するように値を変更できる。
+
+```typescript
+class User {
+  private _name: string;
+
+  constructor(name: string) {
+    this._name = name;
+  }
+
+  get name(): string {
+    console.log("getterが呼ばれました");
+    return this._name;
+  }
+
+  set name(newName: string) {
+    if (newName.trim() === "") {
+      throw new Error("名前は空にできません");
+    }
+    this._name = newName;
+  }
+}
+
+// 最初の名前
+const user = new User("Tom");
+
+// プロパティを直接操作するように値を変更できる
+// 名前を変更する
+user.name = "Bob";
+```
+
+#### ▼ update系、change系
+
+ドメインを意識したメソッドを使用して値を変更できる。
+
+```typescript
+class User {
+  private _name: string;
+
+  constructor(name: string) {
+    this._name = name;
+  }
+
+  get name(): string {
+    return this._name;
+  }
+
+  changeName(newName: string): void {
+    if (newName.trim() === "") {
+      throw new Error("名前は空にできません");
+    }
+    this._name = newName;
+  }
+}
+
+// 最初の名前
+const user = new User("Tom");
+
+// ドメインを意識したメソッドを使用して値を変更できる
+// 名前を変更する
+user.changeName("Bob");
+```
+
+<br>
+
 ## 03. 引数
 
 ### 分割代入引数
@@ -170,7 +239,81 @@ greet(user);
 
 <br>
 
-## 04. エラーハンドリング
+## 04. 返却値
+
+### 返却値の型
+
+TypeScriptでは、 `return`の型のみを指定すれば良い。
+
+```typescript
+// Error型は返却値の型に指定しなくても良い
+function foo(): string {
+  try {
+    // 何らかの処理
+
+    return "success";
+  } catch (e) {
+    // 何らかの処理
+
+    throw new Error("failed");
+  }
+}
+
+// string型または例外を返却する
+foo();
+```
+
+<br>
+
+### 返却方法
+
+#### ▼ return
+
+呼び出し元に成功を返却する。
+
+```typescript
+// string型のみを指定する
+function foo(): string {
+  try {
+    // 何らかの処理
+
+    return "success";
+  } catch (e) {
+    // 何らかの処理
+
+    return "failed";
+  }
+}
+
+// string型を返却する
+foo();
+```
+
+#### ▼ throw
+
+呼び出し元に失敗をエラーとして返却する。
+
+```typescript
+// string型のみを指定し、Error型は返却値の型に指定しなくても良い
+function foo(): string {
+  try {
+    // 何らかの処理
+
+    return "success";
+  } catch (e) {
+    // 何らかの処理
+
+    throw new Error("failed");
+  }
+}
+
+// string型またはError型を返却する
+foo();
+```
+
+<br>
+
+## 05. エラーハンドリング
 
 ### エラーの型
 
@@ -310,7 +453,7 @@ export const action = async ({request, params}: ActionArgs) => {
 
 <br>
 
-## 05. コピー
+## 06. コピー
 
 ### 参照コピー
 
@@ -358,7 +501,7 @@ console.log(original.fullname.firstname); // "foo" となり、コピー前の�
 
 <br>
 
-## 06. 条件式
+## 07. 条件式
 
 ### 二項演算子
 
@@ -387,7 +530,7 @@ const fooOrBar = foo == "foo" ? foo : "bar";
 
 <br>
 
-## 07. さまざまなプラクティスのまとめ
+## 08. さまざまなプラクティスのまとめ
 
 ```typescript
 // エラーハンドリング: Result型で値を型として明示
