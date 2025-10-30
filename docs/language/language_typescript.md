@@ -609,6 +609,47 @@ function foo(value: string | number) {
 
 <br>
 
+### 複数の型
+
+#### ▼ プロパティで複数の型を許容
+
+`name`プロパティは`string`型と`undefined`型を許容している。
+
+`undefined`型の方が網羅範囲が大きいため、実質`undefined`型として扱われる。
+
+```typescript
+type User = {
+  id: number;
+  name: string | undefined;
+};
+
+const user1: User = {id: 1, name: "Alice"};
+const user2: User = {id: "abc123", name: "Bob"};
+```
+
+#### ▼ オブジェクト全体で複数の型を用意
+
+`name`プロパティが`string`型のUserと、`undefined`型のUserWithoutNameを別々に定義している。
+
+`undefined`型の方が網羅範囲が大きいため、実質`undefined`型として扱われる。
+
+```typescript
+type User = {
+  id: number;
+  name: string;
+};
+
+type UserWithoutName = {
+  id: number;
+  name: undefined;
+};
+
+const user1: User = {id: 1, name: "Alice"};
+const user2: UserWithoutName = {id: 1, name: undefined};
+```
+
+<br>
+
 ## 04. 独自の型宣言
 
 ### 比較
