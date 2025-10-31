@@ -147,14 +147,17 @@ describe("fetchUser", async () => {
   // 正常系テストケース
   test("success", async () => {
     // レスポンスに関するテストデータ
-    const response = {
+    const responseBody = {
       id: "1",
       name: "Taro",
     };
 
     // axiosクライアントを実行する場合、モックに差し替える
     // axiosクライアントのモックが一度だけデータを返却するように設定
-    vi.mocked(axios, true).get.mockResolvedValueOnce({data: response});
+    vi.mocked(axios, true).get.mockResolvedValueOnce({
+      data: responseBody,
+      status: 200,
+    });
 
     // 関数をテスト
     // 内部で実行されるaxiosクライアントはモックであり、mockResolvedValueOnceで設定した値を返却する
@@ -176,12 +179,11 @@ describe("fetchUser", async () => {
 
   // 異常系テストケース
   test("foo failure", async () => {
-    // レスポンスに関するテストデータ
-    const response = new Error("Network Error");
-
     // axiosクライアントを実行する場合、モックに差し替える
     // axiosクライアントのモックがエラーを一度だけ返すように設定
-    vi.mocked(axios, true).get.mockRejectedValueOnce(response);
+    vi.mocked(axios, true).get.mockRejectedValueOnce(
+      new Error("Network Error"),
+    );
 
     // Error型を比較検証
     // 内部で実行されるaxiosクライアントはモックであり、mockResolvedValueOnceで設定した値を返却する
