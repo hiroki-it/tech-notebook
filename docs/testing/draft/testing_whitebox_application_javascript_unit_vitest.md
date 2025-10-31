@@ -121,8 +121,6 @@ Vitestの思想では、テストコードの型検証はエディタやビル�
 
 ### 外部とのリクエスト／レスポンス
 
-#### ▼ 正常系
-
 ```typescript
 // テスト対象の関数
 import axios from "axios";
@@ -167,7 +165,7 @@ describe("fetchUser", async () => {
     // 実行時間は0秒より大きくなる
     expect(user.executionTime).toBeGreaterThan(0);
     // 処理実行の開始時刻も返却できるとする
-    // 実際値をData形式に一度変換し、再び元のISO形式に戻しても元の値と一致することを検証する
+    // 実際値をData形式に一度変換し、再び元のISO形式に戻しても元の値と一致することを比較検証する
     // 期待値は固定値じゃないのが不思議であるが、これが適切なテスト方法である
     expect(new Date(user.startAtTimestamp).toISOString()).toBe(
       user.startAtTimestamp,
@@ -196,6 +194,8 @@ describe("fetchUser", async () => {
   });
 });
 ```
+
+<br>
 
 ### 外部とのパブリッシュ／サブスクライブ
 
@@ -267,9 +267,9 @@ describe("publishMessage", () => {
     vi.mocked(publishMessageToEmqx).mockResolvedValueOnce(undefined);
     const result = await publishMessage(url);
 
-    // publishMessageによる送信処理が正常に完了したことを検証する
+    // publishMessageによる送信処理が正常に完了したことを比較検証する
     expect(result).toBe("success");
-    // 内部でpublishMessageToEmqxが実行されていることを検証する
+    // 内部でpublishMessageToEmqxが実行されていることを比較検証する
     expect(publishMessageToEmqx).toHaveBeenCalledWith(
       url,
       "$share/test-topic",
@@ -283,9 +283,9 @@ describe("publishMessage", () => {
       new Error("network error"),
     );
 
-    // publishMessageが例外をスローすることを検証する
+    // publishMessageが例外をスローすることを比較検証する
     await expect(publishMessage(url)).rejects.toThrow("failed to send message");
-    // 内部でpublishMessageToEmqxが実行されていることを検証する
+    // 内部でpublishMessageToEmqxが実行されていることを比較検証する
     expect(publishMessageToEmqx).toHaveBeenCalledWith(
       url,
       "$share/test-topic",
@@ -307,9 +307,9 @@ describe("subscribeMessage", () => {
     vi.mocked(subscribeMessageToEmqx).mockResolvedValueOnce(undefined);
     const result = await subscribeMessage(url);
 
-    // subscribeMessageによる受信処理が正常に完了したことを検証する
+    // subscribeMessageによる受信処理が正常に完了したことを比較検証する
     expect(result).toBe("success");
-    // 内部でsubscribeMessageToEmqxが実行されていることを検証する
+    // 内部でsubscribeMessageToEmqxが実行されていることを比較検証する
     expect(subscribeMessageToEmqx).toHaveBeenCalledWith(
       url,
       "$share/test-topic",
@@ -323,16 +323,49 @@ describe("subscribeMessage", () => {
       new Error("network error"),
     );
 
-    // subscribeMessageが例外をスローすることを検証する
+    // subscribeMessageが例外をスローすることを比較検証する
     await expect(subscribeMessage(url)).rejects.toThrow(
       "failed to subscribe message",
     );
-    // 内部でsubscribeMessageToEmqxが実行されていることを検証する
+    // 内部でsubscribeMessageToEmqxが実行されていることを比較検証する
     expect(subscribeMessageToEmqx).toHaveBeenCalledWith(
       url,
       "$share/test-topic",
       "Hello EMQX",
     );
+  });
+});
+```
+
+<br>
+
+### エラーの中身を詳細に検証
+
+エラーの中身を詳細に検証したい場合、`rejects.toThrow("エラー文")`だけでは比較検証できることが少ない。
+
+```typescript
+import {test, expect, vi} from "vitest";
+import axios from "axios";
+import {fetchUser} from "./fetchUser";
+
+// axiosクライアントのモック
+vi.mock("axios");
+
+describe("fetchUser", () => {
+  // リクエストのパラメーターに関するテストデータ
+  const userId = "1";
+
+  // 異常系テストケース
+  test("should throw CustomError with correct message, code, and timestamp", async () => {
+    try {
+      await fetchUser(userId);
+      expect.fail("should thrown an error");
+    } catch (e) {
+      const error = e as CustomError;
+      expect(error.name).toBe("CustomError");
+      expect(error.message).toMatch(/error/);
+      expect(error.code).toBe(500);
+    }
   });
 });
 ```
