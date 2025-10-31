@@ -152,10 +152,12 @@ describe("fetchUser", async () => {
       name: "Taro",
     };
 
+    // axiosクライアントを実行する場合、モックに差し替える
     // axiosクライアントのモックが一度だけデータを返却するように設定
-    vi.mocked(axios).get.mockResolvedValueOnce({data: response});
+    vi.mocked(axios, true).get.mockResolvedValueOnce({data: response});
 
     // 関数をテスト
+    // 内部で実行されるaxiosクライアントはモックであり、mockResolvedValueOnceで設定した値を返却する
     const user = await fetchUser(userId);
 
     // 実際値と期待値を比較検証
@@ -177,10 +179,12 @@ describe("fetchUser", async () => {
     // レスポンスに関するテストデータ
     const response = new Error("Network Error");
 
+    // axiosクライアントを実行する場合、モックに差し替える
     // axiosクライアントのモックがエラーを一度だけ返すように設定
-    vi.mocked(axios).get.mockRejectedValueOnce(response);
+    vi.mocked(axios, true).get.mockRejectedValueOnce(response);
 
     // Error型を比較検証
+    // 内部で実行されるaxiosクライアントはモックであり、mockResolvedValueOnceで設定した値を返却する
     await expect(fetchUser(userId)).rejects.toBeInstanceOf(Error);
 
     // await宣言で完了を待つようにしないと、そのままテスト処理が終わってしまう
@@ -358,7 +362,9 @@ describe("fetchUser", () => {
   // 異常系テストケース
   test("should throw CustomError with correct message, code, and timestamp", async () => {
     try {
+      // 内部で実行されるaxiosクライアントはモックであり、mockResolvedValueOnceで設定した値を返却する
       await fetchUser(userId);
+      // fail関数を実行しないといけない
       expect.fail("should thrown an error");
     } catch (e) {
       const error = e as CustomError;
