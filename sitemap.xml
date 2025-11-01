@@ -2597,6 +2597,14 @@
          <lastmod>2025-11-01</lastmod>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_typescript_e2e_cypress.html</loc>
+         <lastmod>2025-11-01</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_typescript_unit_vitest.html</loc>
+         <lastmod>2025-11-01</lastmod>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint.html</loc>
          <lastmod>2025-11-01</lastmod>
     </url>
@@ -2661,15 +2669,7 @@
          <lastmod>2025-11-01</lastmod>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_application_typescript_e2e_cypress.html</loc>
-         <lastmod>2025-11-01</lastmod>
-    </url>
-    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_application_typescript_e2e_playwright.html</loc>
-         <lastmod>2025-11-01</lastmod>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_application_typescript_unit_vitest.html</loc>
          <lastmod>2025-11-01</lastmod>
     </url>
     <url>
