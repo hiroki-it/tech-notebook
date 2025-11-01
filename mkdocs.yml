@@ -460,6 +460,11 @@ nav:
                   - golangci-lint: testing/testing_whitebox_application_go_lint_golangci_lint.md
               - ■ ユニットテスト:
                   - testify: testing/testing_whitebox_application_go_unit_testify.md
+          - ■ アプリ (TypeScript):
+                - ■ ユニットテスト:
+                      - Vitest: testing/testing_whitebox_application_typescript_unit_vitest.md
+                - ■ E2Eテスト:
+                      - Cypress: testing/testing_whitebox_application_typescript_e2e_cypress.md
           - ■ インフラ:
               - ■ 静的解析:
                   - 静的解析ツール: testing/testing_whitebox_infrastructure_lint.md
