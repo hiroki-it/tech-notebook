@@ -315,7 +315,7 @@ foo();
 
 <br>
 
-## 05. エラーハンドリング
+## 05. エラー
 
 ### エラーの型
 
@@ -371,7 +371,19 @@ function foo(): string | any {
 
 <br>
 
-### 独自エラーオブジェクトの定義
+### Errorオブジェクト
+
+#### ▼ ビルトイン
+
+```typescript
+interface Error {
+  name: string;
+  message: string;
+  stack?: string;
+}
+```
+
+#### ▼ 独自
 
 ステータスコードに応じたエラーを継承すると、`try-catch`で扱いやすくなる。
 
@@ -394,7 +406,39 @@ class FooError extends Error {
 
 <br>
 
-### エラーメッセージの取得
+### エラーの方に応じた処理
+
+#### ▼ エラーハンドリング
+
+TypeScriptの`try-catch`で捕捉したエラーに応じて処理を実行し分ける場合、`catch`ブロックを複数書くのではなく、`if`文を使用する必要がある。
+
+```typescript
+import axios, {AxiosError} from "axios";
+
+export async function fetchUser(id: string) {
+  try {
+    const response = await axios.get(`/api/users/${id}`);
+    return response.data;
+  } catch (error: unknown) {
+    // axiosが投げたエラーの場合
+    if (axios.isAxiosError(e)) {
+      throw new Error(
+        `通信エラーが発生しました (${error.response?.status ?? "unknown"})`,
+      );
+    }
+
+    // 通常のErrorオブジェクトの場合
+    if (e instanceof Error) {
+      throw new Error(`予期しないエラー: ${error.message}`);
+    }
+
+    // その他（string, object, nullなど）の場合
+    throw new Error("不明なエラーが発生しました");
+  }
+}
+```
+
+#### ▼ エラーメッセージの取得
 
 TypeScriptでは、エラーの構造がさまざまある。
 
