@@ -121,15 +121,19 @@ Vitestの思想では、テストコードの型検証はエディタやビル�
 
 ### 外部とのリクエスト／レスポンス
 
+#### ▼ テスト対象の関数
+
 ```typescript
-// テスト対象の関数
 import axios from "axios";
 
+// テスト対象の関数
 export async function fetchUser(id: string) {
   const res = await axios.get(`/api/users/${id}`);
   return res.data;
 }
 ```
+
+#### ▼ テストコード
 
 ```typescript
 import {test, expect, vi} from "vitest";
@@ -205,6 +209,8 @@ describe("fetchUser", async () => {
 
 ### 外部とのパブリッシュ／サブスクライブ
 
+#### ▼ テスト対象の関数
+
 ```typescript
 // テスト対象の関数
 export async function publishMessage(url: string) {
@@ -254,6 +260,8 @@ async function subscribeMessageToEmqx(
   console.log(`topic=${topic}, message=${message}`);
 }
 ```
+
+#### ▼ テストコード
 
 ```typescript
 import {describe, test, expect, vi} from "vitest";
@@ -347,6 +355,25 @@ describe("subscribeMessage", () => {
 
 ### エラーの中身を詳細に検証
 
+#### ▼ テスト対象の関数
+
+```typescript
+// Errorオブジェクトを継承した独自のErrorオブジェクト
+class FooError extends Error {
+  private _name: string;
+  private _code: number;
+
+  constructor(message: string, code: number) {
+    // message変数はErrorオブジェクトに渡す
+    super(message);
+    this._name = "FooError";
+    this._code = code;
+  }
+}
+```
+
+#### ▼ テストコード
+
 エラーの中身を詳細に検証したい場合、`rejects.toThrow("エラー文")`だけでは比較検証できることが少ない。
 
 ```typescript
@@ -362,15 +389,15 @@ describe("fetchUser", () => {
   const userId = "1";
 
   // 異常系テストケース
-  test("should throw CustomError with correct message, code, and timestamp", async () => {
+  test("should throw FooError with correct name, message and code", async () => {
     try {
       // 内部で実行されるaxiosクライアントはモックであり、mockResolvedValueOnceで設定した値を返却する
       await fetchUser(userId);
       // fail関数を実行しないといけない
       expect.fail("should thrown an error");
     } catch (e) {
-      const error = e as CustomError;
-      expect(error.name).toBe("CustomError");
+      const error = e as FooError;
+      expect(error.name).toBe("FooError");
       expect(error.message).toMatch(/error/);
       expect(error.code).toBe(500);
     }

@@ -335,6 +335,9 @@ ES6から、糖衣構文の`class`によって、オブジェクトを宣言で�
 ```javascript
 // named exportによる出力
 export class Foo {
+
+  private property;
+
   // classでしか使用できない。
   // Setterの代わりにコンストラクタでイミュータブルを実現。
   // 状態の宣言と格納が同時に行われる。
@@ -364,6 +367,9 @@ foo.getValue();
 ```javascript
 // named exportによる出力
 export const Foo = class {
+
+  private _property;
+
   // classでしか使用できない。
   // Setterの代わりにコンストラクタでイミュータブルを実現。
   // 状態の宣言と格納が同時に行われる。

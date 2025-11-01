@@ -193,9 +193,12 @@ const object = {
 
 ```javascript
 class Foo {
+  private _fruit;
+  private _account;
+
   constructor(fruit, account) {
-    this.fruit = fruit;
-    this.account = account;
+    this._fruit = fruit;
+    this._account = account;
   }
 }
 ```
@@ -277,10 +280,13 @@ console.log(object);
 
 ```javascript
 class StaffParser {
+  private _id;
+  private _name;
+
   // デシリアライズによるJS型データを自身に設定
   constructor(properties) {
-    this.id = properties.id;
-    this.name = properties.name;
+    this._id = properties.id;
+    this._name = properties.name;
   }
 
   //-- デシリアライズ (JSONからJavaScriptへ)  --//

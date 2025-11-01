@@ -27,11 +27,14 @@ description: ロジック＠TypeScriptの知見を記録しています。
 
 ```typescript
 class User {
+  private _name: string;
+  private _age: string;
+
   // オブジェクトの状態を設定する
-  constructor(
-    public name: string,
-    public age: number,
-  ) {}
+  constructor(name: string, age: number) {
+    this._name = name;
+    this._age = age;
+  }
 
   // 振る舞い
   isAdult(): boolean {
@@ -132,7 +135,6 @@ class User {
   }
 
   get name(): string {
-    console.log("getterが呼ばれました");
     return this._name;
   }
 
@@ -373,14 +375,19 @@ function foo(): string | any {
 
 ステータスコードに応じたエラーを継承すると、`try-catch`で扱いやすくなる。
 
-```typescript
-export class NotFoundError extends Error {
-  status: number;
+基本的には、ビルトインのErrorオブジェクトを継承する。
 
-  constructor(message = "The Requested URL was not found on this server") {
+```typescript
+// Errorオブジェクトを継承した独自のErrorオブジェクト
+class FooError extends Error {
+  private _name: string;
+  private _code: number;
+
+  constructor(message: string, code: number) {
+    // message変数はErrorオブジェクトに渡す
     super(message);
-    this.name = "NotFoundError";
-    this.status = 404;
+    this._name = "FooError";
+    this._code = code;
   }
 }
 ```
