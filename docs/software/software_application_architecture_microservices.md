@@ -142,18 +142,18 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 `src`ディレクトリに各マイクロサービスのディレクトリを配置する。
 
-| サービス名            | コンポーネントの種類           | 分割の観点                                     |
-| --------------------- | ------------------------------ | ---------------------------------------------- |
-| frontend              | フロントエンドアプリケーション | プレゼンテーション                             |
-| cartservice           | マイクロサービス               | 境界づけられたコンテキスト（カート）           |
-| productcatalogservice | マイクロサービス               | 境界づけられたコンテキスト（商品カタログ）     |
-| currencyservice       | マイクロサービス               | 境界づけられたコンテキスト（通貨換算）         |
-| shippingservice       | マイクロサービス               | 境界づけられたコンテキスト（配送）             |
-| paymentservice        | マイクロサービス               | 境界づけられたコンテキスト（決済）             |
-| checkoutservice       | オーケストレーターサービス     | ほかのマイクロサービスの調整（購入処理の統合） |
-| recommendationservice | マイクロサービス               | 境界づけられたコンテキスト（レコメンド）       |
-| adservice             | マイクロサービス               | 境界づけられたコンテキスト（広告配信）         |
-| emailservice          | マイクロサービス               | 非同期処理（通知／メール送信）                 |
+| サービス名            | コンポーネントの種類           | 分割の観点                                    |
+| --------------------- | ------------------------------ | --------------------------------------------- |
+| adservice             | マイクロサービス               | 境界づけられたコンテキスト (広告配信)         |
+| cartservice           | マイクロサービス               | 境界づけられたコンテキスト (カート)           |
+| checkoutservice       | オーケストレーターサービス     | ほかのマイクロサービスの調整 (購入処理の統合) |
+| currencyservice       | マイクロサービス               | 境界づけられたコンテキスト (通貨換算)         |
+| emailservice          | マイクロサービス               | 非同期処理 (通知／メール送信)                 |
+| frontend              | フロントエンドアプリケーション | プレゼンテーション                            |
+| paymentservice        | マイクロサービス               | 境界づけられたコンテキスト (決済)             |
+| productcatalogservice | マイクロサービス               | 境界づけられたコンテキスト (商品カタログ)     |
+| recommendationservice | マイクロサービス               | 境界づけられたコンテキスト (レコメンド)       |
+| shippingservice       | マイクロサービス               | 境界づけられたコンテキスト (配送)             |
 
 ![service_google](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google.png)
 
@@ -165,10 +165,10 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 | サービス名 | コンポーネントの種類 | 分割の観点                            |
 | ---------- | -------------------- | ------------------------------------- |
-| gateway    | APIゲートウェイ      | APIゲートウェイ                       |
 | authority  | 認証サービス         | 認証処理                              |
 | catalog    | マイクロサービス     | 境界づけられたコンテキスト (カタログ) |
 | customer   | マイクロサービス     | 境界づけられたドメイン (顧客管理)     |
+| gateway    | APIゲートウェイ      | APIゲートウェイ                       |
 | item       | マイクロサービス     | 境界づけられたドメイン (商品管理)     |
 
 ![service_mercari](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_mercari.png)
@@ -177,34 +177,74 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 #### ▼ Eコマース (Datadogのサンプル)
 
-| サービス名             | 責務                           | 分割の観点                                   |
-| ---------------------- | ------------------------------ | -------------------------------------------- |
-| store-frontend         | フロントエンドアプリケーション | UI                                           |
-| checkout-service       | マイクロサービス               | 境界づけられたコンテキスト（チェックアウト） |
-| cart-service           | マイクロサービス               | 境界づけられたコンテキスト（カート）         |
-| catalog-service        | マイクロサービス               | 境界づけられたコンテキスト（商品カタログ）   |
-| discounts-service      | マイクロサービス               | 境界づけられたコンテキスト（割引）           |
-| advertisements-service | マイクロサービス               | 境界づけられたコンテキスト（広告）           |
-| payment-service        | マイクロサービス               | 境界づけられたコンテキスト（決済）           |
-| shipping-service       | マイクロサービス               | 境界づけられたコンテキスト（配送）           |
-| users-service          | マイクロサービス               | 境界づけられたコンテキスト（ユーザー管理）   |
-| orders-service         | マイクロサービス               | 境界づけられたコンテキスト（注文管理）       |
+| サービス名             | コンポーネントの種類           | 分割の観点                                  |
+| ---------------------- | ------------------------------ | ------------------------------------------- |
+| advertisements-service | マイクロサービス               | 境界づけられたコンテキスト (広告)           |
+| cart-service           | マイクロサービス               | 境界づけられたコンテキスト (カート)         |
+| catalog-service        | マイクロサービス               | 境界づけられたコンテキスト (商品カタログ)   |
+| checkout-service       | マイクロサービス               | 境界づけられたコンテキスト (チェックアウト) |
+| discounts-service      | マイクロサービス               | 境界づけられたコンテキスト (割引)           |
+| orders-service         | マイクロサービス               | 境界づけられたコンテキスト (注文管理)       |
+| payment-service        | マイクロサービス               | 境界づけられたコンテキスト (決済)           |
+| shipping-service       | マイクロサービス               | 境界づけられたコンテキスト (配送)           |
+| store-frontend         | フロントエンドアプリケーション | UI                                          |
+| users-service          | マイクロサービス               | 境界づけられたコンテキスト (ユーザー管理)   |
 
 > - https://github.com/DataDog/ecommerce-workshop
 
 #### ▼ Eコマース (Amazon)
 
-![service_twitter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_amazon.png)
+| サービス名                   | コンポーネントの種類 | 分割の観点                                    |
+| ---------------------------- | -------------------- | --------------------------------------------- |
+| cart service                 | マイクロサービス     | 境界づけられたコンテキスト (カート)           |
+| inbound service              | マイクロサービス     | 境界づけられたコンテキスト (仕入管理)         |
+| inventory service            | マイクロサービス     | 境界づけられたコンテキスト (在庫)             |
+| item service                 | マイクロサービス     | 境界づけられたコンテキスト (商品管理)         |
+| logistic service             | マイクロサービス     | 境界づけられたコンテキスト (物流)             |
+| notification service         | マイクロサービス     | 非同期処理 (通知)                             |
+| order taking service         | マイクロサービス     | 境界づけられたコンテキスト (注文)             |
+| payment service              | マイクロサービス     | 境界づけられたコンテキスト (決済)             |
+| recommendation service       | マイクロサービス     | 境界づけられたコンテキスト (レコメンド)       |
+| search service               | マイクロサービス     | 境界づけられたコンテキスト (検索)             |
+| serviceability & TAT service | マイクロサービス     | 境界づけられたコンテキスト (配送可否判定)     |
+| user service                 | マイクロサービス     | 境界づけられたコンテキスト (ユーザー)         |
+| warehouse service            | マイクロサービス     | 境界づけられたコンテキスト (倉庫)             |
+| wishlist service             | マイクロサービス     | 境界づけられたコンテキスト (ウィッシュリスト) |
+
+![service_amazon](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_amazon.png)
 
 > - https://www.codekarle.com/system-design/Amazon-system-design.html
 
 #### ▼ SNS (Twitter)
+
+| サービス名                  | コンポーネントの種類 | 分割の観点                                        |
+| --------------------------- | -------------------- | ------------------------------------------------- |
+| asset service               | マイクロサービス     | 境界づけられたコンテキスト (メディア資産管理)     |
+| graph service               | マイクロサービス     | 境界づけられたコンテキスト (フォロー関係／グラフ) |
+| search service              | マイクロサービス     | 境界づけられたコンテキスト (検索)                 |
+| tweet ingestion service     | マイクロサービス     | 境界づけられたコンテキスト (ツイート書き込み)     |
+| tweet service               | マイクロサービス     | 境界づけられたコンテキスト (ツイート読み込み)     |
+| timeline service            | マイクロサービス     | 境界づけられたコンテキスト (タイムライン生成)     |
+| user live websocket service | マイクロサービス     | 境界づけられたコンテキスト (リアルタイム接続)     |
+| user service                | マイクロサービス     | 境界づけられたコンテキスト (ユーザー管理)         |
 
 ![service_twitter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_twitter.png)
 
 > - https://www.codekarle.com/system-design/Twitter-system-design.html
 
 #### ▼ 地図 (Google Map)
+
+| サービス名                       | コンポーネントの種類 | 分割の観点                                                |
+| -------------------------------- | -------------------- | --------------------------------------------------------- |
+| asset service                    | マイクロサービス     | 境界づけられたコンテキスト (メディア資産管理)             |
+| graph processing service         | マイクロサービス     | 境界づけられたコンテキスト (グラフ処理／ルート計算)       |
+| location service                 | マイクロサービス     | 境界づけられたコンテキスト (ユーザー位置情報管理)         |
+| map service                      | マイクロサービス     | 境界づけられたコンテキスト (地図レンダリング／タイル提供) |
+| navigation service               | マイクロサービス     | 境界づけられたコンテキスト (ナビゲーション指示)           |
+| real-time traffic update service | マイクロサービス     | 境界づけられたコンテキスト (交通情報更新)                 |
+| search/area-search service       | マイクロサービス     | 境界づけられたコンテキスト (検索／住所変換)               |
+| websocket handler service        | マイクロサービス     | 境界づけられたコンテキスト (リアルタイム接続管理)         |
+| historical data service          | マイクロサービス     | 境界づけられたコンテキスト (過去データ／ETA分析)          |
 
 ![service_google-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google-map.png)
 
