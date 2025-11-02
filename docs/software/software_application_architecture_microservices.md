@@ -148,7 +148,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 | cartservice           | マイクロサービス               | 境界づけられたコンテキスト (カート)           |
 | checkoutservice       | オーケストレーターサービス     | ほかのマイクロサービスの調整 (購入処理の統合) |
 | currencyservice       | マイクロサービス               | 境界づけられたコンテキスト (通貨換算)         |
-| emailservice          | マイクロサービス               | 非同期処理 (通知／メール送信)                 |
+| emailservice          | マイクロサービス               | 非同期的な機能 (通知／メール送信)             |
 | frontend              | フロントエンドアプリケーション | プレゼンテーション                            |
 | paymentservice        | マイクロサービス               | 境界づけられたコンテキスト (決済)             |
 | productcatalogservice | マイクロサービス               | 境界づけられたコンテキスト (商品カタログ)     |
@@ -201,7 +201,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 | inventory service            | マイクロサービス     | 境界づけられたコンテキスト (在庫)             |
 | item service                 | マイクロサービス     | 境界づけられたコンテキスト (商品管理)         |
 | logistic service             | マイクロサービス     | 境界づけられたコンテキスト (物流)             |
-| notification service         | マイクロサービス     | 非同期処理 (通知)                             |
+| notification service         | マイクロサービス     | 非同期的な機能 (通知)                         |
 | order taking service         | マイクロサービス     | 境界づけられたコンテキスト (注文)             |
 | payment service              | マイクロサービス     | 境界づけられたコンテキスト (決済)             |
 | recommendation service       | マイクロサービス     | 境界づけられたコンテキスト (レコメンド)       |
@@ -210,6 +210,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 | user service                 | マイクロサービス     | 境界づけられたコンテキスト (ユーザー)         |
 | warehouse service            | マイクロサービス     | 境界づけられたコンテキスト (倉庫)             |
 | wishlist service             | マイクロサービス     | 境界づけられたコンテキスト (ウィッシュリスト) |
+| ...                          | ...                  | ...                                           |
 
 ![service_amazon](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_amazon.png)
 
@@ -227,6 +228,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 | timeline service            | マイクロサービス     | 境界づけられたコンテキスト (タイムライン生成)     |
 | user live websocket service | マイクロサービス     | 境界づけられたコンテキスト (リアルタイム接続)     |
 | user service                | マイクロサービス     | 境界づけられたコンテキスト (ユーザー管理)         |
+| ...                         | ...                  | ...                                               |
 
 ![service_twitter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_twitter.png)
 
@@ -245,6 +247,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 | search/area-search service       | マイクロサービス     | 境界づけられたコンテキスト (検索／住所変換)               |
 | websocket handler service        | マイクロサービス     | 境界づけられたコンテキスト (リアルタイム接続管理)         |
 | historical data service          | マイクロサービス     | 境界づけられたコンテキスト (過去データ／ETA分析)          |
+| ...                              | ...                  | ...                                                       |
 
 ![service_google-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google-map.png)
 
