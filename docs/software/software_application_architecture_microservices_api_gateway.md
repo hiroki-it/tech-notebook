@@ -151,7 +151,7 @@ APIゲートウェイのOSS (Kong、Tyk、Apigee、Kuma、Nginx、Envoy、Apache
 この場合、Kubernetesクラスターの内にAPIゲートウェイを配置することになる。
 
 ```yaml
-AWS Route53 ---> AWS Load Balancer Controller ---> APIゲートウェイ (例：Nginx) ---> マイクロサービスPod
+AWS Route53 ---> AWS Load Balancer Controller ---> APIゲートウェイ (例：TypeScriptアプリ、Nginx) ---> マイクロサービスPod
 ```
 
 > - https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
