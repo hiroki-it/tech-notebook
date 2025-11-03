@@ -28646,13 +28646,13 @@
 </tr>
 <tr>
 <td>Service Proxy (サービスプロキシ) *29</td>
-<td>マイクロサービスからの送信されたリクエストを仲介し、ほかのマイクロサービスにフォワーディングする。</td>
+<td>マイクロサービスからの送信されたリクエストを中継し、ほかのマイクロサービスにフォワーディングする。</td>
 <td>・Envoy<br>・Nginx</td>
 <td>・AWS (ALB)</td>
 </tr>
 <tr>
 <td>Streaming &amp; Messaging (ストリーミングとメッセージング)</td>
-<td>パブリッシャーから送信されたメッセージを仲介し、他のサブスクライバーにフォワーディングする。</td>
+<td>パブリッシャーから送信されたメッセージを中継し、他のサブスクライバーにフォワーディングする。</td>
 <td>・Apache Kafka<br>・CloudEvents<br>・RabbitMQ</td>
 <td>・AWS (Kinesis、SQS)</td>
 </tr>
@@ -29040,7 +29040,7 @@
 <p>各クライアントは対応するNginx (PCブラウザ用、スマホブラウザ用BFF、外部API用BFFなど) にリクエストを送信し、各Nginxは適切なマイクロサービスのAPIにこれをルーティングします。</p>
 <p>APIゲートウェイとして使用できるツールはNginx以外にも非常に多くあります。</p>
 <p>ただ、その中でもNginxは環境構築や設定の方法が簡単で扱いやすく、またこれらの情報をインターネットや書籍から見つけやすいため、私の好みのツールです。</p>
-<p>なお、GraphQLサーバーをBFFとして使用するフルスクラッチな設計方法もあります。</p>
+<p>なお、GraphQLサーバーをBFFとして使用する設計方法もあります。</p>
 <p>この場合、フロントエンドや外部APIはGraphQLクライアントとして設計する必要があります。</p>
 <p><br></p>
 <p>図8. BFFの配置例</p>
@@ -29128,13 +29128,13 @@
 <tr>
 <td>説明</td>
 <td>送信元マイクロサービスは宛先と同期的に通信する。通信は双方向に流れる。</td>
-<td>送信元マイクロサービスはメッセージ仲介システム *44 を介して、宛先マイクロサービスと非同期的に通信する。通信は一方向に流れる。</td>
+<td>送信元マイクロサービスはメッセージ中継システム *44 を介して、宛先マイクロサービスと非同期的に通信する。通信は一方向に流れる。</td>
 <td>送信元マイクロサービスは作成したデータをストレージに保管する。宛先マイクロサービスはストレージをポーリングして新しいデータが追加され次第、ストレージからこれを読み込む。通信は一方向に流れる。このパターンの例として、データレイクやデータウェアハウスを使用したシステムがある。</td>
 </tr>
 <tr>
 <td>クラウドネイティブ技術との関連性</td>
 <td>RESTの実装方法として、HTTP/1.1でテキストを送受信するパッケージを使用できる。一方で、RPCの実装方法にはRemote Procedure Call分野のツールを使用できる。</td>
-<td>メッセージ仲介システムとして、Streaming &amp; Messaging分野のツールを使用できる。また、パブリッシュとサブスクライブの実装方法として、Streaming &amp; Messaging分野のツールのクライアントSDKを使用できる。サブスクライブにはプルベースとプッシュベースがあり、ツールによってはこれらを選べる。</td>
+<td>メッセージ中継システムとして、Streaming &amp; Messaging分野のツールを使用できる。また、パブリッシュとサブスクライブの実装方法として、Streaming &amp; Messaging分野のツールのクライアントSDKを使用できる。サブスクライブにはプルベースとプッシュベースがあり、ツールによってはこれらを選べる。</td>
 <td>ストレージとして、Cloud Native StorageやDatabase分野のツールを使用できる。耐障害性の観点から、これらはオープンソースよりマネージドサービスの技術を使用することをお奨めする。</td>
 </tr>
 <tr>
@@ -29168,7 +29168,7 @@
 <hr />
 <p>注釈</p>
 <p>*44 Richardson, C. (2018). Microservices patterns: With examples in Java. Simon and Schuster.</p>
-<p>*45 メッセージ仲介システムの種類として、メッセージブローカー、メッセージキュー、およびイベントバスがあります。</p>
+<p>*45 メッセージ中継システムの種類として、メッセージブローカー、メッセージキュー、およびイベントバスがあります。</p>
 <p>*46 Vandeperre, M. (2023b, October 18). Implementing clean architecture solutions: A practical example | Red Hat Developer. Red Hat Developer. <a href="https://developers.redhat.com/articles/2023/08/08/implementing-clean-architecture-solutions-practical-example">https://developers.redhat.com/articles/2023/08/08/implementing-clean-architecture-solutions-practical-example</a></p>
 <p>*47 Module ngx_http_grpc_module. (n.d.). <a href="https://nginx.org/en/docs/http/ngx_http_grpc_module.html">https://nginx.org/en/docs/http/ngx_http_grpc_module.html</a></p>
 <p><br></p>
@@ -29329,8 +29329,8 @@
 <p>マイクロサービス間通信方法にリクエスト−レスポンスを使用している場合、アクセストークン署名検証ロジックはService Mesh分野のツールで代替できます (補章の認証認可を参照) 。</p>
 <p>例えば、SSO時のアクセストークン署名検証のために、IstioによるサイドカーコンテナはリクエストをIDプロバイダーに送信します。</p>
 <p>IstioなどのService Mesh分野のツールを使用しない場合、マイクロサービスがこれを担う必要があります。</p>
-<p>一方で、マイクロサービス間通信方法にパブリッシュ/サブスクライブを使用している場合、ドメインロジックとメッセージ仲介システムのクライアントSDKの仲介として、Streaming &amp; Messaging分野のツールを使用できます。</p>
-<p>例えば、CloudEventsとCloudEvents SDKはドメインロジックのイベントをメッセージ仲介システムに送信します *59 。</p>
+<p>一方で、マイクロサービス間通信方法にパブリッシュ/サブスクライブを使用している場合、ドメインロジックとメッセージ中継システムのクライアントSDKの仲介として、Streaming &amp; Messaging分野のツールを使用できます。</p>
+<p>例えば、CloudEventsとCloudEvents SDKはドメインロジックのイベントをメッセージ中継システムに送信します *59 。</p>
 <p>表8. アプリケーションアーキテクチャとクラウドネイティブ技術の関連性</p>
 <table>
 <thead>
@@ -29402,13 +29402,13 @@
 <tbody>
 <tr>
 <td>説明</td>
-<td>Sagaのデザインの1つである。中央集権的なSagaオーケストレーターはメッセージ仲介システムを介して、各マイクロサービスを順番にコールする。各マイクロサービスはローカルトランザクションを実行する。また、Sagaオーケストレーターはローカルトランザクションの進捗度を占有データベースに永続化する。</td>
-<td>Sagaのデザインの1つである。特定のマイクロサービスが他のマイクロサービスを操作する。送信元マイクロサービスは、自身のローカルトランザクションを完了させた後に、メッセージ仲介システムを介して宛先マイクロサービスをコールする。宛先のマイクロサービスは、ローカルトランザクションを実行する。</td>
+<td>Sagaのデザインの1つである。中央集権的なSagaオーケストレーターはメッセージ中継システムを介して、各マイクロサービスを順番にコールする。各マイクロサービスはローカルトランザクションを実行する。また、Sagaオーケストレーターはローカルトランザクションの進捗度を占有データベースに永続化する。</td>
+<td>Sagaのデザインの1つである。特定のマイクロサービスが他のマイクロサービスを操作する。送信元マイクロサービスは、自身のローカルトランザクションを完了させた後に、メッセージ中継システムを介して宛先マイクロサービスをコールする。宛先のマイクロサービスは、ローカルトランザクションを実行する。</td>
 </tr>
 <tr>
 <td>クラウドネイティブ技術との関連性</td>
-<td>Sagaオーケストレーターとして、Automation &amp; Configuration分野のツールを使用できる。このツールによっては、メッセージ仲介システムがツール内部に組み込まれている。</td>
-<td>メッセージ仲介システムやこれのクライアントSDKとして、Streaming &amp; Messaging分野のツールを使用できる。また、マイクロサービス間通信方法のパブリッシュ/サブスクライブの実装方法として、Streaming &amp; Messaging分野のツールのクライアントSDKを使用できる。</td>
+<td>Sagaオーケストレーターとして、Automation &amp; Configuration分野のツールを使用できる。このツールによっては、メッセージ中継システムがツール内部に組み込まれている。</td>
+<td>メッセージ中継システムやこれのクライアントSDKとして、Streaming &amp; Messaging分野のツールを使用できる。また、マイクロサービス間通信方法のパブリッシュ/サブスクライブの実装方法として、Streaming &amp; Messaging分野のツールのクライアントSDKを使用できる。</td>
 </tr>
 <tr>
 <td>技術例</td>
@@ -29420,9 +29420,9 @@
 <p><br>
 図21で、AWS EKS上でのオーケストレーションベースSagaの設計例を示します。</p>
 <p>オーケストレーションベースSagaとして、Automation &amp; Configuration分野のツールを使用できます。</p>
-<p>オーケストレーションベースSagaのデザインパターンには、Sagaオーケストレーターがメッセージ仲介システムを介して各マイクロサービスと通信するパターンと、これらの間でメッセージ仲介システムなしに通信するパターンがあります *59 。</p>
-<p>例えば、Temporalはメッセージ仲介システムのあるオーケストレーションベースSagaとして動作します <em>53 </em>54 。</p>
-<p>Temporalクライアント (Sagaオーケストレーター) は、Temporalサーバー (Temporalの組み込みのメッセージ仲介システム) にワークフローの開始を要求します。</p>
+<p>オーケストレーションベースSagaのデザインパターンには、Sagaオーケストレーターがメッセージ中継システムを介して各マイクロサービスと通信するパターンと、これらの間でメッセージ中継システムなしに通信するパターンがあります *59 。</p>
+<p>例えば、Temporalはメッセージ中継システムのあるオーケストレーションベースSagaとして動作します <em>53 </em>54 。</p>
+<p>Temporalクライアント (Sagaオーケストレーター) は、Temporalサーバー (Temporalの組み込みのメッセージ中継システム) にワークフローの開始を要求します。</p>
 <p>Temporalサーバーはワークフローの進捗度 (Sagaログ) を占有データベースに永続化します。</p>
 <p>Temporalワーカー (ローカルトランザクション実行マイクロサービス) は自身が実行するべきタスクをTemporalサーバーから取得し、タスクの実行後にその成否を送信します。</p>
 <p>いずれかのローカルトランザクションが失敗した場合、Temporalは補償トランザクションのためのオーケストレーションも実施できます *62 。</p>
@@ -29838,7 +29838,7 @@
 <p><br></p>
 <hr />
 <p>注釈</p>
-<p>*74 マイクロサービス間通信方法にパブリッシュ/サブスクライブを使用する場合、『イベントメッシュ』という仕組みが適切です。これは、イベント仲介システムなどを各マイクロサービスに横断的に提供できます。これは、Knativeで代替できます (<a href="https://knative.dev/docs/eventing/event-mesh/">https://knative.dev/docs/eventing/event-mesh/</a>) 。</p>
+<p>*74 マイクロサービス間通信方法にパブリッシュ/サブスクライブを使用する場合、『イベントメッシュ』という仕組みが適切です。これは、イベント中継システムなどを各マイクロサービスに横断的に提供できます。これは、Knativeで代替できます (<a href="https://knative.dev/docs/eventing/event-mesh/">https://knative.dev/docs/eventing/event-mesh/</a>) 。</p>
 <p>*75 Gough, J., Bryant, D., &amp; Auburn, M. (2021) Mastering API architecture. O’Reilly Media, Inc.</p>
 <p>*76 Sidecar or ambient? (n.d.). Istio. <a href="https://istio.io/latest/docs/overview/dataplane-modes/">https://istio.io/latest/docs/overview/dataplane-modes/</a></p>
 <p>*77 Posta, C., &amp; Maloku, R. (2022) Istio in action. Manning Publications.</p>
@@ -30189,7 +30189,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月3日 17:40:37 JST">2025-11-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月3日 18:17:54 JST">2025-11-03</span>
   </span>
 
     
