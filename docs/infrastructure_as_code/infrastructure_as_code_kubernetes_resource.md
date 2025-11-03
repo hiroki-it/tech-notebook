@@ -792,7 +792,7 @@ Node外から通信を受信し、Ingressに定義されたルールに応じて
 
 クラウドプロバイダー (例：AWS) では、Ingress Controller状況下でIngressを作成すると、Ingressの設定値に応じた`L7`ロードバランサー (例：AWS ALBとAWSターゲットグループ) を自動的にプロビジョニングする。
 
-ただし、クラウドプロバイダーによっては、Ingress ControllerとClusterIP Serviceを仲介するカスタムリソース (例：AWS TargetGroupBindingsなど) を提供している場合がある。
+ただし、クラウドプロバイダーによっては、Ingress ControllerとClusterIP Serviceを中継するカスタムリソース (例：AWS TargetGroupBindingsなど) を提供している場合がある。
 
 この場合、クラウドプロバイダーのリソースとKubernetesが疎結合になり、責務の境界を明確化できる。
 

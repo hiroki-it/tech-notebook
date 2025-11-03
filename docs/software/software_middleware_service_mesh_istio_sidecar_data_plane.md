@@ -372,7 +372,7 @@ istio-cniのDaemonSetがistio-iptablesを適用し終了することを待機す
 
 実体は、GitHubの`pilot-agent`ディレクトリ配下の`main.go`ファイルで実行されるGoのバイナリファイルである。
 
-ADS-APIとの間で双方向ストリーミングRPCを確立し、EnvoyからのADS-APIへのリクエストと反対にADS-APIからのリクエストを仲介する。
+ADS-APIとの間で双方向ストリーミングRPCを確立し、EnvoyからのADS-APIへのリクエストと反対にADS-APIからのリクエストを中継する。
 
 > - https://rocdu.gitbook.io/deep-understanding-of-istio/6/5
 > - https://www.jianshu.com/p/60e45bc9c4ac

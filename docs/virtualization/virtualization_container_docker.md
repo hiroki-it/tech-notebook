@@ -84,7 +84,7 @@ rootユーザー権限のCapability (CHOWN、NET_RAW、CAP_SYS_BOOT、CAP_AUDIT_
 
 例えば、特権コンテナの実行ユーザーはルートファイルシステムにある`/proc`に書き込みする権限を持つ。
 
-/proc配下にはNodeへのアクセスを仲介するファイルがあるため、特権コンテナの実行ユーザーはNode上で任意のコマンドを実行できる。
+/proc配下にはNodeへのアクセスを中継するファイルがあるため、特権コンテナの実行ユーザーはNode上で任意のコマンドを実行できる。
 
 > - https://jpn.nec.com/cybersecurity/blog/210730/index.html
 > - https://zenn.dev/mizuba/articles/f37889a137e28d
