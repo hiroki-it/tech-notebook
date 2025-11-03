@@ -50,7 +50,7 @@ description: ドキュメンテーション＠DevOpsの知見を記録してい�
 | CDN                        |                          |                                | AWS                                                                        |
 | IaC                        |                          |                                | Terraform、Kubernetes、Ansible                                             |
 | 監視                       | アプリ監視、インフラ監視 |                                | AWS                                                                        |
-|                            | ビジネス指標監視         |                                | Metabase                                                                   |
+|                            | ビジネス成果監視         |                                | Metabase                                                                   |
 | セキュリティ               | 機密情報のバージョン管理 |                                | Sops、Vault                                                                |
 |                            | VPN                      |                                | OpenVPN                                                                    |
 | テスト                     | ホワイトボックス         |                                | `go test`コマンド、PHPUnit                                                 |

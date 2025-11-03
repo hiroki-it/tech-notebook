@@ -641,7 +641,7 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 ### 構造化ログとして出力する
 
-ログの分析ツール (例：Grafana Loki、ElasticSearch) では、ログが構造化されていることが前提になっている。
+ログの分析ツール (例：Grafana Loki、ElasticSearch、Kibana) では、ログが構造化されていることが前提になっている。
 
 そのため、構造化ログ (例：JSON) として出力する。
 
