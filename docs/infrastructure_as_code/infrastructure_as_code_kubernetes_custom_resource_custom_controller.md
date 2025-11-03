@@ -137,16 +137,16 @@ kube-controller-managerは、NodeにあるCustom Controllerを反復的に実行
 
 ### 実装パターン
 
-#### ▼ OSSを使用する場合
-
-> - https://github.com/mercari/certificate-expiry-monitor-controller
-
 #### ▼ 自前で実装する場合
 
 Custom Controllerを自前で実装する。
 
 > - https://zenn.dev/hhiroshell/articles/custom-controller-for-out-of-cluster-events
 > - https://github.com/hhiroshell/storage-bucket-prober/blob/main/controllers/storagebucket_controller.go
+
+#### ▼ OSSを使用する場合
+
+> - https://github.com/mercari/certificate-expiry-monitor-controller
 
 <br>
 
