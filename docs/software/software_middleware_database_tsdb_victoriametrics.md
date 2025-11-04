@@ -43,7 +43,7 @@ vm-agent、vmstorage、vm-alert、といったコンポーネントから構成�
 
 また、アラートの通知のためにalertmanager、可視化のためにGrafanaが必要である。
 
-vm-agentがPull型でメトリクスの元になるデータポイントを収集し、vmstorageに保管する。
+vm-agentがプル型でメトリクスの元になるデータポイントを収集し、vmstorageに保管する。
 
 vm-alertは、vmstorageに対してMetricsQLを定期的に実行し、条件に合致したエラーイベントからアラートを作成する。
 

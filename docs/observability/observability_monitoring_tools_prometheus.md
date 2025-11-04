@@ -321,7 +321,7 @@ alertname="PrometheusRemoteWriteDesiredShards"
 
 ### PushGatewayとは
 
-PrometheusがPush型収集でメトリクスの元になるデータポイントを収集するためのエンドポイントとして動作する。
+Prometheusがプッシュ型収集でメトリクスの元になるデータポイントを収集するためのエンドポイントとして動作する。
 
 > - https://prometheus.io/docs/practices/pushing/
 
@@ -331,7 +331,7 @@ PrometheusがPush型収集でメトリクスの元になるデータポイント
 
 ### ServiceDiscoveryとは
 
-Pull型収集の宛先のIPアドレスが動的に変化する (例：スケーリングなど) 場合、宛先を動的に検出し、データポイントを収集し続けられるようにする。
+プル型収集の宛先のIPアドレスが動的に変化する (例：スケーリングなど) 場合、宛先を動的に検出し、データポイントを収集し続けられるようにする。
 
 > - https://christina04.hatenablog.com/entry/prometheus-service-discovery
 
