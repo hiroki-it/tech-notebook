@@ -29105,15 +29105,15 @@
   リクエストレスポンス --- RESTful-API
   リクエストレスポンス --- RPC-API
   マイクロサービス間通信方法の基点 --- パブリッシュサブスクライブ[パブリッシュ&lt;br&gt;サブスクライブ]
-  パブリッシュサブスクライブ --- プルベース[プル&lt;br&gt;ベース]
-  パブリッシュサブスクライブ --- プッシュベース[プッシュ&lt;br&gt;ベース]
+  パブリッシュサブスクライブ --- プル型[プル&lt;br&gt;ベース]
+  パブリッシュサブスクライブ --- プッシュ型[プッシュ&lt;br&gt;ベース]
   マイクロサービス間通信方法の基点 ---- 共有データ経由[共有データ経由]
 </code></pre>
 
 </div>
 
 <p>リクエスト−レスポンスにはRESTful-APIとRPC-APIがあります。</p>
-<p>パブリッシュ/サブスクライブにはプルベースとプッシュベースがあります *43 。</p>
+<p>パブリッシュ/サブスクライブにはプル型とプッシュ型があります *43 。</p>
 <p>そして共有データ経由があります。</p>
 <p>各マイクロサービスをどのようにモデリングしているか (例えば、ステートソーシングやイベントソーシング) に応じて、リクエスト−レスポンスとパブリッシュ/サブスクライブのいずれが適しているかが異なります。</p>
 <p>これらのパターンのロジックはクラウドネイティブ技術で代替できます。</p>
@@ -29139,7 +29139,7 @@
 <tr>
 <td>クラウドネイティブ技術との関連性</td>
 <td>RESTの実装方法として、HTTP/1.1でテキストを送受信するパッケージを使用できる。一方で、RPCの実装方法にはRemote Procedure Call分野のツールを使用できる。</td>
-<td>メッセージ中継システムとして、Streaming &amp; Messaging分野のツールを使用できる。また、パブリッシュとサブスクライブの実装方法として、Streaming &amp; Messaging分野のツールのクライアントSDKを使用できる。サブスクライブにはプルベースとプッシュベースがあり、ツールによってはこれらを選べる。</td>
+<td>メッセージ中継システムとして、Streaming &amp; Messaging分野のツールを使用できる。また、パブリッシュとサブスクライブの実装方法として、Streaming &amp; Messaging分野のツールのクライアントSDKを使用できる。サブスクライブにはプル型とプッシュ型があり、ツールによってはこれらを選べる。</td>
 <td>ストレージとして、Cloud Native StorageやDatabase分野のツールを使用できる。耐障害性の観点から、これらはオープンソースよりマネージドサービスの技術を使用することをお奨めする。</td>
 </tr>
 <tr>
@@ -29692,8 +29692,8 @@
   横断の基点 ---- CI/CDパイプライン([CI/CDパイプライン])
   横断の基点 ---- サービスメッシュ([サービスメッシュ])
   横断の基点 --- Microservice-chassis(["Microservice chassis"])
-  Externalized-configuration --- プルベース
-  Externalized-configuration --- プッシュベース
+  Externalized-configuration --- プル型
+  Externalized-configuration --- プッシュ型
   Microservice-chassis --- 開発環境の設定
   Microservice-chassis --- API仕様
   Microservice-chassis --- CI/CDの設定
@@ -29710,7 +29710,7 @@
 <p>設定をマイクロサービスから切り分け、各実行環境で設定を切り替えます。</p>
 <p>これにより、マイクロサービスをさまざまな実行環境で簡単に稼働させられるようになります。</p>
 <p>図30で、Externalized configurationのデザインパターンの種類を示します。</p>
-<p>Externalized configurationにはプルベースとプッシュベースの方法があります。</p>
+<p>Externalized configurationにはプル型とプッシュ型の方法があります。</p>
 <p><br></p>
 <p>図31. Externalized configurationのデザインパターンの種類</p>
 <p><img alt="31" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/31.png" /></p>
@@ -29720,13 +29720,13 @@
 <pre class="mermaid"><code>flowchart LR
 
   Externalized-configuration(["Externalized configuration"]) --- Externalized-configurationの基点(( ))
-  Externalized-configurationの基点 --- プルベース
-  Externalized-configurationの基点 --- プッシュベース
+  Externalized-configurationの基点 --- プル型
+  Externalized-configurationの基点 --- プッシュ型
 </code></pre>
 
 </div>
 
-<p>プルベースとプッシュベースはクラウドネイティブ技術で代替できます。</p>
+<p>プル型とプッシュ型はクラウドネイティブ技術で代替できます。</p>
 <p>表13で、Externalized configurationとクラウドネイティブ技術の関連性を整理します。</p>
 <p><br></p>
 <p>表13. Externalized configurationとクラウドネイティブ技術の関連性</p>
@@ -29734,8 +29734,8 @@
 <thead>
 <tr>
 <th>パターン名</th>
-<th>プルベース</th>
-<th>プッシュベース</th>
+<th>プル型</th>
+<th>プッシュ型</th>
 </tr>
 </thead>
 <tbody>
@@ -30194,7 +30194,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月3日 21:08:31 JST">2025-11-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月4日 17:17:19 JST">2025-11-04</span>
   </span>
 
     
