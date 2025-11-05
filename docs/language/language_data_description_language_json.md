@@ -95,9 +95,11 @@ JavaScriptのオブジェクト型をJSONに変換する処理はシリアライ
 
 バックエンドにPHPを使用しているとする。
 
-データ格納のためにPHPのオブジェクト型をDBレコードに変換する処理はシリアライズである。
+JSONをPHPのオブジェクト型に変換する処理はデシリアライズである。
 
-一方で、データ取得のためにJSONをPHPのオブジェクト型に変換する処理はデシリアライズである。
+反対に、PHPのオブジェクト型をJSONに変換する処理はシリアライズである。
+
+![シリアライズとデシリアライズ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シリアライズとデシリアライズ.png)
 
 <br>
 
