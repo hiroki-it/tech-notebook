@@ -188,7 +188,7 @@ var vm = new Vue({
           // done()
           // ajax関数によって返却されたJSONが引数になる。
           .done((data) => {
-            // サーバーサイドからのJSONをデシリアライズ。
+            // JSONをJavaScriptのオブジェクトにデシリアライズ。
             // dataオプションに設定
             this.staffData = _.map(data.staffData, Staff.deserializeStaff);
           })
