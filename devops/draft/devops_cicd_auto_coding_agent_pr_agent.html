@@ -10,13 +10,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="俺 (長谷川広樹) が、業務や学習から得た技術的な知見をドキュメント形式で記録したサイトです。">
+        <meta name="description" content="PR Agent＠自動レビューツールの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/devops/draft/devops_cicd_auto_coding_ai_testing.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/devops/draft/devops_cicd_auto_coding_agent_pr_agent.html">
       
       
       
@@ -26,7 +26,7 @@
     
     
       
-        <title>ユニットテストのドキュメント - 俺の技術ノート</title>
+        <title>【IT技術の知見】PR Agent＠自動レビューツール - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#pr-agent" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -150,7 +150,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ユニットテストのドキュメント
+              【IT技術の知見】PR Agent＠自動レビューツール
             
           </span>
         </div>
@@ -27364,6 +27364,362 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      はじめに
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      01. セットアップ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gitlab" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitLab
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-webhook" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. Webhook
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. Webhook">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#webhookci" class="md-nav__link">
+    <span class="md-ellipsis">
+      Webhookを使用したCI発火
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#describe" class="md-nav__link">
+    <span class="md-ellipsis">
+      /describe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#review" class="md-nav__link">
+    <span class="md-ellipsis">
+      /review
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#improve" class="md-nav__link">
+    <span class="md-ellipsis">
+      /improve
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ask" class="md-nav__link">
+    <span class="md-ellipsis">
+      /ask &lt;質問内容&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    <span class="md-ellipsis">
+      /config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#help" class="md-nav__link">
+    <span class="md-ellipsis">
+      /help
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. configセクション
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. configセクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    <span class="md-ellipsis">
+      model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fallback_models" class="md-nav__link">
+    <span class="md-ellipsis">
+      fallback_models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_language" class="md-nav__link">
+    <span class="md-ellipsis">
+      response_language
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verbosity_level" class="md-nav__link">
+    <span class="md-ellipsis">
+      verbosity_level
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log_level" class="md-nav__link">
+    <span class="md-ellipsis">
+      log_level
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use" class="md-nav__link">
+    <span class="md-ellipsis">
+      use
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-github_app" class="md-nav__link">
+    <span class="md-ellipsis">
+      04 github_appセクション
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04 github_appセクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#handle_push_trigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      handle_push_trigger
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-pr_description" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. pr_descriptionセクション
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05. pr_descriptionセクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable_help" class="md-nav__link">
+    <span class="md-ellipsis">
+      enable_help
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable_pr_diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      enable_pr_diagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable_pr_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      enable_pr_type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inline_file_summarycollapsible_file_listenable_semantic_files_types" class="md-nav__link">
+    <span class="md-ellipsis">
+      inline_file_summary、collapsible_file_list、enable_semantic_files_types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable_help_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      enable_help
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extra_instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      extra_instructions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-pr_reviewer" class="md-nav__link">
+    <span class="md-ellipsis">
+      06. pr_reviewerセクション
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06. pr_reviewerセクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable_help_text" class="md-nav__link">
+    <span class="md-ellipsis">
+      enable_help_text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extra_instructions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      extra_instructions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#require_score_review" class="md-nav__link">
+    <span class="md-ellipsis">
+      require_score_review
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-pr_code_suggestions" class="md-nav__link">
+    <span class="md-ellipsis">
+      07. pr_code_suggestionsセクション
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="07. pr_code_suggestionsセクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extra_instructions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      extra_instructions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistent_comment" class="md-nav__link">
+    <span class="md-ellipsis">
+      persistent_comment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -27381,57 +27737,240 @@
   
 
 
-<h1 id="_1">ユニットテストのドキュメント<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>このドキュメントは、ユニットテストの設計を考えるためのドキュメントであり、生成AIに読み込ませることを想定している。</p>
-<ol>
-<li>検証対象の実装を読み込む。</li>
-<li>次のユニットテストのプラクティスを読み込む。</li>
-</ol>
+<h1 id="pr-agent">PR Agent＠自動レビューツール<a class="headerlink" href="#pr-agent" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
 <ul>
-<li><a href="https://medium.com/@kaanfurkanc/unit-testing-best-practices-3a8b0ddd88b5">https://medium.com/@kaanfurkanc/unit-testing-best-practices-3a8b0ddd88b5</a></li>
-<li><a href="https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-best-practices">https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-best-practices</a></li>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
 </ul>
-<ol>
-<li>次の観点でテストケースを追加／改善する。</li>
-</ol>
+</blockquote>
+<p><br></p>
+<h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="gitlab">GitLab<a class="headerlink" href="#gitlab" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">workflow</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_TAG</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_BRANCH</span>
+<span class="w">    </span><span class="c1"># もしworkflowのルールを設定している場合、merge_request_eventをルールの条件としないと、ワークフローが起動しない</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &quot;merge_request_event&quot;</span>
+
+<span class="nt">stages</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pr_agent</span>
+
+<span class="nt">pr_agent</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pr_agent</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pr-agent:latest</span>
+<span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># Cross-region-inferenceに対応するためにusを指定する</span>
+<span class="w">    </span><span class="c1"># 対応不要の場合はap-northeast-1でもよい</span>
+<span class="w">    </span><span class="nt">AWS_REGION_NAME</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;us-east-1&quot;</span>
+<span class="w">  </span><span class="nt">before_script</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># もしAWS Bedlockを使用する場合は、資格情報を取得する</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd /app</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;Running PR Agent action step&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export MR_URL=&quot;$CI_MERGE_REQUEST_PROJECT_URL/merge_requests/$CI_MERGE_REQUEST_IID&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;MR_URL=$MR_URL&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export gitlab__url=$CI_SERVER_PROTOCOL://$CI_SERVER_FQDN</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export gitlab__PERSONAL_ACCESS_TOKEN=$GITLAB_PERSONAL_ACCESS_TOKEN</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export config__git_provider=&quot;gitlab&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m pr_agent.cli --pr_url=&quot;$MR_URL&quot; describe</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m pr_agent.cli --pr_url=&quot;$MR_URL&quot; review</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m pr_agent.cli --pr_url=&quot;$MR_URL&quot; improve</span>
+<span class="w">  </span><span class="nt">allow_failure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># merge_request_eventの時にJobを発火させないと、PR AgentはMRの情報を取得できずにエラーになってしまう</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &quot;merge_request_event&quot;</span>
+</code></pre></div>
+<blockquote>
 <ul>
-<li>ファイルの内容を変更したいとき、まずいくつかの変更内容を提案し、承諾を得てから変更する</li>
-<li>外部への通信が発生する場合、パッケージのクライアントオブジェクトをモック化する</li>
-<li>関数型プログラミングの場合、関数の入力値に応じた返却値を検証する</li>
-<li>クラスを使用している場合、コンストラクタやメソッドの入力値に応じた返却値を検証する</li>
-<li>パブリックな処理をテストすることで、プライベートな処理も間接的に検証できるため、プライベートな処理内部のテストコードは不要である</li>
-<li>テストケース名は <code>should return &lt;返却値&gt; when &lt;入力値&gt;</code> とし、検証対象のコードは変更しないこと</li>
+<li><a href="https://github.com/qodo-ai/pr-agent/blob/main/docs/docs/installation/gitlab.md">https://github.com/qodo-ai/pr-agent/blob/main/docs/docs/installation/gitlab.md</a></li>
 </ul>
-<ol>
-<li>追加／改善したテストケースに関して、次のような表を作成する。</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>テストスイート</th>
-<th>種別</th>
-<th>テストケース名</th>
-<th>テスト内容の概要</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>foo</td>
-<td>正常系</td>
-<td>should return user when userId is valid</td>
-<td>正しいUserIdだった場合にUserを返却すること</td>
-</tr>
-<tr>
-<td>bar</td>
-<td>異常系</td>
-<td>should throw error when userId is invalid</td>
-<td>不正なUserIdだった場合にUserをスローすること</td>
-</tr>
-</tbody>
-</table>
-<ol>
-<li>ローカル環境でテストコードを実行する必要はない。</li>
-</ol>
+</blockquote>
+<p><br></p>
+<h2 id="02-webhook">02. Webhook<a class="headerlink" href="#02-webhook" title="Permanent link">&para;</a></h2>
+<h3 id="webhookci">Webhookを使用したCI発火<a class="headerlink" href="#webhookci" title="Permanent link">&para;</a></h3>
+<p>PR上で<code>/&lt;コマンド&gt;</code>を実行することで、Webhookを介してPR-Agentを実行できる。</p>
+<p>プッシュのたびにPR-Agentを実行させるとレビューへの修正負荷が高いため、PR-Agentの発火はWebhookで制御した方が良い。</p>
+<p><br></p>
+<h3 id="describe">/describe<a class="headerlink" href="#describe" title="Permanent link">&para;</a></h3>
+<p>変更内容から、自動的にMRの種別や変更内容などをdescriptionに記載する。</p>
+<h3 id="review">/review<a class="headerlink" href="#review" title="Permanent link">&para;</a></h3>
+<p>変更したコードの問題点やセキュリティ的な脆弱性などをレビューし、PRにコメントする。</p>
+<h3 id="improve">/improve<a class="headerlink" href="#improve" title="Permanent link">&para;</a></h3>
+<p>コードの改善点をMRにコメントする。</p>
+<h3 id="ask">/ask &lt;質問内容&gt;<a class="headerlink" href="#ask" title="Permanent link">&para;</a></h3>
+<p>PR全体や特定の行について質問する。</p>
+<h3 id="config">/config<a class="headerlink" href="#config" title="Permanent link">&para;</a></h3>
+<p>現在のpr-agentの設定を出力する。</p>
+<h3 id="help">/help<a class="headerlink" href="#help" title="Permanent link">&para;</a></h3>
+<p>pr-agentの使い方を出力する。</p>
+<p><br></p>
+<h2 id="03-config">03. configセクション<a class="headerlink" href="#03-config" title="Permanent link">&para;</a></h2>
+<h3 id="model">model<a class="headerlink" href="#model" title="Permanent link">&para;</a></h3>
+<p>メインで使用するmodelを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[config]</span>
+
+<span class="n">model</span><span class="o">=</span><span class="s2">&quot;bedrock/us.anthropic.claude-3-7-sonnet-20250219-v1:0&quot;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="fallback_models">fallback_models<a class="headerlink" href="#fallback_models" title="Permanent link">&para;</a></h3>
+<p>処理に失敗した際のfallbackで使用するmodelを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[config]</span>
+
+<span class="n">fallback_models</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;bedrock/anthropic.claude-3-haiku-20240307-v1:0&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="response_language">response_language<a class="headerlink" href="#response_language" title="Permanent link">&para;</a></h3>
+<p>言語を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[config]</span>
+
+<span class="n">response_language</span><span class="o">=</span><span class="s2">&quot;ja-JP&quot;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="verbosity_level">verbosity_level<a class="headerlink" href="#verbosity_level" title="Permanent link">&para;</a></h3>
+<p>大きい値を設定するとより詳細にログ出力する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[config]</span>
+<span class="c1"># 0,1,2</span>
+<span class="n">verbosity_level</span><span class="o">=</span><span class="mi">0</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="log_level">log_level<a class="headerlink" href="#log_level" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">[config]</span>
+
+<span class="n">log_level</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="use">use<a class="headerlink" href="#use" title="Permanent link">&para;</a></h3>
+<p>Webhook側ではなく本リポジトリ側の設定を優先する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[config]</span>
+
+<span class="n">use_repo_settings_file</span><span class="o">=</span><span class="kc">true</span>
+<span class="n">use_global_settings_file</span><span class="o">=</span><span class="kc">false</span>
+<span class="n">use_wiki_settings_file</span><span class="o">=</span><span class="kc">false</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/qodo-ai/pr-agent/blob/main/pr_agent/settings/configuration.toml">https://github.com/qodo-ai/pr-agent/blob/main/pr_agent/settings/configuration.toml</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="04-github_app">04 github_appセクション<a class="headerlink" href="#04-github_app" title="Permanent link">&para;</a></h2>
+<h3 id="handle_push_trigger">handle_push_trigger<a class="headerlink" href="#handle_push_trigger" title="Permanent link">&para;</a></h3>
+<p>プッシュでPR-Agentが起動するフラグを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[github_app]</span>
+<span class="n">handle_push_trigger</span><span class="o">=</span><span class="kc">false</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="05-pr_description">05. pr_descriptionセクション<a class="headerlink" href="#05-pr_description" title="Permanent link">&para;</a></h2>
+<h3 id="enable_help">enable_help<a class="headerlink" href="#enable_help" title="Permanent link">&para;</a></h3>
+<p>Helpセクションを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[pr_description]</span>
+
+<span class="n">enable_help_comment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="n">enable_help_text</span><span class="o">=</span><span class="kc">false</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="enable_pr_diagram">enable_pr_diagram<a class="headerlink" href="#enable_pr_diagram" title="Permanent link">&para;</a></h3>
+<p>Diagramセクションを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[pr_description]</span>
+
+<span class="n">enable_pr_diagram</span><span class="o">=</span><span class="kc">true</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="enable_pr_type">enable_pr_type<a class="headerlink" href="#enable_pr_type" title="Permanent link">&para;</a></h3>
+<p>PR Typeセクションを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[pr_description]</span>
+
+<span class="n">enable_pr_type</span><span class="o">=</span><span class="kc">false</span>
+</code></pre></div>
+<h3 id="inline_file_summarycollapsible_file_listenable_semantic_files_types">inline_file_summary、collapsible_file_list、enable_semantic_files_types<a class="headerlink" href="#inline_file_summarycollapsible_file_listenable_semantic_files_types" title="Permanent link">&para;</a></h3>
+<p><br></p>
+<p>Changes walkthroughセクションを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[pr_description]</span>
+
+<span class="n">inline_file_summary</span><span class="o">=</span><span class="kc">false</span>
+<span class="n">collapsible_file_list</span><span class="o">=</span><span class="kc">false</span>
+<span class="n">enable_semantic_files_types</span><span class="o">=</span><span class="kc">false</span>
+</code></pre></div>
+<h3 id="enable_help_1">enable_help<a class="headerlink" href="#enable_help_1" title="Permanent link">&para;</a></h3>
+<p>Helpセクションを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[pr_description]</span>
+
+<span class="n">enable_help_comment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="n">enable_help_text</span><span class="o">=</span><span class="kc">false</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="extra_instructions">extra_instructions<a class="headerlink" href="#extra_instructions" title="Permanent link">&para;</a></h3>
+<p>PRの説明欄に関するプロンプトを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[pr_description]</span>
+
+<span class="n">extra_instructions</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">- impactレベルは「high」または「medium」のみを使用すること。「low」のimpactレベルを提案することは禁止である。</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/qodo-ai/pr-agent/blob/main/pr_agent/settings/configuration.toml">https://github.com/qodo-ai/pr-agent/blob/main/pr_agent/settings/configuration.toml</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="06-pr_reviewer">06. pr_reviewerセクション<a class="headerlink" href="#06-pr_reviewer" title="Permanent link">&para;</a></h2>
+<h3 id="enable_help_text">enable_help_text<a class="headerlink" href="#enable_help_text" title="Permanent link">&para;</a></h3>
+<p>Helpセクション設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[pr_reviewer]</span>
+
+<span class="n">enable_help_text</span><span class="o">=</span><span class="kc">false</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="extra_instructions_1">extra_instructions<a class="headerlink" href="#extra_instructions_1" title="Permanent link">&para;</a></h3>
+<p>PRレビューに関するプロンプトを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[pr_reviewer]</span>
+
+<span class="n">extra_instructions</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">- impactレベルは「high」または「medium」のみを使用すること。「low」のimpactレベルを提案することは禁止である。</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="require_score_review">require_score_review<a class="headerlink" href="#require_score_review" title="Permanent link">&para;</a></h3>
+<p>PRスコア算出のフラグを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[pr_reviewer]</span>
+
+<span class="n">require_score_review</span><span class="o">=</span><span class="kc">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/qodo-ai/pr-agent/blob/main/pr_agent/settings/configuration.toml">https://github.com/qodo-ai/pr-agent/blob/main/pr_agent/settings/configuration.toml</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="07-pr_code_suggestions">07. pr_code_suggestionsセクション<a class="headerlink" href="#07-pr_code_suggestions" title="Permanent link">&para;</a></h2>
+<h3 id="extra_instructions_2">extra_instructions<a class="headerlink" href="#extra_instructions_2" title="Permanent link">&para;</a></h3>
+<p>コード提案に関するプロンプトを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[pr_code_suggestions]</span>
+
+<span class="n">extra_instructions</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">- impactレベルは「high」または「medium」のみを使用すること。「low」のimpactレベルを提案することは禁止である。</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="persistent_comment">persistent_comment<a class="headerlink" href="#persistent_comment" title="Permanent link">&para;</a></h3>
+<p>レビューのたびに新しいコメントを追加するフラグを設定する</p>
+<div class="highlight"><pre><span></span><code><span class="k">[pr_code_suggestions]</span>
+
+<span class="n">persistent_comment</span><span class="o">=</span><span class="kc">false</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/qodo-ai/pr-agent/blob/main/pr_agent/settings/configuration.toml">https://github.com/qodo-ai/pr-agent/blob/main/pr_agent/settings/configuration.toml</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 
 
 
@@ -27452,7 +27991,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月5日 23:37:13 JST">2025-11-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月6日 14:31:56 JST">2025-11-06</span>
   </span>
 
     

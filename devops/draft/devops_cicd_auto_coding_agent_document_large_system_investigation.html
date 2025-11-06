@@ -16,7 +16,7 @@
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/devops/draft/devops_cicd_auto_review_ai_review.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/devops/draft/devops_cicd_auto_coding_agent_document_large_system_investigation.html">
       
       
       
@@ -26,7 +26,7 @@
     
     
       
-        <title>生成AIにレビューを依頼する時のコンテキスト - 俺の技術ノート</title>
+        <title>巨大システムの調査用のドキュメント - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ai" class="md-skip">
+        <a href="#_1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -150,7 +150,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              生成AIにレビューを依頼する時のコンテキスト
+              巨大システムの調査用のドキュメント
             
           </span>
         </div>
@@ -27364,50 +27364,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. このドキュメントについて
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. 事前情報の収集、
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-pr" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. PR説明
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. レビュー
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -27425,64 +27381,46 @@
   
 
 
-<h1 id="ai">生成AIにレビューを依頼する時のコンテキスト<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h1>
-<h2 id="01">01. このドキュメントについて<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<p>あなたはプルリクエストのレビュアーです。</p>
-<p>以下の手順でレビューに必要な情報を集めた後、プルリクエストを説明し、レビューしてください。</p>
-<p><br></p>
-<h2 id="02">02. 事前情報の収集、<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h1 id="_1">巨大システムの調査用のドキュメント<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>このドキュメントは、巨大システムでリポジトリを横断的に調査するためのドキュメントであり、生成AIに読み込ませることを想定している。</p>
 <ol>
-<li>プロジェクトのカレントディレクトリにあるCLAUDE.mdと親ディレクトリのCLAUDE.mdを参照し、レビューに必要なプロジェクトの情報を集める</li>
-<li>git diff developを実行し、プルリクエストの作業ブランチとdevelopブランチの間の差分を知る</li>
-<li>実装差分から関数や定数のimportとexportの関係を抽出する。この時、外部モジュールのimportは除外する。</li>
+<li>次の表のようなディレクトリからシステムに関する情報を集める。</li>
 </ol>
-<p><br></p>
-<h2 id="03-pr">03. PR説明<a class="headerlink" href="#03-pr" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>ディレクトリ名</th>
+<th>説明</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>application</code></td>
+<td>アプリケーションに関するコード</td>
+<td></td>
+</tr>
+<tr>
+<td><code>document</code></td>
+<td>ほかのドキュメントツールで管理されているページをPDFなどとして管理。また、AIに自動生成したもらったマークダウン仕様書も管理。検討中の情報や古い情報が混じっている可能性があり、applicationやinfrastructureにおけるコードの情報が正しい。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>tasks</code></td>
+<td>タスクに関する情報</td>
+<td></td>
+</tr>
+<tr>
+<td><code>infrastructure</code></td>
+<td>インフラストラクチャに関するコード</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <ol>
-<li>
-<p>事前情報の収集を終えた後、PRの変更内容を解説してほしい。</p>
-</li>
-<li>
-<p>関数や定数のimportとexportの関係において、importがファイル中に1つ以上あった場合のみ、フローチャート（<code>flowchart</code>）をMermaidで必ず作成すること。</p>
-</li>
+<li>ほしい情報があれば教えて。</li>
+<li>会話するなかで新しい情報や正しい情報が判明した場合、その都度<code>document</code>ディレクトリにあるドキュメントの仕様書にマークダウンのアーキテクチャ図や仕様を追加したり、情報の誤りを修正して欲しい。</li>
 </ol>
-<ul>
-<li>フローチャート（<code>flowchart</code>）のメタデータ（<code>---</code>と<code>---</code>で挟まれる部分）の<code>title:</code>を『新しく実装されたロジックの依存方向』とする</li>
-<li>フローチャートのグラフの方向をLRで表す</li>
-<li>ファイル間のimport方向を矢印（<code>---&gt;</code>）で表し、importしている関数や定数名を矢印のコメントにする（例：foo.tsファイルで <code>import { bar } from "~/app/models/bar.ts";</code> のような実装が追加された場合、<code>foo.ts -- bar --&gt; bar.ts</code>となる）</li>
-<li>矢印はハイフン３つ以上（<code>---&gt;</code>や<code>----&gt;</code>）にする</li>
-<li>ファイル名を四角いノード（例：<code>[foo.ts]</code>）で表す</li>
-<li>ファイルが所属するディレクトリ名をサブグラフ（例：<code>subgraph models ["./app/models"]</code>）で表し、入れ子のサブグラフは禁止である</li>
-<li>フローチャート、メタデータ、サブグラフといったMermaidの用語については、ドキュメントの <a href="https://docs.mermaidchart.com/mermaid-oss/syntax/flowchart.html#flowcharts-basic-syntax">https://docs.mermaidchart.com/mermaid-oss/syntax/flowchart.html#flowcharts-basic-syntax</a> を参考にする</li>
-</ul>
-<p><br></p>
-<ol>
-<li>関数や定数のimportとexportの関係から、シーケンス（<code>sequenceDiagram</code>）をMermaidで必ず作成すること。</li>
-</ol>
-<ul>
-<li>シーケンス（<code>sequenceDiagram</code>）のメタデータ（<code>---</code>と<code>---</code>で挟まれる部分）の<code>title:</code>を『新しく実装されたロジックの呼び出しと返却』とする</li>
-<li>シーケンスはフローチャートに登場したすべての依存関係を網羅し、依存関係のまとまりごとに別々のシーケンスを作成すること</li>
-<li>ファイル名でパーティシパント（例：<code>participant foo.ts</code>）で表す</li>
-<li>処理の呼び出しを実線の矢印（<code>-&gt;</code>）、その返却を点線の矢印（<code>--&gt;</code>）で表す</li>
-<li>シーケンスやパーティシパントといったMermaidの用語については、ドキュメントの <a href="https://docs.mermaidchart.com/mermaid-oss/syntax/sequenceDiagram.html">https://docs.mermaidchart.com/mermaid-oss/syntax/sequenceDiagram.html</a> を参考にする</li>
-</ul>
-<ol>
-<li>
-<p>テキストを必ず日本語（ja-JP）で出力すること。</p>
-</li>
-<li>
-<p>作成したフローチャートをDiagramセクションに、すべてのシーケンスをDescriptionセクションに出力すること。</p>
-</li>
-</ol>
-<p><br></p>
-<h2 id="04">04. レビュー<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<ol>
-<li>事前情報の収集を終えた後、事前情報で集めたプロダクトの規約から、変更内容の改善点を指摘する。</li>
-<li>コード量ができるだけ少なくなるようにする。そのために、各関数の凝集度が高くなるように、必要に応じて既存の関数と新しい関数を統合する。ただし、凝集度が低くなるようであれば、必ずしも既存の関数と新しい関数を統合する必要はない。</li>
-<li>テキストを必ず日本語（ja-JP）で出力すること。</li>
-<li>Claude Codeがファイルの内容を変更したいとき、まずいくつかの変更内容を提案し、承諾を得てから変更してください。</li>
-</ol>
-<p><br></p>
 
 
 
@@ -27503,7 +27441,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月5日 23:37:13 JST">2025-11-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月6日 14:31:56 JST">2025-11-06</span>
   </span>
 
     
