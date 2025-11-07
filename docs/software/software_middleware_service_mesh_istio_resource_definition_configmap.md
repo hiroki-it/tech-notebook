@@ -2399,6 +2399,86 @@ spec:
 
 <br>
 
+### `PILOT_ENABLE_MYSQL_FILTER`
+
+Envoyの`mysql_proxy`を有効化し、MySQLのメトリクスを収集できるようにする。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istiod
+  namespace: istio-system
+spec:
+  template:
+    containers:
+      - name: discovery
+        env:
+          - name: PILOT_ENABLE_MYSQL_FILTER
+            value: "true"
+```
+
+`proxyStatsMatcher`でも設定が必要である。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-<リビジョン>
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyStatsMatcher:
+        inclusionRegexps:
+          - ".*mysql.*"
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-enable-mysql-filter
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/mysql_proxy_filter#statistics
+
+<br>
+
+### `PILOT_ENABLE_REDIS_FILTER	`
+
+Envoyの`redis_proxy`を有効化し、MySQLのメトリクスを収集できるようにする。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istiod
+  namespace: istio-system
+spec:
+  template:
+    containers:
+      - name: discovery
+        env:
+          - name: PILOT_ENABLE_REDIS_FILTER
+            value: "true"
+```
+
+`proxyStatsMatcher`でも設定が必要である。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-<リビジョン>
+  namespace: istio-system
+data:
+  mesh: |
+    defaultConfig:
+      proxyStatsMatcher:
+        inclusionRegexps:
+          - ".*redis.*"
+```
+
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-enable-mysql-filter
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/redis_proxy_filter
+
+<br>
+
 ### `PILOT_JWT_PUB_KEY_REFRESH_INTERVAL`
 
 アクセストークンの検証の間隔を設定する。
