@@ -554,7 +554,7 @@ let isProgrammer: boolean = true;
 
 ### 型アサーション
 
-#### ▼ 型アサーション
+#### ▼ 型アサーションとは
 
 型を上書きする。
 
@@ -563,6 +563,8 @@ let isProgrammer: boolean = true;
 > - https://typescript-jp.gitbook.io/deep-dive/type-system/type-assertion
 
 #### ▼ `as`構文
+
+指定した型に上書きする。
 
 ```typescript
 const value: string | number = "this is a string";
@@ -573,6 +575,8 @@ const strLength: number = (value as string).length;
 
 #### ▼ アングルブラケット構文
 
+指定した型に上書きする。
+
 ```typescript
 const value: string | number = "this is a string";
 const strLength: number = (<string>value).length;
@@ -580,12 +584,19 @@ const strLength: number = (<string>value).length;
 
 > - https://typescriptbook.jp/reference/values-types-variables/type-assertion-as#%E5%9E%8B%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9
 
-#### ▼ 非`null`アサーション
+#### ▼ 非`null`アサーション (`!`)
 
-変数の値が`undefined`だった場合に、例外をスローする。
+`null`を含まない型に上書きする。
+
+例えば、変数の型が`<任意の型> | null`である場合に、`<任意の型>`に上書きする。
 
 ```typescript
-const foo: string = process.env.FOO!;
+// string型またはnullを許容する
+function foo(value: string | null) {
+  // nullを含まないstring型に上書きする
+  const stringNotNull = value!.toUpperCase();
+  console.log(stringNotNull);
+}
 ```
 
 <br>
@@ -593,6 +604,8 @@ const foo: string = process.env.FOO!;
 ### 型ガード
 
 複数の型を許容している場合に、`if`文を使用して型を絞り込むこと。
+
+より寛容な型 (`any`) ほど、型ガードのパターンが増える。
 
 ```typescript
 // string型またはnumber型を許容する
@@ -684,6 +697,30 @@ type Foo = {
   baz: Date;
   qux: string;
 };
+```
+
+#### ▼ オプショナル型
+
+プロパティがないことを許容する型である。
+
+```typescript
+type A = {foo?: string; bar?: number};
+
+// fooやbarが存在しない場合も許容する
+function method(arg: A): void {
+  const fooValue = arg.foo ?? "(fooなし)";
+  const barValue = arg.bar ?? "(barなし)";
+  console.log(`foo: ${fooValue}`, `bar: ${barValue}`);
+}
+
+// fooのみでもOK
+method({foo: "FOO"});
+
+// barのみでもOK
+method({bar: 1});
+
+// どちらもなくてもOK
+method({});
 ```
 
 #### ▼ 交差型（Intersection）
