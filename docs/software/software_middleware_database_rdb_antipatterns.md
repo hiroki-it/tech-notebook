@@ -102,11 +102,9 @@ select * from `employees` where `department_id` = 3
 
 反復処理の前に小テーブルにアクセスしておく。
 
-データアクセス時に`with`関数を使用すると、親テーブルへのアクセスに加えて、親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持するように処理する。
+データアクセス時にIN句を使用すると、N+1問題を解消できる。
 
-そのため、反復処理ではプロパティからデータを取り出すだけになる。
-
-内部的には、親テーブルへのSQLと、In句を使用したSQLが発行される。
+Laravelでは`with`関数を使用すると内部的には、親テーブルへのSQLと、IN句を使用したSQLが発行され、最終的に2回で済む。
 
 ```php
 <?php
@@ -171,6 +169,27 @@ const logs = await Promise.all(
     return {user: u, logs};
   }),
 );
+```
+
+#### ▼ 解決方法
+
+データアクセス時にIN句を使用すると、N+1問題を解消できる。
+
+Prismaでは、`in`プロパティをIN句を使用したSQLが発行され、最終的に2回で済む。
+
+```typescript
+import type {User} from "@prisma/client";
+import {prisma} from "~/services/prisma.server";
+
+// 親テーブルにSQLを発行 (1回)
+const users = await prisma.user.findMany({where: {teamId}});
+
+// 親テーブルのレコード数分のWhere句SQLを発行する (1回)
+const logs = await prisma.log.findMany({
+  where: {
+    userId: {in: users.map((u) => u.id)},
+  },
+});
 ```
 
 <br>
