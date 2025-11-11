@@ -2439,7 +2439,7 @@ data:
 
 <br>
 
-### `PILOT_ENABLE_REDIS_FILTER	`
+### `PILOT_ENABLE_REDIS_FILTER`
 
 Envoyの`redis_proxy`を有効化し、MySQLのメトリクスを収集できるようにする。
 

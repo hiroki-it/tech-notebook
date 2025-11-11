@@ -170,7 +170,7 @@ datasource db {
 }
 ```
 
-注意点として、DBパスワードに特殊記号が含まれている場合、URLエンコードする必要がある。
+注意点として、Prismaの仕様で、DBパスワードに特殊記号が含まれている場合にはURLエンコードする必要がある。
 
 ```bash
 $ alias urldecode='python3 -c "import sys, urllib.parse as ul; \

@@ -130,6 +130,8 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
 
 ### 実装例（TypeScript）
 
+#### ▼ 問題がある実装（１）
+
 反復処理の中で子テーブルのレコードにアクセスしてしまう場合、N+1問題が起こる。
 
 内部的には、親テーブルへのSQLと、Where句を持つSQLが親テーブルのレコード数分だけ発行される。
@@ -147,6 +149,28 @@ for (const u of users) {
     where: {userId: u.id},
   });
 }
+```
+
+#### ▼ 問題がある実装（２）
+
+`map`関数を使用した反復処理でも、もちろんN+1問題が起こる。
+
+```typescript
+import type {User} from "@prisma/client";
+import {prisma} from "~/services/prisma.server";
+
+// 親テーブルにSQLを発行 (1回)
+const users = await prisma.user.findMany({where: {teamId}});
+
+// 親テーブルのレコード数分のWhere句SQLを発行する (N回)
+const logs = await Promise.all(
+  users.map(async (u) => {
+    const logs = await prisma.log.findMany({
+      where: {userId: u.id},
+    });
+    return {user: u, logs};
+  }),
+);
 ```
 
 <br>
