@@ -11446,7 +11446,7 @@
           <li class="md-nav__item">
   <a href="#_29" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 型アサーション
+      ▼ 型アサーションとは
     </span>
   </a>
   
@@ -11473,7 +11473,7 @@
           <li class="md-nav__item">
   <a href="#null_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 非nullアサーション
+      ▼ 非nullアサーション (!)
     </span>
   </a>
   
@@ -11570,6 +11570,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ オプショナル型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#intersection" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 交差型（Intersection）
@@ -11617,7 +11626,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_36" class="md-nav__link">
+  <a href="#_37" class="md-nav__link">
     <span class="md-ellipsis">
       出力
     </span>
@@ -11627,7 +11636,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_37" class="md-nav__link">
+  <a href="#_38" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 言語の実行環境
     </span>
@@ -11650,7 +11659,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_38" class="md-nav__link">
+  <a href="#_39" class="md-nav__link">
     <span class="md-ellipsis">
       型の定義
     </span>
@@ -28724,7 +28733,7 @@
           <li class="md-nav__item">
   <a href="#_29" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 型アサーション
+      ▼ 型アサーションとは
     </span>
   </a>
   
@@ -28751,7 +28760,7 @@
           <li class="md-nav__item">
   <a href="#null_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 非nullアサーション
+      ▼ 非nullアサーション (!)
     </span>
   </a>
   
@@ -28848,6 +28857,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ オプショナル型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#intersection" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 交差型（Intersection）
@@ -28895,7 +28913,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_36" class="md-nav__link">
+  <a href="#_37" class="md-nav__link">
     <span class="md-ellipsis">
       出力
     </span>
@@ -28905,7 +28923,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_37" class="md-nav__link">
+  <a href="#_38" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 言語の実行環境
     </span>
@@ -28928,7 +28946,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_38" class="md-nav__link">
+  <a href="#_39" class="md-nav__link">
     <span class="md-ellipsis">
       型の定義
     </span>
@@ -29506,7 +29524,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_28">型アサーション<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
-<h4 id="_29">▼ 型アサーション<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<h4 id="_29">▼ 型アサーションとは<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
 <p>型を上書きする。</p>
 <p>キャストではないらしい。</p>
 <blockquote>
@@ -29515,6 +29533,7 @@
 </ul>
 </blockquote>
 <h4 id="as">▼ <code>as</code>構文<a class="headerlink" href="#as" title="Permanent link">&para;</a></h4>
+<p>指定した型に上書きする。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;this is a string&quot;</span><span class="p">;</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">strLength</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
 </code></pre></div>
@@ -29524,6 +29543,7 @@
 </ul>
 </blockquote>
 <h4 id="_30">▼ アングルブラケット構文<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<p>指定した型に上書きする。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;this is a string&quot;</span><span class="p">;</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">strLength</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="nx">value</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
 </code></pre></div>
@@ -29532,13 +29552,20 @@
 <li><a href="https://typescriptbook.jp/reference/values-types-variables/type-assertion-as#%E5%9E%8B%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9">https://typescriptbook.jp/reference/values-types-variables/type-assertion-as#%E5%9E%8B%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9</a></li>
 </ul>
 </blockquote>
-<h4 id="null_1">▼ 非<code>null</code>アサーション<a class="headerlink" href="#null_1" title="Permanent link">&para;</a></h4>
-<p>変数の値が<code>undefined</code>だった場合に、例外をスローする。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">FOO</span><span class="o">!</span><span class="p">;</span>
+<h4 id="null_1">▼ 非<code>null</code>アサーション (<code>!</code>)<a class="headerlink" href="#null_1" title="Permanent link">&para;</a></h4>
+<p><code>null</code>を含まない型に上書きする。</p>
+<p>例えば、変数の型が<code>&lt;任意の型&gt; | null</code>である場合に、<code>&lt;任意の型&gt;</code>に上書きする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// string型またはnullを許容する</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">(</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// nullを含まないstring型に上書きする</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">stringNotNull</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="o">!</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">stringNotNull</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_31">型ガード<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
 <p>複数の型を許容している場合に、<code>if</code>文を使用して型を絞り込むこと。</p>
+<p>より寛容な型 (<code>any</code>) ほど、型ガードのパターンが増える。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// string型またはnumber型を許容する</span>
 <span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">(</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -29632,6 +29659,26 @@
 <span class="w">  </span><span class="nx">qux</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
+<h4 id="_36">▼ オプショナル型<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
+<p>プロパティがないことを許容する型である。</p>
+<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">foo?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="nx">bar?</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">};</span>
+
+<span class="c1">// fooやbarが存在しない場合も許容する</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">method</span><span class="p">(</span><span class="nx">arg</span><span class="o">:</span><span class="w"> </span><span class="kt">A</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">fooValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">arg</span><span class="p">.</span><span class="nx">foo</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s2">&quot;(fooなし)&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">barValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">arg</span><span class="p">.</span><span class="nx">bar</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s2">&quot;(barなし)&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`foo: </span><span class="si">${</span><span class="nx">fooValue</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="sb">`bar: </span><span class="si">${</span><span class="nx">barValue</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// fooのみでもOK</span>
+<span class="nx">method</span><span class="p">({</span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;FOO&quot;</span><span class="p">});</span>
+
+<span class="c1">// barのみでもOK</span>
+<span class="nx">method</span><span class="p">({</span><span class="nx">bar</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">});</span>
+
+<span class="c1">// どちらもなくてもOK</span>
+<span class="nx">method</span><span class="p">({});</span>
+</code></pre></div>
 <h4 id="intersection">▼ 交差型（Intersection）<a class="headerlink" href="#intersection" title="Permanent link">&para;</a></h4>
 <p>複数の型を同時に満たす型である。</p>
 <p>型を指定した処理では、両方の型を指定しないといけない。</p>
@@ -29688,8 +29735,8 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="05">05. 環境変数の定義<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
-<h3 id="_36">出力<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
-<h4 id="_37">▼ 言語の実行環境<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
+<h3 id="_37">出力<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
+<h4 id="_38">▼ 言語の実行環境<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
 <ul>
 <li><code>export</code>コマンドで出力する</li>
 <li>コンテナの環境変数として出力する</li>
@@ -29711,7 +29758,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_38">型の定義<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
+<h3 id="_39">型の定義<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">Env</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">DATABASE_NAME</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">DATABASE_PORT?</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
@@ -29781,7 +29828,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月30日 14:39:12 JST">2025-10-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月11日 22:34:56 JST">2025-11-11</span>
   </span>
 
     
