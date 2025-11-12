@@ -128,8 +128,15 @@ Vitestの思想では、テストコードの型検証はエディタやビル�
 ```typescript
 import axios from "axios";
 
+type User = {
+  id: string;
+  name: string;
+  executionTime: number;
+  startAtTimestamp: string;
+};
+
 // テスト対象の関数
-export async function fetchUser(id: string) {
+export async function fetchUser(id: string): Promise<User> {
   const res = await axios.get(`/api/users/${id}`);
   return res.data;
 }
@@ -152,16 +159,15 @@ describe("fetchUser", async () => {
 
   // 正常系テストケース
   test("should return id and name when success", async () => {
-    // レスポンスに関するテストデータ
-    const responseBody = {
-      id: "1",
-      name: "Taro",
-    };
-
     // axiosクライアントを実行する場合、モックに差し替える
     // axiosクライアントのモックが一度だけデータを返却するように設定
     vi.mocked(axios, true).get.mockResolvedValueOnce({
-      data: responseBody,
+      data: {
+        id: "1",
+        name: "Taro",
+        executionTime: 123,
+        startAtTimestamp: "2024-06-01T12:00:00.000Z",
+      },
       status: 200,
     });
 
@@ -411,6 +417,25 @@ describe("fetchUser", () => {
 
 ### オプショナル型を厳密に検証する
 
+#### ▼ テスト対象のコード
+
+```typescript
+import axios from "axios";
+
+type User = {
+  name: string;
+  age?: number;
+};
+
+// テスト対象の関数
+export async function fetchUser(id: string): Promise<User> {
+  const res = await axios.get(`/api/users/${id}`);
+  return res.data;
+}
+```
+
+#### ▼ テストコード
+
 `toBeDefined`関数と`toBeUndefined`関数を使用し、オプショナル型を事前に検証した上で、値を検証するとよい。
 
 また、プロパティがある場合をテストする時には、非nullアサーションが必要である。
@@ -418,33 +443,51 @@ describe("fetchUser", () => {
 ```typescript
 import {describe, it, expect} from "vitest";
 
-type User = {
-  name: string;
-  age?: number;
-};
+// axiosクライアントのモック
+vi.mock("axios");
 
 describe("User optional property behavior", () => {
+
+  // リクエストのパラメーターに関するテストデータ
+  const userId = "1";
+
   it("should allow validation when optional property is defined", () => {
-    const user: User = {name: "Alice", age: 25};
+
+    // axiosクライアントを実行する場合、モックに差し替える
+    // axiosクライアントのモックが一度だけデータを返却するように設定
+    vi.mocked(axios, true).get.mockResolvedValueOnce({
+      data: {name: "Alice", age: 25},
+      status: 200,
+    });
+
+    // 関数をテスト
+    // 内部で実行されるaxiosクライアントはモックであり、mockResolvedValueOnceで設定した値を返却する
+    const user = await fetchUser(userId);
 
     // オプショナル型を検証する
     expect(user.age).toBeDefined();
 
     // 値を検証する
     expect(user.name).toBe("Alice");
-    expect(user.age).toBe(25);
-
-    // 非nullアサーションを安全に使用できる
-    const age = user.age!;
-    expect(age).toBeGreaterThan(20);
+    // 非nullアサーションで明示しつつ、値を検証する
+    expect(user..age!).toBe(25);
   });
 
   it("should allow validation when optional property is undefined", () => {
-    const user: User = {name: "Bob"};
+
+    // axiosクライアントを実行する場合、モックに差し替える
+    // axiosクライアントのモックが一度だけデータを返却するように設定
+    vi.mocked(axios, true).get.mockResolvedValueOnce({
+      data: {name: "Bob"},
+      status: 200,
+    });
+
+    // 関数をテスト
+    // 内部で実行されるaxiosクライアントはモックであり、mockResolvedValueOnceで設定した値を返却する
+    const user = await fetchUser(userId);
 
     // オプショナル型を検証する
     expect(user.age).toBeUndefined();
-
     // 値を検証する
     expect(user.name).toBe("Bob");
   });
