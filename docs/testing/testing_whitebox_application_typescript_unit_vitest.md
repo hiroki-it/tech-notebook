@@ -442,17 +442,17 @@ export async function fetchUser(id: string): Promise<User> {
 
 ```typescript
 import {describe, it, expect} from "vitest";
+import axios from "axios";
+import {fetchUser} from "./fetchUser";
 
 // axiosクライアントのモック
 vi.mock("axios");
 
 describe("User optional property behavior", () => {
-
   // リクエストのパラメーターに関するテストデータ
   const userId = "1";
 
-  it("should allow validation when optional property is defined", () => {
-
+  it("should allow validation when optional property is defined", async () => {
     // axiosクライアントを実行する場合、モックに差し替える
     // axiosクライアントのモックが一度だけデータを返却するように設定
     vi.mocked(axios, true).get.mockResolvedValueOnce({
@@ -470,11 +470,10 @@ describe("User optional property behavior", () => {
     // 値を検証する
     expect(user.name).toBe("Alice");
     // 非nullアサーションで明示しつつ、値を検証する
-    expect(user..age!).toBe(25);
+    expect(user.age!).toBe(25);
   });
 
-  it("should allow validation when optional property is undefined", () => {
-
+  it("should allow validation when optional property is undefined", async () => {
     // axiosクライアントを実行する場合、モックに差し替える
     // axiosクライアントのモックが一度だけデータを返却するように設定
     vi.mocked(axios, true).get.mockResolvedValueOnce({
