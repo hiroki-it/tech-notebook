@@ -12013,6 +12013,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      オプショナル型を厳密に検証する
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -27928,6 +27937,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      オプショナル型を厳密に検証する
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -27962,6 +27980,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-vitest">01. Vitestとは<a class="headerlink" href="#01-vitest" title="Permanent link">&para;</a></h2>
+<p>ユニットテストと機能テストの実施に必要な機能を提供し、加えてテストを実施する。</p>
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="plugin">plugin<a class="headerlink" href="#plugin" title="Permanent link">&para;</a></h3>
@@ -28065,7 +28084,7 @@
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">;</span>
 
 <span class="w">  </span><span class="c1">// 正常系テストケース</span>
-<span class="w">  </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;success&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should return id and name when success&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// レスポンスに関するテストデータ</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">responseBody</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
@@ -28098,7 +28117,7 @@
 <span class="w">  </span><span class="p">});</span>
 
 <span class="w">  </span><span class="c1">// 異常系テストケース</span>
-<span class="w">  </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;foo failure&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should throw error when failure&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// axiosクライアントを実行する場合、モックに差し替える</span>
 <span class="w">    </span><span class="c1">// axiosクライアントのモックがエラーを一度だけ返すように設定</span>
 <span class="w">    </span><span class="nx">vi</span><span class="p">.</span><span class="nx">mocked</span><span class="p">(</span><span class="nx">axios</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">).</span><span class="nx">get</span><span class="p">.</span><span class="nx">mockRejectedValueOnce</span><span class="p">(</span>
@@ -28304,6 +28323,44 @@
 <span class="p">});</span>
 </code></pre></div>
 <p><br></p>
+<h3 id="_12">オプショナル型を厳密に検証する<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p><code>toBeDefined</code>関数と<code>toBeUndefined</code>関数を使用し、オプショナル型を事前に検証した上で、値を検証するとよい。</p>
+<p>また、プロパティがある場合をテストする時には、非nullアサーションが必要である。</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">describe</span><span class="p">,</span><span class="w"> </span><span class="nx">it</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;vitest&quot;</span><span class="p">;</span>
+
+<span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">age?</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;User optional property behavior&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should allow validation when optional property is defined&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">25</span><span class="p">};</span>
+
+<span class="w">    </span><span class="c1">// オプショナル型を検証する</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">age</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// 値を検証する</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">age</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">25</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 非nullアサーションを安全に使用できる</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">age</span><span class="o">!</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">age</span><span class="p">).</span><span class="nx">toBeGreaterThan</span><span class="p">(</span><span class="mf">20</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should allow validation when optional property is undefined&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Bob&quot;</span><span class="p">};</span>
+
+<span class="w">    </span><span class="c1">// オプショナル型を検証する</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">age</span><span class="p">).</span><span class="nx">toBeUndefined</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// 値を検証する</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s2">&quot;Bob&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><br></p>
 
 
 
@@ -28324,7 +28381,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月1日 22:10:14 JST">2025-11-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月12日 15:25:03 JST">2025-11-12</span>
   </span>
 
     
