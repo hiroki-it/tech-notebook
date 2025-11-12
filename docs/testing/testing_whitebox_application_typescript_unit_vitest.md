@@ -15,6 +15,8 @@ description: Vitest＠JavaScriptユニットテストの知見を記録してい
 
 ## 01. Vitestとは
 
+ユニットテストと機能テストの実施に必要な機能を提供し、加えてテストを実施する。
+
 <br>
 
 ## 02. セットアップ
@@ -149,7 +151,7 @@ describe("fetchUser", async () => {
   const userId = "1";
 
   // 正常系テストケース
-  test("success", async () => {
+  test("should return id and name when success", async () => {
     // レスポンスに関するテストデータ
     const responseBody = {
       id: "1",
@@ -182,7 +184,7 @@ describe("fetchUser", async () => {
   });
 
   // 異常系テストケース
-  test("foo failure", async () => {
+  test("should throw error when failure", async () => {
     // axiosクライアントを実行する場合、モックに差し替える
     // axiosクライアントのモックがエラーを一度だけ返すように設定
     vi.mocked(axios, true).get.mockRejectedValueOnce(
@@ -401,6 +403,50 @@ describe("fetchUser", () => {
       expect(error.message).toMatch(/error/);
       expect(error.code).toBe(500);
     }
+  });
+});
+```
+
+<br>
+
+### オプショナル型を厳密に検証する
+
+`toBeDefined`関数と`toBeUndefined`関数を使用し、オプショナル型を事前に検証した上で、値を検証するとよい。
+
+また、プロパティがある場合をテストする時には、非nullアサーションが必要である。
+
+```typescript
+import {describe, it, expect} from "vitest";
+
+type User = {
+  name: string;
+  age?: number;
+};
+
+describe("User optional property behavior", () => {
+  it("should allow validation when optional property is defined", () => {
+    const user: User = {name: "Alice", age: 25};
+
+    // オプショナル型を検証する
+    expect(user.age).toBeDefined();
+
+    // 値を検証する
+    expect(user.name).toBe("Alice");
+    expect(user.age).toBe(25);
+
+    // 非nullアサーションを安全に使用できる
+    const age = user.age!;
+    expect(age).toBeGreaterThan(20);
+  });
+
+  it("should allow validation when optional property is undefined", () => {
+    const user: User = {name: "Bob"};
+
+    // オプショナル型を検証する
+    expect(user.age).toBeUndefined();
+
+    // 値を検証する
+    expect(user.name).toBe("Bob");
   });
 });
 ```

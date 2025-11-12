@@ -594,10 +594,26 @@ const strLength: number = (<string>value).length;
 // string型またはnullを許容する
 function foo(value: string | null) {
   // nullを含まないstring型に上書きする
-  const stringNotNull = value!.toUpperCase();
+  const stringNotNull = value!;
+  console.log(stringNotNull.toUpperCase());
+}
+```
+
+ただ、型ガードしてもよく、こちらの方が明示的である。ただ、実装量が増えてしまうところがデメリットである。
+
+```typescript
+// string型またはnullを許容する
+function foo(value: string | null) {
+  if (value === null) {
+    return;
+  }
+  // string型として扱われる
+  const stringNotNull = value.toUpperCase();
   console.log(stringNotNull);
 }
 ```
+
+> - https://qiita.com/terry_6518/items/ba54a60afcb758b9b242#%E5%9E%8B%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E4%BD%BF%E3%81%84%E6%89%80
 
 <br>
 
