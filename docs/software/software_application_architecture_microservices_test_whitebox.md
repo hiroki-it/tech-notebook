@@ -51,13 +51,27 @@ description: ホワイトボックステスト＠テスト領域の知見を記�
 
 マイクロサービスがそれ単体で正しく動作するかを検証する。
 
-宛先マイクロサービスは検証対象ではないため、モックサービスとする。
-
 > - https://martinfowler.com/articles/microservice-testing/#testing-component-introduction
 > - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
 > - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
 > - https://semaphoreci.com/blog/test-microservices
 > - https://www.cortex.io/post/an-overview-of-the-key-microservices-testing-strategies-types-of-tests-the-best-testing-tools
+
+<br>
+
+### マイクロサービスの種類に応じたサービステスト
+
+#### ▼ ほかのマイクロサービスと通信するマイクロサービスの場合
+
+ほかのマイクロサービスと通信するマイクロサービス（BFFなども含む）の場合、宛先マイクロサービスは検証対象ではないため、モックサービスとする。
+
+### ▼ 永続化処理をもつマイクロサービスの場合
+
+永続化処理をもつマイクロサービスの場合、事前にデータベースにテストデータを挿入しておく。
+
+マイクロサービスにリクエストを送信し、レスポンスデータが期待値に合致するかを検証する。
+
+テスト後、テストデータは削除しておく。
 
 <br>
 
@@ -120,8 +134,6 @@ description: ホワイトボックステスト＠テスト領域の知見を記�
 
 実際のユーザーを模した一連の操作 (フロントエンドへのリクエスト) を実施し、特定の機能に関する全てのコンポーネント間 (フロントエンド、各マイクロサービス、外部APIなど) の連携のテストを実施する。
 
-フロントエンドに対してリクエストを送信し、一連のマイクロサービスの処理を検証する。
-
 > - https://commerce-engineer.rakuten.careers/entry/tech/0031
 > - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
 > - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
@@ -129,7 +141,17 @@ description: ホワイトボックステスト＠テスト領域の知見を記�
 
 <br>
 
-### 結合テストツール例
+### E2Eテストの方法
+
+事前にデータベースにテストデータを挿入しておく。
+
+マイクロサービスアーキテクチャのフロントエンドに対して一連の操作を実施し、一連の機能の処理を検証する。
+
+テスト後、テストデータは削除しておく。
+
+<br>
+
+### E2Eテストツール例
 
 #### ▼ 手動
 

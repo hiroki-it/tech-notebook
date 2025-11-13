@@ -102,7 +102,7 @@ select * from `employees` where `department_id` = 3
 
 反復処理の前に小テーブルにアクセスしておく。
 
-データアクセス時にIN句を使用すると、N+1問題を解消できる。
+データアクセス時にIN句やJOIN句を使用すると、N+1問題を解消できる。
 
 Laravelでは`with`関数を使用すると内部的には、親テーブルへのSQLと、IN句を使用したSQLが発行され、最終的に2回で済む。
 
@@ -110,6 +110,7 @@ Laravelでは`with`関数を使用すると内部的には、親テーブルへ�
 <?php
 
 // SQL発行 (2回)
+// 内部的ににIN句
 $departments = Department::with('employees')->get();
 
 foreach($departments as $department) {
@@ -173,7 +174,7 @@ const logs = await Promise.all(
 
 #### ▼ 解決方法
 
-データアクセス時にIN句を使用すると、N+1問題を解消できる。
+データアクセス時にIN句やJOIN句を使用すると、N+1問題を解消できる。
 
 Prismaでは、`in`プロパティをIN句を使用したSQLが発行され、最終的に2回で済む。
 
@@ -187,6 +188,7 @@ const users = await prisma.user.findMany({where: {teamId}});
 // 親テーブルのレコード数分のWhere句SQLを発行する (1回)
 const logs = await prisma.log.findMany({
   where: {
+    // 内部的にIN句
     userId: {in: users.map((u) => u.id)},
   },
 });

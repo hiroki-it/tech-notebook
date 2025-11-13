@@ -2630,7 +2630,7 @@ func setup() (*http.Client, func()) {
 	}
 }
 
-// TestIntegration 統合テストを実行する
+// TestIntegration 結合テストを実行する
 func TestIntegration(t *testing.T) {
 
 	t.Helper()
