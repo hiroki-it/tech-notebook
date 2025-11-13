@@ -27924,11 +27924,12 @@
 </code></pre></div>
 <h4 id="_5">▼ 解決方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>反復処理の前に小テーブルにアクセスしておく。</p>
-<p>データアクセス時にIN句を使用すると、N+1問題を解消できる。</p>
+<p>データアクセス時にIN句やJOIN句を使用すると、N+1問題を解消できる。</p>
 <p>Laravelでは<code>with</code>関数を使用すると内部的には、親テーブルへのSQLと、IN句を使用したSQLが発行され、最終的に2回で済む。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// SQL発行 (2回)</span>
+<span class="c1">// 内部的ににIN句</span>
 <span class="nv">$departments</span> <span class="o">=</span> <span class="nx">Department</span><span class="o">::</span><span class="na">with</span><span class="p">(</span><span class="s1">&#39;employees&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
 
 <span class="k">foreach</span><span class="p">(</span><span class="nv">$departments</span> <span class="k">as</span> <span class="nv">$department</span><span class="p">)</span> <span class="p">{</span>
@@ -27977,7 +27978,7 @@
 <span class="p">);</span>
 </code></pre></div>
 <h4 id="_6">▼ 解決方法<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>データアクセス時にIN句を使用すると、N+1問題を解消できる。</p>
+<p>データアクセス時にIN句やJOIN句を使用すると、N+1問題を解消できる。</p>
 <p>Prismaでは、<code>in</code>プロパティをIN句を使用したSQLが発行され、最終的に2回で済む。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;~/services/prisma.server&quot;</span><span class="p">;</span>
@@ -27988,6 +27989,7 @@
 <span class="c1">// 親テーブルのレコード数分のWhere句SQLを発行する (1回)</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">logs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">findMany</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 内部的にIN句</span>
 <span class="w">    </span><span class="nx">userId</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">in</span><span class="o">:</span><span class="w"> </span><span class="kt">users.map</span><span class="p">((</span><span class="nx">u</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">u</span><span class="p">.</span><span class="nx">id</span><span class="p">)},</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="p">});</span>
@@ -28023,7 +28025,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月11日 20:53:58 JST">2025-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月13日 18:24:43 JST">2025-11-13</span>
   </span>
 
     
