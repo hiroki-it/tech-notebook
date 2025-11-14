@@ -159,7 +159,7 @@ describe("fetchUser", async () => {
 
   // 正常系テストケース
   test("should return id and name when success", async () => {
-    // axiosクライアントを実行する場合、モックに差し替える
+    // axiosの型をモックに認識させる
     // axiosクライアントのモックが一度だけデータを返却するように設定
     vi.mocked(axios, true).get.mockResolvedValueOnce({
       data: {
@@ -191,7 +191,7 @@ describe("fetchUser", async () => {
 
   // 異常系テストケース
   test("should throw error when failure", async () => {
-    // axiosクライアントを実行する場合、モックに差し替える
+    // axiosの型をモックに認識させる
     // axiosクライアントのモックがエラーを一度だけ返すように設定
     vi.mocked(axios, true).get.mockRejectedValueOnce(
       new Error("Network Error"),
@@ -286,7 +286,8 @@ describe("publishMessage", () => {
 
   // 正常系テストケース
   test("should return success when message is published", async () => {
-    vi.mocked(publishMessageToEmqx).mockResolvedValueOnce(undefined);
+    // publishMessageToEmqxの型をモックに認識させる
+    vi.mocked(publishMessageToEmqx, true).mockResolvedValueOnce(undefined);
     const result = await publishMessage(url);
 
     // publishMessageによる送信処理が正常に完了したことを比較検証する
@@ -301,7 +302,8 @@ describe("publishMessage", () => {
 
   // 異常系テストケース
   test("should throw error when publish is failed", async () => {
-    vi.mocked(publishMessageToEmqx).mockRejectedValueOnce(
+    // publishMessageToEmqxの型をモックに認識させる
+    vi.mocked(publishMessageToEmqx, true).mockRejectedValueOnce(
       new Error("network error"),
     );
 
@@ -326,7 +328,8 @@ describe("subscribeMessage", () => {
 
   // 正常系テストケース
   test("should return success when message is subscribed", async () => {
-    vi.mocked(subscribeMessageToEmqx).mockResolvedValueOnce(undefined);
+    // subscribeMessageToEmqxの型をモックに認識させる
+    vi.mocked(subscribeMessageToEmqx, true).mockResolvedValueOnce(undefined);
     const result = await subscribeMessage(url);
 
     // subscribeMessageによる受信処理が正常に完了したことを比較検証する
@@ -341,6 +344,7 @@ describe("subscribeMessage", () => {
 
   // 異常系テストケース
   test("should throw error when subscribe is failed", async () => {
+    // subscribeMessageToEmqxの型をモックに認識させる
     vi.mocked(subscribeMessageToEmqx).mockRejectedValueOnce(
       new Error("network error"),
     );
