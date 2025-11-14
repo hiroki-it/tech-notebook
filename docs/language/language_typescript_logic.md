@@ -383,7 +383,7 @@ interface Error {
 }
 ```
 
-#### ▼ 独自
+#### ▼ 独自のErrorオブジェクト
 
 ステータスコードに応じたエラーを継承すると、`try-catch`で扱いやすくなる。
 
@@ -392,14 +392,66 @@ interface Error {
 ```typescript
 // Errorオブジェクトを継承した独自のErrorオブジェクト
 class FooError extends Error {
-  private _name: string;
-  private _code: number;
+  private readonly _name: string;
+  private readonly _code: number;
 
   constructor(message: string, code: number) {
     // message変数はErrorオブジェクトに渡す
     super(message);
-    this._name = "FooError";
+    // 親のErrorオブジェクトのプロパティに設定
+    this.name = "FooError";
     this._code = code;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get code() {
+    return this._code;
+  }
+}
+```
+
+必ずしも、Errorオブジェクトを継承する必要はない。
+
+例えば、任意のErrorオブジェクトと実行時間や開始時間をプロパティにもつ`FailedResult`クラスがある。
+
+独自のErrorオブジェクトのプロパティに実行時間や開始時間を入れればいいと考えるかもしれないが、外部ツールの任意のErrorオブジェクトには外からこれらを設定できないため、整合性が合わなくなる。
+
+その一方で、Errorオブジェクトのプロパティに実行時間や開始時間を入れれば、任意のErrorオブジェクトに対応できるようになる。
+
+```typescript
+export class FailedResult {
+  // resultプロパティにはErrorオブジェクトが入る
+  private readonly _result: unknown;
+  private readonly _executionTime?: number;
+  private readonly _startAtTimestamp?: string;
+
+  constructor({
+    result,
+    executionTime,
+    startAtTimestamp,
+  }: {
+    result: unknown;
+    executionTime?: number;
+    startAtTimestamp?: string;
+  }) {
+    this._result = result;
+    this._executionTime = executionTime;
+    this._startAtTimestamp = startAtTimestamp;
+  }
+
+  get result() {
+    return this._result;
+  }
+
+  get executionTime() {
+    return this._executionTime;
+  }
+
+  get startAtTimestamp() {
+    return this._startAtTimestamp;
   }
 }
 ```
