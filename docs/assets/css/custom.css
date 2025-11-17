@@ -104,15 +104,20 @@ h4 {
     font-size: 1.3em;
 }
 
+.md-path {
+    /* パンくずリスト */
+    font-size: 0.5em;
+}
+
 .md-typeset h1 {
     color: white;
-    font-size: 1.9em;
+    font-size: 1.7em;
     font-weight: bold;
     text-transform: none;
 }
 
 .md-typeset h2 {
-    font-size: 1.4em;
+    font-size: 1.35em;
     font-weight: bold;
     text-transform: none;
 }
