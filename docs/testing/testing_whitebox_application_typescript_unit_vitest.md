@@ -159,7 +159,7 @@ describe("fetchUser", async () => {
 
   // 正常系テストケース
   test("should return id and name when success", async () => {
-    // axiosの型をモックに認識させる
+    // axiosの型をモックに認識させる。オブジェクト全体をモックにする場合、trueにする。
     // axiosクライアントのモックが一度だけデータを返却するように設定
     vi.mocked(axios, true).get.mockResolvedValueOnce({
       data: {
@@ -191,7 +191,7 @@ describe("fetchUser", async () => {
 
   // 異常系テストケース
   test("should throw error when failure", async () => {
-    // axiosの型をモックに認識させる
+    // axiosの型をモックに認識させる。オブジェクト全体をモックにする場合、trueにする。
     // axiosクライアントのモックがエラーを一度だけ返すように設定
     vi.mocked(axios, true).get.mockRejectedValueOnce(
       new Error("Network Error"),
@@ -287,7 +287,7 @@ describe("publishMessage", () => {
   // 正常系テストケース
   test("should return success when message is published", async () => {
     // publishMessageToEmqxの型をモックに認識させる
-    vi.mocked(publishMessageToEmqx, true).mockResolvedValueOnce(undefined);
+    vi.mocked(publishMessageToEmqx).mockResolvedValueOnce(undefined);
     const result = await publishMessage(url);
 
     // publishMessageによる送信処理が正常に完了したことを比較検証する
@@ -303,7 +303,7 @@ describe("publishMessage", () => {
   // 異常系テストケース
   test("should throw error when publish is failed", async () => {
     // publishMessageToEmqxの型をモックに認識させる
-    vi.mocked(publishMessageToEmqx, true).mockRejectedValueOnce(
+    vi.mocked(publishMessageToEmqx).mockRejectedValueOnce(
       new Error("network error"),
     );
 
@@ -329,7 +329,7 @@ describe("subscribeMessage", () => {
   // 正常系テストケース
   test("should return success when message is subscribed", async () => {
     // subscribeMessageToEmqxの型をモックに認識させる
-    vi.mocked(subscribeMessageToEmqx, true).mockResolvedValueOnce(undefined);
+    vi.mocked(subscribeMessageToEmqx).mockResolvedValueOnce(undefined);
     const result = await subscribeMessage(url);
 
     // subscribeMessageによる受信処理が正常に完了したことを比較検証する
@@ -457,7 +457,7 @@ describe("User optional property behavior", () => {
   const userId = "1";
 
   it("should allow validation when optional property is defined", async () => {
-    // axiosクライアントを実行する場合、モックに差し替える
+    // axiosの型をモックに認識させる。オブジェクト全体をモックにする場合、trueにする。
     // axiosクライアントのモックが一度だけデータを返却するように設定
     vi.mocked(axios, true).get.mockResolvedValueOnce({
       data: {name: "Alice", age: 25},
@@ -478,7 +478,7 @@ describe("User optional property behavior", () => {
   });
 
   it("should allow validation when optional property is undefined", async () => {
-    // axiosクライアントを実行する場合、モックに差し替える
+    // axiosの型をモックに認識させる。オブジェクト全体をモックにする場合、trueにする。
     // axiosクライアントのモックが一度だけデータを返却するように設定
     vi.mocked(axios, true).get.mockResolvedValueOnce({
       data: {name: "Bob"},
