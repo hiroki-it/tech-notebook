@@ -294,7 +294,7 @@ await new Promise((resolve, reject) => {
 
   // 子プロセスが終了した時の処理
   // 後処理は非同期化にする
-  child.on('exit', async (code, signal) => {
+  child.on('close', async (code, signal) => {
     resolve("SUCCESS");
     reject("FAILED");
   })
