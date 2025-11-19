@@ -121,7 +121,7 @@ Vitestの思想では、テストコードの型検証はエディタやビル�
 
 ## 04. テストコード例
 
-### 外部とのリクエスト／レスポンス
+### 入力値に対して結果が正しいかを検証する
 
 #### ▼ テスト対象の関数
 
@@ -215,157 +215,9 @@ describe("fetchUser", async () => {
 
 <br>
 
-### 外部とのパブリッシュ／サブスクライブ
-
-#### ▼ テスト対象の関数
-
-```typescript
-// テスト対象の関数
-export async function publishMessage(url: string) {
-  try {
-    await publishMessageToEmqx(url, "$share/test-topic", "Hello EMQX");
-    return "success";
-  } catch (err) {
-    throw new Error("failed to publish message");
-  }
-}
-
-// テスト対象の関数
-export async function subscribeMessage(url: string) {
-  try {
-    await subscribeMessageToEmqx(url, "$share/test-topic", "Hello EMQX");
-    return "success";
-  } catch (err) {
-    throw new Error("failed to subscribe message");
-  }
-}
-
-async function publishMessageToEmqx(
-  url: string,
-  topic: string,
-  message: string,
-): Promise<void> {
-  // ...
-
-  // ここでEMQXとの通信を実行するとする
-
-  // ...
-
-  console.log(`topic=${topic}, message=${message}`);
-}
-
-async function subscribeMessageToEmqx(
-  url: string,
-  topic: string,
-  message: string,
-): Promise<void> {
-  // ...
-
-  // ここでEMQXとの通信を実行するとする
-
-  // ...
-
-  console.log(`topic=${topic}, message=${message}`);
-}
-```
-
-#### ▼ テストコード
-
-```typescript
-import {describe, test, expect, vi} from "vitest";
-import {publishMessage, subscribeMessage} from "./emqx";
-import {publishMessageToEmqx, subscribeMessageToEmqx} from "../emqx";
-
-describe("publishMessage", () => {
-  // 実際にパブリッシュを行わないように、関数をモック化
-  vi.mock("../emqx", () => ({
-    publishMessageToEmqx: vi.fn(),
-  }));
-
-  const url = "mqtt://localhost:1883";
-
-  // 正常系テストケース
-  test("should return success when message is published", async () => {
-    // publishMessageToEmqxの型をモックに認識させる
-    vi.mocked(publishMessageToEmqx).mockResolvedValueOnce(undefined);
-    const result = await publishMessage(url);
-
-    // publishMessageによる送信処理が正常に完了したことを比較検証する
-    expect(result).toBe("success");
-    // 内部でpublishMessageToEmqxが実行されていることを比較検証する
-    expect(publishMessageToEmqx).toHaveBeenCalledWith(
-      url,
-      "$share/test-topic",
-      "Hello EMQX",
-    );
-  });
-
-  // 異常系テストケース
-  test("should throw error when publish is failed", async () => {
-    // publishMessageToEmqxの型をモックに認識させる
-    vi.mocked(publishMessageToEmqx).mockRejectedValueOnce(
-      new Error("network error"),
-    );
-
-    // publishMessageが例外をスローすることを比較検証する
-    await expect(publishMessage(url)).rejects.toThrow("failed to send message");
-    // 内部でpublishMessageToEmqxが実行されていることを比較検証する
-    expect(publishMessageToEmqx).toHaveBeenCalledWith(
-      url,
-      "$share/test-topic",
-      "Hello EMQX",
-    );
-  });
-});
-
-describe("subscribeMessage", () => {
-  // 実際にサブスクライブを行わないように、関数をモック化
-  vi.mock("../emqx", () => ({
-    subscribeMessageToEmqx: vi.fn(),
-  }));
-
-  const url = "mqtt://localhost:1883";
-
-  // 正常系テストケース
-  test("should return success when message is subscribed", async () => {
-    // subscribeMessageToEmqxの型をモックに認識させる
-    vi.mocked(subscribeMessageToEmqx).mockResolvedValueOnce(undefined);
-    const result = await subscribeMessage(url);
-
-    // subscribeMessageによる受信処理が正常に完了したことを比較検証する
-    expect(result).toBe("success");
-    // 内部でsubscribeMessageToEmqxが実行されていることを比較検証する
-    expect(subscribeMessageToEmqx).toHaveBeenCalledWith(
-      url,
-      "$share/test-topic",
-      "Hello EMQX",
-    );
-  });
-
-  // 異常系テストケース
-  test("should throw error when subscribe is failed", async () => {
-    // subscribeMessageToEmqxの型をモックに認識させる
-    vi.mocked(subscribeMessageToEmqx).mockRejectedValueOnce(
-      new Error("network error"),
-    );
-
-    // subscribeMessageが例外をスローすることを比較検証する
-    await expect(subscribeMessage(url)).rejects.toThrow(
-      "failed to subscribe message",
-    );
-    // 内部でsubscribeMessageToEmqxが実行されていることを比較検証する
-    expect(subscribeMessageToEmqx).toHaveBeenCalledWith(
-      url,
-      "$share/test-topic",
-      "Hello EMQX",
-    );
-  });
-});
-```
-
 <br>
 
-### エラーの中身を詳細に検証
+### エラーの中身が正しいかを検証する
 
 #### ▼ テスト対象の関数
 
@@ -405,11 +257,13 @@ describe("fetchUser", () => {
     try {
       // 内部で実行されるaxiosクライアントはモックであり、mockResolvedValueOnceで設定した値を返却する
       await fetchUser(userId);
-      // fail関数を実行しないといけない
+      // Errorを投げない場合、想定外なのでテストを失敗させる
       expect.fail("should thrown an error");
-    } catch (e) {
-      const error = e as FooError;
-      expect(error.name).toBe("FooError");
+    } catch (error) {
+      if (!(e instanceof FooError)) {
+        // FooErrorではない場合、想定外なのでテストを失敗させる
+        expect.fail("should throw FooError");
+      }
       expect(error.message).toMatch(/error/);
       expect(error.code).toBe(500);
     }
@@ -419,7 +273,7 @@ describe("fetchUser", () => {
 
 <br>
 
-### オプショナル型を厳密に検証する
+### オプショナル型が正しいかを検証する
 
 #### ▼ テスト対象のコード
 
@@ -498,3 +352,49 @@ describe("User optional property behavior", () => {
 ```
 
 <br>
+
+### 異なるファイルにある関数同士で、内部で関数が呼ばれたかを検証する
+
+#### ▼ テスト対象のコード
+
+これらの関数は別のファイルにある前提である。
+
+```typescript
+// utils.ts
+export function doInternalWork(value: number): number {
+  return value * 2;
+}
+```
+
+```typescript
+// task.ts
+export function runTask(num: number): string {
+  const result = doInternalWork(num);
+  return `result=${result}`;
+}
+```
+
+#### ▼ テストコード
+
+```typescript
+import {describe, test, expect, vi} from "vitest";
+import {runTask} from "./task";
+import * as utils from "./utils";
+
+describe("runTask", () => {
+  test("should call doInternalWork internally", () => {
+    // spyOn関数を使用し、内部関数名を指定する
+    const spy = vi.spyOn(utils, "doInternalWork").mockReturnValueOnce(999);
+
+    // runTask関数を実行する
+    const output = runTask(123);
+
+    // utilsの内部でdoInternalWorkが1回呼ばれたかを検証する
+    expect(spy).toHaveBeenCalled();
+    // utilsの内部でdoInternalWorkに渡された引数を検証する
+    expect(spy).toHaveBeenCalledWith(123);
+
+    expect(output).toBe("result=999");
+  });
+});
+```
