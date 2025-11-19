@@ -149,11 +149,11 @@ import {test, expect, vi} from "vitest";
 import axios from "axios";
 import {fetchUser} from "./fetchUser";
 
-// axiosクライアントのモック
-vi.mock("axios");
-
 // テストスイート
 describe("fetchUser", async () => {
+  // axiosクライアントのモック
+  vi.mock("axios");
+
   // リクエストのパラメーターに関するテストデータ
   const userId = "1";
 
@@ -245,10 +245,10 @@ import {test, expect, vi} from "vitest";
 import axios from "axios";
 import {fetchUser} from "./fetchUser";
 
-// axiosクライアントのモック
-vi.mock("axios");
-
 describe("fetchUser", () => {
+  // axiosクライアントのモック
+  vi.mock("axios");
+
   // リクエストのパラメーターに関するテストデータ
   const userId = "1";
 
@@ -303,10 +303,10 @@ import {describe, it, expect} from "vitest";
 import axios from "axios";
 import {fetchUser} from "./fetchUser";
 
-// axiosクライアントのモック
-vi.mock("axios");
-
 describe("User optional property behavior", () => {
+  // axiosクライアントのモック
+  vi.mock("axios");
+
   // リクエストのパラメーターに関するテストデータ
   const userId = "1";
 
@@ -398,3 +398,66 @@ describe("runTask", () => {
   });
 });
 ```
+
+<br>
+
+### 独自のクライアントクラスをモック化する
+
+#### ▼ テスト対象の関数
+
+`axios`関数のようなクライアントではなく、独自のクライアントクラスがあるとする。
+
+```typescript
+// httpClient.ts
+export class HttpClient {
+  constructor(private baseUrl: string) {}
+
+  async get(path: string): Promise<any> {
+    return fetch(`${this.baseUrl}${path}`).then((res) => res.json());
+  }
+}
+```
+
+```typescript
+// userService.ts
+import {HttpClient} from "./httpClient";
+
+export async function fetchUser() {
+  const client = new HttpClient("https://api.example.com");
+  const data = await client.get("/user");
+  return data;
+}
+```
+
+#### ▼ テストコード
+
+```typescript
+import { describe, test, expect, vi } from "vitest";
+import { fetchUser } from "./userService";
+import { HttpClient } from "./httpClient";
+
+describe("fetchUser", () => {
+
+  // クライアントクラス全体をモック化する
+  vi.mock("./httpClient", () => {
+    return {
+      HttpClient: vi.fn(),
+    });
+
+  test("should mock HttpClient and return its instance", async () => {
+    const mockInstance = {
+      get: vi.fn().mockResolvedValueOnce({ id: 1, name: "Alice" }),
+    };
+
+    vi.mocked(HttpClient).mockResolvedValueOnce(mockInstance as any);
+
+    const result = await fetchUser();
+
+    expect(mockInstance.get).toHaveBeenCalledWith("/user");
+
+    expect(result).toEqual({ id: 1, name: "Alice" });
+  });
+});
+```
+
+<br>
