@@ -19,7 +19,7 @@
         <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_auth.html">
       
       
-        <link rel="prev" href="software_application_architecture_microservices_services_transaction.html">
+        <link rel="prev" href="software_application_architecture_microservices_services_auth.html">
       
       
         <link rel="next" href="software_application_architecture_microservices_storage.html">
@@ -1796,6 +1796,8 @@
       
         
       
+        
+      
     
     
     
@@ -1918,6 +1920,457 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    認証／認可
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="software_application_architecture_microservices_services_auth.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    認証／認可
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        はじめに
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01. 認証
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. 認証">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        認証サービス
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02-sso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01-02. SSOパターン (独立パターン)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. SSOパターン (独立パターン)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSOパターンとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sso_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSOパターンの仕組み
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        APIゲートウェイがある場合
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="APIゲートウェイがある場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kong-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Kong Gateway
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01-03. セッションパターン (集中パターン)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01-03. セッションパターン (集中パターン)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        セッションパターンとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        セッションパターンの仕組み
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idcookie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        セッションIDをCookieヘッダーで運搬するパターン
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-04-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01-04. JWTパターン (分散パターン)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01-04. JWTパターン (分散パターン)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JWTパターンとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jwt_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JWTパターンの仕組み
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-05-jwtapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01-05. JWTとAPIゲートウェイの組み合わせパターン (ゲートウェイ集中パターン)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01-05. JWTとAPIゲートウェイの組み合わせパターン (ゲートウェイ集中パターン)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jwtapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JWTとAPIゲートウェイの組み合わせパターンとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jwtapi_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JWTとAPIゲートウェイの組み合わせパターンの仕組み
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jwt_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JWTプロキシーがある場合
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JWTプロキシーがある場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-jwt-authorizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ AWS JWT Authorizer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02. 認可
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 認可">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        集中パターン
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="集中パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ 集中パターンとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ 認可プロバイダーへの委譲
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分散パターン
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分散パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ 分散パターンとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ハイブリッドパターン
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ハイブリッドパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ ハイブリッドパターンとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
