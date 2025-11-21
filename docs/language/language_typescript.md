@@ -864,6 +864,21 @@ const myEnv: Env = {
 import {logger} from "./logger";
 ```
 
+#### ▼ 型と関数が混在
+
+型と関数が混在する場合、いくつかの記法（型と関数で`import`を分けるなど）があるが、次の実装方法が一番良い。
+
+```typescript
+import {
+  foo1,
+  foo2,
+  foo3
+  type foo4,
+  type foo5,
+  type foo6,
+} from "./foo";
+```
+
 <br>
 
 ### export

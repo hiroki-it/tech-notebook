@@ -358,8 +358,8 @@ export App = () => {
 
   return (
     <div className='App'>
-      <h1>Learn useEffect</h1>
-      <h2>Count: {count}</h2>
+      <h1>サンプル</h1>
+      <h2>countの値: {count}</h2>
       <button onClick={() => setCount((prevCount) => prevCount + 1)}>+</button>
     </div>
   );
@@ -367,6 +367,48 @@ export App = () => {
 ```
 
 > - https://zenn.dev/kimura141899/articles/4f33b899cb0bca#useeffect%E3%81%A8%E3%82%8A%E3%81%82%E3%81%88%E3%81%9A%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F
+
+<br>
+
+### useMemo
+
+処理負荷を軽減するため、Stateが変わらない限り処理結果を再利用する。
+
+```typescript
+import { useState, useMemo } from "react";
+
+export default function App() {
+  const [count, setCount] = useState(0);
+  const [text, setText] = useState("");
+
+  const caluculatedValue = useMemo(() => {
+
+    // ここで配列を操作するなどの負荷の高い処理を実行する
+
+    return count * 2;
+    // count の状態が変わらない限り再計算されず、前回の結果を再利用する
+  }, [count]);
+
+  return (
+    <div>
+      <h1>サンプル</h1>
+      <p>countの値: {count}</p>
+      <p>caluculatedValueの値: {caluculatedValue}</p>
+
+      <button onClick={() => setCount((c) => c + 1)}>increment</button>
+
+      <br /><br />
+      <input
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="テキストの値"
+      />
+    </div>
+  );
+}
+```
+
+> - https://zenn.dev/codeciao/articles/1c72bcdd4e22d3
 
 <br>
 

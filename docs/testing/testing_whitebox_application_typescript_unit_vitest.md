@@ -432,30 +432,28 @@ export async function fetchUser() {
 #### ▼ テストコード
 
 ```typescript
-import { describe, test, expect, vi } from "vitest";
-import { fetchUser } from "./userService";
-import { HttpClient } from "./httpClient";
+import {describe, test, expect, vi} from "vitest";
+import {fetchUser} from "./userService";
+import {HttpClient} from "./httpClient";
 
 describe("fetchUser", () => {
-
   // クライアントクラス全体をモック化する
-  vi.mock("./httpClient", () => {
-    return {
-      HttpClient: vi.fn(),
-    });
+  vi.mock("./httpClient");
 
   test("should mock HttpClient and return its instance", async () => {
+    // モッククラスのインスタンスを定義する
     const mockInstance = {
-      get: vi.fn().mockResolvedValueOnce({ id: 1, name: "Alice" }),
+      get: vi.fn().mockResolvedValueOnce({id: 1, name: "Alice"}),
     };
 
-    vi.mocked(HttpClient).mockResolvedValueOnce(mockInstance as any);
+    // モッククラスがモックインスタンスを返却する
+    vi.mocked(HttpClient).mockReturnValueOnce(mockInstance as any);
 
     const result = await fetchUser();
 
     expect(mockInstance.get).toHaveBeenCalledWith("/user");
 
-    expect(result).toEqual({ id: 1, name: "Alice" });
+    expect(result).toEqual({id: 1, name: "Alice"});
   });
 });
 ```
