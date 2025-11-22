@@ -55,12 +55,17 @@ description: メッセージング系ミドルウェアの知見を記録して�
 
 双方向通信 (クライアント → サーバー → クライアント) である。
 
-RabbitMQのプル型では、RabbitMQにポーリング (HTTP、AMQPなど) を実行し、メッセージの取得を待機する（サブスクライブは無い）。
+RabbitMQのプル型では、RabbitMQにポーリング (HTTP、AMQPなど) を実行し、メッセージの取得を待機する（購読予約は無い）。
 
-Kafkaのプル型では、サブスクライブによる購読予約をKafkaに実行し、その上でポーリングをKafkaに実行する必要がある。
+Apache Kafkaのプル型では、サブスクライブによる購読予約をKafkaに実行し、その上でポーリングをKafkaに実行する必要がある。
 
 - RabbitMQ (プル型だけでなく、プッシュ型も選べる)
 - Apache Kafka
+
+| メッセージブローカー | Subscribe | ポーリング |
+| -------------------- | --------- | ---------- |
+| Apache Kafka         | 必要      | 必要       |
+| RabbitMQ             | 不要      | 必要       |
 
 #### ▼ プッシュ型
 
@@ -69,6 +74,12 @@ Kafkaのプル型では、サブスクライブによる購読予約をKafkaに�
 - RabbitMQ (プッシュ型だけでなく、プル型も選べる)
 - AWS SNS
 - AWS EventBridge
+
+  | メッセージブローカー | Subscribe | Push受信 |
+  | -------------------- | --------- | -------- |
+  | Apache Kafka         | 非対応    | 非対応   |
+  | RabbitMQ             | 必要      | 自動     |
+  | AWS EventBridge      | 必要      | 自動     |
 
 <br>
 

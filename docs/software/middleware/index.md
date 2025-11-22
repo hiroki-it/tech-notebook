@@ -184,7 +184,7 @@ hide:
 
 - #### [︎RabbitMQ](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_message_broker_rabbitmq.html)
 
-- #### [Kafka](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_message_streamer_kafka.html)
+- #### [Apache Kafka](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_message_streamer_apache_kafka.html)
 
 <br>
 

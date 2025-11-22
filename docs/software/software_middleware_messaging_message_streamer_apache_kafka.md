@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Kafka＠ストリーマー系ミドルウェア
-description: Kafka＠ストリーマー系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】Apache Kafka＠ストリーマー系ミドルウェア
+description: Apache Kafka＠ストリーマー系ミドルウェアの知見を記録しています。
 ---
 
-# Kafka＠ストリーマー系ミドルウェア
+# Apache Kafka＠ストリーマー系ミドルウェア
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Kafka＠ストリーマー系ミドルウェアの知見を記録�
 
 <br>
 
-## 01. Kafkaとは
+## 01. Apache Kafkaとは
 
 メッセージストリームとして、メッセージを連続的にキューイングし、また加工した上で連続的にルーティングする。
 
