@@ -45,6 +45,8 @@ Knativeのイベントメッシュ (Knative Eventing) は、イベントブロ�
 
 イベントトリガーは宛先マイクロサービスに送信するイベントをフィルタリングする。
 
+メッセージ中継システムは含まれないため、我々が導入する必要がある。
+
 ![knative_architecture_event-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/knative_architecture_event-mesh.png)
 
 > - https://knative.dev/docs/eventing/event-mesh/

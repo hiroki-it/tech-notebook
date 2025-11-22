@@ -372,12 +372,16 @@ export App = () => {
 
 ### useMemo
 
-処理負荷を軽減するため、Stateが変わらない限り処理結果を再利用する。
+処理負荷を軽減するため、該当のstate変数の状態が変わらない限り処理結果を再利用する。
+
+`useEffect`で複数のstate変数の状態を管理している場合に、一方の変数の状態だけを再利用できる。
 
 ```typescript
 import { useState, useMemo } from "react";
 
 export default function App() {
+
+  // state変数
   const [count, setCount] = useState(0);
   const [text, setText] = useState("");
 
@@ -386,9 +390,10 @@ export default function App() {
     // ここで配列を操作するなどの負荷の高い処理を実行する
 
     return count * 2;
-    // count の状態が変わらない限り再計算されず、前回の結果を再利用する
+    // count変数の状態が変わらない限り再計算されず、前回の結果を再利用する
   }, [count]);
 
+  // 画面上の操作によってtextとcountが変わることがあり、textだけの変更ではcountを再利用する
   return (
     <div>
       <h1>サンプル</h1>
