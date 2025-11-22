@@ -312,7 +312,7 @@ nav:
       - ■ メッセージング系:
           - メッセージング: software/software_middleware_messaging.md
           - RabbitMQ: software/software_middleware_messaging_message_broker_rabbitmq.md
-          - Kafka: software/software_middleware_messaging_message_streamer_kafka.md
+          - Apache Kafka: software/software_middleware_messaging_message_streamer_apache_kafka.md
       - ■ データ分析系:
           - データ分析: software/software_middleware_data_analysis.md
   - 🐧 OS:
