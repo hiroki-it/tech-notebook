@@ -99,9 +99,11 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
-// SetupPrometheus is configure prometheus.
-func SetupPrometheus(ctx context.Context) func() {
+// SetupMetrics is configure prometheus.
+func SetupMetrics(ctx context.Context) func() {
 	metricServerMux := http.NewServeMux()
+
+	// Prometheusが収集の対象とするエンドポイント (/metrics) を起動する
 	metricServerMux.Handle("/metrics", promhttp.Handler())
 	metricServer := &http.Server{Addr: ":2112", Handler: metricServerMux, ReadHeaderTimeout: 20 * time.Second}
 	doneCh := make(chan struct{})
