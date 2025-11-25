@@ -32719,6 +32719,75 @@
 <li>次の観点でDBテーブルを追加／改善する。</li>
 </ol>
 <ul>
+<li>次のようにテーブル構造を整理して</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>物理名</th>
+<th>論理名</th>
+<th>型</th>
+<th>プライマリー／ユニークキー</th>
+<th style="text-align: center;">NOT NULL制約</th>
+<th>デフォルト値</th>
+<th>説明</th>
+<th>値の例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>foo_id</code></td>
+<td>〇〇ID</td>
+<td>VARCHAR(15)</td>
+<td>プライマリキー</td>
+<td style="text-align: center;">禁止</td>
+<td>N/A</td>
+<td>〇〇に関するID</td>
+<td><code>123456789</code></td>
+</tr>
+<tr>
+<td><code>foo_name</code></td>
+<td>〇〇名</td>
+<td>VARCHAR(15)</td>
+<td>N/A</td>
+<td style="text-align: center;">禁止</td>
+<td>N/A</td>
+<td>〇〇に関する名前</td>
+<td><code>hiroki.hasegawa</code></td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td style="text-align: center;">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>作成日時</td>
+<td>DATETIME(3)</td>
+<td>N/A</td>
+<td style="text-align: center;">禁止</td>
+<td>CURRENT_TIMESTAMP(3)</td>
+<td>UTCのタイムスタンプ</td>
+<td><code>2025-01-01 12:34:00.000</code></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>更新日時</td>
+<td>DATETIME(3)</td>
+<td>N/A</td>
+<td style="text-align: center;">禁止</td>
+<td>CURRENT_TIMESTAMP(3)</td>
+<td>UTCのタイムスタンプ</td>
+<td><code>2025-01-01 12:34:05.250</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
 <li>カラム<ul>
 <li>ドメイン上意味付けする必要があるものをカラムにできているか</li>
 <li>ドメイン上意味付けする必要がないもの（単なる集計結果や複合データ）をカラムにしていないか</li>
@@ -32728,11 +32797,11 @@
 <li>リレーションが重複しており、過剰でないか</li>
 </ul>
 </li>
-<li>複合プライマリーキーの定義では、次を考慮する<ul>
+<li>複合プライマリーキー<ul>
 <li>バッチ処理では重複防止のために複合プライマリーを使用する</li>
 </ul>
 </li>
-<li>複合インデックスの定義では、以下を考慮する<ul>
+<li>複合インデックス<ul>
 <li>SQLで<code>=</code>の等価指定のあるカラムを前におき、次に<code>IN</code>句で複数の等価指定、最後に<code>BETWEEN</code>で範囲指定のあるカラムを後に置く。</li>
 <li>カーディナリティが低いほど、B-Treeインデックスの検索グループが増えるためDBが処理しないといけないレコード数が増えてしまう。そこで、等価条件が複数ある場合、カーディナリティの高いカラムをより前におく。</li>
 </ul>
@@ -32758,7 +32827,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月25日 18:42:58 JST">2025-11-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月25日 23:04:43 JST">2025-11-25</span>
   </span>
 
     
