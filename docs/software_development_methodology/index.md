@@ -10,6 +10,18 @@ hide:
 ### 開発手法論
 
 - #### [︎開発手法論](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology.html)
+- #### <u>エージェンティックコーディング</u>
+
+  > - ##### [Claude Code](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_claude.html)
+  > - ##### [PR Agent](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_pr_agent.html)
+  > - ##### <u>AIドキュメント</u>
+  >  > - ##### [AIドキュメント (API定義書) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_api.html)
+  >  > - ##### [AIドキュメント (プロダクトコンテキスト) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_context.html)
+  >  > - ##### [AIドキュメント (DB設計) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_database.html)
+  >  > - ##### [AIドキュメント (システムの調査と実装) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_investigation_and_implementation.html)
+  >  > - ##### [AIドキュメント (巨大システムの調査) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_investigation_large_system.html)
+  >  > - ##### [AIドキュメント (レビュー) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_review.html)
+  >  > - ##### [AIドキュメント (ユニットテスト設計) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_testing.html)
 
 <br>
 
