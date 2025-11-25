@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】PR Agent＠自動レビューツール
-description: PR Agent＠自動レビューツールの知見を記録しています。
+title: 【IT技術の知見】PR Agent＠エージェンティックコーディング
+description: PR Agent＠エージェンティックコーディングの知見を記録しています。
 ---
 
-# PR Agent＠自動レビューツール
+# PR Agent＠エージェンティックコーディング
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Claude Code＠自動コーディングツール
-description: Claude Code＠自動コーディングツールの知見を記録しています。
+title: 【IT技術の知見】Claude Code＠エージェンティックコーディング
+description: Claude Code＠エージェンティックコーディングの知見を記録しています。
 ---
 
-# Claude Code＠自動コーディングツール
+# Claude Code＠エージェンティックコーディング
 
 ## はじめに
 
