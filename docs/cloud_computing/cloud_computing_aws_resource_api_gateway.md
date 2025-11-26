@@ -38,7 +38,7 @@ AWS API Gatewayは、メソッドリクエスト、統合リクエスト、統�
 | ステージ                  | AWS API Gatewayをデプロイする環境を定義する。                                                                                      |                                                                                                                                                                         |
 | オーソライザー            | AWS LambdaまたはCognitoによるオーソライザーを使用して、認可プロセスを定義する。                                                    |                                                                                                                                                                         |
 | ゲートウェイのレスポンス  |                                                                                                                                    |                                                                                                                                                                         |
-| モデル                    | リクエスト−レスポンスのスキーマを設定する。これらのバリデーションのために使用できる。                                              | OpenAPI仕様におけるスキーマについては、以下のリンクを参考にせよ。<br>https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_restful.html |
+| モデル                    | リクエスト／レスポンスのスキーマを設定する。これらのバリデーションのために使用できる。                                             | OpenAPI仕様におけるスキーマについては、以下のリンクを参考にせよ。<br>https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_restful.html |
 | リソースポリシー          | ポリシーを使用して、AWS API Gatewayにセキュリティを定義づける。                                                                    |                                                                                                                                                                         |
 | ドキュメント              |                                                                                                                                    |                                                                                                                                                                         |
 | ダッシュボード            |                                                                                                                                    |                                                                                                                                                                         |
@@ -109,7 +109,7 @@ AWS API Gatewayは、メソッドリクエスト、統合リクエスト、統�
 
 #### ▼ プライベート統合とは
 
-AWS API GatewayとAWS VPCリンクの間で、リクエスト−レスポンスのJSON型データを自動的にマッピングする機能のこと。
+AWS API GatewayとAWS VPCリンクの間で、リクエスト／レスポンスのJSON型データを自動的にマッピングする機能のこと。
 
 また、AWS VPCリンクの設定によって、AWS VPCエンドポイントサービスを作成する。
 
@@ -132,7 +132,7 @@ AWS API GatewayとAWS VPCリンクの間で、リクエスト−レスポンス�
 
 #### ▼ AWS Lambdaプロキシ統合とは
 
-AWS API GatewayとAWS Lambdaの間で、リクエスト−レスポンスのJSON型データを自動的にマッピングする機能のこと。
+AWS API GatewayとAWS Lambdaの間で、リクエスト／レスポンスのJSON型データを自動的にマッピングする機能のこと。
 
 プロキシ統合を使用すると、AWS Lambdaに送信されたリクエストはハンドラ関数のeventオブジェクトに代入される。
 
@@ -290,7 +290,7 @@ AWS API Gatewayの通常のデプロイメントの仕組みは隠蔽されて�
 
 AWS CloudWatch LogsにAWS API Gatewayの実行ログを送信するか否かを設定できる。
 
-リクエスト−レスポンスの構造もログに出力するようにした方が良い。
+リクエスト／レスポンスの構造もログに出力するようにした方が良い。
 
 > - https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html
 

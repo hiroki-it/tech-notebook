@@ -97,7 +97,7 @@ description: ホワイトボックステスト＠テスト領域の知見を記�
 
 これを双方のマイクロサービス間で共有する。
 
-コントラクトサービス上で、双方のリクエスト−レスポンスの内容が期待値に合致するかを検証する。
+コントラクトサービス上で、双方のリクエスト／レスポンスの内容が期待値に合致するかを検証する。
 
 ![cdc-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cdc-test.png)
 

@@ -232,7 +232,7 @@ webhooks:
 
 AdmissionReviewは、リクエストを定義するAdmissionRequestと、レスポンスを定義するAdmissionResponseからなる。
 
-admission-controllerアドオンとwebhookサーバーの間のリクエスト−レスポンスのデータである。
+admission-controllerアドオンとwebhookサーバーの間のリクエスト／レスポンスのデータである。
 
 > - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
 
