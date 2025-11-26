@@ -180,8 +180,6 @@ hide:
 
 ### メッセージング系
 
-- #### [メッセージング](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging.html)
-
 - #### [︎RabbitMQ](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_message_broker_rabbitmq.html)
 
 - #### [Apache Kafka](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_message_streamer_apache_kafka.html)

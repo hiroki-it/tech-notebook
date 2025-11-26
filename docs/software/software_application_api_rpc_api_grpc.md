@@ -66,6 +66,8 @@ gRPCでは、gRPCクライアントとgRPCサーバーの間の通信方式に�
 
 ![grpc_unary-rpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_unary-rpc.png)
 
+リクエスト／レスポンスパターンの通信を実施する。
+
 まず、`1`個のTCP接続を確立し、その中に`1`個のストリームを作成する。
 
 次に、gRPCクライアントが`1`個のリクエストを送信し、これが終えると受信後に`1`個のレスポンスを返信する。
@@ -94,6 +96,8 @@ service Request {
 #### ▼ サーバーストリーミングRPCとは
 
 ![grpc_server-streaming](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_server-streaming.png)
+
+ストリーミングパターンの通信を実施する。
 
 まず、`1`個のTCP接続を確立し、その中に単一またはのストリームを作成する。
 
@@ -125,6 +129,8 @@ service Notification {
 
 ![grpc_client-streaming-rpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_client-streaming-rpc.png)
 
+ストリーミングパターンの通信を実施する。
+
 まず、`1`個のTCP接続を確立し、その中に単一のストリームを作成する。
 
 次に、gRPCクライアントがストリーム上で複数個のリクエストを並行的に送信し、これが終えるとサーバーは`1`個のレスポンスを返信する。
@@ -154,6 +160,8 @@ service Upload {
 #### ▼ 双方向ストリーミングRPCとは
 
 ![grpc_bidrectional-streaming-rpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_bidrectional-streaming-rpc.png)
+
+ストリーミングパターンの通信を実施する。
 
 まず、`1`個のTCP接続を確立し、その中に複数のストリームを同時に作成する。
 
