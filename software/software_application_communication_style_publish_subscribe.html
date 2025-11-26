@@ -10,7 +10,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="パブリッシュ／サブスクライブパターン＠通信方式の知見を記録しています。">
+        <meta name="description" content="パブリッシュ／サブスクライブ方式＠通信方式の知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -22,7 +22,7 @@
         <link rel="prev" href="software_application_communication_style_request_response.html">
       
       
-        <link rel="next" href="software_application_api_restful.html">
+        <link rel="next" href="software_application_communication_style_streaming.html">
       
       
         
@@ -33,7 +33,7 @@
     
     
       
-        <title>【IT技術の知見】パブリッシュ／サブスクライブパターン＠通信方式 - 俺の技術ノート</title>
+        <title>【IT技術の知見】パブリッシュ／サブスクライブ方式＠通信方式 - 俺の技術ノート</title>
       
     
     
@@ -156,7 +156,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】パブリッシュ／サブスクライブパターン＠通信方式
+              【IT技術の知見】パブリッシュ／サブスクライブ方式＠通信方式
             
           </span>
         </div>
@@ -2376,6 +2376,8 @@
       
         
       
+        
+      
     
     
     
@@ -2530,31 +2532,19 @@
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. 送信元と宛先の対応関係
+        01. パブリッシュ／サブスクライブ方式
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. 送信元と宛先の対応関係">
+    <nav class="md-nav" aria-label="01. パブリッシュ／サブスクライブ方式">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        プロデュース/コンシュームパターン
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="プロデュース/コンシュームパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ プロデュース/コンシュームパターンとは
+        パブリッシュ／サブスクライブ方式とは
       
     </span>
   </a>
@@ -2562,10 +2552,22 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        プル型
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="プル型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ プル型
+        ▼ プル型とは
       
     </span>
   </a>
@@ -2576,7 +2578,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ プッシュ型
+        ▼ 例
       
     </span>
   </a>
@@ -2592,19 +2594,19 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        パブリッシュ／サブスクライブパターン
+        プッシュ型
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="パブリッシュ／サブスクライブパターン">
+    <nav class="md-nav" aria-label="プッシュ型">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ パブリッシュ／サブスクライブパターンとは
+        ▼ プッシュ型とは
       
     </span>
   </a>
@@ -2615,68 +2617,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ プル型
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ プッシュ型
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ストリーミングパターン
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ストリーミングパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ ストリーミングパターンとは
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ プル型
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ プッシュ型
+        ▼ 例
       
     </span>
   </a>
@@ -2697,16 +2638,27 @@
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02. 宛先のメッセージ受信方式
+        02. プロデュース/コンシュームパターン
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. 宛先のメッセージ受信方式">
+    <nav class="md-nav" aria-label="02. プロデュース/コンシュームパターン">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        プロデュース/コンシュームパターンとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         プル型
@@ -2717,7 +2669,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         プッシュ型
@@ -2745,7 +2697,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         メッセージブローカー
@@ -2756,7 +2708,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         メッセージキュー
@@ -2767,7 +2719,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
         イベントバス
@@ -2797,6 +2749,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_communication_style_streaming.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ストリーミング方式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -32942,31 +32922,19 @@
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. 送信元と宛先の対応関係
+        01. パブリッシュ／サブスクライブ方式
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. 送信元と宛先の対応関係">
+    <nav class="md-nav" aria-label="01. パブリッシュ／サブスクライブ方式">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        プロデュース/コンシュームパターン
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="プロデュース/コンシュームパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ プロデュース/コンシュームパターンとは
+        パブリッシュ／サブスクライブ方式とは
       
     </span>
   </a>
@@ -32974,10 +32942,22 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        プル型
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="プル型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ プル型
+        ▼ プル型とは
       
     </span>
   </a>
@@ -32988,7 +32968,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ プッシュ型
+        ▼ 例
       
     </span>
   </a>
@@ -33004,19 +32984,19 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        パブリッシュ／サブスクライブパターン
+        プッシュ型
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="パブリッシュ／サブスクライブパターン">
+    <nav class="md-nav" aria-label="プッシュ型">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ パブリッシュ／サブスクライブパターンとは
+        ▼ プッシュ型とは
       
     </span>
   </a>
@@ -33027,68 +33007,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ プル型
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ プッシュ型
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ストリーミングパターン
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ストリーミングパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ ストリーミングパターンとは
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ プル型
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ プッシュ型
+        ▼ 例
       
     </span>
   </a>
@@ -33109,16 +33028,27 @@
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02. 宛先のメッセージ受信方式
+        02. プロデュース/コンシュームパターン
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. 宛先のメッセージ受信方式">
+    <nav class="md-nav" aria-label="02. プロデュース/コンシュームパターン">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        プロデュース/コンシュームパターンとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         プル型
@@ -33129,7 +33059,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         プッシュ型
@@ -33157,7 +33087,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         メッセージブローカー
@@ -33168,7 +33098,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         メッセージキュー
@@ -33179,7 +33109,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
         イベントバス
@@ -33291,7 +33221,7 @@
   
 
 
-<h1 id="_1">パブリッシュ／サブスクライブパターン＠通信方式<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h1 id="_1">パブリッシュ／サブスクライブ方式＠通信方式<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -33300,25 +33230,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. 送信元と宛先の対応関係<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_3">プロデュース/コンシュームパターン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="_4">▼ プロデュース/コンシュームパターンとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>送信元から単一の宛先に非同期的に単方向で通信する。</p>
-<blockquote>
-<ul>
-<li><a href="https://fourtheorem.com/what-can-you-do-with-eventbridge/">https://fourtheorem.com/what-can-you-do-with-eventbridge/</a></li>
-</ul>
-</blockquote>
-<h4 id="_5">▼ プル型<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>双方向通信 (クライアント → サーバー → クライアント) である。</p>
-<ul>
-<li>AWS SQS</li>
-</ul>
-<h4 id="_6">▼ プッシュ型<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>単方向通信 (サーバー → クライアント) である。</p>
-<p><br></p>
-<h3 id="_7">パブリッシュ／サブスクライブパターン<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<h4 id="_8">▼ パブリッシュ／サブスクライブパターンとは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h2 id="01">01. パブリッシュ／サブスクライブ方式<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_3">パブリッシュ／サブスクライブ方式とは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>送信元から複数の宛先に非同期的に単方向で通信する。</p>
 <p>送信元と宛先で通信処理が独立して実行されるため、メッセージ中継システムを経由した非同期通信を実行することになる。</p>
 <p>送信元はメッセージ中継システムにメッセージをパブリッシュする。</p>
@@ -33329,8 +33242,12 @@
 <li><a href="https://fourtheorem.com/what-can-you-do-with-eventbridge/">https://fourtheorem.com/what-can-you-do-with-eventbridge/</a></li>
 </ul>
 </blockquote>
-<h4 id="_9">▼ プル型<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>双方向通信 (クライアント → サーバー → クライアント) である。</p>
+<p><br></p>
+<h3 id="_4">プル型<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ プル型とは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>メッセージの宛先は、メッセージ中継システムにポーリング受信を実行し、メッセージを受信する。</p>
+<p>宛先で障害が起こっていても、障害の回復後にメッセージを処理すればよいため、耐障害性が高い。</p>
+<h4 id="_6">▼ 例<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>RabbitMQのプル型では、RabbitMQにポーリング (HTTP、AMQPなど) を実行し、メッセージの取得を待機する（購読予約は無い）。</p>
 <p>Apache Kafkaのプル型では、サブスクライブによる購読予約をKafkaに実行し、その上でポーリング受信をKafkaに実行する必要がある。</p>
 <ul>
@@ -33358,8 +33275,23 @@
 </tr>
 </tbody>
 </table>
-<h4 id="_10">▼ プッシュ型<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>単方向通信 (サーバー → クライアント) である。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/riita10069/items/40b1bcc36c25b197077c">https://qiita.com/riita10069/items/40b1bcc36c25b197077c</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_7">プッシュ型<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="_8">▼ プッシュ型とは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>メッセージ中継システムはサブスクライバーにメッセージを送信する。</p>
+<p>宛先で障害が起こっていると、メッセージが損失する可能性があるため、耐障害性が低い。</p>
+<p>これに対処するために、メッセージ中継システムで、リトライやデッドレターキューが必要になる。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/riita10069/items/40b1bcc36c25b197077c">https://qiita.com/riita10069/items/40b1bcc36c25b197077c</a></li>
+</ul>
+</blockquote>
+<h4 id="_9">▼ 例<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <ul>
 <li>RabbitMQ (プッシュ型だけでなく、プル型も選べる)</li>
 <li>AWS SNS</li>
@@ -33392,47 +33324,26 @@
 </tbody>
 </table>
 <p><br></p>
-<h3 id="_11">ストリーミングパターン<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<h4 id="_12">▼ ストリーミングパターンとは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>プル型の場合、宛先はメッセージ中継システムにポーリング受信を実行し、メッセージを継続的にストリーミングする。</p>
-<p>プッシュ型の場合、メッセージ中継システムは、メッセージをサブスクライバーにストリーミングする。</p>
+<h2 id="02">02. プロデュース/コンシュームパターン<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_10">プロデュース/コンシュームパターンとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>送信元から単一の宛先に非同期的に単方向で通信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://fourtheorem.com/what-can-you-do-with-eventbridge/">https://fourtheorem.com/what-can-you-do-with-eventbridge/</a></li>
 </ul>
 </blockquote>
-<h4 id="_13">▼ プル型<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_11">プル型<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>双方向通信 (クライアント → サーバー → クライアント) である。</p>
 <ul>
-<li>Apache Kafka</li>
-<li>AWS Kinesis (プル型だけでなく、プッシュ型も選べる)</li>
-</ul>
-<h4 id="_14">▼ プッシュ型<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<ul>
-<li>AWS Kinesis (プッシュ型だけでなく、プル型も選べる)</li>
+<li>AWS SQS</li>
 </ul>
 <p><br></p>
-<h2 id="02">02. 宛先のメッセージ受信方式<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_15">プル型<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p>メッセージの宛先は、メッセージ中継システムにポーリング受信を実行し、メッセージを受信する。</p>
-<p>宛先で障害が起こっていても、障害の回復後にメッセージを処理すればよいため、耐障害性が高い。</p>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/riita10069/items/40b1bcc36c25b197077c">https://qiita.com/riita10069/items/40b1bcc36c25b197077c</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_16">プッシュ型<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<p>メッセージ中継システムはサブスクライバーにメッセージを送信する。</p>
-<p>宛先で障害が起こっていると、メッセージが損失する可能性があるため、耐障害性が低い。</p>
-<p>これに対処するために、メッセージ中継システムで、リトライやデッドレターキューが必要になる。</p>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/riita10069/items/40b1bcc36c25b197077c">https://qiita.com/riita10069/items/40b1bcc36c25b197077c</a></li>
-</ul>
-</blockquote>
+<h3 id="_12">プッシュ型<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>単方向通信 (サーバー → クライアント) である。</p>
 <p><br></p>
 <h2 id="03">03. メッセージ中継システム<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_17">メッセージブローカー<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h3 id="_13">メッセージブローカー<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Apache Kafka</li>
 <li>AWS SNS</li>
@@ -33440,13 +33351,13 @@
 <li>RabbitMQ</li>
 </ul>
 <p><br></p>
-<h3 id="_18">メッセージキュー<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<h3 id="_14">メッセージキュー<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <ul>
 <li>AWS SQS</li>
 <li>EMQX</li>
 </ul>
 <p><br></p>
-<h3 id="_19">イベントバス<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<h3 id="_15">イベントバス<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <ul>
 <li>AWS EventBridge</li>
 <li>CloudEvents</li>
@@ -33533,7 +33444,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月26日 16:27:22 JST">2025-11-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月26日 19:24:53 JST">2025-11-26</span>
   </span>
 
     
