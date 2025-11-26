@@ -10,13 +10,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Knative＠パブリッシュ／サブスクライブパターンの知見を記録しています。">
+        <meta name="description" content="CloudEvents＠パブリッシュ／サブスクライブパターンの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_communication_style_publish_subscribe_knative.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_event_mesh_cloudevents.html">
       
       
       
@@ -29,7 +29,7 @@
     
     
       
-        <title>【IT技術の知見】Knative＠パブリッシュ／サブスクライブパターン - 俺の技術ノート</title>
+        <title>【IT技術の知見】CloudEvents＠パブリッシュ／サブスクライブパターン - 俺の技術ノート</title>
       
     
     
@@ -92,7 +92,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#knative" class="md-skip">
+        <a href="#cloudevents" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -152,7 +152,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】Knative＠パブリッシュ／サブスクライブパターン
+              【IT技術の知見】CloudEvents＠パブリッシュ／サブスクライブパターン
             
           </span>
         </div>
@@ -32603,26 +32603,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-knative" class="md-nav__link">
+  <a href="#01-cloudevents" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. Knativeとは
+        01. CloudEventsの仕組み
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-knative" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        02. Knativeの仕組み
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. Knativeの仕組み">
+    <nav class="md-nav" aria-label="01. CloudEventsの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -32636,39 +32625,50 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        イベントメッシュ
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
+  <a href="#02-go-sdk" class="md-nav__link">
     <span class="md-ellipsis">
       
-        03. イベント駆動関数テンプレート
+        02. Go SDK
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. イベント駆動関数テンプレート">
+    <nav class="md-nav" aria-label="02. Go SDK">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#go" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Goの場合
+        セットアップ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メッセージ送信
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メッセージ受信
       
     </span>
   </a>
@@ -32708,7 +32708,7 @@
   
 
 
-<h1 id="knative">Knative＠パブリッシュ／サブスクライブパターン<a class="headerlink" href="#knative" title="Permanent link">&para;</a></h1>
+<h1 id="cloudevents">CloudEvents＠パブリッシュ／サブスクライブパターン<a class="headerlink" href="#cloudevents" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -32717,62 +32717,84 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-knative">01. Knativeとは<a class="headerlink" href="#01-knative" title="Permanent link">&para;</a></h2>
-<p>Knativeを使用しない場合、イベント駆動関数の公開に必要なKubernetesリソース (例：Deployment、Service、Podなど) をユーザーが作成し、関数を公開する。</p>
-<p>一方で、Knativeであれば、イベント駆動関数の公開に必要なKubernetesリソースをフレームワークとして作成し、簡単にPodを公開できる。</p>
-<blockquote>
-<ul>
-<li><a href="https://logmi.jp/tech/articles/321365">https://logmi.jp/tech/articles/321365</a></li>
-<li><a href="https://qiita.com/takanorig/items/3a3a0b43b5be5b4a124f">https://qiita.com/takanorig/items/3a3a0b43b5be5b4a124f</a></li>
-</ul>
-</blockquote>
-<p>.png<br></p>
-<h2 id="02-knative">02. Knativeの仕組み<a class="headerlink" href="#02-knative" title="Permanent link">&para;</a></h2>
+<h2 id="01-cloudevents">01. CloudEventsの仕組み<a class="headerlink" href="#01-cloudevents" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Knativeは、Service、Route、Configuration、Revision、から構成される。</p>
-<p><img alt="knative_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/knative_architecture.png" /></p>
+<p>送信元では、メッセージを発行し、メッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：Apache Kafka、RabbitMQなど) に送信する。</p>
+<p>また宛先では、メッセージキューからメッセージを受信する。</p>
+<p>異なる言語間でメッセージの仕様は同じなため、異なる言語に渡ってメッセージを送受信できる。</p>
+<p><img alt="cloudevents_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudevents_architecture.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://opensource.com/article/21/11/knative-serving-serverless">https://opensource.com/article/21/11/knative-serving-serverless</a></li>
-<li><a href="https://www.syntio.net/en/labs-musings/knative-overview/">https://www.syntio.net/en/labs-musings/knative-overview/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_3">イベントメッシュ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>Knativeのイベントメッシュ (Knative Eventing) は、イベントブローカー、イベントトリガー、からなる。</p>
-<p>イベントブローカーは、送信元マイクロサービスのメッセージ中継システムのクライアントSDKとして機能する。</p>
-<p>イベントトリガーは宛先マイクロサービスに送信するイベントをフィルタリングする。</p>
-<p>メッセージ中継システムは含まれないため、我々が導入する必要がある。</p>
-<p><img alt="knative_architecture_event-mesh" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/knative_architecture_event-mesh.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://knative.dev/docs/eventing/event-mesh/">https://knative.dev/docs/eventing/event-mesh/</a></li>
+<li><a href="https://github.com/cloudevents/spec">https://github.com/cloudevents/spec</a></li>
 <li><a href="https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/">https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/</a></li>
-<li><a href="https://qiita.com/ryutoyasugi/items/3801660d83826a802718#knative-eventing%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">https://qiita.com/ryutoyasugi/items/3801660d83826a802718#knative-eventing%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03">03. イベント駆動関数テンプレート<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="go">Goの場合<a class="headerlink" href="#go" title="Permanent link">&para;</a></h3>
+<h2 id="02-go-sdk">02. Go SDK<a class="headerlink" href="#02-go-sdk" title="Permanent link">&para;</a></h2>
+<h3 id="_3">セットアップ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>get<span class="w"> </span>github.com/cloudevents/sdk-go/v2@v2.12.0
+</code></pre></div>
+<p><br></p>
+<h3 id="_4">メッセージ送信<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">Handle</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kn">import</span><span class="w"> </span><span class="nx">cloudevents</span><span class="w"> </span><span class="s">&quot;github.com/cloudevents/sdk-go/v2&quot;</span>
 
-<span class="w">    </span><span class="nx">body</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
-
-<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">w</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">cloudevents</span><span class="p">.</span><span class="nx">NewClientHTTP</span><span class="p">()</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">http</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">(),</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span>
-<span class="w">        </span><span class="k">return</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;failed to create client, %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="c1">// Create an Event.</span>
+<span class="w">    </span><span class="nx">event</span><span class="w"> </span><span class="o">:=</span><span class="w">  </span><span class="nx">cloudevents</span><span class="p">.</span><span class="nx">NewEvent</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">event</span><span class="p">.</span><span class="nx">SetSource</span><span class="p">(</span><span class="s">&quot;example/uri&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">event</span><span class="p">.</span><span class="nx">SetType</span><span class="p">(</span><span class="s">&quot;example.type&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">event</span><span class="p">.</span><span class="nx">SetData</span><span class="p">(</span><span class="nx">cloudevents</span><span class="p">.</span><span class="nx">ApplicationJSON</span><span class="p">,</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;hello&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;world&quot;</span><span class="p">})</span>
+
+<span class="w">    </span><span class="c1">// Set a target.</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">cloudevents</span><span class="p">.</span><span class="nx">ContextWithTarget</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;http://localhost:8080/&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// Send that Event.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">);</span><span class="w"> </span><span class="nx">cloudevents</span><span class="p">.</span><span class="nx">IsUndelivered</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;failed to send, %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;sent: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;result: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/knative/func/blob/main/docs/function-templates/golang.md">https://github.com/knative/func/blob/main/docs/function-templates/golang.md</a></li>
+<li><a href="https://cloudevents.github.io/sdk-go/#send-your-first-cloudevent">https://cloudevents.github.io/sdk-go/#send-your-first-cloudevent</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_5">メッセージ受信<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nx">cloudevents</span><span class="w"> </span><span class="s">&quot;github.com/cloudevents/sdk-go/v2&quot;</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">receive</span><span class="p">(</span><span class="nx">event</span><span class="w"> </span><span class="nx">cloudevents</span><span class="p">.</span><span class="nx">Event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// do something with event.</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// The default client is HTTP.</span>
+<span class="w">    </span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">cloudevents</span><span class="p">.</span><span class="nx">NewClientHTTP</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;failed to create client, %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">StartReceiver</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">receive</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;failed to start receiver: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://cloudevents.github.io/sdk-go/#receive-your-first-cloudevent">https://cloudevents.github.io/sdk-go/#receive-your-first-cloudevent</a></li>
 </ul>
 </blockquote>
 <p><br></p>

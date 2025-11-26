@@ -2353,19 +2353,11 @@
          <lastmod>2025-11-26</lastmod>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_communication_style_publish_subscribe_cloudevents.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_communication_style_publish_subscribe.html</loc>
          <lastmod>2025-11-26</lastmod>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_communication_style_publish_subscribe_knative.html</loc>
-         <lastmod>2025-11-26</lastmod>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_communication_style_publish_subscribe_knative_command.html</loc>
-         <lastmod>2025-11-26</lastmod>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_communication_style_publish_subscribe_knative_resource_definition.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_communication_style_streaming.html</loc>
          <lastmod>2025-11-26</lastmod>
     </url>
     <url>
@@ -2402,6 +2394,22 @@
     </url>
     <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_event_mesh.html</loc>
+         <lastmod>2025-11-26</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_event_mesh_cloudevents.html</loc>
+         <lastmod>2025-11-26</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_event_mesh_knative.html</loc>
+         <lastmod>2025-11-26</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_event_mesh_knative_command.html</loc>
+         <lastmod>2025-11-26</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_event_mesh_knative_resource_definition.html</loc>
          <lastmod>2025-11-26</lastmod>
     </url>
     <url>
