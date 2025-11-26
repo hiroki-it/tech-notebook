@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ExternalSecretsOperator＠Secret系
-description: ExternalSecretsOperator＠Secret系の知見を記録しています。
+title: 【IT技術の知見】External Secrets Operator＠Secret系
+description: External Secrets Operator＠Secret系の知見を記録しています。
 ---
 
-# ExternalSecretsOperator＠Secret系
+# External Secrets Operator＠Secret系
 
 ## はじめに
 
@@ -13,11 +13,11 @@ description: ExternalSecretsOperator＠Secret系の知見を記録していま�
 
 <br>
 
-## 01. ExternalSecretsOperatorの仕組み
+## 01. External Secrets Operatorの仕組み
 
 ### アーキテクチャ
 
-ExternalSecretsOperatorは、external-secrets、external-secrets-controller、から構成される。
+External Secrets Operatorは、external-secrets、external-secrets-controller、から構成される。
 
 ![external-secrets-operator_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/external-secrets-operator_architecture.png)
 
