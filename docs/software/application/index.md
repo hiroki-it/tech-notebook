@@ -79,9 +79,9 @@ hide:
 
 ### 通信方式
 
-- #### [リクエスト／レスポンスパターン](https://hiroki-it.github.io/tech-notebook/software/software_application_communication_style_request_response.html)
-- #### [パブリッシュ／サブスクライブパターン](https://hiroki-it.github.io/tech-notebook/software/software_application_communication_style_publish_subscribe.html)
-- #### [ストリーミングパターン](https://hiroki-it.github.io/tech-notebook/software/software_application_communication_style_streaming.html)
+- #### [リクエスト／レスポンス方式](https://hiroki-it.github.io/tech-notebook/software/software_application_communication_style_request_response.html)
+- #### [パブリッシュ／サブスクライブ方式](https://hiroki-it.github.io/tech-notebook/software/software_application_communication_style_publish_subscribe.html)
+- #### [ストリーミング方式](https://hiroki-it.github.io/tech-notebook/software/software_application_communication_style_streaming.html)
 
 <br>
 
