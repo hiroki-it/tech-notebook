@@ -184,10 +184,11 @@ nav:
           - ■ 信頼性:
               - 回復方法: software/software_application_architecture_microservices_services_resiliency_recovery.md
           - ■ 開発体制:
-              - 開発組織の編成: software//software_application_architecture_microservices_development_organization.md
+              - 開発組織の編成: software/software_application_architecture_microservices_development_organization.md
               - リポジトリの編成: software/software_application_architecture_microservices_development_repository.md
       - ■ 通信方式:
-          - リクエスト−レスポンス方式: software/software_application_communication_style_request_response.md
+          - リクエスト／レスポンス方式: software/software_application_communication_style_request_response.md
+          - パブリッシュ／サブスクライブ方式: software/software_application_communication_style_publish_subscribe.md
       - ■ API:
           - ■ RESTful-API:
               - RESTful-API: software/software_application_api_restful.md
@@ -310,7 +311,6 @@ nav:
               - OAuth2 Proxy: software/software_middleware_security_oauth2_proxy.md
               - 設定ファイル: software/software_middleware_security_oauth2_proxy_conf.md
       - ■ メッセージング系:
-          - メッセージング: software/software_middleware_messaging.md
           - RabbitMQ: software/software_middleware_messaging_message_broker_rabbitmq.md
           - Apache Kafka: software/software_middleware_messaging_message_streamer_apache_kafka.md
       - ■ データ分析系:
