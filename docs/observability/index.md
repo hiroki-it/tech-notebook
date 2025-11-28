@@ -78,14 +78,14 @@ hide:
   > - ##### [OpenTelemetry](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_open_telemetry.html)
   > - ##### [リソース定義](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_open_telemetry_resource_definition.html)
   > - ##### <u>計装</u>
-  >   > - ##### [計装](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_open_telemetry_instrumentation.html)
+  >   > - ##### [計装](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_open_telemetry_client_package_instrumentation.html)
   >   > - ##### <u>分散トレース</u>
   >   >   > - ##### [クライアントパッケージ](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_open_telemetry_client_package_trace.html)
   >   >   > - ##### [Go](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_open_telemetry_client_package_trace_go.html)
   >   >   > - ##### [Python](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_open_telemetry_client_package_trace_python.html)
   > - ##### <u>OpenTelemetry Collector</u>
   >   > - ##### [OpenTelemetry](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_open_telemetry_collector.html)
-  >   > - ##### [リソース定義](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_open_telemetry_collector_resource_definition.html)
+  >   > - ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_open_telemetry_collector_config.html)
 
 - #### <u>Prometheus</u>
 

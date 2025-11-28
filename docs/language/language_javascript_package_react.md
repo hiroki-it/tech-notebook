@@ -141,7 +141,17 @@ createRoot(document.getElementById("root")!).render(
 
 <br>
 
-## 04. reactコンポーネント
+## 04. Reactコンポーネント
+
+### React.memo
+
+コンポーネントをキャッシュする。
+
+`useMemo`のコンポーネント版である。
+
+<br>
+
+## 04. 独自コンポーネント
 
 ### クラスコンポーネント
 

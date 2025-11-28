@@ -43,16 +43,16 @@ hide:
 
 - #### <u>︎プロジェクトマネジメント</u>
 
-  > - ##### [︎プロジェクトマネジメント](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_project_management.html)
-  > - ##### [タスク管理](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_project_management_task_management.html)
-  > - ##### [見積もり](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_project_management_estimate.html)
+  > - ##### [︎プロジェクトマネジメント](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management.html)
+  > - ##### [タスク管理](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management_task_management.html)
+  > - ##### [見積もり](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management_estimate.html)
   > - ##### [合意形成](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management_negotiation.html)
 
 <br>
 
 ### テクノロジーマネジメント
 
-- #### [テクノロジーマネジメント](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_techology_management.html)
+- #### [テクノロジーマネジメント](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_technology_management.html)
 - #### [生成AI時代のアプリケーションのレビュー観点](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_technology_management_review_checklist.html)
 
 <br>

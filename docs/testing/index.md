@@ -58,7 +58,7 @@ hide:
 
 - #### <u>アプリ/インフラ両方</u>
 
-  > - ##### [trivy](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_trivy.html)
+  > - ##### [trivy](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_lint_trivy.html)
 
 ### ブラックボックステスト
 

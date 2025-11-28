@@ -36,13 +36,13 @@ hide:
   > - ##### [︎認証](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication.html)
   > - ##### [︎HTTP認証](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_http.html)
   > - ##### <u>認証アーティファクトによる分類</u>
-  >   > - ##### [認証アーティファクトによる分類](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_credentials.html)
+  >   > - ##### [認証アーティファクトによる分類](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_artifacts.html)
   >   > - ##### [認証アーティファクトの運搬](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_artifacts_carrier.html)
   >   > - ##### [認証アーティファクトの保管](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_artifacts_store.html)
   >   > - ##### [JWT](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_artifacts_jwt.html)
   >   > - ##### <u>SSO</u>
   >   >   > - ##### [SSO](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_artifacts_sso.html)
-  >   >   > - ##### [OAuth](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_artifacts_sso_oauth.html)
+  >   >   > - ##### [OAuth](https://hiroki-it.github.io/tech-notebook/security/security_auth_authorization_oauth.html)
   >   >   > - ##### [SAML](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_artifacts_sso_saml.html)
   >   >   > - ##### [OIDC](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_artifacts_sso_oidc.html)
   >   > - ##### [証明書ベース認証](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_artifacts_certificate.html)
