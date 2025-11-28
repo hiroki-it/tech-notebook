@@ -541,10 +541,10 @@ nav:
           - ■ 認証:
               - 認証: security/security_auth_authentication.md
               - HTTP認証: security/security_auth_authentication_http.md
-              - ■ 資格情報による分類:
-                  - 資格情報による分類: security/security_auth_authentication_artifacts.md
-                  - 資格情報の運搬: security/security_auth_authentication_artifacts_carrier.md
-                  - 資格情報の保管: security/security_auth_authentication_artifacts_store.md
+              - ■ 認証アーティファクトによる分類:
+                  - 認証アーティファクトによる分類: security/security_auth_authentication_artifacts.md
+                  - 認証アーティファクトの運搬: security/security_auth_authentication_artifacts_carrier.md
+                  - 認証アーティファクトの保管: security/security_auth_authentication_artifacts_store.md
                   - JWT: security/security_auth_authentication_artifacts_jwt.md
                   - ■ SSO:
                       - SSO: security/security_auth_authentication_artifacts_sso.md
