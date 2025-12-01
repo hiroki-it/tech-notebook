@@ -275,7 +275,7 @@ spec:
                   - "-c"
                   - |
                     sleep 5
-                    while [ $(netstat -plnt | grep tcp | egrep -v 'envoy|pilot-agent' | wc -l) -ne 0 ]; do sleep 1; done"
+                    while [ $(netstat -plnt | grep tcp | egrep -v 'envoy|pilot-agent' | wc -l) -ne 0 ]; do sleep 1; done
       # マイクロサービスとistio-proxyコンテナの両方が終了するのを待つ
       terminationGracePeriodSeconds: 45
 ```
