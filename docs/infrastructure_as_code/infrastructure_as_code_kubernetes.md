@@ -129,7 +129,7 @@ $ openssl x509 -noout -dates -in <証明書へのパス>
 
 ### ハード vs ソフト
 
-#### ▼ ハードマルチテナンシー
+#### ▼ ソフトマルチテナンシー
 
 信頼できる開発者のみがClusterにリクエストを送信する場合に、ヒューマンエラーを防ぐ目的でマルチテナント化する。
 
@@ -139,7 +139,7 @@ $ openssl x509 -noout -dates -in <証明書へのパス>
 > - https://kubernetes.io/docs/concepts/security/multi-tenancy/#isolation
 > - https://aws.github.io/aws-eks-best-practices/security/docs/multitenancy/#soft-multi-tenancy
 
-#### ▼ ソフトマルチテナンシー
+#### ▼ ハードマルチテナンシー
 
 信頼できない開発者もClusterにリクエストを送信する場合 (例：複数の協力会社がいる、Kubernetesをサービスとして公開している) に、悪意ある操作を防ぐ目的でマルチテナント化する。
 

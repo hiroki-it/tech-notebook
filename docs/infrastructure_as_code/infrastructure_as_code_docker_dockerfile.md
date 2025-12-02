@@ -112,7 +112,7 @@ RUN mkdir -p /usr/src/things \
 
 ### ARGとは
 
-Dockerfikeの命令で扱える変数を定義する。
+Dockerfileの命令で扱える変数を定義する。
 
 <br>
 
@@ -120,27 +120,27 @@ Dockerfikeの命令で扱える変数を定義する。
 
 似た命令として`ENV`がある。
 
-`ARG`は`ENV`とは異なり、OS上のコマンド処理に展開するための変数として定義できない。
+`ARG`も`ENV`と同様に、`RUN`命令内で変数展開できる。ただし、`ARG`はビルド時のみ有効で、コンテナ実行時には参照できない点が異なる。
 
 ```dockerfile
-# ARGは、OS上のコマンド処理に展開するための変数として定義できない。
+# ARGは、ビルド時のRUN命令内で変数展開できる。
 ARG PYTHON_VERSION="3.8.0"
-# 変数を展開できない
+# 変数を展開できる
 RUN pyenv install ${PYTHON_VERSION}
 
-# ENVは、OS上のコマンド処理に展開するための変数として定義できる。
-ARG PYTHON_VERSION="3.8.0"
+# ENVは、ビルド時だけでなくコンテナ実行時も変数を参照できる。
+ENV PYTHON_VERSION="3.8.0"
 RUN pyenv install ${PYTHON_VERSION}
 ```
 
-一方で、Dockerfikeの命令に展開するための変数として定義できる。
+一方で、Dockerfileの命令に展開するための変数として定義できる。
 
 ```dockerfile
-# ARGは、Dockerfikeの命令に展開するための変数として定義できる。
+# ARGは、Dockerfileの命令に展開するための変数として定義できる。
 ARG OS_VERSION="8"
 FROM centos:${OS_VERSION}
 
-# ENVは、Dockerfikeの命令に展開するため変数として定義できない。
+# ENVは、Dockerfileの命令に展開するため変数として定義できない。
 ENV OS_VERSION "8"
 # 変数を展開できない
 FROM centos:${OS_VERSION}

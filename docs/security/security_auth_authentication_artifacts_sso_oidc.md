@@ -74,8 +74,8 @@ IDプロバイダーは、取得したクレームグループに対応したク
 | `openid`                       | これは、OIDCの場合に必須である。トークンエンドポイントから、アクセストークンに加えてIDトークンを発行できるようになる。                                                           |
 | `profile`                      | `name`、`family_name`、`given_name`、`middle_name`、`nickname`、`preferred_username`、`profile`、`picture`、`website`、`gender`、`birthdate`、`zoneinfo`、`locale`、`updated_at` |
 | `email`                        | `email`、`email_verified`                                                                                                                                                        |
-| `phone`                        | `address`                                                                                                                                                                        |
-| `address`                      | `phone_number`、`phone_number_verified`                                                                                                                                          |
+| `phone`                        | `phone_number`、`phone_number_verified`                                                                                                                                          |
+| `address`                      | `address`                                                                                                                                                                        |
 | ユーザー定義のクレームグループ | 自由にクレームを設定できる                                                                                                                                                       |
 
 > - https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim

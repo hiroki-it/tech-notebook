@@ -17,7 +17,7 @@ description: コンテナ＠仮想化の知見を記録しています。
 
 ### コンテナエンジンとは
 
-クライアントからリクエストを受信し、コンテナライムを操作する。
+クライアントからリクエストを受信し、コンテナランタイムを操作する。
 
 > - https://developers.redhat.com/blog/2018/02/22/container-terminology-practical-introduction#advanced_vocabulary
 
