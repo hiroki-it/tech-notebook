@@ -260,7 +260,7 @@ describe("fetchUser", () => {
       // Errorを投げない場合、想定外なのでテストを失敗させる
       expect.fail("should thrown an error");
     } catch (error) {
-      if (!(e instanceof FooError)) {
+      if (!(error instanceof FooError)) {
         // FooErrorではない場合、想定外なのでテストを失敗させる
         expect.fail("should throw FooError");
       }
@@ -273,7 +273,7 @@ describe("fetchUser", () => {
 
 <br>
 
-### オプショナル型が正しいかを検証する
+### nullを持つオプショナル型が正しいかを検証する
 
 #### ▼ テスト対象のコード
 
@@ -345,6 +345,92 @@ describe("User optional property behavior", () => {
 
     // オプショナル型を検証する
     expect(user.age).toBeUndefined();
+    // 値を検証する
+    expect(user.name).toBe("Bob");
+  });
+});
+```
+
+<br>
+
+### unknown型の値が正しいかを検証する
+
+#### ▼ テスト対象のコード
+
+```typescript
+import axios from "axios";
+
+export type User = {
+  name: string;
+  // 外部サービス（Twitter / GitHub / Googleなど）によって構造が異なるため unknown 型とする
+  social?: unknown;
+};
+
+// テスト対象の関数
+export async function fetchUser(id: string): Promise<User> {
+  const res = await axios.get(`/api/users/${id}`);
+  return res.data;
+}
+```
+
+#### ▼ テストコード
+
+```typescript
+import {describe, it, expect, vi} from "vitest";
+import axios from "axios";
+import {fetchUser} from "./fetchUser";
+
+describe("User.social unknown property behavior", () => {
+  // axiosクライアントのモック
+  vi.mock("axios");
+
+  // リクエストのパラメーターに関するテストデータ
+  const userId = "1";
+
+  it("should allow validation when unknown property (object) is defined", async () => {
+    // axiosの型をモックに認識させる。オブジェクト全体をモックにする場合、trueにする。
+    // axiosクライアントのモックが一度だけデータを返却するように設定
+    vi.mocked(axios, true).get.mockResolvedValueOnce({
+      data: {
+        name: "Alice",
+        social: {twitter: "@alice_dev", github: "alice"},
+      },
+      status: 200,
+    });
+
+    // 関数をテスト
+    // 内部で実行されるaxiosクライアントはモックであり、mockResolvedValueOnceで設定した値を返却する
+    const user = await fetchUser(userId);
+
+    // unknown型の値を検証する
+    expect(user).toHaveProperty(
+      "social.twitter",
+      expect.stringMatching(/^@[\w_]+$/),
+    );
+    expect(user).toHaveProperty(
+      "social.github",
+      expect.stringMatching(/^[a-zA-Z0-9_-]+$/),
+    );
+
+    // 値を検証する
+    expect(user.name).toBe("Alice");
+  });
+
+  it("should allow validation when unknown property is undefined", async () => {
+    // axiosの型をモックに認識させる。オブジェクト全体をモックにする場合、trueにする。
+    // axiosクライアントのモックが一度だけデータを返却するように設定
+    vi.mocked(axios, true).get.mockResolvedValueOnce({
+      data: {name: "Bob"},
+      status: 200,
+    });
+
+    // 関数をテスト
+    // 内部で実行されるaxiosクライアントはモックであり、mockResolvedValueOnceで設定した値を返却する
+    const user = await fetchUser(userId);
+
+    // 値が存在しない場合で、unknown型の値を検証する
+    expect(user).not.toHaveProperty("social");
+
     // 値を検証する
     expect(user.name).toBe("Bob");
   });

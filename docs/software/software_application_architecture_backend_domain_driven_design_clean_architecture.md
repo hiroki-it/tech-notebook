@@ -911,14 +911,14 @@ class CheckDuplicateFooService
     /**
      * @var FooRepository
      */
-    private FooRepository $fooRepositoy;
+    private FooRepository $fooRepository;
 
     /**
-     * @param FooRepository $fooRepositoy
+     * @param FooRepository $fooRepository
      */
-    public function __construct(FooRepository $fooRepositoy)
+    public function __construct(FooRepository $fooRepository)
     {
-        $this->fooRepositoy = $fooRepositoy;
+        $this->fooRepository = $fooRepository;
     }
 
     /**
@@ -969,14 +969,14 @@ class AuthorizeFooService
     /**
      * @var FooRepository
      */
-    private FooRepository $fooRepositoy;
+    private FooRepository $fooRepository;
 
     /**
-     * @param FooRepository $fooRepositoy
+     * @param FooRepository $fooRepository
      */
-    public function __construct(FooRepository $fooRepositoy)
+    public function __construct(FooRepository $fooRepository)
     {
-        $this->fooRepositoy = $fooRepositoy;
+        $this->fooRepository = $fooRepository;
     }
 
     /**
