@@ -46,7 +46,7 @@ description: クリーンアーキテクチャ＠アーキテクチャの知見�
 | バックエンド   | インフラ         | DB                        |                                                                                                                                  | 実装                   |
 |                |                  | EntityMappers (DTOに相当) | ドメインとインフラ間のオブジェクトの詰め替え                                                                                     | 実装                   |
 |                |                  | Logger                    | ロギング                                                                                                                         | 実装                   |
-|                |                  | Middlware                 | ミドルウェア処理                                                                                                                 | 実装                   |
+|                |                  | Middleware                | ミドルウェア処理                                                                                                                 | 実装                   |
 |                |                  | Repositories              | 実装リポジトリ                                                                                                                   | 実装                   |
 |                |                  | Listeners                 | リスナー                                                                                                                         | 関数                   |
 |                |                  | Routers                   | ルーティング                                                                                                                     | 関数                   |

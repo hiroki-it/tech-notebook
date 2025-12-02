@@ -177,7 +177,7 @@ module.exports = new Vuex.Store({
   // Vuex.Store()のgetters、mutations、actionsをマッピングできるように読み込む。
   const mapGetters = require("vuex").mapGetters;
   const mapActions = require("vuex").mapActions;
-  const mapMutaions = require("vuex").mapMutaions;
+  const mapMutations = require("vuex").mapMutations;
 
   module.exports = {
     // イベントハンドラ関数を定義 (※状態の変更を保持したくないもの)

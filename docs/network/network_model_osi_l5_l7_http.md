@@ -1,6 +1,6 @@
 ---
 title: 【IT技術の知見】HTTP＠L5 ~ L7
-description: HTTP＠L5 ` L7の知見を記録しています。
+description: HTTP＠L5 ~ L7の知見を記録しています。
 ---
 
 # HTTP＠L5 ~ L7

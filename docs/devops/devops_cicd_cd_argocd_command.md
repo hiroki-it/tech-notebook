@@ -98,7 +98,7 @@ $ argocd app set foo-application --sync-policy automated
 
 #### ▼ syncとは
 
-指定したAplicationで、Syncのドライランを実行する。
+指定したApplicationで、Syncのドライランを実行する。
 
 ```bash
 $ argocd app sync foo-application --project foo-project
@@ -114,7 +114,7 @@ $ argocd app sync foo-application --dry-run --project foo-project
 
 #### ▼ --local
 
-指定したAplicationで、ローカルマシンのディレクトリをリポジトリとしてポーリングする。
+指定したApplicationで、ローカルマシンのディレクトリをリポジトリとしてポーリングする。
 
 ```bash
 $ argocd app sync foo-application --local=<ディレクトリへのパス> --project foo-project

@@ -178,7 +178,7 @@ istio-proxyはこれを受信し、ローカルホスト (`http://127.0.0.6:<マ
 > - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 > - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-2-local-pod---remote-pod
 
-#### ▼ ローカスホスト通信の場合
+#### ▼ ローカルホスト通信の場合
 
 マイクロサービスからローカルホスト (`http://127.0.0.6:<ポート番号>`) へのアウトバウンド通信は、istio-iptablesにより、istio-proxyの`15001`番ポートにリダイレクトされる。
 

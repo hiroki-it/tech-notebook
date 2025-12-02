@@ -55,7 +55,7 @@ AWS ECSのコントロールプレーンは、開発者や他のAWSリソース�
 | AWS Secrets Manager                        | Secret                                         |
 | Taskスケーリング                           | HorizontalPodAutoscaler、VerticalPodAutoscaler |
 | キャパシティプロバイダー + AWS AutoScaling | CusterAutoscaler、Karpenter                    |
-| PodDisruptionBudget                        | Minimum/Maximum Healthy Percent                |
+| Minimum/Maximum Healthy Percent            | PodDisruptionBudget                            |
 | AWS VPC Lattice、AWS ECS Service Connect   | Istio                                          |
 
 <br>

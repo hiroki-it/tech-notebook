@@ -170,7 +170,7 @@ $ git clone --depth 1 https://github.com/hiroki-hasegawa/foo-repository.git
 $ git config --local --list
 ```
 
-Macでは、`1`個のマシンで`2`個のGutHubアカウントを使用する場合、キーチェーンという機能で設定が必要になる。
+Macでは、`1`個のマシンで`2`個のGitHubアカウントを使用する場合、キーチェーンという機能で設定が必要になる。
 
 > - https://sy-base.com/myrobotics/others/git-push_403error/
 
@@ -266,7 +266,7 @@ GitHubとSSH公開鍵認証を実行するために、秘密鍵と公開鍵は�
 
 `(1)`
 
-: `ssh-keygen`コマンドで、秘密鍵と効果鍵のセットを作成する。
+: `ssh-keygen`コマンドで、秘密鍵と公開鍵のセットを作成する。
 
 ```bash
 # 鍵を保管するディレクトリに移動
@@ -436,7 +436,7 @@ Host gitlab.com
     User git
     Port 22
     HostName gitlab.com
-    IdentityFile <秘密へのパス> # GitHabとは別の鍵を作成した方が良い。
+    IdentityFile <秘密へのパス> # GitHubとは別の鍵を作成した方が良い。
 ```
 
 リポジトリに対してコミットをプッシュし、エラーが出た場合、異なる接続名が選択されている場合は、URLの『接続名』の部分が正しく設定されているか否かを確認する。
@@ -1185,7 +1185,7 @@ $ git rebase --interactive 41cc21bb53a8597270b5deae3259751df18bce81
 
 `(2)`
 
-: `git commit --amend`コマンドに`--reset-author`オプションを付けて、configで設定した名前をAuthor名とComitter名に適用する。
+: `git commit --amend`コマンドに`--reset-author`オプションを付けて、configで設定した名前をAuthor名とCommitter名に適用する。
 
 ```bash
 $ git commit --amend --reset-author

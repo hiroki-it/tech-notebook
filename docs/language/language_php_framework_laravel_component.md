@@ -4042,7 +4042,7 @@ Resourceクラスの`toArray`関数にて、`this`変数は自身ではなく、
 
 また、`this`変数からゲッターを経由せずに直接的にプロパティにアクセスできる。
 
-Controllerにて、ResouceクラスにEloquentモデルを渡すようにする。
+Controllerにて、ResourceクラスにEloquentモデルを渡すようにする。
 
 LaravelはレスポンスのJSON型データを作成するために、まず`toArray`関数により配列化し、加えてこれをJSON型データに変換する。
 

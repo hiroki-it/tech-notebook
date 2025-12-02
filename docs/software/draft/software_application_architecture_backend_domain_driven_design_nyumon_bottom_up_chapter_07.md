@@ -542,7 +542,7 @@ for (const {token, implementation} of repositoriesMap) {
 
 典型的なIoCコンテナオブジェクトはServiceLocatorとは違いstatic宣言を使用しない。
 
-そのため、IoC Cotainerでは実行したタイミングでインスタンスを作る。
+そのため、IoC Containerでは実行したタイミングでインスタンスを作る。
 
 ```typescript
 // IoCコンテナ
@@ -572,7 +572,7 @@ export class IocContainer {
 IoCコンテナオブジェクトでインスタンスを作成し、これをコンストラクタに渡す。
 
 ```typescript
-// IoC Cotainerとコンストラクタインジェクションの場合
+// IoC Containerとコンストラクタインジェクションの場合
 
 import { container } from "./repositories";
 import { tokens } from "./iocContainer";

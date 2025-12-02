@@ -1880,8 +1880,8 @@ metadata:
   namespace: foo # サービス名など
 spec:
   destinations:
-    - namespace: "*" # 所属するApplictionは、全てのNamespaceにデプロイできる。
-      server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com # 所属するApplictionは、指定したURLのClusterのみを指定できる。
+    - namespace: "*" # 所属するApplicationは、全てのNamespaceにデプロイできる。
+      server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com # 所属するApplicationは、指定したURLのClusterのみを指定できる。
 ```
 
 <br>

@@ -921,7 +921,7 @@ vpc_subnet_public_cidrs            = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
 
 ```terraform
 # ---------------------------------------------
-# Resrouce VPC
+# Resource VPC
 # ---------------------------------------------
 resource "aws_subnet" "public" {
   for_each = var.vpc_availability_zones
@@ -961,7 +961,7 @@ vpc_availability_zones = { a = "a", c = "c" }
 
 ```terraform
 # ---------------------------------------------
-# Resrouce Internet Gateway
+# Resource Internet Gateway
 # ---------------------------------------------
 resource "aws_internet_gateway" "this" {
   vpc_id = aws_vpc.this.id
@@ -972,7 +972,7 @@ resource "aws_internet_gateway" "this" {
 }
 
 # ---------------------------------------------
-# Resrouce ルートテーブル (パブリック)
+# Resource ルートテーブル (パブリック)
 # ---------------------------------------------
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.this.id
@@ -988,7 +988,7 @@ resource "aws_route_table" "public" {
 }
 
 # ---------------------------------------------
-# Resrouce ルートテーブル (プライベート)
+# Resource ルートテーブル (プライベート)
 # ---------------------------------------------
 resource "aws_route_table" "private_app" {
   for_each = var.vpc_availability_zones
@@ -1009,7 +1009,7 @@ resource "aws_route_table" "private_app" {
 }
 
 # ---------------------------------------------
-# Resrouce AWS NAT Gateway
+# Resource AWS NAT Gateway
 # ---------------------------------------------
 resource "aws_nat_gateway" "this" {
   for_each = var.vpc_availability_zones
