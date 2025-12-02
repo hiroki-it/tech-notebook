@@ -164,13 +164,13 @@ container_cpu_usage_seconds_total
 ```bash
 # Pod単位のCPU使用率
 # メモリ実際値 / 下限値 (.spec.containers[*].resources.requestsキー)
-sum(rate(container_cpu_usage_seconds_total{container!=""}[5m])) by (pod) / sum(kube_pod_container_resource_requests{resouce="cpu"}) by (pod) * 100
+sum(rate(container_cpu_usage_seconds_total{container!=""}[5m])) by (pod) / sum(kube_pod_container_resource_requests{resource="cpu"}) by (pod) * 100
 ```
 
 ```bash
 # Pod単位のCPU使用率
 # メモリ実際値 / 下限値 (.spec.containers[*].resources.limitsキー)
-sum(rate(container_cpu_usage_seconds_total{container!=""}[5m])) by (pod) / sum(kube_pod_container_resource_limits{resouce="cpu"}) by (pod) * 100
+sum(rate(container_cpu_usage_seconds_total{container!=""}[5m])) by (pod) / sum(kube_pod_container_resource_limits{resource="cpu"}) by (pod) * 100
 ```
 
 > - https://aws.amazon.com/jp/blogs/news/monitoring-amazon-eks-on-aws-fargate-using-prometheus-and-grafana/

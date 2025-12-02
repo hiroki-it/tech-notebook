@@ -725,7 +725,7 @@ GETリクエストには不要である。
 |                    | zip                   | `.zip`ファイル                      |
 | text               | html                  | `html`ファイル                      |
 |                    | css                   | `.css`ファイル                      |
-|                    | plane                 | プレーンテキスト                    |
+|                    | plain                 | プレーンテキスト                    |
 | image              | png                   | pngファイル                         |
 |                    | jpeg                  | jpegファイル                        |
 |                    | gif                   | gifファイル                         |

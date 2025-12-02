@@ -80,7 +80,7 @@ DevOpsのCI/CDパイプラインを導入することによりこれを実装す
 
 - Capistrano
 - AWS (CodeDeploy)
-- Fablic
+- Fabric
 - Git (手動で`git pull`コマンド)
 - Istio
 

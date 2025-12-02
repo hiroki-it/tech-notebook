@@ -456,7 +456,7 @@ Dockerfileの各命令によって、コンテナイメージレイヤーが1つ
 例えば、以下のような時、`RUN`処理ごとにレイヤーが増える。
 
 ```dockerfile
-RUN yum -y isntall httpd
+RUN yum -y install httpd
 RUN yum -y install php
 RUN yum -y install php-mbstring
 RUN yum -y install php-pear
