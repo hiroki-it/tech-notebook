@@ -208,6 +208,58 @@ CREATE INDEX foo_index
 | 3   | Takahashi | Nagoya  | 18  |
 | 2   | Yamada    | Osaka   | 18  |
 
+#### ▼ DBインデックスのカラム変更
+
+DBインデックスのカラム変更によって、DBインデックスの削除と追加が起こる。
+
+次のようにDBインデックスの追加と削除を別にすれば、負荷を少しでも抑えられる。
+
+**実行例**
+
+これはSQLを使用した例である。
+
+1. 新しいDBインデックスを追加するリリース <--- ここで中程度の負荷
+
+```mysql
+CREATE INDEX idx_user_org_name_updated ON User (organization_id, user_name, updated_at DESC, status);
+CREATE INDEX idx_user_updated_org ON User (updated_at DESC, organization_id, status);
+```
+
+2. 一日くらい新旧のDBインデックスを共存させる
+
+3. 古いDBインデックスを削除するリリース <--- ここで小程度の負荷
+
+```mysql
+DROP INDEX idx_user_org_name_created ON User;
+DROP INDEX idx_user_created_org ON User;
+```
+
+**実行例**
+
+これはORMを使用した例である。
+
+ORMを使用する場合、より簡単にカラムを変更できる。
+
+```typescript
+model User {
+    user_id         String   @id @default(cuid()) @db.VarChar(127)
+    organization_id String   @db.VarChar(127)
+    user_name       String   @db.VarChar(127)
+    email           String   @db.VarChar(255)
+    status          String   @db.VarChar(31)
+    created_at      DateTime @default(now()) @db.DateTime(3)
+    updated_at      DateTime @updatedAt @db.DateTime(3)
+
+    // 古いインデックス（created_atを使用） <--- 共存させた後に削除する
+    @@index([organization_id, user_name, created_at(sort: Desc), status])
+    @@index([created_at(sort: Desc), organization_id, status])
+
+    // 新しいインデックス（updated_atを使用）
+    @@index([organization_id, user_name, updated_at(sort: Desc), status])
+    @@index([updated_at(sort: Desc), organization_id, status])
+}
+```
+
 <br>
 
 ## 04. RDBMSクライアント

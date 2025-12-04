@@ -149,6 +149,10 @@ import {test, expect, vi} from "vitest";
 import axios from "axios";
 import {fetchUser} from "./fetchUser";
 
+beforeEach(async () => {
+  vi.resetAllMocks();
+});
+
 // テストスイート
 describe("fetchUser", async () => {
   // axiosクライアントのモック
@@ -245,6 +249,10 @@ import {test, expect, vi} from "vitest";
 import axios from "axios";
 import {fetchUser} from "./fetchUser";
 
+beforeEach(async () => {
+  vi.resetAllMocks();
+});
+
 describe("fetchUser", () => {
   // axiosクライアントのモック
   vi.mock("axios");
@@ -302,6 +310,10 @@ export async function fetchUser(id: string): Promise<User> {
 import {describe, it, expect} from "vitest";
 import axios from "axios";
 import {fetchUser} from "./fetchUser";
+
+beforeEach(async () => {
+  vi.resetAllMocks();
+});
 
 describe("User optional property behavior", () => {
   // axiosクライアントのモック
@@ -379,6 +391,10 @@ export async function fetchUser(id: string): Promise<User> {
 import {describe, it, expect, vi} from "vitest";
 import axios from "axios";
 import {fetchUser} from "./fetchUser";
+
+beforeEach(async () => {
+  vi.resetAllMocks();
+});
 
 describe("User.social unknown property behavior", () => {
   // axiosクライアントのモック
@@ -462,6 +478,8 @@ export function runTask(num: number): string {
 
 #### ▼ テストコード
 
+プライベート関数に仮の返却値を返却させるために、`spyOn`関数を使用している。
+
 ```typescript
 import {describe, test, expect, vi} from "vitest";
 import {runTask} from "./task";
@@ -469,7 +487,7 @@ import * as utils from "./utils";
 
 describe("runTask", () => {
   test("should call doInternalWork internally", () => {
-    // spyOn関数を使用し、内部関数名を指定する
+    // spyOn関数を使用し、プライベート関数に仮の返却値を返却させる
     const spy = vi.spyOn(utils, "doInternalWork").mockReturnValueOnce(999);
 
     // runTask関数を実行する
@@ -484,6 +502,8 @@ describe("runTask", () => {
   });
 });
 ```
+
+> - https://vitest.dev/api/vi.html#vi-spyon
 
 <br>
 
@@ -521,6 +541,10 @@ export async function fetchUser() {
 import {describe, test, expect, vi} from "vitest";
 import {fetchUser} from "./userService";
 import {HttpClient} from "./httpClient";
+
+beforeEach(async () => {
+  vi.resetAllMocks();
+});
 
 describe("fetchUser", () => {
   // クライアントクラス全体をモック化する

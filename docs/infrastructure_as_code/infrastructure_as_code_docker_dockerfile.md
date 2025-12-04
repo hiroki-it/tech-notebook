@@ -87,7 +87,7 @@ $ docker run --rm -it <検証したいコンテナイメージID> ls
 
 以下では`ADD`処理を使用している。
 
-URLを直接的に指定し、ダウンロードから解答までを実行している。
+URLを直接的に指定し、ダウンロードから解凍までを実行している。
 
 ```dockerfile
 ADD http://example.com/big.tar.xz /usr/src/things/

@@ -105,7 +105,7 @@ CMD ["/go/bin/cmd"]
 
 `(1)`
 
-: 最新のバイナルをインストールする。
+: 最新のバイナリをインストールする。
 
 ```bash
 $ go install golang.org/dl/go<新しいバージョン>@HEAD
@@ -168,7 +168,7 @@ $ add-apt-repository ppa:longsleep/golang-backports
 
 `(2)`
 
-: 新しいバイナルをインストールする。
+: 新しいバイナリをインストールする。
 
 ```bash
 $ apt update
