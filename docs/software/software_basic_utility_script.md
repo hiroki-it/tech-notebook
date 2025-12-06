@@ -208,7 +208,7 @@ esac
 ```bash
 #!/bin/bash
 
-if [ $VAR="" ]; then
+if [ "$VAR" = "" ]; then
   echo "空文字です";
 else
   echo "空文字ではありません";
@@ -241,6 +241,9 @@ fi
 
 ```bash
 #!/bin/bash
+
+# 何らかのコマンドを実行
+some_command
 
 if [ $? -ne 0 ]; then
   echo "エラーなので別の処理を実行します";

@@ -415,7 +415,7 @@ $ kubectl apply -f manifests/charts/base/crds
 : IstiodコントロールプレーンとIstio Ingress Gatewayの両方をインプレース方式でアップグレードする。
 
 ```bash
-$ istioctl upgrade
+$ istioctl install
 ```
 
 `(3)`
@@ -619,11 +619,8 @@ test_istio:
     # registries.yamlファイルをvolumeで配置する
     # もし該当のバージョンのイメージがなければ、rc版を使用する
     - |
-      if [ $? -ne 0 ]; then \
-        k3d cluster create --config k3d-config.yaml "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-k3s1 --agents 2; \
-      else \
-        k3d cluster create --config k3d-config.yaml "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-rc1-k3s1 --agents 2; \
-      fi
+      k3d cluster create --config k3d-config.yaml "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-k3s1 --agents 2 || \
+        k3d cluster create --config k3d-config.yaml "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-rc1-k3s1 --agents 2
     # Nodeにラベル付けする
     - |
       kubectl label node k3d-"${CI_PIPELINE_ID}"-agent-0 node.kubernetes.io/nodetype=ingress --overwrite

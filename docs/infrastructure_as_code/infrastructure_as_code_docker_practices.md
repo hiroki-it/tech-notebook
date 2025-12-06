@@ -308,7 +308,7 @@ $ docker inspect <コンテナ名>
 ```
 
 ```bash
-$ docker exec -it <起動中コンテナ名> /bin/bash -- uname -m
+$ docker exec -it <起動中コンテナ名> uname -m
 
 arm64
 ```
