@@ -928,7 +928,8 @@ nav:
       - software_development_methodology/index.md
       - 開発手法論: software_development_methodology/software_development_methodology.md
       - ■ エージェンティックコーディング:
-          - Claude Code: software_development_methodology/software_development_methodology_agentic_coding_claude.md
+          - Claude Code: software_development_methodology/software_development_methodology_agentic_coding_claude_code.md
+          - Codex: software_development_methodology/software_development_methodology_agentic_coding_codex.md
           - PR Agent: software_development_methodology/software_development_methodology_agentic_coding_pr_agent.md
           - ■ AIドキュメント:
               - AIドキュメント (API定義書) : software_development_methodology/software_development_methodology_agentic_coding_ai_document_api.md

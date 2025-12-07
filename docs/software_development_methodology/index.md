@@ -12,7 +12,8 @@ hide:
 - #### [︎開発手法論](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology.html)
 - #### <u>エージェンティックコーディング</u>
 
-  > - ##### [Claude Code](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_claude.html)
+  > - ##### [Codex](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_codex.html)
+  > - ##### [Claude Code](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_claude_code.html)
   > - ##### [PR Agent](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_pr_agent.html)
   > - ##### <u>AIドキュメント</u>
   >   > - ##### [AIドキュメント (API定義書) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_api.html)
