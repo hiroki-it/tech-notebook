@@ -26,3 +26,35 @@ $ codex --dangerously-bypass-approvals-and-sandbox
 ```
 
 <br>
+
+## 02. config.toml
+
+`~/.codex/config.toml`に設定を実装する。
+
+```toml
+# 思考過程の出力を非表示にする
+hide_agent_reasoning = true
+
+model_provider="<プロバイダー名>"
+
+model="gpt-5.1"
+
+# ネットワークへの接続を有効化する
+network_access = true
+
+# Macで通知を有効化する
+notify = ["bash", "-lc", "afplay /System/Library/Sounds/Ping.aiff"]
+
+[tools]
+# インターネット検索を有効化する
+web_search = true
+
+
+[model_providers.lite_llm]
+base_url="<APIのURL>"
+env_key="OPENAI_API_KEY"
+name="<プロバイダー名>"
+wire_api="responses"
+```
+
+<br>

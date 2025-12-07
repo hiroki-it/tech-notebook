@@ -26,3 +26,21 @@ $ claude --dangerously-skip-permissions
 ```
 
 <br>
+
+## 02. setting.json
+
+`~/.claude/setting.json`に設定を実装する。
+
+```yaml
+{
+  "env":
+    {
+      "ANTHROPIC_BASE_URL": "<APIのURL>",
+      "ANTHROPIC_AUTH_TOKEN": "<トークンの文字列>",
+      "ANTHROPIC_MODEL": "bedrock/claude-sonnet-4-5",
+      "ANTHROPIC_SMALL_FAST_MODEL": "bedrock/claude-haiku-4-5",
+      "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "32000",
+    },
+  "alwaysThinkingEnabled": false,
+}
+```
