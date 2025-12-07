@@ -35,9 +35,12 @@ $ codex --dangerously-bypass-approvals-and-sandbox
 # 思考過程の出力を非表示にする
 hide_agent_reasoning = true
 
+model="gpt-5.1"
+
 model_provider="<プロバイダー名>"
 
-model="gpt-5.1"
+# (これも？) 思考過程の出力を非表示にする
+model_reasoning_effort = "none"
 
 # ネットワークへの接続を有効化する
 network_access = true

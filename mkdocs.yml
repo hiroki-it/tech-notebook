@@ -940,9 +940,7 @@ nav:
               - AIドキュメント (ユニットテスト設計) : software_development_methodology/software_development_methodology_agentic_coding_ai_document_testing.md
       - 組織論: software_development_methodology/software_development_organization.md
       - OSSコントリビューション: software_development_methodology/software_development_oss_contribution.md
-      - ◼︎ テクノロジーマネジメント:
-          - テクノロジーマネージメント: software_development_methodology/software_development_technology_management.md
-          - 生成AI時代のアプリケーションのレビュー観点: software_development_methodology/software_development_technology_management_review_checklist.md
+      - テクノロジーマネージメント: software_development_methodology/software_development_technology_management.md
       - ■ プロダクトマネジメント:
           - プロダクトマネジメント: software_development_methodology/software_development_product_management.md
           - ■ プロジェクトマネジメント:
