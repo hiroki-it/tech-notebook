@@ -43,12 +43,10 @@ model="gpt-5.1"
 network_access = true
 
 # Macで通知を有効化する
-notify = ["bash", "-lc", "afplay /System/Library/Sounds/Ping.aiff"]
+notify = ["bash", "/Users/hiroki.hasegawa/.codex/notify_macos.sh"]
 
-[tools]
 # インターネット検索を有効化する
-web_search = true
-
+web_search_request = true
 
 [model_providers.lite_llm]
 base_url="<APIのURL>"
@@ -56,5 +54,19 @@ env_key="OPENAI_API_KEY"
 name="<プロバイダー名>"
 wire_api="responses"
 ```
+
+MacOSでの通知スクリプトは次のとおり。
+
+```bash
+#!/bin/bash
+
+# JSONから最後のエージェント発言を抽出
+LAST_MESSAGE=$(echo "$1" | jq -r '.["last-assistant-message"] // "Codex task completed"')
+
+# osascriptで通知表示
+osascript -e "display notification \"$LAST_MESSAGE\" with title \"Codexの作業が完了\""
+```
+
+> - https://blog.lai.so/codex-rs-intro/
 
 <br>
