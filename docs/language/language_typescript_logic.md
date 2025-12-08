@@ -554,6 +554,41 @@ export const action = async ({request, params}: ActionArgs) => {
 };
 ```
 
+#### ▼ ステータスコードの取得
+
+```typescript
+/**
+ * エラーの構造に応じてHTTPステータスコードを取得する
+ */
+export function getErrorStatusCode(error: unknown): number {
+  // RemixのResponseオブジェクトの場合
+  // 例：スローしたjson関数によるエラーを捕捉した場合
+  if (error instanceof Response) {
+    return error.status;
+  }
+
+  // ZodによるエラーやJSONパースエラーを補足した場合
+  if (error instanceof z.ZodError || error instanceof SyntaxError) {
+    return 400;
+  }
+
+  const errorObject = error as any;
+
+  // AxiosErrorなど、response.statusを持つエラーの場合
+  if (typeof errorObject.response?.status === "number") {
+    return errorObject.response.status;
+  }
+
+  // 独自Errorなど、statusプロパティを直接持つエラーの場合
+  if (typeof errorObject.status === "number") {
+    return errorObject.status;
+  }
+
+  // 想定外のエラーを補足した場合
+  return 500;
+}
+```
+
 <br>
 
 ## 06. コピー

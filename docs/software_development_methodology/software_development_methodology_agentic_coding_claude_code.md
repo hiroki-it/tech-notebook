@@ -44,3 +44,5 @@ $ claude --dangerously-skip-permissions
   "alwaysThinkingEnabled": false,
 }
 ```
+
+<br>
