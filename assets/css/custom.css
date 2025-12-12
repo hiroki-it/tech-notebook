@@ -263,7 +263,7 @@ p {
 }
 
 /***************
- テーブル
+テーブル
 ***************/
 /**
 @see https://blog.ktz.me/making-mkdocs-tables-look-like-github-markdown-tables/
@@ -298,6 +298,15 @@ th, td {
 
 .md-typeset table:not([class]) {
     display: table;
+}
+
+/***************
+ ヘッダーアイコン
+***************/
+.announce-icon svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: text-bottom;
 }
 
 /***************
