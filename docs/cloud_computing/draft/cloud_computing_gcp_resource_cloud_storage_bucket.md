@@ -13,15 +13,13 @@ description: Google Cloud Storage Bucket＠Google Cloudリソースの知見を�
 
 <br>
 
-## セットアップ
-
-### コンソール画面の場合
+## セットアップ (コンソールの場合)
 
 記入中...
 
 <br>
 
-### Terraformの場合
+## セットアップ (Terraformの場合)
 
 ```terraform
 // ファイルを保管するバケット

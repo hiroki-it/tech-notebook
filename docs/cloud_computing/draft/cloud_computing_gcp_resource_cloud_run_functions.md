@@ -13,9 +13,7 @@ description: Google Cloud Run Functions＠Google Cloudリソースの知見を�
 
 <br>
 
-## セットアップ
-
-### コンソール画面の場合
+## セットアップ (コンソールの場合)
 
 | 項目               | 説明                                                                 |
 | ------------------ | -------------------------------------------------------------------- |
@@ -25,9 +23,9 @@ description: Google Cloud Run Functions＠Google Cloudリソースの知見を�
 
 <br>
 
-### Terraformの場合
+## セットアップ (Terraformの場合)
 
-#### ▼ 世代数v1
+### 世代数v1
 
 ```terraform
 module "lambda_foo" {
@@ -87,7 +85,7 @@ data "google_client_config" "current" {}
 
 > - https://github.com/terraform-google-modules/terraform-google-event-function
 
-#### ▼ 世代数v2
+### 世代数v2
 
 ```terraform
 module "lambda_foo" {
