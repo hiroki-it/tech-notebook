@@ -21,6 +21,12 @@ description: AWS RDS＠AWSリソース
 
 ## 02. セットアップ (コンソールの場合)
 
+## 2-02. セットアップ (Terraformの場合)
+
+```terraform
+# 記入中...
+```
+
 ### 他のDBエンジンの比較
 
 #### ▼ DBMSに対応するRDB
