@@ -376,7 +376,7 @@ resource "aws_s3_bucket" "bar" {
 ```terraform
 # @ルートモジュール
 
-module "route53" {
+module "route53_foo" {
   source = "../modules/route53"
 
   providers = {
@@ -450,7 +450,7 @@ resource "aws_acm_certificate" "example" {
 # ---------------------------------------------
 # ALB
 # ---------------------------------------------
-module "alb" {
+module "alb_foo" {
   # ローカルモジュールを参照する。
   source = "../modules/alb"
 
@@ -475,7 +475,7 @@ module "alb" {
 # ---------------------------------------------
 # ALB
 # ---------------------------------------------
-module "alb" {
+module "alb_foo" {
   # リモートモジュールを参照する。
   # SSHの場合
   source = "git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git"
@@ -495,7 +495,7 @@ module "alb" {
 # ---------------------------------------------
 # ALB
 # ---------------------------------------------
-module "alb" {
+module "alb_foo" {
   # リモートモジュールを参照する。
   # SSHの場合
   source = "git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git//module/sub-directory"
@@ -517,7 +517,7 @@ module "alb" {
 # ---------------------------------------------
 # ALB
 # ---------------------------------------------
-module "alb" {
+module "alb_foo" {
   # リモートモジュールを参照する
   # タグを指定する
   source = "git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git?ref=v1.2.0"
@@ -537,7 +537,7 @@ module "alb" {
 # ---------------------------------------------
 # ALB
 # ---------------------------------------------
-module "alb" {
+module "alb_foo" {
   # リモートモジュールを参照する
   # ブランチを指定する
   source = "git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git?ref=foo_branch"
@@ -557,7 +557,7 @@ module "alb" {
 # ---------------------------------------------
 # ALB
 # ---------------------------------------------
-module "alb" {
+module "alb_foo" {
   # リモートモジュールを参照する
   # コミットIDを指定する
   source = "git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git?ref=51d462976d84fdea54b47d80dcabbf680badcdb8"

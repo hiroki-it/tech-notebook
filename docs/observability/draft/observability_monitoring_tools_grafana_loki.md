@@ -71,7 +71,7 @@ resource "aws_iam_role_policy" "grafana_loki" {
 ```
 
 ```terraform
-module "grafana_loki" {
+module "s3_grafana_loki" {
     source = "terraform-aws-modules/s3-bucket/aws"
     version = "4.6.0"
 

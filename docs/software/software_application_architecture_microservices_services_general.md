@@ -82,6 +82,8 @@ func convertToXRayTraceID(traceID trace.TraceID) string {
 
 #### ▼ metrics.go
 
+代わりにサービスメッシュツールを使用することもできる。
+
 ```go
 // metrics.go
 package telemetry
@@ -126,6 +128,8 @@ func SetupMetrics(ctx context.Context) func() {
 	}
 }
 ```
+
+> - https://pkg.go.dev/github.com/prometheus/client_golang/prometheus
 
 #### ▼ trace.go
 
@@ -236,5 +240,7 @@ func getOtelExporter(options ...otlptracegrpc.Option) (*otlptrace.Exporter, erro
 	// 中略
 }
 ```
+
+> - https://pkg.go.dev/go.opentelemetry.io/otel
 
 <br>

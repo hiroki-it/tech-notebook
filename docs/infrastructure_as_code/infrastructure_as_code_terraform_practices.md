@@ -382,7 +382,7 @@ enable_foo = true
 # ---------------------------------------------
 # ALB
 # ---------------------------------------------
-module "alb" {
+module "alb_foo" {
   # ローカルモジュール
   source = "../modules/alb"
 }
@@ -391,7 +391,7 @@ module "alb" {
 ```terraform
 # @ルートモジュール
 
-module "alb" {
+module "alb_foo" {
   # リモートモジュールを参照する。
   source = "git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git"
 }
@@ -649,7 +649,7 @@ Globalな環境変数を先頭に配置し、その他のクラウドプロバ�
 # ---------------------------------------------
 # ALB
 # ---------------------------------------------
-module "alb" {
+module "alb_foo" {
   source = "../modules/alb"
 
   # Variables

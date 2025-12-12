@@ -282,7 +282,7 @@ module "iam_assumable_role_with_oidc_external_dns" {
 ```
 
 ```terraform
-module "acm" {
+module "acm_foo" {
   source  = "terraform-aws-modules/acm/aws"
   version = "~> 4.3.2"
 

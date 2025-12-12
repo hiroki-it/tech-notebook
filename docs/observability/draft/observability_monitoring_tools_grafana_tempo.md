@@ -73,7 +73,7 @@ resource "aws_iam_role_policy" "grafana_tempo" {
 ```
 
 ```terraform
-module "grafana_tempo" {
+module "s3_grafana_tempo" {
     source = "terraform-aws-modules/s3-bucket/aws"
     version = "4.6.0"
 

@@ -572,14 +572,18 @@ export function getErrorStatusCode(error: unknown): number {
     return 400;
   }
 
-  const errorObject = error as any;
+  // どのようなエラー型が来るかわからないため、よくある構造で決め打ちする
+  const errorObject = error as {
+    response?: {status?: unknown};
+    status?: unknown;
+  };
 
-  // AxiosErrorなど、response.statusを持つエラーの場合
+  // AxiosErrorなどのエラーを補足した場合
   if (typeof errorObject.response?.status === "number") {
     return errorObject.response.status;
   }
 
-  // 独自Errorなど、statusプロパティを直接持つエラーの場合
+  // 独自Errorなどのエラーを補足した場合
   if (typeof errorObject.status === "number") {
     return errorObject.status;
   }

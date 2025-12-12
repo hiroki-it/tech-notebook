@@ -255,7 +255,7 @@ output "elb_service_account_arn" {
 # @ルートモジュール
 
 # ルートモジュールでローカルモジュールをコールする。
-module "alb" {
+module "alb_foo" {
   source = "../modules/alb"
 }
 
@@ -304,7 +304,7 @@ output "bastion_ec2_instance_id" {
 # @ルートモジュール
 
 # ルートモジュールでリモートモジュールをコールする。
-module "alb" {
+module "alb_foo" {
   source = "git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git"
 }
 

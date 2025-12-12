@@ -72,7 +72,7 @@ AWS EKSのコントロールプレーンは、開発者や他のAWSリソース�
 ここでは、Terraformの公式モジュールを使用する。
 
 ```terraform
-module "eks" {
+module "eks_foo" {
   source = "terraform-aws-modules/eks/aws"
 
   version = "<モジュールのバージョン>"

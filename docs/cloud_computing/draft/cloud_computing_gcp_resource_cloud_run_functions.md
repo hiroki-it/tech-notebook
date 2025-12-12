@@ -30,7 +30,7 @@ description: Google Cloud Run Functions＠Google Cloudリソースの知見を�
 #### ▼ 世代数v1
 
 ```terraform
-module "foo_function" {
+module "lambda_foo" {
 
   // Cloud Run Functionsには世代数 (v1、v2) があり、本モジュールではv1になる
   source = "terraform-google-modules/event-function/google"
@@ -90,7 +90,7 @@ data "google_client_config" "current" {}
 #### ▼ 世代数v2
 
 ```terraform
-module "foo_function" {
+module "lambda_foo" {
 
   // Google Cloud Run Functionsには世代数 (v1、v2) があり、本モジュールではv1になる
   source = "GoogleCloudPlatform/cloud-functions/google"

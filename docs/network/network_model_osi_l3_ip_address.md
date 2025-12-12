@@ -326,6 +326,12 @@ $ nslookup example # 実際には、example.fooとなる
 > - https://www.value-domain.com/media/registry-registrar/
 > - https://help.agathongroup.com/hc/en-us/articles/360040280233-What-is-the-difference-between-a-DNS-provider-a-domain-registrar-and-a-hosting-company-
 
+#### ▼ 名前解決の委譲
+
+ドメインとサブドメインを異なるドメインレジストラに登録したい場合、ドメイン側のドメインレジストラにサブドメイン側ののNSレコードを登録する。
+
+これにより、ドメイン側がサブドメイン側に名前解決を委譲できるようになる。
+
 #### ▼ DNSサーバー (ネームサーバー、権威DNSサーバー)
 
 『ネームサーバー』『権威DNSサーバー』ともいう。
