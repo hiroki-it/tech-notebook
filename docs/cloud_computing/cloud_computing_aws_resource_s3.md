@@ -24,7 +24,47 @@ description: AWS S3＠AWSリソースの知見を記録しています。
 ## 2-02. セットアップ (Terraformの場合)
 
 ```terraform
-# 記入中...
+module "s3_foo" {
+  source  = "terraform-aws-modules/s3-bucket/aws"
+  version = "= 4.1.0"
+
+  bucket                   = "foo"
+  tags                     = local.tags
+  block_public_acls        = true
+  block_public_policy      = true
+  restrict_public_buckets  = true
+  control_object_ownership = true
+  object_ownership         = "ObjectWriter"
+
+  lifecycle_rule = [
+    {
+      id     = "archive-old-files"
+      status = "Enabled"
+      filter = {
+        prefix = ""
+      }
+      # 70日後にGlacier Deep Archiveへ移行
+      transition = [
+        {
+          days          = 70
+          storage_class = "DEEP_ARCHIVE"
+        }
+      ]
+      # 6ヶ月（180日）後に削除
+      expiration = {
+        days = 180
+      }
+    }
+  ]
+
+  server_side_encryption_configuration = {
+    rule = {
+      apply_server_side_encryption_by_default = {
+        sse_algorithm = "AES256"
+      }
+    }
+  }
+}
 ```
 
 ### 設定項目

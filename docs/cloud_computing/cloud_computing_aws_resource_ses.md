@@ -23,11 +23,9 @@ description: SES＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 02. セットアップ
+## 02. セットアップ (コンソールの場合)
 
-### コンソール画面の場合
-
-#### ▼ 設定項目と説明
+### 設定項目と説明
 
 ![SESとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SESとは.png)
 
@@ -40,7 +38,7 @@ description: SES＠AWSリソースの知見を記録しています。
 | Rule Sets          | メールの受信したトリガーとして実行するアクションを設定できる。                                                  |                                                                                                                                   |
 | IP Address Filters |                                                                                                                 |                                                                                                                                   |
 
-#### ▼ Rule Sets
+### Rule Sets
 
 | 設定項目 | 説明                                                                   |
 | -------- | ---------------------------------------------------------------------- |
@@ -49,13 +47,98 @@ description: SES＠AWSリソースの知見を記録しています。
 
 <br>
 
-### 仕様上の制約
+## 03. セットアップ (Terraformの場合)
 
-#### ▼ 作成リージョンの制約
+```terraform
+resource "aws_ses_configuration_set" "foo" {
+  name = "foo"
+
+  delivery_options {
+    tls_policy = "Require"
+  }
+
+  reputation_metrics_enabled = true
+  sending_enabled            = true
+}
+
+# SESのイベントをCloudWatchに送信する
+resource "aws_ses_event_destination" "cloudwatch_foo" {
+  name                   = "foo-cloudwatch"
+  configuration_set_name = aws_ses_configuration_set.foo.name
+  enabled                = true
+  matching_types         = [
+    # SESから外部メールサーバーへの送信に失敗した場合
+    "bounce",
+    # SESへの送信に失敗した場合
+    "reject"
+  ]
+
+  cloudwatch_destination {
+    default_value  = "default"
+    dimension_name = "ses:configuration-set"
+    value_source   = "messageTag"
+  }
+}
+
+resource "aws_ses_domain_identity" "foo" {
+  domain = "example.com"
+}
+
+resource "aws_ses_domain_dkim" "foo" {
+  domain = aws_ses_domain_identity.foo.domain
+}
+
+# TXTレコード
+# メールアドレスのドメインの所有者であることを証明する
+resource "aws_route53_record" "ses_verification_foo" {
+  zone_id = "********"
+  name    = "_amazonses.${var.ses_foo_domain_identity}"
+  type    = "TXT"
+  ttl     = 300
+  records = [aws_ses_domain_identity.foo.verification_token]
+}
+
+# DKIMレコード
+# 送信メールにDKIM署名を付与することで、受信側でドメインなりすましを防止し、またスパムとして誤判定されるリスクを減らす
+resource "aws_route53_record" "ses_dkim_foo" {
+  count   = var.ses_foo_domain_identity != "" ? 3 : 0
+  zone_id = "********"
+  name    = "${aws_ses_domain_dkim.foo.dkim_tokens[count.index]}._domainkey.${var.ses_foo_domain_identity}"
+  type    = "CNAME"
+  ttl     = 300
+  records = ["${aws_ses_domain_dkim.foo.dkim_tokens[count.index]}.dkim.amazonses.com"]
+}
+
+# SPFレコード
+# メールアドレスのドメインから送信されるメールがAmazon SESからの送信であることを受信側に示すことで、正当な送信元として識別させる
+resource "aws_route53_record" "ses_spf_foo" {
+  zone_id = "********"
+  name    = var.ses_foo_domain_identity
+  type    = "TXT"
+  ttl     = 300
+  records = ["v=spf1 include:amazonses.com ~all"]
+}
+
+# DMARCレコード
+# なりすましメールをどのように処理するかを受信側に伝えることで、ドメインを保護し、またスパムとして誤判定されるリスクを減らす
+resource "aws_route53_record" "ses_dmarc_foo" {
+  zone_id = "********"
+  name    = "_dmarc.${var.ses_foo_domain_identity}"
+  type    = "TXT"
+  ttl     = 300
+  records = ["v=DMARC1; p=quarantine; rua=mailto:dmarc-reports@${var.ses_foo_domain_identity}"]
+}
+```
+
+<br>
+
+## 04. 仕様上の制約
+
+### 作成リージョンの制約
 
 SESは連携するAWSリソースと同じリージョンに作成しなければならない。
 
-#### ▼ Sandboxモードの解除
+### Sandboxモードの解除
 
 SESはデフォルトではSandboxモードになっている。
 
@@ -70,9 +153,11 @@ Sandboxモードでは以下の制限がかかっており。
 
 <br>
 
-### SMTP-AUTH
+<br>
 
-#### ▼ AWSにおけるSMTP-AUTHの仕組み
+## 05. SMTP-AUTH
+
+### AWSにおけるSMTP-AUTHの仕組み
 
 一般的なSMTP-AUTHでは、クライアントアカウントの認証が必要である。同様にして、AWSでもこれが必要であり、IAMユーザーを使用してこれを実現する。
 
@@ -86,7 +171,7 @@ Sandboxモードでは以下の制限がかかっており。
 
 <br>
 
-### スパム対策用
+## 06. スパム対策用
 
 特定の送信元IPから大量のメールを送信すると、スパムなIPアドレスであると自動的に判定されてしまうことがある。
 

@@ -66,7 +66,78 @@ AWSのクラウドメッセージブローカー (例：AWS MQ) よりも機能�
 ## 2-02. セットアップ (Terraformの場合)
 
 ```terraform
-# 記入中...
+# 通常キュー
+module "sqs_foo" {
+  source  = "terraform-aws-modules/sqs/aws"
+  version = "~> 4.0"
+
+  name = "foo"
+  tags = local.tags
+
+  visibility_timeout_seconds = 300
+  message_retention_seconds  = 345600 # 4日
+  max_message_size           = 262144 # 256KB
+  delay_seconds              = 0
+  receive_wait_time_seconds  = 20 # ロングポーリング
+
+  redrive_policy = {
+    deadLetterTargetArn = "arn:aws:sqs:ap-northeast-1:123456789012:foo-deadletter"
+    maxReceiveCount     = 3
+  }
+
+  kms_master_key_id                 = "arn:aws:kms:ap-northeast-1:123456789012:key/11111111-2222-3333-4444-555555555555"
+  kms_data_key_reuse_period_seconds = 300
+}
+
+# デッドレターキュー
+module "sqs_foo_deadletter" {
+  source  = "terraform-aws-modules/sqs/aws"
+  version = "~> 4.0"
+
+  name                      = "foo-deadletter"
+  tags                      = local.tags
+  message_retention_seconds = 1209600 # 14日
+
+  kms_master_key_id                 = "arn:aws:kms:ap-northeast-1:123456789012:key/11111111-2222-3333-4444-555555555555"
+  kms_data_key_reuse_period_seconds = 300
+}
+
+module "kms_sqs_foo" {
+  source  = "terraform-aws-modules/kms/aws"
+  version = "= 3.1.0"
+
+  aliases                 = ["sqs-foo"]
+  deletion_window_in_days = 30
+  enable_key_rotation     = true
+  tags                    = local.tags
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid    = "Default"
+        Effect = "Allow"
+        Principal = {
+          AWS = "arn:aws:iam::${data.aws_caller_identity.current.id}:root"
+        }
+        Action   = "kms:*"
+        Resource = "*"
+      },
+      {
+        Sid    = "Allow SQS to use the key"
+        Effect = "Allow"
+        Principal = {
+          Service = "sqs.amazonaws.com"
+        }
+        Action = [
+          "kms:Decrypt",
+          "kms:GenerateDataKey"
+        ]
+        Resource = "*"
+      }
+    ]
+  })
+}
 ```
 
 ### SQSの種類
