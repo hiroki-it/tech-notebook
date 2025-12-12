@@ -66,6 +66,9 @@ extra:
     - icon: fontawesome/brands/speaker-deck
       link: https://speakerdeck.com/hiroki_hasegawa
       name: 俺のSpeakerDeck
+    - icon: fontawesome/solid/pen-nib
+      link: https://hiroki-hasegawa.hatenablog.jp/archive
+      name: 俺のはてなブログ
 
 # CSS
 extra_css:
