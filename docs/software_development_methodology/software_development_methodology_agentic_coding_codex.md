@@ -64,10 +64,16 @@ MacOSでの通知スクリプトは次のとおり。
 #!/bin/bash
 
 # JSONから最後のエージェント発言を抽出
-LAST_MESSAGE=$(echo "$1" | jq -r '.["last-assistant-message"] // "Codex task completed"')
+RAW_MESSAGE=$(echo "$1" | jq -r '.["last-assistant-message"] // "Codex task completed"')
+
+# 長すぎるとAppleScriptが壊れやすいので先頭80文字にトリム
+TRIMMED_MESSAGE=$(echo "$RAW_MESSAGE" | head -c 80)
+
+# AppleScript用に改行とダブルクオートを安全な形に変換
+SAFE_MESSAGE=$(echo "$TRIMMED_MESSAGE" | tr '\n' ' ' | sed 's/"/\\"/g')
 
 # osascriptで通知表示
-osascript -e "display notification \"$LAST_MESSAGE\" with title \"Codexの作業が完了\""
+osascript -e "display notification \"$SAFE_MESSAGE\" with title \"Codexの作業が完了\""
 ```
 
 > - https://blog.lai.so/codex-rs-intro/
