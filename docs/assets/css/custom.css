@@ -15,7 +15,8 @@
 /***************
  画像
 ***************/
-img {
+/* 本文中の画像のみレイアウトを調整 */
+.md-typeset img {
     display: block;
     margin-left: auto;
     margin-right: auto;
