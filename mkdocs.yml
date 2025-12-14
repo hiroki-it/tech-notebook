@@ -54,7 +54,7 @@ extra:
   generator: false
   homepage: https://hiroki-it.github.io/tech-notebook/
   social:
-    - icon: fontawesome/regular/face-kiss-wink-heart
+    - icon: fontawesome/regular/heart
       link: https://www.amazon.co.jp/stores/author/B0DTK474CL/about
       name: 魂の書籍執筆
     - icon: fontawesome/brands/github
