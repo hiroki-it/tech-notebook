@@ -90,6 +90,7 @@ module "sqs_foo" {
 }
 
 # デッドレターキュー
+# 通常キューは処理に失敗し続けた処理不可能なタスクをデッドレターキューに転送する
 module "sqs_foo_deadletter" {
   source  = "terraform-aws-modules/sqs/aws"
   version = "~> 4.0"
