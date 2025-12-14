@@ -54,7 +54,7 @@ extra:
   generator: false
   homepage: https://hiroki-it.github.io/tech-notebook/
   social:
-    - icon: fontawesome/solid/pen-fancy
+    - icon: fontawesome/regular/face-kiss-wink-heart
       link: https://www.amazon.co.jp/stores/author/B0DTK474CL/about
       name: 魂の書籍執筆
     - icon: fontawesome/brands/github
@@ -69,7 +69,7 @@ extra:
     - icon: fontawesome/brands/speaker-deck
       link: https://speakerdeck.com/hiroki_hasegawa
       name: 俺のSpeakerDeck
-    - icon: fontawesome/solid/question
+    - icon: fontawesome/solid/pen-nib
       link: https://hiroki-hasegawa.hatenablog.jp/archive
       name: 俺のはてなブログ
 
