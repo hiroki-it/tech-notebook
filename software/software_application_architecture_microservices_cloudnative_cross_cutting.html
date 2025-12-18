@@ -33281,8 +33281,8 @@ end
 <p>執筆時点では、以下のツールでラベル付きのNodeを作成できます。</p>
 <ul>
 <li>Karpenter</li>
-<li>AWS Managed Node Group</li>
-<li>Self AWS Managed Node Group</li>
+<li>AWSマネージドNodeグループNodeグループ</li>
+<li>セルフAWSマネージドNodeグループNodeグループ</li>
 </ul>
 <p>Nodeの作成には、マシンイメージとしてAMIを採用します。</p>
 <p>必要なソフトウェア (OS、ミドルウェア) とEBSボリュームの両方を内蔵できます。</p>
@@ -33321,23 +33321,23 @@ end
 </table>
 <p><a href="https://kubesandclouds.com/2022-01-04-karpenter/">Karpenter vs Cluster Autoscaler ☸️</a></p>
 <p><a href="https://github.com/aws/karpenter-provider-aws/blob/main/designs/consolidation.md">https://github.com/aws/karpenter-provider-aws/blob/main/designs/consolidation.md</a></p>
-<h2 id="aws-managed-node-group">AWS Managed Node Groupによる垂直水平スケーリングと回復性管理<a class="headerlink" href="#aws-managed-node-group" title="Permanent link">&para;</a></h2>
+<h2 id="awsnodenode">AWSマネージドNodeグループNodeグループによる垂直水平スケーリングと回復性管理<a class="headerlink" href="#awsnodenode" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>💡</p>
 <p>余裕があれば書くぜ！</p>
 </blockquote>
-<h2 id="karpenteraws-managed-node-group">KarpenterとAWS Managed Node Groupの組み合わせ<a class="headerlink" href="#karpenteraws-managed-node-group" title="Permanent link">&para;</a></h2>
-<p>KarpenterとAWS Managed Node Groupを採用し、Nodeを管理します。</p>
+<h2 id="karpenterawsnodenode">KarpenterとAWSマネージドNodeグループNodeグループの組み合わせ<a class="headerlink" href="#karpenterawsnodenode" title="Permanent link">&para;</a></h2>
+<p>KarpenterとAWSマネージドNodeグループNodeグループを採用し、Nodeを管理します。</p>
 <p>なぜ、複数の方法を採用するかというと、Nodeを管理するKarpenterは、自身以外の方法で管理するNode上で稼働させなければならないためです。</p>
-<p>ここでは、KarpenterのPodをAWS Managed Node GroupによるNode上に、アプリ領域のPodをKarpenterによるNode上に稼働させます。</p>
-<p>KarpenterとAWS Managed Node Groupの間では、機能が異なります。</p>
+<p>ここでは、KarpenterのPodをAWSマネージドNodeグループNodeグループによるNode上に、アプリ領域のPodをKarpenterによるNode上に稼働させます。</p>
+<p>KarpenterとAWSマネージドNodeグループNodeグループの間では、機能が異なります。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-Nodeのスケーリング.drawio (1).png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-Nodeのスケーリング.drawio_(1).png" /></p>
 <table>
 <thead>
 <tr>
 <th>機能例</th>
 <th>Karpenter</th>
-<th>AWS Managed Node Group</th>
+<th>AWSマネージドNodeグループNodeグループ</th>
 </tr>
 </thead>
 <tbody>
@@ -33359,7 +33359,7 @@ end
 <tr>
 <td>ハードウェア消費量最適化</td>
 <td>Nodeの垂直水平スケーリングを実行し、ハードウェア消費量を最適化する。</td>
-<td>Cluster Autoscalerを併用しなければスケーリングを実行できず、ハードウェア消費量を最適化できない。AWS Managed Node Groupは、設定されたNode数を維持するだけである。</td>
+<td>Cluster Autoscalerを併用しなければスケーリングを実行できず、ハードウェア消費量を最適化できない。AWSマネージドNodeグループNodeグループは、設定されたNode数を維持するだけである。</td>
 </tr>
 </tbody>
 </table>
@@ -33486,7 +33486,7 @@ end
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年12月14日 21:08:39 JST">2025-12-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年12月18日 14:26:05 JST">2025-12-18</span>
   </span>
 
     
