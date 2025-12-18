@@ -43,6 +43,7 @@ module "s3_foo" {
       filter = {
         prefix = ""
       }
+      # バックアップ
       # 70日後にGlacier Deep Archiveへ移行
       transition = [
         {
@@ -50,6 +51,7 @@ module "s3_foo" {
           storage_class = "DEEP_ARCHIVE"
         }
       ]
+      # 保持期間
       # 6ヶ月（180日）後に削除
       expiration = {
         days = 180

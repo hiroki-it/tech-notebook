@@ -825,8 +825,8 @@ flowchart LR
 執筆時点では、以下のツールでラベル付きのNodeを作成できます。
 
 - Karpenter
-- AWS Managed Node Group
-- Self AWS Managed Node Group
+- AWSマネージドNodeグループNodeグループ
+- セルフAWSマネージドNodeグループNodeグループ
 
 Nodeの作成には、マシンイメージとしてAMIを採用します。
 
@@ -850,30 +850,30 @@ Nodeの作成には、マシンイメージとしてAMIを採用します。
 
 [https://github.com/aws/karpenter-provider-aws/blob/main/designs/consolidation.md](https://github.com/aws/karpenter-provider-aws/blob/main/designs/consolidation.md)
 
-## AWS Managed Node Groupによる垂直水平スケーリングと回復性管理
+## AWSマネージドNodeグループNodeグループによる垂直水平スケーリングと回復性管理
 
 > 💡
 >
 > 余裕があれば書くぜ！
 
-## KarpenterとAWS Managed Node Groupの組み合わせ
+## KarpenterとAWSマネージドNodeグループNodeグループの組み合わせ
 
-KarpenterとAWS Managed Node Groupを採用し、Nodeを管理します。
+KarpenterとAWSマネージドNodeグループNodeグループを採用し、Nodeを管理します。
 
 なぜ、複数の方法を採用するかというと、Nodeを管理するKarpenterは、自身以外の方法で管理するNode上で稼働させなければならないためです。
 
-ここでは、KarpenterのPodをAWS Managed Node GroupによるNode上に、アプリ領域のPodをKarpenterによるNode上に稼働させます。
+ここでは、KarpenterのPodをAWSマネージドNodeグループNodeグループによるNode上に、アプリ領域のPodをKarpenterによるNode上に稼働させます。
 
-KarpenterとAWS Managed Node Groupの間では、機能が異なります。
+KarpenterとAWSマネージドNodeグループNodeグループの間では、機能が異なります。
 
 ![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-Nodeのスケーリング.drawio (1).png](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-Nodeのスケーリング.drawio_(1).png>)
 
-| 機能例                   | Karpenter                                                            | AWS Managed Node Group                                                                                                                                           |
-| ------------------------ | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Node作成                 | ラベル付きのNodeを作成する。                                         | ラベル付きのNodeを作成する。                                                                                                                                     |
-| Graceful Shutdown        | 自身の作成したNodeを削除する時に、GracefulShutdownを実行する。       | デフォルトではGraceful Shutdownを実行できない。EC2 UserDataで、`kubelet-config.json`にShutdownGracePeriodとShutdownGracePeriodCriticalPodsの設定が必要である。   |
-| 料金最適化               | Nodeの統合と垂直水平スケーリングを実行し、料金を最適化する。         | Cluster Autoscalerを併用してもしなくても、料金を最適化できない。                                                                                                 |
-| ハードウェア消費量最適化 | Nodeの垂直水平スケーリングを実行し、ハードウェア消費量を最適化する。 | Cluster Autoscalerを併用しなければスケーリングを実行できず、ハードウェア消費量を最適化できない。AWS Managed Node Groupは、設定されたNode数を維持するだけである。 |
+| 機能例                   | Karpenter                                                            | AWSマネージドNodeグループNodeグループ                                                                                                                                           |
+| ------------------------ | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Node作成                 | ラベル付きのNodeを作成する。                                         | ラベル付きのNodeを作成する。                                                                                                                                                    |
+| Graceful Shutdown        | 自身の作成したNodeを削除する時に、GracefulShutdownを実行する。       | デフォルトではGraceful Shutdownを実行できない。EC2 UserDataで、`kubelet-config.json`にShutdownGracePeriodとShutdownGracePeriodCriticalPodsの設定が必要である。                  |
+| 料金最適化               | Nodeの統合と垂直水平スケーリングを実行し、料金を最適化する。         | Cluster Autoscalerを併用してもしなくても、料金を最適化できない。                                                                                                                |
+| ハードウェア消費量最適化 | Nodeの垂直水平スケーリングを実行し、ハードウェア消費量を最適化する。 | Cluster Autoscalerを併用しなければスケーリングを実行できず、ハードウェア消費量を最適化できない。AWSマネージドNodeグループNodeグループは、設定されたNode数を維持するだけである。 |
 
 # 25-03. Podの垂直水平スケーリングと回復性管理
 
