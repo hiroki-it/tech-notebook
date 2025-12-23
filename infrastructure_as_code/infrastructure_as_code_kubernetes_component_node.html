@@ -33934,7 +33934,9 @@
 <h3 id="node_2">Nodeグループとは<a class="headerlink" href="#node_2" title="Permanent link">&para;</a></h3>
 <p>KubernetesにはNodeグループというリソースがなく、グループを宣言的に定義することはできない。</p>
 <p>ただ、クラウドプロバイダーのサーバーオートスケーリング機能 (例：AWS EC2のAuto Scalingグループ) を使用して、Nodeグループ (例：AWS EKS Nodeグループ) を実現できる。</p>
-<p>同じ設定値 (<code>.metadata.labels</code>キー、CPU、メモリなど) や同じ役割を持ったNodeのグループのこと。</p>
+<p>複数のNodeに同じ設定値 (<code>.metadata.labels</code>キー、CPU、メモリなど) をもたせ、冗長化できるようになる。</p>
+<p>マイクロサービスごとにNodeに必要な非機能要件（性能、耐障害性、ネットワークセグメント）が異なる場合、Nodeグループを定義するとよい。</p>
+<p>ただし、その分金銭コストはかかる。</p>
 <p>基本的には、Nodeグループは冗長化されたワーカーNodeで構成されており、IDは違えど、ワーカーNode名は全て同じである。</p>
 <p>Nodeグループをターゲットとする<code>L7</code>ロードバランサーでは、Nodeグループ内で冗長化ワーカーNodeのいずれかに対してルーティングすることになる。</p>
 <blockquote>
@@ -34513,7 +34515,7 @@ $<span class="w"> </span>containerd<span class="w"> </span>config<span class="w"
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月4日 15:58:54 JST">2025-07-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年12月23日 21:01:23 JST">2025-12-23</span>
   </span>
 
     
