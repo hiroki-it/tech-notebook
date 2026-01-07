@@ -114,9 +114,9 @@ $ openapi-generator generate -i docs/openapi.yaml -o docs/html -g html
 
 <br>
 
-### スキーマ駆動開発
+### APIスキーマ駆動開発
 
-#### ▼ スキーマ駆動開発とは
+#### ▼ APIスキーマ駆動開発とは
 
 API仕様書に基づいて、APIを実装する。
 
@@ -396,7 +396,7 @@ paths:
           application/json: # MIME type
             foo: # メッセージボディ例
               userId: 1
-            schema: # スキーマ
+            schema: # APIスキーマ
               $ref: "#/components/schemas/user" # Userモデルを参照する。
       #===========================
       # レスポンス
@@ -409,7 +409,7 @@ paths:
               foo: # レスポンスボディ例
                 userId: 1
               schema:
-                $ref: "#/components/schemas/normal" # スキーマとして、正常系モデルを参照する。
+                $ref: "#/components/schemas/normal" # APIスキーマとして、正常系モデルを参照する。
         "400":
           description: Bad Request レスポンス
           content:
@@ -420,7 +420,7 @@ paths:
                 errors:
                   messages: ["ユーザーIDは必ず指定してください。"]
               schema:
-                $ref: "#/components/schemas/error" # スキーマとして、異常系モデルを参照する。
+                $ref: "#/components/schemas/error" # APIスキーマとして、異常系モデルを参照する。
         "401":
           $ref: "#/components/responses/unauthorized" # 認証エラーを参照する。
   #===========================
@@ -458,7 +458,7 @@ paths:
               foo: # ボディ例
                 userId: 1
                 name: Hiroki
-              schema: # スキーマ
+              schema: # APIスキーマ
                 $ref: "#/components/schemas/user" # Userモデルを参照する。
         "400":
           description: Bad Request レスポンス
@@ -515,7 +515,7 @@ paths:
               foo: # ボディ例
                 userId: 1
                 name: Hiroki
-              schema: # スキーマ
+              schema: # APIスキーマ
                 $ref: "#/components/schemas/user" # Userモデルを参照する。
         "400":
           description: Bad Request レスポンス
@@ -547,7 +547,7 @@ paths:
 
 ### componentsフィールド (必須)
 
-スキーマなど、他の項目で共通して利用するものを定義する。
+APIスキーマなど、他の項目で共通して利用するものを定義する。
 
 ```yaml
 components:
@@ -671,15 +671,15 @@ externalDocs:
 
 <br>
 
-## 03. スキーマ
+## 03. APIスキーマ
 
-### スキーマとは
+### APIスキーマとは
 
 RESTful-APIが受信するCRUDのデータ型や必須データを定義したもの。受信したデータのバリデーションに使用する。
 
 <br>
 
-### スキーマによるバリデーション
+### APIスキーマによるバリデーション
 
 データ型や必須データにより、リクエスト／レスポンスのデータのバリデーションを実行する。
 
@@ -697,7 +697,7 @@ RESTful-APIが受信するCRUDのデータ型や必須データを定義した�
 }
 ```
 
-ここで、スキーマを以下の様に定義しておき、APIからデータをレスポンスする時のバリデーションを実行する。
+ここで、APIスキーマを以下の様に定義しておき、APIからデータをレスポンスする時のバリデーションを実行する。
 
 ```yaml
 {

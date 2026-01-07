@@ -119,7 +119,7 @@ package model
 
 // usersテーブルにマッピング
 type User struct {
-	// テーブルの主キーにマッピング
+	// usersテーブルの主キーにマッピング
 	ID        uint
 	// nameカラムにマッピング
     Name      string

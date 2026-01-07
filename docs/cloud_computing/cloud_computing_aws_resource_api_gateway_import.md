@@ -352,7 +352,7 @@ paths:
           application/json: # MIME type
             example: # リクエストボディ例
               userId: 1
-            schema: # スキーマ
+            schema: # APIスキーマ
               $ref: "#/components/schemas/user" # Userモデルを参照する。
       #===========================
       # メソッドレスポンス
@@ -432,7 +432,7 @@ paths:
               example: # ボディ例
                 userId: 1
                 name: Hiroki
-              schema: # スキーマ
+              schema: # APIスキーマ
                 $ref: "#/components/schemas/user" # Userモデルを参照する。
         "400":
           description: Bad Request レスポンス
@@ -508,7 +508,7 @@ paths:
               example: # ボディ例
                 userId: 1
                 name: Hiroki
-              schema: # スキーマ
+              schema: # APIスキーマ
                 $ref: "#/components/schemas/user" # Userモデルを参照する。
         "400":
           description: Bad Request レスポンス
@@ -755,7 +755,7 @@ paths:
           application/json: # MIME type
             example: # リクエストボディ例
               userId: 1
-            schema: # スキーマ
+            schema: # APIスキーマ
               $ref: "#/components/schemas/user" # Userモデルを参照する。
       #===========================
       # メソッドレスポンス
@@ -844,7 +844,7 @@ paths:
               example: # ボディ例
                 userId: 1
                 name: Hiroki
-              schema: # スキーマ
+              schema: # APIスキーマ
                 $ref: "#/components/schemas/user" # Userモデルを参照する。
         "400":
           description: Bad Request レスポンス
@@ -928,7 +928,7 @@ paths:
               example: # ボディ例
                 userId: 1
                 name: Hiroki
-              schema: # スキーマ
+              schema: # APIスキーマ
                 $ref: "#/components/schemas/user" # Userモデルを参照する。
         "400":
           description: Bad Request レスポンス
@@ -1184,7 +1184,7 @@ paths:
           application/json: # MIME type
             example: # リクエストボディ例
               userId: 1
-            schema: # スキーマ
+            schema: # APIスキーマ
               $ref: "#/components/schemas/user" # Userモデルを参照する。
       #===========================
       # メソッドレスポンス
@@ -1267,7 +1267,7 @@ paths:
               example: # ボディ例
                 userId: 1
                 name: Hiroki
-              schema: # スキーマ
+              schema: # APIスキーマ
                 $ref: "#/components/schemas/user" # Userモデルを参照する。
         "400":
           description: Bad Request レスポンス
@@ -1346,7 +1346,7 @@ paths:
               example: # ボディ例
                 userId: 1
                 name: Hiroki
-              schema: # スキーマ
+              schema: # APIスキーマ
                 $ref: "#/components/schemas/user" # Userモデルを参照する。
         "400":
           description: Bad Request レスポンス

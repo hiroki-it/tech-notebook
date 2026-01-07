@@ -31,7 +31,7 @@ GraphQLは、GraphQL-APIのGraphQLサーバー、GraphQLクライアント、か
 
 ### GraphQLサーバー
 
-#### ▼ スキーマ
+#### ▼ APIスキーマ
 
 GraphQL-APIが受信するCRUDのデータ型や必須データを定義したもの。受信したデータのバリデーションに使用する。
 
@@ -54,11 +54,11 @@ GraphQL-APIに送信するCRUDの実際のデータを定義したもの。
 
 ### Query
 
-#### ▼ スキーマ (サーバー側)
+#### ▼ APIスキーマ (サーバー側)
 
 **＊例＊**
 
-ここでは、Query処理を受信するためのスキーマを定義したとする。
+ここでは、Query処理を受信するためのAPIスキーマを定義したとする。
 
 ```graphql
 # ルート型
@@ -84,7 +84,7 @@ type User {
 
 **＊例＊**
 
-ここでは、前述のQuery処理のスキーマで定義した`GetUser`関数を使用すると仮定する。
+ここでは、前述のQuery処理のAPIスキーマで定義した`GetUser`関数を使用すると仮定する。
 
 ```graphql
 query GetUser {
@@ -118,11 +118,11 @@ $ curl \
 
 ### Mutation
 
-#### ▼ スキーマ (サーバー側)
+#### ▼ APIスキーマ (サーバー側)
 
 **＊例＊**
 
-ここでは、Mutation処理を受信するためのスキーマを定義したとする。
+ここでは、Mutation処理を受信するためのAPIスキーマを定義したとする。
 
 ```graphql
 # ルート型
@@ -155,7 +155,7 @@ input UserCreateInput {
 
 **＊例＊**
 
-ここでは、前述のMutation処理のスキーマで定義した`CreateUser`関数を実行すると仮定する。
+ここでは、前述のMutation処理のAPIスキーマで定義した`CreateUser`関数を実行すると仮定する。
 
 ```graphql
 mutation CreateUser {

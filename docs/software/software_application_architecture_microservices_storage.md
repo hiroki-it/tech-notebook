@@ -30,14 +30,14 @@ description: ストレージ領域＠マイクロサービスアーキテクチ�
 
 各マイクロサービスで共有するDBを`1`個だけ用意する。
 
-この場合、単一のDB上で、スキーマやテーブルをマイクロサービスごとに作成する必要がある。
+この場合、単一のDB上で、DBスキーマやテーブルをマイクロサービスごとに作成する必要がある。
 
 > - https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2
 > - https://microservices.io/patterns/data/shared-database.html
 
-#### ▼ マイクロサービス別のスキーマ
+#### ▼ マイクロサービス別のDBスキーマ
 
-Shared DBの場合に、マイクロサービス別にスキーマを作成する。
+Shared DBの場合に、マイクロサービス別にDBスキーマを作成する。
 
 ![microservices_share-db_diff-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_share-db_diff-table.png)
 
@@ -76,7 +76,33 @@ Shared DBの場合に、マイクロサービス別にテーブルを作成す�
 
 <br>
 
-## 02-02. 永続データの種類に合わせたストレージ
+### Shared DBパターンとDB per serviceパターンの共存
+
+#### ▼ Shared DBパターンが向いているマイクロサービス
+
+| マイクロサービスの種類 | 概説                                                                                  |
+| ---------------------- | ------------------------------------------------------------------------------------- |
+| バッチ処理サービス     | バッチ処理を使うほかサービスと同じDB（つまり、Shared DBパターン）に永続化した方がいい |
+
+#### ▼ DB per serviceパターンが向いているマイクロサービス
+
+- ほとんどすべての業務サービス
+
+<br>
+
+## 02-02. DDL、DCL、DMLの分離
+
+マイクロサービスアーキテクチャでORMを使用する場合に、ORMでDDL（DBスキーマ定義、テーブル定義）を実装せず、ORMはDCL（トランザクション制御）とDML（レコード操作）
+
+代わりに、DDLはそれ専用のツールを使用する。
+
+これにより、ORMは自身のORMモデルからクエリを呼び出すことで、ORMモデルに対応した自由にテーブルを指定し、操作できるようになる。
+
+
+
+<br>
+
+## 02-03. 永続データの種類に合わせたストレージ
 
 ### Polyglot Persistenceパターン
 
