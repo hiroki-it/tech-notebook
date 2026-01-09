@@ -953,9 +953,9 @@ import (
 	"net"
 
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/health"
 
-	grpc_health_v1 "google.golang.org/grpc/health/grpc_health_v1"
+	"google.golang.org/grpc/health"
+	"google.golang.org/grpc/health/grpc_health_v1"
 )
 
 func main() {
@@ -970,7 +970,7 @@ func main() {
 	...
 
 	healthCheckServer := health.NewServer()
-
+	healthCheckServer.SetServingStatus("", healthpb.HealthCheckResponse_SERVING)
 	grpc_health_v1.RegisterHealthServer(grpcServer, healthCheckServer)
 
 	// goサーバーで待ち受けるポート番号を設定する。

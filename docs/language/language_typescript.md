@@ -879,6 +879,23 @@ import {
 } from "./foo";
 ```
 
+#### ▼ 動的import
+
+一部のモジュールはサーダーレンダリング中に読み込むことができず、ファイルの上部でimportするとエラーになることがある。
+
+こういったモジュールはCSRモードのクライアントレンダリング
+
+```typescript
+useEffect(() => {
+  // react-apexchartsは内部でブラウザのwindowを参照するため、本ファイルの上部でimportするとSSRモードのサーバーレンダリング中にwindowを参照できずにエラーになる
+  // 動的importを使用することで、react-apexchartsの部分だけをCSRモードのクライアントレンダリング中に読み込むようにする
+  // @see https://github.com/apexcharts/react-apexcharts/issues/526
+  if (typeof window !== "undefined") {
+    import("react-apexcharts").then((module) => setChart(() => module.default));
+  }
+}, []);
+```
+
 <br>
 
 ### export

@@ -19,6 +19,24 @@ E2Eテストの実施に必要な機能を提供し、加えてテストを実�
 
 <br>
 
+## 02. 文法
+
+### data-cy
+
+CypressのためだけにUIロジックにつける要素のこと。
+
+```tsx
+export function SubmitButton() {
+  return (
+    <button type="submit" data-cy="submit">
+      保存
+    </button>
+  );
+}
+```
+
+<br>
+
 ## 02. 事前処理
 
 ### cypress.config.ts

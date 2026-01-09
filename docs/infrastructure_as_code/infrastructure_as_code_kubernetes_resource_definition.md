@@ -650,12 +650,15 @@ Cluster内で維持するPodのレプリカ数を設定する。
 
 Cluster内に複数のNodeが存在していて、いずれかのNodeが停止した場合、稼働中のNode内でレプリカ数を維持するようにPod数が増加する。
 
+HorizontalPodAutoscalerを使用する場合、レプリカ数はHPAが決めるため`.spec.replicas`は設定不要である。
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: foo-deployment
 spec:
+  # HorizontalPodAutoscalerを使用する場合、.spec.replicasは設定不要である
   replicas: 2
   selector:
     matchLabels:
@@ -1159,6 +1162,21 @@ spec:
 > - https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
 > - https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#migrating-deployments-and-statefulsets-to-horizontal-autoscaling
 > - https://stackoverflow.com/a/66431624/12771072
+
+<br>
+
+### .spec.targetCPUUtilizationPercentage
+
+維持するCPU使用率を設定する。
+
+```yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: foo-horizontal-pod-autoscaler
+spec:
+  targetCPUUtilizationPercentage: 50
+```
 
 <br>
 
@@ -1691,6 +1709,17 @@ spec:
 
 > - https://github.com/aws/aws-application-networking-k8s/blob/main/examples/gatewayclass.yaml
 > - https://aws.amazon.com/jp/blogs/news/introducing-aws-gateway-api-controller-for-amazon-vpc-lattice-an-implementation-of-kubernetes-gateway-api/
+
+<br>
+
+## Namespace
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: foo
+```
 
 <br>
 
@@ -3167,24 +3196,7 @@ spec:
             - healthcheck.sh
 ```
 
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: app
-      image: app:1.0.0
-      livenessProbe:
-        exec:
-          command:
-            - /bin/grpc_health_probe
-            - -addr=:5000
-```
-
 > - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-liveness-command
-> - https://github.com/grpc-ecosystem/grpc-health-probe?tab=readme-ov-file#example-grpc-health-checking-on-kubernetes
 
 #### ▼ httpGet
 
@@ -3456,6 +3468,50 @@ spec:
   terminationGracePeriodSeconds: 30
 ```
 
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-app-grpc
+      image: foo-app-grpc:1.0.0
+      readinessProbe:
+        tcpSocket:
+          port: 5000
+        # 各設定のデフォルト値を示す
+        initialDelaySeconds: 0
+        periodSeconds: 10
+        timeoutSeconds: 1
+        successThreshold: 1
+        failureThreshold: 3
+        terminationGracePeriodSeconds: 30
+  terminationGracePeriodSeconds: 30
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-app-grpc
+      image: foo-app-grpc:1.0.0
+      readinessProbe:
+        grpc:
+          port: 8080
+        # 各設定のデフォルト値を示す
+        initialDelaySeconds: 0
+        periodSeconds: 10
+        timeoutSeconds: 1
+        successThreshold: 1
+        failureThreshold: 3
+        terminationGracePeriodSeconds: 30
+  terminationGracePeriodSeconds: 30
+```
+
 コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例：Javaのウォームアップ完了まで。Nginxの最初の設定ファイル読み込み完了まで。MySQLの最初の接続受信準備完了まで。) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。
 
 注意点として、ReadinessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。
@@ -3503,24 +3559,7 @@ spec:
             - healthcheck.sh
 ```
 
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: app
-      image: app:1.0.0
-      readinessProbe:
-        exec:
-          command:
-            - /bin/grpc_health_probe
-            - -addr=:5000
-```
-
 > - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-liveness-command
-> - https://github.com/grpc-ecosystem/grpc-health-probe?tab=readme-ov-file#example-grpc-health-checking-on-kubernetes
 
 #### ▼ httpGet
 
@@ -3578,7 +3617,11 @@ spec:
 
 設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう (デフォルト値の`0`は短すぎる) 。
 
-一方で、設定した時間が長すぎると、Podの作成開始から完了まで時間がかかりすぎてしまう。
+一方で、設定した時間が長すぎると、Podの作成開始から完了まで時間（つまり、リリースの作業時間）がかかりすぎてしまう。
+
+例えば、gRPCサーバーであれば基本的には`1`秒以内で起動するため、`initialDelaySeconds`は`5`ほどでよい。
+
+Workloadを何度かリスタートし、問題なく起動できれば調整は完了である。
 
 ```yaml
 apiVersion: v1
@@ -3600,6 +3643,10 @@ spec:
 デフォルト値は`10`である。
 
 ReadinessProbeヘルスチェックの試行当たりの間隔を設定する。
+
+適正値は`10`秒ほどで良い。
+
+Workloadを何度かリスタートし、問題なく起動できれば調整は完了である。
 
 ```yaml
 apiVersion: v1
