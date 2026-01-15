@@ -89,6 +89,8 @@ go_mod:
   script:
     # 他のプライベートリポジトリのモジュールをインポートする
     - go mod tidy
+    # go mod tidyで差分があれば、CIを失敗させる
+    - git diff --exit-code
 ```
 
 <br>
@@ -1281,6 +1283,8 @@ go_mod:
   script:
     # 他のプライベートリポジトリのモジュールをインポートする
     - go mod tidy
+    # go mod tidyで差分があれば、CIを失敗させる
+    - git diff --exit-code
 ```
 
 > - https://docs.gitlab.com/ci/yaml/yaml_optimization/#anchors

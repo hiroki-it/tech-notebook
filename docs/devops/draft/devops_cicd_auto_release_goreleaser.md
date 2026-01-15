@@ -42,6 +42,8 @@ archives:
 before:
   hooks:
     - go mod tidy
+    # go mod tidyで差分があれば、CIを失敗させる
+    - git diff --exit-code
     - go generate ./...
 ```
 

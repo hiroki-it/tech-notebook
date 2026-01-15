@@ -44,6 +44,8 @@ go_build:
     # バージョンを確認する
     - go version
     - go mod tidy
+    # go mod tidyで差分があれば、CIを失敗させる
+    - git diff --exit-code
 
 go_lint:
   stage: test

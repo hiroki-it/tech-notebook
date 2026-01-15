@@ -279,6 +279,23 @@ Route (app)                              Size     First Load JS
 
 <br>
 
+### モード
+
+#### ▼ API Routesモード
+
+`app/api/foo`ディレクトリに`route.ts`ファイルをおくと、`app/api/`がエンドポイントのAPI Routesモードになる。
+
+```typescript
+// app/api/foo/route.tsファイル
+import type {NextApiRequest, NextApiResponse} from "next";
+
+export default (_: NextApiRequest, res: NextApiResponse) => {
+  res.status(200).json({ok: true});
+};
+```
+
+<br>
+
 ## 03. 環境変数
 
 ### 言語の実行環境

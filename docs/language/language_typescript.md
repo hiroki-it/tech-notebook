@@ -890,9 +890,27 @@ useEffect(() => {
   // react-apexchartsは内部でブラウザのwindowを参照するため、本ファイルの上部でimportするとSSRモードのサーバーレンダリング中にwindowを参照できずにエラーになる
   // 動的importを使用することで、react-apexchartsの部分だけをCSRモードのクライアントレンダリング中に読み込むようにする
   // @see https://github.com/apexcharts/react-apexcharts/issues/526
-  if (typeof window !== "undefined") {
-    import("react-apexcharts").then((module) => setChart(() => module.default));
-  }
+  import("react-apexcharts").then((module) => {
+    let Component = (module as any).default;
+
+    // 検証したところ、動的importで出力されるreactコンポーネントの型や構造はビルド方法（yarn dev、yarn build）や実行環境（ローカルPC、CI、AWS）ごとに異なっている模様
+    // 例えば、ローカルPCでyarn buildした場合と、yarn buildの結果をAWSにデプロイした場合の間で、動的importの返却値の型や構造が異なる
+    // そこで、動的importの返却値に含まれるfunction型のComponentを確実に使用できるように、型と構造を検証する
+
+    // Componentの構造に関する対処
+    if (typeof Component !== "function") {
+      // function型のComponentを再代入できたことを期待する
+      Component = (Component as any)?.default;
+    }
+
+    // Componentの型に関する対処
+    if (typeof Component !== "function") {
+      // 再代入したComponentがfunction型でない場合、コンポーネントが想定外の型であるため、コンポーネントを表示しない
+      return;
+    }
+
+    setChart(() => Component);
+  });
 }, []);
 ```
 
