@@ -32618,22 +32618,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02_1" class="md-nav__link">
+  <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02. ユースケース
+        03. ユースケース
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. ユースケース">
+    <nav class="md-nav" aria-label="03. ユースケース">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#create" class="md-nav__link">
     <span class="md-ellipsis">
       
-        データ保存
+        CREATE処理
       
     </span>
   </a>
@@ -32641,7 +32641,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         リーダー選出 (分散ロック)
@@ -32698,14 +32698,15 @@
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="terraform">セットアップ(Terraformの場合)<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h3>
+<p>ここでは、auth-userサービスがトークンをAWS DynamoDBに保存するとする。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;dynamodb_user&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/dynamodb-table/aws&quot;</span>
 <span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt; 4.2&quot;</span>
 
 <span class="c1">  # テーブル名を設定する</span>
-<span class="w">  </span><span class="na">name</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;user&quot;</span>
+<span class="w">  </span><span class="na">name</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;auth-user&quot;</span>
 <span class="c1">  # PartitionKeyを設定する</span>
-<span class="w">  </span><span class="na">hash_key</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;userId&quot;</span>
+<span class="w">  </span><span class="na">hash_key</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;authUserToken&quot;</span>
 <span class="c1">  # SortKeyを設定する</span>
 <span class="w">  </span><span class="na">range_key</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;createdAt&quot;</span>
 <span class="w">  </span><span class="na">point_in_time_recovery_enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
@@ -32723,8 +32724,9 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="02_1">02. ユースケース<a class="headerlink" href="#02_1" title="Permanent link">&para;</a></h2>
-<h3 id="_2">データ保存<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h2 id="03">03. ユースケース<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="create">CREATE処理<a class="headerlink" href="#create" title="Permanent link">&para;</a></h3>
+<p>ここでは、auth-userサービスがトークンをAWS DynamoDBに保存するとする。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -32740,14 +32742,15 @@
 <span class="w">    </span><span class="s">&quot;github.com/aws/aws-sdk-go-v2/service/dynamodb/types&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">putUser</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">*</span><span class="nx">dynamodb</span><span class="p">.</span><span class="nx">Client</span><span class="p">,</span><span class="w"> </span><span class="nx">tableName</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">// CREATE</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">createUser</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">*</span><span class="nx">dynamodb</span><span class="p">.</span><span class="nx">Client</span><span class="p">,</span><span class="w"> </span><span class="nx">tableName</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">now</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
 
 <span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">PutItem</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">dynamodb</span><span class="p">.</span><span class="nx">PutItemInput</span><span class="p">{</span>
 <span class="w">        </span><span class="nx">TableName</span><span class="p">:</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="nx">tableName</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">Item</span><span class="p">:</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">types</span><span class="p">.</span><span class="nx">AttributeValue</span><span class="p">{</span>
 <span class="w">            </span><span class="c1">// Terraformでは、必ず使用する属性をPartitionKeyにする</span>
-<span class="w">            </span><span class="s">&quot;userId&quot;</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">types</span><span class="p">.</span><span class="nx">AttributeValueMemberS</span><span class="p">{</span><span class="nx">Value</span><span class="p">:</span><span class="w"> </span><span class="nx">id</span><span class="p">},</span>
+<span class="w">            </span><span class="s">&quot;authUserToken&quot;</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">types</span><span class="p">.</span><span class="nx">AttributeValueMemberS</span><span class="p">{</span><span class="nx">Value</span><span class="p">:</span><span class="w"> </span><span class="nx">token</span><span class="p">},</span>
 <span class="w">            </span><span class="c1">// Terraformでは、並び替えに使用する属性をSortKeyにする</span>
 <span class="w">            </span><span class="c1">// DynamoDBのキー値をタイムスタンプで並び替えるために、ISO-8601形式を使用する</span>
 <span class="w">            </span><span class="s">&quot;createdAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">types</span><span class="p">.</span><span class="nx">AttributeValueMemberS</span><span class="p">{</span><span class="nx">Value</span><span class="p">:</span><span class="w"> </span><span class="nx">now</span><span class="p">.</span><span class="nx">Format</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">)},</span>
@@ -32755,6 +32758,28 @@
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="p">}</span>
+
+<span class="c1">// READ</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">getUser</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">*</span><span class="nx">dynamodb</span><span class="p">.</span><span class="nx">Client</span><span class="p">,</span><span class="w"> </span><span class="nx">tableName</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">createdAt</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">types</span><span class="p">.</span><span class="nx">AttributeValue</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">out</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">GetItem</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">dynamodb</span><span class="p">.</span><span class="nx">GetItemInput</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">TableName</span><span class="p">:</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="nx">tableName</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">Key</span><span class="p">:</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">types</span><span class="p">.</span><span class="nx">AttributeValue</span><span class="p">{</span>
+<span class="w">            </span><span class="s">&quot;authUserToken&quot;</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">types</span><span class="p">.</span><span class="nx">AttributeValueMemberS</span><span class="p">{</span><span class="nx">Value</span><span class="p">:</span><span class="w"> </span><span class="nx">token</span><span class="p">},</span>
+<span class="w">            </span><span class="s">&quot;createdAt&quot;</span><span class="p">:</span><span class="w">     </span><span class="o">&amp;</span><span class="nx">types</span><span class="p">.</span><span class="nx">AttributeValueMemberS</span><span class="p">{</span><span class="nx">Value</span><span class="p">:</span><span class="w"> </span><span class="nx">createdAt</span><span class="p">},</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">    </span><span class="p">})</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">out</span><span class="p">.</span><span class="nx">Item</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;user not found: token=%s createdAt=%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">createdAt</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">out</span><span class="p">.</span><span class="nx">Item</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">configure</span><span class="p">(</span><span class="nx">cfg</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">Config</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">dynamodb</span><span class="p">.</span><span class="nx">Client</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -32772,7 +32797,7 @@
 <span class="w">        </span><span class="nx">client</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">dynamodb</span><span class="p">.</span><span class="nx">NewFromConfig</span><span class="p">(</span><span class="nx">cfg</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// 例えば、userテーブル</span>
+<span class="w">    </span><span class="c1">// 例えば、auth-userテーブル</span>
 <span class="w">    </span><span class="nx">tableName</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;DYNAMODB_TABLE_NAME&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">tableName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">{</span>
@@ -32797,15 +32822,28 @@
 
 <span class="w">    </span><span class="nx">client</span><span class="p">,</span><span class="w"> </span><span class="nx">tableName</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">configure</span><span class="p">(</span><span class="nx">cfg</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">id</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">putSample</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">client</span><span class="p">,</span><span class="w"> </span><span class="nx">tableName</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">token</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;*****&quot;</span>
+<span class="w">    </span><span class="nx">createdAt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;2024-01-01T00:00:00Z&quot;</span>
+
+<span class="w">    </span><span class="c1">// CREATEを実行する</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">createUser</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">client</span><span class="p">,</span><span class="w"> </span><span class="nx">tableName</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// READを実行する</span>
+<span class="w">    </span><span class="nx">item</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">getUser</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">client</span><span class="p">,</span><span class="w"> </span><span class="nx">tableName</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">createdAt</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;GetItem OK: %v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">item</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;PutItem OK&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="_3">リーダー選出 (分散ロック)<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_2">リーダー選出 (分散ロック)<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>記入中</p>
 <p><br></p>
 
@@ -32828,7 +32866,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年1月19日 19:31:33 JST">2026-01-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年1月19日 19:47:02 JST">2026-01-19</span>
   </span>
 
     
