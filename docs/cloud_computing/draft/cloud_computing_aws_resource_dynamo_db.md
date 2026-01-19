@@ -25,7 +25,6 @@ description: AWS DynamoDB＠AWSリソースの知見を記録しています。
 
 ここでは、auth-userサービスがトークンをAWS DynamoDBに保存するとする。
 
-
 ```terraform
 module "dynamodb_user" {
   source  = "terraform-aws-modules/dynamodb-table/aws"
@@ -96,7 +95,7 @@ func createUser(ctx context.Context, client *dynamodb.Client, tableName, token s
 
 // READ
 func getUser(ctx context.Context, client *dynamodb.Client, tableName, token, createdAt string) (map[string]types.AttributeValue, error) {
-	
+
 	out, err := client.GetItem(ctx, &dynamodb.GetItemInput{
 		TableName: aws.String(tableName),
 		Key: map[string]types.AttributeValue{
@@ -104,15 +103,15 @@ func getUser(ctx context.Context, client *dynamodb.Client, tableName, token, cre
 			"createdAt":     &types.AttributeValueMemberS{Value: createdAt},
 		},
 	})
-	
+
 	if err != nil {
 		return nil, err
 	}
-	
+
 	if out.Item == nil {
 		return nil, fmt.Errorf("user not found: token=%s createdAt=%s", token, createdAt)
 	}
-	
+
 	return out.Item, nil
 }
 
@@ -158,7 +157,7 @@ func main() {
 
 	token := "*****"
 	createdAt := "2024-01-01T00:00:00Z"
-	
+
 	// CREATEを実行する
 	err = createUser(ctx, client, tableName, token)
 	if err != nil {
@@ -167,7 +166,7 @@ func main() {
 
 	// READを実行する
 	item, err := getUser(ctx, client, tableName, token, createdAt)
-	
+
 	if err != nil {
 		log.Fatal(err)
 	}
