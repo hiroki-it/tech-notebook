@@ -19,6 +19,38 @@ description: AWS DynamoDB＠AWSリソースの知見を記録しています。
 
 <br>
 
+## 02. セットアップ
+
+### セットアップ(Terraformの場合)
+
+```terraform
+module "dynamodb_user" {
+  source  = "terraform-aws-modules/dynamodb-table/aws"
+  version = "~> 4.2"
+
+  # テーブル名を設定する
+  name                           = "user"
+  # PartitionKeyを設定する
+  hash_key                       = "userId"
+  # SortKeyを設定する
+  range_key                      = "createdAt"
+  point_in_time_recovery_enabled = true
+
+  attributes = [
+    {
+      name = "PartitionKey"
+      type = "S"
+    },
+    {
+      name = "SortKey"
+      type = "S"
+    },
+  ]
+}
+```
+
+<br>
+
 ## 02. ユースケース
 
 ### データ保存
@@ -39,14 +71,15 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
 )
 
-func putSample(ctx context.Context, client *dynamodb.Client, tableName, data string) error {
+func putUser(ctx context.Context, client *dynamodb.Client, tableName, id string) error {
 	now := time.Now()
 
 	_, err := client.PutItem(ctx, &dynamodb.PutItemInput{
 		TableName: aws.String(tableName),
 		Item: map[string]types.AttributeValue{
-			// Partition key
-			"fooKey": &types.AttributeValueMemberS{Value: data},
+			// Terraformでは、必ず使用する属性をPartitionKeyにする
+			"userId": &types.AttributeValueMemberS{Value: id},
+			// Terraformでは、並び替えに使用する属性をSortKeyにする
 			// DynamoDBのキー値をタイムスタンプで並び替えるために、ISO-8601形式を使用する
 			"createdAt": &types.AttributeValueMemberS{Value: now.Format(time.RFC3339)},
 		},
@@ -70,7 +103,7 @@ func configure(cfg aws.Config) (*dynamodb.Client, string) {
 		client = dynamodb.NewFromConfig(cfg)
 	}
 
-	// fooテーブル
+	// 例えば、userテーブル
 	tableName := os.Getenv("DYNAMODB_TABLE_NAME")
 
 	if tableName == "" {
@@ -95,8 +128,8 @@ func main() {
 
 	client, tableName := configure(cfg)
 
-	data := "data"
-	if err := putSample(ctx, client, tableName, data); err != nil {
+	id := "1"
+	if err := putSample(ctx, client, tableName, id); err != nil {
 		log.Fatal(err)
 	}
 
