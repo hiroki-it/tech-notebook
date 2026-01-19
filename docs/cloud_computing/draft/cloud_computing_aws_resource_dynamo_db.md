@@ -76,6 +76,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
 )
 
+// CREATE
 func createUser(ctx context.Context, client *dynamodb.Client, tableName, token string) error {
 	now := time.Now()
 
@@ -91,6 +92,28 @@ func createUser(ctx context.Context, client *dynamodb.Client, tableName, token s
 	})
 
 	return err
+}
+
+// READ
+func getUser(ctx context.Context, client *dynamodb.Client, tableName, token, createdAt string) (map[string]types.AttributeValue, error) {
+	
+	out, err := client.GetItem(ctx, &dynamodb.GetItemInput{
+		TableName: aws.String(tableName),
+		Key: map[string]types.AttributeValue{
+			"authUserToken": &types.AttributeValueMemberS{Value: token},
+			"createdAt":     &types.AttributeValueMemberS{Value: createdAt},
+		},
+	})
+	
+	if err != nil {
+		return nil, err
+	}
+	
+	if out.Item == nil {
+		return nil, fmt.Errorf("user not found: token=%s createdAt=%s", token, createdAt)
+	}
+	
+	return out.Item, nil
 }
 
 func configure(cfg aws.Config) (*dynamodb.Client, string) {
@@ -134,11 +157,22 @@ func main() {
 	client, tableName := configure(cfg)
 
 	token := "*****"
+	createdAt := "2024-01-01T00:00:00Z"
 	
-	// CREATE処理を実行する
-	if err := createUser(ctx, client, tableName, token); err != nil {
+	// CREATEを実行する
+	err = createUser(ctx, client, tableName, token)
+	if err != nil {
 		log.Fatal(err)
 	}
+
+	// READを実行する
+	item, err := getUser(ctx, client, tableName, token, createdAt)
+	
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("GetItem OK: %v\n", item)
 
 	fmt.Println("PutItem OK")
 }
