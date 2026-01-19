@@ -815,6 +815,8 @@ foo_job:
 
 #### ▼ `CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX` (依存プロキシ)
 
+GitLab上にコンテナイメージのキャッシュを作成する。
+
 CIでは、コンテナイメージのプルの頻度が高まるため、イメージレジストリ (例：DockerHub) によってはプル数の制限にひっかかってしまう。
 
 イメージレジストリのパスのプレフィクスとして`CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX` (依存プロキシ) をつけると、コンテナイメージがGitLabのDependency Proxyを経由するようになる。
