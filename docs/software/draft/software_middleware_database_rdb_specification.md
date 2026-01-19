@@ -13,11 +13,11 @@ description: DB仕様書＠RESTful-DBの知見を記録しています。
 
 <br>
 
-### DBスキーマ駆動開発
+### DBテーブルスキーマ駆動開発
 
-#### ▼ DBスキーマ駆動開発とは
+#### ▼ DBテーブルスキーマ駆動開発とは
 
-DB仕様書に基づいて、CRUDのコードを実装する。
+DBテーブルの仕様書に基づいて、CRUDのコードを実装する。
 
 #### ▼ Gorm Genの場合
 
@@ -52,13 +52,11 @@ func main() {
 	// 生成にDBを使う
 	g.UseDB(db)
 
-	// 生成対象を指定
-	// テーブル名からモデル(struct)とCRUDっぽいクエリが生成される
+	// userテーブルのスキーマからORMモデルやCRUDのような実装を自動作成する
 	user := g.GenerateModel("users")
 
 	// Queryに登録して自動作成する
 	g.ApplyBasic(user)
 	g.Execute()
 }
-
 ```
