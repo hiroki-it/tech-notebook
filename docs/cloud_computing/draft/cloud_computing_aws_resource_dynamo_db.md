@@ -23,15 +23,18 @@ description: AWS DynamoDB＠AWSリソースの知見を記録しています。
 
 ### セットアップ(Terraformの場合)
 
+ここでは、auth-userサービスがトークンをAWS DynamoDBに保存するとする。
+
+
 ```terraform
 module "dynamodb_user" {
   source  = "terraform-aws-modules/dynamodb-table/aws"
   version = "~> 4.2"
 
   # テーブル名を設定する
-  name                           = "user"
+  name                           = "auth-user"
   # PartitionKeyを設定する
-  hash_key                       = "userId"
+  hash_key                       = "authUserToken"
   # SortKeyを設定する
   range_key                      = "createdAt"
   point_in_time_recovery_enabled = true
@@ -51,9 +54,11 @@ module "dynamodb_user" {
 
 <br>
 
-## 02. ユースケース
+## 03. ユースケース
 
-### データ保存
+### CREATE処理
+
+ここでは、auth-userサービスがトークンをAWS DynamoDBに保存するとする。
 
 ```go
 package main
@@ -71,14 +76,14 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
 )
 
-func putUser(ctx context.Context, client *dynamodb.Client, tableName, id string) error {
+func createUser(ctx context.Context, client *dynamodb.Client, tableName, token string) error {
 	now := time.Now()
 
 	_, err := client.PutItem(ctx, &dynamodb.PutItemInput{
 		TableName: aws.String(tableName),
 		Item: map[string]types.AttributeValue{
 			// Terraformでは、必ず使用する属性をPartitionKeyにする
-			"userId": &types.AttributeValueMemberS{Value: id},
+			"authUserToken": &types.AttributeValueMemberS{Value: token},
 			// Terraformでは、並び替えに使用する属性をSortKeyにする
 			// DynamoDBのキー値をタイムスタンプで並び替えるために、ISO-8601形式を使用する
 			"createdAt": &types.AttributeValueMemberS{Value: now.Format(time.RFC3339)},
@@ -103,7 +108,7 @@ func configure(cfg aws.Config) (*dynamodb.Client, string) {
 		client = dynamodb.NewFromConfig(cfg)
 	}
 
-	// 例えば、userテーブル
+	// 例えば、auth-userテーブル
 	tableName := os.Getenv("DYNAMODB_TABLE_NAME")
 
 	if tableName == "" {
@@ -128,8 +133,10 @@ func main() {
 
 	client, tableName := configure(cfg)
 
-	id := "1"
-	if err := putSample(ctx, client, tableName, id); err != nil {
+	token := "*****"
+	
+	// CREATE処理を実行する
+	if err := createUser(ctx, client, tableName, token); err != nil {
 		log.Fatal(err)
 	}
 
