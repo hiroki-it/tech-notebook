@@ -79,6 +79,92 @@ AWS EC2へのリクエストをバランスよく分配することによって�
 
 <br>
 
+### Terraformの場合
+
+#### ▼ メンテナンス用ALB
+
+```terraform
+module "alb_eks_maintenance" {
+  source  = "terraform-aws-modules/alb/aws"
+  version = "= 9.13.0"
+
+  name                             = "foo-alb-maintenance"
+  enable_cross_zone_load_balancing = true
+  vpc_id                           = "*****"
+  subnets                          = ["*****", "*****"]
+  associate_web_acl                = true
+  web_acl_arn                      = "*****"
+  access_logs = {
+    bucket = "*****"
+    prefix = "foo-alb-maintenance"
+  }
+
+  security_group_egress_rules = {
+    all = {
+      from_port = 0
+      to_port   = 65535
+      protocol  = "-1"
+      cidr_ipv4 = "0.0.0.0/0"
+    }
+  }
+
+  security_group_ingress_rules = {
+    https = {
+      from_port = 443
+      to_port   = 443
+      protocol  = "-1"
+      cidr_ipv4 = "0.0.0.0/0"
+    }
+  }
+
+  listeners = {
+
+    https = {
+      port            = 443
+      protocol        = "HTTPS"
+      certificate_arn = "*****"
+
+      # JSONデータを含む固定レスポンス
+      action_type = "fixed-response"
+      fixed_response = {
+        content_type = "application/json"
+        message_body = jsonencode({
+          code = "9999"
+          # メンテナンスモード時の業務コード
+          reason = "MAINTENANCE"
+        })
+        status_code = "503"
+      }
+      # XMLデータを含む固定レスポンスの場合
+      # fixed_response = {
+      #   content_type = "text/xml;charset=UTF-8"
+      #   message_body = <<-XML
+      #     <?xml version="1.0" encoding="UTF-8"?>
+      #     <error>
+      #       <code>9999</status>
+      #       <reason>MAINTENANCE</statusReason>
+      #     </error>
+      #   XML
+      #   status_code = "503"
+      # }
+    }
+
+    http = {
+      port        = 80
+      protocol    = "HTTP"
+      action_type = "redirect"
+      redirect = {
+        port        = 443
+        protocol    = "HTTPS"
+        status_code = "HTTP_301"
+      }
+    }
+  }
+}
+```
+
+<br>
+
 ### ALBインスタンス
 
 #### ▼ ALBインスタンスとは
@@ -259,5 +345,9 @@ ALB、NLB、では元々実装されていたキューを廃止した経緯が�
 ## 04. NLB：Network Load Balancer
 
 クラウド`L4`ロードバランサーとして働く。
+
+固定IPアドレスを設定できる。
+
+そのため、ドメインを指定できず、IPアドレスを指定しないといけないHTTPリクエストを送信できないような通信元にも対応している。
 
 <br>
