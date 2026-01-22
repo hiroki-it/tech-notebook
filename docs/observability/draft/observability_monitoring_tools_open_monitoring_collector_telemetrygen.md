@@ -15,7 +15,7 @@ description: Telemetrygen＠OpenTelemetry Collectorの知見を記録してい�
 
 ## 01. Telemetrygenとは
 
-ローカル環境で擬似的に分散トレースを作成し、OpenTelemetry Collectorがこれを正しく処理できるかを検証する。
+ローカルマシンで擬似的に分散トレースを作成し、OpenTelemetry Collectorがこれを正しく処理できるかを検証する。
 
 別途、宛先のOpenTelemetry Collectorを起動し、ログを出力しておく。
 

@@ -119,7 +119,7 @@ func configure(cfg aws.Config) (*dynamodb.Client, string) {
 
 	var client *dynamodb.Client
 
-	// ローカル環境ではDynamoDBの仮のエンドポイントを設定する
+	// ローカルマシンではDynamoDBの仮のエンドポイントを設定する
 	if endpoint := os.Getenv("DYNAMODB_ENDPOINT"); endpoint != "" {
 		client = dynamodb.NewFromConfig(cfg, func(o *dynamodb.Options) {
 			// AWSリージョンによってエンドポイントが自動的に決まる

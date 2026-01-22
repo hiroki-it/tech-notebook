@@ -30,4 +30,4 @@ description: ユニットテスト設計用のドキュメント＠AI用ドキ�
 | foo            | 正常系 | should return user when userId is valid   | 正しいUserIdだった場合にUserを返却すること   |
 | bar            | 異常系 | should throw error when userId is invalid | 不正なUserIdだった場合にUserをスローすること |
 
-5. ローカル環境でテストコードを実行する必要はない。
+5. ローカルマシンでテストコードを実行する必要はない。

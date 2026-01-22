@@ -80,7 +80,7 @@ const prisma = new PrismaClient()
 
 #### ▼ dev
 
-ローカル環境用のマイグレーションを実行し、また差分を埋めるSQLファイルを発行する。
+ローカルマシン用のマイグレーションを実行し、また差分を埋めるSQLファイルを発行する。
 
 ```bash
 $ prisma migrate dev
@@ -142,7 +142,7 @@ DROP TABLE `UserDetail`;
 
 #### ▼ seed
 
-ローカル環境用の初期データを挿入する。
+ローカルマシン用の初期データを挿入する。
 
 ```bash
 $ yarn prisma db seed

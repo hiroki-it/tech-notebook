@@ -82,7 +82,7 @@ $ git commit --allow-empty -m "first commit"
 
 モジュールのキャッシュを削除する。
 
-ローカル環境での開発中に`go install`コマンドを実行しても、モジュールをアップグレードできない場合に使用する。
+ローカルマシンでの開発中に`go install`コマンドを実行しても、モジュールをアップグレードできない場合に使用する。
 
 ```bash
 $ go clean --modcache

@@ -177,7 +177,7 @@ func SetupOpentelemetry() func() {
 
 	config := getConfig()
 
-	// ローカル環境ではスパンの記録を無効化する
+	// ローカルマシンではスパンの記録を無効化する
 	if config.CollectorEndPoint == "http://localhost" {
 		slog.Info("skip configure opentelemetry exporter.")
 		return func() {
