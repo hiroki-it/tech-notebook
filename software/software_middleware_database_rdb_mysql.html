@@ -4800,6 +4800,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#datetime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ datetime型
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -33374,6 +33385,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#datetime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ datetime型
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -33896,55 +33918,78 @@
 <p><br></p>
 <h3 id="_8">データ型<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="integer">▼ integer型<a class="headerlink" href="#integer" title="Permanent link">&para;</a></h4>
+<p>数値型である。</p>
 <p>integer値がどのくらい増えるかによって、<code>3</code>個を使い分ける。</p>
 <p>符号なし (Unsigned) を有効化した場合、マイナス値を使用しなくなった分、使用できるプラス値が増える。</p>
 <table>
 <thead>
 <tr>
 <th>データ型</th>
-<th>値</th>
+<th>例</th>
+<th>設定可能範囲</th>
 <th>符号なし (Unsigned) を有効化した場合</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>TINYINT</td>
+<td><code>0</code></td>
 <td><code>-128</code><br>~ <code>+127</code></td>
 <td><code>0</code><br>~ <code>+255</code></td>
 </tr>
 <tr>
 <td>INT</td>
+<td><code>0</code></td>
 <td><code>2147483648</code><br>~ <code>+2147483647</code></td>
 <td><code>0</code><br>~ <code>+4294967295</code></td>
 </tr>
 <tr>
 <td>BIGINT</td>
+<td><code>0</code></td>
 <td><code>-9223372036854775808</code><br>~ <code>+9223372036854775807</code></td>
 <td><code>0</code><br>~ <code>+18446744073709551615</code></td>
 </tr>
 </tbody>
 </table>
 <h4 id="string">▼ string型<a class="headerlink" href="#string" title="Permanent link">&para;</a></h4>
+<p>文字列型である。</p>
 <p>文字数がどのくらい増えるかによって、<code>3</code>個を使い分ければ良い。</p>
 <table>
 <thead>
 <tr>
 <th>データ型</th>
-<th>最大バイト数</th>
+<th>例</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>VARCHAR(M)</td>
-<td><code>255</code></td>
+<td><code>foo</code></td>
 </tr>
 <tr>
 <td>TEXT</td>
-<td><code>65535</code></td>
+<td><code>はじめまして。長谷川広樹です。</code></td>
 </tr>
 <tr>
 <td>MEDIUMTEXT</td>
-<td><code>16777215</code></td>
+<td><code>&lt;ここにログメッセージ&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="datetime">▼ datetime型<a class="headerlink" href="#datetime" title="Permanent link">&para;</a></h4>
+<p>日時型である。</p>
+<p>日時を文字列として永続化することもでき、文字列として並び替えなどもできるが、日時型として保存した方がよりよい。</p>
+<table>
+<thead>
+<tr>
+<th>データ型</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DATETIME</td>
+<td><code>2026-01-23 15:04:05</code></td>
 </tr>
 </tbody>
 </table>
@@ -34294,7 +34339,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月25日 23:04:43 JST">2025-11-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年1月23日 22:09:56 JST">2026-01-23</span>
   </span>
 
     
