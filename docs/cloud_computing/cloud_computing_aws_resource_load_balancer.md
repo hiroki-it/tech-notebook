@@ -81,6 +81,90 @@ AWS EC2へのリクエストをバランスよく分配することによって�
 
 ### Terraformの場合
 
+#### ▼ EKSに紐づけるALB
+
+```terraform
+module "alb_eks" {
+  source  = "terraform-aws-modules/alb/aws"
+  version = "= 9.13.0"
+
+  name                             = "foo-alb-eks"
+  enable_cross_zone_load_balancing = true
+  vpc_id                           = "*****"
+  subnets                          = ["*****", "*****"]
+  associate_web_acl                = true
+  web_acl_arn                      = "*****"
+  access_logs = {
+    bucket = "*****"
+    prefix = "foo-alb-eks"
+  }
+
+  security_group_egress_rules = {
+    all = {
+      from_port = 0
+      to_port   = 65535
+      protocol  = "-1"
+      cidr_ipv4 = "0.0.0.0/0"
+    }
+  }
+
+  security_group_ingress_rules = {
+    https = {
+      from_port = 443
+      to_port   = 443
+      protocol  = "-1"
+      cidr_ipv4 = "0.0.0.0/0"
+    }
+  }
+
+  listeners = {
+
+    https = {
+      port            = 443
+      protocol        = "HTTPS"
+      certificate_arn = "*****"
+      forward = {
+        # ターゲットグループのキー名を指定する
+        target_group_key = "eks"
+      }
+    }
+
+    http = {
+      port        = 80
+      protocol    = "HTTP"
+      action_type = "redirect"
+      redirect = {
+        port        = 443
+        protocol    = "HTTPS"
+        status_code = "HTTP_301"
+      }
+    }
+  }
+
+  target_groups = {
+
+    # 自由にキー名を設定する
+    eks = {
+      port              = 30180
+      protocol          = "HTTP"
+      # Nodeにルーティングするためにinstanceとする
+      target_type       = "instance"
+      # ターゲットグループへのEC2の登録はEKSマネージドNodeグループに委譲する
+      create_attachment = false
+
+      health_check = {
+        enabled  = true
+        path     = "/healthz/ready"
+        port     = 30000
+        protocol = "HTTP"
+        matcher  = "200"
+      }
+    }
+  }
+
+}
+```
+
 #### ▼ メンテナンス用ALB
 
 ```terraform
@@ -162,6 +246,10 @@ module "alb_eks_maintenance" {
   }
 }
 ```
+
+<br>
+
+### AWS Load Balancer Controllerの場合
 
 <br>
 

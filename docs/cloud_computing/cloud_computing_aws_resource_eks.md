@@ -112,7 +112,7 @@ module "eks_foo" {
   subnets = ["subnet-*****", "subnet-*****", "subnet-*****"]
 
   # AWS EKSアドオン
-  cluster_addons = {
+  addons = {
 
     coredns = {
       resolve_conflicts = "OVERWRITE"
@@ -129,11 +129,12 @@ module "eks_foo" {
 
   # AWS EKSマネージドグループ
   eks_managed_node_groups = {
-    node_group_name = "foo-group"
-    instance_types  = ["m5.large"]
-    min_size        = 3
-    max_size        = 4
-    desired_size    = 5
+    foo-group = {
+      instance_types = ["m5.large"]
+      min_size     = 3
+      max_size     = 4
+      desired_size = 5
+    }
   }
 }
 ```
