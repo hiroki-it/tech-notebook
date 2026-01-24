@@ -141,6 +141,8 @@ module "alb_eks" {
     }
   }
 
+  # ターゲットグループを定義
+  # aws_lb_target_groupを使用しても良い
   target_groups = {
 
     # 自由にキー名を設定する
@@ -161,7 +163,12 @@ module "alb_eks" {
       }
     }
   }
+}
 
+# ターゲットグループとマネージドNodeグループを紐づける
+resource "aws_autoscaling_attachment" "alb_eks" {
+  autoscaling_group_name = aws_eks_node_group.foo.resources[0].autoscaling_groups[0].name
+  lb_target_group_arn = module.alb_eks.target_group_arns["eks"]
 }
 ```
 
