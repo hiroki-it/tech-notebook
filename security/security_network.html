@@ -34273,8 +34273,8 @@ public
 <p><br></p>
 <h2 id="05-l7webweb-application-firewall">05. 【<code>L7</code>】Webアプリファイアウォール：Web Application Firewall<a class="headerlink" href="#05-l7webweb-application-firewall" title="Permanent link">&para;</a></h2>
 <h3 id="web">Webアプリファイアウォールとは<a class="headerlink" href="#web" title="Permanent link">&para;</a></h3>
-<p><code>L7</code> (アプリケーション層) に対するサイバー攻撃 (SQLインジェクション、XSS、OSコマンドインジェクションなど) を防御する。</p>
-<p><code>L7</code>を防御できていない場合、より低いレイヤー (例：<code>L3</code>) を突破できれば (例：送信元IPアドレスの乗っ取り) 、<code>L7</code>のサイバー攻撃 (SQLインジェクション、XSS、OSコマンドインジェクションなど) を実施できてしまうことになる。</p>
+<p><code>L7</code> (アプリケーション層) に対するサイバー攻撃 (例：SQLインジェクション、XSS、CSRF、パストラバーサル) を防御する。</p>
+<p><code>L7</code>を防御できていない場合、より低いレイヤー (例：<code>L3</code>) を突破できれば (例：送信元IPアドレスの乗っ取り) 、<code>L7</code>のサイバー攻撃を実施できてしまうことになる。</p>
 <p><img alt="security_protection-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png" /></p>
 <blockquote>
 <ul>
@@ -34417,7 +34417,7 @@ public
 <p><br></p>
 <h2 id="09-l7corscross-origin-resource-sharing">09. 【<code>L7</code>】CORS：Cross-Origin Resource Sharing (オリジン間リソース共有)<a class="headerlink" href="#09-l7corscross-origin-resource-sharing" title="Permanent link">&para;</a></h2>
 <h3 id="cors">CORSとは<a class="headerlink" href="#cors" title="Permanent link">&para;</a></h3>
-<p><code>L7</code> (アプリケーション層) に対するサイバー攻撃 (例：CSRF、XSS) を防御する。</p>
+<p><code>L7</code> (アプリケーション層) に対するサイバー攻撃 (例：SQLインジェクション、XSS、CSRF、パストラバーサル) を防御する。</p>
 <p>異なるドメインのクライアントからのリクエストを拒否する仕組みである。</p>
 <p>ブラウザではデフォルトでCORSが有効になっており、正しいリクエストがCORSを突破できるように対処する必要がある。</p>
 <p>異なるドメインクライアントからのリクエストを許可したい場合は、リクエストとレスポンスの両方で対応が必要である。</p>
@@ -34507,7 +34507,7 @@ public
 <p><br></p>
 <h2 id="10-l7set-cookie">10. 【<code>L7</code>】<code>Set-Cookie</code>ヘッダー<a class="headerlink" href="#10-l7set-cookie" title="Permanent link">&para;</a></h2>
 <h3 id="set-cookie"><code>Set-Cookie</code>ヘッダーとは<a class="headerlink" href="#set-cookie" title="Permanent link">&para;</a></h3>
-<p><code>L7</code> (アプリケーション層) に対するサイバー攻撃 (例：XSS) を防御する。</p>
+<p><code>L7</code> (アプリケーション層) に対するサイバー攻撃 (例：SQLインジェクション、XSS、CSRF、パストラバーサル) を防御する。</p>
 <p>属性を有効化することにより、リクエストヘッダーの作成を制限できる。</p>
 <p><br></p>
 <h3 id="domain">Domain属性<a class="headerlink" href="#domain" title="Permanent link">&para;</a></h3>
@@ -34672,7 +34672,7 @@ public
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月8日 15:16:16 JST">2025-07-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年1月24日 21:27:33 JST">2026-01-24</span>
   </span>
 
     
