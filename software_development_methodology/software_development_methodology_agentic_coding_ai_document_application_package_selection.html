@@ -32580,6 +32580,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        言語とフレームワーク
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#api" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -32595,17 +32606,6 @@
     <span class="md-ellipsis">
       
         DB
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        オブザーバビリティ
       
     </span>
   </a>
@@ -32650,6 +32650,89 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        フロントエンドパッケージ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="フロントエンドパッケージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        言語とフレームワーク
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        バックエンド連携
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        テスト
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ユーティリティ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        デザイン
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -32680,17 +32763,32 @@
 
 <h1 id="ai">パッケージ選定＠AI用ドキュメント<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h1>
 <h2 id="_1">バックエンドパッケージ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<h3 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
+<h3 id="_2">言語とフレームワーク<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Protobuf CLI<ul>
-<li>bufbuild/buf：<a href="https://pkg.go.dev/github.com/bufbuild/buf">https://pkg.go.dev/github.com/bufbuild/buf</a></li>
+<li>言語<ul>
+<li>Go：<a href="https://pkg.go.dev/golang.org/dl/go1.21.6">https://pkg.go.dev/golang.org/dl/go1.21.6</a></li>
 <li>選定理由：〜</li>
 </ul>
 </li>
 </ul>
 <ul>
+<li>フレームワーク<ul>
+<li>Gin：<a href="https://pkg.go.dev/github.com/gin-gonic/gin">https://pkg.go.dev/github.com/gin-gonic/gin</a></li>
+<li>選定理由：〜</li>
+</ul>
+</li>
+</ul>
+<h3 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
+<ul>
 <li>gRPC<ul>
 <li>grpc-go：<a href="https://pkg.go.dev/google.golang.org/grpc">https://pkg.go.dev/google.golang.org/grpc</a></li>
+<li>選定理由：デファクトスタンダードであるため</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Protobuf CLI<ul>
+<li>bufbuild/buf：<a href="https://pkg.go.dev/github.com/bufbuild/buf">https://pkg.go.dev/github.com/bufbuild/buf</a></li>
 <li>選定理由：〜</li>
 </ul>
 </li>
@@ -32710,17 +32808,9 @@
 </ul>
 </li>
 </ul>
-<h3 id="_2">オブザーバビリティ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<ul>
-<li>ロガー<ul>
-<li>slog：<a href="https://pkg.go.dev/log/slog">https://pkg.go.dev/log/slog</a></li>
-<li>選定理由：〜</li>
-</ul>
-</li>
-</ul>
 <h3 id="_3">テスト<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <ul>
-<li>mockライブラリ<ul>
+<li>モックライブラリ<ul>
 <li>go.uber.org/mock：<a href="https://pkg.go.dev/go.uber.org/mock/gomock">https://pkg.go.dev/go.uber.org/mock/gomock</a></li>
 <li>選定理由：〜</li>
 </ul>
@@ -32734,6 +32824,13 @@
 </li>
 </ul>
 <h3 id="_4">ユーティリティ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>ロガー<ul>
+<li>slog：<a href="https://pkg.go.dev/log/slog">https://pkg.go.dev/log/slog</a></li>
+<li>選定理由：〜</li>
+</ul>
+</li>
+</ul>
 <ul>
 <li>バリデーションライブラリ<ul>
 <li>go-playground/validator：<a href="https://pkg.go.dev/github.com/go-playground/validator/v10">https://pkg.go.dev/github.com/go-playground/validator/v10</a></li>
@@ -32763,6 +32860,105 @@
 </ul>
 </li>
 </ul>
+<p><br></p>
+<h2 id="_6">フロントエンドパッケージ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="_7">言語とフレームワーク<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li>言語<ul>
+<li>TypeScript：<a href="https://www.typescriptlang.org/">https://www.typescriptlang.org/</a></li>
+<li>選定理由：〜</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>フレームワーク<ul>
+<li>Next.js：<a href="https://nextjs.org/">https://nextjs.org/</a></li>
+<li>選定理由：〜</li>
+</ul>
+</li>
+</ul>
+<h3 id="ui">UI<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h3>
+<ul>
+<li>基本的なUIコンポーネント<ul>
+<li>React：<a href="https://react.dev/">https://react.dev/</a></li>
+<li>選定理由：</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>通知・トーストコンポーネント：<ul>
+<li>shadcn/ui：<a href="https://shadcn.com/">https://shadcn.com/</a></li>
+<li>選定理由：</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>フォーム管理<ul>
+<li>React Hook Form：<a href="https://react-hook-form.com/">https://react-hook-form.com/</a></li>
+<li>選定理由：</li>
+</ul>
+</li>
+</ul>
+<h3 id="_8">バックエンド連携<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>API通信<ul>
+<li>grpc/grpc-js：<a href="https://www.npmjs.com/package/@grpc/grpc-js">https://www.npmjs.com/package/@grpc/grpc-js</a></li>
+<li>選定理由：</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>認証<ul>
+<li>NextAuth.js：<a href="https://next-auth.js.org/">https://next-auth.js.org/</a></li>
+<li>選定理由：</li>
+</ul>
+</li>
+</ul>
+<h3 id="_9">テスト<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li>テスト<ul>
+<li>Playwright：<a href="https://playwright.dev/">https://playwright.dev/</a></li>
+<li>選定理由：</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>モック<ul>
+<li>Playwright：<a href="https://playwright.dev/">https://playwright.dev/</a></li>
+<li>選定理由：</li>
+</ul>
+</li>
+</ul>
+<h3 id="_10">ユーティリティ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<ul>
+<li>ロガー<ul>
+<li>pino：<a href="https://www.npmjs.com/package/pino">https://www.npmjs.com/package/pino</a></li>
+<li>選定理由：</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>バリデーション<ul>
+<li>Zod：<a href="https://zod.dev/">https://zod.dev/</a></li>
+<li>選定理由：</li>
+</ul>
+</li>
+</ul>
+<h3 id="_11">デザイン<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<ul>
+<li>デザイン設計：<ul>
+<li>Figma：<a href="https://www.figma.com/">https://www.figma.com/</a></li>
+<li>選定理由：</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>スタイリング<ul>
+<li>Tailwind CSS：<a href="https://tailwindcss.com/">https://tailwindcss.com/</a></li>
+<li>選定理由：</li>
+</ul>
+</li>
+</ul>
 
 
 
@@ -32783,7 +32979,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年1月24日 23:37:03 JST">2026-01-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年1月24日 23:53:22 JST">2026-01-24</span>
   </span>
 
     
