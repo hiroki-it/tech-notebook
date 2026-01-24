@@ -323,6 +323,8 @@ foo();
 
 Typescriptでは`throw`は、Errorオブジェクトだけでなく、どんな型でも返却できる。
 
+ちなみに、よくある型はErrorオブジェクト型、object型、string型である。
+
 これを`catch`する場合、さまざまな型を考慮する必要がある。
 
 <br>

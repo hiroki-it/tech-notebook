@@ -114,7 +114,7 @@ const obj = {
 
 ## 02-02. 型
 
-### プリミティブ
+### プリミティブ型
 
 #### ▼ 文字列 (String)
 
@@ -181,7 +181,7 @@ sym = ""; // これはエラーになる
 
 <br>
 
-### オブジェクト (Object)
+### オブジェクト型 (Object)
 
 #### ▼ 変数
 
@@ -216,24 +216,29 @@ const value2 = obj[key]; // 456
 const value3 = obj["baz-qux"]; // 789
 ```
 
-<br>
+#### ▼ Recordによる定義
 
-### レコード (Record)
-
-#### ▼ 変数
+Recordを使用することで、オブジェクト型をわかりやすく定義できる。
 
 ```typescript
-type ProfileKeys = "name" | "age";
-
-const object: Record<ProfileKeys, string> = {
+const object: Record<string, string> = {
   name: "taro",
   age: "20",
 };
 ```
 
+```typescript
+const object: Record<string, unknown> = {
+  name: "taro",
+  age: "20",
+  foo: 1,
+  bar: [],
+};
+```
+
 <br>
 
-### 配列
+### 配列型
 
 #### ▼ 配列とは
 
@@ -274,7 +279,7 @@ console.log(total); // 60
 
 <br>
 
-### タプル
+### タプル型
 
 #### ▼ タプルとは
 
@@ -294,7 +299,7 @@ const result = foo(1, "Alice");
 
 <br>
 
-### ジェネリクス
+### ジェネリクス型
 
 #### ▼ 変数
 
@@ -431,7 +436,7 @@ measureFunctionExecutionTime(foo);
 
 <br>
 
-### 数値
+### 数値型
 
 #### ▼ 引数
 
@@ -472,7 +477,7 @@ const logger = (): void => {
 
 <br>
 
-### Errorオブジェクト
+### Errorオブジェクト型
 
 #### ▼ ビルトイン
 
@@ -484,7 +489,7 @@ interface Error {
 }
 ```
 
-#### ▼ 独自のErrorオブジェクト
+#### ▼ 独自のErrorオブジェクト型
 
 ステータスコードに応じたエラーを継承すると、`try-catch`で扱いやすくなる。
 
