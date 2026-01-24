@@ -295,6 +295,8 @@ foo();
 
 呼び出し元に失敗をエラーとして返却する。
 
+どんな型でも返却できる。
+
 ```typescript
 // string型のみを指定し、Error型は返却値の型に指定しなくても良い
 function foo(): string {
@@ -315,9 +317,17 @@ foo();
 
 <br>
 
-## 05. エラー
+## 05. エラーハンドリング
 
-### エラーの型
+### エラーハンドリングとは
+
+Typescriptでは`throw`は、Errorオブジェクトだけでなく、どんな型でも返却できる。
+
+これを`catch`する場合、さまざまな型を考慮する必要がある。
+
+<br>
+
+### まずは緩い型で`catch`する
 
 #### ▼ unknown
 
@@ -371,98 +381,11 @@ function foo(): string | any {
 
 <br>
 
-### Errorオブジェクト
+### `catch`した型に応じた処理
 
-#### ▼ ビルトイン
+#### ▼ `catch`した型に応じた処理とは
 
-```typescript
-interface Error {
-  name: string;
-  message: string;
-  stack?: string;
-}
-```
-
-#### ▼ 独自のErrorオブジェクト
-
-ステータスコードに応じたエラーを継承すると、`try-catch`で扱いやすくなる。
-
-基本的には、ビルトインのErrorオブジェクトを継承する。
-
-```typescript
-// Errorオブジェクトを継承した独自のErrorオブジェクト
-class FooError extends Error {
-  private readonly _name: string;
-  private readonly _code: number;
-
-  constructor(message: string, code: number) {
-    // message変数はErrorオブジェクトに渡す
-    super(message);
-    // 親のErrorオブジェクトのプロパティに設定
-    this.name = "FooError";
-    this._code = code;
-  }
-
-  get name() {
-    return this._name;
-  }
-
-  get code() {
-    return this._code;
-  }
-}
-```
-
-必ずしも、Errorオブジェクトを継承する必要はない。
-
-例えば、任意のErrorオブジェクトと実行時間や開始時間をプロパティにもつ`FailedResult`クラスがある。
-
-独自のErrorオブジェクトのプロパティに実行時間や開始時間を入れればいいと考えるかもしれないが、外部ツールの任意のErrorオブジェクトには外からこれらを設定できないため、整合性が合わなくなる。
-
-その一方で、Errorオブジェクトのプロパティに実行時間や開始時間を入れれば、任意のErrorオブジェクトに対応できるようになる。
-
-```typescript
-export class FailedResult {
-  // resultプロパティにはErrorオブジェクトが入る
-  private readonly _result: unknown;
-  private readonly _executionTime?: number;
-  private readonly _startAtTimestamp?: string;
-
-  constructor({
-    result,
-    executionTime,
-    startAtTimestamp,
-  }: {
-    result: unknown;
-    executionTime?: number;
-    startAtTimestamp?: string;
-  }) {
-    this._result = result;
-    this._executionTime = executionTime;
-    this._startAtTimestamp = startAtTimestamp;
-  }
-
-  get result() {
-    return this._result;
-  }
-
-  get executionTime() {
-    return this._executionTime;
-  }
-
-  get startAtTimestamp() {
-    return this._startAtTimestamp;
-  }
-}
-```
-
-<br>
-
-### エラーの方に応じた処理
-
-#### ▼ エラーハンドリング
-
-TypeScriptの`try-catch`で捕捉したエラーに応じて処理を実行し分ける場合、`catch`ブロックを複数書くのではなく、`if`文を使用する必要がある。
+TypeScriptの`try-catch`で捕捉したエラーの型に応じて処理を実行し分ける場合、`catch`ブロックを複数書くのではなく、`if`文を使用する必要がある。
 
 ```typescript
 import axios, {AxiosError} from "axios";
@@ -572,7 +495,7 @@ export function getErrorStatusCode(error: unknown): number {
     return 400;
   }
 
-  // どのようなエラー型が来るかわからないため、よくある構造で決め打ちする
+  // どのようなエラーの型が来るかわからないため、よくある構造で決め打ちする
   const errorObject = error as {
     response?: {status?: unknown};
     status?: unknown;
