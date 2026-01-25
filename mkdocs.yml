@@ -938,13 +938,14 @@ nav:
           - Codex: software_development_methodology/software_development_methodology_agentic_coding_codex.md
           - PR Agent: software_development_methodology/software_development_methodology_agentic_coding_pr_agent.md
           - ■ AIドキュメント:
-              - AIドキュメント (API定義書) : software_development_methodology/software_development_methodology_agentic_coding_ai_document_api.md
               - AIドキュメント (プロダクトコンテキスト) : software_development_methodology/software_development_methodology_agentic_coding_ai_document_context.md
+              - AIドキュメント (パッケージ選定) : software_development_methodology/software_development_methodology_agentic_coding_ai_document_application_package_selection.md
+              - AIドキュメント (API定義書) : software_development_methodology/software_development_methodology_agentic_coding_ai_document_api.md
               - AIドキュメント (DB設計) : software_development_methodology/software_development_methodology_agentic_coding_ai_document_database.md
+              - AIドキュメント (ユニットテスト設計) : software_development_methodology/software_development_methodology_agentic_coding_ai_document_testing.md
               - AIドキュメント (システムの調査と実装) : software_development_methodology/software_development_methodology_agentic_coding_ai_document_investigation_and_implementation.md
               - AIドキュメント (巨大システムの調査) : software_development_methodology/software_development_methodology_agentic_coding_ai_document_investigation_large_system.md
               - AIドキュメント (レビュー) : software_development_methodology/software_development_methodology_agentic_coding_ai_document_review.md
-              - AIドキュメント (ユニットテスト設計) : software_development_methodology/software_development_methodology_agentic_coding_ai_document_testing.md
       - 組織論: software_development_methodology/software_development_organization.md
       - OSSコントリビューション: software_development_methodology/software_development_oss_contribution.md
       - テクノロジーマネージメント: software_development_methodology/software_development_technology_management.md
@@ -959,5 +960,3 @@ nav:
           - ■ Git:
               - コマンド: software_development_methodology/software_development_git_command.md
               - GitHub: software_development_methodology/software_development_git_github.md
-
-

@@ -16,13 +16,14 @@ hide:
   > - ##### [Claude Code](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_claude_code.html)
   > - ##### [PR Agent](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_pr_agent.html)
   > - ##### <u>AIドキュメント</u>
-  >   > - ##### [AIドキュメント (API定義書) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_api.html)
   >   > - ##### [AIドキュメント (プロダクトコンテキスト) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_context.html)
+  >   > - ##### [AIドキュメント (パッケージ選定) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_application_package_selection.html)
+  >   > - ##### [AIドキュメント (API定義書) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_api.html)
   >   > - ##### [AIドキュメント (DB設計) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_database.html)
+  >   > - ##### [AIドキュメント (ユニットテスト設計) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_testing.html)
   >   > - ##### [AIドキュメント (システムの調査と実装) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_investigation_and_implementation.html)
   >   > - ##### [AIドキュメント (巨大システムの調査) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_investigation_large_system.html)
   >   > - ##### [AIドキュメント (レビュー) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_review.html)
-  >   > - ##### [AIドキュメント (ユニットテスト設計) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_testing.html)
 
 <br>
 
