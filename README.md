@@ -67,7 +67,7 @@ $ yarn prettier -w --no-bracket-spacing **/*.md
 
 ## Webサイト生成
 
-1. ローカル環境でWebサイトを生成する
+1. ローカルマシンでWebサイトを生成する
 
 ```bash
 $ mkdocs serve
