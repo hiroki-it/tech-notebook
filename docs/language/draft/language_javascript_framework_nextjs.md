@@ -364,6 +364,8 @@ dotenvパッケージは不要である。
 
 ### UIとAPI
 
+#### ▼ ディレクトリ
+
 Next.jsでは、ブラウザルーティングとAPIエンドポイントを区別している。
 
 ```yaml
@@ -379,6 +381,42 @@ app/
 │   └── posts/
 │       └── [id]/               # 動的ルート（例：/api/posts/123）
 │           └── route.ts        # example.com/api/posts/:id
+```
+
+#### ▼ 動的ルート
+
+ルーティングにおけるパスパラメーターの値を事前に定義せず、処理の中で決定する。
+
+```typescript
+import {NextRequest} from "next/server";
+import {z} from "zod";
+
+export const dynamic = "force-dynamic";
+
+// 動的ルートのパスパラメーター
+const allowedKeys = ["foo", "bar"] as const;
+
+const ParamsSchema = z
+  .object({
+    // 空文字以外を許可する
+    key: z.string().min(1).max(64),
+  })
+  // 存在するキーのみを許可する
+  .refine(({key}) => (allowedKeys as readonly string[]).includes(key), {
+    // Zodのエラーメッセージ
+    message: "not allowed",
+  });
+
+export async function GET(
+  _request: NextRequest,
+  {params}: {params: {key: string}},
+) {
+  const parsed = ParamsSchema.safeParse(params);
+  // 存在しないキーの場合はパスが存在しないため、NotFoundとする
+  if (!parsed.success) return new Response(null, {status: 404});
+
+  return Response.json({ok: true, key: parsed.data.key});
+}
 ```
 
 <br>
