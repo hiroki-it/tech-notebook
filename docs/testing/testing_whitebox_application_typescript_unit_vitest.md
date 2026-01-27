@@ -19,6 +19,77 @@ description: Vitest＠JavaScriptユニットテストの知見を記録してい
 
 <br>
 
+## 02. ユニットテストの設計
+
+### 処理の順番
+
+Arrange-Act-Assertパターンを採用するとよい。
+
+```typescript
+import {test, expect, vi} from "vitest";
+import axios from "axios";
+import {fetchUser} from "./fetchUser";
+
+beforeEach(async () => {
+  vi.resetAllMocks();
+});
+
+// テストスイート
+describe("fetchUser", async () => {
+  vi.mock("axios");
+
+  const userId = "1";
+
+  // 正常系テストケース
+  test("should return id and name when success", async () => {
+    // Arrange
+    // テストを準備する
+    vi.mocked(axios, true).get.mockResolvedValueOnce({
+      data: {
+        id: "1",
+        name: "Taro",
+        executionTime: 123,
+        startAtTimestamp: "2024-06-01T12:00:00.000Z",
+      },
+      status: 200,
+    });
+
+    // Act
+    // 処理を実行する
+    const user = await fetchUser(userId);
+
+    // Assert
+    // 結果を評価する
+    expect(user.getId()).toBe("1");
+    expect(user.getName()).toBe("Taro");
+    expect(user.executionTime).toBeGreaterThan(0);
+    expect(new Date(user.startAtTimestamp).toISOString()).toBe(
+      user.startAtTimestamp,
+    );
+  });
+
+  // 異常系テストケース
+  test("should throw error when failure", async () => {
+    // Arrange
+    // テストを準備する
+    vi.mocked(axios, true).get.mockRejectedValueOnce(
+      new Error("Network Error"),
+    );
+
+    // Act
+    // 処理を実行する
+    const result = fetchUser(userId);
+
+    // Assert
+    // 結果を評価する
+    await expect(result).rejects.toBeInstanceOf(Error);
+    await expect(result).rejects.toThrow("Network Error");
+  });
+});
+```
+
+<br>
+
 ## 02. セットアップ
 
 ### plugin
@@ -122,6 +193,8 @@ Vitestの思想では、テストコードの型検証はエディタやビル�
 ## 04. テストコード例
 
 ### ユニットテストとしてDBへのCRUDを検証する
+
+事前処理としてDBデータを挿入し、事後処理としてDBデータを掃除する。
 
 ```typescript
 import {describe, it, expect, beforeEach, afterEach} from "vitest";
