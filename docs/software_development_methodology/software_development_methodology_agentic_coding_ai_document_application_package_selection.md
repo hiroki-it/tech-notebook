@@ -155,7 +155,7 @@ description: パッケージ選定＠AI用ドキュメントの知見を記録�
   - Figma：https://www.figma.com/
   - 選定理由：〜
 
-- スタイリング
+- CSSスタイリング
   - Tailwind CSS：https://tailwindcss.com/
   - 選定理由：〜
 
