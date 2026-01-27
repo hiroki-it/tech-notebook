@@ -121,6 +121,36 @@ Vitestの思想では、テストコードの型検証はエディタやビル�
 
 ## 04. テストコード例
 
+### ユニットテストとしてDBへのCRUDを検証する
+
+```typescript
+import {describe, it, expect, beforeEach, afterEach} from "vitest";
+import {prisma} from "~/database/prisma.server";
+
+// ユニットテストの事前処理
+beforeEach(async () => {
+  await prisma.foo
+    .create
+    // fooテーブルにDBデータを挿入
+    ();
+  await prisma.bar
+    .create
+    // fooテーブルの子にあたるbarテーブルにDBデータを挿入
+    ();
+});
+
+// ユニットテストの事後処理
+afterEach(async () => {
+  // 逆順でDBデータを掃除する
+  await prisma.bar.deleteMany();
+  await prisma.foo.deleteMany();
+});
+
+// ここでCRUDに関するユニットテスト
+```
+
+<br>
+
 ### 入力値に対して結果が正しいかを検証する
 
 #### ▼ テスト対象の関数
