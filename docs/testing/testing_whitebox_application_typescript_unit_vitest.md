@@ -88,6 +88,8 @@ describe("fetchUser", async () => {
 });
 ```
 
+> - https://qiita.com/inasync/items/e0b54e62784710c4b42d
+
 <br>
 
 ## 02. セットアップ
