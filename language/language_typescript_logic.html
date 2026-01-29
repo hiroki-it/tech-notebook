@@ -13382,6 +13382,73 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#09" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09. アンチパターン
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="09. アンチパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ループ内の線形探索
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ループ内の線形探索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ ループ内の線形探索とは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ 悪い例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ 良い例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -33613,6 +33680,73 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#09" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09. アンチパターン
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="09. アンチパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ループ内の線形探索
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ループ内の線形探索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ ループ内の線形探索とは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ 悪い例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ 良い例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -34279,6 +34413,54 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="09">09. アンチパターン<a class="headerlink" href="#09" title="Permanent link">&para;</a></h2>
+<h3 id="_21">ループ内の線形探索<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<h4 id="_22">▼ ループ内の線形探索とは<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<p>線形探索とは、配列などを先頭から順に走査し、特定の要素を抽出する処理である。</p>
+<p>ループ内の線形探索を実行すると処理量が多くなるため、<code>Set</code>関数や<code>Map</code>関数で事前準備しておく。</p>
+<h4 id="_23">▼ 悪い例<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<p>ループの中で線形探索の関数 (<code>some</code>、<code>includes</code>、<code>find</code>) を実行してしまっている。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ループ</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">inputKey</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">inputKeys</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// ループ内で線形探索処理を実行してしまっている</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">items</span><span class="p">.</span><span class="nx">some</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="nx">key</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">inputKey</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">     </span><span class="p">...</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_24">▼ 良い例<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="nx">key</span><span class="p">);</span>
+
+<span class="c1">// Set関数を使用した事前準備</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">keySet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Set</span><span class="p">(</span><span class="nx">keys</span><span class="p">);</span>
+
+<span class="c1">// ループ</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">inputKey</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">inputKeys</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// ループ内で線形探索処理を実行していないからよい</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">keySet</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">inputKey</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 存在する</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 存在しない</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="nx">key</span><span class="p">);</span>
+
+<span class="c1">// Map関数を使用した事前準備</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">entryMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">(</span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="nx">item</span><span class="p">.</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">item</span><span class="p">]));</span>
+
+<span class="c1">// ループ</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">inputKey</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">inputKeys</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// ループ内で線形探索処理を実行していないからよい</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">matched</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">entryMap</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">inputKey</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">matched</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 一致したオブジェクトを使う</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 見つからない</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
 
@@ -34299,7 +34481,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年1月24日 20:31:30 JST">2026-01-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年1月29日 15:25:34 JST">2026-01-29</span>
   </span>
 
     
