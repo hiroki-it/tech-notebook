@@ -710,3 +710,65 @@ async function getUserNames(
 > - https://zenn.dev/coconala/articles/reasons-for-continuing-to-learn#%E3%82%82%E3%81%97%E3%80%81%E3%81%93%E3%81%93%E3%81%BE%E3%81%A7%E3%81%AE%E3%81%99%E3%81%B9%E3%81%A6%E3%82%92%E5%AD%A6%E3%82%93%E3%81%A0%E3%82%89
 
 <br>
+
+## 09. アンチパターン
+
+### ループ内の線形探索
+
+#### ▼ ループ内の線形探索とは
+
+線形探索とは、配列などを先頭から順に走査し、特定の要素を抽出する処理である。
+
+ループ内の線形探索を実行すると処理量が多くなるため、`Set`関数や`Map`関数で事前準備しておく。
+
+#### ▼ 悪い例
+
+ループの中で線形探索の関数 (`some`、`includes`、`find`) を実行してしまっている。
+
+```typescript
+// ループ
+for (const inputKey of inputKeys) {
+  // ループ内で線形探索処理を実行してしまっている
+  if (items.some((item) => item.key === inputKey)) {
+
+     ...
+  }
+}
+```
+
+#### ▼ 良い例
+
+```typescript
+const keys = items.map((item) => item.key);
+
+// Set関数を使用した事前準備
+const keySet = new Set(keys);
+
+// ループ
+for (const inputKey of inputKeys) {
+  // ループ内で線形探索処理を実行していないからよい
+  if (keySet.has(inputKey)) {
+    // 存在する
+  } else {
+    // 存在しない
+  }
+}
+```
+
+```typescript
+const keys = items.map((item) => item.key);
+
+// Map関数を使用した事前準備
+const entryMap = new Map(items.map((item) => [item.key, item]));
+
+// ループ
+for (const inputKey of inputKeys) {
+  // ループ内で線形探索処理を実行していないからよい
+  const matched = entryMap.get(inputKey);
+  if (matched) {
+    // 一致したオブジェクトを使う
+  } else {
+    // 見つからない
+  }
+}
+```
