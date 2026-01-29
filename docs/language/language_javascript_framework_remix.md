@@ -412,17 +412,19 @@ CSRモードとSSGモードは厳密ではなく、Remix独自の擬似的なモ
 │   │   ├── layouts/        # 画面レイアウトreactコンポーネント
 │   │   └── validators/     # 入力フォームの検証ロジック
 │   │
-│   ├── constants/          # アプリケーション全体で使用する定数（環境変数ではない）
+│   ├── constants/          # フロントエンド／バックエンドで使用するグローバルな値
 │   ├── entry.client.tsx
 │   ├── entry.server.tsx
-│   ├── hooks/              # componentsディレクトリで使用する汎用的なsetState処理
-│   ├── models/             # DBモデル、型定義 (ドメインロジックのため、永続化処理以外には依存させない)
+│   ├── hooks/              # フロントエンドの状態管理で使用する汎用的なsetState関数
+│   ├── domain/             # 独自のドメインモデル (ドメインロジックのため、永続化処理以外には依存させない)
+│   ├── repository/         # ORMモデルを使用した永続化処理
 │   ├── openapi/            # OpenAPI仕様書の生成処理
 │   ├── root.tsx
-│   ├── routes/             # ローダー、remixコンポーネント、アクションを実行する
+│   ├── routes/             # ページング処理とAPIルーティング処理の関数。関数はアクション、コンポーネント、ローダーに分類できる。
+│   ├── usecases            # routeディレクトリのapiルートまたはuiルートから呼び出すユースケース
 │   ├── services/           # routesディレクトリで使用する『デザインパターン』『外部APIとの通信』『認証』『prisma.server.ts』など
 │   ├── styles/             # CSS、Tailwind、など
-│   └── utils/              # 『薄い関数』『その他、汎用的な非機能ロジックの関数』など
+│   └── utils/              # フロントエンド／バックエンドで使用する『薄い関数』『その他、汎用的な非機能ロジックの関数』など
 │
 ├── prisma/ # モデルの定義
 ...
@@ -551,7 +553,7 @@ import {redirect} from "react-router";
 
 ## 07. ルーティング
 
-### UIとAPI
+### uiルートとapiルート
 
 Remixでは、ブラウザルーティングとAPIエンドポイントを区別せず、両方を兼ねている。
 
