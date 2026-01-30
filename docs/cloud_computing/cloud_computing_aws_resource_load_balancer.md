@@ -260,6 +260,58 @@ module "alb_eks_maintenance" {
 
 <br>
 
+### 設計パターン
+
+#### ▼ 同じドメインを設け、パスで複数のBFFに振り分ける場合
+
+```mermaid
+flowchart LR
+    user[クライアント]
+
+    r53[Route53<br/>example.com]
+    alb[ALB<br/>HTTPS :443]
+
+    subgraph EKS[EKS Cluster]
+        svcA[Service A<br/>Port 3000]
+        svcB[Service B<br/>Port 4000]
+    end
+
+    user --> r53
+    r53 --> alb
+
+    alb -- "/app1/*" --> svcA
+    alb -- "/app2/*" --> svcB
+```
+
+#### ▼ 異なるドメインを設け、通信経路を分ける場合
+
+```mermaid
+flowchart LR
+    user[クライアント]
+
+    r53A[Route53<br/>app1.example.com]
+    r53B[Route53<br/>app2.example.com]
+
+    albA[app1 ALB<br/>HTTPS :443]
+    albB[app2 ALB<br/>HTTPS :443]
+
+    subgraph EKS[EKS Cluster]
+        svcA[Service A<br/>Port 3000]
+        svcB[Service B<br/>Port 4000]
+    end
+
+    user --> r53A
+    user --> r53B
+
+    r53A --> albA
+    r53B --> albB
+
+    albA -- "Host: app1.example.com" --> svcA
+    albB -- "Host: app2.example.com" --> svcB
+```
+
+<br>
+
 ### ALBインスタンス
 
 #### ▼ ALBインスタンスとは
