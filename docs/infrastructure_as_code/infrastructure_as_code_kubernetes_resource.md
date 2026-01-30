@@ -924,6 +924,62 @@ Serviceのポート番号と紐づくNodeのNICのポート番号はデフォル
 
 > - https://stackoverflow.com/a/64605782
 
+例えば、ポート番号は種類に応じて`200`番の間隔で分類する。
+
+```yaml
+################################################
+# L7ロードバランサーによるヘルスチェックの流入口
+################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: health-check
+spec:
+  type: NodePort
+  ports:
+    - name: http-health-check
+      port: 15021
+      targetPort: 15021
+      nodePort: 31000
+---
+################################################
+# Fooに関する流入口
+# port: 8000~8199
+# targetPort: 8000~8199
+# nodePort: 30000~30199
+################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo
+spec:
+  type: NodePort
+  ports:
+    - name: http-foo
+      port: 8000
+      targetPort: 8000
+      nodePort: 30000
+
+---
+################################################
+# Barに関する流入口
+# port: 8200~8399
+# targetPort: 8200~8399
+# nodePort: 30200~30399
+################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: bar
+spec:
+  type: NodePort
+  ports:
+    - name: http-bar
+      port: 8200
+      targetPort: 8200
+      nodePort: 30200
+```
+
 #### ▼ LoadBalancer Service
 
 ![kubernetes_loadbalancer-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_loadbalancer-service.png)
