@@ -145,12 +145,12 @@ Istio IngressGatewayがサービスメッシュ外からの通信をサービス
 
 クライアント (ブラウザ、外部API) に応じて、適切なフロントエンドアプリやAPI Gatewayにルーティングできます。
 
-| 図中の登場キャラクター      | 説明                                                                                                                                                                                |
-| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Istio Gateway               | NodePort Serviceからのリクエストを受信する。                                                                                                                                        |
-| Istio VirtualService (1)    | 宛先とするフロントエンドアプリのServiceを決定する。PCブラウザやスマホブラウザからのリクエストは、User-Agentヘッダーにブラウザを判定できる値を持つ。VirtualServiceでこれを判定する。 |
-| Istio VirtualService (2)    | 宛先とするフロントエンドアプリのServiceを決定する。外部APIからのリクエストは、HostヘッダーにAPIのドメインを持つ。VirtualServiceでこれを判定する。                                   |
-| Kubernetes NodePort Service | kube-proxyの更新したiptableを使用して、ALBからのリクエストを受信し、Istio IngressGateway PodにL4ロードバランシングする。                                                            |
+| 図中の登場キャラクター      | 説明                                                                                                                                                                                          |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Istio Gateway               | NodePort Serviceからのリクエストを受信する。                                                                                                                                                  |
+| Istio VirtualService (1)    | 宛先とするフロントエンドアプリケーションのServiceを決定する。PCブラウザやスマホブラウザからのリクエストは、User-Agentヘッダーにブラウザを判定できる値を持つ。VirtualServiceでこれを判定する。 |
+| Istio VirtualService (2)    | 宛先とするフロントエンドアプリケーションのServiceを決定する。外部APIからのリクエストは、HostヘッダーにAPIのドメインを持つ。VirtualServiceでこれを判定する。                                   |
+| Kubernetes NodePort Service | kube-proxyの更新したiptableを使用して、ALBからのリクエストを受信し、Istio IngressGateway PodにL4ロードバランシングする。                                                                      |
 
 ![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-トラフィック管理 (南北).drawio.png](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%83%88%E3%83%A9%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E7%AE%A1%E7%90%86_(%E5%8D%97%E5%8C%97).drawio.png>)
 
@@ -382,25 +382,25 @@ Fluentd / FluentBitの配置方法には、エージェントパターン (Daemo
 
 ここでは、以下のログが登場します。
 
-- アプリの実行ログ
+- アプリケーションの実行ログ
 - istio-proxyのアクセスログ
 - EKSコントロールプレーンのログ (実行ログ、監査ログなど)
 
 ![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-ログ.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-ログ.drawio.png)
 
-| 図中の登場キャラクター                     | 説明                                                                                                                                                                                                                                                                                                                                                              |
-| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| AWS EBS                                    | コンテナランタイムは、コンテナの標準出力または標準エラー出力したログの実体をAWS EBSボリュームの`/var/log/pods`ディレクトリに出力する。また、`/var/log/container`ディレクトリに各コンテナのログのシンボリックリンクがある。                                                                                                                                        |
-| AWS CloudWatch Logs                        | AWS EKSクラスター内のログを収集し、また保管する。                                                                                                                                                                                                                                                                                                                 |
-| AWS EKSコントロールプレーン                | AWS EKSコントロールプレーンは、コントロールプレーンコンポーネントのログをAWS CloudWatch Logsに出力する。                                                                                                                                                                                                                                                          |
-| Fluentd / FluentBit                        | DaemonSet型のエージェントパターンを採用し、DaemonSetとして各Nodeに稼働させる。`/var/log/container`ディレクトリに各コンテナのログのシンボリックリンクがある。INPUTセクションでこのディレクトリを指定し、ログを収集する。今回の例では、istio-proxyのアクセスログとアプリの実行ログを収集するとする。OUTPUTセクションで、ログの宛先にAWS CloudWatch Logsを設定する。 |
-| Istioコントロールプレーン                  | Istioデータプレーン (istio-proxy) にAccessLoggingプロバイダーの設定を適用する。                                                                                                                                                                                                                                                                                   |
-| Istioデータプレーン (istio-proxy)          | アクセスログを出力する。                                                                                                                                                                                                                                                                                                                                          |
-| Istio Telemetry                            | `.spec.accessLogging[*]providers`キーで、AccessLoggingプロバイダーを使用する。                                                                                                                                                                                                                                                                                    |
-| Kubernetes ConfigMap (Fluentd / FluentBit) | Fluentd / FluentBitの各種オプションを管理する。                                                                                                                                                                                                                                                                                                                   |
-| Kubernetes ConfigMap (Istio)               | `.extensionProviders`キーで、AccessLoggingプロバイダーを宣言する。                                                                                                                                                                                                                                                                                                |
-| SWE / SREer                                | AWS CloudWatch Logsのログインサイト機能で、ログを分析可視化する。AWS CloudWatch Logsのログイベントをメトリクス化すれば、監視できるようになる。                                                                                                                                                                                                                    |
-| アプリ                                     | 実行ログを出力する。                                                                                                                                                                                                                                                                                                                                              |
+| 図中の登場キャラクター                     | 説明                                                                                                                                                                                                                                                                                                                                                                        |
+| ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AWS EBS                                    | コンテナランタイムは、コンテナの標準出力または標準エラー出力したログの実体をAWS EBSボリュームの`/var/log/pods`ディレクトリに出力する。また、`/var/log/container`ディレクトリに各コンテナのログのシンボリックリンクがある。                                                                                                                                                  |
+| AWS CloudWatch Logs                        | AWS EKSクラスター内のログを収集し、また保管する。                                                                                                                                                                                                                                                                                                                           |
+| AWS EKSコントロールプレーン                | AWS EKSコントロールプレーンは、コントロールプレーンコンポーネントのログをAWS CloudWatch Logsに出力する。                                                                                                                                                                                                                                                                    |
+| Fluentd / FluentBit                        | DaemonSet型のエージェントパターンを採用し、DaemonSetとして各Nodeに稼働させる。`/var/log/container`ディレクトリに各コンテナのログのシンボリックリンクがある。INPUTセクションでこのディレクトリを指定し、ログを収集する。今回の例では、istio-proxyのアクセスログとアプリケーションの実行ログを収集するとする。OUTPUTセクションで、ログの宛先にAWS CloudWatch Logsを設定する。 |
+| Istioコントロールプレーン                  | Istioデータプレーン (istio-proxy) にAccessLoggingプロバイダーの設定を適用する。                                                                                                                                                                                                                                                                                             |
+| Istioデータプレーン (istio-proxy)          | アクセスログを出力する。                                                                                                                                                                                                                                                                                                                                                    |
+| Istio Telemetry                            | `.spec.accessLogging[*]providers`キーで、AccessLoggingプロバイダーを使用する。                                                                                                                                                                                                                                                                                              |
+| Kubernetes ConfigMap (Fluentd / FluentBit) | Fluentd / FluentBitの各種オプションを管理する。                                                                                                                                                                                                                                                                                                                             |
+| Kubernetes ConfigMap (Istio)               | `.extensionProviders`キーで、AccessLoggingプロバイダーを宣言する。                                                                                                                                                                                                                                                                                                          |
+| SWE / SREer                                | AWS CloudWatch Logsのログインサイト機能で、ログを分析可視化する。AWS CloudWatch Logsのログイベントをメトリクス化すれば、監視できるようになる。                                                                                                                                                                                                                              |
+| アプリ                                     | 実行ログを出力する。                                                                                                                                                                                                                                                                                                                                                        |
 
 [Microservices Pattern: Pattern: Log aggregation](https://microservices.io/patterns/observability/application-logging.html)
 
@@ -464,7 +464,7 @@ Prometheus Serverを使用して、AWS EKSクラスター内で作成される�
 
 ここで概説するスパンの種類として、以下があります。
 
-- アプリの作成するスパン
+- アプリケーションの作成するスパン
 - istio-proxyの作成するスパン
 
 OpenTelemetry Collectorを介して、AWS EKSクラスター内のスパンをAWS X-Rayに送信します。

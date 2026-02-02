@@ -19,7 +19,7 @@ description: PipeCD＠CDツールの知見を記録しています。
 
 対象のリポジトリをポーリングし、リポジトリをクローンする。
 
-また、デプロイ先にアプリをデプロイする。
+また、デプロイ先にアプリケーションをデプロイする。
 
 > - https://pipecd.dev/docs-v0.45.x/installation/install-controlplane/
 

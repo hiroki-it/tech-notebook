@@ -46,13 +46,13 @@ Jobに、ArgoCDの`Sync`フェーズを設定する。
 
 設定したフェーズのタイミングで、ArgoCDはこのJobをフックする。
 
-| 設定項目 | 処理の実行タイミング | 適するJobの処理                                                  |
-| -------- | -------------------- | ---------------------------------------------------------------- |
-| PreSync  | Syncの前             | DBマイグレーション処理（アプリを起動する前に実行する必要がある） |
-| Sync     | Syncと同時           | Deploymentのアップデート戦略以外のデプロイ実行処理               |
-| Skip     | Syncスキップ時       |                                                                  |
-| PostSync | Syncの後             | ヘルスチェック                                                   |
-| SyncFail | Syncの失敗時         | Sync失敗の残骸となったKubernetesリソースの削除処理               |
+| 設定項目 | 処理の実行タイミング | 適するJobの処理                                                            |
+| -------- | -------------------- | -------------------------------------------------------------------------- |
+| PreSync  | Syncの前             | DBマイグレーション処理（アプリケーションを起動する前に実行する必要がある） |
+| Sync     | Syncと同時           | Deploymentのアップデート戦略以外のデプロイ実行処理                         |
+| Skip     | Syncスキップ時       |                                                                            |
+| PostSync | Syncの後             | ヘルスチェック                                                             |
+| SyncFail | Syncの失敗時         | Sync失敗の残骸となったKubernetesリソースの削除処理                         |
 
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#sync-phases-and-waves

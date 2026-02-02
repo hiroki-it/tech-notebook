@@ -3155,7 +3155,7 @@ spec:
       livenessProbe:
         httpGet:
           port: 8080
-          # SpringBoot製Javaアプリのlivenessエンドポイント
+          # SpringBoot製Javaアプリケーションのlivenessエンドポイント
           path: /actuator/health/liveness
           scheme: HTTP
         # 各設定のデフォルト値を示す
@@ -3419,7 +3419,7 @@ spec:
       startupProbe:
         httpGet:
           port: 8080
-          # SpringBoot製Javaアプリののstartupエンドポイント
+          # SpringBoot製Javaアプリケーションののstartupエンドポイント
           path: /actuator/startup
         initialDelaySeconds: 10
         periodSeconds: 10
@@ -3455,7 +3455,7 @@ spec:
       readinessProbe:
         httpGet:
           port: 8080
-          # SpringBoot製JavaアプリのReadinessエンドポイント
+          # SpringBoot製JavaアプリケーションのReadinessエンドポイント
           path: /actuator/health/readiness
           scheme: HTTP
         # 各設定のデフォルト値を示す
