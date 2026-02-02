@@ -2030,7 +2030,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        認証サービス
+        認証マイクロサービス
       
     </span>
   </a>
@@ -2481,7 +2481,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        認証サービス
+        認証マイクロサービス
       
     </span>
   </a>
@@ -33479,7 +33479,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        認証サービス
+        認証マイクロサービス
       
     </span>
   </a>
@@ -33940,16 +33940,16 @@
 </blockquote>
 <p><br></p>
 <h2 id="01">01. 認証<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_3">認証サービス<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_3">認証マイクロサービス<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>各マイクロサービスごとに認証処理 (ユーザーの識別、ユーザーの有効性の検証) を持たせるのではなく、認証の責務を持つマイクロサービスを<code>1</code>個だけ配置する。</p>
-<p>この認証サービスは、資格情報を永続化するためのDB、またはセッションを保管するためのストレージを持つ。</p>
+<p>この認証マイクロサービスは、資格情報を永続化するためのDB、またはセッションを保管するためのストレージを持つ。</p>
 <p><br></p>
 <h2 id="01-02-sso">01-02. SSOパターン (独立パターン)<a class="headerlink" href="#01-02-sso" title="Permanent link">&para;</a></h2>
 <h3 id="sso">SSOパターンとは<a class="headerlink" href="#sso" title="Permanent link">&para;</a></h3>
 <p>『独立パターン』ともいう。</p>
-<p>認証サービスはトークンベース認証を使用し、アクセストークンを<code>Cookie</code>ヘッダーや<code>Authorization</code>ヘッダーで運搬する。</p>
-<p>この認証サービスは、資格情報を永続化するためのDBを持ち、有効期限が切れればアクセストークンを無効化する。</p>
-<p>認証サービスが単一障害点になるというデメリットがある。</p>
+<p>認証マイクロサービスはトークンベース認証を使用し、アクセストークンを<code>Cookie</code>ヘッダーや<code>Authorization</code>ヘッダーで運搬する。</p>
+<p>この認証マイクロサービスは、資格情報を永続化するためのDBを持ち、有効期限が切れればアクセストークンを無効化する。</p>
+<p>認証マイクロサービスが単一障害点になるというデメリットがある。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#sso-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E7%AE%A1%E7%90%86">https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#sso-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E7%AE%A1%E7%90%86</a></li>
@@ -33986,10 +33986,10 @@
 <h2 id="01-03">01-03. セッションパターン (集中パターン)<a class="headerlink" href="#01-03" title="Permanent link">&para;</a></h2>
 <h3 id="_4">セッションパターンとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>『集中パターン』ともいう。</p>
-<p>サーバー側に、セッションIDを作成する認証サービス (例：自前、Keycloakなど) を<code>1</code>個だけ配置し、認証処理 (ユーザーの識別、ユーザーの有効性の検証) を実行する。</p>
-<p>この認証サービスは、セッションベース認証を使用し、セッションを<code>Cookie</code>ヘッダーで運搬する。</p>
+<p>サーバー側に、セッションIDを作成する認証マイクロサービス (例：自前、Keycloakなど) を<code>1</code>個だけ配置し、認証処理 (ユーザーの識別、ユーザーの有効性の検証) を実行する。</p>
+<p>この認証マイクロサービスは、セッションベース認証を使用し、セッションを<code>Cookie</code>ヘッダーで運搬する。</p>
 <p>セッションIDを再利用するために、ブラウザのCookieやセッションストレージツール (例：Redis) に保存する。</p>
-<p>(認証サービスだけでなく各マイクロサービスもセッションストレージツールに接続できるようにする必要があるらしいが、Keycloakではそんなことない)</p>
+<p>(認証マイクロサービスだけでなく各マイクロサービスもセッションストレージツールに接続できるようにする必要があるらしいが、Keycloakではそんなことない)</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#%E5%88%86%E6%95%A3%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AB%E3%82%88%E3%82%8B%E7%AE%A1%E7%90%86">https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#%E5%88%86%E6%95%A3%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AB%E3%82%88%E3%82%8B%E7%AE%A1%E7%90%86</a></li>
@@ -34026,8 +34026,8 @@
 <h2 id="01-04-jwt">01-04. JWTパターン (分散パターン)<a class="headerlink" href="#01-04-jwt" title="Permanent link">&para;</a></h2>
 <h3 id="jwt">JWTパターンとは<a class="headerlink" href="#jwt" title="Permanent link">&para;</a></h3>
 <p>『分散パターン』ともいう。</p>
-<p>サーバー側に、JWTを作成する認証サービス (例：自前、Keycloakなど) を<code>1</code>個だけ配置し、認証処理 (ユーザーの識別、ユーザーの有効性の検証) を実行する。</p>
-<p>認証サービスはトークンベース認証を使用し、アクセストークンを<code>Cookie</code>ヘッダーや<code>Authorization</code>ヘッダーで運搬する。</p>
+<p>サーバー側に、JWTを作成する認証マイクロサービス (例：自前、Keycloakなど) を<code>1</code>個だけ配置し、認証処理 (ユーザーの識別、ユーザーの有効性の検証) を実行する。</p>
+<p>認証マイクロサービスはトークンベース認証を使用し、アクセストークンを<code>Cookie</code>ヘッダーや<code>Authorization</code>ヘッダーで運搬する。</p>
 <p>トークンを再利用するために、ブラウザのCookie、SessionStorage、またはLocalStorageに保存する。</p>
 <blockquote>
 <ul>
@@ -34054,9 +34054,9 @@
 <h3 id="jwtapi">JWTとAPIゲートウェイの組み合わせパターンとは<a class="headerlink" href="#jwtapi" title="Permanent link">&para;</a></h3>
 <p>『ゲートウェイ集中パターン』ともいう。</p>
 <p>JWTパターンにAPIゲートウェイを組み合わせたパターンであり、JWTパターンでJWTトークンの失効が難しいというデメリットを解決する。</p>
-<p>サーバー側に、JWTを作成する認証サービス (例：自前、Keycloakなど) を<code>1</code>個だけ配置する。</p>
+<p>サーバー側に、JWTを作成する認証マイクロサービス (例：自前、Keycloakなど) を<code>1</code>個だけ配置する。</p>
 <p>APIゲートウェイは、認証を集中的に管理し、認証とアクセストークン署名検証を担う。</p>
-<p>認証サービスはトークンベース認証を使用し、API Gatewayを介して、非SSOで認証を実施する。</p>
+<p>認証マイクロサービスはトークンベース認証を使用し、API Gatewayを介して、非SSOで認証を実施する。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#jwt%2Bapi-gateway-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%AE%A1%E7%90%86">https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#jwt%2Bapi-gateway-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%AE%A1%E7%90%86</a></li>
@@ -34084,12 +34084,12 @@
 <p><br></p>
 <h3 id="jwt_2">JWTプロキシーがある場合<a class="headerlink" href="#jwt_2" title="Permanent link">&para;</a></h3>
 <h4 id="aws-jwt-authorizer">▼ AWS JWT Authorizer<a class="headerlink" href="#aws-jwt-authorizer" title="Permanent link">&para;</a></h4>
-<p>ここでは、認証サービス (図では認可サーバー) から手動でJWTトークンを発行し、クライアントに共有すると仮定する。</p>
+<p>ここでは、認証マイクロサービス (図では認可サーバー) から手動でJWTトークンを発行し、クライアントに共有すると仮定する。</p>
 <ol>
 <li>クライアントのフロントエンドアプリケーションはAWS API GatewayにJWTトークンを含むリクエストを送信する。</li>
 <li>AWS API Gatewayは、AWS JWT Authorizerにリクエストを送信する。</li>
-<li>AWS JWT Authorizerは認証サービス (図では認可サーバー) のJWKSエンドポイントにリクエストを送信する。</li>
-<li>AWS JWT Authorizerは認証サービス (図では認可サーバー) から検証に使用する公開鍵を取得する。</li>
+<li>AWS JWT Authorizerは認証マイクロサービス (図では認可サーバー) のJWKSエンドポイントにリクエストを送信する。</li>
+<li>AWS JWT Authorizerは認証マイクロサービス (図では認可サーバー) から検証に使用する公開鍵を取得する。</li>
 <li>AWS JWT AuthorizerはJWTトークンの署名を検証する。</li>
 <li>AWS API Gatewayは、バックエンドにリクエストを送信する。</li>
 <li>バックエンドは、AWS API Gatewayにレスポンスを返信する。</li>
@@ -34107,7 +34107,7 @@
 <h2 id="02">02. 認可<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">集中パターン<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 集中パターンとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>認可スコープを定義する認可サービス (例：自前、Open Policy Agentなど) を<code>1</code>個だけ配置し、認可処理を実行する。</p>
+<p>認可スコープを定義する認可マイクロサービス (例：自前、Open Policy Agentなど) を<code>1</code>個だけ配置し、認可処理を実行する。</p>
 <p><img alt="microservices_authorization_centralized-authorization" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_centralized-authorization.png" /></p>
 <blockquote>
 <ul>
@@ -34116,7 +34116,7 @@
 </ul>
 </blockquote>
 <h4 id="_8">▼ 認可プロバイダーへの委譲<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>認可サービスとして認可プロバイダーを配置する。</p>
+<p>認可マイクロサービスとして認可プロバイダーを配置する。</p>
 <p>認可スコープを検証し、もしマイクロサービスの認可スコープが不十分であれば、リクエストを拒否する。</p>
 <p><img alt="microservices_authorization_centralized-authorization_external-provider" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_centralized-authorization_external-provider.png" /></p>
 <blockquote>
@@ -34168,7 +34168,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月26日 16:27:22 JST">2025-11-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月2日 15:45:48 JST">2026-02-02</span>
   </span>
 
     
