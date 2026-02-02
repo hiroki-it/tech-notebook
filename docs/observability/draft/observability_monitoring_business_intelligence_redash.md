@@ -31,7 +31,6 @@ RedashはリアルタイムはDBからデータを取得するのではなく、
 flowchart LR
     Redash
     DB
-    Slack
 
     Redash --SQL定期実行--> DB
 ```
