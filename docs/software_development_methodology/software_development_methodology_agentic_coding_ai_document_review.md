@@ -17,7 +17,7 @@ description: レビュー用のドキュメント＠AI用ドキュメントの�
 
 1. 本プロジェクトはマルチリポジトリのうちの一つのリポジトリであるため、親ディレクトリに移動 (`cd ../`) し、関連コンポーネントのドキュメントやコードから情報を集めて。
 2. プロジェクトのカレントディレクトリにあるCLAUDE.mdと親ディレクトリのCLAUDE.mdを参照し、レビューに必要なプロジェクトの情報を集める
-3. `git fetch origin &&  git diff origin/develop...HEAD`を実行し、プルリクエストの作業ブランチとリモートのdevelopブランチの間の差分を知る
+3. `git fetch origin && git diff origin/develop...HEAD`を実行し、プルリクエストの作業ブランチとリモートのdevelopブランチの間の差分を知る
 4. Issueの内容の提示を私に求めて
 
 <br>

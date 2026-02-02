@@ -17,12 +17,12 @@ description: Claude Code＠エージェンティックコーディングの知�
 
 ## オプション
 
-### --dangerously-skip-permissions
+### --allow-dangerously-skip-permissions
 
 承認を自動化する。
 
 ```bash
-$ claude --dangerously-skip-permissions
+$ claude --allow-dangerously-skip-permissions
 ```
 
 <br>

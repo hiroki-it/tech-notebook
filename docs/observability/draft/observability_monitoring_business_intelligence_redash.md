@@ -22,3 +22,38 @@ SQLiteでDBにクエリを送信し、ユーザー定義のビジネス成果指
 > - https://zenn.dev/shoezawa/articles/0e72d2aa061262#%E6%B3%A8%E6%84%8F%EF%BC%9A%E6%99%AE%E6%AE%B5%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E9%96%A2%E6%95%B0%E3%82%84%E6%BC%94%E7%AE%97%E5%AD%90%E3%81%8C%E4%BD%BF%E3%81%88%E3%81%AA%E3%81%84%E3%81%93%E3%81%A8%E3%81%8C%E3%81%82%E3%82%8B
 
 <br>
+
+## 02. 定期実行
+
+RedashはリアルタイムはDBからデータを取得するのではなく、定期的に取得している。
+
+```mermaid
+flowchart LR
+    Redash
+    DB
+    Slack
+
+    Redash --SQL定期実行--> DB
+```
+
+> - https://redash.io/help/user-guide/querying/scheduling-a-query/
+
+<br>
+
+## 03. アラート
+
+ビジネス成果メトリクスに異常値があった場合、これを通知する。
+
+```mermaid
+flowchart LR
+    Redash
+    DB
+    Slack
+
+    Redash --SQL定期実行--> DB
+    Redash --アラート通知--> Slack
+```
+
+> - https://qiita.com/toyama0919/items/f98c8f107374223ad3a4
+
+<br>
