@@ -32757,11 +32757,11 @@
 </tr>
 <tr>
 <td>Istio VirtualService (1)</td>
-<td>宛先とするフロントエンドアプリのServiceを決定する。PCブラウザやスマホブラウザからのリクエストは、User-Agentヘッダーにブラウザを判定できる値を持つ。VirtualServiceでこれを判定する。</td>
+<td>宛先とするフロントエンドアプリケーションのServiceを決定する。PCブラウザやスマホブラウザからのリクエストは、User-Agentヘッダーにブラウザを判定できる値を持つ。VirtualServiceでこれを判定する。</td>
 </tr>
 <tr>
 <td>Istio VirtualService (2)</td>
-<td>宛先とするフロントエンドアプリのServiceを決定する。外部APIからのリクエストは、HostヘッダーにAPIのドメインを持つ。VirtualServiceでこれを判定する。</td>
+<td>宛先とするフロントエンドアプリケーションのServiceを決定する。外部APIからのリクエストは、HostヘッダーにAPIのドメインを持つ。VirtualServiceでこれを判定する。</td>
 </tr>
 <tr>
 <td>Kubernetes NodePort Service</td>
@@ -33068,7 +33068,7 @@
 <p><a href="https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/">Common Architecture Patterns with Fluentd and Fluent Bit</a></p>
 <p>ここでは、以下のログが登場します。</p>
 <ul>
-<li>アプリの実行ログ</li>
+<li>アプリケーションの実行ログ</li>
 <li>istio-proxyのアクセスログ</li>
 <li>EKSコントロールプレーンのログ (実行ログ、監査ログなど)</li>
 </ul>
@@ -33095,7 +33095,7 @@
 </tr>
 <tr>
 <td>Fluentd / FluentBit</td>
-<td>DaemonSet型のエージェントパターンを採用し、DaemonSetとして各Nodeに稼働させる。<code>/var/log/container</code>ディレクトリに各コンテナのログのシンボリックリンクがある。INPUTセクションでこのディレクトリを指定し、ログを収集する。今回の例では、istio-proxyのアクセスログとアプリの実行ログを収集するとする。OUTPUTセクションで、ログの宛先にAWS CloudWatch Logsを設定する。</td>
+<td>DaemonSet型のエージェントパターンを採用し、DaemonSetとして各Nodeに稼働させる。<code>/var/log/container</code>ディレクトリに各コンテナのログのシンボリックリンクがある。INPUTセクションでこのディレクトリを指定し、ログを収集する。今回の例では、istio-proxyのアクセスログとアプリケーションの実行ログを収集するとする。OUTPUTセクションで、ログの宛先にAWS CloudWatch Logsを設定する。</td>
 </tr>
 <tr>
 <td>Istioコントロールプレーン</td>
@@ -33232,7 +33232,7 @@
 <h2 id="opentelemetry-collector">OpenTelemetry Collectorによるトレース収集<a class="headerlink" href="#opentelemetry-collector" title="Permanent link">&para;</a></h2>
 <p>ここで概説するスパンの種類として、以下があります。</p>
 <ul>
-<li>アプリの作成するスパン</li>
+<li>アプリケーションの作成するスパン</li>
 <li>istio-proxyの作成するスパン</li>
 </ul>
 <p>OpenTelemetry Collectorを介して、AWS EKSクラスター内のスパンをAWS X-Rayに送信します。</p>
@@ -33370,7 +33370,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年12月14日 21:08:39 JST">2025-12-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月2日 14:04:19 JST">2026-02-02</span>
   </span>
 
     
