@@ -183,9 +183,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 > - https://medium.com/nick-tune-tech-strategy-blog/core-domain-patterns-941f89446af5
 > - https://speakerdeck.com/mploed/aligning-organization-and-architecture-with-strategic-ddd?slide=26
 
-#### ▼ 記法
-
-**＊例＊**
+#### ▼ 例：完全個室ジムを運営するハコジム
 
 完全個室ジムを運営するハコジムの例。
 
@@ -357,15 +355,27 @@ ECサイトを運営するアスクルの例。
 
 > - https://speakerdeck.com/him0/4-years-for-carving-out-a-micro-service-from-freee-accounting?slide=22
 
-#### ▼ 例：フィンテック系
+#### ▼ 送金系
+
+**＊表＊**
+
+| ユビキタス言語 | マイクロサービス名 | マイクロサービス内のエンティティ                                                          |
+| -------------- | ------------------ | ----------------------------------------------------------------------------------------- |
+| 送金           | remittance         | Remittance（送金）、RemittanceHistories（送金履歴）、RemittanceStatuses（送金ステータス） |
+| 請求           | payment            | Payment（請求）、TransactionHistory（取引履歴）                                           |
+| 口座           | account            | BankAccount（銀行口座）                                                                   |
+| 精算           | settlement         | Settlement（精算）                                                                        |
+| レポーティング | reporting          | RemittanceHistory（送金履歴）、RemittanceDetailFile（送金明細ファイル）                   |
+
+#### ▼ QR決済系
 
 **＊表＊**
 
 | ユビキタス言語 | マイクロサービス名 | マイクロサービス内のエンティティ |
 | -------------- | ------------------ | -------------------------------- |
-| 取引           | transaction        | Transaction                      |
-| 契約           | merchant           | Merchant                         |
-| 精算           | payment            | Payment                          |
+| 取引           | transaction        | Transaction（取引）              |
+| 契約           | merchant           | Merchant（契約）                 |
+| 精算           | payment            | Payment（清算）                  |
 
 <br>
 
