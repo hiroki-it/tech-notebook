@@ -128,14 +128,18 @@ describe("<パブリックな関数名>", () => {
 
 #### ▼ 事前処理と事後処理
 
+`afterEach`関数はモックの削除のために必須である。
+
+`beforeEach`関数はユニットテストの外に影響がある処理（例：DB接続、ファイル操作、DOM操作、グローバル変数の変更）が必要な場合に使用する。
+
 ```typescript
 import {describe, it, expect, beforeEach, afterEach} from "vitest";
 import {prisma} from "~/database/prisma.server";
 
 // ユニットテストの事前処理
 beforeEach(async () => {
-  // 副作用（ユニットテストの外に影響）がある処理
-  // DB接続、ファイル操作、DOM操作、グローバル変数の変更など
+  // ユニットテストの外に影響がある処理
+  // 例：DB接続、ファイル操作、DOM操作、グローバル変数の変更など
 });
 
 // ユニットテストの事後処理
