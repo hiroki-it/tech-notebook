@@ -30,7 +30,23 @@ description: Vitest＠JavaScriptユニットテストの知見を記録してい
 ```typescript
 describe("<パブリックな関数名>", async () => {
 
-  describe("<テストケースの種別>", async () => {
+  describe("<テストスイートの種別>", async () => {
+
+    test("<テストケース名>", async () => {
+  }
+}
+```
+
+### テストケースの設計
+
+#### ▼ 正常系、異常系、境界値
+
+正常系、異常系、境界値のテストケースをテストスイートの種別におく。
+
+```typescript
+describe("<パブリックな関数名>", async () => {
+
+  describe("<テストスイートの種別>", async () => {
 
     // 正常系
     test("<テストケース名>", async () => {
@@ -53,7 +69,7 @@ describe("<パブリックな関数名>", async () => {
 ```typescript
 describe("<パブリックな関数名>", async () => {
 
-  describe("<テストケースの種別>", async () => {
+  describe("<テストスイートの種別>", async () => {
 
     test("正常系：<テストケース名>", async () => {
 
@@ -70,7 +86,70 @@ describe("<パブリックな関数名>", async () => {
 }
 ```
 
-### 処理の順番
+#### ▼ 変数名
+
+例えば、`baseFoo`変数を定義し、これのプロパティを各テストケースで継承する。
+
+```typescript
+import axios from "axios";
+import {describe, test, expect, vi} from "vitest";
+
+describe("<パブリックな関数名>", () => {
+  vi.mock("axios");
+
+  const baseFoo = {
+    url: "/users",
+  };
+
+  describe("<テストスイートの種別>", () => {
+    // 正常系
+    test("ユーザー一覧を取得できる", async () => {
+      vi.mocked(axios, true).get.mockResolvedValueOnce({
+        data: {
+          name: "Taro",
+        },
+        status: 200,
+      });
+
+      const res = await axios.request({
+        // プロパティを継承する
+        ...baseFoo,
+        params: {
+          limit: 10,
+        },
+      });
+
+      expect(res.status).toBe(200);
+      expect(res.data[0].name).toBe("Taro");
+    });
+  });
+});
+```
+
+#### ▼ 事前処理と事後処理
+
+```typescript
+import {describe, it, expect, beforeEach, afterEach} from "vitest";
+import {prisma} from "~/database/prisma.server";
+
+// ユニットテストの事前処理
+beforeEach(async () => {
+  // 副作用（ユニットテストの外に影響）がある処理
+  // DB接続、ファイル操作、DOM操作、グローバル変数の変更など
+});
+
+// ユニットテストの事後処理
+afterEach(async () => {
+  // モックに関するすべての設定を削除する
+  vi.clearAllMocks();
+});
+```
+
+<br>
+
+### テストケースの処理
+
+#### ▼ Arrange-Act-Assertパターン
 
 Arrange-Act-Assertパターンを採用するとよい。
 
