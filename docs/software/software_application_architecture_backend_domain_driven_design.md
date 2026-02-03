@@ -247,67 +247,7 @@ ECサイトを運営するアスクルの例。
 
 境界づけられたコンテキストを定義しない場合、異なるユビキタス言語をコアドメインやサブドメイン間で共有することとなり、それぞれの関心に無関係なデータを保持することになってしまう。
 
-#### ▼ 記法
-
-**＊例＊**
-
-本を販売するECサイトの例。
-
-コアドメインとサブドメインに基づいたユビキタス言語と境界づけられたコンテキストを以下に示す。
-
-バイヤー (仕入れ) 部、マーケティング部、在庫管理部のドメインエキスパートは、『本 (商品) 』という名詞に対する意味合い/定義づけが異なる。
-
-そのため、それぞれを『本』『クーポン』『在庫』というユビキタス言語として定義でき、モデル名/データ名はそれぞれのユビキタス言語に合わせた名前になる。
-
-例えば、マーケの境界づけられたコンテキストでは、モデル名はCouponとなり、割引期間データを保持する必要があるが、仕入部や在庫部ではこのデータは不要である。
-
-一方、ISBNは全ての境界づけられたコンテキストのモデルに必要なデータである。
-
-境界づけられたコンテキストを定義しない場合、`1`個の商品モデルが全てのデータを保持することとなり、それぞれのドメインエキスパートが関心を持たないデータも保持することになってしまう。
-
-![book_ec_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/book_ec_ubiquitous_language.png)
-
-> - https://kenta-kosugi.medium.com/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E4%B8%8A%E6%89%8B%E3%81%AA%E5%88%86%E5%89%B2-ff5bb01d1062
-
-**＊例＊**
-
-完全個室ジムを運営するハコジムの例。
-
-個室ジムドメインのコアドメインとサブドメインに基づく境界づけられたコンテキスト。
-
-認証コンテキスト、予約コンテキスト、顧客管理コンテキスト、銀行支払いコンテキスト、クレジットカード支払いコンテキストがある。
-
-![hacogym_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_bounded-context.png)
-
-> - https://hacogym.jp/
-> - https://zenn.dev/hsshss/articles/e11efefc7011ab
-
-**＊例＊**
-
-契約請求管理アプリケーションを提供するアルプの例。
-
-コアドメインとサブドメインに基づいたユビキタス言語と境界づけられたコンテキストを以下に示す。
-
-契約管理コンテキスト、商品管理コンテキスト、請求管理コンテキストがある。
-
-アルプでは、ユビキタス言語を定期的に認識合わせするために、週次でユビキタス言語を追加し、また定義を更新している。
-
-![contract_billing_management_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/contract_billing_management_ubiquitous_language.png)
-
-> - https://note.com/alpinc/n/nab47ab9273c6
-> - https://thealp.co.jp/
-
-**＊例＊**
-
-会計アプリケーションを提供するfreeeの例。
-
-財務会計コンテキスト、会計ワークフローコンテキスト、従業員管理コンテキストがある。
-
-![freee_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/freee_bounded-context.png)
-
-> - https://speakerdeck.com/him0/4-years-for-carving-out-a-micro-service-from-freee-accounting?slide=22
-
-**＊例＊**
+#### ▼ 考え方
 
 アプリケーションがモデリングしている業務フローを考えるとわかりやすい。
 
@@ -329,7 +269,103 @@ ECサイトを運営するアスクルの例。
 
 反対にモノリスだと、一つの商品ドメインモデルにコンテキスト関係なく全ての種類の状態を持たせて、全てのコンテキストで再利用する。
 
+**＊表＊**
+
+| ユビキタス言語 | マイクロサービス名 | マイクロサービス内のエンティティ |
+| -------------- | ------------------ | -------------------------------- |
+|                |                    |                                  |
+|                |                    |                                  |
+
 > - https://next-engine.net/ec-blog/order-flow/
+
+#### ▼ 例：本を販売するECサイト
+
+本を販売するECサイトの例。
+
+コアドメインとサブドメインに基づいたユビキタス言語と境界づけられたコンテキストを以下に示す。
+
+バイヤー (仕入れ) 部、マーケティング部、在庫管理部のドメインエキスパートは、『本 (商品) 』という名詞に対する意味合い/定義づけが異なる。
+
+そのため、それぞれを『本』『クーポン』『在庫』というユビキタス言語として定義でき、モデル名/データ名はそれぞれのユビキタス言語に合わせた名前になる。
+
+例えば、マーケの境界づけられたコンテキストでは、モデル名はCouponとなり、割引期間データを保持する必要があるが、仕入部や在庫部ではこのデータは不要である。
+
+一方、ISBNは全ての境界づけられたコンテキストのモデルに必要なデータである。
+
+境界づけられたコンテキストを定義しない場合、`1`個の商品モデルが全てのデータを保持することとなり、それぞれのドメインエキスパートが関心を持たないデータも保持することになってしまう。
+
+**＊表＊**
+
+| ユビキタス言語 | マイクロサービス名 | マイクロサービス内のエンティティ |
+| -------------- | ------------------ | -------------------------------- |
+|                |                    |                                  |
+|                |                    |                                  |
+
+![book_ec_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/book_ec_ubiquitous_language.png)
+
+> - https://kenta-kosugi.medium.com/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E4%B8%8A%E6%89%8B%E3%81%AA%E5%88%86%E5%89%B2-ff5bb01d1062
+
+#### ▼ 例：完全個室ジムを運営するハコジム
+
+完全個室ジムを運営するハコジムの例。
+
+個室ジムドメインのコアドメインとサブドメインに基づく境界づけられたコンテキスト。
+
+認証コンテキスト、予約コンテキスト、顧客管理コンテキスト、銀行支払いコンテキスト、クレジットカード支払いコンテキストがある。
+
+**＊表＊**
+
+| ユビキタス言語 | マイクロサービス名 | マイクロサービス内のエンティティ |
+| -------------- | ------------------ | -------------------------------- |
+|                |                    |                                  |
+|                |                    |                                  |
+
+![hacogym_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_bounded-context.png)
+
+> - https://hacogym.jp/
+> - https://zenn.dev/hsshss/articles/e11efefc7011ab
+
+#### ▼ 例：契約請求管理アプリケーションを提供するアルプ
+
+契約請求管理アプリケーションを提供するアルプの例。
+
+コアドメインとサブドメインに基づいたユビキタス言語と境界づけられたコンテキストを以下に示す。
+
+契約管理コンテキスト、商品管理コンテキスト、請求管理コンテキストがある。
+
+アルプでは、ユビキタス言語を定期的に認識合わせするために、週次でユビキタス言語を追加し、また定義を更新している。
+
+**＊表＊**
+
+| ユビキタス言語 | マイクロサービス名 | マイクロサービス内のエンティティ |
+| -------------- | ------------------ | -------------------------------- |
+|                |                    |                                  |
+|                |                    |                                  |
+
+![contract_billing_management_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/contract_billing_management_ubiquitous_language.png)
+
+> - https://note.com/alpinc/n/nab47ab9273c6
+> - https://thealp.co.jp/
+
+#### ▼ 例：会計アプリケーションを提供するfreee
+
+会計アプリケーションを提供するfreeeの例。
+
+財務会計コンテキスト、会計ワークフローコンテキスト、従業員管理コンテキストがある。
+
+![freee_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/freee_bounded-context.png)
+
+> - https://speakerdeck.com/him0/4-years-for-carving-out-a-micro-service-from-freee-accounting?slide=22
+
+#### ▼ 例：フィンテック系
+
+**＊表＊**
+
+| ユビキタス言語 | マイクロサービス名 | マイクロサービス内のエンティティ |
+| -------------- | ------------------ | -------------------------------- |
+| 取引           | transaction        | Transaction                      |
+| 契約           | merchant           | Merchant                         |
+| 精算           | payment            | Payment                          |
 
 <br>
 
