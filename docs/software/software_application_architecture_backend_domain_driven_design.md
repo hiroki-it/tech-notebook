@@ -366,16 +366,18 @@ ECサイトを運営するアスクルの例。
 | 口座           | account            | BankAccount（銀行口座）                                                                   |
 | 精算           | settlement         | Settlement（精算）                                                                        |
 | レポーティング | reporting          | RemittanceHistory（送金履歴）、RemittanceDetailFile（送金明細ファイル）                   |
+| 送金管理       | web-portal         | webポータルのフロントエンドアプリケーション                                               |
 
 #### ▼ QR決済系
 
 **＊表＊**
 
-| ユビキタス言語 | マイクロサービス名 | マイクロサービス内のエンティティ |
-| -------------- | ------------------ | -------------------------------- |
-| 取引           | transaction        | Transaction（取引）              |
-| 契約           | merchant           | Merchant（契約）                 |
-| 精算           | payment            | Payment（清算）                  |
+| ユビキタス言語 | マイクロサービス名 | マイクロサービス内のエンティティ            |
+| -------------- | ------------------ | ------------------------------------------- |
+| 取引           | transaction        | Transaction（取引）                         |
+| 契約           | merchant           | Merchant（契約）                            |
+| 精算           | payment            | Payment（清算）                             |
+| 取引管理       | web-portal         | webポータルのフロントエンドアプリケーション |
 
 <br>
 

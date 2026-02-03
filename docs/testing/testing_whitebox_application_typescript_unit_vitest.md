@@ -30,7 +30,9 @@ import {test, expect, vi} from "vitest";
 import axios from "axios";
 import {fetchUser} from "./fetchUser";
 
-beforeEach(async () => {
+// ユニットテストの事後処理
+afterEach(async () => {
+  // モックに関するすべての設定を削除する
   vi.resetAllMocks();
 });
 
@@ -256,7 +258,9 @@ import {test, expect, vi} from "vitest";
 import axios from "axios";
 import {fetchUser} from "./fetchUser";
 
-beforeEach(async () => {
+// ユニットテストの事後処理
+afterEach(async () => {
+  // モックに関するすべての設定を削除する
   vi.resetAllMocks();
 });
 
@@ -356,7 +360,9 @@ import {test, expect, vi} from "vitest";
 import axios from "axios";
 import {fetchUser} from "./fetchUser";
 
-beforeEach(async () => {
+// ユニットテストの事後処理
+afterEach(async () => {
+  // モックに関するすべての設定を削除する
   vi.resetAllMocks();
 });
 
@@ -418,7 +424,9 @@ import {describe, it, expect} from "vitest";
 import axios from "axios";
 import {fetchUser} from "./fetchUser";
 
-beforeEach(async () => {
+// ユニットテストの事後処理
+afterEach(async () => {
+  // モックに関するすべての設定を削除する
   vi.resetAllMocks();
 });
 
@@ -499,7 +507,9 @@ import {describe, it, expect, vi} from "vitest";
 import axios from "axios";
 import {fetchUser} from "./fetchUser";
 
-beforeEach(async () => {
+// ユニットテストの事後処理
+afterEach(async () => {
+  // モックに関するすべての設定を削除する
   vi.resetAllMocks();
 });
 
@@ -649,7 +659,9 @@ import {describe, test, expect, vi} from "vitest";
 import {fetchUser} from "./userService";
 import {HttpClient} from "./httpClient";
 
-beforeEach(async () => {
+// ユニットテストの事後処理
+afterEach(async () => {
+  // モックに関するすべての設定を削除する
   vi.resetAllMocks();
 });
 
