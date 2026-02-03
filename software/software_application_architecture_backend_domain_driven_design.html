@@ -1637,7 +1637,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 記法
+        ▼ 例：完全個室ジムを運営するハコジム
       
     </span>
   </a>
@@ -1770,7 +1770,18 @@
   <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 例：フィンテック系
+        ▼ 送金系
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ QR決済系
       
     </span>
   </a>
@@ -33511,7 +33522,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 記法
+        ▼ 例：完全個室ジムを運営するハコジム
       
     </span>
   </a>
@@ -33644,7 +33655,18 @@
   <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 例：フィンテック系
+        ▼ 送金系
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ QR決済系
       
     </span>
   </a>
@@ -34313,8 +34335,7 @@
 <li><a href="https://speakerdeck.com/mploed/aligning-organization-and-architecture-with-strategic-ddd?slide=26">https://speakerdeck.com/mploed/aligning-organization-and-architecture-with-strategic-ddd?slide=26</a></li>
 </ul>
 </blockquote>
-<h4 id="_11">▼ 記法<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p><strong>＊例＊</strong></p>
+<h4 id="_11">▼ 例：完全個室ジムを運営するハコジム<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>完全個室ジムを運営するハコジムの例。</p>
 <p>ドメインのうちで、個室ジムドメインに基づくコアドメインとサブドメインを以下に示す。</p>
 <p>コアドメインは予約ドメイン、それ以外はサブドメインとしている。</p>
@@ -34534,7 +34555,45 @@
 <li><a href="https://speakerdeck.com/him0/4-years-for-carving-out-a-micro-service-from-freee-accounting?slide=22">https://speakerdeck.com/him0/4-years-for-carving-out-a-micro-service-from-freee-accounting?slide=22</a></li>
 </ul>
 </blockquote>
-<h4 id="_20">▼ 例：フィンテック系<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<h4 id="_20">▼ 送金系<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p><strong>＊表＊</strong></p>
+<table>
+<thead>
+<tr>
+<th>ユビキタス言語</th>
+<th>マイクロサービス名</th>
+<th>マイクロサービス内のエンティティ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>送金</td>
+<td>remittance</td>
+<td>Remittance（送金）、RemittanceHistories（送金履歴）、RemittanceStatuses（送金ステータス）</td>
+</tr>
+<tr>
+<td>請求</td>
+<td>payment</td>
+<td>Payment（請求）、TransactionHistory（取引履歴）</td>
+</tr>
+<tr>
+<td>口座</td>
+<td>account</td>
+<td>BankAccount（銀行口座）</td>
+</tr>
+<tr>
+<td>精算</td>
+<td>settlement</td>
+<td>Settlement（精算）</td>
+</tr>
+<tr>
+<td>レポーティング</td>
+<td>reporting</td>
+<td>RemittanceHistory（送金履歴）、RemittanceDetailFile（送金明細ファイル）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="qr">▼ QR決済系<a class="headerlink" href="#qr" title="Permanent link">&para;</a></h4>
 <p><strong>＊表＊</strong></p>
 <table>
 <thead>
@@ -34548,17 +34607,17 @@
 <tr>
 <td>取引</td>
 <td>transaction</td>
-<td>Transaction</td>
+<td>Transaction（取引）</td>
 </tr>
 <tr>
 <td>契約</td>
 <td>merchant</td>
-<td>Merchant</td>
+<td>Merchant（契約）</td>
 </tr>
 <tr>
 <td>精算</td>
 <td>payment</td>
-<td>Payment</td>
+<td>Payment（清算）</td>
 </tr>
 </tbody>
 </table>
@@ -35100,7 +35159,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月3日 15:52:42 JST">2026-02-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月3日 16:27:11 JST">2026-02-03</span>
   </span>
 
     
