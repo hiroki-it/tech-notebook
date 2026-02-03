@@ -224,6 +224,8 @@ afterEach(async () => {
 // ここでCRUDに関するユニットテスト
 ```
 
+> - https://vitest.dev/api/#setup-and-teardown
+
 <br>
 
 ### 入力値に対して結果が正しいかを検証する
