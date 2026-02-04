@@ -13958,15 +13958,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
+  <a href="#03-e2e" class="md-nav__link">
     <span class="md-ellipsis">
       
-        03. ユニットテストの設計
+        03. E2Eテストの設計
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. ユニットテストの設計">
+    <nav class="md-nav" aria-label="03. E2Eテストの設計">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -13984,10 +13984,38 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        テストケースの命名
+        テストケースの設計
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="テストケースの設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ 正常系、異常系、境界値
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ テストケースの命名
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -14042,7 +14070,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         ヘルパー
@@ -32867,15 +32895,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
+  <a href="#03-e2e" class="md-nav__link">
     <span class="md-ellipsis">
       
-        03. ユニットテストの設計
+        03. E2Eテストの設計
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. ユニットテストの設計">
+    <nav class="md-nav" aria-label="03. E2Eテストの設計">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -32893,10 +32921,38 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        テストケースの命名
+        テストケースの設計
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="テストケースの設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ 正常系、異常系、境界値
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ テストケースの命名
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -32951,7 +33007,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         ヘルパー
@@ -33131,39 +33187,74 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="03">03. ユニットテストの設計<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h2 id="03-e2e">03. E2Eテストの設計<a class="headerlink" href="#03-e2e" title="Permanent link">&para;</a></h2>
 <h3 id="_2">テストスイート、テストケース<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>関数をテストスイートととし、その中で正常系と異常系のテストケースを定義する。</p>
-<div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;&lt;Foo関数のテストスイート&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;&lt;ここで正常系のテストケース&gt;&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;&lt;ここで異常系のテストケース&gt;&quot;</span><span class="p">);</span>
-<span class="p">})</span>
+<p><code>describe</code>関数を使用して、テストスイートを定義できる。</p>
+<p>テストスイートは階層的に定義することもでき、最大２階層まではあってもよい。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;&lt;パブリックな関数名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;&lt;Bar関数のテストスイート&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;&lt;ここで正常系のテストケース&gt;&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;&lt;ここで異常系のテストケース&gt;&quot;</span><span class="p">);</span>
-<span class="p">})</span>
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;&lt;テストスイートの種別&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;&lt;Bar関数のテストスイート&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;&lt;ここで正常系のテストケース&gt;&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;&lt;ここで異常系のテストケース&gt;&quot;</span><span class="p">);</span>
-<span class="p">})</span>
+<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;&lt;テストケース名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_3">テストケースの命名<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>Cypressでテストケースを定義する関数名が<code>it</code>になっている。</p>
-<p>これは振る舞いの主語（濁した主語）としての<code>it</code>である。</p>
-<p>つぎのように命名すると、<code>it</code>がテストケース名の主語になって、振る舞いに着目してる感がでる。</p>
+<h3 id="_3">テストケースの設計<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ 正常系、異常系、境界値<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>正常系、異常系、境界値のテストケースをテストスイートの種別におく。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;&lt;パブリックな関数名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;&lt;テストスイートの種別&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// 正常系</span>
+<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;&lt;テストケース名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 異常系</span>
+<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;&lt;テストケース名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 境界値</span>
+<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;&lt;テストケース名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;&lt;パブリックな関数名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;&lt;テストスイートの種別&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;正常系：&lt;テストケース名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;異常系：&lt;テストケース名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;境界値：&lt;テストケース名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_5">▼ テストケースの命名<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p><code>it</code>関数と<code>test</code>関数は、振る舞いの主語（濁した主語）としての<code>it</code>または<code>test</code>として見ることができる。</p>
+<p>つぎのように命名すると、<code>it</code>または<code>test</code>がテストケース名の主語になって、振る舞いに着目してる感がでる。</p>
+<p>例えば、<code>&lt;期待される動作&gt; when &lt;入力内容&gt;</code>で命名する。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;&lt;テストスイート&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// テストケース</span>
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should return user when id is valid&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{});</span>
+<span class="w">  </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should return user when id is valid&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{});</span>
 <span class="p">});</span>
 </code></pre></div>
 <p>CypressのドキュメントにBDD（振る舞い駆動開発）の記載がある。</p>
 <blockquote>
 <p><a href="https://docs.cypress.io/app/core-concepts/writing-and-organizing-tests">https://docs.cypress.io/app/core-concepts/writing-and-organizing-tests</a></p>
 </blockquote>
-<p><br></p>
 <p><br></p>
 <h2 id="04">04. 事前処理<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="cypressconfigts">cypress.config.ts<a class="headerlink" href="#cypressconfigts" title="Permanent link">&para;</a></h3>
@@ -33246,7 +33337,7 @@
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_4">ヘルパー<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_6">ヘルパー<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nx">Cypress</span><span class="p">.</span><span class="nx">Commands</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&quot;login&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// fixture/users/data.jsonファイルを使用する</span>
 <span class="w">  </span><span class="nx">cy</span><span class="p">.</span><span class="nx">fixture</span><span class="p">(</span><span class="s2">&quot;users/data&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">seed</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -33309,7 +33400,7 @@
 <span class="w">  </span><span class="p">});</span>
 
 <span class="w">  </span><span class="c1">// 正常系テストケース</span>
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;ユーザーの一覧を表示できる&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;ユーザーの一覧を表示できる&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// テストケース固有の初期データ</span>
 <span class="w">    </span><span class="c1">// fixture/expected/users.jsonファイルを使用する</span>
 <span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">fixture</span><span class="p">(</span><span class="s2">&quot;users/data&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">expected</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -33328,7 +33419,7 @@
 <span class="w">  </span><span class="p">});</span>
 
 <span class="w">  </span><span class="c1">// 正常系テストケース</span>
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;ページネーションを実行できる&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;ページネーションを実行できる&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 汎用的な初期データ</span>
 <span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">fixture</span><span class="p">(</span><span class="s2">&quot;dbSeed&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">expected</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="c1">// テストケース固有の初期データ</span>
@@ -33378,7 +33469,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月4日 16:41:15 JST">2026-02-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月4日 19:18:21 JST">2026-02-04</span>
   </span>
 
     
