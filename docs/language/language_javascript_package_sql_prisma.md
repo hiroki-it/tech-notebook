@@ -370,7 +370,7 @@ main()
 
 `yarn prisma db`コマンドでDBに挿入できる初期データである。
 
-ローカル環境、CI環境のユニットテストやE2Eテスト、ステージング環境の動作確認で使用できる。
+開発環境、CI環境のユニットテストやE2Eテスト、ステージング環境の動作確認で使用できる。
 
 本番環境では基本的に使用しない。
 
@@ -410,16 +410,16 @@ const roles = [
 ];
 
 async function seed() {
-  // ローカル環境とCI環境の両方で初期データを挿入する
+  // 開発環境とCI環境の両方で初期データを挿入する
   await Promise.all(roles.map((user) => prisma.user.create({data: {...user}})));
 
   await Promise.all(
     policies.map((role) => prisma.role.create({data: {...role}})),
   );
 
-  // ローカル環境でのみ初期データを挿入する
+  // 開発環境でのみ初期データを挿入する
   if (process.env.NODE_ENV === "development") {
-    // ここで、ローカル環境でのみ一部の初期データを挿入する
+    // ここで、開発環境でのみ一部の初期データを挿入する
   }
 
   logger.info("初期データの挿入に成功しました");
