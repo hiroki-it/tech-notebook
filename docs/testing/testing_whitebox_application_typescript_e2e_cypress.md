@@ -99,7 +99,7 @@ setupNodeEvents: (on, config) => {
     dbSeed: async () => {
       const { user1, user2 } = seed.user;
 
-      // 初期データをデータベースに投入する
+      // 初期データをデータベースに挿入する
       await prisma.user.create({
         data: {
           id: user1.id,
@@ -108,7 +108,7 @@ setupNodeEvents: (on, config) => {
         },
       });
 
-      // 初期データをデータベースに投入する
+      // 初期データをデータベースに挿入する
       await prisma.user.create({
         data: {
           id: user2.id,
@@ -201,7 +201,7 @@ Cypress.Commands.add("login", () => {
     cy.url().should("eq", Cypress.config().baseUrl + "/signin");
 
     // 初期データをフォームに入力する
-    // データベースに投入したユーザー情報を使用する
+    // データベースに挿入したユーザー情報を使用する
     cy.get("[data-cy=email]").type(seed.user.user1.email);
     cy.get("[data-cy=password]").type(seed.user.user1.password);
     // data-cy="submit" 要素をクリックし、送信する
@@ -231,11 +231,11 @@ Cypress.Commands.add("login", () => {
 describe("ユーザーの一覧を表示するテスト", () => {
   // 各テストケースに共通する処理をテスト
   beforeEach(() => {
-    // 基本的な初期データをデータベースに投入する
+    // 基本的な初期データをデータベースに挿入する
     cy.exec("yarn ts-node --require tsconfig-paths/register prisma/seed.ts");
     // cypress.config.ts ファイルで定義したdbSeed関数を実行する
     cy.task("dbSeed");
-    // テスト用の初期データをデータベースに投入する
+    // テスト用の初期データをデータベースに挿入する
     cy.exec(
       'yarn ts-node --require tsconfig-paths/register "cypress/seed/users.ts"',
     );

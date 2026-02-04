@@ -144,6 +144,8 @@ DROP TABLE `UserDetail`;
 
 ローカルマシン用の初期データを挿入する。
 
+`seed.ts`ファイルにある`seed`関数を実行する。
+
 ```bash
 $ yarn prisma db seed
 ```
@@ -362,7 +364,76 @@ main()
 
 <br>
 
-## 05. エラー
+## 05. Seed
+
+### Seedとは
+
+`yarn prisma db`コマンドでDBに挿入できる初期データである。
+
+ローカル環境、CI環境のユニットテストやE2Eテストで使用できる。
+
+<br>
+
+### seed.ts
+
+初期データの定義と挿入を実装する。
+
+```typescript
+const users = [
+  {
+    email: "foo@gmail.com",
+    name: "foo",
+    hashedPassword: "password",
+    roleName: "Administrator",
+  },
+  {
+    email: "bar@gmail.com",
+    name: "bar",
+    hashedPassword: "password",
+    roleName: "Operator",
+  },
+];
+
+const roles = [
+  {
+    name: "Administrator",
+    scope: "All",
+  },
+  {
+    name: "Operator",
+    scope: "ReadOnly",
+  },
+];
+
+async function seed() {
+  // ローカル環境とCI環境の両方で初期データを挿入する
+  await Promise.all(roles.map((user) => prisma.user.create({data: {...user}})));
+
+  await Promise.all(
+    policies.map((role) => prisma.role.create({data: {...role}})),
+  );
+
+  // ローカル環境でのみ初期データを挿入する
+  if (process.env.NODE_ENV === "development") {
+    // ここで、ローカル環境でのみ一部の初期データを挿入する
+  }
+
+  logger.info("初期データの挿入に成功しました");
+}
+
+seed()
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
+```
+
+<br>
+
+## 06. エラー
 
 ### Prisma
 
