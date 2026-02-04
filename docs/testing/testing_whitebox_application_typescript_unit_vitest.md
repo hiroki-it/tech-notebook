@@ -401,7 +401,7 @@ describe("fetchUser", async () => {
   // axiosクライアントのモック
   vi.mock("axios");
 
-  // リクエストのパラメーターに関するテストデータ
+  // リクエストのパラメーターに関する初期データ
   const userId = "1";
 
   // 正常系テストケース
@@ -502,7 +502,7 @@ describe("fetchUser", () => {
   // axiosクライアントのモック
   vi.mock("axios");
 
-  // リクエストのパラメーターに関するテストデータ
+  // リクエストのパラメーターに関する初期データ
   const userId = "1";
 
   // 異常系テストケース
@@ -566,7 +566,7 @@ describe("User optional property behavior", () => {
   // axiosクライアントのモック
   vi.mock("axios");
 
-  // リクエストのパラメーターに関するテストデータ
+  // リクエストのパラメーターに関する初期データ
   const userId = "1";
 
   it("should allow validation when optional property is defined", async () => {
@@ -649,7 +649,7 @@ describe("User.social unknown property behavior", () => {
   // axiosクライアントのモック
   vi.mock("axios");
 
-  // リクエストのパラメーターに関するテストデータ
+  // リクエストのパラメーターに関する初期データ
   const userId = "1";
 
   it("should allow validation when unknown property (object) is defined", async () => {

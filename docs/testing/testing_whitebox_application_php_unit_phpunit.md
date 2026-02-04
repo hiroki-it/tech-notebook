@@ -207,7 +207,7 @@ $this->assertSame(200, $response->getStatusCode());
 
 <br>
 
-## 05. テストデータ
+## 05. 初期データ
 
 ### Data Provider
 

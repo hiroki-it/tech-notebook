@@ -574,7 +574,7 @@ SGS_CONFIG=$(aws ecs describe-services \
   --query "services[].deployments[].networkConfiguration[].awsvpcConfiguration[].securityGroups[]")
 
 # 実行したいコマンドをoverridesに設定する
-# テストデータを挿入する
+# 初期データを挿入する
 echo "Run Task"
 TASK_ARN=$(aws ecs run-task \
   --launch-type FARGATE \

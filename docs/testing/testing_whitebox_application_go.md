@@ -116,7 +116,7 @@ description: Goのテストツール＠アプリケーションのホワイト�
 
 ### テーブル駆動テスト
 
-テストデータ (`data`、`in`) と期待値 (`expected`、`want`) をファイル (例：`json`、`yaml`) として用意しておく。
+初期データ (`data`、`in`) と期待値 (`expected`、`want`) をファイル (例：`json`、`yaml`) として用意しておく。
 
 これを`ReadFile`関数で読み出し、テストケースの構造体を定義する。
 
@@ -148,7 +148,7 @@ func TestFoo(t *testing.T) {
 		name string
 		// 期待値
 		expected string
-		// テストデータ
+		// 初期データ
 		data []byte
 	}{
 		{
