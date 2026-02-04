@@ -13153,19 +13153,19 @@
   <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
       
-        初期ダミーデータの量産
+        初期データの量産
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="初期ダミーデータの量産">
+    <nav class="md-nav" aria-label="初期データの量産">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#seeder" class="md-nav__link">
+  <a href="#factoryseed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Seederによるダミーデータ量産
+        ▼ FactoryによるSeedの初期データ量産
       
     </span>
   </a>
@@ -14460,7 +14460,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#seeder_1" class="md-nav__link">
+  <a href="#seeder" class="md-nav__link">
     <span class="md-ellipsis">
       
         Seederの実行
@@ -36923,19 +36923,19 @@
   <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
       
-        初期ダミーデータの量産
+        初期データの量産
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="初期ダミーデータの量産">
+    <nav class="md-nav" aria-label="初期データの量産">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#seeder" class="md-nav__link">
+  <a href="#factoryseed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Seederによるダミーデータ量産
+        ▼ FactoryによるSeedの初期データ量産
       
     </span>
   </a>
@@ -38230,7 +38230,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#seeder_1" class="md-nav__link">
+  <a href="#seeder" class="md-nav__link">
     <span class="md-ellipsis">
       
         Seederの実行
@@ -40785,9 +40785,9 @@
 <span class="x">}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_28">初期ダミーデータの量産<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
-<h4 id="seeder">▼ Seederによるダミーデータ量産<a class="headerlink" href="#seeder" title="Permanent link">&para;</a></h4>
-<p>Factoryにおける定義を基にして、指定した数だけダミーデータを量産する。</p>
+<h3 id="_28">初期データの量産<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<h4 id="factoryseed">▼ FactoryによるSeedの初期データ量産<a class="headerlink" href="#factoryseed" title="Permanent link">&para;</a></h4>
+<p>Factoryにおける定義を基にして、指定した数だけSeedの初期データを量産する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>FooSeederを定義し、<code>50</code>個のダミーユーザーデータを量産する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -40842,7 +40842,7 @@
         <span class="c1">// 開発環境用の初期データ</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">app</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">environment</span><span class="p">(</span><span class="s2">&quot;local&quot;</span><span class="p">))</span> <span class="p">{</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">call</span><span class="p">([</span>
-                <span class="c1">// ダミーデータ</span>
+                <span class="c1">// データを挿入する</span>
                 <span class="nx">FooSeeder</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
                 <span class="nx">BarSeeder</span><span class="o">::</span><span class="na">class</span>
             <span class="p">]);</span>
@@ -40851,23 +40851,18 @@
         <span class="c1">// テスト環境用の初期データ</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">app</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">environment</span><span class="p">(</span><span class="s2">&quot;tes&quot;</span><span class="p">))</span> <span class="p">{</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">call</span><span class="p">([</span>
-                <span class="c1">// リアルデータ</span>
+                <span class="c1">// データを挿入する</span>
             <span class="p">]);</span>
         <span class="p">}</span>
 
         <span class="c1">// ステージング環境用の初期データ</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">app</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">environment</span><span class="p">(</span><span class="s2">&quot;stg&quot;</span><span class="p">))</span> <span class="p">{</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">call</span><span class="p">([</span>
-                <span class="c1">// リアルデータ</span>
+                <span class="c1">// データを挿入する</span>
             <span class="p">]);</span>
         <span class="p">}</span>
 
-        <span class="c1">// 本番環境用の初期データ</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">app</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">environment</span><span class="p">(</span><span class="s2">&quot;prd&quot;</span><span class="p">))</span> <span class="p">{</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">call</span><span class="p">([</span>
-                <span class="c1">// リアルデータ</span>
-            <span class="p">]);</span>
-        <span class="p">}</span>
+        <span class="c1">// 本番環境では初期データはマスタデータくらいしかなく、初期データの挿入はあってもなくてもいい</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -42821,7 +42816,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="seeder_1">Seederの実行<a class="headerlink" href="#seeder_1" title="Permanent link">&para;</a></h3>
+<h3 id="seeder">Seederの実行<a class="headerlink" href="#seeder" title="Permanent link">&para;</a></h3>
 <p>DatabaseSeederにて、全てのSeederをまとめて実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -42839,32 +42834,26 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
         <span class="c1">// 開発環境用の初期データ</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">App</span><span class="o">::</span><span class="na">environment</span><span class="p">(</span><span class="s2">&quot;local&quot;</span><span class="p">))</span> <span class="p">{</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">call</span><span class="p">([</span>
-                <span class="c1">// ダミーデータ</span>
+                <span class="c1">// 動作確認用のデータを挿入する</span>
             <span class="p">]);</span>
         <span class="p">}</span>
 
         <span class="c1">// テスト環境用の初期データ</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">app</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">environment</span><span class="p">(</span><span class="s2">&quot;tes&quot;</span><span class="p">))</span> <span class="p">{</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">call</span><span class="p">([</span>
-                <span class="c1">// リアルデータ</span>
+                <span class="c1">// 動作確認用のデータを挿入する</span>
             <span class="p">]);</span>
         <span class="p">}</span>
 
         <span class="c1">// ステージング環境用の初期データ</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">App</span><span class="o">::</span><span class="na">environment</span><span class="p">(</span><span class="s2">&quot;stg&quot;</span><span class="p">))</span> <span class="p">{</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">call</span><span class="p">([</span>
-                <span class="c1">// リアルデータ</span>
+                <span class="c1">// 動作確認用のデータを挿入する</span>
                 <span class="nx">ProductsSeeder</span><span class="o">::</span><span class="na">class</span>
             <span class="p">]);</span>
         <span class="p">}</span>
 
-        <span class="c1">// 本番環境用の初期データ</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">App</span><span class="o">::</span><span class="na">environment</span><span class="p">(</span><span class="s2">&quot;prd&quot;</span><span class="p">))</span> <span class="p">{</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">call</span><span class="p">([</span>
-                <span class="c1">// リアルデータ</span>
-                <span class="nx">ProductsSeeder</span><span class="o">::</span><span class="na">class</span>
-            <span class="p">]);</span>
-        <span class="p">}</span>
+        <span class="c1">// 本番環境では初期データはマスタデータくらいしかなく、初期データの挿入はあってもなくてもいい</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -43831,7 +43820,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年12月2日 21:31:49 JST">2025-12-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月4日 21:33:19 JST">2026-02-04</span>
   </span>
 
     
