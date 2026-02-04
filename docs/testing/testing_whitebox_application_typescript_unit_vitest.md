@@ -126,6 +126,21 @@ describe("<パブリックな関数名>", () => {
 });
 ```
 
+#### ▼ テストケースの命名
+
+`it`関数と`test`関数は、振る舞いの主語（濁した主語）としての`it`または`test`として見ることができる。
+
+つぎのように命名すると、`it`または`test`がテストケース名の主語になって、振る舞いに着目してる感がでる。
+
+例えば、`<期待される動作> when <入力内容>`で命名する。
+
+```typescript
+describe("<テストスイート>", () => {
+  // テストケース
+  test("should return user when id is valid", () => {});
+});
+```
+
 #### ▼ 事前処理と事後処理
 
 `afterEach`関数はモックの削除のために必須である。
@@ -569,7 +584,7 @@ describe("User optional property behavior", () => {
   // リクエストのパラメーターに関する初期データ
   const userId = "1";
 
-  it("should allow validation when optional property is defined", async () => {
+  test("should allow validation when optional property is defined", async () => {
     // axiosの型をモックに認識させる。オブジェクト全体をモックにする場合、trueにする。
     // axiosクライアントのモックが一度だけデータを返却するように設定
     vi.mocked(axios, true).get.mockResolvedValueOnce({
@@ -590,7 +605,7 @@ describe("User optional property behavior", () => {
     expect(user.age!).toBe(25);
   });
 
-  it("should allow validation when optional property is undefined", async () => {
+  test("should allow validation when optional property is undefined", async () => {
     // axiosの型をモックに認識させる。オブジェクト全体をモックにする場合、trueにする。
     // axiosクライアントのモックが一度だけデータを返却するように設定
     vi.mocked(axios, true).get.mockResolvedValueOnce({
@@ -652,7 +667,7 @@ describe("User.social unknown property behavior", () => {
   // リクエストのパラメーターに関する初期データ
   const userId = "1";
 
-  it("should allow validation when unknown property (object) is defined", async () => {
+  test("should allow validation when unknown property (object) is defined", async () => {
     // axiosの型をモックに認識させる。オブジェクト全体をモックにする場合、trueにする。
     // axiosクライアントのモックが一度だけデータを返却するように設定
     vi.mocked(axios, true).get.mockResolvedValueOnce({
@@ -681,7 +696,7 @@ describe("User.social unknown property behavior", () => {
     expect(user.name).toBe("Alice");
   });
 
-  it("should allow validation when unknown property is undefined", async () => {
+  test("should allow validation when unknown property is undefined", async () => {
     // axiosの型をモックに認識させる。オブジェクト全体をモックにする場合、trueにする。
     // axiosクライアントのモックが一度だけデータを返却するように設定
     vi.mocked(axios, true).get.mockResolvedValueOnce({
