@@ -2059,11 +2059,11 @@ class Foo
 
 <br>
 
-### 初期ダミーデータの量産
+### 初期データの量産
 
-#### ▼ Seederによるダミーデータ量産
+#### ▼ FactoryによるSeedの初期データ量産
 
-Factoryにおける定義を基にして、指定した数だけダミーデータを量産する。
+Factoryにおける定義を基にして、指定した数だけSeedの初期データを量産する。
 
 **＊実装例＊**
 
@@ -2128,7 +2128,7 @@ class DatabaseSeeder extends Seeder
         // 開発環境用の初期データ
         if (app()->environment("local")) {
             $this->call([
-                // ダミーデータ
+                // データを挿入する
                 FooSeeder::class,
                 BarSeeder::class
             ]);
@@ -2137,23 +2137,18 @@ class DatabaseSeeder extends Seeder
         // テスト環境用の初期データ
         if (app()->environment("tes")) {
             $this->call([
-                // リアルデータ
+                // データを挿入する
             ]);
         }
 
         // ステージング環境用の初期データ
         if (app()->environment("stg")) {
             $this->call([
-                // リアルデータ
+                // データを挿入する
             ]);
         }
 
-        // 本番環境用の初期データ
-        if (app()->environment("prd")) {
-            $this->call([
-                // リアルデータ
-            ]);
-        }
+        // 本番環境では初期データはマスタデータくらいしかなく、初期データの挿入はあってもなくてもいい
     }
 }
 ```
@@ -4499,32 +4494,26 @@ class DatabaseSeeder extends Seeder
         // 開発環境用の初期データ
         if (App::environment("local")) {
             $this->call([
-                // ダミーデータ
+                // 動作確認用のデータを挿入する
             ]);
         }
 
         // テスト環境用の初期データ
         if (app()->environment("tes")) {
             $this->call([
-                // リアルデータ
+                // 動作確認用のデータを挿入する
             ]);
         }
 
         // ステージング環境用の初期データ
         if (App::environment("stg")) {
             $this->call([
-                // リアルデータ
+                // 動作確認用のデータを挿入する
                 ProductsSeeder::class
             ]);
         }
 
-        // 本番環境用の初期データ
-        if (App::environment("prd")) {
-            $this->call([
-                // リアルデータ
-                ProductsSeeder::class
-            ]);
-        }
+        // 本番環境では初期データはマスタデータくらいしかなく、初期データの挿入はあってもなくてもいい
     }
 }
 ```

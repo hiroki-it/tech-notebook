@@ -561,9 +561,9 @@ LaravelのSeederコマンドやロールバックコマンドを、ローカル�
 set -x
 
 echo "Set Variables"
-SERVICE_NAME="prd-foo-ecs-service"
-CLUSTER_NAME="prd-foo-ecs-cluster"
-TASK_NAME="prd-foo-ecs-task-definition"
+SERVICE_NAME="dev-foo-ecs-service"
+CLUSTER_NAME="dev-foo-ecs-cluster"
+TASK_NAME="dev-foo-ecs-task-definition"
 SUBNETS_CONFIG=$(aws ecs describe-services \
   --cluster ${CLUSTER_NAME} \
   --services ${SERVICE_NAME} \
@@ -574,7 +574,7 @@ SGS_CONFIG=$(aws ecs describe-services \
   --query "services[].deployments[].networkConfiguration[].awsvpcConfiguration[].securityGroups[]")
 
 # 実行したいコマンドをoverridesに設定する
-# 初期データを挿入する
+# AWSのステージング環境では、動作確認のために使用する初期データを挿入する
 echo "Run Task"
 TASK_ARN=$(aws ecs run-task \
   --launch-type FARGATE \
