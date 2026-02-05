@@ -31,41 +31,11 @@ description: フロントエンドアーキテクチャ＠フロントエンド�
 
 <br>
 
-## 02. MVVMアーキテクチャ
-
-### MVVMアーキテクチャとは
-
-以下の要素からなる。
-
-- View：UIロジック（HTML）
-- ViewModel：状態と振る舞いのロジック（JavaScript）
-- Model：モデルそのもの（JavaScript）
-
-ViewとModelの間にViewModelを配置し、ViewとViewModelの間で双方向にデータをやり取り (双方向データバインディング) する。
-
-これによって、ViewとModelの間を疎結合にする。
-
-Vue.jsでは、意識せずにMVVMアーキテクチャで実装できるようになっている。
-
-![一般的なMVVMアーキテクチャ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/一般的なMVVMアーキテクチャ.png)
-
-<br>
-
-### レンダリングパターンとの関係性
-
-以下のレンダリングパターンを使用している場合、MVVMアーキテクチャで構築することになる。
-
-- CSR
-
-> - http://fluorite2.sblo.jp/article/189587309.html
-
-<br>
-
-## 03. Atomic Design
+## 02. Atomic Design
 
 ### Atmic Designとは
 
-フロントエンドを構成する要素を、5つのレイヤー (Atoms、Molecules、Organisms、Templates、Pages) に分ける設計方法のこと。
+UIロジックを構成する要素を、5つのレイヤー (Atoms、Molecules、Organisms、Templates、Pages) に分ける設計方法のこと。
 
 > - https://atomicdesign.bradfrost.com/
 
@@ -85,7 +55,7 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 <br>
 
-## 04. 機能スライス設計
+## 03. Feature Sliced Design (機能スライス設計)
 
 ```yaml
 .
@@ -108,10 +78,12 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 > - https://feature-sliced.design/ja/docs/get-started/overview
 > - https://zenn.dev/moneyforward/articles/e1ed48c3974811
+> - https://feature-sliced.github.io/documentation/examples
+> - https://github.com/feature-sliced/documentation
 
 <br>
 
-## 05. クリーンアーキテクチャ
+## 04. クリーンアーキテクチャ
 
 フロントエンドにはビジネスロジックがないため、クリーンアーキテクチャを採用する意義がない。
 
@@ -121,7 +93,7 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 <br>
 
-## 06. マイクロフロントエンド
+## 05. マイクロフロントエンド
 
 ### UI部品合成とは
 
