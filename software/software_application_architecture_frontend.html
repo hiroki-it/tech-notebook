@@ -1769,7 +1769,7 @@
   <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
       
-        04. クリーンアーキテクチャ
+        04. 機能スライス設計
       
     </span>
   </a>
@@ -1780,12 +1780,23 @@
   <a href="#05" class="md-nav__link">
     <span class="md-ellipsis">
       
-        05. マイクロフロントエンド
+        05. クリーンアーキテクチャ
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. マイクロフロントエンド">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06. マイクロフロントエンド
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06. マイクロフロントエンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33099,7 +33110,7 @@
   <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
       
-        04. クリーンアーキテクチャ
+        04. 機能スライス設計
       
     </span>
   </a>
@@ -33110,12 +33121,23 @@
   <a href="#05" class="md-nav__link">
     <span class="md-ellipsis">
       
-        05. マイクロフロントエンド
+        05. クリーンアーキテクチャ
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. マイクロフロントエンド">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06. マイクロフロントエンド
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06. マイクロフロントエンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33452,7 +33474,32 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04">04. クリーンアーキテクチャ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h2 id="04">04. 機能スライス設計<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="l l-Scalar l-Scalar-Plain">├─ app/</span><span class="w"> </span><span class="c1"># レイヤー</span>
+<span class="l l-Scalar l-Scalar-Plain">│  ├─ routes/</span>
+<span class="l l-Scalar l-Scalar-Plain">│  └─ analytics/</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├─ pages/</span><span class="w"> </span><span class="c1"># レイヤー</span>
+<span class="l l-Scalar l-Scalar-Plain">│  ├─ home/</span><span class="w"> </span><span class="c1"># スライス</span>
+<span class="l l-Scalar l-Scalar-Plain">│  ├─ article/</span><span class="w"> </span><span class="c1"># スライス</span>
+<span class="l l-Scalar l-Scalar-Plain">│  │  ├─ ui/</span><span class="w"> </span><span class="c1"># セグメント</span>
+<span class="l l-Scalar l-Scalar-Plain">│  │  └─ api/</span>
+<span class="l l-Scalar l-Scalar-Plain">│  │</span>
+<span class="l l-Scalar l-Scalar-Plain">│  └─ settings/</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└─ shared/</span><span class="w"> </span><span class="c1"># レイヤー</span>
+<span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">├─ ui/</span>
+<span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">└─ api/</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://feature-sliced.design/ja/docs/get-started/overview">https://feature-sliced.design/ja/docs/get-started/overview</a></li>
+<li><a href="https://zenn.dev/moneyforward/articles/e1ed48c3974811">https://zenn.dev/moneyforward/articles/e1ed48c3974811</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="05">05. クリーンアーキテクチャ<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <p>フロントエンドにはビジネスロジックがないため、クリーンアーキテクチャを採用する意義がない。</p>
 <p>やめましょう。</p>
 <blockquote>
@@ -33461,7 +33508,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="05">05. マイクロフロントエンド<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h2 id="06">06. マイクロフロントエンド<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="ui">UI部品合成とは<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h3>
 <p>静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) のコンポーネントを、各マイクロサービスに対応するように分割する設計方法。</p>
 <p><img alt="composite-ui" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/composite-ui.png" /></p>
@@ -33531,7 +33578,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年9月24日 18:29:22 JST">2025-09-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月5日 18:42:38 JST">2026-02-05</span>
   </span>
 
     
