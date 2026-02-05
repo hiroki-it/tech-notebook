@@ -85,7 +85,33 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 <br>
 
-## 04. クリーンアーキテクチャ
+## 04. 機能スライス設計
+
+```yaml
+.
+├─ app/ # レイヤー
+│  ├─ routes/
+│  └─ analytics/
+│
+├─ pages/ # レイヤー
+│  ├─ home/ # スライス
+│  ├─ article/ # スライス
+│  │  ├─ ui/ # セグメント
+│  │  └─ api/
+│  │
+│  └─ settings/
+│
+└─ shared/ # レイヤー
+   ├─ ui/
+   └─ api/
+```
+
+> - https://feature-sliced.design/ja/docs/get-started/overview
+> - https://zenn.dev/moneyforward/articles/e1ed48c3974811
+
+<br>
+
+## 05. クリーンアーキテクチャ
 
 フロントエンドにはビジネスロジックがないため、クリーンアーキテクチャを採用する意義がない。
 
@@ -95,7 +121,7 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 <br>
 
-## 05. マイクロフロントエンド
+## 06. マイクロフロントエンド
 
 ### UI部品合成とは
 
