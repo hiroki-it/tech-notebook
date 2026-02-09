@@ -477,6 +477,106 @@ describe("fetchUser", async () => {
 
 <br>
 
+### バリデーションの結果が正しいかを検証する
+
+#### ▼ テスト対象の関数
+
+```typescript
+import { withZod } from "@remix-validated-form/with-zod";
+import { validationError } from "remix-validated-form";
+import { z } from "zod";
+import { getUser} from "~/models/user.server";
+import type { AuthUser } from "~/auth";
+
+export const validateForm = async ({
+  formData,
+}: {
+  formData: FormData;
+  authUser: Pick<AuthUser, "accountId">;
+}>;
+}) => {
+    const accountId = formData.accountId!;
+
+    const sameAcccountIdUser = await getUser({
+      accountId: accountId
+    });
+
+    // 作成したいアカウントIDがすでに存在する場合、バリデーションエラーとする
+    if (sameAcccountIdUser) {
+      return {
+        error: validationError({
+          formId: formData.formId,
+          fieldErrors: {
+            organizationRegionName: "A account id is already exist",
+          },
+        }),
+      };
+    }
+
+    // 作成したいアカウントIDが存在しない場合、フォーム入力値を返却する
+    return { formData: formData };
+};
+```
+
+##### ▼ テストコード
+
+```typescript
+import {describe, expect} from "vitest";
+import {validateForm} from "~/components/validators/UserValidator";
+import {getUser} from "~/models/user.server";
+
+describe("OrganizationRegionFormValidator", () => {
+  // 正常系
+  it("作成したいアカウントIDと同じアカウントIDが存在しない場合、バリデーション済みのフォーム入力値を返却するはず", async () => {
+    // Arrange
+    vi.mocked(getUser).mockResolvedValueOnce(null);
+
+    const formData = new FormData();
+    formData.set("accountId", "12345");
+
+    // Act
+    const result = await validateForm({
+      formData,
+    });
+
+    // Assert
+    expect(result).toHaveProperty("formData");
+    expect(result.formData).toBeDefined();
+    expect(result.formData).toMatchObject({
+      accountId: "12345",
+    });
+  });
+
+  // 異常系
+  it("作成したいアカウントIDと同じアカウントIDが存在する場合、バリデーションエラーを含む結果を返却するはず", async () => {
+    // Arrange
+    vi.mocked(getUser).mockResolvedValueOnce(null);
+
+    const formData = new FormData();
+    formData.set("accountId", "12345");
+
+    // Act
+    const result = await validateForm({
+      formData,
+    });
+
+    // Assert
+    if (!(result.error instanceof Response)) {
+      // UserValidatorがResponse型以外を返却する場合、想定外なのでテストを失敗させる
+      expect.fail("should return result of Response");
+    }
+    expect(result).toHaveProperty("error");
+    expect(result.error).toBeDefined();
+    const body = await result.error.json();
+    expect(body).toMatchObject({
+      fieldErrors: {
+        accountId: "A accound id is already exist",
+      },
+    });
+  });
+});
+```
+
 <br>
 
 ### エラーの中身が正しいかを検証する
