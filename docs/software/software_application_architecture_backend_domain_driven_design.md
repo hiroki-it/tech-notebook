@@ -114,7 +114,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 > - https://github.com/little-hands/ddd-q-and-a/issues/191
 
-**＊例＊**
+#### ▼ 例：インターネット広告代理店
 
 インターネット広告代理店の例。
 
@@ -128,7 +128,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 > - https://labs.septeni.co.jp/entry/2021/04/15/130000
 
-**＊例＊**
+#### ▼ 例：完全個室ジムを運営するハコジム
 
 ![hacogym_business_model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_business_model.png)
 
@@ -145,13 +145,25 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 > - https://hacogym.jp/
 > - https://zenn.dev/hsshss/articles/e11efefc7011ab
 
-**＊例＊**
+#### ▼ 例：監視SaaS
 
 プラットフォームエンジニアリングでは、エンジニアの技術的な業務がドメインになる。
 
 例えば、監視SaaSでは監視業務領域がドメインになる。
 
 適切な監視手法の選択、適切なTCP/IPのプロトコルの選択、アラートの巡回が業務である。
+
+#### ▼ 例：オンライン書店
+
+- カタログ管理
+- 在庫管理
+- 顧客分析
+- 決済管理
+
+#### ▼ 例：病院システム
+
+- 情報管理
+- 予約管理
 
 <br>
 
