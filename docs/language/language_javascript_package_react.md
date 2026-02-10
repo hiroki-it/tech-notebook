@@ -221,6 +221,37 @@ Reactでは、関数コンポーネントで`async`宣言は使用できない�
 > - https://stackoverflow.com/a/78877882/12771072
 > - https://stackoverflow.com/a/75689915/12771072
 
+#### ▼ 引数がある場合はProps型を定義する
+
+関数コンポーネントに引数がある場合、引数の型としてProps型を定義するとよい。
+
+```jsx
+import React from "react";
+
+type MyComponentProps = {
+  initialCount?: number;
+  label: string;
+};
+
+export const MyComponent = ({ initialCount = 0, label }: MyComponentProps) => {
+  const [count, setCount] = React.useState(initialCount);
+
+  return (
+    <div>
+      <p>
+        {label}: {count}
+      </p>
+      <button onClick={() => setCount((c) => c + 1)}>+1</button>
+    </div>
+  );
+};
+```
+
+```jsx
+// 呼び出し先
+<MyComponent label="Count" initialCount={5} />
+```
+
 <br>
 
 ### クラスまたは関数コンポーネントで使用できる関数
@@ -408,17 +439,15 @@ export App = () => {
 
 `useEffect`で複数のstate変数の状態を管理している場合に、一方の変数の状態だけを再利用できる。
 
-```typescript
-import { useState, useMemo } from "react";
+```jsx
+import {useState, useMemo} from "react";
 
 export default function App() {
-
   // state変数
   const [count, setCount] = useState(0);
   const [text, setText] = useState("");
 
   const caluculatedValue = useMemo(() => {
-
     // ここで配列を操作するなどの負荷の高い処理を実行する
 
     return count * 2;
@@ -434,7 +463,8 @@ export default function App() {
 
       <button onClick={() => setCount((c) => c + 1)}>increment</button>
 
-      <br /><br />
+      <br />
+      <br />
       <input
         value={text}
         onChange={(e) => setText(e.target.value)}
