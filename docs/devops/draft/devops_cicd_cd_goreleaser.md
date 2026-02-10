@@ -13,6 +13,24 @@ description: goreleaser＠CDツールの知見を記録しています。
 
 <br>
 
+## goreleaserとは
+
+さまざまなOSやCPUアーキテクチャ向けに`go build`の成果物を作成し、GitHubのリリースページに送信する。
+
+CIでタグ付けに応じて実行するように設定すると良い。
+
+<br>
+
+## コマンド
+
+### release
+
+```bash
+$ goreleaser release
+```
+
+<br>
+
 ## arhives
 
 ### format
