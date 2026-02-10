@@ -141,19 +141,21 @@ createRoot(document.getElementById("root")!).render(
 
 <br>
 
-## 04. Reactコンポーネント
+## 04. Reactによる独自コンポーネント
 
-### React.memo
+### Reactによる独自コンポーネントとは
 
-コンポーネントをキャッシュする。
+Reactは汎用的なUIロジック（HTML）と状態と振る舞いのロジック（JavaScript）を提供する。
 
-`useMemo`のコンポーネント版である。
+これ使用して、汎用的なUIロジック（HTML）と状態と振る舞いのロジック（JavaScript）のクラスまたは関数を定義できる。
+
+```jsx
+import React from "react";
+```
 
 <br>
 
-## 04. 独自コンポーネント
-
-### クラスコンポーネント
+### React.Component（クラスコンポーネント）
 
 #### ▼ クラスコンポーネントとは
 
@@ -218,6 +220,26 @@ Reactでは、関数コンポーネントで`async`宣言は使用できない�
 
 > - https://stackoverflow.com/a/78877882/12771072
 > - https://stackoverflow.com/a/75689915/12771072
+
+<br>
+
+### クラスまたは関数コンポーネントで使用できる関数
+
+#### ▼ React.memo
+
+コンポーネントをキャッシュする。
+
+`useMemo`のコンポーネント版である。
+
+```jsx
+import React from "react";
+
+type Props = { value: number };
+
+const Counter = React.memo(function Counter({ value }: Props) {
+  return <div>{value}</div>;
+});
+```
 
 <br>
 
