@@ -53,6 +53,7 @@ description: クリーンアーキテクチャ＠アーキテクチャの知見�
 |                           | Listeners                        | リスナー                                                                                                                                         | 関数                   |
 |                           | Routers                          | ルーティング                                                                                                                                     | 関数                   |
 |                           | Seeder                           | 開発環境、CI環境のユニットテストやE2Eテスト、ステージング環境の動作確認に使用する初期データ挿入                                                  | 実装                   |
+|                           | Drivers                          | SDK、ORM、CLIなど                                                                                                                                | 実装                   |
 | Presentations (Interface) | Controller                       | データの受信と返信                                                                                                                               | 実装                   |
 |                           | Requests                         | 受信データのバリデーション                                                                                                                       | 実装                   |
 |                           | Responses                        | 返信データのバリデーション (受信データと比べてデータ構造は保証されているため、なくてもいい)                                                      | 実装                   |
