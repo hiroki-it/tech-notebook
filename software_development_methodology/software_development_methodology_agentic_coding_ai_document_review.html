@@ -32110,6 +32110,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="03. PRの説明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        バックエンドの戦術的設計
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        フロントエンドの戦術的設計
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -32125,7 +32153,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         レビュー方針
@@ -32136,7 +32164,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         機能設計に関して
@@ -32147,7 +32175,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         非機能設計に関して
@@ -32158,7 +32186,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         テスト設計に関して
@@ -32169,7 +32197,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         修正依頼提示のための修正サンプル
@@ -32832,6 +32860,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="03. PRの説明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        バックエンドの戦術的設計
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        フロントエンドの戦術的設計
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -32847,7 +32903,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         レビュー方針
@@ -32858,7 +32914,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         機能設計に関して
@@ -32869,7 +32925,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         非機能設計に関して
@@ -32880,7 +32936,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         テスト設計に関して
@@ -32891,7 +32947,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         修正依頼提示のための修正サンプル
@@ -33047,10 +33103,10 @@
 </ul>
 </li>
 </ul>
+<h3 id="_1">バックエンドの戦術的設計<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>領域</th>
 <th>レイヤー</th>
 <th>パターン</th>
 <th>責務</th>
@@ -33059,14 +33115,12 @@
 </thead>
 <tbody>
 <tr>
-<td>バックエンド</td>
-<td>インフラ</td>
+<td>Infrastructure</td>
 <td>DB</td>
 <td></td>
 <td>実装</td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>EntityMappers (DTOに相当)</td>
 <td>ドメインとインフラ間のオブジェクトの詰め替え</td>
@@ -33074,13 +33128,11 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>Logger</td>
 <td>ロギング</td>
 <td>実装</td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>Middleware</td>
 <td>ミドルウェア処理</td>
@@ -33088,13 +33140,11 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>Repositories</td>
 <td>実装リポジトリ</td>
 <td>実装</td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>Listeners</td>
 <td>リスナー</td>
@@ -33102,27 +33152,23 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>Routers</td>
 <td>ルーティング</td>
 <td>関数</td>
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>Seeder</td>
 <td>開発環境、CI環境のユニットテストやE2Eテスト、ステージング環境の動作確認に使用する初期データ挿入</td>
 <td>実装</td>
 </tr>
 <tr>
-<td></td>
-<td>インターフェース</td>
+<td>Interface</td>
 <td>Controller</td>
 <td></td>
 <td>実装</td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>Requests</td>
 <td>受信データのバリデーション</td>
@@ -33130,13 +33176,11 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>Responses</td>
 <td>返信データのバリデーション (受信データと比べてデータ構造は保証されているため、なくてもいい)</td>
 <td>実装</td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>Authenticators</td>
 <td>認証</td>
@@ -33144,27 +33188,23 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>InputAdapter</td>
 <td>型変換、入力データ翻訳、フロントエンドインターフェース (あるいは受信JSONデータ) からバックエンドインターフェースへのオブジェクトからへの詰め替え</td>
 <td>実装</td>
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>OutputAdapter</td>
 <td>型変換、出力データ翻訳、バックエンドインターフェースからフロントエンドインターフェースへのオブジェクトからへの詰め替え</td>
 <td>実装</td>
 </tr>
 <tr>
-<td></td>
-<td>ユースケース</td>
+<td>Usecaase</td>
 <td>Interactor</td>
 <td>ほかパターンの調整</td>
 <td>実装</td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>InputBoundaries</td>
 <td>Interactorのインターフェース</td>
@@ -33172,13 +33212,11 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>InputDTOs (DTOに相当)</td>
 <td>型変換、バックエンドインターフェースからユースケースのオブジェクトからへの詰め替え</td>
 <td>実装</td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>OutputBoundaries</td>
 <td>Presenterのインターフェース</td>
@@ -33186,20 +33224,17 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>OutputDTOs (DTOに相当)</td>
 <td>型変換、ユースケースからフロントエンドインターフェースへのオブジェクトからへの詰め替え</td>
 <td>実装</td>
 </tr>
 <tr>
-<td></td>
-<td>ドメイン</td>
+<td>Domain</td>
 <td>Entities</td>
 <td></td>
 <td>実装</td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>Id</td>
 <td></td>
@@ -33207,13 +33242,11 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>Repositories（Gatewaysとも呼ぶ）</td>
 <td>Repositoriesのインターフェース</td>
 <td>インターフェース</td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>ValueObject</td>
 <td></td>
@@ -33221,13 +33254,11 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>Specification</td>
 <td>ビジネスロジックのバリデーション</td>
 <td>実装</td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>Criterion</td>
 <td>検索条件オブジェクト</td>
@@ -33235,27 +33266,36 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>Events</td>
 <td></td>
 <td>実装</td>
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>Service</td>
 <td>ドメインサービス</td>
 <td>実装</td>
 </tr>
+</tbody>
+</table>
+<h3 id="_2">フロントエンドの戦術的設計<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
 <tr>
-<td>フロントエンド</td>
-<td>インターフェース</td>
+<th>レイヤー</th>
+<th>パターン</th>
+<th>責務</th>
+<th>インターフェース／実装</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface</td>
 <td>Presenter</td>
 <td>ドメインオブジェクトからJSONデータへの詰め替え</td>
 <td>実装</td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>Validators</td>
 <td>フロントエンドのバリデーション</td>
@@ -33263,13 +33303,11 @@
 </tr>
 <tr>
 <td></td>
-<td></td>
 <td>ViewModel</td>
 <td>JSONデータをフロントエンドインターフェースのオブジェクトへの詰め替え</td>
 <td>実装</td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td>View</td>
 <td>取得データのUI展開、状態管理、CSSスタイリング</td>
@@ -33280,13 +33318,13 @@
 <p><br></p>
 <h2 id="04">04. レビュー<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <p>事前情報の収集を終えた後、事前情報で集めたプロダクトの規約から、変更内容の改善点を指摘する。</p>
-<h3 id="_1">レビュー方針<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h3 id="_3">レビュー方針<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>次に対処した実装になっているかを確認する。</p>
 <ul>
 <li>現在の変更内容のよいところを見つけるために、現在の実装にしなかった場合にどのような問題が起こるかを示す。もちろん、もっとよい方法があればそれも合わせて提案。</li>
 <li>テキストを必ず日本語（ja-JP）で出力すること。</li>
 </ul>
-<h3 id="_2">機能設計に関して<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h3 id="_4">機能設計に関して<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>次に対処した実装になっているかを確認する。</p>
 <ul>
 <li>機能設計がGitHub Issueの課題を満たす実装になっているか</li>
@@ -33301,7 +33339,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="_3">非機能設計に関して<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_5">非機能設計に関して<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>次に対処した実装になっているかを確認する。</p>
 <ol>
 <li>安全性の観点<ul>
@@ -33360,7 +33398,7 @@
 </ul>
 </li>
 </ol>
-<h3 id="_4">テスト設計に関して<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_6">テスト設計に関して<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <ol>
 <li>バックエンド、フロントエンド（Presener、Validators、ViewModelのみ）の観点<ul>
 <li>適切なテストスイート設計になっているか<ul>
@@ -33378,7 +33416,7 @@
 </ul>
 </li>
 </ol>
-<h3 id="_5">修正依頼提示のための修正サンプル<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_7">修正依頼提示のための修正サンプル<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>Claude Codeがファイルの内容を変更したいとき、まずいくつかの変更内容を提案し、承諾を得てから変更してください。</p>
 <p><br></p>
 <h2 id="05">05. 依存関係の説明<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
@@ -33438,7 +33476,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月11日 16:49:46 JST">2026-02-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月11日 16:55:34 JST">2026-02-11</span>
   </span>
 
     
