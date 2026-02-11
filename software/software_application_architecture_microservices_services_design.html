@@ -1964,12 +1964,12 @@
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. ドメイン層
+        01. エンティティ層
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. ドメイン層">
+    <nav class="md-nav" aria-label="01. エンティティ層">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2217,7 +2217,7 @@
   <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ ドメイン層と同じマイクロサービス
+        ▼ エンティティ層と同じマイクロサービス
       
     </span>
   </a>
@@ -2228,7 +2228,7 @@
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ ドメイン層とは異なるマイクロサービス + 占有リポジトリ単位 (ルートエンティティ単位)
+        ▼ エンティティ層とは異なるマイクロサービス + 占有リポジトリ単位 (ルートエンティティ単位)
       
     </span>
   </a>
@@ -2239,7 +2239,7 @@
   <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ ドメイン層とは異なるマイクロサービス + 共有リポジトリ単位 (ルートエンティティ単位)
+        ▼ エンティティ層とは異なるマイクロサービス + 共有リポジトリ単位 (ルートエンティティ単位)
       
     </span>
   </a>
@@ -33007,12 +33007,12 @@
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. ドメイン層
+        01. エンティティ層
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. ドメイン層">
+    <nav class="md-nav" aria-label="01. エンティティ層">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33260,7 +33260,7 @@
   <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ ドメイン層と同じマイクロサービス
+        ▼ エンティティ層と同じマイクロサービス
       
     </span>
   </a>
@@ -33271,7 +33271,7 @@
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ ドメイン層とは異なるマイクロサービス + 占有リポジトリ単位 (ルートエンティティ単位)
+        ▼ エンティティ層とは異なるマイクロサービス + 占有リポジトリ単位 (ルートエンティティ単位)
       
     </span>
   </a>
@@ -33282,7 +33282,7 @@
   <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ ドメイン層とは異なるマイクロサービス + 共有リポジトリ単位 (ルートエンティティ単位)
+        ▼ エンティティ層とは異なるマイクロサービス + 共有リポジトリ単位 (ルートエンティティ単位)
       
     </span>
   </a>
@@ -33412,7 +33412,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. ドメイン層<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. エンティティ層<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_3">マイクロサービス<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ マイクロサービスとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p><img alt="anti-corruption-layer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anti-corruption-layer.png" /></p>
@@ -33495,10 +33495,11 @@
 </blockquote>
 <h4 id="_8">▼ ルートエンティティ単位 (エンティティサービス)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>『エンティティサービス』ともいう。</p>
-<p>ドメイン層のルートエンティティを単位として、マイクロサービスを分割する。</p>
+<p>エンティティ層のルートエンティティを単位として、マイクロサービスを分割する。</p>
 <p>この場合、境界づけられたコンテキストよりもマイクロサービスの粒度が小さい。</p>
 <p>そのため、複数のマイクロサービスで1つの境界づけられたコンテキストを構成することになり、異なるマイクロサービスが同じ種類の状態を持つオブジェクトを処理する。</p>
-<p>ドメイン層には業務マイクロサービス (例：〇〇ドメインサービス) があり、ドメイン層以外のレイヤー (インターフェース層、ユースケース層、リポジトリ層) はマイクロサービスではない。</p>
+<p>エンティティ層には業務マイクロサービス (例：〇〇ドメインサービス) があり、エンティティ層以外のレイヤー (
+インターフェース層、ユースケース層、リポジトリ層) はマイクロサービスではない。</p>
 <p>DBレコードの書き込み/読み出しのトランザクションをルートエンティティ単位で実行するため、マイクロサービスの単位がわかりやすい。</p>
 <p>一方で、データに着目したステートソーシングパターンのルートエンティティを使用することはアンチパターンである。</p>
 <p>最良な解決策として、振舞に着目したイベントソーシングを使用する必要がある。</p>
@@ -33546,11 +33547,11 @@
 <p><br></p>
 <h2 id="02">02. リポジトリ層<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_17">分割パターン<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<h4 id="_18">▼ ドメイン層と同じマイクロサービス<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p>ドメイン層と同じマイクロサービス内で実行する。</p>
+<h4 id="_18">▼ エンティティ層と同じマイクロサービス<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>エンティティ層と同じマイクロサービス内で実行する。</p>
 <p>最も一般的な分割パターンである。</p>
-<h4 id="_19">▼ ドメイン層とは異なるマイクロサービス + 占有リポジトリ単位 (ルートエンティティ単位)<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<p>ドメイン層とは異なるマイクロサービス内で実行する。</p>
+<h4 id="_19">▼ エンティティ層とは異なるマイクロサービス + 占有リポジトリ単位 (ルートエンティティ単位)<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p>エンティティ層とは異なるマイクロサービス内で実行する。</p>
 <p>また、占有リポジトリを単位として、マイクロサービスを分割する。</p>
 <p>ドメイン駆動設計では、DBレコードの書き込み/読み出しのトランザクションをルートエンティティ単位で実行する。</p>
 <p>そのため、リポジトリは実際にはルートエンティティに対応しており、ルートエンティティ単位で分割すると言い換えても良い。</p>
@@ -33559,8 +33560,8 @@
 <li><a href="https://codezine.jp/article/detail/10776">https://codezine.jp/article/detail/10776</a></li>
 </ul>
 </blockquote>
-<h4 id="_20">▼ ドメイン層とは異なるマイクロサービス + 共有リポジトリ単位 (ルートエンティティ単位)<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p>ドメイン層とは異なるマイクロサービス内で実行する。</p>
+<h4 id="_20">▼ エンティティ層とは異なるマイクロサービス + 共有リポジトリ単位 (ルートエンティティ単位)<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p>エンティティ層とは異なるマイクロサービス内で実行する。</p>
 <p>また、共有リポジトリを単位として、マイクロサービスを分割する。</p>
 <p>ただ、境界づけられたコンテキストは他のコンテキストとは異なるルートエンティティを持つため、リポジトリも完全に独立しているはずである。</p>
 <p>そのため、異なる境界づけられたコンテキストのマイクロサービスが、同じリポジトリを共有することは起こらないはずである。</p>
@@ -33587,7 +33588,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月3日 15:11:16 JST">2026-02-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月11日 18:05:54 JST">2026-02-11</span>
   </span>
 
     
