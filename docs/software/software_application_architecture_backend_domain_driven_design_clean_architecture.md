@@ -41,43 +41,43 @@ description: クリーンアーキテクチャ＠アーキテクチャの知見�
 
 アーキテクチャのレイヤー別にこれを整理した。
 
-| バックエンドレイヤー      | パターン                         | 責務                                                                                                                                             | インターフェース／実装 |
-| ------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- |
-| Infrastructure            | DB                               | データベースとの接続、コネクションの作成                                                                                                         | 実装                   |
-|                           | EntityMappers (DTOに相当)        | ドメインとインフラ間のオブジェクトの詰め替え                                                                                                     | 実装                   |
-|                           | Logger                           | ロギング                                                                                                                                         | 実装                   |
-|                           | Middleware                       | ミドルウェア処理                                                                                                                                 | 実装                   |
-|                           | Repositories                     | 実装リポジトリ                                                                                                                                   | 実装                   |
-|                           | Listeners                        | リスナー                                                                                                                                         | 関数                   |
-|                           | Routers                          | ルーティング                                                                                                                                     | 関数                   |
-|                           | Seeder                           | 開発環境、CI環境のユニットテストやE2Eテスト、ステージング環境の動作確認に使用する初期データ挿入                                                  | 実装                   |
-|                           | Drivers                          | SDK、ORM、CLIなど                                                                                                                                | 実装                   |
-| Presentations (Interface) | Controller                       | データの受信と返信                                                                                                                               | 実装                   |
-|                           | Requests                         | 受信データのバリデーション                                                                                                                       | 実装                   |
-|                           | Responses                        | 返信データのバリデーション (受信データと比べてデータ構造は保証されているため、なくてもいい)                                                      | 実装                   |
-|                           | Authenticators                   | 認証                                                                                                                                             | 実装                   |
-|                           | InputAdapter                     | 型変換、入力データ翻訳、フロントエンドインターフェース (あるいは受信JSONデータ) からバックエンドインターフェースへのオブジェクトからへの詰め替え | 実装                   |
-|                           | OutputAdapter                    | 型変換、出力データ翻訳、バックエンドインターフェースからフロントエンドインターフェースへのオブジェクトからへの詰め替え                           | 実装                   |
-| Usecase                   | Interactor                       | Domainで定義されたビジネスルールを組み合わせ、ユースケースを具現化する。                                                                         | 実装                   |
-|                           | InputBoundaries                  | Interactorのインターフェース                                                                                                                     | インターフェース       |
-|                           | InputDTOs (DTOに相当)            | 型変換、バックエンドインターフェースからユースケースのオブジェクトからへの詰め替え                                                               | 実装                   |
-|                           | OutputBoundaries                 | Presenterのインターフェース                                                                                                                      | インターフェース       |
-|                           | OutputDTOs (DTOに相当)           | 型変換、ユースケースからフロントエンドインターフェースへのオブジェクトからへの詰め替え                                                           | 実装                   |
-|                           | Repositories（Gatewaysとも呼ぶ） | Repositoriesのインターフェース                                                                                                                   | インターフェース       |
-| Domain                    | Entity                           | ドメインモデル、ビジネスルールの定義                                                                                                             | 実装                   |
-|                           | Id                               | ドメインモデルの識別子                                                                                                                           | 実装                   |
-|                           | ValueObject                      | 値オブジェクト                                                                                                                                   | 実装                   |
-|                           | Specification                    | ビジネスロジックのバリデーション                                                                                                                 | 実装                   |
-|                           | Criterion                        | 検索条件オブジェクト                                                                                                                             | 実装                   |
-|                           | Events                           | ドメインイベント                                                                                                                                 | 実装                   |
-|                           | Service                          | ドメインサービス                                                                                                                                 | 実装                   |
+| バックエンドレイヤー   | パターン                         | 責務                                                                                                                                             | インターフェース／実装 |
+| ---------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- |
+| インフラストラクチャ層 | DB                               | データベースとの接続、コネクションの作成                                                                                                         | 実装                   |
+|                        | EntityMappers (DTOに相当)        | ドメインとインフラ間のオブジェクトの詰め替え                                                                                                     | 実装                   |
+|                        | Logger                           | ロギング                                                                                                                                         | 実装                   |
+|                        | Middleware                       | ミドルウェアパターン                                                                                                                             | 実装                   |
+|                        | Repositories                     | 実装リポジトリ                                                                                                                                   | 実装                   |
+|                        | Listeners                        | リスナー                                                                                                                                         | 関数                   |
+|                        | Routers                          | ルーティング                                                                                                                                     | 関数                   |
+|                        | Seeder                           | 開発環境、CI環境のユニットテストやE2Eテスト、ステージング環境の動作確認に使用する初期データ挿入                                                  | 実装                   |
+|                        | Drivers                          | SDK、ORM、CLIなど                                                                                                                                | 実装                   |
+| プレゼンテーション層   | Controller                       | データの受信と返信                                                                                                                               | 実装                   |
+|                        | Requests                         | 受信データのバリデーション                                                                                                                       | 実装                   |
+|                        | Responses                        | 返信データのバリデーション (受信データと比べてデータ構造は保証されているため、なくてもいい)                                                      | 実装                   |
+|                        | Authenticators                   | 認証                                                                                                                                             | 実装                   |
+|                        | InputAdapter                     | 型変換、入力データ翻訳、フロントエンドインターフェース (あるいは受信JSONデータ) からバックエンドインターフェースへのオブジェクトからへの詰め替え | 実装                   |
+|                        | OutputAdapter                    | 型変換、出力データ翻訳、バックエンドインターフェースからフロントエンドインターフェースへのオブジェクトからへの詰め替え                           | 実装                   |
+| ユースケース層         | Interactor                       | ドメイン層で定義されたビジネスルールを組み合わせ、ユースケースを具現化する。                                                                     | 実装                   |
+|                        | InputBoundaries                  | Interactorのインターフェース                                                                                                                     | インターフェース       |
+|                        | InputDTOs (DTOに相当)            | 型変換、バックエンドインターフェースからユースケースのオブジェクトからへの詰め替え                                                               | 実装                   |
+|                        | OutputBoundaries                 | Presenterのインターフェース                                                                                                                      | インターフェース       |
+|                        | OutputDTOs (DTOに相当)           | 型変換、ユースケースからフロントエンドインターフェースへのオブジェクトからへの詰め替え                                                           | 実装                   |
+|                        | Repositories（Gatewaysとも呼ぶ） | Repositoriesのインターフェース                                                                                                                   | インターフェース       |
+| ドメイン層             | Entity                           | ドメインモデル、ビジネスルールの定義                                                                                                             | 実装                   |
+|                        | Id                               | ドメインモデルの識別子                                                                                                                           | 実装                   |
+|                        | ValueObject                      | 値オブジェクト                                                                                                                                   | 実装                   |
+|                        | Specification                    | ビジネスロジックのバリデーション                                                                                                                 | 実装                   |
+|                        | Criterion                        | 検索条件オブジェクト                                                                                                                             | 実装                   |
+|                        | Events                           | ドメインイベント                                                                                                                                 | 実装                   |
+|                        | Service                          | ドメインサービス                                                                                                                                 | 実装                   |
 
-| フロントエンドレイヤー   | パターン   | 責務                                                                                 | インターフェース／実装 |
-| ------------------------ | ---------- | ------------------------------------------------------------------------------------ | ---------------------- |
-| Presentation (Interface) | Presenter  | ドメインオブジェクトからJSONデータへの詰め替え                                       | 実装                   |
-|                          | Validators | フロントエンドのバリデーション                                                       | 実装                   |
-|                          | ViewModel  | 状態・振る舞い、JSONデータをフロントエンドインターフェースのオブジェクトへの詰め替え | 実装                   |
-|                          | View       | UIレンダリング、CSSスタイリング                                                      | 実装                   |
+| フロントエンドレイヤー | パターン   | 責務                                                                                 | インターフェース／実装 |
+| ---------------------- | ---------- | ------------------------------------------------------------------------------------ | ---------------------- |
+| プレゼンテーション層   | Presenter  | ドメインオブジェクトからJSONデータへの詰め替え                                       | 実装                   |
+|                        | Validators | フロントエンドのバリデーション                                                       | 実装                   |
+|                        | ViewModel  | 状態・振る舞い、JSONデータをフロントエンドインターフェースのオブジェクトへの詰め替え | 実装                   |
+| UI層                   | View       | UIレンダリング、CSSスタイリング                                                      | 実装                   |
 
 <br>
 
@@ -242,7 +242,7 @@ class FormatValidator
 ```php
 <?php
 
-namespace App\UseCase\Foo\Interactors;
+namespace App\ユースケース層\Foo\Interactors;
 
 /**
  * Foo作成インターラクタークラス
@@ -282,7 +282,7 @@ class FooCreateInteractor
 ```php
 <?php
 
-namespace App\UseCase\Foo\Interactors;
+namespace App\ユースケース層\Foo\Interactors;
 
 /**
  * Fooインターラクタークラス
@@ -377,7 +377,7 @@ class FooInteractor
 ```php
 <?php
 
-namespace App\UseCase\Foo\InputBoundaries;
+namespace App\ユースケース層\Foo\InputBoundaries;
 
 /**
  * Fooインターラクターインターフェース
@@ -580,7 +580,7 @@ class FooCreateResponse
 ```php
 <?php
 
-namespace App\UseCase\Foo\Services\Notify;
+namespace App\ユースケース層\Foo\Services\Notify;
 
 class NotifyFooService
 {
@@ -609,7 +609,7 @@ class NotifyFooService
 ```php
 <?php
 
-namespace App\UseCase\Foo\Services;
+namespace App\ユースケース層\Foo\Services;
 
 use App\Service\SlackNotification;
 
@@ -2307,7 +2307,7 @@ class DogOrder
 
 > - https://qiita.com/mikesorae/items/ff8192fb9cf106262dbf#%E5%AF%BE%E7%AD%96-1
 > - https://codezine.jp/article/detail/10776
-> - https://learn.microsoft.com/ja-jp/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design#define-one-repository-per-aggregate
+> - https://learn.microsoft.com/ja-jp/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/インフラストラクチャ層-persistence-layer-design#define-one-repository-per-aggregate
 
 <br>
 
@@ -2461,7 +2461,7 @@ DBに対する書き込み操作を実行する。
 ```php
 <?php
 
-namespace App\Infrastructure\Foo\Repositories;
+namespace App\インフラストラクチャ層\Foo\Repositories;
 
 use App\Domain\Foo\Entities\DogToy;
 use Doctrine\DBAL\Query\QueryBuilder;
@@ -2498,7 +2498,7 @@ class DogToyRepository
 ```php
 <?php
 
-namespace App\Infrastructure\Foo\Repositories;
+namespace App\インフラストラクチャ層\Foo\Repositories;
 
 use App\Domain\Foo\Entities\DogToy;
 use Doctrine\DBAL\Query\QueryBuilder;
@@ -2535,7 +2535,7 @@ class DogToyRepository
 ```php
 <?php
 
-namespace App\Infrastructure\Foo\Repositories;
+namespace App\インフラストラクチャ層\Foo\Repositories;
 
 use App\Constants\FlagConstant;
 use App\Domain\Entities\DogToy;
@@ -2597,7 +2597,7 @@ DBに対する書き込み操作を実行する。
 ```php
 <?php
 
-namespace App\Infrastructure\Foo\Repositories;
+namespace App\インフラストラクチャ層\Foo\Repositories;
 
 use App\Constants\FlagConstant;
 use App\Domain\Foo\Entities\DogToy;
@@ -2681,7 +2681,7 @@ class DogToyRepository
 ```php
 <?php
 
-namespace App\Infrastructure\Foo\Factories;
+namespace App\インフラストラクチャ層\Foo\Factories;
 
 use App\Domain\Foo\Entities\DogToy;
 use App\Domain\Foo\Entities\DogFood;
@@ -2817,7 +2817,7 @@ gRPCの `proto`ファイルはインフラストラクチャ層に配置する�
 #### ▼ 例外
 
 ```php
-final class PresentationException extends Exception
+final class プレゼンテーション層Exception extends Exception
 {
 
 }
@@ -2856,7 +2856,7 @@ final class DomainException extends Exception
 #### ▼ 例外
 
 ```php
-final class InfrastructureException extends Exception
+final class インフラストラクチャ層Exception extends Exception
 {
 
 }
