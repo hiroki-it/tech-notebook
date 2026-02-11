@@ -50,8 +50,8 @@ CSRの場合、サーバーレスのバックエンドを自動作成してく�
 | RESTful-API、GraphQL-API | AWS API Gateway、AppSync  | インフラ層                               |
 | 認証                     | Cognito                   | インターフェース層                       |
 | 認可                     | Cognito                   | ユースケース層                           |
-| ビジネスロジック         | AWS Lambda                | ドメイン層                               |
-| 全文検索                 | Elastic Search            | ドメイン層                               |
+| ビジネスロジック         | AWS Lambda                | エンティティ層                           |
+| 全文検索                 | Elastic Search            | エンティティ層                           |
 
 #### ▼ ストレージ
 

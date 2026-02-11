@@ -108,7 +108,7 @@ const createUserRepositoryInMemory = (): UserRepositoryInterface => {
 
 #### ▼ DTOとは
 
-ORMのDBモデルをエンティティそのままに使用する場合、ドメイン層がインフラ層に依存してしまう。
+ORMのDBモデルをエンティティそのままに使用する場合、エンティティ層がインフラ層に依存してしまう。
 
 エンティティとORMのDBモデルを分離し、ORMのDBモデルをエンティティに詰め替える必要がある
 

@@ -19,7 +19,7 @@ description: ８章＠ドメイン駆動設計入門ボトムアップの知見�
 
 <br>
 
-## 8.1 ユーザーインターフェース
+## 8.1 インターフェース
 
 - フロントエンド領域
 - API
@@ -32,18 +32,18 @@ description: ８章＠ドメイン駆動設計入門ボトムアップの知見�
 ### 全体像
 
 ```yaml
-UserController、UserRequestDTO # ユーザーインターフェース層
+UserController、UserRequestDTO # インターフェース層
 ↓
-UserApplicationService # アプリケーション層
+UserUsecaseService # ユースケース層
 ↓
-IUserRepository # ドメイン層
+IUserRepository # エンティティ層
 ↑
 UserRepository／InMemoryUserRepository # インフラ層
 ```
 
 <br>
 
-### ユーザーインターフェース層
+### インターフェース層
 
 #### ▼ UserController
 
@@ -76,7 +76,7 @@ export class UserRegisterDto {
 
 <br>
 
-### アプリケーション層
+### ユースケース層
 
 #### ▼ ApplicationService
 
