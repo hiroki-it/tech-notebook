@@ -422,7 +422,7 @@ describe("fetchUser", async () => {
   // 正常系テストケース
   test("should return id and name when success", async () => {
     // axiosの型をモックに認識させる。オブジェクト全体をモックにする場合、trueにする。
-    // axiosクライアントのモックが一度だけデータを返却するように設定
+    // 依存先であるaxiosクライアントのモックが一度だけデータを返却するように設定
     vi.mocked(axios, true).get.mockResolvedValueOnce({
       data: {
         id: "1",
@@ -454,7 +454,7 @@ describe("fetchUser", async () => {
   // 異常系テストケース
   test("should throw error when failure", async () => {
     // axiosの型をモックに認識させる。オブジェクト全体をモックにする場合、trueにする。
-    // axiosクライアントのモックがエラーを一度だけ返すように設定
+    // 依存先であるaxiosクライアントのモックがエラーを一度だけ返すように設定
     vi.mocked(axios, true).get.mockRejectedValueOnce(
       new Error("Network Error"),
     );
@@ -529,6 +529,7 @@ describe("OrganizationRegionFormValidator", () => {
   // 正常系
   it("作成したいアカウントIDと同じアカウントIDが存在しない場合、バリデーション済みのフォーム入力値を返却するはず", async () => {
     // Arrange
+    // 依存先の関数をモックとし、モックが返却するデータを設定する
     vi.mocked(getUser).mockResolvedValueOnce(null);
 
     const formData = new FormData();
@@ -550,6 +551,7 @@ describe("OrganizationRegionFormValidator", () => {
   // 異常系
   it("作成したいアカウントIDと同じアカウントIDが存在する場合、バリデーションエラーを含む結果を返却するはず", async () => {
     // Arrange
+    // 依存先の関数をモックとし、モックが返却するデータを設定する
     vi.mocked(getUser).mockResolvedValueOnce(null);
 
     const formData = new FormData();
@@ -614,7 +616,7 @@ afterEach(async () => {
 });
 
 describe("fetchUser", () => {
-  // axiosクライアントのモック
+  // 依存先であるaxiosクライアントのモック
   vi.mock("axios");
 
   // リクエストのパラメーターに関する初期データ
@@ -678,7 +680,7 @@ afterEach(async () => {
 });
 
 describe("User optional property behavior", () => {
-  // axiosクライアントのモック
+  // 依存先であるaxiosクライアントのモック
   vi.mock("axios");
 
   // リクエストのパラメーターに関する初期データ
@@ -686,7 +688,7 @@ describe("User optional property behavior", () => {
 
   test("should allow validation when optional property is defined", async () => {
     // axiosの型をモックに認識させる。オブジェクト全体をモックにする場合、trueにする。
-    // axiosクライアントのモックが一度だけデータを返却するように設定
+    // 依存先であるaxiosクライアントのモックが一度だけデータを返却するように設定
     vi.mocked(axios, true).get.mockResolvedValueOnce({
       data: {name: "Alice", age: 25},
       status: 200,
@@ -707,7 +709,7 @@ describe("User optional property behavior", () => {
 
   test("should allow validation when optional property is undefined", async () => {
     // axiosの型をモックに認識させる。オブジェクト全体をモックにする場合、trueにする。
-    // axiosクライアントのモックが一度だけデータを返却するように設定
+    // 依存先であるaxiosクライアントのモックが一度だけデータを返却するように設定
     vi.mocked(axios, true).get.mockResolvedValueOnce({
       data: {name: "Bob"},
       status: 200,
@@ -761,7 +763,7 @@ afterEach(async () => {
 });
 
 describe("User.social unknown property behavior", () => {
-  // axiosクライアントのモック
+  // 依存先であるaxiosクライアントのモック
   vi.mock("axios");
 
   // リクエストのパラメーターに関する初期データ
@@ -769,7 +771,7 @@ describe("User.social unknown property behavior", () => {
 
   test("should allow validation when unknown property (object) is defined", async () => {
     // axiosの型をモックに認識させる。オブジェクト全体をモックにする場合、trueにする。
-    // axiosクライアントのモックが一度だけデータを返却するように設定
+    // 依存先であるaxiosクライアントのモックが一度だけデータを返却するように設定
     vi.mocked(axios, true).get.mockResolvedValueOnce({
       data: {
         name: "Alice",
@@ -798,7 +800,7 @@ describe("User.social unknown property behavior", () => {
 
   test("should allow validation when unknown property is undefined", async () => {
     // axiosの型をモックに認識させる。オブジェクト全体をモックにする場合、trueにする。
-    // axiosクライアントのモックが一度だけデータを返却するように設定
+    // 依存先であるaxiosクライアントのモックが一度だけデータを返却するように設定
     vi.mocked(axios, true).get.mockResolvedValueOnce({
       data: {name: "Bob"},
       status: 200,
@@ -919,6 +921,7 @@ describe("fetchUser", () => {
   test("should mock HttpClient and return its instance", async () => {
     // モッククラスのインスタンスを定義する
     const mockInstance = {
+      // 依存先の関数をモックとし、モックが返却するデータを設定する
       get: vi.fn().mockResolvedValueOnce({id: 1, name: "Alice"}),
     };
 
