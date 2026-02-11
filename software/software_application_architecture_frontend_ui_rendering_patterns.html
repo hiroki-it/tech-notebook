@@ -10,13 +10,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="レンダリングパターン＠フロントエンドアーキテクチャの知見を記録しています。">
+        <meta name="description" content="UIレンダリングパターン＠フロントエンドアーキテクチャの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend_rendering_patterns.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend_ui_rendering_patterns.html">
       
       
         <link rel="prev" href="software_application_architecture_frontend.html">
@@ -33,7 +33,7 @@
     
     
       
-        <title>【IT技術の知見】レンダリングパターン＠フロントエンドアーキテクチャ - 俺の技術ノート</title>
+        <title>【IT技術の知見】UIレンダリングパターン＠フロントエンドアーキテクチャ - 俺の技術ノート</title>
       
     
     
@@ -96,7 +96,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#ui" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -166,7 +166,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】レンダリングパターン＠フロントエンドアーキテクチャ
+              【IT技術の知見】UIレンダリングパターン＠フロントエンドアーキテクチャ
             
           </span>
         </div>
@@ -1624,7 +1624,7 @@
   <span class="md-ellipsis">
     
   
-    レンダリングパターン
+    UIレンダリングパターン
   
 
     
@@ -1635,14 +1635,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="software_application_architecture_frontend_rendering_patterns.html" class="md-nav__link md-nav__link--active">
+      <a href="software_application_architecture_frontend_ui_rendering_patterns.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    レンダリングパターン
+    UIレンダリングパターン
   
 
     
@@ -1670,7 +1670,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         はじめに
@@ -1681,19 +1681,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
+  <a href="#01-ui" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. レンダリングパターン
+        01. UIレンダリングパターン
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. レンダリングパターン">
+    <nav class="md-nav" aria-label="01. UIレンダリングパターン">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         歴史
@@ -1704,7 +1704,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         共通する仕組み
@@ -1716,7 +1716,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ ビルド
@@ -1782,7 +1782,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         ブラウザとバックエンド間の通信
@@ -1805,7 +1805,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ 状態・振る舞い管理
@@ -1833,7 +1833,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ 処理速度
@@ -1860,7 +1860,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         適するアプリ
@@ -1910,7 +1910,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         ブラウザとバックエンド間の通信
@@ -1921,7 +1921,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         適するアプリ
@@ -1960,7 +1960,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         ブラウザとバックエンド間の通信
@@ -1971,7 +1971,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         適するアプリ
@@ -2010,7 +2010,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         ブラウザとバックエンド間の通信
@@ -2091,14 +2091,14 @@
   
   
     <li class="md-nav__item">
-      <a href="software_application_architecture_frontend_ui.html" class="md-nav__link">
+      <a href="software_application_architecture_frontend_ui_design.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    UI
+    UI設計
   
 
     
@@ -33094,7 +33094,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         はじめに
@@ -33105,19 +33105,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
+  <a href="#01-ui" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. レンダリングパターン
+        01. UIレンダリングパターン
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. レンダリングパターン">
+    <nav class="md-nav" aria-label="01. UIレンダリングパターン">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         歴史
@@ -33128,7 +33128,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         共通する仕組み
@@ -33140,7 +33140,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ ビルド
@@ -33206,7 +33206,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         ブラウザとバックエンド間の通信
@@ -33229,7 +33229,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ 状態・振る舞い管理
@@ -33257,7 +33257,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ 処理速度
@@ -33284,7 +33284,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         適するアプリ
@@ -33334,7 +33334,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         ブラウザとバックエンド間の通信
@@ -33345,7 +33345,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         適するアプリ
@@ -33384,7 +33384,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         ブラウザとバックエンド間の通信
@@ -33395,7 +33395,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         適するアプリ
@@ -33434,7 +33434,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         ブラウザとバックエンド間の通信
@@ -33557,8 +33557,8 @@
   
 
 
-<h1 id="_1">レンダリングパターン＠フロントエンドアーキテクチャ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h1 id="ui">UIレンダリングパターン＠フロントエンドアーキテクチャ<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -33566,8 +33566,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. レンダリングパターン<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_3">歴史<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h2 id="01-ui">01. UIレンダリングパターン<a class="headerlink" href="#01-ui" title="Permanent link">&para;</a></h2>
+<h3 id="_2">歴史<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <ol>
 <li>SST</li>
 <li>Ajax</li>
@@ -33582,8 +33582,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_4">共通する仕組み<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ ビルド<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h3 id="_3">共通する仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ ビルド<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>フロントエンドに関するファイルは、ブラウザで実行しやすい状態に変換される (コンパイルではなく) 。</p>
 <ul>
 <li>bundleによって、ファイル間で分割された実装をマージする</li>
@@ -33666,7 +33666,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_6">ブラウザとバックエンド間の通信<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_5">ブラウザとバックエンド間の通信<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>CSRでは、ブラウザ上のJavaScriptがバックエンドからデータを取得し、データの出力された静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) をブラウザ上でクライアントレンダリングする。</p>
 <p>そのためSSRやSSGとは異なり、ブラウザ上でバックエンドアプリケーションと通信する。</p>
 <p><img alt="csr" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/csr.png" /></p>
@@ -33677,7 +33677,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="csr_1">CSRの実装方法<a class="headerlink" href="#csr_1" title="Permanent link">&para;</a></h3>
-<h4 id="_7">▼ 状態・振る舞い管理<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h4 id="_6">▼ 状態・振る舞い管理<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>CSRでは、ブラウザ上の操作による現在のデータに応じて、同じページ内でクライアントレンダリングするHTMLが動的に変わり続ける。</p>
 <p>これは、同じページでは特定のHTMLしかクライアントレンダリングできない他の方法 (SSR、SSG、ISRなど) とは異なる。</p>
 <p>CSRは、DOMの現在の状態をDOMから参照するのではなく、相当する状態を状態オブジェクトとして管理する。</p>
@@ -33726,7 +33726,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="csrspampa">CSRによるSPAと従来MPAの比較<a class="headerlink" href="#csrspampa" title="Permanent link">&para;</a></h3>
-<h4 id="_8">▼ 処理速度<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h4 id="_7">▼ 処理速度<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>MPAと比較して、データを非同期的に通信できるため、1つのWebページの中で必要なデータのみを通信すればよく、クライアントレンダリングが速い。</p>
 <p><img alt="従来WebアプリとSPAの処理速度の違い" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/従来ウェブアプリとSPAの処理速度の違い.png" /></p>
 <blockquote>
@@ -33742,7 +33742,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_9">適するアプリ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h3 id="_8">適するアプリ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <ul>
 <li>SEOが重要なアプリ</li>
 <li>リアルタイム処理が求められないアプリ</li>
@@ -33804,7 +33804,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_10">ブラウザとバックエンド間の通信<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h3 id="_9">ブラウザとバックエンド間の通信<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>SSRでは、フロントエンドアプリケーションへのリクエスト時にバックエンドからデータを取得し、データの出力された静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) をフロントエンドアプリケーション上でサーバーレンダリングする。</p>
 <p>また、ブラウザ上で静的ファイルのハイドレーションを実施する。</p>
 <p>そのためCSRとは異なり、フロントエンドアプリケーション上での静的ファイルのレンダリング時またはブラウザ操作時 (例：クリック操作によるデータ送信など) に、バックエンドアプリケーションと通信する。</p>
@@ -33815,7 +33815,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_11">適するアプリ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h3 id="_10">適するアプリ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <ul>
 <li>SEOが重要なアプリ</li>
 <li>リアルタイム処理が求められないアプリ</li>
@@ -33838,7 +33838,7 @@
 </blockquote>
 <p><img alt="ssg" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssg.png" /></p>
 <p><br></p>
-<h3 id="_12">ブラウザとバックエンド間の通信<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h3 id="_11">ブラウザとバックエンド間の通信<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>SSGでは、フロントエンドアプリケーションのビルド時にバックエンドからデータを取得し、データの出力された静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、画像、動画、メールなど) をフロントエンドアプリケーション上でサーバーレンダリングする。</p>
 <p>そのためCSRとは異なり、フロントエンドアプリケーション上での静的ファイルのサーバーレンダリング時またはブラウザ操作時 (例：クリック操作によるデータ送信など) に、バックエンドアプリケーションと通信する。</p>
 <p><img alt="ssg" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssg.png" /></p>
@@ -33848,7 +33848,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_13">適するアプリ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h3 id="_12">適するアプリ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <p><br></p>
 <h2 id="07-isrincremental-static-regeneration">07. ISR：Incremental Static Regeneration<a class="headerlink" href="#07-isrincremental-static-regeneration" title="Permanent link">&para;</a></h2>
@@ -33864,7 +33864,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_14">ブラウザとバックエンド間の通信<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h3 id="_13">ブラウザとバックエンド間の通信<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p><img alt="isr" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/isr.png" /></p>
 <blockquote>
 <ul>
@@ -33873,7 +33873,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="08-uruniversal-rendering">08. UR：Universal Rendering<a class="headerlink" href="#08-uruniversal-rendering" title="Permanent link">&para;</a></h2>
-<p>SSRとCSRを組み合わせたレンダリングパターンであり、SST（Server Side Templating）に似ている。</p>
+<p>SSRとCSRを組み合わせたUIレンダリングパターンであり、SST（Server Side Templating）に似ている。</p>
 <blockquote>
 <ul>
 <li><a href="https://nuxt.com/docs/4.x/guide/concepts/rendering">https://nuxt.com/docs/4.x/guide/concepts/rendering</a></li>
