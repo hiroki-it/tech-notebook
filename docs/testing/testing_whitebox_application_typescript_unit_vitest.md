@@ -527,7 +527,7 @@ import {getUser} from "~/models/user.server";
 
 describe("OrganizationRegionFormValidator", () => {
   // 正常系
-  it("作成したいアカウントIDと同じアカウントIDが存在しない場合、バリデーション済みのフォーム入力値を返却するはず", async () => {
+  test("作成したいアカウントIDと同じアカウントIDが存在しない場合、バリデーション済みのフォーム入力値を返却するはず", async () => {
     // Arrange
     // 依存先の関数をモックとし、モックが返却するデータを設定する
     vi.mocked(getUser).mockResolvedValueOnce(null);
@@ -549,7 +549,7 @@ describe("OrganizationRegionFormValidator", () => {
   });
 
   // 異常系
-  it("作成したいアカウントIDと同じアカウントIDが存在する場合、バリデーションエラーを含む結果を返却するはず", async () => {
+  test("作成したいアカウントIDと同じアカウントIDが存在する場合、バリデーションエラーを含む結果を返却するはず", async () => {
     // Arrange
     // 依存先の関数をモックとし、モックが返却するデータを設定する
     vi.mocked(getUser).mockResolvedValueOnce(null);

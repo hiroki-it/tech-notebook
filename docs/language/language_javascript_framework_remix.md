@@ -415,7 +415,7 @@ CSRモードとSSGモードは厳密ではなく、Remix独自の擬似的なモ
 │   ├── constants/          # フロントエンド／バックエンドで使用するグローバルな値
 │   ├── entry.client.tsx
 │   ├── entry.server.tsx
-│   ├── hooks/              # フロントエンドの状態管理で使用する汎用的なsetState関数
+│   ├── hooks/              # フロントエンドの状態・振る舞いロジックで使用する汎用的なsetState関数
 │   ├── domain/             # 独自のドメインモデル (ドメインロジックのため、永続化処理以外には依存させない)
 │   ├── repository/         # ORMモデルを使用した永続化処理
 │   ├── openapi/            # OpenAPI仕様書の生成処理
