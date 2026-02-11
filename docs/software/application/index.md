@@ -39,6 +39,7 @@ hide:
 
 - #### [︎フロントエンドアーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend.html)
 - #### [レンダリングパターン](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend_rendering_patterns.html)
+- #### [状態・振る舞い管理](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend_state_behavior.html)
 
 <br>
 

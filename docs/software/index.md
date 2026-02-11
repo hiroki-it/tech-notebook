@@ -19,8 +19,6 @@ hide:
 
 - ##### [量が多いため、こちらのセクションに切り分けています](https://hiroki-it.github.io/tech-notebook/software/application/index.html)
 
-- ##### [状態管理](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend_state.html)
-
 <br>
 
 ### ミドルウェア
