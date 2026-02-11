@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】レンダリングパターン＠フロントエンドアーキテクチャ
-description: レンダリングパターン＠フロントエンドアーキテクチャの知見を記録しています。
+title: 【IT技術の知見】UIレンダリングパターン＠フロントエンドアーキテクチャ
+description: UIレンダリングパターン＠フロントエンドアーキテクチャの知見を記録しています。
 ---
 
-# レンダリングパターン＠フロントエンドアーキテクチャ
+# UIレンダリングパターン＠フロントエンドアーキテクチャ
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: レンダリングパターン＠フロントエンドアーキテ�
 
 <br>
 
-## 01. レンダリングパターン
+## 01. UIレンダリングパターン
 
 ### 歴史
 
@@ -326,7 +326,7 @@ SSGと同じで事前にビルドし、静的ファイル (例：`html`ファイ
 
 ## 08. UR：Universal Rendering
 
-SSRとCSRを組み合わせたレンダリングパターンであり、SST（Server Side Templating）に似ている。
+SSRとCSRを組み合わせたUIレンダリングパターンであり、SST（Server Side Templating）に似ている。
 
 > - https://nuxt.com/docs/4.x/guide/concepts/rendering
 
