@@ -57,13 +57,13 @@ PRはドメイン駆動設計の戦略的設計と戦術的設計に基づいて
 |                           | Authenticators                   | 認証                                                                                                                                             | 実装                   |
 |                           | InputAdapter                     | 型変換、入力データ翻訳、フロントエンドインターフェース (あるいは受信JSONデータ) からバックエンドインターフェースへのオブジェクトからへの詰め替え | 実装                   |
 |                           | OutputAdapter                    | 型変換、出力データ翻訳、バックエンドインターフェースからフロントエンドインターフェースへのオブジェクトからへの詰め替え                           | 実装                   |
-| Usecase                   | Interactor                       | Entitiesで定義されたビジネスルールを組み合わせる                                                                                                 | 実装                   |
+| Usecase                   | Interactor                       | Domainで定義されたビジネスルールを組み合わせ、ユースケースを具現化する。                                                                         | 実装                   |
 |                           | InputBoundaries                  | Interactorのインターフェース                                                                                                                     | インターフェース       |
 |                           | InputDTOs (DTOに相当)            | 型変換、バックエンドインターフェースからユースケースのオブジェクトからへの詰め替え                                                               | 実装                   |
 |                           | OutputBoundaries                 | Presenterのインターフェース                                                                                                                      | インターフェース       |
 |                           | OutputDTOs (DTOに相当)           | 型変換、ユースケースからフロントエンドインターフェースへのオブジェクトからへの詰め替え                                                           | 実装                   |
 |                           | Repositories（Gatewaysとも呼ぶ） | Repositoriesのインターフェース                                                                                                                   | インターフェース       |
-| Entities                  | Entity                           | ドメインモデル、ビジネスルールの定義                                                                                                             | 実装                   |
+| Domain                    | Entity                           | ドメインモデル、ビジネスルールの定義                                                                                                             | 実装                   |
 |                           | Id                               | ドメインモデルの識別子                                                                                                                           | 実装                   |
 |                           | ValueObject                      | 値オブジェクト                                                                                                                                   | 実装                   |
 |                           | Specification                    | ビジネスロジックのバリデーション                                                                                                                 | 実装                   |
