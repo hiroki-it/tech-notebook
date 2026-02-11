@@ -31,16 +31,6 @@ description: フロントエンドアーキテクチャ＠フロントエンド�
 
 <br>
 
-## 02. Atomic Design
-
-### Atmic Designとは
-
-UIレンダリングロジックを構成する要素を、5つのレイヤー (Atoms、Molecules、Organisms、Templates、Pages) に分ける設計方法のこと。
-
-> - https://atomicdesign.bradfrost.com/
-
-<br>
-
 ### Nuxt.jsを参考に考える
 
 Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
@@ -55,7 +45,7 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 <br>
 
-## 03. Feature Sliced Design (機能スライス設計)
+## 02. Feature Sliced Design (機能スライス設計)
 
 ```yaml
 .
@@ -83,7 +73,7 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 <br>
 
-## 04. クリーンアーキテクチャ
+## 03. クリーンアーキテクチャ
 
 フロントエンドにはビジネスロジックがないため、クリーンアーキテクチャを採用する意義がない。
 
@@ -93,7 +83,7 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 <br>
 
-## 05. マイクロフロントエンド
+## 04. マイクロフロントエンド
 
 ### UI部品合成とは
 
