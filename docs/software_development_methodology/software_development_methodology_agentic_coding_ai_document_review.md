@@ -35,6 +35,10 @@ PRはドメイン駆動設計の戦略的設計と戦術的設計に基づいて
 - 次の戦術的設計表を参照し、どのパターンを実装しているか。どのパターンに属するロジックを追加・変更したのかを教えて。
   - 表には概要にしか記載していないので、インターネットから正しい情報をインプットして。
 
+![clean-architecutre_layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/clean-architecutre_layer.png)
+
+> - https://github.com/herryg91/go-clean-architecture
+
 ### バックエンドの戦術的設計表
 
 | レイヤー       | パターン                         | 責務                                                                                                                                             | インターフェース／実装 |
@@ -58,9 +62,9 @@ PRはドメイン駆動設計の戦略的設計と戦術的設計に基づいて
 |                | InputDTOs (DTOに相当)            | 型変換、バックエンドインターフェースからユースケースのオブジェクトからへの詰め替え                                                               | 実装                   |
 |                | OutputBoundaries                 | Presenterのインターフェース                                                                                                                      | インターフェース       |
 |                | OutputDTOs (DTOに相当)           | 型変換、ユースケースからフロントエンドインターフェースへのオブジェクトからへの詰め替え                                                           | 実装                   |
+|                | Repositories（Gatewaysとも呼ぶ） | Repositoriesのインターフェース                                                                                                                   | インターフェース       |
 | Domain         | Entities                         | ドメインモデルまたはそれの集約                                                                                                                   | 実装                   |
 |                | Id                               | ドメインモデルの識別子                                                                                                                           | 実装                   |
-|                | Repositories（Gatewaysとも呼ぶ） | Repositoriesのインターフェース                                                                                                                   | インターフェース       |
 |                | ValueObject                      | 値オブジェクト                                                                                                                                   | 実装                   |
 |                | Specification                    | ビジネスロジックのバリデーション                                                                                                                 | 実装                   |
 |                | Criterion                        | 検索条件オブジェクト                                                                                                                             | 実装                   |
