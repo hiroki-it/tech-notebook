@@ -67,7 +67,7 @@ SSRのため、サーバーレンダリングとしている。
 ```yaml
 リクエスト受信：./app/entry.server.tsx
 - クライアントがブラウザまたはBotかを判定
-- レンダリングパターン選択
+- UIレンダリングパターン選択
 ⬇︎
 ⬇︎
 ミドルウェア処理：./app/middleware/tokenVerification.ts への切り分け
@@ -380,7 +380,7 @@ Infrastructure層
 
 <br>
 
-## 04. レンダリングパターン
+## 04. UIレンダリングパターン
 
 Remixでは、SSRモード、CSRモード、SSGモードがある。
 
