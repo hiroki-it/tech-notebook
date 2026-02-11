@@ -19,7 +19,7 @@ description: APIゲートウェイ領域＠マイクロサービスアーキテ�
 
 ![microservices_api-gateway-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_api-gateway-pattern.png)
 
-クリーンアーキテクチャでいうインフラ層とインターフェース層のような機能を担う。
+クリーンアーキテクチャでいうインフラストラクチャ層とインターフェース層のような機能を担う。
 
 主要な機能として、受信した通信を適切なマイクロサービスのAPIにルーティング
 

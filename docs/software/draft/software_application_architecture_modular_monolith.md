@@ -20,7 +20,7 @@ description: モジュラーモノリス＠アーキテクチャの知見を記�
 ├── /presentation    # プレゼンテーション層
 ├── /features        # 機能単位のモジュール
 │   ├── /users       # ユーザー管理モジュール
-  │   │   ├── /domain  # エンティティ層
+  │   │   ├── /domain  # ドメイン層
 │   │   │   ├── /User.ts
 │   │   │   ├── /UserId.ts
 │   │   │   └── /IUserRepository.ts

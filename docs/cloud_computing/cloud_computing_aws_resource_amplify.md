@@ -46,12 +46,12 @@ CSRの場合、サーバーレスのバックエンドを自動作成してく�
 
 | 役割                     | 使用されているAWSリソース | クリーンアーキテクチャで相当するレイヤー |
 | ------------------------ | ------------------------- | ---------------------------------------- |
-| リアルタイム通知         | AppSync、IoT Core         | インフラ層                               |
-| RESTful-API、GraphQL-API | AWS API Gateway、AppSync  | インフラ層                               |
+| リアルタイム通知         | AppSync、IoT Core         | インフラストラクチャ層                   |
+| RESTful-API、GraphQL-API | AWS API Gateway、AppSync  | インフラストラクチャ層                   |
 | 認証                     | Cognito                   | インターフェース層                       |
 | 認可                     | Cognito                   | ユースケース層                           |
-| ビジネスロジック         | AWS Lambda                | エンティティ層                           |
-| 全文検索                 | Elastic Search            | エンティティ層                           |
+| ビジネスロジック         | AWS Lambda                | ドメイン層                               |
+| 全文検索                 | Elastic Search            | ドメイン層                               |
 
 #### ▼ ストレージ
 

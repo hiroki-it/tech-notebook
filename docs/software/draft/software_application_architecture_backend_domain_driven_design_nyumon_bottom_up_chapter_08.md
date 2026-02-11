@@ -36,9 +36,9 @@ UserController、UserRequestDTO # インターフェース層
 ↓
 UserUsecaseService # ユースケース層
 ↓
-IUserRepository # エンティティ層
+IUserRepository # ドメイン層
 ↑
-UserRepository／InMemoryUserRepository # インフラ層
+UserRepository／InMemoryUserRepository # インフラストラクチャ層
 ```
 
 <br>
