@@ -23,7 +23,7 @@ E2Eテストの実施に必要な機能を提供し、加えてテストを実�
 
 ### data-cy
 
-CypressのためだけにUIロジック（HTML）につける要素のこと。
+CypressのためだけにUIレンダリングロジックにつける要素のこと。
 
 ```tsx
 export function SubmitButton() {

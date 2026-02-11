@@ -35,7 +35,7 @@ description: フロントエンドアーキテクチャ＠フロントエンド�
 
 ### Atmic Designとは
 
-UIロジック（HTML）を構成する要素を、5つのレイヤー (Atoms、Molecules、Organisms、Templates、Pages) に分ける設計方法のこと。
+UIレンダリングロジックを構成する要素を、5つのレイヤー (Atoms、Molecules、Organisms、Templates、Pages) に分ける設計方法のこと。
 
 > - https://atomicdesign.bradfrost.com/
 
