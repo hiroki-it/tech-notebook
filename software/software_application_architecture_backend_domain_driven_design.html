@@ -34394,7 +34394,7 @@
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
-<p>アーキテクチャ (レイヤード型、ヘキサゴナル型、オニオン型、クリーンアーキテクチャ) を決め、クラス図を元にエンティティ層を実装する。</p>
+<p>アーキテクチャ (レイヤード型、ヘキサゴナル型、オニオン型、クリーンアーキテクチャ) を決め、クラス図を元にドメイン層を実装する。</p>
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
@@ -34822,18 +34822,18 @@
 <p><img alt="MVCモデル" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/MVCモデル.png" /></p>
 <h4 id="mvc_2">▼ MVCからレイヤードアーキテクチャへの移行<a class="headerlink" href="#mvc_2" title="Permanent link">&para;</a></h4>
 <p>ドメイン駆動設計が登場したことによって、MVCは発展し、M・V・Cそれぞれの役割がより具体的で精密になった。</p>
-<p>Modelの肥大化は、Modelが持つビジネスロジックをエンティティ層、またCRUD処理をインフラ層として分割することによって、対処された。</p>
+<p>Modelの肥大化は、Modelが持つビジネスロジックをドメイン層、またCRUD処理をインフラストラクチャ層として分割することによって、対処された。</p>
 <p><img alt="ドメイン駆動設計" src="https://user-images.githubusercontent.com/42175286/58724663-2ec11c80-8418-11e9-96e9-bfc6848e9374.png" /></p>
 <p><br></p>
 <h3 id="_31">ドメイン駆動設計アーキテクチャの種類<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
 <h4 id="_32">▼ レイヤードアーキテクチャ<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
 <p>最初に提唱された実現方法。</p>
-<p>レイヤードアーキテクチャのインフラ層に対して、依存性逆転を組み込むかどうはには言及していない。</p>
+<p>レイヤードアーキテクチャのインフラストラクチャ層に対して、依存性逆転を組み込むかどうはには言及していない。</p>
 <ul>
 <li>インターフェース層 (コントローラー、認証)</li>
 <li>ユースケース層 (ユースケース)</li>
-<li>エンティティ層 (ドメインモデル、認可)</li>
-<li>インフラ層 (永続化)</li>
+<li>ドメイン層 (ドメインモデル、認可)</li>
+<li>インフラストラクチャ層 (永続化)</li>
 </ul>
 <p><img alt="layered-architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/layered-architecture.png" /></p>
 <blockquote>
@@ -34854,7 +34854,7 @@
 <tbody>
 <tr>
 <td>Model</td>
-<td>エンティティ層、インフラ層</td>
+<td>ドメイン層、インフラストラクチャ層</td>
 </tr>
 <tr>
 <td>Controller</td>
@@ -34871,9 +34871,9 @@
 </tbody>
 </table>
 <h4 id="_33">▼ レイヤードアーキテクチャに依存性逆転を組み込む<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
-<p>レイヤードアーキテクチャのインフラ層に対して、依存性逆転を組み込んだもの。</p>
-<p>エンティティ層のオブジェクトは、エンティティ層の他のオブジェクトに依存する以外、何のオブジェクトにも外部パッケージにも依存しない。</p>
-<p>逆に考えれば、これらに依存するものはエンティティ層に配置する必要はないと判断できる。</p>
+<p>レイヤードアーキテクチャのインフラストラクチャ層に対して、依存性逆転を組み込んだもの。</p>
+<p>ドメイン層のオブジェクトは、ドメイン層の他のオブジェクトに依存する以外、何のオブジェクトにも外部パッケージにも依存しない。</p>
+<p>逆に考えれば、これらに依存するものはドメイン層に配置する必要はないと判断できる。</p>
 <h4 id="_34">▼ ヘキサゴナルアーキテクチャ<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
 <p>別名『ポートアンドアダプターアーキテクチャ』という。</p>
 <p>レイヤードアーキテクチャ</p>
@@ -35321,7 +35321,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月11日 18:05:54 JST">2026-02-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月11日 18:09:59 JST">2026-02-11</span>
   </span>
 
     
