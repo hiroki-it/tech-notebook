@@ -19,9 +19,9 @@ description: 状態管理＠フロントエンドアーキテクチャの知見�
 
 以下の要素からなる。
 
-- View：UIレンダリングロジック
-- ViewModel：状態／振る舞いのロジック
-- Model：モデルそのもの
+- View：UIレンダリングロジック、CSSスタイリングロジック
+- ViewModel：状態・振る舞いロジック
+- Model：モデル
 
 ViewとModelの間にViewModelを配置し、ViewとViewModelの間で双方向にデータをやり取り (双方向データバインディング) する。
 
