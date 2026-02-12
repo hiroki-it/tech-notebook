@@ -17,15 +17,12 @@ description: 状態管理＠フロントエンドアーキテクチャの知見�
 
 UIレンダリングに必要なデータを保持し、またユーザー操作や通信処理結果に応じて非同期に変更すること。
 
-| フレームワーク、パッケージ | 状態管理に関する関数                                                                      |
-| -------------------------- | ----------------------------------------------------------------------------------------- |
-| React                      | `useState`、`useReducer`、`useRef`、`useSyncExternalStore`、`createContext`、`useContext` |
-| Zustand                    | `create`                                                                                  |
-| Redux Toolkit              | `configureStore`、`createSlice`                                                           |
-| Recoil                     | `atom`、`selector`                                                                        |
-| Jotai                      | `atom`                                                                                    |
-| MobX                       | `makeAutoObservable`                                                                      |
-| XState                     | `createMachine`、`interpret`                                                              |
+| フレームワーク／パッケージ | 状態管理関数                                                             |
+| -------------------------- | ------------------------------------------------------------------------ |
+| React                      | `useState`、`useReducer`、`useRef`、`useContext`                         |
+| Vue.js                     | `ref`、`reactive`、`computed`、`watch`                                   |
+| Next.js (Reactと同じ)      | `useState`、`useReducer`、`useRef`、`useSyncExternalStore`、`useContext` |
+| Nuxt.js (Vue.jsと同じ)     | `ref`、`reactive`、`computed`、`watch`                                   |
 
 <br>
 
