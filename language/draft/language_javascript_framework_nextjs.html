@@ -32776,6 +32776,39 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#csr_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ CSRモード
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssr_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ SSRモード
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssg_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ SSGモード
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#api-routes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -33279,8 +33312,15 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
 </blockquote>
 <p><br></p>
 <h3 id="_3">モード<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="csr_1">▼ CSRモード<a class="headerlink" href="#csr_1" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<h4 id="ssr_1">▼ SSRモード<a class="headerlink" href="#ssr_1" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<h4 id="ssg_1">▼ SSGモード<a class="headerlink" href="#ssg_1" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
 <h4 id="api-routes">▼ API Routesモード<a class="headerlink" href="#api-routes" title="Permanent link">&para;</a></h4>
 <p><code>app/api/foo</code>ディレクトリに<code>route.ts</code>ファイルをおくと、<code>app/api/</code>がエンドポイントのAPI Routesモードになる。</p>
+<p>API Routesモードとほかのモード（CSR、SSR、SSG）はディレクトリを分けて共存させられるため、一つのアプリケーションでフロントエンドアプリケーションとBFFを兼ねることができる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// app/api/foo/route.tsファイル</span>
 <span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">NextApiRequest</span><span class="p">,</span><span class="w"> </span><span class="nx">NextApiResponse</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;next&quot;</span><span class="p">;</span>
 
@@ -33326,7 +33366,7 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
 <td style="text-align: center;">❌</td>
 </tr>
 <tr>
-<td>API Routes (厳密にはモードではない)</td>
+<td>API Routesモード (厳密にはモードではない)</td>
 <td>サーバーへのリクエストごと</td>
 <td style="text-align: center;">✅</td>
 <td style="text-align: center;">✅ (<code>api</code>ディレクトリ配下で読み込む)</td>
@@ -33458,7 +33498,7 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月11日 19:47:34 JST">2026-02-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月12日 18:23:02 JST">2026-02-12</span>
   </span>
 
     
