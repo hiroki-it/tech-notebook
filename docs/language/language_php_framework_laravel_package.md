@@ -35,6 +35,7 @@ $ npm run dev
 $ npm run watch
 ```
 
+タイプ名
 <br>
 
 ## 02. 認証系パッケージ
@@ -128,7 +129,7 @@ class RoleType extends Enum
 
 **＊実装例＊**
 
-DBから区分値をSELECTした後、これを元にenum型のクラスを作成する。
+DBから区分値を取得し、これを元にenum型のクラスを作成する。
 
 ```php
 <?php

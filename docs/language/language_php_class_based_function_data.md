@@ -1431,21 +1431,17 @@ final class FlagConstant
 
 #### ▼ 区分値
 
-区分値をinteger型の定数として扱う。
+区分名（`A_TYPE`、`B_TYPE`、`C_TYPE`）をinteger型の定数として扱う。
 
-区分値を状態として持つオブジェクトについては、ドメイン駆動設計の値オブジェクトを参考にせよ。
+DBレコード区分名をそのまま保存してもよいが、区分名が変わった時にアプリケーションの実装だけでなくDBレコードを変更するのが大変である。
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html
+その一方で、DBでは区分名ではなく区分値として管理しておけば、DBレコードを変更せずにアプリケーションだけをへんこうすればよい。
 
 #### ▼ 数値計算、数値比較
 
 計算処理や数値比較処理では、可読性の観点から、できるだけ数値を直書きしない。
 
 数値に意味合いを持たせ、定数として扱うと可読性が高くなる。
-
-ドメイン駆動設計の値オブジェクトを参考にせよ。
-
-> - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html
 
 #### ▼ URL
 

@@ -63,6 +63,8 @@ APIゲートウェイの責務をどのように分割するかに応じて、�
 
 なお、BFFはRESTful-APIであってもGraphQL-APIであっても、どちらでも問題ない。
 
+もし、後続のマイクロサービスがgRPC-APIで待ち受けているようなら、BFFでgRPCクライアントを実装する必要がある。
+
 ![apigateway_bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_bff-pattern.png)
 
 > - https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
