@@ -10,13 +10,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="状態・振る舞い管理＠フロントエンドアーキテクチャの知見を記録しています。">
+        <meta name="description" content="状態管理＠フロントエンドアーキテクチャの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend_state_behavior.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend_state.html">
       
       
         <link rel="prev" href="software_application_architecture_frontend_ui_rendering_patterns.html">
@@ -33,7 +33,7 @@
     
     
       
-        <title>【IT技術の知見】状態・振る舞い管理＠フロントエンドアーキテクチャ - 俺の技術ノート</title>
+        <title>【IT技術の知見】状態管理＠フロントエンドアーキテクチャ - 俺の技術ノート</title>
       
     
     
@@ -166,7 +166,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】状態・振る舞い管理＠フロントエンドアーキテクチャ
+              【IT技術の知見】状態管理＠フロントエンドアーキテクチャ
             
           </span>
         </div>
@@ -1652,7 +1652,7 @@
   <span class="md-ellipsis">
     
   
-    状態・振る舞い管理
+    状態管理
   
 
     
@@ -1663,14 +1663,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="software_application_architecture_frontend_state_behavior.html" class="md-nav__link md-nav__link--active">
+      <a href="software_application_architecture_frontend_state.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    状態・振る舞い管理
+    状態管理
   
 
     
@@ -1712,7 +1712,7 @@
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. 状態・振る舞い管理（状態管理）とは
+        01. 状態管理（状態管理）とは
       
     </span>
   </a>
@@ -1774,7 +1774,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        状態・振る舞い管理との関係性
+        状態管理との関係性
       
     </span>
   </a>
@@ -32819,7 +32819,7 @@
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. 状態・振る舞い管理（状態管理）とは
+        01. 状態管理（状態管理）とは
       
     </span>
   </a>
@@ -32881,7 +32881,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        状態・振る舞い管理との関係性
+        状態管理との関係性
       
     </span>
   </a>
@@ -32979,7 +32979,7 @@
   
 
 
-<h1 id="_1">状態・振る舞い管理＠フロントエンドアーキテクチャ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h1 id="_1">状態管理＠フロントエンドアーキテクチャ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -32988,17 +32988,16 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. 状態・振る舞い管理（状態管理）とは<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. 状態管理（状態管理）とは<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <p>『状態管理』ともいう。</p>
-<p>フロントエンドアプリケーションの状態・振る舞いを管理する。</p>
-<p>バックエンドアプリケーショにも状態・振る舞いがあり、それのフロントエンドアプリケーション相当である。</p>
+<p>フロントエンドアプリケーションの状態を管理する。</p>
 <p><br></p>
 <h2 id="02-mvp">02. MVPアーキテクチャ<a class="headerlink" href="#02-mvp" title="Permanent link">&para;</a></h2>
 <h3 id="mvp">MVPアーキテクチャとは<a class="headerlink" href="#mvp" title="Permanent link">&para;</a></h3>
 <p>以下の要素からなる。</p>
 <ul>
 <li>View：UIレンダリングロジック、CSSスタイリングロジック</li>
-<li>Presenter：状態・振る舞いロジック</li>
+<li>Presenter：状態管理ロジック</li>
 <li>Model：機能モデル</li>
 </ul>
 <p><br></p>
@@ -33007,7 +33006,7 @@
 <p>以下の要素からなる。</p>
 <ul>
 <li>View：UIレンダリングロジック、CSSスタイリングロジック</li>
-<li>ViewModel：状態・振る舞いロジック</li>
+<li>ViewModel：状態管理ロジック</li>
 <li>Model：機能モデル</li>
 </ul>
 <p>ViewとModelの間にViewModelを配置し、ViewとViewModelの間で双方向にデータをやり取り (双方向データバインディング) する。</p>
@@ -33015,7 +33014,7 @@
 <p>Vue.jsでは、意識せずにMVVMアーキテクチャで実装できるようになっている。</p>
 <p><img alt="一般的なMVVMアーキテクチャ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/一般的なMVVMアーキテクチャ.png" /></p>
 <p><br></p>
-<h3 id="_3">状態・振る舞い管理との関係性<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_3">状態管理との関係性<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>以下の状態管理を使用している場合、MVVMアーキテクチャで構築することになる。</p>
 <ul>
 <li>CSR</li>
