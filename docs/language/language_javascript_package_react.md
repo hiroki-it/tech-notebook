@@ -145,9 +145,9 @@ createRoot(document.getElementById("root")!).render(
 
 ### Reactによる独自コンポーネントとは
 
-Reactは汎用的なUIレンダリングロジックと状態・振る舞いロジックを提供する。
+Reactは汎用的なUIレンダリングロジックと状態管理ロジックを提供する。
 
-これ使用して、汎用的なUIレンダリングロジックと状態・振る舞いロジックのクラスまたは関数を定義できる。
+これ使用して、汎用的なUIレンダリングロジックと状態管理ロジックのクラスまたは関数を定義できる。
 
 ```jsx
 import React from "react";
@@ -280,7 +280,7 @@ const Counter = React.memo(function Counter({ value }: Props) {
 
 #### ▼ useEffectとは
 
-reactコンポーネント内で非同期処理を使用できるようにする。
+reactコンポーネント内で、状態の変化に応じて非同期処理を使用できるようにする。
 
 フロントエンドの文脈では、レンダリング後のデータ変更処理を非同期処理とするとよく、レンダリング後にこの処理を`useEffect`関数で実行する。
 
@@ -481,7 +481,7 @@ export default function App() {
 
 ### useState
 
-reactコンポーネント内で状態を操作できるようにする。
+reactコンポーネント内で状態を管理できるようにする。
 
 `state`変数と`setState`関数を返却するため、これを任意の名前の変数に格納する。
 

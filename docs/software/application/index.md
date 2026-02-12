@@ -40,7 +40,7 @@ hide:
 - #### [︎フロントエンドアーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend.html)
 - #### [UIレンダリングパターン](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend_ui_rendering_patterns.html)
 - #### [UI設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend_ui_design.html)
-- #### [状態・振る舞い管理](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend_state_behavior.html)
+- #### [状態管理](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend_state.html)
 
 <br>
 
