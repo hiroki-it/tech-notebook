@@ -36639,7 +36639,7 @@
 </tr>
 </tbody>
 </table>
-<p>上記の通りそれぞれ一長一短があり、運用コストも当然増加することになるため、十分に検討を行ったうえで必要に応じてDR構成を検討する。</p>
+<p>上記の通りそれぞれ一長一短があり、運用コストも当然増加することになるため、十分に検討したうえで必要に応じてDR構成を検討する。</p>
 <p><br></p>
 <h3 id="_3">ハードウェアをサイジングする<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="cpu">▼ CPU / メモリをサイジングする<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h4>
@@ -36746,8 +36746,8 @@
 </table>
 <blockquote>
 <ul>
-<li>[Control Plane - EKS Best Practices Guides](<a href="https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades">https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades</a></li>
-<li>[マネージド型ノードの更新動作 - Amazon EKS](<a href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html">https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html</a></li>
+<li><a href="https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades">Control Plane - EKS Best Practices Guides</a></li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html">マネージド型ノードの更新動作 - Amazon EKS</a></li>
 <li><a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#choose-blue-green-upgrades">https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#choose-blue-green-upgrades</a></li>
 </ul>
 </blockquote>
@@ -36760,13 +36760,13 @@
 <li>クラスターアップグレードにあたっての準備<ul>
 <li>クラスターアップグレード前に <a href="https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG">https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG</a> を確認し、(おおまかにでも)変更内容について確認する</li>
 <li>クラスターアップグレード前に廃止されるAPIグループのバージョンを確認することで、変更が必要な既存のmanifestsを確認する</li>
-<li>あらかじめ検証環境で本番環境と(限りなく)同じ設定のクラスターのアップグレード~動作確認を行い、問題無くアップグレード可能かを検証する</li>
+<li>あらかじめ検証環境で本番環境と(限りなく)同じ設定のクラスターのアップグレード~動作確認を行い、問題なくアップグレード可能かを検証する</li>
 <li>監視ツールなどで廃止されるメトリクスを使用したクエリロジックが無いかを確認する</li>
 <li>クラスターにインストールしてる各種Helm ChartやOperatorが対象のクラスターバージョンで正常に動作するか or サポートしているかを確認する</li>
 </ul>
 </li>
 <li>クラスターバージョンのアップグレード戦略<ul>
-<li>Kubernetesの「<a href="https://kubernetes.io/releases/version-skew-policy/#supported-component-upgrade-order">https://kubernetes.io/releases/version-skew-policy/#supported-component-upgrade-order</a>」と「Kubernetes Release Versioning』に沿ったバージョンアップを実行する</li>
+<li>Kubernetesの「<a href="https://kubernetes.io/releases/version-skew-policy/#supported-component-upgrade-order">https://kubernetes.io/releases/version-skew-policy/#supported-component-upgrade-order</a>」と「Kubernetes Release Versioning」に沿ったバージョンアップを実行する</li>
 <li>パッチバージョンのアップグレードについてはCHANGELOGに基づいて修正されたバグの影響度に応じて実施する</li>
 <li>マイナーバージョンのアップグレードについては1バージョンずつアップグレードを実施する</li>
 <li>約4ヶ月毎のマイナーバージョンのリリースごとにマイナーバージョンのアップグレードを実施する or xヶ月毎(12ヶ月以内)にそのタイミングの最新バージョンまでアップグレードを実施する</li>
@@ -36781,7 +36781,7 @@
 </ul>
 </li>
 <li>クラスター側の設定<ul>
-<li>コントロールプレーンNodeでダウンタイムを発生させないために必要に応じてetcdとkube-apiserverのPodにPod Disruption Budgetの設定を実行する<ul>
+<li>コントロールプレーンNodeでダウンタイムを発生させないために必要に応じてetcdとkube-apiserverのPodにPod Disruption Budgetを設定する<ul>
 <li>コントロールプレーンがマネージドなGKEやEKSなどでは考慮不要</li>
 </ul>
 </li>
@@ -36860,7 +36860,7 @@
 ストレージ容量は最低限40GiB程度割り当てる。</p>
 <blockquote>
 <ul>
-<li>[第2章 システムおよび環境要件 OpenShift Container Platform 3.11 | Red Hat Customer Portal](<a href="https://access.redhat.com/documentation/ja-jp/openshift_container_platform/3.11/html/installing_clusters/install-config-install-prerequisites">https://access.redhat.com/documentation/ja-jp/openshift_container_platform/3.11/html/installing_clusters/install-config-install-prerequisites</a></li>
+<li><a href="https://access.redhat.com/documentation/ja-jp/openshift_container_platform/3.11/html/installing_clusters/install-config-install-prerequisites">第2章 システムおよび環境要件 OpenShift Container Platform 3.11 | Red Hat Customer Portal</a></li>
 <li><a href="https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/cpu-ram-storage?hl=ja">https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/cpu-ram-storage?hl=ja</a></li>
 </ul>
 </blockquote>
@@ -37295,8 +37295,8 @@
 <p>一方で、Nodeのストレージをそのまま使用することになるため、金銭的コストがEphemeral Volumesよりも小さい。</p>
 <blockquote>
 <ul>
-<li>[<a href="https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは](https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF">https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは](https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF</a></li>
-<li><a href="https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/">https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/</a></li>
+<li><a href="https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF">https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは</a>
+)&gt; - <a href="https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/">https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/</a></li>
 </ul>
 </blockquote>
 <p>Podのリソース要求やリソース制限に <code>ephemeral-storage</code> のフィールドを追加して、利用するディスク容量を制限できる。</p>
@@ -37539,9 +37539,9 @@
 search<span class="w"> </span>foo.svc.cluster.local<span class="w"> </span>svc.cluster.local<span class="w"> </span>cluster.local
 options<span class="w"> </span>ndots:5
 </code></pre></div>
-<p>これにより、ドメインのドット数が <code>5</code> 未満の場合は、Cluster内で名前解決を実行しようとする。</p>
-<p>しかし、Cluster外へしかリクエストを送信しないコンテナでは、Cluster内で名前解決を実行する必要はない。</p>
-<p>そういったコンテナのPod では、Pod DNS Configの <code>.spec.dnsConfig.options</code> キーでndotsを <code>1</code> にし、ドット数が <code>1</code> 未満の場合 (つまりドットが <code>1</code> 個でもあれば) 、Cluster外で名前解決を実行させるようにする。</p>
+<p>これにより、ドメインのドット数が <code>5</code> 未満の場合は、Cluster内で名前解決するしようとする。</p>
+<p>しかし、Cluster外へしかリクエストを送信しないコンテナでは、Cluster内で名前解決するする必要はない。</p>
+<p>そういったコンテナのPod では、Pod DNS Configの <code>.spec.dnsConfig.options</code> キーでndotsを <code>1</code> にし、ドット数が <code>1</code> 未満の場合 (つまりドットが <code>1</code> 個でもあれば) 、Cluster外で名前解決するさせるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37618,7 +37618,7 @@ options<span class="w"> </span>ndots:5
 <h3 id="latest">コンテナイメージのタグにlatestを設定しない<a class="headerlink" href="#latest" title="Permanent link">&para;</a></h3>
 <p>コンテナイメージのタグにlatestを指定すると、むやみに新しいバージョンのコンテナイメージのタグをプルしてしまい、障害が起こりかねない。</p>
 <p>そこで、コンテナイメージはセマンティックバージョニングでタグ付けし、特定のバージョンをプルする。</p>
-<p>なお、各コンテナイメージのアーキテクチャに割り当てられたダイジェスト値を指定することもできるが、K8sがNodeのCPUアーキテクチャに基づいてよしなに選んでくれるため、ダイジェスト値は指定しない。</p>
+<p>なお、各コンテナイメージのアーキテクチャに割り当てられたダイジェスト値を指定できるが、K8sがNodeのCPUアーキテクチャに基づいてよしなに選んでくれるため、ダイジェスト値は指定しない。</p>
 <p><br></p>
 <h3 id="_30">コンテナイメージが更新された場合のみコンテナイメージレジストリからプルする<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
 <p>コンテナ作成のたびにコンテナイメージをプルすると、コンテナイメージレジストリに負荷がかかる。</p>
@@ -38743,7 +38743,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:57:28 JST">2026-02-15</span>
   </span>
 
     

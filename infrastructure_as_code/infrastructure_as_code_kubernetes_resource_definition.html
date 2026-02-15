@@ -46075,7 +46075,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>Secretの名前を指定することもできる。</p>
+<p>Secretの名前を指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46148,7 +46148,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <h4 id="livenessprobe">▼ livenessProbeとは<a class="headerlink" href="#livenessprobe" title="Permanent link">&para;</a></h4>
 <p>kubeletがヘルスチェックを実行することで、コンテナが正常に動作しているか確認する。</p>
 <p>注意点として、LivenessProbeヘルスチェックの間隔が短すぎると、kubeletに必要以上に負荷がかかる。</p>
-<p><code>terminationGracePeriodSeconds</code> に関しては、<code>.spec.terminationGracePeriodSeconds</code> キーでPod単位での待機時間を設定することもできる。</p>
+<p><code>terminationGracePeriodSeconds</code> に関しては、<code>.spec.terminationGracePeriodSeconds</code> キーでPod単位での待機時間を設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46428,7 +46428,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <h3 id="speccontainersreadinessprobe">.spec.containers[*].readinessProbe<a class="headerlink" href="#speccontainersreadinessprobe" title="Permanent link">&para;</a></h3>
 <h4 id="readinessprobe">▼ readinessProbeとは<a class="headerlink" href="#readinessprobe" title="Permanent link">&para;</a></h4>
 <p>kubeletがヘルスチェックを実行することで、コンテナがトラフィックを処理可能かを確認する。</p>
-<p><code>terminationGracePeriodSeconds</code> に関しては、<code>.spec.terminationGracePeriodSeconds</code> キーでPod単位での待機時間を設定することもできる。</p>
+<p><code>terminationGracePeriodSeconds</code> に関しては、<code>.spec.terminationGracePeriodSeconds</code> キーでPod単位での待機時間を設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46747,7 +46747,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <li><a href="https://kubernetes.io/docs/concepts/storage/volumes/#using-subpath">https://kubernetes.io/docs/concepts/storage/volumes/#using-subpath</a></li>
 </ul>
 </blockquote>
-<p>ディレクトリではなく、ファイルを指定することもできる。</p>
+<p>ディレクトリではなく、ファイルを指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47182,7 +47182,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <p><img alt="pod_terminating_process" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png" /></p>
 <p>Podの終了プロセスを開始するまで待機時間を設定する。</p>
 <p>この時間を超えてもPodを終了できていない場合は、コンテナを強制的に停止する。</p>
-<p>なお、<code>.spec.containers[*].xxxProbe.terminationGracePeriodSeconds</code> キーでコンテナ単位での待機時間を設定することもできる。</p>
+<p>なお、<code>.spec.containers[*].xxxProbe.terminationGracePeriodSeconds</code> キーでコンテナ単位での待機時間を設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -48913,7 +48913,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:57:28 JST">2026-02-15</span>
   </span>
 
     
