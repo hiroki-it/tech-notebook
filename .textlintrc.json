@@ -1,0 +1,41 @@
+{
+  "plugins": {},
+  "filters": {},
+  "rules": {
+    "ja-hiragana-fukushi": true,
+    "ja-hiragana-hojodoushi": true,
+    "ja-hiragana-keishikimeishi": true,
+    "ja-unnatural-alphabet": true,
+    "preset-ja-technical-writing": {
+      "ja-no-successive-word": {
+        "allow": [
+          "…",
+          "まあ",
+          "★",
+          "！"
+        ]
+      },
+      "max-comma": false,
+      "ja-no-mixed-period": false,
+      "ja-no-weak-phrase": false,
+      "max-kanji-continuous-len": false,
+      "no-mix-dearu-desumasu": false,
+      "no-exclamation-question-mark": false,
+      "no-hankaku-kana": false,
+      "sentence-length": false
+    },
+    "preset-ja-spacing": {
+      "ja-nakaguro-or-halfwidth-space-between-katakana": false,
+      "ja-no-space-around-parentheses": false,
+      "ja-no-space-between-full-width": false,
+      "ja-space-between-half-and-full-width": false,
+      "ja-space-after-exclamation": true,
+      "ja-space-after-question": true,
+      "ja-space-around-code": {
+        "before": true,
+        "after": true
+      },
+      "ja-space-around-link": false
+    }
+  }
+}
