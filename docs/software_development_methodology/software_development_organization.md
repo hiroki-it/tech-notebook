@@ -142,7 +142,7 @@ LegalOn Technologiesがメルカリを参考にしたキャリアパスを公開
 
 LegalOn Technologiesでは、エンジニアにIC・TL・Managerの３つのラダーがある。
 
-ラダーがかなり細分化されてて、ラダーに応じてどうあるべきかの役割わかりやすい。
+ラダーがかなり細分化されて、ラダーに応じてどうあるべきかの役割わかりやすい。
 
 > - https://docs.google.com/spreadsheets/d/1jad5ybRc5XqIPMRyz9eHAwCL6rUlFJ5NCakqoO_Uu08/edit?pli=1&gid=1832796022#gid=1832796022
 > - https://tech.legalforce.co.jp/entry/2023/08/04/144207

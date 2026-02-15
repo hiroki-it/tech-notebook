@@ -74,7 +74,7 @@ Available test(s):
 
 ### `phpunit.xml` ファイルとは
 
-PHPUnitの設定するする。
+PHPUnitの設定する。
 
 デフォルトの設定では、あらかじめルートディレクトリに `tests` ディレクトリを配置し、これを `Units` ディレクトリまたは `Feature` ディレクトリに分割しておく。
 

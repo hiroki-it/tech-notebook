@@ -66,7 +66,7 @@ yahoo.co.jp.            35      IN      A       182.22.25.252
 
 ### -x
 
-逆引きの名前解決するする。
+逆引きの名前解決する。
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/1409/25/news001.html
 
@@ -123,7 +123,7 @@ $ yum install -y bind-utils
 
 #### ▼ nslookupとは
 
-正引き/逆引きによる名前解決するする。
+正引き/逆引きによる名前解決する。
 
 もしドメイン名に複数のIPアドレスが割り当てられている場合、正引きを実行すると、全てのIPアドレスが返却される。
 

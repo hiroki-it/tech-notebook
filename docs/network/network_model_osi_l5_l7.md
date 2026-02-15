@@ -127,7 +127,7 @@ $ sudo lsof -i -P | grep LISTEN
 
 SMTPに認証を組み込んだ仕組みのこと。
 
-クライアント (メール送信できるアプリ) からメールサーバーにメールデータをSMTP送信するとき、メールサーバーがクライアントに対して認証するする。
+クライアント (メール送信できるアプリ) からメールサーバーにメールデータをSMTP送信するとき、メールサーバーがクライアントに対して認証する。
 
 ![SMTP-AUTH](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SMTP-AUTH.png)
 
@@ -232,7 +232,7 @@ THREAD=ORDEREDSUBJECT MULTIAPPEND
 
 #### ▼ APOPとは
 
-メール受信の際に、チャレンジレスポンス方式の認証するすることにより、平文の資格情報がネットワークに流れるのを防止するプロトコル
+メール受信の際に、チャレンジレスポンス方式の認証することにより、平文の資格情報がネットワークに流れるのを防止するプロトコル
 
 <br>
 

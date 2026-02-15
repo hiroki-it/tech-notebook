@@ -27,7 +27,7 @@ description: 共通項目＠リソース定義の知見を記録しています�
 
 ### 任意のKubernetesリソースの場合
 
-ArgoCDを使用している場合、ArgoCDの情報をを設定する。
+ArgoCDを使用している場合、ArgoCDの情報を設定する。
 
 Custom Controller (application-controller) が設定してくれるため、開発者が設定する必要はない。
 

@@ -21,7 +21,7 @@ description: 設定ファイル＠CoreDNSの知見を記録しています。
 
 #### ▼ `.` (委任しない場合)
 
-CoreDNSで名前解決するする。
+CoreDNSで名前解決する。
 
 ```bash
 .:53 {

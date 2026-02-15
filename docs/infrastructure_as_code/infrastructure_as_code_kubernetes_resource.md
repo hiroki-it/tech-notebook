@@ -1412,7 +1412,7 @@ Node上にVolumeを作成し、これをコンテナにバインドマウント�
 
 #### ▼ Node外ストレージツールのVolume
 
-Node外ストレージツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) が提供するVolumeをコンテナにマウントする。
+Node外ストレージツール (例：AWS EBS、NFS、iSCSI、Cephなど) が提供するVolumeをコンテナにマウントする。
 
 StorageClassとPersistentVolumeClaimを経由して、PersistentVolumeとNode外ストレージツールを紐付け、Volumeとしてコンテナにマウントする。
 
@@ -1428,7 +1428,7 @@ StorageClassとPersistentVolumeClaimを経由して、PersistentVolumeとNode外
 
 ![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
-Node外ストレージツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) をそのままKubernetesのVolumeとして使用する。
+Node外ストレージツール (例：AWS EBS、NFS、iSCSI、Cephなど) をそのままKubernetesのVolumeとして使用する。
 
 Podの `.spec.volumes` キーで指定する。
 
@@ -1552,7 +1552,7 @@ Podの既存のストレージ上にVolume (`/var/lib/kubelet/pods/<PodのUUID>/
 
 #### ▼ Node外ストレージツールのVolume
 
-Node外ストレージツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) が提供するVolumeをコンテナにマウントする。
+Node外ストレージツール (例：AWS EBS、NFS、iSCSI、Cephなど) が提供するVolumeをコンテナにマウントする。
 
 同一Node上のPod間でこのVolumeを共有でき、同一Pod内のコンテナ間でもVolumeを共有できる。
 

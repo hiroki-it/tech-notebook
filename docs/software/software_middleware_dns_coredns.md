@@ -17,7 +17,7 @@ description: CoreDNS＠DNS系ミドルウェアの知見を記録しています
 
 ### CoreDNSとは
 
-Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決するする。
+Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決する。
 
 ![kubernetes_coredns](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_coredns.png)
 
@@ -55,7 +55,7 @@ kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 
 #### ▼ CoreDNS
 
-Podからの問い合わせに対して、名前解決するする。
+Podからの問い合わせに対して、名前解決する。
 
 <br>
 

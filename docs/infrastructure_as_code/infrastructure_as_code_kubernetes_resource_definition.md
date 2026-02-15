@@ -6332,7 +6332,7 @@ provisioner: k8s.io/minikube-hostpath
 
 ### reclaimPolicy
 
-PersistentVolumeClaimが削除されたときに、Node外ストレージツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) が提供するVolumeを削除する否かを設定する。
+PersistentVolumeClaimが削除されたときに、Node外ストレージツール (例：AWS EBS、NFS、iSCSI、Cephなど) が提供するVolumeを削除する否かを設定する。
 
 PersistentVolumeにも同様の機能がある。
 
