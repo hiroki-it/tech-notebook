@@ -33992,7 +33992,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <p><br></p>
 <h2 id="02-build">02. build<a class="headerlink" href="#02-build" title="Permanent link">&para;</a></h2>
 <h3 id="sources">sources<a class="headerlink" href="#sources" title="Permanent link">&para;</a></h3>
-<p>実行する<code>source</code>を設定する。</p>
+<p>実行する <code>source</code> を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">build</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">sources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;source.amazon-ebs.foo&quot;</span><span class="p">]</span>
 <span class="p">}</span>
@@ -34046,7 +34046,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <h3 id="shell-local">shell-localの場合<a class="headerlink" href="#shell-local" title="Permanent link">&para;</a></h3>
 <h4 id="shell-local_1">▼ shell-local<a class="headerlink" href="#shell-local_1" title="Permanent link">&para;</a></h4>
 <p>Ansibleは、コントロールノード (ansibleデプロイサーバー) と管理対象ノード (ansibleデプロイ先サーバー) から構成される。</p>
-<p><code>shell-local</code>では、コントロールノードで実行するコマンドを設定する。</p>
+<p><code>shell-local</code> では、コントロールノードで実行するコマンドを設定する。</p>
 <h4 id="inline">▼ inline<a class="headerlink" href="#inline" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nb">build</span><span class="w"> </span><span class="p">{</span>
 
@@ -34059,7 +34059,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <h3 id="shell">shellの場合<a class="headerlink" href="#shell" title="Permanent link">&para;</a></h3>
 <h4 id="shell_1">▼ shellとは<a class="headerlink" href="#shell_1" title="Permanent link">&para;</a></h4>
 <p>Ansibleは、コントロールノード (ansibleデプロイサーバー) と管理対象ノード (ansibleデプロイ先サーバー) から構成される。</p>
-<p><code>shell</code>では、管理対象ノードで実行するコマンドを設定する。</p>
+<p><code>shell</code> では、管理対象ノードで実行するコマンドを設定する。</p>
 <h4 id="inline_1">▼ inline<a class="headerlink" href="#inline_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nb">build</span><span class="w"> </span><span class="p">{</span>
 
@@ -34117,7 +34117,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <h4 id="force_deregister">▼ force_deregister<a class="headerlink" href="#force_deregister" title="Permanent link">&para;</a></h4>
 <p>同じ名前のマシンイメージが存在する場合に、既存のマシンイメージを登録解除してからこれを作成するか否かを設定する。</p>
 <p>Packerの作成するマシンイメージの名前は、ランダム値をつけない限り、常に同じである。</p>
-<p>マシンイメージの名前の重複を許可しないプロバイダー (例：AWS) では、<code>1</code>個の名前のマシンイメージを一回しか作成できないことになってしまう。</p>
+<p>マシンイメージの名前の重複を許可しないプロバイダー (例：AWS) では、<code>1</code> 個の名前のマシンイメージを1回しか作成できないことになってしまう。</p>
 <p>そういった場合に必要になる。</p>
 <div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="s2">&quot;force_deregister&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
@@ -34203,8 +34203,8 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <p><br></p>
 <h2 id="07">07. 関数<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <h3 id="_3">関数を使用できるブロック<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>Packerでは、<code>variables</code>ブロックには定数を設定する必要があるため、関数は<code>variables</code>ブロックで使用できない。</p>
-<p><code>variables</code>ブロックの値を一度<code>locals</code>ブロックで加工する必要がある。</p>
+<p>Packerでは、<code>variables</code> ブロックには定数を設定する必要があるため、関数は <code>variables</code> ブロックで使用できない。</p>
+<p><code>variables</code> ブロックの値を一度 <code>locals</code> ブロックで加工する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/hashicorp/packer/issues/9430#issuecomment-645276351">https://github.com/hashicorp/packer/issues/9430#issuecomment-645276351</a></li>
@@ -34231,7 +34231,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月16日 14:41:10 JST">2025-05-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

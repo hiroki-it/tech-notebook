@@ -33155,18 +33155,18 @@
 </tr>
 <tr>
 <td>ディレクトリ名</td>
-<td>S3へのフォワーディング時に、S3に作成するディレクトリの名前を設定できる。デフォルトで<code>YYYY/MM/dd/HH</code>形式でディレクトリが作成され、執筆時点 (2021/11/09) では、UTCのみ設定できる。</td>
+<td>S3へのフォワーディング時に、S3に作成するディレクトリの名前を設定できる。デフォルトで <code>YYYY/MM/dd/HH</code> 形式でディレクトリが作成され、執筆時点 (2021/11/09) では、UTCのみ設定できる。</td>
 <td>もしJSTにしたい場合はAWS Lambdaに変換処理を実装し、Kinesis Data Firehoseと連携する必要がある。<br>- <a href="https://qiita.com/qiita-kurara/items/b697b65772cb0905c0f2#comment-ac3a2eb2f6d30a917549">https://qiita.com/qiita-kurara/items/b697b65772cb0905c0f2#comment-ac3a2eb2f6d30a917549</a></td>
 </tr>
 <tr>
 <td>バッファー</td>
-<td>Kinesis Data Firehoseでは、受信したログを一旦バッファーに蓄え、一定期間あるいは一定サイズが蓄えられた時点で、ログファイルとしてフォワーディングする。この時、バッファーに蓄える期間や上限サイズを設定できる。</td>
+<td>Kinesis Data Firehoseでは、受信したログをいったんバッファーに蓄え、一定期間あるいは一定サイズが蓄えられた時点で、ログファイルとしてフォワーディングする。この時、バッファーに蓄える期間や上限サイズを設定できる。</td>
 <td>・<a href="https://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#frequency">https://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#frequency</a></td>
 </tr>
 <tr>
 <td>ファイル形式</td>
 <td>フォワーディング時のファイル形式を設定できる。</td>
-<td>ログファイルの最終到達地点がS3の場合は圧縮形式で問題ないが、S3から加えて他のツール (例：Datadog) にフォワーディングする場合はデータ形式を設定しない方が良い。</td>
+<td>ログファイルの最終到達地点がS3の場合は圧縮形式で問題ないが、S3から加えて他のツール (例：Datadog) にフォワーディングする場合はデータ形式を設定しないほうが良い。</td>
 </tr>
 <tr>
 <td>バックアップ</td>
@@ -33186,7 +33186,7 @@
 <tr>
 <td>IAMロール</td>
 <td>Kinesis Data FirehoseがAWSリソースにデータをフォワーディングできるように、認可スコープを設定する。</td>
-<td>KinesisではIAMロールの細やかな設定が正しく動作しないことがあり、最小認可スコープを諦め、FullAccess権限のロールを付与してしまう方がよい。最低限、AWS CloudWatch LogsとS3の認可スコープが必要である。</td>
+<td>KinesisではIAMロールの細やかな設定が正しく動作しないことがあり、最小認可スコープを諦め、FullAccess権限のロールを付与してしまうほうがよい。最低限、AWS CloudWatch LogsとS3の認可スコープが必要である。</td>
 </tr>
 <tr>
 <td>メトリクス</td>
@@ -33225,7 +33225,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月3日 03:59:45 JST">2025-11-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

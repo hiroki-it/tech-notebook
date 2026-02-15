@@ -34785,11 +34785,11 @@
 <h2 id="01-playbook">01. playbookファイル<a class="headerlink" href="#01-playbook" title="Permanent link">&para;</a></h2>
 <h3 id="playbook">playbookファイルとは<a class="headerlink" href="#playbook" title="Permanent link">&para;</a></h3>
 <p>サーバーのセットアップ処理を設定する。</p>
-<p>処理を<code>roles</code>ディレクトリに切り分けても良い。</p>
-<p>切り分ける場合、<code>roles</code>ディレクトリを作業ディレクトリとし、相対パスでファイルを指定することになる。</p>
+<p>処理を <code>roles</code> ディレクトリに切り分けても良い。</p>
+<p>切り分ける場合、<code>roles</code> ディレクトリを作業ディレクトリとし、相対パスでファイルを指定することになる。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>Appサーバー、DBサーバー、Webサーバーをセットアップする。</p>
-<p>各コンポーネントは<code>roles</code>ディレクトリに切り分けている。</p>
+<p>各コンポーネントは <code>roles</code> ディレクトリに切り分けている。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># roleファイル</span>
 <span class="c1"># Appサーバー</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
@@ -34846,7 +34846,7 @@
 <h3 id="roles">rolesディレクトリ<a class="headerlink" href="#roles" title="Permanent link">&para;</a></h3>
 <h4 id="roles_1">▼ rolesディレクトリとは<a class="headerlink" href="#roles_1" title="Permanent link">&para;</a></h4>
 <p>特定の機能に関するタスクが設定されたファイルを配置する。</p>
-<p><code>playbook.yml</code>ファイルを切り分けるために使用する。</p>
+<p><code>playbook.yml</code> ファイルを切り分けるために使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://ansible-workbook.readthedocs.io/ja/latest/role/role.html">https://ansible-workbook.readthedocs.io/ja/latest/role/role.html</a></li>
@@ -34854,7 +34854,7 @@
 </blockquote>
 <h4 id="handlers">▼ handlersディレクトリ<a class="headerlink" href="#handlers" title="Permanent link">&para;</a></h4>
 <p>taskファイルの後続処理が設定されたhandlerファイルを配置する。</p>
-<p>taskファイルの<code>notify</code>オプションで指定できる。</p>
+<p>taskファイルの <code>notify</code> オプションで指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># handlerファイル</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Restart php-fpm</span>
 <span class="w">  </span><span class="nt">service</span><span class="p">:</span>
@@ -34912,10 +34912,10 @@
 <span class="w">    </span><span class="no">...</span>
 </code></pre></div>
 <h4 id="template">▼ templateディレクトリ<a class="headerlink" href="#template" title="Permanent link">&para;</a></h4>
-<p>アップロードファイルの鋳型となる<code>j2</code>ファイルを配置する。</p>
+<p>アップロードファイルの鋳型となる <code>j2</code> ファイルを配置する。</p>
 <p>鋳型に変数を出力できる。</p>
 <p><strong>＊実装例＊</strong></p>
-<p><code>php.ini</code>ファイルの鋳型として、<code>php.ini.j2</code>ファイルを配置する。</p>
+<p><code>php.ini</code> ファイルの鋳型として、<code>php.ini.j2</code> ファイルを配置する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">; Start a new pool named &#39;www&#39;.</span>
 <span class="c1">; the variable $pool can we used in any directive and will be replaced by the</span>
 <span class="c1">; pool name (&#39;www&#39; here)</span>
@@ -34927,8 +34927,8 @@
 <h3 id="group_vars">group_varsディレクトリ<a class="headerlink" href="#group_vars" title="Permanent link">&para;</a></h3>
 <h4 id="group_vars_1">▼ group_varsディレクトリとは<a class="headerlink" href="#group_vars_1" title="Permanent link">&para;</a></h4>
 <p>複数の管理対象ノードで使用する変数に関するファイルやディレクトリを配置する。</p>
-<p><code>inventories</code>ディレクトリと同じ階層に配置し、加えて<code>inventory</code>ファイルで設定したグループ名やホスト名と同じ名前にする必要がある。</p>
-<p>自動的に読み込まれ、<code>playbook</code>ファイルや<code>inventory</code>ファイルで出力できる。</p>
+<p><code>inventories</code> ディレクトリと同じ階層に配置し、加えて <code>inventory</code> ファイルで設定したグループ名やホスト名と同じ名前にする必要がある。</p>
+<p>自動的に読み込まれ、<code>playbook</code> ファイルや <code>inventory</code> ファイルで出力できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/WisteriaWave/items/0e5dda7ddc13b22188c7#215-%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E5%A4%89%E6%95%B0%E3%83%9B%E3%82%B9%E3%83%88%E5%A4%89%E6%95%B0%E3%81%AE%E5%A4%96%E5%87%BA%E3%81%97">https://qiita.com/WisteriaWave/items/0e5dda7ddc13b22188c7#215-%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E5%A4%89%E6%95%B0%E3%83%9B%E3%82%B9%E3%83%88%E5%A4%89%E6%95%B0%E3%81%AE%E5%A4%96%E5%87%BA%E3%81%97</a></li>
@@ -34948,7 +34948,7 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80/tcp</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443/tcp</span>
 </code></pre></div>
-<p>ポート番号のリストを<code>playbook</code>ファイルで出力する</p>
+<p>ポート番号のリストを <code>playbook</code> ファイルで出力する</p>
 <blockquote>
 <ul>
 <li><a href="https://bftnagoya.hateblo.jp/entry/2021/03/12/101207">https://bftnagoya.hateblo.jp/entry/2021/03/12/101207</a></li>
@@ -34979,7 +34979,7 @@
 <h3 id="inventories">inventoriesディレクトリ<a class="headerlink" href="#inventories" title="Permanent link">&para;</a></h3>
 <h4 id="inventories_1">▼ inventoriesディレクトリとは<a class="headerlink" href="#inventories_1" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードの情報を設定する。</p>
-<p>Ansibleの実行時に、<code>-i</code>オプションでディレクトリを指定する。</p>
+<p>Ansibleの実行時に、<code>-i</code> オプションでディレクトリを指定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://tekunabe.hatenablog.jp/entry/2019/02/23/ansible_inventory_merge">https://tekunabe.hatenablog.jp/entry/2019/02/23/ansible_inventory_merge</a></li>
@@ -34989,8 +34989,8 @@
 </code></pre></div>
 <h4 id="inventory">▼ inventoryファイル<a class="headerlink" href="#inventory" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードを設定する。</p>
-<p>複数の拡張子 (<code>ini</code>形式、<code>yml</code>形式、<code>json</code>形式) で定義でき、<code>ansible-inventory</code>コマンドで<code>ini</code>形式から他の形式に変換できる。</p>
-<p>ただし、<code>ini</code>形式の場合は拡張子をつけない方が良い。実行環境 (本番/ステージング) 別にファイルを切り分けると良い。</p>
+<p>複数の拡張子 (<code>ini</code> 形式、<code>yml</code> 形式、<code>json</code> 形式) で定義でき、<code>ansible-inventory</code> コマンドで <code>ini</code> 形式から他の形式に変換できる。</p>
+<p>ただし、<code>ini</code> 形式の場合は拡張子をつけないほうが良い。実行環境 (本番/ステージング) 別にファイルを切り分けると良い。</p>
 <p>また、サーバーを冗長化している場合は、これも別々に定義しておく。</p>
 <p>プロビジョニングの実行対象はロードバランサーから一時的に切り離すようにすることにより、プロビジョニングに伴ってインシデントが起こっても、ユーザーへの影響を防げる。</p>
 <blockquote>
@@ -35001,7 +35001,7 @@
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>もし<code>yml</code>形式の場合は以下の通りとなる。</p>
+<p>もし <code>yml</code> 形式の場合は以下の通りとなる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># inventoryファイル</span>
 <span class="c1"># テスト環境</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">all</span><span class="p">:</span>
@@ -35062,7 +35062,7 @@
 <span class="w">            </span><span class="nt">ansible_ssh_private_key_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/ansible/ssh_keys/prd-foo.pem</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>もし<code>ini</code>形式の場合は以下の通りとなる。</p>
+<p>もし <code>ini</code> 形式の場合は以下の通りとなる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># inventoryファイル</span>
 <span class="c1"># テスト環境</span>
 
@@ -35175,7 +35175,7 @@
 <h3 id="become">become<a class="headerlink" href="#become" title="Permanent link">&para;</a></h3>
 <h4 id="become_1">▼ becomeとは<a class="headerlink" href="#become_1" title="Permanent link">&para;</a></h4>
 <p>プレイをroot権限 (sudo権限) で実行するか否かを設定する。</p>
-<p>root以外であれば、<code>become_user</code>キーを設定する。</p>
+<p>root以外であれば、<code>become_user</code> キーを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
 <span class="w">  </span><span class="nt">become_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-user</span>
 </code></pre></div>
@@ -35198,7 +35198,7 @@
 <h3 id="ansiblebuiltinapt">ansible.builtin.apt<a class="headerlink" href="#ansiblebuiltinapt" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinapt_1">▼ ansible.builtin.aptとは<a class="headerlink" href="#ansiblebuiltinapt_1" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードで、パッケージをaptリポジトリからインストールする。</p>
-<p>任意のバージョンのパッケージをインストールする場合は、<code>name</code>キーにそれを指定し、<code>state</code>キーの値は<code>present</code>とする。</p>
+<p>任意のバージョンのパッケージをインストールする場合は、<code>name</code> キーにそれを指定し、<code>state</code> キーの値は <code>present</code> とする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># nginxをインストールします。</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Nginx</span>
@@ -35255,7 +35255,7 @@
 <span class="w">    </span><span class="nt">daemon_reload</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
 </code></pre></div>
 <h4 id="_2">▼ バージョン指定<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>任意のバージョンのパッケージをインストールする場合は、<code>name</code>キーにそれを指定し、<code>state</code>キーの値は<code>present</code>とする。</p>
+<p>任意のバージョンのパッケージをインストールする場合は、<code>name</code> キーにそれを指定し、<code>state</code> キーの値は <code>present</code> とする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># nginxをインストールします。</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Nginx</span>
@@ -35341,7 +35341,7 @@
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>管理対象ノードで<code>chown</code>コマンドを実行することにより、ファイルの所有権を設定する。</p>
+<p>管理対象ノードで <code>chown</code> コマンドを実行することにより、ファイルの所有権を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update foo-binary permission</span>
 <span class="w">  </span><span class="nt">ansible.builtin.file</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin/foo-binary</span>
@@ -35351,7 +35351,7 @@
 <p><br></p>
 <h3 id="ansiblebuiltinget_url">ansible.builtin.get_url<a class="headerlink" href="#ansiblebuiltinget_url" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinget_url_1">▼ ansible.builtin.get_urlとは<a class="headerlink" href="#ansiblebuiltinget_url_1" title="Permanent link">&para;</a></h4>
-<p>管理対象ノードで<code>curl</code>コマンドを実行する。</p>
+<p>管理対象ノードで <code>curl</code> コマンドを実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/y_mrok/books/ansible-no-module-no-tsukaikata/viewer/ansible_builtin_get_url">https://zenn.dev/y_mrok/books/ansible-no-module-no-tsukaikata/viewer/ansible_builtin_get_url</a></li>
@@ -35365,7 +35365,7 @@
 <p><br></p>
 <h3 id="ansiblebuiltinservice">ansible.builtin.service<a class="headerlink" href="#ansiblebuiltinservice" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinservice_1">▼ ansible.builtin.serviceとは<a class="headerlink" href="#ansiblebuiltinservice_1" title="Permanent link">&para;</a></h4>
-<p>管理対象ノードで<code>service</code>コマンドの実行を設定する。</p>
+<p>管理対象ノードで <code>service</code> コマンドの実行を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.ansible.com/ansible/2.9/modules/service_module.html">https://docs.ansible.com/ansible/2.9/modules/service_module.html</a></li>
@@ -35406,7 +35406,7 @@
 <p><br></p>
 <h3 id="ansiblebuiltinsystemd">ansible.builtin.systemd<a class="headerlink" href="#ansiblebuiltinsystemd" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinsystemd_1">▼ ansible.builtin.systemdとは<a class="headerlink" href="#ansiblebuiltinsystemd_1" title="Permanent link">&para;</a></h4>
-<p>管理対象ノードで<code>systemctl</code>コマンドの実行を設定する。</p>
+<p>管理対象ノードで <code>systemctl</code> コマンドの実行を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html">https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html</a></li>
@@ -35466,7 +35466,7 @@
 <p><br></p>
 <h3 id="ansiblebuiltintemplate">ansible.builtin.template<a class="headerlink" href="#ansiblebuiltintemplate" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltintemplate_1">▼ ansible.builtin.templateとは<a class="headerlink" href="#ansiblebuiltintemplate_1" title="Permanent link">&para;</a></h4>
-<p>テンプレート (<code>.j2</code>ファイル) から作成したファイルを管理対象ノードのディレクトリに配置する。</p>
+<p>テンプレート (<code>.j2</code> ファイル) から作成したファイルを管理対象ノードのディレクトリに配置する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload foo.conf</span>
 <span class="w">  </span><span class="nt">ansible.builtin.template</span><span class="p">:</span>
@@ -35476,7 +35476,7 @@
 <p><br></p>
 <h3 id="ansiblebuiltinunarchive">ansible.builtin.unarchive<a class="headerlink" href="#ansiblebuiltinunarchive" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinunarchive_1">▼ ansible.builtin.unarchiveとは<a class="headerlink" href="#ansiblebuiltinunarchive_1" title="Permanent link">&para;</a></h4>
-<p>コントロールノードまたは管理対象ノードで<code>tar</code>コマンドを実行することにより、圧縮ファイルを解凍する。</p>
+<p>コントロールノードまたは管理対象ノードで <code>tar</code> コマンドを実行することにより、圧縮ファイルを解凍する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unarchive file</span>
 <span class="w">  </span><span class="nt">ansible.builtin.unarchive</span><span class="p">:</span>
@@ -35510,12 +35510,12 @@
 <h3 id="ansiblebuiltinyum">ansible.builtin.yum<a class="headerlink" href="#ansiblebuiltinyum" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinyum_1">▼ ansible.builtin.yumとは<a class="headerlink" href="#ansiblebuiltinyum_1" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードで、パッケージをyumリポジトリからインストールする。</p>
-<p>代わりに<code>ansible.builtin.dnf</code>モジュールを使うと良い。</p>
+<p>代わりに <code>ansible.builtin.dnf</code> モジュールを使うと良い。</p>
 <p><br></p>
 <h3 id="ansible_env">ansible_env<a class="headerlink" href="#ansible_env" title="Permanent link">&para;</a></h3>
 <h4 id="ansible_env_1">▼ ansible_envとは<a class="headerlink" href="#ansible_env_1" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードに設定された環境変数を出力する。</p>
-<p><code>gather_facts</code>オプションを有効化する必要がある。</p>
+<p><code>gather_facts</code> オプションを有効化する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell">https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell</a></li>
@@ -35523,8 +35523,8 @@
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>管理対象ノードの環境変数の<code>FOO</code>を出力する。</p>
-<p><code>gather_facts</code>オプションを有効化しておく。</p>
+<p>管理対象ノードの環境変数の <code>FOO</code> を出力する。</p>
+<p><code>gather_facts</code> オプションを有効化しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">vars</span><span class="p">:</span>
@@ -35551,7 +35551,7 @@
 <h2 id="02-04-rolesvars">02-04. /roles/varsセクション<a class="headerlink" href="#02-04-rolesvars" title="Permanent link">&para;</a></h2>
 <h3 id="vars">varsセクションとは<a class="headerlink" href="#vars" title="Permanent link">&para;</a></h3>
 <p>プレイで使用する設定値を変数として設定する。</p>
-<p>設定した変数は、<code>ansible.builtin.template</code>オプションを使用して<code>j2</code>ファイルに出力できる。</p>
+<p>設定した変数は、<code>ansible.builtin.template</code> オプションを使用して <code>j2</code> ファイルに出力できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://blog.katsubemakito.net/ansible/ansible-1st-4">https://blog.katsubemakito.net/ansible/ansible-1st-4</a></li>
@@ -35582,7 +35582,7 @@
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>コントロールノードの環境変数の<code>FOO</code>を出力する。</p>
+<p>コントロールノードの環境変数の <code>FOO</code> を出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload foo.conf</span>
 <span class="w">  </span><span class="nt">ansible.builtin.template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.conf.j2</span>
@@ -35642,7 +35642,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月4日 15:58:54 JST">2025-07-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

@@ -34406,7 +34406,7 @@
 <p><br></p>
 <h2 id="01">01. データ型の種類<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">データ型のゼロ値<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>データ型には、値が代入されていない時、ゼロ値が代入されている。</p>
+<p>データ型には、値が代入されていないとき、ゼロ値が代入されている。</p>
 <p>つまり、変数に値を設定しない限り、変数のデフォルト値はゼロ値になる。</p>
 <blockquote>
 <ul>
@@ -34523,7 +34523,7 @@
 <p><br></p>
 <h3 id="_7">プリミティブ型とメモリの関係<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>プリミティブ型の変数を定義すると、データ型のバイト数に応じて、空いているメモリ領域に、変数が割り当てられる。</p>
-<p><code>1</code>個のメモリアドレス当たり<code>1</code>バイトに相当する。</p>
+<p><code>1</code> 個のメモリアドレス当たり <code>1</code> バイトに相当する。</p>
 <p><img alt="basic-variable_memory" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/basic-variable_memory.png" /></p>
 <p><br></p>
 <h3 id="_8">各データ型のサイズ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
@@ -34653,7 +34653,7 @@
 <p><br></p>
 <h3 id="_10">使用不可のフィールド名<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>小文字の『<code>type</code>』は予約語のため使用不可である。</p>
-<p>大文字の<code>Type</code>は可能。</p>
+<p>大文字の <code>Type</code> は可能。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 定義不可エラー</span>
 <span class="w">    </span><span class="kd">type</span><span class="w"> </span><span class="kt">string</span>
@@ -34705,9 +34705,9 @@
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span><span class="w"> </span><span class="c1">// &quot;Hiroki&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>3</code>個目に、<code>new</code>関数とデータ代入による初期化がある。</p>
-<p><code>new</code>関数は、データが代入されていない構造体を作成するため、リテラル表記時でも表現できる。</p>
-<p><code>new</code>関数は、構造体以外のデータ型でも使用できる。</p>
+<p><code>3</code> 個目に、<code>new</code> 関数とデータ代入による初期化がある。</p>
+<p><code>new</code> 関数は、データが代入されていない構造体を作成するため、リテラル表記時でも表現できる。</p>
+<p><code>new</code> 関数は、構造体以外のデータ型でも使用できる。</p>
 <p>ポインタ型の構造体を返却する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -34930,7 +34930,7 @@
 <p><br></p>
 <h2 id="04-json">04. JSON<a class="headerlink" href="#04-json" title="Permanent link">&para;</a></h2>
 <h3 id="json">JSONと構造体のマッピング<a class="headerlink" href="#json" title="Permanent link">&para;</a></h3>
-<p>構造体とJSONの間でパースを実行する時、構造体の各フィールドと、JSONのキー名を、マッピングしておける。</p>
+<p>構造体とJSONの間でパースを実行するとき、構造体の各フィールドと、JSONのキー名を、マッピングしておける。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -35057,7 +35057,7 @@
 <p><br></p>
 <h3 id="_16">配列とメモリの関係<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <p>配列型の変数を定義すると、空いているメモリ領域に、配列がまとまって割り当てられる。</p>
-<p><code>1</code>個のメモリアドレス当たり<code>1</code>バイトに相当する。</p>
+<p><code>1</code> 個のメモリアドレス当たり <code>1</code> バイトに相当する。</p>
 <p><img alt="array-variable_memory" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/array-variable_memory.png" /></p>
 <p><br></p>
 <h2 id="06">06. ポインタ<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
@@ -35347,7 +35347,7 @@
 <h3 id="map">単一のプリミティブ型を値に持つmap<a class="headerlink" href="#map" title="Permanent link">&para;</a></h3>
 <h4 id="_29">▼ <code>文字列:任意の値</code><a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
 <p>インターフェース型により、任意の型とする。</p>
-<p>インターフェースのエイリアスである<code>any</code>型でもよい。</p>
+<p>インターフェースのエイリアスである <code>any</code> 型でもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
@@ -35396,7 +35396,7 @@
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span><span class="w"> </span><span class="c1">// map[0:Hiroki 1:Hiroko 2:Hiroshi]</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>または、<code>make</code>関数を使用してmapを作成もできる。</p>
+<p>または、<code>make</code> 関数を使用してmapを作成もできる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
@@ -35480,7 +35480,7 @@
 <p>構造体の委譲とは異なり、アップキャストを行える。</p>
 <p>つまり、委譲された構造体は委譲するインターフェースのデータ型にキャストでき、同じデータ型として扱える。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>InspectImpl構造体にAnimalインターフェースを埋め込み、構造体に<code>Eat</code>関数、<code>Sleep</code>関数、<code>Mating</code>関数の処理を委譲する。</p>
+<p>InspectImpl構造体にAnimalインターフェースを埋め込み、構造体に <code>Eat</code> 関数、<code>Sleep</code> 関数、<code>Mating</code> 関数の処理を委譲する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
@@ -35615,7 +35615,7 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
 <p><br></p>
 <h3 id="_36">緩い型としてのインターフェース<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
 <p>さまざまな値をインターフェース型として定義できる。</p>
-<p>エイリアスとして、<code>any</code>型でも定義できる。</p>
+<p>エイリアスとして、<code>any</code> 型でも定義できる。</p>
 <p>また、他の型に変換もできる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -35696,7 +35696,7 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
 </code></pre></div>
 <p><br></p>
 <h3 id="string">stringインターフェース<a class="headerlink" href="#string" title="Permanent link">&para;</a></h3>
-<p>構造体に<code>String</code>関数を定義しておくと、Print系関数に構造体を渡した時に、これが実行される。</p>
+<p>構造体に <code>String</code> 関数を定義しておくと、Print系関数に構造体を渡したときに、これが実行される。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -35772,7 +35772,7 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年8月29日 14:59:44 JST">2025-08-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

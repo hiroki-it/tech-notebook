@@ -34220,7 +34220,7 @@
 <p><br></p>
 <h2 id="01">01. ユーザー定義のダッシュボード<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">ユーザー定義のダッシュボードとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>ConfigMapの<code>.data</code>キーにJSONを設定すると、ダッシュボードを作成できる。</p>
+<p>ConfigMapの <code>.data</code> キーにJSONを設定すると、ダッシュボードを作成できる。</p>
 <p>ConfigMapで作成したダッシュボードは、デフォルトでGrafanaのGUIから変更できないようになっている。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -34256,7 +34256,7 @@
 <p>Goのテンプレートでは、『<code>{{</code>』と『<code>}}</code>』の記号がロジックで使用される。</p>
 <p>ダッシュボードのJSONではこれを使用するため、ロジックとして認識されないようにエスケープする必要がある。</p>
 <p>エスケープの方法は数種があるが、一番簡単な方法を採用する。</p>
-<p>記号を含む文字ごと<code>{{ `&lt;記号を含む文字列全体&gt;` }}</code>のように挟み、エスケープする。</p>
+<p>記号を含む文字ごと <code>{{ `&lt;記号を含む文字列全体&gt;` }}</code> のように挟み、エスケープする。</p>
 <p>多くの場合にこの方法で対処できるが、文字列内にバックスラッシュがある場合は対処できない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -34369,8 +34369,8 @@
 <p><br></p>
 <h2 id="02">02. コミュニティダッシュボード<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">コミュニティダッシュボードとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>ユーザー定義のダッシュボードを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたダッシュボード (例：kubernetes-mixins、Grafanaダッシュボードコミュニティ) を使用した方が良い。</p>
-<p>その場合、GitHubなどで公開されているJSONを、ConfigMapの<code>.data</code>キーに貼り付ける。</p>
+<p>ユーザー定義のダッシュボードを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたダッシュボード (例：kubernetes-mixins、Grafanaダッシュボードコミュニティ) を使用したほうが良い。</p>
+<p>その場合、GitHubなどで公開されているJSONを、ConfigMapの <code>.data</code> キーに貼り付ける。</p>
 <p>ConfigMapで作成したダッシュボードは、デフォルトでGrafanaのGUIから変更できないようになっている。</p>
 <blockquote>
 <ul>
@@ -34416,18 +34416,18 @@
 <h3 id="_10">コミュニティダッシュボードの採用<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="1"><code>(1)</code> ダッシュボードの検索<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
 <p>コミュニティダッシュボードのJSONは、<a href="https://grafana.com/grafana/dashboards/">Grafana Labs</a> からダウンロードできる。</p>
-<p>コミュニティダッシュボードのIDはJSONの<code>gnetId</code>セクションから確認でき、ダッシュボードをアップグレードする場合は、IDから該当のものを探すようにする。</p>
-<p>反対に、<code>gnetId</code>セクションが<code>null</code>になっているものは、ユーザー定義のダッシュボードである。</p>
+<p>コミュニティダッシュボードのIDはJSONの <code>gnetId</code> セクションから確認でき、ダッシュボードをアップグレードする場合は、IDから該当のものを探すようにする。</p>
+<p>反対に、<code>gnetId</code> セクションが <code>null</code> になっているものは、ユーザー定義のダッシュボードである。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;gnetId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>また、コミュニティダッシュボードのバージョンは、<code>description</code>セクションから確認できる (コミュニティダッシュボードによってはバージョンの記載がないものがある)。</p>
+<p>また、コミュニティダッシュボードのバージョンは、<code>description</code> セクションから確認できる (コミュニティダッシュボードによってはバージョンの記載がないものがある)。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Foo</span><span class="nv"> </span><span class="s">Dashboard</span><span class="nv"> </span><span class="s">version</span><span class="nv"> </span><span class="s">1.0.0&quot;</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="2"><code>(2)</code> ダッシュボードのバージョンの選択<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
-<p>ダッシュボードの<code>__requires</code>セクションで、PrometheusとGrafanaの最低バージョンを確認する。</p>
+<p>ダッシュボードの <code>__requires</code> セクションで、PrometheusとGrafanaの最低バージョンを確認する。</p>
 <p>Kubernetesで稼働するPrometheusとGrafanaのバージョンに応じたダッシュボードを選ぶ。</p>
 <p>他には、ツールとダッシュボードの両方のバージョンが対応関係にある場合がある (例：Istioとダッシュボードの両方のバージョンは対応する)。</p>
-<p>ただし、Prometheusの方のバージョンは気にしなくて良さそう (よくあるPrometheusの<code>5.0.0</code>なんてバージョンは存在しない)。</p>
+<p>ただし、Prometheusの方のバージョンは気にしなくて良さそう (よくあるPrometheusの <code>5.0.0</code> なんてバージョンは存在しない)。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;__requires&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
@@ -34452,12 +34452,12 @@
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="3"><code>(3)</code> 整形<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
-<p><a href="https://r37r0m0d3l.github.io/json_sort/">任意のサイト</a> で、アルファベット順かつスペース<code>2</code>個で整形する。</p>
+<p><a href="https://r37r0m0d3l.github.io/json_sort/">任意のサイト</a> で、アルファベット順かつスペース <code>2</code> 個で整形する。</p>
 <p>これは、運用方針による。</p>
 <h4 id="4"><code>(4)</code> 貼り付け<a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
 <p>ConfigMapのJSONファイルのデータとして貼り付ける。</p>
 <p>エスケープするのを忘れない。</p>
-<p>なお、後々アップグレードしていくことになるため、運用が複雑にならないように、コミュニティダッシュボードはいじらない方が良い。</p>
+<p>なお、後々アップグレードしていくことになるため、運用が複雑にならないように、コミュニティダッシュボードはいじらないほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34835,7 +34835,7 @@
 </blockquote>
 <h4 id="istio">▼ Istio<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h4>
 <p>IstioのPodからデータポイントを収集する。</p>
-<p><code>istioctl dashboard grafana</code>コマンドでもインストールできる。</p>
+<p><code>istioctl dashboard grafana</code> コマンドでもインストールできる。</p>
 <table>
 <thead>
 <tr>
@@ -34912,7 +34912,7 @@
 <p><br></p>
 <h3 id="tags">tags<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h3>
 <p>他の何らかのチャート (例：kube-prometheus-stack) を使用した場合に、ダッシュボードが作成されることがある。</p>
-<p>これと区別できるように、本リポジトリのダッシュボードには<code>&lt;リポジトリ名&gt;.git</code>やリポジトリURLというタグをつけると良い。</p>
+<p>これと区別できるように、本リポジトリのダッシュボードには <code>&lt;リポジトリ名&gt;.git</code> やリポジトリURLというタグをつけると良い。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;tags&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;リポジトリ名&gt;.git&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;github.com/example&quot;</span><span class="p p-Indicator">]}</span>
 </code></pre></div>
 <p><br></p>
@@ -34948,7 +34948,7 @@
 <h3 id="panels">panels<a class="headerlink" href="#panels" title="Permanent link">&para;</a></h3>
 <h4 id="panels_1">▼ panelsとは<a class="headerlink" href="#panels_1" title="Permanent link">&para;</a></h4>
 <p>メトリクスをPromQLでクエリして表示するパネルを定義する。</p>
-<p>一番最初にGUIでパネルを作成し、これのJSONを取得する方が実装しやすい。</p>
+<p>一番最初にGUIでパネルを作成し、これのJSONを取得するほうが実装しやすい。</p>
 <blockquote>
 <ul>
 <li><a href="https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model/#panels">https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model/#panels</a></li>
@@ -34957,8 +34957,8 @@
 <h4 id="expr">▼ expr<a class="headerlink" href="#expr" title="Permanent link">&para;</a></h4>
 <p>PromQLを定義する。</p>
 <p>複数のラベルをOR条件で表示するようなパネルの場合、GrafanaがPromQL上にOR条件の正規表現を生成する。</p>
-<p>そのため、<code>=~</code>演算子を使用するようにする。</p>
-<p>ラベル変数を使用する場合は、<code>templating</code>セクションでその定義が必要である。</p>
+<p>そのため、<code>=~</code> 演算子を使用するようにする。</p>
+<p>ラベル変数を使用する場合は、<code>templating</code> セクションでその定義が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="c1"># panelsセクション</span>
 <span class="w">  </span><span class="s">&quot;panels&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
@@ -35050,15 +35050,15 @@
 </blockquote>
 <h4 id="enable">▼ enable<a class="headerlink" href="#enable" title="Permanent link">&para;</a></h4>
 <p>templatingセクションを有効化する。</p>
-<p>デフォルト値は<code>true</code>である。</p>
+<p>デフォルト値は <code>true</code> である。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;templating&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;enable&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <h4 id="list">▼ list<a class="headerlink" href="#list" title="Permanent link">&para;</a></h4>
 <p>PromQLのラベル変数に値を挿入し、メトリクスをフィルタリングできるように、プルダウンを定義する。</p>
-<p>ラベル変数でフィルタリングする場合、指定したデータソースでクエリした時のメトリクスがそのラベルを持っている必要がある。</p>
-<p>例えば、<code>kube_pod_info</code>メトリクスをラベル参照のために使用する場合、<code>kube_pod_info</code>メトリクスがプルダウンのラベルを持っていなければならない。</p>
+<p>ラベル変数でフィルタリングする場合、指定したデータソースでクエリしたときのメトリクスがそのラベルを持っている必要がある。</p>
+<p>例えば、<code>kube_pod_info</code> メトリクスをラベル参照のために使用する場合、<code>kube_pod_info</code> メトリクスがプルダウンのラベルを持っていなければならない。</p>
 <p>加えて、ダッシュボード上のパネルのメトリクスもプルダウンのラベルでフィルタリングできるように、PromQLを定義する必要がある。</p>
-<p>例えば、<code>cluster</code>ラベル値でフィルタリングする場合、パネル上のPromQLでも<code>&lt;メトリクス&gt;{cluster=\"$cluster\"}</code>と定義しなければならない。</p>
+<p>例えば、<code>cluster</code> ラベル値でフィルタリングする場合、パネル上のPromQLでも <code>&lt;メトリクス&gt;{cluster=\"$cluster\"}</code> と定義しなければならない。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="c1"># templatingセクション</span>
 <span class="w">  </span><span class="s">&quot;templating&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
@@ -35419,7 +35419,7 @@
 <li><a href="https://qiita.com/prodigy413/items/c0c2304e1bc28f644526">https://qiita.com/prodigy413/items/c0c2304e1bc28f644526</a></li>
 </ul>
 </blockquote>
-<p>その上で<code>panel</code>セクションで<code>cluser</code>ラベルを定義すると、 メトリクスを<code>cluster</code>ラベルでフィルタリングできるようになる。</p>
+<p>その上で <code>panel</code> セクションで <code>cluser</code> ラベルを定義すると、 メトリクスを <code>cluster</code> ラベルでフィルタリングできるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="c1"># panelsセクション</span>
 <span class="w">  </span><span class="s">&quot;panels&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
@@ -35477,7 +35477,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月11日 01:02:15 JST">2025-05-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

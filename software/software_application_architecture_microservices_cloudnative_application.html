@@ -32716,7 +32716,7 @@
 <p>モノリスアーキテクチャ、マイクロサービスアーキテクチャ、過渡的なアーキテクチャスタイルがあります。</p>
 <p>アーキテクチャスタイルによって、アプリアーキテクチャ領域の種類が異なります。</p>
 <p>Dockerやクラウドが広まって以降、プレゼンテーション・ドメイン分離やAPI Gateway配置のアーキテクチャスタイルを採用することが、当然のようになってきた印象です。</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-関連するアーキテクチャスタイル.drawio (2).png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-関連するアーキテクチャスタイル.drawio (2).png" />.png)</p>
+<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-関連するアーキテクチャスタイル.drawio (2).png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-関連するアーキテクチャスタイル.drawio (2).png" />.png)</p>
 <p>以下の表で、各アーキテクチャスタイルの責務と結合度に関して概説しました。</p>
 <table>
 <thead>
@@ -32905,7 +32905,7 @@
 <h3 id="_10">キャッシュ返却処理のシーケンス<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>CDNの仕組みでは、オリジン (フロントエンドアプリ) のダウンストリームに、CDN DNSサーバーとエッジサーバーを配置します。</p>
 <p>エッジサーバーのデータセンターは様々な場所にあります。</p>
-<p>ブラウザ (PC、スマホ) の送信元から最も近いデータセンターにあるエッジサーバーが、静的ファイルのキャッシュを作成し、またレスポンスします。</p>
+<p>ブラウザ (PC、スマホ) の送信元からもっとも近いデータセンターにあるエッジサーバーが、静的ファイルのキャッシュを作成し、またレスポンスします。</p>
 <p>以下のシーケンス図では、マイクロサービスアーキテクチャでのCDNの仕組みを解説しています。</p>
 <pre class="mermaid"><code>---
 title: マイクロサービスアーキテクチャでのCDNの仕組み
@@ -33123,7 +33123,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <li>クライアントサイド暗号化のためのS3マネージド暗号化キー (図では省略)</li>
 <li>Kubernetesリポジトリ内のSOPS (図では省略)</li>
 </ul>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio (1).png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio (1).png" />.png)</p>
+<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio (1).png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio (1).png" />.png)</p>
 <h1 id="08-02">08-02. 永続データ管理<a class="headerlink" href="#08-02" title="Permanent link">&para;</a></h1>
 <h2 id="db">DB分割<a class="headerlink" href="#db" title="Permanent link">&para;</a></h2>
 <h3 id="shared-db">Shared DBパターン<a class="headerlink" href="#shared-db" title="Permanent link">&para;</a></h3>
@@ -33192,7 +33192,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 </tr>
 <tr>
 <td>API Gateway領域</td>
-<td>Nginxは、フロントエンドからのリクエストをRESTful-APIで待ち受けます。マイクロサービスのRPC-APIやRESTful-APIにリクエストを送信するように設定できます。RPC-APIにgRPCでリクエストを送信する場合、<code>ngx_http_grpc_module</code>が必要です。</td>
+<td>Nginxは、フロントエンドからのリクエストをRESTful-APIで待ち受けます。マイクロサービスのRPC-APIやRESTful-APIにリクエストを送信するように設定できます。RPC-APIにgRPCでリクエストを送信する場合、<code>ngx_http_grpc_module</code> が必要です。</td>
 </tr>
 <tr>
 <td>マイクロサービス領域</td>
@@ -33216,7 +33216,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <h2 id="_20">共有データ経由方式<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
 <p>送信元マイクロサービスは作成したデータをストレージに保管します。</p>
 <p>宛先マイクロサービスはストレージをポーリングし、新しいデータが追加され次第、ストレージからこれを読み込みます。</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス間の通信方式.drawio (1).png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス間の通信方式.drawio (1).png" />.png)</p>
+<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス間の通信方式.drawio (1).png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス間の通信方式.drawio (1).png" />.png)</p>
 <h2 id="_21">振り返り<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
 <p>ここで、もう一度、マイクロサービスアーキテクチャを概説します。</p>
 <p>マイクロサービスアーキテクチャのマイクロサービス領域で、いくつかのマイクロサービスを稼働させています。</p>
@@ -33364,7 +33364,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <tbody>
 <tr>
 <td>ドメイン (問題領域)</td>
-<td>ビジネス全体で見た時に、システム化の対象となるビジネス業務的な領域のこと。</td>
+<td>ビジネス全体で見たときに、システム化の対象となるビジネス業務的な領域のこと。</td>
 <td>Amazonのような小売業ビジネス</td>
 </tr>
 <tr>
@@ -33446,7 +33446,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <li>集約内のルートエンティティ (例：受注エンティティ、購入ユーザーエンティティ、決済エンティティなど) を中心に、マイクロサービス全体を設計する。</li>
 </ol>
 <p>境界づけられたコンテキストの切り離しを繰り返し、複数の境界づけられたコンテキストを抽出します。</p>
-<p>各境界づけられたコンテキストを一つのマイクロサービスとして扱います。</p>
+<p>各境界づけられたコンテキストを1つのマイクロサービスとして扱います。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービスの分割.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービスの分割.drawio.png" /></p>
 <blockquote>
 <p>💡</p>
@@ -33542,7 +33542,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <p><a href="https://booth.pm/ja/items/1835632">DDD モデリング/実装ガイド</a></p>
 <p><a href="https://booth.pm/ja/items/3363104">DDD サンプルコード&amp;FAQ</a></p>
 <p><a href="https://www.amazon.co.jp/dp/B082WXZVPC">DDD入門 ボトムアップでわかる！DDDの基本</a></p>
-<p>↓ 世界で最も勉強になるIssueたち</p>
+<p>↓ 世界でもっとも勉強になるIssueたち</p>
 <p><a href="https://github.com/little-hands/ddd-q-and-a/issues">https://github.com/little-hands/ddd-q-and-a/issues</a></p>
 <h1 id="11">11. トランザクション管理方法<a class="headerlink" href="#11" title="Permanent link">&para;</a></h1>
 <pre class="mermaid"><code>flowchart LR
@@ -33556,23 +33556,23 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
   DB-per-serviceの場合 ---- 2フェーズコミット["2フェーズコミット&lt;br&gt;(非推奨)"]
 </code></pre>
 <h2 id="saga">Sagaパターン<a class="headerlink" href="#saga" title="Permanent link">&para;</a></h2>
-<p>DB per service下でのトランザクション管理方法の一つです。</p>
+<p>DB per service下でのトランザクション管理方法の1つです。</p>
 <p>マイクロサービスの永続化の間に依存関係がある場合 (例：受注データの永続化には、配送データや決済データの永続化の結果が必要) に、これらのマイクロサービスの永続化を調整する必要があります。</p>
-<p>占有DBを持つマイクロサービスを調整する時に、ACID属性のうち特にC (整合性) の担保が課題になります。</p>
-<p>クライアントの一つの操作が複数のマイクロサービスにまたがる場合に、各マイクロサービスのトランザクション (以降、ローカルトランザクションとする) を連続的に実行することになります。</p>
+<p>占有DBを持つマイクロサービスを調整するときに、ACID属性のうち特にC (整合性) の担保が課題になります。</p>
+<p>クライアントの1つの操作が複数のマイクロサービスにまたがる場合に、各マイクロサービスのトランザクション (以降、ローカルトランザクションとする) を連続的に実行することになります。</p>
 <p>この時に、いずれかのローカルトランザクションの成功または失敗に関わらず、データ全体として整合性を満たさなければなりません。</p>
 <p>Sagaパターンは、この課題を解決するためのパターンです。</p>
 <p><a href="https://microservices.io/patterns/data/saga.html">Microservices Pattern: Pattern: Saga</a></p>
 <p><a href="https://engineers.ntt.com/entry/2023/12/12/095337">複数サービス間でのデータの整合性維持に向けたSagaの実装 - NTT Communications Engineers' Blog</a></p>
 <h2 id="2">２フェーズコミット (二相コミットパターン)<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<p>Sagaパターンと同様に、DB per service下でのトランザクション管理方法の一つです。</p>
+<p>Sagaパターンと同様に、DB per service下でのトランザクション管理方法の1つです。</p>
 <blockquote>
 <p>💡 余裕があったら書くぜ！</p>
 </blockquote>
 <p><a href="https://www.ogis-ri.co.jp/otc/hiroba/technical/DTP/step2/">分散トランザクションに挑戦しよう！</a></p>
 <h1 id="11-02-saga">11-02. Sagaパターン<a class="headerlink" href="#11-02-saga" title="Permanent link">&para;</a></h1>
 <h2 id="_38">オーケストレーションベース<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h2>
-<p>オーケストレーションベースは、Sagaパターンのデザインパターンの一つです。</p>
+<p>オーケストレーションベースは、Sagaパターンのデザインパターンの1つです。</p>
 <p>Sagaオーケストレーターを配置し、Sagaパターンを実装します。</p>
 <p>Sagaオーケストレーターは中央集中的に各マイクロサービスを操作し、それぞれにローカルトランザクションを実行させます。</p>
 <p>また、Sagaオーケストレーターはローカルトランザクションの進捗度を占有DBで永続化します。</p>
@@ -33646,7 +33646,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <p><a href="https://github.com/guntenbein/temporal_microservices">https://github.com/guntenbein/temporal_microservices</a></p>
 <p><a href="https://temporal.io/blog/workflow-engine-principles">Designing A Workflow Engine from First Principles</a></p>
 <h2 id="_40">コレオグラフィベース<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h2>
-<p>コレオグラフィベースは、Sagaパターンのデザインパターンの一つです。</p>
+<p>コレオグラフィベースは、Sagaパターンのデザインパターンの1つです。</p>
 <p>オーケストレーションベースのように中央集中的に各マイクロサービスを操作するのではなく、特定のマイクロサービスが他のマイクロサービスを操作します。</p>
 <p>特定のマイクロサービスは、自身のローカルトランザクションを完了させた後に、後続のマイクロサービスをコールし、ローカルトランザクションを完了させます。</p>
 <p>各マイクロサービス間の通信方式は、パブリッシュ/サブスクライブ方式にする必要があります。</p>
@@ -33713,7 +33713,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <h2 id="_44">ログイン処理のシーケンス<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h2>
 <p>ここでは、OIDCのPCブラウザのログイン処理をシーケンス図にしました。</p>
 <p>PCブラウザフロントエンド (SPA) とIDプロバイダー (Keycloak、Google) の間のリクエスト送受信は、特に複雑です。</p>
-<p>アクセストークン再利用以降の仕組みは、次節で改めて概説します。</p>
+<p>アクセストークン再利用以降の仕組みは、次節であらためて概説します。</p>
 <pre class="mermaid"><code>---
 title: PCブラウザでのOIDC (認可コードフロー) の仕組み
 ---
@@ -33812,11 +33812,11 @@ sequenceDiagram
 <tbody>
 <tr>
 <td>Istio AuthorizationPolicy</td>
-<td>紐付けたPodのistio-proxyにアクセストークンの検証処理を実装する。istio-proxyは、IDプロバイダーにアクセストークン検証のリクエストを送信する。アクセストークンが無い場合に、ダウンストリームに<code>403</code>ステータスを返信する。失効 / 不正のアクセストークンを含むリクエストを検証せずに許可してしまうため、RequestAuthenticationも実装すべきである。</td>
+<td>紐付けたPodのistio-proxyにアクセストークンの検証処理を実装する。istio-proxyは、IDプロバイダーにアクセストークン検証のリクエストを送信する。アクセストークンが無い場合に、ダウンストリームに <code>403</code> ステータスを返信する。失効 / 不正のアクセストークンを含むリクエストを検証せずに許可してしまうため、RequestAuthenticationも実装すべきである。</td>
 </tr>
 <tr>
 <td>Istio RequestAuthentication</td>
-<td>紐付けたPodのistio-proxyにアクセストークンの検証処理を実装する。istio-proxyは、IDプロバイダーにアクセストークン検証のリクエストを送信する。アクセストークンが失効 / 不正だった場合に、ダウンストリームに<code>401</code>ステータスを返信する。アクセストークンが無いリクエストを検証せずに許可してしまうため、AuthorizationPolicyも実装すべきである。</td>
+<td>紐付けたPodのistio-proxyにアクセストークンの検証処理を実装する。istio-proxyは、IDプロバイダーにアクセストークン検証のリクエストを送信する。アクセストークンが失効 / 不正だった場合に、ダウンストリームに <code>401</code> ステータスを返信する。アクセストークンが無いリクエストを検証せずに許可してしまうため、AuthorizationPolicyも実装すべきである。</td>
 </tr>
 <tr>
 <td>Istioデータプレーン (istio-proxy)</td>
@@ -33933,7 +33933,7 @@ flowchart LR
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月11日 18:55:44 JST">2026-02-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

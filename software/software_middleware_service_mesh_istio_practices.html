@@ -6615,7 +6615,7 @@
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        サブセット名を1個にする
+        サブセット名を 1 個にする
       
     </span>
   </a>
@@ -6688,7 +6688,7 @@
   <a href="#l7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ L7ロードバランサーがない場合
+        ▼ L7 ロードバランサーがない場合
       
     </span>
   </a>
@@ -6699,7 +6699,7 @@
   <a href="#l7_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ L7ロードバランサーがある場合
+        ▼ L7 ロードバランサーがある場合
       
     </span>
   </a>
@@ -6866,7 +6866,7 @@
   <a href="#istioctl" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ istioctlコマンドの場合
+        ▼ istioctl コマンドの場合
       
     </span>
   </a>
@@ -6877,7 +6877,7 @@
   <a href="#helm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ helmコマンドの場合
+        ▼ helm コマンドの場合
       
     </span>
   </a>
@@ -6950,7 +6950,7 @@
   <a href="#gitlab-ciyml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ .gitlab-ci.ymlファイル
+        ▼ .gitlab-ci.yml ファイル
       
     </span>
   </a>
@@ -6961,7 +6961,7 @@
   <a href="#setup-asdfsh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ setup-asdf.shファイル
+        ▼ setup-asdf.sh ファイル
       
     </span>
   </a>
@@ -33410,7 +33410,7 @@
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        サブセット名を1個にする
+        サブセット名を 1 個にする
       
     </span>
   </a>
@@ -33483,7 +33483,7 @@
   <a href="#l7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ L7ロードバランサーがない場合
+        ▼ L7 ロードバランサーがない場合
       
     </span>
   </a>
@@ -33494,7 +33494,7 @@
   <a href="#l7_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ L7ロードバランサーがある場合
+        ▼ L7 ロードバランサーがある場合
       
     </span>
   </a>
@@ -33661,7 +33661,7 @@
   <a href="#istioctl" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ istioctlコマンドの場合
+        ▼ istioctl コマンドの場合
       
     </span>
   </a>
@@ -33672,7 +33672,7 @@
   <a href="#helm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ helmコマンドの場合
+        ▼ helm コマンドの場合
       
     </span>
   </a>
@@ -33745,7 +33745,7 @@
   <a href="#gitlab-ciyml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ .gitlab-ci.ymlファイル
+        ▼ .gitlab-ci.yml ファイル
       
     </span>
   </a>
@@ -33756,7 +33756,7 @@
   <a href="#setup-asdfsh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ setup-asdf.shファイル
+        ▼ setup-asdf.sh ファイル
       
     </span>
   </a>
@@ -33896,7 +33896,7 @@
 <p><br></p>
 <h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">少ないコントロールプレーン<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>クラウドプロバイダーでIstioを稼働させる場合、各AZや各リージョンにコントロールプレーンを<code>1</code>個だけセットアップし、できるだけ多くのマイクロサービスのサービスメッシュとなるようにする。</p>
+<p>クラウドプロバイダーでIstioを稼働させる場合、各AZや各リージョンにコントロールプレーンを <code>1</code> 個だけセットアップし、できるだけ多くのマイクロサービスのサービスメッシュとなるようにする。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-fewer-clusters">https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-fewer-clusters</a></li>
@@ -33957,7 +33957,7 @@
 <h2 id="02">02. トラフィック管理<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="istio-ingress-gateway">Istio Ingress Gatewayに関して<a class="headerlink" href="#istio-ingress-gateway" title="Permanent link">&para;</a></h3>
 <h4 id="istiodnamespace">▼ Istiodコントロールプレーンとは異なるNamespaceにおく<a class="headerlink" href="#istiodnamespace" title="Permanent link">&para;</a></h4>
-<p>セキュリティ上の理由から、Istio Ingress GatewayとIstiodコントロールプレーンは異なるNamespaceにおく方が良い。</p>
+<p>セキュリティ上の理由から、Istio Ingress GatewayとIstiodコントロールプレーンは異なるNamespaceにおくほうが良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/setup/additional-setup/gateway/#deploying-a-gateway">https://istio.io/latest/docs/setup/additional-setup/gateway/#deploying-a-gateway</a></li>
@@ -33998,7 +33998,7 @@
 </blockquote>
 <h4 id="clusterip-service-aws-load-balancer-controller">▼ ClusterIP Serviceを選ぶ (AWS Load Balancer Controllerを使用する場合のみ)<a class="headerlink" href="#clusterip-service-aws-load-balancer-controller" title="Permanent link">&para;</a></h4>
 <p>AWS Load Balancer Controllerを使用する場合、Istio Ingress GatewayでClusterIP Serviceを使用できる。</p>
-<p>Ingressにて、<code>alb.ingress.kubernetes.io/target-type</code>キー値を<code>ip</code>とすると、AWS Load Balancer ControllerはPodにリクエストを直接的にL7ロードバランシングする。</p>
+<p>Ingressにて、<code>alb.ingress.kubernetes.io/target-type</code> キー値を <code>ip</code> とすると、AWS Load Balancer ControllerはPodにリクエストを直接的にL7ロードバランシングする。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">AWS Route53</span>
@@ -34024,10 +34024,10 @@
 </ul>
 </blockquote>
 <h4 id="_4">▼ マイクロサービスごとに作成する<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>単一障害点になることを防ぐために、<code>1</code>個のIstio Ingress Gatewayで全てのマイクロサービスにルーティングするのではなく、マイクロサービスことに用意する。</p>
+<p>単一障害点になることを防ぐために、<code>1</code> 個のIstio Ingress Gatewayで全てのマイクロサービスにルーティングするのではなく、マイクロサービスことに用意する。</p>
 <p><br></p>
-<h3 id="1">サブセット名を<code>1</code>個にする<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
-<p>Istioリソースで設定するサブセット名は<code>1</code>個だけにする。</p>
+<h3 id="1">サブセット名を <code>1</code> 個にする<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>Istioリソースで設定するサブセット名は <code>1</code> 個だけにする。</p>
 <p>これにより、Istio Ingress Gatewayで受信した通信を、特定のバージョンのPodにルーティングできる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -34051,7 +34051,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="istio_1">Istioリソースのリクエスト可能な範囲を限定する<a class="headerlink" href="#istio_1" title="Permanent link">&para;</a></h3>
-<p>Istioリソースの<code>.spec.exportTo</code>キーでは『<code>.</code> (ドット) 』を設定する。</p>
+<p>Istioリソースの <code>.spec.exportTo</code> キーでは『<code>.</code> (ドット) 』を設定する。</p>
 <p>これにより、同じNamespaceからしかリクエストを受信できないようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -34078,7 +34078,7 @@
 <h3 id="destinationrule">DestinationRuleを最初に更新する<a class="headerlink" href="#destinationrule" title="Permanent link">&para;</a></h3>
 <p>新しいサブセットを追加する場合、DestinationRuleを最初に更新する。</p>
 <p>これにより、ダウンタイムなしでサブセットを追加できる。</p>
-<p>DestinationRuleを更新する前に新しいサブセットを持つVirtualServiceを更新してしまうと、VirtualServiceは新しいサブセットを持つDestinationRuleを見つけられず、<code>503</code>レスポンスを返信してしまう。</p>
+<p>DestinationRuleを更新する前に新しいサブセットを持つVirtualServiceを更新してしまうと、VirtualServiceは新しいサブセットを持つDestinationRuleを見つけられず、<code>503</code> レスポンスを返信してしまう。</p>
 <p>DestinationRuleを最初に更新し、正常に完了することを待機した後に、VirtualServiceを更新する。</p>
 <blockquote>
 <ul>
@@ -34108,7 +34108,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="nodeport-service_1">NodePort Serviceの場合<a class="headerlink" href="#nodeport-service_1" title="Permanent link">&para;</a></h3>
-<h4 id="l7">▼ <code>L7</code>ロードバランサーがない場合<a class="headerlink" href="#l7" title="Permanent link">&para;</a></h4>
+<h4 id="l7">▼ <code>L7</code> ロードバランサーがない場合<a class="headerlink" href="#l7" title="Permanent link">&para;</a></h4>
 <p>NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としない。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
@@ -34125,7 +34125,7 @@
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">Pod</span>
 </code></pre></div>
-<h4 id="l7_1">▼ <code>L7</code>ロードバランサーがある場合<a class="headerlink" href="#l7_1" title="Permanent link">&para;</a></h4>
+<h4 id="l7_1">▼ <code>L7</code> ロードバランサーがある場合<a class="headerlink" href="#l7_1" title="Permanent link">&para;</a></h4>
 <p>パブリックプロバイダーのロードバランサー (例：AWS ALB) を別に配置する。</p>
 <p>単一のL7ロードバランサーを作成し、複数のL4ロードバランサーに振り分けるとよい。</p>
 <p><strong>＊例＊</strong></p>
@@ -34151,7 +34151,7 @@
 <p><br></p>
 <h3 id="clusterip-service">ClusterIP Serviceの場合<a class="headerlink" href="#clusterip-service" title="Permanent link">&para;</a></h3>
 <p>AWS Load Balancer Controllerを使用する場合、Istio Ingress GatewayでClusterIP Serviceを使用できる。</p>
-<p>Ingressにて、<code>alb.ingress.kubernetes.io/target-type</code>キー値を<code>ip</code>とすると、AWS Load Balancer ControllerはPodにリクエストを直接的にL7ロードバランシングする。</p>
+<p>Ingressにて、<code>alb.ingress.kubernetes.io/target-type</code> キー値を <code>ip</code> とすると、AWS Load Balancer ControllerはPodにリクエストを直接的にL7ロードバランシングする。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">AWS Route53</span>
@@ -34188,8 +34188,8 @@
 </ul>
 </blockquote>
 <h4 id="_7">▼ マイナーバージョン単位でアップグレード<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>Istioの開発プロジェクトでは、マイナーバージョンを<code>1</code>個ずつ新しくするアップグレードしか検証していない。</p>
-<p>そのため、マイナーバージョンを<code>2</code>個以上跨いだアップグレードを推奨していない。</p>
+<p>Istioの開発プロジェクトでは、マイナーバージョンを <code>1</code> 個ずつ新しくするアップグレードしか検証していない。</p>
+<p>そのため、マイナーバージョンを <code>2</code> 個以上跨いだアップグレードを推奨していない。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/setup/upgrade/">https://istio.io/latest/docs/setup/upgrade/</a></li>
@@ -34257,17 +34257,17 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <li><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548">https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548</a></li>
 </ul>
 </blockquote>
-<h4 id="istioctl">▼ <code>istioctl</code>コマンドの場合<a class="headerlink" href="#istioctl" title="Permanent link">&para;</a></h4>
+<h4 id="istioctl">▼ <code>istioctl</code> コマンドの場合<a class="headerlink" href="#istioctl" title="Permanent link">&para;</a></h4>
 <blockquote>
 <ul>
 <li><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548">https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548</a></li>
 </ul>
 </blockquote>
-<h4 id="helm">▼ <code>helm</code>コマンドの場合<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h4>
+<h4 id="helm">▼ <code>helm</code> コマンドの場合<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>HelmではCRDを管理しないようにし、<code>kubectl</code>コマンドでこれを作成する。</p>
+<p>HelmではCRDを管理しないようにし、<code>kubectl</code> コマンドでこれを作成する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/istio/istio/1.15.3/manifests/charts/base/crds/crd-all.gen.yaml
@@ -34336,7 +34336,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <p><br></p>
 <h2 id="05-ci">05. CI<a class="headerlink" href="#05-ci" title="Permanent link">&para;</a></h2>
 <h3 id="gitlab">GitLab<a class="headerlink" href="#gitlab" title="Permanent link">&para;</a></h3>
-<h4 id="gitlab-ciyml">▼ <code>.gitlab-ci.yml</code>ファイル<a class="headerlink" href="#gitlab-ciyml" title="Permanent link">&para;</a></h4>
+<h4 id="gitlab-ciyml">▼ <code>.gitlab-ci.yml</code> ファイル<a class="headerlink" href="#gitlab-ciyml" title="Permanent link">&para;</a></h4>
 <p>CI上でClusterを作成し、Istioをデプロイする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ブランチ名に応じて、CIで使用する実行環境名を切り替える</span>
 <span class="nt">workflow</span><span class="p">:</span>
@@ -34466,7 +34466,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <span class="w">    </span><span class="c1"># Clusterを削除する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k3d cluster delete $CI_PIPELINE_ID</span>
 </code></pre></div>
-<h4 id="setup-asdfsh">▼ <code>setup-asdf.sh</code>ファイル<a class="headerlink" href="#setup-asdfsh" title="Permanent link">&para;</a></h4>
+<h4 id="setup-asdfsh">▼ <code>setup-asdf.sh</code> ファイル<a class="headerlink" href="#setup-asdfsh" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1"># asdfをインストールする</span>
@@ -34508,7 +34508,7 @@ istioctl<span class="w"> </span>version
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年12月6日 20:22:09 JST">2025-12-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

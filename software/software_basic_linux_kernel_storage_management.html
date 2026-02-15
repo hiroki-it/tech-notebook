@@ -8638,7 +8638,7 @@
   <a href="#mkfs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ mkfsコマンドの場合
+        ▼ mkfs コマンドの場合
       
     </span>
   </a>
@@ -8649,7 +8649,7 @@
   <a href="#mke2fs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ mke2fsコマンドの場合
+        ▼ mke2fs コマンドの場合
       
     </span>
   </a>
@@ -33686,7 +33686,7 @@
   <a href="#mkfs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ mkfsコマンドの場合
+        ▼ mkfs コマンドの場合
       
     </span>
   </a>
@@ -33697,7 +33697,7 @@
   <a href="#mke2fs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ mke2fsコマンドの場合
+        ▼ mke2fs コマンドの場合
       
     </span>
   </a>
@@ -33932,7 +33932,7 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>ストレージのサイズを現状から<code>100</code>GBまで拡張する。</p>
+<p>ストレージのサイズを現状から <code>100</code>GBまで拡張する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
@@ -33972,7 +33972,7 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>7
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>パーティションを<code>growpart</code>コマンドで拡張する。</p>
+<p>パーティションを <code>growpart</code> コマンドで拡張する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>growpart<span class="w"> </span>/dev/sda<span class="w"> </span><span class="m">2</span>
@@ -33980,7 +33980,7 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>7
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
-<p>論理ボリュームを拡張できるように、事前に物理ボリュームを<code>pvresize</code>コマンドで拡張する。</p>
+<p>論理ボリュームを拡張できるように、事前に物理ボリュームを <code>pvresize</code> コマンドで拡張する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pvresize<span class="w"> </span>/dev/sda2
@@ -33988,7 +33988,7 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>7
 <dl>
 <dt><code>(6)</code></dt>
 <dd>
-<p>論理ボリュームを<code>lvextend</code>コマンドで拡張する。ここでは、空きサイズいっぱいに拡張する。</p>
+<p>論理ボリュームを <code>lvextend</code> コマンドで拡張する。ここでは、空きサイズいっぱいに拡張する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>lvextend<span class="w"> </span>-l<span class="w"> </span>+100%FREE<span class="w"> </span>/dev/root
@@ -34034,7 +34034,7 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>7
 <h4 id="_10">▼ パーティション、物理ボリューム、とは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>ストレージ上の仮想的な仕切りを『パーティション』、また仕切られた領域を『物理ボリューム』という。</p>
 <p>1つの領域を複数に見せかけられる。</p>
-<p><code>/dev</code>ディレクトリ配下にストレージに紐づくデバイスファイルがあり、デバイスファイル内でパーティションが設定されている。</p>
+<p><code>/dev</code> ディレクトリ配下にストレージに紐づくデバイスファイルがあり、デバイスファイル内でパーティションが設定されている。</p>
 <p><img alt="partition_volume" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/partition_volume.png" /></p>
 <blockquote>
 <ul>
@@ -34054,10 +34054,10 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>7
 <p><br></p>
 <h3 id="_13">パーティション、マウントポイントの確認方法<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="linux_1">▼ Linuxの場合<a class="headerlink" href="#linux_1" title="Permanent link">&para;</a></h4>
-<p>Linuxでは、パーティションとマウントポイントは<code>df</code>コマンドで確認できる。</p>
+<p>Linuxでは、パーティションとマウントポイントは <code>df</code> コマンドで確認できる。</p>
 <p><strong>＊例＊</strong></p>
-<p>Linuxの場合、<code>/dev/xvda1</code>をルートディレクトリにマウントしていることがある。</p>
-<p><code>Filesystem</code>列にパーティション、<code>Mounted on</code>列にパーティションに対応するマウントポイントが表示される。</p>
+<p>Linuxの場合、<code>/dev/xvda1</code> をルートディレクトリにマウントしていることがある。</p>
+<p><code>Filesystem</code> 列にパーティション、<code>Mounted on</code> 列にパーティションに対応するマウントポイントが表示される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>df
 
 <span class="c1"># パーティション、マウントポイント</span>
@@ -34066,7 +34066,7 @@ Filesystem<span class="w">     </span>Size<span class="w">   </span>Used<span cl
 /dev/nvme1n1<span class="w">   </span>200G<span class="w">   </span>161G<span class="w">    </span>40G<span class="w">   </span><span class="m">81</span>%<span class="w">   </span>/var/lib
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>特にCentOSの場合、<code>/dev/mapper/rhel-root</code>をルートディレクトリにマウントしていることがある。</p>
+<p>特にCentOSの場合、<code>/dev/mapper/rhel-root</code> をルートディレクトリにマウントしていることがある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>df<span class="w"> </span>-hT
 
 Filesystem<span class="w">            </span>Type<span class="w">       </span>Size<span class="w">  </span>Used<span class="w">  </span>Avail<span class="w">  </span>Use%<span class="w">  </span>Mounted<span class="w"> </span>on
@@ -34092,14 +34092,14 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>7
 </ul>
 </blockquote>
 <h4 id="macos">▼ MacOSの場合<a class="headerlink" href="#macos" title="Permanent link">&para;</a></h4>
-<p>MacOSでは、<code>diskutil</code>コマンドを実行することにより、パーティションとマウントポイントを確認できる。</p>
+<p>MacOSでは、<code>diskutil</code> コマンドを実行することにより、パーティションとマウントポイントを確認できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/sfp_waterwalker/items/188b536e3519058e3280">https://qiita.com/sfp_waterwalker/items/188b536e3519058e3280</a></li>
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>ストレージに紐づく<code>2</code>個のデバイスファイルが表示され、<code>disk0</code>ファイル は2つ、また<code>disk1</code>ファイルは6つのパーティションで区切られていることが確認できる。マウントポイントは、<code>IDENTIFIER</code>列で表示される (例：パーティションのデバイスファイル名が<code>/dev/disk0</code>なら、マウントポイントは<code>/dev/disk0&lt;IDENTIFIER名&gt;</code>になる) 。</p>
+<p>ストレージに紐づく <code>2</code> 個のデバイスファイルが表示され、<code>disk0</code> ファイル は2つ、また <code>disk1</code> ファイルは6つのパーティションで区切られていることが確認できる。マウントポイントは、<code>IDENTIFIER</code> 列で表示される (例：パーティションのデバイスファイル名が <code>/dev/disk0</code> なら、マウントポイントは <code>/dev/disk0&lt;IDENTIFIER名&gt;</code> になる) 。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>diskutil<span class="w"> </span>list
 
 <span class="c1"># ストレージ：disk0</span>
@@ -34124,7 +34124,7 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>7
 <p><br></p>
 <h2 id="03">03. 論理ボリューム<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_14">論理ボリュームとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<p>異なる物理ボリュームにまたがる領域を組み合わせ、<code>1</code>個の仮想的なボリュームとした扱ったもの。</p>
+<p>異なる物理ボリュームにまたがる領域を組み合わせ、<code>1</code> 個の仮想的なボリュームとした扱ったもの。</p>
 <p><img alt="logical-volume" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logical-volume.png" /></p>
 <blockquote>
 <ul>
@@ -34135,7 +34135,7 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>7
 <h3 id="_15">論理ボリュームの確認方法<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="linux_2">▼ Linuxの場合<a class="headerlink" href="#linux_2" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>Linuxでは論理ボリュームは、<code>lvdisplay</code>コマンドで確認できる。</p>
+<p>Linuxでは論理ボリュームは、<code>lvdisplay</code> コマンドで確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>lvdisplay
 
 <span class="w">  </span>---<span class="w"> </span>Logical<span class="w"> </span>volume<span class="w"> </span>---
@@ -34175,7 +34175,7 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>7
 <h2 id="04">04. デバイスファイル<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_16">デバイスファイルとは<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <p>Linuxカーネルが入出力装置や標準入出力を操作できるように、これらのインターフェースをファイルとして扱ったもの。</p>
-<p><code>/dev</code>ディレクトリ配下に配置されている。</p>
+<p><code>/dev</code> ディレクトリ配下に配置されている。</p>
 <p>各ファイルには具体的な入出力装置を示す番号 (メジャー番号、マイナー番号) が割り当てられている。</p>
 <p>デバイスファイルを操作すると、入出力装置や標準入出力に対してその操作が実行される。</p>
 <blockquote>
@@ -34188,7 +34188,7 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>7
 <h3 id="_17">デバイスファイルの確認方法<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <h4 id="linux_3">▼ Linuxの場合<a class="headerlink" href="#linux_3" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>Linuxのデバイスファイルは<code>/dev</code>ディレクトリ配下にある。</p>
+<p>Linuxのデバイスファイルは <code>/dev</code> ディレクトリ配下にある。</p>
 <p>Dockerのデバイスファイルを確認すると、以下のデバイスファイルがある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>/dev
 
@@ -34342,7 +34342,7 @@ crw-rw-rw-<span class="w">  </span>zero<span class="w">                  </span>
 </blockquote>
 <p><br></p>
 <h3 id="_23">ファイルシステムの作成方法<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
-<h4 id="mkfs">▼ <code>mkfs</code>コマンドの場合<a class="headerlink" href="#mkfs" title="Permanent link">&para;</a></h4>
+<h4 id="mkfs">▼ <code>mkfs</code> コマンドの場合<a class="headerlink" href="#mkfs" title="Permanent link">&para;</a></h4>
 <p>さまざまなタイプのファイルシステムを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkfs<span class="w"> </span>-t<span class="w"> </span>&lt;ファイルシステムのタイプ&gt;<span class="w"> </span>&lt;パーティションのデバイスファイル名&gt;
 </code></pre></div>
@@ -34358,8 +34358,8 @@ $<span class="w"> </span>mkfs<span class="w"> </span>-t<span class="w"> </span>x
 <li><a href="https://tech.pjin.jp/blog/2017/02/06/the-questions-of-lpic-part2-the-origin-of-commands-no6/">https://tech.pjin.jp/blog/2017/02/06/the-questions-of-lpic-part2-the-origin-of-commands-no6/</a></li>
 </ul>
 </blockquote>
-<h4 id="mke2fs">▼ <code>mke2fs</code>コマンドの場合<a class="headerlink" href="#mke2fs" title="Permanent link">&para;</a></h4>
-<p><code>ext</code>系タイプ (<code>ext2</code>、<code>ext3</code>、<code>ext4</code>) のファイルシステムを作成する。</p>
+<h4 id="mke2fs">▼ <code>mke2fs</code> コマンドの場合<a class="headerlink" href="#mke2fs" title="Permanent link">&para;</a></h4>
+<p><code>ext</code> 系タイプ (<code>ext2</code>、<code>ext3</code>、<code>ext4</code>) のファイルシステムを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>mke2fs<span class="w"> </span>-t<span class="w"> </span>&lt;ファイルシステムのタイプ&gt;<span class="w"> </span>&lt;パーティションのデバイスファイル名&gt;
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># ext4タイプの場合</span>
@@ -34382,7 +34382,7 @@ $<span class="w"> </span>mke2fs<span class="w"> </span>-t<span class="w"> </span
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>ホスト側のMacOSにて、<code>/etc/exports</code>ファイルにマウントオプションを設定する。また、<code>/etc/exports</code>ファイルを検証する。</p>
+<p>ホスト側のMacOSにて、<code>/etc/exports</code> ファイルにマウントオプションを設定する。また、<code>/etc/exports</code> ファイルを検証する。</p>
 </dd>
 </dl>
 <blockquote>
@@ -34462,7 +34462,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 19:49:44 JST">2025-05-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

@@ -3075,7 +3075,7 @@
   <a href="#proto" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ protoファイル (サービス定義ファイル) とは
+        ▼ proto ファイル (サービス定義ファイル) とは
       
     </span>
   </a>
@@ -3086,7 +3086,7 @@
   <a href="#pbgo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ pb.goファイルとは
+        ▼ pb.go ファイルとは
       
     </span>
   </a>
@@ -3688,7 +3688,7 @@
   <a href="#proto_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        protoファイル
+        proto ファイル
       
     </span>
   </a>
@@ -3699,7 +3699,7 @@
   <a href="#pbgo_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        pb.goファイル
+        pb.go ファイル
       
     </span>
   </a>
@@ -33762,7 +33762,7 @@
   <a href="#proto" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ protoファイル (サービス定義ファイル) とは
+        ▼ proto ファイル (サービス定義ファイル) とは
       
     </span>
   </a>
@@ -33773,7 +33773,7 @@
   <a href="#pbgo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ pb.goファイルとは
+        ▼ pb.go ファイルとは
       
     </span>
   </a>
@@ -34375,7 +34375,7 @@
   <a href="#proto_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        protoファイル
+        proto ファイル
       
     </span>
   </a>
@@ -34386,7 +34386,7 @@
   <a href="#pbgo_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        pb.goファイル
+        pb.go ファイル
       
     </span>
   </a>
@@ -34751,8 +34751,8 @@
 <h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">各種ツール<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="protocol-buffer">▼ Protocol Bufferコンパイラー<a class="headerlink" href="#protocol-buffer" title="Permanent link">&para;</a></h4>
-<p><code>proto</code>ファイルをコンパイルするために、Protocol Bufferコンパイラーをインストールする。</p>
-<p>マイクロサービス別にリポジトリがある場合、各リポジトリで同じバージョンの<code>protoc</code>コマンドを使用できるように、パッケージ管理ツールを使用した方がよい。</p>
+<p><code>proto</code> ファイルをコンパイルするために、Protocol Bufferコンパイラーをインストールする。</p>
+<p>マイクロサービス別にリポジトリがある場合、各リポジトリで同じバージョンの <code>protoc</code> コマンドを使用できるように、パッケージ管理ツールを使用したほうがよい。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>asdf<span class="w"> </span>plugin<span class="w"> </span>list<span class="w"> </span>all<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>protoc
 
 $<span class="w"> </span>asdf<span class="w"> </span>plugin<span class="w"> </span>add<span class="w"> </span>protoc<span class="w"> </span>https://github.com/paxosglobal/asdf-protoc.git
@@ -34767,8 +34767,8 @@ $<span class="w"> </span>asdf<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="protocol-buffergo">▼ Protocol BufferコンパイラーGoプラグイン<a class="headerlink" href="#protocol-buffergo" title="Permanent link">&para;</a></h4>
-<p>サービス定義ファイル (<code>proto</code>ファイル) から<code>pb.go</code>ファイルをコンパイルするために、Protocol Bufferコンパイラーのプラグインをインストールする。</p>
-<p>ただし、執筆時点 (2024/07/15) では、 <code>protoc-gen-go</code>モジュールに移行するべきである。</p>
+<p>サービス定義ファイル (<code>proto</code> ファイル) から <code>pb.go</code> ファイルをコンパイルするために、Protocol Bufferコンパイラーのプラグインをインストールする。</p>
+<p>ただし、執筆時点 (2024/07/15) では、 <code>protoc-gen-go</code> モジュールに移行するべきである。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </span>google.golang.org/protobuf/cmd/protoc-gen-go@HEAD
 
 $<span class="w"> </span>protoc-gen-go<span class="w"> </span>--version
@@ -34783,8 +34783,8 @@ protoc-gen-go<span class="w"> </span>&lt;バージョン&gt;
 </ul>
 </blockquote>
 <h4 id="protocol-buffergo-grpc">▼ Protocol BufferコンパイラーGo-gRPCプラグイン<a class="headerlink" href="#protocol-buffergo-grpc" title="Permanent link">&para;</a></h4>
-<p>サービス定義ファイル (<code>proto</code>ファイル) からgRPC対応の<code>pb.go</code>ファイルをコンパイルするために、Protocol Bufferコンパイラーのプラグインをインストールする。</p>
-<p><code>protoc-gen-go</code>の移行先のモジュールである。</p>
+<p>サービス定義ファイル (<code>proto</code> ファイル) からgRPC対応の <code>pb.go</code> ファイルをコンパイルするために、Protocol Bufferコンパイラーのプラグインをインストールする。</p>
+<p><code>protoc-gen-go</code> の移行先のモジュールである。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </span>google.golang.org/grpc/cmd/protoc-gen-go-grpc@HEAD
 
 $<span class="w"> </span>protoc-gen-go-grpc<span class="w"> </span>--version
@@ -34800,8 +34800,8 @@ protoc-gen-go-grpc<span class="w"> </span>&lt;バージョン&gt;
 </blockquote>
 <h4 id="_3">▼ 上記ツールを持つ専用コンテナ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>各種ツールをGoアプリにダウンロードしても良いが、専用コンテナとして切り分けるとよい。</p>
-<p>サービス定義ファイル (<code>proto</code>ファイル) から<code>pb.go</code>ファイルを作成したくなったら、このコンテナを実行する。</p>
-<p><code>docker-compose.yml</code>ファイルは以下の通りである。</p>
+<p>サービス定義ファイル (<code>proto</code> ファイル) から <code>pb.go</code> ファイルを作成したくなったら、このコンテナを実行する。</p>
+<p><code>docker-compose.yml</code> ファイルは以下の通りである。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">grpc_compile</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">protocol_buffer_compiler</span>
@@ -34811,7 +34811,7 @@ protoc-gen-go-grpc<span class="w"> </span>&lt;バージョン&gt;
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.:/</span>
 </code></pre></div>
-<p><code>Dockerfile</code>ファイルは以下の通りである。</p>
+<p><code>Dockerfile</code> ファイルは以下の通りである。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">golang:&lt;Goアプリと同じバージョン&gt;</span>
 
 <span class="k">RUN</span><span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
@@ -34823,8 +34823,8 @@ protoc-gen-go-grpc<span class="w"> </span>&lt;バージョン&gt;
 <span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>/
 <span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/protocol_buffer_compiler.sh&quot;</span><span class="p">]</span>
 </code></pre></div>
-<p><code>protocol_buffer_compiler.sh</code>ファイルは以下の通りである。</p>
-<p>バックアップも兼ねて、<code>pb.go</code>ファイルを作業日付ごとに作成する。</p>
+<p><code>protocol_buffer_compiler.sh</code> ファイルは以下の通りである。</p>
+<p>バックアップも兼ねて、<code>pb.go</code> ファイルを作業日付ごとに作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
 
 <span class="c1"># 日付ごとにディレクトリを作成する</span>
@@ -34847,10 +34847,10 @@ protoc<span class="w"> </span><span class="se">\</span>
 </blockquote>
 <p><br></p>
 <h3 id="grpcgrpc">gRPCクライアントとgRPCサーバーの両方<a class="headerlink" href="#grpcgrpc" title="Permanent link">&para;</a></h3>
-<h4 id="proto">▼ <code>proto</code>ファイル (サービス定義ファイル) とは<a class="headerlink" href="#proto" title="Permanent link">&para;</a></h4>
-<p>gRPCクライアントとgRPCサーバーの両方で、サービス定義ファイル (<code>proto</code>ファイル) を作成する。</p>
-<p>例えば、<code>message</code>はJSONに代わるスキーマを表し、<code>service</code>はgRPCにおけるAPI仕様を表す。</p>
-<p>サービス定義ファイルにインターフェースとメッセージ構造を実装し、このファイルから<code>pb.go</code>ファイルをコンパイルする。</p>
+<h4 id="proto">▼ <code>proto</code> ファイル (サービス定義ファイル) とは<a class="headerlink" href="#proto" title="Permanent link">&para;</a></h4>
+<p>gRPCクライアントとgRPCサーバーの両方で、サービス定義ファイル (<code>proto</code> ファイル) を作成する。</p>
+<p>例えば、<code>message</code> はJSONに代わるスキーマを表し、<code>service</code> はgRPCにおけるAPI仕様を表す。</p>
+<p>サービス定義ファイルにインターフェースとメッセージ構造を実装し、このファイルから <code>pb.go</code> ファイルをコンパイルする。</p>
 <blockquote>
 <ul>
 <li><a href="https://y-zumi.hatenablog.com/entry/2019/09/07/011741">https://y-zumi.hatenablog.com/entry/2019/09/07/011741</a></li>
@@ -34858,9 +34858,9 @@ protoc<span class="w"> </span><span class="se">\</span>
 <li><a href="https://docs.wantedly.dev/fields/the-system/apis#protofairu">https://docs.wantedly.dev/fields/the-system/apis#protofairu</a></li>
 </ul>
 </blockquote>
-<h4 id="pbgo">▼ <code>pb.go</code>ファイルとは<a class="headerlink" href="#pbgo" title="Permanent link">&para;</a></h4>
-<p>gRPCクライアントとgRPCサーバーの両方で、<code>proto</code>ファイルから<code>pb.go</code>ファイルをコンパイルする。</p>
-<p><code>protoc</code>コマンドを使用して、<code>pb.go</code>ファイルを作成する。</p>
+<h4 id="pbgo">▼ <code>pb.go</code> ファイルとは<a class="headerlink" href="#pbgo" title="Permanent link">&para;</a></h4>
+<p>gRPCクライアントとgRPCサーバーの両方で、<code>proto</code> ファイルから <code>pb.go</code> ファイルをコンパイルする。</p>
+<p><code>protoc</code> コマンドを使用して、<code>pb.go</code> ファイルを作成する。</p>
 <p>このファイルには、gRPCクライアントとgRPCサーバーの両方が参照するための実装が定義されており、開発者はそのまま使用すれば良い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># foo.protoファイルから、gRPCに対応するfoo.pb.goファイルをコンパイルする。</span>
 $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span>.<span class="w"> </span>--go_out<span class="o">=</span>.<span class="w"> </span>--go-grpc_out<span class="o">=</span>.<span class="w"> </span>foo.proto
@@ -34876,7 +34876,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 </blockquote>
 <h4 id="rpc-api">▼ RPC-API仕様書<a class="headerlink" href="#rpc-api" title="Permanent link">&para;</a></h4>
 <p>gRPCにおけるAPI仕様書である。</p>
-<p>仕様の実装である<code>proto</code>ファイルを使用して、RPC-API仕様書を作成できる。</p>
+<p>仕様の実装である <code>proto</code> ファイルを使用して、RPC-API仕様書を作成できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>protoc<span class="w"> </span>--doc_out<span class="o">=</span>.<span class="w"> </span>--doc_opt<span class="o">=</span>html,index.html<span class="w"> </span>*.proto
 </code></pre></div>
 <p><br></p>
@@ -34955,7 +34955,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <h2 id="02-02">02-02. インターセプターの設定方法<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
 <h3 id="rpc">単項RPCの場合<a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h3>
 <h4 id="unaryclientinterceptor">▼ 既製のインターセプター (<code>UnaryClientInterceptor</code>)<a class="headerlink" href="#unaryclientinterceptor" title="Permanent link">&para;</a></h4>
-<p>gRPCでは、単項RPCを送信するクライアント側のミドルウェアパターンは<code>UnaryClientInterceptor</code>という名前で定義されている。</p>
+<p>gRPCでは、単項RPCを送信するクライアント側のミドルウェアパターンは <code>UnaryClientInterceptor</code> という名前で定義されている。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UnaryClientInterceptor</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">method</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
@@ -34966,14 +34966,14 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">CallOption</span>
 <span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="kt">error</span>
 </code></pre></div>
-<p>この関数は、リクエストでエラーが起こった場合に、内部的に<code>SetStatus</code>関数を実行する。</p>
+<p>この関数は、リクエストでエラーが起こった場合に、内部的に <code>SetStatus</code> 関数を実行する。</p>
 <p>エラー時に、Spanステータスとエラーメッセージをスパンに設定してくれる。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L107">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L107</a></li>
 </ul>
 </blockquote>
-<p>これをgRPCサーバーとの接続作成時に、<code>WithChainUnaryInterceptor</code>関数に渡す。</p>
+<p>これをgRPCサーバーとの接続作成時に、<code>WithChainUnaryInterceptor</code> 関数に渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -35041,7 +35041,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>ユーザー定義のオプションを渡したい場合は、<code>grpc.UnaryClientInterceptor</code>型を返却する関数とする。</p>
+<p>ユーザー定義のオプションを渡したい場合は、<code>grpc.UnaryClientInterceptor</code> 型を返却する関数とする。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">intercetor</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -35080,7 +35080,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <p><br></p>
 <h3 id="rpc_1">ストリーミングRPCの場合<a class="headerlink" href="#rpc_1" title="Permanent link">&para;</a></h3>
 <h5 id="streamclientinterceptor">▼ 既製のインターセプター (<code>StreamClientInterceptor</code>)<a class="headerlink" href="#streamclientinterceptor" title="Permanent link">&para;</a></h5>
-<p>gRPCでは、ストリーミングRPCを送信するクライアント側のミドルウェアパターンは、<code>StreamClientInterceptor</code>という名前にすることが定められている。</p>
+<p>gRPCでは、ストリーミングRPCを送信するクライアント側のミドルウェアパターンは、<code>StreamClientInterceptor</code> という名前にすることが定められている。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">StreamClientInterceptor</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">desc</span><span class="w"> </span><span class="o">*</span><span class="nx">StreamDesc</span><span class="p">,</span>
@@ -35090,14 +35090,14 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">CallOption</span><span class="p">,</span>
 <span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">ClientStream</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
 </code></pre></div>
-<p>この関数は、リクエストでエラーが起こった場合に、内部的に<code>SetStatus</code>関数を実行する。</p>
+<p>この関数は、リクエストでエラーが起こった場合に、内部的に <code>SetStatus</code> 関数を実行する。</p>
 <p>エラー時に、Spanステータスとエラーメッセージをスパンに設定してくれる。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L257">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L257</a></li>
 </ul>
 </blockquote>
-<p>これをgRPCサーバーとの接続作成時に、<code>WithChainStreamInterceptor</code>関数に渡す。</p>
+<p>これをgRPCサーバーとの接続作成時に、<code>WithChainStreamInterceptor</code> 関数に渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -35168,7 +35168,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ClientStream</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>ユーザー定義のオプションを渡したい場合は、<code>grpc.StreamClientInterceptor</code>型を返却する関数とする。</p>
+<p>ユーザー定義のオプションを渡したい場合は、<code>grpc.StreamClientInterceptor</code> 型を返却する関数とする。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">intercetor</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -35220,7 +35220,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <h4 id="_15">▼ 分散トレース系<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <h4 id="_16">▼ リカバー系<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>gRPCの処理で起こったパニックを、<code>Internal Server Error</code>として処理する。</p>
+<p>gRPCの処理で起こったパニックを、<code>Internal Server Error</code> として処理する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -35256,8 +35256,8 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 </blockquote>
 <h4 id="_17">▼ フィルター系<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>分散トレースの作成を無視する場合を設定する。</p>
-<p>例えば、フィルター系の<code>HealthCheck</code>関数はgRPCのヘルスチェックパス (<code>/grpc.health.v1.Health/Check</code>) のプレフィクス (<code>/grpc.health.v1.Health</code>) を返却する。</p>
-<p>これを<code>WithInterceptorFilter</code>関数に渡すと、ヘルスチェックのパスで分散トレースの作成を無効化できる。</p>
+<p>例えば、フィルター系の <code>HealthCheck</code> 関数はgRPCのヘルスチェックパス (<code>/grpc.health.v1.Health/Check</code>) のプレフィクス (<code>/grpc.health.v1.Health</code>) を返却する。</p>
+<p>これを <code>WithInterceptorFilter</code> 関数に渡すと、ヘルスチェックのパスで分散トレースの作成を無効化できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -35291,7 +35291,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <h2 id="03-02">03-02. インターセプターの設定方法<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
 <h3 id="rpc_2">単項RPCの場合<a class="headerlink" href="#rpc_2" title="Permanent link">&para;</a></h3>
 <h4 id="unaryserverinterceptor">▼ 既製のインターセプター (<code>UnaryServerInterceptor</code>)<a class="headerlink" href="#unaryserverinterceptor" title="Permanent link">&para;</a></h4>
-<p>gRPCでは、単項RPCを受信するサーバー側のミドルウェアパターンは、<code>UnaryServerInterceptor</code>という名前にすることが定められている。</p>
+<p>gRPCでは、単項RPCを受信するサーバー側のミドルウェアパターンは、<code>UnaryServerInterceptor</code> という名前にすることが定められている。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UnaryServerInterceptor</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">req</span><span class="w"> </span><span class="kd">interface</span><span class="p">{},</span>
@@ -35331,7 +35331,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>ユーザー定義のオプションを渡したい場合は、<code>grpc.UnaryServerInterceptor</code>型を返却する関数とする。</p>
+<p>ユーザー定義のオプションを渡したい場合は、<code>grpc.UnaryServerInterceptor</code> 型を返却する関数とする。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">interceptor</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -35365,7 +35365,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <p><br></p>
 <h3 id="rpc_3">ストリーミングRPCの場合<a class="headerlink" href="#rpc_3" title="Permanent link">&para;</a></h3>
 <h4 id="streamserverinterceptor">▼ 既製のインターセプター (<code>StreamServerInterceptor</code>)<a class="headerlink" href="#streamserverinterceptor" title="Permanent link">&para;</a></h4>
-<p>gRPCでは、ストリーミングRPCを受信するサーバー側のミドルウェアパターンは<code>StreamServerInterceptor</code>という名前にすることが定められている。</p>
+<p>gRPCでは、ストリーミングRPCを受信するサーバー側のミドルウェアパターンは <code>StreamServerInterceptor</code> という名前にすることが定められている。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">StreamServerInterceptor</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">srv</span><span class="w"> </span><span class="kd">interface</span><span class="p">{},</span>
 <span class="w">    </span><span class="nx">ss</span><span class="w"> </span><span class="nx">ServerStream</span><span class="p">,</span>
@@ -35403,7 +35403,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>ユーザー定義のオプションを渡したい場合は、<code>grpc.StreamServerInterceptor</code>型を返却する関数とする。</p>
+<p>ユーザー定義のオプションを渡したい場合は、<code>grpc.StreamServerInterceptor</code> 型を返却する関数とする。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">interceptor</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -35494,8 +35494,8 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <h3 id="grpc_5">gRPCサーバー (インターセプターを使用する場合)<a class="headerlink" href="#grpc_5" title="Permanent link">&para;</a></h3>
 <h4 id="_20">▼ インターセプターを使用する場合について<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>gRPCサーバーでは、リクエスト／レスポンスの送受信前のミドルウェアパターンとして、インターセプターを実行できる。</p>
-<p>非<code>Chain</code>関数であれば単一のインターセプター、一方で<code>Chain</code>関数であれば複数のインターセプターを渡せる。</p>
-<p>執筆時点 (202309/16) で、パッケージの<code>v1</code>は非推奨で、<code>v2</code>が推奨である。</p>
+<p>非 <code>Chain</code> 関数であれば単一のインターセプター、一方で <code>Chain</code> 関数であれば複数のインターセプターを渡せる。</p>
+<p>執筆時点 (202309/16) で、パッケージの <code>v1</code> は非推奨で、<code>v2</code> が推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -35563,7 +35563,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 </blockquote>
 <p><br></p>
 <h3 id="_21">ヘルスチェックサーバー<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
-<p><code>grpc_health_v1</code>パッケージの<code>RegisterHealthServer</code>関数を使用して、gRPCサーバーをヘルスチェックサーバーとして登録する。</p>
+<p><code>grpc_health_v1</code> パッケージの <code>RegisterHealthServer</code> 関数を使用して、gRPCサーバーをヘルスチェックサーバーとして登録する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -35667,7 +35667,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <h3 id="grpc_8">gRPCクライアント (インターセプターを使用する場合)<a class="headerlink" href="#grpc_8" title="Permanent link">&para;</a></h3>
 <h4 id="_22">▼ インターセプターを使用する場合について<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <p>gRPCクライアントでは、リクエスト／レスポンスの送受信前のミドルウェアとして、インターセプターを実行できる。</p>
-<p>非<code>Chain</code>関数であれば単一のインターセプター、一方で<code>Chain</code>関数であれば複数のインターセプターを渡せる。</p>
+<p>非 <code>Chain</code> 関数であれば単一のインターセプター、一方で <code>Chain</code> 関数であれば複数のインターセプターを渡せる。</p>
 <h4 id="rpc_4">▼ ストリーミングRPCの場合<a class="headerlink" href="#rpc_4" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -35703,7 +35703,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 </blockquote>
 <p><br></p>
 <h2 id="06-grpc">06. gRPCサーバーとクライアントの両方の実装例<a class="headerlink" href="#06-grpc" title="Permanent link">&para;</a></h2>
-<h3 id="proto_1"><code>proto</code>ファイル<a class="headerlink" href="#proto_1" title="Permanent link">&para;</a></h3>
+<h3 id="proto_1"><code>proto</code> ファイル<a class="headerlink" href="#proto_1" title="Permanent link">&para;</a></h3>
 <p>クライアントからのコールで返信する構造体や関数を定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// protoファイルの構文のバージョンを設定する。</span>
 <span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
@@ -35736,10 +35736,10 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="pbgo_1"><code>pb.go</code>ファイル<a class="headerlink" href="#pbgo_1" title="Permanent link">&para;</a></h3>
-<p>事前に用意した<code>proto</code>ファイルを使用して、<code>pb.go</code>ファイルをコンパイルする。</p>
-<p><code>pb.go</code>ファイルには、gRPCクライアントとgRPCサーバーの両方が参照するための構造体や関数が定義されており、ユーザーはこのファイルをそのまま使用すれば良い。</p>
-<p><code>proto</code>コマンドを実行し、以下のような<code>pb.go</code>ファイルをコンパイルできる。</p>
+<h3 id="pbgo_1"><code>pb.go</code> ファイル<a class="headerlink" href="#pbgo_1" title="Permanent link">&para;</a></h3>
+<p>事前に用意した <code>proto</code> ファイルを使用して、<code>pb.go</code> ファイルをコンパイルする。</p>
+<p><code>pb.go</code> ファイルには、gRPCクライアントとgRPCサーバーの両方が参照するための構造体や関数が定義されており、ユーザーはこのファイルをそのまま使用すれば良い。</p>
+<p><code>proto</code> コマンドを実行し、以下のような <code>pb.go</code> ファイルをコンパイルできる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># foo.protoファイルから、gRPCに対応するfoo.pb.goファイルをコンパイルする。</span>
 $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span>.<span class="w"> </span>--go_out<span class="o">=</span>.<span class="w"> </span>--go-grpc_out<span class="o">=</span>.<span class="w"> </span>foo.proto
 </code></pre></div>
@@ -35759,7 +35759,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 
 <span class="c1">// 〜 中略 〜</span>
 </code></pre></div>
-<p>補足として、<code>pb.go</code>ファイルには、gRPCサーバーとして登録するための<code>Register&lt;ファイル名&gt;ServiceServer</code>関数が定義される。</p>
+<p>補足として、<code>pb.go</code> ファイルには、gRPCサーバーとして登録するための <code>Register&lt;ファイル名&gt;ServiceServer</code> 関数が定義される。</p>
 <blockquote>
 <ul>
 <li><a href="https://christina04.hatenablog.com/entry/protoc-usage">https://christina04.hatenablog.com/entry/protoc-usage</a></li>
@@ -35857,8 +35857,8 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <li><a href="https://pkg.go.dev/google.golang.org/grpc/metadata#FromIncomingContext">https://pkg.go.dev/google.golang.org/grpc/metadata#FromIncomingContext</a></li>
 </ul>
 </blockquote>
-<p>内部的には<code>mdIncomingKey</code>というコンテキストキー名を指定している。</p>
-<p>このキー名は、<code>NewIncomingContext</code>関数がメタデータ付きのコンテキスト作成時に設定する。</p>
+<p>内部的には <code>mdIncomingKey</code> というコンテキストキー名を指定している。</p>
+<p>このキー名は、<code>NewIncomingContext</code> 関数がメタデータ付きのコンテキスト作成時に設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">ValueFromIncomingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
@@ -35906,8 +35906,8 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <li><a href="https://pkg.go.dev/google.golang.org/grpc/metadata#FromOutgoingContext">https://pkg.go.dev/google.golang.org/grpc/metadata#FromOutgoingContext</a></li>
 </ul>
 </blockquote>
-<p>内部的には<code>mdIncomingKey</code>というコンテキストキー名を指定している。</p>
-<p>このキー名は、<code>NewOutgoingContext</code>関数がメタデータ付きのコンテキスト作成時に設定する。</p>
+<p>内部的には <code>mdIncomingKey</code> というコンテキストキー名を指定している。</p>
+<p>このキー名は、<code>NewOutgoingContext</code> 関数がメタデータ付きのコンテキスト作成時に設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">ValueFromIncomingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
@@ -35980,7 +35980,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 
 <span class="p">}</span>
 </code></pre></div>
-<p>空のメタデータを作成する場合は、<code>MD</code>構造体を初期化しても良い。</p>
+<p>空のメタデータを作成する場合は、<code>MD</code> 構造体を初期化しても良い。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -36005,7 +36005,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 </blockquote>
 <h4 id="newincomingcontext">▼ NewIncomingContext<a class="headerlink" href="#newincomingcontext" title="Permanent link">&para;</a></h4>
 <p>リクエスト受信用のコンテキストにメタデータを設定する。</p>
-<p>コンテキストにメタデータがすでにある場合は置換するため、もしメタデータにキーを追加したい場合は<code>AppendToOutgoingContext</code>関数を使用する。</p>
+<p>コンテキストにメタデータがすでにある場合は置換するため、もしメタデータにキーを追加したい場合は <code>AppendToOutgoingContext</code> 関数を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -36037,7 +36037,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 </blockquote>
 <h4 id="newoutgoingcontext">▼ NewOutgoingContext<a class="headerlink" href="#newoutgoingcontext" title="Permanent link">&para;</a></h4>
 <p>リクエスト送信用のコンテキストにメタデータを設定する。</p>
-<p>コンテキストにメタデータがすでにある場合は置換するため、もしメタデータにキーを追加したい場合は<code>AppendToOutgoingContext</code>関数を使用する。</p>
+<p>コンテキストにメタデータがすでにある場合は置換するため、もしメタデータにキーを追加したい場合は <code>AppendToOutgoingContext</code> 関数を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -36248,7 +36248,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年1月9日 22:01:53 JST">2026-01-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

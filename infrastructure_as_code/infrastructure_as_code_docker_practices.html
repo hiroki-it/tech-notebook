@@ -21170,12 +21170,12 @@
   <a href="#pid1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        PID=1問題に対処する
+        PID=1 問題に対処する
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PID=1問題に対処する">
+    <nav class="md-nav" aria-label="PID=1 問題に対処する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -21282,7 +21282,7 @@
   <a href="#sudo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ sudoコマンドを実行させない
+        ▼ sudo コマンドを実行させない
       
     </span>
   </a>
@@ -21359,7 +21359,7 @@
   <a href="#latest" class="md-nav__link">
     <span class="md-ellipsis">
       
-        latestタグを指定しない方が良い理由
+        latest タグを指定しないほうが良い理由
       
     </span>
   </a>
@@ -21421,7 +21421,7 @@
   <a href="#dockerignore" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ .dockerignoreファイル
+        ▼ .dockerignore ファイル
       
     </span>
   </a>
@@ -21510,7 +21510,7 @@
   <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ &amp;&amp;を使用する
+        ▼ &amp;&amp; を使用する
       
     </span>
   </a>
@@ -21584,10 +21584,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#addcopy" class="md-nav__link">
+  <a href="#add-copy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ADD処理よりもCOPY処理を使用する
+        ADD 処理よりも COPY 処理を使用する
       
     </span>
   </a>
@@ -33487,12 +33487,12 @@
   <a href="#pid1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        PID=1問題に対処する
+        PID=1 問題に対処する
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PID=1問題に対処する">
+    <nav class="md-nav" aria-label="PID=1 問題に対処する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33599,7 +33599,7 @@
   <a href="#sudo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ sudoコマンドを実行させない
+        ▼ sudo コマンドを実行させない
       
     </span>
   </a>
@@ -33676,7 +33676,7 @@
   <a href="#latest" class="md-nav__link">
     <span class="md-ellipsis">
       
-        latestタグを指定しない方が良い理由
+        latest タグを指定しないほうが良い理由
       
     </span>
   </a>
@@ -33738,7 +33738,7 @@
   <a href="#dockerignore" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ .dockerignoreファイル
+        ▼ .dockerignore ファイル
       
     </span>
   </a>
@@ -33827,7 +33827,7 @@
   <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ &amp;&amp;を使用する
+        ▼ &amp;&amp; を使用する
       
     </span>
   </a>
@@ -33901,10 +33901,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#addcopy" class="md-nav__link">
+  <a href="#add-copy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ADD処理よりもCOPY処理を使用する
+        ADD 処理よりも COPY 処理を使用する
       
     </span>
   </a>
@@ -34256,16 +34256,16 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="pid1"><code>PID=1</code>問題に対処する<a class="headerlink" href="#pid1" title="Permanent link">&para;</a></h3>
+<h3 id="pid1"><code>PID=1</code> 問題に対処する<a class="headerlink" href="#pid1" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ サーバーのプロセス<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>サーバーの場合、<code>init</code>プロセスが<code>PID=1</code>として稼働している。</p>
+<p>サーバーの場合、<code>init</code> プロセスが <code>PID=1</code> として稼働している。</p>
 <p><img alt="container_pid_1_problem_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_1.png" /></p>
-<p><code>init</code>プロセスは、配下のいずれかの親プロセスを終了したとする。</p>
+<p><code>init</code> プロセスは、配下のいずれかの親プロセスを終了したとする。</p>
 <p><img alt="container_pid_1_problem_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_2.png" /></p>
 <p>すると、これの子プロセスも連鎖的に終了してくれる。</p>
 <p><img alt="container_pid_1_problem_3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_3.png" /></p>
 <h4 id="_7">▼ コンテナのプロセス<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>コンテナの場合、ホスト上の<code>init</code>プロセスが<code>PID=1</code>として動いており、またコンテナのアプリやミドルウェアのプロセスも<code>PID=1</code>として稼働している。</p>
+<p>コンテナの場合、ホスト上の <code>init</code> プロセスが <code>PID=1</code> として動いており、またコンテナのアプリやミドルウェアのプロセスも <code>PID=1</code> として稼働している。</p>
 <p><img alt="host_container_pid_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/host_container_pid_1.png" /></p>
 <p>アプリやミドルウェアのプロセスは、いずれかの親プロセスを終了しても、これの子プロセスも連鎖的に終了できない。</p>
 <p>そのため、子プロセスが残骸として残ってしまう。</p>
@@ -34278,8 +34278,8 @@
 </blockquote>
 <h4 id="_8">▼ 対処方法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>ここでは、フレームワークではなく、フルスクラッチなJavaScriptを取り上げる。</p>
-<p><code>tini</code>の子プロセスを実行する。</p>
-<p>これにより、アプリやミドルウェアのプロセスを<code>PID=1</code>で動かさないようにできる。</p>
+<p><code>tini</code> の子プロセスを実行する。</p>
+<p>これにより、アプリやミドルウェアのプロセスを <code>PID=1</code> で動かさないようにできる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:16-alpine3.15</span>
 <span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
 
@@ -34307,12 +34307,12 @@
 </blockquote>
 <p><br></p>
 <h3 id="graceful-shutdown">コンテナ終了時にプロセスをGraceful Shutdownを実行できるようにする<a class="headerlink" href="#graceful-shutdown" title="Permanent link">&para;</a></h3>
-<p>コンテナの終了時、コンテナランタイムはコンテナに<code>SIGTERM</code>を送信する。</p>
-<p>その後、<code>SIGKILL</code>を送信し、プロセスを終了させる。</p>
-<p>そのため、<code>SIGTERM</code>を受信した段階でリクエストを受信しなくなるように、プロセスを設定しておく。</p>
-<p>多くのツールが<code>SIGTERM</code>でGraceful Shutdownを実行するように設計されているため、特に対処不要である。</p>
-<p>ただし、<code>SIGTERM</code>以外でGraceful Shutdownを実行するツールがあるため、その場合はDockerfileの<code>STOPSIGNAL</code>処理を使用してシグナルを上書きするとよい。</p>
-<p>例えば、Nginxは<code>SIGQUIT</code>でGracefulShut Downする仕様のため、<code>STOPSIGNAL</code>処理で<code>SIGQUIT</code>を定義しておく。</p>
+<p>コンテナの終了時、コンテナランタイムはコンテナに <code>SIGTERM</code> を送信する。</p>
+<p>その後、<code>SIGKILL</code> を送信し、プロセスを終了させる。</p>
+<p>そのため、<code>SIGTERM</code> を受信した段階でリクエストを受信しなくなるように、プロセスを設定しておく。</p>
+<p>多くのツールが <code>SIGTERM</code> でGraceful Shutdownを実行するように設計されているため、特に対処不要である。</p>
+<p>ただし、<code>SIGTERM</code> 以外でGraceful Shutdownを実行するツールがあるため、その場合はDockerfileの <code>STOPSIGNAL</code> 処理を使用してシグナルを上書きするとよい。</p>
+<p>例えば、Nginxは <code>SIGQUIT</code> でGracefulShut Downする仕様のため、<code>STOPSIGNAL</code> 処理で <code>SIGQUIT</code> を定義しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">alpine</span>
 
 ...
@@ -34358,27 +34358,27 @@
 <h4 id="root_1">▼ root権限を付与しない理由<a class="headerlink" href="#root_1" title="Permanent link">&para;</a></h4>
 <p>悪意のあるユーザーがコンテナに接続した場合に、root権限を与えてしまうと、悪意のある操作を実行されてしまう。</p>
 <p>そこで、接続するユーザーにroot権限を付与しないようにする。</p>
-<h4 id="sudo">▼ <code>sudo</code>コマンドを実行させない<a class="headerlink" href="#sudo" title="Permanent link">&para;</a></h4>
-<p>root権限を付与しないために、コンテナ内で<code>sudo</code>コマンドを実行できないようにするべきである。</p>
-<p>ただし、多くのコンテナイメージで<code>sudo</code>コマンドを実行するためのパッケージは基本インストールされていないため、<code>sudo</code>コマンドを実行しようとするとエラーになる。</p>
+<h4 id="sudo">▼ <code>sudo</code> コマンドを実行させない<a class="headerlink" href="#sudo" title="Permanent link">&para;</a></h4>
+<p>root権限を付与しないために、コンテナ内で <code>sudo</code> コマンドを実行できないようにするべきである。</p>
+<p>ただし、多くのコンテナイメージで <code>sudo</code> コマンドを実行するためのパッケージは基本インストールされていないため、<code>sudo</code> コマンドを実行しようとするとエラーになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.programmerhat.com/docker-sudo-command-not-found/#Why_is_the_sudo_command_not_found_in_docker">https://www.programmerhat.com/docker-sudo-command-not-found/#Why_is_the_sudo_command_not_found_in_docker</a></li>
 </ul>
 </blockquote>
-<p>どうしても<code>sudo</code>コマンドを実行したい場合は、gosuパッケージを使用する。</p>
+<p>どうしても <code>sudo</code> コマンドを実行したい場合は、gosuパッケージを使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.docker.com/develop/develop-images/instructions/#user">https://docs.docker.com/develop/develop-images/instructions/#user</a></li>
 </ul>
 </blockquote>
-<p>gosuパッケージの代わりに、<code>sudo</code>パッケージをインストールし、作成したユーザーにroot権限を割り当てる方法もある。</p>
+<p>gosuパッケージの代わりに、<code>sudo</code> パッケージをインストールし、作成したユーザーにroot権限を割り当てる方法もある。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/25908200">https://stackoverflow.com/a/25908200</a></li>
 </ul>
 </blockquote>
-<p>gosuパッケージの代わりに、<code>docker</code>コマンドの<code>-u</code>オプションを使用し、実行ユーザーにroot権限で付与する方法もある。</p>
+<p>gosuパッケージの代わりに、<code>docker</code> コマンドの <code>-u</code> オプションを使用し、実行ユーザーにroot権限で付与する方法もある。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/49529946">https://stackoverflow.com/a/49529946</a></li>
@@ -34406,8 +34406,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="_11">コンテナイメージを署名する<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p>コンテナイメージをビルドインのコマンド (例：<code>docker trust</code>コマンド) やコンテナイメージ署名ツール (例：Cosign) を使用して、信頼された (ログイン済みの) イメージリポジトリから信頼されたコンテナイメージをプルできるようにする。</p>
-<p><code>docker trust</code>コマンドの内部では、Notary Notationが使用されている。</p>
+<p>コンテナイメージをビルドインのコマンド (例：<code>docker trust</code> コマンド) やコンテナイメージ署名ツール (例：Cosign) を使用して、信頼された (ログイン済みの) イメージリポジトリから信頼されたコンテナイメージをプルできるようにする。</p>
+<p><code>docker trust</code> コマンドの内部では、Notary Notationが使用されている。</p>
 <blockquote>
 <ul>
 <li><a href="https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust">https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust</a></li>
@@ -34416,7 +34416,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_12">本番環境ではバインドマウントを使用しない<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p>バインドマウントは、コンテナのファイルシステムを介してホストにアクセスできてしまうため、本番環境では非推奨にした方がよい。</p>
+<p>バインドマウントは、コンテナのファイルシステムを介してホストにアクセスできてしまうため、本番環境では非推奨にしたほうがよい。</p>
 <p>代わりに、ボリュームマウントやCOPYでファイルをコンテナイメージに詰め込むようにすることになる。</p>
 <blockquote>
 <ul>
@@ -34425,7 +34425,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="03-latest">03. イメージタグにlatestを設定しない<a class="headerlink" href="#03-latest" title="Permanent link">&para;</a></h2>
-<h3 id="latest"><code>latest</code>タグを指定しない方が良い理由<a class="headerlink" href="#latest" title="Permanent link">&para;</a></h3>
+<h3 id="latest"><code>latest</code> タグを指定しないほうが良い理由<a class="headerlink" href="#latest" title="Permanent link">&para;</a></h3>
 <p>イメージタグにlatestを設定すると、誤ったバージョンのイメージタグを選択してしまい、障害が起こりかねない。</p>
 <p>そこで、イメージはセマンティックバージョニングでタグ付けし、コンテナでは特定のバージョンをプルように設定する。</p>
 <p>なお、各コンテナイメージのアーキテクチャに割り当てられたダイジェスト値を指定することもできるが、DockerがホストのCPUアーキテクチャに基づいてよしなに選んでくれるので、ダイジェスト値は指定しない。</p>
@@ -34497,9 +34497,9 @@
 <li><a href="https://blog.future.ad.jp/small-talk-about-it-001-why-is-amd64-even-though-the-intel-cpu">https://blog.future.ad.jp/small-talk-about-it-001-why-is-amd64-even-though-the-intel-cpu</a></li>
 </ul>
 </blockquote>
-<p>例えば、<code>MacBook 2020</code>にはIntel、また<code>MacBook 2021 (M1 Mac)</code>にはARMベースの独自CPUが搭載されているため、ARMに対応したコンテナイメージを選択する必要がある。</p>
+<p>例えば、<code>MacBook 2020</code> にはIntel、また <code>MacBook 2021 (M1 Mac)</code> にはARMベースの独自CPUが搭載されているため、ARMに対応したコンテナイメージを選択する必要がある。</p>
 <p>ただし、コンテナイメージがホストのCPUアーキテクチャをサポートしているか否かを開発者が気にする必要はない。</p>
-<p><code>docker pull</code>時、ホストのCPUアーキテクチャに対応したコンテナイメージが自動的に選択されるようになっている。</p>
+<p><code>docker pull</code> 時、ホストのCPUアーキテクチャに対応したコンテナイメージが自動的に選択されるようになっている。</p>
 <p>コンテナの現在のCPUアーキテクチャは、以下のいずれかの方法で確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> </span>&lt;コンテナ名&gt;
 
@@ -34525,9 +34525,9 @@ arm64
 <p><br></p>
 <h2 id="04">04. イメージサイズを削減する<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_14">不要なファイルを含めない<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<h4 id="dockerignore">▼ <code>.dockerignore</code>ファイル<a class="headerlink" href="#dockerignore" title="Permanent link">&para;</a></h4>
+<h4 id="dockerignore">▼ <code>.dockerignore</code> ファイル<a class="headerlink" href="#dockerignore" title="Permanent link">&para;</a></h4>
 <p>イメージのビルド時に無視するファイルを設定する。</p>
-<p>開発環境のみで使用するファイル、<code>.gitignore</code>ファイル、<code>README</code>ファイルなどはコンテナの稼働には不要である。</p>
+<p>開発環境のみで使用するファイル、<code>.gitignore</code> ファイル、<code>README</code> ファイルなどはコンテナの稼働には不要である。</p>
 <div class="highlight"><pre><span></span><code>.env.example
 .gitignore
 README.md
@@ -34590,7 +34590,7 @@ README.md
 <tr>
 <td></td>
 <td><code>slim</code></td>
-<td>最もオススメの接尾辞。使用頻度の高いパッケージのみをインストールしている。</td>
+<td>もっともオススメの接尾辞。使用頻度の高いパッケージのみをインストールしている。</td>
 <td>イメージによる</td>
 <td>有</td>
 <td>イメージによる</td>
@@ -34689,16 +34689,16 @@ README.md
 <h3 id="_18">イメージレイヤー数を削減する<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <h4 id="_19">▼ イメージレイヤーの増え方<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>イメージレイヤー数が多くなると、コンテナイメージが大きくなる。</p>
-<p>Dockerfileの各命令によって、コンテナイメージレイヤーが1つ増えてしまうため、同じ命令に異なるパラメーターを与える時は、『<code>&amp;&amp;</code>』で1つにまとめてしまう方が良い。</p>
-<p>例えば、以下のような時、<code>RUN</code>処理ごとにレイヤーが増える。</p>
+<p>Dockerfileの各命令によって、コンテナイメージレイヤーが1つ増えてしまうため、同じ命令に異なるパラメーターを与えるときは、『<code>&amp;&amp;</code>』で1つにまとめてしまうほうが良い。</p>
+<p>例えば、以下のようなとき、<code>RUN</code> 処理ごとにレイヤーが増える。</p>
 <div class="highlight"><pre><span></span><code><span class="k">RUN</span><span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>httpd
 <span class="k">RUN</span><span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>php
 <span class="k">RUN</span><span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>php-mbstring
 <span class="k">RUN</span><span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>php-pear
 <span class="k">RUN</span><span class="w"> </span>rm<span class="w"> </span>-Rf<span class="w"> </span>/var/cache/yum
 </code></pre></div>
-<h4 id="_20">▼ <code>&amp;&amp;</code>を使用する<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p><code>&amp;&amp;</code>を使い、イメージのレイヤー数を減らせる。</p>
+<h4 id="_20">▼ <code>&amp;&amp;</code> を使用する<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p><code>&amp;&amp;</code> を使い、イメージのレイヤー数を減らせる。</p>
 <p>イメージレイヤーが少なくなり、コンテナイメージを軽量化できる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">RUN</span><span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>httpd<span class="w"> </span>php<span class="w"> </span>php-mbstring<span class="w"> </span>php-pear<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-Rf<span class="w"> </span>/var/cache/dnf
@@ -34745,7 +34745,7 @@ EOF
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>Dockerfileで、2つ目の<code>FROM</code>処理を宣言する。</p>
+<p>Dockerfileで、2つ目の <code>FROM</code> 処理を宣言する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
@@ -34834,9 +34834,9 @@ EOF
 <span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/sbin/nginx&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-g&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;daemon off;&quot;</span><span class="p">]</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="addcopy"><code>ADD</code>処理よりも<code>COPY</code>処理を使用する<a class="headerlink" href="#addcopy" title="Permanent link">&para;</a></h3>
-<p><code>ADD</code>処理は<code>COPY</code>処理とは異なり、インターネットからファイルをダウンロードして解凍した上で、コピーする。</p>
-<p>解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、<code>COPY</code>処理が推奨である。</p>
+<h3 id="add-copy"><code>ADD</code> 処理よりも <code>COPY</code> 処理を使用する<a class="headerlink" href="#add-copy" title="Permanent link">&para;</a></h3>
+<p><code>ADD</code> 処理は <code>COPY</code> 処理とは異なり、インターネットからファイルをダウンロードして解凍したうえで、コピーする。</p>
+<p>解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、<code>COPY</code> 処理が推奨である。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy">https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy</a></li>
@@ -34914,7 +34914,7 @@ EOF
 <p>ビルド時にイメージのプルが頻発すると、DockerHubのレートリミット上限にすぐ達してしまう。</p>
 <p>そのため、イメージのキャッシュが有効である。</p>
 <p>DockerHub以外のイメージレジストリを使って、レートリミットを回避してもよい。</p>
-<p><code>crane</code>コマンドを使用すると、イメージレジストリ間のコンテナイメージの移動を簡素化できる。</p>
+<p><code>crane</code> コマンドを使用すると、イメージレジストリ間のコンテナイメージの移動を簡素化できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://medium.com/@spurin/copying-container-images-between-container-registries-e7b734abc701">https://medium.com/@spurin/copying-container-images-between-container-registries-e7b734abc701</a></li>
@@ -34924,17 +34924,17 @@ EOF
 <p><br></p>
 <h3 id="_29">静的解析を実施する<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
 <h4 id="dockerfile">▼ Dockerfileの文法違反テスト<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h4>
-<p>Dockerのビルトインのコマンド (例：<code>docker build</code>コマンド) を使用する。</p>
+<p>Dockerのビルトインのコマンド (例：<code>docker build</code> コマンド) を使用する。</p>
 <p>Dockerfileの文法違反を検証する。</p>
 <h4 id="dockerfile_1">▼ Dockerfileのベストプラクティス違反テスト<a class="headerlink" href="#dockerfile_1" title="Permanent link">&para;</a></h4>
 <p>外部のベストプラクティス違反テストツール (例：hadolint) を使用する。Dockerfileのベストプラクティス違反を検証する。</p>
 <h4 id="dockerfile_2">▼ Dockerfileの脆弱性診断<a class="headerlink" href="#dockerfile_2" title="Permanent link">&para;</a></h4>
 <p>外部の脆弱性診断ツール (例：hadolint) を使用する。</p>
 <p>報告されたCVEに基づいて、Dockerfileの実装方法の実装や使用パッケージに起因するコンテナイメージの脆弱性を検証する。</p>
-<p>補足として、イメージスキャン (例：trivy) は既にビルドされたコンテナイメージを検証するため、ここには含めない。</p>
+<p>補足として、イメージスキャン (例：trivy) はすでにビルドされたコンテナイメージを検証するため、ここには含めない。</p>
 <h4 id="_30">▼ コンテナストラクチャテスト<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
 <p>ビルド後のコンテナの構造を検証するツール (例：container-structure-test) を使用する。</p>
-<p>ファイル (例：期待するファイルが存在するか) やバイナリ (コンテナ起動時の<code>ENTRYPOINT</code>が正しく動作するかなど) が存在するかを検証する。</p>
+<p>ファイル (例：期待するファイルが存在するか) やバイナリ (コンテナ起動時の <code>ENTRYPOINT</code> がまさしく動作するかなど) が存在するかを検証する。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/tsubasaogawa/items/d41807d368e7b2635e77#container-structure-test-%E3%81%A8%E3%81%AF">https://qiita.com/tsubasaogawa/items/d41807d368e7b2635e77#container-structure-test-%E3%81%A8%E3%81%AF</a></li>
@@ -35001,7 +35001,7 @@ EOF
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年12月6日 20:22:09 JST">2025-12-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

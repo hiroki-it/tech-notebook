@@ -10999,7 +10999,7 @@
   <a href="#mapgetters" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ mapGettersヘルパー
+        ▼ mapGetters ヘルパー
       
     </span>
   </a>
@@ -11010,7 +11010,7 @@
   <a href="#mapstate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ mapStateヘルパー
+        ▼ mapState ヘルパー
       
     </span>
   </a>
@@ -11021,7 +11021,7 @@
   <a href="#mapmutations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ mapMutationsヘルパー
+        ▼ mapMutations ヘルパー
       
     </span>
   </a>
@@ -11032,7 +11032,7 @@
   <a href="#mapactions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ mapActionsヘルパー
+        ▼ mapActions ヘルパー
       
     </span>
   </a>
@@ -33109,7 +33109,7 @@
   <a href="#mapgetters" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ mapGettersヘルパー
+        ▼ mapGetters ヘルパー
       
     </span>
   </a>
@@ -33120,7 +33120,7 @@
   <a href="#mapstate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ mapStateヘルパー
+        ▼ mapState ヘルパー
       
     </span>
   </a>
@@ -33131,7 +33131,7 @@
   <a href="#mapmutations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ mapMutationsヘルパー
+        ▼ mapMutations ヘルパー
       
     </span>
   </a>
@@ -33142,7 +33142,7 @@
   <a href="#mapactions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ mapActionsヘルパー
+        ▼ mapActions ヘルパー
       
     </span>
   </a>
@@ -33312,7 +33312,7 @@
 <p><br></p>
 <h2 id="02-vue">02. Vueストア<a class="headerlink" href="#02-vue" title="Permanent link">&para;</a></h2>
 <h3 id="vue">Vueストアとは<a class="headerlink" href="#vue" title="Permanent link">&para;</a></h3>
-<p><code>Vuex.Store</code>関数で実装できる。</p>
+<p><code>Vuex.Store</code> 関数で実装できる。</p>
 <p>外部のコンポーネントは、各オプションにアクセスできる。</p>
 <p><br></p>
 <h3 id="_2">関数<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
@@ -33325,11 +33325,11 @@
 <p>クラスベースオブジェクト指向でいうところの、状態 (プロパティ) に相当する。</p>
 <h4 id="mutations">▼ <code>mutations:{}</code><a class="headerlink" href="#mutations" title="Permanent link">&para;</a></h4>
 <p>データに状態 (<code>state</code>) を設定する関数をいくつか持つ。</p>
-<p>保守性の観点から、<code>mutations:{}</code>におく関数間は同期的に実行されるようにしておかなければならない。</p>
+<p>保守性の観点から、<code>mutations:{}</code> におく関数間は同期的に実行されるようにしておかなければならない。</p>
 <p>クラスベースオブジェクト指向でいうところの、Setter関数に相当する。</p>
 <h4 id="actions">▼ <code>actions:{}</code><a class="headerlink" href="#actions" title="Permanent link">&para;</a></h4>
-<p>定義された<code>mutations{}</code>の関数を間接的にコールするための関数をいくつか持つ。</p>
-<p>また、JQueryの<code>ajax</code>関数 をコールし、サーバー側からレスポンスされたデータを<code>mutations:{}</code>へ渡す。</p>
+<p>定義された <code>mutations{}</code> の関数を間接的にコールするための関数をいくつか持つ。</p>
+<p>また、JQueryの <code>ajax</code> 関数 をコールし、サーバー側からレスポンスされたデータを <code>mutations:{}</code> へ渡す。</p>
 <p>クラスベースオブジェクト指向でいうところの、Setter関数に相当する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Vuexパッケージを読み込む。</span>
@@ -33389,21 +33389,21 @@
 <p><br></p>
 <h2 id="03-vuex">03. Vuexへのアクセス<a class="headerlink" href="#03-vuex" title="Permanent link">&para;</a></h2>
 <h3 id="vuex">Vuexへのアクセスとは<a class="headerlink" href="#vuex" title="Permanent link">&para;</a></h3>
-<p>例えば、子コンポーネントのファイル (<code>template</code>タグを持つファイル) の下部に、以下を記述することにより、<code>Vuex.Store</code>関数とデータを受け渡しできるようになる。</p>
+<p>例えば、子コンポーネントのファイル (<code>template</code> タグを持つファイル) の下部に、以下を記述することにより、<code>Vuex.Store</code> 関数とデータを受け渡しできるようになる。</p>
 <p><br></p>
 <h3 id="_3">関数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="computed">▼ <code>computed: {}</code><a class="headerlink" href="#computed" title="Permanent link">&para;</a></h4>
-<p>イベントハンドラ関数として、<code>mapGetters</code>ヘルパーと<code>mapState</code>ヘルパーを設定する。</p>
+<p>イベントハンドラ関数として、<code>mapGetters</code> ヘルパーと <code>mapState</code> ヘルパーを設定する。</p>
 <h4 id="methods">▼ <code>methods: {}</code><a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<p>イベントハンドラ関数として、<code>mapMutations</code>ヘルパーと<code>mapActions</code>ヘルパーを設定する。</p>
-<h4 id="mapgetters">▼ <code>mapGetters</code>ヘルパー<a class="headerlink" href="#mapgetters" title="Permanent link">&para;</a></h4>
-<p>コンポーネントの<code>computed:{}</code>に、<code>Vuex.Store</code>関数の<code>getters: {}</code>をマッピングし、コール可能にする。</p>
-<h4 id="mapstate">▼ <code>mapState</code>ヘルパー<a class="headerlink" href="#mapstate" title="Permanent link">&para;</a></h4>
-<p>コンポーネントの<code>computed:{}</code>に、<code>Vuex.Store</code>関数の<code>state: {}</code>をマッピングし、コール可能にする。</p>
-<h4 id="mapmutations">▼ <code>mapMutations</code>ヘルパー<a class="headerlink" href="#mapmutations" title="Permanent link">&para;</a></h4>
-<p>コンポーネントの<code>methods: {}</code>に、Vuex.Store<code>関数の</code>mutations: {}```をマッピングし、コール可能にする。</p>
-<h4 id="mapactions">▼ <code>mapActions</code>ヘルパー<a class="headerlink" href="#mapactions" title="Permanent link">&para;</a></h4>
-<p>コンポーネントの<code>methods: {}</code>に、<code>Vuex.Store</code>関数の<code>actions:{}</code>をマッピングし、コール可能にする。</p>
+<p>イベントハンドラ関数として、<code>mapMutations</code> ヘルパーと <code>mapActions</code> ヘルパーを設定する。</p>
+<h4 id="mapgetters">▼ <code>mapGetters</code> ヘルパー<a class="headerlink" href="#mapgetters" title="Permanent link">&para;</a></h4>
+<p>コンポーネントの <code>computed:{}</code> に、<code>Vuex.Store</code> 関数の <code>getters: {}</code> をマッピングし、コール可能にする。</p>
+<h4 id="mapstate">▼ <code>mapState</code> ヘルパー<a class="headerlink" href="#mapstate" title="Permanent link">&para;</a></h4>
+<p>コンポーネントの <code>computed:{}</code> に、<code>Vuex.Store</code> 関数の <code>state: {}</code> をマッピングし、コール可能にする。</p>
+<h4 id="mapmutations">▼ <code>mapMutations</code> ヘルパー<a class="headerlink" href="#mapmutations" title="Permanent link">&para;</a></h4>
+<p>コンポーネントの <code>methods: {}</code> に、Vuex.Store<code>関数の</code>mutations: {}```をマッピングし、コール可能にする。</p>
+<h4 id="mapactions">▼ <code>mapActions</code> ヘルパー<a class="headerlink" href="#mapactions" title="Permanent link">&para;</a></h4>
+<p>コンポーネントの <code>methods: {}</code> に、<code>Vuex.Store</code> 関数の <code>actions:{}</code> をマッピングし、コール可能にする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- 子コンポーネント --&gt;</span>
 <span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span> ...<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
@@ -33456,7 +33456,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年12月2日 21:31:49 JST">2025-12-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

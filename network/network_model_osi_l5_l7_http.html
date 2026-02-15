@@ -16894,19 +16894,19 @@
   <a href="#06-l7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        06. L7ロードバランサー
+        06. L7 ロードバランサー
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="06. L7ロードバランサー">
+    <nav class="md-nav" aria-label="06. L7 ロードバランサー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#l7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        L7ロードバランサーとは
+        L7 ロードバランサーとは
       
     </span>
   </a>
@@ -34915,19 +34915,19 @@
   <a href="#06-l7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        06. L7ロードバランサー
+        06. L7 ロードバランサー
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="06. L7ロードバランサー">
+    <nav class="md-nav" aria-label="06. L7 ロードバランサー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#l7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        L7ロードバランサーとは
+        L7 ロードバランサーとは
       
     </span>
   </a>
@@ -35140,7 +35140,7 @@
 <p><br></p>
 <h3 id="http-keepalive">HTTP KeepAlive<a class="headerlink" href="#http-keepalive" title="Permanent link">&para;</a></h3>
 <p>HTTPリクエストのたびに、送信元と宛先間でTCPスリーウェイハンドシェイクとTCP接続を実施し直すのは非効率である。</p>
-<p>そこで、宛先がレスポンスの<code>Connection</code>ヘッダーで<code>keep-alive</code>を送信元に返信し、一つのTCP接続中に複数のHTTPリクエストを送受信できるようにする。</p>
+<p>そこで、宛先がレスポンスの <code>Connection</code> ヘッダーで <code>keep-alive</code> を送信元に返信し、1つのTCP接続中に複数のHTTPリクエストを送受信できるようにする。</p>
 <p><img alt="http-keepalive" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/http-keepalive.png" /></p>
 <blockquote>
 <ul>
@@ -35477,7 +35477,7 @@
 </code></pre></div>
 <h4 id="connection">▼ Connection<a class="headerlink" href="#connection" title="Permanent link">&para;</a></h4>
 <p>HTTP KeepAliveを実施するかどうか</p>
-<p>(リクエストにも<code>Connection</code>ヘッダーがある？)</p>
+<p>(リクエストにも <code>Connection</code> ヘッダーがある？)</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
 <span class="nn">---</span>
 <span class="nt">Connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keep-alive</span>
@@ -35489,7 +35489,7 @@
 <h3 id="_4">ステータスコード<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ ステータスコードとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>クライアントに対して、概要がわかるステータスコードをレスポンスとして返信する。</p>
-<p><code>200</code>ステータス以外に関して、セキュリティ上の理由のため、エラーの具体的な内容はバックエンドのtry-catchやフロントエンドのポップアップで別の言葉に置き換える。</p>
+<p><code>200</code> ステータス以外に関して、セキュリティ上の理由のため、エラーの具体的な内容はバックエンドのtry-catchやフロントエンドのポップアップで別の言葉に置き換える。</p>
 <h4 id="200">▼ <code>200</code> (成功)<a class="headerlink" href="#200" title="Permanent link">&para;</a></h4>
 <p>正しいリクエストである。</p>
 <h4 id="401">▼ <code>401</code> (認証エラー)<a class="headerlink" href="#401" title="Permanent link">&para;</a></h4>
@@ -35508,10 +35508,10 @@
 <h4 id="404-web">▼ <code>404</code> (Webページが見つからない)<a class="headerlink" href="#404-web" title="Permanent link">&para;</a></h4>
 <p>誤ったリクエストである。</p>
 <p>存在しないWebページをリクエストしていることを表す。</p>
-<p>もし、Webページの存在しないURLにリクエストがあった場合、検索エンジンが<code>404</code>ステータスを自動的に返信してくれる。</p>
-<p>しかし、ユーザー定義の<code>404</code>ページを用意した場合は、そのままでは検索エンジンは<code>200</code>レスポンスを返信してしまう。</p>
-<p>そのため、アプリ側で明示的に<code>404</code>レスポンスを返信する必要がある。</p>
-<p>アプリケーションは<code>404</code>ステータスの処理を実行しているのにもかかわらず、検索エンジンがこれを<code>200</code>ステータスと扱ってしまう (ブラウザでは<code>200</code>ステータスが返信される) 現象を『ソフト<code>404</code>』という。</p>
+<p>もし、Webページの存在しないURLにリクエストがあった場合、検索エンジンが <code>404</code> ステータスを自動的に返信してくれる。</p>
+<p>しかし、ユーザー定義の <code>404</code> ページを用意した場合は、そのままでは検索エンジンは <code>200</code> レスポンスを返信してしまう。</p>
+<p>そのため、アプリ側で明示的に <code>404</code> レスポンスを返信する必要がある。</p>
+<p>アプリケーションは <code>404</code> ステータスの処理を実行しているのにもかかわらず、検索エンジンがこれを <code>200</code> ステータスと扱ってしまう (ブラウザでは <code>200</code> ステータスが返信される) 現象を『ソフト <code>404</code>』という。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.sakurasaku-labo.jp/blogs/soft-404-error">https://www.sakurasaku-labo.jp/blogs/soft-404-error</a></li>
@@ -35531,7 +35531,7 @@
 </blockquote>
 <h4 id="409">▼ <code>409</code> (競合エラー)<a class="headerlink" href="#409" title="Permanent link">&para;</a></h4>
 <p>誤ったリクエストである。</p>
-<p><code>CREATE</code>処理や<code>UPDATE</code>処理によって、新しいデータと現在のDBレコードの間で競合が起こっていることを表す。</p>
+<p><code>CREATE</code> 処理や <code>UPDATE</code> 処理によって、新しいデータと現在のDBレコードの間で競合が起こっていることを表す。</p>
 <p>一意な識別子として使用しているデータの重複や、楽観的ロックによる排他制御が起こる場合に使用する。</p>
 <blockquote>
 <ul>
@@ -35548,7 +35548,7 @@
 <p>誤ったリクエストである。</p>
 <p>リバースプロキシサーバー (例：Nginx) が持つ非標準のステータスコードであり、一般的には使用されない。</p>
 <p>プロキシの宛先のシステムからのレスポンスの返信が遅く (またはレスポンスがなく) 、途中でプロキシが接続を切断してしまったことを表す。</p>
-<p>Gateway Timeout (<code>504</code>ステータス) である。とやや似ている。</p>
+<p>Gateway Timeout (<code>504</code> ステータス) である。とやや似ている。</p>
 <blockquote>
 <ul>
 <li><a href="https://secure.netowl.jp/bbs/detail.cgi?td=4200">https://secure.netowl.jp/bbs/detail.cgi?td=4200</a></li>
@@ -35560,7 +35560,7 @@
 <h4 id="502">▼ <code>502</code> (プロキシの宛先からのエラーレスポンス)<a class="headerlink" href="#502" title="Permanent link">&para;</a></h4>
 <p>誤ったリクエストである。</p>
 <p>リクエストがプロキシを経由して他のシステムにリダイレクトされる場合、プロキシとその先のシステムまではリクエストが送信されている。</p>
-<p>しかし、<code>504</code>ステータスとは異なり、何らかのエラーのレスポンスが返信されていることを表す。</p>
+<p>しかし、<code>504</code> ステータスとは異なり、何らかのエラーのレスポンスが返信されていることを表す。</p>
 <blockquote>
 <ul>
 <li><a href="https://e-words.jp/w/502%E3%82%A8%E3%83%A9%E3%83%BC.html">https://e-words.jp/w/502%E3%82%A8%E3%83%A9%E3%83%BC.html</a></li>
@@ -35573,7 +35573,7 @@
 <h4 id="504">▼ <code>504</code> (プロキシの宛先からのレスポンス返信がタイムアウト)<a class="headerlink" href="#504" title="Permanent link">&para;</a></h4>
 <p>誤ったリクエストである。</p>
 <p>読み取りタイムアウト (Read timeout) が起こっており、リクエストがプロキシを経由して他のシステムにリダイレクトされる場合、プロキシまではリクエストが送信されている。</p>
-<p>しかし、<code>502</code>ステータスとは異なり、その先のシステムからレスポンスが全く返信されないことを表す。</p>
+<p>しかし、<code>502</code> ステータスとは異なり、その先のシステムからレスポンスが全く返信されないことを表す。</p>
 <p><img alt="status-code_504" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/status-code_504.png" /></p>
 <blockquote>
 <ul>
@@ -35605,7 +35605,7 @@
 <h3 id="_7">似たレスポンスの違い<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ リダイレクトとリライトの違い<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>リダイレクトでは、リクエストされたURLをサーバー側で新しいURLに書き換えてブラウザに返信し、ブラウザがリクエストを再送信する。</p>
-<p>そのため、クライアント側は新しいURLで改めてリクエストを送信することになる。</p>
+<p>そのため、クライアント側は新しいURLであらためてリクエストを送信することになる。</p>
 <p>一方で、リライトでは、リクエストされたURLをサーバー側で異なるURLに書き換え、サーバーがそのままリクエストを送信する。</p>
 <p>そのため、クライアント側は古いURLのままリクエストを送信することになる。</p>
 <p>その他の違いについては、以下のリンクを参考にせよ。</p>
@@ -35625,7 +35625,7 @@
 <h3 id="mime-type-content-type">MIME type (Content type)<a class="headerlink" href="#mime-type-content-type" title="Permanent link">&para;</a></h3>
 <h4 id="mime-type">▼ MIME typeとは<a class="headerlink" href="#mime-type" title="Permanent link">&para;</a></h4>
 <p>POST/PUT送信で、ボディパラメーターのデータ形式を表す識別子のこと。</p>
-<p>リクエストヘッダー/レスポンスヘッダーの<code>Content-Type</code>ヘッダーに割り当てると、オブジェクトデータのデータ型を定義できる。</p>
+<p>リクエストヘッダー/レスポンスヘッダーの <code>Content-Type</code> ヘッダーに割り当てると、オブジェクトデータのデータ型を定義できる。</p>
 <p>GETリクエストには不要である。</p>
 <blockquote>
 <ul>
@@ -35664,17 +35664,17 @@
 <tr>
 <td></td>
 <td>zip</td>
-<td><code>.zip</code>ファイル</td>
+<td><code>.zip</code> ファイル</td>
 </tr>
 <tr>
 <td>text</td>
 <td>html</td>
-<td><code>html</code>ファイル</td>
+<td><code>html</code> ファイル</td>
 </tr>
 <tr>
 <td></td>
 <td>css</td>
-<td><code>.css</code>ファイル</td>
+<td><code>.css</code> ファイル</td>
 </tr>
 <tr>
 <td></td>
@@ -35704,7 +35704,7 @@
 </ul>
 </blockquote>
 <h4 id="_12">▼ データ型の指定方法<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>最も良い方法は、リクエストの<code>Content-Type</code>ヘッダーに、『<code>application/json</code>』を設定することによりある。</p>
+<p>もっとも良い方法は、リクエストの <code>Content-Type</code> ヘッダーに、『<code>application/json</code>』を設定することによりある。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/users/12345</span>
 <span class="nn">---</span>
 <span class="c1"># ヘッダー</span>
@@ -35725,8 +35725,8 @@
 </ul>
 </blockquote>
 <h4 id="cookie_1">▼ Cookie情報に関わるヘッダー<a class="headerlink" href="#cookie_1" title="Permanent link">&para;</a></h4>
-<p>最初、サーバーからのレスポンス時に<code>Set-Cookie</code>ヘッダーに割り当てて送信される。</p>
-<p>反対に、クライアントからのリクエスト時、Cookie情報は、<code>Cookie</code>ヘッダーに割り当てて送信される。</p>
+<p>最初、サーバーからのレスポンス時に <code>Set-Cookie</code> ヘッダーに割り当てて送信される。</p>
+<p>反対に、クライアントからのリクエスト時、Cookie情報は、<code>Cookie</code> ヘッダーに割り当てて送信される。</p>
 <table>
 <thead>
 <tr>
@@ -35759,19 +35759,19 @@
 <td></td>
 <td></td>
 <td>Domain</td>
-<td>クライアントがリクエストする時のCookie宛先ドメイン名。</td>
+<td>クライアントがリクエストするときのCookie宛先ドメイン名。</td>
 </tr>
 <tr>
 <td></td>
 <td></td>
 <td>Path</td>
-<td>クライアントがリクエストする時のCookie宛先ディレクトリ</td>
+<td>クライアントがリクエストするときのCookie宛先ディレクトリ</td>
 </tr>
 <tr>
 <td></td>
 <td></td>
 <td>Secure</td>
-<td>クライアントからのリクエストでSSLプロトコルが使用されている時のみ、リクエストを送信できるようにする。</td>
+<td>クライアントからのリクエストでSSLプロトコルが使用されているときのみ、リクエストを送信できるようにする。</td>
 </tr>
 <tr>
 <td></td>
@@ -35787,7 +35787,7 @@
 </tr>
 </tbody>
 </table>
-<p>クライアントから受信したリクエストの<code>Cookie</code>ヘッダーの内容は、グローバル変数に格納されている。</p>
+<p>クライアントから受信したリクエストの <code>Cookie</code> ヘッダーの内容は、グローバル変数に格納されている。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="nv">$_COOKIE</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Cookie名&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;値&quot;</span><span class="p">]</span>
@@ -35801,7 +35801,7 @@
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>サーバーは、レスポンスヘッダーの<code>Set-Cookie</code>ヘッダーにCookie情報を埋め込んで送信する。</p>
+<p>サーバーは、レスポンスヘッダーの <code>Set-Cookie</code> ヘッダーにCookie情報を埋め込んで送信する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -35823,7 +35823,7 @@
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>2回目以降のリクエストでは、ブラウザは、リクエストヘッダーの<code>Cookie</code>ヘッダーにCookie情報を埋め込んでサーバーに送信する。</p>
+<p>2回目以降のリクエストでは、ブラウザは、リクエストヘッダーの <code>Cookie</code> ヘッダーにCookie情報を埋め込んでサーバーに送信する。</p>
 <p>サーバーは、Cookie情報に紐付くクライアントのデータをReadする。</p>
 </dd>
 </dl>
@@ -35835,7 +35835,7 @@
 <p>この時、セッションIDを使用すると、セッションの各クライアント側を同一クライアントとして識別できる。</p>
 <p>HTTPはステートレスなプロトコルであるが、セッションIDにより擬似的にステートフルな通信を行える。</p>
 <p>例えばセッションIDにより、ログイン後にページ遷移を行っても、ログイン情報を保持でき、同一ユーザーからのリクエストとして認識できる。</p>
-<p>セッションIDはCookie情報の1つであり、<code>Cookie</code>ヘッダーと<code>Set-Cookie</code>ヘッダーに割り当てて送受信される。</p>
+<p>セッションIDはCookie情報の1つであり、<code>Cookie</code> ヘッダーと <code>Set-Cookie</code> ヘッダーに割り当てて送受信される。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># リクエストヘッダーの場合</span>
 <span class="nt">Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sessionid=&lt;セッションID&gt;; csrftoken=u32t4o3tb3gg43; _gat=1</span>
 </code></pre></div>
@@ -35852,12 +35852,12 @@
 <p><br></p>
 <h3 id="id">セッションIDとは<a class="headerlink" href="#id" title="Permanent link">&para;</a></h3>
 <p>サーバー側のセッションデータに紐づくIDである。</p>
-<p>セッションは、<code>session_start</code>関数を使用することにより開始される。</p>
+<p>セッションは、<code>session_start</code> 関数を使用することにより開始される。</p>
 <p>また同時に、クライアントにセッションIDを発行する。</p>
 <p>グローバル変数にセッションIDを代入することによって、セッションIDの記載されたセッションデータを作成する。</p>
 <p>セッションIDに紐付くその他のデータはこのセッションデータに書き込まれていく。</p>
-<p>セッションデータの名前は、<code>sess_*****</code>ファイルとなっており、セッションデータ名を元にしてセッションIDに紐付くデータを参照する。</p>
-<p>もしクライアントに既にセッションIDが発行されている場合、セッションデータを参照するようになる。</p>
+<p>セッションデータの名前は、<code>sess_*****</code> ファイルとなっており、セッションデータ名を元にしてセッションIDに紐付くデータを参照する。</p>
+<p>もしクライアントにすでにセッションIDが発行されている場合、セッションデータを参照するようになる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -35872,7 +35872,7 @@
 <h4 id="_16">▼ サーバーファイル<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>サーバーにて、ファイル形式で保管する。</p>
 <p><strong>実装例</strong></p>
-<p>PHPの場合、セッションデータの保管場所は<code>/etc/php.ini</code>ファイルで定義できる。</p>
+<p>PHPの場合、セッションデータの保管場所は <code>/etc/php.ini</code> ファイルで定義できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># /etc/php.iniファイル</span>
 
 <span class="c1">## ファイル形式</span>
@@ -35880,7 +35880,7 @@
 <span class="c1">## 保管場所</span>
 <span class="na">session.save_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/tmp&quot;</span>
 </code></pre></div>
-<p>PHP-FPMを採用している場合は、<code>/etc/php.ini</code>ファイルではなく、<code>/etc/php-fpm.d/www.conf</code>ファイルで保管場所を設定する必要がある。</p>
+<p>PHP-FPMを採用している場合は、<code>/etc/php.ini</code> ファイルではなく、<code>/etc/php-fpm.d/www.conf</code> ファイルで保管場所を設定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># /etc/php-fpm.d/www.confファイル</span>
 
 <span class="c1">## Redis形式</span>
@@ -35913,7 +35913,7 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
 <p>セッションの有効期限を設定できる。</p>
 <p>これにより、画面遷移時にログイン情報を保持できる秒数を定義できる。</p>
 <p><strong>実装例</strong></p>
-<p>PHPの場合、セッションデータの有効期限は<code>/etc/php.ini</code>ファイルで定義できる。</p>
+<p>PHPの場合、セッションデータの有効期限は <code>/etc/php.ini</code> ファイルで定義できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 24時間</span>
 <span class="na">session.gc_maxlifetime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">86400</span>
 </code></pre></div>
@@ -35939,7 +35939,7 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>サーバーは、レスポンスヘッダー情報の<code>Cookie</code>ヘッダーにセッションIDを割り当て送信する。</p>
+<p>サーバーは、レスポンスヘッダー情報の <code>Cookie</code> ヘッダーにセッションIDを割り当て送信する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -35947,18 +35947,18 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>2回目以降のリクエストでは、ブラウザは、リクエストヘッダー情報の<code>Cookie</code>ヘッダーにセッションIDを割り当て、サーバーに送信する。</p>
+<p>2回目以降のリクエストでは、ブラウザは、リクエストヘッダー情報の <code>Cookie</code> ヘッダーにセッションIDを割り当て、サーバーに送信する。</p>
 <p>サーバーは、セッションIDに紐付くクライアントのデータをReadする。</p>
 </dd>
 </dl>
 <p><br></p>
-<h2 id="06-l7">06. <code>L7</code>ロードバランサー<a class="headerlink" href="#06-l7" title="Permanent link">&para;</a></h2>
-<h3 id="l7"><code>L7</code>ロードバランサーとは<a class="headerlink" href="#l7" title="Permanent link">&para;</a></h3>
-<p>通信の<code>L7</code>プロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3など) のヘッダー情報に基づいて、通信をロードバランシングする。</p>
-<p>一方で、<code>L7</code>プロトコルのヘッダー情報をもたない通信をロードバランシングできない。</p>
-<p><code>L4</code>のヘッダー情報を失うわけではなく、あくまでパケットの<code>L7</code>プロトコルの情報をロードバランシングに使用するだけである。</p>
-<p><code>L7</code>プロトコルは、ヘッダーに宛先の情報 (例：完全修飾ドメイン名、パス) をもっている。</p>
-<p><code>L7</code>ロードバランサーは、これらの情報に基づいて通信を待ち受けるサーバーに、通信をロードバランシングする。</p>
+<h2 id="06-l7">06. <code>L7</code> ロードバランサー<a class="headerlink" href="#06-l7" title="Permanent link">&para;</a></h2>
+<h3 id="l7"><code>L7</code> ロードバランサーとは<a class="headerlink" href="#l7" title="Permanent link">&para;</a></h3>
+<p>通信の <code>L7</code> プロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3など) のヘッダー情報に基づいて、通信をロードバランシングする。</p>
+<p>一方で、<code>L7</code> プロトコルのヘッダー情報をもたない通信をロードバランシングできない。</p>
+<p><code>L4</code> のヘッダー情報を失うわけではなく、あくまでパケットの <code>L7</code> プロトコルの情報をロードバランシングに使用するだけである。</p>
+<p><code>L7</code> プロトコルは、ヘッダーに宛先の情報 (例：完全修飾ドメイン名、パス) をもっている。</p>
+<p><code>L7</code> ロードバランサーは、これらの情報に基づいて通信を待ち受けるサーバーに、通信をロードバランシングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://medium.com/@crazy_nuclei/l4-vs-l7-load-balancers-64e47610e2ef">https://medium.com/@crazy_nuclei/l4-vs-l7-load-balancers-64e47610e2ef</a></li>
@@ -35997,8 +35997,8 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
 </blockquote>
 <p><br></p>
 <h3 id="_24">宛先の変更と保持<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
-<p><code>L7</code>ロードバランサーは、元々のリクエストの情報を保持しつつ、宛先を変更しなければならない。</p>
-<p><code>L7</code>プロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3など) のヘッダーを保持し、NATの仕組みで<code>L4</code>ヘッダーに含まれる宛先IPアドレスやポート番号を変更している。</p>
+<p><code>L7</code> ロードバランサーは、元々のリクエストの情報を保持しつつ、宛先を変更しなければならない。</p>
+<p><code>L7</code> プロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3など) のヘッダーを保持し、NATの仕組みで <code>L4</code> ヘッダーに含まれる宛先IPアドレスやポート番号を変更している。</p>
 <blockquote>
 <ul>
 <li><a href="https://atmarkit.itmedia.co.jp/ait/articles/0302/05/news001.html">https://atmarkit.itmedia.co.jp/ait/articles/0302/05/news001.html</a></li>
@@ -36025,7 +36025,7 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年12月2日 21:31:49 JST">2025-12-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

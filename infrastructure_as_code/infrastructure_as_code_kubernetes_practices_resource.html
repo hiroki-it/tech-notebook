@@ -22834,12 +22834,12 @@
   <a href="#cluster" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cluster
+        Cluster
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Cluster">
+    <nav class="md-nav" aria-label="Cluster">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23653,7 +23653,7 @@
   <a href="#specaccessmodereadwriteonce" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 独自ファイルシステムやファイルのロックが影響する場合は.spec.accessMode=ReadWriteOnceを割り当てる
+        ▼ 独自ファイルシステムやファイルのロックが影響する場合は .spec.accessMode=ReadWriteOnce を割り当てる
       
     </span>
   </a>
@@ -23661,10 +23661,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#nodepodspecaccessmodereadwritemany" class="md-nav__link">
+  <a href="#nodepod-specaccessmodereadwritemany" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 複数Node/Pod間でファイルを共有するアプリケーションには.spec.accessMode=ReadWriteManyを割り当てる
+        ▼ 複数Node/Pod間でファイルを共有するアプリケーションには .spec.accessMode=ReadWriteMany を割り当てる
       
     </span>
   </a>
@@ -23672,10 +23672,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#nodepodreadspecaccessmodereadonlymany" class="md-nav__link">
+  <a href="#nodepodread-specaccessmodereadonlymany" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 複数Node/Pod間でReadのみを許可するアプリケーションには.spec.accessMode=ReadOnlyManyを割り当てる
+        ▼ 複数Node/Pod間でReadのみを許可するアプリケーションには .spec.accessMode=ReadOnlyMany を割り当てる
       
     </span>
   </a>
@@ -24322,10 +24322,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#podsexecpodsattach" class="md-nav__link">
+  <a href="#podsexec-podsattach" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ pods/execやpods/attachを設定しない
+        ▼ pods/exec や pods/attach を設定しない
       
     </span>
   </a>
@@ -34627,12 +34627,12 @@
   <a href="#cluster" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cluster
+        Cluster
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Cluster">
+    <nav class="md-nav" aria-label="Cluster">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -35446,7 +35446,7 @@
   <a href="#specaccessmodereadwriteonce" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 独自ファイルシステムやファイルのロックが影響する場合は.spec.accessMode=ReadWriteOnceを割り当てる
+        ▼ 独自ファイルシステムやファイルのロックが影響する場合は .spec.accessMode=ReadWriteOnce を割り当てる
       
     </span>
   </a>
@@ -35454,10 +35454,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#nodepodspecaccessmodereadwritemany" class="md-nav__link">
+  <a href="#nodepod-specaccessmodereadwritemany" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 複数Node/Pod間でファイルを共有するアプリケーションには.spec.accessMode=ReadWriteManyを割り当てる
+        ▼ 複数Node/Pod間でファイルを共有するアプリケーションには .spec.accessMode=ReadWriteMany を割り当てる
       
     </span>
   </a>
@@ -35465,10 +35465,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#nodepodreadspecaccessmodereadonlymany" class="md-nav__link">
+  <a href="#nodepodread-specaccessmodereadonlymany" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 複数Node/Pod間でReadのみを許可するアプリケーションには.spec.accessMode=ReadOnlyManyを割り当てる
+        ▼ 複数Node/Pod間でReadのみを許可するアプリケーションには .spec.accessMode=ReadOnlyMany を割り当てる
       
     </span>
   </a>
@@ -36115,10 +36115,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#podsexecpodsattach" class="md-nav__link">
+  <a href="#podsexec-podsattach" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ pods/execやpods/attachを設定しない
+        ▼ pods/exec や pods/attach を設定しない
       
     </span>
   </a>
@@ -36604,7 +36604,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="cluster">Cluster<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h2>
+<h2 id="cluster">Cluster<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h2>
 <h3 id="_2">バックアップ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>例えば永続ボリュームを使用しているなど、クラスターのetcdの現在の状態の回復が必要な場合、障害でクラスター上のデータが損失することに備え、バックアップツール (例：Velero) を使用してクラスターバックアップを定期的に実行する。</p>
 <p>もし単純に新しいKubernetes Clusterにビルド可能なmanifestsを再インストール(kubectl apply)するだけで問題無く回復できるようなケースでは必ずしもクラスターバックアップは必要ない。</p>
@@ -36639,7 +36639,7 @@
 </tr>
 </tbody>
 </table>
-<p>上記の通りそれぞれ一長一短があり、運用コストも当然増加することになるため、十分に検討を行った上で必要に応じてDR構成を検討する。</p>
+<p>上記の通りそれぞれ一長一短があり、運用コストも当然増加することになるため、十分に検討を行ったうえで必要に応じてDR構成を検討する。</p>
 <p><br></p>
 <h3 id="_3">ハードウェアをサイジングする<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="cpu">▼ CPU / メモリをサイジングする<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h4>
@@ -36651,8 +36651,8 @@
 <li>平均ハードウェア使用率</li>
 <li>時間当たり平均トランザクション数</li>
 </ul>
-<p>例えば、<code>1</code>秒間に<code>50</code>人のユーザーからリクエスト (<code>50</code>個/秒のリクエスト) があり、この時のレスポンスタイム目標値が<code>3</code>秒以内であるとする。</p>
-<p>この場合、平均スループットの目標値は<code>50</code> (個/秒) 、平均レスポンスタイムの目標値は<code>3</code>秒以内、となる。</p>
+<p>例えば、<code>1</code> 秒間に <code>50</code> 人のユーザーからリクエスト (<code>50</code> 個/秒のリクエスト) があり、この時のレスポンスタイム目標値が <code>3</code> 秒以内であるとする。</p>
+<p>この場合、平均スループットの目標値は <code>50</code> (個/秒) 、平均レスポンスタイムの目標値は <code>3</code> 秒以内、となる。</p>
 <blockquote>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Load_testing">https://en.wikipedia.org/wiki/Load_testing</a></li>
@@ -36731,7 +36731,7 @@
 <tr>
 <td>金銭コスト</td>
 <td>既存のNodeをそのまま使用する。そのため、既存のコストと変わらない。</td>
-<td>使用するマネージドサービスや、アップデート設定にもよるが、新Nodeを作成するような設定の場合は新Nodeを作成した後に旧Nodeをドレインするまでの間、Nodeの台数が増えることになるのでコストが多く発生することになる。そのため、アップグレードの際に増えるNode台数を予め計測しておきアップグレードにかかるコストについて見積もりをとっておくようにする。</td>
+<td>使用するマネージドサービスや、アップデート設定にもよるが、新Nodeを作成するような設定の場合は新Nodeを作成した後に旧Nodeをドレインするまでの間、Nodeの台数が増えることになるのでコストが多く発生することになる。そのため、アップグレードの際に増えるNode台数をあらかじめ計測しておきアップグレードにかかるコストについて見積もりをとっておくようにする。</td>
 <td>新Nodeグループを作成することでNodeが二倍になる。そのため、金銭コスト見積もりでは各Nodeグループのアップグレードの間、平常時の2倍コストがかかることを想定しておく。</td>
 <td>新Clusterを作成することでNodeが二倍になる。そのため、金銭コスト見積もりではクラスターアップグレードを実施~動作確認などを経て旧クラスター削除するまでの間、平常時の2倍コストがかかることを想定しておく。</td>
 </tr>
@@ -36760,7 +36760,7 @@
 <li>クラスターアップグレードにあたっての準備<ul>
 <li>クラスターアップグレード前に <a href="https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG">https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG</a> を確認し、(おおまかにでも)変更内容について確認する</li>
 <li>クラスターアップグレード前に廃止されるAPIグループのバージョンを確認することで、変更が必要な既存のmanifestsを確認する</li>
-<li>予め検証環境で本番環境と(限りなく)同じ設定のクラスターのアップグレード~動作確認を行い、問題無くアップグレード可能かを検証する</li>
+<li>あらかじめ検証環境で本番環境と(限りなく)同じ設定のクラスターのアップグレード~動作確認を行い、問題無くアップグレード可能かを検証する</li>
 <li>監視ツールなどで廃止されるメトリクスを使用したクエリロジックが無いかを確認する</li>
 <li>クラスターにインストールしてる各種Helm ChartやOperatorが対象のクラスターバージョンで正常に動作するか or サポートしているかを確認する</li>
 </ul>
@@ -36769,7 +36769,7 @@
 <li>Kubernetesの「<a href="https://kubernetes.io/releases/version-skew-policy/#supported-component-upgrade-order">https://kubernetes.io/releases/version-skew-policy/#supported-component-upgrade-order</a>」と「Kubernetes Release Versioning』に沿ったバージョンアップを実行する</li>
 <li>パッチバージョンのアップグレードについてはCHANGELOGに基づいて修正されたバグの影響度に応じて実施する</li>
 <li>マイナーバージョンのアップグレードについては1バージョンずつアップグレードを実施する</li>
-<li>約4ヶ月毎のマイナーバージョンのリリース毎にマイナーバージョンのアップグレードを実施する or xヶ月毎(12ヶ月以内)にそのタイミングの最新バージョンまでアップグレードを実施する</li>
+<li>約4ヶ月毎のマイナーバージョンのリリースごとにマイナーバージョンのアップグレードを実施する or xヶ月毎(12ヶ月以内)にそのタイミングの最新バージョンまでアップグレードを実施する</li>
 <li>ローリングアップグレードやB/G方式などクラスターバージョンのアップグレード方法を決める</li>
 </ul>
 </li>
@@ -36791,7 +36791,7 @@
 <p><br></p>
 <h2 id="node">コントロールプレーンNode<a class="headerlink" href="#node" title="Permanent link">&para;</a></h2>
 <h3 id="_8">冗長化する<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>オンプレ環境などでコントロールプレーンNodeを管理する必要がある場合、コントロールプレーンNodeは<code>3</code>台以上に設定して冗長化を実行する。</p>
+<p>オンプレ環境などでコントロールプレーンNodeを管理する必要がある場合、コントロールプレーンNodeは <code>3</code> 台以上に設定して冗長化を実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/">https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/</a></li>
@@ -36947,7 +36947,7 @@
 <td>要件例</td>
 <td>アプリ系Nodeグループはユーザーに影響がある。 そのため、稼働時間を長くしたい。</td>
 <td>バッチ系Nodeグループはユーザーに影響がある。 そのため、稼働時間を長くしたい。</td>
-<td>ロードバランサー系Nodeグループは単一障害点となりユーザーに影響が大きい。 そのため、稼働時間は最も長くしたい。</td>
+<td>ロードバランサー系Nodeグループは単一障害点となりユーザーに影響が大きい。 そのため、稼働時間はもっとも長くしたい。</td>
 <td>監視系Nodeグループはユーザーに影響がない。 そのため、稼働時間を短くても問題ない。</td>
 </tr>
 <tr>
@@ -36961,14 +36961,14 @@
 <td>Nodeの冗長化の程度</td>
 <td>Nodeを多く冗長化する。</td>
 <td>Nodeを多く冗長化する。</td>
-<td>Nodeを最も多く冗長化する。</td>
+<td>Nodeをもっとも多く冗長化する。</td>
 <td>Nodeを少なく冗長化する。</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
 <h3 id="_17">オートスケーリング<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<p>IaaS環境でNode数をスケールさせることができる余地がある環境では動的にNode数をスケールさせることで処理量の増加に対して柔軟に対応することができるようになる。</p>
+<p>IaaS環境でNode数をスケールさせることができる余地がある環境では動的にNode数をスケールさせることで処理量の増加に対して柔軟に対応できるようになる。</p>
 <p>KubernetesではNodeに対する動的なスケール手段としてcluster autoscaler、Karpenterといったアプリケーションが用意されているため、これらを利用してオートスケーリングできるようにする。</p>
 <p><br></p>
 <h3 id="oscpu">適切なOS、CPUアーキテクチャを選ぶ<a class="headerlink" href="#oscpu" title="Permanent link">&para;</a></h3>
@@ -37016,7 +37016,7 @@
 <td>Pod数の要件例</td>
 <td>アプリケーションの障害はユーザーに影響があるため、Podの冗長化の程度を他グループよりも大きくしたい。</td>
 <td>バッチの障害はユーザーに影響があるため、Podの冗長化の程度を他グループよりも大きくしたい。</td>
-<td>L7ロードバランサーは単一障害点になるため、Podの冗長化の程度をNodeグループ内で最も大きくしたい。</td>
+<td>L7ロードバランサーは単一障害点になるため、Podの冗長化の程度をNodeグループ内でもっとも大きくしたい。</td>
 <td>監視ツールの障害はユーザーに影響がないため、Podの冗長化の程度を他グループよりも小さくしたい。</td>
 </tr>
 <tr>
@@ -37068,7 +37068,7 @@
 <p>社内向けアプリケーションやテスト環境で、インバウンドな通信を全て許可することは危険である。</p>
 <p>Ingress Controller (例：Nginx Ingress Controller、AWS Load Balancer Controller、GCE L7 load Balancer Controllerなど) が提供する機能を使用して、インバウンド通信を制限する。</p>
 <p>なお、Ingressのインバウンド通信を制限することはあっても、Egressのアウトバウンド通信を制限するとむしろ不便になるため、Egressのアウトバウンド通信は全て許可しておく。</p>
-<p>多くのIngress Controllerでは、制限のルールをIngressの<code>.metadata.annotations</code>キーに直接設定するか、Ingressから切り離して設定するか (例：ConfigMap、AWS WAF、CloudArmor) を選べる。</p>
+<p>多くのIngress Controllerでは、制限のルールをIngressの <code>.metadata.annotations</code> キーに直接設定するか、Ingressから切り離して設定するか (例：ConfigMap、AWS WAF、CloudArmor) を選べる。</p>
 <p>管理しやすいように、Ingressから切り離して設定すると良い。</p>
 <blockquote>
 <ul>
@@ -37088,7 +37088,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="ingressclassingressclassname">IngressClassの指定にingressClassNameを使用する<a class="headerlink" href="#ingressclassingressclassname" title="Permanent link">&para;</a></h3>
-<p>IngressClassの指定方法には、<code>.spec.ingressClassName</code> キーと<code>.metadata.annotations.kubernetes.io/ingress.class</code> キーがある。</p>
+<p>IngressClassの指定方法には、<code>.spec.ingressClassName</code> キーと <code>.metadata.annotations.kubernetes.io/ingress.class</code> キーがある。</p>
 <p><code>.spec.ingressClassName</code> キーの指定方法が推奨である。</p>
 <blockquote>
 <ul>
@@ -37098,8 +37098,8 @@
 <p><br></p>
 <h2 id="cronjob">CronJob<a class="headerlink" href="#cronjob" title="Permanent link">&para;</a></h2>
 <h3 id="failedjobshistorylimit">failedJobsHistoryLimitを設定する<a class="headerlink" href="#failedjobshistorylimit" title="Permanent link">&para;</a></h3>
-<p>CronJobでJobが失敗した時、CronJobはデフォルトで過去<code>1</code>回分の失敗しか履歴に残さない。</p>
-<p>トラブルシューティングしやすくするために、<code>.spec.startingDeadlineSeconds</code>キーで<code>3</code>回分以上を設定しておく。</p>
+<p>CronJobでJobが失敗したとき、CronJobはデフォルトで過去 <code>1</code> 回分の失敗しか履歴に残さない。</p>
+<p>トラブルシューティングしやすくするために、<code>.spec.startingDeadlineSeconds</code> キーで <code>3</code> 回分以上を設定しておく。</p>
 <blockquote>
 <ul>
 <li><a href="https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk">https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk</a></li>
@@ -37107,12 +37107,12 @@
 </blockquote>
 <p><br></p>
 <h3 id="startingdeadlineseconds">startingDeadlineSecondsを設定する<a class="headerlink" href="#startingdeadlineseconds" title="Permanent link">&para;</a></h3>
-<p>CronJobのデフォルトの仕様として、Jobが<code>100</code>回連続で失敗すると、CronJobを再作成しない限りJobを再実行できなくなる。</p>
-<p>1時間にJobを1回実行すると仮定すると、簡単に<code>100</code>回を超過してしまう。</p>
+<p>CronJobのデフォルトの仕様として、Jobが <code>100</code> 回連続で失敗すると、CronJobを再作成しない限りJobを再実行できなくなる。</p>
+<p>1時間にJobを1回実行すると仮定すると、簡単に <code>100</code> 回を超過してしまう。</p>
 <div class="highlight"><pre><span></span><code>停止時間<span class="w"> </span><span class="o">(</span>8h<span class="o">)</span><span class="w"> </span>*<span class="w"> </span>実行間隔<span class="w"> </span><span class="o">(</span><span class="m">60</span>/h<span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>480回
 </code></pre></div>
-<p>この時、<code>.spec.startingDeadlineSeconds</code>キーを設定しておくと、これの期間に<code>100</code>回連続で失敗した時のみ、Jobを再実行できなくなる。</p>
-<p><code>100</code>回連続を判定する期間を短くすることで、再作成しなくてもよくなるようにする。</p>
+<p>この時、<code>.spec.startingDeadlineSeconds</code> キーを設定しておくと、これの期間に <code>100</code> 回連続で失敗したときのみ、Jobを再実行できなくなる。</p>
+<p><code>100</code> 回連続を判定する期間を短くすることで、再作成しなくてもよくなるようにする。</p>
 <blockquote>
 <ul>
 <li><a href="https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/">https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/</a></li>
@@ -37123,8 +37123,8 @@
 <h3 id="ttlsecondsafterfinished">ttlSecondsAfterFinishedを設定する<a class="headerlink" href="#ttlsecondsafterfinished" title="Permanent link">&para;</a></h3>
 <p>デフォルトでは、失敗したJobはそのまま残る。</p>
 <p>ただ、監視ツールがこの失敗したJobのステータスをメトリクスとして収集し続けるため、アラートを発火し続けてしまう。</p>
-<p>この時、<code>.spec.ttlSecondsAfterFinished</code>キーを設定しておくと、Jobの成功/失敗にかかわらず、実行後のJob自体を自動的に削除できるようになる。</p>
-<p><code>.spec.ttlSecondsAfterFinished</code>キーには、Jobの実行終了後に何秒経過してからJob自体を削除するのかを設定する。</p>
+<p>この時、<code>.spec.ttlSecondsAfterFinished</code> キーを設定しておくと、Jobの成功/失敗にかかわらず、実行後のJob自体を自動的に削除できるようになる。</p>
+<p><code>.spec.ttlSecondsAfterFinished</code> キーには、Jobの実行終了後に何秒経過してからJob自体を削除するのかを設定する。</p>
 <h2 id="pod">Pod<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h2>
 <h3 id="_21">冗長化する<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <p>Workload (例：Deployment、DaemonSet、StatefulSet、Jobなど) でPodを冗長化する。</p>
@@ -37137,8 +37137,8 @@
 <p>突発的な負荷のタイミングが事前に分かっているなら、事前に最小台数を高めに設定しておく。</p>
 <p>HorizontalPodAutoscalerは、metrics-serverの提供するメトリクス (例：CPU使用率、メモリ使用率など) 、カスタムメトリクス、K8s外のメトリクス (ロードバランサーのrps/qps値、メッセージキューの待機リクエスト数など) 、に基づいてPod数を決める。</p>
 <p>metrics-serverはデフォルトでClusterに存在していないため、別途インストールしておく必要がある。</p>
-<p>最初、Deploymentの<code>spec.replicas</code>キーに合わせてPodが作成され、次にHorizontalPodAutoscalerの<code>.spec.minReplicas</code>キーが優先される。</p>
-<p>この挙動は混乱につながるため、HorizontalPodAutoscalerを使用する場合、Deploymentの<code>spec.replicas</code>キーの設定を削除しておくことが推奨である。</p>
+<p>最初、Deploymentの <code>spec.replicas</code> キーに合わせてPodが作成され、次にHorizontalPodAutoscalerの <code>.spec.minReplicas</code> キーが優先される。</p>
+<p>この挙動は混乱につながるため、HorizontalPodAutoscalerを使用する場合、Deploymentの <code>spec.replicas</code> キーの設定を削除しておくことが推奨である。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/kubernetes-sigs/metrics-server">https://github.com/kubernetes-sigs/metrics-server</a></li>
@@ -37174,15 +37174,15 @@
 <h3 id="daemonsetstatefulsetpod">DaemonSetやStatefulSet配下のPodのスケジューリング優先度を上げる<a class="headerlink" href="#daemonsetstatefulsetpod" title="Permanent link">&para;</a></h3>
 <p>Nodeでハードウェアリソース不足が起こった場合、Nodeは一部のPodを退避させてこれを解消しようとする。</p>
 <p>この時に優先度を設定しないと、DaemonSet配下のPodのスケジューリング優先度が低くなる。</p>
-<p>DaemonSet配下のPodは、各Nodeの最低一つずつスケジューリングすることが望ましく、NodeからDaemonSet配下のPodが退避させられると、障害が起こる可能性がある。</p>
+<p>DaemonSet配下のPodは、各Nodeの最低1つずつスケジューリングすることが望ましく、NodeからDaemonSet配下のPodが退避させられると、障害が起こる可能性がある。</p>
 <p>また、StatefulSet配下のPodには状態を持たせることが多く、NodeからStatefulSet配下のPodが退避させられると、書き込み中のデータが欠損する可能性がある。</p>
-<p>そこで、<code>.spec.priorityClassName</code>キーを使用すると、Podのスケジューリング優先度を設定できる。</p>
+<p>そこで、<code>.spec.priorityClassName</code> キーを使用すると、Podのスケジューリング優先度を設定できる。</p>
 <p><br></p>
 <h3 id="deploymentstatefulsetpoddisruptionbudget">DeploymentやStatefulSetを使用する場合はPodDisruptionBudgetも合わせて作成する<a class="headerlink" href="#deploymentstatefulsetpoddisruptionbudget" title="Permanent link">&para;</a></h3>
 <p>Nodeのスケールインやアップグレード時に、Nodeはドレイン処理を実行し、古いPodを退避させる。</p>
 <p>この時にPodDisruptionBudgetを作成しないと、DeploymentやStatefulSet配下の古いPodが一斉に退避してしまう。</p>
 <p>1個でも古いPodを動かすことで、ダウンタイムを避けるべきである。</p>
-<p>そこで、PodDisruptionBudgetを使用すると、Nodeのドレイン中に退避させるPodの最小最大数 (<code>spec.maxUnavailable</code>キー、<code>spec.minUnavailable</code>キー) や起動し続ける利用可能なPodの最小最大数 (<code>spec.minAvailable</code>キー,<code>spec.maxAvailable</code>キー) を設定できる。</p>
+<p>そこで、PodDisruptionBudgetを使用すると、Nodeのドレイン中に退避させるPodの最小最大数 (<code>spec.maxUnavailable</code> キー、<code>spec.minUnavailable</code> キー) や起動し続ける利用可能なPodの最小最大数 (<code>spec.minAvailable</code> キー,<code>spec.maxAvailable</code> キー) を設定できる。</p>
 <p><br></p>
 <h3 id="deployment">Deploymentでは適切なデプロイ戦略をぶ<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h3>
 <h4 id="rollingupdate">▼ 基本的にはRollingUpdate戦略を選ぶ<a class="headerlink" href="#rollingupdate" title="Permanent link">&para;</a></h4>
@@ -37203,8 +37203,8 @@
 <p>なお、以降の設定値はPodのスケジューリング時にのみ考慮される。</p>
 <p>スケジューリング後に条件と合致しなくなっても、kube-scheduleはPodを再スケジューリングしない。</p>
 <p>例えば、一時的な負荷でPodがスケールアウトした場合を考える。</p>
-<p>Podをスケジューリングする時は、条件を考慮してPodを分散して配置する。</p>
-<p>しかし、一時的な負荷が収まってPodがスケールインする時は、条件を考慮してPodを削除する訳ではない。</p>
+<p>Podをスケジューリングするときは、条件を考慮してPodを分散して配置する。</p>
+<p>しかし、一時的な負荷が収まってPodがスケールインするときは、条件を考慮してPodを削除するわけではない。</p>
 <p>そのため、Podの分散配置が保証されなくなる。</p>
 <p>Nodeにスケジュール後のPodを定期的に再スケジューリングするために、deschedulerを合わせて使用するとよい。</p>
 <p>deschedulerは条件に一致しないPodを退避させるだけで、Podの再スケジューリングはkube-schedulerが実行する。</p>
@@ -37231,7 +37231,7 @@
 </ul>
 </blockquote>
 <h4 id="topologyspreadconstraints">▼ TopologySpreadConstraintsを使用する<a class="headerlink" href="#topologyspreadconstraints" title="Permanent link">&para;</a></h4>
-<p>TopologySpreadConstraintsを使用すると、ドメイン (例 ゾーン、リージョン、ラック、Node) と制約を定義することで、Workload配下のPodをドメインに対して均等に分散することができる。</p>
+<p>TopologySpreadConstraintsを使用すると、ドメイン (例 ゾーン、リージョン、ラック、Node) と制約を定義することで、Workload配下のPodをドメインに対して均等に分散できる。</p>
 <p>NodeSelectorやNodeAffinityとは異なり、特定のドメインにPodが偏らないようにすることで、障害の影響を一部のドメイン内のPodに抑えることができる。</p>
 <blockquote>
 <ul>
@@ -37240,8 +37240,8 @@
 </blockquote>
 <h4 id="taintstolerations">▼ TaintsとTolerationsを使用する<a class="headerlink" href="#taintstolerations" title="Permanent link">&para;</a></h4>
 <p>TaintsとTolerationsを使用すると、指定した条件に合致するPod以外をNodeにスケジューリングさせないようにできる。</p>
-<p>例えば、Workloadが少ないNodeグループ (<code>monitoring</code>、<code>ingress</code>など) にTaintを設定し、Workloadが多いNodeグループ (<code>app</code>、<code>system</code>など) にはこれを設定しないようにする。</p>
-<p>すると、<code>.spec.tolerations</code>キーを設定しない限り、Podが多いNodeグループの方にPodがスケジューリングされる。</p>
+<p>例えば、Workloadが少ないNodeグループ (<code>monitoring</code>、<code>ingress</code> など) にTaintを設定し、Workloadが多いNodeグループ (<code>app</code>、<code>system</code> など) にはこれを設定しないようにする。</p>
+<p>すると、<code>.spec.tolerations</code> キーを設定しない限り、Podが多いNodeグループの方にPodがスケジューリングされる。</p>
 <p>そのため、NodeSelectorやNodeAffinityを使用するより、スケジューリング対象のNodeを設定する手間が省ける。</p>
 <p>以下の方法で設定する。</p>
 <p>事前にNodeにTaintを設定しておく。</p>
@@ -37249,8 +37249,8 @@
 
 <span class="c1">## NodeグループやNodeプールがある場合、一括してTaintを設定する</span>
 </code></pre></div>
-<p>Taintへの耐性を<code>.spec.tolerations</code>キーで設定する。</p>
-<p>合致する条件の<code>.spec.tolerations</code>キーを持つPodしか、Taintを持つNodeにスケジューリングさせられない。</p>
+<p>Taintへの耐性を <code>.spec.tolerations</code> キーで設定する。</p>
+<p>合致する条件の <code>.spec.tolerations</code> キーを持つPodしか、Taintを持つNodeにスケジューリングさせられない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37299,7 +37299,7 @@
 <li><a href="https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/">https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/</a></li>
 </ul>
 </blockquote>
-<p>Podのリソース要求やリソース制限に <code>ephemeral-storage</code> のフィールドを追加して、利用するディスク容量を制限することができる。</p>
+<p>Podのリソース要求やリソース制限に <code>ephemeral-storage</code> のフィールドを追加して、利用するディスク容量を制限できる。</p>
 <p>これにより、schedulerが Nodeのストレージのキャパシティを考慮してPodを配置してくれる。</p>
 <p>また、リソース制限で指定した <code>ephemeral-storage</code> を超えてディスク容量を使用した場合に、そのPodは退避されて再起動する。</p>
 <blockquote>
@@ -37308,7 +37308,7 @@
 </ul>
 </blockquote>
 <h4 id="persistentvolume-claim">▼ 永続的ストレージを必要とする場合はPersistentVolume (Claim) を使用する<a class="headerlink" href="#persistentvolume-claim" title="Permanent link">&para;</a></h4>
-<p>PersistentVolume (Claim) を使用することで特定のストレージ製品のボリュームにPodのデータを永続化することができる。</p>
+<p>PersistentVolume (Claim) を使用することで特定のストレージ製品のボリュームにPodのデータを永続化できる。</p>
 <p>使用できるストレージ製品はクラスターのインストールされたボリュームプラグイン (≒ CSI Driver) と実行環境に依存しており、そのプラグインを使用するStorageClass</p>
 <p>して、PodのデータをNodeのストレージに永続的に保管できる。</p>
 <p>StorageClassによるNode外ストレージとは異なり、NodeのストレージがPodの容量を制限する。</p>
@@ -37324,10 +37324,10 @@
 </blockquote>
 <p><br></p>
 <h3 id="_25">適切なボリュームアクセスモードを選択する<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
-<h4 id="specaccessmodereadwriteonce">▼ 独自ファイルシステムやファイルのロックが影響する場合は<code>.spec.accessMode=ReadWriteOnce</code>を割り当てる<a class="headerlink" href="#specaccessmodereadwriteonce" title="Permanent link">&para;</a></h4>
-<p>一つのNodeに対して読み込み/書き込みが可能なボリュームとしてマウントする。</p>
-<p>もしNodeにPodのインスタンスが複数ある場合、<code>ReadWriteOnce</code>であっても複数のPodから読み込み/書き込みがある。</p>
-<p>ロックのあるストレージの場合、Nodeごとにストレージを分割しつつ、Nodeに一つだけスケジューリングされるようにしたPodがストレージを占有した方が良い。</p>
+<h4 id="specaccessmodereadwriteonce">▼ 独自ファイルシステムやファイルのロックが影響する場合は <code>.spec.accessMode=ReadWriteOnce</code> を割り当てる<a class="headerlink" href="#specaccessmodereadwriteonce" title="Permanent link">&para;</a></h4>
+<p>1つのNodeに対して読み込み/書き込みが可能なボリュームとしてマウントする。</p>
+<p>もしNodeにPodのインスタンスが複数ある場合、<code>ReadWriteOnce</code> であっても複数のPodから読み込み/書き込みがある。</p>
+<p>ロックのあるストレージの場合、Nodeごとにストレージを分割しつつ、Nodeに1つだけスケジューリングされるようにしたPodがストレージを占有したほうが良い。</p>
 <ul>
 <li>例 DB</li>
 </ul>
@@ -37336,9 +37336,9 @@
 <li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes</a></li>
 </ul>
 </blockquote>
-<h4 id="nodepodspecaccessmodereadwritemany">▼ 複数Node/Pod間でファイルを共有するアプリケーションには<code>.spec.accessMode=ReadWriteMany</code>を割り当てる<a class="headerlink" href="#nodepodspecaccessmodereadwritemany" title="Permanent link">&para;</a></h4>
+<h4 id="nodepod-specaccessmodereadwritemany">▼ 複数Node/Pod間でファイルを共有するアプリケーションには <code>.spec.accessMode=ReadWriteMany</code> を割り当てる<a class="headerlink" href="#nodepod-specaccessmodereadwritemany" title="Permanent link">&para;</a></h4>
 <p>複数のノードから読み込み/書き込みを行えるボリュームとしてマウントする。</p>
-<p>ファイルシステムでは、Node間でストレージを共有した方が良い。</p>
+<p>ファイルシステムでは、Node間でストレージを共有したほうが良い。</p>
 <ul>
 <li>例 NFS、SMB</li>
 </ul>
@@ -37347,9 +37347,9 @@
 <li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes</a></li>
 </ul>
 </blockquote>
-<h4 id="nodepodreadspecaccessmodereadonlymany">▼ 複数Node/Pod間でReadのみを許可するアプリケーションには<code>.spec.accessMode=ReadOnlyMany</code>を割り当てる<a class="headerlink" href="#nodepodreadspecaccessmodereadonlymany" title="Permanent link">&para;</a></h4>
+<h4 id="nodepodread-specaccessmodereadonlymany">▼ 複数Node/Pod間でReadのみを許可するアプリケーションには <code>.spec.accessMode=ReadOnlyMany</code> を割り当てる<a class="headerlink" href="#nodepodread-specaccessmodereadonlymany" title="Permanent link">&para;</a></h4>
 <p>複数のノードから読み込みのみを行えるボリュームとしてマウントする。</p>
-<p>ConfigMapに保管するには大きすぎる設定ファイルや共通データでは、Node間で読み込みストレージを共有した方が良い。</p>
+<p>ConfigMapに保管するには大きすぎる設定ファイルや共通データでは、Node間で読み込みストレージを共有したほうが良い。</p>
 <ul>
 <li>例 機械学習モデルのパラメータストア</li>
 </ul>
@@ -37361,7 +37361,7 @@
 <p><br></p>
 <h3 id="_26">ラベルを利用して目的に合ったストレージを選択する<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
 <p>アプリケーションによってストレージに求める性能は異なるため、利用用途に合わせて適したスペックのストレージを割り当てる必要がある。</p>
-<p>そこでストレージクラスやPersistentVolumeのラベルに<code>.metadata.label.storage-type=ssd</code>のようにストレージの種類などを設定し、<strong><code>spec.selector.matchLabels: storage-type: ssd</code></strong>のように指定することで利用用途に合ったストレージを選択することが出来る。</p>
+<p>そこでストレージクラスやPersistentVolumeのラベルに <code>.metadata.label.storage-type=ssd</code> のようにストレージの種類などを設定し、<strong><code>spec.selector.matchLabels: storage-type: ssd</code></strong>のように指定することで利用用途に合ったストレージを選択することが出来る。</p>
 <blockquote>
 <ul>
 <li><a href="https://thinkit.co.jp/article/14195#h1-4-2-1">https://thinkit.co.jp/article/14195#h1-4-2-1</a></li>
@@ -37372,7 +37372,7 @@
 <h3 id="reclaim-policy">利用用途に合ったReclaim Policyを設定する<a class="headerlink" href="#reclaim-policy" title="Permanent link">&para;</a></h3>
 <h4 id="delete">▼ 特別な理由がない限りDeleteを指定する<a class="headerlink" href="#delete" title="Permanent link">&para;</a></h4>
 <p>KubernetesのデフォルトではReclaim PolicyがDeleteに指定されている。</p>
-<p>Deleteを指定することでPersistentVolumeClaim(PersistentVolumeClaim)を削除しPersistentVolume(PV)が使用されなくなった時点で自動削除され、PVの管理負荷を削減することができるためReclaim Policyは原則Deleteを利用する。</p>
+<p>Deleteを指定することでPersistentVolumeClaim(PersistentVolumeClaim)を削除しPersistentVolume(PV)が使用されなくなった時点で自動削除され、PVの管理負荷を削減できるためReclaim Policyは原則Deleteを利用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#delete">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#delete</a></li>
@@ -37399,11 +37399,11 @@
 <h3 id="podnode">ストレージをPodと同じNodeに作成する<a class="headerlink" href="#podnode" title="Permanent link">&para;</a></h3>
 <p>Nodeを冗長化している場合、Workloadは配下のPodを各NodeにスケジューリングされるためPodがアクセスするストレージも同様のNodeに作成する必要がある。</p>
 <p>ストレージがPodと異なるNodeに作成された場合、ほかNodeの障害によりストレージを利用できなくなりNodeを超えて障害が伝搬してしまう。</p>
-<p>そこで<code>topologySpreadConstraints</code>キーを使用することで、Podと同じNodeにストレージをスケジューリングすることができる。</p>
+<p>そこで <code>topologySpreadConstraints</code> キーを使用することで、Podと同じNodeにストレージをスケジューリングできる。</p>
 <p><br></p>
 <h3 id="storageclasspersistentvolume">StorageClassやPersistentVolumeに適切なラベルを設定する<a class="headerlink" href="#storageclasspersistentvolume" title="Permanent link">&para;</a></h3>
 <p>PodからPersistentVolumeClaimを利用する場合ラベルなどがついていないと、適切なボリューム選択が困難になってしまう。</p>
-<p>そのためStorageClassやPersistentVolumeの<code>metadata.label</code>に<code>storage-type=ssd</code>や<code>iops=3000</code>、<code>environment=prd</code>などストレージパフォーマンスや環境などボリューム選択に利用できるラベルを設定する。</p>
+<p>そのためStorageClassやPersistentVolumeの <code>metadata.label</code> に <code>storage-type=ssd</code> や <code>iops=3000</code>、<code>environment=prd</code> などストレージパフォーマンスや環境などボリューム選択に利用できるラベルを設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://thinkit.co.jp/article/14195#h1-4-2-1">https://thinkit.co.jp/article/14195#h1-4-2-1</a></li>
@@ -37413,7 +37413,7 @@
 <p><br></p>
 <h3 id="pod-node">Pod内のコンテナとホスト (Node) のネットワーク名前空間を分離する<a class="headerlink" href="#pod-node" title="Permanent link">&para;</a></h3>
 <h4 id="hostipc">▼ hostIPCを無効化する<a class="headerlink" href="#hostipc" title="Permanent link">&para;</a></h4>
-<p>Podの<code>.spec.hostIPC</code>キー有効化すると、Pod内のコンテナのホスト (Node) 間で同じIPC名前空間を使用するようになる。</p>
+<p>Podの <code>.spec.hostIPC</code> キー有効化すると、Pod内のコンテナのホスト (Node) 間で同じIPC名前空間を使用するようになる。</p>
 <p>コンテナのプロセスは、同じIPC名前空間に属する任意のプロセスと通信できるようになる。</p>
 <p>ただ、悪意のある人がコンテナに接続した場合に、Nodeの他のプロセスにリクエストできてしまう。</p>
 <p>そのため、無効化しておく。</p>
@@ -37424,7 +37424,7 @@
 </ul>
 </blockquote>
 <h4 id="hostpid">▼ hostPIDを無効化する<a class="headerlink" href="#hostpid" title="Permanent link">&para;</a></h4>
-<p>Podの<code>.spec.hostPID</code>キー有効化すると、コンテナとNode間で同じPID名前空間を使用するようになる。</p>
+<p>Podの <code>.spec.hostPID</code> キー有効化すると、コンテナとNode間で同じPID名前空間を使用するようになる。</p>
 <p>NodeとコンテナのプロセスIDが同じになるため、コンテナはNodeのプロセスを操作できるようになる。</p>
 <p>つまり、悪意のある人がコンテナに接続した場合に、Nodeのプロセスを操作できてしまう。</p>
 <p>そのため、無効化しておく。</p>
@@ -37462,17 +37462,17 @@
 </tr>
 <tr>
 <td>エンドポイント例</td>
-<td>・SpringBoot製のJavaアプリなら<code>/actuator/startup</code>を使用する。<br>・NginxならReadiness用のエンドポイントで代用する。</td>
+<td>・SpringBoot製のJavaアプリなら <code>/actuator/startup</code> を使用する。<br>・NginxならReadiness用のエンドポイントで代用する。</td>
 <td style="text-align: center;">➡️</td>
-<td>・SpringBoot製のJavaアプリなら<code>/actuator/health/liveness</code>を使用する。<br>・Nginxなら<code>200</code>ステータスを返却するだけの<code>/healthcheck</code>を定義する。</td>
-<td>・SpringBoot製のJavaアプリなら<code>/actuator/health/readiness</code> (ウォームアップ実施エンドポイント) を使用する。<br>・Nginxなら<code>/nginx-ready</code> (設定ファイル読み込み状態エンドポイント) を使用する。<br>・MySQLなら接続受信準備完了エンドポイントを使用する。</td>
+<td>・SpringBoot製のJavaアプリなら <code>/actuator/health/liveness</code> を使用する。<br>・Nginxなら <code>200</code> ステータスを返却するだけの <code>/healthcheck</code> を定義する。</td>
+<td>・SpringBoot製のJavaアプリなら <code>/actuator/health/readiness</code> (ウォームアップ実施エンドポイント) を使用する。<br>・Nginxなら <code>/nginx-ready</code> (設定ファイル読み込み状態エンドポイント) を使用する。<br>・MySQLなら接続受信準備完了エンドポイントを使用する。</td>
 </tr>
 <tr>
 <td>正常時</td>
 <td>LivenessProbe／ReadinessProbeヘルスチェックを実行する。</td>
 <td style="text-align: center;">➡️</td>
-<td>HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが<code>200</code>ステータスから<code>399</code>ステータスまでを返却すれば正常とみなす。</td>
-<td>HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが<code>200</code>から<code>399</code>ステータスを返却すれば正常とみなす。</td>
+<td>HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが <code>200</code> ステータスから <code>399</code> ステータスまでを返却すれば正常とみなす。</td>
+<td>HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが <code>200</code> から <code>399</code> ステータスを返却すれば正常とみなす。</td>
 </tr>
 <tr>
 <td>異常時</td>
@@ -37504,11 +37504,11 @@
 <p>例えば、Serviceとkube-proxyがPodの宛先情報を削除する前にPodが終了してしまうと、ServiceからPodへの接続を途中で切断することになってしまう。</p>
 <p>また、コンテナを停止する前にPodを終了してしまうと、コンテナを強制的に終了することになり、ログにエラーが出力されてしまう。</p>
 <ul>
-<li>Serviceとkube-proxyの処理後にPodを終了できるように、ユーザーがPodの<code>.spec.terminationGracePeriodSeconds</code>キーに任意の秒数を設定し、Podの削除に伴うServiceとkube-proxyの処理の完了を待機する必要がある。</li>
-<li>コンテナの正常な終了後にPodを終了できるように、ユーザーがPodの<code>.spec.containers[*].lifecycle.preStop</code>キーに任意の秒数を設定し、コンテナに待機処理 (例：<code>sleep</code>コマンド) を実行させる必要がある。</li>
+<li>Serviceとkube-proxyの処理後にPodを終了できるように、ユーザーがPodの <code>.spec.terminationGracePeriodSeconds</code> キーに任意の秒数を設定し、Podの削除に伴うServiceとkube-proxyの処理の完了を待機する必要がある。</li>
+<li>コンテナの正常な終了後にPodを終了できるように、ユーザーがPodの <code>.spec.containers[*].lifecycle.preStop</code> キーに任意の秒数を設定し、コンテナに待機処理 (例：<code>sleep</code> コマンド) を実行させる必要がある。</li>
 </ul>
-<p>なお、<code>.spec.terminationGracePeriodSeconds</code>の秒数が長すぎるとPodの終了に時間がかかりすぎるようになり、Podの更新やClusterのアップグレードに時間に影響が出る。</p>
-<p>長くとも<code>120</code>秒以内にするとよい。</p>
+<p>なお、<code>.spec.terminationGracePeriodSeconds</code> の秒数が長すぎるとPodの終了に時間がかかりすぎるようになり、Podの更新やClusterのアップグレードに時間に影響が出る。</p>
+<p>長くとも <code>120</code> 秒以内にするとよい。</p>
 <p>!<a href="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png">https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png</a></p>
 <blockquote>
 <ul>
@@ -37533,15 +37533,15 @@
 <li><a href="https://qiita.com/corestate55/items/8cf2f713b10d0197c29e#%E6%83%B3%E5%AE%9A%E3%81%95%E3%82%8C%E3%82%8Bdns-qeury%E3%81%A8%E5%AE%9F%E9%9A%9B%E3%81%AE%E5%8B%95%E4%BD%9C%E3%81%AE%E6%AF%94%E8%BC%83">https://qiita.com/corestate55/items/8cf2f713b10d0197c29e#%E6%83%B3%E5%AE%9A%E3%81%95%E3%82%8C%E3%82%8Bdns-qeury%E3%81%A8%E5%AE%9F%E9%9A%9B%E3%81%AE%E5%8B%95%E4%BD%9C%E3%81%AE%E6%AF%94%E8%BC%83</a></li>
 </ul>
 </blockquote>
-<p>別の方法として、<code>/etc/resolv.conf</code>ファイルのndots値を<code>1</code>に変更してもよい。</p>
-<p>デフォルトでは、コンテナの<code>/etc/resolv.conf</code>ファイルには、<code>ndots:5</code>が設定されている。</p>
+<p>別の方法として、<code>/etc/resolv.conf</code> ファイルのndots値を <code>1</code> に変更してもよい。</p>
+<p>デフォルトでは、コンテナの <code>/etc/resolv.conf</code> ファイルには、<code>ndots:5</code> が設定されている。</p>
 <div class="highlight"><pre><span></span><code>nameserver<span class="w"> </span><span class="m">172</span>.20.0.10
 search<span class="w"> </span>foo.svc.cluster.local<span class="w"> </span>svc.cluster.local<span class="w"> </span>cluster.local
 options<span class="w"> </span>ndots:5
 </code></pre></div>
-<p>これにより、ドメインのドット数が<code>5</code>未満の場合は、Cluster内で名前解決を実行しようとする。</p>
+<p>これにより、ドメインのドット数が <code>5</code> 未満の場合は、Cluster内で名前解決を実行しようとする。</p>
 <p>しかし、Cluster外へしかリクエストを送信しないコンテナでは、Cluster内で名前解決を実行する必要はない。</p>
-<p>そういったコンテナのPod では、Pod DNS Configの<code>.spec.dnsConfig.options</code>キーでndotsを<code>1</code>にし、ドット数が<code>1</code>未満の場合 (つまりドットが<code>1</code>個でもあれば) 、Cluster外で名前解決を実行させるようにする。</p>
+<p>そういったコンテナのPod では、Pod DNS Configの <code>.spec.dnsConfig.options</code> キーでndotsを <code>1</code> にし、ドット数が <code>1</code> 未満の場合 (つまりドットが <code>1</code> 個でもあれば) 、Cluster外で名前解決を実行させるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37576,11 +37576,11 @@ options<span class="w"> </span>ndots:5
 <h4 id="envconfigmap">▼ env変数やConfigMapに機密性の高い情報を設定しない<a class="headerlink" href="#envconfigmap" title="Permanent link">&para;</a></h4>
 <p>ConfigMapやSecret上のファイルやデータを、コンテナにファイルや環境変数として渡せる。</p>
 <p>この時、ConfigMapでは情報を平文で保持することになる。</p>
-<p>機密性の高い情報を保持することは危険であり、Secretで保持する方が良い。</p>
+<p>機密性の高い情報を保持することは危険であり、Secretで保持するほうが良い。</p>
 <h4 id="secretsecret">▼ Secretの元データはSecretストアで暗号化して管理する<a class="headerlink" href="#secretsecret" title="Permanent link">&para;</a></h4>
 <p>Secretは、base64方式のエンコード値を保持する。</p>
-<p>これの元データを平文のまま管理することは危険なため、Secretストアに管理する方が良い。</p>
-<p>また、暗号化キーで暗号化した上で、Secretストアで管理するようにする。</p>
+<p>これの元データを平文のまま管理することは危険なため、Secretストアに管理するほうが良い。</p>
+<p>また、暗号化キーで暗号化したうえで、Secretストアで管理するようにする。</p>
 <table>
 <thead>
 <tr>
@@ -37622,9 +37622,9 @@ options<span class="w"> </span>ndots:5
 <p><br></p>
 <h3 id="_30">コンテナイメージが更新された場合のみコンテナイメージレジストリからプルする<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
 <p>コンテナ作成のたびにコンテナイメージをプルすると、コンテナイメージレジストリに負荷がかかる。</p>
-<p>K8sで、一度プルしたコンテナイメージを基本的に削除しないため、キャッシュとして再利用することができる。</p>
-<p><code>.spec.containers[*].imagePullPolicy</code>キーに<code>IfNotPresent</code>を使用し、Node上にコンテナイメージのキャッシュがない場合のみプルできるようにする。</p>
-<p>もし、キャッシュを使用せずにコンテナイメージをプルしたい場合、一時的に<code>.spec.containers[*].Always</code>キーを使用する。</p>
+<p>K8sで、一度プルしたコンテナイメージを基本的に削除しないため、キャッシュとして再利用できる。</p>
+<p><code>.spec.containers[*].imagePullPolicy</code> キーに <code>IfNotPresent</code> を使用し、Node上にコンテナイメージのキャッシュがない場合のみプルできるようにする。</p>
+<p>もし、キャッシュを使用せずにコンテナイメージをプルしたい場合、一時的に <code>.spec.containers[*].Always</code> キーを使用する。</p>
 <p><br></p>
 <h3 id="node_3">Nodeに永続データを持たせない<a class="headerlink" href="#node_3" title="Permanent link">&para;</a></h3>
 <p>StatefulSetを使用してNodeに永続データを持たせた場合、Nodeの障害が永続データにも影響を与えかねない。</p>
@@ -37663,7 +37663,7 @@ options<span class="w"> </span>ndots:5
 <h4 id="_33">▼ 算出<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
 <p>Pod内のコンテナが要求する合計CPU/メモリに見合ったCPU/メモリを割り当てる。</p>
 <p>また、NodeのCPU/メモリの割り当てに関係するため、Podの合計数やPod当たりのCPU/メモリ要求量を算出しておく。</p>
-<p>なおLimitRangeを使用すれば、<code>.spec.containers[*].resources</code>キー配下に設定がなくとも、コンテナの実行時に自動的に挿入してくれる。</p>
+<p>なおLimitRangeを使用すれば、<code>.spec.containers[*].resources</code> キー配下に設定がなくとも、コンテナの実行時に自動的に挿入してくれる。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/">https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/</a></li>
@@ -37673,7 +37673,7 @@ options<span class="w"> </span>ndots:5
 <p><br></p>
 <h3 id="_34">ハードウェアリソース要求量の上限下限値を設定する<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
 <p>ハードウェアリソース要求量の上限値 (<code>.spec.containers[*].resources.limits</code>) / 下限値 (<code>.spec.containers[*].resources.requests</code>) を設定しないと、コンテナはハードウェアリソースを自由に要求してしまい、Nodeのハードウェアリソース不足になりかねない。</p>
-<p><code>.spec.containers[*].resources</code>キーを使用すれば、コンテナのハードウェアリソース要求量の上限下限値を設定できる。</p>
+<p><code>.spec.containers[*].resources</code> キーを使用すれば、コンテナのハードウェアリソース要求量の上限下限値を設定できる。</p>
 <p>なお、コンテナの特性に合わせて、上限下限値を設定すると良い。</p>
 <h4 id="guaranteed-qos">▼ ハードウェアリソースを恒常的に要求する場合はGuaranteed QoSにする<a class="headerlink" href="#guaranteed-qos" title="Permanent link">&para;</a></h4>
 <p>ハードウェアリソースを恒常的に要求するコンテナ (例：アプリ) では、Guaranteed QoSにする。</p>
@@ -37681,7 +37681,7 @@ options<span class="w"> </span>ndots:5
 <p>上限 (<code>.spec.containers[*].resources.limits</code>) と下限 (<code>.spec.containers[*].resources.requests</code>) の設定の両方または一方を省略すると、自動的にGuaranteedになる。</p>
 <p>コンテナが一定量のハードウェアリソースを要求し続けたとしても、無制限 (Nodeの空きリソース分) にハードウェアリソースを提供し、要求に耐えられるようにする。</p>
 <p>基本的には、ほとんどのコンテナをGuaranteed QoSにすればよい。</p>
-<p>補足として、Guaranteed QoSのPodはスケジューリングの優先度が最も高く、Node-pressure Evictionが発生した場合には、他のQoS (Burstable、BestEffort) よりも後に退避する。</p>
+<p>補足として、Guaranteed QoSのPodはスケジューリングの優先度がもっとも高く、Node-pressure Evictionが発生した場合には、他のQoS (Burstable、BestEffort) よりも後に退避する。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed">https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed</a></li>
@@ -37713,8 +37713,8 @@ options<span class="w"> </span>ndots:5
 </tr>
 <tr>
 <td>limits</td>
-<td>ここ一週間の負荷ピーク時は多めに見積もって<code>0.9</code>コアである。ピーク時にも<code>70</code>%くらいになるコア数にする。</td>
-<td>ここ一週間の負荷ピーク時は多めに見積もって<code>1.2</code>GiBである。ピーク時にも<code>70</code>%くらいになるメモリ量にする。</td>
+<td>ここ一週間の負荷ピーク時は多めに見積もって <code>0.9</code> コアである。ピーク時にも <code>70</code>%くらいになるコア数にする。</td>
+<td>ここ一週間の負荷ピーク時は多めに見積もって <code>1.2</code>GiBである。ピーク時にも <code>70</code>%くらいになるメモリ量にする。</td>
 </tr>
 </tbody>
 </table>
@@ -37725,7 +37725,7 @@ options<span class="w"> </span>ndots:5
 </blockquote>
 <h4 id="cpuburstableqos">▼ CPUの上限を設定しないBurstableなQoSにする<a class="headerlink" href="#cpuburstableqos" title="Permanent link">&para;</a></h4>
 <p>CPUの上限 (<code>.spec.containers[*].resources.limits</code>) だけは設定しないようにし、BurstableなQoSにする方法もある。</p>
-<p>ただ、上限を設定した方が監視しやすく、エラーの原因もわかりやすいため、CPUの上限も設定がおすすめである。</p>
+<p>ただ、上限を設定したほうが監視しやすく、エラーの原因もわかりやすいため、CPUの上限も設定がおすすめである。</p>
 <blockquote>
 <ul>
 <li><a href="https://home.robusta.dev/blog/stop-using-cpu-limits">https://home.robusta.dev/blog/stop-using-cpu-limits</a></li>
@@ -37890,8 +37890,8 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <h4 id="initcontainerssls">▼ InitContainerで依存ツールやSSLs用名所をインストールする<a class="headerlink" href="#initcontainerssls" title="Permanent link">&para;</a></h4>
 <p><strong>＊実行例＊</strong></p>
 <p>appコンテナからHTTPSリクエストを送信する場合に、サーバー証明書が必要になる。</p>
-<p>これはすでに署名されている必要があり、例えばubuntuでは、CA証明書 (CA証明書) を含む<code>ca-certificates</code>パッケージをインストールする。</p>
-<p>すると、<code>/etc/ssl</code>ディレクトリ配下にCA証明書に関する一連のファイルがインストールされる。</p>
+<p>これはすでに署名されている必要があり、例えばubuntuでは、CA証明書 (CA証明書) を含む <code>ca-certificates</code> パッケージをインストールする。</p>
+<p>すると、<code>/etc/ssl</code> ディレクトリ配下にCA証明書に関する一連のファイルがインストールされる。</p>
 <p>これを、共有Volumeを介して、appコンテナにマウントする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -37951,7 +37951,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <h2 id="pod_2">Podとコンテナで共通のプラクティス<a class="headerlink" href="#pod_2" title="Permanent link">&para;</a></h2>
 <h3 id="securitycontext">securityContextを適切に使い分ける<a class="headerlink" href="#securitycontext" title="Permanent link">&para;</a></h3>
 <h4 id="podsecuritycontext">▼ PodとコンテナのsecurityContextを使い分ける<a class="headerlink" href="#podsecuritycontext" title="Permanent link">&para;</a></h4>
-<p><code>securityContext</code>キーは、Podとコンテナのいずれかまたは両方に設定できるキーを持つ。</p>
+<p><code>securityContext</code> キーは、Podとコンテナのいずれかまたは両方に設定できるキーを持つ。</p>
 <p>特にPodに設定できるキーは、Pod内の全てのコンテナに同じ設定を適用する。</p>
 <table>
 <thead>
@@ -37978,7 +37978,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 </ul>
 </blockquote>
 <h4 id="runasnonrootrunasuser-runasgrouproot">▼ runAsNonRoot、runAsUser / runAsGroupを使用して、非rootユーザーでコンテナを実行する<a class="headerlink" href="#runasnonrootrunasuser-runasgrouproot" title="Permanent link">&para;</a></h4>
-<p>コンテナはホスト (Node) と各namespaceを分離しており、Capabilityを制限した上で実行する。</p>
+<p>コンテナはホスト (Node) と各namespaceを分離しており、Capabilityを制限したうえで実行する。</p>
 <p>しかし、Kubernetesでは諸々の理由により、<code>1.28</code> 時点でnamespaceのうちuser namespaceをデフォルトで分離しない実装になっている (なお、Dockerではデフォルトで無効)。</p>
 <p>そのため、NodeとコンテナのUser IDやGroup IDのマッピングは同じになっている。</p>
 <blockquote>
@@ -37994,16 +37994,16 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <li><a href="https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/">https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/</a></li>
 </ul>
 </blockquote>
-<p>よって、コンテナブレイクアウトの攻撃の可能性を小さくするために、できるだけコンテナをrootユーザーで実行しない方が良い。</p>
+<p>よって、コンテナブレイクアウトの攻撃の可能性を小さくするために、できるだけコンテナをrootユーザーで実行しないほうが良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://jpn.nec.com/cybersecurity/blog/210730/index.html">https://jpn.nec.com/cybersecurity/blog/210730/index.html</a></li>
 <li><a href="https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/">https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/</a></li>
 </ul>
 </blockquote>
-<p>そこで、<code>.securityContext.runAsNonRoot</code>キーを有効化し、非rootユーザーでコンテナを実行するようにしておく。</p>
-<p>さらに、<code>.securityContext.runAsUser</code>キーと<code>.securityContext.runAsGroup</code>キーで、使用する実行ユーザーのUIDとGIDを指定するようにしておく。</p>
-<p>なお、Dockerfileの<code>USER</code>や<code>GROUP</code>でも同様にUIDとGIDを設定できるが、マニフェスト側でもDockerfileと同様にrunAsUserとrunAsGroupを設定した方が可読性が高くなる。</p>
+<p>そこで、<code>.securityContext.runAsNonRoot</code> キーを有効化し、非rootユーザーでコンテナを実行するようにしておく。</p>
+<p>さらに、<code>.securityContext.runAsUser</code> キーと <code>.securityContext.runAsGroup</code> キーで、使用する実行ユーザーのUIDとGIDを指定するようにしておく。</p>
+<p>なお、Dockerfileの <code>USER</code> や <code>GROUP</code> でも同様にUIDとGIDを設定できるが、マニフェスト側でもDockerfileと同様にrunAsUserとrunAsGroupを設定したほうが可読性が高くなる。</p>
 <p>そのため、Dockerfile側にすでに設定があるかどうかに関わらず、コード規約としてマニフェスト側でも設定するようにする。</p>
 <blockquote>
 <ul>
@@ -38012,11 +38012,11 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 </blockquote>
 <h4 id="privileged">▼ privilegedを無効化する<a class="headerlink" href="#privileged" title="Permanent link">&para;</a></h4>
 <p>特権コンテナの実行ユーザーは、rootユーザー権限のCapability (CHOWN、NET_RAW、CAP_SYS_BOOT、CAP_AUDIT_WRITEなど) の全て持っている。</p>
-<p>非特権コンテナを実行するrootユーザーがCapabilityを全く持たないことからもわかる通り、非常に大きな権限を持つ。</p>
-<p>例えば、特権コンテナの実行ユーザーはルートファイルシステムにある<code>/proc</code>に書き込みする権限を持つ。</p>
-<p><code>/proc</code>配下にはNodeへのアクセスを中継するファイルがあるため、特権コンテナの実行ユーザーはNode上で任意のコマンドを実行できる。</p>
-<p>よって、これらを防ぐために特権コンテナは無効化しておいた方が良い。</p>
-<p><code>.spec.containers[*].securityContext.privileged</code>キーで、コンテナに特権を付与するかどうかを設定できる。</p>
+<p>非特権コンテナを実行するrootユーザーがCapabilityを全く持たないことからもわかるとおり、非常に大きな権限を持つ。</p>
+<p>例えば、特権コンテナの実行ユーザーはルートファイルシステムにある <code>/proc</code> に書き込みする権限を持つ。</p>
+<p><code>/proc</code> 配下にはNodeへのアクセスを中継するファイルがあるため、特権コンテナの実行ユーザーはNode上で任意のコマンドを実行できる。</p>
+<p>よって、これらを防ぐために特権コンテナは無効化しておいたほうが良い。</p>
+<p><code>.spec.containers[*].securityContext.privileged</code> キーで、コンテナに特権を付与するかどうかを設定できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://jpn.nec.com/cybersecurity/blog/210730/index.html">https://jpn.nec.com/cybersecurity/blog/210730/index.html</a></li>
@@ -38026,7 +38026,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 </blockquote>
 <h4 id="allowprivilegeescalation">▼ allowPrivilegeEscalationを無効化する<a class="headerlink" href="#allowprivilegeescalation" title="Permanent link">&para;</a></h4>
 <p>コンテナのプロセスは、コンテナ起動コマンド (親プロセス)、親プロセスが実行するプロセス (子プロセス) 、からなる。</p>
-<p><code>.containers[*].securityContext.allowPrivilegeEscalation</code>キーを有効化してしまうと、子プロセスは権限フラグ (<code>setuid</code>、<code>setgid</code>) を使用できるようになる。</p>
+<p><code>.containers[*].securityContext.allowPrivilegeEscalation</code> キーを有効化してしまうと、子プロセスは権限フラグ (<code>setuid</code>、<code>setgid</code>) を使用できるようになる。</p>
 <p>権限フラグを使用すると、コンテナの実行ユーザーは、rootユーザーに近い権限を一時的に持てるようになる。</p>
 <p>つまり、悪意のある人がこれを使用すると、Node上の他のコンテナやNode自体にリクエストできてしまう。</p>
 <blockquote>
@@ -38035,7 +38035,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <li><a href="https://docs.docker.com/engine/security/userns-remap/">https://docs.docker.com/engine/security/userns-remap/</a></li>
 </ul>
 </blockquote>
-<p>そこで、<code>.containers[*].securityContext.allowPrivilegeEscalation</code>キーを有効化し、権限フラグを使用できないようにしておく。</p>
+<p>そこで、<code>.containers[*].securityContext.allowPrivilegeEscalation</code> キーを有効化し、権限フラグを使用できないようにしておく。</p>
 <blockquote>
 <ul>
 <li><a href="https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/">https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/</a></li>
@@ -38043,9 +38043,9 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 </blockquote>
 <h4 id="readonlyrootfilesystem">▼ readOnlyRootFilesystemを有効化する<a class="headerlink" href="#readonlyrootfilesystem" title="Permanent link">&para;</a></h4>
 <p>コンテナは自身のファイルシステムにリクエストを送信できる。</p>
-<p>この時に、<code>.containers[*].securityContext.readOnlyRootFilesystem</code>キーが無効になっていると、コンテナのルートファイルシステムにRead/Writeの両方を実行できる。</p>
+<p>この時に、<code>.containers[*].securityContext.readOnlyRootFilesystem</code> キーが無効になっていると、コンテナのルートファイルシステムにRead/Writeの両方を実行できる。</p>
 <p>つまり、悪意のある人がこれを使用すると、任意のディレクトリ配下でファイルを作成変更できてしまう。</p>
-<p>そこで、<code>.containers[*].securityContext.readOnlyRootFilesystem</code>キーを有効化し、Readのみを実行できるようにしておく。</p>
+<p>そこで、<code>.containers[*].securityContext.readOnlyRootFilesystem</code> キーを有効化し、Readのみを実行できるようにしておく。</p>
 <p>アプリでログの出力先をログファイルにしているとエラーになってしまうため、標準出力/標準エラー出力にログを出力する必要がある。</p>
 <blockquote>
 <ul>
@@ -38112,11 +38112,11 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <p>実行環境の誤選択や悪意のある人のアクセスを防ぐために、リリース時以外は全てのUserAccountの本番環境の認可スコープをReadにする。</p>
 <p><br></p>
 <h3 id="useraccount">本番環境ではUserAccountに不必要に権限を割り当てない<a class="headerlink" href="#useraccount" title="Permanent link">&para;</a></h3>
-<h4 id="podsexecpodsattach">▼ <code>pods/exec</code>や<code>pods/attach</code>を設定しない<a class="headerlink" href="#podsexecpodsattach" title="Permanent link">&para;</a></h4>
-<p>RoleやClusterRoleに設定できる<code>pods/exec</code>や<code>pods/attach</code>といった権限は、Pod内のコンテナに接続するために使用する。</p>
+<h4 id="podsexec-podsattach">▼ <code>pods/exec</code> や <code>pods/attach</code> を設定しない<a class="headerlink" href="#podsexec-podsattach" title="Permanent link">&para;</a></h4>
+<p>RoleやClusterRoleに設定できる <code>pods/exec</code> や <code>pods/attach</code> といった権限は、Pod内のコンテナに接続するために使用する。</p>
 <p>コンテナへの接続を許可してしまうと、コンテナ内から悪意のある人がサイバー攻撃を実施したり、あるいは悪意がない人が本来不必要な作業を実施するかもしれない。</p>
 <p>一方で場合によっては、デバッグのためにPod内のコンテナに接続する必要があるかもしれない。</p>
-<p>そこで、本番環境ではClusterの管理者のUserAccount以外には<code>pods/exec</code>や<code>pods/attach</code>を付与しない</p>
+<p>そこで、本番環境ではClusterの管理者のUserAccount以外には <code>pods/exec</code> や <code>pods/attach</code> を付与しない</p>
 <p>また、テスト環境では基本的に設定しないが、必要であれば設定を許容する。</p>
 <blockquote>
 <ul>
@@ -38238,7 +38238,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <td><a href="https://polaris.docs.fairwinds.com/checks/security/">https://polaris.docs.fairwinds.com/checks/security/</a></td>
 <td>脆弱性、効率性、信頼性の観点で検証する。</td>
 <td>★</td>
-<td>競合ツールと比較して、ベストプラクティス違反の検証項目が最も多い。</td>
+<td>競合ツールと比較して、ベストプラクティス違反の検証項目がもっとも多い。</td>
 <td></td>
 </tr>
 <tr>
@@ -38247,7 +38247,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <td><a href="https://aquasecurity.github.io/trivy/dev/docs/target/kubernetes/">https://aquasecurity.github.io/trivy/dev/docs/target/kubernetes/</a></td>
 <td>マニフェストの設定値に起因する脆弱性を検証する</td>
 <td>★</td>
-<td>他の競合ツールとは異なり、K8s以外のIaCツール (Terraform、Dockerfile) や、コンテナイメージ (コンテナイメージ、マシンコンテナイメージ) も検証できるため、他の場面でも知見を流用できる。いずれのツールも、おおよそ同じDB (例：GitHub、GitLab、RedHatなど) に基づいて検証するため、脆弱性診断の項目数で優劣を比べない方が良い。</td>
+<td>他の競合ツールとは異なり、K8s以外のIaCツール (Terraform、Dockerfile) や、コンテナイメージ (コンテナイメージ、マシンコンテナイメージ) も検証できるため、他の場面でも知見を流用できる。いずれのツールも、おおよそ同じDB (例：GitHub、GitLab、RedHatなど) に基づいて検証するため、脆弱性診断の項目数で優劣を比べないほうが良い。</td>
 <td></td>
 </tr>
 <tr>
@@ -38274,7 +38274,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <td><a href="https://pluto.docs.fairwinds.com/">https://pluto.docs.fairwinds.com/</a></td>
 <td>指定したKubernetesのバージョンに基づいて、マニフェストの非推奨apiVersionを検証する。</td>
 <td>★</td>
-<td>競合ツールの中で最もコントリビューター数が多くて開発が盛んである。また、GitHubのスター数が最も多い。</td>
+<td>競合ツールの中でもっともコントリビューター数が多くて開発が盛んである。また、GitHubのスター数がもっとも多い。</td>
 <td>✅</td>
 </tr>
 <tr>
@@ -38386,7 +38386,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <td>PodDisruptionBugdetの設定によってWorkload (例：Deployment、DaemonSet、StatefulSet、Jobなど) で起動しているアプリケーションのPodが全滅しないかを確認する。 PodDisruptionBugdetを適切に設定できていないと、例えばWebアプリケーションのコンテナが全てダウンしてしまいリクエストを受け付けられなくなるといったケースがあるため、PodDisruptionBugdetの設定した内容に沿ってPodが保護されるかを確認する。</td>
 </tr>
 <tr>
-<td>Podが正しくNodeに分散されていることを確認する。</td>
+<td>PodがまさしくNodeに分散されていることを確認する。</td>
 <td>NodeAffinityの設定に基づいて適切にPodがNodeに分散配置されるかや、NodeLabelやTaintの設定に基づいたNodeが選定されているかなどを確認する。</td>
 </tr>
 <tr>
@@ -38571,7 +38571,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <h3 id="_50">マニフェストを管理しやすくする<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h3>
 <h4 id="k8s">▼ K8sリソースのラベル付けする<a class="headerlink" href="#k8s" title="Permanent link">&para;</a></h4>
 <p>マニフェストに意味付けするために、ラベルを付与する。</p>
-<p>適切にラベルを付与しておくと、仕様を理解する上での助けになる。</p>
+<p>適切にラベルを付与しておくと、仕様を理解するうえでの助けになる。</p>
 <table>
 <thead>
 <tr>
@@ -38588,12 +38588,12 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tr>
 <tr>
 <td><a href="http://app.kubernetes.io/component">http://app.kubernetes.io/component</a></td>
-<td>K8sリソースをシステムの要素と捉えた時に、その役割名を設定する。</td>
+<td>K8sリソースをシステムの要素と捉えたときに、その役割名を設定する。</td>
 <td>app、database</td>
 </tr>
 <tr>
 <td><a href="http://app.kubernetes.io/part-of">http://app.kubernetes.io/part-of</a></td>
-<td>K8sリソースをシステムの要素と捉えた時に、その親のシステム名を設定する。</td>
+<td>K8sリソースをシステムの要素と捉えたときに、その親のシステム名を設定する。</td>
 <td>argocd</td>
 </tr>
 <tr>
@@ -38743,7 +38743,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月3日 18:17:54 JST">2025-11-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

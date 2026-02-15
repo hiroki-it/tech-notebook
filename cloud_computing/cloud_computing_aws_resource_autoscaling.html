@@ -33722,9 +33722,9 @@
 <p><strong>＊例＊</strong></p>
 <p>CPU平均使用率に段階的な閾値を設定する。</p>
 <ul>
-<li><code>40</code>%の時にAWS EC2が<code>1</code>個スケールアウト</li>
-<li><code>70</code>%の時にAWS EC2を<code>2</code>個スケールアウト</li>
-<li><code>90</code>%の時にAWS EC2を<code>3</code>個スケールアウト</li>
+<li><code>40</code>%の時にAWS EC2が <code>1</code> 個スケールアウト</li>
+<li><code>70</code>%の時にAWS EC2を <code>2</code> 個スケールアウト</li>
+<li><code>90</code>%の時にAWS EC2を <code>3</code> 個スケールアウト</li>
 </ul>
 <h4 id="aws-ecs">▼ AWS ECSの場合<a class="headerlink" href="#aws-ecs" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
@@ -33749,27 +33749,27 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>最小AWS ECSタスク数を<code>2</code>、必要AWS ECSタスク数を<code>4</code>、最大数を<code>6</code>、CPU平均使用率を<code>40</code>%に設定する例を考える。</p>
+<p>最小AWS ECSタスク数を <code>2</code>、必要AWS ECSタスク数を <code>4</code>、最大数を <code>6</code>、CPU平均使用率を <code>40</code>%に設定する例を考える。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>平常時、CPU使用率<code>40</code>%に維持される。</p>
+<p>平常時、CPU使用率 <code>40</code>%に維持される。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>リクエストが増加し、CPU使用率<code>55</code>%に上昇する。</p>
+<p>リクエストが増加し、CPU使用率 <code>55</code>%に上昇する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>AWS ECSタスク数が<code>6</code>個にスケールアウトし、CPU使用率<code>40</code>%に維持される。</p>
+<p>AWS ECSタスク数が <code>6</code> 個にスケールアウトし、CPU使用率 <code>40</code>%に維持される。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
-<p>リクエスト数が減少し、CPU使用率が<code>20</code>%に低下する。</p>
+<p>リクエスト数が減少し、CPU使用率が <code>20</code>%に低下する。</p>
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
-<p>AWS ECSタスク数が<code>2</code>個にスケールインし、CPU使用率<code>40</code>%に維持される。</p>
+<p>AWS ECSタスク数が <code>2</code> 個にスケールインし、CPU使用率 <code>40</code>%に維持される。</p>
 </dd>
 </dl>
 <table>
@@ -33794,7 +33794,7 @@
 <tr>
 <td>ターゲット値</td>
 <td>AWS ECSタスク数のスケーリングが実行される収束値を設定する。</td>
-<td>ターゲット値を超過している場合、AWS ECSタスク数がスケールアウトされる。反対に、ターゲット値未満 (正確にはターゲット値の<code>90</code>%未満) の場合、AWS ECSタスク数がスケールインされる。</td>
+<td>ターゲット値を超過している場合、AWS ECSタスク数がスケールアウトされる。反対に、ターゲット値未満 (正確にはターゲット値の <code>90</code>%未満) の場合、AWS ECSタスク数がスケールインされる。</td>
 </tr>
 <tr>
 <td>スケールアウトクールダウン期間</td>
@@ -33840,8 +33840,8 @@
 <p><br></p>
 <h3 id="aws-ec2">AWS EC2ヘルスチェック<a class="headerlink" href="#aws-ec2" title="Permanent link">&para;</a></h3>
 <p>AWS EC2が自身をヘルスチェックし、異常なAWS EC2があれば、必要に応じてAWS EC2を作成し直す。</p>
-<p><code>running</code>が正常である。</p>
-<p><code>impaired</code>、<code>stopping</code>、<code>stopped</code>、<code>shutting-down</code>、<code>terminated</code>が異常である。</p>
+<p><code>running</code> が正常である。</p>
+<p><code>impaired</code>、<code>stopping</code>、<code>stopped</code>、<code>shutting-down</code>、<code>terminated</code> が異常である。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-checks-overview.html">https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-checks-overview.html</a></li>
@@ -33850,8 +33850,8 @@
 <p><br></p>
 <h3 id="_15">ロードバランサー<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <p>AWS ALBがAWS EC2をヘルスチェックし、異常なAWS EC2があれば、必要に応じてAWS EC2を作成し直す。</p>
-<p><code>Healthy</code>が正常である。</p>
-<p><code>Unhealthy</code>が異常である。</p>
+<p><code>Healthy</code> が正常である。</p>
+<p><code>Unhealthy</code> が異常である。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-checks-overview.html">https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-checks-overview.html</a></li>
@@ -33886,7 +33886,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年12月12日 17:39:51 JST">2025-12-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

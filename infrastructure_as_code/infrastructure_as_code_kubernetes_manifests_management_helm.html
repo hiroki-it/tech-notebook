@@ -33425,9 +33425,9 @@
 </ul>
 </blockquote>
 <h4 id="2">▼ 2方向の戦略的マージパッチ<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
-<p>Helmの <code>v2</code>では、2方向の戦略的マージパッチを採用している。</p>
+<p>Helmの <code>v2</code> では、2方向の戦略的マージパッチを採用している。</p>
 <p>この戦略では、『前回のHelmリリースによるマニフェスト』『今回のHelmリリースによるマニフェスト』の2つを比較する。</p>
-<p>そのため、Helm以外の方法 (例：<code>kubectl edit</code>コマンド、<code>kubectl apply</code>コマンド) でマニフェストが変更されたことを検知できず、チャートの宣言通りにHelmリリースやロールバックを実施できなかった。</p>
+<p>そのため、Helm以外の方法 (例：<code>kubectl edit</code> コマンド、<code>kubectl apply</code> コマンド) でマニフェストが変更されたことを検知できず、チャートの宣言通りにHelmリリースやロールバックを実施できなかった。</p>
 <blockquote>
 <ul>
 <li><a href="https://helm.sh/docs/faq/changes_since_helm2/#improved-upgrade-strategy-3-way-strategic-merge-patches">https://helm.sh/docs/faq/changes_since_helm2/#improved-upgrade-strategy-3-way-strategic-merge-patches</a></li>
@@ -33435,10 +33435,10 @@
 </ul>
 </blockquote>
 <h4 id="3">▼ 3方向の戦略的マージパッチ<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
-<p>Helmの <code>v3</code>では、3方向の戦略的マージパッチを採用している。</p>
+<p>Helmの <code>v3</code> では、3方向の戦略的マージパッチを採用している。</p>
 <p>この戦略では、『前回のHelmリリースによるマニフェスト』『今回のHelmリリースのマニフェスト』『前回のHelmリリース後のHelm以外の方法によるマニフェスト』の3つを比較する。</p>
-<p>そのため、Helm以外の方法 (例：<code>kubectl edit</code>コマンド、<code>kubectl apply</code>コマンド) でマニフェストが変更されたことを検知でき、チャートの宣言通りにHelmリリースやロールバックを実施できる。</p>
-<p>ただし、すでにHelm以外 (例：<code>kubectl apply</code>コマンド、Kustomize) で作成されているマニフェストからHelmに移行する場合、前回のHelmリリースによるマニフェスト自体が存在せず、新規のHelmリリースとなる。</p>
+<p>そのため、Helm以外の方法 (例：<code>kubectl edit</code> コマンド、<code>kubectl apply</code> コマンド) でマニフェストが変更されたことを検知でき、チャートの宣言通りにHelmリリースやロールバックを実施できる。</p>
+<p>ただし、すでにHelm以外 (例：<code>kubectl apply</code> コマンド、Kustomize) で作成されているマニフェストからHelmに移行する場合、前回のHelmリリースによるマニフェスト自体が存在せず、新規のHelmリリースとなる。</p>
 <p>そのため、チャートと現在のマニフェストと比較できない。</p>
 <blockquote>
 <ul>
@@ -33449,7 +33449,7 @@
 <p><br></p>
 <h2 id="02-helm">02. helmクライアント<a class="headerlink" href="#02-helm" title="Permanent link">&para;</a></h2>
 <h3 id="helm_1">helmクライアントとは<a class="headerlink" href="#helm_1" title="Permanent link">&para;</a></h3>
-<p>helmクライアントは、リポジトリからインストールしたチャートアーカイブ (<code>.tgz</code>形式ファイル) に基づいて、現在のコンテキストで指定されているClusterのkube-apiserverにリクエストを送信する。</p>
+<p>helmクライアントは、リポジトリからインストールしたチャートアーカイブ (<code>.tgz</code> 形式ファイル) に基づいて、現在のコンテキストで指定されているClusterのkube-apiserverにリクエストを送信する。</p>
 <p>これにより、Kubernetes上にKubernetesリソースを作成する。</p>
 <p><br></p>
 <h3 id="_5">バージョン<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
@@ -33547,9 +33547,9 @@
 <p><br></p>
 <h3 id="_8">チャートリポジトリ化<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ リポジトリをチャートリポジトリとして扱う場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>リポジトリをチャートリポジトリとして扱う場合、チャートリポジトリのルートディレクトリ配下に、<code>index.yaml</code>ファイル、各バージョンのチャートアーカイブ (<code>.tgz</code>形式ファイル) を配置する。</p>
+<p>リポジトリをチャートリポジトリとして扱う場合、チャートリポジトリのルートディレクトリ配下に、<code>index.yaml</code> ファイル、各バージョンのチャートアーカイブ (<code>.tgz</code> 形式ファイル) を配置する。</p>
 <p>これらにより、リモートからチャートリポジトリのURLを指定し、チャートをインストールできるようになる。</p>
-<p>ArtifactHubや、GitHubリポジトリにて <code>gh-pages</code>ブランチ上で複数のバージョンのチャートを管理するような使い方は、このチャートリポジトリに相当する。</p>
+<p>ArtifactHubや、GitHubリポジトリにて <code>gh-pages</code> ブランチ上で複数のバージョンのチャートを管理するような使い方は、このチャートリポジトリに相当する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span><span class="w"> </span><span class="c1"># チャートリポジトリ</span>
 <span class="l l-Scalar l-Scalar-Plain">├── index.yaml</span>
 <span class="l l-Scalar l-Scalar-Plain">├── foo-chart-1.0.0.tgz</span><span class="w"> </span><span class="c1"># fooチャートアーカイブ</span>
@@ -33568,7 +33568,7 @@
 </ul>
 </blockquote>
 <h4 id="_10">▼ リポジトリをマニフェストリポジトリとしてのまま扱う場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>リポジトリをチャートリポジトリとして扱わず、ローカルのチャートとして操作する場合、<code>index.yaml</code>ファイルとチャートアーカイブ (<code>.tgz</code>形式ファイル) が不要になる。</p>
+<p>リポジトリをチャートリポジトリとして扱わず、ローカルのチャートとして操作する場合、<code>index.yaml</code> ファイルとチャートアーカイブ (<code>.tgz</code> 形式ファイル) が不要になる。</p>
 <p>リモートからは、チャートをインストールできない。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span><span class="w"> </span><span class="c1"># マニフェストリポジトリ</span>
 <span class="l l-Scalar l-Scalar-Plain">├── foo-chart</span><span class="w"> </span><span class="c1"># fooチャート</span>
@@ -33586,7 +33586,7 @@
 <h2 id="05">05. チャート<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_11">チャートとは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>必要なKubernetesリソースを作成するためのマニフェストのセットをパッケージ化し、管理しやすくしたもの。</p>
-<p>ルートディレクトリに <code>Chart.yaml</code>ファイルと <code>template</code>ディレクトリを配置する必要がある。</p>
+<p>ルートディレクトリに <code>Chart.yaml</code> ファイルと <code>template</code> ディレクトリを配置する必要がある。</p>
 <p>また、チャートのコントリビュート要件も参考にすること。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── foo-chart/</span><span class="w"> </span><span class="c1"># fooチャート</span>
@@ -33614,7 +33614,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_12">チャートアーカイブ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p><code>.tgz</code>形式で圧縮されたチャートのパッケージ。</p>
+<p><code>.tgz</code> 形式で圧縮されたチャートのパッケージ。</p>
 <p><br></p>
 <h3 id="helm_2">Helmリリース<a class="headerlink" href="#helm_2" title="Permanent link">&para;</a></h3>
 <p>実際にインストールされたチャートのインスタンスのこと。</p>
@@ -33665,7 +33665,7 @@ sh.helm.release.v1.bar-chart.v5<span class="w">        </span>helm.sh/release.v1
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月2日 16:19:44 JST">2025-05-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

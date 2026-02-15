@@ -18396,12 +18396,12 @@
   <a href="#buildspecyml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        buildspec.ymlファイル
+        buildspec.yml ファイル
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="buildspec.ymlファイル">
+    <nav class="md-nav" aria-label="buildspec.yml ファイル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -18598,7 +18598,7 @@
   <a href="#imagedefinitionsjson" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ imagedefinitions.jsonファイル
+        ▼ imagedefinitions.json ファイル
       
     </span>
   </a>
@@ -18637,7 +18637,7 @@
   <a href="#appspecyml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ appspec.ymlファイル
+        ▼ appspec.yml ファイル
       
     </span>
   </a>
@@ -18648,7 +18648,7 @@
   <a href="#imagedetailjson" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ imageDetail.jsonファイル
+        ▼ imageDetail.json ファイル
       
     </span>
   </a>
@@ -18659,7 +18659,7 @@
   <a href="#taskdefjson" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ taskdef.jsonファイル
+        ▼ taskdef.json ファイル
       
     </span>
   </a>
@@ -33261,12 +33261,12 @@
   <a href="#buildspecyml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        buildspec.ymlファイル
+        buildspec.yml ファイル
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="buildspec.ymlファイル">
+    <nav class="md-nav" aria-label="buildspec.yml ファイル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33463,7 +33463,7 @@
   <a href="#imagedefinitionsjson" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ imagedefinitions.jsonファイル
+        ▼ imagedefinitions.json ファイル
       
     </span>
   </a>
@@ -33502,7 +33502,7 @@
   <a href="#appspecyml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ appspec.ymlファイル
+        ▼ appspec.yml ファイル
       
     </span>
   </a>
@@ -33513,7 +33513,7 @@
   <a href="#imagedetailjson" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ imageDetail.jsonファイル
+        ▼ imageDetail.json ファイル
       
     </span>
   </a>
@@ -33524,7 +33524,7 @@
   <a href="#taskdefjson" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ taskdef.jsonファイル
+        ▼ taskdef.json ファイル
       
     </span>
   </a>
@@ -33724,7 +33724,7 @@
 <p>デプロイフェーズを実行する。</p>
 <p><br></p>
 <h2 id="02-codebuild">02. CodeBuild<a class="headerlink" href="#02-codebuild" title="Permanent link">&para;</a></h2>
-<h3 id="buildspecyml"><code>buildspec.yml</code>ファイル<a class="headerlink" href="#buildspecyml" title="Permanent link">&para;</a></h3>
+<h3 id="buildspecyml"><code>buildspec.yml</code> ファイル<a class="headerlink" href="#buildspecyml" title="Permanent link">&para;</a></h3>
 <h4 id="aws-ecs">▼ AWS ECSの場合<a class="headerlink" href="#aws-ecs" title="Permanent link">&para;</a></h4>
 <p>AWS ECSのために、CodeBuildの設定を実行する。</p>
 <p>ルートディレクトリの直下に配置しておく。</p>
@@ -33736,7 +33736,7 @@
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
 <p>コンテナをビルドする場合を示す。</p>
-<p>コミットのハッシュ値でコンテナイメージをプッシュしたい場合、CodeBuildの設計上、<code>latest</code>タグもプッシュしておいた方が良い。</p>
+<p>コミットのハッシュ値でコンテナイメージをプッシュしたい場合、CodeBuildの設計上、<code>latest</code> タグもプッシュしておいたほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
 
 <span class="nt">phases</span><span class="p">:</span>
@@ -33835,9 +33835,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="_9">ローリングアップデート<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<h4 id="imagedefinitionsjson">▼ <code>imagedefinitions.json</code>ファイル<a class="headerlink" href="#imagedefinitionsjson" title="Permanent link">&para;</a></h4>
+<h4 id="imagedefinitionsjson">▼ <code>imagedefinitions.json</code> ファイル<a class="headerlink" href="#imagedefinitionsjson" title="Permanent link">&para;</a></h4>
 <p>新しいリビジョンのAWS ECSタスク定義を作成するために、新しいコンテナ名とイメージリポジトリURLを定義する。</p>
-<p>リポジトリに事前に配置するのではなく、CI/CDパイプライン上で動的に作成するようにした方が良い。</p>
+<p>リポジトリに事前に配置するのではなく、CI/CDパイプライン上で動的に作成するようにしたほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span>
 <span class="w">  </span><span class="p p-Indicator">{</span>
 <span class="w">    </span><span class="s">&quot;imageUri&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;イメージリポジトリURL&gt;&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># &lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/&lt;イメージリポジトリ名&gt;:latest</span>
@@ -33896,9 +33896,9 @@
 <li><a href="https://tech.isid.co.jp/entry/2022/01/11/CodeDeploy_%E3%81%AB%E3%82%88%E3%82%8BECS_%E3%81%A7%E3%81%AEBlue/Green%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%AE%E8%A9%B1">https://tech.isid.co.jp/entry/2022/01/11/CodeDeploy_%E3%81%AB%E3%82%88%E3%82%8BECS_%E3%81%A7%E3%81%AEBlue/Green%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%AE%E8%A9%B1</a></li>
 </ul>
 </blockquote>
-<h4 id="appspecyml">▼ <code>appspec.yml</code>ファイル<a class="headerlink" href="#appspecyml" title="Permanent link">&para;</a></h4>
+<h4 id="appspecyml">▼ <code>appspec.yml</code> ファイル<a class="headerlink" href="#appspecyml" title="Permanent link">&para;</a></h4>
 <p>ルートディレクトリの直下に配置しておく。仕様として、複数のコンテナをデプロイできない。</p>
-<p>AWS ECSタスク定義名を<code>&lt;TASK_DEFINITION&gt;</code>とすると、<code>taskdef.json</code>ファイルの値を元にして、新しいAWS ECSタスク定義が自動的に代入される。</p>
+<p>AWS ECSタスク定義名を <code>&lt;TASK_DEFINITION&gt;</code> とすると、<code>taskdef.json</code> ファイルの値を元にして、新しいAWS ECSタスク定義が自動的に代入される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
 
 <span class="nt">Resources</span><span class="p">:</span>
@@ -33919,19 +33919,19 @@
 <li><a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html">https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html</a></li>
 </ul>
 </blockquote>
-<h4 id="imagedetailjson">▼ <code>imageDetail.json</code>ファイル<a class="headerlink" href="#imagedetailjson" title="Permanent link">&para;</a></h4>
-<p>新バージョンタグを含むイメージリポジトリURLを、<code>taskdef.json</code>ファイルの <code>&lt;IMAGE1_NAME&gt;</code>に代入するために必要である。</p>
-<p>これはリポジトリに事前に配置するのではなく、CI/CDパイプライン上で動的に作成するようにした方が良い。</p>
+<h4 id="imagedetailjson">▼ <code>imageDetail.json</code> ファイル<a class="headerlink" href="#imagedetailjson" title="Permanent link">&para;</a></h4>
+<p>新バージョンタグを含むイメージリポジトリURLを、<code>taskdef.json</code> ファイルの <code>&lt;IMAGE1_NAME&gt;</code> に代入するために必要である。</p>
+<p>これはリポジトリに事前に配置するのではなく、CI/CDパイプライン上で動的に作成するようにしたほうが良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#file-reference-ecs-bluegreen">https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#file-reference-ecs-bluegreen</a></li>
 <li><a href="https://ngyuki.hatenablog.com/entry/2021/04/07/043415">https://ngyuki.hatenablog.com/entry/2021/04/07/043415</a></li>
 </ul>
 </blockquote>
-<h4 id="taskdefjson">▼ <code>taskdef.json</code>ファイル<a class="headerlink" href="#taskdefjson" title="Permanent link">&para;</a></h4>
+<h4 id="taskdefjson">▼ <code>taskdef.json</code> ファイル<a class="headerlink" href="#taskdefjson" title="Permanent link">&para;</a></h4>
 <p>デプロイされるAWS ECSタスク定義を実装し、ルートディレクトリの直下に配置する。</p>
-<p>CodeDeployは、CodeBuildから渡された<code>imageDetail.json</code>ファイルを検知し、AWS ECRからコンテナイメージを取得する。</p>
-<p>この時、<code>taskdef.json</code>ファイルのコンテナイメージ名を<code>&lt;IMAGE1_NAME&gt;</code>としておくと、<code>imageDetail.json</code>ファイルの値を元にして、新バージョンタグを含むイメージリポジトリURLが自動的に代入される。</p>
+<p>CodeDeployは、CodeBuildから渡された <code>imageDetail.json</code> ファイルを検知し、AWS ECRからコンテナイメージを取得する。</p>
+<p>この時、<code>taskdef.json</code> ファイルのコンテナイメージ名を <code>&lt;IMAGE1_NAME&gt;</code> としておくと、<code>imageDetail.json</code> ファイルの値を元にして、新バージョンタグを含むイメージリポジトリURLが自動的に代入される。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;family&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;AWS</span><span class="nv"> </span><span class="s">ECSタスク定義名&gt;&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;requiresCompatibilities&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;FARGATE&quot;</span><span class="p p-Indicator">],</span>
@@ -34027,7 +34027,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月27日 15:20:47 JST">2025-06-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

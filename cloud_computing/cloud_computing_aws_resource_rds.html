@@ -33646,7 +33646,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_5">メンテナンスの適切な曜日/時間帯<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>AWS CloudWatch Metricsの<code>DatabaseConnections</code>メトリクスから、DBの接続数が低くなる時間帯を調査し、その時間帯にメンテナンスウィンドウを設定する。</p>
+<p>AWS CloudWatch Metricsの <code>DatabaseConnections</code> メトリクスから、DBの接続数が低くなる時間帯を調査し、その時間帯にメンテナンスウィンドウを設定する。</p>
 <p>また、メンテナンスウィンドウの実施曜日が週末であると、サイトが停止したまま休日を迎える可能性があるため、週末以外になるように設定する (メンテナンスウィンドウがUTCであることに注意) 。</p>
 <p><br></p>
 <h3 id="_6">『保留中の変更』『保留中のメンテナンス』<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
@@ -33767,7 +33767,7 @@
 <tr>
 <td>インスタンスクラス</td>
 <td>あり</td>
-<td>・<code>2</code>個のインスタンスで同時にインスタンスクラスを変更すると、次のようなイベントを確認できる。インスタンスが複数回再起動することからわかる通り、長いダウンタイム (約<code>6</code>～<code>8</code>分) が発生する。そのため、フェイルオーバーを利用したダウンタイムの最小化を行う。<br>・<a href="https://dev.classmethod.jp/articles/rds-scaleup-instancetype/">https://dev.classmethod.jp/articles/rds-scaleup-instancetype/</a> <br>・プライマリーインスタンスのイベント<br><img alt="rds_change-instance-class_primary-instance" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_change-instance-class_primary-instance.png" /><br>・リードレプリカのイベント<br><img alt="rds_change-instance-class_read-replica" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_change-instance-class_read-replica.png" /></td>
+<td>・<code>2</code> 個のインスタンスで同時にインスタンスクラスを変更すると、次のようなイベントを確認できる。インスタンスが複数回再起動することからわかるとおり、長いダウンタイム (約 <code>6</code>～<code>8</code> 分) が発生する。そのため、フェイルオーバーを利用したダウンタイムの最小化を行う。<br>・<a href="https://dev.classmethod.jp/articles/rds-scaleup-instancetype/">https://dev.classmethod.jp/articles/rds-scaleup-instancetype/</a> <br>・プライマリーインスタンスのイベント<br><img alt="rds_change-instance-class_primary-instance" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_change-instance-class_primary-instance.png" /><br>・リードレプリカのイベント<br><img alt="rds_change-instance-class_read-replica" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_change-instance-class_read-replica.png" /></td>
 </tr>
 <tr>
 <td>サブネットグループ</td>
@@ -33782,12 +33782,12 @@
 <tr>
 <td>パフォーマンスインサイト</td>
 <td>条件付きでなし</td>
-<td>パフォーマンスインサイトの有効化ではダウンタイムが発生しない。ただし、有効化のためにパラメーターグループの<code>performance_schema</code>を有効化する必要がある。パラメーターグループの変更をDBインスタンスに反映させる上で再起動が必要なため、ここでダウンタイムが発生する。</td>
+<td>パフォーマンスインサイトの有効化ではダウンタイムが発生しない。ただし、有効化のためにパラメーターグループの <code>performance_schema</code> を有効化する必要がある。パラメーターグループの変更をDBインスタンスに反映させる上で再起動が必要なため、ここでダウンタイムが発生する。</td>
 </tr>
 <tr>
 <td>バックアップウインドウ</td>
 <td>条件付きでなし</td>
-<td><code>0</code>から<code>0</code>以外の値、<code>0</code>以外の値から<code>0</code>に変更した場合、ダウンタイムが発生する。</td>
+<td><code>0</code> から <code>0</code> 以外の値、<code>0</code> 以外の値から <code>0</code> に変更した場合、ダウンタイムが発生する。</td>
 </tr>
 <tr>
 <td>パラメーターグループ</td>
@@ -33852,11 +33852,11 @@
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.ReducedDowntime">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.ReducedDowntime</a></li>
 </ul>
 </blockquote>
-<p>(4) フェイルオーバー時に約<code>1</code>～<code>2</code>分のダウンタイムが発生する。</p>
+<p>(4) フェイルオーバー時に約 <code>1</code>～<code>2</code> 分のダウンタイムが発生する。</p>
 <p>フェイルオーバーを使用しない場合、DBインスタンスの再起動でダウンタイムが発生するが、これよりは時間が短いため、相対的にダウンタイムを短縮できる。</p>
 <p><br></p>
 <h2 id="07">07. イベント<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
-<p>コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探した方が良い。</p>
+<p>コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探したほうが良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Messages.html">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Messages.html</a></li>
@@ -33868,7 +33868,7 @@
 <p>クラウドDBプロキシとして働く。</p>
 <p><br></p>
 <h3 id="_12">接続プールの管理<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p>アプリからAWS RDSにクエリが送信された時、接続を新しく作成せずに、接続プール内の非アクティブな接続を再利用し、AWS RDSにフォワーディングする。</p>
+<p>アプリからAWS RDSにクエリが送信されたとき、接続を新しく作成せずに、接続プール内の非アクティブな接続を再利用し、AWS RDSにフォワーディングする。</p>
 <p>アプリからDBのインスタンスに直接的にクエリを送信する場合、アプリケーションはAWS RDSの同時接続の上限数 (インスタンスタイプで決まる) を考慮しない。</p>
 <p>そのため、接続数が多くなりやすいアプリ (例：AWS Lambda、マルチスレッド) を使用していると、アプリケーションが無制限に接続を新しく作成することになる。</p>
 <p>その結果、アプリケーションの接続がAWS RDSの同時接続の上限数を超えて接続してしまい、AWS RDSがエラーを返却してしまう。</p>
@@ -33913,7 +33913,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年12月12日 17:58:41 JST">2025-12-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

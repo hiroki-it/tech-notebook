@@ -34826,7 +34826,7 @@
 </ul>
 <p><br></p>
 <h3 id="iac">アプリとIaCを同じリポジトリで管理<a class="headerlink" href="#iac" title="Permanent link">&para;</a></h3>
-<p>アプリケーションと同じリポジトリにて、<code>kubernetes</code>ディレクトリを作成し、ここにマニフェストを配置する。</p>
+<p>アプリケーションと同じリポジトリにて、<code>kubernetes</code> ディレクトリを作成し、ここにマニフェストを配置する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── app/</span><span class="w"> </span><span class="c1"># アプリケーション</span>
 <span class="l l-Scalar l-Scalar-Plain">├── manifests/</span>
@@ -34870,7 +34870,7 @@
 <h3 id="_5">ディレクトリ/ファイルの構成<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ マイクロサービス別<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>マイクロサービス別にディレクトリを作成し、Kubernetesリソースごとに異なるマニフェストを定義する。</p>
-<p><code>kubectl</code>コマンドの実行時にマニフェストの送信の順番を制御しにくいデメリットがある。</p>
+<p><code>kubectl</code> コマンドの実行時にマニフェストの送信の順番を制御しにくいデメリットがある。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.amazon.co.jp/dp/B08FZX8PYW">https://www.amazon.co.jp/dp/B08FZX8PYW</a></li>
@@ -34948,7 +34948,7 @@
 <p><br></p>
 <h3 id="_8">リソース名<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ 冗長な名前が嫌いな場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>冗長な名前が嫌いな場合は <code>&lt;マイクロサービス名&gt;</code>とする。</p>
+<p>冗長な名前が嫌いな場合は <code>&lt;マイクロサービス名&gt;</code> とする。</p>
 <p>基本はこれを使用する。</p>
 <p>ケバブケースとする。</p>
 <table>
@@ -34978,7 +34978,7 @@
 </tbody>
 </table>
 <h4 id="_10">▼ 冗長な名前が嫌いでない場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>嫌いでない場合は <code>&lt;マイクロサービス名&gt;-&lt;Kubernetesリソース名&gt;</code>とする。</p>
+<p>嫌いでない場合は <code>&lt;マイクロサービス名&gt;-&lt;Kubernetesリソース名&gt;</code> とする。</p>
 <p>ケバブケースとする。</p>
 <table>
 <thead>
@@ -35009,7 +35009,7 @@
 <p><br></p>
 <h3 id="_11">マニフェストのファイル名<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ 重複しない場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>ファイル名は、Kubernetesリソース名 (例：<code>deployment.yaml</code>ファイル) になるようにする。</p>
+<p>ファイル名は、Kubernetesリソース名 (例：<code>deployment.yaml</code> ファイル) になるようにする。</p>
 <p>基本的にはこれを使用する。</p>
 <p>ケバブケースとする。</p>
 <p>GitHubの公式チャートを見ると、命名方法が参考になる。</p>
@@ -35020,8 +35020,8 @@
 <span class="l l-Scalar l-Scalar-Plain">└── persistent-volume-claim.yaml</span>
 </code></pre></div>
 <h4 id="_13">▼ ファイル名重複する場合<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p><code>1</code>個のディレクトリ内でKubernetesリソースが重複する場合、Kubernetesリソース名をつけることができない。</p>
-<p>その場合、<code>app.kubernetes.io</code>キーの値 (例：<code>&lt;マイクロサービス名&gt;</code>または <code>&lt;マイクロサービス名&gt;-&lt;Kubernetesリソース名&gt;</code>) と同じにする。</p>
+<p><code>1</code> 個のディレクトリ内でKubernetesリソースが重複する場合、Kubernetesリソース名をつけることができない。</p>
+<p>その場合、<code>app.kubernetes.io</code> キーの値 (例：<code>&lt;マイクロサービス名&gt;</code> または <code>&lt;マイクロサービス名&gt;-&lt;Kubernetesリソース名&gt;</code>) と同じにする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 全てApplication</span>
 <span class="c1"># 各Applicationは、fooマイクロサービス、barマイクロサービス、bazマイクロサービス、にデプロイする。</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
@@ -35038,8 +35038,8 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_14">拡張子<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<p>Kubernetesに関する開発プロジェクトを確認すると、そのほとんとで、<code>yaml</code>ファイルの拡張子を<code>yml</code>ではなく <code>yaml</code>に統一している。</p>
-<p>そこで、Kubernetesや関連技術 (Istio、Helm、Skaffold、Envoyなど) の <code>yaml</code>ファイルの拡張子を <code>yaml</code>で統一する。</p>
+<p>Kubernetesに関する開発プロジェクトを確認すると、そのほとんとで、<code>yaml</code> ファイルの拡張子を <code>yml</code> ではなく <code>yaml</code> に統一している。</p>
+<p>そこで、Kubernetesや関連技術 (Istio、Helm、Skaffold、Envoyなど) の <code>yaml</code> ファイルの拡張子を <code>yaml</code> で統一する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── foo/</span><span class="w"> </span><span class="c1"># fooサービス</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── deployment.yaml</span>
@@ -35052,7 +35052,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_15">マニフェストの粒度<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p><code>1</code>個のマニフェストに、<code>1</code>個のKubernetesリソースを定義する。</p>
+<p><code>1</code> 個のマニフェストに、<code>1</code> 個のKubernetesリソースを定義する。</p>
 <p><br></p>
 <h2 id="03">03. 実行環境<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_16">開発環境<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
@@ -35210,14 +35210,14 @@
 </table>
 <h4 id="_18">▼ 実行環境の分割<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>Clusterの複数の実行環境 (<code>dev-*</code>、<code>stg-*</code>、<code>prd-*</code>) を用意したい場合、個人的にはその分Clusterを増やすようにする。</p>
-<p>実行環境が <code>5</code>個や <code>10</code>個となってくると、Clusterの分だけアップグレードやSync漏れ (手動の場合) が発生するため、運用コストが高くなるというデメリットはある。</p>
+<p>実行環境が <code>5</code> 個や <code>10</code> 個となってくると、Clusterの分だけアップグレードやSync漏れ (手動の場合) が発生するため、運用コストが高くなるというデメリットはある。</p>
 <p>一方で、Namespaceを実行環境の粒度とすると、上記のデメリットは少ないが、Namespaceのプレフィクスに実行環境名を付与することとなり、名前が長くなってしまう。</p>
 <p>これらを比較して、より自身に合った方法を選ぶ。</p>
 <p><br></p>
 <h2 id="04">04. バージョンの互換性<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="kube-apiserver">kube-apiserver<a class="headerlink" href="#kube-apiserver" title="Permanent link">&para;</a></h3>
 <h4 id="kube-apiserver_1">▼ kube-apiserverが冗長化されている場合<a class="headerlink" href="#kube-apiserver_1" title="Permanent link">&para;</a></h4>
-<p>冗長化されたkube-apiserverのバージョン差は、前方の <code>1</code>個のマイナーバージョン以内に収める必要がある。</p>
+<p>冗長化されたkube-apiserverのバージョン差は、前方の <code>1</code> 個のマイナーバージョン以内に収める必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/releases/version-skew-policy/#kube-apiserver">https://kubernetes.io/releases/version-skew-policy/#kube-apiserver</a></li>
@@ -35226,7 +35226,7 @@
 <p><br></p>
 <h3 id="kubectl">kubectl<a class="headerlink" href="#kubectl" title="Permanent link">&para;</a></h3>
 <h4 id="kube-apiserver_2">▼ kube-apiserverの場合<a class="headerlink" href="#kube-apiserver_2" title="Permanent link">&para;</a></h4>
-<p><code>kubectl</code>コマンドとkube-apiserverのバージョン差は、前方/後方の <code>1</code>個のマイナーバージョン以内に収める必要がある。</p>
+<p><code>kubectl</code> コマンドとkube-apiserverのバージョン差は、前方/後方の <code>1</code> 個のマイナーバージョン以内に収める必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/releases/version-skew-policy/#kubectl">https://kubernetes.io/releases/version-skew-policy/#kubectl</a></li>
@@ -35237,7 +35237,7 @@
 <h3 id="node">ワーカーNodeの場合<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
 <p>Kubernetesでは、稼働する可能性のあるPod数から、ワーカーNodeのCIDRブロックを算出すると良い。</p>
 <p>アプリケーションのPodがスケーリングすることや、カスタムリソース (例：Istio、Linkerd) を導入することも考慮して、尤もらしいIPアドレス数を算出できる。</p>
-<p>削除されるPodと作成されるPodが別のIPアドレスになるようにするために (IPアドレスの再利用を防ぐために) 、Podの最大数の <code>2</code>倍のIPアドレスを持つCIDRブロックを設定すると良い。</p>
+<p>削除されるPodと作成されるPodが別のIPアドレスになるようにするために (IPアドレスの再利用を防ぐために) 、Podの最大数の <code>2</code> 倍のIPアドレスを持つCIDRブロックを設定すると良い。</p>
 <table>
 <thead>
 <tr>
@@ -35286,7 +35286,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_19">サブネットの場合<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
-<p>AWS EKSでの目安であるが、サブネットごとに <code>/19</code>や <code>/20</code>なるように設計するのが、個人的にはおすすめ。</p>
+<p>AWS EKSでの目安であるが、サブネットごとに <code>/19</code> や <code>/20</code> なるように設計するのが、個人的にはおすすめ。</p>
 <p><br></p>
 <h2 id="07">07. 監視ポリシー<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <h3 id="_20">メトリクスエンドポイント<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
@@ -35324,13 +35324,13 @@
 <td>CPU</td>
 <td>%</td>
 <td>同じCluster内のワーカーNodeのCPU使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
 </tr>
 <tr>
 <td>Memory</td>
 <td>%</td>
 <td>同じCluster内のワーカーNodeのメモリ使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
 </tr>
 </tbody>
 </table>
@@ -35349,13 +35349,13 @@
 <td>CPU</td>
 <td>%</td>
 <td>Pod全体のCPU使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
 </tr>
 <tr>
 <td>Memory</td>
 <td>%</td>
 <td>Pod全体のメモリ使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
 </tr>
 </tbody>
 </table>
@@ -35374,13 +35374,13 @@
 <td>CPU</td>
 <td>%</td>
 <td>コンテナのCPU使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
 </tr>
 <tr>
 <td>Memory</td>
 <td>%</td>
 <td>コンテナのメモリ使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
 </tr>
 </tbody>
 </table>
@@ -35439,13 +35439,13 @@
 <td>Nodeの必要最低数</td>
 <td>カウント</td>
 <td>同じCluster内のワーカーNode数の必要最低数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&lt;= 2</code></td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&lt;= 2</code></td>
 </tr>
 <tr>
 <td>Podの必要最低数</td>
 <td>カウント</td>
 <td>同じCluster内のワーカーNodeのPod必要最低数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&lt;= 1</code></td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&lt;= 1</code></td>
 </tr>
 </tbody>
 </table>
@@ -35471,7 +35471,7 @@
 <td>Podの最低必要数</td>
 <td>カウント</td>
 <td>同じDeployment内のPodの必要最低数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&lt;= 2</code></td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&lt;= 2</code></td>
 </tr>
 </tbody>
 </table>
@@ -35497,8 +35497,8 @@
 <td>ReadinessProbeヘルスチェック</td>
 <td>カウント</td>
 <td>コンテナのReadinessProbeヘルスチェックの失敗数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>1</code>分<br>・閾値 : <code>&gt;= 2</code></td>
-<td>ネットワーク由来の問題で発生することがあるため、連続的に発生した上でアラートする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>1</code> 分<br>・閾値 : <code>&gt;= 2</code></td>
+<td>ネットワーク由来の問題で発生することがあるため、連続的に発生したうえでアラートする。</td>
 </tr>
 </tbody>
 </table>
@@ -35511,7 +35511,7 @@
 <h2 id="08">08. デバッグ<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
 <h3 id="_29">便利なイメージ<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
 <h4 id="deployment">▼ Deployment系<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h4>
-<p>Deploymentが正しくPodを作成できない場合、それだけでHelloWorldのアプリケーションを起動できるイメージがある。</p>
+<p>DeploymentがまさしくPodを作成できない場合、それだけでHelloWorldのアプリケーションを起動できるイメージがある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35532,7 +35532,7 @@
 </blockquote>
 <h4 id="_30">▼ ネットワーク系<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
 <p>ネットワークのトラブルシューティングに役立つツールがインストールされているイメージがある。</p>
-<p><code>kubectl debug</code>コマンドと組み合わせる。</p>
+<p><code>kubectl debug</code> コマンドと組み合わせる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>debug<span class="w"> </span>node/&lt;Node名&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>default<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-it<span class="w"> </span><span class="se">\</span>
@@ -35579,7 +35579,7 @@
 </tr>
 <tr>
 <td>マニフェストの脆弱性診断</td>
-<td>外部の脆弱性診断ツール (例：kics) を使用する。報告されたCVEに基づいて、マニフェストの実装方法に起因する脆弱性を検証する。補足として、Kubernetesリソースのセキュリティスキャン (例：trivy) は、既に作成されたKubernetesリソースに対する検証のため、ここには含めない。</td>
+<td>外部の脆弱性診断ツール (例：kics) を使用する。報告されたCVEに基づいて、マニフェストの実装方法に起因する脆弱性を検証する。補足として、Kubernetesリソースのセキュリティスキャン (例：trivy) は、すでに作成されたKubernetesリソースに対する検証のため、ここには含めない。</td>
 <td>・<a href="https://blog.nflabs.jp/entry/2021/12/24/091803">https://blog.nflabs.jp/entry/2021/12/24/091803</a><br>・<a href="https://weblog.grimoh.net/entry/2022/01/02/100000">https://weblog.grimoh.net/entry/2022/01/02/100000</a> <br>・<a href="https://zenn.dev/tayusa/articles/ad9fafa197888b">https://zenn.dev/tayusa/articles/ad9fafa197888b</a></td>
 </tr>
 </tbody>
@@ -35587,9 +35587,9 @@
 <p><br></p>
 <h3 id="_33">マニフェストのブラックボックステスト<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
 <h4 id="_34">▼ 結合テスト<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
-<p>テスト環境に対して <code>kubectl apply</code>コマンドを実行することにより、追加/変更を含む複数のマニフェストを組み合わせた結合テストを実施する。</p>
+<p>テスト環境に対して <code>kubectl apply</code> コマンドを実行することにより、追加/変更を含む複数のマニフェストを組み合わせた結合テストを実施する。</p>
 <h4 id="_35">▼ システムテスト<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
-<p>テスト環境に対して <code>kubectl apply</code>コマンドを実行することにより、既存機能/追加/変更を含む全てのチャートを組み合わせたシステムテストを実施する。</p>
+<p>テスト環境に対して <code>kubectl apply</code> コマンドを実行することにより、既存機能/追加/変更を含む全てのチャートを組み合わせたシステムテストを実施する。</p>
 <blockquote>
 <ul>
 <li><a href="https://camunda.com/blog/2022/03/test/">https://camunda.com/blog/2022/03/test/</a></li>
@@ -35714,7 +35714,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年1月9日 22:01:53 JST">2026-01-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

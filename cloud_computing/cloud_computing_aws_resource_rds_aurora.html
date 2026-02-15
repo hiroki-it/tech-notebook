@@ -34639,7 +34639,7 @@
 <tr>
 <td>エンジンバージョン</td>
 <td>DBエンジンのバージョンを設定する。DBクラスター内の全てのDBインスタンスに適用される。</td>
-<td>・AWS Auroraであれば、<code>SELECT AURORA_VERSION()</code>を使用して、エンジンバージョンを確認できる。</td>
+<td>・AWS Auroraであれば、<code>SELECT AURORA_VERSION()</code> を使用して、エンジンバージョンを確認できる。</td>
 </tr>
 </tbody>
 </table>
@@ -34697,7 +34697,7 @@
 <tr>
 <td>バックアップ保管期間</td>
 <td>AWS AuroraのDBクラスター がバックアップを保管する期間を設定する。</td>
-<td><code>7</code>日間にしておく。</td>
+<td><code>7</code> 日間にしておく。</td>
 </tr>
 <tr>
 <td>ログのエクスポート</td>
@@ -34898,13 +34898,13 @@ mysql&gt;<span class="w"> </span>SHOW<span class="w"> </span>TABLES<span class="
 <span class="l l-Scalar l-Scalar-Plain">│   └── values.yaml</span>
 <span class="l l-Scalar l-Scalar-Plain">└── helmfile.yaml</span>
 </code></pre></div>
-<p><code>.gitignore</code>ファイルでは、<code>values.example.yaml</code>ファイルのコピーから作成される<code>values.yaml</code>ファイルのバージョン管理を無視するように実装する。</p>
+<p><code>.gitignore</code> ファイルでは、<code>values.example.yaml</code> ファイルのコピーから作成される <code>values.yaml</code> ファイルのバージョン管理を無視するように実装する。</p>
 <div class="highlight"><pre><span></span><code>**/**/values.yaml
 </code></pre></div>
 <p><br></p>
 <h3 id="valuesexampleyaml">values.example.yaml<a class="headerlink" href="#valuesexampleyaml" title="Permanent link">&para;</a></h3>
-<p><code>.env</code>ファイルのように、バージョン管理しない<code>values.example.yaml</code>ファイルを用意しておく。</p>
-<p>各開発者がローカルPCで<code>values.example.yaml</code>ファイルから<code>values.yaml</code>ファイルを作成する。</p>
+<p><code>.env</code> ファイルのように、バージョン管理しない <code>values.example.yaml</code> ファイルを用意しておく。</p>
+<p>各開発者がローカルPCで <code>values.example.yaml</code> ファイルから <code>values.yaml</code> ファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cp<span class="w"> </span>chart/values.example.yaml<span class="w"> </span>values.yaml
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">port-forward-for-aws-aurora</span>
@@ -35000,7 +35000,7 @@ mysql&gt;<span class="w"> </span>SHOW<span class="w"> </span>TABLES<span class="
 <h4 id="aws-auroradb_4">▼ 空のAWS AuroraのDBクラスターとは<a class="headerlink" href="#aws-auroradb_4" title="Permanent link">&para;</a></h4>
 <p>コンソール画面にて、AWS AuroraのDBクラスター内の全てのAWS AuroraのDBインスタンスを削除すると、AWS AuroraのDBクラスターも自動的に削除される。</p>
 <p>一方で、AWS-APIをコールして全てのAWS AuroraのDBインスタンスを削除する場合、AWS AuroraのDBクラスターは自動的に削除されずに、空の状態になる。</p>
-<p>例えば、Terraformを使用してAWS AuroraのDBクラスターを作成する時に、インスタンスの作成に失敗するとAWS AuroraのDBクラスターが空になる、</p>
+<p>例えば、Terraformを使用してAWS AuroraのDBクラスターを作成するときに、インスタンスの作成に失敗するとAWS AuroraのDBクラスターが空になる、</p>
 <p>これは、TerraformがAWS-APIをコールした作成を行っているためである。</p>
 <blockquote>
 <ul>
@@ -35097,9 +35097,9 @@ mysql&gt;<span class="w"> </span>SHOW<span class="w"> </span>TABLES<span class="
 <p><br></p>
 <h3 id="db_1">DBエンジンのログ<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ スロークエリログ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>AWS CloudWatch Logsの<code>/aws/rds/cluster/&lt;AWS AuroraのDBクラスター名&gt;/slowquery</code>というロググループにスロークエリログが出力される。</p>
+<p>AWS CloudWatch Logsの <code>/aws/rds/cluster/&lt;AWS AuroraのDBクラスター名&gt;/slowquery</code> というロググループにスロークエリログが出力される。</p>
 <h4 id="_12">▼ エラークエリログ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>AWS CloudWatch Logsの<code>/aws/rds/cluster/&lt;AWS AuroraのDBクラスター名&gt;/error</code>というロググループにエラーログが出力される。</p>
+<p>AWS CloudWatch Logsの <code>/aws/rds/cluster/&lt;AWS AuroraのDBクラスター名&gt;/error</code> というロググループにエラーログが出力される。</p>
 <p><br></p>
 <h2 id="05">05. アップグレード<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="zdp">ZDP (ゼロダウンタイムパッチ適用)<a class="headerlink" href="#zdp" title="Permanent link">&para;</a></h3>
@@ -35107,18 +35107,18 @@ mysql&gt;<span class="w"> </span>SHOW<span class="w"> </span>TABLES<span class="
 <p>AWS Auroraをエンジンバージョンに選択した場合に使用でき、パッチバージョンとマイナーバージョンの更新で、条件を満たせば適用される。</p>
 <p>特定の条件下のみで、アプリケーションとプライマリーインスタンスの接続を維持したまま、プライマリーインスタンスのパッチバージョンをアップグレードできる。</p>
 <p>ゼロダウンタイムパッチ適用が発動した場合、AWS RDSのイベントが記録される。</p>
-<p>ただし、この機能に頼り切らない方が良い。</p>
+<p>ただし、この機能に頼り切らないほうが良い。</p>
 <p>ゼロダウンタイムパッチ適用の発動はAWSから事前にお知らせされるわけでもなく、ユーザーが条件を見て発動の有無を判断しなければならない。</p>
 <p>また、実際に発動していても、ダウンタイムが発生した事例が報告されている。</p>
 <p>ゼロダウンタイムパッチ適用時、以下の手順でエンジンバージョンがアップグレードされる。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>プライマリーインスタンスのエンジンがアップグレードされ、この時にダウンタイムが発生しない代わりに、<code>5</code>秒ほどプライマリーインスタンスの性能が低下する。</p>
+<p>プライマリーインスタンスのエンジンがアップグレードされ、この時にダウンタイムが発生しない代わりに、<code>5</code> 秒ほどプライマリーインスタンスの性能が低下する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>リードレプリカが再起動され、この時に<code>20</code>～<code>30</code>秒ほどダウンタイムが発生する。これらの仕組みのため、アプリケーションでは読み出しエンドポイントを接続先として使用しないようにする必要がある。</p>
+<p>リードレプリカが再起動され、この時に <code>20</code>～<code>30</code> 秒ほどダウンタイムが発生する。これらの仕組みのため、アプリケーションでは読み出しエンドポイントを接続先として使用しないようにする必要がある。</p>
 </dd>
 </dl>
 <blockquote>
@@ -35132,7 +35132,7 @@ mysql&gt;<span class="w"> </span>SHOW<span class="w"> </span>TABLES<span class="
 <p><br></p>
 <h3 id="_13">アップグレード可能かのバリデーション<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p>アップグレードに伴う問題を静的解析で検出する。</p>
-<p>AWS AuroraにSSH接続した上で、DBに対して以下のコマンドを実行すると、<code>v5.7</code>から<code>v8</code>系へのアップグレードで問題が起こるかを解析できる</p>
+<p>AWS AuroraにSSH接続したうえで、DBに対して以下のコマンドを実行すると、<code>v5.7</code> から <code>v8</code> 系へのアップグレードで問題が起こるかを解析できる</p>
 <p>ただ、アプリ側のSQLのロジックを解析することはできず、あくまでMySQLの設定値のみを解析でき、廃止予定のロジックを使っているかまでは見つけられない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>mysqlsh<span class="w"> </span>util.checkForServerUpgrade<span class="o">()</span>
 </code></pre></div>
@@ -35163,7 +35163,7 @@ mysql&gt;<span class="w"> </span>SHOW<span class="w"> </span>TABLES<span class="
 <tr>
 <td>エンジンバージョン</td>
 <td>あり</td>
-<td>メジャーバージョンのアップグレードでは、ダウンタイムが起こる。パッチバージョンの場合は、ZDPでダウンタイムが起こらない可能性がある。では<code>20</code>～<code>30</code>秒のダウンタイムが発生する。この時間は、ワークロード、クラスターサイズ、バイナリログデータのサイズ、ゼロダウンタイムパッチ適用の発動可否、によって変動する。<br>・<a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html</a> <br>・<a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.Patching.html#AuroraMySQL.Updates.AMVU">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.Patching.html#AuroraMySQL.Updates.AMVU</a> <br>また、メジャーバージョンのアップグレードには<code>10</code>分のダウンタイムが発生する。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.Major.Overview">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.Major.Overview</a></td>
+<td>メジャーバージョンのアップグレードでは、ダウンタイムが起こる。パッチバージョンの場合は、ZDPでダウンタイムが起こらない可能性がある。では <code>20</code>～<code>30</code> 秒のダウンタイムが発生する。この時間は、ワークロード、クラスターサイズ、バイナリログデータのサイズ、ゼロダウンタイムパッチ適用の発動可否、によって変動する。<br>・<a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html</a> <br>・<a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.Patching.html#AuroraMySQL.Updates.AMVU">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.Patching.html#AuroraMySQL.Updates.AMVU</a> <br>また、メジャーバージョンのアップグレードには <code>10</code> 分のダウンタイムが発生する。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.Major.Overview">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.Major.Overview</a></td>
 </tr>
 </tbody>
 </table>
@@ -35180,10 +35180,10 @@ mysql&gt;<span class="w"> </span>SHOW<span class="w"> </span>TABLES<span class="
 <p><strong>＊実装例＊</strong></p>
 <p>AWS Aurora MySQLのアップグレードに伴うダウンタイムを計測する。</p>
 <p>踏み台サーバー (AWS EC2) を経由してAWS RDSに接続し、現在時刻を取得するSQLを送信する。</p>
-<p>この時、<code>for</code>文や<code>watch</code>コマンドを使用する。</p>
-<p>ただし、<code>watch</code>コマンドはプリインストールされていない可能性がある。</p>
+<p>この時、<code>for</code> 文や <code>watch</code> コマンドを使用する。</p>
+<p>ただし、<code>watch</code> コマンドはプリインストールされていない可能性がある。</p>
 <p>平常アクセス時のも同時に実行することにより、より正確なダウンタイムを取得する。</p>
-<p>また、ヘルスチェックの時刻を正しくロギングできるように、ローカルマシンから時刻を取得する。</p>
+<p>また、ヘルスチェックの時刻をまさしくロギングできるように、ローカルマシンから時刻を取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="nb">set</span><span class="w"> </span>-x
@@ -35225,7 +35225,7 @@ watch<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><
 <span class="s1">  echo ${SQL} | mysql -u ${DB_USER} -P 3306 -p${DB_PASSWORD} &gt;&gt; health_check.txt 2&gt;&amp;1&#39;</span>
 </code></pre></div>
 <p>上記のシェルスクリプトにより、例えば次のようなMySQLのログを取得できる。</p>
-<p>このログからは、<code>15:23:09</code> 〜 <code>15:23:14</code>の間で、接続に失敗していることを確認できる。</p>
+<p>このログからは、<code>15:23:09</code> 〜 <code>15:23:14</code> の間で、接続に失敗していることを確認できる。</p>
 <div class="highlight"><pre><span></span><code>----------<span class="w"> </span>No.<span class="w"> </span><span class="m">242</span><span class="w"> </span>Local<span class="w"> </span>PC:<span class="w"> </span><span class="m">2021</span>-04-21<span class="w"> </span><span class="m">15</span>:23:06<span class="w"> </span>------------
 mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
 NOW<span class="o">()</span>
@@ -35291,7 +35291,7 @@ NOW<span class="o">()</span>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>フェイルオーバー時に約<code>1</code>～<code>2</code>分のダウンタイムが発生する。</p>
+<p>フェイルオーバー時に約 <code>1</code>～<code>2</code> 分のダウンタイムが発生する。</p>
 <p>フェイルオーバーを使用しない場合、AWS AuroraのDBインスタンスの再起動でダウンタイムが発生する。</p>
 <p>ただし、これよりは時間が短いため、相対的にダウンタイムを短縮できる。</p>
 </dd>
@@ -35354,11 +35354,11 @@ NOW<span class="o">()</span>
 <p><br></p>
 <h3 id="_23">クエリキャッシュの利用<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <p>MySQLやRedisのクエリキャッシュ機能を利用する。</p>
-<p>ただし、MySQLのクエリキャッシュ機能は、バージョン<code>8</code>で廃止されることになっている。</p>
+<p>ただし、MySQLのクエリキャッシュ機能は、バージョン <code>8</code> で廃止されることになっている。</p>
 <p><br></p>
 <h3 id="_24">ユニークキーまたはインデックスの利用<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <p>スロークエリを検出し、そのSQLで対象としているカラムにユニークキーやインデックスを設定する。</p>
-<p>スロークエリを検出する方法として、AWS RDSの<code>long_query_time</code>パラメーターによる閾値や、<code>EXPLAIN</code>による予想実行時間の比較などがある。</p>
+<p>スロークエリを検出する方法として、AWS RDSの <code>long_query_time</code> パラメーターによる閾値や、<code>EXPLAIN</code> による予想実行時間の比較などがある。</p>
 <p>CloudWatch Logsインサイト上で、閾値以上の実行時間のスロークエリを実行時間の昇順で取得できる。</p>
 <div class="highlight"><pre><span></span><code>fields<span class="w"> </span>@timestamp,<span class="w"> </span>@message
 <span class="p">|</span><span class="w"> </span>parse<span class="w"> </span>@message<span class="w"> </span>/Query_time:<span class="se">\s</span>*<span class="o">(</span>?&lt;Query_time&gt;<span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">(</span>?:<span class="se">\.</span><span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">)</span>?<span class="o">)</span><span class="se">\s</span>*<span class="o">[</span><span class="se">\s\S</span><span class="o">]</span>*?<span class="p">;</span>/
@@ -35373,14 +35373,14 @@ NOW<span class="o">()</span>
 </blockquote>
 <p><br></p>
 <h3 id="_25">テーブルを正規化し過ぎない<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
-<p>テーブルを正規化すると保守性が高まるが、アプリケーションのSQLで<code>JOIN</code>が必要になる。</p>
-<p>しかし、<code>JOIN</code>を含むSQLは、含まないSQLと比較して、実行速度が遅くなる。</p>
+<p>テーブルを正規化すると保守性が高まるが、アプリケーションのSQLで <code>JOIN</code> が必要になる。</p>
+<p>しかし、<code>JOIN</code> を含むSQLは、含まないSQLと比較して、実行速度が遅くなる。</p>
 <p>そこで、戦略的に正規化し過ぎないようにする。</p>
 <p><br></p>
 <h3 id="_26">インスタンスタイプのスケールアップ<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
 <p>インスタンスタイプをスケールアップさせることにより、接続過多のエラー (<code>ERROR 1040 (HY000): Too many connections</code>) に対処する。</p>
 <p>補足として現在の最大接続数はパラメーターグループの値から確認できる。</p>
-<p>コンソール画面からはおおよその値しかわからないため、SQLで確認した方が良い。</p>
+<p>コンソール画面からはおおよその値しかわからないため、SQLで確認したほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SHOW</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="k">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;max_connections&#39;</span><span class="p">;</span>
 
 <span class="o">+-----------------+-------+</span>
@@ -35392,7 +35392,7 @@ NOW<span class="o">()</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="07">07. イベント<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
-<p>コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探した方が良い。</p>
+<p>コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探したほうが良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Events.Messages.html">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Events.Messages.html</a></li>
@@ -35507,7 +35507,7 @@ NOW<span class="o">()</span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年1月7日 15:19:59 JST">2026-01-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

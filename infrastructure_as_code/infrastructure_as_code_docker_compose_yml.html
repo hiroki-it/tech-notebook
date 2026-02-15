@@ -21327,7 +21327,7 @@
   <a href="#services" class="md-nav__link">
     <span class="md-ellipsis">
       
-        servicesとは
+        services とは
       
     </span>
   </a>
@@ -21653,7 +21653,7 @@
   <a href="#networks_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        networksとは
+        networks とは
       
     </span>
   </a>
@@ -21687,7 +21687,7 @@
   <a href="#external_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ externalとは
+        ▼ external とは
       
     </span>
   </a>
@@ -33269,7 +33269,7 @@
   <a href="#services" class="md-nav__link">
     <span class="md-ellipsis">
       
-        servicesとは
+        services とは
       
     </span>
   </a>
@@ -33595,7 +33595,7 @@
   <a href="#networks_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        networksとは
+        networks とは
       
     </span>
   </a>
@@ -33629,7 +33629,7 @@
   <a href="#external_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ externalとは
+        ▼ external とは
       
     </span>
   </a>
@@ -33878,11 +33878,11 @@
 </blockquote>
 <p><br></p>
 <h2 id="02-services">02. services<a class="headerlink" href="#02-services" title="Permanent link">&para;</a></h2>
-<h3 id="services"><code>services</code>とは<a class="headerlink" href="#services" title="Permanent link">&para;</a></h3>
+<h3 id="services"><code>services</code> とは<a class="headerlink" href="#services" title="Permanent link">&para;</a></h3>
 <p>コンテナオーケストレーションにおける1つのコンテナを定義する。</p>
 <p>サービス名には役割名 (<code>app</code>、<code>web</code>、<code>db</code>) を名付けると良い。</p>
 <p>コンテナ名と異なり、サービス名は他のプロジェクトと重複しても良い。</p>
-<p><code>docker compose</code>コマンドの引数として指定するため、できるだけ簡潔にする。</p>
+<p><code>docker compose</code> コマンドの引数として指定するため、できるだけ簡潔にする。</p>
 <p>オプション一覧は以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
@@ -33891,8 +33891,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="args"><code>args</code><a class="headerlink" href="#args" title="Permanent link">&para;</a></h3>
-<p>Dockerfileの<code>ARGS</code>に展開する変数を定義する。</p>
-<p>Dockerfileに直接的に実装することとの使い分けとして、Dockerfileの実装は簡単に変更できないが、<code>docker-compose.yml</code>ファイルにおける定義は変更しやすい。</p>
+<p>Dockerfileの <code>ARGS</code> に展開する変数を定義する。</p>
+<p>Dockerfileに直接的に実装することとの使い分けとして、Dockerfileの実装は簡単に変更できないが、<code>docker-compose.yml</code> ファイルにおける定義は変更しやすい。</p>
 <p>そのため、使用者に変更して欲しくない変数はDockerfileに実装し、変更しても問題ない変数はこのオプションを使用する。</p>
 <p>他に、マルチステージビルドを使用しており、全てのステージで共通した変数を展開したい場合、このオプションを使用すると展開する変数を共通化できる。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -33941,7 +33941,7 @@
 <p>コンテナの起動時に最初に実行するコマンドを設定する。</p>
 <p>Dockerfileを必要とせず、ベンダーが提供するイメージをそのまま使用するような場合に役立つ。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>mysqlイメージを使用してコンテナを作成する時に、最初に文字コードを設定するコマンドを実行する。</p>
+<p>mysqlイメージを使用してコンテナを作成するときに、最初に文字コードを設定するコマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">db</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -33974,7 +33974,7 @@
 <p>dotenv系パッケージを使用しなくてもよくなる。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>mysqlイメージを使用した場合、DBの環境変数の設定が必要である。</p>
-<p>DBの環境変数は、バックエンドコンテナでも必要なため、<code>environment</code>キーに直接的に環境変数を設定せずに、<code>env</code>ファイルに定義した環境変数を<code>environment</code>キーで参照すると良い。</p>
+<p>DBの環境変数は、バックエンドコンテナでも必要なため、<code>environment</code> キーに直接的に環境変数を設定せずに、<code>env</code> ファイルに定義した環境変数を <code>environment</code> キーで参照すると良い。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">db</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">env_file</span><span class="p">:</span>
@@ -34022,7 +34022,7 @@
 <p><br></p>
 <h3 id="extra_host"><code>extra_host</code><a class="headerlink" href="#extra_host" title="Permanent link">&para;</a></h3>
 <p>コンテナに、ユーザー定義のプライベートIPアドレスと、これにマッピングされたホスト名を設定する。</p>
-<p>マッピングは、<code>/etc/hosts</code>ファイルに書き込まれる。</p>
+<p>マッピングは、<code>/etc/hosts</code> ファイルに書き込まれる。</p>
 <p>もし設定しなかった場合、サービス名またはコンテナ名がホスト名として扱われる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">web</span><span class="p">:</span>
@@ -34046,7 +34046,7 @@ ff02::2<span class="w"> </span>ip6-allrouters
 <p>コンテナの起動時にヘルスチェックを実行し、トラフィックを処理可能になるまでコンテナの起動完了を待機する。</p>
 <p>トラフィックが処理可能になったらコンテナのビルドを終了し、次のコンテナのビルドを始める。</p>
 <p>DBのような、コンテナの起動後にトラフィックが処理可能になるまで時間がかかるツールで役立つ。</p>
-<p><code>wait</code>コマンドを実行することに相当する。</p>
+<p><code>wait</code> コマンドを実行することに相当する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># アプリコンテナ</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
@@ -34086,7 +34086,7 @@ ff02::2<span class="w"> </span>ip6-allrouters
 <h3 id="hostname"><code>hostname</code><a class="headerlink" href="#hostname" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
 <p>コンテナに割り当てられるプライベートIPアドレスに、指定したホスト名をマッピングする。</p>
-<p>マッピングは、<code>/etc/hosts</code>ファイルに書き込まれる。</p>
+<p>マッピングは、<code>/etc/hosts</code> ファイルに書き込まれる。</p>
 <p>もし設定しなかった場合、サービス名またはコンテナ名がホスト名として扱われる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
@@ -34270,7 +34270,7 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 </code></pre></div>
 <p><br></p>
 <h3 id="stdin_open"><code>stdin_open</code><a class="headerlink" href="#stdin_open" title="Permanent link">&para;</a></h3>
-<p><code>docker compose</code>コマンドの裏側で実行される<code>docker run</code>コマンドで、<code>i</code>オプションを有効化するか否かを設定する。</p>
+<p><code>docker compose</code> コマンドの裏側で実行される <code>docker run</code> コマンドで、<code>i</code> オプションを有効化するか否かを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
@@ -34278,8 +34278,8 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 </code></pre></div>
 <p><br></p>
 <h3 id="tty"><code>tty</code><a class="headerlink" href="#tty" title="Permanent link">&para;</a></h3>
-<p><code>docker compose</code>コマンドの裏側で実行される<code>docker run</code>コマンドで、<code>t</code>オプションを有効化するか否かを設定する。</p>
-<p>疑似ターミナルを割り当てるによって、<code>exit</code>の後もバックグラウンドでコンテナを起動させ続けられる。</p>
+<p><code>docker compose</code> コマンドの裏側で実行される <code>docker run</code> コマンドで、<code>t</code> オプションを有効化するか否かを設定する。</p>
+<p>疑似ターミナルを割り当てるによって、<code>exit</code> の後もバックグラウンドでコンテナを起動させ続けられる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
@@ -34287,7 +34287,7 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 </code></pre></div>
 <p><br></p>
 <h3 id="user"><code>user</code><a class="headerlink" href="#user" title="Permanent link">&para;</a></h3>
-<p><code>docker compose</code>コマンドの裏側で実行される<code>docker run</code>コマンドで、<code>u</code>オプションを有効化するか否かを設定する。</p>
+<p><code>docker compose</code> コマンドの裏側で実行される <code>docker run</code> コマンドで、<code>u</code> オプションを有効化するか否かを設定する。</p>
 <p>コンテナの実行ユーザーのユーザーIDとグループIDを設定する。</p>
 <p>Root以外で実行するために使用する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -34297,8 +34297,8 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 </code></pre></div>
 <p><br></p>
 <h3 id="volumes"><code>volumes</code> (バインドマウント)<a class="headerlink" href="#volumes" title="Permanent link">&para;</a></h3>
-<p>最上層と<code>service</code>内で、異なるボリューム名を記述した場合、バインドマウントを定義する。</p>
-<p>ホスト側の<code>/Users</code>ディレクトリをコンテナ側にマウントする。</p>
+<p>最上層と <code>service</code> 内で、異なるボリューム名を記述した場合、バインドマウントを定義する。</p>
+<p>ホスト側の <code>/Users</code> ディレクトリをコンテナ側にマウントする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
@@ -34307,8 +34307,8 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 </code></pre></div>
 <p><br></p>
 <h3 id="volumes_1"><code>volumes</code> (ボリュームマウント)<a class="headerlink" href="#volumes_1" title="Permanent link">&para;</a></h3>
-<p>最上層と<code>service</code>内の両方に、同じボリューム名を記述した場合、ボリュームマウントを定義する。</p>
-<p>dockerエリアにVolumeが作成され、<code>service</code>オプション内に設定した<code>volumes</code>オプションでボリュームマウントを実行する。</p>
+<p>最上層と <code>service</code> 内の両方に、同じボリューム名を記述した場合、ボリュームマウントを定義する。</p>
+<p>dockerエリアにVolumeが作成され、<code>service</code> オプション内に設定した <code>volumes</code> オプションでボリュームマウントを実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/ysd_marrrr/items/e8a50c43cff87951385c">https://qiita.com/ysd_marrrr/items/e8a50c43cff87951385c</a></li>
@@ -34340,7 +34340,7 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 DRIVER<span class="w">    </span>VOLUME<span class="w"> </span>NAME
 <span class="nb">local</span><span class="w">     </span>mysql_db_data
 </code></pre></div>
-<p>権限、バインドマウントで<code>datadir</code>ディレクトリにマウントしようとすると、権限エラーになってしまう。</p>
+<p>権限、バインドマウントで <code>datadir</code> ディレクトリにマウントしようとすると、権限エラーになってしまう。</p>
 <div class="highlight"><pre><span></span><code>mysqld:<span class="w"> </span>Can<span class="s1">&#39;t create/write to file &#39;</span>/var/lib/mysql/is_writable<span class="err">&#39;</span><span class="w"> </span><span class="o">(</span>Errcode:<span class="w"> </span><span class="m">13</span><span class="w"> </span>-<span class="w"> </span>Permission<span class="w"> </span>denied<span class="o">)</span>
 </code></pre></div>
 <blockquote>
@@ -34350,7 +34350,7 @@ DRIVER<span class="w">    </span>VOLUME<span class="w"> </span>NAME
 </blockquote>
 <p><br></p>
 <h3 id="_2">変数展開<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>環境変数を<code>docker-compose.yml</code>ファイルに展開する。変数の展開にあたり、<code>docker-compose.yml</code>ファイルと同じ階層にある<code>.env</code>ファイルが自動的に読み込まれる。この展開に<code>env_file</code>オプションを使用できない。そのため、例えば<code>.env</code>ファイル以外の名前の環境変数ファイルを変数展開のために使用できない。</p>
+<p>環境変数を <code>docker-compose.yml</code> ファイルに展開する。変数の展開にあたり、<code>docker-compose.yml</code> ファイルと同じ階層にある <code>.env</code> ファイルが自動的に読み込まれる。この展開に <code>env_file</code> オプションを使用できない。そのため、例えば <code>.env</code> ファイル以外の名前の環境変数ファイルを変数展開のために使用できない。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
@@ -34361,7 +34361,7 @@ DRIVER<span class="w">    </span>VOLUME<span class="w"> </span>NAME
 </code></pre></div>
 <p><br></p>
 <h2 id="03-networks">03. networks<a class="headerlink" href="#03-networks" title="Permanent link">&para;</a></h2>
-<h3 id="networks_1"><code>networks</code>とは<a class="headerlink" href="#networks_1" title="Permanent link">&para;</a></h3>
+<h3 id="networks_1"><code>networks</code> とは<a class="headerlink" href="#networks_1" title="Permanent link">&para;</a></h3>
 <p>標準のネットワークを作成する。ただし定義しなくとも自動的に作成される。</p>
 <p>ネットワーク名は、指定しない場合に『<code>&lt;プロジェクト名&gt;_default</code>』になる。</p>
 <p><br></p>
@@ -34420,17 +34420,17 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 </code></pre></div>
 <p><br></p>
 <h3 id="external"><code>external</code><a class="headerlink" href="#external" title="Permanent link">&para;</a></h3>
-<h4 id="external_1">▼ <code>external</code>とは<a class="headerlink" href="#external_1" title="Permanent link">&para;</a></h4>
+<h4 id="external_1">▼ <code>external</code> とは<a class="headerlink" href="#external_1" title="Permanent link">&para;</a></h4>
 <p><img alt="docker-compose_external" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-compose_external.png" /></p>
-<p>異なる<code>docker-compose.yml</code>ファイルから相互に通信できるネットワークを作成する。</p>
-<p>作成されるネットワーク名は、<code>&lt;プロジェクト名&gt;_&lt;ネットワーク名&gt;</code>になる。</p>
+<p>異なる <code>docker-compose.yml</code> ファイルから相互に通信できるネットワークを作成する。</p>
+<p>作成されるネットワーク名は、<code>&lt;プロジェクト名&gt;_&lt;ネットワーク名&gt;</code> になる。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>フロントエンド領域とバックエンド領域が異なる<code>docker-compose.yml</code>ファイルで管理されている。</p>
+<p>フロントエンド領域とバックエンド領域が異なる <code>docker-compose.yml</code> ファイルで管理されている。</p>
 <p>フロントエンドコンテナとバックエンドコンテナの間で相互に通信できるように、ネットワークを公開する。</p>
 <p>(1) ネットワークを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> </span>create<span class="w"> </span>shared-network
 </code></pre></div>
-<p>(2) バックエンドのdocker-composeを設定する。この時、<code>backend-network</code>というdockerネットワークを新しく作成し、また既存の<code>shared-network</code>に接続する。</p>
+<p>(2) バックエンドのdocker-composeを設定する。この時、<code>backend-network</code> というdockerネットワークを新しく作成し、また既存の <code>shared-network</code> に接続する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># バックエンドのDocker-compose</span>
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">backend</span><span class="p">:</span>
@@ -34451,7 +34451,7 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 <span class="w">    </span><span class="c1"># ネットワークを新しく作成せずに、既存のネットワークに接続する</span>
 <span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-<p>(3) フロントエンドのdocker-composeを設定する。この時、既存の<code>shared-network</code>に接続する。</p>
+<p>(3) フロントエンドのdocker-composeを設定する。この時、既存の <code>shared-network</code> に接続する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># フロントエンドのDocker-compose</span>
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">frontend</span><span class="p">:</span>
@@ -34475,14 +34475,14 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 </ul>
 </blockquote>
 <h4 id="docker">▼ dockerネットワーク外からの通信<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h4>
-<p><code>external</code>オプションはdockerネットワーク間を接続する。</p>
-<p>一方で、dockerネットワーク外からの通信であれば、<code>external</code>オプションは不要である。</p>
-<p>例えば、仮想サーバーからDBコンテナに接続する場合、仮想サーバーで<code>localhost</code> (コンテナの<code>hostname</code>オプションではなく) を指定すればよい。</p>
+<p><code>external</code> オプションはdockerネットワーク間を接続する。</p>
+<p>一方で、dockerネットワーク外からの通信であれば、<code>external</code> オプションは不要である。</p>
+<p>例えば、仮想サーバーからDBコンテナに接続する場合、仮想サーバーで <code>localhost</code> (コンテナの <code>hostname</code> オプションではなく) を指定すればよい。</p>
 <p><br></p>
 <h2 id="04">04. プラグイン<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="volume">Volumeプラグイン<a class="headerlink" href="#volume" title="Permanent link">&para;</a></h3>
 <h4 id="nfs">▼ NFSストレージ<a class="headerlink" href="#nfs" title="Permanent link">&para;</a></h4>
-<p>NFSプラグインを使用することにより、永続データを<code>/var/lib/docker/volumes</code>ディレクトリではなく、NFSストレージに保管する。</p>
+<p>NFSプラグインを使用することにより、永続データを <code>/var/lib/docker/volumes</code> ディレクトリではなく、NFSストレージに保管する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>以下にdocker-composeを使用した場合を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.9&quot;</span>
@@ -34508,8 +34508,8 @@ DRIVER<span class="w">    </span>VOLUME<span class="w"> </span>NAME
 <h2 id="05">05. イメージ別プラクティス<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="mysql">mysqlイメージ<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h3>
 <h4 id="sql">▼ ビルド時にSQL実行<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h4>
-<p>mysqlコンテナには<code>docker-entrypoint-initdb.d</code>ディレクトリがある。</p>
-<p>このディレクトリ配下に配置された<code>sql</code>ファイルや<code>bash</code>プロセスは、mysqlコンテナのビルド時に<code>docker-entrypoint.sh</code>ファイルによって実行される。</p>
+<p>mysqlコンテナには <code>docker-entrypoint-initdb.d</code> ディレクトリがある。</p>
+<p>このディレクトリ配下に配置された <code>sql</code> ファイルや <code>bash</code> プロセスは、mysqlコンテナのビルド時に <code>docker-entrypoint.sh</code> ファイルによって実行される。</p>
 <p>そのため、バインドマウントを使用してこのディレクトリ配下にファイルを配置することにより、初期データの挿入や複数DBの作成を実現できる。</p>
 <p>具体的な実行タイミングについては、以下のリンクを参考にせよ。</p>
 <blockquote>
@@ -34518,7 +34518,7 @@ DRIVER<span class="w">    </span>VOLUME<span class="w"> </span>NAME
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>mysqlコンテナに、PHPUnitの実行時のみ使用するDBを追加する。以下のような、<code>docker-compose.yml</code>ファイルを作成する。</p>
+<p>mysqlコンテナに、PHPUnitの実行時のみ使用するDBを追加する。以下のような、<code>docker-compose.yml</code> ファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.9&quot;</span>
 
 <span class="nt">services</span><span class="p">:</span>
@@ -34546,13 +34546,13 @@ DRIVER<span class="w">    </span>VOLUME<span class="w"> </span>NAME
 <span class="nt">volumes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">db_data</span><span class="p">:</span>
 </code></pre></div>
-<p>また、<code>docker-entrypoint-initdb.d</code>ディレクトリ配下に配置するファイルとして、以下の<code>sql</code>ファイルを作成する。</p>
+<p>また、<code>docker-entrypoint-initdb.d</code> ディレクトリ配下に配置するファイルとして、以下の <code>sql</code> ファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># initdbに複数のsqlファイルを置く</span>
 <span class="l l-Scalar l-Scalar-Plain">initdb</span>
 <span class="l l-Scalar l-Scalar-Plain">├── foo.sql</span>
 <span class="l l-Scalar l-Scalar-Plain">└── bar.sql</span>
 </code></pre></div>
-<p>このSQLでは、<code>test</code>というDBを作成し、ユーザーが<code>test</code>DBに接続できるようにする。</p>
+<p>このSQLでは、<code>test</code> というDBを作成し、ユーザーが <code>test</code>DBに接続できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n n-Quoted">`test`</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="s1">&#39;utf8mb4_general_ci&#39;</span><span class="w"> </span><span class="k">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="s1">&#39;utf8mb4&#39;</span><span class="p">;</span>
 <span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;foo&#39;</span><span class="nv">@&#39;%&#39;</span><span class="w"> </span><span class="p">;</span>
 </code></pre></div>
@@ -34583,7 +34583,7 @@ DRIVER<span class="w">    </span>VOLUME<span class="w"> </span>NAME
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月4日 16:41:15 JST">2026-02-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

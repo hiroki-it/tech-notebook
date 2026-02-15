@@ -33783,10 +33783,10 @@
 <p>Kubernetesに標準で備わっていないKubernetesリソースを提供する。</p>
 <p><br></p>
 <h3 id="_3">管理方針<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>CRDは、作成も変更もHelmの管理外 (<code>kubectl</code>コマンド) で作成/変更したほうがよい。</p>
+<p>CRDは、作成も変更もHelmの管理外 (<code>kubectl</code> コマンド) で作成/変更したほうがよい。</p>
 <p>理由としては以下の通りである。</p>
 <ul>
-<li>CRDの作成が衝突する可能性があり、CRDに<code>meta.helm.sh</code>キーを付与したくない</li>
+<li>CRDの作成が衝突する可能性があり、CRDに <code>meta.helm.sh</code> キーを付与したくない</li>
 <li>HelmはCRDを作成できるが更新できないため、作成もHelmの管理外にしたい</li>
 </ul>
 <p>カスタムリソースのマニフェストで定義できるオプションやデータ型は、CRDのスキーマ定義に応じて決まる。</p>
@@ -33820,7 +33820,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>.spec.affinity</code>キーの変更を適用するために、Podを再スケジューリングさせた。<code>.spec.affinity</code>キーの設定が機能せず、変更前と同じNodeにPodが再スケジューリングされてしまう。</td>
+<td><code>.spec.affinity</code> キーの変更を適用するために、Podを再スケジューリングさせた。<code>.spec.affinity</code> キーの設定が機能せず、変更前と同じNodeにPodが再スケジューリングされてしまう。</td>
 <td>PersistentVolumeが再作成されておらず、既存のPersistentVolumeに紐付けるために、同じNodeにPodを再スケジューリングさせている可能性がある。Podを再スケジューリングさせた後に、すぐにPersistentVolumeも再作成する。</td>
 <td>Prometheus系</td>
 </tr>
@@ -33849,8 +33849,8 @@
 <p>ただし、kube-controllerはetcd内のカスタムリソースを検知できず、これを検知するためにはCustom Controllerを作成する必要がある。</p>
 <p><br></p>
 <h3 id="_12">カスタムリソースの宣言値の決まり方<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p>マニフェストの<code>.apiVersion</code>キーで、『<code>&lt;.spec.groupキー名&gt;/&lt;.spec.versionキー名&gt;</code>』と宣言し、カスタムリソースを使用する。</p>
-<p>例えば『<code>example.com</code>』というグループと『<code>v1</code>』というバージョンを定義したとすると、カスタムリソースからは<code>example.com/v1</code>というAPIからコールできるようになる。</p>
+<p>マニフェストの <code>.apiVersion</code> キーで、『<code>&lt;.spec.groupキー名&gt;/&lt;.spec.versionキー名&gt;</code>』と宣言し、カスタムリソースを使用する。</p>
+<p>例えば『<code>example.com</code>』というグループと『<code>v1</code>』というバージョンを定義したとすると、カスタムリソースからは <code>example.com/v1</code> というAPIからコールできるようになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://hi1280.hatenablog.com/entry/2019/11/15/003101">https://hi1280.hatenablog.com/entry/2019/11/15/003101</a></li>
@@ -33911,7 +33911,7 @@
 </ul>
 </blockquote>
 <h4 id="cluster">▼ Clusterの場合<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h4>
-<p>同じカスタムリソースがCluster内に<code>1</code>個のみ存在できるようにする。</p>
+<p>同じカスタムリソースがCluster内に <code>1</code> 個のみ存在できるようにする。</p>
 <p>Namespaceごとにカスタムリソースを作成できなくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
@@ -33927,7 +33927,7 @@
 </ul>
 </blockquote>
 <h4 id="namespaced">▼ Namespacedの場合<a class="headerlink" href="#namespaced" title="Permanent link">&para;</a></h4>
-<p>同じカスタムリソースがNamespace内に<code>1</code>個のみ存在できるようにする。</p>
+<p>同じカスタムリソースがNamespace内に <code>1</code> 個のみ存在できるようにする。</p>
 <p>Namespaceごとにカスタムリソースを作成できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
@@ -33947,8 +33947,8 @@
 <h4 id="names">▼ namesとは<a class="headerlink" href="#names" title="Permanent link">&para;</a></h4>
 <p>カスタムリソースの名前を設定する。</p>
 <h4 id="kind">▼ kind<a class="headerlink" href="#kind" title="Permanent link">&para;</a></h4>
-<p>カスタムリソースの<code>.kind</code>キー名を設定する。</p>
-<p>例えば『<code>Foo</code>』という宣言名にすると、マニフェストの<code>.kind</code>キーで、<code>Foo</code>というカスタムリソース名で使用できるようになる。</p>
+<p>カスタムリソースの <code>.kind</code> キー名を設定する。</p>
+<p>例えば『<code>Foo</code>』という宣言名にすると、マニフェストの <code>.kind</code> キーで、<code>Foo</code> というカスタムリソース名で使用できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33968,8 +33968,8 @@
 </ul>
 </blockquote>
 <h4 id="plural">▼ plural<a class="headerlink" href="#plural" title="Permanent link">&para;</a></h4>
-<p><code>kubectl</code>コマンドで使用するカスタムリソースの複数形名を設定する。</p>
-<p>例えば『<code>foos</code>』という宣言名にすると、<code>kubectl</code>コマンドで<code>foos</code>というカスタムリソース名で使用できるようになる。</p>
+<p><code>kubectl</code> コマンドで使用するカスタムリソースの複数形名を設定する。</p>
+<p>例えば『<code>foos</code>』という宣言名にすると、<code>kubectl</code> コマンドで <code>foos</code> というカスタムリソース名で使用できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33986,8 +33986,8 @@
 </ul>
 </blockquote>
 <h4 id="singular">▼ singular<a class="headerlink" href="#singular" title="Permanent link">&para;</a></h4>
-<p><code>kubectl</code>コマンドで使用するカスタムリソースの単数形名を設定する。</p>
-<p>例えば『<code>foo</code>』という宣言名にすると、<code>kubectl</code>コマンドで<code>foo</code>というカスタムリソース名で使用できるようになる。</p>
+<p><code>kubectl</code> コマンドで使用するカスタムリソースの単数形名を設定する。</p>
+<p>例えば『<code>foo</code>』という宣言名にすると、<code>kubectl</code> コマンドで <code>foo</code> というカスタムリソース名で使用できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34004,8 +34004,8 @@
 </ul>
 </blockquote>
 <h4 id="shortnames">▼ shortNames<a class="headerlink" href="#shortnames" title="Permanent link">&para;</a></h4>
-<p><code>kubectl</code>コマンドで使用するカスタムリソースの省略名を設定する。</p>
-<p>例えば『<code>fo</code>』という宣言名にすると、<code>kubectl</code>コマンドで<code>fo</code>というカスタムリソース名で使用できるようになる。</p>
+<p><code>kubectl</code> コマンドで使用するカスタムリソースの省略名を設定する。</p>
+<p>例えば『<code>fo</code>』という宣言名にすると、<code>kubectl</code> コマンドで <code>fo</code> というカスタムリソース名で使用できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34026,7 +34026,7 @@
 <h3 id="specversions">.spec.versions<a class="headerlink" href="#specversions" title="Permanent link">&para;</a></h3>
 <h4 id="versions">▼ versionsとは<a class="headerlink" href="#versions" title="Permanent link">&para;</a></h4>
 <p>CRDに対応するカスタムリソースに関して、APIグループのバージョンを設定する。</p>
-<p>複数のバージョンのCRDをCluster内で同時に管理する場合、<code>.spec.versions[*].name</code>キー配下に複数のスキーマを定義する。</p>
+<p>複数のバージョンのCRDをCluster内で同時に管理する場合、<code>.spec.versions[*].name</code> キー配下に複数のスキーマを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34048,7 +34048,7 @@
 </blockquote>
 <h4 id="name_1">▼ name<a class="headerlink" href="#name_1" title="Permanent link">&para;</a></h4>
 <p>APIグループのバージョン名を設定する。</p>
-<p>例えば『<code>v1</code>』というstring型のキーを設定すると、マニフェストの<code>.apiVersion</code>で、<code>/v1</code>を最後につけてコールすることになる。</p>
+<p>例えば『<code>v1</code>』というstring型のキーを設定すると、マニフェストの <code>.apiVersion</code> で、<code>/v1</code> を最後につけてコールすることになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34079,8 +34079,8 @@
 </ul>
 </blockquote>
 <h4 id="schema">▼ schema<a class="headerlink" href="#schema" title="Permanent link">&para;</a></h4>
-<p>カスタムリソースの<code>.spec</code>キー以下に設定できるキーと、これのデータ型を設定する。</p>
-<p>例えば『<code>message</code>』というstring型のキーを設定すると、カスタムリソースの<code>.spec.message</code>キーに任意のstring型を設定できるようになる。</p>
+<p>カスタムリソースの <code>.spec</code> キー以下に設定できるキーと、これのデータ型を設定する。</p>
+<p>例えば『<code>message</code>』というstring型のキーを設定すると、カスタムリソースの <code>.spec.message</code> キーに任意のstring型を設定できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34144,7 +34144,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月30日 18:33:51 JST">2025-03-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

@@ -32858,7 +32858,7 @@
 </tr>
 <tr>
 <td>Kubernetes ConfigMap</td>
-<td>AWS CoreDNSアドオンの各種設定を管理する。Terraformで<code>json</code>ファイルとして作成する。</td>
+<td>AWS CoreDNSアドオンの各種設定を管理する。Terraformで <code>json</code> ファイルとして作成する。</td>
 </tr>
 <tr>
 <td>Kubernetes NodePort Service</td>
@@ -32866,7 +32866,7 @@
 </tr>
 <tr>
 <td>Pod (送信元)</td>
-<td>サービスメッシュ外にある任意の送信元Podである。kubeletは、Pod内のコンテナの<code>/etc/resolv.conf</code>ファイルに権威DNSサーバー (ここではCoreDNS) のIPアドレスを設定する。リクエスト時に、コンテナは自身の<code>/etc/resolv.conf</code>ファイルで権威DNSサーバーのIPアドレスを確認し、DNSサーバーに宛先PodのIPアドレスの正引きを実施する。送信元Podは、取得したIPアドレスを使用して、宛先Podにリクエストを送信する。</td>
+<td>サービスメッシュ外にある任意の送信元Podである。kubeletは、Pod内のコンテナの <code>/etc/resolv.conf</code> ファイルに権威DNSサーバー (ここではCoreDNS) のIPアドレスを設定する。リクエスト時に、コンテナは自身の <code>/etc/resolv.conf</code> ファイルで権威DNSサーバーのIPアドレスを確認し、DNSサーバーに宛先PodのIPアドレスの正引きを実施する。送信元Podは、取得したIPアドレスを使用して、宛先Podにリクエストを送信する。</td>
 </tr>
 <tr>
 <td>Pod (宛先)</td>
@@ -33040,11 +33040,11 @@
 </tr>
 <tr>
 <td>AWS ALB</td>
-<td>AWS Certificate Managerの管理するSSL証明書を、AWS ALBに紐づける。ユーザーがAWS EKSクラスターにリクエストを送信する時に、通常のTLSを実行できるようになる。なお、ここでSSL/TLS終端とし、アップストリームのIstio IngressGatewayでSSL/TLSを再開する。</td>
+<td>AWS Certificate Managerの管理するSSL証明書を、AWS ALBに紐づける。ユーザーがAWS EKSクラスターにリクエストを送信するときに、通常のTLSを実行できるようになる。なお、ここでSSL/TLS終端とし、アップストリームのIstio IngressGatewayでSSL/TLSを再開する。</td>
 </tr>
 <tr>
 <td>AWS Aurora</td>
-<td>SSL証明書をAWS Auroraに紐づける。マイクロサービスがAWS Auroraにトランザクションを実行する時に、通常のTLSを実行できるようになる。</td>
+<td>SSL証明書をAWS Auroraに紐づける。マイクロサービスがAWS Auroraにトランザクションを実行するときに、通常のTLSを実行できるようになる。</td>
 </tr>
 <tr>
 <td>AWS Certificate Manager</td>
@@ -33143,7 +33143,7 @@
 <tbody>
 <tr>
 <td>AWS EBS</td>
-<td>コンテナランタイムは、コンテナの標準出力または標準エラー出力したログの実体をAWS EBSボリュームの<code>/var/log/pods</code>ディレクトリに出力する。また、<code>/var/log/container</code>ディレクトリに各コンテナのログのシンボリックリンクがある。</td>
+<td>コンテナランタイムは、コンテナの標準出力または標準エラー出力したログの実体をAWS EBSボリュームの <code>/var/log/pods</code> ディレクトリに出力する。また、<code>/var/log/container</code> ディレクトリに各コンテナのログのシンボリックリンクがある。</td>
 </tr>
 <tr>
 <td>AWS CloudWatch Logs</td>
@@ -33155,7 +33155,7 @@
 </tr>
 <tr>
 <td>Fluentd / FluentBit</td>
-<td>DaemonSet型のエージェントパターンを採用し、DaemonSetとして各Nodeに稼働させる。<code>/var/log/container</code>ディレクトリに各コンテナのログのシンボリックリンクがある。INPUTセクションでこのディレクトリを指定し、ログを収集する。今回の例では、istio-proxyのアクセスログとアプリケーションの実行ログを収集するとする。OUTPUTセクションで、ログの宛先にAWS CloudWatch Logsを設定する。</td>
+<td>DaemonSet型のエージェントパターンを採用し、DaemonSetとして各Nodeに稼働させる。<code>/var/log/container</code> ディレクトリに各コンテナのログのシンボリックリンクがある。INPUTセクションでこのディレクトリを指定し、ログを収集する。今回の例では、istio-proxyのアクセスログとアプリケーションの実行ログを収集するとする。OUTPUTセクションで、ログの宛先にAWS CloudWatch Logsを設定する。</td>
 </tr>
 <tr>
 <td>Istioコントロールプレーン</td>
@@ -33167,7 +33167,7 @@
 </tr>
 <tr>
 <td>Istio Telemetry</td>
-<td><code>.spec.accessLogging[*]providers</code>キーで、AccessLoggingプロバイダーを使用する。</td>
+<td><code>.spec.accessLogging[*]providers</code> キーで、AccessLoggingプロバイダーを使用する。</td>
 </tr>
 <tr>
 <td>Kubernetes ConfigMap (Fluentd / FluentBit)</td>
@@ -33175,7 +33175,7 @@
 </tr>
 <tr>
 <td>Kubernetes ConfigMap (Istio)</td>
-<td><code>.extensionProviders</code>キーで、AccessLoggingプロバイダーを宣言する。</td>
+<td><code>.extensionProviders</code> キーで、AccessLoggingプロバイダーを宣言する。</td>
 </tr>
 <tr>
 <td>SWE / SREer</td>
@@ -33233,11 +33233,11 @@
 </tr>
 <tr>
 <td>Istio Telemetry</td>
-<td><code>.spec.metrics[*]providers</code>キーで、Metricsプロバイダーを使用する。</td>
+<td><code>.spec.metrics[*]providers</code> キーで、Metricsプロバイダーを使用する。</td>
 </tr>
 <tr>
 <td>Kubernetes ConfigMap (Istio)</td>
-<td><code>.extensionProviders</code>キーで、Metricsプロバイダーを宣言する。</td>
+<td><code>.extensionProviders</code> キーで、Metricsプロバイダーを宣言する。</td>
 </tr>
 <tr>
 <td>Kubernetes ConfigMap (Grafana)</td>
@@ -33430,7 +33430,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月2日 14:04:19 JST">2026-02-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

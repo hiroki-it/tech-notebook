@@ -34897,7 +34897,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h3 id="specversion">.spec.version<a class="headerlink" href="#specversion" title="Permanent link">&para;</a></h3>
 <p>Alertmanagerのコンテナイメージのバージョンを設定する。</p>
-<p>使用するコンテナイメージは、<code>.spec.baseImage</code>キーに設定する。</p>
+<p>使用するコンテナイメージは、<code>.spec.baseImage</code> キーに設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alertmanager</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34924,7 +34924,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="specbaseimage">.spec.baseImage<a class="headerlink" href="#specbaseimage" title="Permanent link">&para;</a></h3>
 <p>Alertmanagerのコンテナイメージを設定する。</p>
-<p>コンテナイメージのバージョンは、<code>.spec.version</code>キーに設定する。</p>
+<p>コンテナイメージのバージョンは、<code>.spec.version</code> キーに設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alertmanager</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35019,8 +35019,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>Serviceを持つPodではServiceMonitorを使用し、これを持たないPodをPodMonitorで監視する。</p>
 <p><br></p>
 <h3 id="specnamespaceselector">.spec.namespaceSelector<a class="headerlink" href="#specnamespaceselector" title="Permanent link">&para;</a></h3>
-<p>PodMonitorを有効化する時の任意の<code>metadata.labels</code>キー設定する。</p>
-<p>Prometheusは、<code>metadata.labels</code>キー有効化したNamespace内のPodを監視する。</p>
+<p>PodMonitorを有効化するときの任意の <code>metadata.labels</code> キー設定する。</p>
+<p>Prometheusは、<code>metadata.labels</code> キー有効化したNamespace内のPodを監視する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PodMonitor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35072,7 +35072,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="specexternallabel">.spec.externalLabel<a class="headerlink" href="#specexternallabel" title="Permanent link">&para;</a></h3>
-<p>Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、Grafana Mimir、M3DB、Thanos、Cortexなど) にメトリクスを送信する時に、これに付与するラベルを設定する。</p>
+<p>Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、Grafana Mimir、M3DB、Thanos、Cortexなど) にメトリクスを送信するときに、これに付与するラベルを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prometheus</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35172,7 +35172,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="07-prometheusrule">07. PrometheusRule<a class="headerlink" href="#07-prometheusrule" title="Permanent link">&para;</a></h2>
 <h3 id="prometheusrule">PrometheusRuleとは<a class="headerlink" href="#prometheusrule" title="Permanent link">&para;</a></h3>
 <p>ルール (アラートルール、レコーディングルール) を設定する。</p>
-<p>PrometheusRuleの定義に応じて、prometheusコンテナの<code>/etc/prometheus/rules</code>ディレクトリ配下にルールの設定ファイルが配置される。</p>
+<p>PrometheusRuleの定義に応じて、prometheusコンテナの <code>/etc/prometheus/rules</code> ディレクトリ配下にルールの設定ファイルが配置される。</p>
 <p>有効になっているPrometheusRuleは、Prometheusダッシュボードの Status &gt; Rule タブで確認できる。</p>
 <blockquote>
 <ul>
@@ -35204,7 +35204,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="_9">公開ルールレシピ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ 公開ルールレシピとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>自前ルールを定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたルール (例：kubernetes-mixins、runbooks) を使用した方が良い。</p>
+<p>自前ルールを定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたルール (例：kubernetes-mixins、runbooks) を使用したほうが良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://monitoring.mixins.dev">https://monitoring.mixins.dev</a></li>
@@ -35260,7 +35260,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <td>GroupLabels</td>
 <td>map型</td>
 <td>・<code>.GroupLabels.alertname</code> <br>・<code>.GroupLabels.instance</code> <br>・<code>.GroupLabels.job</code></td>
-<td>特定のアラートグループに関するラベルが割り当てられている。<code>.spec.groups[*].rules[*].labels</code>キー配下で設定したユーザー定義のラベルも含む。<br>・<a href="https://prometheus.io/docs/alerting/latest/notifications/#kv">https://prometheus.io/docs/alerting/latest/notifications/#kv</a></td>
+<td>特定のアラートグループに関するラベルが割り当てられている。<code>.spec.groups[*].rules[*].labels</code> キー配下で設定したユーザー定義のラベルも含む。<br>・<a href="https://prometheus.io/docs/alerting/latest/notifications/#kv">https://prometheus.io/docs/alerting/latest/notifications/#kv</a></td>
 </tr>
 <tr>
 <td>CommonLabels</td>
@@ -35272,7 +35272,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <td>CommonAnnotations</td>
 <td>map型</td>
 <td><code>.CommonAnnotations.summary</code></td>
-<td>全てのアラートに共通するアノテーションが割り当てられている。<code>.spec.groups[*].rules[*].labels</code>キー配下で設定したユーザー定義のアノテーションも含む。</td>
+<td>全てのアラートに共通するアノテーションが割り当てられている。<code>.spec.groups[*].rules[*].labels</code> キー配下で設定したユーザー定義のアノテーションも含む。</td>
 </tr>
 <tr>
 <td>ExternalURL</td>
@@ -35318,7 +35318,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="c1">#   - bar</span>
 </code></pre></div>
 <h4 id="rules">▼ rules (アラートルールの場合)<a class="headerlink" href="#rules" title="Permanent link">&para;</a></h4>
-<p><code>alert</code>キーを宣言し、アラートルールを設定する。</p>
+<p><code>alert</code> キーを宣言し、アラートルールを設定する。</p>
 <p>アラートルールは、『アッパーキャメルケース』で命名する。</p>
 <table>
 <thead>
@@ -35334,7 +35334,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </tr>
 <tr>
 <td><code>annotations</code></td>
-<td>アラートルールによるアラートの通知内容を設定する。<code>.metadata.labels</code>キーや発火値 (<code>$value</code>) を通知内容に変数で出力できる。</td>
+<td>アラートルールによるアラートの通知内容を設定する。<code>.metadata.labels</code> キーや発火値 (<code>$value</code>) を通知内容に変数で出力できる。</td>
 </tr>
 <tr>
 <td><code>expr</code></td>
@@ -35383,7 +35383,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="rules_1">▼ rules (レコーディングルールの場合)<a class="headerlink" href="#rules_1" title="Permanent link">&para;</a></h4>
-<p><code>record</code>キーを宣言し、レコーディングルールを設定する。</p>
+<p><code>record</code> キーを宣言し、レコーディングルールを設定する。</p>
 <p>アラートルールは、『スネークケース』『コロン区切り』で命名する。</p>
 <table>
 <thead>
@@ -35530,10 +35530,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <h4 id="relabelings">▼ relabelings<a class="headerlink" href="#relabelings" title="Permanent link">&para;</a></h4>
 <p>作成したメトリクスのラベルやその値を変換する。</p>
-<p>ServiceMonitorでは、Kubernetes SD configurationsのメタラベルのうちで、<code>service</code>/<code>pod</code>/<code>endpoints</code>のラベルを変換できる。</p>
+<p>ServiceMonitorでは、Kubernetes SD configurationsのメタラベルのうちで、<code>service</code>/<code>pod</code>/<code>endpoints</code> のラベルを変換できる。</p>
 <p><strong>＊例＊</strong></p>
-<p>Node Exporterが作成したメトリクスでは、<code>instance</code>ラベルが<code>*.*.*.*:&lt;ポート番号&gt;</code>になっている。</p>
-<p>これだとわかりにくいため、Podの<code>__meta_kubernetes_pod_node_name</code>ラベルの値 (Nodeのホスト名) に変換する。</p>
+<p>Node Exporterが作成したメトリクスでは、<code>instance</code> ラベルが <code>*.*.*.*:&lt;ポート番号&gt;</code> になっている。</p>
+<p>これだとわかりにくいため、Podの <code>__meta_kubernetes_pod_node_name</code> ラベルの値 (Nodeのホスト名) に変換する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35656,7 +35656,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="specselector">.spec.selector<a class="headerlink" href="#specselector" title="Permanent link">&para;</a></h3>
 <h4 id="matchlabels">▼ matchLabels<a class="headerlink" href="#matchlabels" title="Permanent link">&para;</a></h4>
 <p><img alt="prometheus-operator_service-monitor_match-labels" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus-operator_service-monitor_match-labels.png" /></p>
-<p>収集の対象とするServiceに付与された<code>.metadata.labels</code>キーを設定する。</p>
+<p>収集の対象とするServiceに付与された <code>.metadata.labels</code> キーを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35724,7 +35724,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月4日 17:17:19 JST">2025-11-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

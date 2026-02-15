@@ -34811,7 +34811,7 @@ $<span class="w"> </span>pstree
 <p><br></p>
 <h3 id="supervisord_1">supervisordセクション<a class="headerlink" href="#supervisord_1" title="Permanent link">&para;</a></h3>
 <h4 id="supervisord_2">▼ supervisordセクションとは<a class="headerlink" href="#supervisord_2" title="Permanent link">&para;</a></h4>
-<p>supervisorの<code>supervisord</code>プロセスのプールを設定する。</p>
+<p>supervisorの <code>supervisord</code> プロセスのプールを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[supervisord]</span>
 
 <span class="na">...</span>
@@ -34901,8 +34901,8 @@ $<span class="w"> </span>pstree
 </code></pre></div>
 <h4 id="stdout_logfilestderr_logfile">▼ stdout_logfile、stderr_logfile<a class="headerlink" href="#stdout_logfilestderr_logfile" title="Permanent link">&para;</a></h4>
 <p>デーモン化されたプロセスの標準出力/標準エラー出力の出力先を設定する。</p>
-<p>デフォルト値は<code>/var/log/supervisor</code>ディレクトリである。</p>
-<p>もし、<code>/dev/stdout</code>ディレクトリまたは<code>/dev/stderr</code>ディレクトリを使用する場合は、<code>logfile_maxbytes</code>オプションの値を<code>0</code> (無制限) とする必要がある。</p>
+<p>デフォルト値は <code>/var/log/supervisor</code> ディレクトリである。</p>
+<p>もし、<code>/dev/stdout</code> ディレクトリまたは <code>/dev/stderr</code> ディレクトリを使用する場合は、<code>logfile_maxbytes</code> オプションの値を <code>0</code> (無制限) とする必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[program:foo]</span>
 
 <span class="c1"># 標準出力の場所</span>
@@ -34950,7 +34950,7 @@ $<span class="w"> </span>pstree
 <h3 id="supervisorctl_1">supervisorctl<a class="headerlink" href="#supervisorctl_1" title="Permanent link">&para;</a></h3>
 <h4 id="restart">▼ restart<a class="headerlink" href="#restart" title="Permanent link">&para;</a></h4>
 <p>指定したデーモンを再起動する。</p>
-<p><code>all</code>とした場合は、全てを再起動する。</p>
+<p><code>all</code> とした場合は、全てを再起動する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>supervisorctl<span class="w"> </span>restart<span class="w"> </span>&lt;デーモン名&gt;
 </code></pre></div>
 <blockquote>
@@ -34959,7 +34959,7 @@ $<span class="w"> </span>pstree
 </ul>
 </blockquote>
 <h4 id="update">▼ update<a class="headerlink" href="#update" title="Permanent link">&para;</a></h4>
-<p>もし<code>supervisord.conf</code>ファイルの設定を変更した場合、これを再読み出しする。</p>
+<p>もし <code>supervisord.conf</code> ファイルの設定を変更した場合、これを再読み出しする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>supervisorctl<span class="w"> </span>update
 </code></pre></div>
 <blockquote>
@@ -35024,8 +35024,8 @@ $<span class="w"> </span>pstree
 <h3 id="_6">ユニットファイル<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ ユニットファイルとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>デーモンの起動/停止方法を定義したファイル。</p>
-<p>デフォルト値が定義されたファイルは<code>/usr/lib/systemd/system</code>ディレクトリ配下に配置され、これは変更できない。</p>
-<p>カスタムユニットファイルは、<code>/etc/sytemd/system</code>ディレクトリ配下に配置する。</p>
+<p>デフォルト値が定義されたファイルは <code>/usr/lib/systemd/system</code> ディレクトリ配下に配置され、これは変更できない。</p>
+<p>カスタムユニットファイルは、<code>/etc/sytemd/system</code> ディレクトリ配下に配置する。</p>
 <blockquote>
 <ul>
 <li><a href="https://tex2e.github.io/blog/linux/create-my-systemd-service">https://tex2e.github.io/blog/linux/create-my-systemd-service</a></li>
@@ -35064,7 +35064,7 @@ $<span class="w"> </span>pstree
 <span class="c1"># ulimitコマンドのnオプションに相当する</span>
 <span class="na">LimitNOFILE</span><span class="o">=</span><span class="s">12345</span>
 </code></pre></div>
-<p><code>EnvironmentFile</code>として使用する<code>sysconfig</code>ファイルには、<code>.env</code>ファイルと同じような形式のものを作成する。</p>
+<p><code>EnvironmentFile</code> として使用する <code>sysconfig</code> ファイルには、<code>.env</code> ファイルと同じような形式のものを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nv">OPTIONS</span><span class="o">=</span>foo
 </code></pre></div>
 <blockquote>
@@ -35075,7 +35075,7 @@ $<span class="w"> </span>pstree
 </ul>
 </blockquote>
 <h4 id="install">▼ Installセクション<a class="headerlink" href="#install" title="Permanent link">&para;</a></h4>
-<p>ユニットのインストール (<code>systemctl enable</code>コマンドの実行) 時のオプションを設定する。</p>
+<p>ユニットのインストール (<code>systemctl enable</code> コマンドの実行) 時のオプションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[Install]</span>
 <span class="c1"># シンボリックリンクを作成するディレクトリ (/etc/systemd/system/&lt;設定値&gt;)</span>
 <span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
@@ -35083,9 +35083,9 @@ $<span class="w"> </span>pstree
 <p><br></p>
 <h3 id="systemctl_2">systemctl<a class="headerlink" href="#systemctl_2" title="Permanent link">&para;</a></h3>
 <h4 id="daemon-reload">▼ daemon-reload<a class="headerlink" href="#daemon-reload" title="Permanent link">&para;</a></h4>
-<p>サーバー内で<code>/etc/sytemd/system</code>ディレクトリ配下のカスタムユニットファイルを直接変更した場合に使用する。</p>
+<p>サーバー内で <code>/etc/sytemd/system</code> ディレクトリ配下のカスタムユニットファイルを直接変更した場合に使用する。</p>
 <p>全てのデーモンのカスタムユニットファイルを再読み込みする。</p>
-<p>ただし、デーモンが既に稼働中の場合は、<code>systemctl restart</code>コマンドが別途必要になる。</p>
+<p>ただし、デーモンがすでに稼働中の場合は、<code>systemctl restart</code> コマンドが別途必要になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
 </code></pre></div>
 <blockquote>
@@ -35111,8 +35111,8 @@ $<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enabl
 </code></pre></div>
 <h4 id="is-failed">▼ is-failed<a class="headerlink" href="#is-failed" title="Permanent link">&para;</a></h4>
 <p>プロセスが正常に実行されているかどうかを確認する。</p>
-<p>正常の場合は<code>active</code>、異常の場合は<code>failed</code>になる。</p>
-<p>これは、<code>systemctl status</code>コマンドのActive行でも確認できる。</p>
+<p>正常の場合は <code>active</code>、異常の場合は <code>failed</code> になる。</p>
+<p>これは、<code>systemctl status</code> コマンドのActive行でも確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>is-failed<span class="w"> </span>&lt;ユニット名&gt;
 
 active
@@ -35124,7 +35124,7 @@ active
 </blockquote>
 <h4 id="list-units">▼ list-units<a class="headerlink" href="#list-units" title="Permanent link">&para;</a></h4>
 <p>デーモン化されたプロセスの稼働状態を一覧を取得する。</p>
-<p><code>grep</code>と組み合わせて、起動中 (<code>active</code>) 、停止中 (<code>inactive</code>) 、起動失敗 (<code>failed</code>) のデーモンのみを取得すると良い。</p>
+<p><code>grep</code> と組み合わせて、起動中 (<code>active</code>) 、停止中 (<code>inactive</code>) 、起動失敗 (<code>failed</code>) のデーモンのみを取得すると良い。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>list-units<span class="w"> </span>--type<span class="o">=</span>&lt;ユニットの拡張子&gt;
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>list-units<span class="w"> </span>--type<span class="o">=</span>service<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>active
@@ -35172,7 +35172,7 @@ proc-fs-nfsd.mount<span class="w">            </span>static
 proc-sys-fs-binfmt_misc.mount<span class="w"> </span>static
 </code></pre></div>
 <h4 id="log">▼ log<a class="headerlink" href="#log" title="Permanent link">&para;</a></h4>
-<p><code>systemctl</code>コマンドにはログを取得するオプションがないため、代わりに<code>journalctl</code>コマンドを使用する。</p>
+<p><code>systemctl</code> コマンドにはログを取得するオプションがないため、代わりに <code>journalctl</code> コマンドを使用する。</p>
 <h4 id="reload">▼ reload<a class="headerlink" href="#reload" title="Permanent link">&para;</a></h4>
 <p>デーモン化されたプロセスをGraceful Restartする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>&lt;ユニット名&gt;
@@ -35225,7 +35225,7 @@ mq959<span class="w"> </span>/usr/sbin/rsyslogd<span class="w"> </span>-n
 <h3 id="journalctl">journalctl<a class="headerlink" href="#journalctl" title="Permanent link">&para;</a></h3>
 <h4 id="journalctl_1">▼ journalctlとは<a class="headerlink" href="#journalctl_1" title="Permanent link">&para;</a></h4>
 <p>systemで管理する全てのユニットの標準出力と標準エラー出力のログを取得する。</p>
-<p><code>grep</code>コマンドで特定のエラーログレベルに絞る必要がある。</p>
+<p><code>grep</code> コマンドで特定のエラーログレベルに絞る必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>journalctl<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>error
 </code></pre></div>
 <blockquote>
@@ -35239,14 +35239,14 @@ mq959<span class="w"> </span>/usr/sbin/rsyslogd<span class="w"> </span>-n
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>foo.service<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>error
 </code></pre></div>
 <h4 id="-f">▼ -f<a class="headerlink" href="#-f" title="Permanent link">&para;</a></h4>
-<p><code>tail</code>コマンドのようにログを出力し続ける。</p>
+<p><code>tail</code> コマンドのようにログを出力し続ける。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>journalctl<span class="w"> </span>-f<span class="w"> </span>-u<span class="w"> </span>foo.service<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>error
 </code></pre></div>
 <p><br></p>
 <h3 id="systemd">systemdのアラート<a class="headerlink" href="#systemd" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ アラートを直接的に通知する場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>デーモンが失敗状態になった時、メールアドレスやチャット宛にアラートを直接的に送信するためには、<code>OnFailure</code>オプションを使用する。</p>
-<p>この時に指定するユニットファイル名には、「<code>@%i</code>』が必要である (実際のファイル名に<code>%i</code>は不要である) 。</p>
+<p>デーモンが失敗状態になったとき、メールアドレスやチャット宛にアラートを直接的に送信するためには、<code>OnFailure</code> オプションを使用する。</p>
+<p>この時に指定するユニットファイル名には、「<code>@%i</code>』が必要である (実際のファイル名に <code>%i</code> は不要である) 。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[Unit]</span>
 
 <span class="na">...</span>
@@ -35254,7 +35254,7 @@ mq959<span class="w"> </span>/usr/sbin/rsyslogd<span class="w"> </span>-n
 <span class="c1"># ユニットが失敗状態時に起動するユニット</span>
 <span class="na">OnFailure</span><span class="o">=</span><span class="s">notify-email@%i.service</span>
 </code></pre></div>
-<p><code>/etc/systemd/system/notify-email@.service</code>ファイルで、失敗状態時に起動するユニットを定義しておく。<code>ExecStart</code>オプションで、特定のアドレスにメールを送信する。</p>
+<p><code>/etc/systemd/system/notify-email@.service</code> ファイルで、失敗状態時に起動するユニットを定義しておく。<code>ExecStart</code> オプションで、特定のアドレスにメールを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># notify-email@.serviceファイル</span>
 
 <span class="k">[Unit]</span>
@@ -35275,7 +35275,7 @@ mq959<span class="w"> </span>/usr/sbin/rsyslogd<span class="w"> </span>-n
 </ul>
 </blockquote>
 <h4 id="_9">▼ アラートを間接的に通知する場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>デーモンが失敗状態になった時、出力したログを使用してアラートを送信するためには、<code>StandardOutput</code>オプションや<code>StandardError</code>オプションを使用する。</p>
+<p>デーモンが失敗状態になったとき、出力したログを使用してアラートを送信するためには、<code>StandardOutput</code> オプションや <code>StandardError</code> オプションを使用する。</p>
 <p>一度、ログとして出力し、このログをAWS CloudWatch Logsなどに送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[Service]</span>
 
@@ -35357,7 +35357,7 @@ mq959<span class="w"> </span>/usr/sbin/rsyslogd<span class="w"> </span>-n
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 22:44:49 JST">2025-05-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

@@ -43516,7 +43516,7 @@
 <h2 id="certificatesigningrequest">CertificateSigningRequest<a class="headerlink" href="#certificatesigningrequest" title="Permanent link">&para;</a></h2>
 <h3 id="specrequest">.spec.request<a class="headerlink" href="#specrequest" title="Permanent link">&para;</a></h3>
 <h4 id="request">▼ requestとは<a class="headerlink" href="#request" title="Permanent link">&para;</a></h4>
-<p>base64方式でエンコードした証明書署名要求 (<code>.csr</code>ファイル) を設定する。</p>
+<p>base64方式でエンコードした証明書署名要求 (<code>.csr</code> ファイル) を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">certificates.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CertificateSigningRequest</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -43538,7 +43538,7 @@
 <li><a href="https://goodbyegangster.hatenablog.com/entry/2021/01/18/131452">https://goodbyegangster.hatenablog.com/entry/2021/01/18/131452</a></li>
 </ul>
 </blockquote>
-<p>定義したCertificateSigningRequestを承認し、サーバー証明書 (<code>.crt</code>) を作成するためには、<code>kubectl certificate approve</code>コマンドを使用する。</p>
+<p>定義したCertificateSigningRequestを承認し、サーバー証明書 (<code>.crt</code>) を作成するためには、<code>kubectl certificate approve</code> コマンドを使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 承認</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>certificate<span class="w"> </span>approve<span class="w"> </span>foo-csr
 
@@ -43549,7 +43549,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h2 id="config">Config<a class="headerlink" href="#config" title="Permanent link">&para;</a></h2>
 <h3 id="clusters">clusters<a class="headerlink" href="#clusters" title="Permanent link">&para;</a></h3>
 <h4 id="clusters_1">▼ clustersとは<a class="headerlink" href="#clusters_1" title="Permanent link">&para;</a></h4>
-<p><code>kubectl</code>コマンドの向き先となるClusterを設定する。</p>
+<p><code>kubectl</code> コマンドの向き先となるClusterを設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts">https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts</a></li>
@@ -43606,7 +43606,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h3 id="contexts">contexts<a class="headerlink" href="#contexts" title="Permanent link">&para;</a></h3>
 <h4 id="contexts_1">▼ contextsとは<a class="headerlink" href="#contexts_1" title="Permanent link">&para;</a></h4>
-<p><code>kubectl</code>コマンドの向き先の候補を設定する。</p>
+<p><code>kubectl</code> コマンドの向き先の候補を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts">https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts</a></li>
@@ -43630,7 +43630,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <h4 id="context">▼ context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h4>
-<p>実際に使用するCluster名とServiceAccountユーザー名を、<code>.contexts[*].context.cluster</code>キーと<code>.contexts[*].context.user</code>キーから選んで設定する。</p>
+<p>実際に使用するCluster名とServiceAccountユーザー名を、<code>.contexts[*].context.cluster</code> キーと <code>.contexts[*].context.user</code> キーから選んで設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Config</span>
 <span class="nt">contexts</span><span class="p">:</span>
@@ -43662,7 +43662,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h3 id="current-context">current-context<a class="headerlink" href="#current-context" title="Permanent link">&para;</a></h3>
 <h4 id="current-context_1">▼ current-contextとは<a class="headerlink" href="#current-context_1" title="Permanent link">&para;</a></h4>
-<p><code>kubectl</code>コマンドの現在の向き先の名前を設定する。</p>
+<p><code>kubectl</code> コマンドの現在の向き先の名前を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Config</span>
 <span class="nt">current-context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ClusterのARN&gt;</span>
@@ -43687,7 +43687,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h3 id="users">users<a class="headerlink" href="#users" title="Permanent link">&para;</a></h3>
 <h4 id="users_1">▼ usersとは<a class="headerlink" href="#users_1" title="Permanent link">&para;</a></h4>
-<p>kube-apiserverのクライアント (特に<code>kubectl</code>コマンド実行者) のUserAccountの情報を設定する。</p>
+<p>kube-apiserverのクライアント (特に <code>kubectl</code> コマンド実行者) のUserAccountの情報を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts">https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts</a></li>
@@ -43881,12 +43881,12 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <li><a href="https://qiita.com/tmshn/items/aedf0d739a43a1d6423d#%E3%82%B1%E3%83%BC%E3%82%B93-startingdeadlineseconds">https://qiita.com/tmshn/items/aedf0d739a43a1d6423d#%E3%82%B1%E3%83%BC%E3%82%B93-startingdeadlineseconds</a></li>
 </ul>
 </blockquote>
-<p>CronJobのデフォルトの仕様として、Jobが<code>100</code>回連続で失敗すると、CronJobを再作成しない限りJobを再実行できなくなる。</p>
-<p>1時間にJobを1回実行すると仮定すると、簡単に<code>100</code>回を超過してしまう。</p>
+<p>CronJobのデフォルトの仕様として、Jobが <code>100</code> 回連続で失敗すると、CronJobを再作成しない限りJobを再実行できなくなる。</p>
+<p>1時間にJobを1回実行すると仮定すると、簡単に <code>100</code> 回を超過してしまう。</p>
 <div class="highlight"><pre><span></span><code>停止時間<span class="w"> </span><span class="o">(</span>8h<span class="o">)</span><span class="w"> </span>*<span class="w"> </span>実行間隔<span class="w"> </span><span class="o">(</span><span class="m">60</span>/h<span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>480回
 </code></pre></div>
-<p>この時、<code>.spec.startingDeadlineSeconds</code>キーを設定しておくと、これの期間に<code>100</code>回連続で失敗した時のみ、Jobを再実行できなくなる。</p>
-<p><code>100</code>回連続を判定する期間を短くすることで、再作成しなくてもよくなるようにする。</p>
+<p>この時、<code>.spec.startingDeadlineSeconds</code> キーを設定しておくと、これの期間に <code>100</code> 回連続で失敗したときのみ、Jobを再実行できなくなる。</p>
+<p><code>100</code> 回連続を判定する期間を短くすることで、再作成しなくてもよくなるようにする。</p>
 <blockquote>
 <ul>
 <li><a href="https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/">https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/</a></li>
@@ -43911,7 +43911,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h3 id="specstrategy">.spec.strategy<a class="headerlink" href="#specstrategy" title="Permanent link">&para;</a></h3>
 <h3 id="specstrategy-rollingupdate">.spec.strategy (RollingUpdateの場合)<a class="headerlink" href="#specstrategy-rollingupdate" title="Permanent link">&para;</a></h3>
-<p>Podで<code>.spec.containers[*].ports[*].hostPort</code>キーを使用する場合、<code>.spec.strategy.rollingUpdate.maxSurge</code>キーは<code>0</code> (デフォルト値) にしなければならない。</p>
+<p>Podで <code>.spec.containers[*].ports[*].hostPort</code> キーを使用する場合、<code>.spec.strategy.rollingUpdate.maxSurge</code> キーは <code>0</code> (デフォルト値) にしなければならない。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/yosshi_/items/ec042a801ef69fa44ef6#%E6%B3%A8%E6%84%8F%E7%82%B9hostport-%E3%81%AE%E5%88%A9%E7%94%A8">https://qiita.com/yosshi_/items/ec042a801ef69fa44ef6#%E6%B3%A8%E6%84%8F%E7%82%B9hostport-%E3%81%AE%E5%88%A9%E7%94%A8</a></li>
@@ -43924,7 +43924,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="replicas">▼ replicasとは<a class="headerlink" href="#replicas" title="Permanent link">&para;</a></h4>
 <p>Cluster内で維持するPodのレプリカ数を設定する。</p>
 <p>Cluster内に複数のNodeが存在していて、いずれかのNodeが停止した場合、稼働中のNode内でレプリカ数を維持するようにPod数が増加する。</p>
-<p>HorizontalPodAutoscalerを使用する場合、レプリカ数はHPAが決めるため<code>.spec.replicas</code>は設定不要である。</p>
+<p>HorizontalPodAutoscalerを使用する場合、レプリカ数はHPAが決めるため <code>.spec.replicas</code> は設定不要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -43953,7 +43953,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="revisionhistorylimit">▼ revisionHistoryLimitとは<a class="headerlink" href="#revisionhistorylimit" title="Permanent link">&para;</a></h4>
 <p>保管されるリビジョンの履歴数を設定する。</p>
 <p>もし依存のリビジョンにロールバックする場合があるのであれば、必要数を設定しておく。</p>
-<p>デフォルトは<code>10</code>個で、個人的にこれは多い。</p>
+<p>デフォルトは <code>10</code> 個で、個人的にこれは多い。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -43980,8 +43980,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="selector">▼ selectorとは<a class="headerlink" href="#selector" title="Permanent link">&para;</a></h4>
 <p>Deploymentで管理するPodを明示的に設定する。</p>
 <h4 id="matchlabels">▼ matchLabels<a class="headerlink" href="#matchlabels" title="Permanent link">&para;</a></h4>
-<p>Podの<code>.metadata.labels</code>キーを指定する。</p>
-<p>Podに複数の<code>.metadata.labels</code>キーが付与されている時は、これらを全て指定する必要がある。</p>
+<p>Podの <code>.metadata.labels</code> キーを指定する。</p>
+<p>Podに複数の <code>.metadata.labels</code> キーが付与されているときは、これらを全て指定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -44003,8 +44003,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="field-is-immutable">▼ <code>field is immutable</code><a class="headerlink" href="#field-is-immutable" title="Permanent link">&para;</a></h4>
-<p>Deploymentの<code>.spec.selector.matchLabels</code>キーの値は変更できないため、もしこの値を変更する場合は、Deploymentを再作成する必要がある。</p>
-<p>例えば、以下のマニフェストの<code>.spec.selector.matchLabels</code>キーの値を変更しようとする。</p>
+<p>Deploymentの <code>.spec.selector.matchLabels</code> キーの値は変更できないため、もしこの値を変更する場合は、Deploymentを再作成する必要がある。</p>
+<p>例えば、以下のマニフェストの <code>.spec.selector.matchLabels</code> キーの値を変更しようとする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -44044,11 +44044,11 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </thead>
 <tbody>
 <tr>
-<td><code>.spec.replicas</code>キー</td>
+<td><code>.spec.replicas</code> キー</td>
 <td>Podのレプリカ数を変更すると、DeploymentはPodを再デプロイする。</td>
 </tr>
 <tr>
-<td><code>.spec.template</code>キー配下の任意のキー</td>
+<td><code>.spec.template</code> キー配下の任意のキー</td>
 <td>Podテンプレートを変更した場合、DeploymentはPodを再デプロイする。</td>
 </tr>
 </tbody>
@@ -44095,7 +44095,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="_4">▼ ブルーグリーン方式 (パーセントの場合)<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>もし<code>.spec.strategy.rollingUpdate.maxSurge</code>キーを<code>100</code>%、また<code>.spec.strategy.rollingUpdate.maxUnavailable</code>キーを<code>0</code>%とすると仮定する。</p>
+<p>もし <code>.spec.strategy.rollingUpdate.maxSurge</code> キーを <code>100</code>%、また <code>.spec.strategy.rollingUpdate.maxUnavailable</code> キーを <code>0</code>%とすると仮定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -44121,8 +44121,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">        </span><span class="nt">app.kubernetes.io/component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 </code></pre></div>
 <p>この場合、RollingUpdate戦略時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。</p>
-<p><code>.spec.strategy.rollingUpdate.maxSurge</code>キーにより、<code>10</code>個の新しいPodを並行的に作成する (つまり、デプロイ時に新旧Podが合計<code>20</code>個ある) 。</p>
-<p><code>.spec.strategy.rollingUpdate.maxUnavailable</code>キーにより、<code>0</code>個が停止している状態にならないようにする (停止するPodがない)。</p>
+<p><code>.spec.strategy.rollingUpdate.maxSurge</code> キーにより、<code>10</code> 個の新しいPodを並行的に作成する (つまり、デプロイ時に新旧Podが合計 <code>20</code> 個ある) 。</p>
+<p><code>.spec.strategy.rollingUpdate.maxUnavailable</code> キーにより、<code>0</code> 個が停止している状態にならないようにする (停止するPodがない)。</p>
 <p>また、Podの停止数がレプリカ数を下回らないようになる。</p>
 <p><img alt="kubernetes_deployment_strategy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_strategy.png" /></p>
 <blockquote>
@@ -44132,7 +44132,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="_5">▼ ブルーグリーン方式 (絶対値の場合)<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>もし<code>.spec.strategy.rollingUpdate.maxSurge</code>キーを<code>10</code>、また<code>.spec.strategy.rollingUpdate.maxUnavailable</code>キーを<code>0</code>とすると仮定する。</p>
+<p>もし <code>.spec.strategy.rollingUpdate.maxSurge</code> キーを <code>10</code>、また <code>.spec.strategy.rollingUpdate.maxUnavailable</code> キーを <code>0</code> とすると仮定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -44158,8 +44158,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">        </span><span class="nt">app.kubernetes.io/component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 </code></pre></div>
 <p>この場合、RollingUpdate戦略時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。</p>
-<p><code>.spec.strategy.rollingUpdate.maxSurge</code>キーにより、<code>10</code>個の新しいPodを並行的に作成する (つまり、デプロイ時に新旧Podが合計<code>20</code>個ある)。</p>
-<p><code>.spec.strategy.rollingUpdate.maxUnavailable</code>キーにより、<code>0</code>個が停止している状態にならないようにする (停止するPodがない)。</p>
+<p><code>.spec.strategy.rollingUpdate.maxSurge</code> キーにより、<code>10</code> 個の新しいPodを並行的に作成する (つまり、デプロイ時に新旧Podが合計 <code>20</code> 個ある)。</p>
+<p><code>.spec.strategy.rollingUpdate.maxUnavailable</code> キーにより、<code>0</code> 個が停止している状態にならないようにする (停止するPodがない)。</p>
 <p>また、Podの停止数がレプリカ数を下回らないようになる。</p>
 <blockquote>
 <ul>
@@ -44171,7 +44171,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="template-pod">▼ templateとは (設定項目はPodと同じ)<a class="headerlink" href="#template-pod" title="Permanent link">&para;</a></h4>
 <p>Deploymentで維持管理するPodテンプレートを設定する。</p>
 <p>設定項目はPodと同じである。</p>
-<p>Deployment自体の<code>.metadata.labels</code>キーを更新した場合はPodは再作成しないが、<code>.spec.template</code>キー配下の<code>.metadata.labels</code>キーの場合は、Podの再作成となる。</p>
+<p>Deployment自体の <code>.metadata.labels</code> キーを更新した場合はPodは再作成しないが、<code>.spec.template</code> キー配下の <code>.metadata.labels</code> キーの場合は、Podの再作成となる。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates">https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates</a></li>
@@ -44325,8 +44325,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="specmaxreplicasspecminreplicas">.spec.maxReplicas、spec.minReplicas<a class="headerlink" href="#specmaxreplicasspecminreplicas" title="Permanent link">&para;</a></h3>
 <h4 id="maxreplicas">▼ maxReplicasとは<a class="headerlink" href="#maxreplicas" title="Permanent link">&para;</a></h4>
 <p>自動水平スケーリングのスケールアウト時の最大Pod数を設定する。</p>
-<p>最初、Deploymentの<code>spec.replicas</code>キーに合わせてPodが作成され、次にHorizontalPodAutoscalerの<code>.spec.minReplicas</code>キーが優先される。</p>
-<p>この挙動は混乱につながるため、HorizontalPodAutoscalerを使用する場合、Deploymentの<code>spec.replicas</code>キーの設定を削除しておくことが推奨である。</p>
+<p>最初、Deploymentの <code>spec.replicas</code> キーに合わせてPodが作成され、次にHorizontalPodAutoscalerの <code>.spec.minReplicas</code> キーが優先される。</p>
+<p>この挙動は混乱につながるため、HorizontalPodAutoscalerを使用する場合、Deploymentの <code>spec.replicas</code> キーの設定を削除しておくことが推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">autoscaling/v2</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HorizontalPodAutoscaler</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -44343,8 +44343,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </blockquote>
 <h4 id="minreplicas">▼ minReplicasとは<a class="headerlink" href="#minreplicas" title="Permanent link">&para;</a></h4>
 <p>自動水平スケーリングのスケールイン時の最小Pod数を設定する。</p>
-<p>最初、Deploymentの<code>spec.replicas</code>キーに合わせてPodが作成され、次にHorizontalPodAutoscalerの<code>.spec.minReplicas</code>キーが優先される。</p>
-<p>この挙動は混乱につながるため、HorizontalPodAutoscalerを使用する場合、Deploymentの<code>spec.replicas</code>キーの設定を削除しておくことが推奨である。</p>
+<p>最初、Deploymentの <code>spec.replicas</code> キーに合わせてPodが作成され、次にHorizontalPodAutoscalerの <code>.spec.minReplicas</code> キーが優先される。</p>
+<p>この挙動は混乱につながるため、HorizontalPodAutoscalerを使用する場合、Deploymentの <code>spec.replicas</code> キーの設定を削除しておくことが推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">autoscaling/v2</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HorizontalPodAutoscaler</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -44482,7 +44482,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h3 id="specingressclassname">.spec.ingressClassName<a class="headerlink" href="#specingressclassname" title="Permanent link">&para;</a></h3>
 <h4 id="ingressclassname">▼ ingressClassNameとは<a class="headerlink" href="#ingressclassname" title="Permanent link">&para;</a></h4>
-<p>IngressClassの<code>.metadata.name</code>キーの値を設定する。</p>
+<p>IngressClassの <code>.metadata.name</code> キーの値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -44500,7 +44500,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="spechosts">.spec.hosts<a class="headerlink" href="#spechosts" title="Permanent link">&para;</a></h3>
 <h4 id="hosts">▼ hosts<a class="headerlink" href="#hosts" title="Permanent link">&para;</a></h4>
 <p>ルーティング条件とするHostヘッダー値を設定する。</p>
-<p><code>.spec.rules[*].hosts</code>キーを設定しなければ、全てのHostヘッダー値が対象になる。</p>
+<p><code>.spec.rules[*].hosts</code> キーを設定しなければ、全てのHostヘッダー値が対象になる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -44717,7 +44717,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h2 id="gateway">Gateway<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h2>
 <h3 id="specgatewayclassname">spec.gatewayClassName<a class="headerlink" href="#specgatewayclassname" title="Permanent link">&para;</a></h3>
 <h4 id="gatewayclassname">▼ gatewayClassNameとは<a class="headerlink" href="#gatewayclassname" title="Permanent link">&para;</a></h4>
-<p>GatewayClassの<code>.metadata.name</code>キーの値を設定する。</p>
+<p>GatewayClassの <code>.metadata.name</code> キーの値を設定する。</p>
 <p>Gatewayは共有のNamespaceに配置し、HTTPRouteはマイクロサービスのある各Namespaceに配置する。</p>
 <blockquote>
 <ul>
@@ -44945,7 +44945,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="podselector_1">▼ podSelectorとは<a class="headerlink" href="#podselector_1" title="Permanent link">&para;</a></h4>
 <p>NetworkPolicyを適用するPodを設定する。</p>
 <h4 id="matchlabels_1">▼ matchLabels<a class="headerlink" href="#matchlabels_1" title="Permanent link">&para;</a></h4>
-<p><code>metadata.labels</code>キーの値でPodを選ぶ。</p>
+<p><code>metadata.labels</code> キーの値でPodを選ぶ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkPolicy</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -44983,7 +44983,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h3 id="policytypes">policyTypes<a class="headerlink" href="#policytypes" title="Permanent link">&para;</a></h3>
 <p>許否ルールを適用する通信タイプを設定する。</p>
-<p>デフォルト値は<code>Ingress</code>タイプが設定される。</p>
+<p>デフォルト値は <code>Ingress</code> タイプが設定される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkPolicy</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -45002,7 +45002,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="activedeadlineseconds">▼ activeDeadlineSecondsとは<a class="headerlink" href="#activedeadlineseconds" title="Permanent link">&para;</a></h4>
 <p>Jobの試行の上限実行時間を設定する。</p>
 <p>設定された時間を超過すると、エラーが返却される。</p>
-<p><code>.spec.backoffLimit</code>キーよりも優先される。</p>
+<p><code>.spec.backoffLimit</code> キーよりも優先される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -45075,7 +45075,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="ttlsecondsafterfinished">▼ ttlSecondsAfterFinishedとは<a class="headerlink" href="#ttlsecondsafterfinished" title="Permanent link">&para;</a></h4>
 <p>Jobが成功/失敗した場合のJob自体の削除を有効化しつつ、その秒数を設定する。</p>
 <p>失敗したJobが残り続けると、データポイント収集ツール (例：Prometheus) でメトリクスが記録され続け、アラートを送信し続けてしまう。</p>
-<p>そのため、できるだけJobは削除した方が良い。</p>
+<p>そのため、できるだけJobは削除したほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -45093,13 +45093,13 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h2 id="node">Node<a class="headerlink" href="#node" title="Permanent link">&para;</a></h2>
 <p>Kubernetesの実行時に自動的に作成される。</p>
-<p>もし手動で作成する場合は、<code>kubectl</code>コマンドを実行することにより、その時に<code>--register-node</code>キーを<code>false</code>とする必要がある。</p>
+<p>もし手動で作成する場合は、<code>kubectl</code> コマンドを実行することにより、その時に <code>--register-node</code> キーを <code>false</code> とする必要がある。</p>
 <p><br></p>
 <h2 id="limitrange">LimitRange<a class="headerlink" href="#limitrange" title="Permanent link">&para;</a></h2>
 <h3 id="speclimit">.spec.limit<a class="headerlink" href="#speclimit" title="Permanent link">&para;</a></h3>
 <h4 id="container">▼ Containerの場合<a class="headerlink" href="#container" title="Permanent link">&para;</a></h4>
 <p>Namespace内のコンテナのハードウェアリソースの上限必要サイズを設定する。</p>
-<p>Podの<code>.spec.containers[*].resources</code>キー配下に設定がなくとも、コンテナの実行時に自動的に挿入できる。</p>
+<p>Podの <code>.spec.containers[*].resources</code> キー配下に設定がなくとも、コンテナの実行時に自動的に挿入できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LimitRange</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -45154,7 +45154,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </code></pre></div>
 <h4 id="readwriteonce">▼ ReadWriteOnce<a class="headerlink" href="#readwriteonce" title="Permanent link">&para;</a></h4>
 <p>ボリュームに対して、単一のNodeからのみ読み出し/書き込み可能にする。</p>
-<p>もしNodeにPodのインスタンスが複数ある場合、<code>ReadWriteOnce</code>であっても複数のPodから読み込み/書き込みがある。</p>
+<p>もしNodeにPodのインスタンスが複数ある場合、<code>ReadWriteOnce</code> であっても複数のPodから読み込み/書き込みがある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
@@ -45199,7 +45199,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </blockquote>
 <h4 id="path">▼ path<a class="headerlink" href="#path" title="Permanent link">&para;</a></h4>
 <p>Node側のマウント元のディレクトリを設定する。</p>
-<p>Podのマウントポイントは、Podの<code>.spec.containers[*].volumeMount</code>キーで設定する。</p>
+<p>Podのマウントポイントは、Podの <code>.spec.containers[*].volumeMount</code> キーで設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -45223,7 +45223,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="speclocal">.spec.local<a class="headerlink" href="#speclocal" title="Permanent link">&para;</a></h3>
 <h4 id="local">▼ localとは<a class="headerlink" href="#local" title="Permanent link">&para;</a></h4>
 <p>Node上にストレージ上にボリュームを作成する。</p>
-<p><code>.spec.nodeAffinity</code>キーの設定が必須であり、Nodeを明示的に指定できる。</p>
+<p><code>.spec.nodeAffinity</code> キーの設定が必須であり、Nodeを明示的に指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -45296,7 +45296,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="requirednodeselectortermsmatchexpressions">▼ required.nodeSelectorTerms.matchExpressions<a class="headerlink" href="#requirednodeselectortermsmatchexpressions" title="Permanent link">&para;</a></h4>
-<p>作成先のNodeの<code>.metadata.labels</code>キーを指定するための条件 (<code>In</code>、<code>NotIn</code>、<code>Exists</code>) を設定する。</p>
+<p>作成先のNodeの <code>.metadata.labels</code> キーを指定するための条件 (<code>In</code>、<code>NotIn</code>、<code>Exists</code>) を設定する。</p>
 <table>
 <thead>
 <tr>
@@ -45307,19 +45307,19 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <tbody>
 <tr>
 <td>In</td>
-<td>指定した<code>metadata.labels</code>キー配下に、指定した値を持つ。</td>
+<td>指定した <code>metadata.labels</code> キー配下に、指定した値を持つ。</td>
 </tr>
 <tr>
 <td>NotIn</td>
-<td>指定した<code>metadata.labels</code>キー配下に、指定した値を持たない。</td>
+<td>指定した <code>metadata.labels</code> キー配下に、指定した値を持たない。</td>
 </tr>
 <tr>
 <td>Exists</td>
-<td>指定した<code>metadata.labels</code>キーを持つ。</td>
+<td>指定した <code>metadata.labels</code> キーを持つ。</td>
 </tr>
 <tr>
 <td>DoesNotExists</td>
-<td>指定した<code>metadata.labels</code>キーを持たない。</td>
+<td>指定した <code>metadata.labels</code> キーを持たない。</td>
 </tr>
 </tbody>
 </table>
@@ -45412,8 +45412,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="specstorageclassname">.spec.storageClassName<a class="headerlink" href="#specstorageclassname" title="Permanent link">&para;</a></h3>
 <h4 id="storageclassname">▼ storageClassNameとは<a class="headerlink" href="#storageclassname" title="Permanent link">&para;</a></h4>
 <p>ストレージクラス名を設定する。</p>
-<p>特に、PersistentVolumeClaimがStorageClassに対応するPersistentVolumeを要求する時に役立つ。</p>
-<p>例えば、StorageClassに数種類のボリュームタイプ (<code>standard</code>、<code>fast</code>、<code>slow</code>、<code>gp2</code>など) がある場合に、区別しやすくなる。</p>
+<p>特に、PersistentVolumeClaimがStorageClassに対応するPersistentVolumeを要求するときに役立つ。</p>
+<p>例えば、StorageClassに数種類のボリュームタイプ (<code>standard</code>、<code>fast</code>、<code>slow</code>、<code>gp2</code> など) がある場合に、区別しやすくなる。</p>
 <p>PersistentVolumeにストレージクラス名を設定しない場合、これを要求できるのは、同じくストレージクラス名を持たないPersistentVolumeClaimだけである。</p>
 <p>注意点として、もし異なるStorageClassNameに変更したい場合は、PersistentVolumeを作成し直す必要がある。</p>
 <table>
@@ -45495,7 +45495,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="specstorageclassname_1">.spec.storageClassName<a class="headerlink" href="#specstorageclassname_1" title="Permanent link">&para;</a></h3>
 <h4 id="storageclassname_1">▼ storageClassNameとは<a class="headerlink" href="#storageclassname_1" title="Permanent link">&para;</a></h4>
 <p>要求対象のPersistentVolumeのストレージクラス名を設定する。</p>
-<p>これを設定しない場合は、ストレージクラス名が<code>standard</code>のPersistentVolumeを要求する。</p>
+<p>これを設定しない場合は、ストレージクラス名が <code>standard</code> のPersistentVolumeを要求する。</p>
 <p>注意点として、もし異なるStorageClassNameに変更したい場合は、PersistentVolumeを作成し直す必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -45516,8 +45516,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="specaffinity">.spec.affinity<a class="headerlink" href="#specaffinity" title="Permanent link">&para;</a></h3>
 <h4 id="affinity">▼ affinityとは<a class="headerlink" href="#affinity" title="Permanent link">&para;</a></h4>
 <p>Podのスケジューリング対象のNodeを設定する。</p>
-<p><code>.spec.tolerations</code>キーとは反対の条件である。</p>
-<p><code>.spec.nodeSelector</code>キーと比較して、より複雑に条件を設定できる。</p>
+<p><code>.spec.tolerations</code> キーとは反対の条件である。</p>
+<p><code>.spec.nodeSelector</code> キーと比較して、より複雑に条件を設定できる。</p>
 <p>DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてkube-schedulerがスケジューリングさせる。</p>
 <blockquote>
 <ul>
@@ -45529,10 +45529,10 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h3 id="specaffinitynodeaffinity">.spec.affinity.nodeAffinity<a class="headerlink" href="#specaffinitynodeaffinity" title="Permanent link">&para;</a></h3>
 <h4 id="affinitynodeaffinity">▼ affinity.nodeAffinityとは<a class="headerlink" href="#affinitynodeaffinity" title="Permanent link">&para;</a></h4>
-<p>Nodeの<code>.metadata.labels</code>キーを指定することにより、kube-schedulerがPodをスケジューリングさせるNodeを設定する。</p>
-<p><code>.spec.nodeSelector</code>キーと比較して、より複雑に条件を設定できる。</p>
+<p>Nodeの <code>.metadata.labels</code> キーを指定することにより、kube-schedulerがPodをスケジューリングさせるNodeを設定する。</p>
+<p><code>.spec.nodeSelector</code> キーと比較して、より複雑に条件を設定できる。</p>
 <p>DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、kube-schedulerは条件に合わせてスケジューリングさせる。</p>
-<p>複数のNodeに同じ<code>.metadata.labels</code>キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループ単位でPodをスケジューリングさせられる。</p>
+<p>複数のNodeに同じ <code>.metadata.labels</code> キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループ単位でPodをスケジューリングさせられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity">https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity</a></li>
@@ -45543,8 +45543,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="requiredduringschedulingignoredduringexecution">▼ requiredDuringSchedulingIgnoredDuringExecution (ハード)<a class="headerlink" href="#requiredduringschedulingignoredduringexecution" title="Permanent link">&para;</a></h4>
 <p>条件に合致するNodeにのみPodをスケジューリングさせる。</p>
 <p>もし条件に合致するNodeがない場合、Podのスケジューリングを待機し続ける。</p>
-<p>共通する<code>SchedulingIgnoredDuringExecution</code>の名前の通り、<code>.spec.affinity</code>キーによるスケジューリングの制御は新しく作成されるPodにしか適用できず、すでに実行中のPodには適用できず、再スケジューリングさせないといけない。</p>
-<p>Podが削除された後にNodeの<code>.metadata.labels</code>キーの値が変更されたとしても、一度スケジューリングされたPodが<code>.spec.affinity</code>キーの設定で再スケジューリングされることはない。</p>
+<p>共通する <code>SchedulingIgnoredDuringExecution</code> の名前の通り、<code>.spec.affinity</code> キーによるスケジューリングの制御は新しく作成されるPodにしか適用できず、すでに実行中のPodには適用できず、再スケジューリングさせないといけない。</p>
+<p>Podが削除された後にNodeの <code>.metadata.labels</code> キーの値が変更されたとしても、一度スケジューリングされたPodが <code>.spec.affinity</code> キーの設定で再スケジューリングされることはない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -45579,9 +45579,9 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p>条件に合致するNodeに優先的にPodをスケジューリングさせる。</p>
 <p>もし条件に合致するNodeがない場合でも、それを許容し、条件に合致しないNodeにPodをスケジューリングさせる。</p>
 <p>条件に合致しないNodeの探索で重みづけルールを設定できる。</p>
-<p>共通する<code>SchedulingIgnoredDuringExecution</code>の名前の通り、<code>.spec.affinity</code>キーによるスケジューリングの制御は新しく作成されるPodにしか適用できない。</p>
+<p>共通する <code>SchedulingIgnoredDuringExecution</code> の名前の通り、<code>.spec.affinity</code> キーによるスケジューリングの制御は新しく作成されるPodにしか適用できない。</p>
 <p>すでに実行中のPodには適用できず、再スケジューリングさせないといけない。</p>
-<p>Podが削除された後にNodeの<code>.metadata.labels</code>キーの値が変更されたとしても、一度スケジューリングされたPodが<code>.spec.affinity</code>キーの設定で再スケジューリングされることはない。</p>
+<p>Podが削除された後にNodeの <code>.metadata.labels</code> キーの値が変更されたとしても、一度スケジューリングされたPodが <code>.spec.affinity</code> キーの設定で再スケジューリングされることはない。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity">https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity</a></li>
@@ -45591,7 +45591,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h3 id="specaffinitypodaffinity">.spec.affinity.podAffinity<a class="headerlink" href="#specaffinitypodaffinity" title="Permanent link">&para;</a></h3>
 <h4 id="affinitypodaffinity">▼ affinity.podAffinityとは<a class="headerlink" href="#affinitypodaffinity" title="Permanent link">&para;</a></h4>
-<p>Node内のPodを、<code>.metadata.labels</code>キーで指定することにより、そのPodと同じNode内に、新しいPodをスケジューリングさせる。</p>
+<p>Node内のPodを、<code>.metadata.labels</code> キーで指定することにより、そのPodと同じNode内に、新しいPodをスケジューリングさせる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -45623,7 +45623,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <li><a href="https://zenn.dev/geek/articles/c74d204b00ba1a">https://zenn.dev/geek/articles/c74d204b00ba1a</a></li>
 </ul>
 </blockquote>
-<p>preferredDuringSchedulingIgnoredDuringExecutionの場合、<code>podAffinityTerm</code>キーや<code>preference</code>キーが必要である。</p>
+<p>preferredDuringSchedulingIgnoredDuringExecutionの場合、<code>podAffinityTerm</code> キーや <code>preference</code> キーが必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -45653,13 +45653,13 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="requiredduringschedulingignoredduringexecution_1">▼ requiredDuringSchedulingIgnoredDuringExecution (ハード)<a class="headerlink" href="#requiredduringschedulingignoredduringexecution_1" title="Permanent link">&para;</a></h4>
-<p><code>.spec.affinity.nodeAffinity</code>キーのPod版である。</p>
+<p><code>.spec.affinity.nodeAffinity</code> キーのPod版である。</p>
 <h4 id="preferredduringschedulingignoredduringexecution_1">▼ preferredDuringSchedulingIgnoredDuringExecution (ソフト)<a class="headerlink" href="#preferredduringschedulingignoredduringexecution_1" title="Permanent link">&para;</a></h4>
-<p><code>.spec.affinity.nodeAffinity</code>キーのPod版である。</p>
+<p><code>.spec.affinity.nodeAffinity</code> キーのPod版である。</p>
 <p><br></p>
 <h3 id="specaffinitypodantiaffinity">.spec.affinity.podAntiAffinity<a class="headerlink" href="#specaffinitypodantiaffinity" title="Permanent link">&para;</a></h3>
 <h4 id="affinitypodantiaffinity">▼ affinity.podAntiAffinityとは<a class="headerlink" href="#affinitypodantiaffinity" title="Permanent link">&para;</a></h4>
-<p><code>.metadata.labels</code>キーを持つNodeとは異なるNode内に、そのPodをスケジューリングさせる。</p>
+<p><code>.metadata.labels</code> キーを持つNodeとは異なるNode内に、そのPodをスケジューリングさせる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -45690,7 +45690,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <li><a href="https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html">https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html</a></li>
 </ul>
 </blockquote>
-<p>preferredDuringSchedulingIgnoredDuringExecutionの場合、<code>podAffinityTerm</code>キーや<code>preference</code>キーが必要である。</p>
+<p>preferredDuringSchedulingIgnoredDuringExecutionの場合、<code>podAffinityTerm</code> キーや <code>preference</code> キーが必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -45721,8 +45721,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </blockquote>
 <p><strong>＊スケジューリング例＊</strong></p>
 <p>もし、コピーするPodの名前を設定した場合、Podのレプリカ同士は同じNodeにスケジューリングされることを避ける。</p>
-<p>また、分散単位に<code>topology.kubernetes.io/zone</code>を設定しているため、各AZにPodをバラバラにスケジューリングさせる。</p>
-<p>結果として、各AZのNodeにPodが<code>1</code>個ずつスケジューリングされるようになる。</p>
+<p>また、分散単位に <code>topology.kubernetes.io/zone</code> を設定しているため、各AZにPodをバラバラにスケジューリングさせる。</p>
+<p>結果として、各AZのNodeにPodが <code>1</code> 個ずつスケジューリングされるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -45759,9 +45759,9 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 </code></pre></div>
 <h4 id="requiredduringschedulingignoredduringexecution_2">▼ requiredDuringSchedulingIgnoredDuringExecution (ハード)<a class="headerlink" href="#requiredduringschedulingignoredduringexecution_2" title="Permanent link">&para;</a></h4>
-<p><code>.spec.affinity.nodeAffinity</code>キーのアンチPod版である。</p>
+<p><code>.spec.affinity.nodeAffinity</code> キーのアンチPod版である。</p>
 <h4 id="preferredduringschedulingignoredduringexecution_2">▼ preferredDuringSchedulingIgnoredDuringExecution (ソフト)<a class="headerlink" href="#preferredduringschedulingignoredduringexecution_2" title="Permanent link">&para;</a></h4>
-<p><code>.spec.affinity.nodeAffinity</code>キーのアンチPod版である。</p>
+<p><code>.spec.affinity.nodeAffinity</code> キーのアンチPod版である。</p>
 <h4 id="node-affinity-conflict">▼ node affinity conflict<a class="headerlink" href="#node-affinity-conflict" title="Permanent link">&para;</a></h4>
 <p>ただし、AWSのスポットインスタンスと相性が悪く、特定のAZでしかNodeが作成されなかった場合に、以下のようなエラーになってしまう。</p>
 <div class="highlight"><pre><span></span><code>N<span class="w"> </span>node<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>had<span class="w"> </span>volume<span class="w"> </span>node<span class="w"> </span>affinity<span class="w"> </span>conflict,<span class="w"> </span>N<span class="w"> </span>node<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>didn<span class="s1">&#39;t match Pod&#39;</span>s<span class="w"> </span>node<span class="w"> </span>affinity/selector
@@ -45815,7 +45815,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="env">▼ env<a class="headerlink" href="#env" title="Permanent link">&para;</a></h4>
 <p>環境変数を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p><code>status.podIP</code>から自身のIPアドレスを取得し、<code>MY_POD_IP</code>という名前で設定する。</p>
+<p><code>status.podIP</code> から自身のIPアドレスを取得し、<code>MY_POD_IP</code> という名前で設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -45834,7 +45834,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">              </span><span class="nt">fieldPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">status.podIP</span>
 </code></pre></div>
 <h4 id="envfrom">▼ envFrom<a class="headerlink" href="#envfrom" title="Permanent link">&para;</a></h4>
-<p><code>.spec.volumes.secret</code>キー (ファイルをコンテナに設定する) とは異なり、SecretやConfigMapからコンテナに環境変数を出力する。</p>
+<p><code>.spec.volumes.secret</code> キー (ファイルをコンテナに設定する) とは異なり、SecretやConfigMapからコンテナに環境変数を出力する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -45857,7 +45857,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="ports_1">▼ ports<a class="headerlink" href="#ports_1" title="Permanent link">&para;</a></h4>
 <p>コンテナが待ち受けるポート番号を、仕様として設定する。</p>
 <p>単なる仕様であり、ドキュメントとしての役割がある。</p>
-<p>コンテナがポート番号を公開してさえいれば、<code>.spec.containers[*].ports</code>キーは設定しなくとも問題ない。</p>
+<p>コンテナがポート番号を公開してさえいれば、<code>.spec.containers[*].ports</code> キーは設定しなくとも問題ない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -45920,9 +45920,9 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </blockquote>
 <h4 id="resourcesrequestsresourceslimits">▼ resources.requests、resources.limits<a class="headerlink" href="#resourcesrequestsresourceslimits" title="Permanent link">&para;</a></h4>
 <p>Node全体のハードウェアリソースを分母として、Pod内のコンテナが要求するリソースの下限/上限必要サイズを設定する。</p>
-<p>各PodはNode内のハードウェアリソース (<code>cpu</code>、<code>memory</code>、<code>ephemeral-storage</code>) を奪い合っており、Nodeが複数ある場合、kube-schedulerは<code>requests</code>値以上の余剰があるNode上にPodのスケジューリングを実行する。</p>
-<p>この時kube-schedulerは、コンテナの<code>resource</code>キーの値に基づいて、どのNodeにPodを作成するかを決めている。</p>
-<p>同じPod内に<code>resources</code>キーが設定されたコンテナが複数ある場合、下限/上限必要サイズを満たしているか否かの判定は、同じPod内のコンテナの要求サイズの合計値に基づくことになる。</p>
+<p>各PodはNode内のハードウェアリソース (<code>cpu</code>、<code>memory</code>、<code>ephemeral-storage</code>) を奪い合っており、Nodeが複数ある場合、kube-schedulerは <code>requests</code> 値以上の余剰があるNode上にPodのスケジューリングを実行する。</p>
+<p>この時kube-schedulerは、コンテナの <code>resource</code> キーの値に基づいて、どのNodeにPodを作成するかを決めている。</p>
+<p>同じPod内に <code>resources</code> キーが設定されたコンテナが複数ある場合、下限/上限必要サイズを満たしているか否かの判定は、同じPod内のコンテナの要求サイズの合計値に基づくことになる。</p>
 <table>
 <thead>
 <tr>
@@ -45944,7 +45944,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </tr>
 </tbody>
 </table>
-<p>補足として、Node全体のハードウェアリソースは、<code>kubectl describe</code>コマンドから確認できる。</p>
+<p>補足として、Node全体のハードウェアリソースは、<code>kubectl describe</code> コマンドから確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>describe<span class="w"> </span>node<span class="w"> </span>&lt;Node名&gt;
 
 ...
@@ -45988,7 +45988,7 @@ Allocatable:
 <tr>
 <td><code>cpu</code></td>
 <td>コンテナのCPU</td>
-<td>m：millicores (<code>1</code>m = <code>1</code> ユニット = <code>0.001</code>コア)</td>
+<td>m：millicores (<code>1</code>m = <code>1</code> ユニット = <code>0.001</code> コア)</td>
 </tr>
 <tr>
 <td><code>memory</code></td>
@@ -46025,7 +46025,7 @@ Allocatable:
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-proxy</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
-<p>各コンテナの実際のハードウェアリソース消費量を確認する場合は、<code>kubectl top</code>コマンドを使用する。</p>
+<p>各コンテナの実際のハードウェアリソース消費量を確認する場合は、<code>kubectl top</code> コマンドを使用する。</p>
 <p>『<code>(実測値) ÷ (メモリ上限値) × 100</code>』で計算できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>top<span class="w"> </span>pod<span class="w"> </span>--container<span class="w"> </span>-n<span class="w"> </span>foo-namespace
 
@@ -46041,8 +46041,8 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <h4 id="volumemounts">▼ volumeMounts<a class="headerlink" href="#volumemounts" title="Permanent link">&para;</a></h4>
 <p>Pod内のコンテナのマウントポイントを設定する。</p>
 <p>パスは相対パスではなく絶対パスで指定する。</p>
-<p><code>.spec.volumes</code>キーで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。</p>
-<p>Node側のマウント元のディレクトリは、PersistentVolumeの<code>.spec.hostPath</code>キーで設定する。</p>
+<p><code>.spec.volumes</code> キーで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。</p>
+<p>Node側のマウント元のディレクトリは、PersistentVolumeの <code>.spec.hostPath</code> キーで設定する。</p>
 <p>volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPersistentVolumeで設定された任意のマウントを実行できることに注意する。</p>
 <blockquote>
 <ul>
@@ -46130,7 +46130,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </code></pre></div>
 <h4 id="workingdir">▼ workingDir<a class="headerlink" href="#workingdir" title="Permanent link">&para;</a></h4>
 <p>コンテナの作業ディレクトリを設定する。</p>
-<p>ただし、作業ディレクトリの設定はアプリケーション側の責務のため、Kubernetesで設定するよりもDockerfileで定義した方が良い。</p>
+<p>ただし、作業ディレクトリの設定はアプリケーション側の責務のため、Kubernetesで設定するよりもDockerfileで定義したほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46148,7 +46148,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <h4 id="livenessprobe">▼ livenessProbeとは<a class="headerlink" href="#livenessprobe" title="Permanent link">&para;</a></h4>
 <p>kubeletがヘルスチェックを実行することで、コンテナが正常に動作しているか確認する。</p>
 <p>注意点として、LivenessProbeヘルスチェックの間隔が短すぎると、kubeletに必要以上に負荷がかかる。</p>
-<p><code>terminationGracePeriodSeconds</code>に関しては、<code>.spec.terminationGracePeriodSeconds</code>キーでPod単位での待機時間を設定することもできる。</p>
+<p><code>terminationGracePeriodSeconds</code> に関しては、<code>.spec.terminationGracePeriodSeconds</code> キーでPod単位での待機時間を設定することもできる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46181,7 +46181,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </blockquote>
 <h4 id="exec">▼ exec<a class="headerlink" href="#exec" title="Permanent link">&para;</a></h4>
 <p>コンテナのLivenessProbeヘルスチェックで、任意のコマンドによるヘルスチェックを実行する。</p>
-<p>終了コード<code>0</code>なら成功である。</p>
+<p>終了コード <code>0</code> なら成功である。</p>
 <p>LivenessProbeが対応可能なプロトコル (HTTP、TCP、gRPCによるHTTP) 以外で、ヘルスチェックを実行したい場合に役立つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46203,8 +46203,8 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </ul>
 </blockquote>
 <h4 id="httpget">▼ httpGet<a class="headerlink" href="#httpget" title="Permanent link">&para;</a></h4>
-<p>コンテナのLivenessProbeヘルスチェックで、<code>L7</code>チェックを実行する。</p>
-<p><code>200</code>ステータスから<code>399</code>ステータスまでの間なら成功である。</p>
+<p>コンテナのLivenessProbeヘルスチェックで、<code>L7</code> チェックを実行する。</p>
+<p><code>200</code> ステータスから <code>399</code> ステータスまでの間なら成功である。</p>
 <p>具体的には、コンテナの指定したエンドポイントにGETメソッドでHTTPリクエストを送信し、レスポンスのステータスコードを検証する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46253,7 +46253,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </tbody>
 </table>
 <h4 id="failurethreshold">▼ failureThreshold<a class="headerlink" href="#failurethreshold" title="Permanent link">&para;</a></h4>
-<p>デフォルト値は<code>3</code>である。</p>
+<p>デフォルト値は <code>3</code> である。</p>
 <p>コンテナのLivenessProbeヘルスチェックが失敗したとみなす試行回数を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46272,10 +46272,10 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </ul>
 </blockquote>
 <h4 id="initialdelaysecond">▼ initialDelaySecond<a class="headerlink" href="#initialdelaysecond" title="Permanent link">&para;</a></h4>
-<p>デフォルト値は<code>0</code>である。</p>
+<p>デフォルト値は <code>0</code> である。</p>
 <p>初回のLivenessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
 <p>この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
-<p>設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう (デフォルト値の<code>0</code>は短すぎる) 。</p>
+<p>設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう (デフォルト値の <code>0</code> は短すぎる) 。</p>
 <p>一方で、設定した時間が長すぎると、Podの作成開始から完了まで時間がかかりすぎてしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46295,7 +46295,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </ul>
 </blockquote>
 <h4 id="periodseconds">▼ periodSeconds<a class="headerlink" href="#periodseconds" title="Permanent link">&para;</a></h4>
-<p>デフォルト値は<code>10</code>である。</p>
+<p>デフォルト値は <code>10</code> である。</p>
 <p>コンテナのLivenessProbeヘルスチェックの試行当たりの間隔を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46315,7 +46315,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </ul>
 </blockquote>
 <h4 id="successthreshold">▼ successThreshold<a class="headerlink" href="#successthreshold" title="Permanent link">&para;</a></h4>
-<p>デフォルト値は<code>1</code>である。</p>
+<p>デフォルト値は <code>1</code> である。</p>
 <p>LivenessProbeヘルスチェックの失敗後のリトライで、成功と判定する最小試行回数を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46334,7 +46334,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </ul>
 </blockquote>
 <h4 id="tcpsocket">▼ tcpSocket<a class="headerlink" href="#tcpsocket" title="Permanent link">&para;</a></h4>
-<p>コンテナのLivenessProbeヘルスチェックで、<code>L4</code>チェックを実行する。</p>
+<p>コンテナのLivenessProbeヘルスチェックで、<code>L4</code> チェックを実行する。</p>
 <p>具体的には、コンテナにTCPスリーウェイハンドシェイクを実行し、TCP接続を確立できるかを検証する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46349,7 +46349,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
 </code></pre></div>
 <h4 id="terminationgraceperiodseconds">▼ terminationGracePeriodSeconds<a class="headerlink" href="#terminationgraceperiodseconds" title="Permanent link">&para;</a></h4>
-<p>デフォルト値はPod単位の<code>.spec.terminationGracePeriodSeconds</code>キーを継承し、<code>30</code>である。</p>
+<p>デフォルト値はPod単位の <code>.spec.terminationGracePeriodSeconds</code> キーを継承し、<code>30</code> である。</p>
 <p>コンテナの終了プロセスを開始するまで待機時間を設定する。</p>
 <p>この時間を超えてもコンテナを終了できていない場合は、コンテナを強制的に停止する。</p>
 <p>設定した時間が長すぎると、Pod全体の終了プロセスに時間がかかり、Podの削除までに時間がかかりすぎてしまう。</p>
@@ -46371,7 +46371,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </ul>
 </blockquote>
 <h4 id="timeoutseconds">▼ timeoutSeconds<a class="headerlink" href="#timeoutseconds" title="Permanent link">&para;</a></h4>
-<p>デフォルト値は<code>1</code>である。</p>
+<p>デフォルト値は <code>1</code> である。</p>
 <p>コンテナのLivenessProbeヘルスチェックのタイムアウト時間を設定する。</p>
 <p>この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -46428,7 +46428,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <h3 id="speccontainersreadinessprobe">.spec.containers[*].readinessProbe<a class="headerlink" href="#speccontainersreadinessprobe" title="Permanent link">&para;</a></h3>
 <h4 id="readinessprobe">▼ readinessProbeとは<a class="headerlink" href="#readinessprobe" title="Permanent link">&para;</a></h4>
 <p>kubeletがヘルスチェックを実行することで、コンテナがトラフィックを処理可能かを確認する。</p>
-<p><code>terminationGracePeriodSeconds</code>に関しては、<code>.spec.terminationGracePeriodSeconds</code>キーでPod単位での待機時間を設定することもできる。</p>
+<p><code>terminationGracePeriodSeconds</code> に関しては、<code>.spec.terminationGracePeriodSeconds</code> キーでPod単位での待機時間を設定することもできる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46494,7 +46494,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </code></pre></div>
 <p>コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例：Javaのウォームアップ完了まで。Nginxの最初の設定ファイル読み込み完了まで。MySQLの最初の接続受信準備完了まで。) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。</p>
 <p>注意点として、ReadinessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。</p>
-<p>そのため、<code>READY</code>は<code>0</code>で、<code>STATUS</code>は<code>Running</code>になる。</p>
+<p>そのため、<code>READY</code> は <code>0</code> で、<code>STATUS</code> は <code>Running</code> になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span>foo-namespace
 
 NAME<span class="w">       </span>READY<span class="w">   </span>STATUS<span class="w">             </span>RESTARTS<span class="w">      </span>AGE
@@ -46513,7 +46513,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </blockquote>
 <h4 id="exec_1">▼ exec<a class="headerlink" href="#exec_1" title="Permanent link">&para;</a></h4>
 <p>コンテナのLivenessProbeヘルスチェックで、任意のコマンドのヘルスチェックを実行する。</p>
-<p>終了コード<code>0</code>なら成功である。</p>
+<p>終了コード <code>0</code> なら成功である。</p>
 <p>LivenessProbeが対応可能なプロトコル (HTTP、TCP、gRPCによるHTTP) 以外で、ヘルスチェックを実行したい場合に役立つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46535,8 +46535,8 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </ul>
 </blockquote>
 <h4 id="httpget_1">▼ httpGet<a class="headerlink" href="#httpget_1" title="Permanent link">&para;</a></h4>
-<p>コンテナのReadinessProbeヘルスチェックで、<code>L7</code>チェックを実行する。</p>
-<p><code>200</code>ステータスから<code>399</code>ステータスまでの間なら成功である。</p>
+<p>コンテナのReadinessProbeヘルスチェックで、<code>L7</code> チェックを実行する。</p>
+<p><code>200</code> ステータスから <code>399</code> ステータスまでの間なら成功である。</p>
 <p>具体的には、コンテナの指定したエンドポイントにGETメソッドでHTTPリクエストを送信し、レスポンスのステータスコードを検証する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46554,7 +46554,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <span class="w">          </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP</span>
 </code></pre></div>
 <h4 id="failurethreshold_1">▼ failureThreshold<a class="headerlink" href="#failurethreshold_1" title="Permanent link">&para;</a></h4>
-<p>デフォルト値は<code>3</code>である。</p>
+<p>デフォルト値は <code>3</code> である。</p>
 <p>ReadinessProbeヘルスチェックが失敗したとみなす試行回数を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46573,12 +46573,12 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </ul>
 </blockquote>
 <h4 id="initialdelayseconds">▼ initialDelaySeconds<a class="headerlink" href="#initialdelayseconds" title="Permanent link">&para;</a></h4>
-<p>デフォルト値は<code>0</code>である。</p>
+<p>デフォルト値は <code>0</code> である。</p>
 <p>初回のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
 <p>この時間を過ぎてもコンテナのReadinessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
-<p>設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう (デフォルト値の<code>0</code>は短すぎる) 。</p>
+<p>設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう (デフォルト値の <code>0</code> は短すぎる) 。</p>
 <p>一方で、設定した時間が長すぎると、Podの作成開始から完了まで時間（つまり、リリースの作業時間）がかかりすぎてしまう。</p>
-<p>例えば、gRPCサーバーであれば基本的には<code>1</code>秒以内で起動するため、<code>initialDelaySeconds</code>は<code>5</code>ほどでよい。</p>
+<p>例えば、gRPCサーバーであれば基本的には <code>1</code> 秒以内で起動するため、<code>initialDelaySeconds</code> は <code>5</code> ほどでよい。</p>
 <p>Workloadを何度かリスタートし、問題なく起動できれば調整は完了である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46597,9 +46597,9 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </ul>
 </blockquote>
 <h4 id="periodseconds_1">▼ periodSeconds<a class="headerlink" href="#periodseconds_1" title="Permanent link">&para;</a></h4>
-<p>デフォルト値は<code>10</code>である。</p>
+<p>デフォルト値は <code>10</code> である。</p>
 <p>ReadinessProbeヘルスチェックの試行当たりの間隔を設定する。</p>
-<p>適正値は<code>10</code>秒ほどで良い。</p>
+<p>適正値は <code>10</code> 秒ほどで良い。</p>
 <p>Workloadを何度かリスタートし、問題なく起動できれば調整は完了である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46618,7 +46618,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </ul>
 </blockquote>
 <h4 id="successthreshold_1">▼ successThreshold<a class="headerlink" href="#successthreshold_1" title="Permanent link">&para;</a></h4>
-<p>デフォルト値は<code>1</code>である。</p>
+<p>デフォルト値は <code>1</code> である。</p>
 <p>ReadinessProbeヘルスチェックの失敗後のリトライで、成功と判定する最小試行回数を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46637,7 +46637,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </ul>
 </blockquote>
 <h4 id="tcpsocket_1">▼ tcpSocket<a class="headerlink" href="#tcpsocket_1" title="Permanent link">&para;</a></h4>
-<p>ReadinessProbeヘルスチェックで、<code>L4</code>チェックを実行する。</p>
+<p>ReadinessProbeヘルスチェックで、<code>L4</code> チェックを実行する。</p>
 <p>コンテナにTCPスリーウェイハンドシェイクを実行し、TCP接続を確立できるかを検証する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46657,7 +46657,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </ul>
 </blockquote>
 <h4 id="terminationgraceperiodseconds_1">▼ terminationGracePeriodSeconds<a class="headerlink" href="#terminationgraceperiodseconds_1" title="Permanent link">&para;</a></h4>
-<p>デフォルト値はPod単位の<code>.spec.terminationGracePeriodSeconds</code>キーを継承し、<code>30</code>である。</p>
+<p>デフォルト値はPod単位の <code>.spec.terminationGracePeriodSeconds</code> キーを継承し、<code>30</code> である。</p>
 <p>コンテナの終了プロセスを開始するまで待機時間を設定する。</p>
 <p>この時間を超えてもPodを終了できていない場合は、コンテナを強制的に停止する。</p>
 <p>設定した時間が長すぎると、Pod全体の終了プロセスに時間がかかり、Podの削除までに時間がかかりすぎてしまう。</p>
@@ -46679,7 +46679,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </ul>
 </blockquote>
 <h4 id="timeoutseconds_1">▼ timeoutSeconds<a class="headerlink" href="#timeoutseconds_1" title="Permanent link">&para;</a></h4>
-<p>デフォルト値は<code>1</code>である。</p>
+<p>デフォルト値は <code>1</code> である。</p>
 <p>コンテナのReadinessProbeヘルスチェックのタイムアウト時間を設定する。</p>
 <p>この時間を過ぎてもコンテナのReadinessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -46703,7 +46703,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <h3 id="speccontainerssecuritycontext">.spec.containers[*].securityContext<a class="headerlink" href="#speccontainerssecuritycontext" title="Permanent link">&para;</a></h3>
 <h4 id="securitycontext">▼ securityContextとは<a class="headerlink" href="#securitycontext" title="Permanent link">&para;</a></h4>
 <p>Pod内の特定のコンテナに対して、認可スコープを設定する。</p>
-<p>オプションは、<code>.spec.securityContext</code>キーと同じである。</p>
+<p>オプションは、<code>.spec.securityContext</code> キーと同じである。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/dingtianhongjie/items/51a4cea1265c5ec836cc">https://qiita.com/dingtianhongjie/items/51a4cea1265c5ec836cc</a></li>
@@ -46795,7 +46795,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <h3 id="spechostname">.spec.hostname<a class="headerlink" href="#spechostname" title="Permanent link">&para;</a></h3>
 <h4 id="hostname">▼ hostnameとは<a class="headerlink" href="#hostname" title="Permanent link">&para;</a></h4>
 <p>Podのホスト名を設定する。</p>
-<p>また、<code>.spec.hostname</code>キーが設定されていない時は、<code>.metadata.name</code>がホスト名として使用される。</p>
+<p>また、<code>.spec.hostname</code> キーが設定されていないときは、<code>.metadata.name</code> がホスト名として使用される。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46836,7 +46836,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <h3 id="specimagepullsecrets">.spec.imagePullSecrets<a class="headerlink" href="#specimagepullsecrets" title="Permanent link">&para;</a></h3>
 <h4 id="imagepullsecrets">▼ imagePullSecretsとは<a class="headerlink" href="#imagepullsecrets" title="Permanent link">&para;</a></h4>
 <p>プライベートイメージリポジトリからコンテナイメージをプルするため、プライベートイメージリポジトリの資格情報を持つSecretを設定する。</p>
-<p>別途、ServiceAccountの<code>.imagePullSecrets</code>キーでも同じSecretを指定しておき、このServiceAccountをPodに紐付ける。</p>
+<p>別途、ServiceAccountの <code>.imagePullSecrets</code> キーでも同じSecretを指定しておき、このServiceAccountをPodに紐付ける。</p>
 <p>これにより、PodはSecretにあるプライベートリポジトリの資格情報を使用できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46859,7 +46859,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <p><br></p>
 <h3 id="specinitcontainers">.spec.initContainers<a class="headerlink" href="#specinitcontainers" title="Permanent link">&para;</a></h3>
 <h4 id="initcontainers">▼ initContainersとは<a class="headerlink" href="#initcontainers" title="Permanent link">&para;</a></h4>
-<p><code>.spec.containers</code>キーで設定したコンテナよりも先に起動するコンテナ (InitContainer) を設定する。</p>
+<p><code>.spec.containers</code> キーで設定したコンテナよりも先に起動するコンテナ (InitContainer) を設定する。</p>
 <p>依存先コンテナ (例：DBコンテナ、インメモリDBコンテナ) の待機処理、依存ツールやサーバー証明書のインストール処理などのために使用する。</p>
 <h4 id="command">▼ command<a class="headerlink" href="#command" title="Permanent link">&para;</a></h4>
 <p>実行するコマンドを設定する。</p>
@@ -46909,7 +46909,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
 <h4 id="restartpolicy">▼ restartPolicy<a class="headerlink" href="#restartpolicy" title="Permanent link">&para;</a></h4>
-<p><code>Always</code>値を設定することで、サイドカーコンテナを作成できる。</p>
+<p><code>Always</code> 値を設定することで、サイドカーコンテナを作成できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46984,7 +46984,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <h4 id="daemonsetpod">▼ DaemonSet配下のPod<a class="headerlink" href="#daemonsetpod" title="Permanent link">&para;</a></h4>
 <p>DaemonSet配下のPodは、デフォルトで全てのNodeでスケジューリングされるようになっている。</p>
 <p>ただし何らかの理由 (例：ハードウェアリソース不足など) で、特定のNodeでDaemonSet配下のPodをスケジューリングさせられないことがある。</p>
-<p>他のPodよりスケジューリングの優先度を上げるために、DaemonSet配下のPodには必ず、<code>system-node-critical</code>のPriorityClassNameを設定しておく。</p>
+<p>他のPodよりスケジューリングの優先度を上げるために、DaemonSet配下のPodには必ず、<code>system-node-critical</code> のPriorityClassNameを設定しておく。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/questions/74987515/k8s-daemonset-pod-placement">https://stackoverflow.com/questions/74987515/k8s-daemonset-pod-placement</a></li>
@@ -46995,8 +46995,8 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <h3 id="specnodeselector">.spec.nodeSelector<a class="headerlink" href="#specnodeselector" title="Permanent link">&para;</a></h3>
 <h4 id="nodeselector">▼ nodeSelectorとは<a class="headerlink" href="#nodeselector" title="Permanent link">&para;</a></h4>
 <p>Podのスケジューリング対象とするNodeを設定する。</p>
-<p><code>.spec.affinity</code>キーと比較して、より単純に条件を設定できる。</p>
-<p>複数のNodeに同じ<code>.metadata.labels</code>キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループにPodを作成できる。</p>
+<p><code>.spec.affinity</code> キーと比較して、より単純に条件を設定できる。</p>
+<p>複数のNodeに同じ <code>.metadata.labels</code> キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループにPodを作成できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47021,7 +47021,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </ul>
 </blockquote>
 <h4 id="nodeselectoraffinitty">▼ nodeSelectorとaffinittyの両方設定<a class="headerlink" href="#nodeselectoraffinitty" title="Permanent link">&para;</a></h4>
-<p><code>.spec.nodeSelector</code>キーと<code>.spec.affinity</code>キーの両方を設定できる。</p>
+<p><code>.spec.nodeSelector</code> キーと <code>.spec.affinity</code> キーの両方を設定できる。</p>
 <p>両方を設定した場合、両方を満たしたNodeにPodをスケジューリングさせられる。</p>
 <blockquote>
 <ul>
@@ -47033,7 +47033,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <h4 id="restartpolicy_1">▼ restartPolicyとは<a class="headerlink" href="#restartpolicy_1" title="Permanent link">&para;</a></h4>
 <p>Pod内のコンテナのライフサイクルの再起動ポリシーを設定する。</p>
 <h4 id="always">▼ Always<a class="headerlink" href="#always" title="Permanent link">&para;</a></h4>
-<p>コンテナが停止した場合、これが正常 (終了ステータス<code>0</code>) か異常 (終了ステータス<code>1</code>) か否かに関わらず、常にコンテナを再起動する。</p>
+<p>コンテナが停止した場合、これが正常 (終了ステータス <code>0</code>) か異常 (終了ステータス <code>1</code>) か否かに関わらず、常にコンテナを再起動する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47057,7 +47057,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <span class="w">  </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
 </code></pre></div>
 <h4 id="onfailure">▼ OnFailure<a class="headerlink" href="#onfailure" title="Permanent link">&para;</a></h4>
-<p>コンテナが停止した場合、これが異常 (終了ステータス<code>1</code>) の場合にのみ、常にコンテナを再起動する。</p>
+<p>コンテナが停止した場合、これが異常 (終了ステータス <code>1</code>) の場合にのみ、常にコンテナを再起動する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47139,10 +47139,10 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <ul>
 <li>指定した番号のユーザーグループを作成する</li>
 <li>ファイルのユーザーグループ権限を指定したユーザーグループ番号に設定する</li>
-<li>ファイルのアクセス権限を<code>0660</code>に設定する</li>
+<li>ファイルのアクセス権限を <code>0660</code> に設定する</li>
 </ul>
 <p>設定しない場合、ボリュームのファイルの権限はrootユーザー (コンテナのデフォルトユーザー) になる。</p>
-<p>例えば、<code>999</code>にすれば、<code>999</code>というユーザーグループが作成され、<code>999</code>番グループしかファイルを利用できなくなる。</p>
+<p>例えば、<code>999</code> にすれば、<code>999</code> というユーザーグループが作成され、<code>999</code> 番グループしかファイルを利用できなくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47182,7 +47182,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <p><img alt="pod_terminating_process" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png" /></p>
 <p>Podの終了プロセスを開始するまで待機時間を設定する。</p>
 <p>この時間を超えてもPodを終了できていない場合は、コンテナを強制的に停止する。</p>
-<p>なお、<code>.spec.containers[*].xxxProbe.terminationGracePeriodSeconds</code>キーでコンテナ単位での待機時間を設定することもできる。</p>
+<p>なお、<code>.spec.containers[*].xxxProbe.terminationGracePeriodSeconds</code> キーでコンテナ単位での待機時間を設定することもできる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47213,8 +47213,8 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <h3 id="spectolerations">.spec.tolerations<a class="headerlink" href="#spectolerations" title="Permanent link">&para;</a></h3>
 <h4 id="tolerations">▼ tolerationsとは<a class="headerlink" href="#tolerations" title="Permanent link">&para;</a></h4>
 <p>TaintsとTolerationsを使用すると、指定した条件に合致するPod以外をNodeにスケジューリングさせないようにできる。</p>
-<p>例えば、Workloadが少ないNodeグループ (<code>monitoring</code>、<code>ingress</code>など) にTaintを設定し、Workloadが多いNodeグループ (<code>app</code>、<code>system</code>など) にはこれを設定しないようにする。</p>
-<p>すると、<code>.spec.tolerations</code>キーを設定しない限り、Podが多いNodeグループの方にPodがスケジューリングされる。</p>
+<p>例えば、Workloadが少ないNodeグループ (<code>monitoring</code>、<code>ingress</code> など) にTaintを設定し、Workloadが多いNodeグループ (<code>app</code>、<code>system</code> など) にはこれを設定しないようにする。</p>
+<p>すると、<code>.spec.tolerations</code> キーを設定しない限り、Podが多いNodeグループの方にPodがスケジューリングされる。</p>
 <p>そのため、NodeSelectorやNodeAffinityを使用するより、スケジューリング対象のNodeを設定する手間が省ける。</p>
 <p>以下の方法で設定する。</p>
 <p>事前にNodeにTaintを設定しておく。</p>
@@ -47224,7 +47224,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <span class="c1"># マネージドの場合</span>
 <span class="c1"># NodeグループやNodeプールで一括してTaintを設定する</span>
 </code></pre></div>
-<p>Taintへの耐性を<code>.spec.tolerations</code>キーで設定する。</p>
+<p>Taintへの耐性を <code>.spec.tolerations</code> キーで設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47240,9 +47240,9 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;値&gt;</span>
 <span class="w">      </span><span class="nt">effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;エフェクト&gt;</span>
 </code></pre></div>
-<p>合致する条件の<code>.spec.tolerations</code>キーを持つPodしか、Taintを持つNodeにスケジューリングさせられない。</p>
-<p><code>.spec.affinity</code>キーとは反対の条件である。</p>
-<p>デフォルトでは、Podは以下のNodeの<code>metadata.labels</code>キーを条件として、kube-schedulerは該当の値を持たないNodeにPodにスケジューリングさせる。</p>
+<p>合致する条件の <code>.spec.tolerations</code> キーを持つPodしか、Taintを持つNodeにスケジューリングさせられない。</p>
+<p><code>.spec.affinity</code> キーとは反対の条件である。</p>
+<p>デフォルトでは、Podは以下のNodeの <code>metadata.labels</code> キーを条件として、kube-schedulerは該当の値を持たないNodeにPodにスケジューリングさせる。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/#taint-based-evictions">https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/#taint-based-evictions</a></li>
@@ -47252,8 +47252,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <p>指定した条件に合致するNodeにはスケジューリングさせない。</p>
 <p>なお、実行中のPodが違反していた場合でも、再スケジューリングさせない。</p>
 <p><strong>＊実装例＊</strong></p>
-<p><code>kube-system</code>で管理したいような重要なPodに<code>CriticalAddonsOnly</code>キーのTolerationsを設定する。</p>
-<p>合わせてNodeのTaintにも<code>CriticalAddonsOnly</code>キーを設定することで、Taintに耐性のあるPod (<code>CriticalAddonsOnly</code>キー) しか、このNodeにスケジューリングできなくなる。</p>
+<p><code>kube-system</code> で管理したいような重要なPodに <code>CriticalAddonsOnly</code> キーのTolerationsを設定する。</p>
+<p>合わせてNodeのTaintにも <code>CriticalAddonsOnly</code> キーを設定することで、Taintに耐性のあるPod (<code>CriticalAddonsOnly</code> キー) しか、このNodeにスケジューリングできなくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47331,7 +47331,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h3 id="spectopologyspreadconstraints">.spec.topologySpreadConstraints<a class="headerlink" href="#spectopologyspreadconstraints" title="Permanent link">&para;</a></h3>
 <h4 id="topologyspreadconstraints">▼ topologySpreadConstraintsとは<a class="headerlink" href="#topologyspreadconstraints" title="Permanent link">&para;</a></h4>
 <p>異なるリージョン、AZ、Node、にPodを分散させる。</p>
-<p><code>.spec.nodeSelector</code>キーや<code>.spec.affinity</code>キーのスーパーセットであり、これと比べて、Podのスケジューリングをより柔軟に定義できる。</p>
+<p><code>.spec.nodeSelector</code> キーや <code>.spec.affinity</code> キーのスーパーセットであり、これと比べて、Podのスケジューリングをより柔軟に定義できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/73159361">https://stackoverflow.com/a/73159361</a></li>
@@ -47339,9 +47339,9 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </ul>
 </blockquote>
 <h4 id="maxskew">▼ maxSkew<a class="headerlink" href="#maxskew" title="Permanent link">&para;</a></h4>
-<p><code>.spec.topologySpreadConstraints[*].topologyKey</code>キーで指定した分散の単位の間で、Podの個数差を設定する。</p>
+<p><code>.spec.topologySpreadConstraints[*].topologyKey</code> キーで指定した分散の単位の間で、Podの個数差を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>AZが<code>2</code>個あるとすると、各AZ間のPodの個数差を<code>1</code>個にする。</p>
+<p>AZが <code>2</code> 個あるとすると、各AZ間のPodの個数差を <code>1</code> 個にする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47426,11 +47426,11 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h4 id="volumes">▼ volumesとは<a class="headerlink" href="#volumes" title="Permanent link">&para;</a></h4>
 <p>Pod内で使用するボリュームを設定する。</p>
 <h4 id="configmap_1">▼ configMap<a class="headerlink" href="#configmap_1" title="Permanent link">&para;</a></h4>
-<p>ConfigMapの<code>.data</code>キー配下のキーをファイルとしてマウントする。</p>
-<p>Secretをマウントする場合は、<code>.spec.volumes.secret</code>キーで設定することに注意する。</p>
+<p>ConfigMapの <code>.data</code> キー配下のキーをファイルとしてマウントする。</p>
+<p>Secretをマウントする場合は、<code>.spec.volumes.secret</code> キーで設定することに注意する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>ConfigMapの持つキー (ここでは<code>fluent-bit.conf</code>キー) をコンテナにファイルとしてマウントする</p>
-<p>そのため、コンテナには<code>fluent-bit.conf</code>ファイルが配置されることになる。</p>
+<p>ConfigMapの持つキー (ここでは <code>fluent-bit.conf</code> キー) をコンテナにファイルとしてマウントする</p>
+<p>そのため、コンテナには <code>fluent-bit.conf</code> ファイルが配置されることになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47652,11 +47652,11 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </ul>
 </blockquote>
 <h4 id="secret">▼ secret<a class="headerlink" href="#secret" title="Permanent link">&para;</a></h4>
-<p>Secretの<code>.data</code>キー配下のキーをファイルとしてマウントする。</p>
-<p><code>.spec.containers[*].envFrom</code>キー (環境変数をコンテナに出力する) とは異なり、Secretからファイルを設定する。</p>
-<p>ConfigMapをマウントする場合は、<code>.spec.volumes.configMap</code>キーで設定することに注意する。</p>
+<p>Secretの <code>.data</code> キー配下のキーをファイルとしてマウントする。</p>
+<p><code>.spec.containers[*].envFrom</code> キー (環境変数をコンテナに出力する) とは異なり、Secretからファイルを設定する。</p>
+<p>ConfigMapをマウントする場合は、<code>.spec.volumes.configMap</code> キーで設定することに注意する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Secretが持つ資格情報ファイル (ここでは<code>credentials.json</code>キー) をコンテナにファイルとしてマウントする</p>
+<p>Secretが持つ資格情報ファイル (ここでは <code>credentials.json</code> キー) をコンテナにファイルとしてマウントする</p>
 <p>そのため、コンテナには資格情報ファイルが配置されることになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -47702,7 +47702,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h3 id="specmaxunavailable">.spec.maxUnavailable<a class="headerlink" href="#specmaxunavailable" title="Permanent link">&para;</a></h3>
 <p>古いPodをNodeから退避させる時に、Nodeで退避できるPodの最大数を設定する。</p>
 <p>これを設定しないと、特定のWorkload (例：Deployment、DaemonSet、StatefulSet、Jobなど) 配下のPodを全て退避してしまう問題が起こる。</p>
-<p>まずは<code>.spec.minAvailable</code>キーでスケジューリングさせられる新しいPodの個数を制御し、その後に<code>.spec.minAvailable</code>キーで退避できる古いPodの個数を制御する。</p>
+<p>まずは <code>.spec.minAvailable</code> キーでスケジューリングさせられる新しいPodの個数を制御し、その後に <code>.spec.minAvailable</code> キーで退避できる古いPodの個数を制御する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">policy/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PodDisruptionBudget</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47721,7 +47721,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h3 id="specminavailable">.spec.minAvailable<a class="headerlink" href="#specminavailable" title="Permanent link">&para;</a></h3>
 <p>古いPodをNodeから退避させる時に、起動し続ける利用可能なPodの最小数を設定する。</p>
 <p>他のNodeで新しいPodのスケジューリングの完了を待機してから、古いPodを退避させられる。</p>
-<p>まずは<code>.spec.minAvailable</code>キーでスケジューリングさせられる新しいPodの個数を制御し、その後に<code>.spec.minAvailable</code>キーで退避できる古いPodの個数を制御する。</p>
+<p>まずは <code>.spec.minAvailable</code> キーでスケジューリングさせられる新しいPodの個数を制御し、その後に <code>.spec.minAvailable</code> キーで退避できる古いPodの個数を制御する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">policy/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PodDisruptionBudget</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47738,7 +47738,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </blockquote>
 <p><br></p>
 <h3 id="specselector_1">.spec.selector<a class="headerlink" href="#specselector_1" title="Permanent link">&para;</a></h3>
-<p>古いPodをNodeから退避させる時に、Podの<code>metadata.labels</code>キーを設定する。</p>
+<p>古いPodをNodeから退避させる時に、Podの <code>metadata.labels</code> キーを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">policy/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PodDisruptionBudget</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47771,7 +47771,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h3 id="globaldefault">globalDefault<a class="headerlink" href="#globaldefault" title="Permanent link">&para;</a></h3>
 <h4 id="globaldefault_1">▼ globalDefaultとは<a class="headerlink" href="#globaldefault_1" title="Permanent link">&para;</a></h4>
 <p>グローバルスコープにするかどうかを設定する。</p>
-<p><code>true</code>の場合、PriorityClassを指定していないWorkloadに対しても、PriorityClassを一律に設定する。</p>
+<p><code>true</code> の場合、PriorityClassを指定していないWorkloadに対しても、PriorityClassを一律に設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scheduling.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PriorityClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47783,7 +47783,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h4 id="preemptionpolicy_1">▼ preemptionPolicyとは<a class="headerlink" href="#preemptionpolicy_1" title="Permanent link">&para;</a></h4>
 <p>スケジューリングの優先度が競合した場合に、どのような優先度にするかを設定する。</p>
 <h4 id="never_1">▼ <code>Never</code><a class="headerlink" href="#never_1" title="Permanent link">&para;</a></h4>
-<p><code>Never</code>とすると、必ず他のPodのスケジューリングを優先するようになる。</p>
+<p><code>Never</code> とすると、必ず他のPodのスケジューリングを優先するようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scheduling.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PriorityClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47811,7 +47811,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </ul>
 </blockquote>
 <h4 id="-1">▼ <code>-1</code><a class="headerlink" href="#-1" title="Permanent link">&para;</a></h4>
-<p><code>-1</code>とすると、優先度が最低になる。</p>
+<p><code>-1</code> とすると、優先度が最低になる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scheduling.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PriorityClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47950,7 +47950,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <p>Kubernetesリソースに渡す機密な変数を設定する。</p>
 <h4 id="_8">▼ 変数の管理<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>Secretで保持するstring型変数を設定する。</p>
-<p>使用時に<code>base64</code>方式で自動的にデコードされるため、あらかじめ<code>base64</code>方式でエンコードしておく必要がある。</p>
+<p>使用時に <code>base64</code> 方式で自動的にデコードされるため、あらかじめ <code>base64</code> 方式でエンコードしておく必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47966,7 +47966,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <li><a href="https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data">https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data</a></li>
 </ul>
 </blockquote>
-<p>string型の変数しか設定できないため、<code>base64</code>方式でデコード後にinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。</p>
+<p>string型の変数しか設定できないため、<code>base64</code> 方式でデコード後にinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -48098,8 +48098,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </ul>
 </blockquote>
 <h4 id="kubernetesioservice-account-token">▼ kubernetes.io/service-account-token<a class="headerlink" href="#kubernetesioservice-account-token" title="Permanent link">&para;</a></h4>
-<p>Kubernetesの<code>v1.24</code>以降では、Secretが自動的に作成されないようになっている。</p>
-<p><code>.metadata.annotations</code>キーと<code>.type</code>キーを設定したSecretを作成すると、Kubernetesはこれの<code>data</code>キー配下にトークン文字列を自動的に追加する。</p>
+<p>Kubernetesの <code>v1.24</code> 以降では、Secretが自動的に作成されないようになっている。</p>
+<p><code>.metadata.annotations</code> キーと <code>.type</code> キーを設定したSecretを作成すると、Kubernetesはこれの <code>data</code> キー配下にトークン文字列を自動的に追加する。</p>
 <p>このトークンには、失効期限がない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
@@ -48227,7 +48227,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <p>受信する通信を設定する。</p>
 <h4 id="appprotocol">▼ appProtocol<a class="headerlink" href="#appprotocol" title="Permanent link">&para;</a></h4>
 <p>受信する通信のプロトコルを設定する。</p>
-<p><code>.spec.ports.protocol</code>キーとは異なり、アプリケーション層のプロトコルを明示的に指定できる。</p>
+<p><code>.spec.ports.protocol</code> キーとは異なり、アプリケーション層のプロトコルを明示的に指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -48316,9 +48316,9 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9000</span>
 </code></pre></div>
 <h4 id="targetport">▼ targetPort<a class="headerlink" href="#targetport" title="Permanent link">&para;</a></h4>
-<p>受信した通信をPodにフォワーディングする時に、いずれのポート番号を指定するか否かを設定する。</p>
-<p>Pod内で最初にインバウンド通信を受信するコンテナの<code>containerPort</code>の番号に合わせるようにする。</p>
-<p>デフォルトでは、<code>.spec.ports.port</code>キーと同じに値になる。</p>
+<p>受信した通信をPodにフォワーディングするときに、いずれのポート番号を指定するか否かを設定する。</p>
+<p>Pod内で最初にインバウンド通信を受信するコンテナの <code>containerPort</code> の番号に合わせるようにする。</p>
+<p>デフォルトでは、<code>.spec.ports.port</code> キーと同じに値になる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
@@ -48347,7 +48347,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h3 id="specloadbalancersourceranges">.spec.loadBalancerSourceRanges<a class="headerlink" href="#specloadbalancersourceranges" title="Permanent link">&para;</a></h3>
 <h4 id="loadbalancersourceranges">▼ loadBalancerSourceRangesとは<a class="headerlink" href="#loadbalancersourceranges" title="Permanent link">&para;</a></h4>
 <p>LoadBalancer Serviceのみで設定できる。</p>
-<p>プロビジョニングされる<code>L4</code>ロードバランサーのインバウンド通信で許可するCIDRを設定する。</p>
+<p>プロビジョニングされる <code>L4</code> ロードバランサーのインバウンド通信で許可するCIDRを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
@@ -48373,7 +48373,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <p><br></p>
 <h3 id="specselector_2">.spec.selector<a class="headerlink" href="#specselector_2" title="Permanent link">&para;</a></h3>
 <h4 id="selector_1">▼ selectorとは<a class="headerlink" href="#selector_1" title="Permanent link">&para;</a></h4>
-<p>インバウンド通信のフォワーディング先とするPodの<code>.metadata.labels</code>キー名と値を設定する。</p>
+<p>インバウンド通信のフォワーディング先とするPodの <code>.metadata.labels</code> キー名と値を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
@@ -48434,7 +48434,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <p><br></p>
 <h3 id="specsessionaffinityconfig">.spec.sessionAffinityConfig<a class="headerlink" href="#specsessionaffinityconfig" title="Permanent link">&para;</a></h3>
 <h4 id="sessionaffinityconfig">▼ sessionAffinityConfigとは<a class="headerlink" href="#sessionaffinityconfig" title="Permanent link">&para;</a></h4>
-<p><code>.spec.sessionAffinity</code>キーを使用している場合に、セッションのタイムアウト時間を設定する。</p>
+<p><code>.spec.sessionAffinity</code> キーを使用している場合に、セッションのタイムアウト時間を設定する。</p>
 <p>タイムアウト時間を過ぎると、Node上に保管したセッションIDを削除する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -48457,7 +48457,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <p>Serviceのタイプを設定する。</p>
 <h4 id="clusterip">▼ ClusterIPの場合<a class="headerlink" href="#clusterip" title="Permanent link">&para;</a></h4>
 <p>ClusterIP Serviceを設定する。</p>
-<p><code>.spec.clusterIP</code>キーでCluster-IPを指定しない場合は、ランダムにIPアドレスが割り当てられる。</p>
+<p><code>.spec.clusterIP</code> キーでCluster-IPを指定しない場合は、ランダムにIPアドレスが割り当てられる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -48518,7 +48518,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
 </code></pre></div>
-<p>NodePortのポート番号は、<code>30000</code> 〜 <code>32767</code>番である必要がある。</p>
+<p>NodePortのポート番号は、<code>30000</code> 〜 <code>32767</code> 番である必要がある。</p>
 <div class="highlight"><pre><span></span><code>spec.ports<span class="o">[</span><span class="m">0</span><span class="o">]</span>.nodePort:<span class="w"> </span>Invalid<span class="w"> </span>value:<span class="w"> </span><span class="m">80</span>:<span class="w"> </span>provided<span class="w"> </span>port<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>valid<span class="w"> </span>range.<span class="w"> </span>The<span class="w"> </span>range<span class="w"> </span>of<span class="w"> </span>valid<span class="w"> </span>ports<span class="w"> </span>is<span class="w"> </span><span class="m">30000</span>-32767
 </code></pre></div>
 <blockquote>
@@ -48529,9 +48529,9 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h4 id="loadbalancer">▼ LoadBalancerの場合<a class="headerlink" href="#loadbalancer" title="Permanent link">&para;</a></h4>
 <p>LoadBalancer Serviceを設定する。</p>
 <p>クラウドプロバイダーでLoadBalancer Serviceを作成すると、External-IPを宛先IPアドレスとするロードバランサーを自動的にプロビジョニングする。</p>
-<p>同時に、<code>.status.loadBalancer</code>キーが自動的に追加される。</p>
-<p><code>.status.loadBalancer.ingress</code>キーは、KubernetesのIngressとは無関係であり、インバウンドを表す『<code>ingress</code>』である。</p>
-<p><code>.status.loadBalancer.ingress.ip</code>キーには、ロードバランサーで指定するServiceのExternal-IPが設定される。</p>
+<p>同時に、<code>.status.loadBalancer</code> キーが自動的に追加される。</p>
+<p><code>.status.loadBalancer.ingress</code> キーは、KubernetesのIngressとは無関係であり、インバウンドを表す『<code>ingress</code>』である。</p>
+<p><code>.status.loadBalancer.ingress.ip</code> キーには、ロードバランサーで指定するServiceのExternal-IPが設定される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -48563,7 +48563,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h3 id="automountserviceaccounttoken">automountServiceAccountToken<a class="headerlink" href="#automountserviceaccounttoken" title="Permanent link">&para;</a></h3>
 <h4 id="automountserviceaccounttoken_1">▼ automountServiceAccountTokenとは<a class="headerlink" href="#automountserviceaccounttoken_1" title="Permanent link">&para;</a></h4>
 <p>ServiceAccountのPod内のコンテナへのマウントを有効化する。</p>
-<p>デフォルト値は<code>true</code>である。</p>
+<p>デフォルト値は <code>true</code> である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -48571,7 +48571,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <span class="nt">automountServiceAccountToken</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 <p>service-account-admission-controllerは、AdmissionWebhookの仕組みでPodの作成時にマニフェストを変更する。</p>
-<p>これにより、Volume上の<code>/var/run/secrets/kubernetes.io/serviceaccount</code>ディレクトリをコンテナに自動的にマウントするようになる。</p>
+<p>これにより、Volume上の <code>/var/run/secrets/kubernetes.io/serviceaccount</code> ディレクトリをコンテナに自動的にマウントするようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -48621,8 +48621,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <span class="w">              </span><span class="nt">expirationSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">86400</span>
 <span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">token</span>
 </code></pre></div>
-<p>マウント後、トークンの文字列はコンテナの<code>/var/run/secrets/kubernetes.io/serviceaccount/token</code>ファイルに記載されている。</p>
-<p>もし、AWS EKSを使用している場合、加えて<code>/var/run/secrets/eks.amazonaws.com/serviceaccount/token</code>ファイルにもトークンの文字列が記載されている。</p>
+<p>マウント後、トークンの文字列はコンテナの <code>/var/run/secrets/kubernetes.io/serviceaccount/token</code> ファイルに記載されている。</p>
+<p>もし、AWS EKSを使用している場合、加えて <code>/var/run/secrets/eks.amazonaws.com/serviceaccount/token</code> ファイルにもトークンの文字列が記載されている。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">root@&lt;foo-pod</span><span class="p p-Indicator">:</span><span class="nv">/</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$ cat /var/run/secrets/kubernetes.io/serviceaccount/token | base64 -d; echo</span>
 
 <span class="l l-Scalar l-Scalar-Plain">{</span>
@@ -48785,7 +48785,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h3 id="specvolumeclaimtemplates">.spec.volumeClaimTemplates<a class="headerlink" href="#specvolumeclaimtemplates" title="Permanent link">&para;</a></h3>
 <h4 id="volumeclaimtemplates">▼ volumeClaimTemplatesとは<a class="headerlink" href="#volumeclaimtemplates" title="Permanent link">&para;</a></h4>
 <p>PersistentVolumeClaimを作成する。</p>
-<p>設定の項目は<code>kind: PersistentVolumeClaim</code>の場合と同じである。</p>
+<p>設定の項目は <code>kind: PersistentVolumeClaim</code> の場合と同じである。</p>
 <p>StatefulSetが削除されても、これは削除されない。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
@@ -48876,7 +48876,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </blockquote>
 <p><br></p>
 <h3 id="reclaimpolicy">reclaimPolicy<a class="headerlink" href="#reclaimpolicy" title="Permanent link">&para;</a></h3>
-<p>PersistentVolumeClaimが削除された時に、Node外ストレージツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) が提供するVolumeを削除する否かを設定する。</p>
+<p>PersistentVolumeClaimが削除されたときに、Node外ストレージツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) が提供するVolumeを削除する否かを設定する。</p>
 <p>PersistentVolumeにも同様の機能がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storage.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StorageClass</span>
@@ -48913,7 +48913,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月2日 14:04:19 JST">2026-02-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

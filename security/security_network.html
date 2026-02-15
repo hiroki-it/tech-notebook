@@ -16907,19 +16907,19 @@
   <a href="#10-l7set-cookie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10. 【L7】Set-Cookieヘッダー
+        10. 【L7】Set-Cookie ヘッダー
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="10. 【L7】Set-Cookieヘッダー">
+    <nav class="md-nav" aria-label="10. 【L7】Set-Cookie ヘッダー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#set-cookie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Set-Cookieヘッダーとは
+        Set-Cookie ヘッダーとは
       
     </span>
   </a>
@@ -33799,19 +33799,19 @@
   <a href="#10-l7set-cookie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10. 【L7】Set-Cookieヘッダー
+        10. 【L7】Set-Cookie ヘッダー
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="10. 【L7】Set-Cookieヘッダー">
+    <nav class="md-nav" aria-label="10. 【L7】Set-Cookie ヘッダー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#set-cookie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Set-Cookieヘッダーとは
+        Set-Cookie ヘッダーとは
       
     </span>
   </a>
@@ -34175,7 +34175,7 @@
 <p><br></p>
 <h2 id="01-l2l4">01. 【<code>L2</code>～<code>L4</code>】ネットワークファイアウォール<a class="headerlink" href="#01-l2l4" title="Permanent link">&para;</a></h2>
 <h3 id="_3">ネットワークファイアウォールとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p><code>L2</code> (データリンク層) から<code>L4</code> (トランスポート層) までに対するサイバー攻撃 (例：そもそものネットワークへの侵入、ポートスキャンなど) を防御する。</p>
+<p><code>L2</code> (データリンク層) から <code>L4</code> (トランスポート層) までに対するサイバー攻撃 (例：そもそものネットワークへの侵入、ポートスキャンなど) を防御する。</p>
 <p><br></p>
 <h3 id="_4">ネットワークファイアウォールの種類<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <table>
@@ -34200,7 +34200,7 @@
 <tr>
 <td>クラウド型</td>
 <td>クラウドプロバイダーが提供するネットワークファイアウォールを配置する。</td>
-<td>AWS NF (<code>L2</code>〜<code>L3</code>のみ)など</td>
+<td>AWS NF (<code>L2</code>〜<code>L3</code> のみ)など</td>
 </tr>
 </tbody>
 </table>
@@ -34225,14 +34225,14 @@
 </blockquote>
 <h4 id="iptables-linuxubuntu">▼ iptables (Linux/Ubuntu) による標準的ネットワークファイアウォール<a class="headerlink" href="#iptables-linuxubuntu" title="Permanent link">&para;</a></h4>
 <p>Linux/Ubuntuでのiptablesは、標準的なNAPTルーターかつパケットフィルタリング型ネットワークファイアウォールである。</p>
-<p>特に、パケットフィルタリングのルールは、<code>/etc/sysconfig/iptables</code>ファイルの<code>filter</code>テーブルで設定する。</p>
-<p><code>iptables-save</code>コマンドでこのファイルを作成できる。</p>
-<p><code>filter</code>テーブルで使用できるチェイン配下の通りである。</p>
-<p><code>PREROUTING</code>と<code>POSTROUTING</code>は使用できない。</p>
+<p>特に、パケットフィルタリングのルールは、<code>/etc/sysconfig/iptables</code> ファイルの <code>filter</code> テーブルで設定する。</p>
+<p><code>iptables-save</code> コマンドでこのファイルを作成できる。</p>
+<p><code>filter</code> テーブルで使用できるチェイン配下の通りである。</p>
+<p><code>PREROUTING</code> と <code>POSTROUTING</code> は使用できない。</p>
 <table>
 <thead>
 <tr>
-<th><code>filter</code>テーブルで使用できるチェイン名</th>
+<th><code>filter</code> テーブルで使用できるチェイン名</th>
 <th>説明</th>
 </tr>
 </thead>
@@ -34342,7 +34342,7 @@ public
 <p><br></p>
 <h2 id="02-l3l6ipsintrusion-prevention-system">02. 【<code>L3</code>～<code>L6</code>】IPS：Intrusion Prevention System<a class="headerlink" href="#02-l3l6ipsintrusion-prevention-system" title="Permanent link">&para;</a></h2>
 <h3 id="ips">IPSとは<a class="headerlink" href="#ips" title="Permanent link">&para;</a></h3>
-<p><code>L3</code> (ネットワーク層) から<code>L6</code> (プレゼンテーション層) までに対するサイバー攻撃 (Dos攻撃、Synフラッド攻撃、パケットフラグメンテーション攻撃など) を遮断するセキュリティシステムのこと。</p>
+<p><code>L3</code> (ネットワーク層) から <code>L6</code> (プレゼンテーション層) までに対するサイバー攻撃 (Dos攻撃、Synフラッド攻撃、パケットフラグメンテーション攻撃など) を遮断するセキュリティシステムのこと。</p>
 <blockquote>
 <ul>
 <li><a href="https://digital-jyoshisu.com/archives/468">https://digital-jyoshisu.com/archives/468</a></li>
@@ -34352,19 +34352,19 @@ public
 <p><br></p>
 <h2 id="03-l3l6idsintrusion-detection-system">03. 【<code>L3</code>～<code>L6</code>】IDS：Intrusion Detection System<a class="headerlink" href="#03-l3l6idsintrusion-detection-system" title="Permanent link">&para;</a></h2>
 <h3 id="ids">IDSとは<a class="headerlink" href="#ids" title="Permanent link">&para;</a></h3>
-<p><code>L3</code> (ネットワーク層) から<code>L6</code> (プレゼンテーション層) までに対するサイバー攻撃を防御する。</p>
+<p><code>L3</code> (ネットワーク層) から <code>L6</code> (プレゼンテーション層) までに対するサイバー攻撃を防御する。</p>
 <p>不正アクセスと思われるパケットを検出する。</p>
 <p>また、検出内容を管理者に通知する。</p>
 <p>あくまで通知するのみで、攻撃を防御することはしない。</p>
 <p><img alt="IDS" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IDS.png" /></p>
 <p><br></p>
 <h2 id="04-l3l7">04. 【<code>L3</code>～<code>L7</code>】暗号化プロトコル<a class="headerlink" href="#04-l3l7" title="Permanent link">&para;</a></h2>
-<p><code>L3</code> (ネットワーク層) から<code>L7</code> (アプリケーション層) までに対するサイバー攻撃を防御する。</p>
+<p><code>L3</code> (ネットワーク層) から <code>L7</code> (アプリケーション層) までに対するサイバー攻撃を防御する。</p>
 <p><br></p>
 <h2 id="05-l7webweb-application-firewall">05. 【<code>L7</code>】Webアプリファイアウォール：Web Application Firewall<a class="headerlink" href="#05-l7webweb-application-firewall" title="Permanent link">&para;</a></h2>
 <h3 id="web">Webアプリファイアウォールとは<a class="headerlink" href="#web" title="Permanent link">&para;</a></h3>
 <p><code>L7</code> (アプリケーション層) に対するサイバー攻撃 (例：SQLインジェクション、XSS、CSRF、パストラバーサル) を防御する。</p>
-<p><code>L7</code>を防御できていない場合、より低いレイヤー (例：<code>L3</code>) を突破できれば (例：送信元IPアドレスの乗っ取り) 、<code>L7</code>のサイバー攻撃を実施できてしまうことになる。</p>
+<p><code>L7</code> を防御できていない場合、より低いレイヤー (例：<code>L3</code>) を突破できれば (例：送信元IPアドレスの乗っ取り) 、<code>L7</code> のサイバー攻撃を実施できてしまうことになる。</p>
 <p><img alt="security_protection-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png" /></p>
 <blockquote>
 <ul>
@@ -34410,7 +34410,7 @@ public
 <h3 id="_9">チェックサムとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p><code>L7</code> (アプリケーション層) に対するサイバー攻撃を防御する。</p>
 <p>sha256によって作成された文字列をファイル情報として添付し、これを送受信の両方のアプリケーション側で照合することにより、通知途中でファイルが改竄されていないことを保証する。</p>
-<p><code>L7</code>のアプリケーションデータを暗号化/復号するわけではない。</p>
+<p><code>L7</code> のアプリケーションデータを暗号化/復号するわけではない。</p>
 <blockquote>
 <ul>
 <li><a href="https://academy.gmocloud.com/know/20200116/8627">https://academy.gmocloud.com/know/20200116/8627</a></li>
@@ -34421,7 +34421,7 @@ public
 <h3 id="_10">ワンタイムトークンとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p><code>L7</code> (アプリケーション層) に対するサイバー攻撃 (例：CSRF) を防御する。</p>
 <p>認証時に、セッションIDのみでなく、ワンタイムトークンも併用する。</p>
-<p>認証フォームがリクエストされた時、サーバー側では、ワンタイムトークンを発行し、これを<code>Set-Cookie</code>ヘッダーの<code>csrftoken</code>パラメーター (フレームワークによっては、これに相当するパラメーター) や自前ヘッダーに割り当てて、レスポンスを返信する。</p>
+<p>認証フォームがリクエストされたとき、サーバー側では、ワンタイムトークンを発行し、これを <code>Set-Cookie</code> ヘッダーの <code>csrftoken</code> パラメーター (フレームワークによっては、これに相当するパラメーター) や自前ヘッダーに割り当てて、レスポンスを返信する。</p>
 <p><img alt="csrf-token" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/csrf-token.png" /></p>
 <blockquote>
 <ul>
@@ -34500,7 +34500,7 @@ public
 </blockquote>
 <p><br></p>
 <h3 id="_14">プレースホルダー<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<p>プリペアードステートメントのSQL中にパラメーターを設定し、値をパラメーターに渡した上で、SQLとして発行する。</p>
+<p>プリペアードステートメントのSQL中にパラメーターを設定し、値をパラメーターに渡したうえで、SQLとして発行する。</p>
 <p>処理速度が速い。</p>
 <p>また、パラメーターに誤ってSQLが渡されても、型をチェックすることにより、実行できなくなるようにできる。</p>
 <p>そのため、SQLインジェクションの対策になる。</p>
@@ -34519,14 +34519,14 @@ public
 </blockquote>
 <p><br></p>
 <h3 id="cors_1">CORSの突破<a class="headerlink" href="#cors_1" title="Permanent link">&para;</a></h3>
-<p>リクエストの<code>Origin</code>ヘッダーとレスポンスの<code>Access-Control-Allow-Origin</code>ヘッダーの値を同じにする必要がある。</p>
-<p>リクエストの<code>Origin</code>ヘッダーは、デフォルトで『プロトコル + ドメイン + ポート番号』に設定されるため、特に対処する必要はない。</p>
-<p>レスポンスの<code>Access-Control-Allow-Origin</code>ヘッダーは、リクエストの<code>Origin</code>ヘッダーと同じ値あるいはワイルドカード (<code>*</code>) とする必要がある。</p>
+<p>リクエストの <code>Origin</code> ヘッダーとレスポンスの <code>Access-Control-Allow-Origin</code> ヘッダーの値を同じにする必要がある。</p>
+<p>リクエストの <code>Origin</code> ヘッダーは、デフォルトで『プロトコル + ドメイン + ポート番号』に設定されるため、特に対処する必要はない。</p>
+<p>レスポンスの <code>Access-Control-Allow-Origin</code> ヘッダーは、リクエストの <code>Origin</code> ヘッダーと同じ値あるいはワイルドカード (<code>*</code>) とする必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>リクエストの<code>Origin</code>ヘッダーに送信元オリジンを設定する。</p>
+<p>リクエストの <code>Origin</code> ヘッダーに送信元オリジンを設定する。</p>
 <p>加えて、<code>Cookie</code>ヘッダーを持つリクエストを送信したい場合は、JavaScriptの実装で<code>withCredentials</code>オプションに<code>true</code>を割り当てる。</p>
 <p>JavaScriptのパッケージによってオプション名が異なるため注意する。</p>
 </dd>
@@ -34564,7 +34564,7 @@ public
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>必須の設定として、レスポンスの<code>Access-Control-Allow-Origin</code>ヘッダーに、許可された送信元オリジンやワイルドカード (<code>*</code>) を割り当てて返信する。</p>
+<p>必須の設定として、レスポンスの <code>Access-Control-Allow-Origin</code> ヘッダーに、許可された送信元オリジンやワイルドカード (<code>*</code>) を割り当てて返信する。</p>
 <p><code>Cookie</code>ヘッダーを持つリクエストを許可する場合、同じくレスポンスの<code>Access-Control-Allow-Credentials</code>ヘッダーに<code>true</code>を割り当てる。</p>
 <p>その他、許可するHTTPメソッドやHTTPヘッダーも定義できるが、必須ではない。</p>
 <p>例えば、許可されていないHTTPメソッドを使用して、異なるオリジンにリクエストを送信すると、<code>405</code>ステータスでエラーレスポンスが返信される。</p>
@@ -34581,7 +34581,7 @@ public
 <span class="c1"># その他、許可するHTTPヘッダー</span>
 <span class="nt">Access-Control-Allow-Headers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Content-Type</span>
 </code></pre></div>
-<p>補足として、<code>Cookie</code>ヘッダーを持つリクエストを許可しない場合に限り、全てのオリジンやヘッダーを許可できる。</p>
+<p>補足として、<code>Cookie</code> ヘッダーを持つリクエストを許可しない場合に限り、全てのオリジンやヘッダーを許可できる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
 <span class="nn">---</span>
 <span class="c1"># 全てのオリジンを許可</span>
@@ -34595,16 +34595,16 @@ public
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="10-l7set-cookie">10. 【<code>L7</code>】<code>Set-Cookie</code>ヘッダー<a class="headerlink" href="#10-l7set-cookie" title="Permanent link">&para;</a></h2>
-<h3 id="set-cookie"><code>Set-Cookie</code>ヘッダーとは<a class="headerlink" href="#set-cookie" title="Permanent link">&para;</a></h3>
+<h2 id="10-l7set-cookie">10. 【<code>L7</code>】<code>Set-Cookie</code> ヘッダー<a class="headerlink" href="#10-l7set-cookie" title="Permanent link">&para;</a></h2>
+<h3 id="set-cookie"><code>Set-Cookie</code> ヘッダーとは<a class="headerlink" href="#set-cookie" title="Permanent link">&para;</a></h3>
 <p><code>L7</code> (アプリケーション層) に対するサイバー攻撃 (例：SQLインジェクション、XSS、CSRF、パストラバーサル) を防御する。</p>
 <p>属性を有効化することにより、リクエストヘッダーの作成を制限できる。</p>
 <p><br></p>
 <h3 id="domain">Domain属性<a class="headerlink" href="#domain" title="Permanent link">&para;</a></h3>
 <h4 id="domain_1">▼ Domain属性とは<a class="headerlink" href="#domain_1" title="Permanent link">&para;</a></h4>
-<p>リクエストが<code>Cookie</code>ヘッダーを持つことを許可した場合、サブドメイン名のオリジンにも<code>Cookie</code>ヘッダーの送信を許可するか否かを制御できる。</p>
-<p>サブドメイン名のレスポンスの<code>Set-Cookie</code>ヘッダーにて、Domain属性にドメインが割り当てなかった場合は、ページを表示するサーバーのドメインにのみ<code>Cookie</code>ヘッダーを持つリクエストを許可でき、サブドメイン名への送信を拒否できる。</p>
-<p>一方で、ドメインが割り当てた場合は、そのページからサブドメイン名に対しても、<code>Cookie</code>ヘッダーを持つリクエストを許可できる。</p>
+<p>リクエストが <code>Cookie</code> ヘッダーを持つことを許可した場合、サブドメイン名のオリジンにも <code>Cookie</code> ヘッダーの送信を許可するか否かを制御できる。</p>
+<p>サブドメイン名のレスポンスの <code>Set-Cookie</code> ヘッダーにて、Domain属性にドメインが割り当てなかった場合は、ページを表示するサーバーのドメインにのみ <code>Cookie</code> ヘッダーを持つリクエストを許可でき、サブドメイン名への送信を拒否できる。</p>
+<p>一方で、ドメインが割り当てた場合は、そのページからサブドメイン名に対しても、<code>Cookie</code> ヘッダーを持つリクエストを許可できる。</p>
 <p>ドメインではなく、オリジンであることに注意する。</p>
 <blockquote>
 <ul>
@@ -34614,9 +34614,9 @@ public
 </blockquote>
 <h4 id="domain_2">▼ Domain属性の仕組み<a class="headerlink" href="#domain_2" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<p>Domain属性に<code>example.com</code>が割り当てられていたとする。</p>
+<p>Domain属性に <code>example.com</code> が割り当てられていたとする。</p>
 <p>最初にドットがついているドメイン (<code>.example.com</code>) でも、同じ値として認識される。</p>
-<p>この場合、<code>example.com</code>に加えて、サブドメイン名 (<code>foo.example.com</code>) に対しても、<code>Cookie</code>ヘッダーを持つリクエストを送信できる。</p>
+<p>この場合、<code>example.com</code> に加えて、サブドメイン名 (<code>foo.example.com</code>) に対しても、<code>Cookie</code> ヘッダーを持つリクエストを送信できる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
 <span class="nn">---</span>
 <span class="nt">Set-Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain=example.com</span>
@@ -34630,8 +34630,8 @@ public
 <p><br></p>
 <h3 id="httponly">HttpOnly属性<a class="headerlink" href="#httponly" title="Permanent link">&para;</a></h3>
 <h4 id="httponly_1">▼ HttpOnly属性とは<a class="headerlink" href="#httponly_1" title="Permanent link">&para;</a></h4>
-<p>これを有効化した場合、<code>Set-Cookie</code>ヘッダーに<code>HttpOnly</code>属性が割り当てられるようになる。</p>
-<p>JavaScriptから<code>Cookie</code>ヘッダーにアクセスできなくできる。</p>
+<p>これを有効化した場合、<code>Set-Cookie</code> ヘッダーに <code>HttpOnly</code> 属性が割り当てられるようになる。</p>
+<p>JavaScriptから <code>Cookie</code> ヘッダーにアクセスできなくできる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
 <span class="nn">---</span>
 <span class="nt">Set-Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HttpOnly</span>
@@ -34649,19 +34649,19 @@ public
 <tbody>
 <tr>
 <td>None</td>
-<td>異なるドメインから受信した全てのリクエストが<code>Cookie</code>ヘッダーを持つことを許可する。</td>
+<td>異なるドメインから受信した全てのリクエストが <code>Cookie</code> ヘッダーを持つことを許可する。</td>
 </tr>
 <tr>
 <td>Lax</td>
-<td>異なるドメインから受信した一部のリクエストが<code>Cookie</code>ヘッダーを持つことを許可する。</td>
+<td>異なるドメインから受信した一部のリクエストが <code>Cookie</code> ヘッダーを持つことを許可する。</td>
 </tr>
 <tr>
 <td>Strict</td>
-<td>異なるドメインから受信した全てのリクエストが<code>Cookie</code>ヘッダーを持つことを拒否する。</td>
+<td>異なるドメインから受信した全てのリクエストが <code>Cookie</code> ヘッダーを持つことを拒否する。</td>
 </tr>
 </tbody>
 </table>
-<p>異なるドメインからのリクエストが<code>Cookie</code>ヘッダーを持つことを許可/拒否する。</p>
+<p>異なるドメインからのリクエストが <code>Cookie</code> ヘッダーを持つことを許可/拒否する。</p>
 <p>ここでリクエストを制御しているのは、オリジンではなく、ドメインであることに注意する。</p>
 <blockquote>
 <ul>
@@ -34675,7 +34675,7 @@ public
 <p><br></p>
 <h3 id="secure">Secure属性<a class="headerlink" href="#secure" title="Permanent link">&para;</a></h3>
 <h4 id="secure_1">▼ Secure属性とは<a class="headerlink" href="#secure_1" title="Permanent link">&para;</a></h4>
-<p>これを有効化した場合、<code>Set-Cookie</code>ヘッダーに<code>Secure</code>属性が割り当てられるようになる。HTTPSプロトコルを使用した場合のみ、リクエストに<code>Cookie</code>ヘッダーを割り当てられるようになる。</p>
+<p>これを有効化した場合、<code>Set-Cookie</code> ヘッダーに <code>Secure</code> 属性が割り当てられるようになる。HTTPSプロトコルを使用した場合のみ、リクエストに <code>Cookie</code> ヘッダーを割り当てられるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
 <span class="nn">---</span>
 <span class="nt">Set-Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secure</span>
@@ -34711,11 +34711,11 @@ public
 <tbody>
 <tr>
 <td><code>$2y$</code> (4文字)</td>
-<td>暗号アルゴリズムのバージョンを表す。他に、<code>2</code>、<code>2a</code>、<code>2b</code>、<code>2x</code>がある。</td>
+<td>暗号アルゴリズムのバージョンを表す。他に、<code>2</code>、<code>2a</code>、<code>2b</code>、<code>2x</code> がある。</td>
 </tr>
 <tr>
 <td><code>$10$</code> (4文字)</td>
-<td>ストレッチング (ハッシュ化の反復) の回数を表す。<code>10</code>とした場合は、2^10回反復でハッシュ化を実行する。</td>
+<td>ストレッチング (ハッシュ化の反復) の回数を表す。<code>10</code> とした場合は、2^10回反復でハッシュ化を実行する。</td>
 </tr>
 <tr>
 <td><code>1QVmWNzk.TsaZQLQ/zeI9O</code> (22文字)</td>
@@ -34730,16 +34730,16 @@ public
 <p><br></p>
 <h2 id="12-l7">12. 【<code>L7</code>】アプリケーションのリクエスト数制限<a class="headerlink" href="#12-l7" title="Permanent link">&para;</a></h2>
 <h3 id="_17">リクエスト数制限とは<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<p><code>L7</code>に対するサイバー攻撃 (例：Dos攻撃、DDos攻撃など) を防御する。</p>
+<p><code>L7</code> に対するサイバー攻撃 (例：Dos攻撃、DDos攻撃など) を防御する。</p>
 <p><br></p>
 <h3 id="post">POSTリクエストのリクエスト制限<a class="headerlink" href="#post" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
-<p><code>php.ini</code>ファイルにて、一度に受信できるPOSTリクエストの上限値を設定できる。</p>
+<p><code>php.ini</code> ファイルにて、一度に受信できるPOSTリクエストの上限値を設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="na">max_input_vars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_18">同一送信元のリクエスト制限<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
-<p>同じ送信元からの<code>1</code>分間当たりのリクエスト数を制限する。</p>
+<p>同じ送信元からの <code>1</code> 分間当たりのリクエスト数を制限する。</p>
 <p>例えば、AWS WAF、AWS API Gatewayを使用する。</p>
 <p><br></p>
 
@@ -34762,7 +34762,7 @@ public
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年1月24日 21:27:33 JST">2026-01-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

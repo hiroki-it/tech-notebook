@@ -30988,19 +30988,19 @@
   <a href="#prometheusyml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        prometheus.ymlファイルによる設定
+        prometheus.yml ファイルによる設定
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="prometheus.ymlファイルによる設定">
+    <nav class="md-nav" aria-label="prometheus.yml ファイルによる設定">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#prometheusyml_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ prometheus.ymlファイルとは
+        ▼ prometheus.yml ファイルとは
       
     </span>
   </a>
@@ -33153,19 +33153,19 @@
   <a href="#prometheusyml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        prometheus.ymlファイルによる設定
+        prometheus.yml ファイルによる設定
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="prometheus.ymlファイルによる設定">
+    <nav class="md-nav" aria-label="prometheus.yml ファイルによる設定">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#prometheusyml_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ prometheus.ymlファイルとは
+        ▼ prometheus.yml ファイルとは
       
     </span>
   </a>
@@ -33651,10 +33651,10 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-prometheus">01. Prometheus<a class="headerlink" href="#01-prometheus" title="Permanent link">&para;</a></h2>
-<h3 id="prometheusyml"><code>prometheus.yml</code>ファイルによる設定<a class="headerlink" href="#prometheusyml" title="Permanent link">&para;</a></h3>
-<h4 id="prometheusyml_1">▼ <code>prometheus.yml</code>ファイルとは<a class="headerlink" href="#prometheusyml_1" title="Permanent link">&para;</a></h4>
+<h3 id="prometheusyml"><code>prometheus.yml</code> ファイルによる設定<a class="headerlink" href="#prometheusyml" title="Permanent link">&para;</a></h3>
+<h4 id="prometheusyml_1">▼ <code>prometheus.yml</code> ファイルとは<a class="headerlink" href="#prometheusyml_1" title="Permanent link">&para;</a></h4>
 <p>Prometheusを設定する。</p>
-<p><code>/etc/prometheus</code>ディレクトリ配下におく。</p>
+<p><code>/etc/prometheus</code> ディレクトリ配下におく。</p>
 <blockquote>
 <ul>
 <li><a href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/">https://prometheus.io/docs/prometheus/latest/configuration/configuration/</a></li>
@@ -33680,7 +33680,7 @@
 <span class="w">  </span><span class="nt">evaluation_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
 </code></pre></div>
 <h4 id="external_labels">▼ external_labels<a class="headerlink" href="#external_labels" title="Permanent link">&para;</a></h4>
-<p>Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、Grafana Mimir、M3DB、Thanos、Cortexなど) にメトリクスを送信する時に、これに付与するラベルを設定する。</p>
+<p>Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、Grafana Mimir、M3DB、Thanos、Cortexなど) にメトリクスを送信するときに、これに付与するラベルを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">global</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">external_labels</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cluster</span>
@@ -33756,7 +33756,7 @@
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>サーバー証明書の有効期限のタイムスタンプと現在の時刻を比較し、<code>7</code>日以内であればアラートを作成する。</p>
+<p>サーバー証明書の有効期限のタイムスタンプと現在の時刻を比較し、<code>7</code> 日以内であればアラートを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">groups</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tls-cert-rules</span>
 <span class="w">    </span><span class="nt">rules</span><span class="p">:</span>
@@ -33804,7 +33804,7 @@
 <li><a href="https://amateur-engineer-blog.com/prometheus-node-exporter/#toc3">https://amateur-engineer-blog.com/prometheus-node-exporter/#toc3</a></li>
 </ul>
 </blockquote>
-<p><code>labels</code>キーを使用して、メトリクスにフィルタリング用ラベルを追加できる。</p>
+<p><code>labels</code> キーを使用して、メトリクスにフィルタリング用ラベルを追加できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">scrape_configs</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">victoria-metrics</span>
 <span class="w">    </span><span class="nt">static_configs</span><span class="p">:</span>
@@ -33883,7 +33883,7 @@
 <p>合致条件に応じて、受信したアラートを特定の通知先にルーティングする。</p>
 <h4 id="receiver">▼ receiver<a class="headerlink" href="#receiver" title="Permanent link">&para;</a></h4>
 <p>アラートのルーティング先の名前を設定する。</p>
-<p><code>receiver</code>キーは別の<code>receivers</code>キー配下で設定し、これを呼び出す。</p>
+<p><code>receiver</code> キーは別の <code>receivers</code> キー配下で設定し、これを呼び出す。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">route</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># WarningレベルはSlackのレシーバーを選ぶ。</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">receiver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slack-foo-channel</span>
@@ -34054,7 +34054,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月13日 18:19:14 JST">2025-07-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

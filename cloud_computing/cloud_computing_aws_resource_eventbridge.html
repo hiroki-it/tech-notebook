@@ -33204,7 +33204,7 @@
 <span class="c1"># SNSのデータ</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>AWS Amplifyの指定したIDのアプリケーションが、<code>AWS Amplify Deployment Status Change</code>のイベントを送信し、これの<code>jobStatus</code>が<code>SUCCEED</code>/<code>FAILED</code>だった場合、これを送信する。</p>
+<p>AWS Amplifyの指定したIDのアプリケーションが、<code>AWS Amplify Deployment Status Change</code> のイベントを送信し、これの <code>jobStatus</code> が <code>SUCCEED</code>/<code>FAILED</code> だった場合、これを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;detail&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;appId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">&quot;jobStatus&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;SUCCEED&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;FAILED&quot;</span><span class="p p-Indicator">]},</span>
 <span class="w">  </span><span class="s">&quot;detail-type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;AWS</span><span class="nv"> </span><span class="s">Amplify</span><span class="nv"> </span><span class="s">Deployment</span><span class="nv"> </span><span class="s">Status</span><span class="nv"> </span><span class="s">Change&quot;</span><span class="p p-Indicator">],</span>
@@ -33243,11 +33243,11 @@
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">event</span><span class="p">},</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">));</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>対象のAWSリソースで任意のイベントが発生した時に、AWS EventBridgeからAWS Lambdaに送信するように設定する。</p>
+<p>対象のAWSリソースで任意のイベントが発生したときに、AWS EventBridgeからAWS Lambdaに送信するように設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;source&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;aws.amplify&quot;</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <p>AWSリソースで意図的にイベントを起こし、AWS Lambdaのロググループから内容を確認する。</p>
-<p><code>detail</code>キーにイベントが割り当てられている。</p>
+<p><code>detail</code> キーにイベントが割り当てられている。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;event&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
@@ -33274,7 +33274,7 @@
 <h4 id="_9">▼ 入力トランスフォーマー<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>入力パスで使用する値を抽出し、入力テンプレートで送信するJSONを定義できる。</p>
 <p>イベントのJSONの値を変数として出力できる。</p>
-<p><code>event</code>キーをドルマークとして、ドットで繋いでアクセスする。</p>
+<p><code>event</code> キーをドルマークとして、ドットで繋いでアクセスする。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>入力パスにて、使用する値を抽出する。</p>
 <p>AWS Amplifyで発生したイベントのJSONを変数として取り出す。</p>
@@ -33301,8 +33301,8 @@
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p>JSONのキー名が変数名として動作する。</p>
-<p><code>$</code>でJSONのルートのキーを指定して、一旦変数を取り出す。</p>
-<p>ここでは、<code>detail</code>キーを指定する。</p>
+<p><code>$</code> でJSONのルートのキーを指定して、いったん変数を取り出す。</p>
+<p>ここでは、<code>detail</code> キーを指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;appId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$.detail.appId&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;branchName&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$.detail.branchName&quot;</span><span class="p p-Indicator">,</span>
@@ -33312,7 +33312,7 @@
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p>その後入力テンプレートにて、送信するJSONを定義する。例えばここでは、Slackに送信するJSONに出力する。</p>
-<p>出力する時は、入力パスの変数名を『<code>&lt;&gt;</code>』で囲う。</p>
+<p>出力するときは、入力パスの変数名を『<code>&lt;&gt;</code>』で囲う。</p>
 <p>Slackに送信するメッセージの作成ツールは、以下のリンクを参考にせよ。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;channel&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span>
@@ -33385,7 +33385,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月26日 19:24:53 JST">2025-11-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

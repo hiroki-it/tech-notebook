@@ -7009,7 +7009,7 @@
   <a href="#404" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 404ステータス
+        ▼ 404 ステータス
       
     </span>
   </a>
@@ -7020,7 +7020,7 @@
   <a href="#503" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 503ステータス
+        ▼ 503 ステータス
       
     </span>
   </a>
@@ -7277,7 +7277,7 @@
   <a href="#networkhttp_connection_manager" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ network.http_connection_managerをマッチ対象とする場合
+        ▼ network.http_connection_manager をマッチ対象とする場合
       
     </span>
   </a>
@@ -7288,7 +7288,7 @@
   <a href="#networktcp_proxy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ network.tcp_proxyをマッチ対象とする場合
+        ▼ network.tcp_proxy をマッチ対象とする場合
       
     </span>
   </a>
@@ -33986,7 +33986,7 @@
   <a href="#404" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 404ステータス
+        ▼ 404 ステータス
       
     </span>
   </a>
@@ -33997,7 +33997,7 @@
   <a href="#503" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 503ステータス
+        ▼ 503 ステータス
       
     </span>
   </a>
@@ -34254,7 +34254,7 @@
   <a href="#networkhttp_connection_manager" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ network.http_connection_managerをマッチ対象とする場合
+        ▼ network.http_connection_manager をマッチ対象とする場合
       
     </span>
   </a>
@@ -34265,7 +34265,7 @@
   <a href="#networktcp_proxy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ network.tcp_proxyをマッチ対象とする場合
+        ▼ network.tcp_proxy をマッチ対象とする場合
       
     </span>
   </a>
@@ -34514,7 +34514,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">ルートへの変換<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>いずれのIstioリソースがルートに変換されたかは、ルートの<code>metadata.filter_metadata</code>キーで確認できる。</p>
+<p>いずれのIstioリソースがルートに変換されたかは、ルートの <code>metadata.filter_metadata</code> キーで確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">filter_metadata</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">istio</span><span class="p">:</span>
@@ -34522,7 +34522,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_4">クラスターへの変換<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>いずれのIstioリソースがクラスターに変換されたかは、クラスターの<code>metadata.filter_metadata</code>キーで確認できる。</p>
+<p>いずれのIstioリソースがクラスターに変換されたかは、クラスターの <code>metadata.filter_metadata</code> キーで確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">filter_metadata</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">istio</span><span class="p">:</span>
@@ -34610,7 +34610,7 @@
 <p><br></p>
 <h2 id="02-02-istio-ingress-gateway">02-02. Istio Ingress Gateway<a class="headerlink" href="#02-02-istio-ingress-gateway" title="Permanent link">&para;</a></h2>
 <h3 id="istio-ingress-gateway">Istio Ingress Gatewayとは<a class="headerlink" href="#istio-ingress-gateway" title="Permanent link">&para;</a></h3>
-<p>サービスメッシュ内宛の通信をロードバランシングする<code>L4</code>/<code>L7</code>ロードバランサーを作成する。</p>
+<p>サービスメッシュ内宛の通信をロードバランシングする <code>L4</code>/<code>L7</code> ロードバランサーを作成する。</p>
 <p>GatewayとVirtualServiceの設定値に基づいて、Node外からインバウンド通信を受信し、Podにルーティングする。</p>
 <p>KubernetesリソースのIngressの代わりとして使用できる。</p>
 <blockquote>
@@ -34626,8 +34626,8 @@
 <p><img alt="istio_ingress-gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ingress-gateway.png" /></p>
 <p>Istio Ingress Gatewayは、以下から構成される。</p>
 <ul>
-<li><code>istio-ingressgateway</code>というService (NodePort ServiceまたはLoadBalancer Service)</li>
-<li>Deployment配下の<code>istio-ingressgateway-*****</code>というPod (istio-proxyのみが稼働)</li>
+<li><code>istio-ingressgateway</code> というService (NodePort ServiceまたはLoadBalancer Service)</li>
+<li>Deployment配下の <code>istio-ingressgateway-*****</code> というPod (istio-proxyのみが稼働)</li>
 </ul>
 <p>Serviceは、おおよそGatewayの設定で決まる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -34727,7 +34727,7 @@
 <p><br></p>
 <h3 id="_7">エラー<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="pod_1">▼ 宛先Podに接続できない<a class="headerlink" href="#pod_1" title="Permanent link">&para;</a></h4>
-<p><code>upstream connect error or disconnect/reset before headers. reset reason: connection termination</code>というエラーになる。</p>
+<p><code>upstream connect error or disconnect/reset before headers. reset reason: connection termination</code> というエラーになる。</p>
 <p>以下の場合がある。</p>
 <ul>
 <li>Istio Ingress Gatewayに関するService、VirtualService、JWTトークンleの設定の不備で接続できない</li>
@@ -34743,7 +34743,7 @@
 <p><br></p>
 <h2 id="02-03-istio-egress-gateway">02-03. Istio Egress Gateway<a class="headerlink" href="#02-03-istio-egress-gateway" title="Permanent link">&para;</a></h2>
 <h3 id="istio-egress-gateway">Istio Egress Gatewayとは<a class="headerlink" href="#istio-egress-gateway" title="Permanent link">&para;</a></h3>
-<p>Istio Egress Gatewayは、サービスメッシュ外宛ての通信をロードバランシングする<code>L4</code>/<code>L7</code>ロードバランサーを作成する。</p>
+<p>Istio Egress Gatewayは、サービスメッシュ外宛ての通信をロードバランシングする <code>L4</code>/<code>L7</code> ロードバランサーを作成する。</p>
 <p>Clusterネットワーク内から通信を受信し、フィルタリングした後、Cluster外 (例：外部マイクロサービス、外部サービスのAPI、データベース、メッセージキューなど) にルーティングする。</p>
 <p>Istio Egress Gatewayを使用しない場合、サービスメッシュ外への通信を監視できるようになり、またサイドカーを通過せずにサービスメッシュ外へ通信できてしまう。</p>
 <p>しかし、Istio Egress Gatewayを使わないと、マイクロサービスからistio-proxyコンテナを経由せずに外部システムに直接HTTPSリクエストを送信できるようになってしまい、システムの安全性が低くなる。</p>
@@ -34807,7 +34807,7 @@
 <h2 id="03-virtualservice">03. VirtualService<a class="headerlink" href="#03-virtualservice" title="Permanent link">&para;</a></h2>
 <h3 id="virtualservice">VirtualServiceとは<a class="headerlink" href="#virtualservice" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ ロードバランサーで使用する場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>VirtualServiceは、Istio Ingress Gatewayの一部として、受信した<code>L4</code>/<code>L7</code>通信をJWTトークンleに紐づくPodにルーティングする。</p>
+<p>VirtualServiceは、Istio Ingress Gatewayの一部として、受信した <code>L4</code>/<code>L7</code> 通信をJWTトークンleに紐づくPodにルーティングする。</p>
 <p><img alt="istio_virtual-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service.png" /></p>
 <blockquote>
 <ul>
@@ -34961,13 +34961,13 @@ NAME<span class="w">     </span>DOMAINS<span class="w">                         
 </code></pre></div>
 <p><br></p>
 <h3 id="_12">プラクティス<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<h4 id="404">▼ <code>404</code>ステータス<a class="headerlink" href="#404" title="Permanent link">&para;</a></h4>
-<p>以下の理由などでVirtualServiceの設定が誤っていると、<code>404</code>レスポンスを返信する。</p>
+<h4 id="404">▼ <code>404</code> ステータス<a class="headerlink" href="#404" title="Permanent link">&para;</a></h4>
+<p>以下の理由などでVirtualServiceの設定が誤っていると、<code>404</code> レスポンスを返信する。</p>
 <ul>
-<li>Gatewayで受信した通信の<code>Host</code>ヘッダーとVirtualServiceのそれが合致していない</li>
-<li>VirtualServiceの<code>.spec.exportTo</code>キーで<code>.</code>を設定したことにより、Gatewayがルーティング先のVirtualServiceを見つけられない (Istio Ingress Gatewayからリクエストを受信するPodでは要注意)</li>
+<li>Gatewayで受信した通信の <code>Host</code> ヘッダーとVirtualServiceのそれが合致していない</li>
+<li>VirtualServiceの <code>.spec.exportTo</code> キーで <code>.</code> を設定したことにより、Gatewayがルーティング先のVirtualServiceを見つけられない (Istio Ingress Gatewayからリクエストを受信するPodでは要注意)</li>
 </ul>
-<p><code>istioctl proxy-config route</code>コマンドで、Gatewayに紐づくVirtualServiceがいるかを確認できる。</p>
+<p><code>istioctl proxy-config route</code> コマンドで、Gatewayに紐づくVirtualServiceがいるかを確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># VirtualServiceが404になっている。</span>
 $<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>route<span class="w"> </span>foo-pod
 
@@ -34985,13 +34985,13 @@ http.50004<span class="w">     </span>blackhole:50004<span class="w">     </span
 <li><a href="https://micpsm.hatenablog.com/entry/k8s-istio-dx">https://micpsm.hatenablog.com/entry/k8s-istio-dx</a></li>
 </ul>
 </blockquote>
-<h4 id="503">▼ <code>503</code>ステータス<a class="headerlink" href="#503" title="Permanent link">&para;</a></h4>
-<p>以下の理由などでVirtualServiceの設定が誤っていると、<code>503</code>レスポンスを返信する。</p>
+<h4 id="503">▼ <code>503</code> ステータス<a class="headerlink" href="#503" title="Permanent link">&para;</a></h4>
+<p>以下の理由などでVirtualServiceの設定が誤っていると、<code>503</code> レスポンスを返信する。</p>
 <ul>
-<li>VirtualServiceで受信した通信の<code>Host</code>ヘッダーとJWTトークンleのそれが合致していない</li>
-<li>JWTトークンleの<code>.spec.exportTo</code>キーで<code>.</code>を設定したことにより、VirtualServiceがルーティング先のJWTトークンleが見つけられない。 (Istio Ingress Gatewayからリクエストを受信するPodでは要注意)</li>
+<li>VirtualServiceで受信した通信の <code>Host</code> ヘッダーとJWTトークンleのそれが合致していない</li>
+<li>JWTトークンleの <code>.spec.exportTo</code> キーで <code>.</code> を設定したことにより、VirtualServiceがルーティング先のJWTトークンleが見つけられない。 (Istio Ingress Gatewayからリクエストを受信するPodでは要注意)</li>
 </ul>
-<p><code>istioctl proxy-config cluster</code>コマンドで、VirtualServiceに紐づくJWTトークンleがいるかを確認できる。</p>
+<p><code>istioctl proxy-config cluster</code> コマンドで、VirtualServiceに紐づくJWTトークンleがいるかを確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># helloworldでは、紐づくDestinationが見つからない</span>
 $<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>cluster<span class="w"> </span>&lt;Pod名&gt;
 
@@ -35023,7 +35023,7 @@ httpbin-app-service.services.svc.cluster.local<span class="w">                  
 </blockquote>
 <h3 id="service">宛先のServiceのポート番号について<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
 <p>Istioは、宛先のServiceに送信しようとするプロトコルを厳格に認識する。</p>
-<p>宛先のServiceの<code>.spec.ports[*].name</code>キー (<code>&lt;プロトコル名&gt;-&lt;任意の文字列&gt;</code>) または<code>.spec.ports[*].appProtocol</code>キーを認識し、そのServiceには指定されたプロトコルでしか通信を送れなくなる。</p>
+<p>宛先のServiceの <code>.spec.ports[*].name</code> キー (<code>&lt;プロトコル名&gt;-&lt;任意の文字列&gt;</code>) または <code>.spec.ports[*].appProtocol</code> キーを認識し、そのServiceには指定されたプロトコルでしか通信を送れなくなる。</p>
 <p><strong>＊例＊</strong></p>
 <p>appProtocolを使用しない場合は以下の通りとなる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -35079,7 +35079,7 @@ httpbin-app-service.services.svc.cluster.local<span class="w">                  
 <h2 id="04-jwtle">04. JWTトークンle<a class="headerlink" href="#04-jwtle" title="Permanent link">&para;</a></h2>
 <h3 id="jwtle">JWTトークンleとは<a class="headerlink" href="#jwtle" title="Permanent link">&para;</a></h3>
 <h4 id="_13">▼ ロードバランサーで使用する場合<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>JWTトークンleは、Istio Ingress Gateway (VirtualService + JWTトークンle) で受信した<code>L4</code>/<code>L7</code>通信を、いずれのPodにルーティングするかを決める。</p>
+<p>JWTトークンleは、Istio Ingress Gateway (VirtualService + JWTトークンle) で受信した <code>L4</code>/<code>L7</code> 通信を、いずれのPodにルーティングするかを決める。</p>
 <p>Istio Ingress Gatewayの実体はPodのため、ロードバランサーというよりは実際はPod間通信で使用していると言える。</p>
 <p>Podの宛先情報は、KubernetesのServiceから取得する。</p>
 <p><img alt="istio_destination-rule_subset" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_destination-rule_subset.png" /></p>
@@ -35089,7 +35089,7 @@ httpbin-app-service.services.svc.cluster.local<span class="w">                  
 </ul>
 </blockquote>
 <h4 id="pod_3">▼ Pod間通信のみで使用する場合<a class="headerlink" href="#pod_3" title="Permanent link">&para;</a></h4>
-<p>JWTトークンleは、VirtualServiceで受信した<code>L4</code>/<code>L7</code>通信を、いずれのPodにルーティングするかを決める。</p>
+<p>JWTトークンleは、VirtualServiceで受信した <code>L4</code>/<code>L7</code> 通信を、いずれのPodにルーティングするかを決める。</p>
 <p>Podの宛先情報は、KubernetesのServiceから取得する。</p>
 <blockquote>
 <ul>
@@ -35242,9 +35242,9 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <h2 id="05-serviceentry">05. ServiceEntry<a class="headerlink" href="#05-serviceentry" title="Permanent link">&para;</a></h2>
 <h3 id="serviceentry">ServiceEntryとは<a class="headerlink" href="#serviceentry" title="Permanent link">&para;</a></h3>
 <p>ServiceEntryは、クラスター外のドメイン名などを登録する。</p>
-<p>Istio<code>v1.3</code>より前は、ConfigMapでデフォルトで<code>REGISTRY_ONLY</code>になっていたため、ServiceEntryでマイクロサービスを登録しない限り、サービスメッシュ外部とは通信できなかった。</p>
-<p>しかし、<code>v1.3</code>以降、ServiceEntryでマイクロサービスを登録しなくても、サービスメッシュ外部の任意のマイクロサービスと通信できるようになった。</p>
-<p>ただし、登録しない限り、マイクロサービスを個別に認識することはできず、すべて<code>PassthroughCluster</code>として扱う。</p>
+<p>Istio<code>v1.3</code> より前は、ConfigMapでデフォルトで <code>REGISTRY_ONLY</code> になっていたため、ServiceEntryでマイクロサービスを登録しない限り、サービスメッシュ外部とは通信できなかった。</p>
+<p>しかし、<code>v1.3</code> 以降、ServiceEntryでマイクロサービスを登録しなくても、サービスメッシュ外部の任意のマイクロサービスと通信できるようになった。</p>
+<p>ただし、登録しない限り、マイクロサービスを個別に認識することはできず、すべて <code>PassthroughCluster</code> として扱う。</p>
 <p>類似するExternalName Serviceでも同じことを実現できるが、Istioの機能を使用できない。</p>
 <p><img alt="istio_service-entry" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_service-entry.png" /></p>
 <blockquote>
@@ -35299,9 +35299,9 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <p><br></p>
 <h2 id="06-envoyfilter">06. EnvoyFilter<a class="headerlink" href="#06-envoyfilter" title="Permanent link">&para;</a></h2>
 <h3 id="_15">ネットワークフィルター<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<h4 id="networkhttp_connection_manager">▼ <code>network.http_connection_manager</code>をマッチ対象とする場合<a class="headerlink" href="#networkhttp_connection_manager" title="Permanent link">&para;</a></h4>
-<p><code>network.http_connection_manager</code>をマッチ対象として、フィルターを変更する。</p>
-<p>例えば、Istioの<code>v1.17.5</code>のistio-proxyのフィルターの設定値を変更する。</p>
+<h4 id="networkhttp_connection_manager">▼ <code>network.http_connection_manager</code> をマッチ対象とする場合<a class="headerlink" href="#networkhttp_connection_manager" title="Permanent link">&para;</a></h4>
+<p><code>network.http_connection_manager</code> をマッチ対象として、フィルターを変更する。</p>
+<p>例えば、Istioの <code>v1.17.5</code> のistio-proxyのフィルターの設定値を変更する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35395,9 +35395,9 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <li><a href="https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation">https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation</a></li>
 </ul>
 </blockquote>
-<h4 id="networktcp_proxy">▼ <code>network.tcp_proxy</code>をマッチ対象とする場合<a class="headerlink" href="#networktcp_proxy" title="Permanent link">&para;</a></h4>
-<p><code>network.tcp_proxy</code>をマッチ対象として、フィルターを変更する。</p>
-<p>例えば、Istioの<code>v1.17.5</code>のistio-proxyのフィルターの設定値を変更する。</p>
+<h4 id="networktcp_proxy">▼ <code>network.tcp_proxy</code> をマッチ対象とする場合<a class="headerlink" href="#networktcp_proxy" title="Permanent link">&para;</a></h4>
+<p><code>network.tcp_proxy</code> をマッチ対象として、フィルターを変更する。</p>
+<p>例えば、Istioの <code>v1.17.5</code> のistio-proxyのフィルターの設定値を変更する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35495,8 +35495,8 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <h2 id="08-requestauthenticationauthorizationpolicy">08. RequestAuthenticationとAuthorizationPolicy<a class="headerlink" href="#08-requestauthenticationauthorizationpolicy" title="Permanent link">&para;</a></h2>
 <h3 id="requestauthenticationauthorizationpolicy">RequestAuthenticationとAuthorizationPolicyとは<a class="headerlink" href="#requestauthenticationauthorizationpolicy" title="Permanent link">&para;</a></h3>
 <p>Pod間通信時、JWTによる認証と認可を実施する。</p>
-<p>JWTトークンが失効／不正な場合、RequestAuthenticationは<code>401</code>レスポンスを返信する。</p>
-<p>JWTトークンがない場合、AuthorizationPolicyは<code>403</code>レスポンスを返信する必要がある。</p>
+<p>JWTトークンが失効／不正な場合、RequestAuthenticationは <code>401</code> レスポンスを返信する。</p>
+<p>JWTトークンがない場合、AuthorizationPolicyは <code>403</code> レスポンスを返信する必要がある。</p>
 <p>なお、RequestAuthenticationを使用せずにマイクロサービスで同様の実装をしても良い。</p>
 <p>また、Nginx製のBFFなど、認証処理を実装しにくい場所にのみ採用しても良い。</p>
 <blockquote>
@@ -35509,7 +35509,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <p><br></p>
 <h3 id="auth0">Auth0に送信する場合<a class="headerlink" href="#auth0" title="Permanent link">&para;</a></h3>
 <p>注意点として、そもそもリクエストにJWTトークンが含まれていない場合には認証処理をスキップできてしまう。</p>
-<p>代わりに、JWTトークンが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (<code>403</code>ステータス) として扱う必要がある。</p>
+<p>代わりに、JWTトークンが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (<code>403</code> ステータス) として扱う必要がある。</p>
 <p>Auth0 (クラウドのためサービスメッシュ外にある) の宛先情報をIstioに登録する必要があるため、Istio Egress GatewayやServiceEntry経由で接続できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RequestAuthentication</span>
@@ -35553,7 +35553,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <p><br></p>
 <h3 id="keycloak">Keycloakに送信する場合<a class="headerlink" href="#keycloak" title="Permanent link">&para;</a></h3>
 <p>注意点として、そもそもリクエストにJWTが含まれていない場合には認証処理をスキップできてしまう。</p>
-<p>代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (<code>403</code>ステータス) として扱う必要がある。</p>
+<p>代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (<code>403</code> ステータス) として扱う必要がある。</p>
 <p>Keycloakの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio Egress GatewayやServiceEntry経由で接続できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RequestAuthentication</span>
@@ -35600,7 +35600,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <p><br></p>
 <h3 id="oauth2-proxykeycloak">OAuth2 Proxyを介してKeycloakに送信する場合<a class="headerlink" href="#oauth2-proxykeycloak" title="Permanent link">&para;</a></h3>
 <p>注意点として、そもそもリクエストにJWTが含まれていない場合には認証処理をスキップできてしまう。</p>
-<p>代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (<code>403</code>ステータス) として扱う必要がある。</p>
+<p>代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (<code>403</code> ステータス) として扱う必要がある。</p>
 <p>OAuth2 Proxyの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio Egress GatewayやServiceEntry経由で接続できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RequestAuthentication</span>
@@ -35678,7 +35678,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <tbody>
 <tr>
 <td><code>ENHANCED_RESOURCE_SCOPING</code></td>
-<td>istio-mesh-cm (ConfigMap) で、<code>discoverySelectors</code>を有効化してもよい。</td>
+<td>istio-mesh-cm (ConfigMap) で、<code>discoverySelectors</code> を有効化してもよい。</td>
 </tr>
 <tr>
 <td><code>ENABLE_NATIVE_SIDECARS</code></td>
@@ -35736,7 +35736,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月27日 15:20:47 JST">2025-06-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

@@ -33352,10 +33352,10 @@
 <p><br></p>
 <h2 id="02-testify">02. testifyの仕組み<a class="headerlink" href="#02-testify" title="Permanent link">&para;</a></h2>
 <ol>
-<li><code>mock</code>パッケージのモック構造体に関数を設定する。</li>
-<li><code>On</code>関数や<code>Called</code>関数を使用し、モック構造体に仮の関数を定義する。</li>
-<li><code>mock</code>パッケージのモック構造体で<code>Assert*****</code>関数を実行し、期待値と実際値を比較する。</li>
-<li><code>assert</code>パッケージで検証関数を実行し、期待値と実際値を比較する。</li>
+<li><code>mock</code> パッケージのモック構造体に関数を設定する。</li>
+<li><code>On</code> 関数や <code>Called</code> 関数を使用し、モック構造体に仮の関数を定義する。</li>
+<li><code>mock</code> パッケージのモック構造体で <code>Assert*****</code> 関数を実行し、期待値と実際値を比較する。</li>
+<li><code>assert</code> パッケージで検証関数を実行し、期待値と実際値を比較する。</li>
 </ol>
 <p><br></p>
 <h2 id="03-mock">03. mock<a class="headerlink" href="#03-mock" title="Permanent link">&para;</a></h2>
@@ -33449,7 +33449,7 @@
 </blockquote>
 <h4 id="called">▼ Called<a class="headerlink" href="#called" title="Permanent link">&para;</a></h4>
 <p>モック構造体に仮の関数を紐づける場合に使用する。</p>
-<p><code>On</code>関数で設定された引数や返却値を取得する。</p>
+<p><code>On</code> 関数で設定された引数や返却値を取得する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">user</span>
 
@@ -33552,8 +33552,8 @@
 </ul>
 </blockquote>
 <h4 id="assertexpectations">▼ AssertExpectations<a class="headerlink" href="#assertexpectations" title="Permanent link">&para;</a></h4>
-<p>モック構造体の<code>On</code>関数や<code>Retuen</code>関数が正しく実行されたか否かを検証する。</p>
-<p>検証対象は、ユーザー定義箇所ではなく、<code>mock</code>パッケージのモック構造体である。</p>
+<p>モック構造体の <code>On</code> 関数や <code>Retuen</code> 関数が正しく実行されたか否かを検証する。</p>
+<p>検証対象は、ユーザー定義箇所ではなく、<code>mock</code> パッケージのモック構造体である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">user</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
@@ -33611,7 +33611,7 @@
 </blockquote>
 <h4 id="assertnumberofcalls">▼ AssertNumberOfCalls<a class="headerlink" href="#assertnumberofcalls" title="Permanent link">&para;</a></h4>
 <p>モック構造体内の関数がコールされた回数を検証する。</p>
-<p>検証対象は、ユーザー定義箇所ではなく、<code>mock</code>パッケージのモック構造体である。</p>
+<p>検証対象は、ユーザー定義箇所ではなく、<code>mock</code> パッケージのモック構造体である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">user</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
@@ -33676,8 +33676,8 @@
 </ul>
 </blockquote>
 <h4 id="get">▼ Get<a class="headerlink" href="#get" title="Permanent link">&para;</a></h4>
-<p><code>Called</code>関数の設定値をインデックス数で指定し、設定値を取得する。</p>
-<p><code>Called</code>関数に渡される設定値は<code>On</code>関数が元になっている。</p>
+<p><code>Called</code> 関数の設定値をインデックス数で指定し、設定値を取得する。</p>
+<p><code>Called</code> 関数に渡される設定値は <code>On</code> 関数が元になっている。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">user</span>
 
@@ -33775,9 +33775,9 @@
 </ul>
 </blockquote>
 <h4 id="error">▼ Error<a class="headerlink" href="#error" title="Permanent link">&para;</a></h4>
-<p><code>Called</code>関数の設定値をインデックス数で指定し、設定値を取得する。</p>
-<p><code>Called</code>関数の設定値に誤りがあれば、エラーを返却する。</p>
-<p><code>Called</code>関数に渡される設定値は<code>On</code>関数が元になっている。</p>
+<p><code>Called</code> 関数の設定値をインデックス数で指定し、設定値を取得する。</p>
+<p><code>Called</code> 関数の設定値に誤りがあれば、エラーを返却する。</p>
+<p><code>Called</code> 関数に渡される設定値は <code>On</code> 関数が元になっている。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">user</span>
 
@@ -33897,7 +33897,7 @@
 <tr>
 <td><code>SetupTest</code></td>
 <td>2</td>
-<td>テストスイート内の各テストの事前処理として、テストの度に事前に実行する。<code>BeforeTest</code>関数よりも先に実行されることに注意する。</td>
+<td>テストスイート内の各テストの事前処理として、テストの度に事前に実行する。<code>BeforeTest</code> 関数よりも先に実行されることに注意する。</td>
 </tr>
 <tr>
 <td><code>BeforeTest</code></td>
@@ -33912,7 +33912,7 @@
 <tr>
 <td><code>TearDownTest</code></td>
 <td>5</td>
-<td>テストスイート内の各テストの事後処理として、テストの度に事後に実行する。<code>BeforeTest</code>関数よりも後に実行されることに注意する。</td>
+<td>テストスイート内の各テストの事後処理として、テストの度に事後に実行する。<code>BeforeTest</code> 関数よりも後に実行されることに注意する。</td>
 </tr>
 <tr>
 <td><code>TearDownSuite</code></td>
@@ -33922,7 +33922,7 @@
 </tbody>
 </table>
 <p><strong>＊実装例＊</strong></p>
-<p>事前にモック構造体を作成するために、<code>BeforeTest</code>関数を使用する。</p>
+<p>事前にモック構造体を作成するために、<code>BeforeTest</code> 関数を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">foo</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -34031,7 +34031,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月10日 17:10:53 JST">2025-10-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

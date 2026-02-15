@@ -33672,7 +33672,7 @@
 <h3 id="local">local<a class="headerlink" href="#local" title="Permanent link">&para;</a></h3>
 <h4 id="push">▼ push<a class="headerlink" href="#push" title="Permanent link">&para;</a></h4>
 <p>ビルドしたコンテナイメージをリポジトリにプッシュするか否かを設定する。</p>
-<p>Skaffoldは基本的には開発環境でしか使用しないため、これは無効化しておいた方が良い。</p>
+<p>Skaffoldは基本的には開発環境でしか使用しないため、これは無効化しておいたほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">build</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">local</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">push</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
@@ -33703,7 +33703,7 @@
 </ul>
 </blockquote>
 <h4 id="sha256">▼ sha256<a class="headerlink" href="#sha256" title="Permanent link">&para;</a></h4>
-<p>sha256ハッシュ値と<code>latest</code>タグをバージョンタグとして設定する。</p>
+<p>sha256ハッシュ値と <code>latest</code> タグをバージョンタグとして設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">build</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">tagPolicy</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">sha256</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
@@ -33715,8 +33715,8 @@
 </blockquote>
 <p><br></p>
 <h2 id="03-portforward">03. portForwardステージ<a class="headerlink" href="#03-portforward" title="Permanent link">&para;</a></h2>
-<p><code>skaffold run</code>コマンド時に、同時にポートフォワーディングを実行する。</p>
-<p>すでにポート番号が使用中だった場合は、<code>+1</code>されたポート番号が自動的に使用される。</p>
+<p><code>skaffold run</code> コマンド時に、同時にポートフォワーディングを実行する。</p>
+<p>すでにポート番号が使用中だった場合は、<code>+1</code> されたポート番号が自動的に使用される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">portForward</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">resourceType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pod</span>
 <span class="w">    </span><span class="nt">resourceName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-mysql-pod-0</span>
@@ -33769,7 +33769,7 @@
 <p><br></p>
 <h3 id="kubectl">kubectl<a class="headerlink" href="#kubectl" title="Permanent link">&para;</a></h3>
 <h4 id="kubectl_1">▼ kubectlとは<a class="headerlink" href="#kubectl_1" title="Permanent link">&para;</a></h4>
-<p><code>kubectl</code>コマンドを使用して、Kubernetesリソースをデプロイする。</p>
+<p><code>kubectl</code> コマンドを使用して、Kubernetesリソースをデプロイする。</p>
 <p>ワイルドカード (<code>*</code>) を使用できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">deploy</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">kubectl</span><span class="p">:</span>
@@ -33821,7 +33821,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年1月15日 20:40:58 JST">2025-01-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

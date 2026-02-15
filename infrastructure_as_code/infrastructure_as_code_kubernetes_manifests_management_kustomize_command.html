@@ -24818,12 +24818,12 @@
   <a href="#01-kustomize" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. kustomizeコマンド
+        01. kustomize コマンド
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. kustomizeコマンド">
+    <nav class="md-nav" aria-label="01. kustomize コマンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24893,15 +24893,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-kubectlkustomize" class="md-nav__link">
+  <a href="#02-kubectl-kustomize" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02. kubectlコマンドを使用したKustomizeの適用
+        02. kubectl コマンドを使用したKustomizeの適用
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. kubectlコマンドを使用したKustomizeの適用">
+    <nav class="md-nav" aria-label="02. kubectl コマンドを使用したKustomizeの適用">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -32858,12 +32858,12 @@
   <a href="#01-kustomize" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. kustomizeコマンド
+        01. kustomize コマンド
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. kustomizeコマンド">
+    <nav class="md-nav" aria-label="01. kustomize コマンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -32933,15 +32933,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-kubectlkustomize" class="md-nav__link">
+  <a href="#02-kubectl-kustomize" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02. kubectlコマンドを使用したKustomizeの適用
+        02. kubectl コマンドを使用したKustomizeの適用
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. kubectlコマンドを使用したKustomizeの適用">
+    <nav class="md-nav" aria-label="02. kubectl コマンドを使用したKustomizeの適用">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33092,16 +33092,16 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-kustomize">01. <code>kustomize</code>コマンド<a class="headerlink" href="#01-kustomize" title="Permanent link">&para;</a></h2>
+<h2 id="01-kustomize">01. <code>kustomize</code> コマンド<a class="headerlink" href="#01-kustomize" title="Permanent link">&para;</a></h2>
 <h3 id="build">build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h3>
 <h4 id="build_1">▼ buildとは<a class="headerlink" href="#build_1" title="Permanent link">&para;</a></h4>
 <p>Kustomizeの設定ファイルに基づいて、マニフェストを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kustomize<span class="w"> </span>build
 </code></pre></div>
-<p><code>kusomize build</code>コマンドの結果をデプロイする場合、パイプで<code>kubectl apply</code>コマンドに渡す。</p>
+<p><code>kusomize build</code> コマンドの結果をデプロイする場合、パイプで <code>kubectl apply</code> コマンドに渡す。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kustomize<span class="w"> </span>build<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>-
 </code></pre></div>
-<p>もしくは、<code>kubectl</code>コマンドの<code>-k</code>オプションでも<code>kustomization.yaml</code>ファイル指定してもデプロイできる。</p>
+<p>もしくは、<code>kubectl</code> コマンドの <code>-k</code> オプションでも <code>kustomization.yaml</code> ファイル指定してもデプロイできる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span>kustomization.yaml
 </code></pre></div>
 <blockquote>
@@ -33110,7 +33110,7 @@
 </ul>
 </blockquote>
 <h4 id="-enable-alpha-plugins">▼ --enable-alpha-plugins<a class="headerlink" href="#-enable-alpha-plugins" title="Permanent link">&para;</a></h4>
-<p>プラグインを使用して、<code>kustomize build</code>コマンドを実行する。</p>
+<p>プラグインを使用して、<code>kustomize build</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kustomize<span class="w"> </span>build<span class="w"> </span>--enable-alpha-plugins<span class="w"> </span>./kustomize/overlay
 </code></pre></div>
 <h4 id="-enable-helm">▼ --enable-helm<a class="headerlink" href="#-enable-helm" title="Permanent link">&para;</a></h4>
@@ -33122,10 +33122,10 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kustomize<span class="w"> </span>build<span class="w"> </span>--output<span class="w"> </span>./tmp<span class="w"> </span>./kustomize/overlay
 </code></pre></div>
 <p><br></p>
-<h2 id="02-kubectlkustomize">02. <code>kubectl</code>コマンドを使用したKustomizeの適用<a class="headerlink" href="#02-kubectlkustomize" title="Permanent link">&para;</a></h2>
+<h2 id="02-kubectl-kustomize">02. <code>kubectl</code> コマンドを使用したKustomizeの適用<a class="headerlink" href="#02-kubectl-kustomize" title="Permanent link">&para;</a></h2>
 <h3 id="diffapply-k">diff/apply -k<a class="headerlink" href="#diffapply-k" title="Permanent link">&para;</a></h3>
-<p><code>kustomize.yaml</code>ファイルを使用して、<code>kubectl</code>コマンドを実行する。</p>
-<p>ローカルマシンにある<code>kustomize.yaml</code>ファイルを使用する場合、<code>kustomize.yaml</code>ファイルのあるパスを指定する。</p>
+<p><code>kustomize.yaml</code> ファイルを使用して、<code>kubectl</code> コマンドを実行する。</p>
+<p>ローカルマシンにある <code>kustomize.yaml</code> ファイルを使用する場合、<code>kustomize.yaml</code> ファイルのあるパスを指定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span>./<span class="w"> </span>&gt;<span class="w"> </span>kustomize.diff
 
 $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span>./
@@ -33135,7 +33135,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <li><a href="https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file">https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file</a></li>
 </ul>
 </blockquote>
-<p>リモートにある<code>kustomize.yaml</code>ファイルを使用する場合も、同じく<code>kustomize.yaml</code>ファイルのあるディレクトリのURLを指定する。</p>
+<p>リモートにある <code>kustomize.yaml</code> ファイルを使用する場合も、同じく <code>kustomize.yaml</code> ファイルのあるディレクトリのURLを指定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;&lt;リポジトリのURL&gt;/&lt;kustomize.yamlファイルのあるディレクトリ&gt;?ref=&lt;タグ&gt;&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>kustomize.diff
 
 $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;&lt;リポジトリのURL&gt;/&lt;kustomize.yamlファイルのあるディレクトリ&gt;?ref=&lt;タグ&gt;&quot;</span>
@@ -33146,19 +33146,19 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 </ul>
 </blockquote>
 <p><strong>＊実行例＊</strong></p>
-<p>例えば、argocd-cdチャートの<code>5.28.0</code>を使用する場合、これはArgoCDの<code>2.6.7</code>に対応しているため、以下の値で作成/変更する。</p>
+<p>例えば、argocd-cdチャートの <code>5.28.0</code> を使用する場合、これはArgoCDの <code>2.6.7</code> に対応しているため、以下の値で作成/変更する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7&quot;</span>
 
 $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7&quot;</span>
 </code></pre></div>
-<p>例えば、aws-load-balancer-controllerチャートの<code>1.5.2</code>を使用する場合、これはaws-load-balancer-controllerの<code>2.5.1</code>に対応しているため、以下の値で作成/変更する。</p>
+<p>例えば、aws-load-balancer-controllerチャートの <code>1.5.2</code> を使用する場合、これはaws-load-balancer-controllerの <code>2.5.1</code> に対応しているため、以下の値で作成/変更する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=v2.5.1&quot;</span>
 
 $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=v2.5.1&quot;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="kustomize_1">kustomize<a class="headerlink" href="#kustomize_1" title="Permanent link">&para;</a></h3>
-<p><code>kustomize.yaml</code>ファイルを使用して、テンプレートからマニフェストを作成する。</p>
+<p><code>kustomize.yaml</code> ファイルを使用して、テンプレートからマニフェストを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>kustomize<span class="w"> </span>./
 </code></pre></div>
 <blockquote>
@@ -33187,7 +33187,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2023年7月10日 00:36:59 JST">2023-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

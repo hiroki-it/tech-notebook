@@ -33547,7 +33547,7 @@
 <h3 id="_3">ルーティング<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ ルーティングとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>受信した通信を適切な宛先にフォワーディングすること。</p>
-<p>通信の宛先を制御することを表す場合、単に『フォワーディングする』よりも『ルーティングする』と表現した方が良い。</p>
+<p>通信の宛先を制御することを表す場合、単に『フォワーディングする』よりも『ルーティングする』と表現したほうが良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.infraexpert.com/study/routing.html">https://www.infraexpert.com/study/routing.html</a></li>
@@ -33557,7 +33557,7 @@
 <p>URLを基点としたパスに応じて、通信のルーティング先を決める。</p>
 <p>ホストベースルーティングと組み合わせることもできる。</p>
 <h4 id="_6">▼ ホストベースルーティング<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p><code>Host</code>ヘッダー値に応じて、通信のルーティング先を決める。</p>
+<p><code>Host</code> ヘッダー値に応じて、通信のルーティング先を決める。</p>
 <p>パスベースルーティングと組み合わせることもできる。</p>
 <h4 id="_7">▼ 割合ベースルーティング<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>設定した振り分け率に応じて、通信のルーティング先を決める。</p>
@@ -33617,14 +33617,14 @@
 <h3 id="_10">ホップ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ ホップ数<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>クライアント側からサーバー側までの間に経由するルーター数のこと。</p>
-<p>ホップ数は、<code>traceroute</code>コマンドで確認できる。</p>
+<p>ホップ数は、<code>traceroute</code> コマンドで確認できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.wdic.org/w/WDIC/%E3%83%9B%E3%83%83%E3%83%97%E6%95%B0">https://www.wdic.org/w/WDIC/%E3%83%9B%E3%83%83%E3%83%97%E6%95%B0</a></li>
 </ul>
 </blockquote>
 <h4 id="_12">▼ ホップバイホップルーティング<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>ネットワーク内でルーターがルーターに通信をルーティングする時、各ルーターが最適なルーティング先を選択すること。</p>
+<p>ネットワーク内でルーターがルーターに通信をルーティングするとき、各ルーターが最適なルーティング先を選択すること。</p>
 <p><img alt="router_hop-by-hop-routing" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/router_hop-by-hop-routing.jpeg" /></p>
 <blockquote>
 <ul>
@@ -33657,9 +33657,9 @@
 </tbody>
 </table>
 <p>種類の異なるネットワーク間で、IPアドレスを相互変換する。</p>
-<p><code>1</code>個のIPアドレスに対して、<code>1</code>個の内部IPアドレスを紐付けられる。</p>
+<p><code>1</code> 個のIPアドレスに対して、<code>1</code> 個の内部IPアドレスを紐付けられる。</p>
 <p>図で言う上側のアウトバウンド通信時の送信元IPアドレスの変換を『SNAT処理』といい、下側のインバウンド通信時の宛先IPアドレスの変換を『DNAT処理』という。</p>
-<p><code>1</code>個の通信で両方が必要である。</p>
+<p><code>1</code> 個の通信で両方が必要である。</p>
 <p><img alt="nat-router" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nat-router.png" /></p>
 <blockquote>
 <ul>
@@ -33677,7 +33677,7 @@
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>NATルーターは、プライベートネットワークに入る時、パケットのヘッダー情報における『宛先』のグローバルIPアドレスをプライベートIPアドレスに変換する。</p>
+<p>NATルーターは、プライベートネットワークに入るとき、パケットのヘッダー情報における『宛先』のグローバルIPアドレスをプライベートIPアドレスに変換する。</p>
 <h4 id="snatsource-nat">▼ SNAT処理：Source NAT<a class="headerlink" href="#snatsource-nat" title="Permanent link">&para;</a></h4>
 <p><img alt="プライベートからグローバルへのnat変換" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プライベートからグローバルへのnat変換.png" /></p>
 <p>NAT処理のうち送信元IPアドレスを変換すること (<code>プライベートIPアドレス</code> ➡️ <code>グローバルIPアドレス</code>、<code>プライベートIPアドレス</code> ➡️ <code>プライベートIPアドレス</code>) 。</p>
@@ -33686,7 +33686,7 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>NATルーターは、プライベートネットワークから出る時、パケットのヘッダー情報における『送信元』のプライベートIPアドレスをグローバルIPアドレスに変換する。</p>
+<p>NATルーターは、プライベートネットワークから出るとき、パケットのヘッダー情報における『送信元』のプライベートIPアドレスをグローバルIPアドレスに変換する。</p>
 <p>例えば、GoogleでWebページを見ながら、Gmailアプリケーションを稼働している場合、リクエストにおけるパケット情報として…</p>
 </dd>
 </dl>
@@ -33709,7 +33709,7 @@
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>『送信元プライベートIPアドレス』『宛先グローバルIPアドレス』『メールサーバーでPOP3プロトコルを受信する<code>110</code>番ポート』を指定して、メールサーバーにリクエストを送信する。</p>
+<p>『送信元プライベートIPアドレス』『宛先グローバルIPアドレス』『メールサーバーでPOP3プロトコルを受信する <code>110</code> 番ポート』を指定して、メールサーバーにリクエストを送信する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com:110</span>
@@ -33717,7 +33717,7 @@
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>『送信元プライベートIPアドレス』『宛先グローバルIPアドレス』『WebサーバーでHTTPリクエストを受信する<code>80</code>番ポート』を指定して、Webサーバーにリクエストを送信する。</p>
+<p>『送信元プライベートIPアドレス』『宛先グローバルIPアドレス』『WebサーバーでHTTPリクエストを受信する <code>80</code> 番ポート』を指定して、Webサーバーにリクエストを送信する。</p>
 <p>ただし、<code>80</code>番ポートは省略可能。</p>
 </dd>
 </dl>
@@ -33726,7 +33726,7 @@
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>『送信元プライベートIPアドレス』『宛先グローバルIPアドレス』『DNSサーバーでTCPスリーウェイハンドシェイクを受信する<code>53</code>番ポート』を指定して、DNSサーバーにリクエストを送信する。</p>
+<p>『送信元プライベートIPアドレス』『宛先グローバルIPアドレス』『DNSサーバーでTCPスリーウェイハンドシェイクを受信する <code>53</code> 番ポート』を指定して、DNSサーバーにリクエストを送信する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com:53</span>
@@ -33797,7 +33797,7 @@
 </table>
 <p>『IPマスカレード』ともいう。</p>
 <p>種類の異なるネットワーク間で、IPアドレスとポート番号を変換すること。</p>
-<p><code>1</code>個のIPアドレスに対して、複数の内部IPアドレスを紐付けられる。</p>
+<p><code>1</code> 個のIPアドレスに対して、複数の内部IPアドレスを紐付けられる。</p>
 <p>AWSやGCPなどで使用されているようなNATルーターはこちらであり、IPアドレスとポート番号の両方を指定することにより、VPC内のプライベートIPアドレスに単一のパブリックIPアドレスを割り当てるようになっている。</p>
 <p><img alt="napt-router" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt-router.png" /></p>
 <blockquote>
@@ -33807,7 +33807,7 @@
 </ul>
 </blockquote>
 <h4 id="dnat">▼ DNAT処理の場合<a class="headerlink" href="#dnat" title="Permanent link">&para;</a></h4>
-<p>プライベートネットワークから出る時、パケットのヘッダー情報における『送信元』のプライベートIPアドレスをグローバルIPアドレスに変換する。</p>
+<p>プライベートネットワークから出るとき、パケットのヘッダー情報における『送信元』のプライベートIPアドレスをグローバルIPアドレスに変換する。</p>
 <p>ただし、異なるプライベートIPアドレスが同じグローバルIPに変換されてしまうため、これを識別するために、ポート番号を複数の異なるポート番号に変換し、グローバルIPアドレスに付け加える。</p>
 <p><strong>＊例＊</strong></p>
 <table>
@@ -33839,20 +33839,20 @@
 </table>
 <p><img alt="napt変換" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt変換.png" /></p>
 <h4 id="snat">▼ SNAT処理の場合<a class="headerlink" href="#snat" title="Permanent link">&para;</a></h4>
-<p>プライベートネットワークに入る時、付け加えられたポート番号を元に、パケットのヘッダー情報における『宛先』のグローバルIPアドレスを、異なるプライベートIPアドレスに変換し分ける。</p>
+<p>プライベートネットワークに入るとき、付け加えられたポート番号を元に、パケットのヘッダー情報における『宛先』のグローバルIPアドレスを、異なるプライベートIPアドレスに変換し分ける。</p>
 <p><img alt="napt変換_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt変換_2.png" /></p>
 <p><br></p>
 <h3 id="napt_2">標準的NAPTルーター<a class="headerlink" href="#napt_2" title="Permanent link">&para;</a></h3>
 <h4 id="iptables-linuxubuntu-napt">▼ iptables (Linux/Ubuntu) による標準的NAPTルーター<a class="headerlink" href="#iptables-linuxubuntu-napt" title="Permanent link">&para;</a></h4>
 <p>Linux/Ubuntuでのiptablesは、標準的なNAPTルーターかつパケットフィルタリング型ファイアウォールである。</p>
-<p>特に、NATルーターは<code>/etc/sysconfig/iptables</code>ファイルの<code>nat</code>テーブルで設定する。</p>
-<p><code>iptables-save</code>コマンドでこのファイルを作成できる。</p>
-<p><code>nat</code>テーブルで使用できるチェイン配下の通りである。</p>
-<p><code>INPUT</code>と<code>FORWARD</code>は使用できない。</p>
+<p>特に、NATルーターは <code>/etc/sysconfig/iptables</code> ファイルの <code>nat</code> テーブルで設定する。</p>
+<p><code>iptables-save</code> コマンドでこのファイルを作成できる。</p>
+<p><code>nat</code> テーブルで使用できるチェイン配下の通りである。</p>
+<p><code>INPUT</code> と <code>FORWARD</code> は使用できない。</p>
 <table>
 <thead>
 <tr>
-<th><code>nat</code>テーブルで使用できるチェイン名</th>
+<th><code>nat</code> テーブルで使用できるチェイン名</th>
 <th>説明</th>
 </tr>
 </thead>
@@ -33916,7 +33916,7 @@ COMMIT
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月11日 01:02:15 JST">2025-05-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

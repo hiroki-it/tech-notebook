@@ -4049,7 +4049,7 @@
   <a href="#httpdconf" class="md-nav__link">
     <span class="md-ellipsis">
       
-        httpd.confファイル
+        httpd.conf ファイル
       
     </span>
   </a>
@@ -4060,19 +4060,19 @@
   <a href="#htaccess" class="md-nav__link">
     <span class="md-ellipsis">
       
-        .htaccessファイル
+        .htaccess ファイル
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label=".htaccessファイル">
+    <nav class="md-nav" aria-label=".htaccess ファイル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#htaccess_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ .htaccessファイルとは
+        ▼ .htaccess ファイルとは
       
     </span>
   </a>
@@ -33726,7 +33726,7 @@
   <a href="#httpdconf" class="md-nav__link">
     <span class="md-ellipsis">
       
-        httpd.confファイル
+        httpd.conf ファイル
       
     </span>
   </a>
@@ -33737,19 +33737,19 @@
   <a href="#htaccess" class="md-nav__link">
     <span class="md-ellipsis">
       
-        .htaccessファイル
+        .htaccess ファイル
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label=".htaccessファイル">
+    <nav class="md-nav" aria-label=".htaccess ファイル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#htaccess_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ .htaccessファイルとは
+        ▼ .htaccess ファイルとは
       
     </span>
   </a>
@@ -34721,7 +34721,7 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="02">02. 設定ファイルの種類<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="httpdconf"><code>httpd.conf</code>ファイル<a class="headerlink" href="#httpdconf" title="Permanent link">&para;</a></h3>
+<h3 id="httpdconf"><code>httpd.conf</code> ファイル<a class="headerlink" href="#httpdconf" title="Permanent link">&para;</a></h3>
 <p>Apacheの主要な設定ファイル。</p>
 <p>Includeディレクティブを使用すれば、任意の名前で設定ファイルを追加できる。</p>
 <blockquote>
@@ -34730,10 +34730,10 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="htaccess"><code>.htaccess</code>ファイル<a class="headerlink" href="#htaccess" title="Permanent link">&para;</a></h3>
-<h4 id="htaccess_1">▼ <code>.htaccess</code>ファイルとは<a class="headerlink" href="#htaccess_1" title="Permanent link">&para;</a></h4>
-<p>基本的に、<code>httpd.conf</code>ファイルで全ての能力を設定できる。</p>
-<p>ただし、このファイルはインフラエンジニアの責務であり、アプリエンジニアでApacheの設定を定義したい場合、<code>.htaccess</code>ファイルを使用する。</p>
+<h3 id="htaccess"><code>.htaccess</code> ファイル<a class="headerlink" href="#htaccess" title="Permanent link">&para;</a></h3>
+<h4 id="htaccess_1">▼ <code>.htaccess</code> ファイルとは<a class="headerlink" href="#htaccess_1" title="Permanent link">&para;</a></h4>
+<p>基本的に、<code>httpd.conf</code> ファイルで全ての能力を設定できる。</p>
+<p>ただし、このファイルはインフラエンジニアの責務であり、アプリエンジニアでApacheの設定を定義したい場合、<code>.htaccess</code> ファイルを使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://httpd.apache.org/docs/2.4/ja/configuring.html#htaccess">https://httpd.apache.org/docs/2.4/ja/configuring.html#htaccess</a></li>
@@ -34773,9 +34773,9 @@
 <h3 id="virtualhost">VirtualHost<a class="headerlink" href="#virtualhost" title="Permanent link">&para;</a></h3>
 <h4 id="virtualhost_1">▼ VirtualHostとは<a class="headerlink" href="#virtualhost_1" title="Permanent link">&para;</a></h4>
 <p>ディレクティブを囲うディレクティブの一種。</p>
-<p>特定のホスト名やIPアドレスにリクエストがあった時に実行するディレクティブを設定する。</p>
-<p>Apacheの稼働するサーバーが、複数のドメインを仮想的に持ち、リクエストの<code>Host</code>ヘッダー値で合致した条件に応じて分岐できる。</p>
-<p>複数の仮想ホストを設定した場合、いずれの仮想ホストを選ぶかは、<code>Host</code>ヘッダー値がいずれのServerName値と一致するかで決まる。</p>
+<p>特定のホスト名やIPアドレスにリクエストがあったときに実行するディレクティブを設定する。</p>
+<p>Apacheの稼働するサーバーが、複数のドメインを仮想的に持ち、リクエストの <code>Host</code> ヘッダー値で合致した条件に応じて分岐できる。</p>
+<p>複数の仮想ホストを設定した場合、いずれの仮想ホストを選ぶかは、<code>Host</code> ヘッダー値がいずれのServerName値と一致するかで決まる。</p>
 <blockquote>
 <ul>
 <li><a href="https://httpd.apache.org/docs/trunk/ja/vhosts/name-based.html">https://httpd.apache.org/docs/trunk/ja/vhosts/name-based.html</a></li>
@@ -34803,7 +34803,7 @@
 <h3 id="documentroot">DocumentRoot<a class="headerlink" href="#documentroot" title="Permanent link">&para;</a></h3>
 <h4 id="documentroot_1">▼ DocumentRootとは<a class="headerlink" href="#documentroot_1" title="Permanent link">&para;</a></h4>
 <p>ドキュメントのルートディレクトリを設定する。</p>
-<p>ドキュメントルートに『<code>index.html</code>』というファイルを配置すると、ファイル名を指定しなくとも、ルートディレクトリ内の<code>index.html</code>ファイルが、エントリーポイントとして自動的に認識されて表示される。</p>
+<p>ドキュメントルートに『<code>index.html</code>』というファイルを配置すると、ファイル名を指定しなくとも、ルートディレクトリ内の <code>index.html</code> ファイルが、エントリーポイントとして自動的に認識されて表示される。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;VirtualHost</span><span class="w"> </span><span class="s">*:80</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nb">DocumentRoot</span><span class="w"> </span><span class="sx">/var/www/foo</span>:
@@ -34821,7 +34821,7 @@
 <h3 id="directory">Directory<a class="headerlink" href="#directory" title="Permanent link">&para;</a></h3>
 <h4 id="directory_1">▼ Directoryとは<a class="headerlink" href="#directory_1" title="Permanent link">&para;</a></h4>
 <p>ディレクティブを囲うディレクティブの一種。</p>
-<p>指定したディレクトリ内にリクエストがあった時に実行するディレクティブを設定する。</p>
+<p>指定したディレクトリ内にリクエストがあったときに実行するディレクティブを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">&quot;/var/www/foo&quot;</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nb">DirectoryIndex</span><span class="w"> </span>index.php
@@ -34896,7 +34896,7 @@
 <p><br></p>
 <h3 id="allowoverride">AllowOverride<a class="headerlink" href="#allowoverride" title="Permanent link">&para;</a></h3>
 <h4 id="allowoverride_1">▼ AllowOverrideとは<a class="headerlink" href="#allowoverride_1" title="Permanent link">&para;</a></h4>
-<p>別に用意した<code>.htaccess</code>ファイルにて、有効化するディレクティブを設定する。</p>
+<p>別に用意した <code>.htaccess</code> ファイルにて、有効化するディレクティブを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">&quot;/var/www/foo&quot;</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nb">DirectoryIndex</span><span class="w"> </span>index.php
@@ -34904,17 +34904,17 @@
 <span class="nt">&lt;/Directory&gt;</span>
 </code></pre></div>
 <h4 id="all">▼ All<a class="headerlink" href="#all" title="Permanent link">&para;</a></h4>
-<p>別に用意した<code>.htaccess</code>ファイルにて、実装できるディレクティブを全て有効化する。</p>
+<p>別に用意した <code>.htaccess</code> ファイルにて、実装できるディレクティブを全て有効化する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nb">AllowOverride</span><span class="w"> </span><span class="k">All</span>
 </code></pre></div>
 <h4 id="none">▼ None<a class="headerlink" href="#none" title="Permanent link">&para;</a></h4>
-<p>別に用意した<code>.htaccess</code>ファイルにて、実装できるディレクティブを全て無効化する。</p>
+<p>別に用意した <code>.htaccess</code> ファイルにて、実装できるディレクティブを全て無効化する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nb">AllowOverride</span><span class="w"> </span><span class="k">None</span>
 </code></pre></div>
 <h4 id="indexes">▼ Indexes<a class="headerlink" href="#indexes" title="Permanent link">&para;</a></h4>
-<p>別に用意した<code>.htaccess</code>ファイルにて、DirectoryIndexディレクティブを有効化するか否かを設定する。</p>
+<p>別に用意した <code>.htaccess</code> ファイルにて、DirectoryIndexディレクティブを有効化するか否かを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nb">AllowOverride</span><span class="w"> </span>Indexes
 </code></pre></div>
@@ -35072,18 +35072,18 @@
 <h3 id="header">Header<a class="headerlink" href="#header" title="Permanent link">&para;</a></h3>
 <h4 id="header_1">▼ Headerとは<a class="headerlink" href="#header_1" title="Permanent link">&para;</a></h4>
 <p>レスポンスヘッダーを設定する。</p>
-<p><code>set</code>、<code>append</code>、<code>add</code>、<code>unset</code>、<code>echo</code>オプションを設定できる。</p>
-<p>デフォルトでは<code>2xx</code>と<code>3xx</code>のステータスコードのみで設定が適用される。</p>
-<p>オプションとして、<code>always</code>を設定することにより、全てのステータスコードでヘッダーを設定する。</p>
+<p><code>set</code>、<code>append</code>、<code>add</code>、<code>unset</code>、<code>echo</code> オプションを設定できる。</p>
+<p>デフォルトでは <code>2xx</code> と <code>3xx</code> のステータスコードのみで設定が適用される。</p>
+<p>オプションとして、<code>always</code> を設定することにより、全てのステータスコードでヘッダーを設定する。</p>
 <h4 id="set">▼ set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h4>
 <p>レスポンスヘッダーを追加する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p><code>Referrer-Policy</code>ヘッダーを追加し、値を<code>no-referrer-when-downgrade</code>とする。</p>
+<p><code>Referrer-Policy</code> ヘッダーを追加し、値を <code>no-referrer-when-downgrade</code> とする。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">Header</span><span class="w"> </span>set<span class="w"> </span>Referrer-Policy<span class="w"> </span><span class="s2">&quot;no-referrer-when-downgrade&quot;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nb">Header</span><span class="w"> </span>set<span class="w"> </span>Referrer-Policy<span class="w"> </span><span class="s2">&quot;no-referrer-when-downgrade&quot;</span><span class="w"> </span>always
 </code></pre></div>
-<p>補足として、Chrome85以降の<code>Referrer-Policy</code>ヘッダー初期値の仕様変更については、以下のリンクを参考にせよ。</p>
+<p>補足として、Chrome85以降の <code>Referrer-Policy</code> ヘッダー初期値の仕様変更については、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.chromestatus.com/feature/6251880185331712">https://www.chromestatus.com/feature/6251880185331712</a></li>
@@ -35092,7 +35092,7 @@
 <h4 id="unset">▼ unset<a class="headerlink" href="#unset" title="Permanent link">&para;</a></h4>
 <p>レスポンスヘッダーを削除する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p><code>Referrer-Policy</code>ヘッダーを削除する</p>
+<p><code>Referrer-Policy</code> ヘッダーを削除する</p>
 <div class="highlight"><pre><span></span><code><span class="nb">Header</span><span class="w"> </span>unset<span class="w"> </span>Referrer-Policy<span class="w"> </span><span class="s2">&quot;no-referrer-when-downgrade&quot;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nb">Header</span><span class="w"> </span>unset<span class="w"> </span>Referrer-Policy<span class="w"> </span><span class="s2">&quot;no-referrer-when-downgrade&quot;</span><span class="w"> </span>always
@@ -35118,7 +35118,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月23日 14:30:27 JST">2025-06-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

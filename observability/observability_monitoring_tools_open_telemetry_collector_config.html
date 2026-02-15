@@ -34263,8 +34263,8 @@
 <h2 id="01">01. 共通<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">コンテナイメージ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="otelopentelemetry-collector">▼ otel/opentelemetry-collector<a class="headerlink" href="#otelopentelemetry-collector" title="Permanent link">&para;</a></h4>
-<p>標準機能 (core) に加えて、一部のcontribute機能を使用するために、標準の<code>otel/opentelemetry-collector-k8s</code>ではなく
-<code>otel/opentelemetry-collector-core</code>を使用する必要がある。</p>
+<p>標準機能 (core) に加えて、一部のcontribute機能を使用するために、標準の <code>otel/opentelemetry-collector-k8s</code> ではなく
+<code>otel/opentelemetry-collector-core</code> を使用する必要がある。</p>
 <p>エントリポイントが異なるため、コマンド名も異なる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>otelcol<span class="w"> </span>--config<span class="w"> </span>relay.yaml
 </code></pre></div>
@@ -34286,8 +34286,8 @@
 </ul>
 </blockquote>
 <h4 id="otelopentelemetry-collector-contrib">▼ otel/opentelemetry-collector-contrib<a class="headerlink" href="#otelopentelemetry-collector-contrib" title="Permanent link">&para;</a></h4>
-<p>標準機能 (core) に加えて、contribute機能 (例：AWS Exporter) を使用するために、標準の<code>otel/opentelemetry-collector-k8s</code>ではなく
-<code>otel/opentelemetry-collector-contrib</code>を使用する必要がある。</p>
+<p>標準機能 (core) に加えて、contribute機能 (例：AWS Exporter) を使用するために、標準の <code>otel/opentelemetry-collector-k8s</code> ではなく
+<code>otel/opentelemetry-collector-contrib</code> を使用する必要がある。</p>
 <p>エントリポイントが異なるため、コマンド名も異なる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>otelcol-contrib<span class="w"> </span>--config<span class="w"> </span>relay.yaml
 </code></pre></div>
@@ -34301,7 +34301,7 @@
 <h3 id="_3">タイプ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ タイプとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>設定名のこと。</p>
-<p>各コンポーネントで、<code>タイプ/&lt;任意の文字列&gt;</code>でテレメトリーの処理方法を設定する。</p>
+<p>各コンポーネントで、<code>タイプ/&lt;任意の文字列&gt;</code> でテレメトリーの処理方法を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">receivers</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">&lt;タイプ&gt;/foo</span><span class="p">:</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
@@ -34343,7 +34343,7 @@
 </blockquote>
 <h4 id="_5">▼ 同じタイプの複数定義<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>タイプさえ正しければ問題なく、同じタイプを複数設定できる。</p>
-<p>例えば、<code>exporters</code>の宛先が冗長化されている場合、同じタイプ名で複数の宛先を設定することになる。</p>
+<p>例えば、<code>exporters</code> の宛先が冗長化されている場合、同じタイプ名で複数の宛先を設定することになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">prometheusremotewrite/1</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;宛先&gt;</span>
@@ -34475,14 +34475,14 @@
 <p>標準エラー出力にテレメトリーを出力する。</p>
 <h4 id="verbosity">▼ verbosity<a class="headerlink" href="#verbosity" title="Permanent link">&para;</a></h4>
 <p>重要度レベルを設定する。</p>
-<p>通常レベルは<code>basic</code>である。</p>
+<p>通常レベルは <code>basic</code> である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">debug</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">verbosity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">basic</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="m">2024</span>-03-26T04:41:52.163Z<span class="w">    </span>info<span class="w">    </span>TracesExporter<span class="w">  </span><span class="o">{</span><span class="s2">&quot;kind&quot;</span>:<span class="w"> </span><span class="s2">&quot;exporter&quot;</span>,<span class="w"> </span><span class="s2">&quot;data_type&quot;</span>:<span class="w"> </span><span class="s2">&quot;traces&quot;</span>,<span class="w"> </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;debug&quot;</span>,<span class="w"> </span><span class="s2">&quot;resource spans&quot;</span>:<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="s2">&quot;spans&quot;</span>:<span class="w"> </span>&lt;フォワーディングしたスパン数&gt;<span class="o">}</span>
 </code></pre></div>
-<p>スパンを標準出力により詳細に出力したい場合、<code>detailed</code>とする。</p>
+<p>スパンを標準出力により詳細に出力したい場合、<code>detailed</code> とする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">debug</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">verbosity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">detailed</span>
@@ -34541,7 +34541,7 @@ Attributes:
 <p><br></p>
 <h3 id="logging">logging<a class="headerlink" href="#logging" title="Permanent link">&para;</a></h3>
 <p>これは非推奨である。</p>
-<p>代わりに、<code>debug</code>を使用すること。</p>
+<p>代わりに、<code>debug</code> を使用すること。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">logging</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
@@ -34596,7 +34596,7 @@ Attributes:
 <h3 id="attribute">attribute<a class="headerlink" href="#attribute" title="Permanent link">&para;</a></h3>
 <h4 id="attribute_1">▼ attributeとは<a class="headerlink" href="#attribute_1" title="Permanent link">&para;</a></h4>
 <p>テレメトリーに付与する属性を設定する。</p>
-<p>可読性が低くなるため、属性はアプリ側で実装した方が良い。</p>
+<p>可読性が低くなるため、属性はアプリ側で実装したほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">processors</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">attributes</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">actions</span><span class="p">:</span>
@@ -34634,7 +34634,7 @@ Attributes:
 <p><br></p>
 <h3 id="batch">batch<a class="headerlink" href="#batch" title="Permanent link">&para;</a></h3>
 <h4 id="batch_1">▼ batchとは<a class="headerlink" href="#batch_1" title="Permanent link">&para;</a></h4>
-<p>テレメトリーファイルを圧縮するバッチ処理を実行し、送信サイズを小さくした上でExporterに渡す。</p>
+<p>テレメトリーファイルを圧縮するバッチ処理を実行し、送信サイズを小さくしたうえでExporterに渡す。</p>
 <p>推奨である。</p>
 <blockquote>
 <ul>
@@ -34653,7 +34653,7 @@ Attributes:
 </blockquote>
 <h4 id="send_batch_size">▼ send_batch_size<a class="headerlink" href="#send_batch_size" title="Permanent link">&para;</a></h4>
 <p>バッチ当たりの上限サイズを設定する。</p>
-<p><code>0</code>は上限なしを表す。</p>
+<p><code>0</code> は上限なしを表す。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">processors</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">batch</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">send_batch_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
@@ -34796,7 +34796,7 @@ Attributes:
 <li><a href="https://opentelemetry.io/docs/collector/internal-telemetry/#configure-internal-logs">https://opentelemetry.io/docs/collector/internal-telemetry/#configure-internal-logs</a></li>
 </ul>
 </blockquote>
-<p>ログレベルが<code>debug</code>の場合、例えば以下になる。</p>
+<p>ログレベルが <code>debug</code> の場合、例えば以下になる。</p>
 <div class="highlight"><pre><span></span><code><span class="m">2024</span>-03-25T03:22:08.220Z<span class="w">    </span>debug<span class="w">   </span>awsxrayexporter@v0.96.0/awsxray.go:57<span class="w">   </span>TracesExporter<span class="w">  </span><span class="o">{</span><span class="s2">&quot;kind&quot;</span>:<span class="w"> </span><span class="s2">&quot;exporter&quot;</span>,<span class="w"> </span><span class="s2">&quot;data_type&quot;</span>:<span class="w"> </span><span class="s2">&quot;traces&quot;</span>,<span class="w"> </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;awsxray&quot;</span>,<span class="w"> </span><span class="s2">&quot;type&quot;</span>:<span class="w"> </span><span class="s2">&quot;awsxray&quot;</span>,<span class="w"> </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;awsxray&quot;</span>,<span class="w"> </span><span class="s2">&quot;#spans&quot;</span>:<span class="w"> </span><span class="m">1</span><span class="o">}</span>
 </code></pre></div>
 <h4 id="metrics">▼ metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h4>
@@ -34835,7 +34835,7 @@ Attributes:
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年9月17日 19:28:47 JST">2025-09-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

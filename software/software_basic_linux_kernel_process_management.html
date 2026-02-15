@@ -33682,7 +33682,7 @@
 <tr>
 <td><code>SIGKILL</code></td>
 <td>プロセスを強制終了する。</td>
-<td><code>kill</code>コマンドを実行する。</td>
+<td><code>kill</code> コマンドを実行する。</td>
 </tr>
 <tr>
 <td><code>SIGTERM</code></td>
@@ -33712,8 +33712,8 @@
 <h3 id="_8">親/子プロセス<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ 親/子プロセスとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>プロセスが新しいプロセスを作成する場合、プロセス間には親子関係がある。</p>
-<p>例えば、ターミナルの親プロセスは<code>shell</code>プロセスや<code>bash</code>プロセスであり、任意のユーティリティを実行すると、これの子プロセスを作成することになる。</p>
-<p>プロセスIDが<code>1</code>のプロセスが、全てのプロセスの親である。</p>
+<p>例えば、ターミナルの親プロセスは <code>shell</code> プロセスや <code>bash</code> プロセスであり、任意のユーティリティを実行すると、これの子プロセスを作成することになる。</p>
+<p>プロセスIDが <code>1</code> のプロセスが、全てのプロセスの親である。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># MacOSの場合</span>
 $<span class="w"> </span>ps<span class="w"> </span>-p<span class="w"> </span><span class="m">1</span>
 
@@ -33727,7 +33727,7 @@ PID<span class="w">  </span>TTY<span class="w">  </span>TIME<span class="w">    
 </ul>
 </blockquote>
 <h4 id="_10">▼ 同時処理できるリクエスト数<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>メモリ上には親の通信プロセスが割り当てられており、また<code>1</code>個のリクエストを処理するために、<code>1</code>個の子プロセスが割り当てられる。</p>
+<p>メモリ上には親の通信プロセスが割り当てられており、また <code>1</code> 個のリクエストを処理するために、<code>1</code> 個の子プロセスが割り当てられる。</p>
 <p>そのため、子プロセスの最大数は、同時に処理できるリクエストの最大数に相当する。</p>
 <p><br></p>
 <h3 id="_11">プロセシングの種類<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
@@ -33748,14 +33748,14 @@ PID<span class="w">  </span>TTY<span class="w">  </span>TIME<span class="w">    
 <h3 id="oomout-of-memory-killer">OOMキラー：Out Of Memory Killer<a class="headerlink" href="#oomout-of-memory-killer" title="Permanent link">&para;</a></h3>
 <h4 id="oom">▼ OOMキラーとは<a class="headerlink" href="#oom" title="Permanent link">&para;</a></h4>
 <p>物理メモリ、ストレージ上のスワップ領域などプロセスが使用可能な全ての区画を使用し、プロセスを新しく割り当てる区画がなくなってしまった場合に実行される。</p>
-<p>現在割り当てられているプロセスのうち、最も使用領域の大きいプロセスを強制的に終了する。</p>
+<p>現在割り当てられているプロセスのうち、もっとも使用領域の大きいプロセスを強制的に終了する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.mk-mode.com/blog/2016/03/15/linux-control-oomkiller/">https://www.mk-mode.com/blog/2016/03/15/linux-control-oomkiller/</a></li>
 </ul>
 </blockquote>
 <h4 id="_14">▼ 確認方法<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>もしOOMキラーが実行された場合は、<code>/var/log/messages</code>ファイルにログが出力される。</p>
+<p>もしOOMキラーが実行された場合は、<code>/var/log/messages</code> ファイルにログが出力される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/var/log/messages<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Kill
 
 Jan<span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">00</span>:00:00<span class="w"> </span>localhost<span class="w"> </span>kernel:<span class="w"> </span>Out<span class="w"> </span>of<span class="w"> </span>memory:<span class="w"> </span>Kill<span class="w"> </span>process<span class="w"> </span><span class="m">17143</span><span class="w"> </span><span class="o">(</span>java<span class="o">)</span><span class="w"> </span>score<span class="w"> </span><span class="m">468</span><span class="w"> </span>or<span class="w"> </span>sacrifice<span class="w"> </span>child
@@ -33931,19 +33931,19 @@ Jan<span class="w">  </span><span class="m">1</span><span class="w"> </span><spa
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>プロセスAが<code>0</code>秒に待ち行列へ登録される。</p>
+<p>プロセスAが <code>0</code> 秒に待ち行列へ登録される。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p><code>20</code>秒間、プロセスAは実行状態へ割り当てられる。</p>
+<p><code>20</code> 秒間、プロセスAは実行状態へ割り当てられる。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p><code>20</code>秒時点で、プロセスAは実行状態から待ち行列に追加される。同時に、待ち行列の先頭にいるプロセスBにCPUを割り当てる。</p>
+<p><code>20</code> 秒時点で、プロセスAは実行状態から待ち行列に追加される。同時に、待ち行列の先頭にいるプロセスBにCPUを割り当てる。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p><code>40</code>秒時点で、プロセスCは実行状態から待ち行列に追加される。同時に、待ち行列の先頭にいるプロセスAにCPUを割り当てる。</p>
+<p><code>40</code> 秒時点で、プロセスCは実行状態から待ち行列に追加される。同時に、待ち行列の先頭にいるプロセスAにCPUを割り当てる。</p>
 </dd>
 </dl>
 <p><img alt="優先順方式_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/優先順方式_2.png" /></p>
@@ -33981,7 +33981,7 @@ Jan<span class="w">  </span><span class="m">1</span><span class="w"> </span><spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月12日 18:23:02 JST">2026-02-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

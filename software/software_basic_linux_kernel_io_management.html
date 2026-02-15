@@ -8582,7 +8582,7 @@
   <a href="#echo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ echoコマンドに対する入力
+        ▼ echo コマンドに対する入力
       
     </span>
   </a>
@@ -33489,7 +33489,7 @@
   <a href="#echo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ echoコマンドに対する入力
+        ▼ echo コマンドに対する入力
       
     </span>
   </a>
@@ -33733,7 +33733,7 @@
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
 </code></pre></div>
-<p>また、プロセスの標準出力は<code>/proc/&lt;プロセスID&gt;/fd</code>ディレクトリのファイルディスクリプタ番号 (<code>1</code>番) で確認できる。プロセスIDは<code>ps</code>コマンドで事前に確認する。</p>
+<p>また、プロセスの標準出力は <code>/proc/&lt;プロセスID&gt;/fd</code> ディレクトリのファイルディスクリプタ番号 (<code>1</code> 番) で確認できる。プロセスIDは <code>ps</code> コマンドで事前に確認する。</p>
 <p><strong>＊例＊</strong></p>
 <p>PHP-FPMの稼働するアプリケーションの例</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ps<span class="w"> </span>-aux
@@ -33754,7 +33754,7 @@ $<span class="w"> </span>cat<span class="w"> </span>/proc/1/fd/1
 </ul>
 </blockquote>
 <h4 id="_5">▼ 標準出力とファイルに出力<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>パイプラインで<code>tee</code>コマンドを繋ぐと、標準出力とファイルの両方に出力できる。</p>
+<p>パイプラインで <code>tee</code> コマンドを繋ぐと、標準出力とファイルの両方に出力できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>stdout.log
 </code></pre></div>
 <blockquote>
@@ -33763,7 +33763,7 @@ $<span class="w"> </span>cat<span class="w"> </span>/proc/1/fd/1
 </ul>
 </blockquote>
 <h4 id="_6">▼ ファイルのみに出力<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>パイプラインと<code>&amp;</code>で<code>tee</code>コマンドを繋ぐと、標準出力とファイルの両方に出力できる。</p>
+<p>パイプラインと <code>&amp;</code> で <code>tee</code> コマンドを繋ぐと、標準出力とファイルの両方に出力できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="w"> </span><span class="p">|&amp;</span><span class="w"> </span>tee<span class="w"> </span>stdout.log
 </code></pre></div>
 <blockquote>
@@ -33777,8 +33777,8 @@ $<span class="w"> </span>cat<span class="w"> </span>/proc/1/fd/1
 <p>コマンドからターミナルに対して、エラーデータを出力するためのインターフェースのこと。</p>
 <p>プロセスごとに存在する。</p>
 <h4 id="_8">▼ 標準エラー出力に全て出力<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>コマンド処理の後に、『<code>1&gt;&amp;2</code> (または<code>&gt;&amp;2</code>) 』を追加すると、標準出力に対する出力を標準エラー出力にリダイレクトする。</p>
-<p><code>1</code>は標準出力であり、<code>2</code>は標準エラー出力を表す。</p>
+<p>コマンド処理の後に、『<code>1&gt;&amp;2</code> (または <code>&gt;&amp;2</code>) 』を追加すると、標準出力に対する出力を標準エラー出力にリダイレクトする。</p>
+<p><code>1</code> は標準出力であり、<code>2</code> は標準エラー出力を表す。</p>
 <p>これにより、処理の全ての結果を標準エラー出力に出力できるうになる。</p>
 <blockquote>
 <ul>
@@ -33791,7 +33791,7 @@ $<span class="w"> </span>cat<span class="w"> </span>/proc/1/fd/1
 
 $<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
 </code></pre></div>
-<p>また、プロセスの標準出力は<code>/proc/&lt;プロセスID&gt;/fd</code>ディレクトリのファイルディスクリプタ番号【２番) で確認できる。プロセスIDは<code>ps</code>コマンドで事前に確認する。</p>
+<p>また、プロセスの標準出力は <code>/proc/&lt;プロセスID&gt;/fd</code> ディレクトリのファイルディスクリプタ番号【２番) で確認できる。プロセスIDは <code>ps</code> コマンドで事前に確認する。</p>
 <p><strong>＊例＊</strong></p>
 <p>PHP-FPMの稼働するアプリケーションの例</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ps<span class="w"> </span>-aux
@@ -33826,8 +33826,8 @@ $<span class="w"> </span>cat<span class="w"> </span>/proc/1/fd/2
 <p><br></p>
 <h3 id="_10">標準入力に対するリダイレクト例<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="cat">▼ catプロセスに対するリダイレクト<a class="headerlink" href="#cat" title="Permanent link">&para;</a></h4>
-<p>catプロセスの標準入力に<code>stdin.txt</code>ファイルの内容をリダイレクトする。</p>
-<p><code>cat</code>コマンドにファイルを渡すことと同じである。</p>
+<p>catプロセスの標準入力に <code>stdin.txt</code> ファイルの内容をリダイレクトする。</p>
+<p><code>cat</code> コマンドにファイルを渡すことと同じである。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>&lt;<span class="w"> </span>stdin.txt
 
 Hello<span class="w"> </span>World
@@ -33835,16 +33835,16 @@ Hello<span class="w"> </span>World
 <p><br></p>
 <h3 id="_11">ファイルに対するリダイレクト例<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="2">▼ <code>2&gt;</code><a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
-<p>リダイレクト前に<code>stdout.txt</code>ファイルを新しく作成し、<code>echo</code>コマンドの標準出力をこれにリダイレクトする。</p>
+<p>リダイレクト前に <code>stdout.txt</code> ファイルを新しく作成し、<code>echo</code> コマンドの標準出力をこれにリダイレクトする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Hello World&#39;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>stdout.txt
 </code></pre></div>
 <h4 id="_12">▼ <code>&gt;|</code><a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>リダイレクト前に<code>stdout.txt</code>ファイルを新しく作成し、<code>echo</code>コマンドの標準出力をこれにリダイレクトする。</p>
+<p>リダイレクト前に <code>stdout.txt</code> ファイルを新しく作成し、<code>echo</code> コマンドの標準出力をこれにリダイレクトする。</p>
 <p>また、すでにファイルが存在している場合は、ファイルを上書き (再作成) する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Hello World&#39;</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>stdout.txt
 </code></pre></div>
 <h4 id="_13">▼ <code>&gt;&gt;</code><a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p><code>echo</code>コマンドの標準出力を既存の<code>stdout.txt</code>ファイルにリダイレクトし、加えて追記する。</p>
+<p><code>echo</code> コマンドの標準出力を既存の <code>stdout.txt</code> ファイルにリダイレクトし、加えて追記する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Hello World&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>stdout.txt
 </code></pre></div>
 <p><br></p>
@@ -33863,7 +33863,7 @@ Hello<span class="w"> </span>World
 <p><br></p>
 <h3 id="_15">標準入力に対する入力例<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="awk">▼ awkプロセスに対する入力<a class="headerlink" href="#awk" title="Permanent link">&para;</a></h4>
-<p>コマンドの出力結果に対して、<code>awk</code>コマンドを実行する。</p>
+<p>コマンドの出力結果に対して、<code>awk</code> コマンドを実行する。</p>
 <p><strong>＊例＊</strong></p>
 <p>検索で取得されたファイルのサイズを合計する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.js&quot;</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-printf<span class="w"> </span><span class="s2">&quot;%s\n&quot;</span><span class="w"> </span><span class="se">\</span>
@@ -33876,7 +33876,7 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s2">&quot;{ sum += </span><span class="nv">$1</span><span class="s2">; } END { print sum; }&quot;</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>パケットのうちで、<code>443</code>番ポートに送信しているもののみを取得し、出力結果の３列目のみをフィルタリングする。</p>
+<p>パケットのうちで、<code>443</code> 番ポートに送信しているもののみを取得し、出力結果の３列目のみをフィルタリングする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>tcpdump<span class="w"> </span>dst<span class="w"> </span>port<span class="w"> </span><span class="m">443</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F<span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="s1">&#39;{print $3}&#39;</span>
 
@@ -33889,19 +33889,19 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 <li><a href="https://it-ojisan.tokyo/awk-f/">https://it-ojisan.tokyo/awk-f/</a></li>
 </ul>
 </blockquote>
-<h4 id="echo">▼ <code>echo</code>コマンドに対する入力<a class="headerlink" href="#echo" title="Permanent link">&para;</a></h4>
-<p>終了ステータスを<code>echo</code>コマンドに渡し、値を出力する。</p>
+<h4 id="echo">▼ <code>echo</code> コマンドに対する入力<a class="headerlink" href="#echo" title="Permanent link">&para;</a></h4>
+<p>終了ステータスを <code>echo</code> コマンドに渡し、値を出力する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>&lt;任意のコマンド&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
 </code></pre></div>
 <p>▼ grepプロセスに対する入力</p>
-<p>コマンドの出力結果を<code>grep</code>コマンドに渡し、フィルタリングを実行する。</p>
+<p>コマンドの出力結果を <code>grep</code> コマンドに渡し、フィルタリングを実行する。</p>
 <p><strong>＊例＊</strong></p>
 <p>検索されたファイル内で、加えて文字列を検索する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;&lt;検索文字&gt;&quot;</span>
 </code></pre></div>
 <h4 id="kill">▼ killプロセスに対する入力<a class="headerlink" href="#kill" title="Permanent link">&para;</a></h4>
-<p>コマンドの出力結果に対して、<code>kill</code>コマンドを実行する。</p>
+<p>コマンドの出力結果に対して、<code>kill</code> コマンドを実行する。</p>
 <p><strong>＊例＊</strong></p>
 <p>フィルタリングされたプロセスを削除する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>pgrep<span class="w"> </span><span class="se">\</span>
@@ -33946,7 +33946,7 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>巨大な<code>yaml</code>ファイルをページングして出力する。</p>
+<p>巨大な <code>yaml</code> ファイルをページングして出力する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>foo.yaml<span class="w"> </span><span class="p">|</span><span class="w"> </span>less
 </code></pre></div>
 <h4 id="sort">▼ sortプロセスに対する入力<a class="headerlink" href="#sort" title="Permanent link">&para;</a></h4>
@@ -33956,7 +33956,7 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>printenv<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-f
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>表示された表を重複を削除して (<code>uniq</code>と同じ) AZ昇順に並び替える。</p>
+<p>表示された表を重複を削除して (<code>uniq</code> と同じ) AZ昇順に並び替える。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>table.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-f<span class="w"> </span>-u
 </code></pre></div>
 <blockquote>
@@ -33966,8 +33966,8 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 </ul>
 </blockquote>
 <h4 id="uniq">▼ uniqプロセスに対する入力<a class="headerlink" href="#uniq" title="Permanent link">&para;</a></h4>
-<p>コマンドの出力結果に関して、行が重複する場合は<code>1</code>個だけ残して削除する。</p>
-<p>隣り合っている重複しか削除できないため、あらかじめ<code>sort</code>コマンドを実行しておく必要がある。</p>
+<p>コマンドの出力結果に関して、行が重複する場合は <code>1</code> 個だけ残して削除する。</p>
+<p>隣り合っている重複しか削除できないため、あらかじめ <code>sort</code> コマンドを実行しておく必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>tcpdump<span class="w"> </span>dst<span class="w"> </span>port<span class="w"> </span><span class="m">443</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F<span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="s1">&#39;{print $3}&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>source_ips.txt
 
@@ -33982,7 +33982,7 @@ $<span class="w"> </span>cat<span class="w"> </span>source_ips.txt<span class="w
 </blockquote>
 <p><br></p>
 <h2 id="03">03. 印刷デバイスへのデータ出力<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<p>アプリケーションから印刷デバイスへデータを出力する時、まず、CPUはスプーラにデータを出力する。</p>
+<p>アプリケーションから印刷デバイスへデータを出力するとき、まず、CPUはスプーラにデータを出力する。</p>
 <p>Spoolerは、全てのデータをまとめて出力するのではなく、一時的にストレージ (Spool) にためておく。</p>
 <p>その後、少しずつ印刷デバイスにデータを出力 (Spooling) し、印刷デバイスにデータを印刷させる。</p>
 <p><img alt="スプーリング" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スプーリング.jpg" /></p>
@@ -34007,7 +34007,7 @@ $<span class="w"> </span>cat<span class="w"> </span>source_ips.txt<span class="w
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 19:49:44 JST">2025-05-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

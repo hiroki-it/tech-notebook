@@ -8944,7 +8944,7 @@
   <a href="#tool-version" class="md-nav__link">
     <span class="md-ellipsis">
       
-        .tool-versionファイル
+        .tool-version ファイル
       
     </span>
   </a>
@@ -9422,19 +9422,19 @@
   <a href="#envrc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        .envrcファイル
+        .envrc ファイル
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label=".envrcファイル">
+    <nav class="md-nav" aria-label=".envrc ファイル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#envrc_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ .envrcファイルの作成
+        ▼ .envrc ファイルの作成
       
     </span>
   </a>
@@ -9445,7 +9445,7 @@
   <a href="#envrc_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ .envrcファイルの登録
+        ▼ .envrc ファイルの登録
       
     </span>
   </a>
@@ -33586,7 +33586,7 @@
   <a href="#tool-version" class="md-nav__link">
     <span class="md-ellipsis">
       
-        .tool-versionファイル
+        .tool-version ファイル
       
     </span>
   </a>
@@ -34064,19 +34064,19 @@
   <a href="#envrc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        .envrcファイル
+        .envrc ファイル
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label=".envrcファイル">
+    <nav class="md-nav" aria-label=".envrc ファイル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#envrc_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ .envrcファイルの作成
+        ▼ .envrc ファイルの作成
       
     </span>
   </a>
@@ -34087,7 +34087,7 @@
   <a href="#envrc_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ .envrcファイルの登録
+        ▼ .envrc ファイルの登録
       
     </span>
   </a>
@@ -34258,7 +34258,7 @@ $<span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>-
 <p><br></p>
 <h3 id="autoremove">autoremove<a class="headerlink" href="#autoremove" title="Permanent link">&para;</a></h3>
 <p>パッケージの依存先としてインストールされたパッケージのうち、現在使用されていないものをアンイントールする。</p>
-<p>事前に<code>--dry-run</code>オプションを有効化し、対象のパッケージを確認すると良い。</p>
+<p>事前に <code>--dry-run</code> オプションを有効化し、対象のパッケージを確認すると良い。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>autoremove<span class="w"> </span>--dry-run
 
 $<span class="w"> </span>brew<span class="w"> </span>autoremove
@@ -34302,7 +34302,7 @@ $<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="link">link<a class="headerlink" href="#link" title="Permanent link">&para;</a></h3>
-<p>brewによって<code>~/usr/local/Cellar</code>ディレクトリにインストールされたパッケージと、<code>~/usr/local/bin</code>ディレクトリに作成されたパッケージへのエイリアスを紐付ける。</p>
+<p>brewによって <code>~/usr/local/Cellar</code> ディレクトリにインストールされたパッケージと、<code>~/usr/local/bin</code> ディレクトリに作成されたパッケージへのエイリアスを紐付ける。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>link<span class="w"> </span>&lt;パッケージ名&gt;
 </code></pre></div>
 <blockquote>
@@ -34337,14 +34337,14 @@ $<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </s
 <p>また、異なるバージョンを同時に管理できる。</p>
 <p>ただ基本的には、開発時に複数のバージョンが並行して必要になるようなパッケージしか提供していない。</p>
 <p><br></p>
-<h3 id="tool-version"><code>.tool-version</code>ファイル<a class="headerlink" href="#tool-version" title="Permanent link">&para;</a></h3>
-<p><code>.tool-version</code>ファイルをリポジトリのルートディレクトリに配置しておく必要がある。</p>
-<p>異なる開発者がリポジトリ直下でパッケージをインストールした時に、特定のバージョンをインストールを強制できる。</p>
+<h3 id="tool-version"><code>.tool-version</code> ファイル<a class="headerlink" href="#tool-version" title="Permanent link">&para;</a></h3>
+<p><code>.tool-version</code> ファイルをリポジトリのルートディレクトリに配置しておく必要がある。</p>
+<p>異なる開発者がリポジトリ直下でパッケージをインストールしたときに、特定のバージョンをインストールを強制できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># .tool-versionsファイル</span>
 
 foo-plugin<span class="w"> </span>&lt;バージョンタグ&gt;
 </code></pre></div>
-<p>もし<code>.tool-version</code>ファイルがないと、asdfでインストールしたコマンドで以下のようなエラーになってしまう。</p>
+<p>もし <code>.tool-version</code> ファイルがないと、asdfでインストールしたコマンドで以下のようなエラーになってしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># asdfでSOPSをインストールしたとする。</span>
 $<span class="w"> </span>sops<span class="w"> </span>-e<span class="w"> </span>plain.yaml
 
@@ -34355,7 +34355,7 @@ sops<span class="w"> </span>&lt;バージョン&gt;
 <p><br></p>
 <h3 id="_1">セットアップ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <h4 id="brew_1">▼ brewリポジトリから<a class="headerlink" href="#brew_1" title="Permanent link">&para;</a></h4>
-<p><code>brew</code>コマンドを使用してインストールする場合、<code>~/.zshrc</code>ファイルを編集する必要がある。</p>
+<p><code>brew</code> コマンドを使用してインストールする場合、<code>~/.zshrc</code> ファイルを編集する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>asdf
 </code></pre></div>
 <h4 id="github">▼ GitHubリポジトリから<a class="headerlink" href="#github" title="Permanent link">&para;</a></h4>
@@ -34386,7 +34386,7 @@ kubectl<span class="w">         </span><span class="m">1</span>.24.0<span class=
 </code></pre></div>
 <p><br></p>
 <h3 id="global">global<a class="headerlink" href="#global" title="Permanent link">&para;</a></h3>
-<p>ホームディレクトリ (<code>~/</code>) に<code>.tool-version</code>ファイルを作成する。</p>
+<p>ホームディレクトリ (<code>~/</code>) に <code>.tool-version</code> ファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>asdf<span class="w"> </span>global<span class="w"> </span>&lt;プラグイン名&gt;<span class="w"> </span><span class="m">1</span>.0.0
 
 <span class="c1"># ファイルが作成されたことを確認する。</span>
@@ -34402,8 +34402,8 @@ bar<span class="w"> </span><span class="m">1</span>.0.0
 </code></pre></div>
 <p><br></p>
 <h3 id="local">local<a class="headerlink" href="#local" title="Permanent link">&para;</a></h3>
-<p>現在のディレクトリに、<code>.tool-version</code>ファイルを作成する。</p>
-<p>事前に<code>asdf install</code>コマンドでプラグインの特定のバージョンをインストールしておく必要がある。</p>
+<p>現在のディレクトリに、<code>.tool-version</code> ファイルを作成する。</p>
+<p>事前に <code>asdf install</code> コマンドでプラグインの特定のバージョンをインストールしておく必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>asdf<span class="w"> </span><span class="nb">local</span><span class="w"> </span>&lt;プラグイン名&gt;<span class="w"> </span><span class="m">1</span>.0.0
 
 <span class="c1"># ファイルが作成されたことを確認する。</span>
@@ -34459,7 +34459,7 @@ Downloading<span class="w"> </span>&lt;プラグイン名&gt;<span class="w"> </
 <span class="c1"># インストールされたことを確認できる。</span>
 $<span class="w"> </span>asdf<span class="w"> </span>plugin<span class="w"> </span>list
 </code></pre></div>
-<p>もし、<code>.tool-version</code>ファイルを作成してある場合には、プラグイン名とバージョンが不要になる。</p>
+<p>もし、<code>.tool-version</code> ファイルを作成してある場合には、プラグイン名とバージョンが不要になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>asdf<span class="w"> </span>install
 </code></pre></div>
 <p>エディタを使用している場合は、新しくインストールしたバイナリに切り替える。</p>
@@ -34493,7 +34493,7 @@ $<span class="w"> </span>asdf<span class="w"> </span>plugin<span class="w"> </sp
 <p><br></p>
 <h3 id="_3">設定ファイル<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="tools">▼ tools<a class="headerlink" href="#tools" title="Permanent link">&para;</a></h4>
-<p>決められた名前の<code>.toml</code>ファイルを用意しておく。</p>
+<p>決められた名前の <code>.toml</code> ファイルを用意しておく。</p>
 <ul>
 <li><code>mise.toml</code></li>
 <li><code>.mise.toml</code></li>
@@ -34509,7 +34509,7 @@ $<span class="w"> </span>asdf<span class="w"> </span>plugin<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="settings">▼ settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h4>
-<p><code>mise</code>コマンドのオプションを宣言的に定義する。</p>
+<p><code>mise</code> コマンドのオプションを宣言的に定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[settings]</span>
 <span class="n">experimental</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="n">idiomatic_version_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
@@ -34569,7 +34569,7 @@ $<span class="w"> </span>mise<span class="w"> </span>activate<span class="w"> </
 </blockquote>
 <p><br></p>
 <h3 id="config">config<a class="headerlink" href="#config" title="Permanent link">&para;</a></h3>
-<p>現在参照している<code>.toml</code>ファイルを確認する。</p>
+<p>現在参照している <code>.toml</code> ファイルを確認する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>mise<span class="w"> </span>config
 
 Path<span class="w">                    </span>Tools
@@ -34634,7 +34634,7 @@ $<span class="w"> </span>mise<span class="w"> </span>install
 </blockquote>
 <p><br></p>
 <h3 id="trust">trust<a class="headerlink" href="#trust" title="Permanent link">&para;</a></h3>
-<p><code>.toml</code>ファイルを使用してプラグインをインストールする場合に、現在のディレクトリにある<code>.toml</code>ファイルを信頼できるものとして設定する。</p>
+<p><code>.toml</code> ファイルを使用してプラグインをインストールする場合に、現在のディレクトリにある <code>.toml</code> ファイルを信頼できるものとして設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>mise<span class="w"> </span>trust
 </code></pre></div>
 <blockquote>
@@ -34646,12 +34646,12 @@ $<span class="w"> </span>mise<span class="w"> </span>install
 <h3 id="uninstall_3">uninstall<a class="headerlink" href="#uninstall_3" title="Permanent link">&para;</a></h3>
 <h4 id="uninstall_4">▼ uninstallとは<a class="headerlink" href="#uninstall_4" title="Permanent link">&para;</a></h4>
 <p>プラグインをアンインストールする。</p>
-<p>複数のバージョンをアンインストールするために、<code>--all</code>を有効化すると良い。</p>
+<p>複数のバージョンをアンインストールするために、<code>--all</code> を有効化すると良い。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>mise<span class="w"> </span>uninstall<span class="w"> </span>--all
 </code></pre></div>
 <h2 id="05-direnv">05. direnv<a class="headerlink" href="#05-direnv" title="Permanent link">&para;</a></h2>
 <h3 id="direnv">direnvとは<a class="headerlink" href="#direnv" title="Permanent link">&para;</a></h3>
-<p>特定のディレクトリで<code>.env</code>ファイルを読み込み、環境変数をOS上に出力する。</p>
+<p>特定のディレクトリで <code>.env</code> ファイルを読み込み、環境変数をOS上に出力する。</p>
 <p><br></p>
 <h3 id="_6">セットアップ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="brew_3">▼ brewリポジトリから<a class="headerlink" href="#brew_3" title="Permanent link">&para;</a></h4>
@@ -34670,10 +34670,10 @@ $<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><sp
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="envrc"><code>.envrc</code>ファイル<a class="headerlink" href="#envrc" title="Permanent link">&para;</a></h3>
-<h4 id="envrc_1">▼ <code>.envrc</code>ファイルの作成<a class="headerlink" href="#envrc_1" title="Permanent link">&para;</a></h4>
-<p><code>.env</code>ファイルの読み込み処理や<code>export</code>コマンドの実行は、<code>.envrc</code>ファイルに定義しておく。</p>
-<p><code>set -a</code>コマンドを使用すると、<code>source</code>コマンドで読み込んだ変数を<code>set</code>コマンドで環境変数として出力するようにした</p>
+<h3 id="envrc"><code>.envrc</code> ファイル<a class="headerlink" href="#envrc" title="Permanent link">&para;</a></h3>
+<h4 id="envrc_1">▼ <code>.envrc</code> ファイルの作成<a class="headerlink" href="#envrc_1" title="Permanent link">&para;</a></h4>
+<p><code>.env</code> ファイルの読み込み処理や <code>export</code> コマンドの実行は、<code>.envrc</code> ファイルに定義しておく。</p>
+<p><code>set -a</code> コマンドを使用すると、<code>source</code> コマンドで読み込んだ変数を <code>set</code> コマンドで環境変数として出力するようにした</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># .envrcファイル</span>
 <span class="nb">set</span><span class="w"> </span>-a
 <span class="nb">source</span><span class="w"> </span>.env
@@ -34695,8 +34695,8 @@ $<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><sp
 <li><a href="https://note.com/shimakaze_soft/n/n53949cc818d1">https://note.com/shimakaze_soft/n/n53949cc818d1</a></li>
 </ul>
 </blockquote>
-<h4 id="envrc_2">▼ <code>.envrc</code>ファイルの登録<a class="headerlink" href="#envrc_2" title="Permanent link">&para;</a></h4>
-<p><code>.envrc</code>ファイルを登録する。</p>
+<h4 id="envrc_2">▼ <code>.envrc</code> ファイルの登録<a class="headerlink" href="#envrc_2" title="Permanent link">&para;</a></h4>
+<p><code>.envrc</code> ファイルを登録する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># .envrcファイルのあるディレクトリ</span>
 $<span class="w"> </span>direnv<span class="w"> </span>allow<span class="w"> </span>.
 </code></pre></div>
@@ -34725,7 +34725,7 @@ $<span class="w"> </span>direnv<span class="w"> </span>allow<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月24日 22:09:48 JST">2025-03-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

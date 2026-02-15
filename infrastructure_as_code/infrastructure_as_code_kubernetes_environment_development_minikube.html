@@ -23877,7 +23877,7 @@
   <a href="#minikube-service" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ minikube serviceコマンドによる接続
+        ▼ minikube service コマンドによる接続
       
     </span>
   </a>
@@ -23888,7 +23888,7 @@
   <a href="#kubectl-port-forward" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ kubectl port-forwardコマンドによる接続
+        ▼ kubectl port-forward コマンドによる接続
       
     </span>
   </a>
@@ -23916,7 +23916,7 @@
   <a href="#minikube-tunnel" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ minikube tunnelコマンドによる接続
+        ▼ minikube tunnel コマンドによる接続
       
     </span>
   </a>
@@ -23955,7 +23955,7 @@
   <a href="#kubectl-port-forward_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ kubectl port-forwardコマンドによる接続
+        ▼ kubectl port-forward コマンドによる接続
       
     </span>
   </a>
@@ -33546,7 +33546,7 @@
   <a href="#minikube-service" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ minikube serviceコマンドによる接続
+        ▼ minikube service コマンドによる接続
       
     </span>
   </a>
@@ -33557,7 +33557,7 @@
   <a href="#kubectl-port-forward" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ kubectl port-forwardコマンドによる接続
+        ▼ kubectl port-forward コマンドによる接続
       
     </span>
   </a>
@@ -33585,7 +33585,7 @@
   <a href="#minikube-tunnel" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ minikube tunnelコマンドによる接続
+        ▼ minikube tunnel コマンドによる接続
       
     </span>
   </a>
@@ -33624,7 +33624,7 @@
   <a href="#kubectl-port-forward_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ kubectl port-forwardコマンドによる接続
+        ▼ kubectl port-forward コマンドによる接続
       
     </span>
   </a>
@@ -33826,7 +33826,7 @@
 <h2 id="02">02. マウント<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="node">ホストとNode間マウント<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ マウントの仕組み<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>ホスト側の<code>$MINIKUBE_HOME/files</code>ディレクトリ配下に保管したファイルは、ゲスト仮想環境内のNodeのルート直下にマウントされる。</p>
+<p>ホスト側の <code>$MINIKUBE_HOME/files</code> ディレクトリ配下に保管したファイルは、ゲスト仮想環境内のNodeのルート直下にマウントされる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.minikube/files/etc
 
 <span class="c1"># ホストの$MINIKUBE_HOME/filesにファイルを配置する</span>
@@ -33898,7 +33898,7 @@ $<span class="w"> </span>minikube<span class="w"> </span>start
 <p><br></p>
 <h3 id="node_1">Nodeとコンテナ間マウント<a class="headerlink" href="#node_1" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ マウントの仕組み<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>Minikubeには、HostPath CSIドライバー (<code>storage-provisioner</code>アドオン) とStorageClassがデフォルトで存在している。</p>
+<p>Minikubeには、HostPath CSIドライバー (<code>storage-provisioner</code> アドオン) とStorageClassがデフォルトで存在している。</p>
 <p>そのため、PersistentVolumeClaimを作成すれば、ゲスト仮想環境内のNodeにPersistentVolumeが自動的に作成される。</p>
 <blockquote>
 <ul>
@@ -33947,7 +33947,7 @@ $<span class="w"> </span>minikube<span class="w"> </span>start
 <p><br></p>
 <h3 id="_10">ホストからコンテナまで一気通貫マウント<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ マウントの仕組み<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>Minikubeでは、<code>mount</code>コマンド、ホスト側の<code>$MINIKUBE_HOME/files</code>ディレクトリ、ドライバーを使用して、ホスト側のディレクトリをゲスト仮想環境内のNodeのディレクトリにマウントできる。</p>
+<p>Minikubeでは、<code>mount</code> コマンド、ホスト側の <code>$MINIKUBE_HOME/files</code> ディレクトリ、ドライバーを使用して、ホスト側のディレクトリをゲスト仮想環境内のNodeのディレクトリにマウントできる。</p>
 <p>またNodeでは、決められたディレクトリからPersistentVolumeを自動的に作成する。</p>
 <p>ここで作成されたPersistentVolumeを、PodのPersistentVolumeClaimで指定する。</p>
 <p>このように、ホストからNode、NodeからPodへマウントを実行することにより、ホスト側のディレクトリをPod内のコンテナに間接的にマウントできる。</p>
@@ -33961,7 +33961,7 @@ $<span class="w"> </span>minikube<span class="w"> </span>start
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>HyperKitドライバーを使用する場合、ホストとNode間のマウント機能がない。そこで<code>mount</code>コマンドを使用して、ホスト側のディレクトリをNodeのボリュームにマウントする。</p>
+<p>HyperKitドライバーを使用する場合、ホストとNode間のマウント機能がない。そこで <code>mount</code> コマンドを使用して、ホスト側のディレクトリをNodeのボリュームにマウントする。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> </span><span class="se">\</span>
@@ -34008,7 +34008,7 @@ $<span class="w"> </span>minikube<span class="w"> </span>start
 <h2 id="03">03. ネットワーク<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="kubernetescidr">KubernetesリソースのCIDRブロック<a class="headerlink" href="#kubernetescidr" title="Permanent link">&para;</a></h3>
 <h4 id="node_3">▼ Nodeの場合<a class="headerlink" href="#node_3" title="Permanent link">&para;</a></h4>
-<p>Node内で<code>ip addr</code>コマンドを実行することにより、Nodeに割り当てられたCIDRブロックを確認できる。</p>
+<p>Node内で <code>ip addr</code> コマンドを実行することにより、Nodeに割り当てられたCIDRブロックを確認できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://nishipy.com/archives/1467">https://nishipy.com/archives/1467</a></li>
@@ -34016,7 +34016,7 @@ $<span class="w"> </span>minikube<span class="w"> </span>start
 </blockquote>
 <p><strong>＊例＊</strong></p>
 <p>CNIとしてBridgeアドオンを使用している。</p>
-<p>CIDRブロックは、<code>192.168.49.2/24</code>である。</p>
+<p>CIDRブロックは、<code>192.168.49.2/24</code> である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>ssh
 
 <span class="c1"># Nodeの中</span>
@@ -34026,10 +34026,10 @@ docker@minikube:~$<span class="w"> </span>ip<span class="w"> </span>addr<span cl
 <span class="w">    </span>inet<span class="w"> </span><span class="m">192</span>.168.49.2/24<span class="w"> </span>brd<span class="w"> </span><span class="m">192</span>.168.49.255<span class="w"> </span>scope<span class="w"> </span>global<span class="w"> </span>eth0
 </code></pre></div>
 <h4 id="pod">▼ Pod<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
-<p>Node内で<code>/etc/cni/net.d</code>ディレクトリ配下にあるファイルを確認すると、Podに割り当てられたCIDRブロックを確認できる。</p>
+<p>Node内で <code>/etc/cni/net.d</code> ディレクトリ配下にあるファイルを確認すると、Podに割り当てられたCIDRブロックを確認できる。</p>
 <p><strong>＊例＊</strong></p>
 <p>CNIとしてBridgeアドオンを使用している。</p>
-<p>CIDRブロックは、<code>10.85.0.0/16</code>である。</p>
+<p>CIDRブロックは、<code>10.85.0.0/16</code> である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>ssh
 
 <span class="c1"># 仮想環境の中</span>
@@ -34067,7 +34067,7 @@ docker@minikube:~$<span class="w"> </span>cat<span class="w"> </span>/etc/cni/ne
 </blockquote>
 <p><br></p>
 <h3 id="minikubedocker">Minikube外のdockerネットワーク宛にリクエスト<a class="headerlink" href="#minikubedocker" title="Permanent link">&para;</a></h3>
-<p>Minikubeは、dockerドライバーを使用した場合、デフォルトで<code>minikube</code>というdockerネットワークが作成する。</p>
+<p>Minikubeは、dockerドライバーを使用した場合、デフォルトで <code>minikube</code> というdockerネットワークが作成する。</p>
 <p>プロファイル名を指定した場合、その名前のネットワークになる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> </span>ls
 <span class="w">                                                                            </span><span class="o">(</span>minikube/default<span class="o">)</span>
@@ -34079,7 +34079,7 @@ b1bdec6c4578<span class="w">   </span>minikube<span class="w">             </spa
 
 ...
 </code></pre></div>
-<p><code>minikube</code>という既存のdockerネットワークを使用すると、Minikubeに接続できる。</p>
+<p><code>minikube</code> という既存のdockerネットワークを使用すると、Minikubeに接続できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">database</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql</span>
@@ -34106,7 +34106,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 <span class="c1"># コンテナからホストにリクエストを送信する</span>
 $<span class="w"> </span>curl<span class="w"> </span>host.minikube.internal
 </code></pre></div>
-<p>DNS名は、Minikube内の<code>/etc/hosts</code>ファイルに定義されている。</p>
+<p>DNS名は、Minikube内の <code>/etc/hosts</code> ファイルに定義されている。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>ssh
 <span class="w">                                                                        </span><span class="o">(</span>current-context<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span><span class="nb">set</span><span class="o">)</span>
 docker@minikube:~$<span class="w"> </span>cat<span class="w"> </span>/etc/hosts
@@ -34120,7 +34120,7 @@ ff02::2<span class="w"> </span>ip6-allrouters
 <span class="m">192</span>.168.65.254<span class="w">  </span>host.minikube.internal
 <span class="m">192</span>.168.58.2<span class="w">    </span>control-plane.minikube
 </code></pre></div>
-<p>(フロントエンドのPodがKeycloakのPodとの間で認証処理を実施する時は、実際には<code>localhost</code>でリクエストを送信する必要があり、なぜかよくわからない...)</p>
+<p>(フロントエンドのPodがKeycloakのPodとの間で認証処理を実施するときは、実際には <code>localhost</code> でリクエストを送信する必要があり、なぜかよくわからない...)</p>
 <blockquote>
 <ul>
 <li><a href="https://minikube.sigs.k8s.io/docs/handbook/host-access/">https://minikube.sigs.k8s.io/docs/handbook/host-access/</a></li>
@@ -34138,9 +34138,9 @@ ff02::2<span class="w"> </span>ip6-allrouters
 </blockquote>
 <p><br></p>
 <h3 id="nodeport-service">NodePort Serviceの場合<a class="headerlink" href="#nodeport-service" title="Permanent link">&para;</a></h3>
-<h4 id="minikube-service">▼ <code>minikube service</code>コマンドによる接続<a class="headerlink" href="#minikube-service" title="Permanent link">&para;</a></h4>
-<p>NodePort Serviceの場合、<code>minikube service</code>コマンドを使用して、Minikube仮想サーバー内のNodeに接続できる。</p>
-<p><code>http://127.0.0.1:&lt;自動的に発行されたトンネルポート番号&gt;</code>の形式でURLが発行されるため、ブラウザや<code>curl</code>コマンドで接続を確認できる。</p>
+<h4 id="minikube-service">▼ <code>minikube service</code> コマンドによる接続<a class="headerlink" href="#minikube-service" title="Permanent link">&para;</a></h4>
+<p>NodePort Serviceの場合、<code>minikube service</code> コマンドを使用して、Minikube仮想サーバー内のNodeに接続できる。</p>
+<p><code>http://127.0.0.1:&lt;自動的に発行されたトンネルポート番号&gt;</code> の形式でURLが発行されるため、ブラウザや <code>curl</code> コマンドで接続を確認できる。</p>
 <p>NodePort Serviceで指定した宛先ポート番号の数だけ、これに紐づくトンネルポート番号を発行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>service<span class="w"> </span>&lt;NodePort<span class="w"> </span>Service名&gt;<span class="w"> </span>--url<span class="w"> </span>-n<span class="w"> </span>foo-namespace
 
@@ -34151,7 +34151,7 @@ http://127.0.0.1:&lt;自動的に発行されたトンネルポート番号3&gt;
 
 $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:&lt;自動的に発行されたトンネルポート番号&gt;
 </code></pre></div>
-<p><code>ps</code>コマンドを使用して、NodePort Serviceのいずれの宛先ポート番号がトンネルポート番号に紐づいているかを確認できる。</p>
+<p><code>ps</code> コマンドを使用して、NodePort Serviceのいずれの宛先ポート番号がトンネルポート番号に紐づいているかを確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ps<span class="w"> </span>-ef<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>docker@127.0.0.1
 
 ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">UserKnownHostsFile</span><span class="o">=</span>/dev/null<span class="w"> </span>-o<span class="w"> </span><span class="nv">StrictHostKeyChecking</span><span class="o">=</span>no<span class="w"> </span>-N<span class="w"> </span>docker@127.0.0.1<span class="w"> </span>-p<span class="w"> </span><span class="m">55972</span><span class="w"> </span>-i<span class="w"> </span>/Users/FOO/.minikube/machines/minikube/id_rsa
@@ -34167,7 +34167,7 @@ ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">UserKnownH
 <li><a href="https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel">https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel</a></li>
 </ul>
 </blockquote>
-<h4 id="kubectl-port-forward">▼ <code>kubectl port-forward</code>コマンドによる接続<a class="headerlink" href="#kubectl-port-forward" title="Permanent link">&para;</a></h4>
+<h4 id="kubectl-port-forward">▼ <code>kubectl port-forward</code> コマンドによる接続<a class="headerlink" href="#kubectl-port-forward" title="Permanent link">&para;</a></h4>
 <p>Ingressを介さずに、Podに直接的に接続する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Podに直接的に指定する場合</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>pod/&lt;Pod名&gt;<span class="w"> </span>&lt;ホストポート番号&gt;:&lt;Podのポート番号&gt;
@@ -34177,8 +34177,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class=
 </code></pre></div>
 <p><br></p>
 <h3 id="loadbalancer-service">LoadBalancer Serviceの場合<a class="headerlink" href="#loadbalancer-service" title="Permanent link">&para;</a></h3>
-<h4 id="minikube-tunnel">▼ <code>minikube tunnel</code>コマンドによる接続<a class="headerlink" href="#minikube-tunnel" title="Permanent link">&para;</a></h4>
-<p>LoadBalancer Serviceの場合、<code>minikube tunnel</code>コマンドでLoadBalancer Serviceに<code>EXTERNAL-IP</code>が割り当てられるIPアドレスから、Minikube仮想サーバー内のNodeに接続できる。</p>
+<h4 id="minikube-tunnel">▼ <code>minikube tunnel</code> コマンドによる接続<a class="headerlink" href="#minikube-tunnel" title="Permanent link">&para;</a></h4>
+<p>LoadBalancer Serviceの場合、<code>minikube tunnel</code> コマンドでLoadBalancer Serviceに <code>EXTERNAL-IP</code> が割り当てられるIPアドレスから、Minikube仮想サーバー内のNodeに接続できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>tunnel
 
 $<span class="w"> </span>curl<span class="w"> </span>http://&lt;minikube<span class="w"> </span>tunnelコマンドでLoadBalancer<span class="w"> </span>Serviceに割り当てられるIPアドレス&gt;:&lt;LoadBalancer<span class="w"> </span>Serviceが待ち受けるポート番号&gt;
@@ -34199,7 +34199,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://&lt;minikube<span cl
 <p>これをMinikube上で再現するために名前解決するために、ingress-dnsアドオンを有効化する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>addons<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>ingress-dns
 </code></pre></div>
-<p>また、<code>/etc/resolver/minikube-test</code>ファイルを以下の通りに編集する。</p>
+<p>また、<code>/etc/resolver/minikube-test</code> ファイルを以下の通りに編集する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>vim<span class="w"> </span>/etc/resolver/minikube-test
 
 domain<span class="w"> </span>minikube
@@ -34207,7 +34207,7 @@ nameserver<span class="w"> </span><span class="k">$(</span>minikube<span class="
 search_order<span class="w"> </span><span class="m">1</span>
 timeout<span class="w"> </span><span class="m">5</span>
 </code></pre></div>
-<p>あとは、<code>minikube</code>というドメインで、Minikube仮想サーバー内のNodeに接続できる。</p>
+<p>あとは、<code>minikube</code> というドメインで、Minikube仮想サーバー内のNodeに接続できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://foo.minikube
 </code></pre></div>
 <blockquote>
@@ -34216,7 +34216,7 @@ timeout<span class="w"> </span><span class="m">5</span>
 <li><a href="https://developer.mamezou-tech.com/containers/k8s/tutorial/app/minikube/">https://developer.mamezou-tech.com/containers/k8s/tutorial/app/minikube/</a></li>
 </ul>
 </blockquote>
-<h4 id="kubectl-port-forward_1">▼ <code>kubectl port-forward</code>コマンドによる接続<a class="headerlink" href="#kubectl-port-forward_1" title="Permanent link">&para;</a></h4>
+<h4 id="kubectl-port-forward_1">▼ <code>kubectl port-forward</code> コマンドによる接続<a class="headerlink" href="#kubectl-port-forward_1" title="Permanent link">&para;</a></h4>
 <p>Ingressを介さずに、Podに直接的に接続する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Podに直接的に指定する場合</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>pod/&lt;Pod名&gt;<span class="w"> </span>&lt;ホストポート番号&gt;:&lt;Podのポート番号&gt;
@@ -34245,7 +34245,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class=
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月2日 16:23:09 JST">2025-05-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

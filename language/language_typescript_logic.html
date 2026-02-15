@@ -13252,12 +13252,12 @@
   <a href="#catch" class="md-nav__link">
     <span class="md-ellipsis">
       
-        まずは緩い型でcatchする
+        まずは緩い型で catch する
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="まずは緩い型でcatchする">
+    <nav class="md-nav" aria-label="まずは緩い型で catch する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -13291,19 +13291,19 @@
   <a href="#catch_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        catchした型に応じた処理
+        catch した型に応じた処理
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="catchした型に応じた処理">
+    <nav class="md-nav" aria-label="catch した型に応じた処理">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#catch_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ catchした型に応じた処理とは
+        ▼ catch した型に応じた処理とは
       
     </span>
   </a>
@@ -33550,12 +33550,12 @@
   <a href="#catch" class="md-nav__link">
     <span class="md-ellipsis">
       
-        まずは緩い型でcatchする
+        まずは緩い型で catch する
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="まずは緩い型でcatchする">
+    <nav class="md-nav" aria-label="まずは緩い型で catch する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33589,19 +33589,19 @@
   <a href="#catch_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        catchした型に応じた処理
+        catch した型に応じた処理
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="catchした型に応じた処理">
+    <nav class="md-nav" aria-label="catch した型に応じた処理">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#catch_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ catchした型に応じた処理とは
+        ▼ catch した型に応じた処理とは
       
     </span>
   </a>
@@ -34080,7 +34080,7 @@
 <p><br></p>
 <h2 id="04">04. 返却値<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_11">返却値の型<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p>TypeScriptでは、 <code>return</code>の型のみを指定すれば良い。</p>
+<p>TypeScriptでは、 <code>return</code> の型のみを指定すれば良い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Error型は返却値の型に指定しなくても良い</span>
 <span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
@@ -34139,13 +34139,13 @@
 <p><br></p>
 <h2 id="05">05. エラーハンドリング<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_13">エラーハンドリングとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<p>Typescriptでは<code>throw</code>は、Errorオブジェクトだけでなく、どんな型でも返却できる。</p>
+<p>Typescriptでは <code>throw</code> は、Errorオブジェクトだけでなく、どんな型でも返却できる。</p>
 <p>ちなみに、よくある型はErrorオブジェクト型、object型、string型である。</p>
-<p>これを<code>catch</code>する場合、さまざまな型を考慮する必要がある。</p>
+<p>これを <code>catch</code> する場合、さまざまな型を考慮する必要がある。</p>
 <p><br></p>
-<h3 id="catch">まずは緩い型で<code>catch</code>する<a class="headerlink" href="#catch" title="Permanent link">&para;</a></h3>
+<h3 id="catch">まずは緩い型で <code>catch</code> する<a class="headerlink" href="#catch" title="Permanent link">&para;</a></h3>
 <h4 id="unknown">▼ unknown<a class="headerlink" href="#unknown" title="Permanent link">&para;</a></h4>
-<p><code>unknown</code>を使用した場合、それ以降の処理では型を無視して処理する。</p>
+<p><code>unknown</code> を使用した場合、それ以降の処理では型を無視して処理する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">unknown</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 何らかの処理</span>
@@ -34169,7 +34169,7 @@
 </ul>
 </blockquote>
 <h4 id="any">▼ any<a class="headerlink" href="#any" title="Permanent link">&para;</a></h4>
-<p><code>any</code>を使用した場合、それ以降の処理では型を無視して処理する。</p>
+<p><code>any</code> を使用した場合、それ以降の処理では型を無視して処理する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">any</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 何らかの処理</span>
@@ -34193,9 +34193,9 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="catch_1"><code>catch</code>した型に応じた処理<a class="headerlink" href="#catch_1" title="Permanent link">&para;</a></h3>
-<h4 id="catch_2">▼ <code>catch</code>した型に応じた処理とは<a class="headerlink" href="#catch_2" title="Permanent link">&para;</a></h4>
-<p>TypeScriptの<code>try-catch</code>で捕捉したエラーの型に応じて処理を実行し分ける場合、<code>catch</code>ブロックを複数書くのではなく、<code>if</code>文を使用する必要がある。</p>
+<h3 id="catch_1"><code>catch</code> した型に応じた処理<a class="headerlink" href="#catch_1" title="Permanent link">&para;</a></h3>
+<h4 id="catch_2">▼ <code>catch</code> した型に応じた処理とは<a class="headerlink" href="#catch_2" title="Permanent link">&para;</a></h4>
+<p>TypeScriptの <code>try-catch</code> で捕捉したエラーの型に応じて処理を実行し分ける場合、<code>catch</code> ブロックを複数書くのではなく、<code>if</code> 文を使用する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">axios</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">AxiosError</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;axios&quot;</span><span class="p">;</span>
 
 <span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">fetchUser</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -34477,7 +34477,7 @@
 <h3 id="_21">ループ内の線形探索<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <h4 id="_22">▼ ループ内の線形探索とは<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <p>線形探索とは、配列などを先頭から順に走査し、特定の要素を抽出する処理である。</p>
-<p>ループ内の線形探索を実行すると処理量が多くなるため、<code>Set</code>関数や<code>Map</code>関数で事前準備しておく。</p>
+<p>ループ内の線形探索を実行すると処理量が多くなるため、<code>Set</code> 関数や <code>Map</code> 関数で事前準備しておく。</p>
 <h4 id="_23">▼ 悪い例<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
 <p>ループの中で線形探索の関数 (<code>some</code>、<code>includes</code>、<code>find</code>) を実行してしまっている。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// ループ</span>
@@ -34541,7 +34541,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月11日 17:19:13 JST">2026-02-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

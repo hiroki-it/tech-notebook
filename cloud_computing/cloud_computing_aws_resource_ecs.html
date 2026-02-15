@@ -34539,7 +34539,7 @@
 <tr>
 <td>Running</td>
 <td>AWS ECSタスク内の全てのコンテナの起動とAWS ECSタスク全体の準備が完了し、実行中である。</td>
-<td>コンテナの起動が完了すれば<code>Running</code>フェーズになるが、コンテナ内でビルトインサーバーを起動するようなアプリケーション (例：フレームワークのビルトインサーバー機能) の場合は、<code>Running</code>フェーズであっても使用できないことに注意する。</td>
+<td>コンテナの起動が完了すれば <code>Running</code> フェーズになるが、コンテナ内でビルトインサーバーを起動するようなアプリケーション (例：フレームワークのビルトインサーバー機能) の場合は、<code>Running</code> フェーズであっても使用できないことに注意する。</td>
 </tr>
 <tr>
 <td>De-activating</td>
@@ -34595,9 +34595,9 @@
 <p>FargateとEC2の両方で使用できるawsの独自ネットワークモード。</p>
 <p>タスクはElastic Networkインターフェースと紐付けられ、コンテナではなくタスク単位でプライベートIPアドレスが割り当てられる。</p>
 <p>Fargateの場合、同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる (推測ではあるが、FargateとしてのEC2にlocalhostインターフェースが紐付けられる) 。</p>
-<p>これにより、コンテナ間でパケットを送受信する時 (例：NginxコンテナからPHP-FPMコンテナへのルーティング) は、通信元コンテナにて、通信先のアドレスを『localhost (<code>127.0.0.1</code>) 』で指定すれば良い。</p>
+<p>これにより、コンテナ間でパケットを送受信するとき (例：NginxコンテナからPHP-FPMコンテナへのルーティング) は、通信元コンテナにて、通信先のアドレスを『localhost (<code>127.0.0.1</code>) 』で指定すれば良い。</p>
 <p>また、awsvpcモードの独自の仕組みとして、同じAWS ECSタスク内であれば、互いにコンテナポートを開放せずとも、通信を待ち受けるポートを指定するのみで、コンテナ間でパケットを送受信できる。</p>
-<p>例えば、NginxコンテナからPHP-FPMコンテナにリクエストをルーティングするためには、PHP-FPMプロセスが<code>9000</code>番ポートでリクエストを受信し、加えてコンテナが<code>9000</code>番ポートを開放する必要がある。</p>
+<p>例えば、NginxコンテナからPHP-FPMコンテナにリクエストをルーティングするためには、PHP-FPMプロセスが <code>9000</code> 番ポートでリクエストを受信し、加えてコンテナが <code>9000</code> 番ポートを開放する必要がある。</p>
 <p>しかし、awsvpcモードではコンテナポートを開放する必要はない。</p>
 <p><img alt="network-mode_awsvpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network-mode_awsvpc.png" /></p>
 <blockquote>
@@ -34618,7 +34618,7 @@
 <h3 id="aws-ecs_9">AWS ECSタスクからのアウトバウンド<a class="headerlink" href="#aws-ecs_9" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ プライベートサブネット内のデータプレーンの配置<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>プライベートサブネット内にデータプレーンを配置した場合、パブリックネットワークやVCP外のAWSリソースにリクエストを送信するために、AWS NAT GatewayやVPCエンドポイントが必要になる。</p>
-<p>パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにデータプレーンを配置する方が望ましい。</p>
+<p>パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにデータプレーンを配置するほうが望ましい。</p>
 <h4 id="_7">▼ パブリックネットワークに対する通信<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>データプレーンをプライベートサブネットに配置した場合、パブリックネットワークに対してリクエストを送信するためには、AWS NAT Gatewayを配置する必要がある。</p>
 <h4 id="vpcaws">▼ VPC外のAWSリソースに対する通信<a class="headerlink" href="#vpcaws" title="Permanent link">&para;</a></h4>
@@ -34792,7 +34792,7 @@
 <p>EC2をホストとして、コンテナを作成する。</p>
 <p><br></p>
 <h3 id="ec2ami">EC2の最適化AMI<a class="headerlink" href="#ec2ami" title="Permanent link">&para;</a></h3>
-<p>任意のEC2を使用できるが、AWSが用意している最適化AMIを選んだ方が良い。</p>
+<p>任意のEC2を使用できるが、AWSが用意している最適化AMIを選んだほうが良い。</p>
 <p>このAMIには、EC2がECSと連携するために必要なソフトウェアがプリインストールされており、EC2をセットアップする手間が省ける。</p>
 <table>
 <thead>
@@ -34805,7 +34805,7 @@
 <tbody>
 <tr>
 <td>ECS最適化 Amazon Linux 2</td>
-<td>ECSのための標準的なEC2を作成できる。最も推奨。</td>
+<td>ECSのための標準的なEC2を作成できる。もっとも推奨。</td>
 <td></td>
 </tr>
 <tr>
@@ -34815,7 +34815,7 @@
 </tr>
 <tr>
 <td>ECS最適化 Amazon Linux</td>
-<td>ECSのための標準的なEC2を作成できる。非推奨であり、Amazon Linux 2を使用した方が良い。</td>
+<td>ECSのための標準的なEC2を作成できる。非推奨であり、Amazon Linux 2を使用したほうが良い。</td>
 <td></td>
 </tr>
 <tr>
@@ -34842,7 +34842,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_14">タスク配置戦略<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<p>AWS ECSタスクをECSクラスターに配置する時のアルゴリズムを選択できる。</p>
+<p>AWS ECSタスクをECSクラスターに配置するときのアルゴリズムを選択できる。</p>
 <table>
 <thead>
 <tr>
@@ -34857,7 +34857,7 @@
 </tr>
 <tr>
 <td>Binpack</td>
-<td>AWS ECSタスクを<code>1</code>個の場所にできるだけ多く配置する。</td>
+<td>AWS ECSタスクを <code>1</code> 個の場所にできるだけ多く配置する。</td>
 </tr>
 <tr>
 <td>Random</td>
@@ -34916,18 +34916,18 @@
 </tr>
 <tr>
 <td>最小ヘルス率</td>
-<td>AWS ECSタスクの必要数の設定を<code>100</code>%とし、新しいタスクのデプロイ時に、稼働中タスクの最低合計数を割合で設定する。</td>
+<td>AWS ECSタスクの必要数の設定を <code>100</code>%とし、新しいタスクのデプロイ時に、稼働中タスクの最低合計数を割合で設定する。</td>
 <td>例として、タスク必要数が4個だと仮定する。タスクヘルス最小率を50%とすれば、稼働中タスクの最低合計数は2個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中の既存タスク/新タスクの数が最低合計数未満にならないように制御される。<br><a href="https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments">https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments</a></td>
 </tr>
 <tr>
 <td>最大率</td>
-<td>AWS ECSタスクの必要数の設定を<code>100</code>%とし、新しいタスクのデプロイ時に、稼働中/停止中タスクの最高合計数を割合で設定する。</td>
+<td>AWS ECSタスクの必要数の設定を <code>100</code>%とし、新しいタスクのデプロイ時に、稼働中/停止中タスクの最高合計数を割合で設定する。</td>
 <td>例として、タスク必要数が4個だと仮定する。タスク最大率を200%とすれば、稼働中/停止中タスクの最高合計数は８個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中/停止中の既存タスク/新タスクの数が最高合計数を超過しないように制御される。<br><a href="https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments">https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments</a></td>
 </tr>
 <tr>
 <td>ヘルスチェックの待機期間</td>
 <td>デプロイ時のALB/NLBのヘルスチェックを開始するまでの待機時間を設定する。猶予期間を過ぎても、ALB/NLBのヘルスチェックが失敗していれば、サービスはタスクを停止し、新しいタスクを再起動する。</td>
-<td>ALB/NLBではターゲットを登録し、ヘルスチェックを実行するプロセスがある。特にNLBでは、これに時間がかかる。またアプリケーションによっては、コンテナの作成に時間がかかる。そのため、NLBのヘルスチェックが完了する前に、AWS ECSサービスがNLBのヘルスチェックの結果を確認してしまうことがある。例えば、NLBとLaravelを使用する場合は、ターゲット登録とLaravelコンテナの築の時間を加味して、<code>330</code>秒以上を目安とする。例えば、ALBとNuxt.js (SSRモード) を使用する場合は、<code>600</code>秒以上を目安とする。注意点として、アプリコンテナ作成にかかる時間は、開発環境での所要時間を参考にする。</td>
+<td>ALB/NLBではターゲットを登録し、ヘルスチェックを実行するプロセスがある。特にNLBでは、これに時間がかかる。またアプリケーションによっては、コンテナの作成に時間がかかる。そのため、NLBのヘルスチェックが完了する前に、AWS ECSサービスがNLBのヘルスチェックの結果を確認してしまうことがある。例えば、NLBとLaravelを使用する場合は、ターゲット登録とLaravelコンテナの築の時間を加味して、<code>330</code> 秒以上を目安とする。例えば、ALBとNuxt.js (SSRモード) を使用する場合は、<code>600</code> 秒以上を目安とする。注意点として、アプリコンテナ作成にかかる時間は、開発環境での所要時間を参考にする。</td>
 </tr>
 <tr>
 <td>タスクの最小数</td>
@@ -35004,12 +35004,12 @@
 <tr>
 <td>タスクメモリ</td>
 <td>AWS ECSタスク当たりのコンテナの合計メモリサイズを設定する。</td>
-<td>AWS ECSタスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定した方が良い。</td>
+<td>AWS ECSタスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定したほうが良い。</td>
 </tr>
 <tr>
 <td>タスクCPU</td>
 <td>AWS ECSタスク当たりのコンテナの合計CPUサイズを設定する。</td>
-<td>・AWS ECSタスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定した方が良い。<br>・CPUごとに使用できるメモリサイズに違いがあり、大きなCPUほど小さなメモリを使用できない。</td>
+<td>・AWS ECSタスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定したほうが良い。<br>・CPUごとに使用できるメモリサイズに違いがあり、大きなCPUほど小さなメモリを使用できない。</td>
 </tr>
 <tr>
 <td>コンテナ定義</td>
@@ -35044,7 +35044,7 @@
 <thead>
 <tr>
 <th>設定項目</th>
-<th>対応する<code>docker</code>コマンドオプション</th>
+<th>対応する <code>docker</code> コマンドオプション</th>
 <th>説明</th>
 <th>補足</th>
 </tr>
@@ -35066,12 +35066,12 @@
 <td>essential</td>
 <td></td>
 <td>コンテナが必須か否かを設定する。</td>
-<td>・<code>true</code>の場合、コンテナが停止すると、タスクに含まれる全コンテナが停止する。<br><code>false</code>の場合、コンテナが停止しても、その他のコンテナは停止しない。</td>
+<td>・<code>true</code> の場合、コンテナが停止すると、タスクに含まれる全コンテナが停止する。<br><code>false</code> の場合、コンテナが停止しても、その他のコンテナは停止しない。</td>
 </tr>
 <tr>
 <td>healthCheck<br>(command)</td>
 <td><code>--health-cmd</code></td>
-<td>ホストからFargateに対して、<code>curl</code>コマンドによるリクエストを送信し、レスポンス内容を確認。</td>
+<td>ホストからFargateに対して、<code>curl</code> コマンドによるリクエストを送信し、レスポンス内容を確認。</td>
 <td></td>
 </tr>
 <tr>
@@ -35096,7 +35096,7 @@
 <td>image</td>
 <td></td>
 <td>AWS ECRのURLを設定する。</td>
-<td>指定できるURLの記法は、Dockerfileの<code>FROM</code>処理と同じである。<br><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html">https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html</a></td>
+<td>指定できるURLの記法は、Dockerfileの <code>FROM</code> 処理と同じである。<br><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html">https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html</a></td>
 </tr>
 <tr>
 <td>logConfiguration<br>(logDriver)</td>
@@ -35114,7 +35114,7 @@
 <td>portMapping</td>
 <td><code>--publish</code><br><code>--expose</code></td>
 <td>ホストとFargateのアプリケーションのポート番号をマッピングし、ポートフォワーディングを実行する。</td>
-<td><code>containerPort</code>のみを設定し、<code>hostPort</code>は設定しなければ、EXPOSEとして定義できる。<br><a href="https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html">https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html</a></td>
+<td><code>containerPort</code> のみを設定し、<code>hostPort</code> は設定しなければ、EXPOSEとして定義できる。<br><a href="https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html">https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html</a></td>
 </tr>
 <tr>
 <td>secrets<br>(volumesFrom)</td>
@@ -35142,7 +35142,7 @@
 </tr>
 <tr>
 <td>ulimit</td>
-<td>Linuxコマンドの<br><code>--ulimit</code>に相当</td>
+<td>Linuxコマンドの<br><code>--ulimit</code> に相当</td>
 <td></td>
 <td></td>
 </tr>
@@ -35179,7 +35179,7 @@
 <h4 id="db">▼ DBマイグレーション<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
 <p>現在起動中のAWS ECSタスクとは別に、新しいタスクを一時的に起動する。</p>
 <p>CI/CDパイプライン上で実行する以外に、ローカルマシンから手動で実行する場合もある。</p>
-<p>起動時に、<code>overrides</code>オプションを使用して、指定したAWS ECSタスク定義のコンテナ設定を上書きできる。</p>
+<p>起動時に、<code>overrides</code> オプションを使用して、指定したAWS ECSタスク定義のコンテナ設定を上書きできる。</p>
 <p>正規表現で設定する必要があり、加えてJSONでは『<code>\</code>』を『<code>\\</code>』にエスケープしなければならない。</p>
 <p>コマンドが実行された後に、タスクは自動的にStopped状態になる。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -35429,7 +35429,7 @@ bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </s
 <dl>
 <dt><code>(6)</code></dt>
 <dd>
-<p>AWS ECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。bashを実行する時に、『<code>/bin/bash</code>』や『<code>/bin/sh</code>』で指定すると、binより上のパスもECSに送信されてしまう。</p>
+<p>AWS ECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。bashを実行するときに、『<code>/bin/bash</code>』や『<code>/bin/sh</code>』で指定すると、binより上のパスもECSに送信されてしまう。</p>
 <p>例えば、Windowsなら『<code>C:/Program Files/Git/usr/bin/bash</code>』を送信する。</p>
 <p>これはCloudTrailでExecuteCommandイベントとして確認できる。</p>
 <p>ECSコンテナ内ではbashへのパスが異なるため、接続に失敗する。そのため、bashを直接的に指定する。</p>
@@ -35479,7 +35479,7 @@ aws<span class="w"> </span>ecs<span class="w"> </span>execute-command<span class
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月4日 21:33:19 JST">2026-02-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

@@ -6011,7 +6011,7 @@
   <a href="#systemctl" class="md-nav__link">
     <span class="md-ellipsis">
       
-        systemctlコマンド
+        systemctl コマンド
       
     </span>
   </a>
@@ -33583,7 +33583,7 @@
   <a href="#systemctl" class="md-nav__link">
     <span class="md-ellipsis">
       
-        systemctlコマンド
+        systemctl コマンド
       
     </span>
   </a>
@@ -33715,7 +33715,7 @@
 <p>リモートストレージとして、Prometheusで収集したデータポイントを保管する。</p>
 <p>エンドポイントとしてロードバランサーがあり、書き込みエンドポイントを指定すれば、vminsertを経由して、vmstorage (ブロックストレージ) にメトリクスを書き込める。</p>
 <p>また読み出しエンドポイントを指定すれば、vmselectを経由して、vmstorageからメトリクスを読み込める。</p>
-<p>補足として、PrometheusがリモートストレージとしてVictoriaMetricsを使用する時、Grafanaのようにリアルタイムにデータを取得し続けることはできない。</p>
+<p>補足として、PrometheusがリモートストレージとしてVictoriaMetricsを使用するとき、Grafanaのようにリアルタイムにデータを取得し続けることはできない。</p>
 <p>代わりに、PrometheusのダッシュボードでPromQLを実行し、読み出しエンドポイントからその都度データを取得することはできる。</p>
 <p><img alt="victoria-metrics_remote-storage_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_remote-storage_architecture.png" /></p>
 <blockquote>
@@ -33764,7 +33764,7 @@
 </ul>
 </blockquote>
 <h4 id="_7">▼ ログ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>これは、<code>journalctl</code>コマンドのログである。</p>
+<p>これは、<code>journalctl</code> コマンドのログである。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># インデックスDBを読みこむ</span>
 <span class="m">2024</span>-11-25T11:47:58.543Z<span class="w">   </span>info<span class="w">   </span>VictoriaMetrics/lib/mergeset/table.go:260<span class="w">                            </span>opening<span class="w"> </span>table<span class="w"> </span><span class="s2">&quot;/var/lib/victoria-metrics/data/indexdb/180958B880A8F14D&quot;</span>...
 <span class="m">2024</span>-11-25T11:47:58.549Z<span class="w">   </span>info<span class="w">   </span>VictoriaMetrics/lib/mergeset/table.go:295<span class="w">                            </span>table<span class="w"> </span><span class="s2">&quot;/var/lib/victoria-metrics/data/indexdb/180958B880A8F14D&quot;</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>opened<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>.006<span class="w"> </span>seconds<span class="p">;</span><span class="w"> </span>partsCount:<span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span>blocksCount:<span class="w"> </span><span class="m">0</span>,<span class="w"> </span>itemsCount:<span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span>sizeBytes:<span class="w"> </span><span class="m">0</span>
@@ -33788,7 +33788,7 @@
 </ul>
 </blockquote>
 <h4 id="_8">▼ インストール<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>もう一方のシングルNodeモードとは、バイナリ (<code>-cluster</code>という接尾辞がつく) やセットアップ方法が異なる。</p>
+<p>もう一方のシングルNodeモードとは、バイナリ (<code>-cluster</code> という接尾辞がつく) やセットアップ方法が異なる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.victoriametrics.com/cluster-victoriametrics/#binaries">https://docs.victoriametrics.com/cluster-victoriametrics/#binaries</a></li>
@@ -33806,7 +33806,7 @@
 <h2 id="01-03">01-03. コンポーネント<a class="headerlink" href="#01-03" title="Permanent link">&para;</a></h2>
 <h3 id="_10">ロードバランサー<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ ロードバランサーとは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>HTTPSリクエストの<code>8224</code>番ポートでインバウンド通信を待ち受け、vmselectやvminsertに通信をルーティングする。</p>
+<p>HTTPSリクエストの <code>8224</code> 番ポートでインバウンド通信を待ち受け、vmselectやvminsertに通信をルーティングする。</p>
 <p>このロードバランサー自体をヘルスチェックすれば、VictoriaMetricsのプロセスが稼働しているか否かを監視できる。</p>
 <p><br></p>
 <h3 id="vmselect">vmselect<a class="headerlink" href="#vmselect" title="Permanent link">&para;</a></h3>
@@ -33830,7 +33830,7 @@
 </ul>
 </blockquote>
 <h4 id="_13">▼ カーディナリティ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>とある期間で区切った時の固有な時系列データの断片数である。</p>
+<p>とある期間で区切ったときの固有なとき系列データの断片数である。</p>
 <p>この断片数が多くなる程、読み出しで負荷がかかる。</p>
 <p><img alt="victoria-metrics_cardinality" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_cardinality.png" /></p>
 <blockquote>
@@ -33843,14 +33843,14 @@
 <h4 id="vmstorage_1">▼ vmstorageとは<a class="headerlink" href="#vmstorage_1" title="Permanent link">&para;</a></h4>
 <p>データをファイルシステムに保管する。</p>
 <p>保管時にデータを圧縮している。</p>
-<p>公式での情報は見つからなかったが、圧縮率は約<code>10%</code>らしい。</p>
+<p>公式での情報は見つからなかったが、圧縮率は約 <code>10%</code> らしい。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/nikita/items/482a77a829c81cd919f0#1%E5%9C%A7%E7%B8%AE%E7%8E%87%E3%81%8C%E9%AB%98%E3%81%84">https://qiita.com/nikita/items/482a77a829c81cd919f0#1%E5%9C%A7%E7%B8%AE%E7%8E%87%E3%81%8C%E9%AB%98%E3%81%84</a></li>
 </ul>
 </blockquote>
 <h4 id="_14">▼ ディレクトリ構成<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>VictoriaMetricsのプロセスを<code>victoria-metrics-prod</code>コマンドで起動する時に、<code>storageDataPath</code>オプションでディレクトリ名を渡す。</p>
+<p>VictoriaMetricsのプロセスを <code>victoria-metrics-prod</code> コマンドで起動するときに、<code>storageDataPath</code> オプションでディレクトリ名を渡す。</p>
 <p>これにより、マウント先のディレクトリを設定できる。ディレクトリ構造は以下のようになっている。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">/var/lib/victoriametrics/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── data/</span>
@@ -33865,7 +33865,7 @@
 <span class="l l-Scalar l-Scalar-Plain">├── snapshots/</span>
 <span class="l l-Scalar l-Scalar-Plain">└── tmp/</span>
 </code></pre></div>
-<p><code>du</code>コマンドを使用して、ストレージ使用量を確認できる。</p>
+<p><code>du</code> コマンドを使用して、ストレージ使用量を確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>du<span class="w"> </span>-hs<span class="w"> </span>/var/lib/victoriametrics/data
 
 100G<span class="w"> </span>/var/lib/victoria-metrics/data
@@ -33879,7 +33879,7 @@
 </blockquote>
 <h4 id="readonly">▼ ReadOnlyモード<a class="headerlink" href="#readonly" title="Permanent link">&para;</a></h4>
 <p>vmstorageは、サイズいっぱいまでデータが保管されると、ランタイムエラーを起こしてしまう。これを回避するために、ReadOnlyモードがある。</p>
-<p>ReadOnlyモードにより、vmstorageの空きサイズが<code>minFreeDiskSpaceBytes</code>オプション値を超えると、書き込みできなくなるような仕様になっている。</p>
+<p>ReadOnlyモードにより、vmstorageの空きサイズが <code>minFreeDiskSpaceBytes</code> オプション値を超えると、書き込みできなくなるような仕様になっている。</p>
 <p>これにより、vmstorageの最大サイズを超えてデータを書き込むことを防いでいる。</p>
 <blockquote>
 <ul>
@@ -33887,10 +33887,10 @@
 </ul>
 </blockquote>
 <h4 id="_16">▼ 保管期間<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>vmstorageは、保管期間を過ぎたメトリクスファイル (主に、<code>data</code>ディレクトリ、<code>indexdb</code>ディレクトリの配下など) を削除する。</p>
+<p>vmstorageは、保管期間を過ぎたメトリクスファイル (主に、<code>data</code> ディレクトリ、<code>indexdb</code> ディレクトリの配下など) を削除する。</p>
 <p>ただし実際には、期間を過ぎたメトリクスファイルを翌日にすぐ削除するわけではなく、月初のバックグラウンドマージ中にまとめて削除する。</p>
-<p>VictoriaMetricsの起動時に、<code>victoria-metrics-prod</code>コマンドの<code>-retentionPeriod</code>オプションで指定できる。</p>
-<p>例えば、<code>-retentionPeriod</code>オプションを90日とすれば、91日を超えたメトリクスファイルを月初にまとめて削除する。</p>
+<p>VictoriaMetricsの起動時に、<code>victoria-metrics-prod</code> コマンドの <code>-retentionPeriod</code> オプションで指定できる。</p>
+<p>例えば、<code>-retentionPeriod</code> オプションを90日とすれば、91日を超えたメトリクスファイルを月初にまとめて削除する。</p>
 <p>日時的な削除処理によって、CPUやディスクI/Oがスパイクになることがある。</p>
 <blockquote>
 <ul>
@@ -33900,8 +33900,8 @@
 </ul>
 </blockquote>
 <h4 id="_17">▼ ストレージの必要サイズの見積もり<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>vmstorageの<code>/var/lib/victoriametrics</code>ディレクトリ配下の増加量 (日) を調査し、これに非機能的な品質の保管日数をかけることにより、vmstorageの必要最低限のサイズを算出できる。</p>
-<p>また、<code>20</code>%の空きサイズを考慮するために、増加量を<code>1.2</code>倍する必要がある。</p>
+<p>vmstorageの <code>/var/lib/victoriametrics</code> ディレクトリ配下の増加量 (日) を調査し、これに非機能的な品質の保管日数をかけることにより、vmstorageの必要最低限のサイズを算出できる。</p>
+<p>また、<code>20</code>%の空きサイズを考慮するために、増加量を <code>1.2</code> 倍する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.victoriametrics.com/#capacity-planning">https://docs.victoriametrics.com/#capacity-planning</a></li>
@@ -33967,8 +33967,8 @@
 </table>
 <p>増加率の推移をグラフ化すると、データが一定の割合で増加していることがわかるはずである。</p>
 <p>これは、Prometheusの仕様として、一定の割合でVictoriaMetricsに送信するようになっているためである。</p>
-<p>もし、データの保管日数が<code>10</code>日分という非機能的な品質であれば、vmstorageは常に過去<code>10</code>日分のデータを保管している必要がある。</p>
-<p>そのため、以下の数式で<code>10</code>日分のサイズを算出できる。</p>
+<p>もし、データの保管日数が <code>10</code> 日分という非機能的な品質であれば、vmstorageは常に過去 <code>10</code> 日分のデータを保管している必要がある。</p>
+<p>そのため、以下の数式で <code>10</code> 日分のサイズを算出できる。</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="err">増加量の合計</span><span class="p">)</span>
 <span class="o">=</span><span class="w"> </span><span class="mi">12900</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">10535</span>
 <span class="o">=</span><span class="w"> </span><span class="mi">2365</span><span class="w"> </span><span class="p">(</span><span class="n">MB</span><span class="o">/</span><span class="err">日</span><span class="p">)</span>
@@ -33984,8 +33984,8 @@
 <p>クライアントから書き込みリクエストを受信し、vmstorageにデータを書き込む。</p>
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="systemctl"><code>systemctl</code>コマンド<a class="headerlink" href="#systemctl" title="Permanent link">&para;</a></h3>
-<p><code>systemctl</code>コマンドを使用して、VictoriaMetricsプロセスをデーモンとして起動する。</p>
+<h3 id="systemctl"><code>systemctl</code> コマンド<a class="headerlink" href="#systemctl" title="Permanent link">&para;</a></h3>
+<p><code>systemctl</code> コマンドを使用して、VictoriaMetricsプロセスをデーモンとして起動する。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -34022,7 +34022,7 @@
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>victoriametricsのプロセスを<code>systemctl</code>で起動する。</p>
+<p>victoriametricsのプロセスを <code>systemctl</code> で起動する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># 作成したファイルを読み込み、VictoriaMetricsプロセスをデーモンとして起動する。</span>
@@ -34057,7 +34057,7 @@ $<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> 
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月4日 17:17:19 JST">2025-11-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

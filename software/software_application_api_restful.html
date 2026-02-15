@@ -33755,13 +33755,13 @@
 <h4 id="restfulrestful-api">▼ RESTfulとRESTful-APIとは<a class="headerlink" href="#restfulrestful-api" title="Permanent link">&para;</a></h4>
 <p>RESTに基づいた設計をRESTfulという。</p>
 <p>RESTful設計が使用されたWebAPIをRESTful-APIという。</p>
-<p>例えば、RESTful-APIの場合、DBにおけるUserInfoのCRUDに対して、<code>1</code>個の『/UserInfo』というURIを対応づけている。</p>
+<p>例えば、RESTful-APIの場合、DBにおけるUserInfoのCRUDに対して、<code>1</code> 個の『/UserInfo』というURIを対応づけている。</p>
 <p><img alt="RESTfulAPI" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/RESTfulAPI.png" /></p>
 <p><br></p>
 <h3 id="rest4">RESTの４原則<a class="headerlink" href="#rest4" title="Permanent link">&para;</a></h3>
 <h4 id="stateless">▼ Statelessであること<a class="headerlink" href="#stateless" title="Permanent link">&para;</a></h4>
 <p>クライアントに対してレスポンスを返信した後に、クライアントの情報を保持せずに破棄する仕組みのこと。</p>
-<p>擬似的にステートフルな通信を実行する時は、キャッシュ、Cookie、セッションIDを使用して、クライアントの情報を保持する。</p>
+<p>擬似的にステートフルな通信を実行するときは、キャッシュ、Cookie、セッションIDを使用して、クライアントの情報を保持する。</p>
 <table>
 <thead>
 <tr>
@@ -33790,7 +33790,7 @@
 <h2 id="02">02. エンドポイント<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">エンドポイントとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>特定のリソースを操作するための固有のURIのこと。</p>
-<p><code>&lt;IPアドレス、ドメイン&gt;:&lt;ポート番号&gt;</code>から構成される。</p>
+<p><code>&lt;IPアドレス、ドメイン&gt;:&lt;ポート番号&gt;</code> から構成される。</p>
 <p>エンドポイント は、リソース1つごと、あるいはまとまりごとに割り振られる。</p>
 <blockquote>
 <ul>
@@ -33799,7 +33799,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="http">HTTPメソッド、エンドポイント、ユースケースの関係<a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
-<p>RESTfulAPIでは、全てのHTTPメソッドの内、主に以下の<code>4</code>個を使用して、データ処理の方法をリクエストする。</p>
+<p>RESTfulAPIでは、全てのHTTPメソッドの内、主に以下の <code>4</code> 個を使用して、データ処理の方法をリクエストする。</p>
 <p>それぞれが、APIのユースケースに対応する。</p>
 <p>ユースケースごとのメソッド名については、Laravelを参考にする。</p>
 <table>
@@ -33850,7 +33850,7 @@
 </ul>
 </blockquote>
 <p>POSTリクエストとPUT送信の重要な違いについてまとめる。</p>
-<p>データを作成するユースケースの時はPOSTリクエスト、または更新する時はPUT送信を使用する。</p>
+<p>データを作成するユースケースの時はPOSTリクエスト、または更新するときはPUT送信を使用する。</p>
 <p>ただしもっと正確には、ユースケースが『作成』or『更新』ではなく、『非冪等』or『冪等』で判断したほうが良い。</p>
 <table>
 <thead>
@@ -33863,8 +33863,8 @@
 <tbody>
 <tr>
 <td>データ作成の冪等性</td>
-<td>リクエスト1つにつき、<code>1</code>個のデータを作成 (非冪等的)</td>
-<td>リクエスト数に限らず、<code>1</code>個のデータを作成する (冪等的) 。古いデータを新しいデータに置換する行為に近い。</td>
+<td>リクエスト1つにつき、<code>1</code> 個のデータを作成 (非冪等的)</td>
+<td>リクエスト数に限らず、<code>1</code> 個のデータを作成する (冪等的) 。古いデータを新しいデータに置換する行為に近い。</td>
 </tr>
 <tr>
 <td>リクエストパラメーターの場所</td>
@@ -33906,7 +33906,7 @@
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/users/foo</span>
 </code></pre></div>
 <p><strong>＊認証の場合＊</strong></p>
-<p>動詞を許容するのであれば<code>login</code>や<code>logout</code>とし、名詞を採用するのであれば<code>session</code>とする。</p>
+<p>動詞を許容するのであれば <code>login</code> や <code>logout</code> とし、名詞を採用するのであれば <code>session</code> とする。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/login</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/session</span>
@@ -33992,7 +33992,7 @@
 <p><strong>＊良い実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/users/12345</span>
 </code></pre></div>
-<p>URLにバージョンを表記しない代わりに、リクエストヘッダーの<code>X-api-Version</code>にバージョン情報を格納する方法がより良い。</p>
+<p>URLにバージョンを表記しない代わりに、リクエストヘッダーの <code>X-api-Version</code> にバージョン情報を格納する方法がより良い。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">X-Api-Version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 </code></pre></div>
 <h4 id="http_2">▼ 異なるHTTPメソッドの間でルールを統一すること<a class="headerlink" href="#http_2" title="Permanent link">&para;</a></h4>
@@ -34019,7 +34019,7 @@
 <thead>
 <tr>
 <th>完全修飾ドメイン名</th>
-<th>宛先のポート番号 (<code>80</code>の場合は省略可)</th>
+<th>宛先のポート番号 (<code>80</code> の場合は省略可)</th>
 <th>ルート</th>
 <th>パスパラメーター</th>
 <th>？</th>
@@ -34098,7 +34098,7 @@
 <h3 id="_16">正常系レスポンスの場合<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="postput">▼ POST/PUTでは処理後データをレスポンス<a class="headerlink" href="#postput" title="Permanent link">&para;</a></h4>
 <p>POST/PUTメソッドでは、処理後のデータを200レスポンスとして返信する。</p>
-<p>もし処理後のデータを返信しない場合、改めてGETリクエストを送信する必要があり、余分なAPIコールが必要になってしまう。</p>
+<p>もし処理後のデータを返信しない場合、あらためてGETリクエストを送信する必要があり、余分なAPIコールが必要になってしまう。</p>
 <blockquote>
 <ul>
 <li><a href="https://developer.ntt.com/ja/blog/741a176b-372f-4666-b649-b677dd23e3f3">https://developer.ntt.com/ja/blog/741a176b-372f-4666-b649-b677dd23e3f3</a></li>
@@ -34142,13 +34142,13 @@
 <span class="w">  </span><span class="s">&quot;subjects&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;math&quot;</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>代わりに、<code>Content-Type</code>ヘッダーに『<code>application/hal+json</code>』『<code>application/vnd.api+json</code>』『<code>application/vnd.collection+json</code>』といったよりJSONベースの強い制約のフォーマットを利用しても良い。</p>
+<p>代わりに、<code>Content-Type</code> ヘッダーに『<code>application/hal+json</code>』『<code>application/vnd.api+json</code>』『<code>application/vnd.collection+json</code>』といったよりJSONベースの強い制約のフォーマットを利用しても良い。</p>
 <h4 id="_19">▼ 日付データの形式に気をつけること<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>RFC3339 (W3C-DTF) 形式でオブジェクトデータに含めて送受信すること。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>2020-07-07T12:00:00+09:00
 </code></pre></div>
-<p>ただし、日付をリクエストパラメーターで送受信する時、RFC3339 (W3C-DTF) 形式を正規表現で設定する必要があるので注意。</p>
+<p>ただし、日付をリクエストパラメーターで送受信するとき、RFC3339 (W3C-DTF) 形式を正規表現で設定する必要があるので注意。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/users/12345?date=2020-07-07T12:00:00%2B09:00</span>
 </code></pre></div>
@@ -34222,7 +34222,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月8日 20:29:24 JST">2025-04-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

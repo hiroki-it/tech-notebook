@@ -28423,12 +28423,12 @@
   <a href="#04-02-specplugin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        04-02. .spec.pluginキー配下で使用する場合
+        04-02. .spec.plugin キー配下で使用する場合
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04-02. .spec.pluginキー配下で使用する場合">
+    <nav class="md-nav" aria-label="04-02. .spec.plugin キー配下で使用する場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -28479,12 +28479,12 @@
   <a href="#04-03-specsourcehelm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        04-03. .spec.source.helmキー配下で使用する場合
+        04-03. .spec.source.helm キー配下で使用する場合
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04-03. .spec.source.helmキー配下で使用する場合">
+    <nav class="md-nav" aria-label="04-03. .spec.source.helm キー配下で使用する場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33599,12 +33599,12 @@
   <a href="#04-02-specplugin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        04-02. .spec.pluginキー配下で使用する場合
+        04-02. .spec.plugin キー配下で使用する場合
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04-02. .spec.pluginキー配下で使用する場合">
+    <nav class="md-nav" aria-label="04-02. .spec.plugin キー配下で使用する場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33655,12 +33655,12 @@
   <a href="#04-03-specsourcehelm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        04-03. .spec.source.helmキー配下で使用する場合
+        04-03. .spec.source.helm キー配下で使用する場合
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04-03. .spec.source.helmキー配下で使用する場合">
+    <nav class="md-nav" aria-label="04-03. .spec.source.helm キー配下で使用する場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -34112,7 +34112,7 @@
 <p>執筆時点 (2023/04/22) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnetなど)
 をApplicationのオプションとして実行できるようになっている。</p>
 <p>すなわち、これらのrepo-serverはこれらのツールを実行できる。</p>
-<p><code>/usr/local/bin</code>ディレクトリ配下でバイナリを確認できる。</p>
+<p><code>/usr/local/bin</code> ディレクトリ配下でバイナリを確認できる。</p>
 <div class="highlight"><pre><span></span><code>argocd@repo-server:/usr/local/bin<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>/usr/local/bin
 
 total<span class="w"> </span><span class="m">193408</span>
@@ -34151,8 +34151,8 @@ lrwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </spa
 <li><a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/hack/tool-versions.sh">https://github.com/argoproj/argo-cd/blob/v2.6.0/hack/tool-versions.sh</a></li>
 </ul>
 </blockquote>
-<p><code>tool-version.sh</code>ファイルで定義した変数は、<code>install.sh</code>ファイルで出力されている。</p>
-<p>Dockerfile上で<code>install.sh</code>ファイルを実行し、ツールをインストールしている。</p>
+<p><code>tool-version.sh</code> ファイルで定義した変数は、<code>install.sh</code> ファイルで出力されている。</p>
+<p>Dockerfile上で <code>install.sh</code> ファイルを実行し、ツールをインストールしている。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/Dockerfile#L31-L32">https://github.com/argoproj/argo-cd/blob/v2.6.0/Dockerfile#L31-L32</a></li>
@@ -34260,7 +34260,7 @@ lrwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </spa
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm-working-dir</span>
 <span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
-<p>Volumeへのマウントが成功していれば、Pod内のサイドカーコンテナの<code>/usr/local/bin</code>ディレクトリで、バイナリファイルを確認できる。</p>
+<p>Volumeへのマウントが成功していれば、Pod内のサイドカーコンテナの <code>/usr/local/bin</code> ディレクトリで、バイナリファイルを確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># サイドカーのVolume</span>
 argocd@cmp-server:/usr/local/bin<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>ls<span class="w"> </span>-la
 
@@ -34275,12 +34275,12 @@ argocd@cmp-server:/usr/local/bin<span class="o">]</span><span class="w"> </span>
 ...
 </code></pre></div>
 <h4 id="_6">▼ サイドカーを配置<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>プラグインを実行するサイドカー (<code>cmp-server</code>コンテナ) を配置する。</p>
-<p>repo-serverは、VolumeのUnixドメインソケットを経由して、<code>cmp-server</code>コンテナのプラグインの実行をコールする。</p>
+<p>プラグインを実行するサイドカー (<code>cmp-server</code> コンテナ) を配置する。</p>
+<p>repo-serverは、VolumeのUnixドメインソケットを経由して、<code>cmp-server</code> コンテナのプラグインの実行をコールする。</p>
 <p>ArgoCD公式ではサイドカーのベースイメージが用意されていない。</p>
 <p>サイドカーで使用するベースイメージをArgoCDのコンテナイメージとするか、その他の軽量イメージ (例：alpine、busybox、ubuntuなど) とするかを選ぶことができ、いくつかのツール (
 例：Helm、Kustomize、Ks、Jsonnetなど) が組み込まれていないため、インストールする必要がある。</p>
-<p>このとき、事前準備として<code>argocd</code>コマンドをコピーするためのInitContainerが必要である。</p>
+<p>このとき、事前準備として <code>argocd</code> コマンドをコピーするためのInitContainerが必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34372,7 +34372,7 @@ argocd@cmp-server:/usr/local/bin<span class="o">]</span><span class="w"> </span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tmp</span>
 <span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
-<p><code>argocd-cmp-server</code>コマンドは、実行に成功するとVolumeにUnixドメインソケットファイルを作成する。</p>
+<p><code>argocd-cmp-server</code> コマンドは、実行に成功するとVolumeにUnixドメインソケットファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>logs<span class="w"> </span>argocd-repo-server<span class="w"> </span>-c<span class="w"> </span>foo-plugin-cmp-server
 
 <span class="nv">time</span><span class="o">=</span><span class="s2">&quot;2023-04-17T12:35:39Z&quot;</span><span class="w"> </span><span class="nv">level</span><span class="o">=</span>info<span class="w"> </span><span class="nv">msg</span><span class="o">=</span><span class="s2">&quot;argocd-cmp-server v2.6.7+5bcd846 serving on /home/argocd/cmp-server/plugins/foo-plugin.sock&quot;</span>
@@ -34382,7 +34382,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 
 foo-plugin.sock
 </code></pre></div>
-<p>なお、<code>plugin.yaml</code>ファイルと別のディレクトリに配置したい場合は、<code>argocd-cmp-server</code>コマンドの<code>--config-dir-path</code>オプションを使用する (<code>plugin.yaml</code>
+<p>なお、<code>plugin.yaml</code> ファイルと別のディレクトリに配置したい場合は、<code>argocd-cmp-server</code> コマンドの <code>--config-dir-path</code> オプションを使用する (<code>plugin.yaml</code>
 ファイルは、これ以外の名前を設定できない)。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>argocd-repo-server<span class="w"> </span>-c<span class="w"> </span>foo-plugin-cmp-server<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;argocd-cmp-server -h&quot;</span>
@@ -34417,9 +34417,9 @@ Flags:
 </ul>
 </blockquote>
 <h4 id="argocd-cmp-cm">▼ argocd-cmp-cmでマニフェスト作成時の追加処理を定義<a class="headerlink" href="#argocd-cmp-cm" title="Permanent link">&para;</a></h4>
-<p>argocd-cmp-cm配下で、ConfigManagementPluginを<code>plugin.yaml</code>ファイルとして管理する。</p>
+<p>argocd-cmp-cm配下で、ConfigManagementPluginを <code>plugin.yaml</code> ファイルとして管理する。</p>
 <p>ConfigManagementPluginで、マニフェスト作成時の追加処理を設定する。</p>
-<p>argocd-cmp-cmの<code>.configManagementPlugins</code>キーで設定することは非推奨である。</p>
+<p>argocd-cmp-cmの <code>.configManagementPlugins</code> キーで設定することは非推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34457,7 +34457,7 @@ Flags:
 <span class="w">    </span><span class="no">...</span>
 </code></pre></div>
 <p>これらの処理は、ArgoCDのリポジトリのポーリングと同時に実行されるため、何らかのエラーがあると、ポーリングのエラーとして扱われる。</p>
-<p>Applicationの<code>.spec.source.plugin.env</code>キーで設定した環境変数が、<code>ARGOCD_ENV_&lt;環境変数名&gt;</code>で出力される。</p>
+<p>Applicationの <code>.spec.source.plugin.env</code> キーで設定した環境変数が、<code>ARGOCD_ENV_&lt;環境変数名&gt;</code> で出力される。</p>
 <p>なお、ConfigManagementPluginはカスタムリソースではないため、CRDは不要である。</p>
 <blockquote>
 <ul>
@@ -34466,7 +34466,7 @@ Flags:
 </ul>
 </blockquote>
 <h4 id="application">▼ Applicationでのプラグインを使用<a class="headerlink" href="#application" title="Permanent link">&para;</a></h4>
-<p>Applicationの<code>.spec.plugin.name</code>キーで、<code>.configManagementPlugins</code>キーで設定した独自のプラグイン名を設定する。</p>
+<p>Applicationの <code>.spec.plugin.name</code> キーで、<code>.configManagementPlugins</code> キーで設定した独自のプラグイン名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34536,8 +34536,8 @@ Flags:
 <h3 id="_7">セットアップ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="helmfile_1">▼ Helmfileのインストール<a class="headerlink" href="#helmfile_1" title="Permanent link">&para;</a></h4>
 <p>Helmfileを使用できるように、Helmfileをインストールする。</p>
-<p>ArgoCDとHelmfileを連携すれば、<code>helmfile</code>コマンドを宣言的に実行しつつ、実行を自動化できる。</p>
-<p><code>helm</code>コマンドを宣言的に実行するのであれば、<code>.spec.source.helm</code>キーを使用すれば十分ではあるが、<code>helmfile</code>を使用すればHelmfileの機能 (例：複数の<code>values</code>
+<p>ArgoCDとHelmfileを連携すれば、<code>helmfile</code> コマンドを宣言的に実行しつつ、実行を自動化できる。</p>
+<p><code>helm</code> コマンドを宣言的に実行するのであれば、<code>.spec.source.helm</code> キーを使用すれば十分ではあるが、<code>helmfile</code> を使用すればHelmfileの機能 (例：複数の <code>values</code>
 ファイルを参照するなど) も活用できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>ここでは軽量のInitContainerを定義し、起動時にHelmfileをインストールする。</p>
@@ -34662,7 +34662,7 @@ Flags:
 </ul>
 </blockquote>
 <h4 id="helmfile_2">▼ helmfileの処理の定義<a class="headerlink" href="#helmfile_2" title="Permanent link">&para;</a></h4>
-<p><code>helmfile template</code>コマンドを実行することにより、マニフェストを作成する。</p>
+<p><code>helmfile template</code> コマンドを実行することにより、マニフェストを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34850,11 +34850,11 @@ Flags:
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04-02-specplugin">04-02. <code>.spec.plugin</code>キー配下で使用する場合<a class="headerlink" href="#04-02-specplugin" title="Permanent link">&para;</a></h2>
+<h2 id="04-02-specplugin">04-02. <code>.spec.plugin</code> キー配下で使用する場合<a class="headerlink" href="#04-02-specplugin" title="Permanent link">&para;</a></h2>
 <h3 id="_10">セットアップ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="helm_2">▼ helmプラグインの処理の定義<a class="headerlink" href="#helm_2" title="Permanent link">&para;</a></h4>
 <p>helmプラグインの処理の定義する。</p>
-<p>ここでは、<code>helm secrets template</code>コマンドでマニフェストを作成し、また変数を復号する。</p>
+<p>ここでは、<code>helm secrets template</code> コマンドでマニフェストを作成し、また変数を復号する。</p>
 <p>新しいhelm-secretsはjkroepke製であり、古いものはzendesk製である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -34892,7 +34892,7 @@ Flags:
 <span class="w">              </span><span class="no">helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE -f $ARGOCD_ENV_VALUES_FILE;</span>
 <span class="w">            </span><span class="no">fi</span>
 </code></pre></div>
-<p>特に、zendesk製のhelm-secretsでは、<code>helm secrets template</code>コマンドの出力内容の末尾に<code>decrypted</code>の文字が出力されるため、<code>| sed '$d'</code>が必要になる。</p>
+<p>特に、zendesk製のhelm-secretsでは、<code>helm secrets template</code> コマンドの出力内容の末尾に <code>decrypted</code> の文字が出力されるため、<code>| sed '$d'</code> が必要になる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34960,10 +34960,10 @@ Flags:
 <span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./values/foo-values.yaml</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="04-03-specsourcehelm">04-03. <code>.spec.source.helm</code>キー配下で使用する場合<a class="headerlink" href="#04-03-specsourcehelm" title="Permanent link">&para;</a></h2>
+<h2 id="04-03-specsourcehelm">04-03. <code>.spec.source.helm</code> キー配下で使用する場合<a class="headerlink" href="#04-03-specsourcehelm" title="Permanent link">&para;</a></h2>
 <h3 id="_12">クラウドプロバイダー上の暗号化キーを使用する場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="serviceaccount">▼ ServiceAccountの作成<a class="headerlink" href="#serviceaccount" title="Permanent link">&para;</a></h4>
-<p><code>repo-server</code>コンテを持つPodに紐付けるServiceAccountを作成する。</p>
+<p><code>repo-server</code> コンテを持つPodに紐付けるServiceAccountを作成する。</p>
 <p>ServiceAccountにはクラウドプロバイダーの認可スコープ (例：AWS IAMロール) を紐付け、暗号化キーを使用可能にする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
@@ -34981,13 +34981,13 @@ Flags:
 </ul>
 </blockquote>
 <h4 id="helm-secrets">▼ helm-secretsの使用<a class="headerlink" href="#helm-secrets" title="Permanent link">&para;</a></h4>
-<p>ポーリングしているリポジトリのルート直下に、以下のような<code>.sops.yaml</code>ファイルが配置されているとしている。</p>
+<p>ポーリングしているリポジトリのルート直下に、以下のような <code>.sops.yaml</code> ファイルが配置されているとしている。</p>
 <div class="highlight"><pre><span></span><code><span class="nn">---</span>
 <span class="nt">creation_rules</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;AWS KMSのARN&gt;</span>
 <span class="w">    </span><span class="nt">encrypted_regex</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;^secureJsonData$&quot;</span>
 </code></pre></div>
-<p>helm-secretsプラグインを使用するために、<code>.spec.source.helm.valueFiles</code>キー配下で<code>secrets://&lt;secretsファイル&gt;</code>を設定する。</p>
+<p>helm-secretsプラグインを使用するために、<code>.spec.source.helm.valueFiles</code> キー配下で <code>secrets://&lt;secretsファイル&gt;</code> を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35081,7 +35081,7 @@ Flags:
 </blockquote>
 <p><br></p>
 <h3 id="_15">プラグインの使用<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p>Applicationの<code>.spec.kustomize</code>キーで、使用するKustomizeのバージョンを指定する。</p>
+<p>Applicationの <code>.spec.kustomize</code> キーで、使用するKustomizeのバージョンを指定する。</p>
 <p>各Applicationで異なるバージョンのKustomizeを指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
@@ -35099,7 +35099,7 @@ Flags:
 <p><br></p>
 <h2 id="06-ksops">06. KSOPS<a class="headerlink" href="#06-ksops" title="Permanent link">&para;</a></h2>
 <h3 id="ksops">KSOPSの実行方法<a class="headerlink" href="#ksops" title="Permanent link">&para;</a></h3>
-<p>repo-serverはKSOPSを実行できる (<code>kustomize</code>コマンドで<code>--enable-alpha-plugins</code>オプションを有効化するだけのため) ため、これのサイドカーは不要である。</p>
+<p>repo-serverはKSOPSを実行できる (<code>kustomize</code> コマンドで <code>--enable-alpha-plugins</code> オプションを有効化するだけのため) ため、これのサイドカーは不要である。</p>
 <p><br></p>
 <h3 id="_16">セットアップ<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="ksops_1">▼ KSOPSのインストール<a class="headerlink" href="#ksops_1" title="Permanent link">&para;</a></h4>
@@ -35212,7 +35212,7 @@ Flags:
 </ul>
 </blockquote>
 <h3 id="_18">プラグインの使用<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
-<p>Applicationの<code>.spec.kustomize</code>キーで、使用するKustomizeのバージョンを指定する。</p>
+<p>Applicationの <code>.spec.kustomize</code> キーで、使用するKustomizeのバージョンを指定する。</p>
 <p>各Applicationで異なるバージョンのKustomizeを指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
@@ -35246,7 +35246,7 @@ Flags:
 </ul>
 </blockquote>
 <h4 id="vault_2">▼ vaultの処理の定義<a class="headerlink" href="#vault_2" title="Permanent link">&para;</a></h4>
-<p><code>helm template</code>コマンドでマニフェストを作成し、またVaultで変数を復号する。</p>
+<p><code>helm template</code> コマンドでマニフェストを作成し、またVaultで変数を復号する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35413,7 +35413,7 @@ Flags:
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月27日 16:57:47 JST">2025-05-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

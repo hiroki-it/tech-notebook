@@ -17043,12 +17043,12 @@
   <a href="#02-cookie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02. Cookieヘッダーによる運搬
+        02. Cookie ヘッダーによる運搬
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. Cookieヘッダーによる運搬">
+    <nav class="md-nav" aria-label="02. Cookie ヘッダーによる運搬">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -17093,12 +17093,12 @@
   <a href="#03-authorization" class="md-nav__link">
     <span class="md-ellipsis">
       
-        03. Authorizationヘッダーによる運搬
+        03. Authorization ヘッダーによる運搬
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. Authorizationヘッダーによる運搬">
+    <nav class="md-nav" aria-label="03. Authorization ヘッダーによる運搬">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -32874,12 +32874,12 @@
   <a href="#02-cookie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02. Cookieヘッダーによる運搬
+        02. Cookie ヘッダーによる運搬
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. Cookieヘッダーによる運搬">
+    <nav class="md-nav" aria-label="02. Cookie ヘッダーによる運搬">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -32924,12 +32924,12 @@
   <a href="#03-authorization" class="md-nav__link">
     <span class="md-ellipsis">
       
-        03. Authorizationヘッダーによる運搬
+        03. Authorization ヘッダーによる運搬
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. Authorizationヘッダーによる運搬">
+    <nav class="md-nav" aria-label="03. Authorization ヘッダーによる運搬">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33122,7 +33122,7 @@
 <p><br></p>
 <h2 id="01">01. 運搬方法の一覧<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <p>マイクロサービスアーキテクチャの文脈では、各認証アーティファクトにさまざまな運搬媒体があります。</p>
-<p>セッションID、アクセストークンであるJWTトークンやOpaqueトークン、APIキーはHTTP/1.1リクエストの<code>Cookie</code>ヘッダーや<code>Authorization</code>ヘッダーで運搬できます。</p>
+<p>セッションID、アクセストークンであるJWTトークンやOpaqueトークン、APIキーはHTTP/1.1リクエストの <code>Cookie</code> ヘッダーや <code>Authorization</code> ヘッダーで運搬できます。</p>
 <p>HTTP/2では、ヘッダー名は小文字にする必要があります。</p>
 <table>
 <thead>
@@ -33137,16 +33137,16 @@
 </thead>
 <tbody>
 <tr>
-<td><strong><code>Cookie</code>ヘッダー</strong></td>
-<td><strong><code>cookie</code>ヘッダー</strong></td>
+<td><strong><code>Cookie</code> ヘッダー</strong></td>
+<td><strong><code>cookie</code> ヘッダー</strong></td>
 <td style="text-align: center;">✔︎</td>
 <td style="text-align: center;">✔︎</td>
 <td style="text-align: center;">✔︎</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td><strong><code>Authorization</code>ヘッダー</strong></td>
-<td><strong><code>authorization</code>ヘッダー</strong></td>
+<td><strong><code>Authorization</code> ヘッダー</strong></td>
+<td><strong><code>authorization</code> ヘッダー</strong></td>
 <td style="text-align: center;">無</td>
 <td style="text-align: center;">✔︎</td>
 <td style="text-align: center;">✔︎</td>
@@ -33162,7 +33162,7 @@
 </tr>
 <tr>
 <td><strong>クエリパラメーター</strong></td>
-<td><code>:path</code>ヘッダー</td>
+<td><code>:path</code> ヘッダー</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -33171,7 +33171,7 @@
 </tbody>
 </table>
 <p><br></p>
-<h2 id="02-cookie">02. <code>Cookie</code>ヘッダーによる運搬<a class="headerlink" href="#02-cookie" title="Permanent link">&para;</a></h2>
+<h2 id="02-cookie">02. <code>Cookie</code> ヘッダーによる運搬<a class="headerlink" href="#02-cookie" title="Permanent link">&para;</a></h2>
 <h3 id="_3">適するユースケース<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>フロントエンドアプリケーションが以下の場合に適する。</p>
 <ul>
@@ -33180,11 +33180,11 @@
 </ul>
 <p><br></p>
 <h3 id="id">セッションIDを運搬する場合<a class="headerlink" href="#id" title="Permanent link">&para;</a></h3>
-<p>セッションベース認証の場合、セッションIDを<code>Cookie</code>ヘッダーで運搬する。</p>
+<p>セッションベース認証の場合、セッションIDを <code>Cookie</code> ヘッダーで運搬する。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>セッションIDを<code>Cookie</code>ヘッダーに割り当て、リクエストを送信する。</p>
+<p>セッションIDを <code>Cookie</code> ヘッダーに割り当て、リクエストを送信する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
@@ -33219,7 +33219,7 @@
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
-<p>レスポンスの<code>Set-Cookie</code>ヘッダーにセッションIDを割り当て、クライアントに送信する。<code>Set-Cookie</code>ヘッダーにより、クライアントは<code>Cookie</code>ヘッダーを設定しなければいけなくなる。</p>
+<p>レスポンスの <code>Set-Cookie</code> ヘッダーにセッションIDを割り当て、クライアントに送信する。<code>Set-Cookie</code> ヘッダーにより、クライアントは <code>Cookie</code> ヘッダーを設定しなければいけなくなる。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
@@ -33252,10 +33252,10 @@
 </blockquote>
 <p><br></p>
 <h3 id="_4">アクセストークンを運搬する場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>トークンベース認証の場合、アクセストークンを<code>Cookie</code>ヘッダーで運搬する。</p>
+<p>トークンベース認証の場合、アクセストークンを <code>Cookie</code> ヘッダーで運搬する。</p>
 <p>CSRFトークンと組み合わせるとさらに良くなる。</p>
-<p>なお、APIではリクエストの送受信時に<code>Cookie</code>ヘッダーよりも<code>Authorization</code>ヘッダーの方が扱いやすいため、<code>Authorization</code>ヘッダーでアクセストークンを運搬することになる。</p>
-<p>また、スマホアプリも<code>Cookie</code>ヘッダーより<code>Authorization</code>ヘッダーがいいらしい。</p>
+<p>なお、APIではリクエストの送受信時に <code>Cookie</code> ヘッダーよりも <code>Authorization</code> ヘッダーの方が扱いやすいため、<code>Authorization</code> ヘッダーでアクセストークンを運搬することになる。</p>
+<p>また、スマホアプリも <code>Cookie</code> ヘッダーより <code>Authorization</code> ヘッダーがいいらしい。</p>
 <p><img alt="JWT" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JWT.png" /></p>
 <blockquote>
 <ul>
@@ -33267,7 +33267,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-authorization">03. <code>Authorization</code>ヘッダーによる運搬<a class="headerlink" href="#03-authorization" title="Permanent link">&para;</a></h2>
+<h2 id="03-authorization">03. <code>Authorization</code> ヘッダーによる運搬<a class="headerlink" href="#03-authorization" title="Permanent link">&para;</a></h2>
 <h3 id="_5">適するユースケース<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>フロントエンドアプリケーションが以下の場合に適する。</p>
 <ul>
@@ -33275,18 +33275,18 @@
 </ul>
 <p><br></p>
 <h3 id="id_1">セッションIDを運搬する場合<a class="headerlink" href="#id_1" title="Permanent link">&para;</a></h3>
-<p>セッションベース認証の場合は、セッションIDを<code>Authorization</code>ヘッダーで運搬することはない。</p>
+<p>セッションベース認証の場合は、セッションIDを <code>Authorization</code> ヘッダーで運搬することはない。</p>
 <p><br></p>
 <h3 id="_6">アクセストークンを運搬する場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>トークンベース認証の場合、アクセストークンを<code>Authorization</code>ヘッダーで運搬する。</p>
+<p>トークンベース認証の場合、アクセストークンを <code>Authorization</code> ヘッダーで運搬する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo</span>
 <span class="nn">---</span>
 <span class="nt">authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer &lt;ヘッダーJSONエンコード値&gt;.&lt;ペイロードJSONエンコード値&gt;.&lt;署名JSONエンコード値&gt;</span>
 </code></pre></div>
-<p>なお不便ではあるが、<code>Authorization</code>ヘッダーは<code>Cookie</code>ヘッダーとは異なり、ローカルマシンに保管できない。</p>
+<p>なお不便ではあるが、<code>Authorization</code> ヘッダーは <code>Cookie</code> ヘッダーとは異なり、ローカルマシンに保管できない。</p>
 <p>その代わり、ブラウザの設定によって、ブラウザのWebストレージで保管できる (Chromeでは、LocalStorageあるいはSessionStorage) 。</p>
-<p>なお、APIではリクエストの送受信時に<code>Cookie</code>ヘッダーよりも<code>Authorization</code>ヘッダーの方が扱いやすいため、<code>Authorization</code>ヘッダーでアクセストークンを運搬することになる。</p>
-<p>また、スマホアプリも<code>Cookie</code>ヘッダーより<code>Authorization</code>ヘッダーがいいらしい。</p>
+<p>なお、APIではリクエストの送受信時に <code>Cookie</code> ヘッダーよりも <code>Authorization</code> ヘッダーの方が扱いやすいため、<code>Authorization</code> ヘッダーでアクセストークンを運搬することになる。</p>
+<p>また、スマホアプリも <code>Cookie</code> ヘッダーより <code>Authorization</code> ヘッダーがいいらしい。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/hirohero/items/d74bc04e16e6d05d2a4a">https://qiita.com/hirohero/items/d74bc04e16e6d05d2a4a</a></li>
@@ -33326,7 +33326,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月17日 20:58:26 JST">2025-10-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

@@ -22246,7 +22246,7 @@
   <a href="#01-tfstate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. tfstateファイルの分割について
+        01. tfstate ファイルの分割について
       
     </span>
   </a>
@@ -22318,7 +22318,7 @@
   <a href="#03-tfstate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        03. モノリスなtfstateファイルを分割する
+        03. モノリスな tfstate ファイルを分割する
       
     </span>
   </a>
@@ -32824,7 +32824,7 @@
   <a href="#01-tfstate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. tfstateファイルの分割について
+        01. tfstate ファイルの分割について
       
     </span>
   </a>
@@ -32896,7 +32896,7 @@
   <a href="#03-tfstate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        03. モノリスなtfstateファイルを分割する
+        03. モノリスな tfstate ファイルを分割する
       
     </span>
   </a>
@@ -33033,7 +33033,7 @@
   
 
 
-<h1 id="tfstate"><code>tfstate</code>ファイルの分割＠プラクティス集<a class="headerlink" href="#tfstate" title="Permanent link">&para;</a></h1>
+<h1 id="tfstate"><code>tfstate</code> ファイルの分割＠プラクティス集<a class="headerlink" href="#tfstate" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -33042,7 +33042,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-tfstate">01. <code>tfstate</code>ファイルの分割について<a class="headerlink" href="#01-tfstate" title="Permanent link">&para;</a></h2>
+<h2 id="01-tfstate">01. <code>tfstate</code> ファイルの分割について<a class="headerlink" href="#01-tfstate" title="Permanent link">&para;</a></h2>
 <blockquote>
 <ul>
 <li><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2023/07/05/001756">https://hiroki-hasegawa.hatenablog.jp/entry/2023/07/05/001756</a></li>
@@ -33051,7 +33051,7 @@
 <p><br></p>
 <h2 id="02">02. ローカル/リモートモジュールのディレクトリ構成<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <p>ここから先の話は遊びみたいなもんです👶🏻</p>
-<p>ローカルモジュールとリモートモジュールは、”汎用的に使用できる<code>resource</code>ブロックや<code>data</code>ブロックのセット” である。</p>
+<p>ローカルモジュールとリモートモジュールは、”汎用的に使用できる <code>resource</code> ブロックや <code>data</code> ブロックのセット” である。</p>
 <p>これらは、モジュールがローカルリポジトリまたはリモートリポジトリのいずれにあるかの違いしかない。</p>
 <p>そのため、このディレクトリ構成はローカル / リモートモジュールの両方に適用できる。</p>
 <p>ローカルモジュールに関して、これをリポジトリ内で汎用的に再利用するユースケースのみ作成するべきである。</p>
@@ -33062,7 +33062,7 @@
 <li>公式リモートモジュールを使用する</li>
 </ul>
 <p>のほうが良い。</p>
-<p>ローカル/リモートモジュールのディレクトリ構成に関して、<strong><code>tfstate</code>ファイルは粒度に関係ないので、これといった目安はない</strong>が、参考までに今までに観測したことのある例をあげた。</p>
+<p>ローカル/リモートモジュールのディレクトリ構成に関して、<strong><code>tfstate</code> ファイルは粒度に関係ないので、これといった目安はない</strong>が、参考までに今までに観測したことのある例をあげた。</p>
 <p><br></p>
 <h3 id="aws">依存先AWSリソース別<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
 <p>依存先の多いAWSリソースに関して、依存先のAWSリソース別にローカルモジュールを分割する。</p>
@@ -33226,13 +33226,13 @@
 <span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── stg/</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="03-tfstate">03. モノリスな<code>tfstate</code>ファイルを分割する<a class="headerlink" href="#03-tfstate" title="Permanent link">&para;</a></h2>
-<p>モノリスな<code>tfstate</code>ファイルとは、例えば特定のAWSアカウント内のAWSリソースを全て一つの<code>tfstate</code>ファイルで管理している場合である。</p>
-<p>AWSリソース値を参照しない関係であれば、これらは別の<code>tfstate</code>ファイルに分割できる。</p>
+<h2 id="03-tfstate">03. モノリスな <code>tfstate</code> ファイルを分割する<a class="headerlink" href="#03-tfstate" title="Permanent link">&para;</a></h2>
+<p>モノリスな <code>tfstate</code> ファイルとは、例えば特定のAWSアカウント内のAWSリソースを全て1つの <code>tfstate</code> ファイルで管理している場合である。</p>
+<p>AWSリソース値を参照しない関係であれば、これらは別の <code>tfstate</code> ファイルに分割できる。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>既存のバックエンド内に新しいディレクトリを作成し、その配下に<code>tfstate</code>ファイルを新しく作成する。</p>
+<p>既存のバックエンド内に新しいディレクトリを作成し、その配下に <code>tfstate</code> ファイルを新しく作成する。</p>
 <p>ここでは、サブシステムを分割すると仮定する。</p>
 </dd>
 </dl>
@@ -33262,7 +33262,7 @@
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>bar側では、foo側の<code>tfstate</code>ファイルからリソース値を取得しつつ、</p>
+<p>bar側では、foo側の <code>tfstate</code> ファイルからリソース値を取得しつつ、</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># 分割した異なるfooというtfstateファイルから取得する</span>
@@ -33279,7 +33279,7 @@
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>新しい<code>tfstate</code>ファイルに、既存のサブシステムの状態をインポートする。</p>
+<p>新しい <code>tfstate</code> ファイルに、既存のサブシステムの状態をインポートする。</p>
 <p>事前に、バックエンドを新しいサブシステムの<code>tfstate</code>ファイルに切り替える。</p>
 </dd>
 </dl>
@@ -33289,7 +33289,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>import
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>サブシステムの<code>tfstate</code>ファイルで差分がないことを確認する。</p>
+<p>サブシステムの <code>tfstate</code> ファイルで差分がないことを確認する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-reconfigure<span class="w"> </span>-backend-config<span class="o">=</span>foo-sub-backend.tfvars
@@ -33298,7 +33298,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>plan
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
-<p>モノリスな<code>tfstate</code>ファイルから、サブシステムの状態を削除する。</p>
+<p>モノリスな <code>tfstate</code> ファイルから、サブシステムの状態を削除する。</p>
 <p>事前に、バックエンドをモノリスな<code>tfstate</code>ファイルに切り替える。</p>
 </dd>
 </dl>
@@ -33326,7 +33326,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> 
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月8日 15:16:16 JST">2025-07-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

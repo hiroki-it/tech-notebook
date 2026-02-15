@@ -33608,7 +33608,7 @@
 </blockquote>
 <h3 id="1-aws-iam">1. AWS IAMロールに信頼ポリシーを紐付け<a class="headerlink" href="#1-aws-iam" title="Permanent link">&para;</a></h3>
 <p>必要なポリシーが設定されたAWS IAMロールを作成する。</p>
-<p>その時信頼ポリシーでは、AWS IAMユーザーの<code>ARN</code>を信頼されたエンティティとして設定しておく。</p>
+<p>その時信頼ポリシーでは、AWS IAMユーザーの <code>ARN</code> を信頼されたエンティティとして設定しておく。</p>
 <p>これにより、そのAWS IAMユーザーに対して、AWS IAMロールを紐付けできるようになる。</p>
 <p>この時に使用するユーザーは、AWS IAMユーザーではなく、AWSリソースやフェデレーテッドユーザーでもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
@@ -33631,7 +33631,7 @@
 <p><br></p>
 <h3 id="2-aws-iam">2. AWS IAMロールを引き受けた資格情報をリクエスト<a class="headerlink" href="#2-aws-iam" title="Permanent link">&para;</a></h3>
 <p>信頼されたエンティティから、STSのエンドポイント (<code>https://sts.amazonaws.com</code>) に対して、ロールの紐付けをリクエストする。</p>
-<p>OIDCによるフェデレーションユーザーの場合は、<code>--external-id</code>オプションの代わりに、<code>--web-identity-token</code>オプションを使用する。</p>
+<p>OIDCによるフェデレーションユーザーの場合は、<code>--external-id</code> オプションの代わりに、<code>--web-identity-token</code> オプションを使用する。</p>
 <p>このオプションに、発行されたJWTを設定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
@@ -33680,8 +33680,8 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
 <p><br></p>
 <h3 id="3">3. 返信されたレスポンスから資格情報を取得<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
 <p>STSのエンドポイントから一時的な資格情報が発行される。</p>
-<p>また同時に、この資格情報は、ローカルマシンの<code>~/.aws/cli/cache</code>ディレクトリ配下にも<code>json</code>ファイルで保管される。</p>
-<p>資格情報の失効時間に合わせて、STSはこの<code>json</code>ファイルを定期的に更新する。</p>
+<p>また同時に、この資格情報は、ローカルマシンの <code>~/.aws/cli/cache</code> ディレクトリ配下にも <code>json</code> ファイルで保管される。</p>
+<p>資格情報の失効時間に合わせて、STSはこの <code>json</code> ファイルを定期的に更新する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Credentials&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
@@ -33719,7 +33719,7 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
 <h3 id="4">4. 資格情報を取得<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
 <p>レスポンスされたデータから資格情報を抽出する。</p>
 <p>この時、アクセスキーID、シークレットアクセスキー、セッショントークンが必要になる。</p>
-<p>代わりに、<code>~/.aws/cli/cache</code>ディレクトリ配下の<code>json</code>ファイルから取得しても良い。</p>
+<p>代わりに、<code>~/.aws/cli/cache</code> ディレクトリ配下の <code>json</code> ファイルから取得しても良い。</p>
 <p>資格情報を環境変数として出力し、使用できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
@@ -33751,7 +33751,7 @@ aws<span class="w"> </span>configure<span class="w"> </span>--profile<span class
 <p><br></p>
 <h3 id="5">5. 認証／認可の動作確認<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
 <p>ロールを引き受けた新しいアカウントを使用して、AWSリソースに認証／認可できるか否かを確認する。</p>
-<p>資格情報の取得方法として資格情報ファイルの作成を<code>tfstate</code>ファイル択した場合、<code>profile</code>オプションが必要である。</p>
+<p>資格情報の取得方法として資格情報ファイルの作成を <code>tfstate</code> ファイル択した場合、<code>profile</code> オプションが必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1"># 資格情報ファイルを参照するオプションが必要がある。</span>
@@ -33822,9 +33822,9 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
 </code></pre></div>
 <h4 id="aws-eksid">▼ AWS EKSをIDプロバイダーとする場合<a class="headerlink" href="#aws-eksid" title="Permanent link">&para;</a></h4>
 <p><img alt="AWS EKS_oidc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/EKS_oidc.png" /></p>
-<p>AWS EKSをIDプロバイダーとして使用するように、<code>Federated</code>キーでAWS EKS Clusterの識別子を設定する。</p>
+<p>AWS EKSをIDプロバイダーとして使用するように、<code>Federated</code> キーでAWS EKS Clusterの識別子を設定する。</p>
 <p>これにより、AWS EKS Cluster内で認証済みのServiceAccountにAWS IAMロールを紐付けることができるようになる。</p>
-<p>また、<code>Condition</code>キーで特定のServiceAccountを指定できるようにする。</p>
+<p>また、<code>Condition</code> キーで特定のServiceAccountを指定できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
@@ -33850,7 +33850,7 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p>KubernetesのServiceAccountを作成し、AWS IAMロールのARNを設定する。</p>
-<p>ServiceAccountは、Terraformではなくマニフェストで定義した方が良い。</p>
+<p>ServiceAccountは、Terraformではなくマニフェストで定義したほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34014,7 +34014,7 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月16日 14:34:37 JST">2025-05-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

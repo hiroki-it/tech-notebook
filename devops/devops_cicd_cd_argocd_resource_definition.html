@@ -28252,7 +28252,7 @@
   <a href="#kubectl" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ kubectlコマンドを使用して
+        ▼ kubectl コマンドを使用して
       
     </span>
   </a>
@@ -28263,7 +28263,7 @@
   <a href="#argocd_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ argocdコマンドを使用して
+        ▼ argocd コマンドを使用して
       
     </span>
   </a>
@@ -28558,7 +28558,7 @@
   <a href="#respectignoredifferences" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 合わせてRespectIgnoreDifferencesキーも使用する
+        ▼ 合わせて RespectIgnoreDifferences キーも使用する
       
     </span>
   </a>
@@ -33928,7 +33928,7 @@
   <a href="#kubectl" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ kubectlコマンドを使用して
+        ▼ kubectl コマンドを使用して
       
     </span>
   </a>
@@ -33939,7 +33939,7 @@
   <a href="#argocd_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ argocdコマンドを使用して
+        ▼ argocd コマンドを使用して
       
     </span>
   </a>
@@ -34234,7 +34234,7 @@
   <a href="#respectignoredifferences" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 合わせてRespectIgnoreDifferencesキーも使用する
+        ▼ 合わせて RespectIgnoreDifferences キーも使用する
       
     </span>
   </a>
@@ -35064,7 +35064,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 
 $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/argoproj/argo-cd/manifests/crds?ref=&lt;タグ&gt;&quot;</span>
 </code></pre></div>
-<p>例えば、argocd-cdチャートの<code>5.26.0</code>を使用する場合、これはArgoCDの<code>2.6.5</code>をサポートしているため、以下の値で適用する。</p>
+<p>例えば、argocd-cdチャートの <code>5.26.0</code> を使用する場合、これはArgoCDの <code>2.6.5</code> をサポートしているため、以下の値で適用する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.5&quot;</span>
 
 $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.5&quot;</span>
@@ -35103,7 +35103,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h2 id="01-02">01-02. ダッシュボード<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">ネットワークに公開しない場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<h4 id="kubectl">▼ <code>kubectl</code>コマンドを使用して<a class="headerlink" href="#kubectl" title="Permanent link">&para;</a></h4>
+<h4 id="kubectl">▼ <code>kubectl</code> コマンドを使用して<a class="headerlink" href="#kubectl" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -35127,7 +35127,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p><code>443</code>番ポートにルーティングできる<code>L7</code>ロードバランサーを作成する。</p>
+<p><code>443</code> 番ポートにルーティングできる <code>L7</code> ロードバランサーを作成する。</p>
 <p>この時、IngressとIngress Controllerを作成するか、<code>kubectl port-forward</code>コマンドなど実行することにより、ダッシュボードにリクエストを送信する。</p>
 <p><code>minikube tunnel</code>コマンドでは、ポート番号を指定できないことに注意する。</p>
 </dd>
@@ -35138,11 +35138,11 @@ $<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class=
 <span class="c1"># ホストポートを介してPodのポートにリクエストを送信する。</span>
 $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:8080
 </code></pre></div>
-<h4 id="argocd_1">▼ <code>argocd</code>コマンドを使用して<a class="headerlink" href="#argocd_1" title="Permanent link">&para;</a></h4>
+<h4 id="argocd_1">▼ <code>argocd</code> コマンドを使用して<a class="headerlink" href="#argocd_1" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p><code>argocd</code>コマンドをインストールする。</p>
+<p><code>argocd</code> コマンドをインストールする。</p>
 </dd>
 </dl>
 <blockquote>
@@ -35741,7 +35741,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <tbody>
 <tr>
 <td>Sync</td>
-<td>ポーリング対象リポジトリとのマニフェストの差分を確認し、差分があれば<code>kubectl apply</code>コマンドを実行する。</td>
+<td>ポーリング対象リポジトリとのマニフェストの差分を確認し、差分があれば <code>kubectl apply</code> コマンドを実行する。</td>
 </tr>
 <tr>
 <td>Refresh</td>
@@ -35805,9 +35805,9 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 </blockquote>
 <h4 id="namespace">▼ Namespace<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h4>
 <p>Applicationは、元はArgocCDのapplication-controllerと同じNamespaceのみに作成できたが、執筆時点 (2024/10/07) では任意のNamespaceに作成できる。</p>
-<p>これにより、例えばapplication-controllerを<code>argocd</code>というNamespaceに、Applicationを自由なNamespaceに配置できる。</p>
+<p>これにより、例えばapplication-controllerを <code>argocd</code> というNamespaceに、Applicationを自由なNamespaceに配置できる。</p>
 <p>ただし、ルートのApplicationはargocd-serverと同じNamespaceに配置しないと、UI上にApplicationを表示できない。</p>
-<p>また、この方法を採用するのであれば、Namespaceごとにapplication-controllerを分けた方がシンプルでわかりやすい。</p>
+<p>また、この方法を採用するのであれば、Namespaceごとにapplication-controllerを分けたほうがシンプルでわかりやすい。</p>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/">https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/</a></li>
@@ -35844,9 +35844,9 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <li><a href="https://blog.framinal.life/entry/2021/10/04/224722">https://blog.framinal.life/entry/2021/10/04/224722</a></li>
 </ul>
 </blockquote>
-<h4 id="respectignoredifferences">▼ 合わせて<code>RespectIgnoreDifferences</code>キーも使用する<a class="headerlink" href="#respectignoredifferences" title="Permanent link">&para;</a></h4>
+<h4 id="respectignoredifferences">▼ 合わせて <code>RespectIgnoreDifferences</code> キーも使用する<a class="headerlink" href="#respectignoredifferences" title="Permanent link">&para;</a></h4>
 <p>注意点として、Syncステータスの判定時に無視されるのみで、内部的にSyncは実行されてしまうため、Syncのたびに設定値が元に戻ってしまう。</p>
-<p>そこで別途、<code>.spec.syncPolicy.syncOptions[*].RespectIgnoreDifferences</code>キーも有効化しておくと良い。</p>
+<p>そこで別途、<code>.spec.syncPolicy.syncOptions[*].RespectIgnoreDifferences</code> キーも有効化しておくと良い。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35872,7 +35872,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <h4 id="project">▼ projectとは<a class="headerlink" href="#project" title="Permanent link">&para;</a></h4>
 <p>アプリケーションの所属するAppProject名を設定する。</p>
 <p>AppProject名は『<code>default</code>』は必ず作成する必要がある。</p>
-<p><code>default</code>以外のAppProjectは、認可スコープと紐付けられるように、チーム別や実行環境別に作成すると良い。</p>
+<p><code>default</code> 以外のAppProjectは、認可スコープと紐付けられるように、チーム別や実行環境別に作成すると良い。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35906,7 +35906,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <h3 id="specsource">.spec.source<a class="headerlink" href="#specsource" title="Permanent link">&para;</a></h3>
 <h4 id="source">▼ sourceとは<a class="headerlink" href="#source" title="Permanent link">&para;</a></h4>
 <p>リポジトリ (マニフェストリポジトリ、チャートリポジトリ、OCIリポジトリ) の変更をポーリングし、これらからプルしたマニフェストで
-<code>kubectl apply</code>コマンドを実行。</p>
+<code>kubectl apply</code> コマンドを実行。</p>
 <table>
 <thead>
 <tr>
@@ -35919,17 +35919,17 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <tr>
 <td>マニフェストリポジトリ (例：GitHub内のリポジトリ)</td>
 <td>マニフェストそのまま</td>
-<td>ArgoCDで直接的に<code>kubectl apply</code>コマンドを実行する。</td>
+<td>ArgoCDで直接的に <code>kubectl apply</code> コマンドを実行する。</td>
 </tr>
 <tr>
 <td>チャートリポジトリ (例：ArtifactHub、GitHub Pages、内のリポジトリ、AWS S3)</td>
-<td>チャートアーカイブ (<code>.tgz</code>形式ファイル)</td>
-<td>Helmを使用して、ArgoCDで間接的に<code>kubectl apply</code>コマンドを実行する。パラメーターに応じて、内部的に<code>helm</code>コマンドが実行される。</td>
+<td>チャートアーカイブ (<code>.tgz</code> 形式ファイル)</td>
+<td>Helmを使用して、ArgoCDで間接的に <code>kubectl apply</code> コマンドを実行する。パラメーターに応じて、内部的に <code>helm</code> コマンドが実行される。</td>
 </tr>
 <tr>
 <td>OCIリポジトリ (例：ECR内のリポジトリ)</td>
-<td>チャートアーカイブ (<code>.tgz</code>形式ファイル)</td>
-<td>Helmを使用して、ArgoCDで間接的に<code>kubectl apply</code>コマンドを実行する。パラメーターに応じて、内部的に<code>helm</code>コマンドが実行される。</td>
+<td>チャートアーカイブ (<code>.tgz</code> 形式ファイル)</td>
+<td>Helmを使用して、ArgoCDで間接的に <code>kubectl apply</code> コマンドを実行する。パラメーターに応じて、内部的に <code>helm</code> コマンドが実行される。</td>
 </tr>
 </tbody>
 </table>
@@ -35953,15 +35953,15 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <tbody>
 <tr>
 <td><code>include</code></td>
-<td><code>.spec.source.path</code>キーで指定したディレクトリ内で、特定のマニフェストのみを指定し、kube-apiserverに送信する</td>
+<td><code>.spec.source.path</code> キーで指定したディレクトリ内で、特定のマニフェストのみを指定し、kube-apiserverに送信する</td>
 </tr>
 <tr>
 <td><code>exclude</code></td>
-<td><code>.spec.source.path</code>キーで指定したディレクトリ内で、特定のマニフェストを除外し、kube-apiserverに送信する</td>
+<td><code>.spec.source.path</code> キーで指定したディレクトリ内で、特定のマニフェストを除外し、kube-apiserverに送信する</td>
 </tr>
 <tr>
 <td><code>recurse</code></td>
-<td><code>.spec.source.path</code>キーで指定したディレクトリにサブディレクトリが存在している場合、全てのマニフェストを指定できるように、ディレクトリ内の再帰的検出を有効化するか否かを設定する。</td>
+<td><code>.spec.source.path</code> キーで指定したディレクトリにサブディレクトリが存在している場合、全てのマニフェストを指定できるように、ディレクトリ内の再帰的検出を有効化するか否かを設定する。</td>
 </tr>
 </tbody>
 </table>
@@ -36069,7 +36069,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <h3 id="specsource_2">.spec.source (チャートレジストリ内リポジトリの場合)<a class="headerlink" href="#specsource_2" title="Permanent link">&para;</a></h3>
 <h4 id="chart">▼ chart<a class="headerlink" href="#chart" title="Permanent link">&para;</a></h4>
 <p>ポーリング対象のチャートレジストリ内のリポジトリにあるチャート名を設定する。</p>
-<p>バージョンタグは、<code>Chart.yaml</code>ファイルの<code>name</code>キーから確認する。</p>
+<p>バージョンタグは、<code>Chart.yaml</code> ファイルの <code>name</code> キーから確認する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36087,8 +36087,8 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 </ul>
 </blockquote>
 <h4 id="helm">▼ helm<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h4>
-<p><code>helm</code>コマンドに渡すオプションを設定する。</p>
-<p>helmfileと同じように<code>helm</code>コマンドを宣言的に実行しつつ、実行を自動化できる。</p>
+<p><code>helm</code> コマンドに渡すオプションを設定する。</p>
+<p>helmfileと同じように <code>helm</code> コマンドを宣言的に実行しつつ、実行を自動化できる。</p>
 <table>
 <thead>
 <tr>
@@ -36100,22 +36100,22 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <tbody>
 <tr>
 <td><code>releaseName</code></td>
-<td>Helmリリース名を設定する。多くのチャートではデフォルトでArgoCDの名前をHelmリリース名としており、Helmリリース名はチャート内のKubernetesリソースのプレフィクスになる。予期せぬApplicationの再作成を防ぐにために、<code>releaseName</code>を明示的に設定した方が良い。</td>
+<td>Helmリリース名を設定する。多くのチャートではデフォルトでArgoCDの名前をHelmリリース名としており、Helmリリース名はチャート内のKubernetesリソースのプレフィクスになる。予期せぬApplicationの再作成を防ぐにために、<code>releaseName</code> を明示的に設定したほうが良い。</td>
 <td></td>
 </tr>
 <tr>
 <td><code>values</code></td>
-<td><code>helm</code>コマンドに渡す<code>values</code>ファイルの値をハードコーディングする。</td>
-<td>執筆時点 (2022/10/31) では、<code>values</code>ファイルは、同じチャートリポジトリ内にある必要がある。チャートと<code>values</code>ファイルが異なるリポジトリにある場合 (例：チャートはOSSを参照し、<code>values</code>ファイルは自前で定義する) 、<code>valueFiles</code>オプションの代わりに<code>values</code>オプションを使用する。<br>・<a href="https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936">https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936</a> <br>・<a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L48-L62">https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L48-L62</a> <br><br>ただし、Applicationに<code>values</code>ファイルをハードコーディングした場合、共有<code>values</code>ファイルと差分<code>values</code>ファイルに切り分けて定義できなくなってしまう。そこで、<code>values</code>オプションの一部分をHelmのテンプレート機能で動的に出力する。ただし、新機能として複数のリポジトリの<code>values</code>ファイルを参照する方法が提案されており、これを使用すれば異なるリポジトリに<code>values</code>ファイルがあっても<code>valueFiles</code>オプションで指定できるようになる。<br>・<a href="https://github.com/argoproj/argo-cd/pull/10432">https://github.com/argoproj/argo-cd/pull/10432</a></td>
+<td><code>helm</code> コマンドに渡す <code>values</code> ファイルの値をハードコーディングする。</td>
+<td>執筆時点 (2022/10/31) では、<code>values</code> ファイルは、同じチャートリポジトリ内にある必要がある。チャートと <code>values</code> ファイルが異なるリポジトリにある場合 (例：チャートはOSSを参照し、<code>values</code> ファイルは自前で定義する) 、<code>valueFiles</code> オプションの代わりに <code>values</code> オプションを使用する。<br>・<a href="https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936">https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936</a> <br>・<a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L48-L62">https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L48-L62</a> <br><br>ただし、Applicationに <code>values</code> ファイルをハードコーディングした場合、共有 <code>values</code> ファイルと差分 <code>values</code> ファイルに切り分けて定義できなくなってしまう。そこで、<code>values</code> オプションの一部分をHelmのテンプレート機能で動的に出力する。ただし、新機能として複数のリポジトリの <code>values</code> ファイルを参照する方法が提案されており、これを使用すれば異なるリポジトリに <code>values</code> ファイルがあっても <code>valueFiles</code> オプションで指定できるようになる。<br>・<a href="https://github.com/argoproj/argo-cd/pull/10432">https://github.com/argoproj/argo-cd/pull/10432</a></td>
 </tr>
 <tr>
 <td><code>valueFiles</code></td>
-<td><code>helm</code>コマンドに渡す<code>values</code>ファイルを設定する。</td>
+<td><code>helm</code> コマンドに渡す <code>values</code> ファイルを設定する。</td>
 <td></td>
 </tr>
 <tr>
 <td><code>version</code></td>
-<td><code>helm</code>コマンドのバージョンを設定する。デフォルトでは、<code>v3</code>になる。 ArgoCD自体をHelmでセットアップする場合は、インストールするHelmのバージョンを指定できる。そのため、このオプションを使用する必要はない。</td>
+<td><code>helm</code> コマンドのバージョンを設定する。デフォルトでは、<code>v3</code> になる。 ArgoCD自体をHelmでセットアップする場合は、インストールするHelmのバージョンを指定できる。そのため、このオプションを使用する必要はない。</td>
 <td>・<a href="https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-version">https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-version</a></td>
 </tr>
 </tbody>
@@ -36127,7 +36127,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <li><a href="https://mixi-developers.mixi.co.jp/argocd-with-helm-fee954d1003c">https://mixi-developers.mixi.co.jp/argocd-with-helm-fee954d1003c</a></li>
 </ul>
 </blockquote>
-<p><code>helm</code>コマンドに渡す<code>values</code>ファイルの値をハードコーディングする。</p>
+<p><code>helm</code> コマンドに渡す <code>values</code> ファイルの値をハードコーディングする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36145,7 +36145,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">        </span><span class="no">bar: bar</span>
 <span class="w">        </span><span class="no">baz: baz</span>
 </code></pre></div>
-<p>ポーリング対象のリポジトリにある<code>values</code>ファイルを使用する。</p>
+<p>ポーリング対象のリポジトリにある <code>values</code> ファイルを使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36161,7 +36161,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">      </span><span class="nt">valueFiles</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./prd.yaml</span>
 </code></pre></div>
-<p>デフォルトの<code>values</code>ファイルと実行環境別の<code>values</code>ファイルの複数を指定できる。</p>
+<p>デフォルトの <code>values</code> ファイルと実行環境別の <code>values</code> ファイルの複数を指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36178,7 +36178,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default.yaml</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./prd.yaml</span>
 </code></pre></div>
-<p>暗号化された<code>values</code>ファイルを使用することもできる。</p>
+<p>暗号化された <code>values</code> ファイルを使用することもできる。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/camptocamp/argocd-helm-sops-example">https://github.com/camptocamp/argocd-helm-sops-example</a></li>
@@ -36200,8 +36200,8 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">        </span><span class="c1"># helm-secretsを使用して暗号化されたvaluesファイル</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./secrets.yaml</span>
 </code></pre></div>
-<p>あらかじめ、SOPSを使用して、<code>values</code>ファイルを暗号化し、キーバリュー型ストアに設定しておく。</p>
-<p>ポーリング対象のリポジトリに<code>.sops.yaml</code>ファイルと<code>secrets</code>ファイル (キーバリュー型ストア) を配置しておく必要がある。</p>
+<p>あらかじめ、SOPSを使用して、<code>values</code> ファイルを暗号化し、キーバリュー型ストアに設定しておく。</p>
+<p>ポーリング対象のリポジトリに <code>.sops.yaml</code> ファイルと <code>secrets</code> ファイル (キーバリュー型ストア) を配置しておく必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># secretsファイル</span>
 
 <span class="c1"># キーバリュー型ストア</span>
@@ -36211,8 +36211,8 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 
 <span class="nt">sops</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
-<p>ArgoCDは暗号化された<code>values</code>ファイルを復号し、チャートをインストールする。</p>
-<p>補足としてArgoCD上では、Secretのdataキーは<code>base64</code>方式でエンコードされる。</p>
+<p>ArgoCDは暗号化された <code>values</code> ファイルを復号し、チャートをインストールする。</p>
+<p>補足としてArgoCD上では、Secretのdataキーは <code>base64</code> 方式でエンコードされる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># valuesファイルの暗号化された値を出力するテンプレートファイル</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
@@ -36223,16 +36223,16 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">  </span><span class="nt">AWS_ACCESS_KEY</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.data.AWS_ACCESS_KEY | b64en</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># base64方式でエンコードされる。</span>
 <span class="w">  </span><span class="nt">AWS_SECRET_ACCESS_KEY</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.data.AWS_SECRET_ACCESS_KEY | b64en</span><span class="p p-Indicator">}}</span>
 </code></pre></div>
-<p>ArgoCDはHelmの<code>v2</code>と<code>v3</code>の両方を保持している。</p>
-<p>Helmリリースするチャートの<code>.apiVersion</code>キーの値が<code>v1</code>であれば、ArgoCDはHelmの<code>v2</code>を使用して、一方で<code>.apiVersion</code>キーの値が
-<code>v2</code>であれば、Helmの<code>v3</code>を使用するようになっている。</p>
+<p>ArgoCDはHelmの <code>v2</code> と <code>v3</code> の両方を保持している。</p>
+<p>Helmリリースするチャートの <code>.apiVersion</code> キーの値が <code>v1</code> であれば、ArgoCDはHelmの <code>v2</code> を使用して、一方で <code>.apiVersion</code> キーの値が
+<code>v2</code> であれば、Helmの <code>v3</code> を使用するようになっている。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/argoproj/argo-cd/issues/2383#issuecomment-584441681">https://github.com/argoproj/argo-cd/issues/2383#issuecomment-584441681</a></li>
 </ul>
 </blockquote>
-<p>ArgoCDを介してHelmを実行する場合、内部的には<code>helm template</code>コマンドとetcd上のマニフェストを<code>kubectl diff</code>コマンドで比較し、生じた差分を
-<code>kubectl apply</code>コマンドを使用してデプロイしている。</p>
+<p>ArgoCDを介してHelmを実行する場合、内部的には <code>helm template</code> コマンドとetcd上のマニフェストを <code>kubectl diff</code> コマンドで比較し、生じた差分を
+<code>kubectl apply</code> コマンドを使用してデプロイしている。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>--include-crds<span class="w"> </span><span class="p">|</span><span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-f<span class="w"> </span>-
 
 $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>--include-crds<span class="w"> </span><span class="p">|</span><span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>-
@@ -36245,7 +36245,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </blockquote>
 <p>そのため、Helmを手動でマニフェストをHelmリリースする場合とは異なり、カスタムリソースのマニフェストの設定値を変更できる。</p>
 <p>一方で、Helmリリース履歴が存在しない。</p>
-<p>Helmリリースの履歴の代わりに、<code>argocd app history</code>コマンドで確認できる。</p>
+<p>Helmリリースの履歴の代わりに、<code>argocd app history</code> コマンドで確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>app<span class="w"> </span><span class="nb">history</span><span class="w"> </span>&lt;Application名&gt;
 
 ID<span class="w">  </span>DATE<span class="w">                           </span>REVISION
@@ -36262,8 +36262,8 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <h4 id="repourl_1">▼ repoURL<a class="headerlink" href="#repourl_1" title="Permanent link">&para;</a></h4>
 <p>ポーリング対象のチャートレジストリ内のリポジトリのURLを設定する。</p>
 <p>パブリックリポジトリであれば認証が不要であるが、プライベートリポジトリであればこれが必要になる。</p>
-<p>チャートリポジトリとして扱うために、リポジトリのルート直下に<code>index.yaml</code>ファイルと
-<code>.tgz</code>ファイルを配置して、チャートリポジトリとして扱えるようにしておく必要がある。</p>
+<p>チャートリポジトリとして扱うために、リポジトリのルート直下に <code>index.yaml</code> ファイルと
+<code>.tgz</code> ファイルを配置して、チャートリポジトリとして扱えるようにしておく必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36298,7 +36298,7 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 </blockquote>
 <h4 id="targetrevision_1">▼ targetRevision<a class="headerlink" href="#targetrevision_1" title="Permanent link">&para;</a></h4>
 <p>ポーリング対象のチャートレジストリ内のリポジトリにあるチャートのバージョンタグを設定する。</p>
-<p>バージョンタグは、<code>Chart.yaml</code>ファイルの<code>version</code>キーから確認する。</p>
+<p>バージョンタグは、<code>Chart.yaml</code> ファイルの <code>version</code> キーから確認する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36384,7 +36384,7 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <h4 id="_16">▼ 公式チャート + ユーザー定義チャート (プラグインを実行)<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>公式チャートに加えて、ユーザー定義のマニフェストを含むチャートをデプロイする使用例である。</p>
 <p>この時、プラグイン (<code>helm secrets</code>) を使用することもできる。</p>
-<p>例えば、公式チャートで資格情報を使用したSecretが必要な場合、<code>helm secrets</code>プラグインを使用した追加チャートを定義するとよい。</p>
+<p>例えば、公式チャートで資格情報を使用したSecretが必要な場合、<code>helm secrets</code> プラグインを使用した追加チャートを定義するとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36446,7 +36446,7 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-namespace</span>
 </code></pre></div>
 <p>注意点として、Applicationがリポジトリで検知したKubernetesリソースの
-<code>metadata.namespace</code>キーで、別のNamespaceで作成されている場合、そちらが優先される。</p>
+<code>metadata.namespace</code> キーで、別のNamespaceで作成されている場合、そちらが優先される。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/argoproj/argo-cd/issues/2280#issuecomment-530030455">https://github.com/argoproj/argo-cd/issues/2280#issuecomment-530030455</a></li>
@@ -36483,7 +36483,7 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <p>Syncのオプションを設定する。</p>
 <h4 id="automated">▼ automated<a class="headerlink" href="#automated" title="Permanent link">&para;</a></h4>
 <p>GitOpsでのリポジトリ (例：GitHub、Helmなど) とKubernetesの間の自動Syncを設定する。</p>
-<p>ArgoCDはリポジトリを<code>3</code>分間ごとにポーリングしており、このタイミングでリポジトリとの間でマニフェストの状態を同期する。</p>
+<p>ArgoCDはリポジトリを <code>3</code> 分間ごとにポーリングしており、このタイミングでリポジトリとの間でマニフェストの状態を同期する。</p>
 <p>開発者には参照権限のみの認可スコープを付与し、ArgoCDの自動Syncを有効化すれば、開発者がデプロイできなくなり、安全性が増す。</p>
 <p>また、複数の実行環境やチームがある場合、Sync漏れを防げる。</p>
 <p>一方で、App Of Appsパターンを採用している場合、親のApplicationの自動Syncが有効化していると、子Applicationの設定値 (例：ターゲットブランチ) を変更できず煩わしい。</p>
@@ -36503,7 +36503,7 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 </tr>
 <tr>
 <td><code>prune</code></td>
-<td>リソースを作成しつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GitHubリポジトリでマニフェストが削除されても、ArgoCDはリソースを自動的に削除しない。開発者の気づかないうちに、残骸のKubernetesリソースが溜まる可能性があるため、有効化した方が良い。<code>rev:&lt;番号&gt;</code>という表記があるKubernetesリソースは、<code>prune</code>を忘れて新旧バージョンが存在していることを表す。Applicationを削除する時には、Application配下のKubernetesリソースが残骸にならないように、Application配下のKubernetesリソースを先に削除しておく。</td>
+<td>リソースを作成しつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GitHubリポジトリでマニフェストが削除されても、ArgoCDはリソースを自動的に削除しない。開発者の気づかないうちに、残骸のKubernetesリソースが溜まる可能性があるため、有効化したほうが良い。<code>rev:&lt;番号&gt;</code> という表記があるKubernetesリソースは、<code>prune</code> を忘れて新旧バージョンが存在していることを表す。Applicationを削除するときには、Application配下のKubernetesリソースが残骸にならないように、Application配下のKubernetesリソースを先に削除しておく。</td>
 <td>・<a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning">https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning</a></td>
 </tr>
 <tr>
@@ -36550,7 +36550,7 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <tr>
 <td><code>CreateNamespace</code></td>
 <td>Applicationの作成対象のNamespaceを自動的に作成する。</td>
-<td>Namespaceので出どころがわからなくなるため、ArgoCDの<code>createNamespace</code>オプションは無効化し、Namespaceのマニフェストを定義しておく方が良い。</td>
+<td>Namespaceので出どころがわからなくなるため、ArgoCDの <code>createNamespace</code> オプションは無効化し、Namespaceのマニフェストを定義しておくほうが良い。</td>
 </tr>
 <tr>
 <td><code>Validate</code></td>
@@ -36569,7 +36569,7 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 </tr>
 <tr>
 <td><code>ServerSideApply</code></td>
-<td>Sync時、<code>kubectl apply</code>コマンド<code>--server-side</code>オプションを有効化する。</td>
+<td>Sync時、<code>kubectl apply</code> コマンド <code>--server-side</code> オプションを有効化する。</td>
 <td>・<a href="https://argo-cd.readthedocs.io/en/latest/user-guide/sync-options/#server-side-apply">https://argo-cd.readthedocs.io/en/latest/user-guide/sync-options/#server-side-apply</a></td>
 </tr>
 </tbody>
@@ -36596,10 +36596,10 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <p><br></p>
 <h2 id="03-applicationset">03. ApplicationSet<a class="headerlink" href="#03-applicationset" title="Permanent link">&para;</a></h2>
 <h3 id="applicationset">ApplicationSet<a class="headerlink" href="#applicationset" title="Permanent link">&para;</a></h3>
-<p>ArgoCDのApplicationは、<code>1</code>個のClusterにしかマニフェストを送信できない。</p>
+<p>ArgoCDのApplicationは、<code>1</code> 個のClusterにしかマニフェストを送信できない。</p>
 <p>そのため、Clusterの数だけApplicationを個別に管理しなければならない。</p>
 <p>一方で、ApplicationSetであれば、異なるClusterに対応するApplicationを一括して管理できる。</p>
-<p>なお、Helmを使用している場合は、ApplicationSetの代わりに<code>range</code>関数を使用できる。</p>
+<p>なお、Helmを使用している場合は、ApplicationSetの代わりに <code>range</code> 関数を使用できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ApplicationSet</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36650,9 +36650,9 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 </blockquote>
 <p><br></p>
 <h3 id="default-appproject">default AppProject<a class="headerlink" href="#default-appproject" title="Permanent link">&para;</a></h3>
-<p>ArgoCDは、最も認可スコープの大きい<code>default</code>のAppProjectを自動的に作成する。</p>
-<p><code>default</code>のAppProjectでは、任意のNamespaceでApplicationを作成できる。</p>
-<p>テナントを完全に分離するために、<code>default</code>のAppProjectにはApplicationを作成せずに、ユーザー定義のAppProjectを使用する。</p>
+<p>ArgoCDは、もっとも認可スコープの大きい <code>default</code> のAppProjectを自動的に作成する。</p>
+<p><code>default</code> のAppProjectでは、任意のNamespaceでApplicationを作成できる。</p>
+<p>テナントを完全に分離するために、<code>default</code> のAppProjectにはApplicationを作成せずに、ユーザー定義のAppProjectを使用する。</p>
 <p>なお同じAppProject内では、ArgoCDのApplication名は一意にする必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AppProject</span>
@@ -36694,9 +36694,9 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 </code></pre></div>
 <h4 id="configmap">▼ ConfigMap<a class="headerlink" href="#configmap" title="Permanent link">&para;</a></h4>
-<p>ArgoCDのApplicationを作成できるNamespaceは、デフォルトであると<code>argocd</code>のため、それ以外を許可するためにも必要である。</p>
+<p>ArgoCDのApplicationを作成できるNamespaceは、デフォルトであると <code>argocd</code> のため、それ以外を許可するためにも必要である。</p>
 <p>argocd-serverとapplication-controllerの両方で、設定が必要である。</p>
-<p>argocd-cmd-params-cmの<code>.application.namespaces</code>では、アスタリスク (<code>*</code>) としておく。</p>
+<p>argocd-cmd-params-cmの <code>.application.namespaces</code> では、アスタリスク (<code>*</code>) としておく。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36854,7 +36854,7 @@ spec:
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年12月2日 21:31:49 JST">2025-12-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

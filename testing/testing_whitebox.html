@@ -34290,7 +34290,7 @@
 <h4 id="_6">▼ 文法違反テスト<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>ソースコードの実行前に、字句解析、構文解析、型解析を行い、ソースコードの文法上の問題を検証する。</p>
 <p>ソースコードの機械語翻訳の仕組みの違いのために、コンパイラ方式言語の場合はアプリケーションの実行前に文法違反を検出できるが、インタプリタ方式言語は実行時でしか検出できない。</p>
-<p>そのため、特にインタプリタ方式言語では実施した方が良い。</p>
+<p>そのため、特にインタプリタ方式言語では実施したほうが良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://golangtokyo.github.io/codelab/find-gophers/?index=codelab#5">https://golangtokyo.github.io/codelab/find-gophers/?index=codelab#5</a></li>
@@ -34398,7 +34398,7 @@
 </table>
 <h4 id="_8">▼ ベストプラクティス違反テスト<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>ソースコードのベストプラクティス違反を検証する。</p>
-<p>言語によって、ビルトインのコマンド (例：<code>go vet</code>コマンド) で実現できる場合や、外部ツールが必要な場合がある。</p>
+<p>言語によって、ビルトインのコマンド (例：<code>go vet</code> コマンド) で実現できる場合や、外部ツールが必要な場合がある。</p>
 <h4 id="_9">▼ 脆弱性診断<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>ソースコードの実装方法に起因する脆弱性を検証する。</p>
 <h4 id="_10">▼ その他<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
@@ -34414,10 +34414,10 @@ Fooクラスやfoo関数の内部処理
 ↓
 返却値として出力
 </code></pre></div>
-<p>言語によって、ビルトインのコマンド (例：<code>go test</code>コマンド) で実現できる場合や、外部テストツールが必要な場合がある。</p>
+<p>言語によって、ビルトインのコマンド (例：<code>go test</code> コマンド) で実現できる場合や、外部テストツールが必要な場合がある。</p>
 <p>検証対象以外の処理はスタブとして定義する。理想としては、アーキテクチャの層ごとにユニットテストを実施する必要がある。</p>
-<p>この時、データアクセスに関わる層のユニットテストのために、本来のDBとは別に、あらかじめテスト用DBを用意した方が良い。</p>
-<p>テスト用DBを<code>docker-compose.yml</code>ファイルによって用意する方法については、以下のリンクを参考にせよ。</p>
+<p>この時、データアクセスに関わる層のユニットテストのために、本来のDBとは別に、あらかじめテスト用DBを用意したほうが良い。</p>
+<p>テスト用DBを <code>docker-compose.yml</code> ファイルによって用意する方法については、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html">https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html</a></li>
@@ -34438,14 +34438,14 @@ Fooクラスやfoo関数の内部処理
 <p><br></p>
 <h3 id="_16">テストケース名<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="_17">▼ 一般的な命名規則<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p><code>&lt;期待される動作&gt; when &lt;入力内容&gt;</code>で命名する。</p>
+<p><code>&lt;期待される動作&gt; when &lt;入力内容&gt;</code> で命名する。</p>
 <p>例えば、次のとおりである。</p>
 <ul>
 <li>正常系であれば『<code>should return user when id is valid</code>』</li>
 <li>異常系であれば『<code>should throw error when timeout occurs</code>』や『<code>should return 400 when user id is empty</code>』</li>
 </ul>
 <h4 id="roy-osherove">▼ Roy Osherove氏の命名規則<a class="headerlink" href="#roy-osherove" title="Permanent link">&para;</a></h4>
-<p>Roy Osherove氏の命名規則に従って、<code>&lt;テスト対象の関数名&gt;_&lt;入力値&gt;_&lt;期待される返却値&gt;</code>で命名する。</p>
+<p>Roy Osherove氏の命名規則に従って、<code>&lt;テスト対象の関数名&gt;_&lt;入力値&gt;_&lt;期待される返却値&gt;</code> で命名する。</p>
 <p>例えば、次のとおりである。</p>
 <ul>
 <li>正常系であれば『<code>testFoo_Xxx_ReturnXxx</code>』</li>
@@ -34459,7 +34459,7 @@ Fooクラスやfoo関数の内部処理
 </blockquote>
 <p><br></p>
 <h3 id="_18">アサーションの比較値<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
-<p>ユニットテストのアサーション関数で、期待値と実際値を比較する場合、期待値を定数として管理した方が良い。</p>
+<p>ユニットテストのアサーション関数で、期待値と実際値を比較する場合、期待値を定数として管理したほうが良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html">https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html</a></li>
@@ -34470,7 +34470,7 @@ Fooクラスやfoo関数の内部処理
 <ul>
 <li>ユニットテストを準備フェーズ、実行フェーズ、検証フェーズに分割する</li>
 <li>テストコード上で何かを加工することはせず、初期データをそのまま対象に渡す</li>
-<li>一つのユニットテストでは、一つの関数のみを検証する</li>
+<li>1つのユニットテストでは、一つの関数のみを検証する</li>
 <li>プライベート関数はテストする必要はない</li>
 <li>インフラストラクチャ層のロジック（DB接続、ネットワーク接続、ファイル読み込み）はモック化する</li>
 </ul>
@@ -34486,30 +34486,30 @@ Fooクラスやfoo関数の内部処理
 <p><br></p>
 <h3 id="_21">テストダブルの種類<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <h4 id="_22">▼ モック<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>上層クラス (上層構造体) が下層クラスを正しくコールできるか否かを検証したい時に、上層クラスの処理は不要であり、下層クラスの中身は不要である。</p>
+<p>上層クラス (上層構造体) が下層クラスをまさしくコールできるか否かを検証したいときに、上層クラスの処理は不要であり、下層クラスの中身は不要である。</p>
 <p>実体があるかのように見せかける見下層クラスとして使用する擬似オブジェクトを『モック』という。</p>
 <p>スタブと用途が異なるが、モックもスタブも擬似オブジェクトである。</p>
 <p>モックでは、クラスの振る舞いと状態が全てダミー実装に置き換わる。</p>
-<p>もし下層クラスを正しい回数実行できているかを検証したい場合は、下層クラスのモックを定義し、実体のある上層クラスが下層クラスにパラメーターを渡した時のコール回数と指定回数を比較する。</p>
+<p>もし下層クラスを正しい回数実行できているかを検証したい場合は、下層クラスのモックを定義し、実体のある上層クラスが下層クラスにパラメーターを渡したときのコール回数と指定回数を比較する。</p>
 <p>注意点として、用語の定義はテストフレームワークごとにやや異なることに注意する。</p>
 <p>PHPUnitにおけるモックについては、以下のリンクを参考にせよ。</p>
 <table>
 <thead>
 <tr>
 <th>ツールの種類</th>
-<th>モックの関数の返却値</th>
+<th>モックの関数の返り値</th>
 <th>補足</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>PHPUnit</td>
-<td>関数は、<code>null</code>を返却する。</td>
-<td>注意点として、<code>final</code>、<code>private</code>な関数はモック化されず、実体をそのまま引き継ぐ。また、<code>static</code>な関数は<code>BadMethodCallException</code>をスローするモックに置き換わる。</td>
+<td>関数は、<code>null</code> を返却する。</td>
+<td>注意点として、<code>final</code>、<code>private</code> な関数はモック化されず、実体をそのまま引き継ぐ。また、<code>static</code> な関数は <code>BadMethodCallException</code> をスローするモックに置き換わる。</td>
 </tr>
 <tr>
 <td>JUnit</td>
-<td>関数は、元のオブジェクトの関数の返却値の型を基に、初期値を返却する<br>(例：boolean型なら<code>false</code>)</td>
+<td>関数は、元のオブジェクトの関数の返り値の型を基に、初期値を返す<br>(例：boolean型なら <code>false</code>)</td>
 <td></td>
 </tr>
 </tbody>
@@ -34520,7 +34520,7 @@ Fooクラスやfoo関数の内部処理
 </ul>
 </blockquote>
 <h4 id="_23">▼ スタブ<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<p>クラスの関数の処理を検証したい時に、クラスが依存している下層クラスは、実体があるかのように見せかける。</p>
+<p>クラスの関数の処理を検証したいときに、クラスが依存している下層クラスは、実体があるかのように見せかける。</p>
 <p>この時、見せかけの下層クラスとして使用する擬似オブジェクトを『スタブ』という。</p>
 <p>モックと用途が異なるが、モックもスタブも擬似オブジェクトである。</p>
 <p>モックと同様にスタブでも、クラスの振る舞いと状態が全てダミー実装に置き換わる。</p>
@@ -34584,7 +34584,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://httpbin.local/get
 <tbody>
 <tr>
 <td>A = 1、B = 1</td>
-<td><code>return X</code>が実行されること。</td>
+<td><code>return X</code> が実行されること。</td>
 </tr>
 </tbody>
 </table>
@@ -34608,11 +34608,11 @@ $<span class="w"> </span>curl<span class="w"> </span>http://httpbin.local/get
 <tbody>
 <tr>
 <td>A = 1、B = 1</td>
-<td><code>return X</code>が実行されること。</td>
+<td><code>return X</code> が実行されること。</td>
 </tr>
 <tr>
 <td>A = 1、B = 0</td>
-<td><code>return X</code>が実行されないこと。</td>
+<td><code>return X</code> が実行されないこと。</td>
 </tr>
 </tbody>
 </table>
@@ -34636,11 +34636,11 @@ $<span class="w"> </span>curl<span class="w"> </span>http://httpbin.local/get
 <tbody>
 <tr>
 <td>A = 1、B = 0</td>
-<td><code>return X</code>が実行されないこと。</td>
+<td><code>return X</code> が実行されないこと。</td>
 </tr>
 <tr>
 <td>A = 0、B = 1</td>
-<td><code>return X</code>が実行されないこと。</td>
+<td><code>return X</code> が実行されないこと。</td>
 </tr>
 </tbody>
 </table>
@@ -34655,11 +34655,11 @@ $<span class="w"> </span>curl<span class="w"> </span>http://httpbin.local/get
 <tbody>
 <tr>
 <td>A = 1、B = 1</td>
-<td><code>return X</code>が実行されること。</td>
+<td><code>return X</code> が実行されること。</td>
 </tr>
 <tr>
 <td>A = 0、B = 0</td>
-<td><code>return X</code>が実行されないこと。</td>
+<td><code>return X</code> が実行されないこと。</td>
 </tr>
 </tbody>
 </table>
@@ -34684,19 +34684,19 @@ $<span class="w"> </span>curl<span class="w"> </span>http://httpbin.local/get
 <tbody>
 <tr>
 <td>A = 1、B = 1</td>
-<td><code>return X</code>が実行されること。</td>
+<td><code>return X</code> が実行されること。</td>
 </tr>
 <tr>
 <td>A = 1、B = 0</td>
-<td><code>return X</code>が実行されないこと。</td>
+<td><code>return X</code> が実行されないこと。</td>
 </tr>
 <tr>
 <td>A = 0、B = 1</td>
-<td><code>return X</code>が実行されないこと。</td>
+<td><code>return X</code> が実行されないこと。</td>
 </tr>
 <tr>
 <td>A = 0、B = 0</td>
-<td><code>return X</code>が実行されないこと。</td>
+<td><code>return X</code> が実行されないこと。</td>
 </tr>
 </tbody>
 </table>
@@ -34723,22 +34723,22 @@ $<span class="w"> </span>curl<span class="w"> </span>http://httpbin.local/get
 </thead>
 <tbody>
 <tr>
-<td><code>10</code>以下</td>
+<td><code>10</code> 以下</td>
 <td>非常に良い</td>
 <td><code>25</code>%</td>
 </tr>
 <tr>
-<td><code>30</code>以上</td>
+<td><code>30</code> 以上</td>
 <td>構造的なリスクあり</td>
 <td><code>40</code>%</td>
 </tr>
 <tr>
-<td><code>50</code>以上</td>
+<td><code>50</code> 以上</td>
 <td>テストできない</td>
 <td><code>70</code>%</td>
 </tr>
 <tr>
-<td><code>75</code>以上</td>
+<td><code>75</code> 以上</td>
 <td>変更によって誤修正が生じる。</td>
 <td><code>98</code>%</td>
 </tr>
@@ -34753,7 +34753,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://httpbin.local/get
 <p><br></p>
 <h2 id="04">04. 機能テスト (フィーチャーテスト)<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_30">機能テストとは<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
-<p>アプリケーションの各エンドポイントを<code>1</code>個の機能ととらえる。</p>
+<p>アプリケーションの各エンドポイントを <code>1</code> 個の機能ととらえる。</p>
 <p>アプリ (またはアプリケーションのAPIゲートウェイ) のエンドポイントにリクエストを送信し、外部APIとの連携も含めて、レスポンスが機能要件通りに返信されるか否かを検証する。</p>
 <p>スタブを使用することは少ない。</p>
 <p>ブラックボックステストの機能テストとは意味合いが異なることに注意する。</p>
@@ -34807,7 +34807,7 @@ DB、外部API
 <h4 id="_36">▼ 手動<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
 <p>手動でフロントエンドを操作し、E2Eテストを実施する。</p>
 <h4 id="_37">▼ 自前<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
-<p>言語によっては、ビルトインのコマンド (例：<code>go test</code>コマンド) でE2Eテストを実装できる。</p>
+<p>言語によっては、ビルトインのコマンド (例：<code>go test</code> コマンド) でE2Eテストを実装できる。</p>
 <p>実際のユーザーを模した一連の操作 (フロントエンドへのリクエスト) を実施する。</p>
 <blockquote>
 <ul>
@@ -34837,7 +34837,7 @@ DB、外部API
 <p>実際のユーザーを模した一連の操作 (APIへのリクエスト) を実施する。</p>
 <p>ツールは以下の通り。</p>
 <ul>
-<li><code>curl</code>コマンド</li>
+<li><code>curl</code> コマンド</li>
 <li>Postman</li>
 <li>Karate</li>
 </ul>
@@ -34867,7 +34867,7 @@ DB、外部API
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月4日 16:13:55 JST">2026-02-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

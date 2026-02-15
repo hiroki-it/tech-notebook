@@ -5023,7 +5023,7 @@
   <a href="#update" class="md-nav__link">
     <span class="md-ellipsis">
       
-        UPDATE処理競合問題
+        UPDATE 処理競合問題
       
     </span>
   </a>
@@ -33940,7 +33940,7 @@
   <a href="#update" class="md-nav__link">
     <span class="md-ellipsis">
       
-        UPDATE処理競合問題
+        UPDATE 処理競合問題
       
     </span>
   </a>
@@ -34431,8 +34431,8 @@
 </tr>
 <tr>
 <td style="text-align: left;">トランザクション開始</td>
-<td style="text-align: left;"><code>beginTransaction</code>関数</td>
-<td><code>execute</code>関数開始</td>
+<td style="text-align: left;"><code>beginTransaction</code> 関数</td>
+<td><code>execute</code> 関数開始</td>
 <td></td>
 </tr>
 <tr>
@@ -34443,9 +34443,9 @@
 </tr>
 <tr>
 <td style="text-align: left;">・C/U/Dの実行<br>・トランザクション終了</td>
-<td style="text-align: left;">・<code>insert</code>関数<br>・<code>update</code>関数<br>・<code>delete</code>関数</td>
-<td><code>flush</code>関数</td>
-<td>⬆️ ロールバック：<code>rollBack</code>関数</td>
+<td style="text-align: left;">・<code>insert</code> 関数<br>・<code>update</code> 関数<br>・<code>delete</code> 関数</td>
+<td><code>flush</code> 関数</td>
+<td>⬆️ ロールバック：<code>rollBack</code> 関数</td>
 </tr>
 <tr>
 <td style="text-align: left;">⬇️</td>
@@ -34455,7 +34455,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">コミットの実行。更新後ログをジャーナルファイルに書き込む。</td>
-<td style="text-align: left;"><code>commit</code>関数開始</td>
+<td style="text-align: left;"><code>commit</code> 関数開始</td>
 <td>⬇️</td>
 <td></td>
 </tr>
@@ -34479,8 +34479,8 @@
 </tr>
 <tr>
 <td style="text-align: left;">チェックポイントによる更新後ログのDB反映</td>
-<td style="text-align: left;"><code>commit</code>関数終了</td>
-<td><code>execute</code>関数終了</td>
+<td style="text-align: left;"><code>commit</code> 関数終了</td>
+<td><code>execute</code> 関数終了</td>
 <td></td>
 </tr>
 </tbody>
@@ -34501,7 +34501,7 @@
 </ul>
 </blockquote>
 <h4 id="pdordb">▼ PDOによるRDBの書き込み系の操作<a class="headerlink" href="#pdordb" title="Permanent link">&para;</a></h4>
-<p>PDOでは書き込み処理に<code>exec</code>関数、読み出し処理に<code>query</code>関数を使用する。</p>
+<p>PDOでは書き込み処理に <code>exec</code> 関数、読み出し処理に <code>query</code> 関数を使用する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="k">try</span><span class="p">{</span>
@@ -34589,7 +34589,7 @@
 <p><br></p>
 <h3 id="_11">ロールバック<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ ロールバックとは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>障害によって、トランザクション内の一連のSQLステートメントが一つでも実行されなかった場合、ストレージ上のジャーナルファイルの更新前ログを使用して、トランザクションの開始前の状態に戻す。</p>
+<p>障害によって、トランザクション内の一連のSQLステートメントが1つでも実行されなかった場合、ストレージ上のジャーナルファイルの更新前ログを使用して、トランザクションの開始前の状態に戻す。</p>
 <p>クエリ言語 (例：MySQL) ごとに、ロールバックのクエリ (例：<code>ROLLBACK</code>) が用意されている。</p>
 <blockquote>
 <ul>
@@ -34669,7 +34669,7 @@
 <p><br></p>
 <h2 id="03-dbms">03. DBMSによる排他制御<a class="headerlink" href="#03-dbms" title="Permanent link">&para;</a></h2>
 <h3 id="_18">排他制御とは<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
-<p>RDBMSまたはアプリケーションによる<code>UPDATE</code>処理競合問題を回避する仕組みのことである。</p>
+<p>RDBMSまたはアプリケーションによる <code>UPDATE</code> 処理競合問題を回避する仕組みのことである。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/momotaro98/items/5e37eefc62d726a30aee">https://qiita.com/momotaro98/items/5e37eefc62d726a30aee</a></li>
@@ -34704,13 +34704,13 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="update"><code>UPDATE</code>処理競合問題<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
-<p>アプリケーションのレコードの<code>UPDATE</code>処理が、レコードの取得と更新からなるとする。</p>
-<p>ソフトウェアのユーザAとBがおり、ユーザBが<code>UPDATE</code>処理時に取得しなければならないレコードの状態は、ユーザAが<code>UPDATE</code>処理を終えた後のものである。</p>
+<h3 id="update"><code>UPDATE</code> 処理競合問題<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
+<p>アプリケーションのレコードの <code>UPDATE</code> 処理が、レコードの取得と更新からなるとする。</p>
+<p>ソフトウェアのユーザAとBがおり、ユーザBが <code>UPDATE</code> 処理時に取得しなければならないレコードの状態は、ユーザAが <code>UPDATE</code> 処理を終えた後のものである。</p>
 <p>しかし、ユーザAがレコードを取得してから更新を終えるまでの間に、ユーザBが同じくレコードを取得してしまうことがある。</p>
-<p>結果として、ユーザBの<code>UPDATE</code>処理によって、ユーザAの処理が上書きされ、無かったことになってしまう。</p>
+<p>結果として、ユーザBの <code>UPDATE</code> 処理によって、ユーザAの処理が上書きされ、無かったことになってしまう。</p>
 <p><img alt="排他制御-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-1.png" /></p>
-<p>ユーザAとユーザBの<code>UPDATE</code>処理が並行したとしても、ユーザAの処理が無かったことにならないよう保証する方法として、『排他制御』がある。</p>
+<p>ユーザAとユーザBの <code>UPDATE</code> 処理が並行したとしても、ユーザAの処理が無かったことにならないよう保証する方法として、『排他制御』がある。</p>
 <p><img alt="排他制御-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-2.png" /></p>
 <blockquote>
 <ul>
@@ -34724,7 +34724,7 @@
 <p>あるトランザクションがテーブルのレコードをロックすると、そのレコードに対する他のすべてのトランザクションのクエリがブロックする。</p>
 <p>同じテーブルであっても、他のレコードに対するクエリであればブロックしない。</p>
 <p>ロックが解除されるまでトランザクションは待機状態になる。</p>
-<p>アプリケーションやRDBMSでは、トランザクションにロック待機時間を設定しておき (例：prismaの<code>maxWait</code>値、MySQLの<code>innodb_lock_wait_timeout</code>値) 、これを超過した場合にエラーになるようにする。</p>
+<p>アプリケーションやRDBMSでは、トランザクションにロック待機時間を設定しておき (例：prismaの <code>maxWait</code> 値、MySQLの <code>innodb_lock_wait_timeout</code> 値) 、これを超過した場合にエラーになるようにする。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks">https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks</a></li>
@@ -34758,7 +34758,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_25">排他制御を採用しなくてもよい場合<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
-<p><code>UPDATE</code>処理競合問題を許容し、排他制御を使用しない選択肢もある。</p>
+<p><code>UPDATE</code> 処理競合問題を許容し、排他制御を使用しない選択肢もある。</p>
 <p><br></p>
 <h2 id="03-02-dbms">03-02. DBMSの機能による排他制御<a class="headerlink" href="#03-02-dbms" title="Permanent link">&para;</a></h2>
 <h3 id="dbms">DBMSの機能による排他制御<a class="headerlink" href="#dbms" title="Permanent link">&para;</a></h3>
@@ -34771,8 +34771,8 @@
 <p><br></p>
 <h3 id="_26">共有ロック<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
 <p>DBの機能を使用して、テーブルの指定範囲をロックする。</p>
-<p>DBで、CRUDの<code>READ</code>処理以外の処理を実行不可能にする。</p>
-<p>レコードの<code>READ</code>処理を実行する時に、他者によって<code>UPDATE</code>処理されたくない場合に使用する。</p>
+<p>DBで、CRUDの <code>READ</code> 処理以外の処理を実行不可能にする。</p>
+<p>レコードの <code>READ</code> 処理を実行するときに、他者によって <code>UPDATE</code> 処理されたくない場合に使用する。</p>
 <p>『共有』の名の通り、共有ロックされているレコードに対して、他の人も共有ロックを行える。</p>
 <p>MySQLでは、『<code>SELECT ... LOCK IN SHARE MODE</code>』を使用する。</p>
 <p><img alt="排他制御-3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-3.gif" /></p>
@@ -34786,7 +34786,7 @@
 <h3 id="_27">占有ロック<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
 <p>DBの機能を使用して、テーブルの指定範囲をロックする。</p>
 <p>DBで、CRUDの全ての処理を実行不可能にする。</p>
-<p>レコードの<code>UPDATE</code>処理を実行する時に、他者によってUPDATE/<code>READ</code>処理の両方を実行させない場合に使用する。</p>
+<p>レコードの <code>UPDATE</code> 処理を実行するときに、他者によってUPDATE/<code>READ</code> 処理の両方を実行させない場合に使用する。</p>
 <p>MySQLでは、『<code>SELECT ... FOR UPDATE</code>』を使用する。</p>
 <p><img alt="排他制御-3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-3.gif" /></p>
 <blockquote>
@@ -34820,7 +34820,7 @@
 </tbody>
 </table>
 <p>複数のトランザクションが、互いに他者が使いたいレコードをロックしてしまい、お互いのロック解除を待ち続ける状態のこと。</p>
-<p>もう一方のレコードのロックが解除されないと、自身のレコードのロックを解除できない時、トランザクションが停止する。</p>
+<p>もう一方のレコードのロックが解除されないと、自身のレコードのロックを解除できないとき、トランザクションが停止する。</p>
 <p><img alt="Null" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/デッドロック.gif" /></p>
 <p><br></p>
 <h2 id="03-03">03-03. アプリケーションによる排他制御<a class="headerlink" href="#03-03" title="Permanent link">&para;</a></h2>
@@ -34836,10 +34836,10 @@
 <h4 id="_32">▼ 楽観的ロックとは<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
 <p>アプリケーションの実装で、テーブルの指定範囲をロックする。</p>
 <p>DBのレコードにはバージョン値 (例：最終更新日時など) が存在しているとする。</p>
-<p><code>UPDATE</code>処理のためにユーザAがDBのレコードを読み込んだ時に、バージョン値を一時的に保持しておく。</p>
-<p>ユーザーAが続けて更新する直前に、DBからバージョンの値を改めて取得する。</p>
-<p>保持しておいたバージョン値とDBの値を比較し、DBの値の方がより新バージョンだった場合、<code>UPDATE</code>処理を失敗させることにより、複数の更新処理の競合を防ぐ。</p>
-<p>競合によるエラーを表す<code>409</code>ステータスをレスポンスとして返信すると良い。</p>
+<p><code>UPDATE</code> 処理のためにユーザAがDBのレコードを読み込んだときに、バージョン値を一時的に保持しておく。</p>
+<p>ユーザーAが続けて更新する直前に、DBからバージョンの値をあらためて取得する。</p>
+<p>保持しておいたバージョン値とDBの値を比較し、DBの値の方がより新バージョンだった場合、<code>UPDATE</code> 処理を失敗させることにより、複数の更新処理の競合を防ぐ。</p>
+<p>競合によるエラーを表す <code>409</code> ステータスをレスポンスとして返信すると良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://e-words.jp/w/%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF-%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF.html">https://e-words.jp/w/%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF-%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF.html</a></li>
@@ -34873,7 +34873,7 @@
 <h3 id="pitr">PITR：ポイントインタイムリカバリー<a class="headerlink" href="#pitr" title="Permanent link">&para;</a></h3>
 <h4 id="_35">▼ ポイントインタイムリカバリーとは<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
 <p><img alt="db_point-in-time-recovery" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/db_point-in-time-recovery.png" /></p>
-<p>特定の時点のベースバックアップ (例：SQLによって異なり、MySQLの場合は<code>mysqldump</code>コマンドの出力) 、ベースバックアップの時点以降の変更点を含む差分バックアップ (例：SQLによって異なり、MySQLの場合はバイナリーログ) を使用し、DBを任意の時点の状態に戻す。</p>
+<p>特定の時点のベースバックアップ (例：SQLによって異なり、MySQLの場合は <code>mysqldump</code> コマンドの出力) 、ベースバックアップの時点以降の変更点を含む差分バックアップ (例：SQLによって異なり、MySQLの場合はバイナリーログ) を使用し、DBを任意の時点の状態に戻す。</p>
 <p>トランザクションの前後の状態に戻すロールバック/ロールフォワードとは異なり、DBを任意の時点の状態に戻せる。</p>
 <p>補足として、バックアップに含まれない期間の状態には戻せない。</p>
 <blockquote>
@@ -34885,7 +34885,7 @@
 </blockquote>
 <h4 id="_36">▼ ツール<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
 <p>ポイントインタイムリカバリーの時、開発者がベースバックアップ作成、リカバリー、古い差分バックアップの削除などの作業を行っても良い。</p>
-<p>ただし、煩雑な手順になるため自動化ツールを使用した方が良い。</p>
+<p>ただし、煩雑な手順になるため自動化ツールを使用したほうが良い。</p>
 <p>SQLの種類に合わせてツールが用意されている。</p>
 <table>
 <thead>
@@ -34946,7 +34946,7 @@ $<span class="w"> </span>barman<span class="w"> </span>list-backup<span class="w
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月24日 18:22:43 JST">2025-10-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

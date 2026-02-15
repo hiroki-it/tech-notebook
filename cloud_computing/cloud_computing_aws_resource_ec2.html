@@ -18999,7 +18999,7 @@
   <a href="#ext4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ ext4タイプの場合
+        ▼ ext4 タイプの場合
       
     </span>
   </a>
@@ -19010,7 +19010,7 @@
   <a href="#xfs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ xfsタイプの場合
+        ▼ xfs タイプの場合
       
     </span>
   </a>
@@ -19498,7 +19498,7 @@
   <a href="#cidr-28" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CIDR (サブネット内の*.*.*.*/28) の事前予約
+        CIDR (サブネット内の *.*.*.*/28) の事前予約
       
     </span>
   </a>
@@ -34496,7 +34496,7 @@
   <a href="#ext4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ ext4タイプの場合
+        ▼ ext4 タイプの場合
       
     </span>
   </a>
@@ -34507,7 +34507,7 @@
   <a href="#xfs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ xfsタイプの場合
+        ▼ xfs タイプの場合
       
     </span>
   </a>
@@ -34995,7 +34995,7 @@
   <a href="#cidr-28" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CIDR (サブネット内の*.*.*.*/28) の事前予約
+        CIDR (サブネット内の *.*.*.*/28) の事前予約
       
     </span>
   </a>
@@ -35257,7 +35257,7 @@
 <h4 id="_5">▼ ダウンタイムの発生条件<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>以下の条件の時にAWS EC2にダウンタイムが発生する。</p>
 <p>AWS EC2を冗長化している場合は、ユーザーに影響を与えずに対処できる。</p>
-<p>ダウンタイムが発生する方のインスタンスを事前にALBのターゲットグループから解除しておき、停止したインスタンスが起動した後に、ターゲットグループに再登録する。</p>
+<p>ダウンタイムが発生するほうのインスタンスを事前にALBのターゲットグループから解除しておき、停止したインスタンスが起動した後に、ターゲットグループに再登録する。</p>
 <table>
 <thead>
 <tr>
@@ -35295,12 +35295,12 @@
 <tr>
 <td>インスタンスファミリー</td>
 <td>適するアプリケーションのドメインやハードウェアの種類を表す。</td>
-<td><code>t</code>,<code>a</code>など</td>
+<td><code>t</code>,<code>a</code> など</td>
 </tr>
 <tr>
 <td>インスタンス世代</td>
 <td>同じインスタンスファミリー内での新しさを表す。</td>
-<td><code>2</code>、<code>3</code>、<code>4</code>など</td>
+<td><code>2</code>、<code>3</code>、<code>4</code> など</td>
 </tr>
 <tr>
 <td>属性</td>
@@ -35310,7 +35310,7 @@
 <tr>
 <td>インスタンスサイズ</td>
 <td>インスタンスのハードウェアリソースの大きさを表す。</td>
-<td><code>nano</code>、<code>small</code>、<code>medium</code>、<code>large</code>、<code>xlarge</code>、<code>2xlarge</code>など</td>
+<td><code>nano</code>、<code>small</code>、<code>medium</code>、<code>large</code>、<code>xlarge</code>、<code>2xlarge</code> など</td>
 </tr>
 </tbody>
 </table>
@@ -35320,7 +35320,7 @@
 </ul>
 </blockquote>
 <p>AWS AMIのOSのバージョンによっては、新しく登場したインスタンスタイプを適用できないことがあるため注意する。</p>
-<p>例えば、CentOS 6系のAWS AMIでは、<code>t3.small</code>を選択できない。</p>
+<p>例えば、CentOS 6系のAWS AMIでは、<code>t3.small</code> を選択できない。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/marketplace/pp/prodview-gkh3rqhqbgzme?ref=cns_srchrow">https://aws.amazon.com/marketplace/pp/prodview-gkh3rqhqbgzme?ref=cns_srchrow</a></li>
@@ -35353,15 +35353,15 @@
 <tr>
 <td>ほとんどのアプリケーションサーバー</td>
 <td>いろいろ</td>
-<td><code>M</code>系</td>
+<td><code>M</code> 系</td>
 <td>世代数は大きいほど高性能で値段も安い。そのため、その時点で一番新しい世代を選ぶ。</td>
-<td>サイズが一つ大きくなると、ハードウェアリソーススペックと料金が<code>2</code>倍になる。ネットワーク帯域はあまり変わらない。アプリケーションが必要とするサイズを選ぶ。</td>
+<td>サイズが一つ大きくなると、ハードウェアリソーススペックと料金が <code>2</code> 倍になる。ネットワーク帯域はあまり変わらない。アプリケーションが必要とするサイズを選ぶ。</td>
 <td>★</td>
 </tr>
 <tr>
 <td>ハードウェアリソース要求がスパイクするような、ほとんどのアプリケーションサーバー</td>
 <td>スパイク系</td>
-<td><code>T</code>系</td>
+<td><code>T</code> 系</td>
 <td>同上</td>
 <td>同上</td>
 <td>★★</td>
@@ -35369,7 +35369,7 @@
 <tr>
 <td>Webサーバー、HPC、バッチ処理、広告配信、動画エンコーディング、ゲームサーバー、モデリング、分散分析</td>
 <td>CPU消費系</td>
-<td><code>C</code>系</td>
+<td><code>C</code> 系</td>
 <td>同上</td>
 <td>同上</td>
 <td></td>
@@ -35377,7 +35377,7 @@
 <tr>
 <td>NoSQL、インメモリDB、データウェアハウス</td>
 <td>ストレージI/O消費系</td>
-<td><code>H</code>系</td>
+<td><code>H</code> 系</td>
 <td>同上</td>
 <td>同上</td>
 <td></td>
@@ -35385,7 +35385,7 @@
 <tr>
 <td>NoSQL、インメモリDB、データウェアハウス</td>
 <td>ストレージI/O消費系</td>
-<td><code>I</code>系</td>
+<td><code>I</code> 系</td>
 <td>同上</td>
 <td>同上</td>
 <td></td>
@@ -35393,7 +35393,7 @@
 <tr>
 <td>高性能DBサーバー、キャッシュサーバー、ビッグデータ処理</td>
 <td>メモリ消費系</td>
-<td><code>R</code>系</td>
+<td><code>R</code> 系</td>
 <td>同上</td>
 <td>同上</td>
 <td></td>
@@ -35401,7 +35401,7 @@
 <tr>
 <td>高性能DBサーバー、キャッシュサーバー、ビッグデータ処理</td>
 <td>メモリ消費系</td>
-<td><code>X</code>系</td>
+<td><code>X</code> 系</td>
 <td>同上</td>
 <td>同上</td>
 <td></td>
@@ -35417,7 +35417,7 @@
 <tr>
 <td>高性能DBサーバー、キャッシュサーバー、ビッグデータ処理</td>
 <td>メモリ消費系</td>
-<td><code>Z</code>系</td>
+<td><code>Z</code> 系</td>
 <td>同上</td>
 <td>同上</td>
 <td></td>
@@ -35425,7 +35425,7 @@
 <tr>
 <td>3Dレンダリング、動画、ゲーム</td>
 <td>GPU消費系</td>
-<td><code>G</code>系</td>
+<td><code>G</code> 系</td>
 <td>同上</td>
 <td>同上</td>
 <td></td>
@@ -35433,7 +35433,7 @@
 <tr>
 <td>機械学習、深層学習、HPC</td>
 <td>GPU消費系</td>
-<td><code>P</code>系</td>
+<td><code>P</code> 系</td>
 <td>同上</td>
 <td>同上</td>
 <td></td>
@@ -35441,7 +35441,7 @@
 <tr>
 <td>ゲノム分析、リスク計算、リアルタイムビデオ処理</td>
 <td>FPGA消費系</td>
-<td><code>F</code>系</td>
+<td><code>F</code> 系</td>
 <td>同上</td>
 <td>同上</td>
 <td></td>
@@ -35638,7 +35638,7 @@
 <h4 id="_16">▼ ユーザーデータファイルとは<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>AWS EC2の起動時に任意のコマンドを実行できるようにする。</p>
 <h4 id="_17">▼ 実行タイミング<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>ユーザーデータの実行タイミングは、<code>cloud-config.service</code>ファイルで設定している。</p>
+<p>ユーザーデータの実行タイミングは、<code>cloud-config.service</code> ファイルで設定している。</p>
 <p>ネットワークがオンラインになった後に実行する。</p>
 <p>つまり、AWS EC2のプロセスに関する設定 (systemdなど) の後に、ユーザーデータを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># /usr/lib/systemd/system/cloud-config.serviceファイル</span>
@@ -35863,7 +35863,7 @@
 </tbody>
 </table>
 <h4 id="_20">▼ 下限のサイズ<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p>一般的なアプリケーションであれば、最低限<code>20</code>～<code>30</code>GiBのサイズがあると良い。</p>
+<p>一般的なアプリケーションであれば、最低限 <code>20</code>～<code>30</code>GiBのサイズがあると良い。</p>
 <p>しかし、踏み台サーバー (AWS EC2) の場合、プライベートサブネットに接続するための足場としての用途しかなく、大きなサイズのAWS EBSボリュームを組み込む必要がない。</p>
 <p>そこでできるだけ最小限のボリュームを選択し、ストレージ合計を抑える必要がある。</p>
 <p>OSによって下限ボリュームサイズが異なることに注意する。</p>
@@ -35889,7 +35889,7 @@
 </tbody>
 </table>
 <h4 id="_21">▼ 現在の空き容量の確認<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>AWS EBSボリュームの現在の空き容量を確認するためには、<code>df</code>コマンドでパーティションの使用率を確認するか、cloudwatchエージェントでこのデータを収集する必要がある。</p>
+<p>AWS EBSボリュームの現在の空き容量を確認するためには、<code>df</code> コマンドでパーティションの使用率を確認するか、cloudwatchエージェントでこのデータを収集する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>ec2-user<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>df<span class="w"> </span>-hT<span class="w"> </span>/dev/xvda1
 
 <span class="c1"># パーティションの使用率が15%であることから、AWS EBSボリュームの使用率がわかる。</span>
@@ -35913,7 +35913,7 @@ Filesystem<span class="w">     </span>Type<span class="w">      </span>Size<span
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>AWS EC2のAWS EBSボリュームを<code>8</code>GiBから<code>16</code>GiBに拡張する例を考える。</p>
+<p>AWS EC2のAWS EBSボリュームを <code>8</code>GiBから <code>16</code>GiBに拡張する例を考える。</p>
 <p><code>lsblk</code>コマンドで現在のボリュームのサイズを確認すると、AWS EBSボリュームが<code>8</code>GiBである。</p>
 <p>この時、AWS EBSボリューム内にパーティションがある。</p>
 <p><code>df</code>コマンドでパーティションのサイズを確認すると、同じく<code>8</code>GiBである。</p>
@@ -35937,7 +35937,7 @@ Filesystem<span class="w">     </span>Size<span class="w">   </span>Used<span cl
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>コンソール画面から、AWS EBSボリュームを<code>16</code>GiBに拡張する。</p>
+<p>コンソール画面から、AWS EBSボリュームを <code>16</code>GiBに拡張する。</p>
 <p>この時、ダウンタイムは発生しない。</p>
 <p>改めて<code>lsblk</code>コマンドを実行することにより、該当のAWS EBSボリュームが拡張されたことを確認できる。</p>
 <p>ただ<code>df</code>コマンドで確認すると、パーティションはまだ拡張されていない。</p>
@@ -35961,7 +35961,7 @@ Filesystem<span class="w">     </span>Size<span class="w">   </span>Used<span cl
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>パーティションに紐づくファイルシステムのタイプを確認する。今回は<code>ext4</code>タイプである。</p>
+<p>パーティションに紐づくファイルシステムのタイプを確認する。今回は <code>ext4</code> タイプである。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>df<span class="w"> </span>-hT
@@ -35980,7 +35980,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
-<p><code>lsblk</code>コマンドの結果、AWS EBSボリュームが複数のパーティションで区切られている場合、この手順が必要になる。</p>
+<p><code>lsblk</code> コマンドの結果、AWS EBSボリュームが複数のパーティションで区切られている場合、この手順が必要になる。</p>
 <p>今回、AWS EBSボリュームがパーティションに区切られている。</p>
 <p>そのため、<code>growpart</code>コマンドでパーティションの番号を指定し、パーティションのサイズを拡張する。パーティションに区切られていなければ、この手順は不要である。</p>
 </dd>
@@ -35991,7 +35991,7 @@ $<span class="w"> </span>growpart<span class="w"> </span>/dev/xvda<span class="w
 <dl>
 <dt><code>(6)</code></dt>
 <dd>
-<p>改めて<code>lsblk</code>コマンドを実行することにより、パーティションのサイズが拡張されていることを確認できる。</p>
+<p>あらためて <code>lsblk</code> コマンドを実行することにより、パーティションのサイズが拡張されていることを確認できる。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>lsblk
@@ -36001,7 +36001,7 @@ xvda<span class="w">    </span><span class="m">202</span>:0<span class="w">    <
 └─xvda1<span class="w"> </span><span class="m">202</span>:1<span class="w">    </span><span class="m">0</span><span class="w">  </span>16G<span class="w">  </span><span class="m">0</span><span class="w"> </span>part<span class="w"> </span>/<span class="w">          </span><span class="c1"># パーティション</span>
 ...
 </code></pre></div>
-<h4 id="ext4">▼ <code>ext4</code>タイプの場合<a class="headerlink" href="#ext4" title="Permanent link">&para;</a></h4>
+<h4 id="ext4">▼ <code>ext4</code> タイプの場合<a class="headerlink" href="#ext4" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
@@ -36016,7 +36016,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>resize2fs<span class="w"> <
 <dl>
 <dt><code>(6)</code></dt>
 <dd>
-<p>改めて<code>df</code>コマンドを実行することにより、パーティションに紐づくファイルシステムを拡張できたことを確認できる。</p>
+<p>あらためて <code>df</code> コマンドを実行することにより、パーティションに紐づくファイルシステムを拡張できたことを確認できる。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>df<span class="w"> </span>-hT
@@ -36025,7 +36025,7 @@ Filesystem<span class="w">  </span>Type<span class="w">  </span>Size<span class=
 /dev/xvda1<span class="w">  </span>ext4<span class="w">   </span>16G<span class="w">  </span><span class="m">1</span>.9G<span class="w">    </span>14G<span class="w">   </span><span class="m">12</span>%<span class="w">  </span>/var/lib<span class="w">     </span><span class="c1"># パーティション</span>
 ...
 </code></pre></div>
-<h4 id="xfs">▼ <code>xfs</code>タイプの場合<a class="headerlink" href="#xfs" title="Permanent link">&para;</a></h4>
+<h4 id="xfs">▼ <code>xfs</code> タイプの場合<a class="headerlink" href="#xfs" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
@@ -36043,7 +36043,7 @@ $<span class="w"> </span>xfs_growfs<span class="w"> </span>-d<span class="w"> </
 <dl>
 <dt><code>(6)</code></dt>
 <dd>
-<p>改めて<code>df</code>コマンドを実行することにより、パーティションに紐づくファイルシステムを拡張できたことを確認できる。</p>
+<p>あらためて <code>df</code> コマンドを実行することにより、パーティションに紐づくファイルシステムを拡張できたことを確認できる。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>df<span class="w"> </span>-hT
@@ -36073,7 +36073,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <span class="p p-Indicator">[{</span><span class="s">&quot;DeviceName&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/dev/sda1&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Ebs&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;DeleteOnTermination&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p p-Indicator">}}]</span>
 </code></pre></div>
 <h4 id="_23">▼ 注意点<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<p>AWS EC2にAutoScalingグループを適用している場合は、AWS EBSボリュームを永続化しない方が良いかもしれない。</p>
+<p>AWS EC2にAutoScalingグループを適用している場合は、AWS EBSボリュームを永続化しないほうが良いかもしれない。</p>
 <p>AWS AutoScalingのスケールイン時に、削除されたAWS EC2のAWS EBSボリュームが削除されないため、未使用のAWS EBSボリュームがどんどん溜まっていく問題が起こる。</p>
 <blockquote>
 <ul>
@@ -36084,7 +36084,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <h3 id="aws-ebs_8">AWS EBSボリュームのアタッチとデタッチ<a class="headerlink" href="#aws-ebs_8" title="Permanent link">&para;</a></h3>
 <h4 id="_24">▼ デバイスパスの確認<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
 <p>AWS EBSボリュームのデバイスパスと、OS上での実際のデバイスパスが異なる。</p>
-<p>例えば、<code>/dev/xvdb</code>をデバイスパスとしても、OS上では<code>/dev/nvme1n1</code>になる。</p>
+<p>例えば、<code>/dev/xvdb</code> をデバイスパスとしても、OS上では <code>/dev/nvme1n1</code> になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>df<span class="w"> </span>-hT
 
 /dev/nvme1n1<span class="w">   </span>xfs<span class="w">       </span>100G<span class="w">  </span><span class="m">4</span>.3G<span class="w">  </span>96G<span class="w">   </span><span class="m">1</span>%<span class="w"> </span>/var/lib
@@ -36102,18 +36102,18 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 </ul>
 </blockquote>
 <h4 id="_26">▼ マルチアタッチ<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
-<p>ボリュームタイプが<code>io1</code>または<code>io2</code>のAWS EBSボリュームは、複数のAWS EC2に横断して紐づけられる。</p>
+<p>ボリュームタイプが <code>io1</code> または <code>io2</code> のAWS EBSボリュームは、複数のAWS EC2に横断して紐づけられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/ebs/latest/userguide/working-with-multi-attach.html">https://docs.aws.amazon.com/ebs/latest/userguide/working-with-multi-attach.html</a></li>
 </ul>
 </blockquote>
 <h4 id="_27">▼ デタッチ<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
-<p>起動中のAWS EC2からボリュームをアタッチする場合、<code>unmount</code>コマンドを実行する。</p>
-<p><code>target is busy</code>というエラーが出る場合があり、プロセスを停止する必要があるため、手順が煩雑になる。</p>
+<p>起動中のAWS EC2からボリュームをアタッチする場合、<code>unmount</code> コマンドを実行する。</p>
+<p><code>target is busy</code> というエラーが出る場合があり、プロセスを停止する必要があるため、手順が煩雑になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>umount<span class="w"> </span>-d<span class="w"> </span>/dev/nvme1n1
 </code></pre></div>
-<p>代わりに、AWS EC2を停止した上でボリュームをデタッチすると、コマンドを手動で実行する必要がなく簡単である。</p>
+<p>代わりに、AWS EC2を停止したうえでボリュームをデタッチすると、コマンドを手動で実行する必要がなく簡単である。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-detaching-volume.html#umount-detach-volume">https://docs.aws.amazon.com/ebs/latest/userguide/ebs-detaching-volume.html#umount-detach-volume</a></li>
@@ -36298,8 +36298,8 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <tbody>
 <tr>
 <td>説明</td>
-<td>ENIには、パブリックIPアドレスを割り当てられる。これらが割り当てられたENIをAWSリソースに紐付ければ、そのAWSリソースに<code>1</code>個のパブリックIPアドレスを追加できる。</td>
-<td>ENIには、プライマリープライベートIPアドレスとセカンダリープライベートIPアドレスを割り当てられる。これらが割り当てられたENIをAWSリソースに紐付ければ、そのAWSリソースに<code>2</code>個のプライベートIPアドレスを追加できる。</td>
+<td>ENIには、パブリックIPアドレスを割り当てられる。これらが割り当てられたENIをAWSリソースに紐付ければ、そのAWSリソースに <code>1</code> 個のパブリックIPアドレスを追加できる。</td>
+<td>ENIには、プライマリープライベートIPアドレスとセカンダリープライベートIPアドレスを割り当てられる。これらが割り当てられたENIをAWSリソースに紐付ければ、そのAWSリソースに <code>2</code> 個のプライベートIPアドレスを追加できる。</td>
 </tr>
 </tbody>
 </table>
@@ -36311,10 +36311,10 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <p><br></p>
 <h2 id="04-03-ipv4-prefix-delegation">04-03. IPv4 Prefix delegation<a class="headerlink" href="#04-03-ipv4-prefix-delegation" title="Permanent link">&para;</a></h2>
 <h3 id="ipv4-prefix-delegation">IPv4 Prefix delegationとは<a class="headerlink" href="#ipv4-prefix-delegation" title="Permanent link">&para;</a></h3>
-<p>複数のCIDR (サブネット内の<code>*.*.*.*/28</code>) をENIに割り当て、このENIをAWS EC2に紐づける。</p>
+<p>複数のCIDR (サブネット内の <code>*.*.*.*/28</code>) をENIに割り当て、このENIをAWS EC2に紐づける。</p>
 <p>AWS EC2に紐づけたCIDRからIPアドレスを取得する。</p>
-<p>使用できるIPアドレスを<code>16</code>個の倍数で増やせる。</p>
-<p>そのため、サブネットで<code>16</code>個 (<code>*.*.*.*/28</code>) の連続したIPアドレスの範囲が空いている必要がある。</p>
+<p>使用できるIPアドレスを <code>16</code> 個の倍数で増やせる。</p>
+<p>そのため、サブネットで <code>16</code> 個 (<code>*.*.*.*/28</code>) の連続したIPアドレスの範囲が空いている必要がある。</p>
 <p>セカンダリーIPアドレス割り当てとは異なり、IPアドレスではなくCIDRを丸ごとENIに割り当てられるため、AWS EC2内で使用可能なIPアドレス数を大きく増やせる。</p>
 <table>
 <thead>
@@ -36326,11 +36326,11 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <tbody>
 <tr>
 <td>自動割り当て</td>
-<td>予約の有無に関係なく、<code>*.*.*.*/28</code>のCIDRの数を指定し、その数だけ割り当てる。</td>
+<td>予約の有無に関係なく、<code>*.*.*.*/28</code> のCIDRの数を指定し、その数だけ割り当てる。</td>
 </tr>
 <tr>
 <td>手動割り当て</td>
-<td>あらかじめサブネットに予約しておいた<code>*.*.*.*/28</code>のCIDRを指定し、割り当てる。</td>
+<td>あらかじめサブネットに予約しておいた <code>*.*.*.*/28</code> のCIDRを指定し、割り当てる。</td>
 </tr>
 </tbody>
 </table>
@@ -36341,19 +36341,19 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 </blockquote>
 <p><br></p>
 <h3 id="ip_2">IPアドレス数<a class="headerlink" href="#ip_2" title="Permanent link">&para;</a></h3>
-<p>ENIに割り当てるCIDR (サブネット内の<code>*.*.*.*/28</code>) は、<code>16</code>個のIPアドレスを持つ。</p>
-<p>ENIには複数のCIDRを紐づけられるため、<code>16</code>個の倍数だけ、AWS EC2内で取得できるIPアドレスが増える。</p>
+<p>ENIに割り当てるCIDR (サブネット内の <code>*.*.*.*/28</code>) は、<code>16</code> 個のIPアドレスを持つ。</p>
+<p>ENIには複数のCIDRを紐づけられるため、<code>16</code> 個の倍数だけ、AWS EC2内で取得できるIPアドレスが増える。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="cidr-28">CIDR (サブネット内の<code>*.*.*.*/28</code>) の事前予約<a class="headerlink" href="#cidr-28" title="Permanent link">&para;</a></h3>
-<p>ENIにCIDRを手動/自動で割り当てる時、サブネット内に断片化されていない<code>*.*.*.*/28</code>が無いと、<code>InsufficientCidr</code>というエラーになる。</p>
+<h3 id="cidr-28">CIDR (サブネット内の <code>*.*.*.*/28</code>) の事前予約<a class="headerlink" href="#cidr-28" title="Permanent link">&para;</a></h3>
+<p>ENIにCIDRを手動/自動で割り当てるとき、サブネット内に断片化されていない <code>*.*.*.*/28</code> が無いと、<code>InsufficientCidr</code> というエラーになる。</p>
 <p>そこで、サブネットにCIDR (<code>*.*.*.*/28</code>) を予約しておき、これをIPv4 Prefix delegationのために使用する。</p>
 <p>ただ、執筆時点 (2023/11/23) では、使用中のサブネットで割り当て済みセカンダリープライベートIPアドレスの分布を確認する方法がない。</p>
-<p>サブネット内にCIDR (<code>*.*.*.*/28</code>) を一旦予約しておいて、AWS EC2の再作成によるセカンダリープライベートIPアドレス解放を待つとよい。</p>
+<p>サブネット内にCIDR (<code>*.*.*.*/28</code>) をいったん予約しておいて、AWS EC2の再作成によるセカンダリープライベートIPアドレス解放を待つとよい。</p>
 <p>CIDR内のセカンダリープライベートIPアドレスが使用中であってもCIDRを予約できる。</p>
 <p>予約したCIDR内のセカンダリープライベートIPアドレスが一度解放されれば、これを自動で再割り当てない仕組みになっている。</p>
 <p>もちろん、サブネットを新しく作成すれば使用中のセカンダリープライベートIPアドレスがないため、これの解放を待つ必要はない。</p>
@@ -36420,7 +36420,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月2日 16:23:09 JST">2025-05-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

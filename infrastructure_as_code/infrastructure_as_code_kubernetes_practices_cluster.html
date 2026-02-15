@@ -33491,9 +33491,9 @@
 <h3 id="_2">アップグレードの設計規約<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ マイナーバージョン単位でアップグレード<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>アップグレード時、新旧バージョンのコントロールプレーンNodeが並行的に稼働する。</p>
-<p>基本的にはいずれのコントロールプレーンNodeも、並行的に稼働するコンポーネントのバージョンを前方/後方の <code>1</code>個のマイナーバージョン以内に収める必要がある。</p>
-<p>そのため、Kubernetesのアップグレードもこれに合わせて、後方の <code>1</code>個のマイナーバージョンにアップグレードしていくことになる。</p>
-<p>マイナーバージョンを <code>2</code>個以上跨いだアップグレードは非推奨である。</p>
+<p>基本的にはいずれのコントロールプレーンNodeも、並行的に稼働するコンポーネントのバージョンを前方/後方の <code>1</code> 個のマイナーバージョン以内に収める必要がある。</p>
+<p>そのため、Kubernetesのアップグレードもこれに合わせて、後方の <code>1</code> 個のマイナーバージョンにアップグレードしていくことになる。</p>
+<p>マイナーバージョンを <code>2</code> 個以上跨いだアップグレードは非推奨である。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/releases/version-skew-policy/">https://kubernetes.io/releases/version-skew-policy/</a></li>
@@ -33534,9 +33534,9 @@
 </ul>
 </blockquote>
 <h4 id="podworkload">▼ アップグレード後は、PodだけでなくWorkloadのコンディションとステータスを確認する<a class="headerlink" href="#podworkload" title="Permanent link">&para;</a></h4>
-<p>動作確認として、<code>Ready</code>コンディションと <code>Running</code>ステータスを <code>kubectl get pod</code>で確認する。</p>
-<p>また加えて、Podの作成が始まらないと、<code>kubectl get pod</code>コマンドにPod自体が表示されない。</p>
-<p>そのため、<code>kubectl get deployment</code>で、Podの管理リソース (例：Deployment) の全てのPodが <code>Ready</code>コンディションかどうかを確認しておく。</p>
+<p>動作確認として、<code>Ready</code> コンディションと <code>Running</code> ステータスを <code>kubectl get pod</code> で確認する。</p>
+<p>また加えて、Podの作成が始まらないと、<code>kubectl get pod</code> コマンドにPod自体が表示されない。</p>
+<p>そのため、<code>kubectl get deployment</code> で、Podの管理リソース (例：Deployment) の全てのPodが <code>Ready</code> コンディションかどうかを確認しておく。</p>
 <h4 id="_5">▼ 自動アップグレードを採用できるのであれば採用する<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>一連のコマンドを自動化できるツール (例：AWS Step Function、Fablicなど) を使用して、アップグレードの実行から動作確認を自動化する。</p>
 <blockquote>
@@ -33601,7 +33601,7 @@
 <td>より長い</td>
 <td>より難しい</td>
 <td>なし</td>
-<td>Clusterの作成の労力が、もう <code>1</code>個実行環境を作成することに相当する。</td>
+<td>Clusterの作成の労力が、もう <code>1</code> 個実行環境を作成することに相当する。</td>
 </tr>
 </tbody>
 </table>
@@ -33644,7 +33644,7 @@
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p><code>kubectl drain</code>コマンドを実行することにより、旧Nodeグループ内のワーカーNodeでドレイン処理を開始させる。</p>
+<p><code>kubectl drain</code> コマンドを実行することにより、旧Nodeグループ内のワーカーNodeでドレイン処理を開始させる。</p>
 <p>この時、DaemonSetのPodを退避させられるように、<code>--ignore-daemonsets</code>オプションを有効化する。</p>
 <p>また、EmptyDir Volumeを持つPodを退避させられるように <code>--delete-emptydir-data</code>オプションも有効化する。</p>
 <p>ドレイン処理によって、旧Nodeグループ内のワーカーNodeが<code>SchedulingDisabled</code>状態になり、加えてこのワーカーNodeからPodが退避していく。</p>
@@ -33708,7 +33708,7 @@ ip-*****.ap-northeast-1.compute.internal<span class="w">   </span>NotReady,Sched
 <p><img alt="kubernetes_cluster-migration" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-migration.png" /></p>
 <p>『マイグレーション方式』ともいう。</p>
 <p>新しいClusterを作成することにより、ワーカーNodeをアップグレードする。</p>
-<p>いずれ (例：<code>L7</code>ロードバランサー) を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なる。</p>
+<p>いずれ (例：<code>L7</code> ロードバランサー) を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なる。</p>
 <p>メリットとして、バージョンを1つずつのみでなく飛び越えてアップグレードできる。</p>
 <dl>
 <dt><code>(1)</code></dt>
@@ -33738,14 +33738,14 @@ ip-*****.ap-northeast-1.compute.internal<span class="w">   </span>NotReady,Sched
 <p>ArgoCDの場合、チャート (ArgoCDのコンテナイメージ) とCRDの両方のアップグレードする。</p>
 <p>ArgoCDをNamespacedスコープで分割している場合、カスタムリソースがCluster内に1つしかないCRDを共有しているため、CRDをアップグレードすると全サービスのカスタムリソースに影響が出る。</p>
 <p>この場合、カスタムリソースへの影響を考えて、CRDの差分がないバージョンまではArgoCDをアップグレードできる。</p>
-<p><code>kubectl diff</code>コマンドで、現在と新CRDの間に差分があるかどうかを確認できる。</p>
+<p><code>kubectl diff</code> コマンドで、現在と新CRDの間に差分があるかどうかを確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/argoproj/argo-cd/manifests/crds?ref=&lt;アップグレード先のArgoCDのバージョン&gt;&quot;</span>
 </code></pre></div>
 <p>もしCRDに差分がある大きなアップグレードの場合、別のClusterを新しく構築し、その上で新ArgoCDも構築することとする。</p>
 <h4 id="aws-loadbalancer-controller">▼ aws-loadbalancer-controller<a class="headerlink" href="#aws-loadbalancer-controller" title="Permanent link">&para;</a></h4>
 <p>aws-loadbalancer-controllerの場合、チャートをアップグレードする。</p>
 <p>各サービスのALBへの影響を考えて、CRDの差分がないバージョンまではaws-loadbalancer-controllerをアップグレードできる。</p>
-<p><code>kubectl diff</code>コマンドで、現在と新CRDの間に差分があるかどうかを確認できる。</p>
+<p><code>kubectl diff</code> コマンドで、現在と新CRDの間に差分があるかどうかを確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=&lt;アップグレード先のaws-loadbalancer-controllerのバージョン&gt;&quot;</span>
 </code></pre></div>
 <h4 id="descheduler">▼ descheduler<a class="headerlink" href="#descheduler" title="Permanent link">&para;</a></h4>
@@ -33775,7 +33775,7 @@ ip-*****.ap-northeast-1.compute.internal<span class="w">   </span>NotReady,Sched
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月14日 16:59:11 JST">2025-10-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

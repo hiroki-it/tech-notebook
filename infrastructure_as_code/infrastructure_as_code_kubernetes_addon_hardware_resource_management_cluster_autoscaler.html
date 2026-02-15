@@ -33362,9 +33362,9 @@
 <p><br></p>
 <h3 id="_3">条件に応じたアーキテクチャ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="pod">▼ Podのスケジューリングの可否が条件の場合<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
-<p>cluster-autoscalerは、ハードウェアリソース不足が原因でスケジューリングできないPodがある時、Nodeをスケーリングする。</p>
+<p>cluster-autoscalerは、ハードウェアリソース不足が原因でスケジューリングできないPodがあるとき、Nodeをスケーリングする。</p>
 <p>これのために、合わせてmetrics-serverを使用する。</p>
-<p>取得したPodのハードウェアの最大リソース消費量 (<code>.spec.containers[*].resources</code>キーの合計値) と、Node全体のリソースの空き領域を定期的 (<code>10</code>分ほど) に比較し、Nodeをスケーリングさせる。</p>
+<p>取得したPodのハードウェアの最大リソース消費量 (<code>.spec.containers[*].resources</code> キーの合計値) と、Node全体のリソースの空き領域を定期的 (<code>10</code> 分ほど) に比較し、Nodeをスケーリングさせる。</p>
 <p>この時、現在の空きサイズではPodを新しく作成できないようであればNodeをスケールアウトし、反対に空き容量に余裕があればスケールインする。</p>
 <p>そのため、Podのスケジューリングの可否を条件とする場合には、metrics-serverも採用する必要がある。</p>
 <p><img alt="kubernetes_cluster-autoscaler" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-autoscaler.png" /></p>
@@ -33442,7 +33442,7 @@
 
 <span class="w">    </span><span class="no">...</span>
 </code></pre></div>
-<p><code>.data.status</code>キー配下に、以下のような情報を持つ。</p>
+<p><code>.data.status</code> キー配下に、以下のような情報を持つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">Cluster-autoscaler status at 2023-03-27 10:38:18.725943178 +0000 UTC</span><span class="p">:</span>
 
 <span class="nt">Cluster-wide</span><span class="p">:</span>
@@ -33526,12 +33526,12 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>Podが、Nodeの<code>70</code>%にあたるハードウェアリソースを要求する。</p>
+<p>Podが、Nodeの <code>70</code>%にあたるハードウェアリソースを要求する。</p>
 <p>しかし、Nodeが<code>1</code>台では足りない。<code>70 + 70 = 140%</code>になるため、既存のNodeの少なくとも<code>1.4</code>倍のスペックが必要となる。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>事前にスペックを指定したNodeを<code>1</code>台追加で作成する。</p>
+<p>事前にスペックを指定したNodeを <code>1</code> 台追加で作成する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -33539,7 +33539,7 @@
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>結果として、<code>2</code>台それぞれで<code>70</code>%を消費するPodをスケジューリングさせている。</p>
+<p>結果として、<code>2</code> 台それぞれで <code>70</code>%を消費するPodをスケジューリングさせている。</p>
 </dd>
 </dl>
 <blockquote>
@@ -33553,12 +33553,12 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>Podが、Nodeの<code>30</code>%にあたるハードウェアリソースを要求する。</p>
+<p>Podが、Nodeの <code>30</code>%にあたるハードウェアリソースを要求する。</p>
 <p><code>30 + 30 = 60%</code>になるため、既存のNodeが<code>1</code>台あれば足りる。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>Nodeが<code>2</code>台以上あれば、<code>1</code>台になるようにNodeを停止する。</p>
+<p>Nodeが <code>2</code> 台以上あれば、<code>1</code> 台になるようにNodeを停止する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -33566,7 +33566,7 @@
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>結果として、<code>1</code>台で<code>60</code>%を消費するPodをスケジューリングさせている。</p>
+<p>結果として、<code>1</code> 台で <code>60</code>%を消費するPodをスケジューリングさせている。</p>
 </dd>
 </dl>
 <p><br></p>
@@ -33609,7 +33609,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2024年9月28日 22:21:16 JST">2024-09-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

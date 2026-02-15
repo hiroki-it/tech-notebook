@@ -2555,10 +2555,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#godefer" class="md-nav__link">
+  <a href="#go-defer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 実装例 (Goのdefer関数)
+        ▼ 実装例 (Goの defer 関数)
       
     </span>
   </a>
@@ -34070,10 +34070,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#godefer" class="md-nav__link">
+  <a href="#go-defer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 実装例 (Goのdefer関数)
+        ▼ 実装例 (Goの defer 関数)
       
     </span>
   </a>
@@ -34512,7 +34512,7 @@
 <h2 id="02-db-per-service">02. DB per serviceパターンのトランザクションパターン<a class="headerlink" href="#02-db-per-service" title="Permanent link">&para;</a></h2>
 <h3 id="_3">ローカルトランザクション<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ ローカルトランザクションとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p><code>1</code>個のトランザクション処理によって、<code>1</code>個のマイクロサービスのDBやスキーマ (MySQLの文脈ではスキーマがDBに相当) を操作する。</p>
+<p><code>1</code> 個のトランザクション処理によって、<code>1</code> 個のマイクロサービスのDBやスキーマ (MySQLの文脈ではスキーマがDBに相当) を操作する。</p>
 <p>推奨される。</p>
 <p>マイクロサービスアーキテクチャでローカルトランザクションを使用する場合、これを連続的に実行する仕組みが必要になる。</p>
 <p>また、これらの各DBに対する各トランザクションを紐付けられるように、トランザクションにID (例：UUID) を割り当てる必要がある。</p>
@@ -34817,10 +34817,10 @@
 <li><a href="https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/distributed-data#distributed-transactions">https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/distributed-data#distributed-transactions</a></li>
 </ul>
 </blockquote>
-<h4 id="godefer">▼ 実装例 (Goの<code>defer</code>関数)<a class="headerlink" href="#godefer" title="Permanent link">&para;</a></h4>
-<p>この例では、Goの<code>defer</code>関数で補償トランザクションの仕組みを実装している。</p>
+<h4 id="go-defer">▼ 実装例 (Goの <code>defer</code> 関数)<a class="headerlink" href="#go-defer" title="Permanent link">&para;</a></h4>
+<p>この例では、Goの <code>defer</code> 関数で補償トランザクションの仕組みを実装している。</p>
 <p>ローカルトランザクションで失敗した場合は、まずそのマイクロサービスが自身のトランザクションをロールバックする。</p>
-<p>その後、それまでにコールされた<code>defer</code>関数を実行し補償トランザクションを実行する。</p>
+<p>その後、それまでにコールされた <code>defer</code> 関数を実行し補償トランザクションを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">saga</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -35446,7 +35446,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月26日 19:24:53 JST">2025-11-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

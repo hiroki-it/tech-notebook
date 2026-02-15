@@ -34287,9 +34287,9 @@ foo-ingress<span class="w">   </span>nginx<span class="w">   </span>*<span class
 <p><br></p>
 <h3 id="config">config<a class="headerlink" href="#config" title="Permanent link">&para;</a></h3>
 <h4 id="config_1">▼ configとは<a class="headerlink" href="#config_1" title="Permanent link">&para;</a></h4>
-<p><code>minikube</code>コマンドに関するパラメーターを操作する。</p>
+<p><code>minikube</code> コマンドに関するパラメーターを操作する。</p>
 <h4 id="set">▼ set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h4>
-<p><code>kubectl</code>コマンド実行時のデフォルト値を設定する。</p>
+<p><code>kubectl</code> コマンド実行時のデフォルト値を設定する。</p>
 <p><strong>＊例＊</strong></p>
 <p>デフォルトのドライバーを設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>driver<span class="w"> </span>virtualbox
@@ -34335,8 +34335,8 @@ foo-ingress<span class="w">   </span>nginx<span class="w">   </span>*<span class
 <p><br></p>
 <h3 id="docker-env">docker-env<a class="headerlink" href="#docker-env" title="Permanent link">&para;</a></h3>
 <h4 id="docker-env_1">▼ docker-envとは<a class="headerlink" href="#docker-env_1" title="Permanent link">&para;</a></h4>
-<p>ホストで<code>docker</code>コマンドを実行した時に、ホスト側のdockerデーモンでなく、ゲスト仮想環境内のNodeのdockerデーモンにリクエストを送信できるように環境変数を設定する。</p>
-<p>バージョンタグ名が<code>latest</code>であると、仮想環境外に対してイメージをプルしてしまうことに注意する。</p>
+<p>ホストで <code>docker</code> コマンドを実行したときに、ホスト側のdockerデーモンでなく、ゲスト仮想環境内のNodeのdockerデーモンにリクエストを送信できるように環境変数を設定する。</p>
+<p>バージョンタグ名が <code>latest</code> であると、仮想環境外に対してイメージをプルしてしまうことに注意する。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>docker-env
 
@@ -34358,7 +34358,7 @@ $<span class="w"> </span><span class="nb">eval</span><span class="w"> </span><sp
 <span class="nv">DOCKER_CERT_PATH</span><span class="o">=</span>/Users/hiroki.hasegawa/.minikube/certs
 <span class="nv">MINIKUBE_ACTIVE_DOCKERD</span><span class="o">=</span>minikube
 </code></pre></div>
-<p>もし、 Makefileのターゲット内でこれを実行する場合は、<code>$(shell ...)</code>とする。</p>
+<p>もし、 Makefileのターゲット内でこれを実行する場合は、<code>$(shell ...)</code> とする。</p>
 <div class="highlight"><pre><span></span><code><span class="nf">docker-env</span><span class="o">:</span>
 <span class="w">    </span><span class="nb">eval</span><span class="w"> </span><span class="k">$(</span>shell<span class="w"> </span>minikube<span class="w"> </span>-p<span class="w"> </span>minikube<span class="w"> </span>docker-env<span class="k">)</span>
 </code></pre></div>
@@ -34382,8 +34382,8 @@ $<span class="w"> </span><span class="nb">eval</span><span class="w"> </span><sp
 <p><br></p>
 <h3 id="kubectl">kubectl<a class="headerlink" href="#kubectl" title="Permanent link">&para;</a></h3>
 <h4 id="kubectl_1">▼ kubectlとは<a class="headerlink" href="#kubectl_1" title="Permanent link">&para;</a></h4>
-<p>Minikubeのkube-apiserverをコンテキストとする<code>kubectl</code>コマンドを実行する。</p>
-<p>ローカルマシンに<code>kubectl</code>コマンドがインストールされていなくとも、Minikubeに対してこれを実行できる。ClientとServerのバージョンが自動的に揃えられる。</p>
+<p>Minikubeのkube-apiserverをコンテキストとする <code>kubectl</code> コマンドを実行する。</p>
+<p>ローカルマシンに <code>kubectl</code> コマンドがインストールされていなくとも、Minikubeに対してこれを実行できる。ClientとServerのバージョンが自動的に揃えられる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>kubectl<span class="w"> </span>--<span class="w"> </span>version
 
 <span class="c1"># kubectlコマンドのバージョン</span>
@@ -34421,7 +34421,7 @@ Server<span class="w"> </span>Version:<span class="w"> </span>version.Info<span 
 <p><br></p>
 <h3 id="node">node<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
 <h4 id="add">▼ add<a class="headerlink" href="#add" title="Permanent link">&para;</a></h4>
-<p>Nodeを<code>1</code>個だけ追加する。</p>
+<p>Nodeを <code>1</code> 個だけ追加する。</p>
 <h4 id="-control-plane">▼ --control-plane<a class="headerlink" href="#-control-plane" title="Permanent link">&para;</a></h4>
 <p>コントロールプレーンNodeを追加する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>node<span class="w"> </span>add<span class="w"> </span>--control-plane
@@ -34430,7 +34430,7 @@ Server<span class="w"> </span>Version:<span class="w"> </span>version.Info<span 
 <p>ワーカーNodeを追加する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>node<span class="w"> </span>add<span class="w"> </span>--worker
 </code></pre></div>
-<p>追加したワーカーNodeに<code>.metadata.labeles</code>キーを追加すれば、node affinityやnode selectorを検証できる。</p>
+<p>追加したワーカーNodeに <code>.metadata.labeles</code> キーを追加すれば、node affinityやnode selectorを検証できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># minikube-m01 はコントロールプレーンNodeのため、ラベルづけ不要である。</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># ArgoCDを作成するワーカーNodeの場合</span>
@@ -34493,7 +34493,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </
 <h3 id="service">service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
 <h4 id="service_1">▼ serviceとは<a class="headerlink" href="#service_1" title="Permanent link">&para;</a></h4>
 <p>NodePort Serviceを指定し、ホストから仮想サーバーを介して、Node内のServiceにポートフォワーディングを実行する。</p>
-<p><code>http://127.0.0.1:&lt;自動的に発行されたポート番号&gt;</code>の形式でURLが発行されるため、ブラウザや<code>curl</code>コマンドで接続を確認できる。</p>
+<p><code>http://127.0.0.1:&lt;自動的に発行されたポート番号&gt;</code> の形式でURLが発行されるため、ブラウザや <code>curl</code> コマンドで接続を確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>service<span class="w"> </span>&lt;NodePort<span class="w"> </span>Service名&gt;<span class="w"> </span>-n<span class="w"> </span>foo-namespace
 
 🏃<span class="w">  </span>Starting<span class="w"> </span>tunnel<span class="w"> </span><span class="k">for</span><span class="w"> </span>service<span class="w"> </span>&lt;Service名&gt;.
@@ -34514,7 +34514,7 @@ Opening<span class="w"> </span>service<span class="w"> </span>&lt;Service名&gt;
 <li><a href="https://cstoku.dev/posts/2018/k8sdojo-09/#minikube%E3%81%A7%E3%81%AEnodeport%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9">https://cstoku.dev/posts/2018/k8sdojo-09/#minikube%E3%81%A7%E3%81%AEnodeport%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9</a></li>
 </ul>
 </blockquote>
-<p>ただし、ポートフォワーディングのポート番号がランダムなため、もしポート番号を固定したい場合は、<code>kubectl port-forward</code>コマンドでPodを指定すると良い。</p>
+<p>ただし、ポートフォワーディングのポート番号がランダムなため、もしポート番号を固定したい場合は、<code>kubectl port-forward</code> コマンドでPodを指定すると良い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Podに直接的に指定する場合</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>pod/&lt;Pod名&gt;<span class="w"> </span>&lt;ホストポート番号&gt;:&lt;Podのポート番号&gt;
 
@@ -34529,12 +34529,12 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:&lt;ホス
 <li><a href="https://mome-n.com/posts/minikube-service-fixed-port/">https://mome-n.com/posts/minikube-service-fixed-port/</a></li>
 </ul>
 </blockquote>
-<p>ServiceのIPアドレスがNodeのIPアドレスと一致することは、<code>minikube ip</code>コマンドから確認できる。</p>
+<p>ServiceのIPアドレスがNodeのIPアドレスと一致することは、<code>minikube ip</code> コマンドから確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>ip
 
 *.*.*.*
 </code></pre></div>
-<p>補足として、<code>minikube service</code>コマンドを使用せずに、<code>ssh</code>コマンドでNodeに接続しても、同様にServiceにリクエストを送信できる。</p>
+<p>補足として、<code>minikube service</code> コマンドを使用せずに、<code>ssh</code> コマンドでNodeに接続しても、同様にServiceにリクエストを送信できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>ssh
 
 <span class="c1"># Nodeの中</span>
@@ -34562,8 +34562,8 @@ $<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>G
 </code></pre></div>
 <h4 id="-url">▼ --url<a class="headerlink" href="#-url" title="Permanent link">&para;</a></h4>
 <p>Minikube仮想サーバー内のNodeのIPアドレスと、NodePort Serviceのポート番号を取得する。</p>
-<p><code>http://127.0.0.1:&lt;自動的に発行されたポート番号&gt;</code>の形式でURLが発行されるため、ブラウザや<code>curl</code>コマンドで接続を確認できる。</p>
-<p><code>--url</code>オプションを使用しない場合とは異なり、ポートフォワーディングを実行しない。</p>
+<p><code>http://127.0.0.1:&lt;自動的に発行されたポート番号&gt;</code> の形式でURLが発行されるため、ブラウザや <code>curl</code> コマンドで接続を確認できる。</p>
+<p><code>--url</code> オプションを使用しない場合とは異なり、ポートフォワーディングを実行しない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>service<span class="w"> </span>&lt;NodePort<span class="w"> </span>Service名&gt;<span class="w"> </span>--url<span class="w"> </span>-n<span class="w"> </span>foo-namespace
 
 http://127.0.0.1:&lt;自動的に発行されたポート番号&gt;
@@ -34632,7 +34632,7 @@ xzcat
 yes
 zcat
 </code></pre></div>
-<p>Nodeの中では<code>docker</code>コマンドを実行でき、コンテナイメージもデバッグできる。</p>
+<p>Nodeの中では <code>docker</code> コマンドを実行でき、コンテナイメージもデバッグできる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>ssh
 
 <span class="c1"># Nodeの中</span>
@@ -34711,7 +34711,7 @@ minikube<span class="w">   </span>Ready<span class="w">    </span>control-plane,
 </blockquote>
 <h4 id="-cpus-memory">▼ --cpus、--memory<a class="headerlink" href="#-cpus-memory" title="Permanent link">&para;</a></h4>
 <p>Minikubeの各Nodeのハードウェアリソースを設定する (これはMinikubeクラスターの上限ではない) 。</p>
-<p>そのため、DockerDesktopの上限を高く設定しておかないと、ホストOSがMinikubeクラスターに割り当てられるハードウェアリソースが足りなくなり、MinikubeのNodeが<code>NotReady</code>になる。</p>
+<p>そのため、DockerDesktopの上限を高く設定しておかないと、ホストOSがMinikubeクラスターに割り当てられるハードウェアリソースが足りなくなり、MinikubeのNodeが <code>NotReady</code> になる。</p>
 <p>また、Nodeを増やすとMinikubeクラスター全体のハードウェアリソースの要求量が増える。</p>
 <p>つまり最適解は、適度なハードウェアリソースを割り当てたNodeを最低限冗長化することである。</p>
 <p>CPU4コアとメモリ7168MiBを持ったNodeが3台作られる。</p>
@@ -34748,17 +34748,17 @@ $<span class="w"> </span>free<span class="w"> </span>-m
 Mem:<span class="w">           </span><span class="m">7951</span><span class="w">        </span><span class="m">1853</span><span class="w">        </span><span class="m">3080</span><span class="w">         </span><span class="m">333</span><span class="w">        </span><span class="m">3017</span><span class="w">        </span><span class="m">5594</span>
 Swap:<span class="w">          </span><span class="m">1023</span><span class="w">           </span><span class="m">0</span><span class="w">        </span><span class="m">1023</span>
 </code></pre></div>
-<p>metrics-serverを入れて、<code>kubectl top node</code>コマンドを実行してもよいが、Minikubeクラスター全体であれば<code>minikube ssh</code>コマンドでMinikubeクラスターに入って確認した方が良い。</p>
+<p>metrics-serverを入れて、<code>kubectl top node</code> コマンドを実行してもよいが、Minikubeクラスター全体であれば <code>minikube ssh</code> コマンドでMinikubeクラスターに入って確認したほうが良い。</p>
 <h4 id="-docker-env">▼ --docker-env<a class="headerlink" href="#-docker-env" title="Permanent link">&para;</a></h4>
-<p>別に<code>docker-env</code>コマンドを実行しつつ、<code>start</code>コマンドを実行する。</p>
+<p>別に <code>docker-env</code> コマンドを実行しつつ、<code>start</code> コマンドを実行する。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> </span>--docker-env
 </code></pre></div>
 <h4 id="-ha">▼ --ha<a class="headerlink" href="#-ha" title="Permanent link">&para;</a></h4>
-<p>コントロールプレーンNodeを<code>3</code>個に冗長化する。</p>
+<p>コントロールプレーンNodeを <code>3</code> 個に冗長化する。</p>
 <p>kube-apiserverは負荷が高まりクラッシュしやすいため、対策になる。</p>
 <p>ただ、ワーカーNode以外のNode数が増える。</p>
-<p>ため、DockerDesktopの上限を高く設定しておかないと、ホストOSがMinikubeクラスターに割り当てられるハードウェアリソースが足りなくなり、MinikubeのNodeが<code>NotReady</code>になる。</p>
+<p>ため、DockerDesktopの上限を高く設定しておかないと、ホストOSがMinikubeクラスターに割り当てられるハードウェアリソースが足りなくなり、MinikubeのNodeが <code>NotReady</code> になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> </span>--ha
 
 NAME<span class="w">      </span>STATUS<span class="w">   </span>ROLES<span class="w">           </span>AGE<span class="w">   </span>VERSION
@@ -34775,7 +34775,7 @@ foo-m03<span class="w">   </span>Ready<span class="w">    </span>control-plane<s
 </ul>
 </blockquote>
 <h4 id="-driver">▼ --driver<a class="headerlink" href="#-driver" title="Permanent link">&para;</a></h4>
-<p>ゲスト仮想環境のドライバーを指定し、<code>start</code>コマンドを実行する。</p>
+<p>ゲスト仮想環境のドライバーを指定し、<code>start</code> コマンドを実行する。</p>
 <p>ホストごとに標準の仮想環境が異なり、MacOSはDockerドライバーがデフォルトである。</p>
 <p>ドライバーの使用前に、これをインストールしておく必要があることに注意する。</p>
 <p><strong>＊例＊</strong></p>
@@ -34788,7 +34788,7 @@ $<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> <
 </ul>
 </blockquote>
 <h4 id="-kubernetes-vsersion">▼ --kubernetes-vsersion<a class="headerlink" href="#-kubernetes-vsersion" title="Permanent link">&para;</a></h4>
-<p>Minikubeで稼働させるKubernetesのバージョンを指定しつつ、<code>start</code>コマンドを実行する。</p>
+<p>Minikubeで稼働させるKubernetesのバージョンを指定しつつ、<code>start</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> </span>--kubernetes-version<span class="o">=</span>v1.23.0
 </code></pre></div>
 <blockquote>
@@ -34806,14 +34806,14 @@ $<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> <
 </ul>
 </blockquote>
 <h4 id="-mount-mount-string">▼ --mount、--mount--string<a class="headerlink" href="#-mount-mount-string" title="Permanent link">&para;</a></h4>
-<p>ホストとゲスト仮想環境間のマウントディレクトリを指定しつつ、<code>start</code>コマンドを実行する。</p>
+<p>ホストとゲスト仮想環境間のマウントディレクトリを指定しつつ、<code>start</code> コマンドを実行する。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> </span>--mount<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--mount-string<span class="o">=</span><span class="s2">&quot;/Users/hiroki.hasegawa/projects/foo:/data&quot;</span>
 </code></pre></div>
 <h4 id="-nodes">▼ --nodes<a class="headerlink" href="#-nodes" title="Permanent link">&para;</a></h4>
-<p>作成するNode数を指定し、<code>start</code>コマンドを実行する。</p>
+<p>作成するNode数を指定し、<code>start</code> コマンドを実行する。</p>
 <p>マルチNodeのKubernetes Clusterを作成できる。</p>
-<p>Minikubeは、同じCPUとメモリを持つNodeを冗長化するため、<code>--nodes</code>オプションでNodeを増やすだけ、Podのリソースに余裕がでる。</p>
+<p>Minikubeは、同じCPUとメモリを持つNodeを冗長化するため、<code>--nodes</code> オプションでNodeを増やすだけ、Podのリソースに余裕がでる。</p>
 <p><strong>＊例＊</strong></p>
 <p>CPU4コアとメモリ7168GBを持ったNodeが3台作られる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> </span>--nodes<span class="w"> </span><span class="m">3</span><span class="w"> </span>--cpu<span class="w"> </span><span class="m">4</span><span class="w"> </span>--memory<span class="w"> </span><span class="m">7168</span>
@@ -34845,7 +34845,7 @@ type:<span class="w"> </span>Worker
 host:<span class="w"> </span>Running
 kubelet:<span class="w"> </span>Running
 </code></pre></div>
-<p>補足として、コントロールプレーンNodeも単なるNodeの<code>1</code>個なため、Deploymentを作成すると、コントロールプレーンNodeにもPodをスケジューリングさせる。</p>
+<p>補足として、コントロールプレーンNodeも単なるNodeの <code>1</code> 個なため、Deploymentを作成すると、コントロールプレーンNodeにもPodをスケジューリングさせる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-o<span class="w"> </span>wide
 
 NAME<span class="w">                     </span>READY<span class="w">   </span>STATUS<span class="w">    </span>RESTARTS<span class="w">   </span>AGE<span class="w">   </span>IP<span class="w">           </span>NODE<span class="w">           </span>NOMINATED<span class="w"> </span>NODE<span class="w">   </span>READINESS<span class="w"> </span>GATES
@@ -34903,7 +34903,7 @@ foo-m06<span class="w">   </span>Ready<span class="w">    </span>worker<span cla
 <h4 id="tunnel_1">▼ tunnelとは<a class="headerlink" href="#tunnel_1" title="Permanent link">&para;</a></h4>
 <p>LoadBalancerを一時的に作成し、LoadBalancer Serviceに自動的に紐付ける。</p>
 <p>紐付けられたLoadBalancer Serviceには『External Endpoints (<code>http://127.0.0.1:80</code>) 』が割り当てられ、ここからLoadBalancer Serviceにリクエストを送信できるようになる。</p>
-<p>Node外からPodに通信できるようになる。<code>minikube ssh</code>コマンドでNodeに接続しつつ、公開されたServiceにリクエストを送信できる。</p>
+<p>Node外からPodに通信できるようになる。<code>minikube ssh</code> コマンドでNodeに接続しつつ、公開されたServiceにリクエストを送信できる。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>tunnel
 
@@ -34953,7 +34953,7 @@ foo-m06<span class="w">   </span>Ready<span class="w">    </span>worker<span cla
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月23日 14:30:27 JST">2025-06-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

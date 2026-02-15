@@ -33874,7 +33874,7 @@
 <h3 id="termination-controller">termination-controller<a class="headerlink" href="#termination-controller" title="Permanent link">&para;</a></h3>
 <p>AWS EC2ワーカーNodeの削除命令を検知し、AWS EC2ワーカーNodeのGraceful Shutdownから削除までを行う。</p>
 <p>AWS EC2ワーカーNodeは、デフォルトではNodeのGraceful Shutdownを実施しない。</p>
-<p>そのため、<code>kubelet-config.json</code>ファイル (KubeletConfiguration)の<code>--shutdown-grace-period</code>オプションを使用する必要がある。</p>
+<p>そのため、<code>kubelet-config.json</code> ファイル (KubeletConfiguration)の <code>--shutdown-grace-period</code> オプションを使用する必要がある。</p>
 <p>一方で、Karpenterを使用すると、termination-controllerがGraceful Shutdownを実施してくれる。</p>
 <blockquote>
 <ul>
@@ -33884,7 +33884,7 @@
 <p><br></p>
 <h2 id="02">02. スケーリング<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_3">スケーリングの仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>Karpenterは、起動テンプレートを作成した上でAWS EC2フリートAPIをコールし、AWS EC2 Nodeをスケールアウト/スケールアップする。</p>
+<p>Karpenterは、起動テンプレートを作成したうえでAWS EC2フリートAPIをコールし、AWS EC2 Nodeをスケールアウト/スケールアップする。</p>
 <p>また反対に、AWS EC2 Nodeをスケールイン/スケールダウンする。</p>
 <p>Karpenterはバージョニングされてない独立した起動テンプレートを作成する。</p>
 <p>そのため、残骸として残らないように、その都度起動テンプレートを削除する。</p>
@@ -33939,7 +33939,7 @@
 </ul>
 </blockquote>
 <h4 id="pod_1">▼ Podのスケジューリングの可否<a class="headerlink" href="#pod_1" title="Permanent link">&para;</a></h4>
-<p>kube-schedulerから情報を取得し、新しいPodをNode上にスケジューリングできない状態 (<code>Pending</code>状態) を検知し、Nodeのスケジューリングを検討する。</p>
+<p>kube-schedulerから情報を取得し、新しいPodをNode上にスケジューリングできない状態 (<code>Pending</code> 状態) を検知し、Nodeのスケジューリングを検討する。</p>
 <p>新しいPodをスケジューリングできなくなる理由としては、Nodeの上限数超過やハードウェアリソース不足がある。</p>
 <blockquote>
 <ul>
@@ -33959,7 +33959,7 @@
 <ul>
 <li>Controllerが不明なPodがいる</li>
 <li>Podの退避を拒否するPodDisruptionBudget (例：<code>disruptionsAllowed=0</code>) があり、統合を実行してしまうとPodDisruptionBudgetに違反する。</li>
-<li>Podの<code>metadata.annotations</code>キー配下に<code>karpenter.sh/do-not-evict</code>キーがある。</li>
+<li>Podの <code>metadata.annotations</code> キー配下に <code>karpenter.sh/do-not-evict</code> キーがある。</li>
 <li>PodにAffinityがあり、統合を実行してしまうとAffinityに違反する。</li>
 </ul>
 <blockquote>
@@ -33972,7 +33972,7 @@
 <h3 id="node">削除対象のNode選定<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
 <h4 id="finalizer">▼ Finalizer<a class="headerlink" href="#finalizer" title="Permanent link">&para;</a></h4>
 <p>Nodeの削除はKarpenterが管理する。</p>
-<p>Karpenter外から削除操作 (例：<code>kubectl delete</code>コマンド) があったとして、Karpenterがこれを検知し、Nodeを削除する。</p>
+<p>Karpenter外から削除操作 (例：<code>kubectl delete</code> コマンド) があったとして、Karpenterがこれを検知し、Nodeを削除する。</p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/docs/concepts/#disrupting-nodes">https://karpenter.sh/docs/concepts/#disrupting-nodes</a></li>
@@ -34009,7 +34009,7 @@
 <p><br></p>
 <h3 id="aws">AWSリソースとの連携<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 起動テンプレート<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>KarpenterのKarpenter Controllerは、起動テンプレートを作成した上で、AWS EC2フリートAPIからAWS EC2 Nodeを作成する。</p>
+<p>KarpenterのKarpenter Controllerは、起動テンプレートを作成したうえで、AWS EC2フリートAPIからAWS EC2 Nodeを作成する。</p>
 <p>執筆時点 (2023/11/04) 時点では、Karpenter Controllerは自身以外 (例：Terraformなど) で作成した起動テンプレートを参照できない。</p>
 <p>不都合があって廃止した経緯がある。</p>
 <blockquote>
@@ -34071,11 +34071,11 @@
 </blockquote>
 <h4 id="_10">▼ スケールアウト/スケールアップの場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>例えば、以下のような仕組みで、Nodeの垂直/水平スケーリングのスケールアウト/スケールアップを実行する。</p>
-<p>Karpenterは、スケジューリングできないPod (<code>Pending</code>状態) が出現すると、スケールアウト/スケールアップを検討する。</p>
+<p>Karpenterは、スケジューリングできないPod (<code>Pending</code> 状態) が出現すると、スケールアウト/スケールアップを検討する。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>Podが、Nodeの<code>70</code>%にあたるハードウェアリソースを要求する。</p>
+<p>Podが、Nodeの <code>70</code>%にあたるハードウェアリソースを要求する。</p>
 <p>しかし、Nodeが<code>1</code>台では足りない。<code>70 + 70 = 140%</code>になるため、既存のNodeの少なくとも<code>1.4</code>倍のスペックが必要となる。</p>
 </dd>
 <dt><code>(2)</code></dt>
@@ -34088,7 +34088,7 @@
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>結果として、<code>1</code>台で<code>2</code>個のPodをスケジューリングさせている。</p>
+<p>結果として、<code>1</code> 台で <code>2</code> 個のPodをスケジューリングさせている。</p>
 </dd>
 </dl>
 <blockquote>
@@ -34118,10 +34118,10 @@
 <h2 id="03">03. セットアップ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="aws_1">AWS側<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h3>
 <h4 id="terraform-1">▼ Terraformの公式モジュール (1) の場合<a class="headerlink" href="#terraform-1" title="Permanent link">&para;</a></h4>
-<p><code>terraform-aws-modules/iam/.../iam-assumable-role-with-oidc</code>を使用する。</p>
+<p><code>terraform-aws-modules/iam/.../iam-assumable-role-with-oidc</code> を使用する。</p>
 <p>Kapenterのセットアップのうち、AWS側で必要なものをまとめる。</p>
 <p>ここでは、Terraformの公式モジュールを使用する。</p>
-<p>コマンド (例：<code>eksctl</code>コマンド) を使用しても良い。</p>
+<p>コマンド (例：<code>eksctl</code> コマンド) を使用しても良い。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_karpenter_controller&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
@@ -34297,7 +34297,7 @@
 </ul>
 </blockquote>
 <h4 id="terraform-2">▼ Terraformの公式モジュール (2) の場合<a class="headerlink" href="#terraform-2" title="Permanent link">&para;</a></h4>
-<p><code>terraform-aws-modules/eks/.../karpenter</code>を使用する。</p>
+<p><code>terraform-aws-modules/eks/.../karpenter</code> を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;eks_iam_karpenter_controller&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/eks/aws//modules/karpenter&quot;</span>
 <span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt; 19.18.0&quot;</span>
@@ -34351,7 +34351,7 @@
 <p><br></p>
 <h2 id="04">04. トラブルシューティング<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="guaranteed-qos">メモリをGuaranteed QoSにする<a class="headerlink" href="#guaranteed-qos" title="Permanent link">&para;</a></h3>
-<p>Podの特に<code>resources</code>キーで、上限 (<code>.spec.containers[*].resources.limits</code>) が設定されていないと、使用量がバーストする。</p>
+<p>Podの特に <code>resources</code> キーで、上限 (<code>.spec.containers[*].resources.limits</code>) が設定されていないと、使用量がバーストする。</p>
 <p>その場合、Karpenterの作成したNodeのメモリ量を超え、NodeのSystemOOMイベントによって他のPodが終了してしまう。</p>
 <p>Podのメモリで上限 (<code>.spec.containers[*].resources.limits</code>) = 下限 (<code>.spec.containers[*].resources.requests</code>) のように設定する (Guaranteed QoS) と、OOMキラーを避けられる。</p>
 <blockquote>
@@ -34389,7 +34389,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月8日 20:44:55 JST">2025-03-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

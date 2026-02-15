@@ -33315,7 +33315,7 @@
 <p><br></p>
 <h2 id="02-ansible-community">02. ansible-communityコマンド<a class="headerlink" href="#02-ansible-community" title="Permanent link">&para;</a></h2>
 <p>Ansibleのバージョンを確認する。</p>
-<p><code>ansible version</code>コマンドではなく、こちらの使用する。</p>
+<p><code>ansible version</code> コマンドではなく、こちらの使用する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ansible-community<span class="w"> </span>--version
 </code></pre></div>
 <blockquote>
@@ -33361,7 +33361,7 @@
 <h4 id="-i_1">▼ -iとは<a class="headerlink" href="#-i_1" title="Permanent link">&para;</a></h4>
 <p>inventoryファイルを指定する。</p>
 <p>これにより、プロビジョニングの実行先の管理対象ノードを指定できる。</p>
-<p>基本的には、ディレクトリを指定した方が良い。</p>
+<p>基本的には、ディレクトリを指定したほうが良い。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ansible-playbook<span class="w"> </span>&lt;playbookファイル&gt;<span class="w"> </span>-i<span class="w"> </span>&lt;inventoryファイル/ディレクトリ&gt;
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
@@ -33396,7 +33396,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="encrypt">encrypt<a class="headerlink" href="#encrypt" title="Permanent link">&para;</a></h3>
-<p>指定した平文ファイルを暗号化し、元の平文ファイルを上書きする。暗号化済みのファイルを使用する場合、<code>ansible-playbook</code>コマンドで<code>--ask-vault-pass</code>オプションを有効化する必要がある。</p>
+<p>指定した平文ファイルを暗号化し、元の平文ファイルを上書きする。暗号化済みのファイルを使用する場合、<code>ansible-playbook</code> コマンドで <code>--ask-vault-pass</code> オプションを有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ansible-vault<span class="w"> </span>encrypt<span class="w"> </span>parameters.yml
 
 New<span class="w"> </span>Vault<span class="w"> </span>password:
@@ -33418,7 +33418,7 @@ Encryption<span class="w"> </span>successful
 <h2 id="05-ansible-inventory">05. ansible-inventoryコマンド<a class="headerlink" href="#05-ansible-inventory" title="Permanent link">&para;</a></h2>
 <h3 id="-list">--list<a class="headerlink" href="#-list" title="Permanent link">&para;</a></h3>
 <h4 id="-list_1">▼ --listとは<a class="headerlink" href="#-list_1" title="Permanent link">&para;</a></h4>
-<p><code>inventory</code>ファイルを指定し、<code>json</code>形式に変換する。</p>
+<p><code>inventory</code> ファイルを指定し、<code>json</code> 形式に変換する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ansible-playbook<span class="w"> </span>-i<span class="w"> </span>&lt;inventoryファイル/ディレクトリ&gt;<span class="w"> </span>--list
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
@@ -33430,7 +33430,7 @@ Encryption<span class="w"> </span>successful
 </ul>
 </blockquote>
 <h4 id="-y">▼ -y<a class="headerlink" href="#-y" title="Permanent link">&para;</a></h4>
-<p><code>inventory</code>ファイルを指定し、<code>yml</code>形式に変換する。</p>
+<p><code>inventory</code> ファイルを指定し、<code>yml</code> 形式に変換する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ansible-playbook<span class="w"> </span>-i<span class="w"> </span>&lt;inventoryファイル/ディレクトリ&gt;<span class="w"> </span>--list<span class="w"> </span>-y
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
@@ -33462,7 +33462,7 @@ Encryption<span class="w"> </span>successful
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月17日 18:49:49 JST">2025-05-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

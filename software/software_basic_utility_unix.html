@@ -8666,7 +8666,7 @@
   <a href="#cron_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        cronファイル
+        cron ファイル
       
     </span>
   </a>
@@ -8677,7 +8677,7 @@
   <a href="#crond" class="md-nav__link">
     <span class="md-ellipsis">
       
-        cron.dファイル
+        cron.d ファイル
       
     </span>
   </a>
@@ -9143,7 +9143,7 @@
   <a href="#homecentosbashrc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /home/centos/.bashrcファイル
+        /home/centos/.bashrc ファイル
       
     </span>
   </a>
@@ -10608,7 +10608,7 @@
   <a href="#sshconfig" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ~/.ssh/configファイル
+        ~/.ssh/config ファイル
       
     </span>
   </a>
@@ -35724,7 +35724,7 @@
   <a href="#cron_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        cronファイル
+        cron ファイル
       
     </span>
   </a>
@@ -35735,7 +35735,7 @@
   <a href="#crond" class="md-nav__link">
     <span class="md-ellipsis">
       
-        cron.dファイル
+        cron.d ファイル
       
     </span>
   </a>
@@ -36201,7 +36201,7 @@
   <a href="#homecentosbashrc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /home/centos/.bashrcファイル
+        /home/centos/.bashrc ファイル
       
     </span>
   </a>
@@ -37666,7 +37666,7 @@
   <a href="#sshconfig" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ~/.ssh/configファイル
+        ~/.ssh/config ファイル
       
     </span>
   </a>
@@ -38544,7 +38544,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 </code></pre></div>
 <p><br></p>
 <h3 id="go">go<a class="headerlink" href="#go" title="Permanent link">&para;</a></h3>
-<p>現在の<code>chmod</code>コマンドの実行者以外に認可スコープを付与する。</p>
+<p>現在の <code>chmod</code> コマンドの実行者以外に認可スコープを付与する。</p>
 <blockquote>
 <ul>
 <li><a href="http://www.damp.tottori-u.ac.jp/~ooshida/unix/chmod.html">http://www.damp.tottori-u.ac.jp/~ooshida/unix/chmod.html</a></li>
@@ -38564,11 +38564,11 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>chown<span class="w"> </span>&lt;ユーザー所有権&gt;:&lt;グループ所有権&gt;<span class="w"> </span>&lt;ファイル名&gt;
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>ユーザー所有権を<code>foo</code>に、グループ所有権は変更しない</p>
+<p>ユーザー所有権を <code>foo</code> に、グループ所有権は変更しない</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>chown<span class="w"> </span>foo<span class="w"> </span>bar.txt
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>ユーザー所有権を<code>foo</code>に、グループ所有権を<code>bar</code>に変更する。</p>
+<p>ユーザー所有権を <code>foo</code> に、グループ所有権を <code>bar</code> に変更する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>chown<span class="w"> </span>foo:foo<span class="w"> </span>bar.txt
 </code></pre></div>
 <p><br></p>
@@ -38594,10 +38594,10 @@ $<span class="w"> </span>cp<span class="w"> </span>-Rp<span class="w"> </span>/&
 <p><br></p>
 <h2 id="cron">cron<a class="headerlink" href="#cron" title="Permanent link">&para;</a></h2>
 <h3 id="cron_1">cronとは<a class="headerlink" href="#cron_1" title="Permanent link">&para;</a></h3>
-<p>Unixにて、Linuxの能力の<code>1</code>個であるジョブ管理を実装する。</p>
+<p>Unixにて、Linuxの能力の <code>1</code> 個であるジョブ管理を実装する。</p>
 <p>あらかじめ、ジョブ (定期的なバッチ処理) を登録しておき、指定したスケジュールに従って、ジョブを実行する。</p>
 <p><br></p>
-<h3 id="cron_2"><code>cron</code>ファイル<a class="headerlink" href="#cron_2" title="Permanent link">&para;</a></h3>
+<h3 id="cron_2"><code>cron</code> ファイル<a class="headerlink" href="#cron_2" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># /etc/cron.hourly/cron-hourly.txt</span>
 <span class="c1"># バッチ処理を、毎時・1分ごとに実行するように設定する。</span>
 <span class="m">1</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>root<span class="w"> </span>run-parts<span class="w"> </span>/etc/cron.hourly
@@ -38647,7 +38647,7 @@ $<span class="w"> </span>cp<span class="w"> </span>-Rp<span class="w"> </span>/&
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>ジョブを登録するファイルを作成する。<code>run-parts</code>コマンドで、指定した時間に、各cronディレクトリ内の<code>cron</code>ファイルを一括で実行するように記述しておく。</p>
+<p>ジョブを登録するファイルを作成する。<code>run-parts</code> コマンドで、指定した時間に、各cronディレクトリ内の <code>cron</code> ファイルを一括で実行するように記述しておく。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># 設定</span>
@@ -38677,8 +38677,8 @@ $<span class="w"> </span>cp<span class="w"> </span>-Rp<span class="w"> </span>/&
 @reboot<span class="w"> </span>make<span class="w"> </span>clean<span class="w"> </span>html<span class="w"> </span><span class="c1"># cron起動時に一度だけ</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="crond"><code>cron.d</code>ファイル<a class="headerlink" href="#crond" title="Permanent link">&para;</a></h3>
-<p>複数の<code>cron</code>ファイルで全ての1つのディレクトリで管理する場合に使用する。</p>
+<h3 id="crond"><code>cron.d</code> ファイル<a class="headerlink" href="#crond" title="Permanent link">&para;</a></h3>
+<p>複数の <code>cron</code> ファイルで全ての1つのディレクトリで管理する場合に使用する。</p>
 <table>
 <thead>
 <tr>
@@ -38709,8 +38709,8 @@ $<span class="w"> </span>cp<span class="w"> </span>-Rp<span class="w"> </span>/&
 <h2 id="crontab">crontab<a class="headerlink" href="#crontab" title="Permanent link">&para;</a></h2>
 <h3 id="crontab_1">crontabとは<a class="headerlink" href="#crontab_1" title="Permanent link">&para;</a></h3>
 <p>crontabファイルを操作する。</p>
-<p>作成した<code>cron</code>ファイルを登録できる。</p>
-<p><code>cron.d</code>ファイルは操作できない。</p>
+<p>作成した <code>cron</code> ファイルを登録できる。</p>
+<p><code>cron.d</code> ファイルは操作できない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>crontab<span class="w"> </span>&lt;ファイルへのパス&gt;
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
@@ -38747,7 +38747,7 @@ $<span class="w"> </span>cp<span class="w"> </span>-Rp<span class="w"> </span>/&
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>このファイルを<code>crontab</code>コマンドで登録する。cronファイルの実体はないことと、ファイルの内容を変更した場合は登録し直さなければいけないことに注意する。</p>
+<p>このファイルを <code>crontab</code> コマンドで登録する。cronファイルの実体はないことと、ファイルの内容を変更した場合は登録し直さなければいけないことに注意する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>crontab<span class="w"> </span>/etc/cron.hourly/cron-hourly.txt
@@ -38808,8 +38808,8 @@ foo.txt:<span class="w"> </span>ASCII<span class="w"> </span>text
 <h3 id="curl_1">curlとは<a class="headerlink" href="#curl_1" title="Permanent link">&para;</a></h3>
 <p>HTTPプロトコルでリクエストを送信する。</p>
 <p>テストサイト (例：<code>httpbin.org</code>) に送信すると、通信を検証できる。</p>
-<p>なお、TCPスリーウェイハンドシェイクを実行する場合は<code>nc</code>コマンドを使用する。</p>
-<p>ダウンロードのためのユーティリティとしては、<code>curl</code>コマンドよりも<code>wget</code>コマンドの方が良い。</p>
+<p>なお、TCPスリーウェイハンドシェイクを実行する場合は <code>nc</code> コマンドを使用する。</p>
+<p>ダウンロードのためのユーティリティとしては、<code>curl</code> コマンドよりも <code>wget</code> コマンドの方が良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://yamitzky.hatenablog.com/entry/2016/05/13/204107">https://yamitzky.hatenablog.com/entry/2016/05/13/204107</a></li>
@@ -38828,7 +38828,7 @@ foo.txt:<span class="w"> </span>ASCII<span class="w"> </span>text
 <p>ダウンロードの進捗ログを表示しない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-sL<span class="w"> </span>https://example.com/foo
 </code></pre></div>
-<p><code>curl</code>コマンドの結果から、特定の文字を抽出できる。</p>
+<p><code>curl</code> コマンドの結果から、特定の文字を抽出できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 『=』より後ろのバージョンを取得する</span>
 $<span class="w"> </span>curl<span class="w"> </span>-s<span class="w"> </span>https://example.com/foo.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/^[^=]*=//&#39;</span>
 </code></pre></div>
@@ -38867,24 +38867,24 @@ $<span class="w"> </span>curl<span class="w"> </span>https://*.*.*.*<span class=
 </code></pre></div>
 <p><br></p>
 <h3 id="-o">-o (小文字)<a class="headerlink" href="#-o" title="Permanent link">&para;</a></h3>
-<p>インストール後のファイル名を定義する。これを指定しない場合、<code>-O</code>オプションを有効化する必要がある。</p>
-<p>インストール対象が圧縮ファイルの場合、圧縮ファイルの解凍後ファイルは圧縮ファイルの元々の名前になるため、<code>-o</code>オプションは意味がない。</p>
-<p>一方で、ディレクトリを指定してダウンロードする方法はなく、<code>-O</code>オプションをしてしなければならない。</p>
+<p>インストール後のファイル名を定義する。これを指定しない場合、<code>-O</code> オプションを有効化する必要がある。</p>
+<p>インストール対象が圧縮ファイルの場合、圧縮ファイルの解凍後ファイルは圧縮ファイルの元々の名前になるため、<code>-o</code> オプションは意味がない。</p>
+<p>一方で、ディレクトリを指定してダウンロードする方法はなく、<code>-O</code> オプションをしてしなければならない。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span>-o<span class="w"> </span>&lt;ファイルへのパス&gt;<span class="w"> </span>https://example.com
 </code></pre></div>
 <p><br></p>
 <h3 id="-o_1">-O (大文字)<a class="headerlink" href="#-o_1" title="Permanent link">&para;</a></h3>
-<p>インストール後のファイル名はそのままでインストールする。これを指定しない場合、<code>-o</code>オプションを有効化する必要がある。</p>
+<p>インストール後のファイル名はそのままでインストールする。これを指定しない場合、<code>-o</code> オプションを有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-LO<span class="w"> </span>https://example.com
 </code></pre></div>
 <p><br></p>
 <h3 id="-resolve">--resolve<a class="headerlink" href="#-resolve" title="Permanent link">&para;</a></h3>
-<p>ドメインとIPアドレスを紐付け、指定した名前解決を行いつつ、<code>curl</code>コマンドを実行する。</p>
+<p>ドメインとIPアドレスを紐付け、指定した名前解決を行いつつ、<code>curl</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>--resolve<span class="w"> </span>&lt;ドメイン名&gt;:&lt;ポート番号&gt;:&lt;IPアドレス&gt;<span class="w"> </span>https://example.com
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>リクエストの名前解決時、<code>example.com</code>を正引きすると<code>127.0.0.1</code>が返却されるようにする。</p>
+<p>リクエストの名前解決時、<code>example.com</code> を正引きすると <code>127.0.0.1</code> が返却されるようにする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>--resolve<span class="w"> </span>example.com:80:127.0.0.1<span class="w"> </span>https://example.com
 </code></pre></div>
 <p><br></p>
@@ -38940,8 +38940,8 @@ total<span class="w">                                 </span><span class="m">557
 </code></pre></div>
 <p><br></p>
 <h3 id="fdisk">fdiskとの違い<a class="headerlink" href="#fdisk" title="Permanent link">&para;</a></h3>
-<p>類似する<code>df</code>コマンドでは、パーティションで区切られたストレージのうちでマウントされたもののみを取得する。</p>
-<p>一方で<code>fdisk</code>コマンドでは、マウントされているか否かに関わらず、パーティションで区切られた全てのストレージを取得する。</p>
+<p>類似する <code>df</code> コマンドでは、パーティションで区切られたストレージのうちでマウントされたもののみを取得する。</p>
+<p>一方で <code>fdisk</code> コマンドでは、マウントされているか否かに関わらず、パーティションで区切られた全てのストレージを取得する。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/questions/16307484/difference-between-df-h-and-fdisk-command">https://stackoverflow.com/questions/16307484/difference-between-df-h-and-fdisk-command</a></li>
@@ -38951,7 +38951,7 @@ total<span class="w">                                 </span><span class="m">557
 <h2 id="diff">diff<a class="headerlink" href="#diff" title="Permanent link">&para;</a></h2>
 <h3 id="diff_1">diffとは<a class="headerlink" href="#diff_1" title="Permanent link">&para;</a></h3>
 <p>テキストファイルの内容を比較する。</p>
-<p>別途、<code>colordiff</code>パッケージを入れると見やすくなる。</p>
+<p>別途、<code>colordiff</code> パッケージを入れると見やすくなる。</p>
 <blockquote>
 <ul>
 <li><a href="https://kimuson.dev/blog/shell/color_diff/">https://kimuson.dev/blog/shell/color_diff/</a></li>
@@ -38991,7 +38991,7 @@ $<span class="w"> </span>du<span class="w"> </span>./<span class="w"> </span><sp
 </code></pre></div>
 <p><br></p>
 <h3 id="-h">-h<a class="headerlink" href="#-h" title="Permanent link">&para;</a></h3>
-<p>読みやすい単位で、指定したディレクトリ内のサブディレクトリのサイズ、ディレクトリ全体の合計サイズ (KB) を再帰的に取得する。ただし、細かい数値が省略されてしまうため、より正確なサイズを知りたい場合は、<code>-h</code>オプションを使用しないようにする。</p>
+<p>読みやすい単位で、指定したディレクトリ内のサブディレクトリのサイズ、ディレクトリ全体の合計サイズ (KB) を再帰的に取得する。ただし、細かい数値が省略されてしまうため、より正確なサイズを知りたい場合は、<code>-h</code> オプションを使用しないようにする。</p>
 <blockquote>
 <ul>
 <li><a href="https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du">https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du</a></li>
@@ -39008,7 +39008,7 @@ $<span class="w"> </span>du<span class="w"> </span>./<span class="w"> </span><sp
 </code></pre></div>
 <p><br></p>
 <h3 id="-max-depth1">--max-depth=1<a class="headerlink" href="#-max-depth1" title="Permanent link">&para;</a></h3>
-<p>再帰的にディレクトリのサイズを取得する時、階層の深さを設定する。</p>
+<p>再帰的にディレクトリのサイズを取得するとき、階層の深さを設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>du<span class="w"> </span>-h<span class="w"> </span>./vendor/foo<span class="w"> </span>--max-depth<span class="o">=</span><span class="m">1</span>
 
 27K<span class="w">   </span>./vendor/foo
@@ -39032,7 +39032,7 @@ $<span class="w"> </span>du<span class="w"> </span>./<span class="w"> </span><sp
 <h2 id="echo">echo<a class="headerlink" href="#echo" title="Permanent link">&para;</a></h2>
 <h3 id="echo_1">echoとは<a class="headerlink" href="#echo_1" title="Permanent link">&para;</a></h3>
 <p>定義されたシェル変数を出力する。</p>
-<p>変数名には<code>$</code>マークを付ける。</p>
+<p>変数名には <code>$</code> マークを付ける。</p>
 <p>ダブルクオートはあってもなくても良い。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>&lt;変数名&gt;<span class="o">=</span>&lt;値&gt;
 
@@ -39079,9 +39079,9 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
 $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/sbin:/bin:/usr/sbin:/usr/bin
 </code></pre></div>
 <p><br></p>
-<h3 id="homecentosbashrc"><code>/home/centos/.bashrc</code>ファイル<a class="headerlink" href="#homecentosbashrc" title="Permanent link">&para;</a></h3>
-<p>OSを再起動すると、<code>export</code>コマンドの結果は消去されてしまう。</p>
-<p>そのため、再起動時に自動的に実行されるよう、<code>.bashrc</code>ファイルに追記しておく。</p>
+<h3 id="homecentosbashrc"><code>/home/centos/.bashrc</code> ファイル<a class="headerlink" href="#homecentosbashrc" title="Permanent link">&para;</a></h3>
+<p>OSを再起動すると、<code>export</code> コマンドの結果は消去されてしまう。</p>
+<p>そのため、再起動時に自動的に実行されるよう、<code>.bashrc</code> ファイルに追記しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Source global definitions</span>
 <span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/etc/bashrc<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <span class="w">  </span>.<span class="w"> </span>/etc/bashrc
@@ -39160,13 +39160,13 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 </code></pre></div>
 <p><br></p>
 <h3 id="-name">-name<a class="headerlink" href="#-name" title="Permanent link">&para;</a></h3>
-<p>ファイル名が<code>.conf</code>で終了するものを全て検索する。</p>
+<p>ファイル名が <code>.conf</code> で終了するものを全て検索する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.conf&quot;</span><span class="w"> </span>-type<span class="w"> </span>f
 </code></pre></div>
 <p>名前が dir で終了するディレクトリを全て検索する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*dir&quot;</span><span class="w"> </span>-type<span class="w"> </span>d
 </code></pre></div>
-<p>ルートディレクトリ配下で、 <code>&lt;検索文字&gt;</code>という文字をもち、ファイル名が<code>.conf</code>で終了するファイルを全て検索する。</p>
+<p>ルートディレクトリ配下で、 <code>&lt;検索文字&gt;</code> という文字をもち、ファイル名が <code>.conf</code> で終了するファイルを全て検索する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.conf&quot;</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;&lt;検索文字&gt;&quot;</span>
 </code></pre></div>
 <p>指定した拡張子のファイルを全て削除する。</p>
@@ -39196,7 +39196,7 @@ Swap:<span class="w">             </span><span class="m">0</span><span class="w"
 <p><br></p>
 <h2 id="fuser">fuser<a class="headerlink" href="#fuser" title="Permanent link">&para;</a></h2>
 <p>デバイスを使用しているプロセスIDを取得する。</p>
-<p><code>unmount</code>コマンドの実行時、デバイスが使用中でアンマウントできない場合に使用する。</p>
+<p><code>unmount</code> コマンドの実行時、デバイスが使用中でアンマウントできない場合に使用する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>fuser<span class="w"> </span>-muv<span class="w"> </span>&lt;デバイスファイル名&gt;
 
 <span class="w">             </span>USER<span class="w">    </span>PID<span class="w">  </span>ACCESS<span class="w">  </span>COMMAND
@@ -39222,12 +39222,12 @@ usage:<span class="w"> </span>grep<span class="w"> </span><span class="o">[</spa
 </code></pre></div>
 <p><br></p>
 <h3 id="_6">基本的な使い方<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>文字列の表示に関するさまざまなユーティリティ (例：<code>ls</code>、<code>cat</code>、<code>find</code>など) と組み合わせて使用する。</p>
+<p>文字列の表示に関するさまざまなユーティリティ (例：<code>ls</code>、<code>cat</code>、<code>find</code> など) と組み合わせて使用する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>foo.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>bar
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>foo.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>bar
 </code></pre></div>
-<p><code>grep</code>コマンドを忘れると、後続のコマンドに取得内容をパラメーターとして渡すことになるが、これで問題が起こることがある。</p>
+<p><code>grep</code> コマンドを忘れると、後続のコマンドに取得内容をパラメーターとして渡すことになるが、これで問題が起こることがある。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/kobayashiyabako/articles/85902e6095ab0cdb7cf5">https://zenn.dev/kobayashiyabako/articles/85902e6095ab0cdb7cf5</a></li>
@@ -39258,7 +39258,7 @@ $<span class="w"> </span>cat<span class="w"> </span>foo.txt<span class="w"> </sp
 <p><br></p>
 <h3 id="-e_3">-E<a class="headerlink" href="#-e_3" title="Permanent link">&para;</a></h3>
 <p>標準出力に出力された文字列のうち、正規表現で文字列を取得する。</p>
-<p>ログの最初のタイムスタンプに基づいてログをフィルタリングしたい時に役立つ。</p>
+<p>ログの最初のタイムスタンプに基づいてログをフィルタリングしたいときに役立つ。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>foo.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;^2023-01-01 12:00&quot;</span>
 </code></pre></div>
 <p><br></p>
@@ -39285,7 +39285,7 @@ $<span class="w"> </span>cat<span class="w"> </span>foo.txt<span class="w"> </sp
 <p>履歴1000件の中からコマンドを検索する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">history</span><span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>&lt;過去のコマンド&gt;
 </code></pre></div>
-<p>番号を除きたい場合、<code>awk</code>コマンドを使用する。</p>
+<p>番号を除きたい場合、<code>awk</code> コマンドを使用する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">history</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{$1=&quot;&quot;; print $0}&#39;</span>
 </code></pre></div>
 <p><br></p>
@@ -39310,11 +39310,11 @@ $<span class="w"> </span>cat<span class="w"> </span>foo.txt<span class="w"> </sp
 </tr>
 <tr>
 <td><code>gid</code></td>
-<td>ユーザー名を表す。root権限の実行ユーザーの場合は、<code>(root)</code>がつく。</td>
+<td>ユーザー名を表す。root権限の実行ユーザーの場合は、<code>(root)</code> がつく。</td>
 </tr>
 <tr>
 <td><code>groups</code></td>
-<td>プライマリグループのグループ番号を表す。root権限の実行ユーザーの場合は、<code>(root)</code>がつく。</td>
+<td>プライマリグループのグループ番号を表す。root権限の実行ユーザーの場合は、<code>(root)</code> がつく。</td>
 </tr>
 <tr>
 <td><code>番号</code></td>
@@ -39533,7 +39533,7 @@ Chain<span class="w"> </span>OUTPUT<span class="w"> </span><span class="o">(</sp
 <p><br></p>
 <h2 id="logrotate">logrotate<a class="headerlink" href="#logrotate" title="Permanent link">&para;</a></h2>
 <h3 id="logrotate_1">logrotateとは<a class="headerlink" href="#logrotate_1" title="Permanent link">&para;</a></h3>
-<p>ファイルには<code>2</code>GBを超えてテキストを書き込めない。</p>
+<p>ファイルには <code>2</code>GBを超えてテキストを書き込めない。</p>
 <p>そのため、ログを継続的にファイルに書き込む場合は、定期的に、書き込み先を新しいファイルに移行する必要がある。</p>
 <p>ローテションされた過去のログファイルでは、ファイル名の末尾に最終日付 (例：<code>-20220101</code>) をつけておく。</p>
 <blockquote>
@@ -39579,7 +39579,7 @@ qux
 <h2 id="lsblk">lsblk<a class="headerlink" href="#lsblk" title="Permanent link">&para;</a></h2>
 <h3 id="lsblk_1">lsblkとは<a class="headerlink" href="#lsblk_1" title="Permanent link">&para;</a></h3>
 <p>ストレージ上にある、物理ボリューム、パーティション、論理ボリュームを取得する。</p>
-<p>個別に取得したければ、物理ボリュームは<code>pvdisplay</code>コマンド、パーティションは<code>fdisk</code>コマンド、論理ボリュームは<code>lvdisplay</code>コマンド、で確認する。</p>
+<p>個別に取得したければ、物理ボリュームは <code>pvdisplay</code> コマンド、パーティションは <code>fdisk</code> コマンド、論理ボリュームは <code>lvdisplay</code> コマンド、で確認する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>lsblk
 
 NAME<span class="w">          </span>MAJ:MIN<span class="w"> </span>RM<span class="w">   </span>SIZE<span class="w">  </span>RO<span class="w">  </span>TYPE<span class="w">  </span>MOUNTPOINT
@@ -39610,12 +39610,12 @@ LINE<span class="w">      </span><span class="m">48583</span><span class="w"> </
 Google<span class="w">    </span><span class="m">93754</span><span class="w"> </span>hasegawa<span class="w">  </span>140u<span class="w">  </span>IPv4<span class="w"> </span>*****<span class="w">      </span>0t0<span class="w">  </span>TCP<span class="w"> </span>localhost:56772<span class="w"> </span><span class="o">(</span>LISTEN<span class="o">)</span>
 minikube<span class="w">  </span><span class="m">97246</span><span class="w"> </span>hasegawa<span class="w">   </span>19u<span class="w">  </span>IPv4<span class="w"> </span>*****<span class="w">      </span>0t0<span class="w">  </span>TCP<span class="w"> </span><span class="m">192</span>.168.64.1:50252<span class="w"> </span><span class="o">(</span>LISTEN<span class="o">)</span>
 </code></pre></div>
-<p>特定のポート番号を確認する場合は、さらに<code>grep</code>コマンドを実行する。</p>
+<p>特定のポート番号を確認する場合は、さらに <code>grep</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>lsof<span class="w"> </span>-i<span class="w"> </span>-P<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>LISTEN<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>:8500
 
 com.docke<span class="w"> </span><span class="m">46089</span><span class="w"> </span>hasegawa<span class="w">   </span>78u<span class="w">  </span>IPv6<span class="w"> </span>*****<span class="w">      </span>0t0<span class="w">  </span>TCP<span class="w"> </span>*:8500<span class="w"> </span><span class="o">(</span>LISTEN<span class="o">)</span>
 </code></pre></div>
-<p><code>kill</code>コマンドでプロセスIDを指定して、プロセスを削除できる。</p>
+<p><code>kill</code> コマンドでプロセスIDを指定して、プロセスを削除できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-9<span class="w"> </span><span class="m">46089</span>
 </code></pre></div>
 <p><br></p>
@@ -39758,7 +39758,7 @@ $<span class="w"> </span>swapoff<span class="w"> </span>/swap_volume
 <h2 id="ncnetcat">nc：netcat<a class="headerlink" href="#ncnetcat" title="Permanent link">&para;</a></h2>
 <h3 id="nc">ncとは<a class="headerlink" href="#nc" title="Permanent link">&para;</a></h3>
 <p>指定したIPアドレス/ドメインに、TCPスリーウェイハンドシェイクを実行する。</p>
-<p><code>curl</code>コマンドではHTTPプロトコルしか扱えず、TCPスリーウェイハンドシェイクを検証したい場合 (例：Alpine) に役立つ。</p>
+<p><code>curl</code> コマンドではHTTPプロトコルしか扱えず、TCPスリーウェイハンドシェイクを検証したい場合 (例：Alpine) に役立つ。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>nc<span class="w"> </span>&lt;IPアドレス/ドメイン&gt;<span class="w"> </span>&lt;ポート番号&gt;
 </code></pre></div>
 <blockquote>
@@ -39769,10 +39769,10 @@ $<span class="w"> </span>swapoff<span class="w"> </span>/swap_volume
 </blockquote>
 <p><br></p>
 <h3 id="-v_3">-v<a class="headerlink" href="#-v_3" title="Permanent link">&para;</a></h3>
-<p>ログを出力しつつ、<code>nc</code>コマンドを実行する。</p>
+<p>ログを出力しつつ、<code>nc</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>nc<span class="w"> </span>-v<span class="w"> </span>&lt;IPアドレス/ドメイン&gt;<span class="w"> </span>&lt;ポート番号&gt;
 </code></pre></div>
-<p>パケットに<code>9000</code>番ポートに送信する。</p>
+<p>パケットに <code>9000</code> 番ポートに送信する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>nc<span class="w"> </span>-v<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="m">9000</span>
 
 <span class="c1"># 失敗の場合</span>
@@ -39789,7 +39789,7 @@ Connection<span class="w"> </span>to<span class="w"> </span><span class="m">127<
 <p><br></p>
 <h3 id="-t_1">-t<a class="headerlink" href="#-t_1" title="Permanent link">&para;</a></h3>
 <p>TCPスリーウェイハンドシェイクを実行する。</p>
-<p>デフォルト値は<code>true</code>である。</p>
+<p>デフォルト値は <code>true</code> である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>nc<span class="w"> </span>-t<span class="w"> </span>&lt;IPアドレス/ドメイン&gt;<span class="w"> </span>&lt;ポート番号&gt;
 </code></pre></div>
 <blockquote>
@@ -39799,7 +39799,7 @@ Connection<span class="w"> </span>to<span class="w"> </span><span class="m">127<
 </blockquote>
 <p><br></p>
 <h3 id="http">httpで送信 (オプション無し)<a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
-<p><code>echo</code>コマンドと組み合わせることにより、HTTPでリクエストを送信できる。</p>
+<p><code>echo</code> コマンドと組み合わせることにより、HTTPでリクエストを送信できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s2">&quot;GET / HTTP/1.1\n\n&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>nc<span class="w"> </span>-v<span class="w"> </span>&lt;ドメイン&gt;<span class="w"> </span><span class="m">80</span>
 </code></pre></div>
 <blockquote>
@@ -39930,7 +39930,7 @@ AES-256-XTS
 <h3 id="-aux">-aux<a class="headerlink" href="#-aux" title="Permanent link">&para;</a></h3>
 <h4 id="-aux_1">▼ -auxとは<a class="headerlink" href="#-aux_1" title="Permanent link">&para;</a></h4>
 <p>稼働しているプロセスの詳細情報を表示する。</p>
-<p>代わりに、<code>-ef</code>オプションを使用しても良い。</p>
+<p>代わりに、<code>-ef</code> オプションを使用しても良い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 稼働しているプロセスのうち、指定した名前のプロセスを取得する。</span>
 $<span class="w"> </span>ps<span class="w"> </span>-aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>&lt;検索文字&gt;
 </code></pre></div>
@@ -39941,7 +39941,7 @@ $<span class="w"> </span>ps<span class="w"> </span>-aux<span class="w"> </span><
 </blockquote>
 <h4 id="-ef">▼ -ef<a class="headerlink" href="#-ef" title="Permanent link">&para;</a></h4>
 <p>稼働しているプロセスの詳細情報を表示する。</p>
-<p>代わりに、<code>-aux</code>オプションを使用しても良い。</p>
+<p>代わりに、<code>-aux</code> オプションを使用しても良い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 稼働しているプロセスのうち、指定した名前のプロセスを取得する。</span>
 $<span class="w"> </span>ps<span class="w"> </span>-ef<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>&lt;検索文字&gt;
 </code></pre></div>
@@ -39962,7 +39962,7 @@ $<span class="w"> </span>ps<span class="w"> </span>-ef<span class="w"> </span><s
 <p><br></p>
 <h2 id="sed">sed<a class="headerlink" href="#sed" title="Permanent link">&para;</a></h2>
 <h3 id="-i-e-sg">-i -e <code>s/&lt;置換前&gt;/&lt;置換後&gt;/g</code><a class="headerlink" href="#-i-e-sg" title="Permanent link">&para;</a></h3>
-<p>文字列を置換する。また、<code>-i</code>オプションで元のファイルを上書きする。<code>find</code>コマンドと組み合わせて、特定のファイルのみで実行できるようにすると良い。複数の置換を実行する場合は、<code>-e</code>オプションを並べる。</p>
+<p>文字列を置換する。また、<code>-i</code> オプションで元のファイルを上書きする。<code>find</code> コマンドと組み合わせて、特定のファイルのみで実行できるようにすると良い。複数の置換を実行する場合は、<code>-e</code> オプションを並べる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-name<span class="w"> </span><span class="s2">&quot;*.md&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/、/、/g&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/。/。/g&#39;</span>
@@ -39972,7 +39972,7 @@ $<span class="w"> </span>ps<span class="w"> </span>-ef<span class="w"> </span><s
 <span class="w">    </span>-name<span class="w"> </span><span class="s2">&quot;*.md&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/foo\/bar/FooBar/g&#39;</span>
 </code></pre></div>
-<p>補足としてMacOSで<code>-i</code>オプションを使用する場合は、オプションの引数に空文字を渡す必要がある。</p>
+<p>補足としてMacOSで <code>-i</code> オプションを使用する場合は、オプションの引数に空文字を渡す必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># MacOSの場合</span>
 $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-name<span class="w"> </span><span class="s2">&quot;*.md&quot;</span><span class="w"> </span><span class="se">\</span>
@@ -40016,7 +40016,7 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 <p><br></p>
 <h3 id="_15">条件<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="or">▼ OR条件<a class="headerlink" href="#or" title="Permanent link">&para;</a></h4>
-<p>ブロックを使用し、OR条件を定義する。注意点として、<code>;</code>を使用して、ブロック内の処理の終了を宣言する必要がある。</p>
+<p>ブロックを使用し、OR条件を定義する。注意点として、<code>;</code> を使用して、ブロック内の処理の終了を宣言する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># MacOSの場合</span>
 $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-name<span class="w"> </span><span class="s2">&quot;*.md&quot;</span><span class="w"> </span><span class="se">\</span>
@@ -40044,7 +40044,7 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 </code></pre></div>
 <p><br></p>
 <h3 id="-e_5">-e<a class="headerlink" href="#-e_5" title="Permanent link">&para;</a></h3>
-<p>一連の処理の途中で<code>0</code>以外の終了ステータスが出力された場合、全ての処理を途中終了する。</p>
+<p>一連の処理の途中で <code>0</code> 以外の終了ステータスが出力された場合、全ての処理を途中終了する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">set</span><span class="w"> </span>-e
 </code></pre></div>
 <p><br></p>
@@ -40064,7 +40064,7 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 <p><br></p>
 <h2 id="sshsecure-shell">ssh：secure shell<a class="headerlink" href="#sshsecure-shell" title="Permanent link">&para;</a></h2>
 <h3 id="-l-p-i-t">-l、-p、<code>&lt;ポート番号&gt;</code>、-i、-T<a class="headerlink" href="#-l-p-i-t" title="Permanent link">&para;</a></h3>
-<p>事前に、秘密鍵の権限は『<code>600</code>』にしておく。tty (擬似ターミナル) を使用する場合は、<code>-T</code>オプションをつける。</p>
+<p>事前に、秘密鍵の権限は『<code>600</code>』にしておく。tty (擬似ターミナル) を使用する場合は、<code>-T</code> オプションをつける。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-l<span class="w"> </span>&lt;リモートサーバーのユーザー名&gt;@&lt;リモートサーバーのIPアドレス&gt;<span class="w"> </span>-p<span class="w"> </span><span class="m">22</span><span class="w"> </span>-i<span class="w"> </span>&lt;秘密鍵へのパス&gt;<span class="w"> </span>-T
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
@@ -40080,16 +40080,16 @@ $<span class="w"> </span>ssh<span class="w"> </span>-l<span class="w"> </span>&l
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-l<span class="w"> </span>foo_user@10.0.0.1<span class="w"> </span>-p<span class="w"> </span><span class="m">22</span><span class="w"> </span>-i<span class="w"> </span>./etc/foo.key<span class="w"> </span>-T<span class="w"> </span>-vvv
 </code></pre></div>
 <h3 id="-l_4">-L<a class="headerlink" href="#-l_4" title="Permanent link">&para;</a></h3>
-<p><code>ssh</code>コマンドで踏み台サーバーに接続しつつ、リモートサーバーにポートフォワーディングする。</p>
+<p><code>ssh</code> コマンドで踏み台サーバーに接続しつつ、リモートサーバーにポートフォワーディングする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-L20000:&lt;リモートサーバー&gt;:&lt;ポート番号&gt;<span class="w"> </span>&lt;踏み台サーバーのユーザー名&gt;@&lt;踏み台サーバーのIPアドレス&gt;
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>ローカルマシンの<code>20000</code>番ポートに対する通信を、踏み台サーバーを介して、リモートサーバーの<code>3306</code>番ポートにポートフォワーディングする。</p>
+<p>ローカルマシンの <code>20000</code> 番ポートに対する通信を、踏み台サーバーを介して、リモートサーバーの <code>3306</code> 番ポートにポートフォワーディングする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-L20000:10.0.0.1:3306<span class="w"> </span>foo_user@192.168.0.1
 </code></pre></div>
 <p><br></p>
-<h3 id="sshconfig"><code>~/.ssh/config</code>ファイル<a class="headerlink" href="#sshconfig" title="Permanent link">&para;</a></h3>
-<p>設定が面倒な<code>ssh</code>コマンドのオプションの引数を、<code>~/.ssh/config</code>ファイルに記述しておく。</p>
+<h3 id="sshconfig"><code>~/.ssh/config</code> ファイル<a class="headerlink" href="#sshconfig" title="Permanent link">&para;</a></h3>
+<p>設定が面倒な <code>ssh</code> コマンドのオプションの引数を、<code>~/.ssh/config</code> ファイルに記述しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># サーバー１</span>
 Host<span class="w"> </span>&lt;接続名1&gt;
 <span class="w">    </span>User<span class="w"> </span>&lt;サーバー１のユーザー名&gt;
@@ -40164,7 +40164,7 @@ getsockname<span class="o">(</span><span class="m">3</span>,<span class="w"> </s
 <p><br></p>
 <h2 id="sysctl">sysctl<a class="headerlink" href="#sysctl" title="Permanent link">&para;</a></h2>
 <h3 id="sysctl_1">sysctlとは<a class="headerlink" href="#sysctl_1" title="Permanent link">&para;</a></h3>
-<p><code>/proc/sys</code>ディレクトリ配下のカーネルに関するパラメータを設定する。</p>
+<p><code>/proc/sys</code> ディレクトリ配下のカーネルに関するパラメータを設定する。</p>
 <table>
 <thead>
 <tr>
@@ -40174,15 +40174,15 @@ getsockname<span class="o">(</span><span class="m">3</span>,<span class="w"> </s
 </thead>
 <tbody>
 <tr>
-<td><code>net</code>系</td>
+<td><code>net</code> 系</td>
 <td>ネットワークのパラメーター</td>
 </tr>
 <tr>
-<td><code>fs</code>系</td>
+<td><code>fs</code> 系</td>
 <td>ファイルシステムのパラメーター</td>
 </tr>
 <tr>
-<td><code>kernel</code>系</td>
+<td><code>kernel</code> 系</td>
 <td>カーネルのパラメーター</td>
 </tr>
 </tbody>
@@ -40197,7 +40197,7 @@ getsockname<span class="o">(</span><span class="m">3</span>,<span class="w"> </s
 <h2 id="tail">tail<a class="headerlink" href="#tail" title="Permanent link">&para;</a></h2>
 <h3 id="tail_1">tailとは<a class="headerlink" href="#tail_1" title="Permanent link">&para;</a></h3>
 <p>指定したファイルの最終行から数行を取得する。</p>
-<p>全てを取得する<code>cat</code>コマンドとは異なり、巨大なファイル (例：ログ) の内容を取得するために使用する。</p>
+<p>全てを取得する <code>cat</code> コマンドとは異なり、巨大なファイル (例：ログ) の内容を取得するために使用する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>tail<span class="w"> </span>foo.log
 </code></pre></div>
 <blockquote>
@@ -40249,8 +40249,8 @@ $<span class="w"> </span>tar<span class="w"> </span>-xvf<span class="w"> </span>
 </code></pre></div>
 <p><br></p>
 <h3 id="-g">-g<a class="headerlink" href="#-g" title="Permanent link">&para;</a></h3>
-<p>圧縮ファイル (<code>gzip</code>形式) を解凍する。</p>
-<p>ただし、デフォルト値は<code>true</code>であるため、オプションは付けないくても問題ない。</p>
+<p>圧縮ファイル (<code>gzip</code> 形式) を解凍する。</p>
+<p>ただし、デフォルト値は <code>true</code> であるため、オプションは付けないくても問題ない。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># gオプションはデフォルトでtrueである</span>
 $<span class="w"> </span>tar<span class="w"> </span>-xvf<span class="w"> </span>foo.tar.gz
 </code></pre></div>
@@ -40371,7 +40371,7 @@ amd64
 <h2 id="wc">wc<a class="headerlink" href="#wc" title="Permanent link">&para;</a></h2>
 <h3 id="-l_5">-l<a class="headerlink" href="#-l_5" title="Permanent link">&para;</a></h3>
 <p>行数を数える。</p>
-<p><code>echo</code>の改行を無効化 (<code>-n</code>) して、行数としてカウントされないようにする。</p>
+<p><code>echo</code> の改行を無効化 (<code>-n</code>) して、行数としてカウントされないようにする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span>diff<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
 </code></pre></div>
 <blockquote>
@@ -40409,7 +40409,7 @@ github.com<span class="w"> </span><span class="o">(</span>github.com<span class=
 <li><a href="https://www.karakaram.com/notes-on-curl-options/">https://www.karakaram.com/notes-on-curl-options/</a></li>
 </ul>
 </blockquote>
-<p><code>-</code>の場合、標準出力に処理ログを出力することになり、ダウンロードは起こらない。</p>
+<p><code>-</code> の場合、標準出力に処理ログを出力することになり、ダウンロードは起こらない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>wget<span class="w"> </span>-O<span class="w"> </span>-<span class="w"> </span>http://www.example.com/
 </code></pre></div>
 <blockquote>
@@ -40450,7 +40450,7 @@ github.com<span class="w"> </span><span class="o">(</span>github.com<span class=
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月27日 16:57:47 JST">2025-05-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

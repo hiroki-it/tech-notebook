@@ -33966,7 +33966,7 @@
 <h4 id="delete_1">▼ deleteとは<a class="headerlink" href="#delete_1" title="Permanent link">&para;</a></h4>
 <p>ArgoCDのApplicationを削除する。</p>
 <h4 id="-cascade">▼ --cascade<a class="headerlink" href="#-cascade" title="Permanent link">&para;</a></h4>
-<p><code>--cascade</code>オプションを有効化すると、ArgoCDのApplication自体と、Application配下のKubernetesリソースの両方を連鎖的に削除できる。</p>
+<p><code>--cascade</code> オプションを有効化すると、ArgoCDのApplication自体と、Application配下のKubernetesリソースの両方を連鎖的に削除できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>app<span class="w"> </span>delete<span class="w"> </span>&lt;ArgoCDのアプリケーション名&gt;<span class="w"> </span>--cascade<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
 <p>反対に無効化すると、Applicationのみを単体で削除する。</p>
@@ -33978,7 +33978,7 @@
 <li><a href="https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/">https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/</a></li>
 </ul>
 </blockquote>
-<p>代わりに、<code>kubectl</code>コマンドを使用して ArgoCDのApplicationを削除しても良い。</p>
+<p>代わりに、<code>kubectl</code> コマンドを使用して ArgoCDのApplicationを削除しても良い。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> </span>app<span class="w"> </span>&lt;ArgoCDのアプリケーション名&gt;
 </code></pre></div>
 <blockquote>
@@ -34049,7 +34049,7 @@ https://kubernetes.default.svc<span class="w">  </span><span class="m">0</span><
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>cluster<span class="w"> </span>add<span class="w"> </span>&lt;デプロイ先のClusterのARN&gt;
 </code></pre></div>
 <h4 id="-name">▼ --name<a class="headerlink" href="#-name" title="Permanent link">&para;</a></h4>
-<p>ダッシュボードでCluster名を使用してフィルタリングする時に、その表示名を設定する。</p>
+<p>ダッシュボードでCluster名を使用してフィルタリングするときに、その表示名を設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>cluster<span class="w"> </span>add<span class="w"> </span>&lt;デプロイ先のClusterのARN&gt;<span class="w"> </span>--name<span class="w"> </span>&lt;ダッシュボード上でのClusterの表示名&gt;
 </code></pre></div>
 <h4 id="-upsert">▼ --upsert<a class="headerlink" href="#-upsert" title="Permanent link">&para;</a></h4>
@@ -34181,7 +34181,7 @@ https://kubernetes.default.svc<span class="w">  </span><span class="m">0</span><
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年12月2日 21:31:49 JST">2025-12-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

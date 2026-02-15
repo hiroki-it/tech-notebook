@@ -26248,15 +26248,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#05-podmetadataannotations" class="md-nav__link">
+  <a href="#05-pod-metadataannotations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        05. Podの.metadata.annotationsキー
+        05. Podの .metadata.annotations キー
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. Podの.metadata.annotationsキー">
+    <nav class="md-nav" aria-label="05. Podの .metadata.annotations キー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33920,15 +33920,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#05-podmetadataannotations" class="md-nav__link">
+  <a href="#05-pod-metadataannotations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        05. Podの.metadata.annotationsキー
+        05. Podの .metadata.annotations キー
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. Podの.metadata.annotationsキー">
+    <nav class="md-nav" aria-label="05. Podの .metadata.annotations キー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -34064,7 +34064,7 @@
 <h3 id="ec2nodeclass">EC2NodeClassとは<a class="headerlink" href="#ec2nodeclass" title="Permanent link">&para;</a></h3>
 <p>NodePool内のNodeに対して、AWS固有の仕様を設定する。</p>
 <p>ClusterスコープなKubernetesリソースであるため、Namespaceは設定できない。</p>
-<p>Terraformの<code>aws_launch_template</code>ブロックと競合する。</p>
+<p>Terraformの <code>aws_launch_template</code> ブロックと競合する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/aws/karpenter/issues/3369#issuecomment-1432380048">https://github.com/aws/karpenter/issues/3369#issuecomment-1432380048</a></li>
@@ -34431,7 +34431,7 @@
 <p><br></p>
 <h3 id="weight">weight<a class="headerlink" href="#weight" title="Permanent link">&para;</a></h3>
 <p>複数のProvisionerがある場合に、このProvisionerの優先順位の高さを設定する。</p>
-<p>デフォルトでは、重みが<code>0</code>である。</p>
+<p>デフォルトでは、重みが <code>0</code> である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34468,7 +34468,7 @@
 <p><br></p>
 <h2 id="02-03-templatespec">02-03. .template.spec<a class="headerlink" href="#02-03-templatespec" title="Permanent link">&para;</a></h2>
 <h3 id="kubelet">kubelet<a class="headerlink" href="#kubelet" title="Permanent link">&para;</a></h3>
-<p>kubeletの<code>KubeletConfiguration</code>オプションにパラメーターを渡す。</p>
+<p>kubeletの <code>KubeletConfiguration</code> オプションにパラメーターを渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34834,10 +34834,10 @@
 <span class="w">  </span><span class="nt">loglevel.webhook</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">error</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="05-podmetadataannotations">05. Podの<code>.metadata.annotations</code>キー<a class="headerlink" href="#05-podmetadataannotations" title="Permanent link">&para;</a></h2>
+<h2 id="05-pod-metadataannotations">05. Podの <code>.metadata.annotations</code> キー<a class="headerlink" href="#05-pod-metadataannotations" title="Permanent link">&para;</a></h2>
 <h3 id="karpentershdo-not-disrupt">karpenter.sh/do-not-disrupt<a class="headerlink" href="#karpentershdo-not-disrupt" title="Permanent link">&para;</a></h3>
 <p>長時間実行するPodの場合、完了前にKarpenterがNodeを終了しないようにする必要がある。</p>
-<p><code>karpenter.sh/do-not-disrupt</code>キーを設定すると、Podの終了を待機できる。</p>
+<p><code>karpenter.sh/do-not-disrupt</code> キーを設定すると、Podの終了を待機できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">spec</span><span class="p">:</span>
@@ -34873,7 +34873,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月9日 20:06:43 JST">2025-04-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

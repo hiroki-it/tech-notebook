@@ -8856,7 +8856,7 @@
   <a href="#true" class="md-nav__link">
     <span class="md-ellipsis">
       
-        trueコマンド
+        true コマンド
       
     </span>
   </a>
@@ -8918,7 +8918,7 @@
   <a href="#0" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 終了ステータスが0の場合のみ
+        ▼ 終了ステータスが 0 の場合のみ
       
     </span>
   </a>
@@ -8929,7 +8929,7 @@
   <a href="#0_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 終了ステータスが0以外の場合のみ
+        ▼ 終了ステータスが 0 以外の場合のみ
       
     </span>
   </a>
@@ -33638,7 +33638,7 @@
   <a href="#true" class="md-nav__link">
     <span class="md-ellipsis">
       
-        trueコマンド
+        true コマンド
       
     </span>
   </a>
@@ -33700,7 +33700,7 @@
   <a href="#0" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 終了ステータスが0の場合のみ
+        ▼ 終了ステータスが 0 の場合のみ
       
     </span>
   </a>
@@ -33711,7 +33711,7 @@
   <a href="#0_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 終了ステータスが0以外の場合のみ
+        ▼ 終了ステータスが 0 以外の場合のみ
       
     </span>
   </a>
@@ -33850,7 +33850,7 @@
 <h3 id="_4">ログインシェル<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ ログインシェルとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>資格情報を必要とし、認証後に最初に起動するシェルのこと。</p>
-<p>パスワードは、<code>/etc/passwd</code>ファイルに設定されている。</p>
+<p>パスワードは、<code>/etc/passwd</code> ファイルに設定されている。</p>
 <blockquote>
 <ul>
 <li><a href="https://xtech.nikkei.com/it/article/Keyword/20090130/323875/">https://xtech.nikkei.com/it/article/Keyword/20090130/323875/</a></li>
@@ -33951,28 +33951,28 @@ Last<span class="w"> </span>login:<span class="w"> </span>Mon<span class="w"> </
 <tbody>
 <tr>
 <td>なし</td>
-<td><code>~/.zshenv</code>ファイル</td>
+<td><code>~/.zshenv</code> ファイル</td>
 <td>ログインシェル、インタラクティブシェルの起動時</td>
 </tr>
 <tr>
-<td><code>~/.bash_profile</code>ファイル</td>
-<td><code>~/.zprofile</code>ファイル</td>
+<td><code>~/.bash_profile</code> ファイル</td>
+<td><code>~/.zprofile</code> ファイル</td>
 <td>ログインシェルの起動時</td>
 </tr>
 <tr>
-<td><code>~/.bashrc</code>ファイル</td>
-<td><code>~/.zshrc</code>ファイル</td>
+<td><code>~/.bashrc</code> ファイル</td>
+<td><code>~/.zshrc</code> ファイル</td>
 <td>ログインシェルの起動時。ただし、zshではインタラクティブシェルの起動時も含む。</td>
 </tr>
 <tr>
-<td><code>~/.bash_login</code>ファイル</td>
-<td><code>~/.zlogin</code>ファイル</td>
+<td><code>~/.bash_login</code> ファイル</td>
+<td><code>~/.zlogin</code> ファイル</td>
 <td>ログインシェルの起動時。profileファイルと機能が重複するため、個人的には使用しない。</td>
 </tr>
 <tr>
-<td><code>~/.bash_logout</code>ファイル</td>
-<td><code>~/.zlogout</code>ファイル</td>
-<td><code>exit</code>コマンド時</td>
+<td><code>~/.bash_logout</code> ファイル</td>
+<td><code>~/.zlogout</code> ファイル</td>
+<td><code>exit</code> コマンド時</td>
 </tr>
 </tbody>
 </table>
@@ -34001,7 +34001,7 @@ Last<span class="w"> </span>login:<span class="w"> </span>Mon<span class="w"> </
 </blockquote>
 <h4 id="_17">▼ シェル変数<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>現在実行中のプロセスのみで有効な変数のこと。</p>
-<p>そのため、<code>source</code>コマンド以外の方法で実行されたシェルスクリプトでは、親プロセスで定義したシェル変数を使用できない。</p>
+<p>そのため、<code>source</code> コマンド以外の方法で実行されたシェルスクリプトでは、親プロセスで定義したシェル変数を使用できない。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1"># foo.shファイル</span>
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FOO</span><span class="si">}</span><span class="s2">&quot;</span>
@@ -34054,7 +34054,7 @@ foo<span class="w"> </span><span class="c1"># 出力される</span>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_20">インストール<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <h4 id="apk">▼ apkリポジトリから<a class="headerlink" href="#apk" title="Permanent link">&para;</a></h4>
-<p>ほとんどのOSで、<code>bash</code>コマンドはプリインストールされているが、Alpine Linuxではシェル以外を別途インストールが必要である。</p>
+<p>ほとんどのOSで、<code>bash</code> コマンドはプリインストールされているが、Alpine Linuxではシェル以外を別途インストールが必要である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>bash
 </code></pre></div>
 <p><br></p>
@@ -34099,38 +34099,38 @@ foo<span class="w"> </span><span class="c1"># 出力される</span>
 </tr>
 <tr>
 <td><code>126</code></td>
-<td>呼び出したコマンドが実行できなかった時</td>
+<td>呼び出したコマンドが実行できなかったとき</td>
 <td>権限やその他の理由でコマンドを実行できてない可能性がある。</td>
 <td><code>$ /dev/null</code></td>
 </tr>
 <tr>
 <td><code>127</code></td>
-<td>コマンドが見つからない時</td>
-<td>バイナリファイルの<code>$PATH</code>の未設定や、コマンドのタイポの可能性がある。</td>
+<td>コマンドが見つからないとき</td>
+<td>バイナリファイルの <code>$PATH</code> の未設定や、コマンドのタイポの可能性がある。</td>
 <td><code>$ illegal_command</code></td>
 </tr>
 <tr>
 <td><code>128</code></td>
-<td><code>exit</code>コマンドに不正な引数を渡した時</td>
-<td><code>exit</code>コマンドに0〜255以外の整数を渡している可能性がある。</td>
+<td><code>exit</code> コマンドに不正な引数を渡したとき</td>
+<td><code>exit</code> コマンドに0〜255以外の整数を渡している可能性がある。</td>
 <td><code>$ exit 3.14159</code></td>
 </tr>
 <tr>
 <td><code>128 + n</code></td>
-<td>シグナル <code>n</code>で致命的なエラー</td>
-<td>killがシグナル<code>n</code>で実行された可能性がある。</td>
-<td><code>$ kill -9 $PPID</code><br>(<code>128 + 9 = 137</code>で終了)</td>
+<td>シグナル <code>n</code> で致命的なエラー</td>
+<td>killがシグナル <code>n</code> で実行された可能性がある。</td>
+<td><code>$ kill -9 $PPID</code><br>(<code>128 + 9 = 137</code> で終了)</td>
 </tr>
 <tr>
 <td><code>128 + 2</code></td>
-<td>スクリプトが <code>Ctrl+C</code>で終了</td>
-<td><code>Ctrl+C</code>はシグナル<code>2</code>で終了するため、<code>Ctrl+C</code>が実行された可能性がある。 (<code>128 + 2 = 130</code>)</td>
+<td>スクリプトが <code>Ctrl+C</code> で終了</td>
+<td><code>Ctrl+C</code> はシグナル <code>2</code> で終了するため、<code>Ctrl+C</code> が実行された可能性がある。 (<code>128 + 2 = 130</code>)</td>
 <td>Ctrl+C</td>
 </tr>
 <tr>
 <td><code>255</code></td>
 <td>範囲外の終了ステータス</td>
-<td><code>exit</code>コマンドに0〜255以外の整数を渡している可能性がある。</td>
+<td><code>exit</code> コマンドに0〜255以外の整数を渡している可能性がある。</td>
 <td><code>$ exit -1</code></td>
 </tr>
 </tbody>
@@ -34142,8 +34142,8 @@ foo<span class="w"> </span><span class="c1"># 出力される</span>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="true"><code>true</code>コマンド<a class="headerlink" href="#true" title="Permanent link">&para;</a></h3>
-<p><code>true</code>コマンドを使用することにより、処理が途中で成功するか失敗するか (終了コードが<code>0</code>か<code>0</code>以外か) にかかわらず、処理を続行できる。</p>
+<h3 id="true"><code>true</code> コマンド<a class="headerlink" href="#true" title="Permanent link">&para;</a></h3>
+<p><code>true</code> コマンドを使用することにより、処理が途中で成功するか失敗するか (終了コードが <code>0</code> か <code>0</code> 以外か) にかかわらず、処理を続行できる。</p>
 <p>これは、複数の同じような処理を実行したい場合に役立つ。 (例：静的解析ツールに、異なるバージョンのパラメーターを渡して、同じ処理を連続的に実行する)</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
@@ -34191,9 +34191,9 @@ foo<span class="w"> </span><span class="c1"># 出力される</span>
 <li><a href="https://qiita.com/egawa_kun/items/714394609eef6be8e0bf">https://qiita.com/egawa_kun/items/714394609eef6be8e0bf</a></li>
 </ul>
 </blockquote>
-<h4 id="0">▼ 終了ステータスが<code>0</code>の場合のみ<a class="headerlink" href="#0" title="Permanent link">&para;</a></h4>
+<h4 id="0">▼ 終了ステータスが <code>0</code> の場合のみ<a class="headerlink" href="#0" title="Permanent link">&para;</a></h4>
 <p>連結したコマンドを順次実行する。</p>
-<p>前のコマンドが終了ステータスが<code>0</code>で完了しない限り、後ろのコマンドを実行しない。</p>
+<p>前のコマンドが終了ステータスが <code>0</code> で完了しない限り、後ろのコマンドを実行しない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>foo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span>bar<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span>baz
 </code></pre></div>
 <blockquote>
@@ -34202,9 +34202,9 @@ foo<span class="w"> </span><span class="c1"># 出力される</span>
 <li><a href="https://qiita.com/egawa_kun/items/714394609eef6be8e0bf">https://qiita.com/egawa_kun/items/714394609eef6be8e0bf</a></li>
 </ul>
 </blockquote>
-<h4 id="0_1">▼ 終了ステータスが<code>0</code>以外の場合のみ<a class="headerlink" href="#0_1" title="Permanent link">&para;</a></h4>
+<h4 id="0_1">▼ 終了ステータスが <code>0</code> 以外の場合のみ<a class="headerlink" href="#0_1" title="Permanent link">&para;</a></h4>
 <p>連結したコマンドを順次実行する。</p>
-<p>前のコマンドが終了ステータスが<code>0</code>以外で完了しない限り、後ろのコマンドを実行しない。</p>
+<p>前のコマンドが終了ステータスが <code>0</code> 以外で完了しない限り、後ろのコマンドを実行しない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>foo<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span>bar<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span>baz
 </code></pre></div>
 <blockquote>
@@ -34246,7 +34246,7 @@ foo<span class="w"> </span><span class="c1"># 出力される</span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月7日 20:24:44 JST">2025-10-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

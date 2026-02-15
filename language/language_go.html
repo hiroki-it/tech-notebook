@@ -34041,7 +34041,7 @@ $<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p><code>go.mod</code>ファイルのGoのバージョン定義や、Goパッケージをアップグレードする。</p>
+<p><code>go.mod</code> ファイルのGoのバージョン定義や、Goパッケージをアップグレードする。</p>
 <p><code>-go</code>オプションがあるが、基本的にはgoのバイナリのバージョンをアップグレードする。</p>
 </dd>
 </dl>
@@ -34137,14 +34137,14 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 <h4 id="bin">▼ <code>bin</code><a class="headerlink" href="#bin" title="Permanent link">&para;</a></h4>
 <p>ビルドされたアーティファクト (バイナリファイル) を配置するディレクトリ。</p>
 <p>バイナリファイル名を指定すると、処理を実行できる。</p>
-<p><code>go install</code>コマンドは、<code>bin</code>ディレクトリ内にバイナリを保管する。</p>
+<p><code>go install</code> コマンドは、<code>bin</code> ディレクトリ内にバイナリを保管する。</p>
 <h4 id="pkg">▼ <code>pkg</code><a class="headerlink" href="#pkg" title="Permanent link">&para;</a></h4>
 <p>アーティファクトとは別に作成されるファイルを配置するディレクトリ</p>
 <h4 id="src">▼ <code>src</code><a class="headerlink" href="#src" title="Permanent link">&para;</a></h4>
 <p>コードを配置するディレクトリ</p>
 <p><br></p>
 <h3 id="_5">パッケージの場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>パッケージの場合、<code>main.go</code>ファイルは不要である。</p>
+<p>パッケージの場合、<code>main.go</code> ファイルは不要である。</p>
 <p>その代わりに、以下を定義しておく。</p>
 <ul>
 <li>環境変数を格納するための処理 (例：<code>config.go</code>)</li>
@@ -34164,7 +34164,7 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 <h2 id="04">04. ファイルの要素<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="package">package<a class="headerlink" href="#package" title="Permanent link">&para;</a></h3>
 <p>名前空間として、パッケージ名を定義する。</p>
-<p><code>1</code>個のディレクトリ内では、<code>1</code>個のパッケージ名しか宣言できない。</p>
+<p><code>1</code> 個のディレクトリ内では、<code>1</code> 個のパッケージ名しか宣言できない。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 </code></pre></div>
 <p><br></p>
@@ -34199,7 +34199,7 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 <p><br></p>
 <h3 id="type">type<a class="headerlink" href="#type" title="Permanent link">&para;</a></h3>
 <p>データ型にユーザー定義の名前をつけられる。</p>
-<p><code>func</code>と同じファイルに定義する。</p>
+<p><code>func</code> と同じファイルに定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="kt">int</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Bar</span><span class="w"> </span><span class="kt">string</span>
@@ -34224,7 +34224,7 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 <p><br></p>
 <h3 id="_7">ディレクトリ名<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>小文字一単語またはケバブケースで命名する。</p>
-<p>ビルド時にシンタックスエラーとなる可能性があるため、できる限りハイフンを使用しない方が良い。</p>
+<p>ビルド時にシンタックスエラーとなる可能性があるため、できる限りハイフンを使用しないほうが良い。</p>
 <p><br></p>
 <h3 id="_8">パッケージ名<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>親ディレクトリ名で命名する。</p>
@@ -34415,7 +34415,7 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月11日 17:19:13 JST">2026-02-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

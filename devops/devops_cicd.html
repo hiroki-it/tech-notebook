@@ -33887,8 +33887,8 @@
 </thead>
 <tbody>
 <tr>
-<td>オンプレ上で<code>docker</code>コマンドを使用しているか。</td>
-<td>オンプレ上で<code>docker</code>コマンドを使用してアプリケーションを動かしている場合、適切なCIOpsが異なるため、聞いておきたい。クラウドプロバイダーによっては、オンプレ上に専用エージェントを稼働させることにより、クラウドからオンプレサーバー上にアプリケーションを安全にデプロイできる場合がある。もしクラウドプロバイダーを使用できないのであれば、オンプレのみで完結できるCI/CDツール (例：Capistrano) の検討が必要になる。</td>
+<td>オンプレ上で <code>docker</code> コマンドを使用しているか。</td>
+<td>オンプレ上で <code>docker</code> コマンドを使用してアプリケーションを動かしている場合、適切なCIOpsが異なるため、聞いておきたい。クラウドプロバイダーによっては、オンプレ上に専用エージェントを稼働させることにより、クラウドからオンプレサーバー上にアプリケーションを安全にデプロイできる場合がある。もしクラウドプロバイダーを使用できないのであれば、オンプレのみで完結できるCI/CDツール (例：Capistrano) の検討が必要になる。</td>
 </tr>
 <tr>
 <td>コンテナ化Faas (Lamba、CloudFunction) を使用しているか。</td>
@@ -34012,7 +34012,7 @@
 <p><br></p>
 <h2 id="06-ciops">06. CIOps<a class="headerlink" href="#06-ciops" title="Permanent link">&para;</a></h2>
 <h3 id="ciops">CIOpsとは<a class="headerlink" href="#ciops" title="Permanent link">&para;</a></h3>
-<p>DevOpsを実現する技術的要素の一つ。</p>
+<p>DevOpsを実現する技術的要素の1つ。</p>
 <p>CIツール (例：GitHub Actions、CircleCI、GitLab CI、Argo Workflows、Tektonなど) を使用して、CIパイプラインとCDパイプラインの両方を実行する手法のこと。</p>
 <p><img alt="devops_ciops" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_ciops.png" /></p>
 <blockquote>
@@ -34036,9 +34036,9 @@
 <h3 id="_8">アンチパターンとなる場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ セキュリティ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>KubernetesのCI/CDパイプラインにCIOpsを採用する場合、セキュリティ上の理由でCIOpsはアンチパターンとされている。</p>
-<p>リポジトリ側に<code>kubeconfig</code>ファイルを配置する必要がある。</p>
-<p><code>kubeconfig</code>ファイルは機密性が高く、漏洩させたくない。</p>
-<p>ただし、どうしてもCIOpsを採用したいのであれば、暗号化キー (例：AWS KMS、Google Cloud CKM、GPG、PGPなど) で<code>kubeconfig</code>ファイルを暗号化しておき、これをCIパイプライン内に出力する。</p>
+<p>リポジトリ側に <code>kubeconfig</code> ファイルを配置する必要がある。</p>
+<p><code>kubeconfig</code> ファイルは機密性が高く、漏洩させたくない。</p>
+<p>ただし、どうしてもCIOpsを採用したいのであれば、暗号化キー (例：AWS KMS、Google Cloud CKM、GPG、PGPなど) で <code>kubeconfig</code> ファイルを暗号化しておき、これをCIパイプライン内に出力する。</p>
 <blockquote>
 <ul>
 <li><a href="https://devops-blog.virtualtech.jp/entry/20220418/1650250499">https://devops-blog.virtualtech.jp/entry/20220418/1650250499</a></li>
@@ -34058,7 +34058,7 @@
 <p><br></p>
 <h2 id="07-gitops">07. GitOps<a class="headerlink" href="#07-gitops" title="Permanent link">&para;</a></h2>
 <h3 id="gitops">GitOpsとは<a class="headerlink" href="#gitops" title="Permanent link">&para;</a></h3>
-<p>DevOpsを実現する技術的要素の一つ。</p>
+<p>DevOpsを実現する技術的要素の1つ。</p>
 <p>CIツール (例：GitHub Actions、CircleCI、GitLab CI、Argo Workflows、Tektonなど) を使用してCIパイプラインを、またはCDツール (例：ArgoCD、Fluxなど) を使用してCDパイプラインを、実装する手法のこと。</p>
 <p><img alt="devops_gitops" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_gitops.png" /></p>
 <blockquote>
@@ -34082,7 +34082,7 @@
 <h3 id="ci_2">相性の良いCIツール<a class="headerlink" href="#ci_2" title="Permanent link">&para;</a></h3>
 <p>CIOpsでなくGitOpsを採用する場合、アプリはマイクロサービスアーキテクチャを採用しているはずである。</p>
 <p>GitOpsでは、CIツールで実施する手順が少ないため、基本的にいずれのツールを使用しても問題ない。</p>
-<p>ただし、リポジトリの分割戦略にポリレポ (マイクロサービスごとにリポジトリを用意する) を採用している場合、リポジトリで同じ設定ファイルを横展開するよりも、CIツールの設定ファイルの共有部分はは特定のリポジトリで中央集中的に管理し、他のリポジトリでこれを読み込むようにした方が楽である。</p>
+<p>ただし、リポジトリの分割戦略にポリレポ (マイクロサービスごとにリポジトリを用意する) を採用している場合、リポジトリで同じ設定ファイルを横展開するよりも、CIツールの設定ファイルの共有部分はは特定のリポジトリで中央集中的に管理し、他のリポジトリでこれを読み込むようにしたほうが楽である。</p>
 <p>外部リポジトリに置いた設定ファイルをリモート参照できるような機能を持つCIツール (例：GitLab CI) であれば、ポリレポ戦略と相性が良い。</p>
 <p><br></p>
 <h3 id="cicd_3">CI/CDパイプラインのステップ<a class="headerlink" href="#cicd_3" title="Permanent link">&para;</a></h3>
@@ -34124,7 +34124,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月4日 21:40:36 JST">2026-02-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

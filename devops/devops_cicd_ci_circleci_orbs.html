@@ -33538,25 +33538,25 @@
 <tbody>
 <tr>
 <td>jobs</td>
-<td><code>job</code>キーに割り当てられる。</td>
+<td><code>job</code> キーに割り当てられる。</td>
 </tr>
 <tr>
 <td>commands</td>
-<td><code>step</code>キーに割り当てられる。</td>
+<td><code>step</code> キーに割り当てられる。</td>
 </tr>
 <tr>
 <td>executors</td>
-<td><code>executors</code>キーに割り当てられる。</td>
+<td><code>executors</code> キーに割り当てられる。</td>
 </tr>
 </tbody>
 </table>
 <h4 id="orbs_1">▼ Orbsのデメリット<a class="headerlink" href="#orbs_1" title="Permanent link">&para;</a></h4>
-<p>Orbsのパッケージの処理の最小単位は<code>step</code>である。</p>
-<p>そのため、<code>step</code>よりも小さい<code>run</code>はOrbsに組み込めず、<code>run</code>固有のオプションや<code>run</code>に設定できるlinuxコマンドをOrbsでは使用できないことになる。</p>
+<p>Orbsのパッケージの処理の最小単位は <code>step</code> である。</p>
+<p>そのため、<code>step</code> よりも小さい <code>run</code> はOrbsに組み込めず、<code>run</code> 固有のオプションや <code>run</code> に設定できるlinuxコマンドをOrbsでは使用できないことになる。</p>
 <h4 id="_4">▼ オプションへの引数の渡し方と注意点<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>AWSの資格情報は、CircleCIのデフォルト名と同じ環境変数名で登録しておけば、オプションで渡さなくとも、自動的に入力してくれる。</p>
-<p>オプションが<code>env_var_name</code>型は、基本的に全てのスコープレベルの環境変数を受け付ける。</p>
-<p>ただしAlpine Linuxでは、『<code>$BASH_ENV</code>』を使用して、複数の<code>run</code>間で環境変数を共有できず、orbsのステップに環境変数を渡せないため注意する。</p>
+<p>オプションが <code>env_var_name</code> 型は、基本的に全てのスコープレベルの環境変数を受け付ける。</p>
+<p>ただしAlpine Linuxでは、『<code>$BASH_ENV</code>』を使用して、複数の <code>run</code> 間で環境変数を共有できず、orbsのステップに環境変数を渡せないため注意する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
@@ -33644,7 +33644,7 @@
 <span class="w">              </span><span class="nt">only</span><span class="p">:</span>
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
 </code></pre></div>
-<p>ただし、資格情報ファイルの作成では、orbsを使用しない方がより簡潔に条件分岐を実装できるかもしれない。</p>
+<p>ただし、資格情報ファイルの作成では、orbsを使用しないほうがより簡潔に条件分岐を実装できるかもしれない。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="nb">set</span><span class="w"> </span>-xeuo<span class="w"> </span>pipefail
@@ -33685,7 +33685,7 @@ aws<span class="w"> </span>configure<span class="w"> </span>list
 <h2 id="03-aws-ecr">03. aws-ecr<a class="headerlink" href="#03-aws-ecr" title="Permanent link">&para;</a></h2>
 <h3 id="jobs">jobs<a class="headerlink" href="#jobs" title="Permanent link">&para;</a></h3>
 <h4 id="build-and-push-image">▼ build-and-push-image<a class="headerlink" href="#build-and-push-image" title="Permanent link">&para;</a></h4>
-<p>CircleCIコンテナでコンテナイメージをビルドし、ECRにデプロイする。<code>remote-docker-layer-caching</code>を使用して、Docker Layer Cacheを有効化できる。</p>
+<p>CircleCIコンテナでコンテナイメージをビルドし、ECRにデプロイする。<code>remote-docker-layer-caching</code> を使用して、Docker Layer Cacheを有効化できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
@@ -33736,21 +33736,21 @@ aws<span class="w"> </span>configure<span class="w"> </span>list
 <tr>
 <td><code>verify-revision-is-deployed</code></td>
 <td>ローリングアップデートのAWS ECSタスクがAWS ECSタスク定義の必要数に合致したかを継続的に監視する。</td>
-<td>例えば、AWS ECSタスクが『<code>Running</code>フェーズ』にならずに『Stoppedフェーズ』になってしまう場合や、既存のAWS ECSタスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態はAWS ECSタスクの必要数に合致しないため、検知できる。</td>
+<td>例えば、AWS ECSタスクが『<code>Running</code> フェーズ』にならずに『Stoppedフェーズ』になってしまう場合や、既存のAWS ECSタスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態はAWS ECSタスクの必要数に合致しないため、検知できる。</td>
 </tr>
 <tr>
 <td><code>max-poll-attempts</code></td>
-<td>ポーリングの最大試行回数を設定する。<code>poll-interval</code>と掛け合わせて、そう実行時間を定義できる。</td>
-<td>総実行時間を延長する時、間隔秒数はできるだけ短い方が無駄な実行時間が発生しないため、最大回数を増やす。</td>
+<td>ポーリングの最大試行回数を設定する。<code>poll-interval</code> と掛け合わせて、そう実行時間を定義できる。</td>
+<td>総実行時間を延長するとき、間隔秒数はできるだけ短いほうが無駄な実行時間が発生しないため、最大回数を増やす。</td>
 </tr>
 <tr>
 <td><code>poll-interval</code></td>
-<td>試行の間隔秒数を設定する。<code>max-poll-attempts</code>と掛け合わせて、そう実行時間を定義できる。</td>
+<td>試行の間隔秒数を設定する。<code>max-poll-attempts</code> と掛け合わせて、そう実行時間を定義できる。</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<p>オプションを使用して、<code>max-poll-attempts</code> (ポーリングの最大試行回数) と<code>poll-interval</code> (試行の間隔秒数) で、ポーリングの総実行時間を定義できる。</p>
+<p>オプションを使用して、<code>max-poll-attempts</code> (ポーリングの最大試行回数) と <code>poll-interval</code> (試行の間隔秒数) で、ポーリングの総実行時間を定義できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://circleci.com/docs/ja/2.0/ecs-ecr/#deploy-the-new-docker-image-to-an-existing-aws-ecs-service">https://circleci.com/docs/ja/2.0/ecs-ecr/#deploy-the-new-docker-image-to-an-existing-aws-ecs-service</a></li>
@@ -33804,7 +33804,7 @@ aws<span class="w"> </span>configure<span class="w"> </span>list
 </code></pre></div>
 <h4 id="deploy-update-service_1">▼ deploy-update-service (ブルー/グリーンデプロイメント使用時)<a class="headerlink" href="#deploy-update-service_1" title="Permanent link">&para;</a></h4>
 <p>AWS ECSタスク定義を更新する。加えて、ブルー/グリーンデプロイメントがそのAWS ECSタスク定義を指定し、AWS ECSサービスを更新する。</p>
-<p>ローリングアップデートと同様にして、<code>verify-revision-is-deployed</code>オプションを使用できる。</p>
+<p>ローリングアップデートと同様にして、<code>verify-revision-is-deployed</code> オプションを使用できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
@@ -33855,12 +33855,12 @@ aws<span class="w"> </span>configure<span class="w"> </span>list
 </code></pre></div>
 <h4 id="run-task">▼ run-task<a class="headerlink" href="#run-task" title="Permanent link">&para;</a></h4>
 <p>現在起動中のAWS ECSタスクとは別に、新しいAWS ECSタスクを一時的に起動する。</p>
-<p>起動時に、<code>overrides</code>オプションを使用して、指定したAWS ECSタスク定義のコンテナ設定を上書きできる。</p>
+<p>起動時に、<code>overrides</code> オプションを使用して、指定したAWS ECSタスク定義のコンテナ設定を上書きできる。</p>
 <p>正規表現で設定する必要があり、加えてJSONでは『<code>\</code>』を『<code>\\</code>』にエスケープしなければならない。</p>
 <p>コマンドが実行された後に、AWS ECSタスクは自動的にStopped状態になる。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>例えば、DBマイグレーションを実行するためのAWS ECSタスクを起動する。</p>
-<p><code>overrides</code>オプションでコンテナ定義のコマンドを上書きする。</p>
+<p><code>overrides</code> オプションでコンテナ定義のコマンドを上書きする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">orbs</span><span class="p">:</span>
@@ -34033,7 +34033,7 @@ aws<span class="w"> </span>configure<span class="w"> </span>list
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月15日 17:46:06 JST">2025-10-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

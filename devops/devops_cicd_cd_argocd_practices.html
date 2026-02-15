@@ -28094,7 +28094,7 @@
   <a href="#argocd-allow-concurrency" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ レプリカ当たりの処理効率の向上 (.argocd-allow-concurrencyファイル)
+        ▼ レプリカ当たりの処理効率の向上 (.argocd-allow-concurrency ファイル)
       
     </span>
   </a>
@@ -28878,7 +28878,7 @@
   <a href="#progressing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Progressing状態でスタックする
+        Progressing 状態でスタックする
       
     </span>
   </a>
@@ -34056,7 +34056,7 @@
   <a href="#argocd-allow-concurrency" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ レプリカ当たりの処理効率の向上 (.argocd-allow-concurrencyファイル)
+        ▼ レプリカ当たりの処理効率の向上 (.argocd-allow-concurrency ファイル)
       
     </span>
   </a>
@@ -34840,7 +34840,7 @@
   <a href="#progressing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Progressing状態でスタックする
+        Progressing 状態でスタックする
       
     </span>
   </a>
@@ -35362,7 +35362,7 @@
 <p>Volumeの種類によるが、EmptyDir Volumeであれば、Podを再作成するたびにリポジトリをクローンする。</p>
 <h4 id="_5">▼ レプリカ数<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>repo-serverの冗長化は、可用性だけでなく性能設計の改善にもつながる。</p>
-<p>例えば、レプリカ数を<code>3</code>倍にすると、Sync時間が1/3になる。</p>
+<p>例えば、レプリカ数を <code>3</code> 倍にすると、Sync時間が1/3になる。</p>
 <blockquote>
 <ul>
 <li><a href="https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b">https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b</a></li>
@@ -35384,11 +35384,11 @@
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--parallelismlimit</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
 </code></pre></div>
-<h4 id="argocd-allow-concurrency">▼ レプリカ当たりの処理効率の向上 (<code>.argocd-allow-concurrency</code>ファイル)<a class="headerlink" href="#argocd-allow-concurrency" title="Permanent link">&para;</a></h4>
+<h4 id="argocd-allow-concurrency">▼ レプリカ当たりの処理効率の向上 (<code>.argocd-allow-concurrency</code> ファイル)<a class="headerlink" href="#argocd-allow-concurrency" title="Permanent link">&para;</a></h4>
 <p>repo-serverは、レプリカ当たり同時に1つの処理しかできない。</p>
 <p>この時、リポジトリがモノリポジトリ (たくさんのHelmチャートが含まれる) であり、複数のApplicationがこの単一のモノリポジトリをポーリングしていると仮定する。</p>
 <p>すると、各Applicationのマニフェスト作成処理はrepo-serverのレプリカ数に影響を受ける。</p>
-<p>Applicationがポーリングするリポジトリのパス直下に<code>.argocd-allow-concurrency</code>ファイルを配置しておくと並行処理をしてくれる。</p>
+<p>Applicationがポーリングするリポジトリのパス直下に <code>.argocd-allow-concurrency</code> ファイルを配置しておくと並行処理をしてくれる。</p>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#monorepo-scaling-considerations">https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#monorepo-scaling-considerations</a></li>
@@ -35400,12 +35400,12 @@
 <h4 id="manifest-generate-paths">▼ キャッシュ作成範囲を小さくする (<code>manifest-generate-paths</code>)<a class="headerlink" href="#manifest-generate-paths" title="Permanent link">&para;</a></h4>
 <p>repo-serverは、デプロイ対象のリポジトリにあるマニフェストのキャッシュを積極的に作成する</p>
 <p>この時、リポジトリがモノリポジトリ (たくさんのHelmチャートが含まれる) であり、複数のApplicationがこの単一のモノリポジトリをポーリングしていると仮定する。</p>
-<p>例えば、Applicationが<code>500</code>個でリポジトリが<code>1</code>個のような場合である。</p>
+<p>例えば、Applicationが <code>500</code> 個でリポジトリが <code>1</code> 個のような場合である。</p>
 <p>すると、各Applicationでは、デプロイ対象のHelmチャートだけでなく、それ以外のHelmチャートの変更であっても、キャッシュを再作成してしまう。</p>
 <p>これが、パフォーマンスの問題になる。</p>
 <p>そのため、モノリポジトリには注意が必要である。</p>
-<p>Applicationの<code>metadata.annotations</code>キーに<code>argocd.argoproj.io/manifest-generate-paths</code>キーを設定し、マニフェストのキャッシュ再作成のトリガーとするディレクトリを設定する。</p>
-<p>これにより、<code>argocd_app_reconcile_count</code>と<code>argocd_git_request_total</code>のメトリクスを改善できる。</p>
+<p>Applicationの <code>metadata.annotations</code> キーに <code>argocd.argoproj.io/manifest-generate-paths</code> キーを設定し、マニフェストのキャッシュ再作成のトリガーとするディレクトリを設定する。</p>
+<p>これにより、<code>argocd_app_reconcile_count</code> と <code>argocd_git_request_total</code> のメトリクスを改善できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35439,15 +35439,15 @@
 <h3 id="_7">性能<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ 問題<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>テナントにいくつかの実行環境のApplicationを集約する場合に、Application数が増えがちになる。</p>
-<p>application-controllerは、デフォルトだとレプリカ当たり<code>400</code>個のApplicationまでReconciliationできる。</p>
+<p>application-controllerは、デフォルトだとレプリカ当たり <code>400</code> 個のApplicationまでReconciliationできる。</p>
 <ul>
-<li><code>--status-processors</code>は、application-controllerがデプロイ対象のClusterに対してヘルスチェックするためのプロセッサ数</li>
-<li><code>--operation-processors</code>は、application-controllerがデプロイ対象のClusterに対して、差分確認 (<code>kubectl diff</code>) と Sync (<code>kubectl apply</code>) するためのプロセッサ数</li>
+<li><code>--status-processors</code> は、application-controllerがデプロイ対象のClusterに対してヘルスチェックするためのプロセッサ数</li>
+<li><code>--operation-processors</code> は、application-controllerがデプロイ対象のClusterに対して、差分確認 (<code>kubectl diff</code>) と Sync (<code>kubectl apply</code>) するためのプロセッサ数</li>
 </ul>
 <h4 id="-status-processors-operation-processors">▼ レプリカ当たりの処理効率の向上 (<code>--status-processors</code>、<code>--operation-processors</code>)<a class="headerlink" href="#-status-processors-operation-processors" title="Permanent link">&para;</a></h4>
-<p>application-controllerは、Reconciliation時にApplicationを一つずつ処理していく。</p>
+<p>application-controllerは、Reconciliation時にApplicationを1つずつ処理していく。</p>
 <p>CPUの並列処理数を増やすと、レプリカ当たりの処理効率を上げられる。</p>
-<p>Clusterのヘルスチェックの並列処理数は<code>--status-processors</code>オプションで、Diff/Sync処理のそれは<code>--operation-processors</code>オプションで変更できる。</p>
+<p>Clusterのヘルスチェックの並列処理数は <code>--status-processors</code> オプションで、Diff/Sync処理のそれは <code>--operation-processors</code> オプションで変更できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StatefulSet</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35482,8 +35482,8 @@
 </ul>
 </blockquote>
 <ul>
-<li>Application<code>1000</code>個の場合、<code>--status-processors</code>に<code>50</code>、<code>--operation-processors</code>に<code>25</code>を指定</li>
-<li>Application<code>400</code>個の場合、<code>--status-processors</code>に<code>20</code>、<code>--operation-processors</code>に<code>10</code>を指定 (デフォルト値)</li>
+<li>Application<code>1000</code> 個の場合、<code>--status-processors</code> に <code>50</code>、<code>--operation-processors</code> に <code>25</code> を指定</li>
+<li>Application<code>400</code> 個の場合、<code>--status-processors</code> に <code>20</code>、<code>--operation-processors</code> に <code>10</code> を指定 (デフォルト値)</li>
 </ul>
 <p>Application数が多くなるほど、Reconciliationの処理キューを空にするのに時間がかかる。</p>
 <p>大量のApplicationをReconciliationする場合、次のような対処方法がある。</p>
@@ -35498,7 +35498,7 @@
 <h4 id="argocd_controller_replicas">▼ レプリカ当たりの負荷を低減 (<code>ARGOCD_CONTROLLER_REPLICAS</code>)<a class="headerlink" href="#argocd_controller_replicas" title="Permanent link">&para;</a></h4>
 <p>application-controllerは、デプロイ対象のClusterを処理する。</p>
 <p>レプリカ数を単純に増やしても、application-controllerの各レプリカは全てのClusterに対する処理を実行してしまう。</p>
-<p>例えば、<code>ARGOCD_CONTROLLER_REPLICAS</code>をレプリカ数と同じ数値で設定すると、application-controllerのレプリカは、Clusterに対する処理を分業するようになる。</p>
+<p>例えば、<code>ARGOCD_CONTROLLER_REPLICAS</code> をレプリカ数と同じ数値で設定すると、application-controllerのレプリカは、Clusterに対する処理を分業するようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StatefulSet</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35545,7 +35545,7 @@
 </ul>
 </blockquote>
 <h4 id="argocd_cluster_cache_resync_duration">▼ 処理結果のキャッシュの更新頻度を低減 (<code>ARGOCD_CLUSTER_CACHE_RESYNC_DURATION</code>)<a class="headerlink" href="#argocd_cluster_cache_resync_duration" title="Permanent link">&para;</a></h4>
-<p>application-controllerは、クラスターの処理結果のキャッシュを定期的に削除する (デフォルトでは<code>12</code>時間) 。</p>
+<p>application-controllerは、クラスターの処理結果のキャッシュを定期的に削除する (デフォルトでは <code>12</code> 時間) 。</p>
 <p>キャッシュの削除時の間、SyncやRefreshの処理を実施できなくなる。</p>
 <p>Application数が多いほど、キャッシュの削除時間が長くなる。</p>
 <p>キャッシュの頻度を下げたり、無効化することにより、削除時間の長期化を低減できる。</p>
@@ -35613,7 +35613,7 @@
 <p>argocd-serverは、ステートレスで高負荷になりにくい。</p>
 <p>念の為、他のコンポーネントの数に合わせて冗長化するとよい。</p>
 <h4 id="_13">▼ レプリカ当たりの負荷を低減<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p><code>ARGOCD_API_SERVER_REPLICAS</code>変数で、argocd-serverの異なるレプリカへのリクエストを分散できる。</p>
+<p><code>ARGOCD_API_SERVER_REPLICAS</code> 変数で、argocd-serverの異なるレプリカへのリクエストを分散できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35634,11 +35634,11 @@
 </ul>
 </blockquote>
 <h4 id="_14">▼ サイドカーのメモリ<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>argocd-serverのサイドカー上 (<code>***-cmp-server</code>) で<code>helm</code>コマンドのなどを実行する場合、マニフェストの展開にはスパイク的にメモリが必要になる。</p>
+<p>argocd-serverのサイドカー上 (<code>***-cmp-server</code>) で <code>helm</code> コマンドのなどを実行する場合、マニフェストの展開にはスパイク的にメモリが必要になる。</p>
 <p>そのため、サイドカー (<code>***-cmp-server</code>) にはたくさんのメモリを割り当てるようにする。</p>
 <p><br></p>
 <h3 id="_15">安全性<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p>ArgoCDには、ダッシュボード上から特定の<code>kubectl</code>コマンド (<code>kubectl logs</code>コマンド、<code>kubectl exec</code>コマンド) を実行できる機能がある。</p>
+<p>ArgoCDには、ダッシュボード上から特定の <code>kubectl</code> コマンド (<code>kubectl logs</code> コマンド、<code>kubectl exec</code> コマンド) を実行できる機能がある。</p>
 <p>ダッシュボードの操作者にその権限がない場合、権限を絞る必要がある。</p>
 <p><br></p>
 <h2 id="04-cluster">04. ポーリング対象のClusterのデザインパターン<a class="headerlink" href="#04-cluster" title="Permanent link">&para;</a></h2>
@@ -35736,7 +35736,7 @@
 <h3 id="app-of-apps">App Of Appsパターン<a class="headerlink" href="#app-of-apps" title="Permanent link">&para;</a></h3>
 <h4 id="app-of-apps_1">▼ App Of Appsパターンとは<a class="headerlink" href="#app-of-apps_1" title="Permanent link">&para;</a></h4>
 <p>親Applicationで子Applicationをグループ化したように構成する。</p>
-<p>Applicationの<code>.resource</code>キー配下で、紐づく子Applicationを管理している。</p>
+<p>Applicationの <code>.resource</code> キー配下で、紐づく子Applicationを管理している。</p>
 <p><img alt="root-application" src="https://raw.githubusercontent.com/hiroki-it/helm-charts-practice/main/root-application.png" /></p>
 <blockquote>
 <ul>
@@ -35749,7 +35749,7 @@
 <p>全てのApplicationをポーリングする最上位Applicationのこと。</p>
 <p>root-applicationとAppProjectは同じNamespaceに所属する必要がある。</p>
 <p>状態の影響範囲を加味して、デプロイ先のCluster (異なる実行環境も含む) を粒度として、root-applicationを作成する。</p>
-<p>root-applicationは、<code>default</code>や<code>root</code>のAppProjectに配置する。</p>
+<p>root-applicationは、<code>default</code> や <code>root</code> のAppProjectに配置する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 最上位Application</span>
 <span class="l l-Scalar l-Scalar-Plain">root-argocd-repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── tes/</span>
@@ -35833,8 +35833,8 @@
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">application.instanceLabelKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd.argoproj.io/instance</span>
 </code></pre></div>
-<p>ArgoCDは、Kubernetesリソースの<code>.metadata.labels</code>キーにこのラベル (ここでは<code>argocd.argoproj.io/instance</code>キー) を自動的に設定する。</p>
-<p>AppProjectが異なる限り、同じCluster内にある同じ<code>argocd.argoproj.io/instance</code>キー値を持つApplicationは区別される。</p>
+<p>ArgoCDは、Kubernetesリソースの <code>.metadata.labels</code> キーにこのラベル (ここでは <code>argocd.argoproj.io/instance</code> キー) を自動的に設定する。</p>
+<p>AppProjectが異なる限り、同じCluster内にある同じ <code>argocd.argoproj.io/instance</code> キー値を持つApplicationは区別される。</p>
 <p>一方で、同じAppProjectにあるApplicationは、たとえNamespaceが異なっていても区別できない。</p>
 <p>そのため、Kubernetesリソースが複数のApplicationに紐づいてしまう。</p>
 <p>これらの理由から、同じCluster内ではApplication名を一意にする必要がある。</p>
@@ -35932,7 +35932,7 @@
 <tr>
 <td>一時的</td>
 <td>CDツールを一時的に認証し、また同様に認可スコープを一時的に付与する。</td>
-<td>Kubernetes <code>v1.22</code> 以降では、BoundServiceAccountTokenVolumeにより、ServiceAccountのトークンに<code>1</code>時間の有効期限がある。kube-apiserverのクライアント側が特定のバージョンのclientパッケージを使用していれば、認証用のトークンが定期的に再作成されるようになっており、一時的な認証を実現できている。一方で、CDツールにClusterRoleの認可スコープ一時的に付与する方法は、調査した限り見つからなかったが、preSyncなどを使用すればできるかも。<br>参考：<br>・<a href="https://github.com/argoproj/argo-cd/issues/9417#issuecomment-1162548782">https://github.com/argoproj/argo-cd/issues/9417#issuecomment-1162548782</a> <br>・<a href="https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#bound-service-account-token-volume">https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#bound-service-account-token-volume</a></td>
+<td>Kubernetes <code>v1.22</code> 以降では、BoundServiceAccountTokenVolumeにより、ServiceAccountのトークンに <code>1</code> 時間の有効期限がある。kube-apiserverのクライアント側が特定のバージョンのclientパッケージを使用していれば、認証用のトークンが定期的に再作成されるようになっており、一時的な認証を実現できている。一方で、CDツールにClusterRoleの認可スコープ一時的に付与する方法は、調査した限り見つからなかったが、preSyncなどを使用すればできるかも。<br>参考：<br>・<a href="https://github.com/argoproj/argo-cd/issues/9417#issuecomment-1162548782">https://github.com/argoproj/argo-cd/issues/9417#issuecomment-1162548782</a> <br>・<a href="https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#bound-service-account-token-volume">https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#bound-service-account-token-volume</a></td>
 <td style="text-align: center;">推奨</td>
 </tr>
 </tbody>
@@ -35970,11 +35970,11 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>Applicationの<code>.spec.syncPolicy.allowEmpty</code>キーを有効化する。</p>
+<p>Applicationの <code>.spec.syncPolicy.allowEmpty</code> キーを有効化する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>フォアグラウンドで削除すると、Applicationの<code>.metadata.finalizers</code>キーの値に削除中のリソースが設定される。</p>
+<p>フォアグラウンドで削除すると、Applicationの <code>.metadata.finalizers</code> キーの値に削除中のリソースが設定される。</p>
 <p>この配列を空配列に変更する。ArgoCDのUIからは変更できず、<code>kubectl patch</code>コマンドを使用する必要がある。</p>
 </dd>
 </dl>
@@ -35990,7 +35990,7 @@
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>1つ目の<code>.spec.syncPolicy.allowEmpty</code>キーの変更を元に戻す。</p>
+<p>1つ目の <code>.spec.syncPolicy.allowEmpty</code> キーの変更を元に戻す。</p>
 </dd>
 </dl>
 <h4 id="namespace_1">▼ Namespaceを削除できない<a class="headerlink" href="#namespace_1" title="Permanent link">&para;</a></h4>
@@ -36020,8 +36020,8 @@
 <li>Workload (例：Deployment、DaemonSet、StatefulSet、Jobなど) を一度削除する。ただし、親になるリソースを削除する必要があるため、やや危険である。</li>
 </ul>
 <p><br></p>
-<h3 id="progressing"><code>Progressing</code>状態でスタックする<a class="headerlink" href="#progressing" title="Permanent link">&para;</a></h3>
-<p>Ingress、StatefulSet、DaemonSet、で特定の設定値を使用していると、ArgoCDの<code>Progressing</code>状態でスタックすることがある。</p>
+<h3 id="progressing"><code>Progressing</code> 状態でスタックする<a class="headerlink" href="#progressing" title="Permanent link">&para;</a></h3>
+<p>Ingress、StatefulSet、DaemonSet、で特定の設定値を使用していると、ArgoCDの <code>Progressing</code> 状態でスタックすることがある。</p>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state">https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state</a></li>
@@ -36055,7 +36055,7 @@
 </blockquote>
 <p>ArgoCDでは、CI上でClusterのバージョンをテストしており、CIの実行環境 (K3SやK3Dを使用している) のバージョンから、テスト済みのClusterのバージョンを確認できる。</p>
 <p>このテストでは、CI上に特定のバージョンのKubernetes Clusterを作成し、またこのClusterに対してArgoCDの稼働や各種処理 (マニフェストデプロイ) を実行する。</p>
-<p>例えば、ArgoCDの<code>v2.7.3</code>は、K3Sの<code>v1.26.0</code>/<code>v1.25.4</code>/<code>v1.24.3</code>/<code>v1.23.3</code>をサポートしているため、これらのバージョンのClusterで稼働しつつ、マニフェストをデプロイできることが保証されている。</p>
+<p>例えば、ArgoCDの <code>v2.7.3</code> は、K3Sの <code>v1.26.0</code>/<code>v1.25.4</code>/<code>v1.24.3</code>/<code>v1.23.3</code> をサポートしているため、これらのバージョンのClusterで稼働しつつ、マニフェストをデプロイできることが保証されている。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/argoproj/argo-cd/blob/v2.7.3/.github/workflows/ci-build.yaml#L359-L462">https://github.com/argoproj/argo-cd/blob/v2.7.3/.github/workflows/ci-build.yaml#L359-L462</a></li>
@@ -36069,7 +36069,7 @@
 <p><br></p>
 <h3 id="argocd_4">ArgoCDを使用したツールのアップグレード<a class="headerlink" href="#argocd_4" title="Permanent link">&para;</a></h3>
 <p>マニフェストリポジトリやチャートリポジトリの設計によっては、新バージョンのKubernetesリソース名にリビジョンがつくようになっていることがある (例：Istioのチャート) 。</p>
-<p>この場合、Pruneを無効化した上で、既存のKubernetesリソースをそのままに、新バージョンを新しく作成する。</p>
+<p>この場合、Pruneを無効化したうえで、既存のKubernetesリソースをそのままに、新バージョンを新しく作成する。</p>
 <p>新バージョンの動作が問題なければ、旧バージョンのKubernetesリソースをPruneで削除する。</p>
 <p><br></p>
 <h2 id="13-02-bg-aws-eks">13-02. B/G式のアップグレード (AWS EKSの場合)<a class="headerlink" href="#13-02-bg-aws-eks" title="Permanent link">&para;</a></h2>
@@ -36099,7 +36099,7 @@
 <p><br></p>
 <h2 id="13-03">13-03. インプレース<a class="headerlink" href="#13-03" title="Permanent link">&para;</a></h2>
 <p>ArgoCDと同時にKubernetesもアップグレードする場合、問題を切り分けやすいように、別々にアップグレードする。</p>
-<p>検証時は<code>1</code>バージョンずつアップグレードし、最終的な設定方法を探る。</p>
+<p>検証時は <code>1</code> バージョンずつアップグレードし、最終的な設定方法を探る。</p>
 <p>検証後は、最終的な設定方法で一気にアップグレードすると良い。</p>
 <blockquote>
 <ul>
@@ -36208,7 +36208,7 @@
 <tr>
 <td><code>argocd_git_request_total</code></td>
 <td style="text-align: center;">Counter</td>
-<td>repo-serverの<code>git ls-remote</code>コマンドや<code>git fetch</code>コマンドの実行数を表す。これらは、<code>request_type</code>ラベルで<code>ls-remote</code>と<code>fetch</code>という値で取得できる。キャッシュが更新される頻度が高いと<code>git fetch</code>コマンドの実行頻度も高くなる。</td>
+<td>repo-serverの <code>git ls-remote</code> コマンドや <code>git fetch</code> コマンドの実行数を表す。これらは、<code>request_type</code> ラベルで <code>ls-remote</code> と <code>fetch</code> という値で取得できる。キャッシュが更新される頻度が高いと <code>git fetch</code> コマンドの実行頻度も高くなる。</td>
 </tr>
 </tbody>
 </table>
@@ -36419,8 +36419,8 @@
 <span class="l l-Scalar l-Scalar-Plain">Cluster</span>
 </code></pre></div>
 <ul>
-<li>ArgoCDの送信元のAWS ALBにAWS WAFを紐づけ、特定のIPアドレス以外を <code>403</code>ステータス (認可エラー) にする。</li>
-<li>ArgoCDのログインにSSOを使用し、利用者以外を <code>401</code>ステータス (認証エラー) にする</li>
+<li>ArgoCDの送信元のAWS ALBにAWS WAFを紐づけ、特定のIPアドレス以外を <code>403</code> ステータス (認可エラー) にする。</li>
+<li>ArgoCDのログインにSSOを使用し、利用者以外を <code>401</code> ステータス (認証エラー) にする</li>
 </ul>
 <h3 id="argocd-cluster">ArgoCD ➡️ (アクセス制御) ➡️ Cluster の部分<a class="headerlink" href="#argocd-cluster" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">ローカルマシン</span>
@@ -36434,9 +36434,9 @@
 <span class="l l-Scalar l-Scalar-Plain">Cluster</span>
 </code></pre></div>
 <ul>
-<li><code>policy.csv</code>ファイルでArgoCD上の認可スコープを定義し、 <code>403</code> (認可エラー) にする。 ただし、SSOが成功すればArgoCDの閲覧は可能とする。</li>
+<li><code>policy.csv</code> ファイルでArgoCD上の認可スコープを定義し、 <code>403</code> (認可エラー) にする。 ただし、SSOが成功すればArgoCDの閲覧は可能とする。</li>
 <li>Cluster側でArgoCDの送信元IPアドレス (AWSならNAT Gateway) を許可し、特定のArgoCD以外を <code>403</code> (認可エラー) にする。</li>
-<li>AWS EKS ClusterのARNを登録しない場合は、<code>404</code>にする。 (これは、ArgoCDが<code>cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' has not been configured</code>を返却してくれる)</li>
+<li>AWS EKS ClusterのARNを登録しない場合は、<code>404</code> にする。 (これは、ArgoCDが <code>cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' has not been configured</code> を返却してくれる)</li>
 </ul>
 <p><br></p>
 
@@ -36459,7 +36459,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月10日 18:49:38 JST">2025-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

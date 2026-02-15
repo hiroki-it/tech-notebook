@@ -10400,19 +10400,19 @@
   <a href="#gomod" class="md-nav__link">
     <span class="md-ellipsis">
       
-        go.modファイル
+        go.mod ファイル
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="go.modファイル">
+    <nav class="md-nav" aria-label="go.mod ファイル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#gomod_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ go.modファイルとは
+        ▼ go.mod ファイルとは
       
     </span>
   </a>
@@ -10472,19 +10472,19 @@
   <a href="#gosum" class="md-nav__link">
     <span class="md-ellipsis">
       
-        go.sumファイル
+        go.sum ファイル
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="go.sumファイル">
+    <nav class="md-nav" aria-label="go.sum ファイル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#gosum_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ go.sumファイルとは
+        ▼ go.sum ファイルとは
       
     </span>
   </a>
@@ -34086,19 +34086,19 @@
   <a href="#gomod" class="md-nav__link">
     <span class="md-ellipsis">
       
-        go.modファイル
+        go.mod ファイル
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="go.modファイル">
+    <nav class="md-nav" aria-label="go.mod ファイル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#gomod_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ go.modファイルとは
+        ▼ go.mod ファイルとは
       
     </span>
   </a>
@@ -34158,19 +34158,19 @@
   <a href="#gosum" class="md-nav__link">
     <span class="md-ellipsis">
       
-        go.sumファイル
+        go.sum ファイル
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="go.sumファイル">
+    <nav class="md-nav" aria-label="go.sum ファイル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#gosum_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ go.sumファイルとは
+        ▼ go.sum ファイルとは
       
     </span>
   </a>
@@ -34286,12 +34286,12 @@
 <h3 id="build">build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h3>
 <h4 id="build_1">▼ buildとは<a class="headerlink" href="#build_1" title="Permanent link">&para;</a></h4>
 <p>指定したパスをビルド対象として、ビルドのアーティファクトを作成する。</p>
-<p><code>foo_test.go</code>ファイルはビルドから自動的に除外される。</p>
+<p><code>foo_test.go</code> ファイルはビルドから自動的に除外される。</p>
 <p>アーティファクトの出力先を指定しない場合に、</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># cmdディレクトリをビルド対象として、ルートディレクトリにcmdアーティファクトを作成する。</span>
 $<span class="w"> </span>go<span class="w"> </span>build<span class="w"> </span>./cmd
 </code></pre></div>
-<p>もし、ビルドのエラー時に終了ステータスのみが返却され、原因が不明の場合、<code>panic</code>関数が原因を握りつぶしている可能性を考える。</p>
+<p>もし、ビルドのエラー時に終了ステータスのみが返却され、原因が不明の場合、<code>panic</code> 関数が原因を握りつぶしている可能性を考える。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">exit</span><span class="w"> </span>status<span class="w"> </span><span class="m">2</span>.<span class="w"> </span>Docker<span class="w"> </span>build<span class="w"> </span>ran<span class="w"> </span>into<span class="w"> </span>internal<span class="w"> </span>error.<span class="w"> </span>Please<span class="w"> </span>retry.<span class="w"> </span>If<span class="w"> </span>this<span class="w"> </span>keeps<span class="w"> </span>happening,<span class="w"> </span>please<span class="w"> </span>open<span class="w"> </span>an<span class="w"> </span>issue..
 </code></pre></div>
 <h4 id="-o">▼ <code>-o</code><a class="headerlink" href="#-o" title="Permanent link">&para;</a></h4>
@@ -34319,7 +34319,7 @@ $<span class="w"> </span>go<span class="w"> </span>build<span class="w"> </span>
 <p><br></p>
 <h3 id="clean">clean<a class="headerlink" href="#clean" title="Permanent link">&para;</a></h3>
 <p>モジュールのキャッシュを削除する。</p>
-<p>ローカルマシンでの開発中に<code>go install</code>コマンドを実行しても、モジュールをアップグレードできない場合に使用する。</p>
+<p>ローカルマシンでの開発中に <code>go install</code> コマンドを実行しても、モジュールをアップグレードできない場合に使用する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>clean<span class="w"> </span>--modcache
 
 $<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>tidy
@@ -34349,15 +34349,15 @@ $<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>ti
 <p><br></p>
 <h3 id="install">install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h3>
 <h4 id="install_1">▼ installとは<a class="headerlink" href="#install_1" title="Permanent link">&para;</a></h4>
-<p><code>go get</code>コマンドとは異なり、Goのバイナリをモジュールとしてでなく、ツールとしてグローバルにインストールする。</p>
-<p>コードと外部モジュールに対して<code>build</code>コマンドを実行することにより、<code>$GOPATH</code>以下の<code>bin</code>ディレクトリまたは<code>pkg</code>ディレクトリにインストール (配置) する。</p>
-<p>内部または外部のコードからビルドされたアーティファクト (バイナリファイル) であれば<code>bin</code>ディレクトリ配下に配置し、それ以外 (例：<code>.a</code>ファイル) であれば<code>pkg</code>ディレクトリ配下に配置する。</p>
+<p><code>go get</code> コマンドとは異なり、Goのバイナリをモジュールとしてでなく、ツールとしてグローバルにインストールする。</p>
+<p>コードと外部モジュールに対して <code>build</code> コマンドを実行することにより、<code>$GOPATH</code> 以下の <code>bin</code> ディレクトリまたは <code>pkg</code> ディレクトリにインストール (配置) する。</p>
+<p>内部または外部のコードからビルドされたアーティファクト (バイナリファイル) であれば <code>bin</code> ディレクトリ配下に配置し、それ以外 (例：<code>.a</code> ファイル) であれば <code>pkg</code> ディレクトリ配下に配置する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># asdfでGoをインストールしている場合は、go installコマンドの前に`PATH`を設定しておく</span>
 $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>go<span class="w"> </span>env<span class="w"> </span>GOPATH<span class="k">)</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
 
 $<span class="w"> </span>go<span class="w"> </span>install
 </code></pre></div>
-<p>なお、インストールしたモジュールで<code>replace</code>を使用している場合、クローンしてから直接インストールする必要がある。</p>
+<p>なお、インストールしたモジュールで <code>replace</code> を使用している場合、クローンしてから直接インストールする必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>&lt;モジュールのリポジトリ&gt;
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>&lt;バイナリのディレクトリ&gt;
 $<span class="w"> </span>go<span class="w"> </span>install
@@ -34373,7 +34373,7 @@ $<span class="w"> </span>go<span class="w"> </span>install
 </ul>
 </blockquote>
 <h4 id="_2">▼ 最新バージョンの指定<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p><code>HEAD</code>を指定すると、最新のコミットIDを指定できる。</p>
+<p><code>HEAD</code> を指定すると、最新のコミットIDを指定できる。</p>
 <p>複数のブランチがある場合は、時系列的に最新のコミットIDである。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </span>&lt;モジュール名&gt;@HEAD
 </code></pre></div>
@@ -34383,7 +34383,7 @@ $<span class="w"> </span>go<span class="w"> </span>install
 </ul>
 </blockquote>
 <h4 id="_3">▼ バイナリのアンインストール<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p><code>go install</code>コマンドでインストールしたバイナリは、<code>rm</code>コマンドで直接削除する必要がある。</p>
+<p><code>go install</code> コマンドでインストールしたバイナリは、<code>rm</code> コマンドで直接削除する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span><span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/bin
 
 foo-package
@@ -34398,15 +34398,15 @@ $<span class="w"> </span>rm<span class="w"> </span><span class="si">${</span><sp
 <p><br></p>
 <h3 id="run">run<a class="headerlink" href="#run" title="Permanent link">&para;</a></h3>
 <h4 id="run_1">▼ runとは<a class="headerlink" href="#run_1" title="Permanent link">&para;</a></h4>
-<p><code>go build</code>コマンドを実行しつつ、バイナリを実行する。</p>
+<p><code>go build</code> コマンドを実行しつつ、バイナリを実行する。</p>
 <p>ソースコードを変更した後に動作を簡易的に確認する場合に便利である。</p>
-<p>ただ、<code>log</code>モジュールなど処理中のメッセージは表示されず、<code>main.go</code>ファイルの実行結果しかわからないため、エラーのデバッグには使いにくい。</p>
+<p>ただ、<code>log</code> モジュールなど処理中のメッセージは表示されず、<code>main.go</code> ファイルの実行結果しかわからないため、エラーのデバッグには使いにくい。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>run<span class="w"> </span>./...
 </code></pre></div>
 <p><br></p>
 <h3 id="test">test<a class="headerlink" href="#test" title="Permanent link">&para;</a></h3>
 <h4 id="test_1">▼ testとは<a class="headerlink" href="#test_1" title="Permanent link">&para;</a></h4>
-<p>指定したパスの<code>foo_test.go</code>ファイルで『<code>Test</code>』から始まるテスト関数を実行する。</p>
+<p>指定したパスの <code>foo_test.go</code> ファイルで『<code>Test</code>』から始まるテスト関数を実行する。</p>
 <p>testディレクトリ内を再帰的に実行するのがおすすめ。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span><span class="nb">test</span><span class="w"> </span>./...
 </code></pre></div>
@@ -34415,13 +34415,13 @@ $<span class="w"> </span>rm<span class="w"> </span><span class="si">${</span><sp
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-v<span class="w"> </span>./...
 </code></pre></div>
 <h4 id="-cover">▼ -cover<a class="headerlink" href="#-cover" title="Permanent link">&para;</a></h4>
-<p>テスト時に、<code>foo_test.go</code>ファイルがあるモジュール内ファイルの命令網羅の網羅率を解析する。</p>
-<p>反対に、<code>foo_test.go</code>ファイルがなければ、そのモジュールの網羅率は解析しない。</p>
+<p>テスト時に、<code>foo_test.go</code> ファイルがあるモジュール内ファイルの命令網羅の網羅率を解析する。</p>
+<p>反対に、<code>foo_test.go</code> ファイルがなければ、そのモジュールの網羅率は解析しない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-cover<span class="w"> </span>./...
 </code></pre></div>
 <h4 id="-coverpkg">▼ -coverpkg<a class="headerlink" href="#-coverpkg" title="Permanent link">&para;</a></h4>
 <p>モジュールを指定して、網羅率を解析する。</p>
-<p>デフォルトではテストコードがあるモジュールしか解析しないため、全てのモジュールを含めて解析するために<code>./...</code>を指定する。</p>
+<p>デフォルトではテストコードがあるモジュールしか解析しないため、全てのモジュールを含めて解析するために <code>./...</code> を指定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-coverpkg<span class="o">=</span>./...<span class="w"> </span>-coverprofile<span class="o">=</span>coverage.txt<span class="w"> </span>./...
 </code></pre></div>
 <blockquote>
@@ -34478,10 +34478,10 @@ $<span class="w"> </span>rm<span class="w"> </span><span class="si">${</span><sp
 <p><br></p>
 <h3 id="get">get<a class="headerlink" href="#get" title="Permanent link">&para;</a></h3>
 <h4 id="get_1">▼ getとは<a class="headerlink" href="#get_1" title="Permanent link">&para;</a></h4>
-<p>指定したパスからモジュールをダウンロードし、これに対して<code>install</code>コマンドを実行する。</p>
-<p>また、<code>go.mod</code>ファイルも更新する。</p>
-<p>これにより、内部または外部のコードからビルドされたアーティファクト (バイナリファイル) であれば<code>bin</code>ディレクトリ配下に配置し、それ以外 (例：<code>.a</code>ファイル) であれば<code>pkg</code>ディレクトリ配下に配置する。</p>
-<p><code>go get</code>コマンドは不用意に<code>go.mod</code>ファイル上の他のモジュールの定義も更新してしまうため、非推奨である。</p>
+<p>指定したパスからモジュールをダウンロードし、これに対して <code>install</code> コマンドを実行する。</p>
+<p>また、<code>go.mod</code> ファイルも更新する。</p>
+<p>これにより、内部または外部のコードからビルドされたアーティファクト (バイナリファイル) であれば <code>bin</code> ディレクトリ配下に配置し、それ以外 (例：<code>.a</code> ファイル) であれば <code>pkg</code> ディレクトリ配下に配置する。</p>
+<p><code>go get</code> コマンドは不用意に <code>go.mod</code> ファイル上の他のモジュールの定義も更新してしまうため、非推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># インストールの場合</span>
 $<span class="w"> </span>go<span class="w"> </span>get<span class="w"> </span>&lt;ドメインをルートとしたURL&gt;@&lt;バージョン&gt;
 
@@ -34503,8 +34503,8 @@ go:<span class="w"> </span>upgraded<span class="w"> </span>&lt;ドメインを�
 <h4 id="go-mod-tidy">▼ go mod tidyとの使い分け<a class="headerlink" href="#go-mod-tidy" title="Permanent link">&para;</a></h4>
 <p>先にインストールしたモジュールのバージョンが優先になり、このバージョンを基準として他のモジュールのバージョンが決まる。</p>
 <p>そのため、開発者によって結果が変わってしまう。</p>
-<p>その反面、<code>go mod tidy</code>コマンドは同じ結果になる。</p>
-<p>もし全てのモジュールのバージョンを開発者に限らず揃えたいなら、<code>go mod tidy</code>コマンドを使用する。</p>
+<p>その反面、<code>go mod tidy</code> コマンドは同じ結果になる。</p>
+<p>もし全てのモジュールのバージョンを開発者に限らず揃えたいなら、<code>go mod tidy</code> コマンドを使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://blog.lufia.org/entry/2020/02/24/171513">https://blog.lufia.org/entry/2020/02/24/171513</a></li>
@@ -34513,21 +34513,21 @@ go:<span class="w"> </span>upgraded<span class="w"> </span>&lt;ドメインを�
 <p><br></p>
 <h3 id="mod-edit">mod edit<a class="headerlink" href="#mod-edit" title="Permanent link">&para;</a></h3>
 <h4 id="mod-edit_1">▼ mod editとは<a class="headerlink" href="#mod-edit_1" title="Permanent link">&para;</a></h4>
-<p><code>go.mod</code>ファイルで指定しているバージョンを変更する。</p>
+<p><code>go.mod</code> ファイルで指定しているバージョンを変更する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>edit
 </code></pre></div>
 <p><br></p>
 <h3 id="mod-tidy">mod tidy<a class="headerlink" href="#mod-tidy" title="Permanent link">&para;</a></h3>
 <h4 id="mod-tidy_1">▼ mod tidyとは<a class="headerlink" href="#mod-tidy_1" title="Permanent link">&para;</a></h4>
 <ul>
-<li><code>import</code>で指定されているが<code>go get</code>コマンドでインストールされていない場合は、これをインストールする。</li>
-<li><code>import</code>で指定のないモジュールは、<code>go.mod</code>ファイルと<code>go.sum</code>ファイルから削除する。</li>
-<li><code>import</code>で指定されているが<code>go.mod</code>ファイルと<code>go.sum</code>ファイルに定義がない場合は、これを追加する。</li>
+<li><code>import</code> で指定されているが <code>go get</code> コマンドでインストールされていない場合は、これをインストールする。</li>
+<li><code>import</code> で指定のないモジュールは、<code>go.mod</code> ファイルと <code>go.sum</code> ファイルから削除する。</li>
+<li><code>import</code> で指定されているが <code>go.mod</code> ファイルと <code>go.sum</code> ファイルに定義がない場合は、これを追加する。</li>
 <li>アップグレード可能なモジュールはバージョンを変更する。</li>
 </ul>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>tidy
 </code></pre></div>
-<p>もし<code>go.sum</code>ファイルにモジュールの指定があるのにも関わらず、以下のようなエラー (<code>missing go.sum entry</code>) が出る時は、<code>go mod tidy</code>コマンドを実行して<code>go.sum</code>ファイルを更新する必要がある。</p>
+<p>もし <code>go.sum</code> ファイルにモジュールの指定があるのにも関わらず、以下のようなエラー (<code>missing go.sum entry</code>) が出るときは、<code>go mod tidy</code> コマンドを実行して <code>go.sum</code> ファイルを更新する必要がある。</p>
 <div class="highlight"><pre><span></span><code>cmd/main.go:4:5:<span class="w"> </span>missing<span class="w"> </span>go.sum<span class="w"> </span>entry<span class="w"> </span><span class="k">for</span><span class="w"> </span>module<span class="w"> </span>providing<span class="w"> </span>package<span class="w"> </span>github.com/foo/foo-package<span class="w"> </span><span class="o">(</span>imported<span class="w"> </span>by<span class="w"> </span>github.com/hiroki-it/bar/cmd<span class="o">)</span><span class="p">;</span><span class="w"> </span>to<span class="w"> </span>add:
 <span class="w">        </span>go<span class="w"> </span>get<span class="w"> </span>github.com/hiroki-hasegawa/bar/cmd
 </code></pre></div>
@@ -34539,8 +34539,8 @@ go:<span class="w"> </span>upgraded<span class="w"> </span>&lt;ドメインを�
 </ul>
 </blockquote>
 <h4 id="-go">▼ <code>-go</code><a class="headerlink" href="#-go" title="Permanent link">&para;</a></h4>
-<p><code>go.mod</code>ファイルに記載のGoのバージョンを上書きしつつ、<code>go.sum</code>ファイルを更新する。</p>
-<p>ただし、<code>-go</code>オプションは推奨バージョンを設定できるだけで、これを守らない場合もある。</p>
+<p><code>go.mod</code> ファイルに記載のGoのバージョンを上書きしつつ、<code>go.sum</code> ファイルを更新する。</p>
+<p>ただし、<code>-go</code> オプションは推奨バージョンを設定できるだけで、これを守らない場合もある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>tidy<span class="w"> </span>-go<span class="w"> </span>&lt;バージョン&gt;
 </code></pre></div>
 <blockquote>
@@ -34549,7 +34549,7 @@ go:<span class="w"> </span>upgraded<span class="w"> </span>&lt;ドメインを�
 </ul>
 </blockquote>
 <h4 id="-v_1">▼ <code>-v</code><a class="headerlink" href="#-v_1" title="Permanent link">&para;</a></h4>
-<p><code>import</code>していないために<code>go.mod</code>ファイルから削除したモジュールを、標準出力に出力する。</p>
+<p><code>import</code> していないために <code>go.mod</code> ファイルから削除したモジュールを、標準出力に出力する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>tidy<span class="w"> </span>-v
 
 unused<span class="w"> </span>&lt;go.modファイルから削除したモジュール&gt;
@@ -34560,10 +34560,10 @@ unused<span class="w"> </span>&lt;go.modファイルから削除したモジュ�
 </ul>
 </blockquote>
 <h4 id="go-get">▼ go getとの使い分け<a class="headerlink" href="#go-get" title="Permanent link">&para;</a></h4>
-<p><code>go mod tidy</code>コマンドは、たとえ<code>-go</code>オプションを使用しても、インストールするモジュールのバージョンを完全には制御できない。</p>
+<p><code>go mod tidy</code> コマンドは、たとえ <code>-go</code> オプションを使用しても、インストールするモジュールのバージョンを完全には制御できない。</p>
 <p>(Goの思想的にも) できるだけ新しいバージョンを強制しようとするため、想定するバージョンよりも新しいモジュールをインストールしてしまう可能性がある。</p>
-<p>そのため、特定のバージョン (特にコミットIDでの指定) は<code>go get</code>コマンドでインストールする必要がある。</p>
-<p>ただ推奨としては、Goの思想に則り、<code>go mod tidy</code>コマンドを実行して常に新しいバージョンを使用する方が良い。</p>
+<p>そのため、特定のバージョン (特にコミットIDでの指定) は <code>go get</code> コマンドでインストールする必要がある。</p>
+<p>ただ推奨としては、Goの思想に則り、<code>go mod tidy</code> コマンドを実行して常に新しいバージョンを使用するほうが良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://blog.lufia.org/entry/2020/02/24/171513">https://blog.lufia.org/entry/2020/02/24/171513</a></li>
@@ -34572,7 +34572,7 @@ unused<span class="w"> </span>&lt;go.modファイルから削除したモジュ�
 <p><br></p>
 <h3 id="mod-verify">mod verify<a class="headerlink" href="#mod-verify" title="Permanent link">&para;</a></h3>
 <h4 id="mod-verify_1">▼ mod verifyとは<a class="headerlink" href="#mod-verify_1" title="Permanent link">&para;</a></h4>
-<p><code>go.sum</code>ファイルが正しいかどうかを検証する。</p>
+<p><code>go.sum</code> ファイルが正しいかどうかを検証する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>verify
 
 all<span class="w"> </span>modules<span class="w"> </span>verified
@@ -34584,12 +34584,12 @@ all<span class="w"> </span>modules<span class="w"> </span>verified
 </blockquote>
 <h4 id="but-does-not-contain-package">▼ <code>but does not contain package</code><a class="headerlink" href="#but-does-not-contain-package" title="Permanent link">&para;</a></h4>
 <p>インポートしたモジュールの依存先モジュールをダウンロードしたが、依存先モジュール内にモジュールがないことを表す。</p>
-<p><code>// indiret</code>で自動的に指定しているモジュールが新すぎる可能性がある。</p>
-<p>この場合、<code>// indiret</code>のモジュールを手動で変更する。</p>
+<p><code>// indiret</code> で自動的に指定しているモジュールが新すぎる可能性がある。</p>
+<p>この場合、<code>// indiret</code> のモジュールを手動で変更する。</p>
 <p><strong>＊例＊</strong></p>
-<p><code>// indiret</code>で指定した依存先モジュール (<code>go.module.io/foo-dependency</code>) のバージョンが<code>1.27</code>になっている。</p>
-<p>しかし、<code>go.module.io/foo-dependency</code> (<code>1.27</code>) には、<code>bar</code>モジュールがないためエラーになっている。</p>
-<p>この場合、<code>bar</code>モジュールがあるバージョンに手動で書き換える必要がある。</p>
+<p><code>// indiret</code> で指定した依存先モジュール (<code>go.module.io/foo-dependency</code>) のバージョンが <code>1.27</code> になっている。</p>
+<p>しかし、<code>go.module.io/foo-dependency</code> (<code>1.27</code>) には、<code>bar</code> モジュールがないためエラーになっている。</p>
+<p>この場合、<code>bar</code> モジュールがあるバージョンに手動で書き換える必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>verify
 
 go:<span class="w"> </span>finding<span class="w"> </span>module<span class="w"> </span><span class="k">for</span><span class="w"> </span>package<span class="w"> </span>go.module.io/foo-dependency
@@ -34605,8 +34605,8 @@ go:<span class="w"> </span>finding<span class="w"> </span>module<span class="w">
 <h3 id="mod-download">mod download<a class="headerlink" href="#mod-download" title="Permanent link">&para;</a></h3>
 <h4 id="mod-download_1">▼ mod downloadとは<a class="headerlink" href="#mod-download_1" title="Permanent link">&para;</a></h4>
 <ul>
-<li><code>import</code>で指定されているが<code>go get</code>コマンドでインストールされていない場合は、これをインストールする。</li>
-<li><code>import</code>で指定されているが<code>go.mod</code>ファイルと<code>go.sum</code>ファイルに定義がない場合は、これを追加する。</li>
+<li><code>import</code> で指定されているが <code>go get</code> コマンドでインストールされていない場合は、これをインストールする。</li>
+<li><code>import</code> で指定されているが <code>go.mod</code> ファイルと <code>go.sum</code> ファイルに定義がない場合は、これを追加する。</li>
 </ul>
 <blockquote>
 <ul>
@@ -34616,10 +34616,10 @@ go:<span class="w"> </span>finding<span class="w"> </span>module<span class="w">
 </blockquote>
 <p><br></p>
 <h2 id="02-02">02-02. モジュール管理系ファイル<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
-<h3 id="gomod"><code>go.mod</code>ファイル<a class="headerlink" href="#gomod" title="Permanent link">&para;</a></h3>
-<h4 id="gomod_1">▼ <code>go.mod</code>ファイルとは<a class="headerlink" href="#gomod_1" title="Permanent link">&para;</a></h4>
+<h3 id="gomod"><code>go.mod</code> ファイル<a class="headerlink" href="#gomod" title="Permanent link">&para;</a></h3>
+<h4 id="gomod_1">▼ <code>go.mod</code> ファイルとは<a class="headerlink" href="#gomod_1" title="Permanent link">&para;</a></h4>
 <p>アプリケーションで必要なモジュールのバージョンを設定する。</p>
-<p>モジュール内に<code>go.mod</code>ファイルがある場合、そこに記載のあるバージョンは最低限必要なバージョンになる。</p>
+<p>モジュール内に <code>go.mod</code> ファイルがある場合、そこに記載のあるバージョンは最低限必要なバージョンになる。</p>
 <p>基本的には、モジュールのURLやディレクトリ構成と同じにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">hiroki</span><span class="o">-</span><span class="nx">hasegawa</span><span class="o">/</span><span class="nx">foo</span><span class="o">-</span><span class="nx">repository</span>
 
@@ -34627,9 +34627,9 @@ go:<span class="w"> </span>finding<span class="w"> </span>module<span class="w">
 </code></pre></div>
 <h4 id="_5">▼ パブリックリポジトリから (リリース済み)<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>モジュール名とバージョンタグを使用して、パブリックリポジトリからリリース済みのモジュールをインポートする。</p>
-<p><code>go mod tidy</code>コマンドによって<code>// indirect</code>コメントのついたモジュールが実装される。</p>
+<p><code>go mod tidy</code> コマンドによって <code>// indirect</code> コメントのついたモジュールが実装される。</p>
 <p>これは、インポートしたモジュールではなく、インポートしているモジュールが依存しているモジュールである。</p>
-<p>注意点として、モジュール名は、使用したいモジュールの<code>go.mod</code>ファイルを参照すること。</p>
+<p>注意点として、モジュール名は、使用したいモジュールの <code>go.mod</code> ファイルを参照すること。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">hiroki</span><span class="o">-</span><span class="nx">hasegawa</span><span class="o">/</span><span class="nx">foo</span><span class="o">-</span><span class="nx">repository</span>
 
 <span class="k">go</span><span class="w"> </span><span class="mf">1.16</span>
@@ -34660,13 +34660,13 @@ go:<span class="w"> </span>finding<span class="w"> </span>module<span class="w">
 </blockquote>
 <h4 id="_6">▼ パブリックリポジトリから (開発中)<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>コミットIDやバージョンタグを使用して、パブリックリポジトリから開発中のモジュールをインポートする。</p>
-<p>この場合、<code>go get</code>コマンドで特定のコミットIDやバージョンタグを指定し、モジュールをインストールする。</p>
+<p>この場合、<code>go get</code> コマンドで特定のコミットIDやバージョンタグを指定し、モジュールをインストールする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>get<span class="w"> </span>github.com/foo@&lt;コミットID&gt;
 
 go:<span class="w"> </span>downloading<span class="w"> </span>github.com/foo<span class="w"> </span>v0.0.0-&lt;コミット日時のタイムスタンプ&gt;-&lt;コミットID&gt;
 go:<span class="w"> </span>added<span class="w"> </span>github.com/foo<span class="w"> </span>v0.0.0-&lt;コミット日時のタイムスタンプ&gt;-&lt;コミットID&gt;
 </code></pre></div>
-<p><code>go get</code>コマンドは、<code>go.mod</code>ファイルにインポート定義を追加する。</p>
+<p><code>go get</code> コマンドは、<code>go.mod</code> ファイルにインポート定義を追加する。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">hiroki</span><span class="o">-</span><span class="nx">hasegawa</span><span class="o">/</span><span class="nx">foo</span><span class="o">-</span><span class="nx">repository</span>
 
 <span class="k">go</span><span class="w"> </span><span class="mf">1.16</span>
@@ -34689,7 +34689,7 @@ github.com/foo@v1.0.0:<span class="w"> </span>verifying<span class="w"> </span>m
 <span class="w">    </span>not<span class="w"> </span>found:<span class="w"> </span>github.com/foo@v1.0.0:<span class="w"> </span>invalid<span class="w"> </span>version:<span class="w"> </span>git<span class="w"> </span>ls-remote<span class="w"> </span>-q<span class="w"> </span>origin<span class="w"> </span><span class="k">in</span><span class="w"> </span>/tmp/gopath/pkg/mod/cache/vcs/*****:<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>status<span class="w"> </span><span class="m">128</span>:
 <span class="w">        </span>fatal:<span class="w"> </span>unable<span class="w"> </span>to<span class="w"> </span>look<span class="w"> </span>up<span class="w"> </span>github.com/foo.git<span class="w"> </span><span class="o">(</span>port<span class="w"> </span><span class="m">9418</span><span class="o">)</span><span class="w"> </span><span class="o">(</span>Name<span class="w"> </span>or<span class="w"> </span>service<span class="w"> </span>not<span class="w"> </span>known<span class="o">)</span>
 </code></pre></div>
-<p><code>GOPRIVATE</code>変数にプライベートリポジトリのURLを設定することで、インポートできるようになる。</p>
+<p><code>GOPRIVATE</code> 変数にプライベートリポジトリのURLを設定することで、インポートできるようになる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>env<span class="w"> </span>-w<span class="w"> </span><span class="nv">GOPRIVATE</span><span class="o">=</span>github.com/foo.git,github.com/bar.git,...
 </code></pre></div>
 <blockquote>
@@ -34715,9 +34715,9 @@ github.com/foo@v1.0.0:<span class="w"> </span>verifying<span class="w"> </span>m
 
 <span class="k">go</span><span class="w"> </span><span class="mf">1.16</span>
 </code></pre></div>
-<p>この場合、パブリックリポジトリ上での自身のリポジトリからインポートせずに、<code>replace</code>関数を使用してインポートする必要がある。</p>
+<p>この場合、パブリックリポジトリ上での自身のリポジトリからインポートせずに、<code>replace</code> 関数を使用してインポートする必要がある。</p>
 <p>自前共有の全モジュールでモジュール名を置換する必要はなく、プロジェクトのルートパスについてのみ定義すれば良い。</p>
-<p>パス実際、<code>unknown revision</code>のエラーで、バージョンを見つけられない。</p>
+<p>パス実際、<code>unknown revision</code> のエラーで、バージョンを見つけられない。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/hnishi/items/a9217249d7832ed2c035">https://qiita.com/hnishi/items/a9217249d7832ed2c035</a></li>
@@ -34739,10 +34739,10 @@ github.com/foo@v1.0.0:<span class="w"> </span>verifying<span class="w"> </span>m
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="gosum"><code>go.sum</code>ファイル<a class="headerlink" href="#gosum" title="Permanent link">&para;</a></h3>
-<h4 id="gosum_1">▼ <code>go.sum</code>ファイルとは<a class="headerlink" href="#gosum_1" title="Permanent link">&para;</a></h4>
-<p>PHPにおける<code>composer.lock</code>ファイルに相当する。</p>
-<p><code>go.mod</code>ファイルによって実際にインストールされたモジュールが自動的に実装される。</p>
+<h3 id="gosum"><code>go.sum</code> ファイル<a class="headerlink" href="#gosum" title="Permanent link">&para;</a></h3>
+<h4 id="gosum_1">▼ <code>go.sum</code> ファイルとは<a class="headerlink" href="#gosum_1" title="Permanent link">&para;</a></h4>
+<p>PHPにおける <code>composer.lock</code> ファイルに相当する。</p>
+<p><code>go.mod</code> ファイルによって実際にインストールされたモジュールが自動的に実装される。</p>
 <p>モジュールごとのチェックサムが記録されるため、前回のインストール時と比較して、モジュールに変更があるか否かを検知できる。</p>
 <p><br></p>
 
@@ -34765,7 +34765,7 @@ github.com/foo@v1.0.0:<span class="w"> </span>verifying<span class="w"> </span>m
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年1月22日 22:47:19 JST">2026-01-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

@@ -32736,7 +32736,7 @@
 <td>Kubernetes Secret</td>
 <td>コンテナが使用する非公開設定 (例：DB認証情報)</td>
 <td>Kubernetesリポジトリ内のSOPS</td>
-<td>ファイルや環境変数として、コンテナに設定を渡せる。設定をbase64方式エンコードし、管理する。機密な設定を平文で管理することは危険であり、Secretで管理する方が良い。</td>
+<td>ファイルや環境変数として、コンテナに設定を渡せる。設定をbase64方式エンコードし、管理する。機密な設定を平文で管理することは危険であり、Secretで管理するほうが良い。</td>
 </tr>
 </tbody>
 </table>
@@ -32775,10 +32775,10 @@
 <h3 id="cd">CD設定<a class="headerlink" href="#cd" title="Permanent link">&para;</a></h3>
 <p>CD設定のコードは、マイクロサービス間で統一するために、共有リポジトリに配置しましょう。</p>
 <p>ArgoCDを採用している場合、ArgoCDのルートApplicationをプラットフォームリポジトリ、各チームの親Applicationを共有リポジトに配置します。</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CD設定.drawio (1).png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CD設定.drawio (1).png" />.png)</p>
+<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CD設定.drawio (1).png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CD設定.drawio (1).png" />.png)</p>
 <h3 id="rpc-api">RPC-API開発ツール<a class="headerlink" href="#rpc-api" title="Permanent link">&para;</a></h3>
 <p>RPC-API開発ツールのコードは、マイクロサービス間で統一するために、共有リポジトリに配置しましょう。</p>
-<p>gRPCでは、クライアントとサーバーの両方で、サービス定義ファイル (<code>proto</code>ファイル) から作成したpbファイルを使用しなければなりません。</p>
+<p>gRPCでは、クライアントとサーバーの両方で、サービス定義ファイル (<code>proto</code> ファイル) から作成したpbファイルを使用しなければなりません。</p>
 <p>各リポジトリでpbファイルを作成するような運用であると、サービス定義ファイルの変更時に、各リポジトリでpbファイルやAPI仕様書を作成しなければならず、管理が煩雑になります。</p>
 <p>そこで、サービス定義ファイルは共有リポジトリで提供し、またサービス定義ファイルから必要なものを自動的に作成できるようにします。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-API開発.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/6b14a262-71fb-4252-b426-b771270bf369.png" /></p>
@@ -32997,12 +32997,12 @@ end
 <p>CDNを採用している場合は、デプロイ前後で必要な静的ファイルが変わっているかもしれません。</p>
 <p>そのため、ArgoCDによるフロントエンドアプリケーションのデプロイ後に、静的ファイルのキャッシュを削除すべきです。</p>
 <p>また、E2Eツール (例：Playwright) を使用して、実際のユーザーを模した一連の操作を実施し、全てのコンポーネントを対象としたシステムテストを実施すべきです。</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (フロントエンド).drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (フロントエンド).drawio.png" /></p>
+<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (フロントエンド).drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (フロントエンド).drawio.png" /></p>
 <h3 id="bff">BFF<a class="headerlink" href="#bff" title="Permanent link">&para;</a></h3>
 <p>本記事では、BFFにNginxを採用しています。</p>
 <p>イメージビルド時に、Nginxのベースイメージにモジュール (例：計装モジュール) をインストールする必要があります。</p>
 <p>CI/CDパイプラインは、以下の要素からなります。</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF).drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF).drawio.png" /></p>
+<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF).drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF).drawio.png" /></p>
 <h3 id="_12">マイクロサービス<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスのCI/CDパイプラインは、以下の要素からなります。</p>
 <ul>
@@ -33013,7 +33013,7 @@ end
 <p>デプロイの前後で、マイクロサービスに新しいカラムへの参照ロジックを追加しているかもしれません。</p>
 <p>そのため、ArgoCDによるマイクロサービスのデプロイ前に、DBマイグレーションを実行すべきです。</p>
 <p>また、ロードテストツール (例：Gatling) を使用して、マイクロサービスアーキテクチャ全体のロードテスト / 回帰テスト、を実施すべきです。</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (マイクロサービス) .drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (マイクロサービス) .drawio.png" /></p>
+<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (マイクロサービス) .drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (マイクロサービス) .drawio.png" /></p>
 <h3 id="sre">SREツール<a class="headerlink" href="#sre" title="Permanent link">&para;</a></h3>
 <p>SREツールは、OSSとしてビルド済みイメージが提供されていることが多いです。</p>
 <p>CI/CDパイプラインは、以下の要素からなります。</p>
@@ -33021,7 +33021,7 @@ end
 <li>KubernetesリポジトリのCIパイプライン (１行目)</li>
 <li>CDパイプライン (２行目)</li>
 </ul>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF) .drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF) .drawio.png" /></p>
+<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF) .drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF) .drawio.png" /></p>
 <h2 id="gitops_1">リポジトリ分割パターンに基づくGitOpsパターン<a class="headerlink" href="#gitops_1" title="Permanent link">&para;</a></h2>
 <h3 id="gitops_2">ポリレポベースのGitOpsパターン<a class="headerlink" href="#gitops_2" title="Permanent link">&para;</a></h3>
 <p>ポリレポを採用した場合、各リポジトリにGitOpsパターンのCIパイプラインとCDパイプラインがあります。</p>
@@ -33243,7 +33243,7 @@ end
 </tr>
 <tr>
 <td>Kubernetes Pod PullPolicyオプション</td>
-<td>コンテナ作成のたびにイメージをプルすると、イメージレジストリに負荷がかかる。そこで、<code>.spec.containers[*].imagePullPolicy</code>キーにIfNotPresentを使用し、Node上にイメージのキャッシュがない場合だけプルできるようにする。Kubernetesでは、一度プルしたコンテナイメージを基本的に削除しないため、キャッシュとして再利用できる。デフォルトでは、コンテナイメージのキャッシュがあれば、イメージをプルせずにキャッシュを使用してくれる。</td>
+<td>コンテナ作成のたびにイメージをプルすると、イメージレジストリに負荷がかかる。そこで、<code>.spec.containers[*].imagePullPolicy</code> キーにIfNotPresentを使用し、Node上にイメージのキャッシュがない場合だけプルできるようにする。Kubernetesでは、一度プルしたコンテナイメージを基本的に削除しないため、キャッシュとして再利用できる。デフォルトでは、コンテナイメージのキャッシュがあれば、イメージをプルせずにキャッシュを使用してくれる。</td>
 </tr>
 </tbody>
 </table>
@@ -33306,11 +33306,11 @@ end
 <tbody>
 <tr>
 <td>Kubernetes Pod PreStopオプション</td>
-<td>コンテナの削除後にPodを終了できるように、ユーザーがPodの<code>.spec.containers[*].lifecycle.preStop</code>キーに任意の秒数を設定する。コンテナが待機処理 (例：<code>sleep</code>コマンド) を実行できるようになる。</td>
+<td>コンテナの削除後にPodを終了できるように、ユーザーがPodの <code>.spec.containers[*].lifecycle.preStop</code> キーに任意の秒数を設定する。コンテナが待機処理 (例：<code>sleep</code> コマンド) を実行できるようになる。</td>
 </tr>
 <tr>
 <td>Kubernetes Pod TerminationGracefulPeriodSecondsオプション</td>
-<td>Serviceとkube-proxyの処理後にPodを終了できるように、ユーザーがPodの<code>.spec.terminationGracePeriodSeconds</code>キーに任意の秒数を設定する。Podの削除に伴うServiceとkube-proxyの処理の完了を待機できるようになる。なお、<code>.spec.terminationGracePeriodSeconds</code>の秒数が長すぎると、Podの終了に時間がかかりすぎるようになり、Podの更新やAWS EKSクラスターのアップグレードに時間に影響が出る。</td>
+<td>Serviceとkube-proxyの処理後にPodを終了できるように、ユーザーがPodの <code>.spec.terminationGracePeriodSeconds</code> キーに任意の秒数を設定する。Podの削除に伴うServiceとkube-proxyの処理の完了を待機できるようになる。なお、<code>.spec.terminationGracePeriodSeconds</code> の秒数が長すぎると、Podの終了に時間がかかりすぎるようになり、Podの更新やAWS EKSクラスターのアップグレードに時間に影響が出る。</td>
 </tr>
 </tbody>
 </table>
@@ -33438,8 +33438,8 @@ end
 </tr>
 <tr>
 <td>Graceful Shutdown</td>
-<td>自身の作成したNodeを削除する時に、GracefulShutdownを実行する。</td>
-<td>デフォルトではGraceful Shutdownを実行できない。EC2 UserDataで、<code>kubelet-config.json</code>にShutdownGracePeriodとShutdownGracePeriodCriticalPodsの設定が必要である。</td>
+<td>自身の作成したNodeを削除するときに、GracefulShutdownを実行する。</td>
+<td>デフォルトではGraceful Shutdownを実行できない。EC2 UserDataで、<code>kubelet-config.json</code> にShutdownGracePeriodとShutdownGracePeriodCriticalPodsの設定が必要である。</td>
 </tr>
 <tr>
 <td>料金最適化</td>
@@ -33576,7 +33576,7 @@ end
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月2日 14:04:19 JST">2026-02-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

@@ -34042,7 +34042,7 @@
 <p><br></p>
 <h3 id="_3">その他<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="connect-gateway">▼ connect-gateway<a class="headerlink" href="#connect-gateway" title="Permanent link">&para;</a></h4>
-<p>Google Cloud上で<code>kubectl</code>コマンドを実行して各クラウドプロバイダー上のGoogle Anthos GKE Clusterのkube-apiserverにリクエストを送信する時に、各クラウドプロバイダーごとのAPIの違いを吸収してくれる。</p>
+<p>Google Cloud上で <code>kubectl</code> コマンドを実行して各クラウドプロバイダー上のGoogle Anthos GKE Clusterのkube-apiserverにリクエストを送信するときに、各クラウドプロバイダーごとのAPIの違いを吸収してくれる。</p>
 <p><img alt="anthos_connect-gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_connect-gateway.png" /></p>
 <blockquote>
 <ul>
@@ -34104,16 +34104,16 @@
 <p><br></p>
 <h3 id="_4">ワークステーション<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ ワークステーションとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>Google Anthos Clusterの作成時やアップグレード時に、<code>bmctl</code>コマンドはワークステーション (仮想サーバー) を構築し、ワークステーション上でKindを起動する。</p>
+<p>Google Anthos Clusterの作成時やアップグレード時に、<code>bmctl</code> コマンドはワークステーション (仮想サーバー) を構築し、ワークステーション上でKindを起動する。</p>
 <p>ベアメタルであるため、自前で仮想サーバー (例：VMware) を作成する必要がある。</p>
 <p>Kindはコンテナを構築し、そのコンテナ内でブートストラップClusterを作成できるか否かを検証することにより、Google Anthos Clusterの事前検証する。</p>
-<p>Kindがコンテナを構築するために、Google Anthos Clusterの構築前に、<code>docker</code>プロセスを起動しておく必要がある。</p>
+<p>Kindがコンテナを構築するために、Google Anthos Clusterの構築前に、<code>docker</code> プロセスを起動しておく必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>docker
 </code></pre></div>
 <h4 id="cluster_2">▼ ブートストラップCluster<a class="headerlink" href="#cluster_2" title="Permanent link">&para;</a></h4>
 <p>Kindがコンテナ内で作成する仮想的なGoogle Anthos Clusterのこと。</p>
 <p>VClusterを使用して、仮想的なGoogle Anthos Clusterを作成している。</p>
-<p><code>~/baremetal/bmctl-workspace/foo-anthos-cluster/.kindkubeconfig</code>ファイルを指定することにより、ブートストラップClusterのkube-apiserverにリクエストを送信できる。</p>
+<p><code>~/baremetal/bmctl-workspace/foo-anthos-cluster/.kindkubeconfig</code> ファイルを指定することにより、ブートストラップClusterのkube-apiserverにリクエストを送信できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--kubeconfig<span class="w"> </span>~/baremetal/bmctl-workspace/.kindkubeconfig
@@ -34132,7 +34132,7 @@
 <h2 id="03-bmctl">03. bmctlコマンド<a class="headerlink" href="#03-bmctl" title="Permanent link">&para;</a></h2>
 <h3 id="check-preflight">check preflight<a class="headerlink" href="#check-preflight" title="Permanent link">&para;</a></h3>
 <h4 id="check-preflight_1">▼ check preflightとは<a class="headerlink" href="#check-preflight_1" title="Permanent link">&para;</a></h4>
-<p><code>bmctl upgrade</code>コマンドの実行時に実施されるプリフライトチェックのみを実施する。</p>
+<p><code>bmctl upgrade</code> コマンドの実行時に実施されるプリフライトチェックのみを実施する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>~/baremetal/bmctl<span class="w"> </span>check<span class="w"> </span>preflight<span class="w"> </span>-c<span class="w"> </span>foo-anthos-cluster<span class="w"> </span>-n<span class="w"> </span>foo-namespace
 </code></pre></div>
 <h3 id="update">update<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
@@ -34176,7 +34176,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月27日 16:57:47 JST">2025-05-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

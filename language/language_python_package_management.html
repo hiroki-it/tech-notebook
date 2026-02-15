@@ -12813,7 +12813,7 @@
   <a href="#requirementstxt" class="md-nav__link">
     <span class="md-ellipsis">
       
-        requirements.txtファイル
+        requirements.txt ファイル
       
     </span>
   </a>
@@ -12824,7 +12824,7 @@
   <a href="#pipconf" class="md-nav__link">
     <span class="md-ellipsis">
       
-        pip.confファイル
+        pip.conf ファイル
       
     </span>
   </a>
@@ -13120,7 +13120,7 @@
   <a href="#requirementsin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        requirements.inファイル
+        requirements.in ファイル
       
     </span>
   </a>
@@ -33149,7 +33149,7 @@
   <a href="#requirementstxt" class="md-nav__link">
     <span class="md-ellipsis">
       
-        requirements.txtファイル
+        requirements.txt ファイル
       
     </span>
   </a>
@@ -33160,7 +33160,7 @@
   <a href="#pipconf" class="md-nav__link">
     <span class="md-ellipsis">
       
-        pip.confファイル
+        pip.conf ファイル
       
     </span>
   </a>
@@ -33456,7 +33456,7 @@
   <a href="#requirementsin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        requirements.inファイル
+        requirements.in ファイル
       
     </span>
   </a>
@@ -33628,7 +33628,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="requirementstxt"><code>requirements.txt</code>ファイル<a class="headerlink" href="#requirementstxt" title="Permanent link">&para;</a></h3>
+<h3 id="requirementstxt"><code>requirements.txt</code> ファイル<a class="headerlink" href="#requirementstxt" title="Permanent link">&para;</a></h3>
 <p>要件とするパッケージのバージョンを指定する。</p>
 <div class="highlight"><pre><span></span><code>flask==3.0.2
 flask-bootstrap==3.3.7.1
@@ -33637,8 +33637,8 @@ flask-json==0.4.0
 ...
 </code></pre></div>
 <p><br></p>
-<h3 id="pipconf"><code>pip.conf</code>ファイル<a class="headerlink" href="#pipconf" title="Permanent link">&para;</a></h3>
-<p><code>pip</code>コマンドのオプションを設定する。</p>
+<h3 id="pipconf"><code>pip.conf</code> ファイル<a class="headerlink" href="#pipconf" title="Permanent link">&para;</a></h3>
+<p><code>pip</code> コマンドのオプションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[global]</span>
 <span class="na">break-system-packages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
 <span class="na">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">60</span>
@@ -33695,7 +33695,7 @@ wagtail<span class="w"> </span><span class="m">2</span>.6.1<span class="w"> </sp
 </blockquote>
 <h4 id="-upgrade">▼ --upgrade<a class="headerlink" href="#-upgrade" title="Permanent link">&para;</a></h4>
 <p>pip自身を含む、指定したパッケージをアップグレードする。</p>
-<p>アップグレード後は、<code>pip3 check</code>コマンドで依存関係が正しいかを確認し、<code>pip3 freeze</code>コマンドで要件ファイルも更新する必要がある。</p>
+<p>アップグレード後は、<code>pip3 check</code> コマンドで依存関係が正しいかを確認し、<code>pip3 freeze</code> コマンドで要件ファイルも更新する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>&lt;パッケージ名&gt;
 
 <span class="c1"># 依存関係を確認する。</span>
@@ -33810,13 +33810,13 @@ Required-by:<span class="w"> </span>sphinxcontrib.sqltable,<span class="w"> </sp
 <h3 id="uninstall">uninstall<a class="headerlink" href="#uninstall" title="Permanent link">&para;</a></h3>
 <h4 id="uninstall_1">▼ uninstallとは<a class="headerlink" href="#uninstall_1" title="Permanent link">&para;</a></h4>
 <p>指定したパッケージをアンインストールする。</p>
-<p>キャッシュが残っているので、<code>pip3 cache remove</code>コマンドで指定したパッケージのキャッシュも削除しておく。</p>
+<p>キャッシュが残っているので、<code>pip3 cache remove</code> コマンドで指定したパッケージのキャッシュも削除しておく。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip3<span class="w"> </span>uninstall<span class="w"> </span>-y<span class="w"> </span>&lt;パッケージ名&gt;
 
 $<span class="w"> </span>pip3<span class="w"> </span>cache<span class="w"> </span>remove<span class="w"> </span>&lt;パッケージ名&gt;
 </code></pre></div>
-<p><code>uninstall.txt</code>ファイルを元にパッケージをアンインストールもできる。</p>
-<p>キャッシュが残っているので、<code>pip3 cache purge</code>コマンドでキャッシュも全て削除しておく。</p>
+<p><code>uninstall.txt</code> ファイルを元にパッケージをアンインストールもできる。</p>
+<p>キャッシュが残っているので、<code>pip3 cache purge</code> コマンドでキャッシュも全て削除しておく。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip3<span class="w"> </span>uninstall<span class="w"> </span>-y<span class="w"> </span>-r<span class="w"> </span>uninstall.txt
 
 $<span class="w"> </span>pip3<span class="w"> </span>cache<span class="w"> </span>purge
@@ -33835,16 +33835,16 @@ $<span class="w"> </span>pip3<span class="w"> </span>cache<span class="w"> </spa
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="requirementsin"><code>requirements.in</code>ファイル<a class="headerlink" href="#requirementsin" title="Permanent link">&para;</a></h3>
-<p><code>requirements.txt</code>ファイルの元になるファイル。</p>
-<p>記法は<code>requirements.txt</code>ファイルと同じである。</p>
+<h3 id="requirementsin"><code>requirements.in</code> ファイル<a class="headerlink" href="#requirementsin" title="Permanent link">&para;</a></h3>
+<p><code>requirements.txt</code> ファイルの元になるファイル。</p>
+<p>記法は <code>requirements.txt</code> ファイルと同じである。</p>
 <div class="highlight"><pre><span></span><code>flask==3.0.2
 flask-bootstrap==3.3.7.1
 flask-json==0.4.0
 
 ...
 </code></pre></div>
-<p><code>pip-compile</code>コマンドを実行すると、<code>requirements.txt</code>ファイルを作成できる。</p>
+<p><code>pip-compile</code> コマンドを実行すると、<code>requirements.txt</code> ファイルを作成できる。</p>
 <div class="highlight"><pre><span></span><code>#
 # This file is autogenerated by pip-compile with Python 3.13
 # by the following command:
@@ -33907,7 +33907,7 @@ flask-json==0.4.0 \
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年3月30日 19:07:41 JST">2025-03-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

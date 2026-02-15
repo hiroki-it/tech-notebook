@@ -31122,19 +31122,19 @@
   <a href="#data" class="md-nav__link">
     <span class="md-ellipsis">
       
-        dataディレクトリ
+        data ディレクトリ
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="dataディレクトリ">
+    <nav class="md-nav" aria-label="data ディレクトリ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#data_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ dataディレクトリとは
+        ▼ data ディレクトリとは
       
     </span>
   </a>
@@ -33378,19 +33378,19 @@
   <a href="#data" class="md-nav__link">
     <span class="md-ellipsis">
       
-        dataディレクトリ
+        data ディレクトリ
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="dataディレクトリ">
+    <nav class="md-nav" aria-label="data ディレクトリ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#data_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ dataディレクトリとは
+        ▼ data ディレクトリとは
       
     </span>
   </a>
@@ -33794,8 +33794,8 @@
 <h3 id="prometheus_1">prometheusサーバーとは<a class="headerlink" href="#prometheus_1" title="Permanent link">&para;</a></h3>
 <p>メトリクスの元になるデータポイントを収集し、管理する。</p>
 <p>またPromQLに基づいて、データポイントからメトリクスを分析できるようにする。</p>
-<p><code>9090</code>番ポートで、メトリクスの元になるデータポイントをプルし、加えてGrafanaのPromQLによるアクセスを待ち受ける。</p>
-<p>例えば、prometheus-operatorを使用した場合は、各コンポーネントのデフォルト値は、<code>/etc/prometheus/prometheus.yml</code>ファイルで定義する。</p>
+<p><code>9090</code> 番ポートで、メトリクスの元になるデータポイントをプルし、加えてGrafanaのPromQLによるアクセスを待ち受ける。</p>
+<p>例えば、prometheus-operatorを使用した場合は、各コンポーネントのデフォルト値は、<code>/etc/prometheus/prometheus.yml</code> ファイルで定義する。</p>
 <blockquote>
 <ul>
 <li><a href="https://knowledge.sakura.ad.jp/27501/#Prometheus_Server">https://knowledge.sakura.ad.jp/27501/#Prometheus_Server</a></li>
@@ -33808,8 +33808,8 @@
 <p>監視対象からデータポイントを定期的に収集する。</p>
 <p><br></p>
 <h3 id="_3">設定ファイル<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>設定ファイルは<code>yaml</code>ファイルで定義する。セットアップ方法によって設定ファイルが配置されるディレクトリは異なる。</p>
-<p>例えば、prometheus-operatorを使用した場合は、prometheusコンテナの<code>/etc/prometheus/rules</code>ディレクトリ配下に配置される。</p>
+<p>設定ファイルは <code>yaml</code> ファイルで定義する。セットアップ方法によって設定ファイルが配置されるディレクトリは異なる。</p>
+<p>例えば、prometheus-operatorを使用した場合は、prometheusコンテナの <code>/etc/prometheus/rules</code> ディレクトリ配下に配置される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>-1<span class="w"> </span>/etc/prometheus
 
 certs/
@@ -33857,12 +33857,12 @@ prometheus-prometheus-kube-prometheus-prometheus.yaml
 <p><br></p>
 <h2 id="02-04">02-04. ローカルストレージ<a class="headerlink" href="#02-04" title="Permanent link">&para;</a></h2>
 <h3 id="_5">ローカルストレージとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>Prometheusは、<code>data</code>ディレクトリ配下をTSDBとして、収集した全てのメトリクスを保管する。</p>
+<p>Prometheusは、<code>data</code> ディレクトリ配下をTSDBとして、収集した全てのメトリクスを保管する。</p>
 <p><br></p>
-<h3 id="data"><code>data</code>ディレクトリ<a class="headerlink" href="#data" title="Permanent link">&para;</a></h3>
-<h4 id="data_1">▼ <code>data</code>ディレクトリとは<a class="headerlink" href="#data_1" title="Permanent link">&para;</a></h4>
-<p>Prometheusは、収集したデータポイントをデフォルトで<code>2</code>時間ごとにブロック化し、<code>data</code>ディレクトリ配下に配置する。</p>
-<p>現在処理中のブロックをメモリ上に保持し、同時にストレージの<code>/data/wal</code>ディレクトリにもバックアップとして保管する (補足としてRDBMSでは、これをジャーナルファイルという) 。</p>
+<h3 id="data"><code>data</code> ディレクトリ<a class="headerlink" href="#data" title="Permanent link">&para;</a></h3>
+<h4 id="data_1">▼ <code>data</code> ディレクトリとは<a class="headerlink" href="#data_1" title="Permanent link">&para;</a></h4>
+<p>Prometheusは、収集したデータポイントをデフォルトで <code>2</code> 時間ごとにブロック化し、<code>data</code> ディレクトリ配下に配置する。</p>
+<p>現在処理中のブロックをメモリ上に保持し、同時にストレージの <code>/data/wal</code> ディレクトリにもバックアップとして保管する (補足としてRDBMSでは、これをジャーナルファイルという) 。</p>
 <p>これにより、Prometheusで障害が発生し、メモリ上のブロックが削除されてしまっても、ストレージからブロックを復元できる。</p>
 <blockquote>
 <ul>
@@ -33886,7 +33886,7 @@ prometheus-prometheus-kube-prometheus-prometheus.yaml
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── checkpoint.00000001/</span>
 <span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── 00000000</span>
 </code></pre></div>
-<p>Prometheusの稼働するコンテナやNodeに接続すれば、<code>data</code>ディレクトリを確認できる。</p>
+<p>Prometheusの稼働するコンテナやNodeに接続すれば、<code>data</code> ディレクトリを確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>prometheus<span class="w"> </span>-n<span class="w"> </span>prometheus<span class="w"> </span>--<span class="w"> </span>sh
 
 /data<span class="w"> </span>$<span class="w"> </span>ls<span class="w"> </span>-la
@@ -33911,7 +33911,7 @@ drwxrwsr-x<span class="w">    </span><span class="m">3</span><span class="w"> </
 <p><br></p>
 <h3 id="tsdb">独自TSDB<a class="headerlink" href="#tsdb" title="Permanent link">&para;</a></h3>
 <h4 id="tsdb_1">▼ 独自TSDBとは<a class="headerlink" href="#tsdb_1" title="Permanent link">&para;</a></h4>
-<p>Prometheusでは、TSDB (<code>data</code>ディレクトリ配下) を採用している。</p>
+<p>Prometheusでは、TSDB (<code>data</code> ディレクトリ配下) を採用している。</p>
 <h4 id="_7">▼ データソース型モデル (仮定)<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>データソース型モデルとメトリクス型モデルがあり、Prometheusではいずれを採用しているのかの記載が見つかっていない。</p>
 <p>そのため、データソース型モデルと仮定してテーブル例を示す。</p>
@@ -33979,9 +33979,9 @@ drwxrwsr-x<span class="w">    </span><span class="m">3</span><span class="w"> </
 </blockquote>
 <h4 id="_11">▼ リモートストレージの障害時の書き込み待機<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>リモートストレージで障害が起こっている場合、キューにメトリクス (WALファイル) がいっぱいになったあと、メトリクスのキューイングを待機する。</p>
-<p><code>2</code>時間はWALファイルのキューイングを待機し、リモートストレージの障害が回復次第、リモートストレージへの書き込みとWALファイルのキューイングを再開する。</p>
+<p><code>2</code> 時間はWALファイルのキューイングを待機し、リモートストレージの障害が回復次第、リモートストレージへの書き込みとWALファイルのキューイングを再開する。</p>
 <p>タイムスタンプはそのままなので、リモートストレージ上ではメトリクスを欠損なく永続化できる。</p>
-<p><code>2</code>時間が過ぎると、WALファイルは圧縮されて失われる。</p>
+<p><code>2</code> 時間が過ぎると、WALファイルは圧縮されて失われる。</p>
 <blockquote>
 <ul>
 <li><a href="https://prometheus.io/docs/practices/remote_write/#remote-write-characteristics">https://prometheus.io/docs/practices/remote_write/#remote-write-characteristics</a></li>
@@ -33989,7 +33989,7 @@ drwxrwsr-x<span class="w">    </span><span class="m">3</span><span class="w"> </
 </blockquote>
 <p><br></p>
 <h3 id="_12">性能設計<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p>Prometheusは、現在処理中のブロックをメモリ上に保持し、同時にストレージの<code>/data/wal</code>ディレクトリにもバックアップとして保管する</p>
+<p>Prometheusは、現在処理中のブロックをメモリ上に保持し、同時にストレージの <code>/data/wal</code> ディレクトリにもバックアップとして保管する</p>
 <p>そのため、十分量のメモリの割り当てが必要である。</p>
 <blockquote>
 <ul>
@@ -34091,7 +34091,7 @@ $<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>/v
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月4日 17:17:19 JST">2025-11-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

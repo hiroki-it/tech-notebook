@@ -33723,7 +33723,7 @@
 <h2 id="02">02. ユニットテスト (単体テスト)<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">ユニットテストとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>『単体テスト』ともいう。</p>
-<p>機能追加/変更を含むコンポーネントのみが単体で正しく動作するかを検証する。</p>
+<p>機能追加/変更を含むコンポーネントのみが単体でまさしく動作するかを検証する。</p>
 <p>ホワイトボックステストのユニットテストとは意味合いが異なることに注意する。</p>
 <p><img alt="testing_blackbox-test_unit_integration_system" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_blackbox-test_unit_integration_system.png" /></p>
 <blockquote>
@@ -33821,7 +33821,7 @@
 <tbody>
 <tr>
 <td>正常系</td>
-<td>システムコンポーネント間で正しく連携できているか</td>
+<td>システムコンポーネント間でまさしく連携できているか</td>
 </tr>
 </tbody>
 </table>
@@ -33847,7 +33847,7 @@
 <p><br></p>
 <h2 id="04">04. 回帰テスト<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_18">回帰テストとは<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
-<p>既存コンポーネントの機能テストと非機能テストを改めて実施する。</p>
+<p>既存コンポーネントの機能テストと非機能テストをあらためて実施する。</p>
 <p>機能追加/変更を含むコンポーネントが既存のコンポーネントに影響を与えていないか (既存の機能でデグレーションが起こっていないか) を検証する。</p>
 <p><img alt="p496" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p496.jpg" /></p>
 <blockquote>
@@ -33875,12 +33875,12 @@
 <tr>
 <td>UT</td>
 <td>-</td>
-<td>コントロールプレーンのPod (<code>istio-deployment</code>というDeployment配下のPod) が正常である。『Podが<code>Running</code>フェーズかつ<code>Ready</code>コンディションであること』をPodの正常とみなす。例えば、<code>kubectl get</code>コマンドを実行することにより、正常か否かを確認する。</td>
+<td>コントロールプレーンのPod (<code>istio-deployment</code> というDeployment配下のPod) が正常である。『Podが <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』をPodの正常とみなす。例えば、<code>kubectl get</code> コマンドを実行することにより、正常か否かを確認する。</td>
 </tr>
 <tr>
 <td>IT</td>
 <td>Istio + <br>Kubernetes</td>
-<td>istio.io/revキーのあるNamespaceのPodに、istio-proxyが挿入されている。例えば、<code>kubectl get</code>コマンドで<code>-o jsonpath</code>オプションを有効化し、確認する。</td>
+<td>istio.io/revキーのあるNamespaceのPodに、istio-proxyが挿入されている。例えば、<code>kubectl get</code> コマンドで <code>-o jsonpath</code> オプションを有効化し、確認する。</td>
 </tr>
 </tbody>
 </table>
@@ -33898,7 +33898,7 @@
 <tr>
 <td>UT</td>
 <td>-</td>
-<td>Podが正常である。『Podが<code>Running</code>フェーズかつ<code>Ready</code>コンディションであること』をPodの正常とみなす。例えば、<code>kubectl get</code>コマンドを実行することにより、正常か否かを確認する。</td>
+<td>Podが正常である。『Podが <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』をPodの正常とみなす。例えば、<code>kubectl get</code> コマンドを実行することにより、正常か否かを確認する。</td>
 </tr>
 <tr>
 <td>UT</td>
@@ -33908,7 +33908,7 @@
 <tr>
 <td>IT</td>
 <td>Prometheus + <br>VictoriaMetrics + <br>Kubernetes</td>
-<td>Prometheusからメトリクスが送信されてきており、ダッシュボードでメトリクスを確認できる。例えば、メトリクスの<code>cluster</code>ラベルから、実行環境名 (dev、stg、prd) を確認する。</td>
+<td>Prometheusからメトリクスが送信されてきており、ダッシュボードでメトリクスを確認できる。例えば、メトリクスの <code>cluster</code> ラベルから、実行環境名 (dev、stg、prd) を確認する。</td>
 </tr>
 </tbody>
 </table>
@@ -33926,7 +33926,7 @@
 <tr>
 <td>UT</td>
 <td>-</td>
-<td>Podが正常である。『Podが<code>Running</code>フェーズかつ<code>Ready</code>コンディションであること』をPodの正常とみなす。例えば、<code>kubectl get</code>コマンドを実行することにより、正常か否かを確認する。</td>
+<td>Podが正常である。『Podが <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』をPodの正常とみなす。例えば、<code>kubectl get</code> コマンドを実行することにより、正常か否かを確認する。</td>
 </tr>
 <tr>
 <td>UT</td>
@@ -33936,7 +33936,7 @@
 <tr>
 <td>IT</td>
 <td>Alertmanager + <br>Prometheus + <br>Kubernetes</td>
-<td>ビルトインのPrometheusRule (<code>.metadata.annotations</code>キーにkubernetes-mixinへのURLを持つ) のアラートルールが発火した場合に、アラートを通知できる。必ずアラートが発火するような閾値 (例：ゼロ) に変更し、アラートが発火するかを検証する。</td>
+<td>ビルトインのPrometheusRule (<code>.metadata.annotations</code> キーにkubernetes-mixinへのURLを持つ) のアラートルールが発火した場合に、アラートを通知できる。必ずアラートが発火するような閾値 (例：ゼロ) に変更し、アラートが発火するかを検証する。</td>
 </tr>
 <tr>
 <td>IT</td>
@@ -33964,12 +33964,12 @@
 <tr>
 <td>UT</td>
 <td>-</td>
-<td>Podが正常である。『Podが<code>Running</code>フェーズかつ<code>Ready</code>コンディションであること』をPodの正常とみなす。例えば、<code>kubectl get</code>コマンドを実行することにより、正常か否かを確認する。</td>
+<td>Podが正常である。『Podが <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』をPodの正常とみなす。例えば、<code>kubectl get</code> コマンドを実行することにより、正常か否かを確認する。</td>
 </tr>
 <tr>
 <td>UT</td>
 <td>-</td>
-<td>ビルトインのダッシュボード (<code>mixin</code>タグを持つ) を正しく読み込めるか。</td>
+<td>ビルトインのダッシュボード (<code>mixin</code> タグを持つ) を正しく読み込めるか。</td>
 </tr>
 <tr>
 <td>UT</td>
@@ -33979,7 +33979,7 @@
 <tr>
 <td>IT</td>
 <td>Grafana + <br>Prometheus + <br>Kubernetes</td>
-<td>ビルトインのダッシュボード (<code>mixin</code>タグを持つ) でPromQLを入力し、Prometheusのメトリクスを確認できる。</td>
+<td>ビルトインのダッシュボード (<code>mixin</code> タグを持つ) でPromQLを入力し、Prometheusのメトリクスを確認できる。</td>
 </tr>
 <tr>
 <td>IT</td>
@@ -33989,7 +33989,7 @@
 <tr>
 <td>IT</td>
 <td>Grafana + <br>Prometheus + <br>Kubernetes</td>
-<td>ビルトインのダッシュボード (<code>mixin</code>タグを持つ) でPrometheusのメトリクスのリアルタイムデータを確認できる。</td>
+<td>ビルトインのダッシュボード (<code>mixin</code> タグを持つ) でPrometheusのメトリクスのリアルタイムデータを確認できる。</td>
 </tr>
 <tr>
 <td>IT</td>
@@ -33999,7 +33999,7 @@
 <tr>
 <td>IT</td>
 <td>Grafana + <br>Prometheus + <br>Kubernetes</td>
-<td>ビルトインのダッシュボード (<code>mixin</code>タグを持つ) で、datasource、namespace、type、resolusionの条件を変更し、リアルタイムデータを確認できる。</td>
+<td>ビルトインのダッシュボード (<code>mixin</code> タグを持つ) で、datasource、namespace、type、resolusionの条件を変更し、リアルタイムデータを確認できる。</td>
 </tr>
 <tr>
 <td>IT</td>
@@ -34022,7 +34022,7 @@
 <tr>
 <td>UT</td>
 <td>-</td>
-<td>PodMonitorの既存の設定が正常に動作しており、異常を検知するとアラートを発火できる。『Podが<code>Running</code>フェーズかつ<code>Ready</code>コンディションであること』をPodの正常とみなす。例えば、<code>kubectl get</code>コマンドを実行することにより、正常か否かを確認する。</td>
+<td>PodMonitorの既存の設定が正常に動作しており、異常を検知するとアラートを発火できる。『Podが <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』をPodの正常とみなす。例えば、<code>kubectl get</code> コマンドを実行することにより、正常か否かを確認する。</td>
 </tr>
 <tr>
 <td>UT</td>
@@ -34062,37 +34062,37 @@
 <td>kube-state-metrics</td>
 <td>UT</td>
 <td>-</td>
-<td>Podが正常である。『Podが<code>Running</code>フェーズかつ<code>Ready</code>コンディションであること』をPodの正常とみなす。例えば、<code>kubectl get</code>コマンドを実行することにより、正常か否かを確認する。</td>
+<td>Podが正常である。『Podが <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』をPodの正常とみなす。例えば、<code>kubectl get</code> コマンドを実行することにより、正常か否かを確認する。</td>
 </tr>
 <tr>
 <td></td>
 <td>IT</td>
 <td>kube-state-metrics + <br>Prometheus + <br>Kubernetes</td>
-<td>ダッシュボードでPromQLを入力し、Process Exporter経由で収集しているメトリクスを確認できる。例えば、<code>kube_pod_info</code>メトリクスや<code>kube_node_info</code>メトリクスを確認する。</td>
+<td>ダッシュボードでPromQLを入力し、Process Exporter経由で収集しているメトリクスを確認できる。例えば、<code>kube_pod_info</code> メトリクスや <code>kube_node_info</code> メトリクスを確認する。</td>
 </tr>
 <tr>
 <td>Node Exporter</td>
 <td>UT</td>
 <td>-</td>
-<td>Podが正常である。『Podが<code>Running</code>フェーズかつ<code>Ready</code>コンディションであること』をPodの正常とみなす。例えば、<code>kubectl get</code>コマンドを実行することにより、正常か否かを確認する。</td>
+<td>Podが正常である。『Podが <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』をPodの正常とみなす。例えば、<code>kubectl get</code> コマンドを実行することにより、正常か否かを確認する。</td>
 </tr>
 <tr>
 <td></td>
 <td>IT</td>
 <td>Node Exporter + <br>Prometheus + <br>Kubernetes</td>
-<td>ダッシュボードでPromQLを入力し、Node Exporter経由で収集しているメトリクスを確認できる。例えば、<code>node_cpu_seconds_total</code>メトリクスを確認する。</td>
+<td>ダッシュボードでPromQLを入力し、Node Exporter経由で収集しているメトリクスを確認できる。例えば、<code>node_cpu_seconds_total</code> メトリクスを確認する。</td>
 </tr>
 <tr>
 <td>Process Exporter</td>
 <td>UT</td>
 <td>-</td>
-<td>Podが正常である。『Podが<code>Running</code>フェーズかつ<code>Ready</code>コンディションであること』をPodの正常とみなす。</td>
+<td>Podが正常である。『Podが <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』をPodの正常とみなす。</td>
 </tr>
 <tr>
 <td></td>
 <td>IT</td>
 <td>Process Exporter + <br>Prometheus + <br>Kubernetes</td>
-<td>ダッシュボードでPromQLを入力し、Process Exporter経由で収集しているメトリクスを確認できる。例えば、<code>namedprocess_namegroup_cpu_seconds_total</code>メトリクスを確認する。</td>
+<td>ダッシュボードでPromQLを入力し、Process Exporter経由で収集しているメトリクスを確認できる。例えば、<code>namedprocess_namegroup_cpu_seconds_total</code> メトリクスを確認する。</td>
 </tr>
 </tbody>
 </table>
@@ -34110,12 +34110,12 @@
 <tr>
 <td>UT</td>
 <td>-</td>
-<td>Podが正常である。『Podが<code>Running</code>フェーズかつ<code>Ready</code>コンディションであること』をPodの正常とみなす。例えば、<code>kubectl get</code>コマンドを実行することにより、正常か否かを確認する。</td>
+<td>Podが正常である。『Podが <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』をPodの正常とみなす。例えば、<code>kubectl get</code> コマンドを実行することにより、正常か否かを確認する。</td>
 </tr>
 <tr>
 <td>IT</td>
 <td>Fluentd + <br>監視バックエンド + <br>監視フロントエンド + <br>Kubernetes</td>
-<td>Node内の任意のPodのログを正しい形式で監視バックエンドに送信し、監視フロントエンドで可視化できている。例えば、Containerdには、ログメッセージ部分がテキスト形式 (例：metrics-serverなど)　の場合と<code>json</code>形式 (例：alertmanager、istio-proxyなど) の場合がある。<br>監視バックエンド (例：Grafana Loki) これらの両方の形式のログを正しく解析し、監視フロントエンド (例：Grafana、Kibana) がそれを可視化できていることを確認する。</td>
+<td>Node内の任意のPodのログを正しい形式で監視バックエンドに送信し、監視フロントエンドで可視化できている。例えば、Containerdには、ログメッセージ部分がテキスト形式 (例：metrics-serverなど)　の場合と <code>json</code> 形式 (例：alertmanager、istio-proxyなど) の場合がある。<br>監視バックエンド (例：Grafana Loki) これらの両方の形式のログを正しく解析し、監視フロントエンド (例：Grafana、Kibana) がそれを可視化できていることを確認する。</td>
 </tr>
 </tbody>
 </table>
@@ -34133,7 +34133,7 @@
 <tr>
 <td>UT</td>
 <td>-</td>
-<td>Podが正常である。『Podが<code>Running</code>フェーズかつ<code>Ready</code>コンディションであること』をPodの正常とみなす。例えば、<code>kubectl get</code>コマンドを実行することにより、正常か否かを確認する。</td>
+<td>Podが正常である。『Podが <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』をPodの正常とみなす。例えば、<code>kubectl get</code> コマンドを実行することにより、正常か否かを確認する。</td>
 </tr>
 <tr>
 <td>IT</td>
@@ -34156,17 +34156,17 @@
 <tr>
 <td>UT</td>
 <td>-</td>
-<td>Podが正常である。『Podが<code>Running</code>フェーズかつ<code>Ready</code>コンディションであること』をPodの正常とみなす。例えば、<code>kubectl get</code>コマンドを実行することにより、正常か否かを確認する。</td>
+<td>Podが正常である。『Podが <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』をPodの正常とみなす。例えば、<code>kubectl get</code> コマンドを実行することにより、正常か否かを確認する。</td>
 </tr>
 <tr>
 <td>IT</td>
 <td>metrics-server + <br>Pod、Node</td>
-<td>Pod、Node、からメトリクスを取得できるかを確認する。例えば、<code>kubectl top pod -A</code>コマンドや<code>kubectl top node</code>コマンドで、PodやNodeのCPU使用率とメモリ使用率を取得できるかを確認する。また、</td>
+<td>Pod、Node、からメトリクスを取得できるかを確認する。例えば、<code>kubectl top pod -A</code> コマンドや <code>kubectl top node</code> コマンドで、PodやNodeのCPU使用率とメモリ使用率を取得できるかを確認する。また、</td>
 </tr>
 <tr>
 <td>IT</td>
 <td>metrics-server + <br>HorizontalPodAutoscaler</td>
-<td>HorizontalPodAutoscalerからメトリクスを取得できるかを確認する。例えば、事前に<code>.spec.containers[*].resources</code>キーが設定されたDeploymentを確認しておく。<code>kubectl get hpa -A</code>コマンドで、Target列が<code>&lt;unknown&gt;</code>になっていないことを確認する。</td>
+<td>HorizontalPodAutoscalerからメトリクスを取得できるかを確認する。例えば、事前に <code>.spec.containers[*].resources</code> キーが設定されたDeploymentを確認しておく。<code>kubectl get hpa -A</code> コマンドで、Target列が <code>&lt;unknown&gt;</code> になっていないことを確認する。</td>
 </tr>
 </tbody>
 </table>
@@ -34218,7 +34218,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年12月2日 20:30:31 JST">2025-12-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

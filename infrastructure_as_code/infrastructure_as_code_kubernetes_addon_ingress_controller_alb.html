@@ -25378,10 +25378,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#awsclieksctl" class="md-nav__link">
+  <a href="#awscli-eksctl" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ awscliコマンド、eksctlコマンドの場合
+        ▼ awscli コマンド、eksctl コマンドの場合
       
     </span>
   </a>
@@ -33213,10 +33213,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#awsclieksctl" class="md-nav__link">
+  <a href="#awscli-eksctl" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ awscliコマンド、eksctlコマンドの場合
+        ▼ awscli コマンド、eksctl コマンドの場合
       
     </span>
   </a>
@@ -33545,9 +33545,9 @@
 <h3 id="aws">AWS側<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 共通<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>AWS Load Balancer Controllerは、サブネットを自動的に検出し、これにAWS ALBをプロビジョニングする。</p>
-<p>Ingressで作成するAWS ALBをパブリックサブネットで作成する場合、<code>kubernetes.io/role/elb</code>というタグ (値は<code>1</code>または空文字) を全てのパブリックサブネットに設定する。</p>
-<p>一方で、プライベートサブネットで作成する場合、<code>kubernetes.io/role/internal-elb</code>というタグ (値は<code>1</code>または空文字) をプライベートサブネットに設定する。</p>
-<p>またパブリックサブネットまたはプライベートサブネットのいずれであっても<code>kubernetes.io/cluster/&lt;AWS EKS Clusterの名前&gt;</code> (値は、複数のAWS EKS Clusterで共有するサブネットの場合は<code>shared</code>、単一のAWS EKS Clusterの場合は<code>owned</code>とする) を設定する。</p>
+<p>Ingressで作成するAWS ALBをパブリックサブネットで作成する場合、<code>kubernetes.io/role/elb</code> というタグ (値は <code>1</code> または空文字) を全てのパブリックサブネットに設定する。</p>
+<p>一方で、プライベートサブネットで作成する場合、<code>kubernetes.io/role/internal-elb</code> というタグ (値は <code>1</code> または空文字) をプライベートサブネットに設定する。</p>
+<p>またパブリックサブネットまたはプライベートサブネットのいずれであっても <code>kubernetes.io/cluster/&lt;AWS EKS Clusterの名前&gt;</code> (値は、複数のAWS EKS Clusterで共有するサブネットの場合は <code>shared</code>、単一のAWS EKS Clusterの場合は <code>owned</code> とする) を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/deploy/subnet_discovery/">https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/deploy/subnet_discovery/</a></li>
@@ -33557,7 +33557,7 @@
 <h4 id="terraform">▼ Terraformの公式モジュールの場合<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h4>
 <p>AWS Load Balancer Controllerのセットアップのうち、AWS側で必要なものをまとめる。</p>
 <p>ここでは、Terraformの公式モジュールを使用する。</p>
-<p>コマンド (例：<code>eksctl</code>コマンド) を使用しても良い。</p>
+<p>コマンド (例：<code>eksctl</code> コマンド) を使用しても良い。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_aws_load_balancer_controller&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
@@ -33619,13 +33619,13 @@
 <li><a href="https://qiita.com/crml1206/items/3f5ceeaae27bba033bb1#ingress%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E6%A4%9C%E7%9F%A5%E3%81%97%E3%81%A6alb%E3%81%8C%E4%BD%9C%E6%88%90%E3%81%95%E3%82%8C%E3%82%8B">https://qiita.com/crml1206/items/3f5ceeaae27bba033bb1#ingress%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E6%A4%9C%E7%9F%A5%E3%81%97%E3%81%A6alb%E3%81%8C%E4%BD%9C%E6%88%90%E3%81%95%E3%82%8C%E3%82%8B</a></li>
 </ul>
 </blockquote>
-<h4 id="awsclieksctl">▼ <code>awscli</code>コマンド、<code>eksctl</code>コマンドの場合<a class="headerlink" href="#awsclieksctl" title="Permanent link">&para;</a></h4>
+<h4 id="awscli-eksctl">▼ <code>awscli</code> コマンド、<code>eksctl</code> コマンドの場合<a class="headerlink" href="#awscli-eksctl" title="Permanent link">&para;</a></h4>
 <p>AWS Load Balancer Controllerのセットアップのうち、AWS側で必要なものをまとめる。</p>
 <p>ここではコマンドを使用しているが、IaC (例：Terraform) を使用しても良い。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>ローカルマシンにIAMポリシーの<code>json</code>ファイルをダウンロードする。</p>
+<p>ローカルマシンにIAMポリシーの <code>json</code> ファイルをダウンロードする。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span>https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.0/docs/install/iam_policy.json<span class="w"> </span>-o<span class="w"> </span>iam_policy.json
@@ -33639,7 +33639,7 @@
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p><code>json</code>ファイルを使用して、ServiceAccountのIAMロールに紐付けるためのIAMポリシーを作成する。</p>
+<p><code>json</code> ファイルを使用して、ServiceAccountのIAMロールに紐付けるためのIAMポリシーを作成する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>iam<span class="w"> </span>create-policy<span class="w"> </span><span class="se">\</span>
@@ -33786,7 +33786,7 @@ aws-load-balancer-controller<span class="w">   </span><span class="m">2</span>/2
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>もし、以下の様に、<code>53</code>番ポートへの接続でエラーになってしまう場合は、CoreDNSによる名前解決が正しくできていない。</p>
+<p>もし、以下の様に、<code>53</code> 番ポートへの接続でエラーになってしまう場合は、CoreDNSによる名前解決が正しくできていない。</p>
 <p>そのため、CoreDNSが正常に稼働しているか否かを確認する。</p>
 </dd>
 </dl>
@@ -33819,7 +33819,7 @@ aws-load-balancer-controller<span class="w">   </span><span class="m">2</span>/2
 <p><br></p>
 <h3 id="deploymentpod">Deployment配下のPod<a class="headerlink" href="#deploymentpod" title="Permanent link">&para;</a></h3>
 <h4 id="aws-load-balancer-controller_1">▼ aws-load-balancer-controller<a class="headerlink" href="#aws-load-balancer-controller_1" title="Permanent link">&para;</a></h4>
-<p>Deploymentは、Ingressで<code>alb</code>のIngressClassを指定していること検知して、AWS ALBをプロビジョニングする。</p>
+<p>Deploymentは、Ingressで <code>alb</code> のIngressClassを指定していること検知して、AWS ALBをプロビジョニングする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34003,7 +34003,7 @@ aws-load-balancer-controller<span class="w">   </span><span class="m">2</span>/2
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 22:20:31 JST">2025-05-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

@@ -24609,7 +24609,7 @@
   <a href="#secrets" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ secretsファイルの名前の制限
+        ▼ secrets ファイルの名前の制限
       
     </span>
   </a>
@@ -33290,7 +33290,7 @@
   <a href="#secrets" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ secretsファイルの名前の制限
+        ▼ secrets ファイルの名前の制限
       
     </span>
   </a>
@@ -33526,7 +33526,7 @@
 <p><br></p>
 <h2 id="01-helm-dashboard">01. helm-dashboard<a class="headerlink" href="#01-helm-dashboard" title="Permanent link">&para;</a></h2>
 <h3 id="helm-dashboard">helm-dashboardとは<a class="headerlink" href="#helm-dashboard" title="Permanent link">&para;</a></h3>
-<p><code>helm</code>コマンドで確認できる情報 (例：インストールされているHelmチャート、リビジョン履歴など) をダッシュボードで表示する。</p>
+<p><code>helm</code> コマンドで確認できる情報 (例：インストールされているHelmチャート、リビジョン履歴など) をダッシュボードで表示する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/komodorio/helm-dashboard">https://github.com/komodorio/helm-dashboard</a></li>
@@ -33553,7 +33553,7 @@
 <p><br></p>
 <h2 id="02-helm-diff">02. helm-diff<a class="headerlink" href="#02-helm-diff" title="Permanent link">&para;</a></h2>
 <h3 id="helm-diff">helm-diffとは<a class="headerlink" href="#helm-diff" title="Permanent link">&para;</a></h3>
-<p>3方向の戦略的マージパッチを使用して、『<code>helm get</code>コマンドによる最新のリリースによるマニフェスト』『<code>helm template</code>コマンドによる現在のチャートによるマニフェスト』『前回リリース後のHelm以外の方法によるマニフェスト』を比較する。</p>
+<p>3方向の戦略的マージパッチを使用して、『<code>helm get</code> コマンドによる最新のリリースによるマニフェスト』『<code>helm template</code> コマンドによる現在のチャートによるマニフェスト』『前回リリース後のHelm以外の方法によるマニフェスト』を比較する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>diff
 </code></pre></div>
 <blockquote>
@@ -33577,7 +33577,7 @@
 <p><br></p>
 <h2 id="04-helm-secrets">04. helm-secrets<a class="headerlink" href="#04-helm-secrets" title="Permanent link">&para;</a></h2>
 <h3 id="helm-secrets">helm-secretsとは<a class="headerlink" href="#helm-secrets" title="Permanent link">&para;</a></h3>
-<p>暗号化ツールを使用して、<code>values</code>ファイルを復号し、Secretのデータとして注入する。</p>
+<p>暗号化ツールを使用して、<code>values</code> ファイルを復号し、Secretのデータとして注入する。</p>
 <p>また反対に、Secretのデータを復号する。</p>
 <blockquote>
 <ul>
@@ -33605,10 +33605,10 @@
 <p><br></p>
 <h2 id="04-02-sops">04-02. バックエンドがSOPSの場合<a class="headerlink" href="#04-02-sops" title="Permanent link">&para;</a></h2>
 <h3 id="_10">注意点<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<h4 id="secrets">▼ <code>secrets</code>ファイルの名前の制限<a class="headerlink" href="#secrets" title="Permanent link">&para;</a></h4>
+<h4 id="secrets">▼ <code>secrets</code> ファイルの名前の制限<a class="headerlink" href="#secrets" title="Permanent link">&para;</a></h4>
 <p>helm-secretsには、zendesk製 (2022/11/29時点でメンテナンスされていない) と、zendesk製からフォークされたjkroepke製がある。</p>
-<p>zendesk製を使用している場合、SOPSの<code>secrets</code>ファイルの名前を『<code>secrets.yaml</code>』『<code>secrets.&lt;任意の名前&gt;.yaml</code>』とする必要がある。</p>
-<p>一方でjkeroepke製では、執筆時点 (2022/11/29) で、<code>secrets</code>ファイルの名前が任意である。</p>
+<p>zendesk製を使用している場合、SOPSの <code>secrets</code> ファイルの名前を『<code>secrets.yaml</code>』『<code>secrets.&lt;任意の名前&gt;.yaml</code>』とする必要がある。</p>
+<p>一方でjkeroepke製では、執筆時点 (2022/11/29) で、<code>secrets</code> ファイルの名前が任意である。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/zendesk/helm-secrets#usage-and-examples">https://github.com/zendesk/helm-secrets#usage-and-examples</a></li>
@@ -33618,7 +33618,7 @@
 <p><br></p>
 <h3 id="secrets_1">secretsサブコマンド無しの場合<a class="headerlink" href="#secrets_1" title="Permanent link">&para;</a></h3>
 <h4 id="secrets_2">▼ <code>secrets://</code><a class="headerlink" href="#secrets_2" title="Permanent link">&para;</a></h4>
-<p>SOPSの<code>secrets</code>ファイルを指定する時に<code>secrets://</code>を使用すると、サブコマンドの<code>secrets</code>が不要になる。</p>
+<p>SOPSの <code>secrets</code> ファイルを指定するときに <code>secrets://</code> を使用すると、サブコマンドの <code>secrets</code> が不要になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>secrets://foo-secrets.yaml
 </code></pre></div>
 <blockquote>
@@ -33627,13 +33627,13 @@
 </ul>
 </blockquote>
 <h4 id="-f">▼ -f<a class="headerlink" href="#-f" title="Permanent link">&para;</a></h4>
-<p>暗号化された<code>values</code>ファイル (<code>secrets</code>ファイル) と、平文の<code>values</code>ファイルを使用して、<code>helm</code>コマンドを実行する。</p>
-<p>これにより、暗号化された値を<code>helm</code>コマンドの実行時のみ復号し、マニフェストに出力できる。</p>
-<p>補足としてこの時、<code>values</code>ファイル側には<code>secrets</code>ファイルの値を設定しておく必要はない。</p>
+<p>暗号化された <code>values</code> ファイル (<code>secrets</code> ファイル) と、平文の <code>values</code> ファイルを使用して、<code>helm</code> コマンドを実行する。</p>
+<p>これにより、暗号化された値を <code>helm</code> コマンドの実行時のみ復号し、マニフェストに出力できる。</p>
+<p>補足としてこの時、<code>values</code> ファイル側には <code>secrets</code> ファイルの値を設定しておく必要はない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>secrets<span class="w"> </span>template<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>&lt;SOPSが作成したsecretsファイルへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>以下のようなSOPSの<code>secrets</code>ファイルがあるとする。</p>
+<p>以下のようなSOPSの <code>secrets</code> ファイルがあるとする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># secretsファイル</span>
 <span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">F799Q8CQ...</span>
 
@@ -33658,8 +33658,8 @@
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.foo | b64enc</span><span class="p p-Indicator">}}</span>
 </code></pre></div>
-<p>この時、<code>helm secrets</code>コマンドで<code>secrets</code>ファイルを指定すると、復号した上で<code>.Values</code>に出力してくれる。</p>
-<p>ArgoCDが使用するSOPSのバージョンは、暗号化時に使用したSOPSのバージョン (<code>sops</code>キーの値) に合わせた方が良い。</p>
+<p>この時、<code>helm secrets</code> コマンドで <code>secrets</code> ファイルを指定すると、復号したうえで <code>.Values</code> に出力してくれる。</p>
+<p>ArgoCDが使用するSOPSのバージョンは、暗号化時に使用したSOPSのバージョン (<code>sops</code> キーの値) に合わせたほうが良い。</p>
 <p>結果的に、base64方式でエンコードされ、マニフェストを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>secrets<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>foo-secrets.yaml
 
@@ -33679,7 +33679,7 @@ data:
 <p><br></p>
 <h3 id="_11">サブコマンド<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="decrypt">▼ decrypt<a class="headerlink" href="#decrypt" title="Permanent link">&para;</a></h4>
-<p>指定した<code>values</code>ファイルを復号し、<code>.yaml.dec</code>ファイルに出力する。</p>
+<p>指定した <code>values</code> ファイルを復号し、<code>.yaml.dec</code> ファイルに出力する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>secrets<span class="w"> </span>decrypt<span class="w"> </span>&lt;暗号化されたvaluesファイル&gt;
 
 Decrypting<span class="w"> </span>./values/secrets.yaml
@@ -33695,7 +33695,7 @@ Decrypting<span class="w"> </span>./values/secrets.yaml
 </ul>
 </blockquote>
 <h4 id="encrypt">▼ encrypt<a class="headerlink" href="#encrypt" title="Permanent link">&para;</a></h4>
-<p>指定した<code>values</code>ファイルを暗号化し、元の<code>values</code>ファイルを上書きする。</p>
+<p>指定した <code>values</code> ファイルを暗号化し、元の <code>values</code> ファイルを上書きする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>secrets<span class="w"> </span>encrypt<span class="w"> </span>&lt;平文のvaluesファイル&gt;
 
 Encrypted<span class="w"> </span>./values/secrets.yaml
@@ -33737,7 +33737,7 @@ sops:
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月17日 18:49:49 JST">2025-05-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

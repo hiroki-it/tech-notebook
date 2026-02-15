@@ -34135,8 +34135,8 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_2">ログファイル<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p><code>gcloud</code>コマンドのログを出力する。</p>
-<p><code>gcloud</code>コマンドはわかりにくいエラーを出力することがあり、足がかりを掴めることがある。</p>
+<p><code>gcloud</code> コマンドのログを出力する。</p>
+<p><code>gcloud</code> コマンドはわかりにくいエラーを出力することがあり、足がかりを掴めることがある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/root/.config/gcloud/logs/&lt;タイムスタンプ&gt;/&lt;タイムスタンプ&gt;.log
 
 <span class="m">2023</span>-06-26<span class="w"> </span><span class="m">06</span>:23:43,998<span class="w"> </span>DEBUG<span class="w">    </span>root<span class="w">            </span>Loaded<span class="w"> </span>Command<span class="w"> </span>Group:<span class="w"> </span><span class="o">[</span><span class="s1">&#39;gcloud&#39;</span>,<span class="w"> </span><span class="s1">&#39;auth&#39;</span><span class="o">]</span>
@@ -34160,7 +34160,7 @@ Traceback<span class="w"> </span><span class="o">(</span>most<span class="w"> </
 </blockquote>
 <h4 id="activate-service-account">▼ activate-service-account<a class="headerlink" href="#activate-service-account" title="Permanent link">&para;</a></h4>
 <p>資格情報ファイルを使用して、ServiceAccountにログインする。</p>
-<p>資格情報ファイルは使用後に削除した方が良いらしい。</p>
+<p>資格情報ファイルは使用後に削除したほうが良いらしい。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>auth<span class="w"> </span>activate-service-account<span class="w"> </span>foo-service-account@foo-project.iam.gserviceaccount.com<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--key-file<span class="w"> </span>foo1-credentials.json
 
@@ -34194,9 +34194,9 @@ ACTIVE<span class="w">  </span>ACCOUNT
 </blockquote>
 <h4 id="application-default-login">▼ application-default login<a class="headerlink" href="#application-default-login" title="Permanent link">&para;</a></h4>
 <p>Google Cloud CLIによるGoogle Cloudリソースへのアクセスを認証するために使用する。</p>
-<p><code>~/.config/gcloud/application_default_credentials.json</code>ファイルを作成し、資格情報を定義する。</p>
+<p><code>~/.config/gcloud/application_default_credentials.json</code> ファイルを作成し、資格情報を定義する。</p>
 <p>また、これ使用してGoogle Cloudにログインする。</p>
-<p><code>~/.config/gcloud/application_default_credentials.json</code>ファイルは<code>1</code>個のプリンシパルの資格情報しか持てないため、プリンシパルを切り替える場合はファイルを再作成する必要がある。</p>
+<p><code>~/.config/gcloud/application_default_credentials.json</code> ファイルは <code>1</code> 個のプリンシパルの資格情報しか持てないため、プリンシパルを切り替える場合はファイルを再作成する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>auth<span class="w"> </span>application-default<span class="w"> </span>login
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># application_default_credentials.jsonファイル</span>
@@ -34233,8 +34233,8 @@ ACTIVE<span class="w">  </span>ACCOUNT
 </ul>
 </blockquote>
 <h4 id="login-update-adc">▼ login --update-adc<a class="headerlink" href="#login-update-adc" title="Permanent link">&para;</a></h4>
-<p><code>gcloud auth application-default login</code>コマンドと<code>gcloud auth login</code>コマンドを同時に実行する。</p>
-<p>これにより、Google Cloud CLIのための資格情報 (<code>~/.config/gcloud/application_default_credentials.json</code>ファイル) とGoogle Cloud SDKのための資格情報が更新される。</p>
+<p><code>gcloud auth application-default login</code> コマンドと <code>gcloud auth login</code> コマンドを同時に実行する。</p>
+<p>これにより、Google Cloud CLIのための資格情報 (<code>~/.config/gcloud/application_default_credentials.json</code> ファイル) とGoogle Cloud SDKのための資格情報が更新される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>auth<span class="w"> </span>login<span class="w"> </span>--update-adc
 </code></pre></div>
 <blockquote>
@@ -34266,9 +34266,9 @@ $<span class="w"> </span>gcloud<span class="w"> </span>auth<span class="w"> </sp
 <p><br></p>
 <h3 id="component">component<a class="headerlink" href="#component" title="Permanent link">&para;</a></h3>
 <h4 id="component_1">▼ componentとは<a class="headerlink" href="#component_1" title="Permanent link">&para;</a></h4>
-<p><code>gcloud</code>コマンドのコンポーネントを管理する。</p>
+<p><code>gcloud</code> コマンドのコンポーネントを管理する。</p>
 <h4 id="install">▼ install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h4>
-<p><code>gcloud</code>コマンドのコンポーネントをインストールする。</p>
+<p><code>gcloud</code> コマンドのコンポーネントをインストールする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>components<span class="w"> </span>install
 </code></pre></div>
 <p>別途、コンポーネントを読み込む必要がある。</p>
@@ -34292,11 +34292,11 @@ To<span class="w"> </span>add<span class="w"> </span>gcloud<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="update">▼ update<a class="headerlink" href="#update" title="Permanent link">&para;</a></h4>
-<p><code>gcloud</code>コマンドのコンポーネントをアップグレードする。</p>
+<p><code>gcloud</code> コマンドのコンポーネントをアップグレードする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>components<span class="w"> </span>update
 </code></pre></div>
 <h4 id="list_1">▼ list<a class="headerlink" href="#list_1" title="Permanent link">&para;</a></h4>
-<p><code>gcloud</code>コマンドのコンポーネントの一覧を取得する。</p>
+<p><code>gcloud</code> コマンドのコンポーネントの一覧を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>components<span class="w"> </span>list
 
 
@@ -34325,7 +34325,7 @@ The<span class="w"> </span>latest<span class="w"> </span>available<span class="w
 <p><br></p>
 <h3 id="config-configuration">config configuration<a class="headerlink" href="#config-configuration" title="Permanent link">&para;</a></h3>
 <h4 id="config-configuration_1">▼ config configurationとは<a class="headerlink" href="#config-configuration_1" title="Permanent link">&para;</a></h4>
-<p><code>gcloud</code>コマンドのConfigurationを操作する。</p>
+<p><code>gcloud</code> コマンドのConfigurationを操作する。</p>
 <h4 id="activate">▼ activate<a class="headerlink" href="#activate" title="Permanent link">&para;</a></h4>
 <p>複数のConfigurationがある場合に、これらを切り替える。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># fooというConfigurationに切り替える</span>
@@ -34640,7 +34640,7 @@ $<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> <
 <li><a href="https://cloud.google.com/sdk/gcloud/reference/storage/cp">https://cloud.google.com/sdk/gcloud/reference/storage/cp</a></li>
 </ul>
 </blockquote>
-<p>ディレクトリごとコピーする場合は、<code>--recursive</code>オプションを使用する。</p>
+<p>ディレクトリごとコピーする場合は、<code>--recursive</code> オプションを使用する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>storage<span class="w"> </span>cp<span class="w"> </span>--recursive<span class="w"> </span>gs://&lt;Google<span class="w"> </span>Cloud<span class="w"> </span>Storage名&gt;/&lt;オブジェクトのファイルパス&gt;<span class="w"> </span>&lt;ローカルマシンのファイルパス&gt;
 </code></pre></div>
 <p><br></p>
@@ -34672,7 +34672,7 @@ $<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月30日 15:18:50 JST">2025-05-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

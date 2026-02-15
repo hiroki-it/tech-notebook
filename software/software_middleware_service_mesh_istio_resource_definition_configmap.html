@@ -35823,7 +35823,7 @@
 <p><br></p>
 <h2 id="02-istio-ca-root-cert">02 istio-ca-root-cert<a class="headerlink" href="#02-istio-ca-root-cert" title="Permanent link">&para;</a></h2>
 <h3 id="istio-ca-root-cert">istio-ca-root-certとは<a class="headerlink" href="#istio-ca-root-cert" title="Permanent link">&para;</a></h3>
-<p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) による中間認証局を使用する場合、<code>istio-ca-root-cert</code>を自動的に作成する。</p>
+<p>Istiodコントロールプレーン (<code>discovery</code> コンテナ) による中間認証局を使用する場合、<code>istio-ca-root-cert</code> を自動的に作成する。</p>
 <p>ルート認証局から発行されたCA証明書 (ルート証明書) をもち、各マイクロサービスのPodにマウントされる。</p>
 <p>各マイクロサービスに配布された証明書を検証するために使用される。</p>
 <p>Istioコントロールプレーンのログから、CA証明書の作成を確認できる。</p>
@@ -35882,7 +35882,7 @@
 <p><br></p>
 <h2 id="04-istio-">04. istio-&lt;リビジョン&gt;<a class="headerlink" href="#04-istio-" title="Permanent link">&para;</a></h2>
 <h3 id="istio-">istio-&lt;リビジョン&gt;とは<a class="headerlink" href="#istio-" title="Permanent link">&para;</a></h3>
-<p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) のため、全てのistio-proxyにグローバルに設定する変数を管理する。</p>
+<p>Istiodコントロールプレーン (<code>discovery</code> コンテナ) のため、全てのistio-proxyにグローバルに設定する変数を管理する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35894,7 +35894,7 @@
 <span class="w">  </span><span class="nt">meshNetworks</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">...</span>
 </code></pre></div>
-<p>代わりに、IstioOperatorの<code>.spec.meshConfig</code>キーで定義することもできるが、これは非推奨である。</p>
+<p>代わりに、IstioOperatorの <code>.spec.meshConfig</code> キーで定義することもできるが、これは非推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># これは非推奨</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IstioOperator</span>
@@ -35982,9 +35982,9 @@
 <p><br></p>
 <h3 id="discoveryselectors">discoverySelectors<a class="headerlink" href="#discoveryselectors" title="Permanent link">&para;</a></h3>
 <h4 id="discoveryselectors_1">▼ discoverySelectorsとは<a class="headerlink" href="#discoveryselectors_1" title="Permanent link">&para;</a></h4>
-<p><code>ENHANCED_RESOURCE_SCOPING</code>を有効化し、IstiodコントロールプレーンがwatchするNamespaceを限定する。
+<p><code>ENHANCED_RESOURCE_SCOPING</code> を有効化し、IstiodコントロールプレーンがwatchするNamespaceを限定する。
 Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatchするようにできる。</p>
-<p>これは、サイドカーをインジェクションする<code>istio.io/rev</code>キーよりも強い影響力がある。</p>
+<p>これは、サイドカーをインジェクションする <code>istio.io/rev</code> キーよりも強い影響力がある。</p>
 <p>例えば、サイドカーをインジェクションしているNamespaceのみをwatchすることにより、Istiodコントロールプレーンの負荷を下げられる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -36004,7 +36004,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </ul>
 </blockquote>
 <h4 id="registry_only">▼ REGISTRY_ONLY<a class="headerlink" href="#registry_only" title="Permanent link">&para;</a></h4>
-<p>サービスメッシュ外へのリクエストの宛先を<code>BlackHoleCluster</code> (<code>502 Bad Gateway</code>で通信負荷) として扱う。</p>
+<p>サービスメッシュ外へのリクエストの宛先を <code>BlackHoleCluster</code> (<code>502 Bad Gateway</code> で通信負荷) として扱う。</p>
 <p>また、ServiceEntryとして登録した宛先には固有の名前がつく。</p>
 <p>サービスメッシュ外への通信のたびにServiceEntryを作成しなければならず、少しめんどくさくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -36027,7 +36027,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <h3 id="defaulthttpretrypolicy">defaultHttpRetryPolicy<a class="headerlink" href="#defaulthttpretrypolicy" title="Permanent link">&para;</a></h3>
 <h4 id="defaulthttpretrypolicy_1">▼ defaultHttpRetryPolicyとは<a class="headerlink" href="#defaulthttpretrypolicy_1" title="Permanent link">&para;</a></h4>
 <p>リトライポリシーのデフォルト値を設定する。</p>
-<p>ただし、<code>.spec.http[*].retries.perTryTimeout</code>キーは各VirtualServiceで設定する必要がある。</p>
+<p>ただし、<code>.spec.http[*].retries.perTryTimeout</code> キーは各VirtualServiceで設定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36051,7 +36051,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <li>リトライすると解決する可能性がある</li>
 <li>リクエストを繰り返しても状態が変わらずに冪等性がある (二重処理にならない) がある</li>
 </ul>
-<p><code>503</code>と<code>reset</code>によるリトライは冪等性に問題があり、設定に注意が必要である。</p>
+<p><code>503</code> と <code>reset</code> によるリトライは冪等性に問題があり、設定に注意が必要である。</p>
 <p><img alt="istio_inbound-retry_reset" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_inbound-retry_reset.png" /></p>
 <table>
 <thead>
@@ -36076,7 +36076,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <td>マイクロサービスからのアウトバウンド通信時、Gateway系ステータスコード (<code>502</code>、<code>503</code>、<code>504</code>) が返信された場合に、リトライを実行する。冪性がない可能性がある。</td>
 </tr>
 <tr>
-<td><code>retriable-status-codes</code> (<code>5xx</code>のように任意のステータスコードを設定する)</td>
+<td><code>retriable-status-codes</code> (<code>5xx</code> のように任意のステータスコードを設定する)</td>
 <td style="text-align: center;">⭕️</td>
 <td style="text-align: center;"></td>
 <td>マイクロサービスからのアウトバウンド通信時、指定したHTTPステータスであった場合に、リトライを実行する。冪等性がない可能性がある。</td>
@@ -36111,13 +36111,13 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <td><code>cancelled</code></td>
 <td style="text-align: center;">⭕️</td>
 <td style="text-align: center;"></td>
-<td><strong>マイクロサービスからのアウトバウンド</strong>通信時、gRPCステータスコードが<code>Cancelled</code>であった場合に、リトライを実行する。送信元がリクエストを切断しているため、リトライするべきではない可能性がある。</td>
+<td><strong>マイクロサービスからのアウトバウンド</strong>通信時、gRPCステータスコードが <code>Cancelled</code> であった場合に、リトライを実行する。送信元がリクエストを切断しているため、リトライするべきではない可能性がある。</td>
 </tr>
 <tr>
 <td><code>deadline-exceeded</code></td>
 <td style="text-align: center;">⭕️</td>
 <td style="text-align: center;">✅</td>
-<td>マイクロサービスからアウトバウンド通信時、gRPCステータスコードが<code>DeadlineExceeded</code>であった場合に、リトライを実行する。</td>
+<td>マイクロサービスからアウトバウンド通信時、gRPCステータスコードが <code>DeadlineExceeded</code> であった場合に、リトライを実行する。</td>
 </tr>
 <tr>
 <td><code>refused-stream</code></td>
@@ -36129,7 +36129,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <td><code>resource-exhausted</code></td>
 <td style="text-align: center;">⭕️</td>
 <td style="text-align: center;">✅</td>
-<td>マイクロサービスからのアウトバウンド通信時、gRPCステータスコードが<code>ResourceExhausted</code>であった場合に、リトライを実行する。</td>
+<td>マイクロサービスからのアウトバウンド通信時、gRPCステータスコードが <code>ResourceExhausted</code> であった場合に、リトライを実行する。</td>
 </tr>
 <tr>
 <td><code>unavailable</code></td>
@@ -36147,7 +36147,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </blockquote>
 <h4 id="_3">▼ インバウンド通信時のリトライ条件<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>istio-proxyのインバウンド通信時のリトライ条件は以下である。</p>
-<p>執筆時点 (2025/02/26) では、<code>ENABLE_INBOUND_RETRY_POLICY</code>変数を<code>true</code> (デフォルト値) にすると使用できる。</p>
+<p>執筆時点 (2025/02/26) では、<code>ENABLE_INBOUND_RETRY_POLICY</code> 変数を <code>true</code> (デフォルト値) にすると使用できる。</p>
 <table>
 <thead>
 <tr>
@@ -36169,9 +36169,9 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <p><br></p>
 <h3 id="defaultproviders">defaultProviders<a class="headerlink" href="#defaultproviders" title="Permanent link">&para;</a></h3>
 <h4 id="defaultproviders_1">▼ defaultProvidersとは<a class="headerlink" href="#defaultproviders_1" title="Permanent link">&para;</a></h4>
-<p><code>extensionProviders</code>キーで定義したもののうち、デフォルトで使用するプロバイダーを設定する。</p>
+<p><code>extensionProviders</code> キーで定義したもののうち、デフォルトで使用するプロバイダーを設定する。</p>
 <p>Telemetryで自動的に選択される、</p>
-<p>Envoyを使用してアクセスログを収集する場合、<code>.mesh.defaultProviders.accessLogging</code>キーには何も設定しなくてよい。</p>
+<p>Envoyを使用してアクセスログを収集する場合、<code>.mesh.defaultProviders.accessLogging</code> キーには何も設定しなくてよい。</p>
 <p>また、Istioがデフォルトで用意している分散トレースツールを使用する場合も同様に不要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -36201,7 +36201,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <li><a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-DefaultProviders">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-DefaultProviders</a></li>
 </ul>
 </blockquote>
-<p>Envoyのアクセスログの場合、代わりに<code>.mesh.accessLogEncoding</code>キーと<code>.mesh.accessLogFile</code>キーを設定する。</p>
+<p>Envoyのアクセスログの場合、代わりに <code>.mesh.accessLogEncoding</code> キーと <code>.mesh.accessLogFile</code> キーを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36212,7 +36212,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <span class="w">    </span><span class="no">accessLogEncoding: JSON</span>
 <span class="w">    </span><span class="no">accessLogFile: /dev/stdout</span>
 </code></pre></div>
-<p>分散トレースの場合、代わりに<code>.mesh.enableTracing</code>キーと<code>.mesh.extensionProviders</code>キーを設定する。</p>
+<p>分散トレースの場合、代わりに <code>.mesh.enableTracing</code> キーと <code>.mesh.extensionProviders</code> キーを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36285,8 +36285,8 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <p><br></p>
 <h3 id="ingressselector">ingressSelector<a class="headerlink" href="#ingressselector" title="Permanent link">&para;</a></h3>
 <h4 id="ingressselector_1">▼ ingressSelectorとは<a class="headerlink" href="#ingressselector_1" title="Permanent link">&para;</a></h4>
-<p>全てのistio-proxyに関して、使用するGatewayの<code>.metadata.labels.istio</code>キーの値を設定する。</p>
-<p>デフォルトでは、Ingressとして<code>ingressgateway</code>が設定される。</p>
+<p>全てのistio-proxyに関して、使用するGatewayの <code>.metadata.labels.istio</code> キーの値を設定する。</p>
+<p>デフォルトでは、Ingressとして <code>ingressgateway</code> が設定される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36299,8 +36299,8 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <p><br></p>
 <h3 id="ingressservice">ingressService<a class="headerlink" href="#ingressservice" title="Permanent link">&para;</a></h3>
 <h4 id="ingressservice_1">▼ ingressServiceとは<a class="headerlink" href="#ingressservice_1" title="Permanent link">&para;</a></h4>
-<p>全てのistio-proxyに関して、使用するIngress Controllerの<code>.metadata.labels.istio</code>キーの値を設定する。</p>
-<p>デフォルトでは、Ingressとして<code>ingressgateway</code>が設定される。</p>
+<p>全てのistio-proxyに関して、使用するIngress Controllerの <code>.metadata.labels.istio</code> キーの値を設定する。</p>
+<p>デフォルトでは、Ingressとして <code>ingressgateway</code> が設定される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36354,7 +36354,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <h4 id="outboundtrafficpolicy_1">▼ outboundTrafficPolicyとは<a class="headerlink" href="#outboundtrafficpolicy_1" title="Permanent link">&para;</a></h4>
 <p>サービスメッシュ外へのリクエストの宛先の種類 (<code>PassthroughCluster</code>、<code>BlackHoleCluster</code>) を設定する。</p>
 <h4 id="allow_any">▼ ALLOW_ANY (デフォルト)<a class="headerlink" href="#allow_any" title="Permanent link">&para;</a></h4>
-<p>サービスメッシュ外へのリクエストの宛先を<code>PassthroughCluster</code>として扱う。</p>
+<p>サービスメッシュ外へのリクエストの宛先を <code>PassthroughCluster</code> として扱う。</p>
 <p>また、ServiceEntryとして登録した宛先には固有の名前がつく。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -36374,7 +36374,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </ul>
 </blockquote>
 <h4 id="allow_any_1">▼ ALLOW_ANYの注意点<a class="headerlink" href="#allow_any_1" title="Permanent link">&para;</a></h4>
-<p>サービスメッシュ外の "クラスター外" の宛先であれば、<code>ALLOW_ANY</code>のため接続可能である (Kiali上は PassthroughClusterという表記) 。</p>
+<p>サービスメッシュ外の "クラスター外" の宛先であれば、<code>ALLOW_ANY</code> のため接続可能である (Kiali上は PassthroughClusterという表記) 。</p>
 <p>一方で、サービスメッシュ外の "クラスター内" であると、Istioリソースで宛先を登録する必要がある。</p>
 <p>方法として、以下がある。</p>
 <ul>
@@ -36403,9 +36403,9 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <h2 id="04-01-02-defaultconfig">04-01-02. defaultConfig<a class="headerlink" href="#04-01-02-defaultconfig" title="Permanent link">&para;</a></h2>
 <h3 id="defaultconfig">defaultConfigとは<a class="headerlink" href="#defaultconfig" title="Permanent link">&para;</a></h3>
 <p>Istioの全てのコンポーネントに適用する変数のデフォルト値を設定する。</p>
-<p>他にProxyConfig (と思ったが、ProxyConfigのドキュメントに載っていない設定は無理みたい) 、Podの<code>.metadata.annotations.proxy.istio.io/config</code>キーでも設定できる。</p>
+<p>他にProxyConfig (と思ったが、ProxyConfigのドキュメントに載っていない設定は無理みたい) 、Podの <code>.metadata.annotations.proxy.istio.io/config</code> キーでも設定できる。</p>
 <p>ProxyConfigが最優先であり、これらの設定はマージされる。</p>
-<p><code>.meshConfig.defaultConfig</code>キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。</p>
+<p><code>.meshConfig.defaultConfig</code> キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。</p>
 <p>3つの箇所で設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">meshConfig</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">defaultConfig</span><span class="p">:</span>
@@ -36578,8 +36578,8 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <li><a href="https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters">https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters</a></li>
 </ul>
 </blockquote>
-<p>オプションを有効化すると、istio-proxyの<code>.spec.containers[*].lifecycle.postStart.exec.command</code>キーに、<code>pilot-agent -wait</code>コマンドが挿入される。</p>
-<p><code>.spec.containers[*].lifecycle.preStop.exec.command</code>キーへの自動設定は、<code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code>変数で対応する。</p>
+<p>オプションを有効化すると、istio-proxyの <code>.spec.containers[*].lifecycle.postStart.exec.command</code> キーに、<code>pilot-agent -wait</code> コマンドが挿入される。</p>
+<p><code>.spec.containers[*].lifecycle.preStop.exec.command</code> キーへの自動設定は、<code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code> 変数で対応する。</p>
 <div class="highlight"><pre><span></span><code><span class="nn">...</span>
 
 <span class="nt">spec</span><span class="p">:</span>
@@ -36605,7 +36605,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <h3 id="image">image<a class="headerlink" href="#image" title="Permanent link">&para;</a></h3>
 <p>istio-proxyのコンテナイメージのタイプを設定する。</p>
 <p>これは、ConfigMapではなくProxyConfigでも設定できる。</p>
-<p><code>distroless</code>型を選ぶと、istio-proxyにログインできなくなり、より安全なイメージになる。</p>
+<p><code>distroless</code> 型を選ぶと、istio-proxyにログインできなくなり、より安全なイメージになる。</p>
 <p>一方で、デバッグしにくくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -36618,7 +36618,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <span class="w">      </span><span class="no">image:</span>
 <span class="w">        </span><span class="no">imageType: distroless</span>
 </code></pre></div>
-<p><code>istio-cni</code>でも、Helmチャートで別に設定すれば、<code>distroless</code>型を選べる。</p>
+<p><code>istio-cni</code> でも、Helmチャートで別に設定すれば、<code>distroless</code> 型を選べる。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/proxy-config/#ProxyImage">https://istio.io/latest/docs/reference/config/networking/proxy-config/#ProxyImage</a></li>
@@ -36640,9 +36640,9 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </code></pre></div>
 <p><br></p>
 <h3 id="proxyheaders">proxyHeaders<a class="headerlink" href="#proxyheaders" title="Permanent link">&para;</a></h3>
-<p>デフォルト値は<code>true</code>である。</p>
-<p><code>x-envoy</code>ヘッダーを有効化するか否かを設定する。</p>
-<p>例えば、接続プール上限超過によるサーキットブレイカーが起こったことを示す<code>x-envoy-overloaded</code>ヘッダーがある。</p>
+<p>デフォルト値は <code>true</code> である。</p>
+<p><code>x-envoy</code> ヘッダーを有効化するか否かを設定する。</p>
+<p>例えば、接続プール上限超過によるサーキットブレイカーが起こったことを示す <code>x-envoy-overloaded</code> ヘッダーがある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36716,7 +36716,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <h3 id="tracing">tracing (非推奨)<a class="headerlink" href="#tracing" title="Permanent link">&para;</a></h3>
 <p>いずれのトレース仕様 (例：Zipkin、Datadog、LightStepなど) でトレースIDとスパンIDを作成するかを設定する。</p>
 <p>ZipkinとJaegerはトレースコンテキスト仕様が同じであるため、zipkinパッケージをJaegerのクライアントとしても使用できる。</p>
-<p><code>.mesh.defaultConfig.enableTracing</code>キーも有効化する必要がある。</p>
+<p><code>.mesh.defaultConfig.enableTracing</code> キーも有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36731,7 +36731,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <span class="w">        </span><span class="no">zipkin:</span>
 <span class="w">          </span><span class="no">address: &quot;jaeger-collector.observability:9411&quot;</span>
 </code></pre></div>
-<p>ただし、非推奨であるため<code>extensionProviders</code>キーを使用した方が良い</p>
+<p>ただし、非推奨であるため <code>extensionProviders</code> キーを使用したほうが良い</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36751,10 +36751,10 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </blockquote>
 <p><br></p>
 <h3 id="tracingservicename">tracingServiceName<a class="headerlink" href="#tracingservicename" title="Permanent link">&para;</a></h3>
-<p>スパンの<code>service.name</code>属性の値を設定する。</p>
+<p>スパンの <code>service.name</code> 属性の値を設定する。</p>
 <p>マイクロサービスがバージョニングされている場合、マイクロサービスの正式名 (canonical-name) でグループ化できる。</p>
-<p>デフォルトでは<code>APP_LABEL_AND_NAMESPACE</code>であり、<code>&lt;Namespace&gt;.&lt;appラベル値&gt;</code>になる。</p>
-<p>appラベルがないマイクロサービスのために、canonical名に基づく<code>CANONICAL_NAME_AND_NAMESPACE</code>を使用した方が良い。</p>
+<p>デフォルトでは <code>APP_LABEL_AND_NAMESPACE</code> であり、<code>&lt;Namespace&gt;.&lt;appラベル値&gt;</code> になる。</p>
+<p>appラベルがないマイクロサービスのために、canonical名に基づく <code>CANONICAL_NAME_AND_NAMESPACE</code> を使用したほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36826,7 +36826,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </blockquote>
 <p><br></p>
 <h3 id="enable_deferred_cluster_creation"><code>ENABLE_DEFERRED_CLUSTER_CREATION</code><a class="headerlink" href="#enable_deferred_cluster_creation" title="Permanent link">&para;</a></h3>
-<p><code>pilot-discovery</code>コマンドでも設定できるため、そちらを参照せよ。</p>
+<p><code>pilot-discovery</code> コマンドでも設定できるため、そちらを参照せよ。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -36846,8 +36846,8 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </blockquote>
 <p><br></p>
 <h3 id="exclude_unsafe_503_from_default_retry"><code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code><a class="headerlink" href="#exclude_unsafe_503_from_default_retry" title="Permanent link">&para;</a></h3>
-<p>デフォルトで<code>true</code>である。</p>
-<p><code>pilot-discovery</code>コマンドでも設定できるため、そちらを参照せよ。</p>
+<p>デフォルトで <code>true</code> である。</p>
+<p><code>pilot-discovery</code> コマンドでも設定できるため、そちらを参照せよ。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -36868,8 +36868,8 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </blockquote>
 <p><br></p>
 <h3 id="enable_inbound_retry_policy"><code>ENABLE_INBOUND_RETRY_POLICY</code><a class="headerlink" href="#enable_inbound_retry_policy" title="Permanent link">&para;</a></h3>
-<p>デフォルトで<code>true</code>である。</p>
-<p><code>pilot-discovery</code>コマンドでも設定できるため、そちらを参照せよ。</p>
+<p>デフォルトで <code>true</code> である。</p>
+<p><code>pilot-discovery</code> コマンドでも設定できるため、そちらを参照せよ。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -36891,12 +36891,12 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <p><br></p>
 <h3 id="exit_on_zero_active_connections"><code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code><a class="headerlink" href="#exit_on_zero_active_connections" title="Permanent link">&para;</a></h3>
 <p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
-<p>デフォルト値は<code>false</code>である。</p>
+<p>デフォルト値は <code>false</code> である。</p>
 <p>istio-proxyへのリクエストが無くなってから、Envoyのプロセスを終了する。</p>
-<p>具体的には、<code>downstream_cx_active</code>メトリクスの値 (アクティブな接続数) を監視し、<code>0</code>になるまでドレイン処理を実行し続ける。</p>
-<p>ドレイン処理前の待機時間は、<code>MINIMUM_DRAIN_DURATION</code>で設定する。</p>
-<p>オプションを有効化すると、istio-proxyの<code>.spec.containers[*].lifecycle.preStop.exec.command</code>キーに、<code>sleep</code>コマンドが自動で挿入される。</p>
-<p><code>.spec.containers[*].lifecycle.postStart.exec.command</code>キーへの自動設定は、<code>.mesh.defaultConfig.holdApplicationUntilProxyStarts</code>キーで対応する。</p>
+<p>具体的には、<code>downstream_cx_active</code> メトリクスの値 (アクティブな接続数) を監視し、<code>0</code> になるまでドレイン処理を実行し続ける。</p>
+<p>ドレイン処理前の待機時間は、<code>MINIMUM_DRAIN_DURATION</code> で設定する。</p>
+<p>オプションを有効化すると、istio-proxyの <code>.spec.containers[*].lifecycle.preStop.exec.command</code> キーに、<code>sleep</code> コマンドが自動で挿入される。</p>
+<p><code>.spec.containers[*].lifecycle.postStart.exec.command</code> キーへの自動設定は、<code>.mesh.defaultConfig.holdApplicationUntilProxyStarts</code> キーで対応する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -36917,7 +36917,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </blockquote>
 <p><br></p>
 <h3 id="istio_meta_cert_signer"><code>ISTIO_META_CERT_SIGNER</code><a class="headerlink" href="#istio_meta_cert_signer" title="Permanent link">&para;</a></h3>
-<p>デフォルトで<code>""</code> (空文字) である。</p>
+<p>デフォルトで <code>""</code> (空文字) である。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -36937,10 +36937,10 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </blockquote>
 <p><br></p>
 <h3 id="istio_meta_dns_auto_allocate"><code>ISTIO_META_DNS_AUTO_ALLOCATE</code><a class="headerlink" href="#istio_meta_dns_auto_allocate" title="Permanent link">&para;</a></h3>
-<p>デフォルト値は<code>false</code>である。</p>
+<p>デフォルト値は <code>false</code> である。</p>
 <p>固定IPアドレスが設定されていないServiceEntryに対して、IPアドレスを動的に設定する。</p>
-<p><code>ISTIO_META_DNS_CAPTURE</code>を有効にしないと、<code>ISTIO_META_DNS_AUTO_ALLOCATE</code>は機能しない。</p>
-<p><code>PILOT_ENABLE_IP_AUTOALLOCATE</code>と同じであり、Istio 1.25以降で、<code>PILOT_ENABLE_IP_AUTOALLOCATE</code>の方が推奨になった。</p>
+<p><code>ISTIO_META_DNS_CAPTURE</code> を有効にしないと、<code>ISTIO_META_DNS_AUTO_ALLOCATE</code> は機能しない。</p>
+<p><code>PILOT_ENABLE_IP_AUTOALLOCATE</code> と同じであり、Istio 1.25以降で、<code>PILOT_ENABLE_IP_AUTOALLOCATE</code> の方が推奨になった。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -36974,7 +36974,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </blockquote>
 <p><br></p>
 <h3 id="istio_meta_dns_capture"><code>ISTIO_META_DNS_CAPTURE</code><a class="headerlink" href="#istio_meta_dns_capture" title="Permanent link">&para;</a></h3>
-<p>デフォルト値は<code>false</code>である。</p>
+<p>デフォルト値は <code>false</code> である。</p>
 <p>マイクロサービスからのリクエストに、Pod内のistio-proxyやztunnelプロキシをDNSプロキシとして使用できるようになる。</p>
 <p>もしistio-proxyやztunnelプロキシがドメインに紐づくIPアドレスのキャッシュを持つ場合、マイクロサービスにレスポンスを返信する。</p>
 <p>一方でキャッシュを持たない場合、istio-proxyやztunnelプロキシは宛先Podにリクエストを送信する。</p>
@@ -37055,7 +37055,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <p>Istio Ingress Gateway (厳密に言うとGateway) は、独自プロトコルをTCPプロコトルとして扱う。</p>
 <p>そのため、受信した独自プロトコルリクエストにホストヘッダーがあったとしても、これを宛先にフォワーディングできない。</p>
 <p>宛先が独自プロトコルリクエストのポート番号だけで宛先 (例：ServiceEntry、外部サーバーなど) を決めてしまう。</p>
-<p>同じポート番号で待ち受ける複数のServiceEntryがあると、<code>.spec.hosts</code>キーを設定していたとしても、誤った方のServiceEntryを選ぶ可能性がある。</p>
+<p>同じポート番号で待ち受ける複数のServiceEntryがあると、<code>.spec.hosts</code> キーを設定していたとしても、誤ったほうのServiceEntryを選ぶ可能性がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37103,15 +37103,15 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <p><br></p>
 <h3 id="minimum_drain_duration"><code>MINIMUM_DRAIN_DURATION</code><a class="headerlink" href="#minimum_drain_duration" title="Permanent link">&para;</a></h3>
 <p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
-<p>デフォルト値は<code>5</code>である (対応する<code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>キーと同じ) 。</p>
-<p><code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code>変数が<code>true</code>な場合にのみ設定できる。</p>
-<p><code>false</code>の場合は、代わりに<code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>を設定する。</p>
+<p>デフォルト値は <code>5</code> である (対応する <code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code> キーと同じ) 。</p>
+<p><code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code> 変数が <code>true</code> な場合にのみ設定できる。</p>
+<p><code>false</code> の場合は、代わりに <code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code> を設定する。</p>
 <p>istio-proxy内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。</p>
 <p>この接続のドレイン処理前の待機時間を設定する。</p>
-<p><code>terminationDrainDuration</code>との違いとして、<code>MINIMUM_DRAIN_DURATION</code>の時間だけ待機した後、ドレイン処理を開始し、<code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code>によって<code>downstream_cx_active</code>メトリクスが0になるまでドレイン処理をし続ける点である。</p>
-<p>Podの<code>.metadata.annotations.proxy.istio.io/config.drainDuration</code>キーで起こるレースコンディションを解決するための設定で、同じ値を設定するとよい。</p>
+<p><code>terminationDrainDuration</code> との違いとして、<code>MINIMUM_DRAIN_DURATION</code> の時間だけ待機した後、ドレイン処理を開始し、<code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code> によって <code>downstream_cx_active</code> メトリクスが0になるまでドレイン処理をし続ける点である。</p>
+<p>Podの <code>.metadata.annotations.proxy.istio.io/config.drainDuration</code> キーで起こるレースコンディションを解決するための設定で、同じ値を設定するとよい。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Envoyプロセスの接続のドレイン処理前に<code>5</code>秒間に待機し、<code>downstream_cx_active</code>メトリクスが0になるまでドレイン処理を続ける。</p>
+<p>Envoyプロセスの接続のドレイン処理前に <code>5</code> 秒間に待機し、<code>downstream_cx_active</code> メトリクスが0になるまでドレイン処理を続ける。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37131,9 +37131,9 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </blockquote>
 <p><br></p>
 <h3 id="pilot_enable_ip_autoallocate"><code>PILOT_ENABLE_IP_AUTOALLOCATE</code><a class="headerlink" href="#pilot_enable_ip_autoallocate" title="Permanent link">&para;</a></h3>
-<p>デフォルト値は<code>true</code>である。</p>
-<p><code>ISTIO_META_DNS_AUTO_ALLOCATE</code>と同じであり、Istio 1.25以降で、<code>PILOT_ENABLE_IP_AUTOALLOCATE</code>の方が推奨になった。</p>
-<p><code>ISTIO_META_DNS_CAPTURE</code>を有効にしないと、<code>PILOT_ENABLE_IP_AUTOALLOCATE</code>は機能しない。</p>
+<p>デフォルト値は <code>true</code> である。</p>
+<p><code>ISTIO_META_DNS_AUTO_ALLOCATE</code> と同じであり、Istio 1.25以降で、<code>PILOT_ENABLE_IP_AUTOALLOCATE</code> の方が推奨になった。</p>
+<p><code>ISTIO_META_DNS_CAPTURE</code> を有効にしないと、<code>PILOT_ENABLE_IP_AUTOALLOCATE</code> は機能しない。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars">https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars</a></li>
@@ -37258,7 +37258,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <p>datadogのトレースコンテキスト仕様 (datadogの独自仕様) でトレースIDとスパンIDを作成する。</p>
 <p>datadogエージェントの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio Egress GatewayやServiceEntry経由で接続できるようにする。</p>
 <p>ただ、datadogエージェントをサービスメッシュ内に配置すると、Telemetryリソースがdatadogエージェント自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。</p>
-<p><code>.mesh.enableTracing</code>キーも有効化する必要がある。</p>
+<p><code>.mesh.enableTracing</code> キーも有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37277,7 +37277,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <span class="w">        </span><span class="no">envoyFileAccessLog</span>
 </code></pre></div>
 <h4 id="telemetry">▼ Telemetryの定義<a class="headerlink" href="#telemetry" title="Permanent link">&para;</a></h4>
-<p>Datadogに送信するためには、<code>.mesh.extensionProviders[*].datadog</code>キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
+<p>Datadogに送信するためには、<code>.mesh.extensionProviders[*].datadog</code> キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
 <p>分散トレースの設定は以下の通りである。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
@@ -37331,7 +37331,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <p>OTLP形式のエンドポイントであればよいため、OpenTelemetry Collectorも指定できる。</p>
 <p>OpenTelemetry Collectorの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio Egress GatewayやServiceEntry経由で接続できるようにする。</p>
 <p>ただ、OpenTelemetry Collectorをサービスメッシュ内に配置すると、TelemetryリソースがOpenTelemetry Collector自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。</p>
-<p><code>.mesh.enableTracing</code>キーも有効化する必要がある。</p>
+<p><code>.mesh.enableTracing</code> キーも有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37361,7 +37361,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <span class="w">          </span><span class="no">path: /dev/stdout</span>
 </code></pre></div>
 <h4 id="telemetry_1">▼ Telemetryの定義<a class="headerlink" href="#telemetry_1" title="Permanent link">&para;</a></h4>
-<p>OpenTelemetryに送信するためには、<code>.mesh.extensionProviders[*].opentelemetry</code>キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
+<p>OpenTelemetryに送信するためには、<code>.mesh.extensionProviders[*].opentelemetry</code> キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
 <p>分散トレースの設定は以下の通りである。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
@@ -37428,7 +37428,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <p>JaegerはB3をサポートしているため、Jaegerのクライアントとしても使用できる。</p>
 <p>jaegerエージェントの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio Egress GatewayやServiceEntry経由で接続できるようにする。</p>
 <p>ただ、jaegerエージェントをサービスメッシュ内に配置すると、Telemetryリソースがjaegerエージェント自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。</p>
-<p><code>.mesh.enableTracing</code>キーも有効化する必要がある。</p>
+<p><code>.mesh.enableTracing</code> キーも有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37447,7 +37447,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <span class="w">        </span><span class="no">envoyFileAccessLog:</span>
 <span class="w">          </span><span class="no">path: /dev/stdout</span>
 </code></pre></div>
-<p>ZipkinやJaegerに送信するためには、<code>.mesh.extensionProviders[*].zipkin</code>キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
+<p>ZipkinやJaegerに送信するためには、<code>.mesh.extensionProviders[*].zipkin</code> キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
 <p>分散トレースの設定は以下の通りである。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
@@ -37565,7 +37565,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <h2 id="05-istio-sidecar-injector">05. istio-sidecar-injector<a class="headerlink" href="#05-istio-sidecar-injector" title="Permanent link">&para;</a></h2>
 <h3 id="config">config<a class="headerlink" href="#config" title="Permanent link">&para;</a></h3>
 <h4 id="config_1">▼ configとは<a class="headerlink" href="#config_1" title="Permanent link">&para;</a></h4>
-<p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) のため、Istioのサイドカーインジェクションの変数やpatch処理の内容を管理する。</p>
+<p>Istiodコントロールプレーン (<code>discovery</code> コンテナ) のため、Istioのサイドカーインジェクションの変数やpatch処理の内容を管理する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37585,7 +37585,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </code></pre></div>
 <h4 id="templatessidecar">▼ .templates.sidecar<a class="headerlink" href="#templatessidecar" title="Permanent link">&para;</a></h4>
 <p>istio-proxyコンテナの設定値をHelmテンプレートの状態で管理する。</p>
-<p>Istioは、istio-sidecar-injectorの<code>.values</code>キーを使用してテンプレートを動的に完成させる。</p>
+<p>Istioは、istio-sidecar-injectorの <code>.values</code> キーを使用してテンプレートを動的に完成させる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37606,7 +37606,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </blockquote>
 <p><br></p>
 <h3 id="values">values<a class="headerlink" href="#values" title="Permanent link">&para;</a></h3>
-<p>istio-sidecar-injectorの<code>.templates.sidecar</code>キーに出力する値を<code>values</code>ファイルとして管理する。</p>
+<p>istio-sidecar-injectorの <code>.templates.sidecar</code> キーに出力する値を <code>values</code> ファイルとして管理する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37716,7 +37716,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </blockquote>
 <p><br></p>
 <h3 id="enable_deferred_cluster_creation_1"><code>ENABLE_DEFERRED_CLUSTER_CREATION</code><a class="headerlink" href="#enable_deferred_cluster_creation_1" title="Permanent link">&para;</a></h3>
-<p>デフォルト値は<code>true</code>である。</p>
+<p>デフォルト値は <code>true</code> である。</p>
 <p>リクエストがある場合にのみ、Envoyのクラスターを作成する。</p>
 <p>実際に使用されていないEnvoyのクラスターを作成しないことにより、ハードウェアリソースを節約できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
@@ -37740,7 +37740,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </blockquote>
 <p><br></p>
 <h3 id="enable_deferred_stats_creation"><code>ENABLE_DEFERRED_STATS_CREATION</code><a class="headerlink" href="#enable_deferred_stats_creation" title="Permanent link">&para;</a></h3>
-<p>デフォルト値は<code>true</code>である。</p>
+<p>デフォルト値は <code>true</code> である。</p>
 <p>Envoyの統計情報を遅延初期化する。</p>
 <p>ハードウェアリソースを節約できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
@@ -37765,8 +37765,8 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </blockquote>
 <p><br></p>
 <h3 id="enable_enhanced_resource_scoping"><code>ENABLE_ENHANCED_RESOURCE_SCOPING</code><a class="headerlink" href="#enable_enhanced_resource_scoping" title="Permanent link">&para;</a></h3>
-<p>デフォルト値は<code>true</code>である。</p>
-<p><code>meshConfig.discoverySelectors</code>キーを使用できるようにする。</p>
+<p>デフォルト値は <code>true</code> である。</p>
+<p><code>meshConfig.discoverySelectors</code> キーを使用できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37788,8 +37788,8 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </blockquote>
 <p><br></p>
 <h3 id="enable_enhanced_destinationrule_merge"><code>ENABLE_ENHANCED_DESTINATIONRULE_MERGE</code><a class="headerlink" href="#enable_enhanced_destinationrule_merge" title="Permanent link">&para;</a></h3>
-<p>デフォルト値は<code>true</code>である。</p>
-<p>複数のDestinationRuleで<code>.spec.exportTo</code>キーの対象のNamespaceが同じ場合、これらの設定をマージして処理する。</p>
+<p>デフォルト値は <code>true</code> である。</p>
+<p>複数のDestinationRuleで <code>.spec.exportTo</code> キーの対象のNamespaceが同じ場合、これらの設定をマージして処理する。</p>
 <p>もし対象のNamespaceが異なる場合、独立した設定として処理する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
@@ -37812,11 +37812,11 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </blockquote>
 <p><br></p>
 <h3 id="enable_inbound_retry_policy_1"><code>ENABLE_INBOUND_RETRY_POLICY</code><a class="headerlink" href="#enable_inbound_retry_policy_1" title="Permanent link">&para;</a></h3>
-<p>デフォルト値は<code>true</code>である。</p>
-<p>istio-proxyがインバウンド通信をマイクロサービスに送信するときのリトライ (執筆時点2025/02/26では<code>reset-before-request</code>のみ) を設定する。</p>
+<p>デフォルト値は <code>true</code> である。</p>
+<p>istio-proxyがインバウンド通信をマイクロサービスに送信するときのリトライ (執筆時点2025/02/26では <code>reset-before-request</code> のみ) を設定する。</p>
 <p>今後は、宛先istio-proxyがマイクロサービスに対してリトライできるようになる。</p>
 <p>istio-proxy間の問題の切り分けがしやすくなる。</p>
-<p><code>false</code>の場合、送信元istio-proxyから宛先istio-proxyへ通信時、送信元istio-proxyしかリトライできない。</p>
+<p><code>false</code> の場合、送信元istio-proxyから宛先istio-proxyへ通信時、送信元istio-proxyしかリトライできない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37839,12 +37839,12 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </blockquote>
 <p><br></p>
 <h3 id="exclude_unsafe_503_from_default_retry_1"><code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code><a class="headerlink" href="#exclude_unsafe_503_from_default_retry_1" title="Permanent link">&para;</a></h3>
-<p>デフォルト値は<code>true</code>である。</p>
-<p>POSTリクエストの結果で、マイクロサービスから<code>503</code>ステータスが返信された場合、未処理とは限らない。</p>
+<p>デフォルト値は <code>true</code> である。</p>
+<p>POSTリクエストの結果で、マイクロサービスから <code>503</code> ステータスが返信された場合、未処理とは限らない。</p>
 <p>この場合にリトライすると結果的に二重で処理が実行されてしまう。</p>
-<p>そのため、マイクロサービスから<code>503</code>ステータスが返信された場合は、リトライしないようにする。</p>
-<p>なおこの問題は、<code>reset</code>によるリトライでも起こりうるため、<code>reset</code>もデフォルトから外れている。</p>
-<p>リトライの結果でistio-proxyが<code>503</code>レスポンスを返信する場合とは区別する。</p>
+<p>そのため、マイクロサービスから <code>503</code> ステータスが返信された場合は、リトライしないようにする。</p>
+<p>なおこの問題は、<code>reset</code> によるリトライでも起こりうるため、<code>reset</code> もデフォルトから外れている。</p>
+<p>リトライの結果でistio-proxyが <code>503</code> レスポンスを返信する場合とは区別する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37869,7 +37869,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <p><br></p>
 <h3 id="pilot_trace_sampling"><code>PILOT_TRACE_SAMPLING</code><a class="headerlink" href="#pilot_trace_sampling" title="Permanent link">&para;</a></h3>
 <p>分散トレースの収集率を設定する。</p>
-<p>基本的には<code>100</code>% (値は<code>1</code>) を設定する。</p>
+<p>基本的には <code>100</code>% (値は <code>1</code>) を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37933,7 +37933,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </blockquote>
 <p><br></p>
 <h3 id="pilot_enable_mysql_filter"><code>PILOT_ENABLE_MYSQL_FILTER</code><a class="headerlink" href="#pilot_enable_mysql_filter" title="Permanent link">&para;</a></h3>
-<p>Envoyの<code>mysql_proxy</code>を有効化し、MySQLのメトリクスを収集できるようにする。</p>
+<p>Envoyの <code>mysql_proxy</code> を有効化し、MySQLのメトリクスを収集できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37947,7 +37947,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PILOT_ENABLE_MYSQL_FILTER</span>
 <span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
-<p><code>proxyStatsMatcher</code>でも設定が必要である。</p>
+<p><code>proxyStatsMatcher</code> でも設定が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37968,7 +37968,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 </blockquote>
 <p><br></p>
 <h3 id="pilot_enable_redis_filter"><code>PILOT_ENABLE_REDIS_FILTER</code><a class="headerlink" href="#pilot_enable_redis_filter" title="Permanent link">&para;</a></h3>
-<p>Envoyの<code>redis_proxy</code>を有効化し、MySQLのメトリクスを収集できるようにする。</p>
+<p>Envoyの <code>redis_proxy</code> を有効化し、MySQLのメトリクスを収集できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37982,7 +37982,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PILOT_ENABLE_REDIS_FILTER</span>
 <span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
-<p><code>proxyStatsMatcher</code>でも設定が必要である。</p>
+<p><code>proxyStatsMatcher</code> でも設定が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -38043,7 +38043,7 @@ Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatch�
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月11日 20:45:26 JST">2025-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

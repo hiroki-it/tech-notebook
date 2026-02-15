@@ -34146,8 +34146,8 @@
 <h3 id="iac_1">アプリとIaCを異なるリポジトリで管理 (推奨)<a class="headerlink" href="#iac_1" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ 各チャートを同じリポジトリで管理する (推奨)<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>各チャートを同じリポジトリで管理する。</p>
-<p>各チャートの全てのバージョンをリポジトリ内で管理すると、<code>index.yaml</code>ファイルやチャートアーカイブ (<code>.tgz</code>形式ファイル) が必要になってしまう。</p>
-<p>そのため、<code>1</code>個のバージョンのみを管理する。</p>
+<p>各チャートの全てのバージョンをリポジトリ内で管理すると、<code>index.yaml</code> ファイルやチャートアーカイブ (<code>.tgz</code> 形式ファイル) が必要になってしまう。</p>
+<p>そのため、<code>1</code> 個のバージョンのみを管理する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># KubernetesとHelmを同じリポジトリにする場合</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── kubernetes/</span>
@@ -34162,7 +34162,7 @@
 </code></pre></div>
 <h4 id="_4">▼ 各チャートを異なるリポジトリで管理する<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>各チャートを異なるリポジトリで管理する。</p>
-<p>この方法であると、リポジトリが増えすぎてしまうため、少なくとも同じ種類のチャートは同じリポジトリで管理する方が良い。</p>
+<p>この方法であると、リポジトリが増えすぎてしまうため、少なくとも同じ種類のチャートは同じリポジトリで管理するほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># KubernetesとHelmを同じリポジトリにする場合</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── kubernetes/</span>
@@ -34176,9 +34176,9 @@
 <p><br></p>
 <h2 id="02">02. ディレクトリ構成規約<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_5">通常<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>最も基本的な構成。</p>
-<p>実行環境別に<code>values</code>ファイルを作成する。</p>
-<p>また、実行環境の差は設定値だけとし、<code>templates</code>ディレクトリ配下にマニフェストを配置する。</p>
+<p>もっとも基本的な構成。</p>
+<p>実行環境別に <code>values</code> ファイルを作成する。</p>
+<p>また、実行環境の差は設定値だけとし、<code>templates</code> ディレクトリ配下にマニフェストを配置する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── foo-chart/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── templates/</span>
@@ -34195,8 +34195,8 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_6">実行環境別<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>実行環境別に<code>values</code>ファイルを作成する。</p>
-<p>また、実行環境ごとにマニフェストの構造に差分があるとし、<code>templates</code>ディレクトリ配下に実行環境別のディレクトリを配置する。</p>
+<p>実行環境別に <code>values</code> ファイルを作成する。</p>
+<p>また、実行環境ごとにマニフェストの構造に差分があるとし、<code>templates</code> ディレクトリ配下に実行環境別のディレクトリを配置する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/codefresh-contrib/helm-promotion-sample-app">https://github.com/codefresh-contrib/helm-promotion-sample-app</a></li>
@@ -34219,7 +34219,7 @@
 <p><br></p>
 <h3 id="_7">リソース別<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>リソース別にチャートを作成する。</p>
-<p>また、<code>values</code>ファイルを配置するディレクトリをルートに配置する。</p>
+<p>また、<code>values</code> ファイルを配置するディレクトリをルートに配置する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── kubernetes/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── templates/</span>
@@ -34243,8 +34243,8 @@
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── prd/</span><span class="w"> </span><span class="c1"># 本番環境へのインストール時に出力するvaluesファイル</span>
 <span class="nn">...</span>
 </code></pre></div>
-<p>ルートに配置した<code>values</code>ディレクトリには<code>values</code>ファイルを配置する。</p>
-<p><code>values</code>ファイルは、リソース別に管理する。</p>
+<p>ルートに配置した <code>values</code> ディレクトリには <code>values</code> ファイルを配置する。</p>
+<p><code>values</code> ファイルは、リソース別に管理する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 共通のvaluesファイル</span>
 <span class="c1">#============</span>
 <span class="c1"># Global</span>
@@ -34281,7 +34281,7 @@
 <h4 id="_10">▼ ロジック<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>可能な限り、Kubernetesリソースごとのテンプレートを再利用するようにする。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>このConfigMapのマニフェストが<code>1</code>個あれば、<code>values</code>ファイルによらずにConfigMapを作成できる。</p>
+<p>このConfigMapのマニフェストが <code>1</code> 個あれば、<code>values</code> ファイルによらずにConfigMapを作成できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34292,16 +34292,16 @@
 <span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <h4 id="_11">▼ 拡張子<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>拡張子は<code>yaml</code>とする。</p>
+<p>拡張子は <code>yaml</code> とする。</p>
 <blockquote>
 <ul>
 <li><a href="https://helm.sh/docs/chart_best_practices/templates/">https://helm.sh/docs/chart_best_practices/templates/</a></li>
 </ul>
 </blockquote>
 <h4 id="_12">▼ アクションの選定<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p><code>yaml</code>ファイルを丸ごと出力するようなアクション (例：<code>include</code>関数など) はできるだけ避け、マニフェストの共有部分を増やす。</p>
-<p>差分があるところに関しては、<code>Values</code>関数を使用し、<code>values</code>ファイルからパラメーターを渡すだけになるように設計する。</p>
-<p>公式リポジトリの実装方法を見て学んだ方が早い。</p>
+<p><code>yaml</code> ファイルを丸ごと出力するようなアクション (例：<code>include</code> 関数など) はできるだけ避け、マニフェストの共有部分を増やす。</p>
+<p>差分があるところに関しては、<code>Values</code> 関数を使用し、<code>values</code> ファイルからパラメーターを渡すだけになるように設計する。</p>
+<p>公式リポジトリの実装方法を見て学んだほうが早い。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/istio/istio/blob/1.14.3/manifests/charts">https://github.com/istio/istio/blob/1.14.3/manifests/charts</a></li>
@@ -34311,14 +34311,14 @@
 <h2 id="04">04. 開発環境<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="helm_2">helmコマンドのセットアップ<a class="headerlink" href="#helm_2" title="Permanent link">&para;</a></h3>
 <h4 id="_13">▼ バージョンの固定<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>バージョンを統一するために、<code>.tool-versions</code>ファイルを作成する。</p>
+<p>バージョンを統一するために、<code>.tool-versions</code> ファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>asdf<span class="w"> </span><span class="nb">local</span><span class="w"> </span>helm<span class="w"> </span>&lt;バージョン&gt;
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># .tool-versionsファイル</span>
 helm<span class="w"> </span>&lt;バージョンタグ&gt;
 </code></pre></div>
-<p>asdfパッケージを使用して、<code>helm</code>コマンドをインストールする。</p>
-<p><code>.tool-versions</code>ファイルに定義したバージョンがインストールされる。</p>
+<p>asdfパッケージを使用して、<code>helm</code> コマンドをインストールする。</p>
+<p><code>.tool-versions</code> ファイルに定義したバージョンがインストールされる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>asdf<span class="w"> </span>plugin<span class="w"> </span>list<span class="w"> </span>all<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>helm
 
 helm<span class="w">   </span>*https://github.com/Antiarchitect/asdf-helm.git
@@ -34331,12 +34331,12 @@ $<span class="w"> </span>asdf<span class="w"> </span>install
 <p><br></p>
 <h2 id="05">05. チャートのアップグレード<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_14">チャートのアップグレードとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<p>新バージョンのチャートを使用して、改めてHelmリリースを実行することにより、チャートをアップグレードする。</p>
+<p>新バージョンのチャートを使用して、あらためてHelmリリースを実行することにより、チャートをアップグレードする。</p>
 <p><br></p>
 <h3 id="_15">チャートのアップグレード方法<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="crd">▼ 非CRDのみからなるチャート場合<a class="headerlink" href="#crd" title="Permanent link">&para;</a></h4>
 <p>非CRDのみからなるチャートのアップグレードは以下の手順で行う。</p>
-<p>アップグレードが正常に完了したことがわかるように、<code>--wait</code>オプションを有効化すると良い。</p>
+<p>アップグレードが正常に完了したことがわかるように、<code>--wait</code> オプションを有効化すると良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback">https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback</a></li>
@@ -34345,7 +34345,7 @@ $<span class="w"> </span>asdf<span class="w"> </span>install
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p><code>helm upgrade</code>コマンドを実行することにより、インストール済みのチャートをアップグレードする。</p>
+<p><code>helm upgrade</code> コマンドを実行することにより、インストール済みのチャートをアップグレードする。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;<span class="w"> </span>--wait
@@ -34360,8 +34360,8 @@ $<span class="w"> </span>asdf<span class="w"> </span>install
 </code></pre></div>
 <h4 id="crd_1">▼ CRDを含むチャートの場合<a class="headerlink" href="#crd_1" title="Permanent link">&para;</a></h4>
 <p>Helmは、CRDを含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。</p>
-<p>そのため、アップグレードとアンインストールは<code>kubectl</code>コマンドで実行する必要がある。</p>
-<p>補足として、他のツール (例：ArgoCD、Flux) を介してHelmを実行する場合、<code>helm upgrade</code>コマンドではなく、<code>helm template</code>コマンドと<code>kubectl apply</code>コマンドを使用しているため、この問題は考慮しなくともよくなる。</p>
+<p>そのため、アップグレードとアンインストールは <code>kubectl</code> コマンドで実行する必要がある。</p>
+<p>補足として、他のツール (例：ArgoCD、Flux) を介してHelmを実行する場合、<code>helm upgrade</code> コマンドではなく、<code>helm template</code> コマンドと <code>kubectl apply</code> コマンドを使用しているため、この問題は考慮しなくともよくなる。</p>
 <blockquote>
 <ul>
 <li><a href="https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you">https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you</a></li>
@@ -34408,7 +34408,7 @@ $<span class="w"> </span>asdf<span class="w"> </span>install
 <p><br></p>
 <h3 id="apiversion">非推奨apiVersionのアップグレード<a class="headerlink" href="#apiversion" title="Permanent link">&para;</a></h3>
 <p>チャートの含まれる廃止予定のAPIをアップグレードせずに、Kubernetesをアップグレードしてしまったとする。</p>
-<p>Helmは、<code>helm upgrade</code>コマンド時に、デプロイ済みリリースとデプロイ予定リリースの間で差分パッチを作成しようとする。</p>
+<p>Helmは、<code>helm upgrade</code> コマンド時に、デプロイ済みリリースとデプロイ予定リリースの間で差分パッチを作成しようとする。</p>
 <p>この時、APIがすでに存在しないマニフェストが含まれると、差分パッチを作れずにエラーになる。</p>
 <p>これが起こってしまった場合、Helmのデプロイ済みのリリースを直接書き換える必要がある。</p>
 <p>Helmは、デプロイ済みのリリースをCluster内でSecretのデータとして管理している。</p>
@@ -34421,7 +34421,7 @@ $<span class="w"> </span>asdf<span class="w"> </span>install
 <p><br></p>
 <h2 id="06-ci">06. CIパイプライン<a class="headerlink" href="#06-ci" title="Permanent link">&para;</a></h2>
 <h3 id="_17">仕様書自動作成<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<p>helm-docsを使用して、<code>Chart.yaml</code>　ファイルと<code>values</code>ファイルに基づくチャートの仕様書を作成する。</p>
+<p>helm-docsを使用して、<code>Chart.yaml</code>　ファイルと <code>values</code> ファイルに基づくチャートの仕様書を作成する。</p>
 <p>作成した仕様書を自動コミットできるようにする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm-docs<span class="w"> </span>-f<span class="w"> </span>&lt;valuesファイル名&gt;
 </code></pre></div>
@@ -34493,7 +34493,7 @@ Autogenerated from chart metadata using [<span class="nt">helm-docs v1.12.0</spa
 <tbody>
 <tr>
 <td>チャートの構造テスト</td>
-<td>Helmの静的解析コマンド (<code>helm lint</code>コマンド) を使用する。チャートの構造 (valuesファイルがあるか、Chart.yamlがあるかなど) を検証する。</td>
+<td>Helmの静的解析コマンド (<code>helm lint</code> コマンド) を使用する。チャートの構造 (valuesファイルがあるか、Chart.yamlがあるかなど) を検証する。</td>
 <td></td>
 </tr>
 <tr>
@@ -34503,7 +34503,7 @@ Autogenerated from chart metadata using [<span class="nt">helm-docs v1.12.0</spa
 </tr>
 <tr>
 <td>チャートの脆弱性診断</td>
-<td>外部の脆弱性診断ツール (例：記入中...) を使用する。マニフェストではなく、チャートの実装方法に起因する脆弱性を検証する。補足として、チャートのインストールによるKubernetesリソースのセキュリティスキャン (例：trivy) は、既に作成されたKubernetesリソースに対する検証のため、ここには含めない。</td>
+<td>外部の脆弱性診断ツール (例：記入中...) を使用する。マニフェストではなく、チャートの実装方法に起因する脆弱性を検証する。補足として、チャートのインストールによるKubernetesリソースのセキュリティスキャン (例：trivy) は、すでに作成されたKubernetesリソースに対する検証のため、ここには含めない。</td>
 <td>・<a href="https://blog.aquasec.com/trivy-v0.29.0-rbac-security">https://blog.aquasec.com/trivy-v0.29.0-rbac-security</a></td>
 </tr>
 </tbody>
@@ -34515,8 +34515,8 @@ Autogenerated from chart metadata using [<span class="nt">helm-docs v1.12.0</spa
 </ul>
 </blockquote>
 <h4 id="_21">▼ ドライラン<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>テスト環境に対して<code>helm diff</code>コマンドを実行することにより、ドライランを実施する。</p>
-<p><code>helm diff</code>コマンドの結果は可読性が高いわけではないため、差分が多くなるほど確認が大変になる。</p>
+<p>テスト環境に対して <code>helm diff</code> コマンドを実行することにより、ドライランを実施する。</p>
+<p><code>helm diff</code> コマンドの結果は可読性が高いわけではないため、差分が多くなるほど確認が大変になる。</p>
 <p>Helmリリースの粒度を小さくし、差分が少なくなるようにする。</p>
 <blockquote>
 <ul>
@@ -34524,10 +34524,10 @@ Autogenerated from chart metadata using [<span class="nt">helm-docs v1.12.0</spa
 </ul>
 </blockquote>
 <h4 id="_22">▼ ユニットテスト<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>Helmのユニットテストコマンド (<code>helm test</code>コマンド) を使用して、機能追加/変更を含むチャートが単体で正しく動作するか否かを検証する。</p>
+<p>Helmのユニットテストコマンド (<code>helm test</code> コマンド) を使用して、機能追加/変更を含むチャートが単体でまさしく動作するか否かを検証する。</p>
 <p>代わりに、外部のテストツール (例：Terratest) を使用しても良い。</p>
-<p><code>helm test</code>コマンドを使用する場合、チャートの<code>/templates/test</code>ディレクトリ以下にテストコードを配置する必要がある。</p>
-<p>そのため、<code>helm upgrade</code>コマンドでインストールされるHelmリリースにテストコードも含まれてしまうことに注意する。</p>
+<p><code>helm test</code> コマンドを使用する場合、チャートの <code>/templates/test</code> ディレクトリ以下にテストコードを配置する必要がある。</p>
+<p>そのため、<code>helm upgrade</code> コマンドでインストールされるHelmリリースにテストコードも含まれてしまうことに注意する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/">https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/</a></li>
@@ -34545,7 +34545,7 @@ Autogenerated from chart metadata using [<span class="nt">helm-docs v1.12.0</spa
 <h3 id="_24">ホワイトボックステスト結果の通知<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <h4 id="helm_3">▼ Helmを採用する場合<a class="headerlink" href="#helm_3" title="Permanent link">&para;</a></h4>
 <p>Helmには通知能力がなく、手動で知らせる必要がある。</p>
-<p>そこで、<code>helm diff</code>コマンドをGitOpsによるCDパイプライン上で実行していない (手動で実行している) 場合、<code>helm diff</code>コマンドの結果をクリップボードに出力し、これをプルリクに貼り付ける。</p>
+<p>そこで、<code>helm diff</code> コマンドをGitOpsによるCDパイプライン上で実行していない (手動で実行している) 場合、<code>helm diff</code> コマンドの結果をクリップボードに出力し、これをプルリクに貼り付ける。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>diff<span class="w"> </span>&lt;チャート名&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--no-color<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A<span class="w"> </span><span class="m">1000</span><span class="w"> </span>Comparing<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>pbcopy
@@ -34580,8 +34580,8 @@ foo-namespace,<span class="w"> </span>foo-deployment,<span class="w"> </span>Dep
 </ul>
 </blockquote>
 <h4 id="_27">▼ 結合テスト<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
-<p>テスト環境に対して<code>helm upgrade</code>コマンドを実行することにより、追加/変更を含む複数のチャートが正しく連携するか否かを検証する。</p>
-<p>これは、CDパイプライン上で実施しても良いが、デメリットとして<code>helm upgrade</code>コマンドで出力される警告ログを確認できなくなってしまう。</p>
+<p>テスト環境に対して <code>helm upgrade</code> コマンドを実行することにより、追加/変更を含む複数のチャートが正しく連携するか否かを検証する。</p>
+<p>これは、CDパイプライン上で実施しても良いが、デメリットとして <code>helm upgrade</code> コマンドで出力される警告ログを確認できなくなってしまう。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/">https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/</a></li>
@@ -34591,8 +34591,8 @@ foo-namespace,<span class="w"> </span>foo-deployment,<span class="w"> </span>Dep
 </ul>
 </blockquote>
 <h4 id="_28">▼ システムテスト<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
-<p>テスト環境に対して<code>helm upgrade</code>コマンドを実行することにより、既存機能/追加/変更を含む全てのチャートを組み合わせたシステムテストを実施する。</p>
-<p>これは、GitOpsによるCDパイプライン上で実施しても良いが、デメリットとしてGitOpsツール上では<code>helm upgrade</code>コマンドで出力される警告ログを確認できなくなってしまう。</p>
+<p>テスト環境に対して <code>helm upgrade</code> コマンドを実行することにより、既存機能/追加/変更を含む全てのチャートを組み合わせたシステムテストを実施する。</p>
+<p>これは、GitOpsによるCDパイプライン上で実施しても良いが、デメリットとしてGitOpsツール上では <code>helm upgrade</code> コマンドで出力される警告ログを確認できなくなってしまう。</p>
 <blockquote>
 <ul>
 <li><a href="https://camunda.com/blog/2022/03/test/">https://camunda.com/blog/2022/03/test/</a></li>
@@ -34604,7 +34604,7 @@ foo-namespace,<span class="w"> </span>foo-deployment,<span class="w"> </span>Dep
 <p><br></p>
 <h3 id="_30">ロールバック<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
 <h4 id="helm_5">▼ Helmを採用する場合<a class="headerlink" href="#helm_5" title="Permanent link">&para;</a></h4>
-<p><code>helm history</code>コマンドで過去のHelmリリースタグ (リビジョン) を確認し、<code>helm rollback</code>コマンドでロールバックする。</p>
+<p><code>helm history</code> コマンドで過去のHelmリリースタグ (リビジョン) を確認し、<code>helm rollback</code> コマンドでロールバックする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># リリース名とリビジョンを確認する</span>
 $<span class="w"> </span>helm<span class="w"> </span>ls<span class="w"> </span>-a<span class="w"> </span>-n<span class="w"> </span>foo
 
@@ -34638,7 +34638,7 @@ $<span class="w"> </span>helm<span class="w"> </span>rollback<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年1月9日 22:01:53 JST">2026-01-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

@@ -24356,12 +24356,12 @@
   <a href="#01-helm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. helmコマンド
+        01. helm コマンド
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. helmコマンド">
+    <nav class="md-nav" aria-label="01. helm コマンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33692,12 +33692,12 @@
   <a href="#01-helm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. helmコマンド
+        01. helm コマンド
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. helmコマンド">
+    <nav class="md-nav" aria-label="01. helm コマンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -34778,7 +34778,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-helm">01. <code>helm</code>コマンド<a class="headerlink" href="#01-helm" title="Permanent link">&para;</a></h2>
+<h2 id="01-helm">01. <code>helm</code> コマンド<a class="headerlink" href="#01-helm" title="Permanent link">&para;</a></h2>
 <h3 id="create">create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h3>
 <h4 id="create_1">▼ createとは<a class="headerlink" href="#create_1" title="Permanent link">&para;</a></h4>
 <p>指定したパスにチャートのサンプルファイルを作成する。</p>
@@ -34796,7 +34796,7 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>destroy<span class="w"> </span>&lt;Helmリリース名&gt;
 </code></pre></div>
 <p>Helmは、CRDを含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。</p>
-<p>そのため、<code>helm destroy</code>コマンド時にはCRDを削除しない仕様になっている。</p>
+<p>そのため、<code>helm destroy</code> コマンド時にはCRDを削除しない仕様になっている。</p>
 <p>CRDは手動で削除する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>crd
 
@@ -34810,8 +34810,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p><br></p>
 <h3 id="dependency">dependency<a class="headerlink" href="#dependency" title="Permanent link">&para;</a></h3>
 <h4 id="build">▼ build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h4>
-<p><code>requirements.yaml</code>ファイルに定義された依存対象のサブチャートを、<code>chart</code>ディレクトリ内にダウンロードする。</p>
-<p>また、<code>Chart.lock</code>ファイルを作成する。</p>
+<p><code>requirements.yaml</code> ファイルに定義された依存対象のサブチャートを、<code>chart</code> ディレクトリ内にダウンロードする。</p>
+<p>また、<code>Chart.lock</code> ファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>dependency<span class="w"> </span>build
 
 Hang<span class="w"> </span>tight<span class="w"> </span><span class="k">while</span><span class="w"> </span>we<span class="w"> </span>grab<span class="w"> </span>the<span class="w"> </span>latest<span class="w"> </span>from<span class="w"> </span>your<span class="w"> </span>chart<span class="w"> </span>repositories...
@@ -34864,7 +34864,7 @@ Saving<span class="w"> </span><span class="m">1</span><span class="w"> </span>ch
 </blockquote>
 <h3 id="get">get<a class="headerlink" href="#get" title="Permanent link">&para;</a></h3>
 <h4 id="get_1">▼ getとは<a class="headerlink" href="#get_1" title="Permanent link">&para;</a></h4>
-<p>特定のHelmリリースに含まれる<code>helm template</code>コマンドの結果を取得する。</p>
+<p>特定のHelmリリースに含まれる <code>helm template</code> コマンドの結果を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>get<span class="w"> </span>&lt;Helmリリース名&gt;
 </code></pre></div>
 <blockquote>
@@ -34927,7 +34927,7 @@ REVISION<span class="w">         </span>UPDATED<span class="w">                 
 <tr>
 <td>チャートアーカイブへのパス</td>
 <td><code>./foo-chart-&lt;バージョンタグ&gt;.tgz</code></td>
-<td><code>values</code>ファイルを使用する場合、<code>values</code>ファイルはチャートアーカイブ (<code>.tgz</code>形式ファイル) の外にある必要がある。<br>・<a href="https://helm.sh/docs/helm/helm_install/">https://helm.sh/docs/helm/helm_install/</a></td>
+<td><code>values</code> ファイルを使用する場合、<code>values</code> ファイルはチャートアーカイブ (<code>.tgz</code> 形式ファイル) の外にある必要がある。<br>・<a href="https://helm.sh/docs/helm/helm_install/">https://helm.sh/docs/helm/helm_install/</a></td>
 </tr>
 </tbody>
 </table>
@@ -34937,7 +34937,7 @@ REVISION<span class="w">         </span>UPDATED<span class="w">                 
 </ul>
 </blockquote>
 <h4 id="-disable-openapi-validation">▼ --disable-openapi-validation<a class="headerlink" href="#-disable-openapi-validation" title="Permanent link">&para;</a></h4>
-<p>チャートをインストールする時に、OpenAPIを使用したマニフェストの静的解析を無効化する。</p>
+<p>チャートをインストールするときに、OpenAPIを使用したマニフェストの静的解析を無効化する。</p>
 <p>特に、CRDのファイルサイズが大きすぎてインストールできない場合に使用する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>--disable-openapi-validation<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;
 </code></pre></div>
@@ -34953,19 +34953,19 @@ kind:<span class="w"> </span>Deployment
 ...
 </code></pre></div>
 <h4 id="-f">▼ -f<a class="headerlink" href="#-f" title="Permanent link">&para;</a></h4>
-<p>指定した<code>values</code>ファイル使用して、<code>helm install</code>コマンドを実行する。</p>
+<p>指定した <code>values</code> ファイル使用して、<code>helm install</code> コマンドを実行する。</p>
 <p>チャートのルートディレクトリに『<code>values.yaml</code>』の名前でファイルが存在している場合、自動的に読み込まれる.</p>
 <p>そのため、このオプションは不要である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;
 </code></pre></div>
-<p>これ以外の名前の場合は、オプションによる<code>values</code>ファイルの指定が必要になる。</p>
-<p>なお、指定したvaluesファイルとは別に、チャートのルートディレクトリの<code>values</code>ファイルも暗黙的に読み込まれていることに注意する。</p>
-<p>この<code>values</code>ファイルは、デフォルト値として使用される。</p>
+<p>これ以外の名前の場合は、オプションによる <code>values</code> ファイルの指定が必要になる。</p>
+<p>なお、指定したvaluesファイルとは別に、チャートのルートディレクトリの <code>values</code> ファイルも暗黙的に読み込まれていることに注意する。</p>
+<p>この <code>values</code> ファイルは、デフォルト値として使用される。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># デフォルト値として、チャートのルートディレクトリのvaluesファイルも暗黙的に読み込まれている</span>
 $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml
 </code></pre></div>
-<p>複数を指定することができ、同じ設定値がある場合は、より後に読み込んだ<code>values</code>ファイルの設定値を優先する。</p>
-<p>同様にして、指定したvaluesファイルとは別に、チャートのルートディレクトリの<code>values</code>ファイルも暗黙的に読み込まれていることに注意する。</p>
+<p>複数を指定でき、同じ設定値がある場合は、より後に読み込んだ <code>values</code> ファイルの設定値を優先する。</p>
+<p>同様にして、指定したvaluesファイルとは別に、チャートのルートディレクトリの <code>values</code> ファイルも暗黙的に読み込まれていることに注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># デフォルト値として、チャートのルートディレクトリのvaluesファイルも暗黙的に読み込まれている</span>
 $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>bar-values.yaml
 </code></pre></div>
@@ -34975,7 +34975,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="kube-context">▼ kube-context<a class="headerlink" href="#kube-context" title="Permanent link">&para;</a></h4>
-<p><code>helm</code>コマンドの向き先を指定して、<code>helm install</code>コマンドを実行する。</p>
+<p><code>helm</code> コマンドの向き先を指定して、<code>helm install</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Minikubeの場合</span>
 $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/&lt;チャート名&gt;<span class="w"> </span>--kube-context<span class="w"> </span>minikube
 </code></pre></div>
@@ -34983,7 +34983,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/&lt;チャート名&gt;<span class="w"> </span>--kube-context<span class="w"> </span>&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/prd-foo-eks-cluster
 </code></pre></div>
 <h4 id="-generate-name">▼ --generate-name<a class="headerlink" href="#-generate-name" title="Permanent link">&para;</a></h4>
-<p>リリース名を省略して、<code>helm install</code>コマンドを実行する。</p>
+<p>リリース名を省略して、<code>helm install</code> コマンドを実行する。</p>
 <p>代わりに、ランダム値がリリース名になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;チャートリポジトリ名&gt;/&lt;チャート名&gt;<span class="w"> </span>--generate-name
 </code></pre></div>
@@ -34995,7 +34995,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="-force">▼ --force<a class="headerlink" href="#-force" title="Permanent link">&para;</a></h4>
 <p>既存のマニフェストを置き換える。</p>
-<p><code>kubectl replace</code>コマンドに近い。</p>
+<p><code>kubectl replace</code> コマンドに近い。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--force
 </code></pre></div>
 <blockquote>
@@ -35004,7 +35004,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="-wait">▼ --wait<a class="headerlink" href="#-wait" title="Permanent link">&para;</a></h4>
-<p>作成したPodがReady状態になるまで、<code>helm install</code>コマンドの完了を待機する。</p>
+<p>作成したPodがReady状態になるまで、<code>helm install</code> コマンドの完了を待機する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--wait
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
@@ -35018,7 +35018,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="lint">lint<a class="headerlink" href="#lint" title="Permanent link">&para;</a></h3>
 <h4 id="lint_1">▼ lintとは<a class="headerlink" href="#lint_1" title="Permanent link">&para;</a></h4>
-<p>チャートの構造の誤り (例：<code>values</code>ファイルや<code>Chart.yaml</code>ファイルがあるか) を実行する。</p>
+<p>チャートの構造の誤り (例：<code>values</code> ファイルや <code>Chart.yaml</code> ファイルがあるか) を実行する。</p>
 <p>例えば、以下ではエラーになっていない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>lint<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml
 
@@ -35046,9 +35046,9 @@ Error:<span class="w"> </span><span class="m">1</span><span class="w"> </span>ch
 </ul>
 </blockquote>
 <h4 id="-f_1">▼ -f<a class="headerlink" href="#-f_1" title="Permanent link">&para;</a></h4>
-<p>指定した<code>values</code>ファイル使用して、<code>helm lint</code>コマンドを実行する。</p>
-<p>なお、指定したvaluesファイルとは別に、チャートのルートディレクトリの<code>values</code>ファイルも暗黙的に読み込まれていることに注意する。</p>
-<p>この<code>values</code>ファイルは、デフォルト値として使用される。</p>
+<p>指定した <code>values</code> ファイル使用して、<code>helm lint</code> コマンドを実行する。</p>
+<p>なお、指定したvaluesファイルとは別に、チャートのルートディレクトリの <code>values</code> ファイルも暗黙的に読み込まれていることに注意する。</p>
+<p>この <code>values</code> ファイルは、デフォルト値として使用される。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># デフォルト値として、チャートのルートディレクトリのvaluesファイルも暗黙的に読み込まれている</span>
 $<span class="w"> </span>helm<span class="w"> </span>lint<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml
 
@@ -35066,8 +35066,8 @@ $<span class="w"> </span>helm<span class="w"> </span>lint<span class="w"> </span
 <span class="o">[</span>ERROR<span class="o">]</span><span class="w"> </span>...
 </code></pre></div>
 <h4 id="-strict">▼ --strict<a class="headerlink" href="#-strict" title="Permanent link">&para;</a></h4>
-<p>warningでも終了コード<code>1</code> (失敗) で終えるようにする。</p>
-<p>また、<code>values</code>ファイルの値がHelmテンプレートで使用されていない場合に、これを警告する。</p>
+<p>warningでも終了コード <code>1</code> (失敗) で終えるようにする。</p>
+<p>また、<code>values</code> ファイルの値がHelmテンプレートで使用されていない場合に、これを警告する。</p>
 <p>執筆時点 (2023/05/26) でまだリリースされていない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>lint<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>--strict<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml
 </code></pre></div>
@@ -35080,7 +35080,7 @@ $<span class="w"> </span>helm<span class="w"> </span>lint<span class="w"> </span
 <h3 id="list">list<a class="headerlink" href="#list" title="Permanent link">&para;</a></h3>
 <h4 id="list_1">▼ listとは<a class="headerlink" href="#list_1" title="Permanent link">&para;</a></h4>
 <p>Helmリリースの一覧を取得する。</p>
-<p>チャートは、バージョンによって中身の<code>yaml</code>ファイルに差があるため、ここでチャートのバージョンを確認すると良い。</p>
+<p>チャートは、バージョンによって中身の <code>yaml</code> ファイルに差があるため、ここでチャートのバージョンを確認すると良い。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>list
 
 NAME<span class="w">         </span>VERSION<span class="w">   </span>UPDATED<span class="w">                   </span>STATUS<span class="w">    </span>CHART
@@ -35094,7 +35094,7 @@ NAME<span class="w">         </span>VERSION<span class="w">   </span>UPDATED<spa
 <p><br></p>
 <h3 id="package">package<a class="headerlink" href="#package" title="Permanent link">&para;</a></h3>
 <h4 id="package_1">▼ packageとは<a class="headerlink" href="#package_1" title="Permanent link">&para;</a></h4>
-<p>チャートからチャートアーカイブ (<code>.tgz</code>形式ファイル) を作成する。</p>
+<p>チャートからチャートアーカイブ (<code>.tgz</code> 形式ファイル) を作成する。</p>
 <p>または、すでにアーカイブが存在する場合は更新する。</p>
 <p>アーカイブ名にはバージョンが設定される。</p>
 <p>複数のチャートを指定できる。</p>
@@ -35108,7 +35108,7 @@ Successfully<span class="w"> </span>packaged<span class="w"> </span>chart<span c
 </ul>
 </blockquote>
 <h4 id="-d">▼ -d<a class="headerlink" href="#-d" title="Permanent link">&para;</a></h4>
-<p>チャートアーカイブ (<code>.tgz</code>形式ファイル) の作成先のディレクトリを指定しつつ、<code>helm package</code>コマンドを実行する。</p>
+<p>チャートアーカイブ (<code>.tgz</code> 形式ファイル) の作成先のディレクトリを指定しつつ、<code>helm package</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>package<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-d<span class="w"> </span>&lt;作成するチャートアーカイブのパス&gt;
 </code></pre></div>
 <p><br></p>
@@ -35132,10 +35132,10 @@ secrets<span class="w">  </span><span class="m">3</span>.7.0<span class="w">    
 <p><br></p>
 <h3 id="pull">pull<a class="headerlink" href="#pull" title="Permanent link">&para;</a></h3>
 <h4 id="pull_1">▼ pullとは<a class="headerlink" href="#pull_1" title="Permanent link">&para;</a></h4>
-<p>指定したチャートリポジトリからチャートをチャートアーカイブ (<code>.tgz</code>形式ファイル) でプルする。</p>
-<p>チャートアーカイブは、チャートに解凍した上で使用した方がよい。</p>
+<p>指定したチャートリポジトリからチャートをチャートアーカイブ (<code>.tgz</code> 形式ファイル) でプルする。</p>
+<p>チャートアーカイブは、チャートに解凍したうえで使用したほうがよい。</p>
 <h4 id="-d_1">▼ -d<a class="headerlink" href="#-d_1" title="Permanent link">&para;</a></h4>
-<p>チャートのプル先のディレクトリを指定して、<code>helm pull</code>コマンドを実行する。</p>
+<p>チャートのプル先のディレクトリを指定して、<code>helm pull</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>pull<span class="w"> </span>&lt;チャートリポジトリURL&gt;<span class="w"> </span>-d<span class="w"> </span>&lt;プル先のディレクトリ&gt;
 </code></pre></div>
 <p>OCIリポジトリからもプルできる。</p>
@@ -35148,14 +35148,14 @@ $<span class="w"> </span>helm<span class="w"> </span>pull<span class="w"> </span
 </ul>
 </blockquote>
 <h4 id="-version">▼ --version<a class="headerlink" href="#-version" title="Permanent link">&para;</a></h4>
-<p>チャートのバージョンを指定して、<code>helm pull</code>コマンドを実行する。</p>
+<p>チャートのバージョンを指定して、<code>helm pull</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>pull<span class="w"> </span>&lt;チャートリポジトリURL&gt;<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
 </code></pre></div>
 <p><br></p>
 <h3 id="push">push<a class="headerlink" href="#push" title="Permanent link">&para;</a></h3>
 <h4 id="push_1">▼ pushとは<a class="headerlink" href="#push_1" title="Permanent link">&para;</a></h4>
 <p>チャートリポジトリにチャートをプッシュする。</p>
-<p>プッシュする前にチャートをチャートアーカイブ (<code>.tgz</code>形式ファイル) に圧縮しておく必要がある。</p>
+<p>プッシュする前にチャートをチャートアーカイブ (<code>.tgz</code> 形式ファイル) に圧縮しておく必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>push<span class="w"> </span>&lt;チャートアーカイブへのパス&gt;<span class="w"> </span>&lt;チャートリポジトリURL&gt;
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># AWSの場合</span>
@@ -35185,12 +35185,12 @@ $<span class="w"> </span>aws<span class="w"> </span>ecr<span class="w"> </span>g
 <h4 id="repo_1">▼ repoとは<a class="headerlink" href="#repo_1" title="Permanent link">&para;</a></h4>
 <p>チャートリポジトリを操作する。</p>
 <h4 id="add">▼ add<a class="headerlink" href="#add" title="Permanent link">&para;</a></h4>
-<p><code>helm</code>コマンドの実行環境にチャートリポジトリを登録する。</p>
+<p><code>helm</code> コマンドの実行環境にチャートリポジトリを登録する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>&lt;チャートリポジトリURL&gt;
 
 <span class="s2">&quot;&lt;チャート名&gt;&quot;</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>your<span class="w"> </span>repositories
 </code></pre></div>
-<p>登録していないチャートに<code>helm</code>コマンドでアクセスしようとするとエラーになってしまう。</p>
+<p>登録していないチャートに <code>helm</code> コマンドでアクセスしようとするとエラーになってしまう。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>show<span class="w"> </span>all<span class="w"> </span>&lt;チャートリポジトリ名&gt;
 
 Error:<span class="w"> </span>failed<span class="w"> </span>to<span class="w"> </span>download<span class="w"> </span><span class="s2">&quot;&lt;チャートリポジトリ名&gt;&quot;</span>
@@ -35201,21 +35201,21 @@ Error:<span class="w"> </span>failed<span class="w"> </span>to<span class="w"> <
 </ul>
 </blockquote>
 <h4 id="index">▼ index<a class="headerlink" href="#index" title="Permanent link">&para;</a></h4>
-<p>チャートリポジトリのメタデータが設定された<code>index.yaml</code>ファイルを作成する。</p>
+<p>チャートリポジトリのメタデータが設定された <code>index.yaml</code> ファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>index<span class="w"> </span>&lt;チャートへのパス&gt;
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>index<span class="w"> </span>.
 </code></pre></div>
 <h4 id="list_3">▼ list<a class="headerlink" href="#list_3" title="Permanent link">&para;</a></h4>
-<p>事前に<code>helm repo add</code>コマンドで追加しておいたチャートリポジトリの一覧を取得する。</p>
+<p>事前に <code>helm repo add</code> コマンドで追加しておいたチャートリポジトリの一覧を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>list
 
 NAME<span class="w">                 </span>URL
 &lt;チャートリポジトリ名&gt;<span class="w">   </span>https://example.com/charts
 </code></pre></div>
 <h4 id="remove">▼ remove<a class="headerlink" href="#remove" title="Permanent link">&para;</a></h4>
-<p>事前に<code>helm repo add</code>コマンドで追加しておいたチャートリポジトリを削除する。</p>
+<p>事前に <code>helm repo add</code> コマンドで追加しておいたチャートリポジトリを削除する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>remove<span class="w"> </span>&lt;チャート名&gt;
 
 <span class="s2">&quot;&lt;チャートリポジトリ名&gt;&quot;</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>removed<span class="w"> </span>from<span class="w"> </span>your<span class="w"> </span>repositories
@@ -35224,7 +35224,7 @@ NAME<span class="w">                 </span>URL
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>remove<span class="w"> </span>foo-chart
 </code></pre></div>
 <h4 id="update">▼ update<a class="headerlink" href="#update" title="Permanent link">&para;</a></h4>
-<p>事前に<code>helm repo add</code>コマンドで追加しておいたチャートリポジトリの情報を更新する。</p>
+<p>事前に <code>helm repo add</code> コマンドで追加しておいたチャートリポジトリの情報を更新する。</p>
 <p>チャートを特定のバージョンにアップグレードする前にリポジトリの情報を更新しておく必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update<span class="w"> </span>&lt;チャートリポジトリ名&gt;
 
@@ -35240,7 +35240,7 @@ Update<span class="w"> </span>Complete.<span class="w"> </span>⎈Happy<span cla
 <p><br></p>
 <h3 id="search">search<a class="headerlink" href="#search" title="Permanent link">&para;</a></h3>
 <h4 id="search_1">▼ searchとは<a class="headerlink" href="#search_1" title="Permanent link">&para;</a></h4>
-<p>事前に<code>helm repo add</code>コマンドで追加しておいたチャートリポジトリを検索する。</p>
+<p>事前に <code>helm repo add</code> コマンドで追加しておいたチャートリポジトリを検索する。</p>
 <blockquote>
 <ul>
 <li><a href="https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts">https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts</a></li>
@@ -35265,7 +35265,7 @@ URL<span class="w">               </span>CHART<span class="w"> </span>VERSION<sp
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>show<span class="w"> </span>all<span class="w"> </span>foo-chart
 </code></pre></div>
 <h4 id="chart">▼ chart<a class="headerlink" href="#chart" title="Permanent link">&para;</a></h4>
-<p>チャートの<code>Chart.yaml</code>ファイルを取得する。</p>
+<p>チャートの <code>Chart.yaml</code> ファイルを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>show<span class="w"> </span>chart<span class="w"> </span>&lt;チャート名&gt;
 
 apiVersion:<span class="w"> </span>v2
@@ -35277,8 +35277,8 @@ type:<span class="w"> </span>application
 version:<span class="w"> </span>&lt;バージョンタグ&gt;
 </code></pre></div>
 <h4 id="values">▼ values<a class="headerlink" href="#values" title="Permanent link">&para;</a></h4>
-<p>チャートに渡せるパラメーターを<code>values</code>ファイルとして取得する。</p>
-<p><code>values</code>ファイル本体は、チャートリポジトリで参照できる。</p>
+<p>チャートに渡せるパラメーターを <code>values</code> ファイルとして取得する。</p>
+<p><code>values</code> ファイル本体は、チャートリポジトリで参照できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>show<span class="w"> </span>values<span class="w"> </span>&lt;チャート名&gt;
 
 <span class="c1"># valuesファイルが表示される。</span>
@@ -35294,14 +35294,14 @@ version:<span class="w"> </span>&lt;バージョンタグ&gt;
 <h3 id="template">template<a class="headerlink" href="#template" title="Permanent link">&para;</a></h3>
 <h4 id="template_1">▼ templateとは<a class="headerlink" href="#template_1" title="Permanent link">&para;</a></h4>
 <p>Kubernetesに作成されるリソースのマニフェストを出力する。</p>
-<p><code>yaml</code>ファイルにリダイレクトするようにすると良い。</p>
+<p><code>yaml</code> ファイルにリダイレクトするようにすると良い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># チャート名をreleasesとしている場合</span>
 $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>releases.yaml
 </code></pre></div>
 <h4 id="-f_2">▼ -f<a class="headerlink" href="#-f_2" title="Permanent link">&para;</a></h4>
-<p>指定した<code>values</code>ファイル使用して、<code>helm template</code>コマンドを実行する。</p>
-<p>なお、指定したvaluesファイルとは別に、チャートのルートディレクトリの<code>values</code>ファイルも暗黙的に読み込まれていることに注意する。</p>
-<p>この<code>values</code>ファイルは、デフォルト値として使用される。</p>
+<p>指定した <code>values</code> ファイル使用して、<code>helm template</code> コマンドを実行する。</p>
+<p>なお、指定したvaluesファイルとは別に、チャートのルートディレクトリの <code>values</code> ファイルも暗黙的に読み込まれていることに注意する。</p>
+<p>この <code>values</code> ファイルは、デフォルト値として使用される。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># デフォルト値として、チャートのルートディレクトリのvaluesファイルも暗黙的に読み込まれている</span>
 $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>&lt;出力先ファイル&gt;
 </code></pre></div>
@@ -35310,14 +35310,14 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <p>CI上でマニフェストの静的解析を実行したい場合に、CIの実行環境に暗号化キーの使用許可を付与する必要はない。</p>
-<p><code>helm template</code>コマンドに暗号化されたYAMLファイルをそのまま渡すと、暗号化ツール (例：SOPS) を介さない。</p>
+<p><code>helm template</code> コマンドに暗号化されたYAMLファイルをそのまま渡すと、暗号化ツール (例：SOPS) を介さない。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 暗号化ツールを使用せずにSecretを作成する</span>
 $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>&lt;暗号化されたYAMLファイル&gt;<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>&lt;出力先ファイル&gt;
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 暗号化されたYAMLファイル</span>
 <span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="err">***</span>
 </code></pre></div>
-<p><code>helm template</code>コマンドは、暗号化されたYAMLファイルを単なるYAMLファイルとして認識し、暗号化されたままマニフェストを展開する。</p>
+<p><code>helm template</code> コマンドは、暗号化されたYAMLファイルを単なるYAMLファイルとして認識し、暗号化されたままマニフェストを展開する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35328,7 +35328,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="err">***</span>
 </code></pre></div>
 <h4 id="-set">▼ -set<a class="headerlink" href="#-set" title="Permanent link">&para;</a></h4>
-<p>デフォルト値を上書きし、<code>helm template</code>コマンドを実行する。</p>
+<p>デフォルト値を上書きし、<code>helm template</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-set<span class="w"> </span>foo.test<span class="o">=</span>TEST<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>release.yaml
 </code></pre></div>
 <h4 id="-include-crds">▼ --include-crds<a class="headerlink" href="#-include-crds" title="Permanent link">&para;</a></h4>
@@ -35363,14 +35363,14 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <h4 id="upgrade_1">▼ upgradeとは<a class="headerlink" href="#upgrade_1" title="Permanent link">&para;</a></h4>
 <p>指定したバージョンのチャートを使用して、Helmリリースをアップグレードする。</p>
 <p>Helmは、CRDを含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。</p>
-<p>そのため、<code>helm upgrade</code>コマンド時にはCRDのインストールを実行する仕様になっている。</p>
+<p>そのため、<code>helm upgrade</code> コマンド時にはCRDのインストールを実行する仕様になっている。</p>
 <blockquote>
 <ul>
 <li><a href="https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure">https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure</a></li>
 </ul>
 </blockquote>
 <h4 id="-atomic">▼ --atomic<a class="headerlink" href="#-atomic" title="Permanent link">&para;</a></h4>
-<p><code>helm upgrade</code>コマンドが正常に完了しなかった場合に、自動的にロールバックする。</p>
+<p><code>helm upgrade</code> コマンドが正常に完了しなかった場合に、自動的にロールバックする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>--atomic<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
@@ -35390,17 +35390,17 @@ TEST<span class="w"> </span>SUITE:<span class="w"> </span>None
 </code></pre></div>
 <h4 id="-force_1">▼ --force<a class="headerlink" href="#-force_1" title="Permanent link">&para;</a></h4>
 <p>既存のマニフェストを置き換える。</p>
-<p><code>kubectl replace</code>コマンドに近い。</p>
+<p><code>kubectl replace</code> コマンドに近い。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--force
 </code></pre></div>
 <h4 id="-skip-crds">▼ --skip-crds<a class="headerlink" href="#-skip-crds" title="Permanent link">&para;</a></h4>
-<p><code>--install</code>オプションを有効化した上で、<code>--skip-crds</code>オプションを有効化する。</p>
-<p>これにより、<code>helm upgrade</code>コマンド時にCRDのインストールをスキップし、非CRDのみをインストールできる。</p>
+<p><code>--install</code> オプションを有効化したうえで、<code>--skip-crds</code> オプションを有効化する。</p>
+<p>これにより、<code>helm upgrade</code> コマンド時にCRDのインストールをスキップし、非CRDのみをインストールできる。</p>
 <p>なお、CRDのアップグレードはHelmの仕様上必ずスキップする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>--skip-crds<span class="w"> </span>--install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p><code>helm upgrade</code>コマンド時に、CRDの作成をスキップし、非CRDのみをインストールする。</p>
+<p><code>helm upgrade</code> コマンド時に、CRDの作成をスキップし、非CRDのみをインストールする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>--skip-crds<span class="w"> </span>--install<span class="w"> </span>foo-release<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>release.yaml
 </code></pre></div>
 <blockquote>
@@ -35409,7 +35409,7 @@ TEST<span class="w"> </span>SUITE:<span class="w"> </span>None
 </ul>
 </blockquote>
 <h4 id="-wait_1">▼ --wait<a class="headerlink" href="#-wait_1" title="Permanent link">&para;</a></h4>
-<p>作成したPodがReady状態になるまで、<code>helm upgrade</code>コマンドの完了を待機する。</p>
+<p>作成したPodがReady状態になるまで、<code>helm upgrade</code> コマンドの完了を待機する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--wait
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
@@ -35441,7 +35441,7 @@ TEST<span class="w"> </span>SUITE:<span class="w"> </span>None
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月27日 15:20:47 JST">2025-06-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

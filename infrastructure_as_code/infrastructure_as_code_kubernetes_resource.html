@@ -36491,12 +36491,12 @@
 </thead>
 <tbody>
 <tr>
-<td><code>.spec.replicas</code>キーの変更</td>
-<td>レプリカ数 (<code>.spec.replicas</code>キー) の変更の場合は、Deploymentは既存のReplicaSetをそのままにし、Podのレプリカ数のみを変更する。</td>
+<td><code>.spec.replicas</code> キーの変更</td>
+<td>レプリカ数 (<code>.spec.replicas</code> キー) の変更の場合は、Deploymentは既存のReplicaSetをそのままにし、Podのレプリカ数のみを変更する。</td>
 </tr>
 <tr>
-<td><code>.spec.template</code>キー配下の任意の変更</td>
-<td>PodTemplate (<code>.spec.template</code>キー) を変更した場合、Deploymentは新しいReplicaSetを作成し、これを古いReplicaSetと置き換える。</td>
+<td><code>.spec.template</code> キー配下の任意の変更</td>
+<td>PodTemplate (<code>.spec.template</code> キー) を変更した場合、Deploymentは新しいReplicaSetを作成し、これを古いReplicaSetと置き換える。</td>
 </tr>
 </tbody>
 </table>
@@ -36521,7 +36521,7 @@
 <p>もう一度実行したい場合は、Jobを削除する必要がある。</p>
 <p>複数のPodを作成 (SuccessfulCreate) し、指定された数のPodを正常に削除 (SuccessfulDelete) する。</p>
 <p>デフォルトでは、ログの確認のためにPodは削除されず、Jobが削除されて初めてPodも削除される。</p>
-<p><code>.spec.ttlSecondsAfterFinished</code>キーを使用すると、Podのみを自動削除できるようになる。</p>
+<p><code>.spec.ttlSecondsAfterFinished</code> キーを使用すると、Podのみを自動削除できるようになる。</p>
 <p>定期的に実行する場合、CronJobのテンプレートとして定義する。</p>
 <blockquote>
 <ul>
@@ -36534,7 +36534,7 @@
 <h4 id="db">▼ DBマイグレーション<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
 <p>Jobを使用して、DBにマイグレーションを実行する。</p>
 <p>GitOpsツール (例：ArgoCDなど) によっては、アノテーションを使用してApply前にJobをフックさせられる。</p>
-<p>ArgoCDの場合、<code>DBマイグレーション ---&gt; ArgoCD Sync開始 ---&gt; アプリ起動 ---&gt; ArgoCD Sync完了</code>という流れになる。</p>
+<p>ArgoCDの場合、<code>DBマイグレーション ---&gt; ArgoCD Sync開始 ---&gt; アプリ起動 ---&gt; ArgoCD Sync完了</code> という流れになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36555,7 +36555,7 @@
 <span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
 </code></pre></div>
 <p>ただし、アプリケーションの起動直前にDBマイグレーションを実行してしまってもよい。</p>
-<p>その場合、<code>ArgoCD Sync開始 ---&gt; DBマイグレーション ---&gt; アプリ起動 ---&gt; Sync完了</code>という流れになる。</p>
+<p>その場合、<code>ArgoCD Sync開始 ---&gt; DBマイグレーション ---&gt; アプリ起動 ---&gt; Sync完了</code> という流れになる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:22.11.0-bullseye-slim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">base</span>
 
 ...
@@ -36563,7 +36563,7 @@
 <span class="c"># Nodeアプリケーションの起動直前にDBマイグレーションを実行してしまう</span>
 <span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;npx prisma migrate deploy&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;npm run start&quot;</span><span class="p">]</span>
 </code></pre></div>
-<p>もし手動でマイグレーションを実行する運用であれば、<code>kubectl exec</code>コマンドで接続した後に、マイグレーションコマンドを実行する。</p>
+<p>もし手動でマイグレーションを実行する運用であれば、<code>kubectl exec</code> コマンドで接続した後に、マイグレーションコマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>--<span class="w"> </span>bash
 
 /usr/local/src/foo/node_modules/.bin/prisma<span class="w"> </span>migrate<span class="w"> </span>deploy
@@ -36694,7 +36694,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </span>node<span class="w"> </span>--all<span class="w"> </span>node-role.kubernetes.io/master:NoSchedule-
 </code></pre></div>
 <h4 id="pod_4">▼ Podのライフサイクルフェーズ<a class="headerlink" href="#pod_4" title="Permanent link">&para;</a></h4>
-<p>Podは、マニフェストの<code>.status.phase</code>キーにライフサイクルのフェーズを持つ。</p>
+<p>Podは、マニフェストの <code>.status.phase</code> キーにライフサイクルのフェーズを持つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">status</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">phase</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Running</span>
 </code></pre></div>
@@ -36719,7 +36719,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </tr>
 <tr>
 <td>CrashLoopBackOff</td>
-<td>Podが、一連のフェーズ (<code>Running</code>フェーズ、<code>Waiting</code>フェーズ、<code>Failed</code>フェーズ) を繰り返している。</td>
+<td>Podが、一連のフェーズ (<code>Running</code> フェーズ、<code>Waiting</code> フェーズ、<code>Failed</code> フェーズ) を繰り返している。</td>
 <td></td>
 </tr>
 <tr>
@@ -36735,7 +36735,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <tr>
 <td>Error</td>
 <td>Pod内のいずれかのコンテナが異常に終了した。</td>
-<td>Job配下のPodの場合はErrorになっても、次のPodが作成される。Jobの<code>.spec.ttlSecondsAfterFinished</code>キーを設定していなければ、ErrorのPodがしばらく残り続けるが、もし新しいPodがCompletedになれば問題ない。</td>
+<td>Job配下のPodの場合はErrorになっても、次のPodが作成される。Jobの <code>.spec.ttlSecondsAfterFinished</code> キーを設定していなければ、ErrorのPodがしばらく残り続けるが、もし新しいPodがCompletedになれば問題ない。</td>
 </tr>
 <tr>
 <td>Failed</td>
@@ -36770,7 +36770,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <tr>
 <td>Running</td>
 <td>Pod内の全てのコンテナの起動が完了し、実行中である。</td>
-<td>コンテナの起動が完了すれば<code>Running</code>フェーズになるが、コンテナ内でビルトインサーバーを起動するようなアプリケーション (例：フレームワークのビルトインサーバー機能) の場合は、<code>Running</code>フェーズであっても<code>Ready</code>コンディションではないことに注意する。</td>
+<td>コンテナの起動が完了すれば <code>Running</code> フェーズになるが、コンテナ内でビルトインサーバーを起動するようなアプリケーション (例：フレームワークのビルトインサーバー機能) の場合は、<code>Running</code> フェーズであっても <code>Ready</code> コンディションではないことに注意する。</td>
 </tr>
 <tr>
 <td>Succeed</td>
@@ -36791,7 +36791,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </ul>
 </blockquote>
 <h4 id="pod_5">▼ Podのコンディション<a class="headerlink" href="#pod_5" title="Permanent link">&para;</a></h4>
-<p>Podのライフサイクルのフェーズは、<code>.status.conditions</code>キーにコンディション持つ。</p>
+<p>Podのライフサイクルのフェーズは、<code>.status.conditions</code> キーにコンディション持つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">status</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">phase</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Running</span>
 <span class="w">  </span><span class="nt">conditions</span><span class="p">:</span>
@@ -36812,8 +36812,8 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;True&quot;</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PodScheduled</span>
 </code></pre></div>
-<p>例えば<code>Running</code>フェーズであっても、<code>Ready</code>コンディションになっていない可能性がある。</p>
-<p>そのため、Podが正常であると見なすためには、『<code>Running</code>フェーズ』かつ『<code>Ready</code>コンディション』である必要がある。</p>
+<p>例えば <code>Running</code> フェーズであっても、<code>Ready</code> コンディションになっていない可能性がある。</p>
+<p>そのため、Podが正常であると見なすためには、『<code>Running</code> フェーズ』かつ『<code>Ready</code> コンディション』である必要がある。</p>
 <table>
 <thead>
 <tr>
@@ -36832,7 +36832,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </tr>
 <tr>
 <td>Initialized</td>
-<td>全ての<code>init</code>コンテナの起動が完了した。</td>
+<td>全ての <code>init</code> コンテナの起動が完了した。</td>
 </tr>
 <tr>
 <td>Ready</td>
@@ -36847,7 +36847,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </ul>
 </blockquote>
 <h4 id="pod_6">▼ Podの最後のフェーズの理由<a class="headerlink" href="#pod_6" title="Permanent link">&para;</a></h4>
-<p>Podは、<code>.status.reason</code>キーに、最後のフェーズの理由を値として持つ。</p>
+<p>Podは、<code>.status.reason</code> キーに、最後のフェーズの理由を値として持つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">status</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">phase</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Failed</span>
 <span class="w">  </span><span class="nt">reason</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Evicted</span>
@@ -36866,7 +36866,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </tr>
 <tr>
 <td>Evicted</td>
-<td>Nodeのハードウェアリソース不足のため、Podが退避対象となった。<code>Evicted</code>が理由の場合、<code>Failed</code>フェーズが最後となる。</td>
+<td>Nodeのハードウェアリソース不足のため、Podが退避対象となった。<code>Evicted</code> が理由の場合、<code>Failed</code> フェーズが最後となる。</td>
 </tr>
 <tr>
 <td>Unknown</td>
@@ -36882,9 +36882,9 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <h4 id="crashloopbackoff">▼ CrashLoopBackOffのデバッグ<a class="headerlink" href="#crashloopbackoff" title="Permanent link">&para;</a></h4>
 <p>PodがCrashLoopBackOffになっている場合、以下を確認すると良い。</p>
 <ul>
-<li><code>kubectl logs</code>コマンドで、該当のコンテナのエラーログを確認する。</li>
-<li><code>kubectl describe nodes</code>コマンドで、PodをスケジューリングさせているNodeを指定し、該当のPodがCPUとメモリの要求量に異常がないかを確認する。</li>
-<li><code>kubectl describe pods</code>コマンドで、該当のPodがCrashLoopBackOffになる原因を確認する。ContainersのLastStateの項目で、メッセージを確認できる。これは、<code>kubectl logs</code>コマンドと同じ内容である。</li>
+<li><code>kubectl logs</code> コマンドで、該当のコンテナのエラーログを確認する。</li>
+<li><code>kubectl describe nodes</code> コマンドで、PodをスケジューリングさせているNodeを指定し、該当のPodがCPUとメモリの要求量に異常がないかを確認する。</li>
+<li><code>kubectl describe pods</code> コマンドで、該当のPodがCrashLoopBackOffになる原因を確認する。ContainersのLastStateの項目で、メッセージを確認できる。これは、<code>kubectl logs</code> コマンドと同じ内容である。</li>
 </ul>
 <blockquote>
 <ul>
@@ -36902,27 +36902,27 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <p>これらのプロセスはそれぞれ独立して実施され、ユーザーは制御できない。</p>
 <p>例えば、Serviceとkube-proxyがPodの宛先情報を削除する前にPodが削除してしまうと、ServiceからPodへの接続を途中で切断することになってしまう。</p>
 <p>また、コンテナを停止する前にPodを終了してしまうと、コンテナを強制的に終了することになり、ログにエラーが出力されてしまう。</p>
-<p>そのため、Serviceとkube-proxyの処理後にPodを終了できるように、ユーザーがPodの<code>.spec.containers[*].lifecycle.preStop</code>キーに任意の秒数を設定し、コンテナに待機処理 (例：<code>sleep</code>コマンド) を実行させる必要がある。</p>
-<p>また、コンテナの正常な終了後にPodを終了できるように、<code>.spec.terminationGracePeriodSeconds</code>キーに任意の秒数を設定し、Podの終了に伴う一連のプロセスの完了を待機する必要がある。</p>
+<p>そのため、Serviceとkube-proxyの処理後にPodを終了できるように、ユーザーがPodの <code>.spec.containers[*].lifecycle.preStop</code> キーに任意の秒数を設定し、コンテナに待機処理 (例：<code>sleep</code> コマンド) を実行させる必要がある。</p>
+<p>また、コンテナの正常な終了後にPodを終了できるように、<code>.spec.terminationGracePeriodSeconds</code> キーに任意の秒数を設定し、Podの終了に伴う一連のプロセスの完了を待機する必要がある。</p>
 <p>これらの適切な秒数は、ユーザーがそのシステムに応じて調節するしかない。</p>
-<p><code>.spec.terminationGracePeriodSeconds</code>キーを長めに設定し、<code>.spec.containers[*].lifecycle.preStop</code>キーの秒数も含めて、全てが完了した上でPodを終了可能にする。</p>
+<p><code>.spec.terminationGracePeriodSeconds</code> キーを長めに設定し、<code>.spec.containers[*].lifecycle.preStop</code> キーの秒数も含めて、全てが完了したうえでPodを終了可能にする。</p>
 <p><img alt="pod_terminating_process" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png" /></p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>クライアントは、<code>kubectl</code>コマンドを使用して、Podを終了するリクエストをkube-apiserverに送信する。</p>
+<p>クライアントは、<code>kubectl</code> コマンドを使用して、Podを終了するリクエストをkube-apiserverに送信する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>Podのマニフェストに<code>deletionTimestamp</code>キーが追加され、Podが<code>Terminating</code>フェーズとなり、削除プロセスを開始する。</p>
+<p>Podのマニフェストに <code>deletionTimestamp</code> キーが追加され、Podが <code>Terminating</code> フェーズとなり、削除プロセスを開始する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>Podの<code>.spec.terminationGracePeriodSeconds</code>キーに応じて、Podの終了プロセス完了の待機時間を開始する。</p>
+<p>Podの <code>.spec.terminationGracePeriodSeconds</code> キーに応じて、Podの終了プロセス完了の待機時間を開始する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>最初にpreStopフックが起動し、<code>.spec.containers[*].lifecycle.preStop</code>キーで設定した待機処理をコンテナが実行する。</p>
+<p>最初にpreStopフックが起動し、<code>.spec.containers[*].lifecycle.preStop</code> キーで設定した待機処理をコンテナが実行する。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
@@ -36930,16 +36930,16 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
-<p><code>.spec.containers[*].lifecycle.preStop</code>キーによるコンテナの待機処理が終了する。</p>
+<p><code>.spec.containers[*].lifecycle.preStop</code> キーによるコンテナの待機処理が終了する。</p>
 </dd>
 <dt><code>(7)</code></dt>
 <dd>
-<p>待機処理が終了したため、kubeletは、コンテナランタイムを経由して、Pod内のコンテナに<code>SIGTERM</code>シグナルを送信する。</p>
+<p>待機処理が終了したため、kubeletは、コンテナランタイムを経由して、Pod内のコンテナに <code>SIGTERM</code> シグナルを送信する。</p>
 <p>これにより、コンテナの停止処理が開始する。</p>
 </dd>
 <dt><code>(8)</code></dt>
 <dd>
-<p><code>.spec.terminationGracePeriodSeconds</code>キーによるPodの終了プロセス完了の待機時間が終了する。</p>
+<p><code>.spec.terminationGracePeriodSeconds</code> キーによるPodの終了プロセス完了の待機時間が終了する。</p>
 <p>この段階でもコンテナが停止していない場合は、コンテナに<code>SIGKILL</code>シグナルが送信され、コンテナを強制的に終了することになる。</p>
 </dd>
 <dt><code>(9)</code></dt>
@@ -36967,7 +36967,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <tbody>
 <tr>
 <td><code>m</code>：millicores</td>
-<td><code>1</code>コア = <code>1000</code>ユニット = <code>1000</code>m</td>
+<td><code>1</code> コア = <code>1000</code> ユニット = <code>1000</code>m</td>
 </tr>
 <tr>
 <td><code>Mi</code>：mebibyte</td>
@@ -36984,19 +36984,19 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>Node上のkubeletとコンテナランタイムは、<code>/var/log/</code>ディレクトリの<code>log</code>ファイルにログを書き込む。</p>
+<p>Node上のkubeletとコンテナランタイムは、<code>/var/log/</code> ディレクトリの <code>log</code> ファイルにログを書き込む。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>クライアント (特に<code>kubectl</code>コマンド実行者) が<code>kubectl logs</code>コマンドを実行する。</p>
+<p>クライアント (特に <code>kubectl</code> コマンド実行者) が <code>kubectl logs</code> コマンドを実行する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>kube-apiserverが、<code>/logs/pods/&lt;ログへのパス&gt;</code>エンドポイントにリクエストを送信する。</p>
+<p>kube-apiserverが、<code>/logs/pods/&lt;ログへのパス&gt;</code> エンドポイントにリクエストを送信する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>kubeletはリクエストを受信し、Nodeの<code>/var/log</code>ディレクトリの<code>log</code>ファイルを読み込む。</p>
+<p>kubeletはリクエストを受信し、Nodeの <code>/var/log</code> ディレクトリの <code>log</code> ファイルを読み込む。</p>
 <p>コンテナランタイムは、コンテナの標準出力または標準エラー出力に出力したログを<code>/var/log/container</code>ディレクトリ配下に保管する。</p>
 <p><code>/var/log/container</code>ディレクトリのログは、Pod全体のログを<code>/var/log/pods/&lt;Namespace名&gt;_&lt;Pod名&gt;_&lt;UID&gt;/&lt;コンテナ名&gt;/&lt;数字&gt;.log</code>ファイルのシンボリックになっている。</p>
 <p>なお、削除されたPodのログは、引き続き<code>/var/log/pods</code>ディレクトリ配下に保管されている。</p>
@@ -37012,14 +37012,14 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <li><a href="https://dunkshoot.hatenablog.com/entry/kubernetes_container_log">https://dunkshoot.hatenablog.com/entry/kubernetes_container_log</a></li>
 </ul>
 </blockquote>
-<p>補足として、DaemonSetとして稼働するFluentdは、Nodeの<code>/var/log</code>ディレクトリを読み込むことにより、Pod内のコンテナのログを収集する。</p>
+<p>補足として、DaemonSetとして稼働するFluentdは、Nodeの <code>/var/log</code> ディレクトリを読み込むことにより、Pod内のコンテナのログを収集する。</p>
 <blockquote>
 <ul>
 <li><a href="https://note.com/shift_tech/n/n503b32e5cd35">https://note.com/shift_tech/n/n503b32e5cd35</a></li>
 </ul>
 </blockquote>
 <h4 id="_6">▼ 待ち受けるポート番号の確認<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>Pod内のコンテナ内で<code>netstat</code>コマンドを実行することにより、コンテナが待ち受けるポート番号を確認できる。</p>
+<p>Pod内のコンテナ内で <code>netstat</code> コマンドを実行することにより、コンテナが待ち受けるポート番号を確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>foo-istiod<span class="w"> </span>-n<span class="w"> </span>istio-system<span class="w"> </span>--<span class="w"> </span>netstat<span class="w"> </span>-tulpn
 
 Active<span class="w"> </span>Internet<span class="w"> </span>connections<span class="w"> </span><span class="o">(</span>only<span class="w"> </span>servers<span class="o">)</span>
@@ -37165,15 +37165,15 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p><br></p>
 <h3 id="gateway">Gateway<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h3>
 <h4 id="gateway_1">▼ Gatewayとは<a class="headerlink" href="#gateway_1" title="Permanent link">&para;</a></h4>
-<p>Gatewayは、<code>L4</code>/<code>L7</code>プロトコルの通信の受信ルールを定義し、また<code>L4</code>/<code>L7</code>ロードバランサーとして通信をルーティングする。</p>
+<p>Gatewayは、<code>L4</code>/<code>L7</code> プロトコルの通信の受信ルールを定義し、また <code>L4</code>/<code>L7</code> ロードバランサーとして通信をルーティングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/">https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/</a></li>
 </ul>
 </blockquote>
 <h4 id="ingress">▼ Ingressとの違い<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h4>
-<p><code>L7</code>プロトコルの受信ルールしか定義できないIngressとは異なり、<code>L4</code>プロトコルの受信ルールも定義できる。</p>
-<p>また、Gateway自体が<code>L4</code>/<code>L7</code>ロードバランサーとしても機能する。</p>
+<p><code>L7</code> プロトコルの受信ルールしか定義できないIngressとは異なり、<code>L4</code> プロトコルの受信ルールも定義できる。</p>
+<p>また、Gateway自体が <code>L4</code>/<code>L7</code> ロードバランサーとしても機能する。</p>
 <p><br></p>
 <h3 id="gatewayclass">GatewayClass<a class="headerlink" href="#gatewayclass" title="Permanent link">&para;</a></h3>
 <h4 id="gatewayclass_1">▼ GatewayClassとは<a class="headerlink" href="#gatewayclass_1" title="Permanent link">&para;</a></h4>
@@ -37181,7 +37181,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p><br></p>
 <h3 id="ingress_1">Ingress<a class="headerlink" href="#ingress_1" title="Permanent link">&para;</a></h3>
 <h4 id="ingress_2">▼ Ingressとは<a class="headerlink" href="#ingress_2" title="Permanent link">&para;</a></h4>
-<p>Ingressは、<code>L7</code>プロトコルの通信の受信ルールを定義する。</p>
+<p>Ingressは、<code>L7</code> プロトコルの通信の受信ルールを定義する。</p>
 <p>Ingressを使用する場合、宛先のServiceは、Cluster IP Serviceとする。</p>
 <p>NodePort ServiceやLoadBalancer Serviceと同様に、外部からのリクエストを受信する方法の1つである。</p>
 <p><img alt="kubernetes_ingress" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress.png" /></p>
@@ -37194,7 +37194,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 </ul>
 </blockquote>
 <h4 id="gateway_2">▼ Gatewayとの違い<a class="headerlink" href="#gateway_2" title="Permanent link">&para;</a></h4>
-<p><code>L7</code>プロトコルの通信のみを処理できる。</p>
+<p><code>L7</code> プロトコルの通信のみを処理できる。</p>
 <p>また、Ingressそれ自体はルールのみを持ち、Ingress Controllerがロードバランサーとして機能する。</p>
 <h4 id="_10">▼ パスベースルーティング<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>パスの値に基づいて、Serviceにルーティングする。</p>
@@ -37205,7 +37205,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 </ul>
 </blockquote>
 <h4 id="_11">▼ ホストベースルーティング<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p><code>Host</code>ヘッダー値に基づいて、Serviceにルーティングする。</p>
+<p><code>Host</code> ヘッダー値に基づいて、Serviceにルーティングする。</p>
 <p>本番環境では、ドメインを指定した各種ダッシュボードにリクエストを送信できる必要がある。</p>
 <p><img alt="kubernetes_ingress_host" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress_host.png" /></p>
 <blockquote>
@@ -37220,9 +37220,9 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p><br></p>
 <h3 id="ingress-controller">Ingress Controller<a class="headerlink" href="#ingress-controller" title="Permanent link">&para;</a></h3>
 <h4 id="ingress-controller_1">▼ Ingress Controllerとは<a class="headerlink" href="#ingress-controller_1" title="Permanent link">&para;</a></h4>
-<p>Ingress Controllerは、<code>L7</code>ロードバランサーとしてPodに通信をルーティングする。</p>
+<p>Ingress Controllerは、<code>L7</code> ロードバランサーとしてPodに通信をルーティングする。</p>
 <p>Node外から通信を受信し、Ingressに定義されたルールに応じて、単一/複数のServiceにルーティングする。</p>
-<p>クラウドプロバイダー (例：AWS) では、Ingress Controller状況下でIngressを作成すると、Ingressの設定値に応じた<code>L7</code>ロードバランサー (例：AWS ALBとAWSターゲットグループ) を自動的にプロビジョニングする。</p>
+<p>クラウドプロバイダー (例：AWS) では、Ingress Controller状況下でIngressを作成すると、Ingressの設定値に応じた <code>L7</code> ロードバランサー (例：AWS ALBとAWSターゲットグループ) を自動的にプロビジョニングする。</p>
 <p>ただし、クラウドプロバイダーによっては、Ingress ControllerとClusterIP Serviceを中継するカスタムリソース (例：AWS TargetGroupBindingsなど) を提供している場合がある。</p>
 <p>この場合、クラウドプロバイダーのリソースとKubernetesが疎結合になり、責務の境界を明確化できる。</p>
 <blockquote>
@@ -37233,7 +37233,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p><br></p>
 <h3 id="service">Service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
 <h4 id="service_1">▼ Serviceとは<a class="headerlink" href="#service_1" title="Permanent link">&para;</a></h4>
-<p>Serviceは、<code>L4</code>ロードバランサーとしてPodに通信をルーティングする。</p>
+<p>Serviceは、<code>L4</code> ロードバランサーとしてPodに通信をルーティングする。</p>
 <p>kube-proxyが更新したiptablesを使用し、また負荷分散方式によるルーティング先Podの決定に基づいて、Podに通信をルーティングする。</p>
 <p>DaemonSetやJobで使用する例は少ないが、Podさえあれば全てのWorkload (例：Deployment、DaemonSet、StatefulSet、Jobなど) でServiceを使用できる。</p>
 <p>マイクロサービスアーキテクチャのコンポーネントである『Service』とは区別する。</p>
@@ -37248,9 +37248,9 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 </blockquote>
 <h4 id="clusterip-service">▼ ClusterIP Service<a class="headerlink" href="#clusterip-service" title="Permanent link">&para;</a></h4>
 <p><img alt="kubernetes_clusterip-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_clusterip-service.png" /></p>
-<p><code>L4</code>ロードバランサーとして、Serviceに対する通信を、Cluster-IPを経由してPodにルーティングする。</p>
-<p>Cluster-IPはServiceの<code>.spec.clusterIP</code>キーで指定しない限りランダムで決まり、Podの<code>/etc/resolv.conf</code>ファイルに記載されている。</p>
-<p>Pod内に複数のコンテナがある場合、各コンテナに同じ内容の<code>/etc/resolv.conf</code>ファイルが配置される。</p>
+<p><code>L4</code> ロードバランサーとして、Serviceに対する通信を、Cluster-IPを経由してPodにルーティングする。</p>
+<p>Cluster-IPはServiceの <code>.spec.clusterIP</code> キーで指定しない限りランダムで決まり、Podの <code>/etc/resolv.conf</code> ファイルに記載されている。</p>
+<p>Pod内に複数のコンテナがある場合、各コンテナに同じ内容の <code>/etc/resolv.conf</code> ファイルが配置される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--<span class="w"> </span>bash
 
 <span class="o">[</span>root@&lt;Pod名&gt;<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>cat<span class="w"> </span>/etc/resolv.conf
@@ -37271,7 +37271,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <span class="l l-Scalar l-Scalar-Plain">Pod</span>
 </code></pre></div>
 <p>Ingressが無いとClusterネットワーク内からのみしかアクセスできず、安全である。</p>
-<p>一方でもしIngressを使用する場合、LoadBalancer Serviceと同様にして (レイヤーは異なるが) 、PodのIPアドレスを宛先とする<code>L7</code>ロードバランサー (例：AWS ALBとAWSターゲットグループ) を自動的にプロビジョニングする。</p>
+<p>一方でもしIngressを使用する場合、LoadBalancer Serviceと同様にして (レイヤーは異なるが) 、PodのIPアドレスを宛先とする <code>L7</code> ロードバランサー (例：AWS ALBとAWSターゲットグループ) を自動的にプロビジョニングする。</p>
 <p>そのため、クラウドプロバイダーのリソースとKubernetesリソースが密結合になり、責務の境界が曖昧になってしまう。</p>
 <blockquote>
 <ul>
@@ -37282,7 +37282,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 </blockquote>
 <h4 id="nodeport-service">▼ NodePort Service<a class="headerlink" href="#nodeport-service" title="Permanent link">&para;</a></h4>
 <p><img alt="kubernetes_nodeport-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_nodeport-service.png" /></p>
-<p><code>L4</code>ロードバランサーとして、Serviceに対する通信を、NodeのNICの宛先情報 (IPアドレス、ポート番号) 、Cluster-IPを経由してPodにルーティングする。</p>
+<p><code>L4</code> ロードバランサーとして、Serviceに対する通信を、NodeのNICの宛先情報 (IPアドレス、ポート番号) 、Cluster-IPを経由してPodにルーティングする。</p>
 <p>NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定できるため、通信にIngressを必要としない。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
@@ -37306,7 +37306,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 </code></pre></div>
 <p>ただし、NodePort Serviceは内部的にCluster-IPを使っている。</p>
 <p>そのため、Ingressを作成するとNodePort ServiceのCluster-IPを経由してPodにルーティングする。</p>
-<p>この場合、NodeのIPアドレスとIngressの両方がNodeの通信の入り口となり、入口が無闇に増えるため、やめた方が良い。</p>
+<p>この場合、NodeのIPアドレスとIngressの両方がNodeの通信の入り口となり、入口が無闇に増えるため、やめたほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー</span>
@@ -37319,14 +37319,14 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 </code></pre></div>
 <p>NodeのNICの宛先情報は、Nodeの作成方法 (例：AWS EC2、Google Cloud GCE、VMWare) に応じて、確認方法が異なる。</p>
 <p>Serviceのポート番号と紐づくNodeのNICのポート番号はデフォルトではランダムであるため、NodeのNICのポート番号を固定する必要がある。</p>
-<p><code>1</code>個のNodeのポート番号につき、<code>1</code>個のServiceとしか紐付けられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。</p>
+<p><code>1</code> 個のNodeのポート番号につき、<code>1</code> 個のServiceとしか紐付けられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。</p>
 <p>この場合、クラウドプロバイダーのリソースとKubernetesが疎結合になり、責務の境界を明確化できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/64605782">https://stackoverflow.com/a/64605782</a></li>
 </ul>
 </blockquote>
-<p>例えば、ポート番号は種類に応じて<code>200</code>番の間隔で分類する。</p>
+<p>例えば、ポート番号は種類に応じて <code>200</code> 番の間隔で分類する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">################################################</span>
 <span class="c1"># L7ロードバランサーによるヘルスチェックの流入口</span>
 <span class="c1">################################################</span>
@@ -37381,7 +37381,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 </code></pre></div>
 <h4 id="loadbalancer-service">▼ LoadBalancer Service<a class="headerlink" href="#loadbalancer-service" title="Permanent link">&para;</a></h4>
 <p><img alt="kubernetes_loadbalancer-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_loadbalancer-service.png" /></p>
-<p><code>L4</code>ロードバランサーとして、Serviceに対する通信を、External-IP、NodeのNICの宛先情報 (IPアドレス、ポート番号)、Cluster-IPを経由してPodにルーティングする。</p>
+<p><code>L4</code> ロードバランサーとして、Serviceに対する通信を、External-IP、NodeのNICの宛先情報 (IPアドレス、ポート番号)、Cluster-IPを経由してPodにルーティングする。</p>
 <p>External-IPはNode外から宛先IPアドレスとして指定できる。</p>
 <p>そのため、通信にIngressを必要としないが、外部のロードバランサーのみが宛先IPアドレスを指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
@@ -37393,9 +37393,9 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">Pod</span>
 </code></pre></div>
-<p>クラウドプロバイダー (例：AWS) では、LoadBalancer Serviceを作成すると、External-IPを宛先とする<code>L4</code>ロードバランサー (例：AWS NLBとAWSターゲットグループ) を自動的にプロビジョニングする。</p>
+<p>クラウドプロバイダー (例：AWS) では、LoadBalancer Serviceを作成すると、External-IPを宛先とする <code>L4</code> ロードバランサー (例：AWS NLBとAWSターゲットグループ) を自動的にプロビジョニングする。</p>
 <p>クラウドプロバイダーのリソースとKubernetesリソースが密結合になり、責務の境界が曖昧になってしまう。</p>
-<p>なお、注意点として、Ingress Controllerは<code>L7</code>ロードバランサーを自動的にプロビジョニングする。</p>
+<p>なお、注意点として、Ingress Controllerは <code>L7</code> ロードバランサーを自動的にプロビジョニングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/">https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/</a></li>
@@ -37406,8 +37406,8 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 </blockquote>
 <h4 id="externalname-service">▼ ExternalName Service<a class="headerlink" href="#externalname-service" title="Permanent link">&para;</a></h4>
 <p>Cluster内DNS名とCluster外CNAMEレコードを対応づけ、Serviceに対する通信を対象にルーティングする。</p>
-<p>例えば、<code>foo-db-service</code>というExternalName Serviceを作成したとする。</p>
-<p>この場合、<code>foo-db-service.default.svc.cluster.local</code>を指定すると、指定したCNAMEレコードに問い合わせるようになる。</p>
+<p>例えば、<code>foo-db-service</code> というExternalName Serviceを作成したとする。</p>
+<p>この場合、<code>foo-db-service.default.svc.cluster.local</code> を指定すると、指定したCNAMEレコードに問い合わせるようになる。</p>
 <p>マイクロサービスが外部のドメインに直接リクエストを送信することもできるが、これをServiceのドメインに抽象化できる。</p>
 <p><img alt="kubernetes_externalname-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_externalname-service.png" /></p>
 <blockquote>
@@ -37456,7 +37456,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <h2 id="03-04-service">03-04. Serviceの仕組み<a class="headerlink" href="#03-04-service" title="Permanent link">&para;</a></h2>
 <h3 id="_12">パケットの処理方法<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p><img alt="kube-proxy_iptables" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kube-proxy_iptables.png" /></p>
-<p>Serviceは、パケットの<code>L4</code>に関するヘッダーの持つ情報を見て、Podに<code>L4</code>ロードバランシングする。</p>
+<p>Serviceは、パケットの <code>L4</code> に関するヘッダーの持つ情報を見て、Podに <code>L4</code> ロードバランシングする。</p>
 <p>ServiceがPodと紐づいたり、切り離したりした後、kube-procyがiptablesを変更する。</p>
 <p>受信したリクエストをパケットとして処理していく流れを見ていく。</p>
 <dl>
@@ -37495,7 +37495,7 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p><code>KUBE-SVC</code>ターゲット配下には<code>KUBE-SEP</code>ターゲットがいる。</p>
+<p><code>KUBE-SVC</code> ターゲット配下には <code>KUBE-SEP</code> ターゲットがいる。</p>
 <p><code>statistic mode random probability</code>に応じて、パケットを<code>KUBE-SEP</code>のターゲットいずれかに振り分ける。</p>
 </dd>
 </dl>
@@ -37506,7 +37506,7 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
 <span class="m">1</span><span class="w">    </span>KUBE-SEP-K7EZDDI5TWNJA7RX<span class="w">  </span>all<span class="w">  </span>--<span class="w">  </span><span class="m">0</span>.0.0.0/0<span class="w">            </span><span class="m">0</span>.0.0.0/0<span class="w">            </span>/*<span class="w"> </span>kube-system/kube-dns:dns<span class="w"> </span>*/<span class="w"> </span>statistic<span class="w"> </span>mode<span class="w"> </span>random<span class="w"> </span>probability<span class="w"> </span><span class="m">0</span>.50000000000
 <span class="m">2</span><span class="w">    </span>KUBE-SEP-JTVLMQFBDVPXUWUS<span class="w">  </span>all<span class="w">  </span>--<span class="w">  </span><span class="m">0</span>.0.0.0/0<span class="w">            </span><span class="m">0</span>.0.0.0/0<span class="w">            </span>/*<span class="w"> </span>kube-system/kube-dns:dns<span class="w"> </span>*/
 </code></pre></div>
-<p><code>(3)</code> <code>KUBE-SEP</code>のターゲットに応じて、異なる<code>DNAT</code>ターゲットを持つ。</p>
+<p><code>(3)</code> <code>KUBE-SEP</code> のターゲットに応じて、異なる <code>DNAT</code> ターゲットを持つ。</p>
 <div class="highlight"><pre><span></span><code> `DNAT`ターゲットは、Podである。
 
  kube-proxyはDNAT処理を実行し、パケットの宛先IPアドレス (ServiceのIPアドレス) をPodのIPアドレスに変換する。
@@ -37565,7 +37565,7 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 <h3 id="namespace">Namespace<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h3>
 <h4 id="namespace_1">▼ Namespaceとは<a class="headerlink" href="#namespace_1" title="Permanent link">&para;</a></h4>
 <p>各Kubernetesリソースの影響範囲を制御するための領域のこと。</p>
-<p>Namespaceが異なれば、<code>.metadata.labels</code>キーに同じ値 (例：同じ名前など) を設定できる。</p>
+<p>Namespaceが異なれば、<code>.metadata.labels</code> キーに同じ値 (例：同じ名前など) を設定できる。</p>
 <h4 id="namespace_2">▼ 初期Namespace<a class="headerlink" href="#namespace_2" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -37585,7 +37585,7 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 </tr>
 <tr>
 <td><code>kube-public</code></td>
-<td>全てのkube-apiserverクライアント (<code>kubectl</code>クライアント、Kubernetesリソース) に公開しても良いKubernetesリソースを配置する。</td>
+<td>全てのkube-apiserverクライアント (<code>kubectl</code> クライアント、Kubernetesリソース) に公開しても良いKubernetesリソースを配置する。</td>
 </tr>
 <tr>
 <td><code>kube-system</code></td>
@@ -37625,19 +37625,19 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 <tbody>
 <tr>
 <td>DBホスト名</td>
-<td>コンテナがDBに接続する時に、DBのホスト名として使用する。</td>
+<td>コンテナがDBに接続するときに、DBのホスト名として使用する。</td>
 </tr>
 <tr>
 <td>DBポート番号</td>
-<td>コンテナがDBに接続する時に、DBのポート番号として使用する。</td>
+<td>コンテナがDBに接続するときに、DBのポート番号として使用する。</td>
 </tr>
 <tr>
 <td>DBタイムアウト</td>
-<td>コンテナがDBに接続する時に、タイムアウト時間として使用する。</td>
+<td>コンテナがDBに接続するときに、タイムアウト時間として使用する。</td>
 </tr>
 <tr>
 <td>DB接続リトライ数</td>
-<td>コンテナがDBに接続する時に、リトライの回数として使用する。</td>
+<td>コンテナがDBに接続するときに、リトライの回数として使用する。</td>
 </tr>
 <tr>
 <td>タイムゾーン</td>
@@ -37653,7 +37653,7 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 <h3 id="secret">Secret<a class="headerlink" href="#secret" title="Permanent link">&para;</a></h3>
 <h4 id="secret_1">▼ Secretとは<a class="headerlink" href="#secret_1" title="Permanent link">&para;</a></h4>
 <p>コンテナで使用する機密な変数やファイルをキーバリュー型で永続化する。</p>
-<p>永続化されている間は<code>base64</code>方式でエンコードされており、デコードした上で、変数やファイルとして対象のPodに出力する。</p>
+<p>永続化されている間は <code>base64</code> 方式でエンコードされており、デコードしたうえで、変数やファイルとして対象のPodに出力する。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/configuration/secret/#uses-for-secrets">https://kubernetes.io/docs/concepts/configuration/secret/#uses-for-secrets</a></li>
@@ -37670,11 +37670,11 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 <tbody>
 <tr>
 <td>DBユーザー名</td>
-<td>コンテナがDBに接続する時に、DBユーザーのユーザー名として使用する。</td>
+<td>コンテナがDBに接続するときに、DBユーザーのユーザー名として使用する。</td>
 </tr>
 <tr>
 <td>DBパスワード</td>
-<td>コンテナがDBに接続する時に、DBユーザーのパスワードとして使用する。</td>
+<td>コンテナがDBに接続するときに、DBユーザーのパスワードとして使用する。</td>
 </tr>
 <tr>
 <td>...</td>
@@ -37684,7 +37684,7 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 </table>
 <h4 id="_16">▼ コンテナイメージプルのパラメーターとして<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>Podの起動時に、kubectlコマンドが実行され、コンテナイメージをプルする。</p>
-<p>Secretに永続化された値を復号し、<code>kubectl</code>コマンドにパラメーターとして出力できる。</p>
+<p>Secretに永続化された値を復号し、<code>kubectl</code> コマンドにパラメーターとして出力できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets">https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets</a></li>
@@ -37751,7 +37751,7 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 </ul>
 </blockquote>
 <h4 id="persistentvolume-crashloopbackoff">▼ PersistentVolumeの使用率の確認方法 (CrashLoopBackOffでない場合)<a class="headerlink" href="#persistentvolume-crashloopbackoff" title="Permanent link">&para;</a></h4>
-<p>Pod内で<code>df</code>コマンドを実行することにより、PersistentVolumeの使用率を確認できる。</p>
+<p>Pod内で <code>df</code> コマンドを実行することにより、PersistentVolumeの使用率を確認できる。</p>
 <p>出力結果で、ファイルシステム全体の使用率を確認する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-n<span class="w"> </span>prometheus<span class="w"> </span>foo-pod<span class="w"> </span>--<span class="w"> </span>df<span class="w"> </span>-hT
 </code></pre></div>
@@ -37800,7 +37800,7 @@ drwxrwsr-x<span class="w">  </span><span class="m">2</span><span class="w"> </sp
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p><code>df</code>コマンドで、ストレージの使用率を確認する。Nodeにマウントされているデータサイズを確認すると、197Gとなっている。 PersistentVolumeに対してデータサイズが大きすぎることがわかる。</p>
+<p><code>df</code> コマンドで、ストレージの使用率を確認する。Nodeにマウントされているデータサイズを確認すると、197Gとなっている。 PersistentVolumeに対してデータサイズが大きすぎることがわかる。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>df<span class="w"> </span>-h<span class="w"> </span>/var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-1a/vol-*****/prometheus-db/
@@ -37837,7 +37837,7 @@ Filesystem<span class="w">      </span>Size<span class="w">  </span>Used<span cl
 <h4 id="volume_1">▼ Volumeとは<a class="headerlink" href="#volume_1" title="Permanent link">&para;</a></h4>
 <p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
 <p>Node外ストレージツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) をそのままKubernetesのVolumeとして使用する。</p>
-<p>Podの<code>.spec.volumes</code>キーで指定する。</p>
+<p>Podの <code>.spec.volumes</code> キーで指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Podに接続する</span>
 $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--<span class="w"> </span>bash
 
@@ -37855,7 +37855,7 @@ tmpfs<span class="w">           </span><span class="m">7</span>.8G<span class="w
 tmpfs<span class="w">           </span><span class="m">3</span>.9G<span class="w">     </span><span class="m">0</span><span class="w">  </span><span class="m">3</span>.9G<span class="w">   </span><span class="m">0</span>%<span class="w"> </span>/proc/acpi
 tmpfs<span class="w">           </span><span class="m">3</span>.9G<span class="w">     </span><span class="m">0</span><span class="w">  </span><span class="m">3</span>.9G<span class="w">   </span><span class="m">0</span>%<span class="w"> </span>/sys/firmware
 </code></pre></div>
-<p>Podが持つVolumeの一覧は、<code>kubectl describe</code>コマンドで確認できる。</p>
+<p>Podが持つVolumeの一覧は、<code>kubectl describe</code> コマンドで確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>describe<span class="w"> </span>pod
 
 ...
@@ -37936,8 +37936,8 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 </ul>
 </blockquote>
 <h4 id="emptydir">▼ EmptyDir<a class="headerlink" href="#emptydir" title="Permanent link">&para;</a></h4>
-<p>Podの既存のストレージ上にVolume (<code>/var/lib/kubelet/pods/&lt;PodのUUID&gt;/volumes/kubernetes.io~empty-dir/</code>ディレクトリ) を作成し、コンテナにボリュームマウントする。</p>
-<p>ディレクトリの中身は、NodeのNode外ストレージやメモリ上 (上限はNodeのメモリの<code>50</code>%) に保管できる。</p>
+<p>Podの既存のストレージ上にVolume (<code>/var/lib/kubelet/pods/&lt;PodのUUID&gt;/volumes/kubernetes.io~empty-dir/</code> ディレクトリ) を作成し、コンテナにボリュームマウントする。</p>
+<p>ディレクトリの中身は、NodeのNode外ストレージやメモリ上 (上限はNodeのメモリの <code>50</code>%) に保管できる。</p>
 <p>同一Node上のPod間でこのVolumeを共有できず、同一Pod内のコンテナ間ではVolumeを共有できる。</p>
 <p>また、Podが削除されるとこのVolumeも同時に削除されてしまう。</p>
 <p>保持期間を設定できるツール (例：Prometheus、VictoriaMetrics、Grafana Mimirなど) にて、PodのVolumeをEmptyDirとしている場合、Podを保持期間より先に削除すると、保持期間を待たずにVolumeを削除することになってしまう。</p>
@@ -37959,7 +37959,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 </ul>
 </blockquote>
 <h4 id="volumepersistentvolume">▼ Volumeの代わりにPersistentVolumeを使用する<a class="headerlink" href="#volumepersistentvolume" title="Permanent link">&para;</a></h4>
-<p>Podの<code>.spec.volumes</code>キーでPersistentVolumeClaimを宣言すれば、Volumeの代わりにPersistentVolumeを使用できる。</p>
+<p>Podの <code>.spec.volumes</code> キーでPersistentVolumeClaimを宣言すれば、Volumeの代わりにPersistentVolumeを使用できる。</p>
 <p><br></p>
 <h2 id="06-02">06-02. ストレージ要求系<a class="headerlink" href="#06-02" title="Permanent link">&para;</a></h2>
 <h3 id="persistentvolumeclaim">PersistentVolumeClaim<a class="headerlink" href="#persistentvolumeclaim" title="Permanent link">&para;</a></h3>
@@ -37972,7 +37972,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 </ul>
 </blockquote>
 <h4 id="_19">▼ 削除できない<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<p>PersistentVolumeClaimを削除しようとすると、<code>.metadata.finalizers</code>キー配下に<code>kubernetes.io/pvc-protection</code>値が設定され、削除できなくなることがある。</p>
+<p>PersistentVolumeClaimを削除しようとすると、<code>.metadata.finalizers</code> キー配下に <code>kubernetes.io/pvc-protection</code> 値が設定され、削除できなくなることがある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37981,7 +37981,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-persistent-volume-claim</span>
 <span class="nt">spec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
-<p>この場合、<code>kubectl edit</code>コマンドなどで<code>.metadata.finalizers</code>キーを空配列に編集と、削除できるようになる。</p>
+<p>この場合、<code>kubectl edit</code> コマンドなどで <code>.metadata.finalizers</code> キーを空配列に編集と、削除できるようになる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>edit<span class="w"> </span>pvc<span class="w"> </span>&lt;PersistentVolumeClaim名&gt;
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -37997,7 +37997,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 </ul>
 </blockquote>
 <h4 id="node-affinity-conflict">▼ node affinity conflict<a class="headerlink" href="#node-affinity-conflict" title="Permanent link">&para;</a></h4>
-<p>PersistentVolumeClaimは、<code>annotation</code>キー配下の<code>volume.kubernetes.io/selected-node</code>キーで、紐づくPersistentVolumeが配置されているNode名を指定している。</p>
+<p>PersistentVolumeClaimは、<code>annotation</code> キー配下の <code>volume.kubernetes.io/selected-node</code> キーで、紐づくPersistentVolumeが配置されているNode名を指定している。</p>
 <p>PersistentVolumeClaimは、条件に応じてPersistentVolumeを探す。</p>
 <p>しかし、PersistentVolumeClaimが <code>volume.kubernetes.io/selected-node</code> キーで指定するNodeと、PodをスケジューリングさせているNodeが異なるAZであると、以下のエラーになってしまう。</p>
 <div class="highlight"><pre><span></span><code>N<span class="w"> </span>node<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>had<span class="w"> </span>volume<span class="w"> </span>node<span class="w"> </span>affinity<span class="w"> </span>conflict,<span class="w"> </span>N<span class="w"> </span>node<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>didn<span class="s1">&#39;t match Pod&#39;</span>s<span class="w"> </span>node<span class="w"> </span>affinity/selector
@@ -38006,8 +38006,8 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 <p><strong>＊解決例＊</strong></p>
 <p>ここでは、Nodeの再作成でPodのあるNodeのAZが変わった場合の解決策を記載する。</p>
 <p>AWSのスポットインスタンスで特定のAZにしかNodeが作成されない問題では対処できない。</p>
-<p>例えば、もともと<code>a</code>ゾーンにいるPodがNodeの再作成で再スケジューリングされ、<code>c</code>ゾーンになったとする。</p>
-<p>しかし、Podに紐づくPersistentVolumeClaimは元々の<code>a</code>ゾーンのNodeのPersistentVolumeを指定したままになっており、<code>c</code>ゾーンのPodは<code>a</code>ゾーンのPersistentVolumeを指定できないため、<code>volume node affinity conflict</code>になる。</p>
+<p>例えば、もともと <code>a</code> ゾーンにいるPodがNodeの再作成で再スケジューリングされ、<code>c</code> ゾーンになったとする。</p>
+<p>しかし、Podに紐づくPersistentVolumeClaimはもともとの <code>a</code> ゾーンのNodeのPersistentVolumeを指定したままになっており、<code>c</code> ゾーンのPodは <code>a</code> ゾーンのPersistentVolumeを指定できないため、<code>volume node affinity conflict</code> になる。</p>
 <p>以下の手順で、PersistentVolumeClaimとこれを指定するPodの両方を再作成し、PersistentVolumeClaimはPodと同じゾーンのPersistentVolumeを指定可能にする。</p>
 <p>注意点として、何らかの理由 (例：スポットインスタンス) で、特定のAZにNodeを配置できない場合、この手順では解決できない。</p>
 <dl>
@@ -38029,7 +38029,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>PersistentVolumeClaimの<code>volume.kubernetes.io/selected-node</code>キーで、PodがいずれのNodeのPersistentVolumeを指定しているかを確認する。</p>
+<p>PersistentVolumeClaimの <code>volume.kubernetes.io/selected-node</code> キーで、PodがいずれのNodeのPersistentVolumeを指定しているかを確認する。</p>
 <p>このNode名をメモしておく。</p>
 </dd>
 </dl>
@@ -38074,7 +38074,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 </blockquote>
 <h4 id="_20">▼ サイズを拡張する<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>PersitentVolumeClaimの値が変われば、使用するPersistentVolumeを変えられる。</p>
-<p><code>--cascade</code>オプションでPodを残してStatefulSetを</p>
+<p><code>--cascade</code> オプションでPodを残してStatefulSetを</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>patch<span class="w"> </span>prometheus<span class="w"> </span>foo<span class="w"> </span>--patch<span class="w"> </span><span class="s1">&#39;{&quot;spec&quot;: {&quot;paused&quot;: &quot;true&quot;, &quot;storage&quot;: {&quot;volumeClaimTemplate&quot;: {&quot;spec&quot;: {&quot;resources&quot;: {&quot;requests&quot;: {&quot;storage&quot;:&quot;10Gi&quot;}}}}}}}&#39;</span><span class="w"> </span>--type<span class="w"> </span>merge
 
 $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> </span>statefulset<span class="w"> </span>-l<span class="w"> </span>operator.prometheus.io/name<span class="o">=</span>foo-operator<span class="w"> </span>--cascade<span class="o">=</span>orphan
@@ -38090,7 +38090,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <h4 id="storageclass_1">▼ StorageClassとは<a class="headerlink" href="#storageclass_1" title="Permanent link">&para;</a></h4>
 <p>Node外ストレージツール (例：AWS EBS、Azure Diskなど) を要求し、これをVolumeとしてPersistentVolumeClaimに提供する。</p>
 <p>そのため、PersistentVolumeも合わせて作成する必要がある。</p>
-<p>StorageClassを使用する場合は、PersistentVolumeClaimではなくStorageClass側で<code>reclaimPolicy</code>キーとして設定する。</p>
+<p>StorageClassを使用する場合は、PersistentVolumeClaimではなくStorageClass側で <code>reclaimPolicy</code> キーとして設定する。</p>
 <p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
 <blockquote>
 <ul>
@@ -38099,7 +38099,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 </ul>
 </blockquote>
 <h4 id="aws-ebs">▼ AWS EBSを要求する場合<a class="headerlink" href="#aws-ebs" title="Permanent link">&para;</a></h4>
-<p><code>reclaimPolicy</code>が<code>Delete</code>になっているPersistentVolumeClaimを削除すれば、StorageClassがAWS EBSもよしなに削除してくれる。</p>
+<p><code>reclaimPolicy</code> が <code>Delete</code> になっているPersistentVolumeClaimを削除すれば、StorageClassがAWS EBSもよしなに削除してくれる。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/kubernetes-sigs/aws-ebs-csi-driver/issues/1071">https://github.com/kubernetes-sigs/aws-ebs-csi-driver/issues/1071</a></li>
@@ -38110,7 +38110,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <h2 id="07">07. 認証系リソース<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <h3 id="certificatesigningrequest">CertificateSigningRequest<a class="headerlink" href="#certificatesigningrequest" title="Permanent link">&para;</a></h3>
 <h4 id="certificatesigningrequest_1">▼ CertificateSigningRequestとは<a class="headerlink" href="#certificatesigningrequest_1" title="Permanent link">&para;</a></h4>
-<p>認証局に対するサーバー証明書の要求 (<code>openssl x509</code>コマンド) を宣言的に設定する。</p>
+<p>認証局に対するサーバー証明書の要求 (<code>openssl x509</code> コマンド) を宣言的に設定する。</p>
 <p>別途、秘密鍵から証明書署名要求を作成し、これをパラメーターとして設定する必要がある。</p>
 <blockquote>
 <ul>
@@ -38134,7 +38134,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 </blockquote>
 <h4 id="serviceaccount_2">▼ ServiceAccountのユーザー名<a class="headerlink" href="#serviceaccount_2" title="Permanent link">&para;</a></h4>
 <p>特にServiceAccountには、より正確な定義のユーザー名がある。</p>
-<p>ServiceAccountのユーザー名は、<code>system:serviceaccount:＜Namespace名＞:＜ServiceAccount名＞</code>で定義されている。</p>
+<p>ServiceAccountのユーザー名は、<code>system:serviceaccount:＜Namespace名＞:＜ServiceAccount名＞</code> で定義されている。</p>
 <p>これは、RoleBindingやClusterBindingの定義時に使用できる。</p>
 <blockquote>
 <ul>
@@ -38143,8 +38143,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 </ul>
 </blockquote>
 <h4 id="service-account-controller">▼ service-account-controller<a class="headerlink" href="#service-account-controller" title="Permanent link">&para;</a></h4>
-<p>各Namespace内に<code>default</code>というServiceAccountを自動的に作成する。</p>
-<p>これは、<code>default</code>のNamespaceとは無関係である。</p>
+<p>各Namespace内に <code>default</code> というServiceAccountを自動的に作成する。</p>
+<p>これは、<code>default</code> のNamespaceとは無関係である。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#control-plane-details">https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#control-plane-details</a></li>
@@ -38162,8 +38162,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 </ul>
 </blockquote>
 <h4 id="service-account-admission-controller">▼ service-account-admission-controller<a class="headerlink" href="#service-account-admission-controller" title="Permanent link">&para;</a></h4>
-<p>AdmissionWebhookの仕組みの中で、Podの作成時にVolume上の<code>/var/run/secrets/kubernetes.io/serviceaccount</code>ディレクトリをコンテナにマウントする。</p>
-<p>トークンの文字列は、<code>/var/run/secrets/kubernetes.io/serviceaccount/token</code>ファイルに記載されている。</p>
+<p>AdmissionWebhookの仕組みの中で、Podの作成時にVolume上の <code>/var/run/secrets/kubernetes.io/serviceaccount</code> ディレクトリをコンテナにマウントする。</p>
+<p>トークンの文字列は、<code>/var/run/secrets/kubernetes.io/serviceaccount/token</code> ファイルに記載されている。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#control-plane-details">https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#control-plane-details</a></li>
@@ -38176,7 +38176,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p><img alt="kubernetes_authorization" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png" /></p>
 <p>kube-apiserverが、クライアント側を認証可能にする。</p>
 <p>kube-apiserverが、クライアントを認証可能にする。別途、RoleBindingやClusterRoleBindingを使用して、クライアントに認可スコープを設定する必要がある。</p>
-<p>クライアントの認証に必要なクライアント証明書は、<code>kubeconfig</code>ファイルに登録する必要がある。</p>
+<p>クライアントの認証に必要なクライアント証明書は、<code>kubeconfig</code> ファイルに登録する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/access-authn-authz/authentication/">https://kubernetes.io/docs/reference/access-authn-authz/authentication/</a></li>
@@ -38282,7 +38282,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年1月30日 20:59:19 JST">2026-01-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

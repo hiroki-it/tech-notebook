@@ -32930,7 +32930,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>chmod<span class="w"> </spa
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">qux</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">QUX</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">quux</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">QUUX</span>
 </code></pre></div>
-<p>注意点として、<code>yq</code>コマンドはGoテンプレートをサポートしていない。</p>
+<p>注意点として、<code>yq</code> コマンドはGoテンプレートをサポートしていない。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/mikefarah/yq/issues/636">https://github.com/mikefarah/yq/issues/636</a></li>
@@ -32939,7 +32939,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>chmod<span class="w"> </spa
 <p><br></p>
 <h3 id="_3"><code>{}</code><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>標準入力からファイル名を入力する。</p>
-<p><code>find</code>コマンドと組み合わせて、複数のファイルを操作する場合に使用する。</p>
+<p><code>find</code> コマンドと組み合わせて、複数のファイルを操作する場合に使用する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.yaml&quot;</span><span class="w"> </span>-exec<span class="w"> </span>yq<span class="w"> </span><span class="s1">&#39;del(.spec.foo)&#39;</span><span class="w"> </span>-i<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
 </code></pre></div>
 <blockquote>
@@ -32951,7 +32951,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>chmod<span class="w"> </spa
 <h3 id="keys">keys<a class="headerlink" href="#keys" title="Permanent link">&para;</a></h3>
 <h4 id="keys_1">▼ keysとは<a class="headerlink" href="#keys_1" title="Permanent link">&para;</a></h4>
 <p>キー名を取得する。</p>
-<p>配列型のキー名を取得する場合は、<code>[]</code>を使用する。</p>
+<p>配列型のキー名を取得する場合は、<code>[]</code> を使用する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>data.yaml<span class="w"> </span><span class="p">|</span><span class="w"> </span>yq<span class="w"> </span><span class="s1">&#39;.baz[] | keys&#39;</span>
 
 -<span class="w"> </span>qux
@@ -32965,13 +32965,13 @@ $<span class="w"> </span>sudo<span class="w"> </span>chmod<span class="w"> </spa
 <p><br></p>
 <h3 id="-p">-P<a class="headerlink" href="#-p" title="Permanent link">&para;</a></h3>
 <h4 id="-p_1">▼ -Pとは<a class="headerlink" href="#-p_1" title="Permanent link">&para;</a></h4>
-<p><code>json</code>ファイルを<code>yaml</code>ファイルに変換する。</p>
+<p><code>json</code> ファイルを <code>yaml</code> ファイルに変換する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>yq<span class="w"> </span>-P<span class="w"> </span>foo.json<span class="w"> </span>&gt;<span class="w"> </span>foo.yaml
 </code></pre></div>
 <p><br></p>
 <h2 id="01-03-reduce">01-03. reduce<a class="headerlink" href="#01-03-reduce" title="Permanent link">&para;</a></h2>
 <h3 id="reduce">reduceとは<a class="headerlink" href="#reduce" title="Permanent link">&para;</a></h3>
-<p>入力された<code>yaml</code>ファイルを処理し、新しい<code>yaml</code>ファイルとして出力する。</p>
+<p>入力された <code>yaml</code> ファイルを処理し、新しい <code>yaml</code> ファイルとして出力する。</p>
 <p><br></p>
 <h2 id="01-04-ireduce">01-04. ireduce<a class="headerlink" href="#01-04-ireduce" title="Permanent link">&para;</a></h2>
 <h3 id="ireduce">ireduceとは<a class="headerlink" href="#ireduce" title="Permanent link">&para;</a></h3>
@@ -33003,7 +33003,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>chmod<span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2024年7月7日 17:52:58 JST">2024-07-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

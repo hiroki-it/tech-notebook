@@ -28363,7 +28363,7 @@
   <a href="#env" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ .envファイルの安全なコピー方法
+        ▼ .env ファイルの安全なコピー方法
       
     </span>
   </a>
@@ -34442,7 +34442,7 @@
   <a href="#env" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ .envファイルの安全なコピー方法
+        ▼ .env ファイルの安全なコピー方法
       
     </span>
   </a>
@@ -34799,17 +34799,17 @@
 <tbody>
 <tr>
 <td>command parameters</td>
-<td><code>command</code>キー内で定義する。定義した<code>command</code>キー内のみで定義できる。</td>
+<td><code>command</code> キー内で定義する。定義した <code>command</code> キー内のみで定義できる。</td>
 <td><code>workflows</code></td>
 </tr>
 <tr>
 <td>job parameters</td>
-<td><code>jobs</code>キー内で定義する。定義した<code>jobs</code>キー内のみで参照できる。</td>
+<td><code>jobs</code> キー内で定義する。定義した <code>jobs</code> キー内のみで参照できる。</td>
 <td><code>workflows</code></td>
 </tr>
 <tr>
 <td>executors parameter</td>
-<td><code>executors</code>内で定義する。定義した<code>executos</code>内のみで参照できる。</td>
+<td><code>executors</code> 内で定義する。定義した <code>executos</code> 内のみで参照できる。</td>
 <td><code>job</code></td>
 </tr>
 <tr>
@@ -34822,12 +34822,12 @@
 <p><br></p>
 <h3 id="command-parameters">command parameters<a class="headerlink" href="#command-parameters" title="Permanent link">&para;</a></h3>
 <h4 id="_2">▼ 値の出力方法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>引数名を使用して、<code>parameters</code>から値を出力する。</p>
+<p>引数名を使用して、<code>parameters</code> から値を出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">&lt;&lt; parameters.foo &gt;&gt;</span>
 </code></pre></div>
 <h4 id="job-parameter">▼ job parameterを参照<a class="headerlink" href="#job-parameter" title="Permanent link">&para;</a></h4>
 <p>定義できるデータ型は、job parameterと同じ。</p>
-<p>定義した<code>command</code>キー内のみで定義できる。</p>
+<p>定義した <code>command</code> キー内のみで定義できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">commands</span><span class="p">:</span>
@@ -34845,12 +34845,12 @@
 <p><br></p>
 <h3 id="job-parameters">job parameters<a class="headerlink" href="#job-parameters" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ 値の出力方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>引数名を使用して、<code>parameters</code>から値を出力する。</p>
+<p>引数名を使用して、<code>parameters</code> から値を出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">&lt;&lt; parameters.foo &gt;&gt;</span>
 </code></pre></div>
 <h4 id="_4">▼ デフォルト値について<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>引数が与えられなかった場合に適用される<code>default</code>を設定できる。</p>
-<p><code>default</code>を設定しない場合、引数が必須と見なされる。</p>
+<p>引数が与えられなかった場合に適用される <code>default</code> を設定できる。</p>
+<p><code>default</code> を設定しない場合、引数が必須と見なされる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">commands</span><span class="p">:</span>
@@ -34864,8 +34864,8 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &lt;&lt; parameters.to &gt;&gt;</span>
 </code></pre></div>
 <h4 id="string">▼ string型<a class="headerlink" href="#string" title="Permanent link">&para;</a></h4>
-<p>引数として、任意の文字列を渡したい時に使用する。</p>
-<p><code>workflows</code>にて、値を設定する。</p>
+<p>引数として、任意の文字列を渡したいときに使用する。</p>
+<p><code>workflows</code> にて、値を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
@@ -34898,9 +34898,9 @@
 <span class="w">          </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test.txt</span>
 </code></pre></div>
 <h4 id="boolean">▼ boolean型<a class="headerlink" href="#boolean" title="Permanent link">&para;</a></h4>
-<p>多くの場合、引数がTrueの場合のみ、特定の<code>steps</code>キーを実行したい時に使用する。</p>
-<p><code>job</code>で定義した後、<code>workflows</code>にて値を設定する。</p>
-<p><code>workflows</code>にて、値を設定する。</p>
+<p>多くの場合、引数がTrueの場合のみ、特定の <code>steps</code> キーを実行したいときに使用する。</p>
+<p><code>job</code> で定義した後、<code>workflows</code> にて値を設定する。</p>
+<p><code>workflows</code> にて、値を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
@@ -34933,8 +34933,8 @@
 <span class="w">          </span><span class="nt">custom_checkout</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
 <h4 id="enum">▼ enum型<a class="headerlink" href="#enum" title="Permanent link">&para;</a></h4>
-<p>引数として、特定の文字列や整数のみを渡したい時に使用する。</p>
-<p><code>workflows</code>にて、値を設定する。</p>
+<p>引数として、特定の文字列や整数のみを渡したいときに使用する。</p>
+<p><code>workflows</code> にて、値を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
@@ -34964,12 +34964,12 @@
 <p><br></p>
 <h3 id="executors-parameter">executors parameter<a class="headerlink" href="#executors-parameter" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 値の出力方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>引数名を使用して、<code>parameters</code>から値を出力する。</p>
+<p>引数名を使用して、<code>parameters</code> から値を出力する。</p>
 <div class="highlight"><pre><span></span><code>&lt;&lt; parameters.foo &gt;&gt;
 </code></pre></div>
 <h4 id="job-parameters_1">▼ job parametersを参照<a class="headerlink" href="#job-parameters_1" title="Permanent link">&para;</a></h4>
-<p>引数として、任意の文字列を<code>executors</code>に渡したい時に使用する。</p>
-<p>他のparametersとは異なり、<code>job</code>にて、値を設定する。</p>
+<p>引数として、任意の文字列を <code>executors</code> に渡したいときに使用する。</p>
+<p>他のparametersとは異なり、<code>job</code> にて、値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">executors</span><span class="p">:</span>
@@ -34997,7 +34997,7 @@
 </code></pre></div>
 <h4 id="workflow">▼ workflowで値を設定する<a class="headerlink" href="#workflow" title="Permanent link">&para;</a></h4>
 <p>公式リファレンスには載っていないため、方法としては非推奨。</p>
-<p><code>parameter</code>を渡したい<code>executor</code>を使いまわしたい時に使用する。</p>
+<p><code>parameter</code> を渡したい <code>executor</code> を使いまわしたいときに使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">executors</span><span class="p">:</span>
@@ -35044,7 +35044,7 @@
 <p><br></p>
 <h3 id="pipeline-parameters">pipeline parameters<a class="headerlink" href="#pipeline-parameters" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ 値の出力方法<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>引数名を使用して、<code>pipeline.parameters</code>から値を出力する。</p>
+<p>引数名を使用して、<code>pipeline.parameters</code> から値を出力する。</p>
 <div class="highlight"><pre><span></span><code>&lt;&lt; pipeline.parameters.foo &gt;&gt;
 </code></pre></div>
 <h4 id="job-parameters_2">▼ job parametersを参照<a class="headerlink" href="#job-parameters_2" title="Permanent link">&para;</a></h4>
@@ -35087,8 +35087,8 @@
 <h2 id="03-jobs">03. jobs<a class="headerlink" href="#03-jobs" title="Permanent link">&para;</a></h2>
 <h3 id="jobs">jobs<a class="headerlink" href="#jobs" title="Permanent link">&para;</a></h3>
 <h4 id="jobs_1">▼ jobsとは<a class="headerlink" href="#jobs_1" title="Permanent link">&para;</a></h4>
-<p>複数の<code>job</code>を定義する。</p>
-<p>workflowsを使用しない場合は、少なくとも<code>1</code>個の<code>job</code>には<code>build</code>という名前を使用しなければならない。</p>
+<p>複数の <code>job</code> を定義する。</p>
+<p>workflowsを使用しない場合は、少なくとも <code>1</code> 個の <code>job</code> には <code>build</code> という名前を使用しなければならない。</p>
 <h4 id="job">▼ jobの粒度<a class="headerlink" href="#job" title="Permanent link">&para;</a></h4>
 <p><img alt="CICDパイプライン" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CICDパイプライン.png" /></p>
 <table>
@@ -35124,9 +35124,9 @@
 <h4 id="docker">▼ dockerタイプとは<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h4>
 <p>コンテナを実行環境として設定する。</p>
 <p>これを選択したうえで、コンテナイメージのビルド (Docker composeを含む) を実行する場合、Docker in Docker問題 (実行環境コンテナの中でコンテナを作成するという入れ子構造) になる。</p>
-<p>これは非推奨のため、<code>setup_remote_docker</code>を使用して、実行環境コンテナとは別の環境で<code>jobs</code>キーを実行する必要がある。</p>
-<p>また、<code>docker</code>コマンドがプリインストールされていないイメージであった場合、<code>setup_remote_docker</code>を有効化すると、これを使用できるようになる。</p>
-<p><code>machine</code>タイプを選択した場合、<code>setup_remote_docker</code>は不要である。</p>
+<p>これは非推奨のため、<code>setup_remote_docker</code> を使用して、実行環境コンテナとは別の環境で <code>jobs</code> キーを実行する必要がある。</p>
+<p>また、<code>docker</code> コマンドがプリインストールされていないイメージであった場合、<code>setup_remote_docker</code> を有効化すると、これを使用できるようになる。</p>
+<p><code>machine</code> タイプを選択した場合、<code>setup_remote_docker</code> は不要である。</p>
 <p>ただし、ボリュームマウントを使用できなくなるので注意する。</p>
 <p>また、DockerfileのCOPYコマンドが動作しなくなる。</p>
 <p><img alt="machine_executor" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_executor.png" /></p>
@@ -35202,7 +35202,7 @@
 <p>処理をmap型で定義する。</p>
 <h4 id="whenunless">▼ when、unless<a class="headerlink" href="#whenunless" title="Permanent link">&para;</a></h4>
 <p>if文を定義する。</p>
-<p><code>when</code>キーでは条件がtrueの場合、また<code>unless</code>キーではfalseの場合に実行する<code>steps</code>キーを定義する。</p>
+<p><code>when</code> キーでは条件がtrueの場合、また <code>unless</code> キーではfalseの場合に実行する <code>steps</code> キーを定義する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
@@ -35237,18 +35237,18 @@
 <h4 id="restore_cachesave_cache">▼ restore_cache、save_cache<a class="headerlink" href="#restore_cachesave_cache" title="Permanent link">&para;</a></h4>
 <p><img alt="CircleCIキャッシュ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CircleCIキャッシュ.png" /></p>
 <p>Workflow間で使いまわせるキャッシュを作成する。</p>
-<p><code>resource_class</code>キーによる実行環境のスペック設定と同様にして、ビルドの完了までの速さを改善できる。</p>
-<p>これを使用しない場合、例えば、CircleCIコンテナで<code>composer install</code>コマンドを実行することにより、毎回のworkflowで同じパッケージがインストールされる。</p>
+<p><code>resource_class</code> キーによる実行環境のスペック設定と同様にして、ビルドの完了までの速さを改善できる。</p>
+<p>これを使用しない場合、例えば、CircleCIコンテナで <code>composer install</code> コマンドを実行することにより、毎回のworkflowで同じパッケージがインストールされる。</p>
 <p>しかし、workflowのたびに、パッケージをインストールするのは非効率である。</p>
-<p>そこで、<code>composer.json</code>ファイルの実装が変更されない限り、前回のworkflowのビルド時、vendorディレクトリ配下に配置されたアーティファクトを再利用する。</p>
-<p>この能力は、複数のworkflowの間のみでなく、<code>1</code>個のworkflowの中でも利用できる。</p>
+<p>そこで、<code>composer.json</code> ファイルの実装が変更されない限り、前回のworkflowのビルド時、vendorディレクトリ配下に配置されたアーティファクトを再利用する。</p>
+<p>この能力は、複数のworkflowの間のみでなく、<code>1</code> 個のworkflowの中でも利用できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://circleci.com/docs/ja/2.0/caching/#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5">https://circleci.com/docs/ja/2.0/caching/#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5</a></li>
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>Composerを使用してパッケージをインストールする時、前回の結果を再利用する。</p>
+<p>Composerを使用してパッケージをインストールするとき、前回の結果を再利用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
@@ -35271,7 +35271,7 @@
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./vendor</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>yarnを使用してパッケージをインストールする時、前回の結果を再利用する。</p>
+<p>yarnを使用してパッケージをインストールするとき、前回の結果を再利用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
@@ -35301,7 +35301,7 @@
 <span class="w">          </span><span class="nt">commands</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">            </span><span class="no">yarn test</span>
 </code></pre></div>
-<p>ただし、この能力はcommandsで共通化した方が可読性が良い。</p>
+<p>ただし、この能力はcommandsで共通化したほうが可読性が良い。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
@@ -35335,7 +35335,7 @@
 </code></pre></div>
 <h4 id="persist_to_workspaceattach_workspace">▼ persist_to_workspace、attach_workspace<a class="headerlink" href="#persist_to_workspaceattach_workspace" title="Permanent link">&para;</a></h4>
 <p><img alt="workflow_workspace_cache" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/workflow_workspace_cache.png" /></p>
-<p>CircleCIでは、jobごとに異なる仮想環境を作成するため、他の<code>jobs</code>キーで使用された一時ファイルを再利用したい場合、これを使用する。</p>
+<p>CircleCIでは、jobごとに異なる仮想環境を作成するため、他の <code>jobs</code> キーで使用された一時ファイルを再利用したい場合、これを使用する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
@@ -35377,7 +35377,7 @@
 <p><br></p>
 <h2 id="04-commands">04. commands<a class="headerlink" href="#04-commands" title="Permanent link">&para;</a></h2>
 <h3 id="commands">commandsとは<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h3>
-<p>設定を部品化し、異なる<code>jobs</code>キーで<code>steps</code>キーとして繰り返し利用できる。</p>
+<p>設定を部品化し、異なる <code>jobs</code> キーで <code>steps</code> キーとして繰り返し利用できる。</p>
 <p><br></p>
 <h3 id="_8">部品化と再利用<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
@@ -35408,7 +35408,7 @@
 <h2 id="05-executors">05. executors<a class="headerlink" href="#05-executors" title="Permanent link">&para;</a></h2>
 <h3 id="executors">executors<a class="headerlink" href="#executors" title="Permanent link">&para;</a></h3>
 <h4 id="executors_1">▼ executorsとは<a class="headerlink" href="#executors_1" title="Permanent link">&para;</a></h4>
-<p>実行環境に関する設定を部品化し、異なる<code>jobs</code>キーで繰り返し利用できる。</p>
+<p>実行環境に関する設定を部品化し、異なる <code>jobs</code> キーで繰り返し利用できる。</p>
 <p><br></p>
 <h3 id="_9">部品化と再利用<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
@@ -35489,8 +35489,8 @@
 <p><br></p>
 <h3 id="steps_2">特殊なsteps<a class="headerlink" href="#steps_2" title="Permanent link">&para;</a></h3>
 <h4 id="pre-stepspost-steps">▼ pre-steps、post-steps<a class="headerlink" href="#pre-stepspost-steps" title="Permanent link">&para;</a></h4>
-<p>事前に<code>jobs</code>キーに定義する必要はない。</p>
-<p><code>workspace</code>キーで、コールされる<code>jobs</code>キーの引数として設定することにより、その<code>jobs</code>キー内の最初と最後に、<code>steps</code>キーを追加できる。</p>
+<p>事前に <code>jobs</code> キーに定義する必要はない。</p>
+<p><code>workspace</code> キーで、コールされる <code>jobs</code> キーの引数として設定することにより、その <code>jobs</code> キー内の最初と最後に、<code>steps</code> キーを追加できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
@@ -35545,7 +35545,7 @@
 <p><br></p>
 <h3 id="filters">filters<a class="headerlink" href="#filters" title="Permanent link">&para;</a></h3>
 <h4 id="filters_1">▼ filtersとは<a class="headerlink" href="#filters_1" title="Permanent link">&para;</a></h4>
-<p>コミットされた時に<code>jobs</code>キーが発火するブランチ名、あるいは発火しないブランチ名を設定する。</p>
+<p>コミットされたときに <code>jobs</code> キーが発火するブランチ名、あるいは発火しないブランチ名を設定する。</p>
 <p>正規表現で実装する必要がある。</p>
 <h4 id="onlyignore">▼ only、ignore<a class="headerlink" href="#onlyignore" title="Permanent link">&para;</a></h4>
 <table>
@@ -35589,7 +35589,7 @@
 </code></pre></div>
 <h4 id="tags">▼ tags<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h4>
 <p>タグをつけたコミットに対して発火する。</p>
-<p><code>ignore</code>キーで全てのブランチを指定することにより、マージによる発火を防げる。</p>
+<p><code>ignore</code> キーで全てのブランチを指定することにより、マージによる発火を防げる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">workflows</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 <span class="w">  </span><span class="nt">build</span><span class="p">:</span>
@@ -35633,7 +35633,7 @@
 <h3 id="circleci">CircleCIにおける環境変数とは<a class="headerlink" href="#circleci" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ 環境変数の出力可能<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>環境変数は基本的にシェルの実行時のみ使用でき、CircleCIのオプション値としては出力できない。</p>
-<p>ただし、<code>docker</code>キーだけは例外的に出力できる。</p>
+<p>ただし、<code>docker</code> キーだけは例外的に出力できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 出力できない</span>
 <span class="nt">working_directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/go/src/github.com/$ORGNAME/$REPONAME</span>
 </code></pre></div>
@@ -35655,18 +35655,18 @@
 <tbody>
 <tr>
 <td>Bash</td>
-<td><code>export</code>、<code>source</code>キー、<code>$BASH_ENV</code></td>
-<td><code>run</code>キーにおける<code>command</code>キー内のシェルのみで参照できる。ただし、<code>$BASH_ENV</code>を使用すれば、異なる<code>commands</code>間で値を共有可能。</td>
+<td><code>export</code>、<code>source</code> キー、<code>$BASH_ENV</code></td>
+<td><code>run</code> キーにおける <code>command</code> キー内のシェルのみで参照できる。ただし、<code>$BASH_ENV</code> を使用すれば、異なる <code>commands</code> 間で値を共有可能。</td>
 </tr>
 <tr>
 <td>Container</td>
-<td><code>environment</code>キー</td>
-<td><code>jobs</code>キー内の特定のコンテナのシェルのみで参照できる。</td>
+<td><code>environment</code> キー</td>
+<td><code>jobs</code> キー内の特定のコンテナのシェルのみで参照できる。</td>
 </tr>
 <tr>
 <td>Job</td>
-<td><code>environment</code>キー</td>
-<td><code>jobs</code>キー内のシェルのみで参照できる。</td>
+<td><code>environment</code> キー</td>
+<td><code>jobs</code> キー内のシェルのみで参照できる。</td>
 </tr>
 <tr>
 <td>Project</td>
@@ -35682,7 +35682,7 @@
 </table>
 <h4 id="_13">▼ 環境変数の出力方法<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>Linuxにおける環境変数の出力方法と同様である。</p>
-<p>また、文字列の中に値を出力する変数展開の場合、<code>${}</code>を使用する。</p>
+<p>また、文字列の中に値を出力する変数展開の場合、<code>${}</code> を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 変数展開の場合</span>
 <span class="nt">steps</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkout</span>
@@ -35692,8 +35692,8 @@
 <span class="w">        </span><span class="no">echo ${FOO}</span>
 <span class="w">        </span><span class="no">echo &quot;This is &quot;${FOO}&quot;&quot;</span>
 </code></pre></div>
-<h4 id="env">▼ <code>.env</code>ファイルの安全なコピー方法<a class="headerlink" href="#env" title="Permanent link">&para;</a></h4>
-<p>アプリケーションの<code>.env</code>ファイルをCircleCI内で使用したい時は、あらかじめエンコードされた環境変数をProject変数として管理しておき、CircleCI内でデコードするようにすれば、envファイルを安全にコピーできる。</p>
+<h4 id="env">▼ <code>.env</code> ファイルの安全なコピー方法<a class="headerlink" href="#env" title="Permanent link">&para;</a></h4>
+<p>アプリケーションの <code>.env</code> ファイルをCircleCI内で使用したいときは、あらかじめエンコードされた環境変数をProject変数として管理しておき、CircleCI内でデコードするようにすれば、envファイルを安全にコピーできる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>.env<span class="w"> </span><span class="p">|</span><span class="w"> </span>base64
 
 *******************<span class="w"> </span><span class="c1"># 表示されるbase64方式のエンコード値をProject変数として管理</span>
@@ -35722,9 +35722,9 @@
 <p><br></p>
 <h3 id="bash">Bashレベル<a class="headerlink" href="#bash" title="Permanent link">&para;</a></h3>
 <h4 id="command">▼ commandキーによる設定<a class="headerlink" href="#command" title="Permanent link">&para;</a></h4>
-<p>一番参照範囲が小さく、<code>run</code>キーにおける同じ<code>command</code>キー内のみで参照できる。</p>
-<p><code>command</code>キー内で使用する環境変数を定義するためには、『<code>$BASH_ENV</code>』に<code>export</code>コマンドを格納する必要がある。</p>
-<p>定義したものを使用するためには、『<code>$BASH_ENV</code>』を<code>source</code>キーで読み込む必要があるために注意する。</p>
+<p>一番参照範囲が小さく、<code>run</code> キーにおける同じ <code>command</code> キー内のみで参照できる。</p>
+<p><code>command</code> キー内で使用する環境変数を定義するためには、『<code>$BASH_ENV</code>』に <code>export</code> コマンドを格納する必要がある。</p>
+<p>定義したものを使用するためには、『<code>$BASH_ENV</code>』を <code>source</code> キーで読み込む必要があるために注意する。</p>
 <blockquote>
 <ul>
 <li><a href="https://circleci.com/docs/ja/2.0/env-vars/#%E3%82%B7%E3%82%A7%E3%83%AB-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AE%E8%A8%AD%E5%AE%9A">https://circleci.com/docs/ja/2.0/env-vars/#%E3%82%B7%E3%82%A7%E3%83%AB-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AE%E8%A8%AD%E5%AE%9A</a></li>
@@ -35750,8 +35750,8 @@
 <span class="w">            </span><span class="no">echo &quot;$PATH&quot;</span>
 <span class="w">            </span><span class="no">echo &quot;$VERY_IMPORTANT&quot;</span>
 </code></pre></div>
-<p>CircleCIでは<code>run</code>キーを実行する時に『<code>$BASH_ENV</code>』が<code>source</code>キーで自動的に読み込まれるようになっている。</p>
-<p>そのため、『<code>$BASH_ENV</code>』は複数の<code>run</code>キー間』で共有できる。</p>
+<p>CircleCIでは <code>run</code> キーを実行するときに『<code>$BASH_ENV</code>』が <code>source</code> キーで自動的に読み込まれるようになっている。</p>
+<p>そのため、『<code>$BASH_ENV</code>』は複数の <code>run</code> キー間』で共有できる。</p>
 <p>ただし、Alpine Linuxでは、この共有を使用できないため注意する (かなりたくさんある) 。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
@@ -35824,8 +35824,8 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="container">Containerレベル<a class="headerlink" href="#container" title="Permanent link">&para;</a></h3>
-<p>Bashレベルより参照範囲が大きく、<code>jobs</code>キー内のみで参照できる。</p>
-<p><code>environment</code>キーを<code>image</code>キーと同じ階層で定義する。</p>
+<p>Bashレベルより参照範囲が大きく、<code>jobs</code> キー内のみで参照できる。</p>
+<p><code>environment</code> キーを <code>image</code> キーと同じ階層で定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
@@ -35849,7 +35849,7 @@
 <h2 id="09-docker-compose-in-circleci">09. Docker Compose in CircleCI<a class="headerlink" href="#09-docker-compose-in-circleci" title="Permanent link">&para;</a></h2>
 <h3 id="docker-compose">docker-composeのインストール<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h3>
 <h4 id="docker_1">▼ dockerタイプの場合<a class="headerlink" href="#docker_1" title="Permanent link">&para;</a></h4>
-<p>自分でdocker-composeをインストールする必要がある。実行環境としてのコンテナと、ビルドしたコンテナが入れ子にならないように、<code>setup_remote_docker</code>を実行する必要がある。ただし、ボリュームマウントを使用できなくなるので注意する。</p>
+<p>自分でdocker-composeをインストールする必要がある。実行環境としてのコンテナと、ビルドしたコンテナが入れ子にならないように、<code>setup_remote_docker</code> を実行する必要がある。ただし、ボリュームマウントを使用できなくなるので注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
@@ -35894,7 +35894,7 @@
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
 <p>LaravelコンテナとMySQLコンテナの場合を示す。</p>
-<p>コンテナ内に対してコマンドを実行する時のディレクトリは、Dockerfileの<code>WORKDIR</code>によって決まるので注意する。</p>
+<p>コンテナ内に対してコマンドを実行するときのディレクトリは、Dockerfileの <code>WORKDIR</code> によって決まるので注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">orbs</span><span class="p">:</span>
@@ -35979,7 +35979,7 @@
 <p>これにより、コンテナイメージのビルド時間を短縮できる。</p>
 <p><img alt="DockerLayerCache" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DockerLayerCache.png" /></p>
 <h4 id="_16">▼ 使用例<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>machineタイプで使用する場合、machineキーの下で<code>docker_layer_caching</code>を使用する。</p>
+<p>machineタイプで使用する場合、machineキーの下で <code>docker_layer_caching</code> を使用する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
@@ -36010,7 +36010,7 @@
 <span class="w">            </span><span class="no">docker network create foo-network</span>
 <span class="w">            </span><span class="no">docker-compose up --build -d</span>
 </code></pre></div>
-<p>dockerタイプで使用する場合、dockerキーの下で<code>docker_layer_caching</code>を使用する。</p>
+<p>dockerタイプで使用する場合、dockerキーの下で <code>docker_layer_caching</code> を使用する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
@@ -36049,7 +36049,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 22:44:49 JST">2025-05-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

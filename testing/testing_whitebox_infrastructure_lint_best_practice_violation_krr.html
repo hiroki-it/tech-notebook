@@ -33062,7 +33062,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">設計思想<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>krrでは、CPUの<code>.spec.containers[*].resources.limits</code>キー値の設定はアンチパターンとして扱っている。</p>
+<p>krrでは、CPUの <code>.spec.containers[*].resources.limits</code> キー値の設定はアンチパターンとして扱っている。</p>
 <p>そのため、未設定を推奨している。</p>
 <p>理由として、CPUを制限してしまうと、コンテナがどんな状況であってもコンテナにCPUを割り当てない。</p>
 <p>これにより、コンテナがハードウェアリソース不足を起こす可能性が高くなるためである。</p>
@@ -33076,7 +33076,7 @@
 <p><br></p>
 <h3 id="_4">アルゴリズム<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>CPUに関して、<code>99</code>%のCPU処理が余裕を持てるように数値を算出する。</p>
-<p>メモリに関して、過去一週間の最大値に<code>5</code>%のバッファーを加えて、数値を算出する。</p>
+<p>メモリに関して、過去一週間の最大値に <code>5</code>%のバッファーを加えて、数値を算出する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/robusta-dev/krr#algorithm">https://github.com/robusta-dev/krr#algorithm</a></li>
@@ -33122,7 +33122,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年2月11日 19:05:14 JST">2025-02-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

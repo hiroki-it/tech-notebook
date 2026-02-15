@@ -34253,7 +34253,7 @@ Address:<span class="w">  </span><span class="m">2400</span>:2650:7e1:5a00:1111:
 Name:<span class="w">  </span>nrt20s18-in-f3.1e100.net<span class="w"> </span><span class="c1"># IPv4アドレスにマッピングされたドメイン名</span>
 Address:<span class="w">  </span><span class="m">172</span>.217.175.3<span class="w"> </span><span class="c1"># IPv4アドレス</span>
 </code></pre></div>
-<p>権威DNSサーバーを使用して名前解決する場合、引数なしで<code>nslookup</code>コマンドを実行する。</p>
+<p>権威DNSサーバーを使用して名前解決する場合、引数なしで <code>nslookup</code> コマンドを実行する。</p>
 <blockquote>
 <ul>
 <li><a href="http://linux.kororo.jp/cont/server/nslookup_dns.php">http://linux.kororo.jp/cont/server/nslookup_dns.php</a></li>
@@ -34385,8 +34385,8 @@ Upload:<span class="w"> </span><span class="m">182</span>.00<span class="w"> </s
 <p><br></p>
 <h3 id="tcpdump">tcpdumpとは<a class="headerlink" href="#tcpdump" title="Permanent link">&para;</a></h3>
 <p>今現在処理されているパケット (インバウンド通信とアウトバウンド通信) の情報を取得する。</p>
-<p>パケットの送信元と宛先から、送信元からのリクエスト (<code>ping</code>、<code>nc</code>、<code>curl</code>など) が届いているかを確認する。</p>
-<p>最初の<code>3</code>行はスリーウェイハンドシェイクを表す。</p>
+<p>パケットの送信元と宛先から、送信元からのリクエスト (<code>ping</code>、<code>nc</code>、<code>curl</code> など) が届いているかを確認する。</p>
+<p>最初の <code>3</code> 行はスリーウェイハンドシェイクを表す。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>tcpdump
 
 <span class="o">[</span>時間<span class="o">]</span><span class="w"> </span>IP<span class="w"> </span><span class="o">[</span>送信元IPアドレス<span class="o">]</span>.<span class="o">[</span>シーケンス番号<span class="o">]</span><span class="w"> </span>&gt;<span class="w"> </span><span class="o">[</span>宛先サーバー<span class="o">]</span>.<span class="o">[</span>ポート番号<span class="o">]</span>:<span class="w"> </span><span class="o">[</span>パケットの説明<span class="o">]</span>
@@ -34422,13 +34422,13 @@ Upload:<span class="w"> </span><span class="m">182</span>.00<span class="w"> </s
 </ul>
 </blockquote>
 <p><br></p>
-<p><code>awk</code>コマンドや<code>grep</code>コマンドと組み合わせると、特定のIPアドレスを送信元/宛先としたパケットがあるか否かを検出できる。</p>
+<p><code>awk</code> コマンドや <code>grep</code> コマンドと組み合わせると、特定のIPアドレスを送信元/宛先としたパケットがあるか否かを検出できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>tcpdump<span class="w"> </span>&lt;コマンド/オプション&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F<span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="s1">&#39;{print $3}&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>&lt;特定のIPアドレス&gt;
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p><code>ping</code>コマンドの宛先で、通信を受信できていることを確認する。</p>
+<p><code>ping</code> コマンドの宛先で、通信を受信できていることを確認する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># デフォルトでは、eth0のパケットを確認する。</span>
 $<span class="w"> </span>tcpdump<span class="w"> </span>icmp<span class="w"> </span>-i<span class="w"> </span>eth0
 </code></pre></div>
@@ -34439,7 +34439,7 @@ $<span class="w"> </span>tcpdump<span class="w"> </span>icmp<span class="w"> </s
 </blockquote>
 <p><br></p>
 <h3 id="-i">-i &lt;ネットワークインターフェース名&gt;<a class="headerlink" href="#-i" title="Permanent link">&para;</a></h3>
-<p>指定したネットワークインターフェースにて、パケットを取得する。<code>-i</code>オプションを使用しない場合、全てのネットワークインターフェースが扱うパケットを取得することになる。</p>
+<p>指定したネットワークインターフェースにて、パケットを取得する。<code>-i</code> オプションを使用しない場合、全てのネットワークインターフェースが扱うパケットを取得することになる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>tcpdump<span class="w"> </span>-i<span class="w"> </span>eth0
 </code></pre></div>
 <blockquote>
@@ -34508,7 +34508,7 @@ $<span class="w"> </span>tcpdump<span class="w"> </span>icmp<span class="w"> </s
 </blockquote>
 <p><strong>＊例＊</strong></p>
 <p>UDPプロトコルを使用して、パケットを送信する。</p>
-<p>もし、<code>traceroute</code>コマンドが終了すれば、全てのルーターを経由できていることを表す。</p>
+<p>もし、<code>traceroute</code> コマンドが終了すれば、全てのルーターを経由できていることを表す。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>traceroute<span class="w"> </span>google.com
 
 traceroute<span class="w"> </span>to<span class="w"> </span>google.com<span class="w"> </span><span class="o">(</span><span class="m">173</span>.194.38.98<span class="o">)</span>,<span class="w"> </span><span class="m">30</span><span class="w"> </span>hops<span class="w"> </span>max,<span class="w"> </span><span class="m">60</span><span class="w"> </span>byte<span class="w"> </span>packets<span class="w"> </span><span class="c1"># 最大30ホップ数 (ルーター数)</span>
@@ -34583,7 +34583,7 @@ traceroute<span class="w"> </span>to<span class="w"> </span>google.com<span clas
 <p><br></p>
 <h3 id="-p">-p<a class="headerlink" href="#-p" title="Permanent link">&para;</a></h3>
 <p>ポート番号を指定する。</p>
-<p>デフォルト値は、<code>33434</code>番ポートである。</p>
+<p>デフォルト値は、<code>33434</code> 番ポートである。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>traceroute<span class="w"> </span>*.*.*.*<span class="w"> </span>-p<span class="w"> </span><span class="m">9000</span>
 </code></pre></div>
@@ -34591,7 +34591,7 @@ traceroute<span class="w"> </span>to<span class="w"> </span>google.com<span clas
 <h3 id="-t">-T<a class="headerlink" href="#-t" title="Permanent link">&para;</a></h3>
 <p>宛先にTCPスリーウェイハンドシェイクを実行したり、HTTPやHTTPSでパケットを送信する。</p>
 <p>その後、通信の送信元から宛先までに通過するルーターの送信元IPアドレスを取得する。</p>
-<p><code>traceroute</code>コマンドではUDPプロトコルで送信するため、ネットワークが正常でもそれ以外 (ファイアウォールなど) のところで通信できない場合がある。</p>
+<p><code>traceroute</code> コマンドではUDPプロトコルで送信するため、ネットワークが正常でもそれ以外 (ファイアウォールなど) のところで通信できない場合がある。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>traceroute<span class="w"> </span>google.com<span class="w"> </span>-T<span class="w"> </span>-p<span class="w"> </span><span class="m">443</span>
 
@@ -34619,8 +34619,8 @@ $<span class="w"> </span>traceroute<span class="w"> </span>*.*.*.*<span class="w
 <p><br></p>
 <h3 id="tcptraceroute">tcptraceroute<a class="headerlink" href="#tcptraceroute" title="Permanent link">&para;</a></h3>
 <h4 id="tcptraceroute_1">▼ tcptracerouteとは<a class="headerlink" href="#tcptraceroute_1" title="Permanent link">&para;</a></h4>
-<p><code>traceroute</code>コマンドのバージョンによっては、<code>-T</code>オプションがない場合がある。</p>
-<p>その場合の代わりとして<code>tcptraceroute</code>コマンドを使用する。</p>
+<p><code>traceroute</code> コマンドのバージョンによっては、<code>-T</code> オプションがない場合がある。</p>
+<p>その場合の代わりとして <code>tcptraceroute</code> コマンドを使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://succzero.hatenablog.com/entry/2013/09/01/181615">https://succzero.hatenablog.com/entry/2013/09/01/181615</a></li>
@@ -34655,7 +34655,7 @@ $<span class="w"> </span>traceroute<span class="w"> </span>*.*.*.*<span class="w
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月6日 04:37:30 JST">2025-05-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

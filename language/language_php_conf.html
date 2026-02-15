@@ -11450,19 +11450,19 @@
   <a href="#01-phpini" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. php.iniファイル
+        01. php.ini ファイル
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. php.iniファイル">
+    <nav class="md-nav" aria-label="01. php.ini ファイル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#phpini" class="md-nav__link">
     <span class="md-ellipsis">
       
-        php.iniファイルとは
+        php.ini ファイルとは
       
     </span>
   </a>
@@ -32802,19 +32802,19 @@
   <a href="#01-phpini" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. php.iniファイル
+        01. php.ini ファイル
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. php.iniファイル">
+    <nav class="md-nav" aria-label="01. php.ini ファイル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#phpini" class="md-nav__link">
     <span class="md-ellipsis">
       
-        php.iniファイルとは
+        php.ini ファイルとは
       
     </span>
   </a>
@@ -32954,13 +32954,13 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-phpini">01. <code>php.ini</code>ファイル<a class="headerlink" href="#01-phpini" title="Permanent link">&para;</a></h2>
-<h3 id="phpini"><code>php.ini</code>ファイルとは<a class="headerlink" href="#phpini" title="Permanent link">&para;</a></h3>
+<h2 id="01-phpini">01. <code>php.ini</code> ファイル<a class="headerlink" href="#01-phpini" title="Permanent link">&para;</a></h2>
+<h3 id="phpini"><code>php.ini</code> ファイルとは<a class="headerlink" href="#phpini" title="Permanent link">&para;</a></h3>
 <p>PHPの起動時の値を設定する。</p>
-<p><code>php.ini</code>ファイルは、<code>/usr/local/etc/php</code>ディレクトリ配下に配置されている。</p>
-<p>配置された任意の<code>ini</code>ファイルに実装された設定値が、ユーザー定義のカスタム値として読み込まれる。</p>
+<p><code>php.ini</code> ファイルは、<code>/usr/local/etc/php</code> ディレクトリ配下に配置されている。</p>
+<p>配置された任意の <code>ini</code> ファイルに実装された設定値が、ユーザー定義のカスタム値として読み込まれる。</p>
 <p>また、それ以外の設定値はデフォルト値となる。</p>
-<p>設定ファイルを切り分ける場合、<code>/usr/local/etc/php/conf.d</code>ディレクトリ配下に<code>custom.php.ini</code>ファイルの名前で配置する。</p>
+<p>設定ファイルを切り分ける場合、<code>/usr/local/etc/php/conf.d</code> ディレクトリ配下に <code>custom.php.ini</code> ファイルの名前で配置する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>--ini
 
 Configuration<span class="w"> </span>File<span class="w"> </span><span class="o">(</span>php.ini<span class="o">)</span><span class="w"> </span>Path:<span class="w"> </span>/usr/local/etc/php
@@ -32977,9 +32977,9 @@ Additional<span class="w"> </span>.ini<span class="w"> </span>files<span class="
 </blockquote>
 <p><br></p>
 <h3 id="_2">本番/開発環境共通<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>PHPでは、<code>/usr/local/etc/php</code>ディレクトリには<code>php.ini-development</code>ファイルと<code>php.ini-production</code>ファイルが最初から配置されている。</p>
-<p>これをコピーして設定値を変更し、読み込まれるようにファイル名を<code>php.ini</code>に変えて配置する (これ以外のファイル名でｊは読み込まれない) 。</p>
-<p>代わりに、最小限の設定値のみを変更した<code>php.ini</code>ファイルを自身で作成し、同じく配置しても良い。</p>
+<p>PHPでは、<code>/usr/local/etc/php</code> ディレクトリには <code>php.ini-development</code> ファイルと <code>php.ini-production</code> ファイルが最初から配置されている。</p>
+<p>これをコピーして設定値を変更し、読み込まれるようにファイル名を <code>php.ini</code> に変えて配置する (これ以外のファイル名でｊは読み込まれない) 。</p>
+<p>代わりに、最小限の設定値のみを変更した <code>php.ini</code> ファイルを自身で作成し、同じく配置しても良い。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>/usr/local/etc/php
 
 drwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">  </span><span class="m">4096</span><span class="w"> </span>Dec<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">13</span>:39<span class="w"> </span>.
@@ -32991,7 +32991,7 @@ drwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </spa
 </code></pre></div>
 <p><br></p>
 <h3 id="_3">開発環境用<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>あらかじめ用意されている<code>php.ini-development</code>ファイルを参考に設定する。</p>
+<p>あらかじめ用意されている <code>php.ini-development</code> ファイルを参考に設定する。</p>
 <p>元の値をコメントアウトで示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 開発環境では、スタックトレースを表示</span>
 <span class="na">zend.exception_ignore_args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">off</span><span class="w"> </span><span class="c1"># on</span>
@@ -33043,7 +33043,7 @@ drwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </spa
 </blockquote>
 <p><br></p>
 <h3 id="_4">本番環境用<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>あらかじめ用意されている<code>php.ini-production</code>ファイルを参考に設定する。</p>
+<p>あらかじめ用意されている <code>php.ini-production</code> ファイルを参考に設定する。</p>
 <p>元の値をコメントアウトで示す。</p>
 <div class="highlight"><pre><span></span><code><span class="na">zend.exception_ignore_args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">on</span>
 
@@ -33125,7 +33125,7 @@ drwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月4日 15:58:54 JST">2025-07-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

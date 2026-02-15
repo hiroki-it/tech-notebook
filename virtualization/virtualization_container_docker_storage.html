@@ -20556,15 +20556,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#05-copynfs" class="md-nav__link">
+  <a href="#05-copy-nfs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        05. バインドマウント、ボリュームマウント、COPY処理、NFS
+        05. バインドマウント、ボリュームマウント、COPY 処理、NFS
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. バインドマウント、ボリュームマウント、COPY処理、NFS">
+    <nav class="md-nav" aria-label="05. バインドマウント、ボリュームマウント、COPY 処理、NFS">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33122,15 +33122,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#05-copynfs" class="md-nav__link">
+  <a href="#05-copy-nfs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        05. バインドマウント、ボリュームマウント、COPY処理、NFS
+        05. バインドマウント、ボリュームマウント、COPY 処理、NFS
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. バインドマウント、ボリュームマウント、COPY処理、NFS">
+    <nav class="md-nav" aria-label="05. バインドマウント、ボリュームマウント、COPY 処理、NFS">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33309,7 +33309,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">使用方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p><code>docker</code>コマンド、<code>docker-compose.yml</code>ファイル、で定義できる。</p>
+<p><code>docker</code> コマンド、<code>docker-compose.yml</code> ファイル、で定義できる。</p>
 <p>なお、バインドマウントはDockerfileでは定義できない。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ホストをコンテナ側にバインドマウント</span>
@@ -33343,7 +33343,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <p>以下の通り、ホスト側のマウント元のディレクトリにはいくつか選択肢がある。</p>
 <p>Docker for Desktopの設定画面で変更する。</p>
 <p><img alt="mount_host-directory" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mount_host-directory.png" /></p>
-<p>マウント元の詳細なディレクトリ名は、<code>/Users/&lt;ユーザー名&gt;/Library/Group Containers/group.com.docker/setting.json</code>ファイルから確認できる。</p>
+<p>マウント元の詳細なディレクトリ名は、<code>/Users/&lt;ユーザー名&gt;/Library/Group Containers/group.com.docker/setting.json</code> ファイルから確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>settings.json
 
 <span class="o">{</span>
@@ -33368,7 +33368,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <p><br></p>
 <h2 id="03">03. ボリュームマウント<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_5">ボリュームマウントとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>ホスト側のストレージ上にあるdockerエリア (<code>/var/lib/docker/volumes</code>ディレクトリ) のマウントポイント (<code>/var/lib/docker/volumes/&lt;ボリューム名&gt;/_data</code>) を、コンテナ側にマウントすることより、データを永続化する。</p>
+<p>ホスト側のストレージ上にあるdockerエリア (<code>/var/lib/docker/volumes</code> ディレクトリ) のマウントポイント (<code>/var/lib/docker/volumes/&lt;ボリューム名&gt;/_data</code>) を、コンテナ側にマウントすることより、データを永続化する。</p>
 <p>ホストで作成されるデータをめったに変更しない場合に適しており、例えばDBレコードをホストコンテナ間と共有する方法として推奨である。</p>
 <p>しかし、例えばアプリケーションやパッケージといったような変更されやすいデータを共有する方法としては不適である。</p>
 <p><img alt="docker_volume-mount" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_volume-mount.png" /></p>
@@ -33380,7 +33380,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 </blockquote>
 <p><br></p>
 <h3 id="_6">ボリューム、マウントポイントとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>dockerエリア (<code>/var/lib/docker/volumes</code>ディレクトリ) に保管される永続データをボリュームという。</p>
+<p>dockerエリア (<code>/var/lib/docker/volumes</code> ディレクトリ) に保管される永続データをボリュームという。</p>
 <p>また、デバイスファイルに紐づくディレクトリ (<code>/var/lib/docker/volumes/&lt;ボリューム名&gt;/_data</code>) をマウントポイントといい、マウントポイントに対してマウント処理が必要である。</p>
 <blockquote>
 <ul>
@@ -33389,7 +33389,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 </blockquote>
 <p><br></p>
 <h3 id="_7">使用方法<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p><code>docker</code>コマンドの実行、Dockerfile、<code>docker-compose.yml</code>ファイル、で定義できる。</p>
+<p><code>docker</code> コマンドの実行、Dockerfile、<code>docker-compose.yml</code> ファイル、で定義できる。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ホストをコンテナ側にバインドマウント</span>
 $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-it<span class="w"> </span>--name<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>/bin/bash<span class="w"> </span><span class="se">\</span>
@@ -33429,7 +33429,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <h3 id="data-volume">Data Volumeコンテナによる永続データの提供<a class="headerlink" href="#data-volume" title="Permanent link">&para;</a></h3>
 <p>ボリュームを使用する場合のコンテナ配置手法の一種。</p>
 <p>dockerエリアのボリュームをData Volumeをコンテナのディレクトリにマウントしておく。</p>
-<p>ボリュームを使用する時は、dockerエリアを参照するのではなく、Data Volumeコンテナを参照する。</p>
+<p>ボリュームを使用するときは、dockerエリアを参照するのではなく、Data Volumeコンテナを参照する。</p>
 <p><img alt="data-volumeコンテナ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/data-volumeコンテナ.png" /></p>
 <p><br></p>
 <h2 id="04-tmpfs">04. tmpfsマウント<a class="headerlink" href="#04-tmpfs" title="Permanent link">&para;</a></h2>
@@ -33443,11 +33443,11 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="05-copynfs">05. バインドマウント、ボリュームマウント、<code>COPY</code>処理、NFS<a class="headerlink" href="#05-copynfs" title="Permanent link">&para;</a></h2>
+<h2 id="05-copy-nfs">05. バインドマウント、ボリュームマウント、<code>COPY</code> 処理、NFS<a class="headerlink" href="#05-copy-nfs" title="Permanent link">&para;</a></h2>
 <h3 id="_8">脆弱性の比較<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>本番環境で、ホストからコンテナにバインドマウントを実行できる。</p>
-<p>しかしバインドマウントでは、ホスト側のコードが隔離されておらず、コンテナ側のコードからホスト側のマウントに関係ないファイルへもアクセスできてしまう (例：<code>cd</code>コマンドによって、ホスト側のマウントに関係ないディレクトリにアクセスできてしまう) 。</p>
-<p>一方でボリュームマウント (<code>VOLUME</code>処理) では、ホスト側のコードはdockerエリア内に隔離されており、ホストの他のファイルからは切り離されている。</p>
+<p>しかしバインドマウントでは、ホスト側のコードが隔離されておらず、コンテナ側のコードからホスト側のマウントに関係ないファイルへもアクセスできてしまう (例：<code>cd</code> コマンドによって、ホスト側のマウントに関係ないディレクトリにアクセスできてしまう) 。</p>
+<p>一方でボリュームマウント (<code>VOLUME</code> 処理) では、ホスト側のコードはdockerエリア内に隔離されており、ホストの他のファイルからは切り離されている。</p>
 <p>これにより、マウントに関係のないファイルへはアクセスできないようになっている。</p>
 <p>そのため、バインドマウントより安全である。</p>
 <blockquote>
@@ -33459,14 +33459,14 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 </blockquote>
 <p><br></p>
 <h3 id="_9">本番環境での使いやすさの比較<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>脆弱性の観点から、本番環境ではボリュームマウント (<code>VOLUME</code>処理) や<code>COPY</code>処理を使用して、アプリケーションをコンテナイメージに組み込むようにする。</p>
+<p>脆弱性の観点から、本番環境ではボリュームマウント (<code>VOLUME</code> 処理) や <code>COPY</code> 処理を使用して、アプリケーションをコンテナイメージに組み込むようにする。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.docker.com/develop/dev-best-practices/#differences-in-development-and-production-environments">https://docs.docker.com/develop/dev-best-practices/#differences-in-development-and-production-environments</a></li>
 </ul>
 </blockquote>
-<p>その上で、ボリュームマウントでは、組み込んだアプリケーションのコードをコンテナ起動後しか参照できないため、コードの組み込みとコンテナ起動の間にアプリケーションを加工する (例：ディレクトリの実行権限を変更するなど) 場合は<code>COPY</code>処理の方が便利である。</p>
-<p>方法として、コンテナイメージレジストリ内のプライベートリポジトリにデプロイするイメージのビルド時に、ホスト側のアプリケーションをイメージ側に<code>COPY</code>処理しておく。</p>
+<p>その上で、ボリュームマウントでは、組み込んだアプリケーションのコードをコンテナ起動後しか参照できないため、コードの組み込みとコンテナ起動の間にアプリケーションを加工する (例：ディレクトリの実行権限を変更するなど) 場合は <code>COPY</code> 処理の方が便利である。</p>
+<p>方法として、コンテナイメージレジストリ内のプライベートリポジトリにデプロイするイメージのビルド時に、ホスト側のアプリケーションをイメージ側に <code>COPY</code> 処理しておく。</p>
 <p>これにより、本番環境ではこのコンテナイメージをプルしさえすれば、アプリケーションを使用できるようになる。</p>
 <blockquote>
 <ul>
@@ -33476,7 +33476,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 </blockquote>
 <p><br></p>
 <h3 id="_10">性能の比較<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<p>アプリケーションが処理を実行する時、多くのパッケージが読み出される。</p>
+<p>アプリケーションが処理を実行するとき、多くのパッケージが読み出される。</p>
 <p>この時、ホスト上で稼働するコンテナの性能は、『<code>COPY、NFS &gt; ボリュームマウント &gt; バインドマウント</code>』の順で高い。</p>
 <table>
 <thead>
@@ -33484,7 +33484,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <th></th>
 <th>バインドマウント</th>
 <th>ボリュームマウント</th>
-<th><code>COPY</code>処理</th>
+<th><code>COPY</code> 処理</th>
 <th>NFS</th>
 </tr>
 </thead>
@@ -33493,7 +33493,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <td>性能に関する説明</td>
 <td>バインドマウントでは、ホストとコンテナ間のライフサイクルは同じであり、ファイルの状態が同期されている。この時、コンテナからホストにアウトプット処理、またホストからコンテナにインプット処理が発生する。そのため、コンテナではアプリケーションの処理を実行しながら、合わせてホスト間とI/O処理も実行することになり、コンテナの性能は悪い。</td>
 <td>ボリュームマウントでは、ホストとコンテナ間のライフサイクルは分離されており、ファイルの状態は同期されていない。そのため、ボリュームマウントよりはコンテナの性能が良い。</td>
-<td><code>COPY</code>処理では、コンテナイメージのビルド時にコードを組み込むのみで、以降、ホストとコンテナ間でコードのI/O処理は発生しない。そのため、バインドマウントやボリュームマウントと比べて、コンテナの性能が良い。このことは、DockerのみでなくKubernetesでも同様である。</td>
+<td><code>COPY</code> 処理では、コンテナイメージのビルド時にコードを組み込むのみで、以降、ホストとコンテナ間でコードのI/O処理は発生しない。そのため、バインドマウントやボリュームマウントと比べて、コンテナの性能が良い。このことは、DockerのみでなくKubernetesでも同様である。</td>
 <td>NFSを使用したマウントでは、高速でI/O処理が実行される。そのため、コンテナの性能が良い。</td>
 </tr>
 <tr>
@@ -33526,7 +33526,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年2月23日 21:59:07 JST">2025-02-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

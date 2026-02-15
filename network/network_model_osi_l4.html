@@ -16204,19 +16204,19 @@
   <a href="#06-l4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        06. L4ロードバランサー
+        06. L4 ロードバランサー
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="06. L4ロードバランサー">
+    <nav class="md-nav" aria-label="06. L4 ロードバランサー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#l4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        L4ロードバランサーとは
+        L4 ロードバランサーとは
       
     </span>
   </a>
@@ -33293,19 +33293,19 @@
   <a href="#06-l4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        06. L4ロードバランサー
+        06. L4 ロードバランサー
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="06. L4ロードバランサー">
+    <nav class="md-nav" aria-label="06. L4 ロードバランサー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#l4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        L4ロードバランサーとは
+        L4 ロードバランサーとは
       
     </span>
   </a>
@@ -33457,7 +33457,7 @@
 </dd>
 </dl>
 <p><strong>＊例＊</strong></p>
-<p>インバウンド通信を待ち受けるポート番号を<code>8080</code>と設定した場合、リクエスト時に以下の様にポート番号を指定すると、<code>nginx</code>プロセスにリクエストを送信できる。</p>
+<p>インバウンド通信を待ち受けるポート番号を <code>8080</code> と設定した場合、リクエスト時に以下の様にポート番号を指定すると、<code>nginx</code> プロセスにリクエストを送信できる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET http://127.0.0.1:8080</span>
 </code></pre></div>
 <h4 id="_6">▼ クライアントへのレスポンス時 (図の 『⬅︎』 )<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
@@ -33481,7 +33481,7 @@
 <p><br></p>
 <h3 id="_7">独自プロコトル<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="db">▼ DB接続系<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
-<p><code>L7</code>のプロトコルに属する独自プロトコルもある (例：MySQLなど) 。</p>
+<p><code>L7</code> のプロトコルに属する独自プロトコルもある (例：MySQLなど) 。</p>
 <ul>
 <li>Redis</li>
 </ul>
@@ -33515,7 +33515,7 @@
 <p>プロトコルを『<code>unix:</code>』としてパケットを送受信する。</p>
 <div class="highlight"><pre><span></span><code>unix://./etc/foo.sock
 </code></pre></div>
-<p>ソケットファイル (<code>.sock</code>ファイル) 自体にファイルとしての実体はなく、エンドポイントのように働く。</p>
+<p>ソケットファイル (<code>.sock</code> ファイル) 自体にファイルとしての実体はなく、エンドポイントのように働く。</p>
 <p>同じOS上で稼働するコンテナのプロセス間の通信でも使用できる。</p>
 <blockquote>
 <ul>
@@ -33526,7 +33526,7 @@
 <h2 id="05">05. プロセス間メッセージキュー<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_11">プロセス間メッセージキュー<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>同じOS上のプロセス間でメッセージを中継する。</p>
-<p>異なるOS間のメッセージを中継する時は、ミドルウェアとしてのメッセージキューを経由する。</p>
+<p>異なるOS間のメッセージを中継するときは、ミドルウェアとしてのメッセージキューを経由する。</p>
 <blockquote>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Message_queue">https://en.wikipedia.org/wiki/Message_queue</a></li>
@@ -33536,14 +33536,14 @@
 <h3 id="posix">posixメッセージキュー<a class="headerlink" href="#posix" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <p><br></p>
-<h2 id="06-l4">06. <code>L4</code>ロードバランサー<a class="headerlink" href="#06-l4" title="Permanent link">&para;</a></h2>
-<h3 id="l4"><code>L4</code>ロードバランサーとは<a class="headerlink" href="#l4" title="Permanent link">&para;</a></h3>
-<p>通信の<code>L4</code>プロトコル (例：UDP、TCP) やツール固有のプロトコル (例：MySQL、Memcachedなど) のヘッダー情報に基づいて、通信をロードバランシングする。</p>
-<p><code>L7</code>プロトコルのヘッダー情報を持つ通信であっても、<code>L4</code>プロトコルの情報のみを使用してロードバランシングすることもできる (例えば、HTTPプロトコルのバージョンの影響を回避できるといったメリットがある) 。</p>
-<p><code>L7</code>プロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3など) のヘッダー情報を失うわけではなく、あくまでパケットの<code>L4</code>ヘッダー情報をロードバランシングに使用するだけである。</p>
-<p>そのため、HTTPSで受信したリクエストをロードバランシングする時は、決して通信が平文になっているわけではなく、<code>L7</code>のパケットペイロードは暗号化されたままである。</p>
-<p><code>L4</code>プロトコルは、ヘッダーに宛先の情報 (例：IPアドレス、ポート番号) をもっている。</p>
-<p><code>L4</code>ロードバランサーは、これらの情報に基づいて通信を待ち受けるサーバーに、通信をロードバランシングする。</p>
+<h2 id="06-l4">06. <code>L4</code> ロードバランサー<a class="headerlink" href="#06-l4" title="Permanent link">&para;</a></h2>
+<h3 id="l4"><code>L4</code> ロードバランサーとは<a class="headerlink" href="#l4" title="Permanent link">&para;</a></h3>
+<p>通信の <code>L4</code> プロトコル (例：UDP、TCP) やツール固有のプロトコル (例：MySQL、Memcachedなど) のヘッダー情報に基づいて、通信をロードバランシングする。</p>
+<p><code>L7</code> プロトコルのヘッダー情報を持つ通信であっても、<code>L4</code> プロトコルの情報のみを使用してロードバランシングすることもできる (例えば、HTTPプロトコルのバージョンの影響を回避できるといったメリットがある) 。</p>
+<p><code>L7</code> プロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3など) のヘッダー情報を失うわけではなく、あくまでパケットの <code>L4</code> ヘッダー情報をロードバランシングに使用するだけである。</p>
+<p>そのため、HTTPSで受信したリクエストをロードバランシングするときは、決して通信が平文になっているわけではなく、<code>L7</code> のパケットペイロードは暗号化されたままである。</p>
+<p><code>L4</code> プロトコルは、ヘッダーに宛先の情報 (例：IPアドレス、ポート番号) をもっている。</p>
+<p><code>L4</code> ロードバランサーは、これらの情報に基づいて通信を待ち受けるサーバーに、通信をロードバランシングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://medium.com/@crazy_nuclei/l4-vs-l7-load-balancers-64e47610e2ef">https://medium.com/@crazy_nuclei/l4-vs-l7-load-balancers-64e47610e2ef</a></li>
@@ -33573,7 +33573,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月26日 16:27:22 JST">2025-11-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

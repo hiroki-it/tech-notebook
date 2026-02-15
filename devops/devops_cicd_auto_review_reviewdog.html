@@ -28697,7 +28697,7 @@
   <a href="#03-reviewdogyml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        03. .reviewdog.ymlファイル
+        03. .reviewdog.yml ファイル
       
     </span>
   </a>
@@ -32986,7 +32986,7 @@
   <a href="#03-reviewdogyml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        03. .reviewdog.ymlファイル
+        03. .reviewdog.yml ファイル
       
     </span>
   </a>
@@ -33093,14 +33093,14 @@
 <p><br></p>
 <h2 id="02">02. コマンド<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="-conf">-conf<a class="headerlink" href="#-conf" title="Permanent link">&para;</a></h3>
-<p><code>reviewdog.yml</code>ファイルを指定して、<code>review</code>コマンドを実行する。</p>
+<p><code>reviewdog.yml</code> ファイルを指定して、<code>review</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>reviewdog<span class="w"> </span>-conf<span class="o">=</span>.reviewdog.yml
 </code></pre></div>
 <p><br></p>
 <h3 id="-f">-f<a class="headerlink" href="#-f" title="Permanent link">&para;</a></h3>
 <h4 id="-f_1">▼ -fとは<a class="headerlink" href="#-f_1" title="Permanent link">&para;</a></h4>
-<p><code>reviewdog</code>コマンドに渡す時の標準出力/標準エラー出力のフォーマットを設定する。</p>
-<p>このフォーマットに基づいて、<code>reviewdog</code>コマンドは処理結果を認識する。</p>
+<p><code>reviewdog</code> コマンドに渡すときの標準出力/標準エラー出力のフォーマットを設定する。</p>
+<p>このフォーマットに基づいて、<code>reviewdog</code> コマンドは処理結果を認識する。</p>
 <p>ビルトインのフォーマットがあればこれを使用でき、無い場合はユーザーがツールの出力内容に基づいて設定する必要がある。</p>
 <h4 id="phpstan">▼ phpstanの場合<a class="headerlink" href="#phpstan" title="Permanent link">&para;</a></h4>
 <p>PHPStanが標準出力/標準エラー出力に出力する結果のフォーマットを設定する。</p>
@@ -33121,7 +33121,7 @@
 <h3 id="-list">--list<a class="headerlink" href="#-list" title="Permanent link">&para;</a></h3>
 <h4 id="-list_1">▼ --listとは<a class="headerlink" href="#-list_1" title="Permanent link">&para;</a></h4>
 <p>宛先に送信するビルトインのエラーフォーマットを表示する。</p>
-<p><code>-f</code>オプションで指定できる。</p>
+<p><code>-f</code> オプションで指定できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>reviewdog<span class="w"> </span>--list
 
 rdjson<span class="w">          </span>Reviewdog<span class="w"> </span>Diagnostic<span class="w"> </span>JSON<span class="w"> </span>Format<span class="w"> </span><span class="o">(</span>JSON<span class="w"> </span>of<span class="w"> </span>DiagnosticResult<span class="w"> </span>message<span class="o">)</span><span class="w">                                             </span>-<span class="w"> </span>https://github.com/reviewdog/reviewdog
@@ -33135,8 +33135,8 @@ typos<span class="w">           </span>Source<span class="w"> </span>code<span c
 yamllint<span class="w">        </span><span class="o">(</span>yamllint<span class="w"> </span>-f<span class="w"> </span>parsable<span class="o">)</span><span class="w"> </span>A<span class="w"> </span>linter<span class="w"> </span><span class="k">for</span><span class="w"> </span>YAML<span class="w"> </span>files<span class="w">                                                                  </span>-<span class="w"> </span>https://github.com/adrienverge/yamllint
 </code></pre></div>
 <p><br></p>
-<h2 id="03-reviewdogyml">03. <code>.reviewdog.yml</code>ファイル<a class="headerlink" href="#03-reviewdogyml" title="Permanent link">&para;</a></h2>
-<p><code>reviewdog</code>コマンドのオプションを宣言的に設定できる。</p>
+<h2 id="03-reviewdogyml">03. <code>.reviewdog.yml</code> ファイル<a class="headerlink" href="#03-reviewdogyml" title="Permanent link">&para;</a></h2>
+<p><code>reviewdog</code> コマンドのオプションを宣言的に設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">runner</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">golint</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">golint $(go list ./... | grep -v /vendor/)</span>
@@ -33201,7 +33201,7 @@ yamllint<span class="w">        </span><span class="o">(</span>yamllint<span cla
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月10日 22:20:31 JST">2025-05-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

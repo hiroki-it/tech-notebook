@@ -3339,15 +3339,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#protogrpc" class="md-nav__link">
+  <a href="#proto-grpc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        protoファイルをgRPCサーバー側に配置する場合
+        proto ファイルをgRPCサーバー側に配置する場合
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="protoファイルをgRPCサーバー側に配置する場合">
+    <nav class="md-nav" aria-label="proto ファイルをgRPCサーバー側に配置する場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3367,15 +3367,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#protopb_go" class="md-nav__link">
+  <a href="#proto-pb_go" class="md-nav__link">
     <span class="md-ellipsis">
       
-        protoファイルとpb_goファイルを専用リポジトリに配置する場合
+        proto ファイルと pb_go ファイルを専用リポジトリに配置する場合
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="protoファイルとpb_goファイルを専用リポジトリに配置する場合">
+    <nav class="md-nav" aria-label="proto ファイルと pb_go ファイルを専用リポジトリに配置する場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33682,15 +33682,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#protogrpc" class="md-nav__link">
+  <a href="#proto-grpc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        protoファイルをgRPCサーバー側に配置する場合
+        proto ファイルをgRPCサーバー側に配置する場合
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="protoファイルをgRPCサーバー側に配置する場合">
+    <nav class="md-nav" aria-label="proto ファイルをgRPCサーバー側に配置する場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33710,15 +33710,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#protopb_go" class="md-nav__link">
+  <a href="#proto-pb_go" class="md-nav__link">
     <span class="md-ellipsis">
       
-        protoファイルとpb_goファイルを専用リポジトリに配置する場合
+        proto ファイルと pb_go ファイルを専用リポジトリに配置する場合
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="protoファイルとpb_goファイルを専用リポジトリに配置する場合">
+    <nav class="md-nav" aria-label="proto ファイルと pb_go ファイルを専用リポジトリに配置する場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33876,7 +33876,7 @@
 <p><br></p>
 <h2 id="01-grpc">01. gRPCの仕組み<a class="headerlink" href="#01-grpc" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>RPCフレームワークの一つで、Protocol Bufferを使用してRPC (リモートプロシージャーコール) を実行する。</p>
+<p>RPCフレームワークの1つで、Protocol Bufferを使用してRPC (リモートプロシージャーコール) を実行する。</p>
 <p>従来のHTTP/1.1ではなく、HTTP/2 (例：gRPC、GraphQLなど) を使用する。</p>
 <p>RESTful-APIに対するリクエストではリクエストのヘッダーやボディを作成する必要がある。</p>
 <p>一方で、リモートプロシージャーコールであれば通信先の関数を指定して引数を渡せばよく、まるで自身の関数のようにコールできる。</p>
@@ -33903,7 +33903,7 @@
 <h2 id="02">02. 通信方式<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="grpc">gRPCの通信方式とは<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h3>
 <p>gRPCでは、gRPCクライアントとgRPCサーバーの間の通信方式に種類がある。</p>
-<p>通信方式は、<code>proto</code>ファイルで定義する。</p>
+<p>通信方式は、<code>proto</code> ファイルで定義する。</p>
 <p><img alt="grpc_connection-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_connection-type.png" /></p>
 <blockquote>
 <ul>
@@ -33916,8 +33916,8 @@
 <h4 id="rpc">▼ 単項RPCとは<a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h4>
 <p><img alt="grpc_unary-rpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_unary-rpc.png" /></p>
 <p>リクエスト／レスポンス方式の通信を実施する。</p>
-<p>まず、<code>1</code>個のTCP接続を確立し、その中に<code>1</code>個のストリームを作成する。</p>
-<p>次に、gRPCクライアントが<code>1</code>個のリクエストを送信し、これが終えると受信後に<code>1</code>個のレスポンスを返信する。</p>
+<p>まず、<code>1</code> 個のTCP接続を確立し、その中に <code>1</code> 個のストリームを作成する。</p>
+<p>次に、gRPCクライアントが <code>1</code> 個のリクエストを送信し、これが終えると受信後に <code>1</code> 個のレスポンスを返信する。</p>
 <p>一番よく使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Request</span><span class="w"> </span><span class="p">{</span>
 
@@ -33940,8 +33940,8 @@
 <h4 id="rpc_1">▼ サーバーストリーミングRPCとは<a class="headerlink" href="#rpc_1" title="Permanent link">&para;</a></h4>
 <p><img alt="grpc_server-streaming" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_server-streaming.png" /></p>
 <p>ストリーミング方式の通信を実施する。</p>
-<p>まず、<code>1</code>個のTCP接続を確立し、その中に単一またはのストリームを作成する。</p>
-<p>次に、gRPCクライアントがストリーム上で<code>1</code>個のリクエストを送信し、これが終えるとサーバーは複数個のレスポンスを並行的に返信する。</p>
+<p>まず、<code>1</code> 個のTCP接続を確立し、その中に単一またはのストリームを作成する。</p>
+<p>次に、gRPCクライアントがストリーム上で <code>1</code> 個のリクエストを送信し、これが終えるとサーバーは複数個のレスポンスを並行的に返信する。</p>
 <p>任意のタイミングで、サーバーからまとめてレスポンスさせたい場合に使用する。</p>
 <p>サーバーストリーミングRPCであっても、クライアントがクライアントストリーミングRPCを非同期的に実行すれば、同時ストリーミングになる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Notification</span><span class="w"> </span><span class="p">{</span>
@@ -33964,8 +33964,8 @@
 <h4 id="rpc_2">▼ クライアントストリーミングRPCとは<a class="headerlink" href="#rpc_2" title="Permanent link">&para;</a></h4>
 <p><img alt="grpc_client-streaming-rpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_client-streaming-rpc.png" /></p>
 <p>ストリーミング方式の通信を実施する。</p>
-<p>まず、<code>1</code>個のTCP接続を確立し、その中に単一のストリームを作成する。</p>
-<p>次に、gRPCクライアントがストリーム上で複数個のリクエストを並行的に送信し、これが終えるとサーバーは<code>1</code>個のレスポンスを返信する。</p>
+<p>まず、<code>1</code> 個のTCP接続を確立し、その中に単一のストリームを作成する。</p>
+<p>次に、gRPCクライアントがストリーム上で複数個のリクエストを並行的に送信し、これが終えるとサーバーは <code>1</code> 個のレスポンスを返信する。</p>
 <p>gRPCクライアントからのリクエストの送信データサイズが大きくなる場合 (例：アップロードサービス) に使用する。</p>
 <p>クライアントストリーミングRPCであっても、クライアントがクライアントストリーミングRPCを非同期的に実行すれば、同時ストリーミングになる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Upload</span><span class="w"> </span><span class="p">{</span>
@@ -33988,7 +33988,7 @@
 <h4 id="rpc_3">▼ 双方向ストリーミングRPCとは<a class="headerlink" href="#rpc_3" title="Permanent link">&para;</a></h4>
 <p><img alt="grpc_bidrectional-streaming-rpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_bidrectional-streaming-rpc.png" /></p>
 <p>ストリーミング方式の通信を実施する。</p>
-<p>まず、<code>1</code>個のTCP接続を確立し、その中に複数のストリームを同時に作成する。</p>
+<p>まず、<code>1</code> 個のTCP接続を確立し、その中に複数のストリームを同時に作成する。</p>
 <p>次に、gRPCクライアントがストリーム上で複数個のリクエストを並行的に送信する。</p>
 <p>これが終えると、もう一方のストリーム上でサーバーも複数個のレスポンスを並行的に返信する (逆にサーバーからもリクエストを送信できる)。</p>
 <p>gRPCクライアントとgRPCサーバーが互いにリクエストを送信する場合 (例：チャット、オンラインゲーム) に使用する。</p>
@@ -34146,7 +34146,7 @@
 <p><br></p>
 <h3 id="_8">レスポンスタイム<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="http11_1">▼ HTTP/1.1の場合<a class="headerlink" href="#http11_1" title="Permanent link">&para;</a></h4>
-<p>HTTP/1.1の場合、<code>1</code>個のリクエストとレスポンスを送受信する。</p>
+<p>HTTP/1.1の場合、<code>1</code> 個のリクエストとレスポンスを送受信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one">https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one</a></li>
@@ -34154,7 +34154,7 @@
 </ul>
 </blockquote>
 <h4 id="grpc_2">▼ gRPCの場合<a class="headerlink" href="#grpc_2" title="Permanent link">&para;</a></h4>
-<p>単項RPCの場合、<code>1</code>個のリクエストとレスポンスを送受信する。</p>
+<p>単項RPCの場合、<code>1</code> 個のリクエストとレスポンスを送受信する。</p>
 <p>そのため、従来のHTTP/1.1と同じレスポンスタイムである。</p>
 <p>一方でストリーミングRPCの場合、複数個のリクエストとレスポンスを並行的に送受信する (多重化)。</p>
 <p>そのため、重複しない通信時間が合計のレスポンスタイムになる。</p>
@@ -34299,7 +34299,7 @@
 <li><code>ResourceExhausted</code> (<code>8</code>)</li>
 <li><code>DeadlineExceeded</code> (<code>4</code>)</li>
 </ul>
-<p>なお、<code>Canceled</code>はgRPCクライアントがこれ以上のリクエストを必要としていない可能性があり、不要である。</p>
+<p>なお、<code>Canceled</code> はgRPCクライアントがこれ以上のリクエストを必要としていない可能性があり、不要である。</p>
 <p><br></p>
 <h3 id="_12">タイムアウト<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="http11_2">▼ HTTP/1.1の場合<a class="headerlink" href="#http11_2" title="Permanent link">&para;</a></h4>
@@ -34307,7 +34307,7 @@
 <h4 id="rpc_4">▼ 単項RPCの場合<a class="headerlink" href="#rpc_4" title="Permanent link">&para;</a></h4>
 <p>TCP接続上に単一のストリーミングしかない。</p>
 <p>そのため、そのストリーミングを通過するリクエスト／レスポンスにタイムアウト時間を適用する。</p>
-<p>gRPCは、TCP接続の確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を<code>grpc-timeout</code>ヘッダーに設定する。</p>
+<p>gRPCは、TCP接続の確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を <code>grpc-timeout</code> ヘッダーに設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/envoyproxy/envoy/issues/12578#issue-676405512">https://github.com/envoyproxy/envoy/issues/12578#issue-676405512</a></li>
@@ -34316,7 +34316,7 @@
 <h4 id="rpc_5">▼ ストリーミングRPCの場合<a class="headerlink" href="#rpc_5" title="Permanent link">&para;</a></h4>
 <p>TCP接続上に複数のストリーミングがある。</p>
 <p>そのため、各ストリーミングを通過するリクエスト／レスポンスごとに同じタイムアウト時間を別々に適用する。</p>
-<p>gRPCは、TCP接続の確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を<code>grpc-timeout</code>ヘッダーに設定する。</p>
+<p>gRPCは、TCP接続の確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を <code>grpc-timeout</code> ヘッダーに設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/envoyproxy/envoy/issues/12578#issue-676405512">https://github.com/envoyproxy/envoy/issues/12578#issue-676405512</a></li>
@@ -34335,9 +34335,9 @@
 <span class="l l-Scalar l-Scalar-Plain">baz</span><span class="w"> </span><span class="c1"># Python製</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="protogrpc"><code>proto</code>ファイルをgRPCサーバー側に配置する場合<a class="headerlink" href="#protogrpc" title="Permanent link">&para;</a></h3>
+<h3 id="proto-grpc"><code>proto</code> ファイルをgRPCサーバー側に配置する場合<a class="headerlink" href="#proto-grpc" title="Permanent link">&para;</a></h3>
 <h4 id="grpc_3">▼ gRPCクライアント/サーバーのリポジトリ<a class="headerlink" href="#grpc_3" title="Permanent link">&para;</a></h4>
-<p>各マイクロサービスのリポジトリでは、アプリケーションのインフラストラクチャ層に<code>proto</code>ファイルを配置する。</p>
+<p>各マイクロサービスのリポジトリでは、アプリケーションのインフラストラクチャ層に <code>proto</code> ファイルを配置する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># fooサービス (JavaScript製)</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── src/</span>
@@ -34438,10 +34438,10 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="protopb_go"><code>proto</code>ファイルと<code>pb_go</code>ファイルを専用リポジトリに配置する場合<a class="headerlink" href="#protopb_go" title="Permanent link">&para;</a></h3>
+<h3 id="proto-pb_go"><code>proto</code> ファイルと <code>pb_go</code> ファイルを専用リポジトリに配置する場合<a class="headerlink" href="#proto-pb_go" title="Permanent link">&para;</a></h3>
 <h4 id="grpc_4">▼ gRPCクライアント/サーバーのリポジトリ<a class="headerlink" href="#grpc_4" title="Permanent link">&para;</a></h4>
 <p>各マイクロサービスのリポジトリでは、アプリケーションのインフラストラクチャ層にgRPCクライアントとgRPCサーバーの定義を配置する。</p>
-<p>なお、<code>pb</code>ファイルはProtocol Bufferの共有リポジトリで管理する。</p>
+<p>なお、<code>pb</code> ファイルはProtocol Bufferの共有リポジトリで管理する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># fooサービス (JavaScript製)</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── src/</span>
@@ -34488,12 +34488,12 @@
 </ul>
 </blockquote>
 <h4 id="protocol-buffer">▼ Protocol Bufferの共有リポジトリ<a class="headerlink" href="#protocol-buffer" title="Permanent link">&para;</a></h4>
-<p><code>pb</code>ファイルに関しては、gRPCサーバーは、さらに宛先マイクロサービスをコールするgRPCクライアントにもなる。</p>
-<p>そのため、Protocol Bufferの共有リポジトリでは、各マイクロサービスの<code>proto</code>ファイル、RPC-API仕様書、<code>pb</code>ファイルを管理する。</p>
-<p><code>pb</code>ファイルには以下があり、これは共有リポジトリではなく、gRPCクライアント/サーバーのリポジトリで管理してもよい。</p>
+<p><code>pb</code> ファイルに関しては、gRPCサーバーは、さらに宛先マイクロサービスをコールするgRPCクライアントにもなる。</p>
+<p>そのため、Protocol Bufferの共有リポジトリでは、各マイクロサービスの <code>proto</code> ファイル、RPC-API仕様書、<code>pb</code> ファイルを管理する。</p>
+<p><code>pb</code> ファイルには以下があり、これは共有リポジトリではなく、gRPCクライアント/サーバーのリポジトリで管理してもよい。</p>
 <ul>
-<li>gRPCサーバーとしての<code>proto</code>ファイルから作った<code>pb</code>ファイル</li>
-<li>gRPCクライアントとしての<code>proto</code>ファイル (これは宛先gRPCサーバーのリポジトリにある) から作った<code>pb</code>ファイル</li>
+<li>gRPCサーバーとしての <code>proto</code> ファイルから作った <code>pb</code> ファイル</li>
+<li>gRPCクライアントとしての <code>proto</code> ファイル (これは宛先gRPCサーバーのリポジトリにある) から作った <code>pb</code> ファイル</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1"># Protocol Buffer</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
@@ -34550,7 +34550,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月11日 18:09:59 JST">2026-02-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

@@ -36633,7 +36633,7 @@
 <p>インターラクターでは、ドメイン層を組み合わせてソフトウェアの振舞 (ユースケース) を具現化する。</p>
 <p>そのため、関数名はユースケースを適切に表現した自由な英単語を使用する。</p>
 <p>フレームワークのLaravelの基本的な関数名 (<code>index</code>、<code>store</code>、<code>create</code>、<code>show</code>、<code>update</code>) が参考になる。</p>
-<p><code>CREATE</code>処理と <code>UPDATE</code>処理をSAVE処理としてまとめても良い。</p>
+<p><code>CREATE</code> 処理と <code>UPDATE</code> 処理をSAVE処理としてまとめても良い。</p>
 <table>
 <thead>
 <tr>
@@ -36859,7 +36859,7 @@
 <p><br></p>
 <h3 id="_24">リクエストモデル (インプットデータ)<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <h4 id="_25">▼ リクエストモデルとは<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
-<p>インターフェース層のコントローラーから入力されるリクエストパラメーターをユースケース層に入力する時に、その入力構造を定義する。</p>
+<p>インターフェース層のコントローラーから入力されるリクエストパラメーターをユースケース層に入力するときに、その入力構造を定義する。</p>
 <p>インターラクターの関数ごとにリクエストモデルを用意すると良い。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -36891,7 +36891,7 @@
 <p><br></p>
 <h3 id="_26">レスポンスモデル (アウトプットデータ)<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
 <h4 id="_27">▼ レスポンスモデルとは<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
-<p>ユースケース層のインターラクターから出力されるドメインモデルをインターフェース層に出力する時に、その出力構造を定義する。</p>
+<p>ユースケース層のインターラクターから出力されるドメインモデルをインターフェース層に出力するときに、その出力構造を定義する。</p>
 <p>インターラクターの関数ごとにレスポンスモデルを用意すると良い。</p>
 <p>またコントローラーにて、フレームワーク依存のJSONレスポンス関数にレスポンスモデルを渡せるよう、クラス自身の構造を変換する関数を持たせると良い。</p>
 <p>もし、クラス自身を渡して問題ないJSONレスポンス関数であれば、これは不要である。</p>
@@ -37257,7 +37257,7 @@
 <h4 id="_44">▼ ドメインサービスとは<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h4>
 <p>ドメイン層のエンティティに持たせるとやや不自然で、他のドメインオブジェクトを対象とした振舞ロジックを切り分けたもの。</p>
 <p>ドメインサービスは、他のドメインオブジェクトにロジックを関数として提供するのみで、自身の状態を変化させる関数は持たせないようにする。</p>
-<p>全ての関数を <code>1</code>個のドメインサービスにまとめて管理するよりも、動作の種類ごとに分けて管理した方が良い。</p>
+<p>全ての関数を <code>1</code> 個のドメインサービスにまとめて管理するよりも、動作の種類ごとに分けて管理したほうが良い。</p>
 <p>この時、エンティティのビジネスロジックがドメインサービスに実装されすぎないように注意する。</p>
 <p>補足として、ドメイン層でリポジトリを使用することを嫌って、ドメインサービスの処理をユースケース層のアプリケーションサービスで定義しても問題ない。</p>
 <blockquote>
@@ -37340,7 +37340,7 @@
 <tr>
 <td>ポリシー</td>
 <td>各パーミッションの認可スコープを定義する。</td>
-<td><code>StandardAccess</code>、<code>FullAccess</code>、<code>ReadOnly</code>を定義する。</td>
+<td><code>StandardAccess</code>、<code>FullAccess</code>、<code>ReadOnly</code> を定義する。</td>
 </tr>
 </tbody>
 </table>
@@ -37410,13 +37410,13 @@
 <h4 id="_49">▼ ビジネスルール検証<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h4>
 <p>エンティティから切り分けたビジネスルール条件オブジェクトとして実装する。</p>
 <p>複数のエンティティをまたぐビジネスルールの検証はSpecificationパターンに切り分けるのがよい。</p>
-<p>boolean値関数 (<code>isFoo</code>関数) のように、仕様を満たしているかを調べる処理する。</p>
+<p>boolean値関数 (<code>isFoo</code> 関数) のように、仕様を満たしているかを調べる処理する。</p>
 <ul>
 <li>単一のエンティティを引数として、複数を要求を満たしているか</li>
 <li>複数のエンティティを引数として、仕様を満たしているか</li>
 <li>何らかの処理のために用意できているか</li>
 </ul>
-<p>単一のエンティティに関する単一のビジネスルールの場合は、Specificationパターンとして切り分けずに、そのエンティティにboolean値関数 (<code>isFoo</code>関数) をもたせる。</p>
+<p>単一のエンティティに関する単一のビジネスルールの場合は、Specificationパターンとして切り分けずに、そのエンティティにboolean値関数 (<code>isFoo</code> 関数) をもたせる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -37570,7 +37570,7 @@
 <h3 id="_56">エンティティとは<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h3>
 <p>責務として、ビジネスルールや制約の定義を持ち、値オブジェクトとは区別される。</p>
 <p>エンティティの責務をデザインパターンに切り分けても良い。</p>
-<p>一意で識別できるデータ (例：<code>id</code>データ) を持つ</p>
+<p>一意で識別できるデータ (例：<code>id</code> データ) を持つ</p>
 <p><img alt="ドメイン駆動設計_エンティティ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_エンティティ.jpg" /></p>
 <p><br></p>
 <h3 id="_57">識別可能<a class="headerlink" href="#_57" title="Permanent link">&para;</a></h3>
@@ -37669,11 +37669,11 @@
 <p><br></p>
 <h3 id="_59">識別子による等価性検証<a class="headerlink" href="#_59" title="Permanent link">&para;</a></h3>
 <h4 id="_60">▼ 識別子による等価性検証とは<a class="headerlink" href="#_60" title="Permanent link">&para;</a></h4>
-<p>等価性検証用の <code>equals</code>関数を持つ。</p>
+<p>等価性検証用の <code>equals</code> 関数を持つ。</p>
 <p>保持する識別子が、対象のエンティティと同じ場合、同じものと見なされる。</p>
 <h4 id="_61">▼ 等価性の検証方法<a class="headerlink" href="#_61" title="Permanent link">&para;</a></h4>
 <p>全てのエンティティに等価性の検証関数を持たせると可読性が低い。</p>
-<p>そこで、全てのエンティティに等価性検証用の <code>equals</code>関数を持たせることをやめ、継承元の抽象クラスのエンティティにこれを定義すると良い。</p>
+<p>そこで、全てのエンティティに等価性検証用の <code>equals</code> 関数を持たせることをやめ、継承元の抽象クラスのエンティティにこれを定義すると良い。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain</span><span class="p">;</span>
@@ -37717,8 +37717,8 @@
 </code></pre></div>
 <h4 id="php">▼ 複合主キーへの対応 (PHPでは不要)<a class="headerlink" href="#php" title="Permanent link">&para;</a></h4>
 <p>以降の説明はJavaについて適用されるため、PHPでは不要である。</p>
-<p>複合主キーを持つオブジェクトに対応するために、主キーとなる方のオブジェクト側に、<code>equals</code>関数と <code>hash</code>関数を定義する。</p>
-<p>これにより、言語標準搭載の <code>equals</code>関数と <code>hash</code>関数をオーバーライドし、異なるセッションに渡ってオブジェクトを比較できるようにする。</p>
+<p>複合主キーを持つオブジェクトに対応するために、主キーとなるほうのオブジェクト側に、<code>equals</code> 関数と <code>hash</code> 関数を定義する。</p>
+<p>これにより、言語標準搭載の <code>equals</code> 関数と <code>hash</code> 関数をオーバーライドし、異なるセッションに渡ってオブジェクトを比較できるようにする。</p>
 <p>これらを定義しないと、オーバーライドされずに標準搭載の関数が使用される。</p>
 <p>標準搭載の関数では、異なるセッションに渡ったオブジェクトの比較では、必ず異なるオブジェクトであると判定してしまう。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -37786,14 +37786,14 @@
 <h3 id="_62">データの可変性/不変性<a class="headerlink" href="#_62" title="Permanent link">&para;</a></h3>
 <h4 id="_63">▼ 可変性/不変性の実現方法 (ミュータブル/イミュータブル)<a class="headerlink" href="#_63" title="Permanent link">&para;</a></h4>
 <p>エンティティのデータは可変/不変データのいずれであっても良い。</p>
-<p>ただし、そもそもオブジェクトは不変である方が望ましいため、可変的なデータは最小限にする。</p>
+<p>ただし、そもそもオブジェクトは不変であるほうが望ましいため、可変的なデータは最小限にする。</p>
 <p>変化させても問題ないプロパティに対してはセッターを定義し、不変的なデータに対してはコンストラクタインジェクションのみを許可する。</p>
 <p>もちろん、セッター内ではビジネスルールのバリデーションを実行する。</p>
 <p><br></p>
 <h2 id="04-04">04-04. 値オブジェクト<a class="headerlink" href="#04-04" title="Permanent link">&para;</a></h2>
 <h3 id="_64">値オブジェクトとは<a class="headerlink" href="#_64" title="Permanent link">&para;</a></h3>
 <p>責務として、ビジネスルールや制約の定義を持ち、エンティティと区別される。</p>
-<p>金額、数字、電話番号、文字列、日付、氏名、色などのユビキタス言語に関する状態を持つ一方で、一意で識別できるデータ (例：<code>id</code>データ) を持たない。</p>
+<p>金額、数字、電話番号、文字列、日付、氏名、色などのユビキタス言語に関する状態を持つ一方で、一意で識別できるデータ (例：<code>id</code> データ) を持たない。</p>
 <p><img alt="ドメイン駆動設計_バリューオブジェクト" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_バリューオブジェクト.jpg" /></p>
 <p><br></p>
 <h3 id="_65">識別不可能<a class="headerlink" href="#_65" title="Permanent link">&para;</a></h3>
@@ -38119,7 +38119,7 @@
 <h3 id="_71">データの不変性 (イミュータブル)<a class="headerlink" href="#_71" title="Permanent link">&para;</a></h3>
 <h4 id="_72">▼ 不変性の実現方法<a class="headerlink" href="#_72" title="Permanent link">&para;</a></h4>
 <p>値オブジェクトは不変的であり、インスタンスとして作成されて以降、データは変更されない。</p>
-<p>オブジェクトの不変性を実現するために、オブジェクトにセッターを定義しないようにし、データの設定には <code>construct</code>関数のみを使用するようにする。</p>
+<p>オブジェクトの不変性を実現するために、オブジェクトにセッターを定義しないようにし、データの設定には <code>construct</code> 関数のみを使用するようにする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -38162,7 +38162,7 @@
 </code></pre></div>
 <h4 id="_73">▼ セッターでは不変的にならない理由<a class="headerlink" href="#_73" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<p>Test01クラスインスタンスの <code>$property01</code>データに値を設定するためには、インスタンスからセッターをコールする。</p>
+<p>Test01クラスインスタンスの <code>$property01</code> データに値を設定するためには、インスタンスからセッターをコールする。</p>
 <p>セッターは何度でも呼び出せ、その度にデータの値を上書きできてしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -38172,9 +38172,9 @@
 
 <span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">&quot;新しいデータ01の値&quot;</span><span class="p">);</span>
 </code></pre></div>
-<p>Test02クラスインスタンスの <code>$property02</code>データに値を設定するためには、インスタンスを作り直さなければならない。</p>
-<p>つまり、以前に作ったインスタンスの <code>$property02</code>の値は上書きできない。</p>
-<p>セッターを持たせずに、<code>construct</code>関数のみを持たせれば、不変的なオブジェクトとなる。</p>
+<p>Test02クラスインスタンスの <code>$property02</code> データに値を設定するためには、インスタンスを作り直さなければならない。</p>
+<p>つまり、以前に作ったインスタンスの <code>$property02</code> の値は上書きできない。</p>
+<p>セッターを持たせずに、<code>construct</code> 関数のみを持たせれば、不変的なオブジェクトとなる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">&quot;データ02の値&quot;</span><span class="p">);</span>
@@ -38183,10 +38183,10 @@
 </code></pre></div>
 <h4 id="_74">▼ 過剰なゲッターへの対処法<a class="headerlink" href="#_74" title="Permanent link">&para;</a></h4>
 <p>不変的なデータはゲッターを使用しなければアクセスできない。</p>
-<p>そのため、値オブジェクトにプロパティ値を返却するだけのゲッターが量産され、ファイルの見通しが悪くなってしまう。</p>
-<p>そこで、例えばPHPでは、マジック関数の <code>__get</code>関数を使用して、ゲッターの実装を省略できる。</p>
-<p>全ての値オブジェクトの基底クラスに、『コールされたゲッターがクラス内に存在していなければ、動的にプロパティにアクセスして返却する』処理を持った <code>__get</code>関数を定義しておく。</p>
-<p>すると、マジック関数のオーバーライド機能により、自身で定義した <code>__get</code>関数が代わりにコールするようになり、ゲッターを定義する必要がなくなる。</p>
+<p>そのため、値オブジェクトにプロパティ値を返すだけのゲッターが量産され、ファイルの見通しが悪くなってしまう。</p>
+<p>そこで、例えばPHPでは、マジック関数の <code>__get</code> 関数を使用して、ゲッターの実装を省略できる。</p>
+<p>全ての値オブジェクトの基底クラスに、『コールされたゲッターがクラス内に存在していなければ、動的にプロパティにアクセスして返却する』処理を持った <code>__get</code> 関数を定義しておく。</p>
+<p>すると、マジック関数のオーバーライド機能により、自身で定義した <code>__get</code> 関数が代わりにコールするようになり、ゲッターを定義する必要がなくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
@@ -38252,7 +38252,7 @@
 <p>保持する全ての属性が、対象の値オブジェクトと同じ場合、同じものと見なされる。</p>
 <h4 id="_79">▼ 等価性の検証方法<a class="headerlink" href="#_79" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<p>属性を1つだけ保持する場合、<code>1</code>個の属性のみを検証すれば良いため、以下の通りとなる。</p>
+<p>属性を1つだけ保持する場合、<code>1</code> 個の属性のみを検証すれば良いため、以下の通りとなる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain\Foo\ValueObjects</span><span class="p">;</span>
@@ -38489,7 +38489,7 @@
 <p><br></p>
 <h3 id="_83">トランザクションとの関係性<a class="headerlink" href="#_83" title="Permanent link">&para;</a></h3>
 <p>インフラストラクチャ層のリポジトリでは、レコードの書き込み/読み出しをルートエンティティ単位で実行する。</p>
-<p>ルートエンティティを定義づける時の注意点として、集約の単位が大き過ぎると、一部分のエンティティのみトランザクションの対象とすれば良い処理であるのにも関わらず、ルートエンティティ全体まで対象としなければならなくなる。</p>
+<p>ルートエンティティを定義づけるときの注意点として、集約の単位が大き過ぎると、一部分のエンティティのみトランザクションの対象とすれば良い処理であるのにも関わらず、ルートエンティティ全体まで対象としなければならなくなる。</p>
 <p>そのため、ビジネスロジックとしてのまとまりと、トランザクションとしてのまとまりの両方から、ルートエンティティの単位を定義づけると良い。</p>
 <blockquote>
 <ul>
@@ -38513,7 +38513,7 @@
 <p>デザインパターンの一種。</p>
 <p>一例として、以下の関数を持つ。</p>
 <p>具体的な実装については、インターフェースリポジトリの実装を参考にせよ。</p>
-<p><code>CREATE</code>処理と <code>UPDATE</code>処理をSAVE処理としてまとめても良い。</p>
+<p><code>CREATE</code> 処理と <code>UPDATE</code> 処理をSAVE処理としてまとめても良い。</p>
 <table>
 <thead>
 <tr>
@@ -38591,23 +38591,23 @@
 <tr>
 <td>Active Record</td>
 <td>DB駆動</td>
-<td>・非常に強い。<code>&lt;br&gt;</code>・手順としてテーブル設計が先にあり、<code>1</code>個のドメインモデルが <code>1</code>個のテーブルに対応している。<code>&lt;br&gt;</code>・テーブル間のリレーションシップによって、ドメインモデル間の依存関係が決まる。</td>
+<td>・非常に強い。<code>&lt;br&gt;</code>・手順としてテーブル設計が先にあり、<code>1</code> 個のドメインモデルが <code>1</code> 個のテーブルに対応している。<code>&lt;br&gt;</code>・テーブル間のリレーションシップによって、ドメインモデル間の依存関係が決まる。</td>
 <td>・Eloquent (PHP)<code>&lt;br&gt;</code>・Active Record (Ruby) <code>&lt;br&gt;</code>・Hibernate (Java)</td>
-<td>ビジネスロジックが複雑でないアプリケーション<code>&lt;br&gt;</code><a href="https://www.informit.com/articles/article.aspx?p=1398618&amp;seqNum=3">https://www.informit.com/articles/article.aspx?p=1398618&amp;seqNum=3</a></td>
+<td>ビジネスロジックが複雑でないアプリケーション <code>&lt;br&gt;</code><a href="https://www.informit.com/articles/article.aspx?p=1398618&amp;seqNum=3">https://www.informit.com/articles/article.aspx?p=1398618&amp;seqNum=3</a></td>
 <td>DataMapperパターンと同じく、ORMの実装方法の1つである。<code>&lt;br&gt;</code><a href="https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/">https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/</a></td>
 </tr>
 <tr>
 <td>Data Mapper</td>
 <td>ドメイン駆動</td>
-<td>・弱い<code>&lt;br&gt;</code>・Entityマネージャを使用して、ドメインモデルをDBに永続化する。</td>
+<td>・弱い <code>&lt;br&gt;</code>・Entityマネージャを使用して、ドメインモデルをDBに永続化する。</td>
 <td>Doctrine</td>
-<td>ビジネスロジックが複雑なアプリケーション<code>&lt;br&gt;</code><a href="https://www.informit.com/articles/article.aspx?p=1398618&amp;seqNum=3">https://www.informit.com/articles/article.aspx?p=1398618&amp;seqNum=3</a></td>
+<td>ビジネスロジックが複雑なアプリケーション <code>&lt;br&gt;</code><a href="https://www.informit.com/articles/article.aspx?p=1398618&amp;seqNum=3">https://www.informit.com/articles/article.aspx?p=1398618&amp;seqNum=3</a></td>
 <td>ActiveRecordパターンと同じく、ORMの実装方法の1つである。<code>&lt;br&gt;</code><a href="https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/">https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/</a></td>
 </tr>
 <tr>
 <td>Repository</td>
 <td>ドメイン駆動</td>
-<td>・弱い<code>&lt;br&gt;</code>・手順としてドメインモデルの依存関係の設計が先にあり、テーブル間の関係性は自由である。<code>1</code>個のドメインモデルが複数のテーブルを参照しても良い。</td>
+<td>・弱い <code>&lt;br&gt;</code>・手順としてドメインモデルの依存関係の設計が先にあり、テーブル間の関係性は自由である。<code>1</code> 個のドメインモデルが複数のテーブルを参照しても良い。</td>
 <td></td>
 <td>ビジネスロジックが複雑なアプリケーション</td>
 <td>DB、RDBMS、NoSQL、なんでもでも良い。</td>
@@ -38710,7 +38710,7 @@
 </dd>
 </dl>
 <p><strong>＊実装例＊</strong></p>
-<p><code>CREATE</code>処理のため、DoctrineのQueryBuilderクラスの <code>insert</code>関数を実行する。</p>
+<p><code>CREATE</code> 処理のため、DoctrineのQueryBuilderクラスの <code>insert</code> 関数を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\インフラストラクチャ層\Foo\Repositories</span><span class="p">;</span>
@@ -38744,7 +38744,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>UPDATE</code>処理のため、DoctrineのQueryBuilderクラスの <code>update</code>関数を実行する。</p>
+<p><code>UPDATE</code> 処理のため、DoctrineのQueryBuilderクラスの <code>update</code> 関数を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\インフラストラクチャ層\Foo\Repositories</span><span class="p">;</span>
@@ -38778,7 +38778,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>DELETE</code>処理 (論理削除) のため、DoctrineのQueryBuilderクラスの <code>update</code>関数を実行する。</p>
+<p><code>DELETE</code> 処理 (論理削除) のため、DoctrineのQueryBuilderクラスの <code>update</code> 関数を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\インフラストラクチャ層\Foo\Repositories</span><span class="p">;</span>
@@ -38838,7 +38838,7 @@
 </dd>
 </dl>
 <p><strong>＊実装例＊</strong></p>
-<p><code>READ</code>処理のため、DoctrineのQueryBuilderクラスの <code>select</code>関数を実行する。</p>
+<p><code>READ</code> 処理のため、DoctrineのQueryBuilderクラスの <code>select</code> 関数を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\インフラストラクチャ層\Foo\Repositories</span><span class="p">;</span>
@@ -39008,7 +39008,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_105">その他<a class="headerlink" href="#_105" title="Permanent link">&para;</a></h3>
-<p>gRPCの <code>proto</code>ファイルはインフラストラクチャ層に配置すると良い。</p>
+<p>gRPCの <code>proto</code> ファイルはインフラストラクチャ層に配置すると良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/62703733">https://stackoverflow.com/a/62703733</a></li>
@@ -39072,7 +39072,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月12日 19:32:21 JST">2026-02-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

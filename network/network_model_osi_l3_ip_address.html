@@ -16502,7 +16502,7 @@
   <a href="#etchosts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ /etc/hostsファイル
+        ▼ /etc/hosts ファイル
       
     </span>
   </a>
@@ -16513,7 +16513,7 @@
   <a href="#etcresolvconf" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ /etc/resolv.confファイル
+        ▼ /etc/resolv.conf ファイル
       
     </span>
   </a>
@@ -33588,7 +33588,7 @@
   <a href="#etchosts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ /etc/hostsファイル
+        ▼ /etc/hosts ファイル
       
     </span>
   </a>
@@ -33599,7 +33599,7 @@
   <a href="#etcresolvconf" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ /etc/resolv.confファイル
+        ▼ /etc/resolv.conf ファイル
       
     </span>
   </a>
@@ -33788,7 +33788,7 @@
 <h3 id="ip">IPアドレスとは<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h3>
 <p>ネットワーク内の機器の位置情報のこと。</p>
 <p>ネットワーク内のLAN内のルーターを境に、グローバルIPアドレスとプライベートIPアドレスに分けられる。</p>
-<p>IPアドレスの例示では、<code>x</code>を使用しないようにする。</p>
+<p>IPアドレスの例示では、<code>x</code> を使用しないようにする。</p>
 <p><img alt="ip-address" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ip-address.png" /></p>
 <blockquote>
 <ul>
@@ -33839,8 +33839,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="bit">bitとの関係<a class="headerlink" href="#bit" title="Permanent link">&para;</a></h3>
-<p>例えば、プライベートIPアドレスの<code>4</code>個のオクテット (第一オクテットから第四オクテットまで) が<code>1</code>Byteのサイズをもち、IPアドレス全体で<code>4</code>Byteのサイズを持つ。</p>
-<p>補足として、<code>172</code>から始まるIPアドレスは、クラスBである。</p>
+<p>例えば、プライベートIPアドレスの <code>4</code> 個のオクテット (第一オクテットから第四オクテットまで) が <code>1</code>Byteのサイズをもち、IPアドレス全体で <code>4</code>Byteのサイズを持つ。</p>
+<p>補足として、<code>172</code> から始まるIPアドレスは、クラスBである。</p>
 <p><img alt="IPアドレスとbitの関係" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IPアドレスとbitの関係.png" /></p>
 <p><br></p>
 <h2 id="01-02-ip">01-02. IPアドレスの構造<a class="headerlink" href="#01-02-ip" title="Permanent link">&para;</a></h2>
@@ -33864,7 +33864,7 @@
 <th style="text-align: center;">クラス</th>
 <th>ネットワーク部のオクテット</th>
 <th>ホスト部のオクテット</th>
-<th style="text-align: center;">二進数で見た時 (n：ネ、h：ホ)</th>
+<th style="text-align: center;">二進数で見たとき (n：ネ、h：ホ)</th>
 <th>IPアドレスのパターン数 (最大パソコン数)</th>
 <th style="text-align: center;">備考</th>
 </tr>
@@ -33921,7 +33921,7 @@
 <p>『<code>1</code>』あるいは『<code>0</code>』で、IPアドレスのネットワーク部とホスト部を定義し、IPアドレスの後ろに記述する方法 (例：<code>192.168.42.23/24</code>) 。</p>
 <p>設定したIPアドレスに対して、使用できるIPアドレスの範囲を自由に定義できる。</p>
 <p>ネットワーク部を『<code>1</code>』、ホスト部を『<code>0</code>』で表す。</p>
-<p>サブネットマスクの表記方法には、二進数形式、IPアドレス形式、<code>1</code>の個数で表すCIDR形式による表現方法がある。</p>
+<p>サブネットマスクの表記方法には、二進数形式、IPアドレス形式、<code>1</code> の個数で表すCIDR形式による表現方法がある。</p>
 <table>
 <thead>
 <tr>
@@ -34021,13 +34021,13 @@
 <td style="text-align: center;"><code>/11111111.11111111.11111111.11111111</code></td>
 <td style="text-align: center;"><code>/255.255.255.255</code></td>
 <td style="text-align: center;"><code>/32</code></td>
-<td style="text-align: center;"><code>1</code>個</td>
+<td style="text-align: center;"><code>1</code> 個</td>
 <td>よく使用する範囲</td>
 </tr>
 </tbody>
 </table>
 <p><strong>＊例＊</strong></p>
-<p>プライベートIPアドレスが<code>192.168.0.0</code> (<code>11000000.10101000.00000000.00000000</code>) で、使いたいIPアドレスのパターン数が65536個、または16777216個の場合、サブネットマスクの表記、使用できるIPアドレスの範囲は以下の様になる。</p>
+<p>プライベートIPアドレスが <code>192.168.0.0</code> (<code>11000000.10101000.00000000.00000000</code>) で、使いたいIPアドレスのパターン数が65536個、または16777216個の場合、サブネットマスクの表記、使用できるIPアドレスの範囲は以下の様になる。</p>
 <table>
 <thead>
 <tr>
@@ -34041,7 +34041,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>16777216</code>個</td>
+<td><code>16777216</code> 個</td>
 <td style="text-align: center;"><code>192.168.0.0/11111111.00000000.00000000.00000000</code></td>
 <td style="text-align: center;"><code>192.168.0.0/255.0.0.0</code></td>
 <td style="text-align: center;"><code>192.168.0.0/8</code></td>
@@ -34049,7 +34049,7 @@
 <td style="text-align: center;"><code>192.0.0.1</code> 〜 <code>192.255.255.254</code></td>
 </tr>
 <tr>
-<td><code>65536</code>個</td>
+<td><code>65536</code> 個</td>
 <td style="text-align: center;"><code>192.168.0.0/11111111.11111111.00000000.00000000</code></td>
 <td style="text-align: center;"><code>192.168.0.0/255.255.0.0</code></td>
 <td style="text-align: center;"><code>192.168.0.0/16</code></td>
@@ -34057,7 +34057,7 @@
 <td style="text-align: center;"><code>192.168.0.1</code> 〜 <code>192.168.255.254</code></td>
 </tr>
 <tr>
-<td><code>256</code>個</td>
+<td><code>256</code> 個</td>
 <td style="text-align: center;"><code>192.168.0.0/11111111.11111111.11111111.00000000</code></td>
 <td style="text-align: center;"><code>192.168.0.0/255.255.255.0</code></td>
 <td style="text-align: center;"><code>192.168.0.0/24</code></td>
@@ -34065,7 +34065,7 @@
 <td style="text-align: center;"><code>192.168.0.1</code> 〜 <code>192.168.0.254</code></td>
 </tr>
 <tr>
-<td><code>1</code>個</td>
+<td><code>1</code> 個</td>
 <td style="text-align: center;"><code>192.168.0.0/11111111.11111111.11111111.11111111</code></td>
 <td style="text-align: center;"><code>192.168.0.0/255.255.255.255</code></td>
 <td style="text-align: center;"><code>192.168.0.0/32</code></td>
@@ -34085,8 +34085,8 @@
 <p><br></p>
 <h3 id="ip_4">特殊なIPアドレス<a class="headerlink" href="#ip_4" title="Permanent link">&para;</a></h3>
 <h4 id="ip_5">▼ ループバックIPアドレス (ローカルホスト)<a class="headerlink" href="#ip_5" title="Permanent link">&para;</a></h4>
-<p><code>127.0.0.1</code>〜<code>127.255.255.254</code>の間のIPアドレスで、自分自身を表す。</p>
-<p>基本的には、<code>127.0.0.1</code>を使用する。</p>
+<p><code>127.0.0.1</code>〜<code>127.255.255.254</code> の間のIPアドレスで、自分自身を表す。</p>
+<p>基本的には、<code>127.0.0.1</code> を使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://atmarkit.itmedia.co.jp/ait/articles/0610/14/news021.html">https://atmarkit.itmedia.co.jp/ait/articles/0610/14/news021.html</a></li>
@@ -34097,7 +34097,7 @@
 <h3 id="url">URL、メールアドレスとは<a class="headerlink" href="#url" title="Permanent link">&para;</a></h3>
 <p>ネットワーク内での位置情報であるIPアドレスに紐づき、ネットワーク上のIPアドレスの場所を人間にわかる識別子にしたもの。</p>
 <p>よくあるメールアドレスは次のとおり。</p>
-<p>外国人も使用する場合、世界的により馴染みがある<code>.com</code>がよい。</p>
+<p>外国人も使用する場合、世界的により馴染みがある <code>.com</code> がよい。</p>
 <ul>
 <li>&lt;サービス名&gt;.com</li>
 <li>mail.&lt;サービス名&gt;.com</li>
@@ -34146,7 +34146,7 @@
 <p>サブ-サブドメインでネットワークするためには、以下の作業が必要である。</p>
 <ol>
 <li>サブ-サブドメインの親サブドメインを取得する。 (例：AWS Route53ホストゾーン)</li>
-<li>サブドメインのワイルドカード証明書 (例：AWS Certificate Manager) を取得する。ドットで区切られたサブ-サブドメインを一つのサブドメインのように扱う (例：<code>sub.sub.example.com</code>、<code>sub.example.com</code>を両方ともサブドメインとして扱う) 。</li>
+<li>サブドメインのワイルドカード証明書 (例：AWS Certificate Manager) を取得する。ドットで区切られたサブ-サブドメインを1つのサブドメインのように扱う (例：<code>sub.sub.example.com</code>、<code>sub.example.com</code> を両方ともサブドメインとして扱う) 。</li>
 <li>親サブドメインのDNSレコードにサブ-サブドメインを登録する。 (例：AWS Route53 DNSレコード)</li>
 </ol>
 <blockquote>
@@ -34159,7 +34159,7 @@
 <p><br></p>
 <h3 id="_12">クエリストリング<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="_13">▼ クエリパラメーター<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>クエリストリング (<code>?</code>以降) に割り当てたパラメーターをクエリパラメーターという。</p>
+<p>クエリストリング (<code>?</code> 以降) に割り当てたパラメーターをクエリパラメーターという。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com:80/users/777?text1=a&amp;text2=b</span>
 </code></pre></div>
 <p><br></p>
@@ -34189,11 +34189,11 @@
 </blockquote>
 <p><br></p>
 <h3 id="_16">名前解決の要素<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<h4 id="etchosts">▼ <code>/etc/hosts</code>ファイル<a class="headerlink" href="#etchosts" title="Permanent link">&para;</a></h4>
+<h4 id="etchosts">▼ <code>/etc/hosts</code> ファイル<a class="headerlink" href="#etchosts" title="Permanent link">&para;</a></h4>
 <p>ドメイン名とIPアドレスのマッピングを管理する。</p>
 <p>名前解決でDNSサーバに問い合わせる前に参照される。</p>
-<p>もし<code>/etc/hosts</code>ファイルで名前解決が行われた場合は、DNSサーバは使用されない。</p>
-<p>WebサーバーのIPアドレスがDNSサーバーに登録されていない時、またはDNSサーバーが不具合の時に、DNSサーバーの代わりとして使用する。</p>
+<p>もし <code>/etc/hosts</code> ファイルで名前解決が行われた場合は、DNSサーバは使用されない。</p>
+<p>WebサーバーのIPアドレスがDNSサーバーに登録されていないとき、またはDNSサーバーが不具合の時に、DNSサーバーの代わりとして使用する。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="m">127</span>.0.0.1<span class="w"> </span>localhost
 <span class="m">255</span>.255.255.255<span class="w"> </span>broadcasthost
@@ -34206,12 +34206,12 @@
 <li><a href="https://www.looklinux.com/etchosts-vs-etcresolv-conf-in-linux/">https://www.looklinux.com/etchosts-vs-etcresolv-conf-in-linux/</a></li>
 </ul>
 </blockquote>
-<h4 id="etcresolvconf">▼ <code>/etc/resolv.conf</code>ファイル<a class="headerlink" href="#etcresolvconf" title="Permanent link">&para;</a></h4>
+<h4 id="etcresolvconf">▼ <code>/etc/resolv.conf</code> ファイル<a class="headerlink" href="#etcresolvconf" title="Permanent link">&para;</a></h4>
 <p>名前解決に使用するDNSサーバーのIPアドレスや、問い合わせで使用するドメイン名の後に付与する文字列を定義する。</p>
-<p>名前解決では、まず最初に、<code>/etc/resolv.conf</code>ファイルに定義されたDNSサーバに問い合わせる。</p>
+<p>名前解決では、まず最初に、<code>/etc/resolv.conf</code> ファイルに定義されたDNSサーバに問い合わせる。</p>
 <p><strong>＊例＊</strong></p>
-<p>もし、<code>example</code>というドメイン名で問い合わせを行った場合、実際には<code>example.foo</code>が使用される。</p>
-<p>また、この問い合わせに失敗した場合は、<code>search</code>値が左から順に使用される。</p>
+<p>もし、<code>example</code> というドメイン名で問い合わせを行った場合、実際には <code>example.foo</code> が使用される。</p>
+<p>また、この問い合わせに失敗した場合は、<code>search</code> 値が左から順に使用される。</p>
 <div class="highlight"><pre><span></span><code>nameserver<span class="w">  </span>*.*.*.*
 domain<span class="w">      </span>foo<span class="w"> </span><span class="c1"># ドメイン名の後に付与する文字列</span>
 search<span class="w">      </span>bar<span class="w">   </span>baz<span class="w"> </span><span class="c1"># domain値で問い合わせに失敗した場合に使用する文字列</span>
@@ -34262,7 +34262,7 @@ search<span class="w">      </span>bar<span class="w">   </span>baz<span class="
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>クライアントPCは、<code>www.example.com</code>にマッピングされるIPアドレスのキャッシュを検索する。</p>
+<p>クライアントPCは、<code>www.example.com</code> にマッピングされるIPアドレスのキャッシュを検索する。</p>
 <p>キャッシュが無ければ、クライアントPCはドメイン名をキャッシュDNSサーバーに問い合わせる。</p>
 </dd>
 <dt><code>(2)</code></dt>
@@ -34332,7 +34332,7 @@ search<span class="w">      </span>bar<span class="w">   </span>baz<span class="
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年1月9日 22:35:50 JST">2026-01-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

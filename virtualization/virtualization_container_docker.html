@@ -33806,10 +33806,10 @@
 </blockquote>
 <h4 id="_3">▼ ベースイメージ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>ベースイメージは、実行OSによらずに一貫してビルドできるため、配布できる。</p>
-<p>各イメージレジストリ (例：DockerHub、AWS ECR、Google Container Registry、Artifactory、Harborなど) には、カスタマイズする上でのベースとなるベースイメージが提供されている。</p>
+<p>各イメージレジストリ (例：DockerHub、AWS ECR、Google Container Registry、Artifactory、Harborなど) には、カスタマイズするうえでのベースとなるベースイメージが提供されている。</p>
 <h4 id="_4">▼ イメージレイヤー<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p><img alt="イメージレイヤーからなるコンテナイメージのビルド" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コンテナイメージのビルド.png" /></p>
-<p>イメージレイヤーの実体は、<code>/var/lib/docker/overlay2</code>ディレクトリ配下にハッシュ値の名前からなるファイルとして保管されている。</p>
+<p>イメージレイヤーの実体は、<code>/var/lib/docker/overlay2</code> ディレクトリ配下にハッシュ値の名前からなるファイルとして保管されている。</p>
 <p>Dockerは、オーバーレイファイルシステムを使用して、各ファイルを層状に管理する。</p>
 <p>1つの命令につき、1つのコンテナイメージレイヤーを積み重ねるようになっている。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>container<span class="w"> </span>inspect<span class="w"> </span>foo-container<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;{{json .GraphDriver.Data}}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
@@ -33828,7 +33828,7 @@
 </ul>
 </blockquote>
 <h4 id="_5">▼ コンテナレイヤー<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>コンテナイメージからコンテナを作成する時に、コンテナイメージレイヤーの上にコンテナレイヤーが積み重ねられる。</p>
+<p>コンテナイメージからコンテナを作成するときに、コンテナイメージレイヤーの上にコンテナレイヤーが積み重ねられる。</p>
 <p><img alt="コンテナイメージ上へのコンテナレイヤーの積み重ね" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コンテナイメージ上へのコンテナレイヤーの積み重ね.png" /></p>
 <blockquote>
 <ul>
@@ -33839,7 +33839,7 @@
 <h3 id="_6">権限別コンテナの種類<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 特権コンテナ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>rootユーザー権限のCapability (CHOWN、NET_RAW、CAP_SYS_BOOT、CAP_AUDIT_WRITEなど) の全て持つユーザーで実行したコンテナのこと。</p>
-<p>例えば、特権コンテナの実行ユーザーはルートファイルシステムにある<code>/proc</code>に書き込みする権限を持つ。</p>
+<p>例えば、特権コンテナの実行ユーザーはルートファイルシステムにある <code>/proc</code> に書き込みする権限を持つ。</p>
 <p>/proc配下にはNodeへのアクセスを中継するファイルがあるため、特権コンテナの実行ユーザーはNode上で任意のコマンドを実行できる。</p>
 <blockquote>
 <ul>
@@ -33867,7 +33867,7 @@
 <h2 id="02-docker">02. Dockerクライアント<a class="headerlink" href="#02-docker" title="Permanent link">&para;</a></h2>
 <h3 id="docker_3">dockerクライアント<a class="headerlink" href="#docker_3" title="Permanent link">&para;</a></h3>
 <h4 id="docker_4">▼ dockerクライアントとは<a class="headerlink" href="#docker_4" title="Permanent link">&para;</a></h4>
-<p>dockerクライアントは、<code>docker</code>コマンドを使用してdockerデーモンAPIをコールできる。</p>
+<p>dockerクライアントは、<code>docker</code> コマンドを使用してdockerデーモンAPIをコールできる。</p>
 <p><img alt="docker-daemon" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-client.png" /></p>
 <blockquote>
 <ul>
@@ -33879,7 +33879,7 @@
 <h4 id="docker_6">▼ dockerデーモンとは<a class="headerlink" href="#docker_6" title="Permanent link">&para;</a></h4>
 <p>ホスト側に常駐し、コンテナの操作を担うデーモン。</p>
 <p>dockerクライアントにdockerデーモンAPIを公開する。</p>
-<p>クライアントが<code>docker</code>コマンドを実行することにより、dockerデーモンAPIがコールされ、コマンドに沿ってコンテナが操作される。</p>
+<p>クライアントが <code>docker</code> コマンドを実行することにより、dockerデーモンAPIがコールされ、コマンドに沿ってコンテナが操作される。</p>
 <p><img alt="docker-daemon" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-daemon.png" /></p>
 <p><br></p>
 <h2 id="03-cgroups">03. cgroups<a class="headerlink" href="#03-cgroups" title="Permanent link">&para;</a></h2>
@@ -33970,9 +33970,9 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-it<span class="w"> </span>--log-driver<span class="w"> </span>&lt;ロギングドライバー名&gt;<span class="w"> </span>--name<span class="w">  </span>&lt;コンテナ名&gt;<span class="w"> </span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>/bin/bash
 </code></pre></div>
 <h4 id="json-file">▼ json-file<a class="headerlink" href="#json-file" title="Permanent link">&para;</a></h4>
-<p>標準出力/標準エラー出力に出力されたログを、<code>/var/lib/docker/containers/＜コンテナID＞/＜コンテナID＞-json.log</code>ファイルにフォワーディングする。</p>
+<p>標準出力/標準エラー出力に出力されたログを、<code>/var/lib/docker/containers/＜コンテナID＞/＜コンテナID＞-json.log</code> ファイルにフォワーディングする。</p>
 <p>デフォルトの設定値である。</p>
-<p><code>labels</code>キーで文字列リストを設定すると、属性キーを付与できる。</p>
+<p><code>labels</code> キーで文字列リストを設定すると、属性キーを付与できる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;log-driver&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;json-file&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="c1"># ドライバーのオプション</span>
@@ -34062,9 +34062,9 @@ crw-rw-rw-<span class="w"> </span><span class="m">1</span><span class="w"> </spa
 crw-rw-rw-<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="m">5</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">11</span>:36<span class="w"> </span>zero
 </code></pre></div>
 <h4 id="nginx">▼ nginxイメージ<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h4>
-<p>公式のnginxイメージは、<code>/dev/stdout</code>というシンボリックリンクを、<code>/var/log/nginx/access.log</code>ファイルに作成している。</p>
-<p>また、<code>/dev/stderr</code>というシンボリックリンクを、<code>/var/log/nginx/error.log</code>ファイルに作成している。</p>
-<p>これにより、これらのファイルに対するログの出力は、<code>/dev/stdout</code>と<code>/dev/stderr</code>にフォワーディングされる。</p>
+<p>公式のnginxイメージは、<code>/dev/stdout</code> というシンボリックリンクを、<code>/var/log/nginx/access.log</code> ファイルに作成している。</p>
+<p>また、<code>/dev/stderr</code> というシンボリックリンクを、<code>/var/log/nginx/error.log</code> ファイルに作成している。</p>
+<p>これにより、これらのファイルに対するログの出力は、<code>/dev/stdout</code> と <code>/dev/stderr</code> にフォワーディングされる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.docker.com/config/containers/logging/">https://docs.docker.com/config/containers/logging/</a></li>
@@ -34093,7 +34093,7 @@ crw-rw-rw-<span class="w"> </span><span class="m">1</span><span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年11月3日 18:17:54 JST">2025-11-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

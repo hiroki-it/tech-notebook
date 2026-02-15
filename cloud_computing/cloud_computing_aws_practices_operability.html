@@ -33268,7 +33268,7 @@
 <td><code>&lt;任意のプレフィクス&gt;LogMetrics</code></td>
 <td>カウント</td>
 <td>ログステータスの検出数をデータポイントとする。メトリクスと検出ルールはフィルターパターンで作成できる。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
 </tr>
 </tbody>
 </table>
@@ -33287,14 +33287,14 @@
 <tr>
 <td><code>HTTPCode_ELB_4XX_Count</code></td>
 <td>カウント</td>
-<td>AWS ALBが原因で返信した<code>400</code>系ステータスをデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>24</code>時間<br>・閾値 : <code>&gt;= 1</code></td>
+<td>AWS ALBが原因で返信した <code>400</code> 系ステータスをデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>24</code> 時間<br>・閾値 : <code>&gt;= 1</code></td>
 </tr>
 <tr>
 <td><code>HTTPCode_ELB_5XX_Count</code></td>
 <td>カウント</td>
-<td>AWS ALBが原因で返信した<code>500</code>系ステータスをデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+<td>AWS ALBが原因で返信した <code>500</code> 系ステータスをデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
 </tr>
 <tr>
 <td><code>HealthyHostCount</code></td>
@@ -33311,14 +33311,14 @@
 <tr>
 <td><code>HTTPCode_TARGET_4XX_Count</code></td>
 <td>カウント</td>
-<td>ターゲットグループ内のターゲットが<code>400</code>レスポンスを返信した数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>24</code>時間<br>・閾値 : <code>&gt;= 1</code></td>
+<td>ターゲットグループ内のターゲットが <code>400</code> レスポンスを返信した数をデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>24</code> 時間<br>・閾値 : <code>&gt;= 1</code></td>
 </tr>
 <tr>
 <td><code>HTTPCode_TARGET_5XX_Count</code></td>
 <td>カウント</td>
-<td>ターゲットグループ内のターゲットが<code>500</code>レスポンスを返信した数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 :<code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+<td>ターゲットグループ内のターゲットが <code>500</code> レスポンスを返信した数をデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 :<code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
 </tr>
 <tr>
 <td><code>RejectedConnectionCount</code></td>
@@ -33372,14 +33372,14 @@
 <tr>
 <td><code>4XXError</code></td>
 <td>カウント</td>
-<td><code>400</code>系ステータスの数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>24</code>時間<br>・閾値 : <code>&gt;= 1</code></td>
+<td><code>400</code> 系ステータスの数をデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>24</code> 時間<br>・閾値 : <code>&gt;= 1</code></td>
 </tr>
 <tr>
 <td><code>5XXError</code></td>
 <td>カウント</td>
-<td><code>500</code>系ステータスの数をデータポイントとする。アプリケーションが停止してしまうようなインシデントを検出することに適する。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+<td><code>500</code> 系ステータスの数をデータポイントとする。アプリケーションが停止してしまうようなインシデントを検出することに適する。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
 </tr>
 </tbody>
 </table>
@@ -33404,13 +33404,13 @@
 <td><code>CPUUtilization</code></td>
 <td>%</td>
 <td>EC2で使用されているCPU使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
 </tr>
 <tr>
 <td><code>MemoryUtilization</code></td>
 <td>%</td>
 <td>EC2で使用されているメモリ使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
 </tr>
 <tr>
 <td><code>StatusCheckFailed_Instance</code></td>
@@ -33431,7 +33431,7 @@
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html#ec2-cloudwatch-metrics">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html#ec2-cloudwatch-metrics</a></li>
 </ul>
 </blockquote>
-<p>似たメトリクスに<code>StatusCheckFailed_System</code>や<code>StatusCheckFailed_Instance</code>がある。</p>
+<p>似たメトリクスに <code>StatusCheckFailed_System</code> や <code>StatusCheckFailed_Instance</code> がある。</p>
 <p>これらはAWS側が原因のメトリクスであるため、ユーザーが監視する必要はない。</p>
 <blockquote>
 <ul>
@@ -33456,14 +33456,14 @@
 <td><code>CPUUtilization</code></td>
 <td>%</td>
 <td>AWS ECSクラスターまたはサービスで使用されているCPU使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
 <td></td>
 </tr>
 <tr>
 <td><code>MemoryUtilization</code></td>
 <td>%</td>
 <td>AWS ECSクラスターまたはサービスで使用されているメモリ使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
 <td></td>
 </tr>
 <tr>
@@ -33497,28 +33497,28 @@
 <td><code>BytesUsedForCache</code></td>
 <td>バイト数</td>
 <td>Redisで使用されているメモリ使用サイズをデータポイントとする。</td>
-<td>・統計 : 期間内合計サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 8</code>GB</td>
+<td>・統計 : 期間内合計サイズ<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 8</code>GB</td>
 <td></td>
 </tr>
 <tr>
 <td><code>CPUUtilization</code></td>
 <td>%</td>
 <td>ノードのCPU使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
 <td></td>
 </tr>
 <tr>
 <td><code>Evictions</code></td>
 <td>カウント</td>
 <td>空きサイズを確保するために削除されたRedisのキー数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
 <td></td>
 </tr>
 <tr>
 <td><code>SwapUsage</code></td>
 <td>バイト数</td>
 <td>ストレージ上のスワップ領域の使用サイズをデータポイントとする。</td>
-<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 50</code>GB</td>
+<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 50</code>GB</td>
 <td>使用可能な最大メモリを超えると、Redisはストレージ上のスワップ領域を使用する。<br><a href="https://zenn.dev/dehio3/scraps/710a9714ce9496">https://zenn.dev/dehio3/scraps/710a9714ce9496</a></td>
 </tr>
 </tbody>
@@ -33545,28 +33545,28 @@
 <td><code>BlockedTransactions</code></td>
 <td>カウント</td>
 <td>秒当たりトランザクションの拒否の回数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
 <td></td>
 </tr>
 <tr>
 <td><code>CPUUtilization</code></td>
 <td>%</td>
 <td>AWS AuroraのDBインスタンスのCPU使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
 <td></td>
 </tr>
 <tr>
 <td><code>DatabaseConnections</code></td>
 <td>カウント</td>
 <td>AWS AuroraのDBインスタンスへの接続数をデータポイントとする。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 400</code></td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 400</code></td>
 <td>クライアントがDBにリクエストしている時間帯がわかるため、メンテナンスウィンドウを実施時間の参考になる。</td>
 </tr>
 <tr>
 <td><code>Deadlocks</code></td>
 <td>カウント</td>
 <td>秒当たりデッドロック平均数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
 <td></td>
 </tr>
 <tr>
@@ -33580,28 +33580,28 @@
 <td><code>DMLLatency</code></td>
 <td>マイクロ秒</td>
 <td>AWS AuroraのDBインスタンスに対するDML系クエリの遅延秒数をデータポイントとする。</td>
-<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 2</code>GB</td>
+<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 2</code>GB</td>
 <td></td>
 </tr>
 <tr>
 <td><code>FreeableMemory</code></td>
 <td>バイト数</td>
 <td>AWS AuroraのDBインスタンスの使用できるメモリの最大空きサイズをデータポイントとする。</td>
-<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 2</code>GB</td>
+<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 2</code>GB</td>
 <td></td>
 </tr>
 <tr>
 <td><code>FreeLocalStorage</code></td>
 <td>バイト数</td>
 <td>AWS AuroraのDBインスタンスの使用できるローカルストレージの最大空きサイズをデータポイントとする。</td>
-<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 10</code>GB</td>
+<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 10</code>GB</td>
 <td>DBインスタンスのローカルストレージは、一時テーブルやログの保管に使用される。</td>
 </tr>
 <tr>
 <td><code>LoginFailures</code></td>
 <td>カウント</td>
 <td>AWS AuroraのDBへのログインの失敗回数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
 <td></td>
 </tr>
 </tbody>
@@ -33629,21 +33629,21 @@
 <td><code>CPUUtilization</code></td>
 <td>%</td>
 <td>DBインスタンスのCPU使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
 <td></td>
 </tr>
 <tr>
 <td><code>DatabaseConnections</code></td>
 <td>カウント</td>
 <td>DBインスタンスへの接続数をデータポイントとする。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 400</code></td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 400</code></td>
 <td>クライアントがDBにリクエストしている時間帯がわかるため、メンテナンスウィンドウを実施時間の参考になる。</td>
 </tr>
 <tr>
 <td><code>FreeableMemory</code></td>
 <td>バイト数</td>
 <td>DBインスタンスの使用できるメモリサイズをデータポイントとする。</td>
-<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 2</code>GB</td>
+<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 2</code>GB</td>
 <td></td>
 </tr>
 </tbody>
@@ -33668,8 +33668,8 @@
 <tr>
 <td><code>5xxErrors</code></td>
 <td>カウント</td>
-<td>S3バケットが原因で返信した<code>500</code>系ステータスをデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+<td>S3バケットが原因で返信した <code>500</code> 系ステータスをデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
 </tr>
 </tbody>
 </table>
@@ -33694,7 +33694,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月2日 13:33:49 JST">2026-02-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

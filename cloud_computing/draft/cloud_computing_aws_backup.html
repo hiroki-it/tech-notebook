@@ -32770,12 +32770,12 @@
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        候補(1)
+        候補 (1)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="候補(1)">
+    <nav class="md-nav" aria-label="候補 (1)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -32893,12 +32893,12 @@
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        候補(2)
+        候補 (2)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="候補(2)">
+    <nav class="md-nav" aria-label="候補 (2)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33108,7 +33108,7 @@
 <li>本番環境と開発環境が同じAWSアカウント内に存在している。</li>
 <li>例外的に、開発環境のDBはパブリックアクセスとなっており、GitHubを経由せずに、リクエストできる。</li>
 </ul>
-<h1 id="1">候補<code>(1)</code><a class="headerlink" href="#1" title="Permanent link">&para;</a></h1>
+<h1 id="1">候補 <code>(1)</code><a class="headerlink" href="#1" title="Permanent link">&para;</a></h1>
 <h2 id="iam-aws-cli">IAMポリシー、 aws-cli、シェルスクリプトによる自動化<a class="headerlink" href="#iam-aws-cli" title="Permanent link">&para;</a></h2>
 <h3 id="action-list">Action List<a class="headerlink" href="#action-list" title="Permanent link">&para;</a></h3>
 <p>IAMポリシーを使用して、アクセスを制限する。</p>
@@ -33127,21 +33127,21 @@
 <h3 id="pros">Pros<a class="headerlink" href="#pros" title="Permanent link">&para;</a></h3>
 <ul>
 <li>シェルスクリプトとして実装すれば、誰でもAWSリソースを操作できる。</li>
-<li><code>1</code>個のIAMユーザーを作成すればよく、CTOの一度の承諾で済む。</li>
+<li><code>1</code> 個のIAMユーザーを作成すればよく、CTOの一度の承諾で済む。</li>
 <li>リクエスト制限の仕組みが単純のため、AWSに関わりが少ないエンジニアが理解しやすい。</li>
 </ul>
 <h3 id="cons">Cons<a class="headerlink" href="#cons" title="Permanent link">&para;</a></h3>
 <ul>
 <li>資格情報が固定のため、IAMユーザーの資格情報が漏洩すると、危険が多い。</li>
 <li>非関係者にIAMユーザーの資格情報やシェルスクリプトが漏れた場合、AWSリソースにリクエストされる可能性がある。</li>
-<li>今後、同様の要望があった場合、新しいaws-cli用IAMユーザーを作成するのか、あるいは<code>1</code>個のIAMユーザーに集約するのか判断する必要がある。前者の場合、CTOの承諾が必要になってしまう。</li>
+<li>今後、同様の要望があった場合、新しいaws-cli用IAMユーザーを作成するのか、あるいは <code>1</code> 個のIAMユーザーに集約するのか判断する必要がある。前者の場合、CTOの承諾が必要になってしまう。</li>
 </ul>
 <h4 id="cons_1">Consの解決方法<a class="headerlink" href="#cons_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li>専用のリポジトリを作成し、CircleCIコンテナ内で実行可能にする。資格情報を環境変数として登録できるため、シェルスクリプトが漏洩しても、社内リソースにはアクセスできない。この時、日付などの引数は環境変数としてその都度登録する。</li>
 <li>AWS STSを使用して、動的にロールを切り替えるようにする。IAMユーザーは1つで済む。</li>
 </ul>
-<h1 id="2">候補<code>(2)</code><a class="headerlink" href="#2" title="Permanent link">&para;</a></h1>
+<h1 id="2">候補 <code>(2)</code><a class="headerlink" href="#2" title="Permanent link">&para;</a></h1>
 <dl>
 <dd>※ 安全で実現性がある</dd>
 </dl>
@@ -33159,7 +33159,7 @@
 <h3 id="pros_1">Pros<a class="headerlink" href="#pros_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>シェルスクリプトとして実装すれば、誰でもAWSリソースを操作できる。</li>
-<li><code>1</code>個のIAMユーザーを作成すればよく、CTOの一度の承諾で済む。</li>
+<li><code>1</code> 個のIAMユーザーを作成すればよく、CTOの一度の承諾で済む。</li>
 <li>資格情報が一時的なため、IAMユーザーの資格情報が漏洩しても、危険が少ない。</li>
 <li>今後、同様の要望があった場合、移譲するためのIAMロールを新しく作成すればよく、CTOの手間が少ない。</li>
 </ul>
@@ -33234,7 +33234,7 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月16日 14:34:37 JST">2025-05-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

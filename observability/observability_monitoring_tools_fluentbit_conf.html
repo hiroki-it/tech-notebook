@@ -35358,7 +35358,7 @@
 <p><br></p>
 <h3 id="_2">実行ログの確認<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>Log_Level値でFluentBitのログレベルを制御できる。</p>
-<p><code>debug</code>を割り当てると、FluentBitのログがより詳細になり、各セクションの設定値を確認できるようになる。</p>
+<p><code>debug</code> を割り当てると、FluentBitのログがより詳細になり、各セクションの設定値を確認できるようになる。</p>
 <p><strong>＊実行ログ例＊</strong></p>
 <div class="highlight"><pre><span></span><code>Fluent<span class="w"> </span>Bit<span class="w"> </span>v1.8.6
 *<span class="w"> </span>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2019</span>-2021<span class="w"> </span>The<span class="w"> </span>Fluent<span class="w"> </span>Bit<span class="w"> </span>Authors
@@ -35400,7 +35400,7 @@
 <p>ログのパイプラインへのインプット方法を設定する。</p>
 <p><img alt="fluent-bit_input" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_input.png" /></p>
 <p>プラグインを使用して、ログのインプット方法を設定する。</p>
-<p>コマンドの<code>-i</code>オプションでINPUT名を指定し、実行もできる。</p>
+<p>コマンドの <code>-i</code> オプションでINPUT名を指定し、実行もできる。</p>
 <div class="highlight"><pre><span></span><code>Inputs
 <span class="w">  </span>cpu<span class="w">                     </span>CPU<span class="w"> </span>Usage
 <span class="w">  </span>mem<span class="w">                     </span>Memory<span class="w"> </span>Usage
@@ -35577,8 +35577,8 @@
 <h3 id="tail">tailプラグイン<a class="headerlink" href="#tail" title="Permanent link">&para;</a></h3>
 <h4 id="tail_1">▼ tailプラグインとは<a class="headerlink" href="#tail_1" title="Permanent link">&para;</a></h4>
 <p>指定したパスに継続的にアウトプットされるログファイルを順次結合し、パイプラインにインプットする。</p>
-<p>あらかじめ、FluentBitコンテナ内にログファイルを配置する必要があり、<code>Path</code>でこれを指定する。</p>
-<p><code>v1.8</code>を境にオプションが変わっていることに注意する。</p>
+<p>あらかじめ、FluentBitコンテナ内にログファイルを配置する必要があり、<code>Path</code> でこれを指定する。</p>
+<p><code>v1.8</code> を境にオプションが変わっていることに注意する。</p>
 <h4 id="_9">▼ セットアップ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>INPUT<span class="o">]</span>
@@ -35680,7 +35680,7 @@
 <span class="w">    </span>Skip_Long_Lines<span class="w"> </span>On
 </code></pre></div>
 <p>例えば、以下のような非構造化ログがあったとする。</p>
-<p>criプラグインは、<code>&lt;timeキー&gt; &lt;streamキー&gt; &lt;logtagキー&gt; &lt;messageキー&gt;</code>を認識する。</p>
+<p>criプラグインは、<code>&lt;timeキー&gt; &lt;streamキー&gt; &lt;logtagキー&gt; &lt;messageキー&gt;</code> を認識する。</p>
 <div class="highlight"><pre><span></span><code><span class="m">2021</span>-12-17T08:03:23.918838346+09:00<span class="w"> </span>stderr<span class="w"> </span>F<span class="w"> </span><span class="m">2021</span>/12/17<span class="w"> </span><span class="m">08</span>:03:23<span class="w"> </span><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>start<span class="w"> </span>worker<span class="w"> </span>processes
 </code></pre></div>
 <p>その場合、構造化されて以下のようなログとなる。</p>
@@ -35838,7 +35838,7 @@
 <span class="w">    </span><span class="c1"># 使用するパーサー名</span>
 <span class="w">    </span>multiline.parser<span class="w">      </span>laravel
 </code></pre></div>
-<p>コマンドの<code>-f</code>オプションでFILTER名を指定し、実行もできる。</p>
+<p>コマンドの <code>-f</code> オプションでFILTER名を指定し、実行もできる。</p>
 <div class="highlight"><pre><span></span><code>Filters
 <span class="w">  </span>alter_size<span class="w">              </span>Alter<span class="w"> </span>incoming<span class="w"> </span>chunk<span class="w"> </span>size
 <span class="w">  </span>aws<span class="w">                     </span>Add<span class="w"> </span>AWS<span class="w"> </span>Metadata
@@ -36015,7 +36015,7 @@
 <h4 id="select">▼ SELECT<a class="headerlink" href="#select" title="Permanent link">&para;</a></h4>
 <p>マッチしたログから、指定したキーを抽出する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>タグが<code>*-bar-*</code> (ワイルドカード指定) であるログのうち、<code>container_name</code>キーの値が<code>qux</code>であるもののみをフィルタリングし、これの<code>log</code>キーを抽出する。</p>
+<p>タグが <code>*-bar-*</code> (ワイルドカード指定) であるログのうち、<code>container_name</code> キーの値が <code>qux</code> であるもののみをフィルタリングし、これの <code>log</code> キーを抽出する。</p>
 <div class="highlight"><pre><span></span><code>SELECT<span class="w"> </span>log<span class="w"> </span>FROM<span class="w"> </span>TAG:<span class="s1">&#39;*-foo-*&#39;</span><span class="w"> </span>WHERE<span class="w"> </span><span class="nv">container_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;qux&#39;</span><span class="p">;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 本来、改行はないが、わかりやすいように改行している。</span>
@@ -36079,7 +36079,7 @@
 <span class="w">    </span><span class="c1"># ファイル上でバッファリングが実行される。</span>
 <span class="w">    </span>storage.type<span class="w">  </span>filesystem
 </code></pre></div>
-<p>指定した場所に<code>cpu.0</code>ディレクトリや<code>tail.0</code>ディレクトリが作成され、<code>.flb</code>ファイルとしてバッファリングが実行される。</p>
+<p>指定した場所に <code>cpu.0</code> ディレクトリや <code>tail.0</code> ディレクトリが作成され、<code>.flb</code> ファイルとしてバッファリングが実行される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>-ls<span class="w"> </span>/var/log/fluent-bit/cpu.0
 
 drwxr-xr-x.<span class="w">  </span><span class="m">2</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">     </span><span class="m">107</span><span class="w">  </span>9月<span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">20</span>:45<span class="w"> </span>.
@@ -36102,7 +36102,7 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
 <h3 id="routingoutput">ROUTING、OUTPUTとは<a class="headerlink" href="#routingoutput" title="Permanent link">&para;</a></h3>
 <p>ログのアウトプット先を設定する。</p>
 <p>設定できるアウトプット先の種類については、以下のリンクを参考にせよ。</p>
-<p>コマンドの<code>-o</code>オプションでOUTPUT名を指定し、実行もできる。</p>
+<p>コマンドの <code>-o</code> オプションでOUTPUT名を指定し、実行もできる。</p>
 <p><img alt="fluent-bit_output" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_output.png" /></p>
 <div class="highlight"><pre><span></span><code>Outputs
 <span class="w">  </span>azure<span class="w">                   </span>Send<span class="w"> </span>events<span class="w"> </span>to<span class="w"> </span>Azure<span class="w"> </span>HTTP<span class="w"> </span>Event<span class="w"> </span>Collector
@@ -36170,7 +36170,7 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
 <h3 id="cloudwatch_log-cloudwatch">cloudwatch_logプラグイン (新cloudwatchプラグイン)<a class="headerlink" href="#cloudwatch_log-cloudwatch" title="Permanent link">&para;</a></h3>
 <h4 id="cloudwatch_log">▼ cloudwatch_logプラグインとは<a class="headerlink" href="#cloudwatch_log" title="Permanent link">&para;</a></h4>
 <p>ログをAWS CloudWatch Logsにルーティングする。</p>
-<p>元々、『cloudwatchプラグイン』という名前だった。</p>
+<p>もともと、『cloudwatchプラグイン』という名前だった。</p>
 <blockquote>
 <ul>
 <li><a href="https://dev.classmethod.jp/articles/fluent-bit-used-cloudwatch-logs-new-plugin/#toc-4">https://dev.classmethod.jp/articles/fluent-bit-used-cloudwatch-logs-new-plugin/#toc-4</a></li>
@@ -36218,9 +36218,9 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
 <span class="w">    </span>role_arn<span class="w">          </span>arn:aws:iam::&lt;AWSアカウントID&gt;:role/prd-foo-flunetbit-role
 </code></pre></div>
 <p>AWS CloudWatch Logsに送信されるデータはJSON型である。</p>
-<p><code>log</code>キーにログが割り当てられている。</p>
+<p><code>log</code> キーにログが割り当てられている。</p>
 <p>特定のキーの値のみをAWS CloudWatch Logsに送信する場合、log_keyオプションでキー名を設定する。</p>
-<p>例えば、<code>log</code>キーのみを送信する場合、『<code>log</code>』と設定する。</p>
+<p>例えば、<code>log</code> キーのみを送信する場合、『<code>log</code>』と設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;container_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;container_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span>
@@ -36391,7 +36391,7 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月4日 15:58:54 JST">2025-07-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

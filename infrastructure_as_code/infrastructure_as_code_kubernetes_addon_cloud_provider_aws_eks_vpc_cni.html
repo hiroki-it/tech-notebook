@@ -26846,7 +26846,7 @@
   <a href="#bootstrapsh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ bootstrap.shファイル
+        ▼ bootstrap.sh ファイル
       
     </span>
   </a>
@@ -33494,7 +33494,7 @@
   <a href="#bootstrapsh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ bootstrap.shファイル
+        ▼ bootstrap.sh ファイル
       
     </span>
   </a>
@@ -33692,8 +33692,8 @@
 <p><br></p>
 <h2 id="02-aws-vpc-cni">02. AWS VPC CNIの仕組み<a class="headerlink" href="#02-aws-vpc-cni" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>AWS EKS Cluster内に<code>L3</code>を提供する。</p>
-<p>AWS VPC CNIは、L-IPAMデーモン (<code>aws-node</code>という名前のDaemonSet) 、CNIバイナリ、といったコンポーネントから構成されている。</p>
+<p>AWS EKS Cluster内に <code>L3</code> を提供する。</p>
+<p>AWS VPC CNIは、L-IPAMデーモン (<code>aws-node</code> という名前のDaemonSet) 、CNIバイナリ、といったコンポーネントから構成されている。</p>
 <p>AWS EKS Cluster内にネットワークを作成する。</p>
 <blockquote>
 <ul>
@@ -33704,7 +33704,7 @@
 <p><br></p>
 <h3 id="cni">CNIバイナリ<a class="headerlink" href="#cni" title="Permanent link">&para;</a></h3>
 <p>CNIバイナリは、L-IPAMデーモンからIPアドレスを取得する。</p>
-<p>Podを新しく作成する時に、kubeletからのリクエストによって、新しいPodをNode内のClusterネットワークに参加させる。</p>
+<p>Podを新しく作成するときに、kubeletからのリクエストによって、新しいPodをNode内のClusterネットワークに参加させる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html">https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html</a></li>
@@ -33716,7 +33716,7 @@
 <h4 id="l-ipam">▼ L-IPAMデーモンとは<a class="headerlink" href="#l-ipam" title="Permanent link">&para;</a></h4>
 <p>L-IPAMデーモンは、割り当てモードに応じて、IPアドレスをPodに割り当てる。</p>
 <h4 id="_3">▼ ログ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>L-IPAMデーモンは、<code>var/log/aws-routed-eni/ipamd.log</code>ファイルと<code>/var/log/aws-routed-eni/plugin.log</code>ファイルにログを出力する。</p>
+<p>L-IPAMデーモンは、<code>var/log/aws-routed-eni/ipamd.log</code> ファイルと <code>/var/log/aws-routed-eni/plugin.log</code> ファイルにログを出力する。</p>
 <p>AWS VPC CNIが正しく動作しない場合、L-IPAMデーモンのログを確認する。</p>
 <blockquote>
 <ul>
@@ -34089,7 +34089,7 @@
 </tr>
 <tr>
 <td><code>MINIMUM_IP_TARGET</code></td>
-<td><code>WARM_ENI_TARGET</code>と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりで最低限確保するセカンダリープライベートIPアドレス数を設定する。</td>
+<td><code>WARM_ENI_TARGET</code> と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりで最低限確保するセカンダリープライベートIPアドレス数を設定する。</td>
 <td><code>20</code></td>
 </tr>
 <tr>
@@ -34105,7 +34105,7 @@
 <tr>
 <td><code>POD_SECURITY_GROUP_ENFORCING_MODE</code></td>
 <td>Podのセキュリティグループの適用方法を設定する。注意点として、Podの送信元IPアドレスにも影響を与える。</td>
-<td><code>standard</code> (<code>standard</code>の場合は、プライマリーENIのセキュリティグループを適用する)</td>
+<td><code>standard</code> (<code>standard</code> の場合は、プライマリーENIのセキュリティグループを適用する)</td>
 </tr>
 <tr>
 <td><code>VPC_ID</code></td>
@@ -34124,7 +34124,7 @@
 </tr>
 <tr>
 <td><code>WARM_IP_TARGET</code></td>
-<td><code>WARM_ENI_TARGET</code>と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりでウォーム状態にしておくセカンダリープライベートIPアドレス数を設定する。<code>WARM_ENI_TARGET</code>の値が小さすぎると、EC2-APIのコール回数が増え、リクエスト数制限にひっかかる可能性がある。</td>
+<td><code>WARM_ENI_TARGET</code> と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりでウォーム状態にしておくセカンダリープライベートIPアドレス数を設定する。<code>WARM_ENI_TARGET</code> の値が小さすぎると、EC2-APIのコール回数が増え、リクエスト数制限にひっかかる可能性がある。</td>
 <td><code>2</code></td>
 </tr>
 </tbody>
@@ -34141,7 +34141,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_7">確認方法<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>L-IPAMデーモンが<code>aws-node</code>というDaemonSetとして稼働している。</p>
+<p>L-IPAMデーモンが <code>aws-node</code> というDaemonSetとして稼働している。</p>
 <p>これのコンテナの環境変数で、アドオンの設定が管理されている。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>daemonset<span class="w"> </span>aws-node<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>kube-system<span class="w"> </span>-o<span class="w"> </span><span class="se">\</span>
@@ -34168,7 +34168,7 @@
 </thead>
 <tbody>
 <tr>
-<td>Node<code>1</code>個</td>
+<td>Node<code>1</code> 個</td>
 <td>4</td>
 <td>4</td>
 <td>11</td>
@@ -34178,7 +34178,7 @@
 <td>58</td>
 </tr>
 <tr>
-<td><code>2</code>個</td>
+<td><code>2</code> 個</td>
 <td>8</td>
 <td>8</td>
 <td>22</td>
@@ -34188,7 +34188,7 @@
 <td>116</td>
 </tr>
 <tr>
-<td><code>3</code>個</td>
+<td><code>3</code> 個</td>
 <td>12</td>
 <td>12</td>
 <td>33</td>
@@ -34198,7 +34198,7 @@
 <td>174</td>
 </tr>
 <tr>
-<td><code>4</code>個</td>
+<td><code>4</code> 個</td>
 <td>16</td>
 <td>16</td>
 <td>44</td>
@@ -34211,7 +34211,7 @@
 </table>
 <p><br></p>
 <h3 id="_9">現在の上限数<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p><code>kubectl describe</code>コマンドの<code>Capacity</code>項目で、現在のPodの上限数を確認できる。</p>
+<p><code>kubectl describe</code> コマンドの <code>Capacity</code> 項目で、現在のPodの上限数を確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>describe<span class="w"> </span>node<span class="w"> </span>&lt;Node名&gt;
 
 ...
@@ -34242,7 +34242,7 @@ Capacity:
 </blockquote>
 <p>L-IPAMデーモンは、元からあるこの機能を利用し、NodeのAWS ENIに紐づけられたセカンダリープライベートIPアドレスをPodに割り当てる。</p>
 <p>この時、Nodeのインスタンスタイプごとに紐付けられるセカンダリープライベートIPアドレス数に制限があるため、Node上でスケジューリングさせるPod数がインスタンスタイプに依存する。</p>
-<p>執筆時点 (2022/09/24) のFargateでは、インスタンスタイプに限らずNode当たり<code>1</code>個しかPodをスケジューリングさせられない。</p>
+<p>執筆時点 (2022/09/24) のFargateでは、インスタンスタイプに限らずNode当たり <code>1</code> 個しかPodをスケジューリングさせられない。</p>
 <p><img alt="aws-eks-vpc-cni-addon_standard-mode" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode.png" /></p>
 <blockquote>
 <ul>
@@ -34262,7 +34262,7 @@ Capacity:
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>kubeletは、kube-apiserverからPodの<code>ADD</code>/<code>DEL</code>リクエストを受信する。</p>
+<p>kubeletは、kube-apiserverからPodの <code>ADD</code>/<code>DEL</code> リクエストを受信する。</p>
 <p>Podの<code>ADD</code>/<code>DEL</code>リクエストをCNIバイナリに送信する。</p>
 </dd>
 <dt><code>(3)</code></dt>
@@ -34276,7 +34276,7 @@ Capacity:
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>kubeletは、セカンダリープライベートIPアドレスの<code>ADD</code>/<code>DEL</code>リクエストを、CNIバイナリに送信する。</p>
+<p>kubeletは、セカンダリープライベートIPアドレスの <code>ADD</code>/<code>DEL</code> リクエストを、CNIバイナリに送信する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
@@ -34296,28 +34296,28 @@ Capacity:
 <p><br></p>
 <h3 id="_10">セットアップ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ 環境変数<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p><code>MINIMUM_IP_TARGET</code> (Node当たり最低限のセカンダリープライベートIPアドレス数) または<code>WARM_IP_TARGET</code> (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。</p>
+<p><code>MINIMUM_IP_TARGET</code> (Node当たり最低限のセカンダリープライベートIPアドレス数) または <code>WARM_IP_TARGET</code> (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。</p>
 <p>他にも設定可能な変数があるが、ここではこの2つを使用する。</p>
-<p><code>MINIMUM_IP_TARGET</code>には、Podの冗長化数も加味して予想されるPod数分プラスアルファを設定する。</p>
-<p>また、<code>WARM_IP_TARGET</code>には、ウォーム状態のセカンダリープライベートIPアドレスを設定する。</p>
+<p><code>MINIMUM_IP_TARGET</code> には、Podの冗長化数も加味して予想されるPod数分プラスアルファを設定する。</p>
+<p>また、<code>WARM_IP_TARGET</code> には、ウォーム状態のセカンダリープライベートIPアドレスを設定する。</p>
 <p>Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで確保するセカンダリープライベートIPアドレス数も考慮すること。</p>
 <p><br></p>
 <h3 id="_12">シナリオ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p>例えば、Node当たりにスケジューリングされるPod数の最大数が、Podの冗長化の数も考慮して、<code>10</code>個だとする。</p>
+<p>例えば、Node当たりにスケジューリングされるPod数の最大数が、Podの冗長化の数も考慮して、<code>10</code> 個だとする。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>Nodeで小さめのインスタンスサイズを選びつつ、<code>MINIMUM_IP_TARGET=10+2</code>と<code>WARM_IP_TARGET=2</code>を設定する。</p>
+<p>Nodeで小さめのインスタンスサイズを選びつつ、<code>MINIMUM_IP_TARGET=10+2</code> と <code>WARM_IP_TARGET=2</code> を設定する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>Node当たり<code>12</code>個のセカンダリープライベートIPアドレスを確保する。</p>
+<p>Node当たり <code>12</code> 個のセカンダリープライベートIPアドレスを確保する。</p>
 <p>さらに追加で、常に<code>2</code>個のセカンダリープライベートIPアドレスをウォーム状態にしておくようになる。</p>
 <p>結果、最初<code>12</code>個のPodをスケジューリングできる。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>Podが<code>12</code>個を超えた段階で、合計のセカンダリープライベートIPアドレス数は<code>2</code>個のウォーム状態数を維持しながら増えていく。</p>
+<p>Podが <code>12</code> 個を超えた段階で、合計のセカンダリープライベートIPアドレス数は <code>2</code> 個のウォーム状態数を維持しながら増えていく。</p>
 </dd>
 </dl>
 <blockquote>
@@ -34338,9 +34338,9 @@ Capacity:
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix</a></li>
 </ul>
 </blockquote>
-<p>L-IPAMデーモンは、元からあるこの機能を利用し、NodeのENIにCIDR (サブネット内の<code>*.*.*.*/28</code>) を割り当て、これから取得したIPアドレスをPodに割り当てる。</p>
-<p>ENIの個数を増やすごとに、<code>16</code>個分のIPアドレス (サブネット内の<code>*.*.*.*/28</code>) を確保できる。</p>
-<p>Prefix delegationモードを使用する場合、Nodeを配置するAWSサブネットのCIDRを<code>*.*.*.*/28</code>よりも大きくしておく必要がある。</p>
+<p>L-IPAMデーモンは、元からあるこの機能を利用し、NodeのENIにCIDR (サブネット内の <code>*.*.*.*/28</code>) を割り当て、これから取得したIPアドレスをPodに割り当てる。</p>
+<p>ENIの個数を増やすごとに、<code>16</code> 個分のIPアドレス (サブネット内の <code>*.*.*.*/28</code>) を確保できる。</p>
+<p>Prefix delegationモードを使用する場合、Nodeを配置するAWSサブネットのCIDRを <code>*.*.*.*/28</code> よりも大きくしておく必要がある。</p>
 <p><img alt="aws-eks-vpc-cni_prefix-delegation-mode" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni_prefix-delegation-mode.png" /></p>
 <blockquote>
 <ul>
@@ -34357,7 +34357,7 @@ Capacity:
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances</a></li>
 </ul>
 </blockquote>
-<p>AWS VPC CNIの環境変数の<code>ENABLE_PREFIX_DELEGATION</code>に<code>true</code>を設定する。</p>
+<p>AWS VPC CNIの環境変数の <code>ENABLE_PREFIX_DELEGATION</code> に <code>true</code> を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;vpc_cni&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">cluster_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_cluster.foo.name</span>
 <span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
@@ -34374,13 +34374,13 @@ Capacity:
 <span class="w">  </span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="bootstrapsh">▼ <code>bootstrap.sh</code>ファイル<a class="headerlink" href="#bootstrapsh" title="Permanent link">&para;</a></h4>
+<h4 id="bootstrapsh">▼ <code>bootstrap.sh</code> ファイル<a class="headerlink" href="#bootstrapsh" title="Permanent link">&para;</a></h4>
 <p>AWSのセルフマネージドNodeグループで任意のAMIを使用していたり、またはマネージドNodeグループで起動テンプレートでNodeを作成している場合に、以降の手順が必要になる。</p>
-<p>一方で、AMIを指定していなかったり、起動テンプレートを使用していない場合には、以降の手順は不要である (<code>v1.9</code>以上のAWS VPC CNI)。</p>
-<p><code>max-pods-calculator.sh</code>ファイルを使用して、事前にPodの最大数を計算しておく。</p>
-<p>なお、vCPUが<code>30</code>未満のインスタンスタイプの場合に最大数は<code>110</code>個になり、それ以外の場合は<code>250</code>個になる。</p>
-<p>設定した上限に合わせて、CIDR (サブネット内の<code>*.*.*.*/28</code>) の予約が必要になる。</p>
-<p>例えば、<code>48</code>個のPodを乗せたいなら、CIDR (サブネット内の<code>*.*.*.*/28</code>) 当たりで<code>16</code>個のIPアドレスを使用できるようになるので、CIDR (サブネット内の<code>*.*.*.*/28</code>) は<code>3</code>個予約する必要がある。</p>
+<p>一方で、AMIを指定していなかったり、起動テンプレートを使用していない場合には、以降の手順は不要である (<code>v1.9</code> 以上のAWS VPC CNI)。</p>
+<p><code>max-pods-calculator.sh</code> ファイルを使用して、事前にPodの最大数を計算しておく。</p>
+<p>なお、vCPUが <code>30</code> 未満のインスタンスタイプの場合に最大数は <code>110</code> 個になり、それ以外の場合は <code>250</code> 個になる。</p>
+<p>設定した上限に合わせて、CIDR (サブネット内の <code>*.*.*.*/28</code>) の予約が必要になる。</p>
+<p>例えば、<code>48</code> 個のPodを乗せたいなら、CIDR (サブネット内の <code>*.*.*.*/28</code>) 当たりで <code>16</code> 個のIPアドレスを使用できるようになるので、CIDR (サブネット内の <code>*.*.*.*/28</code>) は <code>3</code> 個予約する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ファイルをダウンロードする</span>
 $<span class="w"> </span>curl<span class="w"> </span>-O<span class="w"> </span>https://raw.githubusercontent.com/awslabs/amazon-eks-ami/master/files/max-pods-calculator.sh
 
@@ -34393,7 +34393,7 @@ $<span class="w"> </span>./max-pods-calculator.sh<span class="w"> </span><span c
 <span class="w">    </span>--cni-version<span class="w"> </span>&lt;AWS<span class="w"> </span>VPC<span class="w"> </span>CNIのバージョン&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--cni-prefix-delegation-enabled
 </code></pre></div>
-<p><code>bootstrap.sh</code>ファイルに必要なパラメーターを渡す。</p>
+<p><code>bootstrap.sh</code> ファイルに必要なパラメーターを渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1"># ユーザーデータファイル</span>
@@ -34412,7 +34412,7 @@ $<span class="w"> </span>./max-pods-calculator.sh<span class="w"> </span><span c
 </ul>
 </blockquote>
 <h4 id="_14">▼ 環境変数<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p><code>MINIMUM_IP_TARGET</code> (Node当たりの<code>*.*.*.*/28</code>を持つENIの個数) または<code>WARM_IP_TARGET</code> (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。</p>
+<p><code>MINIMUM_IP_TARGET</code> (Node当たりの <code>*.*.*.*/28</code> を持つENIの個数) または <code>WARM_IP_TARGET</code> (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。</p>
 <p>他にも設定可能な変数があるが、ここではこの2つを使用する。</p>
 <p><br></p>
 <h3 id="ip_2">セカンダリーIPアドレス割り当てモードとの比較<a class="headerlink" href="#ip_2" title="Permanent link">&para;</a></h3>
@@ -34426,7 +34426,7 @@ $<span class="w"> </span>./max-pods-calculator.sh<span class="w"> </span><span c
 </ul>
 </blockquote>
 <h4 id="ip_4">▼ セカンダリーIPアドレス割り当てモードからの移行<a class="headerlink" href="#ip_4" title="Permanent link">&para;</a></h4>
-<p>もし、セカンダリーIPアドレス割り当てモードからPrefix delegationモードに移行する場合、既存のNodeグループとNodeを削除した上で、Nodeを新規作成する。</p>
+<p>もし、セカンダリーIPアドレス割り当てモードからPrefix delegationモードに移行する場合、既存のNodeグループとNodeを削除したうえで、Nodeを新規作成する。</p>
 <p>ローリングアップグレードで移行する場合、セカンダリーIPアドレス割り当てモードとPrefix delegationモードの両方をNodeに適用してしまう。</p>
 <blockquote>
 <ul>
@@ -34475,7 +34475,7 @@ $<span class="w"> </span>./max-pods-calculator.sh<span class="w"> </span><span c
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年1月19日 18:13:52 JST">2025-01-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

@@ -7262,7 +7262,7 @@
   <a href="#aaaaa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ A/AAAAレコードの場合
+        ▼ A/AAAA レコードの場合
       
     </span>
   </a>
@@ -7273,7 +7273,7 @@
   <a href="#srv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ SRVレコードの場合
+        ▼ SRV レコードの場合
       
     </span>
   </a>
@@ -7407,7 +7407,7 @@
   <a href="#aaaaa_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ A/AAAAレコードの場合
+        ▼ A/AAAA レコードの場合
       
     </span>
   </a>
@@ -33357,7 +33357,7 @@
   <a href="#aaaaa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ A/AAAAレコードの場合
+        ▼ A/AAAA レコードの場合
       
     </span>
   </a>
@@ -33368,7 +33368,7 @@
   <a href="#srv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ SRVレコードの場合
+        ▼ SRV レコードの場合
       
     </span>
   </a>
@@ -33502,7 +33502,7 @@
   <a href="#aaaaa_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ A/AAAAレコードの場合
+        ▼ A/AAAA レコードの場合
       
     </span>
   </a>
@@ -33707,7 +33707,7 @@ kube-dns<span class="w">   </span>ClusterIP<span class="w">   </span><span class
 <p><br></p>
 <h3 id="configmap">ConfigMap<a class="headerlink" href="#configmap" title="Permanent link">&para;</a></h3>
 <h4 id="coredns-configmap">▼ coredns-configmap<a class="headerlink" href="#coredns-configmap" title="Permanent link">&para;</a></h4>
-<p>ConfigMapの<code>.Corefile</code>キーに、<code>Corefile</code>ファイルの設定値を定義する。</p>
+<p>ConfigMapの <code>.Corefile</code> キーに、<code>Corefile</code> ファイルの設定値を定義する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -33731,8 +33731,8 @@ kube-dns<span class="w">   </span>ClusterIP<span class="w">   </span><span class
 <h4 id="_3">▼ アーキテクチャ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p><img alt="coredns_service-discovery" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/coredns_service-discovery.png" /></p>
 <p>CoreDNSは、kube-apiserverから必要なKubernetesリソース (Service、Endpoints) を取得する。</p>
-<p>Podのスケジューリング時に、kubeletはPod内のコンテナの<code>/etc/resolv.conf</code>ファイルに 権威DNSサーバー (CoreDNSのService) のIPアドレスを設定する。</p>
-<p>Pod内のコンテナは、自身の<code>/etc/resolv.conf</code>ファイルを使用して、CoreDNSのServiceにリクエストを送信する。</p>
+<p>Podのスケジューリング時に、kubeletはPod内のコンテナの <code>/etc/resolv.conf</code> ファイルに 権威DNSサーバー (CoreDNSのService) のIPアドレスを設定する。</p>
+<p>Pod内のコンテナは、自身の <code>/etc/resolv.conf</code> ファイルを使用して、CoreDNSのServiceにリクエストを送信する。</p>
 <p>また、CoreDNSから、宛先のPodに紐づくServiceのIPアドレスを正引きする。</p>
 <p>このServiceのIPアドレスを指定し、Podにリクエストを送信する。</p>
 <blockquote>
@@ -33772,7 +33772,7 @@ kube-dns<span class="w">   </span>ClusterIP<span class="w">   </span><span class
 <h4 id="dns_1">▼ DNSレコードタイプ別の完全修飾ドメイン名とは<a class="headerlink" href="#dns_1" title="Permanent link">&para;</a></h4>
 <p>Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が割り当てられている。</p>
 <p>DNSレコードタイプごとに、完全修飾ドメイン名が異なる。</p>
-<h4 id="aaaaa">▼ <code>A/AAAA</code>レコードの場合<a class="headerlink" href="#aaaaa" title="Permanent link">&para;</a></h4>
+<h4 id="aaaaa">▼ <code>A/AAAA</code> レコードの場合<a class="headerlink" href="#aaaaa" title="Permanent link">&para;</a></h4>
 <p>対応する完全修飾ドメイン名は、『<code>&lt;Service名&gt;.&lt;Namespace名&gt;.svc.cluster.local</code>』である。</p>
 <p>通常のServiceの名前解決ではCluster-IPが返却される。</p>
 <p>一方でHeadless Serviceの名前解決では、PodのIPアドレスが返却される。</p>
@@ -33786,9 +33786,9 @@ kube-dns<span class="w">   </span>ClusterIP<span class="w">   </span><span class
 <li><a href="https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=44">https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=44</a></li>
 </ul>
 </blockquote>
-<h4 id="srv">▼ <code>SRV</code>レコードの場合<a class="headerlink" href="#srv" title="Permanent link">&para;</a></h4>
+<h4 id="srv">▼ <code>SRV</code> レコードの場合<a class="headerlink" href="#srv" title="Permanent link">&para;</a></h4>
 <p>対応する完全修飾ドメイン名は、『<code>_&lt;ポート名&gt;._&lt;プロトコル&gt;.&lt;Service名&gt;.&lt;Namespace名&gt;.svc.cluster.local</code>』である。</p>
-<p>Serviceの<code>.spec.ports.name</code>キー数だけ、完全修飾ドメイン名が作成される。</p>
+<p>Serviceの <code>.spec.ports.name</code> キー数だけ、完全修飾ドメイン名が作成される。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services">https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services</a></li>
@@ -33798,9 +33798,9 @@ kube-dns<span class="w">   </span>ClusterIP<span class="w">   </span><span class
 <p><br></p>
 <h3 id="_5">名前解決の仕組み<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="podservice">▼ Pod内からServiceに対する正引き名前解決<a class="headerlink" href="#podservice" title="Permanent link">&para;</a></h4>
-<p>Pod内のコンテナから宛先のServiceに対して、<code>nslookup</code>コマンドの正引きする。</p>
-<p>Serviceに<code>.metadata.name</code>キーが設定されている場合、Serviceの完全修飾ドメイン名は、<code>.metadata.name</code>キーの値になる。</p>
-<p>完全修飾ドメイン名の設定を要求された時は、設定ミスを防げるため、<code>.metadata.name</code>キーの値よりも完全修飾ドメイン名の方が推奨である。</p>
+<p>Pod内のコンテナから宛先のServiceに対して、<code>nslookup</code> コマンドの正引きする。</p>
+<p>Serviceに <code>.metadata.name</code> キーが設定されている場合、Serviceの完全修飾ドメイン名は、<code>.metadata.name</code> キーの値になる。</p>
+<p>完全修飾ドメイン名の設定を要求されたときは、設定ミスを防げるため、<code>.metadata.name</code> キーの値よりも完全修飾ドメイン名の方が推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Pod内のコンテナに接続する。</span>
 $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--<span class="w"> </span>bash
 
@@ -33850,7 +33850,7 @@ coredns-*****<span class="w">   </span><span class="m">1</span>/1<span class="w"
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>ここで、Node内に接続する。Serviceの完全修飾ドメイン名 (ここでは<code>nginx-service.default.svc.cluster.local</code>) をCoreDNSに正引きする。すると、ServiceのIPアドレスを取得できる。</p>
+<p>ここで、Node内に接続する。Serviceの完全修飾ドメイン名 (ここでは <code>nginx-service.default.svc.cluster.local</code>) をCoreDNSに正引きする。すると、ServiceのIPアドレスを取得できる。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># Node内に接続する。</span>
@@ -33877,7 +33877,7 @@ $<span class="w"> </span>dig<span class="w"> </span>nginx-service.default.svc.cl
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>Serviceがルーティング先のPodにて、コンテナが待ち受けるポート番号を確認する。注意点として、<code>.spec.containers[*].ports</code>キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。</p>
+<p>Serviceがルーティング先のPodにて、コンテナが待ち受けるポート番号を確認する。注意点として、<code>.spec.containers[*].ports</code> キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># 先にmetadata.labelキーから、Serviceのルーティング先のPodを確認する</span>
@@ -33905,7 +33905,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 <p>Serviceの名前解決を介さずに、特定のPodのインスタンスに対して直接的に名前解決することもできる。</p>
 <p><br></p>
 <h3 id="dns_2">DNSレコードタイプ別の完全修飾ドメイン名<a class="headerlink" href="#dns_2" title="Permanent link">&para;</a></h3>
-<h4 id="aaaaa_1">▼ <code>A/AAAA</code>レコードの場合<a class="headerlink" href="#aaaaa_1" title="Permanent link">&para;</a></h4>
+<h4 id="aaaaa_1">▼ <code>A/AAAA</code> レコードの場合<a class="headerlink" href="#aaaaa_1" title="Permanent link">&para;</a></h4>
 <p>対応する完全修飾ドメイン名は、『<code>&lt;PodのIPアドレス&gt;.&lt;Namespace名&gt;.pod.cluster.local</code>』である。</p>
 <blockquote>
 <ul>
@@ -33915,7 +33915,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 <p><br></p>
 <h3 id="podip">PodのIPアドレスを固定する<a class="headerlink" href="#podip" title="Permanent link">&para;</a></h3>
 <p>Kubernetesでは、PodのIPアドレスを固定できない。</p>
-<p>そのため、IPアドレスを固定したアプリケーションは、Kubernetes Cluster上で稼働させるのではなく、サーバー上でコンテナあるいはプロセスとして稼働させた方が良い。</p>
+<p>そのため、IPアドレスを固定したアプリケーションは、Kubernetes Cluster上で稼働させるのではなく、サーバー上でコンテナあるいはプロセスとして稼働させたほうが良い。</p>
 <p>ただし、一部のCNIを使用すれば、IPアドレスを固定することはできる。</p>
 <blockquote>
 <ul>
@@ -33952,7 +33952,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年4月6日 19:36:56 JST">2025-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

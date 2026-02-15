@@ -33936,7 +33936,7 @@
 <p><br></p>
 <h2 id="01-grafana-datasource-cm">01. grafana-datasource-cm<a class="headerlink" href="#01-grafana-datasource-cm" title="Permanent link">&para;</a></h2>
 <h3 id="grafana-datasource-cm">grafana-datasource-cmとは<a class="headerlink" href="#grafana-datasource-cm" title="Permanent link">&para;</a></h3>
-<p>Grafanaの<code>datasource.yaml</code>ファイルを管理する。</p>
+<p>Grafanaの <code>datasource.yaml</code> ファイルを管理する。</p>
 <p><br></p>
 <h3 id="grafana-sc-datasources">サイドカー (grafana-sc-datasources)<a class="headerlink" href="#grafana-sc-datasources" title="Permanent link">&para;</a></h3>
 <p>Grafanaのコンテナが起動する前に、データソースをセットアップする。</p>
@@ -33986,7 +33986,7 @@
 <p>Grafanaのデータソースを設定する。</p>
 <h4 id="prometheus">▼ Prometheusの場合<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h4>
 <p>Prometheusの場合、ビルトインのプラグインを使用できる。</p>
-<p>GrafanaのデフォルトのデータソースはPrometheusとしておく (<code>isDefault</code>キーが<code>true</code>) とよい。</p>
+<p>GrafanaのデフォルトのデータソースはPrometheusとしておく (<code>isDefault</code> キーが <code>true</code>) とよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34016,9 +34016,9 @@
 </ul>
 </blockquote>
 <h4 id="victoriametrics">▼ VictoriaMetricsの場合<a class="headerlink" href="#victoriametrics" title="Permanent link">&para;</a></h4>
-<p>VictoriaMetricsの場合、ビルトインの<code>prometheus</code>タイプを使用できる。</p>
+<p>VictoriaMetricsの場合、ビルトインの <code>prometheus</code> タイプを使用できる。</p>
 <p>VictoriaMetricsからメトリクスの元になるデータポイントを収集するために、PromQLを実行する必要がある。</p>
-<p>VictoriaMetricsがClusterの外部にあり、プロキシが前段にある場合は、<code>access</code>キーを<code>proxy</code>とする。</p>
+<p>VictoriaMetricsがClusterの外部にあり、プロキシが前段にある場合は、<code>access</code> キーを <code>proxy</code> とする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34042,7 +34042,7 @@
 </ul>
 </blockquote>
 <h4 id="aws-cloudwatch">▼ AWS CloudWatchの場合<a class="headerlink" href="#aws-cloudwatch" title="Permanent link">&para;</a></h4>
-<p>AWS CloudWatchの場合、<code>cloudwatch</code>タイプを指定する。</p>
+<p>AWS CloudWatchの場合、<code>cloudwatch</code> タイプを指定する。</p>
 <p>AWS CloudWatch-APIからメトリクスの元になるデータポイントを収集するために、自前のクエリを送信する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -34066,11 +34066,11 @@
 </ul>
 </blockquote>
 <h4 id="grafana-loki">▼ Grafana Loki<a class="headerlink" href="#grafana-loki" title="Permanent link">&para;</a></h4>
-<p>Grafana Lokiの場合、<code>loki</code>タイプを指定する。</p>
-<p>トレースIDのUIにリダイレクトできるように、<code>derivedFields</code>キーを設定する。</p>
-<p><code>matcherRegex</code>キーの正規表現 (例：<code>"trace_id":\s*"([^"]+)"</code> (trace_idがネストされた場所にあっても検知できるようにする) 、<code>trace_id=(\\w+)</code>など) でトレースIDを抽出する。</p>
-<p><code>url</code>キーに<code>$${__value.raw}</code>を設定すると、抽出したトレースIDをURLに出力できる。</p>
-<p><code>datasourceUid</code>キーでは、他に登録しているデータソースを設定する。</p>
+<p>Grafana Lokiの場合、<code>loki</code> タイプを指定する。</p>
+<p>トレースIDのUIにリダイレクトできるように、<code>derivedFields</code> キーを設定する。</p>
+<p><code>matcherRegex</code> キーの正規表現 (例：<code>"trace_id":\s*"([^"]+)"</code> (trace_idがネストされた場所にあっても検知できるようにする) 、<code>trace_id=(\\w+)</code> など) でトレースIDを抽出する。</p>
+<p><code>url</code> キーに <code>$${__value.raw}</code> を設定すると、抽出したトレースIDをURLに出力できる。</p>
+<p><code>datasourceUid</code> キーでは、他に登録しているデータソースを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34107,7 +34107,7 @@
 </ul>
 </blockquote>
 <h4 id="grafana-tempo">▼ Grafana Tempo<a class="headerlink" href="#grafana-tempo" title="Permanent link">&para;</a></h4>
-<p>Grafana Tempoの場合、<code>tempo</code>タイプを指定する。</p>
+<p>Grafana Tempoの場合、<code>tempo</code> タイプを指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34173,7 +34173,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="02-grafana-ini-cm">02. grafana-ini-cm<a class="headerlink" href="#02-grafana-ini-cm" title="Permanent link">&para;</a></h2>
-<p>Grafanaの<code>grafana.ini</code>ファイルを管理する。</p>
+<p>Grafanaの <code>grafana.ini</code> ファイルを管理する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/grafana/grafana/blob/main/conf/defaults.ini">https://github.com/grafana/grafana/blob/main/conf/defaults.ini</a></li>
@@ -34185,9 +34185,9 @@
 <h2 id="02-02-grafanaini">02-02. grafana.ini<a class="headerlink" href="#02-02-grafanaini" title="Permanent link">&para;</a></h2>
 <h3 id="authanonymous">auth.anonymousセクション<a class="headerlink" href="#authanonymous" title="Permanent link">&para;</a></h3>
 <p>ユーザー名とパスワード無しでログインできるようにする。</p>
-<p><code>login_cookie_name</code>もデフォルト (<code>grafana_session</code>) 以外に変更する必要がある。</p>
-<p>anonymousユーザーは、デフォルトで<code>Viewer</code>ロールを持つ。</p>
-<p><code>Admin</code>ロールにすれば、ログイン不要で全員が操作できるようになる。</p>
+<p><code>login_cookie_name</code> もデフォルト (<code>grafana_session</code>) 以外に変更する必要がある。</p>
+<p>anonymousユーザーは、デフォルトで <code>Viewer</code> ロールを持つ。</p>
+<p><code>Admin</code> ロールにすれば、ログイン不要で全員が操作できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34445,7 +34445,7 @@
 <h2 id="02-03-download_dashboardsh">02-03. download_dashboard.sh<a class="headerlink" href="#02-03-download_dashboardsh" title="Permanent link">&para;</a></h2>
 <h3 id="download_dashboardsh">download_dashboard.shとは<a class="headerlink" href="#download_dashboardsh" title="Permanent link">&para;</a></h3>
 <p>リモートからダッシュボードをダウンロードするスクリプトを定義する。</p>
-<p>必ず<code>dashboardproviders.yaml</code>ファイルも合わせて必要である。</p>
+<p>必ず <code>dashboardproviders.yaml</code> ファイルも合わせて必要である。</p>
 <p>URLの指定の方法として、以下がある。</p>
 <ul>
 <li>GitHubのRawファイルのURL (<code>https://raw.githubusercontent.com/example/foo.json</code>)</li>
@@ -34559,7 +34559,7 @@
 <p><br></p>
 <h2 id="03-grafana-provider-cm">03. grafana-provider-cm<a class="headerlink" href="#03-grafana-provider-cm" title="Permanent link">&para;</a></h2>
 <h3 id="grafana-provider-cm">grafana-provider-cmとは<a class="headerlink" href="#grafana-provider-cm" title="Permanent link">&para;</a></h3>
-<p>Grafanaの<code>provider.yaml</code>ファイルを管理する。</p>
+<p>Grafanaの <code>provider.yaml</code> ファイルを管理する。</p>
 <p>ダッシュボードのフォルダを定義できる。</p>
 <blockquote>
 <ul>
@@ -34591,8 +34591,8 @@
 <p><br></p>
 <h2 id="04-grafana-dashboard-cm">04. grafana-dashboard-cm<a class="headerlink" href="#04-grafana-dashboard-cm" title="Permanent link">&para;</a></h2>
 <h3 id="grafana-dashboard-cm">grafana-dashboard-cmとは<a class="headerlink" href="#grafana-dashboard-cm" title="Permanent link">&para;</a></h3>
-<p>Grafanaの<code>dashboard.json</code>ファイルを管理する。</p>
-<p>ファイルサイズが大きくなってしまうため、一つのConfigMapで一つの<code>dashboard.json</code>ファイルを管理する方が良い。</p>
+<p>Grafanaの <code>dashboard.json</code> ファイルを管理する。</p>
+<p>ファイルサイズが大きくなってしまうため、1つのConfigMapで一つの <code>dashboard.json</code> ファイルを管理するほうが良い。</p>
 <p>これをGrafanaのコンテナにマウントする。</p>
 <p><br></p>
 <h3 id="grafana-sc-dashboard">サイドカー (grafana-sc-dashboard)<a class="headerlink" href="#grafana-sc-dashboard" title="Permanent link">&para;</a></h3>
@@ -34639,7 +34639,7 @@
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-api-access-*****</span>
 <span class="w">          </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
-<p>サイドカーがConfigMapを検知できるように、<code>metadata.labels</code>キーにデフォルトで<code>grafana_dashboard: "1"</code>を設定する必要がある。</p>
+<p>サイドカーがConfigMapを検知できるように、<code>metadata.labels</code> キーにデフォルトで <code>grafana_dashboard: "1"</code> を設定する必要がある。</p>
 <p>言い方を変えれば、`grafana_dashboard: "1"キーを持つConfigMapのみをダッシュボードの設定として読み込ませられる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -34663,7 +34663,7 @@
 <p><br></p>
 <h3 id="_2">セットアップ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="grafana">▼ grafanaチャートの場合<a class="headerlink" href="#grafana" title="Permanent link">&para;</a></h4>
-<p>grafanaチャートでは、<code>values</code>ファイルの<code>dashboards.label</code>キーや<code>dashboards.labelValue</code>キーを使用して、サイドカーが検知するConfigMapを設定できる。</p>
+<p>grafanaチャートでは、<code>values</code> ファイルの <code>dashboards.label</code> キーや <code>dashboards.labelValue</code> キーを使用して、サイドカーが検知するConfigMapを設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># valuesファイル</span>
 <span class="w">  </span><span class="nt">dashboards</span><span class="p">:</span>
 
@@ -34702,7 +34702,7 @@
 </blockquote>
 <h4 id="kube-prometheus-stack">▼ kube-prometheus-stackチャートの場合<a class="headerlink" href="#kube-prometheus-stack" title="Permanent link">&para;</a></h4>
 <p>kube-prometheus-stackチャートでは、prometheusのチャートの他、grafanaチャートなどに依存している。</p>
-<p>kube-prometheus-stackチャートの<code>values</code>ファイルでは、サイドカー用の<code>grafana_dashboard</code>キーに<code>1</code>が割り当てられている。</p>
+<p>kube-prometheus-stackチャートの <code>values</code> ファイルでは、サイドカー用の <code>grafana_dashboard</code> キーに <code>1</code> が割り当てられている。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># valuesファイル</span>
 
 <span class="w">  </span><span class="nt">sidecar</span><span class="p">:</span>
@@ -34729,7 +34729,7 @@
 <li><a href="https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml">https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml</a></li>
 </ul>
 </blockquote>
-<p>そのため、kube-prometheus-stackチャートを用いる場合は<code>grafana_dashboard</code>キーの値が<code>1</code>のConfigMapのみがダッシュボードの設定として読み込まれる。</p>
+<p>そのため、kube-prometheus-stackチャートを用いる場合は <code>grafana_dashboard</code> キーの値が <code>1</code> のConfigMapのみがダッシュボードの設定として読み込まれる。</p>
 <p>マニフェストから作成したダッシュボードは、GUIからは削除できないようになっている。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -34778,7 +34778,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年8月13日 23:23:46 JST">2025-08-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

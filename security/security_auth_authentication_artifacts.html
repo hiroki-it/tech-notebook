@@ -17433,12 +17433,12 @@
   <a href="#cookie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cookieヘッダーによる運搬の場合
+        Cookie ヘッダーによる運搬の場合
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Cookieヘッダーによる運搬の場合">
+    <nav class="md-nav" aria-label="Cookie ヘッダーによる運搬の場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -17456,7 +17456,7 @@
   <a href="#expires" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ レスポンスのExpiresヘッダーで設定されたタイミング
+        ▼ レスポンスの Expires ヘッダーで設定されたタイミング
       
     </span>
   </a>
@@ -33643,12 +33643,12 @@
   <a href="#cookie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cookieヘッダーによる運搬の場合
+        Cookie ヘッダーによる運搬の場合
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Cookieヘッダーによる運搬の場合">
+    <nav class="md-nav" aria-label="Cookie ヘッダーによる運搬の場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33666,7 +33666,7 @@
   <a href="#expires" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ レスポンスのExpiresヘッダーで設定されたタイミング
+        ▼ レスポンスの Expires ヘッダーで設定されたタイミング
       
     </span>
   </a>
@@ -33884,16 +33884,16 @@
 </thead>
 <tbody>
 <tr>
-<td><code>Cookie</code>ヘッダーによる運搬</td>
-<td>セッションIDを認証アーティファクトとして、<code>Cookie</code>ヘッダーで運搬する。セッションIDは、再利用のためにブラウザのCookieに保存する。<br>(例) フォーム認証など</td>
-<td>トークンを認証アーティファクトとして、<code>Cookie</code>ヘッダーで運搬する。トークンは、再利用のためにブラウザのCookieに保存する。認証後にレスポンスのSet-<code>Cookie</code>ヘッダーにアクセストークンを設定する必要があり、さまざまなフロントエンドアプリケーション (SST、CSR、SSRなど) で実装できる。<br>(例) OAuth2、OIDC、SAMLなど</td>
+<td><code>Cookie</code> ヘッダーによる運搬</td>
+<td>セッションIDを認証アーティファクトとして、<code>Cookie</code> ヘッダーで運搬する。セッションIDは、再利用のためにブラウザのCookieに保存する。<br>(例) フォーム認証など</td>
+<td>トークンを認証アーティファクトとして、<code>Cookie</code> ヘッダーで運搬する。トークンは、再利用のためにブラウザのCookieに保存する。認証後にレスポンスのSet-<code>Cookie</code> ヘッダーにアクセストークンを設定する必要があり、さまざまなフロントエンドアプリケーション (SST、CSR、SSRなど) で実装できる。<br>(例) OAuth2、OIDC、SAMLなど</td>
 <td>なし</td>
 </tr>
 <tr>
-<td><code>Authorization</code>ヘッダーによる運搬</td>
+<td><code>Authorization</code> ヘッダーによる運搬</td>
 <td>なし</td>
-<td>トークンを認証アーティファクトとして、<code>Authorization</code>ヘッダーで運搬する。トークンは、再利用のためにブラウザのSessionStorageやLocalStorageに保存する。ブラウザのDOMを操作できるフロントエンドアプリケーション (CSRなど) で実装できる。<br>(例) OAuth2、OIDC、SAML、パーソナルアクセストークン認証など</td>
-<td>ワンタイムコードを認証アーティファクトとして、<code>Authorization</code>ヘッダーで運搬する。</td>
+<td>トークンを認証アーティファクトとして、<code>Authorization</code> ヘッダーで運搬する。トークンは、再利用のためにブラウザのSessionStorageやLocalStorageに保存する。ブラウザのDOMを操作できるフロントエンドアプリケーション (CSRなど) で実装できる。<br>(例) OAuth2、OIDC、SAML、パーソナルアクセストークン認証など</td>
+<td>ワンタイムコードを認証アーティファクトとして、<code>Authorization</code> ヘッダーで運搬する。</td>
 </tr>
 </tbody>
 </table>
@@ -33914,11 +33914,11 @@
 <p><br></p>
 <h3 id="_6">フォーム認証<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ フォーム認証とは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>セッションベース認証、かつ<code>Cookie</code>ヘッダーによる運搬の認証スキームのこと。</p>
-<p>トークン (IDトークン、アクセストークン) を使用する場合、<code>Cookie</code>ヘッダーによる運搬であっても、フォーム認証とは言わない。</p>
+<p>セッションベース認証、かつ <code>Cookie</code> ヘッダーによる運搬の認証スキームのこと。</p>
+<p>トークン (IDトークン、アクセストークン) を使用する場合、<code>Cookie</code> ヘッダーによる運搬であっても、フォーム認証とは言わない。</p>
 <p>ステートフル化を行うため、HTTP認証には所属していない。</p>
 <p>認証アーティファクトの一時的な保管は、サーバーのセッションIDで行うため、認証解除 (ログアウト) をサーバー側で制御できる。</p>
-<p><code>Cookie</code>ヘッダーによる送受信では、CSRFの危険性がある。</p>
+<p><code>Cookie</code> ヘッダーによる送受信では、CSRFの危険性がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf">https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf</a></li>
@@ -33966,7 +33966,7 @@
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>サーバーは、これ拒否し、<code>401</code>ステータスでrealm名を設定し、レスポンスを返信する。</p>
+<p>サーバーは、これ拒否し、<code>401</code> ステータスでrealm名を設定し、レスポンスを返信する。</p>
 <p>これにより、realm名の値をユーザーに示して、ユーザー名とパスワードの入力を求められる。</p>
 <p>ユーザーに表示するためのrealm名には、任意の値を持たせられ、サイト名が設定されることが多い。</p>
 </dd>
@@ -33978,7 +33978,7 @@
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>『<code>&lt;ユーザー名&gt;:&lt;パスワード&gt;</code>』をbase64方式でエンコードした値を<code>Authorization</code>ヘッダーに割り当て、リクエストを送信する。</p>
+<p>『<code>&lt;ユーザー名&gt;:&lt;パスワード&gt;</code>』をbase64方式でエンコードした値を <code>Authorization</code> ヘッダーに割り当て、リクエストを送信する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo-form</span>
@@ -34014,7 +34014,7 @@
 <dl>
 <dt><code>(6)</code></dt>
 <dd>
-<p>サーバーは、<code>401</code>ステータスでレスポンスを返信し、認証が解除される。</p>
+<p>サーバーは、<code>401</code> ステータスでレスポンスを返信し、認証が解除される。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">401 Unauthorized</span>
@@ -34123,7 +34123,7 @@
 <p>記入中...</p>
 <h4 id="_20">▼ パーソナルアクセストークン<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>クライアントがパーソナルアクセストークン (個人用アクセストークン) の付与をリクエストし、認証フェーズは行わずに認可フェーズのみでユーザーを照合する。</p>
-<p><code>Authorization</code>ヘッダーにPATを割りあてて、リクエストを送信する。</p>
+<p><code>Authorization</code> ヘッダーにPATを割りあてて、リクエストを送信する。</p>
 <p>作成時以降、パーソナルアクセストークンを確認できなくなるため、クライアントがパーソナルアクセストークンを管理する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo</span>
 <span class="nn">---</span>
@@ -34154,7 +34154,7 @@
 <h4 id="api">▼ APIキーベース認証<a class="headerlink" href="#api" title="Permanent link">&para;</a></h4>
 <p>事前にAPIキーとなる文字列を配布し、認証フェーズは行わずに認可フェーズのみでユーザーを照合する認証スキームのこと。</p>
 <p>信頼されたクライアントに発行することが前提のため、トークンよりも有効期限が長い (有効期限がない場合もある) 。</p>
-<p>自前ヘッダーとして、<code>x-api-key</code>ヘッダーを定義する。これにAPIキーを割り当て、リクエストを送信する。</p>
+<p>自前ヘッダーとして、<code>x-api-key</code> ヘッダーを定義する。これにAPIキーを割り当て、リクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo</span>
 <span class="nn">---</span>
 <span class="nt">x-api-key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;APIキー&gt;</span>
@@ -34192,7 +34192,7 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>指定されたエンドポイントに対して、<code>POST</code>リクエストを送信する。</p>
+<p>指定されたエンドポイントに対して、<code>POST</code> リクエストを送信する。</p>
 <p>この時、<code>Content-Type</code>ヘッダーを<code>application/x-www-form-urlencoded</code>とする。</p>
 <p>必要なボディパラメーターはAPIの提供元によって異なる。クライアントID、付与タイプなどが必要なことが多い。</p>
 </dd>
@@ -34238,7 +34238,7 @@
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>発行されたBearerトークンを指定された認証スキーマで<code>Authorization</code>ヘッダーに割り当て、リクエストを送信する。</p>
+<p>発行されたBearerトークンを指定された認証スキーマで <code>Authorization</code> ヘッダーに割り当て、リクエストを送信する。</p>
 <p>ここでは詳しく言及しないが、Bearerトークンをフォーム認証のように<code>Cookie</code>ヘッダーに割り当てることもある。</p>
 </dd>
 </dl>
@@ -34326,20 +34326,20 @@
 </ul>
 <p><br></p>
 <h2 id="07">07. ログアウト<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
-<h3 id="cookie"><code>Cookie</code>ヘッダーによる運搬の場合<a class="headerlink" href="#cookie" title="Permanent link">&para;</a></h3>
+<h3 id="cookie"><code>Cookie</code> ヘッダーによる運搬の場合<a class="headerlink" href="#cookie" title="Permanent link">&para;</a></h3>
 <h4 id="_22">▼ ブラウザを閉じたタイミング<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>ブラウザを閉じた時に、ブラウザはCookieを削除する。</p>
+<p>ブラウザを閉じたときに、ブラウザはCookieを削除する。</p>
 <p>そのため、ログアウトが起こる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/kandalog/items/80d7574e6bd00afd5150">https://qiita.com/kandalog/items/80d7574e6bd00afd5150</a></li>
 </ul>
 </blockquote>
-<h4 id="expires">▼ レスポンスの<code>Expires</code>ヘッダーで設定されたタイミング<a class="headerlink" href="#expires" title="Permanent link">&para;</a></h4>
-<p>レスポンスの<code>Expires</code>ヘッダーにはCookieの有効期限を設定できる。</p>
+<h4 id="expires">▼ レスポンスの <code>Expires</code> ヘッダーで設定されたタイミング<a class="headerlink" href="#expires" title="Permanent link">&para;</a></h4>
+<p>レスポンスの <code>Expires</code> ヘッダーにはCookieの有効期限を設定できる。</p>
 <p>ブラウザは有効期限に応じてCookieを削除する。</p>
 <p>そのため、ログアウトが起こる。</p>
-<p>有効期限がない場合、<code>Expires</code>ヘッダーの値は<code>Session</code>となり、このCookieを特に『Session Cookie』という。</p>
+<p>有効期限がない場合、<code>Expires</code> ヘッダーの値は <code>Session</code> となり、このCookieを特に『Session Cookie』という。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/kandalog/items/80d7574e6bd00afd5150">https://qiita.com/kandalog/items/80d7574e6bd00afd5150</a></li>
@@ -34365,7 +34365,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月17日 20:58:26 JST">2025-10-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

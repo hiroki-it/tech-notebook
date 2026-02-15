@@ -33349,7 +33349,7 @@
 <h3 id="eks">EKSアドオンとして<a class="headerlink" href="#eks" title="Permanent link">&para;</a></h3>
 <h4 id="terraform">▼ Terraformの場合<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h4>
 <p>Terraformを使用する。</p>
-<p>Terraformの<code>aws_eks_addon</code>でEKSアドオンをインストールし、AWS EBS CSIドライバーに関するKubernetesリソースを作成する。</p>
+<p>Terraformの <code>aws_eks_addon</code> でEKSアドオンをインストールし、AWS EBS CSIドライバーに関するKubernetesリソースを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># AWS EKSアドオンをインストールする。</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;aws_ebs_csi_driver&quot;</span><span class="w"> </span><span class="p">{</span>
 
@@ -33430,7 +33430,7 @@
 </ul>
 </blockquote>
 <p>別途、AWS EBS CSIドライバーのPodに紐付けるServiceAccountを作成し、IAMロールのARNを設定する。</p>
-<p>ServiceAccountは、Terraformではなくマニフェストで定義した方が良い。</p>
+<p>ServiceAccountは、Terraformではなくマニフェストで定義したほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33507,7 +33507,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="persistentvolumeclaim">▼ PersistentVolumeClaim<a class="headerlink" href="#persistentvolumeclaim" title="Permanent link">&para;</a></h4>
 <p>PersistentVolumeClaimでVolumeを要求する。</p>
 <p>PersistentVolumeClaimでVolumeを要求すると、AWS EBS CSIドライバーは、PersistentVolumeとそれに紐づくAWS EBSを自動的に作成する。</p>
-<p>Podの<code>.spec.nodeSelector</code>キーも不要である。</p>
+<p>Podの <code>.spec.nodeSelector</code> キーも不要である。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span>
@@ -33565,7 +33565,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="storageclass">▼ StorageClass<a class="headerlink" href="#storageclass" title="Permanent link">&para;</a></h4>
 <p>自動的にPersistentVolumeを作成する動的プロビジョニングの場合、StorageClassが必要である。</p>
 <p>要求するAWS EBSのタイプをStorageClassで指定する。</p>
-<p><code>reclaimPolicy</code>が<code>Delete</code>になっているPersistentVolumeClaimを削除すれば、StorageClassがEBSもよしなに削除してくれる。</p>
+<p><code>reclaimPolicy</code> が <code>Delete</code> になっているPersistentVolumeClaimを削除すれば、StorageClassがEBSもよしなに削除してくれる。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>マニフェストまたはTerraformで定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># マニフェストで定義した場合</span>
@@ -33608,7 +33608,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="persistentvolumeclaim_1">▼ PersistentVolumeClaim<a class="headerlink" href="#persistentvolumeclaim_1" title="Permanent link">&para;</a></h4>
 <p>PersistentVolumeClaimでStorageClassを指定し、外部サービスが提供するVolumeを要求する。</p>
 <p>StorageClassが指定されたPersistentVolumeClaimでVolumeを要求すると、AWS EBS CSIドライバーは、PersistentVolumeとそれに紐づくAWS EBSを自動的に作成する。</p>
-<p>Podの<code>.spec.nodeSelector</code>キーも不要である。</p>
+<p>Podの <code>.spec.nodeSelector</code> キーも不要である。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span>
@@ -33678,7 +33678,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年1月11日 19:05:12 JST">2025-01-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

@@ -33985,7 +33985,7 @@
 <h2 id="02">02. エンドポイント<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_4">プロトコル<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>MySQLは、TCPスリーウェイハンドシェイクでTCP接続を確立し、MySQLプロトコルのクエリを受信する。</p>
-<p>つまり、アプリケーションはDBへの接続時にTCPスリーウェイハンドシェイクを実行し、MySQLにクエリを送信する時はMySQLプロコトルを使用することになる。</p>
+<p>つまり、アプリケーションはDBへの接続時にTCPスリーウェイハンドシェイクを実行し、MySQLにクエリを送信するときはMySQLプロコトルを使用することになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://gihyo.jp/dev/serial/01/mysql-road-construction-news/0078">https://gihyo.jp/dev/serial/01/mysql-road-construction-news/0078</a></li>
@@ -34009,7 +34009,7 @@
 <h3 id="_8">データ型<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="integer">▼ integer型<a class="headerlink" href="#integer" title="Permanent link">&para;</a></h4>
 <p>数値型である。</p>
-<p>integer値がどのくらい増えるかによって、<code>3</code>個を使い分ける。</p>
+<p>integer値がどのくらい増えるかによって、<code>3</code> 個を使い分ける。</p>
 <p>符号なし (Unsigned) を有効化した場合、マイナス値を使用しなくなった分、使用できるプラス値が増える。</p>
 <table>
 <thead>
@@ -34043,9 +34043,9 @@
 </table>
 <h4 id="string">▼ string型<a class="headerlink" href="#string" title="Permanent link">&para;</a></h4>
 <p>文字列型である。</p>
-<p>文字数がどのくらい増えるかによって、<code>3</code>個を使い分ければ良い。</p>
+<p>文字数がどのくらい増えるかによって、<code>3</code> 個を使い分ければ良い。</p>
 <p>VARCHARでは、文字量に応じてVARCHAR(31)やVARCHAR(255)をよく使用するが、どんな数字でもいい。</p>
-<p>ただ、文字量が多いのであれば、VARCHARよりもTEXTやMEDIUMTEXTを使用する方がいい。</p>
+<p>ただ、文字量が多いのであれば、VARCHARよりもTEXTやMEDIUMTEXTを使用するほうがいい。</p>
 <table>
 <thead>
 <tr>
@@ -34070,11 +34070,11 @@
 </table>
 <h4 id="datetime">▼ datetime型<a class="headerlink" href="#datetime" title="Permanent link">&para;</a></h4>
 <p>日時型である。</p>
-<p>日時を文字列として永続化することもでき、文字列として並び替えなどもできるが、日時型として保存した方がよりよい。</p>
+<p>日時を文字列として永続化することもでき、文字列として並び替えなどもできるが、日時型として保存したほうがよりよい。</p>
 <table>
 <thead>
 <tr>
-<th>データ型（<code>(n)</code>は保存する小数点を表す）</th>
+<th>データ型（<code>(n)</code> は保存する小数点を表す）</th>
 <th>例</th>
 </tr>
 </thead>
@@ -34150,7 +34150,7 @@
 <p><br></p>
 <h3 id="_10">特殊文字<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ 改行<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>MySQLでは、<code>\r\n</code>を使用して、レコード内の値を改行する。</p>
+<p>MySQLでは、<code>\r\n</code> を使用して、レコード内の値を改行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.sukerou.com/2020/09/mysql.html">https://www.sukerou.com/2020/09/mysql.html</a></li>
@@ -34223,12 +34223,12 @@
 <tbody>
 <tr>
 <td>MySQLのAuto Increment機能によって増加する番号カラム</td>
-<td>プライマリーキー制約を課したカラムのAuto Increment機能を有効化しておく。<code>CREATE</code>処理でドメインモデルを作成する時に、『<code>0</code>』または『<code>null</code>』をモデルのID値として割り当てる。これにより、処理によって新しいレコードが追加される時に、現在の最新番号に+１した番号が割り当てられるようになる。これはプライマリーキー制約を満たす。<br>・<a href="https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html">https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html</a></td>
+<td>プライマリーキー制約を課したカラムのAuto Increment機能を有効化しておく。<code>CREATE</code> 処理でドメインモデルを作成するときに、『<code>0</code>』または『<code>null</code>』をモデルのID値として割り当てる。これにより、処理によって新しいレコードが追加される時に、現在の最新番号に+１した番号が割り当てられるようになる。これはプライマリーキー制約を満たす。<br>・<a href="https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html">https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html</a></td>
 <td>・ドメインモデルとDBがより密結合になり、Active Recordパターンと相性が良い。<br>MySQLの環境変数として『<code>NO_AUTO_VALUE_ON_ZERO</code>』を設定すると、『<code>0</code>』の割り当てによる自動連番が拒否されるようになる。</td>
 </tr>
 <tr>
 <td>UUID (例：<code>3cc807ab-8e31-3071-aee4-f8f03781cb91</code>)</td>
-<td><code>CREATE</code>処理でモデルを作成する時に、アプケーションで作成したUUID値をドメインモデルのID値として割り当てる。UUID値が重複することは基本的に発生し得ないため、プライマリーキー制約を満たす。UUID値の作成関数は言語の標準パッケージとして用意されている。</td>
+<td><code>CREATE</code> 処理でモデルを作成するときに、アプケーションで作成したUUID値をドメインモデルのID値として割り当てる。UUID値が重複することは基本的に発生し得ないため、プライマリーキー制約を満たす。UUID値の作成関数は言語の標準パッケージとして用意されている。</td>
 <td>・ドメインモデルとDBがより疎結合にでき、Repositoryパターンと相性が良い。<br>UUID値は文字列として管理されるため、DBアクセス処理の負荷が高まってしまう。<br>プライマリーキーを使用してソートできない。</td>
 </tr>
 </tbody>
@@ -34291,7 +34291,7 @@
 <span class="c1">-- 最初のレコードを手動で挿入する。</span>
 <span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">id_sequence</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-<p><code>CREATE</code>処理時には、事前に、採番テーブルに新しくプライマリーキーを作成する。</p>
+<p><code>CREATE</code> 処理時には、事前に、採番テーブルに新しくプライマリーキーを作成する。</p>
 <p>INSERT文のプライマリーキーに『<code>0</code>』や『<code>null</code>』を割り当てるのではなく、採番テーブルから取得したIDを割り当てるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- 新しくプライマリーキーを作成する。</span>
 <span class="k">UPDATE</span><span class="w"> </span><span class="n">id_sequence</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">LAST_INSERT_ID</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
@@ -34311,19 +34311,19 @@
 <tbody>
 <tr>
 <td><code>MYSQL_DATABASE</code></td>
-<td>DBを作成する。二つ目は、<code>CREATE</code>を実行する必要がある。</td>
+<td>DBを作成する。二つ目は、<code>CREATE</code> を実行する必要がある。</td>
 </tr>
 <tr>
 <td><code>MYSQL_USER</code></td>
-<td>一般ユーザーのユーザーを作成する。<code>GRANT ALL</code>の権限を持つ。</td>
+<td>一般ユーザーのユーザーを作成する。<code>GRANT ALL</code> の権限を持つ。</td>
 </tr>
 <tr>
 <td><code>MYSQL_ALLOW_EMPTY_PASSWORD</code></td>
-<td><code>root</code>ユーザーのパスワードを空文字にできる。</td>
+<td><code>root</code> ユーザーのパスワードを空文字にできる。</td>
 </tr>
 <tr>
 <td><code>MYSQL_ROOT_PASSWORD</code></td>
-<td><code>root</code>ユーザーのパスワードを設定する。デフォルトではランダム値になる。</td>
+<td><code>root</code> ユーザーのパスワードを設定する。デフォルトではランダム値になる。</td>
 </tr>
 <tr>
 <td><code>MYSQL_PASSWORD</code></td>
@@ -34345,7 +34345,7 @@
 <p>記入中...</p>
 <h3 id="_23">エラーログ<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <h4 id="aborted-connection">▼ Aborted connection<a class="headerlink" href="#aborted-connection" title="Permanent link">&para;</a></h4>
-<p>MySQLクライアントが接続を切断した場合、MySQL側では<code>Aborted connection</code>エラーとなる。</p>
+<p>MySQLクライアントが接続を切断した場合、MySQL側では <code>Aborted connection</code> エラーとなる。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>Note<span class="o">]</span><span class="w"> </span>Aborted<span class="w"> </span>connection<span class="w"> </span><span class="m">251</span><span class="w"> </span>to<span class="w"> </span>db:<span class="w"> </span><span class="s1">&#39;db_name&#39;</span><span class="w"> </span>user:<span class="w"> </span><span class="s1">&#39;user_name&#39;</span><span class="w"> </span>host:<span class="w"> </span><span class="s1">&#39;host_name&#39;</span><span class="w"> </span><span class="o">(</span>Got<span class="w"> </span>an<span class="w"> </span>error<span class="w"> </span>reading<span class="w"> </span>communication<span class="w"> </span>packets<span class="o">)</span>
 </code></pre></div>
 <blockquote>
@@ -34357,7 +34357,7 @@
 <p><br></p>
 <h2 id="06">06. テーブルの統計情報<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="_24">統計情報とは<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
-<p>テーブルがもつメタデータであり、<code>innodb_table_stats</code>テーブルで管理されている。</p>
+<p>テーブルがもつメタデータであり、<code>innodb_table_stats</code> テーブルで管理されている。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">mysql</span><span class="p">.</span><span class="n">innodb_table_stats</span><span class="p">;</span>
 
 <span class="o">+----------------------------+--------------------------+---------------------+---------+----------------------+--------------------------+</span>
@@ -34376,7 +34376,7 @@
 <p><br></p>
 <h3 id="_25">統計情報の更新<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <h4 id="_26">▼ 手動<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
-<p><code>ANALYZE TABLE &lt;テーブル名&gt;</code>を手動で実行する。</p>
+<p><code>ANALYZE TABLE &lt;テーブル名&gt;</code> を手動で実行する。</p>
 <h4 id="_27">▼ 自動<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
 <p>特定の行数があるテーブルでは、レコードが追加されていくと、特定の閾値で統計情報が更新される。</p>
 <p>レコード数が大きくなると、相対基準では統計情報の更新タイミングが少なくなるため、絶対基準を適用するような仕組みになっている。</p>
@@ -34414,10 +34414,10 @@
 <ul>
 <li>DBインデックスを使用するか、あるいはインデックスを使用せずにテーブルを読み込むか</li>
 <li>どのDBインデックスを使用するか</li>
-<li>各テーブルの<code>JOIN</code>順序をどうするのか</li>
+<li>各テーブルの <code>JOIN</code> 順序をどうするのか</li>
 </ul>
 <p>統計情報が古いと、テーブルのDBインデックスを使用するべきところを使用しなくて良いと、オプティマイザーが誤って判断してしまうことがある。</p>
-<p>そのため、定期的 (DBレコードの大量更新時、定期DBメンテナンス時、DBマイグレーション時) で<code>ANALYZE TABLE &lt;テーブル名&gt;</code>を実行し、テーブルの統計情報を更新しておくと良い。</p>
+<p>そのため、定期的 (DBレコードの大量更新時、定期DBメンテナンス時、DBマイグレーション時) で <code>ANALYZE TABLE &lt;テーブル名&gt;</code> を実行し、テーブルの統計情報を更新しておくと良い。</p>
 <p><br></p>
 
 
@@ -34439,7 +34439,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年1月24日 21:27:33 JST">2026-01-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

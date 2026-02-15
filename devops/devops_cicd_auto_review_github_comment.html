@@ -28714,19 +28714,19 @@
   <a href="#05-github-commentyaml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        05. github-comment.yamlファイル
+        05. github-comment.yaml ファイル
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. github-comment.yamlファイル">
+    <nav class="md-nav" aria-label="05. github-comment.yaml ファイル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#github-commentyaml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        github-comment.yamlファイルとは
+        github-comment.yaml ファイルとは
       
     </span>
   </a>
@@ -33243,19 +33243,19 @@
   <a href="#05-github-commentyaml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        05. github-comment.yamlファイル
+        05. github-comment.yaml ファイル
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. github-comment.yamlファイル">
+    <nav class="md-nav" aria-label="05. github-comment.yaml ファイル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#github-commentyaml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        github-comment.yamlファイルとは
+        github-comment.yaml ファイルとは
       
     </span>
   </a>
@@ -33523,7 +33523,7 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 <p><br></p>
 <h2 id="03">03. オプション<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="-k">-k<a class="headerlink" href="#-k" title="Permanent link">&para;</a></h3>
-<p><code>github-comment.yaml</code>ファイルのテンプレート名を指定して、レビューコメントを作成する。</p>
+<p><code>github-comment.yaml</code> ファイルのテンプレート名を指定して、レビューコメントを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>./github-comment<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-k<span class="w"> </span>&lt;テンプレート名&gt;<span class="w"> </span>--<span class="w"> </span>&lt;好きなコマンド&gt;
 </code></pre></div>
 <blockquote>
@@ -33534,7 +33534,7 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 <p><br></p>
 <h3 id="-var">-var<a class="headerlink" href="#-var" title="Permanent link">&para;</a></h3>
 <h4 id="-var_1">▼ -varとは<a class="headerlink" href="#-var_1" title="Permanent link">&para;</a></h4>
-<p>レビューコメントのテンプレートの<code>{{ .Vars.&lt;変数&gt; }}</code>に出力できる変数を定義する。</p>
+<p>レビューコメントのテンプレートの <code>{{ .Vars.&lt;変数&gt; }}</code> に出力できる変数を定義する。</p>
 <p>実行コマンドごとに異なる文字列を使用したい場合に役立つ。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>./github-comment<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-k<span class="w"> </span>&lt;テンプレート名&gt;<span class="w">  </span>-var<span class="w"> </span><span class="s2">&quot;TestName:foo-test&quot;</span><span class="w"> </span>-var<span class="w"> </span><span class="s2">&quot;Description:〇〇を検証する&quot;</span><span class="w"> </span>--<span class="w"> </span>&lt;好きなコマンド&gt;
 </code></pre></div>
@@ -33640,8 +33640,8 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="05-github-commentyaml">05. <code>github-comment.yaml</code>ファイル<a class="headerlink" href="#05-github-commentyaml" title="Permanent link">&para;</a></h2>
-<h3 id="github-commentyaml"><code>github-comment.yaml</code>ファイルとは<a class="headerlink" href="#github-commentyaml" title="Permanent link">&para;</a></h3>
+<h2 id="05-github-commentyaml">05. <code>github-comment.yaml</code> ファイル<a class="headerlink" href="#05-github-commentyaml" title="Permanent link">&para;</a></h2>
+<h3 id="github-commentyaml"><code>github-comment.yaml</code> ファイルとは<a class="headerlink" href="#github-commentyaml" title="Permanent link">&para;</a></h3>
 <p>GitHubに送信するレビューコメントのテンプレートを設定する。</p>
 <p>文法は、Goテンプレートと同じである。</p>
 <p><br></p>
@@ -33688,7 +33688,7 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 <p><br></p>
 <h3 id="exec_2">exec<a class="headerlink" href="#exec_2" title="Permanent link">&para;</a></h3>
 <h4 id="exec_3">▼ execとは<a class="headerlink" href="#exec_3" title="Permanent link">&para;</a></h4>
-<p><code>github-comment exec</code>コマンドの結果に使用するテンプレート</p>
+<p><code>github-comment exec</code> コマンドの結果に使用するテンプレート</p>
 <h4 id="_4">▼ テンプレート名<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nn">---</span>
 <span class="c1"># github-comment execコマンドで使用するテンプレート</span>
@@ -33777,10 +33777,10 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 </ul>
 </blockquote>
 <h4 id="_6">▼ 必要なコマンド<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p><code>default</code>のテンプレートを使用する場合、<code>-k</code>オプションは不要である。</p>
+<p><code>default</code> のテンプレートを使用する場合、<code>-k</code> オプションは不要である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>./github-comment<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--<span class="w"> </span>&lt;好きなコマンド&gt;
 </code></pre></div>
-<p><code>default</code>以外のテンプレートを使用する場合、<code>-k</code>オプションが必要である。</p>
+<p><code>default</code> 以外のテンプレートを使用する場合、<code>-k</code> オプションが必要である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>./github-comment<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-k<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--<span class="w"> </span>&lt;好きなコマンド&gt;
 </code></pre></div>
 <p><br></p>
@@ -33824,7 +33824,7 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 <tbody>
 <tr>
 <td><code>{{ template "status" . }}</code></td>
-<td>終了ステータスコードが<code>0</code>なら ✅ 、それ以外なら ❌</td>
+<td>終了ステータスコードが <code>0</code> なら ✅ 、それ以外なら ❌</td>
 <td><code>:{{ if eq .ExitCode 0 }}white_check_mark{{ else }}x{{ end }}:</code></td>
 </tr>
 <tr>
@@ -33880,7 +33880,7 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 <h4 id="when_1">▼ whenとは<a class="headerlink" href="#when_1" title="Permanent link">&para;</a></h4>
 <p>テンプレートを使用する条件を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>テンプレートが1つの場合は、<code>when</code>キーを<code>true</code>とする</p>
+<p>テンプレートが1つの場合は、<code>when</code> キーを <code>true</code> とする</p>
 <div class="highlight"><pre><span></span><code><span class="nn">---</span>
 <span class="nt">exec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">test</span><span class="p">:</span>
@@ -33911,7 +33911,7 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 <span class="w">        </span><span class="no">&lt;/details&gt;</span>
 </code></pre></div>
 <p><strong>※実装例※</strong></p>
-<p>終了コードを条件とする場合、<code>ExitCode</code>を使用する。</p>
+<p>終了コードを条件とする場合、<code>ExitCode</code> を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nn">---</span>
 <span class="nt">exec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">test</span><span class="p">:</span>
@@ -33967,7 +33967,7 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月14日 16:59:11 JST">2025-10-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

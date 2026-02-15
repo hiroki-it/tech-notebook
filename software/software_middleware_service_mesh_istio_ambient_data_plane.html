@@ -33293,9 +33293,9 @@
 <p>アンビエントモードは、データプレーン、コントロールプレーンNode、といったコンポーネントから構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。</p>
 <p>マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービス検出の必要性、パケットのアプリケーションデータの暗号化、テレメトリー作成など) を解決する責務を持つ。</p>
 <p>Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnel Podを経由して、一度waypoint-proxy Podにリダイレクトされる。</p>
-<p>サイドカーモードを将来的に廃止するということはなく、好きな方を選べるようにするらしい。</p>
+<p>サイドカーモードを将来的に廃止するということはなく、好きなほうを選べるようにするらしい。</p>
 <p>ztunnel Podを経由した段階でHTTPSプロトコルになる。</p>
-<p>ハードウェアリソースの消費量の少ない<code>L4</code>プロトコルと、消費量の多い<code>L7</code>プロトコルのプロコトルの処理の責務が分離されているため、サイドカーモードと比較して、<code>L4</code>プロトコルのみを処理する場合、Nodeのハードウェアリソース消費量を節約できる。</p>
+<p>ハードウェアリソースの消費量の少ない <code>L4</code> プロトコルと、消費量の多い <code>L7</code> プロトコルのプロコトルの処理の責務が分離されているため、サイドカーモードと比較して、<code>L4</code> プロトコルのみを処理する場合、Nodeのハードウェアリソース消費量を節約できる。</p>
 <p>サービスメッシュ内へのリクエストの経路は以下の通りである。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
@@ -33359,11 +33359,11 @@
 <h3 id="istio-cni">istio-cni<a class="headerlink" href="#istio-cni" title="Permanent link">&para;</a></h3>
 <h4 id="istio-cni_1">▼ istio-cniとは<a class="headerlink" href="#istio-cni_1" title="Permanent link">&para;</a></h4>
 <p>実体は、DaemonSetとして稼働する。</p>
-<p><code>kube-system</code>のNamespaceにおき、PriorityClassを<code>system-node-critical</code>とすることが推奨である。</p>
-<p>istio-cniは、<code>/var/run/ztunnel/ztunnel.sock</code>ファイル経由でztunnelから接続される。</p>
+<p><code>kube-system</code> のNamespaceにおき、PriorityClassを <code>system-node-critical</code> とすることが推奨である。</p>
+<p>istio-cniは、<code>/var/run/ztunnel/ztunnel.sock</code> ファイル経由でztunnelから接続される。</p>
 <p>そのため、istio-cniはztunnelと同じNode上に作成する必要がある (Namespaceは違っていても良い) 。</p>
 <h4 id="_2">▼ 仕組み<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>以下を設定し、<code>L4</code>インバウンド通信とアウトバウンド通信をztunnel Podへリダイレクトできるようにする。</p>
+<p>以下を設定し、<code>L4</code> インバウンド通信とアウトバウンド通信をztunnel Podへリダイレクトできるようにする。</p>
 <ul>
 <li>Nodeのiptables</li>
 <li>ztunnel Podのiptables</li>
@@ -33390,9 +33390,9 @@
 <p><br></p>
 <h3 id="ztunnel">ztunnel<a class="headerlink" href="#ztunnel" title="Permanent link">&para;</a></h3>
 <h4 id="ztunnel_1">▼ ztunnelとは<a class="headerlink" href="#ztunnel_1" title="Permanent link">&para;</a></h4>
-<p>サービスメッシュ内の<code>L4</code>トラフィックを管理する。</p>
+<p>サービスメッシュ内の <code>L4</code> トラフィックを管理する。</p>
 <p>実体はDaemonSet配下のPodであり、Nodeごとにスケジューリングされている。</p>
-<p>ztunnel Podは、<code>/var/run/ztunnel/ztunnel.sock</code>ファイル経由でistio-cniに接続する。</p>
+<p>ztunnel Podは、<code>/var/run/ztunnel/ztunnel.sock</code> ファイル経由でistio-cniに接続する。</p>
 <p>そのため、ztunnel Podはistio-cniと同じNode上に作成する必要がある (Namespaceは違っていても良い) 。</p>
 <blockquote>
 <ul>
@@ -33405,15 +33405,15 @@
 <p><img alt="istio_ambient-mesh_ztunnel_inpod-redirection_l4_overview" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_l4_overview.png" /></p>
 <p>アウトバウンド通信の仕組みは以下の通りである。</p>
 <ol>
-<li>Pod内マイクロサービスが<code>L4</code>アウトバウンド通信を送信する。</li>
+<li>Pod内マイクロサービスが <code>L4</code> アウトバウンド通信を送信する。</li>
 <li>Pod内iptablesが通信をztunnel Podにリダイレクトする。</li>
 <li>ztunnel Podは通信を宛先に送信する。</li>
 </ol>
 <p>一方で、インバウンド通信の仕組みは以下の通りである。</p>
 <ol>
-<li>Podが<code>L4</code>インバウンド通信を受信する。</li>
+<li>Podが <code>L4</code> インバウンド通信を受信する。</li>
 <li>Pod内iptablesが通信をztunnel Podにリダイレクトする。</li>
-<li>Pod内マイクロサービスが<code>L4</code>アウトバウンド通信を受信する。</li>
+<li>Pod内マイクロサービスが <code>L4</code> アウトバウンド通信を受信する。</li>
 </ol>
 <p><img alt="istio_ambient-mesh_ztunnel_inpod-redirection_l4_detail" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_l4_detail.png" /></p>
 <blockquote>
@@ -33436,7 +33436,7 @@
 <p><br></p>
 <h3 id="waypoint-proxy">waypoint-proxy<a class="headerlink" href="#waypoint-proxy" title="Permanent link">&para;</a></h3>
 <h4 id="waypoint-proxy_1">▼ waypoint-proxyとは<a class="headerlink" href="#waypoint-proxy_1" title="Permanent link">&para;</a></h4>
-<p>サービスメッシュ内の<code>L7</code>トラフィックを管理する。</p>
+<p>サービスメッシュ内の <code>L7</code> トラフィックを管理する。</p>
 <p>実体は、Gateway-APIで作成されたistio-proxyを含むPodである。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ istioctl experimental waypoint generate</span>
 <span class="nn">---</span>
@@ -33686,7 +33686,7 @@
 <span class="w">                  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace</span>
 </code></pre></div>
 <h4 id="_4">▼ 仕組み<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>Namespace外からの<code>L7</code>インバウンド通信をHBORNを経由して受信し、Namespace内の宛先Podに送信する。</p>
+<p>Namespace外からの <code>L7</code> インバウンド通信をHBORNを経由して受信し、Namespace内の宛先Podに送信する。</p>
 <p>waypoint-proxyは、サービス検出により宛先情報を取得し、また証明書を管理する。</p>
 <p><img alt="istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7_overview" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7_overview.png" /></p>
 <blockquote>
@@ -33765,7 +33765,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月8日 15:16:16 JST">2025-07-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

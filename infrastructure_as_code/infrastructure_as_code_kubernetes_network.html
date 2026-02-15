@@ -22884,10 +22884,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ingress-controllerl7" class="md-nav__link">
+  <a href="#ingress-controller-l7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ingress Controller由来のL7ロードバランサーの場合
+        Ingress Controller由来の L7 ロードバランサーの場合
       
     </span>
   </a>
@@ -22895,10 +22895,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#loadbalancer-servicel4" class="md-nav__link">
+  <a href="#loadbalancer-service-l4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        LoadBalancer Service由来のL4ロードバランサーの場合
+        LoadBalancer Service由来の L4 ロードバランサーの場合
       
     </span>
   </a>
@@ -23072,7 +23072,7 @@
   <a href="#kubectl-run" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ kubectl runコマンド
+        ▼ kubectl run コマンド
       
     </span>
   </a>
@@ -23083,7 +23083,7 @@
   <a href="#kubectl-debug-node" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ kubectl debug nodeコマンド
+        ▼ kubectl debug node コマンド
       
     </span>
   </a>
@@ -33380,10 +33380,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ingress-controllerl7" class="md-nav__link">
+  <a href="#ingress-controller-l7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ingress Controller由来のL7ロードバランサーの場合
+        Ingress Controller由来の L7 ロードバランサーの場合
       
     </span>
   </a>
@@ -33391,10 +33391,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#loadbalancer-servicel4" class="md-nav__link">
+  <a href="#loadbalancer-service-l4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        LoadBalancer Service由来のL4ロードバランサーの場合
+        LoadBalancer Service由来の L4 ロードバランサーの場合
       
     </span>
   </a>
@@ -33568,7 +33568,7 @@
   <a href="#kubectl-run" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ kubectl runコマンド
+        ▼ kubectl run コマンド
       
     </span>
   </a>
@@ -33579,7 +33579,7 @@
   <a href="#kubectl-debug-node" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ kubectl debug nodeコマンド
+        ▼ kubectl debug node コマンド
       
     </span>
   </a>
@@ -33777,10 +33777,10 @@
 <h3 id="cgroup">cgroup名前空間<a class="headerlink" href="#cgroup" title="Permanent link">&para;</a></h3>
 <p><br></p>
 <h2 id="05">05. ネットワークレイヤー<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
-<h3 id="ingress-controllerl7">Ingress Controller由来の<code>L7</code>ロードバランサーの場合<a class="headerlink" href="#ingress-controllerl7" title="Permanent link">&para;</a></h3>
-<p>Ingress Controllerの場合、<code>L7</code>ロードバランサーをプロビジョニングする。</p>
-<p>Ingress Controllerによる<code>L7</code>ロードバランサーは、受信した通信をServiceにルーティングする。</p>
-<p>Serviceは<code>L4</code>ロードバランサーとして、インバウンド通信をPodにルーティングする。</p>
+<h3 id="ingress-controller-l7">Ingress Controller由来の <code>L7</code> ロードバランサーの場合<a class="headerlink" href="#ingress-controller-l7" title="Permanent link">&para;</a></h3>
+<p>Ingress Controllerの場合、<code>L7</code> ロードバランサーをプロビジョニングする。</p>
+<p>Ingress Controllerによる <code>L7</code> ロードバランサーは、受信した通信をServiceにルーティングする。</p>
+<p>Serviceは <code>L4</code> ロードバランサーとして、インバウンド通信をPodにルーティングする。</p>
 <p><img alt="kubernetes_network_l4-l7" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_network_l4-l7.png" /></p>
 <blockquote>
 <ul>
@@ -33788,8 +33788,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="loadbalancer-servicel4">LoadBalancer Service由来の<code>L4</code>ロードバランサーの場合<a class="headerlink" href="#loadbalancer-servicel4" title="Permanent link">&para;</a></h3>
-<p>LoadBalancer Serviceの場合、<code>L4</code>ロードバランサーをプロビジョニングする。</p>
+<h3 id="loadbalancer-service-l4">LoadBalancer Service由来の <code>L4</code> ロードバランサーの場合<a class="headerlink" href="#loadbalancer-service-l4" title="Permanent link">&para;</a></h3>
+<p>LoadBalancer Serviceの場合、<code>L4</code> ロードバランサーをプロビジョニングする。</p>
 <p><br></p>
 <h2 id="06-pod">06. Pod間通信<a class="headerlink" href="#06-pod" title="Permanent link">&para;</a></h2>
 <h3 id="pod_1">Pod間通信の経路<a class="headerlink" href="#pod_1" title="Permanent link">&para;</a></h3>
@@ -33881,8 +33881,8 @@ traceroute<span class="w"> </span>to<span class="w"> </span><span class="m">11</
 <h3 id="service_1">Serviceの完全修飾ドメイン名を指定する場合<a class="headerlink" href="#service_1" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 仕組み<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>Kubernetesに採用できる権威DNSサーバー (kube-dns、CoreDNS、HashiCorp Consulなど) は、ServiceのNSレコードを管理し、Serviceの完全修飾ドメイン名で名前解決できるようになる。</p>
-<p>Podのスケジューリング時に、kubeletはPod内のコンテナの<code>/etc/resolv.conf</code>ファイルに権威DNSサーバーのIPアドレスを設定する。</p>
-<p>Pod内のコンテナは、自身の<code>/etc/resolv.conf</code>ファイルで権威DNSサーバーのIPアドレスを確認し、DNSサーバーから宛先PodのIPアドレスを正引きする。</p>
+<p>Podのスケジューリング時に、kubeletはPod内のコンテナの <code>/etc/resolv.conf</code> ファイルに権威DNSサーバーのIPアドレスを設定する。</p>
+<p>Pod内のコンテナは、自身の <code>/etc/resolv.conf</code> ファイルで権威DNSサーバーのIPアドレスを確認し、DNSサーバーから宛先PodのIPアドレスを正引きする。</p>
 <p>レスポンスに含まれる宛先のPodのIPアドレスを使用して、Podにリクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Pod内のコンテナに接続する。</span>
 $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--<span class="w"> </span>bash
@@ -33906,8 +33906,8 @@ options<span class="w"> </span>ndots:5
 <h4 id="ndots">▼ ndots<a class="headerlink" href="#ndots" title="Permanent link">&para;</a></h4>
 <p>宛先コンテナの名前解決時のドット数を設定する。</p>
 <p>ドット数が多ければ多いほど、ローカルドメインから網羅的に名前解決を実施するため、ハードウェアリソースの消費が高くなる。</p>
-<p>例えば、<code>ndots:5</code>としたPodが<code>example.com</code>を名前解決する場合、ドット数は<code>5</code>になる。</p>
-<p>そのため、最初は<code>example.com.default.svc.cluster.local.</code>から名前解決を始め、<code>example.com.</code>で終わる。</p>
+<p>例えば、<code>ndots:5</code> としたPodが <code>example.com</code> を名前解決する場合、ドット数は <code>5</code> になる。</p>
+<p>そのため、最初は <code>example.com.default.svc.cluster.local.</code> から名前解決を始め、<code>example.com.</code> で終わる。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -33939,9 +33939,9 @@ options<span class="w"> </span>ndots:5
 <p><br></p>
 <h2 id="07">07. 通信のデバッグ<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <h3 id="pod_2">Podのアウトバウンド通信のデバッグ<a class="headerlink" href="#pod_2" title="Permanent link">&para;</a></h3>
-<h4 id="kubectl-run">▼ <code>kubectl run</code>コマンド<a class="headerlink" href="#kubectl-run" title="Permanent link">&para;</a></h4>
-<p><code>kubectl exec</code>コマンドが運用的に禁止されているような状況がある。</p>
-<p>そのような状況下で、シングルNodeの場合は、<code>kubectl run</code>コマンドで、<code>--rm</code>オプションを有効化し、Clusterネットワーク内に<code>curl</code>コマンドによる検証用のPodを一時的に新規作成する。</p>
+<h4 id="kubectl-run">▼ <code>kubectl run</code> コマンド<a class="headerlink" href="#kubectl-run" title="Permanent link">&para;</a></h4>
+<p><code>kubectl exec</code> コマンドが運用的に禁止されているような状況がある。</p>
+<p>そのような状況下で、シングルNodeの場合は、<code>kubectl run</code> コマンドで、<code>--rm</code> オプションを有効化し、Clusterネットワーク内に <code>curl</code> コマンドによる検証用のPodを一時的に新規作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># シングルNodeの場合</span>
 
 <span class="c1"># curl送信用のコンテナを作成する。</span>
@@ -33963,11 +33963,11 @@ $<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </sp
 <span class="c1"># mtrコマンドでデバッグする。</span>
 <span class="o">[</span>root@&lt;Pod名&gt;:~<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>mtr<span class="w"> </span>&lt;Serviceの完全修飾ドメイン名やIPアドレス&gt;
 </code></pre></div>
-<h4 id="kubectl-debug-node">▼ <code>kubectl debug node</code>コマンド<a class="headerlink" href="#kubectl-debug-node" title="Permanent link">&para;</a></h4>
+<h4 id="kubectl-debug-node">▼ <code>kubectl debug node</code> コマンド<a class="headerlink" href="#kubectl-debug-node" title="Permanent link">&para;</a></h4>
 <p>マルチNodeの場合は、指定したNode上でPodを作成できない。</p>
 <p>(たぶん) 名前が一番昇順のNode上でPodが作成されてしまい、Nodeを指定できない。</p>
-<p>そのため、代わりに<code>kubectl debug</code>コマンドを使用する。</p>
-<p>ただし、<code>kubectl debug</code>コマンドで作成されたPodは、使用後に手動で削除する必要がある。</p>
+<p>そのため、代わりに <code>kubectl debug</code> コマンドを使用する。</p>
+<p>ただし、<code>kubectl debug</code> コマンドで作成されたPodは、使用後に手動で削除する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># マルチNodeの場合</span>
 
 <span class="c1"># Podが稼働するNodeを確認する。</span>
@@ -33993,9 +33993,9 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 </blockquote>
 <h4 id="pod_3">▼ デバッグ用Podを起動しておく<a class="headerlink" href="#pod_3" title="Permanent link">&para;</a></h4>
 <p>デバッグ用Podを起動しておく方法もある。</p>
-<p><code>curl</code>コマンド専用イメージを使用する場合、コンテナ起動後に<code>curl</code>コマンドを実行し、すぐに終了してしまう。</p>
+<p><code>curl</code> コマンド専用イメージを使用する場合、コンテナ起動後に <code>curl</code> コマンドを実行し、すぐに終了してしまう。</p>
 <p>そのため、CrashLoopBackOffになってしまう。</p>
-<p>これを防ぐために、<code>sleep infinity</code>コマンドを実行し、ずっとスリープするようにしておく。</p>
+<p>これを防ぐために、<code>sleep infinity</code> コマンドを実行し、ずっとスリープするようにしておく。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34044,7 +34044,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2024年12月28日 17:56:29 JST">2024-12-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

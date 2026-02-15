@@ -33727,8 +33727,8 @@
 <p><br></p>
 <h3 id="_5">ヒアドキュメント<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ ヒアドキュメントとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>ヒアドキュメントで作成したシェルスクリプトには、各行に<code>echo</code>が追加される。</p>
-<p>慣例として、終了文字列には<code>EOF</code>/<code>EOT</code>/<code>EOD</code>を使用するが、どんな文字でも良い。</p>
+<p>ヒアドキュメントで作成したシェルスクリプトには、各行に <code>echo</code> が追加される。</p>
+<p>慣例として、終了文字列には <code>EOF</code>/<code>EOT</code>/<code>EOD</code> を使用するが、どんな文字でも良い。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; echo.sh</span>
@@ -33933,7 +33933,7 @@ some_command
 </code></pre></div>
 <h4 id="_15">▼ パス指定<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>新しくインタラクティブを開き、処理を実行する。</p>
-<p>そのため、シェル変数のライフサイクルは<code>bash</code>プロセスと同じである。</p>
+<p>そのため、シェル変数のライフサイクルは <code>bash</code> プロセスと同じである。</p>
 <p>相対パスもしくは絶対パスでシェルスクリプトを指定する。</p>
 <p>実行するファイルをカレントディレクトリ配下に配置できない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>./hello.sh
@@ -33951,7 +33951,7 @@ some_command
 <p><br></p>
 <h3 id="_16">セットアップ<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="apk">▼ apkリポジトリから<a class="headerlink" href="#apk" title="Permanent link">&para;</a></h4>
-<p>ほとんどのOSで、<code>make</code>コマンドはプリインストールされているが、Alpine Linuxでは別途インストールが必要である。</p>
+<p>ほとんどのOSで、<code>make</code> コマンドはプリインストールされているが、Alpine Linuxでは別途インストールが必要である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>make
 </code></pre></div>
 <p><br></p>
@@ -33959,7 +33959,7 @@ some_command
 <h4 id="_18">▼ シェルの選択<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>シェルの種類を選択する。</p>
 <p>種類ごとに使用できるオプションがやや異なる。</p>
-<p>また同時に、<code>set</code>コマンドのオプションを有効化でき、これは全てのターゲットに適用される。</p>
+<p>また同時に、<code>set</code> コマンドのオプションを有効化でき、これは全てのターゲットに適用される。</p>
 <div class="highlight"><pre><span></span><code><span class="nv">SHELL</span><span class="o">=</span>/bin/bash<span class="w"> </span>-xeu
 </code></pre></div>
 <blockquote>
@@ -34001,8 +34001,8 @@ some_command
 <span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span>
 </code></pre></div>
 <h4 id="phony">▼ <code>.PHONY</code><a class="headerlink" href="#phony" title="Permanent link">&para;</a></h4>
-<p>ターゲットと同じ名前のファイルがある場合、<code>make</code>コマンドでターゲットを指定できなくなる。</p>
-<p><code>.PHONY</code>を使用すると、ファイル名ではなくターゲットを明示できる。</p>
+<p>ターゲットと同じ名前のファイルがある場合、<code>make</code> コマンドでターゲットを指定できなくなる。</p>
+<p><code>.PHONY</code> を使用すると、ファイル名ではなくターゲットを明示できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c"># ターゲットであることを明示する。</span>
 <span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">foo</span> <span class="n">bar</span> <span class="n">baz</span> <span class="n">qux</span>
 
@@ -34048,7 +34048,7 @@ some_command
 </blockquote>
 <p>ターゲット内では、標準出力への出力をシェル変数に代入できない。</p>
 <p>そのため、シェル変数はターゲット外で定義する必要がある。</p>
-<p>また、遅延評価で代入し、<code>$(shell ...)</code>とする必要がある。</p>
+<p>また、遅延評価で代入し、<code>$(shell ...)</code> とする必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nv">FOO</span><span class="o">=</span><span class="k">$(</span>shell<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="k">)</span>
 
 <span class="nf">echo</span><span class="o">:</span>
@@ -34077,7 +34077,7 @@ some_command
 <p><br></p>
 <h3 id="makefile_1">Makefileのよくある使い方<a class="headerlink" href="#makefile_1" title="Permanent link">&para;</a></h3>
 <p>一般的に、Makefileはパッケージのビルドとインストールのために実装される。</p>
-<p>この時に慣例として、ターゲット名は<code>make</code> (ターゲット無し) と<code>install</code>になっていることが多い。</p>
+<p>この時に慣例として、ターゲット名は <code>make</code> (ターゲット無し) と <code>install</code> になっていることが多い。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/chihiro/items/f270744d7e09c58a50a5">https://qiita.com/chihiro/items/f270744d7e09c58a50a5</a></li>
@@ -34101,7 +34101,7 @@ $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>ルールが定義したMakefileを<code>configure</code>ファイルを元に作成する。</p>
+<p>ルールが定義したMakefileを <code>configure</code> ファイルを元に作成する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># configureへのパスに注意。</span>
@@ -34110,7 +34110,7 @@ $<span class="w"> </span>../configure<span class="w"> </span>--prefix<span class
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>パッケージのコードから<code>exe</code>ファイルをビルドする。</p>
+<p>パッケージのコードから <code>exe</code> ファイルをビルドする。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># -j で使用するコア数を宣言し、処理速度を上げられる。</span>
@@ -34119,7 +34119,7 @@ $<span class="w"> </span>make<span class="w"> </span>-j4
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>任意で、<code>exe</code>ファイルを検証する。</p>
+<p>任意で、<code>exe</code> ファイルを検証する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>make<span class="w"> </span>check
@@ -34162,7 +34162,7 @@ $<span class="w"> </span>make<span class="w"> </span>install
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年12月6日 20:22:09 JST">2025-12-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

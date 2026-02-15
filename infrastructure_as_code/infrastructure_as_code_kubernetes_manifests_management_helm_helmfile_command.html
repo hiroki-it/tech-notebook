@@ -24840,10 +24840,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#helmdestroy" class="md-nav__link">
+  <a href="#helm-destroy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 特定のHelmリリースのみdestroyしたい
+        ▼ 特定のHelmリリースのみ destroy したい
       
     </span>
   </a>
@@ -33257,10 +33257,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#helmdestroy" class="md-nav__link">
+  <a href="#helm-destroy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 特定のHelmリリースのみdestroyしたい
+        ▼ 特定のHelmリリースのみ destroy したい
       
     </span>
   </a>
@@ -33603,7 +33603,7 @@
 <h2 id="01-helmfile">01. helmfileコマンド<a class="headerlink" href="#01-helmfile" title="Permanent link">&para;</a></h2>
 <h3 id="global">globalオプション<a class="headerlink" href="#global" title="Permanent link">&para;</a></h3>
 <h4 id="_2">▼ オプション無し<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>使用する<code>helmfile.d</code>ディレクトリ下にある<code>helm.yaml</code>ファイルを再帰的に使用する。</p>
+<p>使用する <code>helmfile.d</code> ディレクトリ下にある <code>helm.yaml</code> ファイルを再帰的に使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># helmfile.dディレクトリ配下を再帰的に読み込む。</span>
 $<span class="w"> </span>helmfile<span class="w"> </span>&lt;サブコマンド&gt;
 </code></pre></div>
@@ -33627,7 +33627,7 @@ $<span class="w"> </span>helmfile<span class="w"> </span>&lt;サブコマンド&
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>apply
 </code></pre></div>
 <h4 id="-f">▼ -f<a class="headerlink" href="#-f" title="Permanent link">&para;</a></h4>
-<p>使用する<code>helmfile.yaml</code>ファイルを指定する。</p>
+<p>使用する <code>helmfile.yaml</code> ファイルを指定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>-f<span class="w"> </span>./helmfile.yaml<span class="w"> </span>&lt;コマンド&gt;
 </code></pre></div>
 <blockquote>
@@ -33654,8 +33654,8 @@ Do<span class="w"> </span>you<span class="w"> </span>really<span class="w"> </sp
 <p><br></p>
 <h3 id="apply">apply<a class="headerlink" href="#apply" title="Permanent link">&para;</a></h3>
 <h4 id="apply_1">▼ apply<a class="headerlink" href="#apply_1" title="Permanent link">&para;</a></h4>
-<p>まず<code>helmfile diff</code>コマンドを実行することにより、この時に差分があれば、<code>helmfile sync</code>コマンドを実行する。</p>
-<p><code>helmfile sync</code>コマンドとは異なり、Helmリリース間に差分がないと、リビジョンは更新されない。</p>
+<p>まず <code>helmfile diff</code> コマンドを実行することにより、この時に差分があれば、<code>helmfile sync</code> コマンドを実行する。</p>
+<p><code>helmfile sync</code> コマンドとは異なり、Helmリリース間に差分がないと、リビジョンは更新されない。</p>
 <p>注意点として、Helmの使用と同様にして、CRDのマニフェストは作成はできるが変更はできない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>apply
 
@@ -33683,12 +33683,12 @@ foo-release<span class="w">         </span>./charts/foo<span class="w">         
 </blockquote>
 <h4 id="-skip-crds">▼ --skip-crds<a class="headerlink" href="#-skip-crds" title="Permanent link">&para;</a></h4>
 <p>CRDの作成をスキップする。</p>
-<p><code>kubectl apply</code>コマンドでCRDを作成した場合に役立つ。</p>
+<p><code>kubectl apply</code> コマンドでCRDを作成した場合に役立つ。</p>
 <p>注意点として、CRDの更新はHelmがサポートしていないため、あくまで作成をスキップする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>apply<span class="w"> </span>--skip-crds
 </code></pre></div>
 <h4 id="-skip-diff-on-install">▼ --skip-diff-on-install<a class="headerlink" href="#-skip-diff-on-install" title="Permanent link">&para;</a></h4>
-<p><code>helmfile apply</code>コマンド時に<code>helmfile diff</code>コマンドを実行しない。</p>
+<p><code>helmfile apply</code> コマンド時に <code>helmfile diff</code> コマンドを実行しない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>apply<span class="w"> </span>--skip-diff-on-install
 </code></pre></div>
 <blockquote>
@@ -33708,9 +33708,9 @@ foo-release<span class="w">         </span>./charts/foo<span class="w">         
 <li><a href="https://helmfile.readthedocs.io/en/latest/#destroy">https://helmfile.readthedocs.io/en/latest/#destroy</a></li>
 </ul>
 </blockquote>
-<h4 id="helmdestroy">▼ 特定のHelmリリースのみ<code>destroy</code>したい<a class="headerlink" href="#helmdestroy" title="Permanent link">&para;</a></h4>
-<p><code>helmfile</code>コマンドで複数のHelmリリースを一緒に管理している場合、特定のHelmリリースのみ<code>destroy</code>できない。</p>
-<p>代わりに、<code>helm uninstall</code>コマンドで特定のHelmリリースを削除する。</p>
+<h4 id="helm-destroy">▼ 特定のHelmリリースのみ <code>destroy</code> したい<a class="headerlink" href="#helm-destroy" title="Permanent link">&para;</a></h4>
+<p><code>helmfile</code> コマンドで複数のHelmリリースを一緒に管理している場合、特定のHelmリリースのみ <code>destroy</code> できない。</p>
+<p>代わりに、<code>helm uninstall</code> コマンドで特定のHelmリリースを削除する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>uninstall<span class="w"> </span>&lt;Helmリリース名&gt;
 
 <span class="c1"># 削除したHelmリリースのみが差分として出力される</span>
@@ -33731,7 +33731,7 @@ baz-chart<span class="w">     </span>baz-namespace<span class="w">  </span><span
 <h3 id="diff">diff<a class="headerlink" href="#diff" title="Permanent link">&para;</a></h3>
 <h4 id="diff_1">▼ diffとは<a class="headerlink" href="#diff_1" title="Permanent link">&para;</a></h4>
 <p>全てのHelmリリースに対して、helm-diffプラグインを実行する。</p>
-<p>helm-diffプラグインでは、前回のHelmリリースと、今回の<code>helm upgrade --dry-run</code>コマンドの差分を取得する。</p>
+<p>helm-diffプラグインでは、前回のHelmリリースと、今回の <code>helm upgrade --dry-run</code> コマンドの差分を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>diff
 </code></pre></div>
 <blockquote>
@@ -33741,17 +33741,17 @@ baz-chart<span class="w">     </span>baz-namespace<span class="w">  </span><span
 </ul>
 </blockquote>
 <h4 id="-debug">▼ --debug<a class="headerlink" href="#-debug" title="Permanent link">&para;</a></h4>
-<p>オプションの無い<code>helmfile diff</code>では、以下の出力になってしまう。</p>
+<p>オプションの無い <code>helmfile diff</code> では、以下の出力になってしまう。</p>
 <ul>
 <li>Secretに出力された値がエンコードされてしまっている。</li>
-<li><code>helm upgrade --dry-run</code>コマンドのどの段階でエラーになったかがわからない。</li>
+<li><code>helm upgrade --dry-run</code> コマンドのどの段階でエラーになったかがわからない。</li>
 </ul>
-<p><code>--debug</code>オプションであれば、これらを確認できる。</p>
+<p><code>--debug</code> オプションであれば、これらを確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>--debug<span class="w"> </span>diff
 </code></pre></div>
 <h4 id="_3">▼ 色付け<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p><code>helmfile diff</code>コマンドでは、差分を色付けできる。</p>
-<p>ただ、バージョンによって機能しないことがあるため、その場合は明示的に<code>HELM_DIFF_COLOR</code>変数を有効化する。</p>
+<p><code>helmfile diff</code> コマンドでは、差分を色付けできる。</p>
+<p>ただ、バージョンによって機能しないことがあるため、その場合は明示的に <code>HELM_DIFF_COLOR</code> 変数を有効化する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">HELM_DIFF_COLOR</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>diff
 </code></pre></div>
 <blockquote>
@@ -33760,8 +33760,8 @@ baz-chart<span class="w">     </span>baz-namespace<span class="w">  </span><span
 </ul>
 </blockquote>
 <h4 id="grep">▼ grepとの組み合わせ<a class="headerlink" href="#grep" title="Permanent link">&para;</a></h4>
-<p>マニフェストの差分が多すぎる場合、先にどのリソースに変更があるのかを把握した方がよい。</p>
-<p><code>grep</code>コマンドを使用して、差分のあるリソースやファイルを確認しておく。</p>
+<p>マニフェストの差分が多すぎる場合、先にどのリソースに変更があるのかを把握したほうがよい。</p>
+<p><code>grep</code> コマンドを使用して、差分のあるリソースやファイルを確認しておく。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>diff<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>kind
 
 <span class="c1"># 差分のあるマニフェストのkindキーのみを取得する。</span>
@@ -33779,8 +33779,8 @@ Source:<span class="w"> </span>project/manifests/persistent-volume.yaml
 <p><br></p>
 <h3 id="sync">sync<a class="headerlink" href="#sync" title="Permanent link">&para;</a></h3>
 <h4 id="sync_1">▼ syncとは<a class="headerlink" href="#sync_1" title="Permanent link">&para;</a></h4>
-<p>全てのHelmリリースに関して、<code>helm upgrade --install</code>コマンドを実行する。</p>
-<p><code>helmfile apply</code>コマンドとは異なり、Helmリリース間に差分がなくとも、リビジョンを更新する。</p>
+<p>全てのHelmリリースに関して、<code>helm upgrade --install</code> コマンドを実行する。</p>
+<p><code>helmfile apply</code> コマンドとは異なり、Helmリリース間に差分がなくとも、リビジョンを更新する。</p>
 <p>注意点として、Helmの使用と同様にして、CRDのマニフェストは作成はできるが変更はできない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>sync
 </code></pre></div>
@@ -33793,19 +33793,19 @@ Source:<span class="w"> </span>project/manifests/persistent-volume.yaml
 <p><br></p>
 <h3 id="template">template<a class="headerlink" href="#template" title="Permanent link">&para;</a></h3>
 <h4 id="template_1">▼ templateとは<a class="headerlink" href="#template_1" title="Permanent link">&para;</a></h4>
-<p>全てのHelmリリースに関して、<code>helm template</code>コマンドを実行する。</p>
+<p>全てのHelmリリースに関して、<code>helm template</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>template
 </code></pre></div>
 <h4 id="-include-crds">▼ --include-crds<a class="headerlink" href="#-include-crds" title="Permanent link">&para;</a></h4>
-<p>CRDも含めて、<code>helm template</code>コマンドを実行する。</p>
+<p>CRDも含めて、<code>helm template</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>template<span class="w"> </span>--include-crds
 </code></pre></div>
 <p><br></p>
 <h3 id="write-values">write-values<a class="headerlink" href="#write-values" title="Permanent link">&para;</a></h3>
 <h4 id="write-values_1">▼ write-valuesとは<a class="headerlink" href="#write-values_1" title="Permanent link">&para;</a></h4>
-<p>個人的に感動したコマンド。<code>helmfile</code>コマンドの実行で使用される<code>values</code>ファイルを、ファイルに書き出す。</p>
-<p>複数の<code>values</code>ファイルを使用している場合に、これらに同じキーがあると、後に読み込まれた<code>values</code>ファイルが優先されるようになっている。</p>
-<p>この時に、<code>helmfile write-values</code>コマンドを使用すると、優先された値で定義された<code>values</code>ファイルを確認できる。</p>
+<p>個人的に感動したコマンド。<code>helmfile</code> コマンドの実行で使用される <code>values</code> ファイルを、ファイルに書き出す。</p>
+<p>複数の <code>values</code> ファイルを使用している場合に、これらに同じキーがあると、後に読み込まれた <code>values</code> ファイルが優先されるようになっている。</p>
+<p>この時に、<code>helmfile write-values</code> コマンドを使用すると、優先された値で定義された <code>values</code> ファイルを確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>-f<span class="w"> </span>./helmfile.yaml<span class="w"> </span>write-values
 
 <span class="c1"># helmfile.yamlファイルのディレクトリ以下に、ディレクトリとファイルが生成される。</span>
@@ -33832,7 +33832,7 @@ Writing<span class="w"> </span>values<span class="w"> </span>file<span class="w"
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年6月27日 15:20:47 JST">2025-06-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

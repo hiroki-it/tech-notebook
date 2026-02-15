@@ -34642,7 +34642,7 @@
 <p><br></p>
 <h3 id="steps">steps<a class="headerlink" href="#steps" title="Permanent link">&para;</a></h3>
 <h4 id="continue-on-error">▼ continue-on-error<a class="headerlink" href="#continue-on-error" title="Permanent link">&para;</a></h4>
-<p>同じ<code>steps</code>キー内の<code>run</code>キーが失敗しても成功扱いにするか否かを設定する。</p>
+<p>同じ <code>steps</code> キー内の <code>run</code> キーが失敗しても成功扱いにするか否かを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">build</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
@@ -34662,7 +34662,7 @@
 </ul>
 </blockquote>
 <h4 id="if">▼ if<a class="headerlink" href="#if" title="Permanent link">&para;</a></h4>
-<p>条件を満たした場合、後続の<code>run</code>キーを実行する。</p>
+<p>条件を満たした場合、後続の <code>run</code> キーを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
@@ -34789,9 +34789,9 @@
 <h2 id="06-runs">06. runs<a class="headerlink" href="#06-runs" title="Permanent link">&para;</a></h2>
 <h3 id="composite">composite<a class="headerlink" href="#composite" title="Permanent link">&para;</a></h3>
 <h4 id="composite_1">▼ compositeとは<a class="headerlink" href="#composite_1" title="Permanent link">&para;</a></h4>
-<p>親ファイルの<code>steps</code>を別のファイルに切り分け、親ファイルでコールできる。</p>
-<p><code>workflows</code>ディレクトリ配下に任意のサブディレクトリを用意し、そこに<code>action</code>ファイルを配置する。</p>
-<p>親ファイルでディレクトリを指定すると、<code>action</code>ファイルが自動的に読み込まれる。</p>
+<p>親ファイルの <code>steps</code> を別のファイルに切り分け、親ファイルでコールできる。</p>
+<p><code>workflows</code> ディレクトリ配下に任意のサブディレクトリを用意し、そこに <code>action</code> ファイルを配置する。</p>
+<p>親ファイルでディレクトリを指定すると、<code>action</code> ファイルが自動的に読み込まれる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── .github/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   └── workflows/</span>
@@ -34820,7 +34820,7 @@
 </code></pre></div>
 <h4 id="secrets">▼ Secretsは使用不可<a class="headerlink" href="#secrets" title="Permanent link">&para;</a></h4>
 <p>compositeでは、Secretsを使用できない。</p>
-<p>そのため、<code>input</code>キーのパラメーターとして渡す必要がある。</p>
+<p>そのため、<code>input</code> キーのパラメーターとして渡す必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
@@ -34864,7 +34864,7 @@
 <span class="w">        </span><span class="no">echo foo</span>
 </code></pre></div>
 <h4 id="_8">▼ シェルの種類を要指定<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>もし<code>steps</code>を定義する場合は、<code>shell</code>キーでシェルの種類を指定する必要がある。</p>
+<p>もし <code>steps</code> を定義する場合は、<code>shell</code> キーでシェルの種類を指定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">runs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">using</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;composite&quot;</span>
 <span class="w">  </span><span class="nt">steps</span><span class="p">:</span>
@@ -34882,7 +34882,7 @@
 <h2 id="07">07. 環境変数<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <h3 id="workflow">Workflowレベル<a class="headerlink" href="#workflow" title="Permanent link">&para;</a></h3>
 <h4 id="workflow_1">▼ Workflowレベルとは<a class="headerlink" href="#workflow_1" title="Permanent link">&para;</a></h4>
-<p>定義した<code>workflow</code> (<code>yaml</code>ファイル) 内のみで参照できる。</p>
+<p>定義した <code>workflow</code> (<code>yaml</code> ファイル) 内のみで参照できる。</p>
 <h4 id="env">▼ env<a class="headerlink" href="#env" title="Permanent link">&para;</a></h4>
 <p>環境変数を定義する。</p>
 <p>Secretの値を設定できない。</p>
@@ -34906,7 +34906,7 @@
 <p><br></p>
 <h3 id="jobs_1">Jobsレベル<a class="headerlink" href="#jobs_1" title="Permanent link">&para;</a></h3>
 <h4 id="jobs_2">▼ Jobsレベルとは<a class="headerlink" href="#jobs_2" title="Permanent link">&para;</a></h4>
-<p>定義した<code>jobs</code>キー内のみで参照できる。</p>
+<p>定義した <code>jobs</code> キー内のみで参照できる。</p>
 <h4 id="env_1">▼ env<a class="headerlink" href="#env_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
@@ -34924,7 +34924,7 @@
 </ul>
 </blockquote>
 <h4 id="_9">▼ 環境ファイル<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>環境ファイル (<code>GITHUB_ENV</code>) に値を入力することにより、<code>job</code>内の環境変数として使用できるようになる。</p>
+<p>環境ファイル (<code>GITHUB_ENV</code>) に値を入力することにより、<code>job</code> 内の環境変数として使用できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
@@ -34947,7 +34947,7 @@
 <p><br></p>
 <h3 id="step">Stepレベル<a class="headerlink" href="#step" title="Permanent link">&para;</a></h3>
 <h4 id="step_1">▼ Stepレベルとは<a class="headerlink" href="#step_1" title="Permanent link">&para;</a></h4>
-<p>定義した<code>step</code>キー内のみで参照できる。</p>
+<p>定義した <code>step</code> キー内のみで参照できる。</p>
 <h4 id="env_2">▼ env<a class="headerlink" href="#env_2" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
@@ -34968,12 +34968,12 @@
 <h2 id="07-02-secret">07-02. Secret変数<a class="headerlink" href="#07-02-secret" title="Permanent link">&para;</a></h2>
 <h3 id="secret">Secret変数とは<a class="headerlink" href="#secret" title="Permanent link">&para;</a></h3>
 <p>環境変数と同様にしてGitHub Actions内で使用できる。</p>
-<p>また、<code>add-mask</code>コマンドと同様のマスキングが最初から実行されている。</p>
+<p>また、<code>add-mask</code> コマンドと同様のマスキングが最初から実行されている。</p>
 <p><br></p>
 <h3 id="_10">マスキング<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ スコープ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>以降の全ての処理でマスキングが実行される。</p>
-<p>もちろん、<code>inputs</code>キーで渡した値にもマスキングが維持される。</p>
+<p>もちろん、<code>inputs</code> キーで渡した値にもマスキングが維持される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
@@ -35000,7 +35000,7 @@
 <li><a href="https://zenn.dev/kinjosan/articles/bd82e07aa69080">https://zenn.dev/kinjosan/articles/bd82e07aa69080</a></li>
 </ul>
 </blockquote>
-<p>これに関しては以前は非対応であったため、<code>add-mask</code>コマンドを使用した方法がネット上で見つかることに注意する。</p>
+<p>これに関しては以前は非対応であったため、<code>add-mask</code> コマンドを使用した方法がネット上で見つかることに注意する。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/nogic1008/items/6934b1b6d6e0cf7912d1">https://qiita.com/nogic1008/items/6934b1b6d6e0cf7912d1</a></li>
@@ -35010,7 +35010,7 @@
 </blockquote>
 <h4 id="_12">▼ 注意点<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>注意点として、マスキングされる値と同じ文字列が使用されると、これもマスキングされる。</p>
-<p>そのため、例えば<code>input</code>キーでマスキングされた値と同じ文字列を使用してしまうと、<code>yaml</code>ファイルの構文解析でエラーになってしまう。</p>
+<p>そのため、例えば <code>input</code> キーでマスキングされた値と同じ文字列を使用してしまうと、<code>yaml</code> ファイルの構文解析でエラーになってしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
@@ -35056,7 +35056,7 @@
 <p>リポジトリ内のGitHub Actionsのみで参照できる。</p>
 <p>また、シェルスクリプト内で環境変数を出力するためにも必要である。</p>
 <p>出力された変数の値は、以降の処理でマスキングされる。</p>
-<p>Projectレベルとは異なり、<code>env</code>キーに明示的に環境変数を渡す必要がある。</p>
+<p>Projectレベルとは異なり、<code>env</code> キーに明示的に環境変数を渡す必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
@@ -35076,7 +35076,7 @@
 </ul>
 </blockquote>
 <h4 id="step_2">▼ Stepレベル<a class="headerlink" href="#step_2" title="Permanent link">&para;</a></h4>
-<p><code>jobs.foo.steps.env</code>キーに変数名と値を登録する。</p>
+<p><code>jobs.foo.steps.env</code> キーに変数名と値を登録する。</p>
 <p>ステップ内のみで参照できる。</p>
 <p>また、シェルスクリプト内で環境変数を出力するためにも必要である。</p>
 <p>出力された変数の値は、以降の処理でマスキングされる。</p>
@@ -35109,7 +35109,7 @@
 <span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
 </code></pre></div>
 <h4 id="upload-artifactdownload-artifact">▼ upload-artifact、download-artifact<a class="headerlink" href="#upload-artifactdownload-artifact" title="Permanent link">&para;</a></h4>
-<p>異なる<code>jobs</code>の間でファイルを共有する。</p>
+<p>異なる <code>jobs</code> の間でファイルを共有する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
@@ -35176,7 +35176,7 @@
 </ul>
 </blockquote>
 <h4 id="step_3">▼ 同じstep内では使用不可<a class="headerlink" href="#step_3" title="Permanent link">&para;</a></h4>
-<p>同じ<code>step</code>内で、パラメーターの入力と出力を行っても、値は空になる。</p>
+<p>同じ <code>step</code> 内で、パラメーターの入力と出力を行っても、値は空になる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
@@ -35190,7 +35190,7 @@
 <span class="w">          </span><span class="no">echo ${{ steps.foo_id.outputs.FOO }}</span>
 </code></pre></div>
 <h4 id="step_4">▼ 異なるstep間での共有<a class="headerlink" href="#step_4" title="Permanent link">&para;</a></h4>
-<p>入力したパラメーターは、異なる<code>step</code>の間で出力できる。</p>
+<p>入力したパラメーターは、異なる <code>step</code> の間で出力できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
@@ -35210,7 +35210,7 @@
 <li><a href="https://stackoverflow.com/questions/57819539/github-actions-how-to-share-a-calculated-value-between-job-steps">https://stackoverflow.com/questions/57819539/github-actions-how-to-share-a-calculated-value-between-job-steps</a></li>
 </ul>
 </blockquote>
-<p>Secretsや<code>add-mask</code>コマンドでマスキングされた値も共有でき、またマスキングを維持できる。</p>
+<p>Secretsや <code>add-mask</code> コマンドでマスキングされた値も共有でき、またマスキングを維持できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
@@ -35229,8 +35229,8 @@
 <span class="w">          </span><span class="no">echo &quot;${{ steps.foo_id.outputs.FOO }}&quot;</span>
 </code></pre></div>
 <h4 id="job">▼ 異なるjob間での共有<a class="headerlink" href="#job" title="Permanent link">&para;</a></h4>
-<p>入力したパラメーターは、異なる<code>job</code>の間で出力できる。</p>
-<p>先に実行される<code>job</code>キーの<code>output</code>キーに入力する必要がある。</p>
+<p>入力したパラメーターは、異なる <code>job</code> の間で出力できる。</p>
+<p>先に実行される <code>job</code> キーの <code>output</code> キーに入力する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
@@ -35254,7 +35254,7 @@
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">echo &quot;${{ needs.foo.outputs.FOO }}&quot;</span>
 </code></pre></div>
-<p>ただし異なる<code>job</code>では、Secretsや<code>add-mask</code>コマンドでマスキングされた値は共有できず、空になってしまう。</p>
+<p>ただし異なる <code>job</code> では、Secretsや <code>add-mask</code> コマンドでマスキングされた値は共有できず、空になってしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
@@ -35307,7 +35307,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年5月2日 16:16:39 JST">2025-05-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

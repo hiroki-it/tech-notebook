@@ -32867,12 +32867,12 @@
   <a href="#env" class="md-nav__link">
     <span class="md-ellipsis">
       
-        .envファイル
+        .env ファイル
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label=".envファイル">
+    <nav class="md-nav" aria-label=".env ファイル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -32890,7 +32890,7 @@
   <a href="#env_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ .envファイル
+        ▼ .env ファイル
       
     </span>
   </a>
@@ -32901,7 +32901,7 @@
   <a href="#envlocal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ .env.localファイル
+        ▼ .env.local ファイル
       
     </span>
   </a>
@@ -32912,7 +32912,7 @@
   <a href="#envdevelopment" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ .env.developmentファイル
+        ▼ .env.development ファイル
       
     </span>
   </a>
@@ -32923,7 +32923,7 @@
   <a href="#envdevelopmentlocal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ .env.development.localファイル
+        ▼ .env.development.local ファイル
       
     </span>
   </a>
@@ -32934,7 +32934,7 @@
   <a href="#envproduction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ .env.productionファイル
+        ▼ .env.production ファイル
       
     </span>
   </a>
@@ -32945,7 +32945,7 @@
   <a href="#envproductionlocal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ .env.production.localファイル
+        ▼ .env.production.local ファイル
       
     </span>
   </a>
@@ -33074,7 +33074,7 @@
 <h4 id="csr">▼ CSRモード<a class="headerlink" href="#csr" title="Permanent link">&para;</a></h4>
 <p>以下の時にCSRモードになり、SPAをレンダリングする。</p>
 <ul>
-<li>ファイルの先頭に<code>"use client"</code>を指定している。</li>
+<li>ファイルの先頭に <code>"use client"</code> を指定している。</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="s2">&quot;use client&quot;</span><span class="p">;</span>
 
@@ -33126,8 +33126,8 @@
 <h4 id="ssr">▼ SSRモード<a class="headerlink" href="#ssr" title="Permanent link">&para;</a></h4>
 <p>以下の時にSSRモードになる。</p>
 <ul>
-<li><code>fetch</code>関数の第二引数に、<code>{ cache: "no-store" }</code>を指定している</li>
-<li><code>useEffect</code>、<code>useState</code>、<code>onClick</code>などのブラウザ依存の機能を使用していない</li>
+<li><code>fetch</code> 関数の第二引数に、<code>{ cache: "no-store" }</code> を指定している</li>
+<li><code>useEffect</code>、<code>useState</code>、<code>onClick</code> などのブラウザ依存の機能を使用していない</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
 
@@ -33159,7 +33159,7 @@
 
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">SsrPage</span><span class="p">;</span>
 </code></pre></div>
-<p>または<code>'force-dynamic'</code>を宣言する。</p>
+<p>または <code>'force-dynamic'</code> を宣言する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">dynamic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;force-dynamic&quot;</span><span class="p">;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>build
@@ -33185,8 +33185,8 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
 <h4 id="ssg">▼ SSGモード<a class="headerlink" href="#ssg" title="Permanent link">&para;</a></h4>
 <p>以下の時にSSGモードになる。</p>
 <ul>
-<li><code>fetch</code>関数の第二引数に、<code>{ cache: "force-cache" }</code>を指定しているか、または何も指定していない</li>
-<li><code>useEffect</code>、<code>useState</code>、<code>onClick</code>などのブラウザ依存の機能を使用していない</li>
+<li><code>fetch</code> 関数の第二引数に、<code>{ cache: "force-cache" }</code> を指定しているか、または何も指定していない</li>
+<li><code>useEffect</code>、<code>useState</code>、<code>onClick</code> などのブラウザ依存の機能を使用していない</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
 
@@ -33216,7 +33216,7 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
 
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">SsgPage</span><span class="p">;</span>
 </code></pre></div>
-<p>または<code>'auto'</code>を宣言する。</p>
+<p>または <code>'auto'</code> を宣言する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">dynamic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;auto&quot;</span><span class="p">;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>build
@@ -33242,8 +33242,8 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
 <h4 id="isr">▼ ISRモード<a class="headerlink" href="#isr" title="Permanent link">&para;</a></h4>
 <p>以下の時にISRモードになる。</p>
 <ul>
-<li><code>fetch</code>関数の第二引数に、<code>{ next: { revalidate: &lt;任意の値&gt; } }</code>を指定している</li>
-<li><code>useEffect</code>、<code>useState</code>、<code>onClick</code>などのブラウザ依存の機能を使用していない</li>
+<li><code>fetch</code> 関数の第二引数に、<code>{ next: { revalidate: &lt;任意の値&gt; } }</code> を指定している</li>
+<li><code>useEffect</code>、<code>useState</code>、<code>onClick</code> などのブラウザ依存の機能を使用していない</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
 
@@ -33319,8 +33319,8 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
 <h4 id="ssg_1">▼ SSGモード<a class="headerlink" href="#ssg_1" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <h4 id="api">▼ APIルートモード<a class="headerlink" href="#api" title="Permanent link">&para;</a></h4>
-<p><code>app/api/foo</code>ディレクトリに<code>route.ts</code>ファイルをおくと、<code>app/api/</code>がエンドポイントのAPIルートモードになる。</p>
-<p>APIルートモードとほかのモード（CSR、SSR、SSG）はディレクトリを分けて共存させられるため、一つのアプリケーションでフロントエンドアプリケーションとBFFを兼ねることができる。</p>
+<p><code>app/api/foo</code> ディレクトリに <code>route.ts</code> ファイルをおくと、<code>app/api/</code> がエンドポイントのAPIルートモードになる。</p>
+<p>APIルートモードとほかのモード（CSR、SSR、SSG）はディレクトリを分けて共存させられるため、1つのアプリケーションでフロントエンドアプリケーションとBFFを兼ねることができる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// app/api/foo/route.tsファイル</span>
 <span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">NextApiRequest</span><span class="p">,</span><span class="w"> </span><span class="nx">NextApiResponse</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;next&quot;</span><span class="p">;</span>
 
@@ -33332,7 +33332,7 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
 <h2 id="03">03. 環境変数<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_4">言語の実行環境<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <ul>
-<li><code>export</code>コマンドで出力する</li>
+<li><code>export</code> コマンドで出力する</li>
 <li>コンテナの環境変数として出力する</li>
 </ul>
 <p><br></p>
@@ -33343,7 +33343,7 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
 <th>モード</th>
 <th>出力タイミング</th>
 <th style="text-align: center;"><code>NEXT_PUBLIC_****</code></th>
-<th style="text-align: center;"><code>****</code> (<code>NEXT_PUBLIC</code>なし)</th>
+<th style="text-align: center;"><code>****</code> (<code>NEXT_PUBLIC</code> なし)</th>
 </tr>
 </thead>
 <tbody>
@@ -33369,47 +33369,47 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
 <td>APIルートモード (厳密にはモードではない)</td>
 <td>サーバーへのリクエストごと</td>
 <td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅ (<code>api</code>ディレクトリ配下で読み込む)</td>
+<td style="text-align: center;">✅ (<code>api</code> ディレクトリ配下で読み込む)</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<h3 id="env"><code>.env</code>ファイル<a class="headerlink" href="#env" title="Permanent link">&para;</a></h3>
+<h3 id="env"><code>.env</code> ファイル<a class="headerlink" href="#env" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ 仕組み<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p><code>.env</code>ファイルを自動的に読み込み、また名前に応じて処理が変わる。</p>
+<p><code>.env</code> ファイルを自動的に読み込み、また名前に応じて処理が変わる。</p>
 <p>dotenvパッケージは不要である。</p>
-<h4 id="env_1">▼ <code>.env</code>ファイル<a class="headerlink" href="#env_1" title="Permanent link">&para;</a></h4>
-<p>全ての<code>yarn</code>コマンドで自動的に読み込まれる。</p>
-<h4 id="envlocal">▼ <code>.env.local</code>ファイル<a class="headerlink" href="#envlocal" title="Permanent link">&para;</a></h4>
-<p>全ての<code>yarn</code>コマンドで自動的に読み込まれる。</p>
+<h4 id="env_1">▼ <code>.env</code> ファイル<a class="headerlink" href="#env_1" title="Permanent link">&para;</a></h4>
+<p>全ての <code>yarn</code> コマンドで自動的に読み込まれる。</p>
+<h4 id="envlocal">▼ <code>.env.local</code> ファイル<a class="headerlink" href="#envlocal" title="Permanent link">&para;</a></h4>
+<p>全ての <code>yarn</code> コマンドで自動的に読み込まれる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E">https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E</a></li>
 </ul>
 </blockquote>
-<h4 id="envdevelopment">▼ <code>.env.development</code>ファイル<a class="headerlink" href="#envdevelopment" title="Permanent link">&para;</a></h4>
-<p><code>yarn dev</code>コマンドで自動的に読み込まれる。</p>
+<h4 id="envdevelopment">▼ <code>.env.development</code> ファイル<a class="headerlink" href="#envdevelopment" title="Permanent link">&para;</a></h4>
+<p><code>yarn dev</code> コマンドで自動的に読み込まれる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E">https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E</a></li>
 </ul>
 </blockquote>
-<h4 id="envdevelopmentlocal">▼ <code>.env.development.local</code>ファイル<a class="headerlink" href="#envdevelopmentlocal" title="Permanent link">&para;</a></h4>
-<p><code>yarn dev</code>コマンドで自動的に読み込まれる。</p>
+<h4 id="envdevelopmentlocal">▼ <code>.env.development.local</code> ファイル<a class="headerlink" href="#envdevelopmentlocal" title="Permanent link">&para;</a></h4>
+<p><code>yarn dev</code> コマンドで自動的に読み込まれる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E">https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E</a></li>
 </ul>
 </blockquote>
-<h4 id="envproduction">▼ <code>.env.production</code>ファイル<a class="headerlink" href="#envproduction" title="Permanent link">&para;</a></h4>
-<p><code>yarn start</code>コマンドと<code>next build</code>コマンドで自動的に読み込まれる。</p>
+<h4 id="envproduction">▼ <code>.env.production</code> ファイル<a class="headerlink" href="#envproduction" title="Permanent link">&para;</a></h4>
+<p><code>yarn start</code> コマンドと <code>next build</code> コマンドで自動的に読み込まれる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E">https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E</a></li>
 </ul>
 </blockquote>
-<h4 id="envproductionlocal">▼ <code>.env.production.local</code>ファイル<a class="headerlink" href="#envproductionlocal" title="Permanent link">&para;</a></h4>
-<p><code>yarn start</code>コマンドと<code>next build</code>コマンドで自動的に読み込まれる。</p>
+<h4 id="envproductionlocal">▼ <code>.env.production.local</code> ファイル<a class="headerlink" href="#envproductionlocal" title="Permanent link">&para;</a></h4>
+<p><code>yarn start</code> コマンドと <code>next build</code> コマンドで自動的に読み込まれる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E">https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E</a></li>
@@ -33498,7 +33498,7 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月12日 19:32:21 JST">2026-02-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

@@ -34949,10 +34949,10 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/&lt;組織名&gt;/&lt;GitHubリポジトリ名&gt;.git
 </code></pre></div>
 <p>ユーザー名とパスワードの入力は、ターミナルに手動で入力する方法と、自動的に入力する方法がある。</p>
-<p>後者の場合、<code>1</code>個目にURLに設定する方法がある。</p>
+<p>後者の場合、<code>1</code> 個目にURLに設定する方法がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://&lt;ユーザー名&gt;:&lt;パスワード&gt;@github.com/&lt;組織名&gt;/&lt;GitHubリポジトリ名&gt;.git
 </code></pre></div>
-<p>もう<code>1</code>個の方法として、<code>~/.netrc</code>ファイルに定義しておく。</p>
+<p>もう <code>1</code> 個の方法として、<code>~/.netrc</code> ファイルに定義しておく。</p>
 <div class="highlight"><pre><span></span><code>machine<span class="w"> </span>github.com
 login<span class="w"> </span>&lt;ユーザー名&gt;
 password<span class="w"> </span>&lt;パスワード&gt;
@@ -35041,10 +35041,10 @@ $<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span
 </table>
 <p><br></p>
 <h3 id="-list">--<code>&lt;影響範囲&gt;</code> --list<a class="headerlink" href="#-list" title="Permanent link">&para;</a></h3>
-<p>指定した影響範囲で適用されている設定値を取得する。<code>--local</code>で設定されていない項目は、<code>--global</code>の設定値が適用される。</p>
+<p>指定した影響範囲で適用されている設定値を取得する。<code>--local</code> で設定されていない項目は、<code>--global</code> の設定値が適用される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--local<span class="w"> </span>--list
 </code></pre></div>
-<p>Macでは、<code>1</code>個のマシンで<code>2</code>個のGitHubアカウントを使用する場合、キーチェーンという機能で設定が必要になる。</p>
+<p>Macでは、<code>1</code> 個のマシンで <code>2</code> 個のGitHubアカウントを使用する場合、キーチェーンという機能で設定が必要になる。</p>
 <blockquote>
 <ul>
 <li><a href="https://sy-base.com/myrobotics/others/git-push_403error/">https://sy-base.com/myrobotics/others/git-push_403error/</a></li>
@@ -35053,13 +35053,13 @@ $<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span
 <p><br></p>
 <h3 id="-username">--<code>&lt;影響範囲&gt;</code> user.name<a class="headerlink" href="#-username" title="Permanent link">&para;</a></h3>
 <p>AuthorとCommitterの名前を設定する。</p>
-<p><code>local</code>が一番最後に上書きされ、適用される。</p>
+<p><code>local</code> が一番最後に上書きされ、適用される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--local<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;hiroki.hasegawa&quot;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="-useremail">--<code>&lt;影響範囲&gt;</code> user.email<a class="headerlink" href="#-useremail" title="Permanent link">&para;</a></h3>
 <p>AuthorとCommitterのメールアドレスを設定する。</p>
-<p><code>local</code>が一番最後に上書きされ、適用される。</p>
+<p><code>local</code> が一番最後に上書きされ、適用される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--local<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;example@gmail.com&quot;</span>
 </code></pre></div>
 <p>Authorの情報は、コミット時に反映される (Committerは表示されない) 。</p>
@@ -35074,7 +35074,7 @@ Date:<span class="w">   </span>Sat<span class="w"> </span>Sep<span class="w"> </
 <p><br></p>
 <h3 id="-global-coreautocrlf">--global core.autocrlf<a class="headerlink" href="#-global-coreautocrlf" title="Permanent link">&para;</a></h3>
 <p>改行コードを、特定のタイミングで自動変換するように設定する。</p>
-<p><code>input</code>としておくのが良い。</p>
+<p><code>input</code> としておくのが良い。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.autocrlf<span class="w"> </span>&lt;値&gt;
 </code></pre></div>
 <table>
@@ -35127,7 +35127,7 @@ Date:<span class="w">   </span>Sat<span class="w"> </span>Sep<span class="w"> </
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p><code>ssh-keygen</code>コマンドで、秘密鍵と公開鍵のセットを作成する。</p>
+<p><code>ssh-keygen</code> コマンドで、秘密鍵と公開鍵のセットを作成する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># 鍵を保管するディレクトリに移動</span>
@@ -35156,7 +35156,7 @@ $<span class="w"> </span>clip<span class="w"> </span>&lt;<span class="w"> </span
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>コピーした公開鍵を、GitHubアカウント設定画面のSSHの項目 ( <a href="https://github.com/settings/ssh">https://github.com/settings/ssh</a> ) にペーストする。<code>ssh</code>コマンドで接続を確認する。</p>
+<p>コピーした公開鍵を、GitHubアカウント設定画面のSSHの項目 ( <a href="https://github.com/settings/ssh">https://github.com/settings/ssh</a> ) にペーストする。<code>ssh</code> コマンドで接続を確認する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-T<span class="w"> </span>&lt;接続名&gt;
@@ -35167,8 +35167,8 @@ Hi<span class="w"> </span>hiroki.hasegawa!<span class="w"> </span>You<span class
 <p><br></p>
 <h2 id="ignore">ignore<a class="headerlink" href="#ignore" title="Permanent link">&para;</a></h2>
 <h3 id="global-ignore">global ignore<a class="headerlink" href="#global-ignore" title="Permanent link">&para;</a></h3>
-<p><code>gitignore</code>ファイルとして、<code>~/.config/git/ignore</code>ファイルを作成する。</p>
-<p>この<code>gitignore</code>ファイルで指定したファイルは、グローバルにバージョン管理から無視される。</p>
+<p><code>gitignore</code> ファイルとして、<code>~/.config/git/ignore</code> ファイルを作成する。</p>
+<p>この <code>gitignore</code> ファイルで指定したファイルは、グローバルにバージョン管理から無視される。</p>
 <div class="highlight"><pre><span></span><code># IDEA
 *.idea/*
 
@@ -35211,9 +35211,9 @@ remote.origin.url<span class="o">=</span>git@github.com:&lt;組織名またはgi
 <p><br></p>
 <h3 id="set-url-origin">set-url origin<a class="headerlink" href="#set-url-origin" title="Permanent link">&para;</a></h3>
 <p>プライベートリポジトリのURLを変更し、プッシュ/プル可能にする。</p>
-<p><code>config</code>ファイルに記述されたユーザー名と接続名を設定する。</p>
-<p><code>1</code>個のマシンで複数のGitHubアカウントを使用している場合、設定が必須である。</p>
-<p>プロジェクトをクローンした時、SSH URLはデフォルトで『<code>git@github.com:&lt;組織名またはgitユーザー名&gt;/&lt;プロジェクト名&gt;.git</code>』となっている。</p>
+<p><code>config</code> ファイルに記述されたユーザー名と接続名を設定する。</p>
+<p><code>1</code> 個のマシンで複数のGitHubアカウントを使用している場合、設定が必須である。</p>
+<p>プロジェクトをクローンしたとき、SSH URLはデフォルトで『<code>git@github.com:&lt;組織名またはgitユーザー名&gt;/&lt;プロジェクト名&gt;.git</code>』となっている。</p>
 <p>使用頻度の高いアカウントで所有するリポジトリでは、SSH URLを変更することが手間なので接続名を『<code>github.com</code>』としておく。</p>
 <p>一方で、使用頻度の低いアカウントで所有するリポジトリでは、標準のSSH URLを異なる接続名で再設定する。</p>
 <p><strong>＊実行例＊</strong></p>
@@ -35277,8 +35277,8 @@ and<span class="w"> </span>the<span class="w"> </span>repository<span class="w">
 <h2 id="submodule">submodule<a class="headerlink" href="#submodule" title="Permanent link">&para;</a></h2>
 <h3 id="_7">サブモジュールとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>リポジトリ内の特定のディレクトリで他のリポジトリをリモート参照可能にする。</p>
-<p>フォークと似た仕組みであり、<code>git submodule update</code>コマンドを実行しないと、サブモジュールの更新を取り込めない。</p>
-<p>また、<code>git clone</code>コマンドの実行時には<code>--recursive</code>オプションを有効化しないと、サブモジュールも合わせてクローンできない。</p>
+<p>フォークと似た仕組みであり、<code>git submodule update</code> コマンドを実行しないと、サブモジュールの更新を取り込めない。</p>
+<p>また、<code>git clone</code> コマンドの実行時には <code>--recursive</code> オプションを有効化しないと、サブモジュールも合わせてクローンできない。</p>
 <p>そのため、更新頻度の高いリポジトリをサブモジュールにすると、取り込む作業が大変になる。</p>
 <blockquote>
 <ul>
@@ -35291,7 +35291,7 @@ and<span class="w"> </span>the<span class="w"> </span>repository<span class="w">
 <p>カレントディレクトリにサブモジュールを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> </span>--branch<span class="w"> </span>main<span class="w"> </span>https://github.com/hiroki-hasegawa/foo-sub-module.git<span class="w"> </span>./modules/foo-sub-module
 </code></pre></div>
-<p>コマンドを実行すると、<code>.gitmodules</code>ファイルが作成される。</p>
+<p>コマンドを実行すると、<code>.gitmodules</code> ファイルが作成される。</p>
 <div class="highlight"><pre><span></span><code>[submodule &quot;modules/foo-sub-module&quot;]
     path = modules/foo-sub-module
     url = https://github.com/hiroki-hasegawa/foo-sub-module.git
@@ -35333,7 +35333,7 @@ and<span class="w"> </span>the<span class="w"> </span>repository<span class="w">
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>まず、<code>branch --all</code>で作業中のローカルブランチとリモート追跡ブランチを取得する。</p>
+<p>まず、<code>branch --all</code> で作業中のローカルブランチとリモート追跡ブランチを取得する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>--all
@@ -35345,7 +35345,7 @@ and<span class="w"> </span>the<span class="w"> </span>repository<span class="w">
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p><code>remotes/origin/2019/Symfony_Nyumon/main</code>を削除する。</p>
+<p><code>remotes/origin/2019/Symfony_Nyumon/main</code> を削除する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>-r<span class="w"> </span>origin/2019/Symfony_Nyumon/main
@@ -35355,7 +35355,7 @@ Deleted<span class="w"> </span>remote-tracking<span class="w"> </span>branch<spa
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>再び、<code>branch --all</code>で削除されたことを確認。</p>
+<p>再び、<code>branch --all</code> で削除されたことを確認。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>--all
@@ -35379,9 +35379,9 @@ Deleted<span class="w"> </span>remote-tracking<span class="w"> </span>branch<spa
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>cherry-pick<span class="w"> </span>1d0ddeb9e52
 </code></pre></div>
 <p>プルリクエストのマージによるマージコミットを指定すると、そのプルリクエストで変更されたファイルのみがコミットの内容として取得できる。</p>
-<p>これにより、<code>develop</code>ブランチ上の必要な変更のみをリリースできる。</p>
-<p>ただし、マージコミットを指定する時は<code>-m</code>オプションを有効化しないとエラーになってしまうことに注意する。</p>
-<p>また、マージコミットには<code>2</code>個の親がおり、マージ先の基点ブランチで変更されたファイルが被るコミットと作業ブランチの最後のコミットである。</p>
+<p>これにより、<code>develop</code> ブランチ上の必要な変更のみをリリースできる。</p>
+<p>ただし、マージコミットを指定するときは <code>-m</code> オプションを有効化しないとエラーになってしまうことに注意する。</p>
+<p>また、マージコミットには <code>2</code> 個の親がおり、マージ先の基点ブランチで変更されたファイルが被るコミットと作業ブランチの最後のコミットである。</p>
 <p>前者は1番、また後者は2番となっており、1番を選択すること。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># mainブランチ上でreleaseブランチを作成し、チェックアウトする</span>
 $<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>release
@@ -35409,8 +35409,8 @@ $<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span
 <p><br></p>
 <h2 id="diff">diff<a class="headerlink" href="#diff" title="Permanent link">&para;</a></h2>
 <p>結果に応じた終了コードをを出力する。</p>
-<p>空文字を<code>true</code>として判定する。</p>
-<p><code>too many arguments</code>のエラーにならないように、ダブルクオーテーションをつける。</p>
+<p>空文字を <code>true</code> として判定する。</p>
+<p><code>too many arguments</code> のエラーにならないように、ダブルクオーテーションをつける。</p>
 <div class="highlight"><pre><span></span><code><span class="nv">DIFF</span><span class="o">=</span><span class="k">$(</span>git<span class="w"> </span>diff<span class="w"> </span>origin/main<span class="w"> </span>--name-only<span class="w"> </span>--relative<span class="w"> </span>./...<span class="k">)</span>
 
 <span class="c1"># 空文字かどうかを検証する</span>
@@ -35421,7 +35421,7 @@ $<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span
 
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;差分あり&quot;</span><span class="p">;</span>
 </code></pre></div>
-<p>空文字でないことを<code>true</code>として判定することもできる。</p>
+<p>空文字でないことを <code>true</code> として判定することもできる。</p>
 <p>ダブルクオーテーションをつける。</p>
 <div class="highlight"><pre><span></span><code><span class="nv">DIFF</span><span class="o">=</span><span class="k">$(</span>git<span class="w"> </span>diff<span class="w"> </span>origin/main<span class="w"> </span>--name-only<span class="w"> </span>--relative<span class="w"> </span>./...<span class="k">)</span>
 
@@ -35458,7 +35458,7 @@ $<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span
 <p><br></p>
 <h2 id="stash">stash<a class="headerlink" href="#stash" title="Permanent link">&para;</a></h2>
 <h3 id="stash_1">stashとは<a class="headerlink" href="#stash_1" title="Permanent link">&para;</a></h3>
-<p>ファイルが、『インデックス』 (=<code>add</code>) あるいは『HEAD』 (=コミット) に存在している状態で、異なるローカルブランチを<code>checkout</code>しようとすると、以下のエラーが出る。</p>
+<p>ファイルが、『インデックス』 (=<code>add</code>) あるいは『HEAD』 (=コミット) に存在している状態で、異なるローカルブランチを <code>checkout</code> しようとすると、以下のエラーが出る。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span><span class="m">2019</span>/Symfony2_Ny
 
 umon/main
@@ -35468,10 +35468,10 @@ error:<span class="w"> </span>Your<span class="w"> </span><span class="nb">local
 Please<span class="w"> </span>commit<span class="w"> </span>your<span class="w"> </span>changes<span class="w"> </span>or<span class="w"> </span>stash<span class="w"> </span>them<span class="w"> </span>before<span class="w"> </span>you<span class="w"> </span>switch<span class="w"> </span>branches.
 Aborting
 </code></pre></div>
-<p>この場合、一度<code>stash</code>を行い、『インデックス』 (=<code>add</code>) あるいは『HEAD』 (=コミット) を横に配置しておく必要がある。</p>
+<p>この場合、一度 <code>stash</code> を行い、『インデックス』 (=<code>add</code>) あるいは『HEAD』 (=コミット) を横に配置しておく必要がある。</p>
 <h3 id="-include-untracked">--include-untracked<a class="headerlink" href="#-include-untracked" title="Permanent link">&para;</a></h3>
 <p>トラッキングされていないファイルも含めて、全てのファイルを退避させる。</p>
-<p><code>git status</code>をしたところ、修正ファイルが<code>3</code>個、トラックされていないファイルが<code>1</code>個ある。</p>
+<p><code>git status</code> をしたところ、修正ファイルが <code>3</code> 個、トラックされていないファイルが <code>1</code> 個ある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>status
 
 On<span class="w"> </span>branch<span class="w"> </span><span class="m">2019</span>/foo-repository/feature/6
@@ -35492,14 +35492,14 @@ Untracked<span class="w"> </span>files:
 
 no<span class="w"> </span>changes<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add&quot;</span><span class="w"> </span>and/or<span class="w"> </span><span class="s2">&quot;git commit -a&quot;</span><span class="o">)</span>
 </code></pre></div>
-<p>これを、<code>stash -u</code>する</p>
+<p>これを、<code>stash -u</code> する</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>stash<span class="w"> </span>-u
 
 Saved<span class="w"> </span>working<span class="w"> </span>directory<span class="w"> </span>and<span class="w"> </span>index<span class="w"> </span>state<span class="w"> </span>WIP<span class="w"> </span>on<span class="w"> </span><span class="m">2019</span>/foo-repository/feature/6:<span class="w"> </span>649995e<span class="w"> </span>update<span class="w"> </span><span class="c1">#6 *****</span>
 </code></pre></div>
 <p>これらのファイルの変更点を一時的に退避できる。</p>
 <h3 id="-">-- &lt;パス&gt;<a class="headerlink" href="#-" title="Permanent link">&para;</a></h3>
-<p>特定のディレクトリやファイルのみ<code>stash</code>できる。</p>
+<p>特定のディレクトリやファイルのみ <code>stash</code> できる。</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>stash<span class="w"> </span>--<span class="w"> </span>./
 </code></pre></div>
 <h3 id="list">list<a class="headerlink" href="#list" title="Permanent link">&para;</a></h3>
@@ -35547,7 +35547,7 @@ Dropped<span class="w"> </span>refs/stash@<span class="o">{</span><span class="m
 <h3 id="status_1">statusとは<a class="headerlink" href="#status_1" title="Permanent link">&para;</a></h3>
 <p>addステージやcommitステージにファイルが存在しているか否かを取得する。</p>
 <h3 id="-porcelain">--porcelain<a class="headerlink" href="#-porcelain" title="Permanent link">&para;</a></h3>
-<p><code>git status</code>コマンドを他のコマンドに入力できる形式で出力する。</p>
+<p><code>git status</code> コマンドを他のコマンドに入力できる形式で出力する。</p>
 <p>CIの自動化で使用することが多い。</p>
 <blockquote>
 <ul>
@@ -35584,7 +35584,7 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 <h3 id="id-no-edit"><code>&lt;コミットID&gt;</code> --no-edit<a class="headerlink" href="#id-no-edit" title="Permanent link">&para;</a></h3>
 <p>指定したコミットのみを打ち消す新しいコミットを作成する。</p>
 <p>コミットメッセージは、打ち消すコミットと同じものになる。</p>
-<p>リリース後に元に戻したい時に役立つ。</p>
+<p>リリース後に元に戻したいときに役立つ。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>revert<span class="w"> </span>&lt;コミットID&gt;<span class="w"> </span>--no-edit
 </code></pre></div>
 <p><br></p>
@@ -35627,13 +35627,13 @@ $<span class="w"> </span>git<span class="w"> </span>revert<span class="w"> </spa
 </code></pre></div>
 <p><br></p>
 <h3 id="-mixed-id">--mixed &lt;コミットID&gt;<a class="headerlink" href="#-mixed-id" title="Permanent link">&para;</a></h3>
-<p>作業中のローカルブランチで、インデックス (=<code>add</code>後) 、HEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。</p>
-<p><code>add</code>とコミットを取り消したい場合はこれ。</p>
+<p>作業中のローカルブランチで、インデックス (=<code>add</code> 後) 、HEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。</p>
+<p><code>add</code> とコミットを取り消したい場合はこれ。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>--mixed<span class="w"> </span>&lt;コミットID&gt;
 </code></pre></div>
 <p><br></p>
 <h3 id="-hard-id">--hard &lt;コミットID&gt; (ブランチ)<a class="headerlink" href="#-hard-id" title="Permanent link">&para;</a></h3>
-<p>作業中のローカルブランチで、最新のワークツリー (=ディレクトリ) 、インデックス (=<code>add</code>後) 、HEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。</p>
+<p>作業中のローカルブランチで、最新のワークツリー (=ディレクトリ) 、インデックス (=<code>add</code> 後) 、HEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。</p>
 <p><font color="red"><strong>ワークツリー (=ディレクトリ) 内のファイルの状態も戻ってしまうため、取り扱い注意！！</strong></font></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>&lt;コミットID&gt;
 </code></pre></div>
@@ -35649,7 +35649,7 @@ $<span class="w"> </span>git<span class="w"> </span>revert<span class="w"> </spa
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>まず、<code>log</code>コマンドで、作業中のローカルブランチにおけるコミットIDを確認。</p>
+<p>まず、<code>log</code> コマンドで、作業中のローカルブランチにおけるコミットIDを確認。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>log
@@ -35684,7 +35684,7 @@ Date:<span class="w">   </span>Wed<span class="w"> </span>Mar<span class="w"> </
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p><code>log</code>コマンドで、正しく変更されているか確認。</p>
+<p><code>log</code> コマンドで、正しく変更されているか確認。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>log
@@ -35698,7 +35698,7 @@ Date:<span class="w">   </span>Wed<span class="w"> </span>Mar<span class="w"> </
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p><code>push --force</code>でローカルリポジトリの変更をリモートリポジトリに強制的に反映する。
+<p><code>push --force</code> でローカルリポジトリの変更をリモートリポジトリに強制的に反映する。
 <font color="red"><strong>『強制的にプッシュした』というログも、リモート側には残らない。</strong></font></p>
 </dd>
 </dl>
@@ -35718,7 +35718,7 @@ To<span class="w"> </span>github.com:hiroki-hasegawa/foo-repository.git
 <p>作業中のローカルブランチで、ブランチの派生元を変更する。</p>
 <p>例えば、作業ブランチで基点ブランチのコミットを取り込みたい場合に使用する。</p>
 <p>リモートブランチにプッシュした後は使用してはならず、他のコマンドを使用する。</p>
-<p>処理結果が<code>git merge</code>コマンドと似ているが、<code>git rebase</code>コマンドはマージコミットを作らず、ない。</p>
+<p>処理結果が <code>git merge</code> コマンドと似ているが、<code>git rebase</code> コマンドはマージコミットを作らず、ない。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/tana0102/articles/475d8952933af6#git-rebase%E3%81%AE%E5%9F%BA%E6%9C%AC">https://zenn.dev/tana0102/articles/475d8952933af6#git-rebase%E3%81%AE%E5%9F%BA%E6%9C%AC</a></li>
@@ -35732,7 +35732,7 @@ To<span class="w"> </span>github.com:hiroki-hasegawa/foo-repository.git
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>まず、<code>log</code>コマンドで、作業中のローカルブランチにおけるコミットIDを確認。</p>
+<p>まず、<code>log</code> コマンドで、作業中のローカルブランチにおけるコミットIDを確認。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>log
@@ -35767,7 +35767,7 @@ Date:<span class="w">   </span>Wed<span class="w"> </span>Mar<span class="w"> </
 <p>とすると、タブが表示され、指定のコミットIDの履歴が表示される</p>
 <div class="highlight"><pre><span></span><code>pick<span class="w"> </span>b1b5c0f<span class="w"> </span>add<span class="w"> </span><span class="c1">#0 *****</span>
 </code></pre></div>
-<p>『挿入モード』に変更し、この１行の<code>pick</code>を<code>edit</code>に変更。</p>
+<p>『挿入モード』に変更し、この１行の <code>pick</code> を <code>edit</code> に変更。</p>
 <p>その後、</p>
 <div class="highlight"><pre><span></span><code>:w
 </code></pre></div>
@@ -35779,7 +35779,7 @@ Date:<span class="w">   </span>Wed<span class="w"> </span>Mar<span class="w"> </
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p><code>git commit --amend</code>に<code>-m</code>オプションを付けて、メッセージを変更する。</p>
+<p><code>git commit --amend</code> に <code>-m</code> オプションを付けて、メッセージを変更する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>--amend<span class="w"> </span>-m<span class="o">=</span><span class="s2">&quot;&lt;変更後のメッセージ&gt;&quot;</span>
@@ -35787,7 +35787,7 @@ Date:<span class="w">   </span>Wed<span class="w"> </span>Mar<span class="w"> </
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p><code>git rebase --continue</code>コマンドを実行することにより、変更を反映させる。</p>
+<p><code>git rebase --continue</code> コマンドを実行することにより、変更を反映させる。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>rebase<span class="w"> </span>--continue
@@ -35797,7 +35797,7 @@ Successfully<span class="w"> </span>rebased<span class="w"> </span>and<span clas
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
-<p>プッシュしようとすると、<code>![rejected] develop -&gt; develop (non-fast-forward)</code>とエラーが出るため、</p>
+<p>プッシュしようとすると、<code>![rejected] develop -&gt; develop (non-fast-forward)</code> とエラーが出るため、</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span>&lt;ブランチ名&gt;<span class="w"> </span>--allow-unrelated-histories
@@ -35807,7 +35807,7 @@ Successfully<span class="w"> </span>rebased<span class="w"> </span>and<span clas
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>ハッシュ値を指定して、<code>git rebase</code>コマンドを実行する。</p>
+<p>ハッシュ値を指定して、<code>git rebase</code> コマンドを実行する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>rebase<span class="w"> </span>--interactive<span class="w"> </span>41cc21bb53a8597270b5deae3259751df18bce81
@@ -35815,7 +35815,7 @@ Successfully<span class="w"> </span>rebased<span class="w"> </span>and<span clas
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p><code>git commit --amend</code>コマンドに<code>--reset-author</code>オプションを付けて、configで設定した名前をAuthor名とCommitter名に適用する。</p>
+<p><code>git commit --amend</code> コマンドに <code>--reset-author</code> オプションを付けて、configで設定した名前をAuthor名とCommitter名に適用する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>--amend<span class="w"> </span>--reset-author
@@ -35823,7 +35823,7 @@ Successfully<span class="w"> </span>rebased<span class="w"> </span>and<span clas
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p><code>git rebase --continue</code>コマンドを実行し、変更を反映させる。</p>
+<p><code>git rebase --continue</code> コマンドを実行し、変更を反映させる。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>rebase<span class="w"> </span>--continue
@@ -35864,7 +35864,7 @@ git<span class="w"> </span>filter-branch<span class="w"> </span>-f<span class="w
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p><code>pick b1b5c0f add #0 *****</code>の行を削除して保管し、タブを閉じ、エディタ上で『Ctrl+C』を押す。</p>
+<p><code>pick b1b5c0f add #0 *****</code> の行を削除して保管し、タブを閉じ、エディタ上で『Ctrl+C』を押す。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>:qa!
@@ -35883,8 +35883,8 @@ Could<span class="w"> </span>not<span class="w"> </span>apply<span class="w"> </
 </code></pre></div>
 <p><br></p>
 <h3 id="-abort">--abort<a class="headerlink" href="#-abort" title="Permanent link">&para;</a></h3>
-<p>やりかけの<code>rebase</code>を取り消し。</p>
-<p>作業中のローカルブランチにおける<code>(main|REBASE-i)</code>が、<code>(main)</code>に変更されていることからも確認可能。</p>
+<p>やりかけの <code>rebase</code> を取り消し。</p>
+<p>作業中のローカルブランチにおける <code>(main|REBASE-i)</code> が、<code>(main)</code> に変更されていることからも確認可能。</p>
 <div class="highlight"><pre><span></span><code>hiroki.hasegawa@PC<span class="w"> </span>/var/www/foo<span class="w"> </span><span class="o">(</span>main<span class="o">)</span>
 $<span class="w"> </span>git<span class="w"> </span>rebase<span class="w"> </span>--interactive
 
@@ -36013,7 +36013,7 @@ $<span class="w"> </span>git<span class="w"> </span>gc<span class="w"> </span>--
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年12月2日 21:31:49 JST">2025-12-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

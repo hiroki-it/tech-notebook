@@ -32872,7 +32872,7 @@
 というプラクティスを『デメテルの法則』という。
 </code></pre></div>
 <p>例えば、ユーザー集約とUser集約ルートを考えてみる。</p>
-<p>UserNameの状態を変更する時は、UserにUserNameを渡さないといけない。</p>
+<p>UserNameの状態を変更するときは、UserにUserNameを渡さないといけない。</p>
 <p>これにより、ユーザー名のない不正なユーザーの作成を防げる。</p>
 <p>リスト12.1：ユーザ名の変更は User オブジェクトに依頼する</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 誤った方法</span>
@@ -32888,7 +32888,7 @@
 <p>CircleとUserは異なる集約に属し、それぞれが集約ルートである。</p>
 <p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-02" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-02.png" /></p>
 <p>このとき、ユーザーを作成し、メンバーとして所属させるようなユースケースを考える。</p>
-<p>Membersを作成したい時、次のような処理はダメである。</p>
+<p>Membersを作成したいとき、次のような処理はダメである。</p>
 <p>なぜなら、サークル集約内のドメインオブジェクトの操作はCircle集約ルートが実施しないといけない</p>
 <p>CircleがMembersを作成しないといけないはずが、Circle内のMembersを直接操作し、Membersを作成してしまっているためである。</p>
 <p>リスト12.2：第 11 章で登場したサークルにメンバーを追加するコード</p>
@@ -33024,8 +33024,8 @@
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="1213">12.1.3 内部データを隠蔽するために<a class="headerlink" href="#1213" title="Permanent link">&para;</a></h3>
-<p>オブジェクトのプロパティはプライベートにした方が良い。</p>
-<p>ただ、プライベートにすると、永続化する時にオブジェクトからデータを取り出せなくなってしまう。</p>
+<p>オブジェクトのプロパティはプライベートにしたほうが良い。</p>
+<p>ただ、プライベートにすると、永続化するときにオブジェクトからデータを取り出せなくなってしまう。</p>
 <p>リスト12.10：リポジトリの永続化処理</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">EFUserRepository</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">prisma</span><span class="o">:</span><span class="w"> </span><span class="kt">PrismaClient</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
@@ -33189,7 +33189,7 @@
 <p>これまでのCircleは、UserをMembers配列で保持することで、Userを操作していた。</p>
 <p>これをやめ、Membersを作成したい場合は、CircleRepositoryだけでなくUserRepositoryも呼ばなければいけないように実装してみる。</p>
 <p>まずは、CircleのMembers配列の中身をUserではなくUserIdに変更する。</p>
-<p>これにより、事前にUserRepositoryを実行してUserを作成した上で、CircleはそのUserのUserIdを使用するようになる。</p>
+<p>これにより、事前にUserRepositoryを実行してUserを作成したうえで、CircleはそのUserのUserIdを使用するようになる。</p>
 <p>リスト12.19：識別子をインスタンスの代わりとして保持する</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleId</span><span class="p">;</span>
@@ -33298,13 +33298,13 @@
 </code></pre></div>
 <p><strong>コラム</strong></p>
 <p>なんらかの事情で、Repositoryによる永続化の対象が複数の集約にどうしてもまたがってしまう場合、結果整合性で辻褄合わせしてもよい。</p>
-<p>例えば、Cron処理で一日一回データベースを検査し、不整合のあるデータを書き換えてしまう。</p>
+<p>例えば、Cron処理で一日1回データベースを検査し、不整合のあるデータを書き換えてしまう。</p>
 <p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-05" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-05.png" /></p>
 <h2 id="124">12.4 言葉との齟齬を消す<a class="headerlink" href="#124" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>前章の「ビジネスルールの漏れだし」の続き？
 </code></pre></div>
 <p>isFull関数は、『サークルに所属するユーザの最大数はサークルのオーナーとなるユーザを含めて30名まで』というビジネスルールを表現したものである。</p>
-<p>ロジックは間違っていないが、<code>29</code>と比較しており、ビジネスルールの誤解を招きやすく可読性が低い。</p>
+<p>ロジックは間違っていないが、<code>29</code> と比較しており、ビジネスルールの誤解を招きやすく可読性が低い。</p>
 <p>リスト12.22：30 ではなく 29 が現れている</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">owner</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">;</span>
@@ -33320,7 +33320,7 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>そこで、countMembers関数を用意し、<code>30</code>と比較することで、可読性を高くするべきである。</p>
+<p>そこで、countMembers関数を用意し、<code>30</code> と比較することで、可読性を高くするべきである。</p>
 <p>リスト12.23：サークルのオーナーとメンバーの定義</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">owner</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">;</span>
@@ -33363,7 +33363,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月11日 18:05:54 JST">2026-02-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     
