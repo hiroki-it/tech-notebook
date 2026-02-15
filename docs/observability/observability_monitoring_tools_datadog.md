@@ -187,7 +187,7 @@ Datadog社の物理サーバーがリクエストを送信する。
 | `x-datadog-trace-id`          | バックエンドがマイクロサービスアーキテクチャの場合、収集できる分散トレースを紐付けるIDが割り当てられる。                                |
 | `x-datadog-parent-id`         | バックエンドがマイクロサービスアーキテクチャの場合、分散トレースのルートスパンとして、`0` が割り当てられる。                             |
 | `x-datadog-origin`            | バックエンドがマイクロサービスアーキテクチャの場合、分散トレースがAPMクオータに影響しないように、`synthetics-browser` が割り当てられる。 |
-| `x-datadog-sampling-priority` | バックエンドがマイクロサービスアーキテクチャの場合、分散トレースが収集される優先度として、`1` が割り当てれる。                           |
+| `x-datadog-sampling-priority` | バックエンドがマイクロサービスアーキテクチャの場合、分散トレースが収集される優先度として、`1` が割り当てられる。                           |
 
 > - https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests#default-headers
 > - https://docs.datadoghq.com/synthetics/apm/#how-are-traces-linked-to-tests
