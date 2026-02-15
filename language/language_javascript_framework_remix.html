@@ -11489,15 +11489,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#08-component" class="md-nav__link">
+  <a href="#08-remix" class="md-nav__link">
     <span class="md-ellipsis">
       
-        08. componentの種類
+        08. remixコンポーネントの種類
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="08. componentの種類">
+    <nav class="md-nav" aria-label="08. remixコンポーネントの種類">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -11512,10 +11512,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#form" class="md-nav__link">
+  <a href="#remix-form" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Form
+        Remix Formコンポーネント
       
     </span>
   </a>
@@ -11523,10 +11523,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#meta" class="md-nav__link">
+  <a href="#remix-link" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Meta
+        Remix Linkコンポーネント
       
     </span>
   </a>
@@ -11534,10 +11534,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#outlet" class="md-nav__link">
+  <a href="#remix-meta" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Outlet
+        Remix Metaコンポーネント
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remix-outlet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remix Outletコンポーネント
       
     </span>
   </a>
@@ -34151,15 +34162,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#08-component" class="md-nav__link">
+  <a href="#08-remix" class="md-nav__link">
     <span class="md-ellipsis">
       
-        08. componentの種類
+        08. remixコンポーネントの種類
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="08. componentの種類">
+    <nav class="md-nav" aria-label="08. remixコンポーネントの種類">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -34174,10 +34185,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#form" class="md-nav__link">
+  <a href="#remix-form" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Form
+        Remix Formコンポーネント
       
     </span>
   </a>
@@ -34185,10 +34196,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#meta" class="md-nav__link">
+  <a href="#remix-link" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Meta
+        Remix Linkコンポーネント
       
     </span>
   </a>
@@ -34196,10 +34207,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#outlet" class="md-nav__link">
+  <a href="#remix-meta" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Outlet
+        Remix Metaコンポーネント
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remix-outlet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remix Outletコンポーネント
       
     </span>
   </a>
@@ -34628,7 +34650,7 @@
 <td>ブラウザ上</td>
 <td>-</td>
 <td>-</td>
-<td>最初、ブラウザからRemixにリクエストを送信する。ほかに、アクション中のLinkコンポーネントが、URLクエリストリングのページ値（<code>?page=n</code>）が書き換える。</td>
+<td>最初、ブラウザからRemixにリクエストを送信する。ほかに、アクション中の<code>remix-link</code>コンポーネントが、URLクエリストリングのページ値（<code>?page=n</code>）が書き換える。</td>
 </tr>
 <tr>
 <td>2</td>
@@ -34794,8 +34816,8 @@
 <p><br></p>
 <h3 id="remix_1">remixコンポーネント<a class="headerlink" href="#remix_1" title="Permanent link">&para;</a></h3>
 <h4 id="remix_2">▼ remixコンポーネントとは<a class="headerlink" href="#remix_2" title="Permanent link">&para;</a></h4>
+<p>Reactを使用して実装されたRemix専用のビルトインコンポーネントである。</p>
 <p>remixコンポーネントは、レンダリング処理を実行する。</p>
-<p>内部的にはreactコンポーネントが使用されている。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">json</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/node&quot;</span><span class="p">;</span>
 <span class="c1">// 内部的にはreactコンポーネントである。</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">useLoaderData</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/react&quot;</span><span class="p">;</span>
@@ -35310,7 +35332,7 @@
 <p><a href="https://github.com/remix-run/remix/discussions/8473#discussioncomment-9174522">https://github.com/remix-run/remix/discussions/8473#discussioncomment-9174522</a></p>
 </blockquote>
 <p><br></p>
-<h2 id="08-component">08. componentの種類<a class="headerlink" href="#08-component" title="Permanent link">&para;</a></h2>
+<h2 id="08-remix">08. remixコンポーネントの種類<a class="headerlink" href="#08-remix" title="Permanent link">&para;</a></h2>
 <h3 id="_19">ユーザー定義<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <p>Remixがコンポーネントであることを認識するために、名前の先頭を大文字する。</p>
 <blockquote>
@@ -35319,9 +35341,9 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="form">Form<a class="headerlink" href="#form" title="Permanent link">&para;</a></h3>
+<h3 id="remix-form">Remix Formコンポーネント<a class="headerlink" href="#remix-form" title="Permanent link">&para;</a></h3>
 <p><code>form</code>タグをレンダリングする。</p>
-<p><code>action</code>値を省略した場合、フォームの入力データは他に送信されず、そのコンポーネント内のみで処理される。</p>
+<p><code>action</code>値を省略した場合、フォームの入力データは他に送信されず、そのremixコンポーネント内のみで処理される。</p>
 <p><code>action</code>値を<code>/foos?index</code>パスとした場合、<code>routes/foos/index.jsx</code>ファイルにデータを送信する。</p>
 <p>一方で、<code>action</code>値を<code>/foos</code>パスとした場合、<code>routes/foos.jsx</code>ファイルにデータを送信する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -35345,7 +35367,12 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="meta">Meta<a class="headerlink" href="#meta" title="Permanent link">&para;</a></h3>
+<h3 id="remix-link">Remix Linkコンポーネント<a class="headerlink" href="#remix-link" title="Permanent link">&para;</a></h3>
+<p>URLを書き換える。</p>
+<p>ページネーション処理に使える。</p>
+<p>URLのページのクエリストリング値を書き換えると、Remixのローダーがそれを検知し、ブラウザが再読み込みすることで別のページが表示される。</p>
+<p><br></p>
+<h3 id="remix-meta">Remix Metaコンポーネント<a class="headerlink" href="#remix-meta" title="Permanent link">&para;</a></h3>
 <p>Webページの<code>meta</code>タグ (Webサイト名、説明など) をレンダリングする。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Meta</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/react&quot;</span><span class="p">;</span>
 
@@ -35366,7 +35393,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="outlet">Outlet<a class="headerlink" href="#outlet" title="Permanent link">&para;</a></h3>
+<h3 id="remix-outlet">Remix Outletコンポーネント<a class="headerlink" href="#remix-outlet" title="Permanent link">&para;</a></h3>
 <p>親ページ内に子ページをレンダリングする。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Outlet</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/react&quot;</span><span class="p">;</span>
 
@@ -35677,7 +35704,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:01:43 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:10:25 JST">2026-02-15</span>
   </span>
 
     
