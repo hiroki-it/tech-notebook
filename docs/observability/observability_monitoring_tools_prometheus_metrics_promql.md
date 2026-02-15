@@ -133,7 +133,7 @@ avg(avg_over_time(rate(istio_request_duration_milliseconds_sum{destination_servi
 
 **例**
 
-複数の種類で集約することもできる。
+複数の種類で集約できる。
 
 直近1時間に関して、Istioの istio-proxyで収集したレスポンスの補足メッセージ (`%RESPONSE_FLAGS%` 変数) を、Pod名、変数値の種類ごとに集約する。
 

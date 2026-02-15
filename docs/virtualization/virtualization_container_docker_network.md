@@ -83,7 +83,7 @@ docker network inspect foo-network
 ]
 ```
 
-ブリッジのサブネットマスクとゲートウェイのIPアドレスは自動で割り当てられるが、明示的に設定することもできる。
+ブリッジのサブネットマスクとゲートウェイのIPアドレスは自動で割り当てられるが、明示的に設定できる。
 
 ```bash
 $ docker network create foo-network --subnet=172.18.0.0/16 --gateway=172.18.0.1

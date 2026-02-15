@@ -349,7 +349,7 @@ AWS API GatewayのAWS VPCリンクは、AWS VPCエンドポイントサービス
 
 クラウドルーターとして働く。
 
-Direct Connectがオンプレミスとの通信機能を持つため、Transit GatewayとDirect Connectを組み合わせれば、AWS VPCとオンプレミスを接続することもできる。
+Direct Connectがオンプレミスとの通信機能を持つため、Transit GatewayとDirect Connectを組み合わせれば、AWS VPCとオンプレミスを接続できる。
 
 ![transit-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/transit-gateway.png)
 

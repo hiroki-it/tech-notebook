@@ -295,7 +295,7 @@ Istioは、指定したNamespaceに属するPodにサービスメッシュの機
 
 管理下のPodにistio-proxyを挿入します。
 
-istio-proxyはクライアント証明書 / SSL証明書を持ち、アップストリームとダウンストリームのistio-proxyと相互TLS認証を実行します。
+istio-proxyはクライアント証明書 / SSL証明書を持ち、アップストリームとダウンストリームのistio-proxyと相互TLS認証するします。
 
 ![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-証明書管理.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-証明書管理.drawio.png)
 

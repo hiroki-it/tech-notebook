@@ -847,7 +847,7 @@ kube-dns               10.0.0.10    53,53
 kubernetes-dashboard   10.0.0.250   9090
 ```
 
-なお、さらに `json` 形式で出力することもできる。
+なお、さらに `json` 形式で出力できる。
 
 ```bash
 $ kubectl get service \
@@ -1153,13 +1153,13 @@ data:
 $ kubectl get pod -l <キー>=<値>
 ```
 
-複数の `.metadata.labels` キーをAND条件で指定することもできる。
+複数の `.metadata.labels` キーをAND条件で指定できる。
 
 ```bash
 $ kubectl get pod -l <キー>=<値>,<キー>=<値>
 ```
 
-`.metadata.labels` キーの値をOR条件で指定することもできる。
+`.metadata.labels` キーの値をOR条件で指定できる。
 
 ```bash
 $ kubectl get pod -l <キー>=<値>,<キー>=<値>

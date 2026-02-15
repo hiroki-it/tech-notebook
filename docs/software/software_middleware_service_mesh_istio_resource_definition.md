@@ -3310,7 +3310,7 @@ HTTP/1.1、HTTP/2 (例：gRPC、GraphQLなど) のプロトコルによる通信
 
 ブラウザではデフォルトでCORSが有効になっており、正しいリクエストがCORSを突破できるように対処する必要がある。
 
-多くの場合、バックエンドアプリケーションにCORSに対処することが多いが、istio-proxyで対処することもできる。
+多くの場合、バックエンドアプリケーションにCORSに対処することが多いが、istio-proxyで対処できる。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#CorsPolicy
 

@@ -1219,7 +1219,7 @@ spec:
         - ./prd.yaml
 ```
 
-暗号化された `values` ファイルを使用することもできる。
+暗号化された `values` ファイルを使用できる。
 
 > - https://github.com/camptocamp/argocd-helm-sops-example
 
@@ -1333,7 +1333,7 @@ spec:
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
 > - https://cloud.redhat.com/blog/continuous-delivery-with-helm-and-argo-cd
 
-AWS S3をチャートリポジトリとして指定することもできる。
+AWS S3をチャートリポジトリとして指定できる。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1457,7 +1457,7 @@ spec:
 
 公式チャートに加えて、ユーザー定義のマニフェストを含むチャートをデプロイする使用例である。
 
-この時、プラグイン (`helm secrets`) を使用することもできる。
+この時、プラグイン (`helm secrets`) を使用できる。
 
 例えば、公式チャートで資格情報を使用したSecretが必要な場合、`helm secrets` プラグインを使用した追加チャートを定義するとよい。
 

@@ -437,7 +437,7 @@ spec:
 
 ## 05. カスタムリソースを使用する場合
 
-カスタムリソースを使用して、OpenTelemetryを定義することもできる。
+カスタムリソースを使用して、OpenTelemetryを定義できる。
 
 この場合、OpenTelemetry OperatorがInitContainerを経由して、アプリコンテナにOpenTelemetryの実装を挿入する。
 

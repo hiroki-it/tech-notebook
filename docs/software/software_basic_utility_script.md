@@ -88,7 +88,7 @@ echo bar
 
 > - https://qiita.com/mofmofneko/items/bf003d14670644dd6197
 
-バックスラッシュを使用して、個別にエスケープすることもできる。
+バックスラッシュを使用して、個別にエスケープできる。
 
 ```bash
 #!/bin/bash

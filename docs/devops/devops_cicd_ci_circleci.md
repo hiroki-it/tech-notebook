@@ -129,7 +129,7 @@ $ pbcopy < ~/.ssh/github/<秘密鍵名>
 
 `(3)`
 
-: CircleCIの `Enable SSH` ステップに表示された `ssh` コマンドをコピーし、CircleCIコンテナにSSH公開鍵認証を実行する。
+: CircleCIの `Enable SSH` ステップに表示された `ssh` コマンドをコピーし、CircleCIコンテナにSSH公開鍵認証するする。
 
 ```bash
 $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/github/<秘密鍵名>

@@ -906,7 +906,7 @@ $ terraform state
 }
 ```
 
-特定の `resource` ブロックのみを表示することもできる。
+特定の `resource` ブロックのみを表示できる。
 
 ```bash
 $ terraform state show 'aws_instance.bastion'

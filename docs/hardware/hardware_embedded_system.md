@@ -259,12 +259,12 @@ dpiが大きくなるにつれて、解像度は大きくなる。
 
 #### ▼ IrDA (infrared Data Assoiciation)
 
-赤外線を使用して、無線通信を行うためのインターフェイス。
+赤外線を使用して、無線通信するためのインターフェイス。
 
 ![irDAインターフェイス](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/irDAインターフェイス.jpg)
 
 #### ▼ Bluetooth
 
-`2.4`GHzの電波を使用して無線通信を行うためのインターフェイス。
+`2.4`GHzの電波を使用して無線通信するためのインターフェイス。
 
 <br>

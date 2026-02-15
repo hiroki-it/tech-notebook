@@ -1257,7 +1257,7 @@ Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
 ...
 ```
 
-Chain名を指定することもできる。
+Chain名を指定できる。
 
 ```bash
 $ iptables -L <Chain名>

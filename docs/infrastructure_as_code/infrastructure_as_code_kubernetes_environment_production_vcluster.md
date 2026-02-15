@@ -164,7 +164,7 @@ Forwarding from [::1]:8443 -> 8443
 
 > - https://ryusa.hatenablog.com/entry/2021/05/22/221614
 
-なお、仮想Clusterに直接的にコマンドを送信することもできる。
+なお、仮想Clusterに直接的にコマンドを送信できる。
 
 ```bash
 $ vcluster connect <Cluster名> \

@@ -17,7 +17,7 @@ description: CoreDNS＠DNS系ミドルウェアの知見を記録しています
 
 ### CoreDNSとは
 
-Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決を実行する。
+Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決するする。
 
 ![kubernetes_coredns](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_coredns.png)
 
@@ -55,7 +55,7 @@ kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 
 #### ▼ CoreDNS
 
-Podからの問い合わせに対して、名前解決を実行する。
+Podからの問い合わせに対して、名前解決するする。
 
 <br>
 
@@ -205,7 +205,7 @@ Name:  <Serviceの完全修飾ドメイン名>
 Address:  10.105.157.184
 ```
 
-補足として、異なるNamespaceに所属するServiceの名前解決を実行する場合は、Serviceの完全修飾ドメイン名の後にNamespaceを指定する必要がある。
+補足として、異なるNamespaceに所属するServiceの名前解決するする場合は、Serviceの完全修飾ドメイン名の後にNamespaceを指定する必要がある。
 
 ```bash
 # Pod内のコンテナから正引きの名前解決を実行する。
@@ -302,7 +302,7 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 ### Podの直接的な名前解決の仕組み
 
-Serviceの名前解決を介さずに、特定のPodのインスタンスに対して直接的に名前解決することもできる。
+Serviceの名前解決を介さずに、特定のPodのインスタンスに対して直接的に名前解決できる。
 
 <br>
 

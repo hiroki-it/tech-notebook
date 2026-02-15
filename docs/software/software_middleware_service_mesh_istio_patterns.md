@@ -136,7 +136,7 @@ Istioコントロールプレーンとデータプレーンを異なるクラス
 
 クラウド上のコンテナ (例：AWS ECS) がコントロールプレーンNodeと同じプライベートネットワーク内に所属している場合、クラウド上のコンテナをサービスメッシュに参加させる。
 
-コントロールプレーン側では〇〇 (AWS ECSを認識するためのリソースが必要なはずだが、調査してもわからず...) の作成、クラウド上のコンテナのホストマシンではztunnelデーモンあるいはztunnelコンテナの実行が必要である。
+コントロールプレーン側では〇 (AWS ECSを認識するためのリソースが必要なはずだが、調査してもわからず...) の作成、クラウド上のコンテナのホストマシンではztunnelデーモンあるいはztunnelコンテナの実行が必要である。
 
 > - https://aws.amazon.com/blogs/containers/transforming-istio-into-an-enterprise-ready-service-mesh-for-amazon-ecs/
 > - https://github.com/solo-io/ecs-demo/blob/main/tf/ecs_eks_cluster.tf#L126-L151

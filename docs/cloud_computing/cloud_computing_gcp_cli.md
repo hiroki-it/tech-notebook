@@ -56,7 +56,7 @@ Traceback (most recent call last):
 
 #### ▼ authとは
 
-プリンシパル (例：ユーザー、サービスアカウント、グループ、ドメイン、KubernetesのServiceAccount) の認証を行う。
+プリンシパル (例：ユーザー、サービスアカウント、グループ、ドメイン、KubernetesのServiceAccount) の認証する。
 
 > - https://cloud.google.com/sdk/gcloud/reference/auth
 
@@ -458,7 +458,7 @@ foo-gke-cluster    asia-northeast1  1.22.0-gke       *.*.*.*      e2-medium     
 
 Google GKE Node Poolの情報を取得する。
 
-アップグレードの手法を確認することもできる。
+アップグレードの手法を確認できる。
 
 **＊実行例＊**
 

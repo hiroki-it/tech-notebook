@@ -45,7 +45,7 @@ CodeCommitは、他のコード管理サービスで代用できる。
 
 #### ▼ AWS ECSの場合
 
-AWS ECSのために、CodeBuildの設定を実行する。
+AWS ECSのために、CodeBuildの設定するする。
 
 ルートディレクトリの直下に配置しておく。
 

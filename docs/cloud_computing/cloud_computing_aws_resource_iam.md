@@ -412,7 +412,7 @@ AWS IAMポリシーの取得に使用する文字列の条件の厳格さを設�
 > - https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html
 > - https://zenn.dev/toshikish/articles/2d9274783acbae
 
-タグを条件として使用することもできる。
+タグを条件として使用できる。
 
 ```yaml
 {"Version": "2012-10-17", "Statement": [

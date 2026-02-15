@@ -497,7 +497,7 @@ Prometheusは、`discovery` コンテナの `/stats/prometheus` エンドポイ�
 
 #### ▼ Prometheusの設定ファイル
 
-Prometheusの設定ファイルとして定義することもできる。
+Prometheusの設定ファイルとして定義できる。
 
 ```yaml
 scrape_configs:
@@ -798,7 +798,7 @@ spec:
 
 #### ▼ OpenTelemetry Collectorの場合
 
-Istioの代わりに、OpenTelemetry Collectorでスパン名を変更することもできる。
+Istioの代わりに、OpenTelemetry Collectorでスパン名を変更できる。
 
 あらかじめ、Telemetryで `http.url.path` という属性を設定しておく。
 

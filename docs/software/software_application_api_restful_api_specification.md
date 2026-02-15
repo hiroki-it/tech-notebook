@@ -100,7 +100,7 @@ Swagger UI／Swagger Codegenを使用して、OpenAPI仕様から静的ファイ
 
 OpenAPI Generatorを使用して、OpenAPI仕様から静的ファイルを作成する。
 
-なお、OpenAPI GeneratorはOpenAPI仕様からコードを作成することもできる。
+なお、OpenAPI GeneratorはOpenAPI仕様からコードを作成できる。
 
 ```bash
 $ openapi-generator generate -i docs/openapi.yaml -o docs/html -g html

@@ -82,7 +82,7 @@ func convertToXRayTraceID(traceID trace.TraceID) string {
 
 #### ▼ metrics.go
 
-代わりにサービスメッシュツールを使用することもできる。
+代わりにサービスメッシュツールを使用できる。
 
 ```go
 // metrics.go

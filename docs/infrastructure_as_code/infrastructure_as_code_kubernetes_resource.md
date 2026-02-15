@@ -1020,7 +1020,7 @@ Cluster内DNS名とCluster外CNAMEレコードを対応づけ、Serviceに対す
 
 この場合、`foo-db-service.default.svc.cluster.local` を指定すると、指定したCNAMEレコードに問い合わせるようになる。
 
-マイクロサービスが外部のドメインに直接リクエストを送信することもできるが、これをServiceのドメインに抽象化できる。
+マイクロサービスが外部のドメインに直接リクエストを送信できるが、これをServiceのドメインに抽象化できる。
 
 ![kubernetes_externalname-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_externalname-service.png)
 

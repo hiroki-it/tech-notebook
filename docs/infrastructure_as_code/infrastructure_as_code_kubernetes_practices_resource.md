@@ -659,7 +659,7 @@ Generic Ephemeral Volumeとは異なり、NodeのストレージがPodの容量�
 
 一方で、Nodeのストレージをそのまま使用することになるため、金銭的コストがEphemeral Volumesよりも小さい。
 
-> - [https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは](https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF
+> - [https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは](https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF)
 )> - https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
 
 Podのリソース要求やリソース制限に `ephemeral-storage` のフィールドを追加して、利用するディスク容量を制限できる。
@@ -976,7 +976,7 @@ Secretは、base64方式のエンコード値を保持する。
 
 そこで、コンテナイメージはセマンティックバージョニングでタグ付けし、特定のバージョンをプルする。
 
-なお、各コンテナイメージのアーキテクチャに割り当てられたダイジェスト値を指定することもできるが、K8sがNodeのCPUアーキテクチャに基づいてよしなに選んでくれるため、ダイジェスト値は指定しない。
+なお、各コンテナイメージのアーキテクチャに割り当てられたダイジェスト値を指定できるが、K8sがNodeのCPUアーキテクチャに基づいてよしなに選んでくれるため、ダイジェスト値は指定しない。
 
 <br>
 

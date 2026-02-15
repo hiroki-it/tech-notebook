@@ -85,7 +85,7 @@ aws-cliコマンドのインストールを実行する。
 
 #### ▼ setup
 
-aws-cliコマンドのインストールと、Credentials情報の設定を実行する。
+aws-cliコマンドのインストールと、Credentials情報の設定するする。
 
 AWSリソースを操作するために使用する。
 

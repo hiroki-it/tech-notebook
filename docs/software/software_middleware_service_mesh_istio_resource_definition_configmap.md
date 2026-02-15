@@ -116,7 +116,7 @@ data:
     ...
 ```
 
-代わりに、IstioOperatorの `.spec.meshConfig` キーで定義することもできるが、これは非推奨である。
+代わりに、IstioOperatorの `.spec.meshConfig` キーで定義できるが、これは非推奨である。
 
 ```yaml
 # これは非推奨

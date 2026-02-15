@@ -188,7 +188,7 @@ GoogleCloud外リソース (例：AWS、Azure、Kubernetesなど) からGoogleCl
 
 #### ▼ アーキテクチャ
 
-1. GoogleCloud以外で認証を実行する。
+1. GoogleCloud以外で認証するする。
 2. 認証が成功する。
 3. 資格情報をGoogleCloud STSに送信する。
 4. Workload Identityプールにて、資格情報を検証する。

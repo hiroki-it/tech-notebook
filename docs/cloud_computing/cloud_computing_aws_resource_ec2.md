@@ -851,7 +851,7 @@ Interface型のAWS VPCエンドポイントとして動作する。
 
 ENIを経由して、同じAWS VPC内の異なるインスタンスなどにパケットのコピーを送信する。
 
-AWS VPCエンドポイントを経由すれば異なるAWS VPCに送信することもできる。
+AWS VPCエンドポイントを経由すれば異なるAWS VPCに送信できる。
 
 ![vpc_traffic-mirroring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc_traffic-mirroring.png)
 

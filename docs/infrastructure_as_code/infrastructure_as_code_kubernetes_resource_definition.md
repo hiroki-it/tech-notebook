@@ -3052,7 +3052,7 @@ spec:
 
 **＊実装例＊**
 
-Secretの名前を指定することもできる。
+Secretの名前を指定できる。
 
 ```yaml
 apiVersion: v1
@@ -3141,7 +3141,7 @@ kubeletがヘルスチェックを実行することで、コンテナが正常�
 
 注意点として、LivenessProbeヘルスチェックの間隔が短すぎると、kubeletに必要以上に負荷がかかる。
 
-`terminationGracePeriodSeconds` に関しては、`.spec.terminationGracePeriodSeconds` キーでPod単位での待機時間を設定することもできる。
+`terminationGracePeriodSeconds` に関しては、`.spec.terminationGracePeriodSeconds` キーでPod単位での待機時間を設定できる。
 
 ```yaml
 apiVersion: v1
@@ -3441,7 +3441,7 @@ spec:
 
 kubeletがヘルスチェックを実行することで、コンテナがトラフィックを処理可能かを確認する。
 
-`terminationGracePeriodSeconds` に関しては、`.spec.terminationGracePeriodSeconds` キーでPod単位での待機時間を設定することもできる。
+`terminationGracePeriodSeconds` に関しては、`.spec.terminationGracePeriodSeconds` キーでPod単位での待機時間を設定できる。
 
 ```yaml
 apiVersion: v1
@@ -3810,7 +3810,7 @@ spec:
 > - https://zaki-hmkc.hatenablog.com/entry/2020/12/27/211908#subPath%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88
 > - https://kubernetes.io/docs/concepts/storage/volumes/#using-subpath
 
-ディレクトリではなく、ファイルを指定することもできる。
+ディレクトリではなく、ファイルを指定できる。
 
 ```yaml
 apiVersion: v1
@@ -4302,7 +4302,7 @@ Podの終了プロセスを開始するまで待機時間を設定する。
 
 この時間を超えてもPodを終了できていない場合は、コンテナを強制的に停止する。
 
-なお、`.spec.containers[*].xxxProbe.terminationGracePeriodSeconds` キーでコンテナ単位での待機時間を設定することもできる。
+なお、`.spec.containers[*].xxxProbe.terminationGracePeriodSeconds` キーでコンテナ単位での待機時間を設定できる。
 
 ```yaml
 apiVersion: v1
