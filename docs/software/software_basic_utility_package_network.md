@@ -17,7 +17,7 @@ description: ネットワーク系＠パッケージの知見を記録してい�
 
 ### digとは
 
-正引きの名前解決するする
+正引きの名前解決する
 
 > - https://qiita.com/hypermkt/items/610b5042d290348a9dfa#%E3%83%98%E3%83%83%E3%83%80%E3%83%BC
 > - https://dev.classmethod.jp/articles/dig-route53-begginer/
