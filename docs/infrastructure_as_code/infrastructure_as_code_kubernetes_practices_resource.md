@@ -38,7 +38,7 @@ description: プラクティス集＠Kubernetesリソースの知見を記録し
 | 説明 | リージョンごとに同一構成のClusterを配置する。                                                                                                              | Cluster内で、コントロールプレーンNodeとワーカーNodeを異なるリージョンに配置する。                                                                                        |
 | 備考 | リージョン間クラスターを構築する場合、当然リージョン内のクラスターと比べ通信の遅延が発生するため、リージョン間のetcd同期が遅くなったりといった影響がある。 | リージョンを横断する形でクラスターを構築した場合でも、DBなどの永続データを持つシステムは片方のリージョンだけで動かすか、あるいはリージョンをまたいで構築する必要がある。 |
 
-上記の通りそれぞれ一長一短があり、運用コストも当然増加することになるため、十分に検討を行ったうえで必要に応じてDR構成を検討する。
+上記の通りそれぞれ一長一短があり、運用コストも当然増加することになるため、十分に検討したうえで必要に応じてDR構成を検討する。
 
 <br>
 
@@ -93,8 +93,8 @@ description: プラクティス集＠Kubernetesリソースの知見を記録し
 | 金銭コスト                                | 既存のNodeをそのまま使用する。そのため、既存のコストと変わらない。                                                                                                                                                                                                                      | 使用するマネージドサービスや、アップデート設定にもよるが、新Nodeを作成するような設定の場合は新Nodeを作成した後に旧Nodeをドレインするまでの間、Nodeの台数が増えることになるのでコストが多く発生することになる。そのため、アップグレードの際に増えるNode台数をあらかじめ計測しておきアップグレードにかかるコストについて見積もりをとっておくようにする。                                                                                                                                                                                                         | 新Nodeグループを作成することでNodeが二倍になる。そのため、金銭コスト見積もりでは各Nodeグループのアップグレードの間、平常時の2倍コストがかかることを想定しておく。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | 新Clusterを作成することでNodeが二倍になる。そのため、金銭コスト見積もりではクラスターアップグレードを実施~動作確認などを経て旧クラスター削除するまでの間、平常時の2倍コストがかかることを想定しておく。                                                                                   |
 | 切り戻ししやすさ                          | しにくい                                                                                                                                                                                                                                                                                | しにくい                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | しやすい                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | しやすい                                                                                                                                                                                                                                                                                  |
 
-> - [Control Plane - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades
-> - [マネージド型ノードの更新動作 - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html
+> - [Control Plane - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades)
+> - [マネージド型ノードの更新動作 - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html)
 > - https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#choose-blue-green-upgrades
 
 #### ▼ クラスターアップグレードのルールを決める
@@ -110,11 +110,11 @@ Kubernetes Clusterの規模や運用しているシステム、アップグレ�
 - クラスターアップグレードにあたっての準備
   - クラスターアップグレード前に https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG を確認し、(おおまかにでも)変更内容について確認する
   - クラスターアップグレード前に廃止されるAPIグループのバージョンを確認することで、変更が必要な既存のmanifestsを確認する
-  - あらかじめ検証環境で本番環境と(限りなく)同じ設定のクラスターのアップグレード~動作確認を行い、問題無くアップグレード可能かを検証する
+  - あらかじめ検証環境で本番環境と(限りなく)同じ設定のクラスターのアップグレード~動作確認を行い、問題なくアップグレード可能かを検証する
   - 監視ツールなどで廃止されるメトリクスを使用したクエリロジックが無いかを確認する
   - クラスターにインストールしてる各種Helm ChartやOperatorが対象のクラスターバージョンで正常に動作するか or サポートしているかを確認する
 - クラスターバージョンのアップグレード戦略
-  - Kubernetesの「https://kubernetes.io/releases/version-skew-policy/#supported-component-upgrade-order」と「Kubernetes Release Versioning』に沿ったバージョンアップを実行する
+  - Kubernetesの「https://kubernetes.io/releases/version-skew-policy/#supported-component-upgrade-order」と「Kubernetes Release Versioning」に沿ったバージョンアップを実行する
   - パッチバージョンのアップグレードについてはCHANGELOGに基づいて修正されたバグの影響度に応じて実施する
   - マイナーバージョンのアップグレードについては1バージョンずつアップグレードを実施する
   - 約4ヶ月毎のマイナーバージョンのリリースごとにマイナーバージョンのアップグレードを実施する or xヶ月毎(12ヶ月以内)にそのタイミングの最新バージョンまでアップグレードを実施する
@@ -125,7 +125,7 @@ Kubernetes Clusterの規模や運用しているシステム、アップグレ�
   - アップグレード後の動作確認ではPodだけでなくWorkloadのコンディションとステータスを確認する
   - クラスターにインストールしてる各種Helm ChartやOperatorなどが正常に動作しているかを確認する
 - クラスター側の設定
-  - コントロールプレーンNodeでダウンタイムを発生させないために必要に応じてetcdとkube-apiserverのPodにPod Disruption Budgetの設定を実行する
+  - コントロールプレーンNodeでダウンタイムを発生させないために必要に応じてetcdとkube-apiserverのPodにPod Disruption Budgetを設定する
     - コントロールプレーンがマネージドなGKEやEKSなどでは考慮不要
 
 <br>
@@ -189,7 +189,7 @@ kube-apiserverに対して、誰でもアクセスできてしまうことは危
 コントロールプレーンにetcdを作成する場合、etcdのディスクアクセスがクラスタ全体のパフォーマンスや安全性に影響するためSSDを利用する。
 ストレージ容量は最低限40GiB程度割り当てる。
 
-> - [第2章 システムおよび環境要件 OpenShift Container Platform 3.11 | Red Hat Customer Portal](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/3.11/html/installing_clusters/install-config-install-prerequisites
+> - [第2章 システムおよび環境要件 OpenShift Container Platform 3.11 | Red Hat Customer Portal](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/3.11/html/installing_clusters/install-config-install-prerequisites)
 > - https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/cpu-ram-storage?hl=ja
 
 <br>
@@ -660,7 +660,7 @@ Generic Ephemeral Volumeとは異なり、NodeのストレージがPodの容量�
 一方で、Nodeのストレージをそのまま使用することになるため、金銭的コストがEphemeral Volumesよりも小さい。
 
 > - [https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは](https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF
-> - https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
+)> - https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
 
 Podのリソース要求やリソース制限に `ephemeral-storage` のフィールドを追加して、利用するディスク容量を制限できる。
 
@@ -904,11 +904,11 @@ search foo.svc.cluster.local svc.cluster.local cluster.local
 options ndots:5
 ```
 
-これにより、ドメインのドット数が `5` 未満の場合は、Cluster内で名前解決を実行しようとする。
+これにより、ドメインのドット数が `5` 未満の場合は、Cluster内で名前解決するしようとする。
 
-しかし、Cluster外へしかリクエストを送信しないコンテナでは、Cluster内で名前解決を実行する必要はない。
+しかし、Cluster外へしかリクエストを送信しないコンテナでは、Cluster内で名前解決するする必要はない。
 
-そういったコンテナのPod では、Pod DNS Configの `.spec.dnsConfig.options` キーでndotsを `1` にし、ドット数が `1` 未満の場合 (つまりドットが `1` 個でもあれば) 、Cluster外で名前解決を実行させるようにする。
+そういったコンテナのPod では、Pod DNS Configの `.spec.dnsConfig.options` キーでndotsを `1` にし、ドット数が `1` 未満の場合 (つまりドットが `1` 個でもあれば) 、Cluster外で名前解決するさせるようにする。
 
 ```yaml
 apiVersion: v1

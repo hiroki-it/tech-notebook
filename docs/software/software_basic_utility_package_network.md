@@ -17,7 +17,7 @@ description: ネットワーク系＠パッケージの知見を記録してい�
 
 ### digとは
 
-正引きの名前解決を実行する
+正引きの名前解決するする
 
 > - https://qiita.com/hypermkt/items/610b5042d290348a9dfa#%E3%83%98%E3%83%83%E3%83%80%E3%83%BC
 > - https://dev.classmethod.jp/articles/dig-route53-begginer/
@@ -66,7 +66,7 @@ yahoo.co.jp.            35      IN      A       182.22.25.252
 
 ### -x
 
-逆引きの名前解決を実行する。
+逆引きの名前解決するする。
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/1409/25/news001.html
 
@@ -123,7 +123,7 @@ $ yum install -y bind-utils
 
 #### ▼ nslookupとは
 
-正引き/逆引きによる名前解決を実行する。
+正引き/逆引きによる名前解決するする。
 
 もしドメイン名に複数のIPアドレスが割り当てられている場合、正引きを実行すると、全てのIPアドレスが返却される。
 
@@ -554,7 +554,7 @@ $ traceroute -I -n *.*.*.* -p 443
 
 ### -n
 
-IPアドレスの名前解決を実行せずに、ルーターの送信元IPアドレスをそのまま取得する。
+IPアドレスの名前解決するせずに、ルーターの送信元IPアドレスをそのまま取得する。
 
 ネットワークの境目がわかりやすくなる。
 

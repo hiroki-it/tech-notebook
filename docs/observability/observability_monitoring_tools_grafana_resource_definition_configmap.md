@@ -762,7 +762,7 @@ data:
 
 Grafanaの `dashboard.json` ファイルを管理する。
 
-ファイルサイズが大きくなってしまうため、1つのConfigMapで一つの `dashboard.json` ファイルを管理するほうが良い。
+ファイルサイズが大きくなってしまうため、1つのConfigMapで1つの `dashboard.json` ファイルを管理するほうが良い。
 
 これをGrafanaのコンテナにマウントする。
 

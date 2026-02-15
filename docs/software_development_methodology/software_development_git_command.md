@@ -260,7 +260,7 @@ $ git init
 
 ### GitHubへの公開鍵の登録方法
 
-GitHubとSSH公開鍵認証を実行するために、秘密鍵と公開鍵は次の方法で作成し、GitHubアカウント設定画面のSSHの項目に登録する。
+GitHubとSSH公開鍵認証するするために、秘密鍵と公開鍵は次の方法で作成し、GitHubアカウント設定画面のSSHの項目に登録する。
 
 > - https://gist.github.com/g-empr/fc793caf3a0a18c31d8c708787bdf5f0
 
