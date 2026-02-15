@@ -831,7 +831,55 @@ URLを書き換える。
 
 ページネーション処理に使える。
 
-URLのページのクエリストリング値を書き換えると、Remixのローダーがそれを検知し、ブラウザが再読み込みすることで別のページが表示される。
+LinkコンポーネントがURLクエリストリングのページ値を書き換えると、Remixのローダーがそれを検知し、新しいURLクエリストリングで再リクエストを送信することで別のページが表示される。
+
+**＊実装例＊**
+
+```tsx
+import {Link, useSearchParams} from "@remix-run/react";
+
+type PageLinkProps = {
+  page: number;
+  children: React.ReactNode;
+  resetKeys?: string[];
+};
+
+export function PageLink({page, children, resetKeys = []}: PageLinkProps) {
+  const [searchParams] = useSearchParams();
+  const next = new URLSearchParams(searchParams);
+
+  for (const key of resetKeys) {
+    next.delete(key);
+  }
+
+  next.set("page", String(page));
+
+  // LinkコンポーネントがURLクエリストリングのページ値を書き換える
+  return (
+    <Link
+      to={{search: `?${next.toString()}`}}
+      preventScrollReset
+      prefetch="intent"
+    >
+      {children}
+    </Link>
+  );
+}
+```
+
+```jsx
+// RemixのローダーがURLの変更を検知する
+export async function loader({request}: LoaderFunctionArgs) {
+
+  // 新しいクエリストリングをURLから取得する
+  const url = new URL(request.url);
+  const page = Number(url.searchParams.get("page") ?? "1");
+
+  return typedjson({
+    // 新しいクエリストリングで再リクエストを送信する
+  }
+}
+```
 
 <br>
 
