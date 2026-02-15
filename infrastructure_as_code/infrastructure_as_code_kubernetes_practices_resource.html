@@ -36760,7 +36760,7 @@
 <li>クラスターアップグレードにあたっての準備<ul>
 <li>クラスターアップグレード前に <a href="https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG">https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG</a> を確認し、(おおまかにでも)変更内容について確認する</li>
 <li>クラスターアップグレード前に廃止されるAPIグループのバージョンを確認することで、変更が必要な既存のmanifestsを確認する</li>
-<li>あらかじめ検証環境で本番環境と(限りなく)同じ設定のクラスターのアップグレード~動作確認を行い、問題なくアップグレード可能かを検証する</li>
+<li>あらかじめ検証環境で本番環境と(限りなく)同じ設定のクラスターのアップグレード~動作確認し、問題なくアップグレード可能かを検証する</li>
 <li>監視ツールなどで廃止されるメトリクスを使用したクエリロジックが無いかを確認する</li>
 <li>クラスターにインストールしてる各種Helm ChartやOperatorが対象のクラスターバージョンで正常に動作するか or サポートしているかを確認する</li>
 </ul>
@@ -37540,7 +37540,7 @@ search<span class="w"> </span>foo.svc.cluster.local<span class="w"> </span>svc.c
 options<span class="w"> </span>ndots:5
 </code></pre></div>
 <p>これにより、ドメインのドット数が <code>5</code> 未満の場合は、Cluster内で名前解決するしようとする。</p>
-<p>しかし、Cluster外へしかリクエストを送信しないコンテナでは、Cluster内で名前解決するする必要はない。</p>
+<p>しかし、Cluster外へしかリクエストを送信しないコンテナでは、Cluster内で名前解決する必要はない。</p>
 <p>そういったコンテナのPod では、Pod DNS Configの <code>.spec.dnsConfig.options</code> キーでndotsを <code>1</code> にし、ドット数が <code>1</code> 未満の場合 (つまりドットが <code>1</code> 個でもあれば) 、Cluster外で名前解決するさせるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -38743,7 +38743,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 19:03:50 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 19:16:23 JST">2026-02-15</span>
   </span>
 
     

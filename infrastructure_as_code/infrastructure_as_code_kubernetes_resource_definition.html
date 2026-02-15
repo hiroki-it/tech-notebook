@@ -43866,7 +43866,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h3 id="specstartingdeadlineseconds">.spec.startingDeadlineSeconds<a class="headerlink" href="#specstartingdeadlineseconds" title="Permanent link">&para;</a></h3>
 <h4 id="startingdeadlineseconds">▼ startingDeadlineSeconds<a class="headerlink" href="#startingdeadlineseconds" title="Permanent link">&para;</a></h4>
-<p>JobがCronのスケジュール通りに実行されなかった場合に、実行の遅れを何秒まで許容するかを設定する。</p>
+<p>JobがCronのスケジュール通りに実行されなかった場合、実行の遅れを何秒まで許容するかを設定する。</p>
 <p>指定した秒数を過ぎると、実行を失敗とみなす。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">io.k8s.api.batch.v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CronJob</span>
@@ -44122,7 +44122,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </code></pre></div>
 <p>この場合、RollingUpdate戦略時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。</p>
 <p><code>.spec.strategy.rollingUpdate.maxSurge</code> キーにより、<code>10</code> 個の新しいPodを並行的に作成する (つまり、デプロイ時に新旧Podが合計 <code>20</code> 個ある) 。</p>
-<p><code>.spec.strategy.rollingUpdate.maxUnavailable</code> キーにより、<code>0</code> 個が停止している状態にならないようにする (停止するPodがない)。</p>
+<p><code>.spec.strategy.rollingUpdate.maxUnavailable</code> キーにより、<code>0</code> 個が停止している状態を避ける (停止するPodがない)。</p>
 <p>また、Podの停止数がレプリカ数を下回らないようになる。</p>
 <p><img alt="kubernetes_deployment_strategy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_strategy.png" /></p>
 <blockquote>
@@ -44132,7 +44132,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="_5">▼ ブルーグリーン方式 (絶対値の場合)<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>もし <code>.spec.strategy.rollingUpdate.maxSurge</code> キーを <code>10</code>、また <code>.spec.strategy.rollingUpdate.maxUnavailable</code> キーを <code>0</code> とすると仮定する。</p>
+<p>もし <code>.spec.strategy.rollingUpdate.maxSurge</code> キーを <code>10</code>、また <code>.spec.strategy.rollingUpdate.maxUnavailable</code> キーを <code>0</code> と仮定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -44159,7 +44159,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </code></pre></div>
 <p>この場合、RollingUpdate戦略時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。</p>
 <p><code>.spec.strategy.rollingUpdate.maxSurge</code> キーにより、<code>10</code> 個の新しいPodを並行的に作成する (つまり、デプロイ時に新旧Podが合計 <code>20</code> 個ある)。</p>
-<p><code>.spec.strategy.rollingUpdate.maxUnavailable</code> キーにより、<code>0</code> 個が停止している状態にならないようにする (停止するPodがない)。</p>
+<p><code>.spec.strategy.rollingUpdate.maxUnavailable</code> キーにより、<code>0</code> 個が停止している状態を避ける (停止するPodがない)。</p>
 <p>また、Podの停止数がレプリカ数を下回らないようになる。</p>
 <blockquote>
 <ul>
@@ -44171,7 +44171,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="template-pod">▼ templateとは (設定項目はPodと同じ)<a class="headerlink" href="#template-pod" title="Permanent link">&para;</a></h4>
 <p>Deploymentで維持管理するPodテンプレートを設定する。</p>
 <p>設定項目はPodと同じである。</p>
-<p>Deployment自体の <code>.metadata.labels</code> キーを更新した場合はPodは再作成しないが、<code>.spec.template</code> キー配下の <code>.metadata.labels</code> キーの場合は、Podの再作成となる。</p>
+<p>Deployment自体の <code>.metadata.labels</code> キーを更新した場合、Podは再作成しない。しかし、<code>.spec.template</code> キー配下の <code>.metadata.labels</code> キーの場合、Podは再作成する。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates">https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates</a></li>
@@ -45222,7 +45222,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h3 id="speclocal">.spec.local<a class="headerlink" href="#speclocal" title="Permanent link">&para;</a></h3>
 <h4 id="local">▼ localとは<a class="headerlink" href="#local" title="Permanent link">&para;</a></h4>
-<p>Node上にストレージ上にボリュームを作成する。</p>
+<p>Node上のストレージにボリュームを作成する。</p>
 <p><code>.spec.nodeAffinity</code> キーの設定が必須であり、Nodeを明示的に指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
@@ -45576,8 +45576,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="preferredduringschedulingignoredduringexecution">▼ preferredDuringSchedulingIgnoredDuringExecution (ソフト)<a class="headerlink" href="#preferredduringschedulingignoredduringexecution" title="Permanent link">&para;</a></h4>
-<p>条件に合致するNodeに優先的にPodをスケジューリングさせる。</p>
-<p>もし条件に合致するNodeがない場合でも、それを許容し、条件に合致しないNodeにPodをスケジューリングさせる。</p>
+<p>条件に合致するNodeを優先してPodをスケジューリングさせる。</p>
+<p>もし条件に合致するNodeがない場合でも、それを許容する。その上で、条件に合致しないNodeへPodをスケジューリングさせる。</p>
 <p>条件に合致しないNodeの探索で重みづけルールを設定できる。</p>
 <p>共通する <code>SchedulingIgnoredDuringExecution</code> の名前の通り、<code>.spec.affinity</code> キーによるスケジューリングの制御は新しく作成されるPodにしか適用できない。</p>
 <p>すでに実行中のPodには適用できず、再スケジューリングさせないといけない。</p>
@@ -45775,7 +45775,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="speccontainers">.spec.containers<a class="headerlink" href="#speccontainers" title="Permanent link">&para;</a></h3>
 <h4 id="containers">▼ containersとは<a class="headerlink" href="#containers" title="Permanent link">&para;</a></h4>
 <p>Pod内で起動するコンテナを設定する。</p>
-<p>PodをDeploymentやReplicaSetに紐付けずに使用することは非推奨である。</p>
+<p>PodをDeploymentやReplicaSetに紐付けず、単体で使用することは非推奨である。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs">https://kubernetes.io/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs</a></li>
@@ -45922,7 +45922,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p>Node全体のハードウェアリソースを分母として、Pod内のコンテナが要求するリソースの下限/上限必要サイズを設定する。</p>
 <p>各PodはNode内のハードウェアリソース (<code>cpu</code>、<code>memory</code>、<code>ephemeral-storage</code>) を奪い合っており、Nodeが複数ある場合、kube-schedulerは <code>requests</code> 値以上の余剰があるNode上にPodのスケジューリングを実行する。</p>
 <p>この時kube-schedulerは、コンテナの <code>resource</code> キーの値に基づいて、どのNodeにPodを作成するかを決めている。</p>
-<p>同じPod内に <code>resources</code> キーが設定されたコンテナが複数ある場合、下限/上限必要サイズを満たしているか否かの判定は、同じPod内のコンテナの要求サイズの合計値に基づくことになる。</p>
+<p>同じPod内に <code>resources</code> キーを設定したコンテナが複数ある場合、下限/上限の必要サイズを満たしているか否かの判定は、同じPod内のコンテナの要求サイズの合計値に基づく。</p>
 <table>
 <thead>
 <tr>
@@ -46147,7 +46147,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <h3 id="speccontainerslivenessprobe">.spec.containers[*].livenessProbe<a class="headerlink" href="#speccontainerslivenessprobe" title="Permanent link">&para;</a></h3>
 <h4 id="livenessprobe">▼ livenessProbeとは<a class="headerlink" href="#livenessprobe" title="Permanent link">&para;</a></h4>
 <p>kubeletがヘルスチェックを実行することで、コンテナが正常に動作しているか確認する。</p>
-<p>注意点として、LivenessProbeヘルスチェックの間隔が短すぎると、kubeletに必要以上に負荷がかかる。</p>
+<p>注意点として、LivenessProbeヘルスチェックの間隔が短すぎると、kubeletに必要以上の負荷がかかる。</p>
 <p><code>terminationGracePeriodSeconds</code> に関しては、<code>.spec.terminationGracePeriodSeconds</code> キーでPod単位での待機時間を設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46492,8 +46492,8 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">        </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
 <span class="w">  </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
 </code></pre></div>
-<p>コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例：Javaのウォームアップ完了まで。Nginxの最初の設定ファイル読み込み完了まで。MySQLの最初の接続受信準備完了まで。) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。</p>
-<p>注意点として、ReadinessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。</p>
+<p>コンテナが起動してもトラフィックを処理できるようになるまで時間がかかる場合や、問題の起きたコンテナへトラフィックを流さない場合に役立つ。例えば、Javaのウォームアップ完了まで、Nginxの最初の設定ファイル読み込み完了まで、MySQLの最初の接続受信準備完了までなどである。</p>
+<p>注意点として、ReadinessProbeの間隔が短すぎると、kubeletに必要以上の負荷がかかる。</p>
 <p>そのため、<code>READY</code> は <code>0</code> で、<code>STATUS</code> は <code>Running</code> になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span>foo-namespace
 
@@ -46721,7 +46721,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </blockquote>
 <h4 id="subpath">▼ subPath<a class="headerlink" href="#subpath" title="Permanent link">&para;</a></h4>
 <p>PodのVolume内のサブディレクトリを指定し、マウント可能にする。</p>
-<p>これを指定しない場合。Volumeのルートディレクトリ配下をコンテナにマウントすることになる。</p>
+<p>これを指定しない場合、Volumeのルートディレクトリ配下をコンテナへマウントすることになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47033,7 +47033,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <h4 id="restartpolicy_1">▼ restartPolicyとは<a class="headerlink" href="#restartpolicy_1" title="Permanent link">&para;</a></h4>
 <p>Pod内のコンテナのライフサイクルの再起動ポリシーを設定する。</p>
 <h4 id="always">▼ Always<a class="headerlink" href="#always" title="Permanent link">&para;</a></h4>
-<p>コンテナが停止した場合、これが正常 (終了ステータス <code>0</code>) か異常 (終了ステータス <code>1</code>) か否かに関わらず、常にコンテナを再起動する。</p>
+<p>コンテナが停止した場合、これが正常 (終了ステータス <code>0</code>) か異常 (終了ステータス <code>1</code>) かを問わず、常にコンテナを再起動する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47201,7 +47201,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </ul>
 </blockquote>
 <h4 id="_7">▼ コンテナが複数個ある場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>Pod内にアプリ以外にコンテナ (istio-proxyなど) がある場合、全てのコンテナの終了プロセスの時間を考慮する必要がある。</p>
+<p>Pod内にアプリ以外のコンテナ (istio-proxyなど) がある場合、全てのコンテナの終了プロセスの時間を考慮する必要がある。</p>
 <p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
 <blockquote>
 <ul>
@@ -47217,7 +47217,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <p>すると、<code>.spec.tolerations</code> キーを設定しない限り、Podが多いNodeグループの方にPodがスケジューリングされる。</p>
 <p>そのため、NodeSelectorやNodeAffinityを使用するより、スケジューリング対象のNodeを設定する手間が省ける。</p>
 <p>以下の方法で設定する。</p>
-<p>事前にNodeにTaintを設定しておく。</p>
+<p>事前にNodeへTaintを設定しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 非マネージドの場合</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </span>node<span class="w"> </span>foo-node<span class="w"> </span><span class="nv">group</span><span class="o">=</span>monitoring:NoSchedule
 
@@ -47242,7 +47242,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </code></pre></div>
 <p>合致する条件の <code>.spec.tolerations</code> キーを持つPodしか、Taintを持つNodeにスケジューリングさせられない。</p>
 <p><code>.spec.affinity</code> キーとは反対の条件である。</p>
-<p>デフォルトでは、Podは以下のNodeの <code>metadata.labels</code> キーを条件として、kube-schedulerは該当の値を持たないNodeにPodにスケジューリングさせる。</p>
+<p>デフォルトでは、PodはNodeの <code>metadata.labels</code> キーを条件としてスケジューリングされる。そのため、kube-schedulerは該当の値を持たないNodeにPodをスケジューリングさせる。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/#taint-based-evictions">https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/#taint-based-evictions</a></li>
@@ -48173,7 +48173,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h2 id="service_1">Service<a class="headerlink" href="#service_1" title="Permanent link">&para;</a></h2>
 <h3 id="specexternalips">.spec.externalIPs<a class="headerlink" href="#specexternalips" title="Permanent link">&para;</a></h3>
 <p>ServiceのIPアドレスを固定する。</p>
-<p>Serviceに紐づくPodを外部に直接公開したい場合 (例：POP/IMAPコンテナ) に役立つ。</p>
+<p>Serviceに紐づくPodを外部へ直接公開したい場合 (例：POP/IMAPコンテナ) に役立つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -48316,9 +48316,9 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9000</span>
 </code></pre></div>
 <h4 id="targetport">▼ targetPort<a class="headerlink" href="#targetport" title="Permanent link">&para;</a></h4>
-<p>受信した通信をPodにフォワーディングするときに、いずれのポート番号を指定するか否かを設定する。</p>
-<p>Pod内で最初にインバウンド通信を受信するコンテナの <code>containerPort</code> の番号に合わせるようにする。</p>
-<p>デフォルトでは、<code>.spec.ports.port</code> キーと同じに値になる。</p>
+<p>受信した通信をPodへフォワーディングするとき、いずれのポート番号を指定するか否かを設定する。</p>
+<p>Pod内で最初にインバウンド通信を受信するコンテナの <code>containerPort</code> の番号に合わせる。</p>
+<p>デフォルトでは、<code>.spec.ports.port</code> キーと同じ値になる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
@@ -48913,7 +48913,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 19:01:42 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 19:57:08 JST">2026-02-15</span>
   </span>
 
     
